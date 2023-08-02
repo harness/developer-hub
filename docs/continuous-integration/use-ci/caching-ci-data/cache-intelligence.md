@@ -38,6 +38,12 @@ The cache retention window is 15 days, which resets whenever the cache is update
   <TabItem value="Visual" label="Visual">
 ```
 
+:::note
+
+Currently, the **Enable Cache Intelligence** UI field is behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 1. Edit the pipeline, and select the **Build** stage where you want to enable Cache Intelligence.
 2. Select the **Overview** tab for the stage.
 3. Select **Enable Cache Intelligence**.

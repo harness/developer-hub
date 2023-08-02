@@ -1,7 +1,7 @@
 ---
 title: Create perspectives
 description: Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
-# sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: dvspc6ub0v
 helpdocs_category_id: e7k0qds7tw
 helpdocs_is_private: false
@@ -136,42 +136,7 @@ For details on adding Budgets, Reports, and Alerts go to:
 
 ## Perspective Preferences
 
-In **Preferences**, you have the following options.
-
-### Include Others
-
-The graphs displayed in a Perspective show the top 12 costs only. In order to include the remaining data, Harness displays **Others**.
-
-![](./static/create-cost-perspectives-23.png)
-
-**Others** is always the total cost minus the top 12 costs listed in the graph you are viewing.
-
-Enable **Include Others** in **Preferences** to have it displayed in the Perspective chart.
-
-You can also enable **Include Others** in the Perspective chart:
-
-![](./static/create-cost-perspectives-24.png)
-
-The **Include Others** option must be enabled in **Preferences** to make it persist in the Perspective.
-
-### Include Unallocated
-
-In some graphs, you will also see an **Unallocated** item. This is included to help you see all of the costs. If you look at the Total Cost in the Perspective, it includes the costs of all items and the Unallocated cost.
-
-![](./static/create-cost-perspectives-25.png)
-
-The **Include Unallocated** option is only available in the chart when the **Group By** is using **Cluster** and the following options are selected:
-
-* Namespace
-* Namespace ID
-* Workload
-* Workload ID
-* ECS Task
-* ECS Task ID
-* ECS Service ID
-* ECS Service
-* ECS Launch Type ID
-* ECS Launch Type
+Go to [Perspective Preferences](perspective-preferences.md) to learn about these settings.
 
 ### Review: No Account/Project/etc
 
