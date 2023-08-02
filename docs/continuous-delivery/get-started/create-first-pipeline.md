@@ -391,7 +391,7 @@ You can now run your pipeline.
 ```
 The following example creates the Harness entities needed for a simple pipeline that deploys a publicly available Docker Nginx image to your target cluster using the manifest we just added.
 
-For information on using the Harness API, go to [Harness API Quickstart](/docs/platform/Resource-Development/APIs/api-quickstart). For information on the security token, go to [Add and Manage API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
+For information on using the Harness API, go to [Get started with Harness APIs](/docs/platform/Resource-Development/APIs/api-quickstart). For information on the security token, go to [Add and Manage API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 <details>
 <summary>Create the Harness connector</summary>

@@ -27,7 +27,7 @@ This quickstart shows you how to write your configurations in Terraform and prov
 * You must have a Personal Access Token (PAT) or a Service Access Token (SAT).
 
 
-For detailed steps on how to generate a PAT, see [Create a Personal Access Token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#create-personal-access-token).
+For detailed steps on how to generate a PAT, see [Create personal API keys and tokens](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#create-personal-api-keys-and-tokens).
 
 ### Important
 

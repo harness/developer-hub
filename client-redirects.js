@@ -37,6 +37,14 @@ module.exports = {
     // Created by aimurphy for branch doc-3441-rbac on July 28, 2023
 
     {
+      from: "/docs/platform/Resource-Development/APIs/harness-rest-api-reference",
+      to: "/docs/platform/Resource-Development/APIs/api-quickstart",
+    },
+    {
+      from: "/docs/platform/APIs/harness-rest-api-reference",
+      to: "/docs/platform/Resource-Development/APIs/api-quickstart",
+    },
+    {
       from: "/docs/platform/Role-Based-Access-Control/set-up-rbac-pipelines",
       to: "/docs/platform/Role-Based-Access-Control/rbac-in-harness",
     },
@@ -980,10 +988,6 @@ module.exports = {
     {
       from: "/docs/platform/APIs/default-settings-for-jwt-token",
       to: "/docs/platform/Resource-Development/APIs/default-settings-for-jwt-token",
-    },
-    {
-      from: "/docs/platform/APIs/harness-rest-api-reference",
-      to: "/docs/platform/Resource-Development/APIs/harness-rest-api-reference",
     },
     {
       from: "/docs/platform/APIs/jwt-token-auth",

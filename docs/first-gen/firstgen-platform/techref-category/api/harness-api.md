@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-GraphQL is the API for Harness FirstGen only. Harness NextGen uses a **REST** API. See [Use the Harness REST API](/docs/platform/Resource-Development/APIs/harness-rest-api-reference) and [Harness API Quickstart](/docs/platform/Resource-Development/APIs/api-quickstart). GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data. GraphQL isn't tied to any specific database or storage engine and is instead backed by your existing code and data. For more information, visit [GraphQL.org](https://graphql.org/) and [GitHub GraphQL API v4](https://developer.github.com/v4/).
+GraphQL is the API for Harness FirstGen only. Harness NextGen uses a **REST** API. For NextGet, go to [Get started with Harness APIs](/docs/platform/Resource-Development/APIs/api-quickstart). GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data. GraphQL isn't tied to any specific database or storage engine and is instead backed by your existing code and data. For more information, visit [GraphQL.org](https://graphql.org/) and [GitHub GraphQL API v4](https://developer.github.com/v4/).
 
 Harness exposes its public API in GraphQL format. Virtually all of Harness' meaningful entities are exposed through the API, such as Applications, Services, Artifacts, Cloud Providers, Environments, Workflows, Pipelines, deployed instances, deployment data, etc.
 

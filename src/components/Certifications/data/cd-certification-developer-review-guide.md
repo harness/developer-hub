@@ -21,7 +21,7 @@
 | Cloud Formation Provider | [CloudFormation How-tos](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos) |
 | Git Trigger  | [Triggers](https://developer.harness.io/docs/category/triggers/) |
 | Webhooks  | [Trigger Pipelines using Git Events](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) |
-| API Triggers  | [Harness API Quickstart](https://developer.harness.io/docs/platform/Resource-Development/APIs/api-quickstart) |
+| API Triggers  | [Get started with Harness APIs](https://developer.harness.io/docs/platform/Resource-Development/APIs/api-quickstart) |
 | Policy as Code  | [Policy as Code Overview](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview/) |
 | Kubernetes Sidecars | [Add a Kubernetes Sidecar Container](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container) |
 | Approvals | [Approvals](https://developer.harness.io/docs/category/approvals/) |

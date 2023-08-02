@@ -1,7 +1,7 @@
 ---
 title: API Permissions Reference
 description: API Keys permissions reference.
-sidebar_position: 5
+sidebar_position: 6
 helpdocs_topic_id: bhkc68vy9c
 helpdocs_category_id: 4przngb8nk
 helpdocs_is_private: false

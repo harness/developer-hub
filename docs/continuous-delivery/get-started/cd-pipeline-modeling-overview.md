@@ -50,7 +50,7 @@ Model your process using a full-featured REST API:
 
 ![](./static/cd-pipeline-modeling-overview-04.png)
 
-For more details, go to [Harness API Quickstart](/docs/platform/Resource-Development/APIs/api-quickstart) and [Use the Harness REST API](/docs/platform/Resource-Development/APIs/harness-rest-api-reference).
+For more details, go to [Get started with Harness APIs](/docs/platform/Resource-Development/APIs/api-quickstart).
 
 ### How do I automate my CD process in Harness?
 

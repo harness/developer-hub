@@ -42,7 +42,7 @@ import TabItem from '@theme/TabItem';
 
 Use these steps to use debug mode for builds on Harness Cloud, self-hosted VM, or Kubernetes cluster build infrastructures.
 
-1. Create a [Harness personal access token (PAT)](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#create-personal-access-token) with `pipeline execution` permissions, if you do not have one already.
+1. Create a [Harness API key and token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) with `pipeline execution` permissions. You must have pipeline execution permissions on your personal Harness account in order for the token to have those permissions.
 2. Navigate to the [**Builds**](/docs/continuous-integration/use-ci/viewing-builds.md), **Execution**, or **Execution History** page.
 3. Locate the build you want to troubleshoot, select **More Options** (&vellip;), and select **Re-run in Debug Mode**.
 
@@ -52,7 +52,7 @@ Use these steps to use debug mode for builds on Harness Cloud, self-hosted VM, o
 
 4. Wait while the build runs. If the Run step fails, the build stops and generates log output with an SSH command you can use to SSH into the session on the remote host.
 
-   The SSH command is formatted as follows. Replace `{harness pat}` with your [Harness PAT](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#create-personal-access-token) that has `pipeline execution` permissions.
+   The SSH command is formatted as follows. Replace `{harness pat}` with your [token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) that has `pipeline execution` permissions.
 
    ```
    ssh {harness pat}:<your-harness-account-ID>:<random-session-token>@tmate.harness.io
@@ -75,7 +75,7 @@ Use these steps to use debug mode for builds on [local runner build infrastructu
 1. [Download and install tmate](https://github.com/harness/tmate/releases/download/1.0/tmate-1.0-static-linux-amd64.tar.xz) on the runner's host machine.
 2. If necessary, mount the install path. By default, Harness mounts the `/addon` path. If you installed tmate elsewhere, you need to mount that path.
 3. In your CI pipeline, add the environment variable `TMATE_PATH` to your Run step. Set the value to the tmate mount path, such as `/addon/tmate`.
-4. Create a [Harness personal access token (PAT)](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#create-personal-access-token) with `pipeline execution` permissions, if you do not have one already.
+4. Create a [Harness API key and token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) with `pipeline execution` permissions. You must have pipeline execution permissions on your personal Harness account in order for the token to have those permissions.
 5. Navigate to the [**Builds**](/docs/continuous-integration/use-ci/viewing-builds.md), **Execution**, or **Execution History** page.
 6. Locate the build you want to troubleshoot, select **More Options** (&vellip;), and select **Re-run in Debug Mode**.
 
@@ -85,7 +85,7 @@ Use these steps to use debug mode for builds on [local runner build infrastructu
 
 7. Wait while the build runs. If the Run step fails, the build stops and generates log output with an SSH command you can use to SSH into the debug session.
 
-   The SSH command is formatted as follows. Replace `{harness pat}` with your [Harness PAT](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#create-personal-access-token) that has `pipeline execution` permissions.
+   The SSH command is formatted as follows. Replace `{harness pat}` with your [token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) that has `pipeline execution` permissions.
 
    ```
    ssh {harness pat}:<your-harness-account-ID>:<random-session-token>@tmate.harness.io
