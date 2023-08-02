@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe might not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page in your Harness account.
 :::
 
-## Latest - August 02, 2023, version 80100
+## Latest - August 03, 2023, version 80100
 
 ### Deprecation notices
 
@@ -40,9 +40,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   <TabItem value="What's new">
 ```
 
-- Upgrade Helm binary from version 3.8 to 3.12. (CDS-58931)
+- Upgraded Helm binary from version 3.8 to 3.12. (CDS-58931)
 
-- Upgrade of go-template binary to version 0.4.3, which uses go version 1.20. (CDS-58919)
+- Upgraded go-template binary to version 0.4.3, which uses go version 1.20. (CDS-58919)
 
 - Removed Helm version 3.1 from immutable delegate. (CDS-58892, ZD-47520, ZD-48553)
 
@@ -73,7 +73,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Fixed an issue with incorrect execution of a container step when the Failure Strategy was set to "Always execute" and the previous step was failed (but ignored). (CDS-74567, ZD-47648)
 
-- Fixed an issue where Command steps could not resolve Service Overrides for variables of type Secret (for example, export testsvc="<+secrets.getValue(account.examplesecret)>". (CDS-74338, ZD-47280)
+- Fixed an issue where Command steps could not resolve Service Overrides for variables of type Secret (for example, `export testsvc="<+secrets.getValue(account.examplesecret)>"`. (CDS-74338, ZD-47280)
 
 - Fixed an issue where, if a user marked a running stage in the pipeline as failed, the build would also mark the parallel queued stages as failed. This was incorrect behavior because the queued stages should continue to run if they are configured to do so. This issue has now been fixed: if a running stage is marked failed by the user, and there are parallel queued stages waiting, the stages will not be marked as failed if they are configured to do so. (CDS-74338, ZD-47087)
 
@@ -107,8 +107,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 -  Fixed an issue where command execution logs were incomplete even though the pipeline ran successfully. This issue was observed when using Command steps in SSH or WinRM deployments. (CDS-74042, ZD-46904)
 
-- Fixed an issue where the Override Image Connector did not properly configure the image path in the container step.
-This issue has been resolved. The Override Image Connector now correctly configures the image path, including the hostname. (CDS-73727, ZD-43089, ZD-46916, ZD-47578, ZD-47716)
+- Fixed a Nexus Artifact issue where a fetch would time out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
+
+- Fixed an issue where the Override Image Connector did not properly configure the image path in the container step. This issue has been resolved. The Override Image Connector now correctly configures the image path, including the hostname. (CDS-73727, ZD-43089, ZD-46916, ZD-47578, ZD-47716)
 
 - Fixed an issue where WinRM deployments would not honor the configured timeout. For example, the step would time out out by default in 30 minutes even when the configured timeout was 1 day. Now, the WinRM session timeout will be set to maximum of step timeout configured and 30 minutes. (CDS-73641, ZD-46904, ZD-48180)
 
@@ -121,6 +122,12 @@ This issue has been resolved. The Override Image Connector now correctly configu
 - Previously, when a fixed value was specified to a pipeline build, the Service step used pattern matching to verify the value.  Now, the Service step verifies the value using an exact match. (CDS-72911)
 
   For example, suppose the **Jenkins Build** field is set to 1. Previously, the check would pass even if build 1 was absent and build 41 was present. With this fix, the check passes only if build 1 is present. 
+
+- Fixed an issue where a step would fail when kubectl failed to connect to the cluster in 30 seconds. Added retry logic to the kubectl command when connectivity issue occurs. (CDS-72806, ZD-46417)
+
+-  Fixed an issue in Artifactory deployments where the Artifact Path pull-down menu would populate even when the Artifactory connector failed to process a regular expression. Now, if a regex is supplied to an artifact tag in the pipeline for a service, Artifact Path menu populates correctly based on the regex. (CDS-72737, ZD-46236)
+
+
 
 ```mdx-code-block
   </TabItem>
