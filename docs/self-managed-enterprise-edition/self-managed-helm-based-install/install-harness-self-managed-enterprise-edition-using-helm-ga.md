@@ -193,4 +193,4 @@ To get started with the modules, review the following topics:
 * For Harness Continuous Delivery & GitOps, go to [CD overview and key concepts](/docs/continuous-delivery/get-started/cd-pipeline-basics.md).
 * For Harness Security Testing Orchestration, go to [STO Basics](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
 * For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-harness-chaos-engineering-ce).
-* For Harness Continous Error Tracking, go to [CET Tutorials](/tutorials/error-tracking.md)
+* For Harness Continous Error Tracking, go to [CET Tutorials](/tutorials/error-tracking/)
