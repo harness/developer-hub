@@ -1729,8 +1729,9 @@ To add an artifact from ECR, do the following:
 8. In **ECR Repository**, select or create an [AWS connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector) that connects to the AWS account where the ECR registry is located.
 9. Select **Continue**.
 10. In **Artifact Details**, in **Region**, select the region where the artifact source is located.
-11. In **Image Path**, enter the name of the artifact you want to deploy.
-12. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
+11. In **Registry ID**, if AWS Connector has  cross-account access (STS Role) enabled, specify Registry ID to fetch Artifact from specific registry.
+12. In **Image Path**, enter the name of the artifact you want to deploy.
+13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
     
     ![ECR artifact details](static/74fe6d9189f8f18b2e854598026ab1db27944dab47c3056f4ffaaab93582242a.png)
     
