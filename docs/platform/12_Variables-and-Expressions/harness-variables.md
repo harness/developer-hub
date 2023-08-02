@@ -90,10 +90,10 @@ The pipeline and stage level variable expressions follow these formats:
 - **Stage-level** expressions use these formats:
   - **Use in this stage:** Use this option to reference the input anywhere in its stage. The format is `<+stage.variables.VAR_NAME>`.
   - **Use in any pipeline:** Use this option to reference the input anywhere in the pipeline. The format is `<+pipeline.stages.STAGE_NAME.VAR_NAME>`.
-- **Pipeline-level** variables can be access all at a time using `<+pipeline.variables>`.
-- **Stage-level** variables can be access all at a time using `<+stage.variables>`.
+- **Pipeline-level** variables can be accessed as a collection of key-value pairs using `<+pipeline.variables>`.
+- **Stage-level** variables can be accessed as a collection of key-value pairs using `<+stage.variables>`.
 
-### Expression example
+### Expression examples
 
 Here is a simple example of a Shell Script step echoing some common variable expressions.
 
@@ -125,6 +125,7 @@ echo "infrastructure namespace: "<+infra.namespace>
   
 echo "infrastructure releaseName: "<+infra.releaseName>
 ```
+
 Here is an example of the output.
 
 
@@ -157,6 +158,36 @@ infrastructure releaseName: docs
   
 Command completed with ExitCode (0)
 ```
+
+Here is another example on how to use `<+stage.variables>`
+
+```
+for var in <+stage.variables>;
+do
+
+    IFS=":"
+    read -r key value <<< "$var"
+    unset IFS
+    echo "Key: $key"
+    echo "Value: $value"
+
+done
+```
+
+The above bash-script prints all the key-value pairs for the stage variables.
+If the `<+stage.variables>` is {} then the output will be as follows:
+
+```
+Executing command ...
+Key: a
+Value: A
+Key: b
+Value: B
+Key: c
+Value: C
+Command completed with ExitCode (0)
+```
+
 ### Input and output variables
 
 You can reference the inputs and outputs of any part of your pipeline.
