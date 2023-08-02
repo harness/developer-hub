@@ -151,6 +151,7 @@ For [private Action repositories](#private-action-repositories), you must provid
 * If you already configured GitHub Actions elsewhere, you can quickly [transfer GitHub Actions into Harness CI](#transfer-github-actions-into-harness-ci) by copying the `spec` details from your existing GitHub Actions YAML.
 * You can use variable expressions in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
 * For GitHub Actions steps, `with` mappings are automatically exported as [output variables](#output-variables-from-github-actions-steps).
+* If there are multiple GitHub Actions with same action name and is being used in parallel. Nektos not able to clone correctly , it has some race condition due to which failure happens But if we change the directories(by specifying environment variables(For example: (XDG_CACHE_HOME,  /home/ubuntu/.cache1)) ) we can be able to run pipeline.
 
 :::
 
