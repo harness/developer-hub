@@ -1,4 +1,4 @@
-# Developing an Authentication Method for Conducting Experiments on the Google Cloud Platform (GCP)
+# Developing an Authentication Secret for Conducting Experiments on the GCP
 
 **Derive Service Account (SA) from GCP**
 

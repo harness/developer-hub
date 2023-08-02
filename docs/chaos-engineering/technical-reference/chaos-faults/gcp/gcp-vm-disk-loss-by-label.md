@@ -15,7 +15,7 @@ GCP VM disk loss by label disrupts the state of GCP persistent disk volume filte
 - Service account should have editor access (or owner access) to the GCP project.
 - Target disk volume should not be a boot disk of any VM instance.
 - Disk volumes with the target label should be attached to their respective instances.
-- Kubernetes secret should have the GCP service account credentials in the default namespace. Refer [prepare secret for GCP experiments docs](/docs/chaos-engineering/technical-reference/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) for more information.
+- Kubernetes secret should have the GCP service account credentials in the default namespace. Refer [generate the necessary credentials in order to authenticate your identity with the Google Cloud Platform (GCP)](/docs/chaos-engineering/technical-reference/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) docs for more information.
 ```yaml
 apiVersion: v1
 kind: Secret

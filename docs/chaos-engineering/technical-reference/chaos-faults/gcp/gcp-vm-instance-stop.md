@@ -16,7 +16,7 @@ GCP VM instance stop powers off from a GCP VM instance using the instance name (
 - Kubernetes > 1.16 is required to execute this fault.
 - Adequate GCP permissions to stop and start the GCP VM instances.
 - The VM instances should be in a healthy state.
-- Kubernetes secret should have the GCP service account credentials in the default namespace.Refer [prepare secret for GCP experiments docs](/docs/chaos-engineering/technical-reference/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) for more information.
+- Kubernetes secret should have the GCP service account credentials in the default namespace. Refer [generate the necessary credentials in order to authenticate your identity with the Google Cloud Platform (GCP)](/docs/chaos-engineering/technical-reference/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) docs for more information.
 
 ```yaml
 apiVersion: v1
