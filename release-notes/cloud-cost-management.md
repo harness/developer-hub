@@ -25,7 +25,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <Tabs>
   <TabItem value="What's new">
 ```
-This release does not include any new features.
+* AWS AutoStopping proxy enhancement
+
+  You can now select the subnet ID from the dropdown list for AWS AutoStopping proxy creation. 
+
+    <docimage path={require('./static/ccm-subnet-proxy.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 ```mdx-code-block
@@ -40,7 +44,6 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-This release does not include any fixed issues.
 
 
 
@@ -53,6 +56,18 @@ This release does not include any fixed issues.
 
 <details>
 <summary>2023 releases</summary>
+
+#### July 21, 2023, version 80202
+
+##### What's new
+This release does not include any new features.
+
+##### Early access
+This release does not include any early access features.
+
+##### Fixed issues
+This release does not include any fixed issues.
+
 
 #### July 13, 2023, version 80102
 
