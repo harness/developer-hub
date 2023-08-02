@@ -10,11 +10,9 @@ helpdocs_is_published: true
 
 Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. This document explains how to set up SAML authentication.
 
-
-:::note
+:::info note
 If the [Harness Self-Managed Enterprise Edition](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md) version is not accessed using the HTTPS load balancer, SAML authentication will fail. Make sure you access the Harness Self-Managed Enterprise Edition version using an HTTPS load balancer, and not an HTTP load balancer.
 :::
-
 
 ### Support Formats
 
@@ -30,11 +28,9 @@ Harness SAML SSO involves the following:
 
 * **Harness User email addresses** - Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered with Harness as Harness Users. To use SAML SSO, Harness Users must use the same email addresses to register in Harness and the SAML provider.
 
-
-:::note
+:::info note
 Ensure that you have at least two corresponding user accounts when setting up and testing SAML SSO in Harness. This allows you to set up the account with a Harness Administrator account and test it with a Harness user account.
 :::
-
 
 * **SAML provider user email addresses** - To use the SAML provider to verify Harness Users, the email addresses used in the SAML provider must match the email addresses for the registered Harness Users you want to verify.
 * **Harness SAML Endpoint URL** - This URL is where the SAML provider will post the SAML authentication response to your Harness account. This URL is provided by Harness in the **Single Sign-On (SSO) Provider** dialog. You enter this URL in your SAML SSO provider app to integrate it with Harness.
@@ -44,11 +40,9 @@ Ensure that you have at least two corresponding user accounts when setting up an
 
 To set up Harness with Okta as a SAML SSO provider, you exchange the necessary information between your Okta app and Harness.
 
-
-:::note
-Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, see [SAML SSO with Harness Overview](#saml-sso-with-harness-overview).
+:::info note
+Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to [SAML SSO with Harness Overview](#saml-sso-with-harness-overview).
 :::
-
 
 This section describes the steps you must perform to use an Okta app for Harness SAML SSO:
 
@@ -59,12 +53,10 @@ To set up a SAML support in your Okta Harness app, ensure that the app has corre
 1. In Harness, add the users you want to set up for SAML SSO by inviting them to Harness using the same email addresses that they use in your SAML provider.
 2. In Okta, assign them to your SAML provider app.
 
-
 :::tip
 The only user property that must match between a Harness User and its corresponding SAML provider user account is its **email address**.<br/>
 Sometimes users might have mixed case email addresses in Okta. In these situations, Harness converts the email address to lowercase when adding them to Harness.
 :::
-
 
 #### Create App Integration in Okta
 
@@ -103,9 +95,9 @@ Sometimes users might have mixed case email addresses in Okta. In these situatio
 8. In **Name ID format**, enter the username format you are sending in the SAML Response. The default format is **Unspecified**.
 9.  In **Application username**, enter the default value to use for the username with the application.
 10.  In **Attribute Statements (optional)**, enter name in the **Name** field, select **Name Format** as **Basic,** and select the **Value** as **user.email**.  
-When you create a new SAML integration or modify an existing one, you can define custom attribute statements. These statements are inserted into the SAML assertions shared with your app. For more information, see [Define Attribute Statements](https://help.okta.com/oie/en-us/Content/Topics/Apps/Apps_App_Integration_Wizard_SAML.htm#).
+When you create a new SAML integration or modify an existing one, you can define custom attribute statements. These statements are inserted into the SAML assertions shared with your app. For more information, go to [Define Attribute Statements](https://help.okta.com/oie/en-us/Content/Topics/Apps/Apps_App_Integration_Wizard_SAML.htm#).
 11. In **Group Attribute Statements (optional)**, enter a name in the **Name** field, select **Name format (optional)** as **Basic**, select an appropriate **Filter** and enter its value.  
-If your Okta org uses groups to categorize users, you can add group attribute statements to the SAML assertion shared with your app. For more information, see [Define Group Attribute Statements](https://help.okta.com/oie/en-us/Content/Topics/Apps/Apps_App_Integration_Wizard_SAML.htm#).
+If your Okta org uses groups to categorize users, you can add group attribute statements to the SAML assertion shared with your app. For more information, go to [Define Group Attribute Statements](https://help.okta.com/oie/en-us/Content/Topics/Apps/Apps_App_Integration_Wizard_SAML.htm#).
 
 ![](./static/single-sign-on-saml-59.png)
 
@@ -144,7 +136,6 @@ Now that Okta is set up in Harness as a SAML SSO provider, you can enable and te
 
 4. Click **CONFIRM** to enable SAML SSO in Harness.
 
-
 :::warning
 If you are locked out of Harness because of an SSO issue, you can log into Harness using the [Harness Local Login](#harness-local-login).
 :::
@@ -170,11 +161,9 @@ In Harness, you will enter the Group Attribute Name in the SAML SSO provider set
 
 ![](./static/single-sign-on-saml-64.png)
 
-
-:::note
+:::info note
 Remember that email addresses are how Harness identifies Users. Always ensure that the email addresses of your registered Harness Users match the Okta users you want to authenticate and authorize.
 :::
-
 
 To set up SAML Authorization with Okta, do the following:
 
@@ -246,7 +235,7 @@ You will be authorizing the same Harness Users that are authenticated using your
         ![](./static/single-sign-on-saml-74.png)
 
 	6. Click **Add**. The SAML SSO Provider is now set up to use the Group Attribute Name for authorization.
-6. Link the SAML SSO Provider to the Harness User Group. You can create a new User Group or use an existing Group so long as your Harness User account is a member and that User account is registered using the same email address you used to register with your SAML provider. For detailed instructions on creating a User Group in Harness, see [Add and Manage User Groups](../3_User-Management/4-add-user-groups.md). To link your group, perform the following steps:
+6. Link the SAML SSO Provider to the Harness User Group. You can create a new User Group or use an existing Group so long as your Harness User account is a member and that User account is registered using the same email address you used to register with your SAML provider. For detailed instructions on creating a User Group in Harness, go to [Add and Manage User Groups](../3_User-Management/4-add-user-groups.md). To link your group, perform the following steps:
 	1. In **Home**, click **Access Control** under **ACCOUNT SETUP**.
 	2. Click **User Groups** and then click on the User Group you want to link the SAML SSO Provider to**.**
 	3. Click **Link to SSO Provider Group**.
@@ -272,20 +261,16 @@ The **Delink Group** dialog appears.
 
 Click **Retain all members in the user group** and click **Save**. The link to the SAML SSO Provider is removed and the Users are still members of the User Group.
 
-
-:::note
+:::info note
 You cannot delete a SAML SSO Provider from Harness that is linked to a Harness Group. You must first remove the link to the SSO Provider from the Group.
 :::
-
 
 ### SAML SSO with Azure
 
 The section describes the Azure-specific steps you must perform to use an Azure app for Harness SAML SSO:
 
-
-:::note
+:::info note
 Make sure the email address used in Harness matches the email address in the Azure app for every user.
-
 :::
 
 The following image shows the basic exchange of information between Harness and your Azure app's Single sign-on settings:
@@ -318,7 +303,7 @@ You must enter the **Harness SAML Endpoint URL** from Harness in your Azure app 
 Next, you will use the **SAML SSO Provider** settings in Harness to set up your Azure app **Single sign-on**.
 
 
-:::note
+:::info note
 For [Harness Self-Managed Enterprise Edition](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md), replace **app.harness.io** with your custom URL.  
 If you use a custom Harness subdomain in any Harness version, like **example.harness.io**, use that URL.
 :::
@@ -361,11 +346,9 @@ To set this up in your Azure app, do the following:
 4. In **Source attribute**, select **user.userprincipalname**.
 5. Click **Save**, and then close **User Attributes & Claims**.
 
-
-:::note
+:::info note
 If your Azure users are set up with their email addresses in some field other than **User name**, just ensure that the field is mapped to the **Unique User Identifier** in the Azure app and the **name identifier format** is **Email address**.
 :::
-
 
 #### Azure SAML Metadata File
 
@@ -472,7 +455,7 @@ To set up Azure Authorization in Harness, do the following:
 	19. Log into Harness using the user email address, and sign in using the Azure username and password. If you are already logged into Azure in Chrome, you might be logged into Harness automatically.
 	20. In the linked Harness User Group, ensure that the Harness User account you logged in with was added.
 
-The Harness User is now added and the RBAC settings for the Harness User Group are applied to its account. For more information, see [Add and manage User Groups](../3_User-Management/4-add-user-groups.md).
+The Harness User is now added and the RBAC settings for the Harness User Group are applied to its account. For more information, go to [Add and manage User Groups](../3_User-Management/4-add-user-groups.md).
 
 ### SAML SSO with Azure Active Directory
 
@@ -480,9 +463,8 @@ You can use Azure Active Directory (AD) for SAML SSO with Harness, enabling AD u
 
 For detailed steps on adding SAML SSO with Active Directory, follow the steps in the tutorial [Azure Active Directory single sign-on (SSO) integration with Harness](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/harness-tutorial) from Microsoft.
 
-
-:::note
-Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, see [SAML SSO with Harness Overview](#saml-sso-with-harness-overview).
+:::info note
+Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to [SAML SSO with Harness Overview](#saml-sso-with-harness-overview).
 :::
 
 
@@ -501,7 +483,7 @@ To get this information, perform the following steps:
 3. In your Azure account, go to **App registrations**. Click **Certificates and Secrets**.
 4. Click New Client Secret.
 5. Add a description and click Add.
-6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, see [Use Encrypted text Secrets](../Secrets/2-add-use-text-secrets.md).
+6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](../Secrets/2-add-use-text-secrets.md).
 7. Select the above secret reference in the Client Secret field in your Harness account.
    
    ![](./static/single-sign-on-saml-100.png)
@@ -543,12 +525,10 @@ Enabling OneLogin authentication on Harness requires configuration on both platf
 
 ##### Assign Users to Roles
 
-1. In OneLogin, select **Users** > **Users**. 
-    
+1. In OneLogin, select **Users** > **Users**.
 
 :::tip
    If you prefer to assign *groups* to roles, instead start at **Users** > **Groups**, and modify the following instructions accordingly.
-
 :::
 
 2. Search for a user that you want to add to Harness.
@@ -642,21 +622,17 @@ When the user submits their email address in Harness Manager, the user is redire
 Once the user logs in, the user is redirected to Harness and logged into Harness using the SAML credentials.
 4. In your Harness account in the other browser window, check the User Group you linked with your SAML provider. The user that logged in is now added to the User Group, receiving the authorization associated with that User Group.
 
-
-:::note
+:::info note
 You cannot delete a SAML SSO Provider from Harness that is linked to a Harness Group. You must first remove the link to the SSO Provider from the Group.
 :::
-
 
 ### SAML SSO with Keycloak
 
 To set up SAML support in your Keycloack Harness app, make sure that the app has corresponding Users in Harness:​
 
-
-:::note
-Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, see SAML SSO with Harness Overview.​
+:::info note
+Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to [SAML SSO with Harness Overview](#saml-sso-with-harness-overview).
 :::
-
 
 This section describes the steps you must perform to use a Keycloak app for Harness SAML SSO:​
 
@@ -668,7 +644,7 @@ This section describes the steps you must perform to use a Keycloak app for Harn
 #### Set Up a Client in Keycloak
 
 1. Log in to your Keycloak account.
-2. In your [Master Realm](https://wjw465150.gitbooks.io/keycloak-documentation/content/server_admin/topics/realms/master.html), click **Clients**. For steps to create a new Realm, see [Create a New Realm](https://wjw465150.gitbooks.io/keycloak-documentation/content/server_admin/topics/realms/create.html).
+2. In your [Master Realm](https://wjw465150.gitbooks.io/keycloak-documentation/content/server_admin/topics/realms/master.html), click **Clients**. For steps to create a new Realm, go to [Create a New Realm](https://wjw465150.gitbooks.io/keycloak-documentation/content/server_admin/topics/realms/create.html).
    
    ![](./static/single-sign-on-saml-113.png)
 
@@ -742,11 +718,9 @@ To do this, in your Keycloak account, click **Realm Settings**.
 11. Click **Add**.  
 The new SSO provider is displayed under **Login via SAML**.​
 
-
-:::note
+:::info note
 Harness does not support authorization with Keycloak.
 :::
-
 
 #### Enable and Test SSO with Keycloak
 
@@ -759,16 +733,18 @@ Now that Keycloak is set up in Harness as a SAML SSO provider, you can enable an
 
 ### Harness Local Login
 
-To prevent lockouts or in the event of OAuth downtime, a User in the Harness Administrators Group can use the [**Local Login**](https://app.harness.io/auth/#/local-login) URL (https://app.harness.io/auth/#/local-login) to log in and update the OAuth settings.
+To prevent lockouts or in the event of OAuth downtime, a user that has Account Admin assigned on All Account Level Resources or All Resources Including Child Scopes can use the [**Local Login**](https://app.harness.io/auth/#/local-login) URL to log in and update the OAuth settings. _The user must have this access assigned directly on their Harness user, not via a group assignment._
 
-:::note For the Harness production cluster prod-3, the local login URL is https://app3.harness.io/auth/#/local-login :::
-
-![](./static/single-sign-on-saml-118.png)
+:::info note
+For the Harness production cluster prod-3, the local login URL is `https://app3.harness.io/auth/#/local-login`.
+:::
 
 1. Log in using **Harness Local Login**.
+
+   ![](./static/single-sign-on-saml-118.png)
+
 2. Change the settings to enable users to log in.
 
-
-:::note
+:::info note
 You can disable Local Login using the feature flag `DISABLE_LOCAL_LOGIN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 :::
