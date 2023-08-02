@@ -18,12 +18,14 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 1, 2023, version 1.15.7
+## Latest - August 5, 2023, version 1.16.x
 
 <Tabs>
   <TabItem value="What's new">
 
-This release does not include new features.
+* App Labels now support a multi-select dropdown in Kubernetes experiments. This corresponds to comma-separated values in the experiment YAML. This change is backward compatible with older experiments. (CHAOS-2120)
+
+* Security Governance has been added to the Chaos Module. It can be accessed by a link in the Harness side navigation. This allows users to have control over experiment execution governed by user groups, time windows, and a set of conditions. (CHAOS-1757)
 
 
   </TabItem>
@@ -32,11 +34,11 @@ This release does not include new features.
 
 This release does not include early access features.
 
+
   </TabItem>
   <TabItem value="Fixed issues"> 
 
-
-* Audit events for pipeline-triggered experiments were not available due to a missing parameter. This issue has been resolved. (CHAOS-2168)
+* The pipeline diagram crashed randomly when scheduling a new experiment. This happened due to the API returning an empty object for nodes. This issue has been fixed. (CHAOS-2148)
 
 
   </TabItem>
@@ -46,6 +48,20 @@ This release does not include early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### August 1, 2023, version 1.15.7
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues 
+
+* Audit events for pipeline-triggered experiments were not available due to a missing parameter. This issue has been resolved. (CHAOS-2168)
 
 #### July 21, 2023, version 1.15.6
 
