@@ -452,7 +452,7 @@ In **Execution**, Harness automatically adds the following steps:
   
   You can create another Merge PR step to merge the Revert PR step. 
 
-  :::info limitation
+  :::info Limitation
 
   You can create a maximum of two Merge PR steps in a stage.
 
