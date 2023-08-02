@@ -30,12 +30,12 @@ Even if GCP discounts are included in the default settings, the overview page wi
 :::
 
 To edit preferences for a specific perspective: 
-1. Go to Cloud Costs.
+1. Go to **Cloud Costs**.
 2. Select **Perspectives**. 
 3. Select the required perspective. 
 4. Open the **Preferences** dropdown.
 5. Enable and disable preferences based on your requirements.
-6. Select Apply.
+6. Select **Apply**.
 
   The cost data shown in the perspective chart is influenced by the set preferences. But it's important to note that for these changes to be permanent and take effect, you need to edit the perspective and update the preferences accordingly. Applying the preferences on the perspective page will not make the changes persistent. To learn how to edit a perspective, go to [Edit a perspective](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#edit-a-perspective).
 ## General preferences
