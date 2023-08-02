@@ -23,7 +23,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <Tabs>
   <TabItem value="What's new">
 
-* App Labels now support a multi-select dropdown in Kubernetes experiments. This corresponds to comma-separated values in the experiment YAML. This change is backward compatible with older experiments. (CHAOS-2120)
+* The **App Label(s)** field in chaos fault configuration now supports a multi-select dropdown in Kubernetes experiments. This corresponds to comma-separated values in the experiment YAML. This change is backward compatible with older experiments. (CHAOS-2120)
 
 * Security Governance has been added to the Chaos Module. It can be accessed by a link in the Harness side navigation. This allows users to have control over experiment execution governed by user groups, time windows, and a set of conditions. (CHAOS-1757)
 
