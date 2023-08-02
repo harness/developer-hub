@@ -202,10 +202,16 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK Client
 
-To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
+In most applications, you won't need to close the SDK client.
 
+However, you should close the SDK client if:
+
+- your application is about to terminate, to ensure that all associated resources are released.
+- you have determined that you do not need to evaluate flags again in your application lifecycle.
+
+Important: attempting to evaluate flags after the Client is closed will result in undefined behaviour.
 
 ```
 client.close()
