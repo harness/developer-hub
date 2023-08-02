@@ -8,7 +8,8 @@ Sometimes, as a platform engineer, you might want your developers to enter their
 
 ## Prerequisites
 
-Make sure that you have created a [basic service onboarding pipeline](./service-onboarding-pipeline.md). This pipeline must exist in the project in which you plan to create your secret. Ideally, all account users who want to trigger pipelines and create secrets should have access to this project.
+* Make sure that you have created a [basic service onboarding pipeline](./service-onboarding-pipeline.md). 
+* All account users who want to trigger pipelines and create secrets should have access to the project that contains the service onboarding pipeline.
 
 ## Pipeline changes
 
