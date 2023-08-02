@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe might not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page in your Harness account.
 :::
 
-## Latest - August 02, 2023, version 801xx
+## Latest - August 02, 2023, version 80100
 
 ### Deprecation notice
 
@@ -44,12 +44,31 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   <TabItem value="Early access">
 ```
 
-This release does not include early access features.
+- You can now migrate Services with Helm Chart from Helm Repository stored Artifacts from CG to NG. This will help in migrations. The Feature Flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG` needs to be enabled for this feature. (CDS-73894)
+
+- You can now configure multiple Helm Charts in the manifests. This provides feature parity with Harness FirstGen. Helm Charts can now be configured from Helm Repository as Artifacts that allow the users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service. The Feature Flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG` needs to be enabled for this feature to work in your environment. (CDS-70209)
   
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+
+- The **Prod Listener Rule ARN** and **Stage Listener Rule ARN** parameters, which are required in an ASG Blue Green deploy step, were incorrectly marked as optional in the **ASG Blue Green Deploy Step** UI. Since they are required for a successful deployment, they've been changed to required fields in order to save an ASG Blue Green deploy step. (CDS-75117)
+
+- When a Pipeline was executed using a Trigger, the details did not appear in the "Executed By" column in the Executions List page. This has now been fixed and the Trigger details are now displayed. (CDS-75025, ZD-47890)
+
+- Previously, there was no way to Force Delete resources from the Harness File Store. This has now been enabled. (CDS-74878)
+
+- Fixed an intermittent issue where account-level templates could not access their referenced templates. Now the reference links point to the correct resources. (CDS-74811)
+
+- Fixed an issue where, when a stage (s2) is created with a propagated service from a previous stage (s1), saving s2 as a template was not allowed due to the service reference. However, no error message was displayed. The issue is now fixed and the error message is displayed correctly. (CDS-74759)
+
+- Fixed an issue with incorrect execution of a container step when the Failure Strategy was set to "Always execute" and the previous step was failed (but ignored). (CDS-74567, ZD-47648)
+
+- Fixed an issue where Command steps could not resolve Service Overrides for variables of type Secret (for example, export testsvc="<+secrets.getValue(account.examplesecret)>". (CDS-74338, ZD-47280)
+
+- Fixed an issue where, if a user marked a running stage in the pipeline as failed, the build would also mark the parallel queued stages as failed. This was incorrect behavior because the queued stages should continue to run if they are configured to do so. This issue has now been fixed: if a running stage is marked failed by the user, and there are parallel queued stages waiting, the stages will not be marked as failed if they are configured to do so. (CDS-74338, ZD-47087)
+
 
 <!-- from delegate relnotes https://harness.atlassian.net/wiki/spaces/PD/pages/21453603119/Delegate+NG+Release+SAAS+July+26th+2023+for+801xx-+Build -->
 
