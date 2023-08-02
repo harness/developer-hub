@@ -23,11 +23,19 @@ For FirstGen SaaS release notes, go to [Harness SaaS Release Notes (FirstGen)](/
 
 ## Latest - July, 18 2023, Harness version 79915, Harness Delegate version 79904
 
-### Deprecation notice
+### Deprecation notices
+
+#### Helm 2
 
 import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 <Helmdep />
+
+#### Kustomize 3.4.5
+
+import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
+
+<Kustomizedep />
 
 ```mdx-code-block
 <Tabs>
