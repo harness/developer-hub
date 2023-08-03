@@ -9,7 +9,7 @@ import FaultPermissions from './shared/fault-permissions.md'
 
 Linux HTTP modify header injects chaos to add or update the HTTP headers for request/response to a service deployed on a Linux machine.
 
-<!-- ![Linux HTTP modify header](./static/images/linux-http-modify-header.png) -->
+![Linux HTTP modify header](./static/images/linux-http-modify-header.png)
 
 ## Use cases
 

@@ -9,7 +9,7 @@ import FaultPermissions from './shared/fault-permissions.md'
 
 Linux HTTP reset peer injects chaos to stop outgoing HTTP requests by resetting the TCP connection. This is achieved by starting the proxy server and redirecting the request/response traffic through the proxy server.
 
-<!-- ![Linux HTTP reset peer](./static/images/linux-http-reset-peer.png) -->
+![Linux HTTP reset peer](./static/images/linux-http-reset-peer.png)
 
 ## Use cases
 - Tests the application's resilience to lossy or flaky HTTP connection.

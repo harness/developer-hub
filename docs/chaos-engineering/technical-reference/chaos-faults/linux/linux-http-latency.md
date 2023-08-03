@@ -9,7 +9,7 @@ import FaultPermissions from './shared/fault-permissions.md'
 
 Linux HTTP latency injects chaos to cause HTTP request/response latency to a service deployed on a Linux machine.
 
-<!-- ![Linux HTTP latency](./static/images/linux-http-latency.png) -->
+![Linux HTTP latency](./static/images/linux-http-latency.png)
 
 ## Use cases
 

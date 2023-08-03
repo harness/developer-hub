@@ -8,7 +8,7 @@ import FaultPermissions from './shared/fault-permissions.md'
 
 Linux HTTP modify body injects chaos to cause HTTP request/response body for a service to be modified on a Linux machine.
 
-<!-- ![Linux HTTP modify body](./static/images/linux-http-modify-body.png) -->
+![Linux HTTP modify body](./static/images/linux-http-modify-body.png)
 
 ## Use cases
 

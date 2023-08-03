@@ -9,7 +9,7 @@ import FaultPermissions from './shared/fault-permissions.md'
 
 Linux HTTP reset peer injects chaos to modify the status code of the response from the application server to the desired status code provided by the user.
 
-<!-- ![Linux HTTP status code](./static/images/linux-http-status-code.png) -->
+![Linux HTTP status code](./static/images/linux-http-status-code.png)
 
 ## Use cases
 - Tests the application's resilience to error code HTTP responses from the provided application server.
