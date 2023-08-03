@@ -40,11 +40,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   <TabItem value="What's new">
 ```
 
-- Upgraded Helm binary from version 3.8 to 3.12. (CDS-58931)
+- Upgraded the Helm binary from version 3.8 to 3.12. (CDS-58931)
 
 - Upgraded go-template binary to version 0.4.3, which uses go version 1.20. (CDS-58919)
 
-- Removed Helm version 3.1 from immutable delegate. (CDS-58892, ZD-47520, ZD-48553)
+- Removed Helm version 3.1 from delegates with an immutable image type (image tag yy.mm.xxxxx). (CDS-58892, ZD-47520, ZD-48553)
 
 
 ```mdx-code-block
@@ -61,17 +61,17 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   <TabItem value="Fixed issues">
 ```
 
-- The **Prod Listener Rule ARN** and **Stage Listener Rule ARN** parameters, which are required in an ASG Blue Green deploy step, were incorrectly marked as optional in the **ASG Blue Green Deploy Step** UI. Since they are required for a successful deployment, they've been changed to required fields in order to save an ASG Blue Green deploy step. (CDS-75117)
+- The **Prod Listener Rule ARN** and **Stage Listener Rule ARN** parameters, which are required in an ASG Blue Green deploy step, were incorrectly marked as optional in the **ASG Blue Green Deploy Step** UI. Since they are required for a successful deployment, they've been changed to required fields. (CDS-75117)
 
-- When a Pipeline was executed using a Trigger, the details did not appear in the "Executed By" column in the Executions List page. This has now been fixed and the Trigger details are now displayed. (CDS-75025, ZD-47890)
+- When a Pipeline was executed using a Trigger, the details did not appear in the Executed By column on the Executions List page. This has now been fixed and the Trigger details are now displayed. (CDS-75025, ZD-47890)
 
-- Previously, there was no way to Force Delete resources from the Harness File Store. This has now been enabled. (CDS-74878)
+- Previously, there was no way to force delete resources from the Harness file store. This has now been enabled. (CDS-74878)
 
-- Fixed an intermittent issue where account-level templates could not access their referenced templates. Now the reference links point to the correct resources. (CDS-74811)
+- Fixed an intermittent issue where account-level templates could not access their referenced templates. Now, the reference links point to the correct resources. (CDS-74811)
 
-- Fixed an issue where, when a stage (s2) is created with a propagated service from a previous stage (s1), saving s2 as a template was not allowed due to the service reference. However, no error message was displayed. The issue is now fixed and the error message is displayed correctly. (CDS-74759)
+- Fixed an issue where, when a stage (say, s2) is created with a propagated service from a previous stage (say, s1), saving s2 as a template was not allowed due to the service reference. However, no error message was displayed. The issue is now fixed and the error message is displayed correctly. (CDS-74759)
 
-- Fixed an issue with incorrect execution of a container step when the Failure Strategy was set to "Always execute" and the previous step was failed (but ignored). (CDS-74567, ZD-47648)
+- Fixed an issue with incorrect execution of a container step when the failure strategy was set to **Always execute** and the previous step had failed (but ignored). (CDS-74567, ZD-47648)
 
 - Fixed an issue where Command steps could not resolve Service Overrides for variables of type Secret (for example, `export testsvc="<+secrets.getValue(account.examplesecret)>"`. (CDS-74338, ZD-47280)
 
@@ -84,7 +84,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Fixed an issue that resulted in failures when deploying a Tanzu service with a vars.yaml file. (CDS-74163, ZD-47412)
 
-  You can now provide routes as variables in your TAS manifest, like this:
+  You can now provide routes as variables in your TAS manifest, as follows:
 
   Sample TAS manifest:
 
@@ -109,9 +109,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Fixed a Nexus Artifact issue where a fetch would time out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
 
-- Fixed an issue where the Override Image Connector did not properly configure the image path in the container step. This issue has been resolved. The Override Image Connector now correctly configures the image path, including the hostname. (CDS-73727, ZD-43089, ZD-46916, ZD-47578, ZD-47716)
+- Fixed an issue where the Override Image Connector did not properly configure the image path in the container step. This issue has been resolved. The Override Image Connector now correctly configures the image path, including the host name. (CDS-73727, ZD-43089, ZD-46916, ZD-47578, ZD-47716)
 
-- Fixed an issue where WinRM deployments would not honor the configured timeout. For example, the step would time out out by default in 30 minutes even when the configured timeout was 1 day. Now, the WinRM session timeout will be set to maximum of step timeout configured and 30 minutes. (CDS-73641, ZD-46904, ZD-48180)
+- Fixed an issue where WinRM deployments would not honor the configured timeout. For example, the step would time out by default in 30 minutes even when the configured timeout was 1 day. Now, the WinRM session timeout is set to the higher of the default and configured timeouts. (CDS-73641, ZD-46904, ZD-48180)
 
   This fix is behind the feature flag DISABLE_WINRM_COMMAND_ENCODING. Contact Harness Support to enable this fix.
 
@@ -119,7 +119,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Fixed an issue in Artifactory deployments where the **Artifact Path** pull-down menu would populate even when the Artifactory connector failed to process a regular expression. Now, when a regex is supplied to an artifact tag in the pipeline for a service, the **Artifact Path** menu populates correctly based on the regex. (CDS-72737, ZD-46236)
 
-- Previously, when a fixed value was specified to a pipeline build, the Service step used pattern matching to verify the value.  Now, the Service step verifies the value using an exact match. (CDS-72911)
+- Previously, when a fixed value was specified to a pipeline build, the Service step used pattern matching to verify the value.  Now, the Service step verifies the value by using an exact match. (CDS-72911)
 
   For example, suppose the **Jenkins Build** field is set to 1. Previously, the check would pass even if build 1 was absent and build 41 was present. With this fix, the check passes only if build 1 is present. 
 
