@@ -1,8 +1,3 @@
----
-title: Agent compatibility
-description: List of third-party software and tools supported by CET Agent.
-sidebar_position: 5
----
 # Continuous Error Tracking Agent compatibility
 
 This article provides a list of technologies that can be used with the Continuous Error Tracking (CET) Agent. These technologies include operating systems (OS), programming languages, third-party software, and tools, along with their respective versions.
