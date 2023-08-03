@@ -12,6 +12,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpno />
 
 
@@ -268,14 +271,16 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-When SDK is not needed, for example, when the app is not running, you can shut down the SDK. This can avoid potential memory leaks.
+<Closeclient />
 
+To close the SDK client, call this method:
 
 ```
 client.destroy()
 ```
+
 ## Additional options
 
 ### Use the Harness Relay Proxy

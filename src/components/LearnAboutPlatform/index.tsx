@@ -200,6 +200,12 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
+            <a href="/release-notes/continuous-error-tracking">
+              <h4>Continuous Error Tracking</h4>
+              <p>New features and fixed issues for the CET module</p>
+            </a>
+          </li>
+          <li>
             <a href="/release-notes/chaos-engineering">
               <h4>Chaos Engineering</h4>
               <p>New features and fixed issues for the CE module</p>
@@ -224,6 +230,12 @@ export default function LearnAboutPlatform(): JSX.Element {
             <a href="/release-notes/delegate">
               <h4>Delegate</h4>
               <p>New features and fixed issues for the Harness Delegate</p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/internal-developer-portal">
+              <h4>Internal Developer Portal</h4>
+              <p>New features and fixed issues for the Harness Internal Developer Portal</p>
             </a>
           </li>
         </ul>

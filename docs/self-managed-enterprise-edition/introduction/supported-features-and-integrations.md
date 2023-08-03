@@ -1,6 +1,6 @@
 ---
 title: Supported features and integrations
-description: Self-Managed Enterprise Edition supported features and integrations. 
+description: Self-Managed Enterprise Edition supported features and integrations.
 sidebar_position: 4
 ---
 
@@ -8,7 +8,7 @@ This topic lists the supported features and integrations you can use to install 
 
 ## Deployment infrastructure
 
-### Infrastructure 
+### Infrastructure
 * Required module-specific infrastructure:
 
    | **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
@@ -52,3 +52,4 @@ The following permissions are required:
 * [Feature Flags](https://developer.harness.io/docs/feature-flags/)
 * [Cloud Cost Management (Beta)](https://developer.harness.io/docs/cloud-cost-management/)
 * [Chaos Engineering](https://developer.harness.io/docs/chaos-engineering/)
+* [Continuous Error Tracking (Beta)](https://developer.harness.io/docs/continuous-error-tracking/)
