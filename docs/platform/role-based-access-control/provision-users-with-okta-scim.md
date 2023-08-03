@@ -1,6 +1,6 @@
 ---
 title: Provision users and groups with Okta (SCIM)
-description: Explains how to provision and manage Harness Users and User Groups using Okta's SCIM integration.
+description: Provision and manage Harness users and user groups with Okta's SCIM integration.
 sidebar_position: 70
 helpdocs_topic_id: umv2xdnofv
 helpdocs_category_id: fe0577j8ie
@@ -10,11 +10,11 @@ helpdocs_is_published: true
 
 System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automatic user provisioning. In Harness, automatic provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automatic provisioning also edits and removes users and user groups as and when required.
 
-If Okta is your identity provider, you can efficiently provision and manage users in your Harness account, organization, and projects. Using [Okta's SCIM integration](https://www.okta.com/blog/2017/01/what-is-scim/) with Harness enables Okta to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
+If Okta is your identity provider, you can efficiently provision and manage users in your Harness account, organizations, and projects. Using [Okta's SCIM integration](https://www.okta.com/blog/2017/01/what-is-scim/) with Harness enables Okta to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
 
-This topic describes how to build a SCIM endpoint using Okta and integrate it with Harness. To configure this integration, you must take steps in both Okta and Harness.
+This topic describes how to use an Okta SCIM integration for automatic provisioning in Harness. To configure this integration, you must take steps in both Okta and Harness.
 
-## Before you begin
+## Requirements
 
 You need an understanding of:
 
@@ -22,9 +22,9 @@ You need an understanding of:
 * [Harness' key concepts](../../getting-started/learn-harness-key-concepts.md).
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
-You must be an Administrator in your Okta account and have **Account Admin** permissions in Harness.
+You must be an Administrator in your Okta account, and you must be an **Account Admin** in Harness.
 
-You need a Harness [API Key](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) with a valid token. The API key must have all **Users** and **User Groups** permissions.
+You need a Harness [API key and unexpired token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) that has all **Users** and **User Groups** [permissions](../Resource-Development/16_APIs/api-permissions-reference). API keys inherit permissions from the user they are associated with. If you use an API key for a [service account](./add-and-manage-service-account), make sure the service account has all **Users** and **User Groups** permissions.
 
 ## Create an Okta app integration
 
@@ -117,7 +117,7 @@ Using the Okta SCIM integration requires you to manage certain user and user gro
    * If you need to change a user's group (for example, to change their permissions), you must change the user's group membership in Okta.
    * You must use Okta to delete Okta-provisioned users from Harness. To delete an Okta-provisioned user, remove them from the corresponding Okta app.
 
-If an Okta-provisioned user group has the same name as an existing user group in Harness, Harness retains both groups. To prevent confusion, you can rename the existing group.
+If an Okta-provisioned user group has the same name as an existing user group in Harness, Harness retains both groups. To prevent confusion, you can rename the existing Harness group.
 
 You can use Okta to provision individual users or groups containing sets of users. If you use Okta to provision individual users directly to Harness, these users initially have no user group assignment in Harness. You must assign them to a group, either in Okta or in Harness. Directly provisioning individual users is the *only* way that you can change an Okta user's group membership in Harness. When provisioned as part of an Okta group, the user's group membership must always be managed through Okta.
 
@@ -128,7 +128,7 @@ Once you have set up the SCIM integration between Okta and Harness, administrato
 * [Update user attributes](#update-user-attributes).
 * [Deactivate or remove users](#deactivate-or-remove-users).
 
-Role and resource group assignments are not controlled in Okta. You must [assign permissions to user groups](#assign-permissions-to-user-groups) in Harness.
+Role and resource group assignments are not controlled in Okta. You must [assign permissions to user groups](#assign-permissions) in Harness.
 
 ### Provision individual users
 
@@ -159,7 +159,7 @@ You can provision Okta user groups in Harness. To do this, you  must assign grou
 
 When provisioning user groups through SCIM, Harness created IDs for user groups based on the group name in Okta. If the name contains periods, dashes, or spaces, those characters are replaced by underscores in the Harness user group ID. For example, if a groups name is `example-group` in Okta, the group's Harness ID is `example_group`.
 
-If an Okta-provisioned user group has the same name as an existing user group in Harness, Harness retains both groups. To prevent confusion, you can rename the existing group.
+If an Okta-provisioned user group has the same name as an existing user group in Harness, Harness retains both groups. To prevent confusion, you can rename the existing Harness group.
 
 :::
 
@@ -253,7 +253,7 @@ To reactivate a deactivated users, go to the user's profile, select **More Actio
 
 ## I already have a Harness FirstGen Okta integration
 
-If you currently have a Harness FirstGen App Integration in your IDP, and you want to create one for Harness NextGen, make sure user information is included in the FirstGen App Integration before attempting to log into Harness NextGen through SSO.
+If you currently have a Harness FirstGen App Integration in your IdP, and you want to create one for Harness NextGen, make sure the user information is included in the FirstGen App Integration before attempting to log into Harness NextGen through SSO.
 
 :::info
 

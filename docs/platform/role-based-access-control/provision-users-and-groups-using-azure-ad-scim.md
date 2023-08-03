@@ -1,6 +1,6 @@
 ---
 title: Provision users and groups using Azure AD (SCIM)
-description: Explains how to use Harness' SCIM integration with Azure Active Directory (AD) to automatically provision users and/or groups.
+description: Provision and manage Harness users and user groups with Azure AD's SCIM integration.
 sidebar_position: 80
 helpdocs_topic_id: 6r8hin2z20
 helpdocs_category_id: fe0577j8ie
@@ -8,116 +8,132 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-System for Cross-Domain Identity Management (SCIM) is an open standard protocol for the automation of user provisioning.
+System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automatic user provisioning. In Harness, automatic provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automatic provisioning also edits and removes users and user groups as and when required.
 
-Automatic provisioning refers to creating users and user groups in Harness. In addition to creating these, automatic provisioning includes the maintenance and removal of users and user groups as and when required.
+If Azure Active Directory (AD) is your identity provider, you can efficiently provision and manage users in your Harness account, organizations, and projects. Using [Azure AD's SCIM integration](https://learn.microsoft.com/en-us/azure/active-directory/architecture/sync-scim) with Harness enables Azure AD to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
 
-This topic explains how to configure Azure Active Directory (Azure AD) to automatically provision users or groups to Harness.
+This topic describes how to use an Azure Active Directory (AD) SCIM integration for automatic provisioning in Harness. To configure this integration, you must take steps in both Azure AD and Harness.
 
-### Before you begin
+## Requirements
 
-* This topic assumes you understand the System for Cross-domain Identity Management (SCIM). For an overview, see the article [Introduction to System for Cross-domain Identity Management (SCIM)](https://medium.com/@pamodaaw/system-for-cross-domain-identity-management-scim-def45ea83ae7).
-* Make sure you are an Administrator in your Azure AD account and have the **Account Admin** permissions in Harness.
-* Make sure you have a Harness [API Key](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
+You need an understanding of:
 
-### Review: Harness Azure AD SCIM integration
+* System for Cross-domain Identity Management (SCIM).
+* [Harness' key concepts](../../getting-started/learn-harness-key-concepts.md).
+* [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
-By using Azure AD as your identity provider, you can efficiently provision and manage users in your Harness Account, Org and Project. Harness' [SCIM](https://www.okta.com/blog/2017/01/what-is-scim/) integration enables Azure AD to serve as a single identity manager, for adding and removing users, and for provisioning User Groups. This is especially efficient for managing many users.
+You must be an Administrator in your Azure AD account, and you must be an **Account Admin** in Harness.
 
-In exchange for the convenience of Azure AD-provisioned users and groups, you must configure several aspects of Azure AD, as described in the following sections. You will also have restrictions on modifying Azure AD-provisioned users and groups natively within Harness, as described in [Limitations](#limitations).
+You need a Harness [API key and unexpired token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) that has all **Users** and **User Groups** [permissions](../Resource-Development/16_APIs/api-permissions-reference). API keys inherit permissions from the user they are associated with. If you use an API key for a [service account](./add-and-manage-service-account), make sure the service account has all **Users** and **User Groups** permissions.
 
-#### Supported features
+## Add Harness in Azure AD
 
-Once you have set up the SCIM integration between Azure AD and Harness (as described below), Administrators will be able to perform the following Harness actions within Azure AD:
+In Azure AD, add Harness to your list of managed SaaS applications from the Azure AD [Application Gallery](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/overview-application-gallery).
 
-* Create users, individually, in your Harness app.
-* Assign Azure AD-defined groups to your Harness app.
-* Group push already-assigned groups to Harness.
-* Update User Attributes from Azure AD to Harness.
-* Deactivate Users in Azure AD and Harness.
+1. In your [Azure portal](https://portal.azure.com/), under **Azure services**, select **Azure Active Directory**.
+2. Select **Enterprise applications**, and then select **All applications**.
+3. Select **New application**.
+4. Search for `Harness`, select **Harness** in the results list, and then select **Add** to add the application to your list of managed SaaS apps in Azure AD.
 
-### Limitations
+## Enable Azure AD provisioning for Harness
 
-When you provision Harness User Groups and users from Azure AD, you will not be able to modify some of their attributes in Harness Manager. You must do so in Azure AD.
+1. In your Azure portal, under **Azure services**, select **Azure Active Directory**.
+2. Select **Enterprise Applications**, and then select **All applications**.
+3. Select the **Harness** app.
+4. Select **Provisioning**.
 
-Operations that you *cannot* perform on Azure AD-provisioned User Groups within Harness Manager are:
-
-* Managing users within the User Group.
-* Adding users to the User Group.
-* Removing users from the User Group.
-* Renaming the User Group.
-* Deleting the User Group.
-
-If a User Group provisioned from Azure AD duplicates the name of an existing Harness User Group, Harness will maintain both groups. To prevent confusion, you are free to rename the native User Group (but not the Azure AD-provisioned group).
-
-Where a User Group has been provisioned from Azure AD, you cannot use Harness Manager to edit the member users' details (**Email Address**, **Full Name**, or **User Groups** assignments).
-
-You must use Azure AD to assign these users to other User Groups (to grant corresponding permissions). You must also use Azure AD to delete these users from Harness, by removing them from the corresponding Azure AD app.
-
-When you use Azure AD to directly assign users to Harness, those users initially have no User Group assignments in Harness. With this method, you are free to use Harness Manager to add and modify User Group assignments.
-
-### Step 1: Add Harness from the gallery
-
-Before you configure Harness for automatic user provisioning with Azure AD, you need to add Harness from the Azure AD application gallery to your list of managed SaaS applications.
-
-1. In the [Azure portal](https://portal.azure.com/), in the left pane, select **Azure Active Directory**.
-   ![](./static/provision-users-and-groups-using-azure-ad-scim-29.png)
-2. Select **Enterprise applications** > **All applications**.
-3. Click **New application** to add a new application.![](./static/provision-users-and-groups-using-azure-ad-scim-30.png)
-4. In the search box, enter **Harness**, select **Harness** in the results list, and then select the **Add** button to add the application. You can now provision users to Harness.
-
-### Step 2: Provision users to Harness
-
-1. In your Azure portal, go to Enterprise Applications > All applications.
-2. In the applications list, select **Harness**.
-3. Select **Provisioning**.
    ![](./static/provision-users-and-groups-using-azure-ad-scim-31.png)
-4. In the **Provisioning Mode** drop-down list, select **Automatic**.
-5. Under **Admin Credentials**, do the following:
-	1. In the **Tenant URL** box, enter `https://app.harness.io/gateway/ng/api/scim/account/<your_harness_account_ID>`.  
-	You can obtain your Harness account ID from the **Account Overview** of your Harness account.
-	   ![](./static/provision-users-and-groups-using-azure-ad-scim-32.png)
-	1. In the **Secret Token** box, enter the SCIM Authentication Token value. This is your Harness API token within your API Key. Make sure this key's permissions are inherited from the **Account Administrator** User Group.  
-	For more information on how to create API token, see [Add and Manage API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
-	3. Select **Test Connection** to ensure that Azure AD can connect to Harness.
-	   ![](./static/provision-users-and-groups-using-azure-ad-scim-33.png)
-	If the connection fails, ensure that your Harness account has Admin permissions, and then try again.
-6. In **Settings**, in the **Notification Email** box, enter the email address of a person or group that should receive the provisioning error notifications.
+
+5. For **Provisioning Mode**, select **Automatic**.
+6. Configure the **Admin Credentials** as follows:
+
+   1. For **Tenant URL**, enter `https://app.harness.io/gateway/ng/api/scim/account/ACCOUNT_ID`. Replace `ACCOUNT_ID` with your Harness account ID. You can get your account ID from any Harness URL or by navigating to **Account Settings** and **Overview** in Harness.
+   2. For **Secret Token**, enter your Harness [Harness API key's token](#requirements) as the SCIM Authentication Token value.
+   3. Select **Test Connection** to ensure that Azure AD can connect to Harness. If the connection fails, make sure your API key has admin permissions, and then try again.
+
+   ![](./static/provision-users-and-groups-using-azure-ad-scim-33.png)
+
+7. Under **Settings**, in **Notification Email**, enter the email address for the person or group that should receive provisioning error notification emails.
+
    ![](./static/provision-users-and-groups-using-azure-ad-scim-34.png)
-7. Select **Save**.
-8. Under **Mappings**, enable **Provision Azure Active Directory Groups,** and **Provision Azure Active Directory Users**.
-   ![](./static/provision-users-and-groups-using-azure-ad-scim-35.png)
-9. Click **Provision Azure Active Directory Users**.
-10. Under **Attribute Mappings**, review the user attributes that are synchronized from Azure AD to Harness. The attributes selected as *Matching* are used to match the user accounts in Harness for update operations. Select **Save** to commit any changes.
-   ![](./static/provision-users-and-groups-using-azure-ad-scim-36.png)
-11. In **Provisioning**, click **Provision Azure Active Directory Groups**. When provisioning user groups through SCIM, Harness replaces any `.`,`-`, or a space in your group name and uses it as the group identifier. For example, if your group name is `example-group`in your SCIM provider, its identifier in Harness would be `example_group`.
-12. Under **Attribute Mappings**, review the group attributes that are synchronized from Azure AD to Harness. The attributes selected as *Matching* properties are used to match the groups in Harness for update operations. Select **Save** to commit any changes.
-   ![](./static/provision-users-and-groups-using-azure-ad-scim-37.png)
-13. To configure scoping filters, see [Attribute-based application provisioning with scoping filters](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts).
-14. In **Provisioning**, under **Settings**, to enable the Azure AD provisioning service for Harness, toggle the **Provisioning Status** switch to **On**.
-   ![](./static/provision-users-and-groups-using-azure-ad-scim-38.png)
-15. Under **Settings**, in the **Scope** drop-down list, select how you want to sync the users or groups that you're provisioning to Harness.
-   ![](./static/provision-users-and-groups-using-azure-ad-scim-39.png)
-16. Click **Save**.
 
-This operation starts the initial sync of the users or groups you're provisioning. The initial sync takes longer to perform than later ones. Syncs occur approximately every 40 minutes, as long as the Azure AD provisioning service is running. To monitor progress, go to the **Synchronization Details** section. You can also follow links to a provisioning activity report, which describes all actions performed by the Azure AD provisioning service on Harness.
+8. Select **Save**.
+9. Under **Mappings**:
 
-For more information about how to read the Azure AD provisioning logs, see [Report on automatic user account provisioning](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/check-status-user-account-provisioning).
+   1. Enable **Provision Azure Active Directory Groups** and **Provision Azure Active Directory Users**.
 
-If an error prevents adding, updating, or deleting an individual user to Harness, Azure retries the operation in the next sync cycle. To resolve the failure, administrators must check the [provisioning logs](https://learn.microsoft.com/en-us/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context) to determine the root cause and take the appropriate action. For more information, see [Errors and retries](https://learn.microsoft.com/en-us/azure/active-directory/app-provisioning/how-provisioning-works#errors-and-retries).
+      ![](./static/provision-users-and-groups-using-azure-ad-scim-35.png)
 
-### What if I already have app integration for Harness FirstGen?
+   2. Select **Provision Azure Active Directory Users** and review the user **Attribute Mappings**. These user attributes are synchronized from Azure AD to Harness. Attributes marked as **Matching** are used to match Harness user accounts with Azure AD user accounts when user attributes need to be updated. Make any changes as necessary.
+   3. Exit the user attribute mappings, and select **Provision Azure Active Directory Groups**.
+   4. Review the group **Attribute Mappings**. These group attributes are synchronized from Azure AD to Harness. Attributes marked as **Matching** are used to match Harness user groups with Azure AD user groups when group attributes need to be updated. Make any changes as necessary.
 
-If you currently have a Harness FirstGen App Integration setup in your IDP and are now trying to set up one for Harness NextGen, make sure the user information is also included in the FirstGen App Integration before attempting to log into Harness NextGen through SSO.
+11. Under **Settings**, switch **Provisioning Status** to **On** to enable the Azure AD provisioning service for Harness.
+12. Under **Settings**, for **Scope**, select how you want to sync users and groups to Harness.
 
-Harness authenticates users using either the FirstGen App Integration or the NextGen App Integration. If you have set up both, Harness continues to use your existing App Integration in FirstGen to authenticate users that attempt to log in using SSO.Let us look at the following example:
+   :::tip Scoping filters
 
-1. An App Integration is already set up for FirstGen with 2 users as members:  
-`user1@example.com` and `user2@example.com`.
-2. Now you set up a separate App Integration for Harness NextGen and add `user1@example.com` and `user_2@example.com` as the members.
+   If you want to configure scoping filters for your attribute mappings, go to the Microsoft documentation on [Scoping users or groups ot be provisioned with scoping filters](https://learn.microsoft.com/en-us/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts?pivots=app-provisioning).
+
+   :::
+
+13. Select **Save**.
+
+Saving the configuration in Azure AD triggers an initial provisioning sync. The initial sync takes longer to run than subsequent syncs. Syncs occur approximately every 40 minutes, if the Azure AD provisioning service is running. To monitor sync progress, go to **Synchronization Details** in Azure AD. From there you can also find links to provisioning activity reports, which describe all actions performed by the Azure AD provisioning service in Harness. For more information about how to read the Azure AD provisioning logs, go to the Microsoft documentation on [Reporting on automatic user account provisioning](https://learn.microsoft.com/en-us/azure/active-directory/app-provisioning/check-status-user-account-provisioning).
+
+After enabling Azure AD provisioning for Harness, you must [assign permissions to user groups](#assign-permissions) in Harness.
+
+## Harness user management with Azure AD SCIM
+
+Using the Azure AD SCIM integration requires you to manage users, user groups, and user/group attributes in Azure AD, rather than in Harness. Changes are synced from Azure AD to Harness approximately every 40 minutes. Data you must manage in Azure AD includes:
+
+* Adding, removing, and editing group members. Group membership must be managed in Azure AD.
+* Renaming user groups. Groups can only be renamed in Azure AD.
+* Deleting user groups. Groups can only be deleted in Azure AD.
+* Editing user email addresses, full names, and group assignments.
+   * You can't edit these user details in Harness if the user was provisioned as part of an Azure AD-provisioned user group.
+   * If you need to change a user's group (for example, to change their permissions), you must change the user's group membership in Azure AD.
+   * You must use Azure AD to delete Azure AD-provisioned users from Harness.
+
+Role and resource group assignments are not controlled in Okta. You must [assign permissions to user groups](#assign-permissions) in Harness.
+
+:::info Group names
+
+When provisioning user groups through SCIM, Harness created IDs for user groups based on the group name in Azure AD. If the name contains periods, dashes, or spaces, those characters are replaced by underscores in the Harness user group ID. For example, if a groups name is `example-group` in Azure AD, the group's Harness ID is `example_group`.
+
+If an Azure AD-provisioned user group has the same name as an existing user group in Harness, Harness retains both groups. To prevent confusion, you can rename the existing Harness group.
+
+:::
+
+After [enabling Azure AD provisioning for Harness](#enable-azure-ad-provisioning-for-harness), you can use Azure AD to [provision individual users](https://learn.microsoft.com/en-us/azure/active-directory/app-provisioning/provision-on-demand?pivots=app-provisioning) or groups containing sets of users. If you use Azure AD to provision individual users directly to Harness, these users initially have no user group assignment in Harness. You must assign them to a group, either in Azure AD or in Harness. Directly provisioning individual users is the *only* way that you can change an Azure AD user's group membership in Harness. When provisioned as part of an Azure AD group, the user's group membership must always be managed through Azure AD.
+
+### Provisioning errors
+
+If an error prevents adding, updating, or deleting a user in Harness, Azure retries the operation in the next sync cycle. If it fails again, and admin must check the [provisioning logs in Azure AD](https://learn.microsoft.com/en-us/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure%2Factive-directory%2Fmanage-apps%2Fcontext%2Fmanage-apps-context) to determine the root cause of the failure and take corrective action. For more information, go to the Microsoft documentation on [Errors and retries in Azure AD app provisioning](https://learn.microsoft.com/en-us/azure/active-directory/app-provisioning/how-provisioning-works#errors-and-retries).
+
+### Assign permissions
+
+After user groups are provisioned through SCIM, you can manage [permissions](./permissions-reference) granted to the users in those groups by assigning [roles](./add-manage-roles) and [resource groups](./add-resource-groups) to user groups in Harness.
+
+Harness roles and resource groups aren't managed in Azure AD.
+
+If you need to change a user's group (for example, to change their permissions), you must change the user's group membership in Azure AD.
+
+## I already have a Harness FirstGen Azure integration
+
+If you currently have a Harness FirstGen App Integration in your IdP, and you want to create one for Harness NextGen, make sure the user information is included in the FirstGen App Integration before attempting to log into Harness NextGen through SSO.
+
+Harness authenticates users using either the FirstGen App Integration or the NextGen App Integration. If you have set up both, Harness continues to use your existing App Integration in FirstGen to authenticate users that attempt to log in using SSO.
+
+For example:
+
+1. An App Integration is already set up for FirstGen with two users as members: `user1@example.com` and `user2@example.com`.
+2. You create the App Integration for Harness NextGen, and you add `user1@example.com` and `user_2@example.com` as members.
 3. You provision these users to Harness NextGen through SCIM.
 4. `user1@example.com` and `user_2@example.com` try to log in to Harness NextGen through SSO.
-5. The FirstGen App Integration is used for user authentication.  
-`user1@example.com` is a member of the FirstGen App Integration and hence is authenticated and successfully logged in to Harness NextGen.  
-`user_2@example.com` is not a member of the FirstGen App Integration, hence the authentication fails and the user cannot log in to Harness NextGen.![](./static/provision-users-and-groups-using-azure-ad-scim-40.png)
+5. The FirstGen App Integration is used for user authentication through SSO.
 
+   * `user1@example.com` is a member of the FirstGen App Integration. They are successfully authenticated and logged in to Harness NextGen.
+   * `user_2@example.com` is not a member of the FirstGen App Integration. Authentication fails and the user can't log in to Harness NextGen.
+
+   ![](./static/provision-users-with-okta-scim-20.png)
