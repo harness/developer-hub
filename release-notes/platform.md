@@ -108,9 +108,7 @@ This item requires Harness Delegate version 79904. For information about feature
 
 ##### Early access
 
-- An AI-powered chatbot named Ask AIDA has been integrated to make searches within the Harness Docs. You can access the chatbot by clicking the icon located at the bottom-right corner of the screen. (PL-39613)
-
-  This feature is behind the feature flag `PL_AI_SUPPORT_CHATBOT`. 
+This release does not include any early access features.
 
 ##### Fixed issues
 
@@ -118,7 +116,7 @@ This item requires Harness Delegate version 79904. For information about feature
 
   Now, for accounts that are only on Harness NextGen, Harness sends password reset emails from Harness NextGen.
 
-- You could not create Azure Key Vault connectors in Harness NextGen even when you used the service principal credentials that successfully created Azure Key Vault connectors in Harness FirstGen. After you entered the service principal credentials, the Vault setup window stopped responding. After several minutes, the following message is displayed: None of the active delegates were available to complete the task. ==> : 'Missing capabilities: [https:null.vault.azure.net]' (PL-39783, ZD-46756)
+- You could not create Azure Key Vault connectors in Harness NextGen even when you used the service principal credentials that successfully created Azure Key Vault connectors in Harness FirstGen. After you entered the service principal credentials, the Vault setup window stopped responding. After several minutes, the following message was displayed: None of the active delegates were available to complete the task. ==> : 'Missing capabilities: [https:null.vault.azure.net]' (PL-39783, ZD-46756)
 
   This issue is now fixed.
 
