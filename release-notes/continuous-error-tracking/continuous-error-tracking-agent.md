@@ -1,16 +1,18 @@
 ---
-title: Continuous Error Tracking release notes
-sidebar_label: Continuous Error Tracking
+title: CET Agent release notes
+sidebar_label: CET Agent
 tags: [NextGen, "cet"]
 date: 2023-07-21T17:20
-sidebar_position: 11
+sidebar_position: 1
+description: Release notes for CET Agent
 ---
+
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 ```mdx-code-block
-import delete_project from './static/delete-project.png'
+import delete_project from '../static/delete-project.png'
 ```
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-error-tracking/rss.xml" />
@@ -22,77 +24,41 @@ Review the notes below for details about recent changes to Continuous Error Trac
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest
+## Latest - July 14, 2023, version ET-Agent 5.5.0
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="ET-Agent 5.5.0">
+  <TabItem value="What's new">
 ```
 
-## Release date
-
-July 14, 2023
-
-## What's new
-
 This release does not include new features and enhancements.
-
-## Early access
-
-This release does not include any early access features.
-
-## Fixed issues
-
-The CET Agent had missing tiny links on some logs when using Log4j2. (CET-894)
-
-This issue has been resolved. Now, the tiny links appear consistently in Log4j2 logs.
 
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="ET-Service 5.24.3 and ET-Collector 5.24.3">
+  <TabItem value="Early access">
 ```
 
-## Release date
-
-June 27, 2023
-
-## What's new
-
-This release does not include new features and enhancements.
-
-## Early access
 
 This release does not include any early access features.
 
-## Fixed issues
 
-- Notifications created in the SRM module could not be edited when using the CET module.(CET-1295)
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
 
-  This issue has been resolved. Now, you can edit notifications within the CET module, even if they were originally created in the SRM module.
 
-- The configured notification count on the Monitored Services listing page of the CET module displays notifications for all types of alerts related to a particular monitored service. (CET-1294)
+- The CET Agent had missing tiny links on some logs when using Log4j2. (CET-894)
   
-  This issue has been resolved. Now, the notification list on the Monitored Services page of the CET module shows only the notifications for Code Errors.
-
-- The events list disappears from the Events Summary page, despite having multiple agents running. (CET-1517)
-
-  The issue was caused when the same event occurred across two deployments and environments. This issue has been resolved. The Events Summary page now accurately renders the events list, regardless of the occurrence of the same event across multiple deployments.
+  This issue has been resolved. Now, the tiny links appear consistently in Log4j2 logs.
 
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value=" Hotfix version ET-Service 5.24.7">
+  <TabItem value="Hotfix">
 ```
-## Release date
 
-July 21, 2023
-
-## Issue
-
-- The Events Summary page timed out in some instances when events marked as resolved caused slowness while fetching summary data. (CET-1569)  
-
-   This issue has been resolved. Now, the Events Summary page loads faster and does not time out.
 
 ```mdx-code-block
   </TabItem>
