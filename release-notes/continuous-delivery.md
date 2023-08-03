@@ -75,7 +75,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Fixed an issue where Command steps could not resolve Service Overrides for variables of type Secret (for example, `export testsvc="<+secrets.getValue(account.examplesecret)>"`. (CDS-74338, ZD-47280)
 
-- Fixed an issue where, if a user marked a running stage in the pipeline as failed, the build would also mark the parallel queued stages as failed. This was incorrect behavior because the queued stages should continue to run if they are configured to do so. This issue has now been fixed: if a running stage is marked failed by the user, and there are parallel queued stages waiting, the stages will not be marked as failed if they are configured to do so. (CDS-74338, ZD-47087)
+- Fixed an issue where, if a user marked a running stage in the pipeline as failed, the build would also mark the parallel queued stages as failed. This was incorrect behavior because the queued stages should continue to run if they are configured to do so. This issue has now been fixed: if a running stage is marked failed by the user, and there are parallel queued stages waiting, the stages will not be marked as failed and will run the way they are configured. (CDS-73857, ZD-47087)
 
 
 <!-- from delegate relnotes https://harness.atlassian.net/wiki/spaces/PD/pages/21453603119/Delegate+NG+Release+SAAS+July+26th+2023+for+801xx-+Build -->
@@ -123,7 +123,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   For example, suppose the **Jenkins Build** field is set to 1. Previously, the check would pass even if build 1 was absent and build 41 was present. With this fix, the check passes only if build 1 is present. 
 
-- Fixed an issue where a step would fail when kubectl failed to connect to the cluster in 30 seconds. Added retry logic to the kubectl command when connectivity issue occurs. (CDS-72806, ZD-46417)
+- Added retry logic to kubectl command to handle connectivity issues. (CDS-72869)
 
 -  Fixed an issue in Artifactory deployments where the Artifact Path pull-down menu would populate even when the Artifactory connector failed to process a regular expression. Now, if a regex is supplied to an artifact tag in the pipeline for a service, Artifact Path menu populates correctly based on the regex. (CDS-72737, ZD-46236)
 
