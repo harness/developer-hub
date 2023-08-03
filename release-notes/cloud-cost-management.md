@@ -47,7 +47,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * **Overview** page enhancements (CCM-13326)
 
   - The pie chart now shows a hover state. 
-  - Forecast trend in the widget is hidden.
+  - Forecast trend in the widget is removed.
   - Added forecast time period in the forecast cost widget.
   - Changed the heading of the cloud cost widget from `Top AWS accounts` to `Top 10 AWS accounts`.
 
