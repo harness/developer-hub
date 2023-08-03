@@ -34,6 +34,13 @@ module.exports = {
     //  },
     //===================================================================================
 
+  // Created by SudheendraKatte for branch cet-whats-supported on August 3 2023
+    
+  {
+      from: "/docs/continuous-error-tracking/agent-compatibility",
+      to: "/docs/continuous-error-tracking/whats-supported",
+    },
+    
     // Created by aimurphy from branch ci-ti-refresh-multiple-tickets on July 27, 2023
     {
       from: "/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart",
