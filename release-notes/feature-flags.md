@@ -20,7 +20,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 3, 2023
+## Latest - August 4, 2023
 
 <Tabs>
   <TabItem value="What's new">
@@ -51,6 +51,33 @@ This release does not include early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### August 3, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server, version 1.1078.1
+
+* Due to an error with gitSync logic on environment creation, the activation for the new environment did not get properly created when GitSync was enabled. (FFM-8812) 
+  
+  To resolve this, we:
+  - Fixed the gitSync function for newly created environment.
+  - Added gitSync for deleted environments. 
+
+* Sending a GET request to the /targets/${IDENTIFIER} endpoint returned a 200 error code, even if the target didn't exist. This error code has been changed to 404. (FFM-8810)
+
+* Previously, a multivareate flag's variation values had an erroneous maximum limit of 2704 bytes, with a poor error message if this was exceeded. 
+This limit has been raised to 25000 bytes, with a clear error message if this is exceeded. (FFM-8660)
+
+* Targets sent by the server-side SDKs were not being updated in the database. This meant if a sever-side target changed, while evaluations worked as expected, the updated attributes were not shown in the UI. This fix ensures targets are correctly upserted. (FFM-8600)
 
 #### July 27, 2023
 
