@@ -12,6 +12,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpno />
 
 This SDK is currently in beta. This topic describes how to use the Harness Feature Flags Apex SDK for your Apex application.
@@ -175,6 +178,10 @@ System.debug('Feature flag ' + flag + ' is '+ value + ' for this user');
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
 
 <Sixty />
+
+## Close the SDK client
+
+<Closeclient />
 
 ## Sample code for an Apex application
 

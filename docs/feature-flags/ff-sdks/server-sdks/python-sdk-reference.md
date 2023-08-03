@@ -208,6 +208,14 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Closeclient />
 
+To close the SDK client:
+
+* Assuming you have initialized an SDK client instance named `client`, call the following function:
+
+    ```
+    client.close()
+    ```
+
 ## Additional options
 
 ### Configure your logger
