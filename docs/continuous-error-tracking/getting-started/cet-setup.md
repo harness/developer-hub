@@ -244,7 +244,7 @@ If the agent is already installed as part of your docker image, simply set the c
 
 :::info note
 
-Note: If you are using the Self-Managed Enterprise Edition, ensure that the ET_COLLECTOR_URL is set to your [Load Balancer URL](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga.md#add-a-load-balancer). For example an helm value of `loadbalancerURL: https://example.harness.io/`, then set the `ET_COLLECTOR_URL as ET_COLLECTOR_URL=https://example.harness.io/et-collector`
+If you are using the Self-Managed Enterprise Edition, make sure to set the ET_COLLECTOR_URL to your Load Balancer URL. For instance, if your Helm value is `loadbalancerURL: https://example.harness.io/`, then set the `ET_COLLECTOR_URL` as `ET_COLLECTOR_URL=https://example.harness.io/et-collector`.
 
 :::
 

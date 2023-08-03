@@ -55,11 +55,11 @@ To add the URL for a load balancer, do the following:
 Harness Helm chart includes Harness Platform components. You can add modules by editing the `override.yaml` file.
 
 <!-- PR-1002 -->
-The Platform component and below module is enabled by default:
+The Platform component and the module below is enabled by default:
 
 * Harness Continuous Deployment (CD) - Next Generation
 
-The below Harness modules can be enabled or disabled conditionally:
+The Harness modules below can be enabled or disabled conditionally:
 
 * Harness Continuous Integration (CI)
 * Harness Security Testing Orchestration (STO)
