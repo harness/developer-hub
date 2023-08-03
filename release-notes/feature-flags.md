@@ -39,7 +39,7 @@ This release does not include early access features.
 
 #### Feature Flags server, version 1.1078.0
 
-* Due to an error with gitSync logic on environment creation, the activation for the new environment would did not get properly created when GitSync was enabled. (FFM-8812) 
+* Due to an error with gitSync logic on environment creation, the activation for the new environment did not get properly created when GitSync was enabled. (FFM-8812) 
   
   To resolve this, we:
   - Fixed the gitSync function newly created environment.
