@@ -352,33 +352,33 @@ This section lists the feature support matrix for the supported cloud platforms:
 
 ### AWS Service
 
-|                     |                         |                     |                               |
-| ------------------- | ----------------------- | ------------------- | ----------------------------- |
-|                     | **Inventory Dashboard** | **Recommendations** | **AutoStopping**              |
-| **EC2**             | Yes                     | Yes         | Yes (With Spot Orchestration) |
-| **ECS**             | Yes                     | Yes         | Yes                           |
-| **EKS**             | Yes                     | Yes                 | Yes                           |
-| **RDS**             | Yes                     | No                  | Yes                           |
-| **EBS**             | Yes                     | No                  | No                            |
-| **Snapshots**       | Yes                     | No                  | NA                            |
-| **Elastic** **IPs** | Yes                     | No                  | NA                            |
-| **ASGs**            | No                      | No                  | Yes (With Spot Orchestration) |
+|                     |                         |                     |                               | |
+| ------------------- | ----------------------- | ------------------- | ----------------------------- | --------- |
+|                     | **Inventory Dashboard** | **Recommendations** | **AutoStopping**              | **Asset Governance** |
+| **EC2**             | Yes                     | Yes         | Yes (With Spot Orchestration) | Yes |
+| **ECS**             | Yes                     | Yes         | Yes                           | Yes |
+| **EKS**             | Yes                     | Yes                 | Yes                           | Yes |
+| **RDS**             | Yes                     | No                  | Yes                           | Yes |
+| **EBS**             | Yes                     | No                  | No                            | Yes |
+| **Snapshots**       | Yes                     | No                  | NA                            | Yes |
+| **Elastic** **IPs** | Yes                     | No                  | NA                            | Yes |
+| **ASGs**            | No                      | No                  | Yes (With Spot Orchestration) | Yes |
 
 ### GCP Product
 
-|             |                         |                     |                  |
-| ----------- | ----------------------- | ------------------- | ---------------- |
-|             | **Inventory Dashboard** | **Recommendations** | **AutoStopping** |
-| **GCE VMs** | Yes                     | Coming soon         | Yes     |
-| **GKE**     | Yes                     | Yes                 | Yes              |
+|             |                         |                     |                  | |
+| ----------- | ----------------------- | ------------------- | ---------------- | ---- |
+|             | **Inventory Dashboard** | **Recommendations** | **AutoStopping** | **Asset Governance** |
+| **GCE VMs** | Yes                     | Coming soon         | Yes     | |
+| **GKE**     | Yes                     | Yes                 | Yes              | |
 
 ### Azure Product
 
-|                     |                         |                     |                               |
-| ------------------- | ----------------------- | ------------------- | ----------------------------- |
-|                     | **Inventory Dashboard** | **Recommendations** | **AutoStopping**              |
-| **Virtual Machine** | Yes             | Yes         | Yes (With Spot Orchestration) |
-| **AKS**             | Yes                     | Yes                 | Yes                           |
+|                     |                         |                     |                               | |
+| ------------------- | ----------------------- | ------------------- | ----------------------------- | --- |
+|                     | **Inventory Dashboard** | **Recommendations** | **AutoStopping**              | **Asset governance** |
+| **Virtual Machine** | Yes             | Yes         | Coming soon | Coming soon |
+| **AKS**             | Yes                     | Yes                 | Yes                           | Coming soon |
 
 
 ```mdx-code-block
