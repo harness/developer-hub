@@ -42,7 +42,7 @@ This release does not include early access features.
 * Due to an error with gitSync logic on environment creation, the activation for the new environment did not get properly created when GitSync was enabled. (FFM-8812) 
   
   To resolve this, we:
-  - Fixed the gitSync function newly created environment.
+  - Fixed the gitSync function for newly created environment.
   - Added gitSync for deleted environments. 
 
 * Sending a GET request to the /targets/${IDENTIFIER} endpoint returned a 200 error code, even if the target didn't exist. This error code has been changed to 404. (FFM-8810)
