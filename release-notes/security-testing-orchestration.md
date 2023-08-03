@@ -20,7 +20,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - July 12, 2023, version 1.61.1 
+## Latest - August 02, 2023, version 1.62.2
 
 ```mdx-code-block
 <Tabs>
@@ -28,13 +28,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 
 This release does not include new features. 
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities.
-
-This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more information, go to [Set up target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines).
+This release does not include Early Access features.
 
 
 ```mdx-code-block
@@ -42,16 +41,7 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
   <TabItem value="Fixed issues">
 ```
 
-* Fixed an issue that broke the capability to customize the code snippet for AIDA-augmented remediations in the Security Tests module. (STO-6181)
-
-```mdx-code-block
-  </TabItem>
-
-  <TabItem value="Fossa runner update, July 20, 2023">
-```
-##### Fixed issue
-
-* Updated a Fossa runner image to fix an issue that caused the step to fail with a 400 client error. (CDS-6120, ZD-46601)
+* Fixed an issue that made it difficult to set up proxy details for a Veracode scan. Veracode scans can now handle `https_proxy`, `http_proxy`, and `no_proxy` environment variables as `-D` flags that get passed to Java. (STO-6081, ZD-45891)
 
 ```mdx-code-block
   </TabItem>
@@ -63,6 +53,26 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
 
 <details>
 <summary>2023 releases</summary>
+
+
+#### July 12, 2023, version 1.61.1 
+
+##### What's new
+
+This release does not include new features. 
+
+You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities.
+
+This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more information, go to [Set up target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines).
+
+
+#### Fixed issues
+
+* Fixed an issue that broke the capability to customize the code snippet for AIDA-augmented remediations in the Security Tests module. (STO-6181)
+
+##### Fossa runner update, July 20, 2023
+
+* Updated a Fossa runner image to fix an issue that caused the step to fail with a 400 client error. (CDS-6120, ZD-46601)
 
 
 #### July 5, 2023, version 1.60.0
