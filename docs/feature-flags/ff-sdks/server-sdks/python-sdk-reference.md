@@ -12,6 +12,8 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
 <Smpno />
 
 This topic describes how to use the Harness Feature Flags Java SDK for your Java application.
@@ -204,18 +206,8 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 ## Close the SDK Client
 
-In most applications, you won't need to close the SDK client.
+<Closeclient />
 
-However, you should close the SDK client if:
-
-- your application is about to terminate, to ensure that all associated resources are released.
-- you have determined that you do not need to evaluate flags again in your application lifecycle.
-
-Important: attempting to evaluate flags after the Client is closed will result in undefined behaviour.
-
-```
-client.close()
-```
 ## Additional options
 
 ### Configure your logger
