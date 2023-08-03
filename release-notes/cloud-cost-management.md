@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-07-24T10:00
+date: 2023-08-02T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -19,17 +19,43 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - July 21, 2023, version 80202
+## Latest - August 02, 2023, version 80301
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-* AWS AutoStopping proxy enhancement
+* AWS AutoStopping proxy enhancement (CCM-13497)
 
   You can now select the subnet ID from the dropdown list for AWS AutoStopping proxy creation. 
 
     <docimage path={require('./static/ccm-subnet-proxy.png')} width="60%" height="60%" title="Click to view full size image" />
+
+* **Perspective Preferences** enhancement
+
+  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, refunds, etc. For more information, go to [Perspective Preferences](../docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/perspective-preferences.md).
+
+ 
+:::important note
+ The current configurations for **Show others** and **Show unallocated cost in clusters** are preserved. This means that though the default settings have these preferences set to false, any **existing perspective** with these preferences set to true will retain their current state and not be overridden.
+:::
+
+* Improved UI handling during the AutoStopping rule creation process (CCM-13527)
+
+  The Load Balancer or AutoStopping Proxy selection screen has been enhanced to include an additional API that retrieves information about proxies created previously in shared VPCs. Now users can use proxy created in shared VPC across projects and connectors.
+
+* **Overview** page enhancements (CCM-13326)
+
+  - Added hover state to the pie chart 
+  - Forecast trend from the widget is hidden.
+  - Added forecast time period in the forecast cost widget.
+  - Changed the heading of the cloud cost widget from `Top AWS accounts` to `Top 10 AWS accounts`.
+
+    <docimage path={require('./static/ccm-overview-1.png')} width="60%" height="60%" title="Click to view full size image" />
+    <docimage path={require('./static/ccm-overview-2.png')} width="60%" height="60%" title="Click to view full size image" />
+    <docimage path={require('./static/ccm-overview-3.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
 
 
 ```mdx-code-block
@@ -43,8 +69,17 @@ This release does not include any early access features.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+* Previously, configuring both the redirect URL and target port for redirection while creating a redirect-based AutoStopping rule led to an error. (CCM-13475)
 
+  This issue has been resolved by modifying the validation process to ensure that when the redirect URL is defined, the system will now check if the target port is greater than 0. The combination of both redirect URL and target port is not allowed as it is an invalid configuration. However, for ALBs only redirect URLs are allowed.
 
+* Users encountered an issue with the Kubernetes AutoStopping rule creation process as they were not able to validate the YAML on the UI. (CCM-13459)
+
+  This issue has been resolved. Users will now be able to validate the YAML successfully.
+
+* Previously, users experienced performance delays while editing cost categories with more than 50 buckets, and every subsequent action took several seconds to trigger. (CCM-13205)
+
+  The issue has been resolved, and the overall user experience has been enhanced by streamlining the process of managing cost categories even with a large number of buckets.
 
 
 ```mdx-code-block
