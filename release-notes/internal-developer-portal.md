@@ -23,8 +23,6 @@ Review the notes below for details about recent changes to Harness Internal Deve
 ```
 
 - IDP now includes the Confluence search plugin to include results from Confluence spaces. To learn more, got to the [plugin documentation](/docs/internal-developer-portal/plugins/available-plugins/confluence). (IDP-845)
-  <!-- Omitting this for now for a hotfix coming in a day or two -->
-  <!-- - Added `harness:create-secret` and `harness:delete-secret` actions which are available to be used in `template.yaml`. These can be used to take secret as an input, create short lived secrets and use them in a Pipeline variable as a runtime input. [Docs link](coming) (IDP-780) -->
 - The interval at which IDP polls Git repositories associated with the software catalog has increased from 5 minutes to 15 minutes. (IDP-749)
 
 ```mdx-code-block
@@ -41,11 +39,18 @@ This release does not include early access features.
 
 - When you used a delegate to connect to a Git provider, the Docs tab failed to load, and the following message was displayed: `Failed to build the docs page: TAR_BAD_ARCHIVE: Unrecognized archive format`. (IDP-687)
 
-  This issue is now fixed. 
+  This issue is now fixed.
 
 - If you used a GitHub connector that used a Github App for API authentication and if the private key was a text secret, the catalog import in IDP failed. The failure was caused by Harness Secrets Manager not storing the specified private key with line breaks, which IDP expects along with proper indentation. (IDP-850, ZD-47845)
 
   Harness Secrets Manager now formats text secrets properly for text secrets used with IDP.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Hotfix version 0.7.1">
+```
+
+The `harness:create-secret` and `harness:delete-secret` template actions are now available for use in IDP software templates. You can use these actions to receive a secret from a developer, create a Harness secret, and then use it as a pipeline variable to provide runtime input. For more information, go to the [tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input) (IDP-780)
 
 ```mdx-code-block
   </TabItem>
