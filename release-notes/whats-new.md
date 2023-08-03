@@ -28,23 +28,23 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
     <docimage path={require('./static/ccm-subnet-proxy.png')} width="60%" height="60%" title="Click to view full size image" />
 
-* **Perspective Preferences** enhancement
+* **Perspective Preferences** enhancement (CCM-11145)
 
-  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, refunds, etc. For more information, go to [Perspective Preferences](../docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/perspective-preferences.md).
+  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](../docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/perspective-preferences.md).
 
  
 :::important note
- The current configurations for **Show others** and **Show unallocated cost in clusters** are preserved. This means that though the default settings have these preferences set to false, any **existing perspective** with these preferences set to true will retain their current state and not be overridden.
+ The current configurations for **Show others** and **Show unallocated cost in clusters** are preserved. This means that though the default settings have these preferences set to false, any _existing perspective_ with these preferences set to true will retain their current state and not be overridden.
 :::
 
 * Improved UI handling during the AutoStopping rule creation process (CCM-13527)
 
-  The Load Balancer or AutoStopping Proxy selection screen has been enhanced to include an additional API that retrieves information about proxies created previously in shared VPCs. Now users can use proxy created in shared VPC across projects and connectors.
+  The page on which users select either a load balancer or an AutoStopping Proxy has been enhanced to include an additional API that retrieves information about proxies created previously in shared VPCs. Now users can use a proxy created in a shared VPC across projects and connectors.
 
 * **Overview** page enhancements (CCM-13326)
 
-  - Added hover state to the pie chart 
-  - Forecast trend from the widget is hidden.
+  - The pie chart now shows a hover state. 
+  - Forecast trend in the widget is removed.
   - Added forecast time period in the forecast cost widget.
   - Changed the heading of the cloud cost widget from `Top AWS accounts` to `Top 10 AWS accounts`.
 
