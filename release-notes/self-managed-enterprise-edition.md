@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 ## Latest - July 31, 2023, version 79819
 
-### Known issues
+#### Known issues
 
 -  Terraform-based pipeline automation does not function correctly in Istio environments. UI operations are not affected. (PL-39776)
 
