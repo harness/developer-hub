@@ -37,6 +37,14 @@ module.exports = {
     // Created by aimurphy for branch doc-3441-rbac on July 28, 2023
 
     {
+      from: "/docs/platform/APIs/jwt-token-auth",
+      to: "/docs/platform/Resource-Development/APIs/default-settings-for-jwt-token",
+    },
+    {
+      from: "/docs/platform/Resource-Development/APIs/jwt-token-auth",
+      to: "/docs/platform/Resource-Development/APIs/default-settings-for-jwt-token",
+    },
+    {
       from: "/docs/platform/Resource-Development/APIs/harness-rest-api-reference",
       to: "/docs/platform/Resource-Development/APIs/api-quickstart",
     },
@@ -988,10 +996,6 @@ module.exports = {
     {
       from: "/docs/platform/APIs/default-settings-for-jwt-token",
       to: "/docs/platform/Resource-Development/APIs/default-settings-for-jwt-token",
-    },
-    {
-      from: "/docs/platform/APIs/jwt-token-auth",
-      to: "/docs/platform/Resource-Development/APIs/jwt-token-auth",
     },
     {
       from: "/docs/platform/Terraform/harness-terraform-provider-overview",
