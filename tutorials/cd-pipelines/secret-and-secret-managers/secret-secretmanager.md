@@ -1,10 +1,10 @@
 ---
 sidebar_position: 6
 hide_table_of_contents: true
-title: Secret and Secret Manager
+title: Secrets and Secret Manager
 ---
 
-# Secret and Secret Manager
+## Secrets and Secret Manager
 
 <ctabanner
   buttonText="Learn More"
@@ -20,7 +20,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-In this tutorial, we'll walk you through the process of safely storing and accessing sensitive information like API keys and credentials. You'll learn best practices, gain hands-on experience, and how to ensure your secrets remain protected. Let's dive into the world of Harness secrets management.
+In this tutorial, we'll walk you through the process of safely storing and accessing sensitive information like API keys and credentials. You'll learn best practices while gaining hands-on experience to ensure your secrets remain protected. Let's dive into the world of Harness secrets management.
 
 :::info
 
@@ -28,31 +28,33 @@ In this tutorial, we'll walk you through the process of safely storing and acces
 
 :::
 
-### Create secrets
 
-<details open>
-<summary>What are Harness secrets?</summary>
+
+
+## Create secrets
 
 Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness Delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
 
-</details>
+To create a secret, do the following:
 
-1. Under **Project Setup**, select **Secrets**.
-    - Select **New Secret**, and then select **Text**.
-    - Enter the secret name `SECRET_NAME`.
-    - For the **secret value**, Paste the personal access token (PAT) from GitHub with the repo scope. For more information, go to [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) in the GitHub documentation. 
-    - Select **Save**.
-# Harness secrets management overview
+1. Sign in to Harness.
+2. Select **Projects**, and then select **Secrets**.
+3. Select **New Secret**, and then select **Text**.
+4. Enter the secret name `SECRET_NAME`.
+5. For the **Secret Value**, paste the personal access token (PAT) from GitHub with the repo scope. For more information, go to [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) in the GitHub documentation. 
+6. Select **Save**.
+
+## Harness secrets management overview
 
 Harness Secret Manager is a platform designed to securely and centrally manage secrets. It offers a unified interface to store, manage, and distribute secrets, including API keys, passwords, and certificates, used in software applications. Developers can seamlessly incorporate secrets into their applications, enforce access controls, and monitor secret usage. This system streamlines secret management and strengthens security for organizations using Harness for software development and deployment workflows.
 
-# How to Manage Secrets with In-built Harness Secret Manager
+### Manage Secrets with built-in Harness Secret Manager
 
 Google Cloud Key Management Service is the default secret manager in Harness and is named Harness Secret Manager Google KMS. To learn how to configure Harness Secret Manager Google KMS, go to [how to add a Google KMS Secret Manager in Harness.](https://developer.harness.io/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager/)
 
 Your browser sends information securely to Harness Manager using HTTPS. Harness Manager transfers encrypted information to the Harness Delegate using HTTPS. The delegate securely exchanges a pair of keys with the secret manager through an encrypted connection. The Harness Delegate uses the encrypted key and secret, and then removes them. The keys never leave the delegate. The delegate uses the required value to deploy on the instances. 
 
-# Integrate third-party secret managers 
+### Integrate third-party secret managers 
 
 :::info
 This feature is behind a Feature Flag and is available only to our paid customers. 
@@ -63,16 +65,16 @@ This feature is behind a Feature Flag and is available only to our paid customer
 <Tabs>
 <TabItem value="AWS KMS">
 ```
-## Before you begin
+### Before you begin
 
 Verify that you have the following:
 
-1. The **AWS - Access Key ID** from AWS
-2. The **AWS - Secret Key ID** from AWS
-3. The **AWS ARN** 
-4.  **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+- The **AWS - Access Key ID** from AWS
+- The **AWS - Secret Key ID** from AWS
+- The **AWS ARN** 
+- A fork of the **[harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
-5. **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
+- **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
     - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
     - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
     - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
@@ -80,21 +82,16 @@ Verify that you have the following:
     - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
     - Check [Delegate system requirements](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 
-## Getting started with AWS KMS
+## Use AWS KMS to manage secrets
 
 1. Sign in to Harness.
 2. Select **Projects**, and then select **Default Project**.
 
 ## Harness Delegate
 
-<details open>
-<summary>What is the Harness Delegate?</summary>
-
 The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. Learn more about the delegate in the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
-</details>
-
-**Make sure the delegate is installed and it is connected. For more details, go to the Google Cloud Functions [tutorial](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate)**
+Make sure the delegate is installed and it is connected. For more details, go to the Google Cloud Functions [tutorial](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate).
 
 ## Secrets
 
@@ -112,7 +109,6 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 -  For the secret value, paste the access token for your AWS user account. The Harness Delegate uses this credential to authenticate Harness with AWS at deployment runtime.
 -  Select **Save**.
 
-
 ### AWS - ARN
 
 -  Select **New Secret**, and then select **Text**.
@@ -124,12 +120,7 @@ For more information, go to [find the Access key ID and ARN](https://docs.aws.am
 
 ## Connectors
 
-<details open>
-<summary>What are connectors?</summary>
-
 Connectors in Harness enable integration with third-party tools, providing authentication for operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](https://developer.harness.io/docs/category/connectors).
-
-</details>
 
 1. Create the **AWS Connector**.
 
@@ -149,6 +140,7 @@ You can now use this secret manager in your pipeline.
 </TabItem>
 <TabItem value="GCP KMS">
 ```
+
 ## Before you begin
 
 Verify that you have the following:
@@ -164,21 +156,16 @@ Verify that you have the following:
     - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
     - Check [Delegate system requirements](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 
-## Getting started with GCP KMS
+## Use GCP KMS to manage secrets 
 
 1. Sign in to Harness.
 2. Select **Projects**, and then select **Default Project**.
 
 ## Delegate
 
-<details open>
-<summary>What is the Harness Delegate?</summary>
-
 The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
-</details>
-
-**Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.**
+Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
 
 ## Secrets
 
@@ -195,12 +182,7 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 ## Connectors
 
-<details open>
-<summary>What are connectors?</summary>
-
 Connectors in Harness enable integration with third-party tools, providing authentication for operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](https://developer.harness.io/docs/category/connectors).
-
-</details>
 
 1. Create the **GCP Connector**.
 
@@ -231,7 +213,7 @@ You can now use this secret manager in your pipeline.
 
 Verify that you have the following:
 
-1. Obtain the **Public Vault Url** from Hashicopr Vault.
+1. Obtain the **Public Vault Url** from Hashicorp Vault.
 2. Obtain the **Admin Token** from the Hashicorp Public vault URL.
 3.  **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
@@ -243,21 +225,16 @@ Verify that you have the following:
     - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
     - Check [Delegate system requirements](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 
-## Getting started with Hashicorp
+## Use Hashicorp to manage secrets
 
 1. Sign in to Harness.
 2. Select **Projects**, and then select **Default Project**.
 
 ## Delegate
 
-<details open>
-<summary>What is the Harness Delegate?</summary>
-
 The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. Learn more about the delegate in the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
-</details>
-
-**Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.**
+Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
 
 ## Secrets
 
@@ -270,12 +247,7 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 ## Connectors
 
-<details open>
-<summary>What are connectors?</summary>
-
 Connectors in Harness enable integration with third-party tools, providing authentication for operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](https://developer.harness.io/docs/category/connectors).
-
-</details>
 
 1. Create the **Hashicorp Connector**.
 
@@ -314,21 +286,16 @@ Verify that you have the following:
     - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
     - Check [Delegate system requirements](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 
-## Getting started with AWS KMS
+## Use AWS KMS to manage secrets 
 
 1. Sign in to Harness.
 2. Select **Projects**, and then select **Default Project**.
 
 ## Delegate
 
-<details open>
-<summary>What is the Harness Delegate?</summary>
-
 The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. Learn more about the delegate in the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
-</details>
-
-**Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.**
+Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
 
 ## Secrets
 
@@ -348,12 +315,7 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 ## Connectors
 
-<details open>
-<summary>What are connectors?</summary>
-
 Connectors in Harness enable integration with third-party tools, providing authentication for operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](https://developer.harness.io/docs/category/connectors).
-
-</details>
 
 1. Create the **AWS Connector**.
 
@@ -387,21 +349,16 @@ Verify that you have the following:
     - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
     - Check [Delegate system requirements](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 
-## Getting Started with GCP KMS
+## Use GCP KMS to manage secrets
 
 1. Sign in to Harness.
 2. Select **Projects**, and then select **Default Project**.
 
 ## Delegate
 
-<details open>
-<summary>What is the Harness Delegate?</summary>
-
 The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. To learn more about delegates, go to the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
-</details>
-
-**Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.**
+Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
 
 ## Secrets
 
@@ -418,12 +375,7 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 ## Connectors
 
-<details open>
-<summary>What are connectors?</summary>
-
 Connectors in Harness enable integration with third-party tools, providing authentication for operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](https://developer.harness.io/docs/category/connectors).
-
-</details>
 
 1. Create the **GCP Connector**.
 
@@ -476,4 +428,4 @@ Finally, it's time to execute the pipeline.
 
 <docimage path={require('../static/secret/secret-log.png')} width="60%" height="60%" title="Click to view full size image" />
 
-When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (*) so that the secret value is never displayed.​ For more information, go to [secrets and log-sanitization](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/secrets-and-log-sanitization). 
+When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (*) so that the secret value is never displayed.​ For more information, go to [secrets and log-sanitization](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/secrets-and-log-sanitization).
