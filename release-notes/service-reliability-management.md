@@ -18,7 +18,7 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 27, 2023, version 80021
+## Latest - August xx, 2023, version 801xx
 
 ```mdx-code-block
 <Tabs>
@@ -53,6 +53,21 @@ This release does not include any fixed issues.
 
 <details>
 <summary>2023 releases</summary>
+
+#### July 27, 2023, version 80021
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any new features.
+
 
 #### July 21, 2023, version 79922
 
