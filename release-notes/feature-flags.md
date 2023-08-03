@@ -37,7 +37,7 @@ This release does not include early access features.
   </TabItem>
   <TabItem value="Fixed issues">
 
-#### Feature Flags server, version 1.1078.1
+#### Feature Flags UI
 
 * Previously, the permission to create a feature flag was required across all environments. This restriction has been removed. (FFM-8724)
 
