@@ -40,7 +40,7 @@ For information about best practices for using secrets in pipelines, go to the [
 
 :::
 
-### Create an output variable
+#### Create an output variable
 
 To create an output variable, do the following in the step where the output variable originates:
 
@@ -52,7 +52,7 @@ To create an output variable, do the following in the step where the output vari
 
 2. In the step's **Output Variables**, declare the variable name, such as `myVar`.
 
-### Reference an output variable
+#### Reference an output variable
 
 To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/references/runtime-inputs/#expressions) that includes the originating step's ID and the variable's name.
 

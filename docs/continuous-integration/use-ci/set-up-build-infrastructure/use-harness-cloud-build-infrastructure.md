@@ -4,11 +4,24 @@ description: You can use Harness-hosted build infrastructure for your Harness CI
 sidebar_position: 20
 ---
 
-With Harness Cloud you can run builds in isolation on Harness-hosted VMs that are preconfigured with the tools, packages, and settings commonly used in CI pipelines. Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.
+With Harness Cloud, you can run builds in isolation on Harness-hosted VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines. Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.
 
-This topic describes how to use Harness-hosted build infrastructure for your Harness CI pipelines, as well as information about machine specifications, special considerations, and additional configuration required for certain use cases.
+Harness Cloud provides the following advantages:
 
-For more information about the Harness Cloud architecture, go to [Get started with Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md). For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](./which-build-infrastructure-is-right-for-me.md).
+* Free monthly credits for up to 2,000 build minutes.
+* Starter pipelines for different programming languages.
+* Blazing fast builds on Linux, macOS, and Windows.
+* Get the latest features first. Harness may enable features for Harness Cloud before rolling them out to other build infrastructure options.
+
+:::info What happens when pipelines run on Harness Cloud?
+
+During a pipeline build that uses Harness Cloud build infrastructure, Harness runs each CI stage in a new, ephemeral VM.
+
+![Example pipeline on Harness Cloud](./static/hosted-builds-on-virtual-machines-quickstart-11.png)
+
+The steps in each stage execute on the stage's dedicated VM. This allows the stage's steps to share information through the underlying filesystem. You can run CI steps directly on the VM or in a Docker container. When the stage is complete, the VM automatically shuts down.
+
+:::
 
 ## Requirements
 
@@ -16,6 +29,8 @@ For more information about the Harness Cloud architecture, go to [Get started wi
 * All connectors must connect through the Harness Platform, not the delegate.
 * AWS connectors can't use IRSA or AssumeRole.
 * GCP and Azure connectors can't inherit credentials from the delegate.
+
+For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](./which-build-infrastructure-is-right-for-me.md).
 
 ## Platforms and image specifications
 

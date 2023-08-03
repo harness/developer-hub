@@ -37,7 +37,7 @@ This release does not include early access features.
   </TabItem>
   <TabItem value="Fixed issues">
 
-#### Feature Flags UI
+#### Feature Flags server, version 1.1078.1
 
 * Previously, the permission to create a feature flag was required across all environments. This restriction has been removed. (FFM-8724)
 
@@ -78,6 +78,7 @@ This release does not include early access features.
 This limit has been raised to 25000 bytes, with a clear error message if this is exceeded. (FFM-8660)
 
 * Targets sent by the server-side SDKs were not being updated in the database. This meant if a sever-side target changed, while evaluations worked as expected, the updated attributes were not shown in the UI. This fix ensures targets are correctly upserted. (FFM-8600)
+
 
 #### July 27, 2023
 

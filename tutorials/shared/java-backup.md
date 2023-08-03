@@ -220,7 +220,7 @@ In the YAML editor, add the following `variables` block between the `properties`
 
 ## Run tests
 
-Add a step to run tests against the JHTTP app code. This portion of the tutorial uses a [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings) so that the pipeline can benefit from Harness' [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) feature. In the [Manage dependencies](#manage-dependencies) section of this tutorial, you can see an example where a Run step is used to run a connectivity test script against the app running in a [Background step](#service-dependencies). To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+Add a step to run tests against the JHTTP app code. This portion of the tutorial uses a [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence) so that the pipeline can benefit from Harness' [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence) feature. In the [Manage dependencies](#manage-dependencies) section of this tutorial, you can see an example where a Run step is used to run a connectivity test script against the app running in a [Background step](#service-dependencies). To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
 ```mdx-code-block
 <Tabs>

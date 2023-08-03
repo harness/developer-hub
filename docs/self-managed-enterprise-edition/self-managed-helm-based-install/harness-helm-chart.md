@@ -42,6 +42,7 @@ The production environment requires the following resources.
 | STO | 4 | 3 | 7 | 0 |
 | FF | 3 | 3 | 6 | 0 |
 | Chaos | 15 | 12 | 24 | 50 |
+| CET | 10 | 12 | 28 | 0 |
 
 ### Development environment
 
@@ -55,7 +56,7 @@ The development environment requires the following resources.
 | STO | 2 | 1.5 | 3.5 | 0 |
 | FF | 3 | 3 | 6 | 0 |
 | Chaos | 5 | 4 | 8 | 20 |
-
+| CET | 2 | 1.5 | 5 | 0 |
 
 ## Included components
 
@@ -96,7 +97,9 @@ The following components are included in addition to the Harness Platform compon
 | **Ci-manager** | Continuous Integration |
 | **Sto-core** | Enables the creation and management of Harness Security Testing Orchestration |
 | **Sto-manager** | Provides core services for Harness Security Testing Orchestration |
-
+| **Et-service** | Provides core services for Continuous Error Tracking (CET) |
+| **Et-collector** | Collects Continuous Error Tracking (CET) Agent data for processing |
+| **Et-receiver** | Scalable service responsible for processing data for Continous Error Tracking (CET) |
 
 **Table 3. Optional dependencies**
 
@@ -104,4 +107,3 @@ The following components are included in addition to the Harness Platform compon
 | :-- | :-- |
 | **Istio** | [Istio](https://istio.io/latest/about/service-mesh/) is an open-source service mesh. |
 | **Ingress Controller** | Supported by default. |
-
