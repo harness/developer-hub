@@ -1,7 +1,7 @@
 ---
 title: Add and manage users
 description: This document shows steps to create a new user.
-sidebar_position: 70
+sidebar_position: 50
 helpdocs_topic_id: hyoe7qcaz6
 helpdocs_category_id: w4rzhnf27d
 helpdocs_is_private: false

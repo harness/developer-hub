@@ -1,7 +1,7 @@
 ---
 title: Attribute-based access control
 description: Extend RBAC with ABAC.
-sidebar_position: 40
+sidebar_position: 120
 helpdocs_topic_id: uzzjd4fy67
 helpdocs_category_id: w4rzhnf27d
 helpdocs_is_private: false

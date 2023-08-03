@@ -1,7 +1,7 @@
 ---
 title: Permissions Reference
 description: This document lists the default user groups and permissions present in the Harness Access Management system.
-sidebar_position: 50
+sidebar_position: 110
 helpdocs_topic_id: yaornnqh0z
 helpdocs_category_id: 4przngb8nk
 helpdocs_is_private: false

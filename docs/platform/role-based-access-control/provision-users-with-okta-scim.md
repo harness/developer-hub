@@ -1,7 +1,7 @@
 ---
 title: Provision users and groups with Okta (SCIM)
 description: Explains how to provision and manage Harness Users and User Groups using Okta's SCIM integration.
-sidebar_position: 120
+sidebar_position: 70
 helpdocs_topic_id: umv2xdnofv
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false

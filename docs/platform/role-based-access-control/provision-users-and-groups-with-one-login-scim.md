@@ -1,7 +1,7 @@
 ---
 title: Provision users and groups with OneLogin (SCIM)
 description: Explains how to provision and manage Harness Users and User Groups using Okta's SCIM integration.
-sidebar_position: 110
+sidebar_position: 90
 helpdocs_topic_id: y402mpkrxq
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false

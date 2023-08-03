@@ -1,7 +1,7 @@
 ---
 title: Provision users and groups using Azure AD (SCIM)
 description: Explains how to use Harness' SCIM integration with Azure Active Directory (AD) to automatically provision users and/or groups.
-sidebar_position: 100
+sidebar_position: 80
 helpdocs_topic_id: 6r8hin2z20
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false

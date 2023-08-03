@@ -1,7 +1,7 @@
 ---
 title: Add and manage service accounts
 description: Steps to add and manage Service Account.
-sidebar_position: 80
+sidebar_position: 60
 helpdocs_topic_id: e5p4hdq6bd
 helpdocs_category_id: w4rzhnf27d
 helpdocs_is_private: false
