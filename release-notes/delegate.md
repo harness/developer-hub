@@ -79,7 +79,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Error messages from health source providers are now included in API responses for improved user experience and debugging efficiency. (OIP-657)
 
-- A new `getAzureKeyVaultClient` API is available to fetch the Azure vaults list. This option reduces the time it takes for Harness to reflect a newly-created Azure vault. (PL-28392)
+- A new `getAzureKeyVaultClient` API is available to fetch the Azure vaults list. This option reduces the time it takes for Harness to reflect a newly-created Azure vault. (PL-28392, ZD-44045)
 
 ```mdx-code-block
   </TabItem>
@@ -146,9 +146,9 @@ This release does not include any early access features.
 
    This issue has been fixed. The value of JAVA_OPTS is now appended to the default JVM options, thus allowing you to override the default options.
 
-- Resource Groups could have the same identifier. (PL-39503)
+- You were allowed to create resource groups with the same identifier as a built-in resource group. (PL-39503)
 
-   This issue has been fixed. Validation in the API that creates Resource Groups now checks Harness Manager for an existing identifier.
+  This issue has been fixed. Validation in the API that creates resource groups now checks whether an existing resource group has the same identifier.
 
 - If all eligible delegates are unavailable when a task needs to be executed, the task times out with a message that lists delegates from scopes outside the task’s account-organization-project hierarchy. (PL-39624, ZD-46460, ZD-46513)
 
