@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-08-01T10:00:25
+date: 2023-08-03T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -20,7 +20,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 1, 2023
+## Latest - August 3, 2023
 
 <Tabs>
   <TabItem value="What's new">
