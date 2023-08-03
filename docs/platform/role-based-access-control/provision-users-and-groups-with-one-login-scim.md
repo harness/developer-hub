@@ -1,6 +1,6 @@
 ---
 title: Provision users and groups with OneLogin (SCIM)
-description: Explains how to provision and manage Harness Users and User Groups using Okta's SCIM integration.
+description: Provision and manage Harness users and user groups with OneLogin's SCIM integration.
 sidebar_position: 90
 helpdocs_topic_id: y402mpkrxq
 helpdocs_category_id: fe0577j8ie
@@ -8,271 +8,207 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use OneLogin to provision users and groups in Harness.
+System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automatic user provisioning. In Harness, automatic provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automatic provisioning also edits and removes users and user groups as and when required.
 
-Harness' SCIM integration enables OneLogin to serve as a single identity manager for adding and removing users. This is especially efficient for managing large numbers of users.
+If OneLogin is your identity provider, you can efficiently provision and manage users in your Harness account, organizations, and projects. Using [OneLogin's SCIM integration](https://developers.onelogin.com/scim) with Harness enables OneLogin to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
 
-This topic describes how to set up OneLogin provisioning for Harness Users and User Groups.
+This topic describes how to use a OneLogin SCIM integration for automatic provisioning in Harness. To configure this integration, you must take steps in both OneLogin and Harness.
 
-### Before you begin
+:::caution
 
-* This topic assumes you understand the System for Cross-domain Identity Management (SCIM). For an overview, see the article [Introduction to System for Cross-domain Identity Management (SCIM)](https://medium.com/@pamodaaw/system-for-cross-domain-identity-management-scim-def45ea83ae7).
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
-* Make sure you are an Administrator in your OneLogin account and have the **Account Admin** permissions in Harness.
-* Make sure you have a Harness [API Key](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
-
-### Limitations
-
-This integration does not support updating a provisioned user's **Email** in OneLogin. Once the user is provisioned in Harness, the user's email address must remain the same. If you change the email address in OneLogin and then try to remove the user from Harness, the removal will fail.
-
-Once a user is provisioned in Harness, you cannot delete the user in the Harness Manager. You must delete the user in OneLogin.
-
-The provisioned user cannot use the Harness OneLogin app to log into Harness unless OneLogin is also set up for [OneLogin SAML authentication in Harness](../../first-gen/firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md#saml-sso-with-one-login). They must use their email address and password.
-
-### Step 1: Add Harness app to OneLogin​
-
-The first step is adding the Harness app to your OneLogin **Applications**.
-
-1. In **Applications**, click **Add App**.
-2. Search for **Harness**. The Harness Application appears.
-3. Click the Harness app to open its Configuration page and click **Save**.
-
-When you are done, the Harness OneLogin app appears.
-
-For more information on adding apps, see OneLogin's documentation: [Introduction to App Management](https://onelogin.service-now.com/support/?id=kb_article&sys_id=6ac91143db109700d5505eea4b9619a2#add).
-
-### Step 2: SCIM base URL
-
-Next, add a special Harness account URL to the OneLogin app's SCIM Base URL.
-
-1. Log into your Harness account.
-2. Copy the Harness account ID from the **Account Overview** of your Harness account.
-   
-   ![](./static/provision-users-and-groups-with-one-login-scim-128.png)
-
-3. Add your account ID to the end of the following URL: `https://app.harness.io/gateway/ng/api/scim/account/<account_ID>`
-
-
-:::note
-For Harness On-Prem, the URL will use your custom domain name and `gateway` is omitted. For example, if your On-Prem domain name is **harness.mycompany.com**: `https://harness.mycompany.com/ng/api/scim/account/<account_ID>`
-:::
-
-4. Copy the full URL.
-5. In OneLogin, open the Harness OneLogin app.
-6. Click **Configuration**.
-7. In **SCIM Base URL**, paste the Harness URL you copied.
-
-Next, we will use a Harness API access key for the **SCIM Bearer Token** setting in your Harness OneLogin app.
-
-### Step 3: SCIM bearer token
-
-The SCIM Bearer Token value is used to authenticate requests and responses sent between the OneLogin SCIM provisioning service and Harness.
-
-1. In Harness Manager, create an API token by following the instructions in [Add and Manage API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
-2. Copy the new API token.
-3. In OneLogin, paste the API token in the **SCIM Bearer Token** setting in your Harness OneLogin app.
-4. Ensure that the API Status is enabled and click **Save**.
-
-### Step 4: Set up Harness OneLogin app provisioning
-
-Next, you will set the required provisioning settings for the Harness OneLogin app.
-
-Ensure these settings are set up exactly as shown below.
-
-1. In the Harness OneLogin app, click **Provisioning**.
-2. In **Workflow**, ensure the following are selected:
-* Enable provisioning
-* Create user
-* Delete user
-* Update user
-* When users are deleted in OneLogin, or the user's app access is removed, perform the below action: **Delete**.
-* When user accounts are suspended in OneLogin, perform the following action: **Suspend**.
-
-When you are done, it will look like this:
-
-![](./static/provision-users-and-groups-with-one-login-scim-129.png)
-
-1. Click **Save**.
-
-### Option: Provision OneLogin users to Harness
-
-Next, we will add users to the Harness OneLogin app. Once OneLogin SSO is enabled in Harness, these users will be provisioned in Harness automatically.
-
-1. In OneLogin, click **Users**.
-2. Click a user.
-3. In **User Info**, ensure that the user has **First name**, **Last name**, and **Email** completed.
-
-
-:::note
-Only **First name**, **Last name**, and **Email** are permitted for Harness OneLogin SCIM provisioning. Do not use any additional User Info settings.
-:::
-
-
-4. Click **Applications**.
-5. In the **Applications** table, click the add button **(+)**.
-6. In the **Assign new login** settings, select the Harness OneLogin App and click **Continue**.
-7. In **NameID**, enter the email address for the user. This is the same email address in the **NameID** setting.
-8. Click **Save**. The status in the **Applications** table is now **Pending**.
-9.  Click **Pending**. The **Create User in Application** settings appear.
-10. Click **Approve**. The Provisioning status will turn to Provisioned.
-
-If provisioning fails, you might see something like the following error:
-
-![](./static/provision-users-and-groups-with-one-login-scim-130.png)
-
-The most common reason is incorrect **SCIM Base URL** or **SCIM Bearer Token** settings in the OneLogin app.
-
-
-:::note
-If an error prevents adding, deleting, or updating an individual user to Harness, you must retry provisioning the user in OneLogin later, after resolving the issues. For more information, see **Review and Approve Provisioning Tasks for Your SCIM Test App** in [Test Your SCIM Implementation](https://developers.onelogin.com/scim/test-your-scim).
+With the OneLogin SCIM integration, don't change provisioned users email addresses in OneLogin. Once a user is provisioned in Harness, the user's email address *must remain the same*. If you change the email address in OneLogin and then try to remove the user from Harness, the removal will fail.
 
 :::
 
-### Verify provisioning in Harness
+## Requirements
 
-Now that you have provisioning confirmation from OneLogin, let's verify that the provisioned user is in Harness.
+You need an understanding of:
 
-1. In Harness, click **Account Settings**, and then select **Access Control**.
-2. Click **Users**.
-3. Locate the provisioned user.![](./static/provision-users-and-groups-with-one-login-scim-132.png)
+* System for Cross-domain Identity Management (SCIM).
+* [Harness' key concepts](../../getting-started/learn-harness-key-concepts.md).
+* [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
-The provisioned users will receive an email invite from Harness to sign up and log in.
+You must be an Administrator in your OneLogin account, and you must be an **Account Admin** in Harness.
 
-### Option: Provision OneLogin roles to Harness groups
+You need a Harness [API key and unexpired token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) that has all **Users** and **User Groups** [permissions](../Resource-Development/16_APIs/api-permissions-reference). API keys inherit permissions from the user they are associated with. If you use an API key for a [service account](./add-and-manage-service-account), make sure the service account has all **Users** and **User Groups** permissions.
 
-You can create, populate, and delete Harness User Groups using OneLogin.
+## Add the Harness app to OneLogin
 
-Due to OneLogin currently not supporting group deletion via SCIM, you must remove User Groups using OneLogin. If you try to delete OneLogin-provisioned User Groups within Harness, you will get the error message, `Cannot Delete Group Imported From SCIM`. Once the group is removed from OneLogin, contact Harness Support to have it removed from Harness.To perform Harness User Group provisioning using OneLogin, you assign the Harness OneLogin app and OneLogin users to a OneLogin role.
+For more information, go to the OneLogin documentation on [Adding apps](https://www.onelogin.com/getting-started/free-trial-plan/add-apps-manual).
 
-Next, you create a rule in the Harness OneLogin app that creates groups in Harness using the role.
+1. In OneLogin, go to **Applications** and select **Add App**.
+2. Search for `Harness`, and select the Harness app.
+3. Select **Save**.
+4. In the Harness OneLogin app settings, in the **SCIM Base URL** field, enter `https://app.harness.io/gateway/ng/api/scim/account/ACCOUNT_ID`. Replace `ACCOUNT_ID` with your Harness account ID. You can get your account ID from any Harness URL or by navigating to **Account Settings** and **Overview** in Harness.
 
-The OneLogin roles become User Groups in Harness.
+   For Harness On-Prem, the URL uses your custom domain name and omits `gateway`. For example, if your On-Prem domain name is `harness.mycompany.com**`, then your SCIM base URL is `https://harness.mycompany.com/ng/api/scim/account/ACCOUNT_ID`.
 
+5. For **SCIM Bearer Token**, enter your [Harness token](#requirements). The SCIM Bearer Token authenticates requests and responses sent between the OneLogin SCIM provisioning service and Harness.
+6. Make sure **API Status** is enabled.
+7. Go to the app's **Provisioning** settings, and configure the following:
 
-:::note
-You cannot provision OneLogin users to Harness User Groups if they are already provisioned in Harness. Simply remove them from Harness and then provision them using the step below.
+   * Select **Enable provisioning**.
+   * Under **Require admin approval**, select **Create user**, **Delete user**, and **Update user**.
+   * For **When users are deleted**, select **Delete**.
+   * For **When user accounts are suspended**, select **Suspend**.
 
-:::
+   ![](./static/provision-users-and-groups-with-one-login-scim-129.png)
 
-#### Add user provisioning to the Harness OneLogin app
+8. Select **Save**.
 
-1. Ensure the Harness OneLogin app is added and configured as described in steps 1 through 5 in this topic.
-2. In OneLogin, open the Harness OneLogin app.
-3. In **Parameters**, in **Optional Parameters**, click on **Groups**.
-4. In **Edit Field Groups**, select **Include in User Provisioning** and click **Save**.
-5. Click **Save** to save the Harness OneLogin app.
+## Enable SAML SSO with OneLogin
 
-Next, we'll create the OneLogin role that will be used as your Harness User Group.
+To allow users to log in through your OneLogin SCIM integration, you must also setup [SAML SSO authentication with OneLogin](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-onelogin) in Harness.
 
-#### Create OneLogin role
+## Provision individual users
 
-1. In OneLogin, click **Users** and select **Roles**.
-2. Click **New Role**.
-3. Enter a name for the new role and click **Save**.
-4. In **Roles**, open the new role.
-5. Click **Users**.
-6. In **Check existing or add new users to this role**, enter the name(s) of the users to add.
-7. When you have located each user name, click **Check**.
-8. For each user, click **Add to Role**. When you are done, the user(s) are listed in **Users Add Manually**.
-9. Click **Save**. You are returned to the Roles page.
-10. Open the role.
-11. In the role, click **Applications**.
-12. Click the **Add Apps** button.
-13. In **Select Apps to Add**, click the Harness OneLogin app.
-14. Click **Save**.
+:::caution
 
-Now that the role has users and the Harness OneLogin app, we can add the Harness OneLogin app to each OneLogin user.
-
-#### Add Harness OneLogin app to users
-
-For each of the OneLogin users you have added to the role, you will now add the Harness OneLogin app.
-
-1. In OneLogin, click **Users**, and then select each user you want to add.
-2. On the user's page, click **Applications**.
-3. Click the **Add App** button.
-4. In **Assign new login**, select the Harness OneLogin app, and click **Continue**.
-5. In the **Edit** settings, in **Groups**, select the role you created and click **Add**.
-6. Click **Save**.
-
-Now that each user is associated with the Harness OneLogin app and role, you will learn /add a rule to the Harness OneLogin app. The rule will set groups in the Harness OneLogin app using the role you created.
-
-#### Add rule to Harness OneLogin app
-
-Next, you create a rule in the Harness OneLogin app to create groups using the role you created.
-
-1. Click **Application**, and then select the Harness OneLogin app.
-2. In the app, click **Rules**.
-3. Click **Add Rule**.
-4. Name the rule.
-5. In **Actions**, select **Set Groups in [Application name]**.
-6. Select **Map from OneLogin**.
-7. In **For each**, select **role**.
-8. In **with value that matches**, enter the name of the role you create or enter the regex `.*`.
-9. Click **Save**.
-10. Click **Save** to save the app.
-
-
-:::note
-If you have created users prior to adding the mapping rule, select **Reapply Mappings** in the **User** settings section of your Harness application.
+With the OneLogin SCIM integration, don't change a provisioned user's email address in OneLogin. Once a user is provisioned in Harness, the user's email address *must remain the same*. If you change the email address in OneLogin and then try to remove the user from Harness, the removal will fail.
 
 :::
 
-Now that the app has a rule to set groups in Harness using the role you created, you can begin provisioning users using the app.
+To provision users, add them to the Harness OneLogin app. Users are automatically provisioned in Harness if [SAML SSO with OneLogin is enabled](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-onelogin).
 
-#### Provision users in application
+1. In OneLogin, select **Users**.
+2. Add a user or select an existing user.
+3. In the **User Info** settings, make sure **First name**, **Last name**, and **Email** are populated.
 
-Each of the OneLogin users that you added the Harness OneLogin app to can now be provisioned.
+   :::info
 
-1. In the Harness OneLogin app, click **Users**. The users are listed as **Pending**.
-2. Click each user and then click **Approve**.
+   The Harness OneLogin SCIM integration only accepts the **First name**, **Last name**, and **Email** attributes for users. No other user attributes are permitted. Don't configure any other **User Info** settings.
 
-The Provisioning State for each user is changed to **Provisioned**.
+   :::
 
-#### See the provisioned user group in Harness
+4. Save the user settings, and then go to **Applications**.
+5. In the **Applications** list, select **Add (+)**.
+6. In the **Assign new login** settings, select the Harness OneLogin app, and then select **Continue**.
+7. In **NameID**, enter the user's email address. This must match the **Email** from the **User Info** settings.
+8. Select **Save**. The user's provisioning state is initially listed as **Pending**.
+9. Select **Pending**.
+10. In **Create User in Application**, select **Approve**. The user's provisioning state updates to **Provisioned**.
 
-Now that you have provisioned users using the Harness OneLogin app, you can see the new group and users in Harness.
+   Once the provisioning state updates to **Provisioned**, the user receives an email invite from Harness to log in.
 
-1. In Harness, click **Access Management**.
-2. Click **User Groups**.
-3. Locate the name of the User Group. It is named after the role you created. Click the **User Group**.
+11. In Harness, go to **Account Settings**, and then select **Access Control**.
+12. Select **Users** in the header, and make sure the provisioned user is listed.
+13. After provisioning users, you must [assign permissions](#assign-permissions).
 
-You can see the User Group and Users that are provisioned.
+### Provisioning errors
 
-Repeat the steps in this process for additional users.
+If provisioning fails, you might get an error such as `Failed to create user in app. Specified resource (e.g. User) or endpoint does not exist`. The most common cause for this error is an incorrect **SCIM Base URL** or invalid **SCIM Bearer Token** in the [OneLogin app configuration](#add-the-harness-app-to-onelogin)
 
+If an error prevents adding, deleting, or updating an individual user in Harness, resolve the issues that caused the error and then retry provisioning the user in OneLogin. Select the **Failed** state in the user provisioning status table in OneLogin to investigate the error and retry provisioning.
 
-:::note
-When provisioning user groups through SCIM, Harness replaces any `.`,`-`, or a space in your role name and uses it as the group identifier. For example, if your role name is `example-group`in your SCIM provider, its identifier in Harness would be `example_group`.
+## Provision OneLogin roles as Harness user groups
+
+:::caution
+
+With the OneLogin SCIM integration, don't change a provisioned user's email address in OneLogin. Once a user is provisioned in Harness, the user's email address *must remain the same*. If you change the email address in OneLogin and then try to remove the user from Harness, the removal will fail.
 
 :::
 
-### What if I already have app integration for Harness FirstGen?
+To provision groups of users, you can provision OneLogin roles as Harness user groups. To do this, you must create a OneLogin role, assign OneLogin users to the role, assign your [Harness OneLogin app](#add-the-harness-app-to-onelogin) to users, and then create a rule in your Harness OneLogin app that creates Harness user groups based on the role.
 
-If you currently have a Harness FirstGen App Integration setup in your IDP and are now trying to set up one for Harness NextGen, make sure the user information is also included in the FirstGen App Integration before attempting to log into Harness NG through SSO.
+You can create multiple roles. Each role becomes a Harness user group.
 
+1. Make sure none of the intended group members (OneLogin users) have standalone Harness accounts (meaning, accounts not associated with OneLogin). If a user has a separate Harness account, the OneLogin role provisioning will fail. Before provisioning OneLogin roles, make sure you remove these accounts.
+2. Add the group parameter to your Harness OneLogin app.
 
-:::note
+   1. In OneLogin, go to your Harness OneLogin app.
+   2. In the **Parameters** settings, go to **Optional Parameters**, and select **Groups**.
+   3. In **Edit Field Groups**, select **Include in User Provisioning**, and then select **Save**.
+   4. Select **Save** again to save the app configuration.
+
+3. Add the OneLogin role and link it to the Harness OneLogin app.
+
+   1. Go to **Users**, select **Roles**, and then select **New Role**.
+   2. Enter a **Name**, and select **Save**. The role name becomes the user group name in Harness.
+
+      :::info Group names
+
+      When provisioning user groups through SCIM, Harness creates names for user groups based on the OneLogin role name. If the role name contains periods, dashes, or spaces, those characters are replaced by underscores in Harness. For example, if a OneLogin role's name is `example-group`, then the resulting Harness user group's name is `example_group`.
+
+      If a OneLogin-provisioned user group has the same name as an existing user group in Harness, Harness retains both groups. To prevent confusion, you can rename the existing Harness group.
+
+      :::
+
+   3. Select your new role, and then select **Users**.
+   4. In **Check existing or add new users to this role**, enter the name of a OneLogin user to add to the role, locate the relevant user, select **Check**, and then select **Add to Role**. Repeat until you have added all users.
+   5. Select **Save**, select your role again, and go to the **Applications** settings.
+   6. Select **Add Apps**.
+   7. In **Select Apps to Add**, select the Harness OneLogin app.
+   8. Select **Save**.
+
+4. Associate the Harness OneLogin app with each OneLogin user you added to the role.
+
+   1. Go to **Users**, and select a user you added to the role.
+   2. On the user's page, select **Applications**.
+   3. Select **Add App**.
+   4. In **Assign new login**, select the Harness OneLogin app, and select **Continue**.
+   5. In **Groups**, select your OneLogin role, and select **Add**.
+   6. Select **Save**.
+
+5. Add a rule to the Harness OneLogin app that creates user groups in the Harness based on the OneLogin role.
+
+   1. In OneLogin, go to **Applications** and select the Harness OneLogin app.
+   2. Select **Rules**, and select **Add Rule**.
+   3. Enter a **Name**.
+   4. Under **Actions**, select **Set Groups in [Application Name]**.
+   5. Select **Map from OneLogin**.
+   6. Set **For each** to **Role**.
+   7. Set **With value that matches** to the name of your OneLogin role or enter the regex `.*`.
+   8. Select **Save** to save the rule.
+   9. Select **Save** to save the app.
+
+6. Provision the users you linked to the Harness OneLogin app.
+
+   1. Go to your Harness OneLogin app, and select **Users**.
+   2. If you [provisioned users](#provision-individual-users) prior to adding the OneLogin role and rule, select **Reapply Mappings**.
+   3. For each user listed as **Pending**, select the user and select **Approve**.
+
+7. Once provisioned, confirm the users and groups exist in Harness.
+
+   1. In Harness, go to **Account Settings** and select **Access Control**.
+   2. Select **User Groups** in the header.
+   3. Select the user group matching the name of your OneLogin role.
+   4. Make sure all the provisioned users are listed.
+
+8. After provisioning groups and users, you must [assign permissions](#assign-permissions).
+
+## Assign permissions
+
+After user groups are provisioned through SCIM, you can manage [permissions](./permissions-reference) granted to the users in those groups by assigning [roles](./add-manage-roles) and [resource groups](./add-resource-groups) to user groups in Harness.
+
+Harness roles and resource groups aren't managed in OneLogin.
+
+If you need to change a user's group (for example, to change their permissions), you must change the user's role relationship in OneLogin.
+
+## Remove groups
+
+To remove a user group created by a OneLogin role, you must remove the role from OneLogin and then contact [Harness Support](mailto:support@harness.io) to get the user group removed from Harness.
+
+The OneLogin SCIM integration doesn't currently support automatic removal of user groups created from OneLogin roles. In Harness, if you try to manually remove a Harness user group created from a OneLogin role, you'll get the following error: `Cannot Delete Group Imported From SCIM`. This is why you must contact Harness support to finish removing the group after removing the OneLogin role.
+
+## Remove users
+
+Once a OneLogin users is provisioned in Harness, you can't delete the user in Harness. You must delete the user in OneLogin to remove them from Harness.
+
+## I already have a Harness FirstGen OneLogin integration
+
+If you currently have a Harness FirstGen App Integration in your IdP, and you want to create one for Harness NextGen, make sure the user information is included in the FirstGen App Integration before attempting to log into Harness NextGen through SSO.
+
 Harness authenticates users using either the FirstGen App Integration or the NextGen App Integration. If you have set up both, Harness continues to use your existing App Integration in FirstGen to authenticate users that attempt to log in using SSO.
 
-:::
+For example:
 
-Let us look at the following example:
-
-1. An App Integration is already set up for FirstGen with 2 users as members:  
-`user1@example.com` and `user2@example.com`.
-2. Now you set up a separate App Integration for Harness NextGen and add `user1@example.com` and `user_2@example.com` as the members.
+1. An App Integration is already set up for FirstGen with two users as members: `user1@example.com` and `user2@example.com`.
+2. You create the App Integration for Harness NextGen, and you add `user1@example.com` and `user_2@example.com` as members.
 3. You provision these users to Harness NextGen through SCIM.
 4. `user1@example.com` and `user_2@example.com` try to log in to Harness NextGen through SSO.
-5. The FirstGen App Integration is used for user authentication.  
-`user1@example.com` is a member of the FirstGen App Integration and hence is authenticated and successfully logged in to Harness NextGen.  
-`user_2@example.com` is not a member of the FirstGen App Integration, hence the authentication fails and the user cannot log in to Harness NextGen.![](./static/provision-users-and-groups-with-one-login-scim-133.png)
+5. The FirstGen App Integration is used for user authentication through SSO.
 
-### Assign permissions post-provisioning
+   * `user1@example.com` is a member of the FirstGen App Integration. They are successfully authenticated and logged in to Harness NextGen.
+   * `user_2@example.com` is not a member of the FirstGen App Integration. Authentication fails and the user can't log in to Harness NextGen.
 
-Permissions can be assigned manually or via the Harness API:
-
-* [Add and Manage Roles](./add-manage-roles)
-* [Add and Manage Resource Groups](./add-resource-groups)
-* [Permissions Reference](./permissions-reference)
-
+   ![](./static/provision-users-with-okta-scim-20.png)

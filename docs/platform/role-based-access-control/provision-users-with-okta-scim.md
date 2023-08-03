@@ -153,11 +153,11 @@ You can use Okta to provision individual users or groups containing sets of user
 
 ### Provision groups
 
-You can provision Okta user groups in Harness. To do this, you  must assign groups to your Harness Okta app and then push the groups (and the group members) to Harness.
+You can provision Okta user groups in Harness. To do this, you must assign groups to your Harness Okta app and then push the groups (and the group members) to Harness.
 
 :::info Group names
 
-When provisioning user groups through SCIM, Harness created IDs for user groups based on the group name in Okta. If the name contains periods, dashes, or spaces, those characters are replaced by underscores in the Harness user group ID. For example, if a groups name is `example-group` in Okta, the group's Harness ID is `example_group`.
+When provisioning user groups through SCIM, Harness creates IDs for user groups based on the group name in Okta. If the name contains periods, dashes, or spaces, those characters are replaced by underscores in the Harness user group ID. For example, if a groups name is `example-group` in Okta, the group's Harness ID is `example_group`.
 
 If an Okta-provisioned user group has the same name as an existing user group in Harness, Harness retains both groups. To prevent confusion, you can rename the existing Harness group.
 
@@ -255,13 +255,9 @@ To reactivate a deactivated users, go to the user's profile, select **More Actio
 
 If you currently have a Harness FirstGen App Integration in your IdP, and you want to create one for Harness NextGen, make sure the user information is included in the FirstGen App Integration before attempting to log into Harness NextGen through SSO.
 
-:::info
-
 Harness authenticates users using either the FirstGen App Integration or the NextGen App Integration. If you have set up both, Harness continues to use your existing App Integration in FirstGen to authenticate users that attempt to log in using SSO.
 
-:::
-
-For example,
+For example:
 
 1. An App Integration is already set up for FirstGen with two users as members: `user1@example.com` and `user2@example.com`.
 2. You create the App Integration for Harness NextGen, and you add `user1@example.com` and `user_2@example.com` as members.

@@ -95,11 +95,11 @@ Using the Azure AD SCIM integration requires you to manage users, user groups, a
    * If you need to change a user's group (for example, to change their permissions), you must change the user's group membership in Azure AD.
    * You must use Azure AD to delete Azure AD-provisioned users from Harness.
 
-Role and resource group assignments are not controlled in Okta. You must [assign permissions to user groups](#assign-permissions) in Harness.
+Role and resource group assignments are not controlled in Azure AD. You must [assign permissions to user groups](#assign-permissions) in Harness.
 
 :::info Group names
 
-When provisioning user groups through SCIM, Harness created IDs for user groups based on the group name in Azure AD. If the name contains periods, dashes, or spaces, those characters are replaced by underscores in the Harness user group ID. For example, if a groups name is `example-group` in Azure AD, the group's Harness ID is `example_group`.
+When provisioning user groups through SCIM, Harness creates IDs for user groups based on the group name in Azure AD. If the name contains periods, dashes, or spaces, those characters are replaced by underscores in the Harness user group ID. For example, if a groups name is `example-group` in Azure AD, the group's Harness ID is `example_group`.
 
 If an Azure AD-provisioned user group has the same name as an existing user group in Harness, Harness retains both groups. To prevent confusion, you can rename the existing Harness group.
 
@@ -119,7 +119,7 @@ Harness roles and resource groups aren't managed in Azure AD.
 
 If you need to change a user's group (for example, to change their permissions), you must change the user's group membership in Azure AD.
 
-## I already have a Harness FirstGen Azure integration
+## I already have a Harness FirstGen Azure AD integration
 
 If you currently have a Harness FirstGen App Integration in your IdP, and you want to create one for Harness NextGen, make sure the user information is included in the FirstGen App Integration before attempting to log into Harness NextGen through SSO.
 
