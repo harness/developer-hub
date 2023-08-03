@@ -31,23 +31,23 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
     <docimage path={require('./static/ccm-subnet-proxy.png')} width="60%" height="60%" title="Click to view full size image" />
 
-* **Perspective Preferences** enhancement
+* **Perspective Preferences** enhancement (CCM-11145)
 
-  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, refunds, etc. For more information, go to [Perspective Preferences](../docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/perspective-preferences.md).
+  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](../docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/perspective-preferences.md).
 
  
 :::important note
- The current configurations for **Show others** and **Show unallocated cost in clusters** are preserved. This means that though the default settings have these preferences set to false, any **existing perspective** with these preferences set to true will retain their current state and not be overridden.
+ The current configurations for **Show others** and **Show unallocated cost in clusters** are preserved. This means that though the default settings have these preferences set to false, any _existing perspective_ with these preferences set to true will retain their current state and not be overridden.
 :::
 
 * Improved UI handling during the AutoStopping rule creation process (CCM-13527)
 
-  The Load Balancer or AutoStopping Proxy selection screen has been enhanced to include an additional API that retrieves information about proxies created previously in shared VPCs. Now users can use proxy created in shared VPC across projects and connectors.
+  The page on which users select either a load balancer or an AutoStopping Proxy has been enhanced to include an additional API that retrieves information about proxies created previously in shared VPCs. Now users can use a proxy created in a shared VPC across projects and connectors.
 
 * **Overview** page enhancements (CCM-13326)
 
-  - Added hover state to the pie chart 
-  - Forecast trend from the widget is hidden.
+  - The pie chart now shows a hover state. 
+  - Forecast trend in the widget is hidden.
   - Added forecast time period in the forecast cost widget.
   - Changed the heading of the cloud cost widget from `Top AWS accounts` to `Top 10 AWS accounts`.
 
@@ -71,9 +71,9 @@ This release does not include any early access features.
 ```
 * Previously, configuring both the redirect URL and target port for redirection while creating a redirect-based AutoStopping rule led to an error. (CCM-13475)
 
-  This issue has been resolved by modifying the validation process to ensure that when the redirect URL is defined, the system will now check if the target port is greater than 0. The combination of both redirect URL and target port is not allowed as it is an invalid configuration. However, for ALBs only redirect URLs are allowed.
+  This issue has been resolved by modifying the validation process. Now, if the redirect URL is defined, the validation process checks whether the target port is greater than 0. Specifying both redirect URL and target port is not allowed as it is an invalid configuration. However, for ALBs, only redirect URLs are allowed.
 
-* Users encountered an issue with the Kubernetes AutoStopping rule creation process as they were not able to validate the YAML on the UI. (CCM-13459)
+* Users were unable to validate their YAML files when creating a Kubernetes AutoStopping rule. (CCM-13459)
 
   This issue has been resolved. Users will now be able to validate the YAML successfully.
 
