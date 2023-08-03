@@ -53,7 +53,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - The `kubectl` command now includes retry logic to help improve reliability when there are connection issues. (CDS-72869)
 
-- The Execution Logs have been enhanced to include additional details such as duration, task ID, and more. To help in easier understanding and debugging of CV Steps, SRM Live monitoring, and SLI. (OIP-565)
+- The Execution Logs have been enhanced to include additional details such as duration, task ID, and more. These details help you understand and debug CV Steps, SRM Live monitoring, and SLI. (OIP-565)
 
 - In manual Query mode, the Datadog Metrics Health source now provides support for formulas. (OIP-568)
 
