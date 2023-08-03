@@ -81,7 +81,7 @@ This topic provides details about:
 
 ### Compatibility and Requirements
 
-To learn about supported operating systems, Java Virtual Machine (JVM), and JVM containers, go to [Continuous Error Tracking Agent compatibility](/docs/continuous-error-tracking/agent-compatibility).
+To learn about supported operating systems, Java Virtual Machine (JVM), and JVM containers, go to [Continuous Error Tracking Agent compatibility](https://developer.harness.io/docs/continuous-error-tracking/agent-compatibility).
 
 
 ### Install an Error Tracking Agent
