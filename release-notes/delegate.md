@@ -47,11 +47,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
    For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). 
 
-- Upgrade of go-template binary to version 0.4.3, which uses go version 1.20. (CDS-58919)
+- Upgrade of go-template binary to version 0.4.3, which uses Go version 1.20. (CDS-58919)
 
 - Upgrade Helm binary from version 3.8 to 3.12. (CDS-58931)
 
-- The `kubectl` command now includes retry logic to help improve reliability when there are connection issues. (CDS-72869)
+- The `kubectl` command now includes retry logic to handle connection issues. (CDS-72869)
 
 - The Execution Logs have been enhanced to include additional details such as duration, task ID, and more. These details help you understand and debug CV Steps, SRM Live monitoring, and SLI. (OIP-565)
 
@@ -105,7 +105,7 @@ This release does not include any early access features.
 
 - Fixed an issue where WinRM deployments would not honor the configured timeout. For example, the step would time out out by default in 30 minutes even when the configured timeout was 1 day. Now, the WinRM session timeout will be set to maximum of step timeout configured and 30 minutes. (CDS-73641, ZD-46904, ZD-48180)
 
-  This fix is behind the feature flag DISABLE_WINRM_COMMAND_ENCODING. Contact Harness Support to enable this fix.
+  This fix is behind the feature flag `DISABLE_WINRM_COMMAND_ENCODING`. Contact [Harness Support](mailto:support@harness.io) to enable this fix.
 
 - Fixed an issue where the Override Image Connector did not properly configure the image path in the container step. (CDS-73727, ZD-43089, ZD-46916, ZD-47578, ZD-47716)
 
@@ -115,7 +115,7 @@ This release does not include any early access features.
 
 - Fixed an issue where the Terraform Plan step would exit with code 0 even when there was a change as per the generated plan. This would happen when using the **Export JSON representation of Terraform Plan** option. Now, the step exits with the correct code (2) based on the `terraform plan` command. (CDS-74144, ZD-47379)
 
-- Fixed an issue that resulted in failures when deploying a Tanzu service with a vars.yaml file. (CDS-74163, ZD-47412)
+- Fixed an issue that resulted in failures when deploying a Tanzu service with a `vars.yaml` file. (CDS-74163, ZD-47412)
 
   You can now provide routes as variables in your TAS manifest, like this:
 
