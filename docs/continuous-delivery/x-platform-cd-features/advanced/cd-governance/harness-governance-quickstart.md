@@ -136,7 +136,7 @@ We use the **Quickstart** `projectIdentifier` and the **default** `orgIdentifier
 
 Click **Save**. The Pipeline is now saved.
 
-Click **Visual** and you can see it's a simple Pipeline with a manual [Approval stage](/docs/platform/approvals/adding-harness-approval-stages/) and one [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step that echoes `hello`.
+Click **Visual** and you can see it's a simple Pipeline with a manual [Approval stage](/docs/platform/approvals/adding-harness-approval-stages/) and one [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step that echoes `hello`.
 
 ![](./static/harness-governance-quickstart-60.png)
 

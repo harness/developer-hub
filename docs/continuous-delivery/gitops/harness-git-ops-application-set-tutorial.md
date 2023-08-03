@@ -444,6 +444,19 @@ In **Execution**, Harness automatically adds the following steps:
   ![](./static/harness-git-ops-application-set-tutorial-56.png)
 
 * **Merge PR**: Merges the new PR.
+* **Revert PR**: Reverts the commit passed and creates a new PR. Use this step if you want to run any tests or automation on the pipeline and then revert the commit done by the Update Release Repo step.
+  
+  The Revert PR step uses the commitId of the Update Release Repo step as input. The commitId can be an expression, runtime input, or a static value. For example, `<+pipeline.stages.deploy.spec.execution.steps.updateReleaseRepo.updateReleaseRepoOutcome.commitId>`. 
+  
+  The Revert PR step creates a new branch and creates a commit to revert the changes done in the Update Release Repo step commit. 
+  
+  You can create another Merge PR step to merge the Revert PR step. 
+
+  :::info Limitation
+
+  You can create a maximum of two Merge PR steps in a stage.
+
+  :::  
 
 You don't have to edit anything in these steps.
 
@@ -466,7 +479,7 @@ Now your PR Pipeline is ready.
 
   Here's an example of each step:
 
-* Service:
+  * Service:
   ```bash
   Starting service step...  
   Processing service variables...  
@@ -476,7 +489,7 @@ Now your PR Pipeline is ready.
   Completed service step
   ```
 
-* GitOps Clusters:
+  * GitOps Clusters:
   ```bash
   Environment(s): {dev}   
     
@@ -490,18 +503,35 @@ Now your PR Pipeline is ready.
   Completed
   ```
 
-* Update Release Repo:
+  * Update Release Repo:
   
   ![](./static/harness-git-ops-application-set-tutorial-59.png)
 
-* Merge PR:
+  * Merge PR:
   ```bash
-  PR Link: https://github.com/michaelcretzman/applicationset/pull/5  
+  PR Link: https://github.com/wings-software/gitops-pipeline-demo/pull/155  
   Pull Request successfully merged  
-  Commit Sha is 36f99ff737b98986045365e1b2be1326e97d4836  
+  Commit Sha is bcd4f2f73a47b74dba54habbcd10a6679ed99a  
   Done.
   ```
 
+  * Revert PR:  
+  ```bash
+  Setting git configs
+  Using optimized file fetch
+  Created revert PR https://github.com/wings-software/gitops-pipeline-demo/pull/156
+  Done.
+  ```
+
+  * Merge PR_1:   
+  ```bash
+  PR Link: https://github.com/wings-software/gitops-pipeline-demo/pull/156
+  Pull Request successfully merged
+  Commit Sha is da3c393560bf5e831a7b4fa123456c1eafb989ac
+  Done.
+  ```
+  
+  
 6. Check the repo to see that the config.json file for the dev environment has been updated with the new **asset\_id** value:
 
   ![](./static/harness-git-ops-application-set-tutorial-60.png)

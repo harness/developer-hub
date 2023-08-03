@@ -12,6 +12,8 @@ helpdocs_is_published: true
 
 To help you get the most out of your Feature Flags, we’ve drawn up some best practices that you can implement to manage them. The points below aren’t mandatory but they can help you organize your Flags and plan for the future so you don’t have to revise them at a later date.
 
+For a more detailed discussion on this topic, go to the tutorial [Feature Flags best practices](/tutorials/feature-flags/best-practices).
+
 ## Plan your Feature Flags
 
 Before you even create a Feature Flag, it’s best practice to create a plan for it. While planning, there are a number of things to consider: 

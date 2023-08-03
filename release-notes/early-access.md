@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-07-18T10:00
+date: 2023-07-28T10:00
 sidebar_position: 2
 ---
 
@@ -12,16 +12,26 @@ Review the notes below to learn about the early access (aka beta) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - July 18, 2023
+## Latest - July 28, 2023
+
+### Continuous Integration, version 5106
+
+**Enable Cache Intelligence in the Visual editor. (CI-8571)**
+
+The **Enable Cache Intelligence** UI field is behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+You can enable [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to the Harness Cloud build infrastructure.
+
+## July 18, 2023
 
 ### Continuous Delivery, version 79916
 
 - Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources). (CDS-71711)
-  
+
   This feature is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`.
 
   The **Artifact Details** page has a new, optional **Digest** setting where you can specify the digest/SHA for a container image artifact.
-  
+
   Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails.
 
 ### Harness Delegate, version 79904
@@ -32,15 +42,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## July 12, 2023
 
-## Latest - July 18, 2023
-
 ### Continuous Integration, version 5003
 
-The `CI_LE_STATUS_REST_ENABLED` feature has been rolled back to early access and disabled by default due to a discovered instability that caused the [CD Container step](docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step/) to fail. This feature causes CI steps to send status updates to the [Harness Manager](/docs/getting-started/harness-platform-architecture#harness-platform-components) directly by HTTP, rather than through a delegate.
+The `CI_LE_STATUS_REST_ENABLED` feature has been rolled back to early access and disabled by default due to a discovered instability that caused the [CD Container step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step/) to fail. This feature causes CI steps to send status updates to the [Harness Manager](/docs/getting-started/harness-platform-architecture#harness-platform-components) directly by HTTP, rather than through a delegate.
 
 This feature flag is now disabled by default and must be re-enabled if your CI-to-Harness-Manager communications need to support client connections with additional certificates. (CI-8338)
-
-## July 12, 2023
 
 ### Security Testing Orchestration, version 1.61.1
 

@@ -232,7 +232,7 @@ You can use the [go-junit-report](https://github.com/jstemmer/go-junit-report) t
 
 ### Java - Maven
 
-This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs Maven tests with [Test Intelligence](./set-up-test-intelligence.md).
+This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs tests with Maven and [Test Intelligence](./set-up-test-intelligence.md).
 
 ```yaml
               - step:

@@ -560,12 +560,6 @@ Ensure the Harness delegate you have installed can reach `storage.cloud.google.c
 
 ### Google Cloud Storage (GCS)
 
-:::note
-
-Currently, Google Cloud Storage (GCS) is behind the feature flag `CDS_GOOGLE_CLOUD_FUNCTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 <details>
 <summary>Use GCS artifacts</summary>
 
@@ -2093,9 +2087,11 @@ For more information on configuring an S3 connector and S3 bucket policies, go t
 ### Amazon EC2 AMIs
 
 <details>
-<summary>Use Amazon ECS AMI artifacts</summary>
+<summary>Use Amazon EC2 AMI artifacts</summary>
 
-You connect to Amazon ECS using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+You connect to Amazon AWS account using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+
+For AWS AMI artifacts, a version number represents the name of AMI. You can filter names by using tags/filter values.
 
 <!-- AWS AMI  -->
 
@@ -2153,7 +2149,7 @@ service:
                 filters:
                   - name: ami-image-id
                     value: ami-xxxxxxxxxxxxxxxxx
-                version: macos-build-farm-for-ci
+                version: macos-build-farm-for-ci  
               type: AmazonMachineImage
     type: Asg
 
@@ -2882,7 +2878,18 @@ For more information, go to [Bamboo Permissions](https://confluence.atlassian.co
 
 You can use Github Packages as artifacts for deployments.
 
-Currently, Harness supports only the packageType as `docker(container)`. Support for npm, maven, rubygems, and nuget is coming soon. 
+Package type (`packageType`) support:
+
+- Docker 
+- NPM
+- Maven
+- Nuget
+
+:::note
+
+Currently, support for NPM, Maven, and Nuget are behind the feature flag `CDS_GITHUB_PACKAGES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 You connect to GitHub using a Harness [GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference), username, and personal access token (PAT).
 

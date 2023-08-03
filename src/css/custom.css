@@ -383,7 +383,7 @@ a:hover {
   display: flex;
 }
 
-.theme-doc-markdown h3>img {
+.theme-doc-markdown h3 > img {
   margin-right: 0.2em;
 }
 
@@ -433,7 +433,7 @@ details summary::before {
 }
 
 .tabs__item,
-.tabs__item>* {
+.tabs__item > * {
   display: flex;
   align-items: center;
 }
@@ -481,7 +481,7 @@ details summary::before {
   display: flex;
 }
 
-.theme-doc-markdown h3>img {
+.theme-doc-markdown h3 > img {
   margin-right: 0.2em;
 }
 
@@ -542,21 +542,21 @@ button[title="Copy"] {
   align-items: center;
 }
 
-body.DocSearch--active #__docusaurus>div[class*="announcementBar"] {
+body.DocSearch--active #__docusaurus > div[class*="announcementBar"] {
   /* hide the announcement bar while the search bar called out */
   display: none;
 }
 
-.theme-doc-sidebar-container .sidebar-item-rss>a {
+.theme-doc-sidebar-container .sidebar-item-rss > a {
   display: flex;
   align-items: center;
 }
 
-.theme-doc-sidebar-container .sidebar-item-rss>a>svg {
+.theme-doc-sidebar-container .sidebar-item-rss > a > svg {
   display: none;
 }
 
-.theme-doc-sidebar-container .sidebar-item-rss>a::after {
+.theme-doc-sidebar-container .sidebar-item-rss > a::after {
   content: url(/img/icon_rss.svg);
   margin-left: 0.3em;
 }
@@ -566,17 +566,17 @@ body.DocSearch--active #__docusaurus>div[class*="announcementBar"] {
 }
 
 /* customize LHS menu items */
-aside nav.menu>ul>li>div>a,
-aside nav.menu>ul>li>ul>li>div>a,
-aside nav.menu>ul>li>a,
-aside nav.menu>ul>li>ul>li>a {
+aside nav.menu > ul > li > div > a,
+aside nav.menu > ul > li > ul > li > div > a,
+aside nav.menu > ul > li > a,
+aside nav.menu > ul > li > ul > li > a {
   font-size: 13px;
   line-height: 20px;
   font-weight: 600;
 }
 
-aside nav.menu>ul>li>ul>li ul>li>div>a,
-aside nav.menu>ul>li>ul>li ul>li>a {
+aside nav.menu > ul > li > ul > li ul > li > div > a,
+aside nav.menu > ul > li > ul > li ul > li > a {
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
@@ -610,9 +610,13 @@ ol ol,
 ul ol {
   list-style-type: lower-alpha;
 }
-
+/* .navbar__logo{
+  margin-bottom: 10px;
+} */
+.navbar__logo{
+  margin-bottom: 10px;
+}
 @media screen and (min-width: 1200px) {
-
   /* style for the search bar in higher resolution */
   .searchBar {
     width: calc(100vw - 1040px);
@@ -625,19 +629,25 @@ ul ol {
 }
 
 @media screen and (max-width: 1199px) {
-
   /* for tablet */
   .navbar__item img[alt="BETA"] {
     display: none;
   }
-
   .searchBar {
     display: none;
   }
 }
 
-@media screen and (max-width: 393px) {
 
+/* for navbar alignment */
+@media screen and (max-width: 1400px) {
+.navbar__logo{
+  margin-bottom: 5px;
+}
+
+}
+
+@media screen and (max-width: 393px) {
   /* for mobile */
   .navbar__logo {
     max-width: calc(100% - 44px);

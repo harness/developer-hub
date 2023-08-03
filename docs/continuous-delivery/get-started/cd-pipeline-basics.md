@@ -60,7 +60,7 @@ You can also propagate and override a Service in subsequent stages by selecting 
 
 For examples, go to:
 
-* [Kubernetes Services](../deploy-srv-diff-platforms/kubernetes/kubernetes-services.md
+* [Kubernetes Services](../deploy-srv-diff-platforms/kubernetes/kubernetes-services.md)
 * [Propagate and Override CD Services](../x-platform-cd-features/services/propagate-and-override-cd-services.md)
 
 ### Service Instance
@@ -94,8 +94,8 @@ For examples, go to:
 * [Create a Kubernetes Rolling Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md)
 * [Create a Kubernetes Canary Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
 * [Create a Kubernetes Blue Green Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
-* [Using Shell Scripts in CD Stages](../x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md)
-* [Using HTTP Requests in CD Pipelines](../x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines.md)
+* [Using Shell Scripts in CD Stages](../x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts.md)
+* [Using HTTP Requests in CD Pipelines](../x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines.md)
 
 ### Connectors
 

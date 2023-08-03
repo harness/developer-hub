@@ -23,11 +23,19 @@ For FirstGen SaaS release notes, go to [Harness SaaS Release Notes (FirstGen)](/
 
 ## Latest - July, 18 2023, Harness version 79915, Harness Delegate version 79904
 
-### Deprecation notice
+### Deprecation notices
+
+#### Helm 2
 
 import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 <Helmdep />
+
+#### Kustomize 3.4.5
+
+import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
+
+<Kustomizedep />
 
 ```mdx-code-block
 <Tabs>
@@ -54,6 +62,17 @@ This release does not include any fixed issues.
   </TabItem>
   <TabItem value="Hotfix release">
 ```
+
+## Hotfix version 79908
+
+Google Cloud builds failed with the message `Invalid Google Cloud Platform credentials`. (CDS-73352)
+
+This issue is now fixed with a code enhancement to GCP build triggers integration to improve stability.
+
+:::info note
+Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
+:::
+
 
 ## Hotfix version 79711
 

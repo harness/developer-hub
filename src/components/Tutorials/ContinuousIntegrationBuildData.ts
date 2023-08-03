@@ -15,28 +15,36 @@ import { MODULES } from "../../constants";
         "",
       list: [
         {
-          title: "Go application",
+          title: "C# (.NET Core)",
+          module: MODULES.ci,
+          description:
+            "Build and test a C# (.NET Core) application.",
+          link: "/tutorials/ci-pipelines/build/dotnet",
+          newDoc: true,
+        },
+        {
+          title: "Go",
           module: MODULES.ci,
           description:
             "Build and test a Go application.",
           link: "/tutorials/ci-pipelines/build/go",
         },
         {
-          title: "Java application",
+          title: "Java",
           module: MODULES.ci,
           description:
             "Build and test a Java application.",
           link: "/tutorials/ci-pipelines/build/java",
         },
         {
-          title: "NodeJS application",
+          title: "NodeJS",
           module: MODULES.ci,
           description:
             "Build and test a NodeJS application.",
           link: "/tutorials/ci-pipelines/build/nodejs",
         },
         {
-          title: "Python application",
+          title: "Python",
           module: MODULES.ci,
           description:
             "Build and test a Python application.",
@@ -44,7 +52,7 @@ import { MODULES } from "../../constants";
           newDoc: false,
         },
         {
-          title: "Ruby application",
+          title: "Ruby",
           module: MODULES.ci,
           description:
             "Build and test a Ruby application.",
@@ -52,12 +60,12 @@ import { MODULES } from "../../constants";
           newDoc: false,
         },
         {
-          title: "iOS and macOS applications",
+          title: "iOS and macOS",
           module: MODULES.ci,
           description:
             "Build and test an iOS or macOS application.",
           link: "/tutorials/ci-pipelines/build/ios",
-          newDoc: true,
+          newDoc: false,
         },
       ],
     },

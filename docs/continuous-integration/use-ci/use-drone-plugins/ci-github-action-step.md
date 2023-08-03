@@ -6,7 +6,7 @@ sidebar_position: 70
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts. You can find over 10,000 GitHub Actions on the [GitHub Marketplace](https://github.com/marketplace?type=actions) or create your own Actions.
 
-You can use the **GitHub Action plugin** step to run GitHub Actions in your Harness CI pipelines.
+You can use the **GitHub Action plugin** step to run GitHub Actions in your [Harness CI pipelines](../prep-ci-pipeline-components.md).
 
 :::info
 
@@ -20,8 +20,7 @@ For more information about using plugins in CI pipelines, go to [Explore plugins
 
 ## Usage examples
 
-In the following YAML examples, **GitHub Action plugin** steps are used to set up Node.js, Go, Java, and Ruby environments.
-
+The following YAML examples use **GitHub Action plugin** steps (`Action` steps) to set up Node.js, Go, Java, and Ruby environments.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -33,7 +32,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="js" label="Setup Node.js" default>
 ```
 
-This Action step uses the `actions/setup-node` GitHub Action to set up a Node.js environment that the subsequent steps in the stage can use.
+This `Action` step uses the `actions/setup-node` GitHub Action to set up a Node.js environment that the subsequent steps in the stage can use.
 
 ```yaml
               - step:
@@ -51,7 +50,7 @@ This Action step uses the `actions/setup-node` GitHub Action to set up a Node.js
 <TabItem value="Go" label="Setup Golang">
 ```
 
-This Action step uses the `actions/setup-go` GitHub Action to set up a Go environment that the subsequent steps in the stage can use. It specifies Go 1.17.
+This `Action` step uses the `actions/setup-go` GitHub Action to set up a Go environment that the subsequent steps in the stage can use. It specifies Go 1.17.
 
 ```yaml
               - step:
@@ -69,7 +68,7 @@ This Action step uses the `actions/setup-go` GitHub Action to set up a Go enviro
 <TabItem value="Java" label="Setup Java">
 ```
 
-This Action step uses the `actions/setup-java` GitHub Action to set up a Java environment that the subsequent steps in the stage can use. It specifies Java 17.
+This `Action` step uses the `actions/setup-java` GitHub Action to set up a Java environment that the subsequent steps in the stage can use. It specifies Java 17.
 
 ```yaml
               - step:
@@ -88,7 +87,7 @@ This Action step uses the `actions/setup-java` GitHub Action to set up a Java en
 <TabItem value="Ruby" label="Setup Ruby">
 ```
 
-This Action step uses the `ruby/setup-ruby` GitHub Action to set up a Ruby environment that the subsequent steps in the stage can use. It specifies Ruby 2.7.2.
+This `Action` step uses the `ruby/setup-ruby` GitHub Action to set up a Ruby environment that the subsequent steps in the stage can use. It specifies Ruby 2.7.2.
 
 ```yaml
               - step:
@@ -108,6 +107,14 @@ This Action step uses the `ruby/setup-ruby` GitHub Action to set up a Ruby envir
 
 ## Settings and specifications
 
+:::info Docker-in-Docker
+
+If a stage has a [Docker-in-Docker Background step](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md), you can't use GitHub Actions that launch Docker-in-Docker (DinD) in the same stage.
+
+If possible, run the **GitHub Action plugin** step in a separate stage, or try to find a GitHub Action that doesn't use DinD.
+
+:::
+
 ```mdx-code-block
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
@@ -118,7 +125,7 @@ import TabItem2 from '@theme/TabItem';
   <TabItem2 value="YAML" label="YAML editor" default>
 ```
 
-To add a GitHub Action plugin step to your pipeline YAML, add an `Action` step, for example:
+To add a **GitHub Action plugin** step in the YAML editor, add an `Action` step, for example:
 
 ```yaml
               - step:
@@ -135,20 +142,67 @@ The `spec` parameters define which Action to use, the Action settings, and envir
 
 * `uses:` Specify the Action's repo, along with a branch or tag, such as `actions/stepup-go@v3`.
 * `with:` If required by the Action, provide a mapping of key-value pairs representing Action settings, such as `go-version: '1.17'`.
-* `env:` If required by the Action, provide a mapping of environment variables to pass to the Action.
+* `env:` If required by the Action, provide a mapping of environment variables to pass to the Action. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that may be output by the Action.
 
-For [private Action repositories](#private-action-repositories), you must provide the `GITHUB_TOKEN` environment variable, such as `GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>`. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
+The following cases *always* require environment variables:
+
+* **Private Action repos:** For [private Action repositories](#private-action-repositories), you must provide the `GITHUB_TOKEN` environment variable, such as `GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>`. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be required, depending on the Action's purpose.
+* **Duplicate Actions:** If you run multiple instances of the same GitHub Action, either in parallel or with a looping strategy, you must set the `XDG_CACHE_HOME` environment variable. The default value of this variable is `/home/ubuntu/.cache`; however, the `XDG_CACHE_HOME` variable must have a different value for each iteration of the Action. If you have separate steps running in parallel, assign distinct values to each step, such as `XDG_CACHE_HOME: /home/ubuntu/.cache1`. If you apply a looping strategy to the same step, you can use an expression to generate distinct values, such as `XDG_CACHE_HOME: /home/ubuntu/.cache<+step.identifier>`.
 
 :::tip Tips
 
 * If you already configured GitHub Actions elsewhere, you can quickly [transfer GitHub Actions into Harness CI](#transfer-github-actions-into-harness-ci) by copying the `spec` details from your existing GitHub Actions YAML.
-* You can use variable expressions in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
+* You can use variable expressions in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables) to call a token stored as a [Harness secret](/docs/category/secrets).
 * For GitHub Actions steps, `with` mappings are automatically exported as [output variables](#output-variables-from-github-actions-steps).
 
 :::
 
+```mdx-code-block
+  </TabItem2>
+  <TabItem2 value="visual" label="Visual editor">
+```
+
+1. Add the **GitHub Action plugin** step to your pipeline's **Build** stage.
+2. Enter a **Name** and optional **Description**.
+
+   Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+
+3. For **Uses**, specify the repo and branch or tag of the GitHub Action that you want to use, for example `actions/setup-go@v3`.
+
+   Refer to the GitHub Action's README for information about branches and tags.
+
+4. If required by the Action, add key-value pairs representing GitHub Action settings in the **Settings** field under **Optional Configuration**. For example, you would specify `go-version: '>=1.17.0'` by entering `go-version` in the key field and `>=1.17.0` in the value field.
+
+   Most Actions require settings. Refer to the GitHub Action's `with` usage specifications in the Action's README for details about specific settings available for the Action that you want to use.
+
+5. If required by the Action, add key-value pairs representing environment variables that you want to pass to the GitHub Action in the **Environment Variables** field under **Optional Configuration**. For example, you would specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` by entering `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
+
+   Refer to the GitHub Action's `env` usage specifications for details about specific settings available for the Action that you want to use. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that may be output by the Action.
+
+   The following cases *always* require environment variables:
+
+   * **Private Action repos:** For [private Action repositories](#private-action-repositories), you must provide the `GITHUB_TOKEN` environment variable. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be required, depending on the Action's purpose.
+   * **Duplicate Actions:** If you run multiple instances of the same GitHub Action, either in parallel or with a looping strategy, you must set the `XDG_CACHE_HOME` environment variable. The default value of this variable is `/home/ubuntu/.cache`; however, the `XDG_CACHE_HOME` variable must have a different value for each iteration of the Action. If you have separate steps running in parallel, assign distinct values to each step, such as `XDG_CACHE_HOME: /home/ubuntu/.cache1`. If you apply a looping strategy to the same step, you can use an expression to generate distinct values, such as `XDG_CACHE_HOME: /home/ubuntu/.cache<+step.identifier>`.
+
+6. Optionally, you can set the **Timeout**. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
+
+   * [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+   * [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+
+:::tip Tips
+
+* You can use fixed values, runtime input, or variable expressions for **Settings** and **Environment Variables** values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables) that calls a token stored as a [Harness secret](/docs/category/secrets).
+* For GitHub Actions steps, **Settings** are automatically exported as [output variables](#output-variables-from-github-actions-steps).
+
+:::
+
+```mdx-code-block
+  </TabItem2>
+</Tabs2>
+```
+
 <details>
-<summary>YAML Example: Pipeline with an Action step</summary>
+<summary>YAML example: Pipeline with an Action step</summary>
 
 This pipeline uses a **GitHub Action plugin** step to install golang version 1.19.5. It then compiles the golang application and runs tests.
 
@@ -162,7 +216,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: Github_connector
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
         build: <+input>
   stages:
     - stage:
@@ -200,48 +254,6 @@ pipeline:
 ```
 
 </details>
-
-```mdx-code-block
-  </TabItem2>
-  <TabItem2 value="visual" label="Visual editor">
-```
-
-1. Add the **GitHub Action plugin** step to your pipeline's **Build** stage.
-2. Enter a **Name** and optional **Description**.
-
-   Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
-
-3. For **Uses**, specify the repo and branch or tag of the GitHub Action that you want to use, for example `actions/setup-go@v3`.
-
-   Refer to the GitHub Action's README for information about branches and tags.
-
-4. If required by the Action, add key-value pairs representing GitHub Action settings in the **Settings** field under **Optional Configuration**. For example, you would specify `go-version: '>=1.17.0'` by entering `go-version` in the key field and `>=1.17.0` in the value field.
-
-   Most Actions require settings. Refer to the GitHub Action's `with` usage specifications in the Action's README for details about specific settings available for the Action that you want to use.
-
-5. If required by the Action, add key-value pairs representing environment variables that you want to pass to the GitHub Action in the **Environment Variables** field under **Optional Configuration**. For example, you would specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` by entering `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
-
-   For [private Action repositories](#private-action-repositories), you must provide the `GITHUB_TOKEN` environment variable. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. You can use a variable expression such as `<+secrets.getValue("[SECRET_NAME]")>` to call a token stored as a Harness secret.
-
-   Refer to the GitHub Action's `env` usage specifications for details about specific settings available for the Action that you want to use. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that may be output by the Action.
-
-6. Optionally, you can set the **Timeout**. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
-
-   * [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-   * [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-
-:::tip Tips
-
-You can use fixed values, runtime input, or variable expressions for **Settings** and **Environment Variables** values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables), and `<+input>` will prompt you for input at runtime.
-
-For GitHub Actions steps, **Settings** are automatically exported as [output variables](#output-variables-from-github-actions-steps).
-
-:::
-
-```mdx-code-block
-  </TabItem2>
-</Tabs2>
-```
 
 ## Transfer GitHub Actions into Harness CI
 

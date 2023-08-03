@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-07-21T10:00:25
+date: 2023-07-27T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -20,22 +20,89 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 20, 2023
+## Latest - July 27, 2023
 
 <Tabs>
   <TabItem value="What's new">
 
-This release does not include new features.
+#### Feature Flags UI
+
+* When specifying percentages for a rollout, the UI now provides feedback while you edit to let you know the percentage that requires assignment. (FFM-8085)
+
 
   </TabItem>
   <TabItem value="Early access">
 
 This release does not include early access features.
 
+
   </TabItem>
   <TabItem value="Fixed issues">
 
-#### Feature Flags SDKs
+#### Feature Flags UI
+
+* Fixed an issue where the API call was triggered twice in the front end when creating a flag. (FFM-8192)
+
+
+  </TabItem>
+</Tabs>
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### July 24, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Ruby** server SDK has been updated to version **1.1.3** with the following updates.
+
+* Fixed an issue where if no attributes were given in the target, the SDK sometimes threw a TypeError exception when processing rules. (FFM-8725)
+
+#### July 21, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Android** client SDK has been updated to version **1.1.3** with the following updates.
+
+* The SDK's cache has been rewritten to improve its stability. (FFM-8630)
+
+* The gradle wrapper has been included in the SDK repository so that users can build without having to install gradle. (FFM-7868)
+
+#### July 20, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
 
 * The **.NET** server SDK has been updated to version **1.1.9** with the following update.
 
@@ -44,18 +111,6 @@ This release does not include early access features.
 * The **Ruby** server SDK has been updated to version **1.1.2** with the following update.
 
   * There was an issue where if a feature flag was configured to use a custom attribute with the `IN` operator clause, the `IN` operator didn't work correctly. This issue has been fixed. (FFM-8670)
-
-
-
-
-  </TabItem>
-</Tabs>
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### July 19, 2023
 

@@ -46,6 +46,15 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
 
 ```mdx-code-block
   </TabItem>
+
+  <TabItem value="Fossa runner update, July 20, 2023">
+```
+##### Fixed issue
+
+* Updated a Fossa runner image to fix an issue that caused the step to fail with a 400 client error. (CDS-6120, ZD-46601)
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
@@ -501,7 +510,7 @@ This release does not include fixed issues.
 
 ##### New features
 	
-* STO is now supported on Linux (amd64 and arm64 platforms) in [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart). (STO-5314)	
+* STO is now supported on Linux (amd64 and arm64 platforms) in [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). (STO-5314)	
 
 * Instead of using Service Dependencies for Docker-in-Docker configuration, users should use new Background steps. (STO-5268)
 

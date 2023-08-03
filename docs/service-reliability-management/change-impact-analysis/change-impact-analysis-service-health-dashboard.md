@@ -97,6 +97,11 @@ You can customize the metrics list using the following filters:
 - **Anomalous Metrics**: Displays the anomalous metrics captured by the health sources.
 
 
+:::info note
+If you've set up Prometheus as the health source, clicking on a metric entry on the Service Health page takes you directly to the Prometheus metrics dashboard.
+:::
+
+
 #### Logs tab
 
 You can drill down log data using the following filters:
