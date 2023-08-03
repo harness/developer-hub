@@ -12,35 +12,22 @@ This topic describes the permissions available for [API keys](./add-and-manage-a
 
 These permissions are used by API keys to perform various actions through [Harness APIs](./api-quickstart.md). Subsets of these permissions are applied to [API keys and tokens](./add-and-manage-api-keys.md) when you create them. You can create API keys under your own account or service accounts, and the keys and tokens inherit [permissions](../../role-based-access-control/permissions-reference.md) from the associated user or service account.
 
-### Account or org scope
+## Account
 
-The following permissions are available at either the account or organization [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) but not the project [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
-
-
-### Any scope
-
-The following permissions are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
-
-
-## Account details, settings, and license
-
-The following permissions allow an API key to manage Harness account details, settings, and Harness license.
-
-These permissions are only available at the account [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes):
+The following permissions allow an API key to manage a Harness account's details, settings, and license.
 
 * View account: `core_account_view`
 * Edit account: `core_account_edit`
-
-These permissions are available at all [scopes](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes):
-
 * View account [settings](/docs/category/settings): `core_setting_view`
 * Edit account [settings](/docs/category/settings): `core_setting_edit`
 * View license: `core_license_view`
 * Edit license: `core_license_edit`
 
+`core_account_view` and `core_account_edit` are only available at the account [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). The `setting` and `license` permissions are available at any scope.
+
 ## Audits
 
-| **Account/Org/Project** | core\_audit\_view | View Audits |
+The `core_audit_view` permission allows an API key to view audits. It is available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 ## CCM
 
@@ -70,66 +57,74 @@ The following permissions allow an API key to interact with CCM. They are only a
 
 ## Chaos Engineering
 
-The following permissions allow an API key to interact with Chaos Engineering.
+The following permissions allow an API key to interact with Chaos Engineering. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | chaos\_chaoshub\_view | View Chaos Hubs |
-| **Account/Org/Project** | chaos\_chaoshub\_edit | Edit Chaos Hubs |
-| **Account/Org/Project** | chaos\_chaoshub\_delete | Delete Chaos Hubs |
-| **Account/Org/Project** | chaos\_chaosinfrastructure\_view | View Chaos Infrastructures |
-| **Account/Org/Project** | chaos\_chaosinfrastructure\_edit | Edit Chaos Infrastructures |
-| **Account/Org/Project** | chaos\_chaosinfrastructure\_delete | Delete Chaos Infrastructures |
-| **Account/Org/Project** | chaos\_chaosexperiment\_view | View Chaos Experiments |
-| **Account/Org/Project** | chaos\_chaosexperiment\_edit | Edit Chaos Experiments |
-| **Account/Org/Project** | chaos\_chaosexperiment\_delete | Delete Chaos Experiments |
-| **Account/Org/Project** | chaos\_chaosgameday\_view | View Chaos GameDay |
-| **Account/Org/Project** | chaos\_chaosgameday\_edit | Edit Chaos GameDay |
-| **Account/Org/Project** | chaos\_chaosgameday\_delete | Delete Chaos GameDay |
+| Permission ID | Description |
+| --------- | ----------- |
+| `chaos_chaoshub_view` | View Chaos Hubs |
+| `chaos_chaoshub_edit` | Edit Chaos Hubs |
+| `chaos_chaoshub_delete` | Delete Chaos Hubs |
+| `chaos_chaosinfrastructure_view` | View Chaos Infrastructures |
+| `chaos_chaosinfrastructure_edit` | Edit Chaos Infrastructures |
+| `chaos_chaosinfrastructure_delete` | Delete Chaos Infrastructures |
+| `chaos_chaosexperiment_view` | View Chaos Experiments |
+| `chaos_chaosexperiment_edit` | Edit Chaos Experiments |
+| `chaos_chaosexperiment_delete` | Delete Chaos Experiments |
+| `chaos_chaosgameday_view` | View Chaos GameDay |
+| `chaos_chaosgameday_edit` | Edit Chaos GameDay |
+| `chaos_chaosgameday_delete` | Delete Chaos GameDay |
 
 ## Connectors
 
-The following permissions allow an API key to manage connectors.
+The following permissions allow an API key to manage connectors. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | core\_connector\_view | View Connectors |
-| **Account/Org/Project** | core\_connector\_edit | Create or Edit Connectors |
-| **Account/Org/Project** | core\_connector\_access | Access Connectors |
-| **Account/Org/Project** | core\_connector\_delete | Delete Connectors |
+* View connectors: `core_connector_view`
+* Create/edit connectors: `core_connector_edit`
+* Access connectors: `core_connector_access`
+* Delete connectors: `core_connector_delete`
 
 ## Dashboards
 
-| **Account/Org** | core\_dashboards\_view | View Dashboards |
-| **Account/Org** | core\_dashboards\_edit | Edit Dashboards |
+The following permissions allow an API key to manage account dashboards. They are available at either the account or organization [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) but not the project [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
+
+* View dashboards: `core_dashboards_view`
+* Edit dashboards: `core_dashboards_edit`
 
 ## Delegates
 
-The following permissions allow an API key to manage delegates.
+The following permissions allow an API key to manage delegates. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | core\_delegate\_view | View Delegates |
-| **Account/Org/Project** | core\_delegate\_edit | Create or Edit Delegates |
-| **Account/Org/Project** | core\_delegate\_delete | Delete Delegates |
-| **Account/Org/Project** | core\_delegateconfiguration\_view | View Delegate Configurations |
-| **Account/Org/Project** | core\_delegateconfiguration\_edit | Create/Edit Delegate Configurations |
-| **Account/Org/Project** | core\_delegateconfiguration\_delete | Delete Delegate Configurations |
+| Permission ID | Description |
+| --------- | ----------- |
+| `core_delegate_view` | View Delegates |
+| `core_delegate_edit` | Create or Edit Delegates |
+| `core_delegate_delete` | Delete Delegates |
+| `core_delegateconfiguration_view` | View Delegate Configurations |
+| `core_delegateconfiguration_edit` | Create/Edit Delegate Configurations |
+| `core_delegateconfiguration_delete` | Delete Delegate Configurations |
 
 ## Deployment freeze
 
-The following permissions allow an API key to manage deployment freezes
+The following permissions allow an API key to manage deployment freezes. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | core\_deploymentfreeze\_manage | Manage Deployment Freeze |
-| **Account/Org/Project** | core\_deploymentfreeze\_override | Override a Deployment Freeze |
-| **Account/Org/Project** | core\_deploymentfreeze\_global | Global Deployment Freeze |
+* Manage deployment freezes: `core_deploymentfreeze_manage`
+* Override deployment freezes: `core_deploymentfreeze_override`
+* Apply global deployment freeze: `core_deploymentfreeze_global`
 
 ## Environments
 
-The following permissions allow an API key to manage environments and environment groups.
+The following permissions allow an API key to manage environments and environment groups. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | core\_environment\_view | View Environments |
-| **Account/Org/Project** | core\_environment\_edit | Create/Edit Environments |
-| **Account/Org/Project** | core\_environment\_delete | Delete Environments |
-| **Account/Org/Project** | core\_environment\_access | Runtime access to Environments |
-| **Account/Org/Project** | core\_environmentgroup\_view | View Environment Groups |
-| **Account/Org/Project** | core\_environmentgroup\_edit | Create/Edit Environment Groups |
-| **Account/Org/Project** | core\_environmentgroup\_delete | Delete Environment Groups |
-| **Account/Org/Project** | core\_environmentgroup\_access | Runtime access to Environment Groups |
+| Permission ID | Description |
+| --------- | ----------- |
+| `core_environment_view` | View Environments |
+| `core_environment_edit` | Create/Edit Environments |
+| `core_environment_delete` | Delete Environments |
+| `core_environment_access` | Runtime access to Environments |
+| `core_environmentgroup_view` | View Environment Groups |
+| `core_environmentgroup_edit` | Create/Edit Environment Groups |
+| `core_environmentgroup_delete` | Delete Environment Groups |
+| `core_environmentgroup_access` | Runtime access to Environment Groups |
 
 ## Feature Flag
 
@@ -154,100 +149,126 @@ The following permissions allow an API key to interact with the Feature Flag mod
 
 ## Files
 
-The following permissions allow an API key to manage files.
+The following permissions allow an API key to manage files. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | core\_file\_view | View Files |
-| **Account/Org/Project** | core\_file\_edit | Edit Files |
-| **Account/Org/Project** | core\_file\_delete | Delete Files |
-| **Account/Org/Project** | core\_file\_access | Access Files |
+* View files: `core_file_view`
+* Edit files: `core_file_edit`
+* Delete files: `core_file_delete`
+* Access files: `core_file_access`
 
 ## GitOps
 
-The following permissions allow an API key to interact with GitOps.
+The following permissions allow an API key to interact with GitOps. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | gitops\_agent\_view | View GitOps Agents |
-| **Account/Org/Project** | gitops\_agent\_edit | Edit GitOps Agents |
-| **Account/Org/Project** | gitops\_agent\_delete | Delete GitOps Agents |
-| **Account/Org/Project** | gitops\_application\_view | View GitOps Applications |
-| **Account/Org/Project** | gitops\_application\_edit | Edit GitOps Applications |
-| **Account/Org/Project** | gitops\_application\_delete | Delete GitOps Applications |
-| **Account/Org/Project** | gitops\_application\_sync | Syns GitOps Applications |
-| **Account/Org/Project** | gitops\_repository\_view | View GitOps Repositories |
-| **Account/Org/Project** | gitops\_repository\_edit | Edit GitOps Repositories |
-| **Account/Org/Project** | gitops\_repository\_delete | Delete GitOps Repositories |
-| **Account/Org/Project** | gitops\_cluster\_view | View GitOps Clusters |
-| **Account/Org/Project** | gitops\_cluster\_edit | Edit GitOps Clusters |
-| **Account/Org/Project** | gitops\_cluster\_delete | Delete GitOps Clusters |
-| **Account/Org/Project** | gitops\_gpgkey\_view | View GitOps GPG keys |
-| **Account/Org/Project** | gitops\_gpgkey\_edit | Edit GitOps GPG keys |
-| **Account/Org/Project** | gitops\_gpgkey\_delete | Delete GitOps GPG keys |
-| **Account/Org/Project** | gitops\_cert\_view | View GitOps Certificate |
-| **Account/Org/Project** | gitops\_cert\_edit | Edit GitOps Certificate |
-| **Account/Org/Project** | gitops\_cert\_delete | Delete GitOps Certificate |
+| Permission ID | Description |
+| --------- | ----------- |
+| `gitops_agent_view` | View GitOps Agents |
+| `gitops_agent_edit` | Edit GitOps Agents |
+| `gitops_agent_delete` | Delete GitOps Agents |
+| `gitops_application_view` | View GitOps Applications |
+| `gitops_application_edit` | Edit GitOps Applications |
+| `gitops_application_delete` | Delete GitOps Applications |
+| `gitops_application_sync` | Syns GitOps Applications |
+| `gitops_repository_view` | View GitOps Repositories |
+| `gitops_repository_edit` | Edit GitOps Repositories |
+| `gitops_repository_delete` | Delete GitOps Repositories |
+| `gitops_cluster_view` | View GitOps Clusters |
+| `gitops_cluster_edit` | Edit GitOps Clusters |
+| `gitops_cluster_delete` | Delete GitOps Clusters |
+| `gitops_gpgkey_view` | View GitOps GPG keys |
+| `gitops_gpgkey_edit` | Edit GitOps GPG keys |
+| `gitops_gpgkey_delete` | Delete GitOps GPG keys |
+| `gitops_cert_view` | View GitOps Certificate |
+| `gitops_cert_edit` | Edit GitOps Certificate |
+| `gitops_cert_delete` | Delete GitOps Certificate |
 
 ## Governance Policies
 
-The following permissions allow an API key to manage governance policies.
+The following permissions allow an API key to manage governance policies. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | core\_governancePolicy\_edit | Create/Edit Policies |
-| **Account/Org/Project** | core\_governancePolicy\_view | View Policies |
-| **Account/Org/Project** | core\_governancePolicy\_delete | Delete Policies |
-| **Account/Org/Project** | core\_governancePolicySets\_edit | Create/Edit Policy Sets |
-| **Account/Org/Project** | core\_governancePolicySets\_view | View Policy Sets |
-| **Account/Org/Project** | core\_governancePolicySets\_delete | Delete Policy Sets |
-| **Account/Org/Project** | core\_governancePolicySets\_evaluate | Evaluate Policy Sets |
+| Permission ID | Description |
+| --------- | ----------- |
+| `core_governancePolicy_edit` | Create/Edit Policies |
+| `core_governancePolicy_view` | View Policies |
+| `core_governancePolicy_delete` | Delete Policies |
+| `core_governancePolicySets_edit` | Create/Edit Policy Sets |
+| `core_governancePolicySets_view` | View Policy Sets |
+| `core_governancePolicySets_delete` | Delete Policy Sets |
+| `core_governancePolicySets_evaluate` | Evaluate Policy Sets |
 
 ## Organizations
 
-The following permissions allow an API key to manage organizations.
+The following permissions allow an API key to manage organizations. They are available at either the account or organization [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) but not the project [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org** | core\_organization\_view | View Organizations |
-| **Account/Org** | core\_organization\_create | Create Organizations |
-| **Account/Org** |  core\_organization\_edit | Edit Organizations |
-| **Account/Org** | core\_organization\_delete | Delete Organizations |
+* View organizations: `core_organization_view`
+* Create organizations: `core_organization_create`
+* Edit organizations: `core_organization_edit`
+* Delete organizations: `core_organization_delete`
 
 ## Pipelines
 
-The following permissions allow an API key to manage pipelines.
+The following permissions allow an API key to manage pipelines. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | core\_pipeline\_view | View Pipelines |
-| **Account/Org/Project** | core\_pipeline\_edit | Create/Edit Pipelines |
-| **Account/Org/Project** | core\_pipeline\_delete | Delete Pipelines |
-| **Account/Org/Project** | core\_pipeline\_execute | Run Pipelines |
+* View pipelines: `core_pipeline_view`
+* Create/edit pipelines: `core_pipeline_edit`
+* Delete pipelines: `core_pipeline_delete`
+* Run pipelines: `core_pipeline_execute`
 
 ## Projects
 
-The following permissions allow an API key to manage projects. 
+The following permissions allow an API key to manage projects. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | core\_project\_view | View Projects |
-| **Account/Org/Project** | core\_project\_create | Create Projects |
-| **Account/Org/Project** | core\_project\_edit | Edit Projects |
-| **Account/Org/Project** | core\_project\_delete | Delete Projects |
+* View projects: `core_project_view`
+* Create projects: `core_project_create`
+* Edit projects: `core_project_edit`
+* Delete projects: `core_project_delete`
 
-## RBAC and auth
+## RBAC and authorization
 
-The following permissions allow an API key to manage RBAC and auth related resources, such as users, user groups, resource groups, roles, and service accounts.
+The following permissions allow an API key to manage RBAC and authorization related resources, such as users, user groups, resource groups, roles, and service accounts.
 
-| **Account/Org/Project** | core\_usergroup\_view | View User Groups |
-| **Account/Org/Project** | core\_usergroup\_manage | Manage User Groups |
-| **Account/Org/Project** | core\_user\_view | View Users |
-| **Account/Org/Project** | core\_user\_manage | Manage Users |
-| **Account/Org/Project** | core\_role\_view | View Roles |
-| **Account/Org/Project** | core\_role\_edit | Create/Edit Roles |
-| **Account/Org/Project** | core\_role\_delete | Delete Roles |
-| **Account/Org/Project** | core\_resourcegroup\_view | View Resource Groups |
-| **Account/Org/Project** | core\_resourcegroup\_edit | Create/Edit Resource Groups |
-| **Account/Org/Project** | core\_resourcegroup\_delete | Delete Resource Groups |
-| **Account/Org/Project** | core\_user\_invite | Invite Users |
+### Authorization
 
-These are only available at the account [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes):
+Authorization settings management permissions are only available at the account [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
+
 * View authorization settings: `core_authsetting_view`
 * Edit authorization settings: `core_authsetting_edit`
 * Delete authorization settings: `core_authsetting_delete`
 
+### Resource groups
+
+Resource group management permissions are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
+
+* View resource groups: `core_resourcegroup_view`
+* Create/edit resource groups: `core_resourcegroup_edit`
+* Delete resource groups: `core_resourcegroup_delete`
+
+### Roles
+
+Role management permissions are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
+
+* View roles: `core_role_view`
+* Create/edit roles: `core_role_edit`
+* Delete roles: `core_role_delete`
+
+### User groups
+
+User group management permissions are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
+
+* View user groups: `core_usergroup_view`
+* Manage user groups: `core_usergroup_manage`
+
+### Users
+
+User management permissions are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
+
+* Invite users: `core_user_invite`
+* View users: `core_user_view`
+* Manage users: `core_user_manage`
+
 ### Service accounts
 
-The following permissions allow a user to manage [service accounts](../../role-based-access-control/add-and-manage-service-account.md) in Harness. These permissions are only available at the account [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). <!-- conflicting info: table said they are available at all scopes-->
+The following permissions allow an API key or user to manage [service accounts](../../role-based-access-control/add-and-manage-service-account.md) in Harness. These permissions are only available at the account [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). <!-- conflicting info: table said they are available at all scopes-->
 
 * View service accounts: `core_serviceaccount_view`
 * Create/edit service accounts: `core_serviceaccount_edit`
@@ -259,19 +280,21 @@ To manage [API keys](./add-and-manage-api-keys.md) for service accounts, the `co
 
 The following permissions allow an API key to manage secrets.
 
-| **Account** | core\_secret\_view | View Secrets |
-| **Account/Org/Project** | core\_secret\_edit | Create or Edit Secrets |
-| **Account/Org/Project** | core\_secret\_access | Access Secrets |
-| **Account/Org/Project** | core\_secret\_delete | Delete Secrets |
+* View secrets: `core_secret_view`
+* Create/edit secrets: `core_secret_edit`
+* Access secrets: `core_secret_access`
+* Delete secrets: `core_secret_delete`
+
+`core_secret_view` is only available at the account [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). All other secrets permissions are available at all scopes.
 
 ## Services
 
-The following permissions allow an API key to manage services.
+The following permissions allow an API key to manage services. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | core\_service\_view | View Services |
-| **Account/Org/Project** | core\_service\_edit | Create/Edit Services |
-| **Account/Org/Project** | core\_service\_delete | Delete Services |
-| **Account/Org/Project** | core\_service\_access | Runtime access to Services |
+* View services: `core_service_view`
+* Create/edit services: `core_service_edit`
+* Delete services: `core_service_delete`
+* Access services at runtime: `core_service_access`
 
 ## SMTP
 
@@ -283,42 +306,48 @@ The following permissions allow an API key to manage the SMTP configuration. The
 
 ## SRM
 
-The following permissions allow an API key to manage SRM.
+The following permissions allow an API key to manage SRM. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | chi\_monitoredservice\_view | View Monitored Services |
-| **Account/Org/Project** | chi\_monitoredservice\_edit | Create/Edit Monitored Services |
-| **Account/Org/Project** | chi\_monitoredservice\_delete | Delete Monitored Services |
-| **Account/Org/Project** | chi\_monitoredservice\_toggle | Toggle Monitored Services on/off |
-| **Account/Org/Project** | chi\_slo\_view | View SLOs |
-| **Account/Org/Project** | chi\_slo\_edit | Create/Edit SLOs |
-| **Account/Org/Project** | chi\_slo\_delete | Delete SLOs |
+| Permission ID | Description |
+| --------- | ----------- |
+| `chi_monitoredservice_view` | View Monitored Services |
+| `chi_monitoredservice_edit` | Create/Edit Monitored Services |
+| `chi_monitoredservice_delete` | Delete Monitored Services |
+| `chi_monitoredservice_toggle` | Toggle Monitored Services on/off |
+| `chi_slo_view` | View SLOs |
+| `chi_slo_edit` | Create/Edit SLOs |
+| `chi_slo_delete` | Delete SLOs |
 
 ## STO
 
-The following permissions allow an API key to manage STO.
+The following permissions allow an API key to manage STO. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | sto\_testtarget\_view | View Test Targets |
-| **Account/Org/Project** | sto\_testtarget\_edit | Edit Test Targets |
-| **Account/Org/Project** | sto\_exemption\_view | View Exemptions |
-| **Account/Org/Project** | sto\_exemption\_create | Create Exemptions |
-| **Account/Org/Project** | sto\_exemption\_approve | Approve Exemptions |
-| **Account/Org/Project** | sto\_issue\_view | View Security Issues |
-| **Account/Org/Project** | sto\_scan\_view | View Security Scans |
+| Permission ID | Description |
+| --------- | ----------- |
+| `sto_testtarget_view` | View Test Targets |
+| `sto_testtarget_edit` | Edit Test Targets |
+| `sto_exemption_view` | View Exemptions |
+| `sto_exemption_create` | Create Exemptions |
+| `sto_exemption_approve` | Approve Exemptions |
+| `sto_issue_view` | View Security Issues |
+| `sto_scan_view` | View Security Scans |
 
 ## Templates
 
-The following permissions allow an API key to manage templates.
+The following permissions allow an API key to manage templates. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | core\_template\_view | View Templates |
-| **Account/Org/Project** | core\_template\_copy | Copy Templates |
-| **Account/Org/Project** | core\_template\_edit | Edit Templates |
-| **Account/Org/Project** | core\_template\_delete | Delete Templates |
-| **Account/Org/Project** | core\_template\_access | Access Templates |
+| Permission ID | Description |
+| --------- | ----------- |
+| `core_template_view` | View Templates |
+| `core_template_copy` | Copy Templates |
+| `core_template_edit` | Edit Templates |
+| `core_template_delete` | Delete Templates |
+| `core_template_access` | Access Templates |
 
 ## Variables
 
-The following permissions allow an API key to manage variables.
+The following permissions allow an API key to manage variables. They are available at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-| **Account/Org/Project** | core\_variable\_view | View Variables |
-| **Account/Org/Project** | core\_variable\_edit | Edit Variables |
-| **Account/Org/Project** | core\_variable\_delete | Delete Variables |
+* View variables: `core_variable_view`
+* Create/edit variables: `core_variable_edit`
+* Delete variables: `core_variable_delete`
