@@ -64,7 +64,7 @@ Docker service kill fault determines the resilience of an application when a nod
       </tr>
     </table>
 
-### Target Nodes
+### Target Node
 
 Name of the target node. Tune it by using the `TARGET_NODE` environment variable.
 
