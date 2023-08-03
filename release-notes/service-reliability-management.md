@@ -167,6 +167,7 @@ This release does not include any early access features.
 
   - If a monitored service has been updated with new analysis data, it is given higher priority and displayed before other services on the list.
 
+
 #### June 09, 2023, version 79517
 
 ##### What's new
