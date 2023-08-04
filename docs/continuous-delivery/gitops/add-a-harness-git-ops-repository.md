@@ -190,7 +190,7 @@ Credentials Template is not supported for OCI Helm repository.
            { "type": "service_account", "project_id": "google-project-id", "private_key_id": "xxxx70c719xxxxbe7be090083xxxxxd85eca6", "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBAD...ERhb7ipMxMQw6wpbF\n-----END PRIVATE KEY-----\n", .... "universe_domain": "googleapis.com" }
           ```
           - If you select **Google Workload Identity**, you must enter the GCP Workload parameters. For more information, go to [Google Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity).
-          - Project ID is project where registry is located.
+          - Project ID is the project in which the registry is located.
         - For AWS, you can select **AWS Access Credentials** or **AWS Service Account**.
           - If you select **AWS Access Credentials**, you must enter the AWS access key id and AWS secret access key, and optionally AWS session token. [AWS Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
           - If you select **AWS Service Account**, you must enter the service account.
