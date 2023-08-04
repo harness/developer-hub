@@ -22,7 +22,7 @@ If stage 1 has any error it is rolled back and so it is not considered a failure
 
 In order to get stage 2 to execute, you can set the stage 1 **Failure Strategy** to **Ignore Failure**. Rollback will not occur and stage 2's **Conditional Execution** is executed.
 
-In general, if you want to run particular steps on a stage failure, you should add them to stage's **Rollback** section.
+In general, if you want to run particular steps on a stage failure, you should add them to stage's **Rollback** section. If you want a step to execute even when the rollback fails, add the step in the Rollback stage, set the **Conditional Execution** to your requirement, and set the previous step's **Failure Strategy** as **Mark as failure** for all errors.
 
 ## Stage and step priority
 
@@ -99,5 +99,6 @@ Since **Conditional Execution** settings are used to determine if the stage shou
 Deployment status values are a Java enum. The list of values can be seen in the deployments **Status** filter:
 
 ![](./static/step-skip-condition-settings-10.png)
+
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "FAILED"`.
 
