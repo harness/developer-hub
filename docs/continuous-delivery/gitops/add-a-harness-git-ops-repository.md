@@ -185,7 +185,7 @@ Credentials Template is not supported for OCI Helm repository.
     - If you checked  **Refresh Token**, specify a  **Refresh Interval** (for example, 1m, 1h, 12h, or 1d). This is the interval with which you want the token to be refreshed.
     - Based on the url you entered, Harness will detect whether it is Google or AWS registry. And you can select type of authentication for the registry.
         - For Google, you can select **Google Service Account** or **Google Workload Identity**.
-          - If you select **Google Service Account**, you must upload the service [account key file](https://cloud.google.com/iam/docs/keys-create-delete). Paste the contents of file in the **Account Key** field. Contents of a file must be one line. For example:
+          - If you select **Google Service Account**, you must upload the service [account key file](https://cloud.google.com/iam/docs/keys-create-delete). Paste the contents of the file in the **Account Key** field. Contents of the file must be on a single line. For example:
           ```json
            { "type": "service_account", "project_id": "google-project-id", "private_key_id": "xxxx70c719xxxxbe7be090083xxxxxd85eca6", "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBAD...ERhb7ipMxMQw6wpbF\n-----END PRIVATE KEY-----\n", .... "universe_domain": "googleapis.com" }
           ```
