@@ -73,14 +73,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - A new `getAzureKeyVaultClient` API is available to fetch the list of Azure vaults. This option reduces the time it takes for Harness to reflect a newly-created Azure vault. (PL-28392, ZD-44045)
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
-#### July 31, 2023
-
-##### Cloud Cost Management
+## August 02, 2023
+### Cloud Cost Management, version 80301
 
 * AWS AutoStopping proxy enhancement (CCM-13497)
 
@@ -111,6 +105,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     <docimage path={require('./static/ccm-overview-1.png')} width="60%" height="60%" title="Click to view full size image" />
     <docimage path={require('./static/ccm-overview-2.png')} width="60%" height="60%" title="Click to view full size image" />
     <docimage path={require('./static/ccm-overview-3.png')} width="60%" height="60%" title="Click to view full size image" />
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### July 31, 2023
+
 
 ##### Self-Managed Enterprise Edition, version 79819
 
