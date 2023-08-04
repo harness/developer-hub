@@ -46,7 +46,7 @@ This release does not include early access features.
 
 * Previously, the pipeline diagram crashed randomly when scheduling a new experiment. This happened due to the API returning an empty object for nodes. This issue has been fixed. (CHAOS-2148)
 
-* In experiment and chaos infrastructure manifests, tolerationSeconds is now optional if the toleration effect is NoSchedule. (CHAOS-1955)
+* In advanced configuration for experiments and chaos infrastructures, if you add a toleration, tolerationSeconds is now optional if the toleration effect is NoSchedule. (CHAOS-1955)
 
 
   </TabItem>
