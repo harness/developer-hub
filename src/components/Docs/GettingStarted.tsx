@@ -15,7 +15,7 @@ export default function gs() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_harness.svg`} />
-            <h1>Get started</h1>
+            <h1>Get Started</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/tutorials">
