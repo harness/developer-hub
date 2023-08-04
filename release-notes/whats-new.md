@@ -80,7 +80,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### July 31, 2023
 
-##### Cloud Cost Management
+##### Cloud Cost Management, version 80301
 
 * AWS AutoStopping proxy enhancement (CCM-13497)
 

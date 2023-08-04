@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-08-02T10:00
+date: 2023-08-03T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -19,7 +19,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - August 02, 2023, version 80301
+## Latest - August 03, 2023, version 80301
 
 ```mdx-code-block
 <Tabs>
