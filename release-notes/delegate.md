@@ -150,9 +150,9 @@ This release does not include any early access features.
 
   This issue has been fixed. Validation in the API that creates resource groups now checks whether an existing resource group has the same identifier.
 
-- If all eligible delegates are unavailable when a task needs to be executed, the task times out with a message that lists delegates from scopes outside the task’s account-organization-project hierarchy. (PL-39624, ZD-46460, ZD-46513)
+- If the delegates that were eligible to execute a pipeline task (delegates that were within the account-organization-project scope of the pipeline and matched any configured delegate selectors) did not have the required tools or connectivity to execute the task, the task timeout message included delegates that did not meet the eligibility criteria. (PL-39624, ZD-46460, ZD-46513)
 
-   This issue has been fixed.
+  This issue has been fixed. The message displayed on task timeout has been improved for scenarios in which no delegate matches specified selectors and no delegates are found in the account.
 
 - Delegates showed high CPU usage caused by a large number of threads that perform read operations being generated and abandoned. (PL-39797)
 
