@@ -21,15 +21,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - August 4, 2023, version 80120
 
-### Deprecation notices
+#### Deprecation notices
 
-#### Helm 2
+**Helm 2**
 
 import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 <Helmdep />
 
-#### Kustomize 3.4.5
+**Kustomize**
 
 import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
 
@@ -245,7 +245,7 @@ This release does not include early access features.
 
 #### July 18, 2023, version 79916
 
-### Deprecation notice
+#### Deprecation notice
 
 <Helmdep />
 
@@ -377,7 +377,7 @@ This release does not include early access features.
 
 ##### July 21, 2023, Hostfix version 79922
 
-### Fixed issues
+##### Fixed issues
 
 - Some users experienced unrelated errors in the pipeline YAML view, causing problems when attempting to save the pipeline and disabling the toggle to switch to the visual view. (OIP-668)
   
@@ -717,7 +717,7 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
   
   This issue is fixed. The error message has been improved to display the cause of pipeline execution failure. 
 
-### Harness Manager delegate fixed issues
+##### Harness Manager delegate fixed issues
 
 The fixed issues below are available with version 79503 and do not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
 

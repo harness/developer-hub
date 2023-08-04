@@ -7,8 +7,12 @@ import styles from "./styles.module.scss";
 export default function LearnAboutPlatform(): JSX.Element {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const [showMore, setShowMore] = useState(false);
+  const [showMoreRelease, setShowMoreRelease] = useState(false);
   const toggleShowMore = () => {
     setShowMore(!showMore);
+  };
+  const toggleShowMoreRelease = () => {
+    setShowMoreRelease(!showMoreRelease);
   };
   return (
     <section className={styles.learnAboutPlatform}>
@@ -161,7 +165,7 @@ export default function LearnAboutPlatform(): JSX.Element {
           </a>
         </li>
       </ul>
-      {showMore && (
+      {showMoreRelease && (
         <ul className={styles.platformListMore}>
           <li>
             <a href="/release-notes/continuous-integration">
@@ -235,14 +239,17 @@ export default function LearnAboutPlatform(): JSX.Element {
           <li>
             <a href="/release-notes/internal-developer-portal">
               <h4>Internal Developer Portal</h4>
-              <p>New features and fixed issues for the Harness Internal Developer Portal</p>
+              <p>
+                New features and fixed issues for the Harness Internal Developer
+                Portal
+              </p>
             </a>
           </li>
         </ul>
       )}
       <div className={styles.btnShowMore}>
-        <button onClick={toggleShowMore}>
-          See {showMore ? "Less △" : "Module & Platform Release Notes ▽"}
+        <button onClick={toggleShowMoreRelease}>
+          See {showMoreRelease ? "Less △" : "Module & Platform Release Notes ▽"}
         </button>
       </div>
     </section>
