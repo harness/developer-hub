@@ -96,7 +96,7 @@ This release does not include any early access features.
 
   This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- A new `getAzureKeyVaultClient` API is available to fetch the Azure vaults list. (PL-28392, ZD-44045)
+- A new `getAzureKeyVaultClient` API is available to fetch the list of Azure vaults. (PL-28392, ZD-44045)
 
   This option reduces the time it takes for Harness to reflect a newly-created Azure vault.
 
@@ -151,7 +151,7 @@ This release does not include any early access features.
 
   This issue is now fixed.
 
-- The user interface of the approval step is inconsistent with the saved contents of the User Groups field. Sometimes, the field omits some of the previously saved user groups but shows the correct count while, at other times, it lists all of the previously saved user groups but shows a lower count. (PL-39294, ZD-45548)
+- The user interface of the approval step is inconsistent with the saved contents of the User Groups field. Sometimes, the field omits some of the previously saved user groups but shows the correct count. At other times, it lists all of the previously saved user groups but shows a lower count. (PL-39294, ZD-45548)
 
    This issue is now fixed.
 
