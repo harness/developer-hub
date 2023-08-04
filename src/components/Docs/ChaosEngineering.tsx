@@ -37,9 +37,9 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              <a href="/docs/chaos-engineering/get-started/introduction-to-chaos-module">Harness Chaos engineering a.k.a Harness CE </a> provides the end to end tooling required to achieve Continuous Resilience in your
-              Software Development Life Cycle. Using Harness CE, your developers, QA teams and SREs inject chaos experiments in a controlled fashion either to assert resilience against pre-determined faults or to find weaknesses
-              against them. Harness CE helps in faster incident response and recovery times, increases overall service resilience, optimizes costs and finally resulting in the improved customer experience.
+              <a href="/docs/chaos-engineering/get-started/introduction-to-chaos-module">Harness Chaos Engineering (CE)</a> provides the end-to-end tooling required to achieve Continuous Resilience in your
+              Software Development Life Cycle. Using Harness CE, your developers, QA teams, and SREs inject chaos experiments in a controlled fashion, either to assert resilience against pre-determined faults, or to find weaknesses
+              against them. Harness CE helps to achieve faster incident response and recovery times, increases overall service resilience, optimizes costs, and results in an improved customer experience.
             </p>
           </div>
         </div>
