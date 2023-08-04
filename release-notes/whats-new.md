@@ -29,7 +29,21 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   This issue has been fixed. Browser tabs showing those pages now have more specific titles. 
 
-## July 28, 2023
+### Continuous Delivery, version 80120
+
+- Upgraded the Helm binary from version 3.8 to 3.12. (CDS-58931)
+
+  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Upgraded go-template binary to version 0.4.3, which uses go version 1.20. (CDS-58919)
+
+  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Removed Helm version 3.1 from delegates with an immutable image type (image tag yy.mm.xxxxx). (CDS-58892, ZD-47520, ZD-48553)
+
+  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+## July 31, 2023
 
 ### Cloud Cost Management
 
