@@ -109,7 +109,7 @@ This example downloads the AWS CLI for Linux and saves it to the default stage w
                       destination: awscli.zip ## File name to assign the downloaded file.
 ```
 
-Expanding on this example, you could use the following commands in a subsequent [Run step](../run-ci-scripts/run-a-script-in-a-ci-stage.md) to unzip and install this tool:
+Expanding on this example, you could use the following commands in a subsequent [Run step](../run-ci-scripts/run-step-settings.md) to unzip and install this tool:
 
 ```
 unzip awscli.zip

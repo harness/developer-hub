@@ -34,7 +34,9 @@
 
    Tax is calculated once you enter your billing zip code. This can take up to 10 seconds to calculate.
 
-8. Select **Subscribe and Pay** to submit payment. Harness doesn't store payment information. Payments are handled by Stripe.
+   You must save a credit card to proceed with payment. You must provide a credit card to proceed with payment. If you enter a new card during checkout, that becomes the new default payment method for your account. You can change your saved card by [updating your billing information](/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt#update-your-billing-information).
+
+8. Select **Subscribe and Pay** to submit payment. Payments are handled by Stripe.
 
 :::info How is the total cost calculated?
 

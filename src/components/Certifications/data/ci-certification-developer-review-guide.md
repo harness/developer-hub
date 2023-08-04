@@ -4,7 +4,7 @@
 | :- | :- |
 |**1. Harness Basics, Platform Entities, and Key Concepts**||
 |Describe Continuous Integration Fundamentals|[Harness CI](https://developer.harness.io/tutorials/ci-pipelines/fastest-ci)|
-|Understand Artifacts And Packages|[CI Concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts)|
+|Understand Artifacts And Packages|[What is Harness CI](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts)|
 |Utilize The "Pipeline, Stages, Step Groups, Steps" Schema|[Harness Key Concepts](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts)|
 |Illistruate Harness Hierarchy "Account, Organizations, Projects"|[Connect to an Artifact Repo](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts)|
 |Describe Artifact Repos|[Connect to an Artifact Repo](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts)|
@@ -13,7 +13,7 @@
 |Configure Build Infrastructures and Platforms|[Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/)|
 |Describe Different Options For CI Build Infrastructures|[Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/)|
 |Harness Cloud - Describe Supported Platform And Os (Linux, Mac, Windows)|[Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/)|
-|Harness Cloud - Test Build Infrastructure On Harness Cloud|[Get started with Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart)|
+|Harness Cloud - Test Build Infrastructure On Harness Cloud|[Get started with Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure)|
 |Describe Available Connectors |[Connectors](https://developer.harness.io/docs/category/connectors)|
 |Configure a Git Connector| [GitHub connector settings reference](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference) |
 |Configure a Docker Hub Connector|[Connect to Harness Container Image Registry Using Docker Connector](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)|
@@ -43,7 +43,7 @@
 |Describe Remote Docker Layer Caching|[Optimizing CI Build Times](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)|
 |Configure Remote Docker Layer Caching|[Optimizing CI Build Times](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)|
 |Describe Harness Test Intelligence|[Enable Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence/)|
-|Configure Harness Test Intelligence|[Test Intelligence](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts)|
+|Configure Harness Test Intelligence|[Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence)|
 |Describe Triggers for CI |[Trigger Pipelines using Git Events](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/)|
 |Configure Triggers for CI |[Configure Triggers for CI](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/)|
 |Configure Custom Webhook Triggers |[Trigger deployments using custom triggers](https://developer.harness.io/docs/platform/Triggers/trigger-deployments-using-custom-triggers)|
@@ -59,11 +59,11 @@
 |Advanced Options - Describe Selective Stage(s) Executions|[Run Specific Stages in Pipeline](https://developer.harness.io/docs/platform/Pipelines/run-specific-stage-in-pipeline)|
 |Describe Notifications - Based on Pipeline Events|[Add a Pipeline Notification Strategy](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events/)|
 |Configure Notifications - Based on Pipeline Events|[Add a Pipeline Notification Strategy](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events/)|
-|Describe How To Run Steps on Host vs Containers|[CI concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts)|
+|Describe How To Run Steps on Host vs Containers|[What is Harness CI](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts)|
 |Configure To Send PR Status Updates|-|
 |Describe How To Test For Swimlanes With Harness Run Test Step|[Build, test, and publish a Docker Image for a Java application](https://developer.harness.io/tutorials/ci-pipelines/build/java)|
 |Configure Run Test Step|[Build, test, and publish a Docker Image for a Java application](https://developer.harness.io/tutorials/ci-pipelines/build/java)|
-|Configure Outputs From One Step To Another|[Run Tests step settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings/)|
+|Configure Outputs From One Step To Another|[Use Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables)|
 |Step Library - Describe Save And Restore Cache In The Pipeline|[Share and Cache CI Data](https://developer.harness.io/docs/category/share-and-cache-ci-data)|
 |Step Library - Configure Save And Restore Cache In The Pipeline|[Share and Cache CI Data](https://developer.harness.io/docs/category/share-and-cache-ci-data)|
 |Step Library - Describe Background Steps|[Background step settings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/)|
@@ -87,8 +87,8 @@
 |Elaborate on Anonymous Docker Image pulls and Their Risks |[Use a Docker Connector](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials)|
 |Utilize Images When Shells Are Not Available|-|
 |Debug A Pipeline Step By Running The Step Locally (Troubleshooting)|[Troubleshoot CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci)|
-|Describe Harness Cloud Characteristics And Its Advantages|[Hosted Builds on VM Quickstart](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart)|
+|Describe Harness Cloud Characteristics And Its Advantages|[Hosted Builds on VM Quickstart](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure)|
 |Configure Git Experience for CI (pipeline)|[Harness Git Experience Quickstart](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/)|
 |Credentials And Permissions - Configure Or Elaborate On User And Groups For Acc, Org, And Project Levels|[Role-based Access Control](https://developer.harness.io/docs/platform/Role-Based-Access-Control/rbac-in-harness)|
 |Do a Basic Delegate Installation|[Install Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/)|
-|Set Container Resources - Limit Memory and Limit CPU|[Run Step Settings](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#set-container-resources)|
+|Set Container Resources - Limit Memory and Limit CPU|[Use Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#set-container-resources)|

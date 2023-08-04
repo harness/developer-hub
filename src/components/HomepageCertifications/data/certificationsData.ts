@@ -10,7 +10,7 @@ export const certifications: CardItem[] = [
       description:
         "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way.",
       link: "/certifications/continuous-delivery",
-      numberOfCerts: 2,
+      numberOfCerts: 3,
     },
     {
       title: "Continuous Integrations Certifications",
@@ -18,6 +18,6 @@ export const certifications: CardItem[] = [
       description:
         "Continuous Integration focuses on building and testing your code. Your Continuous Integration pipeline should provides a bird's-eye view and analyze the root causes of issues.",
       link: "/certifications/continuous-integration",
-      numberOfCerts: 1,
+      numberOfCerts: 2,
     },
   ];

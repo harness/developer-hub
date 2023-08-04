@@ -12,7 +12,7 @@ This guide describes the important differences between Harness CI and GitLab CI 
 
 Harness CI provides proprietary technologies, like Cache Intelligence and Test Intelligence, which make Harness CI [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools.
 
-* Harness [Test Intelligence (TI)](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With IT, it's possible to reduce build cycle times by up to 90% without compromising application quality.
+* Harness [Test Intelligence (TI)](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With TI, it's possible to reduce build cycle times by up to 90% without compromising application quality.
 * Harness [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md) is a proprietary technology that reduces pipeline execution time by automatically caching well-known directories for languages like Java and Node.js.
 
 In addition, you can [use plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) to include GitHub Actions, Bitrise Integrations, Jira updates, and more in your Harness CI pipelines.
@@ -77,7 +77,7 @@ step1:
 </Tabs>
 ```
 
-For more information about Harness terminology, features, and pipeline components, go to [CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts) and [CI pipeline basics](../ci-quickstarts/ci-pipeline-basics.md).
+For more information about Harness terminology, features, and pipeline components, go to [CI pipeline basics](../ci-quickstarts/ci-pipeline-basics.md).
 
 ### Jobs and steps
 
@@ -672,7 +672,6 @@ trigger:
 
 Review the following information before proceeding with migration:
 
-* [CI Concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts)
 * [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md)
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
 * [Speed up Harness CI pipelines using parallelism](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)

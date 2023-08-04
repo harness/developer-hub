@@ -18,27 +18,27 @@ A Harness Monitored Service is a combination of service and environment. Harness
 * Changes such as deployments, incidents such as PagerDuty, and infrastructure changes such as Kubernetes events and auditing.
 * Health trend deviations using logs and metrics obtained from the APM and logging tools.
 
-The following steps explain how to create a monitored service, and define service and environments for tracking code errors and exceptions: 
+The following steps explain how to create a monitored service, and define service and environments for tracking code errors and exceptions:
 
 1. In your Harness project, navigate to the **Continuous Error Tracking** module, and then select **Monitored Services**.
 
-2. Select **+ New Monitored Service**.  
-   
+2. Select **+ New Monitored Service**.
+
    The Create New Monitored Service page appears.
 
 3. Select a service. A Service represents your microservices and other workloads. To add a new service:
-   
+
     1. Select **+ Add New**.
     2. In the New Service dialog, enter a **name** for the service, optional **tag**, and optional **description**, and then select **Save**.
 
 4. Select an environment where the Harness Service is deployed (QA, prod, and so on). To create a new environment:
     1. Select + Add New.
     2. In the Create Environment dialog, enter a name for the new environment, select an environment type such as production or pre-production, and then select **Save**.
-   
+
    Harness auto creates the monitored service name by combining the service and environment names that you have entered.
-   
-5. Select **Save**.  
-   
+
+5. Select **Save**.
+
    The new monitored service appears on the Monitored Services page.
 
 
@@ -47,16 +47,16 @@ The following steps explain how to create a monitored service, and define servic
 To create a token, do the following:
 
 1. Expand **PROJECT SETUP** and then select **Tokens**.
-   
+
 2. On the Code Error Settings page, select **Generate New Token**.
-       
+
      ![Create Token](./static/et-quickstart-token-navigate.png)
-    
-3. In the New Token dialog, enter a name for the token and select **Generate**.  
-   
+
+3. In the New Token dialog, enter a name for the token and select **Generate**.
+
    A new authentication token is generated and displayed in the **Key** field.
 
-4. Copy the token to clipboard. This token is used in the Error Tracking Agent configuration file.  
+4. Copy the token to clipboard. This token is used in the Error Tracking Agent configuration file.
 
     ![Generate new token](./static/et-quickstart-generate-new-token.png)
 
@@ -81,7 +81,7 @@ This topic provides details about:
 
 ### Compatibility and Requirements
 
-To learn about supported operating systems, Java Virtual Machine (JVM), and JVM containers, go to [Continuous Error Tracking Agent compatibility](../agent-compatibility.md).
+To learn about supported operating systems, Java Virtual Machine (JVM), and JVM containers, go to [Continuous Error Tracking Agent compatibility](/docs/continuous-error-tracking/whats-supported).
 
 
 ### Install an Error Tracking Agent
@@ -131,8 +131,8 @@ This option lets you install the Error Tracking Agent as a standalone. Perform t
 
 ```
 ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1/
-ENV ET_APPLICATION_NAME=yourapp  
-ENV ET_DEPLOYMENT_NAME=1  
+ENV ET_APPLICATION_NAME=yourapp
+ENV ET_DEPLOYMENT_NAME=1
 ENV ET_ENV_ID=env1
 ENV ET_TOKEN=b34*****-****-****-****-***********42a
 ```
@@ -162,23 +162,23 @@ RUN wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar
   For example:
 ```
 ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1
-ENV ET_APPLICATION_NAME=yourapp  
-ENV ET_DEPLOYMENT_NAME=1  
-ENV ET_ENV_ID=env1 
+ENV ET_APPLICATION_NAME=yourapp
+ENV ET_DEPLOYMENT_NAME=1
+ENV ET_ENV_ID=env1
 ENV ET_TOKEN=b34*****-****-****-****-***********42a
 ```
 1. Add JVM arguments to the Docker image, which instructs the JVM to load the Agent. This is done by adding `agentpath:/harness/lib/libETAgent.so`to the application `ENTRYPOINT`. For example, `ENTRYPOINT java -agentpath:/harness/lib/libETAgent.so -jar yourapp.jar`. This parameter can also be specified using `JAVA_TOOL_OPTIONS`, for example `ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"`.
 2. Once the Dockerfile is updated, rebuild the Docker image and restart any containers running on it to start monitoring using Error Tracking.
 
 ```
- FROM openjdk:8-jre  
-ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"  
-ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1/  
-ENV ET_APPLICATION_NAME=yourapp  
-ENV ET_DEPLOYMENT_NAME=1  
-ENV ET_ENV_ID=env1  
-ENV ET_TOKEN=b34*****-****-****-****-***********42a  
-RUN wget -qO- <https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz> | tar -xz  
+ FROM openjdk:8-jre
+ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"
+ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1/
+ENV ET_APPLICATION_NAME=yourapp
+ENV ET_DEPLOYMENT_NAME=1
+ENV ET_ENV_ID=env1
+ENV ET_TOKEN=b34*****-****-****-****-***********42a
+RUN wget -qO- <https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz> | tar -xz
 ENTRYPOINT java -jar yourapp.jar
 ```
 
@@ -242,17 +242,21 @@ If the agent is already installed as part of your docker image, simply set the c
   </TabItem>
 </Tabs>
 
+:::info note
+
+If you are using the Self-Managed Enterprise Edition, make sure to set the ET_COLLECTOR_URL to your Load Balancer URL. For instance, if your Helm value is `loadbalancerURL: https://example.harness.io/`, then set the `ET_COLLECTOR_URL` as `ET_COLLECTOR_URL=https://example.harness.io/et-collector`.
+
+:::
 
 ## Verify Agent connection
 
 After installing Error Tracking Agent, you should verify that it is connected to Harness. To verify the Error Tracking Agent connection, do the following:
 
-1. Expand **PROJECT SETUP** and then select **Agents**.  
- 
+1. Expand **PROJECT SETUP** and then select **Agents**.
+
     A comprehensive list of Error Tracking Agents is displayed along with the information such as service name, environment, deployment version, Agent version, Agent status, token name, and so on. Ensure that the Agent that you installed is listed, and the status is **CONNECTED**.
 
 
 ## Next steps
 
 Identify and prioritize error events using [Events dashboard](./cet-event-dashboard.md).
-

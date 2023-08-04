@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 title: Ruby application
 description: Use a CI pipeline to build and test a Ruby application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]

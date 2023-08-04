@@ -60,11 +60,8 @@ export default function CloudCostManagement() {
           </div>
           <h1>Cloud Cost Management</h1>
           <div>
-            Optimizing performance through hosted builds, caching, and
-            proprietary Test Intelligence™. Designed to be blazing fast, simple,
-            and open to help make developers' lives easier. Plus, all the
-            scalable features needed to meet enterprise demands – with developer
-            autonomy alongside software efficiency , reliability, and security.
+          Save time, reduce effort, and save on your cloud bill with intelligent cloud cost automation.
+          Detect and stop cloud cost anomalies as they occur, to avoid unpleasant billing surprises with a FinOps approach.
           </div>
         </div>
         <div className={styles.right}>

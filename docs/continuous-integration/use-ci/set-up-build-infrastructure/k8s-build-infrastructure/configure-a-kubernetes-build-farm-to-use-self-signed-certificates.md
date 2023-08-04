@@ -98,7 +98,7 @@ If your builds fail due to a problem connecting to the scm service, add `SCM_SKI
 
 If the volumes are not getting mounted to the build containers, or you continue to see certificate errors in your pipeline, try the following:
 
-1. Add a [Run step](../../run-ci-scripts/run-a-script-in-a-ci-stage.md) that prints the contents of the destination path. For example, you can include a command such as:
+1. Add a [Run step](../../run-ci-scripts/run-step-settings.md) that prints the contents of the destination path. For example, you can include a command such as:
 
    ```
    cat /kaniko/ssl/certs/additional-ca-cert-bundle.crt
