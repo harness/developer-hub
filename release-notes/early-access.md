@@ -20,9 +20,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - You can now configure multiple Helm Charts in the manifests. This provides feature parity with Harness FirstGen. Helm Charts can now be configured from Helm Repository as Artifacts that allow the users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service. The Feature Flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG` needs to be enabled for this feature to work in your environment. (CDS-70209)
 
-## July 28, 2023
+## Previous releases
 
-### Continuous Integration, version 5106
+<details>
+<summary>2023 releases</summary>
+
+#### July 28, 2023
+
+##### Continuous Integration, version 5106
 
 **Enable Cache Intelligence in the Visual editor. (CI-8571)**
 
@@ -30,9 +35,9 @@ The **Enable Cache Intelligence** UI field is behind the feature flag `CI_CACHE_
 
 You can enable [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to the Harness Cloud build infrastructure.
 
-## July 18, 2023
+#### July 18, 2023
 
-### Continuous Delivery, version 79916
+##### Continuous Delivery, version 79916
 
 - Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources). (CDS-71711)
 
@@ -42,30 +47,25 @@ You can enable [Cache Intelligence](/docs/continuous-integration/use-ci/caching-
 
   Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails.
 
-### Harness Delegate, version 79904
+##### Harness Delegate, version 79904
 
 - Harness added the ability to acquire only the configured maximum number of tasks. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it. You can configure the maximum number of tasks using the Env variable `DELEGATE_TASK_CAPACITY`. For example, if you set `DELEGATE_TASK_CAPACITY` to a value of 2 and execute 6 tasks in parallel, Harness Manager executes only 2 tasks at a time. If you don't configure `DELEGATE_TASK_CAPACITY`, Harness Manager executes all 6 tasks in parallel. (PL-39351)
 
    This functionality is behind a feature flag, `DELEGATE_TASK_CAPACITY_CHECK`. When the feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
 
-## July 12, 2023
+#### July 12, 2023
 
-### Continuous Integration, version 5003
+##### Continuous Integration, version 5003
 
 The `CI_LE_STATUS_REST_ENABLED` feature has been rolled back to early access and disabled by default due to a discovered instability that caused the [CD Container step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step/) to fail. This feature causes CI steps to send status updates to the [Harness Manager](/docs/getting-started/harness-platform-architecture#harness-platform-components) directly by HTTP, rather than through a delegate.
 
 This feature flag is now disabled by default and must be re-enabled if your CI-to-Harness-Manager communications need to support client connections with additional certificates. (CI-8338)
 
-### Security Testing Orchestration, version 1.61.1
+##### Security Testing Orchestration, version 1.61.1
 
 You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities.
 
 This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more information, go to [Set up target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines).
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 28, 2023
 

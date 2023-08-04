@@ -31,62 +31,72 @@ Pod network duplication:
       <tr>
         <td> NETWORK_INTERFACE </td>
         <td> Name of the ethernet interface considered for shaping traffic. </td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication#network-interface">network interface</a></td>
+        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication#network-interface">network interface</a>.</td>
       </tr>
       <tr>
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to network latency. Applicable for <code>containerd</code> and <code>crio</code> runtime only.</td>
-        <td> With these runtimes, if the value is not provided, the fault injects chaos into the first container of the pod. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container </a></td>
+        <td> With these runtimes, if the value is not provided, the fault injects chaos into the first container of the pod. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a>.</td>
       </tr>
       <tr>
         <td> NETWORK_PACKET_DUPLICATION_PERCENTAGE </td>
         <td> Packet duplication (in percentage).</td>
-        <td> Default: 100 %. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication#network-packet-duplication">network packet duplication </a></td>
+        <td> Default: 100 %. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication#network-packet-duplication">network packet duplication</a>.</td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster. </td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime </a> </td>
+        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime</a>. </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path to the containerd or crio or docker socket file. </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication#container-runtime-and-socket-path">socket path</a></td>
+        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication#container-runtime-and-socket-path">socket path</a>.</td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration for which to insert chaos (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a> </td>
+        <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>. </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to pod network corruption.</td>
-        <td> If the values are not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a></td>
+        <td> If the values are not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
       </tr> 
       <tr>
         <td> DESTINATION_IPS </td>
         <td> IP addresses of the services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted. Comma-separated IPs or CIDRs can be provided. </td>
-        <td> If these values are not provided, the fault induces network chaos for all IPs or destinations. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication#destination-ips-and-destination-hosts">destination IPs </a></td>
+        <td> If these values are not provided, the fault induces network chaos for all IPs or destinations. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication#destination-ips-and-destination-hosts">destination IPs </a>.</td>
       </tr>  
       <tr>
         <td> DESTINATION_HOSTS </td>
         <td> DNS names or FQDN names of the services whose accessibility is impacted. </td>
-        <td> If the values are not provided, the fault induces network chaos for all IPs or destinations or DESTINATION_IPS if already defined. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication#destination-ips-and-destination-hosts">destination hosts </a></td>
-      </tr>      
+        <td> If the values are not provided, the fault induces network chaos for all IPs or destinations or DESTINATION_IPS if already defined. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication#destination-ips-and-destination-hosts">destination hosts</a>.</td>
+      </tr>
+      <tr>
+        <td> SOURCE_PORTS </td>
+        <td> Ports of the target application, the accessibility to which is impacted </td>
+        <td> Comma separated port(s) can be provided. If not provided, it will induce network chaos for all ports. </td>
+      </tr>  
+      <tr>
+        <td> DESTINATION_PORTS </td>
+        <td> Ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
+        <td> Comma separated port(s) can be provided. If not provided, it will induce network chaos for all ports. </td>
+      </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of the total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage </a></td>
+        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a>.</td>
       </tr> 
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
+        <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
       </tr>
     </table>
 
@@ -162,6 +172,45 @@ spec:
               value: "nginx.default.svc.cluster.local,google.com"
             - name: TOTAL_CHAOS_DURATION
               value: "60"
+```
+
+### Source And Destination Ports
+
+By default, the network experiments disrupt traffic for all the source and destination ports. The interruption of specific port(s) can be tuned via `SOURCE_PORTS` and `DESTINATION_PORTS` ENV.
+
+- `SOURCE_PORTS`: It contains ports of the target application, the accessibility to which is impacted
+- `DESTINATION_PORTS`: It contains the ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted
+
+Use the following example to tune this:
+
+[embedmd]:# (./static/manifests/pod-network-duplication/source-and-destination-ports.yaml yaml)
+```yaml
+# it inject the chaos for the egress traffic for specific ports
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-network-duplication
+    spec:
+      components:
+        env:
+        # supports comma separated source ports
+        - name: SOURCE_PORTS
+          value: '80'
+        # supports comma separated destination ports
+        - name: DESTINATION_PORTS
+          value: '8080,9000'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
 ```
 
 ### Network interface
