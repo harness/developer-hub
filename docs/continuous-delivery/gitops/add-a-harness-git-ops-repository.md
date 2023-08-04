@@ -183,7 +183,7 @@ Credentials Template is not supported for OCI Helm repository.
       - for AWS you must put `AWS`, and for Google you put `oauth2accesstoken` for username.
       - In **Password** enter your short-lived token. If you have an [External Secrets Operator](https://docs.harness.io/article/3xqjzq2q2q-external-secrets-operator), a **Refresh token** checkbox appears. Enable the checkbox.
     - If you checked  **Refresh Token**, specify a  **Refresh Interval** (for example, 1m, 1h, 12h, or 1d). This is the interval with which you want the token to be refreshed.
-    - Based on the url you entered, Harness will detect whether it is Google or AWS registry. And you can select type of authentication for the registry.
+    - Harness uses the URL you enter to determine whether the registry is a Google or AWS registry. You can select the type of authentication that you want to use with the registry.
         - For Google, you can select **Google Service Account** or **Google Workload Identity**.
           - If you select **Google Service Account**, you must upload the service [account key file](https://cloud.google.com/iam/docs/keys-create-delete). Paste the contents of the file in the **Account Key** field. Contents of the file must be on a single line. For example:
           ```json
