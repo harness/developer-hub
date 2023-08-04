@@ -105,10 +105,17 @@ To filter the nodes:
 1. In **Continuous Verification Type**, select a type that matches your deployment strategy. The following options are available:
    
    - **Auto**: Harness automatically selects the best continuous verification type based on the deployment strategy.
+   
    - **Rolling Update**: Rolling deployment is a deployment technique that gradually replaces old versions of a service with a new version by replacing the infrastructure on which the service runs. Rolling updates are useful in situations where a sudden changeover might cause downtime or errors.
+   
    - **Canary**: Canary deployment involves a two-phased deployment. In phase one, new pods and instances with the new service version are added to a single environment. In phase two, a rolling update is performed in the same environment. Canary deployment helps to detect issues with the new deployment before fully deploying it.
+   
    - **Blue Green**: Blue-green deployment is a technique used to deploy services to a production environment by gradually shifting user traffic from an old version to a new one. The previous version is referred to as the blue environment, while the new version is known as the green environment. Upon completion of the transfer, the blue environment remains on standby in case of a need for rollback or can be removed from production and updated to serve as the template for future updates.
-   - **Load Test**: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment.
+   
+   - **Load Test**: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment. When you choose "Load Test," you must also choose one of these options:
+      - **Last Successful Job Run**: Compare the test data with the data from the previous successful verification.
+[Set successful verification as a baseline for load testing](#set-successful-verification-as-a-baseline)
+
 
 2. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. When the sensitivity is set to **High**, any anomaly, no matter how small, will be treated as a verification failure. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
    
@@ -268,3 +275,38 @@ The following screenshots show successful and failed verifications in a deployme
 ![Failed verification step](./static/cv-sumologic-pipeline-fail.png)
 
 
+## Set a pinned baseline
+
+:::info note
+Currently, this feature is behind the feature flag `SRM_ENABLE_BASELINE_BASED_VERIFICATION`. Contact Harness Support to enable the feature.
+:::
+
+You can set specific verification in a successful pipeline execution as a baseline. This is available with **Load Testing** as the verification type.
+
+
+### Set successful verification as a baseline
+
+To set a verification as baseline for future verifications:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline you want to use as the baseline.
+   
+2. Select the successful pipeline execution with the verification that you want to use as the baseline.
+   
+   The pipeline execution is displayed.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   The selected verification is now set as the baseline for future verifications.
+
+
+### Replace an existing pinned baseline
+
+To use a new baseline from a pipeline and replace the existing pinned baseline, follow these steps:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline from which you want to remove the baseline.
+
+2. Select the successful pipeline execution with the verification that you have previously pinned as the baseline.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   A confirmation alert message appears, asking if you want to replace the existing pinned baseline with the current verification. After you confirm, the existing pinned baseline gets replaced with the current verification.
