@@ -1,5 +1,5 @@
 ---
-sidebar_position: 66
+sidebar_position: 5
 title: Pipeline Triggers
 description: Tutorial to get started with Triggers in Harness Pipelines.
 ---
