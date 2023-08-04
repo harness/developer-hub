@@ -1,6 +1,6 @@
 ---
-title: Add and manage resource groups
-description: This document shows steps to create and manage resource groups and assign them to user groups.
+title: Manage resource groups
+description: Use resource groups for RBAC in Harness
 sidebar_position: 30
 helpdocs_topic_id: yp4xj36xro
 helpdocs_category_id: w4rzhnf27d
@@ -8,128 +8,290 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-A Resource Group is a set of Harness resources that the permission applies to. Permissions given to a user or user group as part of a Role, apply to the set of resources that are part of the Resource Group.
+Resource groups are an [RBAC component](./rbac-in-harness#rbac-components) that define the objects that a user or service account can access. Objects are any Harness resource, including projects, pipelines, connectors, secrets, delegates, environments, users, and more. When you assign a resource groups to a user, user group, or service account, the access defined in the resource group is granted to the target user, group, or service account.
 
-This topic will explain the steps to create and manage Resource Groups within Harness System.
+Harness includes some [built-in resource groups](#built-in-resource-groups), and you can [create custom resource groups](#create-a-resource-group), which are useful for limited and fine-grained access control.
 
-### Before you begin
+## Roles and resource groups work together
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* Make sure you have **Create/Edit/Delete** Permissions for Resource Groups.
+[Roles](./add-manage-roles) are applied together with resource groups to create a complete set of permissions and access. For example:
 
-### Visual Summary
+* You can assign the **Organization Admin** role with a resource group that is limited to specific projects or specific organizations.
+* You can assign the **Pipeline Executor** role with a resource group that only allows access to specific pipelines, rather than all pipelines in the project.
 
-Here is a quick overview of Resource Groups at various scopes:
+:::caution Least privilege
 
-* **Account Only** - To include all the resources within the scope of the Account. This does not include resources within the scope of Org or Project.
-* **All (including all Organizations and Projects)** - To include all the resources within the scope of the Account, as well as those within the scope of the Orgs and Projects in this Account.
-* **Specified Organizations (and their Projects)** - To include all the resources within the scope of specific Organizations and their Projects.
+RBAC is additive. The total expanse of a user/service account's permissions and access is the sum of all the roles and resource groups from all user groups they belong to, as well as any roles and resource groups assigned directly to them as an individual user/service account.
 
-![](./static/add-resource-groups-32.png)
-### Review: Resource Groups and Scopes
+It is important to follow the principle of least privilege (PoLP). This is a security principle that means users are granted the absolute minimum access/permissions necessary to complete their tasks and nothing more.
 
-A Resource Group can contain any of the following:
+While Harness includes some built-in roles and resource groups, to ensure least privilege, consider:
 
-* All or selected resources from the list of resources in the Resource Group's scope - For example, a Resource Group RG1 created within Account Acc1 can contain all or selected resources created within the same Account Acc1.
-* All or selected resources in the scope in which it is defined. For example, all Account level resources, all Account Level Secret Managers, all Connectors in Org A.
-* All or specific resources for the entire account - For example, a Resource Group RG1 within Account Acc1 can contain all or selected resources created within Acc1, Organizations within Acc1, Projects within Organizations in Acc1.![](./static/add-resource-groups-33.png)
+* Being selective in the way you apply roles and resource groups.
+* Creating your own roles and resource groups as needed for refined access control.
 
-Harness includes the following built-in Resource Groups at the Account, Org, and Project scope:
+:::
 
+## Scopes and refinement
 
+Resource groups are scope-specific, and you can create them at any [scope](./rbac-in-harness#permissions-hierarchy-scopes). For example, a resource group created at the project scope is only available in that project.
 
-|  |  |  |
-| --- | --- | --- |
-| Scope | Resource Group | Description |
-| Account | **All Resources Including Child Scopes** | Includes all the resources within the scope of the Account, as well as those within the scope of the Orgs and Projects in this Account. |
-| Account | **All Account Level Resources** | Includes all the resources within the scope of the Account. This does not include resources within the scope of Org or Project. |
-| Org | **All Resources Including Child Scopes** | Includes all the resources within the scope of the Org, as well as those within the scope of all the Projects created within this Org. |
-| Org | **All Organization Level Resources** | Includes all the resources within the scope of the Org. This does not include resources within the scope of Projects. |
-| Project | **All Project Level Resources** | Includes all the resources within the scope of the Project. |
+In addition to the scope at which you create the resource group, each resource group includes **Resource Scope** options that control the scope of access *within the resource group's overall scope*. For example, if you create a resource group at the org level, you can allow access to all projects under that organization, or you can select specific projects.
 
+The scope at which you create a resource group determines which **Resource Scope** options you can apply to that group. For example, if you create a resource group at the project scope, it is impossible to select org or account **Resource Scopes** for that resource group.
 
-#### Access control scenarios
+![](./static/rbac-in-harness-03.png)
 
-<!--In this example, the **Resource Scope** is locked to **Project only**, which means the resource group can only access the selected resources within this project. If your pipelines use connectors or other resources at a higher scope, you would need to configure RBAC at the account or org scope and then refine access by project. Similarly, if you wanted to create a user group that could run any pipeline in an organization or account, you would need to create the role, resource group, and user group at the account scope (by navigating to **Account Settings** and then selecting **Access Control**). Note that some refinement options, such as selecting specific pipelines, aren't available at higher scopes.-->
+### Resource scope options
 
-<!--After selecting resources, you can customize access further by configuring specific access for each resource type. For example, you can limit access to specific pipelines or connectors only. -->
+If a resource group includes **All Account/Organization/Project Level Resources**, it provides access to the resources at that specified level and nothing lower. For example, **All Account Level Resources** grants access to the account-level resources but nothing at the organization or project levels.
 
-   |  Resource scope     |  Description     |
-   |  ---  |  ---  |
-   |  Grant execute permission on specific pipelines.    | Select specific pipelines in the resource group at the project level.<br/>**Note:** You cannot select specific pipelines when resource groups are created at the org or account scope. |
-   |  Grant execute permissions on all the pipelines in a specific project.    |   Select all the pipelines in the resource group created at the project level.    |
-   |  Grant execute permissions on all the pipelines in all the projects within an org.    |   Select scope of the resource group created at org level as `All` and select all the pipelines.    |
-   |  Grant execute permissions on all the pipelines in the entire account.    |  Select scope of the resource group created at account level as `All` and selecting all the pipelines.     |
+```mermaid
+flowchart TD
+    subgraph All Account Level Resources
+    A[Account]-->M[Resource]
+    end
+    A--->B[Org]
+    A--->C[Org]
+    B-->N[Resource]
+    C-->F[Resource]
+    B---->D[Project]
+    C---->E[Project]
+    D-->G[Resource]
+    D-->H[Resource]
+    E-->I[Resource]
+    E-->J[Resource]
+```
 
-   The following table explains the ways in which you can grant access permission for the required resources: 
+If a resource group includes **All Resources Including Child Scopes**, it provides access to all resources at the specified level and all lower resources. This is an expansive scope comprising many resources. For example, at the org scope, **All Resources Including Child Scopes** grants access to resources at the org level, as well as resources in the scope of projects under that org.
 
-   |  Resource scope     |   Description    |
-   |  ---  |  ---  |
-   |   Grant access permissions on specific resources.    |  Select specific resources in the resource group at the project, org or account scope.      |
-   |   Grant access permissions on all the resources in pipelines for a specific project.    |  Select all the resources used in the pipeline in the corresponding resource group created at the project scope.    |
-   |   Grant access permissions on all the resources used in the pipeline in the entire org.   |   Select scope of the resource group created at org scope as `All` and select all the resources used in the pipeline.   |
-   |   Grant access permissions on all the resources used in all the pipelines in the entire account.  |   Select scope of the resource group created at account level as `All` and select all the resources used in all the pipeline.    |
+```mermaid
+flowchart TD
+    A[Account]-->M[Resource]
+    A-->B[Org]
+    A-->C[Org]
+    subgraph Org - All Resources Including Child Scopes
+    B-->N[Resource]
+    B--->D[Project]
+    D-->G[Resource]
+    D-->H[Resource]
+    end
+    C-->F[Resource]
+    C--->E[Project]
+    E-->I[Resource]
+    E-->J[Resource]
+```
 
-### Step 1: Add a New Resource Group
+If a resource group includes **Specified Organizations (and their Projects)**, it provides access to resources in one or more selected organizations, as well as resources in projects under those orgs. This option is available for resource groups created at the account scope, and you can use it to provide multi-org access without granting access to all orgs in your account.
 
-Select your **Project/Org/Account**, and click **Access Control**.
+If a resource group includes **Specified Projects**, it provides access to resources in one or more selected projects. This option is available for resource groups created at the org scope, and you can use it to provide multi-project access without granting access to all projects under an org.
 
-Click **Resource Groups** and then click **New Resource Group**. The New Resource Group settings appear.
+:::tip
 
-Enter a **Name** for your **Resource Group**.
+For more resource scope diagrams, go to [Built-in resource groups](#built-in-resource-groups).
 
-Enter **Description** and **Tags** for your **Resource Group**.
+:::
 
-![](./static/add-resource-groups-34.png)
-Click **Save**.
+### Further refinement
 
-### Step 2: Select a Resource Scope
+For extremely fine-grained access control, you can select individual resources within a particular resource category, such as specific connectors or pipelines. Upon selecting a resource category, select **Specified**, and then select **Add** to select specific instances of that resource.
 
-You must select the scope of the resources that must be included in your new Resource Group after it has been saved.
+![](./static/attribute-based-access-control-05.png)
 
-![](./static/add-resource-groups-35.png)
-You can select one of the following in Resource Group:
+For example, to allow access to specific pipelines only, create the resource group at the project level, select the **Pipelines** resource type, and select then specific pipelines in the project.
 
-* **Account Only**
-* **All (including all Organizations and Projects)**
-* **Specified Organizations (and their Projects)**![](./static/add-resource-groups-36.png)
-For each Organization you select, you can further select **All** or **Specified** Projects within this Organization to include the resources accordingly.![](./static/add-resource-groups-37.png)
+You can also use [Attribute Based Access Control (ABAC)](./attribute-based-access-control) for connectors and environments.
 
-Click **Apply**.
+This level of control is not available at all scopes for all resource types. For example, you can't select specific pipelines for resource groups created at the account or org scopes.
 
-### Step 3: Select Resources
+## Built-in resource groups
 
-After you have selected Resource Scope, you must select the resources that you want to include in this Resource group.
+Harness includes several built-in resource groups.
 
-You can either Select **All** or **Specified** resources.
+<details>
+<summary>Built-in resource groups at the Account scope</summary>
 
-![](./static/add-resource-groups-38.png)
-Click **Save**.
+* **All Resources Including Child Scopes:** Includes all resources within the account's scope as well as those within the scope of orgs and projects under the account. This is the most inclusive resource group possible.
 
-Go back to Resource Groups. Your Resource Group is now listed here.
+```mermaid
+flowchart TD
+    subgraph Account - All Resources Including Child Scopes
+    A[Account]--->B[Org]
+    A-->M[Resource]
+    A--->C[Org]
+    B-->N[Resource]
+    C-->F[Resource]
+    B---->D[Project]
+    C---->E[Project]
+    D-->G[Resource]
+    D-->H[Resource]
+    E-->I[Resource]
+    E-->J[Resource]
+    end
+```
 
-![](./static/add-resource-groups-39.png)
-### Step: Delete A Resource Group
+* **All Account Level Resources:** Includes all resources in the account's scope, and excludes resources within the scope of orgs or projects under the account.
 
-Click the **Resource Groups** tab under **Access Control.**
+```mermaid
+flowchart TD
+    subgraph All Account Level Resources
+    A[Account]-->M[Resource]
+    end
+    A--->B[Org]
+    A--->C[Org]
+    B-->N[Resource]
+    C-->F[Resource]
+    B---->D[Project]
+    C---->E[Project]
+    D-->G[Resource]
+    D-->H[Resource]
+    E-->I[Resource]
+    E-->J[Resource]
+```
 
-Click **Delete** on the top right corner to remove a Resource Group.
+</details>
 
-![](./static/add-resource-groups-40.png)
-### Step: Manage Resource Group
+<details>
+<summary>Built-in resource groups at the Org scope</summary>
 
-Click the **Resource Groups** tab under **Access Control.**
+* **All Resources Including Child Scopes:** Includes all resources within a specific org's scope as well as those within the scope of projects under that org. This is set for each org. If you have multiple orgs, you have an **All Resources Including Child Scopes** for each org.
 
-Click the Resource Group you want to edit. The Resource Group details page appears.
+```mermaid
+flowchart TD
+    A[Account]-->M[Resource]
+    A-->B[Org]
+    A-->C[Org]
+    subgraph Org - All Resources Including Child Scopes
+    B-->N[Resource]
+    B--->D[Project]
+    D-->G[Resource]
+    D-->H[Resource]
+    end
+    subgraph Org - All Resources Including Child Scopes
+    C-->F[Resource]
+    C--->E[Project]
+    E-->I[Resource]
+    E-->J[Resource]
+    end
+```
 
-You can add/remove resources from this page.
+* **All Organization Level Resources:** Includes all resources in a specific org's scope. Excludes resources within the scope of projects under the org. This is set for each org. If you have multiple orgs, you have an **All Organization Level Resources** for each org.
 
-Click **Apply Changes**.
+```mermaid
+flowchart TD
+    A[Account]-->M[Resource]
+    A--->B[Org]
+    A--->C[Org]
+    subgraph All Org Level Resources
+    B-->N[Resource]
+    end
+    B--->D[Project]
+    D-->G[Resource]
+    D-->H[Resource]
+    subgraph All Org Level Resources
+    C-->F[Resource]
+    end
+    C--->E[Project]
+    E-->I[Resource]
+    E-->J[Resource]
+```
 
-### Next steps
+</details>
 
-* [Add and Manage Users](/docs/platform/role-based-access-control/add-users)
-* [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
-* [Manage Roles](./add-manage-roles)
-* [Permissions Reference](./permissions-reference)
+<details>
+<summary>Built-in resource groups at the Project scope</summary>
 
+**All Project Level Resources** includes all resources in the project's scope. This is set for each project. If you have multiple projects, you have an **All Project Level Resources** for each project.
+
+```mermaid
+flowchart TD
+    A[Account]-->M[Resource]
+    A--->B[Org]
+    A--->C[Org]
+    B-->N[Resource]
+    B--->D[Project]
+    subgraph All Project Level Resources
+    D-->G[Resource]
+    D-->H[Resource]
+    end
+    C-->F[Resource]
+    C--->E[Project]
+    subgraph All Project Level Resources
+    E-->I[Resource]
+    E-->J[Resource]
+    end
+```
+
+</details>
+
+## Manage resource groups in Harness
+
+To manage resource groups in Harness, you need a role, such as **Account Admin**, that has [permission](./permissions-reference) to view, create/edit, and delete resource groups.
+
+Make sure you understand how [scopes and refinement](#scopes-and-refinement) work in resource groups.
+
+### Create a resource group
+
+1. In Harness, go to the [scope](#scopes-and-refinement) where you want to create the resource group.
+
+   * To create a resource group at the account scope, select **Account Settings**, and then select **Access Control**.
+   * To create a resource group at the organization scope, go to **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To create a resource group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
+
+2. Select **Resource Groups** in the header, and then select **New Resource Group**.
+3. Enter a **Name** for your resource group. **Description**, **Tags**, and **Color** are optional.
+4. Select **Save**.
+5. Select the **Resource Scope**. The available options depend on the scope where you created the resource group.
+
+   * **Account/Organization/Project only**
+   * **All (including all Organizations and Projects)**
+   * **All (including Projects)**
+   * **Specified Organizations (and their Projects)**
+   * **Specified Projects**
+
+   ![](./static/set-up-rbac-pipelines-41.png)
+
+6. If you selected **Specified Organization** or **Specified Projects**, select **Edit** and select the specific organizations or projects.
+
+   ![](./static/add-resource-groups-41.png)
+
+7. For **Resources**, select **All** or **Specified**.
+
+   ![](./static/set-up-rbac-pipelines-42.png)
+
+8. If you selected **Specified**, select the resource types to include. Depending on the scope where you created the resource group, you can also further refine your selection to specific instances of particular resource types, such as specific pipelines or connectors.
+9. Select **Save**.
+
+### Edit a resource group
+
+1. In Harness, go to the [scope](#scopes-and-refinement) where the resource group exists.
+
+   * To edit a resource group at the account scope, select **Account Settings**, and then select **Access Control**.
+   * To edit a resource group at the organization scope, go to **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To edit a resource group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
+
+2. Select **Resource Groups** in the header.
+3. Locate the resource group you want to edit.
+4. Select **More options** (&vellip;), and then select **Edit**.
+5. Edit the resource group's name, description, tags, or color, if needed, and then select **Save**.
+6. Edit the resource group's scope and resource settings, and then select **Save**.
+
+### Delete a resource group
+
+1. In Harness, go to the [scope](#scopes-and-refinement) where the resource group exists.
+
+   * To delete a resource group at the account scope, select **Account Settings**, and then select **Access Control**.
+   * To delete a resource group at the organization scope, go to **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To delete a resource group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
+
+2. Select **Resource Groups** in the header.
+3. Locate the resource group you want to delete.
+4. Select **More options** (&vellip;), and then select **Delete**.
+
+## Continue RBAC configuration
+
+Creating resource groups is one part of [configuring RBAC in Harness](./rbac-in-harness#configure-rbac-in-harness).
+
+[Roles](./add-manage-roles), which grant permissions, work alongside resource groups, which grant access.
+
+After configuring roles and resource group, you assign them to [users](./add-users), [user groups](./add-user-groups), and [service accounts](./add-and-manage-service-account).

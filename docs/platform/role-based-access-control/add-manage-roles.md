@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Roles are an [RBAC component](./rbac-in-harness#rbac-components) that contain a set of [permissions](/docs/platform/role-based-access-control/permissions-reference). Roles define what actions, such as viewing, creating, editing, or deleting, can be taken on Harness resources. When you assign a role or a user, user group, or service account, the permissions defined in the role are granted to the target user, group, or service account.
+Roles are an [RBAC component](./rbac-in-harness#rbac-components) that contain a set of [permissions](/docs/platform/role-based-access-control/permissions-reference). Roles define what actions, such as viewing, creating, editing, or deleting, can be taken on Harness resources. When you assign a role to a user, user group, or service account, the permissions defined in the role are granted to the target user, group, or service account.
 
 Harness includes some [built-in roles](#built-in-roles), and you can [create custom roles](#create-a-role), which are useful for limited and fine-grained access control.
 
-Roles are scope-specific, and you can create them at any [scope](./rbac-in-harness#permissions-hierarchy-scopes). For example, a role custom created at the project scope is only available in that project.
+Roles are scope-specific, and you can create them at any [scope](./rbac-in-harness#permissions-hierarchy-scopes). For example, a role created at the project scope is only available in that project.
 
 ## Roles and resource groups work together
 

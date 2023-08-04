@@ -94,123 +94,7 @@ A resource group is a set of Harness resources that a principal can access. You 
 
 Resource groups either include **All Resources** (all resources of a given type) or **Named Resources** (specific, individual resources).
 
-Harness has default resource groups at each scope, and you can create custom resource groups. For more information, go to [Add and manage resource groups](/docs/platform/role-based-access-control/add-resource-groups).
-
-<details>
-<summary>Default resource groups: Account scope</summary>
-
-* **All Resources Including Child Scopes:** Includes all resources within the account's scope as well as those within the scope of orgs and projects under the account. This is the most inclusive resource group possible.
-
-```mermaid
-flowchart TD
-    subgraph Account - All Resources Including Child Scopes
-    A[Account]--->B[Org]
-    A-->M[Resource]
-    A--->C[Org]
-    B-->N[Resource]
-    C-->F[Resource]
-    B---->D[Project]
-    C---->E[Project]
-    D-->G[Resource]
-    D-->H[Resource]
-    E-->I[Resource]
-    E-->J[Resource]
-    end
-```
-
-* **All Account Level Resources:** Includes all resources in the account's scope, and excludes resources within the scope of orgs or projects under the account.
-
-```mermaid
-flowchart TD
-    subgraph All Account Level Resources
-    A[Account]-->M[Resource]
-    end
-    A--->B[Org]
-    A--->C[Org]
-    B-->N[Resource]
-    C-->F[Resource]
-    B---->D[Project]
-    C---->E[Project]
-    D-->G[Resource]
-    D-->H[Resource]
-    E-->I[Resource]
-    E-->J[Resource]
-```
-
-</details>
-
-<details>
-<summary>Default resource groups: Org scope</summary>
-
-* **All Resources Including Child Scopes:** Includes all resources within a specific org's scope as well as those within the scope of projects under that org. This is set for each org. If you have multiple orgs, you have an **All Resources Including Child Scopes** for each org.
-
-```mermaid
-flowchart TD
-    A[Account]-->M[Resource]
-    A-->B[Org]
-    A-->C[Org]
-    subgraph Org - All Resources Including Child Scopes
-    B-->N[Resource]
-    B--->D[Project]
-    D-->G[Resource]
-    D-->H[Resource]
-    end
-    subgraph Org - All Resources Including Child Scopes
-    C-->F[Resource]
-    C--->E[Project]
-    E-->I[Resource]
-    E-->J[Resource]
-    end
-```
-
-* **All Organization Level Resources:** Includes all resources in a specific org's scope. Excludes resources within the scope of projects under the org. This is set for each org. If you have multiple orgs, you have an **All Organization Level Resources** for each org.
-
-```mermaid
-flowchart TD
-    A[Account]-->M[Resource]
-    A--->B[Org]
-    A--->C[Org]
-    subgraph All Org Level Resources
-    B-->N[Resource]
-    end
-    B--->D[Project]
-    D-->G[Resource]
-    D-->H[Resource]
-    subgraph All Org Level Resources
-    C-->F[Resource]
-    end
-    C--->E[Project]
-    E-->I[Resource]
-    E-->J[Resource]
-```
-
-</details>
-
-<details>
-<summary>Default resource groups: Project scope</summary>
-
-**All Project Level Resources** includes all resources in the project's scope. This is set for each project. If you have multiple projects, you have an **All Project Level Resources** for each project.
-
-```mermaid
-flowchart TD
-    A[Account]-->M[Resource]
-    A--->B[Org]
-    A--->C[Org]
-    B-->N[Resource]
-    B--->D[Project]
-    subgraph All Project Level Resources
-    D-->G[Resource]
-    D-->H[Resource]
-    end
-    C-->F[Resource]
-    C--->E[Project]
-    subgraph All Project Level Resources
-    E-->I[Resource]
-    E-->J[Resource]
-    end
-```
-
-</details>
+Harness has default resource groups at each scope, and you can create custom resource groups. For more information, go to [Manage resource groups](/docs/platform/role-based-access-control/add-resource-groups).
 
 ### Roles
 
@@ -235,9 +119,7 @@ flowchart TD
 <details>
 <summary>Default role assignment configurations</summary>
 
-The following table describes the role assignments (permissions and access) that result from combinations of default roles and resource groups. This table doesn't include all module-specific default roles, such as CET Admin or Chaos Admin.
-
-For information about default roles and resource groups, go to [Roles](#roles) and [Resource groups](#resource-groups).
+The following table describes the role assignments (permissions and access) that result from some combinations of default [roles](#roles) and [resource groups](#resource-groups). This table doesn't include all module-specific default roles, such as CET Admin or Chaos Admin.
 
 | Role | Resource Group | Resulting role assignment |
 | - | - | - |
@@ -245,18 +127,19 @@ For information about default roles and resource groups, go to [Roles](#roles) a
 | Account Admin | All Account Level Resources | All permissions on all resources in at the account level only. |
 | Account Viewer | Account - All Resources Including Child Scopes | View resources in the account and resources in organizations and projects under the account. |
 | Account Viewer | All Account Level Resources | View resources at the account level only. |
-| Feature Flag Manage Role | Account - All Resources Including Child Scopes | Create and edit Feature Flags and Target Management resources in the account and in organizations and projects under the account. |
-| Feature Flag Manage Role | All Account Level Resources | Create and edit Feature Flags and Target Management resources at the account level only. |
 | Organization Admin | Org - All Resources Including Child Scopes | All permissions on all resources in a specific organization and all projects under that organization. |
 | Organization Admin | All Organization Level Resources | All permissions on all resources in a specific organization only. |
 | Organization Viewer | Org - All Resources Including Child Scopes | View resources in a specific organization and resources in projects under that organization. |
 | Organization Viewer | All Organization Level Resources | View resources in a specific organization only. |
-| Feature Flag Manage Role | Org - All Resources Including Child Scopes | Create and edit Feature Flags and Target Management resources in a specific organization and in projects under that organization. |
-| Feature Flag Manage Role | All Organization Level Resources | Create and edit Feature Flags and Target Management resources in a specific organization only. |
 | Project Admin | All Project Level Resources | All permissions on all resources within a specific project. |
 | Project Viewer | All Project Level Resources | View resources in a specific project. |
 | Pipeline Executor | All Project Level Resources | <ul><li>View resource groups, projects, users, user groups, and roles.</li><li>View and access secrets, connectors, environments, and services.</li><li>View and execute pipelines.</li></ul> |
-| Feature Flag Manage Role | All Project Level Resources | Create and edit Feature Flags and Target Management resources in a specific project. |
+
+<!-- | Feature Flag Manage Role | Account - All Resources Including Child Scopes | Create and edit Feature Flags and Target Management resources in the account and in organizations and projects under the account. | -->
+<!-- | Feature Flag Manage Role | All Account Level Resources | Create and edit Feature Flags and Target Management resources at the account level only. | -->
+<!-- | Feature Flag Manage Role | Org - All Resources Including Child Scopes | Create and edit Feature Flags and Target Management resources in a specific organization and in projects under that organization. | -->
+<!-- | Feature Flag Manage Role | All Organization Level Resources | Create and edit Feature Flags and Target Management resources in a specific organization only. | -->
+<!-- | Feature Flag Manage Role | All Project Level Resources | Create and edit Feature Flags and Target Management resources in a specific project. | -->
 
 </details>
 
@@ -369,7 +252,7 @@ The *Pipeline Admin* role has the following permissions:
 
 6. Select **Apply Changes**.
 
-For more information about roles and permissions, go to [Manage Roles](./add-manage-roles.md) and the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference).
+For more information about roles and permissions, go to [Manage roles](./add-manage-roles.md) and the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference).
 
 #### Create the custom resource group
 
@@ -395,7 +278,7 @@ For more information about roles and permissions, go to [Manage Roles](./add-man
 
 7. Select **Save**.
 
-For more information about creating resource groups, go to [Add and Manage Resource Groups](./add-resource-groups.md).
+For more information about creating resource groups, go to [Manage resource groups](./add-resource-groups.md).
 
 #### Create the Pipeline Owners user group
 
@@ -480,7 +363,7 @@ For more information about roles and permissions, go to [Manage Roles](./add-man
 
 In this example, the **Resource Scope** is locked to **Project only**, which means the resource group can only access the selected resources within this project. If your pipelines use connectors or other resources at a higher scope, you would need to configure RBAC at the account or org scope and then refine access by project. Similarly, if you wanted to create a user group that could run any pipeline in an organization or account, you would need to create the role, resource group, and user group at the account scope (by navigating to **Account Settings** and then selecting **Access Control**). Note that some refinement options, such as selecting specific pipelines, aren't available at higher scopes.
 
-For more information about creating resource groups, go to [Add and Manage Resource Groups](./add-resource-groups.md).
+For more information about creating resource groups, go to [Manage resource groups](./add-resource-groups.md).
 
 #### Configure the user group
 

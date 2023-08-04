@@ -72,7 +72,7 @@ Perform the following steps to limit access to specific Dashboards.
 1. In **Harness**, click **Account Settings**, and then click **Access Control**.
    
      ![](./static/manage-access-control-for-ccm-dashboards-04.png)
-2. In **Resource Groups**, click your Resource Group. For more information on adding and managing resource groups, see [Add and Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups).  
+2. In **Resource Groups**, click your Resource Group. For more information on adding and managing resource groups, see [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups).  
   
      This section uses **Dashboard - All** as an example.
 

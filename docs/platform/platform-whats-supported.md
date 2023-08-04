@@ -83,7 +83,7 @@ A Harness user is any individual registered with Harness with a unique email add
 
 - [Add and manage user groups](/docs/platform/User-Management/add-user-groups)
 - [Manage roles](/docs/platform/role-based-access-control/add-manage-roles)
-- [Add and manage resource groups](/docs/platform/role-based-access-control/add-resource-groups/)
+- [Manage resource groups](/docs/platform/role-based-access-control/add-resource-groups)
 
 
 ```mdx-code-block

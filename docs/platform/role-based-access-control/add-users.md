@@ -48,7 +48,7 @@ Click **New User** in **Users**. The New User settings appear.
 ![](./static/add-users-11.png)
 Enter the email address(es) that the User will use to log into the Harness platform.
 
-If you have Roles and Resource Groups defined, select the Roles and Resource Groups for this user. To add Roles and Resource Groups, see [Manage roles](./add-manage-roles) and [Add Resource Groups](./add-resource-groups).
+If you have Roles and Resource Groups defined, select the Roles and Resource Groups for this user. To add Roles and Resource Groups, see [Manage roles](./add-manage-roles) and [Manage resource groups](./add-resource-groups).
 
 Click **Save**. The user will receive a verification email at the address(es) you provided. When the user logs into Harness, the user creates a password, the email address is verified, and the user name is updated.
 
@@ -121,6 +121,5 @@ To add a new role binding for a user, click **Role**.
 ### See also
 
 * [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
-* [Add and Manage Resource Groups](./add-resource-groups)
 * [Permissions Reference](./permissions-reference)
 
