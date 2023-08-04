@@ -37,8 +37,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   This issue has been fixed. Browser tabs showing those pages now have more specific titles. 
 
-- If you attempt to delete a project or organization that includes resources from other Harness modules, Harness first prompts you to confirm the delete action and then prompts you to enter the name of the project or organization. This two-step procedure gives you an opportunity to consider the impact that your action might have on other modules. (PL-32376, ZD-42691)
-
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
@@ -69,10 +67,6 @@ This release does not include any early access features.
 - When editing a WinRM credential that referenced a secret in a different scope, the WinRM Credential wizard showed the referenced secret as undefined. This issue was caused by incorrect scope information being sent in the API request. (PL-39707)
 
   This issue has been fixed. The API request now includes the correct scope information.
-
-- The user interface of the approval step is inconsistent with the saved contents of the User Groups field. Sometimes, the field omits some of the previously saved user groups but shows the correct count while, at other times, it lists all of the previously saved user groups but shows a lower count. (PL-39294, ZD-45548)
-
-  This issue is now fixed. 
 
 - Instead of displaying an appropriate, RBAC-related message to users who do not have permissions to view the list of delegates, the Account Resources: Delegates page displays a "Failed to fetch: 403 Forbidden" message. (PL-39043)
   
