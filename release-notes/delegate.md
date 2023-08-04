@@ -20,9 +20,9 @@ Harness Delegate (NextGen SaaS) releases every two weeks. On the other hand, Har
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 4, 2023, Harness version 801xx, Harness Delegate version 801xx
+## Latest - August 4, 2023, Harness version 80120, Harness Delegate version 80104
 
-Harness NextGen release 801xx includes the following changes for the Harness Delegate.
+Harness NextGen release 80120 includes the following changes for the Harness Delegate.
 
 #### Deprecation notices
 
@@ -47,9 +47,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
    For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). 
 
-- Upgrade of go-template binary to version 0.4.3, which uses Go version 1.20. (CDS-58919)
+- Upgraded go-template binary to version 0.4.3, which uses Go version 1.20. (CDS-58919)
 
-- Upgrade Helm binary from version 3.8 to 3.12. (CDS-58931)
+- Upgraded the Helm binary from version 3.8 to 3.12. (CDS-58931)
 
 - The `kubectl` command now includes retry logic to handle connection issues. (CDS-72869)
 
@@ -79,7 +79,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Error messages from health source providers are now included in API responses for improved user experience and debugging efficiency. (OIP-657)
 
-- A new `getAzureKeyVaultClient` API is available to fetch the Azure vaults list. This option reduces the time it takes for Harness to reflect a newly-created Azure vault. (PL-28392, ZD-44045)
+- A new `getAzureKeyVaultClient` API is available to fetch the list of Azure vaults. This option reduces the time it takes for Harness to reflect a newly-created Azure vault. (PL-28392, ZD-44045)
 
 ```mdx-code-block
   </TabItem>
@@ -156,7 +156,7 @@ This release does not include any early access features.
 
 - Delegates showed high CPU usage caused by a large number of threads that perform read operations being generated and abandoned. (PL-39797)
 
-   This issue has been resolved through improved message read performance and increased read timeout.
+   This issue has been resolved through improved message read performance and an increased read timeout.
 
 ```mdx-code-block
   </TabItem>
