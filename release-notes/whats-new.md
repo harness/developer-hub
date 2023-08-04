@@ -21,13 +21,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - August 03, 2023
 
+### Harness Platform, version 80120
+
 - The Universal Base Image Minimal used for the Harness user interface (both FirstGen and NextGen) and the Harness NextGen authentication service has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-40095)
 
 - Browser tabs did not show informative titles for the Settings, Delegates and FileStore pages. They showed only the generic title "Harness", making it difficult to identify the page you wanted. (PL-39923, ZD-46375)
 
   This issue has been fixed. Browser tabs showing those pages now have more specific titles. 
-
-- If you attempt to delete a project or organization that includes resources from other Harness modules, Harness first prompts you to confirm the delete action and then prompts you to enter the name of the project or organization. This two-step procedure gives you an opportunity to consider the impact that your action might have on other modules. (PL-32376, ZD-42691)
 
 ## July 28, 2023
 

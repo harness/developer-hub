@@ -23,7 +23,7 @@ Harness publishes security advisories for every release. Go to the [Harness Trus
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 3, 2023, version 801xx
+## Latest - August 3, 2023, version 80120
 
 
 ```mdx-code-block
@@ -76,31 +76,31 @@ This release does not include any early access features.
   
   This issue has been fixed. The value of JAVA_OPTS is now appended to the default JVM options, thus allowing you to override the default options.
  
-  This item is available with Harness Platform version 801xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go the [Delegate release notes](/release-notes/delegate).
+  This item is available with Harness Platform version 80120 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go the [Delegate release notes](/release-notes/delegate).
 
 - Delegates showed high CPU usage caused by a large number of threads that perform read operations being generated and abandoned. (PL-39797)
 
   This issue has been resolved through improved message read performance and increased read timeout. 
 
-  This item requires Harness Delegate version 80100. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-- If the delegates that were eligible to execute a pipeline task (delegates that were within the account-organization-project scope of the pipeline and matched any configured delegate selectors) did not have the required tools or connectivity to execute the task, the task timeout message included delegates that did not meet the eligibility criteria.  (PL-39624, ZD-46460, ZD-46513)
+- If the delegates that were eligible to execute a pipeline task (delegates that were within the account-organization-project scope of the pipeline and matched any configured delegate selectors) did not have the required tools or connectivity to execute the task, the task timeout message included delegates that did not meet the eligibility criteria. (PL-39624, ZD-46460, ZD-46513)
 
   This issue has been fixed. The message displayed on task timeout has been improved for scenarios in which no delegate matches specified selectors and no delegates are found in the account.
 
-  This item requires Harness Delegate version 80100. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You were allowed to create resource groups with the same identifier as a built-in resource group. (PL-39503)
   
   This issue has been fixed. Validation in the API that creates resource groups now checks whether an existing resource group has the same identifier.
 
-  This item requires Harness Delegate version 80100. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - A new `getAzureKeyVaultClient` API is available to fetch the Azure vaults list. (PL-28392, ZD-44045)
 
   This option reduces the time it takes for Harness to reflect a newly-created Azure vault.
 
-  This item requires Harness Delegate version 80100. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 
 ```

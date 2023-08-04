@@ -17,7 +17,7 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 
-### August 3, 2023, version 801xx
+### August 3, 2023, version 80120
 
 #### What's new
 
@@ -37,7 +37,7 @@ This release does not include early access features.
   
   This issue has been fixed. The value of JAVA_OPTS is now appended to the default JVM options, thus allowing you to override the default options.
  
-  This item is available with Harness Platform version 801xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go the [Delegate release notes](/release-notes/delegate).
+  This item is available with Harness Platform version 80120 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go the [Delegate release notes](/release-notes/delegate).
 
 ### July 27, 2023, version 80017
 
