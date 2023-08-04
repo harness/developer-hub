@@ -255,7 +255,7 @@ The following data can be consumed through dashboards:
 |Recommendations | ✅  | ✅  | ✅  | ✅ | ✅ |
 |Commitment Orchestrator | Coming soon | |  |  |  |
 
-\* - Review the information within the AutoStopping section to access details about supported platforms for Kubernetes.
+\* - Review the information within the AutoStopping section to access details about supported Kubernetes providers.
 <details>
 <summary>AutoStopping</summary>
 
