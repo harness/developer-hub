@@ -35,5 +35,5 @@ The following topics can help you understand how to implement Access Control:
 * [Add and Manage Users](/docs/platform/role-based-access-control/add-users)
 * [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
 * [Add and Manage Resource Groups](../../../platform/role-based-access-control/add-resource-groups)
-* [Add and Manage Roles](../../../platform/role-based-access-control/add-manage-roles)
+* [Manage Roles](../../../platform/role-based-access-control/add-manage-roles)
 

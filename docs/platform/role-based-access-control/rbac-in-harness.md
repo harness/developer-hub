@@ -214,28 +214,11 @@ flowchart TD
 
 ### Roles
 
-Roles are sets of [permissions](/docs/platform/role-based-access-control/permissions-reference) that allow or deny specific operations on objects (resources). Roles are scope-specific and can be created at all [scopes](#permissions-hierarchy-scopes).
+Roles are sets of [permissions](/docs/platform/role-based-access-control/permissions-reference) that allow or deny specific operations on objects (resources). Roles are applied together with [resource groups](#resource-groups) to create a complete set of permissions and access.
 
-In Harness, roles are either **Built-in roles** or **Custom roles**. Built-in roles are included with Harness by default. Custom roles are roles that you create for specific, fine-grained access control. For more information, go to [Add and manage roles](/docs/platform/role-based-access-control/add-manage-roles).
+Harness includes some built-in roles, and you can create your own custom roles, which are useful for limited and fine-grained access control. For more information, go to [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
 
-<details>
-<summary>Built-in roles by scope</summary>
-
-* Account scope
-  * Account Admin
-  * Account Viewer
-  * Feature Flag Manage Role
-* Org scope
-  * Organization Admin
-  * Organization Viewer
-  * Feature Flag Manage Role
-* Project scope
-  * Project Admin
-  * Project Viewer
-  * Pipeline Executor
-  * Feature Flag Manage Role
-
-</details>
+Roles are scope-specific and can be created at all [scopes](#permissions-hierarchy-scopes).
 
 ## Role assignment
 
@@ -386,7 +369,7 @@ The *Pipeline Admin* role has the following permissions:
 
 6. Select **Apply Changes**.
 
-For more information about roles and permissions, go to [Add and Manage Roles](./add-manage-roles.md) and the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference).
+For more information about roles and permissions, go to [Manage Roles](./add-manage-roles.md) and the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference).
 
 #### Create the custom resource group
 
@@ -481,7 +464,7 @@ The *All Project Pipelines and Connectors* resource group exists at the project 
 
 7. Select **Apply Changes**.
 
-For more information about roles and permissions, go to [Add and Manage Roles](./add-manage-roles.md) and the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference).
+For more information about roles and permissions, go to [Manage Roles](./add-manage-roles.md) and the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference).
 
 #### Create the project resource group
 

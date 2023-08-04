@@ -130,6 +130,6 @@ Click **Apply Changes**.
 
 * [Add and Manage Users](/docs/platform/role-based-access-control/add-users)
 * [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
-* [Add and Manage Roles](./add-manage-roles)
+* [Manage Roles](./add-manage-roles)
 * [Permissions Reference](./permissions-reference)
 

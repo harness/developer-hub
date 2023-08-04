@@ -153,7 +153,7 @@ Yes, you can enable the Role permission Pipeline Execute and then apply that Rol
 
 ![](./static/continuous-delivery-faqs-02.png)
 
-See [Add and manage roles](../../platform/role-based-access-control/add-manage-roles).
+See [Manage roles](../../platform/role-based-access-control/add-manage-roles).
 
 #### Can I deploy a service to multiple infrastructures at the same time?
 

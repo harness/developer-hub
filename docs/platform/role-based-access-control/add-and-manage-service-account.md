@@ -33,7 +33,7 @@ Click **Save**. Your Service Account is created.
 Click **+Role** to assign Role Bindings to the Service Account you just created.
 
 ![](./static/add-and-manage-service-account-46.png)
-For step-by-step instructions to add Roles and Resource Groups, see [Add and Manage Roles](./add-manage-roles) and [Add and Manage Resource Groups](./add-resource-groups).
+For step-by-step instructions to add Roles and Resource Groups, see [Manage Roles](./add-manage-roles) and [Add and Manage Resource Groups](./add-resource-groups).
 
 For step-by-step instructions to add an API key to your Service Account that you just created, see [Add and Manage API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 

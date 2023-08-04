@@ -389,7 +389,7 @@ Error messages of the form `User does not have "Deployment: execute" permission`
 
 ![](./static/troubleshooting-nextgen-01.png)
 
-To resolve this, see [Add and manage roles](../platform/role-based-access-control/add-manage-roles).
+To resolve this, see [Manage roles](../platform/role-based-access-control/add-manage-roles).
 
 ### Continuous delivery
 

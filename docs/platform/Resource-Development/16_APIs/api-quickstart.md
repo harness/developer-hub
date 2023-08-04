@@ -18,7 +18,7 @@ For detailed documentation of endpoints and other Harness API reference informat
 
 ## Requirements
 
-To use Harness APIs to manage a resource, you must have the necessary [permissions](./api-permissions-reference.md) to view, create/edit, or delete that resource. You need one of the following default roles or an equivalent [custom role](../../role-based-access-control/add-manage-roles.md): Account Administrator, Organization Admin, Project Admin.
+To use Harness APIs to manage a resource, you must have the necessary [permissions](./api-permissions-reference) to view, create/edit, or delete that resource. You need one of the following default roles or an equivalent [custom role](../../role-based-access-control/add-manage-roles): Account Administrator, Organization Admin, Project Admin.
 
 You need an understanding of Harness, [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness), sending API requests, and mechanisms for sending requests, such as `curl`.
 
@@ -142,7 +142,7 @@ If the response is successful, go to the **Projects** page in Harness to find yo
 
 Harness connectors contain information necessary to integrate and communicate with third-party tools, such as Docker registries, cloud providers, a source control repositories.
 
-The following `curl` command creates a [Docker registry connector](../../7_Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md) called `dockerhub` that connects to Docker Hub anonymously. The connector is created in the `default` Harness organization under the [APISample project](#create-a-project-through-api).
+The following `curl` command creates a [Docker registry connector](../../7_Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) called `dockerhub` that connects to Docker Hub anonymously. The connector is created in the `default` Harness organization under the [APISample project](#create-a-project-through-api).
 
 To use this command replace `ACCOUNT_ID` with your [Harness account ID](#get-your-account-id), and replace `API_KEY_TOKEN` with your [token](#create-a-harness-api-key-and-token).
 

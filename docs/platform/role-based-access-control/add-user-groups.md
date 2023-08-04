@@ -93,7 +93,7 @@ Your Organization now appears in the list of Organizations.
 
 11.  Click **Add**.
 12.  In **Roles**, select a Harness built-in Role or a custom Role that you have created for the desired permissions.  
-For more information on built-in roles and custom roles, see [Add and Manage Roles](./add-manage-roles).
+For more information on built-in roles and custom roles, see [Manage Roles](./add-manage-roles).
 13. In **Resource Groups**, select a Harness built-in Resource Group or a custom Resource Group that you have created for the desired resources.  
 For more information on built-in roles and custom roles, see [Add and Manage Resource Groups](./add-resource-groups).
 14. Click **Apply**.
@@ -205,7 +205,6 @@ To add notification preferences to Harness User Groups, perform the following st
 ### See also
 
 * [Add and Manage Users](/docs/platform/role-based-access-control/add-users)
-* [Add and Manage Roles](./add-manage-roles)
 * [Add and Manage Resource Groups](./add-resource-groups)
 * [Permissions Reference](./permissions-reference)
 
