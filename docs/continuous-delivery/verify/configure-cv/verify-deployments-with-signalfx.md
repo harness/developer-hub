@@ -318,18 +318,18 @@ The following screenshots show successful and failed verifications in a deployme
 ![Failed verification step](./static/cv-signalfx-pipeline-fail.png)
 
 
-## Set a baseline for load testing
+## Set a pinned baseline
 
 :::info note
 Currently, this feature is behind the feature flag `SRM_ENABLE_BASELINE_BASED_VERIFICATION`. Contact Harness Support to enable the feature.
 :::
 
-You can set specific verification in a successful pipeline execution as a baseline for future load testing.
+You can set specific verification in a successful pipeline execution as a baseline. This is available with **Load Testing** as the verification type.
 
 
-### Set successful verification as a baseline for load testing
+### Set successful verification as a baseline
 
-To set a verification as baseline for future load testing:
+To set a verification as baseline for future verifications:
 
 1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline you want to use as the baseline.
    

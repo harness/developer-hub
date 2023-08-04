@@ -92,7 +92,7 @@ You can add a step at various points in the pipeline such as the beginning, end,
    
    - **Load Test**: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment. When you choose "Load Test," you must also choose one of these options:
       - **Last Successful Job Run**: Compare the test data with the data from the previous successful verification.
-      - **Pinned baseline**: Compare the test data with a specific successful verification that you have marked as a baseline. To learn more about pinned baseline, go to [Set successful verification as a baseline for load testing](#set-successful-verification-as-a-baseline-for-load-testing).
+[Set successful verification as a baseline for load testing](#set-successful-verification-as-a-baseline)
 
 
 2. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. When the sensitivity is set to **High**, any anomaly, no matter how small, will be treated as a verification failure. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
@@ -253,18 +253,18 @@ The following screenshots show successful and failed verifications in a deployme
 ![Failed verification step](./static/cv-sumologic-pipeline-fail.png)
 
 
-## Set a baseline for load testing
+## Set a pinned baseline
 
 :::info note
 Currently, this feature is behind the feature flag `SRM_ENABLE_BASELINE_BASED_VERIFICATION`. Contact Harness Support to enable the feature.
 :::
 
-You can set specific verification in a successful pipeline execution as a baseline for future load testing.
+You can set specific verification in a successful pipeline execution as a baseline. This is available with **Load Testing** as the verification type.
 
 
-### Set successful verification as a baseline for load testing
+### Set successful verification as a baseline
 
-To set a verification as baseline for future load testing:
+To set a verification as baseline for future verifications:
 
 1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline you want to use as the baseline.
    
