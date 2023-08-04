@@ -14,9 +14,9 @@ GitHub recommends using GitHub Apps for GitHub connectors, because GitHub Apps o
 
 This topic assumes you have an understanding of:
 
-* [Connecting to code repos with Harness](./connect-to-code-repo.md)
-* [Creating GitHub Apps](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps).
-* [Installing GitHub Apps](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app).
+* [Connecting to code repos with Harness.](./connect-to-code-repo.md)
+* [Creating GitHub Apps.](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps)
+* [Installing GitHub Apps.](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app)
 
 ## Permissions requirements
 
