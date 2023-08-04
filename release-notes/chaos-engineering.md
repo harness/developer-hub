@@ -18,14 +18,20 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 5, 2023, version 1.16.x
+## Latest - August 7, 2023, version 1.16.x
 
 <Tabs>
   <TabItem value="What's new">
 
+* A new feature lets users do an automated upgrade for their cluster-scope chaos infrastructures using an upgrade agent, which is deployed along with the chaos infrastructure. This also lets users do an upgrade of their Chaos Infrastructures on demand. (1849)
+
+    Existing users must reconnect their chaos infrastructures since this feature is only available for new cluster-scope chaos infrastructures. 
+
+* A new feature adds support for OpenShift security contexts, and provides tunables for RunAsUser and RunAsGroup in the experiment creation step. (CHAOS-2228)
+
 * The **App Label(s)** field in chaos fault configuration now supports a multi-select dropdown in Kubernetes experiments. This corresponds to comma-separated values in the experiment YAML. This change is backward compatible with older experiments. (CHAOS-2120)
 
-* Security Governance has been added to the Chaos Module. It can be accessed by a link in the Harness side navigation. This allows users to have control over experiment execution governed by user groups, time windows, and a set of conditions. (CHAOS-1757)
+* The UI now provides a toggle in AWS experiments to enable or disable cloud secrets. (CHAOS-2092)
 
 
   </TabItem>
@@ -38,7 +44,9 @@ This release does not include early access features.
   </TabItem>
   <TabItem value="Fixed issues"> 
 
-* The pipeline diagram crashed randomly when scheduling a new experiment. This happened due to the API returning an empty object for nodes. This issue has been fixed. (CHAOS-2148)
+* Previously, the pipeline diagram crashed randomly when scheduling a new experiment. This happened due to the API returning an empty object for nodes. This issue has been fixed. (CHAOS-2148)
+
+* In experiment and chaos infrastructure manifests, tolerationSeconds is now optional if the toleration effect is NoSchedule. (CHAOS-1955)
 
 
   </TabItem>
