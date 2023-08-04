@@ -56,7 +56,7 @@ This release does not include any early access features.
 
   This issue is now resolved. Selecting Pipelines when on the Projects page now shows you the pipelines in the selected project.
 
--  On the Project Connectors page, when you attempt to sort the connectors by when they were last updated, they get sorted on their connectivity status instead. (PL-40013, ZD-47483)
+-  On the Project Connectors page, when you attempt to sort the connectors by when they were last updated, they get sorted by their connectivity status instead. (PL-40013, ZD-47483)
 
   This issue is resolved, and you can now sort the connectors by when they were last updated. 
 
@@ -76,11 +76,11 @@ This release does not include any early access features.
   
   This issue has been fixed. The value of JAVA_OPTS is now appended to the default JVM options, thus allowing you to override the default options.
  
-  This item is available with Harness Platform version 80120 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go the [Delegate release notes](/release-notes/delegate).
+  This item is available with Harness Platform version 80120 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Delegates showed high CPU usage caused by a large number of threads that perform read operations being generated and abandoned. (PL-39797)
 
-  This issue has been resolved through improved message read performance and increased read timeout. 
+  This issue has been resolved through improved message read performance and an increased read timeout. 
 
   This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
