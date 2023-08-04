@@ -26,17 +26,17 @@ import Ffs from '/docs/feature-flags/shared/ff-supported-platforms-shared-server
 ***
 
 ## Relay Proxy
-The [Relay Proxy](https://developer.harness.io/docs/feature-flags/relay-proxy/), which allows for offline and hybrid Feature Flags usage, is provided as a Docker image and can be used in any environment where the Docker image can be run. The Relay Proxy can be enhanced with Redis as a cache in environments where this is possible.
+The [Relay Proxy](/docs/feature-flags/relay-proxy/), which allows for offline and hybrid Feature Flags usage, is provided as a Docker image and can be used in any environment where the Docker image can be run. The Relay Proxy can be enhanced with Redis as a cache in environments where this is possible.
 
-## Hybrid And Offline Usage
+## Hybrid and offline usage
 
 Harness Feature Flags allows for both completely offline usage as well as hybrid usage via the relay proxy. Hybrid usage can be in the form of:
 
-- The applicatio is online and only talks to the Relay Proxy, while the Relay Proxy has connectivity to Harness
-- The Relay Proxy is bundled with the application at build-time with a working configuration file, and neither the application nor the Relay Proxy have connectivity to Harness
+- The application is online and only talks to the Relay Proxy, while the Relay Proxy has connectivity to Harness.
+- The Relay Proxy is bundled with the application at build-time with a working configuration file, and neither the application nor the Relay Proxy have connectivity to Harness.
 
-## Cloud Limitations
+## Cloud limitations
 
-There are no limitations using Feature Flags in any cloud or non-cloud environment as long as the languages needed are supported with an SDK and connectivity to either Harness or the Relay Proxy can be established.
+There are no limitations for using Feature Flags in any cloud or non-cloud environment as long as the languages needed are supported with an SDK, and connectivity to either Harness or the Relay Proxy can be established.
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).
