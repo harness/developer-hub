@@ -158,7 +158,7 @@ import TabItem from '@theme/TabItem';
    - In **Credentials**, in **Connection Type**, select **HTTPS**, the **Anonymous** option to add a public repository.
    - To add a private repository, select the authentication option with username and password, and enter the access token.
 
-     This authentication is supported for Docker and GitHub. AWS and Google have short-lived tokens, and may not work as expected. However, if you have [External Secrets Operator](https://docs.harness.io/article/3xqjzq2q2q-external-secrets-operator) installed you can configure repository for regenerating tokens. Check [OCI Helm repository with ESO](#oci-helm-repository-with-eso) for more details.
+     This authentication is supported for Docker and GitHub. AWS and Google have short-lived tokens, and might not work as expected. However, if you have an [External Secrets Operator](https://docs.harness.io/article/3xqjzq2q2q-external-secrets-operator) installed, you can configure the repository for regenerating tokens. For more information, go to [OCI Helm repository with ESO](#oci-helm-repository-with-eso).
 8. Select **Save & Continue**. Harness validates the connection.
 
 :::note
