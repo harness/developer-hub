@@ -340,24 +340,6 @@ AutoScaling groups behind ALB running HTTP(s) workloads
   - Deployment
   - Statefulset
 
-##### Supported Kubernetes Management Platform
-
-The following section lists the support for the Kubernetes management platform for CCM:
-
-|                                                 |                        |                   |
-| ----------------------------------------------- | ---------------------- | ----------------- |
-| **Technology**                                  | **Supported Platform** | **Pricing**       |
-| OpenShift 3.11                                  | GCP                    | GCP               |
-| OpenShift 4.3                                   | AWSOn-Prem             | AWSCustom-rate\*  |
-| Rancher                                         | AWS                    | Custom-rate\*\*   |
-| Kops (Kubernetes Operations)                    | AWS                    | AWS               |
-| Tanzu Kubernetes Grid Integrated Edition (TKGI) | On-Prem                | Custom-rate\*\*\* |
-
-\* Cost data is supported for On-Prem OpenShift 4.3. This uses a custom rate.
-
-\*\* Cost data is supported for K8s workloads on AWS managed by Rancher, but the cost falls back to the custom rate.
-
-\*\*\* Cost is computed using a custom rate. This can be modified by Harness on request.
 
 ##### Supported ingress controllers for Kubernetes AutoStopping
 
@@ -524,6 +506,12 @@ The recommendations are computed by analyzing the past utilization of CPU and me
 
   - Cost correlation is available only for specific cloud resource types.
   - The presented cost savings are estimated based on approximate monthly costs for the respective group of resources.
+  - Limit on number of custom rules - 300
+  - Limit on number of target accounts per enforcement - 200
+  - Limit on number of target regions in an enforcement - 30
+  - Limit on number of rules in rule sets - 30
+  - Limit on number of policies in an enforcement - 30
+  - Limit on number of rule sets in an enforcement - 30
 
 ### Documentation link 
 
