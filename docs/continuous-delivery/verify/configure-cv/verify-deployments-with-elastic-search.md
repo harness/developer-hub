@@ -84,6 +84,20 @@ You can add a step at various points in the pipeline such as the beginning, end,
    - **ms** for milliseconds. For example, to define 1000 milliseconds, enter 1000ms.
 
 3. The maximum timeout value you can set is **53w**. You can also set timeouts at the pipeline level.
+
+**Node filtering**
+
+:::info note
+Currently, this feature is behind the feature flag `CV_UI_DISPLAY_NODE_REGEX_FILTER`. Contact Harness Support to enable the feature.
+:::
+
+This feature allows you to be more specific in node filtering by using Kubernetes PodName as a label. You can make analysis more explicit by telling CV which nodes to filter on. Just specify the filters on the control nodes (nodes that test nodes are compared against) and the test nodes (nodes CV checks).
+
+To filter the nodes:
+
+1. Expand **Optional**.
+
+2. Choose **Control Nodes** and **Test Nodes** that Harness CV should focus on during analysis. You can either type a node’s name or use a simple pattern (Regex) to define the nodes you want to filter.
  
 
 ## Select a continuous verification type, sensitivity, and duration
