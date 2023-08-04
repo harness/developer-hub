@@ -68,7 +68,7 @@ You can add a step at various points in the pipeline, such as the beginning, end
 
 1. In **Name**, enter a name for the Verification step.
    
-2. In **Timeout**, enter a timeout value for the step. Harness uses this information to time out the verification. Use the following syntax to a define timeout:
+2. In **Timeout**, enter a timeout value for the step. Harness uses this information to time out the verification. Use the following syntax to define a timeout:
    - **w** for weeks.
    - **d** for days.
    - **h** for hours.
@@ -83,7 +83,7 @@ You can add a step at various points in the pipeline, such as the beginning, end
 **Node filtering**
 
 :::info note
-Currently, this feature is behind the feature flag SRM_SUMO. Contact Harness Support to enable the feature.
+Currently, this feature is behind the feature flag `CV_UI_DISPLAY_NODE_REGEX_FILTER`. Contact Harness Support to enable the feature.
 :::
 
 Expand **Optional** and specify the desired **Control Nodes** and **Test Nodes** that Harness CV should consider for analysis. When dealing with a large number of nodes, you can optimize the analysis process by filtering the nodes that need to be examined using CV. You can do this by specifying control nodes (nodes against which the test nodes are verified) and test nodes (the nodes that CV tests). You can enter either a specific node name or use a regular expression (Regex) to define the nodes to be filtered.

@@ -53,7 +53,7 @@ You can use:
 * `s` for seconds
 * `ms` for milliseconds
 
-The maximum is `53w`.Timeouts can be set at the Pipeline level also.
+The maximum is `53w`. Timeouts can be set at the Pipeline level also.
 
 **Node filtering**
 

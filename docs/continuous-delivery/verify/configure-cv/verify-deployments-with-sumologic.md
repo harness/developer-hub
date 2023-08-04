@@ -24,7 +24,7 @@ This topic describes how to set up a Sumo Logic health source when adding a CV s
 
 
 :::important
-If you are using an aggregation operator in your Sumologic metrics query, then you must include the service instance identifier dimension.
+If you are using an aggregation operator in your Sumo Logic metrics query, then you must include the service instance identifier dimension.
 
 :::
 
@@ -82,7 +82,7 @@ You can add a step at various points in the pipeline such as the beginning, end,
 **Node filtering**
 
 :::info note
-Currently, this feature is behind the feature flag SRM_SUMO. Contact Harness Support to enable the feature.
+Currently, this feature is behind the feature flag `CV_UI_DISPLAY_NODE_REGEX_FILTER`. Contact Harness Support to enable the feature.
 :::
 
 Expand **Optional** and specify the desired **Control Nodes** and **Test Nodes** that Harness CV should consider for analysis. When dealing with a large number of nodes, you can optimize the analysis process by filtering the nodes that need to be examined using CV. You can do this by specifying control nodes (nodes against which the test nodes are verified) and test nodes (the nodes that CV tests). You can enter either a specific node name or use a regular expression (Regex) to define the nodes to be filtered.
