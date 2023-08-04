@@ -274,6 +274,14 @@ $ docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  dele
 
 This command mounts the volume to the Docker container providing access to `pool.yml` to authenticate with AWS. It also exposes port 3000 and passes arguments to the container.
 
+### What does the runner do
+
+When a build starts, the delegate receives a request for VMs on which to run the build. The delegate forwards the request to the runner, which then allocates VMs from the warm pool (specified by `pool` in `pool.yml`) and, if necessary, spins up additional VMs (up to the `limit` specified in `pool.yml`).
+
+The runner includes lite engine, and the lite engine process triggers VM startup through a cloud init script. This script downloads and installs Scoop package manger, Git, the Drone plugin, and lite engine on the build VMs. The plugin and lite engine are downloaded from GitHub releases.
+
+Firewall restrictions can prevent the script from downloading these dependencies. Make sure your images don't have firewall or anti-malware restrictions that are interfering with downloading the dependencies. For more information, go to [Troubleshooting](#troubleshooting).
+
 ## Install the delegate
 
 Install a Harness **Docker** Delegate on your delegate VM.
@@ -365,15 +373,16 @@ When you run the pipeline, if VM creation in the runner fails with the error `no
 
 ### CI builds stuck at the initialize step on health check
 
-If your CI build gets stuck at the initialize step on the health check for connectivity with lite-engine, either lite-engine is not running on your build VMs or there is a connectivity issue between the runner and lite-engine.
+If your CI build gets stuck at the initialize step on the health check for connectivity with lite engine, either lite engine is not running on your build VMs or there is a connectivity issue between the runner and lite engine.
 
 1. Verify that lite-engine is running on your build VMs.
    1. SSH/RDP into a VM from your VM pool that is in a running state.
    2. Check whether the lite-engine process is running on the VM.
-   3. Check the cloud init output [logs](#logs) to debug issues related to startup of the lite-engine process. The lite-engine process starts at VM startup through a cloud init script.
+   3. Check the cloud init output [logs](#logs) to debug issues related to startup of the lite engine process. The lite engine process starts at VM startup through a cloud init script.
 2. If lite-engine is running, verify that the runner can communicate with lite-engine from the delegate VM.
    1. Run `nc -vz <build-vm-ip> 9079` from the runner.
    2. If the status is not successful, make sure the security group settings in `runner/pool.yml` are correct, and make sure your [security group setup](#vpc-ports-and-security-groups) in AWS allows the runner to communicate with the build VMs.
+   3. Make sure there are no firewall or anti-malware restrictions on your AMI that are interfering with the cloud init script's ability to download necessary dependencies. For details about these dependencies, go to [What does the runner do](#what-does-the-runner-do).
 
 ### Delegate connected but builds fail
 
@@ -384,11 +393,17 @@ If the delegate is connected but your builds are failing, check the following:
    * For a Windows pool, search for an AMI called `Microsoft Windows Server 2019 Base with Containers` and update `ami` in `pool.yml`.
 2. Confirm your [security group setup](#vpc-ports-and-security-groups) and security group settings in `runner/pool.yml`.
 
+### Using internal or custom AMIs
+
+If you are using an internal or custom AMI, make sure it has Docker installed.
+
+Additionally, make sure there are no firewall or anti-malware restrictions interfering with initialization, as described in [CI builds stuck at the initialize step on health check](#ci-builds-stuck-at-the-initialize-step-on-health-check).
+
 ### Logs
 
 * Linux
-   * lite-engine logs: `/var/log/lite-engine.log`
-   * cloud init output logs: `/var/log/cloud-init-output.log`
+   * Lite engine logs: `/var/log/lite-engine.log`
+   * Cloud init output logs: `/var/log/cloud-init-output.log`
 * Windows
-   * lite engine logs: `C:\Program Files\lite-engine\log.out`
-   * cloud init output logs: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`
+   * Lite engine logs: `C:\Program Files\lite-engine\log.out`
+   * Cloud init output logs: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`

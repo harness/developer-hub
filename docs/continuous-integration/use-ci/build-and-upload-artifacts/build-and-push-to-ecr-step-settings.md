@@ -32,14 +32,28 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 ## AWS Connector
 
-The Harness AWS connector to use to connect to ECR.
+Select the Harness [AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector) to use to connect to ECR.
 
-The AWS IAM roles and policies associated with the account connected to the Harness AWS connector must be able to push to ECR. For more information about roles and permissions for AWS connectors, go to:
+This step supports all [AWS connector authentication methods](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings) (AWS access key, Delegate IAM role assumption, IRSA, and cross-account access), but an additional stage variable might be required to [assume IAM roles or use ARNs](#stage-variable-required-to-assume-iam-role-and-arns).
 
-* [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector)
-* [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+The AWS IAM roles and policies associated with the AWS account for your Harness AWS connector must allow pushing to ECR. For more information, go to the [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
 
-This step supports AWS connectors with any authentication method (AWS access key, Delegate IAM role assumption, IRSA, and cross-account access).
+### Stage variable required to assume IAM role or use ARNs
+
+Stages with **Build and Push to ECR** steps must have a `PLUGIN_USER_ROLE_ARN` stage variable if:
+
+* Your [AWS connector's authentication uses a cross-account role (ARN)](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#enable-cross-account-access-sts-role). You can use `PLUGIN_USER_ROLE_ARN` to specify the full ARN value corresponding with the AWS connector's ARN.
+* Your AWS connector uses [**Assume IAM Role on Delegate** authentication](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings). If your connector doesn't use **AWS Access Key** authentication, then the **Build and Push to ECR** step uses the IAM role of the build pod or build VM(depending on your build infrastructure). You can use `PLUGIN_USER_ROLE_ARN` to select a different role than the default role assumed by the build pod/machine. This is similar to [`sts assume-role`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/assume-role.html).
+
+To add the `PLUGIN_USER_ROLE_ARN` stage variable:
+
+1. In the Pipeline Studio, select the stage with the **Build and Push to ECR** step, and then select the **Overview** tab.
+2. In the **Advanced** section, add a stage variable.
+3. Enter `PLUGIN_USER_ROLE_ARN` as the **Variable Name**, set the **Type** to **String**, and then select **Save**.
+4. For the **Value**, enter the full ARN value.
+
+   * For cross-account roles, this ARN value must correspond with the AWS connector's ARN.
+   * For connectors that use the delegate's IAM role, the ARN value must identify the role you want the build pod/machine to use.
 
 ## Region
 
