@@ -57,7 +57,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 
 
-
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
