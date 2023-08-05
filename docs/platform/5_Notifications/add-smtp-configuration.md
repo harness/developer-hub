@@ -19,7 +19,7 @@ If you are using the Harness On-Prem offering, then you will need to add an SMTP
 
 ### Before you begin
 
-* [User Group Notification Preferences](/docs/platform/role-based-access-control/add-user-groups#option-notification-preferences)
+* [User Group Notification Preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences)
 
 ### Limitations
 

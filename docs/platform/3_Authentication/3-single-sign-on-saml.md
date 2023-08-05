@@ -490,11 +490,11 @@ To set up Azure Authorization in Harness, do the following:
 
 	7. Click **Save**. The User Group is now linked to the SAML SSO Provider and Azure group Object ID.
 6. Test Authorization.
-	18. Open a new Chrome Incognito window to test the authorization using a Harness User account other than the one you are currently logged in with.
-	19. Log into Harness using the user email address, and sign in using the Azure username and password. If you are already logged into Azure in Chrome, you might be logged into Harness automatically.
-	20. In the linked Harness User Group, ensure that the Harness User account you logged in with was added.
+	1. Open a new Chrome Incognito window to test the authorization using a Harness User account other than the one you are currently logged in with.
+	2. Log into Harness using the user email address, and sign in using the Azure username and password. If you are already logged into Azure in Chrome, you might be logged into Harness automatically.
+	3. In the linked Harness User Group, ensure that the Harness User account you logged in with was added.
 
-The Harness User is now added and the RBAC settings for the Harness User Group are applied to its account. For more information, go to [Add and manage User Groups](/docs/platform/role-based-access-control/add-user-groups).
+The Harness User is now added and the RBAC settings for the Harness User Group are applied to its account. For more information, go to [Manage User Groups](/docs/platform/role-based-access-control/add-user-groups).
 
 ## SAML SSO with Azure Active Directory
 

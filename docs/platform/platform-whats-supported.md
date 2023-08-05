@@ -81,7 +81,7 @@ import Secretmgmtsup from '/docs/getting-started/shared/secret-management-suppor
 
 A Harness user is any individual registered with Harness with a unique email address. A User can be a part of multiple accounts. Go to the following topics to learn more about how to add and manage users.
 
-- [Add and manage user groups](/docs/platform/User-Management/add-user-groups)
+- [Manage user groups](/docs/platform/User-Management/add-user-groups)
 - [Manage roles](/docs/platform/role-based-access-control/add-manage-roles)
 - [Manage resource groups](/docs/platform/role-based-access-control/add-resource-groups)
 

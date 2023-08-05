@@ -28,7 +28,7 @@
 | Grasp the implications of anonymous Docker image pulls and other security considerations | [Docker Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) |
 | **7. Authentication and User Management** ||
 | Deep dive into OAuth, SAML, and SCIM integrations | [Authentication](https://developer.harness.io/docs/category/authentication) |
-| Set up and manage credentials, user and group permissions, and more | [Add and manage user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) |
+| Set up and manage credentials, user and group permissions, and more | [Manage user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) |
 | Delve into debugging and troubleshooting techniques, including running pipeline steps locally | [Troubleshoot CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci/) |
 | **8. Policy-Based Governance and Compliance** ||
 | Explore and configure policy as code with OPA and Rego | [Harness Policy As Code quickstart](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-quickstart) |

@@ -1,6 +1,6 @@
 ---
-title: Add and manage user groups
-description: This document shows steps to create new user groups and assign roles to them.
+title: Manage user groups
+description: User groups are part of RBAC in Harness.
 sidebar_position: 40
 helpdocs_topic_id: dfwuvmy33m
 helpdocs_category_id: w4rzhnf27d
@@ -8,203 +8,184 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness User Groups help you manage user access. Each member of a User Group inherits the [role bindings](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment) assigned to that group.
+User groups contain multiple Harness users. You assign [roles](./add-manage-roles) and [resource groups](./add-resource-groups) to user groups. The permissions and access granted by the assigned roles and resource groups are applied to all group members.
 
-This topic explains the steps to create and manage User Groups within Harness.
+You can also assign roles and resource groups to individual users and service accounts that are not in a group. However, user groups help with organization and make it easy to manage permissions and access. Instead of modifying each user individually, you just edit the permissions and access for the entire group at once.
 
-:::tip Automatic provisioning
+Harness includes some [built-in user groups](#built-in-user-groups), and you can [create user groups manually](#create-user-groups-manually), through [inheritance](#create-roles-by-inheritance-assign-roles), or through [automated provisioning](#use-automated-provisioning). You can create user groups at all [scopes](#permissions-hierarchy-scopes).
 
-You can create users and user groups directly in Harness, and you can use automated provisioning, including:
+## Built-in user groups
+
+Harness has a built-in user group at each [scope](./rbac-in-harness#permissions-hierarchy-scopes). This group is called **All Project Users**, **All Organization Users**, or **All Account Users**, depending on the scope. By default, users within a particular scope are in the **All Users** group for that scope.
+
+* **All Account Users:** All users in the account scope.
+* **All Organization Users:** All users in an organization's scope.
+* **All Project Users:** All users in a project's scope.
+
+Whenever you [create an organization or project](/docs/platform/organizations-and-projects/create-an-organization), Harness creates an **All Users** group for the org or project.
+
+Initially, built-in user groups have no role or resource group assignments. You can [assign a role and resource group](#assign-roles-and-resource-groups) to the built-in user group at a specific scope, which becomes the default role/resource group for all users at that scope.
+
+For example, if you add a user to a project, they are added to the **All Project Users** group for that project, and they inherit the role and resource group you assigned to the **All Project Users** group.
+
+Aside from assigning roles and resource groups, you can't edit or delete the built-in user groups. These groups are created and managed by Harness.
+
+## Use automated provisioning
+
+You can [manually create user groups](#create-user-groups-manually) and users in Harness, and you can use automated provisioning, including:
 
 * [Okta SCIM](./provision-users-with-okta-scim.md)
 * [Azure AD SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
 * [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
 * [Just-in-time provisioning](./provision-use-jit.md)
 
-With automated provisioning, users and user groups are imported from your IdP, and then you [assign roles and resource groups](#role-assignment) to the imported [principals](#principals) in Harness. You manage group metadata, group membership, and user profiles in your IdP, and you manage role and resource group assignments in Harness.
+When you use automated provisioning, users and user groups are imported from your IdP, and then you [assign roles and resource groups](#assign-roles-and-resource-groups) to the imported users and groups in Harness. For imported users and groups, you manage group metadata, group membership, and user profiles in your IdP, and you manage their role and resource group assignments in Harness. You can also create users and user groups directly in Harness, but any users or groups imported from your IdP must be managed in your IdP.
 
-You can also create users and user groups directly in Harness, but any users or groups imported from your IdP must be managed in your IdP. For imported users and group, you can only change their role and resource group assignments in Harness.
+For example, if you use Okta as your IdP, you could create a user group in Okta and assign users to that group in Okta. When the user group is first imported into Harness, the group and the group members are not associated with any roles or resource groups. You must assign roles and resource groups to the user group in Harness. The group members then inherit permissions and access from the role and resource group that is assigned to the user group.
 
+## Create user groups manually
 
-<!-- alternate text
-When you use automated provisioning, users and user groups are imported from your IdP, and then you assign roles and resource groups to the imported [principals](#principals) in Harness. For imported users and groups, you manage group metadata, group membership, and user profiles in your IdP, and you manage their role and resource group assignments in Harness. You can also create users and user groups directly in Harness, but any users or groups imported from your IdP must be managed in your IdP.
+To create user groups in Harness, you need a role, such as **Account Admin**, that has [permission](./permissions-reference) to view and manage user groups.
 
-For example, if you use Okta as your IdP, you could create a user group in Okta and assign users to that group in Okta. When the user group is first imported into Harness, the group and the group members are not associated with any roles or resource groups. You must [assign roles and resource groups](#assign-the-role-and-resource-group-to-the-user-group) to the user group in Harness. The group members then inherit permissions and access from the role and resource group that is assigned to the user group.-->
+1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where you want to create the user group.
+
+   * To create a user group at the account scope, select **Account Settings**, and then select **Access Control**.
+   * To create a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To create a user group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
+
+2. Select **User Groups** in the header, and then select **New User Group**.
+3. Enter a **Name** for the user group.  **Description** and **Tags** are optional.
+4. In **Add Users**, select users to add to the group. If you haven't invited any users yet, you can [add users](#add-users-to-a-group) later.
+4. Select **Save**.
+5. [Assign roles and resource groups](#assign-roles-and-resource-groups) to the user group.
+
+## Create groups by inheritance
+
+At the organization and project scopes, you can quickly create groups by inheriting them from higher scopes. Metadata and members of inherited groups are managed at their original scope. When inherited at a lower scope, you can only change the role and resource group assignment at the inherited scope. Any other modifications to the group must be made at the group's original scope, and those changes are reflected at all scopes where the group is inherited.
+
+| Action | Scope |
+| ------ | ----  |
+| Edit group members | Original scope only. The changes are reflected in all scopes where the group is inherited. |
+| Edit name, description, tags, and notification preferences | Original scope only. The changes are reflected in all scopes where the group is inherited. |
+| Edit roles and resource groups | You can change the roles and resource groups that were assigned at the current scope only. You can't make cross-scope modifications.<br/><ul><li>Original scope: Manage role and resource group assignments for the original scope only. Can't edit role/resource groups for inherited scopes.</li><li>Inherited scope: Manage role and resource group assignments for the inherited scope only. Can't edit higher-level roles/resource groups or roles/resource groups in other inherited scopes.</li></ul> |
+| Delete group | Original scope only. If deleted, the group is also removed from all scopes where it was inherited. |
+
+To inherit user groups in Harness, you need the following [permissions](./permissions-reference):
+
+* **View** user groups at the original scope. For example, if the group originates from the account scope, you must have the ability to view user groups at the account scope.
+* **Manage** user groups at the inheritance scope. For example, if you want to inherit a group at a project scope, you must have the ability to manage user groups at that project scope.
+
+1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where you want to inherit the user group.
+
+   * To inherit a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To inherit a user group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
+
+2. Select **User Groups** in the header, and then select **Assign Roles** next to **New User Group**.
+3. In **User Group(s)**, select the groups to inherit. If you don't see a particular group, it either exists at a lower scope or you don't have permission to view it.
+
+   ![](./static/add-user-groups-54.png)
+
+4. Select **Apply Selected**.
+5. Select **Add** to [assign a role and resource group](#assign-roles-and-resource-groups) to the inherited group at the inherited scope. This determines the group's permissions and access at the inherited scope. If the group doesn't already have sufficient permissions/access from the original scope, you need to add the additional necessary permissions/access here.
+6. Select **Apply**.
+
+When viewing user groups at higher scopes, you can find a list of **Organizations and Projects Using This Group** in the group details. These are the organizations and projects where the group is inherited.
+
+![](./static/add-user-groups-55.png)
+
+## Assign roles and resource groups
+
+Initially, user groups have no permissions or access. You assign [roles](./add-manage-roles) and [resource groups](./add-resource-groups) to user groups, and then the permissions and access granted by the assigned roles and resource groups are applied to all group members. For more information about assigning roles and resource groups, go to [RBAC in Harness: Role assignment](./rbac-in-harness#role-assignment).
+
+:::caution Least privilege
+
+RBAC is additive. The total expanse of a user/service account's permissions and access is the sum of all the roles and resource groups from all user groups they belong to, as well as any roles and resource groups assigned directly to them as an individual user/service account.
+
+It is important to follow the principle of least privilege (PoLP). This is a security principle that means users are granted the absolute minimum access/permissions necessary to complete their tasks and nothing more.
+
+While Harness includes some built-in roles and resource groups, to ensure least privilege, consider:
+
+* Being selective in the way you apply roles and resource groups.
+* Creating your own roles and resource groups as needed for refined access control.
 
 :::
 
-## Default user groups
+To manage user groups in Harness, you need a role, such as **Account Admin**, that has [permission](./permissions-reference) to view and manage user groups.
 
-Harness has default User Group in each scope. These groups have all the users at the respective scope as their members.
+1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where you want to configure the group's  role and resource group assignments.
 
-Whenever you create a new Organization or Project, Harness creates a default User Group in its scope.
+   * To edit a user group at the account scope, select **Account Settings**, and then select **Access Control**.
+   * To edit a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To edit a user group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
-For example, if you add a new Organization to your Account, Harness creates a default User Group in the Organization. This group will have all the users within the scope of the Organization.
+2. Select **User Groups** in the header.
+3. Locate the group you want to edit and select **Manage Roles**.
+4. In **Role Bindings**, select **Add**, then select a [role](./add-manage-roles) and a [resource group](./add-resource-groups).
 
-This topic explains the default User Groups at each scope and how you can do the Role Assignment for each of them.
+   To delete a role binding, select the **Delete** icon.
+   To add another role binding, select **Add** again.
 
-### Harness default User Groups overview
+5. Select **Apply**.
 
-Harness adds the scope-specific default User group to all your existing Accounts, Organizations, and Projects as well as to any Organization and Project that you create later.
+## Edit group metadata
 
-The users that you add in the Account scope will **not** be assigned the **Account Viewer** role by default. The user's default role assignment is the same as the role assignment of the default User Group in the Account.The following table explains the default User Group at the individual scopes:
+Use these steps to edit a user group's name, description, or tags.
 
+1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where the user group exists.
 
+   * To edit a user group at the account scope, select **Account Settings**, and then select **Access Control**.
+   * To edit a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To edit a user group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
-|  |  |  |
-| --- | --- | --- |
-| **Scope** | **Default User Group Name** | **Description** |
-| Account | **All Account Users** | All the users in the Account scope are members of this User Group. |
-| Organization | **All Organization Users** | All the users in the Organization scope are members of this User Group. |
-| Project | **All Project Users** | All the users in the Project scope are members of this User Group. |
+2. Select **User Groups** in the header.
+3. Locate the group you want to edit.
+4. Select **More options** (&vellip;), and then select **Edit**.
+5. Edit the groups's name, description, or tags, and then select **Save**.
 
-* When you add a new Organization or Project, the default role assignment for the default User Group is that of **Organization Viewer** and **Project Viewer** respectively.
+## Edit group members
 
-![](./static/harness-default-user-groups-57.png)
+Use these steps to add and remove users in a user group.
 
-* When you add a user to an existing Account, Organization, or Project, Harness adds the user to the default User Group in the scope where you added the user.  
-For example, if you add a user to your existing Organization `OrgExample`, Harness will add the user to the All Organization Users group within `OrgExample`.
-* Admin can do the required [role assignment](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment) for the default User Groups.
-* When you add a user to your Harness Account, the user's default role assignment is the same as the role assignment of the default User Group in the Account.  
-For example, the **All Account Users** group in your Account has the role assignment of **Account Viewer**. All the members of this group can view resources within the scope of this Account. Now, you add a new user to this Account.  
-Harness adds this user to the **All Account Users** group and the role assignment of this user is **Account Viewer** which is inherited from the default User Group of this Account.
+1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where the user group exists.
 
-You cannot create, edit, or delete the default User Groups. Harness manages them.
+   * To edit a user group at the account scope, select **Account Settings**, and then select **Access Control**.
+   * To edit a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To edit a user group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
-### Assign Role-Bindings for default User Group in a new Organization
+2. Select **User Groups** in the header.
+3. Select the group you want to edit.
+4. To add users to the group, select **Members**, select the users to add, and then select **Save**.
+5. To remove users from the group, locate the user you want to remove, select **More options** (&vellip;), and then select **Remove**.
 
-1. In your Harness Account, click **Account Settings.**
-2. Click **Organizations**.
-3. Click **New Organization**. The new Organization settings appear.
-4. In **Name**, enter a name for your Organization.
-5. Enter **Description**, and [Tags](https://harness.helpdocs.io/article/i8t053o0sq-tags-reference) for your new Org.
-6. Click **Save and Continue**.![](./static/harness-default-user-groups-58.png)
-7. Click **Finish**.  
-Your Organization now appears in the list of Organizations.
-8. Click on your Organization and then click **Access Control**.
-9. Click **User Groups**.  
-   **All Organization Users** is the default User Group with a default role assignment of **Organization Viewer**.
+## Edit notification preferences
 
-   ![](./static/harness-default-user-groups-59.png)
+You can configure notification channels for Harness to send messages to group members. When you assign an alert notification rule to a group, the channels specified in the group's **Notification Preferences** are used to notify all group members.
 
-10. To assign another role to this User Group, click **Role**.  
-    The **Add Role** settings appear.
-    ![](./static/harness-default-user-groups-60.png)
+1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where the user group exists.
 
-11.  Click **Add**.
-12.  In **Roles**, select a Harness built-in Role or a custom Role that you have created for the desired permissions.  
-For more information on built-in roles and custom roles, see [Manage Roles](./add-manage-roles).
-13. In **Resource Groups**, select a Harness built-in Resource Group or a custom Resource Group that you have created for the desired resources.  
-For more information on built-in roles and custom roles, see [Manage resource groups](./add-resource-groups).
-14. Click **Apply**.
+   * To edit a user group at the account scope, select **Account Settings**, and then select **Access Control**.
+   * To edit a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To edit a user group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
-All the existing members and any new members that you add to this Organization will have the role bindings that you just added.
+2. Select **User Groups** in the header.
+3. Select the group you want to edit.
+4. Under **Notification Preferences**, select **Channel**.
+5. Configure the notification settings for the preferred channel:
+   * **Email/Alias:** Enter any group email addresses where Harness can send notifications. For more information, go to [Send Notifications Using Email](../5_Notifications/add-smtp-configuration.md#option-send-notifications-for-a-user-group-using-email).
+   * **Slack Webhook URL:** Enter the Slack channel Incoming Webhook URL. For more information, go to [Send Notifications Using Slack](../5_Notifications/send-notifications-using-slack.md).
+   * **Microsoft Teams Webhook URL:** Enter the Microsoft Teams incoming webhook URL.
+   * **PagerDuty Integration Key:** Enter the key for a PagerDuty Account/Service to which Harness can send notifications. You can get this key from the integration details in PagerDuty (navigate to **Services** and then **Service Directory**).
 
-## Create custom user groups
+      ![](./static/add-user-groups-56.png)
 
-### Before you begin
+## Delete user groups
 
-* Make sure you have **Manage** Permissions for User Groups.
+1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where the user group exists.
 
-### Step: Add New User Group
+   * To delete a user group at the account scope, select **Account Settings**, and then select **Access Control**.
+   * To delete a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To delete a user group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
-
-You can add a User Group in Project/Organization/Account scope. To do this, go to Project SETUP, Organization, or Account Resources.
-
-In your **Project/Org/Account**, and click **Project/Org/Account SETUP**.
-
-Click **Access Control**.
-
-In **User Groups** click **New User Group**. The New User Group settings appear.
-
-![](./static/add-user-groups-49.png)
-Enter a **Name** for your **User Group**.
-
-Enter **Description** and [**Tags**](../20_References/tags-reference.md) for your **User Group**.
-
-Select Users under **Add Users**.
-
-Click **Save**.
-
-Your User Group is now listed under User Groups. You can assign Roles to your User Group by clicking on **Role**.
-
-### Step: Delete User Group
-
-Click **User Groups** under **Access** **Control**.
-
-Click **Delete** on the top right corner for the User Group you want to delete.
-
-![](./static/add-user-groups-50.png)
-### Step: Manage User Group
-
-Click the **User Groups** in **Access Control**.
-
-Click the User Group you want to edit. The User Group details appear.
-
-![](./static/add-user-groups-51.png)
-Click **Members** to invite Users to this Group.
-
-Click **Remove** to delete User from this Group.
-
-Click **Role** to change Role Bindings for this User Group.
-
-### Assign Roles
-
-Harness lets you inherit User Groups created at a higher scope by using **Assign Roles**. For example, you can inherit and use User Group(s) created at the Account scope in the Org or Project scope.
-
-![](./static/add-user-groups-52.png)
-To inherit the User Group at the child scope, you must have view User Group permissions at the parent scope and manage User Group permissions at the child scope.​​You can modify the inherited User Group's role bindings in the child scope, but not the member or notification settings. Changes to the User Group in the parent scope will be reflected in the child scope as well.​
-
-You can inherit a User Group from any parent scope to a child scope.
-
-This topic shows you how to inherit a User Group from the Account scope to the Project scope.
-
-In Harness, go to your Project and click **Access Control** in **Project Setup**.
-
-Click **User Groups**.
-
-Click **Assign Roles**. The Assign Roles settings appear.
-
-![](./static/add-user-groups-53.png)
-In User Group(s), click **Select User Group(s)**. All the User Group(s) that you have permission to view across the scopes are listed.
-
-![](./static/add-user-groups-54.png)
-Select the User Group(s) that you want to inherit from any of the parent scopes to your Project. Click **Apply Selected**.
-
-Click **Add** to assign Roles and Resource Groups to this User Group in your Project scope.
-
-Select **Roles** and **Resource Groups** and click **Apply**.
-
-The User Group is now listed in User Groups.
-
-You can get the list of child scopes where the User Group is inherited by clicking on the User Group at the parent scope.
-
-![](./static/add-user-groups-55.png)
-### Option: Notification Preferences
-
-You can set notification channels for your User Group members using **Notification Preferences**.
-
-When the User Group is assigned an Alert Notification Rule, the channels you set here will be used to notify them.
-
-To add notification preferences to Harness User Groups, perform the following steps:
-
-1. In your **Account**/**Organization**/**Project** click Access Control.
-2. Click **User Groups**.
-3. Select the User Group to which you want to add notification preferences.
-4. In **Notification Preferences**, click **Channel**.
-5. Configure one or more notification settings from the following options and click **Save:**
-	* **Email/Alias** – Enter any group email addresses where Harness can send notifications. For more details, see [Send Notifications Using Email](../5_Notifications/add-smtp-configuration.md#option-send-notifications-for-a-user-group-using-email).
-	* **Slack Webhook URL** – Enter the Slack channel Incoming Webhook URL. For more details, see [Send Notifications Using Slack](../5_Notifications/send-notifications-using-slack.md).
-	* **PagerDuty Integration Key** – Enter the key for a PagerDuty Account/Service to which Harness can send notifications. You can copy/paste this key from **Integrations** of your service in **Services** > **Service Directory.**
-	
-	![](./static/add-user-groups-56.png)
-
-	* **Microsoft Teams Webhook URL** - Enter the Microsoft Teams Incoming Webhook URL.
-
-### See also
-
-* [Add and Manage Users](/docs/platform/role-based-access-control/add-users)
-* [Manage resource groups](./add-resource-groups)
-* [Permissions reference](./permissions-reference)
-
+2. Select **User Groups** in the header.
+3. Locate the group you want to delete.
+4. Select **More options** (&vellip;), and then select **Delete**.

@@ -483,18 +483,8 @@ The following table lists permissions corresponding to the default roles at the 
 |  | Target Management | <li> **Create/Edit** - Can create and edit Targets and Target Groups to control visibility of variation of a Feature Flag</li>
  |
 
-### Default Resource Group
+ ## See also
 
-Harness includes the following default Resource Groups at the Account, Org, and Project scope:
-
-
-
-|  |  |  |
-| --- | --- | --- |
-| Scope | Resource Group | Description |
-| Account | **All Resources Including Child Scopes** | Includes all the resources within the scope of the Account, as well as those within the scope of the Orgs and Projects in this Account. |
-| Account | **All Account Level Resources** | Includes all the resources within the scope of the Account. This does not include resources within the scope of Org or Project. |
-| Org | **All Resources Including Child Scopes** | Includes all the resources within the scope of the Org, as well as those within the scope of all the Projects created within this Org. |
-| Org | **All Organization Level Resources** | Includes all the resources within the scope of the Org. This does not include resources within the scope of Projects. |
-| Project | **All Project Level Resources** | Includes all the resources within the scope of the Project. |
-
+ * [Manage resource groups](./add-resource-groups.md)
+ * [Manage roles](./add-manage-roles.md)
+ * [API permissions reference](../Resource-Development/16_APIs/api-permissions-reference)

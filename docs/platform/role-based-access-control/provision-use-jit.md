@@ -10,7 +10,7 @@ Currently, this feature is behind the feature flag `PL_ENABLE_JIT_USER_PROVISION
 
 :::
 
-Automatic provisioning eliminates repetitive tasks related to manual provisioning and simplifies user management.
+Automated provisioning eliminates repetitive tasks related to manual provisioning and simplifies user management.
 
 Just-in-time (JIT) provisioning in Harness lets you provision users automatically when they first sign-in to Harness through SAML SSO. Harness supports JIT provisioning only for new users logging in through an IdP, such as Okta.
 

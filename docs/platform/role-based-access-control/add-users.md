@@ -12,7 +12,7 @@ A Harness User is any individual registered with Harness with a unique email add
 
 This topic will explain the steps to create and manage Users within Harness.
 
-:::tip Automatic provisioning
+:::tip Automated provisioning
 
 You can create users and user groups directly in Harness, and you can use automated provisioning, including:
 
@@ -39,7 +39,7 @@ For example, if you use Okta as your IdP, you could create a user group in Okta 
 
 ### Step: Add New User
 
-You must first invite Users to your Account/Org/Project to add them to User Groups and assign Role Bindings accordingly. For more information on User Groups and Role Bindings, see [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups) and [Role Assignment](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment).
+You must first invite Users to your Account/Org/Project to add them to User Groups and assign Role Bindings accordingly. For more information on User Groups and Role Bindings, see [Manage user groups](/docs/platform/role-based-access-control/add-user-groups) and [Role Assignment](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment).
 
 Click **Account Settings**, and click **Access Control**.
 
@@ -97,7 +97,7 @@ Harness lets you select one of the following scopes to view the user's group mem
 * **Organization** **only**: lists the user's group membership in the scope of the selected Organization.
 * **Organization and Projects**: lists the user's group membership in the scope of the selected Organization and Project.
 
-To add the user to a new user group, click **Add to a new User Group**.
+To add the user to a new user group, click **Add to a new User Group**. <!-- steps to add to an existing grp -->
 
 Click **Remove** to remove the user as a member from a specific user group.
 
@@ -120,6 +120,5 @@ To add a new role binding for a user, click **Role**.
 
 ### See also
 
-* [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
 * [Permissions Reference](./permissions-reference)
 

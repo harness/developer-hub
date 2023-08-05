@@ -464,7 +464,7 @@ Sign up with a new account and then sign in.
 
 Your new account will be added to the Harness Account Administrators User Group.
 
-See [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups).
+See [Manage user groups](/docs/platform/role-based-access-control/add-user-groups).
 
 ### Future versions
 

@@ -33,7 +33,7 @@ If you have permissions at the Project level, you can edit Flags within that Pro
 The following topics can help you understand how to implement Access Control:
 
 * [Add and Manage Users](/docs/platform/role-based-access-control/add-users)
-* [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
+* [Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
 * [Manage Resource Groups](../../../platform/role-based-access-control/add-resource-groups)
 * [Manage Roles](../../../platform/role-based-access-control/add-manage-roles)
 

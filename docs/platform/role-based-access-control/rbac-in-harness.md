@@ -94,7 +94,7 @@ A resource group is a set of Harness resources that a principal can access. You 
 
 Resource groups either include **All Resources** (all resources of a given type) or **Named Resources** (specific, individual resources).
 
-Harness has default resource groups at each scope, and you can create custom resource groups. For more information, go to [Manage resource groups](/docs/platform/role-based-access-control/add-resource-groups).
+Harness has built-in resource groups at each scope, and you can create custom resource groups. For more information, go to [Manage resource groups](/docs/platform/role-based-access-control/add-resource-groups).
 
 ### Roles
 
@@ -117,9 +117,9 @@ flowchart TD
 ```
 
 <details>
-<summary>Default role assignment configurations</summary>
+<summary>Built-in role assignment configurations</summary>
 
-The following table describes the role assignments (permissions and access) that result from some combinations of default [roles](#roles) and [resource groups](#resource-groups). This table doesn't include all module-specific default roles, such as CET Admin or Chaos Admin.
+The following table describes the role assignments (permissions and access) that result from some combinations of built-in [roles](#roles) and [resource groups](#resource-groups). This table doesn't include all module-specific built-in roles, such as CET Admin or Chaos Admin.
 
 | Role | Resource Group | Resulting role assignment |
 | - | - | - |
@@ -197,7 +197,7 @@ To configure RBAC in Harness, you must:
 4. [Assign roles and resource groups](#role-assignment) to users, user groups, and service accounts.
 5. If you have not already done so, [configure authentication](/docs/platform/Authentication/authentication-overview).
 
-:::tip Automatic provisioning
+:::tip Automated provisioning
 
 You can create users and user groups directly in Harness, and you can use automated provisioning, including:
 
@@ -288,9 +288,9 @@ For more information about creating resource groups, go to [Manage resource grou
 4. In **Add Users**, select users to add to the group.
 5. Select **Save**.
 
-For more information about user groups and users, go to [Add and Manage User Groups](./add-user-groups.md) and [Add and Manage Users](./add-users.md).
+For more information about user groups and users, go to [Manage user groups](./add-user-groups.md) and [Add and Manage Users](./add-users.md).
 
-:::tip Automatic provisioning
+:::tip Automated provisioning
 
 You can create user groups and users directly in Harness, and you can use automated provisioning, including:
 
@@ -378,6 +378,6 @@ For more information about creating resource groups, go to [Manage resource grou
 9. For **Resource Groups**, select the **All Project Pipelines and Connectors** group.
 10. Select **Apply**.
 
-For more information about user groups, users, and role/resource group assignments, go to [Add and Manage User Groups](./add-user-groups.md), [Add and Manage Users](./add-users.md), and [Role assignment](#role-assignment).
+For more information about user groups, users, and role/resource group assignments, go to [Manage user groups](./add-user-groups.md), [Add and Manage Users](./add-users.md), and [Role assignment](#role-assignment).
 
 </details>

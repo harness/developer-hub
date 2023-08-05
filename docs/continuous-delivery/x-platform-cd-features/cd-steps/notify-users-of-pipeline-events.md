@@ -12,7 +12,7 @@ Event notifications are set up using **Notification Rules** in your pipeline. Yo
 
 This topic describes how to set up **Notification Rules** in your pipeline.
 
-You can set notifications preferences on user groups also. Go to [add and manage user groups](/docs/platform/role-based-access-control/add-user-groups) for more information.
+You can set notifications preferences on user groups also. Go to [Manage user groups](/docs/platform/role-based-access-control/add-user-groups) for more information.
 
 
 ## Limitations

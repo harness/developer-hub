@@ -235,7 +235,7 @@ Make sure you understand how [scopes and refinement](#scopes-and-refinement) wor
 1. In Harness, go to the [scope](#scopes-and-refinement) where you want to create the resource group.
 
    * To create a resource group at the account scope, select **Account Settings**, and then select **Access Control**.
-   * To create a resource group at the organization scope, go to **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To create a resource group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
    * To create a resource group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
 2. Select **Resource Groups** in the header, and then select **New Resource Group**.
@@ -267,7 +267,7 @@ Make sure you understand how [scopes and refinement](#scopes-and-refinement) wor
 1. In Harness, go to the [scope](#scopes-and-refinement) where the resource group exists.
 
    * To edit a resource group at the account scope, select **Account Settings**, and then select **Access Control**.
-   * To edit a resource group at the organization scope, go to **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To edit a resource group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
    * To edit a resource group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
 2. Select **Resource Groups** in the header.
@@ -281,7 +281,7 @@ Make sure you understand how [scopes and refinement](#scopes-and-refinement) wor
 1. In Harness, go to the [scope](#scopes-and-refinement) where the resource group exists.
 
    * To delete a resource group at the account scope, select **Account Settings**, and then select **Access Control**.
-   * To delete a resource group at the organization scope, go to **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To delete a resource group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
    * To delete a resource group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
 2. Select **Resource Groups** in the header.

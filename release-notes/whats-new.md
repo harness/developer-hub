@@ -90,7 +90,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * **Perspective Preferences** enhancement (CCM-11145)
 
-  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](../docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/perspective-preferences.md).
+  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](/docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/perspective-preferences).
 
  
 :::important note
@@ -591,7 +591,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   <docimage path={require('./static/fa61423c00604c9a2d1dcf3cd2e8c040d71992791e34abf983eb5befe8640159.png')} width="60%" height="60%" title="Click to view full size image" />
 
-  For information on setting up notifications for user groups, go to [Add and manage user groups](/docs/platform/role-based-access-control/add-user-groups).
+  For information on setting up notifications for user groups, go to [Manage user groups](/docs/platform/role-based-access-control/add-user-groups).
 
 ##### Harness Platform, version 79411
 
@@ -2179,9 +2179,7 @@ For information about the current plans you can subscribe to, go to [Pricing & P
   - At Organization scope, Organization Viewer - All Organization Resources.
   - At Project Scope, Project Viewer - All Project Resources.
 
-- Harness now has a default User Group at each scope. These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default. Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
-
-  See [Harness Default User Groups](/docs/platform/role-based-access-control/add-user-groups#default-user-groups).
+- Harness now has a [built-in user group](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups) at each scope. These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the user groups by default. Users can assign roles to the built-in user group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
 
 #### September 14, 2022
 
@@ -2235,7 +2233,7 @@ To get the PHP SDK, go to our [PHP Git Repository](https://github.com/harness/ff
 
 You can now inherit User Groups created at a higher scope by using Assign Roles.
 
-See [Assign Roles](/docs/platform/role-based-access-control/add-user-groups#assign-roles).
+See [Create groups by inheritance](/docs/platform/role-based-access-control/add-user-groups#create-groups-by-inheritance).
 
 #### August 31, 2022
 

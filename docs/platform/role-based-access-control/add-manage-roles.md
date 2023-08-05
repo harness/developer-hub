@@ -83,7 +83,7 @@ To manage roles in Harness, you need a role, such as **Account Admin**, that has
 1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where you want to create the role.
 
    * To create a role at the account scope, select **Account Settings**, and then select **Access Control**.
-   * To create a role at the organization scope, go to **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To create a role at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
    * To create a role at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
 2. Select **Roles** in the header, and then select **New Role**.
@@ -102,21 +102,21 @@ To manage roles in Harness, you need a role, such as **Account Admin**, that has
 1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where the role exists.
 
    * To edit a role at the account scope, select **Account Settings**, and then select **Access Control**.
-   * To edit a role at the organization scope, go to **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To edit a role at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
    * To edit a role at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
 2. Select **Roles** in the header.
 3. Locate the role you want to edit.
 4. Select **More options** (&vellip;) on the role card, and then select **Edit**.
-4. Edit the role's name, description, or tags, if needed, and then select **Save**.
-5. Edit the role's permissions, and then select **Apply Changes**.
+5. Edit the role's name, description, or tags, if needed, and then select **Save**.
+6. Edit the role's permissions, and then select **Apply Changes**.
 
 ### Delete a role
 
 1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where the role exists.
 
    * To delete a role at the account scope, select **Account Settings**, and then select **Access Control**.
-   * To delete a role at the organization scope, go to **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To delete a role at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
    * To delete a role at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
 2. Select **Roles** in the header.

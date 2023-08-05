@@ -1039,11 +1039,11 @@ The location of the repository that contains the NextGen Helm chart is changing.
   - **Account Viewer - All Account Level Resources**: This was a role-assignment within the account scope and has been removed for all the users.
   This does not apply in the following scenarios: 
     - If an account has enabled the feature flag `ACCOUNT_BASIC_ROLE_ONLY`.
-    - If an account does not have the **Account Viewer - All Account Level Resources** role-assignment for the default user group `All Account Users`.
+    - If an account does not have the **Account Viewer - All Account Level Resources** role-assignment for the built-in user group `All Account Users`.
 - **Organization Viewer - All Organization Level Resources**: This was a role-assignment within the organization scope and has been removed for all the users.
 - **Project Viewer - All Project Level Resources**: This was a role-assignment within the project scope and has been removed for all the users.
 
-For more information, see [Default User Groups](/docs/platform/role-based-access-control/add-user-groups#default-user-groups)
+For more information, see [Built-in user groups](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups)
 
 
 ##### What's new
@@ -1642,9 +1642,7 @@ N/A
   - At Organization scope, Organization Viewer - All Organization Resources.​
   - At Project Scope, Project Viewer - All Project Resources.​
 
-  Harness now has a default User Group at each scope. These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default.​ Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
-
-  See [Default User Groups](/docs/platform/role-based-access-control/add-user-groups#default-user-groups).
+  Harness now has a [built-in user group](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups) at each scope. These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default.​ Users can assign roles to the built-in User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
 
 ##### Early access
 
@@ -1725,13 +1723,11 @@ N/A
 
 **Platform**
 
-Harness now has a default User Group at each scope. These groups have all the users at the respective scope as their members.
+Harness now has a [built-in user group](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups) at each scope. These groups have all the users at the respective scope as their members.
 
 As a part of this change, Harness will stop assigning any roles to the User Groups by default.
 
-Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group.
-
-For more information on default User Group, see [Default User Groups](/docs/platform/role-based-access-control/add-user-groups#default-user-groups).
+Users can assign roles to the built-in user group at a specific scope, which becomes the default role for all the users in that group.
 
 #### September 7, 2022, version 76619
 
@@ -1739,7 +1735,7 @@ For more information on default User Group, see [Default User Groups](/docs/plat
 
 - You can now inherit User Groups created at a higher scope by using Assign Roles. (PL-27237)
 
-  See [Assign Roles](/docs/platform/role-based-access-control/add-user-groups#assign-roles).
+  See [Create groups by inheritance](/docs/platform/role-based-access-control/add-user-groups#create-groups-by-inheritance).
 
 - You can now view the past 10 executions of the Pipelines and sort them from the table. You can also go to a specific execution by clicking on it. (PIE-4903)
 

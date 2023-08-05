@@ -777,7 +777,7 @@ The fixed issues below are available with version 79503 and do not require a new
 
   ![picture 87](static/fa61423c00604c9a2d1dcf3cd2e8c040d71992791e34abf983eb5befe8640159.png)
 
-  For information on setting up notifications for user groups, go to [Add and manage user groups](/docs/platform/role-based-access-control/add-user-groups).
+  For information on setting up notifications for user groups, go to [Manage user groups](/docs/platform/role-based-access-control/add-user-groups).
 
 ##### Early Access
 
