@@ -90,7 +90,7 @@ You cannot use a Grafana URL.
 6. In the **New Relic** **URL** field, select the URL of your New Relic Insights API. 
 
 :::info note
-New Relic supports multiple APIs. The Harness Connector leverages the New Relic Insights API which supports NRQL. See Step 8 for creating an Insights API Key.
+New Relic supports multiple APIs. The Harness Connector leverages the New Relic Insights API, which supports NRQL. See Step 8 for creating an Insights API Key.
 :::
    
    ![](../static/connect-to-monitoring-and-logging-systems-16.png)
