@@ -1,7 +1,7 @@
 ---
 title: Provision users and groups using Azure AD (SCIM)
 description: Provision and manage Harness users and user groups with Azure AD's SCIM integration.
-sidebar_position: 80
+sidebar_position: 90
 helpdocs_topic_id: 6r8hin2z20
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false

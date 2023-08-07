@@ -1,7 +1,7 @@
 ---
 title: Manage users
 description: Use Harness RBAC to manage users.
-sidebar_position: 50
+sidebar_position: 60
 helpdocs_topic_id: hyoe7qcaz6
 helpdocs_category_id: w4rzhnf27d
 helpdocs_is_private: false

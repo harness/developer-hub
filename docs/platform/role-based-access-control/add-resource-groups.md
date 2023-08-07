@@ -259,7 +259,16 @@ Make sure you understand how [scopes and refinement](#scopes-and-refinement) wor
 
    ![](./static/set-up-rbac-pipelines-42.png)
 
-8. If you selected **Specified**, select the resource types to include. Depending on the scope where you created the resource group, you can also further refine your selection to specific instances of particular resource types, such as specific pipelines or connectors.
+8. If you selected **Specified**, select the resource types to include.
+
+   Depending on the scope where you created the resource group, you can further refine your selection by:
+
+   * **All:** Include all resources in the given category that are within the **Resource Scope**.
+   * **By Type:** Include specific types of resources in the given category that are within the **Resource Scope**. Use this option to [configure ABAC](./attribute-based-access-control) for connectors and environments.
+   * **Specified:** Select specific, named resources in this category that are within the **Resource Scope**, such as specific pipelines.
+
+   These configuration is in addition to the **Resource Scope**. For example, if the **Resource Scope** is **Project Only**, and you select **Specified** pipelines, you can only choose from pipelines *in the specified project scope*. For more information, go to [Scopes and refinement](#scopes-and-refinement).
+
 9. Select **Save**.
 
 ### Edit a resource group

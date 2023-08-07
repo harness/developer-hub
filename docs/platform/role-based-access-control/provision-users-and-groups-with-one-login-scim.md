@@ -1,7 +1,7 @@
 ---
 title: Provision users and groups with OneLogin (SCIM)
 description: Provision and manage Harness users and user groups with OneLogin's SCIM integration.
-sidebar_position: 90
+sidebar_position: 100
 helpdocs_topic_id: y402mpkrxq
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false

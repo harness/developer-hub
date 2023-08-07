@@ -1,7 +1,7 @@
 ---
 title: Manage user groups
 description: User groups are part of RBAC in Harness.
-sidebar_position: 40
+sidebar_position: 50
 helpdocs_topic_id: dfwuvmy33m
 helpdocs_category_id: w4rzhnf27d
 helpdocs_is_private: false

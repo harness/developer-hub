@@ -1,113 +1,78 @@
 ---
 title: Attribute-based access control
-description: Extend RBAC with ABAC.
-sidebar_position: 120
+description: ABAC is an optional RBAC extension.
+sidebar_position: 40
 helpdocs_topic_id: uzzjd4fy67
 helpdocs_category_id: w4rzhnf27d
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Attribute-Based Access Control (ABAC) lets you grant access to your Resources based on the attributes associated with your Harness Resources.
+[Role-based access control (RBAC) in Harness](/docs/platform/role-based-access-control/rbac-in-harness) helps you manage who has access to your Harness resources, what they can do with those resources, and in what scope they have access. RBAC is role-based, which means permissions and access to resources are determined by the roles assigned to users, user groups, and service accounts.
 
-This topic shows you how to configure ABAC in Harness.
+Attribute-based access control (ABAC) grants access to Harness resources based on attributes associated with those resources, such as connector type. ABAC is an optional extension of [RBAC in Harness](./rbac-in-harness) that uses attribute-based rules to grant access in the context of specific actions.  ABAC is a way to refine [resource groups](./add-resource-groups) by adding another dimension of control.
 
-### Before you begin
+ABAC can help you:
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
-* Make sure you have Admin rights for the Account/Org/Project where you want to configure Access Management.
-
-### Attribute-Based Access Control Overview
-
-[Harness role-based access control (RBAC)](/docs/platform/role-based-access-control/rbac-in-harness) helps you manage who has access to your Harness resources, what they can do with those resources, and in what scope they have access.
-
-RBAC is role-based. This means permissions to resources are determined by the roles assigned to Users, User Groups, and Service Accounts.
-
-Harness ABAC builds on top of Harness RBAC by adding [role binding](/docs/platform/role-based-access-control/rbac-in-harness#role-binding) conditions based on attributes in the context of specific actions. It lets you provide more fine-grained access management or simplify the management of hundreds of role bindings.
-
-With Harness ABAC, you can have an additional check based on the type of your Harness Resources and then do the role bindings. The Resource type filters down the Resource Groups for access control.
-
-For example, you can create a Resource Group with all the Production Environments and grant access to this Resource Group through role binding.
-
-### Why and when should I use Harness ABAC?
-
-Harness ABAC helps you achieve the following:
-
+* Simplify management of role bindings at scale.
 * Provide more fine-grained access control.
-* Help reduce the number of role bindings.
-* Use attributes that have specific business meaning.
+* Reduce the number of role bindings you need to manage.
+* Leverage attributes with specific business meanings.
 
-Following are a few examples of scenarios to configure ABAC:
+ABAC adds the additional dimensions of [connector](/docs/category/connectors) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) types to refine resource groups. For example:
 
-* Create/Edit, Delete and Access permissions only for Non-Production Environments.
-* Create/Edit, Delete and Access permissions only for Secret Managers.
-* View permission for Code Repositories.
+* Grant access to manage non-production environments but not other types of environments.
+* Grant access to manage code repo connectors but not other types of connectors.
 
-### Where can I configure ABAC?
+## Configure ABAC
 
-You can add attributes to configure ABAC for the following Harness resources:
+To configure ABAC in Harness, you must be an **Admin** for the relevant account, organization, or project.
 
-* Connectors: Type of Connectors
-* Environments: Type of Environments
+1. [Create or edit a resource group](./add-resource-groups).
+2. For **Resources**, select **Specified**.
 
-The following table shows the attributes you can select for Harness ABAC:
+   <!-- ![](./static/set-up-rbac-pipelines-42.png) -->
 
+   <docimage path={require('./static/set-up-rbac-pipelines-42.png')} />
 
+3. Select **Environments** and/or **Connectors**.
 
-|  |  |
-| --- | --- |
-| **Resource** | **Attributes** |
-| **Connectors** | <li> Cloud Providers</li><li>Secret Managers</li><li>Cloud Costs</li><li>Artifact Repositories</li><li>Code Repositories</li><li>Monitoring and Logging Systems</li><li>Ticketing Systems</li>|
-| **Environments** | <li> Production</li><li>Non-Production</li>|
+   ABAC is available for environments and connectors only. These steps focus on configuring ABAC; however, your resource groups can include other resource categories. For other resources categories and general information about configuring resource groups, go to [Manage resource group](./add-resource-groups).
 
-### Step 1: Add a new Resource Group
+   <!-- ![](./static/attribute-based-access-control-05.png) -->
 
-You can configure ABAC in the Account, Org, or Project scope.
+   <docimage path={require('./static/attribute-based-access-control-05.png')} />
 
-This topic shows you how to configure ABAC in the Project scope.
+4. To apply ABAC to **Connectors** or **Environments**, select **By Type**, and then select **Add**.
 
-To configure ABAC for Resources, perform the following steps:
+   For information about the **All** and **Specified** options, go to [Manage resource groups](./add-resource-groups).
 
-1. In your Harness Account, go to **PROJECT SETUP** in your Project.
-2. Click **Access Control** and click **Resource Groups**.
-3. Click **New Resource Group**.
-4. Enter a **Name** for your Resource Group.
-5. Click **Save**.
+   ABAC is in addition to the **Resource Scope**. For example, if the **Resource Scope** is **Project Only**, and you select connectors **By Type**, then the resource group includes all connectors of the selected types that are *in the specified project only*. For more information, go to [Manage resource groups: Scopes and refinement](./add-resource-groups#scopes-and-refinement).
 
-### Step 2: Select Resources and add Attributes
+5. Select the types to include, and then select **Add**.
 
-1. In **Resources**, select **ENVIRONMENTS**.
-2. In **SHARED RESOURCES**, select **Connectors**.![](./static/attribute-based-access-control-05.png)
-3. You can filter and include resources in your Resource Group in the following ways:
-	1. All: you can select all the resources of the selected type for the chosen scope.
-	2. By Type: you can select a specific type of resource for the chosen scope.
-	3. Specified: you can select specific resources for the chosen scope.Select **By Type** against Environments and click **Add**. The Add Environment Types settings appear.![](./static/attribute-based-access-control-06.png)
+   For **Environments**, you can choose **Production** or **Non-Production**.
 
-1. Select **Non-Production** and click **Add.**
-2. Select **By Type** against Connectors and click **Add**. The Add Connector Type settings appear.![](./static/attribute-based-access-control-07.png)
-Select **Secret Managers** and click **Add**.
-3. Click **Save**.
+   <!-- ![](./static/attribute-based-access-control-06.png) -->
 
-### Step 3: Add a new Role
+   <docimage path={require('./static/attribute-based-access-control-06.png')} />
 
-1. In your Harness Account, go to **PROJECT SETUP** in your Project.
-2. Click **Access Control** and click **Roles**.
-3. Click **New Role**. The New Role settings appear.
-4. Enter a **Name** for your Role and click **Save**.
-5. Select all permissions for Environments and Connectors.![](./static/attribute-based-access-control-08.png)
-6. Click **Apply Changes**.
+   For **Connectors**, you can choose one or more of the following Harness connector types: **Artifact Repositories**, **Cloud Costs**, **Cloud Providers**, **Code Repositories**, **Monitoring and Logging Systems**, **Secret Managers**, and **Ticketing Systems**.
 
-### Step 4: Assign Role and Resource Group
+   <!-- ![](./static/attribute-based-access-control-07.png) -->
 
-Let us now complete the [role binding](/docs/platform/role-based-access-control/rbac-in-harness#role-binding) for the User Group to complete the ABAC setup.
+   <docimage path={require('./static/attribute-based-access-control-07.png')} />
 
-1. In your Harness Account, go to **PROJECT SETUP** in your Project.
-2. Click **Access Controls** and click **User Groups**.
-3. Locate your User Group to assign the Role and Resource Group you just created.
-4. Click **Role**.![](./static/attribute-based-access-control-09.png)
-5. In **Role,** select the Role that you created.
-6. In **Resource Group,** select the Resource Group you just created.
-7. Click **Apply**.![](./static/attribute-based-access-control-10.png)
-The members of the User group now have all permissions for Non-Production Environments and connectors that are of type Secret Managers.
+6. Select **Save**.
 
+## Continue RBAC configuration
+
+Creating resource groups with ABAC is one part of [configuring RBAC in Harness](./rbac-in-harness#configure-rbac-in-harness).
+
+[Roles](./add-manage-roles), which grant permissions, work alongside resource groups and ABAC, which grant access. Because ABAC applies to environments and connectors, your role should include permissions relevant to environments or connectors.
+
+<!-- ![](./static/attribute-based-access-control-08.png) -->
+
+<docimage path={require('./static/attribute-based-access-control-08.png')} />
+
+After configuring roles and resource group, you assign them to [users](./add-users), [user groups](./add-user-groups), and [service accounts](./add-and-manage-service-account).
