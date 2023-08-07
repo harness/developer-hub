@@ -308,6 +308,77 @@ To use the matrix labels naming strategy, do the following:
 
 As placmenetStrategy can be defined in task definition as well as in service definition. Harness picks placmenetStrategy from service definition, so please make sure its added under service definition.
 
+#### How do you determine the number of service instances/licenses for our services?
+
+We calculate service licenses based on the active service instances deployed in the last 30 days. This includes services from both successful and failed deployments. This includes if the Step involving a Service was skipped during a Pipeline execution.
+
+#### What is considered an active service instance for license calculation?
+
+An active service instance is determined by finding the 95th percentile of the number of service instances of a particular service over a period of 30 days.
+
+#### How are licenses consumed based on the number of service instances?
+
+Each service license is equivalent to 20 active service instances. The number of consumed licenses is calculated based on this ratio.
+
+#### Is there a minimum number of service instances that still consume licenses?
+
+Yes, even if a service has 0 active instances, it still consumes 1 service license.
+
+#### Are the licenses calculated differently for different types of services, such as CG and NG?
+
+No, the calculation method remains the same for both CG (Continuous Delivery) and NG (Next-Generation) services.
+
+#### Can you provide an example of how service licenses are calculated based on service instances?
+
+Sure! An example of the calculation can be found in the documentation [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#example). This example illustrates how the number of service instances corresponds to the consumed service licenses.
+
+#### Is on-demand token generation valid for both Vault's Kubernetes auth type and app role-based auth?
+
+No, on-demand token generation is only valid for app role-based auth.
+
+#### How can I upload a file to a specific folder in the Harness file store from a pipeline stage using PowerShell script?
+
+You can achieve this by invoking the Harness API using PowerShell. The API endpoint you need to use is: https://apidocs.harness.io/tag/File-Store#operation/create
+
+#### Is there a configuration option to preserve more than two older release secrets and config maps in Kubernetes deployments?
+
+No, currently, there is no configurable option to increase the number of older release secrets and config maps that can be preserved. The number of stored releases is fixed.
+
+#### How is the release history stored for Kubernetes deployments?
+
+If declarative rollback is used, the release history is stored in secrets. Otherwise, it is stored in a single config map or secret.
+
+#### What happens when the limit of stored releases is reached?
+
+When the limit of stored releases is reached, older releases are automatically cleaned up. This is done to remove irrelevant data for rollback purposes and to manage storage efficiently.
+
+#### Can we obtain the raw `plan.out` file instead of the JSON output in the Terraform step?
+
+Yes, you can access the raw `plan.out` file by using the `humanReadableFilePath` variable.
+
+#### Can I override some values in the Helm chart during the deployment of a service in Kubernetes?
+
+Yes, you can override values in the Helm chart during the service deployment in Kubernetes.
+
+#### How can I use values files to override Helm chart values during deployment?
+
+You can define your input values in separate files, known as values files. These files can be stored and optionally tracked in Git. Harness allows you to specify these values files in your service definition, which will be used during the deployment.
+
+#### What is the advantage of using values files over '--set' option for Helm chart overrides?
+
+Using values files provides a more organized and maintainable way to manage overrides in Helm charts. It is considered a best practice, and it allows you to easily track and version your input values for deployments.
+
+#### How can Harness detect if the sub tickets in Jira are closed before the approval process runs?
+
+The first step is to make API calls to the Jira issue endpoint. By inspecting the response from the API call, you can check if the 'subtask' field is populated for the main issue.  Once you identify the subtask issue keys from the API response, you can create a loop to retrieve the status of each sub ticket using their respective issue keys. This will allow you to determine if the sub tickets are closed or not before proceeding with the approval process in Harness.
+
+#### Can we use matrices to deploy multiple services to multiple environments when many values in services and environments are not hardcoded?
+
+Yes, you can use matrices for deploying multiple services to multiple environments even if many values in services and environments are not hardcoded.
+
+#### What are some examples of values that are not hardcoded in the deployment setup?
+
+Some examples of values that are not hardcoded include chart versions, values YAMLs, infradef, and namespaces. These are currently treated as runtime inputs.
 
 #### When querying the Harness Approval API, the Approval Details are returning with message No Approval found for execution
 
