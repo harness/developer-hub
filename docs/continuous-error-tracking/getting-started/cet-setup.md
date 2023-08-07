@@ -76,12 +76,26 @@ The Harness Error Tracking Agent must be installed on a Java application to capt
 This topic provides details about:
 
 * Compatibility and requirements to install an Error Tracking Agent.
+* Latest releases
 * Steps to install an Error Tracking Agent on a Java Application.
 
 
 ### Compatibility and Requirements
 
 To learn about supported operating systems, Java Virtual Machine (JVM), and JVM containers, go to [Continuous Error Tracking Agent compatibility](/docs/continuous-error-tracking/whats-supported).
+
+
+### Latest Releases
+
+| **OS** | **Download Link** |
+| --- | --- |
+| Linux | [Download](https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz) |
+| Alpine |  [Download](https://get.et.harness.io/releases/latest/alpine/harness-et-agent.tar.gz) |
+| Graviton |  [Download](https://get.et.harness.io/releases/latest/arm/harness-et-agent.tar.gz) |
+| Windows | [Download](https://get.et.harness.io/releases/latest/win/harness-et-agent.zip) |
+| AIX | [Download](https://get.et.harness.io/releases/latest/aix/harness-et-agent.tar.gz) |
+
+
 
 
 ### Install an Error Tracking Agent
@@ -103,7 +117,7 @@ import TabItem from '@theme/TabItem';
 
 This option lets you install the Error Tracking Agent as a standalone. Perform the following steps to install the Agent:
 
-1. [Download](https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz) the latest version of the Agent for Linux.
+1. Download the latest version of the Agent from [here](#latest-releases).
 
 2. Extract this version to a folder of your choice. For example`/home/user`. The contents of the archive will be inside a folder named Harness. You'll require the path to the Agent when starting your application. An example for the Agent path would be, `/home/user/harness/lib/libETAgent.so`.
 
