@@ -76,7 +76,7 @@ Click **Delete** on the top right corner to delete a specific user.
 
 To edit Role Bindings for a User, do the following:
 
- In **Access Control**, click **Users.**
+In **Access Control**, click **Users.**
 
 Click on the user you want to edit. The user details appear.
 
