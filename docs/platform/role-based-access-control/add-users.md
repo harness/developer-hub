@@ -66,8 +66,6 @@ You can add up to 50,000 users in paid plans. Free plans and Harness Community E
 
    If you didn't select any user groups, you must apply a role binding. Without a role binding (directly or inherited from a user group), the user won't have any permissions or access in Harness.
 
-   ![](./static/add-users-11.png)
-
 6. Select **Apply**. Users receive a verification email at the address(es) you entered. When the user logs into Harness, the user creates a password, the email address is verified, and the user's name attribute is updated.
 
 ### Invitation emails
@@ -147,7 +145,9 @@ To edit group membership through a user's profile:
 1. Follow the steps to [view role bindings](#view-role-bindings).
 2. Switch to the **Group Memberships** tab.
 
-   ![](./static/add-users-14.png)
+   <!-- ![](./static/add-users-14.png) -->
+
+   <docimage path={require('./static/add-users-14.png')} />
 
 3. Select a **[Scope](./rbac-in-harness#permissions-hierarchy-scopes)**.
 
