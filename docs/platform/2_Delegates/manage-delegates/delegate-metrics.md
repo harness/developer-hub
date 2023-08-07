@@ -12,7 +12,7 @@ The delegate is instrumented for the collection of the following delegate agent 
   
 | **Metric name** | **Description** |
 | :-- | :-- |
-| `io_harness_custom_metric_task_execution_time` | The time it takes to complete a task. |
+| `io_harness_custom_metric_task_execution_time` | The time it takes to complete a task (in seconds). |
 | `io_harness_custom_metric_tasks_currently_executing` | The number of tasks underway. |
 | `io_harness_custom_metric_task_timeout` | The number of tasks that time out before completion. |
 | `io_harness_custom_metric_task_completed` | The number of tasks completed. |
