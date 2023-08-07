@@ -126,3 +126,19 @@ They get cleared out in 6 hours post getting disconnected .
 
 Yes we support auto upgrade in both these type delegates . This can be acheived by following `upgrader.enabled=true` while running the install command .
 
+### Do we log the GET Calls in our Audit Logs ?
+
+We don't support Audit Trails for read API request like GET .
+
+### I have my Environment at Org/Project/Accunt Level can I git sync them ? 
+
+No, we can not at this moment .
+
+### Is there a way to exclude a delegate from taking a task?
+
+There is no way as of now to exclude delegates from picking up tasks for other pipelines.
+
+### What is the difference between the delegate YAMLs of account vs org vs project?
+
+We differentiate the delegate YAML based on the value of `DELEGATE_TOKEN`
+

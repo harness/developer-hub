@@ -229,3 +229,11 @@ We do not have any backup ability for services out of the box but you can take t
 #### Harness FirstGen Graphql API to create Harness pipelines in a specific application
 
 We do not have a way to create a new pipeline using Graphql in FirstGen. However, we do support API to create Harness pipelines in NextGen.
+
+### Do we support rollback of deployment post production ? 
+
+Yes, certainly we have that capability, to know more about this please see, [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/rollback-deployments/)
+
+### How can I override the lite-engine image for the Container Run step,to pull images from ECR instead of docker hub? 
+
+Yes, certainly that can be acheived by using Docker Connector with your registry URL and anonymous access would help you to acheive that.
