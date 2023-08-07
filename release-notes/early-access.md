@@ -14,7 +14,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - August 9, 2023
 
-### Continuous Integration
+### Continuous Integration, version 53xx
 
 * Enable and configure Cache Intelligence in the Visual editor. (CI-8917)
    * The Cache Intelligence visual editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
