@@ -19,7 +19,21 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 4, 2023
+## Latest - August 7, 2023
+
+### Harness Chaos Engineering, version 1.16.5
+
+* A new feature lets users do an automated upgrade for their cluster-scope chaos infrastructures using an upgrade agent, which is deployed along with the chaos infrastructure. This also lets users do an upgrade of their Chaos Infrastructures on demand. (1849)
+
+    Existing users must reconnect their chaos infrastructures to use this feature, since it is only available for new cluster-scope chaos infrastructures. Old chaos infrastructures will continue to work even if not upgraded, but upgrade will be manual for them, as it was in previous versions.
+
+* A new feature adds support for OpenShift security contexts, and provides tunables for RunAsUser and RunAsGroup in the experiment creation step. (CHAOS-2228)
+
+* The **App Label(s)** field in chaos fault configuration now supports a multi-select dropdown in Kubernetes experiments. This corresponds to comma-separated values in the experiment YAML. This change is backward compatible with older experiments. (CHAOS-2120)
+
+* The UI now provides a toggle in AWS experiments to enable or disable cloud secrets. (CHAOS-2092)
+
+## August 4, 2023
 
 ### Harness Platform, version 80120
 
