@@ -113,7 +113,7 @@ For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/inst
    | `MANAGER_HOST_AND_PORT` | Information about your manager host. This depends on the Harness production cluster you use: Prod1: https://app.harness.io, Prod2: https://app.harness.io/gratis, or Prod3: https://app3.harness.io. |
    | `DELEGATE_NAME` | The name you gave your delegate. This is usually the name you specified during delegate installation. |
    | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/{tags}. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
-   | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: Prod1: https://app.harness.io/log-service/, Prod2: https://app.harness.io/gratis/log-service/, or Prod3: https://app3.harness.io/log-service/. |
+   | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: MANAGER_HOST_AND_PORT/log-service/ |
 
 ### Create your services
 
@@ -231,7 +231,7 @@ Use the following steps to create a task definition. For information about task 
    | `MANAGER_HOST_AND_PORT` | Information about your manager host. This depends on the Harness production cluster you use: Prod1: https://app.harness.io, Prod2: https://app.harness.io/gratis, or Prod3: https://app3.harness.io. |
    | `DELEGATE_NAME` | The name you gave your delegate. This is usually the name you specified during delegate installation. |
    | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/{tags}. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
-   | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: Prod1: https://app.harness.io/log-service/, Prod2: https://app.harness.io/gratis/log-service/, or Prod3: https://app3.harness.io/log-service/. |
+   | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: MANAGER_HOST_AND_PORT/log-service/ |
 
 ### Create the service
 

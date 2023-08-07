@@ -11,6 +11,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpno />
 
 
@@ -234,6 +237,12 @@ const myFlagValues = useFeatureFlags({
 When you receive a response showing the current status of your feature flag, go to the Harness Platform and toggle the flag on and off. Then, check your app to verify if the flag variation displayed is updated with the variation you toggled.
 
 <Sixty />
+
+## Close the SDK client
+
+<Closeclient />
+
+
 
 ## Mock the SDK when testing with Jest
 

@@ -8,6 +8,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpno />
 
 This topic describes how to use the Harness Feature Flags Erlang SDK for your Erlang or Elixir based application. 
@@ -283,11 +286,11 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-To help prevent memory leaks, we recommend closing the SDK when it’s not in use.
+<Closeclient />
 
-To close the SDK, run one of the following commands. 
+To close the SDK, run one of the following commands: 
 
 * **For Erlang applications:**
 
