@@ -177,9 +177,9 @@ The current version does not include a hotfix release.
 
 #### August 8, 2023 Harness Delegate hotfix version 79910
 
-- If infrastructure where delegate is running is experiencing a prolonged network outage (longer than 5min), delegate would not attempt to reconnect websocket any more (PL-40547).
+- The delegate stopped trying to reconnect to the WebSocket if the infrastructure experienced a network outage for over five minutes. (PL-40547)
 
-   With this change, delegate will try to reconnect websocket connection indefinitely until successful.
+   This issue is fixed. The delegate keeps trying to reconnect to the WebSocket until it's successful.
   
 #### July 20, 2023 Harness Delegate hotfix version 79906
 
