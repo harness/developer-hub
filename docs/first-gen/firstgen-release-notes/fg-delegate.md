@@ -78,6 +78,12 @@ The current version does not include a hotfix release.
 <summary>2023 releases</summary>
 
 
+### Hotfix version 79910
+
+If infrastructure where delegate is running is experiencing a prolonged network outage (longer than 5min), delegate would not attempt to reconnect websocket any more (PL-40547).
+With this change, delegate will try to reconnect websocket connection indefinitely indefinitely until successful. 
+
+
 ### Hotfix version 79908
 
 Google Cloud builds failed with the message `Invalid Google Cloud Platform credentials`. (CDS-73352)
