@@ -102,7 +102,7 @@ ENV PATH=/opt/harness-delegate/tools/:$PATH
 USER harness
 ```
 
-### Complete Example Dockerfile to adding all tools
+### Complete Example Dockerfile with all tools
 
 The following Dockerfile adds all of the tools to the minimal delegate that are not included in the base image, but used by the Harness platform.  Tools for features that are not needed can be trimmed fom this, or specific versions or install sources can be customized.
 
