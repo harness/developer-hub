@@ -20,7 +20,7 @@ This topic covers how to add and configure New Relic as a Health Source for the 
 * [Add New Relic as a Verification Provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-new-relic)
 
 :::info note
-New Relic supports multiple APIs. The Harness Connector leverages the New Relic Insights API which supports NRQL. Your Service/Appliation also needs to be instrumented as a [New Replic APM Application](https://docs.newrelic.com/introduction-apm). 
+New Relic supports multiple APIs. The Harness Connector leverages the New Relic Insights API, which supports NRQL. Your Service/Application also needs to be instrumented as a [New Relic APM Application](https://docs.newrelic.com/introduction-apm). 
 :::
 
 ## Review: CV Setup Options
