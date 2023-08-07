@@ -445,33 +445,10 @@ For example, instead of `<+pipeline.variable.var1>_suffix`, use these syntaxes:
 - `<+<+pipeline.variables.var1> + "_suffix">` 
 
 
-## Built-in CIE codebase variables reference
+## Built-in CI codebase variables
 
-In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
+In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a [Harness code repo connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo). Pipelines use this connector to clone the code you want to build and test. When a pipeline runs, Harness also fetches your Git details and displays them in the [Build details](/docs/continuous-integration/use-ci/viewing-builds). You can use Harness' built-in expressions to reference various codebase attributes in Harness pipelines, stages, and steps.
 
-Harness also retrieves your Git details and presents them in your build stage once a pipeline is run.
-
-Using Harness built-in expressions, you can refer to the various attributes of your codebase in Harness steps and settings.
-
-Here is a simple example of a Shell Script step echoing some common codebase variable expressions.
-
-
-```
-echo <+codebase.commitSha>  
-echo <+codebase.targetBranch>  
-echo <+codebase.sourceBranch>  
-echo <+codebase.prNumber>  
-echo <+codebase.prTitle>  
-echo <+codebase.commitRef>  
-echo <+codebase.repoUrl>  
-echo <+codebase.gitUserId>  
-echo <+codebase.gitUserEmail>  
-echo <+codebase.gitUser>  
-echo <+codebase.gitUserAvatar>  
-echo <+codebase.pullRequestLink>  
-echo <+codebase.pullRequestBody>  
-echo <+codebase.state>
-```
 For more information, go to [Built-in CIE Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
 
 ## Account

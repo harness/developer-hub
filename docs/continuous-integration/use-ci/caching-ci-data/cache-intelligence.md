@@ -40,7 +40,7 @@ The cache retention window is 15 days, which resets whenever the cache is update
 
 :::note
 
-Currently, the **Enable Cache Intelligence** UI field is behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, the Cache Intelligence Visual Editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -91,7 +91,36 @@ Cache Intelligence stores the data to be cached in the `/harness` directory by d
 * Cache Intelligence is not supported for your build tool.
 * You have customized cache locations, such as with `yarn config set cache-folder`.
 
-<!-- when fields are added in the visual editor, add tabs here for visual & yaml -->
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+:::note
+
+Currently, the Cache Intelligence Visual Editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+1. Edit the pipeline, and select the **Build** stage where you want to enable Cache Intelligence.
+2. Select the **Overview** tab for the stage.
+3. Make sure **Enable Cache Intelligence** is selected.
+4. Add **Paths** to cache.
+
+   <!-- ![](./static/cache_int_paths.png) -->
+
+   <docimage path={require('./static/cache_int_paths.png')} />
+
+5. If a cache path is outside the `/harness` directory, you must *also* specify this in **[Shared Paths](../set-up-build-infrastructure/ci-stage-settings.md#shared-paths)**.
+
+   <!-- ![](./static/cache_int_shared_paths.png) -->
+
+   <docimage path={require('./static/cache_int_shared_paths.png')} />
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
 
 In the YAML editor, add a list of `paths` to cache under `stage.spec.caching`, for example:
 
@@ -134,13 +163,39 @@ If a cache path is outside the `/harness` directory, you must *also* specify thi
             - /my_cache_directory/module_cache1
 ```
 
-In the Visual editor, you can add **Shared Paths** in the stage's **Overview** tab. However, you must use the YAML editor to specify `paths`.
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ### Customize cache keys
 
 Harness generates a cache key from a hash of the build lock file (such as `pom.xml`, `build.gradle`, or `package.json`) that Harness detects. If Harness detects multiple tools or multiple lock files, Harness combines the hashes to create the cache key.
 
-<!-- when fields are added in the visual editor, add tabs here for visual & yaml -->
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+:::note
+
+Currently, the Cache Intelligence Visual Editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+1. Edit the pipeline, and select the **Build** stage where you want to enable Cache Intelligence.
+2. Select the **Overview** tab for the stage.
+3. Make sure **Enable Cache Intelligence** is selected.
+4. Enter the custom key value in **Key**. You can use [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs) for the key value.
+
+   <!-- ![](./static/cache_int_custom_key.png) -->
+
+   <docimage path={require('./static/cache_int_custom_key.png')} />
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
 
 To customize the cache key in the YAML editor, add `key: CUSTOM_KEY_VALUE` under `stage.spec.caching`. You can use [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs) for the key value.
 
@@ -157,6 +212,11 @@ The following YAML example uses `<+input>`, which prompts the user to supply a c
             key: <+input>
           cloneCodebase: true
 ...
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
 ```
 
 ## Cache Intelligence API
