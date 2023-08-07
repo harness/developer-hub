@@ -32,7 +32,7 @@ const sidebars = {
           },
           */
           type: "category",
-          label: "Get started",
+          label: "Get Started",
           link: {
             type: "doc",
             id: "getting-started",

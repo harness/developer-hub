@@ -39,7 +39,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
   ![picture 0](static/659f371c3e8d30d831642c9fef9dbf652dca4c5fd050f0dc68b128f0b04101d9.png)  
 
-  <figcaption>Figure 1: Configuring GCR Container Registry and Image settings.</figcaption>
+  <figcaption>Configuring GCR Container Registry and Image settings.</figcaption>
   </figure>
 
 
@@ -62,7 +62,7 @@ You can reference services started in CD [Background steps](/docs/continuous-del
 
 ![picture 0](static/1d52c641a8b442054d83fc2b8bacc1917371f53c7100a0fcf0a7b6666342ce2e.png)
 
-<figcaption>Figure 2: The Background step Id, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
+<figcaption>The Background step Id, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
 </figure>
 
 You must include step group Id, such as `curl STEPGROUPID_BACKGROUNDSTEPID:5000`, even if both steps are in the same step group.

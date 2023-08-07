@@ -1,5 +1,5 @@
 ---
-sidebar_position: 60
+sidebar_position: 4
 title: Amazon ECS
 description: Deploy a Docker Image to Amazon ECS using a CD Pipeline
 ---

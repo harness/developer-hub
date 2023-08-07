@@ -12,6 +12,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpno />
 
 
@@ -171,6 +174,10 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
+## Close the SDK client
+
+<Closeclient />
+
 ## Xamarin for iOS
 
 The Xamarin SDK uses a Harness binding library in a NuGet package for iOS.
@@ -178,7 +185,6 @@ The Xamarin SDK uses a Harness binding library in a NuGet package for iOS.
 ### Install the SDK
 
 Install the SDK package in your application, for example:
-
 
 ```
 Install-Package ff-ios-xamarin-client-sdk -Version 0.5.1

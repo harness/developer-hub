@@ -1,7 +1,7 @@
 ---
 hide_table_of_contents: true
 hide_title: true
-title: Get started with Harness
+title: Get Started with Harness
 # id: getting-started
 ---
 
