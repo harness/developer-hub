@@ -62,26 +62,6 @@ export const FeaturedList: CardItem[] = [
     link: "/tutorials/ci-pipelines/tfc-notification",
   },
   {
-    title: "Publish to Amazon ECR",
-    module: MODULES.ci,
-    description:
-      "Publish an Image to an Amazon Elastic Container Registry.",
-    link: "/tutorials/ci-pipelines/publish/amazon-ecr",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Publish to Google GAR",
-    module: MODULES.ci,
-    description:
-      "Publish an Image to a Google Artifact Registry.",
-    link: "/tutorials/ci-pipelines/publish/google-gar",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
     title: "Code coverage with CodeCov",
     module: MODULES.ci,
     description:

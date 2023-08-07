@@ -28,7 +28,11 @@ Many current security testing practices have the following issues:
 
 Current security testing is challenging for DevOps teams because most security testing is done right before code has reached production. This is a delayed feedback loop.
 
-![](./static/security-testing-orchestration-basics-28.png)All of the release stages where security testing could have been applied are past, and fixing the issue requires reworking each stage.
+<!-- 
+![](./static/security-testing-orchestration-basics-28.png)
+-->
+
+All of the release stages where security testing could have been applied are past, and fixing the issue requires reworking each stage.
 
 Developers need to move forward but by the time the security testing feedback arrives it could be days or weeks later and they have to stop current work and fix it.
 
@@ -36,7 +40,11 @@ Developers need to move forward but by the time the security testing feedback ar
 
 DevSecOps is too complicated because there are many tools for so many types of scanning and the outputs from all these tools are disparate. There is no uniform data format or language.
 
-![](./static/security-testing-orchestration-basics-29.png)Consequently, developers don't have a deduplicated and prioritized list of vulnerabilities to remedy.
+<!-- 
+![](./static/security-testing-orchestration-basics-29.png)
+-->
+
+Consequently, developers don't have a deduplicated and prioritized list of vulnerabilities to remedy.
 
 So DevSecOps must normalize all the output, track exemptions, and verifying fixes. This all requires DevSecOps synchronization with developers, and it takes DevSecOps away from other work.
 
@@ -52,15 +60,19 @@ Harness STO enables DevOps and DevSecOps teams to left shift security testing:
 
 With Harness STO, you are scanning at any stage in the CI/CD Pipeline, and providing developers with deduplicated and prioritized vulnerabilities:
 
+<!--
 ![](./static/security-testing-orchestration-basics-30.png)
+-->
 
+<!--
 ### Quick Summary
 
 The following 1min video provides a quick summary of STO:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+ Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz>
 <docvideo src="https://fast.wistia.net/embed/iframe/yjlevup9v4" />
+-->
 
 ### STO Features
 
@@ -108,13 +120,6 @@ Now let's apply these features to common use cases:
 
 For a list of supported scanners, see [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach).
 
-### STO support by CI build infrastructure type
-
-```mdx-code-block
-import StoInfraSupport from './shared/_supported-infrastructures.md';
-```
-
-<StoInfraSupport />
 
 ### Next Steps
 

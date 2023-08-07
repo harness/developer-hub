@@ -13,7 +13,7 @@ helpdocs_is_published: true
 
 Harness CI supports launching GitHub Actions as part of a pipeline stage using the generic **Plugin** step or the **GitHub Action plugin** steps.
 
-This topic describes how to use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step to run GitHub Actions. When your pipeline runs, the Github Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
+This topic describes how to use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step to run GitHub Actions. When your pipeline runs, the GitHub Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
 
 For information about the specialized **GitHub Action plugin** step, go to [Use the GitHub Action plugin step](./ci-github-action-step.md).
 
@@ -61,13 +61,13 @@ If possible, run the **Plugin** step for your GitHub Action in a separate stage,
 
 ### Define variables and attributes
 
-Use **Settings** to specify the Github Action you want to use and to pass variables and attributes required by the Action and the Drone Plugin. You must specify `uses` and `with`. You can use `env` to specify environment variables, such as GitHub tokens to access [private Action repos](#private-action-repos).
+Use **Settings** to specify the GitHub Action you want to use and to pass variables and attributes required by the Action and the Drone Plugin. You must specify `uses` and `with`. You can use `env` to specify environment variables, such as GitHub tokens to access [private Action repos](#private-action-repos).
 
 | Key | Description | Value format | Value example |
 | - | - | - | - |
 | `uses` | Required. Specify the Action's repo, along with a branch or tag.| `[repo]@[tag]` | `actions/setup-go@v3` |
 | `with` | Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself. | `key: value` | `go-version: '>=1.17.0'` or `{path: pom.xml, destination: cie-demo-pipeline/github-action, credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>}` |
-| `env` | Optional. Specify a map of environment variables to pass to the Action. | `key: value` | `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` |
+| `env` | Conditionally required. Specify a map of environment variables to pass to the Action. Required to use [Private Action repos](#private-action-repos), run [Duplicate Actions](#duplicate-actions), or if otherwise noted in the Action's usage specifications.  | `key: value` | `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` |
 
 :::tip
 
@@ -113,11 +113,7 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 ```
 
-:::tip
 
-For more examples of GitHub Actions in Plugin steps, go to the [GitHub Actions Support in Harness CI blog post](https://harness.io/blog/continuous-integration/github-actions-support-harness-ci/).
-
-:::
 
 ### Private Action repos
 
@@ -143,6 +139,50 @@ Here's an example of the YAML for a `Plugin` step using an Action in a private r
                        path: pom.xml
                      env:
                        GITHUB_TOKEN: <+secrets.getValue("github_pat")>
+```
+
+### Duplicate Actions
+
+If you run multiple instances of the same GitHub Action, either in parallel or with a looping strategy, you must set the `XDG_CACHE_HOME` environment variable.
+
+The default value of this variable is `/home/ubuntu/.cache`; however, the `XDG_CACHE_HOME` variable must have a different value for each instance of the Action. If you have separate steps running in parallel, you can assign distinct values to each step, such as `XDG_CACHE_HOME: /home/ubuntu/.cache1`. If you apply a looping strategy to repeat one step multiple times, you can use an expression to generate distinct values, such as `XDG_CACHE_HOME: /home/ubuntu/.cache<+step.identifier>`.
+
+In this example, two parallel `Plugin` steps run the same GitHub Action. Each step has a unique value for `XDG_CACHE_HOME`.
+
+```yaml
+              - parallel
+                  - step:
+                     identifier: gcsuploader
+                     name: gcsuploader
+                     type: Plugin
+                     spec:
+                       connectorRef: account.harnessImage
+                       image: plugins/github-actions
+                       privileged: true
+                       settings:
+                         uses: google-github-actions/upload-cloud-storage@main
+                         with:
+                           path: pom.xml
+                           destination: cie-demo-pipeline/github-action
+                           credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>
+                         env:
+                           XDG_CACHE_HOME: /home/ubuntu/.cache1
+                  - step:
+                     identifier: gcsuploader
+                     name: gcsuploader
+                     type: Plugin
+                     spec:
+                       connectorRef: account.harnessImage
+                       image: plugins/github-actions
+                       privileged: true
+                       settings:
+                         uses: google-github-actions/upload-cloud-storage@main
+                         with:
+                           path: pom.xml
+                           destination: cie-demo-pipeline/github-action
+                           credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>
+                         env:
+                           XDG_CACHE_HOME: /home/ubuntu/.cache2
 ```
 
 ## Test your pipeline
@@ -209,3 +249,9 @@ pipeline:
         repoName: YOUR_CODE_REPO
         build: <+input>
 ```
+
+:::tip
+
+For more examples of GitHub Actions in Plugin steps, go to the [GitHub Actions Support in Harness CI blog post](https://harness.io/blog/continuous-integration/github-actions-support-harness-ci/).
+
+:::

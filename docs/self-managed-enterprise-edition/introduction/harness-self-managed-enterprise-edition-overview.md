@@ -45,11 +45,12 @@ The following tables provide a summary of key differences between Harness SaaS a
 | Continuous Integration | **✓** | **✓** |  |
 | Feature Flags | **✓** | **✓** |  |
 | Cloud Costs Management | **✓** | X | This module is currently available in beta. Contact [Harness Support](mailto:support@harness.io) to enable it. |
-| Harness Chaos Engineering | **✓** | X | This module is currently available in beta. Contact [Harness Support](mailto:support@harness.io) to enable it. |
+| Continuous Error Tracking | **✓** | X | This module is currently available in beta. Contact [Harness Support](mailto:support@harness.io) to enable it. |
+| Harness Chaos Engineering | **✓** | X | |
 | Harness Platform | **✓** | **✓** |  |
 
 ## Architecture overview
-Harness Self-Managed Enterprise Edition can be installed in a Kubernetes cluster or on virtual machines. 
+Harness Self-Managed Enterprise Edition can be installed in a Kubernetes cluster or on virtual machines.
 
 Review the following diagrams for your installation type.
 
@@ -65,4 +66,3 @@ Harness Self-Managed Enterprise Edition is installed in a Kubernetes cluster in 
 **AWS architecture**
 
 ![](./static/aws_architecture_smpOverview.png) |
-

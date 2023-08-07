@@ -21,20 +21,28 @@ To identify the cluster that hosts your account, open Harness FirstGen, go to **
 For FirstGen SaaS release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, go to [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
 
-## Latest - July, 18 2023, Harness version 79915, Harness Delegate version 79904
+## Latest - August 4, 2023, Harness version 80120, Harness Delegate version 80104
 
-### Deprecation notice
+#### Deprecation notices
+
+**Helm 2**
 
 import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 <Helmdep />
+
+**Kustomize 3.4.5**
+
+import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
+
+<Kustomizedep />
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-- The Universal Base Image Minimal used for the Harness Delegate has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-39720)
+This release does not include any new features.
 
 ```mdx-code-block
   </TabItem>
@@ -48,33 +56,16 @@ This release does not include any new early access features.
   <TabItem value="Fixed issues">
 ```
 
-This release does not include any fixed issues.
+Earlier, even though you could use the `JAVA_OPTS` environment variable to specify JVM options for the delegate, you could not override the default JVM options that Harness used, namely `-XX:MaxRAMPercentage=70.0` and `-XX:MinRAMPercentage=40.0`. The option to override the defaults was unavailable because the value of JAVA_OPTS was prepended to the default JVM options. (PL-38839)
+
+This issue has been fixed. The value of JAVA_OPTS is now appended to the default JVM options, thus allowing you to override the default options.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Hotfix release">
 ```
 
-## Hotfix version 79908
-
-Google Cloud builds failed with the message `Invalid Google Cloud Platform credentials`. (CDS-73352)
-
-This issue is now fixed with a code enhancement to GCP build triggers integration to improve stability.
-
-:::info note
-Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
-:::
-
-
-## Hotfix version 79711
-
-Google Cloud builds failed with the message `Invalid Google Cloud Platform credentials`. (CDS-73352)
-
-This issue is now fixed with a code enhancement to GCP build triggers integration to improve stability.
-
-:::info note
-Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
-:::
+The current version does not include a hotfix release.
 
 ```mdx-code-block
   </TabItem>
@@ -85,6 +76,40 @@ Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
 
 <details>
 <summary>2023 releases</summary>
+
+
+### Hotfix version 79908
+
+Google Cloud builds failed with the message `Invalid Google Cloud Platform credentials`. (CDS-73352)
+
+This issue is now fixed with a code enhancement to GCP build triggers integration to improve stability.
+
+:::info note
+Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
+:::
+
+
+### Hotfix version 79711
+
+Google Cloud builds failed with the message `Invalid Google Cloud Platform credentials`. (CDS-73352)
+
+This issue is now fixed with a code enhancement to GCP build triggers integration to improve stability.
+
+:::info note
+Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
+:::
+
+### July 18, 2023 Harness version 79915, Harness Delegate version 79904
+
+#### What's new
+
+- The Universal Base Image Minimal used for the Harness Delegate has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-39720)
+
+#### Early access
+
+#### Fixed issues
+
+
 
 ### June 28, 2023, Harness version 79714, Harness Delegate version 79707
 
