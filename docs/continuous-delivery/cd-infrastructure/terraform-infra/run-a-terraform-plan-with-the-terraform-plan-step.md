@@ -152,6 +152,10 @@ When the plan is applied, the Harness Manager passes the encrypted data to the D
 
 The Delegate decrypts the encrypted plan and applies it using the `terraform apply` command.
 
+#### Limitations
+
+The Terraform plan size must not exceed the secret size limit for secrets in your default Secret Manager. For example, the AWS Secrets Manager has a limitation of 64KB. Other supported Secrets Managers support larger file sizes.
+
 ### Configuration File Repository
 
 **Configuration File Repository** is where the Terraform script and files you want to use are located.
