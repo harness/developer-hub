@@ -2665,7 +2665,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 - When creating Azure Key Vault and HashiCorp Vault connectors, selecting invalid delegate selectors displays an "UNKNOWN ERROR". (PL-30660)
 
   A code enhancement to display appropriate error message has fixed this issue. 
-- Recently added roles are not displayed in the manage role assignment settings. (PL-30560)
+- Recently added roles are not displayed in the manage role bindings settings. (PL-30560)
   
   A code enhancement has fixed this issue.
 - The UI does not display an error message when the referred connector in infra does not exist.(PL-30130)

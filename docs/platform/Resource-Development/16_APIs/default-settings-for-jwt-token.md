@@ -20,16 +20,16 @@ A Harness service account is necessary to authorize access to the API. The servi
 * Users: **View**, **Manage**, and **Invite**.
 * User groups: **View** and **Manage**.
 
-You can create a new service account or use an existing one. Fore more information, go to [Add and manage service accounts](../../role-based-access-control/add-and-manage-service-account).
+You can create a new service account or use an existing one. For more information, go to [Manage service accounts](../../role-based-access-control/add-and-manage-service-account).
 
 To create a service account:
 
 1. In Harness, select **Account Settings**, and then select **Access Control**.
 3. Select **Service Accounts** in the header, and then select **New Service Account**.
 4. Enter a **Name** and **Email** for the service account.
-1. Make note of the **Id** that is generated based on the **Name**. You need the **Id** to [Enable JWT authentication](#enable-jwt-authentication).
-5. Select **Save**.
-6. Select **Manage Roles** next to the new service account and select a role and resource group that provide the following permissions:
+5. Make note of the **Id** that is generated based on the **Name**. You need the **Id** to [Enable JWT authentication](#enable-jwt-authentication).
+6. Select **Save**.
+7. Select **Manage Roles** next to the new service account and select a role and resource group that provide the following permissions:
 
    * Users: **View**, **Manage**, and **Invite**.
    * User groups: **View** and **Manage**.

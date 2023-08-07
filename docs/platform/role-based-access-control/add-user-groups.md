@@ -10,9 +10,9 @@ helpdocs_is_published: true
 
 User groups contain multiple Harness users. You assign [roles](./add-manage-roles) and [resource groups](./add-resource-groups) to user groups. The permissions and access granted by the assigned roles and resource groups are applied to all group members.
 
-You can also assign roles and resource groups to individual users and service accounts that are not in a group. However, user groups help keep your RBAC organized and make it easier to manage permissions and access. Instead of modifying each user individually, you can edit the permissions and access for the entire group at once.
+You can also assign roles and resource groups to individual users that are not in a group. However, user groups help keep your RBAC organized and make it easier to manage permissions and access. Instead of modifying each user individually, you can edit the permissions and access for the entire group at once.
 
-Harness includes some [built-in user groups](#built-in-user-groups), and you can [create user groups manually](#create-user-groups-manually), through [inheritance](#create-roles-by-inheritance-assign-roles), or through [automated provisioning](#use-automated-provisioning). You can create user groups at all [scopes](#permissions-hierarchy-scopes).
+Harness includes some [built-in user groups](#built-in-user-groups), and you can [create user groups manually](#create-user-groups-manually), through [inheritance](#create-roles-by-inheritance-assign-roles), or through [automated provisioning](#use-automated-provisioning). You can create user groups at all [scopes](./rbac-in-harness#permissions-hierarchy-scopes).
 
 ## Built-in user groups
 
@@ -95,7 +95,7 @@ When viewing user groups at higher scopes, you can find a list of **Organization
 
 ## Assign roles and resource groups
 
-Initially, user groups have no permissions or access. You assign [roles](./add-manage-roles) and [resource groups](./add-resource-groups) to user groups, and then the permissions and access granted by the assigned roles and resource groups are applied to all group members. For more information about assigning roles and resource groups, go to [RBAC in Harness: Role assignment](./rbac-in-harness#role-assignment).
+Initially, user groups have no permissions or access. You assign [roles](./add-manage-roles) and [resource groups](./add-resource-groups) to user groups, and then the permissions and access granted by the assigned roles and resource groups are applied to all group members. For more information about assigning roles and resource groups, go to [RBAC in Harness: Role binding](./rbac-in-harness#role-binding).
 
 :::caution Least privilege
 

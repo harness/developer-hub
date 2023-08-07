@@ -66,7 +66,7 @@ Harness RBAC uses **Principals**, **Resource Groups** and **Roles** to control a
 * [Resource groups](#resource-groups) define what objects can be acted on. Objects include organizations, projects, pipelines, connectors, users, and more.
 * [Roles](#roles) define what actions can be taken on objects. Actions include view, create, edit, delete, and so on.
 
-You [assign roles and resource groups to principals](#role-assignment). Roles and resource groups assigned to user groups are inherited by the users in those user groups.
+You [assign roles and resource groups to principals](#role-binding). Roles and resource groups assigned to user groups are inherited by the users in those user groups.
 
 ```mermaid
 flowchart TD
@@ -104,9 +104,9 @@ Harness includes some built-in roles, and you can create your own custom roles, 
 
 Roles are scope-specific and can be created at all [scopes](#permissions-hierarchy-scopes).
 
-## Role assignment
+## Role binding
 
-Role assignment refers to the process of assigning [roles](#roles) and [resource groups](#resource-groups) to [principals](#principal) (users, user groups, and service accounts). Role assignment can be configured at all scopes.
+Role binding refers to the process of assigning [roles](#roles) and [resource groups](#resource-groups) to [principals](#principal) (users, user groups, and service accounts). Role binding can be configured at all scopes.
 
 ```mermaid
 flowchart TD
@@ -117,11 +117,11 @@ flowchart TD
 ```
 
 <details>
-<summary>Built-in role assignment configurations</summary>
+<summary>Built-in role binding configurations</summary>
 
-The following table describes the role assignments (permissions and access) that result from some combinations of built-in [roles](#roles) and [resource groups](#resource-groups). This table doesn't include all module-specific built-in roles, such as CET Admin or Chaos Admin.
+The following table describes the role bindings (permissions and access) that result from some combinations of built-in [roles](#roles) and [resource groups](#resource-groups). This table doesn't include module-specific built-in roles, such as CET Admin or Chaos Admin.
 
-| Role | Resource Group | Resulting role assignment |
+| Role | Resource Group | Resulting role binding |
 | - | - | - |
 | Account Admin | Account - All Resources Including Child Scopes | All permissions on all resources in the account and resources in organizations and projects under the account. |
 | Account Admin | All Account Level Resources | All permissions on all resources in at the account level only. |
@@ -172,7 +172,7 @@ ABAC provides highly refined control by using rules to restrict access based on 
 
 ## Configure RBAC in Harness
 
-Before configuring RBAC in Harness, make sure you understand the [RBAC components](#rbac-components) and [Role assignment](#role-assignment).
+Before configuring RBAC in Harness, make sure you understand the [RBAC components](#rbac-components) and [role binding](#role-binding).
 
 ### Required permissions
 
@@ -194,7 +194,7 @@ To configure RBAC in Harness, you must:
 1. [Create roles](/docs/platform/role-based-access-control/add-manage-roles)
 2. [Create resource groups](/docs/platform/role-based-access-control/add-resource-groups) and, optionally, apply [ABAC](./attribute-based-access-control.md).
 3. [Create user groups](/docs/platform/role-based-access-control/add-user-groups), [create service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account), and [add users](/docs/platform/role-based-access-control/add-users).
-4. [Assign roles and resource groups](#role-assignment) to users, user groups, and service accounts.
+4. [Assign roles and resource groups](#role-binding) to users, user groups, and service accounts.
 5. If you have not already done so, [configure authentication](/docs/platform/Authentication/authentication-overview).
 
 :::tip Automated provisioning
@@ -206,7 +206,7 @@ You can create users and user groups directly in Harness, and you can use automa
 * [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
 * [Just-in-time provisioning](./provision-use-jit.md)
 
-With automated provisioning, users and user groups are imported from your IdP, and then you [assign roles and resource groups](#role-assignment) to the imported [principals](#principals) in Harness. You manage group metadata, group membership, and user profiles in your IdP, and you manage role and resource group assignments in Harness.
+With automated provisioning, users and user groups are imported from your IdP, and then you [assign roles and resource groups](#role-binding) to the imported [principals](#principals) in Harness. You manage group metadata, group membership, and user profiles in your IdP, and you manage role and resource group assignments in Harness.
 
 You can also create users and user groups directly in Harness, but any users or groups imported from your IdP must be managed in your IdP. For imported users and group, you can only change their role and resource group assignments in Harness.
 
@@ -314,7 +314,7 @@ For example, if you use Okta as your IdP, you could create a Pipeline Owners gro
 6. For **Resource Groups**, select the **All Pipeline Resources** group.
 7. Select **Apply**.
 
-For more information about assigning roles and resource groups, go to [Role assignment](#role-assignment).
+For more information about assigning roles and resource groups, go to [Role binding](#role-binding).
 
 </details>
 
@@ -378,6 +378,6 @@ For more information about creating resource groups, go to [Manage resource grou
 9. For **Resource Groups**, select the **All Project Pipelines and Connectors** group.
 10. Select **Apply**.
 
-For more information about user groups, users, and role/resource group assignments, go to [Manage user groups](./add-user-groups), [Manage users](./add-users), and [Role assignment](#role-assignment).
+For more information about user groups, users, and role/resource group assignments, go to [Manage user groups](./add-user-groups), [Manage users](./add-users), and [Role binding](#role-binding).
 
 </details>

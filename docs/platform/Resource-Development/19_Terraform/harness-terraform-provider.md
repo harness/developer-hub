@@ -70,7 +70,7 @@ Enter your Harness Account Id in `account_id`.
 
 The account Id is in every URL when using Harness:
 
-`https://app.harness.io/ng/#/account/``**{accountid}**``/home/get-started​`
+`https://app.harness.io/ng/#/account/``**{accountid}**``/home/get-started`
 
 Enter your PAT or SAT in `platform_api_key`.
 
@@ -78,7 +78,7 @@ Enter your PAT or SAT in `platform_api_key`.
 Harness recommends using SAT to install the Harness Terraform Provider.
 :::
 
-For detailed steps on how to generate a PAT or SAT, go to [Add and manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).​
+For detailed steps on how to generate a PAT or SAT, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 
 ```

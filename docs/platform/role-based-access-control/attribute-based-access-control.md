@@ -24,18 +24,18 @@ This topic shows you how to configure ABAC in Harness.
 
 RBAC is role-based. This means permissions to resources are determined by the roles assigned to Users, User Groups, and Service Accounts.
 
-Harness ABAC builds on top of Harness RBAC by adding [role assignment](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment) conditions based on attributes in the context of specific actions. It lets you provide more fine-grained access management or simplify the management of hundreds of role assignments.
+Harness ABAC builds on top of Harness RBAC by adding [role binding](/docs/platform/role-based-access-control/rbac-in-harness#role-binding) conditions based on attributes in the context of specific actions. It lets you provide more fine-grained access management or simplify the management of hundreds of role bindings.
 
-With Harness ABAC, you can have an additional check based on the type of your Harness Resources and then do the Role Assignments. The Resource type filters down the Resource Groups for access control.
+With Harness ABAC, you can have an additional check based on the type of your Harness Resources and then do the role bindings. The Resource type filters down the Resource Groups for access control.
 
-For example, you can create a Resource Group with all the Production Environments and grant access to this Resource Group through Role Assignment.
+For example, you can create a Resource Group with all the Production Environments and grant access to this Resource Group through role binding.
 
 ### Why and when should I use Harness ABAC?
 
 Harness ABAC helps you achieve the following:
 
 * Provide more fine-grained access control.
-* Help reduce the number of Role Assignments.
+* Help reduce the number of role bindings.
 * Use attributes that have specific business meaning.
 
 Following are a few examples of scenarios to configure ABAC:
@@ -100,7 +100,7 @@ Select **Secret Managers** and click **Add**.
 
 ### Step 4: Assign Role and Resource Group
 
-Let us now complete the [role assignment](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment) for the User Group to complete the ABAC setup.
+Let us now complete the [role binding](/docs/platform/role-based-access-control/rbac-in-harness#role-binding) for the User Group to complete the ABAC setup.
 
 1. In your Harness Account, go to **PROJECT SETUP** in your Project.
 2. Click **Access Controls** and click **User Groups**.

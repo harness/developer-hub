@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes the permissions available for [API keys](./add-and-manage-api-keys.md) and [service accounts](../../role-based-access-control/add-and-manage-service-account.md) in Harness.
+This topic describes the permissions available for [API keys](./add-and-manage-api-keys) and [service accounts](../../role-based-access-control/add-and-manage-service-account) in Harness.
 
 These permissions are used by API keys to perform various actions through [Harness APIs](./api-quickstart.md). Subsets of these permissions are applied to [API keys and tokens](./add-and-manage-api-keys.md) when you create them. You can create API keys under your own account or service accounts, and the keys and tokens inherit [permissions](../../role-based-access-control/permissions-reference.md) from the associated user or service account.
 
@@ -268,13 +268,13 @@ User management permissions are available at any [scope](../../role-based-access
 
 ### Service accounts
 
-The following permissions allow an API key or user to manage [service accounts](../../role-based-access-control/add-and-manage-service-account.md) in Harness. These permissions are only available at the account [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). <!-- conflicting info: table said they are available at all scopes-->
+The following permissions allow an API key or user to manage [service accounts](../../role-based-access-control/add-and-manage-service-account) in Harness. These permissions are only available at the account [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). <!-- conflicting info: table said they are available at all scopes-->
 
 * View service accounts: `core_serviceaccount_view`
 * Create/edit service accounts: `core_serviceaccount_edit`
 * Delete service accounts: `core_serviceaccount_delete`
 
-To manage [API keys](./add-and-manage-api-keys.md) for service accounts, the `core_serviceaccount_manageapikey` permission can be applied at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
+To manage [API keys](./add-and-manage-api-keys) for service accounts, the `core_serviceaccount_manageapikey` permission can be applied at any [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 ## Secrets
 

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 A Harness user is any individual registered with Harness with a unique email address. Users can be associated with multiple Harness accounts, and they can be in multiple user groups. You can assign [roles](./add-manage-roles) and [resource groups](./add-resource-groups) directly to users, or they can inherit them from [user groups](./add-user-groups).
 
-You can [add users manually](#add-users-manually) or through [automated provisioning](#use-automated-provisioning). You can create user groups at all [scopes](#permissions-hierarchy-scopes).
+You can [add users manually](#add-users-manually) or through [automated provisioning](#use-automated-provisioning). You can create user groups at all [scopes](./rbac-in-harness#permissions-hierarchy-scopes).
 
 :::tip Service accounts
 
@@ -79,7 +79,7 @@ When you add a user, Harness checks your [authentication method](/docs/platform/
 
 ## Assign roles and resource groups
 
-You assign [roles](./add-manage-roles) and [resource groups](./add-resource-groups) to users to grant them permissions and access in Harness. Users can inherit roles and resource groups from [group membership](./add-user-groups), or you can assign roles and resource groups directly to individual users. For more information about assigning roles and resource groups, go to [RBAC in Harness: Role assignment](./rbac-in-harness#role-assignment).
+You assign [roles](./add-manage-roles) and [resource groups](./add-resource-groups) to users to grant them permissions and access in Harness. Users can inherit roles and resource groups from [group membership](./add-user-groups), or you can assign roles and resource groups directly to individual users. For more information about assigning roles and resource groups, go to [RBAC in Harness: Role binding](./rbac-in-harness#role-binding).
 
 :::caution Least privilege
 

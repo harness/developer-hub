@@ -89,7 +89,7 @@ Authorize your Okta app with Harness.
 
 7. For **Authentication Mode**, select **HTTP Header**, and enter your Harness API token in **Bearer**.
 
-   For instructions on creating Harness API keys and tokens, go to [Add and Manage API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
+   For instructions on creating Harness API keys and tokens, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
    ![](./static/provision-users-with-okta-scim-10.png)
 

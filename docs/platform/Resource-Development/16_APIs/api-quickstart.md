@@ -24,7 +24,7 @@ You need an understanding of Harness, [RBAC in Harness](/docs/platform/role-base
 
 ## Create a Harness API key and token
 
-Harness APIs use API keys to authenticate requests. Create an API key in your Harness user profile, add tokens to the key, and then use the token in your API requests. For more information, go to [Add and Manage API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
+Harness APIs use API keys to authenticate requests. Create an API key in your Harness user profile, add tokens to the key, and then use the token in your API requests. For more information, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 <figure>
 
@@ -35,7 +35,7 @@ Harness APIs use API keys to authenticate requests. Create an API key in your Ha
 
 :::info
 
-* **Service accounts:** You can use service account tokens instead of personal API keys and tokens. For more information, go to [Add and Manage Service Accounts](/docs/platform/role-based-access-control/add-and-manage-service-account).
+* **Service accounts:** You can use service account tokens instead of personal API keys and tokens. For more information, go to [Manage service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account).
 * **CORS:** Harness APIs support cross-origin resource sharing (CORS). This allows interactions between resources from different origins, and it is normally prohibited to prevent malicious behavior. Each API request must provide authentication credentials, either a personal access token or a service account token.
 
 :::

@@ -1,6 +1,6 @@
 ---
-title: Add and manage API keys
-description: Learn how to create and manage API keys and tokens.
+title: Manage API keys
+description: Learn how to create and edit API keys and tokens.
 sidebar_position: 2
 helpdocs_topic_id: tdoad7xrh9
 helpdocs_category_id: w4rzhnf27d
@@ -13,7 +13,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Harness APIs use API keys to authenticate requests. You can create API keys for your personal account or for [service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account.md). API keys can be created at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
+Harness APIs use API keys to authenticate requests. You can create API keys for your personal account or for [service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account). API keys can be created at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 After creating an API key, you must add tokens to the key, and then you use the tokens in your API requests or where ever else you need to supply an API key for authentication. Each API key can have multiple tokens.
 
