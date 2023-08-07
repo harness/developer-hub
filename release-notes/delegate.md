@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-08-04T10:00
+date: 2023-08-07T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -174,6 +174,12 @@ The current version does not include a hotfix release.
 
 <details>
 <summary>Expand this section to view changes to previous releases</summary>
+
+#### August 7, 2023 Harness Delegate hotfix version 79909
+
+- The pipeline console did not show any logs to indicate that container initialization and completion tasks, on Kuberenetes infrastructure, were in progress. 
+
+  Now, to improve your experience, the console shows logs to indicate when the task begins and ends. (CDS-74522, ZD-47616)
 
 #### July 20, 2023 Harness Delegate hotfix version 79906
 
