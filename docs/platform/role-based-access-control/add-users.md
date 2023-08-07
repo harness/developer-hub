@@ -1,6 +1,6 @@
 ---
-title: Add and manage users
-description: This document shows steps to create a new user.
+title: Manage users
+description: Use Harness RBAC to manage users.
 sidebar_position: 50
 helpdocs_topic_id: hyoe7qcaz6
 helpdocs_category_id: w4rzhnf27d
@@ -8,117 +8,177 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-A Harness User is any individual registered with Harness with a unique email address. A User can be a part of multiple Accounts.
+A Harness user is any individual registered with Harness with a unique email address. Users can be associated with multiple Harness accounts, and they can be in multiple user groups. You can assign [roles](./add-manage-roles) and [resource groups](./add-resource-groups) directly to users, or they can inherit them from [user groups](./add-user-groups).
 
-This topic will explain the steps to create and manage Users within Harness.
+You can [add users manually](#add-users-manually) or through [automated provisioning](#use-automated-provisioning). You can create user groups at all [scopes](#permissions-hierarchy-scopes).
 
-:::tip Automated provisioning
+:::tip Service accounts
 
-You can create users and user groups directly in Harness, and you can use automated provisioning, including:
+You can also create [service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account) in Harness.
+
+:::
+
+## Use automated provisioning
+
+You can [manually add users](#add-users-manually) and user groups in Harness, and you can use automated provisioning, including:
 
 * [Okta SCIM](./provision-users-with-okta-scim.md)
 * [Azure AD SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
 * [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
 * [Just-in-time provisioning](./provision-use-jit.md)
 
-With automated provisioning, users and user groups are imported from your IdP, and then you [assign roles and resource groups](#role-assignment) to the imported [principals](#principals) in Harness. You manage group metadata, group membership, and user profiles in your IdP, and you manage role and resource group assignments in Harness.
+When you use automated provisioning, users and user groups are imported from your IdP, and then you [assign roles and resource groups](#assign-roles-and-resource-groups) to the imported users and groups in Harness. For imported users and groups, you manage group metadata, group membership, and user profiles in your IdP, and you manage their role and resource group assignments in Harness. You can also create users and user groups directly in Harness, but any users or groups imported from your IdP must be managed in your IdP.
 
-You can also create users and user groups directly in Harness, but any users or groups imported from your IdP must be managed in your IdP. For imported users and group, you can only change their role and resource group assignments in Harness.
+For example, if you use Okta as your IdP, you could create a user group in Okta and assign users to that group in Okta. When the user group is first imported into Harness, the group and the group members are not associated with any roles or resource groups. You must assign roles and resource groups to the user group in Harness. The group members then inherit permissions and access from the role and resource group that is assigned to the user group.
 
+## Add users manually
 
-<!-- alternate text
-When you use automated provisioning, users and user groups are imported from your IdP, and then you assign roles and resource groups to the imported [principals](#principals) in Harness. For imported users and groups, you manage group metadata, group membership, and user profiles in your IdP, and you manage their role and resource group assignments in Harness. You can also create users and user groups directly in Harness, but any users or groups imported from your IdP must be managed in your IdP.
+To add users in Harness, you need a role, such as **Account Admin**, that has [permission](./permissions-reference) to invite and manage users.
 
-For example, if you use Okta as your IdP, you could create a user group in Okta and assign users to that group in Okta. When the user group is first imported into Harness, the group and the group members are not associated with any roles or resource groups. You must [assign roles and resource groups](#assign-the-role-and-resource-group-to-the-user-group) to the user group in Harness. The group members then inherit permissions and access from the role and resource group that is assigned to the user group.-->
+:::info
+
+You can add up to 50,000 users in paid plans. Free plans and Harness Community Edition accounts are limited to 1,500 users.
 
 :::
 
-### Before you begin
+1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where you want to add the user.
 
-* Make sure you have **Manage** Permissions for Users.
+   * To add a user at the account scope, select **Account Settings**, and then select **Access Control**.
+   * To add a user at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To add a user at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
-### Step: Add New User
+2. Select **New User**.
+3. In **Users**, enter the email address that user will use to log into Harness.
 
-You must first invite Users to your Account/Org/Project to add them to User Groups and assign Role Bindings accordingly. For more information on User Groups and Role Bindings, see [Manage user groups](/docs/platform/role-based-access-control/add-user-groups) and [Role Assignment](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment).
+   You can add multiple users at once by entering multiple email addresses.
 
-Click **Account Settings**, and click **Access Control**.
+4. In **User Groups**, you can assign the user to one or more [user groups](./add-user-groups).
 
-Click **New User** in **Users**. The New User settings appear.
+   When assigned to a user group, the user inherits the [roles and resource groups](#assign-roles-and-resource-groups) assigned to that group.
 
-![](./static/add-users-11.png)
-Enter the email address(es) that the User will use to log into the Harness platform.
+   You can also assign roles and resource groups directly to individual users.
 
-If you have Roles and Resource Groups defined, select the Roles and Resource Groups for this user. To add Roles and Resource Groups, see [Manage roles](./add-manage-roles) and [Manage resource groups](./add-resource-groups).
+   Users are not required to belong to user groups; however, user groups make it easier to manage permissions and access. Instead of modifying each user individually, you can edit the permissions and access for the entire group at once.
 
-Click **Save**. The user will receive a verification email at the address(es) you provided. When the user logs into Harness, the user creates a password, the email address is verified, and the user name is updated.
+5. In **Role Bindings**, you can assign roles and resource groups directly to the new user.
 
-You can add up to 50000 users in Harness Non-Community Edition.
+   If you selected any **User Groups**, the role and resource group assignments inherited from those groups *are not* listed in **Role Bindings**.
 
-#### User invites
+   If you didn't select any user groups, you must apply a role binding. Without a role binding (directly or inherited from a user group), the user won't have any permissions or access in Harness.
 
-For any new user that you add to your Harness Account, Org, or Project, Harness checks the following and sends invites accordingly:
+   ![](./static/add-users-11.png)
 
-1. If your authentication mechanism is set to **Login via a Harness Account or Public OAuth Providers**, the invited user gets an email invitation. The user is added to the **Pending Users** list until the user accepts the invitation.
-2. If your authentication mechanism is set to SAML, LDAP, or OAuth, and the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` is enabled, Harness adds the invited user to the Active Users list.  
-Harness does not send any emails to the user when this feature flag is enabled.
-3. If your authentication mechanism is set to SAML, LDAP, or OAuth, and the feature flag `AUTO_ACCEPT_SAML_ACCOUNT_INVITES` is enabled, Harness sends a notification email to the user and adds the user to the Active Users list.
+6. Select **Apply**. Users receive a verification email at the address(es) you entered. When the user logs into Harness, the user creates a password, the email address is verified, and the user's name attribute is updated.
 
-If you enable both feature flags, the feature flag`PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` takes precedence over the feature flag`AUTO_ACCEPT_SAML_ACCOUNT_INVITES`. Harness does not send any emails to users.
+### Invitation emails
 
-### Step: Delete User
+When you add a user, Harness checks your [authentication method](/docs/platform/Authentication/authentication-overview) and email invite preferences to determine if an email invitation should be sent:
 
-Click **Users** under **Access** **Control**.
+* **Login via a Harness Account or Public OAuth Providers:** The invited user gets an email invitation. The user is listed on **Pending Users** until the user accepts the invitation.
+* **SAML**, **LDAP**, or **OAuth:** *and* you have enabled the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES`: Harness adds the user directly to the **Active Users** list, and Harness *doesn't* send an email to the user.
+* **SAML**, **LDAP**, or **OAuth:** *and* you have enabled the feature flag `AUTO_ACCEPT_SAML_ACCOUNT_INVITES`: Harness adds the user directly to the **Active Users** list, and Harness sends a notification email to the user.
+* **SAML**, **LDAP**, or **OAuth:** *and* you have enabled both feature flags: `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` takes precedence over `AUTO_ACCEPT_SAML_ACCOUNT_INVITES`. Harness adds users directly to the **Active Users** list, and Harness *doesn't* send invitation emails.
 
-Click **Delete** on the top right corner to delete a specific user.
+## Assign roles and resource groups
 
-![](./static/add-users-12.png)
-### Step: Manage User
+You assign [roles](./add-manage-roles) and [resource groups](./add-resource-groups) to users to grant them permissions and access in Harness. Users can inherit roles and resource groups from [group membership](./add-user-groups), or you can assign roles and resource groups directly to individual users. For more information about assigning roles and resource groups, go to [RBAC in Harness: Role assignment](./rbac-in-harness#role-assignment).
 
-To edit Role Bindings for a User, do the following:
+:::caution Least privilege
 
-In **Access Control**, click **Users.**
+RBAC is additive. The total expanse of a user/service account's permissions and access is the sum of all the roles and resource groups from all user groups they belong to, as well as any roles and resource groups assigned directly to them as an individual user/service account.
 
-Click on the user you want to edit. The user details appear.
+It is important to follow the principle of least privilege (PoLP). This is a security principle that means users are granted the absolute minimum access/permissions necessary to complete their tasks and nothing more.
 
-![](./static/add-users-13.png)
-Click **Delete** on the right to remove a User Group.
+While Harness includes some built-in roles and resource groups, to ensure least privilege, consider:
 
-Click **Role** to change Role Bindings for this User.
+* Being selective in the way you apply roles and resource groups.
+* Creating your own roles and resource groups as needed for refined access control.
 
-#### Group Memberships
+:::
 
-You can view the group membership of a specific user on the user details page by clicking **Group Memberships**.
+To manage users in Harness, you need a role, such as **Account Admin**, that has [permission](./permissions-reference) to manage users.
 
-![](./static/add-users-14.png)
-Harness lets you select one of the following scopes to view the user's group membership:
+### View role bindings
 
-* **All**: lists the user's group membership across all the scopes.
-* **Account only**: lists the user's group membership only in the Account scope.
-* **Organization** **only**: lists the user's group membership in the scope of the selected Organization.
-* **Organization and Projects**: lists the user's group membership in the scope of the selected Organization and Project.
+1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where the user exists.
 
-To add the user to a new user group, click **Add to a new User Group**. <!-- steps to add to an existing grp -->
+   * To edit a user at the account scope, select **Account Settings**, and then select **Access Control**.
+   * To edit a user at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To edit a user at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
-Click **Remove** to remove the user as a member from a specific user group.
+2. Select the user you want to view.
+3. Switch to the **Role Bindings** tab.
+4. Select a **[Scope](./rbac-in-harness#permissions-hierarchy-scopes)**.
 
-![](./static/add-users-15.png)
-#### Role Bindings
+   * **All**: List role bindings across all scopes.
+   * **Account only**: List role bindings only at the account scope.
+   * **Organization** **only**: List role bindings in the scope of a specific organization, but not the projects under that organization.
+   * **Organization and Projects**: List role bindings in the scope of a specific organization and all projects under that organization.
 
-You can view the role bindings for a specific user on the user details page by clicking **Role Bindings**.
+5. Review the role bindings.
 
-Here, you can view a given user's role bindings across all scopes and user groups.
+   The **Assigned Through** column indicates the source of the role binding. Assignments are either **Direct** or inherited from a user group. If inherited, the user group name is listed.
 
-![](./static/add-users-16.png)
-Harness lets you select one of the following scopes to view the user's role bindings:
+   The **Assigned At** column indicates the scope at which the assignment was made. If assigned at an organization or project scope, the organization and project name are listed.
 
-* **All**: lists the user's role bindings across all the scopes.
-* **Account only**: lists the user's role bindings only in the Account scope.
-* **Organization** **only**: lists the user's role bindings in the scope of the selected Organization.
-* **Organization and Projects**: lists the user's role bindings in the scope of the selected Organization and Project.
+   ![](./static/add-users-16.png)
 
-To add a new role binding for a user, click **Role**.
+### Edit direct assignments
 
-### See also
+Use these steps to manage directly assigned role bindings.
 
-* [Permissions Reference](./permissions-reference)
+1. Follow the steps to [view role bindings](#view-role-bindings).
+2. Select **Manage Roles**.
+3. In **Role Bindings**, select **Add**, then select a [role](./add-manage-roles) and a [resource group](./add-resource-groups). Repeat to add more role bindings.
+4. To delete a role binding, select the **Delete** icon.
+5. Select **Apply** to save the changes.
 
+### Edit inherited assignments
+
+There are several ways to edit inherited role bindings:
+
+* Edit group membership through an individual user's profile. This is best for changing group membership for a single user.
+* [Edit membership in the user group's settings](./add-user-groups#edit-group-members), rather than editing each user individually. This is useful for adding and removing multiple users at once.
+* [Edit role bindings in the user group's settings](./add-user-groups#assign-roles-and-resource-groups). Do this to change inherited role bindings without changing group membership.
+* Editing group membership in your IdP. If you use [use automated provisioning](#use-automated-provisioning), group membership is managed through your IdP.
+
+To edit group membership through a user's profile:
+
+1. Follow the steps to [view role bindings](#view-role-bindings).
+2. Switch to the **Group Memberships** tab.
+
+   ![](./static/add-users-14.png)
+
+3. Select a **[Scope](./rbac-in-harness#permissions-hierarchy-scopes)**.
+
+   * **All**: List groups across all scopes.
+   * **Account only**: List groups only at the account scope.
+   * **Organization** **only**: List groups in the scope of a specific organization, but not the projects under that organization.
+   * **Organization and Projects**: List groups in the scope of a specific organization and all projects under that organization.
+
+4. Select **Add to a new User Group**, and then modify the user's group membership by selecting or deselecting groups accordingly.
+
+   * To add the user to a group, search for and select the relevant group.
+   * To remove the user from a group, search for and deselect the relevant group.
+
+5. Select **Apply Selected**.
+
+## Delete users
+
+Use these steps to delete a user from Harness.
+
+:::info
+
+If you [use automated provisioning](#use-automated-provisioning), user accounts are managed by your IdP. Delete or deactivate the user in your IdP to revoke their access to Harness.
+
+:::
+
+1. Make sure you have a role, such as **Account Admin**, that has [permission](./permissions-reference) to manage users.
+2. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where the user exists.
+
+   * To delete a user at the account scope, select **Account Settings**, and then select **Access Control**.
+   * To delete a user at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To delete a user at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
+
+3. Locate the user you want to delete.
+4. Select **More options** (&vellip;), and then select **Delete**.

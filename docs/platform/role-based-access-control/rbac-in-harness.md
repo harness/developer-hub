@@ -278,7 +278,7 @@ For more information about roles and permissions, go to [Manage roles](./add-man
 
 7. Select **Save**.
 
-For more information about creating resource groups, go to [Manage resource groups](./add-resource-groups.md).
+For more information about creating resource groups, go to [Manage resource groups](./add-resource-groups).
 
 #### Create the Pipeline Owners user group
 
@@ -288,7 +288,7 @@ For more information about creating resource groups, go to [Manage resource grou
 4. In **Add Users**, select users to add to the group.
 5. Select **Save**.
 
-For more information about user groups and users, go to [Manage user groups](./add-user-groups.md) and [Add and Manage Users](./add-users.md).
+For more information about user groups and users, go to [Manage user groups](./add-user-groups) and [Manage users](./add-users).
 
 :::tip Automated provisioning
 
@@ -363,7 +363,7 @@ For more information about roles and permissions, go to [Manage Roles](./add-man
 
 In this example, the **Resource Scope** is locked to **Project only**, which means the resource group can only access the selected resources within this project. If your pipelines use connectors or other resources at a higher scope, you would need to configure RBAC at the account or org scope and then refine access by project. Similarly, if you wanted to create a user group that could run any pipeline in an organization or account, you would need to create the role, resource group, and user group at the account scope (by navigating to **Account Settings** and then selecting **Access Control**). Note that some refinement options, such as selecting specific pipelines, aren't available at higher scopes.
 
-For more information about creating resource groups, go to [Manage resource groups](./add-resource-groups.md).
+For more information about creating resource groups, go to [Manage resource groups](./add-resource-groups).
 
 #### Configure the user group
 
@@ -378,6 +378,6 @@ For more information about creating resource groups, go to [Manage resource grou
 9. For **Resource Groups**, select the **All Project Pipelines and Connectors** group.
 10. Select **Apply**.
 
-For more information about user groups, users, and role/resource group assignments, go to [Manage user groups](./add-user-groups.md), [Add and Manage Users](./add-users.md), and [Role assignment](#role-assignment).
+For more information about user groups, users, and role/resource group assignments, go to [Manage user groups](./add-user-groups), [Manage users](./add-users), and [Role assignment](#role-assignment).
 
 </details>

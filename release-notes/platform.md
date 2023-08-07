@@ -1794,9 +1794,9 @@ No early access features are available in this release.
 
 ##### What's new
 
-- Now you can add up to 50,000 users in the Harness Non-Community Edition. (PL-27300)
+- Now you can add up to 50,000 users in paid plans. The limit remains at 1,500 for free plans and Harness Community Edition accounts. (PL-27300)
 
-  See [Add and Manage Users](/docs/platform/role-based-access-control/add-users).
+  See [Manage users](/docs/platform/role-based-access-control/add-users).
 
 - You can now use an enhanced Git Experience. (PL-26339)
 
