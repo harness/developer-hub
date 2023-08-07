@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-08-03T10:00:30
+date: 2023-08-04T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -23,7 +23,7 @@ Harness publishes security advisories for every release. Go to the [Harness Trus
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 3, 2023, version 80120
+## Latest - August 4, 2023, version 80120
 
 
 ```mdx-code-block
