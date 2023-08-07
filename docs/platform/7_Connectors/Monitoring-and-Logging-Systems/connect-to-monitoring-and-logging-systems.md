@@ -81,13 +81,17 @@ You cannot use a Grafana URL.
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
-3. Click **+** **Connector**, and click **New Relic**in **Monitoring and Logging Systems**. The New Relic connector settings appear.
+3. Click **+** **Connector**, and click **New Relic** in **Monitoring and Logging Systems**. The New Relic connector settings appear.
    
    ![](../static/connect-to-monitoring-and-logging-systems-15.png)
    
 4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
 5. Click **Continue**.
-6. In the **New Relic** **URL** field, enter the URL of your New Relic account. 
+6. In the **New Relic** **URL** field, select the URL of your New Relic Insights API. 
+
+:::info note
+New Relic supports multiple APIs. The Harness Connector leverages the New Relic Insights API which supports NRQL. See Step 8 for creating an Insights API Key.
+:::
    
    ![](../static/connect-to-monitoring-and-logging-systems-16.png)
 
