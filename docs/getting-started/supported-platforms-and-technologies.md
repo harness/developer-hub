@@ -188,39 +188,15 @@ Most providers are used in both Pipeline Notification Strategies and User Group 
 
 ## Access control
 
-The following table lists Harness support for SSO protocols and tools.
+import Accessconsup from '/docs/getting-started/shared/access-control-supported.md'
 
-Go to [Add and Manage Access Control](../feature-flags/ff-onboarding/ff-security-compliance/manage-access-control.md).
-
-| SSO Type                                                                     | SSO Providers          | Authentication Supported | Authorization (Group Linking) Supported | SCIM Provisioning |
-| ---------------------------------------------------------------------------- | ---------------------- | ------------------------ | --------------------------------------- | ----------------- |
-| [SAML 2.0](../platform/3_Authentication/3-single-sign-on-saml.md)            | Okta                   | Yes                      | Yes                                     | Yes               |
-|                                                                              | Azure Active Directory | Yes                      | Yes                                     | Yes               |
-|                                                                              | Others                 | Yes                      | Yes                                     | No                |
-|                                                                              | OneLogin               | Yes                      | Yes                                     | Yes               |
-| [OAuth 2.0](../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md) | Github                 | Yes                      | No                                      | N/A               |
-|                                                                              | GitLab                 | Yes                      | No                                      | N/A               |
-|                                                                              | Bitbucket              | Yes                      | No                                      | N/A               |
-|                                                                              | Google                 | Yes                      | No                                      | N/A               |
-|                                                                              | Azure                  | Yes                      | No                                      | N/A               |
-|                                                                              | LinkedIn               | Yes                      | No                                      | N/A               |
-| LDAP (Delegate connectivity needed)                                          | Active Directory       | Coming soon              | Coming soon                             | N/A               |
-|                                                                              | Open LDAP              | Coming soon              | Coming soon                             | N/A               |
-|                                                                              | Oracle LDAP            | Coming soon              | Coming soon                             | N/A               |
+<Accessconsup />
 
 ## Secret management
 
-The following table lists Harness support for cloud platform secrets management services.
+import Secretmgmtsup from '/docs/getting-started/shared/secret-management-supported.md'
 
-Go to [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager).
-
-| Provider Name                                                               | Key Encryption Support | Encrypted Data Storaged with Harness | Support for Referencing Existing Secrets |
-| --------------------------------------------------------------------------- | ---------------------- | ------------------------------------ | ---------------------------------------- |
-| [AWS KMS](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager)       | Yes                    | Yes                                  | No                                       |
-| [AWS Secret Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager) | Yes                    | No                                   | Yes                                      |
-| [Hashicorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault)         | Yes                    | No                                   | Yes                                      |
-| [Azure Key Vault](/docs/platform/Secrets/Secrets-Management/azure-key-vault)              | Yes                    | No                                   | Yes                                      |
-| [Google KMS](/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager)   | Yes                    | Yes                                  | No                                       |
+<Secretmgmtsup />
 
 ## Harness Self-Managed Enterprise Edition
 

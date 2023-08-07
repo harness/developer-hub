@@ -47,7 +47,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 7. Connector setup -
 
 - GitHub, Gitlab, Bitbucket and Azure Repository connectors are supported.
-- Sub variants on above connectors - GitHub enterprise, Github app, Bitbucket cloud, Bitbucket server
+- Sub variants on above connectors - GitHub Enterprise, GitHub App, Bitbucket Cloud, Bitbucket Server
 - While setting up connector, both Account & Repo type for URL is supported.
 - Only HTTP mode is supported. SSH connection type is not supported.
 - API access is needed in the connector for the IDP catalog setup

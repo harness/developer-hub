@@ -56,4 +56,4 @@ To get started with creating pipelines and Helm-based installs in Harness Self-M
 * For Harness CI, go to [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
 * For Harness CD, go to [CD Pipeline Basics](../../continuous-delivery/get-started/cd-pipeline-basics.md).
 * For Harness STO, go to [Security Testing Orchestration Basics (Public Preview)](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
-
+* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-harness-chaos-engineering-ce).

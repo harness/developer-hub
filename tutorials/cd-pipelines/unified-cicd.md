@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 7
 title: Unified CI/CD
 description: Build and Deploy a NodeJS App to Kubernetes
 ---

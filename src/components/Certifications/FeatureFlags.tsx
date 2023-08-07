@@ -60,11 +60,8 @@ export default function FeatureFlags() {
           </div>
           <h1>Feature Flags</h1>
           <div>
-            Optimizing performance through hosted builds, caching, and
-            proprietary Test Intelligence™. Designed to be blazing fast, simple,
-            and open to help make developers' lives easier. Plus, all the
-            scalable features needed to meet enterprise demands – with developer
-            autonomy alongside software efficiency , reliability, and security.
+          Drastically reduce rollbacks, deploy faster with less risk, 
+          spend more time building and coding, and less time fixing production with Progressive Delivery. 
           </div>
         </div>
         <div className={styles.right}>
