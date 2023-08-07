@@ -107,7 +107,7 @@ USER harness
 The following example Dockerfile adds all the tools necessary for the Harness platform that are not part of the base image to the minimal delegate. You can remove tools for features you don't use or update versions for your requirements.
 
 ```
-FROM harness/delegate:23.07.79908.minimal
+FROM harness/delegate:yy.mm.xxxxx.minimal
 
 USER 0
 
