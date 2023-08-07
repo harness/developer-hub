@@ -25,7 +25,7 @@ You can build on either of the following Harness-provided images.
 | **Image** | **Description** |
 | --- | --- |
 | Harness Delegate Docker image | A publicly available Docker image providing Harness Delegate. |
-| Harness Minimal Delegate Docker image | A minimal delegate image available in Docker Hub at <https://hub.docker.com/r/harness/delegate/tags>. |
+| Harness Minimal Delegate Docker image | A minimal delegate image is available in Docker Hub at <https://hub.docker.com/r/harness/delegate/tags>. |
 
 Use the last published `yy.mm.xxxxx` version of the minimal image from the Docker repository.
 
@@ -102,9 +102,9 @@ ENV PATH=/opt/harness-delegate/tools/:$PATH
 USER harness
 ```
 
-### Complete Example Dockerfile with all tools
+### Example Dockerfile with all tools
 
-The following Dockerfile adds all of the tools to the minimal delegate that are not included in the base image, but used by the Harness platform.  Tools for features that are not needed can be trimmed fom this, or specific versions or install sources can be customized.
+The Dockerfile adds all the tools necessary for the Harness platform that are not part of the base image to the minimal delegate. You can remove tools for features you don't need or customize specific versions.
 
 ```
 FROM harness/delegate:23.07.79908.minimal
