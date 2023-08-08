@@ -229,3 +229,13 @@ We do not have any backup ability for services out of the box but you can take t
 #### Harness FirstGen Graphql API to create Harness pipelines in a specific application
 
 We do not have a way to create a new pipeline using Graphql in FirstGen. However, we do support API to create Harness pipelines in NextGen.
+
+#### Trigger another stage with inputs in a given pipeline?
+You cannot do it if the stage is part of the same pipeline. However, using Pipeline A and running a custom trigger script inside it can trigger the CI stage which is part of Pipeline B.
+
+#### How can we use conditionals within variables using jexl?
+You can use Ternary operators to achieve this use case more information on this here: https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#ternary-operators
+
+#### How do we easily change git folders in a repo for the git exp project?
+The default branch and file path will not be changeable after the creation as we store data in Git end and only metadata is stored in Harness. 
+You can change it to the required path while creating the initial entity you can select the folder other than.harness Now you can recreate the entity using the same yaml and make minor changes like file path and entity id.
