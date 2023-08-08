@@ -1,42 +1,249 @@
 ---
-title: CI Run step settings
+title: Use CI Run steps
 description: This topic describes settings for the CI Run step.
 sidebar_position: 20
+sidebar_label: Use Run steps
 helpdocs_topic_id: 1i1ttvftm4
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use a CI **Run** step to [run scripts in CI Build stages](/docs/category/run-scripts). This topic describes settings for the **Run** step.
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import OutVar from '/docs/continuous-integration/shared/output-var.md';
+```
 
-:::info
+You can use a **Run** step to run commands or scripts in a CI pipeline. Here are some examples of different ways you can use **Run** steps.
 
-Depending on the stage's build infrastructure, some settings may be unavailable or optional.
+```mdx-code-block
+<Tabs>
+  <TabItem value="test" label="Run tests" default>
+```
+
+This example runs `pytest`, includes [code coverage](../set-up-test-intelligence/code-coverage.md) and produces a report in JUnit XML format.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Run pytest
+                  identifier: Run_pytest
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: python:latest
+                    shell: Sh
+                    command: |-
+                      echo "Welcome to Harness CI"
+                      uname -a
+                      pip install pytest
+                      pip install pytest-cov
+                      pip install -r requirements.txt
+
+                      pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
+
+                      echo "Done"
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "**/*.xml"
+```
+
+:::tip
+
+You can use `parallelism` and `split_tests` to [define test splitting in a Run step](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting) and improve test times.
 
 :::
 
-## Name
+```mdx-code-block
+  </TabItem>
+  <TabItem value="dependencies" label="Install dependencies">
+```
+
+This example installs Go dependencies.
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: Dependencies
+                  spec:
+                    shell: Sh
+                    command: |-
+                      go get example.com/my-go-module
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="version" label="Specify versions">
+```
+
+This example uses a **Run** step to select a version of Xcode.
+
+```yaml
+              - step:
+                  type: Run
+                  name: set_xcode_version
+                  identifier: set_xcode_version
+                  spec:
+                    shell: Sh
+                    command: |-
+                      sudo xcode-select -switch /Applications/Xcode_13.4.1.app
+                      xcodebuild -version
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="repo" label="Clone a repo">
+```
+
+This example clones a GitHub repository.
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: clone
+                  name: clone
+                  spec:
+                    shell: Sh
+                    command: |-
+                      git clone https://GH_PERSONAL_ACCESS_TOKEN@github.com/ACCOUNT_NAME/REPO_NAME.git
+```
+
+To use this command, you would replace:
+
+* `ACCOUNT_NAME` with your GitHub account name.
+* `REPO_NAME` with the name of the GitHub repo to clone.
+* `PERSONAL_ACCESS_TOKEN` with a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call it.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="scripts" label="Run scripts">
+```
+
+**Run** steps are highly versatile, and you can use them to run all manner of individual commands or multi-line scripts.
+
+For example, this step is from the [Terraform notifications tutorial](/tutorials/ci-pipelines/tfc-notification), and it produces [output variables](#output-variables) from Terraform values. These output variables are used by another step later in the same pipeline.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Terraform Outputs
+                  identifier: tf_outputs
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: kameshsampath/kube-dev-tools
+                    shell: Sh
+                    command: |-
+                      cd /harness/vanilla-gke/infra
+                      terraform init
+                      GCP_PROJECT=$(terraform output -raw project-name)
+                      GCP_ZONE=$(terraform output -raw zone)
+                      GKE_CLUSTER_NAME=$(terraform output -raw kubernetes-cluster-name)
+                    envVariables:
+                      TF_TOKEN_app_terraform_io: <+secrets.getValue("terraform_cloud_api_token")>
+                      TF_WORKSPACE: <+trigger.payload.workspace_name>
+                      TF_CLOUD_ORGANIZATION: <+trigger.payload.organization_name>
+                    outputVariables:
+                      - name: GCP_PROJECT
+                      - name: GCP_ZONE
+                      - name: GKE_CLUSTER_NAME
+                    imagePullPolicy: Always
+                  description: Get the outputs of terraform provision
+```
+
+:::tip
+
+Consider [creating plugins](../use-drone-plugins/custom_plugins.md) for scripts that you reuse often.
+
+:::
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Add the Run step
+
+You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run** step. If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+
+In order for the **Run** step to execute your commands, the build environment must have the necessary binaries for those commands. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Container registry and image settings](#container-registry-and-image).
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+1. Go to the **Build** stage in the pipeline where you want to add the **Run** step.
+2. On the **Execution** tab, select **Add Step**, and select the **Run** step from the Step Library.
+3. Configure the [Run step settings](#settings) and then select **Apply Changes** to save the step.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+In Harness, go to the pipeline where you want to add the `Run` step. In the `CI` stage, add a `Run` step and configure the [Run step settings](#settings).
+
+```yaml
+              - step:
+                  type: Run
+                  name: Run pytest # Specify a name for the step.
+                  identifier: Run_pytest # Define a step ID, usually based on the name.
+                  spec:
+                    connectorRef: account.harnessImage # Specify a container registry, if required.
+                    image: python:latest # Specify an image, if required.
+                    shell: Sh
+                    command: |-
+                      # Provide your commands.
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Settings
+
+The **Run** step has the following settings.
+
+:::info
+
+Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+
+:::
+
+### Name
 
 Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-## Description
+### Description
 
 Optional text string describing the step's purpose.
 
-## Container Registry and Image
+### Container Registry and Image
 
-The **Container Registry** is a Harness container registry connector for the image that you want Harness to run build commands on, such as Docker Hub.
+**Container Registry** and **Image** ensure that the build environment has the binaries necessary to execute the commands that you want to run in this step. For example, a cURL script may require a cURL image, such as `curlimages/curl:7.73.0`.
 
-The **Image** is the FQN (fully-qualified name) or artifact name of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`. The image name should include the tag. If you don't include a tag, Harness uses the `latest` tag.
+The **Container Registry** is a container registry connector, such as a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/), that connects to a container registry, such as Docker Hub.
+
+The **Image** is the fully-qualified name (FQN) or artifact name of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`.
+
+The image name should include the tag. If you don't include a tag, Harness uses the `latest` tag.
 
 You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
 * **Docker Registry:** Input the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
-* **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GCR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
+* **ECR:** Input the FQN of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
+* **GCR:** Input the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
 
-   ![](./static/run-step-settings-03.png)
+<figure>
+
+![](./static/run-step-settings-03.png)
+
+<figcaption>Configuring GCR Container Registry and Image settings.</figcaption>
+</figure>
 
 :::info
 
@@ -49,28 +256,31 @@ The stage's build infrastructure determines whether these fields are required or
 
 :::
 
-## Shell and Command
+### Shell and Command
 
 Use these fields to define the commands that you need to run in this step.
 
-For **Shell**, select the shell script type. Options include: **Bash**, **Powershell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
+For **Shell**, select the shell script type. Options include: **Bash**, **PowerShell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
 
 In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands for this step. The script is invoked as if it were the entry point. If the step runs in a container, the commands are executed inside the container.
 
 :::tip
 
-You can reference services started in [Background steps](../manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a `curl` command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
+You can reference services started in [Background steps](../manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a cURL command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
 
-![The Background step ID, pythonscript, is used in a curl command in a Run step.](../manage-dependencies/static/background-step-settings-call-id-in-other-step.png)
+<figure>
+
+![](../manage-dependencies/static/background-step-settings-call-id-in-other-step.png)
+
+<figcaption>The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
+</figure>
+
+If the Background step is inside a step group, you must include step group ID, such as `[stepGroupId]_[backgroundStepId]:5000`, even if both steps are in the same step group.
 
 :::
 
 Select each tab below to view examples for each `shell` type.
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 ```mdx-code-block
 <Tabs>
   <TabItem value="bash" label="Bash" default>
@@ -94,9 +304,9 @@ This Bash script example checks the Java version.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="powershell" label="Powershell">
+  <TabItem value="powershell" label="PowerShell">
 ```
-This is a simple Powershell `Wait-Event` example.
+This is a simple PowerShell `Wait-Event` example.
 
 ```yaml
               - step:
@@ -108,7 +318,7 @@ This is a simple Powershell `Wait-Event` example.
 
 :::tip
 
-You can run Powershell commands on Windows VMs running in AWS build farms.
+You can run PowerShell commands on Windows VMs running in AWS build farms.
 
 :::
 
@@ -118,7 +328,7 @@ You can run Powershell commands on Windows VMs running in AWS build farms.
   <TabItem value="pwsh" label="Pwsh">
 ```
 
-This Powershell Core example runs `ForEach-Object` over a list of events.
+This PowerShell Core example runs `ForEach-Object` over a list of events.
 
 ```yaml
               - step:
@@ -132,7 +342,7 @@ This Powershell Core example runs `ForEach-Object` over a list of events.
 
 :::tip
 
-You can run Powershell Core commands in pods or containers that have `pwsh` installed.
+You can run PowerShell Core commands in pods or containers that have `pwsh` installed.
 
 :::
 
@@ -203,10 +413,6 @@ If your script produces an output variable, you must declare the output variable
 
 :::
 
-## Optional Configuration
-
-Use the following settings to add additional configuration to the step. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
-
 ### Privileged
 
 Enable this option to run the container with escalated privileges. This is equivalent to running a container with the Docker `--privileged` flag.
@@ -217,6 +423,24 @@ Specify one or more paths to files that store [test results in JUnit XML format]
 
 This setting is required for the Run step to be able to [publish test results](../set-up-test-intelligence/viewing-tests.md).
 
+For example, this step runs `pytest` and produces a test report in JUnit XML format.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Pytest
+                  identifier: Pytest
+                  spec:
+                    shell: Sh
+                    command: |-
+                      pytest test_main.py --junit-xml=output-test.xml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - output-test.xml
+```
+
 ### Environment Variables
 
 You can inject environment variables into a container and use them in the **Command** script. You must input a **Name** and **Value** for each variable.
@@ -225,71 +449,18 @@ You can reference environment variables in the **Command** script by their name.
 
 Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change the value type.
 
+<figure>
+
 ![](./static/run-step-settings-04.png)
+
+<figcaption>Using a Harness expression for an environment variable value.</figcaption>
+</figure>
 
 For more information, go to the [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md).
 
 ### Output Variables
 
-Output variables expose values for use by other steps or stages in the pipeline.
-
-To create an output variable, do the following in the step where the output variable originates:
-
-1. In the **Command** field, export the output variable. For example, the following command exports a variable called `myVar` with a value of `varValue`:
-
-   ```
-   export myVar=varValue
-   ```
-
-2. In the step's **Output Variables**, declare the variable name, such as `myVar`.
-
-To call a previously-exported output variable in a later step or stage in the same pipeline, use a variable expression that includes the originating step's ID and the variable name.
-
-<!-- ![](./static/run-step-output-variable-example.png) -->
-
-<docimage path={require('./static/run-step-output-variable-example.png')} />
-
-To reference an output variable in another step in the same stage, use either of the following expressions:
-
-```
-<+steps.[stepID].output.outputVariables.[varName]>
-<+execution.steps.[stepID].output.outputVariables.[varName]>
-```
-
-To reference an output variable in a different stage than the one where it originated, use either of the following expressions:
-
-```
-<+stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
-<+pipeline.stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
-```
-
-<details>
-<summary>YAML example: Output variable</summary>
-
-In the following YAML example, step `alpha` exports an output variable called `myVar`, and then step `beta` references that output variable.
-
-```yaml
-              - step:
-                  type: Run
-                  name: alpha
-                  identifier: alpha
-                  spec:
-                    shell: Sh
-                    command: export myVar=varValue
-                    outputVariables:
-                      - name: myVar
-              - step:
-                  type: Run
-                  name: beta
-                  identifier: beta
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo <+steps.alpha.output.outputVariables.myVar>
-                      echo <+execution.steps.alpha.output.outputVariables.myVar>
-```
-
-</details>
+<OutVar />
 
 <!--<details>
 <summary>Export output variables to stage or pipeline variables</summary>
@@ -331,3 +502,9 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 * [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+
+## Logs and test results
+
+During and after pipeline runs, you can find step logs on the [Build details page](../viewing-builds.md).
+
+If your pipeline runs tests, you can [view test reports](../set-up-test-intelligence/viewing-tests.md) on the Build details page.

@@ -74,14 +74,14 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.ci,
           description:
             "Run builds at scale on VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines.",
-          link: "/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart",
+          link: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure",
         },
         {
           title: "Test Intelligence",
           module: MODULES.ci,
           description:
             "Improve test times by running only those unit tests that are required to confirm the quality of the code changes that triggered the pipeline.",
-          link: "/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts",
+          link: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
         },
         {
           title: "Cache Intelligence",
@@ -181,7 +181,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.ci,
           description:
             "",
-          link: "/docs/continuous-integration/troubleshooting-ci",
+          link: "/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci",
         },
         {
           title: "CI FAQs",

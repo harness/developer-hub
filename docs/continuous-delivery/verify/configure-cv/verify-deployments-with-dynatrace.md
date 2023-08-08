@@ -15,6 +15,17 @@ Harness CV integrates with Dynatrace to:
 
 This topic covers how to add and configure Dynatrace as a Health Source for the Verify step.
 
+
+:::important
+When creating a Dynatrace query:
+
+- Mark the service as a key request.
+
+- Ensure that the entity selector for metrics is a service or service method.
+:::
+
+
+
 ## Before You Begin
 
 [Add Dynatrace as a verification provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-dynatrace)
@@ -61,6 +72,21 @@ You can use:
 * `ms` for milliseconds
 
 The maximum is `53w`. Timeouts can be set at the Pipeline level also.
+
+**Node filtering**
+
+:::info note
+Currently, this feature is behind the feature flag `CV_UI_DISPLAY_NODE_REGEX_FILTER`. Contact Harness Support to enable the feature.
+:::
+
+This feature allows you to be more specific in node filtering by using Kubernetes PodName as a label. You can make analysis more explicit by telling CV which nodes to filter on. Just specify the filters on the control nodes (nodes that test nodes are compared against) and the test nodes (nodes CV checks).
+
+To filter the nodes:
+
+1. Expand **Optional**.
+
+2. Choose **Control Nodes** and **Test Nodes** that Harness CV should focus on during analysis. You can either type a node’s name or use a simple pattern (Regex) to define the nodes you want to filter.
+   
 
 ## Step 3: Select a Continuous Verification Type
 
@@ -178,3 +204,39 @@ Click **Console View** or simply click **View Details** in **Summary** to take a
 
 If you have more than one Health Source, you can use the **Health Source** dropdown to select each one.
 
+
+## Set a pinned baseline
+
+:::info note
+Currently, this feature is behind the feature flag `SRM_ENABLE_BASELINE_BASED_VERIFICATION`. Contact Harness Support to enable the feature.
+:::
+
+You can set specific verification in a successful pipeline execution as a baseline. This is available with **Load Testing** as the verification type.
+
+
+### Set successful verification as a baseline
+
+To set a verification as baseline for future verifications:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline you want to use as the baseline.
+   
+2. Select the successful pipeline execution with the verification that you want to use as the baseline.
+   
+   The pipeline execution is displayed.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   The selected verification is now set as the baseline for future verifications.
+
+
+### Replace an existing pinned baseline
+
+To use a new baseline from a pipeline and replace the existing pinned baseline, follow these steps:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline from which you want to remove the baseline.
+
+2. Select the successful pipeline execution with the verification that you have previously pinned as the baseline.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   A confirmation alert message appears, asking if you want to replace the existing pinned baseline with the current verification. After you confirm, the existing pinned baseline gets replaced with the current verification.

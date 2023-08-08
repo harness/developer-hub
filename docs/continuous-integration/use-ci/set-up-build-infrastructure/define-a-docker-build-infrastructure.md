@@ -8,14 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Delegate and local Drone Runner. When the pipeline runs, the Drone Runners runs the build actions in the environment where it is installed. The Delegate handles communication between Harness and the Drone Runner.
+You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Drone Runner. When the pipeline runs, the Drone Runner runs the build actions in the environment where it is installed. The delegate handles communication between Harness and the Drone Runner.
 
 Local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
 
-The Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Docker Delegate has the following system requirements:
+## Docker delegate requirements
+
+The Harness Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Harness Docker Delegate has the following system requirements:
 
 * Default 0.5 CPU.
-* Default 1.5GB. Ensure that you provide the minimum memory for the Delegate and enough memory for the host/node system.
+* Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
+* The machine where the delegate runs must have Docker installed.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -25,9 +28,9 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="Linux" label="Linux" default>
 ```
-## Install the Delegate
+## Install the delegate
 
-Use the following modifications along with the **Docker** instructions in [Install the default Delegate on Kubernetes or Docker](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview):
+Use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
 
 * Add `--net=host` to the first line.
 * Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use the tag for your Docker environment's architecture: `linux-amd64` or `linux-arm64`.
@@ -41,16 +44,16 @@ docker run --cpus=1 --memory=2g --net=host \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
   -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
-  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io harness/log-service/ \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
   -e DELEGATE_TAGS="linux-arm64" \
-  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io/ harness/delegate:23.02.78306
 ```
 
-Make sure to create the Delegate at the appropriate scope, such as the project level or account level.
+Make sure to create the delegate at the appropriate scope, such as the project level or account level.
 
 ## Install the Drone Runner
 
-The Drone Runner service performs the build work. The Delegate needs the Runner to run CI builds.
+The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
 
 1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases) corresponding to your build farm's OS and architecture.
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
@@ -83,9 +86,9 @@ sudo chmod +x drone-docker-runner-linux-arm64
   </TabItem>
   <TabItem value="macOS" label="macOS">
 ```
-## Install the Delegate
+## Install the delegate
 
-Use the following modifications along with the **Docker** instructions in [Install the default Delegate on Kubernetes or Docker](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview):
+Use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
 
 * Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use the tag for your Docker environment's architecture: `macos-amd64` or `macos-arm64`.
 * Add `-e RUNNER_URL=http://host.docker.internal:3000`.
@@ -99,17 +102,17 @@ docker run --cpus=1 --memory=2g \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
   -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
-  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io harness/log-service/ \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
   -e DELEGATE_TAGS="macos-amd64" \
   -e RUNNER_URL=http://host.docker.internal:3000 \
-  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.02.78306
 ```
 
-Make sure to create the Delegate at the appropriate scope, such as the project level or account level.
+Make sure to create the delegate at the appropriate scope, such as the project level or account level.
 
 ## Install the Drone Runner
 
-The Drone Runner service performs the build work. The Delegate needs the Runner to run CI builds.
+The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
 
 1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases) corresponding to your build farm's OS and architecture.
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
@@ -166,15 +169,17 @@ sudo chmod +x drone-docker-runner-darwin-arm64
 
 To configure a local runner build infrastructure for Windows, you need two machines:
 
-* A Windows machine where the Drone Runner will run.
-* A Linux machine where the Delegate will run.
+* A Windows machine where the Drone Runner will run. This machine must have Docker for Windows. The Drone Runner runs as a container.
+* A Linux machine where the Harness Delegate will run. This machine must have Docker. The delegate runs as a container.
 
-## Install the Delegate
+There is a one-to-one relationship between Drone Runners and Harness Delegates. If you need to run three local hosts, each must have a runner and a delegate.
 
-On the Linux machine where you want to run the Delegate, use the following modifications along with the **Docker** instructions in [Install the default Delegate on Kubernetes or Docker](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview):
+## Install the delegate
+
+On the Linux machine where you want to run the delegate, use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
 
 * Add `-e DELEGATE_TAGS="windows-amd64"`.
-* Add `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000`.
+* Add `-e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000`.
 
 :::caution
 
@@ -182,7 +187,7 @@ The `RUNNER_URL` must point to the Windows machine where the Drone Runner will r
 
 :::
 
-Here's an example of the Delegate install script for a local runner Windows build infrastructure:
+Here's an example of the delegate install script for a local runner Windows build infrastructure:
 
 ```
 docker run --cpus=1 --memory=2g \
@@ -191,21 +196,23 @@ docker run --cpus=1 --memory=2g \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
   -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
-  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io harness/log-service/ \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
   -e DELEGATE_TAGS="windows-amd64" \
-  `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000` \
-  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
+  -e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000 \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.02.78306
 ```
 
-Make sure to create the Delegate at the appropriate scope, such as the project level or account level.
+Make sure to create the delegate at the appropriate scope, such as the project level or account level.
 
 ## Install the Drone Runner
 
-The Drone Runner service performs the build work. The Delegate needs the Runner to run CI builds.
+The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
 
 :::caution
 
-Run the Drone Runner executable on the Windows machine that you specified in the Delegate's `RUNNER_URL`.
+Run the Drone Runner executable on the Windows machine that you specified in the delegate's `RUNNER_URL`.
+
+Use PowerShell to run these commands.
 
 :::
 
@@ -214,8 +221,10 @@ Run the Drone Runner executable on the Windows machine that you specified in the
 3. To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
-   SET CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
+   $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
    ```
+
+   With Windows, volume mapping must be folder-to-folder.
 
 4. Run the following command to start the runner binary:
 
@@ -226,8 +235,8 @@ Run the Drone Runner executable on the Windows machine that you specified in the
 Here is an example of the two commands to install the Windows amd64 Drone Runner with self-signed certificates:
 
 ```
-SET CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
-./drone-docker-runner-windows-amd64 server
+$env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
+drone-docker-runner-windows-amd64.exe server
 ```
 
 ```mdx-code-block
@@ -290,7 +299,7 @@ In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` spec
 
 :::tip
 
-Although you must install a delegate to use the local runner build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#option-pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#option-stage-delegate-selector).
+Although you must install a delegate to use the local runner build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
 
 Delegate selections take precedence in the following order:
 
@@ -306,7 +315,7 @@ For example, assume you have a pipeline with three stages called `alpha`, `beta`
 
 ## Troubleshooting
 
-The Delegate should connect to your instance after you finish the installation workflow above. If the Delegate does not connect after a few minutes, run the following commands to check the status:
+The delegate should connect to your instance after you finish the installation workflow above. If the delegate does not connect after a few minutes, run the following commands to check the status:
 
 ```
 docker ps

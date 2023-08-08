@@ -5,21 +5,25 @@ description: How to install delegates with custom certificates.
 ---
 
 This topic explains how to install delegates with custom certificates. There are two aspects of custom certificates:
-1. A certificate for the delegate JAVA process, which makes connections to external systems.
-2. A certificate for the OS itself so if another process, for example, a shell script, is spawned then it has access to custom certificates.
+1. A certificate for the delegate Java process, which makes connections to external systems.
+2. A certificate for the OS itself. With this certificate, if another process, such as a shell script, is spawned, it can access custom certificates.
 
 In this topic we will do the following:
 
 - Create a custom truststore.
 - Create a secret.
-- Add a volume mount to the `harness-delegate.yaml` file and provide it to the delegate JAVA process.
+- Add a volume mount to the `harness-delegate.yaml` file and provide it to the delegate Java process.
 - Add a volume mount to the `harness-delegate.yaml` file and configure the delegate container OS to have the certificates.
+
+:::important note
+Harness recommends that you keep your existing Java KeyStore in place during the installation process. Updating the KeyStore may cause issues with your delegate.
+:::
 
 For information on best practices for truststore creation, go to [Java Keystore Best Practices](https://myarch.com/cert-book/keystore_best_practices.html).
 
 ## Create a custom truststore
 
-For instructions on how to create a custom truststore, go to [Truststore Override for Delegates](/docs/platform/delegates/secure-delegates/trust-store-override-for-delegates/).
+For instructions on how to create a custom truststore, go to [Truststore override for delegates](/docs/platform/delegates/secure-delegates/trust-store-override-for-delegates/).
 
 ## Create a secret from a truststore file
 
@@ -55,7 +59,7 @@ kubectl create secret -n harness-delegate-ng generic mysecret --from-file harnes
    
 4. Add the volume mount with read-only permission:
  
-   ```
+   ```yaml
         volumeMounts:
         - mountPath: /cacerts
           name: custom-truststore
@@ -74,7 +78,7 @@ In this section we will cover how to add certificates to the delegate pod so any
 
 1. Mount these certificates to the delegate pod at `/etc/pki/ca-trust/source/anchors/`:
 
-   ```
+   ```yaml
         volumeMounts:
         - name: certs
           mountPath : "/usr/local/share/ca-certificates/cert1.crt"
@@ -89,7 +93,10 @@ In this section we will cover how to add certificates to the delegate pod so any
           value: |-
             update-ca-trust
    ```
-   Note that for this to work the delegate has to be brought as the root user.
+   :::info note
+   The delegate must be the root user.
+   :::
+   
    ```
         securityContext:
           allowPrivilegeEscalation: false
@@ -97,9 +104,9 @@ In this section we will cover how to add certificates to the delegate pod so any
    ```
 ## Example `harness-delegate.yaml` file
 
-The following example `harness-delegate.yaml` file includes the changes required to install an immutable delegate with a custom certificate.
+The following example `harness-delegate.yaml` file includes the changes required to install a delegate with a custom certificate.
 
-```
+```yaml
 apiVersion: v1
 kind: Namespace
 metadata:

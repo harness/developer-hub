@@ -110,3 +110,21 @@ Click **Save**. You can see the success message - **Domain restrictions have bee
 Your resulting allowlist will impose a further filter on logins to Harness via both SSO providers and Harness username/passwords.You can modify your domain selections by clicking the Edit icon.
 
 ![](./static/authentication-overview-50.png)
+
+### Set inactive session timeout
+
+Harness logs a user out of their account after a session timeout if there has been no activity.
+
+To configure your account's session timeout: 
+
+1. In your Harness account, select **Account Settings**.
+
+2. Select **Authentication**.
+
+3. In **Session Timeout (in minutes)**, enter the time in minutes to set the session time out.
+
+   The default session timeout value is 1440 minutes.
+
+   You can set this to a minimum of 30 minutes and a maximum of 4320 minutes.
+
+![](./static/SessionTimeout.png)

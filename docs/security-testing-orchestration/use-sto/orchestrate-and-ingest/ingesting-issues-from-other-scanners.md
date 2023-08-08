@@ -1,6 +1,6 @@
 ---
-title: Ingest Results from Custom or Unsupported Scanners
-description: You can ingest custom Issues from any scanning tool. This topic describes how to ingest data from scan tools that currently have no integration in STO.
+title: Ingest JSON results from custom or unsupported scanners
+description: This topic describes how to ingest data from scan tools that currently have no integration in STO.
 sidebar_position: 40
 helpdocs_topic_id: ymkcm5lypf
 helpdocs_category_id: utstv3qzqt
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can ingest custom Issues from any scanning tool. This topic describes how to ingest data from scan tools that currently have no integration in STO.
+You can ingest custom Issues from any scanning tool. STO supports a generic JSON format for ingesting data from scanners that currently have no integration in STO.
 
 By ingesting your custom Issues, you can benefit from STO's refinement, deduplication, and correlation features. Harness handles your issue data the same way as data from supported scanners.
 

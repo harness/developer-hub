@@ -1,6 +1,5 @@
-
 import { certType, CardItem } from "../CertCard";
-import { MODULES } from "../../../constants"
+import { MODULES } from "../../../constants";
 
 export const certifications: CardItem[] = [
     {
@@ -14,7 +13,7 @@ export const certifications: CardItem[] = [
       // numberOfCerts: 1,
     },
     {
-      title: "Continuous Delivery & GitOps - Administrator (BETA COMING SOON)",
+      title: "Continuous Delivery & GitOps - Administrator",
       module: MODULES.cd,
       type: certType.administrator,
       description:
@@ -44,7 +43,7 @@ export const certifications: CardItem[] = [
       // numberOfCerts: 1,
     },
     {
-      title: "Continuous Integration - Administrator (BETA COMING SOON)",
+      title: "Continuous Integration - Administrator",
       module: MODULES.ci,
       type: certType.administrator,
       description:

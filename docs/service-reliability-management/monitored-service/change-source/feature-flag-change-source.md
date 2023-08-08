@@ -1,11 +1,12 @@
 ---
-title: Connect a feature flag to a monitored service
+title: Feature flag
 description: Learn to connect a feature flag to a monitored service.
 sidebar_position: 40
 ---
 
+# Connect a feature flag to a monitored service
 
-:::note
+:::info note
 Currently, this feature is behind the feature flag `SRM_CUSTOM_CHANGE_SOURCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 

@@ -8,10 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This sample harness-delegate.yaml declares a mounted NFS volume.
+This sample `harness-delegate.yaml` file declares a mounted NFS volume.
 
-
-```
+```yaml
 apiVersion: v1  
 kind: Namespace  
 metadata:  

@@ -281,7 +281,7 @@ Harness integrates with many different types of repositories and providers. For 
 4. Click Test, and then click the **SUBMIT** button.
 
 :::note
-If the test fails, it is possible that the Harness Delegate you installed cannot connect to https://registry.hub.docker.com/v2/. Ensure that the ECS cluster instance where the Delegate is installed can connect to that address.We don't need any other connectors for this tutorial. 
+If the test fails, it is possible that the Harness Delegate you installed cannot connect to `https://registry.hub.docker.com/v2/`. Ensure that the ECS cluster instance where the Delegate is installed can connect to that address.We don't need any other connectors for this tutorial. 
 :::
 
 Next, we'll add the Docker image artifact and Kubernetes manifests.

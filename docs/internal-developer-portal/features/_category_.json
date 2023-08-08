@@ -1,0 +1,11 @@
+{
+  "label": "Features",
+  "collapsible": "true",
+  "collapsed": "false",
+  "position": 20,
+  "link": {
+    "type": "generated-index",
+    "title": "Features of Harness Internal Developer Portal"
+  },
+  "customProps": {}
+}

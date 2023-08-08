@@ -1,5 +1,5 @@
 ---
-title: Offline Mode
+title: Use offline Mode
 description: This topic contains information on how to configure the proxy to run in offline mode
 sidebar_position: 80
 ---

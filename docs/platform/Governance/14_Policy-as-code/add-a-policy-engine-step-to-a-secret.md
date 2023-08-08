@@ -31,6 +31,7 @@ In Harness, go to **Account Settings**.
 Click **Policies**.
 
 ![](./static/add-a-policy-engine-step-to-a-secret-46.png)
+
 Click **Policies**, and then click **New Policy**.
 
 ![](./static/add-a-policy-engine-step-to-a-secret-47.png)

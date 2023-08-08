@@ -108,7 +108,7 @@ The following table specifies where the target to be tested is located.
 
 ### Can I use STO with custom or unsupported scanners? 
 
-Yes. STO supports a generic JSON format for ingesting results from custom or unsupported scanners. See [Ingest Scan Results into an STO Pipeline](docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md). 
+Yes. STO supports a generic JSON format for ingesting results from custom or unsupported scanners. See [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md). 
 
 By ingesting your custom issues, you can benefit from STO's refinement, deduplication, and correlation features. Harness handles your issue data the same way as data from supported scanners.
 

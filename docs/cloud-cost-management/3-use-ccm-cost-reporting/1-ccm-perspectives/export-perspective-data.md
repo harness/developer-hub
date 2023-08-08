@@ -1,7 +1,7 @@
 ---
 title: Export perspective data
 description: Export your perspectives' reports as CSV files
-# sidebar_position: 2
+sidebar_position: 5
 helpdocs_topic_id: t07cnubtp1
 helpdocs_category_id: e7k0qds7tw
 helpdocs_is_private: false
@@ -16,7 +16,7 @@ You can export your Perspectives reports as comma-separated values (CSV) files. 
 * The maximum number of rows allowed in one export is 10,000 rows. If you have more rows, you can export separate CSV files using the **Export rows up to** option.
 * The more rows you export, the slower the export will be.
 
-## Step 1: Create a Perspective Export
+## Create a Perspective Export
 
 1. Open a Perspective.
 
@@ -35,7 +35,7 @@ Use **Exclude rows with cost below** to set a cost ceiling on the cost data expo
 
 The amount must be a number. You cannot use symbols or punctuation.
 
-### Step 2: Export the CSV
+### Export the CSV
 
 Click **Download**. 
 

@@ -1,0 +1,14 @@
+{
+    "label": "Harness AIDA",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "24",
+    "link": {
+        "type": "generated-index",
+        "title": "Harness AIDA"
+    },
+    "customProps": {
+        
+    }
+}

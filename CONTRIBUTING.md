@@ -7,6 +7,7 @@
 ![SRM](static/img/icon_srm.svg)
 ![STO](static/img/icon_sto.svg)
 ![CE](static/img/icon_ce.svg)
+![IDP](static/img/icon_idp.svg)
 
 Thanks for considering to contribute to the Harness Developer Hub! Contributions come in all shapes and sizes and we appreciate them all. Contributions to the Harness Developer Hub come in the form of creating pull requests or submitting issues. 
 

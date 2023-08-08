@@ -10,13 +10,12 @@ helpdocs_is_published: true
 
 This topic explains how to configure the **Build and Push to ACR** step in a Harness CI pipeline. This step is used to build and push to [Azure Container Registry (ACR)](https://azure.microsoft.com/en-us/products/container-registry).
 
-:::info
+## Requirements
 
-The **Build and Push to ACR** step is supported for [Kubernetes cluster build infrastructures](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) only.
-
-For other build infrastructures, use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-hub-step-settings.md) to push to ACR.
-
-:::
+* **Must use a Kubernetes Cluster build infrastructure:** The **Build and Push to ACR** step is supported for [Kubernetes cluster build infrastructures](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) only. For other build infrastructures, use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-hub-step-settings.md) to push to ACR.
+* **Must run as root:** With a Kubernetes cluster build infrastructure, all **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). This tool requires root access to build the Docker image, and it doesn't support non-root users.
+   * If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
+   * If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
 
 ## Add the Build and Push to ACR step
 
@@ -92,6 +91,10 @@ Harness enables remote Docker layer caching where each Docker layer is uploaded 
 
 Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
+Because the **Build and Push to ACR** step requires root access, use the **Run as User** setting if your build runs as non-root (`runAsNonRoot: true`) *and* you can run the **Build and Push to ACR** step as root. To do this, set **Run as User** to `0` on the **Build and Push to ACR** step to use the root user for this individual step only.
+
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+
 ### Set Container Resources
 
 Set maximum resource limits for the resources used by the container at runtime:
@@ -124,7 +127,8 @@ If the build succeeds, you can find your pushed image on ACR.
 
 ## See also
 
-* [Run step settings](../run-ci-scripts/run-step-settings.md)
+* [Useful techniques for Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#useful-techniques) (Build without pushing, build multi-architecture images, use Harness expressions for tags)
+* [Use Run steps](../run-ci-scripts/run-step-settings.md)
 * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 * [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)

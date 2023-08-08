@@ -10,6 +10,12 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+import Closeclient from '../shared/close-sdk-client.md'
+
+
+<Smpno />
 
 This topic describes how to use the Harness Feature Flags Javascript SDK for your JavaScript application.
 
@@ -26,7 +32,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.8.0.**
+The current version of this SDK is **1.14.0.**
 
 ## Requirements
 
@@ -280,14 +286,16 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-When closing your application, call `cf.close()` to close the SDK.
+<Closeclient />
 
+To close the SDK client, call the following function:
 
 ```
 cf.close();
 ```
+
 ## Sample code for a JavaScript application
 
 Here is a sample code for using Harness Feature Flag SDKs with a JavaScript application:

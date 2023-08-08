@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 
-:::note
+:::important
 Currently, this feature is behind the Feature Flags `OPA_PIPELINE_GOVERNANCE`, `CUSTOM_POLICY_STEP`, and `OPA_FF_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
@@ -40,7 +40,7 @@ The first step of using policies with your Feature Flags is creating a policy.
 
 
 :::note
-You can view an overview of your policies and how many times they have been evaluated on the [Overview](docs/feature-flags/harness-policy-engine) page.
+You can view an overview of your policies and how many times they have been evaluated on the [Overview](/docs/feature-flags/harness-policy-engine) page.
 
 :::
 

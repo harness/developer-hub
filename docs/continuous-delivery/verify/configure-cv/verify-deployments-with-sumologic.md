@@ -1,7 +1,7 @@
 ---
 title: Sumo Logic
 description: Verify deployments with Sumo Logic. 
-sidebar_position: 12
+sidebar_position: 13
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -21,6 +21,12 @@ Harness Continuous Verification (CV) integrates with Sumo Logic to:
 * Apply machine learning to every deployment to identify and flag anomalies with the new version.
 
 This topic describes how to set up a Sumo Logic health source when adding a CV step to your Continuous Deployment (CD).
+
+
+:::important
+If you are using an aggregation operator in your Sumo Logic metrics query, then you must include the service instance identifier dimension.
+
+:::
 
 ## Prerequisite
 
@@ -72,6 +78,20 @@ You can add a step at various points in the pipeline such as the beginning, end,
    - **ms** for milliseconds. For example, to define 1000 milliseconds, enter 1000ms.
 
 3. The maximum timeout value you can set is **53w**. You can also set timeouts at the pipeline level.
+
+**Node filtering**
+
+:::info note
+Currently, this feature is behind the feature flag `CV_UI_DISPLAY_NODE_REGEX_FILTER`. Contact Harness Support to enable the feature.
+:::
+
+This feature allows you to be more specific in node filtering by using Kubernetes PodName as a label. You can make analysis more explicit by telling CV which nodes to filter on. Just specify the filters on the control nodes (nodes that test nodes are compared against) and the test nodes (nodes CV checks).
+
+To filter the nodes:
+
+1. Expand **Optional**.
+
+2. Choose **Control Nodes** and **Test Nodes** that Harness CV should focus on during analysis. You can either type a node’s name or use a simple pattern (Regex) to define the nodes you want to filter.
  
 
 ## Select a continuous verification type, sensitivity, and duration
@@ -260,7 +280,7 @@ To set fail-fast thresholds for CV, follow these steps:
 #### Define a query
 
 1. In the **Query** field, enter the log query and select **Run Query** to execute it. This displays a sample record in the **Records** field, allowing you to confirm the accuracy of the query you've constructed. For the verification process to be effective, the query should be designed to accurately extract error logs specific to the service.```
-2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed which include a timestamp, the host where the log was recorded, and the log message itself. These three properties are critical for accurate verification, so it's important to check their accuracy. If the host information doesn't match the actual instance of your service, you should review the mapping provided for the **Service Instance Identifier**.```
+2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed which include a timestamp, the host where the log was recorded, and the log message itself. These three properties are critical for accurate verification, so it's important to check their accuracy. If the host information doesn't match the actual instance of your service, you should review the mapping provided for the **Service Instance Identifier**.
 
 <details>
    <summary><b>Sample log query</b></summary>
@@ -328,3 +348,38 @@ The following screenshots show successful and failed verifications in a deployme
 ![Failed verification step](./static/cv-sumologic-pipeline-fail.png)
 
 
+## Set a pinned baseline
+
+:::info note
+Currently, this feature is behind the feature flag `SRM_ENABLE_BASELINE_BASED_VERIFICATION`. Contact Harness Support to enable the feature.
+:::
+
+You can set specific verification in a successful pipeline execution as a baseline. This is available with **Load Testing** as the verification type.
+
+
+### Set successful verification as a baseline
+
+To set a verification as baseline for future verifications:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline you want to use as the baseline.
+   
+2. Select the successful pipeline execution with the verification that you want to use as the baseline.
+   
+   The pipeline execution is displayed.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   The selected verification is now set as the baseline for future verifications.
+
+
+### Replace an existing pinned baseline
+
+To use a new baseline from a pipeline and replace the existing pinned baseline, follow these steps:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline from which you want to remove the baseline.
+
+2. Select the successful pipeline execution with the verification that you have previously pinned as the baseline.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   A confirmation alert message appears, asking if you want to replace the existing pinned baseline with the current verification. After you confirm, the existing pinned baseline gets replaced with the current verification.

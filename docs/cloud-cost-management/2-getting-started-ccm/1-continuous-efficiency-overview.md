@@ -1,7 +1,7 @@
 ---
 title: Introduction to Cloud Cost Management
 description: Provides an overview of Harness Cloud Cost Management.
-# sidebar_position: 2
+# sidebar_position: 1
 helpdocs_topic_id: rr85306lq8
 helpdocs_category_id: j4adbv9wn7
 helpdocs_is_private: false
@@ -28,8 +28,8 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 CCM provides insight and visibility into your cloud infrastructure costs. CCM provides the following benefits:
 
-* **Cost Visibility**: Insights into the costs of your Harness Applications and clusters. Provides granular cost details of your cluster namespaces, workloads, label, nodes, pods, and labels.
-* **Cost Optimization**: Details of total cost vs. utilized, idle, and unallocated cost. Forecasts future spend based on historical data.
+* **Cost Visibility**: Insights into the costs of your Harness Applications and clusters. Provides granular cost details of your cluster namespaces, workloads, nodes, pods, and labels. Details of total cost versus utilized, idle, and unallocated cost. Forecasts future spend based on historical data.
+* **Cost Optimization**: Optimize and minimize the costs associated with utilizing cloud resources. The AutoStoppiing rules, Recommendations, and the Asset Governance features help you identify cloud resources and services that are idle or underutilized and take required action to ensure optimum utilization.
 * **Cost Governance**: Enables you to set a budget and configure notifications based on thresholds.
 
 ![](./static/continuous-efficiency-overview-04.png)
@@ -68,7 +68,7 @@ The following section lists where you can use CCM:
 	+ ECS Clusters
 * Harness SaaS
 
-Harness Connected On-Prem and Harness Disconnected On-Prem are not supported.### Supported Kubernetes Management Platform
+### Supported Kubernetes Management Platform
 
 The following section lists the support for Kubernetes management platform for CCM:
 

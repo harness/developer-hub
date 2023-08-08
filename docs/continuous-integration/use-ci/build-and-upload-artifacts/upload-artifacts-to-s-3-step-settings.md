@@ -8,69 +8,94 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides details about the settings for the **Upload Artifacts to S3** step, which uploads artifacts to AWS or other S3 providers, such as [MinIO](https://min.io/product/s3-compatibility).
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-:::info
+You can use the **Upload Artifacts to S3** step in your CI pipelines to upload artifacts to AWS or other S3 providers, such as [MinIO](https://min.io/product/s3-compatibility). You can also [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md).
 
-Depending on the stage's build infrastructure, some settings may be unavailable.
+:::tip S3 Upload and Publish plugin
+
+As an alternative to the **Upload Artifacts to S3** step, you can use the [S3 Upload and Publish Drone plugin](https://github.com/harness-community/drone-s3-upload-publish) to upload an artifact to S3 and publish it to the **Artifacts** tab.
+
+For instructions, go to [View artifacts on the Artifacts tab](#view-artifacts-on-the-artifacts-tab).
 
 :::
 
-## Name
+## Prepare a pipeline
+
+You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
+
+If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+
+## Prepare artifacts to upload
+
+Add steps to your pipeline that generate artifacts to upload, such as [Run steps](../run-ci-scripts/run-step-settings.md). The steps you use depend on what artifacts you ultimately want to upload.
+
+## Upload artifacts to S3
+
+Add an **Upload Artifacts to S3** step. This step's settings are described below.
+
+:::info
+
+Depending on the stage's build infrastructure, some settings may be unavailable or located under **Optional Configuration** in the visual pipeline editor. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+
+:::
+
+### Name
 
 Enter a name summarizing the step's purpose. Harness generates an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
 
-## AWS Connector
+### AWS Connector
 
-The Harness AWS connector to use when connecting to AWS S3.
+Select the Harness [AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector) to use when connecting to AWS S3.
 
-The AWS IAM roles and policies associated with the account connected to the Harness AWS connector must be able to push to S3. For more information about roles and permissions for AWS connectors, go to:
+This step might not support all [AWS connector authentication methods](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings).
 
-* [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector)
-* [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
+Stage variables are required [for non-default ACLs](#stage-variable-required-for-non-default-acls) and to [assume IAM roles or use ARNs](#stage-variable-required-to-assume-iam-role-and-arns).
 
-<details>
-<summary>Stage variable required for non-default ACLs</summary>
+The AWS IAM roles and policies associated with the AWS account for your Harness AWS connector must allow pushing to S3. For more information, go to the [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
-```mdx-code-block
+#### Stage variable required for non-default ACLs
+
 S3 buckets use [private ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl) by default. Your pipeline must have a `PLUGIN_ACL` stage variable if you want to use a different ACL.
-
-1. In the Pipeline Studio, select the relevant stage, and then select the **Overview** tab.
-2. In the **Advanced** section, add a stage variable.
-3. Input `PLUGIN_ACL` as the **Variable Name**, set the **Type** to **String**, and then select **Save**.
-4. Input the relevant ACL in the **Value** field.
-```
-</details>
-
-<details>
-<summary>Stage variable required for ARNs</summary>
-
-```mdx-code-block
-If your AWS connector's authentication uses a cross-account role (ARN), pipeline stages with **Upload Artifacts to S3** steps must have a `PLUGIN_USER_ROLE_ARN` stage variable.
 
 1. In the Pipeline Studio, select the stage with the **Upload Artifacts to S3** step, and then select the **Overview** tab.
 2. In the **Advanced** section, add a stage variable.
-3. Input `PLUGIN_USER_ROLE_ARN` as the **Variable Name**, set the **Type** to **String**, and then select **Save**.
-4. In the **Value** field, input the full ARN value that corresponds with the AWS connector's ARN.
-```
+3. Enter `PLUGIN_ACL` as the **Variable Name**, set the **Type** to **String**, and then select **Save**.
+4. For the **Value**, enter the relevant ACL.
 
-</details>
+#### Stage variable required to assume IAM role or use ARNs
 
-## Region
+Stages with **Upload Artifacts to S3** steps must have a `PLUGIN_USER_ROLE_ARN` stage variable if:
+
+* Your [AWS connector's authentication uses a cross-account role (ARN)](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#enable-cross-account-access-sts-role). You can use `PLUGIN_USER_ROLE_ARN` to specify the full ARN value corresponding with the AWS connector's ARN.
+* Your AWS connector uses [**Assume IAM Role on Delegate** authentication](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings). If your connector doesn't use **AWS Access Key** authentication, then the **Upload Artifact to S3** step uses the IAM role of the build pod or build VM (depending on your build infrastructure). You can use `PLUGIN_USER_ROLE_ARN` to select a different role than the default role assumed by the build pod/machine. This is similar to [`sts assume-role`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/assume-role.html).
+
+To add the `PLUGIN_USER_ROLE_ARN` stage variable:
+
+1. In the Pipeline Studio, select the stage with the **Upload Artifacts to S3** step, and then select the **Overview** tab.
+2. In the **Advanced** section, add a stage variable.
+3. Enter `PLUGIN_USER_ROLE_ARN` as the **Variable Name**, set the **Type** to **String**, and then select **Save**.
+4. For the **Value**, enter the full ARN value.
+
+   * For cross-account roles, this ARN value must correspond with the AWS connector's ARN.
+   * For connectors that use the delegate's IAM role, the ARN value must identify the role you want the build pod/machine to use.
+
+### Region
 
 Define the AWS region to use when pushing the image.
 
-## Bucket
+### Bucket
 
 The name of the S3 bucket name where you want to upload the artifact.
 
-## Source Path
+### Source Path
 
-Path to the artifact file/folder that you want to upload. Harness creates the compressed file automatically.
+Path to the artifact file/folder that you want to upload.
 
-## Optional Configuration
-
-Use the following settings to add additional configuration to the step. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 
 ### Endpoint URL
 
@@ -80,7 +105,7 @@ Endpoint URL for S3-compatible providers. This setting is not needed for AWS.
 
 The path, relative to the S3 **Bucket**, where you want to store the artifact. Do not include the bucket name; you specified this in **Bucket**.
 
-If no path is specified, the cache is saved to `[bucket]/[key]`.
+If no path is specified, the artifact is saved to `[bucket]/[key]`.
 
 ### Run as User
 
@@ -99,3 +124,134 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 * [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+
+## Confirm the upload
+
+After you add the steps and save the pipeline, select **Run** to run the pipeline.
+
+On the [build details page](../viewing-builds.md), you can see the logs for each step as they run.
+
+After the **Upload Artifacts to S3** step runs, you can see the uploaded artifacts on S3.
+
+## View artifacts on the Artifacts tab
+
+As an alternative to manually finding artifacts on S3, you can use [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) to view artifacts on the **Artifacts** tab on the [Build details page](../viewing-builds.md).
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="artifactmetadata" label="Artifact Metadata Publisher plugin" default>
+```
+
+The [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) pulls content from cloud storage and publishes it to the **Artifacts** tab.
+
+Add the [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to S3** step.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+Configure the **Plugin** step settings as follows:
+
+* **Name:** Enter a name.
+* **Container Registry:** Select a Docker connector.
+* **Image:** Enter `plugins/artifact-metadata-publisher`.
+* **Settings:** Add the following two settings as key-value pairs.
+  * `file_urls`: The URL to the target artifact that was uploaded in the **Upload Artifacts to S3** step.
+  * `artifact_file`: `artifact.txt`
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
+
+```yaml
+               - step:
+                  type: Plugin
+                  name: publish artifact metadata
+                  identifier: publish_artifact_metadata
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/artifact-metadata-publisher
+                    settings:
+                      file_urls: ## Provide the URL to the target artifact that was uploaded in the Upload Artifacts to S3 step.
+                      artifact_file: artifact.txt
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="s3publisher" label="S3 Upload and Publish plugin">
+```
+
+The [S3 Upload and Publish Drone plugin](https://github.com/harness-community/drone-s3-upload-publish) uploads a specified file or directory to AWS S3 and publishes it to the **Artifacts** tab.
+
+If you use this plugin, you **do not** need an **Upload Artifacts to S3** step in your pipeline.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin.
+
+Configure the **Plugin** step settings as follows:
+
+   * **Name:** Enter a name.
+   * **Container Registry:** Select a Docker connector.
+   * **Image:** Enter `harnesscommunity/drone-s3-upload-publish`.
+   * **Settings:** Add the following seven settings as key-value pairs.
+      * `aws_access_key_id`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`.
+      * `aws_secret_access_key`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`.
+      * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`.
+      * `aws_bucket`: The target S3 bucket.
+      * `artifact_file`: `url.txt`
+      * `source`: The path to store and retrieve the artifact in the S3 bucket.
+   * **Image Pull Policy:** Select **If Not Present**.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin, for example:
+
+   ```yaml
+                 - step:
+                     type: Plugin
+                     name: s3-upload-publish
+                     identifier: custom_plugin
+                     spec:
+                       connectorRef: account.harnessImage
+                       image: harnesscommunity/drone-s3-upload-publish
+                       settings:
+                         aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference to a Harness secret or pipeline variable containing your AWS access ID.
+                         aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to a Harness secret or pipeline variable containing your AWS access key.
+                         aws_default_region: ap-southeast-2 ## Set to your default AWS region.
+                         aws_bucket: bucket-name ## The target S3 bucket.
+                         artifact_file: url.txt
+                         source: OBJECT_PATH ## Path to store and retrieve the artifact from S3.
+                       imagePullPolicy: IfNotPresent
+   ```
+
+:::tip
+
+For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/references/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key.
+
+:::
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```

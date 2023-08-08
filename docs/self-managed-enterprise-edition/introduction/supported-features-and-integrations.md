@@ -1,14 +1,14 @@
 ---
 title: Supported features and integrations
-description: Self-Managed Enterprise Edition supported features and integrations. 
-sidebar_position: 3
+description: Self-Managed Enterprise Edition supported features and integrations.
+sidebar_position: 4
 ---
 
 This topic lists the supported features and integrations you can use to install and update Harness Self-Managed Enterprise Edition. For supported platforms, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies#harness-self-managed-enterprise-edition).
 
 ## Deployment infrastructure
 
-### Infrastructure 
+### Infrastructure
 * Required module-specific infrastructure:
 
    | **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
@@ -18,6 +18,8 @@ This topic lists the supported features and integrations you can use to install 
    | Security Testing Orchestration | 4 | 3| 7 | 0 |
    | Feature Flags | 3 | 3 | 6 | 0 |
    | Service Reliability Management | 6 | 8 | 18 | 0 |
+   | Chaos Engineering | 15 | 12 | 24 | 50 |
+
 
 ### Ingress
 * Istio supported version: 1-15-3
@@ -49,4 +51,5 @@ The following permissions are required:
 * [Service Reliability Management](https://developer.harness.io/docs/service-reliability-management/)
 * [Feature Flags](https://developer.harness.io/docs/feature-flags/)
 * [Cloud Cost Management (Beta)](https://developer.harness.io/docs/cloud-cost-management/)
-* [Chaos Engineering (Beta)](https://developer.harness.io/docs/chaos-engineering/)
+* [Chaos Engineering](https://developer.harness.io/docs/chaos-engineering/)
+* [Continuous Error Tracking (Beta)](https://developer.harness.io/docs/continuous-error-tracking/)

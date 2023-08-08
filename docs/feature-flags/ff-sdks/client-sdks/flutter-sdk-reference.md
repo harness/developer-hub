@@ -10,6 +10,13 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+import Closeclient from '../shared/close-sdk-client.md'
+
+
+<Smpno />
+
 This topic describes how to use the Harness Feature Flags SDK for your Flutter application. 
 
 For getting started quickly, you can use our [sample code from the SDK README](https://github.com/harness/ff-flutter-client-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Flutter SDK GitHub Repository.](https://github.com/harness/ff-flutter-client-sdk)
@@ -25,13 +32,22 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.0.10.**
+The current version of this SDK is **2.0.0.**
 
-## Requirements
+## Flutter and Dart Requirements
 
-To use this SDK, make sure you:
+To use version 2 and greater of this SDK, make sure you:
 
 * Install the [Flutter SDK, version 2.10.4 or higher](https://docs.flutter.dev/get-started/install).
+* Use Dart SDK 2.12 and later.
+
+To use version 1 and earlier versions of this SDK, make sure you:
+
+* Install the [Flutter SDK, version 2.10.4](https://docs.flutter.dev/get-started/install).
+* Use Dart SDK 2.7 to 2.10
+
+## General requirements
+
 * (For iOS apps) Install [Xcode](https://docs.flutter.dev/get-started/install/macos#install-xcode).
 * (For Android apps) Install [Android Studio](https://developer.android.com/studio?gclid=CjwKCAjwp7eUBhBeEiwAZbHwkRqdhQkk6wroJeWGu0uGWjW9Ue3hFXc4SuB6lwYU4LOZiZ-MQ4p57BoCvF0QAvD_BwE&gclsrc=aw.ds), or install the Android SDK for Command-Line Interface (CLI) only.
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-flutter-client-sdk)
@@ -268,11 +284,11 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-To avoid potential memory leaks, when you no longer need the SDK, you should close it. For example, when the app is closed, also close the SDK.
+<Closeclient />
 
-To close the SDK, call this method:
+To close the SDK client, call this method:
 
 
 ```

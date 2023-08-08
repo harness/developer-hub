@@ -1,0 +1,140 @@
+---
+title: Scanner Setup Template 1c (plain)
+description: Image scans with Aqua Trivy
+sidebar_position: 1
+helpdocs_topic_id: 079248uzcu
+helpdocs_category_id: m01pu2ubai
+helpdocs_is_private: false
+helpdocs_is_published: true
+---
+
+You can scan your container images using [$SCANNER_NAME](https://github.com/aquasecurity/trivy), a comprehensive and versatile open-source scanner. 
+
+:::note
+STO supports container scans only with $SCANNER_NAME.
+:::
+
+<!-- START step-palette-config ----------------------------------------------------------------------------- -->
+
+## $SCANNER_NAME step configuration
+
+The recommended workflow is to add an $SCANNER_NAME step to a Security Tests or CI Build stage and then configure it as described below. You can also configure $SCANNER_NAMEscans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+
+You can also set up an Aqua Trivy scan in a [Security step](#security-step-configuration-deprecated) but this workflow is deprecated. 
+
+```mdx-code-block
+import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
+```
+
+<StoScannerStepNotes />
+
+<details>
+    <summary>Scanner Template</summary>
+
+![](static/step-palette-00.png) 
+
+</details>
+
+
+### Scan settings
+
+
+#### Scan Mode
+
+
+#### Scan Configuration
+
+
+### Target Settings
+
+
+#### Type
+
+
+#### Name 
+
+
+#### Variant
+
+
+
+### Ingestion File
+
+```mdx-code-block
+import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+```
+
+<StoSettingIngestionFile  />
+
+
+### Log Level, CLI flags, and Fail on Severity
+
+<a name="log-level"></a>
+
+#### Log Level
+
+```mdx-code-block
+import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+```
+
+<StoSettingLogLevel />
+
+<a name="cli-flags"></a>
+
+#### Additional CLI flags
+
+```mdx-code-block
+import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
+```
+
+<StoSettingCliFlags />
+
+<a name="fail-on-severity"></a>
+
+
+#### Fail on Severity
+
+```mdx-code-block
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+```
+<StoSettingFailOnSeverity />
+
+
+### Additional Configuration
+
+In the **Additional Configuration** settings, you can use the following options:
+
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+
+
+### Advanced settings
+
+In the **Advanced** settings, you can use the following options:
+
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+
+<!-- END step-palette-config ----------------------------------------------------------------------------- -->
+
+
+## Security step configuration (_deprecated_)
+ 
+ <details><summary>Set up a $SCANNER_NAME scan in a Security step</summary>
+ 
+ You can set up a Security step with $SCANNER_NAME to detect vulnerabilities and misconfigurations in your container images.
+
+
+</details>
+
+## YAML configuration
+
+```mdx-code-block
+import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
+```
+
+<StoSettingYAMLexample />

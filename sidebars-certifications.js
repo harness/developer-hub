@@ -4,6 +4,18 @@
 
 const sidebars = {
   certifications: [
+    // Tutorial Link from Certs
+    {
+      type: "link",
+      label: "Tutorials",
+      href: "/tutorials",
+    },
+    // Docs Link from Certs
+    {
+      type: "link",
+      label: "Documentation",
+      href: "/docs",
+    },
     // Certifications Parent
     {
       type: "category",
@@ -27,15 +39,38 @@ const sidebars = {
           label: "Continuous Integration",
           id: "continuous-integration",
         },
+        //CCM
+        {
+          type: "doc",
+          label: "Cloud Cost Management",
+          id: "cloud-cost-management",
+        },
+        //ff
+        {
+          type: "doc",
+          label: "Feature Flags",
+          id: "feature-flags",
+        },
         // Instructions
-         {
+        {
           type: "doc",
           label: "Instructions",
           id: "instructions",
         },
       ],
     },
-    //Additional Items in this parent can go here.
+    // KB Link from Certs
+    {
+      type: "link",
+      label: "Knowledge Base",
+      href: "/kb",
+    },
+    // Community Link from Certs
+    {
+      type: "link",
+      label: "Community",
+      href: "/community",
+    },
   ],
 };
 

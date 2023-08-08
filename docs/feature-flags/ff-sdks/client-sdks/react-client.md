@@ -9,6 +9,13 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+import Closeclient from '../shared/close-sdk-client.md'
+
+
+<Smpno />
+
 
 This topic describes how to use the Harness Feature Flags SDK for your React Client application. 
 
@@ -23,7 +30,7 @@ For getting started quickly, you can use our [sample code from the SDK README](h
 
 ## Version
 
-The current version of this SDK is **1.1.0.**
+The current version of this SDK is **1.4.0.**
 
 ## Prerequisites
 
@@ -230,6 +237,41 @@ const myFlagValues = useFeatureFlags({
 When you receive a response showing the current status of your feature flag, go to the Harness Platform and toggle the flag on and off. Then, check your app to verify if the flag variation displayed is updated with the variation you toggled.
 
 <Sixty />
+
+## Close the SDK client
+
+<Closeclient />
+
+
+
+## Mock the SDK when testing with Jest
+
+When testing your React application with Jest, you may want to mock the SDK to avoid making network requests. You can do this by using the `TestWrapper` component included in the SDK. This component accepts a listing of flags and their values, and mocks the SDK to return those values. 
+
+:::info note
+To use the `TestWrapper` component, you must import it from the `dist/cjs/test-utils` directory (not from the main SDK package), as shown in the example below.
+:::
+
+### Example
+
+In the example below, we use Testing Library to render the component `<MyComponent />` that internally uses the `useFeatureFlag` hook.
+
+```
+import { render, screen } from '@testing-library/react'
+import { TestWrapper } from '@harnessio/ff-react-client-sdk/dist/cjs/test-utils'
+
+// ...
+
+test('it should render the flag value', () => {
+  render(
+    <TestWrapper flags={{ flag1: 'value1', flag2: 'value2' }}>
+      <MyComponent />
+    </TestWrapper>
+  )
+
+  expect(screen.getByText('value1')).toBeInTheDocument()
+})
+```
 
 ## Additional options
 

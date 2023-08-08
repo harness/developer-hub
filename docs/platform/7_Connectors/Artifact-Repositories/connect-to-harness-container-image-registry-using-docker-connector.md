@@ -30,7 +30,7 @@ If you choose to override the `harnessImageConnector`, you may also avoid trigge
 
 ### Before you begin
 
-* [CI Enterprise Concept](../../../continuous-integration/ci-quickstarts/ci-concepts.md)
+* [CI pipeline basics](../../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md)
 * [Harness Delegate Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
 * [Docker Connector Settings Reference](../../7_Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md)
 
@@ -125,6 +125,4 @@ If a connector with`harnessImage` identifier already exists on your **Account**,
 ### See also
 
 * [Permission Reference](../../../platform/4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
-* [Harness CI Image List](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md)
-* [CI Build Image Updates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-build-image-updates.md)
-
+* [Harness CI Images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md)

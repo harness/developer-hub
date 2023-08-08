@@ -4,6 +4,7 @@ title: Linux memory stress
 ---
 
 import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
 
 Linux memory stress causes memory consumption of the target Linux machines for a specific duration.
@@ -16,6 +17,11 @@ Linux memory stress causes memory consumption of the target Linux machines for a
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to excessive consumption of memory.
 
 <Ossupport />
+
+<FaultPermissions />
+
+## External packages
+This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
 
 ## Fault tunables
 <h3>Optional tunables</h3>

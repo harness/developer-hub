@@ -2,7 +2,7 @@
 title: Getting started with Harness Self-Managed Enterprise Edition
 sidebar_label: Getting started
 description: This document provides the basics on how to create a Harness account and first project. These are the first tasks that come after installing Harness Self-Managed Enterprise Edition. For links to information…
-sidebar_position: 1
+sidebar_position: 2
 helpdocs_topic_id: 09gjhl0tcw
 helpdocs_category_id: tvlmjozubh
 helpdocs_is_private: false
@@ -56,4 +56,4 @@ To get started with creating pipelines and Helm-based installs in Harness Self-M
 * For Harness CI, go to [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
 * For Harness CD, go to [CD Pipeline Basics](../../continuous-delivery/get-started/cd-pipeline-basics.md).
 * For Harness STO, go to [Security Testing Orchestration Basics (Public Preview)](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
-
+* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-harness-chaos-engineering-ce).

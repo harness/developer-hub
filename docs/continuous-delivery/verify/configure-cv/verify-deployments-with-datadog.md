@@ -17,7 +17,7 @@ This topic covers how to add and configure Datadog as a Health Source for the Ve
 
 ## Before You Begin
 
-[Add Datadog as a verification provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-datadog)
+[Add Datadog as a verification provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-datadog)
 
 ## Review: CV Setup Options
 
@@ -53,7 +53,22 @@ You can use:
 * `s` for seconds
 * `ms` for milliseconds
 
-The maximum is `53w`.Timeouts can be set at the Pipeline level also.
+The maximum is `53w`. Timeouts can be set at the Pipeline level also.
+
+**Node filtering**
+
+:::info note
+Currently, this feature is behind the feature flag SRM_SUMO. Contact Harness Support to enable the feature.
+:::
+
+This feature allows you to be more specific in node filtering by using Kubernetes PodName as a label. You can make analysis more explicit by telling CV which nodes to filter on. Just specify the filters on the control nodes (nodes that test nodes are compared against) and the test nodes (nodes CV checks).
+
+To filter the nodes:
+
+1. Expand **Optional**.
+
+2. Choose **Control Nodes** and **Test Nodes** that Harness CV should focus on during analysis. You can either type a node’s name or use a simple pattern (Regex) to define the nodes you want to filter.
+
 
 ## Step 3: Select a Continuous Verification Type
 
@@ -119,13 +134,47 @@ Select a query from the options displayed on the left side of setting panel. The
 
 Click **Submit**. The Health Source is displayed in the Verify step.
 
+### Configure Datadog formulas as Harness queries
+
+:::info note 
+
+Currently,this feature is behind the feature flag SRM_DATADOG_METRICS_FORMULA_SUPPORT. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+
+In manual query mode, the Datadog metrics health source provides support for formulas.
+These formulas follow a specific format: 
+
+```Query a ; Query b ; Formula using a, b```
+
+* Query a: "Query-with-a"
+* Query b: "Query-with-a"
+* The formula is "(a/b) * 100 - 5"
+
+Let's consider an example to illustrate this:
+
+
+```
+kubernetes.cpu.usage{cluster-name:chi-play};kubernetes.memory.total{cluster-name:chi-play};(a/b) * 100 - 5
+```
+
+
+In the example above, 'a' and 'b' represent the respective queries:
+
+* a = kubernetes.memory.usage{cluster-name:chi-play}
+* b = kubernetes.memory.total{cluster-name:chi-play}
+
+You can use multiple queries represented by alphabetical variables (example: a, b, c, and so on) in the final formula, but only one formula is allowed per query.
+
+
 ## Option: Cloud Logs
 
 Select Cloud Logs and click **Next.** The **Customize Health Source** settings appear.
 
 You can customize the metrics to map the Harness Service to the monitored environment in **Query Specifications and Mapping** settings.
 
-Click **Map Queries to Harness Services** drop down.
+Click **Map Queries to Harness Services** dropdown.
 
 ![](./static/verify-deployments-with-datadog-56.png)
 
@@ -147,7 +196,7 @@ Select how long you want Harness to analyze and monitor the logs/APM data points
 
 The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md)
+In **Artifact Tag**, use a [Harness expression](/docs/platform/variables-and-expressions/harness-variables/)
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -155,9 +204,9 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../platform/../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Step Failure Strategy Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Select Delegates with Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
 
 
 ## Step 9: Deploy and Review Results
@@ -190,3 +239,39 @@ Click **Console View** or simply click **View Details** in **Summary** to take a
 
 Click **Filter by Cluster Type** to drill down the metrics based on known events, unknown events, or unexpected frequency.
 
+
+## Set a pinned baseline
+
+:::info note
+Currently, this feature is behind the feature flag `SRM_ENABLE_BASELINE_BASED_VERIFICATION`. Contact Harness Support to enable the feature.
+:::
+
+You can set specific verification in a successful pipeline execution as a baseline. This is available with **Load Testing** as the verification type.
+
+
+### Set successful verification as a baseline
+
+To set a verification as baseline for future verifications:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline you want to use as the baseline.
+   
+2. Select the successful pipeline execution with the verification that you want to use as the baseline.
+   
+   The pipeline execution is displayed.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   The selected verification is now set as the baseline for future verifications.
+
+
+### Replace an existing pinned baseline
+
+To use a new baseline from a pipeline and replace the existing pinned baseline, follow these steps:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline from which you want to remove the baseline.
+
+2. Select the successful pipeline execution with the verification that you have previously pinned as the baseline.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   A confirmation alert message appears, asking if you want to replace the existing pinned baseline with the current verification. After you confirm, the existing pinned baseline gets replaced with the current verification.

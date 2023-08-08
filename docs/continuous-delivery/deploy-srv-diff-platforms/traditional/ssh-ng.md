@@ -1,5 +1,5 @@
 ---
-title: Secure Shell (SSH) deployments
+title: VM deployments using SSH
 description: Deploy to any platform using SSH.
 sidebar_position: 8
 helpdocs_topic_id: mpx2y48ovx
@@ -7,22 +7,19 @@ helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+# VM deployments using SSH
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
-
-You can use a Secure Shell (SSH) deployment type to deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
+You can use a Secure Shell (SSH) deployment type to deploy your artifacts to VM or bare-metal hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
 
 :::note
 
-Many traditional deployments use runtime environments such as Tomcat or JBoss. Your target hosts should have these installed before deployment. You can use the Harness [Command](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step) step to install them in the same pipeline as your SSH deployment.
+Many traditional deployments use runtime environments such as Tomcat or JBoss. Your target hosts should have these installed before deployment. You can use the Harness [Command](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/download-and-copy-artifacts-using-the-command-step) step to install them in the same pipeline as your SSH deployment.
 
 :::
 
-<details>
-<summary>Deployment summary</summary>
+## Deployment summary
+
+An SSH deployment involves configuring the following:
 
 1. Create a Harness Secure Shell service.
 2. Set up a Harness connector to access your repository.
@@ -32,34 +29,26 @@ Many traditional deployments use runtime environments such as Tomcat or JBoss. Y
 4. Select the deployment strategy.
 5. Run the pipeline and review.
 
-</details>
+## SSH stages
 
-## Create an SSH pipeline
-
-Create a new pipeline and add a stage for **Secure Shell** deployments.
+To start a SSH deployment, create a new pipeline and add a stage for **Secure Shell** deployments.
 
 ![](static/ssh-ng-169.png)
 
-Next, you can create the service, environment, and execution steps for the pipeline.
+Next, you create the service, environment, and execution steps for the stage.
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="Service" label="Service" default>
-```
+## SSH Services
 
-In **Service**, you add the artifact metadata and the related config files to execute on the target hosts.
+SSH Services define the artifact you want to deploy and any config files you want to use.
 
-<details>
-<summary>Create a Harness Secure Shell service</summary>
+In the stage **Service** tab, you add the artifact metadata and the related config files to execute on the target hosts.
+
+### Create a Harness Secure Shell service
 
 1. For **Select Service**, select **New Service,** enter a name for the service.
 2. For **Service Definition**, in **Deployment Type**, select **Secure Shell**.
 
-</details>
-
-
-<details>
-<summary>Add the artifact connector</summary>
+### Add the artifact connector
 
 For Secure Shell, you can access artifacts from the following sources:
 - Jenkins
@@ -83,7 +72,7 @@ Harness includes connectors for all the major artifact repositories. In this exa
 
    <docimage path={require('./static/911d27b9753c2eee8709a32910a80cf2ce42605db121b3067f2ddc4b2cd0be0e.png')} width="60%" height="60%" title="Select to view full size image" />
 
-   1. For this example, select **Artifactory** and select **Continue**. You can use another artifact repo if you like.
+   1. As an example, select **Artifactory** and select **Continue**. You can use another artifact repo if you like.
 3. For the Artifactory Connector, select **New Artifactory Connector**.
 4. In **Name**, enter a name for the connector and select **Continue**.
 5. In **Details**, enter the the following URL path for **Artifactory Repository URL**: `https://harness.jfrog.io/artifactory`. In this example, we will use the artifacts stored in that repository.
@@ -99,23 +88,20 @@ Harness includes connectors for all the major artifact repositories. In this exa
 
 ![](static/ssh-ng-171.png)
 
-</details>
 
-
-<details>
-<summary>Set up artifact location and details</summary>
+### Set up artifact location and details
 
 For this example, we'll use a publicly available **ToDo List** app artifact, **todolist.war**, available in a public Harness Artifactory repo.
 
 In **Artifact Details**, enter the following:
 
-2. In **Artifact Source Name**, enter **Todolist**.
-3. In **Repository Format**, keep the default value **Generic**.
-4. For **Repository**, enter: **todolist-tutorial**. Note that if you select **Repository**, Harness loads any available repositories and displays them for selection.
-5. In **Artifact Directory**, enter a forward slash **/**.
-6. In **Artifact Details**, keep the default **Value**.
-7. In **Artifact Path**, leave the default Runtime Input value **<+input>** for that field. 
-8. Select **Submit.**
+1. In **Artifact Source Name**, enter **Todolist**.
+2. In **Repository Format**, keep the default value **Generic**.
+3. For **Repository**, enter: **todolist-tutorial**. Note that if you select **Repository**, Harness loads any available repositories and displays them for selection.
+4. In **Artifact Directory**, enter a forward slash **/**.
+5. In **Artifact Details**, keep the default **Value**.
+6. In **Artifact Path**, leave the default Runtime Input value **<+input>** for that field. 
+7. Select **Submit.**
 
    ![](static/ssh-ng-172.png)
 
@@ -123,22 +109,15 @@ In **Artifact Details**, enter the following:
 
    ![](static/ssh-ng-173.png)
 
-1. Select **Save**. The Service is added to your stage.
-2. Select **Continue** to set up the target Environment.
-
-</details>
+8. Select **Save**. The Service is added to your stage.
+9.  Select **Continue** to set up the target Environment.
 
 
+## SSH Environments
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Environment" label="Environment">
-```
+In the stage **Environment** section, you define the infrastructure definition for the target hosts.
 
-In **Environment**, you create the infrastructure definition for the target hosts.
-
-<details>
-<summary>Add the target infrastructure</summary>
+### Add the target infrastructure
 
 1. In **Specify Environment**, select **New Environment** and enter a name. 
 2. For **Environment Type**, select **Pre-****Production**, and select **Save**.
@@ -149,11 +128,7 @@ In **Environment**, you create the infrastructure definition for the target host
    
    ![](static/ssh-ng-174.png)
 
-</details>
-
-
-<details>
-<summary>Create the PDC connector for the hosts</summary>
+### Create the PDC connector for the hosts
 
 1. In **Infrastructure Definition**, for **Connector**, select **Select Connector** to create the Connector for PDC.
    
@@ -179,11 +154,8 @@ In **Environment**, you create the infrastructure definition for the target host
   
 ![](static/ssh-ng-179.png)
 
-</details>
 
-
-<details>
-<summary>Use an SSH credential for authenticating to the target hosts</summary>
+### Use an SSH credential for authenticating to the target hosts
 
 You can use an SSH Key or Kerberos for authenticating to the target host. In this tutorial, we will use an SSH Key.
 
@@ -232,22 +204,13 @@ Next, you'll select the deployment strategy for this stage, the package type, an
 
 ![](static/ssh-ng-188.png)
 
-</details>
-
-
-
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Execution" label="Execution">
-```
+## SSH Executions
 
 In **Execution**, Harness automatically adds the steps required to deploy the service to the environment according to the deployment strategy you select.
 
 The **Execution Strategies** supported for Secure Shell include **Blank Canvas**, **Basic**, **Rolling**, and **Canary**. Let's look at Basic.
 
-<details>
-<summary>Basic deployments</summary>
+### Basic deployments
 
 1. In **Execution Strategies**, select **Basic**. Typically, you use basic when deploying to one host and rolling or canary for multiple hosts.
 2. For **Package type**, select **WAR**.
@@ -272,18 +235,10 @@ The **Execution Strategies** supported for Secure Shell include **Blank Canvas**
 9.  Select **Apply Changes**.
 10. When you're done, select **Save** to publish the Pipeline.
 
-</details>
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
 
 ## Deploy and review
 
-<details>
-<summary>Deploy the pipeline</summary>
+Let's look at an example SSH deployment.
 
 1. Select **Run** to run the pipeline.
 2. In **Run Pipeline**, for **Primary Artifact**, select **Todolist**.
@@ -294,10 +249,7 @@ The **Execution Strategies** supported for Secure Shell include **Blank Canvas**
 
 5. Select **Run Pipeline**. Harness runs the pipeline and the **Console View** displays the tasks executed for each step.
 
-</details>
-
-<details>
-<summary>Review deployment</summary>
+### Review deployment
 
 Let's review what is happening in the Deploy step. Most sections correspond to the commands you can see in the Deploy step.
 
@@ -356,13 +308,10 @@ Command finished with status SUCCESS
 ```
 Congratulations! You have now successfully created and completed the steps for running a pipeline by using Secure Shell.
 
-</details>
-
 
 ## Notes
 
-<details>
-<summary>Selecting multiple hosts</summary>
+### Selecting multiple hosts
 
 You can add multiple hosts in the Physical Data Center Connector:
 
@@ -372,11 +321,7 @@ During deployment, you'll see each host listed in the loop:
 
 ![](static/ssh-ng-194.png)
 
-</details>
-
-
-<details>
-<summary>Looping strategies for each deployment strategy</summary>
+### Looping strategies for each deployment strategy
 
 :::note
 
@@ -490,28 +435,23 @@ repeat:
 ```
 
 
-</details>
-
-<details>
-<summary>Reference hosts in steps using expressions</summary>
+### Reference hosts in steps using expressions
 
 You can use all of the `<+instance...>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [<+instance.hostName>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostname)
-* [<+instance.host.hostName>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostinstancename)
-* [<+instance.name>](/docs/platform/Variables-and-Expressions/harness-variables#instancename)
+* `<+instance.hostName>`
+* `<+instance.host.hostName>`
+* `<+instance.name>`
 
 For Microsoft Azure or AWS:
 
-* [<+instance.host.privateIp>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostprivateip)
-* [<+instance.host.publicIp>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostpublicip)
+* `<+instance.host.privateIp>`
+* `<+instance.host.publicIp>`
 
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
 
-
-</details>
-
+For more details, go to [Built-in and custom Harness variables reference](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/).
 

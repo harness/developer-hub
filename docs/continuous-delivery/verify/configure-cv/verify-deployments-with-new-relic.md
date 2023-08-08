@@ -1,7 +1,7 @@
 ---
 title: New Relic
 description: Verify deployments with New Relic.
-sidebar_position: 8
+sidebar_position: 9
 helpdocs_topic_id: p8lqq2il39
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false
@@ -17,7 +17,11 @@ This topic covers how to add and configure New Relic as a Health Source for the 
 
 ## Before You Begin
 
-* [Add New Relic as a Verification Provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
+* [Add New Relic as a Verification Provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-new-relic)
+
+:::info note
+New Relic supports multiple APIs. The Harness Connector leverages the New Relic Insights API, which supports NRQL. Your Service/Application also needs to be instrumented as a [New Relic APM Application](https://docs.newrelic.com/introduction-apm). 
+:::
 
 ## Review: CV Setup Options
 
@@ -53,7 +57,22 @@ You can use:
 * `s` for seconds
 * `ms` for milliseconds
 
-The maximum is `53w`.Timeouts can be set at the Pipeline level also.
+The maximum is `53w`. Timeouts can be set at the Pipeline level also.
+
+**Node filtering**
+
+:::info note
+Currently, this feature is behind the feature flag `CV_UI_DISPLAY_NODE_REGEX_FILTER`. Contact Harness Support to enable the feature.
+:::
+
+This feature allows you to be more specific in node filtering by using Kubernetes PodName as a label. You can make analysis more explicit by telling CV which nodes to filter on. Just specify the filters on the control nodes (nodes that test nodes are compared against) and the test nodes (nodes CV checks).
+
+To filter the nodes:
+
+1. Expand **Optional**.
+
+2. Choose **Control Nodes** and **Test Nodes** that Harness CV should focus on during analysis. You can either type a node’s name or use a simple pattern (Regex) to define the nodes you want to filter.
+
 
 ## Step 3: Select a Continuous Verification Type
 
@@ -97,9 +116,9 @@ A Health Source is basically a mapping of a Harness Service to the service in a 
     
 8. Click **Next**. The **Customize Health Source** settings appear.
     The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. You can customize the metrics to map the Harness Service to the monitored environment. In Applications & Tiers, enter the following details:
-9.  In **Find a New Relic application** type the name of an application.
-10. In **Find an AppDynamics tier** type a tier name from which you want usage metrics, code exceptions, error conditions, or exit calls.
-11. In **Metric Packs** select the metrics you want Harness to use.
+9.  In **Find a New Relic application** select the name of a [New Relic APM ](https://docs.newrelic.com/introduction-apm)application.
+10. Select the **Metric Packs** you want Harness to use.
+11. *Optional*: Enter the NRQL for specified metrics with a `TimeSeries` clause.
 12. Click **Submit**. The Health Source is displayed in the Verify step.
 
 You can add one or more Health Sources for each APM or logging provider.
@@ -147,9 +166,11 @@ Once verification is complete, the Verify step shows the following:
 
 The risk level might initially display a number of violations, but the red and orange colored host often change to green over the duration.
 
+
 ### Summary
 
 The **Summary** section shows the number of logs that are in violation.
+
 
 ### Console View
 
@@ -159,3 +180,39 @@ If you have more than one Health Source, you can use the **View** dropdown to se
 
 You can use the search option to search for any specific metric or transaction you want.
 
+
+## Set a pinned baseline
+
+:::info note
+Currently, this feature is behind the feature flag `SRM_ENABLE_BASELINE_BASED_VERIFICATION`. Contact Harness Support to enable the feature.
+:::
+
+You can set specific verification in a successful pipeline execution as a baseline. This is available with **Load Testing** as the verification type.
+
+
+### Set successful verification as a baseline
+
+To set a verification as baseline for future verifications:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline you want to use as the baseline.
+   
+2. Select the successful pipeline execution with the verification that you want to use as the baseline.
+   
+   The pipeline execution is displayed.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   The selected verification is now set as the baseline for future verifications.
+
+
+### Replace an existing pinned baseline
+
+To use a new baseline from a pipeline and replace the existing pinned baseline, follow these steps:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline from which you want to remove the baseline.
+
+2. Select the successful pipeline execution with the verification that you have previously pinned as the baseline.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   A confirmation alert message appears, asking if you want to replace the existing pinned baseline with the current verification. After you confirm, the existing pinned baseline gets replaced with the current verification.

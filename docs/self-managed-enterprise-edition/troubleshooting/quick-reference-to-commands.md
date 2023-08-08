@@ -4,9 +4,9 @@ description: Helpful commands for troubleshooting.
 sidebar_position: 90
 ---
 
-This topic provides a short list of commands that are useful for troubleshooting Harness Self-Managed Platform Edition.
+This topic provides a short list of commands that are useful for troubleshooting Harness Self-Managed Enterprise Edition.
 
-:::note
+:::info note
 Variables are enclosed in angle brackets (< >).
 :::
 
@@ -38,7 +38,7 @@ Use the `kubectl exec` command to start a shell session in the container that ru
 
 Use the following commands to access your installation of TimescaleDB:
 
-:::note
+:::info note
 Check the name of the TimescaleDB pod. 
 :::
 

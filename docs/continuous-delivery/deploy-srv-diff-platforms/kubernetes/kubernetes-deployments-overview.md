@@ -1,6 +1,6 @@
 ---
-title: Kubernetes deployments basics
-description: High-level steps involved in a Harness Kubernetes deployment.
+title: Kubernetes deployments overview
+description: High-level view of Harness Kubernetes deployment.
 sidebar_position: 1
 ---
 
@@ -190,7 +190,7 @@ The following list describes the major steps of a Harness Kubernetes deployment.
 | 1 | Install the Harness Kubernetes **Delegate** in your Kubernetes cluster.  | Typically, the Kubernetes Delegate is installed in the target cluster where you will deploy your application(s).|
 | 2 | Add Harness **Connectors**. | Add a Harness **Connector** for you artifact repo and target cluster.<br/>For example, a Docker Registry Artifact Server that connects to the Docker registry where your Docker images are located, or the public Docker Hub.You can connect to specific target cloud platforms hosting your cluster or simply make a platform-agnostic connection to the cluster.<br/>This can be done inline while creating your Pipeline, or separately in your **Resources**. |
 | 3 | Define the Harness **Service** using the Kubernetes Deployment Type. | Add your Docker images and Kubernetes manifests and any config variables and files.<br/>For more information, go to [add container images for Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments). |
-| 6 | Define the Harness **Environment** and infrastructure definition for your target Kubernetes clusters, and any overrides. | Using the Harness Connector you set up, you can select the target Kubernetes cluster and namespace for your deployment.<br/>For more information, go to [define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure). |
+| 6 | Define the Harness **Environment** and infrastructure definition for your target Kubernetes clusters, and any overrides. | Using the Harness Connector you set up, you can select the target Kubernetes cluster and namespace for your deployment.<br/>For more information, go to [define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure). |
 | 7 | Add the Canary, Blue Green, or Rollout steps to the Deploy stage. | The stage deploys the artifact(s) and Kubernetes workloads defined in the Harness Service to the cluster and namespace in the Infrastructure Definition.<br/>For more information, go to [create a Kubernetes Rolling deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment),  [create a Kubernetes Canary deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment), [create a Kubernetes Blue Green deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment) |
 | 8 | Deploy the pipeline. | Once you've deployed a Pipeline, learn how to improve your Kubernetes CD in [Kubernetes how-tos](/docs/category/kubernetes). | 
 
