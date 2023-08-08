@@ -175,6 +175,12 @@ The current version does not include a hotfix release.
 <details>
 <summary>Expand this section to view changes to previous releases</summary>
 
+#### August 8, 2023 Harness Delegate hotfix version 79910
+
+- The delegate stopped trying to reconnect to the WebSocket if the infrastructure experienced a network outage for over five minutes. (PL-40547)
+
+   This issue is fixed. The delegate keeps trying to reconnect to the WebSocket until it's successful.
+  
 #### July 20, 2023 Harness Delegate hotfix version 79906
 
 - Helm deployment steps timed out after the initial installation/upgrade phase, preventing the execution of a Helm rollback step. (CDS-73264)
