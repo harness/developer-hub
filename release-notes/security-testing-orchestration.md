@@ -85,7 +85,24 @@ For information on how to set up this workflow, go to [Configure STO to Download
 
 ##### Early Access
 
-This release does not include new features.
+* The [Burp integration](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference) now supports scanner templates, which make it much easier to set up a scan step. 
+
+  This integration is behind the Feature Flag `STO_STEP_PALETTE_BURP_ENTERPRISE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
+
+* You can scan your code repositories using [CodeQL](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference), an analysis engine used by developers to automate security checks, and by security researchers to perform variant analysis. 
+
+ This integration is behind the Feature Flag `STO_STEP_PALETTE_CODEQL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5366)
+
+* You can scan container images and repositories using [Fossa](/docs/security-testing-orchestration/sto-techref-category/fossa-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects. (STO-5111)
+
+ This integration is behind the Feature Flag `STO_STEP_PALETTE_FOSSA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+ 
+
+* You can scan container images and repositories using [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects. (STO-5886)
+ 
+ This integration is behind the Feature Flag `STO_STEP_PALETTE_SEMGREP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+
 
 ##### Fixed Issues
 

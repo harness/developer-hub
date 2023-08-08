@@ -80,7 +80,6 @@ This release does not include any early access features.
 
   The issue has been resolved, and the overall user experience has been enhanced by streamlining the process of managing cost categories even with a large number of buckets.
 
-
 ```mdx-code-block
   </TabItem>
 </Tabs>
@@ -90,6 +89,7 @@ This release does not include any early access features.
 
 <details>
 <summary>2023 releases</summary>
+
 
 #### July 21, 2023, version 80202
 

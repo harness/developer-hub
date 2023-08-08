@@ -387,6 +387,7 @@ a:hover {
   margin-right: 0.2em;
 }
 
+
 .theme-doc-markdown img[class^="img_"] {
   border: 1px solid #d9dae5;
   /* var(--gray-400); */
@@ -610,12 +611,23 @@ ol ol,
 ul ol {
   list-style-type: lower-alpha;
 }
-/* .navbar__logo{
-  margin-bottom: 10px;
-} */
+
 .navbar__logo{
   margin-bottom: 10px;
 }
+
+/* HDH-141-authenticated-experience-hdh-mvp */
+
+figcaption{
+  font-style: italic;
+  margin-top: 0;
+  padding-top: 0;
+  scale: 0.9
+}
+figure p{
+  margin-bottom: 0;
+}
+
 @media screen and (min-width: 1200px) {
   /* style for the search bar in higher resolution */
   .searchBar {

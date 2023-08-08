@@ -132,6 +132,28 @@ module.exports = {
       to: "/docs/continuous-error-tracking/whats-supported",
     },
 
+    // Created by GigiHanna from branch CHAOS-2153-move-infra on August 8, 2023
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/connect-chaos-infrastructures",
+      to: "/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures",
+    },
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/disconnect-chaos-infrastructure",
+      to: "/docs/chaos-engineering/chaos-infrastructure/disconnect-chaos-infrastructure",
+    },
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/upgrade-infra",
+      to: "/docs/chaos-engineering/chaos-infrastructure/upgrade-infra",
+    },
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/linux-chaos-infrastructure-advanced-management",
+      to: "/docs/chaos-engineering/chaos-infrastructure/linux-chaos-infrastructure-advanced-management",
+    },
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/openshift-infra",
+      to: "/docs/chaos-engineering/chaos-infrastructure/openshift-infra",
+    },
+
     // Created by aimurphy from branch ci-ti-refresh-multiple-tickets on July 27, 2023
     {
       from: "/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart",
@@ -2417,11 +2439,11 @@ module.exports = {
     },
     {
       from: "/docs/chaos-engineering/user-guides/connect-chaos-infrastructures",
-      to: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/connect-chaos-infrastructures",
+      to: "/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures",
     },
     {
       from: "/docs/chaos-engineering/user-guides/disconnect-chaos-infrastructure",
-      to: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/disconnect-chaos-infrastructure",
+      to: "/docs/chaos-engineering/chaos-infrastructure/disconnect-chaos-infrastructure",
     },
     {
       from: "/docs/chaos-engineering/user-guides/construct-and-run-custom-chaos-experiments",

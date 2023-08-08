@@ -216,6 +216,15 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
+            <a href="/release-notes/internal-developer-portal">
+              <h4>Internal Developer Portal</h4>
+              <p>
+                New features and fixed issues for the Harness Internal Developer
+                Portal
+              </p>
+            </a>
+          </li>
+          <li>
             <a href="/release-notes/platform">
               <h4>Harness Platform</h4>
               <p>New features and fixed issues for the Harness Platform</p>
@@ -234,15 +243,6 @@ export default function LearnAboutPlatform(): JSX.Element {
             <a href="/release-notes/delegate">
               <h4>Delegate</h4>
               <p>New features and fixed issues for the Harness Delegate</p>
-            </a>
-          </li>
-          <li>
-            <a href="/release-notes/internal-developer-portal">
-              <h4>Internal Developer Portal</h4>
-              <p>
-                New features and fixed issues for the Harness Internal Developer
-                Portal
-              </p>
             </a>
           </li>
         </ul>

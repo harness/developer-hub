@@ -3,143 +3,122 @@ import { CardItem, docType } from "../TutorialCard";
 import { MODULES } from "../../../constants";
 
 /* Define the cards here */
-export const PlansList: CardItem[] = [
-  {
-    title: "Free Plan",
-    module: MODULES.cd,
-    icon: "img/icon_cd.svg",
-    description: <>Signup for your free Harness SaaS account</>,
-    type: [docType.SaaS],
-    link: "https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started",
-  },
-  {
-    title: "Community Edition",
-    module: MODULES.cd,
-    icon: "img/icon_cd.svg",
-    type: [docType.SelfManaged],
-    description: <>Install on your self-managed Docker or Kubernetes</>,
-    link: "/tutorials/platform/install-cd-community-edition",
-  },
-];
 
-export const FeaturedList: CardItem[] = [
+export const K8SList: CardItem[] = [
   {
-    title: "Deploy a Kubernetes Helm Chart",
-    module: MODULES.cd,
-    icon: "img/icon_cd.svg",
-    description: <>Deploy a Helm Chart onto your Kubernetes cluster.</>,
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "8min",
-    link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
-  },
-  {
-    title: "Deploy a Kubernetes Manifest",
+    title: "Kubernetes Manifest",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
     description: (
       <>Deploy a Kubernetes Manifest onto your Kubernetes cluster.</>
     ),
-    newDoc: true,
     type: [docType.Documentation],
     time: "10min",
     link: "/tutorials/cd-pipelines/kubernetes/manifest",
   },
-];
-
-export const CDList: CardItem[] = [
   {
-    title: "Deploy a Kubernetes Helm Chart",
+    title: "Helm Chart",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: (
-      <>
-        Deploy your first set of Kubernetes Resources in a CD Pipeline with
-        Helm, a popular Kubernetes Package Manager.
-      </>
-    ),
-    newDoc: false,
+    description: <>Deploy a Helm Chart onto your Kubernetes cluster.</>,
     type: [docType.Documentation],
-    //type: [docType.Documentation, docType.Interactive, docType.Video],
-    time: "10 min",
+    time: "8min",
     link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
   },
   {
-    title: "Deploy a Kubernetes Manifest",
+    title: "Kustomize",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: (
-      <>
-        Deploy your first set of Kubernetes Services in a CD Pipeline with
-        Kubernetes Manifests.
-      </>
-    ),
-    newDoc: false,
+    description: <>Deploy a Kubernetes Manifest using Kustomize.</>,
+    newDoc: true,
     type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/cd-pipelines/kubernetes/manifest",
+    time: "8min",
+    link: "/tutorials/cd-pipelines/kubernetes/kustomize",
   },
+];
+
+export const ServerlessList: CardItem[] = [
   {
-    title: "Build and Deploy a NodeJS App to Kubernetes",
+    title: "AWS Lambda Function",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: (
-      <>Build and deploy a simple nodejs application using Harness CI and CD.</>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    //type: [docType.Documentation, docType.Interactive, docType.Video],
-    time: "10 min",
-    link: "/tutorials/cd-pipelines/unified-cicd",
-  },
-  {
-    title: "Deploy a Docker Image to Amazon ECS ",
-    module: MODULES.cd,
-    icon: "img/icon_cd.svg",
-    description: <>Deploy a Docker image to Amazon ECS.</>,
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15min",
-    link: "/tutorials/cd-pipelines/amazon-ecs",
-  },
-  {
-    title: "Verify Kubernetes Deployment with Prometheus  ",
-    module: MODULES.cd,
-    icon: "img/icon_cv.svg",
-    description: <>Verify a Spring Boot based Kubernetes Deployment with Prometheus Metrics.</>,
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15min",
-    link: "/tutorials/cd-pipelines/continuous-verification/prometheus",
-  },
-  {
-    title: "Serverless AWS Lambda  ",
-    module: MODULES.cd,
-    icon: "img/icon_cv.svg",
-    description: <>Deploy Serverless AWS Lambda Functions.</>,
-    newDoc: false,
+    description: <>Deploy an AWS Lambda Function.</>,
+    newDoc: true,
     type: [docType.Documentation],
     time: "15min",
     link: "/tutorials/cd-pipelines/serverless/aws-lambda",
   },
   {
-    title: "Serverless Google Cloud Function  ",
+    title: "Google Cloud Function ",
     module: MODULES.cd,
-    icon: "img/icon_cv.svg",
-    description: <>Deploy Serverless Google Cloud Functions.</>,
-    newDoc: false,
+    icon: "img/icon_cd.svg",
+    description: <>Deploy a Google Cloud Function.</>,
+    newDoc: true,
     type: [docType.Documentation],
     time: "15min",
     link: "/tutorials/cd-pipelines/serverless/gcp-cloud-func",
   },
+];
+
+export const VMList: CardItem[] = [
   {
-    title: "Deploy to a Linux VM in a Physical Data Center",
+    title: "AWS",
     module: MODULES.cd,
-    icon: "img/icon_cv.svg",
-    description: <>Deploy an app to a Linux VM in a physical data center.</>,
-    newDoc: true,
+    icon: "img/icon_cd.svg",
+    description: <>Deploy an app to a Linux or Windows VM in AWS EC2.</>,
+    type: [docType.Documentation],
+    time: "20min",
+    link: "/tutorials/cd-pipelines/vm/aws",
+  },
+  {
+    title: "Physical Data Center",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: <>Deploy an app to a Linux or Windows VM in a physical data center.</>,
     type: [docType.Documentation],
     time: "20min",
     link: "/tutorials/cd-pipelines/vm/pdc",
+  },
+];
+
+export const ECSList: CardItem[] = [
+  {
+    title: "Amazon ECS",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: <>Deploy a Dockert Image to Amazon ECS.</>,
+    type: [docType.Documentation],
+    time: "20min",
+    link: "/tutorials/cd-pipelines/amazon-ecs",
+  },
+];
+
+export const AdvList: CardItem[] = [
+  {
+    title: "Trigger CD Pipeline on New Artifact Version",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: <>Trigger CD Pipeline on New Artifact Version</>,
+    type: [docType.Documentation],
+    time: "20min",
+    link: "/tutorials/cd-pipelines/trigger",
+  },
+  {
+    title: "Continuous Verification with Prometheus",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: <>Verify Deployments with Prometheus & Auto Rollback on Failures</>,
+    type: [docType.Documentation],
+    time: "20min",
+    link: "/tutorials/cd-pipelines/continuous-verification/prometheus",
+  },
+  {
+    title: "Unified CI/CD in a Single Pipeline",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: <>Setup CI and CD as two stages of the same pipeline</>,
+    type: [docType.Documentation],
+    time: "20min",
+    link: "/tutorials/cd-pipelines/unified-cicd",
   },
 ];
