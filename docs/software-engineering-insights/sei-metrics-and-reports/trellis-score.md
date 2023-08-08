@@ -124,3 +124,7 @@ You can also use the **Download** icon to download the raw stats report.
 
 <figcaption>Use the <b>Download</b> icon to download the Individual Raw Stats data.</figcaption>
 </figure>
+
+## Trellis Score visibility
+
+You can [limit access to Trellis Scores](../sei-collections/collection-admin.md#limit-trellis-score-visibility).

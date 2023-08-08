@@ -28,7 +28,7 @@ Harness SEI has three built-in user roles:
 * SEI Collection Admin
 * SEI Viewer
 
-These roles replace the six user roles that existed in Propelo (Admin, Auditor, Limited User, Restricted User, Assigned Issue User, and Public Dashboard User). In the Harness Platform, use [Harness RBAC](/docs/platform/Role-Based-Access-Control/rbac-in-harness) for access control. For example, you can [add user groups](/docs/platform/User-Management/add-user-groups) or [add user roles](/docs/platform/role-based-access-control/add-manage-roles/) according to your custom access needs.
+These roles replace the user roles that existed in Propelo (Admin, Org Manager/Admin, Auditor, Limited User, Restricted User, Assigned Issue User, and Public Dashboard User). In the Harness Platform, use [Harness RBAC](/docs/platform/Role-Based-Access-Control/rbac-in-harness) for access control. For example, you can [add user groups](/docs/platform/User-Management/add-user-groups) or [add user roles](/docs/platform/role-based-access-control/add-manage-roles/) according to your custom access needs.
 
 ## Terminology
 
@@ -36,12 +36,13 @@ Some Propelo terminology changed to align with the Harness Platform.
 
 | Propelo term | Harness term | Comments |
 | ------------ | ------------ | -------- |
-| Tenant | Account ||
-| Dashboards | Insights ||
+| Tenant | Account | |
+| Dashboards | Insights | |
 | Workspaces | Projects | Each Harness project is a workspace. Harness organizations are umbrellas over projects. SEI can't track an organization as a conglomerate of the projects within it. |
 | Global Settings | Customize | Located under **SEI Settings** in the module navigation. Only includes the **Dashboard Color Scheme** setting. |
 | Audit Logs | Activity Logs | Located under **SEI Settings** in the module navigation. |
 | Org Users | Contributors | This refers to user records that contribute to metrics and insights. This doesn't refer to [user roles](#user-roles). |
+| Org Managers/Admins | Collection Admins | |
 
 The following terms are the same:
 

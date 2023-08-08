@@ -1,5 +1,5 @@
 ---
-title: Manage contributors
+title: Manage Contributors
 description: Manage contributor attributes and associations.
 sidebar_position: 50
 ---
