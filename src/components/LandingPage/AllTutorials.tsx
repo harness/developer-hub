@@ -49,7 +49,7 @@ export default function AllTutorials() {
           <img src={`${baseUrl}img/icon_cd.svg`} />
           <h3>Set up CD Pipelines</h3>
         </div>
-        <TutorialCard FeatureList={CDList} />
+        <TutorialCard FeatureList={K8SList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
