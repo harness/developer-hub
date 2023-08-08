@@ -34,6 +34,8 @@ To add a Jira Create step, do the following:
 5. In **Jira Connector**, create or select the [Jira connector](/docs/platform/Connectors/Ticketing-Systems/connect-to-jira) to use.
 6. In **Jira Project**, select a Jira project from the list. A Jira project is used to create the issue key and ID when the issue is created. The unique issue number is created automatically by Jira.
 7. In **Issue Type**, select a Jira issue type from the list of types in the Jira project you selected.
+8. Select **Apply Changes**.
+9. Select **Save**.
 
 ## Add Issue fields
 
