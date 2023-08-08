@@ -312,3 +312,39 @@ As placmenetStrategy can be defined in task definition as well as in service def
 #### When querying the Harness Approval API, the Approval Details are returning with message No Approval found for execution
 
 The api will only return Approval details if there are any approval step pending for approval, If there are no such executions currently than its expected to return No Approval found for execution
+
+#### How to concatenate secrets with string 
+
+You use either of following expressions:
+ 
+```<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar>)>```
+ 
+OR
+ 
+```<+secrets.getValue("test_secret_".concat(<+pipeline.variables.envVar>))>```
+
+#### Can a non-git-sync'd pipeline consume a git-sync'd template from a non-default branch?
+
+Yes an Inline pipeline can consume a template from non-default branch.  More on this can be referenced here https://developer.harness.io/release-notes/whats-new/#continuous-delivery-version-79811
+
+#### Is there a way I can update the git repo where the pipeline YAML resides?
+
+Yes you can use this API https://apidocs.harness.io/tag/Pipelines#operation/update-pipeline-git-metadata to update the Git repo of the pipeline.
+
+#### Is there a way to generate a dynamic file with some information in one stage of the pipeline and consume that file content in a different pipeline stage?
+
+For CI : 
+ 
+You can refer to this doc : https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/
+ 
+For CD :
+ 
+You can use API to create file in harness file store and then refer it to other stage. https://apidocs.harness.io/tag/File-Store#operation/listFilesAndFolders
+
+Or 
+
+You can just write a file on the delegate and use the same delegate.
+
+#### How can I get pipeline exectuion details via API 
+
+This API can be used to fetch pipleine execution details : https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
