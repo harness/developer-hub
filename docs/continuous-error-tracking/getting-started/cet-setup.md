@@ -80,7 +80,7 @@ This topic provides details about:
 * Steps to install an Error Tracking Agent on a Java Application.
 
 
-### Compatibility and Requirements
+### Compatibility and requirements
 
 To learn about supported operating systems such as Java Virtual Machine (JVM) and JVM containers, go to [Continuous Error Tracking Agent compatibility](/docs/continuous-error-tracking/whats-supported).
 
