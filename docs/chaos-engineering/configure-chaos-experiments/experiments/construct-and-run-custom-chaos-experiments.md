@@ -36,7 +36,7 @@ To add a chaos experiment:
 
 	![Experiment Builder](./static/construct-and-run-custom-chaos-experiments/experiment-builder.png)
 
-	For more information on infrastructure, go to [Connect chaos infrastructures](../chaos-infrastructure/connect-chaos-infrastructures).
+	For more information on infrastructure, go to [Connect chaos infrastructures](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures).
 	
 1. Select how you want to build the experiment. The options, explained later, are:
 
