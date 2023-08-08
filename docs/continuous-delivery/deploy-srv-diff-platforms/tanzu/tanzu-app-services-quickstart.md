@@ -7,7 +7,7 @@ sidebar_position: 1
 This topic shows you how to deploy a publicly available application to your Tanzu Application Service (TAS, formerly PCF) space by using any [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) in Harness.
 
 :::note
-Currently, this feature is behind feature flags `NG_SVC_ENV_REDESIGN` and `CDS_TAS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+Currently, this feature is behind feature flags `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
 :::
 
 ## Objectives

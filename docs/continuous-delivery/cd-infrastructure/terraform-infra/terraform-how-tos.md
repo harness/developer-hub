@@ -17,7 +17,7 @@ You can use Harness with Terraform in the following ways:
 
 You can do both methods in the same stage if you want.
 
-For a conceptual overview of Harness Terraform integration, see [Terraform Provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness.md).
+For a conceptual overview of Harness Terraform integration, go to [Terraform Provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness/).
 
 ## Running Terraform Cloud workspaces how-tos
 
@@ -43,7 +43,7 @@ Terraform must be installed on the delegate to use **local** Terraform configura
 
 You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+Go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools/).
 
 The Harness delegate uses RedHat Universal Base Image (redhat/ubi8).
 

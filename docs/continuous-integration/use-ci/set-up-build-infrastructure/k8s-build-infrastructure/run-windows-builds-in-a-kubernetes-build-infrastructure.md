@@ -11,13 +11,20 @@ helpdocs_is_published: true
 
 You can run Windows builds in your Kubernetes build infrastructure. Windows Server 2019 images are available for running CI Builds and for out-of-the-box CI steps such as Run, Save, and Restore.
 
-## Important Notes
+## Important notes
 
-* **Build and Push an image to Docker Registry**, **Build and Push to ECR**, and **Build and Push to GCR** steps are not supported with Windows builds on Kubernetes build infrastructure.
-* **Privileged mode is required for Docker-in-Docker.** If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure; however, Windows doesn't support privileged mode. If you need to run Docker commands, you'll need to use another build infrastructure, such as [Harness Cloud](../../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), where you can run Docker commands directly on the host.
-* Only Windows Server 2019 images are supported. If you are using Google Kubernetes Engine, make sure you use the recommended image type for Windows Server 2019.
+* The following steps aren't supported on Windows platforms on Kubernetes cluster build infrastructures: **Build and Push an image to Docker Registry**, **Build and Push to ECR**, and **Build and Push to GCR**. Try using the [buildah plugin](../../build-and-upload-artifacts/build-and-push-nonroot.md) instead.
+* **Docker commands aren't supported.** If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure; however, Windows doesn't support privileged mode. If you need to run Docker commands, you must use another build infrastructure, such as [Harness Cloud](../use-harness-cloud-build-infrastructure.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), where you can run Docker commands directly on the host.
 
-  ![](../static/run-windows-builds-in-a-kubernetes-build-infrastructure-10.png)
+## Windows Server 2019 is required
+
+Only Windows Server 2019 images are supported.
+
+With Amazon EKS, the [AMI](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-windows-ami.html) type must be [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore).
+
+With GKS, use the recommended image type for Windows Server 2019.
+
+![](../static/run-windows-builds-in-a-kubernetes-build-infrastructure-10.png)
 
 ## Configure cluster and build infrastructure
 
@@ -41,9 +48,9 @@ COPY --from=core /windows/system32/netapi32.dll /windows/system32/netapi32.dll
 
 :::
 
-### Pipelines-as-code YAML example
+### YAML example
 
-Here is an example of a pipeline that runs a Windows build on a Kubernetes cluster build infrastructure. Note the presence of `os` and `nodeSelector` in the `stage.spec.infrastructure.spec`.
+This example pipeline runs on a Windows platform on a Kubernetes cluster build infrastructure. Note the presence of `os` and `nodeSelector` in `stage.spec.infrastructure.spec`.
 
 ```yaml
 pipeline:  

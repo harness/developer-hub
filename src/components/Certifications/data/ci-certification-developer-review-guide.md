@@ -29,3 +29,4 @@
 |**9. Perform a basic Delegate installation and set container resources**||
 |Learn about chained pipelines and GitHub actions support|[Use the GitHub Action plugin step](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/)|
 |Get familiar with common CI plugins and how to configure them|[Explore plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins/)|
+

@@ -473,6 +473,25 @@ The **Configuration File Repository** setting is available in the Terragrunt Pla
 7. In **File Path**, enter the path from the root of the repo to the file containing the script.
 8. Click **Submit**.
 
+#### Source Module
+
+When you set up the file repo in **Configuration File Repository**, you use a Harness Connector to connect to the repo where the Terraform scripts are located.
+
+Some scripts will reference module sources in other repos and Harness will pull the source code for the desired child module at runtime (during `terraform init`).
+
+In **Source Module**, you can select **Use Connector credentials** to have Harness use the credentials of the Connector to pull the source code for the desired child module(s).
+
+If you do not select **Use Connector credentials**, Terraform will use the credentials that have been set up in the system.
+
+The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
+
+When configuring the SSH key for the connector, exporting an SSH key with a passphrase for the module source is not supported. Configure an SSH Key without the passphrase.
+
+Here are some syntax examples to reference the Terraform module using the SSH protocol:
+
+```bash
+source = "git@github.com:your-username/your-private-module.git"
+
 ### Module Configuration
 
 Use this setting to specify the Terraform modules you want Terragrunt to use.
@@ -595,13 +614,50 @@ You can Harness [variable](https://developer.harness.io/docs/platform/Variables-
 
 Depending on which platform you store your remote state data, Terragrunt and Terraform allow you to pass many different credentials and configuration settings, such as access and secret keys. 
 
-For example:
+For example, if your terragrunt.hcl file has the following backend:
 
+```json
+ remote_state {
+   backend = "azurerm"
+   config = {
+     key = "${path_relative_to_include()}/terraform.tfstate"
+     subscription_id = "abcdefg123456"
+     resource_group_name  = "tfResourceGroup"
+     storage_account_name = "terraformremotebackend"
+     container_name       = "azure-backend"
+   }
+   generate = {
+     path      = "_backend.tf"
+     if_exists = "overwrite"
+   }
+ }
+ ```
+
+
+In **Backend Configuration**, for this case you provide the required configuration variables for that backend type.
+For remote backend-configuration the variables should be in .tfvars file.
+
+Example:
 ```
+subscription_id = "abcdefg123456"
 resource_group_name  = "tfResourceGroup"
-storage_account_name = "myterraformremoteback"
+storage_account_name = "myterraformremotebackend"
 container_name       = "azure-backend"
 ```
+In your terragrunt .hcl config file it would require to have only the rest of the terraform remote state:
+
+```json
+ remote_state {
+   backend = "azurerm"
+   config = {
+     key = "${path_relative_to_include()}/terraform.tfstate"
+   }
+   generate = {
+     path      = "_backend.tf"
+     if_exists = "overwrite"
+   }
+ }
+ ```
 
 For examples, see the settings available for [AWS S3](https://www.terraform.io/docs/backends/types/s3.html#configuration) from Terraform and review [Keep your remote state configuration DRY](https://terragrunt.gruntwork.io/docs/features/keep-your-remote-state-configuration-dry/) from Terragrunt.
 

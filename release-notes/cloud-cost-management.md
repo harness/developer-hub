@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-07-13T10:00
+date: 2023-08-02T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -19,25 +19,41 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - July 13, 2023, version 80102
+## Latest - August 02, 2023, version 80301
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-* Recommendations page UI enhancement (CCM-12693)
+* AWS AutoStopping proxy enhancement (CCM-13497)
 
- The **Include** dropdown on the **Recommendations** page has been removed. Instead, the following toggle options have been added in the Filter panel as shown in the screenshots below: 
+  You can now select the subnet ID from the dropdown list for AWS AutoStopping proxy creation. 
 
-  - Show Recommendations on Parent resource
-  - Show Recommendations on Child resource
-  - Show Recommendations on resources added to the IgnoreList
+    <docimage path={require('./static/ccm-subnet-proxy.png')} width="60%" height="60%" title="Click to view full size image" />
 
-By default, the first two options are enabled, and you can modify the toggles to customize the list filtering.
+* **Perspective Preferences** enhancement (CCM-11145)
 
-&nbsp <docimage path={require('./static/ccm-toggle-options-recommendations-filter.png')} width="40%" height="40%" title="Click to view full size image" />
-   
-  <docimage path={require('./static/ccm-tooltip-recommendations.png')} width="60%" height="60%" title="Click to view full size image" />
+  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](../docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/perspective-preferences.md).
+
+ 
+:::important note
+ The current configurations for **Show others** and **Show unallocated cost in clusters** are preserved. This means that though the default settings have these preferences set to false, any _existing perspective_ with these preferences set to true will retain their current state and not be overridden.
+:::
+
+* Improved UI handling during the AutoStopping rule creation process (CCM-13527)
+
+  The page on which users select either a load balancer or an AutoStopping Proxy has been enhanced to include an additional API that retrieves information about proxies created previously in shared VPCs. Now users can use a proxy created in a shared VPC across projects and connectors.
+
+* **Overview** page enhancements (CCM-13326)
+
+  - The pie chart now shows a hover state. 
+  - The forecast trend in the widget is removed.
+  - Added forecast time period in the forecast cost widget.
+  - Changed the heading of the cloud cost widget from `Top AWS accounts` to `Top 10 AWS accounts`.
+
+    <docimage path={require('./static/ccm-overview-1.png')} width="60%" height="60%" title="Click to view full size image" />
+    <docimage path={require('./static/ccm-overview-2.png')} width="60%" height="60%" title="Click to view full size image" />
+    <docimage path={require('./static/ccm-overview-3.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 
@@ -52,18 +68,17 @@ This release does not include any early access features.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-* The message displayed on the UI was incorrect when there were no recommendations for the account. (CCM-13250)
+* Previously, configuring both the redirect URL and target port for redirection while creating a redirect-based AutoStopping rule led to an error. (CCM-13475)
 
-  This issue is fixed now.
+  This issue has been resolved by modifying the validation process. Now, if the redirect URL is defined, the validation process checks whether the target port is greater than 0. Specifying both redirect URL and target port is not allowed as it is an invalid configuration. However, for ALBs, only redirect URLs are allowed.
 
-    <docimage path={require('./static/ccm-incorrect-recommendations-msg-ui.png')} width="60%" height="60%" title="Click to view full size image" />
+* Users were unable to validate their YAML files when creating a Kubernetes AutoStopping rule. (CCM-13459)
 
+  This issue has been resolved. Users will now be able to validate the YAML successfully.
 
-* Adding an invalid cost category in a perspective rule caused the Anomalies feature to not function as expected. (CCM-13218)
+* Previously, users experienced performance delays while editing cost categories with more than 50 buckets, and every subsequent action took several seconds to trigger. (CCM-13205)
 
-  Now, the cost category IDs are validated when added in the perspective rule.
-
-
+  The issue has been resolved, and the overall user experience has been enhanced by streamlining the process of managing cost categories even with a large number of buckets.
 
 
 ```mdx-code-block
@@ -75,6 +90,54 @@ This release does not include any early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### July 21, 2023, version 80202
+
+##### What's new
+This release does not include any new features.
+
+##### Early access
+This release does not include any early access features.
+
+##### Fixed issues
+This release does not include any fixed issues.
+
+
+#### July 13, 2023, version 80102
+
+##### What's new
+
+Recommendations page UI enhancement (CCM-12693)
+
+ The **Include** dropdown on the **Recommendations** page has been removed. Instead, the following toggle options have been added in the Filter panel as shown in the screenshots below: 
+
+  - Show Recommendations on Parent resource
+  - Show Recommendations on Child resource
+  - Show Recommendations on resources added to the IgnoreList
+
+By default, the first two options are enabled, and you can modify the toggles to customize the list filtering.
+
+&nbsp <docimage path={require('./static/ccm-toggle-options-recommendations-filter.png')} width="40%" height="40%" title="Click to view full size image" />
+   
+  <docimage path={require('./static/ccm-tooltip-recommendations.png')} width="60%" height="60%" title="Click to view full size image" />
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* The message displayed on the UI was incorrect when there were no recommendations for the account. (CCM-13250)
+
+  This issue is fixed now.
+
+    <docimage path={require('./static/ccm-incorrect-recommendations-msg-ui.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+* Adding an invalid cost category in a perspective rule caused the Anomalies feature to not function as expected. (CCM-13218)
+
+  Now, the cost category IDs are validated when added in the perspective rule.
+
 
 #### July 07, 2023, version 80002
 

@@ -24,6 +24,8 @@ The following diagram shows how Harness CI and Anka work together. Once you set 
 
 ![](../static/macos-build-infra-with-anka-registry-mult-nodes.png)
 
+This is one of several build infrastructure options, for example, you can also run on [Azure VMs](define-a-ci-build-infrastructure-in-azure.md) or [GCP VMs](define-a-ci-build-infrastructure-in-google-cloud-platform.md).
+
 ## Install Anka and create a VM on a Mac node
 
 The first step is to set up the Anka software on one of your Mac nodes (such as a Mac Mini) and create a VM. For details, go to [Getting Started](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/) in the Anka documentation.
@@ -59,8 +61,6 @@ Optionally, you can enable token authentication for the controller and registry 
 ## Install the Harness delegate and runner
 
 Set up the Harness delegate and runner.
-
-In addition to macOS, you can run your delegate and runner on [Docker](../define-a-docker-build-infrastructure.md), [Azure](define-a-ci-build-infrastructure-in-azure.md), and [Google Cloud Platform](define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
 
 For information about installing delegates, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 

@@ -1,6 +1,6 @@
 ---
 title: Manage Feature Flags
-description: Learn how to manage Feature Flags for Self-Managed Enterprise Edition Helm installations. 
+description: Learn how to manage Feature Flags for Self-Managed Enterprise Edition Helm installations.
 # sidebar_position: 10
 ---
 
@@ -16,13 +16,13 @@ To view installed Feature Flags, do the following:
 
    :::info note
    This file is typically located in the following default path.
-   
+
    ```
    /path/to/helm-charts/src/override-prod.yaml
    ```
    :::
 
-   
+
 
 2. Go to `platform`.
 
@@ -36,7 +36,7 @@ To add Feature Flags, do the following:
 
    :::info note
    This file is typically located in the following default path.
-   
+
    ```
    /path/to/helm-charts/src/override-prod.yaml
    ```
@@ -64,7 +64,7 @@ To add Feature Flags, do the following:
          # -- STO Feature Flags (activated when global.sto is enabled)
          STO: "SECURITY,SECURITY_STAGE,STO_CI_PIPELINE_SECURITY,STO_API_V2"
          # -- SRM Flags (activated when global.srm is enabled)
-         SRM: "CVNG_ENABLED,ERROR_TRACKING_ENABLED"
+         SRM: "CVNG_ENABLED"
          # -- Custom Dashboard Flags (activated when global.dashboards is enabled)
          CDB: "NG_DASHBOARDS"
          # -- FF Feature Flags (activated when global.ff is enabled)
@@ -77,6 +77,8 @@ To add Feature Flags, do the following:
          OPA: ""
          # -- CHAOS Feature Flags (activated when global.chaos is enabled)
          CHAOS: "CHAOS_ENABLED"
+         # -- CET Feature Flags (activated when global.cet is enabled)
+         CET: "CET_ENABLED,SRM_CODE_ERROR_NOTIFICATIONS,SRM_ET_RESOLVED_EVENTS,SRM_ET_CRITICAL_EVENTS"
          # -- Disables OLD_GIT_SYNC if .global.ngGitSync is enabled
          OLDGITSYNC : "USE_OLD_GIT_SYNC"
          # -- AutoAccept Feature Flags
@@ -84,7 +86,7 @@ To add Feature Flags, do the following:
          # -- Additional Feature Flag (placeholder to add any other featureFlags)
          ADDITIONAL: ""
    ```
-   
+
    You can add additional Feature Flags that are not included with the base configuration here.
 
 3. Add the Feature Flag.
@@ -109,7 +111,7 @@ To add Feature Flags, do the following:
    ```
    helm upgrade <my-release> . -n harness-ng -f ../override-prod.yaml
    ```
-   
+
    :::info note
    For Feature Flags that affect `ng-manager`, you must restart the component(s) after the Helm upgrade is complete and the Harness Manager has restarted and is up and running. You can restart your pods or run the following rollout restart command on the Harness Manager deployment for your installation.
 

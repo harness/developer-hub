@@ -8,7 +8,7 @@ Steps can be added to pipelines individually or as a step group.
 
 Individual steps and steps in step groups can be run serially or in parallel.
 
-Unlike individual steps, a step group can apply conditional execution (skip conditions), failure strategy, and Rollback steps to all steps in the group.
+Unlike individual steps, a step group can apply conditional execution (skip conditions) and a failure strategy to all steps in the group.
 
 You can also run pipeline **stages** in parallel. Deploy multiple services simultaneously and perform flow control using Barriers. Go to [synchronize deployments using barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers) for more information. This topic describes how to add a step group in a stage.
 
@@ -44,7 +44,7 @@ https://www.youtube.com/watch?v=J5eHYSbE8cg-->
 
 Running steps in parallel can be beneficial in many ways, such as:
 
-* Simulating load using multiple [HTTP steps](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines).
+* Simulating load using multiple [HTTP steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines).
 * Running multiple [Verify steps](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) for different providers (AppDynamics, Splunk, Prometheus, etc).
 * Running independent steps that don't need to be run serially.
 * Running multiple Kubernetes [Apply steps](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) to deploy multiple Kubernetes resources at once.
@@ -93,11 +93,7 @@ If you do not use step group conditional execution settings, then the stage's co
 
 A step group can have its own failure strategy separate from the failure strategy for the stage.
 
-The failure strategy can execute the Rollback steps for the step group.
-
-The step group Rollback steps are only run if the failure strategy for the step group has **Rollback Step Group** selected.
-
-![](./utilities/static/step-groups-01.png)
+The failure strategy can execute the Rollback steps for the step/stage.
 
 Go to [step failure strategy settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) for more information.
 
@@ -113,19 +109,6 @@ Add any step and configure its **Advanced** settings.
 
 A step's **Advanced** settings override the **Advanced** settings of the step group.
 
-## Add rollback steps
-
-A step group can have its own rollback steps separate from the rollback steps for the stage.
-
-The step group rollback steps are only run if the failure strategy for the step group has **Rollback Step Group** selected.
-
-In the step group, click the **Execution/Rollback** toggle:
-
-![](./utilities/static/step-groups-02.png)
-
-In the Rollback view, click **Add Step** to add a rollback step.
-
-For example, you can use the Rolling Rollback step for a [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
 
 ## Reference step group steps
 

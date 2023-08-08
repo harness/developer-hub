@@ -16,6 +16,43 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+
+### August 4, 2023, version 80120
+
+#### What's new
+
+- Open HFT Chronicle Queue has been upgraded from version 5.19.2 to version 5.22.28 to enable the upgrade of JDK from version 11 to version 17.  (PL-39953)
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Update operations for GCP Secrets Manager failed in FirstGen SMP environments. (PL-40151)
+  
+  The issue has been fixed.
+
+- Earlier, even though you could use the `JAVA_OPTS` environment variable to specify JVM options for the delegate, you could not override the default JVM options that Harness used, namely `-XX:MaxRAMPercentage=70.0` and `-XX:MinRAMPercentage=40.0`. The option to override the defaults was unavailable because the value of JAVA_OPTS was prepended to the default JVM options. (PL-38839)
+  
+  This issue has been fixed. The value of JAVA_OPTS is now appended to the default JVM options, thus allowing you to override the default options.
+ 
+  This item is available with Harness Platform version 80120 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### July 27, 2023, version 80017
+
+#### What's new
+
+This release does not include new features. 
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Fixed an issue where Nexus 2 artifact details would appear as `null` (for example, `null:870`) in the Harness UI. (CDS-74053)
+
 ### July 18, 2023, version 79915
 
 #### What's new
@@ -30,9 +67,7 @@ This release does not include early access features.
 
 #### Fixed issues
 
-- Pagination did not work correctly in the list-secrets-page API response because of an incorrect offset. (PL-38776)
-  
-  This issue is now fixed and the correct response is returned.
+- Fixed an issue where Nexus 2 artifact details would appear as `null` (for example, `null:870`) in the Harness UI. (CDS-74053)
 
 ### July 06, 2023, version 79807
 

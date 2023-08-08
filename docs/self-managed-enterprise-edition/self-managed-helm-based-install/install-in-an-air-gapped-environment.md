@@ -1,6 +1,6 @@
 ---
 title: Install in an air-gapped environment
-description: Learn how to install the Harness Self-Managed Enterprise Edition using Helm in an air-gapped environment. 
+description: Learn how to install the Harness Self-Managed Enterprise Edition using Helm in an air-gapped environment.
 sidebar_position: 4
 ---
 
@@ -18,11 +18,11 @@ The Harness Self-Managed Platform is designed to cater to various deployment sce
 
 - Kubernetes cluster
 
-- Latest version of Helm 
+- Latest version of Helm
 
 - Access to Helm charts or [download locally](https://github.com/harness/helm-charts/releases)
 
-- Access to [the Harness airgap bundle on GCP](https://console.cloud.google.com/storage/browser/smp-airgap-bundles;tab=objects?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false&pli=1) 
+- Access to [the Harness airgap bundle on GCP](https://console.cloud.google.com/storage/browser/smp-airgap-bundles;tab=objects?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false&pli=1)
 
 - Kubernetes version 1.22+ (Harness recommends v1.23.x)
 
@@ -43,15 +43,16 @@ To begin your installation, download the following files:
 
    With each Self-Managed Enterprise Edition release, Harness adds individual module image files to the air gap image bundle. You can download module `*.tgz` files for the modules you want to deploy. For example, if you only want to deploy Harness Platform, download the `platform-images.tgz` file. Available image files are:
 
+     - Chaos Engineering: `ce-images.tgz`
      - Cloud Cost Management: `ccm-images.tgz`
+     - Chaos Engineering: `ce-images.tgz`
      - Continuous Delivery & GitOps NextGen: `cdng-images.tgz`
-     - Continuous Error Tracking: `ce-images.tgz`
+     - Continuous Error Tracking: `cet-images.tgz`
      - Continuous Integration: `ci-images.tgz`
      - Feature Flags: `ff-images.tgz`
      - Harness Platform: `platform-images.tgz`
-     - Service Reliability Management: `srm-images.tgz`
      - Security Testing Orchestration: `sto-images.tgz`
-   
+
    :::info note
    The `platform-images.tgz` file includes NextGen dashboards and policy management enabled by default. The `cdng-images.tgz` file includes GitOps by default.
    :::
@@ -87,7 +88,7 @@ To save Docker images, do the following:
     ```
     ./harness-airgap-images.sh -r REGISTRY.YOURDOMAIN.COM:PORT -f <moduleName-images.tgz>
     ````
-    
+
 ## Download and push Helm charts
 After you save Docker images to your private registry, you must download the Helm charts and push them to your repository.
 
@@ -95,15 +96,15 @@ To download and push Helm charts:
 
 You can use Helm to pull the chart and push it to your private repository or download the chart directly.
 
-- 
-    ``` 
+-
+    ```
     helm repo add harness https://harness.github.io/helm-charts
-    helm pull harness/harness 
+    helm pull harness/harness
     helm push harness docker://private-repo
     ```
 
 To download the Helm chart:
- 
+
  - Download the chart from the [Harness repository](https://github.com/harness/helm-charts/releases).
 
 ## Install via Helm

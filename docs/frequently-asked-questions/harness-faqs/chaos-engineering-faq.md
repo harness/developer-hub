@@ -65,7 +65,7 @@ To learn more, go to [authentication overview](../../platform/authentication/aut
 
 #### How does the chaos infrastructure connect to the Harness SaaS control plane? Which ports should be opened in the users’ environments?
 
-The chaos infrastructure connects to the Harness control plane through outbound connectivity over HTTP(s) using port 443. To learn more, go to [chaos infrastructures](../../chaos-engineering/configure-chaos-experiments/chaos-infrastructure/connect-chaos-infrastructures). 
+The chaos infrastructure connects to the Harness control plane through outbound connectivity over HTTP(s) using port 443. To learn more, go to [chaos infrastructures](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures). 
 
 #### What are the permissions and privileges required to deploy and run the chaos infrastructure?
 

@@ -104,21 +104,21 @@ If the connector is for an entire account, rather than a specific repository, yo
 
 Select Git events and, if applicable, one or more actions that will initiate the trigger.
 
-| **Payload Type** | **Event** | **Actions** |
-| --- | --- | --- |
-| **GitHub** | Pull Request | Select one or more of the following:<ul><li>Close</li><li>Edit</li><li>Open</li><li>Reopen</li><li>Label</li><li>Unlabel</li><li>Synchronize</li></ul> |
-| | Push | GitHub push triggers respond to commit and tag creation actions by default. |
-| | Release | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li><li>Prerelease</li><li>Publish</li><li>Release</li><li>Unpublish</li></ul> |
-| | Issue Comment (Only comments on pull requests are supported.) | Select one or more of the following:<ul><li>Created</li><li>Deleted</li><li>Edited</li></ul> |
-| **GitLab** | Merge Request | Select one or more of the following:<ul><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li><li>Sync</li></ul> |
-| | Merge Request Comment | Create |
-| | Push | GitLab push triggers respond to commit and tag creation actions by default. |
-| **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul> |
-| | Pull Request Comment | Select one xor more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
-| | Push | Bitbucket Cloud push triggers respond to commit and tag creation actions by default. |
-| **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul> |
-| | Issue Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
-| | Push | Azure SCM push triggers respond to commit actions by default. |
+| **Payload Type** | **Event** | **Actions**                                                                                                                                                                                                       |
+| --- | --- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **GitHub** | Pull Request | Select one or more of the following:<ul><li>Close</li><li>Edit</li><li>Open</li><li>Reopen</li><li>Label</li><li>Unlabel</li><li>Synchronize</li></ul>                                                            |
+| | Push | GitHub push triggers respond to commit and tag creation actions by default.                                                                                                                                       |
+| | Release | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li><li>Prerelease</li><li>Publish</li><li>Release</li><li>Unpublish</li></ul>                                                     |
+| | Issue Comment (Only comments on pull requests are supported.) | Select one or more of the following:<ul><li>Created</li><li>Deleted</li><li>Edited</li></ul>                                                                                                                      |
+| **GitLab** | Merge Request | Select one or more of the following:<ul><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li><li>Sync</li></ul>                                                                                 |
+| | Merge Request Comment | Create                                                                                                                                                                                                            |
+| | Push | GitLab push triggers respond to commit and tag creation actions by default.                                                                                                                                       |
+| **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul>                                                                                                         |
+| | Pull Request Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> Note that this event type is  currently supported only for Bitbucket cloud, and not for Bitbucket on-premises triggers. |
+| | Push | Bitbucket Cloud push triggers respond to commit and tag creation actions by default.                                                                                                                              |
+| **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul>                                                                                                                         |
+| | Issue Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul>                                                                                                                          |
+| | Push | Azure SCM push triggers respond to commit actions by default.                                                                                                                                                     |
 
 Harness uses your Harness account ID to map incoming events. Harness takes the incoming event and compares it to ALL triggers in the account. You can see the event ID that Harness mapped to a trigger in the webhook's event response body `data`, for example:
 
@@ -466,6 +466,8 @@ For information about other provider's token scopes, go to:
 * [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
 * [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
 * [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
+
+:::
 
 :::info note
 Harness Self-Managed Enterprise Edition does not support webhook triggers for Helm-based installations using self-signed certificates.
