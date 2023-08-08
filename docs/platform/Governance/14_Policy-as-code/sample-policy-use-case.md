@@ -314,7 +314,30 @@ deny[msg] {
 }
 
 ```
+#### Enforce a Stage Name via Regex 
 
+On Pipeline Save you can enforce a stage to adhere to a specific naming convention.
+
+```json
+package stage
+
+# Deny if stageName doesn't match the regex pattern
+# CRITERIA
+# Begin with a lowercase letter.
+# Followed by lowercase letters, numbers, or hyphens.
+# Be between 3 to 10 characters long.
+
+deny[msg] {
+    # Find all stages ...
+    stage = input.pipeline.stages[_].stage
+
+    # ... that are deployments
+    stage.type == "Deployment"
+
+    not regex.match("^[a-z][a-z0-9-]{2,9}$", stage.name)
+    msg := sprintf("The provided stage name '%v' is invalid.", [stage.name])
+}
+```
 
 ### Feature Flag policies
 
