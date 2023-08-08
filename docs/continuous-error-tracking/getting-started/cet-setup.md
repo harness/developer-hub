@@ -85,7 +85,7 @@ This topic provides details about:
 To learn about supported operating systems such as Java Virtual Machine (JVM) and JVM containers, go to [Continuous Error Tracking Agent compatibility](/docs/continuous-error-tracking/whats-supported).
 
 
-### Latest Releases
+### Latest releases
 
 | **OS** | **Download Link** |
 | --- | --- |
