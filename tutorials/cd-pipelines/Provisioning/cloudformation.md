@@ -127,7 +127,7 @@ If you already have a git connector that gives access to your forked [harnesscd-
 5. Under the **Step Parameters** add the **Provision Identifier** as `demoprovision`.
 6. Add the **AWS Connector** you created before and add the region for which your connector has persmission to create the Cloudformation Stack.
 7. Assuming you have already forked the harness-cd-example apps and have a functional github connector, use the same to add the template file in the file store.
-8. Select the **Git Fetch type** as `Latest from Branch` and add the **Branch** as `main` and **Template File Path** as `cf_template.yaml` and **Submit**
+8. Select the **Git Fetch type** as `Latest from Branch` and add the **Branch** as `main` and **Template File Path** as `cloudformation/cf_template.yaml` and **Submit**
 9. Now provide the **Stack Name** as `harness-provisoned-stack` and **Apply Changes**.
 10. Now **Save** and **Run** the pipeline. 
 
