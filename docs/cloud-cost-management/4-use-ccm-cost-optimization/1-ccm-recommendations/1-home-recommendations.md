@@ -36,8 +36,6 @@ The **Recommendation Breakdown** displays the following information:
 ## Ignore list
 You can ignore a recommendation for your node pool or workload. Select the **More actions** icon (three vertical dots), and then select **Add Nodepool to Ignore list** or **Add Workload to Ignore list**.
 
-If you want to view the ignored recommendations in the table, select the **Ignore List** checkbox in the **Include** dropdown list at the top of the page.
-
 To remove a recommendation from the ignore list, select **Manage Ignore List**. Then, select **Remove**.
 
 ## Apply recommendations
