@@ -16,7 +16,7 @@ This topic describes how to add and manage access control for CCM Dashboards.
 
 ## Before You Begin
 
-* [RBAC in Harness](/docs/platform/role-based-access-contro/rbac-in-harness)
+* [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 
 ## CCM Dashboards Roles and Permissions
 

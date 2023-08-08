@@ -142,7 +142,7 @@ If the response is successful, go to the **Projects** page in Harness to find yo
 
 Harness connectors contain information necessary to integrate and communicate with third-party tools, such as Docker registries, cloud providers, a source control repositories.
 
-The following `curl` command creates a [Docker registry connector](../../7_Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) called `dockerhub` that connects to Docker Hub anonymously. The connector is created in the `default` Harness organization under the [APISample project](#create-a-project-through-api).
+The following `curl` command creates a [Docker registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) called `dockerhub` that connects to Docker Hub anonymously. The connector is created in the `default` Harness organization under the [APISample project](#create-a-project-through-api).
 
 To use this command replace `ACCOUNT_ID` with your [Harness account ID](#get-your-account-id), and replace `API_KEY_TOKEN` with your [token](#create-a-harness-api-key-and-token).
 

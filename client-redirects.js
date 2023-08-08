@@ -54,7 +54,7 @@ module.exports = {
     },
     {
       from: "/docs/platform/Role-Based-Access-Control/set-up-rbac-pipelines",
-      to: "/docs/platform/Role-Based-Access-Control/rbac-in-harness",
+      to: "/docs/platform/role-based-access-control/rbac-in-harness",
     },
     {
       from: "/docs/platform/Role-Based-Access-Control/ref-access-management/api-permissions-reference",
