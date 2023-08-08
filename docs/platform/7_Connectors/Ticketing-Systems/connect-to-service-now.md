@@ -103,6 +103,10 @@ To use ADFS credentials for authentication:
 Currently, this feature is behind the feature flag `CDS_SERVICENOW_REFRESH_TOKEN_AUTH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
+:::info note
+This feature requires Harness Delegate 799xx or higher.
+:::
+
 Harness supports persistent refresh tokens only to authenticate via OpenID Connect (OIDC). All tokens must be valid and updated when revoked. Harness and third-party permissions are required (for example, AWS IAM policies, etc.) to perform tasks. Permissions granted in ServiceNow to this connector depend on the associated resource owner for the credentials/refresh token.
 
 To use an OIDC refresh token for authentication, do the following:
