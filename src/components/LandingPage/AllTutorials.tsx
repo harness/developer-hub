@@ -4,7 +4,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import TutorialCard from "./TutorialCard";
 import { FeaturedList } from "./data/allTutorialsData";
 import { CIList } from "./data/continuousIntegrationData";
-import { CDList } from "./data/continuousDeliveryData";
+import { K8SList } from "./data/continuousDeliveryData";
 import { CCMList } from "./data/cloudCostManagementData";
 import { FFList } from "./data/featureFlagsData";
 import { SRMList } from "./data/serviceReliabilityManagementData";
