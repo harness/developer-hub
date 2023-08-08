@@ -1732,7 +1732,7 @@ To add an artifact from ECR, do the following:
 11. If user has access to repository of secondary account, in **Registry ID**, specify the AWS account ID associated with the repository.
     :::note
 
-    Only **Tags** can be fetched from secondary account repository. User need to type **Image Path** manually.
+    Only **Tags** can be fetched from secondary account repository. User has to enter **Image Path** manually.
 
     :::
 12. In **Image Path**, enter the name of the artifact you want to deploy.
