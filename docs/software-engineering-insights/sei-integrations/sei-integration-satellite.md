@@ -12,6 +12,12 @@ import TabItem from '@theme/TabItem';
 
 Use Ingestion Satellites to integrate with on-premise tools and set up **Custom** integrations.
 
+:::tip
+
+In addition to Ingestion Satellites and other [integrations](./sei-integrations-overview.md), you can [import CSV files](../sei-propels-scripts/tables.md) and display the data in [Table reports](../sei-propels-scripts/table-reports.md).
+
+:::
+
 ## Configure the integration
 
 1. In your Harness project, go to the SEI module, select **Account**, and then select **SEI Integrations** under **Data Settings**.

@@ -28,7 +28,7 @@ To start using SEI, configure the following:
 
 :::tip
 
-[Propels](/docs/category/propels) are an optional way to use SEI to add human-in-the-loop automation to your SDLC.
+Use [Propels](/docs/category/propels-and-tables) to add human-in-the-loop automation to your SDLC.
 
 :::
 

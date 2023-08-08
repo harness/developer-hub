@@ -41,3 +41,9 @@ On-prem integrations and tools without application-specific integrations require
 ## Other integrations
 
 For information about custom CI/CD and Jenkins integrations, go to [Other SEI integrations](./sei-integration-other.md).
+
+:::tip
+
+In addition to SEI integrations, you can [import CSV files](../sei-propels-scripts/tables.md) and display the data in [Table reports](../sei-propels-scripts/table-reports.md).
+
+:::

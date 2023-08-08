@@ -12,6 +12,12 @@ This topic explains how to configure:
 
 For information about the **Custom** integration that uses an Ingestion Satellite, go to [Ingestion Satellites](./sei-integration-satellite.md).
 
+:::tip
+
+In addition to SEI integrations, you can [import CSV files](../sei-propels-scripts/tables.md) and display the data in [Table reports](../sei-propels-scripts/table-reports.md).
+
+:::
+
 ## Jenkins Job Reporter plugin
 
 The [Job Reporter plugin](https://plugins.jenkins.io/propelo-job-reporter/) is a tool, written in Java, that sends reports about Jenkins builds to SEI. It monitors all job runs, and, when a job run completes (successfully or not), it sends information about job run (including any failure logs) to SEI. This plugin **doesn't** do periodic pushes.
