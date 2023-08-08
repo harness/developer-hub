@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-08-04T10:00:15
+date: 2023-08-09T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -19,8 +19,9 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe might not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page in your Harness account.
 :::
 
-## Latest - August 4, 2023, version 80120
+## Latest - August 9, 2023, version 802xx
 
+<!-- 
 #### Deprecation notices
 
 **Helm 2**
@@ -35,10 +36,109 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
+-->
+
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+
+* Harness has introduced restrictions on the depth of nesting in execution pipelines to enhance system stability. Now, a node execution will not be allowed if it exceeds 25 levels of nesting. The 25th level refers to the node being the 25th child starting from the root node `pipeline`. (CDS-75249)
+
+  This limitation is configurable, allowing Harness to increase the nesting limit if required to accommodate more complex pipelines.
+
+  To determine the optimal limit, we considered scenarios with 5 nested stepGroups with a looping matrix and step group running in parallel at each possible node. As a result, we have set the limit to 25, ensuring that it should not affect any practical pipelines we have encountered so far.
+
+  For example, a pipeline structure with maximum level 24 with nested stepGroups is provided below. However, upon close examination, we observed that it exceeds the practical complexity of pipelines we typically encounter.
+
+  ```
+  pipeline:
+    stages:
+      matrix:
+        stage:
+          spec:
+            execution:
+              steps:
+                matrix:
+                  stepGroup:
+                    steps:
+                      matrix:
+                        stepGroup:
+                          steps:
+                            matrix:
+                              stepGroup:
+                                steps:
+                                  matrix:
+                                    stepGroup:
+                                      steps:
+                                        matrix:
+                                          stepGroup:
+                                            steps:
+                                              matrix:
+                                                step
+  ```
+
+  This change is vital to prevent potential issues that could arise due to a large number of recursively spawned children, leading to CPU spikes and POD restarts within our system. By implementing this restriction, we aim to maintain system performance and stability for all our customers.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not have Early Access features. 
+  
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+* Fixed an issue that caused the UI to crash when the input value of a component was changed from runtime to expression. (CDS-76216) 
+
+* Fixed an issue in the Run step where changing the git branch would cause merge calls to fail. (CDS-75716)
+
+* Fixed an issue to ensure that a log message gets generated if a build fails  due to a mismatch between the received and expected type of an input field. (CDS-75457)
+
+* When a Pipeline was executed using a trigger, the details did not appear in the **Executed By** column in the **Executions List** page. This has now been fixed and the trigger details are now displayed. (CDS-75025, ZD-47890)
+
+- Fixed an intermittent issue where account-level templates could not access their referenced templates. Now, the reference links point to the correct resources. (CDS-74811)
+
+* Fixed a UI issue in **Pipeline** and **Execution** pages where a search term would persist even after switching to a different project.  (CDS-74788)
+
+* Fixed an issue where the Harness Approval step would always fail if the step had automatic approvals set up with approver inputs. To fix this, the check for approver inputs has been removed.  (CDS-74648)
+
+* Fixed an issue where manifest extraction script was being rendered in service step itself before K8s steps. We're now rendering serviceOverrideVariables expressions later in the step itself so that the overridden value is used. (CDS-74335, ZD-47503)
+
+* Fixed a UI issue where the **Cloud Formation Create Stack** page did not persist user inputs when converting dropdown values. For example, trying to change the **Region** field to an expression would result in an error screen with the message `Something went wrong, this error has been reported`. This was due to an error when creating a values array for the dropdown menu. The issue has been fixed to ensure that the conversion is in sync with the UI and the dropdown values are persisted. (CDS-73426, ZD-47608)
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+## August 4, 2023, version 80120
+
+##### Deprecation notices
+
+**Helm 2**
+
+import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
+
+<Helmdep />
+
+**Kustomize**
+
+import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
+
+<Kustomizedep />
+
+##### What's new
 
 - Upgraded the Helm binary from version 3.8 to 3.12. (CDS-58931)
 
@@ -53,27 +153,19 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 - You can now migrate Services with Helm charts from Helm repository-stored Artifacts from CG to NG. This will help in migrations. This feature is behind the feature flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG`. (CDS-73894)
 
 - You can now configure multiple Helm charts in the manifests. This provides feature parity with Harness FirstGen. Helm charts can now be configured from Helm Repository as Artifacts that allow the users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service. This feature is behind the feature flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG`. (CDS-70209)
   
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 - The **Prod Listener Rule ARN** and **Stage Listener Rule ARN** parameters, which are required in an ASG Blue Green deploy step, were incorrectly marked as optional in the **ASG Blue Green Deploy Step** UI. Since they are required for a successful deployment, they've been changed to required fields. (CDS-75117)
 
 - When a Pipeline was executed using a trigger, the details did not appear in the **Executed By** column on the Executions List page. This has now been fixed, and the Trigger details are now displayed. (CDS-75025, ZD-47890)
 
 - Previously, there was no way to force delete resources from the Harness file store. This has now been enabled. (CDS-74878)
-
-- Fixed an intermittent issue where account-level templates could not access their referenced templates. Now, the reference links point to the correct resources. (CDS-74811)
 
 - Fixed an issue where, when a stage (say, s2) is created with a propagated service from a previous stage (say, s1), saving s2 as a template was not allowed due to the service reference. However, no error message was displayed. The issue is now fixed, and the error message is displayed correctly. (CDS-74759)
 
@@ -155,16 +247,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### July 27, 2023, version 80018
 

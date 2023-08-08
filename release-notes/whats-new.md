@@ -19,7 +19,49 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 7, 2023
+
+## Latest - August 9, 2023
+
+### Harness CD, version 802xx
+
+* Harness has introduced restrictions on the depth of nesting in execution pipelines to enhance system stability. Now, a node execution will not be allowed if it exceeds 25 levels of nesting. The 25th level refers to the node being the 25th child starting from the root node `pipeline`. (CDS-75249)
+
+  This limitation is configurable, allowing us Harness to increase the nesting limit if required to accommodate more complex pipelines.
+
+  To determine the optimal limit, we considered scenarios with 5 nested stepGroups with a looping matrix and step group running in parallel at each possible node. As a result, we have set the limit to 25, ensuring that it should not affect any practical pipelines we have encountered so far.
+
+  For example, a pipeline structure with maximum level 24 with nested stepGroups is provided below. However, upon close examination, we observed that it exceeds the practical complexity of pipelines we typically encounter.
+
+  ```
+  pipeline:
+    stages:
+      matrix:
+        stage:
+          spec:
+            execution:
+              steps:
+                matrix:
+                  stepGroup:
+                    steps:
+                      matrix:
+                        stepGroup:
+                          steps:
+                            matrix:
+                              stepGroup:
+                                steps:
+                                  matrix:
+                                    stepGroup:
+                                      steps:
+                                        matrix:
+                                          stepGroup:
+                                            steps:
+                                              matrix:
+                                                step
+  ```
+
+  This change is vital to prevent potential issues that could arise due to a large number of recursively spawned children, leading to CPU spikes and POD restarts within our system. By implementing this restriction, we aim to maintain system performance and stability for all our customers.
+
+## August 7, 2023
 
 ### Harness Chaos Engineering, version 1.16.5
 
