@@ -239,8 +239,8 @@ The following table lists Harness support for deployment platforms, artifacts, s
               <li>Using Route 53 DNS</li>
             </ul>
           </li>
-          <li>Rolling:<ul>
-              <li> >Caveat: It&#39;s created as a Basic Workflow</li>
+          <li>Multi-Service:<ul>
+              <li> >Caveat: It is created as a Basic Workflow</li>
             </ul>
           </li>
         </ul>
@@ -250,7 +250,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
         <ul>
           <li> Canary: Canary Analysis - Realtime Load</li>
           <li> Blue/Green: Previous Analysis - Synthetic Load</li>
-          <li> Rolling: Previous Analysis - Synthetic Load</li>
+          <li> Multi-Service: Previous Analysis - Synthetic Load</li>
         </ul>
         <p> Deployment Type - Fargate:</p>
         <p>Same strategy support as EC2.</p>
