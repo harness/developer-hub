@@ -1,11 +1,10 @@
 ---
 sidebar_position: 0
 hide_table_of_contents: true
-title: Cloudformation 
+title: CloudFormation 
 ---
-## Use of Cloudformation to provision pipeline and infrastructure.
 
-This tutorial will focus on the usaage of [AWS Cloudformation](https://aws.amazon.com/cloudformation/) as an IAAC tool to provision harness pipeline and infrastructure within harness pipeline. 
+This tutorial focuses on the usage of [AWS CloudFormation](https://aws.amazon.com/cloudformation/) as an IAAC tool to provision Harness infrastructure within a Harness pipeline. 
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -33,42 +32,41 @@ This tutorial will provision a CD stage's deployment infrastructure resources us
 <Tabs>
 <TabItem value="Provision deployment infrastructure">
 ```
-This tutorial will focus on the use of Cloudformation to provision the target infrastructure for a deployment, and then deploy to that provisioned infrastructure.
+This tutorial will focus on the use of CloudFormation to provision the target infrastructure for a deployment, and then deploy to that provisioned infrastructure.
 
 ```mdx-code-block
 </TabItem>
 <TabItem value="Provision other resources">
 ```
-This totrial will focsus on the use of Cloudformation to provision any resources other than the target infrastructure for the deployment in the pipeline. 
+This totrial will focsus on the use of CloudFormation to provision any resources other than the target infrastructure for the deployment in the pipeline. 
 
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ``` -->
 
-```mdx-code-block
-<Tabs>
-<TabItem value="Provision and Delete infrastructure">
-```
+## Provision and delete infrastructure
+
+
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Provision with Cloudformation Create Stack">
+<TabItem value="Provision with CloudFormation Create Stack">
 ```
 This tutorial will provision resources in a **Custom stage** using the CloudFormation **Create Stack** step.
 
-## Before You Begin
+### Before you begin
 
 Verify that you have the following:
 
-1. **A Kubernetes cluster** in Cloudformation: Create a **stack** in CloudFormation to provsion a **EKS cluster** to be used as **deployment infrastructure**.
+1. **A Kubernetes cluster** in CloudFormation: Create a **stack** in CloudFormation to provision an **EKS cluster** to be used as **deployment infrastructure**.
 2. **Obtain GitHub personal access token with the repo scope**. See the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). 
 3. Fork the **[harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website, which contains the **CF template** file. 
-4. A functioning **Harness Pipeline** that deploys an application on your cluster using a mnifest, please follow this [get started tutorial](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/manifest) to set it up. 
+4. A functioning **Harness pipeline** that deploys an application on your cluster using a manifest. Please follow this [get started tutorial](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/manifest) to set it up. 
 
-### Get Started
+### Get started
 
-1. Login to [Harness](https://app.harness.io).
+1. Log into [Harness](https://app.harness.io).
 2. Select **Projects**, and then select **Default Project**.
 
 ### Secrets
@@ -80,7 +78,7 @@ Verify that you have the following:
     - For the secret value, paste the GitHub personal access token you saved earlier.
     - Select **Save**.
 
-### AWS Connector
+### AWS connector
 
 1. Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/cloudformation/aws-connector.yml).
 2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
@@ -93,11 +91,11 @@ Verify that you have the following:
 9. Select **Save Changes** and verify that the new connector named **harness_awsconnector** is successfully created.
 10. Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
 
-### Github Connector
+### GitHub connector
 
 :::info
 
-If you already have a git connector that gives access to your forked [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps), then proceed to creating a pipeline directly. 
+If you already have a Git connector that gives access to your forked [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps) repo, then proceed to creating a pipeline directly. 
 
 :::
 
@@ -110,26 +108,25 @@ If you already have a git connector that gives access to your forked [harnesscd-
     - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
 
-### Create Pipeline with Custom Stage
+### Create pipeline with custom stage
 
-1. In **Default Project**, select **Pipelines** from left nav-bar.
+1. In **Default Project**, select **Pipelines**.
     - Select **New Pipeline** or **Create a Pipeline**.
     - Enter the name `cf_provisioned_pipeline`.
     - Select **Inline** to store the pipeline in Harness.
-    - Select **Start**
+    - Select **Start**.
+2. In the pipeline studio, in **Select Stage Type**, select **Custom Stage**.
+3. Name the stage `infra-provision` and select **Set Up Stage**. 
+4. Select **Add Step**, and select **CloudFormation Create Stack**.
 
-2. In the pipeline studio, **Select Stage Type** as **Custom Stage**.
-3. Name the stage as `infra-provision` and **set up stage**. 
-4. Now Add Step and search for **CloudFormation Create Stack**.
+### CloudFormation Create Stack step
 
-### CloudFormation Create Stack Step
-
-5. Under the **Step Parameters** add the **Provision Identifier** as `demoprovision`.
-6. Add the **AWS Connector** you created before and add the region for which your connector has persmission to create the Cloudformation Stack.
-7. Assuming you have already forked the harness-cd-example apps and have a functional github connector, use the same to add the template file in the file store.
-8. Select the **Git Fetch type** as `Latest from Branch` and add the **Branch** as `main` and **Template File Path** as `cloudformation/cf_template.yaml` and **Submit**
-9. Now provide the **Stack Name** as `harness-provisoned-stack` and **Apply Changes**.
-10. Now **Save** and **Run** the pipeline. 
+1. Under **Step Parameters**, add the **Provision Identifier** as `demoprovision`.
+2. Add the **AWS Connector** you created before and add the region for which your connector has persmission to create the CloudFormation Stack.
+3. Assuming you have already forked the **harness-cd-example** apps repo and have a functional GitHub connector, use the same connector to add the template file in the file store.
+4. Select the **Git Fetch type** as `Latest from Branch`, add the **Branch** as `main`, set the **Template File Path** as `cloudformation/cf_template.yaml`, and select **Submit**
+5. Now provide the **Stack Name** as `harness-provisoned-stack` and select **Apply Changes**.
+6. Now **Save** and **Run** the pipeline. 
 
 Check your AWS Management console for CloudFormation and you'll find the new CloudFormation Stack created. 
 
@@ -138,25 +135,24 @@ Check your AWS Management console for CloudFormation and you'll find the new Clo
 </TabItem>
 <TabItem value="Rollback provisioned infrastructure with the CloudFormation Rollback step">
 ```
-This tutorial will **rollback infrastructure** using **CloudFormation Rollback Stack step** in the **Rollback section** of your Deploy stage.
+This tutorial will rollback infrastructure using the **CloudFormation Rollback Stack step** in the **Rollback**  section of your Deploy stage.
 
 :::info
 
-This tutorial is a continuation of the previous tab of **Create Stack** step in **Custom Stage**
+This tutorial is a continuation of the previous tab using the **Create Stack** step in a **Custom Stage**.
 
 :::
 
-## Before You Begin
+### Before you begin
 
 Verify that you have the following:
 
-1. You have a working kubernetes cluster provisioned which will be used as deployment infrastructure, please follow the previous tab to provison the same using CloudFormation. 
+1. You have a working Kubernetes cluster that will be used as the deployment infrastructure. Please follow the previous tab to provision it using CloudFormation. 
 
-## Getting Started with Harness CD
-----------------------------------
+### Getting Started with Harness CD
 
-1. Login to [Harness](https://app.harness.io/).
-2. Select **Projects**, and then select **Default Project** in which you have created the pipeline `cf_provisioned_pipeline` in the previous tab. 
+1. Log into [Harness](https://app.harness.io/).
+2. Select **Projects**, and then select the **Default Project** where you created the pipeline `cf_provisioned_pipeline` (in the previous tab). 
 3. Now install the following resources to be used in the pipeline. 
 
 ### Delegate
@@ -166,7 +162,7 @@ Verify that you have the following:
         - Select **New Token**.
         - Name the token `delegate_token`.
         - Select **Apply**.
-        - Copy the token value by selecting on the copy icon and store it somewhere.
+        - Copy the token value using the copy icon and store it somewhere.
         - Select **Close**.
     - Select **Delegates**.
         - Select **New Delegate**.
@@ -210,7 +206,6 @@ You can also follow the [Install Harness Delegate on Kubernetes or Docker](https
 
 ### Secrets
 
-
 1. Under **Project Setup**, select **Secrets**.
     - Select **New Secret**, and then select **Text**.
     - Enter the secret name `harness_gitpat`.
@@ -228,13 +223,13 @@ You can also follow the [Install Harness Delegate on Kubernetes or Docker](https
     - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
 
-::: info
+:::info
 
-Here we are using the same EKS cluster as deployment infrastructure which we provisioned in the previous step
+Here we are using the same EKS cluster we provisioned in the **Provision with CloudFormation Create Stack** tab.
 
 :::
 
-2. Create the **Kubernetes connector**.
+1. Create the **Kubernetes connector**.
     - Copy the contents of [kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/kubernetes-connector.yml).
     - In your Harness project, under **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and and paste the copied YAML.
@@ -264,23 +259,17 @@ Here we are using the same EKS cluster as deployment infrastructure which we pro
 
 
 
-### Deploy Stage and Rollback the infrastructure. 
+### Deploy stage and rollback the infrastructure
 
-1. In the `cf_provisioned_pipeline` you already created, add a new **stage** after the `infra_provision` **custom stage** and **Select Stage Type** as **Deploy**.
+1. In the `cf_provisioned_pipeline` you already created, add a new **stage** after the `infra_provision` Custom stage and, in **Select Stage Type**, select **Deploy**.
+2. Now in the **Select Service** drop-down select the `harness_guestbook` and select **Continue**.
+3. Specify the environment as `harnessdevenv` and select the infrastructure `harness_k8sinfra`.
+4. Select **Continue**.
+5. For the execution type, select the **Canary** strategy. 
+6. Select **Add Step**, and add the **CLoudFormation Rollback** step. 
+7. In **Provisioner Identifier**, enter `demoprovision` and apply changes.
+8. Select **Save** and **Run** the pipeline. 
 
-2. Now in the **Select Service** drop-down select the `harness_guestbook` and Continue to the next step.
-
-3. Specify Environment as `harnessdevenv` and infrastructure as `harness_k8sinfra`.
-
-4. In the execution type select the strategy as **Canary** and select **Add Step**, search for the **CLoudFormation Rollback** and add the **Provisioner Identifier** as `demoprovision`, apply changes.
-
-5. **Save** and **Run** the pipeline. 
-
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
 
 ```mdx-code-block
 </TabItem>
