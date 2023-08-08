@@ -23,6 +23,13 @@ Harness publishes security advisories for every release. Go to the [Harness Trus
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
+## Deprecation notice
+
+The following deprecated API endpoints will no longer be supported:
+- [GET | PUT | POST | DELETE] api/resourcegroup/{identifier}
+- POST api/resourcegroup/filter
+- GET api/resourcegroup
+
 ## Latest - August 4, 2023, version 80120
 
 
