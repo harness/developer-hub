@@ -47,36 +47,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   This limitation is configurable, allowing Harness to increase the nesting limit if required to accommodate more complex pipelines.
 
-  To determine the optimal limit, we considered scenarios with 5 nested stepGroups with a looping matrix and step group running in parallel at each possible node. As a result, we have set the limit to 25, ensuring that it should not affect any practical pipelines we have encountered so far.
-
-  For example, a pipeline structure with maximum level 24 with nested stepGroups is provided below. However, upon close examination, we observed that it exceeds the practical complexity of pipelines we typically encounter.
-
-  ```
-  pipeline:
-    stages:
-      matrix:
-        stage:
-          spec:
-            execution:
-              steps:
-                matrix:
-                  stepGroup:
-                    steps:
-                      matrix:
-                        stepGroup:
-                          steps:
-                            matrix:
-                              stepGroup:
-                                steps:
-                                  matrix:
-                                    stepGroup:
-                                      steps:
-                                        matrix:
-                                          stepGroup:
-                                            steps:
-                                              matrix:
-                                                step
-  ```
+  To determine the optimal limit, we considered scenarios with 5 nested stepGroups with a looping matrix and step group running in parallel at each possible node. As a result, we have set the limit to 25, ensuring that it should not affect any practical pipelines we have encountered so far. (Currently the most complex pipeline in our production clusters has a maximum nesting of 16 levels.)
 
   This change is vital to prevent potential issues that could arise due to a large number of recursively spawned children, leading to CPU spikes and POD restarts within our system. By implementing this restriction, we aim to maintain system performance and stability for all our customers.
 
@@ -95,8 +66,6 @@ This release does not have Early Access features.
 * Fixed an issue that caused the UI to crash when the input value of a component was changed from runtime to expression. (CDS-76216) 
 
 * Fixed an issue in the Run step where changing the git branch would cause merge calls to fail. (CDS-75716)
-
-* Fixed an issue to ensure that a log message gets generated if a build fails  due to a mismatch between the received and expected type of an input field. (CDS-75457)
 
 * When a Pipeline was executed using a trigger, the details did not appear in the **Executed By** column in the **Executions List** page. This has now been fixed and the trigger details are now displayed. (CDS-75025, ZD-47890)
 
