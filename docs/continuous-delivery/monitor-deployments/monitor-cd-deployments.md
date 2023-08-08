@@ -206,3 +206,78 @@ https://www.youtube.com/watch?v=9fqbYP6iK3g-->
 
 See [Create Dashboards](../../platform/18_Dashboards/create-dashboards.md).
 
+### Monitor deployments using custom CD dashboards
+
+This release includes an extensive set of new dashboard components that provide visibility into the performance of your pipeline builds. You can create custom dashboards to answer questions such as:
+
+* Which stages and steps contain performance bottlenecks? 
+
+* Which stages and steps have the most failures? 
+
+* How much time is spent deploying artifacts vs. waiting for Jira approvals and other manual interventions? 
+
+:::note
+This feature is behind the feature flag `CDS_CUSTOM_STAGE_EXECUTION_DATA_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can use the following components to monitor the performance of your deployment pipelines: 
+
+* Custom Stage Requirement
+
+  * Stage Name
+
+  * Stage Type
+
+  * Status
+
+  * Duration
+
+  * start time
+
+  * end time
+
+  * Failure Message
+
+  * tags
+
+* Approval Step  — Harness, Jira, ServiceNow, Custom
+
+  * Step Name
+
+  * Step Type
+
+  * Status
+
+  * Duration
+
+  * start time
+
+  * end time
+
+  * error message
+
+  * Approver (Harness)
+
+  * Approver message (Harness)
+
+* Jira Create/ Update
+
+  * Name
+
+  * Type
+
+  * Status
+
+  * Duration
+
+  * start time
+
+  * end time
+
+  * error message
+
+* Stage level Custom variables
+
+* Pipeline level Custom variables
+
+* Manifests
