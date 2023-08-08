@@ -328,7 +328,7 @@ No, Harness doesn't support dynamic picking of instance families in node recomme
 
 Yes, Harness considers RIs and Savings Plans to provide insights into potential spend and savings. 
 
-### Perspectives
+### Perspectives and Dashboards
 
 #### What is the limit to the number of Perspectives that I can create in an account?
 
@@ -342,11 +342,27 @@ CCM unifies tags in AWS/GCP/Azure as labels in Perspectives.
 
 Yes, you can view the data across the FirstGen and NextGen.
 
+#### Why do I observe difference in costs between the Perspective and Dashboard data?
+
+To resolve any cost differences between the Perspective and Dashboard in Harness CCM, consider the following steps:
+
+* **Time Period Consistency**: Make sure to set the same time period in both Perspective and Dashboard. If you have defined a specific time period (For example, June) in the Perspective, ensure that the Dashboard also uses the same time period for accurate comparisons.
+* **Time Range Adjustment**: You must set the following two time filters when you create the dashboard. 
+
+  * Reporting Timeframe
+  * Time Period
+
+  If the Dashboard is set to the default **ReportingTimeframe** value (Last 30 days) that does not encompass the specified **Time Period**, adjust the Reporting Timeframe filter to cover a larger interval that includes the Time Period filter. This ensures that the Dashboard data spans the same duration as the Perspective.
+
+  ![](./static/dashboard-time-filters.png)
+
+
+
 ### Budgets and reports
 
 #### When will I receive notifications for the alerts that I’ve configured in my budgets?
 
-Notifications are sent out daily at 2.30 p.m. GMT. The budget alerts are sent out when the cost of your budget has crossed the configured threshold.
+Notifications are sent out daily at 2:30 PM GMT. The budget alerts are sent out when the cost of your budget has crossed the configured threshold.
 
 #### I created a budget and set the budget amount less than the spend of the current period. Why didn’t I get a notification immediately?
 
