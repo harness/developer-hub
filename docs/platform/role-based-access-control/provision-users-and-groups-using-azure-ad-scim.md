@@ -73,13 +73,13 @@ In Azure AD, add Harness to your list of managed SaaS applications from the Azur
 
    :::tip Scoping filters
 
-   If you want to configure scoping filters for your attribute mappings, go to the Microsoft documentation on [Scoping users or groups ot be provisioned with scoping filters](https://learn.microsoft.com/en-us/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts?pivots=app-provisioning).
+   If you want to configure scoping filters for your attribute mappings, go to the Microsoft documentation on [Scoping users or groups to be provisioned with scoping filters](https://learn.microsoft.com/en-us/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts?pivots=app-provisioning).
 
    :::
 
 13. Select **Save**.
 
-Saving the configuration in Azure AD triggers an initial provisioning sync. The initial sync takes longer to run than subsequent syncs. Syncs occur approximately every 40 minutes, if the Azure AD provisioning service is running. To monitor sync progress, go to **Synchronization Details** in Azure AD. From there you can also find links to provisioning activity reports, which describe all actions performed by the Azure AD provisioning service in Harness. For more information about how to read the Azure AD provisioning logs, go to the Microsoft documentation on [Reporting on automatic user account provisioning](https://learn.microsoft.com/en-us/azure/active-directory/app-provisioning/check-status-user-account-provisioning).
+Saving the configuration in Azure AD triggers an initial provisioning sync. The initial sync takes longer to run than subsequent syncs. Syncs occur approximately every 40 minutes if the Azure AD provisioning service is running. To monitor sync progress, go to **Synchronization Details** in Azure AD. From there you can also find links to provisioning activity reports, which describe all actions performed by the Azure AD provisioning service in Harness. For more information about how to read the Azure AD provisioning logs, go to the Microsoft documentation on [Reporting on automatic user account provisioning](https://learn.microsoft.com/en-us/azure/active-directory/app-provisioning/check-status-user-account-provisioning).
 
 After enabling Azure AD provisioning for Harness, you must [assign permissions to user groups](#assign-permissions) in Harness.
 
@@ -99,7 +99,7 @@ Role and resource group assignments are not controlled in Azure AD. You must [as
 
 :::info Group names
 
-When provisioning user groups through SCIM, Harness creates IDs for user groups based on the group name in Azure AD. If the name contains periods, dashes, or spaces, those characters are replaced by underscores in the Harness user group ID. For example, if a groups name is `example-group` in Azure AD, the group's Harness ID is `example_group`.
+When provisioning user groups through SCIM, Harness creates IDs for user groups based on the group name in Azure AD. If the name contains periods, dashes, or spaces, those characters are replaced by underscores in the Harness user group ID. For example, if a group's name is `example-group` in Azure AD, the group's Harness ID is `example_group`.
 
 If an Azure AD-provisioned user group has the same name as an existing user group in Harness, Harness retains both groups. To prevent confusion, you can rename the existing Harness group.
 

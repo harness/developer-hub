@@ -25,7 +25,7 @@ RBAC is additive. The total expanse of a user/service account's permissions and 
 
 It is important to follow the principle of least privilege (PoLP). This is a security principle that means users are granted the absolute minimum access/permissions necessary to complete their tasks and nothing more.
 
-While Harness includes some built-in roles and resource groups, to ensure least privilege, consider:
+While Harness includes some built-in roles and resource groups, to ensure the least privilege, consider:
 
 * Being selective in the way you apply roles and resource groups.
 * Creating your own roles and resource groups as needed for refined access control.
@@ -111,7 +111,7 @@ Harness includes several built-in resource groups.
 <details>
 <summary>Built-in resource groups at the Account scope</summary>
 
-* **All Resources Including Child Scopes:** Includes all resources within the account's scope as well as those within the scope of orgs and projects under the account. This is the most inclusive resource group possible.
+* **All Resources Including Child Scopes:** Includes all resources within the account's scope, as well as those within the scope of orgs and projects under the account. This is the most inclusive resource group possible.
 
 ```mermaid
 flowchart TD
@@ -154,7 +154,7 @@ flowchart TD
 <details>
 <summary>Built-in resource groups at the Org scope</summary>
 
-* **All Resources Including Child Scopes:** Includes all resources within a specific org's scope as well as those within the scope of projects under that org. This is set for each org. If you have multiple orgs, you have an **All Resources Including Child Scopes** for each org.
+* **All Resources Including Child Scopes:** Includes all resources within a specific org's scope, as well as those within the scope of projects under that org. This is set for each org. If you have multiple orgs, you have an **All Resources Including Child Scopes** for each org.
 
 ```mermaid
 flowchart TD

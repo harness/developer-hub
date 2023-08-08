@@ -54,7 +54,7 @@ To create user groups in Harness, you need a role, such as **Account Admin**, th
    * To create a user group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
 2. Select **User Groups** in the header, and then select **New User Group**.
-3. Enter a **Name** for the user group.  **Description** and **Tags** are optional.
+3. Enter a **Name** for the user group. **Description** and **Tags** are optional.
 4. In **Add Users**, select users to add to the group. If you haven't invited any users yet, you can [add users](#add-users-to-a-group) later.
 4. Select **Save**.
 5. [Assign roles and resource groups](#assign-roles-and-resource-groups) to the user group.
@@ -103,7 +103,7 @@ RBAC is additive. The total expanse of a user/service account's permissions and 
 
 It is important to follow the principle of least privilege (PoLP). This is a security principle that means users are granted the absolute minimum access/permissions necessary to complete their tasks and nothing more.
 
-While Harness includes some built-in roles and resource groups, to ensure least privilege, consider:
+While Harness includes some built-in roles and resource groups, to ensure the least privilege, consider:
 
 * Being selective in the way you apply roles and resource groups.
 * Creating your own roles and resource groups as needed for refined access control.

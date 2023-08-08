@@ -157,7 +157,7 @@ You can provision Okta user groups in Harness. To do this, you must assign group
 
 :::info Group names
 
-When provisioning user groups through SCIM, Harness creates IDs for user groups based on the group name in Okta. If the name contains periods, dashes, or spaces, those characters are replaced by underscores in the Harness user group ID. For example, if a groups name is `example-group` in Okta, the group's Harness ID is `example_group`.
+When provisioning user groups through SCIM, Harness creates IDs for user groups based on the group name in Okta. If the name contains periods, dashes, or spaces, those characters are replaced by underscores in the Harness user group ID. For example, if a group's name is `example-group` in Okta, the group's Harness ID is `example_group`.
 
 If an Okta-provisioned user group has the same name as an existing user group in Harness, Harness retains both groups. To prevent confusion, you can rename the existing Harness group.
 
@@ -245,11 +245,11 @@ Deactivating a user removes them from *all provisioned apps*, including Harness.
 :::
 
 1. From your Okta administrator account, select **Directory**, and then select **People**.
-2. Locate the user you want to deactivate, and select their name.
+2. Locate the user you want to deactivate, and then select their name.
 3. On the user's profile, select **More Actions**, and then select **Deactivate**.
 4. Select **Deactivate** on the confirmation dialog.
 
-To reactivate a deactivated users, go to the user's profile, select **More Actions**, and then select **Activate**.
+To reactivate a deactivated user, go to the user's profile, select **More Actions**, and then select **Activate**.
 
 ## I already have a Harness FirstGen Okta integration
 

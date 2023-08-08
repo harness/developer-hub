@@ -22,7 +22,7 @@ For more information, go to [create services](/docs/continuous-delivery/x-platfo
 
 ## Services RBAC
 
-Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) for example of RBAC use cases for services.
+Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) for examples of RBAC use cases for services.
 
 ## Access permission to deploy to a service
 

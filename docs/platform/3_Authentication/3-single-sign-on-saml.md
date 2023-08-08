@@ -110,7 +110,7 @@ Sometimes users might have mixed case email addresses in Okta. In these situatio
 
    ![](./static/single-sign-on-saml-59.png)
 
-12. Select **Next** and then Select **Finish**.
+12. Select **Next**, and then Select **Finish**.
 
 ### Okta SAML Metadata File
 
@@ -159,7 +159,7 @@ Now that Okta is set up in Harness as a SAML SSO provider, you can enable and te
 
 Once you have enabled Harness SSO with your Okta app, you can set up and enable Okta SAML authorization in Harness.
 
-To set up SAML authorization in Harness, link a [Harness user group](../role-based-access-control/add-user-groups) to an Okta user group. When an Okta user in that Okta user group logs in to Harness, they are automatically added to the associated Harness user group, and the user inherits all permissions and access assigned to that group. For more information about this, go to [RBAC in Harness](../role-based-access-control/rbac-in-harness).
+To set up SAML authorization in Harness, link a [Harness user group](../role-based-access-control/add-user-groups) to an Okta user group. When an Okta user in that Okta user group logs in to Harness, they are automatically added to the associated Harness user group, and the user inherits all permissions and access assigned to that group. For more information, go to [RBAC in Harness](../role-based-access-control/rbac-in-harness).
 
 1. Set up SAML SSO in Harness as described in [SAML SSO with Okta](#saml-sso-with-okta).
 
@@ -227,12 +227,14 @@ To set up SAML authorization in Harness, link a [Harness user group](../role-bas
 
 	   ![](./static/single-sign-on-saml-72.png)
 
-	7. Select **Next** and then select **Finish**.
+	7. Select **Next**, and then select **Finish**.
 
 6. Make sure you have the following information from Okta:
 
    * **Group Name:** This is the name of the Okta user group containing the users you want to authorize in Harness. The email addresses registered in this group must be the same as the email addresses these users have registered in Harness.
-   * **Group Attribute Name:** This is the Group Attribute Name associated with the Okta app you use for authentication. The *Group Attribute Name* is different from an *Okta Group Name*. Your company might have many groups set up in Okta, and the Group Attribute Name is used to filter groups.
+   * **Group Attribute Name:** This is the Group Attribute Name associated with the Okta app you use for authentication.
+
+   The *Group Attribute Name* is different from an *Okta Group Name*. Your company might have many groups set up in Okta, and the Group Attribute Name is used to filter groups.
 
    In Harness, you enter the Group Attribute Name in the SAML SSO provider settings, and then you link the Okta Group Name to the Harness user group.
 
@@ -253,7 +255,7 @@ To set up SAML authorization in Harness, link a [Harness user group](../role-bas
    ![](./static/single-sign-on-saml-74.png) <!-- ![](./static/single-sign-on-saml-64.png)-->
 
 12. Select **Add**. Your Okta configuration now uses the Group Attribute Name for authorization.
-13. Link your Okta user group to a corresponding [Harness user group](../role-based-access-control/add-user-groups). You can create a user group or use an existing group as long as your Harness user account is a member, and your user account is registered under the same email address as in Okta.
+13. Link your Okta user group to a corresponding [Harness user group](../role-based-access-control/add-user-groups). You can create a user group or use an existing group if your Harness user account is a member and your user account is registered under the same email address as in Okta.
 
 	1. In Harness, go to **Account Settings**, and select **Access Control**.
 	2. Select **User Groups** in the header, and locate the user group that you want to connect to your Okta user group.

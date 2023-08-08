@@ -50,7 +50,7 @@ As a general best practice, you should allowlist Harness Domains and IPs. For mo
 
 :::note
 
-You must create the Harness Docker Connector at the Account level. Make sure that you have the **Account** > **Connectors** > **Create/Edit/View** permission for Harness Platform. See [Permission Reference](../../role-based-access-control/permissions-reference) for details on the list of permissions.
+You must create the Harness Docker Connector at the Account level. Make sure that you have the [permissions](../../role-based-access-control/permissions-reference) to create/edit and view connectors at the Account [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 :::
 

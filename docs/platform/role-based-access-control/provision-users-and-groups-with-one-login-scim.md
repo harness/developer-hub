@@ -16,7 +16,7 @@ This topic describes how to use a OneLogin SCIM integration for automated provis
 
 :::caution
 
-With the OneLogin SCIM integration, don't change provisioned users email addresses in OneLogin. Once a user is provisioned in Harness, the user's email address *must remain the same*. If you change the email address in OneLogin and then try to remove the user from Harness, the removal will fail.
+With the OneLogin SCIM integration, don't change provisioned users' email addresses in OneLogin. Once a user is provisioned in Harness, the user's email address *must remain the same*. If you change the email address in OneLogin and then try to remove the user from Harness, the removal will fail.
 
 :::
 
@@ -58,7 +58,7 @@ For more information, go to the OneLogin documentation on [Adding apps](https://
 
 ## Enable SAML SSO with OneLogin
 
-To allow users to log in through your OneLogin SCIM integration, you must also setup [SAML SSO authentication with OneLogin](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-onelogin) in Harness.
+To allow users to log in through your OneLogin SCIM integration, you must also set up [SAML SSO authentication with OneLogin](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-onelogin) in Harness.
 
 ## Provision individual users
 
@@ -188,11 +188,11 @@ If you need to change a user's group (for example, to change their permissions),
 
 To remove a user group created by a OneLogin role, you must remove the role from OneLogin and then contact [Harness Support](mailto:support@harness.io) to get the user group removed from Harness.
 
-The OneLogin SCIM integration doesn't currently support automatic removal of user groups created from OneLogin roles. In Harness, if you try to manually remove a Harness user group created from a OneLogin role, you'll get the following error: `Cannot Delete Group Imported From SCIM`. This is why you must contact Harness support to finish removing the group after removing the OneLogin role.
+The OneLogin SCIM integration doesn't currently automatically remove of user groups created from OneLogin roles. In Harness, if you try to manually remove a Harness user group created from a OneLogin role, you'll get the following error: `Cannot Delete Group Imported From SCIM`. This is why you must contact Harness support to finish removing the group after removing the OneLogin role.
 
 ## Remove users
 
-Once a OneLogin users is provisioned in Harness, you can't delete the user in Harness. You must delete the user in OneLogin to remove them from Harness.
+Once a OneLogin user is provisioned in Harness, you can't delete the user in Harness. You must delete the user in OneLogin to remove them from Harness.
 
 ## I already have a Harness FirstGen OneLogin integration
 

@@ -37,7 +37,7 @@ To configure ABAC in Harness, you must be an **Admin** for the relevant account,
 
 3. Select **Environments** and/or **Connectors**.
 
-   ABAC is available for environments and connectors only. These steps focus on configuring ABAC; however, your resource groups can include other resource categories. For other resources categories and general information about configuring resource groups, go to [Manage resource group](./add-resource-groups).
+   ABAC is available for environments and connectors only. These steps focus on configuring ABAC; however, your resource groups can include other resource categories. For other resources categories and general information about configuring resource groups, go to [Manage resource groups](./add-resource-groups).
 
    <!-- ![](./static/attribute-based-access-control-05.png) -->
 
@@ -69,7 +69,7 @@ To configure ABAC in Harness, you must be an **Admin** for the relevant account,
 
 Creating resource groups with ABAC is one part of [configuring RBAC in Harness](./rbac-in-harness#configure-rbac-in-harness).
 
-[Roles](./add-manage-roles), which grant permissions, work alongside resource groups and ABAC, which grant access. Because ABAC applies to environments and connectors, your role should include permissions relevant to environments or connectors.
+[Roles](./add-manage-roles), which grant permissions, work alongside resource groups and ABAC, which grant access. Because ABAC applies to environments and connectors, the role you choose to accompany your ABAC-enhanced resource group should include permissions relevant to environments or connectors.
 
 <!-- ![](./static/attribute-based-access-control-08.png) -->
 

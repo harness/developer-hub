@@ -82,13 +82,13 @@ Principals are entities taking action in the system. You assign permissions and 
 
 Principals include:
 
-* [Users](/docs/platform/role-based-access-control/add-users): Individual users in Harness. Each user can belong to many user groups. You can assign roles and resource groups directly to users, or they can inherit these from user groups they belong to.
+* [Users](/docs/platform/role-based-access-control/add-users): Individual users in Harness. Each user can belong to many user groups. You can assign roles and resource groups directly to users, or they can inherit these from user groups that they belong to.
 * [User Groups](/docs/platform/role-based-access-control/add-user-groups): User groups contain multiple Harness users. Roles and resource groups are assigned to groups. The permissions and access granted by the assigned roles and resource groups are applied to all group members. You can create user groups at all [scopes](#permissions-hierarchy-scopes).
 * [Service Accounts](/docs/platform/role-based-access-control/add-and-manage-service-account): Service accounts are like API users. You assign roles and resource groups to service accounts. Service accounts also have one or more [API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys), which authenticate and authorize remote services attempting to perform operations in Harness through Harness APIs.
 
 ### Resource groups
 
-A resource group is a set of Harness resources that a principal can access. You can create resource groups at all [scopes](#permissions-hierarchy-scopes). Resource groups are assigned along with [roles](#roles) to principals. Roles grant permissions (what actions can be taken) and resources groups grant access (what objects can be acted on).
+A resource group is a set of Harness resources that a principal can access. You can create resource groups at all [scopes](#permissions-hierarchy-scopes). Resource groups are assigned along with [roles](#roles) to principals. Roles grant permissions (what actions can be taken) and resource groups grant access (what objects can be acted on).
 
 ![](./static/rbac-in-harness-03.png)
 
@@ -124,7 +124,7 @@ The following table describes the role bindings (permissions and access) that re
 | Role | Resource Group | Resulting role binding |
 | - | - | - |
 | Account Admin | Account - All Resources Including Child Scopes | All permissions on all resources in the account and resources in organizations and projects under the account. |
-| Account Admin | All Account Level Resources | All permissions on all resources in at the account level only. |
+| Account Admin | All Account Level Resources | All permissions on all resources at the account level only. |
 | Account Viewer | Account - All Resources Including Child Scopes | View resources in the account and resources in organizations and projects under the account. |
 | Account Viewer | All Account Level Resources | View resources at the account level only. |
 | Organization Admin | Org - All Resources Including Child Scopes | All permissions on all resources in a specific organization and all projects under that organization. |
@@ -151,7 +151,7 @@ RBAC is an additive model; therefore, role and resource group assignments in Har
 
 It is important to follow the principle of least privilege (PoLP). This is a security principle that means users are granted the absolute minimum access/permissions necessary to complete their tasks and nothing more.
 
-While Harness includes some built-in roles and resource groups, it is a good idea to create your own roles and resource groups as needed to ensure least privilege.
+While Harness includes some built-in roles and resource groups, it is a good idea to create your own roles and resource groups as needed to ensure the least privilege.
 
 :::
 
@@ -191,7 +191,7 @@ If you are not an admin, you can configure some aspects of RBAC if you have the 
 
 To configure RBAC in Harness, you must:
 
-1. [Create roles](/docs/platform/role-based-access-control/add-manage-roles)
+1. [Create roles](/docs/platform/role-based-access-control/add-manage-roles).
 2. [Create resource groups](/docs/platform/role-based-access-control/add-resource-groups) and, optionally, apply [ABAC](./attribute-based-access-control.md).
 3. [Create user groups](/docs/platform/role-based-access-control/add-user-groups), [create service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account), and [add users](/docs/platform/role-based-access-control/add-users).
 4. [Assign roles and resource groups](#role-binding) to users, user groups, and service accounts.
