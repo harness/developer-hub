@@ -1219,7 +1219,7 @@ This release includes the following Harness module and component versions.
 
 - The **Manage Services** tab has been removed from the services dashboard page. (CDS-57974)
   
-  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/) apply to a single Services page only.
+  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](/docs/platform/role-based-access-control/add-manage-roles) apply to a single Services page only.
 
 - Git polling tasks for triggers are executed on the same delegate selector used in the Git connector. (CDS-58115)
   
@@ -2665,7 +2665,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 - When creating Azure Key Vault and HashiCorp Vault connectors, selecting invalid delegate selectors displays an "UNKNOWN ERROR". (PL-30660)
 
   A code enhancement to display appropriate error message has fixed this issue. 
-- Recently added roles are not displayed in the manage role assignment settings. (PL-30560)
+- Recently added roles are not displayed in the manage role bindings settings. (PL-30560)
   
   A code enhancement has fixed this issue.
 - The UI does not display an error message when the referred connector in infra does not exist.(PL-30130)
@@ -2828,11 +2828,11 @@ This release includes the following Harness module and component versions.
 - The following role-assignments are removed for all the existing users across all the accounts:
   - Account Viewer - All Account Level Resources: This was a role-assignment within the account scope and has been removed for all the users. This does not apply in the following scenarios:
   - If an account has enabled the feature flag ACCOUNT_BASIC_ROLE_ONLY.
-  - If an account does not have the Account Viewer - All Account Level Resources role-assignment for the default user group All Account Users.
+  - If an account does not have the Account Viewer - All Account Level Resources role-assignment for the built-in user group All Account Users.
   - Organization Viewer - All Organization Level Resources: This was a role-assignment within the organization scope and has been removed for all the users.
   - Project Viewer - All Project Level Resources: This was a role-assignment within the project scope and has been removed for all the users.
   
-  For more information, go to [Default User Group](/docs/platform/User-Management/harness-default-user-groups). (PL-30916)
+  For more information, go to [Built-in user groups](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups). (PL-30916)
 
 - In the SCIM API, the Groups endpoint returns all the user groups associated with an account. The ResourceTypes endpoint also returns incorrect information. A code enhancement has fixed this issue. The Groups endpoint returns only externally managed user groups and the ResourceTypes endpoint returns details as per the schema. (PL-30862)
 

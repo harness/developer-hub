@@ -27,7 +27,7 @@ This quickstart shows you how to write your configurations in Terraform and prov
 * You must have a Personal Access Token (PAT) or a Service Access Token (SAT).
 
 
-For detailed steps on how to generate a PAT, see [Create a Personal Access Token](../../3_User-Management/7-add-and-manage-api-keys.md#create-personal-access-token).
+For detailed steps on how to generate a PAT, see [Create personal API keys and tokens](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#create-personal-api-keys-and-tokens).
 
 ### Important
 
@@ -39,7 +39,7 @@ For detailed steps on how to generate a PAT, see [Create a Personal Access Token
 	+ Secrets
 	+ Pipelines
 * You cannot provision users using Harness Terraform Provider.  
-You can provision users through SCIM using [Okta](../../3_User-Management/6-provision-users-with-okta-scim.md), [OneLogin](../../3_User-Management/7provision-users-and-groups-with-one-login-scim.md) or [Azure AD](../../3_User-Management/8-provision-users-and-groups-using-azure-ad-scim.md).
+You can provision users through SCIM using [Okta](/docs/platform/role-based-access-control/provision-users-with-okta-scim), [OneLogin](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim) or [Azure AD](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim).
 * You cannot run or monitor your Pipelines using Harness Terraform Provider.
 
 ### Why use Harness Terraform Provider?
@@ -70,7 +70,7 @@ Enter your Harness Account Id in `account_id`.
 
 The account Id is in every URL when using Harness:
 
-`https://app.harness.io/ng/#/account/``**{accountid}**``/home/get-started​`
+`https://app.harness.io/ng/#/account/``**{accountid}**``/home/get-started`
 
 Enter your PAT or SAT in `platform_api_key`.
 
@@ -78,7 +78,7 @@ Enter your PAT or SAT in `platform_api_key`.
 Harness recommends using SAT to install the Harness Terraform Provider.
 :::
 
-For detailed steps on how to generate a PAT or SAT, go to [Add and manage API keys](../../3_User-Management/7-add-and-manage-api-keys.md).​
+For detailed steps on how to generate a PAT or SAT, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 
 ```

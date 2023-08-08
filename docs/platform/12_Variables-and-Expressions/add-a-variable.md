@@ -25,7 +25,7 @@ Harness include many built-in variables for obtaining information like artifact 
 ## Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
-* Make sure you have the required [permissions](../4_Role-Based-Access-Control/9-add-manage-roles.md) on **Variables** to add and manage variables.
+* Make sure you have the required [permissions](../role-based-access-control/add-manage-roles) on **Variables** to add and manage variables.
   
   ![](./static/add-a-variable-00.png)
 
@@ -44,7 +44,7 @@ In the following illustration, the variables in **Common To Pipelines** are acco
 
 ## Add account, org, and project variables
 
-You can add a variable to the account, organization, or project [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
+You can add a variable to the account, organization, or project [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 ### Account
 
