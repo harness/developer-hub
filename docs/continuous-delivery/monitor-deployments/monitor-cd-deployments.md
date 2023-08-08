@@ -206,9 +206,9 @@ https://www.youtube.com/watch?v=9fqbYP6iK3g-->
 
 See [Create Dashboards](../../platform/18_Dashboards/create-dashboards.md).
 
-### Monitor deployments using custom CD dashboards
+### Monitor deployment performance using custom CD dashboards
 
-This release includes an extensive set of new dashboard components that provide visibility into the performance of your pipeline builds. You can create custom dashboards to answer questions such as:
+Harness CD includes an extensive set of dashboard components that provide visibility into the performance of your deployment pipelines. You can create custom dashboards to answer questions such as:
 
 * Which stages and steps contain performance bottlenecks? 
 
