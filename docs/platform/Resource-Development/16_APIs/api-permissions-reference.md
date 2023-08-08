@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes the permissions available for [API keys](./add-and-manage-api-keys) and [service accounts](../../role-based-access-control/add-and-manage-service-account) in Harness.
 
-These permissions are used by API keys to perform various actions through [Harness APIs](./api-quickstart.md). Subsets of these permissions are applied to [API keys and tokens](./add-and-manage-api-keys.md) when you create them. You can create API keys under your own account or service accounts, and the keys and tokens inherit [permissions](../../role-based-access-control/permissions-reference.md) from the associated user or service account.
+These permissions are used by API keys to perform various actions through [Harness APIs](./api-quickstart). Subsets of these permissions are applied to [API keys and tokens](./add-and-manage-api-keys) when you create them. You can create API keys under your own account or service accounts, and the keys and tokens inherit [permissions](../../role-based-access-control/permissions-reference) from the associated user or service account.
 
 ## Account
 

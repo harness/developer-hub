@@ -1,6 +1,6 @@
 ---
-title: Permissions Reference
-description: This document lists the default user groups and permissions present in the Harness Access Management system.
+title: Permissions reference
+description: Permissions reference for Harness RBAC.
 sidebar_position: 120
 helpdocs_topic_id: yaornnqh0z
 helpdocs_category_id: 4przngb8nk
@@ -8,483 +8,120 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic gives you details of the Harness Permissions and Default Roles and Resource Groups available in the Harness system.
+This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness). For API permissions, go to the [API permissions reference](/docs/platform/Resource-Development/APIs/api-permissions-reference).
 
-For API permissions, go to [API permissions reference](/docs/platform/Resource-Development/APIs/api-permissions-reference).
+## Administrative Functions
 
-### Default Roles
+| Resource | Permissions |
+| ---  | ----------- |
+| Resource Groups | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Account Settings | Available at the account [scope](./rbac-in-harness#permissions-hierarchy-scopes) only.<br/><ul><li> View</li><li>Edit</li></ul> |
+| Default Settings | <ul><li>Create/Edit</li></ul>  |
+| Projects | <ul><li>View</li><li>Create</li><li>Edit</li><li>Delete</li></ul> |
+| User Groups | <ul><li>View</li><li>Manage: Create, edit, and delete user groups</li></ul> |
+| Service Accounts | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Manage: Create, edit, and delete API keys and tokens for service accounts</li></ul> |
+| Organizations | Available at the account and org [scopes](./rbac-in-harness#permissions-hierarchy-scopes) only.<br/><ul><li>View</li><li>Create</li><li>Edit</li><li>Delete</li></ul> |
+| Roles | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Streaming Destination | Available at the account [scope](./rbac-in-harness#permissions-hierarchy-scopes) only.<br/><ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Users | <ul><li>View</li><li>Manage: Edit and delete users</li><li>Invite: Add users by inviting them to Harness</li></ul> |
+| Authentication Settings | Available at the account [scope](./rbac-in-harness#permissions-hierarchy-scopes) only.<br/><ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 
-Each Harness Account, Organization and Project includes default Roles to help you with [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
+## Environment Groups
 
-The following table lists permissions corresponding to the default roles at the Account [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes):
+| Resource | Permissions |
+| ---  | ----------- |
+| Environment Groups | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access: Can access referenced environment groups at runtime</li></ul> |
 
+## Environments
 
+| Resource | Permissions |
+| ---  | ----------- |
+| Environments | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access: Can access referenced environments at runtime</li><li>Create FF SDK Key: Create Feature Flag environment key</li><li>Delete FF SDK Key: Delete Feature Flag environment key</li></ul> |
 
-|  |  |  |
-| --- | --- | --- |
-| **Role** | **Resource Type** | **Permissions** |
-| **Account Admin​** | Resource Groups | <li> **View** - Can view Resource Groups</li><li> **Create/Edit** - Can create and edit Resource Groups </li><li>**Delete** - Can delete Resource Groups </li>|
-|  | Service Accounts | <li> **View** - Can view Service Accounts</li><li>**Create/Edit** - Can create and edit Service Accounts</li><li>**Delete** - Can delete Service Accounts</li><li>**Manage** - Can create/update/delete API keys and tokens</li>|
-|  | Organizations | <li> **View** - Can view existing Organizations</li><li>**Create** - Can create new Organizations</li><li>**Edit** - Can edit existing Organizations</li><li>**Delete** - Can delete Organizations</li>
- |
-|  | Roles |<li> **View** - Can view existing Roles</li><li>**Create/Edit** - Can create and edit Roles</li><li>**Delete** - Can delete existing Roles</li>
- |
-|  | Account Settings | <li> **View** - Can view Account Settings</li><li>**Edit** - Can edit Account Settings</li>
- |
-|  | Projects | <li> **View** - Can view existing Projects</li><li>**Create** - Can create new Projects</li><li>**Edit** - Can edit existing Projects</li><li>**Delete** - Can delete existing Projects</li>
- |
-|  | Users | <li> **View** - Can view existing users</li><li>**Manage** - Can update/delete users and their role bindings</li><li>**Invite** - Can invite users to Harness</li>
- |
-|  | Authentication Settings | <li> **View** - Can view Authentications settings</li><li>**Create/Edit** - Can create and edit Authentications settings</li><li>**Delete** - Can delete Authentications settings</li>
- |
-|  | User Groups | <li> **View** - Can view User Groups</li><li>**Manage** - Can create/update/delete User Groups</li>
- |
-|  | Governance Policy Sets | <li> **View** - Can view existing Governance Policy Sets</li><li>**Create/Edit** - Can create and edit Governance Policy Sets</li><li>**Delete** - Can delete existing Governance Policy Sets</li><li>**Evaluate** - Can evaluate Governance Policy Sets</li>
- |
-|  | Variables |<li> **View** - Can view existing Variables</li><li>**Create/Edit** - Can create and edit Variables</li><li>**Delete** - Can delete existing Variables</li>
- |
-|  | Templates | <li> **View** - Can view existing Templates</li><li>**Create/Edit** - Can create and edit Templates</li><li>**Delete** - Can delete existing Templates</li><li>**Access** - Can access referenced Templates at runtime</li>
- |
-|  | Governance Policies | <li> **View** - Can view existing Governance Policies</li><li>**Create/Edit** - Can create and edit Governance Policies</li><li>**Delete** - Can delete existing Governance Policies</li>
- |
-|  | Dashboards | <li> **View** - Can view Dashboards</li><li>**Manage** - Can manage and edit Dashboards</li>
- |
-|  | Delegate Configurations | <li> **View** - Can view existing Delegate Configurations</li><li> **Create/Edit** - Can create and edit Delegate Configurations</li><li>**Delete** - Can delete existing Delegate Configurations</li>
- |
-|  | Delegates | <li> **View** - Can view existing Delegates</li><li>**Create/Edit** - Can create and Edit Delegates</li><li>**Delete** - Can delete existing Delegates</li>
- |
-|  | Secrets | <li> **View** - Can view existing Secrets</li><li>**Create/Edit** - Can create and edit Secrets</li><li>**Delete** - Can delete existing Secrets</li><li>**Access** - Can access referenced Secrets at runtime</li>
- |
-|  | Connectors | <li> **View** - Can view existing Connectors</li><li>**Create/Edit** - Can create and edit Connectors</li><li>**Delete** - Can delete existing Connectors</li><li>**Access** - Can access referenced Connectors at runtime</li>
- |
-|  | Environments | <li> **View** - Can view existing Environments</li><li>**Create/Edit** - Can create and edit Environments</li><li>**Delete** - Can delete existing Environments</li><li>**Access** - Can access referenced Environments at runtime</li>
- |
-|  | ChaosHub | <li> **View** - Can view Chaos experiments and Chaos Scenarios</li><li>**Create/Edit** - Can connect to ChaosHub Git repo</li><li>**Delete** - Can disconnect ChaosHub Git repo</li>
- |
-|  | Clusters | <li> **View** - Can view existing Clusters</li><li>**Create/Edit** - Can create and edit Clusters</li><li>**Delete** - Can delete existing Clusters</li>
- |
-|  | Agents | <li> **View** - Can view existing Agents</li><li>**Create/Edit** - Can create and edit Agents</li><li>**Delete** - Can delete existing Agents</li>
- |
-|  | Repository Certificates | <li> **View** - Can view existing Repository Certificates</li><li>**Create/Edit** - Can create and edit Repository Certificates</li><li>**Delete** - Can delete existing Repository Certificates</li>
- |
-|  | Applications | <li> **View** - Can view existing applications</li><li>**Create/Edit** - Can create and edit Applications</li><li>**Delete** - Can delete existing Applications</li><li>**Sync** - Can deploy Applications</li>
- |
-|  | Repositories | <li> **View** - Can view existing Repositories</li><li>**Create/Edit** - Can create and edit Repositories</li><li>**Delete** - Can delete existing Repositories</li>
- |
-|  | GnuPG Keys | <li> **View** - Can view existing GnuPG Keys</li><li>**Create/Edit** - Can create and edit GnuPG Keys</li><li>**Delete** - Can delete existing GnuPG Keys</li>
- |
-|  | Environment Groups | <li> **View** - Can view existing Environment Groups</li><li>**Create/Edit** - Can create and edit Environment Groups</li><li>**Delete** - Can delete existing Environment Groups</li>
- |
-|  | SLO | <li> **View** - Can view an existing SLO</li><li>**Create/Edit** - Can create and edit SLO</li><li>**Delete** - Can delete an existing SLO</li>
- |
-|  | Monitored Services | <li> **View** - Can view existing Monitored Services</li><li>**Create/Edit** - Can create and edit Monitored Services</li><li>**Delete** - Can delete existing Monitored Services</li><li>**Toggle** - Can toggle between different Monitored Services</li>
- |
-|  | Pipelines | <li> **View** - Can view existing Pipelines</li><li>**Create/Edit** - Can create and edit Pipelines</li><li>**Delete** - Can delete existing Pipelines</li><li>**Execute** - Can execute Pipelines</li>
- |
-|  | Services | <li> **View** - Can view existing Services</li><li>**Create/Edit** - Can create and edit Services</li><li>**Delete** - Can delete existing Services</li><li>**Access** - Can access referenced Services at runtime</li>
- |
-|  | Feature Flags | <li> **Toggle** - Can turn a Feature Flag on or off</li><li>**Create/Edit** - Can create and edit Feature Flags</li><li>**Delete** - Can delete existing Feature Flags</li>
- |
-|  | Target Management | <li> **Create/Edit** - Can create and edit Targets and Target Groups to control visibility of variation of a Feature Flag</li><li>**Delete** - Can delete Targets and Target Groups</li>
- |
-| **Account Viewer** | Resource Groups | <li> **View** - Can view existing Resource Groups</li>
- |
-|  | Service Accounts | <li> **View** - Can view existing Service Accounts </li>
- |
-|  | Organizations | <li> **View** - Can view existing Organizations </li>
- |
-|  | Roles | <li> **View** - Can view existing Roles </li>
- |
-|  | Account Settings | <li> **View** - Can view existing Account Settings </li>
- |
-|  | Projects | <li> **View** - Can view existing Projects </li>
- |
-|  | Users | <li> **View** - Can view existing Users </li>
- |
-|  | Authentication Settings | <li> **View** - Can view existing Authentication Settings </li>
- |
-|  | User Groups | <li> **View** - Can view existing User Groups </li>
- |
-|  | Governance Policy Sets | <li> **View** - Can view existing Governance Policy Sets </li>
- |
-|  | Variables | <li> **View** - Can view existing Variables </li>
- |
-|  | Templates | <li> **View** - Can view existing Templates </li>
- |
-|  | Governance Policies | <li> **View** - Can view existing Governance Policies </li>
- |
-|  | Dashboards | <li> **View** - Can view existing Dashboards </li>
- |
-|  | Delegate Configurations | <li> **View** - Can view existing Delegate Configurations </li>
- |
-|  | Delegates | <li> **View** - Can view existing Delegates </li>
- |
-|  | Secrets | <li> **View** - Can view existing Secrets </li>
- |
-|  | Connectors | <li> **View** - Can view existing Connectors </li>
- |
-|  | Environments | <li> **View** - Can view existing Environments </li>
- |
-|  | ChaosHub | <li> **View** - Can view Chaos experiments and Chaos Scenarios </li>
- |
-|  | Clusters | <li> **View** - Can view existing Clusters </li>
- |
-|  | Agents | <li> **View** - Can view existing Agents </li>
- |
-|  | Repository Certificates | <li> **View** - Can view existing Repository Certificates </li>
- |
-|  | Applications | <li> **View** - Can view existing Applications </li>
- |
-|  | Repositories | <li> **View** - Can view existing Repositories </li>
- |
-|  | GnuPG Keys | <li> **View** - Can view existing GnuPG Keys </li>
- |
-|  | Environment Groups | <li> **View** - Can view existing Environment Groups </li>
- |
-|  | SLO | <li> **View** - Can view existing SLOs </li>
- |
-|  | Monitored Services | <li> **View** - Can view existing Monitored Services </li>
- |
-|  | Pipelines | <li> **View** - Can view existing Pipelines </li>
- |
-|  | Services | <li> **View** - Can view existing Services </li>
- |
-| **GitOps Admin Role** | Clusters | <li> **View** - Can view existing Clusters</li><li>**Create/Edit** - Can create and edit Clusters</li><li>**Delete** - Can delete existing Clusters</li>
- |
-|  | Agents | <li> **View** - Can view existing Agents</li><li>**Create/Edit** - Can create and edit Agents</li><li>**Delete** - Can delete existing Agents</li>
- |
-|  | Repository Certificates | <li> **View** - Can view existing Repository Certificates</li><li>**Create/Edit** - Can create and edit Repository Certificates</li><li>**Delete** - Can delete existing Repository Certificates</li>
- |
-|  | Applications | <li> **View** - Can view existing Applications</li><li>**Create/Edit** - Can create and edit Applications</li><li>**Delete** - Can delete existing Applications</li><li>**Sync** - Can deploy Applications</li>
- |
-|  | Repositories | <li> **View** - Can view existing Repositories</li><li>**Create/Edit** - Can create and edit Repositories</li><li>**Delete** - Can delete existing Repositories</li>
- |
-|  | GnuPG Keys | <li> **View** - Can view existing GnuPG Keys</li><li>**Create/Edit** - Can create and edit GnuPG Keys</li><li>**Delete** - Can delete existing GnuPG Keys</li>
- |
-| **Feature Flag Manage Role** | Feature Flags | <li> **Create/Edit** - Can create and edit Feature Flags</li>
- |
-|  | Target Management | <li> **Create/Edit** - Can create and edit Targets and Target Groups to control visibility of variation of a Feature Flag</li>
- |
+## Pipelines
 
-The following table lists permissions corresponding to the default roles at the Organization [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes):
+| Resource | Permissions |
+| ---  | ----------- |
+| Pipelines | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Execute: Initiate pipeline runs</li></ul> |
 
+## Services
 
+| Resource | Permissions |
+| ---  | ----------- |
+| Services | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access: Can access referenced services at runtime</li></ul> |
 
-|  |  |  |
-| --- | --- | --- |
-| **Role** | **Resource Type** | **Permissions** |
-| **Organization Admin​** | Resource Groups | <li> **View** - Can view existing Resource Groups</li><li>**Create/Edit** - Can create and edit Resource Groups</li><li>**Delete** - Can delete existing Resource Groups</li>
- |
-|  | Service Accounts | <li> **View** - Can view existing Service Accounts</li><li>**Create/Edit** - Can create and edit Service Accounts</li><li>**Delete** - Can delete existing Service Accounts</li><li>**Manage** - Can create/update/delete API keys and tokens</li>
- |
-|  | Organizations | <li> **View** - Can view existing Organizations</li><li>**Create** - Can create Organizations</li><li>**Edit** - Can edit existing Organizations</li><li>**Delete** - Can delete existing Organizations</li>
- |
-|  | Roles | <li> **View** - Can view existing Roles</li><li>**Create/Edit** - Can create and edit Roles</li><li>**Delete** - Can delete existing Roles</li>
- |
-|  | Projects | <li> **View** - Can view existing Projects</li><li>**Create** - Can create Projects</li><li>**Edit** - Can edit existing Projects</li><li>**Delete** -Can delete existing Projects</li>
- |
-|  | Users | <li> **View** - Can view existing Users</li><li>**Manage** - Can update/delete users and their role bindings</li><li>**Invite** - Can invite Users to Harness</li>
- |
-|  | User Groups | <li> **View** - Can view existing User Groups</li><li>**Manage** - Can create/update/delete User Groups</li>
- |
-|  | Governance Policy Sets | <li> **View** - Can view existing Governance Policy Sets</li><li>**Create/Edit** - Can create and edit Governance Policy Sets</li><li>**Delete** - Can delete existing Governance Policy Sets</li><li>**Evaluate** - Can evaluate Governance Policy Sets</li>
- |
-|  | Variables | <li> **View** - Can view existing Variables</li><li>**Create/Edit** - Can create and edit Variables</li><li>**Delete** - Can delete existing Variables</li>
- |
-|  | Templates | <li> **View** - Can view existing Templates</li><li> **Create/Edit** - Can create and edit Templates</li><li> **Delete** - Can delete existing Templates</li><li>**Access** - Can access referenced Templates at runtime</li>
- |
-|  | Governance Policies | <li> **View** - Can view existing Govenance Policies</li><li>**Create/Edit** - Can create and edit Governance Policies</li><li>**Delete** - Can delete existing Governance Policies</li>
- |
-|  | Dashboards | <li> **View** - Can view existing Dashboards</li><li>**Manage** - Can manage existing Dashboards</li>
- |
-|  | Delegate Configurations | <li> **View** - Can view existing Delegate Configurations</li><li>**Create/Edit** - Can create and edit Delegate Configurations</li><li>**Delete** - Can delete existing Delegate Configurations</li>
- |
-|  | Delegates | <li> **View** - Can view existing Delegates</li><li>**Create/Edit** - Can create and edit Delegates</li><li>**Delete -** Can delete existing Delegates</li>
- |
-|  | Secrets | <li> **View** - Can view existing Secrets</li><li>**Create/Edit** - Can create and edit Secrets</li><li>**Delete** - Can delete existing Secrets</li><li> **Access** - Can access referenced Secrets at runtime</li>
- |
-|  | Connectors | <li> **View** - Can view existing Connectors</li><li>**Create/Edit** - Can create and edit Connectors</li><li>**Delete** - Can delete existing Connectors</li><li>**Access** - Can access referenced Connectors at runtime</li>
- |
-|  | Environments | <li> **View** - Can view existing Environments</li><li>**Create/Edit** - Can create and edit Environments</li><li>**Delete** - Can delete existing Environments</li><li>**Access** - Can access referenced Environments at runtime</li>
- |
-|  | ChaosHub | <li> **View** - Can view Chaos experiments and Chaos Scenarios</li><li>**Create/Edit** - Can connect to ChaosHub Git repo</li><li>**Delete** - Can disconnect ChaosHub Git repo</li>
- |
-|  | Clusters | <li> **View** - Can view existing Clusters</li><li>**Create/Edit** - Can create and edit Clusters</li><li>**Delete** - Can delete existing Clusters</li>
- |
-|  | Agents |<li> **View** - Can view existing Agents</li><li>**Create/Edit** - Can create and edit Agents</li><li>**Delete** - Can delete existing Agents</li>
- |
-|  | Repository Certificates | <li> **View** - Can view existing Repository Certificates</li><li>**Create/Edit** - Can create and edit Repository Certificates</li><li>**Delete** - Can delete existing Repository Certificates</li>
- |
-|  | Applications | <li> **View** - Can view existing applications</li><li>**Create/Edit** - Can create and edit Applications</li><li>**Delete** - Can delete existing Applications</li><li>**Sync** - Can deploy Applications</li>
- |
-|  | Repositories | <li> **View** - Can view existing Repositories</li><li>**Create/Edit** - Can create and edit Repositories</li><li>**Delete** - Can delete existing Repositories</li>
- |
-|  | GnuPG Keys | <li> **View** - Can view existing GnuPG Keys</li><li>**Create/Edit** - Can create and edit GnuPG Keys</li><li>**Delete** - Can delete existing GnuPG Keys</li>
- |
-|  | Environment Groups | <li> **View** - Can view existing Environment Groups</li><li>**Create/Edit** - Can create and edit Environment Groups</li><li>**Delete** - Can delete existing Environment Groups</li>
- |
-|  | SLO | <li> **View** - Can view an existing SLO</li><li>**Create/Edit** - Can create and edit SLO</li><li>**Delete** - Can delete an existing SLO</li>
- |
-|  | Monitored Services | <li> **View** - Can view existing Monitored Services</li><li>**Create/Edit** - Can create and edit Monitored Services</li><li>**Delete** - Can delete existing Monitored Services</li><li>**Toggle** - Can toggle between different Monitored Services</li>
- |
-|  | Pipelines | <li> **View** - Can view existing Pipelines</li><li>**Create/Edit** - Can create and edit Pipelines</li><li>**Delete** - Can delete existing Pipelines</li><li>**Execute** - Can execute Pipelines</li>
- |
-|  | Services | <li> **View** - Can view existing Services</li><li>**Create/Edit** - Can create and edit Services</li><li> **Delete** - Can delete existing Services</li><li>**Access** - Can access referenced Services at runtime</li>
- |
-|  | Feature Flags | <li> **Toggle** - Can turn a Feature Flag on or off</li><li>**Create/Edit** - Can create and edit Feature Flags</li><li>**Delete** - Can delete existing Feature Flags</li>
- |
-|  | Target Management | <li> **Create/Edit** - Can create and edit Targets and Target Groups to control visibility of variation of a Feature Flag</li><li>**Delete** - Can delete Targets and Target Groups</li>
- |
-| **Organization Viewer** | Resource Groups | <li> **View** - Can view existing Resource Groups</li>
- |
-|  | Service Accounts | <li> **View** - Can view existing Service Accounts</li>
- |
-|  | Organizations | <li> **View** - Can view existing Organizations</li>
- |
-|  | Roles | <li> **View** - Can view existing Roles</li>
- |
-|  | Projects | <li> **View** - Can view existing Projects</li>
- |
-|  | Users | <li> **View** - Can view existing Users</li>
- |
-|  | User Groups | <li> **View** - Can view existing User Groups</li>
- |
-|  | Governance Policy Sets | <li> **View** - Can view existing Governance Policy Sets</li>
- |
-|  | Variables | <li> **View** - Can view existing Variables</li>
- |
-|  | Templates | <li> **View** - Can view existing Templates</li>
- |
-|  | Governance Policies | <li> **View** - Can view existing Governance Policies</li>
- |
-|  | Dashboards | <li> **View** - Can view existing Dashboards</li>
- |
-|  | Delegate Configurations | <li> **View** - Can view existing Delegate Configurations</li>
- |
-|  | Delegates | <li> **View** - Can view existing Delegates</li>
- |
-|  | Secrets | <li> **View** - Can view existing Secrets</li>
- |
-|  | Connectors | <li> **View** - Can view existing Connectors</li>
- |
-|  | Environments | <li> **View** - Can view existing Environments</li>
- |
-|  | ChaosHub | <li> **View** - Can view Chaos experiments and Chaos Scenarios</li><li>**Create/Edit** - Can connect to ChaosHub Git repo</li><li>**Delete** - Can disconnect ChaosHub Git repo</li>
- |
-|  | Clusters | <li> **View** - Can view existing Clusters</li>
- |
-|  | Agents | <li> **View** - Can view existing Agents</li>
- |
-|  | Repository Certificates | <li> **View** - Can view existing Repository Certificates</li>
- |
-|  | Applications | <li> **View** - Can view existing Applications</li>
- |
-|  | Repositories | <li> **View** - Can view existing Repositories</li>
- |
-|  | GnuPG Keys | <li> **View** - Can view existing GnuPG Keys</li>
- |
-|  | Environment Groups | <li> **View** - Can view existing Environment Groups</li>
- |
-|  | SLO | <li> **View** - Can view existing SLOs</li>
- |
-|  | Monitored Services | <li> **View** - Can view existing Monitored Services</li>
- |
-|  | Pipelines | <li> **View** - Can view existing Pipelines</li>
- |
-|  | Services | <li> **View** - Can view existing Services</li>
- |
-| **GitOps Admin Role** | Clusters | <li> **View** - Can view existing Clusters</li><li>**Create/Edit** - Can create and edit Clusters</li><li>**Delete** - Can delete existing Clusters</li>
- |
-|  | Agents | <li> **View** - Can view existing Agents</li><li>**Create/Edit** - Can create and edit Agents</li><li> **Delete** - Can delete existing Agents</li>
- |
-|  | Repository Certificates | <li> **View** - Can view existing Repository Certificates</li><li>**Create/Edit** - Can create and edit Repository Certificates</li><li>**Delete** - Can delete existing Repository Certificates</li>
- |
-|  | Applications | <li> **View** - Can view existing Applications</li><li>**Create/Edit** - Can create and edit Applications</li><li>**Delete** - Can delete existing Applications</li><li>**Sync** - Can deploy Applications</li>
- |
-|  | Repositories | <li> **View** - Can view existing Repositories</li><li>**Create/Edit** - Can create and edit Repositories</li><li>**Delete** - Can delete existing Repositories</li>
- |
-|  | GnuPG Keys | <li> **View** - Can view existing GnuPG Keys</li><li>**Create/Edit** - Can create and edit GnuPG Keys</li><li>**Delete** - Can delete existing GnuPG Keys</li>
- |
-| **Feature Flag Manage Role** | Feature Flags | <li> **Create/Edit** - Can create and edit Feature Flags</li>
- |
-|  | Target Management | <li> **Create/Edit** - Can create and edit Targets and Target Groups to control visibility of variation of a Feature Flag</li>
- |
+## Shared Resources
 
-The following table lists permissions corresponding to the default roles at the Project [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes):
+| Resource | Permissions |
+| ---  | ----------- |
+| Templates | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access: Can access referenced templates at runtime</li><li>Copy</li></ul> |
+| Governance Policies | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Deployment Freeze | <ul><li>Manage</li><li>Override</li><li>Global</li></ul> |
+| Secrets | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access: Can access referenced secrets at runtime</li></ul> |
+| Connectors | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access: Can access referenced connectors at runtime</li></ul> |
+| Governance Policy Sets | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Evaluate: Can evaluate governance policy sets</li></ul> |
+| Variables | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Files | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access</li></ul> |
+| Dashboards | <ul><li>View</li><li>Manage</li></ul> |
+| Delegate Configurations | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Delegates | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 
+## Module-specific permissions
 
+### Chaos Engineering
 
-|  |  |  |
-| --- | --- | --- |
-| **Role** | **Resource Type** | **Permissions** |
-| **Pipeline Executor** | Resource Groups | <li> **View** - Can view existing Resource Groups</li>
- |
-|  | Roles | <li> **View** - Can view existing Service Accounts</li>
- |
-|  | Projects | <li> **View** - Can view existing Projects</li>
- |
-|  | Users | <li> **View** - Can view existing Users</li>
- |
-|  | User Groups | <li> **View** - Can view existing User Groups</li>
- |
-|  | Variables | <li> **View** - Can view existing Variables</li>
- |
-|  | Templates | <li> **View** - Can view existing Templates</li><li> **Access** - Can access referenced Templates at runtime</li>
- |
-|  | Secrets | <li> **View** - Can view existing Secrets</li><li> **Access** - Can access referenced Secrets at runtime</li>
- |
-|  | Connectors | <li> **View** - Can view existing Connectors</li><li>**Access** - Can access referenced Connectors at runtime</li>
- |
-|  | Environments | <li> **View** - Can view existing Environments</li><li>**Access** - Can access referenced Environments at runtime</li>
- |
-|  | Environment Groups | <li> **View** - Can view existing Environment Groups</li>
- |
-|  | Pipelines | <li> **View** - Can view existing Pipelines</li><li>**Execute** - Can execute Pipelines</li>
- |
-|  | Services | <li> **View** - Can view existing Services</li><li>**Access** - Can access Services</li>
- |
-| **Project Admin​** | Resource Groups | <li> **View** - Can view Resource Groups</li><li>**Create/Edit** - Can create and edit Resource Groups</li><li>**Delete** - Can delete Resource Groups</li>
- |
-|  | Service Accounts | <li> **View** - Can view Service Accounts</li><li>**Create/Edit** - Can create and edit Service Accounts</li><li>**Delete** - Can delete Service Accounts</li><li>**Manage** - Can create/update/delete API keys and tokens</li>
- |
-|  | Roles | <li> **View** - Can view existing Roles</li><li>**Create/Edit** - Can create and edit Roles</li><li>**Delete** - Can delete existing Roles</li>
- |
-|  | Projects | <li> **View** - Can view existing Projects</li><li>**Edit** - Can edit existing Projects</li><li>**Delete** - Can delete existing Projects</li>
- |
-|  | Users | <li> **View** - Can view existing users</li><li>**Manage** - Can update/delete users and their role bindings</li><li>**Invite** - Can invite users to Harness</li>
- |
-|  | User Groups | <li> **View** - Can view User Groups</li><li>**Manage** - Can create/update/delete User Groups</li>
- |
-|  | Governance Policy Sets | <li> **View** - Can view exisitng Governance Policy Sets</li><li>**Create/Edit** - Can create and edit Governance Policy Sets</li><li>**Delete** - Can delete existing Governance Policy Sets</li><li>**Evaluate** - Can evaluate Governance Policy Sets</li>
- |
-|  | Variables | <li> **View** - Can view existing Variables</li><li>**Create/Edit** - Can create and edit Variables</li><li>**Delete** - Can delete existing Variables</li>
- |
-|  | Templates | <li> **View** - Can view existing Templates</li><li>**Create/Edit** - Can create and edit Templates</li><li>**Delete** - Can delete existing Templates</li><li> **Access** - Can access referenced Templates at runtime</li>
- |
-|  | Governance Policies | <li> **View** - Can view existing Governance Policies</li><li>**Create/Edit** - Can create and edit Governance Policies</li><li>**Delete** - Can delete existing Governance Policies</li>
- |
-|  | Delegate Configurations | <li> **View** - Can view existing Delegate Configurations</li><li>**Create/Edit** - Can create and edit Delegate Configurations</li><li> **Delete** - Can delete existing Delegate Configurations</li>
- |
-|  | Delegates | <li> **View** - Can view existing Delegates</li><li> **Create/Edit** - Can create and Edit Delegates</li><li>**Delete** - Can delete existing Delegates</li>
- |
-|  | Dashboards | <li> **View** - Can view Dashboards</li><li> **Manage** - Can manage and edit Dashboards</li>
- |
-|  | Delegate Configurations | <li> **View** - Can view existing Delegate Configurations</li><li>**Create/Edit** - Can create and edit Delegate Configurations</li><li>**Delete** - Can delete existing Delegate Configurations</li>
- |
-|  | Delegates | <li> **View** - Can view existing Delegates</li><li>**Create/Edit** - Can create and Edit Delegates</li><li>**Delete** - Can delete existing Delegates</li>
- |
-|  | Secrets | <li> **View** - Can view existing Secrets</li><li>**Create/Edit** - Can create and edit Secrets</li><li>**Delete** - Can delete existing Secrets</li><li>**Access** - Can access referenced Secrets at runtime</li>
- |
-|  | Connectors | <li> **View** - Can view existing Connectors</li><li>**Create/Edit** - Can create and edit Connectors</li><li>**Delete** - Can delete existing Connectors</li><li>**Access** - Can access referenced Connectors at runtime</li>
- |
-|  | Environments | <li> **View** - Can view existing Environments</li><li> **Create/Edit** - Can create and edit Environments</li><li> **Delete** - Can delete existing Environment</li><li>**Access** - Can access referenced Environments at runtime</li>
- |
-|  | ChaosHub | <li> **View** - Can view Chaos experiments and Chaos Scenarios</li><li> **Create/Edit** - Can connect to ChaosHub Git repo</li><li>**Delete** - Can disconnect ChaosHub Git repo</li>
- |
-|  | Clusters | <li> **View** - Can view existing Clusters</li><li>**Create/Edit** - Can create and edit Clusters</li><li>**Delete** - Can delete existing Clusters</li>
- |
-|  | Agents | <li> **View** - Can view existing Agents</li><li> **Create/Edit** - Can create and edit Agents</li><li>**Delete** - Can delete existing Agents</li>
- |
-|  | Repository Certificates | <li> **View** - Can view existing Repository Certificates</li><li> **Create/Edit** - Can create and edit Repository Certificates</li><li>**Delete** - Can delete existing Repository Certificates</li>
- |
-|  | Applications | <li> **View** - Can view existing applications</li><li>**Create/Edit** - Can create and edit Applications</li><li>**Delete** - Can delete existing Applications</li><li>**Sync** - Can deploy Applications</li>
- |
-|  | Repositories | <li> **View** - Can view existing Repositories</li><li>**Create/Edit** - Can create and edit Repositories</li><li>**Delete** - Can delete existing Repositories</li>
- |
-|  | GnuPG Keys | <li> **View** - Can view existing GnuPG Keys</li><li>**Create/Edit**- Can create and edit GnuPG Keys</li><li>**Delete**- Can delete existing GnuPG Keys</li>
- |
-|  | Environment Groups | <li> **View** - Can view existing Environment Groups</li><li>**Create/Edit** - Can create and edit Environment Groups</li><li>**Delete** - Can delete existing Environment Groups</li>
- |
-|  | SLO | <li> **View** - Can view an existing SLO</li><li>**Create/Edit** - Can create and edit SLO</li><li>**Delete** - Can delete an existing SLO</li>
- |
-|  | Monitored Services | <li> **View** - Can view existing Monitored Services</li><li>**Create/Edit** - Can create and edit Monitored Services</li><li>**Delete** - Can delete existing Monitored Services</li><li>**Toggle** - Can toggle between different Monitored Services</li>
- |
-|  | Pipelines | <li> **View** - Can view existing Pipelines</li><li>**Create/Edit** - Can create and edit Pipelines</li><li>**Delete** - Can delete existing Pipelines</li><li>**Execute** - Can execute Pipelines</li>
- |
-|  | Services | <li> **View** - Can view existing Services</li><li>**Create/Edit** - Can create and edit Services</li><li>**Delete** - Can delete existing Services</li><li>**Access** - Can access referenced Services at runtime</li>
- |
-|  | Feature Flags | <li> **Toggle** - Can turn a Feature Flag on or off</li><li>**Create/Edit** - Can create and edit Feature Flags**Delete** - Can delete existing Feature Flags</li>
- |
-|  | Target Management | <li> **Create/Edit** - Can create and edit Targets and Target Groups to control visibility of variation of a Feature Flag</li><li>**Delete** - Can delete Targets and Target Groups</li>
- |
-| **Project Viewer** | Resource Groups | <li> **View** - Can view existing Resource Groups</li>
- |
-|  | Service Accounts | <li>  **View** - Can view existing Service Accounts</li>
- |
-|  | Roles | <li>  **View** - Can view existing Roles</li>
- |
-|  | Projects | <li>  **View** - Can view existing Projects</li>
- |
-|  | Users | <li>  **View** - Can view existing Users</li>
- |
-|  | User Groups | <li>  **View** - Can view existing User Groups</li>
- |
-|  | Governance Policy Sets | <li>  **View** - Can view existing Governance Policy Sets</li>
- |
-|  | Variables | <li>  **View** - Can view existing Variables</li>
- |
-|  | Templates | <li>  **View** - Can view existing Templates</li>
- |
-|  | Governance Policies | <li>  **View** - Can view existing Governance Policies</li>
- |
-|  | Delegate Configurations | <li>  **View** - Can view existing Delegate Configurations</li>
- |
-|  | Delegates | <li>  **View** - Can view existing Delegates</li>
- |
-|  | Dashboards | <li>  **View** - Can view existing Dashboards</li>
- |
-|  | Delegate Configurations | <li>  **View** - Can view existing Delegate Configurations</li>
- |
-|  | Delegates | <li>  **View** - Can view existing Delegates</li>
- |
-|  | Secrets | <li>  **View** - Can view existing Secrets</li>
- |
-|  | Connectors | <li>  **View** - Can view existing Connectors</li>
- |
-|  | Environments | <li>  **View** - Can view existing Environments</li>
- |
-|  | ChaosHub | <li> **View** - Can view Chaos experiments and Chaos Scenarios </li> |
-|  | Clusters | <li> **View** - Can view existing Clusters</li>
- |
-|  | Agents | <li> **View** - Can view existing Agents</li>
- |
-|  | Repository Certificates | <li> **View** - Can view existing Repository Certificates</li>
- |
-|  | Applications | <li> **View** - Can view existing Applications</li>
- |
-|  | Repositories | <li> **View** - Can view existing Repositories</li>
- |
-|  | GnuPG Keys | <li> **View** - Can view existing GnuPG Keys</li>
- |
-|  | Environment Groups | <li> **View** - Can view existing Environment Groups</li>
- |
-|  | SLO | <li> **View** - Can view existing SLOs</li>
- |
-|  | Monitored Services | <li> **View** - Can view existing Monitored Services</li>
- |
-|  | Pipelines | <li> **View** - Can view existing Pipelines</li>
- |
-|  | Services | <li> **View** - Can view existing Services</li>
- |
-| **GitOps Admin Role** | Clusters | <li> **View** - Can view existing Clusters</li><li>**Create/Edit** - Can create and edit Clusters</li><li>**Delete** - Can delete existing Clusters</li>
- |
-|  | Agents | <li> **View** - Can view existing Agents</li><li>**Create/Edit** - Can create and edit Agents</li><li>**Delete** - Can delete existing Agents</li>
- |
-|  | Repository Certificates | <li> **View** - Can view existing Repository Certificates</li><li>**Create/Edit** - Can create and edit Repository Certificates</li><li>**Delete** - Can delete existing Repository Certificates</li>
- |
-|  | Applications | <li> **View** - Can view existing Applications</li><li>**Create/Edit** - Can create and edit Applications</li><li> **Delete** - Can delete existing Applications</li><li>**Sync** - Can deploy Applications</li>
- |
-|  | Repositories | <li> **View** - Can view existing Repositories</li><li> **Create/Edit** - Can create and edit Repositories</li><li>**Delete** - Can delete existing Repositories</li>
- |
-|  | GnuPG Keys | <li> **View** - Can view existing GnuPG Keys</li><li>**Create/Edit** - Can create and edit GnuPG Keys</li><li>**Delete** - Can delete existing GnuPG Keys</li>
- |
-| **Feature Flag Manage Role** | Feature Flags | <li> **Create/Edit** - Can create and edit Feature Flags</li>
- |
-|  | Target Management | <li> **Create/Edit** - Can create and edit Targets and Target Groups to control visibility of variation of a Feature Flag</li>
- |
+| Resource | Permissions |
+| ---  | ----------- |
+| Chaos Infrastructure | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Chaos Gameday | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Chaos Hub | <ul><li>View: View Chaos experiments and Chaos scenarios</li><li>Create/Edit: Connect to ChaosHub Git repo</li><li>Delete: Disconnect ChaosHub Git repo</li></ul> |
+| Chaos Experiment | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Execute</li></ul> |
 
- ## See also
+### Cloud Cost Management
 
- * [Manage resource groups](./add-resource-groups.md)
- * [Manage roles](./add-manage-roles.md)
- * [API permissions reference](../Resource-Development/16_APIs/api-permissions-reference)
+| Resource | Permissions |
+| ---  | ----------- |
+| Currency Preferences | <ul><li>View</li><li>Create/Edit</li></ul> |
+| Overview | <ul><li>View</li></ul> |
+| Cost Categories | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Folders | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Perspectives | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| AutoStopping Rules | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Budgets | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Load Balancer | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+
+### Feature Flags
+
+| Resource | Permissions |
+| ---  | ----------- |
+| Feature flags | <ul><li>Toggle: Turn Feature Flags on/off</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Target Management | <ul><li>Create/Edit: Create and edit Targets and Target Groups to control visibility of a variation of a Feature Flag</li><li>Delete: Delete Targets and Target Groups</li></ul> |
+
+### GitOps
+
+| Resource | Permissions |
+| ---  | ----------- |
+| Clusters | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Agents | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| GnuPG Keys | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Repository Certificates | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul>|
+| Applications | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Sync: Deploy applications</li></ul> |
+| Repositories | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+
+### Service Reliability
+
+| Resource | Permissions |
+| ---  | ----------- |
+| SLO | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Monitored Services | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Toggle: Toggle Monitored Services on/off</li></ul> |
+| Downtime | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+
+### Security Tests
+
+| Resource | Permissions |
+| ---  | ----------- |
+| Issues | <ul><li>View</li></ul> |
+| Scans | <ul><li>View</li></ul> |
+| Test Targets | <ul><li>View</li><li>Create/Edit</li></ul> |
+| Exemptions | <ul><li>View</li><li>Create/Edit</li><li>Approve/Reject</li></ul> |
+| External Tickets | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |

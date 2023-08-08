@@ -36,7 +36,16 @@ While Harness includes some built-in roles and resource groups, to ensure least 
 
 ## Built-in roles
 
-Harness includes several built-in roles.
+Harness includes several built-in roles. To examine the permissions assigned to these roles, view them in Harness:
+
+1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where the role exists.
+
+   * To view a role at the account scope, select **Account Settings**, and then select **Access Control**.
+   * To view a role at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
+   * To view a role at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
+
+2. Select **Roles** in the header.
+3. Select the role you want to view. For details about specific permissions, go to the [Permissions reference](./permissions-reference).
 
 ### Platform roles
 
@@ -56,7 +65,7 @@ These roles are not specific to any modules. They are for administration and ove
 | Pipeline Admin | Account |
 | Pipeline Executor | Project |
 
-## Module-specific roles
+### Module-specific roles
 
 Harness creates these roles for you depending on the modules you use. These roles exist at all [scopes](./rbac-in-harness#permissions-hierarchy-scopes).
 
@@ -109,7 +118,7 @@ To manage roles in Harness, you need a role, such as **Account Admin**, that has
 3. Locate the role you want to edit.
 4. Select **More options** (&vellip;) on the role card, and then select **Edit**.
 5. Edit the role's name, description, or tags, if needed, and then select **Save**.
-6. Edit the role's permissions, and then select **Apply Changes**.
+6. Edit the role's permissions, and then select **Apply Changes**. For details about specific permissions, go to the [Permissions reference](./permissions-reference).
 
 ### Delete a role
 
