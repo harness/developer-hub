@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-08-02T10:00
+date: 2023-08-09T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 9
 ---
@@ -20,14 +20,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - August 02, 2023, version 1.62.2
+## Latest - August 09, 2023, version 1.64.1
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-This release does not include new features. 
+* Aqua Trivy scans now capture and report on secrets in plain text, in addition to vulnerabilities. (STO-6345)
+
+* The Account Settings > Subscriptions > Security Testing Orchestration UI has been updated to display scan limits more clearly. The UI now shows scan limits based on the number of subscribed security developers. (STO-6096)
+
 
 ```mdx-code-block
   </TabItem>
@@ -41,7 +44,7 @@ This release does not include Early Access features.
   <TabItem value="Fixed issues">
 ```
 
-* Fixed an issue that made it difficult to set up proxy details for a Veracode scan. Veracode scans can now handle `https_proxy`, `http_proxy`, and `no_proxy` environment variables as `-D` flags that get passed to Java. (STO-6081, ZD-45891)
+* Fixed a UI issue where the Issue Details pane rendered long HTML values as markdown. These values are now correctly rendered as HTML. (STO-6339)
 
 ```mdx-code-block
   </TabItem>
@@ -53,6 +56,20 @@ This release does not include Early Access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### August 02, 2023, version 1.62.2
+
+##### What's new
+
+This release does not include new features. 
+
+##### Early access
+
+This release does not include Early Access features.
+
+##### Fixed issues
+
+* Fixed an issue that made it difficult to set up proxy details for a Veracode scan. Veracode scans can now handle `https_proxy`, `http_proxy`, and `no_proxy` environment variables as `-D` flags that get passed to Java. (STO-6081, ZD-45891)
 
 
 #### July 12, 2023, version 1.61.1 
@@ -471,36 +488,36 @@ This release does not include fixed issues.
 
 ##### What's new
 
-* You can now ingest results from a specific Checkmarx scan. This option is useful for ensuring that a pipeline ingests the scan triggered by a specific event. Add the setting `product_scan_id` = `MY_SCAN_ID` to the Checkmarx step. This overrides the default behavior, which is to ingest results for the most recent scan. (STO-5424)	
+* You can now ingest results from a specific Checkmarx scan. This option is useful for ensuring that a pipeline ingests the scan triggered by a specific event. Add the setting `product_scan_id` = `MY_SCAN_ID` to the Checkmarx step. This overrides the default behavior, which is to ingest results for the most recent scan. (STO-5424)  
 
 * You can now enable debug-level logging for Snyk and Aqua Trivy scans. To do this, add this setting to the scan step: `log_level` = `debug`. (STO-5405)
 
 * Grype scans now support a `tool_args` field. You can use this field to run the plugin with specific command-line arguments. To scan all layers in an image, for example, add this setting to the Grype scan step: `tool_args` = `--scope all-layers`. (STO-5400)
 
-* To make **Issue Details** easier to navigate, Raw Details JSON data is now collapsed by default. (STO-5398)	
+* To make **Issue Details** easier to navigate, Raw Details JSON data is now collapsed by default. (STO-5398) 
 
 
 ##### Fixed issues
 
-* Fixed an issue that caused a scheduled AWS ECR scan to time out or to terminate with a status of Invalid. (STO-5449)	
+* Fixed an issue that caused a scheduled AWS ECR scan to time out or to terminate with a status of Invalid. (STO-5449)  
 
 #### January 15, 2023
 
 ##### What's new
 
-* Aqua Trivy scans now support a `tool_args` field. You can use this field to run the plugin with specific command-line arguments. To run an offline scan, for example, specify `tool_args` = `---offline-scan`. (STO-5388)	
+* Aqua Trivy scans now support a `tool_args` field. You can use this field to run the plugin with specific command-line arguments. To run an offline scan, for example, specify `tool_args` = `---offline-scan`. (STO-5388) 
 
 ##### Fixed issues
 
-* Fixed an issue where, in some situations, the severity and severity code of a detected issue were not updated when new occurrences of the same issue were detected. (STO-4809)	
+* Fixed an issue where, in some situations, the severity and severity code of a detected issue were not updated when new occurrences of the same issue were detected. (STO-4809)  
 
 #### January 8, 2023
 
 ##### What's new
 
-* Checkmarx scans now support a `tool_args` field. You can use this field to run the Checkmarx plugin with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`. (STO-5041)	
+* Checkmarx scans now support a `tool_args` field. You can use this field to run the Checkmarx plugin with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`. (STO-5041) 
 
-* STO now supports orchestrated scans using [Grype](/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference). (STO-5161)	
+* STO now supports orchestrated scans using [Grype](/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference). (STO-5161)  
 
 ##### Fixed issues
 
@@ -510,7 +527,7 @@ This release does not include fixed issues.
 
 ##### New features
 
-* The Issues Details pane has been revised to make it easier to navigate. Raw JSON data now appears at the bottom of each occurrence and is collapsed by default. (STO-4839)	
+* The Issues Details pane has been revised to make it easier to navigate. Raw JSON data now appears at the bottom of each occurrence and is collapsed by default. (STO-4839)  
 
 ##### Fixed issues
 
@@ -520,24 +537,24 @@ This release does not include fixed issues.
 <details>
 <summary>2022 releases</summary>
 
-#### December 18, 2022			
+#### December 18, 2022      
 
 ##### New features
 
-* Remediated issues are no longer included in the issue counts logged near the end of a Security Step run and provided as output variables. (STO-5304)	
+* Remediated issues are no longer included in the issue counts logged near the end of a Security Step run and provided as output variables. (STO-5304)  
 
-*  With this release, you can run a SonarQube scan and specify a collection of SSL certificates rather than a single certificate. This option is useful when you don't know which specific certificate in a collection is required by the server. (STO-5243)	
+*  With this release, you can run a SonarQube scan and specify a collection of SSL certificates rather than a single certificate. This option is useful when you don't know which specific certificate in a collection is required by the server. (STO-5243)  
 
 ##### Fixed issues
 
-* Fixed an issue where `product_lookup_type` being set to `byTokens` causes the step to perform a Dataload instead of OrchestratedScan. (STO-5166)	
+* Fixed an issue where `product_lookup_type` being set to `byTokens` causes the step to perform a Dataload instead of OrchestratedScan. (STO-5166)  
 
 
-#### December 11, 2022		
+#### December 11, 2022    
 
 ##### New features
-	
-* STO is now supported on Linux (amd64 and arm64 platforms) in [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). (STO-5314)	
+  
+* STO is now supported on Linux (amd64 and arm64 platforms) in [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). (STO-5314)  
 
 * Instead of using Service Dependencies for Docker-in-Docker configuration, users should use new Background steps. (STO-5268)
 
@@ -546,7 +563,7 @@ This release does not include fixed issues.
 This release does not include fixed issues.
 
 
-#### December 4, 2022			
+#### December 4, 2022     
 
 ##### New features
 
@@ -554,36 +571,36 @@ This release does not include new features.
 
 ##### Fixed issues
 
-* Fixed an issue that resulted in intermittent failures with OWASP orchestrated scans. (STO-5289)	
+* Fixed an issue that resulted in intermittent failures with OWASP orchestrated scans. (STO-5289) 
 
 
-#### November 28, 2022			
-	
+#### November 28, 2022      
+  
 
 ##### New features
 
-This release does not include new features.	
+This release does not include new features. 
 
 ##### Fixed issues
 
 * Fixed an issue where the Security Tests tab on the Pipeline Execution page was periodically reloading in a visually jarring way and losing scroll position. (STO-5208)
 
-* Fixed an issue where the Security Tests tab would show previously-found issues as "remediated" while the scan was in progress.  (STO-4985)	
+* Fixed an issue where the Security Tests tab would show previously-found issues as "remediated" while the scan was in progress.  (STO-4985)  
 
-* Improved the Security Tests UI to highlight new issues found in the current target only vs. issues also found in the baseline, or in the previous scan if no baseline was specified. (STO-5198)	
+* Improved the Security Tests UI to highlight new issues found in the current target only vs. issues also found in the baseline, or in the previous scan if no baseline was specified. (STO-5198) 
 
 
-#### November 6, 2022	
+#### November 6, 2022 
 
 ##### New features
 
 * You can now include Run steps in Security Test stages. You can also include Security Tests stages in STO pipelines without a CI license. (STO-5208)
 
-* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans). (STO-4958)	
+* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans). (STO-4958) 
 
 ##### Fixed issues
 
-* Fixed an issue where the issue counts reported in output variables vs. the Security Tests page were inconsistent for scans of target baselines, or for targets with no specified baseline. (STO-5042)	
+* Fixed an issue where the issue counts reported in output variables vs. the Security Tests page were inconsistent for scans of target baselines, or for targets with no specified baseline. (STO-5042) 
 
 
 #### October 31, 2022
