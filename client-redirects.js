@@ -34,9 +34,8 @@ module.exports = {
     //  },
     //===================================================================================
 
-     // Created by SudheendraKatte for branch cet-whats-supported on August 3 2023
-
-     {
+    // Created by SudheendraKatte for branch cet-whats-supported on August 3 2023
+    {
       from: "/docs/category/get-started-3/",
       to: "/docs/category/get-started-with-cet",
     },
