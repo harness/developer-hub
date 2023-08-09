@@ -558,7 +558,7 @@ To create an environment, do the following:
 2. Select **New Environment**.
 3. Enter a name for the new environment.
 4. In **Environment Type**, select **Production** or **Pre-Production**.
-   The **Production** or **Pre-Production** settings can be used in [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness/) to restrict who can deploy to these environments.
+   The **Production** or **Pre-Production** settings can be used in [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness) to restrict who can deploy to these environments.
 5. Select **Save**. The new environment is created.
 
 Pipelines require that an environment have an infrastructure definition. We'll cover that next.

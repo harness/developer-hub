@@ -17,7 +17,11 @@ This topic covers how to add and configure New Relic as a Health Source for the 
 
 ## Before You Begin
 
-* [Add New Relic as a Verification Provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
+* [Add New Relic as a Verification Provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-new-relic)
+
+:::info note
+New Relic supports multiple APIs. The Harness Connector leverages the New Relic Insights API, which supports NRQL. Your Service/Application also needs to be instrumented as a [New Relic APM Application](https://docs.newrelic.com/introduction-apm). 
+:::
 
 ## Review: CV Setup Options
 
@@ -112,9 +116,9 @@ A Health Source is basically a mapping of a Harness Service to the service in a 
     
 8. Click **Next**. The **Customize Health Source** settings appear.
     The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. You can customize the metrics to map the Harness Service to the monitored environment. In Applications & Tiers, enter the following details:
-9.  In **Find a New Relic application** type the name of an application.
-10. In **Find a New Relic tier** type a tier name from which you want usage metrics, code exceptions, error conditions, or exit calls.
-11. In **Metric Packs** select the metrics you want Harness to use.
+9.  In **Find a New Relic application** select the name of a [New Relic APM ](https://docs.newrelic.com/introduction-apm)application.
+10. Select the **Metric Packs** you want Harness to use.
+11. *Optional*: Enter the NRQL for specified metrics with a `TimeSeries` clause.
 12. Click **Submit**. The Health Source is displayed in the Verify step.
 
 You can add one or more Health Sources for each APM or logging provider.

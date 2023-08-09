@@ -53,11 +53,11 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 The set of security features that Harness provides includes the following features:
 
-* [User management](/docs/platform/User-Management/add-users)
-* [User group management](/docs/platform/User-Management/add-user-groups)
-* [Role management](../../platform/4_Role-Based-Access-Control/9-add-manage-roles.md)
-* [Resource group management](../../platform/4_Role-Based-Access-Control/8-add-resource-groups.md)
-* [Access management (for example, RBAC)](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md)
+* [User management](/docs/platform/role-based-access-control/add-users)
+* [User group management](/docs/platform/role-based-access-control/add-user-groups)
+* [Role management](../../platform/role-based-access-control/add-manage-roles)
+* [Resource group management](../../platform/role-based-access-control/add-resource-groups)
+* [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 * [Password policies](../../platform/3_Authentication/1-authentication-overview.md#enforce-password-policies)
 * [Two-factor authentication](../../platform/3_Authentication/2-two-factor-authentication.md)
 * [Single sign-on (SSO)](../../platform/3_Authentication/3-single-sign-on-saml.md#saml-sso-with-harness-overview)
@@ -86,13 +86,13 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 #### How does Harness implement RBAC?
 
-Harness provides role-based access control (RBAC) that enables you to control user and group access to Harness resources according to their role assignment.
+Harness provides role-based access control (RBAC) that enables you to control user and group access to Harness resources according to their role binding.
 
-Here is an overview of Harness RBAC. It shows user authentication via its User settings and authorization via its [User group](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md#defining-and-assigning-permissions) and [Role assignment](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment).
+Here is an overview of Harness RBAC. It shows user authentication via its User settings and authorization via its [user group](/docs/platform/role-based-access-control/rbac-in-harness/#defining-and-assigning-permissions) and [role binding](/docs/platform/role-based-access-control/rbac-in-harness/#role-binding).
 
 ![](./static/harness-security-faqs-15.png)
 
-See [Access management (RBAC)](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md).
+For more information, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 #### How are users added?
 
@@ -106,9 +106,9 @@ See:
 
 * [Single sign-on (SSO) with SAML](../../platform/3_Authentication/3-single-sign-on-saml.md)
 * [Single sign-on (SSO) with OAuth](../../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md)
-* [Provision users with Okta (SCIM)](/docs/platform/User-Management/provision-users-with-okta-scim)
-* [Provision users with OneLogin (SCIM)](/docs/platform/User-Management/7provision-users-and-groups-with-one-login-scim)
-* [Provision users with Azure AD (SCIM)](/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim)
+* [Provision users with Okta (SCIM)](/docs/platform/role-based-access-control/provision-users-with-okta-scim)
+* [Provision users with OneLogin (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim)
+* [Provision users with Azure AD (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim)
 
 #### Are there best practices for setting up Harness users?
 
@@ -296,5 +296,5 @@ To integrate Harness with some third-party apps, you need to register Harness wi
 
 The API key is a simple encrypted string that other applications can use to access Harness without a private Harness account.
 
-See [API keys](/docs/platform/User-Management/add-and-manage-api-keys).
+See [API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 

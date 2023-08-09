@@ -99,7 +99,7 @@ The maximum timeout duration is 53 weeks.The timeout countdown appears when the 
 
 ## Select approvers
 
-1. In **User Groups**, select the Harness user groups that will approve the step. For more information, go to [add and manage user groups](/docs/platform/User-Management/add-user-groups).
+1. In **User Groups**, select the Harness user groups that will approve the step. For more information, go to [Manage user groups](/docs/platform/role-based-access-control/add-user-groups).
 2. In **Number of approvers that are required at this step**, enter how many of the users in the user groups must approve the step.
    
    ![](./static/adding-harness-approval-stages.png)

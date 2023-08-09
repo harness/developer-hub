@@ -23,6 +23,13 @@ Harness publishes security advisories for every release. Go to the [Harness Trus
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
+## Deprecation notice
+
+The following deprecated API endpoints will no longer be supported:
+- [GET | PUT | POST | DELETE] api/resourcegroup/{identifier}
+- POST api/resourcegroup/filter
+- GET api/resourcegroup
+
 ## Latest - August 4, 2023, version 80120
 
 
@@ -143,7 +150,7 @@ This release does not include any early access features.
 
   This issue is now fixed, and you can use the API to fetch role assignments for user groups and service accounts in any scope.
 
-- If you failed to specify the scope for a resource group that you created with the Harness API, Harness failed to apply a default scope, which it was expected to infer from the API request’s query parameters. (The Harness UI, on the other hand, behaves as expected: it sets the default scope of the resource group to the scope that you are in when creating the resource group.) This behavior led to eligible users being unable to perform operations on the resource group. (PL-39271, ZD-45488)
+- If you failed to specify the scope for a resource group that you created with the Harness API, Harness failed to apply a default scope, which it was expected to infer from the API request's query parameters. (The Harness UI, on the other hand, behaves as expected: it sets the default scope of the resource group to the scope that you are in when creating the resource group.) This behavior led to eligible users being unable to perform operations on the resource group. (PL-39271, ZD-45488)
 
   This issue is now fixed. If you do not specify a scope for the resource group when using the API, Harness sets the default scope correctly, and eligible users should be able to perform operations on the resource group.
 
@@ -702,7 +709,7 @@ This release does not include any early access feature.
   
   A code enhancement has fixed this issue.
 
-- Recently added roles are not displayed in the manage role assignment settings. (PL-30560)
+- Recently added roles are not displayed in the manage role bindings settings. (PL-30560)
   
   A code enhancement has fixed this issue.
 
@@ -1039,11 +1046,11 @@ The location of the repository that contains the NextGen Helm chart is changing.
   - **Account Viewer - All Account Level Resources**: This was a role-assignment within the account scope and has been removed for all the users.
   This does not apply in the following scenarios: 
     - If an account has enabled the feature flag `ACCOUNT_BASIC_ROLE_ONLY`.
-    - If an account does not have the **Account Viewer - All Account Level Resources** role-assignment for the default user group `All Account Users`.
+    - If an account does not have the **Account Viewer - All Account Level Resources** role-assignment for the built-in user group `All Account Users`.
 - **Organization Viewer - All Organization Level Resources**: This was a role-assignment within the organization scope and has been removed for all the users.
 - **Project Viewer - All Project Level Resources**: This was a role-assignment within the project scope and has been removed for all the users.
 
-For more information, see [Default User Group](/docs/platform/User-Management/harness-default-user-groups)
+For more information, see [Built-in user groups](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups)
 
 
 ##### What's new
@@ -1636,15 +1643,13 @@ N/A
 
 - Harness Manager was changed to remove the edit and details UI for Immutable Delegates. These Delegates cannot be changed. (DEL-4756)
 
-- A migration will run to remove the following Role Bindings directly assigned to users for accounts having ACCOUNT_BASIC_ROLE turned ON (PL-28284):
+- A migration will run to remove the following role bindings directly assigned to users for accounts having ACCOUNT_BASIC_ROLE turned ON (PL-28284):
 
   - At Account Scope, Account Basic/Account Viewer -All Account Resources​.
   - At Organization scope, Organization Viewer - All Organization Resources.​
   - At Project Scope, Project Viewer - All Project Resources.​
 
-  Harness now has a default User Group at each scope. These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default.​ Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
-
-  See [Harness Default User Groups](/docs/platform/User-Management/harness-default-user-groups).
+  Harness now has a [built-in user group](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups) at each scope. These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default.​ Users can assign roles to the built-in User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
 
 ##### Early access
 
@@ -1725,13 +1730,11 @@ N/A
 
 **Platform**
 
-Harness now has a default User Group at each scope. These groups have all the users at the respective scope as their members.
+Harness now has a [built-in user group](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups) at each scope. These groups have all the users at the respective scope as their members.
 
 As a part of this change, Harness will stop assigning any roles to the User Groups by default.
 
-Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group.
-
-For more information on default User Group, see [Harness Default User Groups](/docs/platform/User-Management/harness-default-user-groups).
+Users can assign roles to the built-in user group at a specific scope, which becomes the default role for all the users in that group.
 
 #### September 7, 2022, version 76619
 
@@ -1739,7 +1742,7 @@ For more information on default User Group, see [Harness Default User Groups](/d
 
 - You can now inherit User Groups created at a higher scope by using Assign Roles. (PL-27237)
 
-  See [Assign Roles](https://developer.harness.io/docs/platform/User-Management/add-user-groups#step-assign-roles).
+  See [Create groups by inheritance](/docs/platform/role-based-access-control/add-user-groups#create-groups-by-inheritance).
 
 - You can now view the past 10 executions of the Pipelines and sort them from the table. You can also go to a specific execution by clicking on it. (PIE-4903)
 
@@ -1798,9 +1801,9 @@ No early access features are available in this release.
 
 ##### What's new
 
-- Now you can add up to 50,000 users in the Harness Non-Community Edition. (PL-27300)
+- Now you can add up to 50,000 users in paid plans. The limit remains at 1,500 for free plans and Harness Community Edition accounts. (PL-27300)
 
-  See [Add and Manage Users](/docs/platform/User-Management/add-users).
+  See [Manage users](/docs/platform/role-based-access-control/add-users).
 
 - You can now use an enhanced Git Experience. (PL-26339)
 

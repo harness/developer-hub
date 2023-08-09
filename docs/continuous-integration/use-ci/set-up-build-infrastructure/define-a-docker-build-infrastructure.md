@@ -179,7 +179,7 @@ There is a one-to-one relationship between Drone Runners and Harness Delegates. 
 On the Linux machine where you want to run the delegate, use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
 
 * Add `-e DELEGATE_TAGS="windows-amd64"`.
-* Add `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000`.
+* Add `-e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000`.
 
 :::caution
 
@@ -198,7 +198,7 @@ docker run --cpus=1 --memory=2g \
   -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
   -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
   -e DELEGATE_TAGS="windows-amd64" \
-  `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000` \
+  -e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000 \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.02.78306
 ```
 

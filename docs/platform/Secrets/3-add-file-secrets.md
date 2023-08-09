@@ -8,71 +8,57 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can upload encrypted files and use them in your resources like Pipelines and Connectors, in the same way as encrypted text.
+You can store encrypted files and reference them in your Harness resources, such as pipelines, steps, and connectors.
 
-This topic describes how to add an encrypted file in Harness.
+This topic assumes you have [created a Harness project](../organizations-and-projects/create-an-organization.md).
 
+## Create an encrypted file secret
 
-### Step 1: Add Encrypted File
+You can add an encrypted file secrets at the project, organization, and account scopes.
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
+1. Depending on the scope where you want to create the secret, go to **Project Setup**, **Organization**, or **Account Resources**.
+2. Select **Secrets**.
+3. Select **Secret**, and then select **File**.
 
-You can add an encrypted file at Project/Organization/Account scope. To do this, go to Project setup, Organization, or Account Resources.
+   <!-- ![](../Secrets/static/add-file-secrets-55.png) -->
 
-Click **Secrets**.
+   <docimage path={require('../Secrets/static/add-file-secrets-55.png')} />
 
-Click **Secret** and select **File.**
+4. Select the [Secrets Manager](/docs/category/secrets-management) that you want to use to store the secret.
+5. Enter a name for the secret.
 
-<!-- ![](../Secrets/static/add-file-secrets-55.png) -->
+   You can use this name to reference the encrypted file secret in pipelines, steps, connectors, and so on.
 
-<docimage path={require('../Secrets/static/add-file-secrets-55.png')} />
+   An ID is created based on the name, and you can also use the ID to reference the encrypted file secret.
 
-The **Add new Encrypted File** settings appear.
+6. Select **Browse** and locate the file you want to store as a secret.
+7. Optionally, you can enter a **Description** and **Tags**.
+8. Select **Save**
 
 ![](../Secrets/static/add-file-secrets-56.png)
 
-Select the **Secrets Manager** you will use to encrypt this secret.
+## Reference an encrypted file secret
 
-Enter a name for the encrypted file. You will use this name to reference the file in your resources.
+You can reference a encrypted file secret in any resource that allows files, such as SSH key files for SSH credentials, authentication keys for connectors, and steps in pipelines that ingest files.
 
-Click **Browse** to locate and add a file. The default Secrets Manager for your account is used to encrypt the file.
+### Reference by name
 
-Enter **Description** for your secret.
+When populating a UI field, you can search and select secrets by the **Secret Name**
 
-Enter **Tags** for your secret.
+![SSH credential settings, including an SSH key file field.](../Secrets/static/add-file-secrets-57.png)
 
-Click **Save.**
+### Reference by ID
 
-### Step 2: Reference the Encrypted File by Name
+To reference encrypted file secrets in YAML or in fields that require expressions, you must use the ID in a [Harness expression](/docs/platform/references/runtime-inputs#expressions).
 
-You can reference the encrypted file in any resource that uses files.
+1. Locate the ID, next to the **Secret Name**, in the secret's settings.
 
-For example, in the following **Configuration and Authentication** dialog, click **Create or Select a Secret** under Select or Create a SSH Key File:
+   ![](../Secrets/static/add-file-secrets-59.png)
 
-![](../Secrets/static/add-file-secrets-57.png)
-Click **Select an existing Secret** in the dialog and the dropdown lets you choose the file you added in **Secret Management:**
+   You can edit a secret's display name, but you can't change the ID.
 
-![](../Secrets/static/add-file-secrets-58.png)
-### Step 3: Reference the Encrypted File by Identifier
+2. Reference the secret using the appropriate expression format:
 
-For an Encrypted File secret at the Project scope, you reference the secret in a Resource using its identifier and the expression: 
-
-
-```
-<+secrets.getValue("file-secret-Id")>
-```
-The identifier is immutable and is located in the secret settings:
-
-![](../Secrets/static/add-file-secrets-59.png)
-Always reference a secret in an expression using its identifier. Names will not work.You can reference a secret at the Org scope using an expression with `org`:
-
-
-```
-<+secrets.getValue("org.file-secret-Id")>
-```
-If your secret is scoped at the Account level, you can refer it using `account`:
-
-
-```
-<+secrets.getValue("account.platformSecret-Id")>
-```
+   * Secret created at the project scope, use: `<+secrets.getValue("FILE_SECRET_ID")>`
+   * Secret created at the organization scope: `<+secrets.getValue("org.FILE_SECRET_ID")>`
+   * Secret created at the account scope: `<+secrets.getValue("account.FILE_SECRET_ID")>`

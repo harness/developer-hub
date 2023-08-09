@@ -175,6 +175,12 @@ The current version does not include a hotfix release.
 <details>
 <summary>Expand this section to view changes to previous releases</summary>
 
+#### August 8, 2023 Harness Delegate hotfix version 79910
+
+- The delegate stopped trying to reconnect to the WebSocket if the infrastructure experienced a network outage for over five minutes. (PL-40547)
+
+  This issue is fixed. The delegate keeps trying to reconnect to the WebSocket until it's successful.
+                               
 #### August 7, 2023 Harness Delegate hotfix version 79909
 
 - The pipeline console did not show any logs to indicate that container initialization and completion tasks, on Kuberenetes infrastructure, were in progress. 
