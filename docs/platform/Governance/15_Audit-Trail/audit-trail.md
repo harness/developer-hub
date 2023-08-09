@@ -93,6 +93,7 @@ You can scope down the viewable audit events by adding Filters and selecting:
 Click **Apply** to view the Audit Events as per the filter you just created.
 
 ![](./static/audit-trail-06.png)
+
 By default, the events of the last 7 days are returned for the filter. To view more results, you can select the date range accordingly.
 
 ![](./static/audit-trail-07.png)
