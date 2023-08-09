@@ -55,7 +55,7 @@ Select the ServiceNow **Ticket Type**. Use the same type as the ticket you crea
 
 Enter the ServiceNow **Ticket Number**.
 
-In **Retry Interval**, set how long the step should wait to fetch details again for calculating Approval or Rejection criteria .
+In **Retry Interval**, set how long the step should wait to fetch details again for calculating Approval or Rejection criteria.
 
 ### Step 2: Set Approval Criteria
 
