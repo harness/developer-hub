@@ -27,6 +27,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * The Account Settings > Subscriptions > Security Testing Orchestration UI has been updated to display scan limits more clearly. The UI now shows scan limits based on the number of subscribed security developers. (STO-6096)
 
+* You can now click the severity tiles in the **Security Tests** tab to filter the issues list by severity. (STO-5784)
+  ![Click on a tile to filter issues by severity](./static/sto-tile-filters-sto-5784.png)
+
+* The issues lists in the the **Security Tests** tab are now paginated. You can configure each list to show 20, 50, or 100 issues per page. This makes the overall page much easier to navigate if the scan results include a lot of issues. (STO-5949, STO-6099)
+
 ## August 7, 2023
 
 ### Harness Chaos Engineering, version 1.16.5

@@ -31,20 +31,27 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * The Account Settings > Subscriptions > Security Testing Orchestration UI has been updated to display scan limits more clearly. The UI now shows scan limits based on the number of subscribed security developers. (STO-6096)
 
+* You can now click the severity tiles in the **Security Tests** tab to filter the issues list by severity. (STO-5784)
+  ![Click on a tile to filter issues by severity](./static/sto-tile-filters-sto-5784.png)
+
+* The issues lists in the the **Security Tests** tab are now paginated. You can configure each list to show 20, 50, or 100 issues per page. This makes the overall page much easier to navigate if the scan results include a lot of issues. (STO-5949, STO-6099)
+
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-This release does not include Early Access features.
+* The **Security Tests** tab includes a set of pull-down menus so you can filter the issues lists by Target, Target Type, Step, Stage, and Scanner. (STO-5212).
+  ![Click on a tile to filter issues by severity](./static/sto-pulldown-filters-sto-5212.png)
 
+   This feature is behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
 
-* Fixed a UI issue where the Issue Details pane rendered long HTML values as markdown. These values are now correctly rendered as HTML. (STO-6339)
+* Fixed a UI issue where the **Issue Details** pane rendered long HTML values as markdown. These values are now correctly rendered as HTML. (STO-6339)
 
 ```mdx-code-block
   </TabItem>
