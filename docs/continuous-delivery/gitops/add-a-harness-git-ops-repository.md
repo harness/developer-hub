@@ -187,7 +187,7 @@ Credentials Template is not supported for OCI Helm repository.
         - For Google, you can select **Google Service Account** or **Google Workload Identity**.
           - If you select **Google Service Account**, you must upload the service [account key file](https://cloud.google.com/iam/docs/keys-create-delete). Paste the contents of the file in the **Account Key** field. Contents of the file must be on a single line. For example:
           ```json
-           { "type": "service_account", "project_id": "google-project-id", "private_key_id": "xxxx70c719xxxxbe7be090083xxxxxd85eca6", "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBAD...ERhb7ipMxMQw6wpbF\n-----END PRIVATE KEY-----\n", .... "universe_domain": "googleapis.com" }
+           { "type": "service_account", "project_id": "google-project-id", "private_key_id": "xxxx70c719xxxxbe7be090083xxxxxd85eca6", "private_key": "...", .... "universe_domain": "googleapis.com" }
           ```
           - If you select **Google Workload Identity**, you must enter the GCP Workload parameters. For more information, go to [Google Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity).
           - Project ID is the project in which the registry is located.
