@@ -105,7 +105,9 @@ Harness runs a perpetual task that constantly polls for the same combination of 
 
 The perpetual task checks for each Harness entity combination for 2 weeks after the last deployment. When there are no instances found, the perpetual task is stopped.
 
-The **Deployed By** value shows how the instances were deployed by Harness, by another instrument, or the Harness user email address of the user that initiated the deployment.
+**Deployed By** shows the email address of the Harness user that initiated the deployment.
+
+**Deployed By** will show `AUTO_SCALED` for instances that are scaled outside of the Harness deployment. For example, if you log into the Kubernetes cluster and manually auto-scale instances.
 
 ### Artifacts tab
 
