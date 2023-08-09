@@ -103,7 +103,7 @@ Each environment card shows the following:
 
 Harness runs a perpetual task that constantly polls for the same combination of Harness service/artifact + Harness environment + Harness infrastructure definition. The instance count and details are updated as a result of this polling.
 
-The perpetual task checks for each Harness entity combination for 2 weeks after the last deployment. When there are no instances found, the perpetual task is stopped.
+The perpetual task is alive for 2 weeks, even after the instances are downsized/deleted.
 
 **Deployed By** shows the email address of the Harness user that initiated the deployment.
 
