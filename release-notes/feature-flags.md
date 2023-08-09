@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-08-03T10:00:25
+date: 2023-08-09T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -20,7 +20,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 4, 2023
+## Latest - August 9, 2023
 
 <Tabs>
   <TabItem value="What's new">
@@ -39,18 +39,39 @@ This release does not include early access features.
 
 #### Feature Flags UI
 
-* Previously, the permission to create a feature flag was required across all environments. This restriction has been removed. (FFM-8724)
+* Previously, the Feature Flags modal screen disappeared when the user clicked in the background, which caused the data to disappear. This issue has been fixed. (FFM-8770)
 
-* Previously, when users selected **All Environments** from the **Environments** dropdown menu, then refreshed the page or went to another page, the **Back** button didn't return the user to the All Environments page. This issue has been resolved. (FFM-8012)
+* Previously, on the flag details page, if all target groups were assigned to rules, the Percentage Rollout target groups selection would disappear. This issue has been fixed. (FFM-8841)
+
+* Previously, when creating a flag targeting rule, using autocomplete search for a target group could remove target groups from other rules within the same flag. This issue has been fixed. (FFM-8680)
 
 
   </TabItem>
 </Tabs>
 
+
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### August 4, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* Previously, the permission to create a feature flag was required across all environments. This restriction has been removed. (FFM-8724)
+
+* Previously, when users selected **All Environments** from the **Environments** dropdown menu, then refreshed the page or went to another page, the **Back** button didn't return the user to the All Environments page. This issue has been resolved. (FFM-8012)
 
 #### August 3, 2023
 
