@@ -34,6 +34,7 @@ Before you start this tutorial, you need to have a **Harness CD pipeline** with 
 **Harness User Group:** This tutorial uses [Harness User Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) to manage user access. Create a user group named `approval-demo` at the account level, and add yourself as a user. 
 
 
+
 ```mdx-code-block
 <Tabs>
 <TabItem value="Manual Approval">
