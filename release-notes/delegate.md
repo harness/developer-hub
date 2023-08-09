@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-08-04T10:00
+date: 2023-08-09T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -179,8 +179,14 @@ The current version does not include a hotfix release.
 
 - The delegate stopped trying to reconnect to the WebSocket if the infrastructure experienced a network outage for over five minutes. (PL-40547)
 
-   This issue is fixed. The delegate keeps trying to reconnect to the WebSocket until it's successful.
-  
+  This issue is fixed. The delegate keeps trying to reconnect to the WebSocket until it's successful.
+                               
+#### August 7, 2023 Harness Delegate hotfix version 79909
+
+- The pipeline console did not show any logs to indicate that Kubernetes infrastructure container initialization and completion tasks were in progress.
+
+  Now, to improve your experience, the console shows logs to indicate when the task begins and ends. (CDS-74522, ZD-47616)
+
 #### July 20, 2023 Harness Delegate hotfix version 79906
 
 - Helm deployment steps timed out after the initial installation/upgrade phase, preventing the execution of a Helm rollback step. (CDS-73264)
