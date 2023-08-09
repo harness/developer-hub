@@ -17,7 +17,7 @@ export const FeaturedList: CardItem[] = [
     ),
     newDoc: false,
     type: [docType.Documentation],
-    time: "5 min",
+    time: "10 min",
     link: "/tutorials/ci-pipelines/fastest-ci",
   },
   {
@@ -60,8 +60,8 @@ export const FeaturedList: CardItem[] = [
     ),
     newDoc: false,
     type: [docType.Documentation],
-    time: '9 min',
-    link: "/tutorials/ci-pipelines/tfc-notification",
+    time: '15 min',
+    link: "/tutorials/ci-pipelines/build/tfc-notification",
   },
   {
     title: "Python application",
@@ -83,7 +83,7 @@ export const FeaturedList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
-    newDoc: true,
+    newDoc: false,
   },
 ];
 
@@ -108,7 +108,7 @@ export const CIList: CardItem[] = [
       "Get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.",
     newDoc: false,
     type: [docType.Documentation],
-    time: "5 min",
+    time: "10 min",
     link: "/tutorials/ci-pipelines/fastest-ci",
   },
   {
@@ -130,7 +130,7 @@ export const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
-    newDoc: true,
+    newDoc: false,
   },
   {
     title: "Go",
@@ -196,6 +196,17 @@ export const CIList: CardItem[] = [
     newDoc: false,
   },
   {
+    title: "Microsoft Windows",
+    module: MODULES.ci,
+    description:
+      "Build and test a Microsoft Windows application.",
+    link: "/tutorials/ci-pipelines/build/windows",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
+  },
+  {
     title: "Terraform Cloud notification triggers",
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
@@ -203,8 +214,8 @@ export const CIList: CardItem[] = [
       "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
     newDoc: false,
     type: [docType.Documentation],
-    time: '9 min',
-    link: "/tutorials/ci-pipelines/tfc-notification",
+    time: '15 min',
+    link: "/tutorials/ci-pipelines/build/tfc-notification",
   },
   {
     title: "Amazon ECR",
@@ -244,7 +255,7 @@ export const CIList: CardItem[] = [
       "Publish any URL to the Artifacts tab.",
     link: "/tutorials/ci-pipelines/publish/artifacts-tab",
     type: [docType.Documentation],
-    time: "5 min",
+    time: "15 min",
     icon: "img/icon_ci.svg"
   },
   {
@@ -274,8 +285,8 @@ export const CIList: CardItem[] = [
       "Use Harness CI to test a FastAPI project.",
     link: "/tutorials/ci-pipelines/test/fastapi",
     type: [docType.Documentation],
-    time: "20 min",
+    time: "15 min",
     icon: "img/icon_ci.svg",
-    newDoc: true,
+    newDoc: false,
   },
 ];

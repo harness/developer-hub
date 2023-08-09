@@ -247,7 +247,19 @@ Suppose you have a pipeline that runs 100 tests, and each test takes about one s
 
 Note that while parallelism for TI can improve the total time it takes to run all tests, some tests may still take a long time to run if, by their nature, they are intensive, long-running tests.
 
-To enable parallelism for TI, you must set a parallelism `strategy` on either the **Run Tests** step or the stage where you have the **Run Tests** step, and you must add the `enableTestSplitting` parameter to your **Run Tests** step. You can also add the optional parameter `testSplitStrategy`.
+To enable parallelism for TI, you must set a parallelism `strategy` on either the **Run Tests** step or the stage where you have the **Run Tests** step, add the `enableTestSplitting` parameter to your **Run Tests** step, and use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) to create a unique results file for each run. Optionally, you can include the `testSplitStrategy` parameter and environment variables to differentiate parallel runs.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="steps" label="Instructions" default>
+```
+1. step one
+2. step two
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML example">
+```
 
 ```yaml
     - stage:
@@ -259,22 +271,28 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
           execution:
             steps:
               - step:
+                  type: RunTests
                   identifier: Run_Tests_with_Intelligence
                   name: Run Tests with Intelligence
                   spec:
                     language: Java
                     buildTool: Maven
+                    envVariables: ## Optional environment variables to differentiate parallel runs.
+                      HARNESS_STAGE_INDEX: <+strategy.iteration> # Index of current parallel run.
+                      HARNESS_STAGE_TOTAL: <+strategy.iterations> # Total parallel runs.
+                    preCommand: |- ## Optional. Echo environment variables to differentiate parallel runs in build logs.
+                      echo $HARNESS_STAGE_INDEX
+                      echo $HARNESS_STAGE_TOTAL
                     args: test
+                    runOnlySelectedTests: true ## Enable TI.
                     enableTestSplitting: true ## Enable test splitting.
                     testSplitStrategy: ClassTiming ## Optional. Can be ClassTiming or TestCount. Default is ClassTiming.
                     postCommand: mvn package -DskipTests
                     reports:
                       spec:
                         paths:
-                          - "target/surefire-reports/*.xml"
+                          - "target/surefire-reports/result_<+strategy.iteration>.xml" ## Use an expression to generate a unique results file for each parallel run.
                       type: JUnit
-                    runOnlySelectedTests: true ## Enable TIe.
-                  type: RunTests
           platform:
             arch: Amd64
             os: Linux
@@ -284,6 +302,13 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
         strategy:
           parallelism: 3 ## Set the number of groups to use for test splitting.
 ```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+
 
 1. Go to the pipeline where you want to enable parallelism for TI.
 2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
@@ -302,6 +327,39 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
 6. The `testSplitStrategy` parameter is optional. If you include it, you can choose either `TestCount` or `ClassTiming`.
 
    Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test count uses simple division to split the tests into workloads. The default is `ClassTiming` if you omit this parameter. However, the maximum possible number of workloads is determined by the parallelism `strategy` you specified on the step or stage. For example, if you set `parallelism: 5`, tests are split into a maximum of five workloads.
+
+7. Modify the `reports.paths` value to use a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+strategy.iteration>`. This ensures there is a unique results file for each parallel run. For example:
+
+   ```yaml
+                          reports:
+                            spec:
+                              paths:
+                                - "target/surefire-reports/result_<+strategy.iteration>.xml"
+                            type: JUnit
+   ```
+
+8. You can add environment variables to differentiate parallel runs in build logs.
+
+   * Add two environment variables to the `step.spec`: `HARNESS_STAGE_INDEX: <+strategy.iteration>` and `HARNESS_STAGE_TOTAL: <+strategy.iterations>`.
+   * Add a `preCommand` to echo the variables' values so you can easily see the values in build logs.
+
+   ```yaml
+                 - step:
+                     type: RunTests
+                     identifier: Run_Tests_with_Intelligence
+                     name: Run Tests with Intelligence
+                     spec:
+                       language: Java
+                       buildTool: Maven
+                       envVariables: ## Optional environment variables to differentiate parallel runs.
+                         HARNESS_STAGE_INDEX: <+strategy.iteration> # Index of current parallel run.
+                         HARNESS_STAGE_TOTAL: <+strategy.iterations> # Total parallel runs.
+                       preCommand: |- ## Optional. Echo environment variables to differentiate parallel runs in build logs.
+                         echo $HARNESS_STAGE_INDEX
+                         echo $HARNESS_STAGE_TOTAL
+                       args: test
+                       ...
+   ```
 
 ## Ignore tests or files
 

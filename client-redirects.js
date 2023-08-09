@@ -34,15 +34,22 @@ module.exports = {
     //  },
     //===================================================================================
 
-     // Created by SudheendraKatte for branch cet-whats-supported on August 3 2023
+    // Created by aimurphy for branch DOC-3373 on August 9, 2023
 
-     {
-      from: "/docs/category/get-started-3/",
-      to: "/docs/category/get-started-with-cet",
+    {
+      from: "/tutorials/build-code/build/tfc-notification",
+      to: "/tutorials/ci-pipelines/build/tfc-notification",
     },
     {
-      from: "/docs/category/get-started-2",
-      to: "/docs/category/get-started-with-srm",
+      from: "/tutorials/ci-pipelines/tfc-notification",
+      to: "/tutorials/ci-pipelines/build/tfc-notification",
+    },
+
+    // Created by SudheendraKatte for branch cet-whats-supported on August 3 2023
+
+    {
+      from: "/docs/category/get-started-3/",
+      to: "/docs/category/get-started-with-cet",
     },
 
     // Created by aimurphy for branch doc-3441-rbac on July 28, 2023
@@ -510,16 +517,6 @@ module.exports = {
     {
       from: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
       to: "/tutorials/ci-pipelines/kubernetes-build-farm",
-    },
-
-    {
-      from: "/tutorials/build-code/build/tfc-notification",
-      to: "/tutorials/ci-pipelines/tfc-notification",
-    },
-
-    {
-      from: "/tutorials/ci-pipelines/build/tfc-notification",
-      to: "/tutorials/ci-pipelines/tfc-notification",
     },
 
     // Created by aimurphy for branch ci-4876 on May 10 2023

@@ -47,7 +47,7 @@ Currently, the **Enable Cache Intelligence** UI field is behind the feature flag
 1. Edit the pipeline, and select the **Build** stage where you want to enable Cache Intelligence.
 2. Select the **Overview** tab for the stage.
 3. Select **Enable Cache Intelligence**.
-4. If you're using an unsupported build tool or a non-default cache location, make sure you add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
+4. If you're using an unsupported build tool, a non-default cache location, or a Windows platform, then you must add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
 5. Optionally, you can add a [custom cache key](#customize-cache-keys).
 
 ```mdx-code-block
@@ -75,7 +75,7 @@ For example:
           cloneCodebase: true
 ```
 
-If you're using an unsupported build tool or a non-default cache location, make sure you add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
+If you're using an unsupported build tool, a non-default cache location, or a Windows platform, you must add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
 
 Optionally, you can add a [custom cache key](#customize-cache-keys).
 
@@ -90,6 +90,7 @@ Cache Intelligence stores the data to be cached in the `/harness` directory by d
 
 * Cache Intelligence is not supported for your build tool.
 * You have customized cache locations, such as with `yarn config set cache-folder`.
+* You're using a Windows platform.
 
 <!-- when fields are added in the visual editor, add tabs here for visual & yaml -->
 
@@ -104,7 +105,7 @@ In the YAML editor, add a list of `paths` to cache under `stage.spec.caching`, f
           caching:
             enabled: true
             paths:
-              - /harness/node_modules
+              - /harness/node_modules ## On a Windows platform, the path would be 'C:\harness\node_modules'.
           cloneCodebase: true
 ...
 ```
