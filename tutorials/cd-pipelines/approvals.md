@@ -53,7 +53,7 @@ Approvals can be added in between Stages to prevent the Pipeline execution from 
 
 1. In the visual view of the pipeline, select **Add Stage**, and then select **Approval** as the stage type.
 2. Name the stage `manual-approval-stage`, and select **Harness Approval** as the approval type.
-3. Select the **Approval** step to open the **Manual Approval** window. The **Manual Approval** window includes predefined values for **Name**, **Timeout**, and **Approval Message**. You need to add the User Group you created under **Approvers**. You can also add **Approver Inputs** under this step.
+3. Select the **Approval** step to open the **Manual Approval** pane. The **Manual Approval** pane includes predefined values for **Name**, **Timeout**, and **Approval Message**. You need to add the User Group you created under **Approvers**. You can also add **Approver Inputs** under this step.
 4. Select **Apply Changes**. Your approval step is created. 
 5. **Save** the changes to the pipeline. 
 6. Since you already have a deploy stage present before the approval stage, drag the deploy stage to the right of the approval stage. 
@@ -62,7 +62,7 @@ Approvals can be added in between Stages to prevent the Pipeline execution from 
    <docimage path={require('./static/harness-cicd-tutorial/manualapprovalstage.png')} />
 
 3. Select **Save**, and then select **Run** to run the pipeline. 
-4. As an approver, you'll receive notification on the **console log** window under the **Logs** once the pipeline is running to approve or reject the pipeline. Click on **Approve** to run the pipeline. 
+4. As an approver, you'll receive notification on the **Console Log** pane under the **Logs** once the pipeline is running to approve or reject the pipeline. Click on **Approve** to run the pipeline. 
 
 ```mdx-code-block
 </TabItem>
@@ -76,7 +76,7 @@ For this tutorial, we will use the visual view of the pipeline.
 
 1. In the CD stage **(deploy-guestbook)**, go to the **Execution** tab, and then select **Add Step**.
 2. In the **Step Library**, under **Approval**, select **Harness Approval**.
-   The **Manual Approval** window includes predefined values for **Name**, **Timeout**, and **Approval Message**. 
+   The **Manual Approval** pane includes predefined values for **Name**, **Timeout**, and **Approval Message**. 
 3. Add the User Group you created under **Approvers**. (Optional) You can also add **Approver Inputs** under this step.
 5. Select **Apply Changes**. Your approval step is created. 
 6. Since you already have a deploy step present before the approval step, drag the deploy step to the right of Harness approval step. 
