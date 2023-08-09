@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-08-07T10:00
+date: 2023-08-09T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
