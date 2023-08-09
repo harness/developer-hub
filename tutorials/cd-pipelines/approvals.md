@@ -29,9 +29,9 @@ This tutorial demonstrates how to use Approvals in Harness CD pipelines.
 
 ## Before you begin
 
-1. Before starting with the following tutorial you need to have a **Harness CD pipeline** with active delegates and connectors. Please follow this [tutorial](tutorials/cd-pipelines/kubernetes/manifest.md) that gets you started with Harness Continuous Delivery (CD). The tutorial below uses the Harness resources created as part of the get-started tutorial. 
+Before you start this tutorial, you need to have a **Harness CD pipeline** with active delegates and connectors. Please follow this [tutorial](tutorials/cd-pipelines/kubernetes/manifest.md) that gets you started with Harness Continuous Delivery (CD). The tutorial below uses the Harness resources created as part of the get-started tutorial. 
 
-2. **Harness User Group** the tutorials will use [Harness User Groups](/docs/platform/user-management/add-user-groups/), to manage user access. Create the user group of name `approval-demo` at the account level and add yourself as an user. 
+**Harness User Group:** This tutorial uses [Harness User Groups](/docs/platform/user-management/add-user-groups/) to manage user access. Create a user group named `approval-demo` at the account level, and add yourself as a user. 
 
 
 ```mdx-code-block
@@ -40,7 +40,7 @@ This tutorial demonstrates how to use Approvals in Harness CD pipelines.
 ```
 
 
-You can specify Harness User Group(s) to approve or reject a Pipeline at any point in its execution. During deployment, the User Group members use the Harness Manager to approve or reject the Pipeline deployment manually.
+You can specify Harness User Group(s) to approve or reject a Pipeline at any point in its execution. During deployment, the User Group members use Harness Manager to approve or reject the Pipeline deployment manually.
 
 
 ```mdx-code-block
@@ -49,19 +49,19 @@ You can specify Harness User Group(s) to approve or reject a Pipeline at any poi
 ```
 Approvals can be added in between Stages to prevent the Pipeline execution from proceeding without an approval.
 
-## Add Approval stage
+## Add an Approval stage
 
-1. In the visual view of the pipeline, click on **Add Stage** and select **Approval** as the stage type.
-2. Name the stage `manual-approval-stage` and select **Harness** as the approval type.
-3. Now, the **Manual Approval** window comes with predefined values for `name`, `Timeout` and `approval message`. You need to add the User Group you created under **Approvers**. You can also add **approver inputs** under this step.
-4. Click on **apply changes** at the top right and your approval step is created. 
+1. In the visual view of the pipeline, select **Add Stage**, and then select **Approval** as the stage type.
+2. Name the stage `manual-approval-stage`, and select **Harness Approval** as the approval type.
+3. Select the **Approval** step to open the **Manual Approval** window. The **Manual Approval** window includes predefined values for **Name**, **Timeout**, and **Approval Message**. You need to add the User Group you created under **Approvers**. You can also add **Approver Inputs** under this step.
+4. Select **Apply Changes**. Your approval step is created. 
 5. **Save** the changes to the pipeline. 
 6. Since you already have a deploy stage present before the approval stage, drag the deploy stage to the right of the approval stage. 
 7. Verify and confirm the approval stage and deploy stage as shown below.
  
    <docimage path={require('./static/harness-cicd-tutorial/manualapprovalstage.png')} />
 
-3. Click on **Save** and then **Run** the pipeline. 
+3. Select **Save**, and then select **Run** to run the pipeline. 
 4. As an approver, you'll receive notification on the **console log** window under the **Logs** once the pipeline is running to approve or reject the pipeline. Click on **Approve** to run the pipeline. 
 
 ```mdx-code-block
@@ -72,19 +72,19 @@ An Approval stage enables an approver to approve or reject the step, stopping th
 
 For this tutorial, we will use the visual view of the pipeline. 
 
-## Add Approval Step
+## Add an Approval step
 
-1. In the **CD stage(deploy-guestbook)** go to **Execution** tab select **add step**.
-2. In the **Step Library**, search **approval** and select **Harness Approval**.
-3. Now, the Manual Approval window comes with predefined values for `name`, `Timeout` and `approval message`. You need to add the User Group you created under **Approvers**. 
-4. You can also add **approver inputs** under this step.
-5. Click on **apply changes** at the top right and your approval step is created. 
+1. In the CD stage **(deploy-guestbook)**, go to the **Execution** tab, and then select **Add Step**.
+2. In the **Step Library**, under **Approval**, select **Harness Approval**.
+   The **Manual Approval** window includes predefined values for **Name**, **Timeout**, and **Approval Message**. 
+3. Add the User Group you created under **Approvers**. (Optional) You can also add **Approver Inputs** under this step.
+5. Select **Apply Changes**. Your approval step is created. 
 6. Since you already have a deploy step present before the approval step, drag the deploy step to the right of Harness approval step. 
 7. Verify and confirm the pipeline stage and execution steps as shown below.
 
    <docimage path={require('./static/harness-cicd-tutorial/manualapprovalstep.png')} />
 
-8. **Save** and then **Run** the pipeline. 
+8. Select **Save**, and then select **Run** to run the pipeline. 
 
 :::caution
 
@@ -113,48 +113,48 @@ You can add the Jira Approval step in Approval stages or in CD stages. The Jira 
 
 Verify that you have the following:
 
-1. **Personal Access Token**: Add the [JIRA API token](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) as a Harness [Text Secret](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets#add-a-text-secret), with the name `jirapat`
-2. **JIRA Connector**: For this tutorial you need to create a [JIRA Connector](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-jira/#add-a-jira-connector) of the name `jira-approval`. If you've done the [Deploy using Kubernetes Manifest](tutorials/cd-pipelines/kubernetes/manifest.md) tutorial, use this [jira-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/approval/jira-connector.yml) to create connector under the project setup. 
+1. **Personal Access Token:** Add the [JIRA API token](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) as a Harness [Text Secret](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets#add-a-text-secret), with the name `jirapat`
+2. **JIRA Connector:** For this tutorial you need to create a [JIRA Connector](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-jira/#add-a-jira-connector) of the name `jira-approval`. If you've done the [Deploy using Kubernetes Manifest](tutorials/cd-pipelines/kubernetes/manifest.md) tutorial, use this [jira-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/approval/jira-connector.yml) to create connector under the project setup. 
     
-    - In the YAML, replace the `JIRA_URL` with your company base URL for JIRA applications, for example: `https://mycompany.atlassian.net`
-    - Replcae the `Username` with the email ID you use to log in to Jira.
-3. **Jira Task**: Create a dummy [Jira issue](https://support.atlassian.com/jira-software-cloud/docs/create-an-issue-and-a-sub-task/) with type Task on the project for which your API has read access. Then set the status to `Done`. 
+    - In the YAML, replace the `JIRA_URL` with your company base URL for Jira applications, for example: `https://mycompany.atlassian.net`.
+    - Replace the `Username` with the email ID you use to log in to Jira.
+3. **Jira Task:** Create a dummy [Jira issue](https://support.atlassian.com/jira-software-cloud/docs/create-an-issue-and-a-sub-task/) with type Task on the project for which your API has read access. Then set the status to `Done`. 
 
 ## Limitations
 
 Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, and `String`. Harness does not integrate with Jira fields that manage users, issue links, or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration.
 
 
-## Add the JIRA Approval step
+## Add the Jira Approval step
 
-1. In the CD stage **(deploy-guestbook)**, go to the **Execution** tab select **Add Step**.
-2. In the **Step Library**, search for **approval** and select **JIRA Approval**.
-3. Add a **Name** to the step, and set the **tTimeout** to **20s**.
-4. Add the **JIRA connector** and then add the **Issue Key** of the Jira issue you created above. 
+1. In the CD stage **(deploy-guestbook)**, go to the **Execution** tab, and then select **Add Step**.
+2. In the **Step Library**, under **Approval**, select **Jira Approval**.
+3. Add a **Name** to the step, and set the **Timeout** to **20s**.
+4. Add the **Jira Connector**, and then add the **Issue Key** of the Jira issue you created above. 
 5. Now set the **Approval Criteria**. There are two ways to do this. You can also specify a combination of the two:  
     
-    - **Conditions**: Use the `Jira Field`, operator`, and `Value` to define approval criteria.
-    - **JEXL Expression**: Use the [JEXL Expression](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) to define the same values as under condtions, for example: `<+issue.Status> == "Done"`  
+    - **Conditions:** Use the **Jira Field**, **Operator**, and **Value** to define approval criteria.
+    - **JEXL Expression:** Use the [JEXL Expression](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) to define the same values as under conditions, for example: `<+issue.Status> == "Done"`  
 
 6. For this tutorial, select **Conditions** and specify the condition **Status = Done**.
-7. Click on **Apply Changes** at the top right and your Jira Approval step is created.
+7. Select **Apply Changes**. Your Jira Approval step is created.
 8. Since you already have a deploy step present before the approval step, drag the deploy step to the right of Jira approval step. 
 7. Verify and confirm the pipeline stage and execution steps.
-8. **Save** and **Run** the pipeline. 
+8. Select **Save**, and then select **Run** to run the pipeline. 
 
-## Add JIRA Approval Stage
+## Add the Jira Approval stage
 
 1. In the visual view of the pipeline, click on **Add Stage** and select the **Stage Type** as **approval**.
 2. Name the stage as `jira-approval-stage` and select the type as **Jira**. 
 
     :::info
 
-    You do not need to use the  Jira Create  and Jira Update steps with the Jira Approval step, but they are included in the `Jira Approval stage` because many users want to create a Jira issue, approve/reject based on its settings, and then update the Jira issue all in one stage.
+    You do not need to use the Jira Create and Jira Update steps with the Jira Approval step. They are included in the `Jira Approval stage` because many users want to create a Jira issue, approve/reject based on its settings, and then update the issue all in one stage.
 
     ::: 
 3. Follow the steps [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages/#add-a-jira-create-step) and update the **Jira Create** step.
-4. Similarly, follow the steps mentioned [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages#add-a-jira-update-step) and update the **Jira Update** step. 
-5. For the **Jira Approval** step, follow the instructions mentioned above in [Add the JIRA Approval step](#add-the-jira-approval-step). 
+4. Similarly, follow the steps [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages#add-a-jira-update-step), and update the **Jira Update** step. 
+5. For the **Jira Approval** step, follow the instructions above in [Add the JIRA Approval step](#add-the-jira-approval-step). 
 6. Drag the deploy-guestbook demo stage to the right of the jira-approval stage. 
 7. **Save** and **Run** the pipeline. 
 
@@ -187,32 +187,34 @@ The ServiceNOw API only allows datetime and time values in the **UTC timezone**.
 
 ## Add ServiceNow Approval Step
 
-1. In the  CD stage deploy-guestbook, go to the **Execution** tab and select **add step**.
-2. In the **Step Library**, search for **approval** and select **ServiceNow Approval**.
+1. In the CD stage **deploy-guestbook**, go to the **Execution** tab, and then select **Add Step**.
+2. In the **Step Library**, under **Approval**, select **ServiceNow Approval**.
 3. Add a **Name** to the step, and set the **Timeout** to **20s**.
-4. Add the **ServiceNow Connector** and the **Ticket Number** of the Issue you created above. 
+4. Add the **ServiceNow Connector** and the **Ticket Number** of the issue you created above. 
 5. Now set the **Approval Criteria**. There are two ways to do this. You can also specify a combination of the two:  
     
-    - **Conditions**: Use the `Field`, `Operator`, and `Value` to define approval criteria
-    - **JEXL Expression**: Use the [JEXL Expression](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) to define the same values as under condtions, for eg: `<+ticket.state.displayValue> == "New"`  
+    - **Conditions:** Use the **Field**, **Operator**, and **Value** to define approval criteria.
+    - **JEXL Expression:** Use the [JEXL Expression](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) to define the same values as under conditions, for example `<+ticket.state.displayValue> == "New"`.
 
     For this tutorial, use the JEXL Expression `<+ticket.state.displayValue> == "New"`.
-7. Click on **Apply Changes** at the top right and your ServiceNow approval step is created.
+7. Select **Apply Changes**. Your ServiceNow approval step is created.
 8. Since you already have a deploy step present before the approval step, drag the deploy step to the right of ServiceNow approval step. 
 9. Verify and confirm the pipeline stage and execution steps.
-10. **Save** and **Run** the pipeline. 
+10. Select **Save**,  and then select **Run** to run the pipeline. 
 
 ## Add ServiceNow Approval Stage
 
-1. In the visual view of the pipeline, click **Add Stage** and select the **Stage Type** as **Approval**.
+1. In the visual view of the pipeline, select **Add Stage**, and select **Approval** for the **Stage Type**.
 
-2. Name the stage as `snow-approval-stage` and select the type as **ServiceNow**. 
+2. Name the stage `snow-approval-stage`, and then select **ServiceNow** for the approval type.
 
-3. Click the **ServiceNow step** and follow the instructions in [Add ServiceNow Approval Step](#add-servicenow-approval-step). 
+3. Select **Set Up Stage**.
+
+3. Under **Execution**, select the **ServiceNow Approval** step, and follow the instructions in [Add ServiceNow Approval Step](#add-servicenow-approval-step). 
 
 4. Drag the **deploy-guestbook** stage to the right of the **jira-approval** stage. 
 
-5. **Save** and **Run** the pipeline. 
+5. Select **Save**, and then select **Run** to run the pipeline. 
 
 ```mdx-code-block
 </TabItem>
