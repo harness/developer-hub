@@ -26,40 +26,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Harness has introduced restrictions on the depth of nesting in execution pipelines to enhance system stability. Now, a node execution will not be allowed if it exceeds 25 levels of nesting. The 25th level refers to the node being the 25th child starting from the root node `pipeline`. (CDS-75249)
 
-  This limitation is configurable, allowing us Harness to increase the nesting limit if required to accommodate more complex pipelines.
+ This limitation is configurable, allowing Harness to increase the nesting limit if required to accommodate more complex pipelines.
 
-  To determine the optimal limit, we considered scenarios with 5 nested stepGroups with a looping matrix and step group running in parallel at each possible node. As a result, we have set the limit to 25, ensuring that it should not affect any practical pipelines we have encountered so far.
+ To determine the optimal limit, we considered scenarios with 5 nested stepGroups with a looping matrix and step group running in parallel at each possible node. As a result, we have set the limit to 25, ensuring that it should not affect any practical pipelines we have encountered so far. (Currently the most complex pipeline in our production clusters has a maximum nesting of 16 levels.)
 
-  For example, a pipeline structure with maximum level 24 with nested stepGroups is provided below. However, upon close examination, we observed that it exceeds the practical complexity of pipelines we typically encounter.
-
-  ```
-  pipeline:
-    stages:
-      matrix:
-        stage:
-          spec:
-            execution:
-              steps:
-                matrix:
-                  stepGroup:
-                    steps:
-                      matrix:
-                        stepGroup:
-                          steps:
-                            matrix:
-                              stepGroup:
-                                steps:
-                                  matrix:
-                                    stepGroup:
-                                      steps:
-                                        matrix:
-                                          stepGroup:
-                                            steps:
-                                              matrix:
-                                                step
-  ```
-
-  This change is vital to prevent potential issues that could arise due to a large number of recursively spawned children, leading to CPU spikes and POD restarts within our system. By implementing this restriction, we aim to maintain system performance and stability for all our customers.
+ This change is vital to prevent potential issues that could arise due to a large number of recursively spawned children, leading to CPU spikes and POD restarts within our system. By implementing this restriction, we aim to maintain system performance and stability for all our customers.
 
 ## August 7, 2023
 
