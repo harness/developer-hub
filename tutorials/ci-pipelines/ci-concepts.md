@@ -2,7 +2,7 @@
 sidebar_position: 1
 description: Harness CI simplifies the code development and testing process.
 keywords: [CI]
-title: What is Harness CI?
+title: What is Harness CI
 slug: /ci-pipelines/ci-concepts
 ---
 
