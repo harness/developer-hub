@@ -328,7 +328,7 @@ The following provisioners are supported for AKS deployments:
 To add dynamic provisioning to a Harness pipeline Deploy stage, do the following:
 
 1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
-2. Select the type of provisioner do you want to use.
+2. Select the type of provisioner that you want to use.
    
    Harness automatically adds the necessary provisioner steps.
 3. Set up the provisioner steps to run your provisioning scripts.

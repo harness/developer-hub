@@ -463,7 +463,7 @@ Here is a summary of the steps to dynamically provision the target infrastructur
 
 1. **Add dynamic provisioning to the CD stage**:
    1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
-   2. Select the type of provisioner do you want to use.
+   2. Select the type of provisioner that you want to use.
    
       Harness automatically adds the provisioner steps for the provisioner type you selected.
    3. Configure the provisioner steps to run your provisioning scripts.
