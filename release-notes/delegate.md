@@ -183,7 +183,7 @@ The current version does not include a hotfix release.
                                
 #### August 7, 2023 Harness Delegate hotfix version 79909
 
-- The pipeline console did not show any logs to indicate that container initialization and completion tasks, on Kuberenetes infrastructure, were in progress. 
+- The pipeline console did not show any logs to indicate that Kubernetes infrastructure container initialization and completion tasks were in progress.
 
   Now, to improve your experience, the console shows logs to indicate when the task begins and ends. (CDS-74522, ZD-47616)
 
