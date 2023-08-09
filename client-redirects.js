@@ -39,10 +39,6 @@ module.exports = {
       from: "/docs/category/get-started-3/",
       to: "/docs/category/get-started-with-cet",
     },
-    {
-      from: "/docs/category/get-started-2",
-      to: "/docs/category/get-started-with-srm",
-    },
 
     // Created by aimurphy for branch doc-3441-rbac on July 28, 2023
 
