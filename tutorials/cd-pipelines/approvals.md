@@ -19,7 +19,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-This tutorial demonstrates how to use Approvals in Harness CD pipeline. 
+This tutorial demonstrates how to use Approvals in Harness CD pipelines. 
 
 :::info
 
@@ -131,7 +131,7 @@ Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `D
 2. In the **Step Library**, search for **approval** and select **JIRA Approval**.
 3. Add a **Name** to the step, and set the **tTimeout** to **20s**.
 4. Add the **JIRA connector** and then add the **Issue Key** of the Jira issue you created above. 
-5. Now set the **Approval Criteria**. There are two ways to do this: 
+5. Now set the **Approval Criteria**. There are two ways to do this. You can also specify a combination of the two:  
     
     - **Conditions**: Use the `Jira Field`, operator`, and `Value` to define approval criteria.
     - **JEXL Expression**: Use the [JEXL Expression](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) to define the same values as under condtions, for example: `<+issue.Status> == "Done"`  
@@ -169,52 +169,48 @@ This feature is behind a Feature Flag and is available only to our paid customer
 
 :::
 
-**ServiceNow tickets** can be used to **approve or reject** a Pipeline or stage at any point in its execution. During deployment, a ServiceNow ticket's fields are evaluated according to the criteria you define, and its approval/rejection determines if the Pipeline or stage may proceed.
+ServiceNow tickets can be used to approve or reject a pipeline or stage at any point in its execution. During deployment, a ServiceNow ticket's fields are evaluated according to the criteria you define, and its approval or rejection determines if the pipeline or stage may proceed.
 
 Approvals can be added as stages or in-between stage steps to prevent stage execution from proceeding without approval.
 
 ## Before you begin
 
-Verify the following:
+Verify that you have the following:
 
 1. **ServiceNow Connector**: You need to connect to ServiceNow using the [connector](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-service-now/#add-a-servicenow-connector). 
 
-2. **ServiceNow Ticket**: Create a dummy ServiceNow Ticket with the `state` of the ticket set to `new`.  
-
-:::info
+2. **ServiceNow Ticket**: Create a dummy ServiceNow ticket with the `state` of the ticket set to `new`.  
 
 ## Limitations
 
 The ServiceNOw API only allows datetime and time values in the **UTC timezone**. Hence, for any **datetime/time fields** in **Harness ServiceNow steps** must be provided in **UTC format**.
 
-:::
-
 ## Add ServiceNow Approval Step
 
-1. In the **CD stage(deploy-guestbook)** go to **Execution** tab select **add step**.
-2. In the **Step Library** search **approval** and select **ServiceNow Approval**.
-3. Add a `name` to the step, and set the `timeout` to `20s`.
-4. Add the **ServiceNow Connector** and add the **Ticket Number** of the Issue you created above. 
-5. Now **set the approval criteria**, to do the same there are two ways and you can use the combination of the same as well, 
+1. In the  CD stage deploy-guestbook, go to the **Execution** tab and select **add step**.
+2. In the **Step Library**, search for **approval** and select **ServiceNow Approval**.
+3. Add a **Name** to the step, and set the **Timeout** to **20s**.
+4. Add the **ServiceNow Connector** and the **Ticket Number** of the Issue you created above. 
+5. Now set the **Approval Criteria**. There are two ways to do this. You can also specify a combination of the two:  
     
     - **Conditions**: Use the `Field`, `Operator`, and `Value` to define approval criteria
     - **JEXL Expression**: Use the [JEXL Expression](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) to define the same values as under condtions, for eg: `<+ticket.state.displayValue> == "New"`  
 
-6. For this tutorial we will use the JEXL Expression `<+ticket.state.displayValue> == "New"`.
-7. Click on **apply changes** at the top right and your jira approval step is created.
-8. Since you already have a deploy step present before the approval step drag the deploy step to the right of ServiceNow approval step. 
+    For this tutorial, use the JEXL Expression `<+ticket.state.displayValue> == "New"`.
+7. Click on **Apply Changes** at the top right and your ServiceNow approval step is created.
+8. Since you already have a deploy step present before the approval step, drag the deploy step to the right of ServiceNow approval step. 
 9. Verify and confirm the pipeline stage and execution steps.
 10. **Save** and **Run** the pipeline. 
 
 ## Add ServiceNow Approval Stage
 
-1. In the visual view of the pipeline, click on **Add Stage** and select the **Stage Type** as **approval**.
+1. In the visual view of the pipeline, click **Add Stage** and select the **Stage Type** as **Approval**.
 
 2. Name the stage as `snow-approval-stage` and select the type as **ServiceNow**. 
 
-3. Now the click on the **ServiceNow step** and follow the instructions as mentioned above in the add servicenow approval step. 
+3. Click the **ServiceNow step** and follow the instructions in [Add ServiceNow Approval Step](#add-servicenow-approval-step). 
 
-4. Now drag the deploy-guestbook demo stage to the right of jira-approval stage. 
+4. Drag the **deploy-guestbook** stage to the right of the **jira-approval** stage. 
 
 5. **Save** and **Run** the pipeline. 
 
