@@ -183,7 +183,7 @@ Here is a summary of the steps to dynamically provision the target infrastructur
 
 1. **Add dynamic provisioning to the CD stage**:
    1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
-   2. Select the type of provisioner do you want to use.
+   2. Select the type of provisioner that you want to use.
    
       Harness automatically adds the provisioner steps for the provisioner type you selected.
    3. Configure the provisioner steps to run your provisioning scripts.
@@ -355,7 +355,7 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 
 <docimage path={require('./static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png')} width="60%" height="60%" title="Click to view full size image" />
 
-<figcaption>Figure: Mapped outputs.</figcaption>
+<figcaption>Figure: Mapped outputs</figcaption>
 </figure>
 
 #### Reference mapped instance properties

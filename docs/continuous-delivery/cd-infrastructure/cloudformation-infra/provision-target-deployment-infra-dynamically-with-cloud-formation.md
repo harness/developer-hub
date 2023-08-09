@@ -24,7 +24,7 @@ For example, the cloud-agnostic Kubernetes Cluster Connector requires that you h
 
 ## CloudFormation dynamic provisioning summary
 
-Setting up dynamic provisioning involves adding a CloudFormation template to the stage **Environment** settings that provisions the pipeline stage's target infrastructure.
+Setting up dynamic provisioning involves adding a CloudFormation template to the **Environment** settings of the stage that provisions the pipeline stage's target infrastructure.
 
 Next, you map the required script outputs to the Harness **Infrastructure Definition** for the stage, such as the target namespace.
 
@@ -61,13 +61,13 @@ When you enable dynamic provisioning in a CD Deploy stage's **Environment** sett
 
 ### Create Stack step
 
-You use the Create Stack in the **Environment** section of a CD stage to perform dynamic provisioning.
+You use the Create Stack step in the **Environment** section of a CD stage to perform dynamic provisioning.
 
-You add your provisioning CloudFormation template to the step and the step provisions the target infrastructure at runtime.
+You add your provisioning CloudFormation template to the step. Then, at runtime,  the step provisions the target infrastructure.
 
 You map the required CloudFormation template outputs to the stage's Infrastructure Definition settings to ensure that the provisioned infrastructure is used as the stage deployment target infrastructure.
 
-For details on configuring the Create Stack step, go to [Provision with the CloudFormation Create Stack step](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/provision-with-the-cloud-formation-create-stack-step).
+For details on configuring the **Create Stack** step, go to [Provision with the CloudFormation Create Stack step](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/provision-with-the-cloud-formation-create-stack-step).
 
 ### AWS Connector
 

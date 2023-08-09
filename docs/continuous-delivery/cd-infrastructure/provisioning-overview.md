@@ -25,7 +25,7 @@ Harness provisioning is categorized into the following use cases:
 
 To perform ad hoc provisioning in your Harness Deploy stage, you use provisioning steps as part of the stage **Execution** section.
 
-For example, in the following image, Harness Terraform Plan and Apply steps are used to provision the required AWS IAM resources, which are independent of the rolling deployment to the Kubernetes cluster itself.
+For example, in the following figure, Harness Terraform Plan and Apply steps are used to provision the required AWS IAM resources, which are independent of the rolling deployment to the Kubernetes cluster itself.
 
 <figure>
 
@@ -56,7 +56,7 @@ See the following topics for steps on how to perform ad hoc provisioning:
 
 Dynamic infrastructure provisioning creates your target infrastructure dynamically during the execution of your pipeline.
 
-To perform dynamic provisioning in your Harness Deploy stage, you add provisioning steps to the stage **Environment** settings, and then map specific provisioner script/template outputs to the target infrastructure in the same stage **Environment** section. 
+To perform dynamic provisioning in your Harness Deploy stage, you add provisioning steps to the stage **Environment** settings. Then you map specific provisioner script/template outputs to the target infrastructure in the same stage **Environment** section. 
 
 For example, the name of the target Kubernetes cluster namespace is provisioned by the Terraform Apply step in **Environment** section and then mapped to that stage's target **Infrastructure**.
 
@@ -126,7 +126,7 @@ Here you can see the expression used to map the output in the infrastructure set
 
 <docimage path={require('./static/519f60992faffa19425e1436699a0d3ce27de43a16de9ad1e90b86288122235f.png')} width="60%" height="60%" title="Click to view full size image" />
 
-<figcaption>Figure: Mapped output.</figcaption>
+<figcaption>Figure: Mapped output</figcaption>
 </figure>
 
 
