@@ -372,8 +372,6 @@ Use `xcode-select` in a **Run** step to switch between pre-installed versions of
 
 <!-- this command starts prompts that need interaction. Don't know how to authorize it so the install proceeds. It takes a while Not sure installing xcode as part of a pipeline step is a good idea?
 
-If your application requires a specific Xcode version, you can a **Run** step to install it.
-
 ```yaml
               - step:
                   type: Run
@@ -383,34 +381,6 @@ If your application requires a specific Xcode version, you can a **Run** step to
                     shell: Sh
                     command: |-
                       xcode-select --install
-```
--->
-
-<!-- I don't know why you would use multiple xcode versions.
-
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
-
-```yaml
-    - stage:
-        strategy:
-          matrix:
-            pythonVersion:
-              - 3.11.2
-              - 3.10.10
-```
-
-2. Reference the matrix variable in your steps.
-
-```yaml
-              - step:
-                  type: Action
-                  name: Install python
-                  identifier: installpython
-                  spec:
-                    uses: actions/setup-python@v4
-                    with:
-                      python-version: <+ stage.matrix.pythonVersion >
-                      token: <+ secrets.getValue("github_token") >
 ```
 -->
 
@@ -435,8 +405,6 @@ If your build infrastructure machines have multiple versions of Xcode installed,
 
 <!-- this command starts prompts that need interaction. Don't know how to authorize it so the install proceeds. It takes a while Not sure installing xcode as part of a pipeline step is a good idea?
 
-If your application requires a specific Xcode version, you can a **Run** step to install it.
-
 ```yaml
               - step:
                   type: Run
@@ -446,34 +414,6 @@ If your application requires a specific Xcode version, you can a **Run** step to
                     shell: Sh
                     command: |-
                       xcode-select --install
-```
--->
-
-<!-- I don't know why you would use multiple xcode versions.
-
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
-
-```yaml
-    - stage:
-        strategy:
-          matrix:
-            pythonVersion:
-              - 3.11.2
-              - 3.10.10
-```
-
-2. Reference the matrix variable in your steps.
-
-```yaml
-              - step:
-                  type: Action
-                  name: Install python
-                  identifier: installpython
-                  spec:
-                    uses: actions/setup-python@v4
-                    with:
-                      python-version: <+ stage.matrix.pythonVersion >
-                      token: <+ secrets.getValue("github_token") >
 ```
 -->
 
