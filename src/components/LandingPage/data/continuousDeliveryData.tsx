@@ -146,7 +146,7 @@ export const CDList: CardItem[] = [
     title: "Set up an approval step in a CD pipeline",
     module: MODULES.cd,
     icon: "img/icon_cv.svg",
-    description: <>Enable Harness user groups to approve or reject a stage in a deployment pipeline.</>,
+    description: <>Enable Harness user groups to approve or reject a stage in a CD pipeline.</>,
     newDoc: true,
     type: [docType.Documentation],
     time: "20min",
