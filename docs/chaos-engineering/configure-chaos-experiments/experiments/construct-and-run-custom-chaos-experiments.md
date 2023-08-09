@@ -18,7 +18,7 @@ For more information, go to [Flow of control in a chaos experiment](/docs/chaos-
 
 To add a chaos experiment:
 
-1. In Harness, navigate to **Chaos > Chaos Experiments**.
+1. In Harness, navigate to **Chaos > Chaos Experiments**. 
 
 	![Chaos Experiments page](./static/construct-and-run-custom-chaos-experiments/chaos-experiments.png)
 
