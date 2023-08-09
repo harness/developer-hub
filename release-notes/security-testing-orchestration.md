@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-08-02T10:00
+date: 2023-08-09T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 9
 ---
@@ -20,14 +20,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - August 02, 2023, version 1.62.2
+## Latest - August 09, 2023, version 1.6x.x
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-This release does not include new features. 
+* Aqua Trivy scans now capture and report on secrets in plain text, in addition to vulnerabilities. (STO-6345)
+
+* The Account Settings > Subscriptions > Security Testing Orchestration UI has been revised to display scan limits more clearly. The UI now shows scan limits based on the number of subscribed security developers. (STO-6096)
+
 
 ```mdx-code-block
   </TabItem>
@@ -41,7 +44,7 @@ This release does not include Early Access features.
   <TabItem value="Fixed issues">
 ```
 
-* Fixed an issue that made it difficult to set up proxy details for a Veracode scan. Veracode scans can now handle `https_proxy`, `http_proxy`, and `no_proxy` environment variables as `-D` flags that get passed to Java. (STO-6081, ZD-45891)
+* Fixed a UI issue where the Issue Details pane rendered long HTML values as markdown. These values are now correctly rendered as HTML. (STO-6339)
 
 ```mdx-code-block
   </TabItem>
@@ -53,6 +56,20 @@ This release does not include Early Access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### August 02, 2023, version 1.62.2
+
+##### What's new
+
+This release does not include new features. 
+
+##### Early access
+
+This release does not include Early Access features.
+
+##### Fixed issues
+
+* Fixed an issue that made it difficult to set up proxy details for a Veracode scan. Veracode scans can now handle `https_proxy`, `http_proxy`, and `no_proxy` environment variables as `-D` flags that get passed to Java. (STO-6081, ZD-45891)
 
 
 #### July 12, 2023, version 1.61.1 

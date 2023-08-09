@@ -19,7 +19,15 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 7, 2023
+## August 09, 2023
+
+### Security Testing Orchestration, version 1.6x.x
+
+* Aqua Trivy scans now capture and report on secrets in plain text, in addition to vulnerabilities. (STO-6345)
+
+* The Account Settings > Subscriptions > Security Testing Orchestration UI has been revised to display scan limits more clearly. The UI now shows scan limits based on the number of subscribed security developers. (STO-6096)
+
+## August 7, 2023
 
 ### Harness Chaos Engineering, version 1.16.5
 
