@@ -762,6 +762,14 @@ To ensure that your deployments are successful, please follow the AWS schema syn
 * [PutScalingPolicy](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScalingPolicy.html)
 * [RunTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html)
 
+### Configure ECS task definition in service only
+
+The ECS task definition should only be added in the Harness service **Task Definition** section.
+
+Harness doesn’t expect the task definition to be configured in the **ECS Service Definition** or **ECS Run Task Request Definition** (in ECS Run Task step) manifests.
+
+Harness will ignore any task definition configured in the ECS Service Definition and/or ECS Run Task Request Definition.
+
 ### Supported stores for ECS manifests
 
 Harness can fetch your task definitions, service definitions, scalable target and scaling policy configurations (in JSON or YAML) from the following stores:
