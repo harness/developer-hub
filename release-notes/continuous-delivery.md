@@ -19,24 +19,25 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe might not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page in your Harness account.
 :::
 
-## Latest - August 9, 2023, version 802xx
 
-<!-- 
-#### Deprecation notices
+## Deprecation notices
 
-**Helm 2**
+### Helm 2
 
 import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 <Helmdep />
 
-**Kustomize**
+### Kustomize
 
 import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
 
 <Kustomizedep />
 
--->
+
+## Latest - August 9, 2023, version 80200
+
+
 
 ```mdx-code-block
 <Tabs>
@@ -93,7 +94,9 @@ This release does not have Early Access features.
 
 ## August 4, 2023, version 80120
 
-##### Deprecation notices
+
+<!-- 
+#### Deprecation notices
 
 **Helm 2**
 
@@ -106,6 +109,8 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
 
 <Kustomizedep />
+
+-->
 
 ##### What's new
 
