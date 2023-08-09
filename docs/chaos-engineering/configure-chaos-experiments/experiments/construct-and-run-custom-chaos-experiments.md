@@ -103,30 +103,55 @@ To add a chaos experiment:
 Now, you can choose to either run the experiment right away by selecting the **Run** button on the top, or create a recurring schedule to run the experiment by selecting the Schedule tab.
 
 ## Advanced experiment setup options
-You can configure the following advanced options while creating an experiment for a Kubernetes chaos infrastructure:
+
+You can select **Advanced Options** on the Experiment Builder tab to configure the advanced options (described below) while creating an experiment for a Kubernetes chaos infrastructure:
+
 ![Advanced Options](./static/construct-and-run-custom-chaos-experiments/advanced-options.png)
-### General
-1. **Node Selector:** Specifies the node on which the experiment pods will be scheduled. Provide the node label as a key-value pair.
-	- Can be used with node-level faults to avoid the scheduling of the target pod on the target pod.
-	- Can be used to limit the scheduling of the experiment pods on nodes that have an unsupported OS.
+
+### General options
+
+**Node Selector** 
+
+Specifies the node on which the experiment pods will be scheduled. Provide the node label as a key-value pair.
+
+- Can be used with node-level faults to avoid the scheduling of the target pod on the target pod.
+- Can be used to limit the scheduling of the experiment pods on nodes that have an unsupported OS.
+
 	![Node Selector](./static/construct-and-run-custom-chaos-experiments/node-selector.png)
 
-2. **Toleration:** Specifies the tolerations that must be satisfied by a tainted node to be able to schedule the experiment pods. [Read this](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) for more information on taints and tolerations.
-	- Can be used with node-level faults to avoid the scheduling of the target pod on the target pod.
-	- Can be used to limit the scheduling of the experiment pods on nodes that have an unsupported OS.
+**Toleration** 
+
+Specifies the tolerations that must be satisfied by a tainted node to be able to schedule the experiment pods. For more information on taints and tolerations, go to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+
+- Can be used with node-level faults to avoid the scheduling of the target pod on the target pod.
+- Can be used to limit the scheduling of the experiment pods on nodes that have an unsupported OS.
+
 	![Toleration](./static/construct-and-run-custom-chaos-experiments/toleration.png)
 
-3. **Annotations:** Specifies the annotations to be added to the experiment pods. Provide the annotations as key-value pairs. [Read this](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) for more information on annotations.
-	- Can be used for bypassing network proxies enforced by service mesh tools like Istio.
+**Annotations** 
+
+Specifies the annotations to be added to the experiment pods. Provide the annotations as key-value pairs. For more information on annotations, go to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/).
+
+- Can be used for bypassing network proxies enforced by service mesh tools like Istio.
+
 	![Annotations](./static/construct-and-run-custom-chaos-experiments/annotations.png)
 
-### Security
-1. **Enable runAsUser:** Specifies the user ID to be used for starting all the processes in the experiment pod containers. By default `1000` user ID is used.
-	- Allows privileged access or restricted access for experiment pods
+### Security options
+
+**Enable runAsUser** 
+
+Specifies the user ID to be used for starting all the processes in the experiment pod containers. By default `1000` user ID is used.
+
+- Allows privileged access or restricted access for experiment pods
+
 	![runAsUser](./static/construct-and-run-custom-chaos-experiments/run-as-user.png)
 
-2. **Enable runAsGroup:** Specifies the group ID to be used for starting all the processes in the experiment pod containers instead of a user ID.
-	- Allows privileged access or restricted access for experiment pods
+**Enable runAsGroup** 
+
+Specifies the group ID to be used for starting all the processes in the experiment pod containers instead of a user ID.
+
+- Allows privileged access or restricted access for experiment pods
+
 	![runAsGroup](./static/construct-and-run-custom-chaos-experiments/run-as-group.png)
 
 ## Launch an experiment from a chaos hub
