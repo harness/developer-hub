@@ -99,6 +99,14 @@ Each environment card shows the following:
   Select **Open Execution** in the instance details to see the pipeline execution that deployed the service instance.
 - **Deployments:** each deployment to a selected environment or environment group. If you filter using **My Deployments** you see only those deployments that your user account initiated.
 
+### How instance information is obtained
+
+Harness runs a perpetual task that constantly polls for the same combination of Harness service/artifact + Harness environment + Harness infrastructure definition. The instance count and details are updated as a result of this polling.
+
+The perpetual task checks for each Harness entity combination for 2 weeks after the last deployment. When there are no instances found, the perpetual task is stopped.
+
+The **Deployed By** value shows how the instances were deployed by Harness, by another instrument, or the Harness user email address of the user that initiated the deployment.
+
 ### Artifacts tab
 
 The **Artifacts** tab shows how the service is mapped to multiple artifacts.
