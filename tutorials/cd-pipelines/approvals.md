@@ -31,7 +31,7 @@ This tutorial demonstrates how to use Approvals in Harness CD pipelines.
 
 Before you start this tutorial, you need to have a **Harness CD pipeline** with active delegates and connectors. Please follow this [tutorial](tutorials/cd-pipelines/kubernetes/manifest.md) that gets you started with Harness Continuous Delivery (CD). The tutorial below uses the Harness resources created as part of the get-started tutorial. 
 
-**Harness User Group:** This tutorial uses [Harness User Groups](/docs/platform/user-management/add-user-groups/) to manage user access. Create a user group named `approval-demo` at the account level, and add yourself as a user. 
+**Harness User Group:** This tutorial uses [Harness User Groups](/docs/platform/role-based-access-control/add-user-groups/) to manage user access. Create a user group named `approval-demo` at the account level, and add yourself as a user. 
 
 
 ```mdx-code-block
