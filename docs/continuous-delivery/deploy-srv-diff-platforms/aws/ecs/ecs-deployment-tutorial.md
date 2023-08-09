@@ -455,7 +455,18 @@ Next, we'll add the Docker image artifact for deployment.
   ![](./static/ecs-deployment-tutorial-46.png)
 1. Click **Continue** to add the target ECS cluster.
 
-## Define the ECS target Infrastructure for the deployment
+## Define the infrastructure
+
+You define the target infrastructure for your deployment in the **Environment** settings of the pipeline stage. You can define an environment separately and select it in the stage, or create the environment within the stage **Environment** tab.
+
+There are two methods of specifying the deployment target infrastructure:
+
+- **Pre-existing**: the target infrastructure already exists and you simply need to provide the required settings.
+- **Dynamically provisioned**: the target infrastructure will be dynamically provisioned on-the-fly as part of the deployment process.
+
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+
+### Pre-existing ECS infrastructure
 
 In the **Environment** section of the stage you define the target ECS cluster for the deployment.
 
@@ -470,7 +481,7 @@ In the **Environment** section of the stage you define the target ECS cluster fo
 5. In **Create New Infrastructure**, in **Name**, enter **ECS Tutorial**.
 6. For **Cluster Details**, see the following sections.
 
-### Connector
+#### Connector
 
 We'll create a Harness AWS Connector to connect to your AWS account using the IAM User you configured earlier in [Set up AWS IAM](#set-up-aws-iam).
 
@@ -489,17 +500,137 @@ We'll create a Harness AWS Connector to connect to your AWS account using the IA
 
 The Connector is added to your Infrastructure Definition.
 
-### Region
+#### Region
 
 In **Region**, click **Select Region**, and then AWS region where your ECS cluster is located.
 
-### Cluster
+#### Cluster
 
 1. Click in **Cluster** and select the target cluster. The list is populated using the AWS Connector you created.
 2. Click **Save**. The Environment and Infrastructure Definition are listed.
 
   ![](./static/ecs-deployment-tutorial-47.png)
 3. Click **Continue** to choose the deployment strategy.
+
+### Dynamically provisioned ECS infrastructure
+
+:::note
+
+Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
+
+1. **Add dynamic provisioning to the CD stage**:
+   1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+   2. Select the type of provisioner that you want to use.
+   
+      Harness automatically adds the provisioner steps for the provisioner type you selected.
+   3. Configure the provisioner steps to run your provisioning scripts.
+   4. Select or create a Harness infrastructure in **Environment**.
+2. **Map the provisioner outputs to the Infrastructure Definition**:
+   1. In the Harness infrastructure, enable the option **Map Dynamically Provisioned Infrastructure**.
+   2. Map the provisioning script/template outputs to the required infrastructure settings.
+
+#### Supported provisioners
+
+The following provisioners are supported for ECS deployments:
+
+- Terraform
+- Terragrunt
+- Terraform Cloud
+- CloudFormation
+- Shell Script
+
+#### Adding dynamic provisioning to the stage
+
+To add dynamic provisioning to a Harness pipeline Deploy stage, do the following:
+
+1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+2. Select the type of provisioner that you want to use.
+   
+   Harness automatically adds the necessary provisioner steps.
+3. Set up the provisioner steps to run your provisioning scripts.
+
+For documentation on each of the required steps for the provisioner you selected, go to the following topics:
+
+- Terraform:
+  - [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
+  - [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+  - [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step). To see the Terraform Rollback step, toggle the **Rollback** setting.
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
+- [Terraform Cloud](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments)
+- CloudFormation:
+  - [Create Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/provision-with-the-cloud-formation-create-stack-step)
+  - [Delete Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/remove-provisioned-infra-with-the-cloud-formation-delete-step)
+  - [Rollback Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/rollback-provisioned-infra-with-the-cloud-formation-rollback-step). To see the Rollback Stack step, toggle the **Rollback** setting.
+- [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
+
+
+#### Mapping provisioner output
+
+Once you set up dynamic provisioning in the stage, you must map outputs from your provisioning script/template to specific settings in the Harness Infrastructure Definition used in the stage.
+
+1. In the same CD Deploy stage where you enabled dynamic provisioning, select or create (**New Infrastructure**) a Harness infrastructure.
+2. In the Harness infrastructure, in **Select Infrastructure Type**, select **AWS** if it is not already selected.
+3. In **Cluster details**, enable the option **Map Dynamically Provisioned Infrastructure**.
+   
+   The **Cluster details** section adds a **Provisioner** setting and configures it as a runtime input.
+4. Map the provisioning script/template outputs to the required infrastructure settings.
+
+To provision the target deployment infrastructure, Harness needs specific infrastructure information from your provisioning script. You provide this information by mapping specific Infrastructure Definition settings in Harness to outputs from your template/script.
+
+For ECS, Harness needs the following settings mapped to outputs:
+
+- Region
+- Cluster
+
+:::note
+
+Ensure the Region and Cluster settings are set to the **Expression** option.
+
+:::
+
+For example, here's a snippet of a CloudFormation template that provisions the infrastructure for an ECS deployment and includes the required outputs:
+
+```yaml
+
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template for provisioning ECS resources
+
+Parameters:
+  ClusterName:
+    Type: String
+    Description: Name of the ECS cluster
+
+Resources:
+  ECSCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: !Ref ClusterName
+
+Outputs:
+  region_name:
+    Value: !Ref AWS::Region
+    Description: AWS region where the ECS cluster is deployed
+
+  cluster_name:
+    Value: !Ref ECSCluster
+    Description: Name of the provisioned ECS cluster
+
+```
+
+
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.cluster_name>`.
+
+
+<figure>
+
+<docimage path={require('./static/07e9c5632b5454137282633a6b9526dce0a9bbcefc295ba80c31ce1578b00fdd.png')} width="60%" height="60%" title="Click to view full size image" />
+
+<figcaption>Figure: Mapped outputs.</figcaption>
+</figure>
 
 ## Define the Rolling deployment steps
 
@@ -630,6 +761,14 @@ To ensure that your deployments are successful, please follow the AWS schema syn
 * [RegisterScalableTarget](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html)
 * [PutScalingPolicy](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScalingPolicy.html)
 * [RunTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html)
+
+### Configure ECS task definition in service only
+
+The ECS task definition should only be added in the Harness service **Task Definition** section.
+
+Harness doesn’t expect the task definition to be configured in the **ECS Service Definition** or **ECS Run Task Request Definition** (in ECS Run Task step) manifests.
+
+Harness will ignore any task definition configured in the ECS Service Definition and/or ECS Run Task Request Definition.
 
 ### Supported stores for ECS manifests
 

@@ -23,9 +23,11 @@ This topic shows you how to view Audit Trails for your Harness account.
 
 You can view Audit Trail data at Account/Org/Project scope. This topic explains how to view Audit Trail data at the account scope.
 
-The events in the scope of accounts will not be displayed if you are viewing the Audit Trail at the Org or Project scope.In Harness, go to **Account Settings**.
+:::info note
+The events in the scope of accounts will not be displayed if you are viewing the Audit Trail at the Org or Project scope. 
+:::
 
-Click **Audit Trail**.
+In Harness, go to **Account Settings**, and then select **Audit Trail**.
 
 The **Audit Trail** page appears, displaying a record for each event that changed the setup of your Harness account, Modules, or Harness entities. By default, Harness shows the Audit logs for the previous 7 days.
 
@@ -55,8 +57,11 @@ By default, the pipeline execution audit events such as Pipeline Start, Pipeline
 
 You can view all the records or filter the displayed records by selecting one of the following:
 
-* **Exclude Login Events** - For excluding login events like successful, or unsuccessful logins, 2FA, etc, from the displayed records.
-* **Exclude System Events** - For excluding system events from the displayed records.![](./static/audit-trail-02.png)
+* **Exclude Login Events:** For excluding login events like successful, or unsuccessful logins, 2FA, etc, from the displayed records.
+* **Exclude System Events:** For excluding system events from the displayed records.
+
+![](./static/audit-trail-02.png)
+
 These can be applied with or without your [custom filters](#option-add-a-filter) for Audit Trails.
 
 ### Step: Set Date/Time Range
@@ -88,6 +93,7 @@ You can scope down the viewable audit events by adding Filters and selecting:
 Click **Apply** to view the Audit Events as per the filter you just created.
 
 ![](./static/audit-trail-06.png)
+
 By default, the events of the last 7 days are returned for the filter. To view more results, you can select the date range accordingly.
 
 ![](./static/audit-trail-07.png)

@@ -54,6 +54,18 @@ If the chart version is not included, Harness will fetch the `latest` version.
 
 The `HELM_LOCAL_REPOSITORY` environment variable is the same for both delegate types.
 
+#### Base path
+
+You can also use the base path for `value`. For example:
+
+```yaml
+
+       env:
+        - name: HELM_LOCAL_REPOSITORY
+          value: "/opt"
+
+```
+
 ### Important notes
 
 Review the following important notes.
