@@ -53,7 +53,7 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-- When configuring an RBAC resource group in Harness Manager, if you discard your changes, the resource group page showed a list of resources that should not be available at the scope that you are in. (PL-40393, ZD-48270)
+- When configuring an RBAC resource group in Harness Manager, if you discarded your changes, the resource group page showed a list of resources that should not be available at the scope that you are in. (PL-40393, ZD-48270)
 
   This issue has been resolved.
 
@@ -65,7 +65,7 @@ This release does not include any early access features.
 
   The issue is now fixed, and the wizard reads the latest value. 
 
-- Harness Manager did not show role assignments for a service account at the organization and project scopes if the parent scope (the account and organization scopes, respectively) had a service account with the same identifier. (PL-40245, ZD-47906)
+- Harness Manager did not show role assignments for a service account at the organization and project scopes if the parent scope (the account scope and organization scope, respectively) had a service account with the same identifier. (PL-40245, ZD-47906)
 
   The issue is now fixed, and any affected service accounts will be displayed correctly. 
 
