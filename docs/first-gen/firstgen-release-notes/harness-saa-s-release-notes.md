@@ -16,6 +16,12 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+## August 8, 2023, version 802xx
+
+- Update operations on GCP Secrets Manager were failing in FirstGen SMP environments. (PL-40151)
+
+  This issue has been fixed. 
+
 
 ### August 4, 2023, version 80120
 
