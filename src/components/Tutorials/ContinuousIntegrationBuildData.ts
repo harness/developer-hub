@@ -75,6 +75,14 @@ import { MODULES } from "../../constants";
           link: "/tutorials/ci-pipelines/build/windows",
           newDoc: false,
         },
+        {
+          title: "Terraform Cloud notification triggers",
+          module: MODULES.ci,
+          description:
+            "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
+          newDoc: false,
+          link: "/tutorials/ci-pipelines/build/tfc-notification",
+        },
       ],
     },
   ];

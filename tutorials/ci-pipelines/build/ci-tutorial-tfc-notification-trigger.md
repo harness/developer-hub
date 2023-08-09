@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Start builds from Terraform notifications
+title: Terraform Cloud notification triggers
 description: Trigger CI pipeline using Terraform Cloud notifications using custom CI Webhooks.
 keywords: [Hosted Build, Continuous Integration, Terraform, GitOps]
 slug: /ci-pipelines/build/tfc-notification
