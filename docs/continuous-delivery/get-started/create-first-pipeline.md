@@ -1,7 +1,7 @@
 ---
 title: Create your first CD pipeline
 description: Learn how to model you release process in minutes.
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 This is a step-by-step tour of using Harness CD pipelines to deploy an application. We show you how to use our YAML, API, Terraform Provider, and console (Pipeline Studio) methods for building pipelines.
