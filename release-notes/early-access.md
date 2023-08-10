@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-08-09T10:00
+date: 2023-08-10T10:00
 sidebar_position: 2
 ---
 
@@ -12,9 +12,9 @@ Review the notes below to learn about the early access (aka beta) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 9, 2023
+## Latest - August 10, 2023
 
-### Continuous Integration, version 53xx
+### Continuous Integration, version 5301
 
 * Enable and configure Cache Intelligence in the Visual editor. (CI-8917)
    * The Cache Intelligence visual editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
