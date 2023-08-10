@@ -4,7 +4,7 @@ description: Configure FireHydrant change source to monitor incidents.
 sidebar_position: 60
 ---
 
-# FyreHydrant change source
+# FireHydrant change source
 
 You can configure FireHydrant as a change source, enabling it to seamlessly send incident reports to Service Reliability Management (SRM) and trigger real-time alerts on a designated Slack channel. When FireHydrant's incident reports are sent to SRM, triggering Slack alerts, SRM provides health reports to the same Slack channel, enabling a real-time service health overview.
 
