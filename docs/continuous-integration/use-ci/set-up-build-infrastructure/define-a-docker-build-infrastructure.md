@@ -43,7 +43,7 @@ docker run --cpus=1 --memory=2g --net=host \
   -e NEXT_GEN="true" \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-  -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
+  -e DELEGATE_TOKEN=YOUR_API_TOKEN \
   -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
   -e DELEGATE_TAGS="linux-arm64" \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io/ harness/delegate:23.02.78306
@@ -101,7 +101,7 @@ docker run --cpus=1 --memory=2g \
   -e NEXT_GEN="true" \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-  -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
+  -e DELEGATE_TOKEN=YOUR_API_TOKEN \
   -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
   -e DELEGATE_TAGS="macos-amd64" \
   -e RUNNER_URL=http://host.docker.internal:3000 \
@@ -195,7 +195,7 @@ docker run --cpus=1 --memory=2g \
   -e NEXT_GEN="true" \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-  -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
+  -e DELEGATE_TOKEN=YOUR_API_TOKEN \
   -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
   -e DELEGATE_TAGS="windows-amd64" \
   -e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000 \
