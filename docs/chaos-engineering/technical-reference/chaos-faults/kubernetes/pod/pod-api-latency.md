@@ -38,12 +38,12 @@ Pod API latency:
       <tr>
         <td> LATENCY </td>
         <td> Delay added to the api requests and responses (in seconds). </td>
-        <td> Default: 2. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-latency#latency">latency </a></td>
+        <td> Default: 2. For more information, go to <a href="#latency">latency </a></td>
       </tr>
       <tr>
         <td> PATH_FILTER </td>
         <td> Api path or route used for the filtering </td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-latency#path-filter">path filter </a></td>
+        <td> For more information, go to <a href="#path-filter">path filter </a></td>
       </tr>
     </table>
     <h3>Optional tunables</h3>
@@ -56,32 +56,32 @@ Pod API latency:
       <tr>
         <td> PROXY_PORT </td>
         <td> Port where the proxy listens for requests.</td>
-        <td> Default: 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-latency#advanced-fault-tunables">proxy port</a></td>
+        <td> Default: 20000. For more information, go to <a href="#advanced-fault-tunables">proxy port</a></td>
       </tr>
       <tr>
         <td> SERVICE_DIRECTION </td>
         <td> Direction of the flow of control, ingress or egress </td>
-        <td> Default: `ingress`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-latency#advanced-fault-tunables">service direction </a></td>
+        <td> Default: `ingress`. For more information, go to <a href="#advanced-fault-tunables">service direction </a></td>
       </tr>
       <tr>
       <td> DATA_DIRECTION </td>
       <td> API payload type, request or response </td>
-      <td> Default: `both`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-latency#advanced-fault-tunables">data direction </a></td>
+      <td> Default: `both`. For more information, go to <a href="#advanced-fault-tunables">data direction </a></td>
       </tr>
       <tr>
       <td> NETWORK_INTERFACE </td>
       <td> Network interface used for the proxy.</td>
-      <td> Default: `eth0`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-latency#advanced-fault-tunables">network interface </a></td>
+      <td> Default: `eth0`. For more information, go to <a href="#advanced-fault-tunables">network interface </a></td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster. </td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-latency#container-runtime-and-socket-path">container runtime </a> </td>
+        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="#container-runtime-and-socket-path">container runtime </a> </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path to the containerd/crio/docker socket file. </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-latency#container-runtime-and-socket-path">socket path </a></td>
+        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path </a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>

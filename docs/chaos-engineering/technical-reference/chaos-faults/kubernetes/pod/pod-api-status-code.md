@@ -36,12 +36,12 @@ Pod API status code:
       <tr>
         <td> STATUS_CODE </td>
         <td> Modified status code for the api response </td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-status-code#status-code">status code </a>. </td>
+        <td> For more information, go to <a href="#status-code">status code </a>. </td>
       </tr>
       <tr>
         <td> PATH_FILTER </td>
         <td> Api path or route used for the filtering </td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-status-code#path-filter">path filter </a>.</td>
+        <td> For more information, go to <a href="#path-filter">path filter </a>.</td>
       </tr>
     </table>
     <h3>Optional tunables</h3>
@@ -54,32 +54,32 @@ Pod API status code:
       <tr>
         <td> RESPONSE_BODY </td>
         <td> String body to overwrite the HTTP response body. If not provided it will return the original response body </td>
-        <td> Default: empty body. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-status-code#advanced-fault-tunables"> response body</a>.</td>
+        <td> Default: empty body. For more information, go to <a href="#advanced-fault-tunables"> response body</a>.</td>
       </tr>
       <tr>
         <td> PROXY_PORT </td>
         <td> Port where the proxy listens for requests.</td>
-        <td> Default: 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-status-code#advanced-fault-tunables">proxy port</a>.</td>
+        <td> Default: 20000. For more information, go to <a href="#advanced-fault-tunables">proxy port</a>.</td>
       </tr>
       <tr>
         <td> SERVICE_DIRECTION </td>
         <td> Direction of the flow of control, ingress or egress </td>
-        <td> Default: `ingress`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-status-code#advanced-fault-tunables">service direction </a>.</td>
+        <td> Default: `ingress`. For more information, go to <a href="#advanced-fault-tunables">service direction </a>.</td>
       </tr>
       <tr>
         <td> DATA_DIRECTION </td>
         <td> API payload type, request or response </td>
-        <td> Default: `both`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-status-code#advanced-fault-tunables">data direction </a>.</td>
+        <td> Default: `both`. For more information, go to <a href="#advanced-fault-tunables">data direction </a>.</td>
       </tr>
       <tr>
         <td> NETWORK_INTERFACE </td>
         <td> Network interface used for the proxy.</td>
-        <td> Default: `eth0`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-status-code#advanced-fault-tunables">network interface </a>.</td>
+        <td> Default: `eth0`. For more information, go to <a href="#advanced-fault-tunables">network interface </a>.</td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster</td>
-        <td> Default: containerd. Support values: docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-status-code#container-runtime-and-socket-path">container runtime </a>. </td>
+        <td> Default: containerd. Support values: docker, containerd and crio. For more information, go to <a href="#container-runtime-and-socket-path">container runtime </a>. </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
