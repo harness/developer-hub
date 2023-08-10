@@ -1,6 +1,6 @@
 ---
 title: STO basics
-description: Enable DevOps and DevSecOps teams to left shift security testing.
+description: How STO enables DevOps teams to left-shift security testing.
 sidebar_position: 20
 helpdocs_topic_id: ap7y94ap7h
 helpdocs_category_id: 8nywcs2sa7
@@ -10,11 +10,11 @@ helpdocs_is_published: true
 
 Companies perform security testing to avoid introducing vulnerabilities into the products their customers depend on. If a customer catches the security issue instead of the company, trust is lost.
 
-Harness Security Testing Orchestration (STO) enables DevOps and DevSecOps teams to left shift security testing. STO orchestrates scanning, intelligently deduplicating scanner output, prioritizing remediations, and enforcing governance into your Pipeline. STO puts scanning directly into your Pipelines to ensure that vulnerabilities are caught and fixed before your products are ever released.
+Harness Security Testing Orchestration (STO) enables DevOps teams to left shift security testing. STO orchestrates scanning, intelligently deduplicating scanner output, prioritizing remediations, and enforcing governance into your Pipeline. STO puts scanning directly into your Pipelines to ensure that vulnerabilities are caught and fixed before your products are ever released.
 
 This topic describes the security scanning problems facing developers and how STO provides the solutions they need.
 
-### Common Scanning Problems
+### Common scanning problems
 
 Many current security testing practices have the following issues:
 
@@ -24,7 +24,7 @@ Many current security testing practices have the following issues:
 * **Inconsistent Governance:** developers don't have guidance and governance to help them decide where scans should be in their release process.
 * **Not integrated with CI/CD:** scans happen outside of the Pipeline instead of acting as gate checks.
 
-#### Delayed Feedback Loop
+#### Delayed feedback loop
 
 Current security testing is challenging for DevOps teams because most security testing is done right before code has reached production. This is a delayed feedback loop.
 
@@ -36,9 +36,9 @@ All of the release stages where security testing could have been applied are pas
 
 Developers need to move forward but by the time the security testing feedback arrives it could be days or weeks later and they have to stop current work and fix it.
 
-#### DevSecOps Complexity Problem
+#### SDLC complexity problem
 
-DevSecOps is too complicated because there are many tools for so many types of scanning and the outputs from all these tools are disparate. There is no uniform data format or language.
+Building software, from raw code to development to deployment, is too complex because there are many tools for so many types of scanning and the outputs from all these tools are disparate. There is no uniform data format or language.
 
 <!-- 
 ![](./static/security-testing-orchestration-basics-29.png)
@@ -46,13 +46,13 @@ DevSecOps is too complicated because there are many tools for so many types of s
 
 Consequently, developers don't have a deduplicated and prioritized list of vulnerabilities to remedy.
 
-So DevSecOps must normalize all the output, track exemptions, and verifying fixes. This all requires DevSecOps synchronization with developers, and it takes DevSecOps away from other work.
+Your software teams must normalize all the output, track exemptions, and verifying fixes. This all requires synchronization between DevOps and security teams; it also takes a lot of time and labor away from other work.
 
-In addition, developers, PMs, DevSecOps, and others have to act on the information provided from security testing, but ensuring that these are the only vulnerabilities is challenging.
+In addition DevOps and security teams need to act on the information provided from security testing, but ensuring that these are the only vulnerabilities is challenging.
 
-### Harness Security Testing Orchestration (STO) Solution
+### Harness Security Testing Orchestration (STO) solution
 
-Harness STO enables DevOps and DevSecOps teams to left shift security testing:
+Harness STO enables DevOps and security teams to left shift security testing:
 
 * **Test:** test code, OSS libraries, containers, and live apps with popular security scanners as part of the CI/CD Pipeline. Harness orchestrates the scanners to ensure that scanning is timely and easy to apply.
 * **Remediate:** repair security vulnerabilities by empowering developers with a prioritized list that is intelligently deduplicated across all scanners. Harness provides dashboards with clear security vulnerabilities identified.
@@ -74,7 +74,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz>
 <docvideo src="https://fast.wistia.net/embed/iframe/yjlevup9v4" />
 -->
 
-### STO Features
+### STO features
 
 Harness STO automatically aggregates, normalizes, and deduplicates data to identify vulnerabilities across all your scanners. You can use STO with no other Harness modules. See [STO Tutorial 1: Standalone STO Workflows](/tutorials/security-tests/standalone-pipeline).
 
@@ -116,7 +116,7 @@ Now let's apply these features to common use cases:
     </tr>
 </table>
 
-### Scanner Coverage
+### Scanner coverage
 
 For a list of supported scanners, see [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach).
 
