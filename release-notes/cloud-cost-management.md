@@ -19,12 +19,48 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - August 02, 2023, version 80301
+## Latest - August 10, 2023, version 
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+* ServiceNow integration with Recommendations
+
+  Introducing ServiceNow as a ticketing tool to create tickets for recommendations. You can use either Jira or ServiceNow as your ticketing tool. You need to configure this setting at the account level on the **Default Settings** page. For more information, go to [View and apply recommendations](../docs/cloud-cost-management/4-use-ccm-cost-optimization/1-ccm-recommendations/1-home-recommendations.md).
+
+
+
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not include any early access features.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### August 02, 2023, version 80301
+
+##### What's new
+
 * AWS AutoStopping proxy enhancement (CCM-13497)
 
   You can now select the subnet ID from the dropdown list for AWS AutoStopping proxy creation. 
@@ -56,18 +92,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     <docimage path={require('./static/ccm-overview-3.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
+
 * Previously, configuring both the redirect URL and target port for redirection while creating a redirect-based AutoStopping rule led to an error. (CCM-13475)
 
   This issue has been resolved by modifying the validation process. Now, if the redirect URL is defined, the validation process checks whether the target port is greater than 0. Specifying both redirect URL and target port is not allowed as it is an invalid configuration. However, for ALBs, only redirect URLs are allowed.
@@ -81,15 +111,8 @@ This release does not include any early access features.
   The issue has been resolved, and the overall user experience has been enhanced by streamlining the process of managing cost categories even with a large number of buckets.
 
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-## Previous releases
 
-<details>
-<summary>2023 releases</summary>
 
 #### July 21, 2023, version 80202
 
