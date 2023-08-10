@@ -18,7 +18,7 @@ import { MODULES } from "../../constants";
           title: "CloudFormation",
           module: MODULES.cd,
           description:
-            "Provisiong deployment infrastructre using CF",
+            "Provision deployment infrastructure using CF",
           link: "/tutorials/cd-pipelines/infra-provisioning/cloudformation",
         },
         // {
