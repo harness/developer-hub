@@ -114,7 +114,7 @@ You can select **Advanced Options** on the Experiment Builder tab to configure t
 
 Specifies the node on which the experiment pods will be scheduled. Provide the node label as a key-value pair.
 
-- Can be used with node-level faults to avoid the scheduling of the target pod on the target pod.
+- Can be used with node-level faults to avoid the scheduling of the experiment pod on the target node(s).
 - Can be used to limit the scheduling of the experiment pods on nodes that have an unsupported OS.
 
 	![Node Selector](./static/construct-and-run-custom-chaos-experiments/node-selector.png)
