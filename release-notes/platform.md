@@ -1,4 +1,4 @@
- ---
+---
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
@@ -54,8 +54,10 @@ This release does not include any early access features.
 ```
 
 - For the **Audit Trail**, the **YAML Difference** on the **Event Summary** pane didn’t include tag information for delegate groups and registers. (PL-40073)
-   This issue has been resolved.
-   This item is available with Harness Platform version 802xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   
+  This issue has been resolved.
+   
+  This item is available with Harness Platform version 802xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - When configuring an RBAC resource group in Harness Manager, if you discarded your changes, the resource group page showed a list of resources that should not be available at the scope that you are in. (PL-40393, ZD-48270)
 
