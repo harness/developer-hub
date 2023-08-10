@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-08-07T10:00
+date: 2023-08-10T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -20,9 +20,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - August 9, 2023
+## Latest - August 10, 2023
 
-### Harness CD, version 802xx
+### Continuous Delivery, version 80208
 
 * Harness has introduced restrictions on the depth of nesting in execution pipelines to enhance system stability. Now, a node execution will not be allowed if it exceeds 25 levels of nesting. The 25th level refers to the node being the 25th child starting from the root node `pipeline`. (CDS-75249)
 
