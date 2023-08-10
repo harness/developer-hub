@@ -79,18 +79,18 @@ import StoInfraSupport from '/docs/security-testing-orchestration/onboard-sto/sh
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Notifications/Approvals">
+  <TabItem value="Approvals and Ticketing">
 ```
 
 Harness STO supports the following features for generating notifications and stopping pipelines in response to detected vulnerabilities:
 
-- You can set up STO to ([create Jira tickets automatically](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations) for issues detected during an STO build.  
-
-- You can also [generate automated emails](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/email-notifications) for detected issues. 
-
 - Each Security step has a [Fail on Severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) setting causes a pipeline build to fail if a Security Scan step detects one or more issues with the specified severity (Critical, High, Medium, etc.). You can also create [exemptions ("Ignore rules")](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for specific issues to override this behavior.
 
 - You can also [governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa) and security scan results to stop pipelines automatically.
+
+- You can set up STO to ([create Jira tickets automatically](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations) for issues detected during an STO build.  
+
+- You can also [generate automated emails](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/email-notifications) for detected issues. 
 
 ```mdx-code-block
   </TabItem>
