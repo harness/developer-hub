@@ -123,7 +123,7 @@ Specifies the node on which the experiment pods will be scheduled. Provide the n
 
 Specifies the tolerations that must be satisfied by a tainted node to be able to schedule the experiment pods. For more information on taints and tolerations, go to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
-- Can be used with node-level faults to avoid the scheduling of the target pod on the target pod.
+- Can be used with node-level faults to avoid the scheduling of the experiment pod on the target node(s).
 - Can be used to limit the scheduling of the experiment pods on nodes that have an unsupported OS.
 
 	![Toleration](./static/construct-and-run-custom-chaos-experiments/toleration.png)
