@@ -456,7 +456,7 @@ An easy way to debug expressions in your pipeline is to use Compiled Mode in you
 
 ![](./static/expression-evaluator-screen.png)
 
-Expressions that are incorrect or which cannot be evaluated using the Execution data are highlighted in the Variable values. You can then switch the panel back to normal mode and correct the expression. 
+Expressions that are incorrect or cannot be evaluated using the Execution data are highlighted in the **Variable** values. You can switch the panel back to normal mode and correct the expression. 
 
 To test out an expression that isn't part of a variable (say, something in a script), you can create a temporary variable in the panel, assign the expression to it, and use Compiled Mode to debug it. 
 
