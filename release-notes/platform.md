@@ -53,11 +53,15 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
+- For the **Audit Trail**, the **YAML Difference** on the **Event Summary** pane didn’t include tag information for delegate groups and registers. (PL-40073)
+   This issue has been resolved.
+   This item is available with Harness Platform version 802xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 - When configuring an RBAC resource group in Harness Manager, if you discarded your changes, the resource group page showed a list of resources that should not be available at the scope that you are in. (PL-40393, ZD-48270)
 
   This issue has been resolved.
 
-- Previously, the Select a Project pane displayed duplicate projects. The issue was caused by Harness Manager allowing users to create projects with the same `projectIdentifier` key in different organizations. (PL-40302, ZD-48700)
+- Previously, the **Select a Project** pane displayed duplicate projects. The issue was caused by Harness Manager allowing users to create projects with the same `projectIdentifier` key in different organizations. (PL-40302, ZD-48700)
 
   The issue has been resolved by the use of a unique key that combines the project and organization identifiers. 
 
@@ -69,7 +73,7 @@ This release does not include any early access features.
 
   The issue is now fixed, and any affected service accounts will be displayed correctly. 
 
-- Harness API requests for creating an API key for a service account returned an HTTP 200 OK status code even if the API request did not have the valid service account ID. Consequently, the harness_platform_apikey resource for Terraform failed to create the API key at the intended scope. The issue was caused by Harness failing to validate the service account identifier. (PL-40243, ZD-47921)
+- Harness API requests for creating an API key for a service account returned an HTTP 200 OK status code even if the API request did not have a valid service account ID. Consequently, the `harness_platform_apikey` resource for Terraform failed to create the API key at the intended scope. The issue was caused by Harness failing to validate the service account identifier. (PL-40243, ZD-47921)
 
   The issue is fixed, and service account identifiers are now validated.
 
