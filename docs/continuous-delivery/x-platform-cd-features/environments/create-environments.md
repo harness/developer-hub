@@ -372,7 +372,7 @@ When you select an environment in a stage, you can select the **Infrastructure D
 
 ## Propagating environments through multiple stages
 
-:::note
+:::info note
 
 Currently, this feature is behind the feature flag `CDS_ENV_PROPAGATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
@@ -382,7 +382,7 @@ When modeling multiple Deploy stages in a pipeline, you can propagate the enviro
 
 When you propagate an environment, the same infrastructure definition that was used in the parent stage is propagated to the child stage. You cannot propagate an environment and then select a different infrastructure definition.
 
-:::note
+:::info note
 
 You can also propagate services between stages. For more information, go to [Propagate CD services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services).
 
@@ -393,7 +393,7 @@ You can also propagate services between stages. For more information, go to [Pro
 - Propagation is only supported for Deploy stages. Custom stages do not have environments.
 - You cannot propagate environments between different deployment types. For example, you cannot propagate a Kubernetes environment between a Kubernetes deployment stage and a Shell Script deployment stage.
 - Environment propagation is not supported when using multiple environments in a single stage (multi environment deployments).
-- Environment propagation is progressive: you can only propagate environments from stage to stage in a forward direction in your pipeline. For example, Stage 2 cannot propagate an environment from a subsequent Stage 3.
+- Environment propagation is progressive. You can only propagate environments from stage to stage in a forward direction in your pipeline. For example, Stage 2 cannot propagate an environment from a subsequent Stage 3.
 - In a pipeline's **Advanced Options**, in **Stage Execution Settings**, you can set up selective stage executions. This allows you to select which stages to deploy at runtime.
   - If you select a stage that uses a propagated environment (a child environment), that stage will not work. This is because the parent environment's settings must be resolved as part of the deployment. 
 - When propagation is set up between a parent stage and child stage, moving the parent or child stage out of sequence resets any propagated settings to their defaults. If you do this, you are prompted to confirm. If you confirm, the stages are reset to their defaults.
