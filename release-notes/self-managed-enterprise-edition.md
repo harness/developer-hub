@@ -35,6 +35,7 @@ This release includes the following Harness module and component versions.
 | **Name** | **Version** |
 | :-- | :--: |
 | Helm Chart | [0.8.0](https://github.com/harness/helm-charts/releases/tag/harness-0.8.0) |
+| Air Gap Bundle | [0.8.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.0) |
 | NG Manager | 79819 |
 | CI Manager | 4902 |
 | Pipeline Service | 1.37.12 |
@@ -45,9 +46,9 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.353.10 |
 | LE NG | 68004 |
 
-#### Air gap bundles
+**Alternative air gap bundle download method**
 
-You can use `gsutil` to download air gap bundles. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
 gsutil -m cp \
@@ -587,6 +588,7 @@ This release includes the following Harness module and component versions.
 | **Name** | **Version** |
 | :-- | :--: |
 | Helm Chart | [0.7.2](https://github.com/harness/helm-charts/releases/tag/harness-0.7.2) |
+| Air Gap Bundle | [0.7.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.2) |
 | NG Manager | 79422 |
 | CI Manager | 3907 |
 | Pipeline Service | 1.33.8 |
@@ -597,9 +599,9 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
-#### Air gap bundles
+**Alternative air gap bundle download method**
 
-You can use `gsutil` to download air gap bundles. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
 gsutil -m cp \
@@ -638,6 +640,7 @@ This release includes the following Harness module and component versions.
 | **Name** | **Version** |
 | :-- | :--: |
 | Helm Chart | [0.7.1](https://github.com/harness/helm-charts/releases/tag/harness-0.7.1) |
+| Air Gap Bundle | [0.7.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.1) |
 | NG Manager | 79422 |
 | CI Manager | 3907 |
 | Pipeline Service | 1.33.8 |
@@ -648,7 +651,22 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
-0.7.2
+**Alternative air gap bundle download method**
+
+Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.7.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/sto_images.tgz" \
+  .
+```
 
 #### What's new
 
@@ -689,9 +707,9 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
-#### Air gap bundles
+**Alternative air gap bundle download method**
 
-You can use `gsutil` to download air gap bundles. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
 gsutil -m cp \
