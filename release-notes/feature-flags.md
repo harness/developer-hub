@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-08-09T10:00:25
+date: 2023-08-10T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -36,6 +36,10 @@ This release does not include early access features.
 
   </TabItem>
   <TabItem value="Fixed issues">
+
+#### Feature Flags server, version 1.1079.0
+
+* Previously, if a flag was configured to use a custom attribute with the IN operator clause, the IN operator didn't work correctly. This has been fixed. (FFM-8670)
 
 #### Feature Flags UI
 
