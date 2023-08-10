@@ -5,7 +5,19 @@ sidebar_label: What's supported
 sidebar_position: 5
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+
 This topic lists the supported STO features and integrations to scan your code repositories, container images, and other targets for security vulnerabilities. 
+
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Scanners">
+```
 
 <details><summary>Scanner categories</summary>
 
@@ -14,19 +26,6 @@ import StoSupportedCategories from '/docs/security-testing-orchestration/sto-tec
 ```
 
 <StoSupportedCategories />
-
-</details>
-
-
-<details><summary>Data ingestion methods</summary>
-
-```mdx-code-block
-import StoSupportedMethods from '/docs/security-testing-orchestration/sto-techref-category/shared/_sto-supported-methods.md';
-```
-
-<StoSupportedMethods />
-
-The scanner, targets, and scan approach combinations are covered in the next section.
 
 </details>
 
@@ -41,6 +40,38 @@ import StoSupportedScanners from '/docs/security-testing-orchestration/sto-techr
 </details>
 
 
+<details><summary>Scanner binaries used in STO container images</summary>
+
+```mdx-code-block
+import StoSupportedBinaries from '/docs/security-testing-orchestration/sto-techref-category/shared/_sto-supported-binaries.md';
+```
+
+<StoSupportedBinaries />
+
+</details>
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Ingestions">
+```
+
+<details><summary>Data ingestion methods</summary>
+
+```mdx-code-block
+import StoSupportedMethods from '/docs/security-testing-orchestration/sto-techref-category/shared/_sto-supported-methods.md';
+```
+
+<StoSupportedMethods />
+
+The scanner, targets, and scan approach combinations are covered in the next section.
+
+</details>
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Infrastructures">
+```
+
 <details><summary>STO support by CI build infrastructure type</summary>
 
 ```mdx-code-block
@@ -51,13 +82,17 @@ import StoInfraSupport from '/docs/security-testing-orchestration/onboard-sto/sh
 
 </details>
 
-
-<details><summary>Scanner binaries used in STO container images</summary>
-
 ```mdx-code-block
-import StoSupportedBinaries from '/docs/security-testing-orchestration/sto-techref-category/shared/_sto-supported-binaries.md';
+  </TabItem>
+  <TabItem value="Ticketing/Approvals">
 ```
 
-<StoSupportedBinaries />
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Governance">
+```
 
-</details>
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
