@@ -33,7 +33,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * **Perspective Preferences** enhancement (CCM-11145)
 
-  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](../docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/perspective-preferences.md).
+  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/perspective-preferences).
 
  
 :::important note
@@ -80,7 +80,6 @@ This release does not include any early access features.
 
   The issue has been resolved, and the overall user experience has been enhanced by streamlining the process of managing cost categories even with a large number of buckets.
 
-
 ```mdx-code-block
   </TabItem>
 </Tabs>
@@ -90,6 +89,7 @@ This release does not include any early access features.
 
 <details>
 <summary>2023 releases</summary>
+
 
 #### July 21, 2023, version 80202
 

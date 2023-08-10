@@ -13,7 +13,7 @@ helpdocs_is_published: true
 
 Harness CI supports launching GitHub Actions as part of a pipeline stage using the generic **Plugin** step or the **GitHub Action plugin** steps.
 
-This topic describes how to use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step to run GitHub Actions. When your pipeline runs, the Github Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
+This topic describes how to use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step to run GitHub Actions. When your pipeline runs, the GitHub Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
 
 For information about the specialized **GitHub Action plugin** step, go to [Use the GitHub Action plugin step](./ci-github-action-step.md).
 
@@ -61,7 +61,7 @@ If possible, run the **Plugin** step for your GitHub Action in a separate stage,
 
 ### Define variables and attributes
 
-Use **Settings** to specify the Github Action you want to use and to pass variables and attributes required by the Action and the Drone Plugin. You must specify `uses` and `with`. You can use `env` to specify environment variables, such as GitHub tokens to access [private Action repos](#private-action-repos).
+Use **Settings** to specify the GitHub Action you want to use and to pass variables and attributes required by the Action and the Drone Plugin. You must specify `uses` and `with`. You can use `env` to specify environment variables, such as GitHub tokens to access [private Action repos](#private-action-repos).
 
 | Key | Description | Value format | Value example |
 | - | - | - | - |

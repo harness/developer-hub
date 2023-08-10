@@ -36,10 +36,7 @@ After creating an environment, you can define all its settings.
 
 ## Environments RBAC
 
-Review these key RBAC uses cases for environments.
-
-* [Harness Role-Based Access Control overview](/docs/platform/role-based-access-control/rbac-in-harness/)
-* [Harness Role-Based Access Control quickstart](/docs/platform/role-based-access-control/set-up-rbac-pipelines/).
+Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) for examples of RBAC use cases for environments.
 
 ## Access permission to deploy to an environment
 

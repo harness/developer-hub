@@ -17,7 +17,7 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
 - Defining your resources like service, environment, infrastructure definition, etc. via Terraform is a one-way sync. By using Terraform, you define the object in Git. After you commit the change, a Harness pipeline provisions the resource to your account. 
 - Any changes you make via Git are propagated to the UI via this pipeline, which fetches the Terraform file definition for the resource.
 - To avoid configuration mismatches, any changes you make in the UI must be reconciled and updated in the YAML.
-- To prevent the editing and creation of resources in the Harness UI, use [RBAC](../../4_Role-Based-Access-Control/1-rbac-in-harness.md).
+- To prevent the editing and creation of resources in the Harness UI, use [RBAC](/docs/platform/role-based-access-control/rbac-in-harness).
 
 ## Product Demo
 

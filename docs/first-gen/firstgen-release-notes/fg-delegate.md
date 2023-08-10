@@ -20,9 +20,6 @@ To identify the cluster that hosts your account, open Harness FirstGen, go to **
 
 For FirstGen SaaS release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, go to [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
-
-## Latest - August 4, 2023, Harness version 80120, Harness Delegate version 80104
-
 #### Deprecation notices
 
 **Helm 2**
@@ -36,6 +33,8 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
 
 <Kustomizedep />
+
+## Latest - August 4, 2023, Harness version 80120, Harness Delegate version 80104
 
 ```mdx-code-block
 <Tabs>
@@ -76,6 +75,13 @@ The current version does not include a hotfix release.
 
 <details>
 <summary>2023 releases</summary>
+
+
+### Hotfix version 79910
+
+The delegate stopped trying to reconnect to the WebSocket if the infrastructure experienced a network outage for over five minutes. (PL-40547)
+
+This issue is fixed. The delegate keeps trying to reconnect to the WebSocket until it's successful.
 
 
 ### Hotfix version 79908
