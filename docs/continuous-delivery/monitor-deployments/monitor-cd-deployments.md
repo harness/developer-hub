@@ -99,6 +99,16 @@ Each environment card shows the following:
   Select **Open Execution** in the instance details to see the pipeline execution that deployed the service instance.
 - **Deployments:** each deployment to a selected environment or environment group. If you filter using **My Deployments** you see only those deployments that your user account initiated.
 
+### How instance information is obtained
+
+Harness runs a perpetual task that constantly polls for the same combination of Harness service/artifact + Harness environment + Harness infrastructure definition. The instance count and details are updated as a result of this polling.
+
+The perpetual task is alive for 2 weeks, even after the instances are downsized/deleted.
+
+**Deployed By** shows the email address of the Harness user that initiated the deployment.
+
+**Deployed By** will show `AUTO_SCALED` for instances that are scaled outside of the Harness deployment. For example, if you log into the Kubernetes cluster and manually auto-scale instances.
+
 ### Artifacts tab
 
 The **Artifacts** tab shows how the service is mapped to multiple artifacts.

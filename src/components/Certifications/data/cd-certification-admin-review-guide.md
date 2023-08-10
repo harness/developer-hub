@@ -16,7 +16,7 @@
 | Learn to use Java string methods in Harness Variables (JEXL)| [Stage and step conditional execution settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) | 
 | **5. Governance, Authentication, and Authorization: Login, RBAC, Access Control**  ||
 | Understand Login and SSO processes| [Single Sign-On (SSO) with SAML](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/)|
-| Learn about RBAC and Access Control| [Role-based access control overview](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)| 
+| Learn about RBAC and Access Control| [RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness)| 
 | **6. Data Visualization, Dashboards, and Reporting**                                                                               ||
 | Learn to add Metadata to Harness Resources and Entities| [Controlling resource usage with Barriers, Resource Constraints, and Queue steps](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/controlling-deployments-with-barriers-resource-constraints-and-queue-steps/)|
 |Understand Harness Dashboards and Looker| [Create conditional alerts](https://developer.harness.io/docs/platform/dashboards/create-conditional-alerts/)| 
@@ -30,7 +30,7 @@
 | Identify deployment verification types| [Harness Continuous Verification (CV) overview](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step/)|
 | Understand CV Health Sources| [Health Source](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step/#health-source)| 
 | **10. Alerting, SMTP Configuration, Notifications**   ||
-| Configure User Group Notification - Slack, Email, etc.| [Notification Preferences](https://developer.harness.io/docs/platform/user-management/add-user-groups/#option-notification-preferences)|
+| Configure User Group Notification - Slack, Email, etc.| [Notification Preferences](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences)|
 | Understand how to notify based in response to Pipeline and stage events| [Add a pipeline notification strategy](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/)| 
 | **11. GitOps**   ||
 | Explain the principles of GitOps using a comprehension/use case| [Harness GitOps Basics](https://developer.harness.io/docs/continuous-delivery/gitops/harness-git-ops-basics)|

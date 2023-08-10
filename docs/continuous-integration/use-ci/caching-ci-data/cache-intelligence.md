@@ -223,7 +223,7 @@ The following YAML example uses `<+input>`, which prompts the user to supply a c
 
 You can use the Cache Intelligence API to get information about the cache or delete the cache.
 
-To invoke these APIs, you must have an API key with [core_account_edit](/docs/platform/Role-Based-Access-Control/ref-access-management/api-permissions-reference#harness-api-permissions) permissions. For information about API keys, go to [Add and manage API keys](/docs/platform/User-Management/add-and-manage-api-keys).
+To invoke these APIs, you must have an API key with [core_account_edit](/docs/platform/Resource-Development/APIs/api-permissions-reference) permissions. For information about API keys, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 ### Get cache metadata
 

@@ -158,7 +158,44 @@ import TabItem from '@theme/TabItem';
    - In **Credentials**, in **Connection Type**, select **HTTPS**, the **Anonymous** option to add a public repository.
    - To add a private repository, select the authentication option with username and password, and enter the access token.
 
-     This authentication is supported for Docker and GitHub. AWS and Google have short-lived tokens, and may not work as expected. For details on how to configure access to AWS ECR, go to [Store and access OCI Helm repository in private AWS ECR](./helm-oci-repository-aws-ecr.md).
+     This authentication is supported for Docker and GitHub. AWS and Google have short-lived tokens, and might not work as expected. However, if you have an [External Secrets Operator](https://docs.harness.io/article/3xqjzq2q2q-external-secrets-operator) installed, you can configure the repository for regenerating tokens. For more information, go to [OCI Helm repository with ESO](#oci-helm-repository-with-eso).
+8. Select **Save & Continue**. Harness validates the connection.
+
+:::note
+
+Credentials Template is not supported for OCI Helm repository.
+
+:::
+
+```mdx-code-block
+</TabItem>    
+<TabItem value="OCI Helm repository with ESO" label="OCI Helm repository with ESO">
+```
+
+1. In **Specify Repository Type**, select **Helm**.
+2. In **Repository Name**, enter a name.
+3. In **GitOps Agent**, select or create the Agent you want to use to fetch charts from this repo. For details, go to [Install a Harness GitOps Agent](install-a-harness-git-ops-agent.md).
+4. In **Repository URL**, enter the URL to your OCI Helm repository. For example, `us-east4-docker.pkg.dev/<gcp-project>/<repository>`.
+5. Select **Enable OCI**
+6. Select **Continue**.
+7. In **Credentials**, select **Specify Credentials for Repository**.
+    - Select the authentication option with **Username and password**, 
+      - In the **Username** field, if you are authenticating to AWS, enter `AWS`. If you are authenticating to Google, enter `oauth2accesstoken`.
+      - In **Password** enter your short-lived token (obtained with `aws ecr get-login-password` for AWS and `gcloud auth print-access-token` for Google). If you have an [External Secrets Operator](https://docs.harness.io/article/3xqjzq2q2q-external-secrets-operator), a **Refresh token** checkbox appears. Enable the checkbox.
+    - If you checked  **Refresh Token**, specify a  **Refresh Interval** (for example, 1m, 1h, 12h, or 1d). This is the interval with which you want the token to be refreshed.
+    - Harness uses the URL you enter to determine whether the registry is a Google or AWS registry. You can select the type of authentication that you want to use with the registry.
+        - For Google, you can select **Google Service Account** or **Google Workload Identity**.
+          - If you select **Google Service Account**, you must upload the service [account key file](https://cloud.google.com/iam/docs/keys-create-delete). Paste the contents of the file in the **Account Key** field. Contents of the file must be on a single line. For example:
+          ```json
+           { "type": "service_account", "project_id": "google-project-id", "private_key_id": "xxxx70c719xxxxbe7be090083xxxxxd85eca6", "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBAD...ERhb7ipMxMQw6wpbF\n-----END PRIVATE KEY-----\n", .... "universe_domain": "googleapis.com" }
+          ```
+          - If you select **Google Workload Identity**, you must enter the GCP Workload parameters. For more information, go to [Google Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity).
+          - Project ID is the project in which the registry is located.
+        - For AWS, you can select **AWS Access Credentials** or **AWS Service Account**.
+          - If you select **AWS Access Credentials**, enter the AWS access key ID, the AWS secret access key, and, optionally, the AWS session token. For more information, go to [AWS Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
+          - If you select **AWS Service Account**, enter the service account.
+          - **Region** is the region in which the registry is located.
+          - **Role** is the role ARN that will be assumed with given credentials.
 8. Select **Save & Continue**. Harness validates the connection.
 
 :::note
@@ -171,6 +208,7 @@ Credentials Template is not supported for OCI Helm repository.
 </TabItem>    
 </Tabs>
 ```
+
 
 ## Skip server verification
 

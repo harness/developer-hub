@@ -224,6 +224,12 @@ Once you are back on the Triggers page, refresh the page to verify that the webh
 
 </details>
 
+:::note
+
+Ensure that multiple Webhooks are not registered for the same repo. This can trigger multiple builds or deployments with a single push event.
+
+:::
+
 ## Test the trigger
 
 To test the trigger, make (and push) a change in your repo. If you created a Pull Request (or similar) trigger, you'll also need to create a Pull Request.
