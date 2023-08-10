@@ -30,7 +30,7 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## Latest - August 10, 2023, version 802xx
+## Latest - August 10, 2023, version 80208
 
 ```mdx-code-block
 <Tabs>

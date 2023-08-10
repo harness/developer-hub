@@ -21,7 +21,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - August 10, 2023
 
-### Harness Platform, version 802xx
+### Harness Platform, version 80208
 
 - Accounts with Free and Community licenses are limited to 100 users. (PL-40260)
 
