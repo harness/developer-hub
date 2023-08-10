@@ -248,6 +248,14 @@ We do not have any backup ability for services out of the box but you can take t
 
 We do not have a way to create a new pipeline using Graphql in FirstGen. However, we do support API to create Harness pipelines in NextGen.
 
+### Do we support rollback of deployment post production ? 
+
+Yes, certainly we have that capability, to know more about this please see, [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/rollback-deployments/)
+
+### How can I override the lite-engine image for the Container Run step,to pull images from ECR instead of docker hub? 
+
+Yes, certainly that can be acheived by using Docker Connector with your registry URL and anonymous access would help you to acheive that.
+
 #### How can only set of user able to approve the deployment?
 
 You can create a user group of specific users and specify the same user group in the Approval stage so only those users can able to approve the execution.
@@ -384,6 +392,7 @@ Some examples of values that are not hardcoded include chart versions, values YA
 
 The api will only return Approval details if there are any approval step pending for approval, If there are no such executions currently than its expected to return No Approval found for execution
 
+
 #### Trigger another stage with inputs in a given pipeline?
 You cannot do it if the stage is part of the same pipeline. However, using Pipeline A and running a custom trigger script inside it can trigger the CI stage which is part of Pipeline B.
 
@@ -393,3 +402,4 @@ You can use Ternary operators to achieve this use case more information on this 
 #### How do we easily change git folders in a repo for the git exp project?
 The default branch and file path will not be changeable after the creation as we store data in Git end and only metadata is stored in Harness. 
 You can change it to the required path while creating the initial entity you can select the folder other than.harness Now you can recreate the entity using the same yaml and make minor changes like file path and entity id.
+
