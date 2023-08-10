@@ -65,7 +65,7 @@ In addition to ingesting scan data in the external scanner's native format, STO 
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Infrastructures">
+  <TabItem value="Build infrastructures">
 ```
 
 ### STO support by CI build infrastructure type
