@@ -54,6 +54,48 @@ For the **Custom** integration, enter a **Name**, and then select **Install**. T
 </Tabs>
 ```
 
+<details>
+<summary>Option: Use a proxy</summary>
+
+The satellite can send its traffic to a proxy, with or without authentication.
+
+Add the following `proxy` settings to the `levelops` section of the `satellite.yml` config file:
+
+```yaml
+levelops:
+  ...
+  proxy:
+    host: YOUR_PROXY_IP_OR_DOMAIN ## Don't include schemes in `host` (such as https://), just domains.
+    port: YOUR_PROXY_PORT
+```
+
+To use authentication, include the `username` and `password`:
+
+```yaml
+levelops:
+  ...
+  proxy:
+    host: YOUR_PROXY_IP_OR_DOMAIN
+    port: YOUR_PROXY_PORT
+    username: YOUR_USERNAME
+    password: YOUR_PASSWORD
+```
+
+By default, only traffic to SEI is sent to the proxy. This means that connections to your internal integrations don't use the proxy. If you want to proxy all traffic, include `all_traffic: true`.
+
+```yaml
+levelops:
+  ...
+  proxy:
+    host: YOUR_PROXY_IP_OR_DOMAIN
+    port: YOUR_PROXY_PORT
+    all_traffic: true
+```
+
+If the proxy uses `https`, then the connection only works with a valid SSL certificate. If you're using a self-signed certificate, you must supply the certificate to the satellite.
+
+</details>
+
 ## Run the Satellite container
 
 ```mdx-code-block
