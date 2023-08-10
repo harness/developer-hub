@@ -291,7 +291,7 @@ Here is a service with an artifact that has runtime inputs for its artifact **Ta
 
 Next, when you run a pipeline that has the **Service** setting as a runtime input, you select the service that has runtime inputs for its artifact **Tag** and **Digest** settings.
 
-As you can see, the artifact **Tag** and **Digest** settings can now be selected.
+As you can see, you can now select the artifact **Tag** and **Digest** settings.
 
 ![picture 1](static/0fefa40bd146ba01cf7c3d13e26e7bc08cc414a731b890b231eb7708df314f4a.png)  
 
