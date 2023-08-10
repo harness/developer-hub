@@ -458,7 +458,7 @@ An easy way to debug expressions in your pipeline is to use Compiled Mode in you
 
 Expressions that are incorrect or which cannot be evaluated using the Execution data are highlighted in the Variable values. You can then switch the panel back to normal mode and correct the expression. 
 
-In case you need to test out an expression that isn't a part of a variable (say, something in a script, you can create a temporary variable in the panel, assign the expression to it, and use the Compiled Mode to debug it. 
+To test out an expression that isn't part of a variable (say, something in a script), you can create a temporary variable in the panel, assign the expression to it, and use Compiled Mode to debug it. 
 
 
 
