@@ -139,8 +139,6 @@ Add caching to your Build (`CI`) stage.
 
 Cache your Windows app dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add caching to your `stage.spec` and specify the `paths` to cache:
 
-<!-- See cache intelligence topic: Windows path is like C:\harness\node_modules -->
-
 ```yaml
     - stage:
         spec:
@@ -226,7 +224,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                     command: |-
                       # dotnet restore
                       # dotnet build --no-restore
-                      # dotnet test --no-build --verbosity normal
+                      # dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
 ```
 
 ```mdx-code-block
@@ -246,7 +244,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                     command: |-
                       # dotnet restore
                       # dotnet build --no-restore
-                      # dotnet test --no-build --verbosity normal
+                      # dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
 ```
 
 ```mdx-code-block
@@ -292,7 +290,7 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
                     command: |-
                       # dotnet restore
                       # dotnet build
-                      # dotnet test --no-build --verbosity normal
+                      # dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
                       # trx2junit results.trx
                     reports:
                       type: JUnit
@@ -329,7 +327,7 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
                     command: |-
                       # dotnet restore
                       # dotnet build
-                      # dotnet test --no-build --verbosity normal
+                      # dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
                       # trx2junit results.trx
                     reports:
                       type: JUnit
@@ -343,7 +341,7 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
 </Tabs>
 ```
 
-## Specify version
+## Install Visual Studio
 
 ```mdx-code-block
 <Tabs>
@@ -372,7 +370,7 @@ You can use a **Run** step to install a different version or edition of Visual S
 <TabItem value="Self-hosted">
 ```
 
-You can use a **Run** step to install different versions or editions of Visual Studio.
+If not already included on your build machine, you can specify a container image that has the necessary binaries or use a **Run** step to install Visual Studio.
 
 ```yaml
               - step:
@@ -384,13 +382,68 @@ You can use a **Run** step to install different versions or editions of Visual S
                     image: mcr.microsoft.com/windows/servercore:ltsc2019
                     shell: Powershell
                     command: |-
-                      # winget install --id Microsoft.VisualStudio.2022.Enterprise
+                      # winget install --id Microsoft.VisualStudio.2019.Enterprise
 ```
 
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
+
+## Specify shell
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness Cloud">
+```
+
+In steps that allow you to supply your own commands, such as [**Run** steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#shell-and-command) and [**Background** steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: dotnet restore
+                  name: dotnet restore
+                  spec:
+                    shell: Powershell ## Set to Bash, Powershell, Pwsh (PowerShell Core), Python, or Sh.
+                    command: |- ## Enter your script as you would in a command line shell.
+                      # dotnet restore
+```
+
+Several shell binaries are pre-installed on Hosted Cloud runners, including Bash and PowerShell. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+
+You can also use **Run** steps to install different shell tools into the build environment, or specify a container image that has the necessary binaries for the command you want to run.
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Self-hosted">
+```
+
+In steps that allow you to supply your own commands, such as [**Run** steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#shell-and-command) and [**Background** steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: build_dotnet_app
+                  name: Build DotNet App
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: mcr.microsoft.com/dotnet/sdk:6.0
+                    shell: Powershell ## Set to Bash, Powershell, Pwsh (PowerShell Core), Python, or Sh.
+                    command: |- ## Enter your script as you would in a command line shell.
+                      # dotnet restore
+```
+
+You can also use **Run** steps to install different shell tools into the build environment, or specify a container image that has the necessary binaries for the command you want to run.
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+## Setup .NET SDK
+
+For details about building and testing .NET with Harness CI, including how to setup different versions of the .NET SDK, go to the [C# (.NET Core) guide](/tutorials/ci-pipelines/build/dotnet).
 
 ## Full pipeline examples
 
