@@ -452,7 +452,7 @@ This feature is currently behind the Feature Flag PIE_EXPRESSION_PLAYGROUND. Ple
 
 :::
 
-An easy way to debug expressions in your pipeline is to use the "Compiled Mode" in your Variable Panel. This is enabled using a radio button at the top of the Variable Panel. When switched on, all of the expressions in the panel are compiled and the values displayed. The compilation happens by default against the Pipeline's latest execution. You can change this by selecting from a displayed list of previous executions. 
+An easy way to debug expressions in your pipeline is to use Compiled Mode in your Variable Panel. You can enable this mode using a radio button at the top of the Variable Panel. When turned on, all of the expressions in the panel are compiled and the values are displayed. The compilation happens by default against the Pipeline's latest execution. You can change this by selecting from a displayed list of previous executions. 
 
 ![](./static/expression_evaluator_screen.png)
 
