@@ -66,6 +66,8 @@ In **Project**, select the Jira project that contains the issue you want to eval
 
 In **Issue Key**, enter the Jira issue key of the issue you want to evaluate.
 
+In **Retry Interval**, set how long the step should wait to fetch details again for calculating Approval or Rejection criteria.
+
 ### Option: Use an Expression in Issue Key
 
 In **Issue Key**, you can use an expression to reference the Key ID from another Jira Create or Jira Update step.
