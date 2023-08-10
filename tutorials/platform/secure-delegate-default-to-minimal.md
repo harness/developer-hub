@@ -33,7 +33,7 @@ This tutorial shows you how to build and set up a delegate with  an immutable im
    docker push harness/delegate:yy.mm.xxxxx.harness.custom.x86.v4
    ```
 
-4. Update your delegate image in the manifest with the tag from the image you pushed in previous step.
+4. Update your delegate image in the manifest with the tag from the image you pushed in previous step. For more information, go to [Modify the delegate manifest](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools/#modify-the-delegate-manifest).
 
 ### Example delegate Dockerfile
 
