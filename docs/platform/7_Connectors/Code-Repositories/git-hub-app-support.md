@@ -1,6 +1,6 @@
 ---
-title: Use a GitHub app in a GitHub connector
-description: Harness supports API access to GitHub using a GitHub App. GitHub recommends using GitHub Apps when integrating with GitHub. GitHub Apps offer more granular permissions to access data than typical aut…
+title: Use a GitHub App in a GitHub connector
+description: You can use a GitHub App to authenticate a GitHub connector.
 sidebar_position: 30
 helpdocs_topic_id: nze5evmqu1
 helpdocs_category_id: o1zhrfo8n5
@@ -8,185 +8,160 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness supports API access to GitHub using a GitHub App.
+You can use a GitHub App to provide authentication for a GitHub connector. This enables API access to GitHub through the GitHub App.
 
-GitHub recommends using GitHub Apps when integrating with GitHub. GitHub Apps offer more granular permissions to access data than typical authentication methods.
+GitHub recommends using GitHub Apps for GitHub connectors, because GitHub Apps offer more granular permissions than other authentication methods.
 
-Harness supports GitHub Apps in its Harness GitHub Connector.
+This topic assumes you have an understanding of:
 
-For more information, see [GitHub Connector Settings Reference](../Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference.md). Also, if you're new to GitHub apps, see [About apps](https://docs.github.com/en/developers/apps/about-apps) and [Installing GitHub Apps](https://docs.github.com/en/developers/apps/installing-github-apps) from GitHub
+* [Connecting to code repos with Harness.](./connect-to-code-repo.md)
+* [Creating GitHub Apps.](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps)
+* [Installing GitHub Apps.](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app)
 
-### Before you begin
+## Permissions requirements
 
-* [GitHub Connector Settings Reference](../Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference.md)
-* [Quickstarts](../../../getting-started/quickstarts.md)
+You must meet one or more of the following criteria:
 
-### Review: Requirements
+* You can install GitHub Apps on your personal account or under an organization where you have administrative access.
+* You have admin permissions on a GitHub repo under a GitHub organization, and you can install GitHub Apps in that repo.
+* You will install the GitHub App in a repo that requires an organization's permission, and the organization owner has approved the application, and can provide approvals as needed to proceed with app installation.
 
-One or more of the following GitHub permissions are required:
+## Create the GitHub App
 
-* You have the GitHub permissions required to install GitHub Apps on your personal account or under any organization where you have administrative access.
-* If you have admin permissions in a GitHub repo in a GitHub organization, you can install GitHub Apps in that repo.
-* If a GitHub App is installed in a repository and requires an organization's permission, the organization owner must approve the application.
+You can create and register GitHub Apps in your personal GitHub account or in any GitHub organization where you have administrative access.
 
-### Step 1: Create a GitHub app
+Follow the instructions in the GitHub documentation on [Creating a GitHub App](https://docs.github.com/en/developers/apps/creating-a-github-app). Populate the settings as follows:
 
-You can create and register a GitHub App under your personal account or under any organization where you have administrative access. You create your GitHub App in your personal account, and then register it where you have the required GitHub permissions.
+* **GitHub App Name:** Enter a name.
+* **Homepage URL:** Enter `https://harness.io/`.
+* **Webhook:** Deselect **Active**. The app is used for authentication and doesn't need to receive webhook events.
+* **Permissions:** Configure the following **Repository Permissions**.
+	+ **Administration:** Select **Read & write**.
+	+ **Commit statuses**: Select **Read & write**.
+	+ **Contents:** Select **Read & write**.
+	+ **Metadata:** Select **Read-only**.
+	+ **Pull requests**: Select **Read & write**. This is required for the **Issue Comment** [event trigger](/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#event-and-actions) for Github.
+	+ **Webhooks:** Select **Read & write**.
+* **Where can this GitHub App be installed:** Select **Any account**. The app must be public to use it with a GitHub connector.
 
-See [Creating a GitHub App](https://docs.github.com/en/developers/apps/creating-a-github-app) from GitHub.
+:::info Private apps
 
-In your GitHub personal account, click **Settings**.
+A private app can only be installed on the account that owns the app. Your app is private if you *didn't* select **Any account** for **Where can this GitHub App be installed**. You must edit your app and make it public. For instructions, go to the GitHub documentation on [Changing the visibility of a GitHub App](https://docs.github.com/en/apps/maintaining-github-apps/modifying-a-github-app-registration#changing-the-visibility-of-a-github-app).
 
-![](../static/git-hub-app-support-50.png)
+:::
 
-Click **Developer settings**.
+## Install the GitHub App
 
-![](../static/git-hub-app-support-51.png)
+Follow the instructions in the GitHub documentation on [Installing your own GitHub App](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app), and note the following:
 
-Click **New GitHub App**.
+* For **Repository access**, select **Only select repositories**, and then select the repos you want to connect with through your Harness GitHub connector.
+* Configure these **Permissions**:
+   * **Metadata: Read**
+   * **Code: Read & write**
+   * **Commit statuses: Read & write**
+   * **Pull Requests: Read & write**
 
-Enter the following settings, and then click **Create GitHub App**.
+## Get the Installation ID and App ID
 
-* **GitHub App name:** enter the name for your app.
-* **Homepage URL:** enter **https://harness.io/**.
-* **Webhook:** uncheck **Active**.
-* **Repository permissions:**
-	+ **Administration:** select **Access: Read & write**.
-	+ **Commit statuses**: select **Access: Read & write**.
-	+ **Contents:** select **Access: Read & write**.
-	+ **Metadata:** select **Access: Read-only**.
-	+ **Pull requests**: select **Access: Read & write**. This permission is required for the **Issue Comment** event trigger for Github.
-	+ **Webhooks:** select **Read & write**.
-* **Where can this GitHub App be installed?** Select **Any account**.
+You need the **Installation ID** and **App ID** to configure your Harness GitHub connector.
 
-![](../static/git-hub-app-support-52.png)
-The app is created.
+1. Get the **Installation ID** from the URL of the installed app, such as:
 
-By default the application you created is **Public**.
+   ```
+   https://github.com/settings/installations/INSTALLATION_ID
+   ```
 
-If your application is **Private**, make sure to make it **Public**.
+   ![](../static/git-hub-app-support-54.png)
 
-To do this, open the app by clicking **Edit.**
+2. Get the **App ID** from the app's **General** tab.
 
-Select **Advanced**.
+   ![](../static/git-hub-app-support-55.png)
 
-In **Make this GitHub App public**, click **Make public**, and click **OK**.
+## Generate a private key
 
-![](../static/git-hub-app-support-53.png)
-Now you can install the app.
+You need a private key for your GitHub app to configure your Harness GitHub connector.
 
-### Step 2: Install the GitHub App
+1. Follow the instructions in the GitHub documentation for [generating private keys for GitHub Apps](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/managing-private-keys-for-github-apps#generating-private-keys)
+2. Save the private key file to your local machine. GitHub only stores the public portion of the key.
+3. Open a terminal and `cd` to the folder containing the key.
+4. Run the following command to convert the key file to the necessary format for the Harness GitHub connector. Replace `YOUR_KEY.pem` with the name of the PEM file you saved:
 
-In the same GitHub App, click **Install App**.
+   ```
+   openssl pkcs8 -topk8 -inform PEM -outform PEM -in <your-key>.pem -out converted-github-app.pem -nocrypt
+   ```
 
-In **Repository access**, select **Only select repositories**, and then select the same repo you are connecting with Harness.
+5. In Harness, store the converted key file as a [Harness encrypted file secret](/docs/platform/Secrets/add-file-secrets).
 
-In **Permissions**, set the following permissions:
+## Configure the GitHub connector
 
-* **Read access to metadata**
-* **Read and write access to code, commit statuses, and pull requests**
+You can use your GitHub App as <!-- either the [primary authentication method](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication) or -->the [API access authentication method](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access) for your GitHub connector.
 
-Install the new app.
+<!-- At 803xx release, remove below steps and uncomment tabs. -->
 
-Once the app is installed, you'll need to record the following information to use in the Harness Connector:
+1. In your Harness project, select **Connectors** under **Project Setup**.
+2. Create a new connector or edit an existing GitHub connector.
+3. Configure the [GitHub connector settings](./ref-source-repo-provider/git-hub-connector-settings-reference.md). The GitHub App is part of the **Credentials** settings.
+4. Select **Enable API access**. This setting is only available for connection types and authentication methods where it is not already enabled by default.
+5. For **API Authentication**, select **GitHub App**.
+6. Enter the your GitHub [installation ID and app ID](#get-the-installation-id-and-app-id).
+7. Select your [private key file secret](#generate-a-private-key).
+8. Select **Continue**.
+9. If the connection test succeeds, select **Finish** to save the connector.
 
-* **Installation ID:** the Installation ID is located in the URL of the installed app.
-
-![](../static/git-hub-app-support-54.png)
-* **App ID:** the App ID is located in the GitHub app's **General** tab.
-
-![](../static/git-hub-app-support-55.png)
-
-### Step 3: Generate and Download Key
-
-Now we'll create the private key for the GitHub app that you will use in your Harness Connector.
-
-Open the GitHub app you created.
-
-In **Private keys**, click **Generate a private key**.
-
-![](../static/git-hub-app-support-56.png)
-
-Download the private key to your local machine.
-
-Open a terminal and navigate to the folder containing the key.
-
-Run the following command, replacing `<your-key>.pem` with the name of your PEM file:
-
-
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 ```
-openssl pkcs8 -topk8 -inform PEM -outform PEM -in <your-key>.pem -out converted-github-app.pem -nocrypt
+<!--
+```mdx-code-block
+<Tabs>
+  <TabItem value="primary" label="Primary authentication">
 ```
-In the next step, you'll add the file as a new Harness file secret.
 
-### Step 4: Create a Harness Secret with the Key Value
+:::note
 
-In Harness, click the account, org, or project where you want to store your secret.
+Currently, the option to use a GitHub App as the primary authentication method for a GitHub connector is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-Click **Project Setup**, and then click **Secrets**.
+:::
 
-Click **New Secret**, and then click **File**.
+:::caution
 
-In **Secrets Manager**, select a Secrets Manager. See [Harness Secrets Manager Overview](../../Secrets/Secrets-Management/1-harness-secret-manager-overview.md).
+The [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline) doesn't support GitHub connectors that use GitHub App authentication.
 
-In **Secret Name**, enter a name for the secret. You'll use this name to select the secret in Harness Connectors and other settings.
+:::
 
-In **Secret File**, upload the PEM file.
+1. In your Harness project, select **Connectors** under **Project Setup**.
+2. Create a new connector or edit an existing GitHub connector.
+3. Configure the [GitHub connector settings](./ref-source-repo-provider/git-hub-connector-settings-reference.md). The GitHub App is part of the **Credentials** settings.
+4. For **Authentication**, select **GitHub App**.
+5. Enter the your GitHub [installation ID and app ID](#get-the-installation-id-and-app-id).
+6. Select your [private key file secret](#generate-a-private-key).
+7. Select **Continue**.
+8. If the connection test succeeds, select **Finish** to save the connector.
 
-Click **Save**.
+```mdx-code-block
+  </TabItem>
+  <TabItem value="api" label="API access authentication" default>
+```
 
-Now we can add the GitHub app to the Harness GitHub Connector.
+1. In your Harness project, select **Connectors** under **Project Setup**.
+2. Create a new connector or edit an existing GitHub connector.
+3. Configure the [GitHub connector settings](./ref-source-repo-provider/git-hub-connector-settings-reference.md). The GitHub App is part of the **Credentials** settings.
+4. Select **Enable API access**. This setting is only available for connection types and authentication methods where it is not already enabled by default.
+5. For **API Authentication**, select **GitHub App**.
+6. Enter the your GitHub [installation ID and app ID](#get-the-installation-id-and-app-id).
+7. Select your [private key file secret](#generate-a-private-key).
+8. Select **Continue**.
+9. If the connection test succeeds, select **Finish** to save the connector.
 
-### Step 5: Use GitHub App and Secret in Harness GitHub Connector
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+-->
 
-Create or open the GitHub Connector used in your Pipeline codebase. For steps on creating the Connector, see [GitHub Connector Settings Reference](../Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference.md).
+## Option: Set up a PR trigger
 
-You can open a Connector from **Resources** in an account, org, or project, or from the stage's settings.
+You can configure your pipelines to use [Git event triggers](/docs/platform/Triggers/triggering-pipelines) so that builds automatically run in response to events in your Git repos.
 
-For example, in a CI stage, click **Codebase**. The Connector for the codebase is displayed.
-
-![](../static/git-hub-app-support-57.png)
-
-Click the Connector, and then click the edit button. The GitHub Connector is displayed.
-
-In the Connector **Credentials**, enter a username and Personal Access Token (PAT), and then select **Enable API access**.
-
-In **API Authentication**, select **GitHub App**.
-
-Enter the following settings:
-
-* **GitHub Installation ID:** enter the Installation ID located in the URL of the installed GitHub App. You can use either plaintext or a [Harness encrypted text secret](../../Secrets/2-add-use-text-secrets.md).
-
-   ![](../static/git-hub-app-support-58.png)
-
-* **GitHub Application ID:** enter the GitHub **App ID** from the GitHub App **General** tab. You can use either plaintext or a [Harness encrypted text secret](../../Secrets/2-add-use-text-secrets.md).
-
-   ![](../static/git-hub-app-support-59.png)
-
-* **GitHub Private Key:** select the Harness secret you created for the PEM file key.
-
-When you're done, the settings will look something like this:
-
-![](../static/git-hub-app-support-60.png)
-
-Click **Save and Continue**. The connection and authentication is verified.
-
-![](../static/git-hub-app-support-61.png)
-
-Click **Finish**.
-
-Now you can run a Pipeline and verify that the GitHub app credentials are working.
-
-### Step 6: Test GitHub Connector
-
-Run a Pipeline that uses the GitHub Connector configured with the GitHub app credentials.
-
-For PR events, use a Git Webhook Trigger to execute the Pipeline.
-
-Make sure the Webhook definition in GitHub sends events for **Pull Request** in its **Events** settings.
-
-If you haven't set a Git Webhook Trigger up, see [Trigger Pipelines using Git Events](../../11_Triggers/triggering-pipelines.md).The Git Webhook Trigger should use the same repo as the GitHub App used in your Connector.
-
-You can see the build stages status in the GitHub PR view.
-
-![](../static/git-hub-app-support-62.png)
+If you want to set up a PR trigger, make sure the webhook definition uses the **Pull Request** [event](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference#event-and-actions).

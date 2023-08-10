@@ -58,10 +58,10 @@ https://app.harness.io/gateway/api/graphql?accountId=<your-harness-account-id>
 2. In Postman, set up a **POST** request of this form, ending in your Harness account ID: `https://app.harness.io/gateway/api/graphql?accountId=<your-harness-account-id>`  
 
     For [on-prem installations](../../../starthere-firstgen/harness-on-premise-versions.md), substitute your organization's subdomain and domain, in this form:  
-    `https://harness.<your-domain>/gateway/api/graphql?accountId=<your-harness-account-id>\`  
+    `https://harness.<your-domain>/api/graphql?accountId=<your-harness-account-id>\`  
       
     For example:  
-    `https://harness.bigcompany.com/gateway/api/graphql?accountId=<your-harness-account-id>`
+    `https://harness.bigcompany.com/api/graphql?accountId=<your-harness-account-id>`
     
 3. Select Postman's **Authorization** tab.
 4. Set the **Type** drop-down to **API Key**.

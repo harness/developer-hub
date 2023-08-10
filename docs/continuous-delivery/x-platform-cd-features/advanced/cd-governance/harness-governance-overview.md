@@ -149,7 +149,7 @@ The input payload contains user metadata for the user that initiated the event. 
 ```
 This enables enforcing policies with advanced and attribute-based access control use cases.
 
-For more information, go to [Harness Role-Based Access Control overview](/docs/platform/Role-Based-Access-Control/rbac-in-harness).
+For more information, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 ### Harness Policy Set
 
@@ -221,6 +221,10 @@ Go to [Use Harness Policy As Code for Connectors](https://developer.harness.io/d
 :::note
 Currently, this feature is behind the feature flag, `CDS_OPA_TEMPLATE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
+
+##### Demo Video
+
+<docvideo src="https://www.loom.com/share/e50a46ee85184c859aa2012d628e3ffe?sid=f5b08537-bee8-4107-b3e1-81178966e08f" />
 
 You can configure template policies during the creation of the template. This ensures that you follow your organization's established best practices without the need to manage each template directly. By setting guardrails at creation time, you can reduce the number of checks required at runtime to enforce standards.
 

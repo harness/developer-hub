@@ -152,6 +152,10 @@ When the plan is applied, the Harness Manager passes the encrypted data to the D
 
 The Delegate decrypts the encrypted plan and applies it using the `terraform apply` command.
 
+#### Limitations
+
+The Terraform plan size must not exceed the secret size limit for secrets in your default Secret Manager. For example, the AWS Secrets Manager has a limitation of 64KB. Other supported Secrets Managers support larger file sizes.
+
 ### Configuration File Repository
 
 **Configuration File Repository** is where the Terraform script and files you want to use are located.
@@ -212,6 +216,12 @@ If you do not select **Use Connector credentials**, Terraform will use the crede
 
 The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
 
+When configuring the SSH key for the connector, exporting an SSH key with a passphrase for the module source is not supported. Configure an SSH Key without the passphrase.
+
+Here are some syntax examples to reference the Terraform module using the SSH protocol:
+
+```bash
+source = "git@github.com:your-username/your-private-module.git"
 ## Workspace
 
 Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
@@ -444,7 +454,7 @@ terraform {
   backend "gcs" {
     bucket  = "tf-state-prod"
     prefix  = "terraform/state"
-}
+    }
 }
 ```
 

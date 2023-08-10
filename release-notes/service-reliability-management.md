@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-07-18T10:00:20
+date: 2023-08-04T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -18,7 +18,7 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 18, 2023, version 79922
+## Latest - August 10, 2023, version 80204
 
 ```mdx-code-block
 <Tabs>
@@ -53,6 +53,49 @@ This release does not include any fixed issues.
 
 <details>
 <summary>2023 releases</summary>
+
+#### August 04, 2023, version 80119
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any new features.
+
+#### July 27, 2023, version 80021
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any new features.
+
+
+#### July 21, 2023, version 79922
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any new features.
 
 
 #### July 06, 2023, version 79812
@@ -137,6 +180,7 @@ This release does not include any early access features.
   - A monitored service with the most recent update will be displayed at the top of the list.
 
   - If a monitored service has been updated with new analysis data, it is given higher priority and displayed before other services on the list.
+
 
 #### June 09, 2023, version 79517
 

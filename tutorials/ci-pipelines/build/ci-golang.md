@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 title: Go application
 description: Use a CI pipeline to build and test a Go application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]

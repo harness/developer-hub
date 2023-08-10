@@ -8,6 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::important
+The ability to use the credentials of a specific Harness Delegate is behind the feature flag `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 You can link your Google Cloud Secret Manager to Harness and use it to store any sensitive data you use in Harness, including secrets.
 
 Harness also supports [Google KMS as a secrets manager](./10-add-google-kms-secrets-manager.md).This topic explains how to add a GCP Secrets Manager in Harness.
@@ -48,7 +52,7 @@ This topic assumes you have a Harness Project set up. If not, see [Create Organ
 
 You can add a connector from any module in your project, in the Project setup, or in your organization or account resources.
 
-This topic explains the steps to add a Google Cloud Secrets Manager to the account [scope](../../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
+This topic explains the steps to add a Google Cloud Secrets Manager to the account [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 1. In your Harness Account, click **Account Settings**.
 2. Click **Account Resources**.

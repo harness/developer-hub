@@ -8,7 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-When a Harness CI pipeline runs, there is an *initialize* step that automatically runs before any other steps in the stage. This step prepares the environment to run your steps, such as preparing the build infrastructure and pulling required Harness CI images from Docker Hub. You can find Harness Docker images at [https://hub.docker.com/u/harness](https://hub.docker.com/u/harness).
+When a Harness CI pipeline runs, there is an *initialize* step that automatically runs before any other steps in the stage. This step prepares the environment to run your steps, such as preparing the build infrastructure and pulling required [Harness images from Docker Hub](https://hub.docker.com/u/harness).
+
+:::info
+
+Harness CI images are not the same as [pre-built public images](./public-docker-images.md). Harness CI images are essential images used by Harness to run CI pipelines. Pre-built public images are extended versions of official Docker images that you can optionally use to quickly set up a specific build environment.
+
+:::
 
 ## CI images list
 
@@ -59,7 +65,7 @@ You can use the Harness CI `execution-config` API to update the images used in y
 
 :::info Authentication
 
-You can use either `X-API-KEY: $API_KEY` or `Authorization: Bearer $token` for authentication. For more information, go to [Add and manage API keys](/docs/platform/User-Management/add-and-manage-api-keys).
+You can use either `X-API-KEY: $API_KEY` or `Authorization: Bearer $token` for authentication. For more information, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 :::
 

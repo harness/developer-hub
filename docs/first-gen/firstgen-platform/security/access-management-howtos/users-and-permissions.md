@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/User-Management/add-user-groups).Harness provides Role-Based Access Control (RBAC) via User and User Group Account and Application permissions.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/role-based-access-control/add-user-groups). Harness provides Role-Based Access Control (RBAC) via User and User Group Account and Application permissions.
 
 Users' login access is managed at the user level, and users' account and application permissions are managed via User Groups.
 

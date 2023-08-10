@@ -1,7 +1,7 @@
 ---
 title: Create a budget for your perspective
 description: Budgets allow you to set custom budgets and receive alerts when your costs exceed (or are forecasted to exceed) your budget.
-# sidebar_position: 2
+sidebar_position: 2
 helpdocs_topic_id: fs4glxwq79
 helpdocs_category_id: e7k0qds7tw
 helpdocs_is_private: false
