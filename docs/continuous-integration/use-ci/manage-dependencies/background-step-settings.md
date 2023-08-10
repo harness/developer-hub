@@ -8,6 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 Use Background steps to [manage dependent services](./dependency-mgmt-strategies.md) that need to run for the entire lifetime of a Build stage. For example, you can set up your pipeline to run multiple background services that implement a local, multi-service app.
 
 <figure>
@@ -78,17 +83,19 @@ The stage's build infrastructure determines whether these fields are required or
 
 Use these fields to define the commands that you need to run in the Background step.
 
-For **Shell**, select the shell script type for the arguments and commands defined in **Entry Point** and **Command**. Options include: **Bash**, **PowerShell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
+### Shell
 
-For **Entry Point** supply a list of arguments in `exec` format. **Entry Point** arguments override the image `ENTRYPOINT` and any commands in the **Command** field. Enter each argument separately.
+Select the shell type for the commands defined in **Entry Point** or **Command**. Options include: **Bash**, **PowerShell**, **Pwsh** (PowerShell Core), **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
+
+### Entry Point
+
+Supply a list of arguments in `exec` format. **Entry Point** arguments override the image `ENTRYPOINT` and any commands in the **Command** field. Enter each argument separately.
+
+If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, include both the image `ENTRYPOINT`, such as `docker-entrypoint.sh`, and your additional arguments in **Entry Point**.
 
 ```mdx-code-block
-import Tabs2 from '@theme/Tabs';
-import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs2>
-  <TabItem2 value="Visual" label="Visual">
+<Tabs>
+  <TabItem value="Visual" label="Visual">
 ```
 <figure>
 
@@ -98,29 +105,31 @@ import TabItem2 from '@theme/TabItem';
 </figure>
 
 ```mdx-code-block
-  </TabItem2>
-  <TabItem2 value="YAML" label="YAML" default>
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
 ```
 
 ```yaml
                     entrypoint:
-                      - dockerd-entrypoint.sh
+                      - docker-entrypoint.sh
                       - "--mtu=1450"
 ```
 
 ```mdx-code-block
-  </TabItem2>
-</Tabs2>
+  </TabItem>
+</Tabs>
 ```
 
-In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands (beyond the image's entry point) for this step. If the step runs in a container, the commands are executed inside the container.
+:::tip
 
-Select each tab below to view examples for each `shell` type.
+In a Kubernetes cluster build infrastructure, you can use **Entry Point** to override port mappings when [running multiple PostgreSQL instances in Background steps](./multiple-postgres).
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
+:::
+
+### Command
+
+Enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands (beyond the image `ENTRYPOINT`) for this step. If the step runs in a container, the commands are executed inside the container.
+
 ```mdx-code-block
 <Tabs>
   <TabItem value="bash" label="Bash" default>
@@ -232,7 +241,6 @@ This example uses a basic `print` command.
   </TabItem>
 </Tabs>
 ```
-
 
 :::tip
 
