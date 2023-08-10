@@ -448,7 +448,7 @@ For example, instead of `<+pipeline.variable.var1>_suffix`, use these syntaxes:
 
 :::note 
 
-This feature is currently behind the Feature Flag PIE_EXPRESSION_PLAYGROUND. Please contact your Harness CSM to enable it for your account.
+This feature is currently behind the feature flag `PIE_EXPRESSION_PLAYGROUND`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
