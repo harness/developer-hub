@@ -1,9 +1,8 @@
 ---
 sidebar_position: 1
 description: Install Harness Delegate on Kubernetes or Docker
+title: Install Harness Delegate on Kubernetes or Docker
 ---
-
-# Install Harness Delegate on Kubernetes or Docker
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
