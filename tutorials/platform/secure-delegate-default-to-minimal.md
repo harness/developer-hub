@@ -1,9 +1,9 @@
 ---
-title: Build and set up a delegate with an immutable image type
-description: This tutorial shows you how to build and set up a delegate with an immutable image type.
-sidebar_label: Move from the delegate minimal image
+title: Build and set up a delegate with a minimal image type
+description: This tutorial shows you how to build and set up a delegate with a minimal image type.
+sidebar_label: Configure a delegate with the minimal image type
 sidebar_position: 6
-keywords: [delegate,delegate image]
+keywords: [delegate,delegate minimal image]
 ---
 
 Harness recommends that you use the Harness Delegate minimal image (*`yy.mm.xxxxx.minimal`*) when you set up the Harness Platform for production use. This image has been thoroughly scanned and is free of any high or critical vulnerabilities. Users focused on security tend to prefer this option. 
