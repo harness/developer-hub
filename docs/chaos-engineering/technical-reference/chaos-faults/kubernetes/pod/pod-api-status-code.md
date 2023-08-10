@@ -31,7 +31,7 @@ Pod API status code:
       <tr>
         <td> TARGET_SERVICE_PORT </td>
         <td> Port of the target service.</td>
-        <td> Defaults to port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-status-code#target-service-port">target service port</a>.</td>
+        <td> Defaults to port 80. For more information, go to <a href="#target-service-port">target service port</a>.</td>
       </tr>
       <tr>
         <td> STATUS_CODE </td>
@@ -84,7 +84,7 @@ Pod API status code:
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd or crio or docker socket file. </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-modify-body#container-runtime-and-socket-path">socket path </a>.</td>
+        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-body#container-runtime-and-socket-path">socket path </a>.</td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>

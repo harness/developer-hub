@@ -31,7 +31,7 @@ Pod API modify header:
       <tr>
         <td> TARGET_SERVICE_PORT </td>
         <td> Port of the target service.</td>
-        <td> Defaults to port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-modify-header#target-service-port">target service port</a>.</td>
+        <td> Defaults to port 80. For more information, go to <a href="#target-service-port">target service port</a>.</td>
       </tr>
       <tr>
         <td> HEADERS_MAP </td>

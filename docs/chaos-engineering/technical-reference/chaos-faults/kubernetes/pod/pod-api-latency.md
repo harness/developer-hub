@@ -33,7 +33,7 @@ Pod API latency:
       <tr>
         <td> TARGET_SERVICE_PORT </td>
         <td> Port of the target service. </td>
-        <td>Default: port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-latency#target-service-port">target service port </a> </td>
+        <td>Default: port 80. For more information, go to <a href="#target-service-port">target service port </a> </td>
       </tr>
       <tr>
         <td> LATENCY </td>
