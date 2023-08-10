@@ -6,19 +6,21 @@ sidebar_position: 6
 keywords: [delegate,delegate image]
 ---
 
-Harness recommends that you use the Harness Delegate minimal image (*`yy.mm.xxxxx.minimal`*) when you set up Harness Platform for production use. This image has been thoroughly scanned and is free of any high or critical vulnerabilities. Users focused on security tend to prefer this option. However, the minimal delegate image lacks some default binaries, which require you to configure your delegates and install necessary binaries to ensure that Continuous Deployment (CD) steps function properly and remain vulnerability-free from third-party tools. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+Harness recommends that you use the Harness Delegate minimal image (*`yy.mm.xxxxx.minimal`*) when you set up the Harness Platform for production use. This image has been thoroughly scanned and is free of any high or critical vulnerabilities. Users focused on security tend to prefer this option. 
+
+However, the minimal delegate image lacks some binaries that are required for Continuous Deployment (CD) steps to function properly and remain vulnerability-free from third-party tools. Consequently, using the minimal delegate image requires you to configure your delegates and install necessary binaries. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 The Harness Delegate minimal image (*`yy.mm.xxxxx.minimal`*) is a lighter, more secure version of the default Harness Delegate image. Its main purpose is to provide an enhanced security profile for users, especially those who prioritize their systems' security. The Harness Delegate minimal images includes the following features.
 
 - **Security Scanned:** The image undergoes rigorous scanning processes to ensure that it is devoid of any high-risk or critical vulnerabilities. This makes it an optimal choice for organizations or users who have stringent security requirements.
 
-- **Limited** Binaries: Unlike the standard delegate, the minimal image does not come packed with all the default binaries. While this contributes to its lightweight nature and security, it also means that users have additional responsibilities. They must manually configure and add any necessary binaries to make their setup functional.
+- **Limited Binaries:** Unlike the standard delegate, the minimal image does not include all of the default binaries. While this contributes to its lightweight nature and security, it also means that users have additional responsibilities. They must manually configure and add any necessary binaries to make their setup functional.
 
 - **User Responsibilities:** Because the minimal delegate image is devoid of the default binaries, users are in charge of tailoring it to their needs. This includes installing specific binaries essential for their CD steps. This level of control also allows users to maintain an updated environment. By installing the latest versions of necessary binaries, they can ensure that the delegate remains free from potential vulnerabilities found in outdated third-party tools.
 
 - **Preferred by Security-Conscious Users:** Due to its clean security slate, many users who prioritize system security gravitate towards the minimal delegate image. By starting with a minimal setup and adding only what is necessary, they can maintain a tighter control over the software and tools present, thus minimizing potential security risks.
 
-This tutorial shows you how to build and set up a delegate with  an immutable image type (*`yy.mm.xxxxx.minimal`*) for CD.
+This tutorial shows you how to build and set up a minimal delegate image (*`yy.mm.xxxxx.minimal`*) for Harness CD.
 
 ## Prepare the delegate
 
@@ -33,7 +35,7 @@ This tutorial shows you how to build and set up a delegate with  an immutable im
    docker push harness/delegate:yy.mm.xxxxx.harness.custom.x86.v4
    ```
 
-4. Update your delegate image in the manifest with the tag from the image you pushed in previous step.
+4. In the delegate image manifest, update the delegate image with the tag from the image you pushed in the previous step.
 
 ### Example delegate Dockerfile
 
