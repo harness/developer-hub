@@ -444,6 +444,23 @@ For example, instead of `<+pipeline.variable.var1>_suffix`, use these syntaxes:
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
 - `<+<+pipeline.variables.var1> + "_suffix">` 
 
+## Debugging Expressions
+
+:::note 
+
+This feature is currently behind the Feature Flag PIE_EXPRESSION_PLAYGROUND. Please contact your Harness CSM to enable it for your account.
+
+:::
+
+An easy way to debug expressions in your pipeline is to use the "Compiled Mode" in your Variable Panel. This is enabled using a radio button at the top of the Variable Panel. When switched on, all of the expressions in the panel are compiled and the values displayed. The compilation happens by default against the Pipeline's latest execution. You can change this by selecting from a displayed list of previous executions. 
+
+![](./static/expression_evaluator_screen.png)
+
+Expressions that are incorrect or which cannot be evaluated using the Execution data are highlighted in the Variable values. You can then switch the panel back to normal mode and correct the expression. 
+
+In case you need to test out an expression that isn't a part of a variable (say, something in a script, you can create a temporary variable in the panel, assign the expression to it, and use the Compiled Mode to debug it. 
+
+
 
 ## Built-in CI codebase variables
 
