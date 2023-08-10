@@ -108,6 +108,8 @@ Currently, the Cache Intelligence Visual Editor fields are behind the feature fl
 3. Make sure **Enable Cache Intelligence** is selected.
 4. Add **Paths** to cache.
 
+   Note that on Windows platforms, you might need to specify the cache path from `C:`, such as `C:\harness\node_modules`.
+
    <!-- ![](./static/cache_int_paths.png) -->
 
    <docimage path={require('./static/cache_int_paths.png')} />
