@@ -181,7 +181,7 @@ Here's the process:
 
 #### Artifact configuration (optional)
 
-You can add an artifact to the service and use the artifact expression `image: <+artifacts.primary.image>` in your values YAML file to fetch the image tag information and pass it into the manifest.
+You can add an artifact to the service and use the artifact expression `image: <+artifacts.primary.image>` in your `values.yaml` file to fetch the image tag information and pass it into the manifest.
 
 <docimage path={require('./static/adf1528b6db53170e2bef7b8e96dd55e4e3fe256f9895ce9952b81ab337c9518.png')} width="60%" height="60%" title="Click to view full size image" />  
 
@@ -203,7 +203,7 @@ Here's the process:
 
 #### Variables (optional)
 
-You can configure variables in a service and reference them in the service's values YAML file or in pipeline execution steps.
+You can configure variables in a service and reference them in the service's `values.yaml` file or in pipeline execution steps.
 
 <docimage path={require('./static/19bb0370626e37fbbe4661ab091561a6cc3273d1cb6f02c5b584b7dd2a2f160f.png')} width="60%" height="60%" title="Click to view full size image" />  
 
@@ -220,7 +220,7 @@ A Harness environment defines **where** the service will be deployed in terms of
 
 Each infrastructure definition defines the specific infrastructure where the pipeline will deploy. For example, the cloud platform or Kubernetes cluster.
 
-The infrastructure definition for Kubernetes (including Helm and Kustomize) and Native Helm also contain a **Release Name**. The release name is used to track the deployed service and is used to sync instances so users know how many pods are deployed on a cluster.
+The infrastructure definition for Kubernetes (including Helm and Kustomize) and Native Helm also contain a **Release Name**. The release name is used to track the deployed service and to sync instances so users know how many pods are deployed on a cluster.
 
 An infrastructure definition leverages a specific Harness connector, such as Kubernetes Cluster, Physical Datacenter, etc., to connect to the target infrastructure for deployment at pipeline execution.
 
@@ -251,8 +251,8 @@ The Rollout Deployment step is made up of 2 tasks that Harness provides out of t
 
 1. Fetch files task.
    1. The fetch files task leverages the GitHub connector configured in the service to fetch the manifests.
-   2. Harness will also render and resolve any of the Harness variables defined in the values.yaml of the service and add them to the manifest/Helm chart using Go/Helm templating.
-   3. Harness fetches any secrets referenced in the values.yaml and resolves them in the manifest. Harness masks secret output in its logs.
+   2. Harness will also render and resolve any of the Harness variables defined in the `values.yaml` file of the service and add them to the manifest/Helm chart using Go/Helm templating.
+   3. Harness fetches any secrets referenced in the `values.yaml` file and resolves them in the manifest. Harness masks secret output in its logs.
 
    Here's an example deployment log:
 
