@@ -836,7 +836,7 @@ The fixed issues below are available with version 79503 and do not require a new
 
   ![picture 87](static/fa61423c00604c9a2d1dcf3cd2e8c040d71992791e34abf983eb5befe8640159.png)
 
-  For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
+  For information on setting up notifications for user groups, go to [Manage user groups](/docs/platform/role-based-access-control/add-user-groups).
 
 ##### Early Access
 
@@ -1408,7 +1408,7 @@ This release does not include any early access features.
 
 - The **Manage Services** tab has been removed from the services dashboard page. (CDS-57974)
 
-  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/) apply to a single Services page only.
+  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](/docs/platform/role-based-access-control/add-manage-roles) apply to a single Services page only.
 
 - The [Shell Script step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts) input and output variables are now optional. (CDS-57766, CDS-56448)
 
@@ -2938,7 +2938,7 @@ We had to redesign our release history to store all rendered manifests in secret
 
 ##### Fixed issues
 
-- [RBAC](https://developer.harness.io/docs/platform/Role-Based-Access-Control/rbac-in-harness) for environment was not enforced. (CDS-49732, RN-38326)
+- [RBAC](/docs/platform/role-based-access-control/rbac-in-harness) for environment was not enforced. (CDS-49732, RN-38326)
 
   In stage templates in pipelines, access checks for the environment were skipped. Harness now performs an RBAC check.
 

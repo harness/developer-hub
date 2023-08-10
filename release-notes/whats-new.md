@@ -19,7 +19,6 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-
 ## Latest - August 10, 2023
 
 ### Continuous Delivery, version 80208
@@ -31,6 +30,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  To determine the optimal limit, we considered scenarios with 5 nested stepGroups with a looping matrix and step group running in parallel at each possible node. As a result, we have set the limit to 25, ensuring that it should not affect any practical pipelines we have encountered so far. (Currently the most complex pipeline in our production clusters has a maximum nesting of 16 levels.)
 
  This change is vital to prevent potential issues that could arise due to a large number of recursively spawned children, leading to CPU spikes and POD restarts within our system. By implementing this restriction, we aim to maintain system performance and stability for all our customers.
+
+### Harness Platform, version 80208
+
+- Accounts with Free and Community licenses are limited to 100 users. (PL-40260)
+
+- The heartbeat interval used by perpetual tasks to test connectors has been increased from 10 minutes to 30 minutes. This change aims to reduce the number of errors logged due to failed heartbeats. The new heartbeat interval is used with any connectors that you create after this deployment. Tasks associated with existing connectors require migration to the new interval. Harness will migrate such perpetual tasks in all accounts in a phased manner. This activity does not require any action from you or other users of the platform. (PL-39399)
 
 ## August 7, 2023
 
@@ -111,7 +116,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * **Perspective Preferences** enhancement (CCM-11145)
 
-  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](../docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/perspective-preferences.md).
+  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/perspective-preferences).
 
  
 :::important note
@@ -620,7 +625,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   <docimage path={require('./static/fa61423c00604c9a2d1dcf3cd2e8c040d71992791e34abf983eb5befe8640159.png')} width="60%" height="60%" title="Click to view full size image" />
 
-  For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
+  For information on setting up notifications for user groups, go to [Manage user groups](/docs/platform/role-based-access-control/add-user-groups).
 
 ##### Harness Platform, version 79411
 
@@ -1039,7 +1044,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 - The **Manage Services** tab has been removed from the services dashboard page. (CDS-57974)
   
-  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/) apply to a single Services page only.
+  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](/docs/platform/role-based-access-control/add-manage-roles) apply to a single Services page only.
 - The [Shell Script step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts) input and output variables are now optional. (CDS-57766, CDS-56448)
   
   Input and output variables were mandatory, but now you can choose whether to fill in values. This allows you more flexibility when modeling your pipeline.
@@ -2202,15 +2207,13 @@ For information about the current plans you can subscribe to, go to [Pricing & P
 
 - Harness Manager UI was updated to ensure that Delegate version and associated information clarifies the difference between older immutable and legacy Delegates. (DEL-4826)
 
-- A migration will run to remove the following Role Bindings directly assigned to users for accounts having ACCOUNT_BASIC_ROLE turned ON (PL-28284):​
+- A migration will run to remove the following Role Bindings directly assigned to users for accounts having ACCOUNT_BASIC_ROLE turned ON (PL-28284):
 
-  - At Account Scope, Account Basic/Account Viewer - All Account Resources​.​
-  - At Organization scope, Organization Viewer - All Organization Resources.​​
-  - At Project Scope, Project Viewer - All Project Resources.​​
+  - At Account Scope, Account Basic/Account Viewer - All Account Resources.
+  - At Organization scope, Organization Viewer - All Organization Resources.
+  - At Project Scope, Project Viewer - All Project Resources.
 
-- Harness now has a default User Group at each scope. ​These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default.​ Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
-
-  See [Harness Default User Groups](/docs/platform/User-Management/harness-default-user-groups).
+- Harness now has a [built-in user group](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups) at each scope. These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the user groups by default. Users can assign roles to the built-in user group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
 
 #### September 14, 2022
 
@@ -2264,7 +2267,7 @@ To get the PHP SDK, go to our [PHP Git Repository](https://github.com/harness/ff
 
 You can now inherit User Groups created at a higher scope by using Assign Roles.
 
-See [Assign Roles](https://developer.harness.io/docs/platform/User-Management/add-user-groups#step-assign-roles).
+See [Create groups by inheritance](/docs/platform/role-based-access-control/add-user-groups#create-groups-by-inheritance).
 
 #### August 31, 2022
 
@@ -2294,9 +2297,9 @@ The Feature Flag Relay Proxy has been updated to version 0.9.7.
 
 ##### Harness Platform
 
-- Now you can add up to 50,000 users in the Harness Non-Community Edition. (PL-27300)
+- Now you can add up to 50,000 users in paid plans. The limit remains at 1,500 for free plans and Harness Community Edition accounts. (PL-27300)
 
-  See [Add and Manage Users](/docs/platform/User-Management/add-users).
+  See [Manage users](/docs/platform/role-based-access-control/add-users).
 
 - You can now use an enhanced Git Experience. (PL-26339)
 

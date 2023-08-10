@@ -91,7 +91,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "Provision users and groups in Harness using Azure AD (SCIM).",
-          link: "/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim",
+          link: "/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim",
         },
         {
           title: "Git Experience",
@@ -117,7 +117,7 @@ export const featuredTutorials: CardItem[] = [
         title: "Permissions reference",
         module: MODULES.platform,
         description: "",
-        link: "/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference",
+        link: "/docs/platform/role-based-access-control/permissions-reference",
       },
       {
         title: "Reference secrets in secrets managers",

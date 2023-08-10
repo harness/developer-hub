@@ -351,9 +351,9 @@ In **Account Settings**, click **Access Control**, and then click the **User Gro
 
 ### Harness Local Login
 
-To prevent lockouts, a User in the Harness Administrators Group can use the [**Local Login**](https://app.harness.io/auth/#/local-login) URL (https://app.harness.io/auth/#/local-login) to log in and update the Ldap settings.
+To prevent lockouts, a User in the Harness Administrators Group can use the Local Login URL `https://app.harness.io/auth/#/local-login` to log in and update the Ldap settings.
 
-:::note For the Harness production cluster prod-3, the local login URL is https://app3.harness.io/auth/#/local-login :::
+For the Harness production cluster prod-3, the local login URL is `https://app3.harness.io/auth/#/local-login`.
 
 ![](./static/single-sign-on-saml-118.png)
 

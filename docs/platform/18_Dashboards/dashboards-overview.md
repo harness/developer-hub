@@ -16,7 +16,7 @@ Harness provides the following out-of-the-box dashboards across its products:
 
 ## Important
 
-- You can create custom dashboards at the [account scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope) only.
+- You can create custom dashboards at the [account scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) only.
 - Make sure you have the `Manage` permissions for **Dashboards** to create, edit, and delete custom dashboards.
 - Make sure you have the `View` permissions for **Dashboards** to view the custom dashboards.
 

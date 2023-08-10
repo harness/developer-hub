@@ -358,6 +358,21 @@ In **Manifests**, add the overlay kustomization.yaml and any patch files.
 
 See [Propagate and Override CD Services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services).
 
+## Define the infrastructure
+
+There is nothing unique about defining the target cluster infrastructure definition for a Kustomize deployment. It is the same process as a typical Harness Kubernetes deployment.
+
+For more information, go to [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure).
+
+### Pre-existing and dynamically provisioned infrastructure
+
+There are two methods of specifying the deployment target infrastructure:
+
+- **Pre-existing**: the target infrastructure already exists and you simply need to provide the required settings.
+- **Dynamically provisioned**: the target infrastructure will be dynamically provisioned on-the-fly as part of the deployment process.
+
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+
 ## Use plugins in deployments
 
 Kustomize offers a plugin framework to generate and/or transform a kubernetes resource as part of a kustomization.
