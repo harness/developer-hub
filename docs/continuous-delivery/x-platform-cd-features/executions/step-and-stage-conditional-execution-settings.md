@@ -1,10 +1,10 @@
 ---
 title: Stage and step conditional execution settings
-description: This topic describes pipeline stage and step conditional executional settings.
+description: This topic describes pipeline stage and step conditional execution settings.
 sidebar_position: 6
 ---
 
-This topic describes pipeline stage and step **Conditional Executional** settings.
+This topic describes pipeline stage and step **Conditional Execution** settings.
 
 ## Failure strategy takes precedence over conditional execution
 
@@ -16,13 +16,13 @@ Using these settings together in multiple stages requires some consideration.
 
 Let's say you have a pipeline with two stages: **stage 1** followed by **stage 2**.
 
-Stage 2's **Conditional Execution** is set to **Execute this step only if prior stage or step failed**. Stage 1's **Failure Strategy** is set to **Rollback Stage on All Errors**.
+Stage 2's **Conditional Execution** is set to **Execute this step only if the prior stage or step failed**. Stage 1's **Failure Strategy** is set to **Rollback Stage on All Errors**.
 
-If stage 1 has any error it is rolled back and so it is not considered a failure. Hence, the stage 2's **Conditional Execution** is not executed.
+If stage 1 has any error it is rolled back and so it is not considered a failure. Hence, stage 2's **Conditional Execution** is not executed.
 
 In order to get stage 2 to execute, you can set the stage 1 **Failure Strategy** to **Ignore Failure**. Rollback will not occur and stage 2's **Conditional Execution** is executed.
 
-To ensure a step executes even if the rollback fails, include it in the Rollback stage, configure **Conditional Execution** to Always Execute for your step, and then set the previous step's **Failure Strategy** to **Mark as failure** for all errors. Because we wouldn't usually want the rollback to continue when there are errors, you must make these two changes to ensure the execution.
+To ensure a step executes even if the rollback fails, include it in the Rollback stage, configure **Conditional Execution** to **Always execute this stage** for your step, and then set the previous step's **Failure Strategy** to **Mark as failure** for all errors. Because we wouldn't usually want the rollback to continue when there are errors, you must make these two changes to ensure the execution.
 
 ## Stage and step priority
 
@@ -75,7 +75,7 @@ Select this option if you always want this step to run only if the prior stage o
 
 ### And execute this step only if the following JEXL condition evaluates to true
 
-Only execute this step is a [JEXL expression](http://commons.apache.org/proper/commons-jexl/reference/examples.html) is met (evaluates to **true**).
+Only execute this step if a [JEXL expression](http://commons.apache.org/proper/commons-jexl/reference/examples.html) is met (evaluates to **true**).
 
 In the JEXL expression, you could use any of the Pipeline variables, including the output of any previous steps.
 
