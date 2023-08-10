@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-08-10T10:00
+date: 2023-08-17T10:00
 sidebar_position: 2
 ---
 
@@ -12,7 +12,16 @@ Review the notes below to learn about the early access (aka beta) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 10, 2023
+## Latest - August 17, 2023
+
+<!-- I don't know which heading to use because this was under CI, but it's a delegate-dependent change, and the feature flag is CDS. Also, it's a cross-platform connector, and both CI and CD have Git Clone steps. -->
+**GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
+
+This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION` and it requires Harness Delegate version 803xx or later. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate).
+
+With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings), and you can use GitHub connectors with GitHub App authentication in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
+
+## August 10, 2023
 
 ### Continuous Integration, version 5301
 
@@ -85,9 +94,6 @@ This feature flag is now disabled by default and must be re-enabled if your CI-t
 You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities. (STO-5896)
 
 This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more information, go to [Set up target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines).
-
-
-
 
 #### July 5, 2023
 
