@@ -2,7 +2,7 @@ The following setting is required for Security steps where the `policy_type` is 
 
 * `ingestion_file`  The results data file to use when running an Ingestion scan. You should specify the full path to the data file in your workspace, such as `/shared/customer_artifacts/my_scan_results.json`. 
 
-   In addition to ingesting scan data in the external scanner's native format, STO steps can also ingest  data in [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) and [Harness Custom JSON](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners) format. 
+   In addition to ingesting scan data in the external scanner's native format, STO steps can also ingest data in [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) and [Harness Custom JSON](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners) format. 
 
    The following steps outline the general workflow for ingesting scan data into your pipeline. For a complete workflow description and example, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
 
