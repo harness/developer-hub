@@ -132,3 +132,4 @@ When you declare an incident using FireHydrant and select the corresponding runb
 2. Simultaneously, Harness SRM sends a comprehensive health report to the same Slack channel configured in the runbook.
 
 This helps you receive incident alerts along with service health updates in your designated Slack channel.
+
