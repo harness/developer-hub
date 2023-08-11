@@ -12,11 +12,11 @@ Configuring FireHydrant as a change source involves the following steps:
 
 1. [Add FireHydrant as a custom change source in the Harness SRM monitored service and generate a webhook.](#add-fireHydrant-as-change-source)
    
-2. [Integrate your Slack workspace with FireHydrant.](#add-slack-channels-to-the-firehydrant-runbook)
+[Integrate your Slack workspace with FireHydrant.](#add-slack-channels-to-the-firehydrant-runbook)
    
-3. [Add Webhook Step to the Firehydrant runbook.](#add-webhook-step-to-the-firehydrant-runbook)
+[Add Webhook Step to the FireHydrant runbook.](#add-webhook-step-to-the-firehydrant-runbook)
    
-4. [Add Slack channels to the Firehydrant runbook.](#add-slack-channels-to-the-firehydrant-runbook)
+[Add Slack channels to the FireHydrant runbook.](#add-slack-channels-to-the-firehydrant-runbook)
    
 5. [Declare an incident.](#declare-an-incident)
 
@@ -61,7 +61,7 @@ To copy the webhook URL from a monitored service:
 To enable FireHydrant to send incident reports to your designated Slack channels, you'll need to integrate your Slack workspace with FireHydrant. To learn how to integrate a Slack workspace with FireHydrant, go to [Integrating with Slack]( https://firehydrant.com/docs/integration-guides/integrating-with-slack/).
 
 
-## Add Webhook Step to the Firehydrant runbook
+## Add Webhook Step to the FireHydrant runbook
 
 You need to configure FireHydrant runbook so that it can send the incident reports to monitored service in Harness SRM.
 
@@ -108,7 +108,7 @@ To configure the runbook:
 To learn more about adding a webhook step to a FireHydrant runbook, go to [Sending a webhook from a Runbook]( https://firehydrant.com/docs/configuring-firehydrant/sending-a-webhook-from-a-runbook/).
 
 
-## Add Slack channels to the Firehydrant runbook
+## Add Slack channels to the FireHydrant runbook
 
 You need to include a **Notify Channel** step in FireHydrant runbook to enable FireHydrant to send incident notifications through Slack.
 
