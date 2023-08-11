@@ -84,7 +84,7 @@ import StoInfraSupport from '/docs/security-testing-orchestration/onboard-sto/sh
 
 Harness STO supports the following features for generating notifications and stopping pipelines in response to detected vulnerabilities:
 
-- Each Security step has a [Fail on Severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) setting causes a pipeline build to fail if a Security Scan step detects one or more issues with the specified severity (Critical, High, Medium, etc.). You can also create [exemptions ("Ignore rules")](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for specific issues to override this behavior.
+- Each Security step has a [Fail on Severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) setting that causes a pipeline build to fail if a Security Scan step detects one or more issues with the specified severity (Critical, High, Medium, etc.). You can also create [exemptions ("Ignore rules")](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for specific issues to override this behavior.
 
 - You can also [governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa) and security scan results to stop pipelines automatically.
 
