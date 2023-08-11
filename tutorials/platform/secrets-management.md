@@ -39,7 +39,7 @@ Your browser sends information securely to Harness Manager using HTTPS. Harness 
 
 ### Integrate third-party secret managers 
 
-:::info
+:::info note
 This feature is behind a Feature Flag and is available only to our paid customers. 
 :::
 
@@ -54,7 +54,7 @@ Verify that you have the following:
 - The **AWS - Access Key ID** from AWS
 - The **AWS - Secret Key ID** from AWS
 - The **AWS ARN** 
-- A fork of the **[harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+- A fork of the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
 - **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
     - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
@@ -71,30 +71,36 @@ Verify that you have the following:
 
 ### Harness Delegate
 
-The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. Learn more about the delegate in the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers, such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations, including deployment and integration. To learn more about delegates, go to the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
 Make sure the delegate is installed and it is connected. For more details, go to the Google Cloud Functions [tutorial](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate).
 
-### AWS - Access key ID
+### Create an AWS access key ID
 
--  Select **New Secret**, and then select **Text**.
--  Enter the secret name `aws_kms_access_key`.
--  For the secret value, paste the access token for your AWS user account. The Harness Delegate uses this credential to authenticate Harness with AWS at deployment runtime.
--  Select **Save**.
+To create an AWS access key, do the following:
 
-### AWS - Secret key ID
+1. Select **New Secret**, and then select **Text**.
+2. Enter the secret name `aws_kms_access_key`.
+3. For the secret value, paste the access token for your AWS user account. The Harness Delegate uses this credential to authenticate Harness with AWS at deployment runtime.
+4. Select **Save**.
 
--  Select **New Secret**, and then select **Text**.
--  Enter the secret name `aws_kms_secret_key`.
--  For the secret value, paste the access token for your AWS user account. The Harness Delegate uses this credential to authenticate Harness with AWS at deployment runtime.
--  Select **Save**.
+### Create an AWS secret key ID
 
-### AWS - ARN
+To create an AWS secret key ID, do the following:
 
--  Select **New Secret**, and then select **Text**.
--  Enter the secret name `aws_kms_arn`.
--  For the secret value, paste the ARN for your AWS user account. The Harness Delegate uses this credential to authenticate Harness with AWS at deployment runtime.
--  Select **Save**.
+1. Select **New Secret**, and then select **Text**.
+2. Enter the secret name `aws_kms_secret_key`.
+3. For the secret value, paste the access token for your AWS user account. The Harness Delegate uses this credential to authenticate Harness with AWS at deployment runtime.
+4. Select **Save**.
+
+### Create an AWS ARN
+
+To create an AWS ARN, do the following:
+
+1. Select **New Secret**, and then select **Text**.
+2. Enter the secret name `aws_kms_arn`.
+3. For the secret value, paste the ARN for your AWS user account. The Harness Delegate uses this credential to authenticate Harness with AWS at deployment runtime.
+4. Select **Save**.
 
 For more information, go to [find the Access key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/find-cmk-id-arn.html) in the AWS documentation.
 
@@ -102,15 +108,17 @@ For more information, go to [find the Access key ID and ARN](https://docs.aws.am
 
 Connectors in Harness enable integration with third-party tools, providing authentication for operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](https://developer.harness.io/docs/category/connectors).
 
+To create an AWS connector, do the following:
+
 1. Create the **AWS Connector**.
 
-- Copy the contents of [aws-kms-connector.yaml] file (https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/aws-kms-connector.yaml).
-- In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
-- Select **Create via YAML Builder** and paste the copied YAML.
-- Select **Save Changes** and verify that the new connector named **aws-kms-connector** is successfully created.
-- Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
+2. Copy the contents of the [aws-kms-connector.yaml file](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/aws-kms-connector.yaml).
+3. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+4. Select **Create via YAML Builder** and paste the copied YAML.
+5. Select **Save Changes** and verify that the new connector named **aws-kms-connector** is successfully created.
+6. Select **Connection Test** under **Connectivity Status** to verify the connection is successful.
 
-:::info
+:::info note
 If you are NOT using the default organization and project, make sure to change the `orgIdentifier` and `projectIdentifier` in the `aws-kms-connector.yaml` file.
 :::
 
@@ -125,10 +133,10 @@ You can now use this secret manager in your pipeline.
 
 Verify that you have the following:
 
-1. Obtain the **[Google Cloud Symmetric Key](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager#obtain-google-cloud-symmetric-key)** to get values like **Project ID, Region, Key Ring, Key Name** for the Details page, from Google Cloud Console.
-2.  **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+- The [Google Cloud Symmetric Key](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager#obtain-google-cloud-symmetric-key) to get values like **Project ID, Region, Key Ring, Key Name** for the Details page, from Google Cloud Console.
+- A fork of [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
-3. **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
+- **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
     - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
     - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
     - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
@@ -147,16 +155,18 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
 
-### GCP - Secret key 
+### Create a GCP secret key 
 
--  Select **New Secret**, and then select **File**.
--  Enter the secret name `gcp_kms_secret_key`.
--  For the Select File,
-    - Open your GCP service account's Actions ⋮ menu, then select Manage keys. 
-    - Select ADD KEY > Create new key.
-    - In the resulting Create private key dialog, select JSON, create the key, and download it to your computer.
-    - Upload that json file. 
--  Select **Save**.
+To create a GCP secret key, do the following:
+
+1. Select **New Secret**, and then select **File**.
+2. Enter the secret name `gcp_kms_secret_key`.
+3. For the Select File,
+    1. Open your GCP service account's Actions ⋮ menu, then select **Manage keys**. 
+    2. Select ADD KEY > Create new key.
+    3. In the resulting Create private key dialog, select JSON, create the key, and download it to your computer.
+    4. Upload the JSON file. 
+4. Select **Save**.
 
 ### Connectors
 
@@ -164,20 +174,20 @@ Connectors in Harness enable integration with third-party tools, providing authe
 
 1. Create the **GCP Connector**.
 
-- Copy the contents of [gcp-kms-connector.yaml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/gcp-kms-connector.yaml).
-- In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
-- Select **Create via YAML Builder** and paste the copied YAML.
-- Replace `GCP PROJECT ID` with your GCP project name.
-- Replace `GCP Region` with your GCP Region.
-- Replace `GCP KeyRing` with your GCP KeyRing.
-- Replace `GCP KeyName` with your GCP KeyName.
+2. Copy the contents of [gcp-kms-connector.yaml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/gcp-kms-connector.yaml).
+3. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+4. Select **Create via YAML Builder** and paste the copied YAML.
+5. Replace `GCP PROJECT ID` with your GCP project name.
+6. Replace `GCP Region` with your GCP Region.
+7. Replace `GCP KeyRing` with your GCP KeyRing.
+8. Replace `GCP KeyName` with your GCP KeyName.
 
-You can refer [Obtain Google Cloud Symmertic Key](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager#obtain-google-cloud-symmetric-key) to get more information on the above parameters.
+   You can refer [Obtain Google Cloud Symmertic Key](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager#obtain-google-cloud-symmetric-key) to get more information on the above parameters.
 
-- Select **Save Changes**, and verify that the new connector named **gcp-kms-connector** is successfully created.
-- Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
+9. Select **Save Changes**, and verify that the new connector named **gcp-kms-connector** is successfully created.
+10. Select **Connection Test** under **Connectivity Status** to verify the connection is successful.
 
-:::info
+:::info note
 If you are NOT using the default organization and project, make sure to change the `orgIdentifier` and `projectIdentifier` in the `gcp-kms-connector.yaml` file.
 :::
 
@@ -191,11 +201,11 @@ You can now use this secret manager in your pipeline.
 
 Verify that you have the following:
 
-1. Obtain the **Public Vault Url** from Hashicorp Vault.
-2. Obtain the **Admin Token** from the Hashicorp Public vault URL.
-3.  **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+- The **Public Vault Url** from Hashicorp Vault.
+- The **Admin Token** from the Hashicorp Public vault URL.
+- A fork of the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
-4. **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
+- **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
     - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
     - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
     - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
@@ -214,12 +224,14 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
 
-### Hashicorp - Admin Token
+### Create a Hashicorp admin token
 
--  Select **New Secret**, and then select **Text**.
--  Enter the secret name `hashicorp_admin`.
--  For the secret value, paste the admin token from the Hashicorp Public vault URL. The Harness delegate uses this credential to authenticate Harness with Hashicorp at deployment runtime.
--  Select **Save**.
+To create a Hashicorp admin token, do the following:
+
+1. Select **New Secret**, and then select **Text**.
+2. Enter the secret name `hashicorp_admin`.
+3. For the secret value, paste the admin token from the Hashicorp Public vault URL. The Harness delegate uses this credential to authenticate Harness with Hashicorp at deployment runtime.
+4. Select **Save**.
 
 ### Connectors
 
@@ -227,14 +239,14 @@ Connectors in Harness enable integration with third-party tools, providing authe
 
 1. Create the **Hashicorp Connector**.
 
-- Copy the contents of [hashicorp_vault_connector.yaml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/hashicorp_vault_connector.yaml).
-- In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
-- Select **Create via YAML Builder** and paste the copied YAML.
-- Replace `Public Vault URL` with your public vault URL from Hashicorp Vault.
-- Select **Save Changes** and verify that the new connector named **hashicorp_vault** is successfully created.
-- Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
+2. Copy the contents of [hashicorp_vault_connector.yaml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/hashicorp_vault_connector.yaml).
+3. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+4. Select **Create via YAML Builder** and paste the copied YAML.
+5. Replace the `Public Vault URL` with your public vault URL from Hashicorp Vault.
+6. Select **Save Changes** and verify that the new connector named **hashicorp_vault** is successfully created.
+7. Select **Connection Test** under **Connectivity Status** to verify the connection is successful.
 
-:::info
+:::info note
 If you are NOT using the default organization and project, make sure to change the `orgIdentifier` and `projectIdentifier` in the `hashicorp_vault_connector.yaml` file.
 :::
 
@@ -250,11 +262,11 @@ You can now use this secret manager in your pipeline.
 
 Verify that you have the following:
 
-1. The **AWS - Access Key ID** from AWS
-2. The **AWS - Secret Key ID** from AWS
-3.  **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+- The **AWS - Access Key ID** from AWS
+- The **AWS - Secret Key ID** from AWS
+- A fork of the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
-4. **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
+- **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
     - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
     - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
     - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
@@ -273,19 +285,23 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
 
-### AWS - Access key ID
+### Create an AWS access key ID
 
--  Select **New Secret**, and then select **Text**.
--  Enter the secret name `aws_secret_access_key`.
--  For the secret value, paste the access token for your AWS user account. The Harness Delegate uses this credential to authenticate Harness with AWS at deployment runtime.
--  Select **Save**.
+To create an AWS access key ID, do the following:
 
-### AWS - Secret key ID
+1. Select **New Secret**, and then select **Text**.
+2. Enter the secret name `aws_secret_access_key`.
+3. For the secret value, paste the access token for your AWS user account. The Harness Delegate uses this credential to authenticate Harness with AWS at deployment runtime.
+4. Select **Save**.
 
--  Select **New Secret**, and then select **Text**.
--  Enter the secret name `aws_secret_secret_key`.
--  For the secret value, paste the access token for your AWS user account. The Harness Delegate uses this credential to authenticate Harness with AWS at deployment runtime.
--  Select **Save**.
+### Create an AWS secret key ID
+
+To create an AWS secret key ID, do the following:
+
+1. Select **New Secret**, and then select **Text**.
+2. Enter the secret name `aws_secret_secret_key`.
+3. For the secret value, paste the access token for your AWS user account. The Harness Delegate uses this credential to authenticate Harness with AWS at deployment runtime.
+4. Select **Save**.
 
 ### Connectors
 
@@ -293,13 +309,13 @@ Connectors in Harness enable integration with third-party tools, providing authe
 
 1. Create the **AWS Connector**.
 
-- Copy the contents of [aws-secret-manager-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/aws-secret-manager-connector.yaml).
-- In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
-- Select **Create via YAML Builder** and paste the copied YAML.
-- Select **Save Changes** and verify that the new connector named **aws-secret-manager** is successfully created.
-- Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
+2. Copy the contents of [aws-secret-manager-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/aws-secret-manager-connector.yaml).
+3. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+4. Select **Create via YAML Builder** and paste the copied YAML.
+5. Select **Save Changes** and verify that the new connector named **aws-secret-manager** is successfully created.
+6. Select **Connection Test** under **Connectivity Status** to verify the connection is successful.
 
-:::info
+:::info note
 If you are NOT using the default organization and project, make sure to change the `orgIdentifier` and `projectIdentifier` in the `aws-secret-manager-connector.yaml` file.
 :::
 
@@ -313,9 +329,9 @@ You can now use this secret manager in your pipeline.
 
 Verify that you have the following:
 
-1.  **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+- A fork of the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
-2. **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
+- **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
     - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
     - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
     - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
@@ -334,16 +350,18 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
 
-### GCP - Secret key 
+### Create a GCP secret key 
 
--  Select **New Secret**, and then select **File**.
--  Enter the secret name `gcp_secret_secret_key`.
--  For the Select File,
-    - Open your GCP service account's Actions ⋮ menu, then select Manage keys. 
-    - Select ADD KEY > Create new key.
-    - In the resulting Create private key dialog, select JSON, create the key, and download it to your computer.
-    - Upload that json file. 
--  Select **Save**.
+To create a GCP secret key, do the following:
+
+1. Select **New Secret**, and then select **File**.
+2. Enter the secret name `gcp_secret_secret_key`.
+3. For the Select File,
+    1. Open your GCP service account's Actions ⋮ menu, and then select Manage keys. 
+    2. Select ADD KEY > Create new key.
+    3. In the resulting Create private key dialog, select JSON, create the key, and download it to your computer.
+    4. Upload the JSON file. 
+4. Select **Save**.
 
 ### Connectors
 
@@ -351,13 +369,13 @@ Connectors in Harness enable integration with third-party tools, providing authe
 
 1. Create the **GCP Connector**.
 
-- Copy the contents of [gcp-secret-manager-connector.yaml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/gcp-secret-manager-connector.yaml).
-- In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
-- Select **Create via YAML Builder** and paste the copied YAML.
-- Select **Save Changes** and verify that the new connector named **gcp-kms-connector** is successfully created.
-- Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
+2. Copy the contents of [gcp-secret-manager-connector.yaml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/gcp-secret-manager-connector.yaml).
+3. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+4. Select **Create via YAML Builder** and paste the copied YAML.
+5. Select **Save Changes** and verify that the new connector named **gcp-kms-connector** is successfully created.
+6. Select **Connection Test** under **Connectivity Status** to verify the connection is successful.
 
-:::info
+:::info note
 If you are NOT using the default organization and project, make sure to change the `orgIdentifier` and `projectIdentifier` in the `gcp-secret-manager-connector.yaml` file.
 :::
 
@@ -374,31 +392,37 @@ Harness sanitizes deployment logs and any script outputs to mask text secret val
 
 Let's create a pipeline that will print logs on the console to see how Harness sanitization logs.
 
-### Create a new secret.
+### Create a new secret
 
--  Select **New Secret**, and then select **Text**.
--  Enter the secret name `docsecret`.
--  For the secret value, add the string `docsecret`.
--  Select **Save**.
+To create a new secret, do the following: 
 
-### Create a Pipeline.
+1. Select **New Secret**, and then select **Text**.
+2. Enter the secret name `docsecret`.
+3. For the secret value, add the string `docsecret`.
+4. Select **Save**.
 
-- In **Default Project**, select **Pipelines**.
-    - Select **New Pipeline**.
-    - Enter the name `print secret`.
-    - Select **Inline** to store the pipeline in Harness.
-    - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
-    - Select **Edit YAML** to enable edit mode. Copy the contents of [secret-sanitization.yaml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/secret-sanitization.yaml) and paste it.
-    - Select **Save** to save the pipeline.
+### Create a pipeline
+
+To create a pipeline, do the following:
+
+1. In **Default Project**, select **Pipelines**.
+2. Select **New Pipeline**.
+3. Enter the name `print secret`.
+4. Select **Inline** to store the pipeline in Harness.
+5. Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+6. Select **Edit YAML** to enable edit mode. Copy the contents of the[secret-sanitization.yaml file](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/secret-sanitization.yaml) and paste it.
+7. Select **Save** to save the pipeline.
 
 ### Run the pipeline
 
 Finally, it's time to execute the pipeline.
 
-1. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
-2. Observe the execution logs as Harness run the pipeline.
-3. In console logs, you can see that secret is masked with ***** as per below screenshot.
+To run the pipeline, do the following:
 
-<docimage path={require('../static/secret/secret-log.png')} width="60%" height="60%" title="Click to view full size image" />
+1. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
+2. Observe the execution logs as Harness runs the pipeline.
+3. In console logs, you can see that the secret is masked with ***** as per below screenshot.
+
+<docimage path={require('./static/secret/secret-log.png')} width="60%" height="60%" title="Click to view full size image" />
 
 When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (*) so that the secret value is never displayed.​ For more information, go to [secrets and log-sanitization](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/secrets-and-log-sanitization).
