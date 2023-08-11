@@ -222,62 +222,20 @@ This feature is behind the feature flag `CDS_CUSTOM_STAGE_EXECUTION_DATA_SYNC`. 
 
 You can use the following components to monitor the performance of your deployment pipelines: 
 
-* Custom Stage Requirement
+- Manifest data (only for HelmChart Manifest type for Helm/K8s deployments)
 
-  * Stage Name
+  - Helm version 
 
-  * Stage Type
+  - Chart Version
 
-  * Status
+  - Manifest identifier
 
-  * Duration
+- Custom Stage Details
 
-  * start time
+  - Stage type
 
-  * end time
+  - Duration
 
-  * Failure Message
+  - Status
 
-  * tags
-
-* Approval Step  — Harness, Jira, ServiceNow, Custom
-
-  * Step Name
-
-  * Step Type
-
-  * Status
-
-  * Duration
-
-  * start time
-
-  * end time
-
-  * error message
-
-  * Approver (Harness)
-
-  * Approver message (Harness)
-
-* Jira Create/ Update
-
-  * Name
-
-  * Type
-
-  * Status
-
-  * Duration
-
-  * start time
-
-  * end time
-
-  * error message
-
-* Stage level Custom variables
-
-* Pipeline level Custom variables
-
-* Manifests
+  - Failure message
