@@ -260,26 +260,9 @@ The stage's build infrastructure determines whether these fields are required or
 
 Use these fields to define the commands that you need to run in this step.
 
-For **Shell**, select the shell script type. Options include: **Bash**, **PowerShell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
+For **Shell**, select the shell type. Options include: **Bash**, **PowerShell**, **Pwsh** (PowerShell Core), **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or through a specified [Container Registry and Image](#container-registry-and-image).
 
 In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands for this step. The script is invoked as if it were the entry point. If the step runs in a container, the commands are executed inside the container.
-
-:::tip
-
-You can reference services started in [Background steps](../manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a cURL command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
-
-<figure>
-
-![](../manage-dependencies/static/background-step-settings-call-id-in-other-step.png)
-
-<figcaption>The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
-</figure>
-
-If the Background step is inside a step group, you must include step group ID, such as `[stepGroupId]_[backgroundStepId]:5000`, even if both steps are in the same step group.
-
-:::
-
-Select each tab below to view examples for each `shell` type.
 
 ```mdx-code-block
 <Tabs>
@@ -325,7 +308,7 @@ You can run PowerShell commands on Windows VMs running in AWS build farms.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="pwsh" label="Pwsh">
+  <TabItem value="pwsh" label="Pwsh (PowerShell Core)">
 ```
 
 This PowerShell Core example runs `ForEach-Object` over a list of events.
@@ -393,7 +376,20 @@ This example uses a basic `print` command.
 </Tabs>
 ```
 
-:::info
+#### Reference background services
+
+You can reference services started in [Background steps](../manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a cURL command could call `BackgroundStepId:5000` where it might otherwise call `localhost:5000`.
+
+<figure>
+
+![](../manage-dependencies/static/background-step-settings-call-id-in-other-step.png)
+
+<figcaption>The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
+</figure>
+
+If the Background step is inside a step group, you must include step group ID, such as `StepGroupId_BackgroundStepId:5000`, even if both steps are in the same step group.
+
+#### Scripts that produce output variables
 
 If your script produces an output variable, you must declare the output variable in the Run step's [Output Variables](#output-variables). For example, the following step runs a `python` script that defines an output variable called `OS_VAR`, and `OS_VAR` is also declared in the `outputVariables`.
 
@@ -410,8 +406,6 @@ If your script produces an output variable, you must declare the output variable
                     outputVariables:
                       - name: OS_VAR
 ```
-
-:::
 
 ### Privileged
 
