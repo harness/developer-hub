@@ -14,8 +14,18 @@ In Harness IDP, a service onboarding pipeline (also known as a software template
 
 <!-- See it in action: Demo video -->
 
-**To get started, check out the tutorial to [create your first service onboarding pipeline](/tutorials/internal-developer-portal/create-your-first-service-onboarding-pipeline).**
+**To get started, check out the tutorial to [create your first service onboarding pipeline](/tutorials/internal-developer-portal/service-onboarding-pipeline).**
 
 ## Template registration
 
 A template is a kind of entity that exists in the software catalog. You can create a `template.yaml` file and register the URL with the catalog. For information about registering a template, go to [Add a new software component to the catalog](../getting-started/register-a-new-software-component.md).
+
+## Available template actions
+
+Harness IDP ships the following actions to be used in the software template steps.
+
+- `trigger:harness-custom-pipeline`
+- `harness:create-secret`
+- `harness:delete-secret`
+
+Learn more about how to use them in the [service onboarding tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input).

@@ -194,4 +194,34 @@ export const experiments: ExperimentDetails[] = [
     tags: ["pod"],
     category: "kubernetes",
   },
+  {
+    name: "Time Chaos",
+    description:"Time Chaos introduces controlled time offsets to disrupt the system time of the target pod",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod API latency",
+    description:"Pod API latency injects api request and response latency by starting proxy server and redirecting the traffic through it",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod API modify body",
+    description:"Pod API modify body, modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod API modify header",
+    description:"Pod API modify header, overrides the header values of API requests and responses with the user-provided values for the given keys",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod API status code",
+    description:"Pod API status code, change the API response status code and optionally api response body through path filtering",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
 ];

@@ -13,7 +13,7 @@
 | Blue/Green Deployments  | [Create a Kubernetes Blue Green Deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment) |
 | Canary Deployments  | [Create a Kubernetes Canary Deployment](https://developer.harness.io/docs/continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment) |
 |**3. Continuous Delivery** | |
-| Barriers | [Best Practices for Looping Strategies ](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/synchronize-workflows-in-your-pipeline-using-barrier/) |
+| Barriers | [Synchronize Parallel Stages and Step Groups ](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers/) |
 | Conditional Execution  | [Stage and Step Conditional Execution Settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) |
 | Steps | [Looping Strategies Overview ](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) |
 | Looping Strategies | [Best Practices for Looping Strategies ](https://developer.harness.io/docs/platform/pipelines/best-practices-for-looping-strategies/) |
@@ -21,7 +21,7 @@
 | Cloud Formation Provider | [CloudFormation How-tos](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos) |
 | Git Trigger  | [Triggers](https://developer.harness.io/docs/category/triggers/) |
 | Webhooks  | [Trigger Pipelines using Git Events](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) |
-| API Triggers  | [Harness API Quickstart](https://developer.harness.io/docs/platform/Resource-Development/APIs/api-quickstart) |
+| API Triggers  | [Get started with Harness APIs](https://developer.harness.io/docs/platform/Resource-Development/APIs/api-quickstart) |
 | Policy as Code  | [Policy as Code Overview](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview/) |
 | Kubernetes Sidecars | [Add a Kubernetes Sidecar Container](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container) |
 | Approvals | [Approvals](https://developer.harness.io/docs/category/approvals/) |
@@ -38,4 +38,4 @@
 | Selectors  | [Select delegates with delegate selectors and tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/) |
 | Tagging and Labeling  | [Select delegates with delegate selectors and tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/) |
 |**7. Security**  | |
-| Role Based Access Control | [Role-Based Access Control Overview](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/) |
+| Role Based Access Control | [RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness) |

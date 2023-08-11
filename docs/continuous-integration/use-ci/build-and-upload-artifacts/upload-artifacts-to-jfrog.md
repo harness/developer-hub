@@ -8,13 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory). Harness CI also provides steps to [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md) and [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md).
+You can use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory). You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md).
 
-This topic assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to the [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and the CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+This topic assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to the [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
 
 ## Prepare artifacts to upload
 
-Add steps to your CI pipeline that generate artifacts to upload. The steps you use depend on what artifacts you ultimately want to upload. For example, [Run steps](../set-up-test-intelligence/configure-run-tests-step-settings.md) and [Plugin steps](../use-drone-plugins/explore-ci-plugins.md) are useful for running scripts.
+Add steps to your CI pipeline that generate artifacts to upload. The steps you use depend on what artifacts you ultimately want to upload. For example, [Run steps](../run-ci-scripts/run-step-settings.md) and [Plugin steps](../use-drone-plugins/explore-ci-plugins.md) are useful for running scripts.
 
 ## Upload artifacts to JFrog Artifactory
 
@@ -44,7 +44,9 @@ This step supports Artifactory connectors that use either anonymous or username 
 
 The **Target** is the target path in the JFrog Artifactory registry. This is a target repository name relative to the server URL in the connector. If `pom.xml` is not present, then the **Target** must be a full path to an artifacts folder, such as `groupId/artifactId/version`.
 
-**Source Path** is a path to the artifact file/folder on the local/build machine you want to upload. Harness creates the compressed file automatically.
+**Source Path** is a path to the artifact file/folder on the local/build machine you want to upload.
+
+If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 
 ![](./static/upload-artifacts-to-jfrog-519.png)
 

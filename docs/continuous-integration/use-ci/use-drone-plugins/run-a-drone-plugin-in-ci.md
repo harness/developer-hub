@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
 Drone plugins are Docker containers that perform predefined tasks. You can use the **Plugin** step to run plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/) in your Harness CI pipelines. You can also [write your own custom plugins](./custom_plugins.md). For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md).
 
-This topic assumes you're familiar with [pipeline creation](../prep-ci-pipeline-components.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
+This topic assumes you're familiar with [pipeline creation](../prep-ci-pipeline-components.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
 
 <details>
 <summary>About Drone</summary>
@@ -109,7 +109,7 @@ This example downloads the AWS CLI for Linux and saves it to the default stage w
                       destination: awscli.zip ## File name to assign the downloaded file.
 ```
 
-Expanding on this example, you could use the following commands in a subsequent [Run step](../run-ci-scripts/run-a-script-in-a-ci-stage.md) to unzip and install this tool:
+Expanding on this example, you could use the following commands in a subsequent [Run step](../run-ci-scripts/run-step-settings.md) to unzip and install this tool:
 
 ```
 unzip awscli.zip
@@ -137,6 +137,17 @@ Create [text secrets](/docs/platform/Secrets/add-use-text-secrets) for sensitive
 When you run the pipeline, [check the log output](../viewing-builds.md) to verify that the plugin works as intended.
 
 :::
+
+### Plugin settings
+
+For information about a plugin's settings, go to the plugin's page on the [Drone Plugins Marketplace](http://plugins.drone.io/). In addition to the settings described on a plugin's Marketplace page, each plugin has a README where you can read about the plugin's settings in detail. The README can include additional or uncommon settings that aren't described on the Marketplace page or the Harness CI documentation. You can find README links at the top of each plugin's Marketplace page.
+
+<figure>
+
+![](./static/plugin-marketplace-readme-link.png)
+
+<figcaption>The README link is at the top of each plugin's Drone Plugin Marketplace page.</figcaption>
+</figure>
 
 ### Output variables
 
@@ -194,9 +205,12 @@ Harness has built-in [notifications](/docs/category/notifications) for email, Mi
 
 The YAML examples in the [Drone Plugins Marketplace](https://plugins.drone.io/) can help you configure `settings` for a **Plugin** step in Harness CI. Many plugins offer both Harness and standalone Drone YAML samples, as indicated by the **Drone/Harness** toggle in the **Example** section.
 
-<!-- ![](./static/drone_marketplace_toggle_yaml.png) -->
+<figure>
 
-<docimage path={require('./static/drone_marketplace_toggle_yaml.png')} />
+![](./static/drone_marketplace_toggle_yaml.png)
+
+<figcaption>You can switch between Drone YAML and Harness YAML in the Drone Plugins Marketplace.</figcaption>
+</figure>
 
 Because Drone plugins can be used outside Harness CI, there are some differences, as explained below, in the YAML format when using Drone plugins in Harness CI versus outside Harness CI. This information focuses on the `step` YAML definition.
 
@@ -284,9 +298,14 @@ settings:
    - itemtwo
 ```
 
-It's often easier to define complex settings in the Harness Pipeline Studio's YAML editor, rather than the Visual editor. The settings in the above example would be defined in the Visual editor as shown in the following screenshot.
+It's often easier to define complex settings in the Harness Pipeline Studio's YAML editor, rather than the Visual editor.
+
+<figure>
 
 ![](./static/run-a-drone-plugin-in-ci-02.png)
+
+<figcaption>Using the Visual editor to configure Plugin settings.</figcaption>
+</figure>
 
 ### Text secrets
 

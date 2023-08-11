@@ -1,4 +1,4 @@
-<details><summary>Dataload scan settings</summary>
+<!-- details><summary>Dataload scan settings</summary -->
 
 The following settings are required for Security steps where the `policy_type` is `dataLoad`.
 
@@ -13,4 +13,4 @@ The following settings are required for Security steps where the `policy_type` i
   You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-token")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
 
-</details>
+<!-- /details -->

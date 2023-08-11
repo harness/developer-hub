@@ -1,0 +1,14 @@
+{
+    "label": "Favourites",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "19",
+    "link": {
+        "type": "generated-index",
+        "title": "Favourites"
+    },
+    "customProps": {
+        
+    }
+}

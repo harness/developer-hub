@@ -6,22 +6,20 @@ sidebar_position: 4
 
 :::note
 
-Currently, AWS SAM support is behind the feature flag `CDP_AWS_SAM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, AWS SAM support is behind the feature flags `CDS_CONTAINER_STEP_GROUP` and `CDP_AWS_SAM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
 Harness supports AWS SAM (Serverless Application Model) deployments. SAM is an open-source framework provided by Amazon Web Services (AWS) that simplifies the deployment and management of serverless applications on AWS. It is an extension of AWS's infrastructure-as-code service, CloudFormation.
 
-For SAM deployments in Harness, add your SAM template to Harness and select the target region. Harness will perform the SAM build and deploy.
-
-Harness performs the SAM build and deploy within an ephemeral Docker container in a Kubernetes cluster. You can manage the Kubernetes settings for these steps as needed.
+For SAM deployments in Harness, add your SAM directory to Harness and select the target region. Harness will perform the SAM build and deploy.
 
 ## Deployment summary
 
 SAM deployments involve the following:
 
 1. Create Harness SAM service.
-   1. Add your SAM template.
+   1. Add your SAM directory.
    2. Add a values.yaml file (optional). Harness supports Go templating with SAM templates and values.yaml files.
 2. Create Harness SAM environment.
    1. Define the target infrastructure by adding a Harness AWS connector with the necessary AWS permissions for the deployment and a target AWS region.
@@ -41,6 +39,11 @@ For details on AWS support in Harness, including tooling, limitations, and repos
 
 - Harness supports Go templating with SAM templates and values.yaml files.
 - Currently, you cannot add artifacts to your Harness SAM service.
+- The Harness AWS connector used in the Infrastructure Definition for the SAM stage must use the **AWS Access Key** option for credentials. The **Assume IAM role on Delegate** and **Use IRSA** options are not supported for SAM deployments.
+- You can manage whether Harness performs the SAM build within an ephemeral Docker container in a Kubernetes cluster using the `--use-container` option in the Harness SAM Build step. You can manage the Kubernetes settings for these steps as needed.
+
+## Demo Video
+<docvideo src="https://www.loom.com/share/477c342c400a49dfa88d7b818eb3b605?sid=a21d7c2c-f3e5-4a54-bcd9-2837c278105e" />
 
 
 ## AWS permissions
@@ -72,7 +75,7 @@ For more details, go to [Managing resource access and permissions](https://docs.
 
 ## AWS SAM service
 
-Harness supports standard SAM templates. You can add your SAM template in the Harness SAM service. 
+Harness supports standard SAM templates. You can add your SAM directory in the Harness SAM service. 
 
 :::note
 
@@ -152,7 +155,7 @@ To create an environment, do the following:
 Next you will add the SAM infrastructure definition.
 
 
-### AWS SAM infrastructure definition
+## Define the infrastructure
 
 The SAM infrastructure definition is the target AWS account and region for the SAM deployment.
 
@@ -164,6 +167,8 @@ The SAM infrastructure definition is the target AWS account and region for the S
 6. Select **Save**.
 
 When a pipeline stage uses this infrastructure definition, it will deploy your SAM template changes in the target region.
+
+
 
 ## AWS SAM stage
 
@@ -254,9 +259,9 @@ Do not remove this command. It is required for the current beta of this feature.
 
 :::
 
-#### SAM build docker container registry (required)
+#### SAM build docker container registry (required for beta)
 
-In SAM Build Docker Container Registry, you can use the same Harness Docker Registry connector automatically set up in the **Container Registry** setting or add/select your own connector.
+In **SAM Build Docker Container Registry**, you can use the same Harness Docker Registry connector automatically set up in the **Container Registry** setting or add/select your own connector.
 
 :::caution
 

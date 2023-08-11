@@ -8,14 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can notify your User Group members using Slack as one of the notification channels. To do this, add a Slack Incoming Webhook into your Harness User Groups' [Notification Preferences](../3_User-Management/4-add-user-groups.md#option-notification-preferences).
+You can notify your User Group members using Slack as one of the notification channels. To do this, add a Slack Incoming Webhook into your Harness User Groups' [Notification Preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences).
 
 Then you can add your User Group to a Notification Strategy and receive alert info in Slack.
 
 
 ### Before you begin
 
-* See [User Group Notification Preferences](../3_User-Management/4-add-user-groups.md#option-notification-preferences)
+* See [User Group Notification Preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences)
 
 ### Visual Summary
 

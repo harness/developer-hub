@@ -12,6 +12,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpno />
 
 This topic describes how to use the Harness Feature Flags iOS SDK for your iOS application. 
@@ -68,7 +71,7 @@ dependencies: [
 ```
 ### Install using CocoaPods
 
-CocoaPods is built with Ruby and can be installed with the default Ruby on macOS. You can use a Ruby Version manager, however, we recommend that you use the standard Ruby available on macOS.To install the iOS using [CocoaPods](https://cocoapods.org//), complete the following steps:
+CocoaPods is built with Ruby and can be installed with the default Ruby on macOS. You can use a Ruby Version manager, however, we recommend that you use the standard Ruby available on macOS.To install the iOS using [CocoaPods](https://cocoapods.org/), complete the following steps:
 
 1. To install CocoaPods using the default Ruby available on macOS, use the `sudo` command when installing the gems, for example:
 ```
@@ -349,10 +352,11 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-To avoid memory leaks, we recommend closing your application when it's not in use:
+<Closeclient />
 
+To close the SDK client, call this method:
 
 ```
 CfClient.sharedInstance.destroy() 

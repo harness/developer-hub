@@ -1,0 +1,11 @@
+{
+  "label": "Available plugins",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 20,
+  "link": {
+    "type": "generated-index",
+    "title": "List of curated plugins supported in the Internal Developer Portal"
+  },
+  "customProps": {}
+}

@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 CI pipelines build and test code that is pulled from a Git code repository. When you add a **Build** stage to a CI pipeline, you select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. This topic explains how to configure codebase settings for CI pipelines.
 
-This topic assumes you have an understanding of [CI concepts](../../ci-quickstarts/ci-concepts.md) and the general [pipeline creation process](../prep-ci-pipeline-components.md).
+This topic assumes you have an understanding of the [CI pipeline creation process](../prep-ci-pipeline-components.md).
 
 ## Code repo connectors
 
@@ -40,17 +40,81 @@ When you add a **Build** stage to a CI pipeline, you select a [code repo connect
 
 ![Configuring the codebase when adding a Build stage.](./static/create-and-configure-a-codebase-00.png)
 
-The first codebase declared in a pipeline becomes the pipeline's default codebase. If you need to change the connector or other codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration).
+<details>
+<summary>YAML example: Basic codebase configuration</summary>
+
+```yaml
+pipeline:
+  name: tutorial example
+  identifier: tutorial_example
+  projectIdentifier: tutorial_test
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: YOUR_GIT_REPO
+        build: <+input>
+```
+
+</details>
+
+The first codebase declared in a pipeline becomes the pipeline's default codebase. If you need to change the connector or other codebase settings, go to [Edit the default codebase configuration](#edit-the-codebase-configuration).
 
 Once a default codebase is established, when you add subsequent stages to the pipeline, you can disable **Clone Codebase** for those stages, but you can't change the connector or repo. Usually, you disable **Clone Codebase** only if the codebase is not needed for the stage's operations. However, you can also [use a Git Clone step to clone multiple code repos in a pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
 
-## Edit the default codebase configuration
+## Edit the codebase configuration
 
-To manage a pipeline's default codebase configuration, select **Codebase** on the right side panel while viewing the pipeline in the Pipeline Studio.
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
 
-![Configuring pipeline codebase settings.](./static/create-and-configure-a-codebase-03.png)
+To edit a pipeline's default codebase configuration, select **Codebase** on the right side panel of the Pipeline Studio's Visual editor.
 
-In addition to changing the **Connector** or **Repository Name**, you can manage the following advanced settings.
+<!-- ![A pipeline's codebase settings as shown in the Pipeline Studio's Visual editor.](./static/create-and-configure-a-codebase-03.png) -->
+
+<docimage path={require('./static/create-and-configure-a-codebase-03.png')} />
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+To edit a pipeline's default codebase configuration in the YAML editor, edit the `codebase` section. For example:
+
+```yaml
+pipeline:
+  name: tutorial example
+  identifier: tutorial_example
+  projectIdentifier: tutorial_test
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        build: <+input>
+        depth: 0
+        sslVerify: true
+        prCloneStrategy: MergeCommit
+        resources:
+          limits:
+            memory: 500Mi
+            cpu: 400m
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+In addition to changing the **Connector** (`connectorRef`) or **Repository Name** (`repoName`), you can edit the following advanced settings.
 
 ### Depth
 
@@ -84,31 +148,6 @@ Set maximum resource limits for the containers that clone the codebase at runtim
 
 * **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
-
-## YAML example
-
-Here's an example of codebase configuration in YAML.
-
-```yaml
-pipeline:
-  name: tutorial example
-  identifier: tutorial_example
-  projectIdentifier: tutorial_test
-  orgIdentifier: default
-  tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: account.docsexample
-        build: <+input>
-        depth: 0
-        sslVerify: true
-        prCloneStrategy: MergeCommit
-        resources:
-          limits:
-            memory: 500Mi
-            cpu: 400m
-```
 
 ## Troubleshooting
 

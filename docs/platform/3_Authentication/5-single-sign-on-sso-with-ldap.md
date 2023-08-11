@@ -9,11 +9,6 @@ helpdocs_is_published: true
 ---
 
 
-:::note
-Currently, this feature is behind the feature flag `NG_ENABLE_LDAP_CHECK`. Contact Harness Support to enable the feature.
-
-:::
-
 Harness supports Single Sign-On (SSO) with LDAP implementations, including Active Directory and OpenLDAP. Integrating Harness with your LDAP directory enables you to log your LDAP users into Harness as part of Harness' SSO infrastructure.
 
 Once you integrate your Harness account with LDAP, you can create a Harness User Group and sync it with your LDAP directory users and groups. Then the users in your LDAP directory can log into Harness using their LDAP emails and passwords.
@@ -356,9 +351,9 @@ In **Account Settings**, click **Access Control**, and then click the **User Gro
 
 ### Harness Local Login
 
-To prevent lockouts, a User in the Harness Administrators Group can use the [**Local Login**](https://app.harness.io/auth/#/local-login) URL (https://app.harness.io/auth/#/local-login) to log in and update the Ldap settings.
+To prevent lockouts, a User in the Harness Administrators Group can use the Local Login URL `https://app.harness.io/auth/#/local-login` to log in and update the Ldap settings.
 
-:::note For the Harness production cluster prod-3, the local login URL is https://app3.harness.io/auth/#/local-login :::
+For the Harness production cluster prod-3, the local login URL is `https://app3.harness.io/auth/#/local-login`.
 
 ![](./static/single-sign-on-saml-118.png)
 

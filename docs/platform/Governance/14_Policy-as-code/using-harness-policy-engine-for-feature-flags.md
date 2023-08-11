@@ -40,7 +40,7 @@ The first step of using policies with your Feature Flags is creating a policy.
 
 
 :::note
-You can view an overview of your policies and how many times they have been evaluated on the [Overview](docs/feature-flags/harness-policy-engine) page.
+You can view an overview of your policies and how many times they have been evaluated on the [Overview](/docs/feature-flags/harness-policy-engine) page.
 
 :::
 

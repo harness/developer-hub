@@ -12,6 +12,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpyes from '../shared/note-smp-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpyes />
 
 
@@ -30,7 +33,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.1.1**.
+The current version of this SDK is **1.1.3**.
 
 ## Requirements
 
@@ -204,14 +207,18 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
+<Closeclient />
 
+To close the SDK client:
 
-```
-client.close
-```
+* Assuming you have initialized an SDK client instance named `client`, call the following function:
+
+    ```
+    client.close()
+    ```
+
 ## Additional options
 
 ### Use the Relay Proxy

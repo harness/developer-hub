@@ -10,11 +10,173 @@ helpdocs_is_published: true
 
 This document contains release notes for Harness Self-Managed Enterprise Edition.
 
+Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+
 For Harness SaaS release notes, go to [Harness SaaS Release Notes](https://developer.harness.io/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). 
 
 Release notes are displayed with the most recent release first.
 
-## July 7, 2023, patch release for version 79421
+## July 31, 2023, patch release for version 79819
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 79819 |
+| Watcher | 78424 |
+| Verification Service | 79819 |
+| UI | 79800 |
+| Learning Engine | 67903 | 
+| Gateway | 11201 |
+
+### What's new
+
+- Upgraded the delegate JRE to 11.0.19_7. (PL-37994)
+
+- Free, Community, and Paid accounts can now have a maximum of 100, 100, and 50000 users, respectively. (PL-39235)
+
+- Enhanced the application handling mechanism when the `HARNESS_STATUS_IDENTIFIER` environment variable is not set to `ACTIVE`. (CDS-68821)
+
+- You can now skip steady state checks for native Helm deployments. This helps avoid Harness running unnecessary checks for resources where this is not required. This option is available in Helm Deployment and Helm Rollback steps. This feature requires delegate version 1.0.797xx or higher. (CDS-70124)
+
+### Early access
+
+This release does not include any early access features.
+
+### Fixed issues
+
+- Helm delegate installation failed in Self-Managed Enterprise Edition. (PL-39028)
+
+- Improved error handling mechanism when Helm manifests are not fetched from the Artifactory repository. (CDS-68251, ZD-37458)
+
+- Service instances were not showing correctly for Tanzu deployments. (CDS-68737, ZD-42950)
+
+   Some instances were not showing up on the **Services** dashboard. This fix ensures the **Services** dashboard shows the correct Tanzu instances.
+
+- Helm execution failed with `KubernetesClientException` error. (CDS-70386, ZD-45051)
+
+   The Kubernetes GET APIs returned a 400 bad request during steady state check. This was occurring when Harness used a fabric8 client with Kubernetes cluster version < 1.16, or when the feature flag, `HELM_STEADY_STATE_CHECK` is turned off.
+
+   This issue is fixed.
+
+- Fixed an issue where the Google Cloud Build (GCB) triggers were throwing an invalid credentials error intermittently. (CDS-70560, ZD-40187)
+
+   This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
+
+- Kubernetes deployments timed out and failed when listing pods. (CDS-71328, ZD-45584)
+
+  This issue is fixed by modifying the delegate's Kubernetes API client timeout. 
+
+  Harness Delegate uses Kubernetes Java client to make programmatic API calls to the Kubernetes server. The API client uses an OkHttp client whose default [read timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/read-timeout/) and [connect timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/connect-timeout/) values are set to 120 and 60 seconds respectively. These values can be configured by using environment variables, modifying the delegate's container environment. The values must be specified in seconds. 
+
+  The environment variables for these timeouts are:
+
+  - Read timeout: `K8S_API_CLIENT_READ_TIMEOUT`
+  - Connect timeout: `K8S_API_CLIENT_CONNECT_TIMEOUT`
+
+- The delegate connectivity capability check for Azure Web App deployments failed. (CDS-71432, ZD-44862)
+
+   This issue is fixed by using task category mapping to assign the Azure App Services task type deployments to specific delegates.
+
+### July 12, 2023, patch release for version 79421
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.7.2](https://github.com/harness/helm-charts/releases/tag/harness-0.7.2) |
+| Air Gap Bundle | [0.7.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.2) |
+| NG Manager | 79422 |
+| CI Manager | 3907 |
+| Pipeline Service | 1.33.8 |
+| Platform Service | 79202 |
+| Access Control Service | 79004 |
+| Change Data Capture | 79422 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.349.16 |
+| LE NG | 67902 |
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+- For installations with custom dashboards enabled, the Harness Helm chart version 0.7.1 included entries that caused installation issues during upgrade. Custom dashboards were not available with the 0.7.1 upgrade of Self-Managed Enterprise Edition. (CDB-981) (CDS-74271)
+
+   This issue is fixed. The Harness Helm chart entries are corrected, and Helm installations succeed as expected. If your installation includes custom dashboards, you can now view CD data, including:
+
+   - Total amount of deployed applications
+   - Total number of deployments
+   - Total number of production versus non-production deployments and the percentage of each
+   - Percentage of the applications deployed by deployment type (rolling, canary, blue/green, and basic)
+   - Change failure rate/reason for failed deployments
+  
+  To enable custom dashboards, you must:
+  
+  1. Run the commands below to update your Harness database.
+  2. Add settings to your `override.yaml` file.
+  
+     Update your Harness database with the following commands.
+
+      ```
+      db.elasticsearchPendingBulkMigrations.remove({})
+      db.searchEntitiesIndexState.insertMany([{
+         "_id" : "software.wings.search.entities.workflow.WorkflowSearchEntity",
+         "indexName" : "workflows_0.2_1688472585962",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.pipeline.PipelineSearchEntity",
+         "indexName" : "pipelines_0.2_1688472585989",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.environment.EnvironmentSearchEntity",
+         "indexName" : "environments_0.2_1688472585980",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.service.ServiceSearchEntity",
+         "indexName" : "services_0.2_1688472585992",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.application.ApplicationSearchEntity",
+         "indexName" : "applications_0.2_1688472585986",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.deployment.DeploymentSearchEntity",
+         "indexName" : "deployments_0.1_1688472585984",
+         "recreateIndex" : false,
+         "syncVersion" : "0.1"
+     }])
+     ```
+   
+      Add the following entries to your `override.yaml` file.
+   
+      ```yaml
+       platform:
+         harness-manager:
+            additionalConfigs:
+              SEARCH_ENABLED: 'true'
+            featureFlags:
+              ADDITIONAL: "CUSTOM_DASHBOARD_V2,TIME_SCALE_CG_SYNC" #add additional feature flags comma-separated.
+     ```
+
+### July 7, 2023, patch release for version 79421
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -34,15 +196,15 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
-### What's new
+#### What's new
 
 - Custom dashboard support is added for Continuous Delivery & GitOps and Service Reliability Management data models. (SMP-1585) 
 
-### Early access
+#### Early access
 
 This release does not include any early access features.
 
-### Fixed issues
+#### Fixed issues
 
 This release does not include any fixed issues.
 

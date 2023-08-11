@@ -12,6 +12,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpno />
 
 This topic describes how to use the Harness Feature Flags Android SDK for your Android application. 
@@ -31,7 +34,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.1.1.** To use this version of the SDK, you also need to use Android API level 19 or higher.
+The current version of this SDK is **1.1.3.** To use this version of the SDK, you also need to use Android API level 19 or higher.
 
 ## Requirements
 
@@ -277,16 +280,16 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-To avoid potential memory leaks, when you no longer need the SDK, you should close it. For example, when the app is closed, also close the SDK.
+<Closeclient />
 
 To close the SDK, call this method:
-
 
 ```
 CfClient.getInstance().destroy()
 ```
+
 ## Additional options
 
 ### Configure your logger

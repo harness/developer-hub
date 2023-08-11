@@ -8,37 +8,25 @@ import LearnAboutPlatform from "@site/src/components/LearnAboutPlatform";
 import HomepageCertifications from "@site/src/components/HomepageCertifications";
 import Feedback from "@site/src/components/Feedback";
 import MDXContent from "@theme/MDXContent";
-// import Lottie from "lottie-react";
-// import allModuleAnimation from "./all_module_animation.json";
+import Lottie from "lottie-react";
+import allModuleAnimation from "./assets/hdh_hero.json";
 
 import styles from "./index.module.scss";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx("container", styles.heroBanner)}>
-      <div className={styles.heroContainer}>
-        <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
-        <p className={styles.heroSubTitle}>{siteConfig.tagline}</p>
-        {/*<div className={styles.buttons}>
-          <Link
-            className={clsx('button button--lg', styles.heroButton)}
-            to="/intro">
-            Start Here
-          </Link>
-      </div> */}
-      </div>
-      {/* <img src="img/hero.svg" className={styles.heroImg} /> */}
+    <>
+      <header className={clsx("container", styles.heroBanner)}>
+        <div className={styles.heroContainer}>
+          <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
+          <p className={styles.heroSubTitle}>{siteConfig.tagline}</p>
+        </div>
+      </header>
       <div className={styles.heroImg}>
-        {/* <Lottie animationData={allModuleAnimation} loop={true} /> */}
-        <video autoPlay={true} loop={true} muted={true}>
-          <source
-            src={`${siteConfig?.baseUrl || "/"}img/all_module_animation_v5.mp4`}
-            type="video/mp4"
-          />
-        </video>
+        <Lottie animationData={allModuleAnimation} loop={true} />
       </div>
-    </header>
+    </>
   );
 }
 

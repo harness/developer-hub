@@ -14,11 +14,11 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 ## Important notes
 
 * This topic assumes that you are familiar with how to implement SSL in Kubernetes. General information about implementing SSL is outside the scope of this topic.
-* Harness CI Build and Push steps use the [kaniko](https://github.com/GoogleContainerTools/kaniko) plugin by default. Kaniko uses the path `/kaniko/ssl/certs/additional-ca-cert-bundle.crt` to read certificates.
+* With a Kubernetes cluster build infrastructure, all **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Kaniko uses the path `/kaniko/ssl/certs/additional-ca-cert-bundle.crt` to read certificates.
 * Harness uses a UBI image for the Git Clone step. UBI reads certificates from `/etc/ssl/certs/ca-bundle.crt`.
 * Different base images use different paths as their default certificate location. For example, Alpine images use this path to recognize certificates: `/etc/ssl/certs/ca-certificates.crt` For any other image, make sure you verify the default certificate path.
 
-### STO pipelines 
+### STO pipelines
 
 If you have STO scan steps in your pipeline, you can set up your certificates using the workflow described below. However, there are some additional steps and requirements. For more information, go to [Adding Custom Artifacts to STO Pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-artifacts-to-pipelines.md).
 
@@ -98,7 +98,7 @@ If your builds fail due to a problem connecting to the scm service, add `SCM_SKI
 
 If the volumes are not getting mounted to the build containers, or you continue to see certificate errors in your pipeline, try the following:
 
-1. Add a [Run step](../../run-ci-scripts/run-a-script-in-a-ci-stage.md) that prints the contents of the destination path. For example, you can include a command such as:
+1. Add a [Run step](../../run-ci-scripts/run-step-settings.md) that prints the contents of the destination path. For example, you can include a command such as:
 
    ```
    cat /kaniko/ssl/certs/additional-ca-cert-bundle.crt

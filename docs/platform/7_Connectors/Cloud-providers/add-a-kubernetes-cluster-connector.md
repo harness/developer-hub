@@ -102,7 +102,6 @@ To use a Kubernetes Service Account (SA) and token, you will need to either use 
 
 For example, here's a manifest that creates a new SA named `harness-service-account` in the `default` namespace.
 
-
 ```
 # harness-service-account.yml  
 apiVersion: v1  
@@ -113,12 +112,10 @@ metadata:
 ```
 Next, you apply the SA.
 
-
 ```
 kubectl apply -f harness-service-account.yml
 ```
 Next, grant the SA the `cluster-admin` permission.
-
 
 ```
 # harness-clusterrolebinding.yml  
@@ -156,6 +153,38 @@ TOKEN=$(kubectl get secret "${SECRET_NAME}" --namespace "${NAMESPACE}" -o=jsonpa
 echo $TOKEN
 ```
 The `| base64 -d` piping decodes the token. You can now enter it into the Connector.
+
+**Creating Service Account tokens for Kubernetes versions 1.24 and later**
+
+The Kubernetes SA token is not automatically generated if the SAs are provisioned under Kubernetes versions 1.24 and later. You must create a new SA token and decode it to the `base64` format.
+
+Use the following command to create a SA bound token using kubectl:
+
+```
+kubectl create token <service-account-name> --bound-object-kind Secret --bound-object-name <token-secret-name>
+```
+
+You can also create SAs using manifests. For example, here's a manifest that creates a new SA:
+
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: <service-account-name>
+  namespace: default
+
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: <token-secret-name>
+  annotations:
+    kubernetes.io/service-account.name: "<service-account-name>"
+```
+
+For more details, go to [Managing Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/).
+
 
 ### Set up delegates
 

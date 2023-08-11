@@ -1,4 +1,4 @@
-** (BETA) ** The Continuous Delivery & GitOps Administrator exam tests your knowledge and skills of the Harness Continuous Delivery module.  
+The Continuous Delivery & GitOps Administrator exam tests your knowledge and skills of the Harness Continuous Delivery module.  
 
 ## Prerequisites
 
@@ -14,14 +14,21 @@
 
 
 | Covered Domain                                | Coverage         |
-| ----------------------------------- | --------------- |
-| **Foundations - SDLC, Services, and Application Architectures** | 25% |
-| **Harness Architecture and Components** | 15% |
-| **Continuous Delivery**   | 30% |
-| **Continuous Verification**  | 8% |
-| **GitOps**  | 10% |
-| **Data Visibility**  | 8% |
-| **Security**  | 7%|
+|-------|------------|
+| Foundations - SDLC, Services, and Application Architectures | 7.7% |
+| Harness Architecture and Components | 7.7% |
+| Account Resources for Harness CD | 7.7% |
+| Variables, Expressions, and Programmatic Approaches to Harness CD | 7.7% |
+| Governance, Authentication and Authorization: Login, RBAC, Access Control | 7.7% |
+| Data Visualization, Dashboards, and Reporting | 7.7% |
+| Swimlanes | 7.7% |
+| Continuous Delivery | 7.7% |
+| Continuous Verification in Harness CD | 7.7% |
+| Alerting, SMTP Configuration, Notifications | 7.7% |
+| GitOps | 15.4% |
+| Templates | 7.7% |
+| Git Experiences | 7.7% |
+
 
 <br />
 
@@ -32,74 +39,50 @@
 
 The following is a detailed list of exam objectives:
 
-| #     | Objectives                                                                                |
-| ----- | ----------------------------------------------------------------------------------------- |
-| **1** | **Foundations - SDLC, Services, and Application Architectures**|
-| 1.1   | CD Foundations      |                                 
-|1.2 |Describe common platforms and cloud providers|
-|1.3 |Describe different architectures|
-|1.4 |Deployment Strategies and Harness Approaches|
-|1.5 |The Service Entity - Foundations|
-|1.6 |The Environment Entity - Foundations|
-|1.7 |The Environment Entity - Infrastructure Definitions|
-|**2**| **Harness Architecture and Components**|
-|2.1| Harness Platform architecture|
-|2.2| Describe the Harness Manager|
-|2.3| Describe the Harness Delegate|
-|2.4| How to check Delegate Task Selection during a Deployment|
-|2.5| How to read Delegate Logs|
-|**3**| **Account Resources for Harness CD**|
-|3.1| Connectors for Harness CD|
-|3.2 | Delegate Management for Harness CD|
-|3.3 |Secrets|
-|3.4 |Harness FileStore|
-|**4**| **Variables, Expressions, and Programmatic Approaches to Harness CD**|
-|4.1 |Describe Harness Built-in and Custom Harness Variables|
-|4.2 |Give examples of Java string methods in Harness Variables (JEXL)|
-|4.3 |How to get Secrets programmatically at runtime|
-|4.4 |Apply in use case - Service Variables (<+serviceVariables.[variable name]>)|
-|**5**| **Governance, Authentication and Authorization: Login, RBAC, Access Control**|
-|5.1 |Login and SSO|
-|5.2 |RBAC and Access Control|
-|5.3 |Governance|
-|**6**| **Data Visualization, Dashboards, and Reporting**|
-|6.1| Adding Metadata to Harness Resources and Entities|
-|6.2 |Harness Dashboards and Looker|
-|**7**| **Swimlanes**|
-|7.1 |Kubernetes Deployment + Common Deployment Strategies|
-|7.2 |Basic Deployment Capacity by Provider|
-|**8**| **Continuous Delivery**|
-|8.1 |Pipeline Flow Control Mechanisms and important child Entities|
-|8.2 |Pipeline Triggers, Executions History, and Inputs|
-|8.3 |Steps in a Stage and Step Library for Harness CD|
-|**9**| **Continuous Verification in Harness CD**|
-|9.1| Identify deployment verification types|
-|9.2| Explain CV Health Sources |
-|9.3| Use the CV Step during a Deployment|
-|9.4| Describe and Apply CV critical attributes - Sensitivity and Duration |  
-|9.5| Configure a quick Health Check using the HTTP Step |  
-|**10**| **Alerting, SMTP Configuration, Notifications**|
-|10.1 |Configure User Group Notification - Slack, Email, etc.|
-|10.2 |Notify based in response to Pipeline and stage events|
-|10.3 |Dashboards - Configure Report Schedule Delivery|
-|10.4 |Dashboards - Configure Alert based in conditions|
-|**11**| **GitOps**|
-|11.1 |Explain the principles of GitOps using a comprehension/use case|
-|11.2 |Describe common use cases for using GitOps|
-|11.3 |Describe the benefits of using GitOps|
-|11.4 |Describe Harness' GitOps architecture and its components|
-|11.5 |Install the GitOps agent|
-|11.6 |Connect your Kubernetes cluster and application repository to Harness to start deployments|
-|11.7 |Analyze your application deployment requirements to determine whether to use a GitOps or a pipeline-based approach|
-|11.8 |Set up an application in Harness using GitOps|
-|11.9 |Analyze drift between the application state in Git and the cluster|
-|**12**| **Templates**|
-|12.1| Describe Harness Templates - Pipeline, Stage, Step|
-|12.2| Create a Template - Pipeline, or Stage |
-|12.3| Describe or Use - Template Versioning and Import from Git| 
-|**13**| **Git Experiences**|
-|13.1 |Git Experience - Describe supported Harness Entities|
-|13.2 |Git Experience - Configure Git Experience for a Pipeline|
+| #   | Objective |
+|-----|-----------|
+| 1 | Foundations - SDLC, Services, and Application Architectures |
+| 1.1 | Understand Continuous Delivery Foundations |
+| 1.2 | Describe common platforms and cloud providers |
+| 1.3 | Explain different application architectures |
+| 2 | Harness Architecture and Components |
+| 2.1 | Understand Harness Platform architecture |
+| 2.2 | Describe the Harness Manager and the Harness Delegate |
+| 2.3 | Learn how to check Delegate Task Selection during a Deployment |
+| 3 | Account Resources for Harness CD |
+| 3.1 | Understand Connectors for Harness CD and Delegate Management |
+| 3.2 | Learn about Secrets and Harness FileStore |
+| 4 | Variables, Expressions, and Programmatic Approaches to Harness CD |
+| 4.1 | Understand Harness Built-in and Custom Harness Variables |
+| 4.2 | Learn to use Java string methods in Harness Variables (JEXL) |
+| 5 | Governance, Authentication and Authorization: Login, RBAC, Access Control |
+| 5.1 | Understand Login and SSO processes |
+| 5.2 | Learn about RBAC and Access Control |
+| 6 | Data Visualization, Dashboards, and Reporting |
+| 6.1 | Learn to add Metadata to Harness Resources and Entities |
+| 6.2 | Understand Harness Dashboards and Looker |
+| 7 | Swimlanes |
+| 7.1 | Understand Kubernetes Deployment and Common Deployment Strategies |
+| 7.2 | Learn about Basic Deployment Capacity by Provider |
+| 8 | Continuous Delivery |
+| 8.1 | Understand Pipeline Flow Control Mechanisms and important child Entities |
+| 8.2 | Learn about Pipeline Triggers, Executions History, and Inputs |
+| 9 | Continuous Verification in Harness CD |
+| 9.1 | Identify deployment verification types |
+| 9.2 | Understand CV Health Sources |
+| 10 | Alerting, SMTP Configuration, Notifications |
+| 10.1 | Configure User Group Notification - Slack, Email, etc. |
+| 10.2 | Understand how to notify based in response to Pipeline and stage events |
+| 11 | GitOps |
+| 11.1 | Explain the principles of GitOps using a comprehension/use case |
+| 11.2 | Learn to install the GitOps agent and connect your Kubernetes cluster to Harness |
+| 12 | Templates |
+| 12.1 | Understand Harness Templates - Pipeline, Stage, Step |
+| 12.2 | Learn to create a Template - Pipeline, or Stage |
+| 13 | Git Experiences |
+| 13.1 | Understand supported Harness Entities |
+| 13.2 | Learn to Configure Git Experience for a Pipeline |
+
 
   
 </details>

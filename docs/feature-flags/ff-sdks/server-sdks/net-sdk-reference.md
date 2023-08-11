@@ -12,6 +12,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpno />
 
 :::caution 
@@ -36,7 +39,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.1.8.**
+The current version of this SDK is **1.1.9.**
 
 If you are using an older version of the .NET Framework, it may not default the security protocol to TLS 1.2. For compatibility with this SDK, set the protocol to TLS 1.2 by using the following:
 
@@ -265,6 +268,10 @@ client.EvaluationChanged += (sender, identifier) =>
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
 
 <Sixty />
+
+## Close the SDK client
+
+<Closeclient />
 
 ## Additional options
 

@@ -36,7 +36,7 @@ Pod IO latency:
       <tr>
         <td> LATENCY </td>
         <td> Specify the latency to be injected in file system calls</td>
-        <td> Accepts any unit of time, for example, 60s, 1m, or 60000ms. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-latency#io-latency">latency</a>.</td>
+        <td> Accepts any unit of time, for example, 60s, 1m, or 60000ms. For more information, go to <a href="#io-latency">latency</a>.</td>
       </tr>
       <tr>
         <td> MOUNT_PATH </td>
@@ -60,27 +60,27 @@ Pod IO latency:
       <tr>
         <td> FILE_PATH </td>
         <td> The path for injecting faults can be specified as either a single file or a wildcard. If not provided, it will target all the files present inside the mount path </td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-latency#advanced-fault-tunables">file path</a>. </td>
+        <td> For more information, go to <a href="#advanced-fault-tunables">file path</a>. </td>
       </tr>
       <tr>
         <td> PERCENTAGE </td>
         <td> The likelihood of failure per operation, expressed as a percentage </td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-latency#advanced-fault-tunables">percentage</a>. </td>
+        <td> For more information, go to <a href="#advanced-fault-tunables">percentage</a>. </td>
       </tr>
       <tr>
         <td> METHOD_TYPES </td>
         <td> This contains the file system call or methods. </td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-latency#advanced-fault-tunables">percentage</a>. </td>
+        <td> For more information, go to <a href="#advanced-fault-tunables">percentage</a>. </td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster </td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-latency#container-runtime-and-socket-path">container runtime</a>. </td>
+        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="#container-runtime-and-socket-path">container runtime</a>. </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd or crio or docker socket file </td>
-        <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-latency#container-runtime-and-socket-path">socket path</a>.</td>
+        <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path</a>.</td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>

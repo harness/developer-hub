@@ -33,6 +33,227 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
+
+    // Created by SudheendraKatte for branch cet-whats-supported on August 3 2023
+    {
+      from: "/docs/category/get-started-3/",
+      to: "/docs/category/get-started-with-cet",
+    },
+
+    // Created by aimurphy for branch doc-3441-rbac on July 28, 2023
+
+    {
+      from: "/docs/platform/APIs/jwt-token-auth",
+      to: "/docs/platform/Resource-Development/APIs/default-settings-for-jwt-token",
+    },
+    {
+      from: "/docs/platform/Resource-Development/APIs/jwt-token-auth",
+      to: "/docs/platform/Resource-Development/APIs/default-settings-for-jwt-token",
+    },
+    {
+      from: "/docs/platform/Resource-Development/APIs/harness-rest-api-reference",
+      to: "/docs/platform/Resource-Development/APIs/api-quickstart",
+    },
+    {
+      from: "/docs/platform/APIs/harness-rest-api-reference",
+      to: "/docs/platform/Resource-Development/APIs/api-quickstart",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/set-up-rbac-pipelines",
+      to: "/docs/platform/role-based-access-control/rbac-in-harness",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/ref-access-management/api-permissions-reference",
+      to: "/docs/platform/Resource-Development/APIs/api-permissions-reference",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference",
+      to: "/docs/platform/role-based-access-control/permissions-reference",
+    },
+    {
+      from: "/docs/category/users",
+      to: "/docs/category/access-control-1",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/harness-default-user-groups",
+      to: "/docs/platform/role-based-access-control/add-user-groups",
+    },
+    {
+      from: "/docs/platform/User-Management/harness-default-user-groups",
+      to: "/docs/platform/role-based-access-control/add-user-groups",
+    },
+    {
+      from: "/docs/platform/User-Management/add-user-groups",
+      to: "/docs/platform/role-based-access-control/add-user-groups",
+    },
+    {
+      from: "/docs/platform/User-Management/add-and-manage-api-keys",
+      to: "/docs/platform/Resource-Development/APIs/add-and-manage-api-keys",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/add-and-manage-api-keys",
+      to: "/docs/platform/Resource-Development/APIs/add-and-manage-api-keys",
+    },
+    {
+      from: "/docs/platform/User-Management/add-users",
+      to: "/docs/platform/role-based-access-control/add-users",
+    },
+    {
+      from: "/docs/platform/User-Management/add-and-manage-service-account",
+      to: "/docs/platform/role-based-access-control/add-and-manage-service-account",
+    },
+    {
+      from: "/docs/platform/User-Management/provision-use-jit",
+      to: "/docs/platform/role-based-access-control/provision-use-jit",
+    },
+    {
+      from: "/docs/platform/Authentication/provision-users-with-okta-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-with-okta-scim",
+    },
+    {
+      from: "/docs/platform/User-Management/provision-users-with-okta-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-with-okta-scim",
+    },
+    {
+      from: "/docs/platform/Authentication/provision-users-and-groups-using-azure-ad-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim",
+    },
+    {
+      from: "/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim",
+    },
+    {
+      from: "/docs/platform/Authentication/7provision-users-and-groups-with-one-login-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim",
+    },
+    {
+      from: "/docs/platform/User-Management/7provision-users-and-groups-with-one-login-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim",
+    },
+
+  // Created by SudheendraKatte for branch cet-whats-supported on August 3 2023
+
+    {
+      from: "/docs/continuous-error-tracking/agent-compatibility",
+      to: "/docs/continuous-error-tracking/whats-supported",
+    },
+
+    // Created by GigiHanna from branch CHAOS-2153-move-infra on August 8, 2023
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/connect-chaos-infrastructures",
+      to: "/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures",
+    },
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/disconnect-chaos-infrastructure",
+      to: "/docs/chaos-engineering/chaos-infrastructure/disconnect-chaos-infrastructure",
+    },
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/upgrade-infra",
+      to: "/docs/chaos-engineering/chaos-infrastructure/upgrade-infra",
+    },
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/linux-chaos-infrastructure-advanced-management",
+      to: "/docs/chaos-engineering/chaos-infrastructure/linux-chaos-infrastructure-advanced-management",
+    },
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/openshift-infra",
+      to: "/docs/chaos-engineering/chaos-infrastructure/openshift-infra",
+    },
+
+    // Created by aimurphy from branch ci-ti-refresh-multiple-tickets on July 27, 2023
+    {
+      from: "/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage",
+      to: "/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build",
+    },
+    {
+      from: "/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
+    },
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
+    },
+
+    // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/run-a-script-on-multiple-target-instances",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/wait-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/wait-step",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/container-step",
+    },
+
+    // Created by schoudhury on July 16, 2023
+    {
+      from: "/tutorials/internal-developer-portal/create-your-first-service-onboarding-pipeline",
+      to: "/tutorials/internal-developer-portal/service-onboarding-pipeline",
+    },
+
+    // Create by aimurphy for branch DOC-3386 on July 11, 2023
+
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
+    },
+
+    {
+      from: "/docs/continuous-integration/use-ci/build-stage-settings/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
+    },
+
+    
+    // Created by roshnisarangadharan from branch fix-broken-links-cd on July 12 2023
+
+    {
+      from: "/docs/platform/notifications",
+      to: "/docs/category/notifications",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events/",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/",
+    },
     
     // Created by roshnisarangadharan from branch DOC-3334-fix-broken-links-in-cd-docs on June 28 2023
 
@@ -604,38 +825,6 @@ module.exports = {
     },
     // Created by Rashmi Sahoo to fix platform re-direct April 19th, 2023
     {
-      from: "/docs/platform/Authentication/provision-users-with-okta-scim",
-      to: "/docs/platform/User-Management/provision-users-with-okta-scim",
-    },
-    {
-      from: "/docs/platform/Authentication/provision-users-and-groups-using-azure-ad-scim",
-      to: "/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim",
-    },
-    {
-      from: "/docs/platform/Authentication/7provision-users-and-groups-with-one-login-scim",
-      to: "/docs/platform/User-Management/7provision-users-and-groups-with-one-login-scim",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/add-users",
-      to: "/docs/platform/User-Management/add-users",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/add-user-groups",
-      to: "/docs/platform/User-Management/add-user-groups",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/harness-default-user-groups",
-      to: "/docs/platform/User-Management/harness-default-user-groups",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/add-and-manage-service-account",
-      to: "/docs/platform/User-Management/add-and-manage-service-account",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/add-and-manage-api-keys",
-      to: "/docs/platform/User-Management/add-and-manage-api-keys",
-    },
-    {
       from: "/docs/platform/Security/add-use-text-secrets",
       to: "/docs/platform/Secrets/add-use-text-secrets",
     },
@@ -842,14 +1031,6 @@ module.exports = {
     {
       from: "/docs/platform/APIs/default-settings-for-jwt-token",
       to: "/docs/platform/Resource-Development/APIs/default-settings-for-jwt-token",
-    },
-    {
-      from: "/docs/platform/APIs/harness-rest-api-reference",
-      to: "/docs/platform/Resource-Development/APIs/harness-rest-api-reference",
-    },
-    {
-      from: "/docs/platform/APIs/jwt-token-auth",
-      to: "/docs/platform/Resource-Development/APIs/jwt-token-auth",
     },
     {
       from: "/docs/platform/Terraform/harness-terraform-provider-overview",
@@ -1248,7 +1429,7 @@ module.exports = {
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/kubernetes-autostopping-for-istio",
-      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/kubernetes-autostopping-for-istio",
+      to: "/docs/cloud-cost-management/getting-started-ccm/quick-start-guides/kubernetes-autostopping-for-istio",
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/review-autostopping-rules-reqs",
@@ -1848,14 +2029,11 @@ module.exports = {
 
     //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
     {
-      from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
-      from: "/docs/continuous-integration/use-ci/build-stage-settings/ci-build-image-updates",
-      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-build-image-updates",
+      from: "/docs/continuous-integration/ci-technical-reference/harness-ci",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
     },
 
-    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
     {
-      from: "/docs/continuous-integration/ci-technical-reference/harness-ci",
       from: "/docs/continuous-integration/use-ci/build-stage-settings/harness-ci",
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
     },
@@ -2047,11 +2225,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/http-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
-    },
-
-    {
       from: "/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-plan-step",
       to: "/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step",
     },
@@ -2172,36 +2345,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/container-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/run-a-script-on-multiple-target-instances",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/wait-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/wait-step",
-    },
-
-    {
       from: "/docs/continuous-delivery/cd-deployments-category/deployment-logs-and-limitations",
       to: "/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations",
     },
@@ -2302,11 +2445,11 @@ module.exports = {
     },
     {
       from: "/docs/chaos-engineering/user-guides/connect-chaos-infrastructures",
-      to: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/connect-chaos-infrastructures",
+      to: "/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures",
     },
     {
       from: "/docs/chaos-engineering/user-guides/disconnect-chaos-infrastructure",
-      to: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/disconnect-chaos-infrastructure",
+      to: "/docs/chaos-engineering/chaos-infrastructure/disconnect-chaos-infrastructure",
     },
     {
       from: "/docs/chaos-engineering/user-guides/construct-and-run-custom-chaos-experiments",
@@ -2774,14 +2917,6 @@ module.exports = {
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings",
     },
     {
-      from: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
-      to: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
-    },
-    {
-      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
-      to: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
-    },
-    {
       from: "/docs/category/build-stage-settings",
       to: "/docs/category/set-up-build-infrastructure",
     },
@@ -2809,11 +2944,6 @@ module.exports = {
     {
       from: "/docs/continuous-integration/ci-technical-reference/configure-service-dependency-step-settings",
       to: "/docs/continuous-integration/use-ci/manage-dependencies/configure-service-dependency-step-settings",
-    },
-
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings",
-      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings",
     },
 
     {
@@ -2948,10 +3078,37 @@ module.exports = {
       from: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
       to: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",
     },
+    // Created by bfisher for DOC-3432 on July 20, 2023
+    {
+      from: "/docs/platform/Get-started/platform-concepts/view-account-info-and-subscribe-to-alerts",
+      to: "/docs/platform/Get-started/view-account-info-and-subscribe-to-alerts",
+    },
+    {
+      from: "/docs/platform/Get-started/platform-concepts/platform-overview",
+      to: "/docs/platform/Get-started/platform-overview",
+    },
+    // Created by bfisher for DOC-3458 on July 25, 2023
+    {
+      from: "/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database",
+      to: "/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database",
+    },
+    {
+      from: "/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
+      to: "/docs/self-managed-enterprise-edition/back-up-and-restore-helm",
+    },
     // PR-2012
     {
       from: "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference",
       to:   "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference",
+    },
+    // Created by bfisher for DOC-3488 on July 26, 2023
+    {
+      from: "/docs/platform/resource-development/apis/rate-limits/",
+      to:   "/docs/platform/rate-limits",
+    },
+    {
+      from: "/docs/platform/Security/rate-limits",
+      to:   "/docs/platform/rate-limits",
     },
   ],
 };

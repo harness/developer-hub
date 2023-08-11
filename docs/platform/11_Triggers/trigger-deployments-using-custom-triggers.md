@@ -24,6 +24,10 @@ You can do the following with a custom trigger:
 * Use a REST call to get deployment status.
 * Start a deployment using a Webhook URL provided by Harness.
 
+import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported.md'
+
+<Variables />
+
 ## Create the custom trigger
 
 1. In your Harness pipeline in pipeline studio, click **Triggers**.
@@ -82,7 +86,7 @@ curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' 
 
 The custom webhook token is a unique token that is generated internally for every custom webhook trigger when it is created. This token cannot be changed.
 
-The `-H 'X-Api-Key: sample_api_key'` parameter is used to authorize custom triggers. You can use [Harness API keys](../3_User-Management/7-add-and-manage-api-keys.md) with this parameter. This is described below in [Custom trigger authorization using API keys](#custom-trigger-authorization-using-api-keys).
+The `-H 'X-Api-Key: sample_api_key'` parameter is used to authorize custom triggers. You can use [Harness API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) with this parameter. This is described below in [Custom trigger authorization using API keys](#custom-trigger-authorization-using-api-keys).
 
 To skip authorization, omit the `-H 'X-Api-Key: sample_api_key'` parameter. When authorization is not enforced for custom webhook triggers, the API key is excluded from the generated cURL command.
 
@@ -349,7 +353,7 @@ The response from the cURL command will contain the status of the deployment. Fo
 
 ## Custom trigger authorization using API keys
 
-You can use [Harness API keys](../3_User-Management/7-add-and-manage-api-keys.md) in your cURL command to authorize the execution of a trigger.
+You can use [Harness API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) in your cURL command to authorize the execution of a trigger.
 
 You can see the `-H 'X-Api-Key: sample_api_key'` parameter in the cURL command you copy from Harness.
 
@@ -367,7 +371,7 @@ To skip authorization omit the `-H 'X-Api-Key: sample_api_key'` parameter.
 
 ### Adding authorization to custom triggers
 
-1. Create the [Harness API key](../3_User-Management/7-add-and-manage-api-keys.md) you want to use for authorization.
+1. Create the [Harness API key](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) you want to use for authorization.
 2. Save the token from the key. Please make sure to copy and store your token value somewhere safe. You won't be able to see it again after you create it.
 3. Copy the cURL command for your custom trigger. For example:
 
