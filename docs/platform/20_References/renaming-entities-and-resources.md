@@ -1,7 +1,7 @@
 ---
 title: Entity name and Id rules
 description: This topic covers the rules about identical names and Ids for Harness entities.
-# sidebar_position: 2
+sidebar_position: 6
 helpdocs_topic_id: 7rsydu6iq2
 helpdocs_category_id: fb16ljb8lu
 helpdocs_is_private: false

@@ -1,7 +1,7 @@
 ---
 title: Entity deletion reference
-description: This topic covers the rules governing the deletion of Harness entities. Entity Connections. Entities are connected. A Role entity is applied to User entities. Deleting an entity, such as a Role, impa…
-# sidebar_position: 2
+description: This topic covers the rules governing the deletion of Harness entities.
+sidebar_position: 4
 helpdocs_topic_id: amj1oz4x4k
 helpdocs_category_id: fb16ljb8lu
 helpdocs_is_private: false

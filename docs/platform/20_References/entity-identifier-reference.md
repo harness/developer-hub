@@ -1,7 +1,7 @@
 ---
 title: Entity identifier reference
-description: Many Harness entities and resources include a unique Id (entity Identifier) that's immutable once the entity is created. Identifiers provide a permanent way to refer to an entity, and avoid issues th…
-# sidebar_position: 2
+description: Many Harness entities and resources include a unique Id (entity Identifier) that's immutable once the entity is created.
+sidebar_position: 5
 helpdocs_topic_id: li0my8tcz3
 helpdocs_category_id: fb16ljb8lu
 helpdocs_is_private: false
