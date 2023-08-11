@@ -6,17 +6,31 @@ sidebar_position: 60
 
 # FireHydrant change source
 
-You can configure FireHydrant as a change source, enabling it to seamlessly send incident reports to Service Reliability Management (SRM) and trigger real-time alerts on a designated Slack channel. When FireHydrant's incident reports are sent to SRM, triggering Slack alerts, SRM provides health reports to the same Slack channel, enabling a real-time service health overview.
+You can accelerate incident triage by configuring FireHydrant with Harness SRM. Imagine a scenario where a critical incident occurs within your system. Integrating FireHydrant's incident reporting with SRM's health reports provides the incident response team with clearer insights into the incident.
+
+Here's how it works: When an incident is announced using FireHydrant, a real-time alert is sent to both a designated Slack channel and SRM. Immediately after receiving the FireHydrant's incident report, SRM quickly sends a real-time health report from the affected service to that very same Slack channel. SRM's health report provides the following insights:
+
+- Monitored service particulars like organization, account, and project info.
+
+- Change events – deployments, alerts, chaos events, and feature flag changes.
+
+- Service health score – a quick snapshot of the service's health.
+
+- SLO performance – SLO name, target, actual performance, and the rate at which your error budget is being used.
+
+![SRM Insights Slack message](static/firehydrant-slack-message.png)
+
+Together with the incident information and SRM's health report, the incident response team can quickly figure out how bad the incident is, see how the rest of the service is doing, and make quick decisions.
 
 Configuring FireHydrant as a change source involves the following steps:
 
 1. [Add FireHydrant as a custom change source in the Harness SRM monitored service and generate a webhook.](#add-fireHydrant-as-change-source)
+
+2. [Integrate your Slack workspace with FireHydrant.](#add-slack-channels-to-the-firehydrant-runbook)
    
-[Integrate your Slack workspace with FireHydrant.](#add-slack-channels-to-the-firehydrant-runbook)
+3. [Add Webhook Step to the FireHydrant runbook.](#add-webhook-step-to-the-firehydrant-runbook)
    
-[Add Webhook Step to the FireHydrant runbook.](#add-webhook-step-to-the-firehydrant-runbook)
-   
-[Add Slack channels to the FireHydrant runbook.](#add-slack-channels-to-the-firehydrant-runbook)
+4. [Add Slack channels to the FireHydrant runbook.](#add-slack-channels-to-the-firehydrant-runbook)
    
 5. [Declare an incident.](#declare-an-incident)
 
@@ -132,4 +146,4 @@ When you declare an incident using FireHydrant and select the corresponding runb
 2. Simultaneously, Harness SRM sends a comprehensive health report to the same Slack channel configured in the runbook.
 
 This helps you receive incident alerts along with service health updates in your designated Slack channel.
-
+By combining the FireHydrant incident information and SRM's health report, your team can swiftly gauge the incident's impact, assess the overall service health, and make prompt decisions.
