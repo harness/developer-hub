@@ -79,7 +79,7 @@ import StoInfraSupport from '/docs/security-testing-orchestration/onboard-sto/sh
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Approvals and Ticketing">
+  <TabItem value="Approvals and ticketing">
 ```
 
 Harness STO supports the following features for generating notifications and stopping pipelines in response to detected vulnerabilities:
