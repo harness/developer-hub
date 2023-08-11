@@ -392,7 +392,6 @@ Some examples of values that are not hardcoded include chart versions, values YA
 
 The api will only return Approval details if there are any approval step pending for approval, If there are no such executions currently than its expected to return No Approval found for execution
 
-
 #### Trigger another stage with inputs in a given pipeline?
 You cannot do it if the stage is part of the same pipeline. However, using Pipeline A and running a custom trigger script inside it can trigger the CI stage which is part of Pipeline B.
 
@@ -402,4 +401,3 @@ You can use Ternary operators to achieve this use case more information on this 
 #### How do we easily change git folders in a repo for the git exp project?
 The default branch and file path will not be changeable after the creation as we store data in Git end and only metadata is stored in Harness. 
 You can change it to the required path while creating the initial entity you can select the folder other than.harness Now you can recreate the entity using the same yaml and make minor changes like file path and entity id.
-
