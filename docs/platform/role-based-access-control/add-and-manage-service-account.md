@@ -61,4 +61,4 @@ Use these steps to edit a service account's role bindings, name, description, or
 
 2. Select **Service Accounts** in the header.
 3. Locate the service account you want to edit.
-4. Select **More options** (&vellip;), and then select **Delete**.
+4. Select **More options** (&vellip;), and select **Delete**.
