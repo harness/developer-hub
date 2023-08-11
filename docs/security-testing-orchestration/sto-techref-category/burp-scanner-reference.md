@@ -33,10 +33,6 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ## Burp step configuration
 
-:::note
-Currently, this feature is behind the Feature Flag `STO_STEP_PALETTE_BURP_ENTERPRISE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 <details><summary>Orchestrated scan in a Burp scanner template</summary>
 
 ![](./static/burp-scanner-template.png)
