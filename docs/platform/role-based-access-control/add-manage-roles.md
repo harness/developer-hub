@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Roles are an [RBAC component](./rbac-in-harness#rbac-components) that contain a set of [permissions](/docs/platform/role-based-access-control/permissions-reference). Roles define what actions, such as viewing, creating, editing, or deleting, can be taken on Harness resources. When you assign a role to a user, user group, or service account, the permissions defined in the role are granted to the target user, group, or service account.
+Roles are an [RBAC component](./rbac-in-harness.md#rbac-components) that contain a set of [permissions](/docs/platform/role-based-access-control/permissions-reference). Roles define what actions, such as viewing, creating, editing, or deleting, can be taken on Harness resources. When you assign a role to a user, user group, or service account, the permissions defined in the role are granted to the target user, group, or service account.
 
 Harness includes some [built-in roles](#built-in-roles), and you can [create custom roles](#create-a-role), which are useful for limited and fine-grained access control.
 
@@ -51,7 +51,7 @@ Harness includes several built-in roles. To examine the permissions assigned to 
 
 These roles are not specific to any modules. They are for administration and oversight of an entire Harness account, organization, or project. They also provide access to cross-module components, such as dashboards and pipelines.
 
-| Role | [Scope](./rbac-in-harness#permissions-hierarchy-scopes) |
+| Role | [Scope](./rbac-in-harness.md#permissions-hierarchy-scopes) |
 | ---  | ----- |
 | Account Admin | Account |
 | Account Viewer | Account |
@@ -138,4 +138,4 @@ Creating roles is one part of [configuring RBAC in Harness](/docs/platform/role-
 
 Roles, which grant permissions, work alongside [resource groups](/docs/platform/role-based-access-control/add-resource-groups), which grant access.
 
-After configuring roles and resource group, you assign them to [users](./add-users), [user groups](./add-user-groups), and [service accounts](./add-and-manage-service-account).
+After configuring roles and resource group, you assign them to [users](./add-users.md), [user groups](./add-user-groups.md), and [service accounts](./add-and-manage-service-account.md).
