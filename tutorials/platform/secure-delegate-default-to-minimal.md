@@ -52,7 +52,7 @@ python3 \
 python3-pip \
 which
 
-# Inwtall OpenSSL
+# Install OpenSSL
 RUN microdnf install openssl
 
 # Install Kubectl
