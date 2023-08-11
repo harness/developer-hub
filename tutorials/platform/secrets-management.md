@@ -23,8 +23,8 @@ To create a secret, do the following:
 1. Sign in to Harness.
 2. Select **Projects**, and then select **Secrets**.
 3. Select **New Secret**, and then select **Text**.
-4. Enter the secret name `SECRET_NAME`.
-5. For the **Secret Value**, paste the personal access token (PAT) from GitHub with the repo scope. For more information, go to [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) in the GitHub documentation. 
+4. Enter  **Name** for the secret.
+5. For the **Secret Value**, enter a GitHub personal access token (PAT) with the repo scope. For more information, go to [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) in the GitHub documentation. 
 6. Select **Save**.
 
 ## Harness secrets management overview
@@ -104,7 +104,7 @@ To create an AWS ARN, do the following:
 
 For more information, go to [find the Access key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/find-cmk-id-arn.html) in the AWS documentation.
 
-## Connectors
+### Connectors
 
 Connectors in Harness enable integration with third-party tools, providing authentication for operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](https://developer.harness.io/docs/category/connectors).
 
@@ -274,7 +274,7 @@ Verify that you have the following:
     - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
     - Check [Delegate system requirements](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 
-### Use AWS KMS to manage secrets 
+## Use AWS KMS to manage secrets 
 
 1. Sign in to Harness.
 2. Select **Projects**, and then select **Default Project**.
@@ -421,8 +421,8 @@ To run the pipeline, do the following:
 
 1. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
 2. Observe the execution logs as Harness runs the pipeline.
-3. In console logs, you can see that the secret is masked with ***** as per below screenshot.
+3. In console logs, the secret is masked with asterisks (`*`), as shown in the following image.
 
 <docimage path={require('./static/secret/secret-log.png')} width="60%" height="60%" title="Click to view full size image" />
 
-When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (*) so that the secret value is never displayed.​ For more information, go to [secrets and log-sanitization](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/secrets-and-log-sanitization).
+When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (`*`) so that the secret value is never displayed.​ For more information, go to [secrets and log-sanitization](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/secrets-and-log-sanitization).
