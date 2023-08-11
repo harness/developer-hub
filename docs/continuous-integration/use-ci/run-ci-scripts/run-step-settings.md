@@ -260,7 +260,7 @@ The stage's build infrastructure determines whether these fields are required or
 
 Use these fields to define the commands that you need to run in this step.
 
-For **Shell**, select the shell type. Options include: **Bash**, **PowerShell**, **Pwsh** (PowerShell Core), **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
+For **Shell**, select the shell type. Options include: **Bash**, **PowerShell**, **Pwsh** (PowerShell Core), **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or through a specified [Container Registry and Image](#container-registry-and-image).
 
 In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands for this step. The script is invoked as if it were the entry point. If the step runs in a container, the commands are executed inside the container.
 
@@ -378,7 +378,7 @@ This example uses a basic `print` command.
 
 #### Reference background services
 
-You can reference services started in [Background steps](../manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a cURL command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
+You can reference services started in [Background steps](../manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a cURL command could call `BackgroundStepId:5000` where it might otherwise call `localhost:5000`.
 
 <figure>
 
@@ -387,7 +387,7 @@ You can reference services started in [Background steps](../manage-dependencies/
 <figcaption>The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
 </figure>
 
-If the Background step is inside a step group, you must include step group ID, such as `[stepGroupId]_[backgroundStepId]:5000`, even if both steps are in the same step group.
+If the Background step is inside a step group, you must include step group ID, such as `StepGroupId_BackgroundStepId:5000`, even if both steps are in the same step group.
 
 #### Scripts that produce output variables
 

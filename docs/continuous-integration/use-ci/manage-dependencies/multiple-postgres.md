@@ -20,7 +20,7 @@ This topic explains how to use **Background** steps to run multiple PostgreSQL i
 
 Add one **Background** step for each PostgreSQL service you need to run.
 
-For the **Background** steps to run the PostgreSQL services, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Background** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Background step Container Registry and Image settings](./background-step-settings#container-registry-and-image).
+For the **Background** steps to run the PostgreSQL services, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Background** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Background step Container Registry and Image settings](./background-step-settings.md#container-registry-and-image).
 
 ```mdx-code-block
 <Tabs>
@@ -29,7 +29,7 @@ For the **Background** steps to run the PostgreSQL services, the build environme
 
 1. Go to the **Build** stage in the pipeline where you want to add the **Background** steps.
 2. On the **Execution** tab, select **Add Step**, and select the **Background** step from the Step Library.
-3. Configure the [Background step settings](./background-step-settings). Required settings depend on your build infrastructure.
+3. Configure the [Background step settings](./background-step-settings.md). Required settings depend on your build infrastructure.
 
 ```mdx-code-block
 <Tabs>
@@ -42,7 +42,7 @@ For the **Background** steps to run the PostgreSQL services, the build environme
    * `POSTGRES_DB`: Name for the database.
    * `POSTGRES_PASSWORD`: Password for the specified user/database. You can use an expression to [reference a Harness text secret](/docs/platform/secrets/add-use-text-secrets/).
 * Add a **Port Binding**, and then set the **Host Post** to `5432` and the **Container Port** to the desired port for this database instance, such as `5433`.
-* Configure [other settings](./background-step-settings), such as **Command**, **Entry Point**, **Container Registry**, and **Image**, if needed.
+* Configure [other settings](./background-step-settings.md), such as **Command**, **Entry Point**, **Container Registry**, and **Image**, if needed.
 
 ```mdx-code-block
   </TabItem>
@@ -57,8 +57,8 @@ For the **Background** steps to run the PostgreSQL services, the build environme
 * Add the following **Environment Variables**:
    * `POSTGRES_USER`: Postgres database user name.
    * `POSTGRES_DB`: Name for the database.
-   * `POSTGRES_PASSWORD`: Password for the specified user/database. You can use an expression to [reference a Harness text secret](/docs/platform/secrets/add-use-text-secrets/).
-* Configure [other settings](./background-step-settings), if needed.
+   * `POSTGRES_PASSWORD`: Password for the specified user/database. You can use an expression to [reference a Harness text secret](/docs/platform/secrets/add-use-text-secrets).
+* Configure [other settings](./background-step-settings.md), if needed.
 
 ```mdx-code-block
   </TabItem>
@@ -78,7 +78,7 @@ For the **Background** steps to run the PostgreSQL services, the build environme
   <TabItem value="YAML" label="YAML" default>
 ```
 
-In Harness, go to the pipeline where you want to run the PostgreSQL services. In the `CI` stage, add one `Background` step for each PostgreSQL database, and group the steps to run in parallel. Required [Background step settings](./background-step-settings) depend on your build infrastructure.
+In Harness, go to the pipeline where you want to run the PostgreSQL services. In the `CI` stage, add one `Background` step for each PostgreSQL database, and group the steps to run in parallel. Required [Background step settings](./background-step-settings.md) depend on your build infrastructure.
 
 ```mdx-code-block
 <Tabs>
@@ -161,7 +161,7 @@ In Harness, go to the pipeline where you want to run the PostgreSQL services. In
 
 :::tip
 
-For the `POSTGRES_PASSWORD`, you can use an expression to [reference a Harness text secret](/docs/platform/secrets/add-use-text-secrets/).
+For the `POSTGRES_PASSWORD`, you can use an expression to [reference a Harness text secret](/docs/platform/secrets/add-use-text-secrets).
 
 :::
 
@@ -172,9 +172,9 @@ For the `POSTGRES_PASSWORD`, you can use an expression to [reference a Harness t
 
 ## Test the services
 
-You can add a [Run step](../run-ci-scripts/run-step-settings) to confirm your PostgreSQL services are running before running other steps that need to interact with those services.
+You can add a [Run step](../run-ci-scripts/run-step-settings.md) to confirm your PostgreSQL services are running before running other steps that need to interact with those services.
 
-For the **Run** step to run `psql` commands, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Run step Container Registry and Image settings](../run-ci-scripts/run-step-settings#container-registry-and-image).
+For the **Run** step to run `psql` commands, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Run step Container Registry and Image settings](../run-ci-scripts/run-step-settings.md#container-registry-and-image).
 
 ```mdx-code-block
 <Tabs>
@@ -182,7 +182,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
 ```
 
 1. In the same **Build** stage as your **Background** steps, add a **Run** step after (*not* in parallel with) your **Background** steps.
-2. Configure the [Run step settings](../run-ci-scripts/run-step-settings#settings). Required settings depend on your build infrastructure.
+2. Configure the [Run step settings](../run-ci-scripts/run-step-settings.md#settings). Required settings depend on your build infrastructure.
 
 ```mdx-code-block
 <Tabs>
@@ -207,7 +207,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
    psql -U postgres -d test1 -h Background_2 -p 5434
    ```
 
-* Configure [other settings](./background-step-settings), if needed.
+* Configure [other settings](./background-step-settings.md), if needed.
 
 ```mdx-code-block
   </TabItem>
@@ -233,7 +233,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
    psql -U postgres -d test1 -h localhost -p 5434
    ```
 
-* Configure [other settings](./background-step-settings), if needed.
+* Configure [other settings](./background-step-settings.md), if needed.
 
 ```mdx-code-block
   </TabItem>
@@ -241,14 +241,14 @@ For the **Run** step to run `psql` commands, the build environment must have the
 ```
 
 3. Select **Apply Changes** to save the step.
-4. Run your pipeline to test your PostgreSQL services. You can monitor and review build logs on the [Build details page](../viewing-builds). Once you've confirmed that the services run as expected, you can configure the rest of your pipeline. Note that **Background** steps don't persist across stages.
+4. Run your pipeline to test your PostgreSQL services. You can monitor and review build logs on the [Build details page](../viewing-builds.md). Once you've confirmed that the services run as expected, you can configure the rest of your pipeline. Note that **Background** steps don't persist across stages.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="YAML" label="YAML" default>
 ```
 
-In the same `CI` stage where you added the `Background` steps, add a `Run` step after the `Background` steps. Make sure the `Run` step *isn't* in the `-parallel` group. Required [Run step settings](../run-ci-scripts/run-step-settings) depend on your build infrastructure.
+In the same `CI` stage where you added the `Background` steps, add a `Run` step after the `Background` steps. Make sure the `Run` step *isn't* in the `-parallel` group. Required [Run step settings](../run-ci-scripts/run-step-settings.md) depend on your build infrastructure.
 
 ```mdx-code-block
 <Tabs>
@@ -311,11 +311,11 @@ psql -U POSTGRES_USER -d SECOND_DATABASE_NAME -h localhost -p SECOND_BACKGROUND_
 
 :::tip
 
-For the `POSTGRES_PASSWORD`, you can use an expression to [reference a Harness text secret](/docs/platform/secrets/add-use-text-secrets/).
+For the `POSTGRES_PASSWORD`, you can use an expression to [reference a Harness text secret](/docs/platform/secrets/add-use-text-secrets).
 
 :::
 
-After adding the `Run`step, run your pipeline to test your PostgreSQL services. You can monitor and review build logs on the [Build details page](../viewing-builds). Once you've confirmed that the services run as expected, you can configure the rest of your pipeline. Note that `Background` steps don't persist across stages.
+After adding the `Run`step, run your pipeline to test your PostgreSQL services. You can monitor and review build logs on the [Build details page](../viewing-builds.md). Once you've confirmed that the services run as expected, you can configure the rest of your pipeline. Note that `Background` steps don't persist across stages.
 
 ```mdx-code-block
   </TabItem>

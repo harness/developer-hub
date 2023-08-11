@@ -62,7 +62,7 @@ To learn about organizations and projects, go to [Create Organizations and Proje
 
 Harness RBAC uses **Principals**, **Resource Groups** and **Roles** to control access.
 
-* [Principals](#principal) are entities taking action in the system. These include users, user groups, and service accounts.
+* [Principals](#principals) are entities taking action in the system. These include users, user groups, and service accounts.
 * [Resource groups](#resource-groups) define what objects can be acted on. Objects include organizations, projects, pipelines, connectors, users, and more.
 * [Roles](#roles) define what actions can be taken on objects. Actions include view, create, edit, delete, and so on.
 

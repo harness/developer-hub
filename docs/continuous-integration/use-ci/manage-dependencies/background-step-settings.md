@@ -38,7 +38,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 :::tip
 
-You can use the Background step **Id** to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
+You can use the Background step **Id** to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `BackgroundStepId:5000` where it might otherwise call `localhost:5000`.
 
 <figure>
 
@@ -47,7 +47,7 @@ You can use the Background step **Id** to call services started by Background st
 <figcaption>The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
 </figure>
 
-If the Background step is inside a step group, you must include step group ID, such as `curl [stepGroupId]_[backgroundStepId]:5000`, even if both steps are in the same step group.
+If the Background step is inside a step group, you must include step group ID, such as `curl StepGroupId_BackgroundStepId:5000`, even if both steps are in the same step group.
 
 :::
 
@@ -85,7 +85,7 @@ Use these fields to define the commands that you need to run in the Background s
 
 ### Shell
 
-Select the shell type for the commands defined in **Entry Point** or **Command**. Options include: **Bash**, **PowerShell**, **Pwsh** (PowerShell Core), **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
+Select the shell type for the commands defined in **Entry Point** or **Command**. Options include: **Bash**, **PowerShell**, **Pwsh** (PowerShell Core), **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build machine or through a specified [Container Registry and Image](#container-registry-and-image).
 
 ### Entry Point
 
@@ -283,23 +283,18 @@ If the service is running in a container, you can select an option to set the pu
 
 ## Port Bindings
 
-Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running: VMs use the **Host Port** and containerized steps use the **Container Port**.
+The host port and container port binding are similar to [port mapping in Docker](https://docs.docker.com/config/containers/container-networking/). Usually the ports are the same unless the default host port for the Background step is already in use by another local service or you are [running multiple instances of the same service](./multiple-postgres.md).
 
-<details>
-<summary>Port Bindings example</summary>
+Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running.
 
-Assume you create a Background step with the **Name** and **Id** `myloginservice`.
+For example, assume you create a Background step with the **Name** and **Id** `myloginservice`. To call this service in later steps in the same stage, you use:
 
-- A containerized step talks to this service using `myloginservice:container_port`.
-- A step, such as a Run or Run Test step, that runs directly on the VM or in a Kubernetes cluster talks to the service using `localhost:host_port`.
+* `myloginservice:container_port` for containerized steps.
+* `localhost:host_post` for steps running directly on the build machine or in a Kubernetes cluster build infrastructure.
 
-</details>
+:::info
 
-The host port and container port binding are similar to [port mapping in Docker](https://docs.docker.com/config/containers/container-networking/). Usually the ports are the same unless the default host port for the Background step is already in use by another local service.
-
-:::note
-
-If your build stage uses Harness Cloud build infrastructure and you are running a Docker image in a Background step, you must specify **Port Bindings** if you want to reference that Background step in a later step in the pipeline (such as in a cURL command in a Run step).
+If your build stage uses Harness Cloud build infrastructure and you are running a Docker image in a Background step, you must specify **Port Bindings** if you want to reference that Background step in a later step in the pipeline (such as in a cURL command in a Run step). More more information about referencing background services in other steps, go to [Name and Id](#name-and-id).
 
 :::
 

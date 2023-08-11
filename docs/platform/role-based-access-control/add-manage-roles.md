@@ -16,7 +16,7 @@ Roles are scope-specific, and you can create them at any [scope](./rbac-in-harne
 
 ## Roles and resource groups work together
 
-Roles are applied together with [resource groups](#resource-groups) to create a complete set of permissions and access. For example:
+Roles are applied together with [resource groups](./add-resource-groups) to create a complete set of permissions and access. For example:
 
 * You can assign the **Organization Admin** role with a resource group that is limited to specific projects or specific organizations.
 * You can assign the **Pipeline Executor** role with a resource group that only allows access to specific pipelines, rather than all pipelines in the project.
