@@ -77,19 +77,19 @@ To make sure that EC2 recommendations are shown from all the AWS member accounts
 
 ## Azure
 
-Subscriptions in Azure are organized in a Tenant with management groups. We first create a billing export under the root tenant payer scope and then configure this export in Harness to get billing data ingested.
+Subscriptions in Azure are organized in a Tenant with management groups. We first [create a billing export](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-azure#azure-billing-exports) under the root tenant payer scope and then configure this export in Harness to get billing data ingested.
 
-To create a billing export we first need a storage account it can be written to. You then go to the cost management pane in your azure portal and select the enterprise billing scope. Then on the left there is an option for exports. Create a new billing export following the linked guide. 
+To [create a billing export](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-azure#azure-billing-exports) we first need a storage account it can be written to. You then go to the cost management pane in your azure portal and select the enterprise billing scope. Then on the left there is an option for exports.
 
 Then in Harness we create a new CCM Azure connector. This connector asks for the tenant and subscription id, enter the subscription id for which the storage account is located in. Then enter the billing export information based on how it was created in Azure. 
 
 [Read an in-depth article here on setting up your first Azure CCM connector.](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws)
 
-When prompted for the features to enable, since this subscription may be used for other things, you will probably end up enabling a few of the additional features based on your needs.
+When prompted for the features to enable, check the options relivant to how you will be using Harness.
 
-In the next screen the connector creator gives you a list of Azure CLI commands that accomplish the setup. You may or may not be able to complete these steps with the CLI, or you may need to accomplish the steps via another method based on your platform team’s requirements. They are simple role assignment steps.
+In the next screen the connector creator gives you a list of Azure CLI commands that accomplish the setup. You may or may not be able to complete these steps with the CLI, or you may need to accomplish the steps via another method based on your platform team’s requirements. You will notice that we are first adding a Harness-owner Azure enterprise application into your Azure tenant, which is then the identity that we apply permissions for.
 
-Unlike AWS we are not creating a role here but instead adding the Harness-owned Azure app into their Azure tenant and then assigning access. Access to the storage account for the billing export should be added explicitly, but the access for inventory management and autostopping should be given at a higher scope so it only needs to be done once (usually via management groups).
+Access to the storage account for the billing export should be added explicitly as shown in the guide, but the permissions for things like inventory management and auto stopping should be applied at the management group level to streamline the access needed for other subscriptions that we will add shortly.
 
 After the initial subscription and billing export are connected we can continue to create subscription connectors for every subscription that you want auto stopping in or VM recommendations for. Again the [terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_azure_cloud_cost) is recommended. If the access for the other features was given at a management group level then there should be nothing needed on the azure side to onboard the rest of the subscriptions, just creating the connectors in Harness.
 
@@ -126,9 +126,9 @@ To get VM recommendations, you needs to [enable Azure Advisor VM/VMSS recommenda
 
 ## GCP
 
-Projects in gcp are structures via organizations. You should have a billing project in your GCP organization, this is the first project we should create a connector for. First you need to create a billing export in this billing project as outlined in the guide below. You can optionally create a “detailed” billing export which exposes resource level information, although this cant be used in the platform yet (but may be a good idea to enable for when the data is surfaced up in the future).
+Projects in gcp are structured via organizations. You should have a billing project in your GCP organization, this is the first project we should create a connector for. First you need to [create a billing export](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp#gcp-billing-export) in this billing project. You can optionally create a “detailed” billing export which exposes resource level information.
 
-The Harness GCP connector wizard walks you through entering the billing export information, and after checking the features you want to enable, prompts you with an itemized list of actions to take to grant this access to your GCP project. Again we are given a Harness owned service account that you can simply add to their organization. To save time you can give this access at the organization level to streamline the process
+The Harness GCP connector wizard walks you through entering the billing export information, and after checking the features you want to enable, prompts you with an itemized list of actions to take to grant this access to your GCP project. Again we are given a Harness owned service account that you can simply add to your organization. To save time you can give this access at the organization level to streamline the process
 
 [Read an in-depth article here on setting up your first GCP CCM connector.](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp)
 
