@@ -9,6 +9,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import DindTrbs from '/docs/continuous-integration/shared/dind-bg-gha-trbs.md';
+```
+
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) are a GitHub feature that enable you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts.
 
 Harness CI supports launching GitHub Actions as part of a pipeline stage using the generic **Plugin** step or the **GitHub Action plugin** steps.
@@ -43,13 +49,7 @@ For more information, go to:
 
 ## Add the Plugin step
 
-:::info Docker-in-Docker
-
-If a stage has a [Docker-in-Docker Background step](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md), you can't use GitHub Actions that launch Docker-in-Docker (DinD) in the same stage.
-
-If possible, run the **Plugin** step for your GitHub Action in a separate stage, or try to find a GitHub Action that doesn't use DinD.
-
-:::
+<DindTrbs />
 
 1. In your pipeline's **Build** stage, and a [Plugin step](./plugin-step-settings-reference.md).
 2. Enter a **Name** and optional **Description**.
@@ -75,10 +75,6 @@ You can use variable expressions for these values, such as `credentials: <+stage
 
 :::
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 ```mdx-code-block
 <Tabs>
   <TabItem value="Visual" label="Visual editor example">
@@ -112,8 +108,6 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 ```
-
-
 
 ### Private Action repos
 
