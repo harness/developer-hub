@@ -324,7 +324,7 @@ For more information, go to the [built-in and custom Harness variables reference
 
 In the Pipeline Studio's Visual Editor, you can use the **Value type selector** to select **Expression**.
 
-![](./static/runtime-inputs-02.png)
+![](./static/runtime-inputs-03.png)
 
 Harness provides suggestions for built-in expressions as you type.
 

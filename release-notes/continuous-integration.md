@@ -25,7 +25,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-* Improved support for <!--[Drone environment variables]()--> (prefixed by `DRONE_`) in CI pipelines. This improves compatibility for [Plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and eliminates the need for tedious variable-to-variable workarounds. (CI-7600) <!-- also update whats-new.md -->
+* Improved support for <!--[Drone environment variables]--> (prefixed by `DRONE_`) in CI pipelines. This improves compatibility for [Plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and eliminates the need for tedious variable-to-variable workarounds. (CI-7600) <!-- also update whats-new.md -->
 
 ```mdx-code-block
   </TabItem>
