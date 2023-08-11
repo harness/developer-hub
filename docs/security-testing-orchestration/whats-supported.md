@@ -52,7 +52,7 @@ import StoSupportedBinaries from '/docs/security-testing-orchestration/sto-techr
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Ingestions">
+  <TabItem value="Data ingestion">
 ```
 
 ```mdx-code-block
@@ -65,7 +65,7 @@ In addition to ingesting scan data in the external scanner's native format, STO 
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Build infrastructures">
+  <TabItem value="Build infrastructure">
 ```
 
 ### STO support by CI build infrastructure type
