@@ -207,7 +207,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
    psql -U postgres -d test1 -h Background_2 -p 5434
    ```
 
-* Configure [other settings](./background-step-settings.md), if needed.
+* Configure [other settings](../run-ci-scripts/run-step-settings.md#settings), if needed.
 
 ```mdx-code-block
   </TabItem>
@@ -233,7 +233,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
    psql -U postgres -d test1 -h localhost -p 5434
    ```
 
-* Configure [other settings](./background-step-settings.md), if needed.
+* Configure [other settings](../run-ci-scripts/run-step-settings.md#settings), if needed.
 
 ```mdx-code-block
   </TabItem>
