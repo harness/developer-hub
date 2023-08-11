@@ -18,7 +18,7 @@ For detailed documentation of endpoints and other Harness API reference informat
 
 ## Requirements
 
-To use Harness APIs to manage a resource, you must have the necessary [permissions](./api-permissions-reference) to view, create/edit, or delete that resource. You need one of the following default roles or an equivalent [custom role](../../role-based-access-control/add-manage-roles): Account Administrator, Organization Admin, Project Admin.
+To use Harness APIs to manage a resource, you must have the necessary [permissions](./api-permissions-reference) to view, create/edit, or delete that resource. You need one of the following default roles or an equivalent [custom role](../../role-based-access-control/add-manage-roles.md): Account Administrator, Organization Admin, Project Admin.
 
 You need an understanding of Harness, [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness), sending API requests, and mechanisms for sending requests, such as `curl`.
 
