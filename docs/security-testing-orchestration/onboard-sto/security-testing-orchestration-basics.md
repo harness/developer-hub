@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Companies perform security testing to avoid introducing vulnerabilities into the products their customers depend on. If a customer catches the security issue instead of the company, trust is lost.
 
-Harness Security Testing Orchestration (STO) enables DevOps teams to left shift security testing. STO orchestrates scanning, intelligently deduplicating scanner output, prioritizing remediations, and enforcing governance into your Pipeline. STO puts scanning directly into your Pipelines to ensure that vulnerabilities are caught and fixed before your products are ever released.
+Harness Security Testing Orchestration (STO) enables DevOps teams to left-shift security testing. STO orchestrates scanning, intelligently deduplicating scanner output, prioritizing remediations, and enforcing governance into your Pipeline. STO puts scanning directly into your Pipelines to ensure that vulnerabilities are caught and fixed before your products are ever released.
 
 This topic describes the security scanning problems facing developers and how STO provides the solutions they need.
 
@@ -38,7 +38,7 @@ Developers need to move forward but by the time the security testing feedback ar
 
 #### SDLC complexity problem
 
-Building software, from raw code to development to deployment, is too complex because there are many tools for so many types of scanning and the outputs from all these tools are disparate. There is no uniform data format or language.
+Building software, from raw code to development to deployment, is too complex because there are many tools for so many types of scanning, and the outputs from all these tools are disparate. There is no uniform data format or language.
 
 <!-- 
 ![](./static/security-testing-orchestration-basics-29.png)
@@ -52,7 +52,7 @@ In addition DevOps and security teams need to act on the information provided fr
 
 ### Harness Security Testing Orchestration (STO) solution
 
-Harness STO enables DevOps and security teams to left shift security testing:
+Harness STO enables DevOps and security teams to left-shift security testing:
 
 * **Test:** test code, OSS libraries, containers, and live apps with popular security scanners as part of the CI/CD Pipeline. Harness orchestrates the scanners to ensure that scanning is timely and easy to apply.
 * **Remediate:** repair security vulnerabilities by empowering developers with a prioritized list that is intelligently deduplicated across all scanners. Harness provides dashboards with clear security vulnerabilities identified.
