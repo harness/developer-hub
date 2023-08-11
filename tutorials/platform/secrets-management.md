@@ -252,8 +252,6 @@ If you are NOT using the default organization and project, make sure to change t
 
 You can now use this secret manager in your pipeline.
 
----------------------------------------------------
-
 ```mdx-code-block
 </TabItem>
 <TabItem value="AWS Secret Manager">
@@ -425,4 +423,4 @@ To run the pipeline, do the following:
 
 <docimage path={require('./static/secret/secret-log.png')} width="60%" height="60%" title="Click to view full size image" />
 
-When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (`*`) so that the secret value is never displayed.​ For more information, go to [secrets and log-sanitization](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/secrets-and-log-sanitization).
+When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (`*`) so that the secret value is never displayed.​ For more information, go to [secrets and log-sanitization](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/secrets-and-log-sanitization). The only exception is output variables. If an output variable value contains a secret, be aware that the secret will be visible in the build details. For more information, go to [output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#output-variables).
