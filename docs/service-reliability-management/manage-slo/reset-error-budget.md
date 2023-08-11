@@ -24,3 +24,5 @@ You can perform an error budget reset for SLOs with a time period type set as Ca
 
 4. Select **Save**.  
    The error budget will be successfully reset. An icon appears on the error budget burndown chart, indicating the time when the error budget was reset. It may take up to 30 minutes for the reset icon to appear on the error budget burndown chart.
+
+   
