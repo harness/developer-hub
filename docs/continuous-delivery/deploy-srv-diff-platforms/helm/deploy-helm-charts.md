@@ -618,7 +618,7 @@ https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
    helm secrets decrypt secrets.enc.yaml > secrets.yaml    // store the decrypted file in a temporary folder
    ```
    
-   Alternatively, run the `--dependency-update -f secrets.yaml` command flag in the manifest configuration to resolve the values as shown in the image below:
+   Alternatively, run the `--dependency-update -f secrets.yaml` command flag in the manifest configuration to resolve the values. Please remember that files submitted through this method take precedence, followed by the override files set in the "Service." Avoid using encrypted files as overrides, as they will replace decrypted values with encrypted ones. Example on how to configure this is shown in the image below: 
 
    ![](./static/dependency-update-secrets-yaml.png)
 
