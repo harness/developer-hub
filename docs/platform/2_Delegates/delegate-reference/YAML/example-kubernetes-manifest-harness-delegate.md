@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Go to the following for an example of a Kubernetes manifest used to configure Harness Delegate and a default `values.yaml` file.
+Go to the following for an example of a Kubernetes manifest used to configure Harness Delegate and a Helm chart default `values.yaml` file.
 
 - [Sample Kubernetes manifest](https://github.com/harness/delegate-kubernetes-manifest/blob/main/harness-delegate.yaml)
 - [Sample delegate Helm chart default `values.yaml` file](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml)
