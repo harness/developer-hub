@@ -322,3 +322,37 @@ You can use Ternary operators to achieve this use case more information on this 
 #### How do we easily change git folders in a repo for the git exp project?
 The default branch and file path will not be changeable after the creation as we store data in Git end and only metadata is stored in Harness. 
 You can change it to the required path while creating the initial entity you can select the folder other than.harness Now you can recreate the entity using the same yaml and make minor changes like file path and entity id.
+
+### How long is the main repo content cached before the latest pipeline code version is pulled from the remote Github repo?
+The content is cached for each branch the file has been fetched for to date. The expiry time for content is 30 days. 
+
+We don’t auto-reload cache on Back End as a synchronous job or similar. Any execution of that particular pipeline or involving that particular template/input set updates the cached content as we fetch everything from GIT during execution.
+
+Until any user-driven operation is performed, e.g. reload-from-git button on UI, execution of the pipeline / any entity via RUN button / UI or execution of entity via trigger etc.
+
+### Is there a way to force the pipeline editor to read the latest version from the remote Github repo?
+Yes, the “reload-from-git” option on three dots does the job.
+
+### Not able to delete the template having an “Ad” string in between with adblocker installed?
+It will happen due to an ad blocker extension installed on the user system - and it will happen only for the template with the name of the template Eg:(Sysdig AdHoc) containing an “Ad” string in between, and when this is sent in the API as a path or a query param - this will get blocked by the ad blocker.
+ 
+These ad blockers have some rules for the URIs - if it contains strings like “advert”, “ad”, “double-click”, “click”, or something similar - they block it.
+
+### Pipeline variables are not being translated in HTTP step assertion and output variables.
+Expression to assert Numeric values, Please note that asserting on integers should be done without quotes since both sides of the assertions should be of number format (for JEXL).
+
+* <+httpResponseCode>==200
+* 200==<+httpResponseCode>
+* <+pipeline.variables.EXPECTED_RESPONSE>==<+httpResponseCode>
+
+
+Expression to assert on Strings would require double quotes. Please note that it would require Double Quotes on both ends.
+
+### Can I customize the looping conditions and behaviour?
+Yes, Harness NextGen often offers customization options to define the loop exit conditions, maximum iteration counts, sleep intervals between iterations, and more information here https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/
+
+### What are the use cases for utilizing a Looping Strategy in Harness NextGen?
+Looping strategies are useful for scenarios like canary deployments, gradual rollouts, and validation checks where you want to keep iterating until you achieve the desired result.
+
+### Can I deploy different versions of serverless functions using Harness?
+Yes, Harness generally allows users to deploy multiple versions of serverless functions, helping in testing and gradual rollout.
