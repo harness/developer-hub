@@ -608,7 +608,7 @@ https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
    sops --encrypt --age $SOPS_AGE_KEY secrets.yaml > secrets.enc.yaml
    ```
    This command creates a `secrets.yaml` file.
-3. Enter the following commands to decrypt the `secrets.yaml` file and use it to resolve the values in your Chart. This File will be used to override the values wherever required:
+3. Enter the following commands to decrypt the `secrets.yaml` file and use it to resolve the values in your Chart. This file will be used to override values wherever required:
    
    ```
    cd $MANIFEST_FILES_DIRECTORY    //go to the directory containing manifest-files
@@ -618,7 +618,7 @@ https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
    helm secrets decrypt secrets.enc.yaml > secrets.yaml    // store the decrypted file in a temporary folder
    ```
    
-4. Add the `--dependency-update -f secrets.yaml` command flag in the manifest configuration to resolve the values. Please remember that files submitted through this method take precedence, followed by the override files set in the "Service." Avoid using encrypted files as overrides, as they will replace decrypted values with encrypted ones. Example on how to configure this is shown in the image below: 
+4. Add the `--dependency-update -f secrets.yaml` command flag in the manifest configuration to resolve the values. Please remember that files submitted through this method take precedence, followed by the override files set in the Harness service. Avoid using encrypted files as overrides as they will replace decrypted values with encrypted ones. An example on how to configure this is shown in the image below: 
 
    ![](./static/dependency-update-secrets-yaml.png)
 
