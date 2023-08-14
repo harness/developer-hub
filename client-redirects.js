@@ -1923,7 +1923,7 @@ module.exports = {
     // Created by kat-enos on Jan 22, 2023
     {
       from: "/docs/platform/Delegates/delegate-reference/example-harness-delegate-yaml",
-      to: "/docs/platform/Delegates/delegate-reference/YAML/example-harness-delegate-yaml",
+      to: "/docs/platform/delegates/delegate-reference/yaml/example-kubernetes-manifest-harness-delegate/",
     },
 
     // Created by kat-enos on Jan 22, 2023
