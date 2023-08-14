@@ -1370,3 +1370,18 @@ Harness deploys the tasks in the above ECS service definition containing the cir
 
 During failure scenarios, ECS circuit breaker performs a rollback automatically based on the threshold configuration.
 
+
+### Overrides Support
+
+Harness supports Manifest Overrides for the ECS Service. You may want to manage different ECS Configuration files for different environments, infrastrctures, etc. Through the overrides capability, user's can override the service configuration and Harness will fetch the file and compute the variables at runtime when the service is deployed into a given environment, infrastructure definition pair.
+
+Users can override the:
+
+- Task Definition
+- Service Definition
+- Scaling Policy
+- Scalable Target
+
+These overrides can be configured at the Global Environment, Service-specific environment override, infrastructure, and service-specific infrastructure level. 
+
+
