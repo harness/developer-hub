@@ -129,3 +129,5 @@ f0621c1ba05a53baafed77a5fd5e299b525a53e1:docusaurus.config.js:generic-api-key:29
 0af8e5c4fbcd4effe94db043e20a4ac1a9a164a4:.drone.yml:generic-api-key:19
 eeb95fa3287bb5e22610034eb597e42053007bdb:docusaurus.config.js:generic-api-key:141
 b2bda282a2d051770621134b643ecdf6e891ca47:docs/cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-load-balancer/create-azure-autoproxy-lb.md:private-key:96
+e086f54c8a63a4ab608a9cab56fc13c351396841:src/components/NavbarItems/CoveoSearch.js:generic-api-key:109
+f0621c1ba05a53baafed77a5fd5e299b525a53e1:docusaurus.config.js:generic-api-key:292
