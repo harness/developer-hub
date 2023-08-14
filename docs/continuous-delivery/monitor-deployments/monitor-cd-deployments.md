@@ -220,6 +220,12 @@ Harness CD includes an extensive set of dashboard components that provide visibi
 This feature is behind the feature flag `CDS_CUSTOM_STAGE_EXECUTION_DATA_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
+<figure>
+
+![CD deployment performance dashboard - example](./static/cd-performance-monitoring-dashboard.png)
+<figcaption>CD deployment performance dashboard - example</figcaption>
+</figure>
+
 You can use the following components to monitor the performance of your deployment pipelines: 
 
 - Manifest data (only for HelmChart Manifest type for Helm/K8s deployments)
