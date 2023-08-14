@@ -18,19 +18,13 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 17, 2023, version 54xx
+## Latest: Version 54xx <!-- Aug 17 2023 -->
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### New features and enhancements
 
 * Improved support for <!--[Drone environment variables]--> (prefixed by `DRONE_`) in CI pipelines. This improves compatibility for [Plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and eliminates the need for tedious variable-to-variable workarounds. (CI-7600) <!-- also update whats-new.md -->
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+### Early access features
 
 **GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
 
@@ -38,10 +32,7 @@ This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION` and it r
 
 With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings), and you can use GitHub connectors with GitHub App authentication in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues
 
 * <!-- Think this should be excluded bc it wasn't a true fix (CI-9056)-->
 * Improved the way [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) handles tests that call more tests. Previously, this rarely caused inaccurate renderings in the call graph visualization for Java-based tests. (CI-9053)
@@ -50,10 +41,9 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 * You can now use [expressions](/docs/platform/Variables-and-Expressions/harness-variables), such as those for [matrix strategies](/docs/platform/Pipelines/run-a-stage-or-step-multiple-times-using-a-matrix), in [build infrastructure `platform` settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#infrastructure) when working in the YAML editor. (CI-6830)
 * Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. This fix requires Harness Delegate version 803xx or later. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate). (CI-9122)
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
+### Hotfixes
+
+This release does not include hotfixes.
 
 ## Previous releases
 

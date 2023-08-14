@@ -14,7 +14,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - August 17, 2023
 
-<!-- I don't know which heading to use because this was under CI, but it's a delegate-dependent change, and the feature flag is CDS. Also, it's a cross-platform connector, and both CI and CD have Git Clone steps. -->
+<!-- I don't know which heading to use because this was under CI, but it's a delegate-dependent change, and the feature flag is 'CDS'. Also, it's a cross-platform connector, and both CI and CD have Git Clone steps. -->
 **GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
 
 This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION` and it requires Harness Delegate version 803xx or later. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate).

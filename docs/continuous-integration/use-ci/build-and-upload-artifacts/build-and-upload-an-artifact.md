@@ -192,7 +192,7 @@ import TabItem from '@theme/TabItem';
 ```
 ```mdx-code-block
 <Tabs>
-  <TabItem value="hosted" label="Harness Cloud build infrastructure" default>
+  <TabItem value="hosted" label="Harness Cloud, local runner, or self-hosted VM build infrastructures" default>
 ```
 
 1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
@@ -205,33 +205,7 @@ import TabItem from '@theme/TabItem';
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="selfvm" label="Self-hosted VM build infrastructure">
-```
-
-1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
-2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
-3. Select **Add Variable** and enter the following:
-   * **Name:** `PLUGIN_DRY_RUN`
-   * **Type:** **String**
-   * **Value:** `true`
-4. Save and run the pipeline.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="local" label="Local runner build infrastructure">
-```
-
-1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
-2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
-3. Select **Add Variable** and enter the following:
-   * **Name:** `PLUGIN_DRY_RUN`
-   * **Type:** **String**
-   * **Value:** `true`
-4. Save and run the pipeline.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="other" label="Kubernetes cluster build infrastructure">
+  <TabItem value="other" label="Kubernetes cluster build infrastructures">
 ```
 
 With the built-in **Build and Push** steps:
