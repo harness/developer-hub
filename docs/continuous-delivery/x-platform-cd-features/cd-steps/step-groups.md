@@ -161,7 +161,7 @@ You can customize and override service variables during the execution of a step 
     2. Step group override (parent group, during execution)
     3. Service environment overrides
     4. Environment configuration
-    5. Default value
+    5. Service variable value (default)
 
 - Step group overrides are not recommended for artifacts and other objects fetched during the Service phase of a pipeline. The one exception is [custom remote manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/), because they can also be used during the execution stage of a pipeline.
 
@@ -172,6 +172,15 @@ The following pipeline illustrates how to override service variables. The servic
 * The `parent` step group overrides `svar1` with the value `fromStepGroup_OverriddenAtParentStepGroup`.
 * The `parent` step group also has a variable `svarParent` with the value `DefinedAtParentLevel`. The `child` step group overrides this with the value `OverridenByChildStepGroup`.
 * The `child` step group overrides `svar2` with the value `fromStepGroup_OverriddenAtChildLevel`. 
+
+
+<figure>
+
+![](./static/override-service-variables-pipeline-example.png)
+
+<figcaption>Overriding service variables in a pipeline - example</figcaption>
+</figure>
+
 
 ```yaml
 pipeline:

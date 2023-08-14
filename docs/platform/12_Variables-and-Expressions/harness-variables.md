@@ -805,6 +805,10 @@ Resolves to a boolean value to indicate whether the GitOps option is enabled (tr
 
 For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart).
 
+### <+serviceVariableOverrides.VARIABLE_NAME>
+
+Override a service variable during the execution of a step group. This provides significant flexibility and control over your pipelines. For more information, go to [Override service variables in step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/#override-service-variables-in-step-groups)
+
 ## Manifest
 
 There are generic and deployment type-specific expressions for manifests.
