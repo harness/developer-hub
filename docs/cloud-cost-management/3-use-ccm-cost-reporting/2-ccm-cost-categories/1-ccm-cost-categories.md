@@ -47,21 +47,21 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ## Create cost categories
 
-You can create a Cost Category
+To create a cost category perform the following steps:
 
 1. In your Harness application, go to **Cloud Costs**.
 2. Go to **Setup**, and then select **Cost Categories**.
 3. Select **New Cost Category**.
 
 
-You can also create a new Cost Category when you create a Perspective.
+You can also create a new cost category when you create a perspective.
 
 ![](./static/use-ccm-cost-categories-01.png)
 
-The new Cost Category appears.
+The new cost category appears.
 
 
-4. In the new Cost Category, enter a name. For example, if this Cost Category is for departments, you could name it **Departments**.
+4. In the new cost category, enter a name. For example, if this cost category is for departments, you could name it **Departments**.
 
   ![](./static/cost-category-builder-1.png)
 
@@ -96,7 +96,6 @@ The AND and OR operators are used to filter data based on more than one conditio
  * OR: use OR to filter data sources that include one of the criteria. You can use AND and OR together.
   
     ![](./static/use-ccm-cost-categories-04.png)
-
 
 
 :::important note
