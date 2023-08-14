@@ -3115,5 +3115,18 @@ module.exports = {
       from:  "/docs/self-managed-enterprise-edition/introduction/supported-features-and-integrations",
       to:   "/docs/self-managed-enterprise-edition/smp-supported-platforms",
     },
+    // Created by bfisher for DOC-3570 on August 14, 2023
+    {
+      from:  "/docs/platform/delegates/delegate-reference/yaml/example-harness-delegate-yaml/",
+      to:   "docs/platform/delegates/delegate-reference/yaml/example-kubernetes-manifest-harness-delegate/",
+    },
+    {
+      from:  "/docs/platform/delegates/delegate-reference/yaml/sample-harness-delegate-yaml-with-nfs-volume-mounted/",
+      to:   "docs/platform/delegates/delegate-reference/yaml/sample-create-a-permanent-volume-nfs-server/",
+    },
+    {
+      from:  "docs/platform/delegates/delegate-reference/yaml/sample-kubernetes-manifest-nfs-volume/",
+      to:   "docs/platform/delegates/delegate-reference/yaml/sample-create-a-permanent-volume-nfs-server/",
+    },
   ],
 };
