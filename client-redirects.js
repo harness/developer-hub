@@ -3103,12 +3103,17 @@ module.exports = {
     },
     // Created by bfisher for DOC-3488 on July 26, 2023
     {
-      from: "/docs/platform/resource-development/apis/rate-limits/",
+      from:  "/docs/platform/resource-development/apis/rate-limits/",
       to:   "/docs/platform/rate-limits",
     },
     {
-      from: "/docs/platform/Security/rate-limits",
+      from:  "/docs/platform/Security/rate-limits",
       to:   "/docs/platform/rate-limits",
+    },
+    // Created by bfisher for DOC-3569 on August 11, 2023
+    {
+      from:  "/docs/self-managed-enterprise-edition/introduction/supported-features-and-integrations",
+      to:   "/docs/self-managed-enterprise-edition/smp-supported-platforms",
     },
   ],
 };
