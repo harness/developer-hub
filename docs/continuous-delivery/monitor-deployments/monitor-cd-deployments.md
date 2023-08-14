@@ -216,3 +216,69 @@ https://www.youtube.com/watch?v=9fqbYP6iK3g-->
 
 See [Create Dashboards](../../platform/18_Dashboards/create-dashboards.md).
 
+### Monitor Harness and Jira approvals using custom CD dashboards
+
+Harness CD includes an extensive set of dashboard components that provide visibility into your Harness and Jira approvals. You can create custom dashbards that quickly answer questions such as:
+
+* Which Harness and Jira Approval steps are currently waiting for approvals?
+* Which Jira Create and Update steps failed and when?  
+* Which Jira tickets have been rejected in a Jira Approval step? 
+* Which deployments resulted in new or updated Jira tickets?
+
+
+:::note
+
+Currently, this feature is behind the Feature Flag `CDS_STEP_EXECUTION_DATA_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+
+<figure>
+
+![](./static/cd-approvals-dashboard-example.png)
+
+<figcaption>CD approvals dashboard - example</figcaption>
+</figure>
+
+
+You can use the following components to monitor the performance of your deployment pipelines:
+
+- Harness Approval
+
+  - Step type
+
+  - Duration
+
+  - Status
+
+  - Approver
+
+  - Error messages
+
+  - Approval message
+
+- Jira Approval
+
+  - Step type
+
+  - Duration
+
+  - Status
+
+  - Issue Type
+
+  - Jira Ticket URL (or issue key and project if the URL is unavailable)
+
+-  JIRA Create/Update
+
+  - Step type
+
+  - Duration
+
+  - Status
+
+  - Error messages
+
+  - Jira Ticket URL
+
+  - Ticket Status
