@@ -4,10 +4,6 @@ description: Image and repository scans with Fossa
 sidebar_position: 150
 ---
 
-:::note
-Currently, this integration is behind the Feature Flag `STO_STEP_PALETTE_FOSSA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 You can scan container images and repositories using [Fossa](https://www.fossa.com), a scanner that detects security vulnerabilities and other issues in open-source projects. 
 
 
