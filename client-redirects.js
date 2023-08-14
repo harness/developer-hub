@@ -1923,7 +1923,7 @@ module.exports = {
     // Created by kat-enos on Jan 22, 2023
     {
       from: "/docs/platform/Delegates/delegate-reference/example-harness-delegate-yaml",
-      to: "/docs/platform/delegates/delegate-reference/yaml/example-kubernetes-manifest-harness-delegate",
+      to: "/docs/platform/delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate",
     },
 
     // Created by kat-enos on Jan 22, 2023
@@ -3117,16 +3117,16 @@ module.exports = {
     },
     // Created by bfisher for DOC-3570 on August 14, 2023
     {
-      from:  "/docs/platform/delegates/delegate-reference/yaml/example-harness-delegate-yaml",
-      to:   "/docs/platform/delegates/delegate-reference/yaml/example-kubernetes-manifest-harness-delegate",
+      from:  "/docs/platform/delegates/delegate-reference/YAML/example-harness-delegate-yaml",
+      to:   "/docs/platform/delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate",
     },
     {
-      from:  "/docs/platform/delegates/delegate-reference/yaml/sample-harness-delegate-yaml-with-nfs-volume-mounted",
-      to:   "/docs/platform/delegates/delegate-reference/yaml/sample-create-a-permanent-volume-nfs-server",
+      from:  "/docs/platform/delegates/delegate-reference/YAML/sample-harness-delegate-yaml-with-nfs-volume-mounted",
+      to:   "/docs/platform/delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
     },
     {
-      from:  "/docs/platform/delegates/delegate-reference/yaml/sample-kubernetes-manifest-nfs-volume",
-      to:   "/docs/platform/delegates/delegate-reference/yaml/sample-create-a-permanent-volume-nfs-server",
+      from:  "/docs/platform/delegates/delegate-reference/YAML/sample-kubernetes-manifest-nfs-volume",
+      to:   "/docs/platform/delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
     },
   ],
 }
