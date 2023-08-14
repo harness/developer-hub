@@ -97,6 +97,12 @@ The AND and OR operators are used to filter data based on more than one conditio
   
     ![](./static/use-ccm-cost-categories-04.png)
 
+
+
+:::important note
+You can create a maximum of 1000 cost buckets.
+:::
+
 ### Create shared cost buckets
 
 1. Select **+ New Shared Bucket**.
@@ -111,6 +117,10 @@ For example, consider two cost targets named team A and team B. These two teams 
   ![](./static/cost-category-builder-2.png)
   
    
+:::important note
+You can create a maximum of 10 shared cost buckets.
+:::
+
 
 ### Manage unallocated costs
 
