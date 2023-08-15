@@ -432,20 +432,20 @@ Harness supports the ability to perform Kubernetes deployments into Rancher-mana
 
 You can use Harness Kubernetes and Native Helm deployment types to deploy into Rancher-managed clusters.
 
-This documentation assumes you are familiar with Rancher, have a Rancher account, and have set up Kubernetes clusters in its UI. If you are new to Rancher, see [Setting up Kubernetes Clusters in Rancher](https://ranchermanager.docs.rancher.com/v2.5/pages-for-subheaders/kubernetes-clusters-in-rancher-setup) from Rancher.
+This documentation assumes you are familiar with Rancher, have a Rancher account, and have set up Kubernetes clusters in its UI. If you are new to Rancher, go to [Setting up Kubernetes Clusters in Rancher](https://ranchermanager.docs.rancher.com/v2.5/pages-for-subheaders/kubernetes-clusters-in-rancher-setup) from Rancher.
 
 Here's a short video that demonstrates Harness Rancher integration:
 
 <docvideo src="https://www.loom.com/share/b68b91beb2304d7099333a468017376b" />
 
-To use Rancher with Harness, you set up a Harness rancher connector. Next, you set up a Rancher infrastructure definition in a Harness environment. Lastly, you select that infrastructure definition in the Harness pipeline stage that is deploying to the Rancher cluster.
+To use Rancher with Harness, you set up a Harness Rancher connector. Next, you set up a Rancher infrastructure definition in a Harness environment. Lastly, you select that infrastructure definition in the Harness pipeline stage that is deploying to the Rancher cluster.
 
 To set up a Harness Rancher connector you need:
 
 - The URL of the Rancher endpoint.
   - This is the domain name you use to connect to Rancher, such as `https://rancher-internal.dev.mycompany.io`. Make sure to include the URL scheme.
 - The bearer token for the Rancher account to use.
-  - The Rancher bearer token you use must be able to use the `/v3/clusters/{clusterName}?action=generateKubeconfig` and `/v3/clusters` APIs. The Rancher user account you use to generate the token should have the Rancher **Cluster Owner** role or a **Global Permission** that enables cluster administration. Go to [Cluster and Project Roles](https://rancher.com/docs/rancher/v2.0-v2.4/en/admin-settings/rbac/cluster-project-roles/) and [Global Permissions](https://rancher.com/docs/rancher/v2.6/en/admin-settings/rbac/global-permissions/) from Rancher.
+  - The Rancher bearer token you use must be able to use the `/v3/clusters/{clusterName}?action=generateKubeconfig` and `/v3/clusters` APIs. The Rancher user account you use to generate the token must have the Rancher **Cluster Owner** role or a **Global Permission** that enables cluster administration. Go to [Cluster and Project Roles](https://rancher.com/docs/rancher/v2.0-v2.4/en/admin-settings/rbac/cluster-project-roles/) and [Global Permissions](https://rancher.com/docs/rancher/v2.6/en/admin-settings/rbac/global-permissions/) from Rancher.
   - For steps on creating a bear token, go to [API Keys](https://ranchermanager.docs.rancher.com/v2.5/reference-guides/user-settings/api-keys) from Rancher.
   - When you create the token, you can scope it to specific clusters. A scope will limit the API key so that it will only work against the Kubernetes API of the specified clusters. If you scope the bearer token to specific clusters, Harness will only be able to query and target that list of clusters when deploying.
   - If you set an expiration period for the token, make sure that its expiration date will not impact your Harness deployments.
@@ -513,7 +513,7 @@ Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infr
   <TabItem value="Terraform Provider" label="Terraform Provider">
 ```
 
-Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the infrastructure definition.
+Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the **Infrastructure Definition**.
 
 ```mdx-code-block
   </TabItem>
@@ -527,13 +527,13 @@ To create the Harness Rancher connector, do the following:
 3. In **Rancher Connector Details**, enter a name for the connector, and then select **Continue**. You will select this name when you select a connector in the infrastructure definition.
 4. In **Details**, select **Specify rancher URL and credentials**.
 5. In **Rancher URL**, enter the URL to the Rancher server.
-6. In **Authentication**, select **Bearer Token**, and select/add a Harness secret containing the token.
+6. In **Authentication**, select **Bearer Token**, and select or add a Harness secret containing the token.
 7. Select **Continue**.
-8. In **Delegates Setup**, select/add a Harness delegate to use when performing this connection, or let Harness select the delegate.
+8. In **Delegates Setup**, select or add a Harness delegate to use when performing this connection, or let Harness select the delegate.
 9. Select **Continue**.
 
 
-To add an infrastructure definition with the Rancher connection method, do the following:
+To add an **Infrastructure Definition** with the Rancher connection method, do the following:
 
 1. In your Harness project, select **Environments**.
 2. Select or create an environment.
