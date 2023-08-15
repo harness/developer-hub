@@ -35,7 +35,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 <Kustomizedep />
 
 
-## Latest - August 17, 2023, version 803xx
+## Latest - August 17, 2023, version 80300
 
 
 
