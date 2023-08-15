@@ -207,6 +207,8 @@ This setting is only available for connection types and authentication methods w
 
 You must enable API access to use Git-based triggers, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required.
 
+Any operation that requires Harness to call GitHub APIs, including cloning a codebase, pre-populating the branch in **Run Pipeline**, etc., requires you to enable API access.
+
 Enabling API access requires configuring an API authentication method, either a personal access token or a GitHub App.
 
 ```mdx-code-block
