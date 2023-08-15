@@ -35,7 +35,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 <Kustomizedep />
 
 
-## Latest - August 10, 2023, version 80208
+## Latest - August 17, 2023, version 803xx
 
 
 
@@ -44,13 +44,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   <TabItem value="What's new">
 ```
 
-* Harness has introduced restrictions on the depth of nesting in execution pipelines to enhance system stability. Now, a node execution will not be allowed if it exceeds 25 levels of nesting. The 25th level refers to the node being the 25th child starting from the root node `pipeline`. (CDS-75249)
-
-  This limitation is configurable, allowing Harness to increase the nesting limit if required to accommodate more complex pipelines.
-
-  To determine the optimal limit, we considered scenarios with 5 nested stepGroups with a looping matrix and step group running in parallel at each possible node. As a result, we have set the limit to 25, ensuring that it should not affect any practical pipelines we have encountered so far. (Currently the most complex pipeline in our production clusters has a maximum nesting of 16 levels.)
-
-  This change is vital to prevent potential issues that could arise due to a large number of recursively spawned children, leading to CPU spikes and POD restarts within our system. By implementing this restriction, we aim to maintain system performance and stability for all our customers.
+This release does not have new features.
 
 ```mdx-code-block
   </TabItem>
@@ -63,6 +57,64 @@ This release does not have Early Access features.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+
+- Fixed a FirstGen-to-CurrentGen migration issue where the migrator did not filter out duplicate keys when extracting variables. With this fix, the migrator allows unique keys only. (CDS-76576)
+
+- Fixed an issue that could occur when setting up an Azure Web App deployment. The Visual Editor would add a `spec: webApp` element to the pipeline definition. This resulted in an invalid pipeline YAML and required a user to delete the element before the pipeline could be saved. (CDS-76289, ZD-48649)	Actions
+
+- Fixed an issue that caused the UI to crash when the input value of a component was changed from runtime to expression. (CDS-76216)	
+
+- Fixed an issue observed when trying to use the Terraform Rollback step. The step did not seem to inherit the backend configuration from the Terraform Apply step with the same provisioner Id and there was no way to configure the backend configuration in the UI for this step. This behavior was related to an issue where the rollback could fail when back-end configurations were not saved for the next run. (CDS-76071, ZD-48374)	
+
+- Fixed an edge-case issue where, if the number of instances went down to zero and came back up after a duration of 1 day, they did not get displayed in the custom dashboard. With this fix, they will start syncing back again once their count is greater than zero. (CDS-75585, ZD-47848)	
+
+- Fixed a UI issue in the **Pipeline Executions** page. Steps with a looping strategy include a **Show All** button for viewing all nodes in that step. However, this was not working as expected when pipeline stages were used. With this fix, clicking **Show All** now displays all nodes. (CDS-75558, ZD-48298)	
+
+- Fixed a FirstGen-to-CurrentGen migration issue where the migrator mapped the incorrect status to a Jira Approval step. This could cause a pipeline execution to stop without proceeding. With this fix, the migrator maps the status correctly. (CDS-75426)
+
+- Fixed an issue with the **Repository Name** filter in the **Builds** page. Some users could not filter on builds that pulled their source code from a specific repository. If you experienced this issue, you will need to delete any saved filters that use the **Repository Name** filter and create them again. (CDS-75281, ZD-47876, ZD-48201)	
+
+- Fixed an AWS autoscaling issue when migrating from Harness FirstGen to Harness CurrentGen. Previously, all migrated services and pipelines would use Spot ElastiGroup instead of AWS ASG. With this fix, the migrated entity is based on the workflow used in the last successful pipeline execution. (CDS-75190)	
+
+- Fixed an issue where a Post-Retry manual intervention timeout did not work as expected. A Post-Retry action was set to manual intervention, but after timing out the step did not go into the manual step. With this fix, the post-retry manual intervention timeout is now being honored. (CDS-736128, ZD-48904, ZD-47798)	
+
+- Fixed a UI issue where the Clear Filters button didn't work previewing templates in the **Templates** > **Stage Templates** window. (CDS-73587)	
+
+- Fixed the error message that gets displayed when a build does not find a specified package. The previous error message was `No tags found with given image path`. The new error message is `No tags found for the Package Name`.(CDS-73559)	
+
+- Fixed a UI issue with validating UI fields when defining a template for a Github Package Registry artifact. (CDS-73559)	
+
+- Fixed an issue where a pipeline execution reported an invalid `artifactPath` when trying to deploy Artifactory artifacts. This was due to an issue with the regex used to populate the pull-down artifact menu. With this fix, you can specify recursive wildcards in the directory path for Artifactory. For example, you can specify `MainPath/*/*` as the directory path for the pipeline and the Service step will download the appropriate chosen artifact. (CDS-72245, ZD-46236)
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### August 10, 2023, version 80208
+
+##### What's new
+
+* Harness has introduced restrictions on the depth of nesting in execution pipelines to enhance system stability. Now, a node execution will not be allowed if it exceeds 25 levels of nesting. The 25th level refers to the node being the 25th child starting from the root node `pipeline`. (CDS-75249)
+
+  This limitation is configurable, allowing Harness to increase the nesting limit if required to accommodate more complex pipelines.
+
+  To determine the optimal limit, we considered scenarios with 5 nested stepGroups with a looping matrix and step group running in parallel at each possible node. As a result, we have set the limit to 25, ensuring that it should not affect any practical pipelines we have encountered so far. (Currently the most complex pipeline in our production clusters has a maximum nesting of 16 levels.)
+
+  This change is vital to prevent potential issues that could arise due to a large number of recursively spawned children, leading to CPU spikes and POD restarts within our system. By implementing this restriction, we aim to maintain system performance and stability for all our customers.
+
+##### Early access
+
+This release does not have Early Access features. 
+  
+##### Fixed issues
 
 * Fixed an issue that caused the UI to crash when the input value of a component was changed from runtime to expression. (CDS-76216) 
 
@@ -82,37 +134,8 @@ This release does not have Early Access features.
 
 * Fixed a UI issue where the **Cloud Formation Create Stack** page did not persist user inputs when converting dropdown values. For example, trying to change the **Region** field to an expression would result in an error screen with the message `Something went wrong, this error has been reported`. This was due to an error when creating a values array for the dropdown menu. The issue has been fixed to ensure that the conversion is in sync with the UI and the dropdown values are persisted. (CDS-73426, ZD-47608)
 
+#### August 4, 2023, version 80120
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
-## August 4, 2023, version 80120
-
-
-<!-- 
-#### Deprecation notices
-
-**Helm 2**
-
-import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
-
-<Helmdep />
-
-**Kustomize**
-
-import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
-
-<Kustomizedep />
-
--->
 
 ##### What's new
 
