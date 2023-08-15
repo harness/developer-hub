@@ -94,6 +94,7 @@ You can force delete a Harness entity even if your pipelines or other entities r
 - Environments
 - Environment Groups
 - Templates
+- File Store files
 
   
 The Harness account admin can enable or disable the force delete option in the account's default settings.

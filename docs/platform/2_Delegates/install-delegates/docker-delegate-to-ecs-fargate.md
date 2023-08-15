@@ -113,7 +113,7 @@ For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/inst
    | `MANAGER_HOST_AND_PORT` | Information about your manager host. This depends on the Harness production cluster you use: Prod1: https://app.harness.io, Prod2: https://app.harness.io/gratis, or Prod3: https://app3.harness.io. |
    | `DELEGATE_NAME` | The name you gave your delegate. This is usually the name you specified during delegate installation. |
    | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/{tags}. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
-   | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: Prod1: https://app.harness.io/log-service/, Prod2: https://app.harness.io/gratis/log-service/, or Prod3: https://app3.harness.io/log-service/. |
+   | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: MANAGER_HOST_AND_PORT/log-service/ |
 
 ### Create your services
 
@@ -231,7 +231,7 @@ Use the following steps to create a task definition. For information about task 
    | `MANAGER_HOST_AND_PORT` | Information about your manager host. This depends on the Harness production cluster you use: Prod1: https://app.harness.io, Prod2: https://app.harness.io/gratis, or Prod3: https://app3.harness.io. |
    | `DELEGATE_NAME` | The name you gave your delegate. This is usually the name you specified during delegate installation. |
    | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/{tags}. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
-   | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: Prod1: https://app.harness.io/log-service/, Prod2: https://app.harness.io/gratis/log-service/, or Prod3: https://app3.harness.io/log-service/. |
+   | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: MANAGER_HOST_AND_PORT/log-service/ |
 
 ### Create the service
 
@@ -345,3 +345,23 @@ resource "aws_iam_policy" "delegate_aws_access" {
 EOF
 }
 ```
+
+## Limitations
+
+This section details the specific limitations associated with using ECS-configured Docker delegates in Harness. Review these limitations to ensure seamless and secure deployment of your applications and services.
+
+**ECS-configured Docker delegates do not auto-update**
+
+If you are using a delegate configured through ECS, auto-update of the delegate is not supported.
+
+**Concerns with auto-upgrading the delegate**
+
+The convenience of automatic updates is obvious, but it raises certain security concerns. As delegates are updated, new binaries and tools may be introduced. There is no way to scan these additions, which can lead to potential vulnerabilities. Due to these concerns, Harness recommends using custom delegates for production use.
+
+If you use the Docker delegate on AWS ECS Fargate, Harness recommends that you manually update the delegate on a regular cadence, either every 3 or 6 months. This ensures a balance between security and feature updates.
+
+**Limitations with Docker delegate on an AWS ECS Fargate-backed instance**
+
+When operating ECS delegates on AWS Fargate, it's critical to note that AWS Fargate will terminate the delegate if the tasks running on the delegate exceed the infrastructure's specified limits. This is a limitation inherent in using infrastructure not owned by the customer. Harness Delegate cannot circumvent this restriction. However, ECS delegates operating on an EC2 instance do not have this issue.
+
+To avoid this limitation, consider using Kubernetes delegates. In this setup, the infrastructure and associated YAML definitions address these issues.

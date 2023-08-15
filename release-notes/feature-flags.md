@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-07-27T10:00:25
+date: 2023-08-09T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -20,14 +20,12 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 27, 2023
+## Latest - August 10, 2023
 
 <Tabs>
   <TabItem value="What's new">
 
-#### Feature Flags UI
-
-* When specifying percentages for a rollout, the UI now provides feedback while you edit to let you know the percentage that requires assignment. (FFM-8085)
+This release does not include new features.
 
 
   </TabItem>
@@ -41,16 +39,85 @@ This release does not include early access features.
 
 #### Feature Flags UI
 
-* Fixed an issue where the API call was triggered twice in the front end when creating a flag. (FFM-8192)
+* Previously, the Feature Flags modal screen disappeared when the user clicked in the background, which caused the data to disappear. This issue has been fixed. (FFM-8770)
+
+* Previously, on the flag details page, if all target groups were assigned to rules, the Percentage Rollout target groups selection would disappear. This issue has been fixed. (FFM-8841)
+
+* Previously, when creating a flag targeting rule, using autocomplete search for a target group could remove target groups from other rules within the same flag. This issue has been fixed. (FFM-8680)
 
 
   </TabItem>
 </Tabs>
 
+
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### August 4, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* Previously, the permission to create a feature flag was required across all environments. This restriction has been removed. (FFM-8724)
+
+* Previously, when users selected **All Environments** from the **Environments** dropdown menu, then refreshed the page or went to another page, the **Back** button didn't return the user to the All Environments page. This issue has been resolved. (FFM-8012)
+
+#### August 3, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server, version 1.1078.1
+
+* Due to an error with gitSync logic on environment creation, the activation for the new environment did not get properly created when GitSync was enabled. (FFM-8812) 
+  
+  To resolve this, we:
+  - Fixed the gitSync function for newly created environment.
+  - Added gitSync for deleted environments. 
+
+* Sending a GET request to the /targets/${IDENTIFIER} endpoint returned a 200 error code, even if the target didn't exist. This error code has been changed to 404. (FFM-8810)
+
+* Previously, a multivareate flag's variation values had an erroneous maximum limit of 2704 bytes, with a poor error message if this was exceeded. 
+This limit has been raised to 25000 bytes, with a clear error message if this is exceeded. (FFM-8660)
+
+* Targets sent by the server-side SDKs were not being updated in the database. This meant if a sever-side target changed, while evaluations worked as expected, the updated attributes were not shown in the UI. This fix ensures targets are correctly upserted. (FFM-8600)
+
+
+#### July 27, 2023
+
+##### What's new
+
+#### Feature Flags UI
+
+* When specifying percentages for a rollout, the UI now provides feedback while you edit to let you know the percentage that requires assignment. (FFM-8085)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* Fixed an issue where the API call was triggered twice in the front end when creating a flag. (FFM-8192)
 
 #### July 24, 2023
 

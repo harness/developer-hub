@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 ## Latest - July 31, 2023, version 79819
 
-### Known issues
+#### Known issues
 
 -  Terraform-based pipeline automation does not function correctly in Istio environments. UI operations are not affected. (PL-39776)
 
@@ -45,6 +45,23 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | release-177 |
 | NG UI | 0.353.10 |
 | LE NG | 68004 |
+
+**Alternative air gap bundle download method**
+
+Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.8.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/sto_images.tgz" \
+  .
+```
 
 #### Self-Managed Enterprise Edition
 
@@ -582,6 +599,23 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
+**Alternative air gap bundle download method**
+
+Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.7.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/sto_images.tgz" \
+  .
+```
+
 #### What's new
 
 This release does not include new features.
@@ -617,6 +651,23 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
+**Alternative air gap bundle download method**
+
+Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.7.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/sto_images.tgz" \
+  .
+```
+
 #### What's new
 
 - Send emails to non-Harness users. (CDS-69561, CDS-58625, ZD-42496)
@@ -646,7 +697,6 @@ This release includes the following Harness module and component versions.
 | **Name** | **Version** |
 | :-- | :--: |
 | Helm Chart | [0.7.0](https://github.com/harness/helm-charts/releases/tag/harness-0.7.0) |
-| Air Gap Bundle | [0.7.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.0;tab=objects?prefix=&forceOnObjectsSortingFiltering=false) |
 | NG Manager | 79421 |
 | CI Manager | 3907 |
 | Pipeline Service | 1.33.8 |
@@ -656,6 +706,23 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | release-177 |
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
+
+**Alternative air gap bundle download method**
+
+Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.7.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/sto_images.tgz" \
+  .
+```
 
 #### What's new
 
@@ -1219,7 +1286,7 @@ This release includes the following Harness module and component versions.
 
 - The **Manage Services** tab has been removed from the services dashboard page. (CDS-57974)
   
-  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/) apply to a single Services page only.
+  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](/docs/platform/role-based-access-control/add-manage-roles) apply to a single Services page only.
 
 - Git polling tasks for triggers are executed on the same delegate selector used in the Git connector. (CDS-58115)
   
@@ -1262,13 +1329,13 @@ This release includes the following Harness module and component versions.
 
 - The following features are now generally available. These were enabled by default for all users, but they were behind features flags until they were deemed stable. (CI-6537)
   - `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the [Harness Manager](/docs/getting-started/harness-platform-architecture#harness-platform-components) directly by HTTP rather than through a Delegate.
-  - `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) and [Run Tests](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
+  - `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) and [Run Tests](/docs/continuous-integration/use-ci/set-up-test-intelligence/#add-the-run-tests-step) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
 
 - [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) is now generally available. With Cache Intelligence, Harness automatically caches and restores common dependencies. You don't need to bring your own storage because Harness stores the cache in the Harness-hosted environment, Harness Cloud. (CI-7127)
 
 - Added validations for pipelines that use the [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) macOS build infrastructure, which doesn't support containerized steps. The new validations produce an error message if any applicable steps, such as [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings), have the **Image** and either **Container Registry** or **Connector** fields populated. (CI-7221)
 
-- The **Run as User** setting is now available for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings), [Run Tests steps](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings), and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) in stages that use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). This setting allows you to specify a user ID to use for processes running in containerized steps. (CI-7493)
+- The **Run as User** setting is now available for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings), [Run Tests steps](/docs/continuous-integration/use-ci/set-up-test-intelligence/#add-the-run-tests-step), and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) in stages that use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). This setting allows you to specify a user ID to use for processes running in containerized steps. (CI-7493)
 
 - The CI Getting Started workflow now saves the pipeline remotely (in your Git repository) by default. Previously, the pipeline was stored inline (in Harness) unless you manually selected remote storage. The Getting Started workflow also automatically creates two [input sets](/docs/platform/pipelines/input-sets/) for [Git event triggers](/docs/platform/Triggers/triggering-pipelines): one for a PR trigger and one for a Push trigger. (CI-7602)
 
@@ -1885,7 +1952,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
   For more information, go to [Monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem). 
 - Deployments load static files from the application server and no longer attempt to connect to static.harness.io. (SMP-851)
 #### Continuous Integration
-- When you [use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
+- When you [use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
 #### Continuous Delivery & GitOps
 - You can no longer delete an infrastructure used in a pipeline or template. (CDS-42182)
 
@@ -2665,7 +2732,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 - When creating Azure Key Vault and HashiCorp Vault connectors, selecting invalid delegate selectors displays an "UNKNOWN ERROR". (PL-30660)
 
   A code enhancement to display appropriate error message has fixed this issue. 
-- Recently added roles are not displayed in the manage role assignment settings. (PL-30560)
+- Recently added roles are not displayed in the manage role bindings settings. (PL-30560)
   
   A code enhancement has fixed this issue.
 - The UI does not display an error message when the referred connector in infra does not exist.(PL-30130)
@@ -2828,11 +2895,11 @@ This release includes the following Harness module and component versions.
 - The following role-assignments are removed for all the existing users across all the accounts:
   - Account Viewer - All Account Level Resources: This was a role-assignment within the account scope and has been removed for all the users. This does not apply in the following scenarios:
   - If an account has enabled the feature flag ACCOUNT_BASIC_ROLE_ONLY.
-  - If an account does not have the Account Viewer - All Account Level Resources role-assignment for the default user group All Account Users.
+  - If an account does not have the Account Viewer - All Account Level Resources role-assignment for the built-in user group All Account Users.
   - Organization Viewer - All Organization Level Resources: This was a role-assignment within the organization scope and has been removed for all the users.
   - Project Viewer - All Project Level Resources: This was a role-assignment within the project scope and has been removed for all the users.
   
-  For more information, go to [Default User Group](/docs/platform/User-Management/harness-default-user-groups). (PL-30916)
+  For more information, go to [Built-in user groups](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups). (PL-30916)
 
 - In the SCIM API, the Groups endpoint returns all the user groups associated with an account. The ResourceTypes endpoint also returns incorrect information. A code enhancement has fixed this issue. The Groups endpoint returns only externally managed user groups and the ResourceTypes endpoint returns details as per the schema. (PL-30862)
 

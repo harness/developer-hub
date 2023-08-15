@@ -1,7 +1,7 @@
 ---
 title: Services and environments basics
 description: Learn the basics of CD services and environments.
-sidebar_position: 4
+sidebar_position: 6
 helpdocs_topic_id: 9ryi1ay01f
 helpdocs_category_id: dxej4ug0n5
 helpdocs_is_private: false
@@ -679,8 +679,7 @@ For more information on runtime inputs and expressions, go to [Fixed Values, Run
 
 Please review these key RBAC uses cases for services and environments.
 
-For extensive information on Harness RBAC, go to [Harness Role-Based Access Control Overview](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md) and [Harness Role-Based Access Control Quickstart](../../platform/4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md).
-
+For extensive information on Harness RBAC, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 ### Access permission is needed to deploy to a service or environment
 

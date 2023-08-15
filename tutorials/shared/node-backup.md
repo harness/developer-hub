@@ -236,7 +236,7 @@ You must ensure that the build farm can run the commands required by your build.
 
 ## Run tests
 
-Add a step to run tests against the NodeJS app code. This portion of the tutorial uses a **Run** step to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci). For more examples, go to [Run a script in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
+Add a step to run tests against the NodeJS app code. This portion of the tutorial uses a **Run** step to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci). For more examples, go to [Use Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 
 ```mdx-code-block
 <Tabs>

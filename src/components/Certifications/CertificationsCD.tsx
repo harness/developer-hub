@@ -290,7 +290,7 @@ export default function CertificationsCD() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Delivery & GitOps - Architect (BETA COMING SOON)
+                    Continuous Delivery & GitOps - Architect (BETA)
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_arc_cd_badge.svg`}
@@ -303,7 +303,7 @@ export default function CertificationsCD() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide (BETA)</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
                     design, implementation and management of CD.This exam builds
@@ -315,7 +315,7 @@ export default function CertificationsCD() {
                   </div>
                   <ArchitectCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="#">
+                    <Link href="https://university.harness.io/continuous-delivery-gitops-architect">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -338,7 +338,7 @@ export default function CertificationsCD() {
             <div className={styles.examDetailsCard}>
               <ArchitectCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="#">
+                <Link href="https://university.harness.io/continuous-delivery-gitops-architect">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>

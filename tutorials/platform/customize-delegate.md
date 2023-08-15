@@ -1,9 +1,9 @@
 ---
 sidebar_position: 2
-description: Customize Delegate to Install Third-Party Tools
+sidebar_label: Customize delegate to install third-party tools
+description: Customize Harness Delegate to install third-party tools
+title: Customize delegate to install third-party tools
 ---
-
-# Customize Delegate to Install Third-Party Tools
 
 [Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate for executing the CI/CD and other tasks on your behalf, without any of your secrets leaving your network. 
 

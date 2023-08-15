@@ -31,7 +31,7 @@ If you haven't created a pipeline before, try one of the [CI tutorials](../../ci
 
 ## Prepare artifacts to upload
 
-Add steps to your pipeline that generate artifacts to upload, such as [Run steps](../set-up-test-intelligence/configure-run-tests-step-settings.md). The steps you use depend on what artifacts you ultimately want to upload.
+Add steps to your pipeline that generate artifacts to upload, such as [Run steps](../run-ci-scripts/run-step-settings.md). The steps you use depend on what artifacts you ultimately want to upload.
 
 ## Upload artifacts to S3
 
@@ -49,39 +49,39 @@ Enter a name summarizing the step's purpose. Harness generates an **Id** ([Entit
 
 ### AWS Connector
 
-The Harness AWS connector to use when connecting to AWS S3.
+Select the Harness [AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector) to use when connecting to AWS S3.
 
-The AWS IAM roles and policies associated with the account connected to the Harness AWS connector must be able to push to S3. For more information about roles and permissions for AWS connectors, go to:
+This step might not support all [AWS connector authentication methods](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings).
 
-* [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector)
-* [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
+Stage variables are required [for non-default ACLs](#stage-variable-required-for-non-default-acls) and to [assume IAM roles or use ARNs](#stage-variable-required-to-assume-iam-role-and-arns).
 
-<details>
-<summary>Stage variable required for non-default ACLs</summary>
+The AWS IAM roles and policies associated with the AWS account for your Harness AWS connector must allow pushing to S3. For more information, go to the [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
-```mdx-code-block
+#### Stage variable required for non-default ACLs
+
 S3 buckets use [private ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl) by default. Your pipeline must have a `PLUGIN_ACL` stage variable if you want to use a different ACL.
-
-1. In the Pipeline Studio, select the relevant stage, and then select the **Overview** tab.
-2. In the **Advanced** section, add a stage variable.
-3. Input `PLUGIN_ACL` as the **Variable Name**, set the **Type** to **String**, and then select **Save**.
-4. Input the relevant ACL in the **Value** field.
-```
-</details>
-
-<details>
-<summary>Stage variable required for ARNs</summary>
-
-```mdx-code-block
-If your AWS connector's authentication uses a cross-account role (ARN), pipeline stages with **Upload Artifacts to S3** steps must have a `PLUGIN_USER_ROLE_ARN` stage variable.
 
 1. In the Pipeline Studio, select the stage with the **Upload Artifacts to S3** step, and then select the **Overview** tab.
 2. In the **Advanced** section, add a stage variable.
-3. Input `PLUGIN_USER_ROLE_ARN` as the **Variable Name**, set the **Type** to **String**, and then select **Save**.
-4. In the **Value** field, input the full ARN value that corresponds with the AWS connector's ARN.
-```
+3. Enter `PLUGIN_ACL` as the **Variable Name**, set the **Type** to **String**, and then select **Save**.
+4. For the **Value**, enter the relevant ACL.
 
-</details>
+#### Stage variable required to assume IAM role or use ARNs
+
+Stages with **Upload Artifacts to S3** steps must have a `PLUGIN_USER_ROLE_ARN` stage variable if:
+
+* Your [AWS connector's authentication uses a cross-account role (ARN)](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#enable-cross-account-access-sts-role). You can use `PLUGIN_USER_ROLE_ARN` to specify the full ARN value corresponding with the AWS connector's ARN.
+* Your AWS connector uses [**Assume IAM Role on Delegate** authentication](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings). If your connector doesn't use **AWS Access Key** authentication, then the **Upload Artifact to S3** step uses the IAM role of the build pod or build VM (depending on your build infrastructure). You can use `PLUGIN_USER_ROLE_ARN` to select a different role than the default role assumed by the build pod/machine. This is similar to [`sts assume-role`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/assume-role.html).
+
+To add the `PLUGIN_USER_ROLE_ARN` stage variable:
+
+1. In the Pipeline Studio, select the stage with the **Upload Artifacts to S3** step, and then select the **Overview** tab.
+2. In the **Advanced** section, add a stage variable.
+3. Enter `PLUGIN_USER_ROLE_ARN` as the **Variable Name**, set the **Type** to **String**, and then select **Save**.
+4. For the **Value**, enter the full ARN value.
+
+   * For cross-account roles, this ARN value must correspond with the AWS connector's ARN.
+   * For connectors that use the delegate's IAM role, the ARN value must identify the role you want the build pod/machine to use.
 
 ### Region
 

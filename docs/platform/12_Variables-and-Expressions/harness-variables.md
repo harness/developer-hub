@@ -89,12 +89,13 @@ The pipeline and stage level variable expressions follow these formats:
 - **Pipeline-level** expressions use the format `<+pipeline.variables.VAR_NAME>`.
 - **Stage-level** expressions use these formats:
   - **Use in this stage:** Use this option to reference the input anywhere in its stage. The format is `<+stage.variables.VAR_NAME>`.
-  - **Use in any pipeline:** Use this option to reference the input anywhere in the pipeline. The format is `<+pipeline.stages.STAGE_NAME.VAR_NAME>`. 
+  - **Use anywhere in the pipeline:** Use this option to reference the input anywhere in the pipeline. The format is `<+pipeline.stages.STAGE_NAME.VAR_NAME>`.
+- **Pipeline-level** variables can be accessed as a collection of key-value pairs using `<+pipeline.variables>`.
+- **Stage-level** variables can be accessed as a collection of key-value pairs using `<+stage.variables>`.
 
-### Expression example
+### Expression examples
 
-Here is a simple example of a Shell Script step echoing some common variable expressions.
-
+Here is an example of a Shell script step echoing some common variable expressions.
 
 ```
 echo "Harness account name: "<+account.name>  
@@ -123,8 +124,8 @@ echo "infrastructure namespace: "<+infra.namespace>
   
 echo "infrastructure releaseName: "<+infra.releaseName>
 ```
-Here is an example of the output.
 
+Here is an example of the output.
 
 ```
 Harness account name: Harness.io  
@@ -155,6 +156,36 @@ infrastructure releaseName: docs
   
 Command completed with ExitCode (0)
 ```
+
+Here is another example of how to use `<+stage.variables>`.
+
+```
+for var in <+stage.variables>;
+do
+
+    IFS=":"
+    read -r key value <<< "$var"
+    unset IFS
+    echo "Key: $key"
+    echo "Value: $value"
+
+done
+```
+
+The above Bash script prints all the key-value pairs for the stage variables.
+If the `<+stage.variables>` is `{"a":"A","b":"B","c":"C"}` then the output will be as follows:
+
+```
+Executing command ...
+Key: a
+Value: A
+Key: b
+Value: B
+Key: c
+Value: C
+Command completed with ExitCode (0)
+```
+
 ### Input and output variables
 
 You can reference the inputs and outputs of any part of your pipeline.
@@ -413,34 +444,26 @@ For example, instead of `<+pipeline.variable.var1>_suffix`, use these syntaxes:
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
 - `<+<+pipeline.variables.var1> + "_suffix">` 
 
+## Debugging expressions
 
-## Built-in CIE codebase variables reference
+:::info note
 
-In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
+This feature is currently behind the feature flag `PIE_EXPRESSION_PLAYGROUND`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-Harness also retrieves your Git details and presents them in your build stage once a pipeline is run.
+:::
 
-Using Harness built-in expressions, you can refer to the various attributes of your codebase in Harness steps and settings.
+An easy way to debug expressions in your pipeline is to use Compiled Mode in your **Variables** panel. You can enable this mode using a radio button at the top of the **Variables** Panel. When Compile Mode is turned on, all of the expressions in the panel are compiled and their values are displayed. By default, the compilation happens against the pipeline's latest execution. You can change this by selecting from a displayed list of previous executions. 
 
-Here is a simple example of a Shell Script step echoing some common codebase variable expressions.
+![](./static/expression-evaluator-screen.png)
 
+Expressions that are incorrect or cannot be evaluated using the execution data are highlighted in the **Variable** values column. You can switch the panel back to normal mode and correct the expression. 
 
-```
-echo <+codebase.commitSha>  
-echo <+codebase.targetBranch>  
-echo <+codebase.sourceBranch>  
-echo <+codebase.prNumber>  
-echo <+codebase.prTitle>  
-echo <+codebase.commitRef>  
-echo <+codebase.repoUrl>  
-echo <+codebase.gitUserId>  
-echo <+codebase.gitUserEmail>  
-echo <+codebase.gitUser>  
-echo <+codebase.gitUserAvatar>  
-echo <+codebase.pullRequestLink>  
-echo <+codebase.pullRequestBody>  
-echo <+codebase.state>
-```
+To test an expression that isn't part of a variable (say, something in a script), you can create a temporary variable in the panel, assign the expression to it, and use Compiled Mode to debug it. 
+
+## Built-in CI codebase variables
+
+In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a [Harness code repo connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo). Pipelines use this connector to clone the code you want to build and test. When a pipeline runs, Harness also fetches your Git details and displays them in the [Build details](/docs/continuous-integration/use-ci/viewing-builds). You can use Harness' built-in expressions to reference various codebase attributes in Harness pipelines, stages, and steps.
+
 For more information, go to [Built-in CIE Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
 
 ## Account

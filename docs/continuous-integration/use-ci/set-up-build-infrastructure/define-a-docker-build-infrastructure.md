@@ -8,6 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Drone Runner. When the pipeline runs, the Drone Runner runs the build actions in the environment where it is installed. The delegate handles communication between Harness and the Drone Runner.
 
 Local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
@@ -20,15 +25,13 @@ The Harness Docker Delegate is limited by the total amount of memory and CPU on 
 * Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
 * The machine where the delegate runs must have Docker installed.
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
+## Install the delegate and runner
+
 ```mdx-code-block
 <Tabs>
   <TabItem value="Linux" label="Linux" default>
 ```
-## Install the delegate
+#### Install the delegate
 
 Use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
 
@@ -43,15 +46,15 @@ docker run --cpus=1 --memory=2g --net=host \
   -e NEXT_GEN="true" \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-  -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
-  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io harness/log-service/ \
+  -e DELEGATE_TOKEN=YOUR_API_TOKEN \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
   -e DELEGATE_TAGS="linux-arm64" \
-  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io/ harness/delegate:23.02.78306
 ```
 
 Make sure to create the delegate at the appropriate scope, such as the project level or account level.
 
-## Install the Drone Runner
+#### Install the Drone Runner
 
 The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
 
@@ -86,7 +89,7 @@ sudo chmod +x drone-docker-runner-linux-arm64
   </TabItem>
   <TabItem value="macOS" label="macOS">
 ```
-## Install the delegate
+#### Install the delegate
 
 Use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
 
@@ -101,16 +104,16 @@ docker run --cpus=1 --memory=2g \
   -e NEXT_GEN="true" \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-  -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
-  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io harness/log-service/ \
+  -e DELEGATE_TOKEN=YOUR_API_TOKEN \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
   -e DELEGATE_TAGS="macos-amd64" \
   -e RUNNER_URL=http://host.docker.internal:3000 \
-  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.02.78306
 ```
 
 Make sure to create the delegate at the appropriate scope, such as the project level or account level.
 
-## Install the Drone Runner
+#### Install the Drone Runner
 
 The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
 
@@ -165,7 +168,7 @@ sudo chmod +x drone-docker-runner-darwin-arm64
   <TabItem value="windows" label="Windows">
 ```
 
-## Prepare machines
+#### Prepare machines
 
 To configure a local runner build infrastructure for Windows, you need two machines:
 
@@ -174,12 +177,12 @@ To configure a local runner build infrastructure for Windows, you need two machi
 
 There is a one-to-one relationship between Drone Runners and Harness Delegates. If you need to run three local hosts, each must have a runner and a delegate.
 
-## Install the delegate
+#### Install the delegate
 
 On the Linux machine where you want to run the delegate, use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
 
 * Add `-e DELEGATE_TAGS="windows-amd64"`.
-* Add `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000`.
+* Add `-e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000`.
 
 :::caution
 
@@ -195,16 +198,16 @@ docker run --cpus=1 --memory=2g \
   -e NEXT_GEN="true" \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-  -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
-  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io harness/log-service/ \
+  -e DELEGATE_TOKEN=YOUR_API_TOKEN \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
   -e DELEGATE_TAGS="windows-amd64" \
-  `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000` \
-  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
+  -e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000 \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.02.78306
 ```
 
 Make sure to create the delegate at the appropriate scope, such as the project level or account level.
 
-## Install the Drone Runner
+#### Install the Drone Runner
 
 The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
 
@@ -249,12 +252,8 @@ drone-docker-runner-windows-amd64.exe server
 Edit the CI pipeline where you want to use the local runner build infrastructure.
 
 ```mdx-code-block
-import Tabs2 from '@theme/Tabs';
-import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs2>
-  <TabItem2 value="Visual" label="Visual" default>
+<Tabs>
+  <TabItem value="Visual" label="Visual" default>
 ```
 
 1. In the pipeline's **Build** stage, select the **Infrastructure** tab.
@@ -263,8 +262,8 @@ import TabItem2 from '@theme/TabItem';
 4. Save your pipeline.
 
 ```mdx-code-block
-  </TabItem2>
-  <TabItem2 value="YAML" label="YAML">
+  </TabItem>
+  <TabItem value="YAML" label="YAML">
 ```
 
 In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` specifications, for example:
@@ -293,8 +292,8 @@ In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` spec
   * `spec`: `{}`
 
 ```mdx-code-block
-  </TabItem2>
-</Tabs2>
+  </TabItem>
+</Tabs>
 ```
 
 :::tip

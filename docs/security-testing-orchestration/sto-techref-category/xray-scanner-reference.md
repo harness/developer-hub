@@ -8,6 +8,7 @@ You can set up Jfrog Xray scans using a Security step: create a CI Build or Secu
 
 ## Before you begin
 
+<!-- 
 ### Docker-in-Docker requirements
 
 ```mdx-code-block
@@ -15,6 +16,8 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 ```
 
 <StoDinDRequirements />
+
+-->
 
 ### Root access requirements
 
@@ -25,7 +28,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 <StoRootRequirements />
 
 
-### Security step settings
+## Security step settings
 
 ### Target and variant
 

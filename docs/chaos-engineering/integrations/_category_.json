@@ -5,7 +5,7 @@
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Technical reference"
+      "title":"Integrate CE with other Harness modules"
    },
   "customProps": {
     "description": "Integrate Chaos Engineering with other Harness modules."

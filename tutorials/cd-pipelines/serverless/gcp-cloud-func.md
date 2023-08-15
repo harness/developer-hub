@@ -139,7 +139,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 </details>
 
 1. Create the **GitHub connector**.
-    - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1-github-connector.yml).
+    - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/github-connector.yml).
     - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
     - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `GITHUB_USERNAME` with your GitHub account username in the YAML.
@@ -147,7 +147,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
 2. Create the **GCP connector**.
-    - Copy the contents of [gcp-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2-gcp-connector.yml).
+    - Copy the contents of [gcp-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/gcp-connector.yml).
     - In your Harness project, under **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and and paste the copied YAML.
     - Select **Save Changes** and verify that the new connector named **gcpconnector** is successfully created.
@@ -186,7 +186,7 @@ In Harness, services represent what you deploy to environments. You use services
     - Select **New Service**.
     - Enter the name `hello_http`.
     - Select **Save**, and then **YAML** (on the **Configuration** tab).
-    - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd%20gen/5-service.yml), and paste the into the YAML editor.
+    - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/service.yml), and paste the into the YAML editor.
     - Replace `GCP PROJECT` with your GCP project name.
     - Replace `GCP BUCKET` with your GCP bucket name.
     - Select **Save**, and verify that the service **hello_http** is successfully created.
@@ -220,7 +220,7 @@ A canary deployment updates nodes/functions/etc. in a single environment gradual
 
 </details>
 
-1. Copy the contents of [canary-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd%20gen/6-canary-pipeline.yml).
+1. Copy the contents of [canary-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/canary-pipeline.yml).
 2. In your Harness pipeline YAML editor, paste the YAML.
 3. Select **Save**.
    You can switch to the **Visual** editor and confirm the pipeline stage and execution steps as shown below.
@@ -241,7 +241,7 @@ Blue Green deployments involve running two identical environments (stage and pro
 </details>
 
 
-1. Copy the contents of [bluegreen-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd%20gen/6-bluegreen-pipeline.yml).
+1. Copy the contents of [bluegreen-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/bluegreen-pipeline.yml).
 2. In your Harness pipeline YAML editor, paste the YAML.
 3. Select **Save**.
    
@@ -264,7 +264,7 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
 
 
 
-1. Copy the contents of [basic-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd%20gen/6-basic-pipeline.yml).
+1. Copy the contents of [basic-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/basic-pipeline.yml).
 2. In your Harness pipeline YAML editor, paste the YAML.
 3. Select **Save**.
    
@@ -335,8 +335,8 @@ The Harness delegate is a service that runs in your local network or VPC to esta
          -e DELEGATE_TYPE="DOCKER" \
          -e ACCOUNT_ID=ACCOUNT_ID \
          -e DELEGATE_TOKEN=DELEGATE_TOKEN \
-         -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
-         -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.05.79310
+         -e LOG_STREAMING_SERVICE_URL=MANAGER_ENDPOINT/log-service/ \
+         -e MANAGER_HOST_AND_PORT=MANAGER_ENDPOINT harness/delegate:23.05.79310
         ```
         - Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.
         - Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.
@@ -379,7 +379,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 </details>
 
 1. Create the **GitHub connector**.
-    - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1-github-connector.yml)
+    - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/github-connector.yml)
     - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
     - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
@@ -387,7 +387,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
 2. Create the **GCP connector**.
-    - Copy the contents of [gcp-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2-gcp-connector.yml).
+    - Copy the contents of [gcp-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/gcp-connector.yml).
     - In your Harness project, under **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and and paste the copied YAML.
     - Select **Save Changes** and verify that the new connector named **gcpconnector** is successfully created.
@@ -426,7 +426,7 @@ In Harness, services represent what you deploy to environments. You use services
     - Select **New Service**.
     - Enter the name `hello_world`.
     - Select **Save**, and then **YAML** (on the **Configuration** tab).
-    - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1st%20gen/5-service.yml), and paste the into the YAML editor.
+    - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1st_gen/service.yml), and paste the into the YAML editor.
     - Replace `GCP PROJECT` with your GCP project name.
     - Replace `GCP BUCKET` with your GCP bucket name.
     - Select **Save**, and verify that the service **hello_world** is successfully created.
@@ -455,7 +455,7 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
 
 </details>
 
-1. Copy the contents of [basic-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1st%20gen/6-basic-pipeline.yml).
+1. Copy the contents of [basic-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1st_gen/basic-pipeline.yml).
 2. In your Harness pipeline YAML editor, paste the YAML.
 3. Select **Save**.
    

@@ -49,7 +49,7 @@ The catalog is home to several types of software components such as services, we
 
 You can access catalog APIs to retrieve software components from the catalog, register new components, or build your automation on top of it.
 
-Start by generating a Harness API Key as described in [Add and manage API keys](/docs/platform/user-management/add-and-manage-api-keys/). Then, by using your Harness account ID and the API Key, you can make requests to the IDP catalog APIs as follows:
+Start by generating a Harness API Key as described in [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys). Then, by using your Harness account ID and the API Key, you can make requests to the IDP catalog APIs as follows:
 
 ```
 curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations' \

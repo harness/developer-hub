@@ -1,7 +1,7 @@
 ---
 title: Create your first CD pipeline
 description: Learn how to model you release process in minutes.
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 This is a step-by-step tour of using Harness CD pipelines to deploy an application. We show you how to use our YAML, API, Terraform Provider, and console (Pipeline Studio) methods for building pipelines.
@@ -391,14 +391,14 @@ You can now run your pipeline.
 ```
 The following example creates the Harness entities needed for a simple pipeline that deploys a publicly available Docker Nginx image to your target cluster using the manifest we just added.
 
-For information on using the Harness API, go to [Harness API Quickstart](/docs/platform/Resource-Development/APIs/api-quickstart). For information on the security token, go to [Add and Manage API Keys](/docs/platform/User-Management/add-and-manage-api-keys).
+For information on using the Harness API, go to [Get started with Harness APIs](/docs/platform/Resource-Development/APIs/api-quickstart). For information on the security token, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 <details>
 <summary>Create the Harness connector</summary>
 
 Create the Kubernetes Cluster connector using the [Create a Connector API](https://apidocs.harness.io/tag/Connectors#operation/createConnector).
 
-The Harness API uses API keys to authenticate requests. You create the API key in your Harness Manager User Profile, add a Personal Access Token (PAT) to the key, and then use the PAT in your API requests. For steps, go to [Add and Manage API Keys](/docs/platform/User-Management/add-and-manage-api-keys).
+The Harness API uses API keys to authenticate requests. You create the API key in your Harness Manager User Profile, add a Personal Access Token (PAT) to the key, and then use the PAT in your API requests. For steps, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 Replace the following request settings in `[]` with your account information.
 

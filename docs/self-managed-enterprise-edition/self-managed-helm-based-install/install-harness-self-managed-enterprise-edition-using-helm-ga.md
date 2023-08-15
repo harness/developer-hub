@@ -1,6 +1,6 @@
 ---
 title: Install using Helm
-description: Learn how to use Helm to install Harness Self-Managed Enterprise Edition. 
+description: Learn how to use Helm to install Harness Self-Managed Enterprise Edition.
 sidebar_position: 3
 helpdocs_topic_id: 6tblwmh830
 helpdocs_category_id: 66qbyn7ugu
@@ -18,7 +18,7 @@ You can also install Harness Self-Managed Enterprise Edition in an air-gapped en
 
 ## Role requirements
 
-The account you use to install Harness Self-Managed Enterprise Edition must have the Account Admin role to create service accounts. For more information on role-based permissions, go to [Role-based access control overview](/docs/platform/role-based-access-control/rbac-in-harness/).
+The account you use to install Harness Self-Managed Enterprise Edition must have the Account Admin role to create service accounts. For more information on role-based permissions, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 ## Download the Harness Helm chart
 
@@ -41,10 +41,9 @@ To add the URL for a load balancer, do the following:
 1. In the `values.yaml` file, set the `global.loadbalancerURL` field to the URL of your load balancer. This is the URL you use for Harness.
 
    ```
-   global:  
-    # -- Harness Application URL  
-    loadbalancerURL: http://<load-balancer-IP-address>  
-    host_name: "<load-balancer-IP-address>"
+   global:
+    # -- Harness Application URL
+    loadbalancerURL: http://<load-balancer-IP-address>
    ```
 
 2. Set the `host_name` field to the IP address of the load balancer.
@@ -56,16 +55,17 @@ To add the URL for a load balancer, do the following:
 Harness Helm chart includes Harness Platform components. You can add modules by editing the `override.yaml` file.
 
 <!-- PR-1002 -->
-The Platform component and below module is enabled by default:
+The Platform component and the module below is enabled by default:
 
 * Harness Continuous Deployment (CD) - Next Generation
 
-The below Harness modules can be enabled or disabled conditionally: 
+The Harness modules below can be enabled or disabled conditionally:
 
 * Harness Continuous Integration (CI)
 * Harness Security Testing Orchestration (STO)
 * Harness Service Reliability Management (SRM)
 * Harness Feature Flags (FF)
+* Harness Continuous Error Tracking (CET)
 
 <!-- PR-1002 -->
 
@@ -113,6 +113,14 @@ chaos:
 enabled: true
 ```
 
+#### Deploy the CET module
+
+```
+cet:
+# -- Enable to deploy CET to your cluster
+enabled: true
+```
+
 ### Add a Harness license
 
 Harness Self-Managed Enterprise Edition needs a license to be provisioned for the Harness NextGen platform. Contact [Harness Support](mailto:support@harness.io) to procure the license and add it to the `override.yaml` file.
@@ -132,22 +140,22 @@ To install the Helm chart, do the following:
 
 1. Add the repository.
 
-   ``` 
-   $ helm repo add harness https://harness.github.io/helm-charts
+   ```
+   helm repo add harness https://harness.github.io/helm-charts
    ```
 
-2. Create a namespace for your installation.  
+2. Create a namespace for your installation.
 
    ```
-   $ kubectl create namespace <namespace>
+   kubectl create namespace <namespace>
    ```
 
 3. Modify the `override.yaml` file with your environment settings.
 
-4. Install the Helm chart.  
+4. Install the Helm chart.
 
    ```
-   $ helm install my-release harness/harness-prod -n <namespace> -f override.yaml
+   helm install my-release harness/harness-prod -n <namespace> -f override.yaml
    ```
 
 ## Verify the installation
@@ -161,9 +169,9 @@ The services that appear depend on the modules that were installed.
 To verify installation, do the following:
 
 1. Review the list of services.
-2. In your browser, type the following instruction: 
+2. In your browser, type the following instruction:
 
-   ``` 
+   ```
    http://localhost/auth/#/signup
    ```
 
@@ -177,7 +185,7 @@ For details about the chart values, explanations of the default values, and desc
 
 ## Next steps
 
-After installation is complete, you should create the initial Harness account, and then [create organizations and projects](../../platform/organizations-and-projects/create-an-organization.md). 
+After installation is complete, you should create the initial Harness account, and then [create organizations and projects](../../platform/organizations-and-projects/create-an-organization.md).
 
 To get started with the modules, review the following topics:
 
@@ -185,3 +193,4 @@ To get started with the modules, review the following topics:
 * For Harness Continuous Delivery & GitOps, go to [CD overview and key concepts](/docs/continuous-delivery/get-started/cd-pipeline-basics.md).
 * For Harness Security Testing Orchestration, go to [STO Basics](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
 * For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-harness-chaos-engineering-ce).
+* For Harness Continous Error Tracking, go to [CET Tutorials](/tutorials/error-tracking/)
