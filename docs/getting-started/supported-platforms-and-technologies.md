@@ -35,74 +35,9 @@ import Cv from '/docs/continuous-delivery/verify/shared/cv-whats-supported.md';
 
 ## Cloud Cost Management
 
-### Supported Kubernetes Management Platform
+import Ccm from '/docs/cloud-cost-management/shared/ccm-supported-platforms.md';
 
-The following section lists the support for the Kubernetes management platform for CCM:
-
-|                                                 |                        |                   |
-| ----------------------------------------------- | ---------------------- | ----------------- |
-| **Technology**                                  | **Supported Platform** | **Pricing**       |
-| OpenShift 3.11                                  | GCP                    | GCP               |
-| OpenShift 4.3                                   | AWSOn-Prem             | AWSCustom-rate\*  |
-| Rancher                                         | AWS                    | Custom-rate\*\*   |
-| Kops (Kubernetes Operations)                    | AWS                    | AWS               |
-| Tanzu Kubernetes Grid Integrated Edition (TKGI) | On-Prem                | Custom-rate\*\*\* |
-
-\* Cost data is supported for On-Prem OpenShift 4.3. This uses a custom rate.
-
-\*\* Cost data is supported for K8s workloads on AWS managed by Rancher, but the cost falls back to the custom rate.
-
-\*\*\* Cost is computed using a custom rate. This can be modified by Harness on request.
-
-### Supported ingress controllers for Kubernetes AutoStopping
-
-The following table lists the ingress controllers supported for Kubernetes AutoStopping:
-
-|                            |                                                                    |
-| -------------------------- | ------------------------------------------------------------------ |
-| **Ingress Controller**     | **Extent of Support**                                              |
-| Nginx ingress controller   | Fully supported                                                    |
-| HAProxy ingress controller | Fully supported                                                    |
-| Traefik as ingress gateway | Supported using ingress routes and manually configured middlewares |
-| Istio as API gateway       | Fully supported                                                    |
-| Ambassador as API gateway  | Supported by manually editing the mapping                          |
-
-:::note
-The supported Kubernetes version for AutoStopping is 1.19.
-:::
-### Feature Support Matrix
-
-This section lists the feature support matrix for the supported cloud platforms:
-
-#### AWS Service
-
-|                     |                         |                     |                               |
-| ------------------- | ----------------------- | ------------------- | ----------------------------- |
-|                     | **Inventory Dashboard** | **Recommendations** | **AutoStopping**              |
-| **EC2**             | Yes                     | Yes         | Yes (With Spot Orchestration) |
-| **ECS**             | Yes                     | Yes         | Yes                           |
-| **EKS**             | Yes                     | Yes                 | Yes                           |
-| **RDS**             | Yes                     | No                  | Yes                           |
-| **EBS**             | Yes                     | No                  | No                            |
-| **Snapshots**       | Yes                     | No                  | NA                            |
-| **Elastic** **IPs** | Yes                     | No                  | NA                            |
-| **ASGs**            | No                      | No                  | Yes (With Spot Orchestration) |
-
-#### GCP Product
-
-|             |                         |                     |                  |
-| ----------- | ----------------------- | ------------------- | ---------------- |
-|             | **Inventory Dashboard** | **Recommendations** | **AutoStopping** |
-| **GCE VMs** | Yes                     | Coming soon         | Yes     |
-| **GKE**     | Yes                     | Yes                 | Yes              |
-
-#### Azure Product
-
-|                     |                         |                     |                               |
-| ------------------- | ----------------------- | ------------------- | ----------------------------- |
-|                     | **Inventory Dashboard** | **Recommendations** | **AutoStopping**              |
-| **Virtual Machine** | Yes             | Coming soon         | Yes (With Spot Orchestration) |
-| **AKS**             | Yes                     | Yes                 | Yes                           |
+<Ccm />
 
 ## Service Reliability Management
 
@@ -267,7 +202,7 @@ Harness includes native TUF support via the following:
 - OCI image registry support:
   - TUF recommends the use of an OCI image-spec container registry. Harness supports [OCI registry for Helm charts](https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-connectors/add-helm-repository-servers/#oci-registry).
 - Enforce the rotation of secrets and key management practices:
-  - Harness provides [token key rotation natively](/docs/platform/User-Management/add-and-manage-api-keys#rotate-token).
+  - Harness provides [token key rotation natively](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#rotate-tokens).
 - Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step).
 
 ## Harness Open Source Software (OSS) components
