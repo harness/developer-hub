@@ -270,7 +270,33 @@ function_id: canaryDemo-<+env.name>
 ```
 </details>  
 
+<details>
+<summary>Example 5: A Cloud Function that uses secret environment variables</summary>
 
+This example uses the `secret_environment_variables` parameter. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. For more information, go to [SecretEnvVar](https://cloud.google.com/functions/docs/reference/rest/v2/projects.locations.functions#secretenvvar) in Google docs.
+
+```yaml
+# The following are the minimum set of parameters required to create a Google Cloud Function.
+# If you use a remove manifest, please ensure it includes all of these parameters.
+
+function:
+  name: "my-secret-env-func"
+  description: "Using Secret Environment Variables"
+  region: "us-east1"
+  runtime: "nodejs16"
+  entryPoint: myFunction
+  max_instances: 1
+  eventTrigger:
+    event_type: "providers/cloud.pubsub/eventTypes/topic.publish"
+    resource: "projects/<project>/topics/<topic>"
+  environment_variables:
+    MY_ENV_VAR1: value1
+    MY_ENV_VAR2: value2
+  secret_environment_variables: [{ key: "MY_SECERT_ENV_VAR1", project_id: <project_id>, secret: "<secretName1>", version: "<secretVersion1>" }, { key: "MY_SECERT_ENV_VAR2", project_id: <project_id>, secret: "<secretName2>", version: "<secretVersion2>" }]
+
+```
+
+</details>
 
 ### Artifacts
 
