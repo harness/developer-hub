@@ -75,8 +75,8 @@ Expressions and runtime inputs make your pipelines more dynamic.
 * [Stage variables](/docs/platform/Pipelines/add-a-stage#option-stage-variables)
 * [Fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/)
 * [CI environment variables reference](./ci-env-var.md)
-* [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
-* [Built-in CI codebase variables reference](../codebase-configuration/built-in-cie-codebase-variables-reference.md)
+* [Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
+* [CI codebase variables reference](../codebase-configuration/built-in-cie-codebase-variables-reference.md)
 * [Secrets management](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview)
 * [Input sets and overlays](/docs/platform/pipelines/input-sets/)
 

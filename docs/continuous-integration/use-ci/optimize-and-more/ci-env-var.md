@@ -4,15 +4,15 @@ description: Learn about environment variables in Harness CI pipelines.
 sidebar_position: 40
 ---
 
-This topic describes the Harness CI built-in environment variables, namely those prefixed by `DRONE_`. These variables contain information about the build, such as how the build started, codebase information, build infrastructure, step identifiers, and more. These are [pipeline variables](/docs/platform/Variables-and-Expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline.
+This topic describes the Harness CI built-in environment variables, particularly those prefixed by `DRONE_`, as well as some `HARNESS_` variables and other environment variables relevant to CI. These variables contain information about the build, such as how the build started, codebase information, build infrastructure, step identifiers, and more. These are [pipeline variables](/docs/platform/Variables-and-Expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline.
 
 ## Reference environment variables
 
 There are several ways to reference Harness CI environment variables.
 
-* Direct reference, when available, such as `DRONE_BUILD_NUMBER`.
-* The pipeline variable expression syntax: `<+pipeline.variable.VARIABLE_NAME>`. For example, to reference `DRONE_BUILD_NUMBER`, you would use the expression `<+pipeline.variable.DRONE_BUILD_EVENT>`.
-* Equivalent [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+pipeline.sequenceId>` for `DRONE_BUILD_NUMBER`, or many of the [built-in CI codebase expressions](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
+* Direct reference in shell commands, when available, such as `DRONE_BUILD_NUMBER`.
+* Equivalent [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+pipeline.sequenceId>` for `DRONE_BUILD_NUMBER`, or many of the [CI codebase expressions](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
+<!-- *If declared as a pipeline or stage variable, you can use the pipeline variable expression syntax: `<+pipeline.variable.VARIABLE_NAME>`. For example, to reference `DRONE_BUILD_NUMBER` as a declared pipeline variable, you would use the expression `<+pipeline.variable.DRONE_BUILD_EVENT>`.-->
 
 ## Variable resolution
 
@@ -460,12 +460,15 @@ Other environment variables might existing in your pipelines depending on the st
 * `GCP_BAZEL_CACHE_CRED_PATH`
 * `GCP_KEY`
 * `BUILD_PURPOSE`
+* `DRONE_NETRC_MACHINE`
 
-<!-- N/A or unsupported vars:
-DRONE_SYSTEM_VERSION - Provides the version of the Drone server. - N/A to Harness CI.
-DRONE_STAGE_VARIANT - Provides the target operating architecture variable for the current build stage. This variable is optional and is only available for arm architectures.
-DRONE_STAGE_DEPENDS_ON (Provides a comma-separated list of dependencies for the current pipeline stage)
-DRONE_NETRC_MACHINE
-DRONE_BUILD_PARENT (Provides the parent build number for the current running build. The parent build number is populated from an exiting build that is being promoted. - Harness CI doesn't supported the promotion feature)
-DRONE_DEPLOY_TO - only applies to CD
-DRONE_ENV - Not sure this exists anymore -->
+## Unsupported variables
+
+These variables are not supported because they are not applicable or incompatible with Harness CI.
+
+* `DRONE_SYSTEM_VERSION`: This variable is not applicable because it describes the Drone server version.
+* `DRONE_STAGE_VARIANT`: This variable is not supported because it is optional and only applies to ARM architectures.
+* `DRONE_STAGE_DEPENDS_ON`
+* `DRONE_BUILD_PARENT`: This variable is not applicable because it is for the Drone-specific *promotions* feature.
+* `DRONE_DEPLOY_TO`: This variable is not applicable because it is for continuous delivery in Drone.
+* `DRONE_ENV`
