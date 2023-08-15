@@ -267,24 +267,24 @@ This *isn't* the same as the short SHA returned by [`<+codebase.shortCommitSha>`
 
 ## Git user data
 
-### gitUser
+### codebase.gitUser
 
 * Value: User name of the Git account associated with the build. Can be `null` or masked in build logs.
 * Expression:
    * Manual builds: `<+codebase.gitUser>`
    * Webhook triggers: `<+codebase.gitUser>` or `<+trigger.gitUser>`
 
-### gitUserAvatar
+### codebase.gitUserAvatar
 
 * Value: Link to user avatar of the Git account associated with the build.
 * Expression: `<+codebase.gitUserAvatar>`
 
-### gitUserEmail
+### codebase.gitUserEmail
 
 * Value: User email of the Git account associated with the build. Can be `null` or masked in build logs.
 * Expression: `<+codebase.gitUserEmail>`
 
-### gitUserId
+### codebase.gitUserId
 
 * Value: User ID of the Git account associated with the build. Can be `null` or masked in build logs.
 * Expression: `<+codebase.gitUserId>`
