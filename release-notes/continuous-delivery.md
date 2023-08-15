@@ -58,7 +58,7 @@ This release does not have Early Access features.
   <TabItem value="Fixed issues">
 ```
 
-- Fixed a FirstGen-to-CurrentGen migration issue where the migrator did not filter out duplicate keys when extracting variables. With this fix, the migrator allows unique keys only. (CDS-76576)
+- Fixed a FirstGen-to-NextGen migration issue where the migrator did not filter out duplicate keys when extracting variables. With this fix, the migrator allows unique keys only. (CDS-76576)
 
 - Fixed an issue that could occur when setting up an Azure Web App deployment. The Visual Editor would add a `spec: webApp` element to the pipeline definition. This resulted in an invalid pipeline YAML and required a user to delete the element before the pipeline could be saved. (CDS-76289, ZD-48649)	Actions
 
@@ -70,7 +70,7 @@ This release does not have Early Access features.
 
 - Fixed a UI issue in the **Pipeline Executions** page. Steps with a looping strategy include a **Show All** button for viewing all nodes in that step. However, this was not working as expected when pipeline stages were used. With this fix, clicking **Show All** now displays all nodes. (CDS-75558, ZD-48298)	
 
-- Fixed a FirstGen-to-CurrentGen migration issue where the migrator mapped the incorrect status to a Jira Approval step. This could cause a pipeline execution to stop without proceeding. With this fix, the migrator maps the status correctly. (CDS-75426)
+- Fixed a FirstGen-to-NextGen migration issue where the migrator mapped the incorrect status to a Jira Approval step. This could cause a pipeline execution to stop without proceeding. With this fix, the migrator maps the status correctly. (CDS-75426)
 
 - Fixed an issue with the **Repository Name** filter in the **Builds** page. Some users could not filter on builds that pulled their source code from a specific repository. If you experienced this issue, you will need to delete any saved filters that use the **Repository Name** filter and create them again. (CDS-75281, ZD-47876, ZD-48201)	
 
@@ -82,9 +82,34 @@ This release does not have Early Access features.
 
 - Fixed the error message that gets displayed when a build does not find a specified package. The previous error message was `No tags found with given image path`. The new error message is `No tags found for the Package Name`.(CDS-73559)	
 
-- Fixed a UI issue with validating UI fields when defining a template for a Github Package Registry artifact. (CDS-73559)	
+- Fixed a delegate issue where the retry locic would result in an exception with the message `Failed to fetch artifacts. Vault operation error....` (CDS-75777, ZD-48380)	
 
 - Fixed an issue where a pipeline execution reported an invalid `artifactPath` when trying to deploy Artifactory artifacts. This was due to an issue with the regex used to populate the pull-down artifact menu. With this fix, you can specify recursive wildcards in the directory path for Artifactory. For example, you can specify `MainPath/*/*` as the directory path for the pipeline and the Service step will download the appropriate chosen artifact. (CDS-72245, ZD-46236)
+
+- The Custom Remote Store did not clone a repo if its total size was 25Mb or higher if provided in the execution script. (CDS-25900)
+
+  We did not want to bloat up the communication between delegate and manager so we have this validation. It should ideally be for manifest and not the whole repo that contains the manifest.
+
+  This issue has been resolved. The Custom Remote Manifest now has a <=25Mb size validation on manifest files.
+
+- Introduced a validation to ensure that only repositories in the allow list are available when specifying Git details as part of a GitOps workflow. (CDS-75828)
+
+- Fixed a delegate issue where the retry locic would result in an exception with the message `Failed to fetch artifacts. Vault operation error....` (CDS-75777, ZD-48380)	
+
+- Fixed a delegate issue where the retry logic would cause an exception due to a connection-refused error, which was classified as a connectivity error. (CDS-75777, ZD-48380)
+
+- Fixed a delegate issue observed in Blue Green deployments of ASG services, where a repeat deployment incorrectly could result in a scaling down of instances to 0. (CDS-75777, ZD-48380)
+
+- Fixed a delegate issue observed in pipeline executions with service overrides. If an encrypted config file was deleted, a log message would show the path to the deleted file. (CDS-75153, ZD-47557) 
+
+- Fixed a delegate issue where a `<+configFile.getAsBase64(content)>` expression would get parsed incorrectly if it contained multiple lines. (CDS-73424)
+
+- Fixed a UI issue where pipelines, input sets, and executions were ordered incorrectly due to case-sensitive sorting of the element list. With this release, the UI now uses case-insensitive sorting when it lists pipelines, input sets, and pipeline executions. (CDS-73424)
+
+- Fixed a delegate-selector issue in Jira, ServiceNow and Bamboo build steps. When a delegate selector was added at the step/stage/pipeline level, it did not override the selector coming from the connector. This meant that both the delegate selectors were getting checked during the step execution. With this fix, if any selector is at the step/stage/pipeline level, it overrides the selector coming from the connector. This is the default behavior in every other step type. (CDS-71025)
+
+- Fixed an issue where Azure webhook triggers did not work as expected because the delegate could not parse repository URLs in the format `https://{ORG}@dev.azure.com/{ORG}/{PROJECT}/_git/{REPO}`. With this fix, the delegate can parse these URLs and Azure webhook triggers work as expected. (CDS-59023)
+
 
 
 ```mdx-code-block
