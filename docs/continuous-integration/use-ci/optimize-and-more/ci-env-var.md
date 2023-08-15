@@ -43,7 +43,7 @@ You can automatically [trigger pipelines using Git events](/docs/platform/Trigge
 ```
 -->
 
-## Difference between DRONE_ and PLUGIN_ variables
+## Difference between DRONE\_ and PLUGIN\_ variables
 
 `DRONE_` variables are environment variables that are automatically set at the pipeline level. These are [pipeline variables](/docs/platform/Variables-and-Expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline. You might notice that many `DRONE_` variables are the same as some `CI_` and `HARNESS_` environment variables. The `DRONE_` variables are derived from Drone, which is part of Harness CI. Providing first-class support for [Drone environment variables](https://docs.drone.io/pipeline/environment/reference/) makes it easier to migrate from standalone Drone to Harness CI and provides better support for [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) that use those variables.
 
@@ -401,27 +401,27 @@ If the pipeline's first stage is a CI stage, all timestamps are the same.
 
 These variables are related to the lite-engine service.
 
-`DELEGATE_SERVICE_TOKEN`
-`DELEGATE_SERVICE_ENDPOINT`
-`DELEGATE_SERVICE_ID`
-`DRONE_NETRC_USERNAME`
-`DRONE_NETRC_PASSWORD`
-`HARNESS_ACCOUNT_ID`: Your Harness account ID. Equivalent to `<+account.identifier>`.
-`HARNESS_BUILD_ID`: The incremental build ID for pipeline runs. Equivalent to `<+pipeline.sequenceId>` and [`DRONE_BUILD_NUMBER`](#drone_build_number).
-`HARNESS_EXECUTION_ID`: A pipeline's immutable UUID. Equivalent to `<pipeline.executionId>`
-`HARNESS_LOG_PREFIX`
-`HARNESS_LOG_SERVICE_ENDPOINT`
-`HARNESS_LOG_SERVICE_TOKEN`
-`HARNESS_ORG_ID`: Your Harness organization ID. Equivalent to `<+org.identifier>`.
-`HARNESS_PIPELINE_ID`: A pipeline's identifier, usually based on the pipeline's name. Equivalent to `<+pipeline.identifier>`.
-`HARNESS_PROJECT_ID`: The Harness project ID. Equivalent to `<+project.identifier>`.
-`HARNESS_SECRETS_LIST`
-`HARNESS_STAGE_ID`: The identifier for a stage. Equivalent to `<+stage.identifier>`.
-`HARNESS_STO_SERVICE_ENDPOINT`: The URL for STO service.
-`HARNESS_STO_SERVICE_TOKEN`: Authentication for the STO service.
-`HARNESS_TI_SERVICE_ENDPOINT`: The URL for Test Intelligence service.
-`HARNESS_TI_SERVICE_TOKEN`: Authentication for the Test Intelligence service.
-`HARNESS_WORKSPACE`: Duplicate of [`DRONE_WORKSPACE`](#drone_workspace).
+* `DELEGATE_SERVICE_TOKEN`
+* `DELEGATE_SERVICE_ENDPOINT`
+* `DELEGATE_SERVICE_ID`
+* `DRONE_NETRC_USERNAME`
+* `DRONE_NETRC_PASSWORD`
+* `HARNESS_ACCOUNT_ID`: Your Harness account ID. Equivalent to `<+account.identifier>`.
+* `HARNESS_BUILD_ID`: The incremental build ID for pipeline runs. Equivalent to `<+pipeline.sequenceId>` and [`DRONE_BUILD_NUMBER`](#drone_build_number).
+* `HARNESS_EXECUTION_ID`: A pipeline's immutable UUID. Equivalent to `<pipeline.executionId>`
+* `HARNESS_LOG_PREFIX`
+* `HARNESS_LOG_SERVICE_ENDPOINT`
+* `HARNESS_LOG_SERVICE_TOKEN`
+* `HARNESS_ORG_ID`: Your Harness organization ID. Equivalent to `<+org.identifier>`.
+* `HARNESS_PIPELINE_ID`: A pipeline's identifier, usually based on the pipeline's name. Equivalent to `<+pipeline.identifier>`.
+* `HARNESS_PROJECT_ID`: The Harness project ID. Equivalent to `<+project.identifier>`.
+* `HARNESS_SECRETS_LIST`
+* `HARNESS_STAGE_ID`: The identifier for a stage. Equivalent to `<+stage.identifier>`.
+* `HARNESS_STO_SERVICE_ENDPOINT`: The URL for STO service.
+* `HARNESS_STO_SERVICE_TOKEN`: Authentication for the STO service.
+* `HARNESS_TI_SERVICE_ENDPOINT`: The URL for Test Intelligence service.
+* `HARNESS_TI_SERVICE_TOKEN`: Authentication for the Test Intelligence service.
+* `HARNESS_WORKSPACE`: Duplicate of [`DRONE_WORKSPACE`](#drone_workspace).
 
 ## Infrastructure variables
 
