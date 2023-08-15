@@ -20,13 +20,7 @@ Harness Delegate (NextGen SaaS) releases every two weeks. On the other hand, Har
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Deprecation notices
-
-**Helm 2**
-
-import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
-
-<Helmdep />
+#### Deprecation notice
 
 **Kustomize 3.4.5**
 
@@ -34,14 +28,47 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest - August 4, 2023, Harness version 80120, Harness Delegate version 80104
+## Latest: Harness version 803xx, Harness Delegate version 803xx
 
-Harness NextGen release 80120 includes the following changes for the Harness Delegate.
+Harness NextGen release 803xx includes the following changes for the Harness Delegate.
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### New features and enhancements
+
+- Pending public release notes summary. (PL-39790)
+
+- To safeguard your operations and protect against potential security vulnerabilities, Harness deprecated the Helm 2 binary from delegates with an immutable image type (image tag `yy.mm.xxxxx`). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). (PL-40409)
+
+
+### Early access features
+
+**GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
+
+This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+
+With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings), and you can use GitHub connectors with GitHub App authentication in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
+
+### Fixed issues
+
+- Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. (CI-9122)
+
+- Pending public release notes summary. (PL-40148)
+
+- The `publishedDelegateVersion` API incorrectly required edit permission. (PL-40322)
+
+   This issue is fixed. The `publishedDelegateVersion` API now requires only view permission.
+
+### Hotfixes
+
+The current version does not include a hotfix release.
+
+## Previous releases
+
+<details>
+<summary>Expand this section to view changes to previous releases</summary>
+
+#### August 4, 2023, Harness version 80120, Harness Delegate version 80104
+
+##### What's new
 
 - Removed Helm version 3.1 from from delegates with an immutable image type (image tag `yy.mm.xxxxx`). (CDS-58892, ZD-47520, ZD-48553)
 
@@ -81,17 +108,11 @@ Harness NextGen release 80120 includes the following changes for the Harness Del
 
 - A new `getAzureKeyVaultClient` API is available to fetch the list of Azure vaults. This option reduces the time it takes for Harness to reflect a newly-created Azure vault. (PL-28392, ZD-44045)
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not include any early access features.
-  
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+
+##### Fixed issues
 
 -  Fixed an issue with handling of new line characters in [GitHub App private key files](/docs/platform/Connectors/Code-Repositories/git-hub-app-support) generated on Windows machines. (CI-8708)
 
@@ -157,23 +178,6 @@ This release does not include any early access features.
 - Delegates showed high CPU usage caused by a large number of threads that perform read operations being generated and abandoned. (PL-39797)
 
    This issue has been resolved through improved message read performance and an increased read timeout.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Hotfix release">
-```
-
-The current version does not include a hotfix release.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>Expand this section to view changes to previous releases</summary>
 
 #### August 8, 2023 Harness Delegate hotfix version 79910
 
