@@ -201,6 +201,10 @@ Provides the HTTP(S) URL to clone a pipeline's [codebase](../codebase-configurat
 
 Provides the SSH URL to clone a pipeline's [codebase](../codebase-configuration/create-and-configure-a-codebase.md), such as `ssh://git@github.com:octocat/hello-world.git`.
 
+## DRONE_OUTPUT
+
+The path to a `.env` file where a Drone plugin can write output variables. This is not supported by all plugins or build infrastructures. For more information, go to [Plugin step settings: Output variables](../use-drone-plugins/plugin-step-settings-reference.md#output-variables).
+
 ## DRONE_PULL_REQUEST
 
 For pull request builds, this variable provides the pull request number. For other builds, this variable is empty. This is equivalent to the expressions `<+codebase.prNumber>` and `<+trigger.prNumber>`.
@@ -425,9 +429,9 @@ These variables are related to the lite-engine service.
 
 ## Infrastructure variables
 
-* `PLATFORM`, `VERSION`, [`DRONE_STAGE_OS`](#drone_stage_os), [`DRONE_STAGE_ARCH`](#drone_stage_arch)
-* `HARNESS_INFRA`, [`DRONE_STAGE_TYPE`](#drone_stage_type)
-* `HARNESS_DELEGATE_ID`
+* `PLATFORM` and `VERSION`: Build infrastructure platform details. Related to [`DRONE_STAGE_OS`](#drone_stage_os) and [`DRONE_STAGE_ARCH`](#drone_stage_arch).
+* `HARNESS_INFRA`: Build infrastructure type. Similar to [`DRONE_STAGE_TYPE`](#drone_stage_type).
+* `HARNESS_DELEGATE_ID`: Delegate identifier.
 * [`DRONE_STAGE_MACHINE`](#drone_stage_machine)
 * [`DRONE_SYSTEM_HOST`](#drone_system_host)
 * [`DRONE_SYSTEM_PROTO`](#drone_system_proto)
@@ -462,7 +466,6 @@ DRONE_SYSTEM_VERSION - Provides the version of the Drone server. - N/A to Harnes
 DRONE_STAGE_VARIANT - Provides the target operating architecture variable for the current build stage. This variable is optional and is only available for arm architectures.
 DRONE_STAGE_DEPENDS_ON (Provides a comma-separated list of dependencies for the current pipeline stage)
 DRONE_NETRC_MACHINE
-DRONE_OUTPUT
 DRONE_BUILD_PARENT (Provides the parent build number for the current running build. The parent build number is populated from an exiting build that is being promoted. - Harness CI doesn't supported the promotion feature)
 DRONE_DEPLOY_TO - only applies to CD
 DRONE_ENV - Not sure this exists anymore -->

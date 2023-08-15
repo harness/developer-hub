@@ -87,6 +87,10 @@ For each expression:
 * Replace `VAR_NAME` with the relevant variable name.
 * In cross-stage references, replace `STAGE_ID` with the ID of the stage where the **Plugin** step exists.
 
+### Environment variables
+
+Harness CI supports `DRONE_` environment variables. For more information, go to the [CI environment variables reference](../optimize-and-more/ci-env-var.md).
+
 ## Image Pull Policy
 
 If you specified a [Container Registry and Image](#container-registry-and-image), you can specify an image pull policy:
