@@ -16,11 +16,35 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-## August 8, 2023, version 80209
+### August 17, 2023, version 80300
 
-- Update operations on GCP Secrets Manager were failing in FirstGen SMP environments. (PL-40151)
+#### What's new
 
-  This issue has been fixed. 
+This release does not include new features.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Fixed an issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240)
+
+### August 8, 2023, version 80209
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Update operations on GCP Secrets Manager were failing in FirstGen SMP environments. This issue has been fixed. (PL-40151)
+
+  
 
 
 ### August 4, 2023, version 80120
