@@ -30,7 +30,7 @@ The Rolling Deployment step supports all workloads.
 
 In Harness, a workload is a Deployment, StatefulSet, or DaemonSet object deployed and managed to steady state.
 
-If you deploy Kubernetes Jobs using the Rolling Deployment step, it does not manage the Job to steady state. Typically, Job are deployed with the Apply step.
+If you deploy Kubernetes Jobs using the Rolling Deployment step, it does not manage the Job to steady state. Typically, Jobs are deployed with the Apply step.
 
 The [Apply Step](deploy-manifests-using-apply-step.md) can deploy any workloads or objects in any strategy including Rolling Deployment.
 
