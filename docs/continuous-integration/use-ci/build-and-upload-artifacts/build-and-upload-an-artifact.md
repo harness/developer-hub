@@ -388,3 +388,18 @@ pipeline:
 ```
 
 </details>
+
+### Set kaniko runtime flags
+
+With Kubernetes cluster build infrastructures, **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md).
+
+You can set kaniko runtime flags by adding [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) formatted as `PLUGIN_FLAG_NAME`. For example, to set `--skip-tls-verify`, you would add a stage variable named `PLUGIN_SKIP_TLS_VERIFY` and set the variable value to `true`.
+
+```yaml
+        variables:
+          - name: PLUGIN_SKIP_TLS_VERIFY
+            type: String
+            description: ""
+            required: false
+            value: "true"
+```

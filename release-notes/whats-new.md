@@ -24,7 +24,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Continuous Integration, version 54xx
 
-* Improved support for <!--[Drone environment variables]--> (prefixed by `DRONE_`) in CI pipelines. This improves compatibility for <!--[Plugins]--> and eliminates the need for tedious variable-to-variable workarounds. (CI-7600)
+Improved support for `DRONE_` [environment variables](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var) in CI pipelines. This improves compatibility for [Plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)
 
 ## August 10, 2023
 

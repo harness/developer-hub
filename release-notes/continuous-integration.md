@@ -22,7 +22,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
-* Improved support for <!--[Drone environment variables]--> (prefixed by `DRONE_`) in CI pipelines. This improves compatibility for [Plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and eliminates the need for tedious variable-to-variable workarounds. (CI-7600) <!-- also update whats-new.md -->
+Improved support for `DRONE_` [environment variables](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var) in CI pipelines. This improves compatibility for [Plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)
 
 ### Early access features
 
@@ -34,12 +34,12 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 ### Fixed issues
 
-* <!-- Think this should be excluded bc it wasn't a true fix (CI-9056)-->
 * Improved the way [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) handles tests that call more tests. Previously, this rarely caused inaccurate renderings in the call graph visualization for Java-based tests. (CI-9053)
-* [Webhook triggers](/docs/platform/triggers/triggering-pipelines/) now reattempt calls to SCM APIs if the connection was reset or there was a server-side error. This fixes an issue where intermittent outages in connections to SCM APIs failed to trigger builds. (CI-8904, ZD-47605)
 * Fixed an issue where, if you selected runtime input for the codebase connector and repository name in a pipeline template, these settings reverted to fixed values after saving any other change to the template. (CI-8885, ZD-47680, ZD-47744)
 * You can now use [expressions](/docs/platform/Variables-and-Expressions/harness-variables), such as those for [matrix strategies](/docs/platform/Pipelines/run-a-stage-or-step-multiple-times-using-a-matrix), in [build infrastructure `platform` settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#infrastructure) when working in the YAML editor. (CI-6830)
 * Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. This fix requires Harness Delegate version 803xx or later. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate). (CI-9122)
+
+<!-- Rolled back: Webhook triggers /docs/platform/triggers/triggering-pipelines/ now reattempt calls to SCM APIs if the connection was reset or there was a server-side error. This fixes an issue where intermittent outages in connections to SCM APIs failed to trigger builds. (CI-8904, ZD-47605) -->
 
 ### Hotfixes
 

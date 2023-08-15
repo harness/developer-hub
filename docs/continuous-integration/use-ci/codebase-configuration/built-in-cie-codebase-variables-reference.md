@@ -228,7 +228,7 @@ To refer to specific Git attributes associated with a webhook-triggered pull req
 * `<+codebase.pullRequestLink>`: Git pull request link.
 * `<+codebase.repoUrl>`, `<+trigger.repoUrl>`: Git repo URL of the build.
 * `<+codebase.sourceBranch>`, `<+trigger.sourceBranch>`: PR source branch.
-* `<+trigger.sourceRepo`: The source repo. Can be `null`.
+* `<+trigger.sourceRepo>`: The source repo. Can be `null`.
 * `<+codebase.state>`: State of the Git working directory associated with a PR.
 * `<+codebase.tag>`: The build's Git tag. `null` for PR builds.
 * `<+codebase.targetBranch>`, `<+trigger.targetBranch>`: PR target branch.
@@ -269,7 +269,7 @@ To refer to specific Git attributes associated with a webhook-triggered push bui
 * `<+codebase.pullRequestLink>`: Git pull request link. `null` for branch builds.
 * `<+codebase.repoUrl>`, `<+trigger.repoUrl>`: Git repo URL of the repo associated with the build.
 * `<+codebase.sourceBranch>`, `<+trigger.sourceBranch>`: PR source branch. `null` for branch builds.
-* `<+trigger.sourceRepo`: The source repo. Can be `null`.
+* `<+trigger.sourceRepo>`: The source repo. Can be `null`.
 * `<+codebase.state>`: State of the Git working directory associated with a PR. `null` for branch builds.
 * `<+codebase.tag>`: The build's Git tag. `null` for branch builds.
 * `<+codebase.targetBranch>`, `<+trigger.targetBranch>`: Build target branch. For branch builds, this can be `null` or the same as `<+codebase.branch>`.
@@ -294,7 +294,7 @@ To refer to specific Git attributes associated with a webhook-triggered push bui
 * `<+codebase.pullRequestLink>`: Git pull request link. `null` for tag builds.
 * `<+codebase.repoUrl>`, `<+trigger.repoUrl>`: Git repo URL of the repo associated with the build.
 * `<+codebase.sourceBranch>`, `<+trigger.sourceBranch>`: PR source branch. `null` for tag builds.
-* `<+trigger.sourceRepo`: The source repo. Can be `null`.
+* `<+trigger.sourceRepo>`: The source repo. Can be `null`.
 * `<+codebase.state>`: State of the Git working directory associated with a PR. `null` for tag builds.
 * `<+codebase.tag>`: The build's Git tag.
 * `<+codebase.targetBranch>`, `<+trigger.targetBranch>`: Build target branch. For tag builds, this can be `null` or the tag path, such as `refs/tags/TAG_NAME`.
