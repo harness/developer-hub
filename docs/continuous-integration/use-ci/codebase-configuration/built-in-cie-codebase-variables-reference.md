@@ -74,7 +74,7 @@ Codebase variables aren't resolved in these scenarios:
 
 ## Reference codebase variables
 
-You can use [Harness' expressions](/docs/platform/references/runtime-inputs/#expressions) to reference various codebase attributes in your **Build** (`CI`) stages.
+You can use [Harness' expressions](/docs/platform/references/runtime-inputs/#expressions) to reference various codebase attributes in your **Build** (`CI`) stages. Expressions are formatted as `<+PARENT.CHILD>`, such as `<+codebase.commitSha>`, where `commitSha` is an attribute within `codebase`.
 
 For example, you can add a [Run step](../run-ci-scripts/run-step-settings.md) with a series of `echo` commands to your pipeline to reference codebase variables:
 
@@ -136,214 +136,176 @@ You can use expressions to reference the value of some `DRONE_` environment vari
 
 :::
 
-## codebase.build.type
+## Build start conditions
 
-The type of event that started the build, such as `push`, `pull_request`, or `tag`.
+These variables describe how the build started.
 
-`<+codebase.build.type>=="TYPE"`
+### codebase.build.type
 
-Manual tag build: `<+codebase.build.type>=="tag"`
+* Value: Provides the type of event that started the build:
+   * `tag`: Manual tag build
+   * `branch`: Manual branch build
+   * `PR`: PR build (manual or webhook)
+   * `Push`: Push webhook trigger (branch or tag)
+* Expression: `<+codebase.build.type>`
 
-Related: `<+pipeline.triggerType>`
+You can use this expression to create conditions based on build type, such as `<+codebase.build.type>=="TYPE"`, where `TYPE` is `tag`, `PR`, `branch`, or `Push`.
 
+### trigger.type
 
-## Manual tag build expressions
+* Value: Identifies a the trigger type. For PR and push webhook triggers, it is `Webhook`.
+* Expression: `<+trigger.type>`
+* Exclusions: Not available for manual builds.
 
-Manual tag builds are builds that occur when you manually run your Harness pipeline from the Harness UI and select the **Git Tag** build type. Harness looks for the source code attached to the specified **Tag Name**, and it clones that specific source code for the build.
+### trigger.event
 
-You can refer to manual tag builds in Harness with the expression .
+* Value: The webhook trigger event category, `PR` or `PUSH`.
+* Expression: `<+trigger.event>`
+* Exclusions: Not available for manual builds.
 
-To refer to specific Git attributes associated with a manual tag build, use the following expressions in your Harness stages:
+## Branch, PR, and tag data
 
-* `<+codebase.baseCommitSha>`: Git base commit id of the build. `null` for tag builds.
-* `<+codebase.branch>`: The name of the Git branch used for the build. `null` for tag builds.
-* `<+codebase.commitMessage>`: The latest commit message from a tag.
-* `<+codebase.commitRef>`: Git commit id reference.
-* `<+codebase.commitSha>`: The build's full Git commit id.
-* `<+codebase.shortCommitSha>`: The short SHA (seven characters) version of the build's commit SHA.
-* `<+codebase.gitUser>`: User name of the Git account associated with the build.
-* `<+codebase.gitUserAvatar>`: User avatar of the Git account associated with the build.
-* `<+codebase.gitUserEmail>`: User email of the Git account associated with the build.
-* `<+codebase.gitUserId>`: User id of the Git account associated with the build.
-* `<+codebase.prNumber>`: Git pull request number. `null` for tag builds.
-* `<+codebase.prTitle>`: Git pull request title. `null` for tag builds.
-* `<+codebase.pullRequestBody>`: Git pull request description. `null` for tag builds.
-* `<+codebase.pullRequestLink>`: Git pull request link. `null` for tag builds.
-* `<+codebase.repoUrl>`: Git repo URL of the build.
-* `<+codebase.sourceBranch>`: PR source branch. `null` for tag builds.
-* `<+codebase.state>`: State of the Git working directory associated with a PR. `null` for tag builds.
-* `<+codebase.tag>`: The build's Git tag.
-* `<+codebase.targetBranch>`: Build target branch. Can be `null` for tag builds.
+### codebase.branch
 
-## Manual branch build expressions
+* Value: The PR's target branch or the branch specified for a branch build.
+* Expression: `<+codebase.branch>`
+* Exclusions: `null` for all tag builds.
 
-Manual branch builds are the builds that occur when you manually run your pipeline in the Harness UI and select the **Git Branch** build type. Harness looks for the source code attached to the specified **Branch Name**, and it clones that specific source code for the build.
+### codebase.prNumber
 
-You can refer to manual branch builds in Harness with the expression `<+codebase.build.type>=="branch"`.
+* Value: The Git PR number.
+* Expression:
+   * Manual PR builds: `<+codebase.prNumber>`
+   * PR webhook triggers: `<+codebase.prNumber>` or `<+trigger.prNumber>`
+* Exclusions: `null` for all tag and branch builds.
 
-To refer to specific Git attributes associated with a manual branch build, use the following expressions in your Harness stages:
+### codebase.prTitle
 
-* `<+codebase.baseCommitSha>`: Git base commit id of the build. `null` for branch builds.
-* `<+codebase.branch>`: The name of the Git branch used for the build.
-* `<+codebase.commitMessage>`: The latest commit message from a branch.
-* `<+codebase.commitRef>`: Git commit id reference.
-* `<+codebase.commitSha>`: The build's full Git commit id.
-* `<+codebase.shortCommitSha>`: The short SHA (seven characters) version of the build's commit SHA.
-* `<+codebase.gitUser>`: User name of the Git account associated with the build.
-* `<+codebase.gitUserAvatar>`: User avatar of the Git account associated with the build.
-* `<+codebase.gitUserEmail>`: User email of the Git account associated with the build.
-* `<+codebase.gitUserId>`: User id of the Git account associated with the build.
-* `<+codebase.prNumber>`: Git pull request number. `null` for branch builds.
-* `<+codebase.prTitle>`: Git pull request title. `null` for branch builds.
-* `<+codebase.pullRequestBody>`: Git pull request description. `null` for branch builds.
-* `<+codebase.pullRequestLink>`: Git pull request link. `null` for branch builds.
-* `<+codebase.repoUrl>`: Git repo URL of the build.
-* `<+codebase.sourceBranch>`: PR source branch. For branch builds, this can be `null` or the same as `<+codebase.branch>`.
-* `<+codebase.state>`: State of the Git working directory associated with a PR. `null` for branch builds.
-* `<+codebase.tag>`: The build's Git tag. `null` for branch builds.
-* `<+codebase.targetBranch>`: Build target branch. Can be `null` for branch builds.
+* Value: The Git PR title.
+* Expression:
+   * Manual PR builds: `<+codebase.prTitle>`
+   * PR webhook triggers: `<+codebase.prTitle>` or `<+trigger.prTitle>`
+* Exclusions: `null` for all tag and branch builds.
 
-## Manual pull request build expressions
+### codebase.pullRequestBody
 
-Manual pull request builds are builds that occur when you manually run your pipeline in the Harness UI and select the **Git Pull Request** build type. Harness looks for the source code attached to the specified **Pull Request Number**, and it clones that specific source code for the build.
+* Value: The Git PR description.
+* Expression: `<+codebase.pullRequestBody>`
+* Exclusions: `null` for all tag and branch builds.
 
-You can refer to manual pull request builds in Harness with the expression `<+codebase.build.type>=="PR"`.
+### codebase.pullRequestLink
 
-To refer to specific Git attributes associated with a manual pull request build, use the following expressions in your Harness stages:
+* Value: Link to the PR.
+* Expression: `<+codebase.pullRequestLink>`
+* Exclusions: `null` for all tag and branch builds.
 
-* `<+codebase.baseCommitSha>`: Git base commit id of the build.
-* `<+codebase.branch>`: The name of the PR target branch.
-* `<+codebase.commitMessage>`: The latest commit message from a PR.
-* `<+codebase.commitRef>`: Git commit id reference.
-* `<+codebase.commitSha>`: The build's full Git commit id.
-* `<+codebase.shortCommitSha>`: The short SHA (seven characters) version of the build's commit SHA.
-* `<+codebase.gitUser>`: User name of the Git account associated with the build.
-* `<+codebase.gitUserAvatar>`: User avatar of the Git account associated with the build.
-* `<+codebase.gitUserEmail>`: User email of the Git account associated with the build.
-* `<+codebase.gitUserId>`: User id of the Git account associated with the build.
-* `<+codebase.prNumber>`: Git pull request number.
-* `<+codebase.prTitle>`: Git pull request title.
-* `<+codebase.pullRequestBody>`: Git pull request description.
-* `<+codebase.pullRequestLink>`: Git pull request link.
-* `<+codebase.repoUrl>`: Git repo URL of the build.
-* `<+codebase.sourceBranch>`: PR source branch.
-* `<+codebase.state>`: State of the Git working directory associated with a PR.
-* `<+codebase.tag>`: The build's Git tag. `null` for PR builds.
-* `<+codebase.targetBranch>`: PR target branch.
+### codebase.sourceBranch
 
-:::info
+* Value: The source branch for a PR.
+* Expression:
+   * Manual builds: `<+codebase.sourceBranch>`
+   * Webhook triggers: `<+codebase.sourceBranch>` or `<+trigger.sourceBranch>`
+* Exclusions:
+   * Tag builds: Always `null`.
+   * Branch builds: `null` or the same as [`<+codebase.branch>`](#branch).
 
-For Bitbucket PR builds (whether by Trigger, Manual, or PR number), the variable `<+codebase.commitSha>` returns a shortened SHA. This is due to the Bitbucket webhook payload only sending shortened SHA.
+### codebase.tag
 
-This is not the same as a short SHA, which is returned by the variable `<+codebase.shortCommitSha>`.
+* Value: The Git tag specified for a tag build.
+* Expression: `<+codebase.tag>`
+* Exclusions: `null` for all PR and branch builds.
 
-:::
+### codebase.targetBranch
 
-## Pull request webhook event expressions
+* Value:
+   * PR builds: The PR's target branch.
+   * Branch builds: `null` or the same as [`<+codebase.branch>`](#branch).
+   * Tag builds: `null` or the tag path, such as `refs/tags/TAG_NAME`.
+* Expression:
+   * Manual builds: `<+codebase.targetBranch>`
+   * Webhook triggers: `<+codebase.targetBranch>` or `<+trigger.targetBranch>`
 
-You can configure [Triggers](/docs/category/triggers) in Harness for an event on your Git repo, and Harness automatically triggers a build whenever there is a new instance of that event type on your Git repo. A **Pull Request Webhook Event** automatically starts a build in Harness when there is a new pull request event on the pipeline's associated Git repo. For information about setting up triggers, go to [Trigger Pipelines using Git Events](../../../platform/11_Triggers/triggering-pipelines.md).
+## Commit data
 
-You can refer to webhook pull request builds in Harness with the expression `<+codebase.build.type>=="PR"`.
+### codebase.baseCommitSha
 
-To refer to specific Git attributes associated with a webhook-triggered pull request build, use the following expressions in your Harness stages:
+* Value: The Git commit SHA of a PR's base commit.
+* Expression:
+   * Manual PR builds: `<+codebase.baseCommitSha>`
+   * PR webhook triggers: `<+codebase.baseCommitSha>` or `<+trigger.baseCommitSha>`
+* Exclusions: `null` for all tag and branch builds.
 
+### codebase.commitMessage
 
-* `<+codebase.baseCommitSha>`, `<+trigger.baseCommitSha>`: Git base commit id of the build.
-* `<+codebase.branch>`: The name of the PR target branch.
-* `<+codebase.commitMessage>`: The latest commit message from a PR.
-* `<+codebase.commitRef>`: Git commit id reference.
-* `<+codebase.commitSha>`, `<+trigger.commitSha>`: The build's full Git commit id.
-* `<+codebase.shortCommitSha>`: The short SHA (seven characters) version of the build's commit SHA.
-* `<+codebase.gitUser>`, `<+trigger.gitUser>`: User name of the Git account associated with the build.
-* `<+codebase.gitUserAvatar>`: User avatar of the Git account associated with the build.
-* `<+codebase.gitUserEmail>`: User email of the Git account associated with the build.
-* `<+codebase.gitUserId>`: User id of the Git account associated with the build.
-* `<+codebase.prNumber>`, `<+trigger.prNumber>`: Git pull request number.
-* `<+codebase.prTitle>`, `<+trigger.prTitle>`: Git pull request title.
-* `<+codebase.pullRequestBody>`: Git pull request description.
-* `<+codebase.pullRequestLink>`: Git pull request link.
-* `<+codebase.repoUrl>`, `<+trigger.repoUrl>`: Git repo URL of the build.
-* `<+codebase.sourceBranch>`, `<+trigger.sourceBranch>`: PR source branch.
-* `<+trigger.sourceRepo>`: The source repo. Can be `null`.
-* `<+codebase.state>`: State of the Git working directory associated with a PR.
-* `<+codebase.tag>`: The build's Git tag. `null` for PR builds.
-* `<+codebase.targetBranch>`, `<+trigger.targetBranch>`: PR target branch.
-* `<+trigger.event>`: The trigger event type. For PR triggers, it is `PR`.
-* `<+trigger.type>`: The trigger type. For webhook triggers, it is `Webhook`.
+* Value: The latest commit message in the branch, tag, or PR.
+* Expression: `<+codebase.commitMessage>`
+
+### codebase.commitRef
+
+* Value: A Git commit reference.
+* Expression: `<+codebase.commitRef>`
+
+### codebase.commitSha
+
+* Value: The full Git commit SHA for the latest commit in the branch, tag, or PR.
+* Expression:
+   * Manual builds: `<+codebase.commitSha>`
+   * Webhook triggers: `<+codebase.commitSha>` or `<+trigger.commitSha>`
 
 :::info
 
-For Bitbucket PR builds (whether by Trigger, Manual, or PR number), the variable `<+codebase.commitSha>` returns a shortened SHA. This is due to the Bitbucket webhook payload only sending shortened SHA.
+For Bitbucket PR builds (manual or webhook), this expression returns a *shortened* SHA due to the Bitbucket webhook payload only sending shortened SHAs.
 
-This is not the same as a short SHA, which is returned by the variable `<+codebase.shortCommitSha>`.
+This *isn't* the same as the short SHA returned by [`<+codebase.shortCommitSha>`](#shortcommitsha).
 
 :::
 
-## Push webhook event expressions
+### codebase.shortCommitSha
 
-You can configure [Triggers](/docs/category/triggers) in Harness for an event on your Git repo, and Harness automatically triggers a build whenever there is a new instance of that event type on your Git repo. A **Push Webhook Event** automatically starts a build in Harness when there is a new push event on the pipeline's associated Git repo. For information about setting up triggers, go to [Trigger Pipelines using Git Events](../../../platform/11_Triggers/triggering-pipelines.md).
+* Value: The short SHA (seven characters) of the build's [commit SHA](#commitsha).
+* Expression: `<+codebase.shortCommitSha>`
 
-You can refer to webhook push builds in Harness with the expression `<+codebase.build.type>=="Push"`.
+## Git user data
 
-To refer to specific Git attributes associated with a webhook-triggered push build, use the following expressions in your Harness stages.
+### gitUser
 
-### Branch push triggers
+* Value: User name of the Git account associated with the build. Can be `null` or masked in build logs.
+* Expression:
+   * Manual builds: `<+codebase.gitUser>`
+   * Webhook triggers: `<+codebase.gitUser>` or `<+trigger.gitUser>`
 
-* `<+codebase.baseCommitSha>`,  `<+trigger.baseCommitSha>`: Git base commit id of the build. `null` for branch builds.
-* `<+codebase.branch>`: The name of the Git branch used for the build.
-* `<+codebase.commitMessage>`: The latest commit message from a branch.
-* `<+codebase.commitRef>`: Git commit id reference.
-* `<+codebase.commitSha>`, `<+trigger.commitSha>`: The latest commit's full Git commit id.
-* `<+codebase.shortCommitSha>`: The short SHA (seven characters) version of the branch's latest commit SHA.
-* `<+codebase.gitUser>`, `<+trigger.gitUser>`: User name of the Git account associated with the build.
-* `<+codebase.gitUserAvatar>`: User avatar of the Git account associated with the build.
-* `<+codebase.gitUserEmail>`: User email of the Git account associated with the build.
-* `<+codebase.gitUserId>`: User id of the Git account associated with the build.
-* `<+codebase.prNumber>`, `<+trigger.prNumber>`: Git pull request number. `null` for branch builds.
-* `<+codebase.prTitle>`, `<+trigger.prTitle>`: Git pull request title. `null` for branch builds.
-* `<+codebase.pullRequestBody>`: Git pull request description. `null` for branch builds.
-* `<+codebase.pullRequestLink>`: Git pull request link. `null` for branch builds.
-* `<+codebase.repoUrl>`, `<+trigger.repoUrl>`: Git repo URL of the repo associated with the build.
-* `<+codebase.sourceBranch>`, `<+trigger.sourceBranch>`: PR source branch. `null` for branch builds.
-* `<+trigger.sourceRepo>`: The source repo. Can be `null`.
-* `<+codebase.state>`: State of the Git working directory associated with a PR. `null` for branch builds.
-* `<+codebase.tag>`: The build's Git tag. `null` for branch builds.
-* `<+codebase.targetBranch>`, `<+trigger.targetBranch>`: Build target branch. For branch builds, this can be `null` or the same as `<+codebase.branch>`.
-* `<+trigger.event>`: The trigger event type. For push triggers, it is `PUSH`.
-* `<+trigger.type>`: The trigger type. For webhook triggers, it is `Webhook`.
+### gitUserAvatar
 
-### Tag push triggers
+* Value: Link to user avatar of the Git account associated with the build.
+* Expression: `<+codebase.gitUserAvatar>`
 
-* `<+codebase.baseCommitSha>`,  `<+trigger.baseCommitSha>`: Git base commit id of the build. `null` for tag builds.
-* `<+codebase.branch>`: The name of the Git branch used for the build. `null` for tag builds.
-* `<+codebase.commitMessage>`: The latest commit message from a tag.
-* `<+codebase.commitRef>`: Git commit id reference.
-* `<+codebase.commitSha>`, `<+trigger.commitSha>`: The latest commit's full Git commit id.
-* `<+codebase.shortCommitSha>`: The short SHA (seven characters) version of the tag's latest commit SHA.
-* `<+codebase.gitUser>`, `<+trigger.gitUser>`: User name of the Git account associated with the build.
-* `<+codebase.gitUserAvatar>`: User avatar of the Git account associated with the build.
-* `<+codebase.gitUserEmail>`: User email of the Git account associated with the build.
-* `<+codebase.gitUserId>`: User id of the Git account associated with the build.
-* `<+codebase.prNumber>`, `<+trigger.prNumber>`: Git pull request number. `null` for tag builds.
-* `<+codebase.prTitle>`, `<+trigger.prTitle>`: Git pull request title. `null` for tag builds.
-* `<+codebase.pullRequestBody>`: Git pull request description. `null` for tag builds.
-* `<+codebase.pullRequestLink>`: Git pull request link. `null` for tag builds.
-* `<+codebase.repoUrl>`, `<+trigger.repoUrl>`: Git repo URL of the repo associated with the build.
-* `<+codebase.sourceBranch>`, `<+trigger.sourceBranch>`: PR source branch. `null` for tag builds.
-* `<+trigger.sourceRepo>`: The source repo. Can be `null`.
-* `<+codebase.state>`: State of the Git working directory associated with a PR. `null` for tag builds.
-* `<+codebase.tag>`: The build's Git tag.
-* `<+codebase.targetBranch>`, `<+trigger.targetBranch>`: Build target branch. For tag builds, this can be `null` or the tag path, such as `refs/tags/TAG_NAME`.
-* `<+trigger.event>`: The trigger event type. For push triggers, it is `PUSH`.
-* `<+trigger.type>`: The trigger type. For webhook triggers, it is `Webhook`.
+### gitUserEmail
 
+* Value: User email of the Git account associated with the build. Can be `null` or masked in build logs.
+* Expression: `<+codebase.gitUserEmail>`
 
-<!-- Tag push trigger YAML example
+### gitUserId
 
-```yaml
-        payloadConditions:
-          - key: <+trigger.payload.ref>
-            operator: StartsWith
-            value: refs/tags/
-```
--->
+* Value: User ID of the Git account associated with the build. Can be `null` or masked in build logs.
+* Expression: `<+codebase.gitUserId>`
+
+## Repo data
+
+### codebase.repoUrl
+
+* Value: Link to the Git repo associated with the build.
+* Expression:
+   * Manual builds: `<+codebase.repoUrl>`
+   * Webhook triggers: `<+codebase.repoUrl>` or `<+trigger.repoUrl>`
+
+### codebase.state
+
+* Value: State of the Git working directory associated with a PR.
+* Expression: `<+codebase.state>`
+* Exclusions: `null` for all tag and branch builds.
+
+### trigger.sourceRepo
+
+* Value: The PR, branch, or tag's source repo, if applicable. Otherwise, `null`.
+* Expression: `<+trigger.sourceRepo>`
+* Exclusions: Not available for manual builds.
