@@ -193,7 +193,7 @@ The build environment must have the necessary binaries for the **Run Tests** ste
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
                     buildTool: Dotnet ## Specify Dotnet or Nunit.
-                    args: dotnet test --no-build --verbosity normal
+                    args: --no-build --verbosity normal
                     namespaces: aw,fc
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
@@ -838,7 +838,7 @@ pipeline:
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
                     buildTool: Dotnet ## Specify Dotnet or Nunit.
-                    args: dotnet test --no-build --verbosity normal
+                    args: --no-build --verbosity normal
                     namespaces: aw,fc
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
@@ -1020,7 +1020,7 @@ pipeline:
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
                     buildTool: Dotnet ## Specify Dotnet or Nunit.
-                    args: dotnet test --no-build --verbosity normal
+                    args: --no-build --verbosity normal
                     namespaces: aw,fc
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
