@@ -67,12 +67,12 @@ These actions can be applied to the failure strategy as primary action and timeo
 | **Retry Step Group** | N/A | Harness will retry the execution of the complete step group automatically, from the beginning. You can set **Retry Count** and **Retry Intervals**. | N/A |
 | **Abort** | Pipeline execution is aborted. If you select this option, no timeout is needed. | Same as step. | Same as step. |
 | **Rollback Stage** | The stage rolls back to the state prior to stage execution. How the stage rolls back depends on the type of build or deployment it was performing. | Same as step. | Same as step. |
-| **Rollback Step Group** | N/A | The step group rolls back to the state prior to step group execution. How the step group rolls back depends on the type of build or deployment it was preforming. | N/A |
+| **Rollback Step Group** | N/A | The step group rolls back to the state prior to step group execution. How the step group rolls back depends on the type of build or deployment it was performing. | N/A |
 |**Mark As Failure**|Harness marks the step as **Failed**.|Harness marks the step group as **Failed**.|Harness marks the stage as **Failed**.|
 
-:::info note Currently, the Failure Strategy of Retrying Step Group is behind the Feature Flag `PIE_RETRY_STEP_GROUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-
+:::info note
+The **Retry Step Group** failure strategy is behind the feature flag `PIE_RETRY_STEP_GROUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 ### Failure strategy takes precedence over conditional execution
 
