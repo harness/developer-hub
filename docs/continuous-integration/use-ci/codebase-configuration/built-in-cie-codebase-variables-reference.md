@@ -8,114 +8,150 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-In Harness, you set up your [codebase](./create-and-configure-a-codebase.md) by creating a [Harness connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) that connects to a Git repo. Pipelines use this connector to clone the code you want to build and test. When a pipeline runs, Harness also fetches your Git details and displays them in the **Build**. You can use Harness' built-in expressions to reference various codebase attributes in Harness pipeline stages.
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-This topic describes the built-in Harness expressions that you can use to refer to your Git codebase attributes. These variables are available for GitHub, Bitbucket, and GitLab codebases.
+In Harness CI, you set up a [codebase](./create-and-configure-a-codebase.md) by creating a [Harness connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) that connects to a Git repo. Pipelines use this connector to clone the code that you want to build and test. When a pipeline runs, Harness also fetches Git details and displays them in the [build details](../viewing-builds.md).
+
+This topic describes how codebase variables are resolved and the built-in Harness expressions that you can use to reference Git codebase attributes in your pipelines.
 
 For more information about variables and expressions, go to:
 
 * [Built-in and custom Harness variables reference](../../../platform/12_Variables-and-Expressions/harness-variables.md)
 * [CI environment variables reference](../optimize-and-more/ci-env-var.md)
 
-## How and when codebase variables get resolved
+## Requirements
 
-If you want to use codebase variables in your pipelines, you need to know how and when these variables get resolved.
+You must use a supported codebase: GitHub, Bitbucket, or GitLab.
 
-Codebase variables are based on the codebase defined for a pipeline and the information in the **Triggers** and **Input Sets** used to start a build. For more information about Git triggers, go to [Trigger pipelines using Git events](/docs/platform/Triggers/triggering-pipelines) and the [Webhook triggers reference](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference). A codebase variable is resolved only if the build includes the necessary information for that variable. For example, the variable `<+codebase.prNumber>` gets resolved only if there is a pull request (PR) associated with the build. Builds that aren't associated with a PR won't have a PR number to apply to that variable.
+Your [code repo connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) must use **Username and Token** authentication and allow API access (**Enable API access**).
 
-To be able to return codebase variables to Harness, the code repo connector's **Credentials** settings must use **Username and Token** authentication and have the **Enable API access** option selected. For details about configuring code repo connectors, go to [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo).
+## Variable resolution
 
-Codebase variables are local to the stage that ran the build. Therefore, if your pipeline includes a CI **Build** stage and a CD **Deploy** stage, the codebase variables are accessible in the CI stage only.
+The value of codebase variables depends on the pipeline's [codebase](./create-and-configure-a-codebase.md) and the build start conditions (webhook trigger or manual). A variable is resolved only if the build includes the necessary information for that variable. For example, `<+codebase.prNumber>` is only resolved if the build started from a pull request. Builds that aren't started from a PR won't have a PR number to assign to that variable. Builds that aren't associated with a PR won't have a PR number to apply to that variable.
 
-The following use cases specify which codebase variables get resolved and when.
+:::info
 
-<details>
-<summary>Manual builds</summary>
+Codebase variables are local to the **Build** (`CI`) stage where they were resolved. For example, if your pipeline has a **Build** stage and a **Deploy** stage, the codebase variables are accessible in the **Build** stage only.
 
-When you start a build manually using **Input Sets**, the variables are based on the input set defined for the **Trigger** type:
+:::
 
-* [Manual branch build](#manual-branch-build-expressions)
-* [Manual tag build](#manual-tag-build-expressions)
-* [Manual pull request build](#manual-pull-request-build-expressions)
+### Manual builds
 
-</details>
+Manual builds occur when you manually run a pipeline from within Harness. You can specify a branch, PR, or tag to build.
 
-<details>
-<summary>Builds from Git webhook triggers</summary>
+* **Manual branch builds:** Manually run a pipeline and select the **Git Branch** build type. Harness looks for the source code attached to the specified **Branch Name**, and it clones that specific source code for the build.
+* **Manual pull request (PR) builds**: Manually run a pipeline and select the **Git Pull Request** build type. Harness looks for the source code attached to the specified **Pull Request Number**, and it clones that specific source code for the build.
+* **Manual tag builds:** Manually run a pipeline and select the **Git Tag** build type. Harness looks for the source code attached to the specified **Tag Name**, and it clones that specific source code for the build.
 
-The most common use case for triggering CI builds is in response to a Git event. When the pipeline receives a webhook payload that matches a **Trigger**, it starts a build. The build maps the trigger variables in the payload to the codebase variables in the build. The variables that get resolved are based on the event type and the payload:
+### Webhook triggers
 
-* [Pull request webhook event](#pull-request-webhook-event-expressions)
-* [Push webhook event](#push-webhook-event-expressions)
+You can automatically [trigger pipelines using Git events](/docs/platform/Triggers/triggering-pipelines). [Webhook triggers](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference) listen for specific events in your code repo, and then trigger builds when those events occur.
 
-</details>
+Values in the webhook payload are mapped to the build's codebase variables. The variables that get resolved are based on the event type and the payload contents.
 
-<details>
-<summary>Builds that can't use webhook payloads to set codebase variables</summary>
+* **Pull request (PR) triggers:** A **Pull Request Webhook Event** automatically starts a build in Harness when there is a new pull request event on the pipeline's associated Git repo. You can specify the type of [pull request events](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference#event-and-actions) to track, such as close, open, update/edit, reopen, and so on.
+* **Push triggers:** A **Push Webhook Event** automatically starts a build in Harness when there is a new branch or tag push event on the pipeline's associated Git repo.
 
-* [Manual branch build](#manual-branch-build-expressions)
-* A cron Trigger starts a new build every night at midnight. In this case, the incoming payload has no information about a specific Git event.
-* A Run step clones a repo, and then builds and pushes an image using Docker-in-Docker commands. This repo is not specified in the codebase for the Build stage. In this case, the codebase variables don't apply to this repo. If a Git event arrives from this repo and triggers a build, then [Trigger variables](../../../platform/8_Pipelines/w_pipeline-steps-reference/triggers-reference.md) will describe this build.
+<!-- Tag push trigger YAML example
 
-</details>
+```yaml
+        payloadConditions:
+          - key: <+trigger.payload.ref>
+            operator: StartsWith
+            value: refs/tags/
+```
+-->
 
-## Expression Example
+### Unresolved variables
 
-Here's a simple example of a shell script in a Run step that echoes some codebase variable expressions:
+Codebase variables aren't resolved in these scenarios:
 
-```sh
-echo <+codebase.commitSha>
-echo <+codebase.targetBranch>
-echo <+codebase.sourceBranch>
-echo <+codebase.prNumber>
-echo <+codebase.prTitle>
-echo <+codebase.commitRef>
-echo <+codebase.repoUrl>
-echo <+codebase.gitUserId>
-echo <+codebase.gitUserEmail>
-echo <+codebase.gitUser>
-echo <+codebase.gitUserAvatar>
-echo <+codebase.pullRequestLink>
-echo <+codebase.pullRequestBody>
-echo <+codebase.state>
+* **Cron triggers:** Builds started from cron triggers don't contain specific Git event information and, therefore, don't provide a payload to resolve codebase variables in the same way as PR and push triggers.
+* **Non-default codebases:** Codebase variables are only resolved for the pipeline's [default codebase](./create-and-configure-a-codebase.md). If a pipeline [clones additional codebases](./clone-and-process-multiple-codebases-in-the-same-pipeline.md) through **Run** or **Git Clone** steps, codebase variables are not produced for these additional codebases.
+
+## Reference codebase variables
+
+You can use [Harness' expressions](/docs/platform/references/runtime-inputs/#expressions) to reference various codebase attributes in your **Build** (`CI`) stages.
+
+For example, you can add a [Run step](../run-ci-scripts/run-step-settings.md) with a series of `echo` commands to your pipeline to reference codebase variables:
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
 ```
 
-Here's an example of possible output from that shell script:
+![A Run step with echo commands and the corresponding build logs.](./static/built-in-cie-codebase-variables-reference-512.png)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+```yaml
+              - step:
+                  type: Run
+                  name: echo codebase
+                  identifier: echo_codebase
+                  spec:
+                    shell: Sh
+                    command: |-
+                      echo <+codebase.repoUrl>
+                      echo <+codebase.prNumber>
+                      echo <+codebase.prTitle>
+                      echo <+codebase.pullRequestLink>
+                      echo <+codebase.targetBranch>
+                      echo <+codebase.sourceBranch>
+                      echo <+codebase.commitSha>
+                      echo <+codebase.gitUserId>
+                      echo <+codebase.gitUserEmail>
+                      echo <+codebase.state>
+```
+
+In the [build logs](../viewing-builds.md), you can see the value of each variable:
 
 ```
-+ echo 85116fa2f04858cd5e946d69f24d7359205a0737
-85116fa2f04858cd5e946d69f24d7359205a0737
-+ echo main
-main
-+ echo **************-patch-5-1
-**************-patch-5-1
-+ echo 8
-8
-+ echo Update README.md
-Update README.md
 + echo https://github.com/**************/CI-How-Tos
-https://github.com/**************/CI-How-Tos
-+ echo **************
-**************
-+ echo
-+ echo
-+ echo 'https://avatars.githubusercontent.com/u/89968129?v=4'
-https://avatars.githubusercontent.com/u/89968129?v=4
++ echo 8
++ echo Update README.md
 + echo https://github.com/**************/CI-How-Tos/pull/8
-https://github.com/**************/CI-How-Tos/pull/8
++ echo main
++ echo **************-patch-5-1
++ echo 85116fa2f04858cd5e946d69f24d7359205a0737
++ echo **************
++ echo
 + echo open
-Open
 ```
 
-Here's how the Run step and the output look in the Harness UI:
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
-![](./static/built-in-cie-codebase-variables-reference-512.png)
+:::tip
+
+You can use expressions to reference the value of some `DRONE_` environment variables. For more information, go to the [CI environment variables reference](../optimize-and-more/ci-env-var.md).
+
+:::
+
+## codebase.build.type
+
+The type of event that started the build, such as `push`, `pull_request`, or `tag`.
+
+`<+codebase.build.type>=="TYPE"`
+
+Manual tag build: `<+codebase.build.type>=="tag"`
+
+Related: `<+pipeline.triggerType>`
+
 
 ## Manual tag build expressions
 
 Manual tag builds are builds that occur when you manually run your Harness pipeline from the Harness UI and select the **Git Tag** build type. Harness looks for the source code attached to the specified **Tag Name**, and it clones that specific source code for the build.
 
-You can refer to manual tag builds in Harness with the expression `<+codebase.build.type>=="tag"`.
+You can refer to manual tag builds in Harness with the expression .
 
 To refer to specific Git attributes associated with a manual tag build, use the following expressions in your Harness stages:
 

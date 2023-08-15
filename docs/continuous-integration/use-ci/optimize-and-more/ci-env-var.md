@@ -102,14 +102,8 @@ Source that started the build, a user or webhook. Similar, but not equivalent, t
 
 Only applicable to [tag push webhook triggers](#webhook-triggers). If the Git tag is a valid [calendar version](https://calver.org/) string, this value represents the tag as a valid calver string, such as `19.1.0-beta.20190318`.
 
-<!-- Variations:
-DRONE_CALVER_SHORT=19.1.0
-DRONE_CALVER_MAJOR_MINOR=19.1
-DRONE_CALVER_MAJOR=19
-DRONE_CALVER_MINOR=1
-DRONE_CALVER_MICRO=0
-DRONE_CALVER_MODIFIER=beta.20190318
--->
+
+Harness CI doesn't support `DRONE_CALVER` variations, such as `DRONE_CALVER_SHORT`.
 
 ## DRONE_COMMIT
 
@@ -273,33 +267,15 @@ Similar to [`DRONE_REPO_PRIVATE`](#drone_repo_private).
 
 Only applicable to tag builds. If the Git tag is a valid [semantic version](https://semver.org/) string, this value represents the tag as a valid semver string, such as `1.2.3-alpha.1`.
 
-### DRONE_SEMVER_MAJOR
+Harness CI also supports these `DRONE_SEMVER` variations:
 
-Variation of [`DRONE_SEMVER`](#drone_semver) that provides the major version number from the semver string, such as `1` in `1.2.3`.
-
-### DRONE_SEMVER_MINOR
-
-Variation of [`DRONE_SEMVER`](#drone_semver) that provides the minor version number from the semver string, such as `2` in `1.2.3`.
-
-### DRONE_SEMVER_PATCH
-
-Variation of [`DRONE_SEMVER`](#drone_semver) that provides the patch number from the semver string, such as `3` in `1.2.3`.
-
-### DRONE_SEMVER_PRERELEASE
-
-Variation of [`DRONE_SEMVER`](#drone_semver) that provides the prelease value from the semver string, such as `alpha.1` in `1.2.3-alpha.1`.
-
-### DRONE_SEMVER_SHORT
-
-Variation of [`DRONE_SEMVER`](#drone_semver) that provides the short version of the semver string with truncated labels and metadata,such as `1.2.3` in `1.2.3-alpha.1`.
-
-### DRONE_SEMVER_BUILD
-
-Related to [`DRONE_SEMVER`](#drone_semver). This variable provides the build from the semver string, such as `001` in `1.2.3+001`.
-
-### DRONE_SEMVER_ERROR
-
-Related to [`DRONE_SEMVER`](#drone_semver). This variable provides the semver parsing error if the tag is *not* a valid semver string.
+* `DRONE_SEMVER_MAJOR`: Provides the major version number from the semver string, such as `1` in `1.2.3`.
+* `DRONE_SEMVER_MINOR`: Provides the minor version number from the semver string, such as `2` in `1.2.3`.
+* `DRONE_SEMVER_PATCH`: Provides the patch number from the semver string, such as `3` in `1.2.3`.
+* `DRONE_SEMVER_PRERELEASE`: Provides the prelease value from the semver string, such as `alpha.1` in `1.2.3-alpha.1`.
+* `DRONE_SEMVER_SHORT`: Provides the short version of the semver string with truncated labels and metadata,such as `1.2.3` in `1.2.3-alpha.1`.
+* `DRONE_SEMVER_BUILD`: Provides the build from the semver string, such as `001` in `1.2.3+001`.
+* `DRONE_SEMVER_ERROR`: Provides the semver parsing error if the tag is *not* a valid semver string.
 
 ## DRONE_SOURCE_BRANCH
 
@@ -333,7 +309,7 @@ The name of the stage that is running. Equivalent to `<+stage.name>`.
 
 ## DRONE_STAGE_NUMBER
 
-The numerical identifier of the stage that is running.
+The numerical identifier of the stage that is running, if available.
 
 ## DRONE_STAGE_OS
 
@@ -353,7 +329,7 @@ The name of the currently-running step. Equivalent to `<+step.name>`.
 
 ## DRONE_STEP_NUMBER
 
-The numerical identifier of the currently-running step.
+The numerical identifier of the currently-running step, if available.
 
 ## DRONE_SYSTEM_HOST
 
@@ -472,3 +448,4 @@ These variables are not supported because they are not applicable or incompatibl
 * `DRONE_BUILD_PARENT`: This variable is not applicable because it is for the Drone-specific *promotions* feature.
 * `DRONE_DEPLOY_TO`: This variable is not applicable because it is for continuous delivery in Drone.
 * `DRONE_ENV`
+* `DRONE_CALVER_SHORT`, `DRONE_CALVER_MAJOR_MINOR`, `DRONE_CALVER_MAJOR`, `DRONE_CALVER_MINOR`, `DRONE_CALVER_MICRO`, `DRONE_CALVER_MODIFIER`: Harness CI supports [`DRONE_CALVER`](#drone_calver) but not it's variations.
