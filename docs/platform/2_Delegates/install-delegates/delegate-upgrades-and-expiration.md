@@ -211,10 +211,6 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
 ## Delegate expiration policy
 
-Harness has an N-3 support policy for delegates. N-3 means that the current version and the three previous versions are supported. A new version is released approximately every two weeks. Each new version has more capabilities than the previous version and general fixes. 
-
-For example, if you have version 23.03.XXXXX installed, all images from 23.01.XXXXX to 23.03.XXXXX are supported. 
-
 Delegate expiration is calculated using the version difference between Harness Manager and the delegate. If the delegate and Harness Manager are on the same version, the delegate expiration is 24 weeks.
 
 Delegate expiration does not mean the delegate stops working. It means that you may experience issues because the backend has moved too far ahead, making the delegate no longer backward compatible. If you do not have automatic upgrade enabled, Harness recommends upgrading the delegate at least once per quarter. 
