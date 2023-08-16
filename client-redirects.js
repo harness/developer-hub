@@ -34,6 +34,12 @@ module.exports = {
     //  },
     //===================================================================================
 
+   // Created by ravilach for modify-getting-started on August 16 2023
+   {
+    from: "/docs/getting-started/start-a-free-trial",
+    to: "/docs/getting-started/start-for-free",
+  },
+
     // Created by SudheendraKatte for branch cet-whats-supported on August 3 2023
     {
       from: "/docs/category/get-started-3/",
