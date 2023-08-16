@@ -35,8 +35,8 @@ Learn how to connect your code repository to the monitored service. Help your de
 
   | **Required Environment Variable** | **Description** | **Example** |
 | --- | --- | --- |
-| `ET_REPOSITORY_CONNECTOR_ID=` | ID for the code repository conenctor you created | `coderepoconnector`|
-| `ET_REPOSITORY_COMMIT=` | CommitHashOrReleaseTag for the code you are want to track. Note that commit and branch both are not required. Only one of them is required. If both fields are provided, then commit takes a higher priority. | `12a69d4c668ce126fc104f4d58f3d7ed85403v1h`|
+| `ET_REPOSITORY_CONNECTOR_ID` | ID for the code repository conenctor you created | `coderepoconnector`|
+| `ET_REPOSITORY_COMMIT` | CommitHashOrReleaseTag for the code you are want to track. Note that commit and branch both are not required. Only one of them is required. If both fields are provided, then commit takes a higher priority. | `12a69d4c668ce126fc104f4d58f3d7ed85403v1h`|
 | `ET_REPOSITORY_BRANCH` | Name of the branch you are tracking | `pre-prod` |
 | `ET_REPOSITORY_SOURCES_ROOT` | Requires a reference to the repository name - optionally can provide additional paths to prepend to the file we want to track | `event-generator/tree/harness/src/main/java` |
 
