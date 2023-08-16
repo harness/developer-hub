@@ -37,26 +37,15 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## Latest: Version 80300
 
-
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### What's new
 
 This release does not have new features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+### Early Access
 
 This release does not have Early Access features. 
   
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues
 
 - Fixed a FirstGen-to-NextGen migration issue where the migrator did not filter out duplicate keys when extracting variables. With this fix, the migrator allows unique keys only. (CDS-76576)
 
@@ -76,24 +65,27 @@ This release does not have Early Access features.
 
 - Fixed an AWS autoscaling issue when migrating from Harness FirstGen to Harness NextGen. Previously, all migrated services and pipelines used Spot ElastiGroup instead of AWS ASG. With this fix, the migrated entity is based on the workflow used in the last successful pipeline execution. (CDS-75190)	
 
+- Added a tooltip for CI Stage to let users know that `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration.` (CDS-74137)
+
 - Fixed an issue where a Post-Retry manual intervention timeout did not work as expected. A Post-Retry action was set to manual intervention, but after timing out the step did not go into the manual step. With this fix, the post-retry manual intervention timeout is now honored. (CDS-73618, ZD-48904, ZD-47798)	
 
 - Fixed a UI issue where the **Clear Filters** button didn't work when previewing templates in the **Templates** > **Stage Templates** window. (CDS-73587)	
 
-- Fixed the error message that gets displayed when a build does not find a specified package. The previous error message was `No tags found with given image path`. The new error message is `No tags found for the Package Name`.(CDS-73559)	
+- Fixed a UI issue with validating UI fields when defining a template for a Github Package Registry artifact. (CDS-73520)
 
-- Fixed a UI issue with validating UI fields when defining a template for a Github Package Registry artifact. (CDS-73559)
+- Fixed the error message that gets displayed when a build does not find a specified package. The previous error message was `No tags found with given image path`. The new error message is `No tags found for the Package Name`.(CDS-73559)	
 
 - Fixed an issue where a pipeline execution reported an invalid `artifactPath` when trying to deploy Artifactory artifacts. This was due to an issue with the regex used to populate the pull-down artifact menu. With this fix, you can specify recursive wildcards in the directory path for Artifactory. For example, you can specify `MainPath/*/*` as the directory path for the pipeline and the Service step will download the selected artifact. (CDS-72245, ZD-46236)
 
-- The Custom Remote Store did not clone a repo if its total size was 25Mb or higher if provided in the execution script. (CDS-75900)
+:::note
 
+The following items require Harness Delegate version 803xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-  This issue has been resolved. The Custom Remote Manifest now has a <=25Mb size validation on manifest files.
+:::
 
-- Introduced a validation to ensure that only repos that are allowed on the basis of `repoAllowList` can be set for a Pipeline, InputSets, and Templates while using the [Edit Git details](/docs/platform/Git-Experience/configure-git-experience-for-harness-entities#edit-git-details-for-a-pipeline) feature. (CDS-75828)
+- Fixed a delegate issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a <=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
 
-This item requires Harness Delegate version 803xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+- Introduced a validation to ensure that only repos that are allowed on the basis of `repoAllowList` can be set for a Pipeline, InputSets, and Templates while using the [Edit Git details](/docs/platform/git-experience/configure-git-experience-for-harness-entities/#edit-git-details-for-a-pipeline) feature. (CDS-75828)
 
 - Fixed a delegate issue where the retry logic would cause an exception due to a connection-refused error, which was classified as a connectivity error. (CDS-75777, ZD-48380)
 
@@ -109,13 +101,9 @@ This item requires Harness Delegate version 803xx. For information about feature
 
 - Fixed an issue where Azure webhook triggers did not work as expected because the delegate could not parse repository URLs in the format `https://{ORG}@dev.azure.com/{ORG}/{PROJECT}/_git/{REPO}`. With this fix, the delegate can parse these URLs and Azure webhook triggers work as expected. (CDS-59023)
 
+### Hotfixes
 
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
+This release does not include hotfixes. 
 
 ## Previous releases
 
