@@ -49,8 +49,8 @@ You can automatically [trigger pipelines using Git events](/docs/platform/Trigge
 
 `PLUGIN_` variables represent [plugin](../use-drone-plugins/explore-ci-plugins.md) settings, and they are defined in either:
 
-* In the [plugin step's settings](../use-drone-plugins/plugin-step-settings-reference.md#settings). For example, `setting.url` becomes `PLUGIN_URL` at runtime.
-* As stage variables. For example, you can use the `PLUGIN_DRY_RUN` stage variable to [Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#build-a-docker-image-without-pushing).
+* The [plugin step's settings](../use-drone-plugins/plugin-step-settings-reference.md#settings). For example, `setting.url` becomes `PLUGIN_URL` at runtime.
+* Stage variables. For example, you can use the `PLUGIN_DRY_RUN` stage variable to [Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#build-a-docker-image-without-pushing).
 
 ## CI/DRONE
 
@@ -60,7 +60,7 @@ You can automatically [trigger pipelines using Git events](/docs/platform/Trigge
 
 For branch builds and PR builds, this variable's value is the target branch for the build.
 
-For tag push webhook triggers, this variable's value is the tag reference, such as `refs/tags/TAG_NAME`
+For tag push webhook triggers, this variable's value is the tag reference, such as `refs/tags/TAG_NAME`.
 
 For manual tag builds, this variable is not applicable and can be empty.
 
@@ -107,7 +107,7 @@ Harness CI doesn't support `DRONE_CALVER` variations, such as `DRONE_CALVER_SHOR
 
 ## DRONE_COMMIT
 
-The Git commit SHA of the Git commit associated with the build, such as the most recent commit to a branch, PR, or tag. Corresponds with the expressions `<+codebase.commitSha>` or `<+trigger.commitSha>`
+The Git commit SHA of the Git commit associated with the build, such as the most recent commit to a branch, PR, or tag. Corresponds with the expressions `<+codebase.commitSha>` or `<+trigger.commitSha>`.
 
 It can be the same as [`DRONE_COMMIT_SHA`](#drone_commit_sha).
 
@@ -143,7 +143,7 @@ Possible values include: a unique commit SHA, the same SHA as [`DRONE_COMMIT`](#
 
 For branch builds and PR builds, this variable's value is the target branch for the build.
 
-For tag push webhook triggers, this variable's value is the tag reference, such as `refs/tags/TAG_NAME`
+For tag push webhook triggers, this variable's value is the tag reference, such as `refs/tags/TAG_NAME`.
 
 For manual tag builds, this variable is not applicable and can be empty.
 
@@ -175,7 +175,7 @@ This is similar to `<+codebase.commitRef>`.
 
 ## DRONE_COMMIT_SHA
 
-The Git commit SHA of the Git commit associated with the build, such as the most recent commit to a branch, PR, or tag. Corresponds with the expressions `<+codebase.commitSha>` or `<+trigger.commitSha>`
+The Git commit SHA of the Git commit associated with the build, such as the most recent commit to a branch, PR, or tag. Corresponds with the expressions `<+codebase.commitSha>` or `<+trigger.commitSha>`.
 
 It can be the same as [DRONE_COMMIT](#drone_commit).
 
@@ -254,10 +254,7 @@ Identifies the SCM provider, such as `Github`.
 
 ## DRONE_REPO_VISIBILITY
 
-Describes repo visiblity as `public`, `private`, or `internal`.=
-
-If `true`, the repo is private.
-If `false`, the repo is public.
+Describes repo visibility as `public`, `private`, or `internal`.
 
 It defaults to `private` for manual builds, regardless of actual visibility.
 
@@ -351,7 +348,7 @@ For tag builds, this is the tag associated with the build. It is equivalent to `
 
 For branch builds and PR builds, this variable's value is the target branch for the build. You can use this value along with [`DRONE_SOURCE_BRANCH`](#drone_source_branch) to get the PR base and head branches.
 
-For tag push webhook triggers, this variable's value is the tag reference, such as `refs/tags/TAG_NAME`
+For tag push webhook triggers, this variable's value is the tag reference, such as `refs/tags/TAG_NAME`.
 
 For manual tag builds, this variable is not applicable and can be empty.
 
@@ -371,7 +368,7 @@ These variables provide unix timestamps.
 
 * `DRONE_BUILD_CREATED`: The unix timestamp indicating the time the build object (the execution instance) was created.
 * `DRONE_BUILD_FINISHED`: Provides the unix timestamp for when the build is finished. However, a running build cannot have a finish timestamp, therefore, the system always sets this value to the same as `DRONE_BUILD_CREATED`.
-* DRONE_BUILD_STARTED: Provides the unix timestamp for when the build was started by the system. Equivalent to `<+pipeline.startTs>`, and the same as `DRONE_BUILD_CREATED`.
+* `DRONE_BUILD_STARTED`: Provides the unix timestamp for when the build was started by the system. Equivalent to `<+pipeline.startTs>`, and the same as `DRONE_BUILD_CREATED`.
 * `DRONE_STAGE_FINISHED`: Provides the unix timestamp for when the stage ends. However, a running stage cannot have a finish timestamp, therefore, the system always sets this value to the same as `DRONE_STAGE_STARTED`.
 * `DRONE_STAGE_STARTED`: Provides the unix timestamp for when a stage started.
 

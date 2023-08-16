@@ -153,7 +153,7 @@ You can use this expression to create conditions based on build type, such as `<
 
 ### trigger.type
 
-* Value: Identifies a the trigger type. For PR and push webhook triggers, it is `Webhook`.
+* Value: Identifies the trigger type. For PR and push webhook triggers, it is `Webhook`.
 * Expression: `<+trigger.type>`
 * Exclusions: Not available for manual builds.
 

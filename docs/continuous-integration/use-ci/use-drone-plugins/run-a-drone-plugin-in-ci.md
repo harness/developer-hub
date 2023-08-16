@@ -151,7 +151,7 @@ For information about a plugin's settings, go to the plugin's page on the [Drone
 
 ### Output variables
 
-For information about output variables produced by plugins, refer to [Plugin step settings: Output variables](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables).
+For information about output variables produced by plugins, go to [Plugin step settings: Output variables](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables).
 
 ### Environment variables
 
@@ -166,7 +166,7 @@ Here are some YAML examples and additional information about specific Drone plug
 
 Use the [artifact-metadata-publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish a URL of an artifact file to the [Artifacts tab](../viewing-builds.md).
 
-An example of the **Plugin** step configuration is provided below; however your pipeline must also include steps to upload the file that you want to link to on the Artifacts tab, as demonstrated in the [Artifacts tab tutorial](/tutorials/ci-pipelines/publish/artifacts-tab/).
+An example of the **Plugin** step configuration is provided below; however, your pipeline must also include steps to upload the file that you want to link to on the **Artifacts** tab, as demonstrated in the [Artifacts tab tutorial](/tutorials/ci-pipelines/publish/artifacts-tab/).
 
 ```yaml
                - step:
