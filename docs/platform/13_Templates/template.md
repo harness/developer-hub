@@ -117,14 +117,14 @@ You can make changes to the same version of the template, as long as the templat
 
 #### Versioning with Git Experience 
 
-User's can store different versions of templates on:
-1. Different branches in different repository
-2. Different branches in the same repository
-3. Same branch and same repository.
+You can store different versions of templates on:
+1. Different branches in a different repository.
+2. Different branches in the same repository.
+3. The same branch and same repository.
 
-When selecting a version of a template, be sure to set the branch and repo context before toggling the version. The version can reside on numerous branches so Harness needs to know which location to render the version of the template from. 
+When selecting a version of a template, be sure to set the branch and repo context before toggling the version. The version can reside on multiple branches, so Harness needs to know which location to render the version of the template from. 
 
-For more information on branching and version management with branching please see [Template Library with Git Experience docs](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/#branch-selection-logic-for-fetching-referenced-entities-in-remote-pipelines)
+For more information on branching and version management with branching, go to [Template Library with Git Experience docs](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/#branch-selection-logic-for-fetching-referenced-entities-in-remote-pipelines).
 
 ### Stable version
 
