@@ -199,7 +199,7 @@ The delegate logs are available in the Harness UI. When a pipeline runs and an e
 
 ### Delegate permissions
 
-You can set permissions on delegates using [Harness RBAC](/docs/platform/4_Role-Based-Access-Control/1-rbac-in-harness.md).
+You can set permissions on delegates using [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness).
 
 You create roles and then assign them to Harness users.
 

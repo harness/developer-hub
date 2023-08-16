@@ -81,7 +81,9 @@ Provide authentication credentials for the connector.
 
 Authentication is required for all accounts and repos, including read-only repos. The **Connection Type** you chose in the [Details settings](#details-settings) determines the available **Authentication** methods:
 
-* For **HTTP** connections, you can use **Username and Token**, **OAuth**, or **GitHub App** authentication.
+<!-- At 803xx release, uncomment below phrase and GH App tab -->
+
+* For **HTTP** connections, you can use **Username and Token** or **OAuth**<!--, or **GitHub App**--> authentication.
 * For **SSH** connections, you must use **SSH Key** authentication.
 
 ```mdx-code-block
@@ -93,7 +95,7 @@ Authentication is required for all accounts and repos, including read-only repos
 2. In the **Username** field, enter your personal GitHub account name. You can use either plaintext or a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
 3. In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
 
-<!-- is this method required for accounts with 2FA? Do OAuth & SSH key support accounts w/ 2FA? -->
+<!--Is this method required for accounts with 2FA? Do OAuth, GH App, & SSH key support accounts w/ 2FA? -->
 
 :::info Personal access token permissions
 
@@ -159,6 +161,7 @@ For more information about GitHub's deprecation of RSA support, go to the GitHub
 
 :::
 
+<!--
 ```mdx-code-block
   </TabItem>
   <TabItem value="ghapp" label="GitHub App">
@@ -192,7 +195,7 @@ The [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/
    ![](../../static/git-hub-app-support-59.png)
 
 4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/Secrets/add-file-secrets).
-
+-->
 ```mdx-code-block
   </TabItem>
 </Tabs>

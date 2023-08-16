@@ -411,8 +411,8 @@ Resources:
               - 's3:PutObject'
               - 's3:PutObjectAcl'
             Resource:
-              - 'arn:aws:s3:::ce-customer-billing-data-prod*'
-              - 'arn:aws:s3:::ce-customer-billing-data-prod*/*'
+              - 'arn:aws:s3:::harness-ccm-service-data-bucket-<accountid>*'
+              - 'arn:aws:s3:::harness-ccm-service-data-bucket-<accountid>*/*'
           - Effect: Allow
             Action: 
               - 'cur:DescribeReportDefinitions'

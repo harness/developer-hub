@@ -93,7 +93,7 @@ For details and examples, see Microsoft Azure's [Add or remove role assignments]
 
 ## Add an Azure Key Vault secret manager in Harness
 
-You can add an Azure Key Vault connector in account or org or project [scope](../../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
+You can add an Azure Key Vault connector in account or org or project [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 This topic explains steps to add an Azure Key Vault connector in the project scope.
 
