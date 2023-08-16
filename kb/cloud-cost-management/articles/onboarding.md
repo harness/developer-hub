@@ -85,7 +85,7 @@ Then in Harness we create a new CCM Azure connector. This connector asks for the
 
 [Read an in-depth article here on setting up your first Azure CCM connector.](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws)
 
-When prompted for the features to enable, check the options relivant to how you will be using Harness.
+When prompted for the features to enable, check the options relevant to how you will be using Harness.
 
 In the next screen the connector creator gives you a list of Azure CLI commands that accomplish the setup. You may or may not be able to complete these steps with the CLI, or you may need to accomplish the steps via another method based on your platform team’s requirements. You will notice that we are first adding a Harness-owner Azure enterprise application into your Azure tenant, which is then the identity that we apply permissions for.
 
@@ -230,7 +230,7 @@ You can define a budget for a perspective for a variety of time ranges. What is 
 
 Similarly to budgets, you can set alerts for when new anomalies are generated within the scope of the perspective. Again these alerts should go to someone who can _take action_ on the alerts.
 
-### Reccomendations
+### Recommendations
 
 When looking at [reccomendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations/) we see many different types: k8s workloads and nodepools, VM, and governance. Each recommendation will come with current/forecasted spend for the resource, and possible savings would result if action were taken. You can use the filter icon in the top right of the page to filter on a specific type, or even on certain cloud accounts, clusters, or namespaces.
 
