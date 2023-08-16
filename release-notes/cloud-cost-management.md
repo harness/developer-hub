@@ -19,7 +19,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - August 10, 2023, version 
+## Latest - August 10, 2023, version 80500
 
 ```mdx-code-block
 <Tabs>
@@ -28,9 +28,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * ServiceNow integration with Recommendations
 
   Introducing ServiceNow as a ticketing tool to create tickets for recommendations. You can use either Jira or ServiceNow as your ticketing tool. You need to configure this setting at the account level on the **Default Settings** page. For more information, go to [View and apply recommendations](../docs/cloud-cost-management/4-use-ccm-cost-optimization/1-ccm-recommendations/1-home-recommendations.md).
-
-
-
 
 
 ```mdx-code-block
@@ -45,7 +42,9 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
+* Previously, within the budget **Edit** flow, the monthly breakdown values would reset to default values. However, currently, the resetting occurs only when there's a change in the **Budget Type**. (CCM-13763)
 
+* Previously for ALB proxy HTTP route configuration, when it comes to redirect actions, only redirect URLs were supported. However, now, users have the flexibility to include either a redirect URL or specify a target port and protocol. (CCM-13702)
 
 ```mdx-code-block
   </TabItem>
