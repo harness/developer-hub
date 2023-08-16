@@ -6,7 +6,7 @@ helpdocs_topic_id: 6z93pdhs28
 helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
 helpdocs_is_published: true
-slug: /getting-started/start-for-free
+#slug: /getting-started/start-for-free
 ---
 
 Harness offers a free tier of the Harness Software Delivery Platform to further you on your software delivery journey. 
