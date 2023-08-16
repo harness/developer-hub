@@ -100,10 +100,6 @@ To use ADFS credentials for authentication:
 ```
 
 :::info note
-Currently, this feature is behind the feature flag `CDS_SERVICENOW_REFRESH_TOKEN_AUTH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-:::info note
 This feature requires Harness Delegate 799xx or higher.
 :::
 
