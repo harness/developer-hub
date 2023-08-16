@@ -638,7 +638,7 @@ Bazel is already installed on Harness Cloud. For other build infrastructures, yo
 
 ### Build Arguments
 
-Enter arguments to be used as input for the build tool. You don't need to repeat the build tool, such as `maven` or `dotnet`; these are declared in **Build Tool**.
+Enter arguments to use as input for the build tool. You don't need to repeat the build tool, such as `maven` or `dotnet`; these are declared in **Build Tool**.
 
 Note the following requirements:
 
