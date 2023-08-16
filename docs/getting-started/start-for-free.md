@@ -9,9 +9,9 @@ helpdocs_is_published: true
 #slug: /getting-started/start-for-free
 ---
 
-Harness offers a free tier of the Harness Software Delivery Platform to further you on your software delivery journey. 
+Harness offers a free tier of the Harness Software Delivery Platform to help you on your software delivery journey. 
 
-[Click here](https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started) to sign up for a free. 
+[Click here](https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started) to sign up for free. 
 
 After you have signed up for an account, go to the following topics to learn more about how to get started:
 
