@@ -32,7 +32,7 @@ The following deprecated API endpoints will no longer be supported:
 
 ## Latest: Version 803xx
 
-### What's new
+### New features and enhancements
 
 - To support MongoDB 5.0, the Debezium library has been upgraded to version 1.9. (PL-40491)
 
@@ -42,7 +42,7 @@ The following deprecated API endpoints will no longer be supported:
 
   This item requires Harness Delegate version 803xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-### Early access
+### Early access features
 
 This release does not include any early access features.
 

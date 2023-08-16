@@ -18,7 +18,7 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 ## Latest: Version 803xx
 
-#### What's new
+#### New features and enhancements
 
 - If you use the App Role authentication method in the Hashicorp Vault connector, you can choose to cache the vault token. The token is cached on the Harness Delegate for a time duration equal to the TTL of the vault token, with 1% leeway. 
 
@@ -26,7 +26,7 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
   This item requires Harness Delegate version 803xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-#### Early access
+#### Early access features
 
 This release does not include early access features.
 

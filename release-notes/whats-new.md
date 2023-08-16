@@ -31,7 +31,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   This item requires Harness Delegate version 803xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-## Latest - August 10, 2023
+## August 10, 2023
 
 ### Continuous Delivery, version 80208
 
