@@ -86,11 +86,21 @@ Commas are supported in both allowed and default values. A string with a comma m
 
 For example, `<+input>.default(\'london,uk\').allowedValues(\'bengaluru,india\',\'newyork,usa\',\'london,uk\')`.
 
-JSON body as a string can also be used currently as the variable runtime input default value. 
+You can use JSON body as a string for the variable runtime input default value. 
 
-NOTE: Currently we don’t support the use of nested JSON body as a string as the variable runtime input default value. 
+:::info note
 
-For example, this JSON string `<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\", \"fallbackToOd\": true}')` can be used as a runtime input, but this JSON string `<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\", \"fallbackToOd\": true,\"scalingStrategy\": {\"terminationPolicy\": \"default\" }}')` is currently not supported as a runtime input.
+Harness does not support the use of a nested JSON body as a string for the variable runtime input default value. 
+
+::
+
+For example, you can use the following JSON string for a runtime input.
+
+`<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\", \"fallbackToOd\": true}')` 
+
+Harness does not support the following JSON string for a runtime input.
+
+`<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\", \"fallbackToOd\": true,\"scalingStrategy\": {\"terminationPolicy\": \"default\" }}')` 
 
 Multiple selection is allowed for runtime inputs defined for pipelines, stages, and shell script variables. You must specify the allowed values in the input as mentioned in the above examples. 
 
