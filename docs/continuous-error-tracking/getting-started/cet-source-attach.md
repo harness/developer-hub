@@ -25,7 +25,7 @@ Learn how to connect your code repository to the monitored service. Help your de
 
     2. Select the connector you intend to use.
 
-    3. Copy the Identifier
+    3. Copy the identifier.
 
         ![Connector Id](./static/cet-connector-id-00.png)
 
