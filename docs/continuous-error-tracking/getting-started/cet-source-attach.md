@@ -31,7 +31,7 @@ Learn how to connect your code repository to the monitored service. Help your de
 
 
 
-2. Add the following Agent environment variables so that your Code repostiory can map to the Service you want to track.
+2. Add the following Agent environment variables so that your code repository can map to the service you want to track.
 
   | **Required Environment Variable** | **Description** | **Example** |
 | --- | --- | --- |
