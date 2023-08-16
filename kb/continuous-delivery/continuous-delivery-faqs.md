@@ -435,3 +435,19 @@ Looping strategies are useful for scenarios like canary deployments, gradual rol
 
 ### Can I deploy different versions of serverless functions using Harness?
 Yes, Harness generally allows users to deploy multiple versions of serverless functions, helping in testing and gradual rollout.
+
+### At the organizational level, I aim to establish a user group to which I can assign a resource group containing numerous distinct pipelines across specific projects.
+
+We don’t support this. We don’t support specific pipeline selections for specific projects for an Organization. But the User can limit the access to the projects by selecting specific projects as Scopes to apply in Org level resource group.
+
+### Does Harness support blue-green or canary deployments for serverless applications?
+Yes, Harness supports advanced deployment strategies like blue-green and canary deployments for serverless applications. These strategies allow you to roll out updates gradually and mitigate risks associated with new releases.
+
+### Can I set up automated testing for my serverless applications with Harness?
+Absolutely. Harness enables you to incorporate automated testing into your deployment pipelines, including unit tests, integration tests, and performance tests. This ensures that your serverless applications meet quality standards before reaching production.
+
+### How does Harness handle rollbacks in serverless deployments?
+If an issue arises during a deployment, Harness can automatically trigger a rollback to the previous version of your serverless application. This helps maintain system stability and minimizes downtime.
+
+### Can I set up advanced deployment strategies for Google Cloud Functions, like canary deployments?
+The harness supports advanced deployment strategies like canary deployments for Google Cloud Functions. This allows you to roll out updates gradually and assess their impact before a full release.
