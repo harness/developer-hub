@@ -78,12 +78,12 @@ You can install the Docker delegate using Podman by adding Podman commands to yo
 To install the Docker delegate using Podman, do the following:
 
 1. In Harness, select **Deployments**, then select your project.
-2. Select **Delegates** under **Project Setup**.
+2. Under **Project Setup**, select **Delegates**.
 3. Select **Install a Delegate** to open the **New Delegate** dialog.
 
    ![](./static/install-a-docker-delegate-podman.png)
 
-4. Select **Docker** under **Select where you want to install your Delegate**.
+4. Under **Select where you want to install your Delegate**, select **Docker**.
 
 5. Copy the Docker installation command.
 
