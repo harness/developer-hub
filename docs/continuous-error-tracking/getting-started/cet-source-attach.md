@@ -55,6 +55,6 @@ ENV ET_REPOSITORY_SOURCES_ROOT=event-generator/tree/harness/src/main/java
 
 3. Restart your application after installing the Error Tracking Agent.
 
-4. Navigate to the 'ARC Screen' by selecting an event on the event summary page. Clicking on the repository url will take the user to the code repository.
+4. Navigate to the ARC Screen by selecting an event on the Event Summary page. Clicking on the repository URL takes you to the code repository.
 
     ![Source Attach](./static/cet-source-attach-00.png)
