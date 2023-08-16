@@ -15,12 +15,9 @@ import TabItem from '@theme/TabItem';
 
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
 
-## Latest - August 9, 2023, version 0.8.0
+## Latest: Version 0.8.0
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### New features and enhancements
 
 - IDP now includes the [GitHub Catalog Discovery](/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery) plugin. You can use this to automatically discover `catalog-info.yaml` files from your GitHub organizations and repositories. [IDP-887]
 
@@ -30,24 +27,13 @@ Review the notes below for details about recent changes to Harness Internal Deve
   
   You can use these UI pickers in service onboarding workflows for developers to easily select a Harness project and organization. Take a look at this [example](https://github.com/bhavya-sinha/scaffolder-sample-templates/blob/5f52718ec49cb2c27a87e2fbeae075873701911c/fieldExtension.yaml#L78-L85). [IDP-868]
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+### Early access features
 
 This release does not include early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues
 
 This release does not include fixed issues.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
 ## Previous releases
 
