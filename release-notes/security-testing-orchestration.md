@@ -19,13 +19,73 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
+<!--
 
-## Latest - August 09, 2023, version 1.64.1
+## Latest: harness_core_ui version 803xx
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### What's new
+
+This release does not include new features. 
+
+### Early access
+
+This release does not include early-access features.
+
+### Fixed issues
+
+- Fixed a UI issue where the module sidebar in the left-side menu would scroll when a user clicked different menus within STO. With this fix, the module sidebar maintains its position when a user clicks different menus. (STO-6219)
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+-->
+
+
+## Latest: version 1.65.0
+
+### What's new
+
+- This release includes the following UI enhancements for working with exemptions. (STO-6078)
+
+  - You can click on a row in the **Exemptions** table to view details for that exemption.
+
+   ![](static/sto-click-row-to-view-exemptions.png)
+
+  - For best results in STO, you should specify a baseline for every target. To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected and includes a link so you can quickly set the target.
+
+   ![](static/sto-exemption-details-no-baseline-selected.png)
+
+* The target lists in the the **Test Targets** page are now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. This makes the overall page much easier to navigate if your project has a lot of targets. (STO-4848)
+
+- You can now select multiple projects in the Security Testing Dashboard and any custom dashboards that use STO components. (STO-6228)
+
+   ![](static/sto-select-mult-projects-in-dashboards-sto-6228.png)
+
+
+### Early access
+
+This release does not have early-access issues.
+
+### Fixed issues
+
+- Fixed a UI issue in the Security Tests tag where the clickable severity tiles — introduced in version 1.64.1, described [below](#august-09-2023-version-1641)) — had an extra border on the right. (STO-6372)
+
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+
+#### August 09, 2023, version 1.64.1
+
+##### What's new
 
 * Aqua Trivy scans now capture and report on secrets in plain text, in addition to vulnerabilities. (STO-6345)
 
@@ -37,32 +97,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * The issue lists in the the **Security Tests** tab are now paginated. You can configure each list to show 20, 50, or 100 issues per page. This makes the overall page much easier to navigate if the scan results include a lot of issues. (STO-5949, STO-6099)
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
+
 * The **Security Tests** tab includes a set of pull-down menus so you can filter the issue lists by Target, Target Type, Step, Stage, and Scanner. (STO-5212).
   ![Click on a tile to filter issues by severity](./static/sto-pulldown-filters-sto-5212.png)
 
    This feature is behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 * Fixed a UI issue where the **Issue Details** pane rendered long HTML values as markdown. These values are now correctly rendered as HTML. (STO-6339)
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 02, 2023, version 1.62.2
 
