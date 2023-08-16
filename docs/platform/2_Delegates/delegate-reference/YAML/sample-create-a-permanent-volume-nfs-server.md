@@ -11,7 +11,7 @@ helpdocs_is_published: true
 This Kubernetes manifest creates a permanent volume for NFS. 
 
 
-```
+```yaml
 apiVersion: apps/v1  
 kind: Deployment  
 metadata:  

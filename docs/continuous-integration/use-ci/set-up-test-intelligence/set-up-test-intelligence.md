@@ -193,7 +193,7 @@ The build environment must have the necessary binaries for the **Run Tests** ste
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
                     buildTool: Dotnet ## Specify Dotnet or Nunit.
-                    args: dotnet test --no-build --verbosity normal
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
                     namespaces: aw,fc
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
@@ -461,14 +461,20 @@ The stage's build infrastructure determines whether these fields are required or
 
 ### Language
 
-Select the source code language to build: **C#**, **Java**, **Kotlin**, or **Scala**.
-
-Additional settings appear if you select **C#** or **Java**.
+Select the source code language to build: **C#**, **Java**, **Kotlin**, or **Scala**. Some languages have additional settings.
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="csharp" label="C#" default>
 ```
+
+:::note
+
+Currently, TI for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+<!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/#build-environment) in your pipeline's YAML. -->
+
+:::
 
 #### Build Environment
 
@@ -560,6 +566,20 @@ You can provide a comma-separated list of test annotations used in unit testing.
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="kotlin" label="Kotlin">
+```
+
+No additional settings for Kotlin.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="scala" label="Scala">
+```
+
+No additional settings for Scala.
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
@@ -618,13 +638,17 @@ Bazel is already installed on Harness Cloud. For other build infrastructures, yo
 
 ### Build Arguments
 
-Enter the arguments for the build tool. These are used as input for the chosen build tool.
+Enter arguments to use as input for the build tool. You don't need to repeat the build tool, such as `maven` or `dotnet`; these are declared in **Build Tool**.
 
-The following languages and build tools have specific build argument requirements:
+Note the following requirements:
 
-* **Java:** Provide runtime arguments for the tests, for example: `Test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false`.
-* **C#:** Provide runtime arguments for the tests, for example: `/path/to/test.dll /path/to/testProject.dll`. **Do not** inject another instrumenting agent, such as a code-coverage agent, in the argument string.
-* **NUnit C#:** Provide runtime executables and arguments for the tests, for example: `. "path/to/nunit3-console.exe" path/to/TestProject.dll --result="UnitTestResults.xml" /path/to/testProject.dll`. You must include the executable in the string. **Do not** inject another instrumenting agent, such as a code-coverage agent, in the string.
+* **Java:** Provide runtime arguments for tests, for example: `Test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false`.
+* **C# .NET:** Provide runtime arguments for tests, for example: `/path/to/test.dll /path/to/testProject.dll`.
+   * Expects `.dll` injection. `csproj` isn't supported.
+   * **Do not** inject another instrumenting agent, such as a code coverage agent, in the argument string.
+* **C# NUnit:** Provide runtime executables and arguments for tests, for example: `. "path/to/nunit3-console.exe" path/to/TestProject.dll --result="UnitTestResults.xml" /path/to/testProject.dll`.
+   * You must include the executable in the string.
+   * **Do not** inject another instrumenting agent, such as a code coverage agent, in the string.
 
 ### Test Report Paths
 
@@ -838,7 +862,7 @@ pipeline:
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
                     buildTool: Dotnet ## Specify Dotnet or Nunit.
-                    args: dotnet test --no-build --verbosity normal
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
                     namespaces: aw,fc
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
@@ -1020,7 +1044,7 @@ pipeline:
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
                     buildTool: Dotnet ## Specify Dotnet or Nunit.
-                    args: dotnet test --no-build --verbosity normal
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
                     namespaces: aw,fc
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-

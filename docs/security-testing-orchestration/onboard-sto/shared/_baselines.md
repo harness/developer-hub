@@ -7,6 +7,3 @@ You can also specify a _baseline_ for each target. This is usually the "root" va
   *  "New" issues in the current variant only, or
   *  "Common" issues also in the baseline (or, if no baseline is specified, in the previous scan).
 
-:::note
-It is good practice to specify a baseline for every target. You can define and view all your baselines in one page: go to **Security Tests** (left menu) and then **Test Targets**. 
-:::
