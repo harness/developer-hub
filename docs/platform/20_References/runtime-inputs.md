@@ -111,7 +111,7 @@ If you rerun this pipeline, the pipeline uses the same inputs you provided for t
 
 ### Default values
 
-By default, runtime input is free text input with no restrictions. You can specify a default value to avoid empty values.
+By default, runtime input accepts virtually any sting input. You can specify a default value to avoid empty values.
 
 ```mdx-code-block
 <Tabs>
@@ -149,6 +149,35 @@ If your default value has a comma, you must escape the value string using the fo
   </TabItem>
 </Tabs>
 ```
+#### Use a JSON object as the default value
+
+You can use a JSON object, such as the JSON-formatted body of a webhook payload, as the default value for runtime input. Here's an example of a default value that uses a JSON object. Note the use of slashes to escape commas and double quotes.
+
+```yaml
+<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\",\"fallbackToOd\": true}')
+```
+
+<!-- I don't think that is valid yaml. I think it needs to be (including the double quotes on the outside): "<+input>.default(\\'{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\",\"fallbackToOd\": true}\\')" -->
+
+:::info
+
+Harness doesn't support *nested* JSON objects in runtime input. For example, this JSON object *isn't* valid runtime input.
+
+```json
+{
+  "risk": 100,
+  "availabilityVsCost": "balanced",
+  "drainingTimeout": 120,
+  "lifetimePeriod": "days",
+  "fallbackToOd": true,
+  "scalingStrategy":
+      {
+        "terminationPolicy": "default"
+      }
+}
+```
+
+:::
 
 #### Default values in templates
 
@@ -238,7 +267,7 @@ Sometimes you might not know the value for a runtime input at the beginning of t
 
 * Some values depend on the output of previous steps or stages in the pipeline.
 * Your pipeline includes an Approval step, and you want to specify the approval groups when the Approval step runs.
-* You have a custom stage with a Shell Script step that takes runtime input, and you need to provide the script when that strep runs, rather than at the beginning of the entire pipeline.
+* You have a custom stage with a Shell Script step that takes runtime input, and you need to provide the script when that step runs, rather than at the beginning of the entire pipeline.
 
 In these cases, you might need to provide runtime input during pipeline execution.
 

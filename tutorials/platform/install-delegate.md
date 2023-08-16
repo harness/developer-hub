@@ -266,7 +266,7 @@ docker run --cpus=1 --memory=2g \
 ```
 Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, to find your Harness cluster location, select **Account Settings**, and then select **Overview**. In **Account Overview**, look in **Account Settings**. It is listed next to **Harness Cluster Hosting Account**.
 
-For more information, go to [View account info and subscribe to downtime alerts](https://developer.harness.io/docs/platform/1_Get-started/platform-concepts/view-account-info-and-subscribe-to-alerts.md).
+For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/Get-started/view-account-info-and-subscribe-to-alerts).
 
 ![](./static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
 

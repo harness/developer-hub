@@ -1923,7 +1923,7 @@ module.exports = {
     // Created by kat-enos on Jan 22, 2023
     {
       from: "/docs/platform/Delegates/delegate-reference/example-harness-delegate-yaml",
-      to: "/docs/platform/Delegates/delegate-reference/YAML/example-harness-delegate-yaml",
+      to: "/docs/platform/Delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate",
     },
 
     // Created by kat-enos on Jan 22, 2023
@@ -3103,12 +3103,30 @@ module.exports = {
     },
     // Created by bfisher for DOC-3488 on July 26, 2023
     {
-      from: "/docs/platform/resource-development/apis/rate-limits/",
+      from:  "/docs/platform/resource-development/apis/rate-limits/",
       to:   "/docs/platform/rate-limits",
     },
     {
-      from: "/docs/platform/Security/rate-limits",
+      from:  "/docs/platform/Security/rate-limits",
       to:   "/docs/platform/rate-limits",
     },
+    // Created by bfisher for DOC-3569 on August 11, 2023
+    {
+      from:  "/docs/self-managed-enterprise-edition/introduction/supported-features-and-integrations",
+      to:   "/docs/self-managed-enterprise-edition/smp-supported-platforms",
+    },
+    // Created by bfisher for DOC-3570 on August 14, 2023
+    {
+      from:  "/docs/platform/Delegates/delegate-reference/YAML/example-harness-delegate-yaml",
+      to:   "/docs/platform/Delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate",
+    },
+    {
+      from:  "/docs/platform/Delegates/delegate-reference/YAML/sample-harness-delegate-yaml-with-nfs-volume-mounted",
+      to:   "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
+    },
+    {
+      from:  "/docs/platform/Delegates/delegate-reference/YAML/sample-kubernetes-manifest-nfs-volume",
+      to:   "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
+    },
   ],
-};
+}
