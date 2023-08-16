@@ -242,6 +242,76 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                           - report.xml
 ```
 
+### Run tests with Test Intelligence
+
+[Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) is available for Python, however, it is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/set-up-test-intelligence/) to run unit tests with Test Intelligence.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Harness Cloud" default>
+```
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Python Test
+                  identifier: Run_Python_Test
+                  spec:
+                    language: Python
+                    buildTool: Pytest
+                    args: "--junitxml=out_report.xml"
+                    runOnlySelectedTests: true
+                    preCommand: |
+                      python3 -m venv .venv
+                      . .venv/bin/activate
+
+                      python3 -m pip install -r requirements/test.txt
+                      python3 -m pip install -e .
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - out_report.xml*
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Self-Hosted">
+```
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Python Test
+                  identifier: Run_Python_Test
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: python:latest
+                    language: Python
+                    buildTool: Pytest
+                    args: "--junitxml=out_report.xml"
+                    runOnlySelectedTests: true
+                    preCommand: |
+                      python3 -m venv .venv
+                      . .venv/bin/activate
+
+                      python3 -m pip install -r requirements/test.txt
+                      python3 -m pip install -e .
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - out_report.xml*
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+
 ## Specify version
 
 ```mdx-code-block

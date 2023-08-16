@@ -189,8 +189,8 @@ In Harness, go to the pipeline where you want to add the `Run` step. In the `CI`
 ```yaml
               - step:
                   type: Run
-                  name: Run pytest # Specify a name for the step.
-                  identifier: Run_pytest # Define a step ID, usually based on the name.
+                  name: Run_1 # Specify a name for the step.
+                  identifier: Run_1 # Define a step ID, usually based on the name.
                   spec:
                     connectorRef: account.harnessImage # Specify a container registry, if required.
                     image: python:latest # Specify an image, if required.

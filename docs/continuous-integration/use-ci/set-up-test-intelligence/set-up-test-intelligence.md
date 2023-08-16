@@ -70,20 +70,26 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **R
 
 Test Intelligence supports the following codebases:
 
+* C# (.NET Core, NUnit<!-- and Framework -->)
 * Java
 * Kotlin
+* Python
 * Scala
-* C# (.NET Core, NUnit<!-- and Framework -->)
 
-:::note
+For unsupported codebases, you can use [Run steps](../run-ci-scripts/run-step-settings.md) to run tests.
+### Early access features
 
-Currently, TI for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, TI for .NET and Python are behind the feature flags `TI_DOTNET` and `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable these features.
 
-<!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/#build-environment) in your pipeline's YAML. -->
+<!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/#build-environment) in the YAML editor. -->
 
-:::
+### Python requirements
 
-For unsupported codebases, [use Run steps](../run-ci-scripts/run-step-settings.md) to run tests.
+The following requirements and limitations apply to TI for Python:
+
+* **Python 3:** Your project must be written in Python 3, and your repo must be a pure Python 3 repo.
+* **No resource file relationships:** TI doesn't support resource file relationships.
+* **Unpredictable results for dynamic loading and metaclasses:** TI might miss tests or changes in repos that use dynamic loading or metaclasses.
 
 ## Add the Run Tests step
 
@@ -207,6 +213,34 @@ The build environment must have the necessary binaries for the **Run Tests** ste
                         spec:
                           paths:
                             - results.xml
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="python label="Python">
+```
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Python Test
+                  identifier: Run_Python_Test
+                  spec:
+                    language: Python
+                    buildTool: Pytest
+                    args: "--junitxml=out_report.xml"
+                    runOnlySelectedTests: true
+                    preCommand: |
+                      python3 -m venv .venv
+                      . .venv/bin/activate
+
+                      python3 -m pip install -r requirements/test.txt
+                      python3 -m pip install -e .
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - out_report.xml*
 ```
 
 ```mdx-code-block
@@ -416,6 +450,15 @@ For example, the following configuration in `pom.xml` removes the `forkCount` se
 </plugin>
 ```
 
+### Python
+
+Make sure your codebase meets the [Python requirements](#python-requirements), and:
+
+* Your [Build Tool](#build-tool) is pytest or unittest.
+* Your [Build Arguments](#build-arguments) don't include coverage flags (`--cov` or `coverage`).
+* The Python 3 binary is preinstalled on the build machine, available in the specified Docker image, or installed at runtime. For more information, go to [Container Registry and Image](#container-registry-and-image) and [Pre-Command](#pre-command).
+* If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
+
 ## Settings
 
 The **Run Tests** step has the following settings.
@@ -438,15 +481,15 @@ Optional text string.
 
 ### Container Registry and Image
 
-The **Container Registry** is a Harness container registry connector for the image that you want Harness to run build commands on, such as Docker Hub.
+The **Container Registry** is a Harness container registry connector, such as a Docker Hub connector, that has the image you want Harness to use when running your test commands .
 
-The **Image** is the FQN (fully-qualified name) or artifact name of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`. The image name should include the tag. If you don't include a tag, Harness uses the `latest` tag.
+The **Image** is the FQN (fully-qualified name) or artifact name of a Docker image that contains the binaries necessary to run the commands in this step, such as `python:latest`. Include the tag; if you don't include a tag, Harness uses the `latest` tag.
 
 You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
 * **Docker Registry:** Enter the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
-* **ECR:** Enter the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GCR:** Enter the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
+* **ECR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
+* **GCR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
 
 :::info
 
@@ -459,9 +502,11 @@ The stage's build infrastructure determines whether these fields are required or
 
 :::
 
+You can also install tools at runtime in [Pre-Command](#pre-command), provided the build machine or image can execute the necessary commands, such as `curl` commands to download files.
+
 ### Language
 
-Select the source code language to build: **C#**, **Java**, **Kotlin**, or **Scala**. Some languages have additional settings.
+Select the source code language to build: **C#**, **Java**, **Kotlin**, **Python**, or **Scala**. Some languages have additional language-specific settings.
 
 ```mdx-code-block
 <Tabs>
@@ -569,14 +614,27 @@ You can provide a comma-separated list of test annotations used in unit testing.
   <TabItem value="kotlin" label="Kotlin">
 ```
 
-No additional settings for Kotlin.
+Kotlin doesn't have additional language-specific settings.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="python" label="Python">
+```
+
+:::note
+
+Currently, TI for Python is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Python doesn't have additional language-specific settings. If necessary, you can set `PYTHONPATH` in the [Environment Variables](#environment-variables).
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="scala" label="Scala">
 ```
 
-No additional settings for Scala.
+Scala doesn't have additional language-specific settings.
 
 ```mdx-code-block
   </TabItem>
@@ -604,6 +662,14 @@ Select the build automation tool. Supported tools vary by **Language**.
 * [Maven](https://maven.apache.org/)
 * [Gradle](https://gradle.org/)
 
+:::info Bazel container images
+
+If you use a Bazel [container image](#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](../run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
+
+Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm if Bazel is already installed.
+
+:::
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Kotlin" label="Kotlin">
@@ -612,6 +678,28 @@ Select the build automation tool. Supported tools vary by **Language**.
 * [Bazel](https://bazel.build/)
 * [Maven](https://maven.apache.org/)
 * [Gradle](https://gradle.org/)
+
+:::info Bazel container images
+
+If you use a Bazel [container image](#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](../run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
+
+Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm if Bazel is already installed.
+
+:::
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="python" label="Python">
+```
+
+* [Pytest](https://docs.pytest.org/en/latest/)
+* [Unittest](https://docs.python.org/3/library/unittest.html)
+
+:::tip
+
+You can [use pytest to run unittest](https://docs.pytest.org/en/latest/how-to/unittest.html).
+
+:::
 
 ```mdx-code-block
   </TabItem>
@@ -623,32 +711,105 @@ Select the build automation tool. Supported tools vary by **Language**.
 * [Gradle](https://gradle.org/)
 * [Sbt](https://www.scala-sbt.org/)
 
+:::info Bazel container images
+
+If you use a Bazel [container image](#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](../run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
+
+Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm if Bazel is already installed.
+
+:::
+
 ```mdx-code-block
   </TabItem>
 </Tabs>
 ```
 
-:::info Bazel container images
+### Build Arguments
 
-If you use a Bazel [container image](#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must include commands or steps to install Bazel. This is because `bazel query` is called before the container image is pulled.
+Enter commands to use as input or runtime arguments for the build tool. You don't need to repeat the build tool, such as `maven` or `dotnet`; these are declared in **Build Tool**.
 
-Bazel is already installed on Harness Cloud. For other build infrastructures, you must manually confirm if Bazel is already installed.
+```mdx-code-block
+<Tabs>
+  <TabItem value="csharp" label="C#">
+```
+
+For .NET, provide runtime arguments for tests, such as:
+
+```yaml
+                    args: /path/to/test.dll /path/to/testProject.dll
+```
+
+For NUnit, provide runtime executables and arguments for tests, such as:
+
+```yaml
+                    args: . "path/to/nunit3-console.exe" path/to/TestProject.dll --result="UnitTestResults.xml" /path/to/testProject.dll
+```
+
+:::info
+
+* Harness expects `dll` injection. `csproj` isn't supported.
+* Don't inject another instrumenting agent, such as a code coverage agent, in the `args` string.
+* For NUnit, you must include both runtime arguments and executables in the `args` string.
 
 :::
 
-### Build Arguments
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Java" label="Java" default>
+```
 
-Enter arguments to use as input for the build tool. You don't need to repeat the build tool, such as `maven` or `dotnet`; these are declared in **Build Tool**.
+Provide runtime arguments for tests, for example:
 
-Note the following requirements:
+```yaml
+                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+```
 
-* **Java:** Provide runtime arguments for tests, for example: `Test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false`.
-* **C# .NET:** Provide runtime arguments for tests, for example: `/path/to/test.dll /path/to/testProject.dll`.
-   * Expects `.dll` injection. `csproj` isn't supported.
-   * **Do not** inject another instrumenting agent, such as a code coverage agent, in the argument string.
-* **C# NUnit:** Provide runtime executables and arguments for tests, for example: `. "path/to/nunit3-console.exe" path/to/TestProject.dll --result="UnitTestResults.xml" /path/to/testProject.dll`.
-   * You must include the executable in the string.
-   * **Do not** inject another instrumenting agent, such as a code coverage agent, in the string.
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Kotlin" label="Kotlin">
+```
+
+Provide runtime arguments for tests, for example:
+
+```yaml
+                    args: test
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="python" label="Python">
+```
+
+Provide runtime arguments for tests, for example:
+
+```yaml
+                    args: "--junitxml=out_report.xml"
+```
+
+:::info
+
+* Don't include coverage flags (`--cov` or `coverage`). The Run Tests step inherently includes coverage for Python. Including coverage in `args` can cause errors.
+* Python 3 is required. If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
+* The Python 3 binary is required. Python 3 is preinstalled on Harness Cloud runners. For other build infrastructures, the binary must be preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or manually installed at runtime in [Pre-Command](#pre-command).
+
+:::
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Scala" label="Scala">
+```
+
+Provide runtime arguments for tests, for example:
+
+```yaml
+                    args: test
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ### Test Report Paths
 
@@ -658,15 +819,25 @@ This field is required for the Run Tests step to [publish test results](./viewin
 
 ### Pre-Command
 
-Enter the commands for setting up the environment before running the tests. For example, `printenv` prints all or part of the environment.
+Enter the commands for setting up the environment before running the tests.
 
 If a script is supplied here, select the corresponding **Shell** option.
+
+:::info Setup Python
+
+* Use **Pre-Command** to install the Python 3 binary if it is not already installed on the build machine or available in the specified [Container Registry and Image](#container-registry-and-image). Python 3 is preinstalled on Harness Cloud runners.
+* Don't install coverage tools in **Pre-Command**. The Run Tests step inherently includes coverage for Python, and Harness automatically installs coverage tools if they aren't already available.
+* Python 3 is required. If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
+
+:::
 
 ### Post-Command
 
 Enter the commands used for cleaning up the environment after running the tests. For example, `sleep 600` suspends the process for 600 seconds.
 
 If a script is supplied here, select the corresponding **Shell** option.
+
+For Python, Python 3 is required. If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
 
 ### Run Only Selected Tests
 
@@ -681,6 +852,20 @@ Leave blank or provide a comma-separated list of source code package prefixes, s
 ### Environment Variables
 
 Variables passed to the container as environment variables and used in the step's commands.
+
+For Python, you can set [`PYTHONPATH`](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH) in the step's `envVariables`, if required. For example:
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Python Test
+                  identifier: Run_Python_Test
+                  spec:
+                    language: Python
+                    ...
+                    envVariables:
+                      PYTHONPATH: /harness
+```
 
 ### Output Variables
 
@@ -886,6 +1071,65 @@ pipeline:
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="python" label="Python">
+```
+
+This example shows a pipeline that runs tests with pytest and Test Intelligence.
+
+```yaml
+pipeline:
+  name: Test Intelligence Demo
+  identifier: testintelligencedemo
+  projectIdentifier: default
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+  stages:
+    - stage:
+        type: CI
+        identifier: Build_and_Test
+        name: Build and Test
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: RunTests
+                  name: Run Python Test
+                  identifier: Run_Python_Test
+                  spec:
+                    language: Python
+                    buildTool: Pytest ## Specify pytest or unittest
+                    args: "--junitxml=out_report.xml"
+                    runOnlySelectedTests: true  ## Set to false if you don't want to use TI.
+                    preCommand: |
+                      python3 -m venv .venv
+                      . .venv/bin/activate
+
+                      python3 -m  pip install pytest
+                      python3 -m pip install coverage
+                      python3 -m pip install -r requirements/dev.txt
+                      python3 -m pip install -e .
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - out_report.xml*
+                    envVariables:
+                      PYTHONPATH: /harness ## Exclude if not applicable.
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+```
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
@@ -1058,6 +1302,69 @@ pipeline:
                         spec:
                           paths:
                             - results.xml
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="python" label="Python">
+```
+
+This example shows a pipeline that runs tests with pytest and Test Intelligence.
+
+```yaml
+pipeline:
+  name: Test Intelligence Demo
+  identifier: testintelligencedemo
+  projectIdentifier: default
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+  stages:
+    - stage:
+        type: CI
+        identifier: Build_and_Test
+        name: Build and Test
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: RunTests
+                  name: Run Python Test
+                  identifier: Run_Python_Test
+                  spec:
+                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    image: python:latest ## Specify if required by your build infrastructure.
+                    language: Python
+                    buildTool: Pytest ## Specify pytest or unittest
+                    args: "--junitxml=out_report.xml"
+                    runOnlySelectedTests: true  ## Set to false if you don't want to use TI.
+                    preCommand: |
+                      python3 -m venv .venv
+                      . .venv/bin/activate
+
+                      python3 -m  pip install pytest
+                      python3 -m pip install coverage
+                      python3 -m pip install -r requirements/dev.txt
+                      python3 -m pip install -e .
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - out_report.xml*
+                    envVariables:
+                      PYTHONPATH: /harness ## Exclude if not applicable.
           infrastructure:
             type: KubernetesDirect
             spec:

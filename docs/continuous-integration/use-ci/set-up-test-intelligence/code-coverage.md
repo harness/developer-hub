@@ -149,6 +149,8 @@ The built-in [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool can ge
 
 ### Python
 
+Use these steps to install code coverage tools when you run Python tests in **Run** steps. Don't install coverage tools when using **Run Tests** steps. With [Test Intelligence for Python](./set-up-test-intelligence.md), coverage is inherent in the Run Tests step.
+
 1. Install a Python code coverage tool, such as [Coverage.py](https://coverage.readthedocs.io/en/latest/). Depending on your build infrastructure, you can install this directly on the host machine or use a **Run** step to set up the test environment at runtime.
 
    ```yaml

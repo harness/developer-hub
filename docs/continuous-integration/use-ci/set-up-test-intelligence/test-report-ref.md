@@ -90,6 +90,13 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
 
 ### Python
 
+```mdx-code-block
+<Tabs>
+  <TabItem value="run" label="Run step" default>
+```
+
+This example runs Python tests in a [Run step](../run-ci-scripts/run-step-settings.md).
+
 ```yaml
               - step:
                   type: Run
@@ -108,9 +115,44 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
                           - /harness/test-results/junit.xml
 ```
 
+```mdx-code-block
+  </TabItem>
+  <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
+```
+
+This example runs Python tests with [Test Intelligence](./set-up-test-intelligence.md).
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Python Test
+                  identifier: Run_Python_Test
+                  spec:
+                    language: Python
+                    buildTool: Pytest
+                    args: "--junitxml=out_report.xml"
+                    runOnlySelectedTests: true
+                    preCommand: |
+                      python3 -m venv .venv
+                      . .venv/bin/activate
+
+                      python3 -m pip install -r requirements/test.txt
+                      python3 -m pip install -e .
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - out_report.xml*
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
 :::tip
 
-[Use pytest to run unittest.](https://docs.pytest.org/en/6.2.x/unittest.html)
+[Use pytest to run unittest.](https://docs.pytest.org/en/latest/how-to/unittest.html)
 
 :::
 
