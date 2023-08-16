@@ -57,7 +57,7 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
                   identifier: Run_Tests_with_Intelligence
                   name: Run Tests with Intelligence
                   spec:
-                    args: gradle test --tests
+                    args: test --tests
                     buildTool: Gradle
                     enableTestSplitting: true
                     language: Java

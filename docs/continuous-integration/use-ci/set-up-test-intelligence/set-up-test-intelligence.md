@@ -377,45 +377,6 @@ Select **Expand graph** to view the TI Visualization, which shows why a specific
 
 </details>
 
-## Troubleshooting
-
-You might encounter these issues when using Test Intelligence.
-### pom.xml with argLine
-
-If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
-
-**Before:**
-
-```
-<argLine> something  
-</argLine>
-```
-
-**After:**
-
-```
-<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
-</argLine>
-```
-
-### Jacoco/Surefire/Failsafe
-
-If you're using Jacoco, Surefire, or Failsafe, make sure the `forkCount` is not set to `0`.
-
-For example, the following configuration in `pom.xml` removes the `forkCount` setting and applies `useSystemClassLoader` as a workaround:
-
-```
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-surefire-plugin</artifactId>
-    <version>2.22.1</version>
-    <configuration>
-        <!--  <forkCount>0</forkCount> -->
-        <useSystemClassLoader>false</useSystemClassLoader>
-    </configuration>
-</plugin>
-```
-
 ## Settings
 
 The **Run Tests** step has the following settings.
@@ -1076,4 +1037,43 @@ pipeline:
 ```mdx-code-block
   </TabItem>
 </Tabs>
+```
+
+## Troubleshooting
+
+You might encounter these issues when using Test Intelligence.
+### pom.xml with argLine
+
+If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
+
+**Before:**
+
+```
+<argLine> something  
+</argLine>
+```
+
+**After:**
+
+```
+<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
+</argLine>
+```
+
+### Jacoco/Surefire/Failsafe
+
+If you're using Jacoco, Surefire, or Failsafe, make sure the `forkCount` is not set to `0`.
+
+For example, the following configuration in `pom.xml` removes the `forkCount` setting and applies `useSystemClassLoader` as a workaround:
+
+```
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.22.1</version>
+    <configuration>
+        <!--  <forkCount>0</forkCount> -->
+        <useSystemClassLoader>false</useSystemClassLoader>
+    </configuration>
+</plugin>
 ```
