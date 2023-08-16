@@ -21,7 +21,7 @@ Harness templates have the following limitations:
 * When you delete an existing template with active pipeline references, Harness deletes the references.
 * When you convert a runtime input in a template to a fixed value, the input type does not change in the linked pipeline. You must manually edit the linked pipeline YAML and provide the fixed values. You must reconcile the template state in the pipeline before executing it.
 * When you convert a fixed type input to a runtime input in your template, the input type does not change in the linked pipeline. You must click the template in the linked pipeline to refresh it and save the pipeline again.
-* Pipeline Template with a chained pipeline stage is not supported.
+* Pipeline templates with chained pipeline stages are not supported.
 
 ## What is a template in Harness?
 
