@@ -22,7 +22,7 @@ module "ccm" {
   version = "0.1.1"
 
   s3_bucket_arn           = "arn:aws:s3:::harness-ccm"
-  external_id             = "harness:891928451355:wlgELJ0TTre5aZhzpt8gVA"
+  external_id             = "harness:012345678901:wlgELJ0TTre5aZhzpt8gVA"
   enable_billing          = true
   enable_events           = true
   enable_optimization     = true
@@ -41,15 +41,15 @@ resource "harness_platform_connector_awscc" "master" {
   identifier = "master"
   name       = "master"
 
-  account_id  = "759984737373"
+  account_id  = "012345678901"
   report_name = "harnessccm"
   s3_bucket   = "harnessccm"
   features_enabled = [
     "BILLING",
   ]
   cross_account_access {
-    role_arn    = "arn:aws:iam::759984737373:role/HarnessCERole"
-    external_id = "harness:891928451355:wlgELJ0TTre5aZhzpt8gVA"
+    role_arn    = "arn:aws:iam::012345678901:role/HarnessCERole"
+    external_id = "harness:867530900000:sdjfhewfhsddfjw"
   }
 }
 
@@ -63,8 +63,8 @@ resource "harness_platform_connector_awscc" "member1" {
     "VISIBILITY",
   ]
   cross_account_access {
-    role_arn    = "arn:aws:iam::759984737374:role/HarnessCERole"
-    external_id = "harness:891928451355:wlgELJ0TTre5aZhzpt8gVA"
+    role_arn    = "arn:aws:iam::012345678902:role/HarnessCERole"
+    external_id = "harness:867530900000:sdjfhewfhsddfjw"
   }
 }
 ```
@@ -85,7 +85,7 @@ Then in Harness we create a new CCM Azure connector. This connector asks for the
 
 [Read an in-depth article here on setting up your first Azure CCM connector.](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws)
 
-When prompted for the features to enable, check the options relivant to how you will be using Harness.
+When prompted for the features to enable, check the options relevant to how you will be using Harness.
 
 In the next screen the connector creator gives you a list of Azure CLI commands that accomplish the setup. You may or may not be able to complete these steps with the CLI, or you may need to accomplish the steps via another method based on your platform team’s requirements. You will notice that we are first adding a Harness-owner Azure enterprise application into your Azure tenant, which is then the identity that we apply permissions for.
 
@@ -99,14 +99,14 @@ resource "harness_platform_connector_azure_cloud_cost" "billing" {
   name       = "billing"
 
   features_enabled = ["BILLING", "VISIBILITY", "OPTIMIZATION"]
-  tenant_id        = "b229b2bb-5f33-4d22-bce0-730f6474e906"
-  subscription_id  = "e8389fc5-0cb8-44ab-947b-c6cf62552be0"
+  tenant_id        = "3e93deba-142a-459a-ab89-eea28bdb589c"
+  subscription_id  = "e9ce099c-531b-4f97-b681-e7a02e032e4f"
   billing_export_spec {
     storage_account_name = "harnesscostexport"
     container_name       = "harness"
     directory_name       = "export"
     report_name          = "harnesscostexport"
-    subscription_id      = "e8389fc5-0cb8-44ab-947b-c6cf62552be0"
+    subscription_id      = "e9ce099c-531b-4f97-b681-e7a02e032e4f"
   }
 }
 
@@ -115,8 +115,8 @@ resource "harness_platform_connector_azure_cloud_cost" "member1" {
   name       = "member1"
 
   features_enabled = ["VISIBILITY", "OPTIMIZATION"]
-  tenant_id        = "b229b2bb-5f33-4d22-bce0-730f6474e906"
-  subscription_id  = "e8389fc5-0cb8-44ab-947b-c6cf62552be1"
+  tenant_id        = "3e93deba-142a-459a-ab89-eea28bdb589c"
+  subscription_id  = "6f273207-c4da-4489-9e21-f89ea252678e"
 }
 ```
 
@@ -141,7 +141,7 @@ resource "harness_platform_connector_gcp_cloud_cost" "billing" {
 
   features_enabled      = ["BILLING", "VISIBILITY", "OPTIMIZATION"]
   gcp_project_id        = "example-proj-234"
-  service_account_email = "harness-ce-wlgel-78524@ce-prod-274307.iam.gserviceaccount.com"
+  service_account_email = "harness-ce-sdjfh-00001@ce-prod-000001.iam.gserviceaccount.com"
   billing_export_spec {
     data_set_id = "data_set_id"
     table_id    = "table_id"
@@ -230,7 +230,7 @@ You can define a budget for a perspective for a variety of time ranges. What is 
 
 Similarly to budgets, you can set alerts for when new anomalies are generated within the scope of the perspective. Again these alerts should go to someone who can _take action_ on the alerts.
 
-### Reccomendations
+### Recommendations
 
 When looking at [reccomendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations/) we see many different types: k8s workloads and nodepools, VM, and governance. Each recommendation will come with current/forecasted spend for the resource, and possible savings would result if action were taken. You can use the filter icon in the top right of the page to filter on a specific type, or even on certain cloud accounts, clusters, or namespaces.
 
