@@ -20,7 +20,7 @@ The SEI Harness integration is only for Harness NextGen modules. For an explanat
 To configure the SEI Harness integration, you need:
 
 * Your Harness account ID. You can find this under **Account Settings**.
-* A [Harness API key](/docs/platform/user-management/add-and-manage-api-keys/) and [personal access token](/docs/platform/User-Management/add-and-manage-api-keys#create-personal-access-token).
+* A [Harness API key and token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 Copy the account ID and token somewhere that you can retrieve them when you configure the integration.
 

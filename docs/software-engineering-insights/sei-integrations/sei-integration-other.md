@@ -67,7 +67,7 @@ The following table lists other Jenkins plugins for which the Job Reporter plugi
 
 SEI supports custom CI/CD integrations through webhooks. Use this for CI/CD tools that don't have a dedicated [SEI integration](./sei-integrations-overview.md), such as Jenkins and GitHub Actions.
 
-1. Create a [Harness API key](/docs/platform/user-management/add-and-manage-api-keys/) to use for authorization.
+1. Create a [Harness API key and token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) to use for authorization.
 2. Contact [Harness Support](mailto:support@harness.io) to get a UUID to identify your CI/CD system.
 3. Configure the webhook API call according to the following webhook specification.
 
