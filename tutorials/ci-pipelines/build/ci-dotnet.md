@@ -360,7 +360,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
                     buildTool: Dotnet
-                    args: dotnet test --no-build --verbosity normal
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
                     namespaces: aw,fc
                     runOnlySelectedTests: true
                     preCommand: |-
@@ -393,7 +393,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
                     buildTool: Dotnet
-                    args: dotnet test --no-build --verbosity normal
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
                     namespaces: aw,fc
                     runOnlySelectedTests: true
                     preCommand: |-
