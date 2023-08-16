@@ -35,7 +35,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 <Kustomizedep />
 
 
-## Latest - August 17, 2023, version 80300
+## Latest: Version 80300
 
 
 
@@ -60,13 +60,13 @@ This release does not have Early Access features.
 
 - Fixed a FirstGen-to-NextGen migration issue where the migrator did not filter out duplicate keys when extracting variables. With this fix, the migrator allows unique keys only. (CDS-76576)
 
-- Fixed an issue that could occur when setting up an Azure Web App deployment. The Visual Editor would add a `spec: webApp` element to the pipeline definition. This resulted in an invalid pipeline YAML and required a user to delete the element before the pipeline could be saved. (CDS-76289, ZD-48649)	
+- Fixed an issue that could occur when setting up an Azure Web App deployment. The Visual Editor would add a `spec: webApp` element to the pipeline definition. This resulted in an invalid pipeline YAML and required you to delete the element before you could save the pipeline. (CDS-76289, ZD-48649)	
 
 - Fixed an issue that caused the UI to crash when the input value of a component was changed from runtime to expression. (CDS-76216)	
 
-- Fixed an issue observed when trying to use the Terraform Rollback step. The step did not seem to inherit the backend configuration from the Terraform Apply step with the same provisioner Id and there was no way to configure the backend configuration in the UI for this step. This behavior was related to an issue where the rollback could fail when back-end configurations were not saved for the next run. (CDS-76071, ZD-48374)	
+- Fixed an issue with the Terraform Rollback step. The step did not inherit the backend configuration from the Terraform Apply step with the same provisioner Id, and you couldn't configure the backend configuration in the UI. This behavior was related to an issue where the rollback could fail when back-end configurations were not saved for the next run. (CDS-76071, ZD-48374)	
 
-- Fixed an edge-case issue where, if the number of instances went down to zero and came back up after a duration of 1 day, they did not get displayed in the custom dashboard. With this fix, they will start syncing back again once their count is greater than zero. (CDS-75585, ZD-47848)	
+- Fixed an edge-case issue where, if the number of instances went down to zero and came back up after a duration of 1 day, they were not displayed in the custom dashboard. With this fix, they will start syncing back again once their count is greater than zero. (CDS-75585, ZD-47848)	
 
 - Fixed a UI issue in the **Pipeline Executions** page. Steps with a looping strategy include a **Show All** button for viewing all nodes in that step. However, this was not working as expected when pipeline stages were used. With this fix, clicking **Show All** now displays all nodes. (CDS-75558, ZD-48298)	
 
@@ -74,11 +74,11 @@ This release does not have Early Access features.
 
 - Fixed an issue with the **Repository Name** filter in the **Builds** page. Some users could not filter on builds that pulled their source code from a specific repository. If you experienced this issue, you will need to delete any saved filters that use the **Repository Name** filter and create them again. (CDS-75281, ZD-47876, ZD-48201)	
 
-- Fixed an AWS autoscaling issue when migrating from Harness FirstGen to Harness CurrentGen. Previously, all migrated services and pipelines would use Spot ElastiGroup instead of AWS ASG. With this fix, the migrated entity is based on the workflow used in the last successful pipeline execution. (CDS-75190)	
+- Fixed an AWS autoscaling issue when migrating from Harness FirstGen to Harness NextGen. Previously, all migrated services and pipelines used Spot ElastiGroup instead of AWS ASG. With this fix, the migrated entity is based on the workflow used in the last successful pipeline execution. (CDS-75190)	
 
-- Fixed an issue where a Post-Retry manual intervention timeout did not work as expected. A Post-Retry action was set to manual intervention, but after timing out the step did not go into the manual step. With this fix, the post-retry manual intervention timeout is now being honored. (CDS-73618, ZD-48904, ZD-47798)	
+- Fixed an issue where a Post-Retry manual intervention timeout did not work as expected. A Post-Retry action was set to manual intervention, but after timing out the step did not go into the manual step. With this fix, the post-retry manual intervention timeout is now honored. (CDS-73618, ZD-48904, ZD-47798)	
 
-- Fixed a UI issue where the **Clear Filters** button didn't work previewing templates in the **Templates** > **Stage Templates** window. (CDS-73587)	
+- Fixed a UI issue where the **Clear Filters** button didn't work when previewing templates in the **Templates** > **Stage Templates** window. (CDS-73587)	
 
 - Fixed the error message that gets displayed when a build does not find a specified package. The previous error message was `No tags found with given image path`. The new error message is `No tags found for the Package Name`.(CDS-73559)	
 
@@ -86,13 +86,14 @@ This release does not have Early Access features.
 
 - Fixed an issue where a pipeline execution reported an invalid `artifactPath` when trying to deploy Artifactory artifacts. This was due to an issue with the regex used to populate the pull-down artifact menu. With this fix, you can specify recursive wildcards in the directory path for Artifactory. For example, you can specify `MainPath/*/*` as the directory path for the pipeline and the Service step will download the selected artifact. (CDS-72245, ZD-46236)
 
-- The Custom Remote Store did not clone a repo if its total size was 25Mb or higher if provided in the execution script. (CDS-25900)
+- The Custom Remote Store did not clone a repo if its total size was 25Mb or higher if provided in the execution script. (CDS-75900)
 
-  We did not want to bloat up the communication between delegate and manager so we have this validation. It should ideally be for manifest and not the whole repo that contains the manifest.
 
   This issue has been resolved. The Custom Remote Manifest now has a <=25Mb size validation on manifest files.
 
-- Introduced a validation to ensure that only repos which are allowed on the basis of `repoAllowList`` can be set for a Pipeline, InputSets, and Templates while using the [Edit Git details](/docs/platform/Git-Experience/configure-git-experience-for-harness-entities#edit-git-details-for-a-pipeline) feature. (CDS-75828)
+- Introduced a validation to ensure that only repos that are allowed on the basis of `repoAllowList` can be set for a Pipeline, InputSets, and Templates while using the [Edit Git details](/docs/platform/Git-Experience/configure-git-experience-for-harness-entities#edit-git-details-for-a-pipeline) feature. (CDS-75828)
+
+This item requires Harness Delegate version 803xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - Fixed a delegate issue where the retry logic would cause an exception due to a connection-refused error, which was classified as a connectivity error. (CDS-75777, ZD-48380)
 

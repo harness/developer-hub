@@ -16,13 +16,13 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### August 17, 2023, version 80300
+## Latest: Version 80300
 
-#### What's new
+### New features and enhancements
 
 This release does not include new features.
 
-#### Early access
+### Early access features
 
 This release does not include early access features.
 
