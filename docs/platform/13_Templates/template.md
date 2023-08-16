@@ -115,6 +115,17 @@ Versioning a template enables you to create a new template without modifying the
 
 You can make changes to the same version of the template, as long as the template's inputs remain unaltered. You must create a new version of the template for any changes in the inputs.
 
+#### Versioning with Git Experience 
+
+User's can store different versions of templates on:
+1. Different branches in different repository
+2. Different branches in the same repository
+3. Same branch and same repository.
+
+When selecting a version of a template, be sure to set the branch and repo context before toggling the version. The version can reside on numerous branches so Harness needs to know which location to render the version of the template from. 
+
+For more information on branching and version management with branching please see [Template Library with Git Experience docs](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/#branch-selection-logic-for-fetching-referenced-entities-in-remote-pipelines)
+
 ### Stable version
 
 A stable version is a template that only introduces breaking changes in major release milestones.
