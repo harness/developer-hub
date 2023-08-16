@@ -63,7 +63,10 @@ This release does not have Early Access features.
 
 - Fixed an issue with the **Repository Name** filter in the **Builds** page. Some users could not filter on builds that pulled their source code from a specific repository. If you experienced this issue, you will need to delete any saved filters that use the **Repository Name** filter and create them again. (CDS-75281, ZD-47876, ZD-48201)	
 
+<!-- 
 - Fixed an AWS autoscaling issue when migrating from Harness FirstGen to Harness NextGen. Previously, all migrated services and pipelines used Spot ElastiGroup instead of AWS ASG. With this fix, the migrated entity is based on the workflow used in the last successful pipeline execution. (CDS-75190)	
+
+-->
 
 - Added a tooltip for CI Stage to let users know that `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration.` (CDS-74137)
 
