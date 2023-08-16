@@ -90,7 +90,7 @@ JSON body as a string can also be used currently as the variable runtime input d
 
 NOTE: Currently we don’t support the use of nested JSON body as a string as the variable runtime input default value. 
 
-For example, this JSON string `<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\", \"fallbackToOd\": true}')` can be used as runtime input, but this JSON string `<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\", \"fallbackToOd\": true,\"scalingStrategy\": {\"terminationPolicy\": \"default\" }}')` is not supported currently as runtime input.
+For example, this JSON string `<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\", \"fallbackToOd\": true}')` can be used as a runtime input, but this JSON string `<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\", \"fallbackToOd\": true,\"scalingStrategy\": {\"terminationPolicy\": \"default\" }}')` is currently not supported as a runtime input.
 
 Multiple selection is allowed for runtime inputs defined for pipelines, stages, and shell script variables. You must specify the allowed values in the input as mentioned in the above examples. 
 
