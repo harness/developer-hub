@@ -7,7 +7,7 @@ sidebar_position: 25
 # Connect your source code
 
 
-Learn how to connect your code repository to the monitored service. Help your developers access code repository, branch, and commits corresponding to the errors, for efficient code  change tracing.
+Learn how to connect your code repository to the monitored service. Help your developers access the code repository, branch, and commits corresponding to the errors for efficient code change tracing.
 
 
 ## Prerequisites
