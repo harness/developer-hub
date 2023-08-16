@@ -1,6 +1,6 @@
 ---
 title: GitHub Catalog Discovery
-description: Automatically discovery catalog info YAML from your GitHub organizations and repositories
+description: Automatically discover catalog-info.yaml files in your GitHub organizations and repositories.
 ---
 
 | Plugin details |                                                                   |
@@ -14,9 +14,9 @@ description: Automatically discovery catalog info YAML from your GitHub organiza
 
 ### Application configuration YAML
 
-This plugin allows you to configure certain rules based on which the entity definition files e.g. `catalog-info.yaml` can be auto-discovered from your GitHub organizations and repositories. Once configured, you will no longer need to manually register all the catalog info YAML files. Any new files created will also be automatically registered in the catalog.
+This plugin enables you to configure rules based on which the entity definition files (for example, `catalog-info.yaml`) can be auto-discovered from your GitHub organizations and repositories. Once you've configure rules, you no longer need to manually register all the catalog information YAML files. Any new files created will also be automatically registered with the catalog.
 
-Please check out the [official documentation](https://backstage.io/docs/integrations/github/discovery#configuration) to understand the YAML configuration for this plugin. Here is an example -
+Go to the [official documentation](https://backstage.io/docs/integrations/github/discovery#configuration) to understand the YAML configuration for this plugin. Here is an example:
 
 ```YAML
 catalog:
@@ -84,13 +84,13 @@ catalog:
 
 ### Secrets
 
-Ensure that you have a GitHub connector configured in your IDP Admin -> Connectors page. This plugin does not need any additional secrets.
+Make sure that you have a GitHub connector configured on your **IDP Admin** > **Connectors** page. This plugin does not need any additional secrets.
 
 ### Delegate proxy
 
 _No action required_
 
-This plugin does not require a delegate proxy to be set up because GitHub is publicly accessible. If you are using GHE, the GitHub connect will already have the delegate information.
+This plugin does not require a delegate proxy to be set up because GitHub is publicly accessible. If you are using GitHub Enterprise, the GitHub connector will already have the delegate information.
 
 ## Layout
 
@@ -106,4 +106,4 @@ This plugin does not need any catalog-info.yaml annotations to work.
 
 ## Support
 
-The plugin is owned by the [Backstage core](https://backstage.io) and managed in the [Backstage official repository](https://github.com/backstage/backstage) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
+The plugin is owned by [Backstage core](https://backstage.io) and managed in the [Backstage official repository](https://github.com/backstage/backstage) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
