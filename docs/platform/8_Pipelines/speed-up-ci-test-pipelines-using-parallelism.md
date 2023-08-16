@@ -21,7 +21,7 @@ Most CI pipelines are set up to run tests with every new commit. When you [set u
 
 :::info
 
-For more information about test splitting with Test Intelligence, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence).
+For more information about test splitting with Test Intelligence, go to [Enable Test Intelligence:](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
 
 :::
 
@@ -243,7 +243,9 @@ reports:
 
 To ensure that your test reports are correctly published and time-based test splitting works, you must do the following:
 
-* Configure your test runner and formatter to publish your test reports in the [JUnit](https://junit.org/junit5/) XML format and include filenames in the XML output. For example, if you use `pytest`, you can set `junit_family=xunit1` in your code repo's `pytest.ini` file. Note that the exact setup and configuration requirements depend on the test runner that you use. Refer to your test runner's documentation to learn how to publish in the correct format.
+* Configure your test runner and formatter to publish your test reports in the [JUnit](https://junit.org/junit5/) XML format and include filenames in the XML output.
+   * For example, if you use `pytest`, you can set `junit_family=xunit1` in your code repo's `pytest.ini` file, or you can include `-o junit_family="xunit1"` in the step's `command`.
+   * The exact setup and configuration requirements depend on the test runner that you use. Refer to your test runner's documentation to learn how to publish in the correct format.
 * If you're implementing `parallelism` in a step, rather than a stage, ensure that each `test-group` step generates a report with a unique filename. You can achieve this using the `<+strategy.iteration>` variable, which represents the index of the current test run, in the range of `0` to `parallelism-1`.
 
 You can configure test reporting options in the Pipeline Studio's YAML or Visual editors. In your pipeline, locate the **Run** or **Run Tests** step and specify the **Report Paths** field. In the Visual editor this field is located under **Optional Configuration**.
