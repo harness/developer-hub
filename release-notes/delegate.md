@@ -34,9 +34,17 @@ Harness NextGen release 803xx includes the following changes for the Harness Del
 
 ### New features and enhancements
 
-- Pending public release notes summary. (PL-39790)
+- If you use the App Role authentication method in the Hashicorp Vault connector, you can choose to cache the vault token. The token is cached on the Harness Delegate for a time duration equal to the TTL of the vault token, with 1% leeway. 
+
+  By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
+
+- Fixed an issue where the token value was missing in the delegate token list API call. (PL-39790)
 
 - To safeguard your operations and protect against potential security vulnerabilities, Harness deprecated the Helm 2 binary from delegates with an immutable image type (image tag `yy.mm.xxxxx`). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). (PL-40409)
+
+- In a monitored service, license checks in the back end and Terraform live monitoring are always ON. (SRM-15255)
+
+   Now, monitored services can be enabled only from the user interface (through toggle button) and the enable API. Monitored services will always be disabled when created and during subsequent updates to them.
 
 
 ### Early access features
@@ -49,9 +57,27 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 ### Fixed issues
 
+- Fixed an issue where Azure webhook triggers did not work as expected because the delegate could not parse repository URLs in the format `https://{ORG}@dev.azure.com/{ORG}/{PROJECT}/_git/{REPO}`. With this fix, the delegate can parse these URLs and Azure webhook triggers work as expected. (CDS-59023)
+
+- Fixed a delegate-selector issue in Jira, ServiceNow and Bamboo build steps. When a delegate selector was added at the step/stage/pipeline level, it did not override the selector coming from the connector. This meant that both the delegate selectors were getting checked during the step execution. With this fix, if any selector is at the step/stage/pipeline level, it overrides the selector coming from the connector. This is the default behavior in every other step type. (CDS-71025)
+
+- Fixed a UI issue where pipelines, input sets, and executions were ordered incorrectly due to case-sensitive sorting of the element list. With this release, the UI now uses case-insensitive sorting when it lists pipelines, input sets, and pipeline executions. (CDS-73216)
+
+- Fixed a delegate issue where a `<+configFile.getAsBase64(content)>` expression would get parsed incorrectly if it contained multiple lines. (CDS-73424)
+
+- Fixed a delegate issue observed in pipeline executions with service overrides. If an encrypted config file was deleted, a log message would show the path to the deleted file. (CDS-75153, ZD-47557) 
+
+- Fixed a delegate issue observed in Blue Green deployments of ASG services, where a repeat deployment incorrectly could result in a scaling down of instances to 0. (CDS-75560)
+
+- Fixed a delegate issue where the retry logic would cause an exception due to a connection-refused error, which was classified as a connectivity error. (CDS-75777, ZD-48380)
+
+- Introduced a validation to ensure that only repos that are allowed on the basis of `repoAllowList` can be set for a Pipeline, InputSets, and Templates while using the [Edit Git details](/docs/platform/git-experience/configure-git-experience-for-harness-entities/#edit-git-details-for-a-pipeline) feature. (CDS-75828)
+
+- Fixed a delegate issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a <=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
+
 - Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. (CI-9122)
 
-- Pending public release notes summary. (PL-40148)
+- Fixed an issue where some records did not trigger delegate task assignments. (PL-40148)
 
 - The `publishedDelegateVersion` API incorrectly required edit permission. (PL-40322)
 
@@ -59,7 +85,7 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 ### Hotfixes
 
-The current version does not include a hotfix release.
+This release does not include hotfixes.
 
 ## Previous releases
 

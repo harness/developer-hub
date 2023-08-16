@@ -40,13 +40,17 @@ Harness FirstGen release 803xx includes the following changes for the Harness De
 
 ### New features and enhancements
 
-This release does not include any new features or enhancements.
+- If you use the App Role authentication method in the Hashicorp Vault connector, you can choose to cache the vault token. The token is cached on the Harness Delegate for a time duration equal to the TTL of the vault token, with 1% leeway. 
+
+  By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
 
 ### Early access features
 
 This release does not include any new early access features.
 
 ### Fixed issues
+
+- Fixed an issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240)
 
 - Harness Manager returned NPEs and timed-out when retrying acquire calls. (PL-40646)
 
