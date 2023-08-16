@@ -23,7 +23,7 @@ Learn how to connect your code repository to the monitored service. Help your de
     
     1. Navigate to **Connectors** under the **Projects**.
 
-    2. Select the connector you intend to use
+    2. Select the connector you intend to use.
 
     3. Copy the Identifier
 
