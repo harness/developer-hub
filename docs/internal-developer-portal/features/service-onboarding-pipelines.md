@@ -29,3 +29,12 @@ Harness IDP ships the following actions to be used in the software template step
 - `harness:delete-secret`
 
 Learn more about how to use them in the [service onboarding tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input).
+
+## Available UI pickers
+
+Harness IDP ships the following custom UI pickers that can be used in the template form for developers to select from.
+
+- `HarnessOrgPicker`
+- `HarnessProjectPicker`
+
+These UI fields can be used in your `template.yaml` for the `ui:field` option. Read more on how to use these [custom field extensions](https://backstage.io/docs/features/software-templates/writing-custom-field-extensions#using-the-custom-field-extension) or take a look at [this example](https://github.com/bhavya-sinha/scaffolder-sample-templates/blob/5f52718ec49cb2c27a87e2fbeae075873701911c/fieldExtension.yaml#L78-L85).

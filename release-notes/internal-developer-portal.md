@@ -15,42 +15,28 @@ import TabItem from '@theme/TabItem';
 
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
 
-## Latest - July 27, 2023, version 0.7.0
+## Latest - August 9, 2023, version 0.8.0
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-- IDP now includes the Confluence search plugin to include results from Confluence spaces. To learn more, got to the [plugin documentation](/docs/internal-developer-portal/plugins/available-plugins/confluence). (IDP-845)
-- The interval at which IDP polls Git repositories associated with the software catalog has increased from 5 minutes to 15 minutes. (IDP-749)
+- IDP now includes the [GitHub Catalog Discovery](/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery) plugin. You can use this to automatically discover `catalog-info.yaml` files from your GitHub organizations and repositories. [IDP-887]
+
+- Two new UI pickers available to be used in the Software Templates. `HarnessOrgPicker` and `HarnessProjectPicker`. These can be used when creating a Service Onboarding workflow for developers to easily select Harness project and org. Take a look at this [example](https://github.com/bhavya-sinha/scaffolder-sample-templates/blob/5f52718ec49cb2c27a87e2fbeae075873701911c/fieldExtension.yaml#L78-L85). [IDP-868]
+
+-
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
 
-This release does not include early access features.
-
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-
-- When you used a delegate to connect to a Git provider, the Docs tab failed to load, and the following message was displayed: `Failed to build the docs page: TAR_BAD_ARCHIVE: Unrecognized archive format`. (IDP-687)
-
-  This issue is now fixed.
-
-- If you used a GitHub connector that used a Github App for API authentication and if the private key was a text secret, the catalog import in IDP failed. The failure was caused by Harness Secrets Manager not storing the specified private key with line breaks, which IDP expects along with proper indentation. (IDP-850, ZD-47845)
-
-  Harness Secrets Manager now formats text secrets properly for text secrets used with IDP.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Hotfix version 0.7.1">
-```
-
-The `harness:create-secret` and `harness:delete-secret` template actions are now available for use in IDP software templates. You can use these actions to receive a secret from a developer, create a Harness secret, and then use it as a pipeline variable to provide runtime input. For more information, go to the [tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input) (IDP-780)
 
 ```mdx-code-block
   </TabItem>
@@ -61,6 +47,28 @@ The `harness:create-secret` and `harness:delete-secret` template actions are now
 
 <details>
 <summary>2023 releases</summary>
+
+#### July 27, 2023, version 0.7.0
+
+##### What's new
+
+- IDP now includes the Confluence search plugin to include results from Confluence spaces. To learn more, go to the [plugin documentation](/docs/internal-developer-portal/plugins/available-plugins/confluence). (IDP-845)
+- The `harness:create-secret` and `harness:delete-secret` template actions are now available for use in IDP software templates. You can use these actions to receive a secret from a developer, create a Harness secret, and then use it as a pipeline variable to provide runtime input. For more information, go to the [tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input) (IDP-780)
+- The interval at which IDP polls Git repositories associated with the software catalog has increased from 5 minutes to 15 minutes. (IDP-749)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+- When you used a delegate to connect to a Git provider, the Docs tab failed to load, and the following message was displayed: `Failed to build the docs page: TAR_BAD_ARCHIVE: Unrecognized archive format`. (IDP-687)
+
+  This issue is now fixed.
+
+- If you used a GitHub connector that used a Github App for API authentication and if the private key was a text secret, the catalog import in IDP failed. The failure was caused by Harness Secrets Manager not storing the specified private key with line breaks, which IDP expects along with proper indentation. (IDP-850, ZD-47845)
+
+  Harness Secrets Manager now formats text secrets properly for text secrets used with IDP.
 
 #### July 12, 2023, version 0.6.0
 
