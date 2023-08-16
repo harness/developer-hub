@@ -92,8 +92,6 @@ You can use JSON body as a string for the variable runtime input default value.
 
 Harness does not support using a nested JSON body as a string for the variable runtime input default value. 
 
-::
-
 For example, you can use the following JSON string for a runtime input.
 
 `<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\", \"fallbackToOd\": true}')` 
@@ -101,6 +99,8 @@ For example, you can use the following JSON string for a runtime input.
 Harness does not support the following JSON string for a runtime input.
 
 `<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\", \"fallbackToOd\": true,\"scalingStrategy\": {\"terminationPolicy\": \"default\" }}')` 
+
+:::
 
 Multiple selection is allowed for runtime inputs defined for pipelines, stages, and shell script variables. You must specify the allowed values in the input as mentioned in the above examples. 
 
@@ -152,9 +152,9 @@ The following limitations and requirements apply to this feature:
 
 You can configure runtime inputs to a pipeline to be supplied during a step or stage execution. For example, you can configure a custom stage with a Shell Script step with a runtime input field with this property, you will be prompted to enter the input during the execution just before starting the Shell Script step.
 
-If a custom stage is setup with runtime input, you can enter a shell script when prompted by Harness during execution. 
+If a custom stage is set up with runtime input, you can enter a shell script when prompted by Harness during execution. 
 
-If a Harness Approval step is setup with runtime input, you can specify the Harness groups that will approve that step during pipeline execution.
+If a Harness Approval step is set up with runtime input, you can specify the Harness groups that will approve that step during pipeline execution.
 
 To configure runtime inputs in the Harness Pipeline Studio:
 
