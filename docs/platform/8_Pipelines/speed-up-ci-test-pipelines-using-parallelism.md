@@ -21,7 +21,7 @@ Most CI pipelines are set up to run tests with every new commit. When you [set u
 
 :::info
 
-For more information about test splitting with Test Intelligence, go to [Enable Test Intelligence:](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+For more information about test splitting with Test Intelligence, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
 
 :::
 
