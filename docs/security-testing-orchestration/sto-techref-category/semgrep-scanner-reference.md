@@ -5,11 +5,6 @@ sidebar_position: 270
 ---
 
 
-:::info note
-Currently, this integration is behind the Feature Flag `STO_STEP_PALETTE_SEMGREP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-
 You can scan repositories using [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories. 
 
 

@@ -58,7 +58,7 @@ The maximum is `53w`. Timeouts can be set at the Pipeline level also.
 **Node filtering**
 
 :::info note
-Currently, this feature is behind the feature flag SRM_SUMO. Contact Harness Support to enable the feature.
+Currently, this feature is behind the feature flag CV_UI_DISPLAY_NODE_REGEX_FILTER. Contact Harness Support to enable the feature.
 :::
 
 This feature allows you to be more specific in node filtering by using Kubernetes PodName as a label. You can make analysis more explicit by telling CV which nodes to filter on. Just specify the filters on the control nodes (nodes that test nodes are compared against) and the test nodes (nodes CV checks).

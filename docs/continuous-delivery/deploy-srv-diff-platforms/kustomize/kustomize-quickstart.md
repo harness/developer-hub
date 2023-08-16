@@ -193,7 +193,22 @@ All connections and operations are performed by Harness Delegates. So we'll also
 
 Now that the kustomization is defined, you can define the target cluster for your deployment.
 
-## Define your target cluster
+## Define the infrastructure
+
+There is nothing unique about defining the target cluster infrastructure definition for a Kustomize deployment. It is the same process as a typical Harness Kubernetes deployment.
+
+For more information, go to [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure).
+
+### Pre-existing and dynamically provisioned infrastructure
+
+There are two methods of specifying the deployment target infrastructure:
+
+- **Pre-existing**: the target infrastructure already exists and you simply need to provide the required settings.
+- **Dynamically provisioned**: the target infrastructure will be dynamically provisioned on-the-fly as part of the deployment process.
+
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+
+### Define a pre-existing target cluster
 
 The target cluster is your own Kubernetes cluster, hosted in your cloud environment. This is where we will deploy the kustomization and its Docker image.
 

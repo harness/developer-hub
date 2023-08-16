@@ -55,6 +55,8 @@ Select the ServiceNow **Ticket Type**. Use the same type as the ticket you crea
 
 Enter the ServiceNow **Ticket Number**.
 
+In **Retry Interval**, set how long the step should wait to fetch details again for calculating Approval or Rejection criteria.
+
 ### Step 2: Set Approval Criteria
 
 The **Approval Criteria** in the step determines if the Pipeline or stage is approved or rejected. Define the approval criteria using the ServiceNow status items.

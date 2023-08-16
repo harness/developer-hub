@@ -370,6 +370,50 @@ When you select an environment in a stage, you can select the **Infrastructure D
 
 ![](./static/services-and-environments-overview-14.png)
 
+## Propagating environments through multiple stages
+
+:::info note
+
+Currently, this feature is behind the feature flag `CDS_ENV_PROPAGATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+When modeling multiple Deploy stages in a pipeline, you can propagate the environment and infrastructure definition selected in one stage to one or more subsequent stages. 
+
+When you propagate an environment, the same infrastructure definition that was used in the parent stage is propagated to the child stage. You cannot propagate an environment and then select a different infrastructure definition.
+
+:::info note
+
+You can also propagate services between stages. For more information, go to [Propagate CD services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services).
+
+:::
+
+### Important notes
+
+- Propagation is only supported for Deploy stages. Custom stages do not have environments.
+- You cannot propagate environments between different deployment types. For example, you cannot propagate a Kubernetes environment between a Kubernetes deployment stage and a Shell Script deployment stage.
+- Environment propagation is not supported when using multiple environments in a single stage (multi environment deployments).
+- Environment propagation is progressive. You can only propagate environments from stage to stage in a forward direction in your pipeline. For example, Stage 2 cannot propagate an environment from a subsequent Stage 3.
+- In a pipeline's **Advanced Options**, in **Stage Execution Settings**, you can set up selective stage executions. This allows you to select which stages to deploy at runtime.
+  - If you select a stage that uses a propagated environment (a child environment), that stage will not work. This is because the parent environment's settings must be resolved as part of the deployment. 
+- When propagation is set up between a parent stage and child stage, moving the parent or child stage out of sequence resets any propagated settings to their defaults. If you do this, you are prompted to confirm. If you confirm, the stages are reset to their defaults.
+  
+  ![picture 0](static/549cc1f4f053eef2eea982d3b96e9ce3aff89dc0103a89636e79534a53cc2d49.png)  
+
+
+### Propagate an environment
+
+1. Open a pipeline that contains at least one Deploy stage.
+2. Add a subsequent Deploy stage.
+3. In **Service**, select a service for the stage, and then select **Continue**.
+4. In **Environment**, select **Propagate Environment From**.
+5. In **Propagate Environment From**, select the environment of a previous stage.
+   
+   The environment and infrastructure definition from the previous stage is now configured in this stage.
+
+   <docimage path={require('./static/cf661bc9c2f43bd4e33babeedb3ed9002bfdf3722c5bb3bd2417fe92c6b1122b.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+
 ## Define GitOps clusters
 
 When you use Harness GitOps you can add GitOps clusters to an environment. 

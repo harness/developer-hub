@@ -152,6 +152,10 @@ When the plan is applied, the Harness Manager passes the encrypted data to the D
 
 The Delegate decrypts the encrypted plan and applies it using the `terraform apply` command.
 
+#### Limitations
+
+The Terraform plan size must not exceed the secret size limit for secrets in your default Secret Manager. For example, the AWS Secrets Manager has a limitation of 64KB. Other supported Secrets Managers support larger file sizes.
+
 ### Configuration File Repository
 
 **Configuration File Repository** is where the Terraform script and files you want to use are located.
@@ -357,13 +361,7 @@ The **Backend Configuration** section contains the [remote state](https://www.te
 
 You can use an inline or remote state file.
 
-### Using a Remote State File
-
-:::note
-
-Currently, remote state file support is behind the feature flag `TERRAFORM_REMOTE_BACKEND_CONFIG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
+### Using a remote Backend Config File
 
 1. In Backend Configuration, select **Remote**.
 2. Click **Specify Backend Config File**
@@ -563,12 +561,6 @@ and found no differences, so no changes are needed.
 ```
 
 ## Command line options
-
-:::note
-
-Currently, FEATURE_NAME is behind the feature flag `CDS_TERRAFORM_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
 

@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-08-04T10:00
+date: 2023-08-10T10:00
 sidebar_position: 2
 ---
 
@@ -12,28 +12,47 @@ Review the notes below to learn about the early access (aka beta) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 4, 2023
+## Latest - August 10, 2023
+
+### Continuous Integration, version 5301
+
+* Enable and configure Cache Intelligence in the Visual editor. (CI-8917)
+   * The Cache Intelligence visual editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+   * You can enable and configure [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to the Harness Cloud build infrastructure.
+
+<!-- This change added the key and paths fields to the UI. -->
+
+## August 9, 2023
+
+### Security Testing Orchestration, version 1.64.1
+
+* The **Security Tests** tab includes a set of pull-down menus so you can filter the issues lists by Target, Target Type, Step, Stage, and Scanner. (STO-5212).
+  ![Click on a tile to filter issues by severity](./static/sto-pulldown-filters-sto-5212.png)
+
+   This feature is behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
+
+## August 4, 2023
 
 ### Continuous Delivery, version 80120
 
 - You can now migrate Services with Helm Chart from Helm Repository stored Artifacts from CG to NG. This will help in migrations. The Feature Flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG` needs to be enabled for this feature. (CDS-73894)
 
-- You can now configure multiple Helm Charts in the manifests. This provides feature parity with Harness FirstGen. Helm Charts can now be configured from Helm Repository as Artifacts that allow the users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service. The Feature Flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG` needs to be enabled for this feature to work in your environment. (CDS-70209)
+- You can now configure multiple Helm Charts in the manifests. This provides feature parity with Harness FirstGen. Helm Charts can now be configured from the Helm Repository as Artifacts that allow users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service. The Feature Flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG` needs to be enabled for this feature to work in your environment. (CDS-70209)
+
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
 
+
 #### July 28, 2023
 
 ##### Continuous Integration, version 5106
 
-**Enable Cache Intelligence in the Visual editor. (CI-8571)**
-
-The **Enable Cache Intelligence** UI field is behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-You can enable [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to the Harness Cloud build infrastructure.
+* Enable Cache Intelligence in the Visual editor. (CI-8571)
+   * The **Enable Cache Intelligence** UI field is behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+   * You can enable [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to the Harness Cloud build infrastructure.
 
 #### July 18, 2023
 
@@ -63,9 +82,33 @@ This feature flag is now disabled by default and must be re-enabled if your CI-t
 
 ##### Security Testing Orchestration, version 1.61.1
 
-You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities.
+You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities. (STO-5896)
 
 This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more information, go to [Set up target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines).
+
+
+
+
+#### July 5, 2023
+
+##### Security Testing Orchestration, version 1.60.0
+
+* The [Burp integration](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference) now supports scanner templates, which make it much easier to set up a scan step. 
+
+  This integration is behind the Feature Flag `STO_STEP_PALETTE_BURP_ENTERPRISE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
+
+* You can scan your code repositories using [CodeQL](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference), an analysis engine used by developers to automate security checks, and by security researchers to perform variant analysis. 
+
+ This integration is behind the Feature Flag `STO_STEP_PALETTE_CODEQL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5366)
+
+* You can scan container images and repositories using [Fossa](/docs/security-testing-orchestration/sto-techref-category/fossa-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects. (STO-5111)
+
+ This integration is behind the Feature Flag `STO_STEP_PALETTE_FOSSA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+ 
+
+* You can scan container images and repositories using [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects. (STO-5886)
+ 
+ This integration is behind the Feature Flag `STO_STEP_PALETTE_SEMGREP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
 #### June 28, 2023
 
