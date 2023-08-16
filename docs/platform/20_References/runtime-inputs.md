@@ -90,7 +90,7 @@ You can use JSON body as a string for the variable runtime input default value.
 
 :::info note
 
-Harness does not support the use of a nested JSON body as a string for the variable runtime input default value. 
+Harness does not support using a nested JSON body as a string for the variable runtime input default value. 
 
 ::
 
