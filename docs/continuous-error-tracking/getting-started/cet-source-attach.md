@@ -21,7 +21,7 @@ Learn how to connect your code repository to the monitored service. Help your de
 
 1. Get the code connector id.
     
-    1. Navigate to **Connectors** under the **Projects**
+    1. Navigate to **Connectors** under the **Projects**.
 
     2. Select the connector you intend to use
 
