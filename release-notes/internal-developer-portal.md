@@ -2,7 +2,7 @@
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
 tags: [NextGen, "Internal Developer Portal", "IDP"]
-date: 2023-07-12T10:00:15
+date: 2023-08-09T10:00:15
 sidebar_position: 15
 ---
 
@@ -13,7 +13,11 @@ import TabItem from '@theme/TabItem';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/internal-developer-portal/rss.xml" />
 
-Review the notes below for details about recent changes to Harness Internal Developer Portal.
+Review the notes below for details about recent changes to Harness Internal Developer Portal. Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+
+:::info note
+Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe might not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page in your Harness account.
+:::
 
 ## Latest - August 9, 2023, version 0.8.0
 
@@ -24,19 +28,25 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 - IDP now includes the [GitHub Catalog Discovery](/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery) plugin. You can use this to automatically discover `catalog-info.yaml` files from your GitHub organizations and repositories. [IDP-887]
 
-- Two new UI pickers available to be used in the Software Templates. `HarnessOrgPicker` and `HarnessProjectPicker`. These can be used when creating a Service Onboarding workflow for developers to easily select Harness project and org. Take a look at this [example](https://github.com/bhavya-sinha/scaffolder-sample-templates/blob/5f52718ec49cb2c27a87e2fbeae075873701911c/fieldExtension.yaml#L78-L85). [IDP-868]
-
--
+- The following UI pickers are now available for use in software templates:
+  - `HarnessOrgPicker`
+  - `HarnessProjectPicker` 
+  
+  You can use these UI pickers in service onboarding workflows for developers to easily select a Harness project and organization. Take a look at this [example](https://github.com/bhavya-sinha/scaffolder-sample-templates/blob/5f52718ec49cb2c27a87e2fbeae075873701911c/fieldExtension.yaml#L78-L85). [IDP-868]
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
 
+This release does not include early access features.
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+
+This release does not include fixed issues.
 
 ```mdx-code-block
   </TabItem>
