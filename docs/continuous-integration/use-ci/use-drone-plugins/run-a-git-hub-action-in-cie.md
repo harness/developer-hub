@@ -49,8 +49,6 @@ For more information, go to:
 
 ## Add the Plugin step
 
-<DindTrbs />
-
 1. In your pipeline's **Build** stage, and a [Plugin step](./plugin-step-settings-reference.md).
 2. Enter a **Name** and optional **Description**.
 3. For **Container Registry**, select a container registry connector that has Docker Hub access.
@@ -249,3 +247,7 @@ pipeline:
 For more examples of GitHub Actions in Plugin steps, go to the [GitHub Actions Support in Harness CI blog post](https://harness.io/blog/continuous-integration/github-actions-support-harness-ci/).
 
 :::
+
+## Troubleshooting: Can't connect to Docker daemon
+
+<DindTrbs />

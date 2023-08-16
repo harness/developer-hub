@@ -108,8 +108,6 @@ This `Action` step uses the `ruby/setup-ruby` GitHub Action to set up a Ruby env
 
 ## Settings and specifications
 
-<DindTrbs />
-
 ```mdx-code-block
 <Tabs>
   <TabItem value="YAML" label="YAML editor" default>
@@ -245,51 +243,7 @@ pipeline:
 
 </details>
 
-## Transfer GitHub Actions into Harness CI
-
-If you already configured GitHub Actions elsewhere, you can copy the `uses`, `with` and `env` lines from your GitHub Action YAML into the `Action` step's `spec` in your Harness CI pipeline YAML.
-
-If you're using the Visual editor, you can transfer the data into the **Uses**, **Settings**, and **Environment Variables** fields.
-
-The following table compares GitHub Action YAML with Harness CI Action step YAML. Notice the consistency of `uses`, `with`, and `env`.
-
-<table>
-<tr>
-<td> GitHub Action YAML </td> <td> Harness CI Action step YAML </td>
-</tr>
-<tr>
-<td>
-
-```yaml
-- name: hello-world
-  uses: actions/hello-world-javascript-action@main
-  with:
-    who-to-greet: 'Mona the Octocat'
-  env:
-    hello: world
-```
-
-</td>
-<td>
-
-```yaml
-- step:
-    type: Action
-    name: hello world
-    identifier: hello_world
-    spec:
-      uses: actions/hello-world-javascript-action@main
-      with:
-        who-to-greet: 'Mona the Octocat'
-      env:
-        hello: world
-```
-
-</td>
-</tr>
-</table>
-
-## Private Action repositories
+### Private Action repositories
 
 If you want to use an Action that is in a private repository, you must provide the `GITHUB_TOKEN` environment variable. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
 
@@ -344,9 +298,9 @@ For more information about configuring the GitHub Action plugin step's settings,
 </Tabs>
 ```
 
-## Output variables from GitHub Actions steps
+### Output variables from GitHub Actions steps
 
-Output variables are exposed values that can be used by other steps or stages in the pipeline. For GitHub Actions steps, `with`/**Settings** values are automatically exported as output variables, and you can fetch those values in later steps or stages in the same pipeline.
+Output variables are exposed values that can be used by other steps or stages in the pipeline. For GitHub Actions steps, **Settings** (`with`) values are automatically exported as output variables, and you can fetch those values in later steps or stages in the same pipeline.
 
 To reference an output variable in another step in the same stage, use either of the following expressions:
 
@@ -400,3 +354,51 @@ In the following YAML example, the `setup_go` step uses a `go-version` setting, 
 ```
 
 </details>
+
+## Transfer GitHub Actions into Harness CI
+
+If you already configured GitHub Actions elsewhere, you can copy the `uses`, `with` and `env` lines from your GitHub Action YAML into the `Action` step's `spec` in your Harness CI pipeline YAML.
+
+If you're using the Visual editor, you can transfer the data into the **Uses**, **Settings**, and **Environment Variables** fields.
+
+The following table compares GitHub Action YAML with Harness CI Action step YAML. Notice the consistency of `uses`, `with`, and `env`.
+
+<table>
+<tr>
+<td> GitHub Action YAML </td> <td> Harness CI Action step YAML </td>
+</tr>
+<tr>
+<td>
+
+```yaml
+- name: hello-world
+  uses: actions/hello-world-javascript-action@main
+  with:
+    who-to-greet: 'Mona the Octocat'
+  env:
+    hello: world
+```
+
+</td>
+<td>
+
+```yaml
+- step:
+    type: Action
+    name: hello world
+    identifier: hello_world
+    spec:
+      uses: actions/hello-world-javascript-action@main
+      with:
+        who-to-greet: 'Mona the Octocat'
+      env:
+        hello: world
+```
+
+</td>
+</tr>
+</table>
+
+## Troubleshooting: Can't connect to Docker daemon
+
+<DindTrbs />
