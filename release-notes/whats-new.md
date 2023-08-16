@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-08-10T10:00
+date: 2023-08-17T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -18,6 +18,18 @@ Review the notes below to learn about the new features that are Generally Availa
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
+
+## Latest - August 17, 2023
+
+### Harness Platform, version 803xx
+
+- To support MongoDB 5.0, the Debezium library has been upgraded to version 1.9. (PL-40491)
+
+- If you use the App Role authentication method in the Hashicorp Vault connector, you can choose to cache the vault token. The token is cached on the Harness Delegate for a time duration equal to the TTL of the vault token, with 1% leeway. 
+
+  By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
+
+  This item requires Harness Delegate version 803xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 ## Latest - August 10, 2023
 
