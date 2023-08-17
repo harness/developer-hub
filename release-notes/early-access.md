@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-08-17T10:00
+date: 2023-08-21T10:00
 sidebar_position: 2
 ---
 
@@ -12,9 +12,12 @@ Review the notes below to learn about the early access (aka beta) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 17, 2023
+## Latest - August 21, 2023
 
-<!-- I don't know which heading to use because this was under CI, but it's a delegate-dependent change, and the feature flag is 'CDS'. Also, it's a cross-platform connector, and both CI and CD have Git Clone steps. -->
+### Continuous Integration, version 54xx
+
+<!-- I don't know which heading to use because this was under CI, but it's a delegate-dependent change, the feature flag is 'CDS', and it's a cross-platform connector (both CI and CD have Git Clone steps). -->
+
 **GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
 
 This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION` and it requires Harness Delegate version 803xx or later. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate).
