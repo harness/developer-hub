@@ -15,7 +15,7 @@ AutoStopping Rules make sure that your non-production resources run only when us
 
 * [Create an Azure Connector for AutoStopping Rules](../1-add-connectors/add-azure-connector.md)
 * [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md)
-* [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md)
+* [AutoStopping Rules Overview](../1-auto-stopping-rules.md)
 
 ## Prerequisites
 
