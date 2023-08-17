@@ -14,7 +14,7 @@ In some cases, a scanner might require additional files such as SSL certificates
 
 - Harness STO does not support certificate bundles. Each certificate should be specified in its own file. If you have a bundle that you want to use with an external scanner, Harness recommends that you split the bundle into individual files.
 
-- To troubleshoot SSL issues, go to [Troubleshooting teips](#troubleshooting-tips) below. 
+- To troubleshoot SSL issues, go to [Troubleshooting tips](#troubleshooting-tips) below. 
 
 :::
 
@@ -301,7 +301,7 @@ pipeline:
 
   You'll need to disable verification in both the Harness pipeline and the external scanner. Note that not all scan tools support this option. 
 
-  -  For information about disabling SSL in the scanner, go to the external scanner documentation. If the includes a CLI option for this, you can use `tool_args` in your step to run a scan with this option turned off. For example, you can run a [Black Duck Hub](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference#settings) scan with this setting: `tool_args : --blackduck.trust.cert=TRUE`
+  -  For information about disabling SSL verification in the scanner, go to the external scanner documentation. If the includes a CLI option for this, you can use `tool_args` in your step to run a scan with this option turned off. For example, you can run a [Black Duck Hub](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference#settings) scan with this setting: `tool_args : --blackduck.trust.cert=TRUE`
  
   - If you're using a scanner-specific step with a scanner template, such as Aqua Trivy or Mend, uncheck **Enforce SSL** in the configuration palette. 
 
