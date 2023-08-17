@@ -16,26 +16,6 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-## Latest: Version 803xx
-
-#### New features and enhancements
-
-- If you use the App Role authentication method in the Hashicorp Vault connector, you can choose to cache the vault token. The token is cached on the Harness Delegate for a time duration equal to the TTL of the vault token, with 1% leeway. 
-
-  By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
-
-  This item requires Harness Delegate version 803xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
-
-#### Early access features
-
-This release does not include early access features.
-
-#### Fixed issues
-
-- Acquire calls associated with Delegate tasks timed out and led to pipeline failures. (PL-40646, ZD-49003)
-
-  This issue has been resolved.
-
 ## August 8, 2023, version 80209
 
 - Update operations on GCP Secrets Manager were failing in FirstGen SMP environments. (PL-40151)
