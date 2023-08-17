@@ -33,7 +33,7 @@ This release does not include any early access features.
 
 - Users were unable to update the change source configuration within their monitored service.(SRM-15083)
   
-  This issue has been resolved. Users can now update the change source configurations in their monitored service.
+  This issue has been resolved. You can now easily update the change source configuration within your monitored service.
 
 
 ### Hotfixes
