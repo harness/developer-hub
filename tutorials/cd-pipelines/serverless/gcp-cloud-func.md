@@ -125,7 +125,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     - Select **Save**.
 2. Under **Project Setup**, select **Secrets**.
     - Select **New Secret**, and then select **File**.
-    - Enter the secret name `gcp`.
+    - Enter the secret name `gcpsecret`.
     - For the secret value, upload the Google Cloud's account service key file for your service account, which you can download from your [GCP project](https://developers.google.com/workspace/guides/create-credentials#create_credentials_for_a_service_account).
     - Select **Save**.
 
@@ -168,8 +168,8 @@ Environments define the deployment location, categorized as **Production** or **
     - In your new environment, select the **Infrastructure Definitions** tab.
     - Select **Infrastructure Definition**, and then select **YAML**.
     - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/infrastructure-definition.yml) and paste it into the YAML editor.
-    - Replace `GCP PROJECT NAME` with your GCP project name.
-    - Replace `GCP REGION` with your GCP region name.
+    - Replace `CLOUD PROJECT NAME` with your GCP project name.
+    - Replace `REGION` with your GCP region name.
     - Select **Save** and verify that the environment and infrastructure definition are created successfully.
 
 ### Services
@@ -187,8 +187,8 @@ In Harness, services represent what you deploy to environments. You use services
     - Enter the name `hello_http`.
     - Select **Save**, and then **YAML** (on the **Configuration** tab).
     - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/service.yml), and paste the into the YAML editor.
-    - Replace `GCP PROJECT` with your GCP project name.
-    - Replace `GCP BUCKET` with your GCP bucket name.
+    - Replace `CLOUD PROJECT NAME` with your GCP project name.
+    - Replace `CLOUD BUCKET NAME` with your GCP bucket name.
     - Select **Save**, and verify that the service **hello_http** is successfully created.
 
 ### Pipeline
@@ -364,7 +364,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     - Select **Save**.
 2. Under **Project Setup**, select **Secrets**.
     - Select **New Secret**, and then select **File**.
-    - Enter the secret name `gcp`.
+    - Enter the secret name `gcpsecret`.
     - For the secret value, upload the Google Cloud's account service key file for your service account, which you can download from your [GCP project](https://developers.google.com/workspace/guides/create-credentials#create_credentials_for_a_service_account).
     - Select **Save**.
 
@@ -408,8 +408,8 @@ Environments define the deployment location, categorized as **Production** or **
     - In your new environment, select the **Infrastructure Definitions** tab.
     - Select **Infrastructure Definition**, and then select **YAML**.
     - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/infrastructure-definition.yml) and paste it into the YAML editor.
-    - Replace `GCP PROJECT NAME` with your GCP project name.
-    - Replace `GCP REGION` with your GCP region name.   
+    - Replace `CLOUD PROJECT NAME` with your GCP project name.
+    - Replace `REGION` with your GCP region name.   
     - Select **Save** and verify that the environment and infrastructure definition are created successfully.
 
 ### Services
@@ -427,8 +427,8 @@ In Harness, services represent what you deploy to environments. You use services
     - Enter the name `hello_world`.
     - Select **Save**, and then **YAML** (on the **Configuration** tab).
     - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1st_gen/service.yml), and paste the into the YAML editor.
-    - Replace `GCP PROJECT` with your GCP project name.
-    - Replace `GCP BUCKET` with your GCP bucket name.
+    - Replace `CLOUD PROJECT NAME` with your GCP project name.
+    - Replace `CLOUD BUCKET NAME` with your GCP bucket name.
     - Select **Save**, and verify that the service **hello_world** is successfully created.
 
 ### Pipeline
