@@ -224,11 +224,14 @@ Harness CD includes an extensive set of dashboard components that provide visibi
 * Which Jira Create and Update steps failed and when?  
 * Which Jira tickets have been rejected in a Jira Approval step? 
 * Which deployments resulted in new or updated Jira tickets?
+* How many approvals and rejections occurred in the specified time window? 
 
 
-:::note
+:::note Important notes
 
-Currently, this feature is behind the Feature Flag `CDS_STEP_EXECUTION_DATA_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+- Currently, this feature is behind the Feature Flag `CDS_STEP_EXECUTION_DATA_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+- Dashboard components for ServiceNow approvals are not currently available. 
 
 :::
 
@@ -271,14 +274,14 @@ You can use the following components to monitor the performance of your deployme
 
 -  JIRA Create/Update
 
-  - Step type
+   - Step type
 
-  - Duration
+   - Duration
 
-  - Status
+   - Status
 
-  - Error messages
+   - Error messages
 
-  - Jira Ticket URL
+   - Jira Ticket URL
 
-  - Ticket Status
+   - Ticket Status
