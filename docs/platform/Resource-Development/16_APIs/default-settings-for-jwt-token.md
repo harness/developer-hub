@@ -105,7 +105,7 @@ For example, the following `curl` command fetches a list of all users in your Ha
      --header 'Connection: keep-alive' \
      --header 'Accept: application/scim+json' \
      --header 'Authorization: Bearer JWT_TOKEN' \
-     --header 'Cookie: _cfuvid=COCyWepiLvyIhJDcwPeDdyn0O4d0izT_9RmsSBdZeto-1671543314445-0-604811088'
+     --header 'Cookie: _cfuvid=CO...88'
 ```
 
 To complete authentication, Harness validates the following:
