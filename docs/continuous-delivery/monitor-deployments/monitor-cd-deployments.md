@@ -220,9 +220,9 @@ See [Create Dashboards](../../platform/18_Dashboards/create-dashboards.md).
 
 Harness CD includes an extensive set of dashboard components that provide visibility into your Harness and Jira approvals. You can create custom dashbards that quickly answer questions such as:
 
-* Which Harness and Jira Approval steps are currently waiting for approvals?
-* Which Jira Create and Update steps failed and when?  
-* Which Jira tickets have been rejected in a Jira Approval step? 
+* Which Harness and Jira Approval steps are currently waiting for approval?
+* Which Jira Create and Update steps failed, and when?  
+* Which Jira tickets have been rejected in the Jira Approval step? 
 * Which deployments resulted in new or updated Jira tickets?
 * How many approvals and rejections occurred in the specified time window? 
 
