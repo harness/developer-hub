@@ -248,6 +248,14 @@ We do not have any backup ability for services out of the box but you can take t
 
 We do not have a way to create a new pipeline using Graphql in FirstGen. However, we do support API to create Harness pipelines in NextGen.
 
+### Do we support rollback of deployment post production ? 
+
+Yes, certainly we have that capability, to know more about this please see, [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/rollback-deployments/)
+
+### How can I override the lite-engine image for the Container Run step,to pull images from ECR instead of docker hub? 
+
+Yes, certainly that can be acheived by using Docker Connector with your registry URL and anonymous access would help you to acheive that.
+
 #### How can only set of user able to approve the deployment?
 
 You can create a user group of specific users and specify the same user group in the Approval stage so only those users can able to approve the execution.
@@ -308,7 +316,122 @@ To use the matrix labels naming strategy, do the following:
 
 As placmenetStrategy can be defined in task definition as well as in service definition. Harness picks placmenetStrategy from service definition, so please make sure its added under service definition.
 
+#### How do you determine the number of service instances/licenses for our services?
+
+We calculate service licenses based on the active service instances deployed in the last 30 days. This includes services from both successful and failed deployments. This includes if the Step involving a Service was skipped during a Pipeline execution.
+
+#### What is considered an active service instance for license calculation?
+
+An active service instance is determined by finding the 95th percentile of the number of service instances of a particular service over a period of 30 days.
+
+#### How are licenses consumed based on the number of service instances?
+
+Each service license is equivalent to 20 active service instances. The number of consumed licenses is calculated based on this ratio.
+
+#### Is there a minimum number of service instances that still consume licenses?
+
+Yes, even if a service has 0 active instances, it still consumes 1 service license.
+
+#### Are the licenses calculated differently for different types of services, such as CG and NG?
+
+No, the calculation method remains the same for both CG (Continuous Delivery) and NG (Next-Generation) services.
+
+#### Can you provide an example of how service licenses are calculated based on service instances?
+
+Sure! An example of the calculation can be found in the documentation [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#example). This example illustrates how the number of service instances corresponds to the consumed service licenses.
+
+#### Is on-demand token generation valid for both Vault's Kubernetes auth type and app role-based auth?
+
+No, on-demand token generation is only valid for app role-based auth.
+
+#### How can I upload a file to a specific folder in the Harness file store from a pipeline stage using PowerShell script?
+
+You can achieve this by invoking the Harness API using PowerShell. The API endpoint you need to use is: https://apidocs.harness.io/tag/File-Store#operation/create
+
+#### Is there a configuration option to preserve more than two older release secrets and config maps in Kubernetes deployments?
+
+No, currently, there is no configurable option to increase the number of older release secrets and config maps that can be preserved. The number of stored releases is fixed.
+
+#### How is the release history stored for Kubernetes deployments?
+
+If declarative rollback is used, the release history is stored in secrets. Otherwise, it is stored in a single config map or secret.
+
+#### What happens when the limit of stored releases is reached?
+
+When the limit of stored releases is reached, older releases are automatically cleaned up. This is done to remove irrelevant data for rollback purposes and to manage storage efficiently.
+
+#### Can we obtain the raw `plan.out` file instead of the JSON output in the Terraform step?
+
+Yes, you can access the raw `plan.out` file by using the `humanReadableFilePath` variable.
+
+#### Can I override some values in the Helm chart during the deployment of a service in Kubernetes?
+
+Yes, you can override values in the Helm chart during the service deployment in Kubernetes.
+
+#### How can I use values files to override Helm chart values during deployment?
+
+You can define your input values in separate files, known as values files. These files can be stored and optionally tracked in Git. Harness allows you to specify these values files in your service definition, which will be used during the deployment.
+
+#### What is the advantage of using values files over '--set' option for Helm chart overrides?
+
+Using values files provides a more organized and maintainable way to manage overrides in Helm charts. It is considered a best practice, and it allows you to easily track and version your input values for deployments.
+
+#### How can Harness detect if the sub tickets in Jira are closed before the approval process runs?
+
+The first step is to make API calls to the Jira issue endpoint. By inspecting the response from the API call, you can check if the 'subtask' field is populated for the main issue.  Once you identify the subtask issue keys from the API response, you can create a loop to retrieve the status of each sub ticket using their respective issue keys. This will allow you to determine if the sub tickets are closed or not before proceeding with the approval process in Harness.
+
+#### Can we use matrices to deploy multiple services to multiple environments when many values in services and environments are not hardcoded?
+
+Yes, you can use matrices for deploying multiple services to multiple environments even if many values in services and environments are not hardcoded.
+
+#### What are some examples of values that are not hardcoded in the deployment setup?
+
+Some examples of values that are not hardcoded include chart versions, values YAMLs, infradef, and namespaces. These are currently treated as runtime inputs.
 
 #### When querying the Harness Approval API, the Approval Details are returning with message No Approval found for execution
 
 The api will only return Approval details if there are any approval step pending for approval, If there are no such executions currently than its expected to return No Approval found for execution
+
+#### Trigger another stage with inputs in a given pipeline?
+You cannot do it if the stage is part of the same pipeline. However, using Pipeline A and running a custom trigger script inside it can trigger the CI stage which is part of Pipeline B.
+
+#### How can we use conditionals within variables using jexl?
+You can use Ternary operators to achieve this use case more information on this here: https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#ternary-operators
+
+#### How do we easily change git folders in a repo for the git exp project?
+The default branch and file path will not be changeable after the creation as we store data in Git end and only metadata is stored in Harness. 
+You can change it to the required path while creating the initial entity you can select the folder other than.harness Now you can recreate the entity using the same yaml and make minor changes like file path and entity id.
+
+### How long is the main repo content cached before the latest pipeline code version is pulled from the remote Github repo?
+The content is cached for each branch the file has been fetched for to date. The expiry time for content is 30 days. 
+
+We don’t auto-reload cache on Back End as a synchronous job or similar. Any execution of that particular pipeline or involving that particular template/input set updates the cached content as we fetch everything from GIT during execution.
+
+Until any user-driven operation is performed, e.g. reload-from-git button on UI, execution of the pipeline / any entity via RUN button / UI or execution of entity via trigger etc.
+
+### Is there a way to force the pipeline editor to read the latest version from the remote Github repo?
+Yes, the “reload-from-git” option on three dots does the job.
+
+### Not able to delete the template having an “Ad” string in between with adblocker installed?
+It will happen due to an ad blocker extension installed on the user system - and it will happen only for the template with the name of the template Eg:(Sysdig AdHoc) containing an “Ad” string in between, and when this is sent in the API as a path or a query param - this will get blocked by the ad blocker.
+ 
+These ad blockers have some rules for the URIs - if it contains strings like “advert”, “ad”, “double-click”, “click”, or something similar - they block it.
+
+### Pipeline variables are not being translated in HTTP step assertion and output variables.
+Expression to assert Numeric values, Please note that asserting on integers should be done without quotes since both sides of the assertions should be of number format (for JEXL).
+
+* <+httpResponseCode>==200
+* 200==<+httpResponseCode>
+* <+pipeline.variables.EXPECTED_RESPONSE>==<+httpResponseCode>
+
+
+Expression to assert on Strings would require double quotes. Please note that it would require Double Quotes on both ends.
+
+### Can I customize the looping conditions and behaviour?
+Yes, Harness NextGen often offers customization options to define the loop exit conditions, maximum iteration counts, sleep intervals between iterations, and more information here https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/
+
+### What are the use cases for utilizing a Looping Strategy in Harness NextGen?
+Looping strategies are useful for scenarios like canary deployments, gradual rollouts, and validation checks where you want to keep iterating until you achieve the desired result.
+
+### Can I deploy different versions of serverless functions using Harness?
+Yes, Harness generally allows users to deploy multiple versions of serverless functions, helping in testing and gradual rollout.

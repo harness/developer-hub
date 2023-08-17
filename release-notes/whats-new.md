@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-08-07T10:00
+date: 2023-08-10T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,52 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 7, 2023
+## Latest - August 10, 2023
+
+### Continuous Delivery, version 80208
+
+* Harness has introduced restrictions on the depth of nesting in execution pipelines to enhance system stability. Now, a node execution will not be allowed if it exceeds 25 levels of nesting. The 25th level refers to the node being the 25th child starting from the root node `pipeline`. (CDS-75249)
+
+   This limitation is configurable, allowing Harness to increase the nesting limit if required to accommodate more complex pipelines.
+
+   To determine the optimal limit, we considered scenarios with 5 nested stepGroups with a looping matrix and step group running in parallel at each possible node. As a result, we have set the limit to 25, ensuring that it should not affect any practical pipelines we have encountered so far. (Currently the most complex pipeline in our production clusters has a maximum nesting of 16 levels.)
+
+   This change is vital to prevent potential issues that could arise due to a large number of recursively spawned children, leading to CPU spikes and POD restarts within our system. By implementing this restriction, we aim to maintain system performance and stability for all our customers.
+
+### Continuous Integration, version 5301
+
+Improved the consistency of [built-in codebase expression](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) values across build types. You can now expect similar values for these expressions regardless of build type. For example, `<+codebase.commitRef>` now provides a consistent reference for the build, such as `refs/heads/BRANCH_NAME` for a branch build or `refs/tags/TAG_NAME` for a tag build. (CI-7689)
+
+### Harness Platform, version 80208
+
+- Accounts with Free and Community licenses are limited to 100 users. (PL-40260)
+
+- The heartbeat interval used by perpetual tasks to test connectors has been increased from 10 minutes to 30 minutes. This change aims to reduce the number of errors logged due to failed heartbeats. The new heartbeat interval is used with any connectors that you create after this deployment. Tasks associated with existing connectors require migration to the new interval. Harness will migrate such perpetual tasks in all accounts in a phased manner. This activity does not require any action from you or other users of the platform. (PL-39399)
+
+## August 9, 2023
+
+### Internal Developer Portal, version 0.8.0
+
+- IDP now includes the [GitHub Catalog Discovery](/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery) plugin. You can use this to automatically discover `catalog-info.yaml` files from your GitHub organizations and repositories. [IDP-887]
+
+- The following UI pickers are now available for use in software templates:
+  - `HarnessOrgPicker`
+  - `HarnessProjectPicker` 
+  
+  You can use these UI pickers in service onboarding workflows for developers to easily select a Harness project and organization. Take a look at this [example](https://github.com/bhavya-sinha/scaffolder-sample-templates/blob/5f52718ec49cb2c27a87e2fbeae075873701911c/fieldExtension.yaml#L78-L85). [IDP-868]
+
+### Security Testing Orchestration, version 1.64.1
+
+* Aqua Trivy scans now capture and report on secrets in plain text, in addition to vulnerabilities. (STO-6345)
+
+* The Account Settings > Subscriptions > Security Testing Orchestration UI has been updated to display scan limits more clearly. The UI now shows scan limits based on the number of subscribed security developers. (STO-6096)
+
+* You can now click the severity tiles in the **Security Tests** tab to filter the issues list by severity. (STO-5784)
+  ![Click on a tile to filter issues by severity](./static/sto-tile-filters-sto-5784.png)
+
+* The issue lists in the the **Security Tests** tab are now paginated. You can configure each list to show 20, 50, or 100 issues per page. This makes the overall page much easier to navigate if the scan results include a lot of issues. (STO-5949, STO-6099)
+
+## August 7, 2023
 
 ### Harness Chaos Engineering, version 1.16.5
 
@@ -182,6 +227,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * When specifying percentages for a rollout, the UI now provides feedback while you edit to let you know the percentage that requires assignment. (FFM-8085)
 
+##### Internal Developer Portal, version 0.7.0
+
+- IDP now includes the Confluence search plugin to include results from Confluence spaces. To learn more, go to the [plugin documentation](/docs/internal-developer-portal/plugins/available-plugins/confluence). (IDP-845)
+
+- The `harness:create-secret` and `harness:delete-secret` template actions are now available for use in IDP software templates. You can use these actions to receive a secret from a developer, create a Harness secret, and then use it as a pipeline variable to provide runtime input. For more information, go to the [tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input) (IDP-780)
+
+- The interval at which IDP polls Git repositories associated with the software catalog has increased from 5 minutes to 15 minutes. (IDP-749)
+
 #### July 18, 2023
 
 ##### Harness Platform, version 79916
@@ -267,6 +320,20 @@ By default, the first two options are enabled, and you can modify the toggles to
 &nbsp <docimage path={require('./static/ccm-toggle-options-recommendations-filter.png')} width="40%" height="40%" title="Click to view full size image" />
    
   <docimage path={require('./static/ccm-tooltip-recommendations.png')} width="60%" height="60%" title="Click to view full size image" />
+
+#### July 12, 2023
+
+##### Internal Developer Portal, version 0.6.0
+
+- You can now access IDP catalog APIs by using the Harness X-API-Key. For more information, go to [API access](/docs/internal-developer-portal/features/software-catalog#api-access). (IDP-768)
+
+- A newer version of the Harness CI/CD plugin has been added with new annotations support. It's now possible to filter pipelines across projects and orgs. For more information, go to the [plugin's readme](https://github.com/harness/backstage-plugins/tree/main/plugins/harness-ci-cd). (IDP-758)
+
+- The Harness Feature Flags [plugin](https://github.com/harness/backstage-plugins/tree/main/plugins/harness-feature-flags) is now available in IDP. (IDP-778)
+
+- The `trigger:harness-custom-pipeline` action on the software template `template.yaml` is now synchronous with pipeline execution. The action keeps running during pipeline execution, and it shows the current status of the pipeline.
+
+- Since the `trigger:harness-custom-pipeline` is now synchronous, you can use the `catalog:register` action in a template and register the newly generated software component's `catalog-info.yaml`.
 
 #### July 07, 2023
 
@@ -361,6 +428,21 @@ For information on how to set up this workflow, go to [Configure STO to Download
 - Upgraded the delegate JRE to 11.0.19_7. (PL-37994)
 
 - When a delegate token is revoked, Harness now sends `SELF_DESTRUCT` to all delegates that are using the revoked token. (PL-38957)
+
+#### June 27, 2023, 
+
+##### Internal Developer Portal, version 0.5.0
+
+- The Backstage version has been upgraded to [1.14](https://backstage.io/docs/releases/v1.14.0). (IDP-632)
+
+- The following GitHub-based plugins are now available in IDP:
+  - [GitHub Actions](https://github.com/backstage/backstage/tree/master/plugins/github-actions)
+  - [GitHub Insights](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-github-insights)
+  - [GitHub Pull Requests](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-github-pull-requests).
+
+- IDP now includes support for GitHub and Google OAuth applications. You can configure a GitHub or Google OAuth application in the IDP Admin view. These applications are used by the GitHub-based plugins to use the logged-in user's credentials when making API requests. (IDP-676, IDP-661, IDP-647)
+
+- IDP now supports a URL allowlist. If the `catalog-info.yaml` references API definitions that are hosted on a provider other than your Git provider, add the URL to the allowlist. (IDP-648)
 
 #### June 21, 2023
 

@@ -8,13 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Resource groups are an [RBAC component](./rbac-in-harness#rbac-components) that define the objects that a user or service account can access. Objects are any Harness resource, including projects, pipelines, connectors, secrets, delegates, environments, users, and more. When you assign a resource groups to a user, user group, or service account, the access defined in the resource group is granted to the target user, group, or service account.
+Resource groups are an [RBAC component](./rbac-in-harness.md#rbac-components) that define the objects that a user or service account can access. Objects are any Harness resource, including projects, pipelines, connectors, secrets, delegates, environments, users, and more. When you assign a resource groups to a user, user group, or service account, the access defined in the resource group is granted to the target user, group, or service account.
 
 Harness includes some [built-in resource groups](#built-in-resource-groups), and you can [create custom resource groups](#create-a-resource-group), which are useful for limited and fine-grained access control.
 
 ## Roles and resource groups work together
 
-[Roles](./add-manage-roles) are applied together with resource groups to create a complete set of permissions and access. For example:
+[Roles](./add-manage-roles.md) are applied together with resource groups to create a complete set of permissions and access. For example:
 
 * You can assign the **Organization Admin** role with a resource group that is limited to specific projects or specific organizations.
 * You can assign the **Pipeline Executor** role with a resource group that only allows access to specific pipelines, rather than all pipelines in the project.
@@ -34,7 +34,7 @@ While Harness includes some built-in roles and resource groups, to ensure the le
 
 ## Scopes and refinement
 
-Resource groups are scope-specific, and you can create them at any [scope](./rbac-in-harness#permissions-hierarchy-scopes). For example, a resource group created at the project scope is only available in that project.
+Resource groups are scope-specific, and you can create them at any [scope](./rbac-in-harness.md#permissions-hierarchy-scopes). For example, a resource group created at the project scope is only available in that project.
 
 In addition to the scope at which you create the resource group, each resource group includes **Resource Scope** options that control the scope of access *within the resource group's overall scope*. For example, if you create a resource group at the org level, you can allow access to all projects under that organization, or you can select specific projects.
 
@@ -100,7 +100,7 @@ For extremely fine-grained access control, you can select individual resources w
 
 For example, to allow access to specific pipelines only, create the resource group at the project level, select the **Pipelines** resource type, and select then specific pipelines in the project.
 
-You can also use [Attribute Based Access Control (ABAC)](./attribute-based-access-control) for connectors and environments.
+You can also use [Attribute Based Access Control (ABAC)](./attribute-based-access-control.md) for connectors and environments.
 
 This level of control is not available at all scopes for all resource types. For example, you can't select specific pipelines for resource groups created at the account or org scopes.
 
@@ -226,7 +226,7 @@ flowchart TD
 
 ## Manage resource groups in Harness
 
-To manage resource groups in Harness, you need a role, such as **Account Admin**, that has [permission](./permissions-reference) to view, create/edit, and delete resource groups.
+To manage resource groups in Harness, you need a role, such as **Account Admin**, that has [permission](./permissions-reference.md) to view, create/edit, and delete resource groups.
 
 Make sure you understand how [scopes and refinement](#scopes-and-refinement) work in resource groups.
 
@@ -264,7 +264,7 @@ Make sure you understand how [scopes and refinement](#scopes-and-refinement) wor
    Depending on the scope where you created the resource group, you can further refine your selection by:
 
    * **All:** Include all resources in the given category that are within the **Resource Scope**.
-   * **By Type:** Include specific types of resources in the given category that are within the **Resource Scope**. Use this option to [configure ABAC](./attribute-based-access-control) for connectors and environments.
+   * **By Type:** Include specific types of resources in the given category that are within the **Resource Scope**. Use this option to [configure ABAC](./attribute-based-access-control.md) for connectors and environments.
    * **Specified:** Select specific, named resources in this category that are within the **Resource Scope**, such as specific pipelines.
 
    These configuration is in addition to the **Resource Scope**. For example, if the **Resource Scope** is **Project Only**, and you select **Specified** pipelines, you can only choose from pipelines *in the specified project scope*. For more information, go to [Scopes and refinement](#scopes-and-refinement).
@@ -299,8 +299,8 @@ Make sure you understand how [scopes and refinement](#scopes-and-refinement) wor
 
 ## Continue RBAC configuration
 
-Creating resource groups is one part of [configuring RBAC in Harness](./rbac-in-harness#configure-rbac-in-harness).
+Creating resource groups is one part of [configuring RBAC in Harness](./rbac-in-harness.md#configure-rbac-in-harness).
 
-[Roles](./add-manage-roles), which grant permissions, work alongside resource groups, which grant access.
+[Roles](./add-manage-roles.md), which grant permissions, work alongside resource groups, which grant access.
 
-After configuring roles and resource group, you assign them to [users](./add-users), [user groups](./add-user-groups), and [service accounts](./add-and-manage-service-account).
+After configuring roles and resource group, you assign them to [users](./add-users.md), [user groups](./add-user-groups.md), and [service accounts](./add-and-manage-service-account.md).

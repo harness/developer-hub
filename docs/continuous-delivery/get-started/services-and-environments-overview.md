@@ -1,7 +1,7 @@
 ---
 title: Services and environments basics
 description: Learn the basics of CD services and environments.
-sidebar_position: 4
+sidebar_position: 6
 helpdocs_topic_id: 9ryi1ay01f
 helpdocs_category_id: dxej4ug0n5
 helpdocs_is_private: false

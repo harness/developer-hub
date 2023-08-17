@@ -11,6 +11,7 @@ helpdocs_is_published: true
 ```mdx-code-block
 import Kubevict from '/docs/continuous-integration/shared/k8s-pod-eviction-trbs.md';
 import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
+import DindTrbs from '/docs/continuous-integration/shared/dind-bg-gha-trbs.md';
 ```
 
 This topic contains troubleshooting information for error messages and other issues that can arise with Harness CI. For more Harness troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
@@ -128,3 +129,7 @@ To change the connector's connectivity settings:
 4. Select **Continue** until you reach **Select Connectivity Mode**.
 5. Select **Change** and select **Connect through Harness Platform**.
 6. Select **Save and Continue** and select **Finish**.
+
+## Can't connect to Docker daemon
+
+<DindTrbs />

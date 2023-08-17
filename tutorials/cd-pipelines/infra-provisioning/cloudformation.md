@@ -1,10 +1,10 @@
 ---
 sidebar_position: 0
 hide_table_of_contents: true
-title: CloudFormation 
+title: AWS CloudFormation 
 ---
 
-This tutorial focuses on the usage of [AWS CloudFormation](https://aws.amazon.com/cloudformation/) as an IAAC tool to provision Harness infrastructure within a Harness pipeline. 
+This tutorial focuses on the usage of [AWS CloudFormation](https://aws.amazon.com/cloudformation/) as an Infrastructure-as-a-code tool to provision Harness infrastructure within a Harness pipeline. 
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';

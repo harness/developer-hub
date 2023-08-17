@@ -8,10 +8,10 @@ You can use JSON Web Tokens (JWT) for authentication with Harness SCIM APIs. To 
 
 ## Requirements
 
-- You need **View** and **Edit** [permissions](../../role-based-access-control/permissions-reference.md) for **Default Settings** at the account [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
+- You need **View** and **Edit** [permissions](../../role-based-access-control/permissions-reference.md) for **Default Settings** at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
 - You must be able to create service accounts.
 - You need an [API key and an unexpired token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
-- You need your [Harness account ID](./api-quickstart#get-your-account-id).
+- You need your [Harness account ID](./api-quickstart.md#get-your-account-id).
 
 ## Prepare the service account
 
@@ -20,7 +20,7 @@ A Harness service account is necessary to authorize access to the API. The servi
 * Users: **View**, **Manage**, and **Invite**.
 * User groups: **View** and **Manage**.
 
-You can create a new service account or use an existing one. For more information, go to [Manage service accounts](../../role-based-access-control/add-and-manage-service-account).
+You can create a new service account or use an existing one. For more information, go to [Manage service accounts](../../role-based-access-control/add-and-manage-service-account.md).
 
 To create a service account:
 
@@ -41,8 +41,8 @@ To create a service account:
 The following `curl` command to send a request to the [Setting API](https://apidocs.harness.io/tag/Setting) to update the settings required to enable JWT authentication. To use this command:
 
 * Replace `SERVICE_ACCOUNT_ID` with the ID for your [Harness service account](#prepare-the-service-account).
-* Replace `ACCOUNT_ID` with your [Harness account ID](./api-quickstart#get-your-account-id).
-* Replace `API_KEY_TOKEN` with your [personal access token](./add-and-manage-api-keys#create-personal-api-keys-and-tokens).
+* Replace `ACCOUNT_ID` with your [Harness account ID](./api-quickstart.md#get-your-account-id).
+* Replace `API_KEY_TOKEN` with your [personal access token](./add-and-manage-api-keys.md#create-personal-api-keys-and-tokens).
 * Replace `KEY_FIELD_VALUE` with the identifier for a field corresponding to the JWT claims map.
 * Replace `VALUE_FIELD_VALUE` with the value corresponding with the key field.
 * Replace `JWT_KEYS_URL_VALUE` with the endpoint for the JWT keys JSON data.

@@ -1,12 +1,14 @@
 ---
-title: Adding Custom Artifacts to STO Pipelines
+title: Adding Custom Certificates and Artifacts to STO Pipelines
 description: This topic describes how to include SSL certificates and other types of artifacts in your STO pipelines. 
 sidebar_position: 70
 ---
 
 In some cases, a scanner might require additional files such as SSL certificates and license files. The workflow to include these files depends on your build infrastructure.
 
-:::note
+:::note important notes
+
+You must have **root acceess** to perform the [Kubernetes workflows](#kubernetes-workflows) documented below.
 
 Make sure that your certificates meet all requirements of the external scan tool. Your certificates must be valid, unexpired, and have a complete trust chain. 
 

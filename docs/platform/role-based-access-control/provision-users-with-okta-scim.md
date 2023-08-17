@@ -24,7 +24,7 @@ You need an understanding of:
 
 You must be an Administrator in your Okta account, and you must be an **Account Admin** in Harness.
 
-You need a Harness [API key and unexpired token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) that has all **Users** and **User Groups** [permissions](/docs/platform/Resource-Development/APIs/api-permissions-reference). API keys inherit permissions from the user they are associated with. If you use an API key for a [service account](./add-and-manage-service-account), make sure the service account has all **Users** and **User Groups** permissions.
+You need a Harness [API key and unexpired token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) that has all **Users** and **User Groups** [permissions](/docs/platform/Resource-Development/APIs/api-permissions-reference). API keys inherit permissions from the user they are associated with. If you use an API key for a [service account](./add-and-manage-service-account.md), make sure the service account has all **Users** and **User Groups** permissions.
 
 ## Create an Okta app integration
 
@@ -201,7 +201,7 @@ If an error prevents adding, deleting, or updating a group member in Harness, yo
 
 ### Assign permissions
 
-After user groups are provisioned through SCIM, you can manage [permissions](./permissions-reference) granted to the users in those groups by assigning [roles](./add-manage-roles) and [resource groups](./add-resource-groups) to user groups in Harness.
+After user groups are provisioned through SCIM, you can manage [permissions](./permissions-reference.md) granted to the users in those groups by assigning [roles](./add-manage-roles.md) and [resource groups](./add-resource-groups.md) to user groups in Harness.
 
 Harness roles and resource groups aren't managed in Okta.
 
