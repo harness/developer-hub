@@ -56,7 +56,7 @@ The Perspectives provide deep insights into your AWS costs. The cost includes al
 
 	  <docimage path={require('./static/usage-type-groupby.png')} width="60%" height="60%" title="Click to view full size image" />
 
-	+ **Billing Entity**: Invoices or transactions for the purchase of AWS services. For more information, go to [Billing Entity](https://docs.aws.amazon.com/cur/latest/userguide/billing-columns.html).
+	+ **Billing Entity**: Helps you identify whether your invoices or transactions are for AWS Marketplace or for purchases of other AWS services. For more information, go to [Billing Entity](https://docs.aws.amazon.com/cur/latest/userguide/billing-columns.html).
 
 	  <docimage path={require('./static/aws-billing-entity-groupby.png')} width="60%" height="60%" title="Click to view full size image" />
 
