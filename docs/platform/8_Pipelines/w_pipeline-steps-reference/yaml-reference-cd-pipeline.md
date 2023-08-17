@@ -14,29 +14,30 @@ It includes common examples of the major schema entries.
 
 New to Harness YAML? See [Harness YAML Quickstart](../harness-yaml-quickstart.md).
 
-### Visual Summary
+## Viewing the YAML Schema
 
-Here's a very quick video showing you how to build a Pipeline using YAML:
+The Harness YAML schema is over 20,000 lines long, and we are investigating how it can be exposed in a way that is easy to navigate.
 
-### Viewing the YAML Schema
+In the meantime, you can use [Chrome DevTools](https://developer.chrome.com/docs/devtools/) to view the schema.
 
-The Harness YAML schema is over 20k lines long and we are investigating how to expose it in a way that makes it easy to navigate.
+1. Open Chrome DevTools and select the **Network** tab.
+2. Select the `yaml-schema` item.
+3. Select the **Preview** tab.
+4. Find the `definitions` section.
 
-In the meantime, you can use [Chrome DevTools](https://developer.chrome.com/docs/devtools/) to view the schema:
+<!-- ![](./static/yaml-reference-cd-pipeline-00.png) -->
 
-![](./static/yaml-reference-cd-pipeline-00.png)
+<docimage path={require('./static/yaml-reference-cd-pipeline-00.png')} />
 
-### Pipeline Studio YAML Editor
+## Pipeline Studio YAML Editor
 
-The Pipeline Studio includes visual and YAML editors.
+The Harness Pipeline Studio has both a Visual Editor and a YAML Editor.
 
-The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio.
-
-See [CD Quickstarts](https://developer.harness.io/tutorials/cd-pipelines) and [Get started with CI](/docs/category/get-started-with-ci).
+The best way to get started with Harness YAML is to create a pipeline in the Visual Editor and then switch to the YAML Editor. If you haven't created a pipeline yet, try a [tutorial](/docs/getting-started/quickstarts/) to get started with Harness.
 
 The YAML editor validates YAML before allowing you to save it.
 
-To learn how to use the YAML editor, see [Harness YAML Quickstart for CD](../harness-yaml-quickstart.md).
+To learn how to use the YAML editor, go to the [Harness YAML quickstart](../harness-yaml-quickstart.md).
 
 ### Autocomplete and Command Palette
 
@@ -62,32 +63,38 @@ This is a minor limitation as once you have entered in the Id you can configure 
 
 For example, here is a Connector with the name `GCP Example` and Id `GCP_Example`. You can see the Id used in the YAML as `connectorRef: GCP_Example`:
 
-
-
-|                                               |                                      |
-| --------------------------------------------- | ------------------------------------ |
-| **Connector**                                 | **YAML**                             |
+| Connector | YAML |
+| --------- | ---- |
 | ![](.static/../static/yamlrefcdpipeline1.png) | ![](./static/yamlrefcdpipeline2.png) |
 
+
+```yaml
+...
+type: Gcr
+spec:
+  connectorRef: GCP_Example
+  imagePath: library/bar
+  registryHostname: gcr.io
+  tag: <+input>
+identifier: foo
+...
 ```
-...type: Gcrspec:    connectorRef: GCP_Example    imagePath: library/bar    registryHostname: gcr.io    tag: <+input>identifier: foo...
-```
- |
 
 Once you have entered the Id in `connectorRef`, you can use autocomplete to view the remaining settings:
 
 ![](./static/yaml-reference-cd-pipeline-03.png)
-### Schema Overview
+
+## Schema Overview
 
 Harness Pipeline YAML lets you model your release process declaratively. Each Pipeline entity, component, and setting has a YAML entry.
 
-#### Entries
+### Entries
 
 Entries are standard YAML associative arrays using `key: value`.
 
 Settings are not quoted.
 
-#### Indentation
+### Indentation
 
 Whitespace indentation is 4 spaces.
 
@@ -765,9 +772,6 @@ trigger:
                                       connectorRef: Kubernetes_Quickstart  
                                       namespace: default
 ```
-See also:
-
-* 
 
 ### Input Sets and Overlays
 
@@ -803,8 +807,8 @@ inputSet:
                                   connectorRef: ""  
                                   namespace: ""
 ```
-Overlay:
 
+Overlay:
 
 ```
 overlayInputSet:  
@@ -818,10 +822,10 @@ overlayInputSet:
         - ""  
     tags: {}
 ```
+
 #### Example
 
 Input Set:
-
 
 ```
 inputSet:  
@@ -855,8 +859,8 @@ inputSet:
                                   connectorRef: Kubernetes_Quickstart  
                                   namespace: default
 ```
-Overlay:
 
+Overlay:
 
 ```
 overlayInputSet:  
@@ -870,6 +874,7 @@ overlayInputSet:
         - My_Input_Set_2  
     tags: {}
 ```
+
 See also:
 
 * [Input Sets and Overlays](../input-sets.md)
@@ -888,7 +893,6 @@ When you create a Connector, you can use YAML.
 
 Here's what the YAML for a Connector looks like:
 
-
 ```
 connector:  
     name: cd-doc  
@@ -903,8 +907,8 @@ connector:
         delegateSelectors:  
             - example
 ```
-You reference a Connector in your Pipeline by using its Id in `connectorRef`:
 
+You reference a Connector in your Pipeline by using its Id in `connectorRef`:
 
 ```
 ...  
@@ -916,4 +920,3 @@ infrastructureDefinition:
         releaseName: release-<+INFRA_KEY>  
 ...
 ```
-
