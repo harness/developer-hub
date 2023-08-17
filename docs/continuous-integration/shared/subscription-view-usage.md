@@ -35,9 +35,7 @@ An active developer is an active codebase committer observed in the builds manag
 
 It also shows your remaining Harness Cloud build credits balance.
 
-<!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary.png) -->
-
-<docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary.png')} />
+![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary.png)
 
 </details>
 
