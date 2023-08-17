@@ -81,7 +81,7 @@ Using TI doesn't require you to change your build and test processes. To enable 
 <details>
 <summary>Video summary</summary>
 
-The following video walks you through setting up Test Intelligence in a Harness CI pipeline. The TI section starts after the 11 minute mark in the video.
+The following video walks you through setting up Test Intelligence in a Harness CI pipeline. The TI section starts after the 11-minute mark in the video.
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
