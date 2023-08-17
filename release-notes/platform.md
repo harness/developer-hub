@@ -56,6 +56,23 @@ This release does not include any early access features.
 
   This issue is resolved, and custom dashboards now show service instances when the count is greater than zero. (CDS-75585, ZD-47848) 
 
+- During a long network outage that impacted the delegate, attempts made by the delegate to reconnect the websocket failed. The issue was caused by the delegate attempting to reconnect the websocket only once, after failing to send five heartbeats in succession. (PL-40547, ZD-48579)
+
+  The issue is now fixed. During long network outages, the delegate attempts to reconnect the websocket every time it fails to send a heartbeat.
+
+    This item requires Harness Delegate version 803xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+- Updates to the role assignments of a user group in one project caused role assignments to get updated in other projects in the organization. The issue was observed in the following scenario:
+    - You used a regex query to update role assignments in a project.
+    - Identifiers of other projects in the organization overlapped with that of the project in which you updated role assignments. 
+    - Identifiers of user groups in those other projects matched the identifier of the user group you updated. (PL-39780, ZD-46314)
+
+  The issue is now fixed. 
+
+### Hotfixes
+
+This release does not include hotfixes.
+
 ## Previous releases
 
 <details>
