@@ -1,12 +1,12 @@
 {
-   "label":"SLO downtime",
+   "label":"Manage SLO",
    "position": 40,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"SLO downtime"
+      "title":"Manage SLO"
    }
 
    }

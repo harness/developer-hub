@@ -37,7 +37,7 @@ If the [test reports are in JUnit XML format](./test-report-ref.md), you can rev
 
 ![](../run-ci-scripts/static/run-a-script-in-a-ci-stage-529.png)
 
-If you are using Test Intelligence for your unit tests, the **Tests** tab contains information unique to Test Intelligence. For details about this, go to [Enable Test Intelligence](./set-up-test-intelligence.md).
+If you are using Test Intelligence for your unit tests, the **Tests** tab contains information unique to Test Intelligence. For details about this, go to [Enable Test Intelligence: View test reports](./set-up-test-intelligence.md#view-test-reports).
 
 ### Test report dashboard
 
