@@ -652,9 +652,11 @@ This section describes how to set up the stage **Execution** when you are using 
 
 AWS authentication occurs in the Harness AWS connector used in the Infrastructure Definition and when using AWS ECR or S3 for the Harness service artifact.
 
-When the pipeline stage's containerized steps run, Harness passes the AWS access key (`PLUGIN_AWS_ACCESS_KEY`) and secret key (`PLUGIN_AWS_SECRET_KEY`) you configured in your AWS connector(s) as environment variables into the containers.
+For infrastructure authentication, when the pipeline stage's containerized steps run, Harness passes the AWS access key (`PLUGIN_AWS_ACCESS_KEY`) and secret key (`PLUGIN_AWS_SECRET_KEY`) you configured in your AWS connector(s) as environment variables into the containers.
 
 The container images pick up the access and secret keys based on these specific environment variables.
+
+For ECR artifacts, Harness passes in the `PLUGINS_ECR_AWS_ACCESS_KEY` and `PLUGINS_ECR_AWS_SECRET_KEY` as environment variables.
 
 For S3 artifacts, Harness passes in the `PLUGIN_S3_AWS_ACCESS_KEY` and `PLUGIN_S3_AWS_SECRET_KEY` as environment variables.
 
