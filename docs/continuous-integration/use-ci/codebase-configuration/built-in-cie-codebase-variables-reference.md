@@ -260,6 +260,12 @@ This *isn't* the same as the short SHA returned by [`<+codebase.shortCommitSha>`
 
 :::
 
+### codebase.mergeSha
+
+* Value: The commit SHA of the merge commit that occurs when a Bitbucket PR is merged.
+* Expression: `<+codebase.mergeSha>`
+* Exclusions: Only applicable to merged PRs in Bitbucket SCM.
+
 ### codebase.shortCommitSha
 
 * Value: The short SHA (seven characters) of the build's [commit SHA](#commitsha).
