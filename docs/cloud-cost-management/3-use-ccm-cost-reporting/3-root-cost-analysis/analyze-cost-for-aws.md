@@ -36,7 +36,7 @@ The Perspectives provide deep insights into your AWS costs. The cost includes al
 
 3. You can use the following options to Group By:
 
-  * **Cost Categories**: Each cost category that you have created based on your business requirements.
+  * **Cost Categories**: Each [cost category](../2-ccm-cost-categories/1-ccm-cost-categories.md) that you have created based on your business requirements.
   
   * **AWS**: Under AWS, you can group by the following entities:
   
