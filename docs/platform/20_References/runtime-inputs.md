@@ -98,7 +98,7 @@ For example, you can use the following JSON string for a runtime input.
 
 Harness does not support the following JSON string for a runtime input.
 
-`<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\", \"fallbackToOd\": true,\"scalingStrategy\": {\"terminationPolicy\": \"default\" }}')` 
+`"<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\", \"fallbackToOd\": true,\"scalingStrategy\": {\"terminationPolicy\": \"default\" }}')"` 
 
 :::
 
