@@ -68,28 +68,21 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **R
 
 ## Supported codebases
 
-Test Intelligence supports the following codebases:
+Test Intelligence is available for:
 
-* C# (.NET Core, NUnit<!-- and Framework -->)
 * Java
 * Kotlin
-* Python
 * Scala
+* C#
+   * Requires .NET Core or NUnit<!-- or Framework -->
+   * Currently, TI for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. <!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/#build-environment) in the YAML editor. -->
+* Python
+   * Requires Python 3.
+   * Doesn't support resource file relationships.
+   * Repos that use dynamic loading or metaclasses might have unpredictable results.
+   * Currently, TI for Python is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 For unsupported codebases, you can use [Run steps](../run-ci-scripts/run-step-settings.md) to run tests.
-### Early access features
-
-Currently, TI for .NET and Python are behind the feature flags `TI_DOTNET` and `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable these features.
-
-<!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/#build-environment) in the YAML editor. -->
-
-### Python requirements
-
-The following requirements and limitations apply to TI for Python:
-
-* **Python 3:** Your project must be written in Python 3, and your repo must be a pure Python 3 repo.
-* **No resource file relationships:** TI doesn't support resource file relationships.
-* **Unpredictable results for dynamic loading and metaclasses:** TI might miss tests or changes in repos that use dynamic loading or metaclasses.
 
 ## Add the Run Tests step
 
@@ -217,7 +210,7 @@ The build environment must have the necessary binaries for the **Run Tests** ste
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="python label="Python">
+  <TabItem value="python" label="Python">
 ```
 
 ```yaml
@@ -452,12 +445,15 @@ For example, the following configuration in `pom.xml` removes the `forkCount` se
 
 ### Python
 
-Make sure your codebase meets the [Python requirements](#python-requirements), and:
+If you encounter errors with TI for Python, make sure you meet the following requirements:
 
+* Your project is written in Python 3, and your repo is a pure Python 3 repo.
+* You don't use resource file relationships. TI doesn't support resource file relationships.
+* You don't use dynamic loading and metaclasses. TI might miss tests or changes in repos that use dynamic loading or metaclasses.
 * Your [Build Tool](#build-tool) is pytest or unittest.
-* Your [Build Arguments](#build-arguments) don't include coverage flags (`--cov` or `coverage`).
-* The Python 3 binary is preinstalled on the build machine, available in the specified Docker image, or installed at runtime. For more information, go to [Container Registry and Image](#container-registry-and-image) and [Pre-Command](#pre-command).
-* If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
+* The [Build Arguments](#build-arguments) don't include coverage flags (`--cov` or `coverage`), and the [Pre-Command](#pre-command) doesn't install code coverage tools.
+* The Python 3 binary is preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or installed at runtime in the [Pre-Command](#pre-command).
+* If you use another command, such as `python`, to invoke Python 3, you have added an alias, such as `python3 = "python"`.
 
 ## Settings
 
@@ -836,8 +832,6 @@ If a script is supplied here, select the corresponding **Shell** option.
 Enter the commands used for cleaning up the environment after running the tests. For example, `sleep 600` suspends the process for 600 seconds.
 
 If a script is supplied here, select the corresponding **Shell** option.
-
-For Python, Python 3 is required. If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
 
 ### Run Only Selected Tests
 
