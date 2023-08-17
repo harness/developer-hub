@@ -34,6 +34,25 @@ module.exports = {
     //  },
     //===================================================================================
 
+
+     // Created by SudheendraKatte for branch srm-14106-reset-error-budget on August 10, 2023
+     {
+      from: "/docs/service-reliability-management/slo-annoations",
+      to: "/docs/service-reliability-management/manage-slo/slo-annoations",
+    },
+    {
+      from: "/docs/service-reliability-management/slo-downtime/slo-downttime-overview",
+      to: "/docs/service-reliability-management/manage-slo/slo-downtime/slo-downttime-overview",
+    },
+    {
+      from: "/docs/service-reliability-management/slo-downtime/configure-slo-downtime",
+      to: "/docs/service-reliability-management/manage-slo/slo-downtime/configure-slo-downtime",
+    },
+    {
+      from: "/docs/service-reliability-management/slo-downtime/manage-slo-downtime",
+      to: "/docs/service-reliability-management/manage-slo/slo-downtime/manage-slo-downtime",
+    },
+
    // Created by ravilach for modify-getting-started on August 16 2023
    {
     from: "/docs/getting-started/start-a-free-trial",
@@ -41,6 +60,7 @@ module.exports = {
   },
 
     // Created by SudheendraKatte for branch cet-whats-supported on August 3 2023
+
     {
       from: "/docs/category/get-started-3/",
       to: "/docs/category/get-started-with-cet",
