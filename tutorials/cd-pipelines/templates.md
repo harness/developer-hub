@@ -9,6 +9,17 @@ This tutorial focuses on how to use templates with Harness Pipelines. We will gu
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
+## Templates in Harness CD Pipeline
+
+Harness' templates allow you to design reusable content, logic, and parameters, ensuring that the application is the major focus of your pipelines. Instead of creating pipelines from scratch each time, Harness lets you select from pre-built templates and link them to your pipelines. The process of developing pipelines thus becomes easier by reducing duplication and increasing reusability.
+
+## Why should you use templates?
+- Share common logic without duplicating it on multiple pipelines.
+For example, if you have some tasks or operations that every pipeline must do, then make them a part of a template to use in your pipelines.
+- Reduce the complexity and size of creating a single pipeline.
+- Set a pattern that you and your team can follow throughout your   pipelines.
+- Save time and create generic templates that you can use across the scopes in your Harness account.
+- Add or remove a change in one file rather than a lot of stages.
 
 ## Before you begin 
 
