@@ -68,7 +68,7 @@ To copy the webhook URL from a monitored service:
 
 1. From the list of monitored services, select the monitored service for which you have created the FireHydrant incident custom incident change source, and then go to the **Configuration** tab.  
 
-2. On the **Configurations** page, go to the **Service** tab. In the **Define Your Sources** section, you will see a list of change sources that have been added to the monitored service. The list also displays webhook URLs and cURL commands next to each change source.
+2. On the **Configurations** page, go to the **Service** tab. In the **Define Your Sources** section, a list of change sources that have been added to the monitored service is displayed. The list also displays webhook URLs and cURL commands next to each change source.
 
 3. Locate the FireHydrant incident change source that you want to configure with the FireHydrant runbook, and then copy the webhook URL.
 
