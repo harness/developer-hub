@@ -29,7 +29,7 @@ To reset the error budget of an SLO:
    The **Reset Error Budget** option is available only for SLOs with the time period type configured as **Calendar**.
    :::
 
-   The Reset Error Budget dialog appears. It displays the total error budget and the remaining error budget values. You can also review the reset history by expanding the **Previous Error Budget reset history** section.
+   The **Reset Error Budget** dialog appears. It displays the total error budget and the remaining error budget values. Expand the **Previous Error Budget reset history** section to review the reset history.
 
    <docimage path={require('./static/reset-error-budget.png')} />
 
