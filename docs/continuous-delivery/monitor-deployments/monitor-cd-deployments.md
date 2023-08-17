@@ -216,6 +216,7 @@ https://www.youtube.com/watch?v=9fqbYP6iK3g-->
 
 See [Create Dashboards](../../platform/18_Dashboards/create-dashboards.md).
 
+
 ### Monitor Harness and Jira approvals using custom CD dashboards
 
 Harness CD includes an extensive set of dashboard components that provide visibility into your Harness and Jira approvals. You can create custom dashbards that quickly answer questions such as:
@@ -264,10 +265,6 @@ You can use the following components to monitor the performance of your deployme
 
   - Step type
 
-  - Duration
-
-  - Status
-
   - Issue Type
 
   - Jira Ticket URL (or issue key and project if the URL is unavailable)
@@ -285,3 +282,43 @@ You can use the following components to monitor the performance of your deployme
    - Jira Ticket URL
 
    - Ticket Status
+
+### Monitor deployment performance using custom CD dashboards
+
+Harness CD includes an extensive set of dashboard components that provide visibility into the performance of your deployment pipelines. You can create custom dashboards to answer questions such as:
+
+* Which stages and steps contain performance bottlenecks? 
+
+* Which stages and steps have the most failures? 
+
+* How much time is spent deploying artifacts vs. waiting for Jira approvals and other manual interventions? 
+
+:::note
+This feature is behind the feature flag `CDS_CUSTOM_STAGE_EXECUTION_DATA_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+<figure>
+
+![CD deployment performance dashboard - example](./static/cd-performance-monitoring-dashboard.png)
+<figcaption>CD deployment performance dashboard - example</figcaption>
+</figure>
+
+You can use the following components to monitor the performance of your deployment pipelines: 
+
+- Manifest data (only for HelmChart Manifest type for Helm/K8s deployments)
+
+  - Helm version 
+
+  - Chart Version
+
+  - Manifest identifier
+
+- Custom Stage Details
+
+  - Stage type
+
+  - Duration
+
+  - Status
+
+  - Failure message

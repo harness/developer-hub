@@ -46,6 +46,23 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.353.10 |
 | LE NG | 68004 |
 
+**Alternative air gap bundle download method**
+
+Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.8.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/sto_images.tgz" \
+  .
+```
+
 #### Self-Managed Enterprise Edition
 
 - Harness now supports external self-managed databases for high availability. (SMP-1577, SMP-1617, SMP-1645, SMP-1646)
@@ -582,6 +599,23 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
+**Alternative air gap bundle download method**
+
+Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.7.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/sto_images.tgz" \
+  .
+```
+
 #### What's new
 
 This release does not include new features.
@@ -617,6 +651,23 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
+**Alternative air gap bundle download method**
+
+Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.7.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/sto_images.tgz" \
+  .
+```
+
 #### What's new
 
 - Send emails to non-Harness users. (CDS-69561, CDS-58625, ZD-42496)
@@ -646,7 +697,6 @@ This release includes the following Harness module and component versions.
 | **Name** | **Version** |
 | :-- | :--: |
 | Helm Chart | [0.7.0](https://github.com/harness/helm-charts/releases/tag/harness-0.7.0) |
-| Air Gap Bundle | [0.7.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.0;tab=objects?prefix=&forceOnObjectsSortingFiltering=false) |
 | NG Manager | 79421 |
 | CI Manager | 3907 |
 | Pipeline Service | 1.33.8 |
@@ -656,6 +706,23 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | release-177 |
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
+
+**Alternative air gap bundle download method**
+
+Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.7.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/sto_images.tgz" \
+  .
+```
 
 #### What's new
 

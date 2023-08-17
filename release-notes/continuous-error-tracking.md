@@ -2,7 +2,7 @@
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
 tags: [NextGen, "cet"]
-date: 2023-07-21T17:20
+date: 2023-08-15T17:20
 sidebar_position: 11
 ---
 ```mdx-code-block
@@ -22,7 +22,7 @@ Review the notes below for details about recent changes to Continuous Error Trac
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - July 14, 2023, version ET-Agent 5.5.0
+## Latest - August 15, 2023, versions ET-Service 5.25.7 and ET-Collector 5.25.3
 
 ```mdx-code-block
 <Tabs>
@@ -30,7 +30,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 
 
-This release does not include new features and enhancements.
+ Various dependencies were upgraded to prevent security issues. (CET-1517)
 
 
 ```mdx-code-block
@@ -48,9 +48,10 @@ This release does not include any early access features.
 ```
 
 
-- The CET Agent had missing tiny links on some logs when using Log4j2. (CET-894)
+- The Continuous Error Tracking Hit processing encountered an Out of Memory (OOM) Heap crash while attempting to process specific large Class Data objects. (CET-1223)
   
-  This issue has been resolved. Now, the tiny links appear consistently in Log4j2 logs.
+  This issue has been resolved by optimizing Hit processing, preventing OOM issues.
+
 
 
 ```mdx-code-block
@@ -69,6 +70,24 @@ This release does not include any early access features.
 - The Events Summary page timed out in some instances when events marked as resolved caused slowness while fetching summary data. (CET-1569)  
 
    This issue has been resolved. Now, the Events Summary page loads faster and does not time out.
+
+
+#### July 14, 2023, version ET-Agent 5.5.0
+
+##### What's new
+
+This release does not include new features and enhancements.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- The CET Agent had missing tiny links on some logs when using Log4j2. (CET-894)
+  
+  This issue has been resolved. Now, the tiny links appear consistently in Log4j2 logs.
+
 
 #### June 27, 2023, versions ET-Service 5.24.3 and ET-Collector 5.24.3
 

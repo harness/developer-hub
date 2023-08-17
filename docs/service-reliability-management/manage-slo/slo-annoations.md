@@ -1,7 +1,7 @@
 ---
 title: SLO annotations
 description: Add informative notes about service-related events, deployments, and hotfixes, enabling comprehensive tracking alongside metrics.
-sidebar_position: 80
+sidebar_position: 20
 ---
 
 You can add annotations about specific events or changes that affect service performance and the error budgets.
