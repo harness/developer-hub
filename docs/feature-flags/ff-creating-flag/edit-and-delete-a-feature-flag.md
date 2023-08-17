@@ -1,6 +1,6 @@
 ---
 title: Edit or archive flags
-description: After you have created a flag, you can edit the following details of it --  Flag Name. Description. Whether or not it is marked as permanent. This topic describes how to edit these details on the Harnes…
+description: After you have created a flag, you can edit or archive it.
 tags: 
    - helpDocs
    - feature flag
