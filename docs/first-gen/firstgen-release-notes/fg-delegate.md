@@ -52,9 +52,7 @@ This release does not include any new early access features.
 
 - Fixed an issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240)
 
-- Harness Manager returned NPEs and timed-out when retrying acquire calls. (PL-40646)
-
-   This issue is fixed. The delegate task now includes the required data for retry acquire calls.
+- Fixed retries of the delegate task acquire call in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the acquire call retry flow. Tasks timed out because the delegate was not able to acquire the data. The 'taskData' field in Harness Manager is now populated to fix the issue. (PL-40646)
 
 ### Hotfixes
 
