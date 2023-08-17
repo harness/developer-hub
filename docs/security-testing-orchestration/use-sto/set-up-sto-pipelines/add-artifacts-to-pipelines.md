@@ -301,7 +301,7 @@ pipeline:
 
   You'll need to disable verification in both the Harness pipeline and the external scanner. Note that not all scan tools support this option. 
 
-  -  For information about disabling SSL verification in the scanner, go to the external scanner documentation. If the includes a CLI option for this, you can use `tool_args` in your step to run a scan with this option turned off. For example, you can run a [Black Duck Hub](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference#settings) scan with this setting: `tool_args : --blackduck.trust.cert=TRUE`
+  -  For information about disabling SSL verification in the scanner, go to the external scanner documentation. If the scanner includes a CLI option for this, you can use `tool_args` in your step to run a scan with this option turned off. For example, you can run a [Black Duck Hub](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference#settings) scan with this setting: `tool_args : --blackduck.trust.cert=TRUE`
  
   - If you're using a scanner-specific step with a scanner template, such as Aqua Trivy or Mend, uncheck **Enforce SSL** in the configuration palette. 
 
