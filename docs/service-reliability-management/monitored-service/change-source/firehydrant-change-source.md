@@ -18,15 +18,18 @@ Here's how it works: When an incident is announced using FireHydrant, a real-tim
 
 - SLO performance – SLO name, target, actual performance, and the rate at which your error budget is being used.
 
-![SRM Insights Slack message](static/firehydrant-slack-message.png)
 
-Together with the incident information and SRM's health report, the incident response team can quickly figure out how bad the incident is, see how the rest of the service is doing, and make quick decisions.
+Sample message sent by SRM to the Slack channel
+
+<docimage path={require('./static/firehydrant-slack-message.png')} />
+
+Together with the FireHydrant's incident information and SRM's health report, the incident response team can quickly figure out how bad the incident is, see how the rest of the service is doing, and make quick decisions.
 
 Configuring FireHydrant as a change source involves the following steps:
 
-1. [Add FireHydrant as a custom change source in the Harness SRM monitored service and generate a webhook.](#add-fireHydrant-as-change-source)
+[Add FireHydrant as a custom change source in the Harness SRM monitored service and generate a webhook.](#add-firehydrant-as-a-change-source)
 
-2. [Integrate your Slack workspace with FireHydrant.](#add-slack-channels-to-the-firehydrant-runbook)
+2. [Integrate your Slack workspace with FireHydrant.](#integrate-slack-workspace-with-firehydrant)
    
 3. [Add Webhook Step to the FireHydrant runbook.](#add-webhook-step-to-the-firehydrant-runbook)
    
@@ -35,7 +38,7 @@ Configuring FireHydrant as a change source involves the following steps:
 5. [Declare an incident.](#declare-an-incident)
 
 
-## Add FireHydrant as change source
+## Add FireHydrant as a change source
 
 To add FireHydrant as a change source to a monitored service:
 
@@ -47,14 +50,14 @@ To add FireHydrant as a change source to a monitored service:
 
 3. On the **Configurations** page, go to the **Service** tab, and under **Define Your Sources**, select **+ Add New Change Source**.  
 
-4. In the Edit Change Source page, under **Select Change Source**, choose **Incident** as **Provider Type**, and then select **Custom**.
+4. On the Edit Change Source page, under **Select Change Source**, choose **Incident** as **Provider Type**, and then select **Custom**.
 
 5. Enter a name for the change source. For example, FireHydrant.
 
 6.  Select **Submit**.  
     The custom incident change source gets added to the monitored service. A webhook URL and cURL commands are generated.
 
-    ![Add FireHydrant change source](./static/add-firehydrant-change-source.png)
+    <docimage path={require('./static/add-firehydrant-change-source.png')} />
 
 
 ## Copy webhook URL
@@ -63,7 +66,7 @@ To configure your FireHydrant runbook for sending incident reports to a monitore
 
 To copy the webhook URL from a monitored service:
 
-1. From the list of monitored services, select the monitored service in which you have created the FireHydrant incident custom incident change source, and then go to the **Configuration** tab.  
+1. From the list of monitored services, select the monitored service for which you have created the FireHydrant incident custom incident change source, and then go to the **Configuration** tab.  
 
 2. On the **Configurations** page, go to the **Service** tab. In the **Define Your Sources** section, you will see a list of change sources that have been added to the monitored service. The list also displays webhook URLs and cURL commands next to each change source.
 
@@ -77,7 +80,7 @@ To enable FireHydrant to send incident reports to your designated Slack channels
 
 ## Add Webhook Step to the FireHydrant runbook
 
-You need to configure FireHydrant runbook so that it can send the incident reports to monitored service in Harness SRM.
+You need to configure the FireHydrant runbook so that it can send the incident reports to a monitored service in Harness SRM.
 
 To configure the runbook:
 
@@ -85,11 +88,16 @@ To configure the runbook:
    
 2. Add a **Send Webhook** step with the following settings:
    
-   - **Endpoint**: Paste the webhook URL you copied in Harness SRM monitored service. For example: `https://app.harness.io/cv/api/account/-xxxxxx12345xxxx/org/default/project/Demo/webhook/custom-change?monitoredServiceIdentifier=custom_change_prod&changeSourceIdentifier=Fire_Hydrant`
+   - **Endpoint**: Paste the webhook URL you copied in Harness SRM monitored service. For example:
+  
+```
+ https://app.harness.io/cv/api/account/-xxxxxx12345xxxx/org/default/project/Demo/webhook/custom-change?monitoredServiceIdentifier=custom_change_prod&changeSourceIdentifier=Fire_Hydrant
+```
+
    
    - **HMAC Secret**: A short string to confirm the webhook's source from FireHydrant in your app.
    
-   - **JSON Payload**: Use a JSON string in following format for transmitting data to your endpoint:
+   - **JSON Payload**: Use a JSON string in the following format for transmitting data to your endpoint:
   
 
       ```
@@ -124,7 +132,7 @@ To learn more about adding a webhook step to a FireHydrant runbook, go to [Sendi
 
 ## Add Slack channels to the FireHydrant runbook
 
-You need to include a **Notify Channel** step in FireHydrant runbook to enable FireHydrant to send incident notifications through Slack.
+You need to include a **Notify Channel** step in the FireHydrant runbook to enable FireHydrant to send incident notifications through Slack.
 
 To add the Notify Channel step:
 
