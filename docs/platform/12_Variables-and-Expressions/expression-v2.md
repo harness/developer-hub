@@ -6,7 +6,7 @@ sidebar_position: 4
 
 To provide you with the best experience when using expressions, Harness has introduced support for writing expressions by using any JSON parser tool. With this enhancement, Harness effectively addresses customer concerns and provides a more user-friendly and adaptable expression engine. These improvements enhance the overall user experience, increase productivity, and empower you to have greater control and customization capabilities in your evaluation processes.
 
-The key enhancements are as follows: 
+The key enhancements are as follows:
 
 * **Enhanced expression discovery**: You have the ability to independently determine the expressions associated with a specific step. This empowers you to explore and understand the system better, and thereby reduce reliance on external support.
 * **Comprehensive execution JSON**: You can access the execution JSON for all stages or individual steps. This JSON contains detailed information about inputs and outputs for each step within the stage. This lets you analyze and troubleshoot workflows effectively and extract the required information easily.
@@ -63,11 +63,14 @@ In the pipeline execution page, select the **Input** section of the Shell Script
 
 <docimage path={require('./static/execution-json.png')} width="60%" height="60%" title="Click to view full size image" /> 
 
-## Writing expressions using JSON
+## Write expressions using JSON
 
-Let's see how to extract data from the following sample execution JSON: 
+You can retrieve specific chunks of data from the following sample execution JSON by locating the corresponding path. For example, to access the status of a combination within the `cStage1` matrix, you could use the expression `pipeline.stages.cStage.cStage_0.status`.
 
-```
+<details>
+<summary>Sample execution JSON</summary>
+
+```json
 {
   "pipeline": {
     "stepInputs": {
@@ -436,41 +439,42 @@ Let's see how to extract data from the following sample execution JSON:
 }
 ```
 
-You can retrieve specific chunks of data from the sample JSON above by locating the corresponding path. For example, to access the status of a combination within the matrix named `cStage1`, use the following expression: 
+</details>
 
-`pipeline.stages.cStage.cStage_0.status`
+You can determine the complete expression for any desired data by traversing the JSON.
 
-You can easily determine the complete expression for any desired data by traversing the JSON. 
+Keep in mind the following considerations when constructing these expressions. These guidelines help you to easily construct expressions that fetch your desired JSON data without using complex or lengthy paths.
 
-Here are a few considerations to keep in mind when constructing such expressions. By following these guidelines, you can easily construct expressions to fetch the desired JSON data without using complex and lengthy paths.
+* The full path, starting from `pipeline`, always works as a reference point.
+* You can ignore fields like `stepInputs` and `outcome` when constructing the full path.
+* You can use relative paths. To do this:
+   * First, identify the common parent between the step/stage you're referring to and the step/stage where you're making the reference.
+   * Then, begin the expression from the common parent. For example, in `pipeline.stages.cStage.cStage_0.status`, you can refer to the status of `CStage_0` from within `CStage_1` by using the expression `cStage.cStage_0.status`.
+   * By using a relative path, you don't need to constructing the full path each time.
 
-* The full path, starting from the `pipeline` always works as a reference point.
-* Fields like `stepInputs` and `outcome` can be ignored when constructing the full path.
-* Relative paths can also be used by identifying the common parent between the step or stage you want to refer and the step or stage where the reference is made.
-* Begin the expression from the common parent. For example, in the given expression, if you want to refer to the status of `CStage_0` from `CStage_1`, use the expression, `cStage.cStage_0.status`. This approach allows you to avoid constructing the full name each time.
-
-## Writing complex expressions using JQ
+## Write complex expressions using JQ
 
 JQ is a lightweight, powerful command-line tool specifically designed for JSON processing in Bash. It provides a wide range of features for querying, filtering, and transforming JSON data. JQ can be easily integrated into Bash scripts and can be used to extract specific values or perform complex JSON operations.
 
-Make sure that the following requirements are met to use JQ: 
+To use JQ:
 
-* Your Harness Delegate should support JQ if you are using a shell script step. For more details, go to [How to install JQ on Ubuntu](https://www.golinuxcloud.com/ubuntu-install-jq/).
-  
+* With container steps, your images must support JQ.
+* Your Harness Delegate must support JQ if your pipeline has a Shell Script step. For more information, go to [How to install JQ on Ubuntu](https://www.golinuxcloud.com/ubuntu-install-jq/).
+
   <details>
   <summary>Install JQ on Harness Delegate</summary>
 
   1. Open the `delegate.yaml` in a text editor.
   2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
-   
+
      ```
-     - name: INIT_SCRIPT  
-     value: ""  
+     - name: INIT_SCRIPT
+     value: ""
      ```
   3. Replace `value: ""` with the following script to install JQ.
-     
+
      ```
-     - name: INIT_SCRIPT  
+     - name: INIT_SCRIPT
      value: |
       apt install software-properties-common -y
       apt install python-software-properties -y
@@ -480,13 +484,14 @@ Make sure that the following requirements are met to use JQ:
       apt-get install jq -y
      ```
 
-  </details>   
-   
-* Your image should support JQ if you are using a container step.
+  </details>
 
-Let's consider the following sample pipeline YAML to develop expressions for some complex use cases: 
+Some JQ use cases are demonstrated in the following sections. These examples use the following sample pipeline.
 
-```
+<details>
+<summary>Sample pipeline YAML</summary>
+
+```yaml
 pipeline:
   name: JsonSupportExample1
   identifier: JsonSupportExample1
@@ -560,10 +565,11 @@ pipeline:
               - doe
               - nick
         tags: {}
-
 ```
 
-### Fetch the status of all combinations of stage named `stageWithMatrix`
+</details>
+
+### Fetch the status of all combinations of stage named stageWithMatrix
 
 Use the following expression to fetch the status of all combinations of stage named `stageWithMatrix`:
 
@@ -571,16 +577,17 @@ Use the following expression to fetch the status of all combinations of stage na
 t='<+json.format(<+pipeline.stages.stageWithMatrix>)>'
 echo $t | jq '(. | to_entries[] | select(.key | startswith("stageWithMatrix")) |  .value.status)'
 ```
-### Fetch the status of all identifiers of a step in a stage named `stageWithMatrix`
 
-Use the following expression to fetch the status of all identifiers of a step in a stage named `stageWithMatrix`: 
+### Fetch the status of all identifiers of a step in a stage named stageWithMatrix
+
+Use the following expression to fetch the status of all identifiers of a step in a stage named `stageWithMatrix`:
 
 ```
 t='<+json.format(<+pipeline.stages.stageWithMatrix>)>'
 echo $t | jq '(. | to_entries[] | select(.key | startswith("stageWithMatrix")) | .value.spec.execution.steps | keys[] |  select(.| IN("status", "stepInputs")| not))'
 ```
 
-### Fetch the status of all combinations of a step named `ShellScript_1`
+### Fetch the status of all combinations of a step named ShellScript_1
 
 Use the following expression to fetch the status of all combinations of a step named `ShellScript_1`:
 
@@ -589,31 +596,30 @@ t='<+json.format(<+pipeline.stages.stepWithMatrix.spec.execution.steps.ShellScri
 echo $t | jq '(. | to_entries[] | select(.key | startswith("ShellScript_1")) | .value.status)'
 ```
 
-## Writing complex expressions using JEXL
+## Write complex expressions using JEXL
 
-By introducing script support, Harness enables you to define functions, utilize loops, and incorporate IF conditions within your expressions. This expanded functionality empowers you to handle more complex logic and perform advanced operations.
+With script support, Harness enables you to define functions, utilize loops, and incorporate `if` conditions in your expressions. This expanded functionality empowers your expressions to handle more complex logic and perform advanced operations.
 
-### Fetch the status of all combinations of a stage named `stageWithMatrix`
+### Fetch the status of all combinations of a stage named stageWithMatrix
 
-Consider the following example expression: 
+The following example expression contains a script.
 
 ```
 <+ var traverse = function(key) {
                       var stages = [...];
-                      for(stage: key.entrySet()) 
+                      for(stage: key.entrySet())
                       {
                           if (stage.key.startsWith('stageWithMatrix'))
                               stages.add(stage.value);
                       }
                       var statuses=[...];
-                      for(stage1:stages) { 
+                      for(stage1:stages) {
                          statuses.add(stage1.status)
                       }
                       statuses
                       };
-                                                            
+
   traverse(<+pipeline.stages.stageWithMatrix>)>
-                                                        >
 ```
 
 This script defines a `traverse` function that takes a parameter called `key`. Within the function, there are several operations performed:
@@ -631,27 +637,28 @@ The script concludes by invoking the traverse function with the argument, `<+pip
 
 This script performs a traversal and extraction operation on a data structure represented by the key parameter. It extracts stages that start with `stageWithMatrix` and collects their corresponding `.status` values into the `statuses` array.
 
-### Fetch the status of all combinations of a step named `ShellScript_1`
+### Fetch the status of all combinations of a step named ShellScript_1
 
-Consider the following example expression: 
+The following example expression contains a script.
 
 ```
 <+ var traverse = function(key) {
                       var stages = [...];
-                      for(stage: key.entrySet()) 
+                      for(stage: key.entrySet())
                       {
                           if (stage.key.startsWith('ShellScript_1'))
                               stages.add(stage.value);
                       }
                       var statuses=[...];
-                      for(stage1:stages) { 
+                      for(stage1:stages) {
                          statuses.add(stage1.status)
                       }
                       statuses
                       };
-                                                            
+
   traverse(<+pipeline.stages.stepWithMatrix.spec.execution.steps.ShellScript_1>)>
 ```
+
 This script defines a `traverse` function that takes a parameter called `key`. Within the function, there are several operations performed:
 
 * Initialization: The `stages` array is created, which holds the extracted stages. It is initially empty.
@@ -667,31 +674,9 @@ The script concludes by invoking the traverse function with the argument, `<+pip
 
 This script performs a traversal and extraction operation on a data structure represented by the key parameter. It filters stages that start with the string `ShellScript_1` and collects their corresponding status values into the statuses array.
 
+### Define functions
 
-### Defining functions
-
-Define functions by using the `function` keyword in JEXL. For example: 
-
-```
-<+
-var numbers = [1, 2, 3, 4, 5];
-var sum = 0;
-
-for (var i = 0; i < numbers.length; i++) {
-  sum = sum + numbers[i];
-}
-
-sum;
->
-```
-
-The above JEXL script defines a function called `identityFunction` that takes a parameter key. Inside the function, the expression returns the value of the key parameter.
-
-The function `identityFunction` is used to retrieve the value of a specific key. In the given example, the function is invoked with the argument `keyName`. As a result, the function returns the value `keyName` itself. The `identityFunction` serves as a straightforward identity function where the input value is directly returned as the output.
-
-### Defining loops
-
-Here's an example that demonstrates how you can use a loop in JEXL to iterate over an array or perform repetitive operations based on certain conditions: 
+Use the `function` keyword in JEXL to define functions. For example, the following expression contains a JEXL script that defines a function called `identityFunction` that takes a parameter key. Inside the function, the expression returns the value of the key parameter.
 
 ```
 <+
@@ -706,11 +691,28 @@ sum;
 >
 ```
 
-This example uses an array called `numbers` containing several integer values. A variable called sum to 0 is initialized. The FOR loop iterates over each element in the number array. Within the loop, you can add each element to the sum variable After the loop completes, the script outputs the value of sum, which will be the sum of all the numbers in the array.
+The `identityFunction` retrieves the value of a specific key. In the given example, the function is invoked with the argument `keyName`. As a result, the function returns the value `keyName` itself. The `identityFunction` serves as a straightforward identity function where the input value is directly returned as the output.
 
-### Using IF conditions
+### Define loops
 
-Here's an example that demonstrated how you can use an IF condition in JEXL to perform different actions or display different results based on certain conditions or criteria.
+The following example demonstrates how you can use a loop in JEXL to iterate over an array or perform repetitive operations based on certain conditions. This example uses an array called `numbers` containing several integer values. A variable called sum to 0 is initialized. The `for` loop iterates over each element in the number array. Within the loop, you can add each element to the sum variable After the loop completes, the script outputs the value of sum, which will be the sum of all the numbers in the array.
+
+```
+<+
+var numbers = [1, 2, 3, 4, 5];
+var sum = 0;
+
+for (var i = 0; i < numbers.length; i++) {
+  sum = sum + numbers[i];
+}
+
+sum;
+>
+```
+
+### Use if conditions
+
+The following example demonstrates how you can use an `if` condition in JEXL to perform different actions or display different results based on certain conditions or criteria. This example uses a variable called `age` with the value `18`. The `if` condition checks if the age is greater than or equal to 18. If the condition evaluates to `true`, then the script outputs the string `You are an adult`. Otherwise, it outputs the string `You are not yet an adult`.
 
 ```
 <+var age = 18;
@@ -722,5 +724,3 @@ if (age >= 18) {
 }
 >
 ```
-
-This example uses a variable called `age` of value 18. The IF condition checks if the age is greater than or equal to 18. If the condition evaluates to TRUE, the script outputs the message, `You are an adult`. Otherwise, it outputs the message `You are not yet an adult`.

@@ -455,6 +455,6 @@ graph TD
 
 ## Caching with non-private ACL
 
-If your bucket's ACL is set to something other than `private` (blank, `bucket-owner-full-control`, or something else), then you must add a [stage variable](/docs/platform/pipelines/add-a-stage/#option-stage-variables) called `PLUGIN_ACL` and set the value to the relevant ACL value.
+If your bucket's ACL is set to something other than `private` (blank, `bucket-owner-full-control`, or something else), then you must add a [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) called `PLUGIN_ACL` and set the value to the relevant ACL value.
 
 The default value for `PLUGIN_ACL` is `private`, so if your bucket's ACL is something other than `private`, you must set this environment variable accordingly.

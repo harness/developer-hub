@@ -39,7 +39,7 @@ In the Overview tab for the new Build Stage, configure the Stage as follows:
 * Under Shared Paths, add the following:
 	+ `/var/run`
 	+ `/var/lib/docker`
-* Under Advanced, add [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) for your Docker Hub Personal Access Token and any other fields you want to parameterize. For passwords and Personal Access Tokens, select **Secret** as the variable type.
+* Under Advanced, add [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) for your Docker Hub Personal Access Token and any other fields you want to parameterize. For passwords and Personal Access Tokens, select **Secret** as the variable type.
 
 ## Step 2: Define the Build Farm Infrastructure
 
