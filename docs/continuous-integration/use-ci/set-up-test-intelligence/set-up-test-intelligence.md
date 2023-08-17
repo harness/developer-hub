@@ -248,7 +248,7 @@ The first time you enable Test Intelligence on a repo, you must run *all* tests 
 2. In Harness, run your pipeline.
 
    * If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
-   * If you pushed changes, select either **Git Branch** or **Git Tag** for **Build Type**, and then enter the branch or tag name, depending on how you pushed changes.
+   * If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
 
    <!-- ![](./static/set-up-test-intelligence-04.png) -->
 
