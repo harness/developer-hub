@@ -18,41 +18,47 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 10, 2023, version 80204
+## Latest: Version 803xx
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### New features and enhancements
 
-This release does not include any new features.
+This release does not include new features.
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-
+### Early access features
 This release does not include any early access features.
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues
 
-This release does not include any fixed issues.
+- Users were unable to update the change source configuration within their monitored service.(SRM-15083)
+  
+  This issue has been resolved. Users can now update the change source configurations in their monitored service.
 
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
+### Hotfixes
+
+This release does not include hotfixes.
+
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### August 10, 2023, version 80119
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any new features.
 
 #### August 04, 2023, version 80119
 
