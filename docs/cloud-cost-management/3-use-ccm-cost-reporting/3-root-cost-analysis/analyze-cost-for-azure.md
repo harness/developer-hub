@@ -24,7 +24,7 @@ Harness Cloud Cost Management (CCM) allows you to view your Azure costs at a gla
 
 * [Set Up Cloud Cost Management for Azure](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md)
 
-### Step: Analyze Azure Cost
+### Analyze Azure Cost
 
 The Perspectives provides deep insights into your Azure costs. The cost includes all the applicable credits and discounts.
 
@@ -55,18 +55,19 @@ The Perspectives provides deep insights into your Azure costs. The cost includes
 	* **Product**: Each of your active products with its cloud costs.
 	* **Label**: Each label that you assign to your Azure resources. You can select a label name to get further granular details of your label.
 
-### Option: Add Filter
+### Add Filters
 
 Perform the following steps to add filters.
 
 1. In **Cloud Costs**, select **Perspectives**, and then select **Azure**.
-2. Select **add filter**.
-   
-     ![](./static/analyze-cost-for-azure-20.png)
+2. Select **add filter**. 
 3. Select Azure, Region, Product, or Label.
 4. Select the operator. The supported operators are:
-	* **IN: The exact match operation is used to filter for the value specified.**
-	* **NOT IN: The exact match operation is used to filter for the value that is not specified.**
+	* **IN**: The exact match operation is used to filter for the value specified.
+	* **NOT IN**: The exact match operation is used to filter for the value that is not specified.
+	* **NULL**: The specified filter or field has no value.
+	* **NOT NULL**: The specified filter has a value.
+	* **LIKE**: Includes the cost of all items that matches the specified condition.
 5. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
    
      ![](./static/analyze-cost-for-azure-21.png)
