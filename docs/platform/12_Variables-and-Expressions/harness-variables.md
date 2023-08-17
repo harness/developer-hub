@@ -360,7 +360,7 @@ This also works for nested expressions. For example:
 
 A variable name is the name in the variable expression, such as `foo` in `<+stage.variables.foo>`.
 
-Variable names may only contain `a-z, A-Z, 0-9, _, .`. They cannot contain hyphens.
+Variable names may only contain `a-z, A-Z, 0-9, _, . and $` but a variable name must start with any character from `a-z, A-Z and _`. They cannot contain hyphens.
 
 Certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
 
