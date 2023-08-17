@@ -235,7 +235,7 @@ The first time you enable Test Intelligence on a repo, you must run *all* tests 
 ```
 
 1. [Add a webhook trigger](/docs/platform/triggers/triggering-pipelines/) to your pipeline that listens for **Pull Request** or **Push** events in the pipeline's [codebase](../codebase-configuration/create-and-configure-a-codebase.md).
-2. Open a PR or push changes to the codebase that will cause *all* tests to run.
+2. Open a PR or push changes that cause *all* tests to run for your codebase.
 3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../viewing-builds.md). If the build succeeds, you can [review the test results](#view-test-reports).
 4. If the tests pass and the build succeeds, merge your PR, if applicable.
 
@@ -244,7 +244,7 @@ The first time you enable Test Intelligence on a repo, you must run *all* tests 
   <TabItem value="manual" label="Manual build">
 ```
 
-1. Open a PR or push changes to your pipeline's [codebase](../codebase-configuration/create-and-configure-a-codebase.md) that will cause *all* tests to run.
+1. Open a PR or push changes that cause *all* tests to run for your pipeline's [codebase](../codebase-configuration/create-and-configure-a-codebase.md).
 2. In Harness, run your pipeline.
 
    * If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
@@ -1098,9 +1098,9 @@ If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
 
 ### Jacoco/Surefire/Failsafe
 
-If you're using Jacoco, Surefire, or Failsafe, make sure the `forkCount` is not set to `0`.
+If you're using Jacoco, Surefire, or Failsafe, make sure that `forkCount` is not set to `0`.
 
-For example, the following configuration in `pom.xml` removes the `forkCount` setting and applies `useSystemClassLoader` as a workaround:
+For example, the following configuration in `pom.xml` removes `forkCount` and applies `useSystemClassLoader` as a workaround:
 
 ```
 <plugin>
