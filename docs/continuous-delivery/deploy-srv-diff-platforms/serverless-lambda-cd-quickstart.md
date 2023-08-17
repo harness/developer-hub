@@ -648,6 +648,16 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 
 This section describes how to set up the stage **Execution** when you are using containerized steps.
 
+### Authentication with AWS
+
+AWS authentication occurs in the Harness AWS connector used in the Infrastructure Definition and when using AWS ECR or S3 for the Harness service artifact.
+
+When the pipeline stage's containerized steps run, Harness passes the AWS access key (`PLUGIN_AWS_ACCESS_KEY`) and secret key (`PLUGIN_AWS_SECRET_KEY`) you configured in your AWS connector(s) as environment variables into the containers.
+
+The container images pick up the access and secret keys based on these specific environment variables.
+
+For S3 artifacts, Harness passes in the `PLUGIN_S3_AWS_ACCESS_KEY` and `PLUGIN_S3_AWS_SECRET_KEY` as environment variables.
+
 ### Step group
 
 Harness adds the step group and steps needed for a deployment automatically when you select the stage execution strategy in the **Execution** section.
@@ -704,6 +714,19 @@ branch 'main' set up to track 'origin/main'.
 ```
 
 </details>
+
+#### Serverless directory path
+
+After the Download Manifest step, you can access the directly where the manifest has been downloaded using the expression `<+serverlessV2.serverlessDirectoryPath>`.
+
+For example, you could add a [Run](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step) or [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step with the following:
+
+```
+cd <+serverlessV2.serverlessDirectoryPath>
+pwd
+exit 1
+```
+
 
 
 ### Serverless Prepare Rollback step
