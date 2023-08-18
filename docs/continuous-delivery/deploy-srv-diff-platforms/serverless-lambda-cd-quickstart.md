@@ -403,7 +403,7 @@ We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate 
    ![](./static/serverless-lambda-cd-quickstart-119.png)
 
 
-### Installing Serverless on the delegate
+### Install Serverless on the delegate
 
 For a **non-containerized** execution, you need to edit the YAML to install Serverless when the delegate pods are created.
 
@@ -453,7 +453,7 @@ For a **non-containerized** execution, you need to edit the YAML to install Serv
 
 In cases when the Delegate OS doesn't support `apt` (Red Hat Linux), you can edit this script to install `npm`. The rest of the code should remain the same. If you are using Harness Delegate, the base image is Red Hat UBI.Save the YAML file as **harness-delegate.yml**.	
    
-### Adding the artifact
+### Add the artifact
 
 1. Back in **Artifactory Repository**, click **Continue**.
 2. Enter the following artifact settings and click **Submit**. The following image shows how the Artifactory settings correspond to **Artifact Details**.
