@@ -1,7 +1,7 @@
 ---
 title: PagerDuty
 description: Configure PagerDuty change source to monitor incidents.
-sidebar_position: 10
+sidebar_position: 50
 ---
 
 # PagerDuty change source

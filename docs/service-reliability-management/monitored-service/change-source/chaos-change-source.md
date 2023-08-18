@@ -1,7 +1,7 @@
 ---
 title: Chaos experiment
 description: Learn to connect a chaos experiment to a monitored service.
-sidebar_position: 50
+sidebar_position: 10
 ---
 
 # Connect a chaos experiment to a monitored service
