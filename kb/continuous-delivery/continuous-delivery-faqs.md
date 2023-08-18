@@ -402,22 +402,22 @@ You can use Ternary operators to achieve this use case more information on this 
 The default branch and file path will not be changeable after the creation as we store data in Git end and only metadata is stored in Harness. 
 You can change it to the required path while creating the initial entity you can select the folder other than.harness Now you can recreate the entity using the same yaml and make minor changes like file path and entity id.
 
-### How long is the main repo content cached before the latest pipeline code version is pulled from the remote Github repo?
+#### How long is the main repo content cached before the latest pipeline code version is pulled from the remote Github repo?
 The content is cached for each branch the file has been fetched for to date. The expiry time for content is 30 days. 
 
 We don’t auto-reload cache on Back End as a synchronous job or similar. Any execution of that particular pipeline or involving that particular template/input set updates the cached content as we fetch everything from GIT during execution.
 
 Until any user-driven operation is performed, e.g. reload-from-git button on UI, execution of the pipeline / any entity via RUN button / UI or execution of entity via trigger etc.
 
-### Is there a way to force the pipeline editor to read the latest version from the remote Github repo?
+#### Is there a way to force the pipeline editor to read the latest version from the remote Github repo?
 Yes, the “reload-from-git” option on three dots does the job.
 
-### Not able to delete the template having an “Ad” string in between with adblocker installed?
+#### Not able to delete the template having an “Ad” string in between with adblocker installed?
 It will happen due to an ad blocker extension installed on the user system - and it will happen only for the template with the name of the template Eg:(Sysdig AdHoc) containing an “Ad” string in between, and when this is sent in the API as a path or a query param - this will get blocked by the ad blocker.
  
 These ad blockers have some rules for the URIs - if it contains strings like “advert”, “ad”, “double-click”, “click”, or something similar - they block it.
 
-### Pipeline variables are not being translated in HTTP step assertion and output variables.
+#### Pipeline variables are not being translated in HTTP step assertion and output variables.
 Expression to assert Numeric values, Please note that asserting on integers should be done without quotes since both sides of the assertions should be of number format (for JEXL).
 
 * <+httpResponseCode>==200
@@ -427,27 +427,63 @@ Expression to assert Numeric values, Please note that asserting on integers shou
 
 Expression to assert on Strings would require double quotes. Please note that it would require Double Quotes on both ends.
 
-### Can I customize the looping conditions and behaviour?
+#### Can I customize the looping conditions and behaviour?
 Yes, Harness NextGen often offers customization options to define the loop exit conditions, maximum iteration counts, sleep intervals between iterations, and more information here https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/
 
-### What are the use cases for utilizing a Looping Strategy in Harness NextGen?
+#### What are the use cases for utilizing a Looping Strategy in Harness NextGen?
 Looping strategies are useful for scenarios like canary deployments, gradual rollouts, and validation checks where you want to keep iterating until you achieve the desired result.
 
-### Can I deploy different versions of serverless functions using Harness?
+#### Can I deploy different versions of serverless functions using Harness?
 Yes, Harness generally allows users to deploy multiple versions of serverless functions, helping in testing and gradual rollout.
 
-### At the organizational level, I aim to establish a user group to which I can assign a resource group containing numerous distinct pipelines across specific projects.
+#### At the organizational level, I aim to establish a user group to which I can assign a resource group containing numerous distinct pipelines across specific projects.
 
 We don’t support this. We don’t support specific pipeline selections for specific projects for an Organization. But the User can limit the access to the projects by selecting specific projects as Scopes to apply in Org level resource group.
 
-### Does Harness support blue-green or canary deployments for serverless applications?
+#### Does Harness support blue-green or canary deployments for serverless applications?
 Yes, Harness supports advanced deployment strategies like blue-green and canary deployments for serverless applications. These strategies allow you to roll out updates gradually and mitigate risks associated with new releases.
 
-### Can I set up automated testing for my serverless applications with Harness?
+#### Can I set up automated testing for my serverless applications with Harness?
 Absolutely. Harness enables you to incorporate automated testing into your deployment pipelines, including unit tests, integration tests, and performance tests. This ensures that your serverless applications meet quality standards before reaching production.
 
-### How does Harness handle rollbacks in serverless deployments?
+#### How does Harness handle rollbacks in serverless deployments?
 If an issue arises during a deployment, Harness can automatically trigger a rollback to the previous version of your serverless application. This helps maintain system stability and minimizes downtime.
 
-### Can I set up advanced deployment strategies for Google Cloud Functions, like canary deployments?
+#### Can I set up advanced deployment strategies for Google Cloud Functions, like canary deployments?
 The harness supports advanced deployment strategies like canary deployments for Google Cloud Functions. This allows you to roll out updates gradually and assess their impact before a full release.
+
+#### How to concatenate secrets with string
+
+You use either of following expressions:
+
+```<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar>)>```
+
+OR
+
+```<+secrets.getValue("test_secret_".concat(<+pipeline.variables.envVar>))>```
+
+#### Can a non-git-sync'd pipeline consume a git-sync'd template from a non-default branch?
+
+Yes an Inline pipeline can consume a template from non-default branch.  More on this can be referenced here https://developer.harness.io/release-notes/whats-new/#continuous-delivery-version-79811
+
+#### Is there a way I can update the git repo where the pipeline YAML resides?
+
+Yes you can use this API https://apidocs.harness.io/tag/Pipelines#operation/update-pipeline-git-metadata to update the Git repo of the pipeline.
+
+#### Is there a way to generate a dynamic file with some information in one stage of the pipeline and consume that file content in a different pipeline stage?
+
+For CI :
+
+You can refer to this doc : https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/
+
+For CD :
+
+You can use API to create file in harness file store and then refer it to other stage. https://apidocs.harness.io/tag/File-Store#operation/listFilesAndFolders
+
+Or
+
+You can just write a file on the delegate and use the same delegate.
+
+#### How can I get pipeline exectuion details via API
+
+This API can be used to fetch pipleine execution details : https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
