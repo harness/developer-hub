@@ -26,7 +26,7 @@ Creating the Harness account with your work email and not a Gmail address will s
 
 #### How do I share data between steps in a CI stage?
 
-We could use shared paths to allow steps within a stage to share data each other. You can specify custom paths for data sharing or cache purposes.
+We could use shared paths to allow steps within a stage to share data with each other. You can specify custom paths for data sharing or cache purposes. For more details on this please refer to https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages 
 
 #### Is it possible to use different build infrastructures within a pipeline?
 
@@ -37,7 +37,7 @@ Yes, you can configure different build infrastructures for each stage within a p
 To achieve conditional step execution based on changes to a specific file, you can set up webhook triggers with file-based conditions. Configure the trigger to activate the step only when the targeted file (e.g., config.toml) has been modified in the repository.
 
 #### How can we share a failed step's output in a pull request comment as part of a CI pipeline execution?
-Below given one of the methods with which we could achive this.
+Below given one of the methods with which we could achieve this.
 
 - Modify the failed step's command to save output to a file: ```your_command 2>&1 | tee output_file.log```
 - Read the file's content in a subsequent step which is configured to run always
