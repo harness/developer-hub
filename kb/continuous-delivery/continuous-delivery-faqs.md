@@ -449,6 +449,33 @@ Absolutely. Harness enables you to incorporate automated testing into your deplo
 #### How does Harness handle rollbacks in serverless deployments?
 If an issue arises during a deployment, Harness can automatically trigger a rollback to the previous version of your serverless application. This helps maintain system stability and minimizes downtime.
 
+### Can I set up advanced deployment strategies for Google Cloud Functions, like canary deployments?
+The harness supports advanced deployment strategies like canary deployments for Google Cloud Functions. This allows you to roll out updates gradually and assess their impact before a full release.
+
+#### Zero results returned when trying to find deployment data from 2020?
+We do have 6 month Data retention period as mentioned in doc: https://www.harness.io/pricing?module=cd# 
+So older deployments will not be available.
+
+#### Currently we make use of this feature from FirstGen. Is there, or will there be an equivalent feature in Next Gen?
+https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint/ 
+
+You can Use Webhook notifications in NG to inform an external application of an event.
+https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#webhook-notifications 
+
+#### How to use spilt function on variable
+You can split on any delimiter and use index based access.
+For ex: if you have a variable with prod-environment-variable so you can use below to get prod
+<+<+pipeline.variables.envVar>.split('-')[0]>
+
+#### How to use Substring function on variable
+You can use substring function and need to pass starting and end index
+For ex: if you have a variable with prod-environment-variable so you can use below to get prod
+<+<+pipeline.variables.envVar>.substring(0,3)>
+
+#### How to pass value to a variable manually while running from ui if same pipeline is configured to run via trigger and using variable from trigger.
+You can check the triggerType variable to identify if pipeline was invoked via trigger or manually and can use below jell condition 
+<+<+pipeline.triggerType>=="MANUAL"?<+pipeline.variables.targetBranch>:<+trigger.targetBranch>>
+
 #### Can I set up advanced deployment strategies for Google Cloud Functions, like canary deployments?
 The harness supports advanced deployment strategies like canary deployments for Google Cloud Functions. This allows you to roll out updates gradually and assess their impact before a full release.
 
@@ -487,3 +514,4 @@ You can just write a file on the delegate and use the same delegate.
 #### How can I get pipeline exectuion details via API
 
 This API can be used to fetch pipleine execution details : https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
+
