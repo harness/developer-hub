@@ -378,3 +378,9 @@ Then should use with minimum recommended resource.
 ### Does there is functionality to auto accept invite for  username/password login?
 
 It's present for saml based login because authentication is taken care by SAML provider. In password need login we need the user to create a password in harness.
+
+### Are delegate tokens stored in MongoDB?
+
+Yes, delegate tokens are stored in mongo DB.
+
+### 
