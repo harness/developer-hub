@@ -383,4 +383,8 @@ It's present for saml based login because authentication is taken care by SAML p
 
 Yes, delegate tokens are stored in mongo DB.
 
-### 
+### Should we store the token that hasn't been generally available yet in the secret manager?
+
+No, we don't use the customer secret manager to encrypt delegate tokens. Rather than storing the token in plain text, we leverage Harness' internal encryption mechanism. This mechanism enables us to store the token's encrypted value in the database. This approach enhances security and mitigates potential risks associated with storing sensitive information.
+ 
+
