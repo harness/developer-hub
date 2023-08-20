@@ -18,12 +18,28 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 9, 2023, version 1.16.6
+## Latest - August 21, 2023, version 1.17.3
 
 <Tabs>
   <TabItem value="What's new">
 
-This release does not include new features.
+* Added support for CSMs to be able to view the Activity and Usage for Chaos Module. (CHAOS-1978)
+
+* Added support for Openshift configuration for deploying chaos infrastructure. This will provide users with a predefined SCC & will allow users to modify the same according to their needs. (CHAOS-1889)
+
+* Enhanced the Chaos Experiment execution diagram to not switch to running nodes automatically. This will allow users to stay on any node by clicking on the same & observe the respective node details. (CHAOS-2258)
+
+* Enhanced docker service kill fault to support containerd runtime. (CHAOS-2220)
+
+* Added support for targetting applications by only appkind, only applabel and set-based labels. (CHAOS-2170) and (CHAOS-2128)
+
+* Handled chaos revert for the multiple target pods running on same node. (CHAOS-1563)
+
+* Updated the behaviour of TARGET_CONTAINER configuration. when not set, the fault will target all containers in target pods. Previously, it used to target only one container randomly. (CHAOS-1216)
+
+* Now, Users can specify drain timeout explicitly in the node drain fault. The node-drain fault has been using the CHAOS_DURATION value as a timeout, leading to potential confusion and risk of failure, especially when a shorter duration is used with many pods. The expectation is that CHAOS_DURATION should define the unschedulable period after draining. Providing a specific drain timeout would help users better estimate the eviction time for all pods on a node, reducing errors and false negatives. (CHAOS-2185)
+
+* Enhanced the JobCleanUpPolicy configuration to also retain helper pods when it is set to retain in ChaosEngine. (CHAOS-2273)
 
 
   </TabItem>
@@ -31,11 +47,10 @@ This release does not include new features.
 
 This release does not include early access features.
 
-
   </TabItem>
   <TabItem value="Fixed issues"> 
 
-* There was an issue where users were not getting audit events for the rules created under the Security Governance tab. This issue has been fixed. (CHAOS-2259)
+* Fixed revert chaos for Node drain chaos fault in case of Abort or Chaos Injection failure. (CHAOS-2184)
 
 
   </TabItem>
@@ -45,6 +60,20 @@ This release does not include early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+## August 9, 2023, version 1.16.6
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues 
+
+* There was an issue where users were not getting audit events for the rules created under the Security Governance tab. This issue has been fixed. (CHAOS-2259)
 
 #### August 7, 2023, version 1.16.5
 
