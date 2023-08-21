@@ -569,7 +569,7 @@ pipeline:
 
 </details>
 
-### Fetch the status of all combinations of stage named stageWithMatrix
+### Fetch the status of all combinations of a stage named stageWithMatrix
 
 Use the following expression to fetch the status of all combinations of a stage named `stageWithMatrix`:
 

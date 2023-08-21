@@ -18,7 +18,7 @@ New to Harness YAML? See [Harness YAML Quickstart](../harness-yaml-quickstart.md
 
 The Harness YAML schema is available at [github.com/harness/harness-schema](https://github.com/harness/harness-schema). This repository contains the schema definition for Harness pipeline configuration files, enabling users to define and customize their pipelines effortlessly. This repo provides steps on how to embed the YAML schema in Visual Studio Code and Sublime Text.
 
-In the meantime, you can use [Chrome DevTools](https://developer.chrome.com/docs/devtools/) to view the schema.
+In addition to the YAML schema available at [github.com/harness/harness-schema](https://github.com/harness/harness-schema), you can use [Chrome DevTools](https://developer.chrome.com/docs/devtools/) to view the schema.
 
 1. Open Chrome DevTools and select the **Network** tab.
 2. Select the `yaml-schema` item.
