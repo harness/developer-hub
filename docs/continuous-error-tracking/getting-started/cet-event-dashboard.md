@@ -78,7 +78,7 @@ To display the top events on the graph, select the **Event Distribution** split 
 
 ### Remove an event from the graph
   
-  * **Remove a Single Event**:  You can remove a single event from the Event Graph by clicking again on the same icon.
+  * **Remove an event**:  To remove an event from the Event Graph select the ** - ** icon next to it.
     ![Remove Evenet from Graph](./static/cet-even-distribution-remove-event.png)
 
   * **Remove all events**: To remove all events from the graph, simply choose the **Clear** option.
