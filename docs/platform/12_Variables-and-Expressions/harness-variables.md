@@ -365,10 +365,10 @@ Variable names may only contain `a-z, A-Z, 0-9, _, ., -, and $` but a variable 
 Below states an example bash-script on accessing and usage of dots (`.`) and hyphens (`-`) in variable names:
 
 ```
-	  echo <+pipeline.variables.get("pipeline-var")>
-	  echo <+pipeline.stages.custom.variables.get("stage-var")>
-	  echo <+pipeline.variables.get("pipeline.var")>
-	  echo <+pipeline.stages.custom.variables.get("stage.var")>
+  echo <+pipeline.variables.get("pipeline-var")>
+  echo <+pipeline.stages.custom.variables.get("stage-var")>
+  echo <+pipeline.variables.get("pipeline.var")>
+  echo <+pipeline.stages.custom.variables.get("stage.var")>
 ```
 
 This states that for any custom variable with a dot (`.`) or a hyphen (`-`) in their name, they can be accessed only with `.get("VARIABLE_NAME")`.
