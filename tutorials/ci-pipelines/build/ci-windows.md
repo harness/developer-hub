@@ -254,7 +254,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 :::tip Test Intelligence
 
-For Java, Kotlin, Scala, and C# (.NET Core) apps, you can [run tests with Test Intelligence](docs/continuous-integration/use-ci/set-up-test-intelligence/), which can reduce test time.
+For some languages, you can leverage Harness' [Test Intelligence](docs/continuous-integration/use-ci/set-up-test-intelligence/) feature to reduce unit test time.
 
 :::
 
