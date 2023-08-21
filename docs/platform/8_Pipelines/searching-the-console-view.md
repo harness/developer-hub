@@ -16,7 +16,7 @@ To view execution details, you must have run a pipeline at least once. If you ha
 
 1. Go to the execution details page, and make sure **Console View** is enabled.
 
-![](./static/searching-the-console-view-41.png)
+   ![](./static/searching-the-console-view-41.png)
 
 2. Select the step that has the logs that you want to search.
 3. In the **Console Logs**, select the **Search** icon or use the *find in page* keyboard shortcut, which is `CMD + F` on macOS or `Ctrl + F` on Linux or Microsoft Windows.
@@ -42,12 +42,12 @@ You can configure your preferences for log level and date and time information.
 
 1. Go to the execution details page, and make sure **Console View** is enabled.
 
-![](./static/searching-the-console-view-41.png)
+   ![](./static/searching-the-console-view-41.png)
 
 2. In the **Console Logs**, select the **Settings** icon.
 
-![](./static/console-view-preferences1.png)
+   ![](./static/console-view-preferences1.png)
 
 3. Configure your log settings as desired, and then select **Enable**.
 
-![](./static/console-view-preferences2.png)
+   ![](./static/console-view-preferences2.png)
