@@ -25,7 +25,7 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 
 ### Ingress
 * Istio supported version: 1-15-3
-* NGINX supported version: v1.0.0-alpha.2
+* NGINX supported version: v1.3.0
 
 ### RBAC requirements
 
