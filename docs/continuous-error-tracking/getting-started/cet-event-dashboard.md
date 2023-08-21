@@ -64,7 +64,7 @@ The Event List displays the following information:
 A key element in the dashboard is the interactive graph. It displays a visual representation of the event volume present in the current timeframe and view.```
 
 ### View Event Distribution Graph
-  The Event Graph displays how certain metrics have been performing over time. The initial graphs can be seen by selecting the collapsable button  **Event Distribution**.  This shows you the trend for the total number of errors over the selected time span.
+The Event Graph illustrates the historical performance of specific metrics. To view the graph, select the Event Distribution collapsible button. This displays the trend for the total count of errors across the chosen time interval.
     ![Event Dsitribution Default](./static/cet-event-distribution-default.png)
 
 ### Adding an Event to the Event Graph:
