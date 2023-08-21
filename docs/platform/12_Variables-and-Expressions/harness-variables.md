@@ -360,7 +360,18 @@ This also works for nested expressions. For example:
 
 A variable name is the name in the variable expression, such as `foo` in `<+stage.variables.foo>`.
 
-Variable names may only contain `a-z, A-Z, 0-9, _, ., and $` but a variable name must start with any character from `a-z, A-Z, and _`. They cannot contain hyphens.
+Variable names may only contain `a-z, A-Z, 0-9, _, ., -, and $` but a variable name must start with any character from `a-z, A-Z, and _`.
+
+Below states an example bash-script on accessing and usage of dots (`.`) and hyphens (`-`) in variable names:
+
+```
+	  echo <+pipeline.variables.get("pipeline-var")>
+	  echo <+pipeline.stages.custom.variables.get("stage-var")>
+	  echo <+pipeline.variables.get("pipeline.var")>
+	  echo <+pipeline.stages.custom.variables.get("stage.var")>
+```
+
+This states that for any custom variable with a dot (`.`) or a hyphen (`-`) in their name, they can be accessed only with `.get("VARIABLE_NAME")`.
 
 Certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
 
