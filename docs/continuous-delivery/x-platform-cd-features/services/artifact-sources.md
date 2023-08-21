@@ -1144,7 +1144,13 @@ Azure DevOps Artifacts are can be used with the following Harness deployment typ
 
 Harness supports Maven and Nuget package types. 
 
-Harness also supports [universal packages](https://learn.microsoft.com/en-us/azure/devops/artifacts/quickstarts/universal-packages?view=azure-devops&tabs=Windows), which enable developers to store an extensive array of package types that extend beyond the conventional ones. Here's an example definition of a universal package in a Harness service definition:
+Harness also supports [universal packages](https://learn.microsoft.com/en-us/azure/devops/artifacts/quickstarts/universal-packages?view=azure-devops&tabs=Windows), which enable developers to store an extensive array of package types that extend beyond the conventional ones. Note the following:
+
+- Currently support is limited to traditional VM deployments using [SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/) or [WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial).
+
+- Artifact source templates are not currently supported for universal packages. 
+
+Here's an example definition of a universal package in a Harness service definition:
 
 ```yaml
 service:
