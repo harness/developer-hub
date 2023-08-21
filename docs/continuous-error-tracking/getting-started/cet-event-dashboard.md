@@ -76,7 +76,7 @@ To add a new event to the graph, click on the "+" icon located in the last colum
 To display the top events on the graph, select the **Event Distribution** split series icon. This adds the top error events as a series on the graph. This feature provides you with an instant overview of the errors with the most impact that need immediate attention.```
     ![Plot Top Events](./static/cet-event-distribution-plot-top-events.png)
 
-### Removing Event from the Event Graph:
+### Remove an event from the graph
   
   * **Remove a Single Event**:  You can remove a single event from the Event Graph by clicking again on the same icon.
     ![Remove Evenet from Graph](./static/cet-even-distribution-remove-event.png)
