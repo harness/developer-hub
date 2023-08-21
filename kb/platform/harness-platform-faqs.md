@@ -351,6 +351,23 @@ There are permissions for the User group "Hide NextGen Button" under Account Per
 
 In case you are a part of multiple account and 1 account has SAML login and other has Username/Password. User must make sure that the SAML account is set as default account, else it wont work with SAML login as the login mechanism of the default account is taken into consideration. 
 
+
+### Are delegate tokens stored in MongoDB?
+
+Yes, the delegate tokens are stored in MongoDB
+
+### Should we store the token that hasn't been generally available yet in the secret manager?
+
+No, we don't use the customer secret manager to encrypt delegate tokens. Rather than storing the token in plain text, we leverage Harness' internal encryption mechanism. This mechanism enables us to store the token's encrypted value in the database. This approach enhances security and mitigates potential risks associated with storing sensitive information.
+
+### Do we have any static limit in NG like CG(pipeline/service creation etc)?
+
+No, we don't have limit on pipeline creation, we do have limit for entities creation for free/community tier, but no limits for enterprise.
+
+### Is there a limit to the number of triggers a pipeline can have?
+
+There is no limit on number of triggers for pipeline.
+
 ### Can we raise the parallel stage limit for a customer?
 
 These limits are important for the stability of our systems, the limit is set at 30 for parallel stages for enterprise customer.
@@ -381,3 +398,4 @@ You should create the delegate with the minimum recommened resources to solve th
 
 ### Is there a functionality to auto accept invite for username/password login?
 It's present for saml based login because authentication is taken care by SAML provider. In password need login we need the user to create a password in Harness.
+
