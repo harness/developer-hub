@@ -351,5 +351,33 @@ There are permissions for the User group "Hide NextGen Button" under Account Per
 
 In case you are a part of multiple account and 1 account has SAML login and other has Username/Password. User must make sure that the SAML account is set as default account, else it wont work with SAML login as the login mechanism of the default account is taken into consideration. 
 
+### Can we raise the parallel stage limit for a customer?
 
+These limits are important for the stability of our systems, the limit is set at 30 for parallel stages for enterprise customer.
 
+### do we have the ability in NG to alert/notify when a delegate is down?
+
+No we don't have the ability as of now.
+
+### I am unable to delete the connector as its referenced by an entity but the entity is no longer present.
+
+This can be easily acheived by enabling Force Delete option in default settings.
+
+### What is the convention of creating a default token for delegate ?
+
+The default token is named using the convention of level at which it is being called for eg `default_token/org/project`
+
+### Can the delegate token be deleted ?
+
+The delegate token cannot be deleted it can be only revoked and the revoked tokens get deleted in 30 days.
+
+### When we add a delegate tag via a api why that tag disappears when the delegate is restarted?
+
+The delegate tags disapper as it will not be there in original delegate yaml which was used to start delegate.
+
+### My delegate is restarting and in logs this is coming up "Failed to find field for io.kubernetes.client.openapi.models.V1JSONSchemaProps.x-kubernetes-list-map-keys"
+
+You should create the delegate with the minimum recommened resources to solve this issue.
+
+### Is there a functionality to auto accept invite for username/password login?
+It's present for saml based login because authentication is taken care by SAML provider. In password need login we need the user to create a password in Harness.
