@@ -84,11 +84,11 @@ export const featuredTutorials: CardItem[] = [
           link: "/docs/category/slo-downtime",
         },
         {
-          title: "Health source catalog",
+          title: "Add SLO annotations",
           module: MODULES.srm,
           description:
-            "Explore the range of health sources supported by Harness and learn how to add them to your monitored service.",
-          link: "/docs/category/health-sources-catalog",
+            "Add annotations about specific events or changes that affect service performance and the error budgets.",
+          link: "/docs/service-reliability-management/manage-slo/slo-annoations",
         },
       ],
     },
@@ -111,6 +111,13 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Explore the range of change sources supported by Harness and learn how to add them to your monitored service.",
           link: "/docs/category/change-sources-catalog",
+        },
+        {
+          title: "Health source catalog",
+          module: MODULES.srm,
+          description:
+            "Explore the range of health sources supported by Harness and learn how to add them to your monitored service.",
+          link: "/docs/category/health-sources-catalog",
         },
       ],
     },

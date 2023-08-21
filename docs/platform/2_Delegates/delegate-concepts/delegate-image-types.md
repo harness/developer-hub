@@ -8,13 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness packages and distributes delegates on different types of images. Delegate images are identified by the delegate name. Image types are distinguished by tag.  
+import Delimagetypes from '/docs/platform//2_Delegates/shared/delegate-image-types-intro-table.md'
 
-| Image type | Image tag | Image description |
-| --- | --- | --- |
-| DELEGATE | *`yy.mm.xxxxx`* | The release year, month, and version in dot-separated format. Supported on both NextGen and FirstGen Harness Platform. |
-| DELEGATE-MINIMAL | *`yy.mm.xxxxx.minimal`* | The minimal tag is appended to the release year, month, and version in dot-separated format. Supported on both NextGen and FirstGen Harness Platform. |
-| DELEGATE-LEGACY | *`latest`* | Delegate that auto upgrades with no flexibility to turn off auto upgrade (DEPRECATED) |
+<Delimagetypes />
 
 ## Image type comparison
 

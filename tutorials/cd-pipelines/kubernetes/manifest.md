@@ -66,14 +66,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 </details>
 
 1. Under **Project Setup**, select **Delegates**.
-    - Select **Tokens**.
-        - Select **New Token**.
-        - Name the token `delegate_token`.
-        - Select **Apply**.
-        - Copy the token value by selecting on the copy icon and store it somewhere.
-        - Select **Close**.
-    - Select **Delegates**.
-        - Select **New Delegate**.
+    - Select **New Delegate**.
           
           For this tutorial, let's explore how to install a delegate using Helm.
 
@@ -89,8 +82,8 @@ The Harness delegate is a service that runs in your local network or VPC to esta
         helm repo update harness-delegate
         ```
 
-        -  In the command provided, `ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the delegate installation wizard.
-        -  Replace **DELEGATE_TOKEN** in the command with the token that was copied earlier and proceed with delegate installation.
+        -  In the example command provided, `ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the delegate installation wizard.
+        - Copy the command as shown in the installation wizard, which is of the format of the example mentioned below and run in your terminal. 
 
          
         ```bash
@@ -182,7 +175,7 @@ In Harness, services represent what you deploy to environments. You use services
     - Select **New Service**.
     - Enter the name `harnessguestbook`.
     - Select **Save**, and then **YAML** (on the **Configuration** tab).
-    - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/service.yml), and paste the into the YAML editor.
+    - Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/service.yml), and paste it into the YAML editor.
     - Select **Save**, and verify that the service **harness_guestbook** is successfully created.
 
 ### Pipeline

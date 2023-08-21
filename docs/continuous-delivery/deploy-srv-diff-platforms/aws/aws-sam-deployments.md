@@ -155,7 +155,7 @@ To create an environment, do the following:
 Next you will add the SAM infrastructure definition.
 
 
-### AWS SAM infrastructure definition
+## Define the infrastructure
 
 The SAM infrastructure definition is the target AWS account and region for the SAM deployment.
 
@@ -167,6 +167,8 @@ The SAM infrastructure definition is the target AWS account and region for the S
 6. Select **Save**.
 
 When a pipeline stage uses this infrastructure definition, it will deploy your SAM template changes in the target region.
+
+
 
 ## AWS SAM stage
 

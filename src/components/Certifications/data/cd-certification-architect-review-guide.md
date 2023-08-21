@@ -9,7 +9,7 @@
 | Architect, deploy, and manage complex, large-scale containerized applications using Kubernetes and other orchestration tools | [Add a Kubernetes cluster connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector/) |
 | Demonstrate the ability to troubleshoot complex scenarios in container orchestration environments | [CD steps, stages, and strategies](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/stages-steps-strategies/) |
 | **3. Advanced CI/CD Techniques** ||
-| Engineer sophisticated Continuous Integration flows, including advanced testing strategies and complex build scenarios | [Integration with Harness CD](https://developer.harness.io/tutorials/chaos-experiments/integration-with-harness-cd/) |
+| Engineer sophisticated Continuous Delivery flows, including advanced Chaos Engineering stratagies | [Chaos Engineering with Harness CD](https://developer.harness.io/tutorials/chaos-experiments/integration-with-harness-cd/) |
 | Design and implement comprehensive Continuous Delivery solutions, focusing on deployment strategies, pipeline optimization, and rollback procedures | [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview/) |
 | Architect and deploy complex, scalable, and robust pipelines using Harness, including advanced features and integrations | [Add container images as artifacts for Kubernetes deployments](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/) |
 | **4. Code Management and GitOps** ||
@@ -33,8 +33,8 @@
 | Use advanced Harness features such as triggers, utility pipelines, variables, and expressions for complex workflow management | [Manage input sets and triggers in Git Experience](https://developer.harness.io/docs/platform/git-experience/manage-input-sets-in-simplified-git-experience/) |
 | Leverage Harness's connector architecture, Resource Development with Harness API, and Harness AIDA for advanced CI/CD solutions | [Troubleshoot builds with AIDA](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida/) |
 | **9. Advanced Role-Based Access Control (RBAC) and Management** ||
-| Design and enforce advanced RBAC policies in securing a CI/CD pipeline within Harness | [Role-based access control overview](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/) |
-| Develop and implement complex user and permission management strategies within the Harness platform | [Permission Reference](https://developer.harness.io/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference) |
+| Design and enforce advanced RBAC policies in securing a CI/CD pipeline within Harness | [RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness) |
+| Develop and implement complex user and permission management strategies within the Harness platform | [Permission Reference](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference) |
 | Troubleshoot complex permission issues and demonstrate an advanced understanding of access control principles | [Permissions and ports for Harness connections](https://developer.harness.io/docs/platform/references/permissions-and-ports-for-harness-connections/) |
 | **10. Mastering Complex Pipeline Management in Harness** ||
 | Architect and manage sophisticated, large-scale deployment pipelines in Harness, focusing on best practices, performance, and reliability | [Custom deployments using Deployment Templates](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/) |

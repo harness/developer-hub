@@ -253,6 +253,14 @@ const config = {
                 to: "certifications/continuous-integration",
               },
               {
+                label: "Cloud Cost Management",
+                to: "certifications/cloud-cost-management",
+              },
+              {
+                label: "Feature Flags",
+                to: "certifications/feature-flags",
+              },
+              {
                 label: "Instructions",
                 to: "certifications/instructions",
               },

@@ -10,7 +10,16 @@ helpdocs_is_published: true
 
 This topic describes CI Build stage settings. For more information about configuring stages in CI pipelines, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
 
-To create, edit, and delete stages in CI pipelines, you need either Project Admin or Project Member permissions. For more information, go to the [Permission Reference](/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference).
+:::info Add a Build stage to a pipeline
+
+To create, edit, and delete stages in CI pipelines, you need either Project Admin or Project Member permissions. For more information, go to the [Permission Reference](/docs/platform/role-based-access-control/permissions-reference).
+
+1. In Harness, edit or [create a pipeline](../prep-ci-pipeline-components.md).
+2. Select **Add Stage**, and then select **Build**.
+3. Enter a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
+4. Select the [Overview](#overview), [Infrastructure](#infrastructure), [Execution](#execution), and [Advanced](#advanced) tabs to configure the stage settings, [set up the build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure), and add steps to the stage.
+
+:::
 
 ## Stage Name
 
@@ -32,7 +41,7 @@ If not selected, Harness does not clone the codebase when initializing the stage
 
 ## Configure Codebase
 
-Specify the pipeline's default [codebase configuration](../codebase-configuration/create-and-configure-a-codebase.md). These settings are available when you add the first stage to a pipeline. After adding the first stage, these are managed under the pipeline's overall **Codebase** settings.
+Specify the pipeline's default codebase configuration. These settings are available when you add the first stage to a pipeline. After you add the first stage, you manage these under the pipeline's overall **Codebase** settings. For more information about codebase configuration, go to [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
 
 ### Connector
 
@@ -62,23 +71,19 @@ For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Bu
 
 ### Cache Intelligence
 
-You can enable  <!-- and configure --> [Cache Intelligence](../caching-ci-data/cache-intelligence.md). This feature is only available for Linux and Windows platforms on Harness Cloud build infrastructure.
+You can enable and configure [Cache Intelligence](../caching-ci-data/cache-intelligence.md). This feature is only available for Linux and Windows platforms on Harness Cloud build infrastructure.
 
 For fully supported build tools with dependencies stored in the default location for the tool used, you only need to select **Enable Cache Intelligence**.
 
-For other build tools or non-default cache locations, you must provide custom cache paths in addition to enabling Cache Intelligence.
+For other build tools or non-default cache locations, you must provide custom cache **Paths** in addition to enabling Cache Intelligence. Depending on the cache location, you might also need to specify these paths in **Shared Paths**.
 
-<!-- select **Enable Cache Intelligence** and provide **Paths** to cache.-->
-
-Optionally, you can specify a custom cache key.
-
-<!-- Optionally, you can specify a custom cache **Key**. -->
+Optionally, you can specify a custom cache **Key**
 
 For information about supported tools, enabling cache intelligence, and configuring custom cache paths and keys, go to the [Cache Intelligence](../caching-ci-data/cache-intelligence.md) documentation.
 
 ### Advanced: Stage Variables
 
-[Stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) are available to all steps in the stage. For an example use case, go to [Useful techniques: Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#useful-techniques).
+[Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. For an example use case, go to [Useful techniques: Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#useful-techniques).
 
 ## Infrastructure
 

@@ -29,7 +29,9 @@ You must not rename the cluster. If you're setting up a new connector with the c
 :::
 
 :::note
-The supported Kubernetes version is 1.19.
+* The supported Kubernetes version is 1.19 or higher. 
+* For a list of supported ingress controllers, go to [Supported Ingress Controllers for Kubernetes AutoStopping](../../../whats-supported.md).
+
 :::
 
 **​Set up your Kubernetes Cluster**
@@ -53,7 +55,7 @@ You need a target Kubernetes cluster for the Harness Delegate and deployment. Ma
 :::important
 These sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services. Ensure that the cluster has enough memory, storage, and CPU for all of its resource consumers.
 :::
-* Make sure you are a member of the Harness Administrator Group in the Harness FirstGen version. This is required to [create an API key](/docs/platform/User-Management/add-and-manage-api-keys).
+* Make sure you are a member of the Harness Administrator Group in the Harness FirstGen version. This is required to [create an API key](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 * **Metrics Server**: Metrics Server must be running on the Kubernetes cluster where your Harness Kubernetes Delegate is installed. Before enabling CCM for Kubernetes, you must make sure the utilization data for pods and nodes is available.
   
   
@@ -67,8 +69,12 @@ To install a metrics server on your EKS clusters, run the following command
 ```
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.5.0/components.yaml
 ```
+Resources can be adjusted proportionally based on number of nodes in the cluster. For clusters exceeding 100 nodes, allocate the following additional resources:
 
-For a list of supported ingress controllers, go to [Supported Ingress Controllers for Kubernetes AutoStopping](../../../../getting-started/supported-platforms-and-technologies.md#cloud-cost-management).
+  * 1m core per node
+  * 2MiB memory per node 
+  
+
 
 ### Kubernetes Coverage
 

@@ -1,6 +1,6 @@
 ---
 title: Add a stage
-description: This functionality is limited temporarily to the platforms and settings you can see. More functionality for this feature is coming soon. A Stage is a subset of a Pipeline that contains the logic to p…
+description: Learn how to add and configure a pipeline stage.
 sidebar_position: 3
 helpdocs_topic_id: 2chyf1acil
 helpdocs_category_id: kncngmy17o
@@ -8,86 +8,103 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This functionality is limited temporarily to the platforms and settings you can see. More functionality for this feature is coming soon.A Stage is a subset of a Pipeline that contains the logic to perform one major segment of the Pipeline process. Stages are based on the different milestones of your Pipeline, such as building, approving, and delivering.
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-Adding a stage to your Pipeline is the same across all Harness modules (CD, CI, etc). When you add a stage you select the module you want to use.
+A stage is a part of a pipeline that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
 
-The module you select determines the stage settings.
+The process of adding a stage to a pipeline is the same for all Harness modules. When you add a stage to a pipeline, you select the stage type, such as **Build** for CI or **Deploy** for CD. The available stage settings are determined by the stage type, and, if applicable, the module associated with the selected stage type.
 
-## Before you begin
+This functionality is limited to the modules and settings that you have access to.
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
+This topic assumes you are familiar with [Harness' key concepts](../../getting-started/learn-harness-key-concepts.md) and you have a [Harness project](../organizations-and-projects/create-an-organization.md).
 
-## Step 1: Create a Pipeline
+## Add a stage
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
+1. Create a pipeline in any module in your project.
+2. In your pipeline, select **Add stage** and configure the stage settings.
 
-You can create a Pipeline from any module in your Project, and then add stages for any module.
+   * You must provide a few initial settings to add a stage to a pipeline, and then you configure additional settings, such as **Infrastructure** or **Stage Variables** after adding the stage.
+   * The available settings depend on the module and stage type. Go to your module's documentation for more information about that module's stage settings.
 
-This topic shows you how to create a Pipeline from the CI module. To do this, perform the below steps:
+3. For certain modules (CI, CD, STO, etc.), in the **Execution** tab, add steps to the stage to define the tasks to perform in that stage. The available steps depend on the stage type.
 
-In Harness, click **Builds** and then click **Pipelines**.
+:::tip
 
-Click **Pipeline**. The new Pipeline settings appear.
+If a specific module or stage type isn't shown, make sure the module is enabled in your project. For more information, go to [Create organizations and projects](../organizations-and-projects/create-an-organization.md).
 
-Enter **Name**, **Description**, **Tags**, **and Timeout** for your Pipeline.
+:::
 
-![](./static/add-a-stage-55.png)
+## Stage names
 
-Click **Start**. Now you're ready to add a stage.
+When you create a stage, you give it a name. Harness automatically creates and **Id** ([Entity Identifier](../20_References/entity-identifier-reference.md)) based on the name. You can change the **Id** during initial stage creation; however, once the stage is saved, the **Id** becomes immutable.
 
-## Step 2: Add a Stage
+You can change the **Name** at any time, but you can't change the **Id**.
 
-Click **Add Stage**. The stage options appear.
+## Stage variables
 
-Select a stage type and follow its steps.
+Stage variables are variables that you add to a stage and then reference in the entity settings and steps in that stage. Stage variables can be custom variables or modify known variables (service variables, environment variables, etc.).
 
-The steps you see depend on the type of stage you selected.
+You can add stage variables in the Pipeline Studio's Visual Editor or YAML Editor.
 
-Don't see the module you want? You can enable modules in your Project Overview. See [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md). Enter a name for the stage.
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
 
-You can add a name when you create the stage, but you can edit the name in the **Overview** section of the stage anytime.
+To add stage variables, go to a stage's **Overview** tab, expand the **Advanced** section, and then select **Add Variable**.
 
-Changing the stage name doesn't change the stage identifier (Id). The stage identifier is created when you first name the stage and it cannot be changed. See [Entity Identifier Reference](../20_References/entity-identifier-reference.md).
-
-For CD stages, you can select a deployment type. A Stage can deploy Services, and other workloads. Select the type of deployment this Stage performs.
-
-## Option: Stage Variables
-
-Once you've created a stage, its settings are in the **Overview** tab. For example, here's the **Overview** tab for a Deploy stage:
+<figure>
 
 ![](./static/add-a-stage-56.png)
-In **Advanced**, you can add **Stage Variables**.
 
-Stage variables are custom variables you can add and reference in your stage and Pipeline. They're available across the Pipeline. You can override their values in later stages.
+<figcaption>The <b>Overview</b> tab for a <b>Deploy</b> stage.</figcaption>
+</figure>
 
-You can even reference stage variables in the files fetched at runtime.
-
-For example, you could create a stage variable `name` and then reference it in the Kubernetes values.yaml file used by this stage: `name: <+stage.variables.name>`:
-
-
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
 ```
-name: <+stage.variables.name>  
+
+```yaml
+    - stage:
+        ...
+        variables:
+          - name: VAR_NAME
+            type: String ## String or Secret
+            description: ""
+            value: 90
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/References/runtime-inputs).
+
+Stage variables are available across the pipeline and you can override their values in later stages. You can also reference stage variables in files fetched at runtime. For example, you could create a stage variable called `NAME` and then reference it in the Kubernetes `values.yaml` file used by that stage by calling the stage variable expression: `<+stage.variables.NAME>`. For example:
+
+```yaml
+name: <+stage.variables.NAME>  
 replicas: 2  
   
-image: <+artifact.image>  
+image: <+primary.artifact.image>  
 ...
 ```
-When you run this Pipeline, the value for `name` is used for the values.yaml file. The value can be a Fixed Value, Expression, or Runtime Input.
 
-You reference stage variables **within their stage** using the expression `<+stage.variables.[variable name]>`.
+When you run this pipeline, the value you set for `NAME` in the stage settings is supplied to the `values.yaml` file.
 
-You reference stage variables **outside their stage** using the expression `<+pipeline.stages.[stage Id].variables.[variable name]>`.
+To reference stage variables in the same stage where they are defined, use the expression `<+stage.variables.VAR_NAME>`.
 
-## Option: Advanced Settings
+To reference stage variables in other stages, use the expression `<+pipeline.stages.STAGE_ID.variables.VAR_NAME>`.
 
-In **Advanced**, you can use the following options:
+## Advanced stage settings
 
-* [Stage Conditional Execution Settings](w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md)
+On the **Advanced** tab, you can configure:
 
-## See also
-
-* [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
-
+* [Conditional executions](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure strategies](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping strategies - Matrix, repeat, parallelism](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)

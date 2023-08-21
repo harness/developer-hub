@@ -30,11 +30,7 @@ To configure multiple SAML providers in Harness:
 
 ## Select a SAML provider
 
-1. Select one of the following SAML provider: 
-   - Azure
-   - Okta
-   - OneLogin
-   - Other
+1. Select a SAML provider.
    
    ```mdx-code-block
    <Tabs>

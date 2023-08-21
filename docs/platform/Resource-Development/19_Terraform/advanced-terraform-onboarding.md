@@ -13,7 +13,7 @@ The target audience for this article are:
 
 ## Resource scoping
 
-A common pattern you will see in the following modules is using `project_id` and `organization_id` to specify the [scope](../../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope) at which the resources should be created.
+A common pattern you will see in the following modules is using `project_id` and `organization_id` to specify the [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) at which the resources should be created.
 
 - Adding the organization ID adds the resource to the target organization.
 - Adding the project ID adds the resource to the target project.
@@ -215,7 +215,7 @@ module "devops" {
 
 ### [User accounts](https://github.com/harness-community/terraform-harness-rbac/tree/main/modules/user_accounts)
 
-It is not recommended that you create user accounts with terraform. Instead you should explore enabling [SSO](https://developer.harness.io/docs/platform/authentication/single-sign-on-sso-with-oauth/), [SCIM](https://developer.harness.io/docs/platform/Authentication/provision-users-and-groups-using-azure-ad-scim), or SSO linked groups to control user access from your IDP.
+It is not recommended that you create user accounts with terraform. Instead you should explore enabling [SSO](https://developer.harness.io/docs/platform/authentication/single-sign-on-sso-with-oauth/), [SCIM](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim), or SSO linked groups to control user access from your IDP.
 
 ## [Connectors](https://github.com/harness-community/terraform-harness-connectors)
 

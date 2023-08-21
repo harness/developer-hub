@@ -33,7 +33,193 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
-    
+
+
+     // Created by SudheendraKatte for branch srm-14106-reset-error-budget on August 10, 2023
+     {
+      from: "/docs/service-reliability-management/slo-annoations",
+      to: "/docs/service-reliability-management/manage-slo/slo-annoations",
+    },
+    {
+      from: "/docs/service-reliability-management/slo-downtime/slo-downttime-overview",
+      to: "/docs/service-reliability-management/manage-slo/slo-downtime/slo-downttime-overview",
+    },
+    {
+      from: "/docs/service-reliability-management/slo-downtime/configure-slo-downtime",
+      to: "/docs/service-reliability-management/manage-slo/slo-downtime/configure-slo-downtime",
+    },
+    {
+      from: "/docs/service-reliability-management/slo-downtime/manage-slo-downtime",
+      to: "/docs/service-reliability-management/manage-slo/slo-downtime/manage-slo-downtime",
+    },
+
+   // Created by ravilach for modify-getting-started on August 16 2023
+   {
+    from: "/docs/getting-started/start-a-free-trial",
+    to: "/docs/getting-started/start-for-free",
+  },
+
+    // Created by SudheendraKatte for branch cet-whats-supported on August 3 2023
+
+    {
+      from: "/docs/category/get-started-3/",
+      to: "/docs/category/get-started-with-cet",
+    },
+
+    // Created by aimurphy for branch doc-3441-rbac on July 28, 2023
+
+    {
+      from: "/docs/platform/APIs/jwt-token-auth",
+      to: "/docs/platform/Resource-Development/APIs/default-settings-for-jwt-token",
+    },
+    {
+      from: "/docs/platform/Resource-Development/APIs/jwt-token-auth",
+      to: "/docs/platform/Resource-Development/APIs/default-settings-for-jwt-token",
+    },
+    {
+      from: "/docs/platform/Resource-Development/APIs/harness-rest-api-reference",
+      to: "/docs/platform/Resource-Development/APIs/api-quickstart",
+    },
+    {
+      from: "/docs/platform/APIs/harness-rest-api-reference",
+      to: "/docs/platform/Resource-Development/APIs/api-quickstart",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/set-up-rbac-pipelines",
+      to: "/docs/platform/role-based-access-control/rbac-in-harness",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/ref-access-management/api-permissions-reference",
+      to: "/docs/platform/Resource-Development/APIs/api-permissions-reference",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference",
+      to: "/docs/platform/role-based-access-control/permissions-reference",
+    },
+    {
+      from: "/docs/category/users",
+      to: "/docs/category/access-control-1",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/harness-default-user-groups",
+      to: "/docs/platform/role-based-access-control/add-user-groups",
+    },
+    {
+      from: "/docs/platform/User-Management/harness-default-user-groups",
+      to: "/docs/platform/role-based-access-control/add-user-groups",
+    },
+    {
+      from: "/docs/platform/User-Management/add-user-groups",
+      to: "/docs/platform/role-based-access-control/add-user-groups",
+    },
+    {
+      from: "/docs/platform/User-Management/add-and-manage-api-keys",
+      to: "/docs/platform/Resource-Development/APIs/add-and-manage-api-keys",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/add-and-manage-api-keys",
+      to: "/docs/platform/Resource-Development/APIs/add-and-manage-api-keys",
+    },
+    {
+      from: "/docs/platform/User-Management/add-users",
+      to: "/docs/platform/role-based-access-control/add-users",
+    },
+    {
+      from: "/docs/platform/User-Management/add-and-manage-service-account",
+      to: "/docs/platform/role-based-access-control/add-and-manage-service-account",
+    },
+    {
+      from: "/docs/platform/User-Management/provision-use-jit",
+      to: "/docs/platform/role-based-access-control/provision-use-jit",
+    },
+    {
+      from: "/docs/platform/Authentication/provision-users-with-okta-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-with-okta-scim",
+    },
+    {
+      from: "/docs/platform/User-Management/provision-users-with-okta-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-with-okta-scim",
+    },
+    {
+      from: "/docs/platform/Authentication/provision-users-and-groups-using-azure-ad-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim",
+    },
+    {
+      from: "/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim",
+    },
+    {
+      from: "/docs/platform/Authentication/7provision-users-and-groups-with-one-login-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim",
+    },
+    {
+      from: "/docs/platform/User-Management/7provision-users-and-groups-with-one-login-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim",
+    },
+
+  // Created by SudheendraKatte for branch cet-whats-supported on August 3 2023
+
+    {
+      from: "/docs/continuous-error-tracking/agent-compatibility",
+      to: "/docs/continuous-error-tracking/whats-supported",
+    },
+
+    // Created by GigiHanna from branch CHAOS-2153-move-infra on August 8, 2023
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/connect-chaos-infrastructures",
+      to: "/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures",
+    },
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/disconnect-chaos-infrastructure",
+      to: "/docs/chaos-engineering/chaos-infrastructure/disconnect-chaos-infrastructure",
+    },
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/upgrade-infra",
+      to: "/docs/chaos-engineering/chaos-infrastructure/upgrade-infra",
+    },
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/linux-chaos-infrastructure-advanced-management",
+      to: "/docs/chaos-engineering/chaos-infrastructure/linux-chaos-infrastructure-advanced-management",
+    },
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/openshift-infra",
+      to: "/docs/chaos-engineering/chaos-infrastructure/openshift-infra",
+    },
+
+    // Created by aimurphy from branch ci-ti-refresh-multiple-tickets on July 27, 2023
+    {
+      from: "/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage",
+      to: "/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build",
+    },
+    {
+      from: "/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
+    },
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
+    },
+
     // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
     {
       from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
@@ -269,7 +455,7 @@ module.exports = {
 
     {
       from:"/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/auto-stopping-rules",
-      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/auto-stopping-rules",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/auto-stopping-rules",
     },
 
     // Created by RashmiNandaSahoo to fix gitx broken link on May 22 2023
@@ -665,38 +851,6 @@ module.exports = {
     },
     // Created by Rashmi Sahoo to fix platform re-direct April 19th, 2023
     {
-      from: "/docs/platform/Authentication/provision-users-with-okta-scim",
-      to: "/docs/platform/User-Management/provision-users-with-okta-scim",
-    },
-    {
-      from: "/docs/platform/Authentication/provision-users-and-groups-using-azure-ad-scim",
-      to: "/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim",
-    },
-    {
-      from: "/docs/platform/Authentication/7provision-users-and-groups-with-one-login-scim",
-      to: "/docs/platform/User-Management/7provision-users-and-groups-with-one-login-scim",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/add-users",
-      to: "/docs/platform/User-Management/add-users",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/add-user-groups",
-      to: "/docs/platform/User-Management/add-user-groups",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/harness-default-user-groups",
-      to: "/docs/platform/User-Management/harness-default-user-groups",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/add-and-manage-service-account",
-      to: "/docs/platform/User-Management/add-and-manage-service-account",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/add-and-manage-api-keys",
-      to: "/docs/platform/User-Management/add-and-manage-api-keys",
-    },
-    {
       from: "/docs/platform/Security/add-use-text-secrets",
       to: "/docs/platform/Secrets/add-use-text-secrets",
     },
@@ -903,14 +1057,6 @@ module.exports = {
     {
       from: "/docs/platform/APIs/default-settings-for-jwt-token",
       to: "/docs/platform/Resource-Development/APIs/default-settings-for-jwt-token",
-    },
-    {
-      from: "/docs/platform/APIs/harness-rest-api-reference",
-      to: "/docs/platform/Resource-Development/APIs/harness-rest-api-reference",
-    },
-    {
-      from: "/docs/platform/APIs/jwt-token-auth",
-      to: "/docs/platform/Resource-Development/APIs/jwt-token-auth",
     },
     {
       from: "/docs/platform/Terraform/harness-terraform-provider-overview",
@@ -1803,7 +1949,7 @@ module.exports = {
     // Created by kat-enos on Jan 22, 2023
     {
       from: "/docs/platform/Delegates/delegate-reference/example-harness-delegate-yaml",
-      to: "/docs/platform/Delegates/delegate-reference/YAML/example-harness-delegate-yaml",
+      to: "/docs/platform/Delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate",
     },
 
     // Created by kat-enos on Jan 22, 2023
@@ -2325,11 +2471,11 @@ module.exports = {
     },
     {
       from: "/docs/chaos-engineering/user-guides/connect-chaos-infrastructures",
-      to: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/connect-chaos-infrastructures",
+      to: "/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures",
     },
     {
       from: "/docs/chaos-engineering/user-guides/disconnect-chaos-infrastructure",
-      to: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/disconnect-chaos-infrastructure",
+      to: "/docs/chaos-engineering/chaos-infrastructure/disconnect-chaos-infrastructure",
     },
     {
       from: "/docs/chaos-engineering/user-guides/construct-and-run-custom-chaos-experiments",
@@ -2797,14 +2943,6 @@ module.exports = {
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings",
     },
     {
-      from: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
-      to: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
-    },
-    {
-      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
-      to: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
-    },
-    {
       from: "/docs/category/build-stage-settings",
       to: "/docs/category/set-up-build-infrastructure",
     },
@@ -2832,11 +2970,6 @@ module.exports = {
     {
       from: "/docs/continuous-integration/ci-technical-reference/configure-service-dependency-step-settings",
       to: "/docs/continuous-integration/use-ci/manage-dependencies/configure-service-dependency-step-settings",
-    },
-
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings",
-      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings",
     },
 
     {
@@ -2996,12 +3129,30 @@ module.exports = {
     },
     // Created by bfisher for DOC-3488 on July 26, 2023
     {
-      from: "/docs/platform/resource-development/apis/rate-limits/",
+      from:  "/docs/platform/resource-development/apis/rate-limits/",
       to:   "/docs/platform/rate-limits",
     },
     {
-      from: "/docs/platform/Security/rate-limits",
+      from:  "/docs/platform/Security/rate-limits",
       to:   "/docs/platform/rate-limits",
     },
+    // Created by bfisher for DOC-3569 on August 11, 2023
+    {
+      from:  "/docs/self-managed-enterprise-edition/introduction/supported-features-and-integrations",
+      to:   "/docs/self-managed-enterprise-edition/smp-supported-platforms",
+    },
+    // Created by bfisher for DOC-3570 on August 14, 2023
+    {
+      from:  "/docs/platform/Delegates/delegate-reference/YAML/example-harness-delegate-yaml",
+      to:   "/docs/platform/Delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate",
+    },
+    {
+      from:  "/docs/platform/Delegates/delegate-reference/YAML/sample-harness-delegate-yaml-with-nfs-volume-mounted",
+      to:   "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
+    },
+    {
+      from:  "/docs/platform/Delegates/delegate-reference/YAML/sample-kubernetes-manifest-nfs-volume",
+      to:   "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
+    },
   ],
-};
+}

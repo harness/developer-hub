@@ -1,9 +1,8 @@
 ---
 sidebar_position: 1
 description: Install Harness Delegate on Kubernetes or Docker
+title: Install Harness Delegate on Kubernetes or Docker
 ---
-
-# Install Harness Delegate on Kubernetes or Docker
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -248,7 +247,7 @@ Ensure that you have the Docker runtime installed on your host. If not, use one 
 - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
 - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
-- [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
+- [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
 
 <h3> Install on Docker </h3>
 
@@ -267,7 +266,7 @@ docker run --cpus=1 --memory=2g \
 ```
 Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, to find your Harness cluster location, select **Account Settings**, and then select **Overview**. In **Account Overview**, look in **Account Settings**. It is listed next to **Harness Cluster Hosting Account**.
 
-For more information, go to [View account info and subscribe to downtime alerts](https://developer.harness.io/docs/platform/1_Get-started/platform-concepts/view-account-info-and-subscribe-to-alerts.md).
+For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/Get-started/view-account-info-and-subscribe-to-alerts).
 
 ![](./static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
 
@@ -281,7 +280,7 @@ For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation 
 | [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
 | [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
 
-To use local runner build infrastructure, modify the delegate command using the instructions to install the delegate in [Use local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate)
+If you are using a local runner CI build infrastructure, modify the delegate install command as explained in [Use local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate)
 
 ```mdx-code-block
 </TabItem>
