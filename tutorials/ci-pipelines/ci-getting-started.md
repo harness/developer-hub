@@ -53,7 +53,7 @@ Harness CI is four times faster due to optimized defaults with hosted builds, so
 
 Cache Intelligence dramatically reduces pipeline execution time by automatically caching well-known directories for Java, Node package managers, and more.
 
-Test Intelligence can improve build cycles by up to 90% with machine learning (ML) that runs only the necessary tests relevant to code changes. Once tests are identified, you can speed up test cycles even more by splitting and running tests concurrently.
+[Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) can improve build cycles by up to 90% with machine learning (ML) that runs only the necessary tests relevant to code changes. Once tests are identified, you can speed up test cycles even more by splitting and running tests concurrently.
 
 In the following demo video, Harness goes head-to-head with GitHub Actions. You can follow [these instructions](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and try it for yourself.
 
@@ -69,7 +69,7 @@ Developer productivity is a core pillar for Harness. We didn't want to build a C
 
 ### Create and share open source plugins
 
-Harness uses containers to drop pre‑configured steps into your pipeline. Choose from thousands of existing plugins, or [create your own](/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins) and run it on a container or the host virtual machine.
+Harness uses containers to drop pre‑configured steps into your pipeline. Choose from thousands of existing [plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins), or [create your own](/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins) and run it on a container or the host virtual machine.
 
 ## Create a pipeline for your favorite language
 
@@ -232,9 +232,9 @@ import TabItem from '@theme/TabItem';
 
 You can watch the build progression and find build logs on the [Builds and Build details pages](/docs/continuous-integration/use-ci/viewing-builds).
 
-## Build and test Apache Kafka four times faster on Harness CI
-
 Congratulations on building your first pipeline!
+
+## Build and test Apache Kafka four times faster on Harness CI
 
 You can build even faster with Harness CI - Learn how you can build and test Apache Kafka four times faster on Harness CI:
 

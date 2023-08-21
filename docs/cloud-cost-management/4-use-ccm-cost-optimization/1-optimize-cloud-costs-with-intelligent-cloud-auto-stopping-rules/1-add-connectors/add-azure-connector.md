@@ -12,7 +12,7 @@ Connectors allow Harness to connect to your deployment environments, such as Kub
 
 ### Before you begin
 
-* [AutoStopping Rules Overview](1-auto-stopping-rules.md)
+* [AutoStopping Rules Overview](../1-auto-stopping-rules.md)
 
 ### Prerequisites
 

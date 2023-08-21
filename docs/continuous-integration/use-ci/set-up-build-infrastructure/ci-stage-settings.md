@@ -83,7 +83,7 @@ For information about supported tools, enabling cache intelligence, and configur
 
 ### Advanced: Stage Variables
 
-[Stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) are available to all steps in the stage. For an example use case, go to [Useful techniques: Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#useful-techniques).
+[Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. For an example use case, go to [Useful techniques: Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#useful-techniques).
 
 ## Infrastructure
 

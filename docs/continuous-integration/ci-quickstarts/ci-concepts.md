@@ -98,7 +98,7 @@ For more information about using Harness Cloud for your CI pipelines, including 
 
 Testing is an important part of Continuous Integration (CI). Testing safeguards the quality of your product before shipping. However, test cycles often involve many tests, and it can take a significant amount of time for the tests to run. Additionally, the tests that run might be irrelevant to the code changes that triggered the build.
 
-Harness Test Intelligence (TI) helps your test cycle move faster without compromising quality. TI can dramatically improve test times by running only the unit tests required to confirm the quality of the code changes that triggered the pipeline. Instead of always running all unit tests, TI selects a subset of unit tests and skips the rest. Harness TI can also automatically split tests to run them in parallel.
+Harness Test Intelligence (TI) helps your test cycle move faster without compromising quality. TI can dramatically improve test times by running only the unit tests required to confirm the quality of the code changes that triggered the build. Instead of always running all unit tests, TI selects a subset of unit tests and skips the rest. Harness TI can also automatically split tests to run them in parallel.
 
 Test Intelligence gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. Using TI doesn't require you to change build and test processes.
 
@@ -130,33 +130,17 @@ Here's how Harness Test Intelligence performed with some popular open-source rep
 
 Harness CI is seamlessly integrated with other Harness modules, such as [Continuous Delivery](/docs/continuous-delivery), [Cloud Cost Management](/docs/cloud-cost-management), [Feature Flags](/docs/feature-flags), and [Security Testing Orchestration](/docs/security-testing-orchestration). The Harness Platform offers unified CI/CD pipelines with visual controls and approval gates. You no longer have to navigate between applications to follow the phases of your pipelines.
 
-<!-- ![](./static/ci-concepts-501.png) -->
-
-<docimage path={require('./static/ci-concepts-501.png')} />
-
 ### Containerized steps
 
 CI pipeline steps run as containers, making it language-agnostic. Containers are lightweight abstractions of the host operating system that can package code and dependencies independently of the steps. You can specify a container in the pipeline itself, and the agent will fetch and start the container where the job runs. Because all of the steps run in containers, and plugins have their own containers, you don't need to worry about dependencies.
-
-<!-- ![](./static/ci-concepts-503.png) -->
-
-<docimage path={require('./static/ci-concepts-503.png')} />
 
 ### Visual and YAML pipeline editors
 
 Scripting pipelines can be time-consuming and tedious. It may be difficult to envision the sequence of events in more complex pipelines. Harness CI's Pipeline Studio provides both a YAML editor and a graphical, visual editor. In the visual editor, you can easily add, remove, edit, and rearrange steps and stages. You can also use the YAML editor, which functions similarly to any other IDE, to configure your pipelines-as-code. You can also switch between the two for a combined approach.
 
-<!-- ![](./static/ci-concepts-505.png) -->
-
-<docimage path={require('./static/ci-concepts-505.png')} />
-
 ### Harness Git Experience
 
 The [Harness Git Experience](/docs/category/git-experience) provides seamless integration between your Harness projects, pipelines, and resources and your Git repos. You can work entirely from Git or use a hybrid method of Git and the Harness Manager. Harness CI integrates with all the popular source control management tools, including GitHub, GitLab, and Bitbucket. To get started, you need to activate the repository and include a `.harness` folder for the configuration files. This triggers a build within Harness CI once a commit is detected.
-
-<!-- ![](./static/ci-concepts-506.png) -->
-
-<docimage path={require('./static/ci-concepts-506.png')} />
 
 ## Try Harness CI
 

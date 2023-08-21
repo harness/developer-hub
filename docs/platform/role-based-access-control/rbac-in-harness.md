@@ -62,7 +62,7 @@ To learn about organizations and projects, go to [Create Organizations and Proje
 
 Harness RBAC uses **Principals**, **Resource Groups** and **Roles** to control access.
 
-* [Principals](#principal) are entities taking action in the system. These include users, user groups, and service accounts.
+* [Principals](#principals) are entities taking action in the system. These include users, user groups, and service accounts.
 * [Resource groups](#resource-groups) define what objects can be acted on. Objects include organizations, projects, pipelines, connectors, users, and more.
 * [Roles](#roles) define what actions can be taken on objects. Actions include view, create, edit, delete, and so on.
 
@@ -89,8 +89,6 @@ Principals include:
 ### Resource groups
 
 A resource group is a set of Harness resources that a principal can access. You can create resource groups at all [scopes](#permissions-hierarchy-scopes). Resource groups are assigned along with [roles](#roles) to principals. Roles grant permissions (what actions can be taken) and resource groups grant access (what objects can be acted on).
-
-![](./static/rbac-in-harness-03.png)
 
 Resource groups either include **All Resources** (all resources of a given type) or **Named Resources** (specific, individual resources).
 
@@ -278,7 +276,7 @@ For more information about roles and permissions, go to [Manage roles](./add-man
 
 7. Select **Save**.
 
-For more information about creating resource groups, go to [Manage resource groups](./add-resource-groups).
+For more information about creating resource groups, go to [Manage resource groups](./add-resource-groups.md).
 
 #### Create the Pipeline Owners user group
 
@@ -288,7 +286,7 @@ For more information about creating resource groups, go to [Manage resource grou
 4. In **Add Users**, select users to add to the group.
 5. Select **Save**.
 
-For more information about user groups and users, go to [Manage user groups](./add-user-groups) and [Manage users](./add-users).
+For more information about user groups and users, go to [Manage user groups](./add-user-groups.md) and [Manage users](./add-users.md).
 
 :::tip Automated provisioning
 
@@ -363,7 +361,7 @@ For more information about roles and permissions, go to [Manage Roles](./add-man
 
 In this example, the **Resource Scope** is locked to **Project only**, which means the resource group can only access the selected resources within this project. If your pipelines use connectors or other resources at a higher scope, you would need to configure RBAC at the account or org scope and then refine access by project. Similarly, if you wanted to create a user group that could run any pipeline in an organization or account, you would need to create the role, resource group, and user group at the account scope (by navigating to **Account Settings** and then selecting **Access Control**). Note that some refinement options, such as selecting specific pipelines, aren't available at higher scopes.
 
-For more information about creating resource groups, go to [Manage resource groups](./add-resource-groups).
+For more information about creating resource groups, go to [Manage resource groups](./add-resource-groups.md).
 
 #### Configure the user group
 
@@ -378,6 +376,6 @@ For more information about creating resource groups, go to [Manage resource grou
 9. For **Resource Groups**, select the **All Project Pipelines and Connectors** group.
 10. Select **Apply**.
 
-For more information about user groups, users, and role/resource group assignments, go to [Manage user groups](./add-user-groups), [Manage users](./add-users), and [Role binding](#role-binding).
+For more information about user groups, users, and role/resource group assignments, go to [Manage user groups](./add-user-groups.md), [Manage users](./add-users.md), and [Role binding](#role-binding).
 
 </details>

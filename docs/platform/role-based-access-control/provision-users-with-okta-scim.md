@@ -24,7 +24,7 @@ You need an understanding of:
 
 You must be an Administrator in your Okta account, and you must be an **Account Admin** in Harness.
 
-You need a Harness [API key and unexpired token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) that has all **Users** and **User Groups** [permissions](/docs/platform/Resource-Development/APIs/api-permissions-reference). API keys inherit permissions from the user they are associated with. If you use an API key for a [service account](./add-and-manage-service-account), make sure the service account has all **Users** and **User Groups** permissions.
+You need a Harness [API key and unexpired token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) that has all **Users** and **User Groups** [permissions](/docs/platform/Resource-Development/APIs/api-permissions-reference). API keys inherit permissions from the user they are associated with. If you use an API key for a [service account](./add-and-manage-service-account.md), make sure the service account has all **Users** and **User Groups** permissions.
 
 ## Create an Okta app integration
 
@@ -147,7 +147,9 @@ Users with the Harness app assignment are shown under **People**. You can edit o
 
 These users are also listed in your Harness account.
 
-![](./static/provision-users-with-okta-scim-14.png)
+<!-- ![](./static/provision-users-with-okta-scim-14.png) -->
+
+<docimage path={require('./static/provision-users-with-okta-scim-14.png')} />
 
 You can use Okta to provision individual users or groups containing sets of users. If you use Okta to provision individual users directly to Harness, these users initially have no user group assignment in Harness. You must assign them to a group, either in Okta or in Harness. Directly provisioning individual users is the *only* way that you can change an Okta user's group membership in Harness. When provisioned as part of an Okta group, the user's group membership must always be managed through Okta.
 
@@ -191,7 +193,9 @@ You can check the status of pushed groups in your Harness Okta app.
 
 Active and successfully pushed groups are listed in your Harness account. The group members are also provisioned as Harness users when you push the group.
 
-![](./static/provision-users-with-okta-scim-18.png)
+<!-- ![](./static/provision-users-with-okta-scim-18.png) -->
+
+<docimage path={require('./static/provision-users-with-okta-scim-18.png')} />
 
 :::tip
 
@@ -201,7 +205,7 @@ If an error prevents adding, deleting, or updating a group member in Harness, yo
 
 ### Assign permissions
 
-After user groups are provisioned through SCIM, you can manage [permissions](./permissions-reference) granted to the users in those groups by assigning [roles](./add-manage-roles) and [resource groups](./add-resource-groups) to user groups in Harness.
+After user groups are provisioned through SCIM, you can manage [permissions](./permissions-reference.md) granted to the users in those groups by assigning [roles](./add-manage-roles.md) and [resource groups](./add-resource-groups.md) to user groups in Harness.
 
 Harness roles and resource groups aren't managed in Okta.
 

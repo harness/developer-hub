@@ -152,8 +152,8 @@ Harness uses a *connector* to connect to your Git repositories.
 
    <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-2.png')} />
 
-6. For **Select Connectivity Mode**, select **Connect through the Harness Platform**, and then select **Save and Continue**.
-7. Wait while Harness tests the connection, and then select **Finish**.
+7. For **Select Connectivity Mode**, select **Connect through the Harness Platform**, and then select **Save and Continue**.
+8. Wait while Harness tests the connection, and then select **Finish**.
 
 For more information about creating GitHub connectors go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 
