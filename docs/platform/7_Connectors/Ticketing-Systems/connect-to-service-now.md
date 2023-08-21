@@ -107,19 +107,22 @@ Harness supports persistent refresh tokens only to authenticate via OpenID Conne
 
 To use an OIDC refresh token for authentication, do the following:
 
-1. Enter the **ServiceNow URL**. This must be a well-known or an explicit token URL.
+1. Select an existing secret or create one that has the application (client) id assigned to your application by OIDC for the **Client ID** field.
 
-2. Select an existing secret or create one that has the application (client) id assigned to your application by OIDC for the **Client ID** field. This is required if the **Grant Type** is `client_credentials` and optional if the **Grant Type** is `refresh_token`.
+2. Optional: Select an existing secret or create one that has the application (client) secret assigned.
 
-3. Select an existing secret or create one that has the application (client) secret assigned. This is required if the **Grant Type** is `client_credentials` and optional if the **Grant Type** is `refresh_token`.
+3. Select an existing secret or create one that has the **Refresh Token** if the **Grant Type** is `refresh_token`. For more information on refresh token grant types, go to [Refreshing Access Tokens](https://www.oauth.com/oauth2-servers/access-tokens/refreshing-access-tokens/) in the OAuth documentation.
 
-4. Select an existing secret or create one that has the **Refresh Token** if the **Grant Type** is `refresh_token`.
+4. Enter the **Token URL**. For example:
 
-5. Enter the **Token URL**.
+   - ServiceNow authentication server: `https://<YOUR_DOMAIN>.service-now.com/oauth_token.do`
+   - Okta authentication server: `https://<YOUR_DOMAIN>.okta.com/oauth2/v1/token`
 
-6. (Optional) Enter the **Scope**. 
+5. (Optional) Enter the **Scope**. If you use ServiceNow for your authentication server, the **Scope** is not required. Harness fetches it from the ServiceNow URL.
 
-7. Select **Continue**.
+   To learn more about how to configure scope for a client in ServiceNow, go to [REST API Auth Scope](https://docs.servicenow.com/bundle/utah-platform-security/page/administer/security/concept/rest-api-auth-scope.html) in the ServiceNow documentation.
+
+6. Select **Continue**.
   
 ```mdx-code-block
 </TabItem>
