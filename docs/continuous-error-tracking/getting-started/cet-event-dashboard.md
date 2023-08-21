@@ -92,7 +92,7 @@ To display the top events on the graph, select the **Event Distribution** split 
   * **Time Slice**: To choose this option, click on the graph. A small time slice pane appears. You can expand or shrink the time slice according to your required time frame.
     ![ZoomIn Time Slice](./static/cet-event-distribution-select-time-slice.png)
 
-### Collapsing the Event Graph:
+### Collapsing the Event Graph
   The Event Graph also lets you collapse it so that it's not displayed on the screen, and then  it when needed as shown in the image below
 
 
