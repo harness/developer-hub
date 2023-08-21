@@ -89,7 +89,7 @@ To display the top events on the graph, select the **Event Distribution** split 
 
   * **Time period**:  Select this option and choose a time period for which you want to see the data. The value is **Last 1 hour**.
 
-  * **Time Slice:** Click on the graph and a small time slice pane will open. You can expand that time slice or shrink it to fit your required time frame.
+  * **Time Slice**: To choose this option, click on the graph. A small time slice pane appears. You can expand or shrink the time slice according to your required time frame.
     ![ZoomIn Time Slice](./static/cet-event-distribution-select-time-slice.png)
 
 ### Collapsing the Event Graph:
