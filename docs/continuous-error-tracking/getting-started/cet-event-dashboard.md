@@ -93,7 +93,7 @@ To display the top events on the graph, select the **Event Distribution** split 
     ![ZoomIn Time Slice](./static/cet-event-distribution-select-time-slice.png)
 
 ### Collapsing the Event Graph
-  The Event Graph also lets you collapse it so that it's not displayed on the screen, and then  it when needed as shown in the image below
+You can collapse the Event Graph when you don't need.
 
 
 ## Next steps
