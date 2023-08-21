@@ -8,23 +8,23 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness). For API permissions, go to the [API permissions reference](/docs/platform/Resource-Development/APIs/api-permissions-reference).
+This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness.md). For API permissions, go to the [API permissions reference](/docs/platform/Resource-Development/APIs/api-permissions-reference).
 
 ## Administrative Functions
 
 | Resource | Permissions |
 | ---  | ----------- |
 | Resource Groups | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
-| Account Settings | Available at the account [scope](./rbac-in-harness#permissions-hierarchy-scopes) only.<br/><ul><li> View</li><li>Edit</li></ul> |
+| Account Settings | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li> View</li><li>Edit</li></ul> |
 | Default Settings | <ul><li>Create/Edit</li></ul>  |
 | Projects | <ul><li>View</li><li>Create</li><li>Edit</li><li>Delete</li></ul> |
 | User Groups | <ul><li>View</li><li>Manage: Create, edit, and delete user groups</li></ul> |
 | Service Accounts | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Manage: Create, edit, and delete API keys and tokens for service accounts</li></ul> |
-| Organizations | Available at the account and org [scopes](./rbac-in-harness#permissions-hierarchy-scopes) only.<br/><ul><li>View</li><li>Create</li><li>Edit</li><li>Delete</li></ul> |
+| Organizations | Available at the account and org [scopes](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View</li><li>Create</li><li>Edit</li><li>Delete</li></ul> |
 | Roles | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
-| Streaming Destination | Available at the account [scope](./rbac-in-harness#permissions-hierarchy-scopes) only.<br/><ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Streaming Destination | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 | Users | <ul><li>View</li><li>Manage: Edit and delete users</li><li>Invite: Add users by inviting them to Harness</li></ul> |
-| Authentication Settings | Available at the account [scope](./rbac-in-harness#permissions-hierarchy-scopes) only.<br/><ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Authentication Settings | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 
 ## Environment Groups
 

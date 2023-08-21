@@ -44,7 +44,7 @@ For more information about configuring **Run** steps, go to [Use Run steps](../r
   <TabItem value="runtests" label="Run Tests step">
 ```
 
-The **Run Tests** step is required to [enable Test Intelligence](./set-up-test-intelligence.md). You can use **Run Tests** steps with or without Test Intelligence; however, this step requires that you use a [supported codebase](./set-up-test-intelligence.md#supported-codebases).
+The **Run Tests** step is required to [enable Test Intelligence](./set-up-test-intelligence.md). You can use **Run Tests** steps with or without Test Intelligence; however, the **Run Tests** step is limited to [supported codebases](./set-up-test-intelligence.md#supported-codebases).
 
 This example runs tests with Maven and Test Intelligence, and it produces a test report in JUnit XML format.
 

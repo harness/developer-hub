@@ -19,7 +19,7 @@ slug: /ci-pipelines/test/saucelabs-proxy
 
 [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) are useful for running services that need to run for the entire lifetime of a Build stage. This tutorial shows how to run [Sauce Connect Proxy](https://docs.saucelabs.com/secure-connections/sauce-connect/) as a Background step in a Harness CI pipeline.
 
-[Sauce Labs](https://saucelabs.com/) is a web and mobile application automated testing platform. Sauce Connect Proxy can run as a Background step in your Harness CI pipeline, and act as a proxy server between a Sauce Labs' infrastructure and your CI pipeline.
+[Sauce Labs](https://saucelabs.com/) is a web and mobile application automated testing platform. Sauce Connect Proxy can run as a Background step in your Harness CI pipeline, and act as a proxy server between a Sauce Labs infrastructure and your CI pipeline.
 
 ```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';

@@ -172,7 +172,7 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 Harness uses a multi-tenant app to sync billing export data from the source storage account to Harness and to perform cost optimization functions. This involves the following steps:
 
 * Register the Harness CCM application into your Azure account.
-* Provide read permissions to the storage account in which the billing data export is available and/or contributor role on the subscription where the optimization feature is to be performed.
+* Grant read permissions to the storage account in which the billing data export is available and/or assign `contributor` role to the subscription if the AutoStopping feature is being utilized.
 
 Create a service principal and assign permissions by running the following commands in the bash terminal or in the Azure cloud shell.
 

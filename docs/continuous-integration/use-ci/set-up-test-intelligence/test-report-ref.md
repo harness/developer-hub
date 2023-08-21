@@ -57,7 +57,7 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
                   identifier: Run_Tests_with_Intelligence
                   name: Run Tests with Intelligence
                   spec:
-                    args: gradle test --tests
+                    args: test --tests
                     buildTool: Gradle
                     enableTestSplitting: true
                     language: Java
@@ -108,9 +108,10 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
                           - /harness/test-results/junit.xml
 ```
 
-:::tip
+:::info
 
-[Use pytest to run unittest.](https://docs.pytest.org/en/6.2.x/unittest.html)
+* You can [use pytest to run unittest](https://docs.pytest.org/en/6.2.x/unittest.html).
+* If you use [test splitting](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism) with pytest, you must set `junit_family=xunit1` in your code repo's `pytest.ini` file or include `-o junit_family="xunit1"` in the step's `command`.
 
 :::
 

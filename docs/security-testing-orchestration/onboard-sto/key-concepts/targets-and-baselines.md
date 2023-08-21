@@ -15,10 +15,19 @@ import StoConceptTargets from '../shared/_targets.md';
 ![Targets and baselines in the Test Targets page](../static/targets-and-baselines.png)
 
 ```mdx-code-block
-import StoConceptBaselines from '../shared/_baselines.md';
+import StoConceptBaselines from '/docs/security-testing-orchestration/onboard-sto/shared/_baselines.md';
 ```
 
 <StoConceptBaselines />
+
+
+
+```mdx-code-block
+import StoWhyDefineBaselines from '/docs/security-testing-orchestration/onboard-sto/shared/_why-define-baselines.md';
+```
+
+<StoWhyDefineBaselines />
+
 
 You can easily identify new vs. common issues in the results for each scan.
 

@@ -64,7 +64,7 @@ Use these steps to create an API key and personal access token (PAT) for your pe
 
 ## Create service account API keys and tokens
 
-Use these steps to create an API key and service account token (SAT) for a service account. To do this, you must have the Account Admin role or another role that provides [permissions](../APIs/api-permissions-reference) to View, Create/Edit, Manage, and Delete service accounts.
+Use these steps to create an API key and service account token (SAT) for a service account. To do this, you must have the Account Admin role or another role that provides [permissions](./api-permissions-reference.md) to View, Create/Edit, Manage, and Delete service accounts.
 
 1. If you haven't done so already, [create a Service Account](/docs/platform/role-based-access-control/add-and-manage-service-account). The API key and token inherit the permissions of the service account they are associated with; therefore, make sure the service account has the necessary permissions.
 2. In Harness, select **Account Settings**, and then select **Access Control**.

@@ -59,7 +59,7 @@ In the Execution tab, add a [Background step](../manage-dependencies/background-
 
 Provide arguments as a list in **Entry Point**.
 
-For example, the entry point for the `docker:dind` image is `dockerd-entrypoint.sh`. If you want to add an `--mtu` argument, you would include both the image entry point and the argument in your step's **Entry Point** specification.
+For example, the entry point for the `docker:dind` image is `docker-entrypoint.sh`. If you want to add an `--mtu` argument, you would include both the image entry point and the argument in your step's **Entry Point** specification.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -81,7 +81,7 @@ import TabItem from '@theme/TabItem';
 
 ```yaml
 entrypoint:
-  - dockerd-entrypoint.sh
+  - docker-entrypoint.sh
   - "--mtu=1450"
 ```
 
