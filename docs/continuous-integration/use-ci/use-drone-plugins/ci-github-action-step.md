@@ -4,6 +4,12 @@ description: Run GitHub Actions in your Harness CI pipelines.
 sidebar_position: 70
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import DindTrbs from '/docs/continuous-integration/shared/dind-bg-gha-trbs.md';
+```
+
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts. You can find over 10,000 GitHub Actions on the [GitHub Marketplace](https://github.com/marketplace?type=actions) or create your own Actions.
 
 You can use the **GitHub Action plugin** step to run GitHub Actions in your [Harness CI pipelines](../prep-ci-pipeline-components.md).
@@ -21,11 +27,6 @@ For more information about using plugins in CI pipelines, go to [Explore plugins
 ## Usage examples
 
 The following YAML examples use **GitHub Action plugin** steps (`Action` steps) to set up Node.js, Go, Java, and Ruby environments.
-
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 
 ```mdx-code-block
 <Tabs>
@@ -107,22 +108,9 @@ This `Action` step uses the `ruby/setup-ruby` GitHub Action to set up a Ruby env
 
 ## Settings and specifications
 
-:::info Docker-in-Docker
-
-If a stage has a [Docker-in-Docker Background step](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md), you can't use GitHub Actions that launch Docker-in-Docker (DinD) in the same stage.
-
-If possible, run the **GitHub Action plugin** step in a separate stage, or try to find a GitHub Action that doesn't use DinD.
-
-:::
-
 ```mdx-code-block
-import Tabs2 from '@theme/Tabs';
-import TabItem2 from '@theme/TabItem';
-```
-
-```mdx-code-block
-<Tabs2>
-  <TabItem2 value="YAML" label="YAML editor" default>
+<Tabs>
+  <TabItem value="YAML" label="YAML editor" default>
 ```
 
 To add a **GitHub Action plugin** step in the YAML editor, add an `Action` step, for example:
@@ -158,8 +146,8 @@ The following cases *always* require environment variables:
 :::
 
 ```mdx-code-block
-  </TabItem2>
-  <TabItem2 value="visual" label="Visual editor">
+  </TabItem>
+  <TabItem value="visual" label="Visual editor">
 ```
 
 1. Add the **GitHub Action plugin** step to your pipeline's **Build** stage.
@@ -197,8 +185,8 @@ The following cases *always* require environment variables:
 :::
 
 ```mdx-code-block
-  </TabItem2>
-</Tabs2>
+  </TabItem>
+</Tabs>
 ```
 
 <details>
@@ -255,62 +243,13 @@ pipeline:
 
 </details>
 
-## Transfer GitHub Actions into Harness CI
-
-If you already configured GitHub Actions elsewhere, you can copy the `uses`, `with` and `env` lines from your GitHub Action YAML into the `Action` step's `spec` in your Harness CI pipeline YAML.
-
-If you're using the Visual editor, you can transfer the data into the **Uses**, **Settings**, and **Environment Variables** fields.
-
-The following table compares GitHub Action YAML with Harness CI Action step YAML. Notice the consistency of `uses`, `with`, and `env`.
-
-<table>
-<tr>
-<td> GitHub Action YAML </td> <td> Harness CI Action step YAML </td>
-</tr>
-<tr>
-<td>
-
-```yaml
-- name: hello-world
-  uses: actions/hello-world-javascript-action@main
-  with:
-    who-to-greet: 'Mona the Octocat'
-  env:
-    hello: world
-```
-
-</td>
-<td>
-
-```yaml
-- step:
-    type: Action
-    name: hello world
-    identifier: hello_world
-    spec:
-      uses: actions/hello-world-javascript-action@main
-      with:
-        who-to-greet: 'Mona the Octocat'
-      env:
-        hello: world
-```
-
-</td>
-</tr>
-</table>
-
-## Private Action repositories
+### Private Action repositories
 
 If you want to use an Action that is in a private repository, you must provide the `GITHUB_TOKEN` environment variable. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
 
 ```mdx-code-block
-import Tabs3 from '@theme/Tabs';
-import TabItem3 from '@theme/TabItem';
-```
-
-```mdx-code-block
-<Tabs3>
-  <TabItem3 value="YAML" label="YAML editor" default>
+<Tabs>
+  <TabItem value="YAML" label="YAML editor" default>
 ```
 
 In the YAML editor, add `GITHUB_TOKEN` to the `env` mapping, for example:
@@ -337,8 +276,8 @@ You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")
 For more information about configuring the Action step's settings, go to the [Settings and specifications](#settings-and-specifications) section, above.
 
 ```mdx-code-block
-  </TabItem3>
-  <TabItem3 value="Visual" label="Visual editor">
+  </TabItem>
+  <TabItem value="Visual" label="Visual editor">
 ```
 
 In the Visual editor, specify `GITHUB_TOKEN` in the **Environment Variables**. Enter `GITHUB_TOKEN` in the key field and the token or variable expression in the value field, for example:
@@ -355,13 +294,13 @@ You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")
 For more information about configuring the GitHub Action plugin step's settings, go to the [Settings and specifications](#settings-and-specifications) section, above.
 
 ```mdx-code-block
-  </TabItem3>
-</Tabs3>
+  </TabItem>
+</Tabs>
 ```
 
-## Output variables from GitHub Actions steps
+### Output variables from GitHub Actions steps
 
-Output variables are exposed values that can be used by other steps or stages in the pipeline. For GitHub Actions steps, `with`/**Settings** values are automatically exported as output variables, and you can fetch those values in later steps or stages in the same pipeline.
+Output variables are exposed values that can be used by other steps or stages in the pipeline. For GitHub Actions steps, **Settings** (`with`) values are automatically exported as output variables, and you can fetch those values in later steps or stages in the same pipeline.
 
 To reference an output variable in another step in the same stage, use either of the following expressions:
 
@@ -415,3 +354,51 @@ In the following YAML example, the `setup_go` step uses a `go-version` setting, 
 ```
 
 </details>
+
+## Transfer GitHub Actions into Harness CI
+
+If you already configured GitHub Actions elsewhere, you can copy the `uses`, `with` and `env` lines from your GitHub Action YAML into the `Action` step's `spec` in your Harness CI pipeline YAML.
+
+If you're using the Visual editor, you can transfer the data into the **Uses**, **Settings**, and **Environment Variables** fields.
+
+The following table compares GitHub Action YAML with Harness CI Action step YAML. Notice the consistency of `uses`, `with`, and `env`.
+
+<table>
+<tr>
+<td> GitHub Action YAML </td> <td> Harness CI Action step YAML </td>
+</tr>
+<tr>
+<td>
+
+```yaml
+- name: hello-world
+  uses: actions/hello-world-javascript-action@main
+  with:
+    who-to-greet: 'Mona the Octocat'
+  env:
+    hello: world
+```
+
+</td>
+<td>
+
+```yaml
+- step:
+    type: Action
+    name: hello world
+    identifier: hello_world
+    spec:
+      uses: actions/hello-world-javascript-action@main
+      with:
+        who-to-greet: 'Mona the Octocat'
+      env:
+        hello: world
+```
+
+</td>
+</tr>
+</table>
+
+## Troubleshooting: Can't connect to Docker daemon
+
+<DindTrbs />

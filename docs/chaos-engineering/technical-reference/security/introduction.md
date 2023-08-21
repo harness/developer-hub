@@ -64,7 +64,7 @@ Refer to the [authentication overview](../../../platform/authentication/authenti
 
 ### User authorization and role-based access control 
 
-The chaos module leverages the [access control](../../../platform/Role-Based-Access-Control/rbac-in-harness) capabilities of Harness to restrict user action on chaos resources, which adhere to the same account-organization-project identification as the rest of the platform resources.  
+The chaos module leverages [Harness access control](../../../platform/role-based-access-control/rbac-in-harness) capabilities to restrict user action on chaos resources, which adhere to the same account-organization-project identification as the rest of the platform resources.  
 
 The foundational elements of the chaos engineering process, chaos infrastructure, chaos hubs, chaos experiments, and chaos gamedays are registered as the module resources, with permissions exercised against them. These resources are scoped at the project level.
 

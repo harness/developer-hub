@@ -23,12 +23,12 @@
 | Manage outputs, PR status updates, and understand chained pipelines | [Output variables with chained pipeline](https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables/) |
 | Delve into advanced options like timeouts, selective stage executions, and stage context sharing | [Continuous Integration (CI) FAQs](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/continuous-integration-ci-faqs/#what-is-the-timeout-limit-for-a-ci-pipeline) |
 | **6. Security and Access Control** ||
-| Understand RBAC with user groups, roles, role bindings, and service account considerations | [Role-based access control overview](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/) |
-| Configure access and permissions, including tags and resource groups | [Permissions Reference](https://developer.harness.io/docs/platform/role-based-access-control/ref-access-management/permissions-reference/) |
+| Understand RBAC with user groups, roles, role bindings, and service account considerations | [RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness) |
+| Configure access and permissions, including tags and resource groups | [Permissions Reference](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference) |
 | Grasp the implications of anonymous Docker image pulls and other security considerations | [Docker Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) |
 | **7. Authentication and User Management** ||
 | Deep dive into OAuth, SAML, and SCIM integrations | [Authentication](https://developer.harness.io/docs/category/authentication) |
-| Set up and manage credentials, user and group permissions, and more | [Add and manage user groups](https://developer.harness.io/docs/platform/user-management/add-user-groups/) |
+| Set up and manage credentials, user and group permissions, and more | [Manage user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) |
 | Delve into debugging and troubleshooting techniques, including running pipeline steps locally | [Troubleshoot CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci/) |
 | **8. Policy-Based Governance and Compliance** ||
 | Explore and configure policy as code with OPA and Rego | [Harness Policy As Code quickstart](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-quickstart) |

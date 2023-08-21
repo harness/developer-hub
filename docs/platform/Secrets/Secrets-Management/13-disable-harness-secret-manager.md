@@ -19,7 +19,7 @@ This topic explains how to disable the built-in Harness Secret Manager.
 * [Harness Secret Management Overview](./1-harness-secret-manager-overview.md)
 * [Add a Secret Manager](./5-add-secrets-manager.md)
 * Make sure you have Account Admin permissions to disable the built-in Secret Manager.  
-For more information, see [API Permissions Reference](../../4_Role-Based-Access-Control/ref-access-management/api-permissions-reference.md).
+For more information, see [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference).
 
 ### Limitations
 

@@ -16,7 +16,7 @@ These steps assume you have an understanding of the [Harness Secret Manager](/do
 
 Create a [text secret](/docs/platform/Secrets/add-use-text-secrets) at the account level that contains the content of your `settings.xml` file.
 
-You need the `Account: Secrets: Create/Edit/View` permission for the Harness Platform to be able to do this. For more information, go to the [Permission Reference](/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference).
+You need the `Account: Secrets: Create/Edit/View` permission for the Harness Platform to be able to do this. For more information, go to the [Permission Reference](/docs/platform/role-based-access-control/permissions-reference).
 
 1. Go to **Account Settings**, select **Account Resources**, and then select **Secrets**.
 

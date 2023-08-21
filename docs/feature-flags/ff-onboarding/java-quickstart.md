@@ -35,7 +35,7 @@ As a first step, you need to create a project in Harness. To do this:
 5. Select the Organization from the list. If you need to create a new Organization, go to [Create a Harness Organization](/docs/platform/organizations-and-projects/create-an-organization#step-1-create-a-harness-org) and [Projects and Organizations](/docs/platform/organizations-and-projects/projects-and-organizations).
 6. Click **Save and Continue**.
 7. (Optional) In **Invite Collaborators**, in **Invite People to Collaborate**, add members to collaborate with you on the project.
-8. (Optional) Assign a role to the collaborators and click **Add**. You can select **Project Admin**, **Project Member**, or **Project Viewer**. For more information on permissions, go to [Permissions Reference](/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference).
+8. (Optional) Assign a role to the collaborators and click **Add**. You can select **Project Admin**, **Project Member**, or **Project Viewer**. For more information on permissions, go to [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference).
 9. Once you're done adding contributors and adding a role, click **Save and Continue**.
 10. Click **GO TO FEATURE FLAGS**.
 

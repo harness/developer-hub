@@ -29,7 +29,7 @@ Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
   </tr>
   <tr>
     <td> hostNames </td>
-    <td> List of the target host names or keywords. For example, '["google.com","litmuschaos.io"]'. </td>
+    <td> List of the target host names or keywords. For example, <code>google.com,litmuschaos.io</code>. </td>
     <td> If not provided, all host names are targeted. </td>
   </tr>
   <tr>
@@ -61,7 +61,7 @@ Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
 
 ### Host names
 
-The `hostNames` input variable subjects the comma-separated host names to chaos. 
+The `hostNames` input variable subjects the comma-separated host names to chaos.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -76,7 +76,7 @@ metadata:
     name: dns-error
 spec:
   dnsChaos/inputs:
-    hostNames: '["litmuschaos.io","google.com"]'
+    hostNames: 'litmuschaos.io,google.com'
 ```
 
 ### Match scheme

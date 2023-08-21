@@ -74,7 +74,7 @@ Cost categories also enable you to reshare specific costs (Shared) with differen
 
 ### Benefits
 
-- Contexualize cloud spending 
+- Contextualize cloud spending 
 - Cost sharing to manage shared/ common pool resources 
 
 ### Prerequisites
@@ -357,7 +357,7 @@ The following table lists the ingress controllers supported for Kubernetes AutoS
 
 
 :::important note
-The supported Kubernetes version for AutoStopping is 1.19.
+The supported Kubernetes version for AutoStopping is 1.19 or higher.
 :::
 
 
