@@ -335,56 +335,18 @@ There are permissions for the User group "Hide NextGen Button" under Account Per
 
 In case you are a part of multiple account and 1 account has SAML login and other has Username/Password. User must make sure that the SAML account is set as default account, else it wont work with SAML login as the login mechanism of the default account is taken into consideration. 
 
-### Can we raise the parallel stage limit for a customer?
-
-These limits are important for the stability of our systems, limit is set at 30 for parallel stages for enterprise customer.
-
-### Do we have the ability in NG to alert/notify when a delegate is down?
-
-It is not available yet.
-
-### Unable to delete the connector as its referenced by some entity. However, the referenced entity does not exist.
-
-In this case, you can follow these steps, Enable Force Delete option in default settings, Delete the connector, Disable force Delete in default settings.
-
-### Not able to see actual delegate token and asked to delete the existing token and recreate a new delegate token. However after recreating the delegate token,error message No Default Delegate Token available, create a default token> in the docker delegate command appeared
-
-The default token for a scope is just the name follows some convention: default_token_org/project -- unable to create the token with same name as the deleted one as UI does not allow it.
-"No Default Delegate Token available, please create a delegate token and copy the token value here
-token cannot be deleted but only revoked. Revoked token takes 30 days to be deleted . If we revoke a token and create a same named one, it will report error
-
-### Is there any documentation on how to get heap/thread dumps on delegate UBI images in customers' environment?
-
-can use kill -3 <pid> to capture threaddump
-for heapdump, we have HeapDumpOnOutOfMemoryError options enabled in jvm. It auto creates heapdump at OOM.
-but there is no jmap, jcmd tools that can get heapdump on demand.
-
-### Do we have feature to turn on and off steps in Harness UI
-
-This feature hasn't released yet but it will be released soon.
-
-### When we add a delegate tag via a api why that tag expected to disappear when delegate is restarted?
-
-As it will not be there in original delegate yaml which was used to start delegate.
-
-### Migration scripts/tools for moving project level services to org/account?
-
-No, it only supports copying entities across projects.
-
-### Delegate is restarting very frequently after upgrade and seeing delegate log filled with message:Failed to find field for io.kubernetes.client.openapi.models.V1JSONSchemaProps.x-kubernetes-list-map-keys"
-
-Then should use with minimum recommended resource.
-
-### Does there is functionality to auto accept invite for  username/password login?
-
-It's present for saml based login because authentication is taken care by SAML provider. In password need login we need the user to create a password in harness.
-
 ### Are delegate tokens stored in MongoDB?
 
-Yes, delegate tokens are stored in mongo DB.
+Yes, the delegate tokens are stored in MongoDB
 
 ### Should we store the token that hasn't been generally available yet in the secret manager?
 
 No, we don't use the customer secret manager to encrypt delegate tokens. Rather than storing the token in plain text, we leverage Harness' internal encryption mechanism. This mechanism enables us to store the token's encrypted value in the database. This approach enhances security and mitigates potential risks associated with storing sensitive information.
- 
 
+### Do we have any static limit in NG like CG(pipeline/service creation etc)?
+
+No, we don't have limit on pipeline creation, we do have limit for entities creation for free/community tier, but no limits for enterprise.
+
+### Is there a limit to the number of triggers a pipeline can have?
+
+There is no limit on number of triggers for pipeline.

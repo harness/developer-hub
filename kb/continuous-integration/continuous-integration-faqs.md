@@ -23,3 +23,7 @@ Recently Harness has been the victim of several Crypto attacks that use our free
 To address these issues, you can do one of the following:
 Provide your own build infrastructure (like a VM with docker or a Kubernetes cluster). We have no limitations on building using your own infrastructure.
 Creating the Harness account with your work email and not a Gmail address will solve this problem.
+
+### Can we change the Git Connector of a template and keep the version, repo, etc?
+
+There's direct option to change such things. Go to template listing page, click on 3 dots on any template for further options and you will see "edit git metadata" option over there.
