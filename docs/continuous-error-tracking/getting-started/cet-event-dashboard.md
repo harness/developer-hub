@@ -72,7 +72,7 @@ To add a new event to the graph, click on the "+" icon located in the last colum
     ![Add Exception To Graph](./static/cet-event-distribution-add-exception.png)
     ![Exception Added To Graph](./static/cet-event-distribution-exception-plotted.png)
 
-### Plot Top Events on the Graph:
+### Display top events on the graph:
   To plot the top events on the graph you can select the **Event Distribution** split series icon. This will plot the top contributors as series on the graph. This enables you immediately see which ones have the most impact and may need to be dealt with first.
     ![Plot Top Events](./static/cet-event-distribution-plot-top-events.png)
 
