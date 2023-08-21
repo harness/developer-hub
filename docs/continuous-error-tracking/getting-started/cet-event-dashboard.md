@@ -67,7 +67,7 @@ A key element in the dashboard is the interactive graph. It displays a visual re
 The Event Graph illustrates the historical performance of specific metrics. To view the graph, select the Event Distribution collapsible button. This displays the trend for the total count of errors across the chosen time interval.
     ![Event Dsitribution Default](./static/cet-event-distribution-default.png)
 
-### Adding an Event to the Event Graph:
+### Add an event to the Event Distribution Graph
   To add new event to the graph, select the little + icon from the last column as shown in the image below. Whenever you add events from the event list they will be automatically visualized in the chart. Comparing both series enables you to see the impact of the selected errors on the total.
     ![Add Exception To Graph](./static/cet-event-distribution-add-exception.png)
     ![Exception Added To Graph](./static/cet-event-distribution-exception-plotted.png)
