@@ -61,7 +61,7 @@ The Event List displays the following information:
 
 ## Event Distribution Graph
 
-A key component within the dashboard is the interactive graph, which visualizes the volume of the events included within the current timeframe and View. 
+A key element in the dashboard is the interactive graph. It displays a visual representation of the event volume present in the current timeframe and view.```
 
 ### Reading the Graph:
   The Event Graph displays how certain metrics have been performing over time. The initial graphs can be seen by selecting the collapsable button  **Event Distribution**.  This shows you the trend for the total number of errors over the selected time span.
