@@ -29,8 +29,9 @@ To create a remote policy, you must have:
   - You add the PAT to Harness as an [encrypted text](../../Secrets/2-add-use-text-secrets.md), and it is encrypted using a Harness Secret Manager.
   - Your Git Personal Access Token is stored in your Harness secret and is a private key to which only you have access. This secret cannot be accessed or referenced by any other user.
 
-## Limitations
-This feature is currently not supported in Harness Self-Managed Enterprise Edition.
+## Important notes
+
+- This feature is currently not supported in Harness Self-Managed Enterprise Edition.
 
 ## Demo video
 
