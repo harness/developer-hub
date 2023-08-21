@@ -69,7 +69,7 @@ Use **Settings** to specify the GitHub Action you want to use and to pass variab
 
 :::tip
 
-You can use variable expressions for these values, such as `credentials: <+stage.variables.[TOKEN_SECRET]>`, which uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
+You can use variable expressions for these values. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
 
 :::
 

@@ -88,7 +88,7 @@ Use these steps to edit the name, description, or tags for an API key. To edit t
 
 1. Go to your user profile in Harness.
 2. Under **My API Keys**, select **More Options** (&vellip;) next to the key you want to edit, and then select **Edit**.
-3. You can edit the name, description, and tags. You can't edit the ID.
+3. You can edit the name, description, and tags. You can't edit the Id.
 4. Select **Save**.
 
 ```mdx-code-block
@@ -118,7 +118,7 @@ Use these steps to edit the name, description, tags, and expiration dates of tok
 
 1. Go to your user profile in Harness.
 2. Under **My API Keys**, expand the token that you want to edit, select **More Options** (&vellip;), and then select **Edit**.
-3. You can edit the name, description, tags, and expiration date. You can't edit the ID or the token's value.
+3. You can edit the name, description, tags, and expiration date. You can't edit the Id or the token's value.
 4. Select **Save**.
 
 ```mdx-code-block

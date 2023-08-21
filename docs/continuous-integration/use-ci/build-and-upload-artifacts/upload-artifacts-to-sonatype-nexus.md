@@ -99,7 +99,7 @@ The following YAML example describes a [Plugin step](../use-drone-plugins/plugin
 
 :::tip Tips
 
-You can use variable expressions for **Settings** values, such as `password: <+stage.variables.nexus_password>`, which uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
+You can use variable expressions for **Settings** values. For example, `password: <+stage.variables.nexus_password>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
 
 Create [text secrets](/docs/platform/Secrets/add-use-text-secrets) for sensitive information, such as passwords.
 

@@ -571,7 +571,7 @@ pipeline:
 
 ### Fetch the status of all combinations of stage named stageWithMatrix
 
-Use the following expression to fetch the status of all combinations of stage named `stageWithMatrix`:
+Use the following expression to fetch the status of all combinations of a stage named `stageWithMatrix`:
 
 ```
 t='<+json.format(<+pipeline.stages.stageWithMatrix>)>'
@@ -695,7 +695,7 @@ The `identityFunction` retrieves the value of a specific key. In the given examp
 
 ### Define loops
 
-The following example demonstrates how you can use a loop in JEXL to iterate over an array or perform repetitive operations based on certain conditions. This example uses an array called `numbers` containing several integer values. A variable called sum to 0 is initialized. The `for` loop iterates over each element in the number array. Within the loop, you can add each element to the sum variable After the loop completes, the script outputs the value of sum, which will be the sum of all the numbers in the array.
+The following example demonstrates how you can use a loop in JEXL to iterate over an array or perform repetitive operations based on certain conditions. This example uses an array called `numbers` containing several integer values. A variable called sum to 0 is initialized. The `for` loop iterates over each element in the number array. Within the loop, you can add each element to the sum variable after the loop completes. The script outputs the value of sum (the sum of all the numbers in the array).
 
 ```
 <+

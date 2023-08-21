@@ -16,7 +16,7 @@ New to Harness YAML? See [Harness YAML Quickstart](../harness-yaml-quickstart.md
 
 ## Viewing the YAML Schema
 
-The Harness YAML schema is over 20,000 lines long, and we are investigating how it can be exposed in a way that is easy to navigate.
+The Harness YAML schema is available at [github.com/harness/harness-schema](https://github.com/harness/harness-schema). This repository contains the schema definition for Harness pipeline configuration files, enabling users to define and customize their pipelines effortlessly. This repo provides steps on how to embed the YAML schema in Visual Studio Code and Sublime Text.
 
 In the meantime, you can use [Chrome DevTools](https://developer.chrome.com/docs/devtools/) to view the schema.
 
@@ -33,7 +33,7 @@ In the meantime, you can use [Chrome DevTools](https://developer.chrome.com/docs
 
 The Harness Pipeline Studio has both a Visual Editor and a YAML Editor.
 
-The best way to get started with Harness YAML is to create a pipeline in the Visual Editor and then switch to the YAML Editor. If you haven't created a pipeline yet, try a [tutorial](/docs/getting-started/quickstarts/) to get started with Harness.
+The best way to get started with Harness YAML is to create a pipeline in the Visual Editor and then switch to the YAML Editor. If you haven't created a pipeline yet, try a [tutorial](https://developer.harness.io/tutorials) to get started with Harness.
 
 The YAML editor validates YAML before allowing you to save it.
 
@@ -86,7 +86,7 @@ Once you have entered the Id in `connectorRef`, you can use autocomplete to view
 
 ## Schema Overview
 
-Harness Pipeline YAML lets you model your release process declaratively. Each Pipeline entity, component, and setting has a YAML entry.
+Harness pipeline YAML lets you model your release process declaratively. Each pipeline entity, component, and setting has a YAML entry.
 
 ### Entries
 
@@ -908,7 +908,7 @@ connector:
             - example
 ```
 
-You reference a Connector in your Pipeline by using its Id in `connectorRef`:
+You reference a connector in your pipeline by using its Id in `connectorRef`:
 
 ```
 ...  

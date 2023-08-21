@@ -108,7 +108,7 @@ Refer to the Integration's usage specifications for details about specific envir
 
 :::tip
 
-You can use fixed values, runtime input, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables). Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
+You can use fixed values, runtime inputs, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a variable expression [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables). Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
 
 :::
 

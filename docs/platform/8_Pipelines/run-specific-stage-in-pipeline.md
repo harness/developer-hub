@@ -1,6 +1,6 @@
 ---
 title: Run specific stages in pipeline
-description: You can run specific stages, rather than an entire pipeline.
+description: Run specific stages in a pipeline.
 sidebar_position: 7
 helpdocs_topic_id: 95q2sp1hpr
 helpdocs_category_id: kncngmy17o
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-A pipeline is an end-to-end process that completes a workflow, such as delivers a new version of your software. Each pipeline has stages that contain the logic to perform one major segment of the pipeline process.
+A pipeline is an end-to-end process that completes a workflow, such as delivers a new version of your software. Each pipeline has stages that perform one major segment of the pipeline process.
 
 You might encounter situations where you want to run some, but not all, stages. For example, if only one stage fails, you might want to rerun only the failed stage. In Harness, you can select specific stages to run, rather than the entire pipeline.
 

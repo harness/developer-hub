@@ -1,6 +1,6 @@
 ---
 title: View and compare pipeline executions
-description: view and compare the YAML used for pipeline executions
+description: View and compare the YAML used for pipeline executions.
 sidebar_position: 9
 helpdocs_topic_id: n39cwsfvmj
 helpdocs_category_id: kncngmy17o
@@ -14,7 +14,7 @@ This topic assumes you're familiar with [CD pipeline basics](/docs/continuous-de
 
 ## View compiled YAML
 
-A pipeline's compiled execution YAML is the YAML used in for execution, including all resolved [Runtime inputs, expressions](../20_References/runtime-inputs.md), and [variables](../12_Variables-and-Expressions/harness-variables.md).
+A pipeline's compiled execution YAML is the YAML used in for execution, including all resolved [runtime inputs, expressions](../20_References/runtime-inputs.md), and [variables](../12_Variables-and-Expressions/harness-variables.md).
 
 To view compiled YAML:
 

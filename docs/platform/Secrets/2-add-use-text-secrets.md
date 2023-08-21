@@ -30,7 +30,7 @@ Secrets can be added inline while setting up a connector or other setting, and t
 
 :::info
 
-You can't create secrets that point to secret managers in a different [scope](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes). For example, if you create a secret at the project scope, you can reference a secret manager in a different project.
+You can't create secrets that point to secret managers in a different [scope](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes). For example, if you create a secret at the project scope, you cannot reference a secret manager in a different project. To reference secrets across projects, create the secret at the organization or account scope.
 
 :::
 
@@ -64,7 +64,7 @@ To add an encrypted text secret in the account scope:
       <img src={secret_expiry_date} alt="secret_expiry_date" height="200" width="500"/>
       ```
 
-   - **Reference Secret**: Enter the name of the existing secret that you want your **Reference Secret** to refer to, and then select **Test** to test the reference path. You can reference existing secrets in Azure Key Vault, Hashicorp Vault, AWS Secrets Manager, or GCP Secrets Manager.
+   - **Reference Secret**: Enter the name of the existing secret in your Secret Manager that you want your **Reference Secret** to refer to, and then select **Test** to test the reference path. You can reference existing secrets in Azure Key Vault, Hashicorp Vault, AWS Secrets Manager, or GCP Secrets Manager.
 
      ![](./static/test-secret-reference-path.png)
 

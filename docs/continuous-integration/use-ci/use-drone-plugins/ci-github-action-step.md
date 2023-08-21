@@ -179,7 +179,7 @@ The following cases *always* require environment variables:
 
 :::tip Tips
 
-* You can use fixed values, runtime input, or variable expressions for **Settings** and **Environment Variables** values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) that calls a token stored as a [Harness secret](/docs/category/secrets).
+* You can use fixed values, runtime inputs, or variable expressions for **Settings** and **Environment Variables** values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a variable expression [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) that calls a token stored as a [Harness secret](/docs/category/secrets).
 * For GitHub Actions steps, **Settings** are automatically exported as [output variables](#output-variables-from-github-actions-steps).
 
 :::

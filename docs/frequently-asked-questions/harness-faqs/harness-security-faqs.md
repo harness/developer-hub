@@ -235,7 +235,7 @@ You can save your filters, too.
 
 ### Does Harness provide governance features?
 
-Yes. The Harness [pipeline governance](/docs/platform/Governance/Policy-as-code/harness-governance-overview) feature enables you to measure how conformant your Pipelines are with your regulatory and operations standards.
+Yes. The Harness [pipeline governance](/docs/platform/Governance/Policy-as-code/harness-governance-overview) feature enables you to measure how conformant your pipelines are with your regulatory and operations standards.
 
 ### How do I set up governance?
 

@@ -1,6 +1,6 @@
 ---
 title: Add a stage
-description: A stage is a part of a pipeline that contains the logic to perform a major segment of a larger process or workflow defined in a pipeline.
+description: Learn how to add and configure a pipeline stage.
 sidebar_position: 3
 helpdocs_topic_id: 2chyf1acil
 helpdocs_category_id: kncngmy17o
@@ -29,7 +29,7 @@ This topic assumes you are familiar with [Harness' key concepts](../../getting-s
    * You must provide a few initial settings to add a stage to a pipeline, and then you configure additional settings, such as **Infrastructure** or **Stage Variables** after adding the stage.
    * The available settings depend on the module and stage type. Go to your module's documentation for more information about that module's stage settings.
 
-3. In the **Execution** tab, add steps to the stage to define the actions that happen within that stage. The available steps depend on the stage type.
+3. For certain modules (CI, CD, STO, etc.), in the **Execution** tab, add steps to the stage to define the tasks to perform in that stage. The available steps depend on the stage type.
 
 :::tip
 
@@ -45,7 +45,7 @@ You can change the **Name** at any time, but you can't change the **Id**.
 
 ## Stage variables
 
-Stage variables are variables that you add to a stage and then reference in the steps in that stage. Stage variables are versatile. For example, they can be truly custom variables or modify known environment variables.
+Stage variables are variables that you add to a stage and then reference in the entity settings and steps in that stage. Stage variables can be custom variables or modify known variables (service variables, environment variables, etc.).
 
 You can add stage variables in the Pipeline Studio's Visual Editor or YAML Editor.
 
@@ -91,7 +91,7 @@ Stage variables are available across the pipeline and you can override their val
 name: <+stage.variables.NAME>  
 replicas: 2  
   
-image: <+artifact.image>  
+image: <+primary.artifact.image>  
 ...
 ```
 
