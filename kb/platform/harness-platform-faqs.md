@@ -337,44 +337,31 @@ In case you are a part of multiple account and 1 account has SAML login and othe
 
 ### Can we raise the parallel stage limit for a customer?
 
-These limits are important for the stability of our systems, limit is set at 30 for parallel stages for enterprise customer.
+These limits are important for the stability of our systems, the limit is set at 30 for parallel stages for enterprise customer.
 
 ### do we have the ability in NG to alert/notify when a delegate is down?
 
-It is not available yet.
+No we don't have the ability as of now.
 
-### Unable to delete the connector as its referenced by some entity. However, the referenced entity does not exist.
+### I am unable to delete the connector as its referenced by an entity but the entity is no longer present.
 
-In this case, you can follow these steps, Enable Force Delete option in default settings, Delete the connector, Disable force Delete in default settings.
+This can be easily acheived by enabling Force Delete option in default settings.
 
-### Not able to see actual delegate token and asked to delete the existing token and recreate a new delegate token. However after recreating the delegate token,error message No Default Delegate Token available, create a default token> in the docker delegate command appeared
+### What is the convention of creating a default token for delegate ?
 
-The default token for a scope is just the name follows some convention: default_token_org/project -- unable to create the token with same name as the deleted one as UI does not allow it.
-"No Default Delegate Token available, please create a delegate token and copy the token value here
-token cannot be deleted but only revoked. Revoked token takes 30 days to be deleted . If we revoke a token and create a same named one, it will report error
+The default token is named using the convention of level at which it is being called for eg `default_token/org/project`
 
-### Is there any documentation on how to get heap/thread dumps on delegate UBI images in customers' environment?
+### Can the delegate token be deleted ?
 
-can use kill -3 <pid> to capture threaddump
-for heapdump, we have HeapDumpOnOutOfMemoryError options enabled in jvm. It auto creates heapdump at OOM.
-but there is no jmap, jcmd tools that can get heapdump on demand.
+The delegate token cannot be deleted it can be only revoked and the revoked tokens get deleted in 30 days.
 
-### Do we have feature to turn on and off steps in Harness UI
+### When we add a delegate tag via a api why that tag disappears when the delegate is restarted?
 
-This feature hasn't released yet but it will be released soon.
+The delegate tags disapper as it will not be there in original delegate yaml which was used to start delegate.
 
-### When we add a delegate tag via a api why that tag expected to disappear when delegate is restarted?
+### My delegate is restarting and in logs this is coming up "Failed to find field for io.kubernetes.client.openapi.models.V1JSONSchemaProps.x-kubernetes-list-map-keys"
 
-As it will not be there in original delegate yaml which was used to start delegate.
+You should create the delegate with the minimum recommened resources to solve this issue.
 
-###  migration scripts/tools for moving project level services to org/account?
-
-No, it only supports copying entities across projects.
-
-### delegate is restarting very frequently after upgrade and seeing delegate log filled with message:Failed to find field for io.kubernetes.client.openapi.models.V1JSONSchemaProps.x-kubernetes-list-map-keys"
-
-Then should use with minimum recommended resource.
-
-### Does there is functionality to auto accept invite for  username/password login?
-It's present for saml based login because authentication is taken care by SAML provider. In password need login we need the user to create a password in harness.
-
+### Is there a functionality to auto accept invite for username/password login?
+It's present for saml based login because authentication is taken care by SAML provider. In password need login we need the user to create a password in Harness.
