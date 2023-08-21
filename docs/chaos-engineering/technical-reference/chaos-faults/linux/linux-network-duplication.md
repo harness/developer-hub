@@ -28,9 +28,9 @@ Linux network duplication injects chaos to disrupt network connectivity on a Lin
     <th> Notes </th>
   </tr>
   <tr>
-    <td> networkInterface </td>
-    <td> Network interface to target. </td>
-    <td> For example: <code>eth0</code> </td>
+    <td> networkInterfaces </td>
+    <td> Network interfaces to target as comma separated values. </td>
+    <td> For example: <code>eth0,ens192</code> </td>
   </tr>
 </table>
 
@@ -85,7 +85,7 @@ metadata:
 spec:
   networkChaos/inputs:
     destinationHosts: '["google.com"]'
-    networkInterface: "eth0"
+    networkInterfaces: "eth0"
 ```
 
 ### Destination IPs
@@ -105,7 +105,7 @@ metadata:
 spec:
   networkChaos/inputs:
     destinationIPs: '["1.1.1.1"]'
-    networkInterface: "eth0"
+    networkInterfaces: "eth0"
 ```
 
 ### Packet duplication percentage
@@ -125,6 +125,6 @@ metadata:
 spec:
   networkChaos/inputs:
     packetDuplicationPercentage: '50'
-    networkInterface: "eth0"
+    networkInterfaces: "eth0"
 ```
 
