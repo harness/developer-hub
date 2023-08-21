@@ -33,7 +33,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Added support for targetting applications by only appkind, only applabel and set-based labels. (CHAOS-2170) and (CHAOS-2128)
 
-* Handled chaos revert for the multiple target pods running on same node. (CHAOS-1563)
+* Parallel chaos injection/revert operations at scale have been improved for multiple target pods on the same node. (CHAOS-1563)
 
 * Updated the behaviour of TARGET_CONTAINER configuration. when not set, the fault will target all containers in target pods. Previously, it used to target only one container randomly. (CHAOS-1216)
 
