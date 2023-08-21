@@ -12,7 +12,7 @@ The following steps describe the general workflow:
 
 1. Click on the [severity](/docs/security-testing-orchestration/onboard-sto/key-concepts/severities) tiles to filter the list of known vulnerabilities. 
 
-2. Drill down into the relevant issues list to view the  issues found in the scan:
+2. Drill down into the relevant issues list to view the issues found in the scan:
 
    - **Only in _variant_name_** &nbsp; Issues found in only the variant you specified when you ran the scan. 
    
@@ -22,7 +22,7 @@ The following steps describe the general workflow:
 
    :::note
 
-   For best results in STO, very target should have a baseline defined. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines).
+   For best results in STO, every target should have a baseline defined. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines).
 
    :::
 
