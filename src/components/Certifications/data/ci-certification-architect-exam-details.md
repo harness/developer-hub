@@ -1,4 +1,4 @@
-(Alpha) The Continuous Integration Architect exam tests your knowledge and skills of the Harness Continuous Integration module.  
+The Continuous Integration Architect exam tests your knowledge and skills of the Harness Continuous Integration module.  
 
 ## Prerequisites
 
