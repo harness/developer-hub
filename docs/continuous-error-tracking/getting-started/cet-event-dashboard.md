@@ -84,7 +84,7 @@ To display the top events on the graph, select the **Event Distribution** split 
   * **Remove all events**: To remove all events from the graph, simply choose the **Clear** option.
     ![Clear All Events](./static/cet-event-distribution-clear-events.png)
 
-### Selecting Graph Timeframes:
+### Select graph timeframes
   You can further customize the graph by changing the timeframes by following the two methods described below:
 
   * **Time period:**  Choose a period for which you want to see the data. The default option is **Last 1 hour**.
