@@ -313,13 +313,11 @@ If you're using Kotlin, you can take advantage of Harness' [Test Intelligence](/
   <TabItem value="hosted" label="Harness Cloud" default>
 ```
 
-<!-- bundle exec fastlane test -->
-
 ```yaml
               - step:
                   type: Run
                   name: build and test
-                  identifier: build-and-test
+                  identifier: build_and_test
                   spec:
                     shell: Sh
                     command: |-
@@ -333,7 +331,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
               - step:
                   type: Run
                   name: build and test
-                  identifier: build-and-test
+                  identifier: build_and_test
                   spec:
                     shell: Sh
                     command: |-
