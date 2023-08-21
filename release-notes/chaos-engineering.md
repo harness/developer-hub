@@ -23,19 +23,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <Tabs>
   <TabItem value="What's new">
 
-* Added support for CSMs to be able to view the Activity and Usage for Chaos Module. (CHAOS-1978)
+* Added support for OpenShift configuration for deploying chaos infrastructure. This will provide you with a predefined security context constraint (SCC) that you can modify according to your needs. (CHAOS-1889)
 
-* Added support for Openshift configuration for deploying chaos infrastructure. This will provide users with a predefined SCC & will allow users to modify the same according to their needs. (CHAOS-1889)
+* Enhanced the Chaos experiment execution diagram to not switch to running nodes automatically. This change ensures that you stay on a node when you click it, thus giving you the opportunity to observe its details. (CHAOS-2258)
 
-* Enhanced the Chaos Experiment execution diagram to not switch to running nodes automatically. This will allow users to stay on any node by clicking on the same & observe the respective node details. (CHAOS-2258)
+* Enhanced the Docker service kill fault to support the containerd runtime. (CHAOS-2220)
 
-* Enhanced docker service kill fault to support containerd runtime. (CHAOS-2220)
+* Added support for targeting applications by using only `appkind`, only `applabel`, and set-based labels. (CHAOS-2170, CHAOS-2128)
 
-* Added support for targetting applications by only appkind, only applabel and set-based labels. (CHAOS-2170) and (CHAOS-2128)
+* Parallel chaos injection and revert operations at scale have been improved for multiple target pods on the same node. (CHAOS-1563)
 
-* Parallel chaos injection/revert operations at scale have been improved for multiple target pods on the same node. (CHAOS-1563)
-
-* Updated the behaviour of TARGET_CONTAINER configuration. when not set, the fault will target all containers in target pods. Previously, it used to target only one container randomly. (CHAOS-1216)
+* Previously, if you did not set the TARGET_CONTAINER environment variable, the fault targeted a randomly selected container. Now, if you do not set the environment variable, the fault targets all containers in the target pods. (CHAOS-1216)
 
 * Now, Users can specify drain timeout explicitly in the node drain fault. The node-drain fault has been using the CHAOS_DURATION value as a timeout, leading to potential confusion and risk of failure, especially when a shorter duration is used with many pods. The expectation is that CHAOS_DURATION should define the unschedulable period after draining. Providing a specific drain timeout would help users better estimate the eviction time for all pods on a node, reducing errors and false negatives. (CHAOS-2185)
 
@@ -50,7 +48,7 @@ This release does not include early access features.
   </TabItem>
   <TabItem value="Fixed issues"> 
 
-* Fixed revert chaos for Node drain chaos fault in case of Abort or Chaos Injection failure. (CHAOS-2184)
+* Fixed how chaos is reverted if an attempt to inject the node drain fault fails or needs to be canceled. (CHAOS-2184)
 
 
   </TabItem>
