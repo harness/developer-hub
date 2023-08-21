@@ -101,9 +101,9 @@ In a new browser tab, paste the URL and press enter.
 
 The new issue appears in Jira.
 
-## Issue link support
+## Parent issue support
 
-Harness supports issue links (the `issuelink` field in Jira). 
+Harness supports parent issues (the `issuelink` field in Jira). 
 
 This support enables you to do the following:
 
@@ -112,7 +112,7 @@ This support enables you to do the following:
 * A sub-task can be created using the Jira Create step.
 * A ticket parent can be provided by simply typing the parent issue key in **Parent Link** setting, such as `TJI-47890`. 
 
-To use issue links, do the following:
+To use parent links, do the following:
 
 1. In the Jira Create or Update step, select **Optional Configuration**.
 2. Select **Fields**. 
