@@ -87,7 +87,7 @@ To display the top events on the graph, select the **Event Distribution** split 
 ### Select graph timeframes
   You can customize the graph by changing the timeframes using one of the following methods:
 
-  * **Time period:**  Choose a period for which you want to see the data. The default option is **Last 1 hour**.
+  * **Time period**:  Select this option and choose a time period for which you want to see the data. The value is **Last 1 hour**.
 
   * **Time Slice:** Click on the graph and a small time slice pane will open. You can expand that time slice or shrink it to fit your required time frame.
     ![ZoomIn Time Slice](./static/cet-event-distribution-select-time-slice.png)
