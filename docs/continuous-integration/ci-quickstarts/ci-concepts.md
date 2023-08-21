@@ -128,33 +128,17 @@ Here's how Harness Test Intelligence performed with some popular open-source rep
 
 Harness CI is seamlessly integrated with other Harness modules, such as [Continuous Delivery](/docs/continuous-delivery), [Cloud Cost Management](/docs/cloud-cost-management), [Feature Flags](/docs/feature-flags), and [Security Testing Orchestration](/docs/security-testing-orchestration). The Harness Platform offers unified CI/CD pipelines with visual controls and approval gates. You no longer have to navigate between applications to follow the phases of your pipelines.
 
-<!-- ![](./static/ci-concepts-501.png) -->
-
-<docimage path={require('./static/ci-concepts-501.png')} />
-
 ### Containerized steps
 
 CI pipeline steps run as containers, making it language-agnostic. Containers are lightweight abstractions of the host operating system that can package code and dependencies independently of the steps. You can specify a container in the pipeline itself, and the agent will fetch and start the container where the job runs. Because all of the steps run in containers, and plugins have their own containers, you don't need to worry about dependencies.
-
-<!-- ![](./static/ci-concepts-503.png) -->
-
-<docimage path={require('./static/ci-concepts-503.png')} />
 
 ### Visual and YAML pipeline editors
 
 Scripting pipelines can be time-consuming and tedious. It may be difficult to envision the sequence of events in more complex pipelines. Harness CI's Pipeline Studio provides both a YAML editor and a graphical, visual editor. In the visual editor, you can easily add, remove, edit, and rearrange steps and stages. You can also use the YAML editor, which functions similarly to any other IDE, to configure your pipelines-as-code. You can also switch between the two for a combined approach.
 
-<!-- ![](./static/ci-concepts-505.png) -->
-
-<docimage path={require('./static/ci-concepts-505.png')} />
-
 ### Harness Git Experience
 
 The [Harness Git Experience](/docs/category/git-experience) provides seamless integration between your Harness projects, pipelines, and resources and your Git repos. You can work entirely from Git or use a hybrid method of Git and the Harness Manager. Harness CI integrates with all the popular source control management tools, including GitHub, GitLab, and Bitbucket. To get started, you need to activate the repository and include a `.harness` folder for the configuration files. This triggers a build within Harness CI once a commit is detected.
-
-<!-- ![](./static/ci-concepts-506.png) -->
-
-<docimage path={require('./static/ci-concepts-506.png')} />
 
 ## Try Harness CI
 
