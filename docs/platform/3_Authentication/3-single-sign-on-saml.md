@@ -318,6 +318,28 @@ The following image shows the basic exchange of information between Harness and 
 
 ![](./static/single-sign-on-saml-79.png)
 
+### Required permissions
+
+The following App registration permissions are required to use an Azure app for Harness SAML SSO:
+
+- `Directory.ReadWrite.All`
+- `Group.ReadWrite.All`
+- `GroupMember.ReadWrite.All`
+- `User.ReadWrite.All`
+
+:::info note
+You must set the above for Delegated permissions and Application permissions.
+:::
+
+When SAML has more than 150 groups, you must set `User.Read.All` access for the application. For more information on Azure application permissions, go to [Application permissions](https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93) in the Azure documentation.
+
+To set `User.Read.All` access for the application, do the following:
+
+1. In Azure, go to **Manage**, and then select **API Permissions**.
+2. Select **Add a permission**.
+3. Under **Microsoft APIs**, select Microsoft Graph, and then select **Application permissions**.
+4. Add the `User.Read.All` permission.
+
 ### Azure User Accounts
 
 The Harness User accounts and their corresponding Azure user accounts must have the same email addresses.
@@ -420,7 +442,7 @@ To test Azure SSO using Azure, do the following:
    
    ![](./static/single-sign-on-saml-90.png)
 
-2. In the **Test** panel, click **Sign in as current user**. If the settings are correct, you are logged into Harness. If you cannot log into Harness, the **Test** panel will provide debugging information. See also [Debug SAML-based single sign-on to applications in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-v1-debug-saml-sso-issues?WT.mc_id=UI_AAD_Enterprise_Apps_Testing_Experience) from Azure.
+2. In the **Test** panel, click **Sign in as current user**. If the settings are correct, you are logged into Harness. If you cannot log into Harness, the **Test** panel will provide debugging information. For more information, go to [Debug SAML-based single sign-on to applications in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-v1-debug-saml-sso-issues?WT.mc_id=UI_AAD_Enterprise_Apps_Testing_Experience) from Azure.
 
 To test Azure SSO using Harness, do the following:
 
