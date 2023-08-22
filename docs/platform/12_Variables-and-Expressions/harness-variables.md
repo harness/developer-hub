@@ -340,7 +340,7 @@ if ((x * 2) == 5) { <+pipeline.name = abc>; } else { <+pipeline.name = def>; }
 ```
 ### Variable names across the pipeline
 
-Variable names must be unique within the same stage. You can use same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
+Variable names must be unique within the same stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
 
 ### Hyphens in variable names
 
@@ -358,9 +358,20 @@ This also works for nested expressions. For example:
 
 ### Variable expression name restrictions
 
-A variable name is the name in the variable expression, such as `foo` in `<+stage.variables.foo>`.
+A variable name is a name in the variable expression, such as `foo` in `<+stage.variables.foo>`.
 
-Variable names may only contain `a-z, A-Z, 0-9, _`. They cannot contain hyphens or dots.
+Variable names may only contain `a-z, A-Z, 0-9, _, ., -, and $`. A variable name must start with any character from `a-z, A-Z, or _`.
+
+Here is an example Bash script that demonstrates how to utilize dots (`.`) and hyphens (`-`) in variable names:
+
+```
+  echo <+pipeline.variables.get("pipeline-var")>
+  echo <+pipeline.stages.custom.variables.get("stage-var")>
+  echo <+pipeline.variables.get("pipeline.var")>
+  echo <+pipeline.stages.custom.variables.get("stage.var")>
+```
+
+To access any custom variable with a dot (`.`) or a hyphen (`-`) in its name, you must use `.get("VARIABLE_NAME")`.
 
 Certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
 

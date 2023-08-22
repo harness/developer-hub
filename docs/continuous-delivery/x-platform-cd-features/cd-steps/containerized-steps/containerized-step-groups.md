@@ -39,6 +39,7 @@ This option is disabled for deployment types that do not support containerized s
 - You can use the same cluster to run the Harness delegate and the containerized step group(s), but it is not required.
 - Currently, containerized step groups are supported in the following deployment types:
   - [AWS SAM (Serverless Application Model)](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments)
+  - [Serverless.com framework for AWS Lambda deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart#before-you-begin)
 
 
 ## Add a containerized step group
@@ -49,13 +50,13 @@ Whether the containerized step group is added automatically or manually, you mus
 
 Here are the steps for adding a containerized step group manually: 
 
-1. In your Deploy (CD) or Custom stage, in **Execution**, select **Add Step**, and then select **Add Step Group**.
+1. In your Deploy (CD) stage, in **Execution**, select **Add Step**, and then select **Add Step Group**.
 2. To configure a step group as containerized, enable the **Enable container based execution** setting.
 3. Configure the following settings.
 
 ### Kubernetes Cluster
 
-Select or add a Harness Kubernetes Cluster connector to connect to the cluster where this container will run.
+Select or add a Harness Kubernetes Cluster connector to connect to the cluster where the containers will run.
 
 ### Namespace
 
@@ -220,7 +221,7 @@ Started container lite-engine
 
 ## Harness Docker connector for all group steps
 
-In each step in the containerized step group, you must provide a Harness connector to a container registry and an image for the container step to run in.
+In each step in the containerized step group, you must provide a Harness connector to a container registry and an image for the container step to run.
 
 You can create the connector in the any of the steps and then select it in the other steps, or you can create it separately and select it in the steps.
 

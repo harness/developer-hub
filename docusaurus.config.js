@@ -75,6 +75,12 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {
+          name: "og:image",
+          content: "https://developer.harness.io/img/hdh-social-card.png",
+        },
+      ],
       navbar: {
         title: "Harness Developer Hub",
         logo: {
