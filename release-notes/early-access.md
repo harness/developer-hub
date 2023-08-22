@@ -12,7 +12,17 @@ Review the notes below to learn about the early access (aka beta) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 10, 2023
+## Latest - August 22, 2023
+
+### Harness Delegate, version 80308
+
+**GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
+
+This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+
+With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings), and you can use GitHub connectors with GitHub App authentication in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
+
+## August 10, 2023
 
 ### Continuous Integration, version 5301
 

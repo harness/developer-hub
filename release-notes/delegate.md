@@ -46,15 +46,11 @@ Harness NextGen release 80307 includes the following changes for the Harness Del
 
 ### Early access features
 
-This release does not include early access features.
-
-<!---
 **GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
 
 This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 
 With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings), and you can use GitHub connectors with GitHub App authentication in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
---->
 
 ### Fixed issues
 
