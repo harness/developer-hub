@@ -144,7 +144,7 @@ Under this step, you would see a bunch of CLI commands to run. Before proceeding
 - **Login Using CLI**
     - For this step we will use **account ID** from the Harness URL and the **x-api-key** created above. 
     - Example of Harness URL: `https://app.harness.io/ng/account/<account ID>/cd/orgs/<org ID>/projects/<Project ID>/`
-    - Now use the following CLI command to login. 
+    - Now use the following CLI command to log in. 
     ```
     harness login --api-key <YOUR API KEY> --account-id <YOUR ACCOUNT ID>
     ```
