@@ -89,7 +89,6 @@ async function docsPluginEnhanced(context, options) {
         return title;
       });
 
-      let lock = false
       if (!exists) {
         const historyRedirectsPath = path.resolve(
           __dirname,
@@ -97,24 +96,22 @@ async function docsPluginEnhanced(context, options) {
         );
         fs.copySync(historyRedirectsPath, outPutPath);
         fs.appendFileSync(outPutPath, strRedirects);
-      } else {
-        lock= true
-        fs.appendFileSync(outPutPath, strRedirects);
-      }
-      if (lock) {
         fs.appendFileSync(
           outPutPath,
-          "\r\n # client-redirect-netlify-format \r\n"
+          "\r\n# client-redirect-netlify-format appeneded from archives \r\n"
         );
         fs.readFile(clientRedirectNetlifyPath, function (err, data) {
           if (err) throw err;
-          console.log("File was read");
-
-          fs.appendFile(outPutPath, data, function (err) {
+          fs.appendFileSync(
+            outPutPath,
+            "\r\n# client-redirect-netlify-format appeneded from archives \r\n"
+          );
+          fs.appendFileSync(outPutPath, data, function (err) {
             if (err) throw err;
-            console.log('The "data to append" was appended to file!');
           });
         });
+      } else {
+        fs.appendFileSync(outPutPath, strRedirects);
       }
     },
   };
