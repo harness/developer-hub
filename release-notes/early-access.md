@@ -34,8 +34,6 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
    * The Cache Intelligence visual editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
    * You can enable and configure [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to the Harness Cloud build infrastructure.
 
-<!-- This change added the key and paths fields to the UI. -->
-
 ## August 9, 2023
 
 ### Security Testing Orchestration, version 1.64.1
