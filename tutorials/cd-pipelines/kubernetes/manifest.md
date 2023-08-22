@@ -272,7 +272,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 ```
 
 Finally, it's time to execute your pipeline. 
-1. Go to the pipeline tab on left nav bar and you can see your pipeline created.
+1. Go to the pipeline tab on left navigation bar and you can see your pipeline created.
 2. Go to the pipeline studio and Select **Run**, and then select **Run Pipeline** to initiate the deployment.
      - Observe the execution logs as Harness deploys the workload and checks for steady state.
      - After a successful execution, you can check the deployment on your Kubernetes cluster using the following command:
