@@ -45,7 +45,7 @@ import TabItem from '@theme/TabItem';
 
 In the **GitHub Account URL** field, provide only the account-identifying portion of the GitHub URL, such as `https://github.com/YOUR_ACCOUNT_NAME/`. Do not include a repo name. The URL format depends on the **Connection Type**:
 
-* **HTTP:** `https://github.com/YOUR_ACCOUNT_NAME/`
+* **HTTP:** `https://github.com/YOUR_ACCOUNT_NAME/` or `https://github.com`
 * **SSH:** `git@github.com:YOUR_ACCOUNT_NAME/`
 
 ### Test Repository
