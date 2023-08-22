@@ -63,7 +63,7 @@ To use a username and password for authentication, do the following:
 
 1. Enter **Username**.
 2. In **Password/API Key**, create a new password or API key or enter an existing one. For **API Key**, use a [Harness Text Secret](../../Secrets/2-add-use-text-secrets.md).
-3. Click **Continue**.
+3. Select **Continue**.
 
 ```mdx-code-block
 </TabItem>
@@ -109,7 +109,7 @@ All refresh tokens must be valid and updated when revoked. Permissions granted i
 
 To use an OIDC refresh token for authentication, do the following:
 
-1. Select an existing secret or create one that has the application (client) id assigned to your application by OIDC for the **Client ID** field.
+1. Select an existing secret or create one that has the application (client) ID assigned to your application by OIDC for the **Client ID** field.
 
 2. Optional: Select an existing secret or create one that has the application (client) secret assigned.
 
