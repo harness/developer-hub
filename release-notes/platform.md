@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-08-17T10:00:30
+date: 2023-08-22T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -30,7 +30,7 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## Latest: Version 803xx
+## Latest: Version 80307
 
 ### New features and enhancements
 
@@ -40,11 +40,11 @@ The following deprecated API endpoints will no longer be supported:
 
   By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
 
-  This item requires Harness Delegate version 803xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 ### Early access features
 
-This release does not include any early access features.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -60,7 +60,7 @@ This release does not include any early access features.
 
   The issue is now fixed. During long network outages, the delegate attempts to reconnect the websocket every time it fails to send a heartbeat.
 
-    This item requires Harness Delegate version 803xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+    This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - Updates to the role assignments of a user group in one project caused role assignments to get updated in other projects in the organization. The issue was observed in the following scenario:
     - You used a regex query to update role assignments in a project.
