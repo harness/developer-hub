@@ -30,7 +30,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 
 
- Various dependencies were upgraded to prevent security issues. (CET-1517)
+ Various dependencies were upgraded to prevent security issues. (CET-1571)
 
 
 ```mdx-code-block
