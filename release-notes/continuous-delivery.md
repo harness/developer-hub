@@ -108,7 +108,7 @@ This release does not have new features.
 
 :::note
 
-The following items require Harness Delegate version 803xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+The following items require Harness Delegate version 80300. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 :::
 
