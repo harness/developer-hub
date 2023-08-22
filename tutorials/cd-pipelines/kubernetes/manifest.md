@@ -154,7 +154,7 @@ Under this step, you would see a bunch of CLI commands to run. Before proceeding
     Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
     </details>
     
-    - Use the follwoing command to add Github PAT created above for secret.
+    - Use the following command to add the GitHub PAT you created previously for your secret.
     
     ```
     harness secret --token <YOUR GITHUB PAT>
