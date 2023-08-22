@@ -1,7 +1,6 @@
 const fs = require("fs-extra");
 const path = require("path");
 const docsPluginExports = require("@docusaurus/plugin-content-docs");
-
 const docsPlugin = docsPluginExports.default;
 
 async function docsPluginEnhanced(context, options) {
@@ -39,7 +38,21 @@ async function docsPluginEnhanced(context, options) {
         return null;
       }
       const outPutPath = path.join(outDir, destPath);
+      const clientRedirectNetlifyPath = path.resolve(
+        __dirname,
+        "../../archive/redirects/client-redirect-netlify-format-aug-16-2023.txt"
+      );
       const exists = fs.existsSync(outPutPath);
+      // const exists2 = fs.existsSync(clientRedirectNetlifyPath);
+      // console.log("client reditect path ",  clientRedirectNetlifyPath);
+
+      // fs.readFile(clientRedirectNetlifyPath, "utf8", (err, data) => {
+      //   if (err) {
+      //     console.log(err.message);
+      //   } else {
+      //     console.log(data);
+      //   }
+      // });
       // console.log(new Date(), "fileExists?...", outPutPath, exists);
       let strRedirects = "";
       const docs = content.loadedVersions[0].docs;
@@ -76,19 +89,32 @@ async function docsPluginEnhanced(context, options) {
         return title;
       });
 
-      // console.log(strRedirects);
+      let lock = false
       if (!exists) {
-        // console.log("file doesnot exist");
         const historyRedirectsPath = path.resolve(
           __dirname,
           "../../_history-redirects"
         );
         fs.copySync(historyRedirectsPath, outPutPath);
         fs.appendFileSync(outPutPath, strRedirects);
-        // console.log("file is created");
       } else {
-        // console.log("FIle exists");
+        lock= true
         fs.appendFileSync(outPutPath, strRedirects);
+      }
+      if (lock) {
+        fs.appendFileSync(
+          outPutPath,
+          "\r\n # client-redirect-netlify-format \r\n"
+        );
+        fs.readFile(clientRedirectNetlifyPath, function (err, data) {
+          if (err) throw err;
+          console.log("File was read");
+
+          fs.appendFile(outPutPath, data, function (err) {
+            if (err) throw err;
+            console.log('The "data to append" was appended to file!');
+          });
+        });
       }
     },
   };
