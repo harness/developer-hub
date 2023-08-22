@@ -589,7 +589,7 @@ Some Harness features might require specific Terraform versions.
   - [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step)
   - [Use the Command step to download or copy artifacts and configs, or run scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step)
   - [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances)
-  - [Pausing pipeline execution using the Wait step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/wait-step)
+  - [Wait step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/wait-step)
 
 ```mdx-code-block
   </TabItem>
