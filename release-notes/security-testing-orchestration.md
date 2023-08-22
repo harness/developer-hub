@@ -19,29 +19,63 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-<!--
 
-## Latest: harness_core_ui version 803xx
+## Latest - August 09, 2023, version 1.64.1
 
-### What's new
+```mdx-code-block
+<Tabs>
+  <TabItem value="What's new">
+```
 
-This release does not include new features. 
+* Aqua Trivy scans now capture and report on secrets in plain text, in addition to vulnerabilities. (STO-6345)
 
-### Early access
+* The Account Settings > Subscriptions > Security Testing Orchestration UI has been updated to display scan limits more clearly. The UI now shows scan limits based on the number of subscribed security developers. (STO-6096)
 
-This release does not include early-access features.
+* You can now click the severity tiles in the **Security Tests** tab to filter the issues list by severity. (STO-5784)
+  ![Click on a tile to filter issues by severity](./static/sto-tile-filters-sto-5784.png)
 
-### Fixed issues
+* The issue lists in the the **Security Tests** tab are now paginated. You can configure each list to show 20, 50, or 100 issues per page. This makes the overall page much easier to navigate if the scan results include a lot of issues. (STO-5949, STO-6099)
 
-- Fixed a UI issue where the module sidebar in the left-side menu would scroll when a user clicked different menus within STO. With this fix, the module sidebar maintains its position when a user clicks different menus. (STO-6219)
 
-### Hotfixes
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+* The **Security Tests** tab includes a set of pull-down menus so you can filter the issue lists by Target, Target Type, Step, Stage, and Scanner. (STO-5212).
+  ![Click on a tile to filter issues by severity](./static/sto-pulldown-filters-sto-5212.png)
+
+   This feature is behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+* Fixed a UI issue where the **Issue Details** pane rendered long HTML values as markdown. These values are now correctly rendered as HTML. (STO-6339)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues August 22">
+```
+
+Harness core release 80307, released on August 22, 2023, includes the following fixed STO issue:
+
+* Fixed a UI issue where the module sidebar in the left-side menu would scroll when a user clicked different menus within STO. With this fix, the module sidebar maintains its position when a user clicks different menus. (STO-6219)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Hotfixes">
+```
 
 This release does not include hotfixes.
 
--->
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 
+<!-- 
 ## Latest: version 1.65.0
 
 ### What's new
@@ -65,11 +99,14 @@ This release does not have early-access issues.
 
 This release does not include hotfixes.
 
+-->
+
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
 
 
 #### August 09, 2023, version 1.64.1
