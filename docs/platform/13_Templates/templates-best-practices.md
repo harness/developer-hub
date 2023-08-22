@@ -47,7 +47,7 @@ For each template, irrespective of its type, you must provide a unique identifie
 
 You can create a template for any step in Harness. Harness supports templates for CI and CD steps.
 
-You can create Step templates at the account, org, or project scope and use them in pipelines, stages, stage templates, and pipeline templates. You can manage step templates via the Harness Git Experience.
+You can create Step templates at the account, org, or project scope and use them in pipelines, stages, stage templates, and pipeline templates. You can manage step templates via Harness Git Experience.
 
 ### Sample step template
 
@@ -146,7 +146,7 @@ Harness supports the following stage types as templates:
 - Custom
 - Approval
 
-You can configure a stage template at the project, org, and account scope. You can version Stage templates in Harness or via Harness Git Experience.
+You can configure a stage template at the project, org, and account scope. Harness supports versioning of Stage templates in Harness or via Harness Git Experience.
 
 You can define variables within the stage template and access them within the pipeline that references the template.
 
@@ -210,9 +210,9 @@ template:
       condition: <+input>
 ```
 
-The example below is a pipeline that reference the stage template.
+The example below is a pipeline that references the stage template.
 
-Stage templates can take inputs at runtime during a pipeline run, fix inputs in the pipeline when it's linked to the pipeline, and provide identifiers for object input or strings for variable input.
+Stage templates can take inputs at runtime during a pipeline run, fix inputs in the template when it's linked to the pipeline, and provide identifiers for object input or strings for variable input.
 
 To reference a template at the account scope, use `account.<templateIdentifier>`.
 
@@ -304,9 +304,9 @@ name: Multi Service Deployment Demo
 Pipeline templates support all stage types. Pipeline templates can reference stage templates at the same object level or higher.
 
 You can manage pipeline templates using the Harness Git Experience.
-You cannot edit steps or stages when the template is linked to a pipeline in a project. You must go change the template configuration in the studio.
+You cannot edit steps or stages when the template is linked to a pipeline in a project. You must change the configuration in the Template Studio.
 
-When you design a pipeline template, Harness recommends that provide all of your parameters in the template. When you use the template in a pipeline, the content already available. You cannot customize on top of a pipeline template.
+When you design a pipeline template, Harness recommends that provide all of your parameters in the template. When you use the template in a pipeline, the content is already available. You cannot customize on top of a pipeline template.
 
 ### Sample pipeline template
 
@@ -476,7 +476,7 @@ You can version templates can in Harness or Git via Harness Git Experience.
 
 When you reference resources in a template, you can only reference resources in the same scope. For more information, refer to the use cases below.
 
-### Use case 1: Account level deploy stage template
+### Use case 1: Account-level deploy stage template
 
 - You can't hard-code a service because there are no services at the account level. The field will be `<+input>`.
 
@@ -488,7 +488,7 @@ When you reference resources in a template, you can only reference resources in 
 
 - Connectors you reference are only at the account level, you can't reference a connector in a lower-level org or project.
 
-### Use case 2: Org level deploy stage template
+### Use case 2: Org-level deploy stage template
 
 - You can't fix a service because there are no services at the org level. You define them as `<+input>`. When used in a pipeline, you can configure an expression in the runtime or to fix the service. 
 
