@@ -65,7 +65,7 @@ The `spec` parameters define which Bitrise Integration to use, Bitrise Integrati
 
 If you already configured Bitrise Integrations elsewhere, you can [transfer Bitrise Integrations into Harness CI](#transfer-bitrise-integrations-into-harness-ci).
 
-You can use variable expressions in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
+You can use variable expressions in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
 
 :::
 
@@ -108,7 +108,7 @@ Refer to the Integration's usage specifications for details about specific envir
 
 :::tip
 
-You can use fixed values, runtime input, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables). Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
+You can use fixed values, runtime inputs, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a variable expression [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables). Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
 
 :::
 

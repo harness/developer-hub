@@ -12,7 +12,7 @@ To go to the Events dashboard, in Harness, go to **Continuous Error Tracking**, 
 
 By default, the dashboard displays the data for the last 24 hours time period. You can customize the dashboard using the following filters:
 
-* **Time period**: Choose a period for which you want to see the data. The default option is **Last 24 hours**.
+* **Time period**: Choose a period for which you want to see the data. The default option is **Last 1 hour**.
 * **Services**: Choose a service to see its data. You can select multiple services. The default option is **All**.
 * **Environment**: Choose an environment to see its data. You can select multiple environments. The default option is **All**.
 * **Deployment version**: Choose a deployment version in order to view the data associated with the monitored services of that specific version. You can select multiple deployment versions. The default option is **All**.
@@ -52,11 +52,48 @@ The Event List displays the following information:
 
 * **Error Rate**: Percentage of time the event occurs in comparison to all the calls made to the event's location. This is calculated by dividing the number of occurrences by the total number of calls to that location.
 
-* **First Seen**: Time when the event was first detected in the environment.
+* **First Seen:** Time when the event was first detected in the environment.
 
-* **Last Seen**: Last time this event was detected in the environment. This value indicates whether the event is still impacting your application.
+* **Last Seen:** Last time this event was detected in the environment. This value indicates whether the event is still impacting your application.
 
-* **Impacted Services**: List of monitored services in which the event was detected. For example, Producer-Service, Consumer-Service, Web-frontend, and so on.
+* **Impacted Services:** List of monitored services in which the event was detected. For example, Producer-Service, Consumer-Service, Web-frontend, and so on.
+
+
+## Event Distribution Graph
+
+A key element in the dashboard is the interactive graph. It displays a visual representation of the event volume present in the current timeframe and view.```
+
+### View Event Distribution Graph
+The Event Graph illustrates the historical performance of specific metrics. To view the graph, select the Event Distribution collapsible button. This displays the trend for the total count of errors across the chosen time interval.
+    ![Event Dsitribution Default](./static/cet-event-distribution-default.png)
+
+### Add an event to the Event Distribution Graph
+To add a new event to the graph, click on the "+" icon located in the last column and add the event. When you add an event from the event list, it gets instantly displayed on the chart. A comparison of both series helps you assess the impact of the selected errors on the overall error count.```
+    ![Add Exception To Graph](./static/cet-event-distribution-add-exception.png)
+    ![Exception Added To Graph](./static/cet-event-distribution-exception-plotted.png)
+
+### Display top events on the graph:
+To display the top events on the graph, select the **Event Distribution** split series icon. This adds the top error events as a series on the graph. This feature provides you with an instant overview of the errors with the most impact that need immediate attention.```
+    ![Plot Top Events](./static/cet-event-distribution-plot-top-events.png)
+
+### Remove an event from the graph
+  
+  * **Remove an event**:  To remove an event from the Event Graph select the ** - ** icon next to it.
+    ![Remove Evenet from Graph](./static/cet-even-distribution-remove-event.png)
+
+  * **Remove all events**: To remove all events from the graph, simply choose the **Clear** option.
+    ![Clear All Events](./static/cet-event-distribution-clear-events.png)
+
+### Select graph timeframes
+  You can customize the graph by changing the timeframes using one of the following methods:
+
+  * **Time period**:  Select this option and choose a time period for which you want to see the data. The value is **Last 1 hour**.
+
+  * **Time Slice**: To choose this option, click on the graph. A small time slice pane appears. You can expand or shrink the time slice according to your required time frame.
+    ![ZoomIn Time Slice](./static/cet-event-distribution-select-time-slice.png)
+
+### Collapsing the Event Graph
+You can collapse the Event Graph when you don't need.
 
 
 ## Next steps

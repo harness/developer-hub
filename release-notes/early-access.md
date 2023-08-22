@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-08-21T10:00
+date: 2023-08-22T10:00
 sidebar_position: 2
 ---
 
@@ -12,15 +12,17 @@ Review the notes below to learn about the early access (aka beta) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 21, 2023
+## Latest - August 22, 2023
 
-### Continuous Integration, version 54xx
+### Continuous Delivery, version 80307
 
-<!-- I don't know which heading to use because this was under CI, but it's a delegate-dependent change, the feature flag is 'CDS', and it's a cross-platform connector (both CI and CD have Git Clone steps). -->
+- Added support for Post Prod Rollback for ASG deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/rollback-deployments/). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-77450, CDS-76352)
+
+### Harness Delegate, version 80308, and Continuous Integration, version 54xx
 
 **GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
 
-This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION` and it requires Harness Delegate version 803xx or later. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate).
+This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 
 With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings), and you can use GitHub connectors with GitHub App authentication in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
 
@@ -31,8 +33,6 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 * Enable and configure Cache Intelligence in the Visual editor. (CI-8917)
    * The Cache Intelligence visual editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
    * You can enable and configure [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to the Harness Cloud build infrastructure.
-
-<!-- This change added the key and paths fields to the UI. -->
 
 ## August 9, 2023
 

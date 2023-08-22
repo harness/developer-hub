@@ -184,7 +184,7 @@ When defined in a **Plugin** step's **Settings**, don't include the `PLUGIN_` pr
 
 :::tip Expressions and secrets
 
-You can use [Harness expressions](/docs/platform/references/runtime-inputs/#expressions) for **Settings** values. For example `password: <+stage.variables.[TOKEN_SECRET]>` supplies a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables) containing a [secret](/docs/category/secrets) to a setting called `password`.
+You can use [Harness expressions](/docs/platform/references/runtime-inputs/#expressions) for **Settings** values. For example `password: <+stage.variables.[TOKEN_SECRET]>` supplies a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) containing a [secret](/docs/category/secrets) to a setting called `password`.
 
 Related to this, it is a best practice to use [text secrets](/docs/platform/Secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by plugins.
 

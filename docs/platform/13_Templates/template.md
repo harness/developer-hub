@@ -82,8 +82,13 @@ You can define a fixed value service at the org or account level according to yo
 You can add the following types of templates to your Harness account/org/project:
 
 * Step
+* Step Group
 * Stage
 * Pipeline
+* Deployment
+* Monitored Service
+* Secrets Manager
+* Artifact Source
 
 ### Step template
 

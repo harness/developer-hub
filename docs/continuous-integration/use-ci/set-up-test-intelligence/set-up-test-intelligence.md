@@ -24,21 +24,6 @@ Testing is an important part of Continuous Integration (CI). Testing safeguards 
 
 Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. You can also use [parallelism (test splitting) with TI](#enable-parallelism-test-splitting-for-test-intelligence) to further optimize your test times.
 
-Using TI doesn't require you to change your build and test processes. To enable TI, [add a Run Tests step](#add-the-run-tests-step) and [generate a call graph](#generate-the-initial-call-graph). The **Run Tests** step executes one or more tests on a container image. The first time you enable TI on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for test selection in future builds.
-
-<details>
-<summary>Video summary</summary>
-
-The following video walks you through setting up Test Intelligence in a Harness CI pipeline. The TI section starts after the 11 minute mark in the video.
-
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://www.youtube.com/embed/eAtIO4bJ3No" />
-
-<!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/eAtIO4bJ3No" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
-
-</details>
-
 ## How does Test Intelligence work?
 
 Test Intelligence uses *test selection* to run only those tests that are relevant to code changes. This includes changes to your software's code, as well as changes to your tests (new or modified tests). Instead of always running all unit tests, TI selects only the relevant subset of unit tests and skips the rest.
@@ -85,7 +70,28 @@ Currently, TI for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness 
 
 For unsupported codebases, [use Run steps](../run-ci-scripts/run-step-settings.md) to run tests.
 
-## Add the Run Tests step
+## Enable Test Intelligence
+
+Using TI doesn't require you to change your build and test processes. To enable TI:
+
+1. [Add a Run Tests step](#add-the-run-tests-step), which executes one or more tests on a container image.
+2. [Generate a call graph](#generate-the-initial-call-graph). The first time you enable TI on a repo, you must commit changes to your codebase that run *all* tests. This generates the initial call graph, which sets the baseline for test selection in future builds.
+3. After you've successfully enabled TI, you can further optimize test times by [enabling parallelism (test splitting) for TI](#enable-parallelism-test-splitting-for-test-intelligence).
+
+<details>
+<summary>Video summary</summary>
+
+The following video walks you through setting up Test Intelligence in a Harness CI pipeline. The TI section starts after the 11-minute mark in the video.
+
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/eAtIO4bJ3No" />
+
+<!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/eAtIO4bJ3No" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
+
+</details>
+
+### Add the Run Tests step
 
 You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run Tests** step. Your pipeline must be associated with a [supported codebase](#supported-codebases).
 
@@ -219,16 +225,44 @@ The build environment must have the necessary binaries for the **Run Tests** ste
 </Tabs>
 ```
 
-## Generate the initial call graph
+### Generate the initial call graph
 
-The first time you enable Test Intelligence on a repo, you must run all tests to generate an initial call graph. This creates a baseline for test selection in future builds. To generate the initial call graph:
+The first time you enable Test Intelligence on a repo, you must run *all* tests to generate an initial call graph. This sets the baseline for test selection in future builds. You can use a webhook trigger or manual build to generate the initial call graph.
 
-1. [Add a webhook trigger](../../../platform/11_Triggers/triggering-pipelines.md) to the pipeline that listens for PRs to be opened against the pipeline's codebase.
-2. Open a PR against the pipeline's codebase. Make sure the build triggered by this PR runs all tests.
-3. Wait while the pipeline executes. To monitor the build's progress, go to **Builds** and select the build that the PR started.
-4. If the tests pass and the build succeeds, merge the PR.
+```mdx-code-block
+<Tabs>
+  <TabItem value="webhook" label="Webhook trigger (Recommended)" default>
+```
 
-## Enable parallelism (test splitting) for Test Intelligence
+1. [Add a webhook trigger](/docs/platform/triggers/triggering-pipelines/) to your pipeline that listens for **Pull Request** or **Push** events in the pipeline's [codebase](../codebase-configuration/create-and-configure-a-codebase.md).
+2. Open a PR or push changes that cause *all* tests to run for your codebase.
+3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../viewing-builds.md). If the build succeeds, you can [review the test results](#view-test-reports).
+4. If the tests pass and the build succeeds, merge your PR, if applicable.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="manual" label="Manual build">
+```
+
+1. Open a PR or push changes that cause *all* tests to run for your pipeline's [codebase](../codebase-configuration/create-and-configure-a-codebase.md).
+2. In Harness, run your pipeline.
+
+   * If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
+   * If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
+
+   <!-- ![](./static/set-up-test-intelligence-04.png) -->
+
+   <docimage path={require('./static/set-up-test-intelligence-04.png')} />
+
+3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../viewing-builds.md). If the build succeeds, you can [review the test results](#view-test-reports).
+4. If the tests pass and the build succeeds, merge your PR, if applicable.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+### Enable parallelism (test splitting) for Test Intelligence
 
 You can enable parallelism and test splitting in your **Run Tests** steps to further optimize test times.
 
@@ -303,7 +337,7 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
 
    Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test count uses simple division to split the tests into workloads. The default is `ClassTiming` if you omit this parameter. However, the maximum possible number of workloads is determined by the parallelism `strategy` you specified on the step or stage. For example, if you set `parallelism: 5`, tests are split into a maximum of five workloads.
 
-## Ignore tests or files
+### Ignore tests or files
 
 If you want Test Intelligence to ignore certain tests or files, create a `.ticonfig.yaml` file in your codebase containing a list of tests and files to ignore, for example:
 
@@ -369,52 +403,13 @@ You can sort the list by failure rate, duration, and total tests. You can also e
 <details>
 <summary>Call Graph</summary>
 
-The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to run all tests and [generate the initial call graph](#generate-the-initial-call-graph). This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by TI for that run.
+The first time you enable Test Intelligence on a repo, you must run all tests to [generate the initial call graph](#generate-the-initial-call-graph). This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by TI for that run.
 
 Select **Expand graph** to view the TI Visualization, which shows why a specific test was selected and the reason behind every test selection. Purple nodes represent tests. Select any test (purple node) to see all the classes and methods covered by that test. Blue nodes represent changes to classes and methods that caused TI to select that test.
 
 ![](./static/set-up-set-up-test-intelligence-531.png)
 
 </details>
-
-## Troubleshooting
-
-You might encounter these issues when using Test Intelligence.
-### pom.xml with argLine
-
-If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
-
-**Before:**
-
-```
-<argLine> something  
-</argLine>
-```
-
-**After:**
-
-```
-<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
-</argLine>
-```
-
-### Jacoco/Surefire/Failsafe
-
-If you're using Jacoco, Surefire, or Failsafe, make sure the `forkCount` is not set to `0`.
-
-For example, the following configuration in `pom.xml` removes the `forkCount` setting and applies `useSystemClassLoader` as a workaround:
-
-```
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-surefire-plugin</artifactId>
-    <version>2.22.1</version>
-    <configuration>
-        <!--  <forkCount>0</forkCount> -->
-        <useSystemClassLoader>false</useSystemClassLoader>
-    </configuration>
-</plugin>
-```
 
 ## Settings
 
@@ -465,7 +460,7 @@ Select the source code language to build: **C#**, **Java**, **Kotlin**, or **Sca
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="csharp" label="C#" default>
+  <TabItem value="csharp" label="C#">
 ```
 
 :::note
@@ -513,8 +508,10 @@ Supply a comma-separated list of namespace prefixes that you want to test.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="java" label="Java">
+  <TabItem value="java" label="Java" default>
 ```
+
+<!-- Java tab must be set to default because there is an anchored link pointing to Do you want to enable error tracking -->
 
 #### Do you want to enable Error Tracking?
 
@@ -1076,4 +1073,43 @@ pipeline:
 ```mdx-code-block
   </TabItem>
 </Tabs>
+```
+
+## Troubleshooting
+
+You might encounter these issues when using Test Intelligence.
+### pom.xml with argLine
+
+If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
+
+**Before:**
+
+```
+<argLine> something  
+</argLine>
+```
+
+**After:**
+
+```
+<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
+</argLine>
+```
+
+### Jacoco/Surefire/Failsafe
+
+If you're using Jacoco, Surefire, or Failsafe, make sure that `forkCount` is not set to `0`.
+
+For example, the following configuration in `pom.xml` removes `forkCount` and applies `useSystemClassLoader` as a workaround:
+
+```
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.22.1</version>
+    <configuration>
+        <!--  <forkCount>0</forkCount> -->
+        <useSystemClassLoader>false</useSystemClassLoader>
+    </configuration>
+</plugin>
 ```

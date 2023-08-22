@@ -90,8 +90,6 @@ Principals include:
 
 A resource group is a set of Harness resources that a principal can access. You can create resource groups at all [scopes](#permissions-hierarchy-scopes). Resource groups are assigned along with [roles](#roles) to principals. Roles grant permissions (what actions can be taken) and resource groups grant access (what objects can be acted on).
 
-![](./static/rbac-in-harness-03.png)
-
 Resource groups either include **All Resources** (all resources of a given type) or **Named Resources** (specific, individual resources).
 
 Harness has built-in resource groups at each scope, and you can create custom resource groups. For more information, go to [Manage resource groups](/docs/platform/role-based-access-control/add-resource-groups).

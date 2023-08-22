@@ -142,7 +142,7 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 ### SSH-keyscan timeout
 
-If your [connector](#connector) uses SSH authentication, you can add a `PLUGIN_SSH_KEYSCAN_TIMEOUT` [stage variable](/docs/platform/pipelines/add-a-stage/#option-stage-variables) to override the `ssh-keyscan` command's timeout limit (the default is `5s`).
+If your [connector](#connector) uses SSH authentication, you can add a `PLUGIN_SSH_KEYSCAN_TIMEOUT` [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) to override the `ssh-keyscan` command's timeout limit (the default is `5s`).
 
 Stage variables are configured in stage settings, not step settings.
 
