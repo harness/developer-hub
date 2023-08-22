@@ -394,7 +394,7 @@ Make sure that you have met the following requirements:
 * You have set up a Kubernetes cluster. We recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment. For more information, go to [Delegate system and network requirements](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 * You have forked the **[harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface. For more details, go to [Forking a GitHub repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
-## Deploy your applications uisng Harness GitOps
+## Deploy your applications using Harness GitOps
 
 1. Log in to the [Harness App](https://app.harness.io/).
 

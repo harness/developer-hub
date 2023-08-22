@@ -1,7 +1,7 @@
 ---
 title: Feature flag
 description: Learn to connect a feature flag to a monitored service.
-sidebar_position: 40
+sidebar_position: 20
 ---
 
 # Connect a feature flag to a monitored service

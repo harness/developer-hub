@@ -1,7 +1,7 @@
 ---
 title: Custom incident
 description: Configure a custom change source to monitor incidents.
-sidebar_position: 20
+sidebar_position: 40
 ---
 
 # Custom incident change source

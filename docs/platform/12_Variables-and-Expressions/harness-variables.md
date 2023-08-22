@@ -340,7 +340,7 @@ if ((x * 2) == 5) { <+pipeline.name = abc>; } else { <+pipeline.name = def>; }
 ```
 ### Variable names across the pipeline
 
-Variable names must be unique within the same stage. You can use same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
+Variable names must be unique within the same stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
 
 ### Hyphens in variable names
 
@@ -358,9 +358,20 @@ This also works for nested expressions. For example:
 
 ### Variable expression name restrictions
 
-A variable name is the name in the variable expression, such as `foo` in `<+stage.variables.foo>`.
+A variable name is a name in the variable expression, such as `foo` in `<+stage.variables.foo>`.
 
-Variable names may only contain `a-z, A-Z, 0-9, _`. They cannot contain hyphens or dots.
+Variable names may only contain `a-z, A-Z, 0-9, _, ., -, and $`. A variable name must start with any character from `a-z, A-Z, or _`.
+
+Here is an example Bash script that demonstrates how to utilize dots (`.`) and hyphens (`-`) in variable names:
+
+```
+  echo <+pipeline.variables.get("pipeline-var")>
+  echo <+pipeline.stages.custom.variables.get("stage-var")>
+  echo <+pipeline.variables.get("pipeline.var")>
+  echo <+pipeline.stages.custom.variables.get("stage.var")>
+```
+
+To access any custom variable with a dot (`.`) or a hyphen (`-`) in its name, you must use `.get("VARIABLE_NAME")`.
 
 Certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
 
@@ -444,34 +455,26 @@ For example, instead of `<+pipeline.variable.var1>_suffix`, use these syntaxes:
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
 - `<+<+pipeline.variables.var1> + "_suffix">` 
 
+## Debugging expressions
 
-## Built-in CIE codebase variables reference
+:::info note
 
-In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
+This feature is currently behind the feature flag `PIE_EXPRESSION_PLAYGROUND`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-Harness also retrieves your Git details and presents them in your build stage once a pipeline is run.
+:::
 
-Using Harness built-in expressions, you can refer to the various attributes of your codebase in Harness steps and settings.
+An easy way to debug expressions in your pipeline is to use Compiled Mode in your **Variables** panel. You can enable this mode using a radio button at the top of the **Variables** Panel. When Compile Mode is turned on, all of the expressions in the panel are compiled and their values are displayed. By default, the compilation happens against the pipeline's latest execution. You can change this by selecting from a displayed list of previous executions. 
 
-Here is a simple example of a Shell Script step echoing some common codebase variable expressions.
+![](./static/expression-evaluator-screen.png)
 
+Expressions that are incorrect or cannot be evaluated using the execution data are highlighted in the **Variable** values column. You can switch the panel back to normal mode and correct the expression. 
 
-```
-echo <+codebase.commitSha>  
-echo <+codebase.targetBranch>  
-echo <+codebase.sourceBranch>  
-echo <+codebase.prNumber>  
-echo <+codebase.prTitle>  
-echo <+codebase.commitRef>  
-echo <+codebase.repoUrl>  
-echo <+codebase.gitUserId>  
-echo <+codebase.gitUserEmail>  
-echo <+codebase.gitUser>  
-echo <+codebase.gitUserAvatar>  
-echo <+codebase.pullRequestLink>  
-echo <+codebase.pullRequestBody>  
-echo <+codebase.state>
-```
+To test an expression that isn't part of a variable (say, something in a script), you can create a temporary variable in the panel, assign the expression to it, and use Compiled Mode to debug it. 
+
+## Built-in CI codebase variables
+
+In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a [Harness code repo connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo). Pipelines use this connector to clone the code you want to build and test. When a pipeline runs, Harness also fetches your Git details and displays them in the [Build details](/docs/continuous-integration/use-ci/viewing-builds). You can use Harness' built-in expressions to reference various codebase attributes in Harness pipelines, stages, and steps.
+
 For more information, go to [Built-in CIE Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
 
 ## Account
@@ -835,6 +838,10 @@ Resolves to a boolean value to indicate whether the GitOps option is enabled (tr
 ![](./static/harness-variables-37.png)
 
 For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart).
+
+### <+serviceVariableOverrides.VARIABLE_NAME>
+
+Override a service variable during the execution of a step group. This provides significant flexibility and control over your pipelines. For more information, go to [Override service variables in step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/#override-service-variables-in-step-groups)
 
 ## Manifest
 

@@ -18,20 +18,13 @@ For detailed documentation of endpoints and other Harness API reference informat
 
 ## Requirements
 
-To use Harness APIs to manage a resource, you must have the necessary [permissions](./api-permissions-reference) to view, create/edit, or delete that resource. You need one of the following default roles or an equivalent [custom role](../../role-based-access-control/add-manage-roles): Account Administrator, Organization Admin, Project Admin.
+To use Harness APIs to manage a resource, you must have the necessary [permissions](./api-permissions-reference) to view, create/edit, or delete that resource. You need one of the following default roles or an equivalent [custom role](../../role-based-access-control/add-manage-roles.md): Account Administrator, Organization Admin, Project Admin.
 
 You need an understanding of Harness, [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness), sending API requests, and mechanisms for sending requests, such as `curl`.
 
 ## Create a Harness API key and token
 
 Harness APIs use API keys to authenticate requests. Create an API key in your Harness user profile, add tokens to the key, and then use the token in your API requests. For more information, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
-
-<figure>
-
-![](./static/api-quickstart-00.gif)
-
-<figcaption>An animation demonstrating how to make a Harness API key and token.</figcaption>
-</figure>
 
 :::info
 
@@ -40,10 +33,7 @@ Harness APIs use API keys to authenticate requests. Create an API key in your Ha
 
 :::
 
-1. In Harness, select your **Profile** in the lower-left corner of the screen.
-
-   ![](./static/api-quickstart-01.png)
-
+1. Go to your user profile in Harness.
 2. Under **My API Keys**, select **API Key**.
 3. Enter a **Name** for the API key. **Description** and **Tags** are optional.
 
@@ -134,9 +124,7 @@ A successful response includes the `project` data from the request, as well as c
 }
 ```
 
-If the response is successful, go to the **Projects** page in Harness to find your APISample project.
-
-![](./static/api-quickstart-05.png)
+If the response is successful, go to your **Projects** in Harness to find your APISample project.
 
 ### Example: Create a connector through API
 
@@ -198,9 +186,7 @@ A successful response includes the `connector` data from the request, as well as
 }
 ```
 
-If the response is successful, you can find your new connector in Harness. Go to the APISample project, select **Project Setup**, and then select **Connectors**.
-
-![](./static/api-quickstart-06.png)
+If the response is successful, you can find your new connector in Harness in your APISample project's **Connectors**.
 
 ### Example: Create a pipeline through API
 
@@ -290,9 +276,7 @@ A successful response includes the `pipeline` data from the request, as well as 
 }
 ```
 
-If the response is successful, you can find your new pipeline in Harness. Go to the APISample project and select **Pipelines**.
-
-![](./static/api-quickstart-07.png)
+If the response is successful, you can find your new pipeline in Harness in your APISample project's **Pipelines**.
 
 ## Reference documentation
 

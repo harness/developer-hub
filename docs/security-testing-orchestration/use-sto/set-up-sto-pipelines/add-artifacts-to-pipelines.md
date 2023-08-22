@@ -1,18 +1,25 @@
 ---
-title: Adding Custom Artifacts to STO Pipelines
+title: Adding Custom Certificates and Artifacts to STO Pipelines
 description: This topic describes how to include SSL certificates and other types of artifacts in your STO pipelines. 
 sidebar_position: 70
 ---
 
 In some cases, a scanner might require additional files such as SSL certificates and license files. The workflow to include these files depends on your build infrastructure.
 
-:::note
+:::note important notes
 
-Make sure that your certificates meet all requirements of the external scan tool. Your certificates must be valid, unexpired, and have a complete trust chain. 
+- You must have **root access** to perform the [Kubernetes workflows](#kubernetes-workflows) documented below.
 
-To troubleshoot certificate issues, run your pipeline in Debug mode and check for the message **`unable to get local issuer certificate`**.
+- Make sure that your certificates meet all requirements of the external scan tool. Your certificates must be valid, unexpired, and have a complete trust chain. 
+
+- Harness STO does not support certificate bundles. Each certificate should be specified in its own file. If you have a bundle that you want to use with an external scanner, Harness recommends that you split the bundle into individual files.
+
+- To troubleshoot SSL issues, go to [Troubleshooting tips](#troubleshooting-tips) below. 
 
 :::
+
+
+
 
 ## Kubernetes workflows
 
@@ -284,3 +291,18 @@ pipeline:
 ```
 
 </details>
+
+
+## Troubleshooting tips
+
+- To troubleshoot certificate issues, run your pipeline in Debug mode and check for log messages such as **`unable to get local issuer certificate`**.
+
+- In some cases, a scan might report that a certificate is invalid when in fact the root cause is not related to SSL. For example, the certificates might have an invalid domain defined. To determine if the root cause is SSL-related, you might try running a scan with SSL verification disabled temporarily. 
+
+  You'll need to disable verification in both the Harness pipeline and the external scanner. Note that not all scan tools support this option. 
+
+  -  For information about disabling SSL verification in the scanner, go to the external scanner documentation. If the scanner includes a CLI option for this, you can use `tool_args` in your step to run a scan with this option turned off. For example, you can run a [Black Duck Hub](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference#settings) scan with this setting: `tool_args : --blackduck.trust.cert=TRUE`
+ 
+  - If you're using a scanner-specific step with a scanner template, such as Aqua Trivy or Mend, uncheck **Enforce SSL** in the configuration palette. 
+
+  - If you're using a Security step without a scanner template, add this setting to the step: `bypass_ssl_check : true`
