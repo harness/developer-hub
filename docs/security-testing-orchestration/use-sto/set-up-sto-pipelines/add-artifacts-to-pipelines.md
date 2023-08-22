@@ -101,11 +101,13 @@ spec:
 
 
 
+## Important notes
 
 
 
 
-## Harness Cloud workflow
+
+## Recommended workflow
 
 If you're using a Harness Cloud delegate, use the following workflow. 
 
@@ -121,7 +123,7 @@ If you're using a Harness Cloud delegate, use the following workflow.
 
 * You must include all required files in  **/shared/customer_artifacts/**. You can include any number of certificates or other files in this folder.
 
-* If your scanners use SSL certificates such as PEM files, save each certificate to **/shared/customer_artifacts/`<certificate_name>`**. 
+* If your scanners use SSL certificates such as PEM files, save each certificate to **/shared/customer_artifacts/certificates/`<certificate_name>`**. 
 
 * If the scanner requires a license file, save the file to **/shared/customer_artifacts/`<license_file_name>`**.  
 
