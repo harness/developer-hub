@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-08-21T10:00
+date: 2023-08-10T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,14 +19,7 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-
-## Latest - August 21, 2023
-
-### Continuous Integration, version 54xx
-
-Improved support for `DRONE_` [environment variables](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var) in CI pipelines. This improves compatibility for [Plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)
-
-## August 10, 2023
+## Latest - August 10, 2023
 
 ### Continuous Delivery, version 80208
 
@@ -178,6 +171,7 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
 <summary>2023 releases</summary>
 
 #### July 31, 2023
+
 
 ##### Self-Managed Enterprise Edition, version 79819
 
