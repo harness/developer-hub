@@ -221,9 +221,11 @@ Use allowed values to provide a fixed range of acceptable values for a runtime i
 
    ![](./static/runtime-inputs-14.png)
 
-3. For **Validation**, select **Allowed values**, and then enter all allowed values.
-4. If you also specify a [default value](#default-values), you must include the default value in your allowed values.
-5. Select **Submit**.
+3. For **Validation**, select **Allowed values**.
+4. Enter an allowed value, and then press the **Enter** key.
+5. Repeat until you have entered all allowed values.
+6. If you also specify a [default value](#default-values), you must include the default value in your allowed values.
+7. Select **Submit**.
 
 ```mdx-code-block
   </TabItem>
