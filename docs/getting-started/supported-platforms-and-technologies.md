@@ -139,6 +139,16 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 
 <Smp />
 
+## Template Library
+
+#### Limitations
+
+* When you delete an existing template with active pipeline references, Harness deletes the references.
+* When you convert a runtime input in a template to a fixed value, the input type does not change in the linked pipeline. You must manually edit the linked pipeline YAML and provide the fixed values.
+* When you convert a fixed type input to a runtime input in your template, the input type does not change in the linked pipeline. You must click the template in the linked pipeline to refresh it and save the pipeline again. This re-initiates the reconciliation process.
+* Chained pipeline stages are not supported with pipeline templates.
+* When using multiple nested templates, you must manually reconcile the changes or force reconcile via the three-dots menu. 
+
 ## SDKs installed with Harness Delegate
 
 Harness Delegate includes binaries for the SDKs that are required for deployments with Harness-supported integrations. These include binaries for Helm, ChartMuseum, `kubectl`, Kustomize, and so on.

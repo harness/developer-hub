@@ -31,13 +31,9 @@ Here's a diagram that shows how FirstGen entities like Services, Environments, W
 
 The following table maps the entities based on how you use them for deployment:
 
-
-
-|  |  |  |
+|  | FirstGen | NextGen |
 | --- | --- | --- |
-|  | **FirstGen** | **NextGen** |
 | **What I'm deploying.** | Service | Service |
 | **Where I'm deploying it.** | Environment | Environment |
 | **How I'm deploying it.** | Workflow | Execution |
 | **My release process.** | Pipelines | Pipelines |
-

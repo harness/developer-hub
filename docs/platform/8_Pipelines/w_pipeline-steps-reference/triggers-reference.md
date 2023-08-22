@@ -444,12 +444,6 @@ import TabItem from '@theme/TabItem';
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="YAML" label="YAML">
-```
-
-
-```mdx-code-block
-  </TabItem>
 </Tabs>
 ```
 
@@ -487,11 +481,7 @@ Harness Self-Managed Enterprise Edition does not support webhook triggers for He
 
 :::info Custom webhook URL format
 
-The format for the custom webhook URL is as follows:
-
-```
-https://app.harness.io/pipeline/api/webhook/custom?accountIdentifier=<accountID>&orgIdentifier=<orgID>&projectIdentifier=<projectID>&pipelineIdentifier=<pipelineID>&triggerIdentifier=<triggerID>
-```
+The format for the custom webhook URL is `https://app.harness.io/pipeline/api/webhook/custom?accountIdentifier=ACCOUNT_ID&orgIdentifier=ORG_ID&projectIdentifier=PROJECT_ID&pipelineIdentifier=PIPELINE_ID&triggerIdentifier=TRIGGER_ID`
 
 The `orgIdentifier` and `projectIdentifier` are mandatory.
 

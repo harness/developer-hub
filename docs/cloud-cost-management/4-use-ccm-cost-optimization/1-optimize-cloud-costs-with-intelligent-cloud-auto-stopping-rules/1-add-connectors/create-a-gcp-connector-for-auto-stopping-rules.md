@@ -14,7 +14,7 @@ This topic describes how to connect your GCP cloud account to Harness.
 
 ### Before you begin
 
-* [AutoStopping Rules Overview](1-auto-stopping-rules.md)
+* [AutoStopping Rules Overview](../1-auto-stopping-rules.md)
 
 ### Add a GCP Connector
 

@@ -78,3 +78,36 @@ Before running a Pipeline, you can select one or more Input Sets and apply them 
 	+ The values that were resolved.
 	+ The values that were not resolved. In this case, Harness provides a clear indication that the Pipeline cannot run without values for all variables.
 
+## Example: Input set for service and primary artifact
+
+Here's the YAML for an input set that let's you select the Harness service to deploy. In this example, the service selected also has its primary artifact and a replicas variable set as runtime inputs.
+
+```yaml
+inputSet:
+  name: Artifact Input Set
+  tags: {}
+  identifier: Artifact_Input_Set
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  pipeline:
+    identifier: kubernetes_demo
+    stages:
+      - stage:
+          identifier: k8s_deployment
+          type: Deployment
+          spec:
+            service:
+              serviceRef: Kubernetes
+              serviceInputs:
+                serviceDefinition:
+                  type: Kubernetes
+                  spec:
+                    artifacts:
+                      primary:
+                        primaryArtifactRef: nginx
+                        sources: ""
+                    variables:
+                      - name: replicas
+                        type: String
+                        value: "3"
+```

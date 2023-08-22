@@ -1,7 +1,7 @@
 ---
 title: AutoStopping Rules overview
 description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: wzr5tz0ero
 helpdocs_category_id: 2yrql0zhj0
 helpdocs_is_private: false

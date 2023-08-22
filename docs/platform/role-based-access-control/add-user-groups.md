@@ -91,7 +91,9 @@ To inherit user groups in Harness, you need the following [permissions](./permis
 
 When viewing user groups at higher scopes, you can find a list of **Organizations and Projects Using This Group** in the group details. These are the organizations and projects where the group is inherited.
 
-![](./static/add-user-groups-55.png)
+<!-- ![](./static/add-user-groups-55.png) -->
+
+<docimage path={require('./static/add-user-groups-55.png')} />
 
 ## Assign roles and resource groups
 

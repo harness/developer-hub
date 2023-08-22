@@ -63,11 +63,16 @@ These actions can be applied to the failure strategy as primary action and timeo
 | **Manual Intervention** | A Harness user can perform a manual intervention when the error type occurs. There are several options to select from: <li> **Mark as Success**</li><li>**Ignore Failure**</li><li>**Retry**</li><li>**Abort**</li><li>**Rollback Stage**</li>Harness pauses the pipeline execution when waiting for manual intervention. The pipeline execution state appears as **Paused**. | Same as step. | Same as step, but applies to all steps. |
 | **Mark as Success** | The step is marked as **Successful** and the stage execution continues. | Same as step. | The failed step is marked as **Successful** and the pipeline execution continues. |
 | **Ignore Failure** | The stage execution continues. The step is marked as **Failed**, but rollback is not triggered. | Same as step. | Same as step. |
-| **Retry** | Harness retries the execution of the failed step automatically. You can set **Retry Count** and **Retry Intervals**. | Same as step. | Same as step. |
+| **Retry Step** | Harness retries the execution of the failed step automatically. You can set **Retry Count** and **Retry Intervals**. | Same as step. | Same as step. |
+| **Retry Step Group** | N/A | Harness will retry the execution of the complete step group automatically, from the beginning. You can set **Retry Count** and **Retry Intervals**. | N/A |
 | **Abort** | Pipeline execution is aborted. If you select this option, no timeout is needed. | Same as step. | Same as step. |
 | **Rollback Stage** | The stage rolls back to the state prior to stage execution. How the stage rolls back depends on the type of build or deployment it was performing. | Same as step. | Same as step. |
-| **Rollback Step Group** | N/A | The step group rolls back to the state prior to step group execution. How the step group rolls back depends on the type of build or deployment it was preforming. | N/A |
+| **Rollback Step Group** | N/A | The step group rolls back to the state prior to step group execution. How the step group rolls back depends on the type of build or deployment it was performing. | N/A |
 |**Mark As Failure**|Harness marks the step as **Failed**.|Harness marks the step group as **Failed**.|Harness marks the stage as **Failed**.|
+
+:::info note
+The **Retry Step Group** failure strategy is behind the feature flag `PIE_RETRY_STEP_GROUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 ### Failure strategy takes precedence over conditional execution
 
