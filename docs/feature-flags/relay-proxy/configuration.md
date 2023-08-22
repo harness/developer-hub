@@ -54,13 +54,13 @@ These are the configuration opitons to connect to redis. Only `REDIS_ADDRESS` is
 
 To connect to a redis instance that has TLS enabled, you prepend `rediss://` to the beginning of your REDIS_ADDRESS URL, for example, `rediss://localhost:6379`.
 
-### Debug
+### Logging
 
-Enable debug logging.
+Controlling the log level
 
 | Environment Variable | Flag  | Description            | Type    | Default |
 |----------------------|-------|------------------------|---------|---------|
-| DEBUG                | debug | Enables debug logging. | boolean | `false`   |
+| LOG_LEVEL            | log-level | Controls the log level. Valid options are `INFO`, `DEBUG` & `ERROR` | string | `INFO`   |
 
 ### Offline mode
 
