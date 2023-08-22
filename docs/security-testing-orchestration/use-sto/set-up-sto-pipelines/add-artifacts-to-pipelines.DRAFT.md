@@ -122,19 +122,19 @@ This workflow is applicable to all delegate types and for SaaS and Self-Managed 
 
 1. Add the certificates to your delegate, based on the scanner you're setting up. 
 
-  * **Scanner template:**  If you're using a [scanner template](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates) to set up your scan, note the following:
+    * **Scanner template:**  If you're using a [scanner template](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates) to set up your scan, note the following:
 
-    * Make sure that you place your files in the correct location in the delegate workspace and that you set up the `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` environment variables correctly.
+      * Make sure that you place your files in the correct location in the delegate workspace and that you set up the `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` environment variables correctly.
 
-    * STO supports certificates in PEM format as well as DER (Distinguished Encoding Rules).
+      * STO supports certificates in PEM format as well as DER (Distinguished Encoding Rules).
 
-  * **Security step:** If you're using a [Security step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates) to set up your scan, note the following:
+    * **Security step:** If you're using a [Security step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates) to set up your scan, note the following:
 
-    * You need to place the certificates in the folder `/shared/customer_artifacts/certificates/`
+      * You need to place the certificates in the folder `/shared/customer_artifacts/certificates/`
 
-    * STO supports loading multiple certificates in PEM format as well as DER (Distinguished Encoding Rules).
+      * STO supports loading multiple certificates in PEM format as well as DER (Distinguished Encoding Rules).
 
-  * **Nexus IQ scan:** For Nexus IQ scans, follow the Security step workflow. The certificate must have the filename `certificate` and the path `/shared/customer_artifacts/certificates/certificate`. 
+    * **Nexus IQ scan:** For Nexus IQ scans, follow the Security step workflow. The certificate must have the filename `certificate` and the path `/shared/customer_artifacts/certificates/certificate`. 
 
 2. For each artifact that contains sensitive information, such as an SSL certificate, create a Harness secret.
 
