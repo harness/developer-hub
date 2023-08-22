@@ -171,7 +171,7 @@ Under this step, you would see a bunch of CLI commands to run. Before proceeding
         harness connector --file github-connector.yml apply --git-user <YOUR GITHUB USERNAME>
         ```
     - Please check the delegate name to be `helm-delegate` in the `kubernetes-connector.yml`
-    - Create the **Kubernetes connector** using the following CLI Command
+    - Create the **Kubernetes connector** using the following CLI command:
         
         ```
         harness connector --file kubernetes-connector.yml apply --delegate-name kubernetes-delegate
