@@ -28,7 +28,9 @@ This release does not include early access features.
 
 #### Fixed issues
 
-- Fixed an issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240)
+- Fixed a delegate issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240, ZD-48548)
+
+- Fixed an issue where using the Export Manifest with Inherit Manifest in a Kubernetes deployment could lead to skipping resource versioning. With this fix, resource versioning is happening correctly in this deployment scenario. (CDS-75781, ZD-47209)
 
 ### August 8, 2023, version 80209
 

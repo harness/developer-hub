@@ -35,7 +35,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 <Kustomizedep />
 
 
-## Latest: Version 80300
+## Latest: Version 80307
 
 ### What's new
 
@@ -43,11 +43,16 @@ This release does not have new features.
 
 ### Early Access
 
-This release does not have Early Access features. 
+- Added support for Post Prod Rollback for ASG deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/rollback-deployments/). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-77450, CDS-76352)
+
   
 ### Fixed issues
 
 - Fixed a FirstGen-to-NextGen migration issue where the migrator did not filter out duplicate keys when extracting variables. With this fix, the migrator allows unique keys only. (CDS-76576)
+
+- Fixed an issue when trying to run pipelines with stages that were other pipelines in different projects. (CDS-76425, ZD-48708)
+
+- Fixed an issue found in some custom deployments, where the Fetch Instance Script could not access template variables defined in the infrastructure. (CDS-76353, ZD-48671)
 
 - Fixed an issue that could occur when setting up an Azure Web App deployment. The Visual Editor would add a `spec: webApp` element to the pipeline definition. This resulted in an invalid pipeline YAML and required you to delete the element before you could save the pipeline. (CDS-76289, ZD-48649)	
 
@@ -63,12 +68,31 @@ This release does not have Early Access features.
 
 - Fixed an issue with the **Repository Name** filter in the **Builds** page. Some users could not filter on builds that pulled their source code from a specific repository. If you experienced this issue, you will need to delete any saved filters that use the **Repository Name** filter and create them again. (CDS-75281, ZD-47876, ZD-48201)	
 
+- Fixed a filtering issue when using pipeline tags in the **Pipelines** and **Pipeline Executions** pages. (CDS-73807, ZD-47148)
+
+  When a user uses pipeline tags to filter pipelines or executions, the following behavior will now be observed: 
+
+  - When a user enters only a string in the filter tags, all pipelines/executions with a tag key or value matching that string will be returned. 
+
+  - When a user enters a `key:value` pair in the filter rags,  all  pipelines/executions with a tag pair matching `key:value` will be returned.
+
+  - When a user enters `"":value` pair in the filter tags,  all the pipelines/executions with a tag pair matching `"":value` will be returned.
+
+  - When a user enters a `key:""` pair in the filter tags, all the pipelines/executions with a tag pair matching `key:""` will be returned.
+
+- Fixed an issue where logs were not visible after a shell script step got expired. With this fix, the pipeline will now publish expire events to close the log stream correctly after expiring a step.  (CDS-73695, ZD-47049)
+
+
+
+
 <!-- 
 - Fixed an AWS autoscaling issue when migrating from Harness FirstGen to Harness NextGen. Previously, all migrated services and pipelines used Spot ElastiGroup instead of AWS ASG. With this fix, the migrated entity is based on the workflow used in the last successful pipeline execution. (CDS-75190)	
 
--->
+
 
 - Added a tooltip for CI Stage to let users know that `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration.` (CDS-74137)
+
+-->
 
 - Fixed an issue where a Post-Retry manual intervention timeout did not work as expected. A Post-Retry action was set to manual intervention, but after timing out the step did not go into the manual step. With this fix, the post-retry manual intervention timeout is now honored. (CDS-73618, ZD-48904, ZD-47798)	
 
@@ -77,6 +101,8 @@ This release does not have Early Access features.
 - Fixed a UI issue with validating UI fields when defining a template for a Github Package Registry artifact. (CDS-73520)
 
 - Fixed the error message that gets displayed when a build does not find a specified package. The previous error message was `No tags found with given image path`. The new error message is `No tags found for the Package Name`.(CDS-73559)	
+
+- Fixed a UI issue with validating UI fields when defining a template for a Github Package Registry artifact. (CDS-73520)
 
 - Fixed an issue where a pipeline execution reported an invalid `artifactPath` when trying to deploy Artifactory artifacts. This was due to an issue with the regex used to populate the pull-down artifact menu. With this fix, you can specify recursive wildcards in the directory path for Artifactory. For example, you can specify `MainPath/*/*` as the directory path for the pipeline and the Service step will download the selected artifact. (CDS-72245, ZD-46236)
 
