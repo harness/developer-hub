@@ -103,7 +103,9 @@ To use ADFS credentials for authentication:
 This feature requires Harness Delegate 799xx or higher.
 :::
 
-Harness supports persistent refresh tokens only to authenticate via OpenID Connect (OIDC). All tokens must be valid and updated when revoked. Permissions granted in ServiceNow to this connector depend on the associated resource owner for the credentials/refresh token.
+Harness supports persistent refresh tokens only to authenticate via OpenID Connect (OIDC) for a **Refresh Token** with a **Grant Type** of `refresh_token`. For more information on refresh token grant types, go to [Refreshing Access Tokens](https://www.oauth.com/oauth2-servers/access-tokens/refreshing-access-tokens/) in the OAuth documentation.
+
+All refresh tokens must be valid and updated when revoked. Permissions granted in ServiceNow to this connector depend on the associated resource owner for the credentials/refresh token.
 
 To use an OIDC refresh token for authentication, do the following:
 
@@ -111,9 +113,9 @@ To use an OIDC refresh token for authentication, do the following:
 
 2. Optional: Select an existing secret or create one that has the application (client) secret assigned.
 
-3. Select an existing secret or create one that has the **Refresh Token** if the **Grant Type** is `refresh_token`. For more information on refresh token grant types, go to [Refreshing Access Tokens](https://www.oauth.com/oauth2-servers/access-tokens/refreshing-access-tokens/) in the OAuth documentation.
+3. Create a secret for the **Refresh Token**. 
 
-4. Enter the **Token URL**. For example:
+4. Enter the explicit **Token URL**. For example:
 
    - ServiceNow authentication server: `https://<YOUR_DOMAIN>.service-now.com/oauth_token.do`
    - Okta authentication server: `https://<YOUR_DOMAIN>.okta.com/oauth2/v1/token`
