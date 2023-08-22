@@ -38,8 +38,6 @@ Harness NextGen release 80307 includes the following changes for the Harness Del
 
   By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
 
-- Fixed an issue where the token value was missing in the delegate token list API call. (PL-39790)
-
 - To safeguard your operations and protect against potential security vulnerabilities, Harness deprecated the Helm 2 binary from delegates with an immutable image type (image tag `yy.mm.xxxxx`). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). (PL-40409)
 
 - In a monitored service, license checks in the back end and Terraform live monitoring are always ON. (SRM-15255)
@@ -48,11 +46,15 @@ Harness NextGen release 80307 includes the following changes for the Harness Del
 
 ### Early access features
 
+This release does not include early access features.
+
+<!---
 **GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
 
 This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 
 With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings), and you can use GitHub connectors with GitHub App authentication in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
+--->
 
 ### Fixed issues
 
@@ -75,6 +77,8 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 - Fixed an issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a <=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
 
 - Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. (CI-9122)
+
+- Fixed an issue where the token value was missing in the delegate token list API call. (PL-39790)
 
 - Fixed an issue where some records did not trigger delegate task assignments. (PL-40148)
 
