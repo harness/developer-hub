@@ -205,9 +205,7 @@ The [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/
 
 This setting is only available for connection types and authentication methods where it is not already enabled by default.
 
-You must enable API access to use Git-based triggers, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required.
-
-Any operation that requires Harness to call GitHub APIs, including cloning a codebase, pre-populating the branch in **Run Pipeline**, etc., requires you to enable API access.
+API access is required for any operations that require Harness to call GitHub APIs, such as using the Harness Git Experience, cloning codebases, automatically detecting branch names when you manually run pipelines, using Git webhook triggers, and updating Git statuses.
 
 Enabling API access requires configuring an API authentication method, either a personal access token or a GitHub App.
 
