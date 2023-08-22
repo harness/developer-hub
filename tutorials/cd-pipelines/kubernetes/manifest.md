@@ -166,7 +166,7 @@ Under this step, you would see a bunch of CLI commands to run. Before proceeding
     </details>
     - Replace **GITHUB_USERNAME** with your GitHub account username in the `github-connector.yaml` 
     - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
-    - Now create the **GitHub connector** using the following CLI Command
+    - Now create the **GitHub connector** using the following CLI command:
         ```
         harness connector --file github-connector.yml apply --git-user <YOUR GITHUB USERNAME>
         ```
