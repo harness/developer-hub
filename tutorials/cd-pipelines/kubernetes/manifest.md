@@ -133,7 +133,7 @@ curl -L0 https://github.com/harness/harness-cli/releases/download/v0.0.10-alpha/
 </TabItem>
 </Tabs>
 ```
-3. Add github username and PAT you generated above under **Enter Your Github Details**.
+3. Add the GitHub username and PAT you generated above under **Enter Your Github Details**.
 4. **Pipeline Setup**
 Under this step, you would see a bunch of CLI command to run, before procceding with that, please follow the steps below to create the pipeline resources. 
 - Use the follwwing command to clone the repo and get into the root folder conating the YAMLS used in this tutorial. 
