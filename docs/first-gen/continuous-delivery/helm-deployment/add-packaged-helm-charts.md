@@ -113,7 +113,7 @@ Harness creates a temporary working directory on the Delegate host for the downl
 
 Once you have a script that fetches your files and, if needed, extracts your package, you provide Harness with the path to the Helm chart in the expanded folders and files.
 
-You can enter a path to the chart folder or to the chart file. For example, here is a repo with the chart and related files and how it is referenced in Harness:
+You can enter a path to the chart folder. Do not enter a path to the chart file. For example, here is a repo with the chart folder and how it is referenced in Harness:
 
 ![](./static/add-packaged-helm-charts-13.png)
 

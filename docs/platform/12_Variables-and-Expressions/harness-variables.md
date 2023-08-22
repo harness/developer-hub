@@ -340,7 +340,7 @@ if ((x * 2) == 5) { <+pipeline.name = abc>; } else { <+pipeline.name = def>; }
 ```
 ### Variable names across the pipeline
 
-Variable names must be unique within the same stage. You can use same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
+Variable names must be unique within the same stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
 
 ### Hyphens in variable names
 
@@ -358,9 +358,20 @@ This also works for nested expressions. For example:
 
 ### Variable expression name restrictions
 
-A variable name is the name in the variable expression, such as `foo` in `<+stage.variables.foo>`.
+A variable name is a name in the variable expression, such as `foo` in `<+stage.variables.foo>`.
 
-Variable names may only contain `a-z, A-Z, 0-9, _`. They cannot contain hyphens or dots.
+Variable names may only contain `a-z, A-Z, 0-9, _, ., -, and $`. A variable name must start with any character from `a-z, A-Z, or _`.
+
+Here is an example Bash script that demonstrates how to utilize dots (`.`) and hyphens (`-`) in variable names:
+
+```
+  echo <+pipeline.variables.get("pipeline-var")>
+  echo <+pipeline.stages.custom.variables.get("stage-var")>
+  echo <+pipeline.variables.get("pipeline.var")>
+  echo <+pipeline.stages.custom.variables.get("stage.var")>
+```
+
+To access any custom variable with a dot (`.`) or a hyphen (`-`) in its name, you must use `.get("VARIABLE_NAME")`.
 
 Certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
 
@@ -444,6 +455,21 @@ For example, instead of `<+pipeline.variable.var1>_suffix`, use these syntaxes:
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
 - `<+<+pipeline.variables.var1> + "_suffix">` 
 
+## Debugging expressions
+
+:::info note
+
+This feature is currently behind the feature flag `PIE_EXPRESSION_PLAYGROUND`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+An easy way to debug expressions in your pipeline is to use Compiled Mode in your **Variables** panel. You can enable this mode using a radio button at the top of the **Variables** Panel. When Compile Mode is turned on, all of the expressions in the panel are compiled and their values are displayed. By default, the compilation happens against the pipeline's latest execution. You can change this by selecting from a displayed list of previous executions. 
+
+![](./static/expression-evaluator-screen.png)
+
+Expressions that are incorrect or cannot be evaluated using the execution data are highlighted in the **Variable** values column. You can switch the panel back to normal mode and correct the expression. 
+
+To test an expression that isn't part of a variable (say, something in a script), you can create a temporary variable in the panel, assign the expression to it, and use Compiled Mode to debug it. 
 
 ## Built-in CI codebase variables
 
@@ -812,6 +838,10 @@ Resolves to a boolean value to indicate whether the GitOps option is enabled (tr
 ![](./static/harness-variables-37.png)
 
 For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart).
+
+### <+serviceVariableOverrides.VARIABLE_NAME>
+
+Override a service variable during the execution of a step group. This provides significant flexibility and control over your pipelines. For more information, go to [Override service variables in step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/#override-service-variables-in-step-groups)
 
 ## Manifest
 

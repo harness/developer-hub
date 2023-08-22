@@ -1,7 +1,7 @@
 ---
 title: CD pipeline modeling overview
 description: This topic describes how to model your CD practices in Harness.
-sidebar_position: 3
+sidebar_position: 4
 helpdocs_topic_id: s5mcwujxxy
 helpdocs_category_id: dxej4ug0n5
 helpdocs_is_private: false

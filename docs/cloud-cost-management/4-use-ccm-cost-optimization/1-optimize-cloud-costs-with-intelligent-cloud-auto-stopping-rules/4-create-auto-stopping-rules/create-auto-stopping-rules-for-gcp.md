@@ -16,7 +16,7 @@ This topic describes how to create AutoStopping Rules for GCP.
 
 * [Create a GCP Connector for AutoStopping Rules](../1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md)
 * [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md)
-* [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md)
+* [AutoStopping Rules Overview](../1-auto-stopping-rules.md)
 
 ## Prerequisites
 To create an AutoStopping rule using an AutoStopping proxy load balancer: 

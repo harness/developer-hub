@@ -28,6 +28,12 @@ This topic explains the steps to add an encrypted test secret in the account sco
 
 Secrets can be added inline while setting up a connector or other setting, and they can also be set up in the account, organization, or project resources.
 
+:::info
+
+You can't create secrets that point to secret managers in a different [scope](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes). For example, if you create a secret at the project scope, you cannot reference a secret manager in a different project. To reference secrets across projects, create the secret at the organization or account scope.
+
+:::
+
 To add an encrypted text secret in the account scope: 
 
 1. In your Harness account, select **ACCOUNT SETTINGS**.
@@ -48,37 +54,21 @@ To add an encrypted text secret in the account scope:
 
 4. In **Secrets Manager** select the secrets manager you will use to encrypt this secret.
 
-5. In **Secret Name**, enter a name for the encrypted text. 
+5. Enter a **Name** for your secret. Harness automatically creates an **Id** based on the name. You can use the **Secret Name** and **Id** to reference this secret elsewhere in Harness. **Description** and **Tags** are optional.
 
-   This is the name you will use to reference the text elsewhere in your resources.
+6. Select **Inline Secret Value** or **Reference Secret**.
 
-6. You can create the following typres of secrets:
-   - **Inline Secret Value**: In **Inline Secret** **Value**, enter a value for the encrypted text.
-     (Optional) If your secret is managed by Azure Key Vault, set an expiry date, select a date in **Expires on**.
-     
+   - **Inline Secret Value**: Enter the value for the encrypted text. If your secret is managed by Azure Key Vault, you can set an expiry date in **Expires on**. The Harness Delegate version 79306 is required for this feature.
+
       ```mdx-code-block
       <img src={secret_expiry_date} alt="secret_expiry_date" height="200" width="500"/>
       ```
-      
-      :::important
-      The Harness Delegate version 79306 is required for this feature.
-      :::
-      
-   - **Reference Secret**: Create a Harness secret that refers to an existing secret and use that secret's name.
 
-     You can reference existing secrets in the following types of Secret Managers:
-     - Azure Key Vault
-     - Hashicorp Vault
-     - AWS Secrets Manager
-     - GCP Secrets Manager
-     Select **Test** to validate the secret reference path.
+   - **Reference Secret**: Enter the name of the existing secret in your Secret Manager that you want your **Reference Secret** to refer to, and then select **Test** to test the reference path. You can reference existing secrets in Azure Key Vault, Hashicorp Vault, AWS Secrets Manager, or GCP Secrets Manager.
 
      ![](./static/test-secret-reference-path.png)
 
-7. (Optional) Enter a **Description** and **Tags** for your secret.
-
-
-11. Select **Save.**
+7. Select **Save**.
 
 ## Use the secret in connectors
 
@@ -95,11 +85,6 @@ You can also edit the secret in the connector.
 <img src={edit_encrypted_text} alt="edit_encrypted_text" height="200" width="500"/>
 ```
 ## Reference the secret by identifier
-
-
-:::info important
-Harness does not support the creation of a secret that points to a secret manager in a different scope.
-:::
 
 
 For an Encrypted Text secret that's been scoped to a Project, you reference the secret in using the secret identifier in the expression: `<+secrets.getValue("your_secret_Id")>`.
@@ -150,9 +135,9 @@ If you see an output like this, review your secret and fix the error.
 
 ## Secret scope
 
-When creating secrets, it's important to understand their scope in your Harness account.
+When creating secrets, it's important to understand their [scope](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) in your Harness account.
 
-A user can only create a secret according to the scope set by its Harness User permissions.
+You can only create secrets in the scopes permitted by your [role binding](/docs/platform/role-based-access-control/rbac-in-harness/#role-binding).
 
 For example, when you create a new project or a new organization, a Harness Secret Manager is automatically scoped to that level.
 

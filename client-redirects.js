@@ -34,7 +34,33 @@ module.exports = {
     //  },
     //===================================================================================
 
+
+     // Created by SudheendraKatte for branch srm-14106-reset-error-budget on August 10, 2023
+     {
+      from: "/docs/service-reliability-management/slo-annoations",
+      to: "/docs/service-reliability-management/manage-slo/slo-annoations",
+    },
+    {
+      from: "/docs/service-reliability-management/slo-downtime/slo-downttime-overview",
+      to: "/docs/service-reliability-management/manage-slo/slo-downtime/slo-downttime-overview",
+    },
+    {
+      from: "/docs/service-reliability-management/slo-downtime/configure-slo-downtime",
+      to: "/docs/service-reliability-management/manage-slo/slo-downtime/configure-slo-downtime",
+    },
+    {
+      from: "/docs/service-reliability-management/slo-downtime/manage-slo-downtime",
+      to: "/docs/service-reliability-management/manage-slo/slo-downtime/manage-slo-downtime",
+    },
+
+   // Created by ravilach for modify-getting-started on August 16 2023
+   {
+    from: "/docs/getting-started/start-a-free-trial",
+    to: "/docs/getting-started/start-for-free",
+  },
+
     // Created by SudheendraKatte for branch cet-whats-supported on August 3 2023
+
     {
       from: "/docs/category/get-started-3/",
       to: "/docs/category/get-started-with-cet",
@@ -429,7 +455,7 @@ module.exports = {
 
     {
       from:"/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/auto-stopping-rules",
-      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/auto-stopping-rules",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/auto-stopping-rules",
     },
 
     // Created by RashmiNandaSahoo to fix gitx broken link on May 22 2023
@@ -1923,7 +1949,7 @@ module.exports = {
     // Created by kat-enos on Jan 22, 2023
     {
       from: "/docs/platform/Delegates/delegate-reference/example-harness-delegate-yaml",
-      to: "/docs/platform/Delegates/delegate-reference/YAML/example-harness-delegate-yaml",
+      to: "/docs/platform/Delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate",
     },
 
     // Created by kat-enos on Jan 22, 2023
@@ -3103,12 +3129,30 @@ module.exports = {
     },
     // Created by bfisher for DOC-3488 on July 26, 2023
     {
-      from: "/docs/platform/resource-development/apis/rate-limits/",
+      from:  "/docs/platform/resource-development/apis/rate-limits/",
       to:   "/docs/platform/rate-limits",
     },
     {
-      from: "/docs/platform/Security/rate-limits",
+      from:  "/docs/platform/Security/rate-limits",
       to:   "/docs/platform/rate-limits",
     },
+    // Created by bfisher for DOC-3569 on August 11, 2023
+    {
+      from:  "/docs/self-managed-enterprise-edition/introduction/supported-features-and-integrations",
+      to:   "/docs/self-managed-enterprise-edition/smp-supported-platforms",
+    },
+    // Created by bfisher for DOC-3570 on August 14, 2023
+    {
+      from:  "/docs/platform/Delegates/delegate-reference/YAML/example-harness-delegate-yaml",
+      to:   "/docs/platform/Delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate",
+    },
+    {
+      from:  "/docs/platform/Delegates/delegate-reference/YAML/sample-harness-delegate-yaml-with-nfs-volume-mounted",
+      to:   "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
+    },
+    {
+      from:  "/docs/platform/Delegates/delegate-reference/YAML/sample-kubernetes-manifest-nfs-volume",
+      to:   "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
+    },
   ],
-};
+}
