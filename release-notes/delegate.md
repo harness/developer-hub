@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-08-21T10:00
+date: 2023-08-22T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -28,9 +28,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 803xx, Harness Delegate version 803xx
+## Latest: Harness version 80307, Harness Delegate version 80308
 
-Harness NextGen release 803xx includes the following changes for the Harness Delegate.
+Harness NextGen release 80307 includes the following changes for the Harness Delegate.
 
 ### New features and enhancements
 
@@ -45,7 +45,6 @@ Harness NextGen release 803xx includes the following changes for the Harness Del
 - In a monitored service, license checks in the back end and Terraform live monitoring are always ON. (SRM-15255)
 
    Now, monitored services can be enabled only from the user interface (through toggle button) and the enable API. Monitored services will always be disabled when created and during subsequent updates to them.
-
 
 ### Early access features
 
