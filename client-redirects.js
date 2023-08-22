@@ -3154,5 +3154,36 @@ module.exports = {
       from:  "/docs/platform/Delegates/delegate-reference/YAML/sample-kubernetes-manifest-nfs-volume",
       to:   "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
     },
+
+    // created by Michael Cretzman for DOC-3482 on Aug 22, 2023
+
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/container-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/wait-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/wait-step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/run-a-script-on-multiple-target-instances",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances",
+    },
   ],
 }

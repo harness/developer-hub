@@ -1,6 +1,6 @@
 ---
-title: Run a Docker container in a CD stage
-description: Bring your own container and let Harness orchestrate it.
+title: Container step
+description: Run a Docker container in a CD stage.
 sidebar_position: 7
 ---
 
@@ -285,7 +285,7 @@ Let's look at a simple example.
     export myVar=varValue
     ```
 
-    ![picture 1](static/beced40976dc4e9f479faaa2a93c1d8f6e7b7a7ed20ca412cc2afd1cf8f7c1a1.png)
+    ![picture 1](../cd-general-steps/static/beced40976dc4e9f479faaa2a93c1d8f6e7b7a7ed20ca412cc2afd1cf8f7c1a1.png)
 2. In a later Shell Script step, reference the output variable:
 
     ```

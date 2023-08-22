@@ -1,7 +1,7 @@
 ---
 title: Run a step on multiple target instances
 description: This topic show you how to run the same step on multiple target hosts.
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 When you are deploying to multiple hosts, such as with an SSH, WinRM, or deployment template stage, you can run the same step on all of the target hosts.
@@ -16,7 +16,7 @@ repeat:
 
 Here's an example with a Shell Script step:
 
-![](./static/run-a-script-on-multiple-target-instances-00.png)
+![](./cd-general-steps/static/run-a-script-on-multiple-target-instances-00.png)
 
 ## Create your pipeline
 
@@ -71,7 +71,7 @@ The Repeat [looping strategy](/docs/platform/Pipelines/looping-strategies-matrix
   ```
   Here's an example with a Shell Script step:
 
-  ![](./static/run-a-script-on-multiple-target-instances-01.png)
+  ![](./cd-general-steps/static/run-a-script-on-multiple-target-instances-01.png)
 1. Select **Apply Changes**.
 
 ## Run your pipeline
@@ -80,17 +80,17 @@ Once you run your pipeline you will see the step applied to multiple hosts.
 
 For example, here is a custom deployment stage using a deployment template.
 
-![](./static/run-a-script-on-multiple-target-instances-02.png)
+![](./cd-general-steps/static/run-a-script-on-multiple-target-instances-02.png)
 
 The Fetch Instances step returned two instances and the Shell Script step was executed on both using the loop strategy.
 
 Here is an SSH deployment example with a Command step that uses `<+stage.output.hosts>`:
 
-![](./static/run-a-script-on-multiple-target-instances-03.png)
+![](./cd-general-steps/static/run-a-script-on-multiple-target-instances-03.png)
 
 Once the pipeline is run, you can see each of the Deploy step run on each of the two target hosts:
 
-![](./static/run-a-script-on-multiple-target-instances-04.png)
+![](./cd-general-steps/static/run-a-script-on-multiple-target-instances-04.png)
 
 You can also add a Shell Script step to echo `<+stage.output.hosts>` to see the target hosts. The expression will resolve to a list like this SSH example that deploys to AWS EC2 instances:
 
