@@ -59,15 +59,15 @@ You can use:
 
 The maximum is `53w`. Timeouts can be set at the Pipeline level also.
 
-**Node filtering**
+### Configure node filtering
 
 :::info note
 Currently, this feature is behind the feature flag `CV_UI_DISPLAY_NODE_REGEX_FILTER`. Contact Harness Support to enable the feature.
 :::
 
-The node filtering feature allows you to select specific nodes within your Kubernetes environment using the PodName label. This allows for focused analysis, allowing you to select specific nodes for analysis.
+The node filtering feature allows you to select specific nodes within your Kubernetes environment using the PodName label. This allows for focused analysis, enabling you to choose specific nodes as service instances for in-depth analysis.
 
-Imagine you have a Kubernetes cluster with multiple nodes, and you want to analyze the performance of pods running on specific nodes. You want to analyze the nodes that match a certain naming pattern.
+Harness CV autonomously identifies new nodes as they are added to the cluster. However, the node filtering feature allows you to focus the analysis explicitly on the nodes that you want to analyze. Imagine you have a Kubernetes cluster with multiple nodes, and you want to analyze the performance of pods running on specific nodes. You want to analyze the nodes that match a certain naming pattern.
 
 Procedure:
 
