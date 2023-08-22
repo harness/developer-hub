@@ -183,7 +183,7 @@ Under this step, you would see a bunch of CLI commands to run. Before proceeding
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
 </details>
     
- - Use the follwing CLI Command to create **Environments** in your Harness project
+ - Use the follwing CLI Command to create **Environments** in your Harness project:
         
         ```
         harness environment --file environment.yml apply
