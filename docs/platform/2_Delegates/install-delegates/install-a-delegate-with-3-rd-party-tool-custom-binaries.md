@@ -41,7 +41,7 @@ Before you run the delegate, edit the YAML file to change the following:
 :::info note
 For delegate Helm chart deployments, add your third-party tool custom binaries to `initScript` in your `values.yaml` file to run them before delegate installation. The default [values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) is located in the [delegate-helm-chart](https://github.com/harness/delegate-helm-chart) GitHub repo.
 
-For example, the `values.yaml` entry below installs Kubectl.
+For example, the `values.yaml` entry below installs Kubectl on amd64 architecture. Your install URL may vary based on your architecture.
 
 ```yaml
 # Script to run before delegate installation
