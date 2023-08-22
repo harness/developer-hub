@@ -107,7 +107,7 @@ You can also follow the [Install Harness Delegate on Kubernetes or Docker](https
 ## Building the Pipeline Resources 
 
 1. **Create an API key**, make sure to copy and save it for future use while creating resources for the pipeline. 
-2. **Download the Harness CLI**
+2. **Download the Harness CLI**.
 ```mdx-code-block
 <Tabs>
 <TabItem value="MacOS">
