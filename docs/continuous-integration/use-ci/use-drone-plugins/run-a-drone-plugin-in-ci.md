@@ -153,9 +153,9 @@ For information about a plugin's settings, go to the plugin's page on the [Drone
 
 For information about output variables produced by plugins, go to [Plugin step settings: Output variables](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables).
 
-### Environment variables
+<!-- H3 Environment variables
 
-Harness CI supports `DRONE_` environment variables. For more information, go to the [CI environment variables reference](../optimize-and-more/ci-env-var.md).
+Harness CI supports `DRONE_` environment variables. For more information, go to the CI environment variables reference ../optimize-and-more/ci-env-var.md .-->
 
 ### Plugin configuration examples
 

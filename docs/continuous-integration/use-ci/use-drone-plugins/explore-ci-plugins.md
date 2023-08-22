@@ -27,11 +27,11 @@ For example, you can use the Artifact Metadata Publisher plugin to publish any a
 * [View Sonatype Nexus artifacts on the Artifacts tab.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus#view-artifacts-on-the-artifacts-tab)
 * [View S3 artifacts on the Artifacts tab.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#view-artifacts-on-the-artifacts-tab)
 
-:::tip
+<!-- :::tip
 
-Harness CI supports `DRONE_` environment variables. For more information, go to the [CI environment variables reference](../optimize-and-more/ci-env-var.md).
+Harness CI supports `DRONE_` environment variables. For more information, go to the CI environment variables reference ../optimize-and-more/ci-env-var.md .
 
-:::
+:::-->
 
 ## Bitrise Integrations
 

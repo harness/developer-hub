@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-08-21T10:00:10
+date: 2023-08-23T10:00:10
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -18,19 +18,21 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
+<!-- Improved support for `DRONE_` environment variables /docs/continuous-integration/use-ci/optimize-and-more/ci-env-var in CI pipelines. This improves compatibility for plugins /docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)-->
+
 ## Latest: Version 54xx
 
-<!-- Aug 21 2023 -->
+<!-- Aug 23 2023 -->
 
 ### New features and enhancements
 
-Improved support for `DRONE_` [environment variables](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var) in CI pipelines. This improves compatibility for [Plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)
+This release does not include new features or enhancements.
 
 ### Early access features
 
 **GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
 
-This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION` and it requires Harness Delegate version 803xx or later. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate).
+This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION` and it requires Harness Delegate version 80308 or later. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate).
 
 With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings), and you can use GitHub connectors with GitHub App authentication in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
 
@@ -41,8 +43,7 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 * You can now use [expressions](/docs/platform/Variables-and-Expressions/harness-variables), such as those for [matrix strategies](/docs/platform/Pipelines/run-a-stage-or-step-multiple-times-using-a-matrix), in [build infrastructure `platform` settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#infrastructure) when working in the YAML editor. (CI-6830)
 * Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. This fix requires Harness Delegate version 803xx or later. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate). (CI-9122)
 * Fixed an issue where some secrets were not masked as expected in logs. (CI-8134)
-
-<!-- Rolled back: Webhook triggers /docs/platform/triggers/triggering-pipelines/ now reattempt calls to SCM APIs if the connection was reset or there was a server-side error. This fixes an issue where intermittent outages in connections to SCM APIs failed to trigger builds. (CI-8904, ZD-47605) -->
+* [Webhook triggers](/docs/platform/triggers/triggering-pipelines/) now reattempt calls to SCM APIs if the connection was reset or there was a server-side error. This fixes an issue where intermittent outages in connections to SCM APIs failed to trigger builds. (CI-8904, ZD-47605)
 
 ### Hotfixes
 
