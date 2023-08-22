@@ -37,7 +37,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## Latest: Version 80307
 
-### What's new
+### New features and enhancements
 
 This release does not have new features.
 
