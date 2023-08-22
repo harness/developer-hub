@@ -106,7 +106,7 @@ You can also follow the [Install Harness Delegate on Kubernetes or Docker](https
 
 ## Building the Pipeline Resources 
 
-1. **Create an API key**, make sure to copy and save it for fututre use while creating resources for the pipeline. 
+1. **Create an API key**, make sure to copy and save it for future use while creating resources for the pipeline. 
 2. **Download the Harness CLI**
 ```mdx-code-block
 <Tabs>
@@ -173,9 +173,9 @@ Under this step, you would see a bunch of CLI command to run, before procceding 
     - Please check the delegate name to be `helm-delegate` in the `kubernetes-connector.yml`
     - Create the **Kubernetes connector** using the following CLI Command
         
-    ```
-    harness connector --file kubernetes-connector.yml apply --delegate-name kubernetes-delegate
-    ```
+        ```
+        harness connector --file kubernetes-connector.yml apply --delegate-name kubernetes-delegate
+        ```
 ### Environment
 
 <details open>
@@ -183,15 +183,17 @@ Under this step, you would see a bunch of CLI command to run, before procceding 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
 </details>
     
-- Use the follwing CLI Command to create **Environments** in your Harness project
-    ```
-    harness environment --file environment.yml apply
-    ```
-    
+ - Use the follwing CLI Command to create **Environments** in your Harness project
+        
+        ```
+        harness environment --file environment.yml apply
+        ```
+        
 - In your new environment, add **Infrastructure Definitions** using the following CLI command.
-    ```
-    harness infrastructure --file infrastructure-definition.yml apply
-    ```
+       
+        ```
+        harness infrastructure --file infrastructure-definition.yml apply
+        ```
 
 ### Services
 
