@@ -1,26 +1,40 @@
 ---
-title: Adding Custom Certificates and Artifacts to STO Pipelines
+title: DRAFT Adding Custom Certificates and Artifacts to STO Pipelines
 description: This topic describes how to include SSL certificates and other types of artifacts in your STO pipelines. 
 sidebar_position: 70
 ---
 
 In some cases, a scanner might require additional files such as SSL certificates and license files. The workflow to include these files depends on your build infrastructure.
 
-:::note important notes
+## Important notes
 
-- You must have **root access** to perform the [Kubernetes workflows](#kubernetes-workflows) documented below.
+- You must have **root access** to perform the workflow documented below.
 
 - Make sure that your certificates meet all requirements of the external scan tool. Your certificates must be valid, unexpired, and have a complete trust chain. 
 
 - Harness STO does not support certificate bundles. Each certificate should be specified in its own file. If you have a bundle that you want to use with an external scanner, Harness recommends that you split the bundle into individual files.
 
+- If you're using a [private image registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry), do not change the image names. Your local image names must match the names specified by Harness.
+
+* You must include all required files under  **/shared/customer_artifacts/**. You can include any number of certificates or other files in this folder.
+
+* If your scanners use SSL certificates such as PEM files, save each certificate to **/shared/customer_artifacts/certificates/`<certificate_name>`**. 
+
+* If the scanner requires a license file, save the file to **/shared/customer_artifacts/`<license_file_name>`**.  
+
+* If you're running a ZAP scan that uses context files such as auth scripts, context files, or URL files, specify the following shared folders and make sure that your Run step copies in the required files. 
+
+  * **/shared/customer_artifacts/authScript/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/context/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/urlFile/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/hosts/`<artifact_file_name>`**
+
+* The  [example workflow](#example-workflow) below uses a PEM file stored as a [Harness file secret](/docs/platform/Secrets/add-file-secrets). You can also use third-party managers such as HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager. See [Harness Secrets Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
+
 - To troubleshoot SSL issues, go to [Troubleshooting tips](#troubleshooting-tips) below. 
 
-:::
 
-
-
-
+<!-- 
 ## Kubernetes workflows
 
 The primary workflow for adding certificates to your delegate is described in the CI docs: [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
@@ -99,45 +113,38 @@ spec:
 
 </details>
 
+-->
 
 
+## Recommended workflow
 
+This workflow is applicable to all delegate types and for SaaS and Self-Managed Platform versions of STO. Review the [Important notes](#important-notes) above before you proceed. 
 
+1. Add the certificates to your delegate, based on the scanner you're setting up. 
 
+  * **Scanner template:**  If you're using a [scanner template](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates) to set up your scan, note the following:
 
-## Harness Cloud workflow
+    * Make sure that you place your files in the correct location in the delegate workspace and that you set up the `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` environment variables correctly.
 
-If you're using a Harness Cloud delegate, use the following workflow. 
+    * STO supports certificates in PEM format as well as DER (Distinguished Encoding Rules).
 
-1. For each artifact that contains sensitive information, such as an SSL certificate, create a Harness secret.
+  * **Security step:** If you're using a [Security step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates) to set up your scan, note the following:
 
-2. Go to the pipeline where you want to add the artifact.
+    * You need to place the certificates in the folder `/shared/customer_artifacts/certificates/`
 
-3. In the stage where that will use the artifact, go to **Overview** > **Shared Paths** and create a folder under **/shared** such as **/shared/customer_artifacts**. 
+    * STO supports loading multiple certificates in PEM format as well as DER (Distinguished Encoding Rules).
 
-4. Add a Run step to the stage that adds the artifacts to the shared folder. This step needs to run _before_ the scanner step that uses the artifact. 
+  * **Nexus IQ scan:** For Nexus IQ scans, follow the Security step workflow. The certificate must have the filename `certificate` and the path `/shared/customer_artifacts/certificates/certificate`. 
 
-:::info Important Notes
+2. For each artifact that contains sensitive information, such as an SSL certificate, create a Harness secret.
 
-* You must include all required files in  **/shared/customer_artifacts/**. You can include any number of certificates or other files in this folder.
+3. Go to the pipeline where you want to add the artifact.
 
-* If your scanners use SSL certificates such as PEM files, save each certificate to **/shared/customer_artifacts/`<certificate_name>`**. 
+4. In the stage where that will use the artifact, go to **Overview** > **Shared Paths** and create a folder under **/shared** such as **/shared/customer_artifacts**. 
 
-* If the scanner requires a license file, save the file to **/shared/customer_artifacts/`<license_file_name>`**.  
+5. Add a Run step to the stage that adds the artifacts to the shared folder. This step needs to run _before_ the scanner step that uses the artifact. 
 
-* If you're running a ZAP scan that uses context files such as auth scripts, context files, or URL files, specify the following shared folders and make sure that your Run step copies in the required files. 
-
-  * **/shared/customer_artifacts/authScript/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/context/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/urlFile/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/hosts/`<artifact_file_name>`**
-
-* The following example workflow uses a PEM file stored as a [Harness file secret](/docs/platform/Secrets/add-file-secrets). You can also use third-party managers such as HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager. See [Harness Secrets Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
-
-:::
-
-  
-### Example workflow
+## Example workflow
   
 This example shows how to include a PEM file in a pipeline that runs a scan using a Security step. This workflow assumes that you have a valid PEM stored as a Harness File Secret. 
 
@@ -159,7 +166,7 @@ This example shows how to include a PEM file in a pipeline that runs a scan usin
 
 
 
-### YAML pipeline example
+## YAML pipeline example
 
 The following illustrates an end-to-end pipeline that copies a PEM certificate to the default location, builds an image, and then scans the image using SonarQube (authorized using the certificate).
 
