@@ -56,11 +56,11 @@ To connect to a redis instance that has TLS enabled, you prepend `rediss://` to 
 
 ### Logging
 
-Controlling the log level
+Control the log level.
 
 | Environment Variable | Flag  | Description            | Type    | Default |
 |----------------------|-------|------------------------|---------|---------|
-| LOG_LEVEL            | log-level | Controls the log level. Valid options are `INFO`, `DEBUG` & `ERROR` | string | `INFO`   |
+| LOG_LEVEL            | log-level | Controls the log level. Valid options are `INFO`, `DEBUG`, and `ERROR` | string | `INFO`   |
 
 ### Offline mode
 
