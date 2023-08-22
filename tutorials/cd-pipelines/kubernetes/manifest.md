@@ -189,7 +189,7 @@ Environments define the deployment location, categorized as **Production** or **
         harness environment --file environment.yml apply
         ```
         
-- In your new environment, add **Infrastructure Definitions** using the following CLI command.
+- In your new environment, add **Infrastructure Definitions** using the following CLI command:
        
         ```
         harness infrastructure --file infrastructure-definition.yml apply
