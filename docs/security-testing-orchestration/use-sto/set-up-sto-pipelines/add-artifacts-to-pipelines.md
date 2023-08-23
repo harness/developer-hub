@@ -19,11 +19,9 @@ In some cases, a scanner might require additional files such as SSL certificates
 :::
 
 
+## Adding certificates to a Kubernetes delegate
 
-
-## Kubernetes workflows
-
-The primary workflow for adding certificates to your delegate is described in the CI docs: [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
+The primary workflow for adding certificates to your Kubernetes delegate is described in the CI docs: [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
 
 You can add certificates to your delegate using this workflow with the following differences, based on the scanner you're setting up. 
 
@@ -105,9 +103,9 @@ spec:
 
 
 
-## Harness Cloud workflow
+## Workflow description
 
-If you're using a Harness Cloud delegate, use the following workflow. 
+This workflow applies to all [supported build infrastructures](/docs/security-testing-orchestration/whats-supported). It also applies to STO on Saas as well as Harness Self-Managed Platform.
 
 1. For each artifact that contains sensitive information, such as an SSL certificate, create a Harness secret.
 
@@ -121,7 +119,7 @@ If you're using a Harness Cloud delegate, use the following workflow.
 
 * You must include all required files in  **/shared/customer_artifacts/**. You can include any number of certificates or other files in this folder.
 
-* If your scanners use SSL certificates such as PEM files, save each certificate to **/shared/customer_artifacts/`<certificate_name>`**. 
+* If your scanners use SSL certificates such as PEM files, save each certificate to **/shared/customer_artifacts/certificates/`<certificate_name>`**. 
 
 * If the scanner requires a license file, save the file to **/shared/customer_artifacts/`<license_file_name>`**.  
 
