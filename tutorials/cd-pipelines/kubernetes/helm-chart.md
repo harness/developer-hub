@@ -174,9 +174,9 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In **Default Project**, select **Environments**.
 2. Select **New Environment** and toggle to the **YAML** view _(next to VISUAL)_.
-3. Copy the contents of [environment-blucan.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/environment-blucan.yml) and paste it in the YAML editor, and then select **Save**.
+3. Copy the contents of [k8s-environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-environment.yml) and paste it in the YAML editor, and then select **Save**.
 4. In the **Infrastructure Definitions** tab, select **Infrastructure Definition**, and then select **Edit YAML**.
-5. Copy the contents of [infrastructure-definition-blucan.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/infrastructure-definition-blucan.yml) and paste it in the YAML editor.
+5. Copy the contents of [k8s-infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-infrastructure-definition.yml) and paste it in the YAML editor.
 6. Select **Save** and verify that the environment and infrastructure definition are created successfully.
 
 ### Create a service
@@ -191,7 +191,7 @@ In Harness, services represent what you deploy to environments. You use services
 1. In **Default Project**, select **Services**.
 2. Select **New Service**, enter the name, `harnessguestbookdep`, and then select **Save**.
 3. Toggle to the **YAML** view _(next to VISUAL)_ under the **Configuration** tab, and then select **Edit YAML**.
-4. Copy the contents of [service-blucan.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/service-blucan.yml) and paste it in the YAML editor.
+4. Copy the contents of [k8s-service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-service.yml) and paste it in the YAML editor.
 5. Select **Save** and verify that the service, _**harness_guestbook**_ is successfully created.
 
 ### Create a pipeline
@@ -210,7 +210,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
     - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
-- Copy the contents of [canary-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/canary-pipeline.yml) and paste it in the YAML editor.
+- Copy the contents of [k8s-canary-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-canary-pipeline.yml) and paste it in the YAML editor.
 - Select **Save** to save the pipeline.
 - You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 
@@ -240,9 +240,9 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In **Default Project**, select **Environments**.
 2. Select **New Environment** and toggle to the **YAML** view _(next to VISUAL)_.
-3. Copy the contents of [environment-blucan.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/environment-blucan.yml) and paste it in the YAML editor, and then select **Save**.
+3. Copy the contents of [k8s-environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-environment.yml) and paste it in the YAML editor, and then select **Save**.
 4. In the **Infrastructure Definitions** tab, select **Infrastructure Definition**, and then select **Edit YAML**.
-5. Copy the contents of [infrastructure-definition-blucan.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/infrastructure-definition-blucan.yml) and paste it in the YAML editor.
+5. Copy the contents of [k8s-infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-infrastructure-definition.yml) and paste it in the YAML editor.
 6. Select **Save** and verify that the environment and infrastructure definition are created successfully.
 
 ### Create a service
@@ -258,7 +258,7 @@ In Harness, services represent what you deploy to environments. You use services
 1. In **Default Project**, select **Services**.
 2. Select **New Service**, enter the name, `harnessguestbookdep`, and then select **Save**.
 3. Toggle to the **YAML** view _(next to VISUAL)_ under the **Configuration** tab, and then select **Edit YAML**.
-4. Copy the contents of [service-blucan.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/service-blucan.yml) and paste it in the YAML editor.
+4. Copy the contents of [k8s-service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-service.yml) and paste it in the YAML editor.
 5. Select **Save** and verify that the service, _**harness_guestbook**_ is successfully created.
 
 ### Create a pipeline
@@ -277,7 +277,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
     - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
-- Copy the contents of [bluegreen-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/bluegreen-pipeline.yml) and paste it in the YAML editor.
+- Copy the contents of [k8s-bluegreen-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-bluegreen-pipeline.yml) and paste it in the YAML editor.
 - Select **Save** to save the pipeline.
 - You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 
@@ -307,9 +307,9 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In **Default Project**, select **Environments**.
 2. Select **New Environment** and toggle to the **YAML** view _(next to VISUAL)_.
-3. Copy the contents of [environment-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/environment-rolling.yml) and paste it in the YAML editor, and then select **Save**.
+3. Copy the contents of [nativehelm-environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/nativehelm-environment.yml) and paste it in the YAML editor, and then select **Save**.
 4. In the **Infrastructure Definitions** tab, select **Infrastructure Definition**, and then select **Edit YAML**.
-5. Copy the contents of [infrastructure-definition-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/infrastructure-definition-rolling.yml) and paste it in the YAML editor.
+5. Copy the contents of [nativehelm-infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/nativehelm-infrastructure-definition.yml) and paste it in the YAML editor.
 6. Select **Save** and verify that the environment and infrastructure definition are created successfully.
 
 ### Create a service
@@ -324,7 +324,7 @@ In Harness, services represent what you deploy to environments. You use services
 1. In **Default Project**, select **Services**.
 2. Select **New Service**, enter the name, `harnessguestbook`, and then select **Save**.
 3. Toggle to the **YAML** view _(next to VISUAL)_ under the **Configuration** tab, and then select **Edit YAML**.
-4. Copy the contents of [service-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/service-rolling.yml) and paste it in the YAML editor.
+4. Copy the contents of [nativehelm-service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/nativehelm-service.yml) and paste it in the YAML editor.
 5. Select **Save** and verify that the service, _**harness_guestbook**_ is successfully created.
 
 ### Create a pipeline
@@ -343,7 +343,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
     - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
-- Copy the contents of [rolling-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/rolling-pipeline.yml) and paste it in the YAML editor.
+- Copy the contents of [nativehelm-rolling-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/nativehelm-rolling-pipeline.yml) and paste it in the YAML editor.
 - Select **Save** to save the pipeline.
 - You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 
