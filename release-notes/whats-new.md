@@ -19,7 +19,23 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 22, 2023
+## Latest - August 23, 2023
+
+### Security Testing Orchestration, version 1.66.1
+
+- This release includes the following UI enhancements for working with exemptions. (STO-6078)
+
+  - You can click on a row in the **Exemptions** table to view details for that exemption.
+
+    ![](static/sto-click-row-to-view-exemptions.png)
+
+  - For best results in STO, you should specify a baseline for every target. To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+
+    ![](static/sto-exemption-details-no-baseline-selected.png)
+
+- The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4918)
+
+## August 22, 2023
 
 ### Harness Platform, version 80307
 

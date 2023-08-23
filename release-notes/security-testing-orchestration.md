@@ -32,7 +32,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   - For best results in STO, you should specify a baseline for every target. To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
-    ![]](static/sto-exemption-details-no-baseline-selected.png)
+    ![](static/sto-exemption-details-no-baseline-selected.png)
 
 - The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4918)
 
