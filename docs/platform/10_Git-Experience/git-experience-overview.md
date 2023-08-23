@@ -46,17 +46,12 @@ You can save the following Harness resources in Git using Harness Git Experience
 * Input sets
 * Templates
 
-<<<<<<< HEAD
-```note
-
+:::info note
 Artifact Source templates are not supported with Git Experience.
 
-```
+:::
 
-### What is Harness Git experience?
-=======
 ### What is Harness Git Experience?
->>>>>>> 44f17a4fd (update platform screenshots to hide left nav)
 
 Harness Git Experience lets you choose a Git-First approach for managing Harness configurations as code, using Git as the source of truth.
 
