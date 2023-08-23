@@ -1,6 +1,6 @@
 ---
 title: What's supported in Self-Managed Enterprise Edition
-description: Platforms and technologies supported by Self-Managed Enterprise Edition
+description: Platforms and technologies supported by the on-prem Harness Self-Managed Enterprise Edition
 sidebar_label: What's supported
 sidebar_position: 1
 ---
@@ -25,7 +25,7 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 
 ### Ingress
 * Istio supported version: 1-15-3
-* NGINX supported version: v1.0.0-alpha.2
+* NGINX supported version: v1.3.0
 
 ### RBAC requirements
 
@@ -41,7 +41,7 @@ The following permissions are required:
 * [Self-signed certificates](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed/)
 * [Air-gap mode](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/)
 * [Infrastructure monitoring](https://developer.harness.io/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem/)
-* [Backup and restore](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm/)
+* [Backup and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
 * [External Database](/tutorials/self-managed-enterprise-edition)
 * Disaster Recovery (coming soon)
 

@@ -437,11 +437,11 @@ For example, this step runs `pytest` and produces a test report in JUnit XML for
 
 ### Environment Variables
 
-You can inject environment variables into a container and use them in the **Command** script. You must input a **Name** and **Value** for each variable.
+You can inject environment variables into the step container and use them in the **Command** script. You must input a **Name** and **Value** for each variable.
 
-You can reference environment variables in the **Command** script by their name. For example, a Bash script would use `$var_name` or `${var_name}`, and a Windows PowerShell script would use `$Env:varName`.
+You can reference environment variables in the **Command** script by name. For example, a Bash script would use `$var_name` or `${var_name}`, and a Windows PowerShell script would use `$Env:varName`.
 
-Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change the value type.
+Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
 
 <figure>
 
@@ -450,7 +450,11 @@ Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/pla
 <figcaption>Using a Harness expression for an environment variable value.</figcaption>
 </figure>
 
-For more information, go to the [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md).
+:::tip Stage variables
+
+[Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are inherently available to steps as environment variables.
+
+:::
 
 ### Output Variables
 

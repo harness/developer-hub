@@ -92,7 +92,7 @@ The steps in each stage execute on the stage's dedicated VM. This allows the sta
 
 :::
 
-For more information about using Harness Cloud for your CI pipelines, including supported platforms, image specifications, and YAML examples, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+For more information about using Harness Cloud for your CI pipelines, including supported platforms, image specifications, and YAML examples, go to [Use Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md). For information about build credit consumption and billing, go to [Subscriptions and licenses](./ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
 
 ### Test Intelligence
 

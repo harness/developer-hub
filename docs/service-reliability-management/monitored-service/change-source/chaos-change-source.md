@@ -16,7 +16,7 @@ For example, let's say you use SRM to monitor services and correlate change even
 
 ## Connect a fault to a monitored service
 
-For detailed instructions on connecting a chaos fault to a monitored service, go to [Connect a fault to a monitored service](/docs/chaos-engineering/configure-chaos-experiments/experiments/use-chaos-with-srm#connect-a-fault-to-a-monitored-service).
+For detailed instructions on connecting a chaos fault to a monitored service, go to [Connect a fault to a monitored service](/docs/chaos-engineering/integrations/use-chaos-with-srm#connect-a-fault-to-a-monitored-service).
 
 
 ## Check the impact of a fault on a monitored service

@@ -15,7 +15,7 @@ There are several ways to configure caching in Harness CI, such as Cache Intelli
 
 ## Supported build infrastructures
 
-Currently, Cache Intelligence is only available for Linux and Windows platforms on [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart), the Harness-hosted build environment.
+Currently, Cache Intelligence is only available for Linux and Windows platforms on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), the Harness-hosted build environment.
 
 For other build infrastructures, you can use Save and Restore Cache steps, such as [Save and Restore Cache from S3](./saving-cache.md), to include caching in your CI pipelines.
 
