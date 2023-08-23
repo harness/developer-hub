@@ -10,6 +10,7 @@ import DeveloperCertificationExamDetails from "./data/ci-certification-developer
 import AdminCertificationReviewGuide from "./data/ci-certification-admin-review-guide.md";
 import AdminCertificationExamDetails from "./data/ci-certification-admin-exam-details.md";
 import ArchitectCertificationReviewGuide from "./data/ci-certification-architect-review-guide.md";
+import ArchitectCertificationExamDetails from "./data/ci-certification-architect-exam-details.md"; 
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -329,11 +330,12 @@ export default function CertificationsCI() {
             </div>
           </div>
         
-          {/* Admin Exam Details 
+          {/* Arch Exam Details  */}
 
           <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details - Coming Soon </h2>
+            <h2 id="exam-details">Exam Details (BETA Coming Soon) </h2>
             <div className={styles.examDetailsCard}>
+            <ArchitectCertificationExamDetails />
               <div className={styles.btnContainer}>
                 <Link href="#">
                   <button className={styles.moreDetails}>
@@ -343,7 +345,7 @@ export default function CertificationsCI() {
               </div>
             </div>
           </div>
-        */}
+       
         </div>
       </div>
     </div>

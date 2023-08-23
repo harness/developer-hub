@@ -86,11 +86,9 @@ During a pipeline build that uses Harness Cloud build infrastructure, Harness ru
 
 The steps in each stage execute on the stage's dedicated VM. This allows the stage's steps to share information through the underlying filesystem. You can run CI steps directly on the VM or in a Docker container. When the stage is complete, the VM automatically shuts down.
 
-
-
 :::
 
-For more information about using Harness Cloud for your CI pipelines, including supported platforms, image specifications, and YAML examples, go to [Use Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+For more information about using Harness Cloud for your CI pipelines, including supported platforms, image specifications, and YAML examples, go to [Use Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md). For information about build credit consumption and billing, go to [Subscriptions and licenses](./ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
 
 ### Test Intelligence
 

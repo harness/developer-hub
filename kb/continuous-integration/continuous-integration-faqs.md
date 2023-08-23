@@ -48,4 +48,23 @@ Below given one of the methods with which we could achieve this.
 - Read the file's content in a subsequent step which is configured to run always
 - Use the GitHub API to add a comment to the pull request, including details from the file.
 
+#### How can we calculate the instance of a service where number of pods change ?
+We can calculate the service licenses and instances in following methods for CG and NG both.
+
+- List services deployed in the last 30 days. Service is considered in calculation even if it was part of any failed deployments
+- For every found service we find the 95th Percentile of the number of its service instances across a period of 30 days and it represents active service instances
+- Based on service instances we calculate the number of consumed licenses
+- 1 service license is equal to 20 active service instances
+
+Please find an example [here]( https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#example)
+
+#### What should we do on experiencing OOM on java heap for the delgate ?
+
+Try increasing the CPU request and limit both. Check CPU utilisation in-case.
+
+#### Do we encrypt the image tag for the container during rollout deployment output ?
+
+No we don't. Try checking SHA of the tag and find image ID from the output of the service step `<+artifact.tag>`
+
+
 

@@ -1,7 +1,7 @@
 ---
 title: Harness Self-Managed Enterprise Edition Overview
 sidebar_label: Overview
-description: Learn about the on-premises Harness Self-Managed Enterprise Edition.
+description: Learn about the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 3
 helpdocs_topic_id: tb4e039h8x
 helpdocs_category_id: tvlmjozubh
