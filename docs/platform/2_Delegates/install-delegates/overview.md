@@ -62,7 +62,7 @@ For custom certificates, go to [Install delegates with custom certificates](/doc
 The legacy delegate used `DELEGATE_GROUP_NAME` for group names. This environment is not valid in NextGen. Use `DELEGATE_NAME` for group names. 
 
 ### Connection check
-Delegates with an immutable image type automatically launch a script during startup that checks connectivity with the Harness Manager endpoint. You can disable this by setting the `PRECHECK_CONN` environment variable to `false`. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+Delegates with an immutable image type (image tag *`yy.mm.xxxxx`*) automatically launch a script during startup that checks connectivity with the Harness Manager endpoint. You can disable this by setting the `PRECHECK_CONN` environment variable to `false`. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 ## Additional installation approaches
 
