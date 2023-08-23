@@ -28,7 +28,7 @@ export default function communityAspects() {
                 </button>
               </Tooltip>
             </Link>
-            <Link href="https://www.youtube.com/@Harnessio/videos">
+            <Link href="https://www.youtube.com/@Harnesscommunity/videos">
               <Tooltip placement="top" overlay="YouTube Channel">
                 <button className={styles.btn}>
                   <img src={`${baseUrl}img/youtube.svg`} />
