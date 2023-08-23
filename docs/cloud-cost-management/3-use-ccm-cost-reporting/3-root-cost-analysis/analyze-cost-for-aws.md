@@ -72,7 +72,7 @@ The Perspectives provide deep insights into your AWS costs. The cost includes al
 	+ The characters that do not follow regex `[a-zA-Z0-9_]` are changed to `_`.
 	+ The tags are case-sensitive. If the tags are specified as `UserName` and `username`, then the number suffix `_<Number>`is added to the tag. For example, `UserName` and `username_1`.
 
-### Add Filters
+### Add filters
 
 Perform the following steps to add filters.
 

@@ -55,13 +55,13 @@ The Perspectives provides deep insights into your Azure costs. The cost includes
 	* **Product**: Each of your active products with its cloud costs.
 	* **Label**: Each label that you assign to your Azure resources. You can select a label name to get further granular details of your label.
 
-### Add Filters
+### Add filters
 
 Perform the following steps to add filters.
 
 1. In **Cloud Costs**, select **Perspectives**, and then select **Azure**.
 2. Select **add filter**. 
-3. Select Azure, Region, Product, or Label.
+3. Select Azure, Region, Product, Cloud Provider, or Label.
 4. Select the operator. The supported operators are:
 	* **IN**: The exact match operation is used to filter for the value specified.
 	* **NOT IN**: The exact match operation is used to filter for the value that is not specified.
