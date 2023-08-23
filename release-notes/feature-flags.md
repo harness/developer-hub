@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-08-23T10:00:25
+date: 2023-08-23T15:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -25,14 +25,77 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the Ruby SDK
+### Fixed issues in the Javascript SDK
 
-The Ruby SDK did not handle the 'IN' operator correctly. If a target group used the 'IN' operator in a rule, then that rule would fail to evaluate correctly. This could lead to the wrong variation being served to a target. The SDK has been updated to correctly handle IN operators for target group rules.(FFM-8670)
+* If the SDK was being suspended while inside a mobile app in a webview, our SDK didn't support this usecase and required workarounds. (FFM-8176)
+
+* Removed a third-party SSE library causing event-handling errors. (FFM-8855)
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### August 23, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Ruby SDK
+
+The Ruby SDK did not handle the 'IN' operator correctly. If a target group used the 'IN' operator in a rule, then that rule would fail to evaluate correctly. This could lead to the wrong variation being served to a target. The SDK has been updated to correctly handle IN operators for target group rules.(FFM-8670)
+
+#### August 22, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Node SDK
+
+Previously when using waitForInitialization, if the SDK encountered an authentication failure, it neither resolved nor rejected the promise. This could potentially lead to a Node.js process termination with an exit code of 0 when no operations were performed outside the asynchronous function block where it was called. The SDK now correctly rejects the promise in the event of an authentication failure. This rejection will provide error details. (FFM-9055)
+
+#### August 15, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Ruby SDK
+
+This release fixes an error where "Starts With" target group rules did not receive data in the correct format to be processed by the Ruby SDK. (FFM-9036)
+
+#### August 10, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Feature Flags server, version 1.1079.0
+
+* Improved cache store handling for pre-evaluations (FFM-8904)
+* Added an infrequent error caused by a panic during flag deletion (FFM-8973)
+* Automatically disable Git sync if flags.yml can not be found (FFM-8955)
+* Automatically time out if events take too long to send, rather than hanging indefinitely (FFM-8932)
+* Added additional test coverage for target attributes with IN clauses (FFM-8706)
+* Mark a flag as stale if the Flag previously had evaluations but has not in 60 days (FFM-8790)
 
 #### August 10, 2023
 
