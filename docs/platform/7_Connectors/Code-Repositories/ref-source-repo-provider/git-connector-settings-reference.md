@@ -60,8 +60,8 @@ In the **Git Account URL** field, provide only the account-identifying portion o
 
 The URL format depends on the Git provider and **Connection Type**:
 
-* HTTP format: `https://<git-provider>.com/<username>`
-* SSH format: `git@<git-provider>.com:<username>`
+* HTTP format: `https://<git-provider>.com/USERNAME`
+* SSH format: `git@<git-provider>.com:USERNAME`
 
 ### Test Repository
 
@@ -76,8 +76,8 @@ In the **Git Repository URL** field, provide the complete URL to the Git reposit
 
 The URL format depends on the Git provider and **Connection Type**:
 
-* HTTP format: `https://<git-provider>.com/<username>/<repo-name>`
-* SSH format: `git@<git-provider>.com:<username>/<repo-name>`
+* HTTP format: `https://<git-provider>.com/USERNAME/REPO_NAME`
+* SSH format: `git@<git-provider>.com:USERNAME/REPO_NAME`
 
 ```mdx-code-block
   </TabItem>

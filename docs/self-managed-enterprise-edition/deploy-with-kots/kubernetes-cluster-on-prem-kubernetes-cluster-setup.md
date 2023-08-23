@@ -1,6 +1,6 @@
 ---
 title: Install using KOTS
-description: Learn how to use KOTS to install Harness Self-Managed Enterprise Edition - Kubernetes Cluster NextGen.
+description: Learn how to use KOTS to install the on-prem Harness Self-Managed Enterprise Edition - Kubernetes Cluster NextGen.
 sidebar_position: 2
 helpdocs_topic_id: 95mwydgm6w
 helpdocs_category_id: vu99714ib1

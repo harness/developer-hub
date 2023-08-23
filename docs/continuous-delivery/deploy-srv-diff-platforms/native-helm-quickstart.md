@@ -175,7 +175,7 @@ You can add a Harness Delegate inline when you configure the first setting that 
 11. Select the **Connect using Delegates with the following Tags** option.
 12. Enter the tag of the new Delegate and click **Save and Continue**.
     When you are done, the Connector is tested. If it fails, your Delegate might not be able to connect to `https://charts.bitnami.com/bitnami`. Review its network connectivity and ensure it can connect.  
-    If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools/).
+    If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 13. Click **Continue**.
 14. In **Manifest Details**, enter the following settings can click **Submit**.
 15. In Harness, click **Verify**. It will take a few minutes to verify the Delegate. Once it is verified, close the wizard.
@@ -184,7 +184,7 @@ You can add a Harness Delegate inline when you configure the first setting that 
 17. Select the **Connect using Delegates with the following Tags** option.
 18. Enter the tag of the new Delegate and click **Save and Continue**.
    When you are done, the Connector is tested. If it fails, your Delegate might not be able to connect to `https://charts.bitnami.com/bitnami`. Review its network connectivity and ensure it can connect.
-   If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools/).
+   If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 19. Click **Continue**.
 20. In **Manifest Details**, enter the following settings can click **Submit**.
    * **Manifest Identifier**: enter **nginx**.
@@ -261,7 +261,7 @@ Harness requires that the `release` label be used in **every** Kubernetes spec t
 
 Ensure that the `release` label is in every Kubernetes object's manifest. If you omit the `release` label from a manifest, Harness cannot track it.
 
-The [Helm built-in Release object](https://helm.sh/docs/chart_template_guide/builtin_objects/) describes the release and allows Harness to identify each release. For this reason, the `release: {{ .Release.Name }}` label must be used in your Kubernetes spec.
+The [Helm built-in Release object](https://helm.sh/docs/chart_template_guide/builtin_objects/) describes the release and allows Harness to identify each release. For this reason, the `harness.io/release: {{ .Release.Name }}` label must be used in your Kubernetes spec.
 
 See these Service and Deployment object examples:
 
