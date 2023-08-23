@@ -265,18 +265,7 @@ Make sure the email address used in Harness matches with the email address in th
 
 #### Required permissions
 
-The following App registration permissions are required to use an Azure app for Harness SAML SSO:
-
-- `Directory.ReadWrite.All`
-- `Group.ReadWrite.All`
-- `GroupMember.ReadWrite.All`
-- `User.ReadWrite.All`
-
-:::info note
-You must set the above for Delegated permissions and Application permissions.
-:::
-
-When SAML has more than 150 groups, you must set `User.Read.All` access for the application. For more information on Azure application permissions, go to [Application permissions](https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93) in the Azure documentation.
+When the user authenticating SAML is part of more than 150 groups in Azure active directory, you must set `User.Read.All` access for the application if you want to configure the optional `client-id` and `client-secret`. For more information on Azure application permissions, go to [Application permissions](https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93) in the Azure documentation.
 
 To set `User.Read.All` access for the application, do the following:
 
@@ -284,6 +273,17 @@ To set `User.Read.All` access for the application, do the following:
 2. Select **Add a permission**.
 3. Under **Microsoft APIs**, select Microsoft Graph, and then select **Application permissions**.
 4. Add the `User.Read.All` permission.
+
+The following App registration permissions are required to configure the optional `client-id` and `client-secret` for Harness SAML SSO with the Azure app:
+
+- `Directory.ReadWrite.All`
+- `Group.ReadWrite.All`
+- `GroupMember.ReadWrite.All`
+- `User.ReadWrite.All`
+
+:::info note
+You must set the above for both Delegated permissions and Application permissions.
+:::
 
 #### Azure User Accounts
 
