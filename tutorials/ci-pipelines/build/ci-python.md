@@ -256,8 +256,8 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 ```yaml
               - step:
                   type: RunTests
-                  name: Run Python Test
-                  identifier: Run_Python_Test
+                  name: Run Python Tests
+                  identifier: Run_Python_Tests
                   spec:
                     language: Python
                     buildTool: Pytest
@@ -284,8 +284,8 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 ```yaml
               - step:
                   type: RunTests
-                  name: Run Python Test
-                  identifier: Run_Python_Test
+                  name: Run Python Tests
+                  identifier: Run_Python_Tests
                   spec:
                     connectorRef: account.harnessImage
                     image: python:latest

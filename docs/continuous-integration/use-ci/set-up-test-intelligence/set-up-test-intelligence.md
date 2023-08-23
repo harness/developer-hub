@@ -222,8 +222,8 @@ The build environment must have the necessary binaries for the **Run Tests** ste
 ```yaml
               - step:
                   type: RunTests
-                  name: Run Python Test
-                  identifier: Run_Python_Test
+                  name: Run Python Tests
+                  identifier: Run_Python_Tests
                   spec:
                     language: Python
                     buildTool: Pytest
@@ -854,8 +854,8 @@ For Python, you can set [`PYTHONPATH`](https://docs.python.org/3/using/cmdline.h
 ```yaml
               - step:
                   type: RunTests
-                  name: Run Python Test
-                  identifier: Run_Python_Test
+                  name: Run Python Tests
+                  identifier: Run_Python_Tests
                   spec:
                     language: Python
                     ...
@@ -1094,8 +1094,8 @@ pipeline:
             steps:
               - step:
                   type: RunTests
-                  name: Run Python Test
-                  identifier: Run_Python_Test
+                  name: Run Python Tests
+                  identifier: Run_Python_Tests
                   spec:
                     language: Python
                     buildTool: Pytest ## Specify pytest or unittest
@@ -1337,8 +1337,8 @@ pipeline:
             steps:
               - step:
                   type: RunTests
-                  name: Run Python Test
-                  identifier: Run_Python_Test
+                  name: Run Python Tests
+                  identifier: Run_Python_Tests
                   spec:
                     connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
                     image: python:latest ## Specify if required by your build infrastructure.
