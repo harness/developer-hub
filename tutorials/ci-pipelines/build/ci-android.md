@@ -6,8 +6,6 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/android
 ---
 
-<!-- Add step to switch Android Studio. Test on Kotlin sample project -->
-
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -183,12 +181,7 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                   spec:
                     shell: Sh
                     command: |-
-                      npm install -g firebase-tools
-                      gem install fastlane
-
-                      fastlane add_plugin load_json
-                      fastlane add_plugin increment_version_code
-                      fastlane add_plugin firebase_app_distribution
+                      bundle update
 ```
 
 ```mdx-code-block
@@ -211,9 +204,9 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                       npm install -g firebase-tools
                       gem install fastlane
 
-                      fastlane add_plugin load_json
-                      fastlane add_plugin increment_version_code
-                      fastlane add_plugin firebase_app_distribution
+                      bundle exec fastlane add_plugin load_json
+                      bundle exec fastlane add_plugin increment_version_code
+                      bundle exec fastlane add_plugin firebase_app_distribution
 ```
 
 ```mdx-code-block
@@ -396,9 +389,21 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 <TabItem value="Harness Cloud">
 ```
 
-Android packages, including Android SDK tools, are pre-installed on Harness Cloud machines. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+Android packages, including Android SDK tools and and [fastlane](https://docs.fastlane.tools/), are pre-installed on Harness Cloud machines. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-If you need to install additional versions, use a **Run** step. These examples use [faberNovel/docker-android](https://github.com/faberNovel/docker-android).
+```yaml
+              - step:
+                  type: Run
+                  name: android version
+                  identifier: android_version
+                  spec:
+                    shell: Sh
+                    command: |-
+                      fastlane init
+                      fastlane tests
+```
+
+If you need to install additional versions, use a **Run** step. These examples use [faberNovel/docker-android](https://github.com/faberNovel/docker-android) and fastlane.
 
 <details>
 <summary>Use one version</summary>
@@ -413,7 +418,8 @@ If you need to install additional versions, use a **Run** step. These examples u
                     image: fabernovel/android:api-30-v1.7.0
                     shell: Sh
                     command: |-
-                      fastlane run echo
+                      fastlane init
+                      fastlane tests
 ```
 
 </details>
@@ -445,7 +451,8 @@ If you need to install additional versions, use a **Run** step. These examples u
                     image: fabernovel/android:api-<+ stage.matrix.androidVersion >-v1.7.0
                     shell: Sh
                     command: |-
-                      fastlane run echo
+                      fastlane init
+                      fastlane tests
 ```
 
 </details>
@@ -457,7 +464,7 @@ If you need to install additional versions, use a **Run** step. These examples u
 
 Specify the desired Android Docker image tag in your steps. There is no need for a separate install step when using Docker.
 
-These examples use [faberNovel/docker-android](https://github.com/faberNovel/docker-android).
+These examples use [faberNovel/docker-android](https://github.com/faberNovel/docker-android) and [fastlane](https://docs.fastlane.tools/).
 
 <details>
 <summary>Use one version</summary>
@@ -472,7 +479,8 @@ These examples use [faberNovel/docker-android](https://github.com/faberNovel/doc
                     image: fabernovel/android:api-30-v1.7.0
                     shell: Sh
                     command: |-
-                      fastlane run echo
+                      fastlane init
+                      fastlane tests
 ```
 
 </details>
@@ -504,7 +512,8 @@ These examples use [faberNovel/docker-android](https://github.com/faberNovel/doc
                     image: fabernovel/android:api-<+ stage.matrix.androidVersion >-v1.7.0
                     shell: Sh
                     command: |-
-                      fastlane run echo
+                      fastlane init
+                      fastlane tests
 ```
 
 </details>
@@ -514,17 +523,9 @@ These examples use [faberNovel/docker-android](https://github.com/faberNovel/doc
 </Tabs>
 ```
 
-## Deploy to Firebase
+## Deploy to the Google Play Store
 
-The following examples use [fastlane in a Continuous Integration setup](https://docs.fastlane.tools/best-practices/continuous-integration/) to prepare an app for deployment to Firebase.
-
-These are intended as examples only. These are not considered full, working demos. To learn more about app distribution, go to the Google documentation on [Firebase App Distribution](https://firebase.google.com/docs/app-distribution) and the fastlane documentation on [Deploying to Google Play using fastlane](https://docs.fastlane.tools/getting-started/android/release-deployment/).
-
-:::tip
-
-Use [secrets](https://developer.harness.io/docs/category/secrets) and [expressions](https://developer.harness.io/docs/platform/Variables-and-Expressions/harness-variables) to store and recall sensitive values in commands, such as `FASTLANE_PASSWORD=<+secrets.getValue('fastlanepassword')>`.
-
-:::
+The following examples use and [fastlane](https://docs.fastlane.tools/) to deploy an app to the Google Play Store. These are intended as examples only. They do not provide complete firebase configuration or app distribution requirements. To learn more about app distribution, go to the Google documentation on [Firebase App Distribution](https://firebase.google.com/docs/app-distribution) and the fastlane documentation on [Deploying to Google Play using fastlane](https://docs.fastlane.tools/getting-started/android/release-deployment/).
 
 ```mdx-code-block
 <Tabs>
@@ -532,63 +533,16 @@ Use [secrets](https://developer.harness.io/docs/category/secrets) and [expressio
 ```
 
 ```yaml
-  stages:
-    - stage:
-        name: Build
-        identifier: Build
-        type: CI
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
               - step:
                   type: Run
-                  name: Fastlane Setup
-                  identifier: Fastlane_Setup
+                  name: fastlane_deploy
+                  identifier: fastlane_deploy
                   spec:
                     shell: Sh
                     command: |-
-                      mkdir fastlane
-
-                      cat << EOF >> fastlane/Fastfile
-                      default_platform(:android)
-
-                      platform :android do
-
-                        desc "Build release code"
-                        lane :buildRelease do
-                          increment_version_code(
-                            gradle_file_path: "./app/build.gradle",
-                          )
-                          gradle(
-                            task: "assemble",
-                            flavor: "production",
-                            build_type: "release"
-                          )
-                        end
-
-                        desc "Submit a new Beta Build to Firebase App Distribution"
-                        lane :beta do
-                        buildRelease
-
-                        firebase_app_distribution(
-                            app: "Preproducion",
-                            groups: "Dev",
-                            release_notes: "Bug fixes."
-                        )
-                        end
-
-                      end
-                      ...
-                ...
-          sharedPaths:
-            - /root/.gradle
+                      fastlane init
+                      fastlane android deploy
+                      fastlane action upload_to_play_store
 ```
 
 ```mdx-code-block
@@ -596,68 +550,19 @@ Use [secrets](https://developer.harness.io/docs/category/secrets) and [expressio
   <TabItem value="selfhosted" label="Self-hosted">
 ```
 
-This example uses a [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
-
 ```yaml
-  stages:
-    - stage:
-        name: Build
-        identifier: Build
-        type: CI
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Docker
-            spec: {}
-          execution:
-            steps:
               - step:
                   type: Run
-                  name: Fastlane Setup
-                  identifier: Fastlane_Setup
+                  name: fastlane_deploy
+                  identifier: fastlane_deploy
                   spec:
                     connectorRef: account.harnessImage
-                    image: fabernovel/android:api-30-v1.7.0
+                    image: fabernovel/android:api-<+ stage.matrix.androidVersion >-v1.7.0
                     shell: Sh
                     command: |-
-                      mkdir fastlane
-
-                      cat << EOF >> fastlane/Fastfile
-                      default_platform(:android)
-
-                      platform :android do
-
-                        desc "Build release code"
-                        lane :buildRelease do
-                          increment_version_code(
-                            gradle_file_path: "./app/build.gradle",
-                          )
-                          gradle(
-                            task: "assemble",
-                            flavor: "production",
-                            build_type: "release"
-                          )
-                        end
-
-                        desc "Submit a new Beta Build to Firebase App Distribution"
-                        lane :beta do
-                        buildRelease
-
-                        firebase_app_distribution(
-                            app: "Preproducion",
-                            groups: "Dev",
-                            release_notes: "Bug fixes."
-                        )
-                        end
-
-                      end
-                      ...
-                ...
-          sharedPaths:
-            - /root/.gradle
+                      fastlane init
+                      fastlane android deploy
+                      fastlane action upload_to_play_store
 ```
 
 ```mdx-code-block
@@ -712,12 +617,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      npm install -g firebase-tools
-                      gem install fastlane
-
-                      fastlane add_plugin load_json
-                      fastlane add_plugin increment_version_code
-                      fastlane add_plugin firebase_app_distribution
+                      bundle update
               - step:
                   type: Run
                   name: Test
@@ -732,6 +632,16 @@ pipeline:
                       spec:
                         paths:
                           - "*/build/test-results/.*xml"
+              - step:
+                  type: Run
+                  name: fastlane_deploy
+                  identifier: fastlane_deploy
+                  spec:
+                    shell: Sh
+                    command: |-
+                      fastlane init
+                      fastlane android deploy
+                      fastlane action upload_to_play_store
           platform:
             os: Linux
             arch: Amd64
@@ -805,9 +715,9 @@ pipeline:
                       npm install -g firebase-tools
                       gem install fastlane
 
-                      fastlane add_plugin load_json
-                      fastlane add_plugin increment_version_code
-                      fastlane add_plugin firebase_app_distribution
+                      bundle exec fastlane add_plugin load_json
+                      bundle exec fastlane add_plugin increment_version_code
+                      bundle exec fastlane add_plugin firebase_app_distribution
               - step:
                   type: Run
                   name: Test
@@ -824,6 +734,18 @@ pipeline:
                       spec:
                         paths:
                           - "*/build/test-results/.*xml"
+              - step:
+                  type: Run
+                  name: fastlane_deploy
+                  identifier: fastlane_deploy
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: fabernovel/android:api-<+ stage.matrix.androidVersion >-v1.7.0
+                    shell: Sh
+                    command: |-
+                      fastlane init
+                      fastlane android deploy
+                      fastlane action upload_to_play_store
               - step:
                   type: SaveCacheS3
                   name: Save Cache to S3
