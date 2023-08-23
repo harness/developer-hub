@@ -66,8 +66,7 @@ The Perspectives provide deep insights into your AWS costs. The cost includes al
 
   * **Region**: Each AWS region you are currently running services in.
   * **Product**: Each of your active products with its cloud costs.
-  * **Label**: Each label that you assign to your AWS resources. You can select a label name to get further granular details of your label.
-  * **Tags**: Each [tag](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) that you assign to your AWS resources. You can select a **Tag name** to get further granular details of your tags.For tags to appear in the Perspective, you must activate the user-defined cost allocation tags in the AWS Billing and Cost Management console. For more information, see [Activating User-Defined Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html). In CCM, the tag keys are updated as the following:
+  * **Label**: Each label that you assign to your AWS resources. You can select a label name to get further granular details of your label. For more information, go to [Tagging your AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html). You can select a **Tag name** to get further granular details of your tags. For tags to appear in the Perspective, you must activate the user-defined cost allocation tags in the AWS Billing and Cost Management console. For more information, go to [Activating User-Defined Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html). In CCM, the tag keys are updated as the following:
 	+ For the user-defined tags, `user_` prefix is added.
 	+ For the AWS system tags, `aws_` prefix is added.
 	+ The characters that do not follow regex `[a-zA-Z0-9_]` are changed to `_`.
