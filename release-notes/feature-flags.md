@@ -1,15 +1,10 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-08-10T10:00:25
+date: 2023-08-23T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
-
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/feature-flags/rss.xml" />
 
@@ -20,44 +15,42 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 10, 2023
+## Latest - August 23, 2023
 
-<Tabs>
-  <TabItem value="What's new">
+### New features and enhancements
 
 This release does not include new features.
 
-
-  </TabItem>
-  <TabItem value="Early access">
+### Early access features
 
 This release does not include early access features.
 
+### Fixed issues in the Ruby SDK
 
-  </TabItem>
-  <TabItem value="Fixed issues">
+The Ruby SDK did not handle the 'IN' operator correctly. If a target group used the 'IN' operator in a rule, then that rule would fail to evaluate correctly. This could lead to the wrong variation being served to a target. The SDK has been updated to correctly handle IN operators for target group rules.(FFM-8670)
 
-#### Feature Flags server, version 1.1079.0
+## Previous releases
 
-* Previously, if a flag was configured to use a custom attribute with the IN operator clause, the IN operator didn't work correctly. This has been fixed. (FFM-8670)
+<details>
+<summary>2023 releases</summary>
 
-#### Feature Flags UI
+#### August 10, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Feature Flags UI
 
 * Previously, the Feature Flags modal screen disappeared when the user clicked in the background, which caused the data to disappear. This issue has been fixed. (FFM-8770)
 
 * Previously, on the flag details page, if all target groups were assigned to rules, the Percentage Rollout target groups selection would disappear. This issue has been fixed. (FFM-8841)
 
 * Previously, when creating a flag targeting rule, using autocomplete search for a target group could remove target groups from other rules within the same flag. This issue has been fixed. (FFM-8680)
-
-
-  </TabItem>
-</Tabs>
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 4, 2023
 
