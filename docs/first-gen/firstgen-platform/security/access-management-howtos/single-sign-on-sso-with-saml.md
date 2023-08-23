@@ -263,9 +263,25 @@ Make sure the email address used in Harness matches with the email address in th
 
 ![](./static/single-sign-on-sso-with-saml-25.png)
 
-#### Required permissions
+#### Users in over 150 groups
 
-When the user authenticating SAML is part of more than 150 groups in Azure active directory, you must set `User.Read.All` access for the application if you want to configure the optional `client-id` and `client-secret`. For more information on Azure application permissions, go to [Application permissions](https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93) in the Azure documentation.
+When users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
+
+If a user is a member of a larger number of groups, the groups are omitted and a link to the Graph endpoint to obtain group information is included instead.
+
+To invoke the API, Harness will need **Client ID** and **Client Secret** for your registered app.
+
+To get this information, do the following:
+
+1. In your Azure account, go to **App registrations**.
+2. Click on your app. Copy the Application (client) ID and paste it in **Client ID** in your Harness account.
+3. In your Azure account, go to **App registrations**. Click **Certificates and Secrets**.
+4. Click New Client Secret.
+5. Add a description and click Add.
+6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](../Secrets/2-add-use-text-secrets.md).
+7. Select the above secret reference in the Client Secret field in your Harness account.
+
+When the user authenticating SAML is part of more than 150 groups in Azure active directory, you must set `User.Read.All` access for the application if you want to configure the optional **Client ID** and **Client Secret**. For more information on Azure application permissions, go to [Application permissions](https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93) in the Azure documentation.
 
 To set `User.Read.All` access for the application, do the following:
 
