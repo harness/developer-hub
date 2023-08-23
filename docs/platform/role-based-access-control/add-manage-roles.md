@@ -8,15 +8,15 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Roles are an [RBAC component](./rbac-in-harness#rbac-components) that contain a set of [permissions](/docs/platform/role-based-access-control/permissions-reference). Roles define what actions, such as viewing, creating, editing, or deleting, can be taken on Harness resources. When you assign a role to a user, user group, or service account, the permissions defined in the role are granted to the target user, group, or service account.
+Roles are an [RBAC component](./rbac-in-harness.md#rbac-components) that contain a set of [permissions](/docs/platform/role-based-access-control/permissions-reference). Roles define what actions, such as viewing, creating, editing, or deleting, can be taken on Harness resources. When you assign a role to a user, user group, or service account, the permissions defined in the role are granted to the target user, group, or service account.
 
 Harness includes some [built-in roles](#built-in-roles), and you can [create custom roles](#create-a-role), which are useful for limited and fine-grained access control.
 
-Roles are scope-specific, and you can create them at any [scope](./rbac-in-harness#permissions-hierarchy-scopes). For example, a role created at the project scope is only available in that project.
+Roles are scope-specific, and you can create them at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). For example, a role created at the project scope is only available in that project.
 
 ## Roles and resource groups work together
 
-Roles are applied together with [resource groups](#resource-groups) to create a complete set of permissions and access. For example:
+Roles are applied together with [resource groups](/docs/platform/role-based-access-control/add-resource-groups) to create a complete set of permissions and access. For example:
 
 * You can assign the **Organization Admin** role with a resource group that is limited to specific projects or specific organizations.
 * You can assign the **Pipeline Executor** role with a resource group that only allows access to specific pipelines, rather than all pipelines in the project.
@@ -38,20 +38,20 @@ While Harness includes some built-in roles and resource groups, to ensure the le
 
 Harness includes several built-in roles. To examine the permissions assigned to these roles, view them in Harness:
 
-1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where the role exists.
+1. In Harness, go to the [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) where the role exists.
 
    * To view a role at the account scope, select **Account Settings**, and then select **Access Control**.
    * To view a role at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
    * To view a role at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
 
 2. Select **Roles** in the header.
-3. Select the role you want to view. For details about specific permissions, go to the [Permissions reference](./permissions-reference).
+3. Select the role you want to view. For details about specific permissions, go to the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference).
 
 ### Platform roles
 
 These roles are not specific to any modules. They are for administration and oversight of an entire Harness account, organization, or project. They also provide access to cross-module components, such as dashboards and pipelines.
 
-| Role | [Scope](./rbac-in-harness#permissions-hierarchy-scopes) |
+| Role | [Scope](./rbac-in-harness.md#permissions-hierarchy-scopes) |
 | ---  | ----- |
 | Account Admin | Account |
 | Account Viewer | Account |
@@ -67,7 +67,7 @@ These roles are not specific to any modules. They are for administration and ove
 
 ### Module-specific roles
 
-Harness creates these roles for you depending on the modules you use. These roles exist at all [scopes](./rbac-in-harness#permissions-hierarchy-scopes).
+Harness creates these roles for you depending on the modules you use. These roles exist at all [scopes](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * Feature Flag Manage Role
 * CET Admin
@@ -81,7 +81,7 @@ Harness creates these roles for you depending on the modules you use. These role
 
 ## Manage roles in Harness
 
-To manage roles in Harness, you need a role, such as **Account Admin**, that has [permission](./permissions-reference) to view, create/edit, and delete roles.
+To manage roles in Harness, you need a role, such as **Account Admin**, that has [permission](/docs/platform/role-based-access-control/permissions-reference) to view, create/edit, and delete roles.
 
 <!-- ![](./static/add-manage-roles-17.png) -->
 
@@ -89,7 +89,7 @@ To manage roles in Harness, you need a role, such as **Account Admin**, that has
 
 ### Create a role
 
-1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where you want to create the role.
+1. In Harness, go to the [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) where you want to create the role.
 
    * To create a role at the account scope, select **Account Settings**, and then select **Access Control**.
    * To create a role at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
@@ -108,7 +108,7 @@ To manage roles in Harness, you need a role, such as **Account Admin**, that has
 
 ### Edit a role
 
-1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where the role exists.
+1. In Harness, go to the [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) where the role exists.
 
    * To edit a role at the account scope, select **Account Settings**, and then select **Access Control**.
    * To edit a role at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
@@ -118,11 +118,11 @@ To manage roles in Harness, you need a role, such as **Account Admin**, that has
 3. Locate the role you want to edit.
 4. Select **More options** (&vellip;) on the role card, and then select **Edit**.
 5. Edit the role's name, description, or tags, if needed, and then select **Save**.
-6. Edit the role's permissions, and then select **Apply Changes**. For details about specific permissions, go to the [Permissions reference](./permissions-reference).
+6. Edit the role's permissions, and then select **Apply Changes**. For details about specific permissions, go to the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference).
 
 ### Delete a role
 
-1. In Harness, go to the [scope](./rbac-in-harness#permissions-hierarchy-scopes) where the role exists.
+1. In Harness, go to the [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) where the role exists.
 
    * To delete a role at the account scope, select **Account Settings**, and then select **Access Control**.
    * To delete a role at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
@@ -134,8 +134,8 @@ To manage roles in Harness, you need a role, such as **Account Admin**, that has
 
 ## Continue RBAC configuration
 
-Creating roles is one part of [configuring RBAC in Harness](./rbac-in-harness#configure-rbac-in-harness).
+Creating roles is one part of [configuring RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness#configure-rbac-in-harness).
 
-Roles, which grant permissions, work alongside [resource groups](./add-resource-groups), which grant access.
+Roles, which grant permissions, work alongside [resource groups](/docs/platform/role-based-access-control/add-resource-groups), which grant access.
 
-After configuring roles and resource group, you assign them to [users](./add-users), [user groups](./add-user-groups), and [service accounts](./add-and-manage-service-account).
+After configuring roles and resource group, you assign them to [users](./add-users.md), [user groups](./add-user-groups.md), and [service accounts](./add-and-manage-service-account.md).

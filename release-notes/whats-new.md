@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-08-10T10:00
+date: 2023-08-22T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,8 +19,47 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
+## Latest - August 22, 2023
 
-## Latest - August 10, 2023
+### Harness Platform, version 80307
+
+- To support MongoDB 5.0, the Debezium library has been upgraded to version 1.9. (PL-40491)
+
+- If you use the App Role authentication method in the Hashicorp Vault connector, you can choose to cache the vault token. The token is cached on the Harness Delegate for a time duration equal to the TTL of the vault token, with 1% leeway. 
+
+  By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
+
+  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### Harness Delegate, version 80308
+
+- To safeguard your operations and protect against potential security vulnerabilities, Harness deprecated the Helm 2 binary from delegates with an immutable image type (image tag `yy.mm.xxxxx`). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). (PL-40409)
+
+- In a monitored service, license checks in the back end and Terraform live monitoring are always ON. (SRM-15255)
+
+   Now, monitored services can be enabled only from the user interface (through toggle button) and the enable API. Monitored services will always be disabled when created and during subsequent updates to them.
+
+## August 21, 2023
+
+### Harness Chaos Engineering, version 1.17.3
+
+* Added support for OpenShift configuration for deploying chaos infrastructure. This will provide you with a predefined security context constraint (SCC) that you can modify according to your needs. (CHAOS-1889)
+
+* Enhanced the Chaos experiment execution diagram to not switch to running nodes automatically. This change ensures that you stay on a node when you click it, thus giving you the opportunity to observe its details. (CHAOS-2258)
+
+* Enhanced the Docker service kill fault to support the containerd runtime. (CHAOS-2220)
+
+* Added support for targeting applications by using only `appkind`, only `applabel`, and set-based labels. (CHAOS-2170, CHAOS-2128)
+
+* Parallel chaos injection and revert operations at scale have been improved for multiple target pods on the same node. (CHAOS-1563)
+
+* Previously, if you did not set the `TARGET_CONTAINER` environment variable, the fault targeted a randomly selected container. Now, if you do not set the environment variable, the fault targets all containers in the target pods. (CHAOS-1216)
+
+* Now, Users can specify drain timeout explicitly in the node drain fault. The node-drain fault has been using the `CHAOS_DURATION` value as a timeout, leading to potential confusion and risk of failure, especially when a shorter duration is used with many pods. The expectation is that `CHAOS_DURATION` should define the unschedulable period after draining. Providing a specific drain timeout would help users better estimate the eviction time for all pods on a node, reducing errors and false negatives. (CHAOS-2185)
+
+* Enhanced the JobCleanUpPolicy configuration to also retain helper pods when it is set to retain in ChaosEngine. (CHAOS-2273)
+
+## August 10, 2023
 
 ### Continuous Delivery, version 80208
 
@@ -44,6 +83,16 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
 
 ## August 9, 2023
 
+### Internal Developer Portal, version 0.8.0
+
+- IDP now includes the [GitHub Catalog Discovery](/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery) plugin. You can use this to automatically discover `catalog-info.yaml` files from your GitHub organizations and repositories. [IDP-887]
+
+- The following UI pickers are now available for use in software templates:
+  - `HarnessOrgPicker`
+  - `HarnessProjectPicker` 
+  
+  You can use these UI pickers in service onboarding workflows for developers to easily select a Harness project and organization. Take a look at this [example](https://github.com/bhavya-sinha/scaffolder-sample-templates/blob/5f52718ec49cb2c27a87e2fbeae075873701911c/fieldExtension.yaml#L78-L85). [IDP-868]
+
 ### Security Testing Orchestration, version 1.64.1
 
 * Aqua Trivy scans now capture and report on secrets in plain text, in addition to vulnerabilities. (STO-6345)
@@ -54,7 +103,6 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
   ![Click on a tile to filter issues by severity](./static/sto-tile-filters-sto-5784.png)
 
 * The issue lists in the the **Security Tests** tab are now paginated. You can configure each list to show 20, 50, or 100 issues per page. This makes the overall page much easier to navigate if the scan results include a lot of issues. (STO-5949, STO-6099)
-
 
 ## August 7, 2023
 
@@ -219,6 +267,14 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
 
 * When specifying percentages for a rollout, the UI now provides feedback while you edit to let you know the percentage that requires assignment. (FFM-8085)
 
+##### Internal Developer Portal, version 0.7.0
+
+- IDP now includes the Confluence search plugin to include results from Confluence spaces. To learn more, go to the [plugin documentation](/docs/internal-developer-portal/plugins/available-plugins/confluence). (IDP-845)
+
+- The `harness:create-secret` and `harness:delete-secret` template actions are now available for use in IDP software templates. You can use these actions to receive a secret from a developer, create a Harness secret, and then use it as a pipeline variable to provide runtime input. For more information, go to the [tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input) (IDP-780)
+
+- The interval at which IDP polls Git repositories associated with the software catalog has increased from 5 minutes to 15 minutes. (IDP-749)
+
 #### July 18, 2023
 
 ##### Harness Platform, version 79916
@@ -304,6 +360,20 @@ By default, the first two options are enabled, and you can modify the toggles to
 &nbsp <docimage path={require('./static/ccm-toggle-options-recommendations-filter.png')} width="40%" height="40%" title="Click to view full size image" />
    
   <docimage path={require('./static/ccm-tooltip-recommendations.png')} width="60%" height="60%" title="Click to view full size image" />
+
+#### July 12, 2023
+
+##### Internal Developer Portal, version 0.6.0
+
+- You can now access IDP catalog APIs by using the Harness X-API-Key. For more information, go to [API access](/docs/internal-developer-portal/features/software-catalog#api-access). (IDP-768)
+
+- A newer version of the Harness CI/CD plugin has been added with new annotations support. It's now possible to filter pipelines across projects and orgs. For more information, go to the [plugin's readme](https://github.com/harness/backstage-plugins/tree/main/plugins/harness-ci-cd). (IDP-758)
+
+- The Harness Feature Flags [plugin](https://github.com/harness/backstage-plugins/tree/main/plugins/harness-feature-flags) is now available in IDP. (IDP-778)
+
+- The `trigger:harness-custom-pipeline` action on the software template `template.yaml` is now synchronous with pipeline execution. The action keeps running during pipeline execution, and it shows the current status of the pipeline.
+
+- Since the `trigger:harness-custom-pipeline` is now synchronous, you can use the `catalog:register` action in a template and register the newly generated software component's `catalog-info.yaml`.
 
 #### July 07, 2023
 
@@ -398,6 +468,21 @@ For information on how to set up this workflow, go to [Configure STO to Download
 - Upgraded the delegate JRE to 11.0.19_7. (PL-37994)
 
 - When a delegate token is revoked, Harness now sends `SELF_DESTRUCT` to all delegates that are using the revoked token. (PL-38957)
+
+#### June 27, 2023, 
+
+##### Internal Developer Portal, version 0.5.0
+
+- The Backstage version has been upgraded to [1.14](https://backstage.io/docs/releases/v1.14.0). (IDP-632)
+
+- The following GitHub-based plugins are now available in IDP:
+  - [GitHub Actions](https://github.com/backstage/backstage/tree/master/plugins/github-actions)
+  - [GitHub Insights](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-github-insights)
+  - [GitHub Pull Requests](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-github-pull-requests).
+
+- IDP now includes support for GitHub and Google OAuth applications. You can configure a GitHub or Google OAuth application in the IDP Admin view. These applications are used by the GitHub-based plugins to use the logged-in user's credentials when making API requests. (IDP-676, IDP-661, IDP-647)
+
+- IDP now supports a URL allowlist. If the `catalog-info.yaml` references API definitions that are hosted on a provider other than your Git provider, add the URL to the allowlist. (IDP-648)
 
 #### June 21, 2023
 
@@ -2304,7 +2389,7 @@ See [Create groups by inheritance](/docs/platform/role-based-access-control/add-
 
 ##### Feature Flags
 
-You can now configure the Relay Proxy for Feature Flags to load and use configuration data that is stored offline. This means in case of an outage, you can still use the Proxy with the configuration you set. To use this feature, you need to generate the offline configuration and then run the Proxy in offline mode. For more information about how to do this, go to the [Relay Proxy overview](https://developer.harness.io/docs/category/git-experience/) and [Run the Proxy in offline mode](https://developer.harness.io/docs/feature-flags/ff-using-flags/relay-proxy/deploy-relay-proxy#run-the-relay-proxy-in-offline-mode).
+You can now configure the Relay Proxy for Feature Flags to load and use configuration data that is stored offline. This means in case of an outage, you can still use the Proxy with the configuration you set. To use this feature, you need to generate the offline configuration and then run the Proxy in offline mode. For more information about how to do this, go to the [Relay Proxy overview](https://developer.harness.io/docs/category/git-experience/) and [Run the Proxy in offline mode](/docs/feature-flags/relay-proxy/deploy-relay-proxy).
 
 The Feature Flag Relay Proxy has been updated to version 0.9.7.
 

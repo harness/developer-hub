@@ -8,153 +8,204 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 # Serverless.com framework for AWS Lambda deployments
 
-This quickstart shows you how to deploy a Serverless Lambda application to AWS Lambda using Harness. We'll use a publicly-available serverless.yaml and artifact and deploy them to your AWS Lambda service using a Harness Pipeline.
+This topic shows you how to deploy a Serverless Lambda application to AWS Lambda using Harness. 
+
+In this topic, we'll use a publicly-available serverless.yaml and artifact and deploy them to your AWS Lambda service using a Harness Pipeline.
 
 New to Serverless.com Framework? See [Tutorial: Your First Serverless Framework Project](https://www.serverless.com/framework/docs/tutorial) from Serverless.
 
-## Objectives
+## Overview
+
+Setting up a Serverless Lambda application involves the following steps:
 
 1. Add a serverless.yaml file and ZIP artifact to a Harness Pipeline stage.
 2. Define your AWS Lambda service as the deployment target.
 3. Deploy the Serverless application to Lambda.
 
-## Visual summary
+### Visual summary
 <!-- Video:
 https://harness-1.wistia.com/medias/tnjairdt6m-->
 <docvideo src="https://harness-1.wistia.com/medias/tnjairdt6m" />
+
+## Containerized and non-containerized
+
+:::note
+
+Currently, containerized Serverless Lambda support is behind the feature flag `CDS_SERVERLESS_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You have two options for deploying a Serverless.com Framework Lambda application:
+
+- **Containerized:** Deploy your Serverless Lambda application in Harness using containerized steps that allow you to select the Serverless image to use for each step.
+  
+  For more information containerized step groups, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
+- **Non-containerized:** Deploy your Serverless Lambda application in Harness using one or more Serverless versions running on one or more Harness delegates.
+
+You select whether to use a containerized or non-containerized method in the **Execution** section of the your pipeline Deploy stage. This topic covers both methods.
+
+<details>
+<summary>Why containerized?</summary>
+
+Not all teams use the same version of the Serverless.com framework. Also, teams use different versions of Serverless packages. This can result in different versions being installed on different delegates, and requires that users select which delegate to use via delegate tags. 
+
+Rather than installing and cleaning up the various Serverless versions on delegates, you can use containerized steps to spin up a fresh container with parameters like:
+
+- Serverless.com version.
+- Serverless plugins.
+- Jobs execution using Serverless.
+
+Once a containerized step is run, Harness terminates the container.
+
+</details>
+
 
 
 ## Before you begin
 
 Review [Harness Key Concepts](/docs/getting-started/learn-harness-key-concepts) to establish a general understanding of Harness.
 * **GitHub account:** this quickstart uses a publicly available serverless.yaml file, but GitHub requires that you use a GitHub account for fetching files.
-* **Harness Delegate with Serverless installed:** the Harness Delegate is a worker process that performs all deployment tasks. For this quickstart, we'll install a Kubernetes delegate in your own cluster.
+* **(Non-containerized) Harness Delegate with Serverless installed:** the Harness Delegate is a worker process that performs all deployment tasks. Typically, you will install a Kubernetes delegate in your own cluster.
 	+ You can use a cluster hosted on a cloud platform or run one in minikube using Docker Desktop locally. The installation steps are the same.
 	+ The Delegate pod(s) must have Serverless installed. We'll add the Serverless installation script using the delegate environment variable `INIT_SCRIPT` to the delegate YAML file later in this quickstart.
+* **(Containerized) Kubernetes cluster and namespace where each container will run:** Each containerized step will run in a Kubernetes cluster you provide.
 * **AWS User account with required policy:** Serverless deployments require an AWS User with specific AWS permissions, as described in [AWS Credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials) from Serverless.com. To create the AWS User, do the following:
 	+ Log into your AWS account and go to the Identity & Access Management (IAM) page.
 	+ Click **Users**, and then **Add user**. Enter a name. Enable **Programmatic access** by clicking the checkbox. Click **Next** to go to the **Permissions** page. Do one of the following:
+    - View and copy the API Key and Secret to a temporary place. You'll need them when setting up the Harness AWS Connector later in this quickstart.
 		- **Full Admin Access:** click on **Attach existing policies directly**. Search for and select **AdministratorAccess** then click **Next: Review**. Check to make sure everything looks good and click **Create user**.
-		- **Limited Access:** click on **Create policy**. Select the **JSON** tab, and add the JSON using the following code from the [Serverless gist](https://gist.github.com/ServerlessBot/7618156b8671840a539f405dea2704c8): IAMCredentials.json
-	
-	```json
-	{  
-	    "Statement": [  
-	        {  
-	            "Action": [  
-	                "apigateway:*",  
-	                "cloudformation:CancelUpdateStack",  
-	                "cloudformation:ContinueUpdateRollback",  
-	                "cloudformation:CreateChangeSet",  
-	                "cloudformation:CreateStack",  
-	                "cloudformation:CreateUploadBucket",  
-	                "cloudformation:DeleteStack",  
-	                "cloudformation:Describe*",  
-	                "cloudformation:EstimateTemplateCost",  
-	                "cloudformation:ExecuteChangeSet",  
-	                "cloudformation:Get*",  
-	                "cloudformation:List*",  
-	                "cloudformation:UpdateStack",  
-	                "cloudformation:UpdateTerminationProtection",  
-	                "cloudformation:ValidateTemplate",  
-	                "dynamodb:CreateTable",  
-	                "dynamodb:DeleteTable",  
-	                "dynamodb:DescribeTable",  
-	                "dynamodb:DescribeTimeToLive",  
-	                "dynamodb:UpdateTimeToLive",  
-	                "ec2:AttachInternetGateway",  
-	                "ec2:AuthorizeSecurityGroupIngress",  
-	                "ec2:CreateInternetGateway",  
-	                "ec2:CreateNetworkAcl",  
-	                "ec2:CreateNetworkAclEntry",  
-	                "ec2:CreateRouteTable",  
-	                "ec2:CreateSecurityGroup",  
-	                "ec2:CreateSubnet",  
-	                "ec2:CreateTags",  
-	                "ec2:CreateVpc",  
-	                "ec2:DeleteInternetGateway",  
-	                "ec2:DeleteNetworkAcl",  
-	                "ec2:DeleteNetworkAclEntry",  
-	                "ec2:DeleteRouteTable",  
-	                "ec2:DeleteSecurityGroup",  
-	                "ec2:DeleteSubnet",  
-	                "ec2:DeleteVpc",  
-	                "ec2:Describe*",  
-	                "ec2:DetachInternetGateway",  
-	                "ec2:ModifyVpcAttribute",  
-	                "events:DeleteRule",  
-	                "events:DescribeRule",  
-	                "events:ListRuleNamesByTarget",  
-	                "events:ListRules",  
-	                "events:ListTargetsByRule",  
-	                "events:PutRule",  
-	                "events:PutTargets",  
-	                "events:RemoveTargets",  
-	                "iam:AttachRolePolicy",  
-	                "iam:CreateRole",  
-	                "iam:DeleteRole",  
-	                "iam:DeleteRolePolicy",  
-	                "iam:DetachRolePolicy",  
-	                "iam:GetRole",  
-	                "iam:PassRole",  
-	                "iam:PutRolePolicy",  
-	                "iot:CreateTopicRule",  
-	                "iot:DeleteTopicRule",  
-	                "iot:DisableTopicRule",  
-	                "iot:EnableTopicRule",  
-	                "iot:ReplaceTopicRule",  
-	                "kinesis:CreateStream",  
-	                "kinesis:DeleteStream",  
-	                "kinesis:DescribeStream",  
-	                "lambda:*",  
-	                "logs:CreateLogGroup",  
-	                "logs:DeleteLogGroup",  
-	                "logs:DescribeLogGroups",  
-	                "logs:DescribeLogStreams",  
-	                "logs:FilterLogEvents",  
-	                "logs:GetLogEvents",  
-	                "logs:PutSubscriptionFilter",  
-	                "s3:GetBucketLocation",  
-	                "s3:CreateBucket",  
-	                "s3:DeleteBucket",  
-	                "s3:DeleteBucketPolicy",  
-	                "s3:DeleteObject",  
-	                "s3:DeleteObjectVersion",  
-	                "s3:GetObject",  
-	                "s3:GetObjectVersion",  
-	                "s3:ListAllMyBuckets",  
-	                "s3:ListBucket",  
-	                "s3:PutBucketNotification",  
-	                "s3:PutBucketPolicy",  
-	                "s3:PutBucketTagging",  
-	                "s3:PutBucketWebsite",  
-	                "s3:PutEncryptionConfiguration",  
-	                "s3:PutObject",  
-	                "sns:CreateTopic",  
-	                "sns:DeleteTopic",  
-	                "sns:GetSubscriptionAttributes",  
-	                "sns:GetTopicAttributes",  
-	                "sns:ListSubscriptions",  
-	                "sns:ListSubscriptionsByTopic",  
-	                "sns:ListTopics",  
-	                "sns:SetSubscriptionAttributes",  
-	                "sns:SetTopicAttributes",  
-	                "sns:Subscribe",  
-	                "sns:Unsubscribe",  
-	                "states:CreateStateMachine",  
-	                "states:DeleteStateMachine"  
-	            ],  
-	            "Effect": "Allow",  
-	            "Resource": "*"  
-	        }  
-	    ],  
-	    "Version": "2012-10-17"  
-	}
-	```
-	The `s3:GetBucketLocation` action is required for a custom S3 bucket only.
-	- View and copy the API Key and Secret to a temporary place. You'll need them when setting up the Harness AWS Connector later in this quickstart.
+		- **Limited Access:** click on **Create policy**. Select the **JSON** tab, and add the JSON using the following code from the [Serverless gist](https://gist.github.com/ServerlessBot/7618156b8671840a539f405dea2704c8) IAMCredentials.json:
+
+<details>
+<summary>IAMCredentials.json</summary>
+
+```json
+{  
+ "Statement": [  
+     {  
+         "Action": [  
+             "apigateway:*",  
+             "cloudformation:CancelUpdateStack",  
+             "cloudformation:ContinueUpdateRollback",  
+             "cloudformation:CreateChangeSet",  
+             "cloudformation:CreateStack",  
+             "cloudformation:CreateUploadBucket",  
+             "cloudformation:DeleteStack",  
+             "cloudformation:Describe*",  
+             "cloudformation:EstimateTemplateCost",  
+             "cloudformation:ExecuteChangeSet",  
+             "cloudformation:Get*",  
+             "cloudformation:List*",  
+             "cloudformation:UpdateStack",  
+             "cloudformation:UpdateTerminationProtection",  
+             "cloudformation:ValidateTemplate",  
+             "dynamodb:CreateTable",  
+             "dynamodb:DeleteTable",  
+             "dynamodb:DescribeTable",  
+             "dynamodb:DescribeTimeToLive",  
+             "dynamodb:UpdateTimeToLive",  
+             "ec2:AttachInternetGateway",  
+             "ec2:AuthorizeSecurityGroupIngress",  
+             "ec2:CreateInternetGateway",  
+             "ec2:CreateNetworkAcl",  
+             "ec2:CreateNetworkAclEntry",  
+             "ec2:CreateRouteTable",  
+             "ec2:CreateSecurityGroup",  
+             "ec2:CreateSubnet",  
+             "ec2:CreateTags",  
+             "ec2:CreateVpc",  
+             "ec2:DeleteInternetGateway",  
+             "ec2:DeleteNetworkAcl",  
+             "ec2:DeleteNetworkAclEntry",  
+             "ec2:DeleteRouteTable",  
+             "ec2:DeleteSecurityGroup",  
+             "ec2:DeleteSubnet",  
+             "ec2:DeleteVpc",  
+             "ec2:Describe*",  
+             "ec2:DetachInternetGateway",  
+             "ec2:ModifyVpcAttribute",  
+             "events:DeleteRule",  
+             "events:DescribeRule",  
+             "events:ListRuleNamesByTarget",  
+             "events:ListRules",  
+             "events:ListTargetsByRule",  
+             "events:PutRule",  
+             "events:PutTargets",  
+             "events:RemoveTargets",  
+             "iam:AttachRolePolicy",  
+             "iam:CreateRole",  
+             "iam:DeleteRole",  
+             "iam:DeleteRolePolicy",  
+             "iam:DetachRolePolicy",  
+             "iam:GetRole",  
+             "iam:PassRole",  
+             "iam:PutRolePolicy",  
+             "iot:CreateTopicRule",  
+             "iot:DeleteTopicRule",  
+             "iot:DisableTopicRule",  
+             "iot:EnableTopicRule",  
+             "iot:ReplaceTopicRule",  
+             "kinesis:CreateStream",  
+             "kinesis:DeleteStream",  
+             "kinesis:DescribeStream",  
+             "lambda:*",  
+             "logs:CreateLogGroup",  
+             "logs:DeleteLogGroup",  
+             "logs:DescribeLogGroups",  
+             "logs:DescribeLogStreams",  
+             "logs:FilterLogEvents",  
+             "logs:GetLogEvents",  
+             "logs:PutSubscriptionFilter",  
+             "s3:GetBucketLocation",  
+             "s3:CreateBucket",  
+             "s3:DeleteBucket",  
+             "s3:DeleteBucketPolicy",  
+             "s3:DeleteObject",  
+             "s3:DeleteObjectVersion",  
+             "s3:GetObject",  
+             "s3:GetObjectVersion",  
+             "s3:ListAllMyBuckets",  
+             "s3:ListBucket",  
+             "s3:PutBucketNotification",  
+             "s3:PutBucketPolicy",  
+             "s3:PutBucketTagging",  
+             "s3:PutBucketWebsite",  
+             "s3:PutEncryptionConfiguration",  
+             "s3:PutObject",  
+             "sns:CreateTopic",  
+             "sns:DeleteTopic",  
+             "sns:GetSubscriptionAttributes",  
+             "sns:GetTopicAttributes",  
+             "sns:ListSubscriptions",  
+             "sns:ListSubscriptionsByTopic",  
+             "sns:ListTopics",  
+             "sns:SetSubscriptionAttributes",  
+             "sns:SetTopicAttributes",  
+             "sns:Subscribe",  
+             "sns:Unsubscribe",  
+             "states:CreateStateMachine",  
+             "states:DeleteStateMachine"  
+         ],  
+         "Effect": "Allow",  
+         "Resource": "*"  
+     }  
+ ],  
+ "Version": "2012-10-17"  
+}
+```
+The `s3:GetBucketLocation` action is required for a custom S3 bucket only.
+
+</details>
+    
+
+
 
 ## Serverless framework support
 
@@ -164,6 +215,10 @@ Review [Harness Key Concepts](/docs/getting-started/learn-harness-key-concepts)
 * Harness supports ZIP files and Docker image artifacts only.
 	+ ZIP files are supported with JFrog Artifactory.
 	+ Docker images are supported with AWS ECR.
+
+### Containerized step images
+
+Currently, for the containerized Serverless steps Harness provides, the base images Harness provides on Docker Hub have Node version 12.20.0 and Serverless version 3.30.1 installed. These are Linux AMD64 images.
 
 ## Create the Deploy stage
 
@@ -347,11 +402,12 @@ We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate 
    
    ![](./static/serverless-lambda-cd-quickstart-119.png)
 
-## Installing Serverless on the Delegate
 
-Now we need to edit the YAML to install Serverless when the Delegate pods are created.
+### Install Serverless on the delegate
 
-1. Open the Delegate YAML in a text editor.
+For a **non-containerized** execution, you need to edit the YAML to install Serverless when the delegate pods are created.
+
+1. Open the delegate YAML in a text editor.
 2. Locate the Environment variable `INIT_SCRIPT` in the `StatefulSet` (Legacy Delegate) or `Deployment` (Harness Delegate) object:
 	```yaml
 	...  
@@ -395,10 +451,9 @@ Now we need to edit the YAML to install Serverless when the Delegate pods are cr
 	
 	```
 
-In cases when the Delegate OS doesn't support `apt` (Red Hat Linux), you can edit this script to install `npm`. The rest of the code should remain the same. If you are using Harness Delegate, the base image is Red Hat UBI.Save the YAML file as **harness-delegate.yml**.
+In cases when the Delegate OS doesn't support `apt` (Red Hat Linux), you can edit this script to install `npm`. The rest of the code should remain the same. If you are using Harness Delegate, the base image is Red Hat UBI.Save the YAML file as **harness-delegate.yml**.	
    
-
-## Add the artifact
+### Add the artifact
 
 1. Back in **Artifactory Repository**, click **Continue**.
 2. Enter the following artifact settings and click **Submit**. The following image shows how the Artifactory settings correspond to **Artifact Details**.
@@ -589,7 +644,246 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 <figcaption>Figure: Mapped outputs.</figcaption>
 </figure>
 
-## Add a Serverless AWS Lambda Deploy step
+## Containerized steps
+
+This section describes how to set up the stage **Execution** when you are using containerized steps.
+
+### Authentication with AWS
+
+AWS authentication occurs in the Harness AWS connector used in the Infrastructure Definition and when using AWS ECR or S3 for the Harness service artifact.
+
+For infrastructure authentication, when the pipeline stage's containerized steps run, Harness passes the AWS access key (`PLUGIN_AWS_ACCESS_KEY`) and secret key (`PLUGIN_AWS_SECRET_KEY`) you configured in your AWS connector(s) as environment variables into the containers.
+
+The container images pick up the access and secret keys based on these specific environment variables.
+
+For ECR artifacts, Harness passes in the `PLUGINS_ECR_AWS_ACCESS_KEY` and `PLUGINS_ECR_AWS_SECRET_KEY` as environment variables.
+
+For S3 artifacts, Harness passes in the `PLUGIN_S3_AWS_ACCESS_KEY` and `PLUGIN_S3_AWS_SECRET_KEY` as environment variables.
+
+### Step group
+
+Harness adds the step group and steps needed for a deployment automatically when you select the stage execution strategy in the **Execution** section.
+
+To configure the step group, do the following:
+
+1. Open the step group.
+2. In **Kubernetes Cluster**, add a Harness Kubernetes Cluster connector to connect to the cluster where the containers will run.
+3. In **Namespace**, enter an existing namespace in the cluster.
+
+For information on the remaining step group settings, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
+
+#### Harness Docker Registry connector for all steps
+
+In most steps in the containerized step group, you must provide a Harness connector to a container registry and an image for the container step to run.
+
+You can create the connector in the any of the steps and then select it in the other steps, or you can create it separately and select it in all of the steps.
+
+You select the image to use in each step separately.
+
+For steps on adding a Docker Registry connector, go to [Docker Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+
+### Download Manifests step
+
+The Download Manifests Step triggers a Git clone step for each manifest in the Harness service in the **Service** section of the stage.
+
+<details>
+<summary>Example: Log of a Download Manifest step</summary>
+
+```yaml
+[DEBUG] setting default home directory
++ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /harness/iden/.git/
++ git remote add origin https://github.com/**************/manifest.git
++ set +x
++ git fetch --depth=50 origin +refs/heads/main:
+From https://github.com/**************/manifest
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
++ git checkout -b main origin/main
+Switched to a new branch 'main'
+branch 'main' set up to track 'origin/main'.
++ exit 0
+```
+
+</details>
+
+#### Serverless directory path
+
+After the Download Manifest step, you can access the directly where the manifest has been downloaded using the expression `<+serverlessV2.serverlessDirectoryPath>`.
+
+For example, you could add a [Run](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step) or [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step with the following:
+
+```
+cd <+serverlessV2.serverlessDirectoryPath>
+pwd
+exit 1
+```
+
+
+
+### Serverless Prepare Rollback step
+
+The Serverless Prepare Rollback step describes the CloudFormation stack and gets its current state. This information is stored and passed to the Serverless Rollback Step, and used in the case of rollback.
+
+By default, this step is configured to use the Harness image `harnessdev/serverless-preparerollback:1.82.0-latest`, hosted on Docker Hub. You can use another image, hosted in your own Docker registry.
+
+To configure the Serverless Prepare Rollback step, do the following:
+
+1. Open the Serverless Prepare Rollback step.
+2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, the default, `harnessdev/serverless-preparerollback:1.82.0-latest`. 
+
+For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
+
+### Serverless Package step
+
+This step performs the Serverless [package command](https://www.serverless.com/framework/docs/providers/aws/cli-reference/package).
+
+By default, this step is configured to use the Harness image `harnessdev/serverless-package:1.82.0-latest`, hosted on Docker Hub. You can use another image, hosted in your own Docker registry.
+
+To configure the Serverless Package step, do the following:
+
+1. Open the Serverless Package step.
+2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, the default, `harnessdev/serverless-package:1.82.0-latest`. 
+
+For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
+
+<details>
+<summary>Example: Log from the Serverless Package step</summary>
+
+```yaml
+
+Found package.json in directory :
+/harness/iden
+Doing npm install -C /harness/iden
+npm WARN read-shrinkwrap This version of npm is compatible with lockfileVersion@1, but package-lock.json was generated for lockfileVersion@2. I'll try to do my best with it!
+updated 1 package and audited 1 package in 8.694s
+found 0 vulnerabilities
+
+Framework Core: 3.30.1
+Plugin: 6.2.3
+SDK: 4.3.2
+
+Populating manifest with artifact values
+Setting up AWS config credentials..
+
+✔ Profile "default" has been configured
+Config Credential command executed successfully..
+Skipping downloading artifact step as it is not needed..
+Serverless Package Starting..
+
+
+serverless package --stage stage1 --region us-east-1
+
+
+Packaging newcheckstrynew for stage stage1 (us-east-1)
+
+✔ Service packaged (1s)
+Serverless Package Command succeeded
+
+```
+
+</details>
+
+
+### Serverless Deploy step
+
+This step performs the Serverless [deploy command](https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy).
+
+The Serverless stage and AWS region are taken from the Harness Infrastructure Definition configured in the Harness pipeline stage's **Environment** section.
+
+By default, this step is configured to use the Harness image `harnessdev/serverless-deploy:1.82.0-latest`, hosted on Docker Hub. You can use another image, hosted in your own Docker registry.
+
+To configure the Serverless Deploy step, do the following:
+
+1. Open the Serverless Deploy step.
+2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, the default, `harnessdev/serverless-deploy:1.82.0-latest`. 
+
+For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
+
+<details>
+<summary>Example: Log from the Serverless Deploy step</summary>
+
+```yaml
+
+Framework Core: 3.30.1
+Plugin: 6.2.3
+SDK: 4.3.2
+
+Setting up AWS config credentials..
+
+✔ Profile "default" has been configured
+Config Credential command executed successfully..
+Serverless Deployment Starting..
+
+
+serverless deploy --stage stage1 --region us-east-1
+
+
+Deploying newcheckstrynew to stage stage1 (us-east-1)
+
+✔ Service deployed to stack newcheckstrynew-stage1 (104s)
+
+endpoints:
+  GET - https://wfnsukmwh4.execute-api.us-east-1.amazonaws.com/time
+  GET - https://wfnsukmwh4.execute-api.us-east-1.amazonaws.com/time1
+functions:
+  currentTime54: newcheckstrynew-stage1-currentTime54
+  currentTime55: newcheckstrynew-stage1-currentTime55
+Serverless Deployment succeeded
+
+```
+
+</details>
+
+
+### Serverless Rollback Step
+
+Toggle the **Execution**/**Rollback** setting in **Execution** to see the Serverless Rollback step.
+
+The Serverless Rollback step reads the CloudFormation stack name and state generated by the Serverless Prepare Rollback step and performs rollback, if needed.
+
+By default, this step is configured to use the Harness image `harnessdev/serverless-rollback:1.82.0-latest`, hosted on Docker Hub. You can use another image, hosted in your own Docker registry.
+
+To configure the Serverless Rollback step, do the following:
+
+1. Open the Serverless Rollback step.
+2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, the default, `harnessdev/serverless-rollback:1.82.0-latest`. 
+
+For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
+
+### Common settings for all steps
+
+All of the containerized steps include the following settings:
+
+- **Image Pull Policy:** Select an option to set the pull policy for the image:
+  - **Always:** The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
+  - **If Not Present:** The image is pulled only if it is not already present locally.
+- **  Never:** The image is assumed to exist locally. No attempt is made to pull the image.
+- **Privileged:** The standard `privileged` property for Kubernetes `securityContext`.
+  - When this setting is enabled, it grants the container elevated privileges within the underlying host environment. This means that the container has access to all Linux kernel capabilities and devices, similar to running processes outside the container. It effectively removes the isolation provided by the container runtime and can potentially pose security risks if not used carefully.
+- **Environment Variables:** You can inject environment variables into a container and use them in the **Command** script. You must input a **Name** and **Value** for each variable.
+  - You can reference environment variables in the **Command** script by their name. For example, a Bash script would use `$var_name` or `${var_name}`, and a Windows PowerShell script would use `$Env:varName`.
+
+
+## Non-containerized steps
+
+This section describes how to set up the stage **Execution** when you are using non-containerized steps.
+
+### Add a Serverless AWS Lambda Deploy step
 
 In **Execution**, you add the steps that define how Harness deploys your Serverless Lambda service.
 
@@ -797,6 +1091,7 @@ You can see it in the artifact list:
 Here's an example of a serverless.yaml referencing primary and sidecar artifacts:
 
 ```yaml
+
 ...  
 functions:  
   hello:  
@@ -804,6 +1099,7 @@ functions:
   hello1:  
     image: <+artifacts.sidecars.mysidecar>  
 ...
+
 ```
 
 #### Non-container sidecars
@@ -901,4 +1197,5 @@ provider:
 functions:  
   hello:  
     image: <+artifact.image>
+
 ```

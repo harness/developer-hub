@@ -99,4 +99,18 @@ export const PlatformList: CardItem[] = [
     time: "10 min",
     link: "/tutorials/platform/secure-delegate-default-to-minimal",
   },
+  {
+    title: "Manage secrets",
+    module: MODULES.platform,
+    icon: "img/logo.svg",
+    description: (
+      <>
+        Safely store and access sensitive information like API keys and credentials.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/platform/secrets-management",
+  },
 ];

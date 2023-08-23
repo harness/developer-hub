@@ -27,7 +27,7 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 * [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
 * [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
-* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 <CISignupTip />
 
@@ -341,9 +341,9 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
 
 ### Run tests with Test Intelligence
 
-[Test Intelligence](docs/continuous-integration/use-ci/set-up-test-intelligence/) is available for C# (.NET Core), however, it is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+[Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) is available for C# (.NET Core), however, it is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings) to run unit tests with Test Intelligence.
+With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/set-up-test-intelligence/) to run unit tests with Test Intelligence.
 
 ```mdx-code-block
 <Tabs>
@@ -360,7 +360,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
                     buildTool: Dotnet
-                    args: dotnet test --no-build --verbosity normal
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
                     namespaces: aw,fc
                     runOnlySelectedTests: true
                     preCommand: |-
@@ -393,7 +393,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
                     buildTool: Dotnet
-                    args: dotnet test --no-build --verbosity normal
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
                     namespaces: aw,fc
                     runOnlySelectedTests: true
                     preCommand: |-

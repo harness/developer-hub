@@ -19,9 +19,9 @@ See [Notes](#notes) below for details on other ECS deployment settings and behav
 https://harness-1.wistia.com/medias/vtlwxnczyh-->
 <docvideo src="https://harness-1.wistia.com/medias/vtlwxnczyh" />
 
-## Objectives
+## Overview
 
-You'll learn how to:
+In this topic, you'll learn how to:
 
 * Set up AWS IAM and ECS for Harness ECS deployments.
 * Install and register a Harness Delegate for ECS deployments.
@@ -30,43 +30,8 @@ You'll learn how to:
 * Define your ECS container and service specs in Harness.
 * Create and deploy an ECS Rolling deployment.
 
-Once you have the prerequisites set up, the tutorial should only take about 10 minutes.
 
-
-## Set up AWS IAM
-
-Create the Container instance IAM role. If you've used ECS before, you probably already have this set up.
-
-This is usually named **ecsInstanceRole** and it's used in your Task Definitions. For example:  
-
-```yaml
-ipcMode:  
-executionRoleArn: arn:aws:iam::1234567890:role/ecsInstanceRole  
-containerDefinitions:  
-...
-```
-
-Ensure this role exists. See [Amazon ECS Instance Role](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html) from AWS.  
-
-Ensure the role has the `AmazonEC2ContainerServiceforEC2Role` attached.  
-
-Verify that the **Trust Relationship** for the role is configured correctly. For more information, see [How do I troubleshoot the error “ECS was unable to assume the role” when running the Amazon ECS tasks?](https://aws.amazon.com/premiumsupport/knowledge-center/ecs-unable-to-assume-role/) from AWS.  
-
-```json
-{  
-    "Version": "2012-10-17",  
-    "Statement": [  
-        {  
-            "Sid": "",  
-            "Effect": "Allow",  
-            "Principal": {  
-                "Service": "ecs-tasks.amazonaws.com"  
-            },  
-            "Action": "sts:AssumeRole"  
-        }  
-    ]  
-}
-```
+## AWS IAM requirements
 
 Create a custom managed policy for Harness. This policy allows Harness to perform ECS tasks. You will attach it to the IAM User you use to connect Harness with AWS.  
 
@@ -104,76 +69,93 @@ The custom managed policy should have the following permissions:
 }
 ```
 
+<details>
+<summary>Permissions review</summary>
+
+|                   Permission                    |                                                                                                               How does Harness use it?                                                                                                               |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ecr:DescribeRepositories`                        | Lists the ECR images so Harness can fetch an image from ECR and pass the tag details in for deployment with the Task Definition. Harness needs to query the ECR Repos so users can select an image.                                           |
+| `ecs:ListClusters`                                | In the Harness infrastructure definition, when a user passes in an AWS connector and a region, Harness can list the set of ECS clusters in that region via a drop down. Harness also uses this permission when performing instance sync and surfacing up instance data. |
+| `ecs:ListServices`                                | Harness uses this permission to list the set of services that are deployed in the cluster. It helps Harness identify the service Harness deployed.                                                                                                                   |
+| `ecr:ListImages`                                  | Lists the images from the selected ECR repo during artifact selection.                                                                                                                                                                                |
+| `ecs:DescribeServices`                            | Gets details of the services Harness deployed on the cluster to check steady state.                                                                                                                                                             |
+| `ecs:RegisterTaskDefinition`                      | Creates a task definition during deployment.                                                                                                                                                                           |
+| `ecs:CreateService`                               | Creates a service definition in ECS.                                                                                                                                                                                    |
+| `ecs:DescribeTasks`                               | Describes the tasks on the cluster.                                                                                                                                                                                                           |
+| `ecs:ListTasks`                                   | Lists the tasks that have been deployed and capture the revision.                                                                                                                                                      |
+| `ecs:DeleteService`                               | When Harness deploys a new service Harness deletes the older version of service.                                                                                                                                                                            |
+| `ecs:UpdateService`                               | When Harness deploys an ECS service Harness updates the existing service and configures a revision.                                                                                                                                                      |
+| `ecs:DescribeContainerInstances`                  | Harness uses this to surface up the container image information about what container was deployed and show it on the Harness Service Dashboard.                                                                                                                          |
+| `ecs:DescribeTaskDefinition`                      | Describes the Task Definition Harness deployed. Harness collects the revision data for rollback purposes. Harness also uses it to understand the current state of the ECS cluster.                                                                       |
+| `application-autoscaling:DescribeScalableTargets` | Describes the scalable targets Harness deploys with the ECS service. This permission can be removed if the user doesn’t leverage scalable targets.                                                                                                      |
+| `application-autoscaling:DescribeScalingPolicies` | Describes the scaling policies associated with the deployed ECS service. This permission can be removed if the user doesn’t leverage scaling policies.                                                                                            |
+| `iam:ListRoles`                                   | Lists roles. Harness uses the role associated with the Harness connector for deployment.                                                                                                                                                                     |
+| `iam:PassRole`                                    | Harness passes the role with the ECS deployment.                                                                                                                                                                                                          |
+
+</details>
+
+
+
 When you do your own deployments, you might need additional permissions added to this policy. It depends on your Task Definition. Alternately, you can use [AmazonECS\_FullAccess](https://docs.amazonaws.cn/en_us/AmazonECS/latest/developerguide/security-iam-awsmanpol.html).
 
-Create or edit an IAM user and attach the following policies in **Permissions**:
-
-1. The custom managed policy you create above. In this example, we'll name this policy **HarnessECS**.
-2. **AmazonEC2ContainerServiceRole** (`arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceRole`)
-3. **AmazonEC2ContainerServiceforEC2Role** (`arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role`)  
-	  
-	When you're done, the IAM User Permissions should look like this:![](./static/ecs-deployment-tutorial-36.png)
-4. Generate an access key for the IAM user for connecting Harness to AWS ECS. In the IAM User, click **Security credentials** and then in **Access keys** create and save the key. You will use the Access key ID and Secret access key in the Harness AWS Connector later.
+1. Create or edit an IAM user and attach the custom managed policy you create above. In this example, we'll name this policy **HarnessECS**.
+2. Generate an access key for the IAM user for connecting Harness to AWS ECS. In the IAM User, click **Security credentials** and then in **Access keys** create and save the key. You will use the Access key ID and Secret access key in the Harness AWS connector later.
 
 Now that you have all the AWS credentials configured, you can create or select an ECS cluster to use for your deployment.
 
 ## Set up your ECS cluster
 
-Create the target cluster for this tutorial.
+Next, let's define the target cluster.
 
 The cluster must meet the following specs:
 
 * EC2 Linux + Networking cluster.
 * The ECS Cluster must have a minimum of 8GB memory for the Delegate. A m5.xlarge minimum is suggested.
 * 2 registered container instances.
-* The standard **ecsInstance** role for the **Container instance IAM role** (described above).
-
-![](./static/ecs-deployment-tutorial-37.png)
+* The custom role described above.
 
 You will select this cluster later when your define the target Infrastructure Definition for the CD stage in your Harness Pipeline.
 
-### Install and register the Harness Delegate
+### Install and register the Harness delegate
 
-The Harness Delegate is a software service you install in your environment. It connects to the Harness Manager and performs ECS tasks. You can install the Delegate anywhere that has connectivity to your AWS account, even locally on you computer.
+The Harness delegate is a software service you install in your environment. It connects to the Harness Manager and performs ECS tasks. You can install the delegate anywhere that has connectivity to your AWS account, even locally on your computer.
 
-If you're new to Harness, read [Harness Platform architecture](/docs/getting-started/harness-platform-architecture) to learn about how Harness uses a Delegate to perform deployment tasks.
+If you're new to Harness, read [Harness Platform architecture](/docs/getting-started/harness-platform-architecture) to learn about how Harness uses a delegate to perform deployment tasks.
 
-1. Follow the steps here to install a Harness Delegate:
-	1. [Install a Docker Delegate](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
-	2. [Install Harness Delegate on Kubernetes](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
+1. Follow the steps in [Delegate installation overview](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview) to install a Harness delegate.
 
-When you are done setting up the Delegate and it has registered with Harness, you'll see the Delegate's tags on the Delegates list page:
+When you are done setting up the delegate and it has registered with Harness, you'll see the delegate's tags on the delegates list page:
 
 ![](./static/ecs-deployment-tutorial-38.png)
 
-Take note of that tag name. You will use it in your Harness AWS Connector and ECS Rolling Deploy step later in this tutorial to ensure that Harness uses that Delegate when performing deployments.
+Take note of that tag name. You will use it in your Harness AWS connector and ECS Rolling Deploy step to ensure that Harness uses that delegate when performing deployments.
 
 ## Create the Harness ECS pipeline
 
 1. In your Harness Project, click **Deployments**.
 2. Click **Pipelines**, and then click **Create a Pipeline**.
-3. Enter the name **ECS Tutorial** for the Pipeline and then click **Start**.
+3. Enter a name for the Pipeline and then click **Start**.
 4. Click **Add Stage**.
 5. Click **Deploy**.
-6. In **Stage Name**, enter **ECS Tutorial**.
+6. In **Stage Name**, enter a name.
 7. In **Deployment Type**, click **Amazon ECS**, and then click **Set Up Stage**.
 
 Here's a quick summary:
 
 ![](./static/ecs-deployment-tutorial-39.png)
 
-The new stage is created. Next, we'll add a Harness Service to represent the app you're deploying, and configure the Service with the ECS Task Definition, Service Definition, and artifact for deployment.
+The new stage is created. Next, you add a Harness service to represent the app you're deploying, and configure the service with the ECS Task Definition, Service Definition, and artifact for deployment.
 
 ## Add the Harness service
 
-A Harness Service represents the app you are deploying. It contains any supporting files and the artifact image.
+A Harness service represents the app you are deploying. It contains any supporting files and the artifact image.
 
-For more information about Services, see [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
+For more information about services, see [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 1. In **Service**, click **New Service**.
-2. In **Name**, enter **ECS Tutorial**.
+2. In **Name**, enter a name.
 
-You can see that an ECS Service contains the following:
+You can see that an ECS service contains the following:
 
 * Task Definition
 * Service Definition
@@ -181,7 +163,7 @@ You can see that an ECS Service contains the following:
 * Scaling Policy (Optional)
 * Artifacts
 
-For this tutorial, we'll set up the Task Definition, Service Definition, and Artifacts.
+For this example, we'll set up the Task Definition, Service Definition, and Artifacts.
 
 ## Add the task definition
 
@@ -203,30 +185,30 @@ When a task definition ARN is provided instead of a task definition spec, a forc
 
 If you are new to ECS, review the AWS documentation on [ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html).
 
-Let's look at an example using a task definition file in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/).
+Let's look at an example using a task definition file in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
 1. In **Task Definition**, click **Add Task Definition**.  
   You specify what Task Definition to use in the **ECS Task Definition Store**.
 
   ![](./static/ecs-deployment-tutorial-40.png)
 
-  You can use a remote repo, but for this tutorial we'll use the built-in Harness file manager, [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/).
+  You can use a remote repo, but for this example we'll use the built-in Harness file manager, [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 2. Select **Harness**, and then select **Continue**.
 3. In **Task Definition**, select **Add Task Definition**.
 4. In **Specify ECS Task Definition Store**, select **Harness**, and select **Continue**.
 5. In **Manifest Details**, enter a name for the task definition.
 6. In **File/Folder Path**, select **Select**. The Harness File Store appears.
-7. Create a new folder named **ECS Tutorial**.
+7. Create a new folder.
 8. In the new folder, create a new file named **RegisterTaskDefinitionRequest.yaml**.
 9. Paste the following Task Definition into the file, select **Save**, and then select **Apply Selected**.
-   1. Replace the two `<ecsInstanceRole Role ARN>` with the ARN for the **ecsInstanceRole** used for your cluster. See [Amazon ECS Instance Role](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html) from AWS. 
+   1. Replace the two `<Role ARN>` with the ARN for the **ecsInstanceRole** used for your cluster. See [Amazon ECS Instance Role](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html) from AWS. 
    2. When you are done, in **Manifest Details**, select **Submit**. 
 
 JSON Example:
 ```json
 {  
    "ipcMode": null,  
-   "executionRoleArn": "<ecsInstanceRole Role ARN>",  
+   "executionRoleArn": "<Role ARN>",  
    "containerDefinitions": [  
        {  
            "dnsSearchDomains": null,  
@@ -254,7 +236,7 @@ JSON Example:
            "memoryReservation": 128,  
            "volumesFrom": [],  
            "stopTimeout": null,  
-           "image": "<+artifact.image>",  
+           "image": "<+primary.artifact.image>",  
            "startTimeout": null,  
            "firelensConfiguration": null,  
            "dependsOn": null,  
@@ -276,7 +258,7 @@ JSON Example:
    ],  
    "placementConstraints": [],  
    "memory": "512",  
-   "taskRoleArn": "<ecsInstanceRole Role ARN>",  
+   "taskRoleArn": "<Role ARN>",  
    "family": "fargate-task-definition",  
    "pidMode": null,  
    "requiresCompatibilities": [  
@@ -293,7 +275,7 @@ JSON Example:
 YAML Example:
 ```yaml
 ipcMode:  
-executionRoleArn: <ecsInstanceRole Role ARN>  
+executionRoleArn: <Role ARN>  
 containerDefinitions:  
 - dnsSearchDomains:  
  environmentFiles:  
@@ -317,7 +299,7 @@ containerDefinitions:
  memoryReservation: 128  
  volumesFrom: []  
  stopTimeout:  
- image: <+artifact.image>  
+ image: <+primary.artifact.image>  
  startTimeout:  
  firelensConfiguration:  
  dependsOn:  
@@ -337,7 +319,7 @@ containerDefinitions:
  name: nginx  
 placementConstraints: []  
 memory: '512'  
-taskRoleArn: <ecsInstanceRole Role ARN>  
+taskRoleArn: <Role ARN>  
 family: fargate-task-definition  
 pidMode:  
 requiresCompatibilities:  
@@ -350,17 +332,17 @@ proxyConfiguration:
 volumes: []
 ```
 
-The `image: <+artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables) for the value that resolves to an image name at runtime. For this tutorial, we will use `image: <+artifact.image>` and an artifact.
+The `image: <+primary.artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+primary.artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](https://developer.harness.io/docs/platform/Variables-and-Expressions/harness-variables) for the value that resolves to an image name at runtime. For this example, we will use `image: <+primary.artifact.image>` and an artifact.
 
 The Task Definition is added to the Service.
 
 ![](./static/ecs-deployment-tutorial-41.png)
 
-## Add the Service Definition
+## Add the Service definition
 
 :::note
 
-Ensure that the Service Definition `services` array (`{"services": []}`) is removed from the Service Definition you use in Harness. When you copy a Service Definition from ECS the `services` array is typically included.
+Ensure that the Service Definition `services` array (`{"services": []}`) is removed from the Service Definition you use in Harness. When you copy a Service Definition from ECS, the `services` array is typically included.
 
 :::
 
@@ -372,7 +354,7 @@ If you are new to ECS, please review the AWS documentation on [ECS Service Defin
 2. In **Specify ECS Service Definition Store**, click **Harness**, and click **Continue**.
 3. In **Manifest Name**, enter **Service Definition**.
 4. In **File/Folder Path**, click **Select**.
-5. In the same **ECS Tutorial** folder you used earlier, add a file named **CreateServiceRequest.yaml** and paste in the following YAML, then click **Save**, and then click **Apply Selected**:
+5. In the same folder you used earlier, add a file named **CreateServiceRequest.yaml** and paste in the following YAML, then click **Save**, and then click **Apply Selected**:
 
 Replace `<Security Group Id>` and `<Subnet Id>` with the Ids from the ECS instances for your target ECS cluster.
 
@@ -442,17 +424,18 @@ Next, we'll add the Docker image artifact for deployment.
 8. Click **Save and Continue**.
 9. After the test, click **Finish**.
 10. Back in **Docker Registry Repository**, click **Continue**.
-11. In **Artifact Details**, for **Image path**, enter `library/nginx`.
+11. In **Artifact Details**, for **Image path**, enter the image path, such as `library/nginx`.
 12. For **Tag**, change the setting to a **Fixed value**.
 
     ![](./static/ecs-deployment-tutorial-44.png)
-13. Select **perl**.
+13. For example, select **perl**.
 
     ![](./static/ecs-deployment-tutorial-45.png)
 
 1.  Click **Submit**. The artifact is now added to the Service.
 2.  Click **Save**. The Service is now added to the stage.
-  ![](./static/ecs-deployment-tutorial-46.png)
+  
+  ![](./static/ecs-deployment-tutorial-46.png)  
 1. Click **Continue** to add the target ECS cluster.
 
 ## Define the infrastructure
@@ -474,20 +457,20 @@ In the **Environment** section of the stage you define the target ECS cluster fo
 
 1. In **Specify Environment**, click **New Environment**.
 2. In **New Environment**, enter the following:
-	1. Name: **ECS Tutorial**.
-	2. Environment Type: **Pre-Production**.
+	1. A name.
+	2. Environment type.
 3. Click **Save**.
 4. In **Specify Infrastructure**, click **New Infrastructure**.
-5. In **Create New Infrastructure**, in **Name**, enter **ECS Tutorial**.
+5. In **Create New Infrastructure**, in **Name**, enter a name.
 6. For **Cluster Details**, see the following sections.
 
 #### Connector
 
-We'll create a Harness AWS Connector to connect to your AWS account using the IAM User you configured earlier in [Set up AWS IAM](#set-up-aws-iam).
+Create a Harness AWS Connector to connect to your AWS account using the IAM User you configured earlier in [AWS IAM requirements](##aws-iam-requirements).
 
 1. In **Connector**, click **Select Connector**.
 2. In **Create or Select an Existing Connector**, click **New Connector**.
-3. In **AWS Cloud Provider**, in **Name**, enter **ECS Tutorial**, and click **Continue**.
+3. In **AWS Cloud Provider**, in **Name**, enter  a name, and click **Continue**.
 4. In Credentials, enter the following and click **Continue**:
 	1. Select **AWS Access Key**.
 	2. **Access Key:** enter the IAM User access key.
@@ -636,8 +619,6 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 
 1. In **Execution Strategies**, click **Rolling**, and click **Use Strategy**.
 
-![](./static/ecs-deployment-tutorial-48.png)
-
 The **ECS Rolling Deploy** step is added automatically.
 
 Now you're ready to deploy.
@@ -735,7 +716,7 @@ You can copy any of these and use them in later steps in your pipeline.
 
 Congratulations. You successfully deployed an ECS service using Harness.
 
-In this tutorial, you learned how to:
+In this example, you learned how to:
 
 * Set up AWS IAM and ECS for Harness ECS deployments.
 * Install and register a Harness Delegate for ECS deployments.
@@ -1016,7 +997,7 @@ containerDefinitions:
   memoryReservation: 128  
   volumesFrom: []  
   stopTimeout:  
-  image: <+artifact.image>  
+  image: <+primary.artifact.image>  
   startTimeout:  
   firelensConfiguration:  
   dependsOn:  
@@ -1049,7 +1030,7 @@ proxyConfiguration:
 volumes: []
 ```
 
-The `image: <+artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables) for the value that resolves to an image name at runtime.ECS Service Definition:
+The `image: <+primary.artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+primary.artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables) for the value that resolves to an image name at runtime.ECS Service Definition:
 
 Replace `<Security Group Id>` and `<Subnet Id>` with the Ids from the ECS instances for your target ECS cluster.
 
@@ -1213,7 +1194,7 @@ For more information, see [Running tasks](https://docs.aws.amazon.com/AmazonECS
     memoryReservation: 128  
     volumesFrom: []  
     stopTimeout:  
-    image: <+artifact.image>  
+    image: <+primary.artifact.image>  
     startTimeout:  
     firelensConfiguration:  
     dependsOn:  
@@ -1369,4 +1350,19 @@ See the `deployment-configuration` setting in the following example:
 Harness deploys the tasks in the above ECS service definition containing the circuit breaker configuration. Once deployed, the circuit breaker is activated. 
 
 During failure scenarios, ECS circuit breaker performs a rollback automatically based on the threshold configuration.
+
+
+### Overrides
+
+Harness supports Harness ECS service configuration overrides to assist in managing different ECS configuration files for different environments, infrastrctures, etc. With overrides, you can override the service configuration and Harness will fetch the file and compute the variables at runtime when the service is deployed into a given environment, infrastructure definition pair.
+
+You can override the:
+
+- Task definition
+- Service definition
+- Scaling policy
+- Scalable target
+
+These overrides can be configured at the Harness environment's service-specific override level, as well as at the environment infrastructure definition level. 
+
 

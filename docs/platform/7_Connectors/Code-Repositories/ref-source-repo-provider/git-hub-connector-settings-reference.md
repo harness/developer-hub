@@ -45,7 +45,7 @@ import TabItem from '@theme/TabItem';
 
 In the **GitHub Account URL** field, provide only the account-identifying portion of the GitHub URL, such as `https://github.com/YOUR_ACCOUNT_NAME/`. Do not include a repo name. The URL format depends on the **Connection Type**:
 
-* **HTTP:** `https://github.com/YOUR_ACCOUNT_NAME/`
+* **HTTP:** `https://github.com/YOUR_ACCOUNT_NAME/` or `https://github.com`
 * **SSH:** `git@github.com:YOUR_ACCOUNT_NAME/`
 
 ### Test Repository
@@ -205,7 +205,7 @@ The [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/
 
 This setting is only available for connection types and authentication methods where it is not already enabled by default.
 
-You must enable API access to use Git-based triggers, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required.
+API access is required for any operations that require Harness to call GitHub APIs, such as using the Harness Git Experience, cloning codebases, automatically detecting branch names when you manually run pipelines, using Git webhook triggers, and updating Git statuses.
 
 Enabling API access requires configuring an API authentication method, either a personal access token or a GitHub App.
 

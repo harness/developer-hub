@@ -126,7 +126,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 ### AWS secret
     
 1. Select **New Secret**, and then select **Text**.
-2. Enter the secret name `aws_access_key`.
+2. Enter the secret name `awssecret`.
 3. For the secret value, paste the access token for your AWS user account. The Harness delegate uses this credential to authenticate Harness with AWS at deployment runtime.
 4. Select **Save**.
 
@@ -424,7 +424,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     4. Select **Save**.
 2. Under **Project Setup**, select **Secrets**.
     1. Select **New Secret**, and then select **Text**.
-    2. Enter the secret name `aws_permanent_access_key`.
+    2. Enter the secret name `awssecret`.
     3. For the secret value, add the AWS [Secret access key](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html).
     4. Select **Save**.
 
