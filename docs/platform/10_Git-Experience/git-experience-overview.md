@@ -35,7 +35,7 @@ The following section lists the support for Git providers for Harness Git Sync:â
 Make sure `feature.file.editor` is not set to `false` in the `bitbucket.properties` file if you are using Bitbucket on-prem.
 
 :::info note
-Git Sync may be noticeably delayed if your delegate is in a Kubernetes or AWS build farm rather than your Harness cloud because of encryption and decryption across two connections.
+Git Sync may be noticeably delayed if your delegate is in a Kubernetes or AWS build farm rather than Harness Cloud because of encryption and decryption across two connections.
 :::
 
 ### Supported Harness entities
