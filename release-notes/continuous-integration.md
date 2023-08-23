@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-08-23T10:00:10
+date: 2023-08-24T10:00:10
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -18,16 +18,15 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-<!-- Improved support for `DRONE_` environment variables /docs/continuous-integration/use-ci/optimize-and-more/ci-env-var in CI pipelines. This improves compatibility for plugins /docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)-->
+## Latest: Version 5407
 
-## Latest: Version 54xx
-
-<!-- Aug 23 2023 -->
+<!-- Aug 24 2023 -->
 
 ### New features and enhancements
 
-This release does not include new features or enhancements.
+Improved support for `DRONE_` environment variables in CI pipelines. This improves compatibility for [plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)
 
+<!-- /docs/continuous-integration/use-ci/optimize-and-more/ci-env-var-->
 ### Early access features
 
 **GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
