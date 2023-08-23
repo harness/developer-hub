@@ -220,32 +220,6 @@ module.exports = {
       to: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
     },
 
-    // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
-    {
-      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
-      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines",
-    },
-    {
-      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts",
-      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts",
-    },
-    {
-      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
-    },
-    {
-      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances",
-      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/run-a-script-on-multiple-target-instances",
-    },
-    {
-      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/wait-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/wait-step",
-    },
-    {
-      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/container-step",
-    },
-
     // Created by schoudhury on July 16, 2023
     {
       from: "/tutorials/internal-developer-portal/create-your-first-service-onboarding-pipeline",
