@@ -105,7 +105,7 @@ spec:
 
 ## Workflow description
 
-This workflow applies to all [supported build infrastructures](/docs/security-testing-orchestration/whats-supported). It also applies to STO on Saas as well as Harness Self-Managed Platform.
+This workflow applies to all [supported build infrastructures](/docs/security-testing-orchestration/whats-supported). It also applies to STO on SaaS, as well as Harness Self-Managed Platform.
 
 1. For each artifact that contains sensitive information, such as an SSL certificate, create a Harness secret.
 
