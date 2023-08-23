@@ -1309,7 +1309,7 @@ repeat:
 ```
 ![](./static/harness-variables-48.png)
 
-For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/run-a-script-on-multiple-target-instances).
+For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances).
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
