@@ -1,7 +1,7 @@
 ---
 title: Use self-signed certificates with Helm-based installations
 sidebar_label: Use self-signed certificates
-description: Learn how to modify the delegate truststore to generate self-signed certificates.
+description: Learn how to modify the delegate truststore to generate self-signed certificates for on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 2
 helpdocs_topic_id: h0yo0jwuo9
 helpdocs_category_id: 75ydek1suj
@@ -13,9 +13,9 @@ helpdocs_is_published: true
 Applies to Helm-based installation only.
 :::
 
-Harness Self-Managed Enterprise Edition supports authorization by self-signed certificate. This document explains how to modify the delegate truststore for the use of self-signed certificates in the self-managed environment. 
+Harness Self-Managed Enterprise Edition supports authorization by self-signed certificate. This topic explains how to modify the delegate truststore for the use of self-signed certificates in the self-managed environment. 
 
-Harness Delegate makes outbound connections to the resources you specify—for example, artifact servers and verification providers. These services typically use public certificates that are included in the operating system or the JRE. You must add the self-signed certificates that you use to the delegate. The process that this document describes is supported for use with the legacy delegate in combination with the Harness CD, CI, and STO modules. 
+Harness Delegate makes outbound connections to the resources you specify—for example, artifact servers and verification providers. These services typically use public certificates that are included in the operating system or the JRE. You must add the self-signed certificates that you use to the delegate. The process that this topic describes is supported for use with the legacy delegate in combination with the Harness CD, CI, and STO modules. 
 
 **IMPORTANT**
 
