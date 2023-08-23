@@ -47,7 +47,7 @@ import TabItem from '@theme/TabItem';
 
 In the **GitLab Account URL** field, provide only the account-identifying portion of the GitLab URL, such as `https://gitlab.com/YOUR_ACCOUNT_NAME/`. Do not include a repo name. The URL format depends on the **Connection Type**:
 
-* **HTTP:** `https://gitlab.com/YOUR_ACCOUNT_NAME/`
+* **HTTP:** `https://gitlab.com/YOUR_ACCOUNT_NAME/` or `https//gitlab.com`
 * **SSH:** `git@gitlab.com:YOUR_ACCOUNT_NAME/`
 
 ### Test Repository

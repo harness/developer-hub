@@ -50,16 +50,22 @@ The URL format depends on the **Connection Type** and your Bitbucket account typ
 
 | Connection Type | Bitbucket Cloud | Bitbucket Data Center (On-Prem) |
 | --------------- | --------------- | ------------------------------- |
-| HTTP | `https://bitbucket.org/<username>/` | `https://bitbucket.<your-org-hostname>/scm/` |
-| SSH | `git@bitbucket.org:<username>/` | `git@bitbucket.<your-org-hostname>/` |
+| HTTP | `https://bitbucket.org/USERNAME/` or `https://bitbucket.org` | `https://bitbucket.YOUR_ORG_HOSTNAME/scm/` |
+| SSH | `git@bitbucket.org:USERNAME/` | `git@bitbucket.YOUR_ORG_HOSTNAME/` |
 
-Here is an example of the **Details** settings for a Bitbucket Cloud account URL in HTTP and SSH formats:
+<figure>
 
-![Bitbucket Account URL field with a Bitbucket Cloud account HTTPS URL](./static/bitbucket-account-http-cloud-url.png)
+![](./static/bitbucket-account-http-cloud-url.png)
 
-Here is an example of the **Details** settings for a Bitbucket Data Center URL in HTTP and SSH formats:
+<figcaption>HTTP and SSH examples of Bitbucket Cloud account URLs.</figcaption>
+</figure>
 
-![Bitbucket Account URL field with a Bitbucket Data Center HTTPS URL](./static/bitbucket-account-http-onprem-url.png)
+<figure>
+
+![](./static/bitbucket-account-http-onprem-url.png)
+
+<figcaption>HTTP and SSH examples of Bitbucket Data Center account URLs.</figcaption>
+</figure>
 
 ```mdx-code-block
   </TabItem>
@@ -75,13 +81,19 @@ The URL format depends on the **Connection Type** and your Bitbucket account typ
 | HTTP | `https://bitbucket.org/<username>/<repo-name>.git` | `https://bitbucket.<your-org-hostname>/scm/<project-id>/<repo-name>.git` |
 | SSH | `git@bitbucket.org:<username>/<repo-name>.git` | `git@bitbucket.<your-org-hostname>/<project-id>/<repo-name>.git` |
 
-Here is an example of the **Details** for a Bitbucket Cloud repository URL in SSH format:
+<figure>
 
-![Bitbucket Repository URL field with a Bitbucket Cloud SSH URL](./static/bitbucket-repo-ssh-cloud-url.png)
+![](./static/bitbucket-repo-ssh-cloud-url.png)
 
-Here is an example of the **Details** for a Bitbucket Data Center repository URL in HTTP format:
+<figcaption>SSH example of a Bitbucket Cloud repository URL.</figcaption>
+</figure>
 
-![Bitbucket Repository URL field with a Bitbucket Data Center HTTPS URL](./static/bitbucket-repo-http-onprem-url.png)
+<figure>
+
+![](./static/bitbucket-repo-http-onprem-url.png)
+
+<figcaption>HTTP example of a Bitbucket Data Center repository URL.</figcaption>
+</figure>
 
 ```mdx-code-block
   </TabItem>
