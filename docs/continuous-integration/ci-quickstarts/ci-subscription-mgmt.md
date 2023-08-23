@@ -102,7 +102,7 @@ Based on the values in the table above:
 
 All plans receive 2000 free credits every month. These credits can be consumed by all users within the account registered to run builds on Harness Cloud. Any free credits that are unused at the end of the month expire automatically and do not roll over from one month to the next.
 
-Customers on paid (**Team** or **Enterprise**) plans have the option to purchase extra credits, via credit packages. These purchased credits can be rolled over from one month to the next, but generally expire one year from the date the credit package was originally purchased, or, if you are a Customer who has signed an Order Form with Harness, the credits expire on the date stated on your Order Form.
+Customers on paid (**Team** or **Enterprise**) plans have the option to purchase extra credits, via credit packages. These purchased credits can be rolled over from one month to the next, but generally expire one year from the date the credit package was originally purchased, or, if you have signed an Order Form with Harness, the credits expire on the date stated on your Order Form.
 
 For more information, go to [Credit overages (overuse)](#credit-overages-overuse).
 
@@ -152,7 +152,7 @@ To allow you to continually execute your builds, Harness will allow you to conti
 
 Harness reserves the right to automatically suspend your access to Harness Cloud and suspend all Harness Cloud builds if you do not promptly pay for all credits utilized by your account.
 
-In order to restore your access to Harness Cloud and continue executing Harness Cloud builds, you must complete payment for your additional usage, and you must also purchase enough additional credits to cover all the Harness Cloud builds you intend to execute during the remainder of your License Term.
+To restore your access to Harness Cloud and continue executing Harness Cloud builds, you must complete payment for your additional usage, and you must also purchase enough additional credits to cover all the Harness Cloud builds you intend to execute during the remainder of your License Term.
 
 Harness will invoice you for charges due, and all amounts are due in full within 30 days of the invoice date.
 
