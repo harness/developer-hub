@@ -576,4 +576,8 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
 </Tabs>
 ```
 
+
+:::important note
+Harness does not currently support AWS China regions.
+:::
 For a comprehensive list of supported features in other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).

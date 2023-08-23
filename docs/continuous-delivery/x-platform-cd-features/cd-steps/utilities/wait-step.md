@@ -1,6 +1,6 @@
 ---
-title: Pausing pipeline execution using the Wait step
-description: This topic shows you how to use the Wait step to pause a pipeline execution for any amount of time.
+title: Wait step
+description: Pause pipeline execution using the Wait step.
 sidebar_position: 5
 ---
 
@@ -26,7 +26,7 @@ The Wait step is available in approval, custom, CD, and feature Flag stages. You
 2. Enter a name for the step.
 3. In **Duration**, enter how long the Wait step should run. Once the timeout occurs, the pipeline execution proceeds.  
 When the Wait step runs, the duration is displayed in its **Details**.  
-![](./static/wait-step-27.png)
+![](../cd-general-steps/static/wait-step-27.png)
 4. Select **Apply Changes**.
 
 ### Duration
@@ -54,13 +54,13 @@ For information, go to [fixed values, runtime inputs, and expressions](/docs/pla
 
 When the Wait step is running, it provides **Mark as Success** and **Mark as Failed** options. **Mark as Success** ends the wait period and proceeds with the execution. **Mark as Failed** initiates the failure strategy for the step or stage.
 
-![](./static/wait-step-28.png)
+![](../cd-general-steps/static/wait-step-28.png)
 
 For information on failure strategies, go to [define a failure strategy on stages and steps](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
 
 For example, let's say a Wait step has the failure strategy **Manual Intervention**. When the user selects **Mark as Failed**, they are prompted with the **Manual Intervention** options:
 
-![](./static/wait-step-29.png)
+![](../cd-general-steps/static/wait-step-29.png)
 
 If no failure strategy is set at the step or stage level, then selecting **Mark as Failed** simply fails the pipeline execution at the Wait step.
 

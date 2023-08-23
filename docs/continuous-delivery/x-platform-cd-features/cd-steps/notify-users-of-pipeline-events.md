@@ -1,7 +1,7 @@
 ---
 title: Add a pipeline notification strategy
 description: Notify users of different pipeline events.
-sidebar_position: 300
+sidebar_position: 3
 ---
 
 This topic describes how to notify users of different pipeline events using popular notification methods.

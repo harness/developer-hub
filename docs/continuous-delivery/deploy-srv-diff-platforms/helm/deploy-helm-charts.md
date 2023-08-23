@@ -508,7 +508,7 @@ Each service hook has its own context variable:
 | Manifest template | `$MANIFEST_FILES_DIRECTORY`: The path to the directory where the original Kubernetes template is located. <br />`$MANIFEST_FILE_OUTPUT_PATH`: The path to the final `manifest.yaml` file. |
 | Steady state check | `$WORKLOADS_LIST`: The comma separated list of all workloads. <br />`$MANAGED_WORKLOADS`: The comma separated list of workloads managed by Harness. <br />`$CUSTOM_WORKLOADS`: The comma separated list of custom workloads. |
 
-You can use service hooks to run additional configurations when carrying out the actions above. For example, when you run a deployment, you must fetch files first. After fetching the files, you can resolve the secrets of those encrypted files using Helm secrets, SOPS, AGE keys, and so on. You can use the context variables above during deployment. For more details, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts).
+You can use service hooks to run additional configurations when carrying out the actions above. For example, when you run a deployment, you must fetch files first. After fetching the files, you can resolve the secrets of those encrypted files using Helm secrets, SOPS, AGE keys, and so on. You can use the context variables above during deployment. For more details, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
 
 Here are some sample service hook YAMLs: 
 

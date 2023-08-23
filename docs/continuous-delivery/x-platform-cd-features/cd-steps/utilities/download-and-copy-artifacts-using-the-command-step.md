@@ -1,6 +1,6 @@
 ---
-title: Use the Command step to download or copy artifacts and configs, or run scripts
-description: This topic show you how to use the Command step in SSH and WinRM deployments to run commands on one or more target hosts.
+title: Command step
+description: Run commands on hosts in SSH and WinRM deployments.
 sidebar_position: 3
 ---
 
@@ -18,7 +18,7 @@ Let's review the details of the Command step.
 
 The Command step can be added to SSH, WinRM, and deployment template deployment types.
 
-![](./static/download-and-copy-artifacts-using-the-command-step-05.png)
+![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-05.png)
 
 ### SSH and WinRM
 
@@ -52,7 +52,7 @@ repeat:
   items: <+stage.output.hosts>
 ```
 
-![](./static/download-and-copy-artifacts-using-the-command-step-06.png)
+![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-06.png)
 
 For the download artifact and copy the artifact/config commands, you do not need the looping strategy. These commands should be run once on the delegate. These commands will download the artifact and copy the artifact/config to the delegate only, not the target hosts.
 
@@ -84,7 +84,7 @@ The delegate must have network connectivity to the artifact server and target ho
 
 Here is the difference in how Harness performs a copy and download.
 
-![](./static/download-and-copy-artifacts-using-the-command-step-07.png)
+![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-07.png)
 
 ## Add the Command step
 
@@ -96,7 +96,7 @@ The Command step can be added to SSH, WinRM, and deployment template deployment 
 4. In **Timeout**, enter how long Harness should wait before failing this step and initiating the [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
 5. In **Run the following commands**, select **Add Command**.
 
-   ![](./static/download-and-copy-artifacts-using-the-command-step-08.png)
+   ![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-08.png)
 
 6. Name the command and then select the **Command Type**.
 
@@ -108,7 +108,7 @@ The deployment artifact for the stage is set in the Service of the stage.
 
 Using the **Download** command type, you can download the deployment artifact onto the target hosts of the deployment.
 
-![](./static/download-and-copy-artifacts-using-the-command-step-09.png)
+![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-09.png)
 
 You can set where you want to download the artifact in **Destination Path**.
 
@@ -128,7 +128,7 @@ You can use any path on the target hosts you want. Harness will not create the p
 
 Here's an example of the results of a download command:
 
-![](./static/download-and-copy-artifacts-using-the-command-step-10.png)
+![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-10.png)
 
 **Deployment Templates:** to run the download command on the target hosts, add the command after the Fetch Instances step. Go to [looping strategy and target hosts](#looping-strategy-and-target-hosts) below for more information
 
@@ -161,11 +161,11 @@ Using the **Copy** command type, you can copy the deployment artifact onto the t
 
 The deployment config file(s) for the stage is set in the service definition **Config Files** section.
 
-![](./static/download-and-copy-artifacts-using-the-command-step-11.png)
+![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-11.png)
 
 1. In **Select file type to copy**, select **Artifact** or **Config**.
 
-![](./static/download-and-copy-artifacts-using-the-command-step-12.png)
+![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-12.png)
 
 You can set where you want to download the artifact in **Destination Path**.
 
@@ -179,17 +179,17 @@ You can use any path on the target hosts you want. Harness will not create the p
 
 Here's an example of the results of a copy artifact command:
 
-![](./static/download-and-copy-artifacts-using-the-command-step-13.png)
+![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-13.png)
 
 Here's an example of the results of a copy config command:
 
-![](./static/download-and-copy-artifacts-using-the-command-step-14.png)
+![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-14.png)
 
 **Deployment Templates:** to run the download command on the target hosts, add the command after the Fetch Instances step. Go to [looping strategy and target hosts](#looping-strategy-and-target-hosts) below for more information.
 
 ## Use a script
 
-You can run a script on all of the target hosts. This is the same as the [shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step.
+You can run a script on all of the target hosts. This is the same as the [shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step.
 
 1. In **Working Directory**, enter the working directory on the target host(s) from which the Harness Delegate will run the script, such as **/tmp** on Linux and **%TEMP%** on Windows. By default, if **Working Directory** is left empty, the script is executed in the home directory.
 2. In **Select script location**, select [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) or **Inline**.
@@ -210,7 +210,7 @@ You can run a script on all of the target hosts. This is the same as the [shell 
 
 	Here's an example of an executed script command:
 
-	![](./static/download-and-copy-artifacts-using-the-command-step-15.png)
+	![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-15.png)
 4. Use **Files and Patterns** to tail files and use the results in your script. For example, check logs and see if a process started successfully and, if so, exit the script.  
 You specify the file to tail, such as `auth.log`, and the pattern to search (grep filter), such as `198.51.100.1` and then in your script you perform an action when the tail output is matched.
 5. For **File to Tail**, enter the name of a file in the Working Directory to tail, such as a log file.
@@ -287,11 +287,11 @@ repeat:
   items: <+stage.output.hosts>
 ```
 
-![](./static/download-and-copy-artifacts-using-the-command-step-16.png)
+![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-16.png)
 
 When you run the pipeline, you will see the Command step run on each host. For example, here is an SSH deployment where download, copy artifact, and copy config Command steps are run using the looping strategy:
 
-![](./static/download-and-copy-artifacts-using-the-command-step-17.png)
+![](../cd-general-steps/static/download-and-copy-artifacts-using-the-command-step-17.png)
 
 The suffix \`_N` is used to identify each host.
 
@@ -385,7 +385,7 @@ The WinRM deployment type supports Download Artifact only. You cannot use Cope A
 6. Select **Apply Changes**.
 7. **Run** the pipeline. 
    
-   ![](./static/command-unit-email-4.png)
+   ![](../cd-general-steps/static/command-unit-email-4.png)
 
 <details>
 <summary>Sample pipeline YAML</summary>

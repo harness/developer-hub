@@ -272,7 +272,13 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Settings
 
+<!--
 You can add a `tool_args` setting to run the [synopsis detect scanner](https://blackducksoftware.github.io/synopsys-detect/6.3.0/30-running/) with specific command-line arguments. 
+
+For example, you can skip certain tools using  `--detect.tools.excluded` followed by a list of tools: `tool_args` = `-detect.tools.excluded {BAZEL, DOCKER}`
+-->
+
+You can add a `tool_args` setting to run the [synopsis detect scanner](https://blackducksoftware.github.io/synopsys-detect) with specific command-line arguments. 
 
 For example, you can skip certain tools using  `--detect.tools.excluded` followed by a list of tools: `tool_args` = `-detect.tools.excluded {BAZEL, DOCKER}`
 
