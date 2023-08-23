@@ -518,3 +518,43 @@ You can just write a file on the delegate and use the same delegate.
 
 This API can be used to fetch pipleine execution details : https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
 
+### How to do a Flank Deployment in Harness?
+You can use Deployment Templates for this use case. You can find more information on this here: https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/
+
+### How to test harness entities (service, infra, environment) changes through automation
+
+Harness by default will not let the user push something or create any entity which is not supported or incorrect as our yaml validator always make sure the entity is corrected in the right format.
+ 
+You can use yaml lint to verify the yaml format of the entity and in order to answer your question there is no way to perform testing (automation testing, unit testing) etc of harness entities before releasing any change within those entities.
+
+### What kind of order do we apply to the Docker Tags as part of the artifact we show for the users? 
+
+Except for the latest version of Nexus, it is in alphabetical order.
+
+###Is there a way to use a Pipeline within a pipeline in a template? 
+We do not support this, nor do we plan to at this time, due to the complexity already with step, stage and pipeline templates being nested within each other. 
+
+Resolving inputs across those levels is very expensive and difficult to manage for end users.
+
+
+### In Harness can we refer to a secret created in Org in the Account level connector?
+No higher-level entity can refer to lower-scoped entities e.g. we cannot refer to a secret created in Org in the Account level connector.
+
+### Do we have multi-select for inputs in NG as we had in FG?
+Multiple selection is allowed for runtime inputs defined for pipelines, stages, and shell script variables. You must specify the allowed values in the input as mentioned in the above examples.
+
+The multiple selection functionality is currently behind the feature flag, PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES. Contact Harness Support to enable the feature.
+
+### In the declarative rollback, it will rollback also the secrets and config maps used in the last successful execution?
+During rollback, Harness reapplies the previous manifest. This is the declarative method, and it includes the ConfigMap and Secrets of the last known good state.  
+
+https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#important-notes
+
+### When making a change to a template, you have to manually go through all the places that template is referenced and run “reconcile” Is this by design?
+Yes, this is by design 	https://developer.harness.io/docs/platform/templates/templates-best-practices/#reconciliation
+
+### Is this the right format to push a secret to the Azure key vault? secret.setVaule("azurevauly://avidentifier/pathToSecret", secretVaule)
+secret.setValue is not supported. Secrets can be referred to only using secret.getValue("azurevauly://avidentifier/pathToSecret") or secret.getValue("secretIdentifierInHarness")
+
+### Why it is that you cannot use OCI Helm registries with Helm Chart triggers?
+OCI Helm does let us poll the repository for changes, we can get a list of chart versions, but we cannot poll and detect a new version. This capability hasn't been built by OCI Helm

@@ -95,7 +95,7 @@ export const featuredTutorials: CardItem[] = [
               module: MODULES.cd,
               description:
                 "",
-              link: "/docs/continuous-delivery/integrations/cd-integrations",
+              link: "/docs/continuous-delivery/cd-integrations",
             },
           ]*/
           // <-- sample code end
@@ -143,7 +143,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.cd,
           description:
             "See the list of tools and platforms you can use in Harness for deploying your applications.",
-          link: "/docs/continuous-delivery/integrations/cd-integrations",
+          link: "/docs/continuous-delivery/cd-integrations",
         },
       ],
     },

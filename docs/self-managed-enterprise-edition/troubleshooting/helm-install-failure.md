@@ -1,6 +1,6 @@
 ---
 title: Helm installation failure
-description: Troubleshoot installation failures in Harness Self-Management Enterprise Edition.
+description: Troubleshoot installation failures in the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 55
 ---
 
