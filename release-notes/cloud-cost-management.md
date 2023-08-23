@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-08-02T10:00
+date: 2023-08-23  T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -19,37 +19,32 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - August 10, 2023, version 80500
+## Latest: version 80500
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
-* ServiceNow integration with Recommendations
+### New features and enhancements
+
+* ServiceNow integration with Recommendations (CCM-11150)
 
   Introducing ServiceNow as a ticketing tool to create tickets for recommendations. You can use either Jira or ServiceNow as your ticketing tool. You need to configure this setting at the account level on the **Default Settings** page. For more information, go to [View and apply recommendations](../docs/cloud-cost-management/4-use-ccm-cost-optimization/1-ccm-recommendations/1-home-recommendations.md).
 
+* AWS perspectives enhancement (CCM-13914)
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+  Introducing support for the following additional `Group By` options in AWS perspectives:
+  - Billing entity
+  - Line item type  
+  
+  For more information, go to [Analyze AWS costs by using perspectives](../docs/cloud-cost-management/3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-aws.md).
+
+### Early access features
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues
 
 * Previously, within the budget **Edit** flow, the monthly breakdown values would reset to default values. However, currently, the resetting occurs only when there's a change in the **Budget Type**. (CCM-13763)
 
 * Previously for ALB proxy HTTP route configuration, when it comes to redirect actions, only redirect URLs were supported. However, now, users have the flexibility to include either a redirect URL or specify a target port and protocol. (CCM-13702)
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
 ## Previous releases
 
