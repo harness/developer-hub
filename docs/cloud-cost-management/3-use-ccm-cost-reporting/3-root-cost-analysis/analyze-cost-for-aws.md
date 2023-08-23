@@ -81,11 +81,11 @@ Perform the following steps to add filters.
    
 3. Select AWS, Region, Product, Cloud Provider, or Label.
 4. Select the operator. The supported operators are:
-	* **IN**: The exact match operation is used to filter on the specified value.
-	* **NOT IN**: Filters on values that do not match the specified value.
-	* **NULL**: Filters on the specified filter or field that has no value.
-	* **NOT NULL**: Filters on the specified filter has a value.
-	* **LIKE**: Includes the cost of all items that match the specified condition.
+	* **IN**: Applies a filter to include only entries with the provided value.
+	* **NOT IN**: Applies a filter to exclude entries with values that match the specified value.
+	* **NULL**: Applies a filter to show only entries where the designated filter or field is empty.
+	* **NOT NULL**: Applies a filter to display only entries where the designated filter has a value.
+	* **LIKE**: Applies a filter to show entries with conditions that precisely match the specified pattern.
 5. Select a value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
 
   <docimage path={require('./static/analyze-cost-for-aws-11.png')} width="60%" height="60%" title="Click to view full size image" />
