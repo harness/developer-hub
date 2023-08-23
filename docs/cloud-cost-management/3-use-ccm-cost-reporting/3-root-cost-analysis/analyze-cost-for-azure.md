@@ -63,12 +63,12 @@ Perform the following steps to add filters.
 2. Select **add filter**. 
 3. Select Azure, Region, Product, Cloud Provider, or Label.
 4. Select the operator. The supported operators are:
-	* **IN**: The exact match operation is used to filter for the value specified.
-	* **NOT IN**: The exact match operation is used to filter for the value that is not specified.
-	* **NULL**: The specified filter or field has no value.
-	* **NOT NULL**: The specified filter has a value.
-	* **LIKE**: Includes the cost of all items that matches the specified condition.
-5. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
+	* **IN**: Applies a filter to include only entries with the provided value.
+	* **NOT IN**: Applies a filter to exclude entries with values that match the specified value.
+	* **NULL**: Applies a filter to show only entries where the designated filter or field is empty.
+	* **NOT NULL**: Applies a filter to display only entries where the designated filter has a value.
+	* **LIKE**: Applies a filter to show entries with conditions that precisely match the specified pattern.
+5. Select a value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
    
      ![](./static/analyze-cost-for-azure-21.png)
 

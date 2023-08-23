@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 # Analyze cost for AWS
 
-Harness Cloud Cost Management (CCM) allows you to view your AWS costs at a glance, understand what is costing the most, and analyze cost trends. CCM Perspectives displays the data for all your Amazon Web Services (ECS, EC2, and so on) and also helps you get details of:
+Harness Cloud Cost Management (CCM) allows you to view your AWS costs at a glance, understand what is costing the most, and analyze cost trends. CCM perspectives display cost data of all your Amazon Web Services (ECS, EC2, and so on) and also helps you get details of:
 
 * AWS cloud cost spending trend
 * AWS service costing the most in the selected time range, for example, EC2 spent last month
@@ -25,16 +25,16 @@ Harness Cloud Cost Management (CCM) allows you to view your AWS costs at a glanc
 
 ### Analyze AWS Cost
 
-The Perspectives provide deep insights into your AWS costs. The cost includes all the applicable credits and discounts.
+The Perspectives provide deep insights into your AWS costs. The costs include all the applicable credits and discounts.
 
 1. In **Cloud Costs**, select **Perspectives**, and then select **AWS**. The AWS services are displayed.
    
      ![](./static/analyze-cost-for-aws-07.png)
-2. Select the **date range** for the costs you want to analyze.
+2. Select the date range for the costs you want to analyze.
    
      ![](./static/analyze-cost-for-aws-08.png)
 
-3. You can use the following options to Group By:
+3. You can use the following group-by options:
 
   * **Cost Categories**: Each [cost category](../2-ccm-cost-categories/1-ccm-cost-categories.md) that you have created based on your business requirements.
   
@@ -44,7 +44,7 @@ The Perspectives provide deep insights into your AWS costs. The cost includes al
 
 		<docimage path={require('./static/aws-services-groupby.png')} width="60%" height="60%" title="Click to view full size image" />
 
-	+ **Account**: Each AWS account you are using to connect Harness to AWS via a Harness AWS Cloud Provider. This displays the Account Name along with the Account ID (if the Account Name is available, else only the Account ID is displayed).  
+	+ **Account**: Each AWS account you are using to connect Harness to AWS via a Harness AWS Cloud Provider. The chart displays the account name and the account ID. If the account name is unavailable, it displays only the account ID.   
 		
 		 <docimage path={require('./static/analyze-cost-for-aws-09.png')} width="60%" height="60%" title="Click to view full size image" />
 		 
@@ -66,7 +66,7 @@ The Perspectives provide deep insights into your AWS costs. The cost includes al
 
   * **Region**: Each AWS region you are currently running services in.
   * **Product**: Each of your active products with its cloud costs.
-  * **Label**: Each label that you assign to your AWS resources. You can select a label name to get further granular details of your label. For more information, go to [Tagging your AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html). You can select a **Tag name** to get further granular details of your tags. For tags to appear in the Perspective, you must activate the user-defined cost allocation tags in the AWS Billing and Cost Management console. For more information, go to [Activating User-Defined Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html). In CCM, the tag keys are updated as the following:
+  * **Label**: Each label that you assign to your AWS resources. You can select a label name to get more granular details of your label. For more information, go to [Tagging your AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html). For tags to appear in the Perspective, you must activate the user-defined cost allocation tags in the AWS Billing and Cost Management console. For more information, go to [Activating User-Defined Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html). CCM updates the tag keys as follows:
 	+ For the user-defined tags, `user_` prefix is added.
 	+ For the AWS system tags, `aws_` prefix is added.
 	+ The characters that do not follow regex `[a-zA-Z0-9_]` are changed to `_`.
@@ -81,12 +81,12 @@ Perform the following steps to add filters.
    
 3. Select AWS, Region, Product, Cloud Provider, or Label.
 4. Select the operator. The supported operators are:
-	* **IN**: The exact match operation is used to filter for the value specified.
-	* **NOT IN**: The exact match operation is used to filter for the value that is not specified.
-	* **NULL**: The specified filter or field has no value.
-	* **NOT NULL**: The specified filter has a value.
-	* **LIKE**: Includes the cost of all items that matches the specified condition.
-5. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
+	* **IN**: The exact match operation is used to filter on the specified value.
+	* **NOT IN**: Filters on values that do not match the specified value.
+	* **NULL**: Filters on the specified filter or field that has no value.
+	* **NOT NULL**: Filters on the specified filter has a value.
+	* **LIKE**: Includes the cost of all items that match the specified condition.
+5. Select a value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
 
   <docimage path={require('./static/analyze-cost-for-aws-11.png')} width="60%" height="60%" title="Click to view full size image" />
 
