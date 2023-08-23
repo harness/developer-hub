@@ -27,9 +27,9 @@ This release does not include early access features.
 
 ### Fixed issues in the Javascript SDK
 
-* If SDK was being suspended while inside a mobile app in a webview our SDK didn't support this usecase and require workarounds. (FFM-8176)
+* If the SDK was being suspended while inside a mobile app in a webview, our SDK didn't support this usecase and required workarounds. (FFM-8176)
 
-* Removed a third party SSE library causing event-handling errors (FFM-8855)
+* Removed a third-party SSE library causing event-handling errors. (FFM-8855)
 
 ## Previous releases
 
