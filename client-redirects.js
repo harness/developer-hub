@@ -34,18 +34,6 @@ module.exports = {
     //  },
     //===================================================================================
 
-    // Created by aimurphy for branch DOC-3373 on August 9, 2023
-
-    {
-      from: "/tutorials/build-code/build/tfc-notification",
-      to: "/tutorials/ci-pipelines/build/tfc-notification",
-    },
-    {
-      from: "/tutorials/ci-pipelines/tfc-notification",
-      to: "/tutorials/ci-pipelines/build/tfc-notification",
-    },
-
-
      // Created by SudheendraKatte for branch srm-14106-reset-error-budget on August 10, 2023
      {
       from: "/docs/service-reliability-management/slo-annoations",
