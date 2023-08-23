@@ -206,7 +206,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 #### Continuous Integration
 
 - **Remote debugging enhancements (CI-8135, CI-8048)**
-  * **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
+  * **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/troubleshoot-ci/debug-mode).
 
 #### Harness Delegate
 
@@ -849,7 +849,7 @@ gsutil -m cp \
 
 - **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. (CI-8135, CI-8048)
 
-   The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
+   The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/troubleshoot-ci/debug-mode).
 
 #### Continuous Delivery & GitOps
 
@@ -1803,7 +1803,7 @@ This release includes the following Harness module and component versions.
 
 #### What's new
 
-- You can now use an external database with your installation. For more information, go to [Use an external database](/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database). (SMP-545)
+- You can now use an external database with your installation. For more information, go to [Use an external database](/tutorials/self-managed-enterprise-edition). (SMP-545)
 
 #### Fixed issues
 
@@ -1943,7 +1943,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 - You can now migrate from KOTS-based installations to Helm-based installations. (SMP-769)
 - Backup and restore for Helm-based installations is now supported using Velero. (SMP-767)
  
-  For more information, go to [Back up and restore](/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm).
+  For more information, go to [Back up and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm).
 - You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana. (SMP-766)
 
   For more information, go to [Monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem). 
