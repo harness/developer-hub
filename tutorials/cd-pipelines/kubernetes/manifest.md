@@ -113,22 +113,51 @@ You can also follow the [Install Harness Delegate on Kubernetes or Docker](https
 <TabItem value="MacOS">
 ```
 ```
-curl -L0 https://github.com/harness/harness-cli/releases/download/v0.0.10-alpha/harness-v0.0.10-alpha-darwin-amd64.tar.gz
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.14-alpha/harness-v0.0.14-alpha-darwin-amd64.tar.gz 
+tar -xvf harness-v0.0.14-alpha-darwin-amd64.tar.gz 
+export PATH="$(pwd):$PATH" 
+echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
 ```
 ```mdx-code-block
 </TabItem>
-<TabItem value="Linux">
+<TabItem value="Linux ARM">
 ```
 ```
-curl -L0 https://github.com/harness/harness-cli/releases/download/v0.0.10-alpha/harness-v0.0.10-alpha-linux-amd64.tar.gz
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.14-alpha/harness-v0.0.14-alpha-linux-arm64.tar.gz 
+tar -xvf harness-v0.0.14-alpha-darwin-amd64.tar.gz 
+export PATH="$(pwd):$PATH" 
+echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
 ```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Linux AMD">
+```
+```
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.14-alpha/harness-v0.0.14-alpha-linux-amd64.tar.gz 
+tar -xvf harness-v0.0.14-alpha-darwin-amd64.tar.gz 
+export PATH="$(pwd):$PATH" 
+echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+```
+
 ```mdx-code-block
 </TabItem>
 <TabItem value="Windows">
 ```
+- Open Windows Powershell and run the command below to download the Harness CLI
+
 ```
-curl -L0 https://github.com/harness/harness-cli/releases/download/v0.0.10-alpha/harness-v0.0.10-alpha-windows-amd64.zip
+Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.14-alpha/harness-v0.0.14-alpha-windows-amd64.zip -OutFile ./harness.zip
 ```
+- Extract the downloaded zip file and change directory to extracted file location
+- Follow the steps below to make it accessible via terminal
+
+```
+$currentPath = Get-Location 
+[Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$currentPath", [EnvironmentVariableTarget]::Machine)
+```
+- Restart terminal
+
 ```mdx-code-block
 </TabItem>
 </Tabs>
