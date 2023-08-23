@@ -4,7 +4,7 @@ description: Just-in-time user provisioning.
 sidebar_position: 110
 ---
 
-:::note
+:::info note
 
 Currently, this feature is behind the feature flag `PL_ENABLE_JIT_USER_PROVISION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 

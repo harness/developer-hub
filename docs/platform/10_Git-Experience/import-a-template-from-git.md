@@ -22,9 +22,9 @@ This topic explains how to import a Template from your Git repo to Harness.
 
 ### Before you begin
 
-* See [Harness Git Experience Overview](git-experience-overview.md)
-* See [Harness Git Experience Quickstart​](configure-git-experience-for-harness-entities.md)
-* See [Templates Overview](../13_Templates/template.md)
+* Go to [Harness Git Experience Overview](git-experience-overview.md)
+* Go to [Harness Git Experience Quickstart​](configure-git-experience-for-harness-entities.md)
+* Go to [Templates Overview](../13_Templates/template.md)
 
 ### Permissions
 
@@ -74,13 +74,13 @@ This topic shows you how to import a Template to the CD module.
 8. In **Repository**, select the repository from where you want to import the Template. If you don't see your repository in the list, enter its name since only a select few repositories are filled here.
    
 
-:::note
+:::info note
    Create the repository in Git before entering it in **Select Repository**. Harness does not create the repository for you.
 :::
 
 9.  In **Git Branch**, select the branch from where you want to import the Template. If you don't see your branch in the list, enter its name since only a select few branches are filled here.
 
-:::note
+:::info note
 Create the branch in your repository before entering it in **Git Branch**. Harness does not create the branch for you.
 :::
 

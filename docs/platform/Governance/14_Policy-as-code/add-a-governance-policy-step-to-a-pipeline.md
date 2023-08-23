@@ -16,7 +16,7 @@ Currently, this feature is behind the feature flag `OPA_PIPELINE_GOVERNANCE`. Co
 
 You can enforce policies in two ways:
 
-* **Account, Org, and** **Project-specific:** you can create the policy and apply it to all Pipelines in your Account, Org, and Project. The policy is evaluated on Pipeline-level events like On Run and On Save. See [Harness Governance Quickstart](harness-governance-quickstart.md).
+* **Account, Org, and** **Project-specific:** you can create the policy and apply it to all Pipelines in your Account, Org, and Project. The policy is evaluated on Pipeline-level events like On Run and On Save. Go to [Harness Governance Quickstart](harness-governance-quickstart.md).
 * **Stage-specific:** you can add a Policy step, add a new/existing Policy Set to it, and then provide a JSON payload to evaluate.
 	+ The policy is evaluated whenever the Pipeline reaches the Policy step.
 	+ Policy evaluation can be performed on data generated when the Pipeline is running, such as resolved expressions.
@@ -26,9 +26,9 @@ This topic describes how to add a Policy step to a Stage.
 
 ### Before you begin
 
-* If you are new to Harness Governance, see [Harness Governance Overview](harness-governance-overview.md) and [Harness Governance Quickstart](harness-governance-quickstart.md).
+* If you are new to Harness Governance, go to [Harness Governance Overview](harness-governance-overview.md) and [Harness Governance Quickstart](harness-governance-quickstart.md).
 
-### Limitations
+### Important notes
 
 * The policies that can be enforced are currently restricted by the Harness entities supported by the OPA service.
 * Currently, the Policy Step is available in Deploy, Custom, and Approval Stages.
@@ -81,7 +81,7 @@ A Policy Set at the account level can be used in any Policy Step in the Orgs and
 
 In **Policy Set**, click **Add/Modify Policy Set**.
 
-In this example, we'll use an existing policy set. For details on creating a policy set, see [Harness Governance Quickstart](harness-governance-quickstart.md).
+In this example, we'll use an existing policy set. For details on creating a policy set, go to [Harness Governance Quickstart](harness-governance-quickstart.md).
 
 ![](./static/add-a-governance-policy-step-to-a-pipeline-01.png)
 
@@ -107,7 +107,7 @@ In **Payload**, enter the payload to be evaluated by the Policy Set(s) you selec
 
 The **Policy Set** and **Payload** settings allow for Fixed Values, Runtime Inputs, and Expressions.
 
-For details on how these work in Harness, See [Fixed Values, Runtime Inputs, and Expressions](../../20_References/runtime-inputs.md).
+For details on how these work in Harness, go to [Fixed Values, Runtime Inputs, and Expressions](../../20_References/runtime-inputs.md).
 
 #### Fixed Values
 

@@ -226,9 +226,12 @@ To modify these Git settings, do the following:
 
 1. In your Project, select **Pipelines**.
 2. Go to the pipeline where you want to edit the Git details, and select more options (⋮).
-  ![](./static/harness-git-experience-quickstart-74.png)
+
+   ![](./static/harness-git-experience-quickstart-74.png)
+
 3. Make changes to the settings, and then select **Save**.
-  ![](./static/harness-git-experience-quickstart-75.png)
+
+   ![](./static/harness-git-experience-quickstart-75.png)
 
 
 ## Execute pipeline

@@ -8,8 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
-:::note
+:::info note
 Currently, this feature is behind the feature flags `NG_SVC_ENV_REDESIGN` and `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
@@ -82,7 +81,7 @@ Typically, you add a Helm Chart Trigger to a Pipeline that deploys a Helm Chart.
 
    Go to [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) for details on adding Helm Charts to a stage's **Service Definition**.
 
-Next, let's add the Trigger.
+   Next, let's add the Trigger.
 
 2. Click **Triggers**.
 3. Click **New Trigger**.
@@ -102,7 +101,7 @@ Define what Helm Chart you want Harness to listen on for the Trigger.
 4. In **Manifest Details**, enter the name of the Helm Chart to listen on in **Chart Name**. For example, `nginx` or `etcd`.
 5. In **Helm Version**, select the version of Helm your repo uses.
 
-![](./static/trigger-pipelines-on-new-helm-chart-07.png)
+   ![](./static/trigger-pipelines-on-new-helm-chart-07.png)
 
 
 :::note
@@ -112,9 +111,9 @@ The required settings are determined by the Helm Chart Store you selected.
 
 6. Click **Submit**.
 
-The Helm Chart is added to the Trigger. Now Harness will poll that Helm Chart for any changes.
+   The Helm Chart is added to the Trigger. Now Harness will poll that Helm Chart for any changes.
 
-![](./static/trigger-pipelines-on-new-helm-chart-08.png)
+   ![](./static/trigger-pipelines-on-new-helm-chart-08.png)
 
 ### Set Conditions
 
@@ -142,7 +141,7 @@ For example, here's an example where you select Runtime Inputs in the Trigger:
 ![](./static/trigger-pipelines-on-new-helm-chart-09.png)
 ### Test Trigger
 
-1. Once your Trigger is set up, click **Create Trigger**. The new Trigger is listed.
+Once your Trigger is set up, click **Create Trigger**. The new Trigger is listed.
 
 Once the Pipeline is executed using the Trigger, in **Deployments**, you can see the Trigger and the user who initiated the deployment.
 
@@ -153,6 +152,7 @@ If you look at the Trigger in your Pipeline again you can see its activation rec
 And these records are also in the Trigger details:
 
 ![](./static/trigger-pipelines-on-new-helm-chart-12.png)
+
 You can test the Trigger by pushing a new chart version to your Helm Chart registry.
 
 You can build and push to your registry using Harness CI. For examples, go to the [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md). Here's a simple curl example using a Nexus repo that works as a Helm chart HTTP server.
