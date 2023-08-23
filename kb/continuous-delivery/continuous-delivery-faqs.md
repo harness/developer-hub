@@ -555,3 +555,96 @@ secret.setValue is not supported. Secrets can be referred to only using secret.g
 
 ### Why it is that you cannot use OCI Helm registries with Helm Chart triggers?
 OCI Helm does let us poll the repository for changes, we can get a list of chart versions, but we cannot poll and detect a new version. This capability hasn't been built by OCI Helm
+
+### Can we use variables in the vault path to update the location dynamically based on environment?
+
+A expression can be used in the URL, for example - Setting up a PATH variable in the pipeline and calling that variable in the get secret - echo "text secret is: " <+secrets.getValue(<+pipeline.variables.test>)>
+
+### Can we add a delay of n minutes before a pipeline is invoked via trigger?
+
+We don't have any timer for the trigger. It will trigger the pipeline whenever a change is made in the master branch.
+Since this is a webhook.
+ 
+As a workaround, a shell script can be added to sleep for 10 mins or n mins as per requirements
+
+### How can I manually launch a pipeline which has conditional execution based on trigger data?
+
+Pipeline will run into an error because trigger basesd expression will be null.
+ 
+We can add a workaround, instead of adding the condition such as - "<+trigger.event> == "PR"", set it to a variable, pass the variable value at runtime, and set the default value as <+trigger.event> == "PR", so when the pipeline is executed with a trigger default value is passed and it while executing it manually, you can set it as false to skip the condition of this execution.
+
+### what are PerpetualTask?
+
+PerpetualTasks" refers to any task that is running on the delegate continuously and lasting indefinitely. All the tasks have task id, ex - rCp6RpjYTK-Q4WKqcxalsA associated with it, we can filter the delegate logs based on the task ID and we can check what step is continuously failing at the delegate, it could be reading secrets from the vault or taking a lock over some resource.
+
+### Does Harness have cache layer for the Helm chart repo index during deployment steps?
+
+We have a caching mechanism where we create a cache folder (based on connectorID) and store the repositories.yaml file there.
+
+### Is it possible to disable First Generation?
+
+Yes, You should see the toggle "Allow Harness First generation Access" setting in NG Account Overview UI. Use this to enable and disable the first gen access
+
+### How do I use OPA policy to enforce environment type for each deployment stage in a pipeline i.e. prod or preprod?
+
+The infra details are passed as stage specs.
+
+For example, to access the environment type, the path would be - input.pipeline.stages[0].stage.spec.infrastructure.environment.type
+You will have to loop across all the stages to check its infra spec.
+
+### How do I add annotations to the canary deployment
+
+Use apply step to create the canary ingress rule. We do support additional values.yaml override with apply step and this can be used for shifting the traffic, for example:
+Create ingress template/ingress-canary:
+
+nginx.ingress.kubernetes.io/canary: true nginx.ingress.kubernetes.io/canary-by-header: always nginx.ingress.kubernetes.io/canary-by-header-value: x-checkout-canary nginx.ingress.kubernetes.io/canary-weight: {{.Values.weight}}
+ 
+Using apply step, apply templates/ingress-canary with values.yaml content:
+weight: 10
+ 
+To progress, using apply step, apply template/ingress-canary with values.yaml content:
+weight: n
+ 
+If weight is a constant value and having a loose ingress resource is not an issue then  declare both primary and canary ingress in the manifest that will be applied during both canary and primary deployment. Since there wouldn’t be any changes to the ingress rules itself then there shouldn’t be any effect if they are going to reapply canary ingress in the primary deployment.
+
+Our recommendation is to use the first option, anyway harness doesn’t track ingress rules so by using apply step you don’t lose anything.
+
+### How to get Bearer token to make Web API calls?
+
+You can get the bear token from the "acl" network request. Open the network tab and search for acl and check the request headers.
+You will find the bearer token under Authorization.
+
+### In pipeline template variable location is there any option to move or place the variables according to our requirements?
+
+You can modify the YAML file to change the variable order. Currently, moving the variable order is not supported in UI.
+
+### The delegates set `PROXY_HOST` and `PROXY_PORT`, which is different from `HTTP_PROXY` in CI step?
+
+Yes, we use the "PROXY_HOST" and "PROXY_PORT" variable values to build the "HTTP_PROXY" ( or "HTTPS_PROXY") environment variable and inject it
+
+### How do I delete k8s resources which are part of the release?
+
+During deployment Harness creates a ConfigMap listing the resources of the release and uses the release name for tracking them. The release name is defined in the Infrastructure settings, in Cluster Details, in Advanced.
+ 
+If this config map is deleted or if the resource is not deployed via Harness then we delete step won't be able to find the given resources.
+
+### Can I add CI/CD steps to customer stage?
+
+Native CI and CD steps are not supported for custom stage, These steps cannot be added via UI. Adding them manually will result in an error while running the pipeline - "Stage details sweeping output cannot be empty"
+
+### How can we deploy a specific resource in a helm chart as part of rolling deployment?
+
+If it is a Kubernetes/Helm, you can use an Apply Step
+ 
+https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step/
+ 
+You can take a specific file from the manifest and execute it separately (before or after) the normal deployment.  To prevent the file from being included in the normal part of the deployment, you would include this # harness.io/skip-file-for-deploy at the top of the file.
+
+### What kind of payload type is supported for policy step?
+
+Policy step is onl ysupported against a JSON payload.
+
+### How to achieve Parallel Execution of Deploy one service to multiple Infrastructures?
+
+You can add maxConcurrency: X in the repeat strategy, which is the number of concurrent instances running at a time.
+eg - if maxConcurrency: 5, it will run 5 concurrent/parallel step/stage.
