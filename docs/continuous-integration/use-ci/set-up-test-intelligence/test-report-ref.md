@@ -133,8 +133,8 @@ This example runs pytest with [Test Intelligence](./set-up-test-intelligence.md)
 ```yaml
               - step:
                   type: RunTests
-                  name: Run Python Test
-                  identifier: Run_Python_Test
+                  name: Run Python Tests
+                  identifier: Run_Python_Tests
                   spec:
                     language: Python
                     buildTool: Pytest
