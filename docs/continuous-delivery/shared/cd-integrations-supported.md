@@ -481,6 +481,7 @@ Harness GitOps lets you perform GitOps deployments in Harness. You define the de
 
 GitOps supports the following:
 
+- Argo CD version supported: 2.7.8.
 - Source Repositories:
   - All Git providers.
   - HTTP Helm repos.

@@ -60,6 +60,12 @@ Examples:
 
 See [Built-in Harness Variables Reference](../../12_Variables-and-Expressions/harness-variables.md).
 
+```note
+
+Comparing strings to boolean always evaluates to **True** unless the string is literally the word “false”.
+
+```
+
 ### Step conditions
 
 #### Execute this step if the stage execution is successful thus far

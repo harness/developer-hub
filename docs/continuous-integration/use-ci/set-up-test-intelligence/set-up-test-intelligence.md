@@ -830,7 +830,24 @@ Leave blank or provide a comma-separated list of source code package prefixes, s
 
 ### Environment Variables
 
-Variables passed to the container as environment variables and used in the step's commands.
+You can inject environment variables into the step container and use them in the step's commands. You must input a **Name** and **Value** for each variable.
+
+You can reference environment variables in the **Command**, **Pre-Command**, or **Post-Command** scripts by name, such as `$var_name`.
+
+Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
+
+<figure>
+
+![](../manage-dependencies/static/background-step-settings-09.png)
+
+<figcaption>Using an expression for an environment variable's value.</figcaption>
+</figure>
+
+:::tip Stage variables
+
+[Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are inherently available to steps as environment variables.
+
+:::
 
 For Python, you can set [`PYTHONPATH`](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH) in the step's `envVariables`, if required. For example:
 

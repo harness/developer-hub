@@ -40,7 +40,9 @@ In addition to the scope at which you create the resource group, each resource g
 
 The scope at which you create a resource group determines which **Resource Scope** options you can apply to that group. For example, if you create a resource group at the project scope, it is impossible to select org or account **Resource Scopes** for that resource group.
 
-![](./static/rbac-in-harness-03.png)
+<!-- ![](./static/rbac-in-harness-03.png) -->
+
+<docimage path={require('./static/rbac-in-harness-03.png')} />
 
 ### Resource scope options
 

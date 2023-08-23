@@ -1,6 +1,6 @@
 ---
 title: Manage Feature Flags
-description: Learn how to manage Feature Flags for Self-Managed Enterprise Edition Helm installations.
+description: Learn how to manage Feature Flags for Self-Managed Enterprise Edition on-prem Helm installations.
 # sidebar_position: 10
 ---
 

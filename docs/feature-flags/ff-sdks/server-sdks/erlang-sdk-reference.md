@@ -624,7 +624,7 @@ go to [Erlang project config](#erlang-project-config) and [Elixir project config
 
 ### Use the Relay Proxy
 
-When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/ff-using-flags/relay-proxy/) you must change the default URL and events URL to `http://localhost:7000` when initializing the SDK. 
+When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/relay-proxy/deploy-relay-proxy) you must change the default URL and events URL to `http://localhost:7000` when initializing the SDK. 
 
 To do this, pass the new URLs in when initializing the SDK, as shown below.
 

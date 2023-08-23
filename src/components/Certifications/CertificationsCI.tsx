@@ -9,6 +9,8 @@ import DeveloperCertificationReviewGuide from "./data/ci-certification-developer
 import DeveloperCertificationExamDetails from "./data/ci-certification-developer-exam-details.md";
 import AdminCertificationReviewGuide from "./data/ci-certification-admin-review-guide.md";
 import AdminCertificationExamDetails from "./data/ci-certification-admin-exam-details.md";
+import ArchitectCertificationReviewGuide from "./data/ci-certification-architect-review-guide.md";
+import ArchitectCertificationExamDetails from "./data/ci-certification-architect-exam-details.md"; 
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -247,7 +249,7 @@ export default function CertificationsCI() {
           {/* Admin Exam Details */}
 
           <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details</h2>
+            <h2 id="exam-details">Exam Details (BETA Comning Soon)</h2>
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
@@ -300,26 +302,50 @@ export default function CertificationsCI() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Coming Soon...</h3>
+                  <h3>Review Study Guide (BETA Coming Soon)</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
-                    design, implementation and management of CI.
+                    design, implementation and management of CI. This exam builds
+                    upon the{" "}
+                    <a href="/certifications/continuous-integration?lvl=administrator">
+                      CI Admin Certification
+                    </a>
                   </div>
-                  {/*
                   <ArchitectCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="/tutorials/cd-pipelines">
+                    <Link href="#">
+                      <button className={styles.moreDetails}>
+                        Register for Exam
+                      </button>
+                    </Link>
+                       {/*<Link href="/tutorials/ci-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
-                    </Link>
+                    </Link>*/}
                   </div>
-                  */}
                 </div>
               </div>
             </div>
           </div>
+        
+          {/* Arch Exam Details  */}
+
+          <div className={styles.examDetails}>
+            <h2 id="exam-details">Exam Details (BETA Coming Soon) </h2>
+            <div className={styles.examDetailsCard}>
+            <ArchitectCertificationExamDetails />
+              <div className={styles.btnContainer}>
+                <Link href="#">
+                  <button className={styles.moreDetails}>
+                    Register for Exam
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+       
         </div>
       </div>
     </div>
