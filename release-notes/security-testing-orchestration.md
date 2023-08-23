@@ -43,7 +43,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-- Fixed a UI issue in the Security Tests tag where the clickable severity tiles — introduced in version 1.64.1, described [below](#august-09-2023-version-1641)) — had an extra border on the right. (STO-6372)
+- Fixed a UI issue in the Security Tests tag where the clickable severity tiles — introduced in version 1.64.1, described [below](#august-09-2023-version-1641) — had an extra border on the right. (STO-6372)
 
 - Fixed a UI issue where the module sidebar in the left-side menu would scroll when a user clicked different menus within STO. With this fix, the module sidebar maintains its position when a user clicks different menus. This fix was included in Harness release 80307. (STO-6219)
 
