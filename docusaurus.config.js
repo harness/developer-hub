@@ -485,6 +485,9 @@ const config = {
         copyright: "Harness Inc.",
         rssDescription: "Harness Release Notes",
       },
+      redirectExport: {
+        destPath: "_redirects",
+      },
     }),
   plugins: [
     [
@@ -505,18 +508,7 @@ const config = {
       */
       clientRedirects,
     ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "tutorials",
-        path: "tutorials",
-        routeBasePath: "tutorials",
-        exclude: ["**/shared/**", "**/static/**"],
-        sidebarPath: require.resolve("./sidebars-tutorials.js"),
-        editUrl: "https://github.com/harness/developer-hub/tree/main",
-        // ... other options
-      },
-    ],
+
     [
       "@docusaurus/plugin-content-docs",
       {
@@ -530,7 +522,19 @@ const config = {
       },
     ],
     [
-      "@docusaurus/plugin-content-docs",
+      path.resolve(__dirname, "./plugins/redirect-plugin"),
+      {
+        id: "tutorials",
+        path: "tutorials",
+        routeBasePath: "tutorials",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-tutorials.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
+      path.resolve(__dirname, "./plugins/redirect-plugin"),
       {
         id: "kb",
         path: "kb",
@@ -564,6 +568,7 @@ const config = {
         editUrl: "https://github.com/harness/developer-hub/tree/main",
       },
     ],
+
     "docusaurus-plugin-sass",
     path.join(__dirname, "/plugins/hotjar-plugin"),
     path.join(__dirname, "/plugins/onetrust-plugin"),
