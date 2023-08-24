@@ -47,4 +47,4 @@ To download step log files, do the following:
 
 You can download pipeline, stage, and step execution logs via API. The `POST` API requires a Harness API key passed in the Bearer Token field of the Authorization header.
 
-You receive a download link for the log file in the API response. For more information, go to API docs link - TBD.
+You receive a download link for the log file in the API response.
