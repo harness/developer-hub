@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-07-31T10:00
+date: 2023-08-23T10:00
 sidebar_position: 13
 ---
 ```mdx-code-block
@@ -25,10 +25,7 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 - The `log-service` created separate Redis streams and set the expiration of all keys. Harness temporarily does not support high availability configuration for the `log-service` until this issue is resolved. (CI-9000)
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### New features and enhancements
 
 This release includes the following Harness module and component versions.
 
@@ -180,10 +177,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
    This issue has been fixed. You can now input zero (0) in both the fields.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+### Early access features
 
 #### Continuous Delivery & GitOps
 
@@ -215,10 +209,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
    This functionality is behind a feature flag, `DELEGATE_TASK_CAPACITY_CHECK`. When the feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues
 
 #### Self-Managed Enterprise Edition
 
@@ -569,10 +560,47 @@ You are missing the following permission: "View default settings" in Account sco
   
   This issue has been resolved. The selected metric pack option during monitored service creation will now be correctly reflected upon opening the monitored service.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
+### Patches
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.8.2](https://github.com/harness/helm-charts/releases/tag/harness-0.8.2) |
+| Air Gap Bundle | [0.8.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.2) |
+| NG Manager | 79821 |
+| CI Manager | 4903 |
+| Pipeline Service | 1.37.13 |
+| Platform Service | 79601 |
+| Access Control Service | 79400 |
+| Change Data Capture | 79819 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.353.10 |
+| LE NG | 68004 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
 ```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.8.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/sto_images.tgz" \
+  .
+```
+
+- Updated the UBI to 8.8 to address potential Go vulnerabilities. (CDS-75674)
+
+- Added a prefix for all log service created streams and support for backward compatibility with earlier streams. (CI-9000)
+
 
 ## Previous releases
 
