@@ -157,7 +157,7 @@ The expression to reference **Project** scope variables is `<+variable.VARIABLE_
 Let's add the variable in a pipeline.
 
 1. In Harness, go to a pipeline in the same org as the variable you created.
-2. In a stage **Execution** section, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step and reference the variables:
+2. In a stage **Execution** section, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step and reference the variables:
 
 
 ```
