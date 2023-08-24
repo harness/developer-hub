@@ -54,7 +54,7 @@ It is recommended to create the secret using the Azure CLI, and not using the Ge
 Example:
        
 ```
- key-vault % az keyvault secret set --vault-name "sandy-test" --name "MultilineSecret" --file "secretfile.txt"
+ key-vault % az keyvault secret set --vault-name "sandy-test" --name "MultilineSecret" --file "secretfile.crt"
 {
   "attributes": {
     "created": "2022-11-23T10:00:45+00:00",
@@ -74,8 +74,7 @@ Example:
   },
   "value": "This is my\nmulti-line\nsecret\n"
 }
-sandeepbhat@Sandeep Bhat key-vault % vi private-key.txt
-sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-test" --name "PrivateKeytest" --file "private-key.txt"
+sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-test" --name "PrivateKeytest" --file "private-key.pem"
 {
   "attributes": {
     "created": "2022-11-23T10:02:03+00:00",
