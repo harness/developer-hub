@@ -14,9 +14,7 @@ Templates enhance developer productivity, reduce onboarding time, and enforce st
 
 This topic provides an overview of templates in Harness.
 
-## Limitations
-
-Harness templates have the following limitations:
+## Important notes
 
 * When you delete an existing template with active pipeline references, Harness deletes the references.
 * When you convert a runtime input in a template to a fixed value, the input type does not change in the linked pipeline. You must manually edit the linked pipeline YAML and provide the fixed values. You must reconcile the template state in the pipeline before executing it.

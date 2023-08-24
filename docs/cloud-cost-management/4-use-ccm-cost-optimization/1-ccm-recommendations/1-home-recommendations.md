@@ -16,9 +16,6 @@ To know how these recommendations are computed, see the following topics:
 ## View recommendations
 The Recommendations page displays the following information:
 
-![](./static/Recommendations-home-page.png)
-
-
 * A breakdown of all the available recommendations.
 * **Potential Monthly Savings** across your ECS clusters if you apply the recommendations.
 * **Forecasted Monthly Spend** across your ECS clusters if you do not apply the recommendations.
@@ -34,37 +31,81 @@ The **Recommendation Breakdown** displays the following information:
 | **Resource Name** | Name of the resource for which CCM displays the recommendation. |
 | **Monthly Savings** | Potential monthly savings for your resource, if you apply the recommendations. |
 | **Potential Monthly Spend** | The monthly cost of the recommendation. |
-| **Recommendation Type** | Type of recommendation for your resource. For example, **rightsizing** or **resizing**. Based on your resource type, CCM recommends rightsizing or resizing your CPU, memory, or node counts. |
-
+| **Recommendation Action** | The intended action by applying the recommendation. For example, **rightsizing** or **resizing**. Based on the available metrics, CCM recommends rightsizing or resizing your CPU, memory, or node counts. |
+| **Ticket Status** | The status of the Jira or ServiceNow ticket. If the ticket is yet to be created, a link to create a ticket is displayed. |
 ## Ignore list
-You can ignore a recommendation for your node pool or workload. Click the **More actions** icon (three vertical dots), and then click **Add Nodepool to Ignore list** or **Add Workload to Ignore list**.
+You can ignore a recommendation for your node pool or workload. Select the **More actions** icon (three vertical dots), and then select **Add Nodepool to Ignore list** or **Add Workload to Ignore list**.
 
-If you want to view the ignored recommendations in the table, select the **Ignore List** checkbox in the **Include** dropdown list at the top of the page.
-
-To remove a recommendation from the ignore list, click **Manage Ignore List**. Then, click **Remove**.
+To remove a recommendation from the ignore list, select **Manage Ignore List**. Then, select **Remove**.
 
 ## Apply recommendations
-You can use the **Create a ticket** link to raise a JIRA ticket to apply the recommendations.
 
-![](./static/Recommendations-Create-a-ticket.png)
+To apply recommendations, you need to raise a ticket in the ticketing tool that your organization uses. To configure the ticketing tool setup, perform the following steps: 
+1. Navigate to **Cloud Costs** > **Setup** > **Default Settings**.
+2. Expand **Cloud Cost Management**.
+3. Under **Ticketing preferences**, select the **Ticketing tool** and the **Ticketing tool connector**. If you do not have an existing connector, [create a new one](#create-a-jira-or-servicenow-connector).
 
-1. Click **Create a ticket**.
-2. Enter the following details:
-   * **Jira connector** — Select the connector if you have created one already. Otherwise, [create a new connector](1-home-recommendations.md#create-a-jira-connector). 
-   * **Jira project** — Select the Jira project where you want to create a ticket. Go to [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md).
-   * **Issue type** — Select a Jira issue type from the list of types in the Jira project you selected. Go to [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md).
-   * **Ticket summary** — Add a summary of the issue.
-   * **Description** — Add a description for the issue.
-3. Click **Create Ticket**. 
-   The status of the ticket is **To do**. You need to assign the ticket to apply the recommendations. After applying the recommendations, when the Jira status changes to **Done**, the recommendation is displayed in the **Applied** tab. 
-   If you have not changed the Jira status to **Done** after applying the recommendation, you could use the **More actions** icon (three vertical dots), and then click **Mark as closed** to move the recommendation to the **Applied** tab.
-   To view the recommendations that are applied, and the cost savings realized, click the **Applied** tab.
+  The default ticketing tool is **Jira**. You can choose **ServiceNow** if that's the tool used in your organization.
+4. Select **Save**.
 
-     ![](./static/Applied-recommendations.png)
+![](./static/ticketing-tool-selector.png)
 
 
+:::note
+ Switching your ticketing tool between Jira and ServiceNow will result in the removal of the existing recommendation tickets. The status of the tickets change to **Create a ticket**.
+:::
 
-### Create a Jira connector
+
+Go to the **Recommendations** page and create tickets to apply recommendations.
+
+Perform the following steps to raise a ticket to apply recommendations:
+
+1. Select **Create a ticket**. In case you haven't set up your ticketing tool settings on the account level, you will see a prompt guiding you to access the **Default Settings** page to configure both the ticketing tool and the associated connector.
+
+    <docimage path={require('./static/setup-ticketing-tool.png')} width="40%" height="40%" title="Click to view full size image" />
+
+
+
+2. Enter the following ticket details:
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Cost Reporting" label="Jira">
+```
+
+* **Jira project** — Select the Jira project where you want to create a ticket. Go to [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md).
+* **Issue type** — Select a Jira issue type from the list of types in the Jira project you selected. Go to [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md).
+* **Ticket summary** — Add a summary of the issue.
+* **Description** — Add a description for the issue.
+  
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Cost Optimization" label="ServiceNow">
+```
+
+
+   * **Ticket Type** - Select the ticket type from the dropdown list. For example, change request, Data Management task, and so on. Based on the selected ticket type, you might need to enter more required inputs.
+   * **Short Description** - Enter a brief description of the task. This is the title of the ticket.
+   * **Description** - Enter a more detailed description about the recommendation.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+  
+The ticket is created. The status of the ticket changes to **To do**. You need to assign the ticket to apply the recommendations. After applying the recommendations, when the ticket status changes to **Done**, the recommendation is displayed in the **Applied Recommendations** tab. 
+If you have not changed the ticket status to **Done** after applying the recommendation, you could use the **More actions** icon (three vertical dots), and then select **Mark as applied** to move the recommendation to the **Applied Recommendations** tab.
+To view the recommendations that are applied, and the cost savings realized, select the **Applied Recommendations** tab.
+
+   ![](./static/Applied-recommendations.png)
+
+
+### Create a Jira or ServiceNow connector
 1. In the **Overview** step, enter the name. 
 2. Optionally, enter a short description and tags.
 3. In the **Details** step, enter the base URL. For example, https://mycompany.atlassian.net. For more information, go to [Configuring the base URL](https://confluence.atlassian.com/adminjiraserver071/configuring-the-base-url-802593107.html).
@@ -83,13 +124,11 @@ You can use the **Create a ticket** link to raise a JIRA ticket to apply the rec
      
       * **Blocklisting**: If a Delegate fails to perform a task, it is blocklisted for that task. This Delegate is not selected again to perform that task. TTL is five minutes. This is true even if there is only one Delegate and the Delegate is selected for that task with a Selector.
 
-   * **Only use Delegates with all of the following tags**: Select this option to use specific Delegates using their Tags. 
+   * **Only use Delegates with all the following tags**: Select this option to use specific Delegates using their Tags. 
    You only need to select one of a Delegate's Tags to select it. All Delegates with the Tag are selected. This option is useful when you have installed specific software on specific Delegates and want to ensure that your Pipeline uses those Delegates.
-7. Click **Save and Continue**. The Connector is created and validated. 
+7. Select **Save and Continue**. The Connector is created and validated. 
 
 You can create and use filters to select resources and recommendations.
-
-![](./static/Recommendations-filter.png)
 
 You can filter by:
 
@@ -102,7 +141,7 @@ You can filter by:
 
 The recommendation for the selected resource is displayed.
 
-Click a recommendation to view its details.
+Select a recommendation to view its details.
 
 Within a recommendation, select the number of days to compute recommendations based on the utilization data. You can select the last day, 7 days, or 30 days.
 

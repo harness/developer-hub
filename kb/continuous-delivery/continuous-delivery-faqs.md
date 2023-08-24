@@ -651,3 +651,33 @@ Policy step is onl ysupported against a JSON payload.
 
 You can add maxConcurrency: X in the repeat strategy, which is the number of concurrent instances running at a time.
 eg - if maxConcurrency: 5, it will run 5 concurrent/parallel step/stage.
+
+### Do we support expression for Harness Variable?
+
+We do not support expression for Harness variables currently created at project account or org level. Only fixed values are currently supported.
+
+
+
+### Can terraform vars in terraform step contain hyphen ?
+
+Terraform vars are exported as shell environment variables. The shell variables itself has a restriction in their naming coonvention that it should not contain hyphen and hence this is not supported.
+
+
+### How to properly pass tag inputs in api call for harness file store ?
+
+For Harness file store tags are key value pairs and hence they need to be specified in the similar way , below is an example of how this needs to be specified:
+
+```tags=[{"key":"tag","value":"value"}]```
+
+
+### How to handle the scenario where powershell scripts does not correctly return the status code on failure ?
+
+Though it is an issue with Powershell where it does not return the error code correctly we need this for our step to proceed further and reflect the status correctly. Consider wrapping the code like below in the script:
+
+```
+$ErrorActionPreference = [System.Management.Automation.ActionPreference]::Stop
+
+<execution code>
+
+exit $LASTEXITCODE
+```
