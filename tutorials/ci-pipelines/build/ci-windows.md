@@ -99,7 +99,7 @@ Harness Cloud runners include pre-installed libraries and tools, and you can use
                   spec:
                     shell: Powershell
                     command: |-
-                      # dotnet add package Newtonsoft.json --version 12.0.1
+                      dotnet add package Newtonsoft.json --version 12.0.1
 ```
 
 ```mdx-code-block
@@ -120,7 +120,7 @@ You can use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-s
                     image: mcr.microsoft.com/dotnet/sdk:7.0
                     shell: Powershell
                     command: |-
-                      # dotnet add package Newtonsoft.json --version 12.0.1
+                      dotnet add package Newtonsoft.json --version 12.0.1
 ```
 
 ```mdx-code-block
@@ -222,9 +222,9 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                   spec:
                     shell: Powershell
                     command: |-
-                      # dotnet restore
-                      # dotnet build --no-restore
-                      # dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
+                      dotnet restore
+                      dotnet build --no-restore
+                      dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
 ```
 
 ```mdx-code-block
@@ -242,9 +242,9 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                     image: mcr.microsoft.com/dotnet/sdk:6.0
                     shell: Powershell
                     command: |-
-                      # dotnet restore
-                      # dotnet build --no-restore
-                      # dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
+                      dotnet restore
+                      dotnet build --no-restore
+                      dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
 ```
 
 ```mdx-code-block
@@ -279,8 +279,8 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
                   spec:
                     shell: Powershell
                     command: |-
-                      # dotnet tool install -g trx2junit
-                      # export PATH="C:\Users\USER\.dotnet\tools"
+                      dotnet tool install -g trx2junit
+                      export PATH="C:\Users\USER\.dotnet\tools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -288,10 +288,10 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
                   spec:
                     shell: Powershell
                     command: |-
-                      # dotnet restore
-                      # dotnet build
-                      # dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
-                      # trx2junit results.trx
+                      dotnet restore
+                      dotnet build
+                      dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
+                      trx2junit results.trx
                     reports:
                       type: JUnit
                       spec:
@@ -314,8 +314,8 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
                     image: mcr.microsoft.com/dotnet/sdk:6.0
                     shell: Powershell
                     command: |-
-                      # dotnet tool install -g trx2junit
-                      # export PATH="C:\Users\USER\.dotnet\tools"
+                      dotnet tool install -g trx2junit
+                      export PATH="C:\Users\USER\.dotnet\tools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -325,10 +325,10 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
                     image: mcr.microsoft.com/dotnet/sdk:6.0
                     shell: Powershell
                     command: |-
-                      # dotnet restore
-                      # dotnet build
-                      # dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
-                      # trx2junit results.trx
+                      dotnet restore
+                      dotnet build
+                      dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
+                      trx2junit results.trx
                     reports:
                       type: JUnit
                       spec:
@@ -362,7 +362,7 @@ You can use a **Run** step to install a different version or edition of Visual S
                     image: mcr.microsoft.com/windows/servercore:ltsc2019
                     shell: Powershell
                     command: |-
-                      # winget install --id Microsoft.VisualStudio.2022.Enterprise
+                      winget install --id Microsoft.VisualStudio.2022.Enterprise
 ```
 
 ```mdx-code-block
@@ -382,7 +382,7 @@ If not already included on your build machine, you can specify a container image
                     image: mcr.microsoft.com/windows/servercore:ltsc2019
                     shell: Powershell
                     command: |-
-                      # winget install --id Microsoft.VisualStudio.2019.Enterprise
+                      winget install --id Microsoft.VisualStudio.2019.Enterprise
 ```
 
 ```mdx-code-block
@@ -407,7 +407,7 @@ In steps that allow you to supply your own commands, such as [**Run** steps](htt
                   spec:
                     shell: Powershell ## Set to Bash, Powershell, Pwsh (PowerShell Core), Python, or Sh.
                     command: |- ## Enter your script as you would in a command line shell.
-                      # dotnet restore
+                      dotnet restore
 ```
 
 Several shell binaries are pre-installed on Hosted Cloud runners, including Bash and PowerShell. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
@@ -431,7 +431,7 @@ In steps that allow you to supply your own commands, such as [**Run** steps](htt
                     image: mcr.microsoft.com/dotnet/sdk:6.0
                     shell: Powershell ## Set to Bash, Powershell, Pwsh (PowerShell Core), Python, or Sh.
                     command: |- ## Enter your script as you would in a command line shell.
-                      # dotnet restore
+                      dotnet restore
 ```
 
 You can also use **Run** steps to install different shell tools into the build environment, or specify a container image that has the necessary binaries for the command you want to run.
@@ -489,7 +489,17 @@ pipeline:
                   name: Dependencies
                   spec:
                     shell: Powershell
-                    command: "# dotnet add package Newtonsoft.json --version 12.0.1"
+                    command: |-
+                      dotnet add package Newtonsoft.json --version 12.0.1
+              - step:
+                  type: Run
+                  identifier: install_converter
+                  name: install converter
+                  spec:
+                    shell: Powershell
+                    command: |-
+                      dotnet tool install -g trx2junit
+                      export PATH="C:\Users\USER\.dotnet\tools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -497,9 +507,15 @@ pipeline:
                   spec:
                     shell: Powershell
                     command: |-
-                      # dotnet restore
-                      # dotnet build --no-restore
-                      # dotnet test --no-build --verbosity normal
+                      dotnet restore
+                      dotnet build
+                      dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
+                      trx2junit results.trx
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - results.xml
           sharedPaths:
             - C:\%LocalAppData%\NuGet\Cache
           platform:
@@ -571,7 +587,18 @@ pipeline:
                     image: mcr.microsoft.com/dotnet/sdk:7.0
                     shell: Powershell
                     command: |-
-                      # dotnet add package Newtonsoft.json --version 12.0.1
+                      dotnet add package Newtonsoft.json --version 12.0.1
+              - step:
+                  type: Run
+                  identifier: install_converter
+                  name: install converter
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: mcr.microsoft.com/dotnet/sdk:6.0
+                    shell: Powershell
+                    command: |-
+                      dotnet tool install -g trx2junit
+                      export PATH="C:\Users\USER\.dotnet\tools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -581,9 +608,15 @@ pipeline:
                     image: mcr.microsoft.com/dotnet/sdk:6.0
                     shell: Powershell
                     command: |-
-                      # dotnet restore
-                      # dotnet build --no-restore
-                      # dotnet test --no-build --verbosity normal
+                      dotnet restore
+                      dotnet build
+                      dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
+                      trx2junit results.trx
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - results.xml
               - step:
                   type: SaveCacheS3
                   name: Save Cache to S3
