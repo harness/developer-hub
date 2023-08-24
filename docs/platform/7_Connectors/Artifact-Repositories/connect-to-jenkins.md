@@ -16,7 +16,7 @@ You can connect Harness to Jenkins using a Harness Jenkins Connector. This Conne
 
 This topic shows you how to add a Jenkins Connector to Harness.
 
-### Limitations
+### Important note
 
 * Harness does support SAML authentication for Jenkins connections.
 
