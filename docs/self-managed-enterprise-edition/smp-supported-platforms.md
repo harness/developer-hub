@@ -9,19 +9,17 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 
 <Smp />
 
-## Deployment infrastructure
+## Production environment deployment infrastructure
 
-### Infrastructure
-* Required module-specific infrastructure:
+import Infra from '/docs/self-managed-enterprise-edition/shared/prod-env-infra.md';
 
-   | **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
-   | :-- | :--: | :--: | :--: | :--: |
-   | Platform (including CD, GitOps, OPA) | 40 | 50.4 | 125.4 | 1090 |
-   | Continuous Integration | 2 | 2 | 12 | 0 |
-   | Security Testing Orchestration | 4 | 3| 7 | 0 |
-   | Feature Flags | 3 | 3 | 6 | 0 |
-   | Service Reliability Management | 6 | 8 | 18 | 0 |
-   | Chaos Engineering | 15 | 12 | 24 | 50 |
+<Infra />
+
+## Development environment deployment infrastructure
+
+import Infra2 from '/docs/self-managed-enterprise-edition/shared/dev-env-infra.md';
+
+<Infra2 />
 
 ### Ingress
 * Istio supported version: 1-15-3
