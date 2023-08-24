@@ -1,3 +1,5 @@
+The production environment requires the following resources.
+
 | **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
 | :-- | :-: | :-: | :-: | :-: |
 | Platform (including CD, GitOps, OPA) | 40 | 50.4 | 125.4 | 1090 |

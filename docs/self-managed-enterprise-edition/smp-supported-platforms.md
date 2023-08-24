@@ -9,15 +9,17 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 
 <Smp />
 
-## Deployment infrastructure
-
-### Infrastructure
-
-The production environment requires the following resources.
+## Production environment deployment infrastructure
 
 import Infra from '/docs/self-managed-enterprise-edition/shared/prod-env-infra.md';
 
 <Infra />
+
+## Development environment deployment infrastructure
+
+import Infra2 from '/docs/self-managed-enterprise-edition/shared/dev-env-infra.md';
+
+<Infra2 />
 
 ### Ingress
 * Istio supported version: 1-15-3

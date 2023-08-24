@@ -30,27 +30,17 @@ Support each node with 8 cores vCPU and a minimum of 32 GB memory.
 
 :::
 
-### Production environment
-
-The production environment requires the following resources.
+### Production environment deployment infrastructure
 
 import Infra from '/docs/self-managed-enterprise-edition/shared/prod-env-infra.md';
 
 <Infra />
 
-### Development environment
+### Development environment deployment infrastructure
 
-The development environment requires the following resources.
+import Infra2 from '/docs/self-managed-enterprise-edition/shared/dev-env-infra.md';
 
-| **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
-| :-- | :-: | :-: | :-: | :-: |
-| Platform (including CD, GitOps, OPA) | 22 | 23.9 | 60.6 | 550 |
-| CCM | 11 | 12 | 27.3 | 1124 |
-| CI | 1 | 1 | 6 | 0 |
-| STO | 2 | 1.5 | 3.5 | 0 |
-| FF | 3 | 3 | 6 | 0 |
-| Chaos | 5 | 4 | 8 | 20 |
-| CET | 2 | 1.5 | 5 | 0 |
+<Infra2 />
 
 ## Included components
 
