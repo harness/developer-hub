@@ -60,15 +60,15 @@ If you are using the Jenkins SaaS (cloud) edition, the URL is in your browser's 
 If you are using the standalone edition of Jenkins, the URL is located in **Manage Jenkins**, **Jenkins Location**:
 
 ![](../../7_Connectors/static/connect-to-jenkins-10.png)
+
 ### Step 3: Authentication
 
-If you use Okta or 2FA for connections to Jenkins, use **API token** for **Authentication** in the Harness Jenkins Connector.Enter the credentials to authenticate with the server.
+If you use Okta or 2FA for connections to Jenkins, use **API token** for **Authentication** in the Harness Jenkins Connector. Enter the credentials to authenticate with the server.
 
 * **Username:** enter the user account username.
 * **Password/API Token:** select/create a Harness Encrypted Text secret using the Jenkins API token or password.  
 For token-based authentication, go to `http://Jenkins-IP-address/jobs/me/configure` to check and change your API access token. The token is added as part of the HTTP header.
-* **Bearer Token (HTTP Header):** select/create a Harness Encrypted Text secret using the OpenShift OAuth Access Token in **Bearer Token (HTTP Header)**.  
-The **Bearer Token (HTTP Header)** option is only for Jenkins servers hosted/embedded in an OpenShift cluster and using this authentication method. For more information, see [Authentication](https://docs.openshift.com/container-platform/3.7/architecture/additional_concepts/authentication.html) from OpenShift.
+* **Bearer Token (HTTP Header):** select/create a Harness Encrypted Text secret using the OpenShift OAuth Access Token in **Bearer Token (HTTP Header)**. The **Bearer Token (HTTP Header)** option is only for Jenkins servers hosted/embedded in an OpenShift cluster and using this authentication method. For more information, see [Authentication](https://docs.openshift.com/container-platform/3.7/architecture/additional_concepts/authentication.html) from OpenShift.
 
 Click **Submit**.
 
