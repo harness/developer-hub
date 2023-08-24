@@ -399,3 +399,8 @@ You should create the delegate with the minimum recommened resources to solve th
 ### Is there a functionality to auto accept invite for username/password login?
 It's present for saml based login because authentication is taken care by SAML provider. In password need login we need the user to create a password in Harness.
 
+### Where can we download the helm chart for delegate manually and not using helm commands?
+
+The helm chart for delegate can be found at the below location:
+https://github.com/harness/delegate-helm-chart/tree/main/harness-delegate-ng
+
