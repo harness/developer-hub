@@ -33,9 +33,9 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.8.0](https://github.com/harness/helm-charts/releases/tag/harness-0.8.0) |
 | Air Gap Bundle | [0.8.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.0) |
-| NG Manager | 79821 |
-| CI Manager | 4903 |
-| Pipeline Service | 1.37.13 |
+| NG Manager | 79819 |
+| CI Manager | 4902 |
+| Pipeline Service | 1.37.12 |
 | Platform Service | 79601 |
 | Access Control Service | 79400 |
 | Change Data Capture | 79819 |
@@ -570,9 +570,9 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.8.2](https://github.com/harness/helm-charts/releases/tag/harness-0.8.2) |
 | Air Gap Bundle | [0.8.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.2) |
-| NG Manager | 79819 |
-| CI Manager | 4902 |
-| Pipeline Service | 1.37.12 |
+| NG Manager | 79821 |
+| CI Manager | 4903 |
+| Pipeline Service | 1.37.13 |
 | Platform Service | 79601 |
 | Access Control Service | 79400 |
 | Change Data Capture | 79819 |
