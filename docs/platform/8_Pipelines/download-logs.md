@@ -26,7 +26,7 @@ To download pipeline log files, do the following:
    Harness queries the log service, exports the log, and downloads the `logs.zip` file.
 
 3. Open the `logs.zip` file, and extract the contents.
-4. Path to the log file in the directory.
+4. Drill down to the log file in the directory.
 
 ## Download step log files
 
@@ -41,7 +41,7 @@ To download step log files, do the following:
    Harness queries the log service, exports the log, and downloads the `logs.zip` file. 
 
 4. Open the `logs.zip` file, and extract the contents.
-5. Path to the log file in the directory.
+5. Drill down to the log file in the directory.
 
 ## Download logs via API
 
