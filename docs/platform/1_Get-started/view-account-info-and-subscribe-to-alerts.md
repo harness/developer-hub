@@ -10,7 +10,7 @@ To view your an overview of your account information, do the following:
 
 1. In Harness, select **Account Settings**.
 
-2. Select **Overview** to see an overview of your Harness account:
+2. Select **Overview** to see an overview of your Harness account.
 
    ![](./static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
    

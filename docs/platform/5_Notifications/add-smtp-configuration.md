@@ -32,6 +32,7 @@ In your Harness account, go to **Account Settings**.
 Click **Account Resources.**
 
 ![](./static/add-smtp-configuration-00.png)
+
 Click **SMTP Configuration** and then click **Setup**.
 
 The SMTP Configuration settings appear.
@@ -83,6 +84,7 @@ Click **Continue** after the test is successful.
 SMTP is configured for your account.
 
 ![](./static/add-smtp-configuration-04.png)
+
 ### Option: Send Notifications for a User Group using Email
 
 In your **Account**/**Organization**/**Project** click Access Control.
@@ -98,9 +100,11 @@ Enter the email address from which you want to send email notifications.
 You can also send email notifications to all the members of this user group by selecting **Send email to all users part of this group**.
 
 ![](./static/add-smtp-configuration-05.png)
+
 Click **Save**.
 
 ![](./static/add-smtp-configuration-06.png)
+
 ### Option: Send Notification for a Pipeline
 
 You can send Pipeline event notifications using email. Event notifications are set up using **Notify** option in your Pipeline.

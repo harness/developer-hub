@@ -12,9 +12,9 @@ To store and use encrypted secrets (such as access keys) and files, you can add 
 
 ## Before you begin
 
-* See Harness [Secret Manager Overview](../Secrets-Management/1-harness-secret-manager-overview.md).
-* See [About Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) by Microsoft.
-* See [Azure Key Vault Basic Concepts](https://docs.microsoft.com/en-us/azure/key-vault/general/basic-concepts).
+* Go to [Harness Secret Manager Overview](../Secrets-Management/1-harness-secret-manager-overview.md).
+* Go to [About Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) by Microsoft.
+* Go to [Azure Key Vault Basic Concepts](https://docs.microsoft.com/en-us/azure/key-vault/general/basic-concepts).
 * Make sure you have set up an Azure account.
 * Make sure you have **View** and **Create/Edit** permissions for secrets.
 
@@ -89,7 +89,7 @@ You can also create a **Reader** role programmatically via this PowerShell comma
 ```
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName "Reader" -Scope /subscriptions/<subscription_id>
 ```
-For details and examples, see Microsoft Azure's [Add or remove role assignments](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell#application-at-a-subscription-scope) documentation.
+For details and examples, go to Microsoft Azure's [Add or remove role assignments](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell#application-at-a-subscription-scope) documentation.
 
 ## Add an Azure Key Vault secret manager in Harness
 
@@ -110,7 +110,7 @@ To add an Azure Key Vault secret manager:
 
 4. Enter a **Name** for the secret manager.
 
-   You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, see [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
+   You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, go to [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
 5. Enter **Description** and **Tags** for your secret manager.
 
@@ -133,7 +133,7 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
    * In Azure, navigate to the **Azure Active Directory** > **App registrations** page, then select your App registration. (For details, see Azure's [Quickstart: Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).)
    * Copy the **Application (client) ID** for the Azure App registration you are using, and paste it into the Harness dialog's **Client ID** field.
-   * Copy the **Directory (tenant) ID** of the Azure Active Directory (AAD) where you created your application, and paste it into the Harness dialog's **Tenant ID** field. (For details, see Microsoft Azure's [Get values for signing in](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) topic.)
+   * Copy the **Directory (tenant) ID** of the Azure Active Directory (AAD) where you created your application, and paste it into the Harness dialog's **Tenant ID** field. (For details, go to Microsoft Azure's [Get values for signing in](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) topic.)
 3. In **Subscription**, you can optionally enter your Azure Subscription ID (GUID).
 
    To find this ID, navigate to Azure's **Subscriptions** page, as outlined above in [Step 1: Create Azure Reader Role](../Secrets-Management/8-azure-key-vault.md#create-an-azure-reader-role). From the resulting list of subscriptions, copy the **Subscription ID** beside the subscription that contains your vaults.
@@ -154,7 +154,7 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
    To create and exchange the azure authentication key, follow these steps:
 
-   1. Navigate to Azure's **Certificates & secrets** page. (For details, see Microsoft Azure's [Create a new application secret](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) documentation.)
+   1. Navigate to Azure's **Certificates & secrets** page. (For details, go to Microsoft Azure's [Create a new application secret](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) documentation.)
    2. In the resulting page’s **Client secrets** section, select **New client secret**.
 
    ![](../static/azure-key-vault-14.png)
@@ -190,7 +190,7 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
 ## Set up delegates
 
-In **Delegates** **Setup**, enter [**Selectors**](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Continue**.
+In **Delegates** **Setup**, enter [**Selectors**](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific delegates that you want to allow to connect to this Connector. Click **Continue**.
 
 ## Set up vault
 

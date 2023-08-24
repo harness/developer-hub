@@ -637,7 +637,7 @@ The pipeline level delegate selectors selected via runtime input.
 
 ## Deployment, pipeline, stage, and step status
 
-Deployment status values are a Java enum. The list of values can be seen in the deployments **Status** filter:
+Deployment status values are a Java enum. You can see the list of values in the deployments **Status** filter:
 
 ![](./static/harness-variables-27.png)
 
