@@ -37,6 +37,7 @@ In **Incoming Webhook**, enter a name, such as **Harness**.
 Right-click and save the Harness icon from here:
 
 ![](./static/send-notifications-to-microsoft-teams-12.png)
+
 Click **Upload Image** and add the Harness icon you downloaded.
 
 Next, you'll create the Webhook URL needed by Harness.

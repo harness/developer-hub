@@ -85,3 +85,8 @@ You can run Docker-in-Docker (DinD) as a service with the `sharedPaths` set to `
 The DinD service does not connect to the Kubernetes node daemon. It launches a new Docker daemon on the pod, and then other containers use that Docker daemon to run their commands.
 
 For details, go to [Run Docker-in-Docker in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md).
+
+## Does Drone CI support importing libraries when using jsonnet? If you keep seeing RUNTIME EROR. 
+
+You can set the env variable, otherwise it doesn't figure out the import path correctly: DRONE_JSONNET_IMPORT_LIMIT
+See community PR for more details: [https://github.com/harness/drone/commit/d50e89d4114a3fed49a1317f147078269a4bdfb5#diff-e1045c16b3ce29369b845d8421af54321c52394275810fc6caf92ca75e8be974R143]

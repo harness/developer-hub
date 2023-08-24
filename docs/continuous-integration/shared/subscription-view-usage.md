@@ -84,7 +84,7 @@ In this section, you can drill down into Harness Cloud build credit usage data, 
 * **Start Date:** The date on which a block of credits were applied to your account.
 * **Expiry Date:** The date on which a block of credits expires.
 * **Entitlement:** The number of credits allotted to your account on a particular **Start Date**.
-   * All plans received 2000 free credits each month.
+   * All plans receive 2000 free credits each month.
    * If you have a paid plan, you can see information about both free and paid credits.
 
 <!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_build_credits.png) -->
