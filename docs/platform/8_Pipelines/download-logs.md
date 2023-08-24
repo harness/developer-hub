@@ -4,6 +4,10 @@ description: Download pipeline or step execution logs via the UI.
 sidebar_position: 3
 ---
 
+:::info note
+Currently, this feature is behind the feature flag `SPG_LOG_SERVICE_ENABLE_DOWNLOAD_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 You can download pipeline or step execution logs via the UI. You can download pipeline, stage, and step execution logs via the API. 
 
 After you download the execution log files, you can view the JSON log.
