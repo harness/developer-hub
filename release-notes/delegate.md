@@ -84,9 +84,13 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 ### Hotfixes
 
-#### August 24, 2023, Harness Delegate hotfix version 80308
+#### Version 80308
 
 - Added support for rolling back the Green service in a Blue Green deployment on Amazon ECS. (CDS-76795, ZD-49005)
+
+:::info note
+Currently, this feature is behind the feature flag `CDS_ECS_BG_GREEN_SERVICE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 ## Previous releases
 
