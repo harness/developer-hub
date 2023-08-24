@@ -84,9 +84,9 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 ### Hotfixes
 
-#### August 24, 2023, Harness Delegate hotfix version 803xx
+#### August 24, 2023, Harness Delegate hotfix version 80308
 
-- Added support for rolling back the Green service in an Blue Green deployment on Amazon ECS. (CDS-76795, ZD-49005)
+- Added support for rolling back the Green service in a Blue Green deployment on Amazon ECS. (CDS-76795, ZD-49005)
 
 ## Previous releases
 
