@@ -4,7 +4,6 @@
 // const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const path = require("path");
-const clientRedirects = require("./client-redirects");
 
 const BASE_URL = process.env.BASE_URL || "/";
 
@@ -490,24 +489,6 @@ const config = {
       },
     }),
   plugins: [
-    [
-      "@docusaurus/plugin-client-redirects",
-      /* externalizing the redirects
-      {
-        redirects: [
-          {
-            from: "/release-notes",
-            to: "/release-notes/whats-new",
-          },
-          {
-            from: "/docs",
-            to: "/docs/category/documentation",
-          },
-        ],
-      },
-      */
-      clientRedirects,
-    ],
 
     [
       "@docusaurus/plugin-content-docs",
