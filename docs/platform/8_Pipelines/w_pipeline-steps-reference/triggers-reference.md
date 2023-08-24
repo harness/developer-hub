@@ -398,7 +398,7 @@ When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab inc
 
 For all Git providers supported by Harness, a webhook is automatically created in the repo. Usually, the webhook is automatically registered. If automatic registration fails, you can [manually register the webhook](#manual-and-custom-webhook-registration).
 
-For each repo, Harness creates one webhook with a superset of all permissions, rather than separate webhooks for each Git event type. The following Git events are included webhooks that Harness registers.
+For each repo, Harness creates one webhook with a superset of all permissions, rather than separate webhooks for each Git event type. The following Git events are included in the webhooks that Harness registers.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
