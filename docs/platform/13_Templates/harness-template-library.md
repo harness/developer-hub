@@ -34,13 +34,8 @@ To create a project-level template, do the following:
 
 1. In Harness, navigate to the **Deployments** module.
 2. In **Projects**, select the desired project.
-
-![](./static/harness-template-library-34.png)
-
-3. Select **Templates** under **Project Setup**.
-
+3. Under **Project Setup**, select **Templates**.
 4. Select **New Template**.
-
 5. Select **Step** to create a step template.
 
    The **Create New Step Template** settings appear.

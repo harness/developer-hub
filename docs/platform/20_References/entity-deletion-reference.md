@@ -59,6 +59,7 @@ For example, if a user was assigned to a role that had the Create/Edit Pipeline 
 A User entity is identified by their Id. The Id is the email address used to invite and sign up the User:
 
 ![](./static/entity-deletion-reference-01.png)
+
 A User and its Id can be deleted. 
 
 When a User is deleted, their Id (email address) can’t be used until the User is completely removed from the system. See [Entity Retention Policy](entity-retention-policy.md).

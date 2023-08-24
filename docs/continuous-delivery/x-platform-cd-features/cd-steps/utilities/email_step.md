@@ -1,5 +1,5 @@
 ---
-title: Email step reference
+title: Email step
 description: Send emails using pipelines
 sidebar_position: 5
 ---

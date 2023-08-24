@@ -19,9 +19,9 @@ This topic explains how to disable the built-in Harness Secret Manager.
 * [Harness Secret Management Overview](./1-harness-secret-manager-overview.md)
 * [Add a Secret Manager](./5-add-secrets-manager.md)
 * Make sure you have Account Admin permissions to disable the built-in Secret Manager.  
-For more information, see [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference).
+For more information, go to [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference).
 
-### Limitations
+### Important notes
 
 * When you disable the built-in Secret Manager, Harness does not move your existing secrets to another secret manager.
 * Before you disable Harness built-in secret manager, you must have at least one Secret Manager in the Account scope.
@@ -38,9 +38,11 @@ The Key Management Service only stores the key. Harness uses [envelope encrypti
 
 1. In your Harness Account, go to **Account Settings**.
 2. Select **Account Resources** and then select **Default Settings**.
-3. Select **Connectors**.
 
    ![](../static/disable-secretmanager-option.png)
+
+3. Select **Connectors**.
+
 
 4. Select **Disable default Harness Secret Manager** and then select **Save.**
 

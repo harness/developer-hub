@@ -3,7 +3,7 @@
 |**1. Foundations - SDLC, Services, and Application Architectures**  | |
 | Understand Continuous Delivery Foundations| [Getting Started CD](https://developer.harness.io/tutorials/cd-pipelines/)|
 | Describe common platforms and cloud providers| [What's Supported](https://developer.harness.io/docs/continuous-delivery/cd-integrations) | 
-| Explain different application architectures | [Provisiion Infastructure](https://developer.harness.io/docs/category/provision-infrastructure) |
+| Explain different application architectures | [Provision Infastructure](https://developer.harness.io/docs/category/provision-infrastructure) |
 | **2. Harness Architecture and Components** ||
 | Understand Harness Platform architecture| [Harness Platform Architecture](https://developer.harness.io/docs/getting-started/harness-platform-architecture/)|
 | Describe the Harness Manager and the Harness Delegate| [Delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/) | 

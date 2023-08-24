@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-08-24T10:00
+date: 2023-08-25T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,13 +19,44 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 24, 2023
+## Latest - August 25, 2023
 
 ### Continuous Integration, version 5407
 
-Improved support for `DRONE_` environment variables in CI pipelines. This improves compatibility for [plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)
+* You can use GitHub connectors with [GitHub App authentication](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings) in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline). (CI-8367)
+* Improved support for `DRONE_` environment variables in CI pipelines. This improves compatibility for [plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)
 
 <!-- /docs/continuous-integration/use-ci/optimize-and-more/ci-env-var-->
+
+## August 23, 2023
+
+### Security Testing Orchestration, version 1.66.1
+
+- This release includes the following UI enhancements for working with exemptions. (STO-6078)
+
+  - You can click on a row in the **Exemptions** table to view details for that exemption.
+
+    ![](static/sto-click-row-to-view-exemptions.png)
+
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+
+    ![](static/sto-exemption-details-no-baseline-selected.png)
+
+- The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4918)
+
+### Cloud Cost Management, version 80500
+
+* ServiceNow integration with Recommendations (CCM-11150)
+
+  Introducing ServiceNow as a ticketing tool to create tickets for recommendations. You can use either Jira or ServiceNow as your ticketing tool. You need to configure this setting at the account level on the **Default Settings** page. For more information, go to [View and apply recommendations](../docs/cloud-cost-management/4-use-ccm-cost-optimization/1-ccm-recommendations/1-home-recommendations.md).
+
+* AWS perspectives enhancement (CCM-13914)
+
+  Introducing support for the following additional `Group By` options in AWS perspectives:
+  - Billing entity
+  - Line item type  
+  
+  For more information, go to [Analyze AWS costs by using perspectives](../docs/cloud-cost-management/3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-aws.md).
 
 ## August 22, 2023
 

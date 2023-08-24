@@ -638,7 +638,7 @@ The pipeline level delegate selectors selected via runtime input.
 
 ## Deployment, pipeline, stage, and step status
 
-Deployment status values are a Java enum. The list of values can be seen in the deployments **Status** filter:
+Deployment status values are a Java enum. You can see the list of values in the deployments **Status** filter:
 
 ![](./static/harness-variables-27.png)
 
@@ -1310,7 +1310,7 @@ repeat:
 ```
 ![](./static/harness-variables-48.png)
 
-For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/run-a-script-on-multiple-target-instances).
+For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances).
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
