@@ -288,7 +288,74 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Rolling">
+<TabItem value="K8s Rolling">
+```
+
+<details open>
+<summary>What are Rolling deployments?</summary>
+
+Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
+
+</details>
+
+
+### Create an environment
+
+<details open>
+<summary>What are Harness environments?</summary>
+
+Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+
+</details>
+
+1. In **Default Project**, select **Environments**.
+2. Select **New Environment** and toggle to the **YAML** view _(next to VISUAL)_.
+3. Copy the contents of [k8s-environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-environment.yml) and paste it in the YAML editor, and then select **Save**.
+4. In the **Infrastructure Definitions** tab, select **Infrastructure Definition**, and then select **Edit YAML**.
+5. Copy the contents of [k8s-infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-infrastructure-definition.yml) and paste it in the YAML editor.
+6. Select **Save** and verify that the environment and infrastructure definition are created successfully.
+
+### Create a service
+
+<details open>
+<summary>What are Harness services?</summary>
+
+In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+
+</details>
+
+
+1. In **Default Project**, select **Services**.
+2. Select **New Service**, enter the name, `harnessguestbookdep`, and then select **Save**.
+3. Toggle to the **YAML** view _(next to VISUAL)_ under the **Configuration** tab, and then select **Edit YAML**.
+4. Copy the contents of [k8s-service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-service.yml) and paste it in the YAML editor.
+5. Select **Save** and verify that the service, _**harness_guestbook**_ is successfully created.
+
+### Create a pipeline
+
+<details open>
+<summary>What are Harness pipelines?</summary>
+
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
+
+</details>
+
+- In **Default Project**, select **Pipelines**.
+    - Select **New Pipeline**.
+    - Enter the name `guestbook_k8s_rolling_pipeline`.
+    - Select **Inline** to store the pipeline in Harness.
+    - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+    - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
+
+- Copy the contents of [k8s-rolling-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-rolling-pipeline.yml) and paste it in the YAML editor.
+- Select **Save** to save the pipeline.
+- You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
+
+![k8s-Rolling](../static/k8s-helm-tutorial/rolling.png)
+
+```mdx-code-block
+</TabItem>
+<TabItem value="NativeHelm Rolling">
 ```
 
 <details open>
