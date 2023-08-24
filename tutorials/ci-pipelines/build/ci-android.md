@@ -169,7 +169,7 @@ If you need to use Intel-based architecture and [Rosetta](https://developer.appl
   <TabItem value="hosted" label="Harness Cloud" default>
 ```
 
-Many Android packages, such as command line tools and an emulator, are already installed on Harness Cloud Linux machines. For more information about preinstalled tools and libraries, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+Many Android packages, such as command-line tools and an emulator, are already installed on Harness Cloud Linux machines. For more information about preinstalled tools and libraries, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
 Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
 
@@ -299,7 +299,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 You can use **Run** or **Run Tests** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
-If you're using Kotlin, you can take advantage of Harness' [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) feature.
+If you're using Kotlin, you can improve your unit test times with  Harness' [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) feature.
 
 ```mdx-code-block
 <Tabs>
@@ -525,7 +525,7 @@ These examples use [faberNovel/docker-android](https://github.com/faberNovel/doc
 
 ## Deploy to the Google Play Store
 
-The following examples use and [fastlane](https://docs.fastlane.tools/) to deploy an app to the Google Play Store. These are intended as examples only. They do not provide complete firebase configuration or app distribution requirements. To learn more about app distribution, go to the Google documentation on [Firebase App Distribution](https://firebase.google.com/docs/app-distribution) and the fastlane documentation on [Deploying to Google Play using fastlane](https://docs.fastlane.tools/getting-started/android/release-deployment/).
+The following examples use [fastlane](https://docs.fastlane.tools/) to deploy an app to the Google Play Store. These are intended as examples only. They do not provide complete firebase configuration or app distribution requirements. To learn more about app distribution, go to the Google documentation on [Firebase App Distribution](https://firebase.google.com/docs/app-distribution) and the fastlane documentation on [Deploying to Google Play using fastlane](https://docs.fastlane.tools/getting-started/android/release-deployment/).
 
 ```mdx-code-block
 <Tabs>
