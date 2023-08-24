@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-08-22T10:00
+date: 2023-08-24T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -84,7 +84,9 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 ### Hotfixes
 
-This release does not include hotfixes.
+#### August 24, 2023, Harness Delegate hotfix version 803xx
+
+- Added support for rolling back the Green service in an ECS Blue Green deployment. (CDS-76795, ZD-49005)
 
 ## Previous releases
 
