@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-08-22T10:00:30
+date: 2023-08-28T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -30,7 +30,36 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## Latest: Version 80307
+## Latest: Version 804xx
+
+### New features and enhancements
+
+- Earlier, in the audit trail, all changes to a user principal's role assignment were logged with the generic Update action type. The record offered no additional information about whether a role assignment was created, updated, or deleted. (PL-39799, ZD-46451)
+
+  Now, role assignment changes are logged with one of the following, more informative action types:
+    - Role Assignment Created
+    - Role Assignment Updated
+    - Role Assignment Deleted
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- The Harness user interface did not give you the option to view more than ten resources in a resource group. (PL-40747, ZD-49413)
+
+  This issue is now fixed.
+
+- A few minutes after you link a Harness user group to a different LDAP group, the change gets reverted. That is, the user group gets linked to the previous LDAP group. The behavior persists even if you delete the user group, create a new user group with the same name, and then associate it with the second LDAP group. (PL-40558, ZD-48332)
+
+  This issue is now fixed.
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Version 80307
 
 ### New features and enhancements
 
