@@ -26,8 +26,8 @@ This is an advanced pattern that requires you to be familiar with:
 
 Follow these steps to configure failure strategies and conditional executions in one stage of a CI pipeline. Specifically, these steps:
 
-* Add a failure strategy to a **Restore Cache** step that checks if a cache was restored.
-* Add a conditional execution to a **Run** step so that the **Run** step installs dependencies if the cache wasn't restored. If the cache was restore, the **Run** step is skipped.
+* Add a failure strategy to a **Restore Cache** step that checks if the cache was restored.
+* Add a conditional execution to a **Run** step that installs dependencies if the cache wasn't restored. If the cache was restored, then the **Run** step is skipped.
 
 :::tip
 
@@ -35,7 +35,7 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
 
 :::
 
-1. On your **Restore Cache** step, enable **Fail if Key Doesn't Exist**, and add a [failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) where the step fails on **All Errors** and executes the **Ignore** action in response. For example:
+1. In your **Restore Cache** step, enable **Fail if Key Doesn't Exist**, and add a [failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) where the step fails on **All Errors** and executes the **Ignore** action in response. For example:
 
    ```yaml
                  - step:
@@ -60,7 +60,7 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
 
    For information about configuring **Restore Cache** steps, go to [Save and Restore Cache from S3](./saving-cache.md) and [Save and Restore Cache from GCS](./save-cache-in-gcs.md).
 
-2. On your **Run** step that installs dependencies, add a [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions) that causes the step to run only if the **Restore Cache** step failed.
+2. In your **Run** step that installs dependencies, add a [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions) that causes the step to run only if the **Restore Cache** step failed.
 
    Set the conditional execution to **Execute this step if the stage execution is successful thus far** (`stageStatus: Success`) and include the JEXL condition `<+execution.steps.RESTORE_CACHE_STEP_ID.status> == "IGNORE_FAILED"`. For example:
 
@@ -78,7 +78,7 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
                        condition: <+execution.steps.gemfile_cache.status> == "IGNORE_FAILED" ## Replace 'gemfile_cache' with your Restore Cache step's ID.
    ```
 
-3. Include other steps in your pipeline as needed to complete your CI pipeline. These could include steps to build code, run tests, build and push images, upload artifacts, and so on. Make sure to include a **Save Cache** step. You can make other steps dependent on the restored cache using the same conditional execution settings as were applied to the **Run** step.
+3. Configure other steps as needed to complete your CI pipeline. These could include steps to build code, run tests, build and push images, upload artifacts, and so on. Make sure to include a **Save Cache** step. You can make other steps dependent on the restored cache using the same conditional execution settings as were applied to the **Run** step.
 
 ## YAML example
 
