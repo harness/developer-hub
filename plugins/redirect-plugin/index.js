@@ -38,9 +38,10 @@ async function docsPluginEnhanced(context, options) {
         return null;
       }
       const outPutPath = path.join(outDir, destPath);
+      //Will need to change _dirname when we change the filename
       const clientRedirectNetlifyPath = path.resolve(
         __dirname,
-        "../../archive/redirects/client-redirect-netlify-format-aug-16-2023.txt"
+        "../../archive/redirects/client-redirect-netlify-format-aug-23-2023.txt"
       );
       const exists = fs.existsSync(outPutPath);
       // const exists2 = fs.existsSync(clientRedirectNetlifyPath);
