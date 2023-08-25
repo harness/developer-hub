@@ -448,3 +448,11 @@ You can point to a manifest file containing just the namespace yaml. This means 
 The helm chart for delegate can be found at the below location:
 https://github.com/harness/delegate-helm-chart/tree/main/harness-delegate-ng
 
+### Will user can create one more project under the project ?
+As per the current design you can not create project under the project. The project is the whole separate entity which can't be created inside another project.
+
+### How to customized build pipeline. Ex: Create a script to clone the repo from TFS?
+User can run a script in a run step of a build pipeline as detailed in this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) and you should be able to clone the repo.
+
+### How the active service count will show in License subscription?
+We show the service usage account for the last 30 days.

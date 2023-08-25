@@ -713,3 +713,7 @@ No, It needs to be a different execution everytime.
 #### Can we select a delegate and see what steps have ran on it without going into each pipeline execution ?
 
 No, we don’t have this capability.
+
+### Is there to check the pipeline was ever run in last two years?
+
+As per the current design, the execution history is available up to the past 6 months only.

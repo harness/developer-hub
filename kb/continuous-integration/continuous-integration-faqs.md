@@ -75,5 +75,14 @@ Yes, it is an expected behaviour. The entrypoint in the base image should be ove
 Yes, We have a limit of 70KB on the line length in the CI client which writes to log service. One can write
 to a file and upload in case they can't see the full line.
 
+### Is it supported to run docker-compose from the docker in docker step?
+Yes, it's supported to run the docker-compose from the docker in docker step.
 
+### The container that does the Run command step, it must have docker and docker CLI installed right in order for this to work?
+Yes, user need to install docker and docker CLI in order to work.
 
+### If the "Run test" steps fails the Post-Command script will run or not?
+No, the Post-Command script will only run if the "Run test" step pass.
+
+### Is there a way to use the newer version of kaniko?
+Yes, The user can update the kaniko image as suggested in this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/).
