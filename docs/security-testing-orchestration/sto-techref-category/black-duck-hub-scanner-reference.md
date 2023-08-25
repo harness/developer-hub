@@ -340,6 +340,9 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 
 <StoLegacyContainer />
 
+```mdx-code-block
+import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
+```
 
 <StoLegacyRepo />
 
