@@ -1,10 +1,6 @@
 ---
 title: Continuous Delivery & GitOps FAQs
 description: Frequently asked questions about Harness Continuous Delivery & GitOps.
-redirect_from:
-  - /faqs
-  - /ci-faqs
-# sidebar_position: 2
 ---
 # FAQ
 
