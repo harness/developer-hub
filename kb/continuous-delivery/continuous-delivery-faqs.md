@@ -515,3 +515,38 @@ You can just write a file on the delegate and use the same delegate.
 
 This API can be used to fetch pipleine execution details : https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
 
+#### When making a change to a template, do we have to manually go through all the places that template is referenced and run “reconcile” ?
+
+Yes, it is expected design behaviour. Please refer more on this [here](https://developer.harness.io/docs/platform/templates/templates-best-practices/#reconciliation)
+
+#### If declarative rollback is enabled, will it rollback secrets and configmaps or we need to enable versioning ?
+
+No, Versioning is not done when declarative rollback is enabled. Please refer more on this [here](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning/)
+
+#### How do I use an output from one stage in a looping strategy of another stage ?
+
+- If there is certainty in terms of number of Stages created, this could be achieved by creating a intermediary shell script which is concatenating output variables from previous stages with a “,” and building a list which can them be passed onto the next stage for lopping over this list. For more on this please refer this [here](https://developer.harness.io/docs/platform/pipelines/best-practices-for-looping-strategies/)
+
+#### Do we support services and envs at the org level ?
+
+Yes, we do. For more please refer [here](https://developer.harness.io/docs/continuous-delivery/get-started/services-and-environments-overview/#creating-services-at-an-account-or-organization-level)
+
+#### Can Expressions operate within Harness Variables for configurations at the account level in the Next-Gen version?
+
+No, higher level entity cannot refer to lower scoped entities. Please refer more on this [here](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable/)
+
+#### Can we use a Pipeline within a pipeline in a template ?
+
+No, This is a limitation with templates. We do not support creating pipelines stage templates.
+
+#### Does an expression retrieve from which branch the pipeline loaded the yaml ?
+
+No, there is no such expression which will always show from which branch the pipeline yaml was loaded.
+
+#### Can we run two input sets of a pipeline together in parallel ?
+
+No, It needs to be a different execution everytime.
+
+#### Can we select a delegate and see what steps have ran on it without going into each pipeline execution ?
+
+No, we don’t have this capability.
