@@ -62,4 +62,14 @@ export const certifications: CardItem[] = [
       link: "/certifications/continuous-integration?lvl=architect",
       // numberOfCerts: 1,
     },
+    {
+      title: "Feature Flags - Developer (BETA COMING SOON)", 
+      module: MODULES.ff,
+      type: certType.developer,
+      description:
+      "FF Developer focuses on the fundamental skills to progressivly deploy/toggle your applications with FF projects.",
+      version: "Harness FF Free/Team Plans",
+      link: "/certifications/feature-flags?lvl=developer",
+      // numberOfCerts: 1,
+    },
   ];
