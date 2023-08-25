@@ -397,5 +397,66 @@ The delegate tags disapper as it will not be there in original delegate yaml whi
 You should create the delegate with the minimum recommened resources to solve this issue.
 
 ### Is there a functionality to auto accept invite for username/password login?
+
 It's present for saml based login because authentication is taken care by SAML provider. In password need login we need the user to create a password in Harness.
+
+### Do we have documentation for installing a custom certificate in a K8-based delegate?
+
+Yes, Documentation for installing a custom certificate in K8-based delegate is https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/.
+
+### In delegate resource threshold, what happens with the rejected new tasks? is the pipeline going to fail or are the new tasks going to be queued till more memory is available, Can we set the delegate to reject new tasks if x% of memory is being consumed?
+
+Delegate reject tasks or fail to acquire tasks when CPU and memory reach above a certain threshold if flag DYNAMIC_REQUEST_HANDLING is set as true in the yaml. Customers can choose to specify what threshold to reject the task(DELEGATE_RESOURCE_THRESHOLD), otherwise, there is a default value(70%).
+
+### What is the behavior when DYNAMIC_REQUEST_HANDLING is set to false or not set at all when memory reaches 100%? Are the new tasks going to be rejected or will the delegate simply crash?
+
+Delegate will not crash or shut down when that happens, it will not try to acquire any task. Once the resource level goes down it will start accepting tasks again.
+
+### How does the RBAC at the the expression level work? If project level users, does not have access to account level secrets, they should not be able to access it. What could be done so that project level user won't be able to access account level secrets?
+There is a feature flag(PIE_USE_SECRET_FUNCTOR_WITH_RBAC) user would have to turn on.
+
+### How can we prevent users with project scope access to account-level secrets?
+
+User can change this as user can remove “Account Viewer” role assigned to “All Account Users”  user group and assign any other Role+ResourceGroup as per their need.
+Once users don’t have view permissions on account level resources it will not be visible to them for use in projects.
+
+### Can we create secrets in child scope using Secret Manager from the parent scope?
+
+This will be soon available.
+
+<!-- ### What to do if user is getting account invites multiple times though he is not added into the account? //https://harness.slack.com/archives/CSL96M7UG/p1692764307738919
+
+It can be a case if user is manually added and user is also provisioned via scim. But the create flow finds a pending invite and therefore resends it as Azure SCIM periodically retries to provision users. Every retry is resulting into sending an invite.
+Therefore if the manual invite is deleted the scim provisioning will operate correctly and it will resolve the issue. -->
+
+### Do we have support for auto-upgrade of delegate for docker type? If not do customers to update their docker delegate image every time they want to upgrade to a newer version?
+
+No, we don’t have auto-upgrade for docker delegate. Yes, customers have to update their docker delegate image every time they want to upgrade to a newer version.
+
+<!-- ### Do we have option to —create-namespace when deploying a chart? 
+//A deploy stage where I apply a Namespace k8s manifest, then deploy the helm chart? //https://harness.slack.com/archives/CT069SRNJ/p1692633762625479
+
+A possible solution would be to keep a namespace object in the helm chart and pointed to a manifest file containing just the namespace yaml.
+ and avoid the command flag altogether. ̛It would be created the first time and then remain unchanged in subsequent deployments and use a kubectl command directly. -->
+
+### Do we have rate limit For FirstGen, exporting deployment logs? Can this be removed or modified per account?
+
+We do have rate limits - https://developer.harness.io/docs/platform/rate-limits. We cannot remove for a particular account that would risk putting a lot of load on our system and bring down Harness. But we can always request for increase.
+
+<!-- ### Is there a way to get a secret as base64?
+//https://harness.slack.com/archives/CT069SRNJ/p1692668910462349
+
+No there isn’t any such support for getting secrets as base 64, If it is multiline store it as a secret file, then use the configFile.getAsBase64 method or store the base64 encoded value as the secret text. -->
+
+<!-- ### In pipeline chaining, Is it possible to reference a child's variables, in the parent pipeline without using outputs?
+
+We can refer to child execution expression in parent pipeline only via outputs.Under outputs section
+"name: childPrimaryTag
+value: <+pipeline.stages.child.pipeline.stages.b_stage.spec.artifacts.primary.tag>". -->
+<!-- https://harness.slack.com/archives/CT069SRNJ/p1692656453083379 -->
+
+
+
+
+
 
