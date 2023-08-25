@@ -137,11 +137,7 @@ export default function CertificationsCD() {
                 <div className={styles.right}>
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Eliminate scripting and manual deployments with Argo
-                    CD-as-a-Service and powerful, easy-to-use pipelines. Empower
-                    your teams to deliver new features, faster – with AI/ML for
-                    automated canary and blue/green deployments, advanced
-                    verification, and intelligent rollback
+                  Assesses the fundamental skills to deploy your applications with CD & GitOps projects.
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
@@ -219,7 +215,7 @@ export default function CertificationsCD() {
                 <div className={styles.right}>
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy and maintain CD
+                    Assesses the fundamental skills to deploy and maintain CD & GitOps
                     projects and the overall Harness Platform. This exam builds
                     upon the{" "}
                     <a href="/certifications/continuous-delivery?lvl=developer">
@@ -290,7 +286,7 @@ export default function CertificationsCD() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Delivery & GitOps - Architect (BETA)
+                    Continuous Delivery & GitOps - Architect
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_arc_cd_badge.svg`}
@@ -306,7 +302,7 @@ export default function CertificationsCD() {
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
-                    design, implementation and management of CD.This exam builds
+                    design, implementation and management of CD & GitOps. This exam builds
                     upon the{" "}
                     <a href="/certifications/continuous-delivery?lvl=administrator">
                       Continuous Delivery & GitOps Administrator Certification

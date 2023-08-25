@@ -2,9 +2,6 @@
 sidebar_position: 1
 hide_table_of_contents: true
 title: Helm Chart
-redirect_from:
-  - /helm
-  - /chart
 ---
 
 # Deploy using Helm Chart

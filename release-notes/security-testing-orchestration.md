@@ -24,6 +24,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
+This release does not include new features.
+
+<!--
 - This release includes the following UI enhancements for working with exemptions. (STO-6078)
 
   - You can click on a row in the **Exemptions** table to view details for that exemption.
@@ -34,7 +37,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
     ![](static/sto-exemption-details-no-baseline-selected.png)
 
-- The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4918)
+- The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4918) 
+
+-->
 
 
 ### Early access features
@@ -43,9 +48,13 @@ This release does not include early access features.
 
 ### Fixed issues
 
+<!-- 
+
 - Fixed a UI issue in the Security Tests tag where the clickable severity tiles &mdash; introduced in version 1.64.1, described [below](#august-09-2023-version-1641) &mdash; had an extra border on the right. (STO-6372)
 
 - Fixed a UI issue where the module sidebar in the left-side menu would scroll when a user clicked different menus within STO. With this fix, the module sidebar maintains its position when a user clicks different menus. (STO-6219)
+
+-->
 
 - Fixed an issue where users could not select multiple projects in the Security Testing Dashboard or any custom dashboards that use STO components. With this fix, you can select multiple projects from a list of checkboxes. (STO-6228)
 
