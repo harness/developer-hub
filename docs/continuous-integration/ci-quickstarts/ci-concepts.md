@@ -35,7 +35,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <figcaption>Harness CI architecture diagram.</figcaption>
 </figure>
 
-The [Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) is central to all CI processes and is in charge of all CI operations. It runs in ur environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers.
+The [Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers.
 
 The [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me) communicates directly with your repos, repositories, and cloud providers. You can maintain your code and artifacts internally or on public platforms, such as GitHub or Docker Hub.
 

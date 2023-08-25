@@ -290,7 +290,7 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
 
    :::caution
 
-   If you use step-level parallelism, you must ensure that your test runners won't interfere with each other, because all parallel steps work on the same directory.
+   If you use step-level parallelism, you must ensure that your test runners won't interfere with each other because all parallel steps work in the same directory.
 
    :::
 
