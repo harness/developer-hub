@@ -55,6 +55,18 @@ This release does not include early access features.
 
   This issue is now fixed.
 
+- When adding users to a user group, you had to manually select users from the menu; pasting email addresses in the text box did not work. (PL-40559)
+
+  Now, in addition to selecting users from the menu, you can paste users' email addresses in the text box.
+
+- Earlier, when you clicked an expired link in an invitation email, Harness displayed the following message: “We couldn’t find an invitation matching the email address you entered. Please search your email for an invitation from Harness or contact your admin." This message was inaccurate. (PL-40597)
+
+  Now, Harness displays the following message when you click a link in an expired invitation: "This invitation URL has expired. Please request for a new invitation from your admin."
+
+- If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
+
+  Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
+
 ### Hotfixes
 
 This release does not include hotfixes.
