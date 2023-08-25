@@ -356,10 +356,9 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 - Select **Continue**. The **Review YAML** settings appear.
 - This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.  
 
-
-     ```yaml
-     kubectl apply -f gitops-agent.yml -n default
-     ```
+    ```
+    kubectl apply -f gitops-agent.yml -n default
+    ```
  - Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
 
 
@@ -490,12 +489,20 @@ A successful Application sync will display the following status tree under **Res
 </TabItem>
 <TabItem value="Terraform provider">
 ```
-Harness offers a [Terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you declaratively manage Harness GitOps entities alongside your application and cluster resources. These steps walk through using the Harness Terraform provider to create and install the GitOps agent, define related Harness entities, and deploy a sample application to your cluster.
+Harness offers a [Terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you declaratively manage Harness GitOps entities alongside your application and cluster resources. These steps walk through using Terraform to create and install the GitOps agent, define related Harness entities, and deploy a sample application to your cluster.
+
+<docimage path={require('../static/k8s-manifest-tutorial/terraform_harness_resources.png')} width="50%" height="50%" title="Click to view full size image" />
+
+<br/><br/>
+
+Before proceeding:
 
 1. Generate a [Harness API token](https://developer.harness.io/docs/platform/resource-development/apis/add-and-manage-api-keys/#create-personal-api-keys-and-tokens).
 1. Make sure [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) is installed on a computer that can connect to your cluster.
 
-### Getting started with the Harness Terraform provider
+<br/>
+
+### Harness Terraform provider
 
 1. Clone or download the Harness [gitops-terraform-onboarding](https://github.com/harness-community/gitops-terraform-onboarding) project.
 
@@ -516,13 +523,153 @@ A Terraform provider is a plugin that allows Terraform to define and manage reso
 
 </details>
 
+<br/>
+
 ### Input variables
+
+1. Open **terraform.tfvars**. This file contains example values for the Harness entities that will be created. 
+
+```file
+project_id            = "default_project"
+org_id                = "default"
+agent_identifier      = "testagent"
+agent_name            = "testagent"
+agent_namespace       = "default"
+repo_identifier       = "testrepo"
+repo_name             = "testrepo"
+repo_url              = "https://github.com/harness-community/harnesscd-example-apps/"
+cluster_identifier    = "testcluster"
+cluster_name          = "testcluster"
+env_name              = "testenv"
+service_name          = "testservice"
+```
+
+2. In **terraform.tfvars**, change the value of **repo_url** to your *GitHub fork* of the harnesscd-example-apps repository.
+  
+    - You are welcome to keep the other variable values as they are or rename them to suit your environment.
+
+3. Set **account_id** and **harness_api_token** as Terraform environment variables. Your Account ID can be found in the URL after account/ when you are logged into app.harness.io.
+
+```
+export TV_VAR_account_id="123abcXXXXXXXX"
+export TV_VAR_harness_api_token="pat.abc123xxxxxxxxxx…"
+```
+
+:::caution
+
+Never store your Harness API Key in a plain text configuration file or in version control. Use an environment variable or dedicated secrets manager.
+
+:::
+
+<br/>
+
+### Terraform module
+
+<details open>
+<summary>What is a Terraform module?</summary>
+
+A Terraform module is a collection of files that define the desired state to be enforced by Terraform. These files normally have the .tf extension.
+
+</details>
+
+1. Open **agent.tf**. This file defines the GitOps agent in Harness and then deploys the agent manifest to your cluster. The agent is created using the harness_gitops_platform_agent resource.
+
+```json
+resource "harness_platform_gitops_agent" "gitops_agent" {
+  identifier = var.agent_identifier
+  account_id = var.account_id
+  project_id = var.project_id
+  org_id     = var.org_id
+  name       = var.agent_name
+  type       = "MANAGED_ARGO_PROVIDER"
+  metadata {
+    namespace         = var.agent_namespace
+    high_availability = false
+  }
+}
+```
+
+If you have an *existing* Argo CD instance, change the <strong>type</strong> argument to <strong>CONNECTED_ARGO_PROVIDER</strong>. Otherwise leave as is.
+
+2. If you’ve made changes to any configuration files, verify the syntax is still valid. 
+
+```bash
+terraform validate
+```
+
+3. Preview the changes Terraform will make in Harness and your cluster.
+
+```bash
+terraform plan
+```
+
+4. Apply the Terraform configuration to create the Harness and cluster resources. Type **yes** to confirm when prompted.
+
+```bash
+terraform apply
+```
+
+Observe the output of `terraform apply` as your resources are created. It may take a few minutes for all the resources to be provisioned.
+
+<br/>
+
+### Verify GitOps deployment
+
+1. Log into [https://app.harness.io](https://app.harness.io). Select **Deployments**, then **GitOps**.
+    - Select **Settings**, and then select **GitOps Agents**
+    - Verify your GitOps agent is listed and displays a HEALTHY health status.
+
+2. Navigate back to **Settings**, and then select **Repositories**.
+    - Verify your **harnesscd-example-apps** repo is listed with Active connectivity status.
+
+3. Navigate back to **Settings**, and then select **Clusters**.
+    - Verify you cluster with its associated GitOps agent is listed with Active connectivity status.
+
+4. Select **Application** from the top right of the page.
+    - Click into the **guestbook** application. This is the application your deployed from the **harnesscd-example-apps** repo.
+    - Select **Resource View** to see the cluster resources that have been deployed. A successful Application sync will display the following status tree.
+
+![GitOps](../static/k8s-manifest-tutorial/guestbook_sync_terraform_gitops.png)
+
+5. Return to a local command line. Confirm you can see the GitOps agent and guestbook application resources in your cluster.
+
+```	
+kubectl get deployment -n default
+kubectl get svc -n default
+kubectl get pods -n default
+```
+
+6. To access the Guestbook application deployed via the Harness Pipeline, port forward the service and access it at [http://localhost:8080](http://localhost:8080]:
+
+```
+kubectl port-forward svc/guestbook-ui 8080:80
+```
+
+<br/>
+
+### Cleaning up
+
+1. If you know longer need the resources created in this tutorial, run the following command to delete the GitOps agent and associated Harness entities.
+
+```
+terraform destroy
+```
+
+**Note:** Since deleting the Guestbook application in Harness does not delete the deployed cluster resources themselves, you’ll need to manually remove the Kubernetes deployment.
+
+
+```
+kubectl delete deployment guestbook-ui -n defauli
+kubectl delete service guestbook-ui -n default
+```
+
 
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
 
+<br/>
 
 ### Congratulations!🎉
 You've just learned how to use **Harness GitOps** to deploy an application using a Kubernetes manifest.
