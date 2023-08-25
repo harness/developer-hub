@@ -59,7 +59,7 @@ This release does not include new features.
 
 This release does not include early access features. 
 
-### Fixed issues
+##### Fixed issues
 
 <!-- 
 
