@@ -102,7 +102,7 @@ Connectors contain the information necessary to integrate and work with third-pa
 
 Connectors require different permissions depending on your build environment and the tasks your pipeline performs. For example, if your pipeline builds and pushes an image to Docker Hub, you need a connector that can connect to the Docker Hub repo and push images.
 
-For more information, go to the Harness Platform documentation on [Connectors](https://developer.harness.io/docs/category/connectors).
+For more information, go to the Harness Platform documentation on [Connectors](/docs/category/connectors).
 
 ### Delegates
 

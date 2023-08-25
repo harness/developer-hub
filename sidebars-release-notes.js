@@ -134,6 +134,15 @@ const sidebars = {
         },
         {
           type: "link",
+          label: "Software Engineering Insights release notes",
+          href: "pathname:///release-notes/software-engineering-insights/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
           label: "Continuous Error Tracking release notes",
           href: "pathname:///release-notes/continuous-error-tracking/rss.xml",
           className: "sidebar-item-rss",
