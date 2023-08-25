@@ -6,6 +6,11 @@ sidebar_position: 8
 
 This topic covers the Harness deployment freeze feature, including how to set up freeze windows, access control, notifications, and best practices.
 
+## Important notes
+
+- Deployment freeze does not apply to [Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial.md).
+- You cannot edit enabled deployment freeze windows. If the deployment freeze window you want to change is enabled, you must first disable it, make your changes, then enable it again.
+
 ## Deployment freeze summary
 
 If you are new to deployment freezes, review the following summary.
@@ -88,10 +93,6 @@ Deployment freeze access control is configured using the **Deployment Freeze** r
 - **Manage**: add/edit/delete freeze at any level.
 - **Override**: When a deployment is required during a freeze duration, users with this role can still perform deployments.
 - **Global**: enable/disable freeze across all deployments at account, org, and project levels.
-
-### Important notes
-
-Deployment freeze does not apply to [Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial.md).
 
 ## Create a freeze window
 

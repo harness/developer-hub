@@ -66,10 +66,7 @@ To add a template, do the following:
 
 1. In Harness, navigate to the **Deployments** module.
 2. In **Projects**, select the desired project.
-3. Select **Templates** under **Project Setup**.
-
-   ![](./static/create-pipeline-template-66.png)
-
+3. Under **Project Setup**, select **Templates**.
 4. In **Templates**, select **New Template**.
 
 5. Select **Pipeline** to create a pipeline template.

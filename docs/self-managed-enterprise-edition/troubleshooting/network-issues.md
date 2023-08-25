@@ -1,6 +1,6 @@
 ---
 title: Network issues
-description: Troubleshoot network issues in Harness Self-Management Enterprise Edition.
+description: Troubleshoot network issues in the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 80
 ---
 

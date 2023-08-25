@@ -60,7 +60,7 @@ To learn about organizations and projects, go to [Create Organizations and Proje
 
 ## RBAC components
 
-Harness RBAC uses **Principals**, **Resource Groups** and **Roles** to control access.
+Harness RBAC uses **Principals**, **Resource Groups**, and **Roles** to control access.
 
 * [Principals](#principals) are entities taking action in the system. These include users, user groups, and service accounts.
 * [Resource groups](#resource-groups) define what objects can be acted on. Objects include organizations, projects, pipelines, connectors, users, and more.
@@ -89,8 +89,6 @@ Principals include:
 ### Resource groups
 
 A resource group is a set of Harness resources that a principal can access. You can create resource groups at all [scopes](#permissions-hierarchy-scopes). Resource groups are assigned along with [roles](#roles) to principals. Roles grant permissions (what actions can be taken) and resource groups grant access (what objects can be acted on).
-
-![](./static/rbac-in-harness-03.png)
 
 Resource groups either include **All Resources** (all resources of a given type) or **Named Resources** (specific, individual resources).
 

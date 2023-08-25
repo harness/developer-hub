@@ -60,6 +60,14 @@ import { MODULES } from "../../constants";
           newDoc: false,
         },
         {
+          title: "Android",
+          module: MODULES.ci,
+          description:
+            "Build and test an Android application.",
+          link: "/tutorials/ci-pipelines/build/android",
+          newDoc: true,
+        },
+        {
           title: "iOS and macOS",
           module: MODULES.ci,
           description:

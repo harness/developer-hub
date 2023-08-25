@@ -35,7 +35,7 @@ Make sure that you have met the following requirements:
   
   Here is a sample trigger YAML: 
   
-  ```
+  ```yaml
   trigger:
   name: stage3Trigger
   identifier: stage3Trigger

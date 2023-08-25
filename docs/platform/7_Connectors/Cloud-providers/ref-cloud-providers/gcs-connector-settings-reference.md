@@ -35,7 +35,7 @@ For Google Cloud Storage (GCS) and Google Container Registry (GCR), the followin
 
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
-Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`. Registry host name is declared in, for example, the **Host** field in the [Build and Push to GCR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md).
+Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`. Registry host name is declared in, for example, the **Host** field in the [Build and Push to GCR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md).
 
 ## Google Artifact Registry role requirements
 
@@ -71,8 +71,8 @@ GCP connector settings include:
 * **Tags:** Go to [Tags Reference](../../../20_References/tags-reference.md)
 * **Details:** Provide credentials that enable Harness to connect to your GCP account. There are two options:
   * Select **Specify credentials here** to use a GCP service account key.
-  * Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its authentication credentials from the Harness delegate that is running in GCP.
-* **Select connectivity mode**: Select whether Harness should communicate directly with GCP or go through a Harness delegate in GCP.
+  * Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its authentication credentials from the Harness Delegate that is running in GCP.
+* **Select connectivity mode**: Select whether Harness should communicate directly with GCP or go through a Harness Delegate in GCP.
 
 <details>
 <summary>Store service account keys as Harness secrets</summary>
@@ -90,7 +90,7 @@ To obtain the Google Cloud's service account key file, go to the Google document
 
 * **IAM role inheritance:** The connector inherits the GCP IAM role assigned to the delegate in GCP, such a Harness Kubernetes delegate running in Google Kubernetes Engine (GKE). Make sure the delegate has the IAM roles that your connector needs.
 * **GCP workload identity:** If you installed the Harness [Kubernetes delegate](../../../../first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate.md) in a Kubernetes cluster in GKE that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, then the Google Cloud Platform (GCP) connector inherits these credentials if it uses that delegate.
-* **Role and policy changes:** If you find that the IAM role associated with your GCP connector don't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the Harness delegate that your GCP connector is using. You may need to wait up to five minutes for the change to take effect.
+* **Role and policy changes:** If you find that the IAM role associated with your GCP connector don't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the Harness Delegate that your GCP connector is using. You may need to wait up to five minutes for the change to take effect.
 * **See also:**
   * [Add a Google Cloud Platform (GCP) connector](../../../7_Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md)
   * [GCP Policy Simulator](https://cloud.google.com/iam/docs/simulating-access)
@@ -101,12 +101,12 @@ To obtain the Google Cloud's service account key file, go to the Google document
 <summary>Learn more about connectivity modes</summary>
 
 * **Connect through Harness Platform:** Use a direct, secure communication between Harness and GCP.
-* **Connect through a Harness Delegate:** Harness communicates with GCP through a Harness delegate in GCP. You must choose this option if you chose to inherit delegate credentials.
+* **Connect through a Harness Delegate:** Harness communicates with GCP through a Harness Delegate in GCP. You must choose this option if you chose to inherit delegate credentials.
 
-If connecting through a Harness delegate, select either:
+If connecting through a Harness Delegate, select either:
 
-* **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegates Overview](../../../2_Delegates/delegate-concepts/delegate-overview.md).
-* **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Select Delegates with Tags](../../../2_Delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate Installation Overview](../../../2_Delegates/delegate-concepts/delegate-overview.md).
+* **Use any available Delegate**: Harness selects an available delegate at runtime. To learn how Harness selects delegates, go to [Delegates overview](../../../2_Delegates/delegate-concepts/delegate-overview.md).
+* **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Use delegate selectors](../../../2_Delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](../../../2_Delegates/delegate-concepts/delegate-overview.md).
 
 </details>
 
