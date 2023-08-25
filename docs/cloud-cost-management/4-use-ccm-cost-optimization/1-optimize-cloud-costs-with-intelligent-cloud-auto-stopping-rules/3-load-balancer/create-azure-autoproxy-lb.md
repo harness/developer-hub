@@ -93,7 +93,7 @@ sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-
   "tags": {
     "file-encoding": "utf-8"
   },
-  "value": "-----BEGIN PRIVATE KEY-----\\\\nMIIEuwI...IwN3\\\\n-----END PRIVATE KEY-----\\\n"
+  "value": "-----BEGIN PRIVATE KEY-----\\\\XXXXXXXXXXXXXXXXXXXXXXXXXXX\\\\n-----END PRIVATE KEY-----\\\n"
 
 ```
 
