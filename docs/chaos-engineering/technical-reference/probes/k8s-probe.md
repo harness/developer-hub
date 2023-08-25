@@ -5,7 +5,7 @@ sidebar_position: 5
 
 With the proliferation of custom resources & operators, especially in the case of stateful applications, the steady-state is manifested as status parameters/flags within Kubernetes resources. K8s Probe addresses verification of the desired resource state by allowing users to define the Kubernetes GVR (group-version-resource) with appropriate filters (field selectors/label selectors). The experiment makes use of the Kubernetes Dynamic Client to achieve this. The probe supports following CRUD operations:
 
-- **create:** It creates kubernetes resource based on the data provided inside probe.k8sProbe/inputs.data field.
+- **create:** It creates Kubernetes resource based on the data provided inside the probe.k8sProbe/inputs.data field.
 - **delete:** It deletes matching kubernetes resource via GVR and filters (field selectors/label selectors).
 - **present:** It checks for the presence of kubernetes resource based on GVR and filters (field selectors/label selectors).
 - **absent:** It checks for the absence of kubernetes resource based on GVR and filters (field selectors/label selectors).
@@ -135,16 +135,16 @@ Listed below is the probe schema for the Kubernetes probe, with properties share
    <td>The <code>operation</code> contains operation which should be applied on the kubernetes resource as part of k8sProbe. It supports four type of operation. It can be one of <code>create, delete, present, absent</code>.
    </td>
   </tr>
-<tr>
+  <tr>
    <td>data
    </td>
-   <td>Flag to hold the kubernetes resource manifest
+   <td>Flag to hold the Kubernetes resource manifest
    </td>
    <td>Optional
    </td>
    <td>N/A <code>type: string</code>
    </td>
-   <td>The <code>data</code> contains kubernetes resource manifest that is relevant solely for the purpose of the creation operation </code>.
+   <td>The <code>data</code> contains Kubernetes resource manifest that is relevant solely for the purpose of the creation operation.
    </td>
   </tr>
 </table>
