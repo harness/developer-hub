@@ -1,34 +1,27 @@
 ---
-title: Jfrog Xray scanner reference
-description: Image scans with Jfrog Xray
+title: Jfrog Artifact and JFrog xray scanner reference
+description: Image scans with Jfrog xray
 sidebar_position: 330
 ---
 
-You can set up Jfrog Xray scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can ingest scan results from JFrog Artifact and Jfrog xray. The standard workflow is to create a CI Build or Security Tests stage to your pipeline, add a Security step, and then use `setting:value` pairs to configure the step as specified below.
 
 ## Before you begin
 
-<!-- 
-### Docker-in-Docker requirements
+:::info important notes
 
-```mdx-code-block
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+- Harness STO supports `ingestionOnly` scans with Jfrog Xray. `orchestrationOnly` and `dataLoad` scans are not supported. 
 
-<StoDinDRequirements />
+- You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime. 
 
--->
+  You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
-### Root access requirements
-
-```mdx-code-block
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
-
-<StoRootRequirements />
+:::
 
 
 ## Security step settings
+
+You can add a Security step to a Security Tests or CI Build stage and then configure it as described below.
 
 ### Target and variant
 
@@ -46,13 +39,6 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `product_config_name` = `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-### Container scan settings
-
-```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-```
-
-<StoLegacyContainer />
 
 ### Ingestion file
 
@@ -68,7 +54,3 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
 <StoSettingFailOnSeverity />
-
-
-
-
