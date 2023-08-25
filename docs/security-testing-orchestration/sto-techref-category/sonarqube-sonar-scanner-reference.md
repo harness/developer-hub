@@ -26,6 +26,8 @@ helpdocs_is_published: true
 
 ### Root access requirements
 
+RP - REPLACE WITH RAW TEXT, TAKE OUT DIND REFERENCE
+
 ```mdx-code-block
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
 ```
@@ -147,6 +149,14 @@ import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md'
 
 
 #### Access Token
+
+RP - USER TOKEN -- RECOMMENDED WITH PERMISSION TO RUN SCANS AND CREATE PROJECTS
+
+IF YOU USE PROJECT TOKEN, MAKE SURE YOU HAVE ACCESS TO THAT PROJECT
+
+FOR MORE INFO, GO TO https://docs.sonarsource.com/sonarqube/latest/user-guide/user-account/generating-and-using-tokens/
+
+
 
 ```mdx-code-block
 import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
