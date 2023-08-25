@@ -128,8 +128,7 @@ Harness SEI has three built-in user roles:
 For more information about authentication, access, and user management, go to the following:
 
 * [Harness Platform authentication (including 2FA and SSO)](/docs/category/authentication)
-* [Harness Platform user management (including users, groups, and SCIM)](/docs/category/users)
-* [Harness RBAC overview](/docs/platform/Role-Based-Access-Control/rbac-in-harness)
+* [Harness RBAC overview](/docs/platform/role-based-access-control/rbac-in-harness)
 
 ## Built-in Insights
 
