@@ -197,3 +197,9 @@ The following resources demonstrate how to create Drone plugins. The process for
 * [Drone tutorial: Example Bash plugin](https://docs.drone.io/plugins/tutorials/bash/)
 * [Drone tutorial: Example Go plugin](https://docs.drone.io/plugins/tutorials/golang/)
 * [Video tutorial: Building your first Drone plugin](https://www.youtube.com/watch?v=JJgkX9ZYPpY)
+
+<!--:::tip
+
+Harness CI supports `DRONE_` environment variables. For more information, go to the CI environment variables reference ../optimize-and-more/ci-env-var.md .
+
+:::-->

@@ -1,7 +1,7 @@
 ---
 title: Permissions and ports for Harness connections
 description: Permissions and ports for all of the integrations.
-# sidebar_position: 2
+sidebar_position: 9
 helpdocs_topic_id: ga1155j91x
 helpdocs_category_id: fb16ljb8lu
 helpdocs_is_private: false
