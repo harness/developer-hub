@@ -179,8 +179,8 @@ Listed below is the probe schema for the Prometheus probe, with properties share
 
 ### Authentication
 
-This establishes a fundamental authentication mechanism for the Prometheus server. The username:password, encoded in base64, should be placed either within the 'credentials' field or as a file path in the 'credentialsFile' field. 
-It's important to note that `credentials` and `credentialsFile` are two options that cannot be used simultaneously
+This establishes a fundamental authentication mechanism for the Prometheus server. The username:password, encoded in base64, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field. 
+It's important to note that `credentials` and `credentialsFile` are two options that cannot be used simultaneously.
 
 <table>
   <tr>
@@ -217,12 +217,14 @@ It's important to note that `credentials` and `credentialsFile` are two options 
    <td><code>string</code>
    </td>
    <td>The <code>credentials</code> encompasses the filepath for basic authentication credentials, which are mounted to the experiment pod as volume secrets. These secrets consist of username:password encoded in base64 format for the Prometheus server
+   </td>
   </tr>
+</table>
 
 ### TLS
 
-It offers the mechanism to validate TLS certifications for the Prometheus server. You can supply the 'cacert,' or the client certificate and client key, to perform the validation. 
-Alternatively, you have the option to enable the 'insecureSkipVerify' check to bypass certificate validation
+It offers the mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key, to perform the validation. 
+Alternatively, you have the option to enable the `insecureSkipVerify` check to bypass certificate validation.
 
 <table>
   <tr>
@@ -272,6 +274,7 @@ Alternatively, you have the option to enable the 'insecureSkipVerify' check to b
    </td>
    <td>The <code>keyFile</code> holds the file path of the client key utilized for TLS verification
    </td>
+   </tr>
   <tr>
    <td>insecureSkipVerify
    </td>
@@ -284,6 +287,7 @@ Alternatively, you have the option to enable the 'insecureSkipVerify' check to b
    <td>The <code>insecureSkipVerify</code> skip the tls certificates checks
    </td>
   </tr>
+</table>
 
 ### Run properties
 
