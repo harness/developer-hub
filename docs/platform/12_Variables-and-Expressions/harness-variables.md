@@ -93,6 +93,11 @@ The pipeline and stage level variable expressions follow these formats:
 - **Pipeline-level** variables can be accessed as a collection of key-value pairs using `<+pipeline.variables>`.
 - **Stage-level** variables can be accessed as a collection of key-value pairs using `<+stage.variables>`.
 
+>**Note:**
+For few expressions like, `/tmp/spe/<+pipeline.sequenceId>`. Here `<+pipeline.sequenceId>` is a string
+so we need invoke the toString() on the integer value for our expression to work. So our final expression
+should look like `/tmp/spe/<+pipeline.sequenceId.toString()>`.
+
 ### Expression examples
 
 Here is an example of a Shell script step echoing some common variable expressions.
