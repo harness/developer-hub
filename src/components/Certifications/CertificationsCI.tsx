@@ -249,7 +249,7 @@ export default function CertificationsCI() {
           {/* Admin Exam Details */}
 
           <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details (BETA Comning Soon)</h2>
+            <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>

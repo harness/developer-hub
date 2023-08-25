@@ -75,6 +75,17 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
   },
   {
+    title: "Android application",
+    module: MODULES.ci,
+    description:
+      "Build and test an Android application.",
+    link: "/tutorials/ci-pipelines/build/android",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
+  },
+  {
     title: "C# (.NET Core) application",
     module: MODULES.ci,
     description:
@@ -183,6 +194,17 @@ export const CIList: CardItem[] = [
     time: "15 min",
     icon: "img/icon_ci.svg",
     newDoc: false,
+  },
+  {
+    title: "Android",
+    module: MODULES.ci,
+    description:
+      "Build and test an Android application.",
+    link: "/tutorials/ci-pipelines/build/android",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
   },
   {
     title: "iOS and macOS",

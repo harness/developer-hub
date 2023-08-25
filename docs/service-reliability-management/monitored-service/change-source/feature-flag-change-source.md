@@ -11,7 +11,7 @@ Currently, this feature is behind the feature flag `SRM_CUSTOM_CHANGE_SOURCE`. C
 :::
 
 
-Connecting a feature flags to a monitored service helps you monitor the impact of a change in the status of a feature flag on service health. The following steps explain how to connect a feature flag to a monitored service.
+Connecting a feature flag to a monitored service helps you monitor the impact of a change in the status of a feature flag on service health. The following steps explain how to connect a feature flag to a monitored service.
 
 1. In your Harness project, navigate to the **Feature Flags** module, and then select **Feature Flags**.  
    A list of all your feature flags is displayed.
