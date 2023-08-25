@@ -9,7 +9,11 @@ helpdocs_is_published: true
 ---
 
 :::note
+
+This build infrastructure option is only available with Harness CI Team and Enterprise plans.
+
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
 :::
 
 This topic describes how to set up a CI build infrastructure in Google Cloud Platform (GCP). To do this, you will create an Ubuntu VM and then install a Harness Delegate and Drone VM Runner on it. The runner creates VMs dynamically in response to CI build requests.
