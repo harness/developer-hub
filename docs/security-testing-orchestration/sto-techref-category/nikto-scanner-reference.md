@@ -156,6 +156,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 You can use this field to run the [nikto scanner](https://manpages.ubuntu.com/manpages/focal/man1/nikto.1.html) with specific command-line arguments. For example, you can customize the tests that the scanner runs with the `-Tuning` argument. The following example excludes a test from the scan: `-Tuning x01`
 
+```mdx-code-block
+import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
+```
 <StoSettingCliFlags />
 
 #### Fail on Severity
