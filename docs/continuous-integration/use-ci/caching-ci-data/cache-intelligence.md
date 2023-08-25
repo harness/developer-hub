@@ -15,7 +15,7 @@ There are several ways to configure caching in Harness CI, such as Cache Intelli
 
 ## Supported build infrastructures
 
-Currently, Cache Intelligence is only available for Linux and Windows platforms on [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart), the Harness-hosted build environment.
+Currently, Cache Intelligence is only available for Linux and Windows platforms on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), the Harness-hosted build environment.
 
 For other build infrastructures, you can use Save and Restore Cache steps, such as [Save and Restore Cache from S3](./saving-cache.md), to include caching in your CI pipelines.
 
@@ -47,7 +47,7 @@ Currently, the Cache Intelligence Visual Editor fields are behind the feature fl
 1. Edit the pipeline, and select the **Build** stage where you want to enable Cache Intelligence.
 2. Select the **Overview** tab for the stage.
 3. Select **Enable Cache Intelligence**.
-4. If you're using an unsupported build tool or a non-default cache location, make sure you add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
+4. If you're using an unsupported build tool, a non-default cache location, or a Windows platform, then you must add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
 5. Optionally, you can add a [custom cache key](#customize-cache-keys).
 
 ```mdx-code-block
@@ -75,7 +75,7 @@ For example:
           cloneCodebase: true
 ```
 
-If you're using an unsupported build tool or a non-default cache location, make sure you add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
+If you're using an unsupported build tool, a non-default cache location, or a Windows platform, you must add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
 
 Optionally, you can add a [custom cache key](#customize-cache-keys).
 
@@ -90,6 +90,7 @@ Cache Intelligence stores the data to be cached in the `/harness` directory by d
 
 * Cache Intelligence is not supported for your build tool.
 * You have customized cache locations, such as with `yarn config set cache-folder`.
+* You're using a Windows platform.
 
 ```mdx-code-block
 <Tabs>
@@ -106,6 +107,8 @@ Currently, the Cache Intelligence Visual Editor fields are behind the feature fl
 2. Select the **Overview** tab for the stage.
 3. Make sure **Enable Cache Intelligence** is selected.
 4. Add **Paths** to cache.
+
+   Note that on Windows platforms, you might need to specify the cache path from `C:`, such as `C:\harness\node_modules`.
 
    <!-- ![](./static/cache_int_paths.png) -->
 
@@ -133,7 +136,7 @@ In the YAML editor, add a list of `paths` to cache under `stage.spec.caching`, f
           caching:
             enabled: true
             paths:
-              - /harness/node_modules
+              - /harness/node_modules ## On a Windows platform, the path would be 'C:\harness\node_modules'.
           cloneCodebase: true
 ...
 ```

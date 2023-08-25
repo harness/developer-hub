@@ -29,7 +29,9 @@ You must not rename the cluster. If you're setting up a new connector with the c
 :::
 
 :::note
-The supported Kubernetes version is 1.19.
+* The supported Kubernetes version is 1.19 or higher. 
+* For a list of supported ingress controllers, go to [Supported Ingress Controllers for Kubernetes AutoStopping](../../../whats-supported.md).
+
 :::
 
 **​Set up your Kubernetes Cluster**
@@ -67,8 +69,12 @@ To install a metrics server on your EKS clusters, run the following command
 ```
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.5.0/components.yaml
 ```
+Resources can be adjusted proportionally based on number of nodes in the cluster. For clusters exceeding 100 nodes, allocate the following additional resources:
 
-For a list of supported ingress controllers, go to [Supported Ingress Controllers for Kubernetes AutoStopping](../../../../getting-started/supported-platforms-and-technologies.md#cloud-cost-management).
+  * 1m core per node
+  * 2MiB memory per node 
+  
+
 
 ### Kubernetes Coverage
 

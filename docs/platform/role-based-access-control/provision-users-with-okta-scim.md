@@ -147,7 +147,9 @@ Users with the Harness app assignment are shown under **People**. You can edit o
 
 These users are also listed in your Harness account.
 
-![](./static/provision-users-with-okta-scim-14.png)
+<!-- ![](./static/provision-users-with-okta-scim-14.png) -->
+
+<docimage path={require('./static/provision-users-with-okta-scim-14.png')} />
 
 You can use Okta to provision individual users or groups containing sets of users. If you use Okta to provision individual users directly to Harness, these users initially have no user group assignment in Harness. You must assign them to a group, either in Okta or in Harness. Directly provisioning individual users is the *only* way that you can change an Okta user's group membership in Harness. When provisioned as part of an Okta group, the user's group membership must always be managed through Okta.
 
@@ -191,7 +193,9 @@ You can check the status of pushed groups in your Harness Okta app.
 
 Active and successfully pushed groups are listed in your Harness account. The group members are also provisioned as Harness users when you push the group.
 
-![](./static/provision-users-with-okta-scim-18.png)
+<!-- ![](./static/provision-users-with-okta-scim-18.png) -->
+
+<docimage path={require('./static/provision-users-with-okta-scim-18.png')} />
 
 :::tip
 

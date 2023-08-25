@@ -231,7 +231,7 @@ For details on using *values.yaml* in Harness, go to [Kubernetes Services](/docs
 
 ## Shell script step
 
-In the stage **Execution** section, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step.
+In the stage **Execution** section, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step.
 
 In **Script**, reference the artifact and any additional attributes you configured. Here's an example where the stage is named Kube:
 

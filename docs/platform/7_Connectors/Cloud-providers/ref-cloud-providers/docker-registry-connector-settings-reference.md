@@ -39,7 +39,7 @@ To connect to a public Docker registry like Docker Hub, use `https://index.docke
 
 To connect to a private Docker registry, use `https://registry.hub.docker.com/v2/`.
 
-## Provider Type
+## Provider type
 
 Select the Docker registry platform, such as Docker Hub, Harbor, Quay, and so on.
 
@@ -79,6 +79,6 @@ If you use anonymous access for a Kubernetes deployment, make sure `imagePullSec
 </Tabs>
 ```
 
-## Select Connectivity Mode
+## Select connectivity mode
 
-You can connect through a Delegate or the Harness Platform. If you plan to use this connector with Harness Cloud build infrastructure, you must select **Connect through Harness Platform**.
+You can connect through a delegate or the Harness Platform. If you plan to use this connector with Harness Cloud build infrastructure, you must select **Connect through Harness Platform**.

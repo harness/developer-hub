@@ -146,6 +146,6 @@ If the build succeeds, you can find your pushed image on GCR.
 * [Useful techniques for Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#useful-techniques) (Build without pushing, build multi-architecture images, use Harness expressions for tags)
 * [Use Run steps](../run-ci-scripts/run-step-settings.md)
 * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
-* [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
+* [Delegate overview](/docs/platform/Delegates/delegate-concepts/delegate-overview)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)

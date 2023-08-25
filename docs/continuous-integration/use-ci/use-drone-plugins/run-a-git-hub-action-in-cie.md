@@ -9,6 +9,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import DindTrbs from '/docs/continuous-integration/shared/dind-bg-gha-trbs.md';
+```
+
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) are a GitHub feature that enable you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts.
 
 Harness CI supports launching GitHub Actions as part of a pipeline stage using the generic **Plugin** step or the **GitHub Action plugin** steps.
@@ -43,14 +49,6 @@ For more information, go to:
 
 ## Add the Plugin step
 
-:::info Docker-in-Docker
-
-If a stage has a [Docker-in-Docker Background step](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md), you can't use GitHub Actions that launch Docker-in-Docker (DinD) in the same stage.
-
-If possible, run the **Plugin** step for your GitHub Action in a separate stage, or try to find a GitHub Action that doesn't use DinD.
-
-:::
-
 1. In your pipeline's **Build** stage, and a [Plugin step](./plugin-step-settings-reference.md).
 2. Enter a **Name** and optional **Description**.
 3. For **Container Registry**, select a container registry connector that has Docker Hub access.
@@ -71,14 +69,10 @@ Use **Settings** to specify the GitHub Action you want to use and to pass variab
 
 :::tip
 
-You can use variable expressions for these values, such as `credentials: <+stage.variables.[TOKEN_SECRET]>`, which uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
+You can use variable expressions for these values. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
 
 :::
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 ```mdx-code-block
 <Tabs>
   <TabItem value="Visual" label="Visual editor example">
@@ -112,8 +106,6 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 ```
-
-
 
 ### Private Action repos
 
@@ -196,7 +188,7 @@ You can observe the GitHub Action in the build's logs.
 
 ## Pipeline YAML example
 
-This YAML example uses a `Plugin` step to run the Google `upload-cloud-storage` GitHub Action. It uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables) to store a token secret required by the Action. If you copy this example, you need to modify the placeholder values, image, and other settings according to your needs. You'll also need to create your own secret and stage variable.
+This YAML example uses a `Plugin` step to run the Google `upload-cloud-storage` GitHub Action. It uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) to store a token secret required by the Action. If you copy this example, you need to modify the placeholder values, image, and other settings according to your needs. You'll also need to create your own secret and stage variable.
 
 ```yaml
 pipeline:
@@ -255,3 +247,7 @@ pipeline:
 For more examples of GitHub Actions in Plugin steps, go to the [GitHub Actions Support in Harness CI blog post](https://harness.io/blog/continuous-integration/github-actions-support-harness-ci/).
 
 :::
+
+## Troubleshooting: Can't connect to Docker daemon
+
+<DindTrbs />

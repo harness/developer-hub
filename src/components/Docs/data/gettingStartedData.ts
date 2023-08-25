@@ -29,7 +29,7 @@ import {
         newDoc: true,
         type: [docType.Documentation],
         time: "9min",
-        link: "/tutorials/build-code/tfc-notification",
+        link: "/tutorials/ci-pipelines/build/tfc-notification",
       },
     ];
     */
@@ -49,11 +49,11 @@ import {
             link: "/tutorials",
           },
           {
-            title: "Start a free trial",
+            title: "Start for free",
             module: MODULES.platform,
             description:
-              "Try the Harness Software Delivery Platform for free.",
-            link: "/docs/getting-started/start-a-free-trial",
+              "Use the Harness Software Delivery Platform for free.",
+            link: "/docs/getting-started/start-for-free",
           },
         ],
       },

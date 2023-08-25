@@ -287,6 +287,44 @@ If you are using a local runner CI build infrastructure, modify the delegate ins
 </Tabs>
 ```
 
+## Deploy using a custom role
+
+During delegate installation, you have the option to deploy using a custom role. To use a custom role, you must edit the delegate YAML file.
+
+Harness supports the following custom roles:
+
+- `cluster-admin`
+- `cluster-viewer`
+- `namespace-admin`
+- custom cluster roles
+
+To deploy using a custom cluster role, do the following:
+
+1. Open the delegate YAML file in your text editor.
+
+2. Add the custom cluster role to the `roleRef` field in the delegate YAML.
+
+   ```yaml
+   ---
+   apiVersion: rbac.authorization.k8s.io/v1beta1
+   kind: ClusterRoleBinding
+   metadata:
+     name: harness-delegate-cluster-admin
+   subjects:
+     - kind: ServiceAccount
+       name: default
+       namespace: harness-delegate-ng
+   roleRef:
+     kind: ClusterRole
+     name: cluster-admin
+     apiGroup: rbac.authorization.k8s.io
+   ---
+   ```
+
+   In this example, the `cluster-admin` role is defined.
+
+3. Save the delegate YAML file. 
+
 ## Verify delegate connectivity
 
 Select **Continue**. After the health checks pass, your delegate is available for you to use. Select **Done** and verify your new delegate is listed.

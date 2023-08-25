@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts "
 import {
-  featuredTutorials,
+  // featuredTutorials,
   docsCards,
 } from "./data/continuousErrorTrackingData";
 
@@ -46,7 +46,8 @@ export default function CET() {
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      {featuredTutorials && featuredTutorials.length > 0 && (
+      {/* <h1>Here</h1> */}
+      {/* {featuredTutorials && featuredTutorials.length > 0 && (
         <>
           <div className={styles.sectionDivider}></div>
           <div className={styles.subSection}>
@@ -54,7 +55,7 @@ export default function CET() {
             <TutorialCard FeatureList={featuredTutorials} featuredCard={true} />
           </div>
         </>
-      )}
+      )} */}
     </div>
     // </Layout>
   );

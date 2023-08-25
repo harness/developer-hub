@@ -1,6 +1,6 @@
 ---
 title: What's supported in Self-Managed Enterprise Edition
-description: Platforms and technologies supported by Self-Managed Enterprise Edition
+description: Platforms and technologies supported by the on-prem Harness Self-Managed Enterprise Edition
 sidebar_label: What's supported
 sidebar_position: 1
 ---
@@ -9,23 +9,21 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 
 <Smp />
 
-## Deployment infrastructure
+## Production environment deployment infrastructure
 
-### Infrastructure
-* Required module-specific infrastructure:
+import Infra from '/docs/self-managed-enterprise-edition/shared/prod-env-infra.md';
 
-   | **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
-   | :-- | :--: | :--: | :--: | :--: |
-   | Platform (including CD, GitOps, OPA) | 40 | 50.4 | 125.4 | 1090 |
-   | Continuous Integration | 2 | 2 | 12 | 0 |
-   | Security Testing Orchestration | 4 | 3| 7 | 0 |
-   | Feature Flags | 3 | 3 | 6 | 0 |
-   | Service Reliability Management | 6 | 8 | 18 | 0 |
-   | Chaos Engineering | 15 | 12 | 24 | 50 |
+<Infra />
+
+## Development environment deployment infrastructure
+
+import Infra2 from '/docs/self-managed-enterprise-edition/shared/dev-env-infra.md';
+
+<Infra2 />
 
 ### Ingress
 * Istio supported version: 1-15-3
-* NGINX supported version: v1.0.0-alpha.2
+* NGINX supported version: v1.3.0
 
 ### RBAC requirements
 
@@ -41,7 +39,7 @@ The following permissions are required:
 * [Self-signed certificates](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed/)
 * [Air-gap mode](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/)
 * [Infrastructure monitoring](https://developer.harness.io/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem/)
-* [Backup and restore](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm/)
+* [Backup and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
 * [External Database](/tutorials/self-managed-enterprise-edition)
 * Disaster Recovery (coming soon)
 

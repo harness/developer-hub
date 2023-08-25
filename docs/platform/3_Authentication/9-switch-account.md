@@ -8,15 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can be a part of more than one Harness Accounts.
-
-This topic explains how to switch between multiple Accounts in Harness.
+You can be a part of more than one Harness Account. This topic explains how to switch between multiple Accounts in Harness.
 
 ### View and switch Accounts
 
 You can check to see if you are a part of multiple Accounts by clicking on your User Profile. 
 
 ![](./static/switch-account-51.png)
+
 Click **Switch Account**. The **Switch Account** settings appear.
 
 ![](./static/switch-account-52.png)
@@ -24,14 +23,12 @@ All the Accounts that you are a member of, are listed here.
 
 You can set a specific Account as default by clicking **Set as Default**.
 
-Switching Accounts might require re-authentication based on the configured authentication settings.The following table shows which settings will need a re-authentication when you switch accounts:
-
-
+Switching Accounts might require re-authentication based on the configured authentication settings. The following table shows which settings will need a re-authentication when you switch accounts:
 
 |  |  |  |
 | --- | --- | --- |
 | **Authentication Setting of Current Account** | **Authentication Setting of the switch Account** | **Need to Re-authenticate** |
-| Username and Password | <li> Username and Password </li><li>Username and Password + OAuth</li><li>OAuth (All Providers</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li> SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li><li>2FA at Account scope + OAuth</li> | Yes |
+| Username and Password | <li> Username and Password </li><li>Username and Password + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li> SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li><li>2FA at Account scope + OAuth</li> | Yes |
 | Username and Password + OAuth | <li> Username and Password</li><li>Username and Password + OAuth</li><li> OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li><li>2FA at Account scope + OAuth</li>| Yes |
 | OAuth (All providers) | <li> Username and Password </li><li>Username and Password + OAuth</li><li> OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li><li>2FA at Account scope + OAuth</li>| Yes |
 | OAuth (All providers) | <li> OAuth (All Providers)</li>| No |

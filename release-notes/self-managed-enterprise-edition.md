@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-07-31T10:00
+date: 2023-08-23T10:00
 sidebar_position: 13
 ---
 ```mdx-code-block
@@ -25,10 +25,7 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 - The `log-service` created separate Redis streams and set the expiration of all keys. Harness temporarily does not support high availability configuration for the `log-service` until this issue is resolved. (CI-9000)
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### New features and enhancements
 
 This release includes the following Harness module and component versions.
 
@@ -48,7 +45,7 @@ This release includes the following Harness module and component versions.
 
 **Alternative air gap bundle download method**
 
-Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
 gsutil -m cp \
@@ -180,10 +177,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
    This issue has been fixed. You can now input zero (0) in both the fields.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+### Early access features
 
 #### Continuous Delivery & GitOps
 
@@ -206,7 +200,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 #### Continuous Integration
 
 - **Remote debugging enhancements (CI-8135, CI-8048)**
-  * **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
+  * **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/troubleshoot-ci/debug-mode).
 
 #### Harness Delegate
 
@@ -215,10 +209,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
    This functionality is behind a feature flag, `DELEGATE_TASK_CAPACITY_CHECK`. When the feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues
 
 #### Self-Managed Enterprise Edition
 
@@ -569,10 +560,47 @@ You are missing the following permission: "View default settings" in Account sco
   
   This issue has been resolved. The selected metric pack option during monitored service creation will now be correctly reflected upon opening the monitored service.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
+### Patches
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.8.2](https://github.com/harness/helm-charts/releases/tag/harness-0.8.2) |
+| Air Gap Bundle | [0.8.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.2) |
+| NG Manager | 79821 |
+| CI Manager | 4903 |
+| Pipeline Service | 1.37.13 |
+| Platform Service | 79601 |
+| Access Control Service | 79400 |
+| Change Data Capture | 79819 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.353.10 |
+| LE NG | 68004 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
 ```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.8.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/sto_images.tgz" \
+  .
+```
+
+- Updated the UBI to 8.8 to address potential Go vulnerabilities. (CDS-75674)
+
+- Added a prefix for all log service created streams and support for backward compatibility with earlier streams. (CI-9000)
+
 
 ## Previous releases
 
@@ -601,7 +629,7 @@ This release includes the following Harness module and component versions.
 
 **Alternative air gap bundle download method**
 
-Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
 gsutil -m cp \
@@ -653,7 +681,7 @@ This release includes the following Harness module and component versions.
 
 **Alternative air gap bundle download method**
 
-Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
 gsutil -m cp \
@@ -709,7 +737,7 @@ This release includes the following Harness module and component versions.
 
 **Alternative air gap bundle download method**
 
-Some admins may not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
 gsutil -m cp \
@@ -849,7 +877,7 @@ gsutil -m cp \
 
 - **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. (CI-8135, CI-8048)
 
-   The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
+   The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/troubleshoot-ci/debug-mode).
 
 #### Continuous Delivery & GitOps
 
@@ -867,19 +895,16 @@ gsutil -m cp \
 
 #### Harness Delegate
 
-- New delegate metrics are available. This functionality is behind a feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. (PL-37908, PL-38538)
+- New delegate metrics are available. This functionality is behind a feature flag, `DYNAMIC_REQUEST_HANDLING`. (PL-37908, PL-38538)
 
    Harness captures delegate agent metrics for delegates shipped on immutable image types. The following new delegate agent metrics are available with the feature flag:
   
    | **Metric name** | **Description** |
    | :-- | :-- |
-   | `task_completed` | The number of tasks completed. |
-   | `task_failed` | The number of failed tasks. |
-   | `task_rejected` | The number of tasks rejected because of a high load on the delegate. |
-   | `delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
-   | `resource_consumption_above_threshold` | Delegate CPU/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
+   | `io_harness_custom_metric_task_rejected` | The number of tasks rejected because of a high load on the delegate. |
+   | `io_harness_custom_metric_resource_consumption_above_threshold` | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
 
-   Enable the feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST` to use the new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
+   Enable the feature flag, `DYNAMIC_REQUEST_HANDLING` to use the new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
 #### Fixed issues
 
@@ -1806,7 +1831,7 @@ This release includes the following Harness module and component versions.
 
 #### What's new
 
-- You can now use an external database with your installation. For more information, go to [Use an external database](/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database). (SMP-545)
+- You can now use an external database with your installation. For more information, go to [Use an external database](/tutorials/self-managed-enterprise-edition). (SMP-545)
 
 #### Fixed issues
 
@@ -1946,7 +1971,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 - You can now migrate from KOTS-based installations to Helm-based installations. (SMP-769)
 - Backup and restore for Helm-based installations is now supported using Velero. (SMP-767)
  
-  For more information, go to [Back up and restore](/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm).
+  For more information, go to [Back up and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm).
 - You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana. (SMP-766)
 
   For more information, go to [Monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem). 

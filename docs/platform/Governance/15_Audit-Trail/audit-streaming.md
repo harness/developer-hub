@@ -4,7 +4,6 @@ description: Stream your audit logs to an external destination.
 sidebar_position: 3
 ---
 
-
 :::important
 Currently, this feature is in Beta and behind the feature flag `PL_AUDIT_LOG_STREAMING_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
@@ -47,7 +46,7 @@ To add a streaming destination in Harness:
 
 7. Select **Continue**.
    
-![](./static/audit-streaming.png)
+   ![](./static/audit-streaming.png)
 
 ## Configure the streaming connector
 
@@ -136,7 +135,7 @@ Streamed audit events have a predictable schema in the body of the response.
 
 ### JSON payload
 
-```
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",

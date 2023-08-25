@@ -54,7 +54,7 @@ Configure the **SSH Credential** settings as follows.
 
 4. In **Select or create a SSH Key**, create or select an [Encrypted File Secret](./3-add-file-secrets.md) that contains the relevant SSH Key file.
 
-   :::note
+   :::info note
 
    If you need to update the SSH key for an existing SSH credential, you can't edit the actual encrypted file secret that you selected when you created the credential. Instead, you must create a new encrypted SSH key file secret.
 

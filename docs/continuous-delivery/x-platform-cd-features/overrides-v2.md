@@ -16,12 +16,6 @@ Overrides can be defined at project, organization, and account levels.
 
 In **Account Settings > Account Resources > Continuous Deployment**, set the **Enable Service Override V2** to `true` for the enhanced overrides experience. 
 
-:::info
-
-Make sure that the `NG_SETTINGS` feature flag is enabled to view this setting.
-
-:::
-
 ![overridesV2](./static/overrides-v2.png)
 
 ## Limitations
