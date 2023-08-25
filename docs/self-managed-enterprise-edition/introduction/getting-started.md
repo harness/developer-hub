@@ -3,12 +3,13 @@ title: Harness Self-Managed Enterprise Edition Overview
 sidebar_label: Overview
 description: This topic provides the basics on how to create a Harness account and first project. These are the first tasks that come after installing the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 2
-redirect_from:
-  - /docs/self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview
 helpdocs_topic_id: 09gjhl0tcw
 helpdocs_category_id: tvlmjozubh
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+- /docs/self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview
+- /docs/self-managed-enterprise-edition/introduction/getting-started-with-self-managed-enterprise-edition
 ---
 
 This topic provides an architecture overview, installation links, and the basics on how to create a Harness account and your first project. These are the first tasks that come after you install Harness Self-Managed Enterprise Edition.
