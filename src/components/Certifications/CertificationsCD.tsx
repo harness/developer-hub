@@ -215,7 +215,7 @@ export default function CertificationsCD() {
                 <div className={styles.right}>
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy and maintain CD
+                    Assesses the fundamental skills to deploy and maintain CD & GitOps
                     projects and the overall Harness Platform. This exam builds
                     upon the{" "}
                     <a href="/certifications/continuous-delivery?lvl=developer">
@@ -302,7 +302,7 @@ export default function CertificationsCD() {
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
-                    design, implementation and management of CD.This exam builds
+                    design, implementation and management of CD & GitOps. This exam builds
                     upon the{" "}
                     <a href="/certifications/continuous-delivery?lvl=administrator">
                       Continuous Delivery & GitOps Administrator Certification
