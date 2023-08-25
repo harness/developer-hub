@@ -44,10 +44,7 @@ To create a template, do the following:
 
 1. In Harness, navigate to the **Deployments** module.
 2. In **Projects**, select the desired project.
-
-   ![](./static/add-a-stage-template-48.png)
-
-3. Select **Templates** under **Project Setup**.
+3. Under **Project Setup**, select **Templates**.
 
 4. Select **New Template**.
 

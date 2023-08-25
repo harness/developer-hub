@@ -397,5 +397,54 @@ The delegate tags disapper as it will not be there in original delegate yaml whi
 You should create the delegate with the minimum recommened resources to solve this issue.
 
 ### Is there a functionality to auto accept invite for username/password login?
+
 It's present for saml based login because authentication is taken care by SAML provider. In password need login we need the user to create a password in Harness.
+
+### Do we have documentation for installing a custom certificate in a K8-based delegate?
+
+Yes we can install custom certificates on K8-Based Delegate, refer to this [Documentation](https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
+
+### What happens with the rejected tasks in delegate ?
+
+Delegate reject tasks or fail to acquire tasks when CPU and memory reach above a certain threshold if flag `DYNAMIC_REQUEST_HANDLING` is set as true in the yaml.
+
+### Can we set the delegate to reject new tasks if x% of memory is being consumed?
+
+Yes you can choose to specify what threshold to reject the task using the flag `DELEGATE_RESOURCE_THRESHOLD`, otherwise, the  default value is 70%.
+
+### What is the behavior when DYNAMIC_REQUEST_HANDLING is set to false or not set at all when memory reaches 100% ?
+
+ It will not try to acquire any task. Once the resource level goes down it will start accepting tasks again. There will be no crash of delegates or shut down of delegates during this case.
+
+### If project level users, does not have access to account level secrets, they should not be able to access it. What could be done so that project level user won't be able to access account level secrets? How is it Handled by RBAC while using expressions?
+
+There is a feature flag `PIE_USE_SECRET_FUNCTOR_WITH_RBAC` when enabled can help you acheive the same.
+
+### How can we prevent users with project scope access to account-level secrets?
+
+This can be changed by modifying the role bindings of "All Account Users" user group and assign any other Role and ResourceGroup as per their need.
+
+### Do we have support for auto-upgrade of delegate for docker type ?
+
+No, we don't have auto-upgrade for docker delegate, but you can update your docker delegate image once the newer version is released by Harness 
+
+### Do we have rate limit For FirstGen, exporting deployment logs? Can this be removed or modified per account?
+
+Yes , we do have rate limits, more information can be read over here [Documentation](https://developer.harness.io/docs/platform/rate-limits). We cannot remove rate limits per account , but you can always request for an increase.
+
+### Is there a way to get a secret as base64 encoded?
+
+No there isn't any such support for getting secrets as base64, but you can store the value as base64 encoded secret and then get the value using the expression `secrets.getValue("my_secret")`.
+
+### In pipeline chaining, Is it possible to reference a child's variables, in the parent pipeline without using outputs?
+
+We can refer to child execution expression in parent pipeline only via outputs using the following expression `<+pipeline.stages.child.pipeline.stages.b_stage.spec.artifacts.primary.tag>`.
+
+### Is create-namespace option available in Harness while deploying chart?
+
+You can point to a manifest file containing just the namespace yaml. This means you can create a Kubernetes YAML file that defines only the namespace you want to use for your application. Even a shell script step would be simple enough in this case, and use a kubectl command directly. This suggests that using a shell script as a step in your deployment process to apply the namespace YAML file is straightforward. You can use the kubectl command in the shell script to create the namespace.
+### Where can we download the helm chart for delegate manually and not using helm commands?
+
+The helm chart for delegate can be found at the below location:
+https://github.com/harness/delegate-helm-chart/tree/main/harness-delegate-ng
 

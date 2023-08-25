@@ -50,8 +50,6 @@ You can add a variable to the account, organization, or project [scope](/docs/pl
 
 1. In Harness, select **Account Settings**.
 2. Select **Account Resources**, and then select **Variables**.
-   
-   <docimage path={require('./static/add-a-variable-02.png')} width="60%" height="60%" title="Click to view full size image" />  
 3. Select **New Variable**. The **Add Variable** settings appear.
   
    <docimage path={require('./static/add-a-variable-03.png')} width="30%" height="30%" title="Click to view full size image" />  
@@ -159,7 +157,7 @@ The expression to reference **Project** scope variables is `<+variable.VARIABLE_
 Let's add the variable in a pipeline.
 
 1. In Harness, go to a pipeline in the same org as the variable you created.
-2. In a stage **Execution** section, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step and reference the variables:
+2. In a stage **Execution** section, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step and reference the variables:
 
 
 ```

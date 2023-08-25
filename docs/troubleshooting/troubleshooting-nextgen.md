@@ -634,7 +634,7 @@ For more information about SAML SSO configuration with Azure, see [Single sign-o
 
 ### Shell scripts
 
-This section covers common problems experienced when using a [Shell script](../continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts.md) step.
+This section covers common problems experienced when using a [Shell script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step.
 
 #### FileNotFoundExeption inside shell script execution task
 
