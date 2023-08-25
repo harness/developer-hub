@@ -8,19 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
----
-title: SonarQube SonarScanner reference
-description: Repository scans with SonarQube SonarScanner
-sidebar_position: 300
-helpdocs_topic_id: 4qe4h3cl28
-helpdocs_category_id: m01pu2ubai
-helpdocs_is_private: false
-helpdocs_is_published: true
----
+ You can run automated [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) scan to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
+ 
+ You can set up SonarQube scans using a [SonarQube step](#sonarqube-step-configuration) or a [Security step (_legacy workflow_)](#security-step-configuration-legacy).
 
-You can set up a Security step with [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes.
-
-:::note
+:::info important notes
 * STO supports repository scanning only for SonarScanner.
 * STO supports all languages supported by SonarScanner.
 * Before you scan your repo, make sure that you perform any prerequisites for the language used in your repo. If you are scanning a Java repo with more than one Java file, for example, you must compile `.class` files before you run the scan.  
@@ -42,7 +34,9 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ## SonarQube step configuration
 
-The recommended workflow is to add a SonarQube step to a Security Tests or CI Build stage and then configure it as described below. You can also configure SonarQube scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is to add a SonarQube step to a Security Tests or CI Build stage and then configure it as described below.
+
+A Docker-in-Docker background step is not required for this workflow.
 
 <!--
 ```mdx-code-block
@@ -250,8 +244,7 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step configuration (_legacy_)
 
-
-You can set up a Security step with [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes.
+You can add a Security step to a Security Tests or CI Build stage and then configure it as described below. 
 
 ### Docker-in-Docker requirements
 
