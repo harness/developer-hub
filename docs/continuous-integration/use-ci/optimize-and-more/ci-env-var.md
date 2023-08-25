@@ -326,13 +326,11 @@ These variables provide identifiers, statuses, and other references for pipeline
 
 For commit SHAs and other codebase-related identifiers, go to <!--[Codebase and trigger variables]-->the [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
 
-### CI
-
-<!--and `DRONE`-->
+<!--### CI/DRONE
 
 Identifies the build environment as CI. Always `true` for all builds.
 
-<!-- ### DRONE_BUILD_LINK
+### DRONE_BUILD_LINK
 
 Provides a deep link to the Harness [build details](../viewing-builds.md). This value is immutable. Equivalent to the expression `<+pipeline.executionUrl>`.
 

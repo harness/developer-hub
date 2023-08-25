@@ -18,7 +18,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Added support for Post Prod Rollback for ASG deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/rollback-deployments/). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-77450, CDS-76352)
 
-### Harness Delegate, version 80308, and Continuous Integration, version 5407
+### Harness Delegate, version 80308, and Continuous Integration, version 5408
 
 **GitHub App authentication for GitHub connectors (CI-8577)**
 

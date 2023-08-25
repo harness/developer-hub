@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-08-25T10:00
+date: 2023-08-26T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,9 +19,9 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 25, 2023
+## Latest - August 26, 2023
 
-### Continuous Integration, version 5407
+### Continuous Integration, version 5408
 
 * You can use GitHub connectors with [GitHub App authentication](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings) in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline). (CI-8367)
 * Improved support for `DRONE_` environment variables in CI pipelines. This improves compatibility for [plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)
