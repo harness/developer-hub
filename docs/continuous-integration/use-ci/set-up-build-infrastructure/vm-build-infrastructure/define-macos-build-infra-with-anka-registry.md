@@ -6,6 +6,8 @@ sidebar_position: 40
 
 :::note
 
+This build infrastructure option is only available with Harness CI Team and Enterprise plans.
+
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
