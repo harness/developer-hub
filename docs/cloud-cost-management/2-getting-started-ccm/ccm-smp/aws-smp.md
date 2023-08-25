@@ -614,15 +614,18 @@ ccm:
       enabled: true
 ```
 
-## Handling secrets
+## Handling Kubernetes secrets
 
-When installing or upgrading the Helm charts, default secrets are created in the cluster. You need to update these secrets with the values. Before updating the secrets, you need to convert the secret into bas64 encoded format. For example, if your **AWS_DESTINATION_BUCKET** value is "harness-ccm-service-data-bucket-12345678", it would be stored as `aGFybmVzcy1jY20tc2VydmljZS1kYXRhLWJ1Y2tldC0xMjM0NTY3OA==` after encoding.
+When installing or upgrading the Helm charts, Kubernetes secrets with default values are created within the cluster. You need to update these secrets with the values. Before updating the secrets, you need to convert the secret into base64 encoded format. For example, if your **AWS_DESTINATION_BUCKET** value is "harness-ccm-service-data-bucket-12345678", it would be stored as `aGFybmVzcy1jY20tc2VydmljZS1kYXRhLWJ1Y2tldC0xMjM0NTY3OA==` after encoding.
 
 The following are the secrets specific to CCM services:
 
 - batch-processing
 
 
+```
+kubectl edit secret batch-processing -n <namespace>
+```
 
 ```
 S3_SYNC_CONFIG_ACCESSKEY: <S3_SYNC_CONFIG_ACCESSKEY> [AWS Setup - Add a new user - Use saved aws access key]
@@ -631,11 +634,21 @@ S3_SYNC_CONFIG_SECRETKEY: <S3_SYNC_CONFIG_ACCESSKEY> [AWS Setup - Add a new user
 
 - cloud-info-secret-mount [config-file]
 
+
+```
+kubectl edit secret cloud-info-secret-mount -n <namespace>
+```
+
 ```
 config-file: <config-file> [Sample can be found below]
 ```
 
 - nextgen-ce
+
+
+```
+kubectl edit secret nextgen-ce -n <namespace>
+```
 
 ```
 AWS_ACCESS_KEY: <AWS_ACCESS_KEY> [AWS Setup - Add a new user - Use saved aws access key]
@@ -873,6 +886,11 @@ cleanupInterval = 0
 The following are some secrets from platform-service that you need to update:
 
 - smtp-secret - Required to support budget alerts email.
+
+
+```
+kubectl edit secret smtp-secret -n <namespace> 
+```
 
 ```
 SMTP_HOST: <SMTP_HOST>

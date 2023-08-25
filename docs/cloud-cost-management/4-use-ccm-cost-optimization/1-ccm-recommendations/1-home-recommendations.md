@@ -52,7 +52,7 @@ To apply recommendations, you need to raise a ticket in the ticketing tool that 
 
 
 :::note
- Switching your ticketing tool between Jira and ServiceNow will result in the removal of the existing recommendation tickets. The status of the tickets change to **Create a ticket**.
+ Switching your ticketing tool between Jira and ServiceNow results in the removal of the existing recommendation tickets. The status of the tickets changes to **Create a ticket**.
 :::
 
 
