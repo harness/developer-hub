@@ -5,6 +5,8 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
 import { getCertLevel } from "./LandingPage";
+import DeveloperCertificationReviewGuide from "./data/ff-certification-developer-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/ff-certification-developer-exam-details.md";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
