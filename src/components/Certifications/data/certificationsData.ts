@@ -27,7 +27,7 @@ export const certifications: CardItem[] = [
       module: MODULES.cd,
       type: certType.architect,
       description:
-      "CD & GitOps Architect focuses on key technical job functions and advanced skills in design, implementation and management of CD & GitOps.This exam builds upon the CD & GitOps Administrator Certification.",
+      "CD & GitOps Architect focuses on key technical job functions and advanced skills in design, implementation and management of CD & GitOps. This exam builds upon the CD & GitOps Administrator Certification.",
       version: "Harness CD & GitOps Enterprise Plan",
       link: "/certifications/continuous-delivery?lvl=architect",
       // numberOfCerts: 1,
