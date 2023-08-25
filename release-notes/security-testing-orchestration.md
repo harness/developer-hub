@@ -24,9 +24,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 This update to the SonarQube runner includes the following fixed issues:
 
-- Fixed an issue where the Sonarqube step would ignore additional path segments in the domain name. If the domain was set to `https://mysonar.com/sonar`, for example, the SonarQube step would ignore the full path and try to communicate with `https://mysonar.com`. (STO-6442)
+- Fixed an issue where the SonarQube step would ignore additional path segments in the domain name. If the domain was set to `https://mysonar.com/sonar`, for example, the SonarQube step would ignore the full path and try to communicate with `https://mysonar.com`. (STO-6442)
 
-- Fixed an issue where the Sonarqube step could not override some SonarQube scan CLI parameters specified in the **Additional CLI arguments** field.  (STO-6443)
+- Fixed an issue where the SonarQube step could not override some SonarQube scan CLI parameters specified in the **Additional CLI arguments** field.  (STO-6443)
 
 ## Previous releases
 
