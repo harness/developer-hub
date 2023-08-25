@@ -6,7 +6,7 @@ redirect_from:
   - /docs/continuous-delivery/gitops/helm-oci-repository-aws-ecr
 ---
 
-This topic assumes that you have already created an [OCI Helm repository](/docs/continuous-delivery/gitops/add-a-harness-git-ops-repository#add-a-repository).
+This topic assumes that you have already created an [OCI Helm repository](/docs/continuous-delivery/gitops/use-gitops/add-a-harness-git-ops-repository#add-a-repository).
 
 When storing an OCI Helm repository in Amazon Elastic Container Registry (ECR), you must obtain a token. The Amazon ECR tokens are short-lived, hence need rotation. 
 

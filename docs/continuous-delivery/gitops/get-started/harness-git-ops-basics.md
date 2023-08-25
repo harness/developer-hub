@@ -7,7 +7,7 @@ helpdocs_category_id: 013h04sxex
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
-  - /docs/continuous-delivery/gitops/harness-git-ops-basics
+  - /docs/continuous-delivery/gitops/get-started/harness-git-ops-basics
 ---
 
 This topic describes the basic concepts of Harness GitOps.

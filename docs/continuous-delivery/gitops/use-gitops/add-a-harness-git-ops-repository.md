@@ -7,7 +7,7 @@ helpdocs_category_id: 013h04sxex
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
-  - /docs/continuous-delivery/gitops/add-a-harness-git-ops-repository
+  - /docs/continuous-delivery/gitops/use-gitops/add-a-harness-git-ops-repository
 ---
 
 This topic describes how to add a Harness GitOps repository containing the declarative description of a desired state.
