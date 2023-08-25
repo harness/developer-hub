@@ -438,3 +438,8 @@ No there isn't any such support for getting secrets as base64, but you can store
 ### In pipeline chaining, Is it possible to reference a child's variables, in the parent pipeline without using outputs?
 
 We can refer to child execution expression in parent pipeline only via outputs using the following expression `<+pipeline.stages.child.pipeline.stages.b_stage.spec.artifacts.primary.tag>`.
+
+### Is create-namespace option available in Harness while deploying chart?
+
+You can point to a manifest file containing just the namespace yaml.
+Even a shell script step would be simple enough in this case, and use a kubectl command directly.
