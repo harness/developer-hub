@@ -199,6 +199,13 @@ export default function Certifications() {
                   />
                 </div>
                 {/* <h5>Coming Soon</h5> */}
+                <h5>Coming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_dev_ff_badge.svg`}
+                    alt="Developer FF Badge"
+                  />
+                </div>
               </div>
             </div>
             <div className={styles.verticalLine}></div>

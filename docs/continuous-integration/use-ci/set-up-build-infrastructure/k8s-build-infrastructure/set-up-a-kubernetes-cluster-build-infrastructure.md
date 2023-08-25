@@ -17,6 +17,12 @@ This topic assumes you have a basic understanding of [Harness' key concepts](/do
 
 Review the following important information about using Kubernetes cluster build infrastructures for your Harness CI builds.
 
+:::info
+
+The Kubernetes cluster build infrastructure option is only available with Harness CI Team and Enterprise plans.
+
+:::
+
 ### Privileged mode is required for Docker-in-Docker
 
 If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure.

@@ -34,7 +34,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * ServiceNow integration with Recommendations (CCM-11150)
 
-  Introducing ServiceNow as a ticketing tool to create tickets for recommendations. You can use either Jira or ServiceNow as your ticketing tool. You need to configure this setting at the account level on the **Default Settings** page. For more information, go to [View and apply recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations).
+  Introducing ServiceNow as a ticketing tool to create tickets for recommendations. You can use either Jira or ServiceNow as your ticketing tool. You need to configure this setting at the account level on the **Default Settings** page. For more information, go to [View and apply recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations/).
 
 * AWS perspectives enhancement (CCM-13914)
 
@@ -42,7 +42,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   - Billing entity
   - Line item type  
   
-  For more information, go to [Analyze AWS costs by using perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws).
+  For more information, go to [Analyze AWS costs by using perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws/).
 
 ## August 22, 2023
 

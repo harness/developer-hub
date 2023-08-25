@@ -116,6 +116,12 @@ The following **Platform** settings are available:
 
 Use the **Kubernetes** infrastructure option to [set up a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
+:::info
+
+The Kubernetes cluster build infrastructure option is only available with Harness CI Team and Enterprise plans.
+
+:::
+
 The following **Platform** settings are available:
 
 * **Select the Operating System:** Select the relevant OS.
@@ -250,6 +256,12 @@ The following **Platform** settings are available:
 ```
 
 Use the **VMs** infrastructure option for [self-hosted cloud provider VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
+
+:::info
+
+The VM build infrastructure option is only available with Harness CI Team and Enterprise plans.
+
+:::
 
 The following **Platform** settings are available:
 

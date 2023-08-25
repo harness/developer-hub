@@ -103,20 +103,23 @@ The new issue appears in Jira.
 
 ## Parent issue support
 
-Harness supports parent issues (the `issuelink` field in Jira). 
+Harness supports parent links (the `issuelink` field in Jira). 
 
 This support enables you to do the following:
 
 * The Jira Create step can now be used to create issues with existing issues as their parent.
 * The Jira Update step can be used to update the parent of a specific issue.
 * A sub-task can be created using the Jira Create step.
-* A ticket parent can be provided by simply typing the parent issue key in **Parent Link** setting, such as `TJI-47890`. 
+* A ticket parent can be provided by simply typing the parent issue key in **Parent** setting, such as `TJI-47890`. 
 
 To use parent links, do the following:
 
 1. In the Jira Create or Update step, select **Optional Configuration**.
 2. Select **Fields**. 
-3. In **Add Jira Fields**, select **Parent Link**, and select **Add**.
+3. In **Add Jira Fields**, select **Parent**, and select **Add**.
    
-   ![picture 0](static/8144e6b546672f2faa646b364fccf73a07d8617ca8e23797eb49b6f132f7c8cc.png)  
-4. In **Parent Link**, add the parent issue key.
+   ![picture 1](static/cab823f2e376787040c80df674c55ea77863f3bca861a50d50052f7014893adf.png)  
+
+4. In the **Value** for **Parent**, add the parent issue key.
+   
+   ![picture 2](static/c459f24248f46e308d03f01250b477480e555e8407bbfd1c6aa811a5054d0ef4.png)  
