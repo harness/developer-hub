@@ -34,6 +34,7 @@ module.exports = {
     //  },
     //===================================================================================
 
+
      // Created by SudheendraKatte for branch srm-14106-reset-error-budget on August 10, 2023
      {
       from: "/docs/service-reliability-management/slo-annoations",
@@ -504,6 +505,16 @@ module.exports = {
     {
       from: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
       to: "/tutorials/ci-pipelines/kubernetes-build-farm",
+    },
+
+    {
+      from: "/tutorials/build-code/build/tfc-notification",
+      to: "/tutorials/ci-pipelines/tfc-notification",
+    },
+
+    {
+      from: "/tutorials/ci-pipelines/build/tfc-notification",
+      to: "/tutorials/ci-pipelines/tfc-notification",
     },
 
     // Created by aimurphy for branch ci-4876 on May 10 2023
