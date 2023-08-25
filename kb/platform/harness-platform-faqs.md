@@ -441,5 +441,4 @@ We can refer to child execution expression in parent pipeline only via outputs u
 
 ### Is create-namespace option available in Harness while deploying chart?
 
-You can point to a manifest file containing just the namespace yaml.
-Even a shell script step would be simple enough in this case, and use a kubectl command directly.
+You can point to a manifest file containing just the namespace yaml. This means you can create a Kubernetes YAML file that defines only the namespace you want to use for your application. Even a shell script step would be simple enough in this case, and use a kubectl command directly. This suggests that using a shell script as a step in your deployment process to apply the namespace YAML file is straightforward. You can use the kubectl command in the shell script to create the namespace.
