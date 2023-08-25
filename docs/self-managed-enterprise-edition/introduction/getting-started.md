@@ -14,7 +14,7 @@ redirect_from:
 
 This topic provides an architecture overview, installation links, and the basics on how to create a Harness account and your first project. These are the first tasks that come after you install Harness Self-Managed Enterprise Edition.
 
-For links to information about using CI and CD pipelines, as well as the basics on Security Testing Orchestration (STO), go to [Next steps](/docs/self-managed-enterprise-edition/introduction/getting-started-with-self-managed-enterprise-edition#next-steps).
+For links to information about using CI and CD pipelines, as well as the basics on Security Testing Orchestration (STO), go to [Next steps](/docs/self-managed-enterprise-edition/introduction/getting-started#next-steps).
 
 ## Architecture overview
 Harness Self-Managed Enterprise Edition can be installed in a Kubernetes cluster or on virtual machines.
