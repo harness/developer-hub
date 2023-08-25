@@ -1,7 +1,7 @@
 ---
 title: Format test reports
 description: Test reports must be in JUnit XML format to appear on the Tests tab.
-sidebar_position: 40
+sidebar_position: 50
 ---
 
 ```mdx-code-block
@@ -10,6 +10,8 @@ import TabItem from '@theme/TabItem';
 ```
 
 Results on the [Tests tab](./viewing-tests.md) are parsed from test reports specified in the **Report Paths** setting in **Run** and **Run Tests** steps. Test reports must be in [JUnit XML format](https://llg.cubic.org/docs/junit/) to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only.
+
+For information about code coverage reports and viewing reports on the **Artifacts** tab, go to [Code Coverage](./code-coverage.md).
 
 ## JUnit XML format resources
 
@@ -55,7 +57,7 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
                   identifier: Run_Tests_with_Intelligence
                   name: Run Tests with Intelligence
                   spec:
-                    args: gradle test --tests
+                    args: test --tests
                     buildTool: Gradle
                     enableTestSplitting: true
                     language: Java
@@ -106,9 +108,10 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
                           - /harness/test-results/junit.xml
 ```
 
-:::tip
+:::info
 
-[Use pytest to run unittest.](https://docs.pytest.org/en/6.2.x/unittest.html)
+* You can [use pytest to run unittest](https://docs.pytest.org/en/6.2.x/unittest.html).
+* If you use [test splitting](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism) with pytest, you must set `junit_family=xunit1` in your code repo's `pytest.ini` file or include `-o junit_family="xunit1"` in the step's `command`.
 
 :::
 
@@ -230,7 +233,7 @@ You can use the [go-junit-report](https://github.com/jstemmer/go-junit-report) t
 
 ### Java - Maven
 
-This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs Maven tests with [Test Intelligence](./set-up-test-intelligence.md).
+This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs tests with Maven and [Test Intelligence](./set-up-test-intelligence.md).
 
 ```yaml
               - step:
@@ -365,8 +368,8 @@ Add the [Minitest Junit Formatter](https://github.com/aespinosa/minitest-junit) 
 ```yaml
   - step:
       type: Run
-      name: Run RSpec Tests
-      identifier: run_rspec_tests
+      name: Run Ruby Tests
+      identifier: run_ruby_tests
       spec:
         shell: Sh
         command: |

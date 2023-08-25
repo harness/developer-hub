@@ -51,7 +51,7 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
   - [zsh: no matches found](#zsh-no-matches-found)
   - [User does not have "Deployment: execute" permission](#user-does-not-have-deployment-execute-permission)
 - [Continuous delivery](#continuous-delivery)
-  - [Deployment rate limits](#deployment-rate-limits)
+  - [Error with release name too long](#error-with-release-name-too-long)
   - [Error in log when there is no error](#error-in-log-when-there-is-no-error)
 - [Continuous integration](#continuous-integration)
 - [Helm](#helm)
@@ -65,6 +65,7 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
 - [Terraform](#terraform)
   - [Provisioned resources already exist (Terraform state file locked)](#provisioned-resources-already-exist-terraform-state-file-locked)
   - [TerraformValidation - Terraform validation result: false](#terraformvalidation---terraform-validation-result-false)
+- [AWS ECS](#aws-ecs)
 - [Harness secret managers](#harness-secret-managers)
 - [SAML SSO](#saml-sso)
   - [Signed in user is not assigned to a role for the project (Harness)](#signed-in-user-is-not-assigned-to-a-role-for-the-project-harness)
@@ -388,31 +389,21 @@ Error messages of the form `User does not have "Deployment: execute" permission`
 
 ![](./static/troubleshooting-nextgen-01.png)
 
-To resolve this, see [Add and manage roles](../platform/4_Role-Based-Access-Control/9-add-manage-roles.md).
+To resolve this, see [Manage roles](../platform/role-based-access-control/add-manage-roles).
 
 ### Continuous delivery
 
 The following issues can occur when running Pipeline deployments.
 
-#### Deployment rate limits
+#### Error with release name too long
 
-If your deployment rate reaches 85% of the limit, the following message is displayed:
-
-
-```
-85% of deployment rate limit reached. Some deployments may not be allowed. Please contact Harness support.
-```
-If your deployment rate reaches 100% of the limit, the following message is displayed:
-
+In the deployment logs in Harness you may get an error similar to this:
 
 ```
-Deployment rate limit reached. Some deployments may not be allowed. Please contact Harness support.
+6m11s Warning FailedCreate statefulset/release-xxx-xxx create Pod release-xxx-xxx-0 in StatefulSet release-xxx-xxx failed error: Pod "release-xxx-xxx-0" is invalid: metadata.labels: Invalid value: "release-xxx-argus-xxx": must be no more than 63 characters
 ```
-Harness applies an hourly and daily deployment limit to each account to prevent configuration errors or external triggers from initiating too many undesired deployments. If you are notified that you have reached a limit, it is possible that undesired deployments are occurring. Please determine if a Trigger or other mechanism is initiating undesired deployments. If you continue to experience issues, contact [Harness Support](mailto:support@harness.io).
 
-:::note
-The limit is 100 deployments in every 24-hour period. The hourly limit is 40 deployments and is designed to detect any atypical upsurge in the number of deployments.
-:::
+This is an error coming from the kubernetes cluster stating that the release name is too long.  This can be adjusted in Environments > click Name of the Environment in Question > Infrastructure Definitions > click Name of the Infrastructure Definition in Question > scroll down > expand Advanced > modify the Release name to be something shorter
 
 #### Error in log when there is no error
 
@@ -438,7 +429,7 @@ If Harness does not show standard error, then many errors will not be captured, 
 
 ### Continuous integration
 
-For troubleshooting advice specific to Continuous Integration, go to [Troubleshoot Continuous Integration](/docs/continuous-integration/troubleshooting-ci.md).
+For troubleshooting advice specific to Continuous Integration, go to [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md).
 
 ### Helm
 
@@ -474,7 +465,7 @@ The release name you enter in the infrastructure definition **Release name** is 
 
 **Do not create a ConfigMap that uses the same name as the release name.** Your ConfigMap will override the Harness internal ConfigMap and cause a NullPointerException.
 
-See [Define your kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+See [Define your kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
 
 #### The server doesn't have a resource type "deployments"
 
@@ -598,6 +589,12 @@ The message `Terraform validation result: false` means Terraform is not installe
 
 Install Terraform on the delegate to fix this.
 
+### AWS ECS
+
+In some Harness CloudFormation and ECS deployments you might get failures with `ThrottlingException` or `Rate exceeded` errors for CloudFormation and ECS API calls.
+
+For more information, go to [AWS backoff strategy](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-backoff-strategy).
+
 ### Harness secret managers
 
 If the Harness delegate(s) cannot authenticate with a secret manager, you might see an error message such as this:
@@ -637,7 +634,7 @@ For more information about SAML SSO configuration with Azure, see [Single sign-o
 
 ### Shell scripts
 
-This section covers common problems experienced when using a [Shell script](../continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step.
+This section covers common problems experienced when using a [Shell script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step.
 
 #### FileNotFoundExeption inside shell script execution task
 

@@ -12,15 +12,170 @@ import TabItem from '@theme/TabItem';
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 ```
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 You can build and test a [Node.js](https://nodejs.org/en/docs/guides/getting-started-guide) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
 * [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
 * [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
-* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 <CISignupTip />
+
+## Install dependencies
+
+Use [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness Cloud">
+```
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: Dependencies
+                  spec:
+                    shell: Sh
+                    command: |-
+                      npm install express@4.18.2 --no-save
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Self-hosted">
+```
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: Dependencies
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: node:14.18.2-alpine
+                    command: |-
+                      npm install express@14.18.2 --no-save
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+:::tip
+
+In addition to Run steps, [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies.
+
+You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
+
+:::
+
+## Cache dependencies
+
+```mdx-code-block
+<Tabs>
+<TabItem value="cloud" label="Harness Cloud" default>
+```
+
+Cache Node dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec`.
+
+```yaml
+    - stage:
+        spec:
+          caching:
+            enabled: true
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="selfhosted" label="Self-hosted">
+```
+
+With self-hosted build infrastructures, you can:
+
+* [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
+* [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
+
+:::info Node cache key and path requirements
+
+All Node pipelines must include `node_modules` in the `sourcePaths` for your **Save Cache** step.
+
+```yaml
+                  spec:
+                    sourcePaths:
+                      - node_modules
+```
+
+If your pipeline uses [npm](https://www.npmjs.com/), the `key` value must reference `package-lock.json` in your **Save Cache** and **Restore Cache** steps.
+
+```yaml
+                  spec:
+                    key: cache-{{ checksum "package-lock.json" }}
+```
+
+If your pipeline uses [yarn](https://yarnpkg.com/), the `key` value must reference `yarn.lock` in your **Save Cache** and **Restore Cache** steps.
+
+```yaml
+                  spec:
+                    key: cache-{{ checksum "yarn.lock" }}
+```
+
+:::
+
+<details>
+<summary>YAML example: Save and restore cache steps</summary>
+
+Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
+
+```yaml
+            steps:
+              - step:
+                  type: RestoreCacheS3
+                  name: Restore Cache From S3
+                  identifier: Restore_Cache_From_S3
+                  spec:
+                    connectorRef: AWS_Connector
+                    region: us-east-1
+                    bucket: your-s3-bucket
+                    key: cache-{{ checksum "package-lock.json" }}
+                    archiveFormat: Tar
+              - step:
+                  type: Run
+                  ...
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  ...
+              - step:
+                  type: SaveCacheS3
+                  name: Save Cache to S3
+                  identifier: Save_Cache_to_S3
+                  spec:
+                    connectorRef: AWS_Connector
+                    region: us-east-1
+                    bucket: your-s3-bucket
+                    key: cache-{{ checksum "package-lock.json" }}
+                    sourcePaths:
+                      - node_modules
+                    archiveFormat: Tar
+```
+
+</details>
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Build and run tests
 
@@ -51,7 +206,6 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 
@@ -90,140 +244,6 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                       spec:
                         paths:
                           - report.xml
-```
-
-## Install dependencies
-
-Use **Run** steps to install dependencies in the build environment. [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies. You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
-
-```mdx-code-block
-<Tabs>
-<TabItem value="Harness Cloud">
-```
-
-```yaml
-              - step:
-                  type: Run
-                  identifier: dependencies
-                  name: Dependencies
-                  spec:
-                    shell: Sh
-                    command: |-
-                      npm install express@4.18.2 --no-save
-```
-
-```mdx-code-block
-</TabItem>
-
-<TabItem value="Self-hosted">
-```
-
-```yaml
-              - step:
-                  type: Run
-                  identifier: dependencies
-                  name: Dependencies
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: node:14.18.2-alpine
-                    command: |-
-                      npm install express@14.18.2 --no-save
-```
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-## Cache dependencies
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="cloud" label="Harness Cloud" default>
-```
-
-With Harness Cloud build infrastructure, use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) to automate caching of Node dependencies. Add `caching.enabled.true` to your `stage.spec`.
-
-```yaml
-    - stage:
-        spec:
-          caching:
-            enabled: true
-```
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
-```
-
-With self-hosted build infrastructures, you can:
-
-* [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
-* [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
-
-<details>
-<summary>Node cache key and path requirements</summary>
-
-All Node pipelines must include `node_modules` in the `sourcePaths` for your **Save Cache** step.
-
-```yaml
-                  spec:
-                    sourcePaths:
-                      - node_modules
-```
-
-If your pipeline uses [npm](https://www.npmjs.com/), the `key` value must reference `package-lock.json` in your **Save Cache** and **Restore Cache** steps.
-
-```yaml
-                  spec:
-                    key: cache-{{ checksum "package-lock.json" }}
-```
-
-If your pipeline uses [yarn](https://yarnpkg.com/), the `key` value must reference `yarn.lock` in your **Save Cache** and **Restore Cache** steps.
-
-```yaml
-                  spec:
-                    key: cache-{{ checksum "yarn.lock" }}
-```
-
-</details>
-
-Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
-
-```yaml
-            steps:
-              - step:
-                  type: RestoreCacheS3
-                  name: Restore Cache From S3
-                  identifier: Restore_Cache_From_S3
-                  spec:
-                    connectorRef: AWS_Connector
-                    region: us-east-1
-                    bucket: your-s3-bucket
-                    key: cache-{{ checksum "package-lock.json" }}
-                    archiveFormat: Tar
-              - step:
-                  type: Run
-                  ...
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  ...
-              - step:
-                  type: SaveCacheS3
-                  name: Save Cache to S3
-                  identifier: Save_Cache_to_S3
-                  spec:
-                    connectorRef: AWS_Connector
-                    region: us-east-1
-                    bucket: your-s3-bucket
-                    key: cache-{{ checksum "package-lock.json" }}
-                    sourcePaths:
-                      - node_modules
-                    archiveFormat: Tar
-```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
 ```
 
 ## Specify version
@@ -292,7 +312,6 @@ If your application requires a specific Node version, add a **Run** step to inst
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 
@@ -359,9 +378,9 @@ Here's a YAML example of a pipeline that:
 1. Tests a Node code repo.
 2. Builds and pushes an image to Docker Hub.
 
-This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence), and [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts).
+This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
-If you copy this example, replace the bracketed values with corresponding values for your Harness project, connector IDs, account/user names, and repo names.
+If you copy this example, replace the placeholder values with appropriate values for your Harness project, connector IDs, account/user names, and repo names.
 
 <details>
 <summary>Pipeline YAML</summary>
@@ -370,7 +389,7 @@ If you copy this example, replace the bracketed values with corresponding values
 pipeline:
   name: nodejs-sample
   identifier: nodejssample
-  projectIdentifier: [project-ID]
+  projectIdentifier: default
   orgIdentifier: default
   tags: {}
   stages:
@@ -406,15 +425,15 @@ pipeline:
                   name: BuildAndPushDockerRegistry_1
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
-                    connectorRef: [Docker-connector-ID]
-                    repo: [Docker-Hub-username]/[Docker-repo]
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                    repo: YOUR_DOCKER_HUB_USERNAME/DOCKER_REPO_NAME
                     tags:
                       - <+pipeline.sequenceId>
   properties:
     ci:
       codebase:
-        connectorRef: [code-repo-connector]
-        repoName: [scm-account-name]/[repo-name]
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
         build: <+input>
 ```
 

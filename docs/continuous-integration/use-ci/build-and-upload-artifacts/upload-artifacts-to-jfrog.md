@@ -1,7 +1,6 @@
 ---
 title: Upload Artifacts to JFrog
 description: Add a step to upload artifacts to JFrog.
-
 sidebar_position: 70
 helpdocs_topic_id: lh082yv36h
 helpdocs_category_id: mi8eo3qwxm
@@ -9,21 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use the **upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory). Harness CI also provides steps to [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md) and [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md).
+You can use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory). You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md).
 
-## Prepare a pipeline
-
-You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
-
-If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+This topic assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to the [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
 
 ## Prepare artifacts to upload
 
-Add steps to your pipeline that generate artifacts to upload, such as [Run steps](../set-up-test-intelligence/configure-run-tests-step-settings.md). The steps you use depend on what artifacts you ultimately want to upload.
+Add steps to your CI pipeline that generate artifacts to upload. The steps you use depend on what artifacts you ultimately want to upload. For example, [Run steps](../run-ci-scripts/run-step-settings.md) and [Plugin steps](../use-drone-plugins/explore-ci-plugins.md) are useful for running scripts.
 
 ## Upload artifacts to JFrog Artifactory
 
-Add an **Upload Artifacts to JFrog Artifactory** step. This step's settings are described below.
+Add an **Upload Artifacts to JFrog Artifactory** step to your pipeline. This step's settings are described below.
 
 :::info
 
@@ -49,7 +44,9 @@ This step supports Artifactory connectors that use either anonymous or username 
 
 The **Target** is the target path in the JFrog Artifactory registry. This is a target repository name relative to the server URL in the connector. If `pom.xml` is not present, then the **Target** must be a full path to an artifacts folder, such as `groupId/artifactId/version`.
 
-**Source Path** is a path to the artifact file/folder on the local/build machine you want to upload. Harness creates the compressed file automatically.
+**Source Path** is a path to the artifact file/folder on the local/build machine you want to upload.
+
+If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 
 ![](./static/upload-artifacts-to-jfrog-519.png)
 
@@ -73,16 +70,63 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 ## Confirm the upload
 
-After adding the steps and saving the pipeline, select **Run** to run the pipeline.
+After you add the steps and save the pipeline, select **Run** to run the pipeline.
 
 On the [build details page](../viewing-builds.md), you can see the logs for each step as they run.
 
 ![](static/upload-artifacts-to-jfrog-520.png)
 
-In your Harness project's Builds, you can see the build listed.
-
-![](./static/upload-artifacts-to-jfrog-521.png)
-
 On JFrog, you can see the uploaded artifacts.
 
 ![](./static/upload-artifacts-to-jfrog-522.png)
+
+## View artifacts on the Artifacts tab
+
+As an alternative to manually finding artifacts on JFrog, you can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../viewing-builds.md). To do this, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to JFrog Artifactory** step.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+Configure the **Plugin** step settings as follows:
+
+* **Name:** Enter a name.
+* **Container Registry:** Select a Docker connector.
+* **Image:** Enter `plugins/artifact-metadata-publisher`.
+* **Settings:** Add the following two settings as key-value pairs.
+  * `file_urls`: The URL to the target artifact that was uploaded in the **Upload Artifacts to JFrog Artifactory** step.
+  * `artifact_file`: `artifact.txt`
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
+
+```yaml
+               - step:
+                  type: Plugin
+                  name: publish artifact metadata
+                  identifier: publish_artifact_metadata
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/artifact-metadata-publisher
+                    settings:
+                      file_urls: ## Provide the URL to the target artifact that was uploaded in the Upload Artifacts to JFrog Artifactory step.
+                      artifact_file: artifact.txt
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+### Troubleshooting
+
+If you get a `certificate signed by unknown authority` error, make sure the correct server certificates are uploaded to the correct container path. For example, the container path for Windows is `C:/Users/ContainerAdministrator/.jfrog/security/certs`.

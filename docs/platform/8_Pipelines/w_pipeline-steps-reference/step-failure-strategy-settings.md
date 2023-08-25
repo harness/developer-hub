@@ -18,8 +18,9 @@ You can apply a failure strategy to the following:
 * **Step:** This failure strategy overrides (or enhances) the stage failure strategy.
 * **Step Group:** You can set up a failure strategy for all steps in the group. Individual steps in the group don't have a failure strategy.
 * **Stage:** The failure strategy for all steps and step groups in the stage. If step and step group failure strategies exist, they override this failure strategy.
+* **Pipeline:** You can set up a failure strategy for all stages in a pipeline. The pipeline rolls back if any of the stages in the pipeline fails. For more information, go to [Define a failure strategy on pipelines](../define-a-failure-strategy-for-pipelines.md).
 
-For more information, go to [Define a Failure Strategy on Stages and Steps](../define-a-failure-strategy-on-stages-and-steps.md).
+For more information, go to [Define a failure strategy on stages and steps](../define-a-failure-strategy-on-stages-and-steps.md).
 
 ### Error types
 
@@ -62,13 +63,18 @@ These actions can be applied to the failure strategy as primary action and timeo
 | **Manual Intervention** | A Harness user can perform a manual intervention when the error type occurs. There are several options to select from: <li> **Mark as Success**</li><li>**Ignore Failure**</li><li>**Retry**</li><li>**Abort**</li><li>**Rollback Stage**</li>Harness pauses the pipeline execution when waiting for manual intervention. The pipeline execution state appears as **Paused**. | Same as step. | Same as step, but applies to all steps. |
 | **Mark as Success** | The step is marked as **Successful** and the stage execution continues. | Same as step. | The failed step is marked as **Successful** and the pipeline execution continues. |
 | **Ignore Failure** | The stage execution continues. The step is marked as **Failed**, but rollback is not triggered. | Same as step. | Same as step. |
-| **Retry** | Harness retries the execution of the failed step automatically. You can set **Retry Count** and **Retry Intervals**. | Same as step. | Same as step. |
+| **Retry Step** | Harness retries the execution of the failed step automatically. You can set **Retry Count** and **Retry Intervals**. | Same as step. | Same as step. |
+| **Retry Step Group** | N/A | Harness will retry the execution of the complete step group automatically, from the beginning. You can set **Retry Count** and **Retry Intervals**. | N/A |
 | **Abort** | Pipeline execution is aborted. If you select this option, no timeout is needed. | Same as step. | Same as step. |
 | **Rollback Stage** | The stage rolls back to the state prior to stage execution. How the stage rolls back depends on the type of build or deployment it was performing. | Same as step. | Same as step. |
-| **Rollback Step Group** | N/A | The step group rolls back to the state prior to step group execution. How the step group rolls back depends on the type of build or deployment it was preforming. | N/A |
+| **Rollback Step Group** | N/A | The step group rolls back to the state prior to step group execution. How the step group rolls back depends on the type of build or deployment it was performing. | N/A |
 |**Mark As Failure**|Harness marks the step as **Failed**.|Harness marks the step group as **Failed**.|Harness marks the stage as **Failed**.|
 
-### Review: Failure strategy takes precedence over conditional execution
+:::info note
+The **Retry Step Group** failure strategy is behind the feature flag `PIE_RETRY_STEP_GROUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+### Failure strategy takes precedence over conditional execution
 
 Harness pipeline stages and steps both include **Conditional Execution** and **Failure Strategy** settings.
 
@@ -86,15 +92,17 @@ To execute stage 2, you can set the stage 1 **Failure Strategy** to **Ignore Fai
 
 In general, if you want to run particular steps on a stage failure, you should add them to stage's **Rollback** section.
 
-### Review: Stage and step priority
+### Stage, step, and step group priority
 
-The stage failure strategy applies to all steps that do not have their own failure strategy. A step's failure strategy overrides (or extends) its stage's failure strategy.
+The stage failure strategy applies to all steps that do not have their own failure strategy. A step's failure strategy takes precedence over a step group's failure strategy, which takes precedence over a stage's failure strategy.
 
-Step failure strategies are evaluated before their stage's failure strategy. The order of the steps determines which failure strategy is evaluated first.
+Step failure strategies are evaluated before step group's and stage's failure strategy. 
 
-If the first step in the execution doesn't have a failure strategy, the stage's failure strategy is used. If the second step has its own failure strategy, it is used. And so on.
+The order of the steps determines which failure strategy is evaluated first.
 
-### Review: Multiple failure strategies in a stage
+If the step is not part of a step group, and the first step in the execution doesn't have a failure strategy, the stage's failure strategy is used. If the second step has its own failure strategy, it is used. And so on.
+
+### Multiple failure strategies in a stage
 
 A stage can have multiple failure strategies.
 
@@ -105,7 +113,7 @@ When using multiple failure strategies in a stage, consider the following:
 * For failure strategies that don't overlap (different types of failures selected), they behave as expected.
 * Two failures cannot occur at the same time. Whichever error occurs first, that failure strategy is used.
 
-### Review: Failure strategy conflicts
+### Failure strategy conflicts
 
 Conflicts might arise between failure strategies on the same level or different levels. By level, we mean the step level or the stage level.
 

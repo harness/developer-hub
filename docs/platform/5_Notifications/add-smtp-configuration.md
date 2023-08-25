@@ -19,7 +19,7 @@ If you are using the Harness On-Prem offering, then you will need to add an SMTP
 
 ### Before you begin
 
-* [User Group Notification Preferences](../3_User-Management/4-add-user-groups.md#option-notification-preferences)
+* [User Group Notification Preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences)
 
 ### Limitations
 
@@ -32,6 +32,7 @@ In your Harness account, go to **Account Settings**.
 Click **Account Resources.**
 
 ![](./static/add-smtp-configuration-00.png)
+
 Click **SMTP Configuration** and then click **Setup**.
 
 The SMTP Configuration settings appear.
@@ -57,10 +58,19 @@ Click **Continue**.
 
 Enter the username and password for the email account.
 
-![](./static/add-smtp-configuration-02.png)
+![](./static/add-smtp-configuration-credentials.png)
+
+Click **Continue**.
+
+### Step 4: Delegate Setup
+
+In **Delegates Setup**, use [**Selectors**](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#selecting-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** you want to use.
+
+![](./static/smtp-delegate.png)
+
 Click **Save and Continue**.
 
-### Step 4: Test Connection
+### Step 5: Test Connection
 
 In **To,** enter the email address to which you want to send notifications.
 
@@ -74,6 +84,7 @@ Click **Continue** after the test is successful.
 SMTP is configured for your account.
 
 ![](./static/add-smtp-configuration-04.png)
+
 ### Option: Send Notifications for a User Group using Email
 
 In your **Account**/**Organization**/**Project** click Access Control.
@@ -89,9 +100,11 @@ Enter the email address from which you want to send email notifications.
 You can also send email notifications to all the members of this user group by selecting **Send email to all users part of this group**.
 
 ![](./static/add-smtp-configuration-05.png)
+
 Click **Save**.
 
 ![](./static/add-smtp-configuration-06.png)
+
 ### Option: Send Notification for a Pipeline
 
 You can send Pipeline event notifications using email. Event notifications are set up using **Notify** option in your Pipeline.

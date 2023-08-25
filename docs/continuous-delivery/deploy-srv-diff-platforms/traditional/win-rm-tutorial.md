@@ -1,5 +1,5 @@
 ---
-title: WinRM deployments
+title: Windows VM deployments using WinRM
 description: Deploy to any platform using WinRM.
 sidebar_position: 9
 helpdocs_topic_id: l8795ji7u3
@@ -8,8 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Windows VM deployments using WinRM
 
-You can use Windows Remote Management (WinRM) to deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC). Harness connects to your target Windows instances using the WinRM protocol and executes PowerShell commands to deploy your artifact.
+You can use Windows Remote Management (WinRM) to deploy your artifacts to Windows VM or bare-metal hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC). Harness connects to your target Windows instances using the WinRM protocol and executes PowerShell commands to deploy your artifact.
 
 In this topic, we will deploy a .zip file to an AWS EC2 Windows instance using Harness. We will pull a publicly-available .zip file from Artifactory and deploy it to an EC2 Windows instance in your AWS account by using the Basic execution strategy.
 
@@ -98,9 +99,32 @@ For this tutorial, we'll use a **ToDo List** app artifact, **todolist.zip**, ava
 4. For **Artifact Details**, keep the default **Value**.
 5. For **Artifact Path**, leave the default Runtime Input value **<+input>** for that field. Click **Submit.** The **Artifactory Connector** is added to **Artifacts.** Click **Continue**.
 
-## Add the Target Infrastructure for the Physical Data Center
+## Define the target infrastructure
 
-Create the **Infrastructure Definition** for the target host.
+You define the target infrastructure for your deployment in the **Environment** settings of the pipeline stage. You can define an environment separately and select it in the stage, or create the environment within the stage **Environment** tab.
+
+There are two methods of specifying the deployment target infrastructure:
+
+- **Pre-existing**: the target infrastructure already exists and you simply need to provide the required settings.
+- **Dynamically provisioned**: the target infrastructure will be dynamically provisioned on-the-fly as part of the deployment process.
+
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+
+### Selecting hosts
+
+When you set up the Infrastructure Definition for the stage, there are three options for selecting the target hosts:
+
+- **Specify hosts**
+- **Select preconfigured hosts from Physical Data Center**
+- **Map Dynamically Provisioned Infrastructure**
+
+The **Specify hosts** or **Select preconfigured hosts from Physical Data Center** options are used when you are deploying to a pre-existing infrastructure.
+
+The **Map Dynamically Provisioned Infrastructure** option is used when your are deploying to a dynamically provisioned infrastructure.
+
+### Pre-existing infrastructure
+
+Let's look at an example of setting up an Infrastructure Definition for a pre-existing infrastructure.
 
 1. In **Specify Environment**, click **New Environment** enter **winrm-env** for **Name.** This is the name that you will use when you select this Infrastructure Definition.
 2. For **Environment Type**, select **Pre-****Production**, and click **Save**.
@@ -110,7 +134,7 @@ Create the **Infrastructure Definition** for the target host.
 6. Scroll down to view Infrastructure definition.
 7. Keep the default selection: **Select preconfigured hosts from Physical Data Center**.
 
-## Create the PDC Connector for the Host
+#### Create the PDC Connector for the Host
 
 1. In **Infrastructure Definition**, for **Connector**, click **Select Connector** to create the Connector for PDC.
 2. In **Create or Select an Existing Connector**, select **New Connector**.
@@ -127,7 +151,7 @@ Create the **Infrastructure Definition** for the target host.
    
    ![](static/win-rm-tutorial-132.png)
 
-## Use WinRM Credentials with NTLM to Authenticate
+#### Use WinRM Credentials with NTLM to Authenticate
 
 We will now create the credentials for the secret that is used by Harness to connect to the target host.
 
@@ -147,11 +171,211 @@ We will now create the credentials for the secret that is used by Harness to con
 14. In **Create New Infrastructure**, click **Preview Hosts**.
 15. Click the checkbox for the host and click **Test Connection.** The WinRM connection to the EC2 instance is tested. Click **Finish**. Click **Continue**.
 
+### Dynamically provisioned infrastructure
+
+:::note
+
+Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
+
+1. **Add dynamic provisioning to the CD stage**:
+   1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+   2. Select the type of provisioner that you want to use.
+   
+      Harness automatically adds the provisioner steps for the provisioner type you selected.
+   3. Configure the provisioner steps to run your provisioning scripts.
+   4. Select or create a Harness infrastructure in **Environment**.
+2. **Map the provisioner outputs to the Infrastructure Definition**:
+   1. In the Harness infrastructure, enable the option **Map Dynamically Provisioned Infrastructure**.
+   2. Map the provisioning script/template outputs to the required infrastructure settings.
+
+#### Supported provisioners
+
+The following provisioners are supported for WinRM deployments:
+
+- Terraform
+- Terragrunt
+- Terraform Cloud
+- CloudFormation
+- Azure Resource Manager (ARM)
+- Azure Blueprint
+- Shell Script
+
+#### Adding dynamic provisioning to the stage
+
+To add dynamic provisioning to a Harness pipeline Deploy stage, do the following:
+
+1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+2. Select the type of provisioner that you want to use.
+   
+   Harness automatically adds the necessary provisioner steps.
+3. Set up the provisioner steps to run your provisioning scripts.
+
+For documentation on each of the required steps for the provisioner you selected, go to the following topics:
+
+- Terraform:
+  - [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
+  - [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+  - [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step). To see the Terraform Rollback step, toggle the **Rollback** setting.
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
+- [Terraform Cloud](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments)
+- CloudFormation:
+  - [Create Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/provision-with-the-cloud-formation-create-stack-step)
+  - [Delete Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/remove-provisioned-infra-with-the-cloud-formation-delete-step)
+  - [Rollback Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/rollback-provisioned-infra-with-the-cloud-formation-rollback-step). To see the Rollback Stack step, toggle the **Rollback** setting.
+- [Azure Resource Management (ARM)](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
+- [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
+
+
+#### Mapping provisioner output
+
+Once you set up dynamic provisioning in the stage, you must map outputs from your provisioning script/template to specific settings in the Harness Infrastructure Definition used in the stage.
+
+1. In the same CD Deploy stage where you enabled dynamic provisioning, select or create (**New Infrastructure**) a Harness infrastructure.
+2. In the Harness infrastructure, in **Select Infrastructure Type**, select **Physical Data Center**, **Azure**, or **AWS**.
+3. In **Select Hosts/Azure/Amazon Web Services Infrastructure Details**, enable the option **Map Dynamically Provisioned Infrastructure**.
+   
+   A **Provisioner** setting is added and configured as a runtime input.
+4. Map the provisioning script/template outputs to the required infrastructure settings.
+
+To provision the target deployment infrastructure, Harness needs specific infrastructure information from your provisioning script. You provide this information by mapping specific Infrastructure Definition settings in Harness to outputs from your template/script.
+
+For WinRM infrastructures, Harness needs the following settings mapped to outputs:
+
+- Physical Data Center (PDC):
+  - **Host Array Path**
+  - **Host Data Mapping**: you should map outputs for all of the necessary connection information. For example, if the VM(s) on a cloud platform:
+    - hostname
+    - privateIp
+    - subnetId
+    - region
+- Azure:
+  - **Subscription Id**
+  - **Resource Group**
+  - **Tag** (optional)
+- AWS:
+  - **Region**
+  - **Tag** (optional)
+
+:::note
+
+Ensure the mapped settings are set to the **Expression** option.
+
+:::
+
+#### Host Array Path
+
+For WinRM PDC deployments, you use the expression `<+provisioner.OUTPUT_NAME>` for the **Host Array Path** setting. 
+
+For the subsequent **Host Data Mapping** key-value pairs, you use the expression format `<+HOST_PROPERTY>`. For example, `<+public_dns>`.
+
+Here's an example:
+
+![picture 1](static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png)  
+
+
+#### Example
+
+Here's a snippet of a Terraform script that provisions the infrastructure for an AWS EC2 VM WinRM deployment and includes the required outputs for Physical Data Center:
+
+```json
+
+provider "aws" {
+  region = "us-east-1"  # Replace with your desired AWS region
+}
+
+resource "aws_vpc" "example" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "example" {
+  vpc_id     = aws_vpc.example.id
+  cidr_block = "10.0.1.0/24"
+}
+
+resource "aws_security_group" "example" {
+  name_prefix = "example-"
+}
+
+resource "aws_instance" "example" {
+  ami                    = "ami-xxxxxxxxxxxxxxxxx"  # Replace with the desired Windows AMI ID
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.example.id
+  vpc_security_group_ids = [aws_security_group.example.id]
+
+  tags = {
+    Name = "ExampleInstance"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "winrm quickconfig -q",
+      "winrm set winrm/config/service/auth @{Basic=\"true\"}",
+      "winrm set winrm/config/service @{AllowUnencrypted=\"true\"}",
+      "winrm set winrm/config/winrs @{MaxMemoryPerShellMB=\"1024\"}",
+    ]
+  }
+
+  connection {
+    type        = "winrm"
+    user        = "Administrator"
+    password    = "YourPassword"  # Replace with your desired Windows password
+    timeout     = "10m"
+    insecure    = true
+    https       = true
+  }
+}
+
+output "hostname" {
+  value = aws_instance.example.public_dns
+}
+
+output "privateIp" {
+  value = aws_instance.example.private_ip
+}
+
+output "subnetId" {
+  value = aws_subnet.example.id
+}
+
+output "region" {
+  value = provider.aws.region
+}
+
+```
+
+
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.region>`.
+
+<figure>
+
+<docimage path={require('./static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png')} width="60%" height="60%" title="Click to view full size image" />
+
+<figcaption>Figure: Mapped outputs</figcaption>
+</figure>
+
+#### Reference mapped instance properties
+
+Once you have mapped provisioning script outputs to the stage Infrastructure Definition, you can reference them in **Execution** of the stage.
+
+To reference a mapped output, you use an expression in the format `<+instance.properties.*>`.
+
+For example, here are some **Host Data Mapping** *keys* and expressions that reference them:
+
+- hostname: `<+instance.properties.hostname>`
+- privateIp: `<+instance.properties.privateIp>`
+- subnetId: `<+instance.properties.subnetId>`
+- region: `<+instance.properties.region>`
+
 ## Use a Basic Deployment for WinRM Execution
 
 You are now taken to **Execution Strategies** where you will use a deployment strategy and run your pipeline.
 
-1. In **Execution Strategies**, select **Basic****.**
+1. In **Execution Strategies**, select **Basic**.
 2. For **Package type**, select **tudolist.zip** and keep the defaults for the other selections.
 3. Click **Use Strategy**. Harness adds the **Deploy** step for execution.
 4. In the **Deploy** step that is added to your pipeline, click **Deploy**.

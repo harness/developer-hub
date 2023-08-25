@@ -1,7 +1,7 @@
 ---
 title: Use self-signed certificates with Helm-based installations
 sidebar_label: Use self-signed certificates
-description: Learn how to modify the delegate truststore to generate self-signed certificates.
+description: Learn how to modify the delegate truststore to generate self-signed certificates for on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 2
 helpdocs_topic_id: h0yo0jwuo9
 helpdocs_category_id: 75ydek1suj
@@ -13,9 +13,9 @@ helpdocs_is_published: true
 Applies to Helm-based installation only.
 :::
 
-Harness Self-Managed Enterprise Edition supports authorization by self-signed certificate. This document explains how to modify the delegate truststore for the use of self-signed certificates in the self-managed environment. 
+Harness Self-Managed Enterprise Edition supports authorization by self-signed certificate. This topic explains how to modify the delegate truststore for the use of self-signed certificates in the self-managed environment. 
 
-Harness Delegate makes outbound connections to the resources you specify—for example, artifact servers and verification providers. These services typically use public certificates that are included in the operating system or the JRE. You must add the self-signed certificates that you use to the delegate. The process that this document describes is supported for use with the legacy delegate in combination with the Harness CD, CI, and STO modules. 
+Harness Delegate makes outbound connections to the resources you specify—for example, artifact servers and verification providers. These services typically use public certificates that are included in the operating system or the JRE. You must add the self-signed certificates that you use to the delegate. The process that this topic describes is supported for use with the legacy delegate in combination with the Harness CD, CI, and STO modules. 
 
 **IMPORTANT**
 
@@ -25,13 +25,13 @@ Harness Delegate makes outbound connections to the resources you specify—for e
 ## Create the truststore
 
 1. Generate a self-signed certificate.
-2. Save it to a file named DigiCertGlobalRootCA.pem:
+2. Save it to a file named `DigiCertGlobalRootCA.pem`:
 
    ```
    keytool -import -file DigiCertGlobalRootCA.pem -alias DigiCertRootCA -keystore trustStore.jks
    ```
 
-3. Add the DigiCertGlobalRootCA.pem trusted certificate to the trustStore.jks truststore:
+3. Add the `DigiCertGlobalRootCA.pem` trusted certificate to the `trustStore.jks` truststore:
 
    ```
    kubectl create secret -n harness-delegate-ng generic mysecret --from-file harness_trustStore.jks=trustStore.jks
@@ -64,15 +64,27 @@ Repeat this command for each certificate you want to include in the truststore.
 
   The `XXXXXXXXXXXXXXXXXXXXXXXXXXX` placeholder indicates the position for the certificate body. Enclose each certificate in `BEGIN CERTIFICATE` and `END CERTIFICATE` comments.
 
-3. Save the file as addcerts.yaml. Apply the manifest to your cluster.
+3. Save the file as `addcerts.yaml`. Apply the manifest to your cluster.
 
    ```
    kubectl apply -f addcerts.yaml
    ```
 
+4. If another tool such as Argo deletes the secret, you must recreate the secret. Add a MinIO YAML manifest `minio.yaml` file with the following values in addition to your other Harness manifests:
+
+   ```yaml
+   apiVersion: v1
+   kind: Secret
+   metadata:
+     name: minio
+   data:
+     root-password: ROOT_PASSWORD
+     root-user: ROOT_USER
+   ```
+
 ## Modify the delegate YAML
 
-1. Open the harness-delegate.yml file in your editor.
+1. Open the `harness-delegate.yml` file in your editor.
 2. In the `template.spec` section, add the following security context:
 
    ```
@@ -90,7 +102,7 @@ Repeat this command for each certificate you want to include in the truststore.
 
    **Skip step 5 if your delegates do not run with Harness CI or STO**
 
-5. CI builds require the addition of the following environment variables to the  `env` field:
+5. (Required) Add the following environment variables to the `env` field:
 
    ```
    - name: CI_MOUNT_VOLUMES  
@@ -151,7 +163,7 @@ The following Kubernetes manifest provides an example of a delegate truststore m
 
 #### Example harness-delegate.yml
 
-```
+```yaml
 apiVersion: v1  
 kind: Namespace  
 metadata:  

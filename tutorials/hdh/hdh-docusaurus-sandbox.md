@@ -194,3 +194,14 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 <CISignupTip />
 
+## Buttons
+Can leverage the button framework to add a button. Can give the Font Awesome Icon, text, Link, Tooltip, 
+and Size [small, medium, large].
+
+```
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/whats-new/rss.xml" tooltip=
+"Subscribe to RSS" size="medium"/> />
+```
+
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/whats-new/rss.xml" tooltip=
+"Subscribe to RSS" size="medium"/>

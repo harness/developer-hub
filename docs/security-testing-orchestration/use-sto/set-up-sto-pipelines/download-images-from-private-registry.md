@@ -8,9 +8,72 @@ Harness maintains its own set of scan images for [STO-supported scanners](/docs/
 
 This topic describes how to override the default behavior and use a private registry instead. You can download the scan images you need, perform your own security checks on the images, upload them to a private registry, and then set up your STO steps to download images from this registry. 
 
+### Create STO scanner images with your own SSL certificates (_optional_)
+
+You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
+
+:::note
+Running container image scans as a non-root user is not currently supported.
+:::
+
+1. Save a copy of the following Dockerfile into a folder along with the certificates you want to copy to the image.
+
+2. Update the `FROM`, `COPY`, and `USER` commands as described in the Dockerfile comments.
+
+3. Build the new image and then publish it to your private registry.
+
+4. Update the scan step in your pipeline as follows:
+
+   1. Update the **Image** setting to point to the new image in your registry.
+   2. If you specified a `USER` in your Dockerfile, set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
+
+<details><summary>Dockerfile template for adding certificates to an STO scanner image</summary>
+
+``` bash
+# STEP 1 
+# Specify the STO scanner image where you want to add your certificates
+# For a list of all images in the Harness Container Registry, run the following:
+#     curl -X  GET https://app.harness.io/registry/_catalog
+FROM harness/twistlock-job-runner:latest as scanner
+
+# FYI Root access is required to load and trust certificates
+USER root
+
+# STEP 2 
+# Copy your certificates to the engine
+# You can copy multiple ca from completely different paths into SHARE_CA_PATH
+COPY ./CERTIFICATE_1.pem ../another-folder/CERTIFICATE_2.pem /shared/customer_artifacts/certificates/
+
+
+# FYI establishes trust for certificates in Python and the OS 
+RUN sto_plugin --trust-certs
+# Optional: To trust certificates for Java for tools such as
+# - Black Duck Hub
+# - Checkmarx
+# - Sonarqube
+# - Veracode
+# - NexusIQ
+# RUN sh /bin/setup.sh 
+
+# STEP 3 (optional)
+# Create a user and assume limited permission user
+# If you set this, you need to add runAsUser setting in the scan step
+#     i.e., runAsUser: "1000"
+USER 1000
+
+```
+
+</details>
+
 ### Workflow description
 
 1. Download the scan images you need, test and validate the images, and store them in your private registry. 
+
+   :::note
+   
+   Do not change the image names in your private registry. The image names must match the names specified by Harness.
+
+   :::
 
    Harness maintains a Container Image Registry that is dedicated exclusively to hosting Harness-supported images. You can download your scan images from this registry instead of Docker Hub. To view the list of images in this registry, enter the following command:
    ```
@@ -26,7 +89,7 @@ This topic describes how to override the default behavior and use a private regi
      
      Do not include the scheme (such as `http://` or `https://`).
 
-   * `runner_registry_image_prefix : harness`
+   * `runner_registry_image_prefix : harness` — Do not change this setting. 
 
    * `runner_registry_username`  — As needed
 

@@ -8,10 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
-
-:::
-
 This topic provides an overview of how Harness Policy As Code implemented governance.
 
 
@@ -41,7 +37,7 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
 #### Example A: Pipeline > On Save
 
 
-> When a Pipeline is saved, there needs to be an Approval step before deploying to a production environment.
+When a Pipeline is saved, there needs to be an Approval step before deploying to a production environment.
 
 * **Success:** you configure an Approval Step in the Pipeline and then proceed to configure a prod stage. When you save the Pipeline, the policy rule is evaluated and returns `success`.
 * **Warning:** a warning message appears: `You need an Approval step. If you save the Pipeline and deploy, Harness will throw an error.`
@@ -50,7 +46,7 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
 #### Example B: Pipeline > On Run
 
 
-> On deployment, I need my pod CPU and memory to be pre-defined.
+On deployment, I need my pod CPU and memory to be pre-defined.
 
 * **Success:** you deploy the Pipeline and during the dry run the pod CPU and memory have been defined and populated in the deployment manifest. As a result, the dry run progresses. Harness indicates that the rule was evaluated and the action was valid.
 * **Failure:** pod CPU and memory were not defined in the deployment manifest. As a result, the dry run fails. Harness indicates that a rule was enforced and the deployment is prevented.
@@ -151,7 +147,7 @@ The input payload contains user metadata for the user that initiated the event. 
 ```
 This enables enforcing policies with advanced and attribute-based access control use cases.
 
-See [Harness Role-Based Access Control Overview](../../4_Role-Based-Access-Control/1-rbac-in-harness.md).
+For more information, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 ### Harness Policy Set
 

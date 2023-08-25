@@ -23,10 +23,10 @@ Note the following important information about delegates:
 	For example, an instance of a Kubernetes workload where Harness creates the pods, or an instance of an ECS task where Harness creates the service for the task.
 
 * The delegate is installed in your network and connects to the Harness Manager.
-
-  ![](./static/delegate-requirements-and-limitations-00.png)
   
   The requirements for memory and CPU support only the delegate. The delegate host, pod, and container require additional compute resources to support other operations, systems, and services, such as Docker or Kubernetes.
+
+   ![](./static/delegate-requirements-and-limitations-00.png)
 
   The delegate runs in a Linux/UNIX container.
 
@@ -48,11 +48,10 @@ Go to [Allowlist Harness Domains and IPs](/docs/platform/20_References/allowlist
 
 The following network requirements are for connectivity between the Harness Delegate you run in your network and the **Harness Manager** (SaaS or on-prem), and for your browser connection to the Harness Manager.
 
-:::note
+:::info note
 All network connections from your local network to Harness SaaS are outbound-only.
 :::
 
-All network connections from your local network to Harness SaaS are outbound-only.
 * HTTPS port 443 outbound from the delegate to Harness.
 * Delegate requirements: The delegate needs API/SSH/HTTP access to the providers you add to Harness, such as:
 	+ Cloud Providers.
@@ -77,11 +76,8 @@ For steps on adding certificates or other software to the delegate, go to [Commo
 
 ## Delegate access requirements
 
-Harness Delegate does NOT require root account access, but the Kubernetes and Docker delegates run as root by default. If you do not need to install applications using Delegate Profiles, then you can use a non-root account or install the application without the delegate.  
+Harness Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (`INIT_SCRIPT`), you can use a non-root account or install the application without the delegate. For more information, go to [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 
-For more information, go to [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
-
-* Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (`INIT_SCRIPT`), you can use a non-root account or install the application without the delegate. Go to [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
-* If you do not run the delegate as root, you cannot use [delegate initialization scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md) to install software.
+If you do not run the delegate as root, you cannot use [delegate initialization scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md) to install software.
 
 

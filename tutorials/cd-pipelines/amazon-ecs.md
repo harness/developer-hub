@@ -1,10 +1,19 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 title: Amazon ECS
 description: Deploy a Docker Image to Amazon ECS using a CD Pipeline
 ---
 
 # Deploy a Docker Image to Amazon ECS 
+
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Delivery & GitOps Certification today!"
+  link="/certifications/continuous-delivery"
+  closable={true}
+  target="_self"
+/>
 
 ```mdx-code-block
 import DelegateInstall from '/tutorials/platform/install-delegate.md';

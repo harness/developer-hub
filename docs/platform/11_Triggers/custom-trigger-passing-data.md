@@ -8,6 +8,10 @@ Various stages of a pipeline might require input data or parameters to function 
 
 Passing variables and parameters to a pipeline when triggering it can help streamline the pipeline execution based on the specific needs of each run.
 
+import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported.md'
+
+<Variables />
+
 ## How data is passed in the trigger cURL command
 
 Once you create a custom trigger, Harness provides the Webhook URL and cURL command to initiate the trigger.
@@ -42,7 +46,7 @@ You can use the `<+trigger.payload.[key_name]>` expression as a script, a variab
 
 ## Passing data to the pipeline
 
-This cURL command can be used in the terminal or program, but it can also be used in the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) of a pipeline's CD stage.
+This cURL command can be used in the terminal or program, but it can also be used in the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) of a pipeline's CD stage.
 
 If you use the command in a Shell Script step, you can pass data from one pipeline to another pipeline.
 

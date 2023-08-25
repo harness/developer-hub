@@ -6,6 +6,8 @@ sidebar_position: 2
 
 Services represent your microservices and other workloads. Each service contains a **Service Definition** that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables.
 
+## Create a service
+
 You can create services from: 
 * Within a pipeline
 * Outside a pipeline 
@@ -256,19 +258,43 @@ resource "harness_platform_service" "example" {
 
 ## Runtime inputs and expressions in services
 
-If you use runtime inputs in your services, you will need to provide values for these when they run pipeline using these services.
+If you use runtime inputs for settings in a service, you will need to provide values for these inputs when you run the pipeline using the service.
 
-If you use expressions in your services, Harness must be able to resolve these expressions when users run pipeline using these services.
+If you use expressions in a service, Harness must be able to resolve these expressions when users run the pipeline using the service.
 
-Select **Runtime input** for the service.
+Let's look at an example.
 
-![](./static/services-and-environments-runtime-input-01.png)
+1. In a Harness Deploy stage, in **Service**, select **Runtime input** for the service.
+   
+   ![](./static/services-and-environments-runtime-input-01.png)
+2. When you run the pipeline, you can select the service to use.
+   
+   ![](./static/services-and-environments-runtime-input-02.png)
 
-When you run the pipeline, you can select the service for their runtime inputs.
+Now you can provide values for any runtime inputs in the service. Let's go into more detail in the next section.
 
-![](./static/services-and-environments-runtime-input-02.png)
+:::note
 
 For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md).
+
+:::
+
+### Selecting settings when the service is an expression
+
+If you are using a runtime input for the service in a stage, and the service you are going to select has runtime inputs for some of its own settings, you can select inputs for these settings when you select the service in **Run Pipeline**.
+
+Let's look at an example.
+
+Here is a service with an artifact that has runtime inputs for its artifact **Tag** and **Digest** settings.
+
+![picture 0](static/c150c96ef6caae9bd4124fb70d3a8f6550ad7d1f3577c65172c9c2643f1749a4.png)  
+
+Next, when you run a pipeline that has the **Service** setting as a runtime input, you select the service that has runtime inputs for its artifact **Tag** and **Digest** settings.
+
+As you can see, you can now select the artifact **Tag** and **Digest** settings.
+
+![picture 1](static/0fefa40bd146ba01cf7c3d13e26e7bc08cc414a731b890b231eb7708df314f4a.png)  
+
 
 ## Next steps
 

@@ -1,7 +1,7 @@
 ---
 title: Services and environments basics
 description: Learn the basics of CD services and environments.
-sidebar_position: 4
+sidebar_position: 6
 helpdocs_topic_id: 9ryi1ay01f
 helpdocs_category_id: dxej4ug0n5
 helpdocs_is_private: false
@@ -12,14 +12,14 @@ This topic describes Harness Continuous Delivery (CD) services and environments.
 
 If you are new to Harness, please review [Harness key concepts](../../getting-started/learn-harness-key-concepts.md) and [CD pipeline modeling overview](./cd-pipeline-modeling-overview.md).
 
-## Product demo: services
+## Video: Services
 
 <!-- Video:
 https://harness-1.wistia.com/medias/xtmi0c0z95-->
 <docvideo src="https://harness-1.wistia.com/medias/xtmi0c0z95" />
 
 
-### Product demo: services and environments at the account and org level
+### Video: Services and environments at the account and org level
 
 <!-- Video:
 https://harness-1.wistia.com/medias/s89yka6hal-->
@@ -276,7 +276,7 @@ Next you can define all of its settings:
 * **Infrastructure Definitions:** represent one or more environment infrastructures.
   * Infrastructure definitions are the actual clusters, hosts, etc., where Harness deploys a service. For example, you might have a QA environment with separate Kubernetes clusters (infrastructure definitions) for each service you want to test.
   * You can add multiple infrastructure definitions to a single environment and select an infrastructure definition when you add the environment to a stage.
-* **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps Basics](/docs/continuous-delivery/gitops/harness-git-ops-basics.md).
+* **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md).
 
 
 ### Creating environments at an account or organization level
@@ -548,6 +548,9 @@ Service overrides are different from **Environment Configuration** in the follow
 * Environment **Configuration**: applies to every service that is used with the environment.
 * Environment **Service Overrides**: applies to specific services you select. Whenever that service is used with that environment, the **Service Override** is applied.
 
+:::note
+Runtime inputs are not supported if you are trying to override services in multi-service and multi-environment set ups.
+:::
 
 #### Override priority
 
@@ -560,6 +563,17 @@ The priority from top to bottom is:
 3. Service settings
 
 ![](./static/services-and-environments-overview-16.png)
+
+#### Override priority example
+
+Suppose you have a pipeline that runs as follows:
+
+* Deploys a service named `myService`, which has a variable `cpu` set to 1. 
+* Deploys `myService` to `myEnvironmentAlpha`, and then overrides the `myService` variable `cpu` value to 2. 
+
+In this case, the environment variable takes precedence, and overrides the service variable. When the pipeline runs, it uses the `cpu` value of 2. 
+
+Now, suppose you have a another pipeline that deploys `myService` to `myEnvironmentKappa`, which has a service override that sets `cpu` to 4. In this case, the environment service override takes precedence over the environment configuration and the service setting. When the pipeline runs, it uses  the `cpu` value of 4. 
 
 ### Infrastructure definitions
 
@@ -635,7 +649,7 @@ When you have **Variables** with the same name at two or more of the environment
 
 When you use Harness GitOps you can add GitOps clusters to an environment. 
 
-To learn more about Harness GitOps, go to [Harness GitOps Basics](/docs/continuous-delivery/gitops/harness-git-ops-basics.md). 
+To learn more about Harness GitOps, go to [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md). 
 
 Next, when you create a pipeline, you can select the environment and the GitOps cluster(s) to use.
 
@@ -665,8 +679,7 @@ For more information on runtime inputs and expressions, go to [Fixed Values, Run
 
 Please review these key RBAC uses cases for services and environments.
 
-For extensive information on Harness RBAC, go to [Harness Role-Based Access Control Overview](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md) and [Harness Role-Based Access Control Quickstart](../../platform/4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md).
-
+For extensive information on Harness RBAC, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 ### Access permission is needed to deploy to a service or environment
 

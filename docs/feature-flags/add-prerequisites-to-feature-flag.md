@@ -4,7 +4,7 @@ description: This topic describes how to use feature flag prerequisites to enabl
 tags: 
    - feature flag
    - prerequisites
-sidebar_position: 15
+sidebar_position: 70
 helpdocs_topic_id: iijdahygdm
 helpdocs_category_id: jqfkw27d3u
 helpdocs_is_private: false

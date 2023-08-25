@@ -1,7 +1,7 @@
 ---
 title: CD pipeline modeling overview
 description: This topic describes how to model your CD practices in Harness.
-sidebar_position: 3
+sidebar_position: 4
 helpdocs_topic_id: s5mcwujxxy
 helpdocs_category_id: dxej4ug0n5
 helpdocs_is_private: false
@@ -18,7 +18,7 @@ In each Stage, you define **what** you want to deploy using Services, **where** 
 
 For example, a **Service** uses your Kubernetes manifests and Docker image, an **Environment** connects to your dev cluster, and Harness automatically generates an **Execution** using a Rolling Deployment step.
 
-![](./static/cd-pipeline-modeling-overview-02.png)
+![pipeline overview](./static/cd-pipeline-modeling-overview-02.png)
 
 The image above shows you the order for modeling a CD stage:
 
@@ -42,7 +42,7 @@ Model your process in code using a full-featured YAML editor:
 
 ![](./static/cd-pipeline-modeling-overview-03.png)
 
-For more details, go to [Harness YAML Quickstart](../../platform/8_Pipelines/harness-yaml-quickstart.md) and [YAML Reference: Pipelines](../../platform/8_Pipelines/w_pipeline-steps-reference/yaml-reference-cd-pipeline.md).
+For more details, go to [Harness YAML Quickstart](https://developer.harness.io/docs/platform/pipelines/harness-yaml-quickstart.md) and [YAML Reference: Pipelines](../../platform/8_Pipelines/w_pipeline-steps-reference/yaml-reference-cd-pipeline.md).
 
 #### REST API
 
@@ -50,7 +50,7 @@ Model your process using a full-featured REST API:
 
 ![](./static/cd-pipeline-modeling-overview-04.png)
 
-For more details, go to [Harness API Quickstart](/docs/platform/Resource-Development/APIs/api-quickstart) and [Use the Harness REST API](/docs/platform/Resource-Development/APIs/harness-rest-api-reference).
+For more details, go to [Get started with Harness APIs](/docs/platform/Resource-Development/APIs/api-quickstart).
 
 ### How do I automate my CD process in Harness?
 
@@ -78,7 +78,7 @@ Add checks at any point in your process to ensure that deployments are safe:
 
 ![](./static/cd-pipeline-modeling-overview-07.png)
 
-For more details, see [Approvals](/docs/category/approvals).
+For more details, go to [Approvals](/docs/category/approvals).
 
 ### Verification
 
@@ -91,7 +91,7 @@ Harness CV integrates with your APMs and logging tools to:
 
 ![](./static/cd-pipeline-modeling-overview-08.png)
 
-For more details, see [Verify Deployments with the Verify Step](../verify/verify-deployments-with-the-verify-step.md).
+For more details, go to [Verify Deployments with the Verify Step](../verify/verify-deployments-with-the-verify-step.md).
 
 ### Summary
 

@@ -47,7 +47,7 @@ import TabItem from '@theme/TabItem';
     - 1.16
     - 1.27
     - We support what each of the Cloud Providers support. We recommend users to keep their binary versions up to date.
-    - By default Harness ships with kubectl client - 1.24
+    - By default Harness ships with kubectl client - 1.25
   - Tooling:
     - OpenShift - oc client binary
     - Kustomize - kustomize binary
@@ -64,8 +64,8 @@ import TabItem from '@theme/TabItem';
       - Secrets
       - ConfigMap
       - StatefulSet
-      - HorizontalPodAutoScalar is coming soon.
-      - PodDisruptionBudget is coming soon.
+      - HorizontalPodAutoScalar
+      - PodDisruptionBudget
 - **Supported integrations:**
   - Traffic Shifting for Advanced Deployment Strategies:
     - Istio
@@ -111,14 +111,16 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.22.0
 - 1.23.0
 - 1.24.3
+- 1.24.9
+- 1.25.6
 
 For details on other tools and versions included in Harness, see [Delegate-required SDKs](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-required-sdks).
 
 Guidelines:
 
-- Harness will officially support 3 previous versions from the last stable release. For example, the current most recent stable release is 1.24.3, and so Harness supports 1.23, 1.22, and 1.21.
+- Harness will officially support 3 previous versions from the last stable release. For example, the current most recent stable release is 1.25.6, and so Harness supports 1.24, 1.23, and 1.22.
 - Harness supports any other versions of Kubernetes you are using on a best effort basis.
-- Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.24.3 occurs on August 15th, we will support it for compatibility by November 15th.
+- Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.25.6 occurs on April 15th, we will support it for compatibility by July 15th.
 
 ### Helm notes
 
@@ -136,7 +138,7 @@ To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAcc
 <summary>Native Helm</summary>
 
 - **Overview:**
-  - [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart)
+  - [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart)
 - **Supported connectors for deployment:**
   - Kubernetes Connector
     - Username + Password
@@ -244,7 +246,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Amazon AMI/ASG</summary>
 
 - **Overview:**
-  - [AWS AMI/ASG](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial)
+  - [AWS AMI/ASG](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial)
 - **Supported connectors for deployment:**
   - AWS cloud connector
     - IRSA
@@ -263,7 +265,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>AWS Lambda</summary>
 
 - **Overview:**
-  - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/lambda/aws-lambda-deployments)
+  - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
 - **Supported connectors for deployment:**
   - AWS Cloud Connector
     - IRSA
@@ -323,12 +325,17 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
   - AWS Cloud
   - Azure Cloud
   - Physical Datacenter
+- Linux SSH Setups
+  - Ubuntu Version 22+
+  - RHEL9 (Red Hat Enterprise Linux 9) 
+  - SSH libraries supported:
+    - SSHJ: used in our HashiCorp Vault SSH integrations.
+    - JSCH: used in our SSH deployment types.
+    - To see the hostkey formats for these libraries, go to the [SSH implementation comparison](https://ssh-comparison.quendi.de/comparison/hostkey.html).
 - **Limitations:**
   - Google Compute Engine (Virtual Machine Targets)
     - Limited Support, Harness can connect to Google VMs via an SSH Key, not via Google Cloud Authentication
-  - Linux SSH Setups
-    - Ubuntu Version 22 is not supported. It is coming soon.
-    - RHEL9 (Red Hat Enterprise Linux 9) is not supported. It is coming soon.
+
 
 </details>
 
@@ -346,9 +353,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
   - VMware Tanzu Platform
 - **Versions and tooling support:**
   - Binary Versions:
-    - CF CLI v6
     - CF CLI v7
-    - CF CLI v8
 
 </details>
 
@@ -357,7 +362,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Google Functions</summary>
 
 - **Overview:**
-  - [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google/google-functions)
+  - [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
 - **Supported connectors for deployment:**
   - Google Cloud Connector
   - Service Account
@@ -367,6 +372,9 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
   - Google SDK. Supported versions:
     - Google Functions Gen 1
     - Google Functions Gen 2
+- **Deployment strategies:**
+    - Google Functions Gen 1: Basic.
+    - Google Functions Gen 2: Basic, blue green, canary.
 - **Supported integrations:**
   - Artifact Repository:
     - Google Cloud Storage
@@ -379,7 +387,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Spot Instances</summary>
 
 - **Overview:**
-  - [Spot Elastigroup deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-deployment)
+  - [Spot Elastigroup deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
 - **Supported connectors for deployment:**
   - Spot Connector
     - AccountID + API Token
@@ -397,7 +405,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Serverless.com Framework</summary>
 
 - **Overview:**
-  - [Serverless.com Framework](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart) (AWS Lambda)
+  - [Serverless.com Framework](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart) (AWS Lambda)
 - **Supported connectors for deployment:**
   - AWS Cloud Connector
     - IRSA
@@ -458,7 +466,7 @@ If you are using Harness Continuous Delivery (CD) but not Harness Continuous Int
 Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenkins jobs and dynamically capture inputs and outputs from the jobs. 
 
 - **Overview:**
-  - [Run Jenkins jobs in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines)
+  - [Run Jenkins jobs in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-jenkins-jobs-in-cd-pipelines)
 
 </details>
 
@@ -466,13 +474,14 @@ Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenk
 <summary>GitOps</summary>
 
 - **Overview:**
-  - [GitOps](/docs/continuous-delivery/gitops/harness-git-ops-basics)
-  - [GitOps Quickstart](/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart)
+  - [GitOps](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics)
+  - [GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart)
 
 Harness GitOps lets you perform GitOps deployments in Harness. You define the desired state of the service you want to deploy in your Git manifest, and then use Harness GitOps to sync state with your live Kubernetes cluster.
 
 GitOps supports the following:
 
+- Argo CD version supported: 2.7.8.
 - Source Repositories:
   - All Git providers.
   - HTTP Helm repos.
@@ -512,7 +521,7 @@ Harness CD Community Edition is intended to get devs started with Harness quickl
 For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
 
 - **Overview:**
-  - [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial)
+  - [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial)
 
 
 </details>
@@ -526,14 +535,14 @@ For non-native deployments, Harness provides a custom deployment option using De
 Harness supports the following infrastructure provisioning tools:
 
 - [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
-- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos)
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
 - Azure ARM and Blueprint
 - [AWS CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos)
 - Shell script (custom)
 
 ### Terraform version support
 
-Harness does not include Terraform on the Harness Delegate. You must install Terraform on the Delegate when using Terraform in Harness. For more information, go to [Terraform How-tos](/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos).
+Harness does not include Terraform on the Harness Delegate. You must install Terraform on the Delegate when using Terraform in Harness. For more information, go to [Terraform How-tos](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos).
 
 Harness supports the following Terraform versions:
 
@@ -575,12 +584,12 @@ Some Harness features might require specific Terraform versions.
   - [Triggers](https://developer.harness.io/docs/category/triggers)
   - [Input set and overlays](https://developer.harness.io/docs/platform/pipelines/input-sets/)
 - **Utilities:**
-  - [Run a Docker container in a CD stage](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step)
-  - [Using HTTP requests in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines)
-  - [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts)
-  - [Use the Command step to download or copy artifacts and configs, or run scripts](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step)
-  - [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances)
-  - [Pausing pipeline execution using the Wait step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/wait-step)
+  - [Run a Docker container in a CD stage](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step)
+  - [Using HTTP requests in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step)
+  - [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step)
+  - [Use the Command step to download or copy artifacts and configs, or run scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step)
+  - [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances)
+  - [Wait step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/wait-step)
 
 ```mdx-code-block
   </TabItem>

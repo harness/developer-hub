@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the feature flag `NG_SETTINGS`. Contact Harness Support to enable the feature.Harness Default Settings lets you configure parameters in your Account, Org, or Project scope for specific Harness modules.
+Harness Default Settings lets you configure parameters in your Account, Org, or Project scope for specific Harness modules.
 
 This topic explains how to view and edit Default Settings for your modules.
 
@@ -34,9 +34,15 @@ You can group a set of parameters into settings.
 
 This topic explains how to view and edit Default Settings at the Account scope.
 
-1. In your Harness Account, go to Account Resources.![](./static/default-settings-00.png)
-2. Click **Default Settings**. The **Account Default Settings** appear.  
-Harness onboards the module-specific settings in **Account Default Settings**.![](./static/default-settings-01.png)
+1. In your Harness Account, go to **Account Resources**.
+
+   ![](./static/default-settings-00.png)
+
+2. Click **Default Settings**. The **Account Default Settings** appear.
+
+   Harness onboards the module-specific settings in **Account Default Settings**.
+   
+   ![](./static/default-settings-01.png)
 
 #### Allow Override
 

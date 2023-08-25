@@ -1,5 +1,5 @@
 ---
-title: Azure Web Apps deployments
+title: Deploy Azure Web Apps
 description: This topic walks you through deploying Azure Web Apps using Harness.
 sidebar_position: 5
 helpdocs_topic_id: muegjde97q
@@ -139,7 +139,18 @@ There are several types of Delegates you can use for an Azure App Service deploy
 
 For Azure Web App deployments, user typically install a Kubernetes Delegate in AKS or a Docker Delegate on a VMSS.
 
-## Define Web App Infrastructure Details
+## Define the infrastructure
+
+You define the target infrastructure for your deployment in the **Environment** settings of the pipeline stage. You can define an environment separately and select it in the stage, or create the environment within the stage **Environment** tab.
+
+There are two methods of specifying the deployment target infrastructure:
+
+- **Pre-existing**: the target infrastructure already exists and you simply need to provide the required settings.
+- **Dynamically provisioned**: the target infrastructure will be dynamically provisioned on-the-fly as part of the deployment process.
+
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+
+### Pre-existing Web App infrastructure
 
 The target Azure environment for your Harness Web App deployment is defined in a Harness Environment's **Infrastructure**. You will provide the Web App name later in your stage's **Execution**.
 
@@ -206,6 +217,122 @@ Now that you have the **Service** and **Infrastructure** defined, you can select
 
 The steps for the strategy are added automatically.
 
+### Dynamically provisioned Web App infrastructure
+
+:::note
+
+Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
+
+1. **Add dynamic provisioning to the CD stage**:
+   1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+   2. Select the type of provisioner that you want to use.
+   
+    Harness automatically adds the provisioner steps for the provisioner type you selected.
+   3. Configure the provisioner steps to run your provisioning scripts.
+   4. Select or create a Harness infrastructure in **Environment**.
+2. **Map the provisioner outputs to the Infrastructure Definition**:
+   1. In the Harness infrastructure, enable the option **Map Dynamically Provisioned Infrastructure**.
+   2. Map the provisioning script/template outputs to the required infrastructure settings.
+
+These steps are explained in detail below.
+
+#### Supported provisioners
+
+The following provisioners are supported for Web App deployments:
+
+- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
+- [Azure Resource Manager (ARM)](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
+- [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
+
+#### Adding dynamic provisioning to the stage
+
+To add dynamic provisioning to a Harness pipeline Deploy stage, do the following:
+
+1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+2. Select the type of provisioner that you want to use.
+   
+   Harness automatically adds the necessary provisioner steps.
+3. Set up the provisioner steps to run your provisioning scripts.
+
+For documentation on each of the required steps for the provisioner you selected, go to the following topics:
+
+- **Terraform:**
+  - [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
+  - [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+  - [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step). To see the Terraform Rollback step, toggle the **Rollback** setting.
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
+- [Terraform Cloud](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments)
+- [Azure Resource Management (ARM)](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
+- [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
+
+
+#### Mapping provisioner output
+
+Once you set up dynamic provisioning in the stage, you must map outputs from your provisioning script/template to specific settings in the Harness Infrastructure Definition used in the stage.
+
+1. In the same CD Deploy stage where you enabled dynamic provisioning, select or create (**New Infrastructure**) a Harness infrastructure.
+2. In the Harness infrastructure, in **Azure Infrastructure details**, enable the option **Map Dynamically Provisioned Infrastructure**.
+   
+   The **Azure Infrastructure details** section adds a **Provisioner** setting and configures it as a runtime input.
+3. Map the provisioning script/template outputs to the required infrastructure settings.
+
+To provision the target deployment infrastructure, Harness needs specific infrastructure information from your provisioning script. You provide this information by mapping specific Infrastructure Definition settings in Harness to outputs from your template/script.
+
+For Azure Web Apps, Harness needs the following settings mapped to outputs:
+
+- Subscription Id
+- Resource Group
+- Tags (optional)
+
+For example, here's a snippet of an ARM template that provisions the infrastructure for an Azure Web App and includes the required outputs:
+
+```json
+
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "webAppName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Azure Web App."
+      }
+...
+  "outputs": {
+    "subscription_id": {
+      "type": "string",
+      "value": "[subscription().subscriptionId]"
+    },
+    "resource_group_name": {
+      "type": "string",
+      "value": "[resourceGroup().name]"
+    },
+    "tags": {
+      "type": "object",
+      "value": "[parameters('tags')]"
+    }
+  }
+}
+
+```
+
+
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.subscription_id>`.
+
+<figure>
+
+<docimage path={require('./static/9e097690ae78c37f7f15c619f8c1952133f8a5806d02227ebd337d45299dab6b.png')} width="50%" height="50%" title="Click to view full size image" />  
+
+<figcaption>Figure: Mapped outputs.</figcaption>
+</figure>
+
+
 ## Basic Deployments
 
 In a Basic deployment, a new Service/Artifact version is deployed to the deployment slot. Basic deployments are useful for development, learning Harness, and any non-mission critical workflows.
@@ -227,7 +354,15 @@ The Slot Deployment step is where you select the Web App and source deployment s
 
 Here's an example.
 
-![](static/azure-web-apps-tutorial-163.png)
+![](static/azure-web-apps-tutorial-163.png)  
+
+:::note
+
+Currently, the following functionality is behind the feature flag `CDS_AZURE_WEBAPP_NG_LISTING_APP_NAMES_AND_SLOTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+When you select a Web App in **Web App Name**, Harness will automatically update the **Deployment Slot** setting with the slots for that Web App.
+
+:::
 
 ### Web App Rollback
 
@@ -277,7 +412,7 @@ The Slot Deployment step is considered successful once the slot is in a running 
 
 A health check after Slot Deployment can ensure a successful deployment.
 
-A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
+A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
 
 ### Traffic Shift steps
 
@@ -354,7 +489,7 @@ The Slot Deployment step is considered successful once the slot is in a running 
 
 A health check after Slot Deployment can ensure a successful deployment.
 
-A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
+A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
 
 ### Swap Slot step
 

@@ -10,6 +10,14 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+import Closeclient from '../shared/close-sdk-client.md'
+
+
+<Smpno />
+
+
 This topic describes how to use the Harness Feature Flags SDK for your Xamarin application. You can use the Xamarin SDK for Android and iOS.
 
 For getting started quickly, you can [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the  [Xamarin Client Sample GitHub Repository](https://github.com/harness/ff-xamarin-client-sample).
@@ -166,6 +174,10 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
+## Close the SDK client
+
+<Closeclient />
+
 ## Xamarin for iOS
 
 The Xamarin SDK uses a Harness binding library in a NuGet package for iOS.
@@ -173,7 +185,6 @@ The Xamarin SDK uses a Harness binding library in a NuGet package for iOS.
 ### Install the SDK
 
 Install the SDK package in your application, for example:
-
 
 ```
 Install-Package ff-ios-xamarin-client-sdk -Version 0.5.1

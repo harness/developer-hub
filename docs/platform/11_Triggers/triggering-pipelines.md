@@ -21,6 +21,10 @@ This topic demonstrates how to create a trigger for GitHub payload conditions. I
 
 :::
 
+import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported.md'
+
+<Variables />
+
 <details>
 <summary>Video summary</summary>
 
@@ -219,6 +223,12 @@ Once you have fixed the issue, simply edit the Harness trigger, select **Continu
 Once you are back on the Triggers page, refresh the page to verify that the webhook was registered.
 
 </details>
+
+:::note
+
+Ensure that multiple Webhooks are not registered for the same repo. This can trigger multiple builds or deployments with a single push event.
+
+:::
 
 ## Test the trigger
 

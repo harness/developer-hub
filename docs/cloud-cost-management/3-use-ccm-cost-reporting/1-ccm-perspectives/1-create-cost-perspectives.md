@@ -1,7 +1,7 @@
 ---
 title: Create perspectives
 description: Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
-# sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: dvspc6ub0v
 helpdocs_category_id: e7k0qds7tw
 helpdocs_is_private: false
@@ -12,10 +12,7 @@ You can add business context to your Harness Cloud Cost Management (CCM) data us
 
 ### Before You Begin
 
-* [Set Up Cloud Cost Management for AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md)
-* [Set Up Cloud Cost Management for Azure](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md)
-* [Set Up Cloud Cost Management for GCP](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md)
-* [Set Up Cloud Cost Management for Kubernetes](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [Set Up Cloud Cost Management for your cloud service provider](https://developer.harness.io/docs/category/set-up-cloud-cost-management)
 * [Use Cost Categories](../2-ccm-cost-categories/1-ccm-cost-categories.md)
 
 ## Cloud Costs Perspective Concepts
@@ -71,7 +68,7 @@ As you add your resources in the **Perspective Builder**, a **Preview** of your 
 
 ![](./static/create-cost-perspectives-18.png)
 
-The following are the key advantages of Preview:
+The following are the key advantages of preview:
 
 * Provides a quick visual representation of your resources in the Perspective without saving them.
 * Allows you to group resources in the preview mode itself. You can group by **Common**, **Custom** (if Custom Fields are available), **Cluster**, **AWS**, **GCP**, and **Azure**.
@@ -126,8 +123,10 @@ When you create a new Perspective, data across all cloud service providers and c
 
 
 :::note
-If you've added labels and cluster rules in the perspective builder section, it's considered a cluster perspective, hence all cluster labels are considered. In this case, data from cloud service providers such as GCP, Azure, and AWS are not considered. However, if you have applied a label that belongs to the cloud provider data, and you want to view the cluster data as well, then, you have to add a Cloud Provider filter.
+If you've added labels and cluster rules in the perspective builder section, it's considered a cluster perspective, hence all cluster labels are considered. In this case, data from cloud service providers such as GCP, Azure, and AWS are not considered. However, if you have applied a label that belongs to the cloud provider data, and you want to view the cluster data as well, then you have to add a Cloud Provider filter.
 :::
+
+
 ## Budgets, Reports, and Alerts
 For details on adding Budgets, Reports, and Alerts go to:
 
@@ -137,52 +136,22 @@ For details on adding Budgets, Reports, and Alerts go to:
 
 ## Perspective Preferences
 
-In **Preferences**, you have the following options.
-
-### Include Others
-
-The graphs displayed in a Perspective show the top 12 costs only. In order to include the remaining data, Harness displays **Others**.
-
-![](./static/create-cost-perspectives-23.png)
-
-**Others** is always the total cost minus the top 12 costs listed in the graph you are viewing.
-
-Enable **Include Others** in **Preferences** to have it displayed in the Perspective chart.
-
-You can also enable **Include Others** in the Perspective chart:
-
-![](./static/create-cost-perspectives-24.png)
-
-The **Include Others** option must be enabled in **Preferences** to make it persist in the Perspective.
-
-### Include Unallocated
-
-In some graphs, you will also see an **Unallocated** item. This is included to help you see all of the costs. If you look at the Total Cost in the Perspective, it includes the costs of all items and the Unallocated cost.
-
-![](./static/create-cost-perspectives-25.png)
-
-The **Include Unallocated** option is only available in the chart when the **Group By** is using **Cluster** and the following options are selected:
-
-* Namespace
-* Namespace Id
-* Workload
-* Workload Id
-* ECS Task
-* ECS Task Id
-* ECS Service Id
-* ECS Service
-* ECS Launch Type Id
-* ECS Launch Type
+Go to [Perspective Preferences](perspective-preferences.md) to learn about these settings.
 
 ### Review: No Account/Project/etc
 
 It's important to understand the difference between the **Others** and **No Account/Project/etc** categories.
 
-When a Perspective includes multiple data sources (for example, AWS, GCP, and Cluster) and you select one data source in a Perspective **Group By**, such as **AWS: Account**, the costs for the AWS data source are displayed individually.
+When a Perspective includes multiple data sources (for example, AWS, GCP, and Cluster) and you select one data source in a Perspective **Group By**, such as **AWS: Account**, the costs for the AWS data source are displayed individually. The costs for the other data sources (GCP, Cluster) are grouped under **No Account**.
 
-The costs for the other data sources (GCP, Cluster) are grouped under **No Account**.
+In other words, a row with **No** followed by the selected `Group by` is displayed for costs that don’t have any relation with the selected `Group by`. For example, **No SKUs** is displayed for costs (AWS, clusters, etc.) that don’t have any GCP SKUs associated with it.
 
 Another example is if the **Group By** is **Project**. For example, if you selected GCP: Project, then the **No Project** item in the graph represents the AWS and Cluster project costs.
+
+Essentially, `No GroupBy` represents the null values for that `Group By` grouping. To work with these null values either in perspective filters or rules, you need to use the "IS NULL" function on that field. Since Perspectives don't explicitly provide a `No GroupBy` value in the filters, the "IS NULL" field serves as the way to handle these `No GroupBy` items. 
+
+  For example, if your perspective includes both GCP and AWS cloud providers, and you intend to categorize costs by AWS accounts using the `GroupBy` function, any costs associated with GCP will be classified under the label `No Account`. In case you wish to view only the GCP costs, you can apply a filter with the condition `AWS > Account` IS NULL.
+
 
 ## Edit a Perspective
 
@@ -190,23 +159,23 @@ To edit a Perspective, do the following:
 
 1. Select the Perspective that you want to edit, and click **Edit**.
    
-     ![](./static/create-cost-perspectives-26.png)
 2. The **Perspective Builder** appears. Follow the steps in **Create Cost Perspectives** to edit the Perspective.
 
 ## Clone a Perspective
 
-When you clone a Perspective, all its settings are cloned. You simply add a new name. Once it is cloned, you can edit it just as you would any Perspective. To clone a Perspective, do the following:
+When you clone a Perspective, all its settings are cloned. You simply add a new name. After it is cloned, you can edit it just as you would edit any perspective. To clone a Perspective, do the following:
 
-1. Select the Perspective that you want to clone, and click **Clone**.
+Select the more actions icon on the Perspective tile that you want to clone, and select **Clone**.
    
-     ![](./static/create-cost-perspectives-27.png)
-2. The cloned Perspective appears.
+  ![](./static/clone-delete-perspective.png)
+    
+  The cloned Perspective appears. 
 
 ## Delete a Perspective
 
 To delete a Perspective, do the following:
 
-1. Select the Perspective that you want to delete, and click **Delete**.  
+Select the more actions icon on the Perspective tile that you want to delete, and select **Delete**.  
   
 The Perspective is deleted and no longer appears in the Perspective dashboard.
 
@@ -226,12 +195,5 @@ You can also move a Perspective to a folder from its more options (⋮) setting.
 
 ![](./static/create-cost-perspectives-30.png)
 
-## Next Steps
 
-* [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md)
-* [Share Your Cost Perspective Report](../../3-use-ccm-cost-reporting/1-ccm-perspectives/4-share-cost-perspective-report.md)
-* [Analyze Cost for Kubernetes Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md)
-* [Analyze Cost for AWS Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-aws.md)
-* [Analyze Cost for GCP ​Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md)
-* [Analyze Cost for Azure Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-azure.md)
 

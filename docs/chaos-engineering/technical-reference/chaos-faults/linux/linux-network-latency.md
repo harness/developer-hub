@@ -4,6 +4,7 @@ title: Linux network latency
 ---
 
 import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
 
 Linux network latency injects chaos to disrupt network connectivity in linux machine by adding delay to the network requests.
@@ -15,6 +16,8 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
 - Simulates latency in connectivity access by delaying the network requests of the machine.
 
 <Ossupport />
+
+<FaultPermissions />
 
 ## Fault tunables
 <h3>Mandatory tunables</h3>
@@ -39,12 +42,12 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
   </tr>
     <tr>
     <td> destinationHosts </td>
-    <td> List of the target hostnames or keywords. For example: <code>["google.com","litmuschaos.io"]</code> </td>
+    <td> List of the target hostnames or keywords. For example: <code>google.com,litmuschaos.io</code> </td>
     <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
-    <td> List of the target IPs. For example: <code>["1.1.1.1","8.8.8.8"]</code> </td>
+    <td> List of the target IPs. For example: <code>1.1.1.1,8.8.8.8</code> </td>
     <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted</td>
   </tr>
   <tr>
@@ -90,7 +93,7 @@ metadata:
     name: network-latency
 spec:
   networkChaos/inputs:
-    destinationHosts: '["google.com"]'
+    destinationHosts: 'google.com'
     networkInterface: "eth0"
 ```
 
@@ -110,13 +113,13 @@ metadata:
     name: network-latency
 spec:
   networkChaos/inputs:
-    destinationIPs: '["1.1.1.1"]'
+    destinationIPs: '1.1.1.1'
     networkInterface: "eth0"
 ```
 
 ### Latency and jitter
 
-The `latency` and `jitter` input variables add delay and a small deviation to the delay, respectively, with respect to the connection. 
+The `latency` and `jitter` input variables add delay and a small deviation to the delay, respectively, with respect to the connection.
 
 The following YAML snippet illustrates the use of this environment variable:
 

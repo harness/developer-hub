@@ -1,7 +1,7 @@
 ---
 title: Create your first CD pipeline
 description: Learn how to model you release process in minutes.
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 This is a step-by-step tour of using Harness CD pipelines to deploy an application. We show you how to use our YAML, API, Terraform Provider, and console (Pipeline Studio) methods for building pipelines.
@@ -234,8 +234,8 @@ Kubernetes Cluster connector:
 
 ```yaml
 connector:
-  name: K8s Cluster
-  identifier: K8s cluster
+  name: K8sCluster
+  identifier: K8sCluster
   description: ""
   orgIdentifier: default
   projectIdentifier: CD_Docs
@@ -316,7 +316,7 @@ infrastructureDefinition:
   deploymentType: Kubernetes
   type: KubernetesDirect
   spec:
-    connectorRef: K8s_Cluster
+    connectorRef: K8sCluster
     namespace: default
     releaseName: release-<+INFRA_KEY>
   allowSimultaneousDeployments: false
@@ -391,14 +391,14 @@ You can now run your pipeline.
 ```
 The following example creates the Harness entities needed for a simple pipeline that deploys a publicly available Docker Nginx image to your target cluster using the manifest we just added.
 
-For information on using the Harness API, go to [Harness API Quickstart](/docs/platform/Resource-Development/APIs/api-quickstart). For information on the security token, go to [Add and Manage API Keys](/docs/platform/User-Management/add-and-manage-api-keys).
+For information on using the Harness API, go to [Get started with Harness APIs](/docs/platform/Resource-Development/APIs/api-quickstart). For information on the security token, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 <details>
 <summary>Create the Harness connector</summary>
 
 Create the Kubernetes Cluster connector using the [Create a Connector API](https://apidocs.harness.io/tag/Connectors#operation/createConnector).
 
-The Harness API uses API keys to authenticate requests. You create the API key in your Harness Manager User Profile, add a Personal Access Token (PAT) to the key, and then use the PAT in your API requests. For steps, go to [Add and Manage API Keys](/docs/platform/User-Management/add-and-manage-api-keys).
+The Harness API uses API keys to authenticate requests. You create the API key in your Harness Manager User Profile, add a Personal Access Token (PAT) to the key, and then use the PAT in your API requests. For steps, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 Replace the following request settings in `[]` with your account information.
 
@@ -408,7 +408,7 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
 --header 'x-api-key: [security token]' \
 --data-raw 'connector:
   name: K8s Cluster
-  identifier: K8s_Cluster
+  identifier: K8sCluster
   description: ""
   orgIdentifier: default
   projectIdentifier: [project Id]
@@ -497,7 +497,7 @@ curl -i -X POST \
     "environmentRef": "myenv",
     "deploymentType": "Kubernetes",
     "type": "KubernetesDirect",
-    "yaml": "infrastructureDefinition:\n  name: myinfra1\n  identifier: myinfra1\n  description: \"\"\n  tags: {}\n  orgIdentifier: default\n  projectIdentifier: [project Id]\n  environmentRef: myenv\n  deploymentType: Kubernetes\n  type: KubernetesDirect\n  spec:\n    connectorRef: K8s_Cluster_1679347042448\n    namespace: default\n    releaseName: release-<+INFRA_KEY>\n  allowSimultaneousDeployments: false"
+    "yaml": "infrastructureDefinition:\n  name: myinfra1\n  identifier: myinfra1\n  description: \"\"\n  tags: {}\n  orgIdentifier: default\n  projectIdentifier: [project Id]\n  environmentRef: myenv\n  deploymentType: Kubernetes\n  type: KubernetesDirect\n  spec:\n    connectorRef: K8sCluster_1679347042448\n    namespace: default\n    releaseName: release-<+INFRA_KEY>\n  allowSimultaneousDeployments: false"
   }'
 ```
 
@@ -540,7 +540,7 @@ For the Terraform Provider resource, go to [harness_platform_connector_kubernete
 ## Create the Kubernetes cluster connector
 
 resource "harness_platform_connector_kubernetes" "inheritFromDelegate" {
-  identifier  = "K8s_Cluster"
+  identifier  = "K8sCluster"
   name        = "K8s Cluster"
   description = "description"
   tags        = ["foo:bar"]
@@ -650,7 +650,7 @@ resource "harness_platform_infrastructure" "example" {
                   deploymentType: Kubernetes
                   type: KubernetesDirect
                   spec:
-                    connectorRef: K8s_Cluster
+                    connectorRef: K8sCluster
                     namespace: default
                     releaseName: release-<+INFRA_KEY>
                   allowSimultaneousDeployments: false
@@ -830,4 +830,4 @@ Select any execution to view its steps and logs.
 
 ## Next steps
 
-Now that you know the basics of CD pipeline modeling in Harness, go to [CD third-party integrations](../integrations/cd-integrations) to see how Harness supports your manifest and artifact repos and deployment environments. 
+Now that you know the basics of CD pipeline modeling in Harness, go to [CD third-party integrations](../cd-integrations) to see how Harness supports your manifest and artifact repos and deployment environments. 

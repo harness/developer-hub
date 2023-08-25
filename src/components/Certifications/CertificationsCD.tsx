@@ -9,6 +9,8 @@ import DeveloperCertificationReviewGuide from "./data/cd-certification-developer
 import DeveloperCertificationExamDetails from "./data/cd-certification-developer-exam-details.md";
 import AdminCertificationReviewDetails from "./data/cd-certification-admin-review-guide.md";
 import AdminCertificationExamDetails from "./data/cd-certification-admin-exam-details.md";
+import ArchitectCertificationReviewDetails from "./data/cd-certification-architect-review-guide.md";
+import ArchitectCertificationExamDetails from "./data/cd-certification-architect-exam-details.md";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -68,7 +70,7 @@ export default function CertificationsCD() {
             and powerful, easy-to-use pipelines. Empower your teams to deliver
             new features, faster – with AI/ML for automated canary and
             blue/green deployments, advanced verification, and intelligent
-            rollback
+            rollback.
           </div>
         </div>
         <div className={styles.right}>
@@ -85,14 +87,17 @@ export default function CertificationsCD() {
       {/* Tab Content */}
       <div className={styles.tabs}>
         <ul className={styles.tabItems}>
-          {Object.entries(certType).map(([tabKey, tabVal]) => (
-            <li
-              key={tabKey}
-              className={tab === tabKey ? styles.active : ""}
-              onClick={() => handleSwitchTab(tabKey)}
-            >
-              For {tabVal}
-            </li>
+          {Object.entries(certType).map(([tabKey, tabVal], index) => (
+            <div className={styles.listTabItems}>
+              <li
+                key={tabKey}
+                className={tab === tabKey ? styles.active : ""}
+                onClick={() => handleSwitchTab(tabKey)}
+              >
+                For {tabVal}
+              </li>
+              {index < 2 && <i className="fa-solid fa-chevron-right"></i>}
+            </div>
           ))}
         </ul>
 
@@ -132,11 +137,7 @@ export default function CertificationsCD() {
                 <div className={styles.right}>
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Eliminate scripting and manual deployments with Argo
-                    CD-as-a-Service and powerful, easy-to-use pipelines. Empower
-                    your teams to deliver new features, faster – with AI/ML for
-                    automated canary and blue/green deployments, advanced
-                    verification, and intelligent rollback
+                  Assesses the fundamental skills to deploy your applications with CD & GitOps projects.
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
@@ -145,12 +146,12 @@ export default function CertificationsCD() {
                         Register for Exam
                       </button>
                     </Link>
-                    <Link href="/tutorials/cd-pipelines">
+                    {/* <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
-                    </Link>
+                    </Link>*/}
                   </div>
                 </div>
               </div>
@@ -168,12 +169,12 @@ export default function CertificationsCD() {
                     Register for Exam
                   </button>
                 </Link>
-                <Link href="/tutorials/cd-pipelines">
-                  <button className={styles.startLearning}>
-                    <span>Start Learning</span>
-                    <i className="fa-solid fa-arrow-right"></i>
-                  </button>
-                </Link>
+                {/* <Link href="/tutorials/cd-pipelines">
+                      <button className={styles.startLearning}>
+                        <span>Start learning</span>
+                        <i className="fa-solid fa-arrow-right"></i>
+                      </button>
+                    </Link>*/}
               </div>
             </div>
           </div>
@@ -200,10 +201,7 @@ export default function CertificationsCD() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>
-                    Continuous Delivery & GitOps - Administrator (BETA COMING
-                    SOON)
-                  </h2>
+                  <h2>Continuous Delivery & GitOps - Administrator</h2>
                   <img
                     src={`${baseUrl}img/cert_adm_cd_badge.svg`}
                     alt="Harness Certified Expert - CD & GitOps Administrator"
@@ -217,23 +215,27 @@ export default function CertificationsCD() {
                 <div className={styles.right}>
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy and maintain CD
-                    projects and the overall Harness Platform. This exam builds upon
-                    the <a href="/certifications/continuous-delivery?lvl=developer">CD Developer Certification</a>. 
+                    Assesses the fundamental skills to deploy and maintain CD & GitOps
+                    projects and the overall Harness Platform. This exam builds
+                    upon the{" "}
+                    <a href="/certifications/continuous-delivery?lvl=developer">
+                      Continuous Delivery & GitOps Developer Certification
+                    </a>
+                    .
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="#">
+                    <Link href="https://university.harness.io/continuous-delivery-gitops-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
                     </Link>
-                    <Link href="/tutorials/cd-pipelines">
+                    {/* <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
-                    </Link>
+                    </Link>*/}
                   </div>
                 </div>
               </div>
@@ -246,22 +248,21 @@ export default function CertificationsCD() {
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="#">
+                <Link href="https://university.harness.io/continuous-delivery-gitops-administrator">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
                 </Link>
-                <Link href="/tutorials/cd-pipelines">
-                  <button className={styles.startLearning}>
-                    <span>Start Learning</span>
-                    <i className="fa-solid fa-arrow-right"></i>
-                  </button>
-                </Link>
+                {/* <Link href="/tutorials/cd-pipelines">
+                      <button className={styles.startLearning}>
+                        <span>Start learning</span>
+                        <i className="fa-solid fa-arrow-right"></i>
+                      </button>
+                    </Link>*/}
               </div>
             </div>
           </div>
         </div>
-
 
         {/* Architect Tab Content */}
         <div
@@ -285,7 +286,7 @@ export default function CertificationsCD() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Delivery & GitOps - Architect (BETA COMING SOON)
+                    Continuous Delivery & GitOps - Architect
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_arc_cd_badge.svg`}
@@ -298,23 +299,52 @@ export default function CertificationsCD() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Coming Soon...</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
-                    design, implementation and management of CD.
+                    design, implementation and management of CD & GitOps. This exam builds
+                    upon the{" "}
+                    <a href="/certifications/continuous-delivery?lvl=administrator">
+                      Continuous Delivery & GitOps Administrator Certification
+                    </a>
+                    .
                   </div>
-                  {/*
-                  <ArchitectCertificationReviewGuide />
+                  <ArchitectCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="/tutorials/cd-pipelines">
+                    <Link href="https://university.harness.io/continuous-delivery-gitops-architect">
+                      <button className={styles.moreDetails}>
+                        Register for Exam
+                      </button>
+                    </Link>
+                    {/* <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
-                    </Link>
+                    </Link>*/}
                   </div>
-                  */}
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Arch Exam Details */}
+          <div className={styles.examDetails}>
+            <h2 id="exam-details">Exam Details</h2>
+            <div className={styles.examDetailsCard}>
+              <ArchitectCertificationExamDetails />
+              <div className={styles.btnContainer}>
+                <Link href="https://university.harness.io/continuous-delivery-gitops-architect">
+                  <button className={styles.moreDetails}>
+                    Register for Exam
+                  </button>
+                </Link>
+                {/* <Link href="/tutorials/cd-pipelines">
+                      <button className={styles.startLearning}>
+                        <span>Start learning</span>
+                        <i className="fa-solid fa-arrow-right"></i>
+                      </button>
+                    </Link>*/}
               </div>
             </div>
           </div>

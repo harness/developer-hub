@@ -1,124 +1,71 @@
 ---
 title: Connect to Azure Repos
 description: This topic explains how to connect to Azure Repos.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: swe06e41w7
 helpdocs_category_id: o1zhrfo8n5
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Azure Repos is a set of version control tools that you can use to manage your code. Azure Repos provide the following kinds of version control:
+Azure Repos is a set of version control tools that you can use to manage your code. Azure Repos provides Git distributed version control and Team Foundation centralized version control (TFVC).
 
-* **Git**: distributed version control
-* **Team Foundation Version Control** (TFVC): centralized version control
+You can use a Harness Azure Repos connector to connect to Azure Repos Projects and individual repositories.
 
-This topic explains how to connect your Harness Accounts, Organizations or Projects with one of the Azure Repos. You can do this by adding an Azure Repos connector to Harness.
+## Requirements
 
-### Important notes
+You must have:
 
-* Make sure you have set up your Azure Project and Repo.
-* Make sure you have **Create/Edit** permissions to add an Azure Repos connector in Harness.
+* An Azure Project and at least one repo.
+* Permission to create connectors in Harness.
+* A [Harness project](../../organizations-and-projects/create-an-organization.md).
 
-:::note
+## Create the connector
 
-This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
+1. In your Harness project, select **Project Setup**, and then select **Connectors**.
 
-Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
+   You can also create connectors at the account and organization levels. For example, go to **Account Settings** to create a connector at the account level.
 
-  This functionality is behind a feature flag: `OPTIMIZED_GIT_FETCH_FILES`.
+2. Select **New Connector**, and then select the **Azure Repos** connector.
+3. Enter a **Name** for your connector, and then select **Continue**.
+4. Select **Project** or **Repository** for the **URL Type**.
+5. Select **HTTP** or **SSH** for the **Connection Type**.
+6. Enter your Azure Repos Project or Repository URL.
 
-:::
+   * Example: Repo URL, HTTP format: `https://ORG_NAME@dev.azure.com/ORG_NAME/PROJECT_NAME/_git/REPO_NAME`
+   * Example: Project URL, HTTP format: `https://dev.azure.com/ORG_NAME/PROJECT_NAME`
+   * You can get the URL from Azure Repos.
 
-### Step 1: Add an Azure Repos Connector
+      ![](../static/connect-to-a-azure-repo-03.png)
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).​
+   * Be careful when copying Project URLs from Azure Repos, because the URL path can include `_git/REPO_NAME`. Don't include this part of the path when you paste the URL into the **Azure Repos Project URL** field.
 
-You can add a Connector from any module in your Project in Project setup.
+      ![](../static/connect-to-a-azure-repo-02.png)
 
-This topic shows you how to create an Azure Repos Connector from the CD module. To do this, perform the below steps:​
+7. If you selected **Project**, in **Test Repository**, enter the name of a repository that Harness can use to test the connector's connection.
+8. Select **Continue**, and then configure **Credentials** based on the **Connection Type**:
 
-In Harness, click **Deployments** and select your Project.
+   * For HTTP connections, enter the username and password to access the project or repo.
 
-Click **Project Setup** and then click **Connectors**.
+      ![](../static/connect-to-a-azure-repo-04.png)
 
-Click **New Connector**.
+   * For SSH connections, you must provide an SSH private key stored in a [Harness encrypted text secret](../../Secrets/2-add-use-text-secrets.md). You can use `ssh-keygen -t rsa` to create a private SSH key. For more information, go to the Microsoft documentation on [Creating SSH Keys](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-1-create-your-ssh-keys).
 
-In **Code Repositories**, click **Azure Repos**.
+9. If required, select **Enable API Access**. This is recommended, and it is required to use Git event triggers, webhooks, and send build and PR statuses between Azure Repos and Harness.
 
-The **Azure Repos Connector** settings appear.
+   * You need an [Azure Repos Personal Access Token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows#create-a-pat) to enable API access.
 
-Enter a **Name** for your Azure Repos Connector.
+      ![](../static/connect-to-a-azure-repo-05.png)
 
-![](../static/connect-to-a-azure-repo-00.png)
-Click **Continue**.
+   * In **Personal Access Token**, select a [Harness encrypted text secret](../../Secrets/2-add-use-text-secrets.md) containing an Azure Repos Personal Access Token. Harness requires the token for API access. Generate the token in your Azure account, and then add it to Harness as a secret.
 
-### Step 2: Details
+10. Select **Continue**, and then configure the delegate connection. Select either:
 
-Select **Project** or **Repository** in the **URL Type**.
+   * **Use any available Delegate:** Harness selects an available delegate at runtime.
+   * **Only use Delegates with all of the following tags:** Select specific delegates that you want Harness to use with this connector.
 
-![](../static/connect-to-a-azure-repo-01.png)
-#### Option: Project
+11. Select **Save and Continue**, and then wait while Harness tests the connector's connection. If the test succeeds, select **Finish**.
 
-Select **HTTP** or **SSH** in the **Connection Type**.
-
-Enter your Azure Repos Project URL. For example: `https://dev.azure.com/mycomp/myproject`.
-
-Be careful when copying the project URL because if you are looking a Repos the URL will include `_git` in the path.If you selected Project, enter the **name** of your repository in **Test Repository**, not the full URL.
-
-![](../static/connect-to-a-azure-repo-02.png)
-You can get the project URL from your browser's location field.
-
-#### Option: Repository
-
-Enter your **Azure Repos Repository URL**. For example: `https://johnsmith@dev.azure.com/johnsmith/MyProject/_git/myrepo`.
-
- You can get the repo URL from the Azure repo:
-
-![](../static/connect-to-a-azure-repo-03.png)
-Click **Continue**.
-
-### Step 3: Credentials
-
-Enter the username and password from the repo.
-
-![](../static/connect-to-a-azure-repo-04.png)
-#### Enable API Access
-
-This option is required for using Git-based triggers, Webhooks management, and updating Git statuses.​
-
-This is a common option for code repos.
-
-In **Personal Access Token**, either create a new [Encrypted Text](../../Secrets/2-add-use-text-secrets.md) or use an existing one that has your Azure Personal Access Token.​ Harness requires the token for API access. Generate the token in your Azure account and add it to Harness as a Secret.
-
-To create a Personal Acces Token in Azure, see [Create a PAT](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows#create-a-pat).
-
-![](../static/connect-to-a-azure-repo-05.png)
-If you selected **SSH** as the **Connection Type**, you must add your SSH Private key to use with the connection as a [Harness Encrypted Text](../../Secrets/2-add-use-text-secrets.md).
-
-To create a private SSH Key, enter the following command in your terminal window:
-
-
-```
- ssh-keygen -t rsa
-```
-For more information​, see [Create SSH Keys](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-1-create-your-ssh-keys).
-
-Click **Continue**.
-
-### Delegates Setup
-
-Select one of the following:
-
-* **Use any available Delegate:** to let Harness select a Delegate at runtime.
-* **Only use Delegates with all of the following tags:** to use specific Delegates using their Tags.
-
-Click **Save and Continue**.
-
-Harness tests the connection. Click **Finish** once the verification is successful.​
-
-The Azure Repos connector is listed in Connectors.
-
-### Kubernetes delegate with self-signed certificates
+## Kubernetes delegate with self-signed certificates
 
 If your codebase connector allows API access and connects through a Harness Delegate that uses self-signed certificates, you must specify `ADDITIONAL_CERTS_PATH` in the delegate pod, as described in [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates#enable-self-signed-certificates).

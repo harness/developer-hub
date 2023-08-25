@@ -4,6 +4,7 @@ title: Linux network duplication
 ---
 
 import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
 
 Linux network duplication injects chaos to disrupt network connectivity on a Linux machine by duplicating network packets.
@@ -15,6 +16,8 @@ Linux network duplication injects chaos to disrupt network connectivity on a Lin
 - Simulates packet duplication in the network.
 
 <Ossupport />
+
+<FaultPermissions />
 
 ## Fault tunables
 <h3>Mandatory tunables</h3>
@@ -40,12 +43,12 @@ Linux network duplication injects chaos to disrupt network connectivity on a Lin
   </tr>
     <tr>
     <td> destinationHosts </td>
-    <td> List of the target host names or keywords. For example, <code>["google.com","litmuschaos.io"]</code> </td>
+    <td> List of the target host names or keywords. For example, <code>google.com,litmuschaos.io</code> </td>
     <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
-    <td> List of the target IPs. For example, <code>["1.1.1.1","8.8.8.8"]</code> </td>
+    <td> List of the target IPs. For example, <code>1.1.1.1,8.8.8.8</code> </td>
     <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted</td>
   </tr>
   <tr>
@@ -81,7 +84,7 @@ metadata:
     name: network-duplication
 spec:
   networkChaos/inputs:
-    destinationHosts: '["google.com"]'
+    destinationHosts: 'google.com'
     networkInterface: "eth0"
 ```
 
@@ -101,7 +104,7 @@ metadata:
     name: network-duplication
 spec:
   networkChaos/inputs:
-    destinationIPs: '["1.1.1.1"]'
+    destinationIPs: '1.1.1.1'
     networkInterface: "eth0"
 ```
 

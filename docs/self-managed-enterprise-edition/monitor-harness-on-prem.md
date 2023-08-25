@@ -1,6 +1,6 @@
 ---
 title: Monitoring options
-description: Monitor the infrastructure of your installation
+description: Monitor the infrastructure of your on-prem Harness Self-Managed Enterprise Edition installation.
 sidebar_position: 25
 helpdocs_topic_id: ho0c1at9nv
 helpdocs_category_id: 75ydek1suj
@@ -12,179 +12,201 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and integrating with observability tools, such as Grafana.
+You can monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and integrating with observability tools, such as Grafana.
 
-To demonstrate how you can monitor database applications, like MongoDB, Postgres, or Redis, for the Harness Self-Managed Enterprise Edition, this topic describes how you can use a Prometheus server installed in a Kubernetes cluster outside of Harness services. In this example, the monitored target application is present in one cluster, and Prometheus and Grafana are installed in another cluster.
-
-The example setup uses two clusters to demonstrate the use of an ingress controller using LoadBalancer with an external Prometheus server.
-
-<figure>
-
-![](./static/monitor-harness-on-prem.png)
-
-<figcaption>Figure 1: Example monitoring setup</figcaption>
-
-</figure>
+Harness Self-Managed Enterprise Edition monitoring options enable you to view metrics and dashboards and set up an alerting system for your specific configuration. To demonstrate how you can monitor database applications, like MongoDB, Postgres, or Redis, for the Harness Self-Managed Enterprise Edition, this topic describes how you can use a Prometheus server installed in the same cluster as your Harness services.
 
 ## Requirements
 
 This example setup requires:
-- Kubernetes 1.22+ (Harness recommends 1.23)
-- Helm 3.2.0+
-- Prometheus version: Bitnami/kube-prometheus 8.4.0+
-- Istio version 1.15.3
-- Nginx version v1.0.0-alpha.2
 
-:::info note
-For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
-:::
+- An endpoint in your microservice from which Prometheus can scrape metrics, for example `ng-manager:8889/metrics`.
 
-## Configure metrics and ingress rules
+- A Prometheus installation in the same cluster as your Harness Self-Managed Enterprise Edition installation.
 
-Follow the steps below on the Kubernetes cluster where you deploy your Harness instance:
+- An external Prometheus configuration or a Grafana configuration using a Prometheus endpoint exposed by an ingress rule.
 
-1. Add the following overrides to enable database metrics. This updates your Harness installation and your existing overrides.
+<figure>
+
+![](./static/monitor-harness-on-prem-2.png)
+
+<figcaption>Figure 1: Example monitoring setup server inside Harness services.</figcaption>
+
+</figure>
+
+## Set up Prometheus in-cluster
+
+To set up Prometheus in-cluster, do the following:
+
+1. Install your Prometheus server using a Prometheus operator in the same cluster as your Harness services and databases.
+
+2. Set up the environment so that prometheus is able to scrape all these endpoints within the cluster.
+
+3. Use the Bitnami chart with following override file.
+
+   ```yaml
+     prometheus:
+      additionalScrapeConfigs:
+       enabled: true
+       type: internal
+       internal:
+         jobList:
+         - job_name: 'kubernetes-pods'
+           scrape_interval: 30s
+           kubernetes_sd_configs:
+           - role: pod
+           relabel_configs:
+           - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+             action: keep
+             regex: true
+           - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+             action: replace
+             target_label: __metrics_path__
+             regex: (.+)
+           - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+             action: replace
+             regex: ([^:]+)(?::\d+)?;(\d+)
+             replacement: $1:$2
+             target_label: __address__
+           - action: labelmap
+             regex: __meta_kubernetes_pod_label_(.+)
+           - source_labels: [__meta_kubernetes_namespace]
+             action: replace
+             target_label: kubernetes_namespace
+           - source_labels: [__meta_kubernetes_pod_name]
+             action: replace
+             target_label: kubernetes_pod_name
+   ```
+
+   :::info note
+   Providing these configurations in the `config.yaml` file of a Prometheus server enables Prometheus to scrape all available endpoints.
+   :::
+
+4. Run the following to install the Prometheus chart.
 
    ```
-   platform:
-      mongodb:
-        metrics:
-          enabled: true
-      timescaledb:
-        prometheus:
-          enabled: true
-      redis:
-        metrics:
-          enabled: true
+   helm install prometheus oci://registry-1.docker.io/bitnamicharts/kube-prometheus -f override.yaml
    ```
 
-2. Create an ingress file for `metrics`, with defined routing rules that forward requests to an internal service exposing metrics with a similar configuration.
+## Grafana setup options
 
-   ```
-     apiVersion: networking.k8s.io/v1
-     kind: Ingress
-     metadata:
-       name: mongo-metrics
-       namespace: gcloud
-       annotations:
-         nginx.ingress.kubernetes.io/whitelist-source-range: "10.116.1.26"
-         nginx.ingress.kubernetes.io/rewrite-target: /$2
-     spec:
-       ingressClassName: harness
-     rules: 
-      - http:
-         paths: 
-         - path: /mongo-metrics
-           pathType: ImplementationSpecific
-           backend:
-             service:
-               name: mongodb-replicaset-chart-metrics
-               port:
-                 number: 9216
-   ```
-  :::info note
-   Add your IPs to your allow list so the metrics exposed by the ingress are only accessible internally. The IP included in the allow list is the external IP for the node where you host Prometheus in a separate cluster.
-  :::
+In a production environment, you can use a central Grafana setup to visualize metrics from multiple Prometheus endpoints. Depending on your requirements, you may want to monitor multiple projects or environments. For example, you may have your production environment in one cluster and your development environment in a second cluster, and you want to monitor both environments.
 
-## Configure Prometheus to integrate with Harness
-
-To integrate Prometheus with your Harness instance, follow the instructions below for your type of installation:
+To expose in-cluster Prometheus metrics to an external instance of Grafana, set up your ingress or VirtualService.
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="Kubernetes operator by Bitnami" default>
+  <TabItem value="nginx ingress controller" default>
 ```
 
-To use a Kubernetes operator by Bitnami, do the following:
+To use an nginx ingress controller, create an ingress rule for Prometheus.
 
-1. Go to [Bitnami kube-prometheus charts](https://github.com/bitnami/charts/tree/main/bitnami/kube-prometheus).
-
-2. Under **Custom Resources → monitoring.coreos.com → Prometheus**, make the following changes to the CRD to enable adding additional scrape configs under `spec.additionalScrapeConfigs`.
-
-3. Provide the name of the secret you want to add in the `config.yaml` file.
-
+   ```yaml
+      apiVersion: networking.k8s.io/v1
+         kind: Ingress
+         metadata:
+           name: prometheus
+           namespace: <Namespace>
+         spec:
+           ingressClassName: harness
+           rules:
+            - http:
+               paths:
+                - path: /prometheus(/|$)(.*)
+                  pathType: ImplementationSpecific
+                  backend:
+                    service:
+                      name: <prometheus-service-name>
+                      port:
+                        number: 9090
    ```
-   spec:
-     additionalScrapeConfigs:
-       key: config.yml
-       name:harness-metrics
-   ```
-
-4. Create a `harness-metrics` secret in the same namespace where the Prometheus operator is installed. This secret passes a `config.yaml` file as the data. The data contains the job for the `additionalScrapeConfigs` in the following manner.
-
-   ```
-   - job_name:mongo-metrics-test
-     scrape_interval:30s
-     metrics_path: /mongo-metrics/metrics
-     static_configs:
-     - targets:
-       - <LB-IP>
-   - job_name:redis-metrics-test
-     scrape_interval:30s
-     metrics_path: /redis-metrics/metrics
-     static_configs:
-     - targets:
-       - <LB-IP>
-   - job_name:postgres-metrics-test
-     scrape_interval:30s
-     metrics_path: /postgres-metrics/metrics
-     static_configs:
-   - targets:
-     - <LB-IP>
-  ```
-
-5. Run the following command to create the secret:
-
-   ```
-   kubectl create secret generic harness-metrics --from-file config.yml -n <Namespace>
-   ```
-
-  Prometheus can now scrape the metrics for MongoDB on the URL:
-  `http://<LB-IP>/mongo-metrics/metrics`.
-
- :::info note
-   Because the URL is on your allow list, other users are not able to view the internal metrics of specific infra components, such as MongoDB.
- :::
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Standalone prometheus">
+  <TabItem value="Istio">
 ```
 
-If you have Prometheus installed, you can make changes directly to your Prometheus `config.yaml` file by adding fields under scrape configs.
+To use Istio, create a VirtualService for Prometheus.
 
-To use a standalone Prometheus installation with a customer configuration, do the following:
-
-1. Update your `config.yaml` file with the following settings:
-
-    ```
-    scrape_configs:
-    - job_name:mongo-metrics-test
-      scrape_interval:30s
-      metrics_path:/mongo-metrics/metrics
-      static_configs:
-      - targets:
-        - <LB-IP>
-    - job_name:redis-metrics-test
-      scrape_interval:30s
-      metrics_path:/redis-metrics/metrics
-      static_configs:
-      - targets:
-        - <LB-IP>
-    - job_name:postgres-metrics-test
-      scrape_interval:30s
-      metrics_path:/postgres-metrics/metrics
-      static_configs:
-      - targets:
-        -<LB-IP>
-  ```
+   ```yaml
+      apiVersion: networking.istio.io/v1alpha3
+      kind: VirtualService
+      metadata:
+        name: prometheus-virtualservice
+        namespace: harness
+      spec:
+        gateways:
+          - istio-test/public
+        hosts:
+          - istio.test.com
+        http:
+          - match:
+             - uri:
+                prefix: /prometheus/
+             - uri:
+                prefix: /prometheus
+            name: prometheus
+            rewrite:
+              uri: /
+            route:
+              - destination:
+                  host: <prometheus-service-name>
+                  port:
+                    number: 9090
+   ```
 
 ```mdx-code-block
   </TabItem>
 </Tabs>
 ```
 
-## View metrics on the Granfana dashboard
+## Required overrides
+
+Use the following overrides when you install or upgrade your Harness Helm charts. You can add the `monitoring.yaml` file from the Helm charts repo to enable the metrics of all databases and Harness services, or you can enable metrics for each service.
+
+:::info note
+For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
+:::
+
+```yaml
+platform:
+  mongodb:
+    metrics:
+      enabled: true
+    podAnnotations:
+      prometheus.io/path: /metrics
+      prometheus.io/port: '9216'
+      prometheus.io/scrape: 'true'
+  redis:
+    metrics:
+      enabled: true
+    podAnnotations:
+      prometheus.io/path: /metrics
+      prometheus.io/port: '9121'
+      prometheus.io/scrape: 'true'
+  timescaledb:
+    prometheus:
+      enabled: true
+    podAnnotations:
+      prometheus.io/path: /metrics
+      prometheus.io/port: '9187'
+      prometheus.io/scrape: 'true'
+infra:
+  postgresql:
+    metrics:
+      enabled: true
+    podAnnotations:
+      prometheus.io/path: /metrics
+      prometheus.io/port: '9187'
+      prometheus.io/scrape: 'true'
+global:
+  monitoring:
+    enabled: true
+    port: 8889
+    path: /metrics
+```
+
+## View metrics on the Grafana dashboard
 
 To visualize metrics from various sources, you can import Grafana dashboards.
 
@@ -198,7 +220,7 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
   helm install grafana grafana/grafana -n <Namespace>
   ```
 
-2. Using Grafana operator - Install a bitnami packaged Grafana Operator, documentation steps are mentioned here - Grafana Operator Installation.
+2. Install a Bitnami packaged Grafana operator. For instructions, go to [Install the Operator](https://grafana.com/docs/agent/latest/operator/getting-started/) in the Grafana documentation.
 
 ## Open the Grafana dashboard
 
@@ -258,3 +280,7 @@ Here are some sample open source dashboards:
 - [Redis](https://github.com/oliver006/redis_exporter/blob/master/contrib/grafana_prometheus_redis_dashboard.json)
 
 - [Timescale/Postgres](https://github.com/prometheus-community/postgres_exporter/blob/master/postgres_mixin/dashboards/postgres-overview.json)
+
+## Use a server installed in the same cluster as Harness services
+
+In this example, the Prometheus server is installed in the same cluster as your Harness services. You can monitor your services with Grafana installed in the same cluster or outside the cluster, with Prometheus configured as the data source. 

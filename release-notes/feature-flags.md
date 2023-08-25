@@ -1,57 +1,831 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-05-24T10:00:25
+date: 2023-08-24T13:41:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/feature-flags/rss.xml" />
 
-Review the notes below for details about recent changes to Harness Feature Flags, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
+Review the notes below for details about recent changes to Harness Feature Flags (FF). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+
 
 :::info note
-Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 24, 2023
+## Latest - August 24, 2023
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### New features and enhancements
+
 This release does not include new features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+### Early access features
 
 This release does not include early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues in the Apex SDK
+
+Released Apex SDK 0.1.2 - Avoid loading all flag/target segment config into two cache keys, instead use a key per item, so we don’t exceed SFDC account limits and get cache.ItemSizeLimitExceededException (FFM-9071)
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### August 24, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the React Client SDK
+
+Released React Client 1.5.0 - bumped JavaScript SDK version to 1.15.0 (FFM-9133)
+
+#### August 23, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Javascript SDK
+
+* If the SDK was being suspended while inside a mobile app in a webview, our SDK didn't support this usecase and required workarounds. (FFM-8176)
+
+* Removed a third-party SSE library causing event-handling errors. (FFM-8855)
+
+#### August 23, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Ruby SDK
+
+The Ruby SDK did not handle the 'IN' operator correctly. If a target group used the 'IN' operator in a rule, then that rule would fail to evaluate correctly. This could lead to the wrong variation being served to a target. The SDK has been updated to correctly handle IN operators for target group rules.(FFM-8670)
+
+#### August 22, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Node SDK
+
+Previously when using waitForInitialization, if the SDK encountered an authentication failure, it neither resolved nor rejected the promise. This could potentially lead to a Node.js process termination with an exit code of 0 when no operations were performed outside the asynchronous function block where it was called. The SDK now correctly rejects the promise in the event of an authentication failure. This rejection will provide error details. (FFM-9055)
+
+#### August 15, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Ruby SDK
+
+This release fixes an error where "Starts With" target group rules did not receive data in the correct format to be processed by the Ruby SDK. (FFM-9036)
+
+#### August 10, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Feature Flags server, version 1.1079.0
+
+* Improved cache store handling for pre-evaluations (FFM-8904)
+* Added an infrequent error caused by a panic during flag deletion (FFM-8973)
+* Automatically disable Git sync if flags.yml can not be found (FFM-8955)
+* Automatically time out if events take too long to send, rather than hanging indefinitely (FFM-8932)
+* Added additional test coverage for target attributes with IN clauses (FFM-8706)
+* Mark a flag as stale if the Flag previously had evaluations but has not in 60 days (FFM-8790)
+
+#### August 10, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Feature Flags UI
+
+* Previously, the Feature Flags modal screen disappeared when the user clicked in the background, which caused the data to disappear. This issue has been fixed. (FFM-8770)
+
+* Previously, on the flag details page, if all target groups were assigned to rules, the Percentage Rollout target groups selection would disappear. This issue has been fixed. (FFM-8841)
+
+* Previously, when creating a flag targeting rule, using autocomplete search for a target group could remove target groups from other rules within the same flag. This issue has been fixed. (FFM-8680)
+
+#### August 4, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* Previously, the permission to create a feature flag was required across all environments. This restriction has been removed. (FFM-8724)
+
+* Previously, when users selected **All Environments** from the **Environments** dropdown menu, then refreshed the page or went to another page, the **Back** button didn't return the user to the All Environments page. This issue has been resolved. (FFM-8012)
+
+#### August 3, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server, version 1.1078.1
+
+* Due to an error with gitSync logic on environment creation, the activation for the new environment did not get properly created when GitSync was enabled. (FFM-8812) 
+  
+  To resolve this, we:
+  - Fixed the gitSync function for newly created environment.
+  - Added gitSync for deleted environments. 
+
+* Sending a GET request to the /targets/${IDENTIFIER} endpoint returned a 200 error code, even if the target didn't exist. This error code has been changed to 404. (FFM-8810)
+
+* Previously, a multivareate flag's variation values had an erroneous maximum limit of 2704 bytes, with a poor error message if this was exceeded. 
+This limit has been raised to 25000 bytes, with a clear error message if this is exceeded. (FFM-8660)
+
+* Targets sent by the server-side SDKs were not being updated in the database. This meant if a sever-side target changed, while evaluations worked as expected, the updated attributes were not shown in the UI. This fix ensures targets are correctly upserted. (FFM-8600)
+
+
+#### July 27, 2023
+
+##### What's new
+
+#### Feature Flags UI
+
+* When specifying percentages for a rollout, the UI now provides feedback while you edit to let you know the percentage that requires assignment. (FFM-8085)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* Fixed an issue where the API call was triggered twice in the front end when creating a flag. (FFM-8192)
+
+#### July 24, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Ruby** server SDK has been updated to version **1.1.3** with the following updates.
+
+* Fixed an issue where if no attributes were given in the target, the SDK sometimes threw a TypeError exception when processing rules. (FFM-8725)
+
+#### July 21, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Android** client SDK has been updated to version **1.1.3** with the following updates.
+
+* The SDK's cache has been rewritten to improve its stability. (FFM-8630)
+
+* The gradle wrapper has been included in the SDK repository so that users can build without having to install gradle. (FFM-7868)
+
+#### July 20, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+* The **.NET** server SDK has been updated to version **1.1.9** with the following update.
+
+  * Fixed an issue where using the relay proxy caused the SDK to crash. (FFM-8686)
+
+* The **Ruby** server SDK has been updated to version **1.1.2** with the following update.
+
+  * There was an issue where if a feature flag was configured to use a custom attribute with the `IN` operator clause, the `IN` operator didn't work correctly. This issue has been fixed. (FFM-8670)
+
+#### July 19, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server
+
+The Feature Flags server has been updated to version **1.1077.0** with the following updates.
+
+* Previously, the developer count reported under the Feature Flags license usage page (**Account Settings > Subscriptions > Feature Flags > License Count**) included a 'System' user that should not be counted towards the customer's total count of developers. This fix excludes the 'System' user from the count. (FFM-8658)
+
+* Previously, targets sent by the server-side SDKs were not being updated in the database. This meant if a server-side target changed, evaluations worked as expected, but the updated attributes were not shown in the UI. This fix ensures targets are correctly updated. (FFM-8600)
+
+#### July 18, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Android** client SDK has been updated to version **1.1.2** with the following update.
+
+* There was an issue where the python SDK failed when connecting to the proxy. When connecting to Harness SaaS, the SDK extracts the `accountID` from the auth response and adds it to a header in all future requests. The `accountID` is not availabe to the SDK when connecting to the proxy, so it failed due to its absence. This fix ensures the SDK skips the header if `accountID` does not exist. (FFM-8686)
+
+#### July 17, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.2.2** with the following update.
+
+* Fixed an issue where the SDK was crashing when used with the relay proxy. (FFM-8544)
+
+#### July 14, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Node.js** server SDK has been updated to version **1.3.1** with the following updates.
+
+* Previously, calling waitForInitialization was resolving before the SDK was fully initialized, leading to default values being served until initialization completes. This issue has been fixed. (FFM-8615)
+
+#### July 13, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+#### Feature Flags server
+
+The Feature Flags server has been updated to version **1.1076.0** with the following updates.
+
+* Fixed an issue where the query parameter `identifier` in the API `https://app.harness.io/gateway/cf/admin/segments` did not work correctly. (FFM-8298)
+
+* The flag pipeline was not updating the build number. This issue has been fixed. (FFM-8140)
+
+* Target attributes were not updating on conflict. This issue has been fixed. (FFM-8549, ZD 46770)
+
+#### July 4, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+* The **Java** server SDK has been updated to version **1.2.4** with the following update.
+
+  * Fixed an issue where, if a flag had prerequisite flags configured, only the first prerequisite flag was being processed and the remaining were being ignored. (FFM-6412)
+
+The **Python** server SDK has been updated to version **1.2.1** with the following update.
+
+  * The SDK incorrectly logged low level debug information as errors. This issue has been fixed. (FFM-8544)
+
+#### July 3, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+##### Feature Flags SDKs
+
+* The **Erlang** server SDK has been updated to version **2.0.1** with the following update.
+
+  * Some SDK dependencies were not included in releases created by `mix`. This issue has been fixed. (FFM-8364)
+
+* The **Android** client SDK has been updated to version **1.1.1** with the following updates.
+
+  * Removed the following error, which is reported by Gradle's Lint task. (FFM-8551)
+
+    `checkClientTrusted is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers`
+
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+
+* The **iOS** client SDK has been updated to version **1.1.0** with the following updates.
+
+  * The following methods now have an alternative overloaded version that allows you to get the result of the flag directly in the return value, without the need to provide a closure block. (FFM-8056)
+
+    * stringVariation()
+    * boolVariation()
+    * numberVariation()
+    * jsonVariation()
+
+  * Added TLS support for custom/private certs in the iOS SDK for config, stream and metric endpoints. (FFM-7015)
+
+    The CfConfigurationBuilder now has new methods for taking a list of X.509 certificate authority (CA) certs. This list must also include any intermediate CAs the Apple security APIs may need to resolve the full trust chain. 
+
+    For custom certificates, you must also ensure that the Subject Alternative Names (SANs) are set up correctly in the CA for domain name validation to pass.
+
+    The new function setTlsTrustedCAs() takes a list of X.509 CA certificates in PEM format, which will be used to verify the server's web cert sent during TLS handshake. Each PEM certificate must include the BEGIN/END CERTIFICATE headers.
+
+  * Made the following improvements. (FFM-8045)
+
+    *  Added standardized SDK error codes for events such as initialization, authentications, etc. For a full list, go to [Troubleshooting](/docs/feature-flags/ff-sdks/client-sdks/ios-sdk-reference#troubleshooting).
+    * Added general improvements to logging statements, reducing verbose logging to the console. 
+    * Added support for configurable custom loggers. For code examples, go to the [SDK repository](https://github.com/harness/ff-ios-client-sdk/blob/main/docs/further_reading.md#custom-loggers).
+
+  * Added retries for the authentication, and other endpoints. Network timeouts and certain HTTP error codes will be retried with a random delay up to 3 times. (FFM-8049)
+
+  * Added a new API, refreshEvaluations(), that can be called by a mobile app coming to the foreground to update any SSE events that were missed while the app was suspended. (FFM-8160)
+
+  * It is no longer necessary to call registerEventsListener() to start listening to events—calling initlialize() should be enough. (FFM-8106)
+
+  * When a target group is created Harness sends an event to connected SDKs to refetch all flags. The IOS SDK previously didn't do this refetch, and now does. (FFM-8137)
+
+  * Previously, when a target group event was received the SDK fetched all flags, but did not return an event so that apps could be updated accordingly. With this fix, in this case, the SDK returns the onPolling event after all flags are fetched. (FFM-8174)
+
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-8048)
+
+#### June 30, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Erlang** server SDK has been updated to version **2.0.0** with the following updates.
+
+:::caution
+The following are breaking changes for Erlang applications only.  
+
+* Due to a new dependency on a murmur3 hashing library implemented in Elixir, the following is now required to use the SDK in Erlang applications:
+
+  * Elixir version 1.13.4 or above must be installed on your build system when compiling your application.
+
+  * Rebar3 `rebar_mix` must be installed in your Rebar3 plugins.
+
+  For full details, go to [Install the SDK for Erlang applications](/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference/#for-erlang-applications).
+
+This update does not affect Elixir applications, and no further action is required for Elixir applications upon upgrading to this version of the SDK.
+:::
+
+These changes are part of issue FFM-8364:
+
+* Enhancement: Implemented retry logic for authentication, polling, and metrics services for resilience and fault tolerance.
+* Enhancement: Changed supervisor restart intensity from 1 restart in 5 seconds to 4 restarts in 5 seconds.
+* The murmur3 nif library has been replaced by pure Elixir library.
+
+#### June 28, 2023
+
+##### What's new
+
+###### Feature Flags UI
+
+* On the **Feature Flags** page, when viewing the state of flags across all environments, the flag status column now scrolls all the rows as one. This makes it easier to view flag and environment states on one screen. (FFM-7643)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.2.0** with the following updates. (FFM-8300)
+
+  * To improve performance, the SDK now sends targets to the metrics service in batches of 1000. Up to 200 batches, or 200K unique targets, can be sent in the metrics window. This is not user-configurable, and is controlled through the SDK. For more information, go to [Feature Flag FAQs](/docs/frequently-asked-questions/harness-faqs/harness-feature-flag-faqs#how-does-the-metric-aggregatebatch-the-data-before-sending-it-to-harness).
+
+  * The SDK no longer allows `events_sync_interval` to be set below 60 seconds. If it is, the value defaults to 60 seconds.
+
+#### June 26, 2023
+
+##### What's new
+
+This release does not include new features.  
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Node.js** server SDK has been updated to version **1.3.0** with the following updates.
+
+* The following changes are included in issue number FFM-8289:
+
+  * Added validation to the JWT token returned by the Feature Flags authentication service.
+  * Previously, if the SDK failed to authenticate with the Feature Flags service, the SDK crashed. With this fix, the SDK now logs a warning and serves the default variations you provided in your evaluation calls.
+  * Added a list of codes that are logged for each lifecycle event of the SDK, such as initialization, authentication, and so on. For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/server-sdks/node-js-sdk-reference#troubleshooting).
+
+
+#### June 22, 2023
+
+##### What's new
+
+This release does not include new features.  
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **JavaScript** client SDK has been updated to version **1.14.0** with the following update.
+
+* Added a new function, `refreshEvaluations()`, which can be called to programmatically trigger a full refetch of evaluations from the server. (FFM-8141)
+
+#### June 21, 2023
+
+##### What's new
+
+This release does not include new features.  
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server/UI
+
+The **FF server** has been updated to version **1.1075.0** with the following updates.
+
+* The Activity tab on the flag detail page was sometimes slow to load on flags with many (hundreds) of historical changes. This has been resolved, and this tab's loading times are improved. (FFM-8256)
+
+* On the flag detail page, Flag Pipeline tab, the pipeline execution list was sorted with most recent executions last. This ordering has been reversed so that the most recent pipeline executions are shown first. This allows pending executions to be viewed at the top.
+
+* Where users had multiple target rules, in certain circumstances users couldn't delete these rules when the wrong IDs were returned. This fix addresses the problem of the incorrect IDs being returned, and ensures the targets can be removed.
+
+###### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.1.16** with the following updates.
+
+* Previously, if the SDK evaluated flags with a large amount of targets (tens of thousands), the SDK could encounter `read_timeout` errors. This fix increases the HTTP timeout of the SDK, and imposes a limit of 50,000 on the number of targets that can be sent to the UI. (FFM-8231)
+
+  **Known issue** - We are working on resolving the following issue in a future version:
+
+  * During a metrics interval, if you evaluate flags with more than 50,000 unique targets (based on identifier, name and attributes), then only the first 50,000 targets get sent in the request to the metrics API. This means that the targets that are not included in the request do not appear in the UI, but when they are included in evaluations during subsequent metrics intervals, they will be correctly registered in the UI.
+
+#### June 19, 2023
+
+##### What's new
+
+###### Feature Flags UI
+
+* In the onboarding flow, we added a new button and text box for a new project when there are no environments created. (FFM-7393)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* The view in the modal screen for setting up GitEx was not wide enough to show appropriate errors. This issue has been fixed. (FFM-7311)
+
+* The Create a new flag button did not behave as expected on the onboarding screen if there were existing flags. This issue has been fixed. (FFM-8019)
+
+###### Feature Flags SDKs
+
+* The **Java** server SDK has been updated to version **1.2.3** with the following updates.
+
+  * There were reports of customers having difficulty running the SDK because of a missing dependency, `oksse`. Unless users have the JitPack repo in their POM/Gradle file, they are likely to have this problem at compile time. With this fix, we've removed the `oksse` dependency and now use `okhttp-sse` instead. (FFM-5915)
+
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+
+  * Updated the `maven-model` dependency to version 3.5.0 to remove the CVE-2022-4245 vulnerability. (FFM-8133)
+
+  * Updated to the latest version of Guava, 32.0.1-jre, to remove security issues. (FFM-8233)
+
+* The **Android** client SDK has been updated to version **1.1.0** with the following updates.
+
+  * Added a new API to allow SDK users to provide a trusted TLS CA certificate for connecting to Feature Flag services with private root CAs. (FFM-7008)
+
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+
+  * Fixed broken links in the first time setup documentation. (FFM-7867)
+
+* The **.NET** server sdk has been updated to version **1.1.8** with the following updates.
+
+  * Added additional headers to SDK HTTP requests for better analytics. (FFM-7477)
+
+  * Reworked metrics caching to use a map instead of a queue. This improves memory usage and performance. (FFM-7475)
+
+  * We now send the SDK version information with the metrics payload for better analytics and tracking. (FFM-6904)
+
+  * Added logging when a default evaluation is served. (FFM-7473)
+
+  * Standardized and improved Logging across the SDK. (FFM-7472)
+
+  * Fixed error handling when a null target is passed in. (FFM-8128)
+
+#### June 14, 2023
+
+##### What's new
+
+###### Feature Flags SDKs
+
+Updated the ff-flutter-client-sdk version 2.0.0 to use null safety. (FFM-8222)
+
+Flutter 2.0 and Dart 2.12 and later are required. For more information, go to [Sound null safety](https://dart.dev/null-safety) in the Dart documentation.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+#### Feature Flags SDKs
+
+Updated the ff-erlang-server-sdk to version 1.1.0 to add an optional logging configuration option so that the logging level can be set for the SDK. (FFM-8217)
+
+If this option is not set, the SDK uses the default log level of `warning`. To see an example logging configuration, go to [the SDK readme](https://github.com/harness/ff-erlang-server-sdk/blob/main/README.md#set-logging-level).
+
+#### June 9, 2023
+
+##### What's new
+
+###### Feature Flags SDKs
+
+* To aid in debugging, we added a list of codes logged for each lifecycle of the SDK. (FFM-7363)
+
+  Some of the lifecycle events these codes cover are:
+
+  * Initialization
+  * Authentication
+  * Polling
+  * Streaming
+  * Evaluation
+  * Metrics
+  * Close
+
+For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/server-sdks/python-sdk-reference/#troubleshooting).
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.1.15** with the following update.
+
+* Previously, the SDK crashed if `client.close()` was called at any point before a stream event was sent to the SDK. With this fix, the SDK closes all threads correctly. (FFM-7363)
+
+###### Feature Flags UI
+
+* In the user onboarding flow, the Create a New Flag button did not behave as expected. This issue has been fixed. (FFM-8019)
+
+* Previously, a user could select Feature Flags in Harness without having a license, and would then get a 404 error. Now, users only see the FF module if they have an active license (including a free license). (FFM-8002)
+
+* Previously, there was an edge case where an extremely large number of pages in a UI listing could cause performance degradation. This issue has been fixed, and page numbering is now disabled if the page count exceeds 1000 pages. (FFM-7993)
+
+* There was an issue where toggling between the Targets and Target Groups pages caused the new page to re-render. This issue has been fixed. (FFM-7965)
+
+#### June 8, 2023
+
+##### What's new
+
+###### Feature Flags SDKs
+
+The **React** client SDK has been updated to version **1.4.0** with the following enhancements. (FFM-6920)
+
+* Added a new [useFeatureFlagsLoading](https://github.com/harness/ff-react-client-sdk#usefeatureflagsloading) hook to allow apps to react to changing of loading state.
+
+* Added a new [TestWrapper](https://github.com/harness/ff-react-client-sdk#testing-with-jest) testing component to allow easy mocking of the network portion of the SDK for use in [Jest](https://github.com/harness/ff-react-client-sdk#testing-with-jest) unit tests.
+
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **React** client SDK has been updated to version **1.4.0** with the following updates. (FFM-6920)
+
+* Updated the included JavaScript SDK from version 1.10.0 to version 1.13.0.
+
+* Refactored all hooks and Higher Order Components (HOCs) to ensure proper triggering of metrics.
+
+#### June 7, 2023
+
+##### What's new
+
+This release does not include new features. 
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+* The **Node.js** server SDK has been updated to version **1.2.17** with the following update.
+
+  * Previously, when `client.close()` was called, the SSE stream was not terminated. This fix ensures that the SSE stream is properly terminated. (FFM-8116)
+
+#### June 5, 2023
+
+##### What's new
+
+###### Feature Flags SDKs
+
+* The **Python** server SDK has been updated to version **1.14** with the following updates.
+
+  * The SDK now sends extra headers to backend requests to aid in diagnostics. (FFM-7362)
+
+  * The SDK now retries on failed client authentication requests for specific HTTP errors. If client authentication fails, the SDK serves the default values you provide in `variation` calls. (FFM-7177)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+This release does not include fixed issues.
+
+#### June 1, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* Previously, display of the FF module depended on an internal Harness feature flag. Now, display of the FF module is instead based on having an active license (including 'free'). (FFM-7866)
+
+* Previously when a new user was onboarding in the Feature Flags page, when they selected **Get Started**, they saw a dropdown of flags, even though they hadn't created any flags yet. Now, when users do not have any existing flags, they see a text box that prompts them to create one.
+
+###### Feature Flags SDKs
+
+* The **iOS** client SDK has been updated to version **1.0.4** with the following updates.
+
+  * Fixed the stream connection to have a read timeout of 60 seconds. This enables stale connections to be detected and closed, and retries to be started for polling/SSE connections. (FFM-8051)
+  * Fixed a nil pointer dereference bug that caused the SDK to crash under certain conditions. (FFM-8034)
+
+#### May 25, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server
+
+The **FF server** has been updated to version **1.1071.0** with the following updates.
+
+* For customers with a large volume of targets (in the millions), the Target page load time could be slow. Harness has introduced additional indexes to improve the response time of this page. (FFM-7988)
+
+* There was an issue when Git Sync was first configured, a sync was not attempted until a flag was changed or a new one was created. With this fix, a sync is immediately attempted when you configure Git Sync, and the existing flags in your project are backed up to the remote file. (FFM-7681)
+
+###### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.1.12** with the following update.
+
+*  There was an issue where if an error occurred when processing a new stream event, the SDK could potentially log a blank string. This issue has been fixed and the SDK now logs these errors correctly. (FFM-8015)
+
+#### May 24, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
 
 #### Feature Flags SDKs
 
 The **Python** server SDK has been updated to version **1.1.11** with the following update.
 
 * Fixed an issue where the SDK was not evaluating flags with multiple and/or nested prerequisites correctly.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 23, 2023
 
@@ -115,7 +889,7 @@ This release does not include early access features.
 
 The **FF server** has been updated to version **1.1054.2** with the following update.
 
-* The Identifier search filter sometimes incorrectly used a wildcard match. This happened if two flags had overlapping names such as `flag_one` and `flag_one_b`. The detail view of `flag_one_b` sometimes returned `flag_one` details instead. Because flags order by creation, this only happened when flags were created in a certain order. This fix uses an exact match when searching for flag identifiers.
+* The Identifier search filter sometimes incorrectly used a wildcard match. This happened if two flags had overlapping names such as `flag_one` and `flag_one_b`. The detail view of `flag_one_b` sometimes returned `flag_one` details instead. Because flags order by creation, this only happened when flags were created in a certain order. This fix uses an exact match when searching for flag identifiers. (FFM-7928)
 
 #### May 15, 2023
 
@@ -271,6 +1045,9 @@ This release does not include early access features.
   * Added a Ruby on Rails example in the SDK [repository](https://github.com/harness/ff-ruby-server-sdk). (FFM-6926)
   * Disabling the metrics processor didn't disable entries being written to the queue, causing an eventual memory leak. This fix corrects this behavior. (FFM-6965)
   * Added TLS support to the SDK and updated the documentation in the SDK [repository](https://github.com/harness/ff-ruby-server-sdk).
+
+* The **Apex** server SDK has been updated to version **beta 0.5.1** with the following update.
+  * The JSON parsing code was unable to parse the fields `createdAt` and `modifiedAt` in the Target Segment response, because the values were too large for an Integer data type. This issue has been fixed. (FFM-7812)
 
 #### April 4, 2023
 

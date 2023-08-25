@@ -100,7 +100,7 @@ Harness provides different types of delegates to give you flexibility in how you
 
 You are not limited to using a delegate of the same type as your deployment platform, although that is more complicated to set up initially.
 
-For delegates types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+For delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 #### Where do I install the Harness Delegate?
 
@@ -178,6 +178,10 @@ The following information describes how Harness Manager validates and assigns ta
 Delegate selectors use the tags you add to delegates. For more information, go to [Select delegates with selectors and tags](../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 * **Allowlist:** After a delegate is validated for a task, it is added to an allowlist for that task and will likely be used again for that task. The criteria is the URL associated with the task, such as a connection to a cloud platform, repository, or API. A delegate is allowed to perform all tasks using that URL. The time-to-live (TTL) for the allow list is six hours; the TTL is reset with each successful task validation.
 * **Deny list:** If a delegate fails to perform a task, that delegate is added to a deny list for that task and will not be tried again. The TTL for denial is 5 minutes. This is true if there is only one delegate and even if the delegate is selected for that task with a selector, such as with a shell script command in a workflow.
+
+import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
+
+<Selector />
 
 #### Can I pick a delegate for a pipeline step?
 

@@ -4,9 +4,8 @@ description: Stream your audit logs to an external destination.
 sidebar_position: 3
 ---
 
-
-:::note
-Currently, this feature is in Beta and behind the feature flag `PL_AUDIT_LOG_STREAMING_ENABLED`. Contact Harness Support to enable the feature.
+:::important
+Currently, this feature is in Beta and behind the feature flag `PL_AUDIT_LOG_STREAMING_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 You can configure a streaming destination in Harness to send audit log data to another location for processing. Integrating audit data with other Security Incident and Event Management (SIEM) tools lets you do the following:
@@ -47,7 +46,7 @@ To add a streaming destination in Harness:
 
 7. Select **Continue**.
    
-![](./static/audit-streaming.png)
+   ![](./static/audit-streaming.png)
 
 ## Configure the streaming connector
 
@@ -69,7 +68,7 @@ To add a streaming destination in Harness:
 
 6. After the connection test is successful, select **Finish**.
    
-   :::note
+   :::important
    Harness does not consider AWS buckets while testing the connection. Also, it tests the connector used without testing the bucket.
    :::
    
@@ -124,10 +123,10 @@ Streamed audit events have a predictable schema in the body of the response.
 |**Field**       |  **Description**     |   **Is required**    |
 |  ---  |  ---  |  ---  |
 |   auditEventId    |  Unique ID for the audit event.     |   Required    |
-|   auditEventAuthor    |  [Principal](../../4_Role-Based-Access-Control/1-rbac-in-harness.md#harness-rbac-components) attached with audit event.    |   Required    |
+|   auditEventAuthor    |  [Principal](/docs/platform/role-based-access-control/rbac-in-harness#rbac-components) attached with audit event.    |   Required    |
 |    auditModule   | Module for which the audit event is generated.      |   Required    |
 |   auditResource    |  Resource audited.     |  Required     |
-|   auditResourceScope    |  [Scope](../../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope) of the audited resource.     |   Required    |
+|   auditResourceScope    |  [Scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) of the audited resource.     |   Required    |
 |  auditAction     |  Action on the audited resource.     |  Required     |
 |    auditEventTime   |  Date and time of the event.     | Required      |
 |   auditHttpRequestInfo    |  Details of the HTTP request.     |  Optional     |
@@ -136,7 +135,7 @@ Streamed audit events have a predictable schema in the body of the response.
 
 ### JSON payload
 
-```
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",

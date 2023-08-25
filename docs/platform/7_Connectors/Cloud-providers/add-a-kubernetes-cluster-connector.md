@@ -91,7 +91,7 @@ Select one of the following:
 
 * **Specify master URL and credentials**:
 	+ You provide the Kubernetes master node URL. The easiest method to obtain the master URL is using kubectl: `kubectl cluster-info`.
-	+ Next, enter the **Service Account Key** or other credentials.
+	+ Next, enter the **Service Account Key** or other credentials. You can use any service account; the service account doesn't have to be attached to a delegate.
 * **Use the credentials of a specific Harness Delegate**: Select this option to have the Connector inherit the credentials used by the Harness Delegate running in the cluster. You can install a Delegate as part of adding this Connector.
 
 For details on all of the credential settings, see [Kubernetes Cluster Connector Settings Reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
@@ -101,7 +101,6 @@ For details on all of the credential settings, see [Kubernetes Cluster Connector
 To use a Kubernetes Service Account (SA) and token, you will need to either use an existing SA that has the `cluster-admin` permission (or namespace `admin`) or create a new SA and grant it the `cluster-admin` permission (or namespace `admin`).
 
 For example, here's a manifest that creates a new SA named `harness-service-account` in the `default` namespace.
-
 
 ```
 # harness-service-account.yml  
@@ -113,12 +112,10 @@ metadata:
 ```
 Next, you apply the SA.
 
-
 ```
 kubectl apply -f harness-service-account.yml
 ```
 Next, grant the SA the `cluster-admin` permission.
-
 
 ```
 # harness-clusterrolebinding.yml  
@@ -157,6 +154,38 @@ echo $TOKEN
 ```
 The `| base64 -d` piping decodes the token. You can now enter it into the Connector.
 
+**Creating Service Account tokens for Kubernetes versions 1.24 and later**
+
+The Kubernetes SA token is not automatically generated if the SAs are provisioned under Kubernetes versions 1.24 and later. You must create a new SA token and decode it to the `base64` format.
+
+Use the following command to create a SA bound token using kubectl:
+
+```
+kubectl create token <service-account-name> --bound-object-kind Secret --bound-object-name <token-secret-name>
+```
+
+You can also create SAs using manifests. For example, here's a manifest that creates a new SA:
+
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: <service-account-name>
+  namespace: default
+
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: <token-secret-name>
+  annotations:
+    kubernetes.io/service-account.name: "<service-account-name>"
+```
+
+For more details, go to [Managing Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/).
+
+
 ### Set up delegates
 
 Regardless of which authentication method you selected, you select Harness Delegates to perform authentication for this Connector.
@@ -165,13 +194,13 @@ If you do not have Harness Delegates, click **Install New Delegate** to add one 
 
 Harness uses Kubernetes Cluster Connectors at Pipeline runtime to authenticate and perform operations with Kubernetes. Authentications and operations are performed by Harness Delegates.
 
-You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks delegates, go to [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 
-You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+You can use delegate tags to select one or more delegates. For details on delegate tags, go to [Use delegate selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
-If you need to install a Delegate, see [Delegate Installation Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) or the [Visual Summary](#visual_summary) above.
+If you need to install a delegate, see [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) or the [Visual Summary](#visual_summary) above.
 
 Click **Save and Continue**.
 
-Harness tests the credentials you provided using the Delegates you selected.
+Harness tests the credentials you provided using the delegates you selected.
 

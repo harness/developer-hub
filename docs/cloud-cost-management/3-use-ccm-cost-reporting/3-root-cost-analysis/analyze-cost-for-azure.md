@@ -24,11 +24,11 @@ Harness Cloud Cost Management (CCM) allows you to view your Azure costs at a gla
 
 * [Set Up Cloud Cost Management for Azure](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md)
 
-### Step: Analyze Azure Cost
+### Analyze Azure Cost
 
 The Perspectives provides deep insights into your Azure costs. The cost includes all the applicable credits and discounts.
 
-1. In **Cloud Costs**, click **Perspectives**,and then click **Azure**. The Azure services are displayed.
+1. In **Cloud Costs**, select **Perspectives**,and then select **Azure**. The Azure services are displayed.
    
      ![](./static/analyze-cost-for-azure-18.png)
 2. Select the **date range** for the costs you want to analyze.
@@ -55,19 +55,20 @@ The Perspectives provides deep insights into your Azure costs. The cost includes
 	* **Product**: Each of your active products with its cloud costs.
 	* **Label**: Each label that you assign to your Azure resources. You can select a label name to get further granular details of your label.
 
-### Option: Add Filter
+### Add filters
 
 Perform the following steps to add filters.
 
-1. In **Cloud Costs**, click **Perspectives**,and then click **Azure**.
-2. Click **add filter**.
-   
-     ![](./static/analyze-cost-for-azure-20.png)
-3. Select Azure, Region, Product, or Label.
+1. In **Cloud Costs**, select **Perspectives**, and then select **Azure**.
+2. Select **add filter**. 
+3. Select Azure, Region, Product, Cloud Provider, or Label.
 4. Select the operator. The supported operators are:
-	* **IN: The exact match operation is used to filter for the value specified.**
-	* **NOT IN: The exact match operation is used to filter for the value that is not specified.**
-5. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
+	* **IN**: Applies a filter to include only entries with the provided value.
+	* **NOT IN**: Applies a filter to exclude entries with values that match the specified value.
+	* **NULL**: Applies a filter to show only entries where the designated filter or field is empty.
+	* **NOT NULL**: Applies a filter to display only entries where the designated filter has a value.
+	* **LIKE**: Applies a filter to show entries with conditions that precisely match the specified pattern.
+5. Select a value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
    
      ![](./static/analyze-cost-for-azure-21.png)
 

@@ -4,7 +4,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import TutorialCard from "./TutorialCard";
 import { FeaturedList } from "./data/allTutorialsData";
 import { CIList } from "./data/continuousIntegrationData";
-import { CDList } from "./data/continuousDeliveryData";
+import { K8SList } from "./data/continuousDeliveryData";
 import { CCMList } from "./data/cloudCostManagementData";
 import { FFList } from "./data/featureFlagsData";
 import { SRMList } from "./data/serviceReliabilityManagementData";
@@ -12,6 +12,8 @@ import { STOList } from "./data/securityTestingOrchestrationData";
 import { CEList } from "./data/chaosEngineeringData";
 import { PlatformList } from "./data/platformData";
 import { CETList } from "./data/continuousErrorTrackingData";
+import { IDPList } from "./data/internalDeveloperPortalData";
+import { SMPList } from "./data/smpData";
 import styles from "./styles.module.scss";
 import cardStyles from "./TutorialCard.module.scss";
 
@@ -47,7 +49,7 @@ export default function AllTutorials() {
           <img src={`${baseUrl}img/icon_cd.svg`} />
           <h3>Set up CD Pipelines</h3>
         </div>
-        <TutorialCard FeatureList={CDList} />
+        <TutorialCard FeatureList={K8SList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
@@ -93,10 +95,24 @@ export default function AllTutorials() {
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/icon_idp.svg`} />
+          <h3>Manage Developer Portal</h3>
+        </div>
+        <TutorialCard FeatureList={IDPList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
           <img src={`${baseUrl}img/logo.svg`} />
           <h3>Administer Harness Platform</h3>
         </div>
         <TutorialCard FeatureList={PlatformList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/logo.svg`} />
+          <h3>Administer Harness Self-Managed Enterprise Edition</h3>
+        </div>
+        <TutorialCard FeatureList={SMPList} />
       </div>
     </div>
     // </Layout>

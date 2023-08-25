@@ -1,0 +1,11 @@
+{
+  "label": "Get started with IDP",
+  "collapsible": "true",
+  "collapsed": "false",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "title": "Get started with Internal Developer Portal"
+  },
+  "customProps": {}
+}

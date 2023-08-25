@@ -14,7 +14,13 @@ This topic describes how to use multiple services and multiple environments in a
 
 Often, you will deploy one service to one Environment in a CD stage. In some cases, you might want to use multiple services and environments in the same stage.
 
-For example, let's say you host 1 infrastructure per customer and want to deploy your service to all customer infrastructures in the same pipeline. Instead of creating separate stages for each service and infrastructure combination, you can just deploy a single service to all infrastructures in the same stage.
+For example, let's say you host one infrastructure per customer and want to deploy your service to all customer infrastructures in the same pipeline. Instead of creating separate stages for each service and infrastructure combination, you can just deploy a single service to all infrastructures in the same stage. 
+
+:::note
+
+This functionality is also supported for GitOps clusters by configuring multiple clusters per environment.
+
+:::
 
 Another example would be when you have multiple QA environments and what to deploy to all of them together.
 
@@ -136,7 +142,7 @@ Make sure that you have added tags when creating your environment in the **Confi
 
 :::note
 
-Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_ON_TAGS`. Make sure these related feature flags, `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure that the feature flags, `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -173,7 +179,7 @@ Make sure that you have added tags when creating your environment in the **Confi
 
 :::note
 
-Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_ON_TAGS`. Make sure these related feature flags, `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure that the feature flags, `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 

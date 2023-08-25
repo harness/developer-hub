@@ -34,6 +34,10 @@ The following section lists the support for Git providers for Harness Git Sync:�
 
 Make sure `feature.file.editor` is not set to `false` in the `bitbucket.properties` file if you are using Bitbucket on-prem.
 
+:::info note
+Git Sync may be noticeably delayed if your delegate is in a Kubernetes or AWS build farm rather than Harness Cloud because of encryption and decryption across two connections.
+:::
+
 ### Supported Harness entities
 
 You can save the following Harness resources in Git using Harness Git Experience:
@@ -42,7 +46,12 @@ You can save the following Harness resources in Git using Harness Git Experience
 * Input sets
 * Templates
 
-### What is Harness Git experience?
+:::info note
+Artifact Source templates are not supported with Git Experience.
+
+:::
+
+### What is Harness Git Experience?
 
 Harness Git Experience lets you choose a Git-First approach for managing Harness configurations as code, using Git as the source of truth.
 
@@ -57,7 +66,7 @@ Harness Git Experience lets you modify the configurations stored in Git through 
 
 You can save the modifications in the existing branch or a new branch through a PR.
 
-### Harness Git experience workflow
+### Harness Git Experience workflow
 
 * When you create a Remote resource in Harness, the configurations are stored in Git.
 * You can select the branch from which you want to run the pipeline.
@@ -65,6 +74,10 @@ You can save the modifications in the existing branch or a new branch through a 
   ```mdx-code-block
   <img src={branch_selection} alt="branch-selection" height="300" width="700"/>
   ```
+
+  You can also select the branch in the **Run Pipeline** settings.
+
+  <docimage path={require('./static/86a197e9afb88cb6816cea527bd7b8cee41d7d3d39f7c5104ebeedc00d6f050f.png')} width="60%" height="60%" title="Click to view full size image" />    
 
 * During pipeline execution, the configurations of the required resources and any referenced entities like input sets, are fetched from Git.  
 If the referenced entities exist in the same repo, they are fetched from the same branch that you have selected for pipeline execution.  
@@ -97,7 +110,7 @@ You can store your configurations in the following ways:
 
 Multiple users can make commits to multiple branches for the resources that are synced with the Git Provider. This provides the flexibility for various branching workflows.
 
-### What can I do with Harness Git experience?
+### What can I do with Harness Git Experience?
 
 Harness Git Experience helps you do the following:
 
@@ -108,7 +121,7 @@ Harness Git Experience helps you do the following:
 * Submit config changes using the Harness pipeline Studio (GUI and/or YAML) or entirely in Git.
 * Make Harness pipeline or resource config changes in a branch, test it in isolation (sandbox), and submit changes to master using Harness Manager or your Git platform.
 
-### What do I need to enable Harness Git experience?
+### What do I need to enable Harness Git Experience?
 
 #### Git connector
 
@@ -117,7 +130,7 @@ A Harness Git Connector is used to sync your Harness Project with your Git repo.
 You will need a Harness Git Connector to connect with the Git provider and perform operations like generating a webhook. Your Git Connector credentials are used to commit to Git when operations are performed using API.
 
 
-:::note
+:::info note
 **Important:** The Connector must use the **Enable API access** option and **Username and Token** authentication. Harness requires the token to access the Git API. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector. For detailed steps to add a Git Connector, see [Code Repo Connectors](../7_Connectors/Code-Repositories/connect-to-code-repo.md).
 
 :::
@@ -127,7 +140,7 @@ You will need a Harness Git Connector to connect with the Git provider and perfo
 Harness configurations are stored in repositories. These configuration files can be kept in the same repository as the code, or they can be kept separate. You can map your resources and configurations to multiple repositories.
 
 
-:::note
+:::info note
 You must have valid Git credentials and a repo within this Git account before you enable Harness Git Experience.
 
 :::

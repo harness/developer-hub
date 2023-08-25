@@ -16,12 +16,12 @@ Harness provides Custom Remote Manifests to let you run your script at deploymen
 
 In some cases, your manifests are in a packaged archive and you simply wish to extract and use them at runtime. In these cases, you can use a packaged archive with Custom Remote Manifests.
 
-You simply use Custom Remote Manifests to add a script that pulls the package and extracts its contents. Next, you supply the path to the manifest or template for Harness to use.
+You can simply use Custom Remote Manifests to add a script that pulls the package and extracts its contents. Next, you supply the path to the manifest or template for Harness to use.
 
 Custom Remote Manifests are supported for:
 
 * Kubernetes
-* Helm Chart
+* Helm chart
 * OpenShift
 
 Looking for other methods? See [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests).
@@ -93,18 +93,23 @@ If you are adding the image location to Harness as an Artifact in the Service De
     
     ![](./static/add-a-custom-remote-script-and-manifests-38.png)
 
-1. Click **Continue**. The Manifest Details appear. Now you can add your script to pull the package containing your manifests and specify the folder path for the manifests.
+4. Click **Continue**. The Manifest Details appear. Now you can add your script to pull the package containing your manifests and specify the folder path for the manifests.
     
     ![](./static/add-a-custom-remote-script-and-manifests-39.png)
 
-1. Enter the name in **Manifest Name**.
-1. In **Custom Remote Manifest Extraction Script**, enter the path to the Git repo where your remote manifest script is available. This script runs on the Harness Delegate selected for the deployment.
-2. In **Extracted Manifest File Location**, enter the folder path for the manifests.
-3. In **Define Delegate Selector**, Harness selects the best Delegate. See [Select Delegates with Delegate Selectors and Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md). Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate.
-4. In **Values.yaml**, the field is populated with the folder path for the values.yaml.
-5. Click **Submit**. The new manifest is created and added to **Manifests** in Harness.
+5. Enter the name in **Manifest Name**.
+6. In **Custom Remote Manifest Extraction Script**, enter the path to the Git repo where your remote manifest script is available. This script runs on the Harness Delegate selected for the deployment.
+7. In **Extracted Manifest File Location**, enter the folder path for the manifests.
+8. In **Define Delegate Selector**, Harness selects the best delegate.  Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate. Go to [Use delegate selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md) for more information.
 
-![](./static/add-a-custom-remote-script-and-manifests-40.png)
+   :::info note
+   Delegate selectors do not override service infrastructure connectors. Delegate selectors only determine the delegate that executes the operations of your pipeline.
+   :::
+   
+9. In **Values.yaml**, the field is populated with the folder path for the values.yaml.
+10. Click **Submit**. The new manifest is created and added to **Manifests** in Harness.
+
+    ![](./static/add-a-custom-remote-script-and-manifests-40.png)
 
 ## View the Harness Delegate selected for the deployment
 
@@ -144,9 +149,15 @@ Do not enter a folder. Harness requires a direct path to the file.
 
 That's all the setup required. You can now deploy the Service and the script is executed at runtime.
 
+## Helm chart manifests
+
+When configuring a Helm chart with Custom Remote manifests, in the **Manifest Details** > **Advanced** section, you can select a **Helm Version**, and then add the command flags that you wish to pass based on the version. 
+
+For more information on Helm command flags, go to [Add Helm chart](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts/#add-the-helm-chart).
+
+
 ## Notes
 
 You can use Go templating in your Kubernetes resource files, just as you would for files stored in Git or inline. See [Example Kubernetes Manifests Using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating). For OpenShift, you must use OpenShift templating.
 
 If the artifact you are deploying with your manifest is public (DockerHub) and does not require credentials, you can use the standard public image reference, such as `image: harness/todolist-sample:11`.
-

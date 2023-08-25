@@ -1,7 +1,7 @@
 ---
 title: Dashboards
 description: This topic describes how to add and manage access control for CCM Dashboards.
-# sidebar_position: 2
+# sidebar_position: 20
 helpdocs_topic_id: ng6yaxqi2r
 helpdocs_category_id: ak4v1iorl3
 helpdocs_is_private: false
@@ -16,7 +16,7 @@ This topic describes how to add and manage access control for CCM Dashboards.
 
 ## Before You Begin
 
-* [Access Management (RBAC) Overview](https://developer.harness.io/docs/platform/Role-Based-Access-Control/rbac-in-harness)
+* [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 
 ## CCM Dashboards Roles and Permissions
 
@@ -72,7 +72,7 @@ Perform the following steps to limit access to specific Dashboards.
 1. In **Harness**, click **Account Settings**, and then click **Access Control**.
    
      ![](./static/manage-access-control-for-ccm-dashboards-04.png)
-2. In **Resource Groups**, click your Resource Group. For more information on adding and managing resource groups, see [Add and Manage Resource Groups](https://developer.harness.io/docs/platform/Role-Based-Access-Control/add-resource-groups).  
+2. In **Resource Groups**, click your Resource Group. For more information on adding and managing resource groups, see [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups).  
   
      This section uses **Dashboard - All** as an example.
 
@@ -99,7 +99,7 @@ Perform the following steps to limit the access to specific Dashboards for diffe
 1. In **Harness**, click **Access Control**.
    
      ![](./static/manage-access-control-for-ccm-dashboards-07.png)
-2. In **User**, in **New User**, select the User for which you want to add or modify the access control. For more information on adding and managing resource groups, see [Add and Manage Users](/docs/platform/User-Management/add-users).
+2. In **User**, in **New User**, select the User for which you want to add or modify the access control. For more information on adding and managing resource groups, see [Manage users](/docs/platform/role-based-access-control/add-users).
 3. In **Assign Roles**, select the **Role** from the drop-down list. You can select either **Dashboard - Static Editor** or **Dashboard - All View**.
 4. In **Resource Groups**, select the resource group for which you want to add or modiy the access control.
    

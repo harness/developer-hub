@@ -18,7 +18,7 @@ Harness has two versions of its product suite.
 
 ![](./static/harness-first-gen-vs-harness-next-gen-19.png)
 
-Documentation for FirstGen features is located under the [FirstGen Docs](/docs/first-gen) section of docs.harness.io. The documentation in all other sections applies only to NextGen features.Review the following supported platforms and technologies topics to see which version to use today:
+Documentation for FirstGen features is located under the [FirstGen Docs](/docs/first-gen) section of docs.harness.io. The documentation in all other sections applies only to NextGen features. Review the following supported platforms and technologies topics to see which version to use today:
 
 * [FirstGen Supported Platforms and Technologies](../first-gen/starthere-firstgen/supported-platforms.md)
 * [NextGen Supported Platforms and Technologies](supported-platforms-and-technologies.md#continuous-delivery-cd)
@@ -31,13 +31,9 @@ Here's a diagram that shows how FirstGen entities like Services, Environments, W
 
 The following table maps the entities based on how you use them for deployment:
 
-
-
-|  |  |  |
+|  | FirstGen | NextGen |
 | --- | --- | --- |
-|  | **FirstGen** | **NextGen** |
 | **What I'm deploying.** | Service | Service |
 | **Where I'm deploying it.** | Environment | Environment |
 | **How I'm deploying it.** | Workflow | Execution |
 | **My release process.** | Pipelines | Pipelines |
-

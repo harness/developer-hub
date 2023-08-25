@@ -20,17 +20,20 @@ For a detailed explanation of Kubernetes rolling updates, see [Performing a Roll
 
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 * [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md)
-* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
+* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md)
 
 ## What workloads can I deploy?
 
 Stages using Harness Canary and Blue/Green steps only support [Kubernetes Deployment workloads](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 
-The Rolling Deployment step supports all workloads except Jobs.
+The Rolling Deployment step supports all workloads. 
+
+In Harness, a workload is a Deployment, StatefulSet, or DaemonSet object deployed and managed to steady state.
+
+If you deploy Kubernetes Jobs using the Rolling Deployment step, it does not manage the Job to steady state. Typically, Jobs are deployed with the Apply step.
 
 The [Apply Step](deploy-manifests-using-apply-step.md) can deploy any workloads or objects in any strategy including Rolling Deployment.
 
-In Harness, a workload is a Deployment, StatefulSet, or DaemonSet object deployed and managed to steady state.
 
 ### Rolling vs Apply
 
@@ -124,7 +127,7 @@ strategy:
     maxUnavailable: 1
 ```
 
-For details on the settings, see [RollingUpdateDeployment](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#rollingupdatedeployment-v1-apps) in the Kubernetes API.
+For details on the settings, see [RollingUpdateDeployment](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#deploymentstrategy-v1-apps/#rollingupdatedeployment-v1-apps) in the Kubernetes API.
 
 ## Define the service and infrastructure
 
@@ -133,7 +136,7 @@ For details on the settings, see [RollingUpdateDeployment](https://kubernetes.io
 To set up your Service and Infrastructure in the stage, follow the steps in these topics:
 
 * [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
-* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure)
+* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
 
 ## Add the Rollout Step
 

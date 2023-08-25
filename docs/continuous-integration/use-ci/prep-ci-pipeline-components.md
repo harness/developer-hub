@@ -41,7 +41,7 @@ In addition to a default [codebase](#codebases), the following settings are conf
 * [Input sets and overlays](/docs/platform/Pipelines/input-sets)
 * [Triggers](/docs/category/triggers)
 * [Variables](/docs/category/variables-and-expressions)
-* [Notifications](/docs/category/notifications-1)
+* [Notifications](/docs/category/notifications)
 * [Flow Control: Synchronization barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
 * [Policy Sets](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 * Advanced Options: Pipeline Timeout Settings, [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
@@ -66,7 +66,7 @@ To [add a stage to a pipeline](/docs/platform/pipelines/add-a-stage/), select **
 
 :::tip
 
-To make pipelines more versatile, you can create [templates](/docs/category/templates), use [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables), and create [custom stages](/docs/platform/pipelines/add-a-custom-stage/), among other [optimization techniques](./optimize-and-more/optimizing-ci-build-times.md).
+To make pipelines more versatile, you can create [templates](/docs/category/templates), use [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables), and create [custom stages](/docs/platform/pipelines/add-a-custom-stage/), among other [optimization techniques](./optimize-and-more/optimizing-ci-build-times.md).
 
 :::
 
@@ -78,7 +78,7 @@ Harness uses [code repo connectors](/docs/category/code-repo-connectors) to conn
 
 ### Build infrastructure
 
-All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me?](./set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me](./set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 :::tip Tutorials
 
@@ -93,7 +93,7 @@ You can use **Shared Paths** in a stage to [share data across steps](./caching-c
 
 When a pipeline runs, it creates a temporary volume called a *workspace*. During initialization, the stage clones your codebase to the root of the workspace. Then, the steps in the stage run inside the root. The workspace is the current working directory for each step in the stage. The workspace persists for the lifetime of the stage and enables steps in that stage to communicate and share state information. The default shared working directory for a stage is `/harness`. The workspace is destroyed when the stage ends.
 
-Individual steps can communicate and share state using the workspace filesystem. The workspace is a volume, so filesystem changes persist throughout the stage lifetime. If you need to share additional volumes, you can add **Shared Paths**. Paths must begin with a forward slash, such as `/vol`. <!-- resolves as `/vol/harness`? -->
+Individual steps can communicate and share state using the workspace filesystem. The workspace is a volume, so filesystem changes persist throughout the stage lifetime. If you need to share additional volumes, you can add **Shared Paths**. Paths must begin with a forward slash, such as `/vol`.
 
 For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Build stage uses Maven, you can specify `/root/.m2` as a **Shared Path** so that all steps in that stage can access that directory.
 

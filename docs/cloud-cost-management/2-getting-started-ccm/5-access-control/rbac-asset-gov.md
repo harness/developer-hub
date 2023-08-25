@@ -1,7 +1,7 @@
 ---
 title: Asset governance rules
 description: This topic describes how to add and manage access control for cloud asset governance rules.
-# sidebar_position: 4
+# sidebar_position: 40
 ---
 
 # Manage access control for asset governance rules

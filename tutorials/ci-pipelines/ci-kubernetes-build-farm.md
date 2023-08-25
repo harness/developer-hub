@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 description: Create a pipeline that uses a Kubernetes cluster build infrastructure.
 slug: /ci-pipelines/kubernetes-build-farm
 keywords: [Kubernetes, Continuous Integration, CI Tutorial]
@@ -8,7 +8,22 @@ title: Build on a Kubernetes cluster
 
 # Build and test on a Kubernetes cluster build infrastructure
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 This tutorial shows you how to create a two-stage Harness CI pipeline that uses a Kubernetes cluster build infrastructure. The pipeline builds and runs a unit test on a codebase, uploads the artifact to Docker Hub, and then runs integration tests. This tutorial uses publicly-available code, images, and your Github and Docker Hub accounts.
+
+:::info
+
+The Kubernetes cluster build infrastructure option is only available with Harness CI Team and Enterprise plans. For Free plans, try the [Harness Cloud build infrastructure tutorial](/tutorials/ci-pipelines/fastest-ci).
+
+:::
 
 You'll learn how to create a CI pipeline that does the following:
 
@@ -100,7 +115,7 @@ If this is your first project with CI, the CI pipeline wizard starts after you s
 
 ### Create a GitHub connector
 
-Next, you'll create a _connector_ that allows Harness to connect to your Git codebase, and you'll install a Harness Delegate in your Kubernetes cluster. A connector is a configurable object that connects to an external resource automatically while the pipeline runs. For detailed instructions on creating GitHub connectors, go to [Add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector). For details about GitHub connector settings, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
+Next, you'll create a _connector_ that allows Harness to connect to your Git codebase, and you'll install a Harness Delegate in your Kubernetes cluster. A connector is a configurable object that connects to an external resource automatically while the pipeline runs. For more information, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 
 1. Under **Project Setup**, select **Connectors**.
 2. Select **New Connector**, and then select **GitHub** under **Code Repositories**.
@@ -194,7 +209,7 @@ Next, you need to define the build infrastructure. Harness offers several [build
 
 Now that the pipeline has a stage with a defined codebase and build infrastructure, you are ready to add steps to build the codebase, run unit tests, and push an artifact to Docker Hub. The first step will run unit tests and compile the codebase. The second step builds a container image and pushes it to a Docker Hub repo.
 
-To run unit tests in a CI pipeline, you can use either a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) or a [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings). This tutorial uses a **Run** step. In addition to unit tests, the **Run** step can run any number of commands on a container image. **Run** steps are highly versatile and you'll use them often in your CI pipelines. While not used in this tutorial, with the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+To run unit tests in a CI pipeline, you can use either a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) or a [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/#add-the-run-tests-step). This tutorial uses a **Run** step. In addition to unit tests, the **Run** step can run any number of commands on a container image. **Run** steps are highly versatile and you'll use them often in your CI pipelines. While not used in this tutorial, with the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
 
 1. On the **Execution** tab for your Build stage, select **Add Step**, select **Add Step** again, and then select the **Run** step from the Step Library.
 2. For **Name**, enter `Run Unit Tests`.

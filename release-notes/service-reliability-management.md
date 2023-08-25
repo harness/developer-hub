@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-05-23T10:00:20
+date: 2023-08-22T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -9,18 +9,231 @@ sidebar_position: 7
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-Review the notes below for details about recent changes to Harness Service Reliability Management, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
+
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/service-reliability-management/rss.xml" />
+
+Review the notes below for details about recent changes to Harness Service Reliability Management, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 23, 2023, version 79306
+## Latest: Version 80300
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### New features and enhancements
+
+This release does not include new features.
+
+
+### Early access features
+This release does not include any early access features.
+
+
+### Fixed issues
+
+- Unable to update the change source configuration within a monitored service. (SRM-15083)
+  
+  This issue has been resolved. You can now easily update the change source configuration within your monitored service.
+
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### August 10, 2023, version 80119
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any new features.
+
+#### August 04, 2023, version 80119
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any new features.
+
+#### July 27, 2023, version 80021
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any new features.
+
+
+#### July 21, 2023, version 79922
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any new features.
+
+
+#### July 06, 2023, version 79812
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- During monitored service creation, when adding a health source that supported metrics, both **Errors** and **Performance** metric packs were automatically selected as default options. However, if the user chose to select only one of the options, when the monitored service was reopened, both metric options remained selected. (SRM-14998)
+  
+  This issue has been resolved. The selected metric pack option during monitored service creation will now be correctly reflected upon opening the monitored service.
+
+
+#### June 28, 2023, version 79709
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- When configuring a health source, you were unable to input zero (0) in the **Lesser Than** and **Greater Than** fields. (SRM-14936)
+  
+  This issue has been fixed.  You can now input zero (0) in both the fields.
+
+- When using a template that has a service and an environment as input values to create a monitored service in a Verify step, you were unable to select the environment and service at the account, organization, or project levels. (SRM-14944)
+
+  This issue has been resolved, and you can now select the desired environment and service in these cases as expected.
+
+- `SocketTimedOut` error messages were not displayed in the call log. (OIP-537)
+  
+  This issue has been fixed. The call log now shows `SocketTimedOut` error messages.
+
+- The HTTP capability checks were considering status codes as an important factor, even when proper headers were not being sent. (OIP-499)
+
+  This issue has been resolved. Now, the behavior of the HTTP capability checks has been modified to ignore status codes.
+
+- In the metrics analysis section, time-series graphs exhibit data shifting when the first applicable timestamp is missing. (OIP-526)
+
+  This issue has been fixed, and now the graphs reflect the intended starting points.
+
+
+#### June 20, 2023, Hotfix version 79608
+
+ - Optimized Prometheus API calls by grouping per-host calls into a single call using the 'by' clause. As a result, the number of API calls to the Prometheus server during verification is reduced, leading to improved overall performance and efficiency in data retrieval and processing. (OIP-552)
+
+
+#### June 19, 2023, version 79600
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- SLOs were getting stuck in the recalculation state even after the recalculation process was complete. (SRM-14849)  
+  
+  This issue has been resolved. Now, the SLOs transition to the appropriate state once the recalculation has finished successfully.
+
+- When configuring a Deploy stage and selecting a value in the **Propagate from** field to propagate a service from the previous parallel stage, an error would occur when attempting to create a monitored service. (SRM-12454)  
+  
+  This issue has been resolved. You can now successfully create a monitored service even when selecting a value in the **Propagate from** field to propagate a service from the previous parallel stage.
+
+- The Monitored Service Listing page was not displaying the latest updated monitored service first. (SRM-14845)  
+  
+  This issue has been resolved. Now, the monitored service list is sorted in the following order:
+
+  - A monitored service with the most recent update will be displayed at the top of the list.
+
+  - If a monitored service has been updated with new analysis data, it is given higher priority and displayed before other services on the list.
+
+
+#### June 09, 2023, version 79517
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- Unable to select multiple environments when creating a monitored service for infrastructure. (SRM-14794)  
+  
+  This issue has been resolved. You can now select multiple environments when creating a monitored service for infrastructure.
+
+
+#### June 05, 2023, Hotfix version 79416
+
+This release does not include any customer-facing changes.
+
+
+#### June 01, 2023, version 79413
+
+##### What's new
+
+- Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- The ErrorBudgetReset API is incorrectly accepting Rolling type SLOs along with Calendar type SLOs. (SRM-14692)  
+
+  This issue has been resolved. Now, the ErrorBudgetReset API only accepts Calendar type SLOs.
+
+- Unable to create SLO using SignalFX metrics. (OIP-406)  
+
+  This issue has been resolved. Now, SignalFX's health source supports SLI functionality, and you can create SLOs using SignalFX metrics.
+
+
+#### May 23, 2023, version 79307
+
+##### What's new
 
 - Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](https://developer.harness.io/docs/continuous-error-tracking). (SRM-14701)
 
@@ -37,23 +250,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Now, errors are displayed in the following scenarios:
   
   - Ongoing Problem: Errors are displayed when an SLO experiences an ongoing problem, such as an issue with the health of a connector.
-  - 
+  
   - Missing Data: Errors are shown when there is missing data in an SLO, even if there is no current error. This helps identify any gaps in historical SLO records.
-  - 
+  
   - Contributing SLO Issues: Errors in contributing SLOs are now reflected in the composite SLO, ensuring a complete picture of performance when individual components encounter problems.
 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 - Error budget burn rate notifications are not being sent for Request Based SLO. (SRM-14705).  
   
@@ -78,16 +284,6 @@ This release does not include any early access features.
 - Missing data in SLOs was not considered in error budget burn rate notifications. (SRM-14682)  
 
   - This issue has been resolved. Now the missing data is treated according to user preference (GOOD, BAD, or IGNORE), contributes to error budget burn rate, and is included in notifications.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 04, 2023, version 79214
 
@@ -128,6 +324,11 @@ This release does not include any early access features.
 - For CloudWatch CV connector, IRSA was not supported for connectivity. (SRM-13907)
 
   Support for IRSA connectivity was added.
+
+- Unable to create notifications while configuring composite SLO at account level. (14474)
+  
+  This issue has been resolved. Now, you can create notifications for composite SLOs at the account level. 
+
 
 #### April 10, 2023, version 79015
 

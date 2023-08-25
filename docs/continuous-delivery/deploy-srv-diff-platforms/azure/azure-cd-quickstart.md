@@ -1,5 +1,5 @@
 ---
-title: Azure ACR to AKS deployments
+title: Deploy Azure ACR to Azure AKS
 description: This topic walks you through deploying an image from Azure ACR to Azure AKS using Harness.
 sidebar_position: 6
 helpdocs_topic_id: m7nkbph0ac
@@ -263,7 +263,18 @@ Now you can add an artifact from your ACR repo. We'll create a Harness Azure Con
 
 16. Click **Next** at the bottom of the **Service** tab.
 
-## Define your target cluster
+## Define the infrastructure
+
+You define the target infrastructure for your deployment in the **Environment** settings of the pipeline stage. You can define an environment separately and select it in the stage, or create the environment within the stage **Environment** tab.
+
+There are two methods of specifying the deployment target infrastructure:
+
+- **Pre-existing**: the target infrastructure already exists and you simply need to provide the required settings.
+- **Dynamically provisioned**: the target infrastructure will be dynamically provisioned on-the-fly as part of the deployment process.
+
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+
+### Pre-existing AKS infrastructure
 
 The target cluster is your own AKS cluster, hosted in your Azure cloud. This is where we will deploy your ACR image using the manifest you selected.
 
@@ -272,24 +283,126 @@ The target cluster is your own AKS cluster, hosted in your Azure cloud. This is 
 3. In **Infrastructure Definition**, click **Microsoft** **Azure**.
 
   ![](static/azure-cd-quickstart-106.png)
+1. In **Cluster details**, enter the following.
+2. In **Connector**, click **Select a connector**.
+3. Select the Azure Connector you added earlier, and then click **Apply Selected**.
+4. In **Subscription Id**, select the Subscription where you AKS cluster is located.
+5. In **Resource Group**, enter the resource group for your AKS cluster.
+6. In **Cluster**, select the cluster name.
+7.  In **Namespace**, enter an existing namespace, such as **default**.
 
-  :::note
+Now that the stage's Infrastructure is complete, you can select the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts) for this stage of the Pipeline.
 
-  Let's take a moment and review Harness Environments and Infrastructure Definitions. Harness Environments represent your deployment targets logically (QA, Prod, etc). You can add the same Environment to as many stages as you need. Infrastructure Definitions represent your target infrastructure physically. They are the actual clusters, hosts, etc.  
-    
-  By separating Environments and Infrastructure Definitions, you can use the same Environment in multiple stages while changing the target infrastructure settings with each stage.An **Infrastructure Definition** is where you specify the target for your deployment. In this case, your Kubernetes cluster and namespace.
+### Dynamically provisioned AKS infrastructure
 
-  :::
+:::note
 
-4. In **Cluster details**, enter the following.
-5. In **Connector**, click **Select a connector**.
-6. Select the Azure Connector you added earlier, and then click **Apply Selected**.
-7. In **Subscription Id**, select the Subscription where you AKS cluster is located.
-8. In **Resource Group**, enter the resource group for your AKS cluster.
-9. In **Cluster**, select the cluster name.
-10. In **Namespace**, enter an existing namespace, such as **default**.
+Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-Now that the Stage's Infrastructure is complete, you can select the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts) for this stage of the Pipeline.
+:::
+
+Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
+
+1. **Add dynamic provisioning to the CD stage**:
+   1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+   2. Select the type of provisioner that you want to use.
+   
+      Harness automatically adds the provisioner steps for the provisioner type you selected.
+   3. Configure the provisioner steps to run your provisioning scripts.
+   4. Select or create a Harness infrastructure in **Environment**.
+2. **Map the provisioner outputs to the Infrastructure Definition**:
+   1. In the Harness infrastructure, enable the option **Map Dynamically Provisioned Infrastructure**.
+   2. Map the provisioning script/template outputs to the required infrastructure settings.
+
+#### Supported provisioners
+
+The following provisioners are supported for AKS deployments:
+
+- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
+- [Azure Resource Manager (ARM)](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
+- [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
+
+#### Adding dynamic provisioning to the stage
+
+To add dynamic provisioning to a Harness pipeline Deploy stage, do the following:
+
+1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+2. Select the type of provisioner that you want to use.
+   
+   Harness automatically adds the necessary provisioner steps.
+3. Set up the provisioner steps to run your provisioning scripts.
+
+For documentation on each of the required steps for the provisioner you selected, go to the following topics:
+
+- **Terraform:**
+  - [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
+  - [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+  - [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step). To see the Terraform Rollback step, toggle the **Rollback** setting.
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
+- [Terraform Cloud](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments)
+- [Azure Resource Management (ARM)](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
+- [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
+
+
+#### Mapping provisioner output
+
+Once you set up dynamic provisioning in the stage, you must map outputs from your provisioning script/template to specific settings in the Harness Infrastructure Definition used in the stage.
+
+1. In the same CD Deploy stage where you enabled dynamic provisioning, select or create (**New Infrastructure**) a Harness infrastructure.
+2. In the Harness infrastructure, in **Select Infrastructure Type**, select **Direct** or **Microsoft Azure**.
+3. In **Cluster details**, enable the option **Map Dynamically Provisioned Infrastructure**.
+   
+   The **Azure Infrastructure details** section adds a **Provisioner** setting and configures it as a runtime input.
+4. Map the provisioning script/template outputs to the required infrastructure settings.
+
+To provision the target deployment infrastructure, Harness needs specific infrastructure information from your provisioning script. You provide this information by mapping specific Infrastructure Definition settings in Harness to outputs from your template/script.
+
+For AKS, Harness needs the following settings mapped to outputs:
+
+- Cluster (for Microsoft Azure connection type)
+- Namespace
+
+For example, here's a snippet of an ARM template that provisions the infrastructure for an AKS deployment and includes the required outputs:
+
+```json
+
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "clusterName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the AKS cluster."
+      }
+    },
+...
+  "outputs": {
+    "cluster_name": {
+      "type": "string",
+      "value": "[parameters('clusterName')]"
+    },
+    "namespace_name": {
+      "type": "string",
+      "value": "default"
+    }
+  }
+}
+
+```
+
+
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.namespace_name>`.
+
+
+<figure>
+
+<docimage path={require('./static/1e16790b00a3b5b126e00a6ffa5cb23f18c3d899b0aa6f345b786cd6ba4631c7.png')} width="50%" height="50%" title="Click to view full size image" />  
+
+<figcaption>Figure: Mapped outputs.</figcaption>
+</figure>
 
 ## Add a Rollout Deployment step
 

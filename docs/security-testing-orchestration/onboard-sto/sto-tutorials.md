@@ -5,7 +5,7 @@ sidebar_position: 10
 ---
 
 
-The following workflows and [tutorials](/tutorials/orchestrate-security-tests) are available. Harness recommends you do them in this order. 
+The following workflows and [tutorials](/tutorials/security-tests) are available. Harness recommends you do them in this order. 
 
   1. [Set up Harness for STO](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto) This is a good primer if you're new to Harness. It guides you through the process of setting up your connectors, delegate, and build infrastructure. Then it guides you through the process of setting up a simple standalone STO pipeline. 
    

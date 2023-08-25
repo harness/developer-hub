@@ -12,7 +12,7 @@ export const FeaturedList: CardItem[] = [
     description: <>Deploy a Helm Chart onto your Kubernetes cluster.</>,
     newDoc: true,
     type: [docType.Documentation],
-    time: "8min",
+    time: "8 min",
     link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
   },
   {
@@ -28,7 +28,7 @@ export const FeaturedList: CardItem[] = [
     ),
     newDoc: false,
     type: [docType.Documentation],
-    time: "5 min",
+    time: "10 min",
     link: "/tutorials/ci-pipelines/fastest-ci",
   },
   {
@@ -56,30 +56,10 @@ export const FeaturedList: CardItem[] = [
         webhooks.
       </>
     ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "9 min",
-    link: "/tutorials/ci-pipelines/tfc-notification",
-  },
-  {
-    title: "Amazon ECR",
-    module: MODULES.ci,
-    description:
-      "Publish an Image to an Amazon Elastic Container Registry.",
-    link: "/tutorials/ci-pipelines/publish/amazon-ecr",
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Google GAR",
-    module: MODULES.ci,
-    description:
-      "Publish an Image to a Google Artifact Registry.",
-    link: "/tutorials/ci-pipelines/publish/google-gar",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg"
+    link: "/tutorials/ci-pipelines/build/tfc-notification",
   },
   {
     title: "Code coverage with CodeCov",
@@ -90,34 +70,14 @@ export const FeaturedList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
-    newDoc: true,
+    newDoc: false,
   },
   {
-    title: "Publish Allure Report",
+    title: "Publish to the Artifacts tab",
     module: MODULES.ci,
     description:
-      "Publish an Allure Report.",
-    link: "/tutorials/ci-pipelines/test/allure-report",
-    type: [docType.Documentation],
-    time: "5 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Run LocalStack",
-    module: MODULES.ci,
-    description:
-      "Run LocalStack as a Background step.",
-    link: "/tutorials/ci-pipelines/test/localstack",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Run Sauce Connect Proxy",
-    module: MODULES.ci,
-    description:
-      "Run Sauce Connect Proxy as a Background step.",
-    link: "/tutorials/ci-pipelines/test/saucelabs-proxy",
+      "Publish any URL to the Artifacts tab.",
+    link: "/tutorials/ci-pipelines/publish/artifacts-tab",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"

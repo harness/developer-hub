@@ -17,13 +17,14 @@ With the increase in release velocity, the risk to code quality also increases. 
 * Quickly and accurately identify and fix detected issues with Automated Root Cause Analysis (ARC) screen, leveraging source code, variable values, environment state of the host/container, and DEBUG level logs to get the full context.
 * Integrate the ARC screen with existing tools including APMs, log analyzers, and issue tracking software.
 
-CET consists of an Error Tracking Agent that runs on a Java Virtual Machine (JVM). It monitors the Java applications for run-time exceptions, log events, and the custom events that you set up. When an exception or an event occurs, the Agent sends the statistics and snapshots to a monitored service on Harness SRM. SRM analyzes the data using Machine Learning (ML) and provides deep insights via comprehensive dashboards such as the Event List and ARC.
+CET consists of an Error Tracking Agent that runs on a Java Virtual Machine (JVM). It monitors the Java applications for run-time exceptions, log events, and the custom events that you set up. When an exception or an event occurs, the Agent sends the statistics and snapshots to a monitored service on Harness CET. CET analyzes the data using Machine Learning (ML) and provides deep insights via comprehensive dashboards such as the Event List and ARC.
 
 ![Harness Error Tracking](./static/et-quickstart-overview-diagram.png)
 
+
 ## Further reading
 
-- [Tutorials](https://developer.harness.io/tutorials/manage-service-reliability)
+- [Tutorials](https://developer.harness.io/tutorials/error-tracking)
 - [Supported platforms and technologies](https://developer.harness.io/docs/getting-started/supported-platforms-and-technologies/#service-reliability-management)
 
 

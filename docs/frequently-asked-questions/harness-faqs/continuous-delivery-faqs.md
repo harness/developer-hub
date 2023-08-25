@@ -153,13 +153,13 @@ Yes, you can enable the Role permission Pipeline Execute and then apply that Rol
 
 ![](./static/continuous-delivery-faqs-02.png)
 
-See [Add and manage roles](../../platform/4_Role-Based-Access-Control/9-add-manage-roles.md).
+See [Manage roles](../../platform/role-based-access-control/add-manage-roles).
 
 #### Can I deploy a service to multiple infrastructures at the same time?
 
 Each stage has a service and target Infrastructure. If your Pipeline has multiple stages, you can deploy the same service to multiple infrastructures.
 
-See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
 
 #### Can I re-run a failed deployment?
 
@@ -234,7 +234,7 @@ Harness includes both Kubernetes and Helm deployments, and you can use Helm char
 
 * Harness [Kubernetes deployments](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
 Harness Kubernetes deployments also support all deployment strategies (canary, blue/green, rolling, and so on).
-* For Harness [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md), you must always have Helm and Tiller (for Helm v2) running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases. You can perform a Rolling deployment strategy only (no canary or blue/green). For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to the Rolling deployment strategy.
+* For Harness [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md), you must always have Helm and Tiller (for Helm v2) running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases. You can perform a Rolling deployment strategy only (no canary or blue/green). For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to the Rolling deployment strategy.
 	+ **Versioning:** Harness Kubernetes deployments version all objects, such as ConfigMaps and secrets. Native Helm does not.
 	+ **Rollback:** Harness Kubernetes deployments will roll back to the last successful version. Native Helm will not. If you did two bad Native Helm deployments, the second one will roll back to the first. Harness will roll back to the last successful version.
 
@@ -246,7 +246,7 @@ Harness Kubernetes deployments using Helm charts can involve adding your artifac
 
 In addition to this method, you can also deploy the Helm chart without adding your artifact to Harness. Instead, the Helm chart identifies the artifact. Harness installs the chart, gets the artifact from the repo, and then installs the artifact. We call this a *Helm chart deployment*.
 
-See [Deploy helm charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md).
+See [Deploy helm charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts.md).
 
 #### Can I run Kubernetes jobs?
 
@@ -316,7 +316,7 @@ See [Example Kubernetes manifests using Go templating](../../continuous-deliver
 Yes, you can use:
 
 - [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
-- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos)
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
 - Azure ARM and Blueprint
 - [AWS CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos)
 - Shell script (custom)
@@ -372,7 +372,7 @@ You can select Helm 3 when you create the service, or upgrade Helm 2 to Helm 3.
 
 ![](./static/continuous-delivery-faqs-04.png)
 
-See [Deploy Helm charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md).
+See [Deploy Helm charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts.md).
 
 #### Can I use Helm Chart Hooks in Kubernetes deployments?
 

@@ -44,22 +44,28 @@ import TabItem from '@theme/TabItem';
   <TabItem value="account" label="URL Type: Account" default>
 ```
 
-In the **Bitbucket Account URL** field, provide only the account-identifying portion of the Bitbucket URL, such as `https://bitbucket.org/my-bitbucket`. Do not include any repo name or project name.
+In the **Bitbucket Account URL** field, provide only the account-identifying portion of the Bitbucket URL, such as `https://bitbucket.org/my-bitbucket/`. Do not include any repo name or project name.
 
 The URL format depends on the **Connection Type** and your Bitbucket account type (Cloud or Data Center). The following table provides format examples for each combination.
 
 | Connection Type | Bitbucket Cloud | Bitbucket Data Center (On-Prem) |
 | --------------- | --------------- | ------------------------------- |
-| HTTP | `https://bitbucket.org/<username>` | `https://bitbucket.<your-org-hostname>/scm` |
-| SSH | `git@bitbucket.org:<username>` | `git@bitbucket.<your-org-hostname>` |
+| HTTP | `https://bitbucket.org/USERNAME/` or `https://bitbucket.org` | `https://bitbucket.YOUR_ORG_HOSTNAME/scm/` |
+| SSH | `git@bitbucket.org:USERNAME/` | `git@bitbucket.YOUR_ORG_HOSTNAME/` |
 
-Here is an example of the **Details** settings for a Bitbucket Cloud account URL in HTTP and SSH formats:
+<figure>
 
-![Bitbucket Account URL field with a Bitbucket Cloud account HTTPS URL](./static/bitbucket-account-http-cloud-url.png)
+![](./static/bitbucket-account-http-cloud-url.png)
 
-Here is an example of the **Details** settings for a Bitbucket Data Center URL in HTTP and SSH formats:
+<figcaption>HTTP and SSH examples of Bitbucket Cloud account URLs.</figcaption>
+</figure>
 
-![Bitbucket Account URL field with a Bitbucket Data Center HTTPS URL](./static/bitbucket-account-http-onprem-url.png)
+<figure>
+
+![](./static/bitbucket-account-http-onprem-url.png)
+
+<figcaption>HTTP and SSH examples of Bitbucket Data Center account URLs.</figcaption>
+</figure>
 
 ```mdx-code-block
   </TabItem>
@@ -75,13 +81,19 @@ The URL format depends on the **Connection Type** and your Bitbucket account typ
 | HTTP | `https://bitbucket.org/<username>/<repo-name>.git` | `https://bitbucket.<your-org-hostname>/scm/<project-id>/<repo-name>.git` |
 | SSH | `git@bitbucket.org:<username>/<repo-name>.git` | `git@bitbucket.<your-org-hostname>/<project-id>/<repo-name>.git` |
 
-Here is an example of the **Details** for a Bitbucket Cloud repository URL in SSH format:
+<figure>
 
-![Bitbucket Repository URL field with a Bitbucket Cloud SSH URL](./static/bitbucket-repo-ssh-cloud-url.png)
+![](./static/bitbucket-repo-ssh-cloud-url.png)
 
-Here is an example of the **Details** for a Bitbucket Data Center repository URL in HTTP format:
+<figcaption>SSH example of a Bitbucket Cloud repository URL.</figcaption>
+</figure>
 
-![Bitbucket Repository URL field with a Bitbucket Data Center HTTPS URL](./static/bitbucket-repo-http-onprem-url.png)
+<figure>
+
+![](./static/bitbucket-repo-http-onprem-url.png)
+
+<figcaption>HTTP example of a Bitbucket Data Center repository URL.</figcaption>
+</figure>
 
 ```mdx-code-block
   </TabItem>
@@ -145,7 +157,7 @@ Bitbucket accounts with two-factor authentication must use access tokens.
   <TabItem2 value="ssh" label="SSH Key">
 ```
 
-The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH keys are stored as [Harness Encrypted File secrets](../../../Secrets/3-add-file-secrets.md).
+The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/Secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
 
 For details on creating SSH keys and adding them to your Bitbucket account, go to the Bitbucket documentation about [Configuring SSH and two-step verification](https://support.atlassian.com/bitbucket-cloud/docs/configure-ssh-and-two-step-verification/).
 
@@ -200,6 +212,10 @@ If your codebase connector allows API access and connects through a Harness Dele
 
 ## Troubleshooting
 
+Here are some troubleshooting suggestions for BitBucket Connectors.
+
+### Connection test failing
+
 If the connection test returns a `not authorized` error, make sure you used the **Username** specified in the Bitbucket **Account settings**.
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
@@ -207,3 +223,7 @@ If the connection test returns a `not authorized` error, make sure you used the 
 The connection test may also fail if the token doesn't have sufficient privileges.
 
 ![](./static/bitbucket-connector-settings-reference-05.png)
+
+### Status doesn't update in BitBucket Cloud PRs
+
+BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect status updates in PRs due to some statuses failing to send. If you encounter this issue with BitBucket Cloud, contact [Harness Support](mailto:support@harness.io) to troubleshoot this issue by enabling a feature flag, `CI_BITBUCKET_STATUS_KEY_HASH`.

@@ -1,12 +1,21 @@
 ---
 title: Run LocalStack
-sidebar_position: 3
+sidebar_position: 2
 description: Run LocalStack as a Background step in a CI Pipeline
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/test/localstack
 ---
 
 # Run LocalStack as a Background Step
+
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
 
 [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) are useful for running services that need to run for the entire lifetime of a Build stage. This tutorial shows how to run [LocalStack](https://localstack.cloud/) as a Background step in a Harness CI pipeline. LocalStack is software that emulates cloud services (such as AWS) when developing locally, or for testing in continuous integration pipelines.
 
@@ -20,7 +29,7 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 1. Create a new pipeline in Harness CI.
 2. Click **Add Stage** and select **Build**. Give your stage a name, optionally configure the repository to be cloned, then click **Set Up Stage**.
-3. Select "Cloud" in the **Infrastructure** tab.
+3. Select **Cloud** in the **Infrastructure** tab.
 
 ### Add Background Step
 
@@ -35,7 +44,7 @@ This will run the LocalStack Docker image as a Background step in your pipeline.
 
 ### Add Step
 
-This will add a step to ensure the LocalStack service is healthy. The step will run the `curl` command to poll the LocalStack service's `/health` endpoint until it returns successfully. This ensures that LocalStack is ready to receive traffic before the pipeline continues.
+This will add a step to ensure the LocalStack service is healthy. The step will run the cURL command to poll the LocalStack service's `/health` endpoint until it returns successfully. This ensures that LocalStack is ready to receive traffic before the pipeline continues.
 
 1. In the **Execution** tab of your pipeline stage, click **Add Step** then select **Run**.
 2. Enter "localstack health" in the **Name** field.

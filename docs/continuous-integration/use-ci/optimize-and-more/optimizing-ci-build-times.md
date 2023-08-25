@@ -72,6 +72,7 @@ You can use [step groups](./group-ci-steps-using-step-groups.md) to organize com
 Expressions and runtime inputs make your pipelines more dynamic.
 
 * [Variables and expressions](/docs/category/variables-and-expressions/)
+* [Stage variables](/docs/platform/Pipelines/add-a-stage#stage-variables)
 * [Fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/)
 * [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
 * [Built-in CI codebase variables reference](../codebase-configuration/built-in-cie-codebase-variables-reference.md)
@@ -97,7 +98,7 @@ There are many ways you can incorporate third party tools and services in your C
 * [Explore plugins](../use-drone-plugins/explore-ci-plugins.md)
 * [Bring-your-own Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-secrets-manager)
 * [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support)
-* [Send notifications](/docs/category/notifications-1)
+* [Send notifications](/docs/category/notifications)
 
 ## Increase step resources
 

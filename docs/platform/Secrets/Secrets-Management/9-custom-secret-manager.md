@@ -58,7 +58,7 @@ This topic shows you how to create a Secret Manager Template at the Project scop
 6. Click **Start**.![](../static/custom-secret-manager-33.png)
 7. Enter your script in **Script**.
 8. Click **Save**.  
-For detailed steps to create a Secret Manager Template, see [Create a Secret Manager Template](../../13_Templates/create-a-secret-manager-template.md).
+For detailed steps to create a Secret Manager Template, go to [Create a Secret Manager Template](../../13_Templates/create-a-secret-manager-template.md).
 
 ### Step 2: Add a Custom Secret Manager
 
@@ -70,8 +70,11 @@ This topic shows you how to add a Custome Secret Manager in the Project scope.
 
 1. In your Harness Account, go to your Project.
 2. In Project Setup, click **Connectors** and then click **New Connector**.
-3. In **Secret Managers**, click **Custom Secret Manager**.![](../../Secrets/static/custom-secret-manager-34.png)
-The Custom Secret Manager settings appear.
+3. In **Secret Managers**, click **Custom Secret Manager**.
+
+   ![](../../Secrets/static/custom-secret-manager-34.png)
+   
+   The Custom Secret Manager settings appear.
 4. Enter a **Name** for your Custom Secret Manager. Click **Continue**.
 5. Click **Select Template**. The Template Library appears with all the [Secret Manager Templates](../../13_Templates/create-a-secret-manager-template.md) listed.
 6. Select the desired scope and select a Secret Manager Template from the Template Library.
@@ -89,13 +92,13 @@ The Custom Secret Manager settings appear.
 9. Click **Fixed** to make the variable values fixed. Harness won't ask you these values when you create Secrets.
 10. Click **Continue**.
 11. In **Delegates** **Setup**, enter [**Selectors**](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Save and Continue**.
-12. In **Connection** **Test**, click **Finish** after your connection is successful**.**
+12. In **Connection Test**, click **Finish** after your connection is successful**.**
 
 ### Step 3: Use the Custom Secret Manager
 
 Create an Encrypted Text using the Custom Secrets Manager you created earlier. Enter the name and values of all the Input Variables defined while creating the Shell Script Template. 
 
-For more information on creating Encrypted Text Secret, see [Add Encrypted Text](../2-add-use-text-secrets.md).
+For more information on creating Encrypted Text Secret, go to [Add Encrypted Text](../2-add-use-text-secrets.md).
 
 If you want to create a secret on a Target Host Custom Secrets Manager, you must also select the Connection Attribute.
 

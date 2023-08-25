@@ -59,6 +59,7 @@ For example, if a user was assigned to a role that had the Create/Edit Pipeline 
 A User entity is identified by their Id. The Id is the email address used to invite and sign up the User:
 
 ![](./static/entity-deletion-reference-01.png)
+
 A User and its Id can be deleted. 
 
 When a User is deleted, their Id (email address) can’t be used until the User is completely removed from the system. See [Entity Retention Policy](entity-retention-policy.md).
@@ -86,22 +87,15 @@ Project deletion has the following rules:
 
 ### Force delete
 
-
-:::note
-Currently, this feature is behind the feature flags `PL_FORCE_DELETE_CONNECTOR_SECRET` and `NG_SETTINGS`. Contact Harness Support to enable the feature.
-
-:::
-
 You can force delete a Harness entity even if your pipelines or other entities reference it. Following are the entities that you can force delete in Harness:
 - Connectors
 - Secrets
-
-Make sure you enable the feature flags `CDS_FORCE_DELETE_ENTITIES` to be able to force delete the following entities: 
 - Service
 - Infrastructure
 - Environments
 - Environment Groups
 - Templates
+- File Store files
 
   
 The Harness account admin can enable or disable the force delete option in the account's default settings.

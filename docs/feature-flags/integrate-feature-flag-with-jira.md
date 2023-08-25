@@ -1,7 +1,7 @@
 ---
 title: Integrate flags with Jira
 description: View Jira issues for a specific Harness feature flag.
-sidebar_position: 25
+sidebar_position: 90
 ---
 
 With **Harness Feature Flags for Jira**, teams can use feature flags more quickly and easily from a single place.
@@ -34,7 +34,7 @@ To get a token from Harness:
 
 1. Go to Harness **Feature Flags**, and ensure you're in the project you want to integrate with Jira.
 1. In the left pane, select **Account Settings > Access Control > Service Accounts**.
-1. Select a service account, or [create one](/docs/platform/User-Management/add-and-manage-service-account) if needed. 
+1. Select a service account, or [create one](/docs/platform/role-based-access-control/add-and-manage-service-account) if needed. 
 1. In the service account page, under **API Keys**, select **+ Token** for the API key you want to use.
 
     ![Add token from a service account](./static/jira-add-token-from-service-account.png) 

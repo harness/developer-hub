@@ -1,6 +1,6 @@
 {
-   "label":"Get started",
-   "position": 10,
+   "label":"Get started with SRM",
+   "position": 20,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",

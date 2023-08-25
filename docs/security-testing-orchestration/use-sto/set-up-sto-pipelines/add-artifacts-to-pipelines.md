@@ -1,14 +1,27 @@
 ---
-title: Adding Custom Artifacts to STO Pipelines
+title: Adding Custom Certificates and Artifacts to STO Pipelines
 description: This topic describes how to include SSL certificates and other types of artifacts in your STO pipelines. 
 sidebar_position: 70
 ---
 
 In some cases, a scanner might require additional files such as SSL certificates and license files. The workflow to include these files depends on your build infrastructure.
 
-## Kubernetes workflows
+:::note important notes
 
-The primary workflow for adding certificates to your delegate is described in the CI docs: [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
+- You must have **root access** to perform the [Kubernetes workflows](#kubernetes-workflows) documented below.
+
+- Make sure that your certificates meet all requirements of the external scan tool. Your certificates must be valid, unexpired, and have a complete trust chain. 
+
+- Harness STO does not support certificate bundles. Each certificate should be specified in its own file. If you have a bundle that you want to use with an external scanner, Harness recommends that you split the bundle into individual files.
+
+- To troubleshoot SSL issues, go to [Troubleshooting tips](#troubleshooting-tips) below. 
+
+:::
+
+
+## Adding certificates to a Kubernetes delegate
+
+The primary workflow for adding certificates to your Kubernetes delegate is described in the CI docs: [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
 
 You can add certificates to your delegate using this workflow with the following differences, based on the scanner you're setting up. 
 
@@ -90,9 +103,9 @@ spec:
 
 
 
-## Harness Cloud workflow
+## Workflow description
 
-If you're using a Harness Cloud delegate, use the following workflow. 
+This workflow applies to all [supported build infrastructures](/docs/security-testing-orchestration/whats-supported). It also applies to STO on SaaS, as well as Harness Self-Managed Platform.
 
 1. For each artifact that contains sensitive information, such as an SSL certificate, create a Harness secret.
 
@@ -106,7 +119,7 @@ If you're using a Harness Cloud delegate, use the following workflow.
 
 * You must include all required files in  **/shared/customer_artifacts/**. You can include any number of certificates or other files in this folder.
 
-* If your scanners use SSL certificates such as PEM files, save each certificate to **/shared/customer_artifacts/`<certificate_name>`**. 
+* If your scanners use SSL certificates such as PEM files, save each certificate to **/shared/customer_artifacts/certificates/`<certificate_name>`**. 
 
 * If the scanner requires a license file, save the file to **/shared/customer_artifacts/`<license_file_name>`**.  
 
@@ -276,3 +289,18 @@ pipeline:
 ```
 
 </details>
+
+
+## Troubleshooting tips
+
+- To troubleshoot certificate issues, run your pipeline in Debug mode and check for log messages such as **`unable to get local issuer certificate`**.
+
+- In some cases, a scan might report that a certificate is invalid when in fact the root cause is not related to SSL. For example, the certificates might have an invalid domain defined. To determine if the root cause is SSL-related, you might try running a scan with SSL verification disabled temporarily. 
+
+  You'll need to disable verification in both the Harness pipeline and the external scanner. Note that not all scan tools support this option. 
+
+  -  For information about disabling SSL verification in the scanner, go to the external scanner documentation. If the scanner includes a CLI option for this, you can use `tool_args` in your step to run a scan with this option turned off. For example, you can run a [Black Duck Hub](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference#settings) scan with this setting: `tool_args : --blackduck.trust.cert=TRUE`
+ 
+  - If you're using a scanner-specific step with a scanner template, such as Aqua Trivy or Mend, uncheck **Enforce SSL** in the configuration palette. 
+
+  - If you're using a Security step without a scanner template, add this setting to the step: `bypass_ssl_check : true`

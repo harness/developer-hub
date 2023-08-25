@@ -1,6 +1,6 @@
 ---
 title: Check MongoDB health 
-description: How to check for MongoDB health before a Helm-based installation.
+description: Learn how to check for MongoDB health before using Helm to install the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 50
 ---
 

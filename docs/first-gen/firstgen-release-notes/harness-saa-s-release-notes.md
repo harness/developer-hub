@@ -12,9 +12,205 @@ Harness progressively deploys updates to different Harness cluster hosting accou
 
 Harness is updated regularly. This document describes recent changes.
 
-For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md). Release notes are displayed with the most recent release first.
+For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md). Release notes are displayed with the most recent release first.
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+## Latest: Version 80308
+
+### New features and enhancements
+
+This release does not include new features.
+
+### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Fixed a delegate issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240, ZD-48548)
+
+  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+- Fixed an issue where using the Export Manifest with Inherit Manifest in a Kubernetes deployment could lead to skipping resource versioning. With this fix, resource versioning is happening correctly in this deployment scenario. (CDS-75781, ZD-47209)
+### Hotfixes
+
+This release does not include hotfixes.
+### August 8, 2023, version 80209
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Update operations on GCP Secrets Manager were failing in FirstGen SMP environments. This issue has been fixed. (PL-40151)
+
+
+
+### August 4, 2023, version 80120
+
+#### What's new
+
+- Open HFT Chronicle Queue has been upgraded from version 5.19.2 to version 5.22.28 to enable the upgrade of JDK from version 11 to version 17.  (PL-39953)
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Update operations for GCP Secrets Manager failed in FirstGen SMP environments. (PL-40151)
+  
+  The issue has been fixed.
+
+- Earlier, even though you could use the `JAVA_OPTS` environment variable to specify JVM options for the delegate, you could not override the default JVM options that Harness used, namely `-XX:MaxRAMPercentage=70.0` and `-XX:MinRAMPercentage=40.0`. The option to override the defaults was unavailable because the value of JAVA_OPTS was prepended to the default JVM options. (PL-38839)
+  
+  This issue has been fixed. The value of JAVA_OPTS is now appended to the default JVM options, thus allowing you to override the default options.
+ 
+  This item is available with Harness Platform version 80120 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### July 27, 2023, version 80017
+
+#### What's new
+
+This release does not include new features. 
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Fixed an issue where Nexus 2 artifact details would appear as `null` (for example, `null:870`) in the Harness UI. (CDS-74053)
+
+### July 18, 2023, version 79915
+
+#### What's new
+
+- The Universal Base Image Minimal used for the Harness Delegate has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-39720)
+- The Universal Base Image Minimal used for various Harness services has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-39276)
+
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Fixed an issue where Nexus 2 artifact details would appear as `null` (for example, `null:870`) in the Harness UI. (CDS-74053)
+
+### July 06, 2023, version 79807
+
+#### What's new
+
+- The Universal Base Image Minimal used for various Harness services has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-39276)
+
+#### Early access
+
+- Introduced a more consistent pipeline execution status. (CDS-70387, ZD-44892)
+  
+  Harness has introduced an enhancement for displaying the negative status of parallel pipelines. For a pipeline with concurrently running stages, the ABORTED, REJECTED, and EXPIRED statuses now have higher priority over the FAILED status. 
+
+  This functionality is behind the feature flag, `SPG_CG_REJECT_PRIORITY_WHEN_FORK_STATE`.
+
+#### Fixed issues
+
+- Improved error handling mechanism when Helm manifests are not fetched from the Artifactory repository. (CDS-68251, ZD-37458)
+
+### June 28, 2023, version 79714
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- The delegate connectivity capability check for Azure Web App deployments failed. (CDS-71432, ZD-44862)
+  
+  This issue is fixed by using task category mapping to assign the Azure App Services task type deployments to specific delegates.
+
+import Fixedissues from '/docs/first-gen/firstgen-release-notes/shared/cd-79700-fixed-issues.md'
+
+<Fixedissues />
+
+### June 19, 2023, version 79606
+
+#### What's new
+
+- Service instances were not showing correctly for Tanzu deployments. (CDS-68737, ZD-42950)
+  
+	Some instances were not showing up on the **Services** dashboard. This fix ensures the **Services** dashboard shows the correct Tanzu instances.
+
+- Free, Community, and Paid accounts can now have a maximum of 100, 100, and 50000 users, respectively. (PL-39235)
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+This release does not include fixed issues.
+
+### June 09, 2023, version 79516
+
+#### What's new
+
+- Enhanced the application handling mechanism when the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE`. (CDS-68821)
+  
+  When the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE` for any of the releases of an application, Harness starts looking for the application that has the same name as the release name. This ensures that the correct active application is always picked in case the `HARNESS__STATUS__IDENTIFIER` is removed.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+#### Harness Manager delegate fixed issues
+
+The fixed issue below is available with version 79503 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
+- Helm execution failed with `KubernetesClientException` error. (CDS-70386, ZD-45051)
+  
+  The Kubernetes GET APIs returned a 400 bad request during steady state check. This was occurring when Harness used a fabric8 client with Kubernetes cluster version < 1.16, or when the feature flag, `HELM_STEADY_STATE_CHECK` is turned off. 
+  
+  This issue is fixed.
+
+### June 01, 2023, version 79411
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+#### Harness Manager delegate fixed issues
+
+The fixed issue below is available with version 79411 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
+- The `DMS_MONGO_URI` was missing from the ConfigMap of cg-manager for Self-Managed Enterprise Edition Helm installations. (PL-38850)
+
+   This issue is fixed. The `DMS_MONGO_URI` is included in the ConfigMap.
+
+#### All other Platform fixed issues
+
+- CD license utilization data was not reported for some accounts. (CDS-69101)
+  
+  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
+
+- HTML characters in the `userName` caused issues during deployments. The following characters are no longer allowed in the `userName`: `:` , `/` , `<` , `>` , `=` , `(` , `)`. (PL-24129)
 
 ### May 23, 2023, version 79306
 

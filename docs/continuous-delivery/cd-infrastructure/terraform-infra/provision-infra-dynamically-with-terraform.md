@@ -1,6 +1,6 @@
 ---
 title: Provision target deployment infrastructure dynamically with Terraform
-description: This topic show you how to dynamically provision the target deployment infrastructure at runtime using the Terraform Plan and Apply steps.
+description: Dynamically provision the target infrastructure using the Terraform Plan and Apply steps.
 sidebar_position: 3
 helpdocs_topic_id: uznls2lvod
 helpdocs_category_id: y5cc950ks3
@@ -8,26 +8,39 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::info
+You can use Terraform in Harness CD pipeline stages for ad hoc provisioning or to provision the target deployment infrastructure for the stage.
 
-Dynamic provisioning is only supported in [Service and Environments v1](../../get-started/upgrading/upgrade-cd-v2). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
+This topic provides a brief overview of the steps involved in provisioning a CD stage's target deployment infrastructure using the **Terraform Plan** and **Apply** steps.
 
-:::
+This topic also covers some important requirements.
 
-This topic describes how to provision a CD stage's target deployment infrastructure using the **Terraform Plan** and **Apply** steps.
+## Terraform dynamic infrastructure provisioning summary
 
-You use the Terraform steps to run the Terraform script and supporting files from your repo. Harness uses the files to create the infrastructure that your Pipeline will deploy to.
+Setting up dynamic provisioning involves adding Terraform scripts to the stage **Environment** settings that provision the pipeline stage's target infrastructure.
 
-Next, you map the script outputs Harness requires to target the provisioned infrastructure, such as namespace.
+Next, you map specific, required script outputs to the Harness **Infrastructure Definition** for the stage, such as the target namespace.
 
-During deployment, Harness provisions the target deployment infrastructure and then the stage's Execution steps deploy to the provisioned infrastructure.
+During deployment, Harness provisions the target deployment infrastructure and then the stage's **Execution** steps deploy to the provisioned infrastructure.
 
-To provision non-target infrastructure, add the Terraform Plan and Apply steps to the stage **Execution** section instead of the **Infrastructure** section.
 
-## Before you begin
+### Dynamic provisioning steps for different deployment types
 
-* [Terraform Provisioning with Harness](terraform-provisioning-with-harness)
-* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+Each of the deployment types Harness supports (Kubernetes, AWS ECS, etc.) require that you map different Terraform script outputs to the Harness infrastructure settings in the pipeline stage.
+
+To see how to set up dynamic provisioning for each deployment type, go to the following topics:
+
+- [Kubernetes infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
+  - The Kubernetes infrastructure is also used for Helm, Native Helm, and Kustomize deployment types.
+- [Azure Web Apps](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial)
+- [AWS ECS](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)
+- [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
+- [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
+- [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
+- [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart)
+- [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
+- [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)	
+- [Windows VM deployments using WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
+
 
 ## Important: install Terraform on delegates
 
@@ -54,7 +67,7 @@ microdnf install -y terraform
 
 ```
 
-## Enable dynamic provisioning
+## Dynamic provisioning steps
 
 These steps assume you've created a Harness CD stage before. If Harness CD is new to you, see [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
@@ -191,6 +204,12 @@ If you do not select **Use Connector credentials**, Terraform will use the crede
 
 The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
 
+When configuring the SSH key for the connector, exporting an SSH key with a passphrase for the module source is not supported. Configure an SSH Key without the passphrase.
+
+Here are some syntax examples to reference the Terraform module using the SSH protocol:
+
+```bash
+source = "git@github.com:your-username/your-private-module.git"
 ## Workspace
 
 Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
@@ -337,7 +356,26 @@ terraform {
 }
 ```
 
-In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
+In **Backend Configuration**, you provide the required configuration variables for the backend type. 
+
+For a remote backend configuration, the variables should be in .tfvars file.
+
+Example:
+
+```json
+bucket  = "tf-state-prod"  
+prefix  = "terraform/state"
+```
+
+In your Terraform .tf config file, only the definition of the Terraform backend is required:
+
+```json
+terraform {  
+  backend "gcs" {}
+}
+```
+
+See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
 You can use Harness secrets for credentials. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
@@ -373,90 +411,49 @@ In **Advanced**, you can use the following options:
 
 ## Approval step
 
-By default, Harness adds an Approval step between the Terraform Plan and Terraform Apply steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages) to configure the step.
+When you enable dynamic provisioning in a CD Deploy stage's **Environment** settings, Harness automatically adds the necessary Harness Terraform steps:
 
-You can also use a Jira Approval step. See [Adding Jira Approval Stages and Steps](/docs/platform/Approvals/adding-jira-approval-stages).
+- **Terraform Plan step**: the Terraform Plan step connects Harness to your repo and pulls your Terraform scripts.
+- **Approval step**: Harness adds a Manual Approval step between the Terraform Plan and Terraform Apply steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages) to configure the step.
+  - You can also use a [Jira or ServiceNow Approval](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-jira-and-service-now-approval-steps-in-cd-stages) step.
+- **Terraform Apply step**: the Terraform Apply step simply inherits its configuration from the Terraform Plan step you already configured and applies it.
 
-## Terraform Apply Step
+:::important
 
-The Terraform Apply step simply inherits its configuration from the Terraform Plan step you already configured.
+You must use the same **Provisioner Identifier** in the Terraform Plan and Terraform Apply steps:  
 
-As stated earlier, you use the same **Provisioner Identifier** in the Terraform Plan and Terraform Apply steps:
+<docimage path={require('./static/provision-infra-dynamically-with-terraform-05.png')} width="80%" height="80%" title="Click to view full size image" /> 
 
-![](./static/provision-infra-dynamically-with-terraform-05.png)
+:::
 
-1. In **Terraform Apply**, enter a name for the step. The name is very important, as you'll use it to select the outputs from the Terraform apply operation.
-   
-   You'll use the outputs when mapping the provisioned infrastructure to the target Infrastructure Definition.
-   For example, if you name the Terraform Apply step **apply123** and you want to reference the **region** output in your script, you'd use the expression:
-   `<+infrastructureDefinition.provisioner.steps.apply123.output.region>`
-   The mapping is explained in the next step.
-2. In **Timeout**, enter how long Harness should wait to complete the Terraform Apply step before failing the step.
-3. In **Configuration Type**, select **Inherit From Plan**. If you select **Inline**, then you aren't using the previous Terraform Plan step. You are entering separate Terraform files and settings.
-4. In **Provisioner Identifier**, enter the same Provisioner Identifier you entered in the Terraform Plan step.
-5. Click **Apply Changes**.
+For details on configuring the Terraform steps, go to:
 
-## Map outputs to target infra settings
+- [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
+- [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
 
-Now that the Terraform Plan and Terraform Apply steps are set up in **Dynamic provisioning**, Harness is configured to provision the infrastructure defined in your Terraform script.
 
-Next, in the **Infrastructure Definition**, you need to provide the required Infrastructure Definition settings so Harness can target and deploy to the provisioned infrastructure.
 
-The required settings are specific outputs from your Terraform script. Which settings are required depends on the type of target infrastructure you are provisioning/targeting.
+### Terraform Rollback
 
-For example, a platform-agnostic Kubernetes cluster infrastructure only requires the target namespace in the target cluster.
+Terraform steps also output the commit Id of config files stored on Git. The outputs are available using expressions. 
 
-Gather the following:
+For example, for a Terraform Apply step with the identifier `TerraformApply` and with config files, backend config files, and var files stored in git, the expressions would look like this:
 
-* The name you gave the Terraform Apply step.
-* The names of the required outputs from your Terraform script.
-
-Create the FQN expression for each output.
-
-The expressions follow the format:
-
-`<+infrastructureDefinition.provisioner.steps.[Apply Step Id].output.[output name]>`
-
-For example, for a Kubernetes deployment, you need to map the `namespace` output to the **Namespace** setting in Infrastructure Definition.
-
-So for a Terraform Apply step with the Id **apply123** and an output named **namespace**, the expression is:
-
-`<+infrastructureDefinition.provisioner.steps.apply123.output.namespace>`
-
-Here you can see how the expression is created from the Terraform Apply step name and the Terraform script (output.tf, config.tf, etc):
-
-Use the expressions to map the outputs in the required Infrastructure Definition settings, such as **namespace** in **Cluster Details**.
-
-<!-- ![](./static/provision-infra-dynamically-with-terraform-06.png) -->
-
-<docimage path={require('./static/provision-infra-dynamically-with-terraform-06.png')} />
-
-Now Harness has the provisioned target infrastructure set up.
-
-You can complete your Pipeline and then run it.
-
-Harness will provision the target infrastructure and then deploy to it.
-
-## Terraform Rollback
+- **Config files**: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_CONFIG_FILES>`
+- **Backend config files**: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_BACKEND_CONFIG_FILE>`
+- **Var file** with identifier `varfile1`: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.varfile1>`
 
 The **Terraform Rollback** step is automatically added to the **Rollback** section.
 
 ![](./static/provision-infra-dynamically-with-terraform-07.png)
 
-1. Open **Terraform Rollback**.
-2. Enter a name for the step.
-3. In **Provisioner Identifier**, enter the same Provisioner Identifier you used in the Terraform Plan and Apply steps.
-   
-   <!-- ![](./static/provision-infra-dynamically-with-terraform-08.png) -->
-   
-   <docimage path={require('./static/provision-infra-dynamically-with-terraform-08.png')} />
-4. Click **Apply Changes**.
+For details on configuring the Terraform Rollback step, go to  [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step). 
 
 When rollback happens, Harness rolls back the provisioned infrastructure to the previous successful version of the Terraform state.
 
 Harness won't increment the serial in the state, but perform a hard rollback to the exact version of the state provided.
 
-Harness determines what to rollback using the **Provisioner Identifier**.
+Harness determines what to roll back using the **Provisioner Identifier**.
 
 If you've made these settings expressions, Harness uses the values it obtains at runtime when it evaluates the expression.
 
@@ -465,8 +462,4 @@ If you've made these settings expressions, Harness uses the values it obtains at
 Let's say you deployed two modules successfully already: module1 and module2. Next, you try to deploy module3, but deployment failed. Harness will roll back to the successful state of module1 and module2.
 
 However, let's look at the situation where module3 succeeds and now you have module1, module2, and module3 deployed. If the next deployment fails, the rollback will only roll back to the Terraform state with module3 deployed. Module1 and module2 weren't in the previous Terraform state, so the rollback excludes them.
-
-## See also
-
-* [Apply a Terraform Plan with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
 

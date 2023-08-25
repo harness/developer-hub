@@ -1,6 +1,6 @@
 ---
 title: Create an HTTP step template
-description: The Harness Template Library enables you to standardize and distribute reusable Step Templates across teams that use Harness. This topic walks you through the steps to create an HTTP Step template. O…
+description: The Harness Template Library enables you to standardize and distribute reusable step templates across teams that use Harness. This topic walks you through the steps to create an HTTP step template. O…
 sidebar_position: 7
 helpdocs_topic_id: zh49vfdy0a
 helpdocs_category_id: m8tm1mgn2g
@@ -8,17 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The Harness Template Library enables you to standardize and distribute reusable Step Templates across teams that use Harness.
+The Harness Template Library enables you to standardize and distribute reusable step templates across teams that use Harness.
 
-This topic walks you through the steps to create an HTTP Step template.
+This topic walks you through the steps to create an HTTP step template.
 
 ### Objectives
 
 You'll learn how to: 
 
-* Create an HTTP Step Template.
-* Define Template parameters.
-* Use the HTTP Step Template in a Pipeline.
+* Create an HTTP step template.
+* Define template parameters.
+* Use the HTTP step template in a pipeline.
 
 ### Before you begin
 
@@ -28,72 +28,87 @@ You'll learn how to: 
 
 ### Step 1: Create a Template
 
-First, we'll create a Project-level Template in the Deployments module. You can do this in any Project.
+First, we'll create a project-level template in the Deployments module. You can do this in any project.
 
-Navigate to the **Deployments** module and in **Projects** select the desired project.
+To create a project-level template, do the following:
 
-![](./static/harness-template-library-34.png)
-Next select **Templates** under Project Setup.
+1. In Harness, navigate to the **Deployments** module.
+2. In **Projects**, select the desired project.
+3. Under **Project Setup**, select **Templates**.
+4. Select **New Template**.
+5. Select **Step** to create a step template.
 
-Click **New Template**.
+   The **Create New Step Template** settings appear.
 
-Select **Step** to create a Step Template**.**
+   ![](./static/harness-template-library-35.png)
 
-The **Create New Step Template** settings appear.
+6. In **Name**, enter a name for the template, for example `Quickstart`.
 
-![](./static/harness-template-library-35.png)
-In **Name**, enter a name for the template. You can enter Quickstart.
+7. In **Version Label**, enter a name for the version of the template, for example `V1`.
 
-In **Version Label**, enter a name for the version of the template. You can enter V1.
+8. Click **Save**.
+   The **Step Library** panel opens.
 
-Click **Save**. The **Step Library** panel appears.
+### Step 2: Add step parameters
 
-### Step 2: Add Step Parameters
+To add step parameters, do the following:
 
-In **Step Library,** select **HTTP** under **Utilities**.
+1. Follow the steps above to create a template.
 
-![](./static/harness-template-library-36.png)
-The **Step Parameters** settings appear.
+2. In **Step Library,** select **HTTP** under **Utilities**.
 
-![](./static/harness-template-library-37.png)
-In **Timeout**, enter a timeout value for this step. You can enter 10s.
+   ![](./static/harness-template-library-36.png)
 
-In **URL**, enter the URL for the Http call.
+   The **Step Parameters** settings appear.
 
-In **Method**, select GET.
+   ![](./static/harness-template-library-37.png)
 
-Click **Save**. The new Template appears under the **Templates** list.
+3. In **Timeout**, enter a timeout value for this step. You can enter 10s.
 
-### Step 3: Add the HTTP Step Template to a Pipeline
+4. In **URL**, enter the URL for the HTTP call.
 
-To add a step template in a Pipeline Execution select the step and click **Add Step**.
+5. In **Method**, select **GET**.
 
-The **Step Library** panel appears.
+6. Select **Save**. The new template appears under the **Templates** list.
 
-In **Step Library,** select **HTTP** under **Utilities**. The **HTTP Step** settings appear.
+### Step 3: Add the HTTP step template to a pipeline
 
-![](./static/harness-template-library-38.png)
-Click **Use Template.** The next page lists all the Project-level templates.
+To add a step template in a pipeline execution, do the following:
 
-Select the Template that you created.
+1. In Harness, select your pipeline.
 
-![](./static/harness-template-library-39.png)
-Click the **Activity Log** to track all Template events. It shows you details like who created the Template and Template version changes.
+2. Select the step, and then select **Add Step**.
 
-Click **Version Label.**
+   The **Step Library** panel opens.
 
-Select **Stable** version of the template. This ensures that any changes that you make to this version are propagated  automatically to the Pipelines using this template.
+3. In **Step Library,** select **HTTP** under **Utilities**. The **HTTP Step** settings appear.
 
-Click **Use Template.**
+   ![](./static/harness-template-library-38.png)
 
-![](./static/harness-template-library-40.png)
-In **Name**, enter Quickstart.
+4. Click **Use Template.** The next page lists all the Project-level templates.
 
-Under **Template Inputs**, click **Timeout** and select **Runtime input**.
+5. Select the template that you created.
 
-Click URL and select **Runtime input**.
+   ![](./static/harness-template-library-39.png)
 
-**Use Runtime Inputs instead of variable expressions:** when you want to template settings in a Stage or step template, use [Runtime Inputs](../20_References/runtime-inputs.md) instead of variable expressions. When Harness tries to resolve variable expressions to specific Stage-level settings using fully-qualified names, it can cause issues at runtime. Every Pipeline where the Stage or step template is inserted must utilize the exact same names for fully-qualified name references to operate. With Runtime Inputs, you can supply values for a setting at deployment runtime.Click **Apply Changes**.
+6. Select the **Activity Log** to track all template events. It shows you details like who created the template and template version changes.
 
-Click **Save**.
+7. In **Details**, from the **Version Label** list, select **Always use the stable version**.
 
+   Selecting this option ensures that any changes that you make to this version are propagated automatically to the pipelines using this template.
+
+8. Select **Use Template**.
+
+   ![](./static/harness-template-library-40.png)
+
+9. In **Name**, enter `Quickstart`.
+
+10. Under **Template Inputs**, select **Timeout**, and then select **Runtime input**.
+
+11. Click URL and select **Runtime input**.
+
+   **Use Runtime Inputs instead of variable expressions:** when you want to template settings in a stage or step template, use [Runtime inputs](../20_References/runtime-inputs.md) instead of variable expressions. When Harness tries to resolve variable expressions to specific stage-level settings using fully-qualified names, it can cause issues at runtime. Every pipeline where the stage or step template is inserted must utilize the exact same names for fully-qualified name references to operate. With runtime inputs, you can supply values for a setting at deployment runtime.
+   
+12. Select **Apply Changes**.
+
+12. Select **Save**.

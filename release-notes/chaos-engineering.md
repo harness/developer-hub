@@ -2,42 +2,281 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-05-04T10:00
+date: 2023-08-21T10:00
 sidebar_position: 9
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-Review the notes below for details about recent changes to Harness Chaos Engineering, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
+
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/chaos-engineering/rss.xml" />
+
+Review the notes below for details about recent changes to Harness Chaos Engineering. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 23, 2023, version 0.12.2
+## Latest: Version 1.17.3
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### What's new
+
+* Added support for OpenShift configuration for deploying chaos infrastructure. This will provide you with a predefined security context constraint (SCC) that you can modify according to your needs. (CHAOS-1889)
+
+* Enhanced the Chaos experiment execution diagram to not switch to running nodes automatically. This change ensures that you stay on a node when you click it, thus giving you the opportunity to observe its details. (CHAOS-2258)
+
+* Enhanced the Docker service kill fault to support the containerd runtime. (CHAOS-2220)
+
+* Added support for targeting applications by using only `appkind`, only `applabel`, and set-based labels. (CHAOS-2170, CHAOS-2128)
+
+* Parallel chaos injection and revert operations at scale have been improved for multiple target pods on the same node. (CHAOS-1563)
+
+* Previously, if you did not set the `TARGET_CONTAINER` environment variable, the fault targeted a randomly selected container. Now, if you do not set the environment variable, the fault targets all containers in the target pods. (CHAOS-1216)
+
+* Now, Users can specify drain timeout explicitly in the node drain fault. The node-drain fault has been using the `CHAOS_DURATION` value as a timeout, leading to potential confusion and risk of failure, especially when a shorter duration is used with many pods. The expectation is that `CHAOS_DURATION` should define the unschedulable period after draining. Providing a specific drain timeout would help users better estimate the eviction time for all pods on a node, reducing errors and false negatives. (CHAOS-2185)
+
+* Enhanced the JobCleanUpPolicy configuration to also retain helper pods when it is set to retain in ChaosEngine. (CHAOS-2273)
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+* Fixed how chaos is reverted if an attempt to inject the node drain fault fails or needs to be canceled. (CHAOS-2184)
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+## August 9, 2023, version 1.16.6
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues 
+
+* There was an issue where users were not getting audit events for the rules created under the Security Governance tab. This issue has been fixed. (CHAOS-2259)
+
+#### August 7, 2023, version 1.16.5
+
+##### What's new
+
+* A new feature lets users do an automated upgrade for their cluster-scope chaos infrastructures using an upgrade agent, which is deployed along with the chaos infrastructure. This also lets users do an upgrade of their chaos infrastructures on demand. (1849)
+
+    Existing users must reconnect their chaos infrastructures to use this feature, since it is only available for new cluster-scope chaos infrastructures. Old chaos infrastructures will continue to work even if not upgraded, but upgrade will be manual for them, as it was in previous versions.
+
+* A new feature adds support for OpenShift security contexts, and provides tunables for RunAsUser and RunAsGroup in the experiment creation step. (CHAOS-2228)
+
+* The **App Label(s)** field in chaos fault configuration now supports a multi-select dropdown in Kubernetes experiments. This corresponds to comma-separated values in the experiment YAML. This change is backward compatible with older experiments. (CHAOS-2120)
+
+* The UI now provides a toggle in AWS experiments to enable or disable cloud secrets. (CHAOS-2092)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues 
+
+* Previously, the pipeline diagram crashed randomly when scheduling a new experiment. This happened due to the API returning an empty object for nodes. This issue has been fixed. (CHAOS-2148)
+
+* In advanced configuration for experiments and chaos infrastructures, if you add a toleration, tolerationSeconds is now optional if the toleration effect is NoSchedule. (CHAOS-1955)
+
+* Upgraded the Argo components Workflow-Controller and Argo-Exec to version 3.4.8. This reduces the number of vulnerabilities from 227 to 26. (CHAOS-1902)
+
+#### August 1, 2023, version 1.15.7
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues 
+
+* Audit events for pipeline-triggered experiments were not available due to a missing parameter. This issue has been resolved. (CHAOS-2168)
+
+#### July 21, 2023, version 1.15.6
+
+##### What's new
+
+* Added support for Universal Base Images (UBI) for chaos components. (CHAOS-1547)
+
+* Added enhancement to prevent users from editing/deleting cron chaos experiments if the associated infrastructure is not active. (CHAOS-1894)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues 
+
+* Fixed an issue in the Gameday details screen where the fault count for selected experiments was incorrect. (CHAOS-2052)
+
+* Previously, user details were not appearing in audit events when using a service account for authentication. This issue has been fixed by adding support for account-level service account authentication for the Chaos Module. (CHAOS-1959)
+
+* Fixed an issue where the audit event for the summary of a GameDay run was not showing the name or ID of the associated GameDay. (CHAOS-1958)
+
+* Fixed an issue where editing an existing experiment would directly open in the YAML builder view instead of the visual builder view. (CHAOS-1954)
+
+* The **Create GameDay** and **Edit GameDay** buttons were displayed as active for users who did not have those permissions. This issue has been fixed. (CHAOS-1795)
+
+#### July 12, 2023, version 0.14.5
+
+##### What's new
+
+* Introduced a configuration for changing the mechanism for storing access keys and tokens in Config Maps instead of secrets on the execution plane. 
+
+    When configuring chaos infrastructure, users can now select to store access keys and tokens in Config Maps (instead of secrets) on their cluster for connections, authentication, and experiment executions.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+This release does not include fixed issues.
+
+#### June 28, 2023, version 0.14.1
+
+##### What's new
+
+* [GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
+
+* The CE [integration](/docs/chaos-engineering/integrations/use-chaos-with-srm) with Harness Service Reliability Management (SRM) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
+
+* While upgrading a namespace-scoped chaos infrastructure, users will now be shown the command for upgrading CRDs as well. (CHAOS-1846)
+
+* We now show all steps in the experiment details pipeline diagram. (CHAOS-1817)
+
+    Previously when users triggered chaos experiments, the execution graph generated step nodes progressively as the experiments executed. Now, the execution graph shows all step nodes after experiments start execution. The nodes yet to start remain in a pending state. 
+
+* Previously, when users connected a ChaosHub, CE cloned the whole Github repository. This caused storage issues if the repository was very large, or users were using the same repository for multiple purposes. This has been enhanced so that CE clones only a single branch provided by users. (CHAOS-1722)
+
+* When a user deletes a project, organization, or account, CE now deletes all chaos entities associated with that project, organization, or account. (CHAOS-1143)
+    * When a project is deleted, all chaos entities in that project are deleted.
+    * When an organization is deleted, all chaos entities in all projects under that organization are deleted. 
+    * When an account is deleted, all chaos entities in all projects under that account are deleted.
+
+* Enhanced the Chaos Experiments report to show tags for selected experiments along with sequence numbers for all associated experiment runs. (CHAOS-1777)
+
+* Enhanced the Chaos Experiment Runs report to show a probe summary, along with a fault summary if there's a fault failure. (CHAOS-1776)
+
+* Added support for new experiment run statuses in the **Chaos** Continuous Delivery (CD) step. (CHAOS-1210)
+
+##### Early access
+
+This release has no early access features.
+
+##### Fixed issues
+
+* When generating a chaos infrastructure manifest that included `NodeSelectors` or `Tolerations`, there was an issue causing the first letter of key/value pairs to be capitalized. This issue has been fixed. (CHAOS-1917)
+
+* When adding or updating a step in a chaos experiment, in the Probes tab, the **Probe mode** field is now required. (CHAOS-1882)
+    
+* The **Discard** button in Chaos Studio is now disabled if there are no changes in an experiment. (CHAOS-1878)
+
+* The stop workflow feature wasn't able to stop experiments in the case of namespace-scoped chaos infrastructures. This issue has been resolved and the stop workflow now works as expected. (CHAOS-1778)
+
+* There was an issue where if the user aborted an experiment running as part of a pipeline, the pipeline step displayed `All your faults executed without an issue`. This has been fixed, and the correct details are now displayed based on the experiment execution. (CHAOS-733)
+
+* There was an issue where a CD step was not showing parallel faults even though the selected experiment had multiple parallel experiments. This issue has been fixed. (CHAOS-1208)
+
+#### June 12, 2023, version 0.13.5
+
+##### What's new
+
+* Added a new Linux chaos fault, Disk Fill, which fills up the available disk space at a given system path for a specific duration. (CHAOS-1419)
+
+* To help users select the right infrastructure for their use case, the Chaos Infrastructures UI screen has been enhanced to show supported faults by different chaos infrastructure categories. (CHAOS-1811)
+
+* The database was upgraded to update the index in linuxInfrastructures collection. (CHAOS-1836)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* The Chaos Faults screen in ChaosHub was crashing when the **Platform** field was missing in the faults metadata file. This issue has been fixed. (CHAOS-1841)
+
+#### June 5, 2023, version 0.13.4
+
+##### What's new
+
+:::caution
+This release breaks backward compatibility with older chaos infrastructures. You must update chaos infrastructures and the chaosnative/go-runner image in experiment definitions. If you don't upgrade, then chaos experiments will start to fail.
+
+To upgrade chaos infrastructures and experiments:
+
+1. Delete old ChaosEngines, if any:
+
+    `kubectl delete chaosengines --all -n <namespace-of-chaosinfrastructure>`
+
+1. Upgrade the CRDs in clusters where you have deployed a chaos infrastructure: 
+
+    `kubectl apply -f https://raw.githubusercontent.com/chaosnative/hce-charts/main/hce-saas/hce-saas-crds.yaml`
+
+1. If a chaos infrastructure indicates **UPGRADE NEEDED**, select **Update**, and then follow the instructions on your screen.
+
+    ![](./static/chaos-infra-upgrade-needed.png)
+
+1. Edit the YAML definitions of existing experiments to update the chaosnative/go-runner image to version 0.13.1. Do the same for existing experiments in custom chaos hubs that may be connected to your project. (Not required for new expriments.)
+
+For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engineering/chaos-infrastructure/upgrade-infra).
+:::
+
+* Added audit events for various GameDay operations such as create, update, etc., so that users can easily audit operations done on their GameDays. (CHAOS-1709)
+
+* Browser tabs now show the module page name to help users switching between different tabs. (CHAOS-1683)
+
+* The Delete Chaos Infrastructure API has been updated to allow deletion of only one infrastructure. (CHAOS-1681)
+
+* Previously, the Last Heartbeat value was empty when chaos infrastructures were pending. Now, to prevent user confusion, this value displays N/A when chaos infrastructures are pending. (CHAOS-1666)
+
+* Enhanced the Chaos Infrastructures table to allow routing to corresponding connectors from the Chaos Infrastructures screen. (CHAOS-1665)
+
+* When scheduling an experiment fails for any reason, the user now sees the error when hovering over the status. (CHAOS-1574)
+
+* Added a new advanced configuration to allow users to add annotations to all chaos pods using the UI. (CHAOS-1465) 
+
+##### Early access
+
+* This release does not include any early access features.
+
+##### Fixed issues
+
+* Improved the UI message returned when users search for a GameDay and the search term is not found. Now the message more accurately states "No GameDay found matching the search term." (CHAOS-1717)
+
+* Previously, users were able to complete a GameDay even when some of the associated experiments were running. This could cause issues because it's not possible to edit or abort those experiments when a GameDay is closed. Now, users must abort running experiments in a GameDay before they can close it. (CHAOS-1713)
+
+#### May 23, 2023, version 0.12.1
+
+##### What's new
 
 * Reports can now be downloaded. (CHAOS-1615)
 
     * You can now download reports for experiments as well as associated experiment runs. Reports include details about target chaos infrastructure, and execution details for experiment runs.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
+
 * Introduction of [Chaos dashboards](/docs/chaos-engineering/configure-chaos-experiments/experiments/dashboards). (CHAOS-719)
     * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
     * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed Issues
 
 * Corrected the UI text for the Inactive and Pending states for Linux infrastructure states. (CHAOS-1633)
 
@@ -48,16 +287,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * There was an issue where the total number of probes incorrectly came to 0 when an experiment was running in a GameDay. This has been fixed. (CHAOS-1618)
 
 * Fixed a text wrapping issue on the confirmation dialog for deleting a chaos infrastructure. (CHAOS-1578)
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 5, 2023, version 0.11.1
 

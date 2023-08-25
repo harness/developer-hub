@@ -10,7 +10,7 @@ You can use files added to the **Config Files** section in your Harness services
 
 ### Harness file store
 
-All platform [integrations](/docs/continuous-delivery/integrations/cd-integrations) (Kubernetes, etc) support config files stored in the Harness File Store.
+All platform [integrations](/docs/continuous-delivery/cd-integrations) (Kubernetes, etc) support config files stored in the Harness File Store.
 
 ### Git providers
 
@@ -25,9 +25,14 @@ You can use config files in any Git provider, including GitHub, GitLab, and Bitb
 ## Important notes
 
 - Files must be 1MB or less.
-- All file types are supported.
+- Only JSON, YAML, and text files are supported.
 - You cannot use Harness variables in an encrypted text config file.
 - You cannot reference other config files within a config file.
+- Config Files cannot be binaries. 
+
+### Expressions
+
+- Harness expressions in the parameter field of the `getAsString()` and `getAsBytes()` functions are not supported, for example: `<+configFile.getAsString(“<+serviceVariable.var_name>”)>`.
 
 
 ## Config file capabilities

@@ -57,7 +57,7 @@ The Vault AppRole method allows you to define multiple roles corresponding to di
 
 To assign a **Secret ID**, you can create a new [**Secret**](../2-add-use-text-secrets.md) or choose an existing one.
 
-The Secret should not expire and it should be valid until you manually revoke it. You would need this Secret to generate new tokens when the older tokens expire.Harness will use the App Role ID and Secret ID that you supply, to fetch a Vault Auth Token dynamically at configured intervals. This interval is set in Renewal Interval.
+The SecretId should not expire and it should be valid until it is manually revoked. Harness uses the App Role ID and Secret ID you supply to fetch a Vault Auth Token dynamically whenever there is a CRUD operation of secrets related to this Vault. For example, when creating a secret in this Vault, Harness internally uses this App Role Id and Secret ID and makes a call to vault via the delegate to generate a token. Now, this token is used to make the actual secret creation call to vault. This token is never received on the Harness side. It resides in the delegate and is destroyed after the creation of the secret.
 
 For more information, see [RoleID](https://www.vaultproject.io/docs/auth/approle.html#roleid) and [Authenticating Applications with HashiCorp Vault AppRole](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle) from HashiCorp.
 
@@ -225,12 +225,11 @@ The secret can fail because of various reasons.
 1. Using the Token/App Role, the V**ault** authentication is not successful.
 2. The following **permission** is not available in any of the policies attached to the Token/App Role. If this permission is not available, the user will not be able to fetch the list of secret engines from the customer vault and Harness will show a single option of Secret Engine named **“secret”** with version 2, which might be incorrect for the customer. Make sure to add the permission to a policy attached to the Token/App Role as follows:
 
-
-```
-         path “sys/mounts”{  
-            capabilities = ["read"]  
-            }    
-```
+   ```
+            path “sys/mounts”{  
+               capabilities = ["read"]  
+               }    
+   ```
 3. The policy attached to the Token/AppRole does not provide the **write**permission in the specified path. Make sure you update the policies and permissions.
 
 ### Step 4: Read-only Vault
@@ -238,6 +237,7 @@ The secret can fail because of various reasons.
 If required by your organization's security practices, select the **Read-only Vault** check box. This selection authorizes Harness to read secrets from Vault, but not to create or manage secrets within Vault.
 
 ![](../static/add-hashicorp-vault-30.png)
+
 Once you have filled out the required fields, click **Finish**.
 
 ##### Read-only Limitations
@@ -253,7 +253,11 @@ Also a read-only Harness Vault Secret Manager:
 
 ### Step 5: Test Connection
 
-Once the Test Connection succeeds, click Finish. You can now see the Connector in Connectors.
+Once the Test Connection succeeds, click **Finish**. You can now see the Connector in **Connectors**.
 
-Important: Test Connection fails​Harness tests connections by creating a dummy secret in the Secret Manager or Vault. For the Test Connection to function successfully, make sure you have Create permission for secrets.  
+:::info
+Important: ​Harness tests connections by creating a dummy secret in the Secret Manager or Vault. For the Test Connection to function successfully, make sure you have Create permission for secrets.
+
 The Test Connection fails if you do not have Create permission. However, Harness still creates the Connector for you. You may use this Connector to read secrets, if you have View permissions.
+
+:::

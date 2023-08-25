@@ -182,11 +182,36 @@ For GCP, Harness identifies the node type the pod is running on and fetches the 
 
 For AWS/Azure, node cost is trued up from CUR reports. CUR reports take into account RIs, savings plans etc.
 
+#### How's cost calculated for K8s on cloud providers and K8s on bare metal?
+
+* For Kubernetes on cloud providers, the cost calculation process relies on the CUR and Billing Export data to obtain the node cost using the `resource-id`. With this information, Harness CCM calculates the pod cost based on the node pricing.
+However, there might be instances where the `resource-id` is not immediately available due to data ingestion delays in the billing reports. In such cases, CCM falls back to using public pricing to calculate the node cost. After the billing report data is ingested, during subsequent runs, the cluster data for previous days are tuned to keep up the updated costs.
+
+
+* For Kubernetes on bare metal, the cost computation involves using hard-coded values for both node and pod cost calculations.
+
+##### Compute instance pricing
+ 
+   For spot instances, the CPU price per hour is $0.00064 and the memory price per hour is $0.0032.
+   For on-demand instances, the CPU price per hour is $0.0016 and the memory price per hour is $0.008.
+   
+  You have the option to set the pricing for compute instances according to your preference. To do so, you need to submit a ticket to [Harness Support](mailto:support@harness.io).
+  
+
+##### ECS Fargate pricing
+
+   For spot instances, the CPU price per hour is $0.01334053 and the memory price per hour is $0.00146489.
+   For on-demand instances, the CPU price per hour is $0.04656 and the memory price per hour is $0.00511.
+
+##### Storage Pricing
+
+  Price per hour is computed by using the formula: `storageMb * pricePerMbPerHour`
+
 ### AutoStopping Kubernetes cluster
 
-#### Will the AutoStoppingRule YAML need to replace the ingress we currently use? If so, this might be problematic as we are using external Helm charts.
+#### Will the AutoStopping Rule YAML need to replace the ingress we currently use? If so, this might be problematic as we are using external Helm charts.
 
-You do not have to replace your current ingress. The AutoStoppingRule configuration will reference your current ingress by name.
+You do not have to replace your current ingress. The AutoStopping Rule configuration will reference your current ingress by name.
 
 #### Does AutoStopping support Fargate for EKS?
 
@@ -293,7 +318,17 @@ Yes, we collect metrics data every minute, and the data sent by the metrics serv
 
 We will get separate recommendations for these individual containers. The recommendations are computed at the container’s level and not at the Pod’s level.
 
-### Perspectives
+### Node pool recommendations
+
+#### Does Harness support dynamic picking of instance families in Node recommendations to optimize for Reserved Instances (RI) or Savings plan?
+
+No, Harness doesn't support dynamic picking of instance families in node recommendations to optimize for RI or Savings plan.
+
+#### Does Harness take into account Reserved Instances (RI) and Savings Plans when showing potential spend and savings?
+
+Yes, Harness considers RIs and Savings Plans to provide insights into potential spend and savings. 
+
+### Perspectives and Dashboards
 
 #### What is the limit to the number of Perspectives that I can create in an account?
 
@@ -307,11 +342,27 @@ CCM unifies tags in AWS/GCP/Azure as labels in Perspectives.
 
 Yes, you can view the data across the FirstGen and NextGen.
 
+#### Why do I observe difference in costs between the Perspective and Dashboard data?
+
+To resolve any cost differences between the Perspective and Dashboard in Harness CCM, consider the following steps:
+
+* **Time Period Consistency**: Make sure to set the same time period in both Perspective and Dashboard. If you have defined a specific time period (For example, June) in the Perspective, ensure that the Dashboard also uses the same time period for accurate comparisons.
+* **Time Range Adjustment**: You must set the following two time filters when you create the dashboard. 
+
+  * Reporting Timeframe
+  * Time Period
+
+  If the Dashboard is set to the default **ReportingTimeframe** value (Last 30 days) that does not encompass the specified **Time Period**, adjust the Reporting Timeframe filter to cover a larger interval that includes the Time Period filter. This ensures that the Dashboard data spans the same duration as the Perspective.
+
+  ![](./static/dashboard-time-filters.png)
+
+
+
 ### Budgets and reports
 
 #### When will I receive notifications for the alerts that I’ve configured in my budgets?
 
-Notifications are sent out daily at 2.30 p.m. GMT. The budget alerts are sent out when the cost of your budget has crossed the configured threshold.
+Notifications are sent out daily at 2:30 PM GMT. The budget alerts are sent out when the cost of your budget has crossed the configured threshold.
 
 #### I created a budget and set the budget amount less than the spend of the current period. Why didn’t I get a notification immediately?
 
@@ -323,7 +374,7 @@ No limit as of now.
 
 ### General AutoStopping rules
 
-This section addresses some frequently asked questions about [Harness intelligent cloud AutoStopping rules](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md).
+This section addresses some frequently asked questions about [Harness intelligent cloud AutoStopping rules](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-auto-stopping-rules.md).
 
 #### What are the supported cloud services that AutoStopping works with?
 

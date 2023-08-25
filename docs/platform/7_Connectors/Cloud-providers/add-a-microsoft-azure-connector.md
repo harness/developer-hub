@@ -62,7 +62,7 @@ The **Secret** and **Certificate** options are available when you select the **S
 
 The **System Assigned Managed Identity** and **User Assigned Managed Identity** options are available when you select the **Use the credentials of a specific Harness Delegate** option in the Azure connector.
 
-You can install the kubelogin plugin on the delegate by creating an immutable delegate and updating the following commands in `INIT_SCRIPT`:
+You can install the kubelogin plugin on the delegate by creating a delegate with an immutable image and updating the following commands in `INIT_SCRIPT`:
 
 <details>
 <summary>RHEL 7 OS</summary>
@@ -79,7 +79,7 @@ chmod 755 /opt/harness-delegate/bin/linux_amd64/kubelogin
 // Add the binary to PATH
 mv ./bin/linux_amd64/kubelogin /usr/local/bin
 
-// If the AKS cloud provider auth type is Certificate then we need to install azure-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating an immutable delegate and updating the following commands in INIT_SCRIPT
+// If the AKS cloud provider auth type is Certificate then we need to install azure-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating a delegate with an immutable image and updating the following commands in INIT_SCRIPT
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[azure-cli]
 name=Azure CLI
@@ -103,7 +103,7 @@ chmod 755 /opt/harness-delegate/bin/linux_amd64/kubelogin
 // Add the binary to PATH
 mv ./bin/linux_amd64/kubelogin /usr/local/bin
 
-// If the AKS cloud provider auth type is Certificate then we need to install az-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating an immutable delegate and updating the following commands in INIT_SCRIPT
+// If the AKS cloud provider auth type is Certificate then we need to install az-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating a delegate with an immutable image and updating the following commands in INIT_SCRIPT
 curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 ```
 </details>
@@ -533,6 +533,48 @@ Here's an example of Azure RBAC permissions used for System Assigned Managed Ide
   </TabItem3>
 </Tabs3>
 ```
+
+### Azure Resource Management (ARM)
+
+The roles required depend on the scope type of your ARM template:
+
+- **Resource group**: requires the `Contributor` role.
+- **Subscription**: requires the `Contributor` role.
+- **Management group**: requires the `Contributor` role.
+- **Tenant**: requires the `Contributor` or `Owner` role. For example, creating a Tenant requires the `Contributor` role, but the `Owner` role is required to create role assignments.
+- **Key Vault access**: to enable access to Key Vaults from the ARM templates you use in Harness, make sure you select the **Azure Resource Manager for template deployment** option in the Key Vault Access Policy.
+
+![picture 0](static/d2be476b98ef01447bf4fc604640ed8432ebd245a35da2ae45b556e86aae4f8a.png)  
+
+:::note
+
+The Azure roles provided in the connector must allow Harness to provision the Azure resources in your ARM templates. For example, to create a policy assignment, the `Resource Policy Contributor` role is required.
+
+:::
+
+## Azure Blueprints
+
+In Azure, the permissions required to create and delete Blueprints are listed in [Permissions in Azure Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview#permissions-in-azure-blueprints) from Azure.
+
+The Azure roles required on the service principal used by Harness depend on the scope type of your Blueprint definition.
+
+### Management Scope
+
+* **System-assigned managed identity:**
+	+ **Contributor** role at the management group scope where the Blueprint definitions will be created and published.
+	+ **Owner** role at subscription scope where the assignment will be done.
+* **System-assigned user identity:**
+	+ **Contribute** role at the management group scope where Blueprint definitions will be created and published.
+  
+	Harness does not manage the right and lifecycle of a user-managed identity. You will need to manage the user-managed identity.
+
+### Subscription Scope
+
+* **System-assigned managed identity:**
+	+ **Owner** role at the subscription scope.
+* **System-assigned user identity:**
+	+ **Contribute** role to create and publish the Blueprint definition.  
+	Harness does not manage the right and lifecycle of a user-managed identity. You are responsible for managing the right and lifecycle of a user-managed identity that is in charge of assignment.
 
 ## Add an Azure connector
 

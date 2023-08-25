@@ -1,134 +1,163 @@
 ---
-title: Add account, org, and project-level variables
-description: Describes steps to add Variables as Resources.
-# sidebar_position: 2
+title: Add variables
+description: Add variables at the account, org, project, and pipeline-level.
+# sidebar_position: 1
 helpdocs_topic_id: f3450ye0ul
 helpdocs_category_id: bp8t5hf922
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-In your Pipelines, Variables can be added at the Pipeline-level, which makes them available to all Stages in the Pipeline. Within a Stage, you can add Variables at the Stage and Service-level. Here's [a video](https://youtu.be/lqbmO6EVGuU) covering those Variable types.
+You can add Harness variables at account, org, project, and pipeline levels.
 
-But what about when you need to use the same Variable across multiple Pipelines, or even Pipelines in multiple Projects?
+Account, org, and project variables store values that you can share and use across multiple pipelines in multiple projects.
 
-With Account-level, Org-level, and Project-level Variables, Harness lets you store values that you can share and use across multiple Pipelines in multiple Projects.
+Pipeline variables include variables added to the pipelines, stages, services, and environments used in the pipelines.
 
-This topic explains how to add Variables as an Account-level and Org-level Resource in Harness.
+This topic explains how to add and reference variables in Harness.
 
 
 :::note
-For details on Harness built-in variables, see [Built-in Harness Variables Reference](harness-variables.md).
+Harness include many built-in variables for obtaining information like artifact versions, etc. For details on Harness built-in variables, go to [Built-in and custom Harness variables reference](harness-variables.md).
 
 :::
 
-### Before you begin
+## Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
-* Make sure you have [all permissions](../4_Role-Based-Access-Control/9-add-manage-roles.md) on Variables to add and manage Variables.
+* Make sure you have the required [permissions](../role-based-access-control/add-manage-roles) on **Variables** to add and manage variables.
   
   ![](./static/add-a-variable-00.png)
 
-### Limitations
+## Important notes
 
-* Harness supports only String type Account-level, Org-level, and Project-level Variables. This is only a temporary limitation. You can use Secrets in Pipeline, Stage, and Service variables.
-* If you delete a Variable that is referenced using [expressions](harness-variables.md) in entities like Pipelines, the reference expressions are not deleted. At runtime, when the expressions are resolved, the expression will resolve as null.
+* Harness supports only string type account-level, org-level, and project-level variables.
+  * You can use secrets in pipeline, stage, and service variables.
+* If you delete a variable that is referenced using [expressions](harness-variables.md) in entities like pipelines, the reference expressions are not deleted. At runtime, when the expressions are resolved, the expression will resolve as null.
+* Variables include a **Required** setting. This feature is supported for pipeline, stage, service, and environment variables. The **Required** options is also enforced when the variable is defined in a template and the template is included in a pipeline. 
 
-### Visual Summary
+## Visual summary
 
-Here is a quick overview of how Variables can be shared across Pipelines.
+In the following illustration, the variables in **Common To Pipelines** are account, org, or project level variables. The variables in **Specific to Pipeline** are pipeline-level variables.
 
 ![](./static/add-a-variable-01.png)
 
-### Step 1: Add Account, Org, and Project Variables
+## Add account, org, and project variables
 
-You can add a Variable to the Account, Organization, or Project [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
+You can add a variable to the account, organization, or project [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-#### Account
+### Account
 
-In Harness, click **Account Settings**.
+1. In Harness, select **Account Settings**.
+2. Select **Account Resources**, and then select **Variables**.
+3. Select **New Variable**. The **Add Variable** settings appear.
+  
+   <docimage path={require('./static/add-a-variable-03.png')} width="30%" height="30%" title="Click to view full size image" />  
+4. Enter a **Name** for your variable.
+5. In **Fixed Value**, enter a value for your variable.
+6. Select **Save**.
+   <docimage path={require('./static/add-a-variable-04.png')} width="30%" height="30%" title="Click to view full size image" />  
 
-Click **Account Resources** and then click **Variables**.
+### Org
 
-![](./static/add-a-variable-02.png)
+1. Select **Account Settings**.
+2. Select **Organizations**.
+3. Select an org.
+4. In **Organization Resources**, select **Variables**.
+   
+   <docimage path={require('./static/add-a-variable-05.png')} width="60%" height="60%" title="Click to view full size image" />  
+5. Select **New Variable**.
+6. Enter a name, select the variable type, and then enter a value.
+7. For example, here's a variable named **organiz\_var**.
+   
+   ![](./static/add-a-variable-06.png)  
+8.  Note the Id. That Id is used to reference the variable.
+9.  Select **Save**.
 
-Click **New Variable**. The **Add Variable** settings appear.
+### Project
 
-![](./static/add-a-variable-03.png)
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="API" label="API">
+```
 
-Enter a **Name** for your Variable.
+Use the [createVariable](https://apidocs.harness.io/tag/Variables#operation/createVariable) API to create a new variable.
 
-In **Fixed Value**, enter a value for your Variable.
+Here's an example:
 
-Click **Save**.
+```json
+curl -i -X POST \
+  'https://app.harness.io/ng/api/variables?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: HARNESS_API_KEY' \
+  -d '{
+    "variable": {
+      "identifier": "myvar123",
+      "name": "myvar123",
+      "description": "testvar",
+      "orgIdentifier": "default",
+      "projectIdentifier": "CD_Docs",
+      "type": "String",
+      "spec": {
+        "valueType": "FIXED",
+        "fixedValue": "bar"
+      }
+    }
+  }'
+```
 
-![](./static/add-a-variable-04.png)
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
+```
 
-#### Org
+1. In a Harness Project, select **Project Setup**, and then select **Variables**.
+2. Select **New Variable**.
+3. Enter a name, select the variable type, and then enter a value.
+4. For example, here's a variable named **proj\_var**.
+   
+   ![](./static/add-a-variable-07.png)  
+5. Note the Id. That Id is used to reference the variable.
+6. Select **Save**.
 
-Click **Account Settings**.
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
-Click **Organizations**.
+## Pipeline, stage, service, and environment
 
-Select an Org.
+Variables added to pipelines and stages are available to all stages in the pipeline. 
 
-In **Organization Resources**, click **Variables**.
+Variables added to a service and environment are available in all stages that use that service and environment. Here's a [video](https://youtu.be/lqbmO6EVGuU) covering those variable types.
 
-![](./static/add-a-variable-05.png)
+You can also override service variables at the environment level. For more information, go to [Overriding services at the environment level](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides).
 
-Click **New Variable**.
+## Reference variables in a pipeline
 
-Enter a name, select the variable type (for example, **String**), and enter a value.
+To reference an account and org-level variable, you must use the following expression in your Pipeline:
 
-For example, here's a variable named **organiz\_var**.
+`<+variable.SCOPE.VARIABLE_ID>`
 
-![](./static/add-a-variable-06.png)
-
-Note the Id. That Id is used to reference the variable.
-
-Click **Save**.
-
-#### Project
-
-In a Harness Project, click **Project Setup**, and then click **Variables**.
-
-Click **New Variable**.
-
-Enter a name, select the variable type (for example, **String**), and enter a value.
-
-For example, here's a variable named **proj\_var**.
-
-![](./static/add-a-variable-07.png)
-
-Note the Id. That Id is used to reference the variable.
-
-Click **Save**.
-
-### Step 2: Reference Variables in a Pipeline
-
-To reference an Account and Org-level Variable, you must use the following expression in your Pipeline:
-
-`<+variable.[scope].[variable_id]>`
-
-* Account-level reference: `<+variable.account.[var Id]>`
-* Org-level reference: `<+variable.org.[var Id]>`
-* Project-level reference: `<+variable.[var Id]>`
+* Account-level reference: `<+variable.account.VARIABLE_ID>`
+* Org-level reference: `<+variable.org.VARIABLE_ID>`
+* Project-level reference: `<+variable.VARIABLE_ID>`
 
 
 :::note
-The expression to reference **Project** scope Variables is `<+variable.Example>`. You do not need to specify `scope` to reference Project Variables.
+
+The expression to reference **Project** scope variables is `<+variable.VARIABLE_ID>`. You do not need to specify `scope` to reference project variables.
 
 :::
 
-For example, to reference the Variable you just created, the expression will be:
+Let's add the variable in a pipeline.
 
-`<+variable.account.Example>`
-
-Let us add the Variable in a Pipeline now.
-
-In Harness go to a Pipeline in the same Org as the variable you created.
-
-In **Execution**, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step and reference the variables:
+1. In Harness, go to a pipeline in the same org as the variable you created.
+2. In a stage **Execution** section, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step and reference the variables:
 
 
 ```
@@ -136,43 +165,75 @@ echo "account var: "<+variable.account.acct_var>
 echo "org var: "<+variable.org.organiz_var>  
 echo "project var: " <+variable.proj_var>
 ```
+
 When you run the Pipeline, the variable references are resolved and output:
 
 ![](./static/add-a-variable-08.png)
 
-### Review: Using an Account, Org, or Project Variable in a Service Variable
+### Use an account, org, or project variable in a service variable
 
-In **Service**, in **Advanced**, click **Add Variable**.
+1. In **Service**, in **Advanced**, select **Add Variable**.
+   
+   <docimage path={require('./static/807ab89c31339b661d773c5622579ee361c66fdd2fdc05bf49bb1898532af047.png')} width="60%" height="60%" title="Click to view full size image" />  
 
-![](./static/add-a-variable-09.png)
+2. The **Add Variable** settings appear.
+3. In **Variable** **Name**, enter a name for your variable.
+4. Select **String** as **Type** and select **Save**.
+5. Your variable is now listed under **Variables**.
+6. In **Value**, select **Expression** and enter `<+variable.account.acct_var>`.
+   
+   ![](./static/add-a-variable-10.png)
+7. Now, when you run your pipeline the referenced value is evaluated at runtime.
+8. In your pipeline stage, copy the service variable from the **Variables** panel:
+   
+   ![](./static/add-a-variable-11.png)
+9. In your Shell Script step, reference the service variable with:
+    
+    `<+stage.spec.serviceConfig.serviceDefinition.spec.variables.serv_var>`
+10. Run the pipeline and see that the value for the account variable is passed into the service variable:
+    
+    ![](./static/add-a-variable-12.png)
 
-The **Add Variable** settings appear.
-
-In **Variable** **Name**, enter a name for your Variable.
-
-Select **String** as **Type** and click **Save**.
-
-Your Variable is now listed under **Variables**.
-
-In **VALUE**, select **Expression** and enter `<+variable.account.acct_var>`.
-
-![](./static/add-a-variable-10.png)
-
-Now, when you run your Pipeline the referenced value is evaluated at runtime.
-
-Copy the Service variable from **Variables**:
-
-![](./static/add-a-variable-11.png)
-
-In your Shell Script step, reference the Service variable with `<+stage.spec.serviceConfig.serviceDefinition.spec.variables.serv_var>`.
-
-Run the Pipeline and see that the value for the Account Variable is passed into the Service Variable:
-
-![](./static/add-a-variable-12.png)
-
-You can refer to a Variable in most settings. For example, if you an Account Variable storing a Service named **Example**, you can refer to it inline using the same expression.
+You can refer to a variable in most settings. For example, if you have an account variable storing a service named **Example**, you can refer to it inline using the same expression.
 
 ![](./static/add-a-variable-13.png)
 
 Now, when you run your Pipeline the referenced value is evaluated at runtime.
+
+### Export service variables as environment variables in a Shell Script step
+
+You can use the **Export Service Variables as Env Variables** setting to export service variables as environment variables. This setting is available at account, organization, and project levels.
+
+To enable this setting, go to **Account Settings > Account Resources > Default Settings > Pipeline**, and then expand **Pipeline**. Next, set the **Export Service Variables as Env Variables** setting to `true`.
+
+Once you enable this setting, a service's variables are available as Bash variables in any Shell Script step in a stage that deploys that service. You can access the service variables like you access any Bash variables. For example, the service variable, `var1` is available for use in a Shell Script step as `$var1`.
+
+When you [add a service](#use-an-account-org-or-project-variable-in-a-service-variable), you can select variables of type **String**, **Secret**, or **Number**. 
+
+Let's consider an example where you have added the following service variables: 
+
+| **Variable name** | **Type** | **Value** |
+| :--- | :--- | :--- |
+| `svar1` | String | normalValue |
+| `svar2` | String | value-with-hyphen |
+| `svar3` | String | value_with_underscores |
+| `secretServiceVar` | Secret | `yourSecret` |
+| `nvar1` | Number | 1 |
+| `svar4` | String | abc%def%123 |
+| `svar5$abc` | String | key_With_Dollar |
+| `svar6` | String | abc,ghj,klk |
+
+In your Shell Script step, you can use these service variables as environment variables if you had enabled the **Export Service Variables as Env Variables** setting.
+
+:::info Limitation
+
+Shell scripts executing on remote hosts cannot export the correct value if you're using special characters such as `-`, `_`, `$`, `%`, and spaces in Bash.
+
+:::
+
+When you run the pipeline, you can see the value of the service variables passed as environment variables.
+
+<docimage path={require('./static/export-srv-var-as-env-var.png')} width="100%" height="100%" title="Click to view full size image" />  
+
+
 
