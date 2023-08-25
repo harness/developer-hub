@@ -98,7 +98,7 @@ Click **Edit YAML**.
 Replace the existing YAML with the following YAML:
 
 
-```
+```yaml
 pipeline:  
     name: Policy Example  
     identifier: Policy_Example  
@@ -140,7 +140,7 @@ We use the **Quickstart** `projectIdentifier` and the **default** `orgIdentifier
 
 Click **Save**. The Pipeline is now saved.
 
-Click **Visual** and you can see it's a simple Pipeline with a manual [Approval stage](../../9_Approvals/adding-harness-approval-stages.md) and one [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step that echoes `hello`.
+Click **Visual** and you can see it's a simple Pipeline with a manual [Approval stage](../../9_Approvals/adding-harness-approval-stages.md) and one [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step that echoes `hello`.
 
 ![](./static/harness-governance-quickstart-60.png)
 
@@ -199,11 +199,9 @@ You also must consider severity, but that is discussed later.
 
 #### Create the Policy
 
-In the Harness Project, in **Project Setup**, click **Policies**.
+In the Harness Project, in **Project Setup**, select **Policies**.
 
-Click **Policies**, and then click **New Policy**.
-
-![](./static/harness-governance-quickstart-61.png)
+Select **Policies**, and then select **New Policy**.
 
 Name the new policy **Quickstart**, and click **Apply**. The policy editor appears.
 

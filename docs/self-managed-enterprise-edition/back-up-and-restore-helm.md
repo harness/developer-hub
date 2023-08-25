@@ -1,7 +1,7 @@
 ---
 title: Back up and restore Harness Self-Managed Enterprise Edition Helm installations
 sidebar_label: Back up and restore Helm installations
-description: Learn how to back up and restore Self-Managed Enterprise Edition Helm installations. 
+description: Learn how to back up and restore on-prem Harness Self-Managed Enterprise Edition Helm installations. 
 sidebar_position: 26
 ---
 

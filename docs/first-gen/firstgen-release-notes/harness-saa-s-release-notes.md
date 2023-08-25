@@ -16,11 +16,40 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-## August 8, 2023, version 80209
+## Latest: Version 80308
 
-- Update operations on GCP Secrets Manager were failing in FirstGen SMP environments. (PL-40151)
+### New features and enhancements
 
-  This issue has been fixed. 
+This release does not include new features.
+
+### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Fixed a delegate issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240, ZD-48548)
+
+  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+- Fixed an issue where using the Export Manifest with Inherit Manifest in a Kubernetes deployment could lead to skipping resource versioning. With this fix, resource versioning is happening correctly in this deployment scenario. (CDS-75781, ZD-47209)
+### Hotfixes
+
+This release does not include hotfixes.
+### August 8, 2023, version 80209
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Update operations on GCP Secrets Manager were failing in FirstGen SMP environments. This issue has been fixed. (PL-40151)
+
 
 
 ### August 4, 2023, version 80120

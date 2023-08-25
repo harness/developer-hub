@@ -23,6 +23,10 @@ The steps in each stage execute on the stage's dedicated VM. This allows the sta
 
 :::
 
+## Build credits
+
+All plans get 2000 free build credits each month. For more information about Harness Cloud build credit consumption, go to [Subscriptions and licenses](../../ci-quickstarts/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
+
 ## Requirements
 
 * You must use Harness Secret Manager to store connector credentials and other secrets.

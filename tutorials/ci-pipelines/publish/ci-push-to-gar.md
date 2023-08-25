@@ -16,18 +16,22 @@ slug: /ci-pipelines/publish/google-gar
   closable={true}
   target="_self"
 />
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
 This tutorial shows how to use a Harness Continuous Integration (CI) pipeline to build and push application container images to Google Artifact Registry (GAR).
 
 You'll learn how to:
 
 - [x] Use [kaniko](https://github.com/GoogleContainerTools/kaniko) to build an application container image.
-- [x] Create [__projects__](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#organizations-and-projects) in your Harness account.
-- [x] Add [__secrets__](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#secrets-management) to projects.
-- [x] Add a Google Cloud Platform (GCP) [__Connector__](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#connectors) to a project.
+- [x] Create [**projects**](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#organizations-and-projects) in your Harness account.
+- [x] Add [**secrets**](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#secrets-management) to projects.
+- [x] Add a Google Cloud Platform (GCP) [**Connector**](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#connectors) to a project.
 - [x] Use a CI pipeline to build and push an application container image.
 
-In this tutorial you'll build a simple __Go__  application that calls `https://httpbin.org/get` and returns a JSON response, such as:
+In this tutorial you'll build a simple **Go** application that calls `https://httpbin.org/get` and returns a JSON response, such as:
 
 ```json
 {
@@ -65,20 +69,20 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 ## Configure a container registry
 
-To avoid scenarios where builds only work on specific machines, you can use Docker containers to provide clean environments that run specified toolsets. This is a __DevOps__ best practice that helps identify potential problems throughout development.
+To avoid scenarios where builds only work on specific machines, you can use Docker containers to provide clean environments that run specified toolsets. This is a **DevOps** best practice that helps identify potential problems throughout development.
 
 [Drone by Harness](https://drone.io) is an open source CI platform that helps developers build and test on local machines without manually installing different tools for each language.
 
-Before building the application, you need a location to store build artifacts, which are also known as container images. Externally-hosted locations are ideal because they are more accessible. Container image storage spaces are called __Container Registries__. Examples of container registry providers include Docker Hub, Quay.io, Harbor, Google Artifact Registry (GAR), and Elastic Container Registry (ECR).
+Before building the application, you need a location to store build artifacts, which are also known as container images. Externally-hosted locations are ideal because they are more accessible. Container image storage spaces are called **Container Registries**. Examples of container registry providers include Docker Hub, Quay.io, Harbor, Google Artifact Registry (GAR), and Elastic Container Registry (ECR).
 
 ### Configure a Google Cloud service account
 
 In this tutorial, you'll push an `httpbin-get` application container image to [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/overview). You'll also use [Terraform](htttps://terraform.io) scripts to provision Google Cloud resources that you need for this tutorial. To run the Terraform scripts you need to [create a Google Cloud service account](https://cloud.google.com/iam/docs/creating-managing-service-accounts) with the following roles:
 
-- __Artifact Registry Administrator__: Allows the account to create and manage Docker artifact repositories.
-- __Service Account Admin__: Allows the account to create other service accounts used in this tutorial.
-- __Service Account Key Admin__: Allows the account to create service account keys used in this tutorial
-- __Security Admin__: Allows the account to set service account IAM policies for a Google Cloud project.
+- **Artifact Registry Administrator**: Allows the account to create and manage Docker artifact repositories.
+- **Service Account Admin**: Allows the account to create other service accounts used in this tutorial.
+- **Service Account Key Admin**: Allows the account to create service account keys used in this tutorial
+- **Security Admin**: Allows the account to set service account IAM policies for a Google Cloud project.
 
 After creating the service account, download the Service Account Key JSON. In this tutorial, refer to the service account as `$INFRA_SA` and refer to the Service Account Key JSON as `$GOOGLE_APPLICATION_CREDENTIALS`. [Activate your Service Account](https://cloud.google.com/sdk/gcloud/reference/auth/activate-service-account) using these references.
 
@@ -148,13 +152,13 @@ $TUTORIAL_HOME/scripts/set-env.sh
 
 :::tip
 
-The `PLUGIN_` prefix allows variables to be implicitly passed as __parameters__, or __settings__, to [Drone plugins](https://plugins.drone.io).
+The `PLUGIN_` prefix allows variables to be implicitly passed as **parameters**, or **settings**, to [Drone plugins](https://plugins.drone.io).
 
 You'll also refer to these variables later in this tutorial when building a Harness CI pipeline.
 
 :::
 
-Next, you need to build and push the __go__ application. This uses a simple two-step __pipeline__. The first step uses [kaniko](https://github.com/GoogleContainerTools/kaniko) to build an image. The second step pushes the image to the Google Artifact Registry called `harness-tutorial/httpbin-get`.
+Next, you need to build and push the **go** application. This uses a simple two-step **pipeline**. The first step uses [kaniko](https://github.com/GoogleContainerTools/kaniko) to build an image. The second step pushes the image to the Google Artifact Registry called `harness-tutorial/httpbin-get`.
 
 ![Pipeline Steps](../static/ci-tutorial-push-to-gar/pipeline_steps.png)
 
@@ -198,6 +202,7 @@ While the Harness platform has several modules, this tutorial focuses on the Con
 
 Pipelines require build infrastructure to run. When you create your own pipelines, you can use either Harness-hosted infrastructure or bring your own build infrastructure. This tutorial uses Harness-hosted infrastructure, also called Harness Cloud.
 
+
 ```mdx-code-block
 <Tabs>
 <TabItem value="cloud" label="Harness Cloud" default>
@@ -216,6 +221,8 @@ With self-hosted build hardware, your pipelines run on your local machines or yo
 
 ![Harness CI Bring Your Own Overview](../static/ci-tutorial-node-docker/harness_ci_your_infra_overview.png)
 
+
+
 ```mdx-code-block
 </TabItem>
 </Tabs>
@@ -233,7 +240,7 @@ If you are using an existing personal access token, make sure it has the `admin:
 
 :::important
 
-The __token__ is only displayed once. Copy the token and save it to your password manager or another secure place. The rest of this tutorial refers to this token value as `$GITHUB_PAT`.
+The **token** is only displayed once. Copy the token and save it to your password manager or another secure place. The rest of this tutorial refers to this token value as `$GITHUB_PAT`.
 
 :::
 
@@ -250,15 +257,15 @@ In the Harness Platform, you declare and configure resources, such as pipelines,
 
 The Harness CI pipeline wizard creates a basic pipeline for you.
 
-1. Select __Get Started__ to begin.
+1. Select **Get Started** to begin.
 
    ![Get Started](../static/ci-tutorial-node-docker/get_started.png)
 
-2. Select __GitHub__ as the repository to use, select __Access token__ as the authentication method, input your GitHub personal access token (`$GITHUB_PAT`) in the __Access Token__ field, and select __Test Connection__ to verify your credentials.
+2. Select **GitHub** as the repository to use, select **Access token** as the authentication method, input your GitHub personal access token (`$GITHUB_PAT`) in the **Access Token** field, and select **Test Connection** to verify your credentials.
 
    ![SCM Choice](../static/ci-tutorial-go-containers/scm_choice.png)
 
-3. Select __Next: Select Repository__, choose your fork of the tutorial repo `httpbin-get`, and then select __Configure Pipeline__.
+3. Select **Next: Select Repository**, choose your fork of the tutorial repo `httpbin-get`, and then select **Configure Pipeline**.
 4. Select **Generate my Pipeline configuration**, enter `main` for the branch name, and then select **Create Pipeline**.
 
 Harness generates a pipeline for you that has a **Build** stage with an echo step. You'll modify this stage so that the pipeline builds and pushes an image to Google Artifact Registry. However, first you must configure additional resources that the steps require, namely secrets and connectors.
@@ -269,9 +276,9 @@ You can use either the visual or YAML editor to add pipeline steps. This tutoria
 
 1. [Create a Harness encrypted file secret](/docs/platform/secrets/add-file-secrets/) with the following configuration:
 
-   - __Secrets Manager__: __Harness Built-in Secret Manager__
-   - __Secret Name__: Enter _harness tutorial sa key_. __Description__ and __Tags__ are optional.
-   - __Select File__: Choose the `$TUTORIAL_HOME/.keys/harness-tutorial-sa-key.json` file
+   - **Secrets Manager**: **Harness Built-in Secret Manager**
+   - **Secret Name**: Enter _harness tutorial sa key_. **Description** and **Tags** are optional.
+   - **Select File**: Choose the `$TUTORIAL_HOME/.keys/harness-tutorial-sa-key.json` file
 
    ![Google Cloud SA](../static/ci-tutorial-push-to-gar/gcp_sa_key_secret_file.png)
 
@@ -284,13 +291,13 @@ You can use either the visual or YAML editor to add pipeline steps. This tutoria
 1. In your Harness project, go to **Connectors**, and [create a GCP connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/). Harness will use this connector to integrate with GCP.
 2. Enter a **Name**, such as `google cloud`, and select **Continue**.
 3. Select **Specify credentials here**, select your [GSA key file secret](#add-a-google-service-account-secret-key), and then select **Continue**.
-4. Select __Connect through Harness Platform__, and select **Save and Continue**.
-5. If the connection test succeeds, select __Finish__.
+4. Select **Connect through Harness Platform**, and select **Save and Continue**.
+5. If the connection test succeeds, select **Finish**.
 
 ### Add a Run step
 
-1. Go back to the pipeline you created earlier, and select the __Build__ stage.
-2. Delete the __Echo__ step by selecting the **X** that appears when you hover over the step.
+1. Go back to the pipeline you created earlier, and select the **Build** stage.
+2. Delete the **Echo** step by selecting the **X** that appears when you hover over the step.
 3. Select **Add Step** and add a **Run** step.
 4. For the **Name**, enter `Build and push to GAR`. The **Description** is optional.
 5. For **Shell**, select **Sh**.
@@ -300,6 +307,7 @@ You can use either the visual or YAML editor to add pipeline steps. This tutoria
    echo "$PLUGIN_SERVICE_ACCOUNT_JSON" > "$GOOGLE_APPLICATION_CREDENTIALS"
    /kaniko/executor --customPlatform=linux/amd64 --context=/harness --destination=$PLUGIN_IMAGE
    ```
+
 7. Under **Optional Configuration**, select your [GCP connector](#create-a-google-cloud-platform-gcp-connector) for **Container Registry**.
 8. In **Image**, enter `cr.io/kaniko-project/executor:v1.9.0-debug`
 
@@ -307,15 +315,15 @@ You can use either the visual or YAML editor to add pipeline steps. This tutoria
 
 9. Add the following **Environment Variables**. The are used to push the container image to Google Artifact Registry.
 
-   | Variable Name | Value | Description |
-   | - | - | - |
-   | `PLUGIN_SERVICE_ACCOUNT_JSON` | `<+secrets.getValue("harness_tutorial_sa_key")>`| The Google service account secret key.<br/>The [input type](/docs/platform/references/runtime-inputs/) must be **Expression**. |
-   | `GOOGLE_APPLICATION_CREDENTIALS` | `/kaniko/sa.json` | The json file where the service account key content will be written. |
-   | `PLUGIN_IMAGE` | `$PLUGIN_IMAGE` | The container image name.<br/>The value for `$PLUGIN_IMAGE` comes from `$TUTORIAL_HOME/.env`. |
+   | Variable Name                    | Value                                            | Description                                                                                                                    |
+   | -------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+   | `PLUGIN_SERVICE_ACCOUNT_JSON`    | `<+secrets.getValue("harness_tutorial_sa_key")>` | The Google service account secret key.<br/>The [input type](/docs/platform/references/runtime-inputs/) must be **Expression**. |
+   | `GOOGLE_APPLICATION_CREDENTIALS` | `/kaniko/sa.json`                                | The json file where the service account key content will be written.                                                           |
+   | `PLUGIN_IMAGE`                   | `$PLUGIN_IMAGE`                                  | The container image name.<br/>The value for `$PLUGIN_IMAGE` comes from `$TUTORIAL_HOME/.env`.                                  |
 
    ![Build environment Variables](../static/ci-tutorial-push-to-gar/go_pipeline_step_build_and_push_env_vars.png)
 
-10. Select __Apply Changes__ to save the step, and then select __Save__ to save the pipeline.
+10. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
 ### Run the pipeline
 

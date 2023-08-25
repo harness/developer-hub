@@ -1,6 +1,6 @@
 ---
 title: Install in an air-gapped environment
-description: Learn how to install the Harness Self-Managed Enterprise Edition using Helm in an air-gapped environment.
+description: Learn how to install the Harness Self-Managed Enterprise Edition using Helm in an on-prem air-gapped environment.
 sidebar_position: 4
 ---
 
