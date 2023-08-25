@@ -144,7 +144,7 @@ export default function FeatureFlags() {
 
           {/* Developer Exam Details */}
           <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Detail (BETA)</h2>
+            <h2 id="exam-details">Exam Details (BETA)</h2>
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>
