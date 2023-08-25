@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 description: This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitors.
 keywords: [CI]
 title: See the fastest CI in action

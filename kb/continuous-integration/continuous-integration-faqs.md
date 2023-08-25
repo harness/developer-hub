@@ -66,5 +66,14 @@ Try increasing the CPU request and limit both. Check CPU utilisation in-case.
 
 No we don't. Try checking SHA of the tag and find image ID from the output of the service step `<+artifact.tag>`
 
+#### Does Harness "run container" overwrites the container entrypoint ?
+
+Yes, it is an expected behaviour. The entrypoint in the base image should be overwritten as we have to run the commands specified in the run step.
+
+#### Do we have a limit on the length of a log line ? 
+
+Yes, We have a limit of 70KB on the line length in the CI client which writes to log service. One can write
+to a file and upload in case they can't see the full line.
+
 
 

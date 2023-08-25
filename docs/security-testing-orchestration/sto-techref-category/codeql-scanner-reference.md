@@ -304,6 +304,10 @@ pipeline:
 
 ```
 
+```mdx-code-block
+import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
+```
+
 <StoSettingYAMLexample />
 
 <!-- END yaml pipeline example ----------------------------------------------------------------------------- -->
