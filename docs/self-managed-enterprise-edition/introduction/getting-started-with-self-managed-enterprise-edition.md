@@ -3,17 +3,37 @@ title: Getting started with Harness Self-Managed Enterprise Edition
 sidebar_label: Getting started
 description: This topic provides the basics on how to create a Harness account and first project. These are the first tasks that come after installing the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 2
+redirect_from:
+  - /docs/self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview
 helpdocs_topic_id: 09gjhl0tcw
 helpdocs_category_id: tvlmjozubh
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides the basics on how to create a Harness account and your first project. These are the first tasks that come after you install Harness Self-Managed Enterprise Edition.
+This topic provides an architecture overview, installation links, and the basics on how to create a Harness account and your first project. These are the first tasks that come after you install Harness Self-Managed Enterprise Edition.
 
 For links to information about using CI and CD pipelines, as well as the basics on Security Testing Orchestration (STO), go to [Next steps](/docs/self-managed-enterprise-edition/introduction/getting-started-with-self-managed-enterprise-edition#next-steps).
 
-### Create your Harness account
+## Architecture overview
+Harness Self-Managed Enterprise Edition can be installed in a Kubernetes cluster or on virtual machines.
+
+Review the following diagrams for your installation type.
+
+### Kubernetes cluster configuration
+
+Harness Self-Managed Enterprise Edition is installed in a Kubernetes cluster in the following configuration.
+
+![](./static/harness-self-managed-enterprise-edition-overview-00.png)To install Harness Self-Managed Enterprise Edition in a Kubernetes cluster, use the following instructions:
+
+1. For Self-Managed Enterprise Edition with Helm, go to [Install Harness Self-Managed Enterprise Edition Using Helm](../self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga.md).
+2. For Self-Managed Enterprise Edition with KOTS, go to [Install Self-Managed Enterprise Edition Using KOTS](../deploy-with-kots/kubernetes-cluster-on-prem-kubernetes-cluster-setup.md).
+
+**AWS architecture**
+
+![](./static/aws_architecture_smpOverview.png)
+
+## Create your Harness account
 
 You create your Harness account the first time you use Harness Self-Managed Enterprise Edition. You are automatically assigned the Harness user role, **Account Admin**.
 
@@ -29,7 +49,7 @@ To create your Harness account, do the following:
    
    ![](./static/getting-started-with-self-managed-enterprise-edition-02.png)
 
-### Create your first project
+## Create your first project
 
 It takes time to learn how to create complex CI/CD pipelines. You can start with opening a project and inviting collaborators. 
 
