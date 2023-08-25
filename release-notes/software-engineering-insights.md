@@ -2,7 +2,7 @@
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
 tags: [NextGen, "software engineering insights"]
-date: 2023-08-01T10:00:10
+date: 2023-09-01T10:00:10
 sidebar_position: 10
 ---
 
@@ -20,36 +20,27 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - August 2023
+## Latest: Version xxxxxx.x
 
-Software Engineering Insights documentation is live on the Harness Developer Hub. Check back soon module release notes.
+Software Engineering Insights documentation is live on the Harness Developer Hub. Check back soon for module release notes.
 
 <!--
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### New features and enhancements
 
-This release does not include new features.
+This release does not include new features or enhancements.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+### Early access features
 
 This release does not include early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues
 
-This release does not include fixed issues
+This release does not include fixed issues.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
+### Hotfixes
+
+This release does not include hotfixes.
+
 -->
 
 <!--## Previous releases
@@ -59,17 +50,21 @@ This release does not include fixed issues
 
 #### Month, dd, 2023, version nnnn
 
-##### What's new
+##### New features and enhancements
 
-This release does not include new features.
+This release does not include new features or enhancements.
 
-##### Early access
+##### Early access features
 
 This release does not include early access features.
 
 ##### Fixed issues
 
 This release does not include fixed issues.
+
+##### Hotfixes
+
+This release does not include hotfixes.
 
 </details>
 -->

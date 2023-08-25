@@ -19,7 +19,7 @@ Reports can be filtered by project, repository, time range, and other data point
 Use SCM code activity reports to analyze direct coding activity in your SCM tool, such as volume of commits, coding days, types of files modified, rework, and activity in each repository.
 
 * **SCM Coding Days Report:** A coding day is any day where a developer commits code.
-* **SCM Coding Days Single Stat:** Report a single stat related to coding days.
+* **SCM Coding Days Single Stat:** Report a single stat related to coding days. Numeric values are calculated to two decimal places.
 * **SCM Commits Report:** Analyze commit activity, such as number of commits per month.
 * **SCM Commits Single Stat:** Report a single stat related to commit activity.
 * **SCM Committers Report:** Analyze the volume of code changes by committer.

@@ -134,6 +134,7 @@ This report requires that you set the **Issues Resolved In** filter, because onl
 
 * For the most accurate lead time measurements, be diligent about updating issue statuses, and make sure your workflow has a sufficient variety of statuses to capture the entire development process. This report tracks the entire issue lifecycle, including bounces back into previous stages.
 * Use this report along with the [Jira Releases Report](./issues-reports.md#configure-the-jira-releases-report), which helps analyze your team's release pattern and understand the average time elapsed between issue creation and release.
+* To reduce load time for this widget, you can enable **Pre-Calculation**. This setting prepares Lead Time calculations, rather than running calculations in real time each time you load the Insight. Pre-calculation must be enabled for specific **Lead Time by Time Spent in Stages Report** widgets - You can't enable it globally. The following time ranges are pre-calculated: Last two weeks, last month, last three months, last 30 days, last quarter, and last two quarters.
 
 :::
 
