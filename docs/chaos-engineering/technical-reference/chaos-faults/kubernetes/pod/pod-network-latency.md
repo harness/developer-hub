@@ -82,7 +82,7 @@ Pod network latency:
       </tr> 
       <tr>
         <td> DESTINATION_IPS </td>
-        <td> Comma seperated IP addresses and ports of the services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted. Comma separated IP(S) or CIDR(S) can be provided.</td>
+        <td> Comma-separated IP addresses and ports of the services or pods or the CIDR blocks (range of IPs) whose accessibility is impacted. Comma separated IP(S) or CIDR(S) can be provided.</td>
         <td> If these values are not provided, the fault induces network chaos for all IPs or destinations. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-latency#destination-ips-and-destination-hosts">destination IPs</a>.</td>
       </tr>  
       <tr>
@@ -158,7 +158,7 @@ Default IPs and hosts whose traffic is interrupted due to the network faults. Tu
 - `DESTINATION_IPS`: It contains the IP addresses and ports of the services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
 - `DESTINATION_HOSTS`: It contains the DNS names or FQDN names of the services and ports whose accessibility is impacted.
 
-<b>NOTE:</b> Ports can be specified by using a pipe (|) as a separator. While providing ports is optional, omitting them will affect all ports associated with the destination IPs and hosts
+<b>NOTE:</b> Ports can be specified by using a pipe (|) as a separator. While providing ports is optional, omitting them will affect all ports associated with the destination IPs and hosts.
 
 The following YAML snippet illustrates the use of these environment variables:
 
