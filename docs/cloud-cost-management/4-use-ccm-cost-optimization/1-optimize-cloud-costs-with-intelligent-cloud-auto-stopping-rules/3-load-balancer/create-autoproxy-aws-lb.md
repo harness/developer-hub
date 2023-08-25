@@ -49,7 +49,7 @@ Perform the following steps to create an AutoStopping proxy for your resources i
 
 ```
 -----BEGIN CERTIFICATE-----
-eQ...DtJ
+XXXXXXXXXXXXXXXXXXXXXXXXXXX
 -----END CERTIFICATE-----
 
 ```
@@ -73,7 +73,7 @@ eQ...DtJ
 
 ```
 -----BEGIN PRIVATE KEY-----
-af...PA==
+XXXXXXXXXXXXXXXXXXXXXXXXXXX
 -----END PRIVATE KEY-----
 ```
 
