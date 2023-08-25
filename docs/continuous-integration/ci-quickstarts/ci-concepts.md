@@ -30,7 +30,6 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 ## Architecture
 
 <figure>
-/docs/platform/Delegates/delegate-concepts/delegate-overview
 ![](./static/ci-concepts-10.png)
 
 <figcaption>Harness CI architecture diagram.</figcaption>
