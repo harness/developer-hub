@@ -6,5 +6,5 @@ metadata:
     name: network-corruption
 spec:
   networkChaos/inputs:
-    destinationIPs: '["1.1.1.1"]'
+    destinationIPs: '1.1.1.1'
     networkInterfaces: "eth0"

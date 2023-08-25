@@ -34,6 +34,7 @@ The **Audit Trail** page appears, displaying a record for each event that cha
 It may take a few minutes for events to appear on the Audit Trail. Wait a minute and then refresh your browser if you don't notice an event right away.
 
 ![](./static/audit-trail-00.png)
+
 For each event record, this view shows the:
 
 * Date and time (**Time**).
@@ -43,7 +44,9 @@ For each event record, this view shows the:
 * **Organization** corresponding to the affected entity.
 * **Project** corresponding to the affected entity.
 * **Module** corresponding to the affected entity.
-* **Event Summary** with YAML difference.![](./static/audit-trail-01.png)
+* **Event Summary** with YAML difference.
+
+![](./static/audit-trail-01.png)
 
 From here, you have multiple options to [Modify the Audit Trail View](#modify_the_audit_trail_view).
 
@@ -81,14 +84,18 @@ To add a Filter, perform the following steps:
 2. In **Account Audit Trail**, click the filter icon.![](./static/audit-trail-04.png)
 3. In the **New Filter** settings, select the filters to scope down the viewable audit events.  
 You can scope down the viewable audit events by adding Filters and selecting:
-	* User
-	* Organization
-	* Project
-	* Resource Type
-	* Action
+
+   * User
+   * Organization
+   * Project
+   * Resource Type
+   * Action
+
 4. In **Filter** **Name**, enter a name for your filter.
 5. In **Who can view and edit the filter?** select **Only Me** or **Everyone** based on the visibility you want to set for this filter.
-6. Click **Save**. Your filter is now created.![](./static/audit-trail-05.png)
+6. Click **Save**. Your filter is now created.
+
+   ![](./static/audit-trail-05.png)
 
 Click **Apply** to view the Audit Events as per the filter you just created.
 

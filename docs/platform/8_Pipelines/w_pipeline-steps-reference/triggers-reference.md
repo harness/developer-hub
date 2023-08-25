@@ -396,9 +396,9 @@ When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab inc
 
 ## Webhook registration
 
-For all Git providers supported by Harness, the webhook is automatically created in the repo. You usually don't need to copy the URL and add it to your repo's webhook settings.
+For all Git providers supported by Harness, a webhook is automatically created in the repo. Usually, the webhook is automatically registered. If automatic registration fails, you can [manually register the webhook](#manual-and-custom-webhook-registration).
 
-The following Git events are automatically added to the webhooks that Harness registers.
+For each repo, Harness creates one webhook with a superset of all permissions, rather than separate webhooks for each Git event type. The following Git events are included in the webhooks that Harness registers.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -444,12 +444,6 @@ import TabItem from '@theme/TabItem';
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="YAML" label="YAML">
-```
-
-
-```mdx-code-block
-  </TabItem>
 </Tabs>
 ```
 
@@ -487,11 +481,7 @@ Harness Self-Managed Enterprise Edition does not support webhook triggers for He
 
 :::info Custom webhook URL format
 
-The format for the custom webhook URL is as follows:
-
-```
-https://app.harness.io/pipeline/api/webhook/custom?accountIdentifier=<accountID>&orgIdentifier=<orgID>&projectIdentifier=<projectID>&pipelineIdentifier=<pipelineID>&triggerIdentifier=<triggerID>
-```
+The format for the custom webhook URL is `https://app.harness.io/pipeline/api/webhook/custom?accountIdentifier=ACCOUNT_ID&orgIdentifier=ORG_ID&projectIdentifier=PROJECT_ID&pipelineIdentifier=PIPELINE_ID&triggerIdentifier=TRIGGER_ID`
 
 The `orgIdentifier` and `projectIdentifier` are mandatory.
 

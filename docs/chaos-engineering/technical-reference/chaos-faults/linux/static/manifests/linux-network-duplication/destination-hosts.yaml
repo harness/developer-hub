@@ -6,5 +6,5 @@ metadata:
     name: network-duplication
 spec:
   networkChaos/inputs:
-    destinationHosts: '["google.com"]'
+    destinationHosts: 'google.com'
     networkInterfaces: "eth0"

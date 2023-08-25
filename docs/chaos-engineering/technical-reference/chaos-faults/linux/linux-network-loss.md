@@ -42,12 +42,12 @@ Linux network loss injects chaos to disrupt network connectivity on the Linux ma
   </tr>
   <tr>
     <td> destinationHosts </td>
-    <td> List of the target host names or keywords. For example: <code>["google.com","litmuschaos.io"]</code></td>
+    <td> List of the target host names or keywords. For example: <code>google.com,litmuschaos.io</code></td>
     <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
-    <td> List of the target IPs. For example: <code>["1.1.1.1","8.8.8.8"]</code> </td>
+    <td> List of the target IPs. For example: <code>1.1.1.1,8.8.8.8</code> </td>
     <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted</td>
   </tr>
   <tr>
@@ -83,7 +83,7 @@ metadata:
     name: network-loss
 spec:
   networkChaos/inputs:
-    destinationHosts: '["google.com"]'
+    destinationHosts: 'google.com'
     networkInterfaces: "eth0"
 ```
 
@@ -103,7 +103,7 @@ metadata:
     name: network-loss
 spec:
   networkChaos/inputs:
-    destinationIPs: '["1.1.1.1"]'
+    destinationIPs: '1.1.1.1'
     networkInterfaces: "eth0"
 ```
 

@@ -30,6 +30,7 @@ Click **Policy Sets**.
 Toggle the **Enforced** setting to off.
 
 ![](./static/disable-a-policy-set-55.png)
+
 ### Notes
 
 * To prevent issues with team members Pipelines and resources when creating a new Policy Set, a new Policy Set is disabled by default.
