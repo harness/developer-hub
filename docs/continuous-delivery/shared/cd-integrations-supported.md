@@ -474,8 +474,8 @@ Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenk
 <summary>GitOps</summary>
 
 - **Overview:**
-  - [GitOps](/docs/continuous-delivery/gitops/harness-git-ops-basics)
-  - [GitOps Quickstart](/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart)
+  - [GitOps](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics)
+  - [GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart)
 
 Harness GitOps lets you perform GitOps deployments in Harness. You define the desired state of the service you want to deploy in your Git manifest, and then use Harness GitOps to sync state with your live Kubernetes cluster.
 
