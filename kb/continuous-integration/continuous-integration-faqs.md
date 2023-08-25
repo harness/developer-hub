@@ -78,7 +78,7 @@ to a file and upload in case they can't see the full line.
 ### Is it supported to run docker-compose from the docker in docker step?
 Yes, it's supported to run the docker-compose from the docker in docker step.
 
-### The container that does the Run command step, it must have docker and docker CLI installed right in order for this to work?
+### The container that execute the Run command step, it must have docker and docker CLI installed right in order for this to work?
 Yes, user need to install docker and docker CLI in order to work.
 
 ### If the "Run test" steps fails the Post-Command script will run or not?
