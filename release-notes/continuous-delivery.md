@@ -35,7 +35,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 <Kustomizedep />
 
 
-## Latest: Version 80307
+## Latest: Version 804xx
 
 ### New features and enhancements
 
@@ -43,10 +43,87 @@ This release does not have new features.
 
 ### Early access features
 
+This release does not include early access features.
+  
+### Fixed issues
+
+- Fixed an issue that caused the **Pipeline Executions** page to make unnecessary API calls to a back-end service. (CDS-77401)
+
+- Fixed an issue where users could not specify runtime inputs for some advanced settings (such as Looping Strategy) in step groups and step-group templates. With this fix, runtime inputs are supported for all advanced step-group settings. (CDS-77246, ZD-49339, ZD-49427)
+
+- Fixed a UI issue that caused some edit buttons to not appear. (CDS-76977)
+
+- Fixed an issue where the K8s Apply step did not correctly evaluate expressions for the **Command Type** field. (CDS-76632)
+
+- Fixed an issue where the reconciliation for input set templates did not check for differences in old vs. new YAML for a given input set. This was happening because there was no flag to monitor for changes in YAML strings. (CDS-76533).
+
+  This fix introduces a new `yamlDiffPresent` boolean in `InputSetYamlDiffDTO` and its relevant unit tests. The purpose of this flag is similar to validYAML, which determines whether the current YAML is valid or not.
+
+- Fixed a UI issue where fields in Add Stage did not reposition correctly when the window size was decreased (CDS-76431).
+
+- Fixed an issue where characters could get arranged incorrectly when updating an expression within a string value. For example, updating the expression in `test/var/<+expression.name>/login` might result in `test/var/<+expression.name`**/>**`login`. This fix ensures that expressions within strings are updated correctly.  (CDS-76354, ZD-48515)
+
+- Fixed an issue where users could not save a Manual Approval step as a template when `autoApprove : action` is set to `APPROVE` or `REJECT`.  (CDS-76350)
+
+- Added an information banner and doc link to the **Synchronization Barrier** step that highlights best practices when synchronizing deployments using barriers. (CDS-76291, ZD-48636)
+
+- Fixed a UI issue where the **Environment** tab in a Deploy stage did not display new custom variables after they were created.  (CDS-76068)
+
+- Removed the **Reconcile** option for individual input sets in the **Input Sets** page. (CDS-75845)
+
+- Implemented a fix to ensure that user-entered values are always populated in the **Inputs** tab on running / re-running the pipeline. (CDS-75593, ZD-48181)
+
+- Fixed a filtering issue in the **Pipeline Executions** page. (CDS-75224)
+  
+  When the service received empty arrays for fields in the filter, the service would add this fields in the filtering criteria with empty values thereby not returning accurate results.
+  
+  The fix will handle the empty arrays being sent and saved filters will return only fields that have values in them.
+
+- Fixed an issue where ECR image based triggers were firing off with null values for artifact image tag and repo name. (CDS-75173)
+
+- Added a tooltip for Build stages to let users know `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration`. (CDS-75080, ZD-47902) 
+
+- Added a tooltip for Build stages: `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration.` (CDS-74137)
+
+- Fixed a filtering issue when using pipeline tags in the **Pipelines** and **Pipeline Executions** pages. (CDS-73807, ZD-47148)
+
+  When a user uses pipeline tags to filter pipelines or executions, the following behavior will now be observed: 
+
+  - When a user enters only a string in the filter tags, all pipelines/executions with a tag key or value matching that string will be returned. 
+
+  - When a user enters a `key:value` pair in the filter rags,  all  pipelines/executions with a tag pair matching `key:value` will be returned.
+
+  - When a user enters `"":value` pair in the filter tags,  all the pipelines/executions with a tag pair matching `"":value` will be returned.
+
+  - When a user enters a `key:""` pair in the filter tags, all the pipelines/executions with a tag pair matching `key:""` will be returned.
+
+- Fixed an issue in the Pipeline Executions page where the Services filter didn't list all services. (CDS-73277)
+
+- Improved the error message shown in the UI if the entity type of a new version of a template is different: `Failed to save the template <NAME> because an existing template of different type has the same identifier` (CDS-73243)
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+
+### Hotfixes
+
+This release does not include hotfixes. 
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+## Version 80307
+
+##### New features and enhancements
+
+This release does not have new features.
+
+##### Early access features
+
 - Added support for Post Prod Rollback for ASG deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/rollback-deployments/). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-77450, CDS-76352)
 
   
-### Fixed issues
+##### Fixed issues
 
 - Fixed a FirstGen-to-NextGen migration issue where the migrator did not filter out duplicate keys when extracting variables. With this fix, the migrator allows unique keys only. (CDS-76576)
 
@@ -68,17 +145,6 @@ This release does not have new features.
 
 - Fixed an issue with the **Repository Name** filter in the **Builds** page. Some users could not filter on builds that pulled their source code from a specific repository. If you experienced this issue, you will need to delete any saved filters that use the **Repository Name** filter and create them again. (CDS-75281, ZD-47876, ZD-48201)	
 
-- Fixed a filtering issue when using pipeline tags in the **Pipelines** and **Pipeline Executions** pages. (CDS-73807, ZD-47148)
-
-  When a user uses pipeline tags to filter pipelines or executions, the following behavior will now be observed: 
-
-  - When a user enters only a string in the filter tags, all pipelines/executions with a tag key or value matching that string will be returned. 
-
-  - When a user enters a `key:value` pair in the filter rags,  all  pipelines/executions with a tag pair matching `key:value` will be returned.
-
-  - When a user enters `"":value` pair in the filter tags,  all the pipelines/executions with a tag pair matching `"":value` will be returned.
-
-  - When a user enters a `key:""` pair in the filter tags, all the pipelines/executions with a tag pair matching `key:""` will be returned.
 
 - Fixed an issue where logs were not visible after a shell script step got expired. With this fix, the pipeline will now publish expire events to close the log stream correctly after expiring a step.  (CDS-73695, ZD-47049)
 
@@ -142,14 +208,10 @@ This release does not have new features.
 
   This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes. 
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 10, 2023, version 80208
 
