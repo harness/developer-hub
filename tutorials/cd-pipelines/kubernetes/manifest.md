@@ -322,6 +322,11 @@ Verify that you have the following:
 ## Getting Started with Harness GitOps
 --------------------------------------
 
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness UX">
+```
+
 1. Login to [Harness](https://app.harness.io/).
 2. Select **Projects**, and then select **Default Project**.
 3. Select **Deployments**, and then select **GitOps**.
@@ -481,8 +486,46 @@ A successful Application sync will display the following status tree under **Res
 
 ![GitOps](../static/k8s-manifest-tutorial/gitops.png)
 
+```mdx-code-block
+</TabItem>
+<TabItem value="Terraform provider">
+```
+Harness offers a [Terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you declaratively manage Harness GitOps entities alongside your application and cluster resources. These steps walk through using the Harness Terraform provider to create and install the GitOps agent, define related Harness entities, and deploy a sample application to your cluster.
+
+1. Generate a [Harness API token](https://developer.harness.io/docs/platform/resource-development/apis/add-and-manage-api-keys/#create-personal-api-keys-and-tokens).
+1. Make sure [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) is installed on a computer that can connect to your cluster.
+
+### Getting started with the Harness Terraform provider
+
+1. Clone or download the Harness [gitops-terraform-onboarding](https://github.com/harness-community/gitops-terraform-onboarding) project.
+
+```
+git clone https://github.com/harness-community/gitops-terraform-onboarding.git
+cd gitops-terraform-onboarding/
+```
+
+2. Initialize the Terraform configuration. This step will also install the Harness provider plugin.
+
+```bash
+terraform init
+```
+<details open>
+<summary>What is a Terraform provider?</summary>
+
+A Terraform provider is a plugin that allows Terraform to define and manage resources using a particular software API. In this tutorial these resources will be Harness entities.
+
+</details>
+
+### Input variables
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+
 ### Congratulations!🎉
-You've just learned how to use **Harness GitOps** to deploy application using a Kubernetes manifest.
+You've just learned how to use **Harness GitOps** to deploy an application using a Kubernetes manifest.
 
 #### What's Next?
 - Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](https://developer.harness.io/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial).
