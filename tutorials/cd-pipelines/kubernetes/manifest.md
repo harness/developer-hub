@@ -647,7 +647,7 @@ Verify that you have the following:
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Harness UX">
+<TabItem value="UI">
 ```
 
 1. Login to [Harness](https://app.harness.io/).
