@@ -30,6 +30,22 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     - Role Assignment Updated
     - Role Assignment Deleted
 
+## August 23, 2023
+
+### Cloud Cost Management, version 80500
+
+* ServiceNow integration with Recommendations (CCM-11150)
+
+  Introducing ServiceNow as a ticketing tool to create tickets for recommendations. You can use either Jira or ServiceNow as your ticketing tool. You need to configure this setting at the account level on the **Default Settings** page. For more information, go to [View and apply recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations).
+
+* AWS perspectives enhancement (CCM-13914)
+
+  Introducing support for the following additional `Group By` options in AWS perspectives:
+  - Billing entity
+  - Line item type  
+  
+  For more information, go to [Analyze AWS costs by using perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws).
+
 ## August 22, 2023
 
 ### Harness Platform, version 80307

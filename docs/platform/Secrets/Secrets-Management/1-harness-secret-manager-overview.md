@@ -15,7 +15,7 @@ Harness includes a built-in Secret Management feature that enables you to store 
 
 ### Before you begin
 
-* See [Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+* Go to [Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
 ### Visual Summary
 
@@ -33,7 +33,7 @@ Harness sends only encrypted data to the Secret Manager, as follows: 
 4. The Harness Delegate uses the encrypted key and the encrypted secret and then discards them. The keys never leave the Delegate.
 
 
-:::note
+:::info note
 Any secret manager requires a running Harness Delegate to encrypt and decrypt secrets. Any delegate that references a secret requires direct access to the Secret Manager.
 
 :::
@@ -63,13 +63,13 @@ These Secret Managers store the key, perform encryption and decryption, and also
 In Community and Self-Managed Enterprise Edition accounts, Harness uses a random-key secrets store as the Harness Secret Manager.
 
 
-:::note
+:::info note
 By default, Self-Managed Enterprise Edition installations use the local MongoDB database for the default Harness Secret Manager. Harness does not recommend using the local MongoDB database. Once you have installed Self-Managed Enterprise Edition, [Add a secret manager](./5-add-secrets-manager.md). 
 
 :::
 
 
-:::note
+:::info note
 Harness does not currently support migrating secrets from the random-key secrets store. If you add secrets to the random-key secrets store, you will need to re-create them in any custom secret manager you configure later.
 
 :::

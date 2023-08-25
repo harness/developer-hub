@@ -105,7 +105,7 @@ To reference these results as expressions in other pipeline steps, click the cop
 <+pipeline.stages.stage1.spec.execution.steps.step1.output.transformMapOutcomes[1].status>
 ```
 
-You can echo them in a subsequent step, such as a [Shell Script step](../cd-general-steps/using-shell-scripts.md).
+You can echo them in a subsequent step, such as a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
 
 ## Important notes
 

@@ -30,15 +30,12 @@ If 2FA is disabled at the account level, you can still enable 2FA for your user 
 ### Set up two-factor authentication for your profile
 
 1. Click on your **User Profile** icon at the bottom-left below **Account Settings** to go to the Profile page.
-
-   ![](./static/two-factor-authentication-00.png)
-
 2. The Profile page appears.
 3. Toggle the **Two-Factor Authentication** indicator. The **Enable Two-Factor Authentication** page appears.
 4. Using your smartphone's 2FA token generator app, such as Google Authenticator, scan the QR Code and add it to the list in your app.  
 You can now see **Harness-Inc** in your 2FA token generator app, which provides authentication codes.  
 2FA token generator apps also include a method for adding a site using a Secret Key in cases where you cannot scan the QR Code. The 2FA dialog includes a Secret Key for those cases.
-5. Click **Enable**. The next time you log in by entering your username and password, you are prompted to provide the 2FA authentication code.
+5. Select **Enable**. The next time you log in by entering your username and password, you are prompted to provide the 2FA authentication code.
 6. Obtain the code from your 2FA token generator app, and enter it. You can then log into your Harness account.
 
 ### Set up account-wide two-factor authentication
@@ -62,7 +59,7 @@ To set up 2FA for all account users and groups, do the following:
 
    ![](./static/two-factor-authentication-02.png)
 
-4. Click **Go to settings** to display a QR Code and secret key that you can store to make sure your own ability to log in:  
+4. Select **Go to settings** to display a QR Code and secret key that you can store to make sure your own ability to log in:  
 ![](./static/two-factor-authentication-03.png)
 
 5. Return to **ACCOUNT SETUP** > **Authentication** to enable account-wide, two-factor authentication.
@@ -70,4 +67,4 @@ To set up 2FA for all account users and groups, do the following:
    
    ![](./static/two-factor-authentication-04.png)
 
-7. Click **Confirm**.
+7. Select **Confirm**.
