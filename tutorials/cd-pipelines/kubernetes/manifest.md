@@ -983,7 +983,7 @@ terraform destroy
 
 
 ```
-kubectl delete deployment guestbook-ui -n defauli
+kubectl delete deployment guestbook-ui -n default
 kubectl delete service guestbook-ui -n default
 ```
 
