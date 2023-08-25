@@ -20,7 +20,7 @@ import { MODULES } from "../../constants";
           description:
             "Build and test a C# (.NET Core) application.",
           link: "/tutorials/ci-pipelines/build/dotnet",
-          newDoc: true,
+          newDoc: false,
         },
         {
           title: "Go",
@@ -74,6 +74,22 @@ import { MODULES } from "../../constants";
             "Build and test an iOS or macOS application.",
           link: "/tutorials/ci-pipelines/build/ios",
           newDoc: false,
+        },
+        {
+          title: "Microsoft Windows",
+          module: MODULES.ci,
+          description:
+            "Build and test a Microsoft Windows application.",
+          link: "/tutorials/ci-pipelines/build/windows",
+          newDoc: false,
+        },
+        {
+          title: "Terraform Cloud notification triggers",
+          module: MODULES.ci,
+          description:
+            "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
+          newDoc: false,
+          link: "/tutorials/ci-pipelines/build/tfc-notification",
         },
       ],
     },
