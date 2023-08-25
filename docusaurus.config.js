@@ -202,6 +202,10 @@ const config = {
                 to: "docs/chaos-engineering",
               },
               {
+                label: "Software Engineering Insights",
+                to: "docs/software-engineering-insights",
+              },
+              {
                 label: "Continuous Error Tracking",
                 to: "docs/continuous-error-tracking",
               },
