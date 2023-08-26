@@ -22,17 +22,10 @@ helpdocs_is_published: true
 
 ## Before you begin
 
+You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
 
+You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
-### Root access requirements
-
-RP - REPLACE WITH RAW TEXT, TAKE OUT DIND REFERENCE
-
-```mdx-code-block
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
-
-<StoRootRequirements />
 
 ## SonarQube step configuration
 
@@ -150,19 +143,23 @@ import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md'
 
 #### Access Token
 
-RP - USER TOKEN -- RECOMMENDED WITH PERMISSION TO RUN SCANS AND CREATE PROJECTS
-
-IF YOU USE PROJECT TOKEN, MAKE SURE YOU HAVE ACCESS TO THAT PROJECT
-
-FOR MORE INFO, GO TO https://docs.sonarsource.com/sonarqube/latest/user-guide/user-account/generating-and-using-tokens/
-
-
 
 ```mdx-code-block
 import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
 ```
 
 <StoSettingAuthAccessToken />
+
+:::info note
+
+Harness recommends that you use a SonarQube **user** token that includes permissions to run scans and to create projects.
+
+If you use a **project** token, you must have access to the SonarQube project that you want to scan. 
+
+For more information, go to [Generating and using tokens](https://docs.sonarsource.com/sonarqube/latest/user-guide/user-account/generating-and-using-tokens/) in the SonarQube documentation. 
+
+:::
+
 
 ### Scan Tool
 
