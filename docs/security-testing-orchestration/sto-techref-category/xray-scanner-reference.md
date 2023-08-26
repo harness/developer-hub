@@ -1,10 +1,21 @@
 ---
-title: JFrog Artifactory and JFrog Xray scanner reference
-description: Image scans with Jfrog xray
+title: Jfrog Xray scanner reference
+description: Image scans with Jfrog Xray
 sidebar_position: 330
 ---
 
-You can ingest scan results from JFrog Artifactory and JFrog Xray. The standard workflow is to create a CI Build or Security Tests stage in your pipeline, add a Security step, and then use `setting:value` pairs to configure the step as specified below.
+You can ingest scan results from JFrog Xray, a software composition analyis (SCA) solution that integrates with Artifactory and identifies vulnerabilities in open-source libraries and packages used in your code.
+
+<!-- 
+
+RP INCLUDE FIRST INTRO SENTENCE
+https://jfrog.com/help/r/get-started-with-the-jfrog-platform/jfrog-xray
+
+-->
+
+The standard workflow is to create a CI Build or Security Tests stage to your pipeline, add a Security step, and then use `setting:value` pairs to configure the step as specified below.
+
+
 
 ## Before you begin
 
@@ -12,7 +23,16 @@ You can ingest scan results from JFrog Artifactory and JFrog Xray. The standard 
 
 - Harness STO supports `ingestionOnly` scans with Jfrog Xray. `orchestrationOnly` and `dataLoad` scans are not supported. 
 
-- If you need to add trusted certificates to your scan images at runtime, then you need to run the scan step with root access. 
+- For information about running Xray scans with custom SSL certificates, go to [Authenticating with RSA Keys](https://jfrog.com/help/r/jfrog-cli/authenticating-with-rsa-keys) in the JFrog documentation.
+
+<!-- 
+
+RP - NEED TO SET UP CUSTOM CERTS TO RUN XRAY SCANS
+IF YOU WANT TO RUN XRAY SCANS USING CUSTOM CERTS, REFER TO https://jfrog.com/help/r/jfrog-cli/authenticating-with-rsa-keys
+
+-->
+
+- If you need to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. 
 
   You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
