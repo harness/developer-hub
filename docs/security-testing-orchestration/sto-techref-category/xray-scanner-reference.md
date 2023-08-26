@@ -1,10 +1,10 @@
 ---
-title: Jfrog Artifact and JFrog xray scanner reference
+title: JFrog Artifactory and JFrog Xray scanner reference
 description: Image scans with Jfrog xray
 sidebar_position: 330
 ---
 
-You can ingest scan results from JFrog Artifact and Jfrog xray. The standard workflow is to create a CI Build or Security Tests stage to your pipeline, add a Security step, and then use `setting:value` pairs to configure the step as specified below.
+You can ingest scan results from JFrog Artifactory and JFrog Xray. The standard workflow is to create a CI Build or Security Tests stage in your pipeline, add a Security step, and then use `setting:value` pairs to configure the step as specified below.
 
 ## Before you begin
 
@@ -12,7 +12,7 @@ You can ingest scan results from JFrog Artifact and Jfrog xray. The standard wor
 
 - Harness STO supports `ingestionOnly` scans with Jfrog Xray. `orchestrationOnly` and `dataLoad` scans are not supported. 
 
-- You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime. 
+- If you need to add trusted certificates to your scan images at runtime, then you need to run the scan step with root access. 
 
   You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
