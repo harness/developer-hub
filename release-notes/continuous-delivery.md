@@ -79,7 +79,13 @@ This release does not include early access features.
   
   The fix handles empty arrays, and saved filters return only fields that have values.
 
-- Fixed an issue where triggers based on ECR images were fired with null values for artifact image tag and repo name. (CDS-75173)
+- Fixed an issue where ECR image based triggers based on ECR images were firing with null values the for artifact image tag and repository name. (CDS-75173)
+
+  This fix includes the following new expressions:
+  
+  - `<+trigger.artifact.source.connectorRef>` to access connectorRef in triggers
+  
+  - `<+trigger.artifact.source.imagePath>` to access imagePath in triggers 
 
 - Added the following tooltip for the Build stage: `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration`. (CDS-75080, ZD-47902) 
 
