@@ -47,11 +47,15 @@ This release does not include early access features.
   
 ### Fixed issues
 
+- Fixed an Continuous Verification issue where, when a health source returned a response with no data ( =  No Analysis), the pipeline did not retain the response timestamp.  With this fix, the pipeline retains the timestamp when a health source returns a no-data response. (OIP-762)
+
 - Fixed an issue that caused the **Pipeline Executions** page to make unnecessary API calls to a back-end service. (CDS-77401)
 
 - Fixed an issue where users could not specify runtime inputs for some advanced settings (such as the looping strategy) in step groups and step group templates. With this fix, runtime inputs are supported for all advanced step group settings. (CDS-77246, ZD-49339, ZD-49427)
 
 - Fixed a UI issue that caused some edit buttons to not appear. (CDS-76977)
+
+- Fixed an issue where adding a second Artifact Source to an AWS ASG service replaces (rather than adding to) the existing Artifact Source.  (CDS-76843, ZD-49050)
 
 - Fixed an issue where the K8s Apply step did not correctly evaluate expressions for the **Command Type** field. (CDS-76632)
 
@@ -67,6 +71,8 @@ This release does not include early access features.
 
 - Added an information banner and documnetation link to the **Synchronization Barrier** step. The referenced content highlights best practices when synchronizing deployments using barriers. (CDS-76291, ZD-48636)
 
+- Fixed an issue where the Kubernetes connector in a container step doesn't respect the delegate selector tags set at pipeline level. With this fix, the connector selects delegates specified in the pipeline rather than the connector, which is the correct behavior. (CDS-76105, ZD-48542)
+
 - Fixed a UI issue where the **Environment** tab in a Deploy stage did not display new custom variables after they were created.  (CDS-76068)
 
 - Removed the **Reconcile** option for individual input sets on the **Input Sets** page. (CDS-75845)
@@ -79,15 +85,7 @@ This release does not include early access features.
   
   The fix handles empty arrays, and saved filters return only fields that have values.
 
-- Fixed an issue where ECR image based triggers based on ECR images were firing with null values the for artifact image tag and repository name. (CDS-75173)
-
-  This fix includes the following new expressions:
-  
-  - `<+trigger.artifact.source.connectorRef>` to access connectorRef in triggers
-  
-  - `<+trigger.artifact.source.imagePath>` to access imagePath in triggers 
-
-- Added the following tooltip for the Build stage: `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration`. (CDS-75080, ZD-47902) 
+- Added the following tooltip for the Build stage: `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration`. (CDS-75080, ZD-47902, ZD-49804) 
 
 - Added a tooltip to the Build stage: `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration.` (CDS-74137)
 
@@ -106,6 +104,28 @@ This release does not include early access features.
 - Fixed an issue on the Pipeline Executions page where the Services filter didn't list all services. (CDS-73277)
 
 - Improved the error message shown in the UI if the entity type of a new version of a template is different: `Failed to save the template <NAME> because an existing template of different type has the same identifier` (CDS-73243)
+
+<!-- double-check that this appears release page before publishing: 
+
+https://harness.atlassian.net/wiki/spaces/PD/pages/21476737025/NG+Release+SAAS+August+23rd+2023+for+804xx-+Build
+
+-->
+
+- Fixed an issue where ECR image based triggers based on ECR images were firing with null values the for artifact image tag and repository name. (CDS-75173)
+
+  This fix includes the following new expressions:
+  
+  - `<+trigger.artifact.source.connectorRef>` to access connectorRef in triggers
+  
+  - `<+trigger.artifact.source.imagePath>` to access imagePath in triggers 
+
+
+
+
+
+
+
+
 
 <!-- ----------------------------------------------------------------------------------------------- -->
 
