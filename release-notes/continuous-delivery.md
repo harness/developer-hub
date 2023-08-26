@@ -65,7 +65,7 @@ This release does not include early access features.
 
 - Fixed an issue where users could not save a Manual Approval step as a template when `autoApprove : action` is set to `APPROVE` or `REJECT`.  (CDS-76350)
 
-- Added an information banner and doc link to the **Synchronization Barrier** step that highlights best practices when synchronizing deployments using barriers. (CDS-76291, ZD-48636)
+- Added an information banner and documnetation link to the **Synchronization Barrier** step. The referenced content highlights best practices when synchronizing deployments using barriers. (CDS-76291, ZD-48636)
 
 - Fixed a UI issue where the **Environment** tab in a Deploy stage did not display new custom variables after they were created.  (CDS-76068)
 
@@ -75,11 +75,11 @@ This release does not include early access features.
 
 - Fixed a filtering issue on the **Pipeline Executions** page. (CDS-75224)
   
-  When the service received empty arrays for fields in the filter, the service would add this fields in the filtering criteria with empty values thereby not returning accurate results.
+  If the service received empty arrays for fields in a filter, it added the fields to the filtering criteria with empty values, thereby not returning accurate results.
   
   The fix handles empty arrays, and saved filters return only fields that have values.
 
-- Fixed an issue where ECR image based triggers were firing off with null values for artifact image tag and repo name. (CDS-75173)
+- Fixed an issue where triggers based on ECR images were fired with null values for artifact image tag and repo name. (CDS-75173)
 
 - Added the following tooltip for the Build stage: `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration`. (CDS-75080, ZD-47902) 
 
