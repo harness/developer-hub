@@ -49,13 +49,13 @@ This release does not include early access features.
 
 - Fixed an issue that caused the **Pipeline Executions** page to make unnecessary API calls to a back-end service. (CDS-77401)
 
-- Fixed an issue where users could not specify runtime inputs for some advanced settings (such as Looping Strategy) in step groups and step-group templates. With this fix, runtime inputs are supported for all advanced step-group settings. (CDS-77246, ZD-49339, ZD-49427)
+- Fixed an issue where users could not specify runtime inputs for some advanced settings (such as the looping strategy) in step groups and step group templates. With this fix, runtime inputs are supported for all advanced step group settings. (CDS-77246, ZD-49339, ZD-49427)
 
 - Fixed a UI issue that caused some edit buttons to not appear. (CDS-76977)
 
 - Fixed an issue where the K8s Apply step did not correctly evaluate expressions for the **Command Type** field. (CDS-76632)
 
-- Fixed an issue where the reconciliation for input set templates did not check for differences in old vs. new YAML for a given input set. This was happening because there was no flag to monitor for changes in YAML strings. (CDS-76533).
+- Fixed an issue where the reconciliation for input set templates did not check for differences in old vs. new YAML for a given input set. The issue occurred because there was no flag to monitor for changes in YAML strings. (CDS-76533).
 
   This fix introduces a new `yamlDiffPresent` boolean in `InputSetYamlDiffDTO` and its relevant unit tests. The purpose of this flag is similar to validYAML, which determines whether the current YAML is valid or not.
 
@@ -69,21 +69,21 @@ This release does not include early access features.
 
 - Fixed a UI issue where the **Environment** tab in a Deploy stage did not display new custom variables after they were created.  (CDS-76068)
 
-- Removed the **Reconcile** option for individual input sets in the **Input Sets** page. (CDS-75845)
+- Removed the **Reconcile** option for individual input sets on the **Input Sets** page. (CDS-75845)
 
-- Implemented a fix to ensure that user-entered values are always populated in the **Inputs** tab on running / re-running the pipeline. (CDS-75593, ZD-48181)
+- Implemented a fix to ensure that user-entered values are always populated on the **Inputs** tab when running or rerunning a pipeline. (CDS-75593, ZD-48181)
 
-- Fixed a filtering issue in the **Pipeline Executions** page. (CDS-75224)
+- Fixed a filtering issue on the **Pipeline Executions** page. (CDS-75224)
   
   When the service received empty arrays for fields in the filter, the service would add this fields in the filtering criteria with empty values thereby not returning accurate results.
   
-  The fix will handle the empty arrays being sent and saved filters will return only fields that have values in them.
+  The fix handles empty arrays, and saved filters return only fields that have values.
 
 - Fixed an issue where ECR image based triggers were firing off with null values for artifact image tag and repo name. (CDS-75173)
 
-- Added a tooltip for Build stages to let users know `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration`. (CDS-75080, ZD-47902) 
+- Added the following tooltip for the Build stage: `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration`. (CDS-75080, ZD-47902) 
 
-- Added a tooltip for Build stages: `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration.` (CDS-74137)
+- Added a tooltip to the Build stage: `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration.` (CDS-74137)
 
 - Fixed a filtering issue when using pipeline tags in the **Pipelines** and **Pipeline Executions** pages. (CDS-73807, ZD-47148)
 
@@ -97,7 +97,7 @@ This release does not include early access features.
 
   - When a user enters a `key:""` pair in the filter tags, all the pipelines/executions with a tag pair matching `key:""` will be returned.
 
-- Fixed an issue in the Pipeline Executions page where the Services filter didn't list all services. (CDS-73277)
+- Fixed an issue on the Pipeline Executions page where the Services filter didn't list all services. (CDS-73277)
 
 - Improved the error message shown in the UI if the entity type of a new version of a template is different: `Failed to save the template <NAME> because an existing template of different type has the same identifier` (CDS-73243)
 
