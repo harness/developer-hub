@@ -70,6 +70,8 @@ For more information about self-signed certificates, delegates, and delegate env
 
 Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB.
 
+Furthermore, there is a single-line limit of 70KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`.
+
 ## Step logs disappear
 
 If step logs disappear from pipelines that are using a Kubernetes cluster build infrastructure, you must either allow outbound communication with `storage.googleapis.com` or contact [Harness Support](mailto:support@harness.io) to enable the `CI_INDIRECT_LOG_UPLOAD` feature flag.

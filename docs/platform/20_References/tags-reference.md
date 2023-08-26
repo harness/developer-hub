@@ -1,7 +1,7 @@
 ---
 title: Tags reference
 description: You can add Tags to Harness entities and then use the Tags to search for all matching entities. For example, you can add a Tag to a Harness Project and then filter the list of Projects by Tag. What a…
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: i8t053o0sq
 helpdocs_category_id: phddzxsa5y
 helpdocs_is_private: false
@@ -10,11 +10,12 @@ helpdocs_is_published: true
 
 You can add Tags to Harness entities and then use the Tags to search for all matching entities. For example, you can add a Tag to a Harness Project and then filter the list of Projects by Tag.
 
-:::note
+:::info
 
 Tags are not available for feature flags.
 
 :::
+
 ### What are Tags?
 
 Tags are simply metadata added to Harness entities. They are strings that can contain any characters.
@@ -24,6 +25,7 @@ Harness Tags are applied to entities and then used to filter them. Multiple Tags
 For example, the Tag **docs** has been added to two Projects and so a search for **doc** returns Projects with name and Tags that match:
 
 ![](./static/tags-reference-18.png)
+
 ### Limitations
 
 * [Runtime inputs](runtime-inputs.md) (`<+input>`) are not supported in Tags.
@@ -52,5 +54,4 @@ For example, here are several different references:
 
 ### Related Reference Material
 
-* [Built-in Harness Variables Reference](../12_Variables-and-Expressions/harness-variables.md)
-
+* [Built-in and custom Harness variables reference](../12_Variables-and-Expressions/harness-variables.md)

@@ -81,9 +81,7 @@ Provide authentication credentials for the connector.
 
 Authentication is required for all accounts and repos, including read-only repos. The **Connection Type** you chose in the [Details settings](#details-settings) determines the available **Authentication** methods:
 
-<!-- At 803xx release, uncomment below phrase and GH App tab -->
-
-* For **HTTP** connections, you can use **Username and Token** or **OAuth**<!--, or **GitHub App**--> authentication.
+* For **HTTP** connections, you can use **Username and Token**, **OAuth**, or **GitHub App** authentication.
 * For **SSH** connections, you must use **SSH Key** authentication.
 
 ```mdx-code-block
@@ -161,7 +159,6 @@ For more information about GitHub's deprecation of RSA support, go to the GitHub
 
 :::
 
-<!--
 ```mdx-code-block
   </TabItem>
   <TabItem value="ghapp" label="GitHub App">
@@ -172,12 +169,6 @@ You can use a GitHub App to authenticate a Harness GitHub connector. To use this
 :::note
 
 Currently, the option to use a GitHub App as the primary authentication method for a GitHub connector is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-:::caution
-
-The [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline) doesn't support GitHub connectors that use GitHub App authentication.
 
 :::
 
@@ -195,7 +186,7 @@ The [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/
    ![](../../static/git-hub-app-support-59.png)
 
 4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/Secrets/add-file-secrets).
--->
+
 ```mdx-code-block
   </TabItem>
 </Tabs>

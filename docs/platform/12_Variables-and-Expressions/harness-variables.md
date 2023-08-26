@@ -10,13 +10,12 @@ helpdocs_is_published: true
 
 This topic describes default (built-in) and custom Harness expressions, as well as the prefixes used to identify user-created variables. This list will be updated when new expressions are added to Harness.
 
-Looking for how-tos? For more information, go to [Variable Expressions How-tos](/docs/category/variables-and-expressions).
+For information about referencing variables, using expressions, and adding custom variables, go to:
 
-## Variable expression basics
+* [Variables and expressions](/docs/category/variables-and-expressions)
+* [Fixed values, runtime inputs, and expressions](../20_References/runtime-inputs.md)
 
-Let's quickly review what Harness built-in and custom variable expressions are and how they work.
-
-### What is a Harness variable expression?
+## What is a Harness variable expression?
 
 Harness variables are a way to refer to something in Harness, such as an entity name or a configuration setting. At pipeline runtime, Harness evaluates all variable expressions and replaces them with the resulting value.
 
@@ -33,7 +32,7 @@ The content between the `<+...>` delimiters is passed on to the [Java Expressio
 ```
 Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) and other steps.
 
-### Java string methods
+## Java string methods
 
 You can use all Java string methods on Harness variable expressions.
 
@@ -56,7 +55,7 @@ For example, let's use a variable `myvar` using the methods `substring` and `ind
 
 This expression evaluates to `ello`.
 
-### FQNs and expressions
+## FQNs and expressions
 
 Everything in Harness can be referenced by a Fully Qualified Name (FQN) expression.
 
@@ -76,7 +75,7 @@ When building a pipeline in Pipeline Studio, you can copy the FQN of a setting u
 
 ![](./static/harness-variables-16.png)
 
-### Stage level and pipeline level expressions
+## Stage level and pipeline level expressions
 
 You can create variables at the pipeline and stage level and reference them using the FQN expressions within their scope.
 
@@ -191,14 +190,14 @@ Value: C
 Command completed with ExitCode (0)
 ```
 
-### Input and output variables
+## Input and output variables
 
 You can reference the inputs and outputs of any part of your pipeline.
 
 * **Input variable expressions** reference the values and setting selections you made *in your pipeline*.
 * **Output variable expressions** reference *the results* of a pipeline's execution.
 
-#### Input variables in the pipeline
+### Input variables in the pipeline
 
 You can copy and reference the input settings for steps using the pipeline **Variables** panel.
 
@@ -215,7 +214,7 @@ Pipeline and stage custom variable expressions use the *variable name* to refere
 
 :::
 
-#### Input and output variable expressions in executions
+### Input and output variable expressions in executions
 
 Inputs and outputs are displayed for every part of the pipeline execution.
 
@@ -240,7 +239,7 @@ Here are the **Name** and **Value** expressions for the `podIP` setting.
   ```  
 * Value: `10.100.0.6`
 
-### Using expressions in settings
+## Using expressions in settings
 
 You can use Harness variable expressions in most settings.
 
@@ -343,6 +342,7 @@ You cannot write scripts within an expression `<+...>`. For example, the followi
 ```
 if ((x * 2) == 5) { <+pipeline.name = abc>; } else { <+pipeline.name = def>; }
 ```
+
 ### Variable names across the pipeline
 
 Variable names must be unique within the same stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
@@ -476,11 +476,12 @@ Expressions that are incorrect or cannot be evaluated using the execution data a
 
 To test an expression that isn't part of a variable (say, something in a script), you can create a temporary variable in the panel, assign the expression to it, and use Compiled Mode to debug it. 
 
-## Built-in CI codebase variables
+## CI codebase and environment variables
 
-In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a [Harness code repo connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo). Pipelines use this connector to clone the code you want to build and test. When a pipeline runs, Harness also fetches your Git details and displays them in the [Build details](/docs/continuous-integration/use-ci/viewing-builds). You can use Harness' built-in expressions to reference various codebase attributes in Harness pipelines, stages, and steps.
+You can use Harness expressions to reference various environment variables and [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) attributes in Harness CI pipelines, stages, and steps. For more information, go to:
 
-For more information, go to [Built-in CIE Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
+* [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
+* [CI environment variables reference](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var.md)
 
 ## Account
 
@@ -1789,9 +1790,3 @@ For more information migrating to NextGen, go to the following:
 - [Harness FirstGen vs Harness NextGen](https://developer.harness.io/docs/getting-started/harness-first-gen-vs-harness-next-gen)
 - [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
 - [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
-
-For more information, go to:
-
-* [Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
-* [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
-

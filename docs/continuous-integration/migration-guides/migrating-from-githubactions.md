@@ -576,7 +576,7 @@ Harness CI supports webhook, artifact, manifest and schedule triggers. The two m
 
 * [Trigger Pipelines using Git Event Payload Conditions](/docs/platform/triggers/triggering-pipelines/)
 * [Triggers](https://developer.harness.io/docs/category/triggers)
-* [Built-in CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference)
+* [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference)
 
 ```mdx-code-block
 <Tabs>
