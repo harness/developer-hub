@@ -443,8 +443,19 @@ We can refer to child execution expression in parent pipeline only via outputs u
 ### Is create-namespace option available in Harness while deploying chart?
 
 You can point to a manifest file containing just the namespace yaml. This means you can create a Kubernetes YAML file that defines only the namespace you want to use for your application. Even a shell script step would be simple enough in this case, and use a kubectl command directly. This suggests that using a shell script as a step in your deployment process to apply the namespace YAML file is straightforward. You can use the kubectl command in the shell script to create the namespace.
+
 ### Where can we download the helm chart for delegate manually and not using helm commands?
 
-The helm chart for delegate can be found at the below location:
-https://github.com/harness/delegate-helm-chart/tree/main/harness-delegate-ng
+The helm chart for delegate can be found at the below location:[here](https://github.com/harness/delegate-helm-chart/tree/main/harness-delegate-ng)
 
+### I have a custom delegate and trying to execute the script, script is executing as a root user how can I change the user 
+
+In the Delegate YAML, you need to modify the "runAsUser" field, which is currently set to 0, indicating that the script runs as the root user.
+
+### How can I list all delegates in account?
+
+You can use list delegate API: [here](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/listDelegates)
+
+### How can I revert the "externally managed" status of these user groups if they were indeed managed by SCIM earlier?
+
+If these user groups were previously provisioned via SCIM and marked as "externally managed," you can updte it by updating the "externally managed" field back to false via terraform or API.
