@@ -8,6 +8,14 @@ In Harness, a health source is a mapping that connects a Service in Harness to a
 
 This topic describes how to set up Prometheus as a health source in a monitored service.
 
+:::important
+- Prometheus queries must include filters (enclosed in curly braces) to specify the nodes or data points you want to sample.
+
+- Prometheus queries must produce a single value (scalar). To learn more about Prometheus queries, go to [QUERYING PROMETHEUS](https://prometheus.io/docs/prometheus/latest/querying/basics/).
+
+- Harness Prometheus connector and health source are compatible with Mimir, Cortex, Thanos, and VictoriaMetrics platforms.
+:::
+
 
 ## Prerequisites
 
