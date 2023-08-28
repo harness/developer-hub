@@ -92,7 +92,7 @@ The following changes apply to services:
 
 #### Service YAML updates
 
-Here is a a YAML sample that demonstrates the changes in v2.
+Here is a YAML sample that demonstrates the changes in v2.
 
 ```yaml
 service:
