@@ -459,3 +459,30 @@ You can use list delegate API: [here](https://apidocs.harness.io/tag/Delegate-Se
 ### How can I revert the "externally managed" status of these user groups if they were indeed managed by SCIM earlier?
 
 If these user groups were previously provisioned via SCIM and marked as "externally managed," you can updte it by updating the "externally managed" field back to false via terraform or API.
+
+### Possibility of renaming Project identifier
+
+Project Identifier can't be renamed as it is set when the project is created. We can always rename the Project Name but not the identifier.
+
+### This documentation https://developer.harness.io/docs/platform/delegates/manage-delegates/delegate-metrics/ shows the following metric available: io_harness_custom_metric_task_execution_time. What does it represent? Seconds? Milliseconds?
+
+The time it takes to complete a task (in seconds)
+
+### We have a user group named Ex:"Test", where the team members are given access to edit cloud providers. Even though Manage Cloud Provider option is enabled, User from that User Group are not able to edit.
+
+You will need to check the Usage Scope , as even if the User Group has permissions , the Usage scope if has a different application added apart from the ones specifed at User Group then the users won't be able to edit the Cloud Providers. 
+
+### Delegate mTLS Support
+
+Currently, mTLS is only supported for Kubernetes type delegate. We will be adding support for Helm and docker delegate in furture. 
+Harness Supports both Loose and Strict mode
+
+### How to check the edition in NextGen(SMP)
+
+You can check the version by running the below command : 
+```
+helm list -n namespace
+```
+It will show the App version which is the version of your Harness edition
+
+
