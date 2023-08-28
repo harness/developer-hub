@@ -98,7 +98,7 @@ export const AdvList: CardItem[] = [
     title: "Trigger CD Pipeline on New Artifact Version",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: <>Trigger CD Pipeline on New Artifact Version</>,
+    description: <>Enable auto pipeline triggers on every release of Artifact.</>,
     type: [docType.Documentation],
     time: "20min",
     link: "/tutorials/cd-pipelines/trigger",
