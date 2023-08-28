@@ -73,7 +73,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
 
 ## Move delegates to mTLS
 
-You can move existing delegates to mTLS.
+You can move existing delegates with an immutable image type (image tag `yy.mm.xxxxx`) to mTLS.
 
 ### Prerequisites for delegate migration
 
@@ -85,7 +85,7 @@ Make sure to meet the following prerequisites before you migrate an existing del
 
 ### Migrate a delegate to an mTLS-enabled delegate
 
-To migrate and existing delegate for mTLS support, you must update the delegate YAML. For an example Kubernetes manifest, go to [Sample Kubernetes manifest](https://github.com/harness/delegate-kubernetes-manifest/blob/main/harness-delegate.yaml).
+To migrate an existing delegate for mTLS support, you must update the delegate YAML. For an example Kubernetes manifest, go to [Sample Kubernetes manifest](https://github.com/harness/delegate-kubernetes-manifest/blob/main/harness-delegate.yaml).
 
 To migrate a delegate for mTLS support, do the following:
 
