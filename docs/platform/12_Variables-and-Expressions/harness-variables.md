@@ -92,12 +92,9 @@ The pipeline and stage level variable expressions follow these formats:
 - **Pipeline-level** variables can be accessed as a collection of key-value pairs using `<+pipeline.variables>`.
 - **Stage-level** variables can be accessed as a collection of key-value pairs using `<+stage.variables>`.
 
-> **Note:**
-> When concatenating expressions as strings, the expression value needs to be of a string type.
-> In case it isn't, you need to use the toString() method to convert it. For example, the sequenceId expression in
-> `/tmp/spe/<+pipeline.sequenceId>`
-> evaluates as an integer, so you will have to modify it to `/tmp/spe/<+pipeline.sequenceId.toString()>`
-> if you'd like to concatenate it with other strings.
+:::note
+If you wish to concatenate expressions as strings, make sure that each expression evaluates to a string. If an expression does not satisfy this condition, use the `toString()` method to convert it to a string. For example, the variable `sequenceId` in the expression `/tmp/spe/<+pipeline.sequenceId>` evaluates to an integer. When concatenating it with other string expressions, convert it to a string with the following experession: `/tmp/spe/<+pipeline.sequenceId.toString()>`.
+:::
 
 ### Expression examples
 
