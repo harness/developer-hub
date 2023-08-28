@@ -24,4 +24,4 @@ Harness supports the following setups for running scans with custom certificates
 
   You can also use this workflow if the external scanner requires additional files, such as auth script or license files, to run scans.
 
-- [Add your certificates to your local scanner images.](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/use-private-registry-for-sto-scanner-images.md) This is an option if you're using a private image registry to store and download your scanner images. 
+- [Add your certificates to your local scanner images.](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry) This is an option if you're using a private image registry to store and download your scanner images. 
