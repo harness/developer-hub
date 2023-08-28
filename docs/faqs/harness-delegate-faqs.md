@@ -1,7 +1,7 @@
 ---
 title: Harness Delegate FAQs
 description: This article addresses some frequently asked questions about Harness Delegates.
-# sidebar_position: 2
+sidebar_position: 7
 helpdocs_topic_id: ndl5p9zhih
 helpdocs_category_id: y7j7dl46ua
 helpdocs_is_private: false

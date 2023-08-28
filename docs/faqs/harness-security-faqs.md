@@ -1,7 +1,7 @@
 ---
-title: Harness security FAQs
+title: Harness Security FAQs
 description: This article addresses some frequently asked questions about Harness security features.
-# sidebar_position: 2
+sidebar_position: 9
 helpdocs_topic_id: 320domdle1
 helpdocs_category_id: y7j7dl46ua
 helpdocs_is_private: false
@@ -34,7 +34,7 @@ The set of security features that Harness provides includes the following featur
 
 Yes. All network connections from the delegate on your local network or VPC to Harness SaaS are HTTPS outbound-only.
 
-For more information, go to [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+For more information, go to [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview).
 
 ### What data does the delegate send to Harness Manager?
 
@@ -44,7 +44,7 @@ The delegate and Harness Manager (SaaS) establish a Secure WebSocket channel (We
 * **Deployment data:** The information from the API executions the delegate performs is sent to Harness Manager and shown on the **Deployments** page.
 * **Time series and log data for Continuous Verification:** The delegate connects to the verification providers you have configured and sends their data to Harness Manager for display in Harness Continuous Verification.
 
-For more information, go to [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+For more information, go to [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview).
 
 ## Harness role-based access control (RBAC)
 
@@ -251,7 +251,7 @@ When certain events happen (e.g. saving or running a Pipeline), Harness reaches 
 
 ### Can I register Harness with third-party apps?
 
-Yes, by using Harness [API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
+Yes, by using Harness [API keys](/docs/platform/automation/APIs/add-and-manage-api-keys).
 
 To integrate Harness with some third-party apps, you need to register Harness with the app and then supply a Harness API key.
 

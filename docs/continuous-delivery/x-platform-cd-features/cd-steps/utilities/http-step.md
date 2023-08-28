@@ -71,7 +71,7 @@ Another method:
 * **Key**: `variable:`
 * **Value**: `var1,var2:var3`
 
-You can copy the key and paste it in the HTTP step **Header** setting. For more information, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
+You can copy the key and paste it in the HTTP step **Header** setting. For more information, go to [Manage API keys](/docs/platform/automation/APIs/add-and-manage-api-keys).
 
 ### Input variables
 
@@ -230,7 +230,7 @@ Other common uses are:
 * Open Policy Agent (OPA) policy agent call.
 * General HTTP testing calls to the deployed application.
 
-Go to [Harness REST API quickstart](/docs/platform/Resource-Development/APIs/api-quickstart) for more information.
+Go to [Harness REST API quickstart](/docs/platform/automation/APIs/api-quickstart) for more information.
 
 ### Add the HTTP step
 

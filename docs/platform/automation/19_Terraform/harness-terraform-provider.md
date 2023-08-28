@@ -27,7 +27,7 @@ This quickstart shows you how to write your configurations in Terraform and prov
 * You must have a Personal Access Token (PAT) or a Service Access Token (SAT).
 
 
-For detailed steps on how to generate a PAT, see [Create personal API keys and tokens](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#create-personal-api-keys-and-tokens).
+For detailed steps on how to generate a PAT, see [Create personal API keys and tokens](/docs/platform/automation/APIs/add-and-manage-api-keys#create-personal-api-keys-and-tokens).
 
 ### Important
 
@@ -78,7 +78,7 @@ Enter your PAT or SAT in `platform_api_key`.
 Harness recommends using SAT to install the Harness Terraform Provider.
 :::
 
-For detailed steps on how to generate a PAT or SAT, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
+For detailed steps on how to generate a PAT or SAT, go to [Manage API keys](/docs/platform/automation/APIs/add-and-manage-api-keys).
 
 
 ```

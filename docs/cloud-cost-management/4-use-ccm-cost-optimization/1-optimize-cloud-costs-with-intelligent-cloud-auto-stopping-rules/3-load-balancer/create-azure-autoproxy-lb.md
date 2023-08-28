@@ -101,6 +101,6 @@ sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-
 16. **TLS Private Key Secret Version**: Create another secret for the private key and enter the value in this field.
 17. **Machine type**: Select the type of VM that you want to set the AutoStopping rule for.
 18. **Key Pair**: Enter the SSH key pair.
-19. **API Key**: Enter the NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/Resource-Development/APIs/api-quickstart) for more information.
+19. **API Key**: Enter the NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/automation/APIs/api-quickstart) for more information.
 20. Enable **Allocate Static IP** if you need to access the VM outside the Resource Group. Update the DNS route to point to the public IP. You don't need to enable this field it is pointing to a private IP provided the DNS resolves. For example, when the DNS resolution is done within the Resource Group.
 21. Click **Save**.
