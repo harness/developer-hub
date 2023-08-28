@@ -170,50 +170,8 @@ If you do not provide the `org_id` and the `project_id` in the configuration, th
 
 #### Add Pipeline details
 
+For an example, see the example usage at [harness_platform_pipeline](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_pipeline). 
 
-```
-resource "harness_platform_pipeline" "approval_pipeline" {  
-    identifier  = "approval_pipeline"  
-    name        = "Approval Pipeline"  
-    description = "Simple Approval Stage pipeline generated through Terraform"  
-    project_id  = "terraform_test_project"  
-    org_id      = "terraform_example_org"  
-  
-    yaml        = <<PIPETEXT  
-    pipeline:  
-        name: "Approval Pipeline"  
-        identifier: "Approval_Pipeline"  
-        projectIdentifier: "terraform_test_project"  
-        orgIdentifier: "terraform_example_org"  
-        tags: {}  
-        stages:  
-             - stage:  
-                name: Approval  
-                identifier: Approval  
-                description: ""  
-                type: Approval  
-                spec:  
-                    execution:  
-                        steps:  
-                            - step:  
-                                name: Approval Step  
-                                identifier: Approval_Step  
-                                type: HarnessApproval  
-                                timeout: 1d  
-                                spec:  
-                                    approvalMessage: Please review the following information and approve the pipeline progression  
-  
-includePipelineExecutionHistory: true  
-                                    approvers:  
-                                        minimumCount: 1  
-disallowPipelineExecutor: false  
-                                        userGroups:  
-                                            - account.testmv  
-                                    approverInputs: []  
-                    tags: {}  
-PIPETEXT  
-}
-```
 Your Pipeline now appears in the list of Pipelines within the scope of your Project.
 
 ![](./static/harness-terraform-provider-04.png)
