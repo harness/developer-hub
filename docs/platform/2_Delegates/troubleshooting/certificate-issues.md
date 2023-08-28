@@ -161,11 +161,11 @@ To resolve the exception when OpenSSL tool isn't present, do the following:
 2. Use the cURL commands below to find the Common Name (CN) servers that are missing in your CA bundle.
    
    ```
-   curl -vk <url>
+   curl -vk <YOUR_URL>
    ```
 
    ```
-   curl -vk <url>
+   curl -vk <YOUR_URL>
    ```
 
 3. Find the certificate for each CN by going to the domain in your browser or download the certificate.
@@ -232,7 +232,7 @@ keytool -list -v -keystore /path/to/truststore
 Keytool cannot import an entire PEM file with multiple certs. If a CA bundle file has multiple PEM blocks, you must divide each block into an individual file, and run the command below.
 
 ```
-keytool -noprompt -import -trustcacerts -file <path/to/cert/file> -alias <give a unique name> -keystore <path/to/truststore/file> -storepass changeit
+keytool -noprompt -import -trustcacerts -file <path/to/cert/file> -alias <UNIQUE_NAME> -keystore <path/to/truststore/file> -storepass changeit
 ```
 
 To divide a CA bundle file into individual files, run the command below.
