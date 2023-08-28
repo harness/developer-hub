@@ -120,17 +120,6 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 
 
-## Authentication Settings
-
-### Domain (_extraction_)
-
-
-```mdx-code-block
-import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
-```
-
-<StoSettingAuthDomain />
-
 ### Enforce SSL
 
 ```mdx-code-block
@@ -172,17 +161,6 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 ```
 
 <StoSettingAuthAccessToken />
-
-
-## Container Image settings
-
-### Type  (_orchestration_)
-
-```mdx-code-block
-import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
-```
-
-<StoSettingImageType />
 
 
 ### Domain (_extraction_)
@@ -243,17 +221,6 @@ import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-regio
 ```
 
 <StoSettingImageRegion />
-
-## Scan Tool Settings
-
-
-### Project Name
-
-```mdx-code-block
-import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-project-name.md';
-```
-
-<StoSettingToolProjectName />
 
 <!-- ============================================================================= -->
 <a name="tool-project-version"></a>
