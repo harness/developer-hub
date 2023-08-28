@@ -10,23 +10,13 @@ Harness supports three workflows for using custom certificates. You can add your
 
 ## When to use this workflow
 
-This workflow is recommended if ANY of the following are true:
+Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates. This workflow is recommended if either of the following are true:
 
 - You're using any delegate type other than Kubernetes or Docker, such as a Harness Cloud delegate.
 
 - You cannot access or customize your delegate directly. 
 
-- The external scanner requires additional files, such as auth script or license files, to run scans. For example, ZAP scans might require context files as [noted](#important-notes) below.
-
-The [delegate workflow](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate.md) is recommended if ALL of the following are true:
-
-- You're using a Kubernetes or Docker delegate.
-
-- You can configure the delegate directly.
-
-- The external scanner requires additional files, such as context or license files, to run scans. 
-
-If you're using a private image registry to store and download your scanner images, you can also [add your certificates to your local images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/use-private-registry-for-sto-scanner-images.md).
+You can also use this workflow if the external scanner requires additional files, such as auth script or license files, to run scans. For example, ZAP scans might require context files as [noted](#important-notes) below.
 
 ## Important notes
 
