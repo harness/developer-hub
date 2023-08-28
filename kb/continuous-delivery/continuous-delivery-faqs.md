@@ -713,3 +713,23 @@ No, It needs to be a different execution everytime.
 #### Can we select a delegate and see what steps have ran on it without going into each pipeline execution ?
 
 No, we don’t have this capability.
+
+#### Can we access the file from Harness file store as a file ?
+The contents of the file in the Harness file store can be read as ```<+fileStore.getAsString("filename")>``` . However if we need it as a file itself we will need to write it back to a file in the step and then use it:
+```
+cat>>filename.txt<<EOF
+<+fileStore.getAsString("filenameInHarnessFileStore")>
+EOF
+```
+#### Do we need to escape '{' in manifest for go templating ?
+The curly brackets are special characters for go and hence we need to escape it. If we do not escape in the manifest the templating will fail to render.
+
+#### Can we use multiple condition check in conditional execution for stages and steps ?
+We support having multiple condition check in the conditional execution. If you need to execute the stage based on two condition being true you can make use of AND operator, a sample is below:
+```<+pipeline.variables.var1>=="value1" & <+pipeline.variables.var2>=="value2"```
+
+#### Can we persist variables in the pipeline after the pipeline run is completed ?
+We do not persist the variables and the variables are only accessible during the context of execution. You can make api call to write it as harness config file and later access the Harness file or alternatively you have a config file in git where you can push the var using a shell script and later access the same config file.
+
+#### Can we access harness variable of one pipeline from another pipeline ?
+We can not access variabel from one pipeline execution in the other. We will either need to make a api call to get the detail and parse the response for the variable or else if the two pipelines are interdependent we can use the pipeline as chained pipeline stages and can have access to the variable of other pipeline while executing.
