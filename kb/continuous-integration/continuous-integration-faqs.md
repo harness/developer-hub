@@ -77,7 +77,7 @@ to a file and upload in case they can't see the full line.
 
 ### Is there a way to generate a dynamic file with some information in one stage of the pipeline and consume that file content in a different pipeline stage?
 
-You can refer to this doc : https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/
+You can refer to this in following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/)
 
 ### When we pull artifact/images do we store them on delegate?
 
