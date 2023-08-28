@@ -28,7 +28,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "9min",
-      link: "/tutorials/build-code/tfc-notification",
+      link: "/tutorials/ci-pipelines/build/tfc-notification",
     },
   ];
   */

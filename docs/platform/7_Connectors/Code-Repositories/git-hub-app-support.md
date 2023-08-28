@@ -10,13 +10,19 @@ helpdocs_is_published: true
 
 You can use a GitHub App to provide authentication for a GitHub connector. This enables API access to GitHub through the GitHub App.
 
-GitHub recommends using GitHub Apps for GitHub connectors, because GitHub Apps offer more granular permissions than other authentication methods.
+Harness recommends using GitHub Apps for GitHub connectors, because GitHub Apps offer more granular permissions than other authentication methods.
+
+The following video uses Harness Continuous Delivery to demonstrate the benefits, features, and configuration of GitHub Apps in Harness.
+
+<!-- Video:
+https://www.loom.com/share/99767c8527274a2f801045bf73223e71-->
+<docvideo src="https://www.loom.com/share/99767c8527274a2f801045bf73223e71" />
 
 This topic assumes you have an understanding of:
 
-* [Connecting to code repos with Harness.](./connect-to-code-repo.md)
-* [Creating GitHub Apps.](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps)
-* [Installing GitHub Apps.](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app)
+* [Connecting to code repos with Harness](./connect-to-code-repo.md).
+* [Creating GitHub Apps](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps).
+* [Installing GitHub Apps](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app).
 
 ## Permissions requirements
 
@@ -109,12 +115,6 @@ import TabItem from '@theme/TabItem';
 :::note
 
 Currently, the option to use a GitHub App as the primary authentication method for a GitHub connector is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-:::caution
-
-The [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline) doesn't support GitHub connectors that use GitHub App authentication.
 
 :::
 

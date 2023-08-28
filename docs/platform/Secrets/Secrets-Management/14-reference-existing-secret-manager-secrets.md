@@ -15,10 +15,10 @@ Harness does not query the secret manager for existing secrets, but you can crea
 
 ### Before you begin
 
-* See [AWS KMS Secret Manager](./7-add-an-aws-kms-secrets-manager.md)
-* See [AWS Secrets Manager](./6-add-an-aws-secret-manager.md)
-* See [Azure Key Vault Secret Manager](../../Secrets/Secrets-Management/8-azure-key-vault.md)
-* See [HashiCorp Vault Secret Manager](./12-add-hashicorp-vault.md)
+* Go to [AWS KMS Secret Manager](./7-add-an-aws-kms-secrets-manager.md)
+* Go to [AWS Secrets Manager](./6-add-an-aws-secret-manager.md)
+* Go to [Azure Key Vault Secret Manager](../../Secrets/Secrets-Management/8-azure-key-vault.md)
+* Go to [HashiCorp Vault Secret Manager](./12-add-hashicorp-vault.md)
 
 ### Option: Vault secrets
 
@@ -86,7 +86,7 @@ For a HashiCorp Vault connector at the Project scope, use the following expressi
 <+secrets.getValue("hashicorpvault://myVault/harness/testpath/example#key1")>
 ```
 
-:::note
+:::info note
 To dynamically reference secrets in HashiCorp Vault, make sure you use the expression in the following format:  
 `<+secrets.getValue()>`
 :::
@@ -132,7 +132,7 @@ For an AWS secret manager connector at the Project scope, use the following expr
 ```
 <+secrets.getValue("awssecretsmanager://exampleAWS/example")>
 ```
-:::note
+:::info note
 To dynamically reference secrets in the AWS secret manager, make sure you use the expression in the following format:
 `<+secrets.getValue()`>
 :::
@@ -173,7 +173,7 @@ For an Azure Key Vault secret manager at the Project scope, use the following ex
 ```
 
 
-:::note
+:::info note
 To dynamically reference secrets in the Azure Key Vault, make sure you use the expression in the following format:
 `<+secrets.getValue()>`
 
@@ -218,11 +218,7 @@ To reference a specific version of a secret, use the following expression:
 <+secrets.getValue("gcpsecretsmanager://exampleGCP/example/<version_number>")>
 ```
 
-:::note
+:::info note
 To dynamically reference secrets in GCP secret manager, make sure you use the expression in the following format:
 `<+secrets.getValue()>`
 :::
-
-
-
-

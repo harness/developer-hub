@@ -119,8 +119,7 @@ export default function CloudCostManagement() {
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness CCM Enterprise
-                    Plan
+                    <strong>Product version: </strong> Harness CCM Free/Team Plans
                   </span>
                 </div>
                 <div className={styles.right}>

@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-08-04T10:00
+date: 2023-08-24T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -20,17 +20,7 @@ Harness Delegate (NextGen SaaS) releases every two weeks. On the other hand, Har
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 4, 2023, Harness version 80120, Harness Delegate version 80104
-
-Harness NextGen release 80120 includes the following changes for the Harness Delegate.
-
-#### Deprecation notices
-
-**Helm 2**
-
-import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
-
-<Helmdep />
+#### Deprecation notice
 
 **Kustomize 3.4.5**
 
@@ -38,10 +28,76 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+## Latest: Harness version 80307, Harness Delegate version 80308
+
+Harness NextGen release 80307 includes the following changes for the Harness Delegate.
+
+### New features and enhancements
+
+- If you use the App Role authentication method in the Hashicorp Vault connector, you can choose to cache the vault token. The token is cached on the Harness Delegate for a time duration equal to the TTL of the vault token, with 1% leeway. 
+
+  By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
+
+- To safeguard your operations and protect against potential security vulnerabilities, Harness deprecated the Helm 2 binary from delegates with an immutable image type (image tag `23.08.80308`). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). (PL-40409)
+
+- In a monitored service, back end license checks and Terraform live monitoring are always on. (SRM-15255)
+
+   Now, monitored services can be enabled only from the user interface (through toggle buttons) and the enable API. Monitored services will always be disabled when created and during subsequent updates to them.
+
+### Early access features
+
+**GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
+
+This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+
+With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings), and you can use GitHub connectors with GitHub App authentication in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
+
+### Fixed issues
+
+- Fixed an issue where Azure webhook triggers did not work as expected because the delegate could not parse repository URLs in the format `https://{ORG}@dev.azure.com/{ORG}/{PROJECT}/_git/{REPO}`. With this fix, the delegate can parse these URLs and Azure webhook triggers work as expected. (CDS-59023)
+
+- Fixed the behavior of delegate selectors in Jira, ServiceNow and Bamboo build steps. Delegate selectors at the step, stage, and pipeline levels did not override the connector's selector. This meant that both delegate selectors were checked during step execution. With this fix, any selector at the step, stage, or pipeline level overrides the connector's selector. This matches the default behavior in all other step types. (CDS-71025)
+
+- Fixed a UI issue where pipelines, input sets, and executions were ordered incorrectly due to case-sensitive sorting of the element list. With this release, the UI now uses case-insensitive sorting when it lists pipelines, input sets, and pipeline executions. (CDS-73216)
+
+- Fixed an issue where a `<+configFile.getAsBase64(content)>` expression would get parsed incorrectly if it contained multiple lines. (CDS-73424)
+
+- Fixed an issue observed in pipeline executions with service overrides. If an encrypted config file was deleted, a log message would show the path to the deleted file. (CDS-75153, ZD-47557) 
+
+- Fixed an issue observed in Blue Green deployments of ASG services, where a repeat deployment incorrectly could result in a scaling down of instances to 0. (CDS-75560)
+
+- Fixed an issue where exceptions happened due to Kubernetes `kubectl` “connection-refused” errors. With this fix, these exceptions are now classified as connectivity errors. This gives you proper control to implement failure strategies based on errors of type Connectivity. (CDS-75777, ZD-48380)
+
+- Introduced a validation to ensure that only repos that are allowed on the basis of `repoAllowList` can be set for pipelines, InputSets, and templates while using the [Edit Git details](/docs/platform/git-experience/configure-git-experience-for-harness-entities/#edit-git-details-for-a-pipeline) feature. (CDS-75828)
+
+- Fixed an issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a <=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
+
+- Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. (CI-9122)
+
+- Fixed an issue where the token value was missing in the delegate token list API call. (PL-39790)
+
+- Fixed an issue where some records did not trigger delegate task assignments. (PL-40148)
+
+- The `publishedDelegateVersion` API incorrectly required edit permission. (PL-40322)
+
+   This issue is fixed. The `publishedDelegateVersion` API now requires only view permission.
+
+### Hotfixes
+
+#### Version 80308
+
+- In certain scenarios for Amazon ECS blue/green deployments, the green application was not rolling back. We have added functionality to handle this scenario. We now consistently roll back the green service in Amazon ECS blue/green deployments. (CDS-76795, ZD-49005)
+
+   This fix is behind the feature flag `CDS_ECS_BG_GREEN_SERVICE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the fix.
+
+## Previous releases
+
+<details>
+<summary>Expand this section to view changes to previous releases</summary>
+
+#### August 4, 2023, Harness version 80120, Harness Delegate version 80104
+
+##### What's new
 
 - Removed Helm version 3.1 from from delegates with an immutable image type (image tag `yy.mm.xxxxx`). (CDS-58892, ZD-47520, ZD-48553)
 
@@ -71,9 +127,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
    In the above example, `a` and `b` represent the respective queries:
 
-   - a = kubernetes.memory.usage{cluster-name:chi-play}
+   - a = `kubernetes.memory.usage{cluster-name:chi-play}`
 
-   - b = kubernetes.memory.total{cluster-name:chi-play}
+   - b = `kubernetes.memory.total{cluster-name:chi-play}`
 
    You can include any number of queries in the final formula using alphabetical variables, such as a, b, c, d, and so on.
 
@@ -81,17 +137,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - A new `getAzureKeyVaultClient` API is available to fetch the list of Azure vaults. This option reduces the time it takes for Harness to reflect a newly-created Azure vault. (PL-28392, ZD-44045)
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not include any early access features.
-  
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+
+##### Fixed issues
 
 -  Fixed an issue with handling of new line characters in [GitHub App private key files](/docs/platform/Connectors/Code-Repositories/git-hub-app-support) generated on Windows machines. (CI-8708)
 
@@ -158,29 +208,18 @@ This release does not include any early access features.
 
    This issue has been resolved through improved message read performance and an increased read timeout.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Hotfix release">
-```
-
-The current version does not include a hotfix release.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>Expand this section to view changes to previous releases</summary>
-
 #### August 8, 2023 Harness Delegate hotfix version 79910
 
 - The delegate stopped trying to reconnect to the WebSocket if the infrastructure experienced a network outage for over five minutes. (PL-40547)
 
-   This issue is fixed. The delegate keeps trying to reconnect to the WebSocket until it's successful.
-  
+  This issue is fixed. The delegate keeps trying to reconnect to the WebSocket until it's successful.
+                               
+#### August 7, 2023 Harness Delegate hotfix version 79909
+
+- The pipeline console did not show any logs to indicate that Kubernetes infrastructure container initialization and completion tasks were in progress.
+
+  Now, to improve your experience, the console shows logs to indicate when the task begins and ends. (CDS-74522, ZD-47616)
+
 #### July 20, 2023 Harness Delegate hotfix version 79906
 
 - Helm deployment steps timed out after the initial installation/upgrade phase, preventing the execution of a Helm rollback step. (CDS-73264)
@@ -413,19 +452,16 @@ Harness NextGen release 79306 includes the following changes for the Harness Del
 
 ##### Early access
 
-- New delegate metrics are available. This functionality is behind a feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. (PL-37908, PL-38538)
+- New delegate metrics are available. This functionality is behind a feature flag, `DYNAMIC_REQUEST_HANDLING`. (PL-37908, PL-38538)
 
    Harness captures delegate agent metrics for delegates shipped on immutable image types. The following new delegate agent metrics are available with the feature flag:
   
    | **Metric name** | **Description** |
    | :-- | :-- |
-   | `task_completed` | The number of tasks completed. |
-   | `task_failed` | The number of failed tasks. |
-   | `task_rejected` | The number of tasks rejected because of a high load on the delegate. |
-   | `delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
-   | `resource_consumption_above_threshold` | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
+   | `io_harness_custom_metric_task_rejected` | The number of tasks rejected because of a high load on the delegate. |
+   | `io_harness_custom_metric_resource_consumption_above_threshold` | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
 
-   Enable the feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST` to use the new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
+   Enable the feature flag, `DYNAMIC_REQUEST_HANDLING` to use the new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
 
 ##### Fixed issues

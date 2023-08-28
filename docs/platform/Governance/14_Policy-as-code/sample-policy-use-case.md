@@ -27,34 +27,35 @@ This topic provides sample policies you can use in policy steps and on pipeline-
 <!-- https://ecotrust-canada.github.io/markdown-toc/ -->
 
 - [Policy samples](#policy-samples)
-  * [Connector policy samples](#connector-policy-samples)
-    + [Enforce authorization type while configuring a Kubernetes connector](#enforce-authorization-type-while-configuring-a-kubernetes-connector)
-    + [Enforce access control for a specific connector at runtime while configuring the pipeline](#enforce-access-control-for-a-specific-connector-at-runtime-while-configuring-the-pipeline)
-    + [Enforce the connector naming conventions when users add a new connector](#enforce-the-connector-naming-conventions-when-users-add-a-new-connector)
-  * [Pipeline enforcement policy samples](#pipeline-enforcement-policy-samples)
-    + [Prevent other developers from deploying into a non-compliant environment](#prevent-other-developers-from-deploying-into-a-non-compliant-environment)
-    + [Enforce the container registry selected for building and publishing code](#enforce-the-container-registry-selected-for-building-and-publishing-code)
-    + [Prevent users from leveraging steps that are not allowed by the company](#prevent-users-from-leveraging-steps-that-are-not-allowed-by-the-company)
-    + [Enforce a deployment freeze via policy](#enforce-a-deployment-freeze-via-policy)
-    + [Enforce remote pipeline execution from the default branch only if the user is not part of a specific user group](#enforce-remote-pipeline-execution-from-the-default-branch-only-if-the-user-is-not-part-of-a-specific-user-group)
-  * [Feature Flag policies](#feature-flag-policies)
-    + [Prevent feature flags from being enabled in a production environment that are not configured in a stage environment](#prevent-feature-flags-from-being-enabled-in-a-production-environment-that-are-not-configured-in-a-stage-environment)
-    + [Enforce the flag types that are configured for feature flags](#enforce-the-flag-types-that-are-configured-for-feature-flags)
-    + [Deny the creation of feature flags that serve true by default](#deny-the-creation-of-feature-flags-that-serve-true-by-default)
-    + [Users want to enforce naming conventions for their feature flags](#users-want-to-enforce-naming-conventions-for-their-feature-flags)
-  * [Template policy samples](#template-policy-samples)
-    + [Enforce the use of stable templates in a pipeline](#enforce-the-use-of-stable-templates-in-a-pipeline)
-    + [Enforce an Approval step in a stage template](#enforce-an-approval-step-in-a-stage-template)
-    + [Enforce specific environments to be configured for a stage template](#enforce-specific-environments-to-be-configured-for-a-stage-template)
-    + [Enforce use of an approved stage template in a pipeline](#enforce-use-of-an-approved-stage-template-in-a-pipeline)
-    + [Enforce step templates to be used in a pipeline](#enforce-step-templates-to-be-used-in-a-pipeline)
-    + [Enforce the stage structure of a pipeline](#enforce-the-stage-structure-of-a-pipeline)
-    + [Enforce steps in a pipeline](#enforce-steps-in-a-pipeline)
-    + [Enforce step order in a pipeline](#enforce-step-order-in-a-pipeline)
-  * [Secret policy samples](#secret-policy-samples)
-    + [Ensure there are no principals in the secret secrets](#ensure-there-are-no-principals-in-the-secret-secrets)
-    + [Enforce secret naming conventions](#enforce-secret-naming-conventions)
-    + [Enforce what secrets manager can be used to save secrets.](#enforce-what-secrets-manager-can-be-used-to-save-secrets)
+	- [Connector policy samples](#connector-policy-samples)
+		- [Enforce authorization type while configuring a Kubernetes connector](#enforce-authorization-type-while-configuring-a-kubernetes-connector)
+		- [Enforce access control for a specific connector at runtime while configuring the pipeline](#enforce-access-control-for-a-specific-connector-at-runtime-while-configuring-the-pipeline)
+		- [Enforce the connector naming conventions when users add a new connector](#enforce-the-connector-naming-conventions-when-users-add-a-new-connector)
+	- [Pipeline enforcement policy samples](#pipeline-enforcement-policy-samples)
+		- [Prevent other developers from deploying into a non-compliant environment](#prevent-other-developers-from-deploying-into-a-non-compliant-environment)
+		- [Enforce the container registry selected for building and publishing code](#enforce-the-container-registry-selected-for-building-and-publishing-code)
+		- [Prevent users from leveraging steps that are not allowed by the company](#prevent-users-from-leveraging-steps-that-are-not-allowed-by-the-company)
+		- [Enforce a deployment freeze via policy](#enforce-a-deployment-freeze-via-policy)
+		- [Enforce remote pipeline execution from the default branch only if the user is not part of a specific user group](#enforce-remote-pipeline-execution-from-the-default-branch-only-if-the-user-is-not-part-of-a-specific-user-group)
+	- [Feature Flag policies](#feature-flag-policies)
+		- [Prevent feature flags from being enabled in a production environment that are not configured in a stage environment](#prevent-feature-flags-from-being-enabled-in-a-production-environment-that-are-not-configured-in-a-stage-environment)
+		- [Enforce the flag types that are configured for Feature Flags](#enforce-the-flag-types-that-are-configured-for-feature-flags)
+		- [Deny the creation of Feature Flags that serve true by default](#deny-the-creation-of-feature-flags-that-serve-true-by-default)
+		- [Users want to enforce naming conventions for their Feature flags](#users-want-to-enforce-naming-conventions-for-their-feature-flags)
+	- [Template policy samples](#template-policy-samples)
+		- [Enforce the use of stable templates in a pipeline](#enforce-the-use-of-stable-templates-in-a-pipeline)
+		- [Enforce an Approval step in a stage template](#enforce-an-approval-step-in-a-stage-template)
+		- [Enforce specific environments to be configured for a stage template](#enforce-specific-environments-to-be-configured-for-a-stage-template)
+		- [Enforce use of an approved stage template in a pipeline](#enforce-use-of-an-approved-stage-template-in-a-pipeline)
+		- [Enforce step templates to be used in a pipeline](#enforce-step-templates-to-be-used-in-a-pipeline)
+		- [Enforce the stage structure of a pipeline](#enforce-the-stage-structure-of-a-pipeline)
+		- [Enforce steps in a pipeline](#enforce-steps-in-a-pipeline)
+		- [Enforce step order in a pipeline](#enforce-step-order-in-a-pipeline)
+		- [Enforce a step is used only in specific pipelines](#enforce-a-step-is-used-only-in-specific-pipelines)
+	- [Secret policy samples](#secret-policy-samples)
+		- [Ensure there are no principals in the secret secrets](#ensure-there-are-no-principals-in-the-secret-secrets)
+		- [Enforce secret naming conventions](#enforce-secret-naming-conventions)
+		- [Enforce what secrets manager can be used to save secrets.](#enforce-what-secrets-manager-can-be-used-to-save-secrets)
 
 ## Policy samples
 
@@ -782,7 +783,7 @@ contains(arr, elem) {
 
 #### Ensure there are no principals in the secret secrets
 
-Enforce policies to ensure that the secrets configured in Harness are configured by the correct [principal](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#principal). 
+Enforce policies to ensure that the secrets configured in Harness are configured by the correct [principal](/docs/platform/role-based-access-control/rbac-in-harness#rbac-components). 
 
 Here is a sample policy that can be applied using the **On Save** event for a secret:
 

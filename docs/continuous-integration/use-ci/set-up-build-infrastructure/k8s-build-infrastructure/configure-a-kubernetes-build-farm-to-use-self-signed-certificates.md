@@ -18,6 +18,12 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 * Harness uses a UBI image for the Git Clone step. UBI reads certificates from `/etc/ssl/certs/ca-bundle.crt`.
 * Different base images use different paths as their default certificate location. For example, Alpine images use this path to recognize certificates: `/etc/ssl/certs/ca-certificates.crt` For any other image, make sure you verify the default certificate path.
 
+:::info
+
+The Kubernetes cluster build infrastructure option is only available with Harness CI Team and Enterprise plans.
+
+:::
+
 ### STO pipelines
 
 If you have STO scan steps in your pipeline, you can set up your certificates using the workflow described below. However, there are some additional steps and requirements. For more information, go to [Adding Custom Artifacts to STO Pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-artifacts-to-pipelines.md).

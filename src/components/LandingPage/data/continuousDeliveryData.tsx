@@ -104,6 +104,16 @@ export const AdvList: CardItem[] = [
     link: "/tutorials/cd-pipelines/trigger",
   },
   {
+    title: "Set up an approval step in a CD pipeline",
+    module: MODULES.cd,
+    icon: "img/icon_cv.svg",
+    description: <>Enable Harness user groups to approve or reject a stage in a CD pipeline.</>,
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "20min",
+    link: "/tutorials/cd-pipelines/approvals",
+  },
+  {
     title: "Continuous Verification with Prometheus",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",

@@ -126,6 +126,22 @@ They get cleared out in 6 hours post getting disconnected .
 
 Yes we support auto upgrade in both these type delegates . This can be acheived by following `upgrader.enabled=true` while running the install command .
 
+### Do we log the GET Calls in our Audit Logs ?
+
+We don't support Audit Trails for read API request like GET .
+
+### I have my Environment at Org/Project/Accunt Level can I git sync them ? 
+
+No, we can not at this moment .
+
+### Is there a way to exclude a delegate from taking a task?
+
+There is no way as of now to exclude delegates from picking up tasks for other pipelines.
+
+### What is the difference between the delegate YAMLs of account vs org vs project?
+
+We differentiate the delegate YAML based on the value of `DELEGATE_TOKEN`
+
 ### There are ‘Delegate Profiles’ for delegates in the CG. There are 'Startup Script' in it. What the equivalent of that in NG
 
 You can make use of INIT_SCRIPT as below while launching delegate:
@@ -335,5 +351,138 @@ There are permissions for the User group "Hide NextGen Button" under Account Per
 
 In case you are a part of multiple account and 1 account has SAML login and other has Username/Password. User must make sure that the SAML account is set as default account, else it wont work with SAML login as the login mechanism of the default account is taken into consideration. 
 
+
+### Are delegate tokens stored in MongoDB?
+
+Yes, the delegate tokens are stored in MongoDB
+
+### Should we store the token that hasn't been generally available yet in the secret manager?
+
+No, we don't use the customer secret manager to encrypt delegate tokens. Rather than storing the token in plain text, we leverage Harness' internal encryption mechanism. This mechanism enables us to store the token's encrypted value in the database. This approach enhances security and mitigates potential risks associated with storing sensitive information.
+
+### Do we have any static limit in NG like CG(pipeline/service creation etc)?
+
+No, we don't have limit on pipeline creation, we do have limit for entities creation for free/community tier, but no limits for enterprise.
+
+### Is there a limit to the number of triggers a pipeline can have?
+
+There is no limit on number of triggers for pipeline.
+
+### Can we raise the parallel stage limit for a customer?
+
+These limits are important for the stability of our systems, the limit is set at 30 for parallel stages for enterprise customer.
+
+### do we have the ability in NG to alert/notify when a delegate is down?
+
+No we don't have the ability as of now.
+
+### I am unable to delete the connector as its referenced by an entity but the entity is no longer present.
+
+This can be easily acheived by enabling Force Delete option in default settings.
+
+### What is the convention of creating a default token for delegate ?
+
+The default token is named using the convention of level at which it is being called for eg `default_token/org/project`
+
+### Can the delegate token be deleted ?
+
+The delegate token cannot be deleted it can be only revoked and the revoked tokens get deleted in 30 days.
+
+### When we add a delegate tag via a api why that tag disappears when the delegate is restarted?
+
+The delegate tags disapper as it will not be there in original delegate yaml which was used to start delegate.
+
+### My delegate is restarting and in logs this is coming up "Failed to find field for io.kubernetes.client.openapi.models.V1JSONSchemaProps.x-kubernetes-list-map-keys"
+
+You should create the delegate with the minimum recommened resources to solve this issue.
+
+### Is there a functionality to auto accept invite for username/password login?
+
+It's present for saml based login because authentication is taken care by SAML provider. In password need login we need the user to create a password in Harness.
+
+### Do we have documentation for installing a custom certificate in a K8-based delegate?
+
+Yes we can install custom certificates on K8-Based Delegate, refer to this [Documentation](https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
+
+### What happens with the rejected tasks in delegate ?
+
+Delegate reject tasks or fail to acquire tasks when CPU and memory reach above a certain threshold if flag `DYNAMIC_REQUEST_HANDLING` is set as true in the yaml.
+
+### Can we set the delegate to reject new tasks if x% of memory is being consumed?
+
+Yes you can choose to specify what threshold to reject the task using the flag `DELEGATE_RESOURCE_THRESHOLD`, otherwise, the  default value is 70%.
+
+### What is the behavior when DYNAMIC_REQUEST_HANDLING is set to false or not set at all when memory reaches 100% ?
+
+ It will not try to acquire any task. Once the resource level goes down it will start accepting tasks again. There will be no crash of delegates or shut down of delegates during this case.
+
+### If project level users, does not have access to account level secrets, they should not be able to access it. What could be done so that project level user won't be able to access account level secrets? How is it Handled by RBAC while using expressions?
+
+There is a feature flag `PIE_USE_SECRET_FUNCTOR_WITH_RBAC` when enabled can help you acheive the same.
+
+### How can we prevent users with project scope access to account-level secrets?
+
+This can be changed by modifying the role bindings of "All Account Users" user group and assign any other Role and ResourceGroup as per their need.
+
+### Do we have support for auto-upgrade of delegate for docker type ?
+
+No, we don't have auto-upgrade for docker delegate, but you can update your docker delegate image once the newer version is released by Harness 
+
+### Do we have rate limit For FirstGen, exporting deployment logs? Can this be removed or modified per account?
+
+Yes , we do have rate limits, more information can be read over here [Documentation](https://developer.harness.io/docs/platform/rate-limits). We cannot remove rate limits per account , but you can always request for an increase.
+
+### Is there a way to get a secret as base64 encoded?
+
+No there isn't any such support for getting secrets as base64, but you can store the value as base64 encoded secret and then get the value using the expression `secrets.getValue("my_secret")`.
+
+### In pipeline chaining, Is it possible to reference a child's variables, in the parent pipeline without using outputs?
+
+We can refer to child execution expression in parent pipeline only via outputs using the following expression `<+pipeline.stages.child.pipeline.stages.b_stage.spec.artifacts.primary.tag>`.
+
+### Is create-namespace option available in Harness while deploying chart?
+
+You can point to a manifest file containing just the namespace yaml. This means you can create a Kubernetes YAML file that defines only the namespace you want to use for your application. Even a shell script step would be simple enough in this case, and use a kubectl command directly. This suggests that using a shell script as a step in your deployment process to apply the namespace YAML file is straightforward. You can use the kubectl command in the shell script to create the namespace.
+
+### Where can we download the helm chart for delegate manually and not using helm commands?
+
+The helm chart for delegate can be found at the below location:[here](https://github.com/harness/delegate-helm-chart/tree/main/harness-delegate-ng)
+
+### I have a custom delegate and trying to execute the script, script is executing as a root user how can I change the user 
+
+In the Delegate YAML, you need to modify the "runAsUser" field, which is currently set to 0, indicating that the script runs as the root user.
+
+### How can I list all delegates in account?
+
+You can use list delegate API: [here](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/listDelegates)
+
+### How can I revert the "externally managed" status of these user groups if they were indeed managed by SCIM earlier?
+
+If these user groups were previously provisioned via SCIM and marked as "externally managed," you can updte it by updating the "externally managed" field back to false via terraform or API.
+
+### Possibility of renaming Project identifier
+
+Project Identifier can't be renamed as it is set when the project is created. We can always rename the Project Name but not the identifier.
+
+### This documentation https://developer.harness.io/docs/platform/delegates/manage-delegates/delegate-metrics/ shows the following metric available: io_harness_custom_metric_task_execution_time. What does it represent? Seconds? Milliseconds?
+
+The time it takes to complete a task (in seconds)
+
+### We have a user group named Ex:"Test", where the team members are given access to edit cloud providers. Even though Manage Cloud Provider option is enabled, User from that User Group are not able to edit.
+
+You will need to check the Usage Scope , as even if the User Group has permissions , the Usage scope if has a different application added apart from the ones specifed at User Group then the users won't be able to edit the Cloud Providers. 
+
+### Delegate mTLS Support
+
+Currently, mTLS is only supported for Kubernetes type delegate. We will be adding support for Helm and docker delegate in furture. 
+Harness Supports both Loose and Strict mode
+
+### How to check the edition in NextGen(SMP)
+
+You can check the version by running the below command : 
+```
+helm list -n namespace
+```
+It will show the App version which is the version of your Harness edition
 
 

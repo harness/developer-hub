@@ -55,6 +55,8 @@ Select the ServiceNow **Ticket Type**. Use the same type as the ticket you crea
 
 Enter the ServiceNow **Ticket Number**.
 
+In **Retry Interval**, set how long the step should wait to fetch details again for calculating Approval or Rejection criteria.
+
 ### Step 2: Set Approval Criteria
 
 The **Approval Criteria** in the step determines if the Pipeline or stage is approved or rejected. Define the approval criteria using the ServiceNow status items.
@@ -110,8 +112,6 @@ For example, `<+ticket.state.displayValue> == "New"` in the Approval Criteria,
 `state` is a ticket field. You can use any ticket field.
 
 ## Custom table support
-
-:::
 
 For details, go to **Custom table support** in [Create ServiceNow tickets in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages#custom-table-support).
 

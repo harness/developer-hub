@@ -10,13 +10,12 @@ helpdocs_is_published: true
 
 This topic describes default (built-in) and custom Harness expressions, as well as the prefixes used to identify user-created variables. This list will be updated when new expressions are added to Harness.
 
-Looking for how-tos? For more information, go to [Variable Expressions How-tos](/docs/category/variables-and-expressions).
+For information about referencing variables, using expressions, and adding custom variables, go to:
 
-## Variable expression basics
+* [Variables and expressions](/docs/category/variables-and-expressions)
+* [Fixed values, runtime inputs, and expressions](../20_References/runtime-inputs.md)
 
-Let's quickly review what Harness built-in and custom variable expressions are and how they work.
-
-### What is a Harness variable expression?
+## What is a Harness variable expression?
 
 Harness variables are a way to refer to something in Harness, such as an entity name or a configuration setting. At pipeline runtime, Harness evaluates all variable expressions and replaces them with the resulting value.
 
@@ -31,9 +30,9 @@ The content between the `<+...>` delimiters is passed on to the [Java Expressio
 ```
 <+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"
 ```
-Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) and other steps.
+Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) and other steps.
 
-### Java string methods
+## Java string methods
 
 You can use all Java string methods on Harness variable expressions.
 
@@ -56,7 +55,7 @@ For example, let's use a variable `myvar` using the methods `substring` and `ind
 
 This expression evaluates to `ello`.
 
-### FQNs and expressions
+## FQNs and expressions
 
 Everything in Harness can be referenced by a Fully Qualified Name (FQN) expression.
 
@@ -76,7 +75,7 @@ When building a pipeline in Pipeline Studio, you can copy the FQN of a setting u
 
 ![](./static/harness-variables-16.png)
 
-### Stage level and pipeline level expressions
+## Stage level and pipeline level expressions
 
 You can create variables at the pipeline and stage level and reference them using the FQN expressions within their scope.
 
@@ -92,6 +91,10 @@ The pipeline and stage level variable expressions follow these formats:
   - **Use anywhere in the pipeline:** Use this option to reference the input anywhere in the pipeline. The format is `<+pipeline.stages.STAGE_NAME.VAR_NAME>`.
 - **Pipeline-level** variables can be accessed as a collection of key-value pairs using `<+pipeline.variables>`.
 - **Stage-level** variables can be accessed as a collection of key-value pairs using `<+stage.variables>`.
+
+:::note
+If you wish to concatenate expressions as strings, make sure that each expression evaluates to a string. If an expression does not satisfy this condition, use the `toString()` method to convert it to a string. For example, the variable `sequenceId` in the expression `/tmp/spe/<+pipeline.sequenceId>` evaluates to an integer. When concatenating it with other string expressions, convert it to a string with the following expression: `/tmp/spe/<+pipeline.sequenceId.toString()>`.
+:::
 
 ### Expression examples
 
@@ -186,14 +189,14 @@ Value: C
 Command completed with ExitCode (0)
 ```
 
-### Input and output variables
+## Input and output variables
 
 You can reference the inputs and outputs of any part of your pipeline.
 
 * **Input variable expressions** reference the values and setting selections you made *in your pipeline*.
 * **Output variable expressions** reference *the results* of a pipeline's execution.
 
-#### Input variables in the pipeline
+### Input variables in the pipeline
 
 You can copy and reference the input settings for steps using the pipeline **Variables** panel.
 
@@ -210,7 +213,7 @@ Pipeline and stage custom variable expressions use the *variable name* to refere
 
 :::
 
-#### Input and output variable expressions in executions
+### Input and output variable expressions in executions
 
 Inputs and outputs are displayed for every part of the pipeline execution.
 
@@ -235,7 +238,7 @@ Here are the **Name** and **Value** expressions for the `podIP` setting.
   ```  
 * Value: `10.100.0.6`
 
-### Using expressions in settings
+## Using expressions in settings
 
 You can use Harness variable expressions in most settings.
 
@@ -338,9 +341,10 @@ You cannot write scripts within an expression `<+...>`. For example, the followi
 ```
 if ((x * 2) == 5) { <+pipeline.name = abc>; } else { <+pipeline.name = def>; }
 ```
+
 ### Variable names across the pipeline
 
-Variable names must be unique within the same stage. You can use same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
+Variable names must be unique within the same stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
 
 ### Hyphens in variable names
 
@@ -358,9 +362,20 @@ This also works for nested expressions. For example:
 
 ### Variable expression name restrictions
 
-A variable name is the name in the variable expression, such as `foo` in `<+stage.variables.foo>`.
+A variable name is a name in the variable expression, such as `foo` in `<+stage.variables.foo>`.
 
-Variable names may only contain `a-z, A-Z, 0-9, _`. They cannot contain hyphens or dots.
+Variable names may only contain `a-z, A-Z, 0-9, _, ., -, and $`. A variable name must start with any character from `a-z, A-Z, or _`.
+
+Here is an example Bash script that demonstrates how to utilize dots (`.`) and hyphens (`-`) in variable names:
+
+```
+  echo <+pipeline.variables.get("pipeline-var")>
+  echo <+pipeline.stages.custom.variables.get("stage-var")>
+  echo <+pipeline.variables.get("pipeline.var")>
+  echo <+pipeline.stages.custom.variables.get("stage.var")>
+```
+
+To access any custom variable with a dot (`.`) or a hyphen (`-`) in its name, you must use `.get("VARIABLE_NAME")`.
 
 Certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
 
@@ -444,35 +459,28 @@ For example, instead of `<+pipeline.variable.var1>_suffix`, use these syntaxes:
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
 - `<+<+pipeline.variables.var1> + "_suffix">` 
 
+## Debugging expressions
 
-## Built-in CIE codebase variables reference
+:::info note
 
-In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
+This feature is currently behind the feature flag `PIE_EXPRESSION_PLAYGROUND`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-Harness also retrieves your Git details and presents them in your build stage once a pipeline is run.
+:::
 
-Using Harness built-in expressions, you can refer to the various attributes of your codebase in Harness steps and settings.
+An easy way to debug expressions in your pipeline is to use Compiled Mode in your **Variables** panel. You can enable this mode using a radio button at the top of the **Variables** Panel. When Compile Mode is turned on, all of the expressions in the panel are compiled and their values are displayed. By default, the compilation happens against the pipeline's latest execution. You can change this by selecting from a displayed list of previous executions. 
 
-Here is a simple example of a Shell Script step echoing some common codebase variable expressions.
+![](./static/expression-evaluator-screen.png)
 
+Expressions that are incorrect or cannot be evaluated using the execution data are highlighted in the **Variable** values column. You can switch the panel back to normal mode and correct the expression. 
 
-```
-echo <+codebase.commitSha>  
-echo <+codebase.targetBranch>  
-echo <+codebase.sourceBranch>  
-echo <+codebase.prNumber>  
-echo <+codebase.prTitle>  
-echo <+codebase.commitRef>  
-echo <+codebase.repoUrl>  
-echo <+codebase.gitUserId>  
-echo <+codebase.gitUserEmail>  
-echo <+codebase.gitUser>  
-echo <+codebase.gitUserAvatar>  
-echo <+codebase.pullRequestLink>  
-echo <+codebase.pullRequestBody>  
-echo <+codebase.state>
-```
-For more information, go to [Built-in CIE Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
+To test an expression that isn't part of a variable (say, something in a script), you can create a temporary variable in the panel, assign the expression to it, and use Compiled Mode to debug it. 
+
+## CI codebase and environment variables
+
+You can use Harness expressions to reference various environment variables and [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) attributes in Harness CI pipelines, stages, and steps. For more information, go to:
+
+* [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
+* [CI environment variables reference](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var.md)
 
 ## Account
 
@@ -634,7 +642,7 @@ The pipeline level delegate selectors selected via runtime input.
 
 ## Deployment, pipeline, stage, and step status
 
-Deployment status values are a Java enum. The list of values can be seen in the deployments **Status** filter:
+Deployment status values are a Java enum. You can see the list of values in the deployments **Status** filter:
 
 ![](./static/harness-variables-27.png)
 
@@ -834,7 +842,11 @@ Resolves to a boolean value to indicate whether the GitOps option is enabled (tr
 
 ![](./static/harness-variables-37.png)
 
-For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart).
+For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart).
+
+### <+serviceVariableOverrides.VARIABLE_NAME>
+
+Override a service variable during the execution of a step group. This provides significant flexibility and control over your pipelines. For more information, go to [Override service variables in step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/#override-service-variables-in-step-groups)
 
 ## Manifest
 
@@ -1302,7 +1314,7 @@ repeat:
 ```
 ![](./static/harness-variables-48.png)
 
-For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/run-a-script-on-multiple-target-instances).
+For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances).
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
@@ -1530,7 +1542,7 @@ Consequently, you can only use `${HARNESS_KUBE_CONFIG_PATH}` when you are using 
 
 If you are running the script using an in-cluster delegate with the **Use the credentials of a specific Harness Delegate** credentials option, then there are no credentials to store in a kubeconfig file since the Delegate is already an in-cluster process.
 
-You can use this variable in a [Shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step to set the environment variable at the beginning of your kubectl script:
+You can use this variable in a [Shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step to set the environment variable at the beginning of your kubectl script:
 
 `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`
 
@@ -1777,9 +1789,3 @@ For more information migrating to NextGen, go to the following:
 - [Harness FirstGen vs Harness NextGen](https://developer.harness.io/docs/getting-started/harness-first-gen-vs-harness-next-gen)
 - [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
 - [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
-
-For more information, go to:
-
-* [Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
-* [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
-

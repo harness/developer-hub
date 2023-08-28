@@ -16,12 +16,9 @@ These steps assume you have an understanding of the [Harness Secret Manager](/do
 
 Create a [text secret](/docs/platform/Secrets/add-use-text-secrets) at the account level that contains the content of your `settings.xml` file.
 
-You need the `Account: Secrets: Create/Edit/View` permission for the Harness Platform to be able to do this. For more information, go to the [Permission Reference](/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference).
+You need the `Account: Secrets: Create/Edit/View` permission for the Harness Platform to be able to do this. For more information, go to the [Permission Reference](/docs/platform/role-based-access-control/permissions-reference).
 
 1. Go to **Account Settings**, select **Account Resources**, and then select **Secrets**.
-
-   ![](./static/modify-and-override-build-settings-before-a-build-08.png)
-
 2. Select **New Secret**, and then select **Text**.
 1. Enter a **Secret Name**, such as `settingsXML`. Take note of the **ID**. You need it to reference the secret in your pipeline.
 4. In **Secret Value**, paste the XML settings content from your `settings.xml` file.

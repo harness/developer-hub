@@ -1,3 +1,5 @@
+If you use a scanner that isn't listed in the following table, you can still ingest your scan results into STO. For a full description of the workflow, go to [Ingest Results from Custom or Unsupported Scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md). 
+
 <table>
     <tr>
         <th>Scan Mode</th>

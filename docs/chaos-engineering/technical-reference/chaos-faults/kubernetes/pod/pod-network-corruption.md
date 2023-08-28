@@ -65,12 +65,12 @@ Pod network corruption:
       </tr> 
       <tr>
         <td> DESTINATION_IPS </td>
-        <td> Comma-separated IP addresses of the services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted. If this value is not provided, the fault induces network chaos for all IPs or destinations.  </td>
+        <td> Comma-separated IP addresses and ports of the services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted. If this value is not provided, the fault induces network chaos for all IPs or destinations.  </td>
         <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-corruption#destination-ips-and-destination-hosts">destination IPS</a>.</td>
       </tr>  
       <tr>
         <td> DESTINATION_HOSTS </td>
-        <td> DNS names or FQDN names of the services whose accessibility is impacted. </td>
+        <td> DNS names or FQDN names of the services and ports whose accessibility is impacted </td>
         <td> If this value is not provided, the fault induces network chaos for all IPs and destinations or DESTINATION_IPS if already defined. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-corruption#destination-ips-and-destination-hosts">destination hosts</a>.</td>
       </tr>
       <tr>
@@ -135,10 +135,12 @@ spec:
 
 ### Destination IPs and destination hosts
 
-Default IPs and hosts whose traffic is interrupted due to the network faults. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variabes, respectively.
+Default IPs and hosts whose traffic is interrupted due to the network faults. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
 
-- `DESTINATION_IPS`: It contains the IP addresses of the services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
-- `DESTINATION_HOSTS`: It contains the DNS names or FQDN names of the services whose accessibility is impacted.
+- `DESTINATION_IPS`: It contains the IP addresses and ports of the services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
+- `DESTINATION_HOSTS`: It contains the DNS names or FQDN names of the services and ports whose accessibility is impacted.
+
+<b>NOTE:</b> Ports can be specified by using a pipe (|) as a separator. While providing ports is optional, omitting them will affect all ports associated with the destination IPs and hosts
 
 The following YAML snippet illustrates the use of these environment variables:
 
@@ -164,10 +166,10 @@ spec:
         env:
         # supports comma separated destination ips
         - name: DESTINATION_IPS
-          value: '8.8.8.8,192.168.5.6'
+          value: '8.8.8.8,192.168.5.6|80|8080'
         # supports comma separated destination hosts
         - name: DESTINATION_HOSTS
-          value: 'nginx.default.svc.cluster.local,google.com'
+          value: 'nginx.default.svc.cluster.local|80,google.com'
         - name: TOTAL_CHAOS_DURATION
           value: '60'
 ```

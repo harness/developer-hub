@@ -101,12 +101,12 @@ Under GCP KMS Credentials File, click **Create or Select a Secret**. You can cre
 
 Click **Save** and then **Continue**.
 
-### Setup Delegates
+### Set up delegates
 
-In **Delegates** **Setup**, use [**Selectors**](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** that you want this Connector to use. Click **Save and Continue.**
+In **Delegates** **Setup**, use [**Selectors**](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) to select any specific delegates that you want this Connector to use. Click **Save and Continue.**
 
 ### Test Connection
 
-In **Connection** **Test**, click **Finish** after your connection is successful**.**
+In **Connection Test**, click **Finish** after your connection is successful**.**
 
 ![](../static/add-google-kms-secrets-manager-70.png)

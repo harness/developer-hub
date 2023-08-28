@@ -143,7 +143,7 @@ A Build deployment runs a build process, such as a Jenkins job that creates a WA
 
 Build deployments in CD stages are not part of Harness Continuous Integration (CI). Harness CI performs extensive code testing, compiling, and artifact registration.
 
-Build deployments in CD stages are a way to perform standard job runs without using Harness CI. For an example, go to [Run Jenkins jobs in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines/).
+Build deployments in CD stages are a way to perform standard job runs without using Harness CI. For an example, go to [Run Jenkins jobs in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-jenkins-jobs-in-cd-pipelines).
 
 :::
 

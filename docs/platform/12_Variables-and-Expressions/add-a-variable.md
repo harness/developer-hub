@@ -25,7 +25,7 @@ Harness include many built-in variables for obtaining information like artifact 
 ## Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
-* Make sure you have the required [permissions](../4_Role-Based-Access-Control/9-add-manage-roles.md) on **Variables** to add and manage variables.
+* Make sure you have the required [permissions](../role-based-access-control/add-manage-roles) on **Variables** to add and manage variables.
   
   ![](./static/add-a-variable-00.png)
 
@@ -44,14 +44,12 @@ In the following illustration, the variables in **Common To Pipelines** are acco
 
 ## Add account, org, and project variables
 
-You can add a variable to the account, organization, or project [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
+You can add a variable to the account, organization, or project [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 ### Account
 
 1. In Harness, select **Account Settings**.
 2. Select **Account Resources**, and then select **Variables**.
-   
-   <docimage path={require('./static/add-a-variable-02.png')} width="60%" height="60%" title="Click to view full size image" />  
 3. Select **New Variable**. The **Add Variable** settings appear.
   
    <docimage path={require('./static/add-a-variable-03.png')} width="30%" height="30%" title="Click to view full size image" />  
@@ -159,7 +157,7 @@ The expression to reference **Project** scope variables is `<+variable.VARIABLE_
 Let's add the variable in a pipeline.
 
 1. In Harness, go to a pipeline in the same org as the variable you created.
-2. In a stage **Execution** section, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step and reference the variables:
+2. In a stage **Execution** section, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step and reference the variables:
 
 
 ```

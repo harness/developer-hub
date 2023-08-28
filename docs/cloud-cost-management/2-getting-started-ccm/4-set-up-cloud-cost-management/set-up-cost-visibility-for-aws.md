@@ -74,21 +74,21 @@ Perform the following steps to connect CCM to the AWS account.
 <Tabs queryString="tab-number">
 <TabItem value="4" label="From Account Settings">
 ```
-1. Go to **Account Resources** > **Connectors**.
-2. Select **+ New Connector**.
-3. Under **Cloud Costs**, select **AWS**.
+2. Go to **Account Resources** > **Connectors**.
+3. Select **+ New Connector**.
+4. Under **Cloud Costs**, select **AWS**.
 ```mdx-code-block
 </TabItem>
 <TabItem value="5" label="From Cloud Costs">
 ```
-1. Go to **Setup** > **Cloud Integration**.  
-2. Select **New Cluster/Cloud account**.
-3. Select **AWS**.
+2. Go to **Setup** > **Cloud Integration**.  
+3. Select **New Cluster/Cloud account**.
+4. Select **AWS**.
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
-2. Perform the following tasks in the **AWS Connector** wizard.
+5. Perform the following tasks in the **AWS Connector** wizard.
 
 ### Overview
 
@@ -200,8 +200,8 @@ Harness CCM also provides the ability to create connectors via API using a Stack
 
 ### Create a Service Account and API key in Harness
 
-1. At the Account level, [create a Service Account](/docs/platform/User-Management/add-and-manage-service-account#create-a-service-account) with the **Admin** role for **All Account Level Resources** or **All Resources Including Child Scopes**.
-2. [Create a Service Account Token](/docs/platform/User-Management/add-and-manage-service-account#create-a-service-account). Save the API Key, which will be used when creating AWS connectors via the API below.
+1. At the Account level, [create a service account](/docs/platform/role-based-access-control/add-and-manage-service-account) with the **Admin** role for **All Account Level Resources** or **All Resources Including Child Scopes**.
+2. [Create a service account token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#create-service-account-api-keys-and-tokens). Save the API Key, which will be used when creating AWS connectors via the API below.
 
 ### Create a StackSet in AWS
 

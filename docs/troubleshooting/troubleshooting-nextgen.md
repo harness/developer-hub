@@ -51,6 +51,7 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
   - [zsh: no matches found](#zsh-no-matches-found)
   - [User does not have "Deployment: execute" permission](#user-does-not-have-deployment-execute-permission)
 - [Continuous delivery](#continuous-delivery)
+  - [Error with release name too long](#error-with-release-name-too-long)
   - [Error in log when there is no error](#error-in-log-when-there-is-no-error)
 - [Continuous integration](#continuous-integration)
 - [Helm](#helm)
@@ -388,7 +389,7 @@ Error messages of the form `User does not have "Deployment: execute" permission`
 
 ![](./static/troubleshooting-nextgen-01.png)
 
-To resolve this, see [Add and manage roles](../platform/4_Role-Based-Access-Control/9-add-manage-roles.md).
+To resolve this, see [Manage roles](../platform/role-based-access-control/add-manage-roles).
 
 ### Continuous delivery
 
@@ -633,7 +634,7 @@ For more information about SAML SSO configuration with Azure, see [Single sign-o
 
 ### Shell scripts
 
-This section covers common problems experienced when using a [Shell script](../continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts.md) step.
+This section covers common problems experienced when using a [Shell script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step.
 
 #### FileNotFoundExeption inside shell script execution task
 

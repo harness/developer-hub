@@ -4,12 +4,6 @@ description: Connect to a Terraform Cloud/Enterprise instance and run your works
 sidebar_position: 9
 ---
 
-:::note
-
-Currently, Terraform Cloud support is behind the feature flag `CDS_TERRAFORM_CLOUD`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 In addition to running Terraform configuration files locally on the Harness Delegate, Harness supports running Terraform Cloud and Enterprise workspaces.
 
 This topic explains how to run your Terraform Cloud and Enterprise workspaces in Harness CD stages.

@@ -5,6 +5,8 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
 import { getCertLevel } from "./LandingPage";
+import DeveloperCertificationReviewGuide from "./data/ff-certification-developer-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/ff-certification-developer-exam-details.md";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -60,8 +62,8 @@ export default function FeatureFlags() {
           </div>
           <h1>Feature Flags</h1>
           <div>
-          Drastically reduce rollbacks, deploy faster with less risk, 
-          spend more time building and coding, and less time fixing production with Progressive Delivery. 
+            Drastically reduce rollbacks, deploy faster with less risk,
+            spend more time building and coding, and less time fixing production with Progressive Delivery.
           </div>
         </div>
         <div className={styles.right}>
@@ -119,21 +121,43 @@ export default function FeatureFlags() {
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness FF Enterprise
-                    Plan
+                    <strong>Product version: </strong> Harness FF Free/Team Plans
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Coming Soon...</h3>
+                  <h3>Review Study Guide (BETA)</h3>
                   <div className={styles.desc}>
-                    Assess key technical job functions and advanced skills in
-                    design, implementation and management of FF.
+                    Assesses the fundamental skills to progressivly deploy/toggle your applications with FF projects.
+                  </div>
+                  <DeveloperCertificationReviewGuide />
+                  <div className={styles.btnContainer}>
+                    <Link href="#">
+                      <button className={styles.moreDetails}>
+                        Register for Exam
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Developer Exam Details */}
+          <div className={styles.examDetails}>
+            <h2 id="exam-details">Exam Details (BETA)</h2>
+            <div className={styles.examDetailsCard}>
+              <DeveloperCertificationExamDetails />
+              <div className={styles.btnContainer}>
+                <Link href="#">
+                  <button className={styles.moreDetails}>
+                    Register for Exam
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
+
         {/* Administrator Tab Content */}
         <div
           className={clsx(

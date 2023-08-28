@@ -48,6 +48,7 @@ import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported
 * Whenever you create a trigger for the first time, Harness recommends submitting a tag or pushing an artifact to verify its functionality. By doing this, the trigger will execute and the pipeline will run as expected when subsequent tags are pushed.
 * Whenever a trigger is created or updated, it takes about five to ten minutes for the polling job to start, and for the trigger to be in a working state. Harness recommends that you wait for five to ten minutes after a trigger is created or updated to push the artifact. 
 * The polling stops when you disable a trigger. Artifact polling restarts after reenabling the trigger. Harness recommends that you submit a tag or push an artifact and verify the flow as this is treated as a new polling job.
+* Due to a Docker API limitation, image build numbers/tags are always listed in lexical order. To ensure that executions are triggered with the image pushed last, a best practice is to create build numbers or tags that can be sorted lexically using their creation date. Using this method, higher build numbers are assigned for higher creation dates. This ensures that the image pushed last is used when more than one image is pushed over a short period of time, such as less than 5 minutes.
 
 Familiarize yourself with Harness CD pipelines, such as the one you create in the [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 

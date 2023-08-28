@@ -361,13 +361,7 @@ The **Backend Configuration** section contains the [remote state](https://www.te
 
 You can use an inline or remote state file.
 
-### Using a Remote State File
-
-:::note
-
-Currently, remote state file support is behind the feature flag `TERRAFORM_REMOTE_BACKEND_CONFIG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
+### Using a remote Backend Config File
 
 1. In Backend Configuration, select **Remote**.
 2. Click **Specify Backend Config File**
@@ -503,7 +497,7 @@ You can use Harness encrypted text for values. See [Add Text Secrets](/docs/plat
 
 Enable this setting to use a JSON representation of the Terraform plan that is implemented in a Terraform Plan step.
 
-In subsequent **Execution** steps, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step, you can reference the Terraform plan using this expression format:
+In subsequent **Execution** steps, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step, you can reference the Terraform plan using this expression format:
 
 `<+execution.steps.[Terraform Plan step Id].plan.jsonFilePath>`
 
@@ -534,7 +528,7 @@ The JSON of the Terraform Plan step is not available after Rollback.
 
 ## Export Human Readable representation of Terraform Plan
 
-Enable this option to view the Terraform plan file path and contents as human-readable JSON is subsequent steps, such as a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts).
+Enable this option to view the Terraform plan file path and contents as human-readable JSON is subsequent steps, such as a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
 
 Once you enable this option and run a CD stage with the Terraform Plan step, you can click in the Terraform Plan step's **Output** tab and copy the **Output Value** for the **humanReadableFilePath** output.
 
@@ -549,7 +543,7 @@ For example, if the Terraform Plan stage and step Ids are `tf` then you would ge
 - **humanReadableFilePath**:
   - `<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">`
 
-Next, you can enter those expressions in a subsequent [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step and Harness will resolve them to the human-readable paths and JSON.
+Next, you can enter those expressions in a subsequent [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step and Harness will resolve them to the human-readable paths and JSON.
 
 For example, here is a script using the variables:
 
@@ -568,12 +562,6 @@ and found no differences, so no changes are needed.
 
 ## Command line options
 
-:::note
-
-Currently, FEATURE_NAME is behind the feature flag `CDS_TERRAFORM_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
 
 
@@ -587,7 +575,7 @@ Terraform refresh command won't be running when this setting is selected.
 
 You can use the standard `terraform plan` command option [detailed-exitcode](https://www.terraform.io/cli/commands/plan#other-options) with the Harness Terraform Plan step.
 
-If you use the `-detailed-exitcode` option in a step that follows the Harness Terraform Plan step, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step, Harness will return a detailed exit code:
+If you use the `-detailed-exitcode` option in a step that follows the Harness Terraform Plan step, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step, Harness will return a detailed exit code:
 
 * `0`: succeeded with empty diff (no changes)
 * `1`: error

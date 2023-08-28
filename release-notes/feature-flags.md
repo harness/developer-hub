@@ -1,15 +1,10 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-08-03T10:00:25
+date: 2023-08-24T13:41:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
-
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/feature-flags/rss.xml" />
 
@@ -20,37 +15,151 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 4, 2023
+## Latest - August 24, 2023
 
-<Tabs>
-  <TabItem value="What's new">
+### New features and enhancements
 
 This release does not include new features.
 
-
-  </TabItem>
-  <TabItem value="Early access">
+### Early access features
 
 This release does not include early access features.
 
+### Fixed issues in the Apex SDK
 
-  </TabItem>
-  <TabItem value="Fixed issues">
-
-#### Feature Flags UI
-
-* Previously, the permission to create a feature flag was required across all environments. This restriction has been removed. (FFM-8724)
-
-* Previously, when users selected **All Environments** from the **Environments** dropdown menu, then refreshed the page or went to another page, the **Back** button didn't return the user to the All Environments page. This issue has been resolved. (FFM-8012)
-
-
-  </TabItem>
-</Tabs>
+Released Apex SDK 0.1.2 - Avoid loading all flag/target segment config into two cache keys, instead use a key per item, so we don’t exceed SFDC account limits and get cache.ItemSizeLimitExceededException (FFM-9071)
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### August 24, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the React Client SDK
+
+Released React Client 1.5.0 - bumped JavaScript SDK version to 1.15.0 (FFM-9133)
+
+#### August 23, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Javascript SDK
+
+* If the SDK was being suspended while inside a mobile app in a webview, our SDK didn't support this usecase and required workarounds. (FFM-8176)
+
+* Removed a third-party SSE library causing event-handling errors. (FFM-8855)
+
+#### August 23, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Ruby SDK
+
+The Ruby SDK did not handle the 'IN' operator correctly. If a target group used the 'IN' operator in a rule, then that rule would fail to evaluate correctly. This could lead to the wrong variation being served to a target. The SDK has been updated to correctly handle IN operators for target group rules.(FFM-8670)
+
+#### August 22, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Node SDK
+
+Previously when using waitForInitialization, if the SDK encountered an authentication failure, it neither resolved nor rejected the promise. This could potentially lead to a Node.js process termination with an exit code of 0 when no operations were performed outside the asynchronous function block where it was called. The SDK now correctly rejects the promise in the event of an authentication failure. This rejection will provide error details. (FFM-9055)
+
+#### August 15, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Ruby SDK
+
+This release fixes an error where "Starts With" target group rules did not receive data in the correct format to be processed by the Ruby SDK. (FFM-9036)
+
+#### August 10, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Feature Flags server, version 1.1079.0
+
+* Improved cache store handling for pre-evaluations (FFM-8904)
+* Added an infrequent error caused by a panic during flag deletion (FFM-8973)
+* Automatically disable Git sync if flags.yml can not be found (FFM-8955)
+* Automatically time out if events take too long to send, rather than hanging indefinitely (FFM-8932)
+* Added additional test coverage for target attributes with IN clauses (FFM-8706)
+* Mark a flag as stale if the Flag previously had evaluations but has not in 60 days (FFM-8790)
+
+#### August 10, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Feature Flags UI
+
+* Previously, the Feature Flags modal screen disappeared when the user clicked in the background, which caused the data to disappear. This issue has been fixed. (FFM-8770)
+
+* Previously, on the flag details page, if all target groups were assigned to rules, the Percentage Rollout target groups selection would disappear. This issue has been fixed. (FFM-8841)
+
+* Previously, when creating a flag targeting rule, using autocomplete search for a target group could remove target groups from other rules within the same flag. This issue has been fixed. (FFM-8680)
+
+#### August 4, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* Previously, the permission to create a feature flag was required across all environments. This restriction has been removed. (FFM-8724)
+
+* Previously, when users selected **All Environments** from the **Environments** dropdown menu, then refreshed the page or went to another page, the **Back** button didn't return the user to the All Environments page. This issue has been resolved. (FFM-8012)
 
 #### August 3, 2023
 

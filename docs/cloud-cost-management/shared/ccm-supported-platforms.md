@@ -74,7 +74,7 @@ Cost categories also enable you to reshare specific costs (Shared) with differen
 
 ### Benefits
 
-- Contexualize cloud spending 
+- Contextualize cloud spending 
 - Cost sharing to manage shared/ common pool resources 
 
 ### Prerequisites
@@ -357,7 +357,7 @@ The following table lists the ingress controllers supported for Kubernetes AutoS
 
 
 :::important note
-The supported Kubernetes version for AutoStopping is 1.19.
+The supported Kubernetes version for AutoStopping is 1.19 or higher.
 :::
 
 
@@ -576,4 +576,8 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
 </Tabs>
 ```
 
+
+:::important note
+Harness does not currently support AWS China regions.
+:::
 For a comprehensive list of supported features in other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).

@@ -38,8 +38,9 @@ https://www.youtube.com/watch?v=V-d6kaMBf-w-->
 
 Here's what a Manual Approval Stage and step looks like in YAML:
 
-YAML Example
-```
+#### YAML Example
+
+```yaml
 - stage:  
       name: Manual Stage  
       identifier: Manual_Stage  
@@ -166,7 +167,7 @@ You can select one of the following types of expression for user groups:
   -  account._account_all_users
 
   :::important
-  Make sure no spaces are present in the expression values. In the above example, the format must be `_project_all_users,testUserGroup` to match the        split criteria `,` .
+  Make sure no spaces are present in the expression values. In the above example, the format must be `_project_all_users,testUserGroup` to match the split criteria `,` .
   :::
 
 
@@ -174,11 +175,11 @@ You can select one of the following types of expression for user groups:
 
 ### Advanced settings
 
-See:
+Go to:
 
 * [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Use delegate selectors](../2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ### See also
 

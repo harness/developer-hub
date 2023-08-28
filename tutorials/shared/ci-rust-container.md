@@ -145,6 +145,10 @@ While the Harness platform has several modules, this tutorial focuses on the Con
 ### Compare build infrastructure options
 
 Pipelines require build infrastructure to run. When you create CI pipelines, you can use either Harness-hosted infrastructure or bring your own build infrastructure. This tutorial uses Harness-hosted infrastructure, also called Harness Cloud.
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
 ```mdx-code-block
 <Tabs>

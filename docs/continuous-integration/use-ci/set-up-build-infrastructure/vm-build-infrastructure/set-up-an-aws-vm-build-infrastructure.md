@@ -14,7 +14,11 @@ import TabItem from '@theme/TabItem';
 ```
 
 :::note
+
+This build infrastructure option is only available with Harness CI Team and Enterprise plans.
+
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
 :::
 
 This topic describes how to use AWS VMs as Harness CI build infrastructure. To do this, you will create an Ubuntu VM and install a Harness Delegate and Drone VM Runner on it. The runner creates VMs dynamically in response to CI build requests. You can also configure the runner to hibernate AWS Linux and Windows VMs when they aren't needed.

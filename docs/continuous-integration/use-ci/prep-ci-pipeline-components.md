@@ -66,7 +66,7 @@ To [add a stage to a pipeline](/docs/platform/pipelines/add-a-stage/), select **
 
 :::tip
 
-To make pipelines more versatile, you can create [templates](/docs/category/templates), use [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables), and create [custom stages](/docs/platform/pipelines/add-a-custom-stage/), among other [optimization techniques](./optimize-and-more/optimizing-ci-build-times.md).
+To make pipelines more versatile, you can create [templates](/docs/category/templates), use [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables), and create [custom stages](/docs/platform/pipelines/add-a-custom-stage/), among other [optimization techniques](./optimize-and-more/optimizing-ci-build-times.md).
 
 :::
 
@@ -113,27 +113,20 @@ A stage contains one or more steps. Each step is a series of commands that perfo
 
 Stages and steps have advanced settings to control the flow of operations.
 
-<details>
-<summary>Conditional Executions</summary>
+### Conditional Executions
 
 Use [conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) to specify when a stage or step should run. For example, you can specify that a particular stage should run only if the prior pipeline or stage failed.
 
 You can specify conditional execution settings for an entire stage and for individual steps. A stage's conditional execution settings apply to all steps in that stage that don't have their own step-level conditional execution settings. A step's conditional execution settings overrides the stage's conditional execution settings.
 
-</details>
-
-<details>
-<summary>Looping Strategies</summary>
+### Looping Strategies
 
 For information about looping strategies to go:
 
 * [Looping strategies - matrix, repeat, parallelism](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
 * [Optimize and enhance CI pipelines](/docs/category/optimize-and-enhance)
 
-</details>
-
-<details>
-<summary>Failure Strategies</summary>
+### Failure Strategies
 
 [Failure strategies](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) define how your stages and steps handle different failure conditions.
 
@@ -148,4 +141,6 @@ See also:
 
 * [Retry failed executions](/docs/platform/Pipelines/resume-pipeline-deployments)
 
-</details>
+### Environment variables
+
+For information about environment variables, go to the [CI environment variables reference](./optimize-and-more/ci-env-var.md).

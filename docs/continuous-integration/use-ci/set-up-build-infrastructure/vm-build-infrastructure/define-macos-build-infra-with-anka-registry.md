@@ -6,6 +6,8 @@ sidebar_position: 40
 
 :::note
 
+This build infrastructure option is only available with Harness CI Team and Enterprise plans.
+
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
@@ -54,7 +56,7 @@ When you finish this workflow you will have:
 
 :::note
 
-Optionally, you can enable token authentication for the controller and registry as described in the Anka documentation about [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/token-authentication).
+Optionally, you can enable token authentication for the controller and registry as described in the Anka documentation about [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/root-token-authentication/).
 
 :::
 

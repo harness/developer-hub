@@ -51,7 +51,7 @@ Before you create a Feature Flag, you must have [created an Organization](/docs/
 	* Gitops Admin Role
 	* Feature Flag Manage Role
 
-	For more information about the permissions for each role, go to [Manage Access Control](/docs/feature-flags/ff-onboarding/ff-security-compliance/manage-access-control) and [Permissions Reference](/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference).
+	For more information about the permissions for each role, go to [Manage Access Control](/docs/feature-flags/ff-onboarding/ff-security-compliance/manage-access-control) and [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference).
 
 3. Click **Save and Continue**. Your project is created.
 

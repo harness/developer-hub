@@ -24,7 +24,7 @@ This topic walks you through the steps to create a pipeline template.
 ### Before you begin
 
 * Review [Templates overview](template.md) to understand template concepts.
-* Review [Permissions reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md) to learn about the permissions required to create a template at various scopes.
+* Review [Permissions reference](../role-based-access-control/permissions-reference) to learn about the permissions required to create a template at various scopes.
 * Review [Pipelines and stages](https://developer.harness.io/docs/category/pipelines).
 
 ### Limitations
@@ -33,11 +33,11 @@ Failure strategy and notification settings can only be provided when you create 
 
 ### Review: Permissions requirements
 
-You need create/edit, delete, and access permissions on templates to create a pipeline template. Go to [Permissions reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md) for more information.
+You need create/edit, delete, and access permissions on templates to create a pipeline template. Go to [Permissions reference](../role-based-access-control/permissions-reference) for more information.
 
 ### Review: Pipeline template scope
 
-You can add templates at any [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md) in Harness.
+You can add templates at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) in Harness.
 
 The following table shows what it means to add templates at different scopes or hierarchies:
 
@@ -52,7 +52,7 @@ The following table shows what it means to add templates at different scopes or 
 
 Here is a quick overview of pipeline templates:
 
-* You can add a pipeline template to an account, org, or project [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
+* You can add a pipeline template to an account, org, or project [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 * You can either link an existing stage template or add a stage to your pipeline template.
 * You can either link to a step template or add a step for any new step that you add to your pipeline stage.
 
@@ -66,10 +66,7 @@ To add a template, do the following:
 
 1. In Harness, navigate to the **Deployments** module.
 2. In **Projects**, select the desired project.
-3. Select **Templates** under **Project Setup**.
-
-   ![](./static/create-pipeline-template-66.png)
-
+3. Under **Project Setup**, select **Templates**.
 4. In **Templates**, select **New Template**.
 
 5. Select **Pipeline** to create a pipeline template.

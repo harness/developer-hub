@@ -1,7 +1,7 @@
 ---
 title: Add a pipeline notification strategy
 description: Notify users of different pipeline events.
-sidebar_position: 300
+sidebar_position: 3
 ---
 
 This topic describes how to notify users of different pipeline events using popular notification methods.
@@ -12,7 +12,7 @@ Event notifications are set up using **Notification Rules** in your pipeline. Yo
 
 This topic describes how to set up **Notification Rules** in your pipeline.
 
-You can set notifications preferences on user groups also. Go to [add and manage user groups](/docs/platform/User-Management/add-user-groups) for more information.
+You can set notifications preferences on user groups also. Go to [Manage user groups](/docs/platform/role-based-access-control/add-user-groups) for more information.
 
 
 ## Limitations
