@@ -60,7 +60,9 @@ This release does not include early access features.
 - The Harness user interface did not give you the option to view more than ten resources in a resource group. (PL-40747, ZD-49413)
 
   This issue is now fixed.
+- With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631)
 
+   This issue is fixed. Harness catches the exception and continues with delegate startup.
 - Fixed retries of the delegate task acquire call in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the acquire call retry flow. Tasks timed out because the delegate was not able to acquire the data. The 'taskData' field in Harness Manager is now populated to fix the issue. (PL-40646)
 
 - A few minutes after you linked a Harness user group to a different LDAP group, the change was reverted. That is, the user group was linked to the previous LDAP group. The behavior persisted even if you deleted the user group, created a new user group with the same name, and then associated it with the second LDAP group. (PL-40558, ZD-48332)
