@@ -56,7 +56,7 @@ This release does not include early access features.
 
   This issue is now fixed.
 - Fixed retries of the delegate task acquire call in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the acquire call retry flow. Tasks timed out because the delegate was not able to acquire the data. The 'taskData' field in Harness Manager is now populated to fix the issue. (PL-40646)
-- A few minutes after you link a Harness user group to a different LDAP group, the change gets reverted. That is, the user group gets linked to the previous LDAP group. The behavior persists even if you delete the user group, create a new user group with the same name, and then associate it with the second LDAP group. (PL-40558, ZD-48332)
+- A few minutes after you linked a Harness user group to a different LDAP group, the change was reverted. That is, the user group was linked to the previous LDAP group. The behavior persisted even if you deleted the user group, created a new user group with the same name, and then associated it with the second LDAP group. (PL-40558, ZD-48332)
 
   This issue is now fixed.
 
