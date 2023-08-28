@@ -104,6 +104,15 @@ export const AdvList: CardItem[] = [
     link: "/tutorials/cd-pipelines/trigger",
   },
   {
+    title: "Create Pipeline Templates",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: <>Create reusable pipeline templates for CD pipelines and link them to your pipelines </>,
+    type: [docType.Documentation],
+    time: "20min",
+    link: "/tutorials/cd-pipelines/templates",
+  },
+  {
     title: "Set up an approval step in a CD pipeline",
     module: MODULES.cd,
     icon: "img/icon_cv.svg",
