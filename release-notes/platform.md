@@ -33,6 +33,7 @@ The following deprecated API endpoints will no longer be supported:
 ## Latest: Version 804xx
 
 ### New features and enhancements
+
 - Earlier, Harness had an N-3 support policy for delegates. (PL-39452)
    Now, the delegate expiration is calculated using the version difference between Harness Manager and the delegate. If the delegate and Harness Manager are on the same version, the delegate expiration is 24 weeks.
 
