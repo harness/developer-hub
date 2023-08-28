@@ -144,7 +144,11 @@ When the plan is applied, the Harness Manager passes the encrypted data to the D
 
 The Delegate decrypts the encrypted plan and applies it using the `terraform apply` command.
 
-Note: Please enable `CDS_TERRAFORM_TERRAGRUNT_PLAN_ENCRYPTION_ON_MANAGER_NG` FF if default harness secret manager is selected for encryption/decryption of TF plan.
+```note
+
+Please enable the `CDS_TERRAFORM_TERRAGRUNT_PLAN_ENCRYPTION_ON_MANAGER_NG` feature flag if the default Harness secret manager is selected for the encryption/decryption of Terraform plans. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+
+```
 
 ### Configuration File Repository
 
