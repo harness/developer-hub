@@ -4,12 +4,6 @@ description: Configure your credentials for Git experience.
 sidebar_position: 10
 ---
 
-
-:::important
-Currently, this feature is behind the feature flag `PIE_GITX_OAUTH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-The Harness Delegate version 79306 is required for this feature.
-:::
-
 You can store configurations for your resources, such as pipelines and input sets, in Git using Harness Git Experience. Harness fetches user credentials from the Harness account and uses the corresponding user name as the author of the commit.
 
 You can push configuration changes using your own credentials by integrating OAuth with Git. 
