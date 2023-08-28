@@ -45,7 +45,7 @@ To troubleshoot webhook failures, do the following:
 
 ### cURL example
 
-**Sample cURL webhook**
+**Sample cURL command**
 
 ```shell
 ~ % curl -X POST -H 'content-type: application/json' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=tweety&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
