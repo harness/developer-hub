@@ -22,11 +22,21 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest: SonarQube runner update, August 25, 2023
 
+### New features and enhancements
+
+This release does not include new features.
+
+### Early access features
+
+This release does not include early access features. 
+
+### Fixed issues
+
 This update to the SonarQube runner includes the following fixed issues:
 
 - Fixed an issue where the SonarQube step would ignore additional path segments in the domain name. If the domain was set to `https://mysonar.com/sonar`, for example, the SonarQube step would ignore the full path and try to communicate with `https://mysonar.com`. (STO-6442)
 
-- Fixed an issue where the SonarQube step could not override some SonarQube scan CLI parameters specified in the **Additional CLI arguments** field.  (STO-6443)
+- Fixed an issue where the SonarQube step could not override some SonarQube scan CLI parameters specified in the **Additional CLI arguments** field. (STO-6443)
 
 ## Previous releases
 
