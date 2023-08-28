@@ -33,24 +33,29 @@ The following deprecated API endpoints will no longer be supported:
 ## Latest: Version 804xx
 
 ### New features and enhancements
-
+- Earlier, Harness had an N-3 support policy for delegates. (PL-39452)
+   Now, the delegate expiration is calculated using the version difference between Harness Manager and the delegate. If the delegate and Harness Manager are on the same version, the delegate expiration is 24 weeks.
 - Earlier, in the audit trail, all changes to a user principal's role assignment were logged with the generic Update action type. The record offered no additional information about whether a role assignment was created, updated, or deleted. (PL-39799, ZD-46451)
 
   Now, role assignment changes are logged with one of the following, more informative action types:
     - Role Assignment Created
     - Role Assignment Updated
     - Role Assignment Deleted
+- Earlier, in delegate selection logs, the non-selected error message included all mismatched selectors.
 
+   Now, the non-selected error message includes only selectors mismatched within the scope. (PL-40651)
 ### Early access features
 
 This release does not include early access features.
 
 ### Fixed issues
+- In some scenarios, when the delegate tried to send a heartbeat to connect to Harness Manager and MongoDB was down, Harness Manager sent a self_destruct message to stop the delegate. (PL-38122)
 
+   This issue is fixed. Harness Manager no longer sends `self_destruct messages`, the delegate continues to run, and the delegate tries to send a heartbeat again after one minute.
 - The Harness user interface did not give you the option to view more than ten resources in a resource group. (PL-40747, ZD-49413)
 
   This issue is now fixed.
-
+- Fixed retries of the delegate task acquire call in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the acquire call retry flow. Tasks timed out because the delegate was not able to acquire the data. The 'taskData' field in Harness Manager is now populated to fix the issue. (PL-40646)
 - A few minutes after you link a Harness user group to a different LDAP group, the change gets reverted. That is, the user group gets linked to the previous LDAP group. The behavior persists even if you delete the user group, create a new user group with the same name, and then associate it with the second LDAP group. (PL-40558, ZD-48332)
 
   This issue is now fixed.
