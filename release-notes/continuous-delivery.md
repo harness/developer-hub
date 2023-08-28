@@ -47,7 +47,9 @@ This release does not include early access features.
   
 ### Fixed issues
 
-- Fixed an Continuous Verification issue where, when a health source returned a response with no data ( =  No Analysis), the pipeline did not retain the response timestamp.  With this fix, the pipeline retains the timestamp when a health source returns a no-data response. (OIP-762)
+- The control data start timestamp was missing in the API response, despite the presence of control data for the throughput metric when the overall analysis indicated "no analysis." (OIP-762)
+
+  This issue has been resolved. The control data timestamp is now included in the API response, even if the overall analysis status is "no analysis".
 
 - Fixed an issue that caused the **Pipeline Executions** page to make unnecessary API calls to a back-end service. (CDS-77401)
 
