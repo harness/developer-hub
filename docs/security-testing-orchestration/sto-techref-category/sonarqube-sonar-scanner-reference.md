@@ -15,7 +15,7 @@ helpdocs_is_published: true
 :::info important notes
 * STO supports repository scanning only for SonarScanner.
 * STO supports all languages supported by SonarScanner.
-* Before you scan your repo, make sure that you perform any prerequisites for the language used in your repo. If you are scanning a Java repo with more than one Java file, for example, you must compile `.class` files before you run the scan.  
+* Before you scan your repo, make sure that you perform any prerequisites for the language used in your repo. <!-- Need to confirm this sentece per https://harness.atlassian.net/browse/DOC-3640 If you are scanning a Java repo with more than one Java file, for example, you must compile `.class` files before you run the scan. -->
   For details about specific language requirements, go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/).
 * By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestrated and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube scan step. 
 :::
