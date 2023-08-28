@@ -6,7 +6,13 @@ sidebar_position: 8
 
 This topic describes how to migrate an existing delegate to an mTLS-enabled delegate.
 
-mTLS is part of the TLS protocol, which allows the server to verify the authenticity of the client. To achieve that, the client has to provide a client certificate during the TLS handshake, which is verified by the server using a previously configured CA certificate. For more information, go to [Delegate mTLS support](/docs/platform/Delegates/secure-delegates/delegate-mtls-support).
+mTLS is part of the TLS protocol, which allows the server to verify the authenticity of the client. To achieve that, the client has to provide a client certificate during the TLS handshake, which is verified by the server using a previously configured CA certificate. 
+
+:::info note
+mTLS is an advanced feature. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+For more information, go to [Delegate mTLS support](/docs/platform/Delegates/secure-delegates/delegate-mtls-support).
 
 ## Prerequisites for delegate migration
 

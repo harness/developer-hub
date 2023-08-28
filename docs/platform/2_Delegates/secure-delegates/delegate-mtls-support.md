@@ -8,11 +8,11 @@ mTLS is part of the TLS protocol, which allows the server to verify the authenti
 
 Due to security reasons, every customer must create their own CA certificate and signed client certificates, and Harness hosts a dedicated mTLS endpoint (subdomain) for every account that has mTLS enabled.
 
-Harness supports the following modes of mTLS:
+Harness supports the following mTLS modes:
 
-- LOOSE - both non-mTLS and mTLS delegates are accepted.
+- LOOSE: Both non-mTLS and mTLS delegates are accepted.
 
-- STRICT - only mTLS delegates are accepted. Any non-mTLS delegates are blocked. 
+- STRICT: Only mTLS delegates are accepted. Any non-mTLS delegates are blocked. 
 
 :::info note
 mTLS is an advanced feature. Contact [Harness Support](mailto:support@harness.io) to enable it.
@@ -79,3 +79,5 @@ Download the new YAML file from the Harness UI and update the certificates in it
 client.crt:
 client.key:
 ```
+
+For more information, go to [Migrate an existing delete to mTLS](/docs/platform/delegates/manage-delegates/migrate-existing-delegate-to-mtls/).
