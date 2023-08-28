@@ -29,11 +29,19 @@ To troubleshoot webhook failures, do the following:
 2. Select **Triggers**.
 3. Select **Trigger Explorer**.
 4. Select **Webhook**.
-5. Enter the `eventCorrelationId` value from the response.
+5. In **Enter Event Correlation id**, enter the `eventCorrelationId` value from the cURL response payload.
 
    ![](./static/trigger-explorer.png)
 
 6. Select **Search**.
+
+   Harness returns the following information:
+
+   - **Event Correlation ID**
+   - **Trigger Name**
+   - **Trigger Status**
+   - **Message**
+   - **Payload**
 
 ### cURL example
 
@@ -59,11 +67,19 @@ In this example, you enter the `eventCorrelationId` value in the **Search** fiel
 2. Select **Triggers**.
 3. Select **Trigger Explorer**.
 4. Select **Webhook**.
-5. Enter the `data` value from the response payload.
+5. In **Enter Event Correlation id**, enter the `data` value from the webhook response payload.
 
    ![](./static/trigger-explorer.png)
 
 6. Select **Search**.
+
+   Harness returns the following information:
+
+   - **Event Correlation ID**
+   - **Trigger Name**
+   - **Trigger Status**
+   - **Message**
+   - **Payload**
 
 ### Webhook example
 
