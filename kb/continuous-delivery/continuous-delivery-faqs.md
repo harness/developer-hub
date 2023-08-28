@@ -710,6 +710,87 @@ No, there is no such expression which will always show from which branch the pip
 
 No, It needs to be a different execution everytime.
 
-#### Can we select a delegate and see what steps have ran on it without going into each pipeline execution ?
+#### Can we select a delegate and see what steps have ran on it without going into each pipeline execution?
 
 No, we don’t have this capability.
+
+### In FG how can I remove the old plan-file and start again with a fresh plan to make the workflow run successfully?
+
+You can enable "Skip Terraform Refresh when inheriting Terraform plan" option, please refer [here](https://docs.harness.io/article/ux2enus2ku-add-terraform-scripts#option_2_skip_terraform_refresh_when_inheriting_terraform_plan)
+
+### For variables do we have options to intake parameters via dropdown or radio buttons etc ?
+
+Yes we do, [here](https://developer.harness.io/docs/platform/references/runtime-inputs/#supplying-runtime-inputs-during-execution) , with allowed values you can have multiple inputs to select from range of values allowed.
+
+### In fetch pipeline summary API, what does the fields "numOfErrors" and "deployments" mean?
+
+Deployments field has list of number of total executions per day for last 7 days and numOfErrors field has list of number of failed executions per day for last 7 days.
+
+### Is there a way I can update the git repo where the pipeline YAML resides?
+
+Yes you can use this API [here](https://apidocs.harness.io/tag/Pipelines#operation/update-pipeline-git-metadata) to update the Git repo of the pipeline.
+
+### Is it possible to reference a connectors variable in a pipeline?
+
+we do not support referencing variables/values from the connector into the pipeline.
+
+### What is the plan and procedure for upgrading to the latest ArgoCD version using Harness?
+
+The process of upgrading to the latest ArgoCD version through Harness has been streamlined to minimize overhead. We aim to swiftly release new versions shortly after they are released upstream, following a brief phase of regression testing on our side. This approach ensures that you can benefit from the latest features and enhancements with minimal delays.
+ 
+### How can I stay informed about the availability of new ArgoCD versions and the upgrade process?
+
+You can stay informed about new ArgoCD versions and the upgrade process through our regular release notes. These release notes provide detailed information about the changes, enhancements, and fixes in each version. You can find the release notes at this link [here](https://developer.harness.io/release-notes/continuous-delivery)
+
+### What is the easiest way to determine the ArgoCD version using a GitOps agent?
+
+An easy method to identify the ArgoCD version is by creating a GitOps agent and inspecting the associated manifest.
+
+### Is there a way to generate a dynamic file with some information in one stage of the pipeline and consume that file content in a different pipeline stage?
+
+You can use API to create file in harness file store and then refer it to other stage. [here](https://apidocs.harness.io/tag/File-Store#operation/listFilesAndFolders)
+Or you can just write a file on the delegate and use the same delegate.
+
+### Why is a certain pipeline step not running even though it meets the conditional execution criteria?
+
+If a specific pipeline step is not running despite meeting the conditional execution criteria, it could be due to the presence of a failure strategy at the pipeline level. The failure strategy takes precedence over conditional execution settings. 
+
+### How do I resolve No eligible delegate(s) in account to execute task. Delegate(s) not supported for task type {TERRAFORMTASKNGV6} error?
+
+Upgrading the delegate to latest version should resolve this issue.
+
+### What is MonitoredService?
+
+Monitored service are used for service reliability management. You can find more details on this [here](https://developer.harness.io/docs/service-reliability-management/monitored-service/create-monitored-service/)
+
+### I'm trying to use a specific KMS key to encrypt my AWS Lambda's environment variables, but the Lambda seems to default to the AWS managed key. What could be the issue?
+
+By default, AWS Lambda uses an AWS managed key for environment variable encryption. If you're specifying a KMS key using the kmsKeyArn parameter in the Lambda function definition YAML but still seeing the AWS managed key being used, it might be due to how the kmsKeyArn is defined in your YAML.
+
+### How can I ensure that my specified KMS key is used to encrypt my Lambda's environment variables?
+
+To make sure that your specified KMS key (kmsKeyArn) is used to encrypt your Lambda's environment variables, you need to ensure that the YAML key is written in camel case format, which is kmsKeyArn. Additionally, make sure that the KMS key ARN is accurate and accessible in your AWS account.
+
+### Can you provide an example YAML snippet with the correct usage of kmsKeyArn for Lambda's environment variables?
+
+```
+functionName: "ff2"
+handler: handler.hello
+role: "arn:aws:iam::01447erole2"
+runtime: nodejs14.x
+kmsKeyArn: "arn:aws:kms:ue78fb6117cfd"   # Make sure the ARN is accurate
+environment:
+  variables:
+    key: "val"
+```
+### How to conver a variable to Lowercase?
+
+You can use .toLowerCase() for example <+<+stage.variables.ENVIRONMENT>.toLowerCase()> and retry the pipeline?
+
+### Can I create a single, generic GitHub connector that works for multiple GitHub accounts?
+
+No, the GitHub connector in Harness requires a specific URL tied to a GitHub account. A unique connector is needed for each GitHub account you want to connect to.
+
+### How do I write to file store ?
+
+You can use API to create/update files in the file store [here](https://apidocs.harness.io/tag/File-Store#operation/update)
