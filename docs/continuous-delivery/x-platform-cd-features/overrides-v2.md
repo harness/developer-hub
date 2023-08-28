@@ -18,11 +18,11 @@ In **Account Settings > Account Resources > Continuous Deployment**, set the **E
 
 ![overridesV2](./static/overrides-v2.png)
 
-```note
+:::info note
 
 For information on overrides V1, go to [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
-```
+:::
 
 ## Limitations
 
