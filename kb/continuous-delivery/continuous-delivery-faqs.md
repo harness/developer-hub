@@ -794,3 +794,22 @@ No, the GitHub connector in Harness requires a specific URL tied to a GitHub acc
 ### How do I write to file store ?
 
 You can use API to create/update files in the file store [Documentation](https://apidocs.harness.io/tag/File-Store#operation/update)
+
+### Explain what 'freeze window' means
+
+Freeze Window can be setup in Harness with certain rules. No deployments can be run during this window. 
+A freeze window is defined using one or more rules and a schedule. The rules define the Harness orgs, projects, services, and environments to freeze.
+Deployment freeze does not apply to Harness GitOps PR pipelines.
+You cannot edit enabled deployment freeze windows. If the deployment freeze window you want to change is enabled, you must first disable it, make your changes, then enable it again.
+
+### What Roles are required to edit Pipeline Triggers and Input Sets
+
+The roles required to edit Pipeline Triggers and Inpout sets are "View and Create / Edit"
+
+### If we have multiple services using this same pipeline template, both within and outside the same project, does Harness differentiate each pipeline execution by service? If both service1 and service2 in the same project are using this same pipeline and are sitting at the approval step, would approving the service1 pipeline cause the service2 pipeline to be rejected?
+
+The pipelines will run just fine, as you used the template and specified different services at the runtime , so it will run independently. 
+
+### Service showing as active but hasn't been part of a deployment in over 30 days
+
+Harness shows the Active instances is say you had a deployment and the VM got deployed from a Harness deployment. No matter if we deploy anything else on the VM , until the VM is up and running as it is linked with the service. It will show as active instance. The 30 days mentioned here https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#active-services , is for service based licence calculation and usage for CD. 
