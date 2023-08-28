@@ -95,8 +95,8 @@ The pipeline and stage level variable expressions follow these formats:
 > **Note:**
 > When concatenating expressions as strings, the expression value needs to be of a string type.
 > In case it isn't, you need to use the toString() method to convert it. For example, the sequenceId expression in
-> /tmp/spe/<+pipeline.sequenceId>
-> evaluates as an integer, so you will have to modify it to /tmp/spe/<+pipeline.sequenceId.toString()>
+> `/tmp/spe/<+pipeline.sequenceId>`
+> evaluates as an integer, so you will have to modify it to `/tmp/spe/<+pipeline.sequenceId.toString()>`
 > if you'd like to concatenate it with other strings.
 
 ### Expression examples
