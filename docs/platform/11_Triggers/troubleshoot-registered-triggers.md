@@ -45,11 +45,13 @@ To troubleshoot webhook failures, do the following:
 
 ### cURL example
 
+**Sample cURL webhook**
+
 ```shell
 ~ % curl -X POST -H 'content-type: application/json' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=tweety&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
 ```
 
-**response:**
+**Sample response**
 
 ```json
 {"status":"FAILED","data":{"eventCorrelationId":"64e3e215d2bb844cfab9e155","apiUrl":"https://app.harness.io/gateway/pipeline/api/webhook/triggerExecutionDetails/64e3e215d2bb844cfab9e155?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg","uiUrl":"https://app.harness.io/ng/#/account/H5W8iol5TNWc4G9h5A2MXg/cd/orgs/default/projects/CD_Docs/deployments?pipelineIdentifier=tweety&page=0","uiSetupUrl":"https://app.harness.io/ng/#/account/H5W8iol5TNWc4G9h5A2MXg/cd/orgs/default"}}
@@ -83,11 +85,15 @@ In this example, you enter the `eventCorrelationId` value in the **Search** fiel
 
 ### Webhook example
 
-The pipeline below runs when [this repo](https://github.com/michaelcretzman/linux_tweet_app) has a PR.
+The pipeline below runs when a repo has a PR.
 
-pipeline: `https://app.harness.io/ng/account/H5W8iol5TNWc4G9h5A2MXg/cd/orgs/default/projects/CD_Docs/pipelines/tweety/executions?storeType=INLINE`
+This example uses the [tweety repo](https://github.com/michaelcretzman/linux_tweet_app).
 
-**response:**
+**Sample pipeline URL**
+
+`https://app.harness.io/ng/account/H5W8iol5TNWc4G9h5A2MXg/cd/orgs/default/projects/CD_Docs/pipelines/tweety/executions?storeType=INLINE`
+
+**Sample response**
 
 ```json
 {"status":"FAILED","data":"64e3e5b58cdd8704d75bd99d","metaData":null,"correlationId":"1a75bbef-862c-469e-b8ab-e06dd95e4999"}
