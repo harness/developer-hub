@@ -121,6 +121,12 @@ Most providers are used in both Pipeline Notification Strategies and User Group 
 | [ServiceNow](../platform/9_Approvals/service-now-approvals.md)                                      | N/A          | Yes                        |
 | [PagerDuty](../continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md   | N/A                        |
 
+## Harness Git Experience
+
+import Gitxsup from '/docs/getting-started/shared/gitx-whats-supported.md'
+
+<Gitxsup />
+
 ## Access control
 
 import Accessconsup from '/docs/getting-started/shared/access-control-supported.md'
