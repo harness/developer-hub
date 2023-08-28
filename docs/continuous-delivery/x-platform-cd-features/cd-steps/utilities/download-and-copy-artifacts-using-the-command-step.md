@@ -319,7 +319,7 @@ Legend:
 
 :::note
 
-The WinRM deployment type supports Download Artifact only. You cannot use Cope Artifact in WinRM deployments.
+The WinRM deployment type supports Download Artifact only. You cannot use the **Copy** command type with **Artifact** in WinRM deployments.
 
 :::
 
