@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
- You can run automated [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) scan to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
+ You can run an automated [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) scan to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
  
  You can set up SonarQube scans using a [SonarQube step](#sonarqube-step-configuration) or a [Security step (_legacy workflow_)](#security-step-configuration-legacy).
 
@@ -266,7 +266,7 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 STO supports the following scan types for SonarQube:
 
-* `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
+* `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest method to set up and support scans with default or predefined settings.
 * `dataLoad`  — The pipeline downloads scan results using the [SonarScanner API](https://docs.sonarqube.org/latest/extend/web-api/).
 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md). 
 
@@ -284,7 +284,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `scan_type` = `repository`
 * `product_config_name` = `default` — Runs a SonarQube scan with default settings.
 * `policy_type` — Enter one of the following:
-	+ `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
+	+ `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest method to set up and support scans with default or predefined settings.
 	+ `dataLoad`  — The pipeline downloads scan results using the [SonarScanner API](https://docs.sonarqube.org/latest/extend/web-api/).
 	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
 * `repository_project` — The repository name. If you want to scan `https://github.com/my-github-account/codebaseAlpha`, for example, you would set this to `codebaseAlpha`.
