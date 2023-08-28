@@ -202,7 +202,7 @@ Enter a name for the query in **Name your Query**.
 
 In **Log Indexes**, select a log index from the list.
 
-In **Service Instance Identifier**, click the drop-down to select the path of the service instance.
+In **Service Instance Identifier**, click the drop-down to select the path of the service instance. Any of the tag used in metric or log can be used as service instance identifier. It should correspond to instances which are running. Dropdown contains the all tags return by data through API (https://docs.datadoghq.com/api/latest/metrics/#list-tags-by-metric-name)
 
 Click **Submit**. The Health Source is displayed in the Verify step.
 
