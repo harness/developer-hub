@@ -21,7 +21,7 @@ This topic covers how to add and configure Prometheus as a Health Source for the
 
 - Prometheus queries must produce a single value (scalar). To learn more about Prometheus queries, go to [QUERYING PROMETHEUS](https://prometheus.io/docs/prometheus/latest/querying/basics/).
 
-- Harness Prometheus connector and health source are compatible with Mimir, Cortex, Thanos, and VictoriaMetrics platforms.
+- Harness Prometheus connector and health source are compatible with Mimir, Cortex, Thanos, Coralogix, and VictoriaMetrics platforms.
 :::
 
 
