@@ -24,14 +24,10 @@ By ingesting your custom Issues, you can benefit from STO's refinement, deduplic
    ![](../static/ingesting-issues-from-other-scanners-00.png)
 
 2. Generate your issues data in the [required JSON format](#jaon-data-format-reference) described below and then save it in the shared folder.  
-You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) for an example.
-1. Add a Security step and configure the scanner to ingest the results of the scan. These settings are required:
-	1. `policy_type` = `ingestionOnly`
-	2. `scan_type` — The type the scanned object: `container`, `repository`, `instance`, or `configuration`
-	3. `product_name` = `external`
-	4. `product_config_name` = `default`
-	5. `manual_upload_filename` — The filename of your issues data file.
-	6. `customer_artifacts_path` — The shared folder for the issues data file.
+  You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) for an example.
+
+3. Add a **Custom Ingest** step and configure the scanner to ingest the results of the scan. For information about how to configure this step, go to [Custom Ingest settings reference](docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference.md).
+
 
 ###  JSON data format reference
 

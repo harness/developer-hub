@@ -1,11 +1,11 @@
 ---
-title: GitLeaks Scanner Reference
-description: Repository scans with GitLeaks
+title: Gitleaks Scanner Reference
+description: Repository scans with Gitleaks
 sidebar_position: 155
 
 ---
 
-You can scan your code repositories using [GitLeaks](https://github.com/PyCQA/GitLeaks), an open-source tool designed to find common security issues in Python code. 
+You can scan your code repositories using [Gitleaks](https://github.com/PyCQA/GitLeaks), an open-source tool designed to find common security issues in Python code. 
 
 
 <!-- START step-palette-config ----------------------------------------------------------------------------- -->
@@ -14,22 +14,22 @@ You can scan your code repositories using [GitLeaks](https://github.com/PyCQA/Gi
 
 The recommended workflow is to add a GitLeaks step to a Security Tests or CI Build stage and then configure it as described below.  
 
+<!--
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 ```
 
 <StoScannerStepNotes />
+-->
 
 ### Scan Mode
 
 ```mdx-code-block
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
 
 <StoSettingScanMode />
-<StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
 <!-- ============================================================================= -->
@@ -110,6 +110,9 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 <a name="log-level"></a>
 
+
+
+
 #### Log Level
 
 ```mdx-code-block
@@ -140,7 +143,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Settings
 
-You can add a `tool_args` setting to run the [GitLeaks scanner binary](https://github.com/gitleaks/gitleaks) with specific command-line arguments. For example, you can redact secrets from the scanner output using `-redact`: `tool_args : --redact` 
+You can add a `tool_args` setting to run the [Gitleaks scanner binary](https://github.com/gitleaks/gitleaks) with specific command-line arguments. For example, you can redact secrets from the scanner output using `-redact`: `tool_args : --redact` 
 
 
 ### Additional Configuration
@@ -164,4 +167,79 @@ In the **Advanced** settings, you can use the following options:
 
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
+## Pipeline example
 
+The following pipeline shows and end-to-end ingestion workflow. The pipeline consist of a Build stage with two steps:
+
+1. A Run step that copies an [example SARIF file](https://github.com/gitleaks/gitleaks/blob/master/testdata/expected/report/sarif_simple.sarif) from the local codebase into `/shared/customer_artifacts/`.
+
+2. A Gitleaks step that ingests the `/shared/customer_artifacts/sarif_simple.sarif` file.
+
+![](./static/gitleaks-ingestion-example-pipeline.png)
+
+```yaml
+pipeline:
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: gitleaks-build-stage
+        identifier: gitleaksbuildstage
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: MYDOCKERCONNECTOR
+                    image: alpine:latest
+                    shell: Sh
+                    command: |-
+                      # ls /harness
+                      # ls /harness/testdata/expected/report
+                      cp /harness/testdata/expected/report/sarif_simple.sarif /shared/customer_artifacts/
+                      # ls /shared/customer_artifacts/
+                      cat /shared/customer_artifacts/sarif_simple.sarif
+              - step:
+                  type: Gitleaks
+                  name: gitleaks_ingest
+                  identifier: gitleaks_ingest
+                  spec:
+                    mode: ingestion
+                    config: default
+                    target:
+                      name: gitleaks-example
+                      type: repository
+                      variant: master
+                    advanced:
+                      log:
+                        level: info
+                    ingestion:
+                      file: /shared/customer_artifacts/sarif_simple.sarif
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          sharedPaths:
+            - /shared/customer_artifacts
+          caching:
+            enabled: false
+            paths: []
+  identifier: gitleaks_ingestion_test
+  name: gitleaks ingestion test
+  properties:
+    ci:
+      codebase:
+        connectorRef: MYGITHUBCONNECTOR
+        repoName: gitleaks
+        build: <+input>
+
+
+```

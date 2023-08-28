@@ -24,49 +24,19 @@ The following workflow describes how to set up an ingestion pipeline for any sca
 
 3. Add an ingestion step after the Run step and configure it as follows.
 
-:::note
-If you're using a scanner that has a scanner template, use the scanner template to ingest your results. Otherwise use a [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) step. 
-::: 
-
-### Ingestion settings
-
-#### Target Name 
+   - If you're using a scanner that has a [scanner template](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates), use the scanner template to ingest your results. Set the **Scan Mode** to **Ingestion** and configure the step as described in the [STO Scanner Reference](/docs/category/sto-technical-reference) topic for that step. 
    
-```mdx-code-block
-import StoSettingProductID from '../../sto-techref-category/shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+   - If you're using a scanner that does not have a scanner template, use a [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) step. 
+ 
+### Ingestion step examples
 
-<StoSettingProductID />
-
-#### Target Variant 
-   
-```mdx-code-block
-import StoSettingTargetVariant from '../../sto-techref-category/shared/step_palette/_sto-ref-ui-target-variant.md';
-```
-
-<StoSettingTargetVariant  />
-
-
-   
-#### Ingestion File 
-
-```mdx-code-block
-import StoSettingIngestionFile from '../../sto-techref-category/shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
-
-<StoSettingIngestionFile  />
-
-
-#### Fail on Severity
-
-```mdx-code-block
-import StoSettingFailOnSeverity from '../../sto-techref-category/shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
-<StoSettingFailOnSeverity />
 
 
 ### Example workflows
 
-<!-- * [CodeQL Scanner Reference](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference) -->
-For example workflows that show how you can ingest SARIF data, go to [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-actions)
+Here are some examples that illustrate the end-to-end workflow for ingesting SARIF data:
+
+- [Example workflow: Ingest SARIF data from a Checkmarx GitHub Action scan](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference#example-workflow-ingest-sarif-data-from-a-checkmarx-github-action-scan)
+
+- [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-actions)
 
