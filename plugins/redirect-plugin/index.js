@@ -38,11 +38,13 @@ async function docsPluginEnhanced(context, options) {
         return null;
       }
       const outPutPath = path.join(outDir, destPath);
-      //Will need to change _dirname when we change the filename
+
+      //Will need to change the filename variable when we change the file
       const clientRedirectNetlifyPath = path.resolve(
         __dirname,
         "../../archive/redirects/client-redirect-netlify-format-aug-23-2023.txt"
       );
+
       const exists = fs.existsSync(outPutPath);
       // const exists2 = fs.existsSync(clientRedirectNetlifyPath);
       // console.log("client reditect path ",  clientRedirectNetlifyPath);
@@ -90,22 +92,24 @@ async function docsPluginEnhanced(context, options) {
         return title;
       });
 
+      //Historic Client Re-Directs from client-redirects.js
       if (!exists) {
-        const historyRedirectsPath = path.resolve(
+        const serverRedirectsPath = path.resolve(
           __dirname,
-          "../../_history-redirects"
+          "../../_server-redirects"
         );
-        fs.copySync(historyRedirectsPath, outPutPath);
+        fs.copySync(serverRedirectsPath, outPutPath);
         fs.appendFileSync(outPutPath, strRedirects);
         fs.appendFileSync(
           outPutPath,
-          "\r\n# client-redirect-netlify-format appeneded from archives \r\n"
+          "\r\n# client-redirect-netlify-format-aug-23-2023.txt appeneded from Archives \r\n\r\n"
         );
+        //Historic Client Re-riects
         fs.readFile(clientRedirectNetlifyPath, function (err, data) {
           if (err) throw err;
           fs.appendFileSync(
             outPutPath,
-            "\r\n# client-redirect-netlify-format appeneded from archives \r\n"
+            "\r\n# client-redirect-netlify-format-aug-23-2023.txt appeneded from Archives: \r\n\r\n"
           );
           fs.appendFileSync(outPutPath, data, function (err) {
             if (err) throw err;
