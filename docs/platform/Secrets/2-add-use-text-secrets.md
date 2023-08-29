@@ -30,7 +30,7 @@ Secrets can be added inline while setting up a connector or other setting, and t
 
 :::info
 
-You can't create secrets that point to secret managers in a different [scope](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes). For example, if you create a secret at the project scope, you cannot reference a secret manager in a different project. To reference secrets across projects, create the secret at the organization or account scope.
+You can create secrets that point to secret managers in a different [scope](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes). For example, you can use secret managers to create secrets at the organization level and allow your project teams to create secrets inside the project.
 
 :::
 
