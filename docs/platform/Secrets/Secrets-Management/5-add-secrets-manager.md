@@ -25,10 +25,10 @@ Looking for specific secret managers? Go to:
 
 ### Step 1: Configure Secret Manager
 
-1. Select your **Account** or **Organization** or **Project**.
-2. Select **Connectors** in **Setup**.
-3. Create new **Connector.** The **Connectors** page appears**.**
-4. Select a Secret Manager type under **Secret Managers**. 
+1. Select your **Account**, **Organization**, or **Project**.
+2. In **Setup**, select **Connectors**.
+3. Create a new **Connector**. The **Connectors** page appears.
+4. Under **Secret Managers**, select a Secret Manager type. 
    
    Go to:
    * [Add an AWS KMS Secret Manager](./7-add-an-aws-kms-secrets-manager.md)
@@ -40,13 +40,15 @@ Looking for specific secret managers? Go to:
 6. If you choose to set this secret manager as the default, select **Use as Default Secret Manager**.
 7. Click **Finish**.
 
-When a new Default Secret Manager is set up, only new Cloud Provider and/Connector secret fields are encrypted and stored in the new Default Secret Manager. Cloud Providers and Connectors that were created before the modification, are unaffected. Where is the Secret for the Secret Manager Stored?
+When a new Default Secret Manager is set up, only new Cloud Provider and/Connector secret fields are encrypted and stored in the new Default Secret Manager. Cloud Providers and Connectors that were created before the modification, are unaffected. 
+
+#### Where is the secret for the Secret Manager stored?
 
 Harness stores all your secrets in your Secret Manager.
 
 The secret you use to connect Harness to your Secret Manager (password, etc) is stored in the Harness Default Secret Manager.
 
-You can't add secrets to the Org or Project scopes using an Account or Org Scope Secret Manager.
+You can add secrets to the Org or Project scopes using an Account or Org Scope Secret Manager. For example, you can use Secret Manager to create secrets at the Org level and allow your project teams to create secrets inside the project.
 
 ### Next steps
 
@@ -60,4 +62,3 @@ You can't add secrets to the Org or Project scopes using an Account or Org Scope
 	+ [Add Text Secrets](../2-add-use-text-secrets.md)
 	+ [Add File Secrets](../3-add-file-secrets.md)
 	+ [Add SSH Keys](../4-add-use-ssh-secrets.md)
-

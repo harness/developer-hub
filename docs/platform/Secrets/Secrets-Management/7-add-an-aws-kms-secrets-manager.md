@@ -19,7 +19,7 @@ This topic describes how to add an AWS KMS Secret Manager in Harness.
 
 ### Step 1: Add a Secret Manager
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
 
 You can add a Connector from any module in your Project in Project setup, or in your Organization, or Account Resources.
 
@@ -32,7 +32,7 @@ In **Secret Managers**, click **AWS KMS**. The **AWS Key Management Service** 
 
 Enter **Name** for your secret manager.
 
-You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, see [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
+You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, go to [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
 Enter **Description** for your secret manager.
 
@@ -55,7 +55,7 @@ Use your AWS IAM user login credentials.
 Either from the JSON for the **Key Policy**, or in the AWS **IAM** console, under **Encryption keys,** gather the **AWS Access Key ID**, **AWS Secret Key**, and **Amazon Resource Name (ARN)**.
 
 ![](../../Secrets/static/add-an-aws-kms-secrets-manager-54.png)
-For more information, see [Finding the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) from Amazon.
+For more information, go to [Finding the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) from Amazon.
 
 #### AWS Access Key ID
 
@@ -93,11 +93,11 @@ Enter the Amazon Resource Name (ARN) of the role that you want to assume. This i
 
 If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 
-For more information, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) from AWS.
+For more information, go to[How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) from AWS.
 
 #### Assume Role Duration (seconds)
 
-This is the AssumeRole Session Duration. See Session Duration in the [AssumeRole AWS docs](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html).
+This is the AssumeRole Session Duration. Go to Session Duration in the [AssumeRole AWS docs](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html).
 
 ### Step 3: Setup Delegates
 
