@@ -121,4 +121,6 @@ The webhook call is made as a POST request, and includes a JSON object containin
 </Tabs>
 ```
 
-9. Now run the pipeline and you'll recieve notificatons on the platform you set-up the same for. 
+9. Now **Run** the pipeline and you'll recieve notificatons on the platform you set-up the same for. 
+
+
