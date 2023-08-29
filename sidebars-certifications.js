@@ -71,6 +71,14 @@ const sidebars = {
       label: "Community",
       href: "/community",
     },
+     // FAQs
+         {
+          type: "doc",
+          label: "FAQs",
+          id: "faqs",
+        },
+
+    },
   ],
 };
 
