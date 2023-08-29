@@ -162,6 +162,7 @@ Shell Script step output variables have a maximum size of 512KB.
 You can specify where to run the script **Target Host** or **On Delegate**.
 
 In you select On Delegate, the script is executed on whichever Delegate runs the step. You can use **Delegate Selector** in **Advanced** to pick the Delegate(s) if needed.
+If you select a target host, the delegate which will connect to the target host is decided by the **Delegate Selector**. Please choose an appropriate selector if only some of the delegates have connectivity to the target host to make sure the correct delegate is chosen.
 
 Go to [select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) for more information.
 
