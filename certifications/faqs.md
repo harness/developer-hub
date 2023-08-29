@@ -23,8 +23,8 @@ This FAQ page is designed to assist customers who are experiencing common issues
 
 If you encounter a "loading..." message followed by an error that says "There was a problem. Please try again later", your exam has gotten "stuck". 
 
-![Error screenshot here](certifications/static/loading-error.png)
-![Error screenshot here](certifications/static/registration-error.png)
+![Error screenshot here](./static/loading-error.png)
+![Error screenshot here](./static/registration-error.png)
 
 #### How do I fix this?
 Please email our certification team at [certifications@harness.io](mailto:certifications@harness.io) to resolve the issue. 
@@ -49,10 +49,10 @@ This usually occurs because right-click is not enabled on the exam. You can manu
 Two options are available:
 
 1. **Are You Still There?**: If you've been idle, an "Are you still there?" pop-up will appear. Click on the "I'm still here" button to restart the timer.
-    ![Are you still there? screenshot here](certifications/static/running-out-of-time.png)
+    ![Are you still there? screenshot here](./static/running-out-of-time.png)
 
 2. **Extend Time Limit**: If you need more time to complete challenges, click on the "Extend Time Limit" button located in the upper right corner of your screen.
-    ![Extend Time screenshot here](certifications/static/instruqt-time-limit.png)
+    ![Extend Time screenshot here](./static/instruqt-time-limit.png)
 
 ---
 
