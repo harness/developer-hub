@@ -190,3 +190,97 @@ The following keywords are reserved and cannot be used in your JSON file:
 * `target`
 * `targetId`
 
+## Pipeline example
+
+The following pipeline shows an end-to-end ingestion workflow. The pipeline consist of a Security Tests stage with two steps:
+
+1. A Run step that generates a JSON data file `/shared/customer_artifacts/example.json` in the format described above.
+
+2. A Custom Ingest step that ingests and normalizes the data from `/shared/customer_artifacts/example.json`. 
+
+![](../static/custom-json-ingest-pipeline-example.png)
+
+```yaml
+pipeline:
+  projectIdentifier: myProject
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: custom-scan-stage
+        identifier: customscanstage
+        type: SecurityTests
+        spec:
+          cloneCodebase: false
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: generate-scan-data
+                  identifier: Run_1
+                  spec:
+                    connectorRef: MYDOCKERHUBCONNECTOR
+                    image: alpine:latest
+                    shell: Sh
+                    command: |-
+                      cat <<EOF >> /shared/customer_artifacts/example.json
+                      {  
+                         "meta":{  
+                            "key":[  
+                               "issueName",  
+                               "fileName"  
+                            ],  
+                            "subproduct":"MyCustomScanner"  
+                         },  
+                         "issues":[  
+                            {  
+                               "subproduct":"MyCustomScanTool",  
+                               "issueName":"Cross Site Scripting",  
+                               "issueDescription":"Lorem ipsum...",  
+                               "fileName":"homepage-jobs.php",  
+                               "remediationSteps":"Fix me fast.",  
+                               "risk":"high",  
+                               "severity":8,  
+                               "status":"open",  
+                               "referenceIdentifiers":[  
+                                  {  
+                                     "type":"cwe",  
+                                     "id":"79"  
+                                  }  
+                               ]  
+                            }  
+                         ]  
+                      }
+                      EOF
+                      ls /shared/customer_artifacts
+                      cat /shared/customer_artifacts/example.json
+              - step:
+                  type: CustomIngest
+                  name: ingest-scan-data
+                  identifier: CustomIngest_1
+                  spec:
+                    mode: ingestion
+                    config: default
+                    target:
+                      name: external-scanner-test
+                      type: repository
+                      variant: main
+                    advanced:
+                      log:
+                        level: info
+                    ingestion:
+                      file: /shared/customer_artifacts/example.json
+          sharedPaths:
+            - /shared/customer_artifacts
+          caching:
+            enabled: false
+            paths: []
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+  identifier: custom_ingestion_JSON_test
+  name: custom ingestion JSON test
+```

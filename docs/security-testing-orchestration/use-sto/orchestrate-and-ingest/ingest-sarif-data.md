@@ -28,15 +28,37 @@ The following workflow describes how to set up an ingestion pipeline for any sca
    
    - If you're using a scanner that does not have a scanner template, use a [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) step. 
  
-### Ingestion step examples
+Here's an example of how to configure a Gitleaks step to ingest a SARIF data file:
+
+```yaml
+- step:
+   type: Gitleaks
+   name: gitleaks
+   identifier: gitleaks
+   spec:
+      mode: ingestion
+      config: default
+      target:
+         name: nodegoat
+         type: repository
+         variant: dev
+      advanced:
+         log:
+         level: debug
+      ingestion:
+         file: /path/of/file.sarif
+   description: gitleaks step
+```
 
 
 
 ### Example workflows
 
-Here are some examples that illustrate the end-to-end workflow for ingesting SARIF data:
+Here are some topics that describe end-to-end workflows for ingesting SARIF data:
 
-- [Example workflow: Ingest SARIF data from a Checkmarx GitHub Action scan](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference#example-workflow-ingest-sarif-data-from-a-checkmarx-github-action-scan)
+- [Gitleaks Scanner Reference](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)
+
+- [Example workflow: Ingest SARIF data from a Checkmarx GitHub Action scan](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference)
 
 - [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-actions)
 

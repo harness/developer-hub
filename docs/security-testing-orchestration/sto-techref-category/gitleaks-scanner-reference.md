@@ -1,5 +1,5 @@
 ---
-title: Gitleaks Scanner Reference
+title: Gitleaks scanner reference
 description: Repository scans with Gitleaks
 sidebar_position: 155
 
@@ -166,14 +166,37 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
+## Gitleaks step configuration example
 
-## Pipeline example
+Here's an example of a configured Gitleaks step.
+
+```yaml
+- step:
+    type: Gitleaks
+    name: gitleaks
+    identifier: gitleaks
+    spec:
+      mode: ingestion
+      config: default
+      target:
+        name: nodegoat
+        type: repository
+        variant: dev
+      advanced:
+        log:
+          level: debug
+      ingestion:
+        file: /path/of/file.sarif
+    description: gitleaks step
+```
+
+## Gitleaks ingestion pipeline example
 
 The following pipeline shows and end-to-end ingestion workflow. The pipeline consist of a Build stage with two steps:
 
-1. A Run step that copies an [example SARIF file](https://github.com/gitleaks/gitleaks/blob/master/testdata/expected/report/sarif_simple.sarif) from the local codebase into `/shared/customer_artifacts/`.
+1. A Run step that copies a Gitleaks data file `/sarif_simple.sarif` from the local codebase into `/shared/customer_artifacts/`.
 
-2. A Gitleaks step that ingests the `/shared/customer_artifacts/sarif_simple.sarif` file.
+2. A Gitleaks step that auto-detects the data file type (SARIF) and then ingests and normalizes the data from `/shared/customer_artifacts/sarif_simple.sarif`. 
 
 ![](./static/gitleaks-ingestion-example-pipeline.png)
 
@@ -204,7 +227,7 @@ pipeline:
                       # ls /harness/testdata/expected/report
                       cp /harness/testdata/expected/report/sarif_simple.sarif /shared/customer_artifacts/
                       # ls /shared/customer_artifacts/
-                      cat /shared/customer_artifacts/sarif_simple.sarif
+                      # cat /shared/customer_artifacts/sarif_simple.sarif
               - step:
                   type: Gitleaks
                   name: gitleaks_ingest
@@ -213,9 +236,9 @@ pipeline:
                     mode: ingestion
                     config: default
                     target:
-                      name: gitleaks-example
+                      name: mycoderepo
                       type: repository
-                      variant: master
+                      variant: dev
                     advanced:
                       log:
                         level: info
@@ -238,7 +261,7 @@ pipeline:
     ci:
       codebase:
         connectorRef: MYGITHUBCONNECTOR
-        repoName: gitleaks
+        repoName: mycoderepo
         build: <+input>
 
 
