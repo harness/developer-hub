@@ -96,7 +96,7 @@ Follow the detailed instructions [here](https://developer.harness.io/docs/contin
 ```
 :::info
 
-Currently, this feature is behind the feature flag, `PIE_WEBHOOK_NOTIFICATION`. Contact [Harness Support](support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag, `PIE_WEBHOOK_NOTIFICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
