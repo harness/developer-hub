@@ -47,7 +47,7 @@ To create an allowlist and add IP addresses to it, do the following:
 
 4. Enter a **Name** for the allowlist, and then select **Continue**.
 
-   ![](./static/allowlist-overview.png)
+   ![](../security/static/allowlist-overview.png)
 
 ## Define the IP range
 
@@ -57,7 +57,7 @@ To create an allowlist and add IP addresses to it, do the following:
    - **API**: Harness checks the API key in the request and allows or blocks the IP address.
 3. Select **Save and Continue**.
 
-   ![](./static/allowlist-define-range.png)
+   ![](../security/static/allowlist-define-range.png)
   
 ## Test IP
 
@@ -65,7 +65,7 @@ To create an allowlist and add IP addresses to it, do the following:
 2. Select **Test**.
 3. Select **Finish**.
 
-   ![](./static/allowlist-test-ip.png)
+   ![](../security/static/allowlist-test-ip.png)
 
    You can create multiple allowlists and enable or disable them as needed.
 
@@ -77,7 +77,7 @@ The IP addresses configured in the allowlist now appear in the **IP Allowlist**.
 2. Select the three-dot menu to edit or delete an allowlist.
    Select **Check any IP for allowlist** to check if an IP address is allowed.
 
-   ![](./static/allowlist-check-ip.png)
+   ![](../security/static/allowlist-check-ip.png)
 
    Enter an IP address or a range of IP addresses and select **Check**.
    

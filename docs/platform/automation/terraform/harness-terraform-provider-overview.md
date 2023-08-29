@@ -2,6 +2,9 @@
 title: Harness Terraform Provider overview
 description: An overview of the Harness Terraform Provider
 sidebar_position: 1
+redirect_from:
+  - /docs/platform/Resource-Development/Terraform/harness-terraform-provider-overview
+
 ---
 
 The Terraform tool enables the management and provisioning of infrastructure through code. Using Terraform, you can easily build, modify, and version low-level components like compute instances, storage, and networking, as well as high-level components like DNS entries and SaaS features.

@@ -1,4 +1,5 @@
 ---
+sidebar_position: 7
 hide_table_of_contents: true
 title: Approvals
 description: Set-up approvals in CD Pipeline. 
@@ -19,7 +20,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-This tutorial demonstrates how to use Approvals in Harness CD pipelines. 
+This tutorial demonstrates how to use approvals in Harness CD pipelines. 
 
 :::info
 

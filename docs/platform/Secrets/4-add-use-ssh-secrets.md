@@ -52,7 +52,7 @@ Configure the **SSH Credential** settings as follows.
 
    :::
 
-4. In **Select or create a SSH Key**, create or select an [Encrypted File Secret](./3-add-file-secrets.md) that contains the relevant SSH Key file.
+4. In **Select or create a SSH Key**, create or select an [Encrypted File Secret](../secrets/3-add-file-secrets.md) that contains the relevant SSH Key file.
 
    :::info note
 
@@ -60,7 +60,7 @@ Configure the **SSH Credential** settings as follows.
 
    :::
 
-5. Enter the [SSH Key **Passphrase**](https://www.ssh.com/ssh/passphrase), if one is required. This is **not** required by default for AWS and many other platforms. Passphrases are stored as Harness [Encrypted Text Secrets](./2-add-use-text-secrets.md).
+5. Enter the [SSH Key **Passphrase**](https://www.ssh.com/ssh/passphrase), if one is required. This is **not** required by default for AWS and many other platforms. Passphrases are stored as Harness [Encrypted Text Secrets](../secrets/2-add-use-text-secrets.md).
 6. For **SSH Port**, leave the default port **22** or enter a different port, if needed, and then select **Save and Continue**.
 7. Enter the **Host Name** of the remote server you want to SSH into. For example, if it is an AWS EC2 instance, it might be something like `ec2-76-939-110-125.us-west-1.compute.amazonaws.com`.
 8. Select **Test Connection**.

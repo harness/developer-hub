@@ -15,7 +15,7 @@ This topic describes how to add an AWS KMS Secret Manager in Harness.
 ### Before you begin
 
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md).
-* [Harness Secret Manager Overview](./1-harness-secret-manager-overview.md).
+* [Harness Secret Manager Overview](../../secrets/Secrets-Management/1-harness-secret-manager-overview.md).
 
 ### Step 1: Add a Secret Manager
 
@@ -27,7 +27,7 @@ In **Connectors**, click **Connector**.
 
 In **Secret Managers**, click **AWS KMS**. The **AWS Key Management Service** settings appear.
 
-![](../../Secrets/static/add-an-aws-kms-secrets-manager-53.png)
+![](../../secrets/static/add-an-aws-kms-secrets-manager-53.png)
 ### Step 2: Overview
 
 Enter **Name** for your secret manager.
@@ -54,14 +54,14 @@ Use your AWS IAM user login credentials.
 
 Either from the JSON for the **Key Policy**, or in the AWS **IAM** console, under **Encryption keys,** gather the **AWS Access Key ID**, **AWS Secret Key**, and **Amazon Resource Name (ARN)**.
 
-![](../../Secrets/static/add-an-aws-kms-secrets-manager-54.png)
+![](../../secrets/static/add-an-aws-kms-secrets-manager-54.png)
 For more information, see [Finding the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) from Amazon.
 
 #### AWS Access Key ID
 
 Click **Create or Select a Secret**.
 
-In the secret settings dialog, you can create/select a [Secret](../2-add-use-text-secrets.md) and enter your AWS Access Key as it's value.
+In the secret settings dialog, you can create/select a [Secret](../../secrets/2-add-use-text-secrets.md) and enter your AWS Access Key as it's value.
 
 The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to connect to Secret Manager.
 
@@ -69,13 +69,13 @@ The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to 
 
 Click **Create or Select a Secret**.
 
-You can create a new [Secret](../2-add-use-text-secrets.md) with your Access Key ID's secret key as the **Secret Value**, or use an existing secret.
+You can create a new [Secret](../../secrets/2-add-use-text-secrets.md) with your Access Key ID's secret key as the **Secret Value**, or use an existing secret.
 
 #### AWS ARN
 
 Click **Create or Select a Secret**.
 
-As explained above, you can create a new [Secret](../2-add-use-text-secrets.md) with your ARN as the **Secret Value**, or use an existing secret.
+As explained above, you can create a new [Secret](../../secrets/2-add-use-text-secrets.md) with your ARN as the **Secret Value**, or use an existing secret.
 
 ### Option: Assume IAM Role on Delegate
 

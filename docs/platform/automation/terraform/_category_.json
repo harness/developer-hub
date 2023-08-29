@@ -1,15 +1,15 @@
 {
-    "label": "APIs",
+    "label": "Terraform Provider",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
-    "position": 3,
-
+    "position": 1,
     "link": {
         "type": "generated-index",
-        "title": "APIs"
+        "title": "Harness Terraform Provider"
     },
     "customProps": {
-        "helpdocs_category_id": "pm96bpz4kf"
+        
+        "helpdocs_category_id": "7cude5tvzh"
     }
 }

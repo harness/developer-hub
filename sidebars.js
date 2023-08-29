@@ -355,7 +355,7 @@ const sidebars = {
           /*
           type: "doc",
           label: "FAQs",
-          id: "frequently-asked-questions",
+          id: "faqs",
           */
           type: "category",
           label: "FAQs",
@@ -364,7 +364,7 @@ const sidebars = {
             slug: "/faqs",
             /* Uncomment this block while we have a landing page for module docs
             type: "doc",
-            id: "frequently-asked-questions",
+            id: "faqs",
           },
           */
           },

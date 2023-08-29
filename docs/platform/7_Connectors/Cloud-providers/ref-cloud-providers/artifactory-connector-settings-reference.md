@@ -83,7 +83,7 @@ Username for the Artifactory account user.
 
 #### Password
 
-Select or create a new [Harness Encrypted Text secret](../../../Secrets/2-add-use-text-secrets.md).
+Select or create a new [Harness Encrypted Text secret](../../../secrets/2-add-use-text-secrets.md).
 
 ### Artifact Details
 

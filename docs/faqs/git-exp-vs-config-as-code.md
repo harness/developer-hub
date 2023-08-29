@@ -140,7 +140,7 @@ For more information on Harness Terraform Provider, go to:
 
 For more information on Harness APIs, go to:
 
-- [Get started with Harness APIs](/docs/platform/automation/APIs/api-quickstart)
+- [Get started with Harness APIs](/docs/platform/automation/api/api-quickstart)
 - [API Docs](https://apidocs.harness.io/)
 
 

@@ -617,7 +617,7 @@ If you select **Specify credentials here**, you must provide Microsoft Azure app
 2. In the Harness Azure Cloud Provider settings, select the **Environment**: Either **Azure Global** or **US Government**.
 3. Input the **Application (client) ID** from Azure in the connector's **Application Id** field.
 4. Input the **Directory (tenant) ID** from Azure in the connector's **Tenant Id** field.
-5. Provide an authentication key for your app. For **Authentication**, select either **Secret** or **Certificate**, and then select or create a [Harness Text Secret](../../../platform/Secrets/2-add-use-text-secrets.md) or [Harness File Secret](../../../platform/Secrets/3-add-file-secrets.md).
+5. Provide an authentication key for your app. For **Authentication**, select either **Secret** or **Certificate**, and then select or create a [Harness Text Secret](../../secrets/2-add-use-text-secrets.md) or [Harness File Secret](../../secrets/3-add-file-secrets.md).
 
    Harness supports only PEM files. Harness doesn't support PFX files.
 

@@ -2,6 +2,9 @@
 title: Use the Setting API to enable SCIM API authentication through JWT
 description: Enable SCIM API authentication through JSON Web Tokens.
 sidebar_position: 3
+redirect_from:
+  - /docs/platform/Resource-Development/APIs/default-settings-for-jwt-token
+  - /docs/platform/automation/api/default-settings-for-jwt-token
 ---
 
 You can use JSON Web Tokens (JWT) for authentication with Harness SCIM APIs. To do this, you use the [Harness Setting API](https://apidocs.harness.io/tag/Setting) to configure the settings corresponding to JWT.
@@ -10,7 +13,7 @@ You can use JSON Web Tokens (JWT) for authentication with Harness SCIM APIs. To 
 
 - You need **View** and **Edit** [permissions](../../role-based-access-control/permissions-reference.md) for **Default Settings** at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
 - You must be able to create service accounts.
-- You need an [API key and an unexpired token](/docs/platform/automation/APIs/add-and-manage-api-keys).
+- You need an [API key and an unexpired token](/docs/platform/automation/api/add-and-manage-api-keys).
 - You need your [Harness account ID](./api-quickstart.md#get-your-account-id).
 
 ## Prepare the service account
