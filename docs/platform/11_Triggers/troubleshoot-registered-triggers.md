@@ -12,9 +12,9 @@ import TabItem from '@theme/TabItem';
 Currently, this feature is behind the feature flag `CDS_TRIGGER_ACTIVITY_PAGE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-You can troubleshoot webhook failures of your registered triggers in the Harness platform.
+You can troubleshoot failures of your cURL or webhook initiated triggers in the Harness platform.
 
-After a trigger runs, you can use the **Trigger Explorer** to troubleshoot cURL- or webhook-initiated failures by entering the `eventCorrelationId` from the response for cURL-initiated triggers or `data` for webhook-initiated triggers to get the status and payload.
+After a trigger runs, you can use the **Trigger Explorer** to troubleshoot cURL or webhook initiated failures. For cURL, you enter the `eventCorrelationId` from the response. For webhooks, you enter the `data` value from the webhook response payload.
 
 ## Troubleshoot webhook failures
 
@@ -37,7 +37,7 @@ To troubleshoot webhook failures, do the following:
 
    Harness returns the following information:
 
-   - **Event Correlation ID**
+   - **Event Correlation Id**
    - **Trigger Name**
    - **Trigger Status**
    - **Message**
@@ -77,7 +77,7 @@ In this example, you enter the `eventCorrelationId` value in the **Search** fiel
 
    Harness returns the following information:
 
-   - **Event Correlation ID**
+   - **Event Correlation Id**
    - **Trigger Name**
    - **Trigger Status**
    - **Message**
