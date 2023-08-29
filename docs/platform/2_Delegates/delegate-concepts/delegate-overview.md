@@ -185,17 +185,25 @@ To ensure a specific delegate is used by a Harness entity, you can add tags to d
 
 For more information, go to [Use delegate selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
-### Delegate log file
+### Delegate logs
 
-The delegate creates a new log file each day, named **delegate.log**, and its maximum size is 50MB. 
+The delegate creates a new log daily, named `delegate.log`, and its maximum size is 50MB. 
 
-The log file is saved with the day's date. If a log file grows beyond 50MB in a day, the log file is renamed with today's date, and a new log file is created.
+The log file is saved with the day's date. If a log file exceeds 50MB in a day, it is renamed with today's date, and a new log file is created.
 
 Harness keeps log files for today and the previous 10 days (up to one 1GB).
 
 The delegate logs are available in the Harness UI. When a pipeline runs and an error occurs due to the delegate, the **View Delegate Tasks Logs** option becomes available.
 
 ![](./static/view-delegate-task-logs.png)
+
+Delegate logs are also sent to Harness by default. These Stackdriver logs are stored in Harness's GCP account. You can stop delegates from sending delegate logs to Harness by blocking outgoing traffic from your VPC, but you will receive errors similar to the below messages. 
+
+```
+2023-03-11 16:44:19,020 [1.0.12345] 893 [remote-stackdriver-log-submitter] INFO  io.harness.network.Http - Testing connectivity [URL=https://logging.googleapis.com:123] 
+
+2023-03-11 16:44:19,117 [1.0.12345] 893 [remote-stackdriver-log-submitter] INFO  io.harness.network.Http - Could not connect: java.net.ConnectException: Connection refused (Connection refused) [URL=https://logging.googleapis.com:123]
+```
 
 ### Delegate permissions
 
