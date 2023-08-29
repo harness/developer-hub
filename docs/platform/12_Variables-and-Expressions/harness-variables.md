@@ -1302,6 +1302,29 @@ Use the following fully qualified expression to get the execution URL for a spec
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.executionUrl>
 ```
 
+### <+steps.STEP_ID.retryCount>
+
+When you set the failure strategy to **Retry Step**, you can specify the retry count for a step or all steps in the stage.
+
+Harness includes a `retryCount` built-in expression that resolves to the total number of times a step was retried:
+
+```
+<+execution.steps.STEP_ID.retryCount>
+```
+
+You can use this expression in a Shell Script step script anywhere after the step that you identify in the expression. 
+
+For example, here is a script that resolves the retry count for the step with the Id `ShellScript_1`:
+
+```
+echo "retry count of ShellScript_1: <+execution.steps.ShellScript_1.retryCount>"
+```
+
+During pipeline execution, the expression would resolve to something like this:
+
+```
+retry count of ShellScript_1: 2
+```
 
 ## Instances
 
