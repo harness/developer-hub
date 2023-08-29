@@ -38,11 +38,19 @@ async function docsPluginEnhanced(context, options) {
         return null;
       }
       const outPutPath = path.join(outDir, destPath);
-      //Will need to change _dirname when we change the filename
+
+      //Will need to change the filename variable when we change the file
       const clientRedirectNetlifyPath = path.resolve(
         __dirname,
         "../../archive/redirects/client-redirect-netlify-format-aug-23-2023.txt"
       );
+
+      //User Generated File
+      const userRedirectNetlifyPath = path.resolve(
+        __dirname,
+        "../../server-side-redirects.txt"
+      );
+
       const exists = fs.existsSync(outPutPath);
       // const exists2 = fs.existsSync(clientRedirectNetlifyPath);
       // console.log("client reditect path ",  clientRedirectNetlifyPath);
@@ -90,6 +98,34 @@ async function docsPluginEnhanced(context, options) {
         return title;
       });
 
+      //User Generated Server Side Re-Directs
+      if (!exists) {
+        const userRedirectsPath = path.resolve(
+          __dirname,
+          "../../_history-redirects"
+        );
+        fs.copySync(userRedirectsPath, outPutPath);
+        fs.appendFileSync(outPutPath, strRedirects);
+        fs.appendFileSync(
+          outPutPath,
+          "\r\n\r\n# user-redirect-netlify-format appeneded from server-side-redirects.txt: \r\n\r\n"
+        );
+        //User Generated Client Re-riects
+        fs.readFile(userRedirectNetlifyPath, function (err, data) {
+          if (err) throw err;
+          fs.appendFileSync(
+            outPutPath,
+            "\r\n\r\n# user-redirect-netlify-format appeneded from server-side-redirects.txt: \r\n\r\n"
+          );
+          fs.appendFileSync(outPutPath, data, function (err) {
+            if (err) throw err;
+          });
+        });
+      } else {
+        fs.appendFileSync(outPutPath, strRedirects);
+      }
+
+      //Historic Client Re-Directs from client-redirects.js
       if (!exists) {
         const historyRedirectsPath = path.resolve(
           __dirname,
@@ -97,15 +133,16 @@ async function docsPluginEnhanced(context, options) {
         );
         fs.copySync(historyRedirectsPath, outPutPath);
         fs.appendFileSync(outPutPath, strRedirects);
-        fs.appendFileSync(
-          outPutPath,
-          "\r\n# client-redirect-netlify-format appeneded from archives \r\n"
-        );
+        // fs.appendFileSync(
+        //   outPutPath,
+        //   "\r\n\r\n# client-redirect-netlify-format appeneded from Archives \r\n\r\n"
+        // );
+        //Historic Client Re-riects
         fs.readFile(clientRedirectNetlifyPath, function (err, data) {
           if (err) throw err;
           fs.appendFileSync(
             outPutPath,
-            "\r\n# client-redirect-netlify-format appeneded from archives \r\n"
+            "\r\n\r\n# client-redirect-netlify-format appeneded from Archives: \r\n\r\n"
           );
           fs.appendFileSync(outPutPath, data, function (err) {
             if (err) throw err;

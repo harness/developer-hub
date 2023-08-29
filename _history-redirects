@@ -2,7 +2,5 @@
 # Sample entry: {from} <space> {to}
 # More info: https://docs.netlify.com/routing/redirects/
 
-# History redirects
-# {from} {to}
+# Redirects generated from Front Matter:
 
-# Redirects generated from front matters
