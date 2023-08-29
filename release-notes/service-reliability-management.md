@@ -22,7 +22,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
-- The **Service Health** tab within the monitored service details page has been renamed the **Change Impact** tab. (SRM-15261)
+- The **Service Health** tab on the monitored service details page has been renamed to **Change Impact**. (SRM-15261)
 
 
 ### Early access features
