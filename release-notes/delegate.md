@@ -86,7 +86,7 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 #### Version 80310
 
-- Due to intermittent issues with cf CLI, the Tanzu Application Services (TAS) Rolling deployment step failed to create the application. (CDS-75250)
+- Due to intermittent issues with the cf CLI, the Tanzu Application Services (TAS) Rolling deployment step failed to create the application. (CDS-75250)
 
   Now, before performing a rolling deployment, the TAS Rolling deployment step first verifies that the application exists. If the application does not exist, it deploys the application without using the rolling deployment strategy. If the application exists, it performs a rolling upgrade. 
 
