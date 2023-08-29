@@ -28,7 +28,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 #### What CD platforms and tools does Harness support?
 
-Harness [supports all of the most common platforms](../../getting-started/supported-platforms-and-technologies.md) and deployment use cases.
+Harness [supports all of the most common platforms](../getting-started/supported-platforms-and-technologies.md) and deployment use cases.
 
 Here's a summary of Harness CD support for popular platforms and tools.
 
@@ -55,7 +55,7 @@ Notes:
 
 #### How does Harness calculate pricing for CD?
 
-See [Service-based licensing and usage for CD](../../continuous-delivery/get-started/service-licensing-for-cd.md).
+See [Service-based licensing and usage for CD](../continuous-delivery/get-started/service-licensing-for-cd.md).
 
 #### My definition of a service differs from the above standard definition. How will pricing work in my case?
 
@@ -135,7 +135,7 @@ Harness does not count an instance/pod if it no longer exists. For example, if t
 
 Harness supports all deployment strategies, such as blue/green, rolling, and canary.
 
-See [Deployment concepts and strategies](../../continuous-delivery/manage-deployments/deployment-concepts.md).
+See [Deployment concepts and strategies](../continuous-delivery/manage-deployments/deployment-concepts.md).
 
 #### How do I filter deployments on the Deployments page?
 
@@ -153,7 +153,7 @@ Yes, you can enable the Role permission Pipeline Execute and then apply that Rol
 
 ![](./static/continuous-delivery-faqs-02.png)
 
-See [Manage roles](../../platform/role-based-access-control/add-manage-roles).
+See [Manage roles](../platform/role-based-access-control/add-manage-roles).
 
 #### Can I deploy a service to multiple infrastructures at the same time?
 
@@ -169,19 +169,19 @@ Yes, select **Re-run Pipeline**.
 
 ### Kubernetes
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### What is a Harness Kubernetes deployment?
 
 Harness takes the artifacts and Kubernetes manifests you provide and deploys them to the target Kubernetes cluster. You can simply deploy Kubernetes objects via manifests and you can provide manifests using remote sources and Helm charts.
 
-See the [Kubernetes deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) and [Kubernetes deployments overview](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md).
+See the [Kubernetes deployment tutorial](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) and [Kubernetes deployments overview](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md).
 
 For detailed instructions on using Kubernetes in Harness, see the [Kubernetes how-tos](/docs/category/kubernetes).
 
 #### What workloads can Harness deploy in a Kubernetes cluster?
 
-See [What can I deploy in Kubernetes?](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
+See [What can I deploy in Kubernetes?](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
 
 #### Does Harness support everything in Kubernetes?
 
@@ -232,7 +232,7 @@ Harness Kubernetes deployments also support all deployment strategies (canary, b
 
 Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Here's the difference:
 
-* Harness [Kubernetes deployments](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
+* Harness [Kubernetes deployments](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
 Harness Kubernetes deployments also support all deployment strategies (canary, blue/green, rolling, and so on).
 * For Harness [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md), you must always have Helm and Tiller (for Helm v2) running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases. You can perform a Rolling deployment strategy only (no canary or blue/green). For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to the Rolling deployment strategy.
 	+ **Versioning:** Harness Kubernetes deployments version all objects, such as ConfigMaps and secrets. Native Helm does not.
@@ -246,13 +246,13 @@ Harness Kubernetes deployments using Helm charts can involve adding your artifac
 
 In addition to this method, you can also deploy the Helm chart without adding your artifact to Harness. Instead, the Helm chart identifies the artifact. Harness installs the chart, gets the artifact from the repo, and then installs the artifact. We call this a *Helm chart deployment*.
 
-See [Deploy helm charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts.md).
+See [Deploy helm charts](../continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts.md).
 
 #### Can I run Kubernetes jobs?
 
 Yes. In Harness Kubernetes deployments, you define jobs in the Harness Service **Manifests**. Next you add the Apply step to your Harness workflow to execute the job.
 
-See [Run Kubernetes jobs](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/run-kubernetes-jobs.md).
+See [Run Kubernetes jobs](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/run-kubernetes-jobs.md).
 
 #### Can I deploy a Kubernetes resources using CRDs?
 
@@ -272,17 +272,17 @@ In some cases, you might have resources that you do not want to deploy as part o
 
 workflows include an **Apply** step that allows you to deploy any resource you have set up in the Service **Manifests** section.
 
-See [Deploy manifests separately using the Apply step](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md).
+See [Deploy manifests separately using the Apply step](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md).
 
 #### Can I ignore a manifest during deployment?
 
 You might have manifest files for resources that you do not want to deploy as part of the main deployment.
 
-Instead, you tell Harness to ignore these files and then apply them separately using the Harness [Kubernetes Apply step](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.md).
+Instead, you tell Harness to ignore these files and then apply them separately using the Harness [Kubernetes Apply step](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.md).
 
 Or you can simply ignore them until you wish to deploy them as part of the main deployment.
 
-See [Ignore a manifest file during deployment](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md).
+See [Ignore a manifest file during deployment](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md).
 
 #### Can I pull an image from a private registry?
 
@@ -290,14 +290,14 @@ Typically, If the Docker artifact source is in a private registry, Harness has a
 
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml file added in the Service **Manifests** section must contain `dockercfg: <+artifact.imagePullSecret>` . This key will import the credentials from the Docker credentials file in the artifact.
 
-See [Pull an image from a private registry for Kubernetes](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes.md).
+See [Pull an image from a private registry for Kubernetes](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes.md).
 
 #### Can I use remote sources for my manifests?
 
 You can use your Git repo for the configuration files in **Manifests** and Harness uses them at runtime. You have the following options for remote files:
 
-* **Kubernetes Specs in YAML format** - These files are simply the YAML manifest files stored on a remote Git repo. See [Add Kubernetes manifests](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md).
-* **Helm Chart from Helm Repository** - Helm charts files stored in standard Helm syntax in YAML on a remote Helm repo. See [Helm chart deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
+* **Kubernetes Specs in YAML format** - These files are simply the YAML manifest files stored on a remote Git repo. See [Add Kubernetes manifests](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md).
+* **Helm Chart from Helm Repository** - Helm charts files stored in standard Helm syntax in YAML on a remote Helm repo. See [Helm chart deployment tutorial](../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
 * **Kustomization Configuration** — kustomization.yaml files stored on a remote Git repo. See [Kustomize deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart.md).
 * **OpenShift Template** — OpenShift params file from a Git repo.
 
@@ -309,7 +309,7 @@ Remote files can also use Go templating.
 
 Yes. you can use [Go templating](https://godoc.org/text/template) and Harness built-in variables in combination in your **Manifests** files.
 
-See [Example Kubernetes manifests using Go templating](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
+See [Example Kubernetes manifests using Go templating](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
 
 #### Can I provision Kubernetes infrastructure?
 
@@ -325,9 +325,9 @@ Yes, you can use:
 
 You can use canary, rolling, and blue/green. See:
 
-* [Create a Kubernetes canary deployment](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
-* [Create a Kubernetes rolling deployment](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md)
-* [Create a Kubernetes blue/green deployment](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
+* [Create a Kubernetes canary deployment](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
+* [Create a Kubernetes rolling deployment](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md)
+* [Create a Kubernetes blue/green deployment](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
 
 #### Can I select namespaces during deployment?
 
@@ -349,7 +349,7 @@ Yes. When you deploy a Kubernetes workload using Harness, you set the number of 
 
 With the Scale step, you can scale this number of running pods up or down, by count or percentage.
 
-See [Scale Kubernetes pods](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas.md).
+See [Scale Kubernetes pods](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas.md).
 
 
 #### Can I prune resources?
@@ -362,7 +362,7 @@ Yes. You can manually delete Kubernetes resources using the [Delete](/docs/conti
 
 Harness includes a Delegate step to remove any deployed Kubernetes resources.
 
-See [Delete Kubernetes resources](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md).
+See [Delete Kubernetes resources](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md).
 
 #### Can I use Helm 3 with Kubernetes?
 
@@ -372,7 +372,7 @@ You can select Helm 3 when you create the service, or upgrade Helm 2 to Helm 3.
 
 ![](./static/continuous-delivery-faqs-04.png)
 
-See [Deploy Helm charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts.md).
+See [Deploy Helm charts](../continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts.md).
 
 #### Can I use Helm Chart Hooks in Kubernetes deployments?
 
@@ -384,13 +384,13 @@ A Harness Kubernetes deployment runs `kubectl apply` for manifest files. There
 
 ### Terraform
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### How does Harness support Terraform?
 
 Harness lets you use Terraform to provision infrastructure as part of your deployment process. Harness can provision any resource that is supported by a Terraform [provider or plugin](https://www.terraform.io/docs/configuration/providers.html).
 
-For an overview of the process see [Terraform provisioning with Harness](../../continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness.md). 
+For an overview of the process see [Terraform provisioning with Harness](../continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness.md). 
 
 #### Do I need to deploy an application to use Terraform?
 
@@ -418,11 +418,11 @@ Next, you add the Terraform Apply step, select **Inherit from Plan** in **Con
 
 Yes. You can add a **Terraform Destroy** step to remove any provisioned infrastructure, just like running the `terraform destroy` command. See [destroy](https://www.terraform.io/docs/commands/destroy.html) from Terraform.
 
-See [Remove provisioned infrastructure with the Terraform Destroy step](../../continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy.md).
+See [Remove provisioned infrastructure with the Terraform Destroy step](../continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy.md).
 
 ### Harness Configure as Code
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### Can I create my deployments using YAML?
 
@@ -430,21 +430,21 @@ Yes. Harness allows you to configure settings such as pipelines, triggers, conn
 
 ![](./static/continuous-delivery-faqs-06.png)
 
-See [Harness YAML quickstart](../../platform/8_Pipelines/harness-yaml-quickstart.md).
+See [Harness YAML quickstart](../platform/8_Pipelines/harness-yaml-quickstart.md).
 
 ### Harness Git Experience
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### Can I sync my Harness project with my repo?
 
 Yes. You can sync your Harness project with a Git repo. The Harness project can be synced with one repo and the connectors used in the project can be synced in the same repo or separately with other repos or branches.
 
-See [Harness Git Experience Quickstart](../../platform/10_Git-Experience/configure-git-experience-for-harness-entities.md).
+See [Harness Git Experience Quickstart](../platform/10_Git-Experience/configure-git-experience-for-harness-entities.md).
 
 ### Community Edition
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### Do you have a free version of Harness CD?
 
@@ -476,7 +476,7 @@ If you would like us to stop processing your data, or if you have any other ques
 
 ### Azure Web Apps
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### Can I deploy Azure Web Apps?
 
@@ -499,7 +499,7 @@ The Rolling strategy doesn't suit Azure Web App deployments, as they use slots f
 
 ### AWS ASG
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### What is an ASG deployment?
 
@@ -535,7 +535,7 @@ AWS has the following limitations to keep in mind:
 
 ### AWS ECS
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### What is a Harness ECS deployment?
 
@@ -634,7 +634,7 @@ During failure scenarios, ECS circuit breaker performs a rollback automatically 
 
 ### AWS Lambda
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### What is a Lambda deployment?
 
@@ -670,7 +670,7 @@ Harness supports all of the popular Git platforms for storing your function defi
 
 ### Spot Elastigroup
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### What is a Spot deployment in Harness?
 
@@ -684,7 +684,7 @@ You can deploy AWS ASGs using Harness and the Spot Elastigroup management platfo
 
 ### Google Cloud Functions
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### What is a Google Cloud Function deployment?
 
@@ -712,7 +712,7 @@ Harness supports the following:
 
 ### AWS Lambda (Serverless.com Framework)
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### What is a Lambda Serverless.com Framework deployment?
 
@@ -739,7 +739,7 @@ Serverless Lambda deployments are versioned using the timestamp of their deploym
 
 ### Tanzu Application Services (TAS)
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 ### What is a TAS deployment?
 
@@ -755,7 +755,7 @@ Basic, canary, blue green, and rolling.
 
 ### Traditional deployments
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 
 #### What are traditional deployments?
@@ -776,9 +776,9 @@ Blank canvas, basic, rolling, and canary.
 
 Harness provides deployment support for all of the major artifact, approval, provisioner, and cloud platforms.
 
-Harness also supports uncommon, custom platforms using platform agnostic connectors and [custom triggers](../../platform/11_Triggers/trigger-deployments-using-custom-triggers.md).
+Harness also supports uncommon, custom platforms using platform agnostic connectors and [custom triggers](../platform/11_Triggers/trigger-deployments-using-custom-triggers.md).
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### What is a Harness custom deployment?
 
@@ -790,7 +790,7 @@ Custom deployments use shell scripts to connect to target platforms, obtain targ
 
 ### Harness entities
 
-For an overview of Harness entities, see [Learn Harness' key concepts](../../getting-started/learn-harness-key-concepts.md).
+For an overview of Harness entities, see [Learn Harness' key concepts](../getting-started/learn-harness-key-concepts.md).
 
 #### What are organizations and projects?
 
@@ -858,7 +858,7 @@ See Harness [Connectors how-tos](/docs/category/connectors).
 
 ### Secrets management
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### How does Harness manage secrets?
 
@@ -870,7 +870,7 @@ See [Harness secrets management overview](/docs/platform/Secrets/Secrets-Manage
 
 Harness includes built-in expressions to identify settings.
 
-See [Built-in Harness variables reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
+See [Built-in Harness variables reference](../platform/12_Variables-and-Expressions/harness-variables.md).
 
 Most settings in Harness pipelines allow you to use fixed values, runtime inputs, and expressions.
 
@@ -880,7 +880,7 @@ See [Fixed values, runtime inputs, and expressions](/docs/platform/20_References
 
 Yes. Everything in Harness can be referenced by a fully qualified name (FQN). The FQN is the path to a setting in the YAML definition of your pipeline.
 
-See [Built-in Harness variables reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
+See [Built-in Harness variables reference](../platform/12_Variables-and-Expressions/harness-variables.md).
 
 #### Can I enter values at runtime?
 

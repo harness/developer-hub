@@ -131,7 +131,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "",
-          link: "/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code",
+          link: "/docs/faqs/git-exp-vs-config-as-code",
       },
     ],
   }

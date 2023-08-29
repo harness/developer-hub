@@ -47,14 +47,14 @@ No. Targets are auto-discovered as they are used in the Applications when evalua
             cfClient.boolVariation("toggle", target, false);  
         log.info("Boolean variation is " + result);
 ```
-For more information, see [Java SDK reference](../../feature-flags/ff-sdks/server-sdks/integrate-feature-flag-with-java-sdk.md) and [Add targets](/docs/feature-flags/ff-target-management/add-targets).
+For more information, see [Java SDK reference](../feature-flags/ff-sdks/server-sdks/integrate-feature-flag-with-java-sdk.md) and [Add targets](/docs/feature-flags/ff-target-management/add-targets).
 
 ## What is the difference between client-side and server-side SDKs?
 
 * Server SDKs are supposed to be used in a trusted environment, like servers or Kubernetes pods. Server SDKs synchronize flag rulesets in the background and keep an in-memory cache. When an application makes the call for flag value, the evaluation happens locally, and no network call is made. Hence, it is very fast and efficient.
 * Client SDKs are designed to work in a non-trusted environment, like user browsers or mobile phones. Feature evaluation happens on the server-side, and the SDK only gets the evaluated results of the flags.
 
-For more information, see [Client-side and server-side SDKs](../../feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md).
+For more information, see [Client-side and server-side SDKs](../feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md).
 
 ## How does the streaming mode work?
 
@@ -64,7 +64,7 @@ Streaming provides a persistent connection to the SDKs. Harness Feature-Flags us
 * Avoids any delays by delivering real-time updates to end-users/targets.
 * Ensures that every change that is made is dispersed to every user in real-time propagating them across every server.
 
-For more information, see [Communication strategy between SDKs and Harness Feature Flags](../../feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags.md).
+For more information, see [Communication strategy between SDKs and Harness Feature Flags](../feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags.md).
 
 ## How does the metric aggregate/batch the data before sending it to Harness?
 

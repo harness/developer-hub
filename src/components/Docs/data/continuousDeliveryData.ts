@@ -592,7 +592,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.cd,
           description:
             "",
-          link: "/docs/frequently-asked-questions/harness-faqs/continuous-delivery-faqs",
+          link: "/docs/faqs/continuous-delivery-faqs",
         },
       ],
     },

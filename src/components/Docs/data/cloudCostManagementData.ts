@@ -118,7 +118,7 @@ import {
             module: MODULES.ccm,
             description:
               "Find answers to frequently asked Harness CCM questions.",
-            link: "/docs/frequently-asked-questions/harness-faqs/cloud-cost-management-faqs",
+            link: "/docs/faqs/cloud-cost-management-faqs",
           },
         ],
     },

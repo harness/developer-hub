@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This article addresses some frequently asked questions about the security features in Harness.
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 ## General
 
@@ -20,12 +20,12 @@ The set of security features that Harness provides includes the following featur
 
 * [User management](/docs/platform/role-based-access-control/add-users)
 * [User group management](/docs/platform/role-based-access-control/add-user-groups)
-* [Role management](../../platform/role-based-access-control/add-manage-roles)
-* [Resource group management](../../platform/role-based-access-control/add-resource-groups)
+* [Role management](../platform/role-based-access-control/add-manage-roles)
+* [Resource group management](../platform/role-based-access-control/add-resource-groups)
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
-* [Password policies](../../platform/3_Authentication/1-authentication-overview.md#enforce-password-policies)
-* [Two-factor authentication](../../platform/3_Authentication/2-two-factor-authentication.md)
-* [Single sign-on (SSO)](../../platform/3_Authentication/3-single-sign-on-saml.md#saml-sso-with-harness-overview)
+* [Password policies](../platform/3_Authentication/1-authentication-overview.md#enforce-password-policies)
+* [Two-factor authentication](../platform/3_Authentication/2-two-factor-authentication.md)
+* [Single sign-on (SSO)](../platform/3_Authentication/3-single-sign-on-saml.md#saml-sso-with-harness-overview)
 * [Text encryption](/docs/platform/Secrets/add-use-text-secrets)
 * [File encryption](/docs/platform/Secrets/add-file-secrets)
 * [Auditing](/docs/platform/Governance/Audit-Trail/audit-trail)
@@ -34,7 +34,7 @@ The set of security features that Harness provides includes the following featur
 
 Yes. All network connections from the delegate on your local network or VPC to Harness SaaS are HTTPS outbound-only.
 
-For more information, go to [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview).
+For more information, go to [Delegates overview](/docs/platform/delegates/delegate-concepts/delegate-overview).
 
 ### What data does the delegate send to Harness Manager?
 
@@ -44,7 +44,7 @@ The delegate and Harness Manager (SaaS) establish a Secure WebSocket channel (We
 * **Deployment data:** The information from the API executions the delegate performs is sent to Harness Manager and shown on the **Deployments** page.
 * **Time series and log data for Continuous Verification:** The delegate connects to the verification providers you have configured and sends their data to Harness Manager for display in Harness Continuous Verification.
 
-For more information, go to [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview).
+For more information, go to [Delegates overview](/docs/platform/delegates/delegate-concepts/delegate-overview).
 
 ## Harness role-based access control (RBAC)
 
@@ -73,8 +73,8 @@ Yes, you can leverage your existing user management infrastructure by adding the
 
 For more information, go to:
 
-* [Single sign-on (SSO) with SAML](../../platform/3_Authentication/3-single-sign-on-saml.md)
-* [Single sign-on (SSO) with OAuth](../../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md)
+* [Single sign-on (SSO) with SAML](../platform/3_Authentication/3-single-sign-on-saml.md)
+* [Single sign-on (SSO) with OAuth](../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md)
 * [Provision users with Okta (SCIM)](/docs/platform/role-based-access-control/provision-users-with-okta-scim)
 * [Provision users with OneLogin (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim)
 * [Provision users with Azure AD (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim)
@@ -91,31 +91,31 @@ The default method is email address and password.
 
 You can use several other methods, such as:
 
-* [Single sign-on (SSO) with SAML](../../platform/3_Authentication/3-single-sign-on-saml.md)
-* [Single sign-on (SSO) with OAuth](../../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md)
+* [Single sign-on (SSO) with SAML](../platform/3_Authentication/3-single-sign-on-saml.md)
+* [Single sign-on (SSO) with OAuth](../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md)
 
 ### How is SAML SSO supported?
 
-For information about SAML SSO, go to [SAML SSO with Harness overview](../../platform/3_Authentication/3-single-sign-on-saml.md#saml-sso-with-harness-overview).
+For information about SAML SSO, go to [SAML SSO with Harness overview](../platform/3_Authentication/3-single-sign-on-saml.md#saml-sso-with-harness-overview).
 
 ### Can I adjust password policies?
 
 Yes. You can adjust the:
 
-* [Strength](../../platform/3_Authentication/1-authentication-overview.md#enforce-password-strength).
-* [Expiration](../../platform/3_Authentication/1-authentication-overview.md#enforce-password-expiration) (refresh) period.
-* [Lockout policy](../../platform/3_Authentication/1-authentication-overview.md#enforce-lockout-after-failed-logins) after failed logins.
+* [Strength](../platform/3_Authentication/1-authentication-overview.md#enforce-password-strength).
+* [Expiration](../platform/3_Authentication/1-authentication-overview.md#enforce-password-expiration) (refresh) period.
+* [Lockout policy](../platform/3_Authentication/1-authentication-overview.md#enforce-lockout-after-failed-logins) after failed logins.
 
 ### Do you support Single Sign-On (SSO)?
 
-Yes. You can enable Harness logins via a range of single sign-on mechanisms. In your account's authentication settings, enable **Allow login via public OAuth providers**, and then [enable and configure OAuth providers](../../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md).
+Yes. You can enable Harness logins via a range of single sign-on mechanisms. In your account's authentication settings, enable **Allow login via public OAuth providers**, and then [enable and configure OAuth providers](../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md).
 
 ![](./static/harness-security-faqs-17.png)
 
 For more information, go to:
 
-* [Single sign-on (SSO) with SAML](../../platform/3_Authentication/3-single-sign-on-saml.md)
-* [Single sign-on (SSO) with OAuth](../../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md)
+* [Single sign-on (SSO) with SAML](../platform/3_Authentication/3-single-sign-on-saml.md)
+* [Single sign-on (SSO) with OAuth](../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md)
 
 ### Do you support Two-Factor Authentication (2FA)?
 
@@ -124,7 +124,7 @@ Yes. Two-Factor Authentication (2FA) can be managed in two ways:
 * **Individual user:** You can set up 2FA for your own user profile without impacting other user accounts.
 * **All account users:** If you have permission to manage your Harness account, you can enforce 2FA for all users in Harness. First, you set up 2FA for your own account, and then you can enforce 2FA account-wide in the Harness account's **Login Settings**.
 
-For more information, go to [Two-factor authentication](../../platform/3_Authentication/2-two-factor-authentication.md).
+For more information, go to [Two-factor authentication](../platform/3_Authentication/2-two-factor-authentication.md).
 
 ## Secrets Management
 
