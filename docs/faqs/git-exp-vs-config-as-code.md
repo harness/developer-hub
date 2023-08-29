@@ -1,7 +1,7 @@
 ---
 title: Git Experience vs Configuration as Code FAQs
 description: Learn about Git Experience in NextGen and Config as code in FirstGen.
-
+sidebar_position: 8
 ---
 
 ## What is Git Experience in NextGen?
@@ -140,7 +140,7 @@ For more information on Harness Terraform Provider, go to:
 
 For more information on Harness APIs, go to:
 
-- [Get started with Harness APIs](/docs/platform/Resource-Development/APIs/api-quickstart)
+- [Get started with Harness APIs](/docs/platform/automation/APIs/api-quickstart)
 - [API Docs](https://apidocs.harness.io/)
 
 

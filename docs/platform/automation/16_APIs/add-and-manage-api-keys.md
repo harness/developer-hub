@@ -44,7 +44,7 @@ Use these steps to create an API key and personal access token (PAT) for your pe
 
    Your API keys carry many privileges. Don't store them in publicly-accessible areas.
 
-   After [rotating tokens](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#rotate-tokens) make sure you always use the new token.
+   After [rotating tokens](/docs/platform/automation/APIs/add-and-manage-api-keys#rotate-tokens) make sure you always use the new token.
 
    :::
 
@@ -73,7 +73,7 @@ Use these steps to create an API key and service account token (SAT) for a servi
 
    API keys carry many privileges. Don't store them in publicly-accessible areas.
 
-   After [rotating tokens](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#rotate-tokens) make sure you always use the new token.
+   After [rotating tokens](/docs/platform/automation/APIs/add-and-manage-api-keys#rotate-tokens) make sure you always use the new token.
 
    :::
 

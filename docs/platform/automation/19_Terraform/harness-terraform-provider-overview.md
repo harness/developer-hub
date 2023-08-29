@@ -18,7 +18,7 @@ To create and modify Harness resources using the Harness Terraform Provider, you
 - Modify infrastructure
 - Destroy infrastructure
 
-![](../19_Terraform/static/harness-terraform-provider-00.png)
+![](./static/harness-terraform-provider-00.png)
 
 
 Once the provider is set up, you can use it to provision your Harness resources.

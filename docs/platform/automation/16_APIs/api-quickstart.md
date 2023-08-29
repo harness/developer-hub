@@ -24,7 +24,7 @@ You need an understanding of Harness, [RBAC in Harness](/docs/platform/role-base
 
 ## Create a Harness API key and token
 
-Harness APIs use API keys to authenticate requests. Create an API key in your Harness user profile, add tokens to the key, and then use the token in your API requests. For more information, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
+Harness APIs use API keys to authenticate requests. Create an API key in your Harness user profile, add tokens to the key, and then use the token in your API requests. For more information, go to [Manage API keys](/docs/platform/automation/APIs/add-and-manage-api-keys).
 
 :::info
 
@@ -54,7 +54,7 @@ Harness APIs use API keys to authenticate requests. Create an API key in your Ha
 
    Your API keys carry many privileges. Don't store them in publicly-accessible areas.
 
-   After [rotating tokens](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#rotate-tokens) make sure you always use the new token.
+   After [rotating tokens](/docs/platform/automation/APIs/add-and-manage-api-keys#rotate-tokens) make sure you always use the new token.
 
    :::
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Service accounts are similar to [users](./add-users.md) in Harness, but service accounts aren't associated with a human user. You assign [roles](./add-manage-roles.md) and [resource groups](./add-resource-groups.md) to service accounts, and then you create [API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) for the service account. These API keys are used to authenticate and authorize remote services attempting to perform operations in Harness through Harness APIs. The API keys inherit the [role bindings](./rbac-in-harness.md#role-binding) assigned to the service account.
+Service accounts are similar to [users](./add-users.md) in Harness, but service accounts aren't associated with a human user. You assign [roles](./add-manage-roles.md) and [resource groups](./add-resource-groups.md) to service accounts, and then you create [API keys](/docs/platform/automation/APIs/add-and-manage-api-keys) for the service account. These API keys are used to authenticate and authorize remote services attempting to perform operations in Harness through Harness APIs. The API keys inherit the [role bindings](./rbac-in-harness.md#role-binding) assigned to the service account.
 
 You can create service accounts at all [scopes](./rbac-in-harness.md#permissions-hierarchy-scopes).
 
@@ -31,9 +31,9 @@ To manage service accounts in Harness, you need a role, such as **Account Admin*
 
 ## Manage API keys
 
-After creating a service account, you [create API keys and tokens](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#create-service-account-api-keys-and-tokens) for that service account. These tokens are used to authenticate and authorize remote services attempting to perform operations in Harness through Harness APIs. The API keys and tokens inherit the role bindings assigned to the service account.
+After creating a service account, you [create API keys and tokens](/docs/platform/automation/APIs/add-and-manage-api-keys#create-service-account-api-keys-and-tokens) for that service account. These tokens are used to authenticate and authorize remote services attempting to perform operations in Harness through Harness APIs. The API keys and tokens inherit the role bindings assigned to the service account.
 
-For more information about API permissions go to the [API permissions reference](/docs/platform/Resource-Development/APIs/api-permissions-reference#service-accounts).
+For more information about API permissions go to the [API permissions reference](/docs/platform/automation/APIs/api-permissions-reference#service-accounts).
 
 ## Edit a service account
 
