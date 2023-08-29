@@ -1608,6 +1608,13 @@ This will help you to:
 
 **Important:** Users must update their delegate to version 1.0.79100 to use this expression.
 
+## Helm chart expressions
+
+import HelmManifestExpressions from '/docs/continuous-delivery/shared/helm-manifest-expressions.md';
+
+<HelmManifestExpressions name="helmexpressions" />
+
+
 ## Tag expressions
 
 You can reference tags using Harness expressions.
