@@ -24,7 +24,7 @@ In this topic:
 
 ### General
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
 
 #### What CD platforms and tools does Harness support?
 
