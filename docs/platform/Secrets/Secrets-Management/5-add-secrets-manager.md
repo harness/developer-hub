@@ -48,6 +48,8 @@ You can add secrets to the Org or Project scopes using a Secret Manager with an 
 
 When you create a secret, Harness shows the list of secret managers at the parent scope and up the hierarchy. If you create a secret at the project level, Harness lists all secret managers scoped at the Account, Org, and Project levels.
 
+![](../../Secrets/static/select-secrets-manager-scope2.png)
+
 Harness creates new secrets with secret manager scope information and identifiers. Harness displays the secret manager scope on the secret list page.
 
 ### Where are secrets stored?

@@ -66,7 +66,7 @@ To add an encrypted text secret in the account scope:
 
    - **Reference Secret**: Enter the name of the existing secret in your Secret Manager that you want your **Reference Secret** to refer to, and then select **Test** to test the reference path. You can reference existing secrets in Azure Key Vault, Hashicorp Vault, AWS Secrets Manager, or GCP Secrets Manager.
 
-     ![](./static/test-secret-reference-path.png)
+     ![](./static/select-secrets-manager-scope.png)
 
 7. Select **Save**.
 
