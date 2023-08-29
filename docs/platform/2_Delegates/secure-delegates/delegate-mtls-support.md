@@ -77,7 +77,7 @@ You can move existing delegates with an immutable image type (image tag `yy.mm.x
 
 ### Prerequisites for delegate migration
 
-Make sure to meet the following prerequisites before you migrate an existing delegate to an mTLS-enabled delegate.
+Before you migrate an existing delegate to an mTLS-enabled delegate, make sure that you meet the following prerequisites.
 
 - The delegate must have an immutable image type (image tag `yy.mm.xxxxx`). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
@@ -136,7 +136,7 @@ To migrate a delegate for mTLS support, do the following:
        secretName: kubernetes-delegate-client-certificate
    ```
 
-6. Add the client certificate and key section in the `ConfigMap` `upgrader-config`, and add your `managerHost` and port. 
+6. Add the client certificate and key section in the `ConfigMap` `upgrader-config`, then add your `managerHost` and port. 
 
    ```yaml
    ---
