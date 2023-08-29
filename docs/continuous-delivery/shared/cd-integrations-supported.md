@@ -271,7 +271,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
     - IRSA
     - Access Key and Secret Key
     - IAM Role
-    - GovCloud Support
+    - GovCloud supported
 - **Supported platforms for deployment:**
   - AWS cloud, any region
 - **Versions and tooling support:**
@@ -282,6 +282,26 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
     - Amazon S3
 
 </details>
+
+<details>
+<summary>AWS SAM</summary>
+
+- **Overview:**
+  - [AWS SAM](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments)
+- **Supported connectors for deployment:**
+  - AWS cloud connector
+    - Access key and secret key
+- **Supported platforms for deployment:**
+  - AWS cloud, any region
+- **Versions and tooling support:**
+  - AWS SDK
+  - Harness supports standard SAM templates.
+- **Supported integrations:**
+  - All Git providers are supported for SAM templates.
+  - Currently, you cannot add artifacts to your Harness SAM service.
+
+</details>
+
 
 <details>
 <summary>Traditional: WinRM</summary>
@@ -378,7 +398,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 - **Supported integrations:**
   - Artifact Repository:
     - Google Cloud Storage
-    - Google Source Repository (Gen 1 Only)
+    - Google Cloud Storage and Google Cloud Source (Gen 1 Only)
 
 </details>
 
@@ -421,7 +441,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 - **Limitations:**
   - Deployment Behavior:
     - Harness only supports AWS Lambda Functions to be deployed via Serverless.com Framework
-    - Harness builds and deploys Lambda Functions, users cannot split up the tasks to build functions and deploy functions separately natively via the swimlane
+    - Harness builds and deploys Lambda Functions> You cannot split up the tasks to build functions and deploy functions separately as part of Harness support.
   - Not supported application types:
     - Google Functions
     - Azure Functions
