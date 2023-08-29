@@ -270,6 +270,10 @@ const config = {
                 label: "Instructions",
                 to: "certifications/instructions",
               },
+              {
+                label: "FAQs",
+                to: "certifications/faqs",
+              },
             ],
           },
           {
