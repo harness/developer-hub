@@ -460,6 +460,13 @@ Helm chart deployments support versioning and rollback in the same way as standa
 
 For more information, go to [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
 
+## Helm chart expressions
+
+import HelmManifestExpressions from '/docs/continuous-delivery/shared/helm-manifest-expressions.md';
+
+<HelmManifestExpressions name="helmexpressions" />
+
+
 ## Trigger the pipeline on a new chart version
 
 You can set up a Harness trigger to listen on the chart repo and execute the pipeline when a new chart version appears. For more information, go to [Trigger Pipelines on New Helm Chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart).

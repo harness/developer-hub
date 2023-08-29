@@ -22,6 +22,8 @@ Setting up a Kubernetes service involves the following steps:
 
 Harness supports the following manifest types and orchestration methods.
 
+For more details and options when using Kubernetes manifests in Harness, go to [Add Kubernetes manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests).
+
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
