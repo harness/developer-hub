@@ -18,7 +18,7 @@ Harness STO supports [three workflows](/docs/security-testing-orchestration/use-
 
 ## Important notes
 
-- This workflow is supported for Kubernetes and Docker delegates only, and requires direct access to the delegate. If you don't meet these requirements, you can add your certs to [individual pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-pipelines) or to [custom scanner images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/use-private-registry-for-sto-scanner-images) instead.
+- This workflow is supported for Kubernetes and Docker delegates only, and requires direct access to the delegate. If you don't meet these requirements, you can add your certs to [individual pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-pipelines) or to [custom scanner images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry) instead.
 
 - You must have **root access** to perform the [workflows](#workflow-descriptions) referenced below.
 
