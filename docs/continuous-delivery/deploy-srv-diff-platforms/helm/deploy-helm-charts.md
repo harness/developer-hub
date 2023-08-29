@@ -322,7 +322,7 @@ When you select an environment, such as **qa**, the name of the environment is u
 
 Instead of selecting the environment in the **Infrastructure** each time, you can set the environment as a **Runtime Input** and then enter **dev**, **qa**, or **prod** at runtime.
 
-## Using multiple Helm charts in a single Harness service
+## Using multiple Helm charts in one Harness service
 
 import HelmMultiManifests from '/docs/continuous-delivery/shared/multiple-helm-charts.md';
 
