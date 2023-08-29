@@ -92,10 +92,6 @@ The pipeline and stage level variable expressions follow these formats:
 - **Pipeline-level** variables can be accessed as a collection of key-value pairs using `<+pipeline.variables>`.
 - **Stage-level** variables can be accessed as a collection of key-value pairs using `<+stage.variables>`.
 
-:::note
-If you wish to concatenate expressions as strings, make sure that each expression evaluates to a string. If an expression does not satisfy this condition, use the `toString()` method to convert it to a string. For example, the variable `sequenceId` in the expression `/tmp/spe/<+pipeline.sequenceId>` evaluates to an integer. When concatenating it with other string expressions, convert it to a string with the following expression: `/tmp/spe/<+pipeline.sequenceId.toString()>`.
-:::
-
 ### Expression examples
 
 Here is an example of a Shell script step echoing some common variable expressions.
@@ -451,13 +447,30 @@ For example, `<+<+pipeline.name> == "pipeline1">` or `<+<+stage.variables.v1> ==
 
 ### Variable concatenation
 
-Harness recommends that you use the Java string method for concatenating pipeline variables. Ensure the expression is wrapped within `<+ >`.
+In Harness, concatenating string variables work by default.
 
-For example, instead of `<+pipeline.variable.var1>_suffix`, use these syntaxes:
+Each expression will now be evaluated and be substituted in the string. Until now we were forced to use a ‘+’, or .concat(), the concatenation operator, to join multiple expressions together. Instead, we can now just `<+pipeline.name> <+pipeline.executionId>`. So we now support complex usages like:
+- `us-west-2/nonprod/eks/eks123/<+env.name>/chat/`
+- `echo <+stage.variables.v1>` -> Using concatenation to embed an expression within a shell script
+- `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>` (This one uses the index of the looped execution to pick the right step!)
+- `<+pipeline.stages.<+pipeline.variables.stagename>.status>` -> An elegant way to print out the status of whichever stage you’d like.
+
+All existing expressions will continue to work, the below syntax will still work -
+
+1. Use `+` operator to add string value variables
+
+- `<+<+pipeline.variables.var1> + "_suffix">`
+
+2. Use `concat` method of JAVA to add string variables.
 
 - `<+pipeline.variables.var1.concat("_suffix")>`
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
-- `<+<+pipeline.variables.var1> + "_suffix">` 
+
+Ensure the expression is wrapped within `<+ >` in both the 1st and 2nd approaches.
+
+:::note
+If you wish to concatenate expressions as strings, make sure that each expression evaluates to a string. If an expression does not satisfy this condition, use the `toString()` method to convert it to a string. For example, the variable `sequenceId` in the expression `/tmp/spe/<+pipeline.sequenceId>` evaluates to an integer. When concatenating it with other string expressions, convert it to a string with the following expression: `/tmp/spe/<+pipeline.sequenceId.toString()>`.
+:::
 
 ## Debugging expressions
 
