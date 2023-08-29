@@ -95,7 +95,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     - Finally, select **Save and Continue** and verify the connection to remote server is successful.
 2. Create a secret to store the AWS secrete key.
     - In **Project Setup**, select **Secrets**.
-    - , and then select **Text**.
+    - Click **New Secret**, and then select **Text**.
     - Enter the secret name `harness_awssecretkey`.
     - For the secret value, paste in the AWS Secret Key.
     - Select **Save**.
