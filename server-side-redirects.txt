@@ -1,4 +1,0 @@
-# Server Side Netlify Redirects from Users
-# Sample entry: {from} <space> {to}
-
-# Added by <User> on <Date> for PR <pr>
