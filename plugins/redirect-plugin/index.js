@@ -62,30 +62,34 @@ async function docsPluginEnhanced(context, options) {
 
       docs.map((post) => {
         const {
-          id: metadataId,
+          // id: metadataId,
           // metadata: {
-          title: metadataTitle,
+          // title: metadataTitle,
           permalink,
           frontMatter,
           // description,
-          lastUpdatedAt,
+          // lastUpdatedAt,
+          source,
           // },
         } = post;
-        const { id, title, data, redirect_from } = frontMatter;
+        const {
+          //  id,
+          title,
+          //  data,
+          redirect_from,
+        } = frontMatter;
 
-        const dispId = id || metadataId;
-        const dispTitle = title || metadataTitle;
-        const dispDate = data || lastUpdatedAt || "";
+        // const dispId = id || metadataId;
+        // const dispTitle = title || metadataTitle;
+        // const dispDate = data || lastUpdatedAt || "";
 
         if (redirect_from) {
           if (Array.isArray(redirect_from)) {
             redirect_from.forEach((al) => {
-              strRedirects += `# ID: ${dispId} Title: ${dispTitle} ${
-                dispDate ? "Date: " + dispDate : ""
-              }\r\n${al} ${permalink}\r\n\r\n`;
+              strRedirects += `# Path : ${source} \r\n${al} ${permalink}\r\n\r\n`;
             });
           } else {
-            strRedirects += `\r\n${redirect_from} ${permalink}\r\n\r\n`;
+            strRedirects += `# Path : ${source} \r\n${redirect_from} ${permalink}\r\n\r\n`;
           }
         }
 
