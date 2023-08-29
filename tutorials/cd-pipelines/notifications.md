@@ -62,27 +62,63 @@ Before you start this tutorial, you need to have a **Harness CD pipeline** with 
 5. From the dropdown select the **Notification Method** as `Slack`.
 6. Paste the Webhook in the Slack Webhook URL field, but it is suggested to add it as an **[Encrytped Text](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets)** and refernce it in the Slack Webhook URL field as an **expression**.
     - Example `<+secrets.getValue("slackwebhookURL")>​`
-7. Now additionally you can use the **user-group** created above, if it is associated with the slack channels to send notifications. 
+7. Now additionally you can use the **user-group** created above, if it is associated with the slack channels to send notifications, for more information on the same follow the instructions mentioned [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#notify-slack-channels-in-user-groups)
+
 8. Select **finish** and your Notification is created. 
 
 ```mdx-code-block
 </TabItem>
 <TabItem value="PagerDuty">
 ```
+### Pre-Requisites
+- Create a PagerDuty [service key](https://support.pagerduty.com/docs/services-and-integrations), for itegrating it with Harness.  
+- Copy or store this key from PagerDuty's **Configuration** > **Services** > **Service Details dialog** > **Integrations tab**
+
+5. From the dropdown select the **Notification Method** as `Pagerduty`.
+6. Create a **[Encrytped Text](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets)** with the name `pagerdutykey` for the **PagerDuty service** you have created above and refernce it in PagerDuty Key as an **Expression**, Harness will send notifications using this key.
+    - For example:
+    You can reference a secret within the Org scope using an expression with `org`:
+    
+    ```
+    <+secrets.getvalue("org.your-secret-Id")>
+    ```
+7. Select **finish** and your PagerDuty Notification is created.
 
 ```mdx-code-block
 </TabItem>
 <TabItem value="Microsoft Teams">
 ```
+Follow the detailed instructions [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#microsoft-teams-notifications) on Harness Docs, for creating the Microsoft Teams Notifications.
 
 ```mdx-code-block
 </TabItem>
 <TabItem value="Webhook">
 ```
+:::info
+
+Currently, this feature is behind the feature flag, `PIE_WEBHOOK_NOTIFICATION`. Contact [Harness Support](support@harness.io) to enable the feature.
+
+:::
+
+In Harness you can use Webhook notifications to inform an **external application** of an Pipeline/stage event. 
+
+5. From the dropdown select the **Notification Method** as `Webhook`.
+6. Use expressions to compose the URL to be called when the event occurs. For example, `https://companyurl.notify.com/execution=-<+pipeline.executionId>`.
+
+:::note
+
+The expression must be evaluated in the context of the event. For example, stage related expressions may not be valid for pipeline start events.
+
+The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
+
+:::
+
+7. Select **finish** and your Webhook Notification is created.
+
 
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
 
-
+9. Now run the pipeline and you'll recieve notificatons on the platform you set-up the same for. 
