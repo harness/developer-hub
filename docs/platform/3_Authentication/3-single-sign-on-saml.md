@@ -41,7 +41,7 @@ Ensure that you have at least two corresponding user accounts when setting up an
 To set up Harness with Okta as a SAML SSO provider, you exchange the necessary information between your Okta app and Harness.
 
 :::info note
-Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to [SAML SSO with Harness Overview](#saml-sso-with-harness-overview).
+Users are not created as part of the SAML SSO integration. Okta user accounts must exist prior to exchanging information between your Okta account and Harness. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to [SAML SSO with Harness Overview](#saml-sso-with-harness-overview).
 :::
 
 This section describes the steps you must perform to use an Okta app for Harness SAML SSO.
