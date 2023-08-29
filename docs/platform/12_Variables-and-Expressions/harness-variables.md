@@ -447,29 +447,32 @@ For example, `<+<+pipeline.name> == "pipeline1">` or `<+<+stage.variables.v1> ==
 
 ### Variable concatenation
 
-In Harness, concatenating string variables work by default.
+Harness string variables can be concatenated by default. Each expression can be evaluated and substituted in the string. 
 
-Each expression will now be evaluated and be substituted in the string. Until now we were forced to use a ‘+’, or .concat(), the concatenation operator, to join multiple expressions together. Instead, we can now just `<+pipeline.name> <+pipeline.executionId>`. So we now support complex usages like:
+Previously, Harness users were forced to use a ‘+’, or `.concat()`, the concatenation operator, to join multiple expressions together. Now, you can simply use `<+pipeline.name> <+pipeline.executionId>`. 
+
+For example, Harness supports complex usages sych as the following:
+
 - `us-west-2/nonprod/eks/eks123/<+env.name>/chat/`
-- `echo <+stage.variables.v1>` -> Using concatenation to embed an expression within a shell script
-- `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>` (This one uses the index of the looped execution to pick the right step!)
-- `<+pipeline.stages.<+pipeline.variables.stagename>.status>` -> An elegant way to print out the status of whichever stage you’d like.
+- `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>`
+  - This example uses the index of the looped execution to pick the correct step.
+- `<+pipeline.stages.<+pipeline.variables.stagename>.status>`
+  - This example shows an elegant way to print out the status of a stage.
 
-All existing expressions will continue to work, the below syntax will still work -
+All existing expressions will continue to work. For example, the following syntax will still work.
 
-1. Use `+` operator to add string value variables
-
-- `<+<+pipeline.variables.var1> + "_suffix">`
-
-2. Use `concat` method of JAVA to add string variables.
+1. Use `+` operator to add string value variables: `<+<+pipeline.variables.var1> + "_suffix">`.
+2. Use Java `concat` method to add string variables:
 
 - `<+pipeline.variables.var1.concat("_suffix")>`
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
 
-Ensure the expression is wrapped within `<+ >` in both the 1st and 2nd approaches.
+Ensure the expression is wrapped within `<+ >` in both of theese examples.
 
 :::note
+
 If you wish to concatenate expressions as strings, make sure that each expression evaluates to a string. If an expression does not satisfy this condition, use the `toString()` method to convert it to a string. For example, the variable `sequenceId` in the expression `/tmp/spe/<+pipeline.sequenceId>` evaluates to an integer. When concatenating it with other string expressions, convert it to a string with the following expression: `/tmp/spe/<+pipeline.sequenceId.toString()>`.
+
 :::
 
 ## Debugging expressions
