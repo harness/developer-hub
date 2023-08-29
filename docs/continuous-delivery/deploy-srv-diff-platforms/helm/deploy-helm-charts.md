@@ -322,6 +322,12 @@ When you select an environment, such as **qa**, the name of the environment is u
 
 Instead of selecting the environment in the **Infrastructure** each time, you can set the environment as a **Runtime Input** and then enter **dev**, **qa**, or **prod** at runtime.
 
+## Using multiple Helm charts in a single Harness service
+
+import HelmMultiManifests from '/docs/continuous-delivery/shared/multiple-helm-charts.md';
+
+<HelmMultiManifests name="helmmultimanifests" />
+
 ## Define the infrastructure
 
 There is nothing unique about defining the target cluster infrastructure definition for a Helm chart deployment. It is the same process as a typical Harness Kubernetes deployment.
@@ -459,12 +465,6 @@ You deployment is successful.
 Helm chart deployments support versioning and rollback in the same way as standard Kubernetes deployments.
 
 For more information, go to [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
-
-## Helm chart expressions
-
-import HelmManifestExpressions from '/docs/continuous-delivery/shared/helm-manifest-expressions.md';
-
-<HelmManifestExpressions name="helmexpressions" />
 
 
 ## Trigger the pipeline on a new chart version

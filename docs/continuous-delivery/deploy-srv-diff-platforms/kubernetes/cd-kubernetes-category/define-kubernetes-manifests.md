@@ -20,17 +20,11 @@ For example, multiple values files can contain specific deployment settings, suc
 
 This topics provides a quick overview or some options and steps when using Kubernetes manifests, with links to more details.
 
-## Before you begin
-
-* [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
-* [Kubernetes Deployments Overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview)
-* [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments)
-
 ## Important notes on Kubernetes manifests
 
 You cannot use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) in Kubernetes manifests. You can only use Harness variables in Values YAML files. Harness support Go templating, so you can use variables in Values YAML files and have the manifests reference those variables/values.
 
-## Visual summary of using Kubernetes manifests
+## Visual summary on using Kubernetes manifests
 
 Here's a quick video that show how to add Kubernetes manifests and Values YAML files:
 
@@ -212,9 +206,9 @@ Your manifests reference your values YAML file using [Go templating](https://god
 
 You cannot use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) in Kubernetes manifests. You can only use Harness variables in values YAML files. See [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
 
-## Helm chart expressions
+## Using multiple Helm charts in a single Harness service
 
-import HelmManifestExpressions from '/docs/continuous-delivery/shared/helm-manifest-expressions.md';
+import HelmMultiManifests from '/docs/continuous-delivery/shared/multiple-helm-charts.md';
 
-<HelmManifestExpressions name="helmexpressions" />
+<HelmMultiManifests name="helmmultimanifests" />
 
