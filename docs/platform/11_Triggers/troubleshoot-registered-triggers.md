@@ -48,13 +48,13 @@ To troubleshoot webhook failures, do the following:
 **Sample cURL command**
 
 ```shell
-~ % curl -X POST -H 'content-type: application/json' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=tweety&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+~ % curl -X POST -H 'content-type: application/json' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=<YOUR_ACCOUNT_ID>&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=tweety&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
 ```
 
 **Sample response**
 
 ```json
-{"status":"FAILED","data":{"eventCorrelationId":"64e3e215d2bb844cfab9e155","apiUrl":"https://app.harness.io/gateway/pipeline/api/webhook/triggerExecutionDetails/64e3e215d2bb844cfab9e155?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg","uiUrl":"https://app.harness.io/ng/#/account/H5W8iol5TNWc4G9h5A2MXg/cd/orgs/default/projects/CD_Docs/deployments?pipelineIdentifier=tweety&page=0","uiSetupUrl":"https://app.harness.io/ng/#/account/H5W8iol5TNWc4G9h5A2MXg/cd/orgs/default"}}
+{"status":"FAILED","data":{"eventCorrelationId":"64e3e215d2bb844cfab9e155","apiUrl":"https://app.harness.io/gateway/pipeline/api/webhook/triggerExecutionDetails/64e3e215d2bb844cfab9e155?accountIdentifier=<YOUR_ACCOUNT_ID>","uiUrl":"https://app.harness.io/ng/#/account/<YOUR_ACCOUNT_ID>/cd/orgs/default/projects/CD_Docs/deployments?pipelineIdentifier=tweety&page=0","uiSetupUrl":"https://app.harness.io/ng/#/account/<YOUR_ACCOUNT_ID>/cd/orgs/default"}}
 ```
 
 In this example, you enter the `eventCorrelationId` value in the **Search** field.
@@ -91,7 +91,7 @@ This example uses the [tweety repo](https://github.com/michaelcretzman/linux_twe
 
 **Sample pipeline URL**
 
-`https://app.harness.io/ng/account/H5W8iol5TNWc4G9h5A2MXg/cd/orgs/default/projects/CD_Docs/pipelines/tweety/executions?storeType=INLINE`
+`https://app.harness.io/ng/account/<YOUR_ACCOUNT_ID>/cd/orgs/default/projects/CD_Docs/pipelines/tweety/executions?storeType=INLINE`
 
 **Sample response**
 
