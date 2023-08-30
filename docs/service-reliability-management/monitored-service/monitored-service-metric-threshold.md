@@ -7,7 +7,7 @@ sidebar_position: 2
 
 # Custom thresholds for service health analysis
 
-In addition to utilizing AI/ML for service health analysis of monitored services, you can take advantage of the custom threshold feature to set up rules that can change how service health behaves. This feature lets you create the following rules:
+In addition to utilizing AI/ML for service health analysis of monitored services, you use the custom threshold feature to set up rules that can change how service health behaves. You can create the following rules:
 
 - **Ignore Thresholds**: Instructs Harness to skip analyzing service health for specific metric or value combinations.
   
