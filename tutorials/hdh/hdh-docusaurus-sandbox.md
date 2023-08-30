@@ -209,8 +209,8 @@ and Size [small, medium, large].
 "Subscribe to RSS" size="medium"/>
 
 ## Pills
-Similar to the Button Framework, the Pill Framework allows use to place pill tags in the MD. The buttons are designed to be
-clicked and hoovered. The buttons can contain links also. 
+Similar to the Button Framework, the Pill Framework allows use to place pill tags in the MD. Buttons, unlike Pills, are designed to be
+clicked and hoovered. Though pills can contain links also. 
 
 ```
 <DocsTag icon = "fa-solid fa-icons" text="Default" link="/docs/security-testing-orchestration" />
