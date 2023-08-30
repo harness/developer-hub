@@ -2,6 +2,8 @@
 title: Automate onboarding with Harness
 description: Automate the provisioning of resources to Harness via the Harness Terraform Provider.
 sidebar_position: 3
+redirect_from:
+  - /docs/platform/Resource-Development/Terraform/automate-harness-onboarding
 ---
 
 Harness offers a first-class Terraform provider to automate adoption and growth.

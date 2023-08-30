@@ -159,7 +159,7 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Administer Harness Self-Managed Enterprise Edition",
+                label: "Administer Harness Self-Managed EE",
                 to: "tutorials/self-managed-enterprise-edition",
               },
             ],
@@ -344,6 +344,10 @@ const config = {
               {
                 label: "Chaos Engineering",
                 to: "https://harness.io/products/chaos-engineering",
+              },
+              {
+                label: "Software Engineering Insights",
+                to: "https://www.harness.io/products/software-engineering-insights",
               },
               {
                 label: "Continuous Error Tracking",

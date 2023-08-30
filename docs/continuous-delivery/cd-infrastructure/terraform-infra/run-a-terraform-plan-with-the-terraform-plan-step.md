@@ -140,7 +140,7 @@ For this reason, it's important that all your Project members know the Provision
 
 Select a Secrets Manager to use for encrypting/decrypting and saving the Terraform plan file.
 
-See [Harness Secrets Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
+See [Harness Secrets Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 
 A Terraform plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terraform plan file as plain text.
 
@@ -312,7 +312,7 @@ If you are entering secrets (for credentials, etc.), use Harness secret referenc
 ```bash
 secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 ```
-See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
+See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ### Remote Variables
 
@@ -491,7 +491,7 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
+You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ## Export JSON representation of Terraform Plan
 

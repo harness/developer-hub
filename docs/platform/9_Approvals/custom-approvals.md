@@ -320,7 +320,7 @@ Instead, if you publish output variables in your Custom Approval command, struct
 
 You can use Harness secrets in your Custom Approval steps.
 
-See [Add Text Secrets](../Secrets/2-add-use-text-secrets.md).
+See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 Basically, you use `<+secrets.getValue("secret_Id")>` to refer to the secret Id.
 

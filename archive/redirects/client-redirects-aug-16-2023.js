@@ -832,7 +832,7 @@ module.exports = {
     // Created by Rashmi Sahoo to fix platform re-direct April 19th, 2023
     {
       from: "/docs/platform/Security/add-use-text-secrets",
-      to: "/docs/platform/Secrets/add-use-text-secrets",
+      to: "/docs/platform/secrets/add-use-text-secrets",
     },
     {
       from: "/docs/platform/Security/add-file-secrets",

@@ -157,7 +157,7 @@ https://developer.harness.io/docs/service-reliability-management/continuous-erro
 https://developer.harness.io/docs/service-reliability-management/continuous-error-tracking/error-tracking-event-dashboard https://developer.harness.io/docs/continuous-error-tracking/getting-started/cet-event-dashboard
 https://developer.harness.io/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc https://developer.harness.io/docs/continuous-error-tracking/getting-started/cet-arc
 https://developer.harness.io/docs/category/9mefqceij0-cv-category https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step
-https://developer.harness.io/docs/platform/Security/add-use-text-secrets https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets
+https://developer.harness.io/docs/platform/Security/add-use-text-secrets https://developer.harness.io/docs/platform/secrets/add-use-text-secrets
 https://developer.harness.io/docs/platform/Security/add-file-secrets https://developer.harness.io/docs/platform/Secrets/add-file-secrets
 https://developer.harness.io/docs/platform/Security/add-use-ssh-secrets https://developer.harness.io/docs/platform/Secrets/add-use-ssh-secrets
 https://developer.harness.io/docs/platform/Security/harness-secret-manager-overview https://developer.harness.io/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview

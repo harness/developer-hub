@@ -105,7 +105,7 @@ Directly this cannot be encrypted but this use can be achieved by creating the k
 
 
 Another approach would be saving the value in Harness's secret manager/any other secret manager and referencing it in the script.
-Check this for more info - https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets
+Check this for more info - https://developer.harness.io/docs/platform/secrets/add-use-text-secrets
 
 
 ### K8s delete command is not working with the native helm?

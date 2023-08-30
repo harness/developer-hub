@@ -1,14 +1,17 @@
 ---
-title: Get started with Harness APIs
-description: Get started with Harness NG APIs.
+title: Get started with Harness API
+description: Get started with Harness API.
 sidebar_position: 1
 helpdocs_topic_id: f0aqiv3td7
 helpdocs_category_id: pm96bpz4kf
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/Resource-Development/APIs/api-quickstart
+  - /docs/platform/automation/api/api-quickstart
 ---
 
-Any resource you can create in Harness, you can also create with the Harness REST APIs.
+Any resource you can create in Harness, you can also create with the Harness REST API.
 
 :::info API reference documentation
 
@@ -18,18 +21,18 @@ For detailed documentation of endpoints and other Harness API reference informat
 
 ## Requirements
 
-To use Harness APIs to manage a resource, you must have the necessary [permissions](./api-permissions-reference) to view, create/edit, or delete that resource. You need one of the following default roles or an equivalent [custom role](../../role-based-access-control/add-manage-roles.md): Account Administrator, Organization Admin, Project Admin.
+To use Harness API to manage a resource, you must have the necessary [permissions](./api-permissions-reference) to view, create/edit, or delete that resource. You need one of the following default roles or an equivalent [custom role](../../role-based-access-control/add-manage-roles.md): Account Administrator, Organization Admin, Project Admin.
 
 You need an understanding of Harness, [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness), sending API requests, and mechanisms for sending requests, such as `curl`.
 
 ## Create a Harness API key and token
 
-Harness APIs use API keys to authenticate requests. Create an API key in your Harness user profile, add tokens to the key, and then use the token in your API requests. For more information, go to [Manage API keys](/docs/platform/automation/APIs/add-and-manage-api-keys).
+You need to use API keys to authenticate requests. Create an API key in your Harness user profile, add tokens to the key, and then use the token in your API requests. For more information, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
 
 :::info
 
 * **Service accounts:** You can use service account tokens instead of personal API keys and tokens. For more information, go to [Manage service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account).
-* **CORS:** Harness APIs support cross-origin resource sharing (CORS). This allows interactions between resources from different origins, and it is normally prohibited to prevent malicious behavior. Each API request must provide authentication credentials, either a personal access token or a service account token.
+* **CORS:** Harness API supports cross-origin resource sharing (CORS). This allows interactions between resources from different origins, and it is normally prohibited to prevent malicious behavior. Each API request must provide authentication credentials, either a personal access token or a service account token.
 
 :::
 
@@ -54,7 +57,7 @@ Harness APIs use API keys to authenticate requests. Create an API key in your Ha
 
    Your API keys carry many privileges. Don't store them in publicly-accessible areas.
 
-   After [rotating tokens](/docs/platform/automation/APIs/add-and-manage-api-keys#rotate-tokens) make sure you always use the new token.
+   After [rotating tokens](/docs/platform/automation/api/add-and-manage-api-keys#rotate-tokens) make sure you always use the new token.
 
    :::
 
