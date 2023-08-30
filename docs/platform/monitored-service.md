@@ -25,7 +25,7 @@ To create a monitored service at the project level:
 
    <docimage path={require('./static/create-monitored-service-project-level.png')} />
 
-2. In the Overview section, enter the following information, and then select **Save**:
+2. In the **Overview** section, enter the following information:
    
     - **Type**: Select the type of service that you want to monitor. You can choose either Application or Environment.
     
