@@ -28,11 +28,17 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 ```mdx-code-block
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
 
 <StoSettingScanMode />
 <StoSettingScanModeIngest />
+
+<!-- TBD: Confirm w/RP that this Orchestrated mode is supported -->
+
+<StoSettingScanModeOrch /> 
+
 
 <!-- ============================================================================= -->
 <a name="scan-config"></a>
@@ -196,13 +202,14 @@ Here's an example of a configured Gitleaks step.
 
 The following pipeline shows and end-to-end ingestion workflow. The pipeline consist of a Build stage with two steps:
 
-1. A Run step that copies a Gitleaks data file `/sarif_simple.sarif` from the local codebase into `/shared/customer_artifacts/`.
+1. A Run step that sends a `gitleaks detect` command to the local Gitleaks container to scan the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) specified for the pipeline. This command specifies the output file for the scan results: `/shared/customer_artifacts/sarif_simple.sarif`. 
 
-2. A Gitleaks step that auto-detects the data file type (SARIF) and then ingests and normalizes the data from `/shared/customer_artifacts/sarif_simple.sarif`. 
+2. A Gitleaks step that auto-detects the data file type (SARIF) and then ingests and normalizes the data from the output file. 
 
 ![](./static/gitleaks-ingestion-example-pipeline.png)
 
 ```yaml
+
 pipeline:
   projectIdentifier: STO
   orgIdentifier: default
@@ -216,55 +223,132 @@ pipeline:
           cloneCodebase: true
           execution:
             steps:
-              - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    connectorRef: MYDOCKERCONNECTOR
-                    image: alpine:latest
-                    shell: Sh
-                    command: |-
-                      # ls /harness
-                      # ls /harness/testdata/expected/report
-                      cp /harness/testdata/expected/report/sarif_simple.sarif /shared/customer_artifacts/
-                      # ls /shared/customer_artifacts/
-                      # cat /shared/customer_artifacts/sarif_simple.sarif
-              - step:
-                  type: Gitleaks
-                  name: gitleaks_ingest
-                  identifier: gitleaks_ingest
-                  spec:
-                    mode: ingestion
-                    config: default
-                    target:
-                      name: mycoderepo
-                      type: repository
-                      variant: dev
-                    advanced:
-                      log:
-                        level: info
-                    ingestion:
-                      file: /shared/customer_artifacts/sarif_simple.sarif
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
+              - stepGroup:
+                  name: Ingestion Workflow with a runs step
+                  identifier: Generation
+                  steps:
+                    - step:
+                        type: Run
+                        name: gitleaks
+                        identifier: Run_1
+                        spec:
+                          connectorRef: mydockerhubconnector
+                          image: zricethezav/gitleaks:latest
+                          shell: Sh
+                          command: |
+                            gitleaks detect --source /harness --report-path /shared/customer_artifacts/ingest-data.sarif --report-format 'sarif' --exit-code 0 --redact -v
+                          resources:
+                            limits:
+                              memory: 2048Mi
+                              cpu: 2000m
+                        when:
+                          stageStatus: Success
+                    - step:
+                        type: Gitleaks
+                        name: gitleaks_ingest
+                        identifier: gitleaks_ingest
+                        spec:
+                          mode: ingestion
+                          config: default
+                          target:
+                            name: gitleaks-example
+                            type: repository
+                            variant: master
+                          advanced:
+                            log:
+                              level: info
+                          ingestion:
+                            file: /shared/customer_artifacts/ingest-data.sarif
           sharedPaths:
             - /shared/customer_artifacts
           caching:
             enabled: false
             paths: []
-  identifier: gitleaks_ingestion_test
-  name: gitleaks ingestion test
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: myk8sconnector
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
   properties:
     ci:
       codebase:
-        connectorRef: MYGITHUBCONNECTOR
-        repoName: mycoderepo
+        connectorRef: wwdvpwa
+        repoName: dvpwa
         build: <+input>
+  identifier: Gitleaks_docsexample_INGESTION
+  name: Gitleaks docs-example INGESTION
 
 
 ```
+
+<!-- TBD: Confirm w/RP that this Orchestrated mode is supported -->
+
+## Gitleaks orchestration pipeline example
+
+The following pipeline illustrates an orchestration workflow where the Gitleaks step scans the codebase and ingests the results in one step. 
+
+![](./static/gitleaks-orchestration-example-pipeline.png)
+
+```yaml
+
+pipeline:
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: gitleaks-build-stage
+        identifier: gitleaksbuildstage
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - stepGroup:
+                  name: "STO Orchestration "
+                  identifier: Orchestration
+                  steps:
+                    - step:
+                        type: Gitleaks
+                        name: gitleaks_orch
+                        identifier: gitleaks_orch
+                        spec:
+                          mode: orchestration
+                          config: default
+                          target:
+                            name: gitleaks-example
+                            type: repository
+                            variant: master
+                          advanced:
+                            log:
+                              level: info
+                          resources:
+                            limits:
+                              memory: 2048Mi
+                              cpu: 2000m
+          sharedPaths:
+            - /shared/customer_artifacts
+          caching:
+            enabled: false
+            paths: []
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: myk8sconnector
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+  properties:
+    ci:
+      codebase:
+        connectorRef: wwdvpwa
+        repoName: dvpwa
+        build: <+input>
+  identifier: gitleaks_docs_example_ORCHESTRATION
+  name: gitleaks docs example - ORCHESTRATION
+```
+
