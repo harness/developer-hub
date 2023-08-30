@@ -14,6 +14,8 @@ redirect_from:
 
 This topic provides an architecture overview, installation links, and the basics on how to create a Harness account and your first project. These are the first tasks that come after you install Harness Self-Managed Enterprise Edition.
 
+To install Harness Self-Managed Enterprise Edition in a Kubernetes cluster with Helm, go to [Install Harness Self-Managed Enterprise Edition Using Helm](../self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga.md).
+
 ## Architecture overview
 Harness Self-Managed Enterprise Edition can be installed in a Kubernetes cluster or on virtual machines.
 
@@ -24,8 +26,6 @@ Review the following diagrams for your installation type.
 Harness Self-Managed Enterprise Edition is installed in a Kubernetes cluster in the following configuration.
 
 ![](./static/harness-self-managed-enterprise-edition-overview-00.png)
-
-To install Harness Self-Managed Enterprise Edition in a Kubernetes cluster with Helm, go to [Install Harness Self-Managed Enterprise Edition Using Helm](../self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga.md).
 
 **AWS architecture**
 
@@ -71,7 +71,10 @@ To create a project, do the following:
 
 To get started with creating pipelines and Helm-based installs in Harness Self-Managed Enterprise Edition, go to [Harness Docs](https://docs.harness.io/):
 
+* For Harness CCM, go to [Introduction to Cloud Cost Management](/docs/cloud-cost-management/getting-started-ccm/continuous-efficiency-overview).
+* For Harness CET, go to [Set up Continuous Error Tracking (CET)](/docs/continuous-error-tracking/getting-started/cet-setup).
 * For Harness CI, go to [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
 * For Harness CD, go to [CD Pipeline Basics](../../continuous-delivery/get-started/cd-pipeline-basics.md).
+* For Harness FF, go to [Get started with a flag](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags).
 * For Harness STO, go to [Security Testing Orchestration Basics](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
 * For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-harness-chaos-engineering-ce).
