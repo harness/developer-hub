@@ -16,6 +16,17 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
 ```mdx-code-block
   <Tabs>
   
+
+
+  <TabItem value="Git Experience" label="Git Experience">
+```
+
+import Gitxsup from '/docs/getting-started/shared/gitx-whats-supported.md'
+
+<Gitxsup />
+
+```mdx-code-block
+  </TabItem>
   <TabItem value="Access control" label="Access control">
 ```
 

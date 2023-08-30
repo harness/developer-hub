@@ -418,6 +418,20 @@ By default, the first two options are enabled, and you can modify the toggles to
 
 #### July 06, 2023
 
+##### Service Reliability Management, version 79812
+
+Create and manage monitored services at the Project level (SRM-14580)
+
+You can now seamlessly create and manage monitored services at the Project level, as well as within the SRM, CET, and CD modules. You can view and manage the monitored services, regardless of where they were created. The monitored service list presents specific insights based on where you are accessing it.
+
+  - Project level: Shows service names and health source count, while interactive module icons allow you to effortlessly navigate to specific modules for a detailed view.
+  
+  - CD module: Presents monitored service names alongside configured health sources, providing a comprehensive overview of health status.
+  
+  - CET module: Displays monitored service names while indicating the configuration status of Error Tracking Agents and notifications.
+  
+  - SRM module: Provides information, including monitored service status, name, SLO specifics, recent changes, 24-hour health trends, score, and dependency status.
+
 ##### Continuous Delivery, version 79811
 
 - Template Library: Reference specific versions of a template on a different branch from the pipeline (CDS-69774)

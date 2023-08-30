@@ -92,10 +92,6 @@ The pipeline and stage level variable expressions follow these formats:
 - **Pipeline-level** variables can be accessed as a collection of key-value pairs using `<+pipeline.variables>`.
 - **Stage-level** variables can be accessed as a collection of key-value pairs using `<+stage.variables>`.
 
-:::note
-If you wish to concatenate expressions as strings, make sure that each expression evaluates to a string. If an expression does not satisfy this condition, use the `toString()` method to convert it to a string. For example, the variable `sequenceId` in the expression `/tmp/spe/<+pipeline.sequenceId>` evaluates to an integer. When concatenating it with other string expressions, convert it to a string with the following expression: `/tmp/spe/<+pipeline.sequenceId.toString()>`.
-:::
-
 ### Expression examples
 
 Here is an example of a Shell script step echoing some common variable expressions.
@@ -451,13 +447,33 @@ For example, `<+<+pipeline.name> == "pipeline1">` or `<+<+stage.variables.v1> ==
 
 ### Variable concatenation
 
-Harness recommends that you use the Java string method for concatenating pipeline variables. Ensure the expression is wrapped within `<+ >`.
+Harness string variables can be concatenated by default. Each expression can be evaluated and substituted in the string. 
 
-For example, instead of `<+pipeline.variable.var1>_suffix`, use these syntaxes:
+Previously, Harness users were forced to use a ‘+’, or `.concat()`, the concatenation operator, to join multiple expressions together. Now, you can simply use `<+pipeline.name> <+pipeline.executionId>`. 
+
+For example, Harness supports complex usages sych as the following:
+
+- `us-west-2/nonprod/eks/eks123/<+env.name>/chat/`
+- `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>`
+  - This example uses the index of the looped execution to pick the correct step.
+- `<+pipeline.stages.<+pipeline.variables.stagename>.status>`
+  - This example shows an elegant way to print out the status of a stage.
+
+All existing expressions will continue to work. For example, the following syntax will still work.
+
+1. Use `+` operator to add string value variables: `<+<+pipeline.variables.var1> + "_suffix">`.
+2. Use Java `concat` method to add string variables:
 
 - `<+pipeline.variables.var1.concat("_suffix")>`
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
-- `<+<+pipeline.variables.var1> + "_suffix">` 
+
+Ensure the expression is wrapped within `<+ >` in both of theese examples.
+
+:::note
+
+If you wish to concatenate expressions as strings, make sure that each expression evaluates to a string. If an expression does not satisfy this condition, use the `toString()` method to convert it to a string. For example, the variable `sequenceId` in the expression `/tmp/spe/<+pipeline.sequenceId>` evaluates to an integer. When concatenating it with other string expressions, convert it to a string with the following expression: `/tmp/spe/<+pipeline.sequenceId.toString()>`.
+
+:::
 
 ## Debugging expressions
 
@@ -1302,6 +1318,29 @@ Use the following fully qualified expression to get the execution URL for a spec
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.executionUrl>
 ```
 
+### <+steps.STEP_ID.retryCount>
+
+When you set the failure strategy to **Retry Step**, you can specify the retry count for a step or all steps in the stage.
+
+Harness includes a `retryCount` built-in expression that resolves to the total number of times a step was retried:
+
+```
+<+execution.steps.STEP_ID.retryCount>
+```
+
+You can use this expression in a Shell Script step script anywhere after the step that you identify in the expression. 
+
+For example, here is a script that resolves the retry count for the step with the Id `ShellScript_1`:
+
+```
+echo "retry count of ShellScript_1: <+execution.steps.ShellScript_1.retryCount>"
+```
+
+During pipeline execution, the expression would resolve to something like this:
+
+```
+retry count of ShellScript_1: 2
+```
 
 ## Instances
 
@@ -1568,6 +1607,13 @@ This will help you to:
   - Reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
 
 **Important:** Users must update their delegate to version 1.0.79100 to use this expression.
+
+## Helm chart expressions
+
+import HelmManifestExpressions from '/docs/continuous-delivery/shared/helm-manifest-expressions.md';
+
+<HelmManifestExpressions name="helmexpressions" />
+
 
 ## Tag expressions
 

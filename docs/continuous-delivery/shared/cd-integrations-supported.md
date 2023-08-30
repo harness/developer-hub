@@ -271,7 +271,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
     - IRSA
     - Access Key and Secret Key
     - IAM Role
-    - GovCloud Support
+    - GovCloud supported
 - **Supported platforms for deployment:**
   - AWS cloud, any region
 - **Versions and tooling support:**
@@ -282,6 +282,26 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
     - Amazon S3
 
 </details>
+
+<details>
+<summary>AWS SAM</summary>
+
+- **Overview:**
+  - [AWS SAM](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments)
+- **Supported connectors for deployment:**
+  - AWS cloud connector
+    - Access key and secret key
+- **Supported platforms for deployment:**
+  - AWS cloud, any region
+- **Versions and tooling support:**
+  - AWS SDK
+  - Harness supports standard SAM templates.
+- **Supported integrations:**
+  - All Git providers are supported for SAM templates.
+  - Currently, you cannot add artifacts to your Harness SAM service.
+
+</details>
+
 
 <details>
 <summary>Traditional: WinRM</summary>
@@ -378,7 +398,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 - **Supported integrations:**
   - Artifact Repository:
     - Google Cloud Storage
-    - Google Source Repository (Gen 1 Only)
+    - Google Cloud Storage and Google Cloud Source (Gen 1 Only)
 
 </details>
 
@@ -421,7 +441,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 - **Limitations:**
   - Deployment Behavior:
     - Harness only supports AWS Lambda Functions to be deployed via Serverless.com Framework
-    - Harness builds and deploys Lambda Functions, users cannot split up the tasks to build functions and deploy functions separately natively via the swimlane
+    - Harness builds and deploys Lambda Functions> You cannot split up the tasks to build functions and deploy functions separately as part of Harness support.
   - Not supported application types:
     - Google Functions
     - Azure Functions
@@ -536,9 +556,10 @@ Harness supports the following infrastructure provisioning tools:
 
 - [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
 - [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
-- Azure ARM and Blueprint
+- [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
 - [AWS CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos)
-- Shell script (custom)
+- [Shell script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning) (custom)
 
 ### Terraform version support
 
@@ -576,6 +597,9 @@ Harness also supports Terraform Cloud and Enterprise.
   <TabItem value="Controls/Utilities" label="Controls/Utilities">
 ```
 
+- **Containerized steps:**
+  - [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups)
+  - Multiple step types can be run containerized.
 - **Controls:**
   - [Strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts): basic, rolling, canary, blue green, custom.
   - [Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers)
@@ -594,6 +618,14 @@ Harness also supports Terraform Cloud and Enterprise.
   - [Use the Command step to download or copy artifacts and configs, or run scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step)
   - [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances)
   - [Wait step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/wait-step)
+  - [Email step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step)
+  - [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors)
+- **Build:**
+  - [Background step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/background-step)
+  - [Git Clone step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step)
+  - [GitHub Action Plugin step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/github-action-plugin)
+  - [Run step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step)
+  - [Plugin step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/plugin-step)
 
 ```mdx-code-block
   </TabItem>

@@ -228,7 +228,7 @@ const config = {
               },
               {
                 label: "FAQs",
-                to: "docs/frequently-asked-questions",
+                to: "docs/faqs",
               },
               {
                 label: "Troubleshooting",
@@ -269,6 +269,10 @@ const config = {
               {
                 label: "Instructions",
                 to: "certifications/instructions",
+              },
+              {
+                label: "FAQs",
+                to: "certifications/faqs",
               },
             ],
           },

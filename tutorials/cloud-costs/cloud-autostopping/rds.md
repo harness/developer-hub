@@ -49,7 +49,7 @@ Harness AutoStopping Proxy provides an effective solution to reduce non-producti
 12.  **Machine type**: Select the instance family type from the dropdown list.
 13.  **TLS Certificate Secret Version**: This field is optional for an RDS instance or cluster. You can leave it empty.
 
-14.  **API Key**: Enter a valid API key generated in Harness New Generation. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/Resource-Development/APIs/api-quickstart) for more information.
+14.  **API Key**: Enter a valid API key generated in Harness New Generation. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/automation/APIs/api-quickstart) for more information.
 15.  **Select security groups**: Select the **Security Group** of the proxy VM.
 16.  **Key pair**: Select the SSH key pair to connect to your proxy VM.
 17.  **TLS Private Key Secret Version**: This field is optional for an RDS instance or cluster. You can leave it empty.

@@ -188,7 +188,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.ci,
           description:
             "",
-          link: "/docs/frequently-asked-questions/harness-faqs/continuous-integration-ci-faqs",
+          link: "/docs/faqs/continuous-integration-ci-faqs",
         },
       ],
     },

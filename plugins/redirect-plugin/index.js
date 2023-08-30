@@ -86,17 +86,17 @@ async function docsPluginEnhanced(context, options) {
         if (redirect_from) {
           if (Array.isArray(redirect_from)) {
             redirect_from.forEach((al) => {
-              strRedirects += `# Path : ${source} \r\n${al} ${permalink}\r\n\r\n`;
+              strRedirects += `# MD Path : ${source} \r\n${al} ${permalink}\r\n\r\n`;
             });
           } else {
-            strRedirects += `# Path : ${source} \r\n${redirect_from} ${permalink}\r\n\r\n`;
+            strRedirects += `# MD Path : ${source} \r\n${redirect_from} ${permalink}\r\n\r\n`;
           }
         }
 
         return title;
       });
 
-      //Historic Client Re-Directs from client-redirects.js
+      //Historic and User Generated Redirects, appeneding to _server-redirects
       if (!exists) {
         const serverRedirectsPath = path.resolve(
           __dirname,
@@ -104,10 +104,11 @@ async function docsPluginEnhanced(context, options) {
         );
         fs.copySync(serverRedirectsPath, outPutPath);
         fs.appendFileSync(outPutPath, strRedirects);
-        fs.appendFileSync(
-          outPutPath,
-          "\r\n# client-redirect-netlify-format-aug-23-2023.txt appeneded from Archives \r\n\r\n"
-        );
+        // if we need to append on the first line 
+        // fs.appendFileSync(
+        //   outPutPath,
+        //   "\r\n# client-redirect-netlify-format-aug-23-2023.txt appeneded from Archives \r\n\r\n"
+        // );
         //Historic Client Re-riects
         fs.readFile(clientRedirectNetlifyPath, function (err, data) {
           if (err) throw err;
