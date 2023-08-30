@@ -41,11 +41,11 @@ You can view an overview of your policies and how many times they have been eval
 
 :::
 
-![Screenshot of the Policies Overview page on the Harness Platform](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-23.png)
+![Screenshot of the Policies Overview page on the Harness Platform](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-23.png)
 
 3. Select **Policies**, and then select **New Policy**.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-24.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-24.png)
 
 4. In the **New Policy** page, enter the **Name** of the Policy, and then select **Apply**. This is the Policy name that appears on the Policy Overview page.
    
@@ -74,7 +74,7 @@ To use your own Rego policy:
    ```
 2. Click **Save**.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-25.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-25.png)
 
 ##### Use an Existing Rego Policy from the Harness Policy Library
 
@@ -83,16 +83,16 @@ To select a pre-existing policy:
 1. In the right-hand panel, click the **Library**.
 2. In the **Entity** drop-down menu, select **Flags**.
    
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-26.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-26.png)
    
 3. Select a pre-existing flag policy from the list. The Rego code will populate in the **Library** editor.
 4. Click **Use this Sample**.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-27.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-27.png)
 
 5. In **File Overwrite**, click **Confirm** to add the sample to your editor.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-28.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-28.png)
 
 6. Click **Save**.
 
@@ -108,22 +108,22 @@ You can only test a policy in the Testing Terminal if you have previously run a 
 
 2. In the **Testing Terminal**, click **Select Input.**
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-29.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-29.png)
 
 3. Select **Feature Flag** as the **Entity Type**. **Event Type** and **Action** are automatically completed.
 
 4. Select the **Feature Flag** you want to test, then click **Apply**. This will automatically populate the **Testing Terminal** using the details of the Feature Flag you selected.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-30.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-30.png)
 
 5. Click **Test**. Depending on whether the updated policy successfully applies to the existing Feature Flag, you receive one of the following:
 * **Input failed Policy Evaluation**: The Feature Flag doesn’t adhere to the updated policy.
 
-    ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-31.png)
+    ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-31.png)
 
 * **Input succeeded Policy Evaluation**: The Feature Flag adheres to the updated policy.
 
-  ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-32.png)
+  ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-32.png)
 
 #### Step 2: Add the Policy to a Policy Set
 
@@ -138,7 +138,7 @@ After you create an individual policy, you must add it to a Policy Set before yo
 4. In **Entity type** that this policy applies to, select **Feature Flag**.
 5. In **On what event should the Policy Set be evaluated**, select **On save**, then click **Continue**.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-33.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-33.png)
 
 
 :::note
@@ -151,7 +151,7 @@ Policies are not automatically applied to existing Feature Flags. Policies can b
 * **Warn & continue**: If a policy isn’t met when the Feature Flag is evaluated, you receive a warning but the flag is saved and you can continue.
 * **Error and exit:** If a policy isn’t met when the Feature Flag is evaluated, you receive an error and are exited without saving the flag.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-34.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-34.png)
 
 8. Click **Apply**, then click **Finish**.
 9.  The Policy Set is automatically set to Enforced, to make it unenforced, toggle off the **Enforced** button.
@@ -162,7 +162,7 @@ You need to enforce the policy before it evaluates your Feature Flags.
 
 :::
 
-![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-35.png)
+![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-35.png)
 
 ### Step: Apply a Policy to a Feature Flag
 
@@ -175,11 +175,11 @@ After you have created your Policy Set and added your policies to it, apply the 
 * **Success**: When you save the flag, the policy rule is evaluated, returns Flag created, and the flag is saved.
 * **Failure**:
 	+ If you selected **Warn and continue** when creating the policy, the flag is saved but you receive the following warning message:
-      ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-36.png)
+      ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-36.png)
 
 	+ If you selected **Error and exit** when creating the policy, the flag doesn’t save and you receive the following error message:
 
-      ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-37.png)
+      ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-37.png)
 
 After you have successfully created a Policy Set and applied it to your feature flags, you can:
 
@@ -194,24 +194,24 @@ After you have created a policy, you can edit it by renaming it or updating its 
 1. In Feature Flags, click **Policies**.
 2. Click **Policies**, then click the three dots next to the policy you want to change, then click **Edit**.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-38.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-38.png)
 
 3. To update the policy name, click **Edit Policy**.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-39.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-39.png)
 
 4. Enter the new name and click **Apply**.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-40.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-40.png)
 
 5. To update the policy rules, edit the Rego code in the policy editor.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-41.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-41.png)
 
 6. Test the updated policy in the Testing Terminal against a previous Policy Evaluation to ensure it is valid. For more information about how to do this, see [Step 9 in Create a Policy](/docs/platform/Governance/14_Policy-as-code/using-harness-policy-engine-for-feature-flags.md#step-1-create-a-policy).
 7. When you've made all the changes, click **Save**.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-42.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-42.png)
 
 ### Edit a Policy Set
 
@@ -220,7 +220,7 @@ You can edit a Policy Set to amend the name or add a new policy. 
 1. In Feature Flags, click **Policies**.
 2. Click **Policy Sets**, then click the three dots next to the Policy Set you want to change, then click **Edit**.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-43.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-43.png)
 
 3. The Policy Set's settings are displayed. Follow the steps in [Add the Policy to a Policy Set](/docs/platform/Governance/14_Policy-as-code/using-harness-policy-engine-for-feature-flags.md#step-2-add-the-policy-to-a-policy-set) to edit the details.
 
@@ -238,11 +238,11 @@ You can view all failures, warnings, and successes of evaluations for each of yo
 * Passed, failed, and warning results from evaluations.
 2. Click **Evaluation**.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-44.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-44.png)
 
 3. To view further details of a particular evaluation, click on it and expand the relevant evaluation.
 
-   ![](../../governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-45.png)
+   ![](../../Governance/14_Policy-as-code/static/using-harness-policy-engine-for-feature-flags-45.png)
 
 ### See also
 

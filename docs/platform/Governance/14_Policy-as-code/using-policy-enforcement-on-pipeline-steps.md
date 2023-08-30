@@ -100,7 +100,7 @@ More out-of-the-box steps like the rolling deployment step, have a pre-defined o
 
 For this example, we will be modeling the policy around this shell script step
 
-![](../../governance/14_Policy-as-code/static/policy-sample-shell-script-step.png)
+![](../../Governance/14_Policy-as-code/static/policy-sample-shell-script-step.png)
 
 YAML snippet:
 
@@ -145,7 +145,7 @@ true
 
 The policy above is checking to make sure that the message isn't empty. We want to enforce that all variables have some value that is not an empty value.
 
-![](../../governance/14_Policy-as-code/static/policy-sample.png)
+![](../../Governance/14_Policy-as-code/static/policy-sample.png)
 
 
 ### Create a policy set
@@ -161,7 +161,7 @@ Navigate to your Policy Set and click "+ New Policy Set".
 By setting the policy on step users' can now access the outputs and inputs of a step and enforce the policy on them.
 
 
-![](../../governance/14_Policy-as-code/static/policyset-sample.png)
+![](../../Governance/14_Policy-as-code/static/policyset-sample.png)
 
 ### Add a policy set to a step
 
@@ -171,25 +171,25 @@ Navigate to the *advanced section* of the step and select the *policy enforcemen
 
 You will be prompted to pick a policy set to associate with the step.
 
-![](../../governance/14_Policy-as-code/static/add-policyset-to-step.png)
+![](../../Governance/14_Policy-as-code/static/add-policyset-to-step.png)
 
 
 After the selection, you will see the policy set associated with the step:
 
-![](../../governance/14_Policy-as-code/static/configured-policyset-on-step.png)
+![](../../Governance/14_Policy-as-code/static/configured-policyset-on-step.png)
 
 
 ### Run the pipeline
 
 Don't provide any input into the Run form and just hit run, you will see the policy evaluate and error out with the below message:
 
-![](../../governance/14_Policy-as-code/static/policy-step-failure.png)
+![](../../Governance/14_Policy-as-code/static/policy-step-failure.png)
 
 You will see the policy evaluate and the corresponding denial message. If you re-run the pipeline and provide input, you will see the pipeline succeed.
 
 In the example below, we provided deploy and the variable was assigned "deploy" and the validation passed
 
-![](../../governance/14_Policy-as-code/static/policy-step-success.png)
+![](../../Governance/14_Policy-as-code/static/policy-step-success.png)
 
 
 ## See also

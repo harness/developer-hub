@@ -60,7 +60,7 @@ This topic explains the steps to add a Google Cloud Secrets Manager to the accou
 4. In Secret Managers, click **GCP Secrets Manager**.  
    The GCP Secrets Manager settings appear.
 
-   ![](../../secrets/static/add-a-google-cloud-secret-manager-39.png)
+   ![](../../Secrets/static/add-a-google-cloud-secret-manager-39.png)
 
 ## Add overview
 
@@ -76,7 +76,7 @@ Select one of the following options to configure details for the Google cloud se
 - **Specify credentials here**
 - **Use the credentials of a specific Harness Delegate (IAM role, service account, etc)**
 
-![](../../secrets/static/GCP-details.png)
+![](../../Secrets/static/GCP-details.png)
 
 ### Specify credentials here
 
@@ -94,7 +94,7 @@ See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-cont
 6. Go back to Harness.
 7. In **Google Secrets Manager Credentials File**, select the encrypted file you just added in Harness.
 
-   ![](../../secrets/static/GCP-specifyCredentials.png)
+   ![](../../Secrets/static/GCP-specifyCredentials.png)
    
 You can also create a new [File Secret](/docs/platform/secrets/add-file-secrets) here and add the Google Cloud service account key that you downloaded.
 
@@ -132,7 +132,7 @@ The **Add new Encrypted Text** settings appear.
 6. The default selection is **Inline Secret Value**.
 7. Enter the **Secret Value**.
 8. Select **Configure Region** to add the region(s) for your secret.
-9. Click **Save**.![](../../secrets/static/add-a-google-cloud-secret-manager-41.png)
+9. Click **Save**.![](../../Secrets/static/add-a-google-cloud-secret-manager-41.png)
 
 ## Add a secret reference to the GCP Secrets Manager
 
@@ -150,7 +150,7 @@ The **Add new Encrypted Text** settings appear.
 You can either enter a version number like `1`, `2`, or enter `latest` to reference the latest version.
 9. Click **Save**.
 
-   ![](../../secrets/static/add-a-google-cloud-secret-manager-42.png)
+   ![](../../Secrets/static/add-a-google-cloud-secret-manager-42.png)
 
 ## Add an encrypted file secret to the GCP Secrets Manager
 
@@ -166,7 +166,7 @@ The **Add new Encrypted File** settings appear.
 7. Select **Configure Region** to add the region(s) for your secret.
 8. Click **Save**.
 
-   ![](../../secrets/static/add-a-google-cloud-secret-manager-43.png)
+   ![](../../Secrets/static/add-a-google-cloud-secret-manager-43.png)
 
 ## See also
 

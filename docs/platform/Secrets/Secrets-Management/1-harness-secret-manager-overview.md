@@ -21,7 +21,7 @@ Harness includes a built-in Secret Management feature that enables you to store 
 
 You can choose to use your own secret management solution, or the built-in Harness Secret Manager. This diagram shows how Harness handles secrets:
 
-![](../../secrets/static/harness-secret-manager-overview-44.png)
+![](../../Secrets/static/harness-secret-manager-overview-44.png)
 
 ### Harness Secret Management Process Overview
 

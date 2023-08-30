@@ -46,7 +46,7 @@ To add a streaming destination in Harness:
 
 7. Select **Continue**.
    
-   ![](../../governance/15_Audit-Trail/static/audit-streaming.png)
+   ![](../../Governance/15_Audit-Trail/static/audit-streaming.png)
 
 ## Configure the streaming connector
 
@@ -62,7 +62,7 @@ To add a streaming destination in Harness:
    
    Harness writes all the streaming records to this destination.
 
-   ![](../../governance/15_Audit-Trail/static/streaming-connector.png)
+   ![](../../Governance/15_Audit-Trail/static/streaming-connector.png)
 
 5. Select **Save** and **Continue**.
 
@@ -94,14 +94,14 @@ You can change the audit stream configuration by clicking three dots beside the 
 
 - **Delete**: Delete the audit stream destination.
 
-![](../../governance/15_Audit-Trail/static/edit-delete.png)
+![](../../Governance/15_Audit-Trail/static/edit-delete.png)
 
 
 ## Amazon S3 audit file details
 
 Here is an example of an audit stream file in one of the Amazon S3 buckets.
 
-![](../../governance/15_Audit-Trail/static/s3-auditstream-file.png)
+![](../../Governance/15_Audit-Trail/static/s3-auditstream-file.png)
 
 This file has a list of audit events in JSON format.
 

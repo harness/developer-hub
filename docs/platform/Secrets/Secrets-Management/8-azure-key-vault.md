@@ -24,7 +24,7 @@ For a full overview of how your secrets are used with the Secrets Managers you c
 
 Here's a visual summary:
 
-![](../../secrets/static/azure-key-vault-00.png)
+![](../../Secrets/static/azure-key-vault-00.png)
 
 ## Limitations
 
@@ -43,11 +43,11 @@ To create a **Reader** role in the Azure portal UI:
 
 Navigate to Azure's **Subscriptions** page.
 
-![](../../secrets/static/azure-key-vault-02.png)
+![](../../Secrets/static/azure-key-vault-02.png)
 
 Under **Subscription name**, select the subscription where your vaults reside.
 
-![](../../secrets/static/azure-key-vault-03.png)
+![](../../Secrets/static/azure-key-vault-03.png)
 
 
 :::tip
@@ -55,25 +55,25 @@ Copy and save the **Subscription ID**. You can paste this value into Harness Man
 :::
 
 
-![](../../secrets/static/azure-key-vault-04.png)
+![](../../Secrets/static/azure-key-vault-04.png)
 
 On the resulting **Access control (IAM)** page, select **Add a role assignment**.
 
 In the resulting right pane, set the **Role** to **Reader**.
 
-![](../../secrets/static/azure-key-vault-05.png)
+![](../../Secrets/static/azure-key-vault-05.png)
 
 Accept the default value: **Assign access to**: **Azure AD user**, **group, or service principal**.
 
 In the **Select** drop-down, select the name of your Azure App registration.
 
-![](../../secrets/static/azure-key-vault-06.png)
+![](../../Secrets/static/azure-key-vault-06.png)
 
 Click **Save**.
 
 On the **Access control (IAM)** page, select the **Role assignments** tab. Make sure your new role now appears under the **Reader** group.
 
-![](../../secrets/static/azure-key-vault-07.png)
+![](../../Secrets/static/azure-key-vault-07.png)
 
 
 :::note
@@ -102,11 +102,11 @@ To add an Azure Key Vault secret manager:
 1. In Harness, select your project.
 2. Select **Connectors** and then select **New Connector**.
 
-   ![](../../secrets/static/azure-key-vault-08.png)
+   ![](../../Secrets/static/azure-key-vault-08.png)
 
 3. In **Secret Managers**, select **Azure Key Vault**.
 
-   ![](../../secrets/static/azure-key-vault-09.png)
+   ![](../../Secrets/static/azure-key-vault-09.png)
 
 4. Enter a **Name** for the secret manager.
 
@@ -127,7 +127,7 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 1. Select **Specify credentials here**.
 2. Enter **Client ID**, **Tenant ID** corresponding to the fields highlighted below in the Azure UI:
 
-   ![](../../secrets/static/azure-key-vault-10.png)
+   ![](../../Secrets/static/azure-key-vault-10.png)
 
    To provide these values:
 
@@ -138,7 +138,7 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
    To find this ID, navigate to Azure's **Subscriptions** page, as outlined above in [Step 1: Create Azure Reader Role](/docs/platform/Secrets/Secrets-Management/8-azure-key-vault.md#create-an-azure-reader-role). From the resulting list of subscriptions, copy the **Subscription ID** beside the subscription that contains your vaults.
 
-   ![](../../secrets/static/azure-key-vault-11.png)
+   ![](../../Secrets/static/azure-key-vault-11.png)
 
    :::note
    If you do not enter a GUID, Harness uses the default subscription for the [Client ID](#setup-delegates) you've provided above.
@@ -146,26 +146,26 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
 4. In **Key**, select **Create or Select a Secret**. For detailed steps on creating a new secret, go to [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
-   ![](../../secrets/static/specify-credentials.png)
+   ![](../../Secrets/static/specify-credentials.png)
 
    The secret that you reference here should have the Azure authentication key as the **Secret Value**. The image below shows the creation of a secret with Azure authentication key as its value:
 
-   ![](../../secrets/static/azure-key-vault-13.png)
+   ![](../../Secrets/static/azure-key-vault-13.png)
 
    To create and exchange the azure authentication key, follow these steps:
 
    1. Navigate to Azure's **Certificates & secrets** page. (For details, go to Microsoft Azure's [Create a new application secret](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) documentation.)
    2. In the resulting page’s **Client secrets** section, select **New client secret**.
 
-   ![](../../secrets/static/azure-key-vault-14.png)
+   ![](../../Secrets/static/azure-key-vault-14.png)
 
    3. Enter a **Description** and expiration option, then click **Add**.
 
-   ![](../../secrets/static/azure-key-vault-15.png)
+   ![](../../Secrets/static/azure-key-vault-15.png)
 
    4. Find your new key in the **Client secrets** section, and copy its value to your clipboard.
 
-   ![](../../secrets/static/azure-key-vault-16.png)
+   ![](../../Secrets/static/azure-key-vault-16.png)
 
     
    :::note
@@ -182,11 +182,11 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 4. In **Authentication**, select one of the following: 
    - **System Assigned Managed Identity**: If you select this, you need not provide any Ids.
 
-     ![](../../secrets/static/system-assigned-managed-identity.png)
+     ![](../../Secrets/static/system-assigned-managed-identity.png)
 
    - **User Assigned Managed Identity**: If you select this, you need to provide the Application (client) Id in **Client Id**.
     
-     ![](../../secrets/static/user-assigned-managed-identity.png)
+     ![](../../Secrets/static/user-assigned-managed-identity.png)
 
 ## Set up delegates
 

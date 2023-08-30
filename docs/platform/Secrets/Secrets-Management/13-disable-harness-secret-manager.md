@@ -39,7 +39,7 @@ The Key Management Service only stores the key. Harness uses [envelope encrypti
 1. In your Harness Account, go to **Account Settings**.
 2. Select **Account Resources** and then select **Default Settings**.
 
-   ![](../../secrets/static/disable-secretmanager-option.png)
+   ![](../../Secrets/static/disable-secretmanager-option.png)
 
 3. Select **Connectors**.
 
