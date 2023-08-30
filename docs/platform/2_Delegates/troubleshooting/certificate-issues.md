@@ -34,120 +34,128 @@ To resolve the handshake exception, do the following:
 
 3. Follow the appropriate steps below, based on whether you use the OpenSSL tool.
 
-**Use the OpenSSL tool**
+<details>
+   <summary>
+   Use the OpenSSL tool
+   </summary>
+  
+   To use the OpenSSL tool, do the following:
 
-To use the OpenSSL tool, do the following:
+   1. Exec into the delegate pod.
 
-1. Exec into the delegate pod.
-
-2. Run the command below to get all the certificates in the path.
-
-   ```
-   openssl s_client -showcerts -servername <fqdn> -connect <fqdn>:443
-   ```
-
-   The output will look similar to the example below.
-   
-    ```
-   CONNECTED(00000003)
-
-   depth=0 C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
-
-   verify error:num=18:self signed certificate
-
-   verify return:1
-
-   depth=0 C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
-
-   verify return:1
-
-   ---
-
-   Certificate chain
-
-    0 s:C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
-
-    i:C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
-
-   -----BEGIN CERTIFICATE-----
-
-   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-   
-   -----END CERTIFICATE-----
-
-   1 s:C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
-
-   i:C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
-
-   -----BEGIN CERTIFICATE-----
-
-   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-   -----END CERTIFICATE-----
-
-   ---
-
-   Server certificate
-
-   subject=C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
-
-   issuer=C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
-
-   ---
-
-   No client certificate CA names sent
-
-   Peer signing digest: SHA256
-
-   Peer signature type: RSA-PSS
-
-   Server Temp Key: X25519, 253 bits
-
-   ---
-
-   SSL handshake has read 2443 bytes and written 397 bytes
-
-   Verification error: self signed certificate
-
-   ---
-
-   New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
-
-   Server public key is 2048 bit
-
-   Secure Renegotiation IS NOT supported
-
-   Compression: NONE
-
-   Expansion: NONE
-
-   No ALPN negotiated
-
-   Early data was not sent
-
-   Verify return code: 18 (self signed certificate)
-
-   ---
-
-   connect to smp.test.harness.io
+   2. Run the command below to get all the certificates in the path.
 
       ```
+      openssl s_client -showcerts -servername <fqdn> -connect <fqdn>:443
+      ```
 
-3. Copy the `BEGIN CERTIFICATE` and `END CERTIFICATE` blocks into a new `cacerts.pem` file.
+      The output will look similar to the example below.
+   
+       ```
+      CONNECTED(00000003)
 
-4. Add the CA certificates to the delegate.
+      depth=0 C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
 
-   1. If your delegate version is 803xx or later, mount the custom certificates to a path in the container and launch the delegate with the `CUSTOM_CERTS_PATH` environment variable to the path inside the container.
+      verify error:num=18:self signed certificate
 
-   2. If your delegate version is earlier than 803xx, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/). Remember to add the certificates to both the Java truststore and the pod.
+      verify return:1
 
-**When the OpenSSL tool isn't present**
+      depth=0 C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
+
+      verify return:1
+   
+      ---
+
+      Certificate chain
+
+       0 s:C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
+
+       i:C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
+
+      -----BEGIN CERTIFICATE-----
+
+      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+   
+      -----END CERTIFICATE-----
+
+      1 s:C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
+
+      i:C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
+
+      -----BEGIN CERTIFICATE-----
+
+      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+      -----END CERTIFICATE-----
+
+      ---
+
+      Server certificate
+
+      subject=C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
+
+      issuer=C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
+
+      ---
+
+      No client certificate CA names sent
+
+      Peer signing digest: SHA256
+
+      Peer signature type: RSA-PSS
+
+      Server Temp Key: X25519, 253 bits
+
+      ---
+
+      SSL handshake has read 2443 bytes and written 397 bytes
+
+      Verification error: self signed certificate
+
+      ---
+
+      New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+
+      Server public key is 2048 bit
+
+      Secure Renegotiation IS NOT supported
+
+      Compression: NONE
+
+      Expansion: NONE
+
+      No ALPN negotiated
+
+      Early data was not sent
+
+      Verify return code: 18 (self signed certificate)
+
+      ---
+
+      connect to smp.test.harness.io
+
+      ```
+         
+   3. Copy the `BEGIN CERTIFICATE` and `END CERTIFICATE` blocks into a new `cacerts.pem` file.
+
+   4. Add the CA certificates to the delegate.
+
+         1. If your delegate version is 803xx or later, mount the custom certificates to a path in the container and launch the delegate with the `CUSTOM_CERTS_PATH` environment variable to the path inside the container.
+
+         2. If your delegate version is earlier than 803xx, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/). Remember to add the certificates to both the Java truststore and the pod.
+
+</details>
+
+<details>
+   <summary>
+   When the OpenSSL tool isn't present
+   </summary>
 
 To resolve the exception when OpenSSL tool isn't present, do the following:
 
@@ -176,6 +184,7 @@ To resolve the exception when OpenSSL tool isn't present, do the following:
 
 3. Find the certificate for each CN by going to the domain in your browser or download the certificate.
 
+</details>
 
 ### Signature check failure
 
