@@ -101,7 +101,7 @@ To view the monitored service list from the SRM module:
 
 1. In Harness, select **Service Reliability** > **Monitored Services**.
    
-   A list of monitored services is displayed. The list provides information such as the service's enablement status, name, SLO and error budget details, recent changes and health trend in the past 24 hours, health score, and health status of associated dependencies.
+   A list of monitored services is displayed. The list provides information such as the service's enablement status, name, SLO and error budget details, recent changes and health trends in the past 24 hours, health score, and health status of associated dependencies.
 
    <docimage path={require('./static/view-monitored-service-srm-level.png')} />
 
