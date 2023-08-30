@@ -3,6 +3,8 @@ description: Sandbox to learn about MD and HDH Features, powered by Docusaurus
 title: Get Creative with HDH and Docusaurus
 tags: 
  - contributing
+redirect_from:
+  - /sandbox
 ---
 
 ```mdx-code-block
@@ -205,3 +207,19 @@ and Size [small, medium, large].
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/whats-new/rss.xml" tooltip=
 "Subscribe to RSS" size="medium"/>
+
+## Pills
+Similar to the Button Framework, the Pill Framework allows use to place pill tags in the MD. The buttons are designed to be
+clicked and hoovered. The buttons can contain links also. 
+
+```
+<DocsTag icon = "fa-solid fa-icons" text="Default" link="/docs/security-testing-orchestration" />
+<DocsTag  text="Default without icon" link="/docs/security-testing-orchestration" />
+<DocsTag  backgroundColor= "#ff8ac1" text="With out icon"  textColor="#ca136c"  />
+<DocsTag icon = "fa-solid fa-hand-dots"  backgroundColor= "#cbe2f9"   textColor="#0b5cad" iconColor="#6938c0" text="Community" link="/docs/security-testing-orchestration"  />
+```
+
+<DocsTag icon = "fa-solid fa-icons" text="Default" link="/docs/security-testing-orchestration" />
+<DocsTag  text="Default without icon" link="/docs/security-testing-orchestration" />
+<DocsTag  backgroundColor= "#ff8ac1" text="With out icon"  textColor="#ca136c"  />
+<DocsTag icon = "fa-solid fa-hand-dots"  backgroundColor= "#cbe2f9"   textColor="#0b5cad" iconColor="#6938c0" text="Community" link="/docs/security-testing-orchestration"  />
