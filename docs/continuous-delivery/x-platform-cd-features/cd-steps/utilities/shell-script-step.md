@@ -178,6 +178,12 @@ If you select **Target Host**, depending on the script type, enter the following
 * **WinRM Credential:** select the WinRM credentials to use for the PowerShell session. For information on setting up WinRM credentials, go to [add WinRM credential](/docs/platform/secrets/add-winrm-keys).
 * **Working Directory:** provide the working directory for the script to be executed. Keep in mind that the directory path should be present on the host.
   
+### Notes on working directory
+
+import WorkingDir from '/docs/continuous-delivery/shared/working-dir.md';
+
+<WorkingDir name="WorkingDir" />
+
 ### Advanced step settings
 
 In **Advanced**, you can use the following options:

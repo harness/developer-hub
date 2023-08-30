@@ -2,6 +2,8 @@
 title: Container step
 description: Run a Docker container in a CD stage.
 sidebar_position: 7
+redirect_from:
+  - /docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step
 ---
 
 The Container step lets you run any Docker container in your Kubernetes cluster as part of your continuous deployment (CD) stage.
