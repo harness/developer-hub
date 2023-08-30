@@ -61,7 +61,7 @@ To set the Ignore Thresholds rule:
 
 ### Fail-Fast Thresholds
 
-You can select the type of events for which you want to set thresholds. Any metric that matches the selected rules will be marked as anomalous and cause the workflow to fail.
+You can select the type of events for which you want to set thresholds. Any metric that matches the selected rules will be marked as anomalous and cause the pipeline to fail.
 
 To set Fail-Fast Thresholds rule:
 
