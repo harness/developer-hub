@@ -519,10 +519,10 @@ Do not use the **Output Value**, for example `<+secrets.getValue("terraform_outp
 A secret is masked in Harness logs, but you can write it to a file like this:
 
 ```
-echo <+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED> | base64 -d > /path/to/file.txt
+echo "<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>" > /path/to/file.txt
 ```
 
-Here's an example of encrypted Terraform JSON output decoded from base64:
+Here's an example of decrypted Terraform JSON output:
 
 ```json
 {
