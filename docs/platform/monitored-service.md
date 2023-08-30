@@ -16,7 +16,7 @@ A Harness monitored service functions as a unified logical entity across three m
 
 ## Create a monitored service at project level
 
-When you create a monitored service at the Project Level, it becomes accessible across all the three modules: CD, SRM, and CET. 
+When you create a monitored service at the Project Level, it becomes accessible across all three modules: CD, SRM, and CET. 
 
 To create a monitored service at the project level:
 
