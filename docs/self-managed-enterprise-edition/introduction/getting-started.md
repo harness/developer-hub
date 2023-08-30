@@ -25,10 +25,9 @@ Review the following diagrams for your installation type.
 
 Harness Self-Managed Enterprise Edition is installed in a Kubernetes cluster in the following configuration.
 
-![](./static/harness-self-managed-enterprise-edition-overview-00.png)To install Harness Self-Managed Enterprise Edition in a Kubernetes cluster, use the following instructions:
+![](./static/harness-self-managed-enterprise-edition-overview-00.png)
 
-1. For Self-Managed Enterprise Edition with Helm, go to [Install Harness Self-Managed Enterprise Edition Using Helm](../self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga.md).
-2. For Self-Managed Enterprise Edition with KOTS, go to [Install Self-Managed Enterprise Edition Using KOTS](../deploy-with-kots/kubernetes-cluster-on-prem-kubernetes-cluster-setup.md).
+To install Harness Self-Managed Enterprise Edition in a Kubernetes cluster with Helm, go to [Install Harness Self-Managed Enterprise Edition Using Helm](../self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga.md).
 
 **AWS architecture**
 
