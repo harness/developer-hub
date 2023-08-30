@@ -31,7 +31,7 @@
 | Validate Deployments | [Continuous Verification](https://developer.harness.io/docs/category/continuous-verification/) |
 | HTTP Execution Checks | [HTTP step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/)|
 |**5. GitOps** | |
-| GitOps Basics  | [Harness GitOps Basics](https://developer.harness.io/docs/continuous-delivery/cd-gitops/harness-git-ops-basics/) |
+| GitOps Basics  | [Harness GitOps Basics](https://developer.harness.io/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics/) |
 | Install GitOps Agent  | [Harness CD GitOps Tutorial](https://developer.harness.io/docs/continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart/) |
 |**6. Data Visibility**| |
 | Describe Dashboards| [Overview and Service dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments) |
