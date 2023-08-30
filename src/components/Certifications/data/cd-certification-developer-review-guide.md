@@ -17,7 +17,7 @@
 | Conditional Execution  | [Stage and Step Conditional Execution Settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) |
 | Steps | [Looping Strategies Overview ](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) |
 | Looping Strategies | [Best Practices for Looping Strategies ](https://developer.harness.io/docs/platform/pipelines/best-practices-for-looping-strategies/) |
-| Terraform Provider | [Harness Terraform provider overview](https://developer.harness.io/docs/platform/terraform/harness-terraform-provider-overview/)|
+| Terraform Provider | [Harness Terraform provider overview](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider-overview/)|
 | Cloud Formation Provider | [CloudFormation How-tos](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos) |
 | Git Trigger  | [Triggers](https://developer.harness.io/docs/category/triggers/) |
 | Webhooks  | [Trigger Pipelines using Git Events](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) |
