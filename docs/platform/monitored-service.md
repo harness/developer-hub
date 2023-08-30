@@ -29,7 +29,7 @@ To create a monitored service at the project level:
    
     - **Type**: Select the type of service that you want to monitor. You can choose either Application or Environment.
     
-    - **Create or select a Service**: You can either select an available service from the drop-down list or create a new one. To create a new service, select + Add New, enter a name for the service, an optional description, and a tag, and then select **Save**.
+    - **Create or select a Service**: You can either select an available service from the drop-down list or create a new one. To create a new service, select **+ Add New**, enter a name for the service, an optional description, and a tag, and then select **Save**.
   
     - **Create or select an Environment**: You can either select an available environment from the drop-down list or create a new one. To create a new environment:
   
