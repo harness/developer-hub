@@ -86,6 +86,8 @@ To set Fail-Fast Thresholds rule:
    -  **Absolute Value**: Select this option and enter the **Greater than** and **Lesser than** values.
    
    -  **Percentage Deviation**: Select this option and enter the **Lesser than** value.
+  
+  
 
 
 <docimage path={require('./static/monitored-service-failfast-threshold.png')} />
