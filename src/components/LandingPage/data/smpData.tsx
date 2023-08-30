@@ -4,7 +4,7 @@ import { MODULES } from "../../../constants";
 
 export const SMPList: CardItem[] = [
   {
-    title: "Configure an external cloud-based Mongo database",
+    title: "Configure an external cloud-based MongoDB",
     module: MODULES.smp,
     icon: "img/logo.svg",
     description: (
