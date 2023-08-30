@@ -374,7 +374,7 @@ const config = {
               },
               {
                 label: "Feature Requests",
-                href: "https://ideas.harness.io/",
+                to: "https://ideas.harness.io",
               },
             ],
           },
