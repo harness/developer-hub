@@ -39,7 +39,7 @@ To create a monitored service at the project level:
         
             - Enter a name for the service, an optional description, and a tag.
   
-            - Select an environment type. You can choose **Production** and **Non-Production**.
+            - Select an environment type. You can choose **Production** or **Non-Production**.
   
             - Configure the environment overrides. You can define what will be overridden when a service is deployed in this environment.
         
