@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic shows you how to create and run custom triggers for your Harness pipelines using platform-agnostic Webhooks and cURL commands.
 
-## Overview
+## Overview of custom triggers
 
 In addition to triggers that use Git providers, artifact providers, manifests, and cron scheduling, Harness includes custom triggers that you can use to run pipelines via cURL or a platform-agnostic Webhook.
 
@@ -42,7 +42,7 @@ The **Payload Type** is set as Custom. If this were a Git provider trigger, you 
 
 For more details, go to [Trigger Pipelines using Git Events](triggering-pipelines.md).
 
-## Conditions
+## Conditions for the custom trigger
 
 Conditions specify criteria in addition to events and actions.
 
@@ -61,7 +61,7 @@ For details on these settings, go to [Triggers Reference](../8_Pipelines/w_pipe
 
 Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the trigger.
 
-## Pipeline input
+## Pipeline input for the custom trigger
 
 Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
 
@@ -70,7 +70,7 @@ Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md) like
 
 The trigger is now added to the **Triggers** page.
 
-## Trigger a deployment using cURL
+## Trigger a deployment using the cURL command for a custom trigger
 
 1. On the **Triggers** page, in the **Webhook** column, select the link icon for your trigger and then select **Copy as cURL Command**.
 
@@ -112,7 +112,7 @@ The **Execution History** page shows that the execution was triggered by a custo
 
 ![](./static/trigger-deployments-using-custom-triggers-03.png)
 
-## Links in the response
+## Links in the response from a custom trigger
 
 The JSON response of the custom trigger cURL command contains several links.
 
@@ -131,14 +131,14 @@ The JSON response of the custom trigger cURL command contains several links.
 ```
 The following section describe each link and what you can do with them.
 
-### apiUrl
+### apiUrl parameter in a custom trigger
 
 **apiUrl** can be used to track deployment status programmatically, such as using a REST call.
 
 For more information, go to [Get Deployment Status using REST](#get-deployment-status-using-rest) below.
 
 
-### uiUrl
+### uiUrl parameter in a custom trigger
 
 The **uiUrl** from the cURL command output can be used directly in a browser.
 
@@ -146,11 +146,11 @@ To run a deployment from a browser, paste the URL from **uiUrl** into the brow
 
 The browser will open **app.harness.io** and display the running deployment.
 
-### uiSetupUrl
+### uiSetupUrl parameter in a custom trigger
 
 In the JSON response of a Pipeline executed by a custom trigger, the **uiSetupUrl** label displays the URL or the pipeline that was run.
 
-## Get deployment status using REST
+## Get deployment status using REST for a custom trigger
 
 The **apiUrl** property in the JSON response can be used to track deployment status programmatically, such as using a REST call.
 
@@ -351,6 +351,10 @@ The response from the cURL command will contain the status of the deployment. Fo
 }
 ```
 
+## Passing data in custom triggers
+
+For information on how to pass data in the cURL command for a custom trigger, go to [Passing data in Custom triggers](/docs/platform/Triggers/custom-trigger-passing-data).
+
 ## Custom trigger authorization using API keys
 
 You can use [Harness API keys](/docs/platform/automation/api/add-and-manage-api-keys) in your cURL command to authorize the execution of a trigger.
@@ -404,7 +408,7 @@ Now all custom triggers in this account must use an API key token or an authoriz
 {"status":"ERROR","code":"INVALID_REQUEST","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","correlationId":"465d6463-152b-4211-8cb5-6bcc2538afa8","detailedMessage":null,"responseMessages":[{"code":"INVALID_REQUEST","level":"ERROR","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","exception":null,"failureTypes":[]}],"metadata":null}
 ```
 
-##### Allow overrides
+##### Allow overrides for custom trigger authorization
 
 When the **Allow Overrides** box is selected at the account level, Harness users will be able to select a different value for this setting at project level. 
 
