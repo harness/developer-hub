@@ -17,7 +17,7 @@
 | Conditional Execution  | [Stage and Step Conditional Execution Settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) |
 | Steps | [Looping Strategies Overview ](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) |
 | Looping Strategies | [Best Practices for Looping Strategies ](https://developer.harness.io/docs/platform/pipelines/best-practices-for-looping-strategies/) |
-| Terraform Provider | [Harness Terraform provider overview](https://developer.harness.io/docs/platform/terraform/harness-terraform-provider-overview/)|
+| Terraform Provider | [Harness Terraform provider overview](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider-overview/)|
 | Cloud Formation Provider | [CloudFormation How-tos](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos) |
 | Git Trigger  | [Triggers](https://developer.harness.io/docs/category/triggers/) |
 | Webhooks  | [Trigger Pipelines using Git Events](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) |
@@ -29,9 +29,9 @@
 |**4. Continuous Verification** | |
 | APM/Log Based Verification  | [Verify Deployments with the Verify Step](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) |
 | Validate Deployments | [Continuous Verification](https://developer.harness.io/docs/category/continuous-verification/) |
-| HTTP Execution Checks | [HTTP step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines)|
+| HTTP Execution Checks | [HTTP step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/)|
 |**5. GitOps** | |
-| GitOps Basics  | [Harness GitOps Basics](https://developer.harness.io/docs/continuous-delivery/cd-gitops/harness-git-ops-basics/) |
+| GitOps Basics  | [Harness GitOps Basics](https://developer.harness.io/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics/) |
 | Install GitOps Agent  | [Harness CD GitOps Tutorial](https://developer.harness.io/docs/continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart/) |
 |**6. Data Visibility**| |
 | Describe Dashboards| [Overview and Service dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments) |
