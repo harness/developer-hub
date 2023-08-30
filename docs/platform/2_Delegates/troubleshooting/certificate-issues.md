@@ -1,5 +1,5 @@
 ---
-title: Certificate issues
+title: Delegate certificate issues
 description: Troubleshoot common delegate certificate issues.
 # sidebar_position: 1
 ---
@@ -8,7 +8,7 @@ This topic provides solutions for common delegate certificate issues.
 
 ## Delegate fails to register
 
-In some scenarios, the delegate may start but fail to register. There are two common exceptions that might occur an `SSLHandshakeException` and a signature check failure.
+In some scenarios, the delegate might start to register and then fail. There are two common exceptions that might occur: an `SSLHandshakeException` and a signature check failure.
 
 ### Handshake exception
 
@@ -26,7 +26,7 @@ To resolve the handshake exception, do the following:
    curl -cacerts path/to/ca-certs/file https://<MANAGER_HOST>/api/account/<ACCOUNT_ID>/status
    ```
 
-2. Install the certificate chain to the delegate.
+2. Install the certificate on the delegate.
 
    1. If your delegate version is 803xx or later, mount the custom certificates to a path in the container and launch the delegate with the `CUSTOM_CERTS_PATH` environment variable to the path inside the container.
 
@@ -181,7 +181,7 @@ To resolve the exception when OpenSSL tool isn't present, do the following:
 
 In some scenarios, you might experience a `signature check failed: Signature length not correct: got 512 but was expecting 256` exception.
 
-This exception occurs because the length of the public key is not the same as the length of the signature. During the TLS handshake, the signature received by the delegate (client side) is the certificate sent by the server. The public key is from the truststore file where the delegate loads during startup. The delegate is not installed with the correct CA certificates that match the server side.
+This exception occurs because the length of the public key is not the same as the length of the signature. During the TLS handshake, the signature received by the delegate (client side) is the certificate sent by the server. The public key is from the truststore file where the delegate loads during startup. The issue can occur when the delegate is not installed with CA certificates that match the server side correctly.
 
 #### Signature check failure solution
 
