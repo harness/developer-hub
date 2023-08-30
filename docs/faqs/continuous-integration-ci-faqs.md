@@ -90,3 +90,7 @@ For details, go to [Run Docker-in-Docker in a Build stage](/docs/continuous-inte
 
 You can set the env variable, otherwise it doesn't figure out the import path correctly: DRONE_JSONNET_IMPORT_LIMIT
 See community PR for more details: [https://github.com/harness/drone/commit/d50e89d4114a3fed49a1317f147078269a4bdfb5#diff-e1045c16b3ce29369b845d8421af54321c52394275810fc6caf92ca75e8be974R143]
+
+## Memory and CPU resource allocation as part of a Run Test Step. 
+
+If a Run Test Step is part of a Kubernetes infrastructure, then the resources (CPU and Memory) can be configured as part of the step. This is not the case if the Run Test Step has a VM or Cloud Infra assigned. In this case the entire memory allocation of the VM is allocated to the step. 
