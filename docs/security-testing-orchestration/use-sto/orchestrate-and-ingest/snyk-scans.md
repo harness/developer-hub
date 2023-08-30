@@ -1,7 +1,7 @@
 ---
 title: Ingest Scan Results from Snyk
 description: This workflow describes how to ingest Snyk scan results into a Harness pipeline.  
-sidebar_position: 50
+sidebar_position: 90
 ---
 
 This workflow describes how to ingest Snyk scan results into a Harness pipeline. STO supports the following scan approaches for the following Snyk products:

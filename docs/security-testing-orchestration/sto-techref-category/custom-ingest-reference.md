@@ -4,9 +4,11 @@ description: ingest JSON or SARIF data from external scanners.
 sidebar_position: 105
 ---
 
-You can ingest results from any third-party scanner. Your results need to be in either [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) or [Harness Custom JSON](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners#json-data-format-reference) format.
+The Custom Ingest step enables you to ingest results from any third-party scanner. Harness STO supports two generic data formats:
 
-For a full description of the workflow, go to [Ingest Results from Custom or Unsupported Scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md).  
+- [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) is an open data format supported by many scan tools, especially tools available as GitHub Actions. You can easily ingest SARIF 2.1.0 data from any tool that supports this format. If your scanner can export to SARIF, use this format. For more information, go to [Ingest SARIF results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
+
+- Harness STO supports a custom JSON format that's useful for ingesting data from scanners that currently have no integration in STO and that cannot publish to SARIF. For more information, go to [Ingest Results from Unsupported Scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md).  
 
 :::note
 The Custom Ingest step is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [Security Step Settings Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md).
@@ -157,10 +159,10 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 Here are some topics that describe end-to-end workflows for ingesting SARIF and JSON data:
 
-- [Ingest JSON results from custom or unsupported scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners)
-
 - [Gitleaks Scanner Reference](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)
 
 - [Checkmarx scanner reference](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference)
 
 - [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-actions)
+
+- [Ingest JSON results from custom or unsupported scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners)

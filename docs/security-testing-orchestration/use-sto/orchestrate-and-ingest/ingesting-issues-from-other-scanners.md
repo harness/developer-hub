@@ -1,21 +1,22 @@
 ---
-title: Ingest JSON results from custom or unsupported scanners
-description: This topic describes how to ingest data from scan tools that currently have no integration in STO.
-sidebar_position: 40
+title: Ingest scan results from unsupported scanners
+description: How to ingest data from scan tools that currently have no integration in STO.
+sidebar_position: 100
 helpdocs_topic_id: ymkcm5lypf
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can ingest custom Issues from any scanning tool. STO supports a generic JSON format for ingesting data from scanners that currently have no integration in STO.
+You can ingest custom issues from any scanning tool. STO supports a generic JSON format for ingesting data from unsupported scanners that cannot export to SARIF.
 
-By ingesting your custom Issues, you can benefit from STO's refinement, deduplication, and correlation features. Harness handles your issue data the same way as data from supported scanners.
+### Important notes
 
-###  Requirements
+- [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) is an open data format supported by many scan tools. You can easily ingest SARIF 2.1.0 data from any tool that supports this format. If your scanner can export to SARIF, use this format. For more information, go to [Ingest SARIF results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
 
-* You have a valid STO license and access to the Harness platform.
-* You have a JSON file of the issues you want to ingest. The data file must match the [JSON format](#json-data-format-reference) specified below.
+- This workflow is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [Security Step Settings Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md).
+
+- To ingest your scan results, the data file must match the [JSON format](#json-data-format-reference) specified below.
 
 ### Required Steps
 

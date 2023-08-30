@@ -6,6 +6,8 @@ sidebar_position: 45
 
 [Static Analysis Results Interchange Format (SARIF)](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning) is an open data format supported by many scan tools, especially tools available as GitHub Actions. You can easily ingest SARIF 2.1.0 data from any tool that supports this format. 
 
+Harness STO also supports an STO Custom JSON format that's useful for ingesting data from scanners that cannot publish to SARIF. For more information, go to [Ingest Results from Unsupported Scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md).  
+
 The following workflow describes how to set up an ingestion pipeline for any scanner that supports SARIF. 
 
 ### Ingestion workflow description
