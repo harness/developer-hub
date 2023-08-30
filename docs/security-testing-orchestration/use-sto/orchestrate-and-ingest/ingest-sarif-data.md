@@ -8,7 +8,7 @@ sidebar_position: 45
 
 ### Important notes
 
-- This workflow is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [Security Step Settings Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md).
+- This workflow is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [What's supported](/docs/security-testing-orchestration/whats-supported).
 
 - Harness STO also supports an STO Custom JSON format for unsupported scanners that can't publish to SARIF. For more information, go to [Ingest Results from Unsupported Scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md).  
 
@@ -58,7 +58,9 @@ Here's an example of how to configure a Gitleaks step to ingest a SARIF data fil
 
 ## Example workflows for ingesting SARIF scan results
 
-Here are some topics that describe end-to-end workflows for ingesting SARIF data:
+The following topics describe end-to-end example pipelines for ingesting SARIF data:
+
+- [Custom Ingest settings reference](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference)
 
 - [Gitleaks Scanner Reference](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)
 
