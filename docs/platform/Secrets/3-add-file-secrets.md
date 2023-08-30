@@ -35,7 +35,7 @@ You can add an encrypted file secrets at the project, organization, and account 
 7. Optionally, you can enter a **Description** and **Tags**.
 8. Select **Save**
 
-![](../secrets/static/add-file-secrets-56.png)
+![](../Secrets/static/add-file-secrets-56.png)
 
 ## Reference an encrypted file secret
 
@@ -45,7 +45,7 @@ You can reference a encrypted file secret in any resource that allows files, suc
 
 When populating a UI field, you can search and select secrets by the **Secret Name**
 
-![SSH credential settings, including an SSH key file field.](../secrets/static/add-file-secrets-57.png)
+![SSH credential settings, including an SSH key file field.](../Secrets/static/add-file-secrets-57.png)
 
 ### Reference by ID
 
@@ -53,7 +53,7 @@ To reference encrypted file secrets in YAML or in fields that require expression
 
 1. Locate the ID, next to the **Secret Name**, in the secret's settings.
 
-   ![](../secrets/static/add-file-secrets-59.png)
+   ![](../Secrets/static/add-file-secrets-59.png)
 
    You can edit a secret's display name, but you can't change the ID.
 
