@@ -386,6 +386,10 @@ const config = {
                 label: "Release Notes",
                 href: "/release-notes/whats-new",
               },
+              {
+                label: "Feature Requests",
+                to: "https://ideas.harness.io",
+              },
             ],
           },
           {
