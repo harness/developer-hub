@@ -96,13 +96,9 @@ To dynamically reference secrets in HashiCorp Vault, make sure you use the expre
 
 You can create a Harness secret that refers to an existing secret in AWS Secrets Manager using the name of the secret, and a prefix if needed. For example, `mySecret`.
 
-![](../static/reference-existing-secret-manager-secrets-61.png)
-
 #### Referencing secret keys
 
 In AWS Secrets Manager, your secrets are specified as key-value pairs, using a JSON collection:
-
-![](../static/reference-existing-secret-manager-secrets-62.png)
 
 To reference a specific key in your Harness secret, add the key name following the secret name, like `secret_name#key_name`. In the above example, the secret is named **example4docs**. To reference the **example1** key, you would enter `example4docs#example1`.
 

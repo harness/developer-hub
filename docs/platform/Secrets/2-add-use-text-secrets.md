@@ -34,7 +34,7 @@ You can create secrets that point to secret managers in a different [scope](/doc
 
 :::
 
-To add an encrypted text secret in the account scope: 
+To add an encrypted text secret in the account scope, do the following: 
 
 1. In your Harness account, select **ACCOUNT SETTINGS**.
    
@@ -42,15 +42,11 @@ To add an encrypted text secret in the account scope:
 
 3. Select **New Secret**, and then select **Text**.
    
-   ```mdx-code-block
-   <img src={add_text_secret} alt="add_text_secret" height="200" width="500"/>
-   ```
+   ![](./static/add-text-secrets.png)
 
    The **Add new Encrypted Text** settings appear.
 
-   ```mdx-code-block
-   <img src={add_encrypted_text} alt="add_encrypted_text" height="200" width="500"/>
-   ```
+   ![](./static/add-encrypted-text.png)
 
 4. In **Secrets Manager** select the secrets manager you will use to encrypt this secret.
 
@@ -66,7 +62,7 @@ To add an encrypted text secret in the account scope:
 
    - **Reference Secret**: Enter the name of the existing secret in your Secret Manager that you want your **Reference Secret** to refer to, and then select **Test** to test the reference path. You can reference existing secrets in Azure Key Vault, Hashicorp Vault, AWS Secrets Manager, or GCP Secrets Manager.
 
-     ![](./static/select-secrets-manager-scope.png)
+     ![](./static/test-secret-reference-path.png)
 
 7. Select **Save**.
 

@@ -21,7 +21,7 @@ Harness also supports [Google KMS as a secrets manager](./10-add-google-kms-sec
 * Go to [Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * Go to [Secrets Management Overview](./1-harness-secret-manager-overview.md)
 
-## Limitations
+## Google Cloud secret manager important notes
 
 * Inline secrets saved to GCP Secrets Manager must follow the naming limitations of Google Cloud Secret Manager. Secret names can only contain alphabets, numbers, dashes (-), and underscores (\_).
 * The maximum size for encrypted files saved to Google Cloud Secret Manager is 64KiB.
@@ -33,11 +33,9 @@ Harness also supports [Google KMS as a secrets manager](./10-add-google-kms-sec
 * You cannot update the name of an inline or referenced secret stored in the Google Cloud Secret Manager using the Harness Secret Manager.
 * Harness does not support changing an inline secret to a reference secret or vice versa in Harness.
 
-## Supported Platforms and Technologies
+For more information, go to [Supported Platforms and Technologies](../../../getting-started/supported-platforms-and-technologies.md).
 
-Go to [Supported Platforms and Technologies](../../../getting-started/supported-platforms-and-technologies.md).
-
-## Permissions
+## Google Cloud secret manager permission requirements
 
 * Make sure you have Create/Edit permissions for Secrets.
 * Make sure you have **Create/Edit** permissions for connectors.
@@ -46,7 +44,7 @@ Go to [Supported Platforms and Technologies](../../../getting-started/supported
 
 Go to [Managing secrets](https://cloud.google.com/secret-manager/docs/access-control) from Google.
 
-## Add a secret manager
+## Add a Google Cloud secret manager
 
 This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
 
@@ -132,7 +130,10 @@ The **Add new Encrypted Text** settings appear.
 6. The default selection is **Inline Secret Value**.
 7. Enter the **Secret Value**.
 8. Select **Configure Region** to add the region(s) for your secret.
-9. Click **Save**.![](../static/add-a-google-cloud-secret-manager-41.png)
+
+   ![](../static/add-a-google-cloud-secret-manager-41.png)
+
+9. Click **Save**.
 
 ## Add a secret reference to the GCP Secrets Manager
 
@@ -145,12 +146,13 @@ The **Add new Encrypted Text** settings appear.
 4. Select the GCP Secrets Manager you just created.
 5. Enter a **Name** for your secret.
 6. Select **Reference Secret**.
+
+   ![](../static/add-a-google-cloud-secret-manager-42.png)
+
 7. Enter your secret identifier in **Reference Secret Identifier**.
 8. In **Version**, enter the version of your secret that you want to reference.  
 You can either enter a version number like `1`, `2`, or enter `latest` to reference the latest version.
 9. Click **Save**.
-
-   ![](../static/add-a-google-cloud-secret-manager-42.png)
 
 ## Add an encrypted file secret to the GCP Secrets Manager
 
@@ -164,9 +166,10 @@ The **Add new Encrypted File** settings appear.
 5. Enter a **Name** for your secret.
 6. In **Select File**, browse, and select your file.
 7. Select **Configure Region** to add the region(s) for your secret.
-8. Click **Save**.
 
    ![](../static/add-a-google-cloud-secret-manager-43.png)
+
+8. Click **Save**.
 
 ## See also
 
