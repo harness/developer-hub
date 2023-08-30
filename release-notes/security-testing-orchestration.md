@@ -46,11 +46,11 @@ This release does not include early access features.
 
 ### Fixed issues
 
-- Fixed a pagination issue in the Security Tests page where switching between different pages &mdash; for example, from issues 1-20 to issues 21-40 &mdash; resulted in a "Failed to get issues" error. (STO-6465)
+- Fixed a pagination issue in the Security Tests page where switching between different pages resulted in a "Failed to get issues" error. The error occurred when switching from a page of issues (such as 21-40) to another issue for which those settings were invalid. (STO-6465)
 
 - Fixed an issue where the Security Tests page would fail with a 500 internal error if the scan detected no issues. (STO-6437, ZD-49803)
 
-- Fixed an issue where the Black Duck Hub step ran DOCKER scans only by default. With this fix, the scanner runs DETECTOR and SIGNATURE scans by default as well. (STO-6447)
+- Previously, the Black Duck Hub step ran DOCKER scans only by default. With this release, the scanner runs DETECTOR and SIGNATURE scans by default as well. (STO-6447)
 
   You can configure this step with supported command-line arguments. For more information, go to [Additional CLI flags](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference#additional-cli-flags) in the [Black Duck Hub scanner reference](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference). 
 
