@@ -20,7 +20,7 @@ Before you begin setting up custom thresholds for service health, ensure you've 
 
 1. Create a monitored service.
    
-2. Configure a threshold-compatible health source such as AppDynamics, Google Cloud Operations, Splunk, Dynatrace, SumoLogic, Splunk Observability (SignalFX), and Azure Monitor. 
+2. Configure a threshold-compatible health source such as AppDynamics, Google Cloud Operations, Splunk, Dynatrace, SumoLogic, Splunk Observability (SignalFX), or Azure Monitor. 
    
 3. Set up at least one metric for the monitored service.
    
