@@ -90,8 +90,8 @@ Authentication is required for all accounts and repos, including read-only repos
 ```
 
 1. For **Authentication**, select **Username and Token**.
-2. In the **Username** field, enter your personal GitHub account name. You can use either plaintext or a [Harness encrypted text secret](../../../secrets/2-add-use-text-secrets.md).
-3. In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](../../../secrets/2-add-use-text-secrets.md).
+2. In the **Username** field, enter your personal GitHub account name. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
+3. In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
 <!--Is this method required for accounts with 2FA? Do OAuth, GH App, & SSH key support accounts w/ 2FA? -->
 

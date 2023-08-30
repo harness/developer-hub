@@ -45,8 +45,8 @@ To add a Jira connector to your Harness project:
 
 6. In Authentication, you can select one of the following: 
    - **Username and API Key**: Enter your credentials. For username, use the **full email address** you use to log into Jira.
-   For **API Key**, use a Harness [Text Secret](../../secrets/2-add-use-text-secrets.md). Go to [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) from Atlassian.
-   - **Personal Access Token**: Add your Personal Access Token (PAT) to Harness as an [encrypted text](../../secrets/2-add-use-text-secrets.md) and select the same in the Jira connector.
+   For **API Key**, use a Harness [Text Secret](/docs/platform/secrets/add-use-text-secrets). Go to [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) from Atlassian.
+   - **Personal Access Token**: Add your Personal Access Token (PAT) to Harness as an [encrypted text](/docs/platform/secrets/add-use-text-secrets) and select the same in the Jira connector.
       
      :::important
      This feature requires Harness Delegate version 78707. 

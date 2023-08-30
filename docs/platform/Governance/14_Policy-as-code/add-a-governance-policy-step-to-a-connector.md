@@ -10,12 +10,12 @@ helpdocs_is_published: true
 
 Harness provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies.
 
-You can create the policy and apply it to all Connectors in your Account, Org, and Project. The policy is evaluated on Connector-level event like On Save which occurs during Connector Creation and Updates. Go to [Harness Governance Quickstart](../../governance/14_Policy-as-code/harness-governance-quickstart.md).
+You can create the policy and apply it to all Connectors in your Account, Org, and Project. The policy is evaluated on Connector-level event like On Save which occurs during Connector Creation and Updates. Go to [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
 ### Before you begin
 
-* [Harness Governance Overview](../../governance/14_Policy-as-code/harness-governance-overview.md)
-* [Harness Governance Quickstart](../../governance/14_Policy-as-code/harness-governance-quickstart.md)
+* [Harness Governance Overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
+* [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
 * Policies use OPA authoring language Rego. For more information, go to [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
 
 ### Step 1: Add a Policy

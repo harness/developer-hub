@@ -10,14 +10,14 @@ helpdocs_is_published: true
 
 Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Accounts, Organizations, or Projects.
 
-You can choose to disable the Harness built-in Secret Manager at any point and use any other [Secret Manager](../../secrets/Secrets-Management/5-add-secrets-manager.md) to store secrets.
+You can choose to disable the Harness built-in Secret Manager at any point and use any other [Secret Manager](/docs/platform/Secrets/Secrets-Management/5-add-secrets-manager.md) to store secrets.
 
 This topic explains how to disable the built-in Harness Secret Manager.
 
 ### Before you begin
 
-* [Harness Secret Management Overview](../../secrets/Secrets-Management/1-harness-secret-manager-overview.md)
-* [Add a Secret Manager](../../secrets/Secrets-Management/5-add-secrets-manager.md)
+* [Harness Secret Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+* [Add a Secret Manager](/docs/platform/Secrets/Secrets-Management/5-add-secrets-manager.md)
 * Make sure you have Account Admin permissions to disable the built-in Secret Manager.  
 For more information, go to [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference).
 
@@ -60,9 +60,9 @@ You must have another Secret Manager created at the Account scope with its crede
 
 ### See also
 
-* [Add Google KMS as a Harness Secret Manager](../../secrets/Secrets-Management/10-add-google-kms-secrets-manager.md)
-* [Add an AWS KMS Secret Manager](../../secrets/Secrets-Management/7-add-an-aws-kms-secrets-manager.md)
-* [Add an AWS Secret Manager](../../secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
-* [Add an Azure Key Vault Secret Manager](../../secrets/Secrets-Management/8-azure-key-vault.md)
-* [Add a HashiCorp Vault Secret Manager](../../secrets/Secrets-Management/12-add-hashicorp-vault.md)
+* [Add Google KMS as a Harness Secret Manager](/docs/platform/Secrets/Secrets-Management/10-add-google-kms-secrets-manager.md)
+* [Add an AWS KMS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
+* [Add an AWS Secret Manager](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
+* [Add an Azure Key Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/8-azure-key-vault.md)
+* [Add a HashiCorp Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/12-add-hashicorp-vault.md)
 

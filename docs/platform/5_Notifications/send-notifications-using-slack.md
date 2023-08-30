@@ -37,7 +37,7 @@ Copy the Webhook.
 2. Click **User Groups**.
 3. Select the User Group to which you want to add notification preferences.
 4. In **Notification Preferences**, select **Slack Webhook URL**.
-5. Paste the Webhook into **Slack Webhook URL**  or add it as an [Encrypted Text](../secrets/2-add-use-text-secrets.md) in Harness and reference it here.  
+5. Paste the Webhook into **Slack Webhook URL**  or add it as an [Encrypted Text](/docs/platform/secrets/add-use-text-secrets) in Harness and reference it here.  
 For example, if you have a text secret with the identifier slackwebhookURL, you can reference it like this:
 ```
 <+secrets.getValue("slackwebhookURL")>​​

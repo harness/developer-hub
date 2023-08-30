@@ -49,7 +49,7 @@ You must have:
 
       ![](../static/connect-to-a-azure-repo-04.png)
 
-   * For SSH connections, you must provide an SSH private key stored in a [Harness encrypted text secret](../../secrets/2-add-use-text-secrets.md). You can use `ssh-keygen -t rsa` to create a private SSH key. For more information, go to the Microsoft documentation on [Creating SSH Keys](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-1-create-your-ssh-keys).
+   * For SSH connections, you must provide an SSH private key stored in a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets). You can use `ssh-keygen -t rsa` to create a private SSH key. For more information, go to the Microsoft documentation on [Creating SSH Keys](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-1-create-your-ssh-keys).
 
 9. If required, select **Enable API Access**. This is recommended, and it is required to use Git event triggers, webhooks, and send build and PR statuses between Azure Repos and Harness.
 
@@ -57,7 +57,7 @@ You must have:
 
       ![](../static/connect-to-a-azure-repo-05.png)
 
-   * In **Personal Access Token**, select a [Harness encrypted text secret](../../secrets/2-add-use-text-secrets.md) containing an Azure Repos Personal Access Token. Harness requires the token for API access. Generate the token in your Azure account, and then add it to Harness as a secret.
+   * In **Personal Access Token**, select a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets) containing an Azure Repos Personal Access Token. Harness requires the token for API access. Generate the token in your Azure account, and then add it to Harness as a secret.
 
 10. Select **Continue**, and then configure the delegate connection. Select either:
 

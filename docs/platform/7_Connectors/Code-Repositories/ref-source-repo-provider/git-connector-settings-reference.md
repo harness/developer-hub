@@ -95,9 +95,9 @@ Provide authentication credentials for the connector. The **Connection Type** yo
 
 The **HTTP** Connection Type requires **Username** and **Password** authentication for all accounts and repos, including read-only repos.
 
-In the **Username** field, enter the Git account username. You can use either plaintext or a [Harness encrypted text secret](../../../secrets/2-add-use-text-secrets.md).
+In the **Username** field, enter the Git account username. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
-In the **Password** field, provide the account password or a personal access token. Passwords and tokens are stored as [Harness encrypted text secrets](../../../secrets/2-add-use-text-secrets.md).
+In the **Password** field, provide the account password or a personal access token. Passwords and tokens are stored as [Harness encrypted text secrets](/docs/platform/secrets/add-use-text-secrets).
 
 If your Git account uses two-factor authentication, you must provide a personal access token for the **Password**.
 

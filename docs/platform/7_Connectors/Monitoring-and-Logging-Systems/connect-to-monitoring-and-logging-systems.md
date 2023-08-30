@@ -44,8 +44,8 @@ For Harness On-Prem, enter **customer1**.
 :::
    
 8. In **Authentication**, you can choose one of the following options:
-	* **Username and Password**: In **User Name** and **Password**, enter the credentials to authenticate with the AppDynamics server. In **Password**, you can choose [Create or Select a secret](../../secrets/2-add-use-text-secrets.md)**.**
-	* **API Client**: In **Client Id** and **Client Secret** fields, enter a valid Id and secret string that the application uses to prove its identity when requesting a token. In **Client Secret**, you can choose [Create or Select a secret](../../secrets/2-add-use-text-secrets.md).
+	* **Username and Password**: In **User Name** and **Password**, enter the credentials to authenticate with the AppDynamics server. In **Password**, you can choose [Create or Select a secret](/docs/platform/secrets/add-use-text-secrets)**.**
+	* **API Client**: In **Client Id** and **Client Secret** fields, enter a valid Id and secret string that the application uses to prove its identity when requesting a token. In **Client Secret**, you can choose [Create or Select a secret](/docs/platform/secrets/add-use-text-secrets).
   
 9. Click **Continue**. The Setup Delegates settings appear.
 10. You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
@@ -98,7 +98,7 @@ New Relic supports multiple APIs. The Harness Connector leverages the New Relic 
 7.  To get the **New Relic Account ID** for your New Relic account, copy the number after the **/accounts/** portion of the URL in the New Relic Dashboard.
 8.  In **Encrypted** **API Key**, you can choose **Create or Select a secret.**
 
-For secrets and other sensitive settings, select or create a new [Text Secret](../../secrets/2-add-use-text-secrets.md). Enter the API key needed to connect with the server.
+For secrets and other sensitive settings, select or create a new [Text Secret](/docs/platform/secrets/add-use-text-secrets). Enter the API key needed to connect with the server.
 
 For steps on generating the New Relic API key, follow this doc from New Relic: [Insights query API](https://docs.newrelic.com/docs/apis/insights-apis/query-insights-event-data-api/).
 
@@ -148,7 +148,7 @@ We've given this role access to **All non-internal indexes**. However, we could
 
 
 :::info note
-For secrets and other sensitive settings, select or create a new [Text Secret.](../../secrets/2-add-use-text-secrets.md)
+For secrets and other sensitive settings, select or create a new [Text Secret.](/docs/platform/secrets/add-use-text-secrets)
 
 :::
 
@@ -356,9 +356,9 @@ You must use HTTPS to establishing connections with Dynatrace.
 4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
 5. Click **Continue**.
 6. In **URL**, enter the URL of the metrics data provider. For example, **https://mycompany.appd.com.**
-7.  In **Headers**, enter the query headers required by your metrics data provider. In **Key**, enter a valid query key. In **Value**, you can create or select a key by clicking [**Create or Select a Secret**](../../secrets/2-add-use-text-secrets.md)**.** You can also enter a **Plaintext** value**.**
+7.  In **Headers**, enter the query headers required by your metrics data provider. In **Key**, enter a valid query key. In **Value**, you can create or select a key by clicking [**Create or Select a Secret**](/docs/platform/secrets/add-use-text-secrets)**.** You can also enter a **Plaintext** value**.**
 8.  Click **Next**. The **Parameters** setting appears.
-9.  In **Parameters**, enter the request parameters. In **Key**, enter a valid query key. In **Value**, you can create or select by clicking [**Create or Select a Secret**](../../secrets/2-add-use-text-secrets.md) or enter a **Plaintext** value**.**
+9.  In **Parameters**, enter the request parameters. In **Key**, enter a valid query key. In **Value**, you can create or select by clicking [**Create or Select a Secret**](/docs/platform/secrets/add-use-text-secrets) or enter a **Plaintext** value**.**
 10. Click **Next**. The **Validation Path** settings appear.
 11. In **Request Method**, select **GET** or **POST**.
 12. In **Validation Path**, enter the query string from your metric provider.

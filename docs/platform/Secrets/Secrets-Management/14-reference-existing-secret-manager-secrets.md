@@ -15,10 +15,10 @@ Harness does not query the secret manager for existing secrets, but you can crea
 
 ### Before you begin
 
-* Go to [AWS KMS Secret Manager](../../secrets/Secrets-Management/7-add-an-aws-kms-secrets-manager.md)
-* Go to [AWS Secrets Manager](../../secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
-* Go to [Azure Key Vault Secret Manager](../../secrets/Secrets-Management/8-azure-key-vault.md)
-* Go to [HashiCorp Vault Secret Manager](../../secrets/Secrets-Management/12-add-hashicorp-vault.md)
+* Go to [AWS KMS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
+* Go to [AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
+* Go to [Azure Key Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/8-azure-key-vault.md)
+* Go to [HashiCorp Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/12-add-hashicorp-vault.md)
 
 ### Option: Vault secrets
 

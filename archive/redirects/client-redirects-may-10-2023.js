@@ -362,7 +362,7 @@ module.exports = {
     },
     {
       from: "/docs/platform/Security/add-use-text-secrets",
-      to: "/docs/platform/Secrets/add-use-text-secrets",
+      to: "/docs/platform/secrets/add-use-text-secrets",
     },
     {
       from: "/docs/platform/Security/add-file-secrets",

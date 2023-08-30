@@ -10,14 +10,14 @@ helpdocs_is_published: true
 
 Harness provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies.
 
-You can create the policy and apply it to all Secrets in your Account, Org, and Project. The policy is evaluated on Secret-level events like **On Save,** which occurs during Secret Creation and Updates. See [Harness Governance Quickstart](../../governance/14_Policy-as-code/harness-governance-quickstart.md).​
+You can create the policy and apply it to all Secrets in your Account, Org, and Project. The policy is evaluated on Secret-level events like **On Save,** which occurs during Secret Creation and Updates. See [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).​
 
 This topic describes how to add a Policy step to a Secret.
 
 ### Before you begin
 
-* [Harness Governance Overview](../../governance/14_Policy-as-code/harness-governance-overview.md)
-* [Harness Governance Quickstart](../../governance/14_Policy-as-code/harness-governance-quickstart.md).
+* [Harness Governance Overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
+* [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 * Policies use OPA authoring language Rego. For more information, see [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
 
 ### Limitations
