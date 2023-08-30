@@ -84,6 +84,12 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 ### Hotfixes
 
+#### Version 80311
+
+- In some scenarios for Amazon ECS blue/green deployments, the green application didn’t roll back consistently because the new service continued to run tasks in the `live-target-group`. To resolve this issue, Harness no longer fetches the count of running services in rollback tasks before rolling back the green service. The green service now rolls back consistently. (CDS-76795, ZD-49005)
+
+   This fix is behind the feature flag `CDS_ECS_BG_GREEN_SERVICE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the fix.
+
 #### Version 80310
 
 - Due to intermittent issues with the cf CLI, the Tanzu Application Services (TAS) Rolling deployment step failed to create the application. (CDS-75250)
