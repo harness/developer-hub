@@ -29,7 +29,7 @@
 |**4. Continuous Verification** | |
 | APM/Log Based Verification  | [Verify Deployments with the Verify Step](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) |
 | Validate Deployments | [Continuous Verification](https://developer.harness.io/docs/category/continuous-verification/) |
-| HTTP Execution Checks | [HTTP step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines)|
+| HTTP Execution Checks | [HTTP step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/)|
 |**5. GitOps** | |
 | GitOps Basics  | [Harness GitOps Basics](https://developer.harness.io/docs/continuous-delivery/cd-gitops/harness-git-ops-basics/) |
 | Install GitOps Agent  | [Harness CD GitOps Tutorial](https://developer.harness.io/docs/continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart/) |
