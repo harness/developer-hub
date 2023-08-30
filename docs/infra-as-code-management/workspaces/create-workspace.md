@@ -12,7 +12,7 @@ For example, you can have a single configuration of a Kubernetes cluster and cre
 
 A workspace may have one of the following statuses:
 
-* Active: Sucessfully deployed and running. 
+* Active: Successfully deployed and running. 
 
 * Inactive: Successfully destroyed or was not provisioned.
 
@@ -43,7 +43,7 @@ To create a new workspace, follow these steps:
     * **Name** - Type a unique name to identify the workspace. 
     * **Description** - Type an optional description to help you identify the workspace. 
     * **Connector** - Select the Harness connector to use during provisioning. This should provide the cloud credentials for Harness to use during execution. AWS and GCP are supported out of the box. Azure needs to be complemented with environment variables.
-    * **Terraform Version** - Specify the Terraform version the configuration supports. This version is used to determine which version of Terraform to use during execution.
+    * **Terraform Version** - Specify the Terraform version the configuration supports. This version is used to determine which version of Terraform to use during execution. 
     * **Repository** - Specify the Git configuration for the Terraform configuration files. You should specify the Harness Git connector, repository branch, and file path to the configuration files in the repository.
 
         ![Add workspace details](./static/new-workspace.png)
