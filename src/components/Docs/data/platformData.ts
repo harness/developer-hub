@@ -70,7 +70,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "Access and manage Harness account and resources with APIs.",
-          link: "/docs/category/apis",
+          link: "/docs/category/api",
         },
         {
           title: "Terraform Provider",
