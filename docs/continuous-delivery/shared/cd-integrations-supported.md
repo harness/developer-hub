@@ -567,6 +567,10 @@ terraform --version
 
 Some Harness features might require specific Terraform versions.
 
+:::info note
+Harness also supports Terraform Cloud and Enterprise.
+:::
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Controls/Utilities" label="Controls/Utilities">
