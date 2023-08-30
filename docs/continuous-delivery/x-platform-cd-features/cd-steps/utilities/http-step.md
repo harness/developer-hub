@@ -71,7 +71,7 @@ Another method:
 * **Key**: `variable:`
 * **Value**: `var1,var2:var3`
 
-You can copy the key and paste it in the HTTP step **Header** setting. For more information, go to [Manage API keys](/docs/platform/automation/APIs/add-and-manage-api-keys).
+You can copy the key and paste it in the HTTP step **Header** setting. For more information, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
 
 ### Input variables
 
@@ -230,7 +230,7 @@ Other common uses are:
 * Open Policy Agent (OPA) policy agent call.
 * General HTTP testing calls to the deployed application.
 
-Go to [Harness REST API quickstart](/docs/platform/automation/APIs/api-quickstart) for more information.
+Go to [Harness REST API quickstart](/docs/platform/automation/api/api-quickstart) for more information.
 
 ### Add the HTTP step
 
@@ -286,7 +286,7 @@ Harness can allow URLs with invalid characters such as a blank space, `^`, `{`, 
 
 <!-- ### Using secrets in the HTTP step URL
 
-In some cases, you might want to use a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) in the **URL** setting. For example, `https://www.google.com/<+secrets.getValue("xyz")>`.
+In some cases, you might want to use a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) in the **URL** setting. For example, `https://www.google.com/<+secrets.getValue("xyz")>`.
 
 It's important to know how Harness uses the secret when evaluating the URL.
 
@@ -345,7 +345,7 @@ You can use a Fixed Value, Runtime Input, or Expression.
 
 You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too.
 
-You can reference [Harness secrets](/docs/platform/Secrets/add-use-text-secrets) in the **Value** setting too.
+You can reference [Harness secrets](/docs/platform/secrets/add-use-text-secrets) in the **Value** setting too.
 
 For example, in **Key**, enter `Token`.
 

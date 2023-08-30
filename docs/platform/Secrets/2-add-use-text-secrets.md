@@ -62,7 +62,7 @@ To add an encrypted text secret in the account scope, do the following:
 
    - **Reference Secret**: Enter the name of the existing secret in your Secret Manager that you want your **Reference Secret** to refer to, and then select **Test** to test the reference path. You can reference existing secrets in Azure Key Vault, Hashicorp Vault, AWS Secrets Manager, or GCP Secrets Manager.
 
-     ![](./static/test-secret-reference-path.png)
+     ![](../Secrets/static/test-secret-reference-path.png)
 
 7. Select **Save**.
 
@@ -85,7 +85,7 @@ You can also edit the secret in the connector.
 
 For an Encrypted Text secret that's been scoped to a Project, you reference the secret in using the secret identifier in the expression: `<+secrets.getValue("your_secret_Id")>`.
 
-![](./static/add-use-text-secrets-50.png)
+![](../Secrets/static/add-use-text-secrets-50.png)
 
 Always reference a secret in an expression using its identifier. Names will not work.For example, if you have a text secret with the identifier `Docker_Hub_MRC`, you can reference it in a Shell Script step like this:
 
@@ -124,7 +124,7 @@ When a secret is displayed in an output, Harness substitutes the secret value wi
 
 For example, here the secret values referenced in a Shell Script step are replaced with `*****`:
 
-![](./static/add-use-text-secrets-51.png)
+![](../Secrets/static/add-use-text-secrets-51.png)
 If you accidentally use a very common value in your secret, like whitespace, the `*` substitution might appear in multiple places in the output.
 
 If you see an output like this, review your secret and fix the error.
@@ -185,7 +185,7 @@ echo <+secrets.getValue("linebreaks")> | base64 -d
 ```
 The result loses any secret sanitization.
 
-![](./static/add-use-text-secrets-52.png)
+![](../Secrets/static/add-use-text-secrets-52.png)
 ## Nested expressions using string concatenation
 
 You can use the + operator or concat method inside the secret reference. For example, each of these expressions use one method and another Harness variable expression:

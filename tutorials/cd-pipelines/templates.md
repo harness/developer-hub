@@ -1,7 +1,7 @@
 ---
-sidebar_position: 7
-title: Pipeline templates
-description: Get started with templates in Harness pipelines.
+sidebar_position: 6
+title: Pipeline Templates
+description: Get started with templates in Harness CD pipelines.
 ---
 
 This tutorial focuses on how to use templates with Harness pipelines. We will guide you through saving a sample deployment pipeline as a template, and then using it to get started with a new pipeline at project level. 

@@ -105,7 +105,7 @@ Directly this cannot be encrypted but this use can be achieved by creating the k
 
 
 Another approach would be saving the value in Harness's secret manager/any other secret manager and referencing it in the script.
-Check this for more info - https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets
+Check this for more info - https://developer.harness.io/docs/platform/secrets/add-use-text-secrets
 
 
 ### K8s delete command is not working with the native helm?
@@ -834,3 +834,17 @@ We do not persist the variables and the variables are only accessible during the
 #### Can we access harness variable of one pipeline from another pipeline ?
 We can not access variabel from one pipeline execution in the other. We will either need to make a api call to get the detail and parse the response for the variable or else if the two pipelines are interdependent we can use the pipeline as chained pipeline stages and can have access to the variable of other pipeline while executing.
 
+### Can I use Helm charts with Harness GitOps?
+Yes, Harness GitOps supports Helm charts for defining and deploying Kubernetes applications. You can version-control Helm charts in your Git repository and use Harness to manage the deployment lifecycle.
+
+### Does Harness GitOps support rollback and roll-forward capabilities?
+Yes, Harness GitOps includes rollback and roll-forward capabilities. In case of deployment failures or issues, you can use Harness to automatically roll back to a previously known good state or roll forward to a fixed version.
+
+### Does the Harness GitOps Agent support high availability and scalability?
+A: Yes, the Harness GitOps Agent supports high availability and scalability by allowing you to deploy multiple agents across different clusters. This ensures redundancy and load distribution.
+
+### Can I control access and permissions for the Harness GitOps Agent?
+Yes, you can control access and permissions for the Harness GitOps Agent. It communicates securely with the Harness platform using an API token, and you can manage users' access to the Harness platform through role-based access control.
+
+### Can I use the Harness GitOps Agent with different Kubernetes distributions?
+Yes, the Harness GitOps Agent is designed to work with various Kubernetes distributions, including managed Kubernetes services like Amazon EKS, Google Kubernetes Engine (GKE), and Azure Kubernetes Service (AKS), as well as self-hosted Kubernetes clusters.

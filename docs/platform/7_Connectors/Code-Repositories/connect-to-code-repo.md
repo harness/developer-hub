@@ -29,7 +29,7 @@ For permissions in the Harness Git Experience, go to [Source Code Manager Settin
 
 ## SSH Key authentication
 
-If your code repo connector uses SSH Key authentication, the SSH Key is stored as a [Harness SSH credential secret](/docs/platform/Secrets/add-use-ssh-secrets), and the SSH credential's **Username** must be `git`.
+If your code repo connector uses SSH Key authentication, the SSH Key is stored as a [Harness SSH credential secret](/docs/platform/secrets/add-use-ssh-secrets), and the SSH credential's **Username** must be `git`.
 
 ## Connect to AWS CodeCommit
 
@@ -61,7 +61,7 @@ For instructions on setting up the IAM user for CodeCommit connections, go to th
    * Select **Repository** to connect to one repo or select **Region** to connect to an entire AWS region. Selecting **Region** lets you use one connector for all repos in that region.
    * If you selected **Repository**, enter the **AWS CodeCommit Repository URL**, such as `https://git-codecommit.us-west-2.amazonaws.com/v1/repos/doc-text`. You can get this URL from your CodeCommit repo by using its **Clone URL** menu and selecting **Clone HTTPS**.
    * If you selected **Region**, provide the name of a repo that Harness can use to test the connection.
-   * In **Access Key** and **Secret Key**, enter the IAM user's access key and secret key, respectively. Use [Encrypted text secrets](../../Secrets/2-add-use-text-secrets.md) to store keys.
+   * In **Access Key** and **Secret Key**, enter the IAM user's access key and secret key, respectively. Use [Encrypted text secrets](/docs/platform/secrets/add-use-text-secrets) to store keys.
 
 4. After the connection test runs, select **Finish** to save the connector.
 
@@ -74,7 +74,7 @@ You can connect to CodeCommit [using the Harness platform-agnostic Git connector
 
 With the generic Git connector, you must use a username and password for the IAM user, instead of an access key and secret key.
 
-<!-- original text: In the Harness CodeCommit Connector, in **Access Key**, enter the **User name** from the IAM user credentials you generated. In **Secret Key**, use a [Harness Encrypted Text secret](../../Secrets/2-add-use-text-secrets.md) for the **Password** of the IAM user account. -->
+<!-- original text: In the Harness CodeCommit Connector, in **Access Key**, enter the **User name** from the IAM user credentials you generated. In **Secret Key**, use a [Harness Encrypted Text secret](/docs/platform/secrets/add-use-text-secrets) for the **Password** of the IAM user account. -->
 
 1. On the configuration page for the IAM User, select **Security credentials**, and then generate credentials in **HTTPS Git credentials for AWS CodeCommit**.
 
@@ -88,7 +88,7 @@ With the generic Git connector, you must use a username and password for the IAM
    * Select **Repository** for the **URL Type**.
    * Select **HTTP** for the **Connection Type**.
    * In **Git Repository URL**, enter the AWS CodeCommit repository URL, such as `https://git-codecommit.us-west-2.amazonaws.com/v1/repos/doc-text`. You can get this URL from your CodeCommit repo by using its **Clone URL** menu and selecting **Clone HTTPS**.
-   * In **Username** and **Password**, enter the username and password that you generated for the IAM user. Use an [Encrypted text secret](../../Secrets/2-add-use-text-secrets.md) to store the password.
+   * In **Username** and **Password**, enter the username and password that you generated for the IAM user. Use an [Encrypted text secret](/docs/platform/secrets/add-use-text-secrets) to store the password.
 
 5. After the connection test runs, select **Finish** to save the connector.
 

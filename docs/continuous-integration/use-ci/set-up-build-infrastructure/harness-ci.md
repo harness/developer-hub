@@ -65,7 +65,7 @@ You can use the Harness CI `execution-config` API to update the images used in y
 
 :::info Authentication
 
-You can use either `X-API-KEY: $API_KEY` or `Authorization: Bearer $token` for authentication. For more information, go to [Manage API keys](/docs/platform/automation/APIs/add-and-manage-api-keys).
+You can use either `X-API-KEY: $API_KEY` or `Authorization: Bearer $token` for authentication. For more information, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
 
 :::
 

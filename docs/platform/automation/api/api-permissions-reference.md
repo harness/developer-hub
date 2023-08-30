@@ -6,6 +6,9 @@ helpdocs_topic_id: bhkc68vy9c
 helpdocs_category_id: 4przngb8nk
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/Resource-Development/APIs/api-permissions-reference
+  - /docs/platform/automation/api/api-permissions-reference
 ---
 
 This topic describes the permissions available for [API keys](./add-and-manage-api-keys) and [service accounts](../../role-based-access-control/add-and-manage-service-account.md) in Harness.

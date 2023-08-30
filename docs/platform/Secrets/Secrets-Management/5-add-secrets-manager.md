@@ -12,16 +12,16 @@ Harness includes a built-in Secret Management feature that enables you to store 
 
 Looking for specific secret managers? Go to:
 
-* [Add an AWS KMS Secret Manager](./7-add-an-aws-kms-secrets-manager.md)
-* [Add a HashiCorp Vault Secret Manager](./12-add-hashicorp-vault.md)
-* [Add an Azure Key Vault Secret Manager](../../Secrets/Secrets-Management/8-azure-key-vault.md)
-* [Add Google KMS as a Harness Secret Manager](./10-add-google-kms-secrets-manager.md)
-* [Add an AWS Secrets Manager](../../Secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
+* [Add an AWS KMS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
+* [Add a HashiCorp Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/12-add-hashicorp-vault.md)
+* [Add an Azure Key Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/8-azure-key-vault.md)
+* [Add Google KMS as a Harness Secret Manager](/docs/platform/Secrets/Secrets-Management/10-add-google-kms-secrets-manager.md)
+* [Add an AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
 
 ### Before you begin
 
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
-* [Harness Secret Management Overview](./1-harness-secret-manager-overview.md)
+* [Harness Secret Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
 
 ### Step 1: Configure Secret Manager
 
@@ -31,11 +31,11 @@ Looking for specific secret managers? Go to:
 4. Under **Secret Managers**, select a Secret Manager type. 
    
    Go to:
-   * [Add an AWS KMS Secret Manager](./7-add-an-aws-kms-secrets-manager.md)
-   * [Add a HashiCorp Vault Secret Manager](./12-add-hashicorp-vault.md)
-   * [Add an Azure Key Vault Secret Manager](../../Secrets/Secrets-Management/8-azure-key-vault.md)
-   * [Add Google KMS as a Harness Secret Manager](./10-add-google-kms-secrets-manager.md)
-   * [Add an AWS Secrets Manager](../../Secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
+   * [Add an AWS KMS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
+   * [Add a HashiCorp Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/12-add-hashicorp-vault.md)
+   * [Add an Azure Key Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/8-azure-key-vault.md)
+   * [Add Google KMS as a Harness Secret Manager](/docs/platform/Secrets/Secrets-Management/10-add-google-kms-secrets-manager.md)
+   * [Add an AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
 5. Provide the account access information for the new secret manager.
 6. If you choose to set this secret manager as the default, select **Use as Default Secret Manager**.
 7. Click **Finish**.
@@ -61,12 +61,13 @@ The secret you use to connect Harness to your Secret Manager (password, etc) is 
 ### Next steps
 
 * Adding Secret Managers
-	+ [Add an AWS KMS Secret Manager](./7-add-an-aws-kms-secrets-manager.md)
-	+ [Add a HashiCorp Vault Secret Manager](./12-add-hashicorp-vault.md)
-	+ [Add an Azure Key Vault Secret Manager](../../Secrets/Secrets-Management/8-azure-key-vault.md)
-	+ [Add Google KMS as a Harness Secret Manager](./10-add-google-kms-secrets-manager.md)
-	+ [Add an AWS Secrets Manager](../../Secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
+	+ [Add an AWS KMS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
+	+ [Add a HashiCorp Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/12-add-hashicorp-vault.md)
+	+ [Add an Azure Key Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/8-azure-key-vault.md)
+	+ [Add Google KMS as a Harness Secret Manager](/docs/platform/Secrets/Secrets-Management/10-add-google-kms-secrets-manager.md)
+	+ [Add an AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
 * Managing Secrets
-	+ [Add Text Secrets](../2-add-use-text-secrets.md)
-	+ [Add File Secrets](../3-add-file-secrets.md)
-	+ [Add SSH Keys](../4-add-use-ssh-secrets.md)
+	+ [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets)
+	+ [Add File Secrets](/docs/platform/secrets/add-file-secrets)
+	+ [Add SSH Keys](/docs/platform/Secrets/4-add-use-ssh-secrets.md)
+

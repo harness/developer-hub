@@ -235,7 +235,7 @@ Make your selection and select **Continue**.
 
 The secret creation settings appear only if you have selected **Kubernetes Optimization by AutoStopping** feature in the **Feature Selection** step. In this step, you are providing permissions for intelligent cloud AutoStopping rules. For more information, see [Create AutoStopping Rules for AWS](../../4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/create-autostopping-rules-aws.md).
 
-1. In **Secret creation**, select create an API key here and create an API key. Go to [Create an API Key](/docs/platform/automation/APIs/add-and-manage-api-keys) for more information.
+1. In **Secret creation**, select create an API key here and create an API key. Go to [Create an API Key](/docs/platform/automation/api/add-and-manage-api-keys) for more information.
 2. Run the following commands in your Kubernetes cluster:
 	1. Create a namespace.  
 	

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault).To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secrets Manager.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/add-hashicorp-vault).To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secrets Manager.
 
 ### Before You Begin
 
@@ -170,7 +170,7 @@ You can expect a delay during the Vault renewal. A periodic job runs to check if
 
 To validate a non-read only Vault Secrets Manager, Harness creates a dummy secret in the secret engine.
 
-The event for creating the dummy secret this will show up on [Audit Trail](/docs/platform/Governance/Audit-Trail/audit-trail) as if the user who initiated the creation of the Vault Secrets Manager created the secret. The path of the secret is as follows:
+The event for creating the dummy secret this will show up on [Audit Trail](/docs/platform/governance/Audit-Trail/audit-trail) as if the user who initiated the creation of the Vault Secrets Manager created the secret. The path of the secret is as follows:
 
 v2 Secret Engine:
 

@@ -2,6 +2,8 @@
 title: Advanced Terraform onboarding
 description: A guide to writing onboarding automation using terraform
 sidebar_position: 4
+redirect_from:
+  - /docs/platform/Resource-Development/Terraform/advanced-terraform-onboarding
 ---
 
 The Harness Solution Architecture team has curated a collection of terraform modules that aim to help onboard new teams and applications to the Harness platform.

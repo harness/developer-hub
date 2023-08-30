@@ -1,15 +1,15 @@
 {
-    "label": "Terraform Provider",
+    "label": "API",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
-    "position": 1,
+    "position": 3,
+
     "link": {
         "type": "generated-index",
-        "title": "Terraform Provider"
+        "title": "Harness REST API"
     },
     "customProps": {
-        
-        "helpdocs_category_id": "7cude5tvzh"
+        "helpdocs_category_id": "pm96bpz4kf"
     }
 }

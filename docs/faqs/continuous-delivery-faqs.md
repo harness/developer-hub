@@ -864,7 +864,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Harness includes built-in secrets management to store your encrypted secrets, such as access keys, and use them in your Harness account. Harness integrates will all popular secrets managers.
 
-See [Harness secrets management overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
+See [Harness secrets management overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 
 ### Harness variables expressions
 

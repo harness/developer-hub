@@ -21,7 +21,7 @@ You can add secret text and files to your script using Harness built-in secret m
 For details on using secret managers and secrets, go to:
 
 - [Harness secrets management overview](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/)
-- [Add and reference text secrets](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets)
+- [Add and reference text secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets)
 - [Add and reference file secrets](https://developer.harness.io/docs/platform/Secrets/add-file-secrets)
 
 ### Harness role permissions required
