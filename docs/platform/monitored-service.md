@@ -21,7 +21,7 @@ When you create a monitored service at the Project Level, it becomes accessible 
 To create a monitored service at the project level:
 
 1. In Harness, select **Project** > **Monitored Services** > **+ New Monitored Service**.  
-   The Create new monitored service appears.
+   The **Create new monitored service** dialog appears.
 
    <docimage path={require('./static/create-monitored-service-project-level.png')} />
 
