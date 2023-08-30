@@ -69,7 +69,7 @@ You can view detailed information about a monitored service by clicking directly
 
 #### View monitored service details from a specific module
 
-If you want to view the monitored service details within a specific module:
+To view the monitored service details within a specific module:
 
 1. Locate the monitored service you're interested in within the list.
    
