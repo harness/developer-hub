@@ -31,7 +31,7 @@ Before you begin setting up custom thresholds for service health, ensure you've 
 
 ## Define threshold rules
 
-When you are adding a threshold-compatible health source such as SumoLogic to a monitored service, perform the following steps to define the threshold rules:
+When you add a threshold-compatible health source such as SumoLogic to a monitored service, perform the following workflows to define the threshold rules.
 
 
 :::info note
