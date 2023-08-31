@@ -34,8 +34,6 @@ This release does not include early access features.
 
 * [Git event webhook triggers](/docs/platform/Triggers/triggering-pipelines) based on GitHub Issue comments failed if the [GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference) connected through the Harness Platform and the account had no delegates. Despite the connector not requiring a delegate, the trigger still failed. This has been fixed. (CI-9150)
 
-- Fixed an issue where the `branchName` was showing as `null` in the log output on manual run or rerun of a pipeline. To fix this issue, we've added retries on connection resets and server-side errors while calling SCM APIs. (CI-8904, ZD-47605)
-
 ### Hotfixes
 
 This release does not include hotfixes.
