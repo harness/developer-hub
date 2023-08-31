@@ -30,7 +30,7 @@ import TabItem from '@theme/TabItem';
 
 5. On the **Workspace** tab, select an existing workspace or select **+ Create New Workspace** to create a new workspace. A workspace can also be determined during execution if the value is set to be `runtime input`.
 
-6. Select the **Execution** tab, and then select "Provision" from 'Common Operations'.
+6. Select the **Execution** tab, and then from **Common Operations**, select **Provision**.
 
 7. Click **Use Strategy**.
 
