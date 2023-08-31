@@ -51,8 +51,6 @@ This release does not include early access features.
 
   This issue has been resolved. The control data timestamp is now included in the API response, even if the overall analysis status is "no analysis".
 
-- Fixed an issue that caused the **Pipeline Executions** page to make unnecessary API calls to a back-end service. (CDS-77401)
-
 - Fixed an issue where users could not specify runtime inputs for some advanced settings (such as the looping strategy) in step groups and step group templates. With this fix, runtime inputs are supported for all advanced step group settings. (CDS-77246, ZD-49339, ZD-49427)
 
 - Fixed a UI issue that caused some edit buttons to not appear. (CDS-76977)
