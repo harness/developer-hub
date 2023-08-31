@@ -1,4 +1,4 @@
-The working directory for the [Command](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step) and [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) steps is where Harness stores the temporary files used for the internal Harness step scripts. When the execution of the step is complete, the files are deleted.
+The working directory for the [Command](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step) and [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) steps is where Harness stores the temporary script files used for running commands on the Harness Delegate and remote hosts. When the execution of the step is complete, the files are deleted.
 
 The default location of the working directory depends on the deployment type of the pipeline stage where the step is run.
 
