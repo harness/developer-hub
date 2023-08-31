@@ -10,8 +10,8 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
 
 ## Custom Dashboards Harness module support
 
-| Module | SaaS | Self-Managed Enterprise Edition |
-| :--: |  :--: | :--: |
+| Module | SaaS | Self-Managed <br />Enterprise Edition |
+| :-- |  :-- | :-- |
 | CE | ✅ |  |
 | CET| ✅ |  |
 | CI | ✅ | ✅ |
