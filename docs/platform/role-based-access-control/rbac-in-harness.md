@@ -32,6 +32,10 @@ Before configuring RBAC in Harness, you should have an understanding of:
 * [Creating organizations and projects](../organizations-and-projects/create-an-organization.md)
 * The functionality of the modules in your Harness account.
 
+The video below gives an overview of RBAC in Harness.
+
+ <docvideo src="https://www.loom.com/embed/b71549af4874451e9885dfe67ddfb0c2" width="100%" height="600" />
+
 ## Permissions hierarchy (scopes)
 
 The Harness Platform has a three-level hierarchical structure. The three levels, or scopes, are **Account**, **Organization** (Org), and **Project**.
