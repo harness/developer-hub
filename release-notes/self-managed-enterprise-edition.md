@@ -4013,6 +4013,8 @@ This release introduces the following fixes.
 
 This release introduces the following features and enhancements.
 
+- Added ingress support for Kubernetes versions 1.22 and higher for KOTS installations. (SMP-670)
+
 - You can now optionally configure Rolling, Rolling Rollback, and Blue/Green deployments. This option can be implemented in YAML. (CDS-40386)
 
 - You can now use an ECS Run Task step from an ECS swimlane. (CDS-4313)
