@@ -16,6 +16,7 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 * [Continuous Delivery and GitOps](/docs/continuous-delivery/cd-integrations)
 * [Continuous Error Tracking (Beta)](/docs/continuous-error-tracking/whats-supported)
 * [Continuous Integration](/docs/continuous-integration/ci-supported-platforms)
+* [Custom Dashboards](/docs/platform/Dashboards/cdb-whats-supported)
 * [Feature Flags](/docs/feature-flags/ff-supported-platforms)
 * [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported)
 * [Service Reliability Management](/docs/service-reliability-management/srm-whats-supported)
