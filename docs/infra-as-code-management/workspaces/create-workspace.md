@@ -52,7 +52,7 @@ To create a new workspace, follow these steps:
 
 7. If you need to use either environment or Terraform variables during execution, select the **Variables** tab to define the variables. If Terraform variables are defined and set in Git, then values defined in the workspace take precedence.
 Variables can be either String, [hcl](https://developer.hashicorp.com/terraform/language/syntax/configuration), [Secret](https://developer.harness.io/docs/category/secrets), or a reference to another variable in the same or a different workspace.
-A good best practice is to avoid managing Terraform variables in Git, and set them in the workspace instead. This keeps the Git configuration clean and allows you to use the same Git definitions for multiple workspaces. 
+A good best practice is to avoid managing Terraform variables in Git; set them in the workspace instead. This keeps the Git configuration clean and allows you to use the same Git definitions for multiple workspaces. 
 
     ![Workspace variables](./static/workspace-variables.png)
 
