@@ -44,9 +44,7 @@ Harness Delegate does not have a root image. There are two non-root images that 
 
 The video below shows how to install a delegate.
 
-<!-- Video:
-https://harness-1.wistia.com/medias/frzea22qdc-->
-<docvideo src="https://harness-1.wistia.com/medias/frzea22qdc" /> 
+ <docvideo src="https://www.loom.com/embed/a935f18296ee4156900efcf60f20f224" width="100%" height="600" />
 
 For basic information on installing Harness Delegate, go to the following:
 
