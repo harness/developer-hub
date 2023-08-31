@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-08-28T10:00:30
+date: 2023-08-31T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -74,7 +74,7 @@ This release does not include early access features.
 
 - When adding users to a user group, you had to manually select users from the menu; pasting email addresses in the text box did not work. (PL-40559)
 
-  Now, in addition to selecting users from the menu, you can paste users' email addresses in the text box.
+  Now, in addition to selecting users from the menu, you can paste users' email addresses in the text box.
 
 - Earlier, when you clicked an expired link in an invitation email, Harness displayed the following message: “We couldn’t find an invitation matching the email address you entered. Please search your email for an invitation from Harness or contact your admin." This message was inaccurate. (PL-40597)
 
@@ -91,6 +91,11 @@ This release does not include early access features.
 ### Hotfixes
 
 This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
 
 ## Version 80307
 
@@ -134,11 +139,6 @@ This release does not include early access features.
 ### Hotfixes
 
 This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 10, 2023, version 80208
 
