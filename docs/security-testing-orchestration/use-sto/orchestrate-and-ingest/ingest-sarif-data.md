@@ -8,7 +8,7 @@ sidebar_position: 45
 
 ### Important notes
 
-- This workflow is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [What's supported](/docs/security-testing-orchestration/whats-supported).
+- This workflow is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [What's supported](/docs/security-testing-orchestration/whats-supported) and click **Harness STO scanner support** to expand.
 
 - Harness STO also supports an STO Custom JSON format for unsupported scanners that can't publish to SARIF. For more information, go to [Ingest Results from Unsupported Scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md).  
 
