@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 
 6. Select the **Execution** tab, and then from **Common Operations**, select **Provision**.
 
-7. Click **Use Strategy**.
+7. Select **Use Strategy**.
 
   Init, plan, and apply steps are added. You can also customize the pipeline and add more steps.
 
