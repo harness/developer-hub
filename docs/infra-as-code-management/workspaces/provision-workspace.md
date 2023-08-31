@@ -116,7 +116,7 @@ You can use the Harness Visual Editor or YAML to create a pipeline that will tea
 ```
 
 1. Follow Steps 1-5 as described in the "Provision a Workspace" section
-2. Select the **Execution** tab and select "Destroy" from 'Common Operations'.
+2. On the **Execution** tab, in **Common Operations**, select **Destroy**.
 3. Select **Use Strategy**.
 
   Init, plan, and destroy steps are added. You can also customize the pipeline and add more steps.
