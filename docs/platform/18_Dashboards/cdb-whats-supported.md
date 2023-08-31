@@ -42,6 +42,6 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
 
 - Self-Managed Enterprise Edition:
 
-   - Harness does not support FIPS compliant environments.
+   - Harness does not support FIPS-compliant environments.
 
    - Air-gapped installations are in beta and require a license renewal every 365 days. 
