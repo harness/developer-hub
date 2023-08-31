@@ -10,6 +10,10 @@ helpdocs_is_published: true
 
 To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secret Manager.
 
+The video below provides an overview of how to use HashiCorp Vault as an external Secret Manager.
+
+ <docvideo src="https://www.loom.com/embed/92335a30823a4662a1d7212395c66e63" width="100%" height="600" />
+
 ### Before you begin
 
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
