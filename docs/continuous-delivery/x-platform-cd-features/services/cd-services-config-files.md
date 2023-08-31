@@ -17,12 +17,6 @@ Files can be stored in the following locations.
 - **Harness file store:** All platform [integrations](/docs/continuous-delivery/cd-integrations) (Kubernetes, etc.) support config files stored in the Harness [file store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 - **Git providers:** You can use config files in any Git provider, including GitHub, GitLab, and Bitbucket. You connect to these providers using Harness connectors. Ensure that the connector credentials have read permissions on the target repository.
 
-:::note
-
-Currently, Git provider support is behind the feature flag `CDS_GIT_CONFIG_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 ## Important notes on config files
 
 - Files must be 1MB or less.
