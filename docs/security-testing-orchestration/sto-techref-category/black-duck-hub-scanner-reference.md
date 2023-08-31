@@ -7,6 +7,8 @@ sidebar_position: 60
 
 You can scan your container images using Black Duck Hub, a comprehensive and versatile open-source scanner. 
 
+This integration runs the DOCKER, DETECTOR, and SIGNATURE detectors by default.
+
 ## Before you begin
 
 ### Docker-in-Docker requirements
