@@ -12,16 +12,16 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
 
 | Module | SaaS | Self-Managed Enterprise Edition |
 | :--: |  :--: | :--: |
-| CE | ✅ | ✅ |
-| CET| ✅ | ✅ |
+| CE | ✅ |  |
+| CET| ✅ |  |
 | CI | ✅ | ✅ |
-| CCM| ✅ | ✅ |
+| CCM| ✅ | ✅ (Beta) |
 | CD | ✅ | ✅ |
-| CV | ✅ | ✅ |
-| FF | ✅ | ✅ |
+| CV | ✅ |  |
+| FF | ✅ | ✅ (Beta) |
 | SEI|  |  |
-| SRM| ✅ | ✅ |
-| STO| ✅ | ✅ |
+| SRM| ✅ | ✅ (Beta) |
+| STO| ✅ | ✅ (Beta) |
 
 ## Custom Dashboards Self-Managed Enterprise Edition support
 
@@ -31,9 +31,9 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
 | Connected               | Istio strict mode             | Public          |            |
 | Connected               | Nginx             | Self-signed          | ✅           |
 | Connected               | Nginx             | Public          |            |
-| Air-gapped               | Istio strict mode             | Self-signed          | ✅           |
+| Air-gapped               | Istio strict mode             | Self-signed          | ✅ (Beta)     |
 | Air-gapped               | Istio strict mode             | Public          |            |
-| Air-gapped                | Nginx             | Self-signed          | ✅           |
+| Air-gapped                | Nginx             | Self-signed          | ✅ (Beta)    |
 | Air-gapped               | Nginx             | Public          |            |
 
 ## Custom dashboards support known limitations
