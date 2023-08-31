@@ -37,6 +37,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
    Now, the non-selected error message includes only selectors mismatched within the scope. (PL-40651)
 
+- You can now create secrets in child scopes using the parent scope in Secret Manager. For example, you can use Secret Manager to create secrets at the Org level and allow your project teams to create secrets inside the project. (PL-38949)
 ## August 30, 2023
 
 ### Security Testing Orchestration, version 1.67.1
