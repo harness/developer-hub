@@ -9,7 +9,7 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 
 <Smp />
 
-## Harness module supported features
+## Supported modules and features
 
 * [Chaos Engineering](/docs/chaos-engineering/get-started/whats-supported)
 * [Cloud Cost Management (Beta)](/docs/cloud-cost-management/getting-started-ccm/ccm-smp/smp-ccm-roadmap)
@@ -56,14 +56,3 @@ The following permissions are required:
 * [Backup and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
 * [External Database](/tutorials/self-managed-enterprise-edition)
 * Disaster Recovery (coming soon)
-
-## Supported Harness modules
-
-* [Chaos Engineering](/docs/chaos-engineering/)
-* [Cloud Cost Management (Beta)](/docs/cloud-cost-management/)
-* [Continuous Delivery and GitOps](/docs/continuous-delivery/)
-* [Continuous Error Tracking (Beta)](/docs/continuous-error-tracking/)
-* [Continuous Integration](/docs/continuous-integration/)
-* [Feature Flags](docs/feature-flags/)
-* [Security Test Orchestration](/docs/security-testing-orchestration/)
-* [Service Reliability Management](/docs/service-reliability-management/)
