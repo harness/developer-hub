@@ -12,7 +12,7 @@ redirect_from:
   - /docs/self-managed-enterprise-edition/introduction/getting-started-with-self-managed-enterprise-edition
 ---
 
-This topic provides an architecture overview, installation links, and the basics on how to create a Harness account and your first project. These are the first tasks that come after you install Harness Self-Managed Enterprise Edition.
+This topic provides an architecture overview, installation links, and the basics on how to create a Harness account and your first project. Perform these tasks soon after you install Harness Self-Managed Enterprise Edition, before you move on to other configuration tasks.
 
 To install Harness Self-Managed Enterprise Edition in a Kubernetes cluster with Helm, go to [Install Harness Self-Managed Enterprise Edition Using Helm](../self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga.md).
 
