@@ -88,6 +88,10 @@ import StoInfraSupport from '/docs/security-testing-orchestration/onboard-sto/sh
 ```mdx-code-block
   </TabItem>
   <TabItem value="Platform">
+
+### STO support by platform
+
+
 ```
 STO is supported on both Harness Saas and Harness Self-Managed Platform Edition. All features supported in SaaS are also supported in Self-Managed Enterprise Edition with the following exceptions:
 - Custom dashboards
