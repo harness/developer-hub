@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-08-26T10:00
+date: 2023-08-30T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,13 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 26, 2023
+## Latest - August 30, 2023
+
+### Security Testing Orchestration, version 1.67.1
+
+- The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4918) 
+
+## August 26, 2023
 
 ### Continuous Integration, version 5408
 

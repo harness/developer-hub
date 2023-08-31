@@ -247,20 +247,13 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 <StoSettingLogLevel />
 
-
-<!-- 
-
 <a name="cli-flags"></a>
 
 #### Additional CLI flags
 
-```mdx-code-block
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-```
+You can configure the [synopsis detect scanner](https://blackducksoftware.github.io/synopsys-detect) with specific command-line arguments. 
 
-<StoSettingCliFlags />
-
--->
+For example, to [exclude some detectors from a scan](https://community.synopsys.com/s/article/Allow-only-certain-Detect-tools-to-take-effect), you can add this string: `-detect.tools.excluded {DETECTOR, SIGNATURE}`
 
 
 #### Fail on Severity
@@ -272,16 +265,9 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Settings
 
-<!--
-You can add a `tool_args` setting to run the [synopsis detect scanner](https://blackducksoftware.github.io/synopsys-detect/6.3.0/30-running/) with specific command-line arguments. 
+You can add more settings to the scan step as needed. 
 
-For example, you can skip certain tools using  `--detect.tools.excluded` followed by a list of tools: `tool_args` = `-detect.tools.excluded {BAZEL, DOCKER}`
--->
-
-You can add a `tool_args` setting to run the [synopsis detect scanner](https://blackducksoftware.github.io/synopsys-detect) with specific command-line arguments. 
-
-For example, you can skip certain tools using  `--detect.tools.excluded` followed by a list of tools: `tool_args` = `-detect.tools.excluded {BAZEL, DOCKER}`
-
+If you want to add a CLI argument to the [synopsis detect scanner](https://blackducksoftware.github.io/synopsys-detect), use the [Additional CLI arguments](#additional-cli-flags) field.
 
 ### Additional Configuration
 
