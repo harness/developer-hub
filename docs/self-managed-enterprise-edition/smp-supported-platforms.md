@@ -9,6 +9,19 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 
 <Smp />
 
+## Harness module supported features
+
+* [Chaos Engineering](/chaos-engineering/get-started/whats-supported)
+* [Cloud Cost Management (Beta)](/docs/cloud-cost-management/getting-started-ccm/ccm-smp/smp-ccm-roadmap)
+* [Continuous Delivery and GitOps](/docs/continuous-delivery/cd-integrations)
+* [Continuous Error Tracking (Beta)](/docs/continuous-error-tracking/whats-supported)
+* [Continuous Integration](/docs/continuous-integration/ci-supported-platforms)
+* [Feature Flags](/docs/feature-flags/ff-supported-platforms)
+* [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported)
+* [Service Reliability Management](/docs/service-reliability-management/srm-whats-supported)
+
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies).
+
 ## Production environment deployment infrastructure
 
 import Infra from '/docs/self-managed-enterprise-edition/shared/prod-env-infra.md';
@@ -45,11 +58,11 @@ The following permissions are required:
 
 ## Supported Harness modules
 
-* [Continuous Delivery and GitOps](https://developer.harness.io/docs/continuous-delivery/)
-* [Continuous Integration](https://developer.harness.io/docs/continuous-integration/)
-* [Security Test Orchestration](https://developer.harness.io/docs/security-testing-orchestration/)
-* [Service Reliability Management](https://developer.harness.io/docs/service-reliability-management/)
-* [Feature Flags](https://developer.harness.io/docs/feature-flags/)
-* [Cloud Cost Management (Beta)](https://developer.harness.io/docs/cloud-cost-management/)
-* [Chaos Engineering](https://developer.harness.io/docs/chaos-engineering/)
-* [Continuous Error Tracking (Beta)](https://developer.harness.io/docs/continuous-error-tracking/)
+* [Chaos Engineering](/docs/chaos-engineering/)
+* [Cloud Cost Management (Beta)](/docs/cloud-cost-management/)
+* [Continuous Delivery and GitOps](/docs/continuous-delivery/)
+* [Continuous Error Tracking (Beta)](/docs/continuous-error-tracking/)
+* [Continuous Integration](/docs/continuous-integration/)
+* [Feature Flags](docs/feature-flags/)
+* [Security Test Orchestration](/docs/security-testing-orchestration/)
+* [Service Reliability Management](/docs/service-reliability-management/)
