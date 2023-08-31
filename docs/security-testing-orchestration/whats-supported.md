@@ -83,7 +83,20 @@ import StoInfraSupport from '/docs/security-testing-orchestration/onboard-sto/sh
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Approvals and ticketing">
+  <TabItem value="Platform">
+```
+STO is supported on both Harness Saas and Harness Self-Managed Platform Edition. All features supported in SaaS are also supported in Self-Managed Enterprise Edition with the following exceptions:
+- Custom dashboards
+- Harness AI Development Assistant (AIDA) for STO
+- SaaS-based scanners require connectivity between Harness and the external SaaS environment. This means that you cannot run SaaS-based scans in air-gapped environments.  
+
+:::info note
+All STO scanners are supported in both Harness SaaS and Self-Managed Enterprise Edition. Harness regularly updates the container images it uses to run STO scans. If you're running STO in an air-gapped environment, Harness recommends that you download your STO images regularly to ensure that your scanners are up-to-date. For more information, go to  [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+:::
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Approvals / Ticketing">
 ```
 
 Harness STO supports the following features for generating notifications and stopping pipelines in response to detected vulnerabilities:
