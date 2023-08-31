@@ -290,7 +290,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 <details open>
 <summary>What are Rolling deployments?</summary>
 
-Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
+Rolling deployments incrementally add nodes with a new service version to a single environment, either one by one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
 
 </details>
 
