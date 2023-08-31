@@ -21,6 +21,7 @@ In this topic:
 * [Harness entities](continuous-delivery-faqs.md#harness-entities)
 * [Secrets management](continuous-delivery-faqs.md#secrets-management)
 * [Harness variables expressions](continuous-delivery-faqs.md#harness-variables-expressions)
+* [Platform rate limit]
 
 ### General
 
@@ -897,4 +898,17 @@ All of these variables represent settings and values in the pipeline before and 
 At run time, Harness will replace the variable with the runtime value.
 
 See [Fixed Values, runtime inputs, and expressions](/docs/platform/20_References/runtime-inputs.md).
+
+#### Harness Platform rate limit
+
+Harness Platform rate limits include:
+
+	Any call: Harness allows 5000 requests every 10 seconds (30,000 requests per minute) per IP address.
+	API calls: Harness allows 1000 requests per API key per minute.
+	GraphQL APIs (FirstGen only): Harness allows up to 1000 requests per minute per IP address.
+	Large requests (character size > 500,000): 1 payload every 10 seconds.
+	Reset password: 5 calls per minute per IP address.
+	User invites: 10 calls per minute per IP address.
+
+ See [https://developer.harness.io/docs/platform/rate-limits/]
 
