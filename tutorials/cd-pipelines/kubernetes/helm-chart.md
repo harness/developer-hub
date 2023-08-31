@@ -325,7 +325,7 @@ In Harness, services represent what you deploy to environments. You use services
 2. Select **New Service**, enter the name, `harnessguestbookdep`, and then select **Save**.
 3. On the **Configuration** tab, toggle to the **YAML** view _(next to VISUAL)_, and then select **Edit YAML**.
 4. Copy the contents of [k8s-service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-service.yml) and paste it in the YAML editor.
-5. Select **Save** and verify that the service, _**harness_guestbook**_ is successfully created.
+5. Select **Save** and verify that the service, _**harness_guestbook**_ was successfully created.
 
 ### Create a pipeline
 
