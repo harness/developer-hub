@@ -1177,7 +1177,30 @@ Here are the sidecar expressions:
 * `<+artifacts.sidecars.SIDECAR_IDENTIFIER.tag>`
 * `<+artifacts.sidecars.SIDECAR_IDENTIFIER.connectorRef>`
 
-## Environment
+## Config files
+
+Files added in the **Config Files** section of a service are referenced using the following Harness expressions.
+
+* Plain text file contents: `<+configFile.getAsString("CONFIG_FILE_ID")>`
+* Base64-encoded file contents: `<+configFile.getAsBase64("CONFIG_FILE_ID")>`
+
+For more details, go to [Use config files in your deployments](/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files).
+
+If the config file has multiple text or encrypted files attached, you must use fileStore or secrets variables expressions: 
+
+- `<+fileStore.getAsString("SCOPED_FILEPATH")>`  
+- `<+fileStore.getAsBase64("SCOPED_FILEPATH")>`
+- `<+secrets.getValue("SCOPED_SECRET_ID")>`
+
+Here are some examples:
+
+- `<+configFile.getAsString("cf_file")>`
+- `<+configFile.getAsBase64("cf_file")>`
+- `<+fileStore.getAsString("/folder1/configFile")>`
+- `<+fileStore.getAsBase64("account:/folder1/folder2/configFile")>`
+- `<+secrets.getValue("account.MySecretFileIdentifier")>`
+
+## Environments
 
 ### Environment-level variables for service v2
 
