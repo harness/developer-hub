@@ -5,7 +5,7 @@ sidebar_label: Tutorials
 sidebar_position: 10
 ---
 
-In addition to the reference documentation, there are a several tutorials available.
+In addition to the reference documentation, there are several tutorials available.
 
 * [Configure an external cloud-based MongoDB](/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database/)
 * [Configure an external self-managed MongoDB](/tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb)

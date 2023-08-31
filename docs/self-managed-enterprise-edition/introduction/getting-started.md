@@ -17,7 +17,7 @@ This topic provides an architecture overview, installation links, and the basics
 To install Harness Self-Managed Enterprise Edition in a Kubernetes cluster with Helm, go to [Install Harness Self-Managed Enterprise Edition Using Helm](../self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga.md).
 
 ## Architecture overview
-Harness Self-Managed Enterprise Edition can be installed in a Kubernetes cluster or on virtual machines.
+You can install Harness Self-Managed Enterprise Edition in a Kubernetes cluster or on virtual machines.
 
 Review the following diagrams for your installation type.
 
@@ -49,8 +49,6 @@ To create your Harness account, do the following:
 
 ## Create your first project
 
-It takes time to learn how to create complex CI/CD pipelines. You can start with opening a project and inviting collaborators. 
-
 To create a project, do the following:
 
 1. From the **Continuous Delivery** start page, select **Create Project**.
@@ -69,12 +67,12 @@ To create a project, do the following:
 
 ### Next steps
 
-To get started with creating pipelines and Helm-based installs in Harness Self-Managed Enterprise Edition, go to [Harness Docs](https://docs.harness.io/):
+To get started with Harness Self-Managed Enterprise Edition, go to the following Harness module topics:
 
-* For Harness CCM, go to [Introduction to Cloud Cost Management](/docs/cloud-cost-management/getting-started-ccm/continuous-efficiency-overview).
-* For Harness CET, go to [Set up Continuous Error Tracking (CET)](/docs/continuous-error-tracking/getting-started/cet-setup).
-* For Harness CI, go to [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
-* For Harness CD, go to [CD Pipeline Basics](../../continuous-delivery/get-started/cd-pipeline-basics.md).
-* For Harness FF, go to [Get started with a flag](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags).
-* For Harness STO, go to [Security Testing Orchestration Basics](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
-* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-harness-chaos-engineering-ce).
+* Harness CCM: [Introduction to Cloud Cost Management](/docs/cloud-cost-management/getting-started-ccm/continuous-efficiency-overview).
+* Harness CET: [Set up Continuous Error Tracking (CET)](/docs/continuous-error-tracking/getting-started/cet-setup).
+* Harness CI: [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
+* Harness CD: [CD Pipeline Basics](../../continuous-delivery/get-started/cd-pipeline-basics.md).
+* Harness FF: [Get started with a flag](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags).
+* Harness STO: [Security Testing Orchestration Basics](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
+* Harness Chaos Engineering: [Get started with Harness Chaos Engineering](/docs/category/get-started-with-harness-chaos-engineering-ce).
