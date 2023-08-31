@@ -4263,17 +4263,13 @@ CDS-36661
 
 Updated the provisioner ID to conform to other steps.
 
-CDS-40897 A
-
-dded serviceHeader API refresh on save and update activity.
+CDS-40897 Added serviceHeader API refresh on save and update activity.
 
 CDS-41461
 
 Changed UI label text and made cosmetic changes to the layout of CD edit screens.
 
-CDS-41492 A
-
-dded caching to the API call to list repositories in Artifactory.
+CDS-41492 Added caching to the API call to list repositories in Artifactory.
 
 CDS-41532, ZD-3324
 
@@ -4493,7 +4489,7 @@ ZD-33910, ZD-34304, ZD-34547, ZD-35359
 
 Added execution capability in CI send status task.
 
-CI=5463
+CI-5463
 
 Added UI validation to ensure the Limit Memory and Limit CPU fields have the required formats. Previously, incorrect values for these fields were flagged during a build, which would cause the build to fail.
 
