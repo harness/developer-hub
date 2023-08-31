@@ -13,6 +13,10 @@ import TabItem from '@theme/TabItem';
 
 This topic lists the supported STO features and integrations to scan your code repositories, container images, and other targets for security vulnerabilities. 
 
+:::info note
+Security Tests dashboards are not currently supported in Harness Self-Managed Enterprise Edition. Harness has a roadmap item to add this support.
+:::
+
 
 ```mdx-code-block
 <Tabs>
