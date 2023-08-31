@@ -115,21 +115,23 @@ You can use the Harness Visual Editor or YAML to create a pipeline that will tea
   <TabItem value="Visual" label="Visual">
 ```
 
-1. Follow Steps 1-5 as described in the "Provision a Workspace" section
-2. On the **Execution** tab, in **Common Operations**, select **Destroy**.
-3. Select **Use Strategy**.
+1. In the Harness project pane, select **Pipelines**.
+2. Select **+ Create a Pipeline** and set up a pipeline. 
+3. Select **Add Stage**, and then on the **Select Stage Type** pane, select **Infrastructure**.
+4. Enter a stage name and an optional description and tag. Select **Set Up Stage**. 
+5. On the **Workspace** tab, select an existing workspace or select **+ Create New Workspace** to create a new workspace. A workspace can also be determined during execution if the value is set to be `runtime input`.
+6. On the **Execution** tab, in **Common Operations**, select **Destroy**.
+7. Select **Use Strategy**.
 
   Init, plan, and destroy steps are added. You can also customize the pipeline and add more steps.
 
-4. Select **Save**, and then select **Run Pipeline**. 
-
+8. Select **Save**, and then select **Run Pipeline**. 
 
 * The plan-destroy step generates a Terraform plan. This Terraform plan is accessible to all the steps after the IaCM Terraform plan, and can be referenced using the expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.parsedPlan>`.
 
+9. After the plan is created, switch to the **Resources** tab to see all the resources and Terraform outputs that will be generated once the plan is applied. You can see which resources will be removed from the state. 
 
-5. After the plan is created, switch to the **Resources** tab to see all the resources and Terraform outputs that will be generated once the plan is applied. You can see which resources will be removed from the state. 
-
-6. Select **Resources** to see the attribute details. 
+10. Select **Resources** to see the attribute details. 
 
 ```mdx-code-block
   </TabItem>
