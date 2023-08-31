@@ -13,6 +13,18 @@ import TabItem from '@theme/TabItem';
 
 This topic lists the supported STO features and integrations to scan your code repositories, container images, and other targets for security vulnerabilities. 
 
+<<<<<<< HEAD
+=======
+## Harness SaaS
+
+<!--
+
+:::info note
+Security Tests dashboards are not currently supported in Harness Self-Managed Enterprise Edition. Harness has a roadmap item to add this support.
+:::
+
+-->
+>>>>>>> b9554c08b (updates per RP DOC-3664)
 
 
 ```mdx-code-block
@@ -69,7 +81,10 @@ In addition to ingesting scan data in the external scanner's native format, STO 
   <TabItem value="Build infrastructure">
 ```
 
+<!-- 
 ### STO support by CI build infrastructure type
+
+-->
 
 ```mdx-code-block
 import StoInfraSupport from '/docs/security-testing-orchestration/onboard-sto/shared/_supported-infrastructures.md';
@@ -78,6 +93,7 @@ import StoInfraSupport from '/docs/security-testing-orchestration/onboard-sto/sh
 <StoInfraSupport />
 
 
+<<<<<<< HEAD
 ```mdx-code-block
   </TabItem>
   <TabItem value="Platform">
@@ -94,6 +110,8 @@ STO is supported on both Harness Saas and Harness Self-Managed Platform Edition.
 :::info note
 All STO scanners are supported in both Harness SaaS and Self-Managed Enterprise Edition. Harness regularly updates the container images it uses to run STO scans. If you're running STO in an air-gapped environment, Harness recommends that you download your STO images regularly to ensure that your scanners are up-to-date. For more information, go to  [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 :::
+=======
+>>>>>>> b9554c08b (updates per RP DOC-3664)
 
 
 
@@ -134,3 +152,18 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
   </TabItem>
 </Tabs>
 ```
+
+## Harness Self-Managed Enterprise Edition (SMP)
+
+All STO features supported in [Harness SaaS](#harness-saas) are also supported in Self-Managed Enterprise Edition with the following exceptions:
+- Custom dashboards
+- Harness AI Development Assistant (AIDA) for STO
+- You cannot run SaaS-based scans if there is no connectivity between Harness and the external SaaS environment.  
+
+## Harness SMP in air-gapped environments
+
+If you're running Harness Self-Managed Enterprise Edition in an air-gapped environment, note the following:
+
+- SaaS-based scanners require connectivity between Harness and the external SaaS environment. This means that you cannot run SaaS-based scans in air-gapped environments.  
+
+- All STO scanners are supported in both Harness SaaS and Self-Managed Enterprise Edition. Harness regularly updates the container images it uses to run STO scans. If you're running STO in an air-gapped environment, Harness recommends that you download your STO images regularly to ensure that your scanners are up-to-date. For more information, go to  [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
