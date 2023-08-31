@@ -28,7 +28,7 @@ import TabItem from '@theme/TabItem';
 
 4. Enter a stage name and an optional description and tag. Select **Set Up Stage**. 
 
-5. On the **Workspace** tab, select an existing workspace or select **+ Create New Workspace** to create a new Workspace. A workspace can also be determined during execution if the value is set to be runtime input
+5. On the **Workspace** tab, select an existing workspace or select **+ Create New Workspace** to create a new workspace. A workspace can also be determined during execution if the value is set to be `runtime input`.
 
 6. Select the **Execution** tab, and then select "Provision" from 'Common Operations'.
 
