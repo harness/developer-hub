@@ -11,7 +11,7 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 
 ## Harness module supported features
 
-* [Chaos Engineering](/chaos-engineering/get-started/whats-supported)
+* [Chaos Engineering](/docs/chaos-engineering/get-started/whats-supported)
 * [Cloud Cost Management (Beta)](/docs/cloud-cost-management/getting-started-ccm/ccm-smp/smp-ccm-roadmap)
 * [Continuous Delivery and GitOps](/docs/continuous-delivery/cd-integrations)
 * [Continuous Error Tracking (Beta)](/docs/continuous-error-tracking/whats-supported)
