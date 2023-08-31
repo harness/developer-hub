@@ -11,7 +11,7 @@ helpdocs_is_published: true
 Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. This document explains how to set up SAML authentication.
 
 :::info note
-If the [Harness Self-Managed Enterprise Edition](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md) version is not accessed using the HTTPS load balancer, SAML authentication will fail. Make sure you access the Harness Self-Managed Enterprise Edition version using an HTTPS load balancer, and not an HTTP load balancer.
+If the [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/introduction/getting-started) version is not accessed using the HTTPS load balancer, SAML authentication will fail. Make sure you access the Harness Self-Managed Enterprise Edition version using an HTTPS load balancer, and not an HTTP load balancer.
 :::
 
 ## Support formats
@@ -344,7 +344,7 @@ You must enter the **Harness SAML Endpoint URL** from Harness in your Azure app 
 Next, you will use the **SAML SSO Provider** settings in Harness to set up your Azure app **Single sign-on**.
 
 :::info note
-For [Harness Self-Managed Enterprise Edition](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md), replace **app.harness.io** with your custom URL.  
+For [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/introduction/getting-started), replace **app.harness.io** with your custom URL.  
 If you use a custom Harness subdomain in any Harness version, like **example.harness.io**, use that URL.
 :::
 
