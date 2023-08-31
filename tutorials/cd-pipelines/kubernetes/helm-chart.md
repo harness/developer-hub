@@ -307,7 +307,7 @@ Environments define the deployment location and are categorized as **Production*
 1. In **Default Project**, select **Environments**.
 2. Select **New Environment** and toggle to the **YAML** view _(next to VISUAL)_.
 3. Copy the contents of [k8s-environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-environment.yml), paste it in the YAML editor, and then select **Save**.
-4. In the **Infrastructure Definitions** tab, select **Infrastructure Definition**, and then select **Edit YAML**.
+4. On the **Infrastructure Definitions** tab, select **Infrastructure Definition**, and then select **Edit YAML**.
 5. Copy the contents of [k8s-infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/k8s-infrastructure-definition.yml) and paste it in the YAML editor.
 6. Select **Save** and verify that the environment and infrastructure definition were created successfully.
 
