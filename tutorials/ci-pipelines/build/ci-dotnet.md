@@ -439,6 +439,19 @@ If you need a specific .NET Core SDK version that isn't already installed, you c
                       dotnet-version: '3.1.x'
 ```
 
+On Windows platforms, you might also need to run the [setup-msbuild](https://github.com/microsoft/setup-msbuild) action.
+
+```yaml
+              - step:
+                  type: Action
+                  name: Install dotnet
+                  identifier: install_dotnet
+                  spec:
+                    uses: actions/setup-msbuild@v1
+                    with: ## Optional. Specify a specific version of visual Studio if you have multiple versions installed.
+                      vs-version: '16.4'
+```
+
 </details>
 
 <details>
@@ -467,6 +480,19 @@ If you need a specific .NET Core SDK version that isn't already installed, you c
                       dotnet-version: <+matrix.dotnetVersion>
 ```
 
+On Windows platforms, you might also need to run the [setup-msbuild](https://github.com/microsoft/setup-msbuild) action.
+
+```yaml
+              - step:
+                  type: Action
+                  name: Install dotnet
+                  identifier: install_dotnet
+                  spec:
+                    uses: actions/setup-msbuild@v1
+                    with: ## Optional. Specify a specific version of visual Studio if you have multiple versions installed.
+                      vs-version: '16.4'
+```
+
 </details>
 
 ```mdx-code-block
@@ -474,7 +500,7 @@ If you need a specific .NET Core SDK version that isn't already installed, you c
 <TabItem value="Self-hosted">
 ```
 
-Specify the desired [.NET SDK image](https://hub.docker.com/_/python) tag in your steps. There is no need for a separate install step when using Docker.
+Specify the desired [.NET SDK image](https://mcr.microsoft.com/en-us/product/dotnet/framework/sdk/tags) tag in your steps. There is no need for a separate install step when using Docker.
 
 <details>
 <summary>Use one .NET SDK version</summary>
@@ -491,6 +517,8 @@ Specify the desired [.NET SDK image](https://hub.docker.com/_/python) tag in you
                     command: |-
                       dontet --info
 ```
+
+On Windows platforms, you might also need to [install Microsoft Build Tools into the container](https://learn.microsoft.com/en-us/visualstudio/install/build-tools-container?view=vs-2019).
 
 </details>
 
@@ -522,6 +550,8 @@ Specify the desired [.NET SDK image](https://hub.docker.com/_/python) tag in you
                     command: |-
                       dotnet --info
 ```
+
+On Windows platforms, you might also need to [install Microsoft Build Tools into the container](https://learn.microsoft.com/en-us/visualstudio/install/build-tools-container?view=vs-2019).
 
 </details>
 

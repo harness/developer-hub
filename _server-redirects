@@ -1,0 +1,17 @@
+# Redirects For Netlify
+# Sample entry: {from} <space> {to}
+# More info: https://docs.netlify.com/routing/redirects/
+
+# Redirects created by Users [place yours below here]:
+
+# Added by <User> on <Date> for PR <pr>
+
+# Added by ravilach on 8-29-2023 for 3094
+/docs/category/apisterraform /docs/category/automation
+/docs/frequently-asked-questions /docs/faqs
+
+# Added by schoudhury on 8-29-2023
+/docs/category/apis /docs/category/api
+
+# Redirects generated from Front Matter [sytem generated goes below here]:
+

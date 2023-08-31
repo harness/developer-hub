@@ -19,6 +19,10 @@ You must have a `Editor` role to enable APIs in a project.
 :::
 
 ```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
 </TabItem>
 <TabItem value="1" label="API">
 ```

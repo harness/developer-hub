@@ -46,7 +46,7 @@ This release does not include hotfixes.
 <details>
 <summary>2023 releases</summary>
 
-#### August 10, 2023, version 80119
+#### August 10, 2023, version 80204
 
 ##### What's new
 
@@ -108,7 +108,15 @@ This release does not include any new features.
 
 ##### What's new
 
-This release does not include any new features.
+Create and manage monitored services at the Project level (SRM-14580)
+
+You can now seamlessly create and manage monitored services at the Project level, as well as within the SRM and CD modules. You can view and manage the monitored services, regardless of where they were created. The monitored service list presents specific insights based on where you are accessing it.
+
+  - Project level: Shows service names and health source count, while interactive module icons allow you to effortlessly navigate to specific modules for a detailed view.
+    
+  - CD module: Presents monitored service names alongside configured health sources, providing a comprehensive overview of health status.
+    
+  - SRM module: Provides information, including monitored service status, name, SLO specifics, recent changes, 24-hour health trends, score, and dependency status.
 
 ##### Early access
 

@@ -30,7 +30,7 @@ Harness CI offers built-in support for GitHub Actions. You can use the [GitHub A
 Harness CI offers the following additional advantages over GitHub Actions:
 
 * Harness offers a variety of [build infrastructure options](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), including Apple silicon and Linux arm64 options.
-* Harness supports both [Terraform](/docs/platform/resource-development/terraform/harness-terraform-provider-overview/) and [CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-provisioning-with-harness/) infrastructure provisioning with simpler structures and configurations than their corresponding GitHub Actions.
+* Harness supports both [Terraform](/docs/platform/automation/terraform/harness-terraform-provider-overview) and [CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-provisioning-with-harness) infrastructure provisioning with simpler structures and configurations than their corresponding GitHub Actions.
 * GitHub Actions does not provide a native Accelerate metrics dashboard, whereas Harness offers both a dedicated dashboard and the ability to configure alerts.
 
 ## Comparison: Workflow architecture
@@ -576,7 +576,7 @@ Harness CI supports webhook, artifact, manifest and schedule triggers. The two m
 
 * [Trigger Pipelines using Git Event Payload Conditions](/docs/platform/triggers/triggering-pipelines/)
 * [Triggers](https://developer.harness.io/docs/category/triggers)
-* [Built-in CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference)
+* [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference)
 
 ```mdx-code-block
 <Tabs>

@@ -14,9 +14,7 @@ This knowledge base article walks you through how you can mount the custom cert 
    Example: test-cer.pem
 ```
    -----BEGIN CERTIFICATE-----
-YHSHJXXXXXXHG67skGJ/
-...........
-..........GGUNhvd76==
+XXXXXXXXXXXXXXXXXXXXXXXXXXX
 -----END CERTIFICATE-----
 ```
 

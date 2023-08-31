@@ -198,6 +198,12 @@ The Helm chart is added to the Service Definition.
 
 Next, we can target your Kubernetes cluster for deployment.
 
+## Using multiple Helm charts in a single Harness service
+
+import HelmMultiManifests from '/docs/continuous-delivery/shared/multiple-helm-charts.md';
+
+<HelmMultiManifests name="helmmultimanifests" />
+
 ## Define the infrastructure
 
 There is nothing unique about defining the target cluster infrastructure definition for a Helm chart deployment. It is the same process as a typical Harness Kubernetes deployment.

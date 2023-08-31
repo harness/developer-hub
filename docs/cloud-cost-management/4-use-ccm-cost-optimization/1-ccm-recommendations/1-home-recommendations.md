@@ -52,7 +52,7 @@ To apply recommendations, you need to raise a ticket in the ticketing tool that 
 
 
 :::note
- Switching your ticketing tool between Jira and ServiceNow will result in the removal of the existing recommendation tickets. The status of the tickets change to **Create a ticket**.
+ Switching your ticketing tool between Jira and ServiceNow results in the removal of the existing recommendation tickets. The status of the tickets changes to **Create a ticket**.
 :::
 
 
@@ -110,7 +110,7 @@ To view the recommendations that are applied, and the cost savings realized, sel
 2. Optionally, enter a short description and tags.
 3. In the **Details** step, enter the base URL. For example, https://mycompany.atlassian.net. For more information, go to [Configuring the base URL](https://confluence.atlassian.com/adminjiraserver071/configuring-the-base-url-802593107.html).
 4. Enter the email ID used to log in to your Jira account.
-5. Create or select a Harness encrypted test secret for the API key. To create a secret, go to [Add and reference text secrets](/docs/platform/Secrets/add-use-text-secrets).
+5. Create or select a Harness encrypted test secret for the API key. To create a secret, go to [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets).
 6. In the **Delegates Setup** step, select one of the following options: 
    * **Use any available Delegate**: Select this option to let Harness choose a Delegate at runtime.
    When a task is ready to be assigned, the Harness Manager first validates its lists of Delegates to assign the task.

@@ -10,13 +10,12 @@ helpdocs_is_published: true
 
 This topic describes default (built-in) and custom Harness expressions, as well as the prefixes used to identify user-created variables. This list will be updated when new expressions are added to Harness.
 
-Looking for how-tos? For more information, go to [Variable Expressions How-tos](/docs/category/variables-and-expressions).
+For information about referencing variables, using expressions, and adding custom variables, go to:
 
-## Variable expression basics
+* [Variables and expressions](/docs/category/variables-and-expressions)
+* [Fixed values, runtime inputs, and expressions](../20_References/runtime-inputs.md)
 
-Let's quickly review what Harness built-in and custom variable expressions are and how they work.
-
-### What is a Harness variable expression?
+## What is a Harness variable expression?
 
 Harness variables are a way to refer to something in Harness, such as an entity name or a configuration setting. At pipeline runtime, Harness evaluates all variable expressions and replaces them with the resulting value.
 
@@ -33,7 +32,7 @@ The content between the `<+...>` delimiters is passed on to the [Java Expressio
 ```
 Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) and other steps.
 
-### Java string methods
+## Java string methods
 
 You can use all Java string methods on Harness variable expressions.
 
@@ -56,7 +55,7 @@ For example, let's use a variable `myvar` using the methods `substring` and `ind
 
 This expression evaluates to `ello`.
 
-### FQNs and expressions
+## FQNs and expressions
 
 Everything in Harness can be referenced by a Fully Qualified Name (FQN) expression.
 
@@ -76,7 +75,7 @@ When building a pipeline in Pipeline Studio, you can copy the FQN of a setting u
 
 ![](./static/harness-variables-16.png)
 
-### Stage level and pipeline level expressions
+## Stage level and pipeline level expressions
 
 You can create variables at the pipeline and stage level and reference them using the FQN expressions within their scope.
 
@@ -186,14 +185,14 @@ Value: C
 Command completed with ExitCode (0)
 ```
 
-### Input and output variables
+## Input and output variables
 
 You can reference the inputs and outputs of any part of your pipeline.
 
 * **Input variable expressions** reference the values and setting selections you made *in your pipeline*.
 * **Output variable expressions** reference *the results* of a pipeline's execution.
 
-#### Input variables in the pipeline
+### Input variables in the pipeline
 
 You can copy and reference the input settings for steps using the pipeline **Variables** panel.
 
@@ -210,7 +209,7 @@ Pipeline and stage custom variable expressions use the *variable name* to refere
 
 :::
 
-#### Input and output variable expressions in executions
+### Input and output variable expressions in executions
 
 Inputs and outputs are displayed for every part of the pipeline execution.
 
@@ -235,7 +234,7 @@ Here are the **Name** and **Value** expressions for the `podIP` setting.
   ```  
 * Value: `10.100.0.6`
 
-### Using expressions in settings
+## Using expressions in settings
 
 You can use Harness variable expressions in most settings.
 
@@ -338,6 +337,7 @@ You cannot write scripts within an expression `<+...>`. For example, the followi
 ```
 if ((x * 2) == 5) { <+pipeline.name = abc>; } else { <+pipeline.name = def>; }
 ```
+
 ### Variable names across the pipeline
 
 Variable names must be unique within the same stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
@@ -447,13 +447,33 @@ For example, `<+<+pipeline.name> == "pipeline1">` or `<+<+stage.variables.v1> ==
 
 ### Variable concatenation
 
-Harness recommends that you use the Java string method for concatenating pipeline variables. Ensure the expression is wrapped within `<+ >`.
+Harness string variables can be concatenated by default. Each expression can be evaluated and substituted in the string. 
 
-For example, instead of `<+pipeline.variable.var1>_suffix`, use these syntaxes:
+Previously, Harness users were forced to use a ‘+’, or `.concat()`, the concatenation operator, to join multiple expressions together. Now, you can simply use `<+pipeline.name> <+pipeline.executionId>`. 
+
+For example, Harness supports complex usages sych as the following:
+
+- `us-west-2/nonprod/eks/eks123/<+env.name>/chat/`
+- `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>`
+  - This example uses the index of the looped execution to pick the correct step.
+- `<+pipeline.stages.<+pipeline.variables.stagename>.status>`
+  - This example shows an elegant way to print out the status of a stage.
+
+All existing expressions will continue to work. For example, the following syntax will still work.
+
+1. Use `+` operator to add string value variables: `<+<+pipeline.variables.var1> + "_suffix">`.
+2. Use Java `concat` method to add string variables:
 
 - `<+pipeline.variables.var1.concat("_suffix")>`
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
-- `<+<+pipeline.variables.var1> + "_suffix">` 
+
+Ensure the expression is wrapped within `<+ >` in both of theese examples.
+
+:::note
+
+If you wish to concatenate expressions as strings, make sure that each expression evaluates to a string. If an expression does not satisfy this condition, use the `toString()` method to convert it to a string. For example, the variable `sequenceId` in the expression `/tmp/spe/<+pipeline.sequenceId>` evaluates to an integer. When concatenating it with other string expressions, convert it to a string with the following expression: `/tmp/spe/<+pipeline.sequenceId.toString()>`.
+
+:::
 
 ## Debugging expressions
 
@@ -471,11 +491,12 @@ Expressions that are incorrect or cannot be evaluated using the execution data a
 
 To test an expression that isn't part of a variable (say, something in a script), you can create a temporary variable in the panel, assign the expression to it, and use Compiled Mode to debug it. 
 
-## Built-in CI codebase variables
+## CI codebase and environment variables
 
-In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a [Harness code repo connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo). Pipelines use this connector to clone the code you want to build and test. When a pipeline runs, Harness also fetches your Git details and displays them in the [Build details](/docs/continuous-integration/use-ci/viewing-builds). You can use Harness' built-in expressions to reference various codebase attributes in Harness pipelines, stages, and steps.
+You can use Harness expressions to reference various environment variables and [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) attributes in Harness CI pipelines, stages, and steps. For more information, go to:
 
-For more information, go to [Built-in CIE Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
+* [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
+* [CI environment variables reference](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var.md)
 
 ## Account
 
@@ -837,7 +858,7 @@ Resolves to a boolean value to indicate whether the GitOps option is enabled (tr
 
 ![](./static/harness-variables-37.png)
 
-For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart).
+For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart).
 
 ### <+serviceVariableOverrides.VARIABLE_NAME>
 
@@ -1262,7 +1283,10 @@ Pod Template:
     Image:      monopole/hello:1  
 ...
 ```
+
 Harness can now track the release for comparisons and rollback.
+
+The infrastructure key is a combination of `serviceIdentifier`, `environmentIdentifer` and set of values unique to each infrastructure definition implementation (Kubernetes cluster, etc.) hashed using `SHA-1`. For example, in case of a Kubernetes Infrastructure, the infrastructure key is a hash of `serviceIdentifier-environmentIdentifier-connectorRef-namespace`. The format is `sha-1(service.id-env.id-[set of unique infra values])`.
 
 ### <+infra.namespace>
 
@@ -1294,6 +1318,29 @@ Use the following fully qualified expression to get the execution URL for a spec
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.executionUrl>
 ```
 
+### <+steps.STEP_ID.retryCount>
+
+When you set the failure strategy to **Retry Step**, you can specify the retry count for a step or all steps in the stage.
+
+Harness includes a `retryCount` built-in expression that resolves to the total number of times a step was retried:
+
+```
+<+execution.steps.STEP_ID.retryCount>
+```
+
+You can use this expression in a Shell Script step script anywhere after the step that you identify in the expression. 
+
+For example, here is a script that resolves the retry count for the step with the Id `ShellScript_1`:
+
+```
+echo "retry count of ShellScript_1: <+execution.steps.ShellScript_1.retryCount>"
+```
+
+During pipeline execution, the expression would resolve to something like this:
+
+```
+retry count of ShellScript_1: 2
+```
 
 ## Instances
 
@@ -1561,6 +1608,13 @@ This will help you to:
 
 **Important:** Users must update their delegate to version 1.0.79100 to use this expression.
 
+## Helm chart expressions
+
+import HelmManifestExpressions from '/docs/continuous-delivery/shared/helm-manifest-expressions.md';
+
+<HelmManifestExpressions name="helmexpressions" />
+
+
 ## Tag expressions
 
 You can reference tags using Harness expressions.
@@ -1784,9 +1838,3 @@ For more information migrating to NextGen, go to the following:
 - [Harness FirstGen vs Harness NextGen](https://developer.harness.io/docs/getting-started/harness-first-gen-vs-harness-next-gen)
 - [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
 - [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
-
-For more information, go to:
-
-* [Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
-* [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
-

@@ -13,7 +13,7 @@ Harness is a leading provider of the Continuous Delivery-as-a-Service platform. 
 CI executes pipeline steps in containers, isolating code and dependencies from other steps. When you create a pipeline, you specify a container to use, and then Harness locates and launches the container in which the step runs. You don't need to manage a dependency chain when steps and plugins run in their own containers.
 
 <details>
-<summary>Video introduction</summary>
+<summary>Video: Introduction to Harness CI</summary>
 
 The following video introduces Harness CI and walks through a basic Harness CI pipeline.
 
@@ -36,13 +36,16 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <figcaption>Harness CI architecture diagram.</figcaption>
 </figure>
 
-The [Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers.
+The [Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers.
 
-The [build infrastructure](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md) communicates directly with your repos, repositories, and cloud providers. You can maintain your code and artifacts internally or on public platforms, such as GitHub or Docker Hub.
+The [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me) communicates directly with your repos, repositories, and cloud providers. You can maintain your code and artifacts internally or on public platforms, such as GitHub or Docker Hub.
 
 The Delegate manages your build infrastructure to run build jobs and tests as needed, and sends data back to the Harness Manager. You can use this data for DAG orchestration, debugging, health checks, analytics, notifications, and the generation of ML models.
 
 When a CI pipeline build finishes successfully, the build infrastructure then sends the artifacts to the registry of your choice.
+
+<details>
+<summary>Video: Create and run a CI pipeline</summary>
 
 The following video demonstrates how to set up a CI pipeline and run a build.
 
@@ -51,21 +54,22 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <docvideo src="https://www.youtube.com/embed/r1GLYtOmJmM?feature=oembed" />
 
 <!--div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/r1GLYtOmJmM?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
+</details>
 
-If you want to try it for yourself, these tutorials walk through the pipeline creation process:
+If you want to try creating a pipeline for yourself, these tutorials walk through the pipeline creation process:
 
 * [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
 * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 
-For information about CI pipeline components, go to [CI pipeline basics](./ci-pipeline-basics.md).
+For information about CI pipeline components, go to [CI pipeline basics](/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics).
 
 ## Features
 
-Here are some key features of Harness CI. For information about general Harness Platform concepts, go to [Harness key concepts](../../getting-started/learn-harness-key-concepts.md).
+Here are some key features of Harness CI. For information about general Harness Platform concepts, go to [Harness key concepts](/docs/getting-started/learn-harness-key-concepts).
 
 ### Harness Cloud
 
-You can run builds on your own build infrastructure or on Harness-hosted build infrastructure. For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+You can run builds on your own build infrastructure or on Harness-hosted build infrastructure. For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
 
 With Harness Cloud, you can run builds in isolation on Harness-hosted virtual machines (VMs). You can run builds at scale on Linux, Windows, and macOS machines that are preconfigured with tools, packages, and settings commonly used in CI pipelines.
 
@@ -98,9 +102,9 @@ Harness Test Intelligence (TI) helps your test cycle move faster without comprom
 
 Test Intelligence gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. Using TI doesn't require you to change build and test processes.
 
-To learn more about the Test Intelligence architecture, how it works, and how to enable it, go to [Enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
+To learn more about the Test Intelligence architecture, how it works, and how to enable it, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
 
-While Test Intelligence is only for unit tests, you can [run a variety of tests in your CI pipelines](../use-ci/set-up-test-intelligence/run-tests-in-ci.md).
+While Test Intelligence is only for unit tests, you can [run a variety of tests in your CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
 #### Time and cost savings with Test Intelligence
 

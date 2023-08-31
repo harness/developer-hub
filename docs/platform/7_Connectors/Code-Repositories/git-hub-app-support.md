@@ -10,13 +10,19 @@ helpdocs_is_published: true
 
 You can use a GitHub App to provide authentication for a GitHub connector. This enables API access to GitHub through the GitHub App.
 
-GitHub recommends using GitHub Apps for GitHub connectors, because GitHub Apps offer more granular permissions than other authentication methods.
+Harness recommends using GitHub Apps for GitHub connectors, because GitHub Apps offer more granular permissions than other authentication methods.
+
+The following video uses Harness Continuous Delivery to demonstrate the benefits, features, and configuration of GitHub Apps in Harness.
+
+<!-- Video:
+https://www.loom.com/share/99767c8527274a2f801045bf73223e71-->
+<docvideo src="https://www.loom.com/share/99767c8527274a2f801045bf73223e71" />
 
 This topic assumes you have an understanding of:
 
-* [Connecting to code repos with Harness.](./connect-to-code-repo.md)
-* [Creating GitHub Apps.](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps)
-* [Installing GitHub Apps.](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app)
+* [Connecting to code repos with Harness](./connect-to-code-repo.md).
+* [Creating GitHub Apps](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps).
+* [Installing GitHub Apps](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app).
 
 ## Permissions requirements
 
@@ -90,29 +96,17 @@ You need a private key for your GitHub app to configure your Harness GitHub conn
    openssl pkcs8 -topk8 -inform PEM -outform PEM -in <your-key>.pem -out converted-github-app.pem -nocrypt
    ```
 
-5. In Harness, store the converted key file as a [Harness encrypted file secret](/docs/platform/Secrets/add-file-secrets).
+5. In Harness, store the converted key file as a [Harness encrypted file secret](/docs/platform/secrets/add-file-secrets).
 
 ## Configure the GitHub connector
 
-You can use your GitHub App as <!-- either the [primary authentication method](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication) or -->the [API access authentication method](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access) for your GitHub connector.
-
-<!-- At 803xx release, remove below steps and uncomment tabs. -->
-
-1. In your Harness project, select **Connectors** under **Project Setup**.
-2. Create a new connector or edit an existing GitHub connector.
-3. Configure the [GitHub connector settings](./ref-source-repo-provider/git-hub-connector-settings-reference.md). The GitHub App is part of the **Credentials** settings.
-4. Select **Enable API access**. This setting is only available for connection types and authentication methods where it is not already enabled by default.
-5. For **API Authentication**, select **GitHub App**.
-6. Enter the your GitHub [installation ID and app ID](#get-the-installation-id-and-app-id).
-7. Select your [private key file secret](#generate-a-private-key).
-8. Select **Continue**.
-9. If the connection test succeeds, select **Finish** to save the connector.
+You can use your GitHub App as either the [primary authentication method](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication) or the [API access authentication method](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access) for your GitHub connector.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-<!--
+
 ```mdx-code-block
 <Tabs>
   <TabItem value="primary" label="Primary authentication">
@@ -121,12 +115,6 @@ import TabItem from '@theme/TabItem';
 :::note
 
 Currently, the option to use a GitHub App as the primary authentication method for a GitHub connector is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-:::caution
-
-The [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline) doesn't support GitHub connectors that use GitHub App authentication.
 
 :::
 
@@ -158,7 +146,6 @@ The [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/
   </TabItem>
 </Tabs>
 ```
--->
 
 ## Option: Set up a PR trigger
 
