@@ -44,7 +44,7 @@ When a new Default Secret Manager is set up, only new Cloud Provider and/Connect
 
 ### Secret manager scope
 
-You can add secrets to the Org or Project scopes using a Secret Manager with an Account or Org scope. For example, you can use Secret Manager to create secrets at the Org level and allow your project teams to create secrets inside the project.
+You can add secrets to the Org or Project scopes using a Secret Manager with an Account or Org scope. For example, you can create secrets inside a project using the Secret Manager created at the Org or Account level.
 
 When you create a secret, Harness shows the list of secret managers at the parent scope and up the hierarchy. If you create a secret at the project level, Harness lists all secret managers scoped at the Account, Org, and Project levels.
 
