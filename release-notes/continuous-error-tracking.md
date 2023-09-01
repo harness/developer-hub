@@ -29,7 +29,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Various dependencies were upgraded to prevent security issues. (CET-1571)
 
-- Starting with this release, the default time period on the Events Summary page has been adjusted to one hour. (CET-1576)
+- The default time period on the Events Summary page has been adjusted to one hour. (CET-1576)
 
 
 ### Early access features
