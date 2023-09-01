@@ -855,3 +855,35 @@ The concatenation in the expression /tmp/spe/<+pipeline.sequenceId> is not worki
 So we can invoke the toString() on the integer value then our expression should work. So the final expression would be /tmp/spe/<+pipeline.sequenceId.toString()>
 
 Also please see the Feature Flag: PIE_EXPRESSION_CONCATENATION
+
+### Can I use the Service Propogation Feature to deploy dev and prod pipelines without changing critical parameters?
+
+Yes, the Service Propogation allows you to provide fixed critical parameters. Please refer more on this in the following [Documentation 1](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services/) and [Documentation 2](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/overrides-v2/).
+
+### Do we need to manually filter the API response to check if the pipeline was executed by a trigger in NG ?
+
+Yes,Harness NG uses REST APIs not graphql, this means that we need to review the api calls they are making and provide them the api endpoints that are parity. 
+
+### Do we support nested AD groups syncing to Harness on AD SCIM sync?
+
+ Enabling Azure AD provisioning in Harness allows user provisioning from Azure AD. Users directly provisioned require group assignment in Harness, while Azure AD group members' group assignments are managed in Azure AD. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim/)
+
+ ###  Do we have the export manifests option in NG like we have in CG?
+
+ No, we have a dry-run step, that will export manifest for customer to use in other steps, but there is no option to inherit manifest.Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/k8s-dry-run/)
+
+ ### What YAML parser is being used for harness YAML ,Pipelines or Templates?
+
+ We have a YAML schema available on GitHub that you can pull into your IDE for validation.
+ It is available on [Github Repository](https://github.com/harness/harness-schema/tree/main/v0) and one can look at [Jackson](https://github.com/FasterXML/jackson) as well.
+ It has usages as following: 
+ - The schema makes it easy for users to write pipeline and Template YAMLs in their favourite IDE such as IntelliJ/VS. The schema can be imported into the IDE, then used to validate the YAMLs as they are being written and edited.
+ - The same schema is used internally by Harness to validate YAMLs; so the validation is now standardised.
+
+ ### Can there be a way to select a delegate and see what steps have ran on it without going into each pipeline execution?
+
+ No, we don't have this capability.
+
+ ### Do we have an expression to retrieve from which branch the pipeline loaded the yaml?
+
+ No, we don't have such an expression which will always show from which branch the pipeline yaml was loaded.
