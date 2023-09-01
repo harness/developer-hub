@@ -69,7 +69,7 @@ This release does not include any early access features.
   
 - New events did not appear in the events list. (CET-1632)
   
-  Now, the Events List displays all events.
+  This issue has been resolved. Now, the Events List displays all events.
 
 
 ## Previous releases
