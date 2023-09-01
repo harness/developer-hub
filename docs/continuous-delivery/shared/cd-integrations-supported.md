@@ -521,7 +521,7 @@ GitOps supports the following:
   - GnuPG Public Key Data (ASCII-armored).
 - **Limitations:**
   - Self-hosted environments
-    - Agents installed in custom namespaces are not yet supported
+    - Agents installed in custom namespaces are not yet supported.
   
 </details>
 
