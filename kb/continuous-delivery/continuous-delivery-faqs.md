@@ -988,3 +988,23 @@ For more info check - https://developer.harness.io/docs/platform/git-experience/
 ### How to pass variables to Rego policy language
 
 The OPA engine is designed to enforce policies based on data and rules that are predefined and provided as policies. It does not support taking dynamic input/variable values for policy evaluation during evaluations because policies are typically intended to be static and consistent. You can add a policy step as a workaround to work with variables during executions.
+
+#### Can I download pipeline or step execution logs via the UI? 
+
+Yes, you can. First we will need to enable this Feature Flag on your account "SPG_LOG_SERVICE_ENABLE_DOWNLOAD_LOGS". After this Feature Flag is enabled, a Downloads logs selector will be available in the edit pipeline (3 dots on top right panel of pipeline execution screen). 
+
+For more details please see: [https://developer.harness.io/docs/platform/pipelines/download-logs/]
+
+#### Service hooks for Kubernetes and Helm deployments to fetch Helm Chart dependencies. 
+
+This is possible, but a Feature Flag "CDS_K8S_SERVICE_HOOKS_NG" needs to be enabled. 
+
+For more details please see: [https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks]
+
+#### Using Helm v3.8.0 Binary
+
+Harness supports using Helm v3.8.0 binaries. Please contact Harness support to enable the appropriate feature flags. 
+
+#### Harness Cloudformation Deploying base stack gets stuck with message "Invalid request: The null format is not valid"
+
+This is likely due to referencing the context variable at multiple places (e.g. ${context.basestackpre.basestackname}) in the CloudFormation Deploy Base Stack step and the step seems to be failing because of not being able to retrieve the proper values from the context variable as configured on the workflow.
