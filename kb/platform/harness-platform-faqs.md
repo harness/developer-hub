@@ -485,4 +485,18 @@ helm list -n namespace
 ```
 It will show the App version which is the version of your Harness edition
 
+### Do we have documentation for network setup or Harness Deployment Architecture?
 
+Yes we do have documentation for Harness deployment architecture, refer to this [Documentation](https://medium.com/harness-engineering/harness-deployment-architecture-a667fe359342).
+
+### Do we have either a Splunk option or another public cloud option like GCS for audit log streaming?
+
+We donot have this option as of now. 
+
+### Can the delegate upgrader job be set to point to a custom private registry?
+
+Yes, delegate upgrader job can be set to point to a custom private registry, refer to this [Documentation](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
+
+### Can we set `SCM_SKIP_SSL = true` while working on docker delegate?
+
+Yes, we can add it when running the docker delegate with -e option, refer to [Documentation](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#scm-request-failed-with-unknown).
