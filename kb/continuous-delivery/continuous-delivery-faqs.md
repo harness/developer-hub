@@ -887,3 +887,7 @@ Yes,Harness NG uses REST APIs not graphql, this means that we need to review the
  ### Do we have an expression to retrieve from which branch the pipeline loaded the yaml?
 
  No, we don't have such an expression which will always show from which branch the pipeline yaml was loaded.
+
+### Is there to check the pipeline was ever run in last two years?
+
+As per the current design, the execution history is available up to the past 6 months only.

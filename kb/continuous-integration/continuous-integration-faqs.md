@@ -90,3 +90,16 @@ The workaround here is to use single replica delegates for these types of tasks 
 ### Can we skip manually creating the kubeconfig when using the native EKS deployment method in AWS, since we provide connection details in the AWS connector?
 
 Yes, we do not need to create the kubeconfig file manually. We just need to have this binary installed on the delegate ```aws-iam-authenticator```. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks)
+
+
+### Is it supported to run docker-compose from the docker in docker step?
+Yes, it's supported to run the docker-compose from the docker in docker step.
+
+### The container that execute the Run command step, it must have docker and docker CLI installed right in order for this to work?
+Yes, user need to install docker and docker CLI in order to work.
+
+### If the "Run test" steps fails the Post-Command script will run or not?
+No, the Post-Command script will only run if the "Run test" step pass.
+
+### Is there a way to use the newer version of kaniko?
+Yes, The user can update the kaniko image as suggested in this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/).
