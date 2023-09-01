@@ -67,7 +67,7 @@ This release does not include any early access features.
   
   This issue has been resolved. Now, when you enter a value in the Search field, CET searches the Description and the Location columns in the Events List for matching values.
   
-- New events were not appearing in the events list. Fix: This issue has been resolved. (CET-1632)
+- New events did not appear in the events list. (CET-1632)
   
   Now, the Events List displays all events.
 
