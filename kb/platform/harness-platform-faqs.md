@@ -500,3 +500,11 @@ Yes, delegate upgrader job can be set to point to a custom private registry, ref
 ### Can we set `SCM_SKIP_SSL = true` while working on docker delegate?
 
 Yes, we can add it when running the docker delegate with -e option, refer to [Documentation](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#scm-request-failed-with-unknown).
+
+### When we try to open a git enabled pipeline, why the branch dropdown doesnt display all the branches? 
+
+This behavior is expected when there are many branches in the repo due to pagination. To select branches that are not being listed, try entering the full branch name manually. This should allow you to open the pipeline from that branch
+
+### Howmany branches will be listed in branch dropdown UI when we try to open a git enabled pipeline?
+
+We typically list 20 to 30 branches, depending on the git provider as fetching all branches would be time-consuming.
