@@ -891,3 +891,100 @@ Yes,Harness NG uses REST APIs not graphql, this means that we need to review the
 ### Is there to check the pipeline was ever run in last two years?
 
 As per the current design, the execution history is available up to the past 6 months only.
+
+### How do I form a OPA Policy to identify pipeline source ?
+
+In pipeline YAML, we dont have pipeline source identifer but the remote pipelines will have githubConfig section, which can be used to form any required policy.
+
+### How do I check what YAML is checked against the OPA policies?
+
+The actual YAML that is passed to the OPA engine can be viewd by following these steps - 
+Create any policy, and apply it on the pipeline.
+Go to evaluation under the policy menu
+Click on the required pipeline and open the policy, you can see the actual YAML under the "Input" window.
+
+### How do I preserve my Manual approval step msg format in email body?
+
+Emails are rendered in HTML, so different HTML tags can be added to approval steps message and these tag will be resolved as per HTML defination and same will be vivsible in email's body
+
+### How can we assign terraform output (e.g. VPC CIDR) to harness Pipeline or stage variable?
+
+We have implemented a feature for capturing the the output of the Apply step.
+You can use something like this to copy the json output in a file - 
+```echo "<+pipeline.stages.EC2_deploy.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>" > /opt/harness-delegate/aaabbb.txt```
+
+Doc for reference - https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/#encrypt-the-terraform-apply-json-outputs
+
+
+### How do I filter policy evaluation by status?
+Under the evaluations section of policies we have a dropdown to filter based on status of policy evaluations. Currently we only support failed and sucess status not warned/warning
+
+### How do I created a OPA policy to enforce environment type?
+The infra details are passed as stage specs.
+For example, to access the environment type, the path would be - input.pipeline.stages[0].stage.spec.infrastructure.environment.type
+You will have to loop across all the stages to check its infra spec.
+
+### How do I access one pipeline variables from another pipeline ?
+
+Directly, it may not be possible. 
+ 
+As a workaround, A project or org or account level variable can be created and A shell script can be added in the P1 pipeline after the deployment which can update this variable with the deployment stage status i.e success or failure then the P2 pipeline can access this variable and perform the task based on its value.
+ 
+The shell script will use this API to update the value of the variable - https://apidocs.harness.io/tag/Variables#operation/updateVariable
+
+### What happens when the CPU and memory usage of a Delegate exceeds a certain threshold with the DYNAMIC_REQUEST_HANDLING flag set to true?
+
+When CPU and memory usage exceed a specified threshold (or the default value of 70% if not specified) with the DYNAMIC_REQUEST_HANDLING flag set to true, the Delegate will reject tasks and will not attempt to acquire any new tasks. Instead, it will wait until resource usage decreases.
+
+### Will the Delegate crash or shut down if it rejects tasks due to resource usage exceeding the threshold?
+
+No, the Delegate will not crash or shut down when it rejects tasks due to high resource usage. It will remain operational but will not attempt to acquire any new tasks until resource levels decrease.
+
+### How does the Delegate handle task acquisition when it's busy due to resource constraints?
+
+Think of the Delegate's behavior as a queue. If the Delegate is busy and cannot acquire tasks due to resource constraints, other eligible Delegates will be given the opportunity to acquire those tasks.
+
+### What happens if there are no other eligible Delegates available to acquire tasks when the current Delegate is busy?
+
+If there are no other eligible Delegates available to acquire tasks when the current Delegate is busy, the pipeline will remain in a running state, waiting for a Delegate to become less busy. However, if no Delegate becomes less busy during a specified timeout period, the pipeline may fail.
+
+### Is it possible to specify a custom threshold for rejecting tasks based on resource usage?
+
+Yes, you can choose to specify a custom threshold for rejecting tasks based on CPU and memory usage. This threshold is controlled by the DELEGATE_RESOURCE_THRESHOLD configuration. If you don't specify a threshold, the default value of 70% will be used.
+
+### How can I pass a value from one pipeline to another in a chained pipeline setup?
+
+You can pass a value from one pipeline to another by using output variables from the first pipeline and setting them as input variables in the second pipeline.
+
+### How do I access the value of an output variable from one child pipeline in another child pipeline within a chained pipeline?
+
+To access the value of an output variable from one child pipeline in another child pipeline within a chained pipeline, you need to define the output variable in the first pipeline and set it as an input variable in the second pipeline.
+
+### Can you provide an example of how to use output variables from one child pipeline as input variables in another child pipeline within a chained pipeline?
+
+Sure, in the first child pipeline, you can define an output variable like "image_id" and set its value to something like "<+pipeline.sequenceID>". In the second child pipeline, you can then set an input variable with the same name, "image_id," and it will automatically receive the value passed from the first child pipeline.
+
+### What is the benefit of passing values between child pipelines in a chained pipeline configuration?
+
+Passing values between child pipelines allows you to create dynamic and interconnected workflows. It enables you to reuse and share data and results between different stages of your deployment or automation process, enhancing flexibility and efficiency in your pipeline execution.
+
+### Can you provide step-by-step instructions on how to set email as a notification preference for a user group?
+
+Sure, to set email as a notification preference for a user group, go to the user group settings, locate the notification preferences section, select "email," and then save your changes. This will enable notifications to be sent to the members of that group via email.
+
+### What is the cause of the "OAUTH access restrictions" error when moving a pipeline to Git in Harness?
+
+The "OAUTH access restrictions" error occurs when attempting to move a pipeline to Git if OAuth access is enabled for the Git experience in Harness.
+
+### What is PIE_GITX_OAUTH, and how does it relate to OAuth with Git in Harness?
+
+PIE_GITX_OAUTH is a feature that enables OAuth integration with Git in Harness. When it's enabled, OAuth credentials are used for interactions with Git repositories.
+
+### Can I switch between OAuth and connector credentials for Git operations in Harness?
+
+Yes to same some extend, you can switch between OAuth and connector credentials. If OAuth is set and you wish to use connector credentials, you can delete the OAuth configuration, and Harness will prompt you to use the connector's credentials while performing git actions.
+For more info check - https://developer.harness.io/docs/platform/git-experience/oauth-integration/
+
+### How to pass variables to Rego policy language
+
+The OPA engine is designed to enforce policies based on data and rules that are predefined and provided as policies. It does not support taking dynamic input/variable values for policy evaluation during evaluations because policies are typically intended to be static and consistent. You can add a policy step as a workaround to work with variables during executions.
