@@ -12,7 +12,7 @@ You can store files in the following locations.
 
 ### Harness file store
 
-All platform [integrations](/docs/continuous-delivery/cd-integrations) (Kubernetes, etc.) support config files stored in the [Harness file store]().
+All platform [integrations](/docs/continuous-delivery/cd-integrations) (Kubernetes, etc.) support config files stored in the [Harness file store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
 ### Git providers
 

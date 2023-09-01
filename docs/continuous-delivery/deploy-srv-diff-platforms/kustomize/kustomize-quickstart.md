@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kubernetes deployments. You can use overlays, multibase, plugins, sealed secrets, etc, just as you would in any native kustomization.
 
-This Kustomize overview will describe how to deploy multiple variants of a simple public Hello World server using a [rolling update strategy](../kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment) in Harness.
+This Kustomize overview describes how to deploy multiple variants of a simple public Hello World server using a [rolling update strategy](../kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment) in Harness.
 
 This topic summarizes how to:
 
@@ -41,7 +41,7 @@ Pipelines are collections of stages. For this topic, we'll create a new pipeline
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness project, create a project for your new CD pipeline. Ensure that you add the **Continuous Delivery** module to the project. See [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness project, create a project for your new CD pipeline. Ensure that you add the **Continuous Delivery** module to the project. For more information, go to [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
 
 :::
 
