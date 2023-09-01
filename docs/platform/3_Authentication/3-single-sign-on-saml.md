@@ -320,11 +320,11 @@ The following image shows the basic exchange of information between Harness and 
 
 ### Users in over 150 groups
 
-When users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
+When a user has many group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
 
 If a user is a member of a larger number of groups, the groups are omitted and a link to the Graph endpoint to obtain group information is included instead.
 
-To invoke the API, Harness will need **Client ID** and **Client Secret** for your registered app.
+To invoke the API, Harness requires **Client ID** and **Client Secret** for your registered app.
 
 To get this information, do the following:
 
@@ -332,7 +332,7 @@ To get this information, do the following:
 2. Click on your app. Copy the Application (client) ID and paste it in **Client ID** in your Harness account.
 3. In your Azure account, go to **App registrations**. Click **Certificates and Secrets**.
 4. Click New Client Secret.
-5. Add a description and click Add.
+5. Add a description and click **Add**.
 6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](../Secrets/2-add-use-text-secrets.md).
 7. Select the above secret reference in the Client Secret field in your Harness account.
 

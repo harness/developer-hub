@@ -265,7 +265,7 @@ Make sure the email address used in Harness matches with the email address in th
 
 #### Users in over 150 groups
 
-When users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
+When a user has many group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
 
 If a user is a member of a larger number of groups, the groups are omitted and a link to the Graph endpoint to obtain group information is included instead.
 
@@ -277,7 +277,7 @@ To get this information, do the following:
 2. Click on your app. Copy the Application (client) ID and paste it in **Client ID** in your Harness account.
 3. In your Azure account, go to **App registrations**. Click **Certificates and Secrets**.
 4. Click New Client Secret.
-5. Add a description and click Add.
+5. Add a description and click **Add**.
 6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](/docs/first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets).
 7. Select the above secret reference in the Client Secret field in your Harness account.
 
@@ -494,9 +494,9 @@ To get this information, perform the following steps:
 
 Harness supports SAML integration with Google G Suite to enable your employees to use their Google account credentials to sign into the Harness platform.
 
-Google G Suite supports authentication, but not authorization.Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to [SAML SSO with Harness Overview](#saml_sso_with_harness_overview).For information about G Suite and SAML, go to [Service provider SSO set up](https://support.google.com/a/answer/6349809?hl=en&ref_topic=6348126) from Google.
+Google G Suite supports authentication, but not authorization. Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to [SAML SSO with Harness Overview](#saml_sso_with_harness_overview).For information about G Suite and SAML, go to [Service provider SSO set up](https://support.google.com/a/answer/6349809?hl=en&ref_topic=6348126) from Google.
 
-To set up SAML with Google, you must be a G Suite administrator. To integrate G Suite SAML with Harness, your Harness account must be a member of the Account Administrator group. For more information, go to [Users and Permissions](users-and-permissions.md).First, we will set up Harness as a SSO SAML app with Google G Suite, and then we will configure Harness to use Google G Suite for SSO.
+To set up SAML with Google, you must be a G Suite administrator. To integrate G Suite SAML with Harness, your Harness account must be a member of the Account Administrator group. For more information, go to [Users and Permissions](users-and-permissions.md). First, we will set up Harness as a SSO SAML app with Google G Suite. Then we will configure Harness to use Google G Suite for SSO.
 
 If you become locked out of Harness because of a SSO issue, you must contact Harness to have the SSO Provider disabled.
 
