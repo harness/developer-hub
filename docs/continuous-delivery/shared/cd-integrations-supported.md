@@ -520,7 +520,10 @@ GitOps supports the following:
 - GnuPG Keys:
   - GnuPG Public Key Data (ASCII-armored).
 
-* Namespaced agents are not yet supported in self hosted environments.
+:::info note
+Namespaced agents are not yet supported in self-hosted environments.
+
+:::
   
 </details>
 
