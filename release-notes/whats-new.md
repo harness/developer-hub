@@ -19,6 +19,7 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
+
 ## Latest - August 30, 2023
 
 ### Security Testing Orchestration, version 1.67.1
@@ -51,6 +52,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   For more information, go to [Analyze AWS costs by using perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws/).
 
 ## August 22, 2023
+
+### Continuous Error Tracking, Version ET-Service 5.25.9 and ET-Collector 5.25.3
+
+- Various dependencies were upgraded to prevent security issues. (CET-1571)
+
+- Starting with this release, the default time period on the Events Summary page has been adjusted to one hour. (CET-1576)
 
 ### Harness Platform, version 80307
 
