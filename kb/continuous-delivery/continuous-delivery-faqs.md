@@ -849,6 +849,13 @@ Yes, you can control access and permissions for the Harness GitOps Agent. It com
 ### Can I use the Harness GitOps Agent with different Kubernetes distributions?
 Yes, the Harness GitOps Agent is designed to work with various Kubernetes distributions, including managed Kubernetes services like Amazon EKS, Google Kubernetes Engine (GKE), and Azure Kubernetes Service (AKS), as well as self-hosted Kubernetes clusters.
 
+### Getting an error while evaluating expression/ Expression evaluation fails
+The concatenation in the expression /tmp/spe/<+pipeline.sequenceId> is not working because a part of expression <+pipeline.sequenceId> is integer so the concatenation with /tmp/spec/ is throwing error because for concat, both the values should be string only.
+
+So we can invoke the toString() on the integer value then our expression should work. So the final expression would be /tmp/spe/<+pipeline.sequenceId.toString()>
+
+Also please see the Feature Flag: PIE_EXPRESSION_CONCATENATION
+
 ### Can I use the Service Propogation Feature to deploy dev and prod pipelines without changing critical parameters?
 
 Yes, the Service Propogation allows you to provide fixed critical parameters. Please refer more on this in the following [Documentation 1](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services/) and [Documentation 2](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/overrides-v2/).
