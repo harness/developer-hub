@@ -154,7 +154,7 @@ The Delegate decrypts the encrypted plan and applies it using the `terraform ap
 
 #### Limitations
 
-The Terraform plan size must not exceed the secret size limit for secrets in your default Secret Manager. For example, the AWS Secrets Manager has a limitation of 64KB. Other supported Secrets Managers support larger file sizes.
+The Terraform plan size must not exceed the secret size limit for secrets in your default Harness secret manager. For example, the AWS secrets manager has a limitation of 64KB. Other supported secrets managers support larger file sizes, typically, 256KB.
 
 ### Configuration File Repository
 
