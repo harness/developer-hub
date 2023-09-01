@@ -35,11 +35,11 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 <StoSettingScanMode />
 <StoSettingScanModeIngest />
 
-<!-- TBD: Confirm w/RP that this Orchestrated mode is supported -->
+<!-- TBD: Confirm w/RP that this Orchestrated mode is supported 
 
 <StoSettingScanModeOrch /> 
 
-
+-->
 <!-- ============================================================================= -->
 <a name="scan-config"></a>
 
@@ -284,7 +284,7 @@ pipeline:
 
 ```
 
-<!-- TBD: Confirm w/RP that this Orchestrated mode is supported -->
+<!-- TBD: Confirm w/RP that this Orchestrated mode is supported 
 
 ## Gitleaks orchestration pipeline example
 
@@ -351,4 +351,4 @@ pipeline:
   identifier: gitleaks_docs_example_ORCHESTRATION
   name: gitleaks docs example - ORCHESTRATION
 ```
-
+-->
