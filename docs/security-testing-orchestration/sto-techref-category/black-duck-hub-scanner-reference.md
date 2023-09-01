@@ -6,6 +6,8 @@ sidebar_position: 60
 
 
 You can scan your container images using Black Duck Hub, a comprehensive and versatile open-source scanner. 
+- For code repositories, this integration uses the SIGNATURE_SCAN detector by default.
+- For container images, this integration uses the DOCKER, DETECTOR, and SIGNATURE_SCAN detectors by default. 
 
 ## Before you begin
 
