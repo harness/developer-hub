@@ -1,10 +1,20 @@
 ---
-title: Add Approval Step to Infrastrcture stage
-description: Learn how to use Approval Step, to review resources changes before applyting them
+title: Add Approval Step to Infrastructure stage
+description: Learn how to use the Approval Step to review resource changes before applying them
 sidebar_position: 40
 ---
 
-Once you have created the workspace and performed an update, you should see how it helps you manage its encapsulated resources. 
+It is likely that you'd be interested in seeing the result and impact of the Terraform plan before applying it against the resources. In order to do that, you can add an Approval step to you flow. 
+The Approval step will present the following information:
+1. The Resources that were added
+2. The Resources that were deleted
+3. The Resources that were changed
+4. Cost estimation [coming soon]
+5. OPA rules that were evaluated so far in the flow [coming soon]
+
+Once you've reviewed the plan and are confident in the proposed changes, you can approve it. Approving the plan acknowledges that you understand the modifications that will be made to your infrastructure.
+
+
 
 1. Navigate to the workspace you created, and then select the **Resource** tab. You can see the following details:
 
@@ -19,3 +29,7 @@ Once you have created the workspace and performed an update, you should see how 
     ![State](./static/state.png)
 
 3. Select the **Execution History** tab, where you can see the execution details of the pipeline and the status of the provision.
+
+
+Once you've reviewed the plan and are confident in the proposed changes, you can approve it. Approving the plan acknowledges that you understand the modifications that will be made to your infrastructure.
+
