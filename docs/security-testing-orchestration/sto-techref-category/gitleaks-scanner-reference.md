@@ -200,7 +200,7 @@ Here's an example of a configured Gitleaks step.
 
 ## Gitleaks ingestion pipeline example
 
-The following pipeline shows and end-to-end ingestion workflow. The pipeline consist of a Build stage with two steps:
+The following pipeline shows an end-to-end ingestion workflow. The pipeline consists of a Build stage with two steps:
 
 1. A Run step that sends a `gitleaks detect` command to the local Gitleaks container to scan the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) specified for the pipeline. This command specifies the output file for the scan results: `/shared/customer_artifacts/sarif_simple.sarif`. 
 
