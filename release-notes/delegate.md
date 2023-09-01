@@ -28,11 +28,48 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80307, Harness Delegate version 80308
+## Latest: Harness version 805xx, Harness Delegate version 805xx
+
+Harness NextGen release 805xx includes the following changes for the Harness Delegate.
+
+### New features and enhancements
+
+- If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
+
+Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
+
+- The OWASP Java HTML Sanitzer version is upgraded to 20220608.1. (PL-40807)
+
+- The Mozilla Rhino library has been upgraded from version 1.7R4 to 1.7.14. (PL-40808)
+
+- The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
+
+- Earlier, Harness had an N-3 support policy for delegates. (PL-39452)
+
+Now, the delegate expiration is calculated using the version difference between Harness Manager and the delegate. If the delegate and Harness Manager are on the same version, the delegate expiration is 24 weeks.
+
+### Early access features
+
+This release does not include any new early access features.
+
+### Fixed issues
+
+- Fixed an issue where the `ACCOUNT_SECRET` environment variable was overriding the `DELEGATE_TOKEN` value in the delegate's Docker container for delegates with an immutable image type (image tag `yy.mm.xxxxx`). (PL-40728)
+
+### Hotfixes
+
+The current version does not include a hotfix release.
+
+## Previous releases
+
+<details>
+<summary>Expand this section to view changes to previous releases</summary>
+
+#### Latest: Harness version 80307, Harness Delegate version 80308
 
 Harness NextGen release 80307 includes the following changes for the Harness Delegate.
 
-### New features and enhancements
+##### New features and enhancements
 
 - If you use the App Role authentication method in the Hashicorp Vault connector, you can choose to cache the vault token. The token is cached on the Harness Delegate for a time duration equal to the TTL of the vault token, with 1% leeway. 
 
@@ -44,7 +81,7 @@ Harness NextGen release 80307 includes the following changes for the Harness Del
 
    Now, monitored services can be enabled only from the user interface (through toggle buttons) and the enable API. Monitored services will always be disabled when created and during subsequent updates to them.
 
-### Early access features
+##### Early access features
 
 **GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
 
@@ -52,7 +89,7 @@ This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact
 
 With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings), and you can use GitHub connectors with GitHub App authentication in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
 
-### Fixed issues
+##### Fixed issues
 
 - Fixed an issue where Azure webhook triggers did not work as expected because the delegate could not parse repository URLs in the format `https://{ORG}@dev.azure.com/{ORG}/{PROJECT}/_git/{REPO}`. With this fix, the delegate can parse these URLs and Azure webhook triggers work as expected. (CDS-59023)
 
@@ -82,30 +119,25 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
    This issue is fixed. The `publishedDelegateVersion` API now requires only view permission.
 
-### Hotfixes
+##### Hotfixes
 
-#### Version 80311
+##### Version 80311
 
 - In some scenarios for Amazon ECS blue/green deployments, the green application didn’t roll back consistently because the new service continued to run tasks in the `live-target-group`. To resolve this issue, Harness no longer fetches the count of running services in rollback tasks before rolling back the green service. The green service now rolls back consistently. (CDS-76795, ZD-49005)
 
    This fix is behind the feature flag `CDS_ECS_BG_GREEN_SERVICE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the fix.
 
-#### Version 80310
+##### Version 80310
 
 - Due to intermittent issues with the cf CLI, the Tanzu Application Services (TAS) Rolling deployment step failed to create the application. (CDS-75250)
 
   Now, before performing a rolling deployment, the TAS Rolling deployment step first verifies that the application exists. If the application does not exist, it deploys the application without using the rolling deployment strategy. If the application exists, it performs a rolling upgrade. 
 
-#### Version 80308
+##### Version 80308
 
 - In certain scenarios for Amazon ECS blue/green deployments, the green application was not rolling back. We have added functionality to handle this scenario. We now consistently roll back the green service in Amazon ECS blue/green deployments. (CDS-76795, ZD-49005)
 
    This fix is behind the feature flag `CDS_ECS_BG_GREEN_SERVICE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the fix.
-
-## Previous releases
-
-<details>
-<summary>Expand this section to view changes to previous releases</summary>
 
 #### August 4, 2023, Harness version 80120, Harness Delegate version 80104
 
