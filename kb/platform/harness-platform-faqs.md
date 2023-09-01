@@ -500,3 +500,13 @@ Yes, delegate upgrader job can be set to point to a custom private registry, ref
 ### Can we set `SCM_SKIP_SSL = true` while working on docker delegate?
 
 Yes, we can add it when running the docker delegate with -e option, refer to [Documentation](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#scm-request-failed-with-unknown).
+
+
+### Will user can create one more project under the project ?
+As per the current design you can not create project under the project. The project is the whole separate entity which can't be created inside another project.
+
+### How to customized build pipeline. Ex: Create a script to clone the repo from TFS?
+User can run a script in a run step of a build pipeline as detailed in this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) and you should be able to clone the repo.
+
+### How the active service count will show in License subscription?
+We show the service usage account for the last 30 days.
