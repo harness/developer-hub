@@ -5,7 +5,7 @@ sidebar_position: 90
 ---
 
 You can scan your repositories using Checkmarx. Harness STO supports the following workflows:
-* Ingestion workflows for all Checkmarx One services (including SAST and SCA) that can publish scan results in SARIF format.
+* Ingestion workflows for all Checkmarx One services (including SAST and SCA) that can publish scan results in SARIF format. For more information, go to [Ingest SARIF results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
 * Orchestration, Extraction, and Ingestion workflows for Checkmarx SAST and Checkmarx SCA scans.
 
 ## Before you begin

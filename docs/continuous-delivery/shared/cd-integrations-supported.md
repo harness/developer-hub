@@ -520,7 +520,10 @@ GitOps supports the following:
   - SSH Known Host Entry.
 - GnuPG Keys:
   - GnuPG Public Key Data (ASCII-armored).
-
+- **Limitations:**
+  - Self-hosted environments
+    - Agents installed in custom namespaces are not yet supported.
+  
 </details>
 
 <details>
