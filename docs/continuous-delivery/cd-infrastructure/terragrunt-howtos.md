@@ -24,7 +24,7 @@ Currently, the dynamic provisioning documented in this topic is behind the featu
 
 :::
 
-Harness can provision any resource that is supported by Terragrunt and the related Terraform provider or plugin.
+Harness can provision any resource that is supported by Terragrunt and the related Terraform Provider or plugin.
 
 If you want to use Terraform without Terragrunt, Harness supports that, too. For more information, go to [Terraform how-tos](./terraform-infra/terraform-how-tos).
 

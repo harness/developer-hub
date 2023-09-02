@@ -1634,7 +1634,7 @@ Any new Jira connectors that you create must include the new `auth` object, and 
 
 The new fields override the previously used `username` and `passwordRef` authentication fields. The older fields are now deprecated.
  
-These changes are backward incompatible. Therefore, you must also update the Terraform provider for creating a Jira connector to the latest version (version 0.14.12) so that these new fields are provided. You also need to provide these new fields in API calls that create or update a Jira connector.
+These changes are backward incompatible. Therefore, you must also update the Terraform Provider for creating a Jira connector to the latest version (version 0.14.12) so that these new fields are provided. You also need to provide these new fields in API calls that create or update a Jira connector.
 
 ##### Harness Platform
 
