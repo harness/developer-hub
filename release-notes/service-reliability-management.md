@@ -277,9 +277,9 @@ This release does not include any early access features.
 
     This issue has been resolved, and error budget burn rate notifications are now being sent for composite SLOs.
 
-- Encountering an error when configuring monitored services using the Harness Terraform provider. (SRM-14684)  
+- Encountering an error when configuring monitored services using the Harness Terraform Provider. (SRM-14684)  
   
-  The Harness Terraform provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
+  The Harness Terraform Provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
 
 - On the Composite SLO Details page, the environment links under the monitored services were broken. (SRM-14645)  
   
