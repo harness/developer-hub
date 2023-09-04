@@ -103,3 +103,7 @@ No, the Post-Command script will only run if the "Run test" step pass.
 
 ### Is there a way to use the newer version of kaniko?
 Yes, The user can update the kaniko image as suggested in this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/).
+
+### Using <+codebase.gitUser> results in "None" when using Python as Shell for a Run step
+
+The problem here is that none of the 'codebase' variables are being populated when push triggers fires. The solution is to populate the 'codebase' variables to clone the codebase. 
