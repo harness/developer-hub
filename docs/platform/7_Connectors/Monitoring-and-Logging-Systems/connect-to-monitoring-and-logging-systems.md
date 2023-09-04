@@ -321,8 +321,8 @@ You must use HTTPS to establishing connections with Dynatrace.
       3. Enter a name for your token.
       4. Be sure to provide a meaningful name for each token you generate. Proper naming helps you efficiently manage your tokens and delete them when they're no longer needed.
       5. Select the following scopes: 
-      - **Read metrics**: Required to actually fetch the data for the specified dynatrace service for data collection for performing verification.
-      - **Read entities**: Required to get the list of dynatrace services and metrics list available for the specified service.
+         - **Read metrics**: This is needed to fetch data from the Dynatrace service for collecting information to perform verification.
+         - **Read entities**: This is necessary to obtain the list of Dynatrace services and the available metrics for the specified service.
       6. Select **Generate token**.
       7. Copy the generated token to the clipboard. Store the token in a password manager for future use. You can only access your token once upon creation. You can't reveal it afterward.
 
