@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-08-23T10:00
+date: 2023-09-04T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
