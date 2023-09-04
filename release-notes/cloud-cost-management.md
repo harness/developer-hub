@@ -20,21 +20,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: version 80600
+## Latest: version 80606
 
 ### New features and enhancements
 
-* After editing an existing cost category, previously, when attempting to create a new one, the drawer displayed the details for the last accessed cost category. (CCM-13973)
-
-  This issue is fixed. The new cost category builder drawer now opens in the expected empty state, and the edit drawer will correctly display the details of the selected cost category. Even after editing a cost category, if you open the new cost category drawer, it correctly shows the empty state as intended.
-
-* Previously, users were unable to select **This Quarter** in the **Overview** time range filter. Instead, the application consistently defaulted to **This Month** upon selection. (CCM-13505)
-
 * Display refunds or discounts on the graph within perspectives. (CCM-13443)
 
-  Until now there was no provision for showing any refunds or discounts on the graph in perspectives. So for any negative value, the data entry in the chart seems to be empty. This ticket enhances the experience by showing the negative values combined in a single bar chart (in red color). A toggle button appears under the General Preferences section, toggling which user can see any negative costs that were previously not being shown.
+  Previously, our graph in perspectives didn't display refunds or discounts, resulting in empty spots when values were negative. This enhancement improves this by aggregating negative values into a red-colored bar chart. You can now toggle a button in **General Preferences** to view these previously hidden negative costs.
 
-  This issue has been fixed.
+    <docimage path={require('./static/aws-preferences-ccm13443.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
 
 ### Early access features
 
@@ -42,6 +38,18 @@ This release does not include any early access features.
 
 ### Fixed issues
 
+* After editing an existing cost category, previously, when attempting to create a new one, the drawer displayed the details for the last accessed cost category. (CCM-13973)
+
+  This issue is fixed. The new cost category builder drawer now opens in the expected empty state, and the edit drawer will correctly display the details of the selected cost category. Even after editing a cost category, if you open the new cost category drawer, it correctly shows the empty state as intended.
+
+* Previously, users were unable to select **This Quarter** in the **Overview** time range filter. Instead, the application defaulted to **This Month** upon selection. (CCM-13505)
+
+  This issue has been fixed.
+
+* An issue with onboarding an existing AutoStopping rule on Azure App Gateway version 1 (CCM-13903)
+
+   This issue is resolved. Now the health check configurations of the AutoStopping rule are being used to detect the current backend settings associated with the rule.
+  
 
 
 ## Previous releases
