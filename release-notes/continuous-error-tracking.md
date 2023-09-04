@@ -22,42 +22,54 @@ Review the notes below for details about recent changes to Continuous Error Trac
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 15, 2023, versions ET-Service 5.25.7 and ET-Collector 5.25.3
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+## Latest: Version ET-Service 5.25.9 and ET-Collector 5.25.3
 
 
- Various dependencies were upgraded to prevent security issues. (CET-1571)
+### New features and enhancements
+
+- Various dependencies were upgraded to prevent security issues. (CET-1571)
+
+- The default time period on the Events Summary page has been adjusted to one hour. (CET-1576)
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-
-
+### Early access features
 This release does not include any early access features.
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues
 
-
-- The Continuous Error Tracking Hit processing encountered an Out of Memory (OOM) Heap crash while attempting to process specific large Class Data objects. (CET-1223)
+- When a monitored service was created with spaces or special characters in the name, the monitored service was not appearing in the list. (CET-1551)
   
-  This issue has been resolved by optimizing Hit processing, preventing OOM issues.
+  This issue has been resolved. Now, you can create monitored services with names containing spaces, hyphens (-), or underscores (_). However, if you attempt to use any other special characters, an error message will appear.
+
+- The Events Summary page was timing out when fetching data, especially for events marked as resolved. (CET-1569)
+  
+  This issue has been resolved. The Events Summary page now loads significantly faster.
+
+- Users were not receiving notifications when relevant events were generated. (CET-1585)
+
+  This issue has been resolved. Now, notifications are being sent when relevant events occur.
+
+- The ARC screen was unable to fetch source attach data. (CET-1685)
+  
+  This issue has been resolved. You can now view source attach data directly on the ARC screen.
+
+- The Events Summary page was not displaying the event status for new, resurfaced, and critical events. (CET-1686)
+  
+  This issue has been resolved. On the Events Summary page, you will now see the appropriate status indicators for new, resurfaced, and critical events.
 
 
+### Hotfixes
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
+#### Version ET-Service 5.25.10
+
+- The search functionality in the events list was not working. (CET-1618)
+  
+  This issue has been resolved. Now, when you enter a value in the Search field, CET searches the Description and the Location columns in the Events List for matching values.
+  
+- New events did not appear in the events list. (CET-1632)
+  
+  This issue has been resolved. Now, the Events List displays all events.
 
 
 ## Previous releases

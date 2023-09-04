@@ -1611,11 +1611,18 @@ You can use this variable in a [Shell script](/docs/continuous-delivery/x-platf
 
 `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`
 
-For example:
+Example: Get the pods in the default namespace
 
 
 ```
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n default
+```
+
+Example: Restart a deployment object in the Kubernetes Cluster
+
+```
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
+kubectl rollout restart deployment/mysql-deployment
 ```
 The `${HARNESS_KUBE_CONFIG_PATH}` expression can be used in scripts in Shell script steps. It cannot be used in other scripts such as a Terraform script.
 

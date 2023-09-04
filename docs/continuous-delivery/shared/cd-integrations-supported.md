@@ -59,6 +59,7 @@ import TabItem from '@theme/TabItem';
     - Kustomize:
       - Kustomize Patches are only supported in YAML, not JSON
       - Kustomize Containerized Plugins are not supported
+      - Kustomize manifests and patches do **not** support the [custom remote manifest](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) feature.
     - Harness managed resources:
       - Deployment
       - Secrets
@@ -519,7 +520,10 @@ GitOps supports the following:
   - SSH Known Host Entry.
 - GnuPG Keys:
   - GnuPG Public Key Data (ASCII-armored).
-
+- **Limitations:**
+  - Self-hosted environments
+    - Agents installed in custom namespaces are not yet supported.
+  
 </details>
 
 <details>

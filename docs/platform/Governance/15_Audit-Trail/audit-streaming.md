@@ -52,7 +52,9 @@ To add a streaming destination in Harness:
 
 1. Select **Amazon S3**.
 
-2. In **Select Connector**, select an existing AWS Cloud Provider connector or create a new one.
+2. In **Select Connector**, select an existing AWS Cloud Provider connector or create a new one. 
+
+   You must use the **Connect through a Harness Delegate** connectivity mode option when you set up your AWS Cloud Provider connector. Audit streaming does not support the **Connect through Harness Platform** connector option.
 
    Go to [Add an AWS connector](../../7_Connectors/Cloud-providers/add-aws-connector.md) for steps to create a new AWS Cloud Provider connector.
 
