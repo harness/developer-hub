@@ -13,11 +13,11 @@ import TabItem from '@theme/TabItem';
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **RBAC Support** |
 | --- | --- | --- | --- | --- | --- |
 |Perspectives | ✅  | ✅  | ✅  | ✅  | ✅ |
-|Cost Categories | ✅  | ✅  | ✅  | ✅ | |
+|Cost categories | ✅  | ✅  | ✅  | ✅ | |
 |BI dashboards |✅  |✅ | ✅ | ✅ | ✅ |
 |Anomaly detection  | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Currency Standardisation | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Inventory Management | Supported services and products: <ul><li>EC2</li><li> RDS</li><li>EBS</li></ul> | Supported services and products: <ul><li>Azure VM</li></ul>| Supported services and products: <ul><li>Instances</li><li> Disks</li></ul> | NA | Managed through Dashboards |
+|Currency standardization | ✅ | ✅ | ✅ | ✅ | ✅ |
+|Inventory management | Supported services and products: <ul><li>EC2</li><li> RDS</li><li>EBS</li></ul> | Supported services and products: <ul><li>Azure VM</li></ul>| Supported services and products: <ul><li>Instances</li><li> Disks</li></ul> | NA | Managed through Dashboards |
 
 <details>
 <summary>Perspectives</summary>
@@ -575,9 +575,29 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
   </TabItem>
 </Tabs>
 ```
-
-
 :::important note
 Harness does not currently support AWS China regions.
 :::
+
+## CCM on Harness Self-Managed Enterprise Edition (SMP)
+
+The following table provides the feature support matrix for CCM on Harness SMP. For more information, go to [Self-Managed Enterprise Edition](../../self-managed-enterprise-edition.md) and [CCM on SMP](../2-getting-started-ccm/ccm-smp/1-smp-ccm-roadmap.md).
+  
+| **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **Connected environment** | **Air-gapped environment** |
+| --- | --- | --- | --- | --- | --- | --- |
+|Perspectives | ✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Cost categories | ✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Budgets | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ |
+|BI dashboards |✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Anomaly detection  | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Currency standardization | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+|Recommendations | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
+|AutoStopping rules | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+|Asset governance | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+
+:::note
+Perspective preferences are not supported on Harness SMP.
+:::
+
 For a comprehensive list of supported features in other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).
