@@ -49,6 +49,10 @@ This release does not include any early access features.
 * An issue with onboarding an existing AutoStopping rule on Azure App Gateway version 1 (CCM-13903)
 
    This issue is resolved. Now the health check configurations of the AutoStopping rule are being used to detect the current backend settings associated with the rule.
+
+* The screen went blank when deleting all characters in the AutoStopping Rule Name field while editing the rule. (CCM-13816)
+
+  This issue has been resolved.
   
 
 
