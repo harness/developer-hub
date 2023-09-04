@@ -26,7 +26,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Display refunds or discounts on the graph within perspectives. (CCM-13443)
 
-  Previously, our graph in perspectives didn't display refunds or discounts, resulting in empty spots when values were negative. This enhancement improves this by aggregating negative values into a red-colored bar chart. You can now toggle a button in **General Preferences** to view these previously hidden negative costs.
+  Previously, graphs in perspectives didn't display refunds or discounts, resulting in empty spots when values were negative. This enhancement improves this by aggregating negative values into a red-colored bar chart. You can now toggle a button in **General Preferences** to view these previously hidden negative costs.
 
     <docimage path={require('./static/aws-preferences-ccm13443.png')} width="60%" height="60%" title="Click to view full size image" />
 
