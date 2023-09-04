@@ -597,18 +597,20 @@ You will have to loop across all the stages to check its infra spec.
 
 #### How do I add annotations to the canary deployment
 
-Use apply step to create the canary ingress rule. We do support additional values.yaml override with apply step and this can be used for shifting the traffic, for example:
-Create ingress template/ingress-canary:
+Annotations can be added to canary deployment by following either of these methods:
 
-nginx.ingress.kubernetes.io/canary: true nginx.ingress.kubernetes.io/canary-by-header: always nginx.ingress.kubernetes.io/canary-by-header-value: x-checkout-canary nginx.ingress.kubernetes.io/canary-weight: {{.Values.weight}}
+1. Use apply step to create the canary ingress rule. We do support additional values.yaml override with apply step and this can be used for shifting the traffic, for example:
+   1. Create ingress template/ingress-canary:
+      ```
+      nginx.ingress.kubernetes.io/canary: true nginx.ingress.kubernetes.io/canary-by-header: always nginx.ingress.kubernetes.io/canary-by-header-value: x-checkout-canary nginx.ingress.kubernetes.io/canary-weight: {{.Values.weight}} ```
  
-Using apply step, apply templates/ingress-canary with values.yaml content:
-weight: 10
+   2. Using apply step, apply templates/ingress-canary with values.yaml content:
+      ```weight: 10```
  
-To progress, using apply step, apply template/ingress-canary with values.yaml content:
-weight: n
- 
-If weight is a constant value and having a loose ingress resource is not an issue then  declare both primary and canary ingress in the manifest that will be applied during both canary and primary deployment. Since there wouldn’t be any changes to the ingress rules itself then there shouldn’t be any effect if they are going to reapply canary ingress in the primary deployment.
+   3. To progress, using apply step, apply template/ingress-canary with values.yaml content:
+      ```weight: n```
+
+2. If weight is a constant value and having a loose ingress resource is not an issue then  declare both primary and canary ingress in the manifest that will be applied during both canary and primary deployment. Since there wouldn’t be any changes to the ingress rules itself then there shouldn’t be any effect if they are going to reapply canary ingress in the primary deployment.
 
 Our recommendation is to use the first option, anyway harness doesn’t track ingress rules so by using apply step you don’t lose anything.
 
@@ -837,7 +839,7 @@ We do not persist the variables and the variables are only accessible during the
 
 #### Can we access harness variable of one pipeline from another pipeline ?
 
-We can not access variabel from one pipeline execution in the other. We will either need to make a api call to get the detail and parse the response for the variable or else if the two pipelines are interdependent we can use the pipeline as chained pipeline stages and can have access to the variable of other pipeline while executing.
+One pipeline cannot access the vairables of other pipelines. Only values of variable created at project, account and org level can be accessed by pipelines. These values for these type of variables are fixed and cannot be changed by pipelines direcltly. These variable values can be updated via the UI or API.
 
 #### Can I use Helm charts with Harness GitOps?
 
