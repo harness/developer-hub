@@ -3080,12 +3080,12 @@ module.exports = {
     },
     // Created by bfisher for DOC-3432 on July 20, 2023
     {
-      from: "/docs/platform/Get-started/platform-concepts/view-account-info-and-subscribe-to-alerts",
-      to: "/docs/platform/Get-started/view-account-info-and-subscribe-to-alerts",
+      from: "/docs/platform/get-started/platform-concepts/view-account-info-and-subscribe-to-alerts",
+      to: "/docs/platform/get-started/view-account-info-and-subscribe-to-alerts",
     },
     {
-      from: "/docs/platform/Get-started/platform-concepts/platform-overview",
-      to: "/docs/platform/Get-started/platform-overview",
+      from: "/docs/platform/get-started/platform-concepts/platform-overview",
+      to: "/docs/platform/get-started/key-concepts",
     },
     // Created by bfisher for DOC-3458 on July 25, 2023
     {

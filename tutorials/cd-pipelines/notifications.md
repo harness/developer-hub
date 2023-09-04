@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Events Notifications
+title: Pipeline Notifications
 description: Tutorial to send notifiactions based on pipeline events.
 ---
 # Notifications 

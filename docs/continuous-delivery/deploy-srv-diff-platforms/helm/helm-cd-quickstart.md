@@ -10,7 +10,7 @@ This topic summarizes Helm support in Harness and provides links to Helm-related
 
 For a quick tutorial, go to [Deploy using Helm Chart](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/helm-chart).
 
-Learn [CD pipeline basics](/docs/continuous-delivery/get-started/cd-pipeline-basics) before you review Helm deployment basics below.
+Learn [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts) before you review Helm deployment basics below.
 
 <details>
 <summary>Visual summary</summary>
