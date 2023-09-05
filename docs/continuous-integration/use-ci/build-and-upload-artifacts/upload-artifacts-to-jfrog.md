@@ -40,6 +40,8 @@ Select the Harness Artifactory connector to use for this upload. The JFrog Accou
 
 This step supports Artifactory connectors that use either anonymous or username and password authentication.
 
+If the connector uses username and password authentication, the `PLUGIN_USERNAME` and `PLUGIN_PASSWORD` used by this step are derived from the selected Artifactory connector.
+
 ### Target and Source Path
 
 The **Target** is the target path in the JFrog Artifactory registry. This is a target repository name relative to the server URL in the connector. If `pom.xml` is not present, then the **Target** must be a full path to an artifacts folder, such as `groupId/artifactId/version`.
@@ -127,6 +129,14 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
 </Tabs>
 ```
 
-### Troubleshooting
+## Troubleshooting
+
+You might encounter these issues when using the **Upload Artifacts to JFrog** step.
+
+### Certificate signed by unknown authority
 
 If you get a `certificate signed by unknown authority` error, make sure the correct server certificates are uploaded to the correct container path. For example, the container path for Windows is `C:/Users/ContainerAdministrator/.jfrog/security/certs`.
+
+### mkdir permission denied when running as non-root
+
+With a Kubernetes cluster build infrastructure, the **Upload Artifacts to JFrog** step must run as root. If you set **Run as User** to anything other than `1000`, the step fails with `mkdir /.jfrog: permission denied`.
