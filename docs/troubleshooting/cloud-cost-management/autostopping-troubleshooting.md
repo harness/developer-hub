@@ -33,7 +33,7 @@ The AutoStopping Proxy contains the following three services:
 
 The AutoStopping Proxy logs are structured to offer a detailed view into potential networking and API issues for efficient troubleshooting. Within these logs, you will encounter error messages pertaining to network challenges, such as unreachable networks or security groups that are not open. Additionally, the logs indicate issues related to Harness APIs, specifically highlighting problems like invalid or expired API tokens. By reviewing these logs, you can swiftly identify and rectify any operational bottlenecks or issues.
 
-Logs for all the three services stated above are obtained by accessing the VM via SSH. You can access the VM by following these steps:
+Logs for all three services stated above are obtained by accessing the VM via SSH. You can access the VM by following these steps:
 
 Envoy
 
