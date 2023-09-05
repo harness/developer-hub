@@ -16,17 +16,17 @@ First, let's review secrets in Harness, and then look at how Harness sanitizes l
 
 You can create secrets in Harness as described in:
 
-* [Add and Reference Text Secrets](../2-add-use-text-secrets.md)
-* [Add and Reference File Secrets](../3-add-file-secrets.md)
-* [Add SSH Secrets](../4-add-use-ssh-secrets.md)
+* [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
+* [Add and Reference File Secrets](/docs/platform/secrets/add-file-secrets)
+* [Add SSH Secrets](/docs/platform/Secrets/4-add-use-ssh-secrets.md)
 
-For text and file secrets, the secrets are stored in the Secrets Manager. For steps to add a Secret Manager, see [Add a Secret Manager](./5-add-secrets-manager.md).
+For text and file secrets, the secrets are stored in the Secrets Manager. For steps to add a Secret Manager, see [Add a Secret Manager](/docs/platform/Secrets/Secrets-Management/5-add-secrets-manager.md).
 
 Once a secret is added, you can use other Harness entities instead of settings.
 
-You can reference an Encrypted Text secret created in the Org [scope](../../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope) using the secret identifier in the expression: `<+secrets.getValue("org.your_secret_Id")>`.
+You can reference an Encrypted Text secret created in the Org [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) using the secret identifier in the expression: `<+secrets.getValue("org.your_secret_Id")>`.
 
-You can reference a file secret created in the Org [scope](../../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope) using the expression `<+secrets.getValue(“org.file-secret-Id”)>`.
+You can reference a file secret created in the Org [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) using the expression `<+secrets.getValue(“org.file-secret-Id”)>`.
 
 At deployment runtime, the Harness Delegate uses the Secrets Manager to decrypt and read the secret only when it is needed.
 

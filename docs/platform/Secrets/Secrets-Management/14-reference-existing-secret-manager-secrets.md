@@ -15,16 +15,16 @@ Harness does not query the secret manager for existing secrets, but you can crea
 
 ### Before you begin
 
-* See [AWS KMS Secret Manager](./7-add-an-aws-kms-secrets-manager.md)
-* See [AWS Secrets Manager](./6-add-an-aws-secret-manager.md)
-* See [Azure Key Vault Secret Manager](../../Secrets/Secrets-Management/8-azure-key-vault.md)
-* See [HashiCorp Vault Secret Manager](./12-add-hashicorp-vault.md)
+* Go to [AWS KMS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
+* Go to [AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
+* Go to [Azure Key Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/8-azure-key-vault.md)
+* Go to [HashiCorp Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/12-add-hashicorp-vault.md)
 
 ### Option: Vault secrets
 
 You can create a Harness secret that refers to the existing Vault secret using a path and key, such as `/path/secret_key#my_key`.
 
-![](../static/reference-existing-secret-manager-secrets-60.png)
+![](../../Secrets/static/reference-existing-secret-manager-secrets-60.png)
 
 In the above example, `/path` is the pre-existing path, `secret_key` is the secret name, and `my_key` is the key used to lookup the secret value.
 
@@ -86,7 +86,7 @@ For a HashiCorp Vault connector at the Project scope, use the following expressi
 <+secrets.getValue("hashicorpvault://myVault/harness/testpath/example#key1")>
 ```
 
-:::note
+:::info note
 To dynamically reference secrets in HashiCorp Vault, make sure you use the expression in the following format:  
 `<+secrets.getValue()>`
 :::
@@ -96,13 +96,13 @@ To dynamically reference secrets in HashiCorp Vault, make sure you use the expre
 
 You can create a Harness secret that refers to an existing secret in AWS Secrets Manager using the name of the secret, and a prefix if needed. For example, `mySecret`.
 
-![](../static/reference-existing-secret-manager-secrets-61.png)
+![](../../Secrets/static/reference-existing-secret-manager-secrets-61.png)
 
 #### Referencing secret keys
 
 In AWS Secrets Manager, your secrets are specified as key-value pairs, using a JSON collection:
 
-![](../static/reference-existing-secret-manager-secrets-62.png)
+![](../../Secrets/static/reference-existing-secret-manager-secrets-62.png)
 
 To reference a specific key in your Harness secret, add the key name following the secret name, like `secret_name#key_name`. In the above example, the secret is named **example4docs**. To reference the **example1** key, you would enter `example4docs#example1`.
 
@@ -132,7 +132,7 @@ For an AWS secret manager connector at the Project scope, use the following expr
 ```
 <+secrets.getValue("awssecretsmanager://exampleAWS/example")>
 ```
-:::note
+:::info note
 To dynamically reference secrets in the AWS secret manager, make sure you use the expression in the following format:
 `<+secrets.getValue()`>
 :::
@@ -173,7 +173,7 @@ For an Azure Key Vault secret manager at the Project scope, use the following ex
 ```
 
 
-:::note
+:::info note
 To dynamically reference secrets in the Azure Key Vault, make sure you use the expression in the following format:
 `<+secrets.getValue()>`
 
@@ -218,11 +218,7 @@ To reference a specific version of a secret, use the following expression:
 <+secrets.getValue("gcpsecretsmanager://exampleGCP/example/<version_number>")>
 ```
 
-:::note
+:::info note
 To dynamically reference secrets in GCP secret manager, make sure you use the expression in the following format:
 `<+secrets.getValue()>`
 :::
-
-
-
-

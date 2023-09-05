@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-07-31T10:00
+date: 2023-08-23T10:00
 sidebar_position: 13
 ---
 ```mdx-code-block
@@ -25,10 +25,7 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 - The `log-service` created separate Redis streams and set the expiration of all keys. Harness temporarily does not support high availability configuration for the `log-service` until this issue is resolved. (CI-9000)
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### New features and enhancements
 
 This release includes the following Harness module and component versions.
 
@@ -45,6 +42,23 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | release-177 |
 | NG UI | 0.353.10 |
 | LE NG | 68004 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.8.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.0/sto_images.tgz" \
+  .
+```
 
 #### Self-Managed Enterprise Edition
 
@@ -163,10 +177,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
    This issue has been fixed. You can now input zero (0) in both the fields.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+### Early access features
 
 #### Continuous Delivery & GitOps
 
@@ -189,7 +200,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 #### Continuous Integration
 
 - **Remote debugging enhancements (CI-8135, CI-8048)**
-  * **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
+  * **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/troubleshoot-ci/debug-mode).
 
 #### Harness Delegate
 
@@ -198,10 +209,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
    This functionality is behind a feature flag, `DELEGATE_TASK_CAPACITY_CHECK`. When the feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues
 
 #### Self-Managed Enterprise Edition
 
@@ -552,10 +560,47 @@ You are missing the following permission: "View default settings" in Account sco
   
   This issue has been resolved. The selected metric pack option during monitored service creation will now be correctly reflected upon opening the monitored service.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
+### Patches
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.8.2](https://github.com/harness/helm-charts/releases/tag/harness-0.8.2) |
+| Air Gap Bundle | [0.8.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.2) |
+| NG Manager | 79821 |
+| CI Manager | 4903 |
+| Pipeline Service | 1.37.13 |
+| Platform Service | 79601 |
+| Access Control Service | 79400 |
+| Change Data Capture | 79819 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.353.10 |
+| LE NG | 68004 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
 ```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.8.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.2/sto_images.tgz" \
+  .
+```
+
+- Updated the UBI to 8.8 to address potential Go vulnerabilities. (CDS-75674)
+
+- Added a prefix for all log service created streams and support for backward compatibility with earlier streams. (CI-9000)
+
 
 ## Previous releases
 
@@ -581,6 +626,23 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | release-177 |
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.7.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.2/sto_images.tgz" \
+  .
+```
 
 #### What's new
 
@@ -617,6 +679,23 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.7.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.1/sto_images.tgz" \
+  .
+```
+
 #### What's new
 
 - Send emails to non-Harness users. (CDS-69561, CDS-58625, ZD-42496)
@@ -646,7 +725,6 @@ This release includes the following Harness module and component versions.
 | **Name** | **Version** |
 | :-- | :--: |
 | Helm Chart | [0.7.0](https://github.com/harness/helm-charts/releases/tag/harness-0.7.0) |
-| Air Gap Bundle | [0.7.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.0;tab=objects?prefix=&forceOnObjectsSortingFiltering=false) |
 | NG Manager | 79421 |
 | CI Manager | 3907 |
 | Pipeline Service | 1.33.8 |
@@ -656,6 +734,23 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | release-177 |
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.7.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.7.0/sto_images.tgz" \
+  .
+```
 
 #### What's new
 
@@ -708,13 +803,13 @@ This release includes the following Harness module and component versions.
   
   The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
   
-  * [AWS KMS](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
-  * [AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
-  * [Azure Key Vault](/docs/platform/Secrets/Secrets-Management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
-  * [Google KMS](/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
-  * [Google Cloud secret manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
-  * [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
-  * [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
+  * [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
+  * [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
+  * [Azure Key Vault](/docs/platform/secrets/secrets-management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
+  * [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
+  * [Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
+  * [Custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
+  * [HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
 
 - The option to **Auto-Reject previous deployments paused in this step on approval** is added to the Approval step. (CDS-58063)
   
@@ -782,7 +877,7 @@ This release includes the following Harness module and component versions.
 
 - **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. (CI-8135, CI-8048)
 
-   The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
+   The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/troubleshoot-ci/debug-mode).
 
 #### Continuous Delivery & GitOps
 
@@ -800,19 +895,16 @@ This release includes the following Harness module and component versions.
 
 #### Harness Delegate
 
-- New delegate metrics are available. This functionality is behind a feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. (PL-37908, PL-38538)
+- New delegate metrics are available. This functionality is behind a feature flag, `DYNAMIC_REQUEST_HANDLING`. (PL-37908, PL-38538)
 
    Harness captures delegate agent metrics for delegates shipped on immutable image types. The following new delegate agent metrics are available with the feature flag:
   
    | **Metric name** | **Description** |
    | :-- | :-- |
-   | `task_completed` | The number of tasks completed. |
-   | `task_failed` | The number of failed tasks. |
-   | `task_rejected` | The number of tasks rejected because of a high load on the delegate. |
-   | `delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
-   | `resource_consumption_above_threshold` | Delegate CPU/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
+   | `io_harness_custom_metric_task_rejected` | The number of tasks rejected because of a high load on the delegate. |
+   | `io_harness_custom_metric_resource_consumption_above_threshold` | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
 
-   Enable the feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST` to use the new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
+   Enable the feature flag, `DYNAMIC_REQUEST_HANDLING` to use the new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
 #### Fixed issues
 
@@ -1066,9 +1158,9 @@ This release includes the following Harness module and component versions.
 
   - This issue has been resolved. Now the missing data is treated according to user preference (GOOD, BAD, or IGNORE), contributes to error budget burn rate, and is included in notifications.
 
-- Encountering an error when configuring monitored services using the Harness Terraform provider. (SRM-14684)  
+- Encountering an error when configuring monitored services using the Harness Terraform Provider. (SRM-14684)  
   
-  The Harness Terraform provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
+  The Harness Terraform Provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
 
 - The ErrorBudgetReset API is incorrectly accepting Rolling type SLOs along with Calendar type SLOs. (SRM-14692)  
 
@@ -1219,7 +1311,7 @@ This release includes the following Harness module and component versions.
 
 - The **Manage Services** tab has been removed from the services dashboard page. (CDS-57974)
   
-  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/) apply to a single Services page only.
+  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](/docs/platform/role-based-access-control/add-manage-roles) apply to a single Services page only.
 
 - Git polling tasks for triggers are executed on the same delegate selector used in the Git connector. (CDS-58115)
   
@@ -1451,7 +1543,7 @@ This release includes the following Harness module and component versions.
 
 - Fixed a minor UI issue where selecting the **Commits** tab on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds) caused the navigation menu to expand. (CI-6274)
 
-- You can now successfully use [references to secrets in non-Harness Secret Managers](/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets) in CI pipelines. Previously, these references failed because CI handles secrets as environment variables and some characters in these types of secret references aren't supported for environment variables. Now, CI automatically replaces unsupported characters with supported ones so it can process these references as environment variables. (CI-7443, ZD-41124)
+- You can now successfully use [references to secrets in non-Harness Secret Managers](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets) in CI pipelines. Previously, these references failed because CI handles secrets as environment variables and some characters in these types of secret references aren't supported for environment variables. Now, CI automatically replaces unsupported characters with supported ones so it can process these references as environment variables. (CI-7443, ZD-41124)
 
 - Fixed an issue where looping strategies were not working for some steps. (CI-7499, ZD-41659)
 
@@ -1739,7 +1831,7 @@ This release includes the following Harness module and component versions.
 
 #### What's new
 
-- You can now use an external database with your installation. For more information, go to [Use an external database](/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database). (SMP-545)
+- You can now use an external database with your installation. For more information, go to [Use an external database](/tutorials/self-managed-enterprise-edition). (SMP-545)
 
 #### Fixed issues
 
@@ -1879,13 +1971,13 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 - You can now migrate from KOTS-based installations to Helm-based installations. (SMP-769)
 - Backup and restore for Helm-based installations is now supported using Velero. (SMP-767)
  
-  For more information, go to [Back up and restore](/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm).
+  For more information, go to [Back up and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm).
 - You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana. (SMP-766)
 
   For more information, go to [Monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem). 
 - Deployments load static files from the application server and no longer attempt to connect to static.harness.io. (SMP-851)
 #### Continuous Integration
-- When you [use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
+- When you [use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
 #### Continuous Delivery & GitOps
 - You can no longer delete an infrastructure used in a pipeline or template. (CDS-42182)
 
@@ -2665,7 +2757,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 - When creating Azure Key Vault and HashiCorp Vault connectors, selecting invalid delegate selectors displays an "UNKNOWN ERROR". (PL-30660)
 
   A code enhancement to display appropriate error message has fixed this issue. 
-- Recently added roles are not displayed in the manage role assignment settings. (PL-30560)
+- Recently added roles are not displayed in the manage role bindings settings. (PL-30560)
   
   A code enhancement has fixed this issue.
 - The UI does not display an error message when the referred connector in infra does not exist.(PL-30130)
@@ -2828,11 +2920,11 @@ This release includes the following Harness module and component versions.
 - The following role-assignments are removed for all the existing users across all the accounts:
   - Account Viewer - All Account Level Resources: This was a role-assignment within the account scope and has been removed for all the users. This does not apply in the following scenarios:
   - If an account has enabled the feature flag ACCOUNT_BASIC_ROLE_ONLY.
-  - If an account does not have the Account Viewer - All Account Level Resources role-assignment for the default user group All Account Users.
+  - If an account does not have the Account Viewer - All Account Level Resources role-assignment for the built-in user group All Account Users.
   - Organization Viewer - All Organization Level Resources: This was a role-assignment within the organization scope and has been removed for all the users.
   - Project Viewer - All Project Level Resources: This was a role-assignment within the project scope and has been removed for all the users.
   
-  For more information, go to [Default User Group](/docs/platform/User-Management/harness-default-user-groups). (PL-30916)
+  For more information, go to [Built-in user groups](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups). (PL-30916)
 
 - In the SCIM API, the Groups endpoint returns all the user groups associated with an account. The ResourceTypes endpoint also returns incorrect information. A code enhancement has fixed this issue. The Groups endpoint returns only externally managed user groups and the ResourceTypes endpoint returns details as per the schema. (PL-30862)
 
@@ -3921,6 +4013,10 @@ This release introduces the following fixes.
 
 This release introduces the following features and enhancements.
 
+- Added ingress support for Kubernetes versions 1.22 and higher for KOTS installations. (SMP-670)
+
+   ![](./static/kots-k8s-1.22.png)
+
 - You can now optionally configure Rolling, Rolling Rollback, and Blue/Green deployments. This option can be implemented in YAML. (CDS-40386)
 
 - You can now use an ECS Run Task step from an ECS swimlane. (CDS-4313)
@@ -4169,17 +4265,13 @@ CDS-36661
 
 Updated the provisioner ID to conform to other steps.
 
-CDS-40897 A
-
-dded serviceHeader API refresh on save and update activity.
+CDS-40897 Added serviceHeader API refresh on save and update activity.
 
 CDS-41461
 
 Changed UI label text and made cosmetic changes to the layout of CD edit screens.
 
-CDS-41492 A
-
-dded caching to the API call to list repositories in Artifactory.
+CDS-41492 Added caching to the API call to list repositories in Artifactory.
 
 CDS-41532, ZD-3324
 
@@ -4399,7 +4491,7 @@ ZD-33910, ZD-34304, ZD-34547, ZD-35359
 
 Added execution capability in CI send status task.
 
-CI=5463
+CI-5463
 
 Added UI validation to ensure the Limit Memory and Limit CPU fields have the required formats. Previously, incorrect values for these fields were flagged during a build, which would cause the build to fail.
 

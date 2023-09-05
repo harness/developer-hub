@@ -10,18 +10,18 @@ helpdocs_is_published: true
 
 Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Accounts, Organizations, or Projects.
 
-You can choose to disable the Harness built-in Secret Manager at any point and use any other [Secret Manager](./5-add-secrets-manager.md) to store secrets.
+You can choose to disable the Harness built-in Secret Manager at any point and use any other [Secret Manager](/docs/platform/Secrets/Secrets-Management/5-add-secrets-manager.md) to store secrets.
 
 This topic explains how to disable the built-in Harness Secret Manager.
 
 ### Before you begin
 
-* [Harness Secret Management Overview](./1-harness-secret-manager-overview.md)
-* [Add a Secret Manager](./5-add-secrets-manager.md)
+* [Harness Secret Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+* [Add a Secret Manager](/docs/platform/Secrets/Secrets-Management/5-add-secrets-manager.md)
 * Make sure you have Account Admin permissions to disable the built-in Secret Manager.  
-For more information, see [API Permissions Reference](../../4_Role-Based-Access-Control/ref-access-management/api-permissions-reference.md).
+For more information, go to [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference).
 
-### Limitations
+### Important notes
 
 * When you disable the built-in Secret Manager, Harness does not move your existing secrets to another secret manager.
 * Before you disable Harness built-in secret manager, you must have at least one Secret Manager in the Account scope.
@@ -38,9 +38,11 @@ The Key Management Service only stores the key. Harness uses [envelope encrypti
 
 1. In your Harness Account, go to **Account Settings**.
 2. Select **Account Resources** and then select **Default Settings**.
+
+   ![](../../Secrets/static/disable-secretmanager-option.png)
+
 3. Select **Connectors**.
 
-   ![](../static/disable-secretmanager-option.png)
 
 4. Select **Disable default Harness Secret Manager** and then select **Save.**
 
@@ -58,9 +60,9 @@ You must have another Secret Manager created at the Account scope with its crede
 
 ### See also
 
-* [Add Google KMS as a Harness Secret Manager](./10-add-google-kms-secrets-manager.md)
-* [Add an AWS KMS Secret Manager](./7-add-an-aws-kms-secrets-manager.md)
-* [Add an AWS Secret Manager](./6-add-an-aws-secret-manager.md)
-* [Add an Azure Key Vault Secret Manager](../../Secrets/Secrets-Management/8-azure-key-vault.md)
-* [Add a HashiCorp Vault Secret Manager](./12-add-hashicorp-vault.md)
+* [Add Google KMS as a Harness Secret Manager](/docs/platform/Secrets/Secrets-Management/10-add-google-kms-secrets-manager.md)
+* [Add an AWS KMS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
+* [Add an AWS Secret Manager](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
+* [Add an Azure Key Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/8-azure-key-vault.md)
+* [Add a HashiCorp Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/12-add-hashicorp-vault.md)
 

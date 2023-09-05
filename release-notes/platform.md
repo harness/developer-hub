@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-08-04T10:00:30
+date: 2023-09-05T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -30,13 +30,169 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## Latest - August 4, 2023, version 80120
+## Latest: Version 80406
 
+### New features and enhancements
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+- Earlier, Harness had an N-3 support policy for delegates. (PL-39452)
+   Now, the delegate expiration is calculated using the version difference between Harness Manager and the delegate. If the delegate and Harness Manager are on the same version, the delegate expiration is 24 weeks.
+
+- Earlier, in the audit trail, all changes to a user principal's role assignment were logged with the generic Update action type. The record offered no additional information about whether a role assignment was created, updated, or deleted. (PL-39799, ZD-46451)
+
+  Now, role assignment changes are logged with one of the following, more informative action types:
+    - Role Assignment Created
+    - Role Assignment Updated
+    - Role Assignment Deleted
+
+- Earlier, in delegate selection logs, the non-selected error message included all mismatched selectors.
+
+   Now, the non-selected error message includes only selectors mismatched within the scope. (PL-40651)
+
+- You can now create secrets in child scopes using the parent scope in Secret Manager. For example, you can create secrets inside a project using the Secret Manager created at the Org or Account level. (PL-38949)
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- In some scenarios, when the delegate tried to send a heartbeat to connect to Harness Manager and MongoDB was down, Harness Manager sent a self_destruct message to stop the delegate. (PL-38122)
+
+  This issue is fixed. Harness Manager no longer sends `self_destruct messages`, the delegate continues to run, and the delegate tries to send a heartbeat again after one minute.
+
+- The Harness user interface did not give you the option to view more than ten resources in a resource group. (PL-40747, ZD-49413)
+
+  This issue is now fixed.
+
+- With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631)
+
+  This issue is fixed. Harness catches the exception and continues with delegate startup.
+
+- Fixed retries of the delegate task acquire call in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the acquire call retry flow. Tasks timed out because the delegate was not able to acquire the data. The 'taskData' field in Harness Manager is now populated to fix the issue. (PL-40646)
+
+- A few minutes after you linked a Harness user group to a different LDAP group, the change was reverted. That is, the user group gets linked to the previous LDAP group. The behavior persisted even if you deleted the user group, created a new user group with the same name, and then associated it with the second LDAP group. (PL-40558, ZD-48332)
+
+  This issue is now fixed.
+
+- When adding users to a user group, you had to manually select users from the menu; pasting email addresses in the text box did not work. (PL-40559)
+
+  Now, in addition to selecting users from the menu, you can paste users' email addresses in the text box.
+
+- Earlier, when you clicked an expired link in an invitation email, Harness displayed the following message: “We couldn’t find an invitation matching the email address you entered. Please search your email for an invitation from Harness or contact your admin." This message was inaccurate. (PL-40597)
+
+  Now, Harness displays the following message when you click a link in an expired invitation: "This invitation URL has expired. Please request for a new invitation from your admin."
+
+- If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
+
+  Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
+
+- Attempts to use the `harness_platform_user` resource to create or delete users results in an error. The message "Request failed as you have an older version of entity, please reload the page and try again" is displayed and the Terraform state goes out of sync with Harness. (PL-39870, ZD-47107)
+
+  This issue has been fixed. 
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+## Version 80307
+
+### New features and enhancements
+
+- To support MongoDB 5.0, the Debezium library has been upgraded to version 1.9. (PL-40491)
+
+- If you use the App Role authentication method in the Hashicorp Vault connector, you can choose to cache the vault token. The token is cached on the Harness Delegate for a time duration equal to the TTL of the vault token, with 1% leeway. 
+
+  By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
+
+  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- When you navigated to the Pipelines page, Harness checked for a Continuous Integration license. If you did not have a CI license, you were redirected to the CI Start Trial page because the Pipelines page was once part of the CI module. 
+
+  The issue has been resolved by the removal of such a check from the Pipelines page on the Projects tab. This change also resolves similar issues involving a redirect to Start Trial pages for other Harness modules. (PL-40611, ZD-48952)
+
+- If the number of service instances went down to zero and came back up after a duration of 1 day, they were not displayed on custom dashboards. 
+
+  This issue is resolved, and custom dashboards now show service instances when the count is greater than zero. (CDS-75585, ZD-47848) 
+
+- During a long network outage that impacted the delegate, attempts made by the delegate to reconnect the websocket failed. The issue was caused by the delegate attempting to reconnect the websocket only once, after failing to send five heartbeats in succession. (PL-40547, ZD-48579)
+
+  The issue is now fixed. During long network outages, the delegate attempts to reconnect the websocket every time it fails to send a heartbeat.
+
+    This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+- Updates to the role assignments of a user group in one project caused role assignments to get updated in other projects in the organization. The issue was observed in the following scenario:
+    - You used a regex query to update role assignments in a project.
+    - Identifiers of other projects in the organization overlapped with that of the project in which you updated role assignments. 
+    - Identifiers of user groups in those other projects matched the identifier of the user group you updated. (PL-39780, ZD-46314)
+
+  The issue is now fixed. 
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+#### August 10, 2023, version 80208
+
+##### What's new
+
+- Accounts with Free and Community licenses are limited to 100 users. (PL-40260)
+
+- The heartbeat interval that perpetual tasks use to test connectors has been increased from 10 minutes to 30 minutes. This change aims to reduce the number of errors logged due to failed heartbeats. The new heartbeat interval is used with any connectors that you create after this deployment. Tasks associated with existing connectors require migration to the new interval. Harness will migrate such perpetual tasks in all accounts in a phased manner. This activity does not require any action from you or other users of the platform. (PL-39399)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- For the **Audit Trail**, the **YAML Difference** on the **Event Summary** pane didn’t include tag information for delegate groups and registers. (PL-40073)
+   
+  This issue has been resolved.
+   
+  This item is available with Harness Platform version 80208 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- When configuring an RBAC resource group in Harness Manager, if you discarded your changes, the resource group page showed a list of resources that should not be available at the scope that you are in. (PL-40393, ZD-48270)
+
+  This issue has been resolved.
+
+- Previously, the **Select a Project** pane displayed duplicate projects. The issue was caused by Harness Manager allowing users to create projects with the same `projectIdentifier` key in different organizations. (PL-40302, ZD-48700)
+
+  The issue has been resolved by the use of a unique key that combines the project and organization identifiers. 
+
+- The Setup Vault step of the Azure Key Vault connector wizard continued to use the previous secret reference even after you changed it. (PL-40269, ZD-48150)
+
+  The issue is now fixed, and the wizard reads the latest value. 
+
+- Harness Manager did not show role assignments for a service account at the organization and project scopes if the parent scope (the account scope and organization scope, respectively) had a service account with the same identifier. (PL-40245, ZD-47906)
+
+  The issue is now fixed, and any affected service accounts will be displayed correctly. 
+
+- Harness API requests for creating an API key for a service account returned an HTTP 200 OK status code even if the API request did not have a valid service account ID. Consequently, the `harness_platform_apikey` resource for Terraform failed to create the API key at the intended scope. The issue was caused by Harness failing to validate the service account identifier. (PL-40243, ZD-47921)
+
+  The issue is fixed, and service account identifiers are now validated.
+
+- The menu for selecting the page size on the account-level Audit Trail page shows the text `Select` by default instead of showing one of the built-in size options of 10, 20, 50, and 100. Additionally, the page displays 25 items by default instead of using one of the built-in size options. (PL-40144)
+
+  This issue has been resolved. 
+
+- If Harness could not create the desired role because it encountered an error condition, the role creation dialog displayed an obscure message instead of a user-friendly message. For example, if you included an invalid character in the name of the role, the role creation dialog displayed the message `failed to fetch: 400` instead of a message that called your attention to the invalid character. (PL-40127, ZD-47805)
+
+  The issue is now fixed, and the dialog shows user-friendly messages. 
+
+#### August 4, 2023, version 80120
+
+##### What's new
 
 - The Universal Base Image Minimal used for the Harness user interface (both FirstGen and NextGen) and the Harness NextGen authentication service has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-40095)
 
@@ -44,16 +200,11 @@ The following deprecated API endpoints will no longer be supported:
 
   This issue has been fixed. Browser tabs showing those pages now have more specific titles. 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
+##### Fixed issues
 
 - The YAML diff editor that shows changes to the YAML configuration associated with an event (**Account Settings** > **Audit Trail** > **Event Summary**) showed an inline diff, making it difficult for you to copy changes. (PL-40265, ZD-45911)
 
@@ -110,18 +261,6 @@ This release does not include any early access features.
   This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 
-```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
 #### July 27, 2023, version 80022
 
 ##### What's new
@@ -150,7 +289,7 @@ This release does not include any early access features.
 
   This issue is now fixed, and you can use the API to fetch role assignments for user groups and service accounts in any scope.
 
-- If you failed to specify the scope for a resource group that you created with the Harness API, Harness failed to apply a default scope, which it was expected to infer from the API request’s query parameters. (The Harness UI, on the other hand, behaves as expected: it sets the default scope of the resource group to the scope that you are in when creating the resource group.) This behavior led to eligible users being unable to perform operations on the resource group. (PL-39271, ZD-45488)
+- If you failed to specify the scope for a resource group that you created with the Harness API, Harness failed to apply a default scope, which it was expected to infer from the API request's query parameters. (The Harness UI, on the other hand, behaves as expected: it sets the default scope of the resource group to the scope that you are in when creating the resource group.) This behavior led to eligible users being unable to perform operations on the resource group. (PL-39271, ZD-45488)
 
   This issue is now fixed. If you do not specify a scope for the resource group when using the API, Harness sets the default scope correctly, and eligible users should be able to perform operations on the resource group.
 
@@ -709,7 +848,7 @@ This release does not include any early access feature.
   
   A code enhancement has fixed this issue.
 
-- Recently added roles are not displayed in the manage role assignment settings. (PL-30560)
+- Recently added roles are not displayed in the manage role bindings settings. (PL-30560)
   
   A code enhancement has fixed this issue.
 
@@ -1046,11 +1185,11 @@ The location of the repository that contains the NextGen Helm chart is changing.
   - **Account Viewer - All Account Level Resources**: This was a role-assignment within the account scope and has been removed for all the users.
   This does not apply in the following scenarios: 
     - If an account has enabled the feature flag `ACCOUNT_BASIC_ROLE_ONLY`.
-    - If an account does not have the **Account Viewer - All Account Level Resources** role-assignment for the default user group `All Account Users`.
+    - If an account does not have the **Account Viewer - All Account Level Resources** role-assignment for the built-in user group `All Account Users`.
 - **Organization Viewer - All Organization Level Resources**: This was a role-assignment within the organization scope and has been removed for all the users.
 - **Project Viewer - All Project Level Resources**: This was a role-assignment within the project scope and has been removed for all the users.
 
-For more information, see [Default User Group](/docs/platform/User-Management/harness-default-user-groups)
+For more information, see [Built-in user groups](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups)
 
 
 ##### What's new
@@ -1643,15 +1782,13 @@ N/A
 
 - Harness Manager was changed to remove the edit and details UI for Immutable Delegates. These Delegates cannot be changed. (DEL-4756)
 
-- A migration will run to remove the following Role Bindings directly assigned to users for accounts having ACCOUNT_BASIC_ROLE turned ON (PL-28284):
+- A migration will run to remove the following role bindings directly assigned to users for accounts having ACCOUNT_BASIC_ROLE turned ON (PL-28284):
 
   - At Account Scope, Account Basic/Account Viewer -All Account Resources​.
   - At Organization scope, Organization Viewer - All Organization Resources.​
   - At Project Scope, Project Viewer - All Project Resources.​
 
-  Harness now has a default User Group at each scope. These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default.​ Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
-
-  See [Harness Default User Groups](/docs/platform/User-Management/harness-default-user-groups).
+  Harness now has a [built-in user group](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups) at each scope. These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default.​ Users can assign roles to the built-in User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
 
 ##### Early access
 
@@ -1732,13 +1869,11 @@ N/A
 
 **Platform**
 
-Harness now has a default User Group at each scope. These groups have all the users at the respective scope as their members.
+Harness now has a [built-in user group](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups) at each scope. These groups have all the users at the respective scope as their members.
 
 As a part of this change, Harness will stop assigning any roles to the User Groups by default.
 
-Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group.
-
-For more information on default User Group, see [Harness Default User Groups](/docs/platform/User-Management/harness-default-user-groups).
+Users can assign roles to the built-in user group at a specific scope, which becomes the default role for all the users in that group.
 
 #### September 7, 2022, version 76619
 
@@ -1746,7 +1881,7 @@ For more information on default User Group, see [Harness Default User Groups](/d
 
 - You can now inherit User Groups created at a higher scope by using Assign Roles. (PL-27237)
 
-  See [Assign Roles](https://developer.harness.io/docs/platform/User-Management/add-user-groups#step-assign-roles).
+  See [Create groups by inheritance](/docs/platform/role-based-access-control/add-user-groups#create-groups-by-inheritance).
 
 - You can now view the past 10 executions of the Pipelines and sort them from the table. You can also go to a specific execution by clicking on it. (PIE-4903)
 
@@ -1805,9 +1940,9 @@ No early access features are available in this release.
 
 ##### What's new
 
-- Now you can add up to 50,000 users in the Harness Non-Community Edition. (PL-27300)
+- Now you can add up to 50,000 users in paid plans. The limit remains at 1,500 for free plans and Harness Community Edition accounts. (PL-27300)
 
-  See [Add and Manage Users](/docs/platform/User-Management/add-users).
+  See [Manage users](/docs/platform/role-based-access-control/add-users).
 
 - You can now use an enhanced Git Experience. (PL-26339)
 

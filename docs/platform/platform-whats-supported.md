@@ -16,7 +16,18 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
 ```mdx-code-block
   <Tabs>
   
-  <TabItem value="Access control" label="Access control">
+
+
+  <TabItem value="Git Experience" label="Git Experience">
+```
+
+import Gitxsup from '/docs/getting-started/shared/gitx-whats-supported.md'
+
+<Gitxsup />
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Access control" label="Access Control">
 ```
 
 import Accessconsup from '/docs/getting-started/shared/access-control-supported.md'
@@ -25,7 +36,7 @@ import Accessconsup from '/docs/getting-started/shared/access-control-supported.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Accounts/Orgs/Projects/Other resources" label="Accounts Organizations Projects">
+  <TabItem value="Accounts/Orgs/Projects/Other resources" label="Accounts Orgs Projects">
 ```
 
 Harness enables you to manage access control at the following [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#overview-of-the-hierarchical-setup-in-harness).
@@ -66,7 +77,7 @@ Notification methods supported for various pipeline events are:
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Secret management" label="Secret management">
+  <TabItem value="Secret management" label="Secrets Management">
 ```
 
 import Secretmgmtsup from '/docs/getting-started/shared/secret-management-supported.md'
@@ -76,19 +87,19 @@ import Secretmgmtsup from '/docs/getting-started/shared/secret-management-suppor
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="User management" label="User management">
+  <TabItem value="User management" label="User Management">
 ```
 
 A Harness user is any individual registered with Harness with a unique email address. A User can be a part of multiple accounts. Go to the following topics to learn more about how to add and manage users.
 
-- [Add and manage user groups](/docs/platform/User-Management/add-user-groups)
-- [Add and manage roles](/docs/platform/role-based-access-control/add-manage-roles/)
-- [Add and manage resource groups](/docs/platform/role-based-access-control/add-resource-groups/)
+- [Manage user groups](/docs/platform/role-based-access-control/add-user-groups)
+- [Manage roles](/docs/platform/role-based-access-control/add-manage-roles)
+- [Manage resource groups](/docs/platform/role-based-access-control/add-resource-groups)
 
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Self-Managed Enterprise Edition" label="Self-Managed Enterprise Edition">
+  <TabItem value="Self-Managed Enterprise Edition" label="Self-Managed EE">
 ```
 
 import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';

@@ -54,7 +54,7 @@ Criteria can be the following:
 * Evaluating a JEXL Expression.
 	+ Harness supports JEXL expressions and you can use these with script outputs or Harness variables to create expressions.
 	+ If the resolved JEXL expression is a Boolean true, the approval criteria is met.
-	+ For example, you could evaluate the output from a previous [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step named **test** by referencing its output in a JEXL expression and comparing it to the value `Approved`: `<+execution.steps.test.output.outputVariables.status>=="Approved"`.
+	+ For example, you could evaluate the output from a previous [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step named **test** by referencing its output in a JEXL expression and comparing it to the value `Approved`: `<+execution.steps.test.output.outputVariables.status>=="Approved"`.
 	+ See [Built-in and Custom Harness Variables Reference](../12_Variables-and-Expressions/harness-variables.md) and [Extracting Characters from Harness Variable Expressions](../12_Variables-and-Expressions/extracting-characters-from-harness-variable-expressions.md).
 
 ## Add a Custom Approval stage
@@ -320,7 +320,7 @@ Instead, if you publish output variables in your Custom Approval command, struct
 
 You can use Harness secrets in your Custom Approval steps.
 
-See [Add Text Secrets](../Secrets/2-add-use-text-secrets.md).
+See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 Basically, you use `<+secrets.getValue("secret_Id")>` to refer to the secret Id.
 

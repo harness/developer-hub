@@ -14,7 +14,7 @@ This topic describes how to create AutoStopping Rules with Terraform using scrip
 
 ### Before You Begin
 
-* [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md)
+* [AutoStopping Rules Overview](../1-auto-stopping-rules.md)
 * [Create AutoStopping Rules for AWS](../4-create-auto-stopping-rules/create-autostopping-rules-aws.md)
 * [Create AutoStopping Rules for Azure](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Artifacts tab
+title: Publish anything to the Artifacts tab
 sidebar_position: 3
 description: You can publish any URL to the Artifacts tab.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, maven, Allure]
@@ -10,8 +10,6 @@ slug: /ci-pipelines/publish/artifacts-tab
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-
-# Publish any URL to the Artifacts tab
 
 <ctabanner
   buttonText="Learn More"
@@ -50,7 +48,7 @@ If you haven't created a pipeline before, try [Get started with the fastest CI](
 
    :::tip
 
-   Store authentication and access keys for connectors as [Harness secrets](/docs/platform/Secrets/add-file-secrets).
+   Store authentication and access keys for connectors as [Harness secrets](/docs/platform/secrets/add-file-secrets).
 
    :::
 

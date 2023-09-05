@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-08-02T10:00
+date: 2023-09-04T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -12,6 +12,7 @@ import TabItem from '@theme/TabItem';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/cloud-cost-management/rss.xml" />
 
+
 Review the notes below for details about recent changes to Harness Cloud Cost Management. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
 :::info note
@@ -19,12 +20,78 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - August 02, 2023, version 80301
+## Latest: version 80606
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### New features and enhancements
+
+* Display refunds or discounts on the graph within perspectives. (CCM-13443)
+
+  Previously, our graph in perspectives didn't display refunds or discounts, resulting in empty spots when values were negative. This enhancement improves this by aggregating negative values into a red-colored bar chart. You can now toggle a button in **General Preferences** to view these previously hidden negative costs.
+
+    <docimage path={require('./static/aws-preferences-ccm13443.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+
+### Early access features
+
+This release does not include any early access features.
+
+### Fixed issues
+
+* After editing an existing cost category, previously, when attempting to create a new one, the drawer displayed the details for the last accessed cost category. (CCM-13973)
+
+  This issue is fixed. The new cost category builder drawer now opens in the expected empty state, and the edit drawer will correctly display the details of the selected cost category. Even after editing a cost category, if you open the new cost category drawer, it correctly shows the empty state as intended.
+
+* Previously, users were unable to select **This Quarter** in the **Overview** time range filter. Instead, the application defaulted to **This Month** upon selection. (CCM-13505)
+
+  This issue has been fixed.
+
+* An issue with onboarding an existing AutoStopping rule on Azure App Gateway version 1 (CCM-13903)
+
+   This issue is resolved. Now the health check configurations of the AutoStopping rule are being used to detect the current backend settings associated with the rule.
+
+* The screen went blank when deleting all characters in the AutoStopping Rule Name field while editing the rule. (CCM-13816)
+
+  This issue has been resolved.
+  
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### August 23, 2023, version 80500
+s
+##### New features and enhancements
+
+* ServiceNow integration with Recommendations (CCM-11150)
+
+  Introducing ServiceNow as a ticketing tool to create tickets for recommendations. You can use either Jira or ServiceNow as your ticketing tool. You need to configure this setting at the account level on the **Default Settings** page. For more information, go to [View and apply recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations).
+
+* AWS perspectives enhancement (CCM-13914)
+
+  Introducing support for the following additional `Group By` options in AWS perspectives:
+  - Billing entity
+  - Line item type
+  
+  For more information, go to [Analyze AWS costs by using perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws).
+
+##### Early access features
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* Previously, within the budget **Edit** flow, the monthly breakdown values would reset to default values. However, currently, the resetting occurs only when there's a change in the **Budget Type**. (CCM-13763)
+
+* Previously for ALB proxy HTTP route configuration, when it comes to redirect actions, only redirect URLs were supported. However, now, users have the flexibility to include either a redirect URL or specify a target port and protocol. (CCM-13702)
+
+
+#### August 02, 2023, version 80301
+
+##### What's new
+
 * AWS AutoStopping proxy enhancement (CCM-13497)
 
   You can now select the subnet ID from the dropdown list for AWS AutoStopping proxy creation. 
@@ -33,7 +100,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * **Perspective Preferences** enhancement (CCM-11145)
 
-  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](../docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/perspective-preferences.md).
+  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/perspective-preferences).
 
  
 :::important note
@@ -56,18 +123,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     <docimage path={require('./static/ccm-overview-3.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
+
 * Previously, configuring both the redirect URL and target port for redirection while creating a redirect-based AutoStopping rule led to an error. (CCM-13475)
 
   This issue has been resolved by modifying the validation process. Now, if the redirect URL is defined, the validation process checks whether the target port is greater than 0. Specifying both redirect URL and target port is not allowed as it is an invalid configuration. However, for ALBs, only redirect URLs are allowed.
@@ -79,16 +140,6 @@ This release does not include any early access features.
 * Previously, users experienced performance delays while editing cost categories with more than 50 buckets, and every subsequent action took several seconds to trigger. (CCM-13205)
 
   The issue has been resolved, and the overall user experience has been enhanced by streamlining the process of managing cost categories even with a large number of buckets.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 
 #### July 21, 2023, version 80202

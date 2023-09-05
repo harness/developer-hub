@@ -2,7 +2,7 @@
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
 tags: [NextGen, "cet"]
-date: 2023-07-21T17:20
+date: 2023-08-15T17:20
 sidebar_position: 11
 ---
 ```mdx-code-block
@@ -22,41 +22,54 @@ Review the notes below for details about recent changes to Continuous Error Trac
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - July 14, 2023, version ET-Agent 5.5.0
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+## Latest: Version ET-Service 5.25.9 and ET-Collector 5.25.3
 
 
-This release does not include new features and enhancements.
+### New features and enhancements
+
+- Various dependencies were upgraded to prevent security issues. (CET-1571)
+
+- The default time period on the Events Summary page has been adjusted to one hour. (CET-1576)
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-
-
+### Early access features
 This release does not include any early access features.
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues
 
-
-- The CET Agent had missing tiny links on some logs when using Log4j2. (CET-894)
+- When a monitored service was created with spaces or special characters in the name, the monitored service was not appearing in the list. (CET-1551)
   
-  This issue has been resolved. Now, the tiny links appear consistently in Log4j2 logs.
+  This issue has been resolved. Now, you can create monitored services with names containing spaces, hyphens (-), or underscores (_). However, if you attempt to use any other special characters, an error message will appear.
+
+- The Events Summary page was timing out when fetching data, especially for events marked as resolved. (CET-1569)
+  
+  This issue has been resolved. The Events Summary page now loads significantly faster.
+
+- Users were not receiving notifications when relevant events were generated. (CET-1585)
+
+  This issue has been resolved. Now, notifications are being sent when relevant events occur.
+
+- The ARC screen was unable to fetch source attach data. (CET-1685)
+  
+  This issue has been resolved. You can now view source attach data directly on the ARC screen.
+
+- The Events Summary page was not displaying the event status for new, resurfaced, and critical events. (CET-1686)
+  
+  This issue has been resolved. On the Events Summary page, you will now see the appropriate status indicators for new, resurfaced, and critical events.
 
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
+### Hotfixes
+
+#### Version ET-Service 5.25.10
+
+- The search functionality in the events list was not working. (CET-1618)
+  
+  This issue has been resolved. Now, when you enter a value in the Search field, CET searches the Description and the Location columns in the Events List for matching values.
+  
+- New events did not appear in the events list. (CET-1632)
+  
+  This issue has been resolved. Now, the Events List displays all events.
 
 
 ## Previous releases
@@ -69,6 +82,24 @@ This release does not include any early access features.
 - The Events Summary page timed out in some instances when events marked as resolved caused slowness while fetching summary data. (CET-1569)  
 
    This issue has been resolved. Now, the Events Summary page loads faster and does not time out.
+
+
+#### July 14, 2023, version ET-Agent 5.5.0
+
+##### What's new
+
+This release does not include new features and enhancements.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- The CET Agent had missing tiny links on some logs when using Log4j2. (CET-894)
+  
+  This issue has been resolved. Now, the tiny links appear consistently in Log4j2 logs.
+
 
 #### June 27, 2023, versions ET-Service 5.24.3 and ET-Collector 5.24.3
 

@@ -54,7 +54,7 @@ You can use Harness secrets for the username and password in your script. For e
 ```bash
 curl -sSf -u "<+secrets.getValue("username")>:<+secrets.getValue("password")>" -O 'https://mycompany.jfrog.io/module/example/manifest.zip'
 ```
-For more information, see [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
+For more information, see [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 
 ## Start a pipeline
@@ -161,7 +161,3 @@ For more information on Helm command flags, go to [Add Helm chart](https://devel
 You can use Go templating in your Kubernetes resource files, just as you would for files stored in Git or inline. See [Example Kubernetes Manifests Using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating). For OpenShift, you must use OpenShift templating.
 
 If the artifact you are deploying with your manifest is public (DockerHub) and does not require credentials, you can use the standard public image reference, such as `image: harness/todolist-sample:11`.
-
-   import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
-
-   <Selector />

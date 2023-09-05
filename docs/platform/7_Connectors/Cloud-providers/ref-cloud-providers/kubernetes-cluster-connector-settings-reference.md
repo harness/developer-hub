@@ -51,7 +51,7 @@ You can use different methods for authenticating with the Kubernetes cluster, bu
 
 The Role used must have either the `cluster-admin` permission in the target cluster or admin permissions in the target namespace.
 
-For a detailed list of roles and policies, go to [Harness Role-Based Access Control Overview](../../../4_Role-Based-Access-Control/1-rbac-in-harness.md#role).
+For a detailed list of roles and policies, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 ### Harness CI Permission Requirements
 
@@ -251,7 +251,7 @@ Login credentials for a user assigned to the provider app.
 * **OIDC** **Client ID:** Public identifier for the client that is required for all OAuth flows. In Okta, this is located in the **Client Credentials** for the app:
 
 ![](./static/kubernetes-cluster-connector-settings-reference-04.png)
-(./static/kubernetes-cluster-connector-settings-reference-04.png)
+
 ### OIDC Secret
 
 The client secret for the app. For Okta, you can see this in the above picture.
@@ -261,7 +261,7 @@ The client secret for the app. For Okta, you can see this in the above picture.
 OIDC scopes are used by an application during authentication to authorize access to a user's details, like name and picture. In Okta, you can find them in the Authorization Server **Scopes** tab:
 
 ![](./static/kubernetes-cluster-connector-settings-reference-06.png)
-(./static/kubernetes-cluster-connector-settings-reference-06.png)
+
 If you enter multiple scopes, separate them using spaces.
 
 The remaining OIDC Token settings are part of the provider app you are using to log in.

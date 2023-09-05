@@ -50,16 +50,22 @@ The URL format depends on the **Connection Type** and your Bitbucket account typ
 
 | Connection Type | Bitbucket Cloud | Bitbucket Data Center (On-Prem) |
 | --------------- | --------------- | ------------------------------- |
-| HTTP | `https://bitbucket.org/<username>/` | `https://bitbucket.<your-org-hostname>/scm/` |
-| SSH | `git@bitbucket.org:<username>/` | `git@bitbucket.<your-org-hostname>/` |
+| HTTP | `https://bitbucket.org/USERNAME/` or `https://bitbucket.org` | `https://bitbucket.YOUR_ORG_HOSTNAME/scm/` |
+| SSH | `git@bitbucket.org:USERNAME/` | `git@bitbucket.YOUR_ORG_HOSTNAME/` |
 
-Here is an example of the **Details** settings for a Bitbucket Cloud account URL in HTTP and SSH formats:
+<figure>
 
-![Bitbucket Account URL field with a Bitbucket Cloud account HTTPS URL](./static/bitbucket-account-http-cloud-url.png)
+![](./static/bitbucket-account-http-cloud-url.png)
 
-Here is an example of the **Details** settings for a Bitbucket Data Center URL in HTTP and SSH formats:
+<figcaption>HTTP and SSH examples of Bitbucket Cloud account URLs.</figcaption>
+</figure>
 
-![Bitbucket Account URL field with a Bitbucket Data Center HTTPS URL](./static/bitbucket-account-http-onprem-url.png)
+<figure>
+
+![](./static/bitbucket-account-http-onprem-url.png)
+
+<figcaption>HTTP and SSH examples of Bitbucket Data Center account URLs.</figcaption>
+</figure>
 
 ```mdx-code-block
   </TabItem>
@@ -75,13 +81,19 @@ The URL format depends on the **Connection Type** and your Bitbucket account typ
 | HTTP | `https://bitbucket.org/<username>/<repo-name>.git` | `https://bitbucket.<your-org-hostname>/scm/<project-id>/<repo-name>.git` |
 | SSH | `git@bitbucket.org:<username>/<repo-name>.git` | `git@bitbucket.<your-org-hostname>/<project-id>/<repo-name>.git` |
 
-Here is an example of the **Details** for a Bitbucket Cloud repository URL in SSH format:
+<figure>
 
-![Bitbucket Repository URL field with a Bitbucket Cloud SSH URL](./static/bitbucket-repo-ssh-cloud-url.png)
+![](./static/bitbucket-repo-ssh-cloud-url.png)
 
-Here is an example of the **Details** for a Bitbucket Data Center repository URL in HTTP format:
+<figcaption>SSH example of a Bitbucket Cloud repository URL.</figcaption>
+</figure>
 
-![Bitbucket Repository URL field with a Bitbucket Data Center HTTPS URL](./static/bitbucket-repo-http-onprem-url.png)
+<figure>
+
+![](./static/bitbucket-repo-http-onprem-url.png)
+
+<figcaption>HTTP example of a Bitbucket Data Center repository URL.</figcaption>
+</figure>
 
 ```mdx-code-block
   </TabItem>
@@ -128,11 +140,11 @@ import TabItem2 from '@theme/TabItem';
 
 The **HTTP** Connection Type requires **Username** and **Password** authentication for all accounts and repos, including read-only repos.
 
-In the **Username** field, enter the Bitbucket account username as specified in your Bitbucket **Account settings**. You can use either plaintext or a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
+In the **Username** field, enter the Bitbucket account username as specified in your Bitbucket **Account settings**. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
 
-In the **Password** field, provide a Bitbucket account-level [access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html), or [app password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/). Passwords are stored as [Harness encrypted text secrets](../../../Secrets/2-add-use-text-secrets.md).
+In the **Password** field, provide a Bitbucket account-level [access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html), or [app password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/). Passwords are stored as [Harness encrypted text secrets](/docs/platform/secrets/add-use-text-secrets).
 
 You must provide an account-level app password or token. Repo-level tokens are not supported.
 
@@ -145,7 +157,7 @@ Bitbucket accounts with two-factor authentication must use access tokens.
   <TabItem2 value="ssh" label="SSH Key">
 ```
 
-The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/Secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
+The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
 
 For details on creating SSH keys and adding them to your Bitbucket account, go to the Bitbucket documentation about [Configuring SSH and two-step verification](https://support.atlassian.com/bitbucket-cloud/docs/configure-ssh-and-two-step-verification/).
 
@@ -170,11 +182,11 @@ Make sure to follow the prompts to finish creating the key. For more information
 
 You must enable API access to use Git-based triggers, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access requires username and password authentication.
 
-In the **Username** field, enter the Bitbucket account username as specified in your Bitbucket **Account settings**. You can use either plaintext or a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
+In the **Username** field, enter the Bitbucket account username as specified in your Bitbucket **Account settings**. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
 
-In the **Personal Access Token** field, provide a Bitbucket account-level [App password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/), [Access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), or [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html). Passwords are stored as [Harness Encrypted Text secrets](../../../Secrets/2-add-use-text-secrets.md).
+In the **Personal Access Token** field, provide a Bitbucket account-level [App password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/), [Access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), or [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html). Passwords are stored as [Harness Encrypted Text secrets](/docs/platform/secrets/add-use-text-secrets).
 
 You must provide an account-level app password or token. Repo-level tokens are not supported.
 

@@ -8,11 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::info
-
-Dynamic provisioning is only supported in [Service and Environments v1](/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2/). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
-
-:::
 
 This topic describes how to use Terraform to provision infrastructure as part of your deployment process.
 
@@ -24,34 +19,26 @@ Looking for how-tos? See [Terraform how-tos](terraform-how-tos).
 
 :::
 
-## Terraform Provisioning Options
+## Terraform provisioning options
 
 You can use Harness with Terraform in the following ways:
 
-* **Dynamic Infra Provisioning:** you can provision the target infrastructure for a deployment as part of the stage's Environment settings, and then deploy to that provisioned infrastructure in the same stage.
-* **General Provisioning:** provision any resources other than the target infrastructure for the deployment.
+* **Dynamic infrastructure provisioning:** you can provision the target infrastructure for a deployment as part of the stage's **Environment** settings, and then deploy to that provisioned infrastructure in the same stage.
+* **Ad hoc provisioning:** provision any resources other than the target infrastructure for the deployment.
   * **Local provisioning:** you can run configuration files on the Harness delegate(s) installed in your environment.
   * **Terraform Cloud/Enterprise:** you can run Terraform Cloud workspaces by connecting Harness to your Terraform Cloud account.
 
 You can do all methods in the same stage if you want.
 
-## Terraform Dynamic Infra Provisioning Summary
+For details on these provisioning options, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
 
-:::info
+## Terraform dynamic infrastructure provisioning summary
 
-Dynamic provisioning is only supported in [Service and Environments v1](/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2/). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
+Dynamic provisioning uses your Terraform scripts to provision the target deployment infrastructure for the current pipeline stage.
 
-:::
+Dynamic provisioning with Terraform is supported for most Harness integrations. The steps required for each integration are covered in their documentation.
 
-You set up Terraform dynamic infrastructure provisioning in the following order:
-
-1. Select **Dynamic Provisioning**. 
-   1. In the Pipeline Infrastructure, you select the **Dynamic Provisioning** option and select **Terraform**. Harness automatically adds the Terraform Plan, [Harness Approval](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages), and Terraform Apply steps. You can change these steps, but plan, approve, and apply is the most common process. We use that process in our Terraform documentation.
-2. In the **Terraform Plan** step, you link Harness to the Terraform scripts you want to use. You add the scripts by connecting to a Git repo where the scripts are kept and setting up any inputs and other common options.
-3. **Map outputs to the** **target Infrastructure**. Harness needs a few script outputs so that it can target the provisioned infrastructure, such as namespace. You simply map some script outputs to the required Harness target infrastructure settings.
-4. **Deployment**. The Pipeline deploys to the provisioned infrastructure defined in its target Infrastructure Definition.
-
-See [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform).
+For more information, go to [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform).
 
 ### Limitations
 
@@ -97,7 +84,7 @@ Terraform must be installed on the delegate to use local Terraform configuration
 
 You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools/).
+For more information, go to [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools/).
 
 The Harness delegate uses RedHat Universal Base Image (redhat/ubi8).
 
@@ -122,8 +109,13 @@ rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 terraform --version
 ```
 
-## Running Terraform Cloud workspaces
+## Running Terraform on remote workspaces
 
-In addition to running Terraform configuration files locally on the Harness delegate, Harness supports running Terraform Cloud and Enterprise workspaces.
+In addition to running Terraform configuration files locally on the Harness delegate, Harness supports running Terraform Cloud and Enterprise workspaces. 
 
-For more information, go to  [Terraform Cloud deployments](terraform-cloud-deployments.md).
+There are two ways you can run Terraform Cloud and Enterprise workspaces:
+
+- Run the Terraform configuration files locally using the CLI and configure them to execute on a remote workspace. To do this, you need to add the remote configuration to the Terraform files. Afterward, during the Terraform Plan and Apply steps, select the **Run on Remote Workspace** option so that Harness can recognize that the execution will be done remotely. For more information, go to [Running Terraform locally](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness/#running-terraform-locally).
+
+- Set up the workspace and Terraform files on a Terraform Cloud/Enterprise account and trigger runs from Harness pipelines. For more information, go to [Terraform Cloud deployments](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments).
+

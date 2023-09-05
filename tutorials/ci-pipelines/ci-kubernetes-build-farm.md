@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 description: Create a pipeline that uses a Kubernetes cluster build infrastructure.
 slug: /ci-pipelines/kubernetes-build-farm
 keywords: [Kubernetes, Continuous Integration, CI Tutorial]
@@ -18,6 +18,12 @@ title: Build on a Kubernetes cluster
 />
 
 This tutorial shows you how to create a two-stage Harness CI pipeline that uses a Kubernetes cluster build infrastructure. The pipeline builds and runs a unit test on a codebase, uploads the artifact to Docker Hub, and then runs integration tests. This tutorial uses publicly-available code, images, and your Github and Docker Hub accounts.
+
+:::info
+
+The Kubernetes cluster build infrastructure option is only available with Harness CI Team and Enterprise plans. For Free plans, try the [Harness Cloud build infrastructure tutorial](/tutorials/ci-pipelines/fastest-ci).
+
+:::
 
 You'll learn how to create a CI pipeline that does the following:
 
@@ -125,7 +131,7 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
 5. Configure the **Credentials** as follows, and then select **Continue**:
 
    * **Username:** Enter the username for the GitHub account where you forked the tutorial repo.
-   * **Personal Access Token:** Create a secret for the personal access token you created earlier. Harness secrets are safe; they're stored in the [Harness Secret Manager](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
+   * **Personal Access Token:** Create a secret for the personal access token you created earlier. Harness secrets are safe; they're stored in the [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
    * **Enable API access:** Select this option and select the same personal access token secret.
 
    ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-16.png)

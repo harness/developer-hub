@@ -21,6 +21,10 @@ The inline tutorial below shows you how to install the default delegate for your
 
 The default delegate image, denoted by the `yy.mm.xxxxx` image tag, includes a set of pre-installed 3rd-party custom binaries for convenience. You can find the list of these binaries [here](/docs/platform/Delegates/delegate-concepts/delegate-image-types#third-party-tools-included-in-the-delegate-image-type). If you are concerned about the security vulnerabilities that potentially come with these pre-installed binaries, our recommendation is to use the minimal delegate noted below.
 
+The video below shows how to install a delegate.
+
+ <docvideo src="https://www.loom.com/embed/a935f18296ee4156900efcf60f20f224" width="100%" height="600" />
+
 ## Install minimal delegate with 3rd party custom binaries
 
 The minimal delegate image, denoted by the `yy.mm.xxxxx.minimal` image tag, does not include any pre-installed 3rd-party custom binaries for ensuring the lowest footprint and hence lowest number of security vulnerabilities.
@@ -78,12 +82,12 @@ You can install the Docker delegate using Podman by adding Podman commands to yo
 To install the Docker delegate using Podman, do the following:
 
 1. In Harness, select **Deployments**, then select your project.
-2. Select **Delegates** under **Project Setup**.
+2. Under **Project Setup**, select **Delegates**.
 3. Select **Install a Delegate** to open the **New Delegate** dialog.
 
    ![](./static/install-a-docker-delegate-podman.png)
 
-4. Select **Docker** under **Select where you want to install your Delegate**.
+4. Under **Select where you want to install your Delegate**, select **Docker**.
 
 5. Copy the Docker installation command.
 

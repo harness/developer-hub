@@ -17,11 +17,11 @@
 | Conditional Execution  | [Stage and Step Conditional Execution Settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) |
 | Steps | [Looping Strategies Overview ](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) |
 | Looping Strategies | [Best Practices for Looping Strategies ](https://developer.harness.io/docs/platform/pipelines/best-practices-for-looping-strategies/) |
-| Terraform Provider | [Harness Terraform provider overview](https://developer.harness.io/docs/platform/terraform/harness-terraform-provider-overview/)|
+| Terraform Provider | [Harness Terraform Provider overview](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider-overview/)|
 | Cloud Formation Provider | [CloudFormation How-tos](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos) |
 | Git Trigger  | [Triggers](https://developer.harness.io/docs/category/triggers/) |
 | Webhooks  | [Trigger Pipelines using Git Events](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) |
-| API Triggers  | [Harness API Quickstart](https://developer.harness.io/docs/platform/Resource-Development/APIs/api-quickstart) |
+| API Triggers  | [Get started with Harness APIs](https://developer.harness.io/docs/platform/Resource-Development/APIs/api-quickstart) |
 | Policy as Code  | [Policy as Code Overview](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview/) |
 | Kubernetes Sidecars | [Add a Kubernetes Sidecar Container](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container) |
 | Approvals | [Approvals](https://developer.harness.io/docs/category/approvals/) |
@@ -29,13 +29,13 @@
 |**4. Continuous Verification** | |
 | APM/Log Based Verification  | [Verify Deployments with the Verify Step](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) |
 | Validate Deployments | [Continuous Verification](https://developer.harness.io/docs/category/continuous-verification/) |
-| HTTP Execution Checks | [HTTP step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines)|
+| HTTP Execution Checks | [HTTP step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/)|
 |**5. GitOps** | |
-| GitOps Basics  | [Harness GitOps Basics](https://developer.harness.io/docs/continuous-delivery/cd-gitops/harness-git-ops-basics/) |
+| GitOps Basics  | [Harness GitOps Basics](https://developer.harness.io/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics/) |
 | Install GitOps Agent  | [Harness CD GitOps Tutorial](https://developer.harness.io/docs/continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart/) |
 |**6. Data Visibility**| |
 | Describe Dashboards| [Overview and Service dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments) |
 | Selectors  | [Select delegates with delegate selectors and tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/) |
 | Tagging and Labeling  | [Select delegates with delegate selectors and tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/) |
 |**7. Security**  | |
-| Role Based Access Control | [Role-Based Access Control Overview](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/) |
+| Role Based Access Control | [RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness) |

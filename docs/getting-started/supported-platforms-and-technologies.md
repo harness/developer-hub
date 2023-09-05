@@ -35,74 +35,9 @@ import Cv from '/docs/continuous-delivery/verify/shared/cv-whats-supported.md';
 
 ## Cloud Cost Management
 
-### Supported Kubernetes Management Platform
+import Ccm from '/docs/cloud-cost-management/shared/ccm-supported-platforms.md';
 
-The following section lists the support for the Kubernetes management platform for CCM:
-
-|                                                 |                        |                   |
-| ----------------------------------------------- | ---------------------- | ----------------- |
-| **Technology**                                  | **Supported Platform** | **Pricing**       |
-| OpenShift 3.11                                  | GCP                    | GCP               |
-| OpenShift 4.3                                   | AWSOn-Prem             | AWSCustom-rate\*  |
-| Rancher                                         | AWS                    | Custom-rate\*\*   |
-| Kops (Kubernetes Operations)                    | AWS                    | AWS               |
-| Tanzu Kubernetes Grid Integrated Edition (TKGI) | On-Prem                | Custom-rate\*\*\* |
-
-\* Cost data is supported for On-Prem OpenShift 4.3. This uses a custom rate.
-
-\*\* Cost data is supported for K8s workloads on AWS managed by Rancher, but the cost falls back to the custom rate.
-
-\*\*\* Cost is computed using a custom rate. This can be modified by Harness on request.
-
-### Supported ingress controllers for Kubernetes AutoStopping
-
-The following table lists the ingress controllers supported for Kubernetes AutoStopping:
-
-|                            |                                                                    |
-| -------------------------- | ------------------------------------------------------------------ |
-| **Ingress Controller**     | **Extent of Support**                                              |
-| Nginx ingress controller   | Fully supported                                                    |
-| HAProxy ingress controller | Fully supported                                                    |
-| Traefik as ingress gateway | Supported using ingress routes and manually configured middlewares |
-| Istio as API gateway       | Fully supported                                                    |
-| Ambassador as API gateway  | Supported by manually editing the mapping                          |
-
-:::note
-The supported Kubernetes version for AutoStopping is 1.19.
-:::
-### Feature Support Matrix
-
-This section lists the feature support matrix for the supported cloud platforms:
-
-#### AWS Service
-
-|                     |                         |                     |                               |
-| ------------------- | ----------------------- | ------------------- | ----------------------------- |
-|                     | **Inventory Dashboard** | **Recommendations** | **AutoStopping**              |
-| **EC2**             | Yes                     | Yes         | Yes (With Spot Orchestration) |
-| **ECS**             | Yes                     | Yes         | Yes                           |
-| **EKS**             | Yes                     | Yes                 | Yes                           |
-| **RDS**             | Yes                     | No                  | Yes                           |
-| **EBS**             | Yes                     | No                  | No                            |
-| **Snapshots**       | Yes                     | No                  | NA                            |
-| **Elastic** **IPs** | Yes                     | No                  | NA                            |
-| **ASGs**            | No                      | No                  | Yes (With Spot Orchestration) |
-
-#### GCP Product
-
-|             |                         |                     |                  |
-| ----------- | ----------------------- | ------------------- | ---------------- |
-|             | **Inventory Dashboard** | **Recommendations** | **AutoStopping** |
-| **GCE VMs** | Yes                     | Coming soon         | Yes     |
-| **GKE**     | Yes                     | Yes                 | Yes              |
-
-#### Azure Product
-
-|                     |                         |                     |                               |
-| ------------------- | ----------------------- | ------------------- | ----------------------------- |
-|                     | **Inventory Dashboard** | **Recommendations** | **AutoStopping**              |
-| **Virtual Machine** | Yes             | Coming soon         | Yes (With Spot Orchestration) |
-| **AKS**             | Yes                     | Yes                 | Yes                           |
+<Ccm />
 
 ## Service Reliability Management
 
@@ -186,6 +121,12 @@ Most providers are used in both Pipeline Notification Strategies and User Group 
 | [ServiceNow](../platform/9_Approvals/service-now-approvals.md)                                      | N/A          | Yes                        |
 | [PagerDuty](../continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md   | N/A                        |
 
+## Harness Git Experience
+
+import Gitxsup from '/docs/getting-started/shared/gitx-whats-supported.md'
+
+<Gitxsup />
+
 ## Access control
 
 import Accessconsup from '/docs/getting-started/shared/access-control-supported.md'
@@ -203,6 +144,16 @@ import Secretmgmtsup from '/docs/getting-started/shared/secret-management-suppor
 import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';
 
 <Smp />
+
+## Template Library
+
+#### Limitations
+
+* When you delete an existing template with active pipeline references, Harness deletes the references.
+* When you convert a runtime input in a template to a fixed value, the input type does not change in the linked pipeline. You must manually edit the linked pipeline YAML and provide the fixed values.
+* When you convert a fixed type input to a runtime input in your template, the input type does not change in the linked pipeline. You must click the template in the linked pipeline to refresh it and save the pipeline again. This re-initiates the reconciliation process.
+* Chained pipeline stages are not supported with pipeline templates.
+* When using multiple nested templates, you must manually reconcile the changes or force reconcile via the three-dots menu. 
 
 ## SDKs installed with Harness Delegate
 
@@ -267,7 +218,7 @@ Harness includes native TUF support via the following:
 - OCI image registry support:
   - TUF recommends the use of an OCI image-spec container registry. Harness supports [OCI registry for Helm charts](https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-connectors/add-helm-repository-servers/#oci-registry).
 - Enforce the rotation of secrets and key management practices:
-  - Harness provides [token key rotation natively](/docs/platform/User-Management/add-and-manage-api-keys#rotate-token).
+  - Harness provides [token key rotation natively](/docs/platform/automation/api/add-and-manage-api-keys#rotate-tokens).
 - Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step).
 
 ## Harness Open Source Software (OSS) components

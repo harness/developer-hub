@@ -2,7 +2,7 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-08-01T10:00
+date: 2023-08-21T10:00
 sidebar_position: 9
 ---
 ```mdx-code-block
@@ -18,10 +18,60 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 7, 2023, version 1.16.5
+## Latest: Version 1.17.3
 
-<Tabs>
-  <TabItem value="What's new">
+### What's new
+
+* Added support for OpenShift configuration for deploying chaos infrastructure. This will provide you with a predefined security context constraint (SCC) that you can modify according to your needs. (CHAOS-1889)
+
+* Enhanced the Chaos experiment execution diagram to not switch to running nodes automatically. This change ensures that you stay on a node when you click it, thus giving you the opportunity to observe its details. (CHAOS-2258)
+
+* Enhanced the Docker service kill fault to support the containerd runtime. (CHAOS-2220)
+
+* Added support for targeting applications by using only `appkind`, only `applabel`, and set-based labels. (CHAOS-2170, CHAOS-2128)
+
+* Parallel chaos injection and revert operations at scale have been improved for multiple target pods on the same node. (CHAOS-1563)
+
+* Previously, if you did not set the `TARGET_CONTAINER` environment variable, the fault targeted a randomly selected container. Now, if you do not set the environment variable, the fault targets all containers in the target pods. (CHAOS-1216)
+
+* Now, Users can specify drain timeout explicitly in the node drain fault. The node-drain fault has been using the `CHAOS_DURATION` value as a timeout, leading to potential confusion and risk of failure, especially when a shorter duration is used with many pods. The expectation is that `CHAOS_DURATION` should define the unschedulable period after draining. Providing a specific drain timeout would help users better estimate the eviction time for all pods on a node, reducing errors and false negatives. (CHAOS-2185)
+
+* Enhanced the JobCleanUpPolicy configuration to also retain helper pods when it is set to retain in ChaosEngine. (CHAOS-2273)
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+* Fixed how chaos is reverted if an attempt to inject the node drain fault fails or needs to be canceled. (CHAOS-2184)
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+## August 9, 2023, version 1.16.6
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues 
+
+* There was an issue where users were not getting audit events for the rules created under the Security Governance tab. This issue has been fixed. (CHAOS-2259)
+
+#### August 7, 2023, version 1.16.5
+
+##### What's new
 
 * A new feature lets users do an automated upgrade for their cluster-scope chaos infrastructures using an upgrade agent, which is deployed along with the chaos infrastructure. This also lets users do an upgrade of their chaos infrastructures on demand. (1849)
 
@@ -33,31 +83,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * The UI now provides a toggle in AWS experiments to enable or disable cloud secrets. (CHAOS-2092)
 
-
-  </TabItem>
-  <TabItem value="Early access">
-
+##### Early access
 
 This release does not include early access features.
 
-
-  </TabItem>
-  <TabItem value="Fixed issues"> 
+##### Fixed issues 
 
 * Previously, the pipeline diagram crashed randomly when scheduling a new experiment. This happened due to the API returning an empty object for nodes. This issue has been fixed. (CHAOS-2148)
 
 * In advanced configuration for experiments and chaos infrastructures, if you add a toleration, tolerationSeconds is now optional if the toleration effect is NoSchedule. (CHAOS-1955)
 
 * Upgraded the Argo components Workflow-Controller and Argo-Exec to version 3.4.8. This reduces the number of vulnerabilities from 227 to 26. (CHAOS-1902)
-
-
-  </TabItem>
-</Tabs>
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 1, 2023, version 1.15.7
 

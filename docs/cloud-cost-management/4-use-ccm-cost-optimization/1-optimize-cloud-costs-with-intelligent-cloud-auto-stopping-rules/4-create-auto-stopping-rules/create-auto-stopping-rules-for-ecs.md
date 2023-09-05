@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 # Create AutoStopping Rules for Amazon ECS
-AutoStopping Rule is a dynamic and powerful resource orchestrator for non-production workloads. It automatically shuts down idle resources and runs them on spot instances without worrying about interruptions. For more information, see [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md).
+AutoStopping Rule is a dynamic and powerful resource orchestrator for non-production workloads. It automatically shuts down idle resources and runs them on spot instances without worrying about interruptions. For more information, see [AutoStopping Rules Overview](../1-auto-stopping-rules.md).
 
 This topic describes how to create AutoStopping Rules for Amazon Elastic Container Service (ECS).
 
@@ -200,7 +200,7 @@ Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](autos
 
 ### Create AutoStopping Rules with Terraform for ECS Services
 
-You can also use Terraform provider to create AutoStopping Rules. To do so, perform the following steps:
+You can also use Terraform Provider to create AutoStopping Rules. To do so, perform the following steps:
 
 Perform the following steps to create AutoStopping Rules for Terraform.
 

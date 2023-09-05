@@ -130,9 +130,9 @@ You could also [write a custom plugin](./custom_plugins.md) that downloads, unzi
 
 :::tip Tips
 
-You can use variable expressions for **Settings** values, such as `credentials: <+stage.variables.[TOKEN_SECRET]>`, which uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
+You can use variable expressions for **Settings** values. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
 
-Create [text secrets](/docs/platform/Secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by the plugin.
+Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by the plugin.
 
 When you run the pipeline, [check the log output](../viewing-builds.md) to verify that the plugin works as intended.
 
@@ -151,7 +151,11 @@ For information about a plugin's settings, go to the plugin's page on the [Drone
 
 ### Output variables
 
-For information about output variables produced by plugins, refer to [Output variables in the Plugin step settings reference](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables).
+For information about output variables produced by plugins, go to [Plugin step settings: Output variables](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables).
+
+<!-- H3 Environment variables
+
+Harness CI supports `DRONE_` environment variables. For more information, go to the CI environment variables reference ../optimize-and-more/ci-env-var.md .-->
 
 ### Plugin configuration examples
 
@@ -162,7 +166,7 @@ Here are some YAML examples and additional information about specific Drone plug
 
 Use the [artifact-metadata-publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish a URL of an artifact file to the [Artifacts tab](../viewing-builds.md).
 
-An example of the **Plugin** step configuration is provided below; however your pipeline must also include steps to upload the file that you want to link to on the Artifacts tab, as demonstrated in the [Publish any URL to the Artifacts tab tutorial](/tutorials/ci-pipelines/publish/artifacts-tab/).
+An example of the **Plugin** step configuration is provided below; however, your pipeline must also include steps to upload the file that you want to link to on the **Artifacts** tab, as demonstrated in the [Artifacts tab tutorial](/tutorials/ci-pipelines/publish/artifacts-tab/).
 
 ```yaml
                - step:
@@ -176,6 +180,8 @@ An example of the **Plugin** step configuration is provided below; however your 
                       file_urls: https://storage.googleapis.com/.../index.html ## URL for the storage location where the data file is located.
                       artifact_file: artifact.txt ## The name of the artifact file
 ```
+
+For more information about uploading and publishing artifacts, go to [Build and upload artifacts](/docs/category/build-and-upload-artifacts).
 
 </details>
 
@@ -309,7 +315,7 @@ It's often easier to define complex settings in the Harness Pipeline Studio's YA
 
 ### Text secrets
 
-The following snippets illustrate the different ways that Drone and Harness CI handle [text secrets](/docs/platform/Secrets/add-use-text-secrets).
+The following snippets illustrate the different ways that Drone and Harness CI handle [text secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ```mdx-code-block
 <Tabs>

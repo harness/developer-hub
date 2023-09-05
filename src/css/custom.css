@@ -326,7 +326,10 @@ body {
 a:hover {
   color: var(--ifm-color-primary-light);
 }
-
+h2{
+  display: flex;
+  align-items: center;
+}
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
   --ifm-color-primary: var(--primary-5);
@@ -616,7 +619,6 @@ ul ol {
   margin-bottom: 10px;
 }
 
-/* HDH-141-authenticated-experience-hdh-mvp */
 
 figcaption{
   font-style: italic;

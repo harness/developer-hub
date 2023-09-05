@@ -24,21 +24,6 @@ Testing is an important part of Continuous Integration (CI). Testing safeguards 
 
 Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. You can also use [parallelism (test splitting) with TI](#enable-parallelism-test-splitting-for-test-intelligence) to further optimize your test times.
 
-Using TI doesn't require you to change your build and test processes. To enable TI, [add a Run Tests step](#add-the-run-tests-step) and [generate a call graph](#generate-the-initial-call-graph). The **Run Tests** step executes one or more tests on a container image. The first time you enable TI on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for test selection in future builds.
-
-<details>
-<summary>Video summary</summary>
-
-The following video walks you through setting up Test Intelligence in a Harness CI pipeline. The TI section starts after the 11 minute mark in the video.
-
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://www.youtube.com/embed/eAtIO4bJ3No" />
-
-<!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/eAtIO4bJ3No" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
-
-</details>
-
 ## How does Test Intelligence work?
 
 Test Intelligence uses *test selection* to run only those tests that are relevant to code changes. This includes changes to your software's code, as well as changes to your tests (new or modified tests). Instead of always running all unit tests, TI selects only the relevant subset of unit tests and skips the rest.
@@ -85,7 +70,28 @@ Currently, TI for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness 
 
 For unsupported codebases, [use Run steps](../run-ci-scripts/run-step-settings.md) to run tests.
 
-## Add the Run Tests step
+## Enable Test Intelligence
+
+Using TI doesn't require you to change your build and test processes. To enable TI:
+
+1. [Add a Run Tests step](#add-the-run-tests-step), which executes one or more tests on a container image.
+2. [Generate a call graph](#generate-the-initial-call-graph). The first time you enable TI on a repo, you must commit changes to your codebase that run *all* tests. This generates the initial call graph, which sets the baseline for test selection in future builds.
+3. After you've successfully enabled TI, you can further optimize test times by [enabling parallelism (test splitting) for TI](#enable-parallelism-test-splitting-for-test-intelligence).
+
+<details>
+<summary>Video summary</summary>
+
+The following video walks you through setting up Test Intelligence in a Harness CI pipeline. The TI section starts after the 11-minute mark in the video.
+
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/eAtIO4bJ3No" />
+
+<!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/eAtIO4bJ3No" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
+
+</details>
+
+### Add the Run Tests step
 
 You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run Tests** step. Your pipeline must be associated with a [supported codebase](#supported-codebases).
 
@@ -193,7 +199,7 @@ The build environment must have the necessary binaries for the **Run Tests** ste
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
                     buildTool: Dotnet ## Specify Dotnet or Nunit.
-                    args: dotnet test --no-build --verbosity normal
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
                     namespaces: aw,fc
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
@@ -219,16 +225,44 @@ The build environment must have the necessary binaries for the **Run Tests** ste
 </Tabs>
 ```
 
-## Generate the initial call graph
+### Generate the initial call graph
 
-The first time you enable Test Intelligence on a repo, you must run all tests to generate an initial call graph. This creates a baseline for test selection in future builds. To generate the initial call graph:
+The first time you enable Test Intelligence on a repo, you must run *all* tests to generate an initial call graph. This sets the baseline for test selection in future builds. You can use a webhook trigger or manual build to generate the initial call graph.
 
-1. [Add a webhook trigger](../../../platform/11_Triggers/triggering-pipelines.md) to the pipeline that listens for PRs to be opened against the pipeline's codebase.
-2. Open a PR against the pipeline's codebase. Make sure the build triggered by this PR runs all tests.
-3. Wait while the pipeline executes. To monitor the build's progress, go to **Builds** and select the build that the PR started.
-4. If the tests pass and the build succeeds, merge the PR.
+```mdx-code-block
+<Tabs>
+  <TabItem value="webhook" label="Webhook trigger (Recommended)" default>
+```
 
-## Enable parallelism (test splitting) for Test Intelligence
+1. [Add a webhook trigger](/docs/platform/triggers/triggering-pipelines/) to your pipeline that listens for **Pull Request** or **Push** events in the pipeline's [codebase](../codebase-configuration/create-and-configure-a-codebase.md).
+2. Open a PR or push changes that cause *all* tests to run for your codebase.
+3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../viewing-builds.md). If the build succeeds, you can [review the test results](#view-test-reports).
+4. If the tests pass and the build succeeds, merge your PR, if applicable.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="manual" label="Manual build">
+```
+
+1. Open a PR or push changes that cause *all* tests to run for your pipeline's [codebase](../codebase-configuration/create-and-configure-a-codebase.md).
+2. In Harness, run your pipeline.
+
+   * If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
+   * If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
+
+   <!-- ![](./static/set-up-test-intelligence-04.png) -->
+
+   <docimage path={require('./static/set-up-test-intelligence-04.png')} />
+
+3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../viewing-builds.md). If the build succeeds, you can [review the test results](#view-test-reports).
+4. If the tests pass and the build succeeds, merge your PR, if applicable.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+### Enable parallelism (test splitting) for Test Intelligence
 
 You can enable parallelism and test splitting in your **Run Tests** steps to further optimize test times.
 
@@ -247,7 +281,61 @@ Suppose you have a pipeline that runs 100 tests, and each test takes about one s
 
 Note that while parallelism for TI can improve the total time it takes to run all tests, some tests may still take a long time to run if, by their nature, they are intensive, long-running tests.
 
-To enable parallelism for TI, you must set a parallelism `strategy` on either the **Run Tests** step or the stage where you have the **Run Tests** step, and you must add the `enableTestSplitting` parameter to your **Run Tests** step. You can also add the optional parameter `testSplitStrategy`.
+To enable parallelism for TI, you must set a parallelism `strategy` on either the **Run Tests** step or the stage where you have the **Run Tests** step, add the `enableTestSplitting` parameter to your **Run Tests** step, and use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) to create a unique results file for each run. Optionally, you can include the `testSplitStrategy` parameter and environment variables to differentiate parallel runs.
+
+1. Go to the pipeline where you want to enable parallelism for TI.
+2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
+
+   You can do this in either the visual or YAML editor. In the visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
+
+   :::caution
+
+   If you use step-level parallelism, you must ensure that your test runners won't interfere with each other because all parallel steps work in the same directory.
+
+   :::
+
+3. Switch to the YAML editor, if you were not already using it.
+4. Find the `RunTests` step, and then find the `spec` section.
+5. Add `enableTestSplitting: true`.
+6. The `testSplitStrategy` parameter is optional. If you include it, you can choose either `TestCount` or `ClassTiming`.
+
+   Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test count uses simple division to split the tests into workloads. The default is `ClassTiming` if you omit this parameter. However, the maximum possible number of workloads is determined by the parallelism `strategy` you specified on the step or stage. For example, if you set `parallelism: 5`, tests are split into a maximum of five workloads.
+
+7. Modify the `reports.paths` value to use a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+strategy.iteration>`. This ensures there is a unique results file for each parallel run. For example:
+
+   ```yaml
+                          reports:
+                            spec:
+                              paths:
+                                - "target/surefire-reports/result_<+strategy.iteration>.xml"
+                            type: JUnit
+   ```
+
+8. You can add environment variables to differentiate parallel runs in build logs.
+
+   * Add two environment variables to the `step.spec`: `HARNESS_STAGE_INDEX: <+strategy.iteration>` and `HARNESS_STAGE_TOTAL: <+strategy.iterations>`.
+   * Add a `preCommand` to echo the variables' values so you can easily see the values in build logs.
+
+   ```yaml
+                 - step:
+                     type: RunTests
+                     identifier: Run_Tests_with_Intelligence
+                     name: Run Tests with Intelligence
+                     spec:
+                       language: Java
+                       buildTool: Maven
+                       envVariables: ## Optional environment variables to differentiate parallel runs.
+                         HARNESS_STAGE_INDEX: <+strategy.iteration> # Index of current parallel run.
+                         HARNESS_STAGE_TOTAL: <+strategy.iterations> # Total parallel runs.
+                       preCommand: |- ## Optional. Echo environment variables to differentiate parallel runs in build logs.
+                         echo $HARNESS_STAGE_INDEX
+                         echo $HARNESS_STAGE_TOTAL
+                       args: test
+                       ...
+   ```
+
+<details>
+<summary>YAML example: Test Intelligence with test splitting</summary>
 
 ```yaml
     - stage:
@@ -259,22 +347,28 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
           execution:
             steps:
               - step:
+                  type: RunTests
                   identifier: Run_Tests_with_Intelligence
                   name: Run Tests with Intelligence
                   spec:
                     language: Java
                     buildTool: Maven
+                    envVariables: ## Optional environment variables to differentiate parallel runs.
+                      HARNESS_STAGE_INDEX: <+strategy.iteration> # Index of current parallel run.
+                      HARNESS_STAGE_TOTAL: <+strategy.iterations> # Total parallel runs.
+                    preCommand: |- ## Optional. Echo environment variables to differentiate parallel runs in build logs.
+                      echo $HARNESS_STAGE_INDEX
+                      echo $HARNESS_STAGE_TOTAL
                     args: test
+                    runOnlySelectedTests: true ## Enable TI.
                     enableTestSplitting: true ## Enable test splitting.
                     testSplitStrategy: ClassTiming ## Optional. Can be ClassTiming or TestCount. Default is ClassTiming.
                     postCommand: mvn package -DskipTests
                     reports:
                       spec:
                         paths:
-                          - "target/surefire-reports/*.xml"
+                          - "target/surefire-reports/result_<+strategy.iteration>.xml" ## Use an expression to generate a unique results file for each parallel run.
                       type: JUnit
-                    runOnlySelectedTests: true ## Enable TIe.
-                  type: RunTests
           platform:
             arch: Amd64
             os: Linux
@@ -285,25 +379,9 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
           parallelism: 3 ## Set the number of groups to use for test splitting.
 ```
 
-1. Go to the pipeline where you want to enable parallelism for TI.
-2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
+</details>
 
-   You can do this in either the visual or YAML editor. In the visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
-
-   :::caution
-
-   If you use step-level parallelism, you must ensure that your test runners won't interfere with each other, because all parallel steps work on the same directory.
-
-   :::
-
-3. Switch to the YAML editor, if you were not already using it.
-4. Find the `RunTests` step, and then find the `spec` section.
-5. Add `enableTestSplitting: true`.
-6. The `testSplitStrategy` parameter is optional. If you include it, you can choose either `TestCount` or `ClassTiming`.
-
-   Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test count uses simple division to split the tests into workloads. The default is `ClassTiming` if you omit this parameter. However, the maximum possible number of workloads is determined by the parallelism `strategy` you specified on the step or stage. For example, if you set `parallelism: 5`, tests are split into a maximum of five workloads.
-
-## Ignore tests or files
+### Ignore tests or files
 
 If you want Test Intelligence to ignore certain tests or files, create a `.ticonfig.yaml` file in your codebase containing a list of tests and files to ignore, for example:
 
@@ -369,52 +447,13 @@ You can sort the list by failure rate, duration, and total tests. You can also e
 <details>
 <summary>Call Graph</summary>
 
-The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to run all tests and [generate the initial call graph](#generate-the-initial-call-graph). This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by TI for that run.
+The first time you enable Test Intelligence on a repo, you must run all tests to [generate the initial call graph](#generate-the-initial-call-graph). This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by TI for that run.
 
 Select **Expand graph** to view the TI Visualization, which shows why a specific test was selected and the reason behind every test selection. Purple nodes represent tests. Select any test (purple node) to see all the classes and methods covered by that test. Blue nodes represent changes to classes and methods that caused TI to select that test.
 
 ![](./static/set-up-set-up-test-intelligence-531.png)
 
 </details>
-
-## Troubleshooting
-
-You might encounter these issues when using Test Intelligence.
-### pom.xml with argLine
-
-If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
-
-**Before:**
-
-```
-<argLine> something  
-</argLine>
-```
-
-**After:**
-
-```
-<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
-</argLine>
-```
-
-### Jacoco/Surefire/Failsafe
-
-If you're using Jacoco, Surefire, or Failsafe, make sure the `forkCount` is not set to `0`.
-
-For example, the following configuration in `pom.xml` removes the `forkCount` setting and applies `useSystemClassLoader` as a workaround:
-
-```
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-surefire-plugin</artifactId>
-    <version>2.22.1</version>
-    <configuration>
-        <!--  <forkCount>0</forkCount> -->
-        <useSystemClassLoader>false</useSystemClassLoader>
-    </configuration>
-</plugin>
-```
 
 ## Settings
 
@@ -432,9 +471,7 @@ The **Run Tests** step has the following settings.
 
 Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
 
-### Description
-
-Optional text string.
+**Description** is optional.
 
 ### Container Registry and Image
 
@@ -461,14 +498,20 @@ The stage's build infrastructure determines whether these fields are required or
 
 ### Language
 
-Select the source code language to build: **C#**, **Java**, **Kotlin**, or **Scala**.
-
-Additional settings appear if you select **C#** or **Java**.
+Select the source code language to build: **C#**, **Java**, **Kotlin**, or **Scala**. Some languages have additional settings.
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="csharp" label="C#" default>
+  <TabItem value="csharp" label="C#">
 ```
+
+:::note
+
+Currently, TI for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+<!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/#build-environment) in your pipeline's YAML. -->
+
+:::
 
 #### Build Environment
 
@@ -507,8 +550,10 @@ Supply a comma-separated list of namespace prefixes that you want to test.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="java" label="Java">
+  <TabItem value="java" label="Java" default>
 ```
+
+<!-- Java tab must be set to default because there is an anchored link pointing to Do you want to enable error tracking -->
 
 #### Do you want to enable Error Tracking?
 
@@ -557,6 +602,20 @@ Error tracking output is reported on the [Error Tracking tab](../viewing-builds.
 This setting is located under **Additional Configuration**.
 
 You can provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. If not specified, the defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="kotlin" label="Kotlin">
+```
+
+No additional settings for Kotlin.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="scala" label="Scala">
+```
+
+No additional settings for Scala.
 
 ```mdx-code-block
   </TabItem>
@@ -618,13 +677,17 @@ Bazel is already installed on Harness Cloud. For other build infrastructures, yo
 
 ### Build Arguments
 
-Enter the arguments for the build tool. These are used as input for the chosen build tool.
+Enter arguments to use as input for the build tool. You don't need to repeat the build tool, such as `maven` or `dotnet`; these are declared in **Build Tool**.
 
-The following languages and build tools have specific build argument requirements:
+Note the following requirements:
 
-* **Java:** Provide runtime arguments for the tests, for example: `Test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false`.
-* **C#:** Provide runtime arguments for the tests, for example: `/path/to/test.dll /path/to/testProject.dll`. **Do not** inject another instrumenting agent, such as a code-coverage agent, in the argument string.
-* **NUnit C#:** Provide runtime executables and arguments for the tests, for example: `. "path/to/nunit3-console.exe" path/to/TestProject.dll --result="UnitTestResults.xml" /path/to/testProject.dll`. You must include the executable in the string. **Do not** inject another instrumenting agent, such as a code-coverage agent, in the string.
+* **Java:** Provide runtime arguments for tests, for example: `Test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false`.
+* **C# .NET:** Provide runtime arguments for tests, for example: `/path/to/test.dll /path/to/testProject.dll`.
+   * Expects `.dll` injection. `csproj` isn't supported.
+   * **Do not** inject another instrumenting agent, such as a code coverage agent, in the argument string.
+* **C# NUnit:** Provide runtime executables and arguments for tests, for example: `. "path/to/nunit3-console.exe" path/to/TestProject.dll --result="UnitTestResults.xml" /path/to/testProject.dll`.
+   * You must include the executable in the string.
+   * **Do not** inject another instrumenting agent, such as a code coverage agent, in the string.
 
 ### Test Report Paths
 
@@ -656,7 +719,24 @@ Leave blank or provide a comma-separated list of source code package prefixes, s
 
 ### Environment Variables
 
-Variables passed to the container as environment variables and used in the step's commands.
+You can inject environment variables into the step container and use them in the step's commands. You must input a **Name** and **Value** for each variable.
+
+You can reference environment variables in the **Command**, **Pre-Command**, or **Post-Command** scripts by name, such as `$var_name`.
+
+Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
+
+<figure>
+
+![](../manage-dependencies/static/background-step-settings-09.png)
+
+<figcaption>Using an expression for an environment variable's value.</figcaption>
+</figure>
+
+:::tip Stage variables
+
+[Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are inherently available to steps as environment variables.
+
+:::
 
 ### Output Variables
 
@@ -838,7 +918,7 @@ pipeline:
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
                     buildTool: Dotnet ## Specify Dotnet or Nunit.
-                    args: dotnet test --no-build --verbosity normal
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
                     namespaces: aw,fc
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
@@ -1020,7 +1100,7 @@ pipeline:
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
                     buildTool: Dotnet ## Specify Dotnet or Nunit.
-                    args: dotnet test --no-build --verbosity normal
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
                     namespaces: aw,fc
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
@@ -1052,4 +1132,43 @@ pipeline:
 ```mdx-code-block
   </TabItem>
 </Tabs>
+```
+
+## Troubleshooting
+
+You might encounter these issues when using Test Intelligence.
+### pom.xml with argLine
+
+If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
+
+**Before:**
+
+```
+<argLine> something  
+</argLine>
+```
+
+**After:**
+
+```
+<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
+</argLine>
+```
+
+### Jacoco/Surefire/Failsafe
+
+If you're using Jacoco, Surefire, or Failsafe, make sure that `forkCount` is not set to `0`.
+
+For example, the following configuration in `pom.xml` removes `forkCount` and applies `useSystemClassLoader` as a workaround:
+
+```
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.22.1</version>
+    <configuration>
+        <!--  <forkCount>0</forkCount> -->
+        <useSystemClassLoader>false</useSystemClassLoader>
+    </configuration>
+</plugin>
 ```

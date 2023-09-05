@@ -1,9 +1,8 @@
 ---
 sidebar_position: 1
 description: Install Harness Delegate on Kubernetes or Docker
+title: Install Harness Delegate on Kubernetes or Docker
 ---
-
-# Install Harness Delegate on Kubernetes or Docker
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -267,7 +266,7 @@ docker run --cpus=1 --memory=2g \
 ```
 Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, to find your Harness cluster location, select **Account Settings**, and then select **Overview**. In **Account Overview**, look in **Account Settings**. It is listed next to **Harness Cluster Hosting Account**.
 
-For more information, go to [View account info and subscribe to downtime alerts](https://developer.harness.io/docs/platform/1_Get-started/platform-concepts/view-account-info-and-subscribe-to-alerts.md).
+For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts).
 
 ![](./static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
 
@@ -287,6 +286,44 @@ If you are using a local runner CI build infrastructure, modify the delegate ins
 </TabItem>
 </Tabs>
 ```
+
+## Deploy using a custom role
+
+During delegate installation, you have the option to deploy using a custom role. To use a custom role, you must edit the delegate YAML file.
+
+Harness supports the following custom roles:
+
+- `cluster-admin`
+- `cluster-viewer`
+- `namespace-admin`
+- custom cluster roles
+
+To deploy using a custom cluster role, do the following:
+
+1. Open the delegate YAML file in your text editor.
+
+2. Add the custom cluster role to the `roleRef` field in the delegate YAML.
+
+   ```yaml
+   ---
+   apiVersion: rbac.authorization.k8s.io/v1beta1
+   kind: ClusterRoleBinding
+   metadata:
+     name: harness-delegate-cluster-admin
+   subjects:
+     - kind: ServiceAccount
+       name: default
+       namespace: harness-delegate-ng
+   roleRef:
+     kind: ClusterRole
+     name: cluster-admin
+     apiGroup: rbac.authorization.k8s.io
+   ---
+   ```
+
+   In this example, the `cluster-admin` role is defined.
+
+3. Save the delegate YAML file. 
 
 ## Verify delegate connectivity
 

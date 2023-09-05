@@ -20,12 +20,6 @@ The following steps outline the basic workflow:
 
 2. Use a [CodeQL](#codeql-step-configuration) step to ingest the results. 
 
-   :::note
-   Currently, the CodeQL scanner template is behind the feature flag `STO_STEP_PALETTE_CODEQL`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-
-   Alternately, you can use a [Custom ingest step](./custom-ingest-reference.md) to ingest your data instead.
-   :::
-
    
 This topic includes an [end-to-end YAML pipeline](#yaml-pipeline-example) that illustrates this workflow. 
 
@@ -168,7 +162,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Settings
 
-You can add a `tool_args` setting to run the [CodeQL scanner binary](https://pypi.org/project/CodeQL/1.0.1/) with specific command-line arguments. For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `tool_args` = `-skip testID_1, testID_3, testID_5`
+You can add a `tool_args` setting to run the [CodeQL scanner binary](https://codeql.github.com/docs/) with specific command-line arguments. <!-- For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `tool_args` = `-skip testID_1, testID_3, testID_5` -->
 
 
 ### Additional Configuration
@@ -188,7 +182,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
 <!-- yaml pipeline example ----------------------------------------------------------------------------- -->
@@ -198,107 +192,120 @@ In the **Advanced** settings, you can use the following options:
 
 The following pipeline example is an ingestion workflow. It consists of two steps.  A Run step installs CodeQL, scans the repository defined in the Codebase object, and publishes the scan results to a SARIF file. A CodeQL step then ingests the SARIF file. 
 
+![](./static/codeql-ingestion-pipeline-example.png)
+
 ```yaml
 
 pipeline:
   projectIdentifier: STO
   orgIdentifier: default
   tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: wwdvpwa
-        repoName: dvpwa
-        build: <+input>
   stages:
     - stage:
-        name: codeql
-        identifier: codeql
-        type: CI
+        name: ingestion
+        identifier: ingestion
+        type: SecurityTests
         spec:
-          cloneCodebase: true
+          cloneCodebase: false
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: my-harness-delegate
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
           execution:
             steps:
               - step:
                   type: Run
-                  name: codeql_analyze
-                  identifier: codeql_analyze
+                  name: create codeql sarif
+                  identifier: create_codeql_sarif
                   spec:
-                    connectorRef: account.harnessImage
-                    image: ubuntu:20.04
+                    connectorRef: DockerHub
+                    image: alpine
                     shell: Sh
                     command: |-
-                      #!/bin/bash
-
-
-                      # Change the working directory to the app directory.
-                      mkdir /app
-                      cd /app
-
-                      # Update and upgrade the apt packages.
-                      apt update -y -q
-                      apt upgrade -y -q 
-
-                      # Install the wget and tar packages and python3.
-                      export DEBIAN_FRONTEND="noninteractive"
-                      apt install -y -q wget tar python3.9-venv python3.9 build-essential
-
-                      # Download the CodeQL bundle.
-                      wget -q https://github.com/github/codeql-action/releases/latest/download/codeql-bundle-linux64.tar.gz
-
-                      # Extract the CodeQL bundle.
-                      tar -xvzf ./codeql-bundle-linux64.tar.gz -C /app/
-
-                      # Set the PATH environment variable to include the CodeQL directory.
-                      export PATH="${PATH}:/app/codeql"
-
-                      # Resolve the CodeQL packs
-                      codeql resolve qlpacks
-
-                      # Move back to the code folder before scanning
-                      cd /harness
-
-                      # Create a CodeQL database.
-                      codeql database create python_database --language=python
-
-                      # Run the CodeQL analyzer.
-                      codeql database analyze python_database --format=sarif-latest --output=/shared/customer_artifacts/dvpwa-codeql-results.sarif
-                    imagePullPolicy: Always
-                    resources:
-                      limits:
-                        memory: 2G
-                        cpu: 2000m
+                      pwd
+                      echo '{
+                          "$schema": "",
+                          "version": "sarif-2.1.0",
+                          "runs": [
+                            {
+                              "tool": {
+                                "driver": {
+                                  "name": "CodeQL",
+                                  "version": "2.5.7",
+                                  "semanticVersion": "2.5.7+1234567890",
+                                  "informationUri": "https://github.com/github/codeql",
+                                  "properties": {
+                                    "analysisTarget": "myproject",
+                                    "analysisTimestamp": "2023-04-03T14:00:00Z",
+                                    "analysisDuration": 120000,
+                                    "query": "detect-external-libs.ql",
+                                    "queryUrl": "https://github.com/github/codeql/blob/master/javascript/ql/src/semmle/javascript/Security/CWE/CWE-094/ExternalLibraries.ql"
+                                  }
+                                }
+                              },
+                              "results": [
+                                {
+                                  "ruleId": "js/detect-external-libs",
+                                  "message": {
+                                    "text": "The following external libraries were found: jQuery, Lodash"
+                                  },
+                                  "locations": [
+                                    {
+                                      "physicalLocation": {
+                                        "artifactLocation": {
+                                          "uri": "/path/to/myproject/js/script.js"
+                                        },
+                                        "region": {
+                                          "startLine": 10,
+                                          "startColumn": 1,
+                                          "endLine": 10,
+                                          "endColumn": 15
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "level": "warning",
+                                  "properties": {
+                                    "severity": "high",
+                                    "confidence": "medium"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }'> codeql.sarif
+                      ls
               - step:
                   type: CodeQL
-                  name: CodeQL_ingest
+                  name: CodeQL_1
                   identifier: CodeQL_1
                   spec:
                     mode: ingestion
                     config: default
                     target:
-                      name: codeql-dvpwa
+                      name: login_microservice
                       type: repository
-                      variant: test
+                      variant: my_hotfix_branch
                     advanced:
                       log:
                         level: info
                       fail_on_severity: critical
                     ingestion:
-                      file: /shared/customer_artifacts/dvpwa-codeql-results.sarif
+                      file: /harness/codeql.sarif
           sharedPaths:
+            - /var/run
             - /shared/customer_artifacts/
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: hyharnesslegate
-              namespace: harness-delegate-ng
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
-  identifier: CodeQLv3
-  name: CodeQL-v3
+  identifier: codeql_ingestion
+  name: codeql ingestion 
 
+```
 
+```mdx-code-block
+import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
 ```
 
 <StoSettingYAMLexample />

@@ -1,3 +1,5 @@
+If you use a scanner that isn't listed in the following table, you can still ingest your scan results into STO. For a full description of the workflow, go to [Ingest Results from Custom or Unsupported Scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md). 
+
 <table>
     <tr>
         <th>Scan Mode</th>
@@ -8,7 +10,7 @@
         <td valign="top">SAST</td>
         <td valign="top">
          	<ul>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference">Anchore Grype (filesystem scans)</a>  Orchestration, Ingestion </li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference">Grype (filesystem scans)</a>  Orchestration, Ingestion </li>
         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference">Bandit</a>  Orchestration, Ingestion </li>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference">Brakeman</a> Orchestration, Ingestion </li>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>
@@ -79,7 +81,7 @@
         <td valign="top">Containers</td>
         <td valign="top">
          	<ul>
-         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference">Anchore Grype</a>  Orchestration, Ingestion </li>
+         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference">Grype</a>  Orchestration, Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference">Aqua Trivy</a> Orchestration, Ingestion  </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/clair-scanner-reference">Clair</a> Orchestration, Ingestion </li>
         	</ul>

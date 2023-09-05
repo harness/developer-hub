@@ -16,7 +16,7 @@ Currently, this feature is behind the feature flag `OPA_PIPELINE_GOVERNANCE`. Co
 
 You can enforce policies in two ways:
 
-* **Account, Org, and** **Project-specific:** you can create the policy and apply it to all Pipelines in your Account, Org, and Project. The policy is evaluated on Pipeline-level events like On Run and On Save. See [Harness Governance Quickstart](harness-governance-quickstart.md).
+* **Account, Org, and** **Project-specific:** you can create the policy and apply it to all Pipelines in your Account, Org, and Project. The policy is evaluated on Pipeline-level events like On Run and On Save. Go to [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 * **Stage-specific:** you can add a Policy step, add a new/existing Policy Set to it, and then provide a JSON payload to evaluate.
 	+ The policy is evaluated whenever the Pipeline reaches the Policy step.
 	+ Policy evaluation can be performed on data generated when the Pipeline is running, such as resolved expressions.
@@ -26,9 +26,9 @@ This topic describes how to add a Policy step to a Stage.
 
 ### Before you begin
 
-* If you are new to Harness Governance, see [Harness Governance Overview](harness-governance-overview.md) and [Harness Governance Quickstart](harness-governance-quickstart.md).
+* If you are new to Harness Governance, go to [Harness Governance Overview](/docs/platform/governance/policy-as-code/harness-governance-overview) and [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
-### Limitations
+### Important notes
 
 * The policies that can be enforced are currently restricted by the Harness entities supported by the OPA service.
 * Currently, the Policy Step is available in Deploy, Custom, and Approval Stages.
@@ -52,7 +52,7 @@ In the **Execution** phase of the Stage, click **Add Step**.
 
 In **Governance**, click the **Policy** step.
 
-![](./static/add-a-governance-policy-step-to-a-pipeline-00.png)
+![](../../Governance/14_Policy-as-code/static/add-a-governance-policy-step-to-a-pipeline-00.png)
 The Policy step is added the to Stage.
 
 Enter a name and timeout for the step.
@@ -81,19 +81,19 @@ A Policy Set at the account level can be used in any Policy Step in the Orgs and
 
 In **Policy Set**, click **Add/Modify Policy Set**.
 
-In this example, we'll use an existing policy set. For details on creating a policy set, see [Harness Governance Quickstart](harness-governance-quickstart.md).
+In this example, we'll use an existing policy set. For details on creating a policy set, go to [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
-![](./static/add-a-governance-policy-step-to-a-pipeline-01.png)
+![](../../Governance/14_Policy-as-code/static/add-a-governance-policy-step-to-a-pipeline-01.png)
 
 Navigate to a **Policy Set**, select it, and click **Apply**.
 
 The Policy Set you select must be evaluated **On Step**.Currently, only the **Custom** entity type is supported. The Policy Set you select must have the **Custom** entity type selected.
 
-![](./static/add-a-governance-policy-step-to-a-pipeline-02.png)
+![](../../Governance/14_Policy-as-code/static/add-a-governance-policy-step-to-a-pipeline-02.png)
 
 Also, select how you want the Pipeline to handle policy evaluation failures:
 
-![](./static/add-a-governance-policy-step-to-a-pipeline-03.png)
+![](../../Governance/14_Policy-as-code/static/add-a-governance-policy-step-to-a-pipeline-03.png)
 
 The Policy Set is added.
 
@@ -107,7 +107,7 @@ In **Payload**, enter the payload to be evaluated by the Policy Set(s) you selec
 
 The **Policy Set** and **Payload** settings allow for Fixed Values, Runtime Inputs, and Expressions.
 
-For details on how these work in Harness, See [Fixed Values, Runtime Inputs, and Expressions](../../20_References/runtime-inputs.md).
+For details on how these work in Harness, go to [Fixed Values, Runtime Inputs, and Expressions](../../20_References/runtime-inputs.md).
 
 #### Fixed Values
 
@@ -117,12 +117,12 @@ Fixed Values is show in the **Policy Set** and **Payload** settings earlier in t
 
 You can select Runtime Inputs for one or both settings and when the Pipeline is executed you can provide the Policy Set and/or Payload for the step.
 
-![](./static/add-a-governance-policy-step-to-a-pipeline-04.png)
+![](../../Governance/14_Policy-as-code/static/add-a-governance-policy-step-to-a-pipeline-04.png)
 #### Expressions
 
 You can select Expressions for one or both settings and when the Pipeline is executed Harness will resolve the expressions for the Policy Set and/or Payload for the step.
 
-![](./static/add-a-governance-policy-step-to-a-pipeline-05.png)
+![](../../Governance/14_Policy-as-code/static/add-a-governance-policy-step-to-a-pipeline-05.png)
 ### Step 5: Test the Policy Step
 
 Let's look at an example of the Policy step.
@@ -141,7 +141,7 @@ deny[sprintf("version must be greater than v0.200.0 but is currently '%s'", [inp
 }
 ```
 
-Next, in our Pipeline we'll add an [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines) to check the version at the HTTP endpoint `https://app.harness.io/prod1/pm/api/v1/system/version`, and a **Policy** step to that uses our policy to check the version returned from the HTTP step:
+Next, in our Pipeline we'll add an [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step) to check the version at the HTTP endpoint `https://app.harness.io/prod1/pm/api/v1/system/version`, and a **Policy** step to that uses our policy to check the version returned from the HTTP step:
 
 Here's the YAML for a Pipeline that uses the step:
 ```
@@ -212,12 +212,12 @@ Now when we run the Pipeline, the Policy Step will evaluate the JSON in Payload 
 
 ### Policy Step Expressions
 
-You can use the following Harness expressions to output Policy Step status in a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step:
+You can use the following Harness expressions to output Policy Step status in a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step:
 
 * `<+execution.steps.[policy step Id].output.status>`
 * `<+execution.steps.[policy step Id].output.policySetDetails.Example.status>`
 
-![](./static/add-a-governance-policy-step-to-a-pipeline-06.png)  
+![](../../Governance/14_Policy-as-code/static/add-a-governance-policy-step-to-a-pipeline-06.png)  
 
 For example, if the Policy Step [Id](../../20_References/entity-identifier-reference.md) is `Check`, you would reference it like this:
 
