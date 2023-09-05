@@ -514,3 +514,24 @@ This behavior is expected when there are many branches in the repo due to pagina
 #### Howmany branches will be listed in branch dropdown UI when we try to open a git enabled pipeline?
 
 We typically list 20 to 30 branches, depending on the git provider as fetching all branches would be time-consuming.
+
+#### Where can we add the env attributes for delegate while doing helm chart installation ?
+
+Delegate deployment for helm chart installation is configured to pick the evnironment variable from configmap. Check the name of the configmap in the chart deployment yaml, the attribute is envFrom and edit the configmap to add the corresponding environment variables.
+
+
+#### How does delegate identify its scope for registration ?
+
+While installing delegates we do not explicitely configure it to connect at account , organisation or project scope. It is decided based on the scope of the delegate token. If the token is from project scope the delegate will register at project level. Same goes with organisation and account level.
+
+#### Will the delegate continue to work if we delete the delegate token being used ?
+
+The delegate registration is only valid till the delegate token with which it has registered is available and not expired/revoked. If the delegate token is deleted the delegate registration will no longer be valid and it will fail authorization.
+
+#### How many types of api token are there ?
+
+There are two types of api token, one can be created at user profile level and they are prefixed with `pat.xxxx....` standing for personal account token. The second one can be created at service account level which is prefixed as `sat.xxxxx....` which stands for service account token.
+
+#### How do we assign permission to the api tokens ?
+
+We do not assign permission directly to the account tokens. They inherit the permissions from the user if they are created at the user profile level or the service account if they are created at service account level.

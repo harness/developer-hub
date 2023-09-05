@@ -1024,3 +1024,45 @@ Harness supports using Helm v3.8.0 binaries. Please contact Harness support to e
 #### Harness Cloudformation Deploying base stack gets stuck with message "Invalid request: The null format is not valid"
 
 This is likely due to referencing the context variable at multiple places (e.g. ${context.basestackpre.basestackname}) in the CloudFormation Deploy Base Stack step and the step seems to be failing because of not being able to retrieve the proper values from the context variable as configured on the workflow.
+
+#### What is the correct way to specify org or account level connectors in terraform resources ?
+We should always prefix the scope of the connector ref before providing them in the resource file. For example if it is a org level conncetor the correct way to specify it is `org.myconnectorref`
+
+
+#### Why do we get error in terraform provider that a project level resource can not be used at org level?
+We have a top down hierarchy of the resources which goes account > org > project . You can refer any parent level resource at the child level but the reverse is not true. SO you should be able to reference a account level resource while creating a project level resource but not a project level resource while creating an account level resource.
+
+#### What does the error `The order in patch list: [map[name:PROXY_PASSWORD value:] map[name:SOMEFIELD value:false] ......] doesn't match $setElementOrder list` means ?
+
+The above error signifies that we have duplicate entries in the envVar in the manifest which is not allowed. To get rid of the error check the manifest envVar section for any duplicate entries, remove it and then re-run the pipeline.
+
+#### Can we set auto upgrade to on for ECS fargate delegates ?
+
+We do not have auto upgrade feature available for docker delegates which is what runs in fargate. We will have to manually change the task spec json file to change the image to the newest version.
+
+
+#### Why some data for the resource configurations returned by api are json but not the get pipeline detail api ?
+
+The reason the get api call for pipeline is returning a yaml because the pipeline is stored as yaml in harness. As this api call is for fetching the pipeline hence it is returning the yaml definition of the pipeline and not the json.
+If still you need json representation of the output you can use a parser like yq to convert the response.
+
+#### How can we access helm repo name from the helm connector?
+
+We do not have a direct variable exposed for reading the repo name from the connector. The connector variable is only available in custom deployment template. For normal usage we can make an api call to get the connector details and get the repo name from the "helmRepoUrl" attribute.
+
+#### Where does Harness Store release history for kuberenetes deployments using declarative rollback?
+
+For decalarative rollback , Harness stores the release history data in secrets. 
+
+#### Can we use terraform plan from one stage in apply step in another stage ?
+
+The inherit from plan option for the terraform apply step can be used only within same stage. It is not possible to run plan step in one stage and then use inherit from plan option for apply step in another stage.
+
+#### What is the recommended way to save the state file for terraform pipelines?
+
+For testing scenarios you can run the terraform without remote backend for saving the terraform state file however for prodcution runs it is always recommended to start with a remote backend configured from first run.
+
+
+#### How can we add newline in mail body sent from email step ?
+
+The email body sent uses a html format and hence the newline character will not work for adding newline entries. We need to make use of html line break for this `<br>`.
