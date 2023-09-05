@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-08-10T10:00:15
+date: 2023-09-05T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -35,7 +35,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 <Kustomizedep />
 
 
-## Latest: Version 804xx
+## Latest: Version 80406
 
 ### New features and enhancements
 
@@ -47,9 +47,9 @@ This release does not include early access features.
   
 ### Fixed issues
 
-- The control data start timestamp was missing in the API response, despite the presence of control data for the throughput metric when the overall analysis indicated "no analysis." (OIP-762)
+- The control data start time stamp was missing in the API response, despite the presence of control data for the throughput metric when the overall analysis indicated "no analysis." (OIP-762)
 
-  This issue has been resolved. The control data timestamp is now included in the API response, even if the overall analysis status is "no analysis".
+  This issue has been resolved. The control data time stamp is now included in the API response, even if the overall analysis status is "no analysis".
 
 - Fixed an issue where users could not specify runtime inputs for some advanced settings (such as the looping strategy) in step groups and step group templates. With this fix, runtime inputs are supported for all advanced step group settings. (CDS-77246, ZD-49339, ZD-49427)
 
@@ -104,30 +104,6 @@ This release does not include early access features.
 - Fixed an issue on the Pipeline Executions page where the Services filter didn't list all services. (CDS-73277)
 
 - Improved the error message shown in the UI if the entity type of a new version of a template is different: `Failed to save the template <NAME> because an existing template of different type has the same identifier` (CDS-73243)
-
-<!-- double-check that this appears release page before publishing: 
-
-https://harness.atlassian.net/wiki/spaces/PD/pages/21476737025/NG+Release+SAAS+August+23rd+2023+for+804xx-+Build
-
--->
-
-- Fixed an issue where ECR image based triggers based on ECR images were firing with null values the for artifact image tag and repository name. (CDS-75173)
-
-  This fix includes the following new expressions:
-  
-  - `<+trigger.artifact.source.connectorRef>` to access connectorRef in triggers
-  
-  - `<+trigger.artifact.source.imagePath>` to access imagePath in triggers 
-
-
-
-
-
-
-
-
-
-<!-- ----------------------------------------------------------------------------------------------- -->
 
 ### Hotfixes
 
