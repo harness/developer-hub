@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot Autostopping rule and Proxy
-description: Access logs and use them for troubleshooting AutoStopping rule and proxy.
+description: Access logs and use them for troubleshooting the AutoStopping rule and proxy.
 sidebar_position: 1
 --- 
 
