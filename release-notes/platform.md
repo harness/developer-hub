@@ -68,8 +68,6 @@ This release does not include early access features.
 
   This issue is fixed. Harness catches the exception and continues with delegate startup.
 
-- Fixed retries of the delegate task acquire call in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the acquire call retry flow. Tasks timed out because the delegate was not able to acquire the data. The 'taskData' field in Harness Manager is now populated to fix the issue. (PL-40646)
-
 - A few minutes after you linked a Harness user group to a different LDAP group, the change was reverted. That is, the user group gets linked to the previous LDAP group. The behavior persisted even if you deleted the user group, created a new user group with the same name, and then associated it with the second LDAP group. (PL-40558, ZD-48332)
 
   This issue is now fixed.
@@ -99,9 +97,9 @@ This release does not include hotfixes.
 <details>
 <summary>2023 releases</summary>
 
-## Version 80307
+#### Version 80307
 
-### New features and enhancements
+##### New features and enhancements
 
 - To support MongoDB 5.0, the Debezium library has been upgraded to version 1.9. (PL-40491)
 
@@ -111,11 +109,11 @@ This release does not include hotfixes.
 
   This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-### Early access features
+##### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+##### Fixed issues
 
 - When you navigated to the Pipelines page, Harness checked for a Continuous Integration license. If you did not have a CI license, you were redirected to the CI Start Trial page because the Pipelines page was once part of the CI module. 
 
@@ -138,7 +136,7 @@ This release does not include early access features.
 
   The issue is now fixed. 
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
 
