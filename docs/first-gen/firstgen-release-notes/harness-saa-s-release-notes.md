@@ -34,7 +34,7 @@ This release does not include early access features.
 
 This release does not include hotfixes.
 
-### Latest: Version 80308
+### Version 80308
 
 #### New features and enhancements
 
