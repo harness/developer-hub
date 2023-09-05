@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting Harness
 description: Harness error messages, causes, and solutions.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: jzklic4y2j
 helpdocs_category_id: svxv7bn8as
 helpdocs_is_private: false
@@ -14,7 +14,6 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
 
  ### Contents
 
-[Contents](#contents)
 - [Login issues](#login-issues)
   - [Logged out automatically](#logged-out-automatically)
     - [Troubleshooting steps](#troubleshooting-steps)
