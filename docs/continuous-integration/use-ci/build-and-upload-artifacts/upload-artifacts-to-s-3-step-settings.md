@@ -211,8 +211,8 @@ Configure the **Plugin** step settings as follows:
    * `aws_secret_access_key`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`.
    * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`.
    * `aws_bucket`: The target S3 bucket.
-   * `artifact_file`: `path/to/source/file.tar.gz`
-   * `source`: `path/to/target/file.tar.gz`
+   * `artifact_file`: `source/path/to/artifact.tar.gz`
+   * `source`: `path/to/target/artifact.tar.gz`
 * **Image Pull Policy:** Select **If Not Present**.
 
 ```mdx-code-block
@@ -235,8 +235,8 @@ Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that
                       aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to a Harness secret or pipeline variable containing your AWS access key.
                       aws_default_region: ap-southeast-2 ## Set to your default AWS region.
                       aws_bucket: bucket-name ## The target S3 bucket.
-                      artifact_file: path/to/source/file.tar.gz
-                      source: path/to/target/file.tar.gz
+                      artifact_file: source/path/to/artifact.tar.gz
+                      source: path/to/target/artifact.tar.gz
                     imagePullPolicy: IfNotPresent
 ```
 

@@ -200,8 +200,8 @@ Add a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/plugin
                       aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to a Harness secret or pipeline variable containing your AWS access key.
                       aws_default_region: ap-southeast-2 ## Set to your default AWS region.
                       aws_bucket: BUCKET_NAME ## The target S3 bucket.
-                      artifact_file: path/to/source/file.tar.gz
-                      source: path/to/target/file.tar.gz
+                      artifact_file: source/path/to/artifact.tar.gz
+                      source: path/to/target/artifact.tar.gz
                     imagePullPolicy: IfNotPresent
 ```
 
