@@ -203,17 +203,17 @@ Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that
 
 Configure the **Plugin** step settings as follows:
 
-   * **Name:** Enter a name.
-   * **Container Registry:** Select a Docker connector.
-   * **Image:** Enter `harnesscommunity/drone-s3-upload-publish`.
-   * **Settings:** Add the following seven settings as key-value pairs.
-      * `aws_access_key_id`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`.
-      * `aws_secret_access_key`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`.
-      * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`.
-      * `aws_bucket`: The target S3 bucket.
-      * `artifact_file`: `url.txt`
-      * `source`: The path to store and retrieve the artifact in the S3 bucket.
-   * **Image Pull Policy:** Select **If Not Present**.
+* **Name:** Enter a name.
+* **Container Registry:** Select a Docker connector.
+* **Image:** Enter `harnesscommunity/drone-s3-upload-publish`.
+* **Settings:** Add the following seven settings as key-value pairs.
+   * `aws_access_key_id`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`.
+   * `aws_secret_access_key`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`.
+   * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`.
+   * `aws_bucket`: The target S3 bucket.
+   * `artifact_file`: `path/to/source/file.tar.gz`
+   * `source`: `path/to/target/file.tar.gz`
+* **Image Pull Policy:** Select **If Not Present**.
 
 ```mdx-code-block
   </TabItem>
@@ -222,23 +222,23 @@ Configure the **Plugin** step settings as follows:
 
 Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin, for example:
 
-   ```yaml
-                 - step:
-                     type: Plugin
-                     name: s3-upload-publish
-                     identifier: custom_plugin
-                     spec:
-                       connectorRef: account.harnessImage
-                       image: harnesscommunity/drone-s3-upload-publish
-                       settings:
-                         aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference to a Harness secret or pipeline variable containing your AWS access ID.
-                         aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to a Harness secret or pipeline variable containing your AWS access key.
-                         aws_default_region: ap-southeast-2 ## Set to your default AWS region.
-                         aws_bucket: bucket-name ## The target S3 bucket.
-                         artifact_file: url.txt
-                         source: OBJECT_PATH ## Path to store and retrieve the artifact from S3.
-                       imagePullPolicy: IfNotPresent
-   ```
+```yaml
+              - step:
+                  type: Plugin
+                  name: s3-upload-publish
+                  identifier: custom_plugin
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: harnesscommunity/drone-s3-upload-publish
+                    settings:
+                      aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference to a Harness secret or pipeline variable containing your AWS access ID.
+                      aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to a Harness secret or pipeline variable containing your AWS access key.
+                      aws_default_region: ap-southeast-2 ## Set to your default AWS region.
+                      aws_bucket: bucket-name ## The target S3 bucket.
+                      artifact_file: path/to/source/file.tar.gz
+                      source: path/to/target/file.tar.gz
+                    imagePullPolicy: IfNotPresent
+```
 
 :::tip
 
