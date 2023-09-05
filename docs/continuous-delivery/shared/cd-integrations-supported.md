@@ -762,4 +762,5 @@ All CD features supported in Harness SaaS are also supported in Self-Managed Ent
 - **Triggers:** The feature flag `CD_GIT_WEBHOOK_POLLING` must be enabled for Github polling with two factor authentication. For more information, go to [Polling frequency](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#polling-frequency).
 - **ServiceNow:** ServiceNow versions [Utah](https://www.servicenow.com/now-platform/latest-release.html) and earlier are supported.
 - **Jira:** Jira on-premise versions < 9.0 are supported. To support Jira on-premise >= 9.0, the feature flag `SPG_USE_NEW_METADATA` must be enabled.
-
+- **GitOps:** The Harness GitOps Agent does not support custom certificates in Self-Managed Enterprise Edition.
+- **Policy as Code:** Harness Git Experience support for OPA policies is not supported in Self-Managed Enterprise Edition.
