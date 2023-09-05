@@ -34,9 +34,11 @@ Harness NextGen release 805xx includes the following changes for the Harness Del
 
 ### New features and enhancements
 
+- Upgraded `io.netty:netty*` to version `4.1.94.final` to address vulnerabilities. (CI-8971, ZD-48488)
+
 - If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
 
-Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
+   Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
 
 - The OWASP Java HTML Sanitzer version is upgraded to 20220608.1. (PL-40807)
 
@@ -46,7 +48,7 @@ Now, the message has been enhanced to show the cause of failure. It also identif
 
 - Earlier, Harness had an N-3 support policy for delegates. (PL-39452)
 
-Now, the delegate expiration is calculated using the version difference between Harness Manager and the delegate. If the delegate and Harness Manager are on the same version, the delegate expiration is 24 weeks.
+   Now, the delegate expiration is calculated using the version difference between Harness Manager and the delegate. If the delegate and Harness Manager are on the same version, the delegate expiration is 24 weeks.
 
 ### Early access features
 
