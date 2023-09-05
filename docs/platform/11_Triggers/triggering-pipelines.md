@@ -99,7 +99,7 @@ Some information about **Conditions** is provided in the following sections. For
 
 You can configure triggers based on the source branches, target branches, and changed files involved in a Git event.
 
-If you want to specify multiple paths, use the **Regex** operator. You can also use a Regex to specify all files in a parent folder, such as `ci/*`. This is shown in the **Changed Files** row in the following screenshot.
+If you want to specify multiple paths, use the **Regex** operator. You can also use a Regex to specify all files in a parent folder, such as `ci/.*`. This is shown in the **Changed Files** row in the following screenshot.
 
 ![](./static/trigger-pipelines-using-custom-payload-conditions-30.png)
 

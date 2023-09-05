@@ -281,8 +281,8 @@ Single-value operators include:
 * **Starts With:** Expects a single value. Harness matches any full path starting with the value.
 * **Ends With:** Expects a single value. Harness matches any full path ending with the value.
 * **Contains:** Expects a single value. Harness matches any full path containing the value.
-* **In** and **Not In:** Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`. You can use Regex to specify all files in a parent folder, such as `ci/*`.
-* **Regex:** Expects a single Regex value. Harness matches full paths based on the Regex. You can use complex Regex expressions, such as `^((?!README\.md).)*$`. You can use this operator to specify multiple paths, and you can use Regex to specify all files in a parent folder, such as `ci/*`.
+* **In** and **Not In:** Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`. You can use Regex to specify all files in a parent folder, such as `ci/.*`.
+* **Regex:** Expects a single Regex value. Harness matches full paths based on the Regex. You can use complex Regex expressions, such as `^((?!README\.md).)*$`. You can use this operator to specify multiple paths, and you can use Regex to specify all files in a parent folder, such as `ci/.*`.
 
 ### Matches Value
 
