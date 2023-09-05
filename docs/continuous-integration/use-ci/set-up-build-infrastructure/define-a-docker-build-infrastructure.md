@@ -13,7 +13,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Drone Runner. When the pipeline runs, the Drone Runner runs the build actions in the environment where it is installed. The delegate handles communication between Harness and the Drone Runner.
+You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Harness Docker Runner. When the pipeline runs, the Harness Docker Runner runs the build actions in the environment where it is installed. The delegate handles communication between the Harness Platform and the Harness Docker Runner.
 
 Local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
 
@@ -58,11 +58,11 @@ docker run --cpus=1 --memory=2g --net=host \
 
 Make sure to create the delegate at the appropriate scope, such as the project level or account level.
 
-#### Install the Drone Runner
+#### Install the Harness Docker Runner
 
-The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
+The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
 
-1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases) corresponding to your build farm's OS and architecture.
+1. Download a [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases) corresponding to your build farm's OS and architecture.
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
@@ -81,7 +81,7 @@ The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the 
    sudo ./drone-docker-runner-linux-arm64 server
    ```
 
-Here is an example of the three commands to install the Linux arm64 Drone Runner with self-signed certificates:
+Here is an example of the three commands to install the Linux arm64 Harness Docker Runner with self-signed certificates:
 
 ```
 export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
@@ -117,11 +117,11 @@ docker run --cpus=1 --memory=2g \
 
 Make sure to create the delegate at the appropriate scope, such as the project level or account level.
 
-#### Install the Drone Runner
+#### Install the Harness Docker Runner
 
-The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
+The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
 
-1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases) corresponding to your build farm's OS and architecture.
+1. Download a [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases) corresponding to your build farm's OS and architecture.
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
@@ -159,7 +159,7 @@ The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the 
 
 </details>
 
-Here is an example of the three commands to install the Darwin amd64 Drone Runner with self-signed certificates:
+Here is an example of the three commands to install the Darwin amd64 Harness Docker Runner with self-signed certificates:
 
 ```
 export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
@@ -176,10 +176,10 @@ sudo chmod +x drone-docker-runner-darwin-arm64
 
 To configure a local runner build infrastructure for Windows, you need two machines:
 
-* A Windows machine where the Drone Runner will run. This machine must have Docker for Windows. The Drone Runner runs as a container.
+* A Windows machine where the Harness Docker Runner will run. This machine must have Docker for Windows. The Harness Docker Runner runs as a container.
 * A Linux machine where the Harness Delegate will run. This machine must have Docker. The delegate runs as a container.
 
-There is a one-to-one relationship between Drone Runners and Harness Delegates. If you need to run three local hosts, each must have a runner and a delegate.
+There is a one-to-one relationship between Harness Docker Runners and Harness Delegates. If you need to run three local hosts, each must have a runner and a delegate.
 
 #### Install the delegate
 
@@ -190,7 +190,7 @@ On the Linux machine where you want to run the delegate, use the following modif
 
 :::caution
 
-The `RUNNER_URL` must point to the Windows machine where the Drone Runner will run.
+The `RUNNER_URL` must point to the Windows machine where the Harness Docker Runner will run.
 
 :::
 
@@ -211,19 +211,19 @@ docker run --cpus=1 --memory=2g \
 
 Make sure to create the delegate at the appropriate scope, such as the project level or account level.
 
-#### Install the Drone Runner
+#### Install the Harness Docker Runner
 
-The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
+The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
 
 :::caution
 
-Run the Drone Runner executable on the Windows machine that you specified in the delegate's `RUNNER_URL`.
+Run the Harness Docker Runner executable on the Windows machine that you specified in the delegate's `RUNNER_URL`.
 
 Use PowerShell to run these commands.
 
 :::
 
-1. On the target Windows machine where you want to run the Drone Runner, download the Windows [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
+1. On the target Windows machine where you want to run the Harness Docker Runner, download the Windows [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases).
 2. Open a terminal with Administrator privileges.
 3. To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
@@ -239,7 +239,7 @@ Use PowerShell to run these commands.
    drone-docker-runner-windows-amd64.exe server
    ```
 
-Here is an example of the two commands to install the Windows amd64 Drone Runner with self-signed certificates:
+Here is an example of the two commands to install the Windows amd64 Harness Docker Runner with self-signed certificates:
 
 ```
 $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
