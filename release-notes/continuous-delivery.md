@@ -262,12 +262,8 @@ This release does not have new features.
 
 This release does not include hotfixes. 
 
-<<<<<<< HEAD
-#### Version 80208
-=======
 
 #### August 10, 2023, version 80208
->>>>>>> main
 
 ##### What's new
 
