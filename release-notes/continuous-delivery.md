@@ -34,8 +34,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-
-## Latest: Version 80307
+## Latest: version 805xx
 
 ### New features and enhancements
 
@@ -43,10 +42,65 @@ This release does not have new features.
 
 ### Early access features
 
+This release does not have early access features.
+
+### Fixed issues
+
+- Fixed the following issue: when a user re-ran a pipeline execution with a different branch selected, the pipeline would execute with the last branch selected. With this fix, the pipeline always runs with the current branch selected. (CDS-77826)
+
+- The following Node.js v20 images are now available on Docker Hub. (CDS-77801)
+  - [harnessdev/serverless-preparerollback:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-preparerollback/3.30.1-1.0.1/images/sha256-30994cb1fef9b206babecbe61b10144591db51cddec2e5386a0ab228d542b32f?context=explore)
+  - [harnessdev/serverless-deploy:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-deploy/3.30.1-1.0.1/images/sha256-f1ec1e56cb22403e492d8aa9c4f719cd466aea1a06a438d36818ac607e7acff0?context=explore)
+  - [harnessdev/serverless-package:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-package/3.30.1-1.0.1/images/sha256-1448b1566186023df78cc79b529c06256e327890b5018ed05632775a7c5c4992?context=explore)
+  - [harnessdev/serverless-rollback:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-rollback/3.30.1-1.0.1/images/sha256-c023e84a4a7450c4978535569b03e8909a7e6daa9c2fa0ad4ff70a6ee52e02e7?context=explore)
+
+– Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838)
+
+- Fixed a UI issue when creating a template for an Azure artifact: the **Universal** option is not available in the **Package type** menu. With this fix, the **Universal** artifact type is now available. (CDS-77510)
+
+- Fixed an issue when using the OCI Helm connector with anonymous credentials: Harness would incorrectly derive the source port from OCI repository and the connection validation would fail. With this fix, Harness deducts default port 443 if no port is provided in the URL itself. (CDS-77298)
+
+- Fixed an issue where users could not specify runtime inputs for some advanced settings (such as Looping Strategy) in step groups and step-group templates. With this fix, runtime inputs are supported for all advanced step-group settings. (CDS-77246, ZD-49339, ZD-49427)
+
+– Fixed a UI issue when running a pipeline with an input set that  allows multiple choices (checkboxes) for a field. Previously, if no checkboxes were selected for a field, the pipeline set the value to an empty string. This could cause the pipeline execution to fail. With this fix, the pipeline sets field to undefined if no checkboxes are selected. (CDS-77221)
+
+- Fixed an issue where users could not save modified input sets from from the YAML view. (CDS-77117)
+
+- TBD (CDS-76697)
+
+– Fixed an issue observed when deploying Artifactory artifacts, where the pipeline execution would save the generic artifact metadata incorrectly. Note that this fix applies to new pipeline executions only. (CDS-76302, ZD-48430)
+
+- TBD (CDS-74138)
+
+- API Call logs now include details such as Response, size, duration , HTTP Verb and Response code in the summary. (OIP-767)
+
+–  Fixed an issue that resulted in Null Pointer Exceptions when running a pipeline manually with a  `<+trigger.connectorRef>` expression. This expression gets its data from the trigger payload. With this fix, the pipeline correctly handles the case where the trigger payload is null.  (CDS-77736, ZD-49685, ZD-49720, ZD-49722)
+
+–  Fixed an intermittent issue where Helm deployment pipelines would report the Helm repository as not found.  (CDS-76919)
+
+
+
+### Hotfixes
+
+This release does not have hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Version 80307
+
+##### New features and enhancements
+
+This release does not have new features.
+
+##### Early access features
+
 - Added support for Post Prod Rollback for ASG deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/rollback-deployments/). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-77450, CDS-76352)
 
   
-### Fixed issues
+##### Fixed issues
 
 - Fixed a FirstGen-to-NextGen migration issue where the migrator did not filter out duplicate keys when extracting variables. With this fix, the migrator allows unique keys only. (CDS-76576)
 
@@ -146,12 +200,7 @@ This release does not have new features.
 
 This release does not include hotfixes. 
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
-#### August 10, 2023, version 80208
+#### Version 80208
 
 ##### What's new
 
