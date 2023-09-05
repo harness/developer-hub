@@ -18,6 +18,7 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 ## Latest: Version 805xx
 
+
 ### New features and enhancements
 
 This release does not include new features.
@@ -26,12 +27,29 @@ This release does not include new features.
 
 This release does not include early access features.
 
-#### Fixed issues
+### Fixed issues
 
-<!-- https://harness.atlassian.net/browse/CDS-73884?focusedCommentId=566535 we fixed this issue for first gen with the same ticket, hence it is showing up in 805 release notes. -->
-– Fixed a Nexus Artifact issue where a fetch would time out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
+* Fixed an issue when using multiple HTTP Helm Chart repositories that could lead to an increase in CPU utilization on the delegate due to background connector validation tasks. This was caused by running Helm repository update during the validation tasks. (CDS-76433, ZD-48363)
+
+* Fixed a Nexus Artifact issue where a fetch would time out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
   
-- Fixed an issue when using multiple HTTP Helm Chart repositories that could lead to an increase in CPU utilization on the delegate due to background connector validation tasks. This was caused by running Helm repository update during the validation tasks. (CDS-76433, ZD-48363)
+<!-- NOTE RE FIXED ISSUE CDS-73884
+https://harness.atlassian.net/browse/CDS-73884?focusedCommentId=566535 we fixed this issue for first gen with the same ticket, hence it is showing up in 805 release notes. 
+-->
+
+### Version 80407
+
+### New features and enhancements
+
+This release does not include new features.
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- Fixed retries of the delegate task acquire call in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the acquire call retry flow. Tasks timed out because the delegate was not able to acquire the data. The 'taskData' field in Harness Manager is now populated to fix the issue. (PL-40646)
 
 ### Hotfixes
 
@@ -72,8 +90,6 @@ This release does not include early access features.
 #### Fixed issues
 
 - Update operations on GCP Secrets Manager were failing in FirstGen SMP environments. This issue has been fixed. (PL-40151)
-
-
 
 ### August 4, 2023, version 80120
 
