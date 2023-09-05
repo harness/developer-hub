@@ -46,6 +46,8 @@ This release does not have early access features.
 
 ### Fixed issues
 
+- Fixed a UI issue observed when retrying a pipeline execution: the wrong **Execution Id** was displayed because the UI was evaluating the `sequenceId` based on the root `executionId`. With this fix, the **Execution Id** is based on the back-end data for the current pipeline execution. (CDS-76697)
+
 - Fixed the following issue: when a user re-ran a pipeline execution with a different branch selected, the pipeline would execute with the last branch selected. With this fix, the pipeline always runs with the current branch selected. (CDS-77826)
 
 - The following Node.js v20 images are now available on Docker Hub. (CDS-77801)
@@ -64,11 +66,17 @@ This release does not have early access features.
 
 - Fixed an issue where users could not save modified input sets from from the YAML view. (CDS-77117)
 
-- TBD (CDS-76697)
+- Fixed a UI issue observed when retrying a pipeline execution: the wrong **Execution Id** was displayed because the UI was evaluating the `sequenceId` based on the root `executionId`. With this fix, the **Execution Id** is based on the back-end data for the current pipeline execution. (CDS-76697)
 
 – Fixed an issue observed when deploying Artifactory artifacts, where the pipeline execution would save the generic artifact metadata incorrectly. Note that this fix applies to new pipeline executions only. (CDS-76302, ZD-48430)
 
-- TBD (CDS-74138)
+- Fixed an issue in the **Run Pipeline** UI when running child pipelines . Previously, **Pipeline Variables** was indented under **Stage**, which implied that **Pipeline Variables** was a new stage. (CDS-74138)
+  
+  ![](static/cds-74138-00-before.png)
+
+  With this fix, **Pipeline Variables** is unindented to make it clear that these are inputs from the child pipeline. 
+  
+  ![](static/cds-74138-01-after.png)
 
 - API Call logs now include details such as Response, size, duration , HTTP Verb and Response code in the summary. (OIP-767)
 
