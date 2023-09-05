@@ -41,18 +41,11 @@ export const featuredTutorials: CardItem[] = [
         "",
       list: [
         {
-          title: "CD tutorials",
-          module: MODULES.cd,
-          description:
-            "Learn how to set up CD pipelines to automate service deployments on your infrastructure.",
-          link: "/tutorials/cd-pipelines",
-        },
-        {
           title: "Get started",
           module: MODULES.cd,
           description:
             "Learn the basics of Harness Continuous Delivery (CD).",
-          link: "/docs/category/get-started",
+          link: "/docs/category/get-started-with-cd",
           // @Roshni: sample code for the sub categories -->
           /*children: [
             {
@@ -74,7 +67,7 @@ export const featuredTutorials: CardItem[] = [
               module: MODULES.cd,
               description:
                 "",
-              link: "/docs/continuous-delivery/get-started/create-first-pipeline",
+              link: "/tutorials/cd-pipelines/kubernetes/manifest",
             },
             {
               title: "Integrate CD with other Harness modules",
@@ -99,6 +92,13 @@ export const featuredTutorials: CardItem[] = [
             },
           ]*/
           // <-- sample code end
+        },
+        {
+          title: "Key concepts",
+          module: MODULES.cd,
+          description:
+            "Learn the key concepts needed to automate service deployments on your infrastructure.",
+          link: "/docs/continuous-delivery/get-started/key-concepts",
         },
         {
           title: "Upgrade to CD NextGen",
@@ -592,7 +592,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.cd,
           description:
             "",
-          link: "/docs/frequently-asked-questions/harness-faqs/continuous-delivery-faqs",
+          link: "/docs/faqs/continuous-delivery-faqs",
         },
       ],
     },

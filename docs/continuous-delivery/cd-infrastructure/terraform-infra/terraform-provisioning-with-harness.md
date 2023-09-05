@@ -109,8 +109,13 @@ rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 terraform --version
 ```
 
-## Running Terraform Cloud workspaces
+## Running Terraform on remote workspaces
 
-In addition to running Terraform configuration files locally on the Harness delegate, Harness supports running Terraform Cloud and Enterprise workspaces.
+In addition to running Terraform configuration files locally on the Harness delegate, Harness supports running Terraform Cloud and Enterprise workspaces. 
 
-For more information, go to  [Terraform Cloud deployments](terraform-cloud-deployments.md).
+There are two ways you can run Terraform Cloud and Enterprise workspaces:
+
+- Run the Terraform configuration files locally using the CLI and configure them to execute on a remote workspace. To do this, you need to add the remote configuration to the Terraform files. Afterward, during the Terraform Plan and Apply steps, select the **Run on Remote Workspace** option so that Harness can recognize that the execution will be done remotely. For more information, go to [Running Terraform locally](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness/#running-terraform-locally).
+
+- Set up the workspace and Terraform files on a Terraform Cloud/Enterprise account and trigger runs from Harness pipelines. For more information, go to [Terraform Cloud deployments](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments).
+

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness.md). For API permissions, go to the [API permissions reference](/docs/platform/Resource-Development/APIs/api-permissions-reference).
+This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness.md). For API permissions, go to the [API permissions reference](/docs/platform/automation/api/api-permissions-reference).
 
 ## Administrative Functions
 

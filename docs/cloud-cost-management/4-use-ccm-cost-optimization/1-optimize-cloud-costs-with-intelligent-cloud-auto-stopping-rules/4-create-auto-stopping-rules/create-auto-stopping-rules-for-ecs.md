@@ -200,7 +200,7 @@ Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](autos
 
 ### Create AutoStopping Rules with Terraform for ECS Services
 
-You can also use Terraform provider to create AutoStopping Rules. To do so, perform the following steps:
+You can also use Terraform Provider to create AutoStopping Rules. To do so, perform the following steps:
 
 Perform the following steps to create AutoStopping Rules for Terraform.
 

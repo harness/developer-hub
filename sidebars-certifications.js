@@ -57,6 +57,12 @@ const sidebars = {
           label: "Instructions",
           id: "instructions",
         },
+         // FAQs
+         {
+          type: "doc",
+          label: "FAQs",
+          id: "faqs",
+        },
       ],
     },
     // KB Link from Certs

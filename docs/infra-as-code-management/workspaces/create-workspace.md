@@ -12,7 +12,7 @@ For example, you can have a single configuration of a Kubernetes cluster and cre
 
 A workspace may have one of the following statuses:
 
-* Active: Sucessfully deployed and running. 
+* Active: Successfully deployed and running. 
 
 * Inactive: Successfully destroyed or was not provisioned.
 
@@ -43,15 +43,16 @@ To create a new workspace, follow these steps:
     * **Name** - Type a unique name to identify the workspace. 
     * **Description** - Type an optional description to help you identify the workspace. 
     * **Connector** - Select the Harness connector to use during provisioning. This should provide the cloud credentials for Harness to use during execution. AWS and GCP are supported out of the box. Azure needs to be complemented with environment variables.
-    * **Terraform Version** - Specify the Terraform version the configuration supports. This version is used to determine which version of Terraform to use during execution.
+    * **Terraform Version** - Specify the Terraform version the configuration supports. This version is used to determine which version of Terraform to use during execution. 
     * **Repository** - Specify the Git configuration for the Terraform configuration files. You should specify the Harness Git connector, repository branch, and file path to the configuration files in the repository.
 
         ![Add workspace details](./static/new-workspace.png)
 
 6. Select **Save**. 
 
-7. If you need to use either environment or Terraform variables during execution, select the **Variables** tab to define the variables. If Terraform variables are defined and set in Git, then values defined in the workspace take precedence. 
-  A good best practice is to avoid managing Terraform variables in Git, and set them in the workspace instead. This keeps the Git configuration clean and allows you to use the same Git definitions for multiple workspaces. 
+7. If you need to use either environment or Terraform variables during execution, select the **Variables** tab to define the variables. If Terraform variables are defined and set in Git, then values defined in the workspace take precedence.
+Variables can be either String, [hcl](https://developer.hashicorp.com/terraform/language/syntax/configuration), [Secret](https://developer.harness.io/docs/category/secrets), or a reference to another variable in the same or a different workspace.
+A good best practice is to avoid managing Terraform variables in Git; set them in the workspace instead. This keeps the Git configuration clean and allows you to use the same Git definitions for multiple workspaces. 
 
     ![Workspace variables](./static/workspace-variables.png)
 

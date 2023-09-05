@@ -1,0 +1,24 @@
+# Redirects For Netlify
+# Sample entry: {from} <space> {to}
+# More info: https://docs.netlify.com/routing/redirects/
+
+# Redirects created by Users [place yours below here]:
+
+# Added by <User> on <Date> for PR <pr>
+
+# Added by ravilach on 8-29-2023 for 3094
+/docs/category/apisterraform /docs/category/automation
+/docs/frequently-asked-questions /docs/faqs
+
+# Added by schoudhury on 8-29-2023
+/docs/category/apis /docs/category/api
+
+# Added by schoudhury on 9-3-2023
+/docs/continuous-delivery/get-started/cd-tutorial /tutorials/cd-pipelines
+/docs/continuous-delivery/get-started/create-first-pipeline /tutorials/cd-pipelines/kubernetes/manifest
+/docs/category/get-started /docs/category/get-started-with-cd
+/docs/category/get-started-with-harness-chaos-engineering-ce /docs/category/get-started-with-ce
+/docs/category/get-started-1 /docs/category/get-started-with-ccm
+
+# Redirects generated from Front Matter [sytem generated goes below here]:
+

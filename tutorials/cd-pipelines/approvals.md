@@ -1,4 +1,5 @@
 ---
+sidebar_position: 7
 hide_table_of_contents: true
 title: Approvals
 description: Set-up approvals in CD Pipeline. 
@@ -19,7 +20,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-This tutorial demonstrates how to use Approvals in Harness CD pipelines. 
+This tutorial demonstrates how to use approvals in Harness CD pipelines. 
 
 :::info
 
@@ -113,7 +114,7 @@ You can add the Jira Approval step in Approval stages or in CD stages. The Jira 
 
 Verify that you have the following:
 
-1. **Personal Access Token:** Add the [JIRA API token](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) as a Harness [Text Secret](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets#add-a-text-secret), with the name `jirapat`
+1. **Personal Access Token:** Add the [JIRA API token](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) as a Harness [Text Secret](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets#add-a-text-secret), with the name `jirapat`
 2. **JIRA Connector:** For this tutorial you need to create a [JIRA Connector](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-jira/#add-a-jira-connector) of the name `jira-approval`. If you've done the [Deploy using Kubernetes Manifest](tutorials/cd-pipelines/kubernetes/manifest.md) tutorial, use this [jira-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/approval/jira-connector.yml) to create connector under the project setup. 
     
     - In the YAML, replace the `JIRA_URL` with your company base URL for Jira applications, for example: `https://mycompany.atlassian.net`.

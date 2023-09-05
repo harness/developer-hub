@@ -217,6 +217,12 @@ You specify the file to tail, such as `auth.log`, and the pattern to search (gr
 6. For **Pattern to search**, enter the pattern to search for in the file. Harness uses grep on the pattern.
 7. Use **Deployment Templates** to run the download command on the target hosts, add the command after the Fetch Instances step. Go to [looping strategy and target hosts](#looping-strategy-and-target-hosts) below for more information.
 
+### Notes on working directory
+
+import WorkingDir from '/docs/continuous-delivery/shared/working-dir.md';
+
+<WorkingDir name="WorkingDir" />
+
 ## Input variables
 
 While you can declare a variable in your command script using a Harness expression or string for its value, using input variables provides some additional benefits:
@@ -319,7 +325,7 @@ Legend:
 
 :::note
 
-The WinRM deployment type supports Download Artifact only. You cannot use Cope Artifact in WinRM deployments.
+The WinRM deployment type supports Download Artifact only. You cannot use the **Copy** command type with **Artifact** in WinRM deployments.
 
 :::
 

@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/gitops/add-harness-git-ops-repository-credentials-template
+  - /docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart
 ---
 
 This topic describes how to use Harness GitOps to deploy services by syncing the Kubernetes manifests in your source repos with your target clusters.

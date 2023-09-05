@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-08-26T10:00
+date: 2023-09-05T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,18 +19,60 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 26, 2023
+## Latest: September 5, 2023
 
-### Continuous Integration, version 5408
+### Harness Platform, version 80406
+
+- Earlier, Harness had an N-3 support policy for delegates. (PL-39452)
+   Now, the delegate expiration is calculated using the version difference between Harness Manager and the delegate. If the delegate and Harness Manager are on the same version, the delegate expiration is 24 weeks.
+
+- Earlier, in the audit trail, all changes to a user principal's role assignment were logged with the generic Update action type. The record offered no additional information about whether a role assignment was created, updated, or deleted. (PL-39799, ZD-46451)
+
+  Now, role assignment changes are logged with one of the following, more informative action types:
+    - Role Assignment Created
+    - Role Assignment Updated
+    - Role Assignment Deleted
+
+- Earlier, in delegate selection logs, the non-selected error message included all mismatched selectors.
+
+   Now, the non-selected error message includes only selectors mismatched within the scope. (PL-40651)
+
+- You can now create secrets in child scopes using the parent scope in Secret Manager. For example, you can create secrets inside a project using the Secret Manager created at the Org or Account level. (PL-38949)
+
+## September 1, 2023
+
+### Cloud Cost Management
+
+- Display refunds or discounts on the graph within perspectives. (CCM-13443)
+
+  Previously, graphs in perspectives didn't display refunds or discounts, resulting in empty spots when values were negative. This enhancement improves this by aggregating negative values into a red-colored bar chart. You can now toggle a button in **General Preferences** to view these previously hidden negative costs.
+
+    <docimage path={require('./static/aws-preferences-ccm13443.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### August 30, 2023
+
+##### Security Testing Orchestration, version 1.67.1
+
+- The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4918) 
+
+#### August 26, 2023
+
+##### Continuous Integration, version 5408
 
 * You can use GitHub connectors with [GitHub App authentication](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings) in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline). (CI-8367)
 * Improved support for `DRONE_` environment variables in CI pipelines. This improves compatibility for [plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)
 
 <!-- /docs/continuous-integration/use-ci/optimize-and-more/ci-env-var-->
 
-## August 23, 2023
+#### August 23, 2023
 
-### Cloud Cost Management, version 80500
+##### Cloud Cost Management, version 80500
 
 * ServiceNow integration with Recommendations (CCM-11150)
 
@@ -44,9 +86,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   For more information, go to [Analyze AWS costs by using perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws/).
 
-## August 22, 2023
+#### August 22, 2023
 
-### Harness Platform, version 80307
+##### Continuous Error Tracking, Version ET-Service 5.25.9 and ET-Collector 5.25.3
+
+- Various dependencies were upgraded to prevent security issues. (CET-1571)
+
+- The default time period on the Events Summary page has been adjusted to one hour. (CET-1576)
+
+##### Harness Platform, version 80307
 
 - To support MongoDB 5.0, the Debezium library has been upgraded to version 1.9. (PL-40491)
 
@@ -56,7 +104,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-### Harness Delegate, version 80308
+##### Harness Delegate, version 80308
 
 - To safeguard your operations and protect against potential security vulnerabilities, Harness deprecated the Helm 2 binary from delegates with an immutable image type (image tag `yy.mm.xxxxx`). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). (PL-40409)
 
@@ -64,9 +112,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
    Now, monitored services can be enabled only from the user interface (through toggle button) and the enable API. Monitored services will always be disabled when created and during subsequent updates to them.
 
-## August 21, 2023
+#### August 21, 2023
 
-### Harness Chaos Engineering, version 1.17.3
+##### Harness Chaos Engineering, version 1.17.3
 
 * Added support for OpenShift configuration for deploying chaos infrastructure. This will provide you with a predefined security context constraint (SCC) that you can modify according to your needs. (CHAOS-1889)
 
@@ -84,9 +132,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Enhanced the JobCleanUpPolicy configuration to also retain helper pods when it is set to retain in ChaosEngine. (CHAOS-2273)
 
-## August 10, 2023
+#### August 10, 2023
 
-### Continuous Delivery, version 80208
+##### Continuous Delivery, version 80208
 
 * Harness has introduced restrictions on the depth of nesting in execution pipelines to enhance system stability. Now, a node execution will not be allowed if it exceeds 25 levels of nesting. The 25th level refers to the node being the 25th child starting from the root node `pipeline`. (CDS-75249)
 
@@ -100,15 +148,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 Improved the consistency of [built-in codebase expression](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) values across build types. You can now expect similar values for these expressions regardless of build type. For example, `<+codebase.commitRef>` now provides a consistent reference for the build, such as `refs/heads/BRANCH_NAME` for a branch build or `refs/tags/TAG_NAME` for a tag build. (CI-7689)
 
-### Harness Platform, version 80208
+##### Harness Platform, version 80208
 
 - Accounts with Free and Community licenses are limited to 100 users. (PL-40260)
 
 - The heartbeat interval used by perpetual tasks to test connectors has been increased from 10 minutes to 30 minutes. This change aims to reduce the number of errors logged due to failed heartbeats. The new heartbeat interval is used with any connectors that you create after this deployment. Tasks associated with existing connectors require migration to the new interval. Harness will migrate such perpetual tasks in all accounts in a phased manner. This activity does not require any action from you or other users of the platform. (PL-39399)
 
-## August 9, 2023
+#### August 9, 2023
 
-### Internal Developer Portal, version 0.8.0
+##### Internal Developer Portal, version 0.8.0
 
 - IDP now includes the [GitHub Catalog Discovery](/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery) plugin. You can use this to automatically discover `catalog-info.yaml` files from your GitHub organizations and repositories. [IDP-887]
 
@@ -118,7 +166,7 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
   
   You can use these UI pickers in service onboarding workflows for developers to easily select a Harness project and organization. Take a look at this [example](https://github.com/bhavya-sinha/scaffolder-sample-templates/blob/5f52718ec49cb2c27a87e2fbeae075873701911c/fieldExtension.yaml#L78-L85). [IDP-868]
 
-### Security Testing Orchestration, version 1.64.1
+##### Security Testing Orchestration, version 1.64.1
 
 * Aqua Trivy scans now capture and report on secrets in plain text, in addition to vulnerabilities. (STO-6345)
 
@@ -129,9 +177,9 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
 
 * The issue lists in the the **Security Tests** tab are now paginated. You can configure each list to show 20, 50, or 100 issues per page. This makes the overall page much easier to navigate if the scan results include a lot of issues. (STO-5949, STO-6099)
 
-## August 7, 2023
+#### August 7, 2023
 
-### Harness Chaos Engineering, version 1.16.5
+##### Harness Chaos Engineering, version 1.16.5
 
 * A new feature lets users do an automated upgrade for their cluster-scope chaos infrastructures using an upgrade agent, which is deployed along with the chaos infrastructure. This also lets users do an upgrade of their Chaos Infrastructures on demand. (1849)
 
@@ -143,9 +191,9 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
 
 * The UI now provides a toggle in AWS experiments to enable or disable cloud secrets. (CHAOS-2092)
 
-## August 4, 2023
+#### August 4, 2023
 
-### Harness Platform, version 80120
+##### Harness Platform, version 80120
 
 - The Universal Base Image Minimal used for the Harness user interface (both FirstGen and NextGen) and the Harness NextGen authentication service has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-40095)
 
@@ -153,7 +201,7 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
 
   This issue has been fixed. Browser tabs showing those pages now have more specific titles. 
 
-### Continuous Delivery, version 80120
+##### Continuous Delivery, version 80120
 
 - Upgraded the Helm binary from version 3.8 to 3.12. (CDS-58931)
 
@@ -167,7 +215,7 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
 
   This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-### Harness Delegate, version 80104
+##### Harness Delegate, version 80104
 
 - The Execution Logs have been enhanced to include additional details such as duration, task ID, and more. These details help you understand and debug CV Steps, SRM Live monitoring, and SLI. (OIP-565)
 
@@ -197,8 +245,8 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
 
 - A new `getAzureKeyVaultClient` API is available to fetch the list of Azure vaults. This option reduces the time it takes for Harness to reflect a newly-created Azure vault. (PL-28392, ZD-44045)
 
-## August 2, 2023
-### Cloud Cost Management, version 80301
+#### August 2, 2023
+##### Cloud Cost Management, version 80301
 
 * AWS AutoStopping proxy enhancement (CCM-13497)
 
@@ -230,10 +278,6 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
     <docimage path={require('./static/ccm-overview-2.png')} width="60%" height="60%" title="Click to view full size image" />
     <docimage path={require('./static/ccm-overview-3.png')} width="60%" height="60%" title="Click to view full size image" />
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### July 31, 2023
 
@@ -417,6 +461,18 @@ By default, the first two options are enabled, and you can modify the toggles to
   You can now easily move recommendations from the **Applied** state back to the **Open** state. This enhancement allows you to easily rectify accidental closure of recommendations or marking Jira tickets as done by returning them to an actionable state.
 
 #### July 06, 2023
+
+##### Service Reliability Management, version 79812
+
+Create and manage monitored services at the Project level (SRM-14580)
+
+You can now seamlessly create and manage monitored services at the Project level, as well as within the SRM and CD modules. You can view and manage the monitored services, regardless of where they were created. The monitored service list presents specific insights based on where you are accessing it.
+
+  - Project level: Shows service names and health source count, while interactive module icons allow you to effortlessly navigate to specific modules for a detailed view.
+  
+  - CD module: Presents monitored service names alongside configured health sources, providing a comprehensive overview of health status.
+  
+  - SRM module: Provides information, including monitored service status, name, SLO specifics, recent changes, 24-hour health trends, score, and dependency status.
 
 ##### Continuous Delivery, version 79811
 
@@ -884,13 +940,13 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   
   The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
   
-  * [AWS KMS](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
-  * [AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
-  * [Azure Key Vault](/docs/platform/Secrets/Secrets-Management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
-  * [Google KMS](/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
-  * [Google Cloud secret manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
-  * [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
-  * [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
+  * [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
+  * [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
+  * [Azure Key Vault](/docs/platform/secrets/secrets-management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
+  * [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
+  * [Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
+  * [Custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
+  * [HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
 - A unique custom webhook token is added to the custom webhook URL when triggering a deployment using cURL. (CDS-59511, ZD-34797)
   
   Previously, custom webhook triggers used insecure URLs that can be formed as long as account, org, project, pipeline, and trigger IDs were known. Now, a unique custom webhook token is generated internally for all custom webhook triggers when they're created. This token cannot be changed. 
@@ -1616,7 +1672,7 @@ Any new Jira connectors that you create must include the new `auth` object, and 
 
 The new fields override the previously used `username` and `passwordRef` authentication fields. The older fields are now deprecated.
  
-These changes are backward incompatible. Therefore, you must also update the Terraform provider for creating a Jira connector to the latest version (version 0.14.12) so that these new fields are provided. You also need to provide these new fields in API calls that create or update a Jira connector.
+These changes are backward incompatible. Therefore, you must also update the Terraform Provider for creating a Jira connector to the latest version (version 0.14.12) so that these new fields are provided. You also need to provide these new fields in API calls that create or update a Jira connector.
 
 ##### Harness Platform
 

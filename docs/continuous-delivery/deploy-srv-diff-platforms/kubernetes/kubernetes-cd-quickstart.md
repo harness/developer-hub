@@ -6,23 +6,20 @@ sidebar_position: 2
 
 This topic shows you how to deploy a publicly-available NGINX Docker image and manifest into your Kubernetes cluster using a [rolling update strategy](kubernetes-executions/create-a-kubernetes-rolling-deployment.md) in Harness.
 
-## Objectives
+In this topic, you'll learn how to:
 
-You'll learn how to:
+* Set up a Kubernetes pipeline.
+* Run the new Kubernetes pipeline and deploy a Docker image to your target cluster.
 
-* Install and launch a Harness Kubernetes Delegate in your target cluster.
-* Set up a Kubernetes Pipeline.
-* Run the new Kubernetes Pipeline and deploy a Docker image to your target cluster.
+The following video explains Kubernetes deployments using Harness:
 
-## Before you begin
+<!-- Video:
+https://www.loom.com/share/f8cf2e7abe094d08829902831a4081b5?sid=f522eb06-4a86-416a-94ac-24f2a86f7a88-->
+<docvideo src="https://www.loom.com/share/f8cf2e7abe094d08829902831a4081b5?sid=f522eb06-4a86-416a-94ac-24f2a86f7a88" />
 
-Make sure you have the following set up before you begin this quickstart:
+## Set up a Kubernetes cluster for deployment
 
-* **GitHub account:** this quickstart uses a publicly available NGINX manifest and Docker image. DockerHub allows anonymous connections, but GitHub requires that you log into your account to access their repos.
-
-### Set up your Kubernetes cluster
-
-You'll need a target Kubernetes cluster for the Harness Delegate and deployment. Ensure your cluster meets the following requirements:
+You'll need a target Kubernetes cluster for the Harness delegate and deployment. Ensure your cluster meets the following minimum requirements:
 
 * **Number of nodes:** 2.
 * **vCPUs, Memory, Disk Size:** 4vCPUs, 16GB memory, 100GB disk. In GKE, the **e2-standard-4** machine type is enough for this quickstart.
@@ -30,13 +27,13 @@ You'll need a target Kubernetes cluster for the Harness Delegate and deployment.
 * A **Kubernetes service account** with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. In general, the cluster-admin permission or namespace admin permission is enough.  
 For more information, go to [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
 
-## Create the deploy stage
+## Create the deploy stage for the Kubernetes pipeline
 
-Pipelines are collections of stages. For this tutorial, we'll create a new pipeline and add a single stage.
+Pipelines are collections of stages. For this topic, we'll create a new pipeline and add a single stage.
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness project, create a project for your new CD pipeline. Ensure that you add the **Continuous Delivery** module to the project. Go to [create organizations and projects](/docs/platform/organizations-and-projects/projects-and-organizations) for more information.
+**Create a project for your new CD pipeline:** if you don't already have a Harness project, create a project for your new CD pipeline. Ensure that you add the **Continuous Delivery** module to the project. Go to [create organizations and projects](/docs/platform/organizations-and-projects/projects-and-organizations) for more information.
 
 :::
 
@@ -50,7 +47,8 @@ Pipelines are collections of stages. For this tutorial, we'll create a new pipel
 4. Enter the name **Deploy Service**, make sure **Service** is selected, and then select **Set Up Stage**.
    
    The new stage settings appear.
-5. In **About the** **Service**, select **New Service**.
+5. In the **Service** tab, select **New Service**.
+
    :::note
 
    Let's take a moment and review Harness services and service definitions (which are explained below). Harness services represent your microservices/apps logically. You can add the same service to as many stages as you need. Service definitions represent your artifacts, manifests, and variables physically. They are the actual files and variable values.  
@@ -58,11 +56,12 @@ Pipelines are collections of stages. For this tutorial, we'll create a new pipel
    By separating services and service definitions, you can propagate the same Service across stages while changing the artifacts, manifests, and variables with each stage.
 
    :::
-6. Give the service the name **nginx** and select **Save**.
+   
+7. Give the service the name **nginx** and select **Save**.
 
 Once you have created a service, it is persistent and can be used throughout the stages of this or any other pipeline in the project.
 
-## Add the manifest
+## Add the Kubertnetes manifest for deployment
 
 Next, we can add a Kubernetes manifest for NGINX. We'll use the [publicly-available manifest](https://github.com/kubernetes/website/blob/master/content/en/examples/application/nginx-app.yaml) available from Kubernetes.
 
@@ -137,7 +136,7 @@ To learn more, watch the [Delegate overview](https://developer.harness.io/docs/p
 
 Now that the artifact and manifest are defined, you can define the target cluster for your deployment.
 
-## Define your target cluster
+## Define the target cluster for the Kubernetes deployment
 
 The target cluster is your own Kubernetes cluster, hosted in your cloud environment. This is where we will deploy the Docker image using the manifest you selected.
 
@@ -185,7 +184,7 @@ Let's look at the steps:
     The target infrastructure is complete. Now we can add our stage steps.
 10. Select **Next** to move onto **Execution**.
 
-## Add a rollout deployment Step
+## Add a Kubernetes rollout deployment step to the stage
 
 Now you can select the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) for this stage of the pipeline.
 
@@ -201,7 +200,7 @@ Now you can select the [deployment strategy](/docs/continuous-delivery/manage-de
 
 That's it. Now the pipeline stage is complete and you can deploy.
 
-## Deploy and review
+## Deploy the Kubernetes pipeline and review
 
 1. Select **Save** **> Save Pipeline** and then **Run**.
    Now you can select the specific artifact to deploy.
@@ -234,11 +233,11 @@ If you run into any errors, it is typically because the cluster does meet the re
 
 Next, try Harness [Continuous Integration](/docs/continuous-integration) to build a codebase, upload it to a repo, and run unit and integrations tests: [CI pipeline quickstart](/docs/continuous-integration/ci-quickstarts/ci-pipeline-quickstart).
 
-## Clean Up
+## Clean up the deployment
 
 For steps on deleting the Delgate, go to [delete a delegate](/docs/platform/Delegates/manage-delegates/delete-a-delegate).
 
-## Next Steps
+## Next steps
 
 See [CD tutorials](/tutorials/cd-pipelines/) for other deployment features.
 
