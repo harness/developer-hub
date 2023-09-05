@@ -54,9 +54,7 @@ This release does not have early access features.
   - [harnessdev/serverless-package:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-package/3.30.1-1.0.1/images/sha256-1448b1566186023df78cc79b529c06256e327890b5018ed05632775a7c5c4992?context=explore)
   - [harnessdev/serverless-rollback:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-rollback/3.30.1-1.0.1/images/sha256-c023e84a4a7450c4978535569b03e8909a7e6daa9c2fa0ad4ff70a6ee52e02e7?context=explore)
 
-– Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838)
-
-- Fixed a UI issue when creating a template for an Azure artifact: the **Universal** option is not available in the **Package type** menu. With this fix, the **Universal** artifact type is now available. (CDS-77510)
+– Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838)
 
 - Fixed an issue when using the OCI Helm connector with anonymous credentials: Harness would incorrectly derive the source port from OCI repository and the connection validation would fail. With this fix, Harness deducts default port 443 if no port is provided in the URL itself. (CDS-77298)
 
