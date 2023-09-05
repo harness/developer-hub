@@ -750,8 +750,16 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
 </Tabs>
 ```
 
-## Notes
+### Notes
 
 - AWS and Azure GovCloud: Harness is now certified in Azure GovCloud and AWS GovCloud.
 
+## Harness Self-Managed Enterprise Edition (SMP)
+
+All CD features supported in Harness SaaS are also supported in Self-Managed Enterprise Edition with the following exceptions:
+
+- **Custom dashboards:** Harness [custom dashboards](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments#custom-cd-dashboards) might not be completely functional with a bundled [Timescale community edition](https://docs.timescale.com/about/latest/timescaledb-editions/) installation.
+- **Triggers:** The feature flag `CD_GIT_WEBHOOK_POLLING` must be enabled for Github polling with two factor authentication. For more information, go to [Polling frequency](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#polling-frequency).
+- **ServiceNow:** ServiceNow versions [Utah](https://www.servicenow.com/now-platform/latest-release.html) and earlier are supported.
+- **Jira:** Jira on-premise versions < 9.0 are supported. To support Jira on-premise >= 9.0, the feature flag `SPG_USE_NEW_METADATA` must be enabled.
 
