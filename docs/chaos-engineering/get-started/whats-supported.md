@@ -57,6 +57,6 @@ The following table shows available fault types and where they are supported. Fo
 Chaos Engineering on Harness Self-Managed Enterprise Edition is in feature parity with Harness Cloud(SaaS) with the following limitations:
 * Harness enterprise chaos hub is not supported by default.
 * Please contact [Harness Support](mailto:support@harness.io) for getting access to Harness enterprise chaos hub.
-* Once you have access to enterprise chaos hub, you can add a custom Chaos Hub by following the steps mentioned [here](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).
+* Once you have access to enterprise chaos hub, you can add a custom chaos hub by following the steps mentioned [here](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).
 
 For more information, go to [Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition) and [CE on SMP](/docs/chaos-engineering/ce-on-smp/ce-smp-roadmap).

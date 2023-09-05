@@ -1,11 +1,11 @@
 {
-  "position": 3,
-  "label": "Fault container permissions",
+  "position": 5,
+  "label": "Security Considerations",
   "collapsible": true,
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"Fault container permissions"
+      "title":"Security Considerations"
    },
   "customProps": {
     "description": "Required container permissions for faults"
