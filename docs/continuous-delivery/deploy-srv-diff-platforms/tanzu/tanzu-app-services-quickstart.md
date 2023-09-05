@@ -731,9 +731,18 @@ Now the pipeline stage is complete and can be deployed.
   </TabItem2>
   <TabItem2 value="Rolling" label="Rolling">
 ```
-The TAS rolling deployment deploys all pods or instances in a single environment incrementally added one-by-one with a new service or artifact version.
+<!-- 
 
-Use this deployment method when you want to support both new and old deployments. You can also use with load balancing scenarios that require reduced downtime. 
+doc ticket = https://harness.atlassian.net/browse/CDS-75488 
+enhancement ticket = https://harness.atlassian.net/browse/CDS-75250
+
+-->
+
+Use this deployment method when you want to apply a rolling upgrade to an existing deployment. You can also use this method with load-balancing scenarios that require reduced downtime. This method deploys an application on all pods or instances in a single environment with a new service or artifact version.
+
+:::info note
+Before performing a rolling deployment, the TAS Rolling deployment step first verifies that the application exists in Tanzu. If the application does not exist, it deploys the application without a rolling deployment strategy. If the application exists, it performs a rolling upgrade.
+:::
 
 1. In Execution Strategies, select **Rolling**, and then click **Use Strategy**.
 2. The rolling deploy step is added. 
