@@ -1,0 +1,13 @@
+{
+  "position": 3,
+  "label": "Fault container permissions",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Fault container permissions"
+   },
+  "customProps": {
+    "description": "Required container permissions for faults"
+  }
+}

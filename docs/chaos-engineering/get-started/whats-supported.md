@@ -3,24 +3,32 @@ title: What's supported
 sidebar_position: 10
 ---
 
-This topic lists the platforms and technologies that Harness Chaos Engineering (CE) supports.
+This topic lists the platforms and technologies that Harness Chaos Engineering (CE) supports for deploying chaos infrastructure.
+To learn more about chaos infrastructure, please refer [chaos infrastructure](/docs/chaos-engineering/technical-reference/architecture#chaos-infrastructure).
+
 
 ## Chaos infrastructure
 
-You can deploy chaos infrastructure on the platforms below.
+### Supported operating systems and distributions
+
+The following table shows the supported operating systems and distributions for deploying chaos infrastructure.
+
+| Platform | Distribution | Version | Harness cloud | Self-hosted kubernetes cluster |
+| -  | - | - | - | - |
+| Kubernetes | OpenShift | k8s 1.21+ | ✅ Supported | ✅ Supported |
+| Kubernetes | Rancher | k8s 1.21+ | ✅ Supported | ✅ Supported |
+| Kubernetes | GKE | k8s 1.21+ | ✅ Supported | ✅ Supported |
+| Kubernetes | EKS | k8s 1.21+ | ✅ Supported | ✅ Supported |
+| Kubernetes | AKS | k8s 1.21+ | ✅ Supported | ✅ Supported |
+| Kubernetes | VMware Tanzu | k8s 1.21+ | ✅ Supported | ✅ Supported |
+| Linux | Ubuntu | 16+ | ✅ Supported | ✅ Supported |
+| Linux | Debian | 10+ | ✅ Supported | ✅ Supported |
+| Linux | CentOS | 7+ | ✅ Supported | ✅ Supported |
+| Linux | RHEL | 7+ | ✅ Supported | ✅ Supported |
+| Linux | Fedora | 30+ | ✅ Supported | ✅ Supported |
+| Linux | openSUSE Leap | 15.4+ | ✅ Supported | ✅ Supported |
 
 ### Kubernetes
-
-#### Kubernetes distributions
-
-CE supports Kubernetes version 1.21+, in the following distributions:
-
-* OpenShift
-* Rancher
-* GKE
-* EKS
-* AKS
-* VMware Tanzu
 
 #### Container runtimes
 
@@ -29,19 +37,6 @@ The supported container runtimes are as follows:
 * Docker
 * Crio
 * Containerd
-
-### Linux
-
-#### Linux distributions
-
-CE supports these Linux OS distributions:
-
-* Ubuntu version 16+
-* Debian version 10+
-* CentOS version 7+
-* RHEL version 7+
-* Fedora version 30+
-* openSUSE Leap version 15.4+
 
 ## Chaos fault types
 
