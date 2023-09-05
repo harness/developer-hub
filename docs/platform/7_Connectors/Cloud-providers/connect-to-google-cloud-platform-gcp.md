@@ -103,6 +103,8 @@ Before you begin, you must:
 * **Check your GKE version.**
   * Harness supports GKE 1.19 and later.
   * If you use a version prior to GKE 1.19, please enable Basic Authentication. If Basic authentication is inadequate for your security requirements, use the [Kubernetes Cluster Connector](./add-a-kubernetes-cluster-connector.md).
+* **Add the GKE metadata server IP to your `NO_PROXY` list.**
+  * If you are using a GCP connector that inherits credentials from a delegate, which is using a proxy, and the GKE cluster or VM where the delegate is installed uses Workload Identity to authenticate, then you must add the GKE metadata server IP (`169.254.169.254`) to your `NO_PROXY` list. For more information and to verify the IP address, go to [Understanding the GKE metadata server](https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity#metadata_server) in the GCP docs.
 
 ## Add a GCP connector and configure credentials
 
