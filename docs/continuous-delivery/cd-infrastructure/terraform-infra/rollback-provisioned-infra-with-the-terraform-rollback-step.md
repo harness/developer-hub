@@ -78,7 +78,7 @@ The Terraform Rollback step is added to the **Rollback** steps.
 
 :::note
 
-Currently, FEATURE_NAME is behind the feature flag `CDS_TERRAFORM_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, the command line options feature is behind the feature flag `CDS_TERRAFORM_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
