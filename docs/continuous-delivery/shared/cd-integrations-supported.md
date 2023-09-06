@@ -763,4 +763,5 @@ All CD features supported in Harness SaaS are also supported in Self-Managed Ent
 - **ServiceNow:** ServiceNow versions [Utah](https://www.servicenow.com/now-platform/latest-release.html) and earlier are supported.
 - **Jira:** Jira on-premise versions < 9.0 are supported. To support Jira on-premise >= 9.0, the feature flag `SPG_USE_NEW_METADATA` must be enabled.
 - **GitOps:** The Harness GitOps Agent does not support custom certificates in Self-Managed Enterprise Edition.
+- **GitOps:** The Harness GitOps Agent does not yet support namespaced agebts in Self-Managed Enterprise Edition.
 - **Policy as Code:** Harness Git Experience support for OPA policies is not supported in Self-Managed Enterprise Edition.
