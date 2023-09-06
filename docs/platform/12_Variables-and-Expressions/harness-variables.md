@@ -433,11 +433,55 @@ For example:
 
 ### Ternary operators
 
-When using ternary conditional `?:` operators, do not use spaces between the operators and values. Ensure the expression is wrapped within `<+ >`.
+:::note Important
+
+When you evaluate Harness expressions using ternary operators, or any operator, ensure that the expression will be resolved at the time of the evaluation. For example, if you use an expression for the value of a pipeline stage step setting, such as `<+pipeline.stages.mystage.spec.execution.steps.Apply.executionUrl>`, ensure that the evaluation using that step happens after the step has executed.
+
+:::
+
+Ternary operators in Harness follow the standard format, but you cannot use spaces between the operators and values. Ensure the expression is wrapped within `<+ >`:
+
+```
+<+condition?<value_if_true>:<value_if_false>>
+```
 
 For example, `<+condition ? <value_if_true> : <value_if_false>>` will not work. 
 
-Use `<+condition?<value_if_true>:<value_if_false>>` instead.
+
+Here's an example of evaluating a Harness step execution URL with the ternary operator: 
+
+```
+<+!empty(step.executionUrl)?"Step execution URL is available: "+<+step.executionUrl>:"Step execution URL is not available">
+```
+
+This example works as follows:
+
+1. `!empty(step.executionUrl)` checks if the execution URL of the step is not empty.
+2. If it's not empty, it returns `"Step execution URL is available: " + <+step.executionUrl>`, which includes the execution URL in the message.
+3. If it is empty, it returns `"Step execution URL is not available"`.
+
+This example uses the ternary operator to conditionally generate the message based on the presence or absence of the step's execution URL.
+
+Here's an example of how to use nested ternary operators and Harness expressions:
+
+```
+<+!empty(variable.githubserviceurl)> ? <+variable.githubserviceurl> : <+!empty(variable.org.githubserviceurl)>x ? <+variable.org.githubserviceurl> : <+variable.acct.githubserviceurl>>
+```
+
+This evaluates as follows:
+
+1. The first ternary operator:
+   1. Condition: `!empty(variable.githubserviceurl)`
+   2. If true: `<+variable.githubserviceurl>`
+   3. If false: Move to the next part of the expression (`<+!empty(variable.org.githubserviceurl)>x`).
+2. The second ternary operator (nested within the first one):
+   1. Condition: `!empty(variable.org.githubserviceurl)`
+   2. If true: `<+variable.org.githubserviceurl>`
+   3. If false: `<+variable.acct.githubserviceurl>`
+
+So, this expression first checks if `variable.githubserviceurl` is not empty. If it's not empty, it returns `variable.githubserviceurl`. If it is empty, it proceeds to the nested ternary operator, which checks if `variable.org.githubserviceurl` is not empty. If that's true, it returns `variable.org.githubserviceurl`. If that's also false, it returns `variable.acct.githubserviceurl`.
+
+
 
 ### Equals operator
 
