@@ -14,7 +14,7 @@ Complex chaos experiments can be used for validating the resiliency of the entir
 To add a fault in parallel to another fault, select the `+` icon below the already added fault; the icon will only appear upon hovering the cursor below the already added fault. Similarly, to add a fault in serial to another fault, select the `+` icon to the right of the already added fault. This way, you may add as many faults as necessary.
 
 :::note
-For Linux, experiments with parallel fault is currently not supported.
+For Linux, experiments with a parallel fault are currently not supported.
 :::
 
 ![Complex Faults Experiment](./static/create-complex-chaos-experiments/complex-faults-experiment.png)
