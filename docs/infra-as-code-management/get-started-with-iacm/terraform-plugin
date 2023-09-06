@@ -1,0 +1,53 @@
+---
+title: Terraform plugins
+description: Learn how to use Terraform plugins in your pipeline
+sidebar_label: Terraform Steps
+sidebar_position: 30
+---
+
+Harness provides Terraform plugins that you can embed in your Infrastructure stage. See below the different types of plugins that are currently available and learn to use them 
+
+# Terraform init
+
+![Resources](./static/init.png)
+
+This step executes **terraform init**. 
+The Terraform init command initializes a working directory containing the Terraform configuration file (downloading all the providers, for example) and saves those files in the plugin-shared folder that will be used later on. 
+This should be the first step to execute before any other terraform step.
+
+# Terraform plan
+
+![Resources](./static/plan.png)
+
+This step executes **terraform plan**. 
+The Terraform plan command creates an execution plan, which lets you preview the changes that Terraform plans to make to your infrastructure. 
+The step will pull the state from the remote repository (or if none is selected, it will pull a copy of the state stored in the Harness backend). After that, it will compare the current state with the future state. If there are differences, then it will generate the plan file, which will be saved in the plugin-shared folder that will be used later on. 
+This plan will be the “plan that was applied” in the workspace, but this only happens in the consolidation phase.
+
+# Terraform plan-destroy
+
+![Resources](./static/plan-destroy.png)
+
+This step executes **terraform plan --destroy**. 
+This step is similar to the terraform plan step, but the plan that is created indicates what are going to be the resources that are going to be destroyed.
+
+# Terraform validate
+
+![Resources](./static/validate.png)
+
+This step executes **terraform validate** on the plugin side. 
+The terraform validate command validates the configuration files in a directory, referring only to the configuration and not accessing any remote services.
+
+# Terraform apply
+
+![Resources](./static/apply.png)
+
+This step executes **terraform apply** on the plugin side. 
+Terraform will start the provisioning of the resources. Once the step is completed, if the apply succeeds, the plugin will push the state to the backend (custom or Harness-hosted backend). At this point, the last plan that was executed and the state that was the result of that plan being applied get consolidated as the plan and state that the workspace is pointing to.
+
+# Terraform destroy
+
+![Resources](./static/destroy.png)
+
+This step executes **terraform destroy** on the plugin side. 
+Terraform will start destroying the resources. Once the step is completed, if the destroy succeeded, the plugin will push the state to the backend (custom or Harness-hosted backend). At this point, the last plan that was executed and the state that was the result of that plan been applied get consolidated as the plan and state that the workspace is pointing to.
