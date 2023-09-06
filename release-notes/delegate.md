@@ -42,7 +42,7 @@ Harness NextGen release 805xx includes the following changes for the Harness Del
 
    Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
 
-- The OWASP Java HTML Sanitzer version is upgraded to 20220608.1. (PL-40807)
+- The OWASP Java HTML Sanitizer version is upgraded to 20220608.1. (PL-40807)
 
 - The Mozilla Rhino library has been upgraded from version 1.7R4 to 1.7.14. (PL-40808)
 
