@@ -168,11 +168,9 @@ import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
 
 #### Access ID
 
-```mdx-code-block
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
-```
+The user key for your user account. Harness recommends that you use the API key for your Mend organization: in the Mend UI, click the **Account Settings** button in the top right.
 
-<StoSettingAuthAccessID />
+You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 
 <!-- ============================================================================= -->
@@ -180,12 +178,9 @@ import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-acces
 
 #### Access Token
 
-```mdx-code-block
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-```
+The API key for your Mend organization. This step is required if you want to run a scan in an organization _other than_ the default organization for your user account. in the Mend UI, go to **Integration** > **Organization** > **API Key**.
 
-
-<StoSettingAuthAccessToken />
+You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ### Scan Tool
 
@@ -200,20 +195,16 @@ import StoSettingToolLookupType from './shared/step_palette/_sto-ref-ui-tool-pro
 
 #### Project Name
 
-```mdx-code-block
-import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-project-name.md';
-```
+If you're running an orchestrated scan on a code repository, you can use this setting to specify the  specific files to exclude from the scan. By default, a Mend scan includes all files in the code repository. 
 
-<StoSettingToolProjectName />
+This setting corresponds to the [**excludes** configuration parameter](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) for the Mend United Agent. 
 
 
 #### Include 
 
-```mdx-code-block
-import StoSettingToolInclude from './shared/step_palette/_sto-ref-ui-tool-include.md';
-```
+If you're running an orchestrated scan on a code repository, you can use this setting to specify the  specific files to include in the scan. By default, a Mend scan includes all files in the code repository. 
 
-<StoSettingToolInclude />
+This setting corresponds to the [**Includes** configuration parameter](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) for the Mend United Agent. 
 
 <!-- ============================================================================= -->
 <a name="tool-exclude"></a>	
@@ -343,3 +334,76 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
+
+## Mend orchestration pipeline example
+
+The following pipeline shows an end-to-end orchestration workflow. The Mend step includes the settings needed to run an orchestrated scan: `access_token`, `domain`, `access_id`, and `product_name`.
+
+![](static/mend-orch-pipeline-example.png)
+
+```yaml
+pipeline:
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: secrets_repo
+        build: <+input>
+  stages:
+    - stage:
+        name: mend
+        identifier: mend
+        type: SecurityTests
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: myorgdelegate
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Mend
+                  name: mend_orch
+                  identifier: mend_orch
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      name: secrets
+                      type: repository
+                      variant: master
+                    advanced:
+                      log:
+                        level: debug
+                    resources:
+                      limits:
+                        memory: 1Gi
+                    imagePullPolicy: Always
+                    auth:
+                      access_token: <+secrets.getValue("my-mend-organization-api-key")>
+                      domain: https://saas.whitesourcesoftware.com/agent
+                      ssl: true
+                      access_id: <+secrets.getValue("my-mend-user-key")>
+                    tool:
+                      product_name: secretsrepo
+          caching:
+            enabled: false
+          sharedPaths:
+            - ""
+        variables:
+          - name: runner_tag
+            type: String
+            description: ""
+            required: false
+            value: latest
+  identifier: mend_secrets
+  name: mend - secrets
+
+```
