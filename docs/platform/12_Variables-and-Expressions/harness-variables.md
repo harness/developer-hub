@@ -481,7 +481,7 @@ This evaluates as follows:
 
 So, this expression first checks if `variable.githubserviceurl` is not empty. If it's not empty, it returns `variable.githubserviceurl`. If it is empty, it proceeds to the nested ternary operator, which checks if `variable.org.githubserviceurl` is not empty. If that's true, it returns `variable.org.githubserviceurl`. If that's also false, it returns `variable.acct.githubserviceurl`.
 
-
+Ternary operators are also discussed in the [Harness Knowledge Base](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
 
 ### Equals operator
 
