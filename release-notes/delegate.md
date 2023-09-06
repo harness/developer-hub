@@ -36,7 +36,7 @@ Harness NextGen release 805xx includes the following changes for the Harness Del
 
 - Upgraded `io.netty:netty*` to version `4.1.94.final` to address vulnerabilities. (CI-8971, ZD-48488)
 
-- API Call logs now include details such as Response, size, duration , HTTP Verb, and Response code in the summary. (OIP-767)
+- API Call logs now include details such as response, size, duration , HTTP verb, and response code in the summary. (OIP-767)
 
 - If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
 
@@ -56,7 +56,7 @@ This release does not include any new early access features.
 
 ### Fixed issues
 
-- Fixed a Nexus Artifact issue where a fetch would time out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
+- Fixed a Nexus artifact issue where a fetch would time out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
 
 - Fixed an intermittent issue where Helm deployment pipelines would report the Helm repository as not found. (CDS-76919)
 
