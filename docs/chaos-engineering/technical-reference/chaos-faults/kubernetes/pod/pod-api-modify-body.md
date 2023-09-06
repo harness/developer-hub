@@ -219,6 +219,93 @@ spec:
               value: "80"         
 ```
 
+### Destination Ports
+
+Comma seperated list of the destination service or host ports, for which `egress` traffic should be affected as a result of chaos testing on the target application. Tune it by using the `DESTINATION_PORTS` environment variable.
+
+*NOTE:* It is applicable only for the egress `SERVICE_DIRECTION`.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]: # "./static/manifests/pod-api-modify-body/destination-ports.yaml yaml"
+
+```yaml
+## provide destination ports
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-api-modify-body
+      spec:
+        components:
+          env:
+            # provide destination ports
+            - name: DESTINATION_PORTS
+              value: '80,443'
+            # provide the api path filter
+            - name: PATH_FILTER
+              value: '/status'
+            - name: RESPONSE_BODY
+              value: "/.+/test"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"        
+```
+
+### HTTPS Enabled
+
+It is employed to facilitate HTTPS for both incoming and outgoing traffic, and its usage can vary depending on whether it's applied to `ingress` or `egress` scenarios. Tune it by using the `HTTPS_ENABLED` environment variable.
+
+1. When applied to `ingress` traffic, it should be configured as `true` if the HTTPS URL of the target application includes a port, following the format `https://<hostname>:port`.
+   However, for HTTPS URLs in the form of `https://<hostname>` without a port, this setting is not required.
+
+2. For egress traffic, setting it to `true` is necessary to enable HTTPS support for external services, which will then establish TLS certificates for the proxy within the target application.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]: # "./static/manifests/pod-api-modify-body/https-enabled.yaml yaml"
+
+```yaml
+## enable https support
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-api-modify-body
+      spec:
+        components:
+          env:
+            # enable https support
+            - name: HTTPS_ENABLED
+              value: 'true'
+            # provide the api path filter
+            - name: PATH_FILTER
+              value: '/status'
+            - name: RESPONSE_BODY
+              value: "/.+/test"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"        
+```
+
 ### Advanced Fault Tunables
 
 - `PROXY_PORT`: Port where the proxy listens for requests and responses
