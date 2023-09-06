@@ -8,7 +8,7 @@ This page includes FAQs and troubleshooting information for SEI and the Harness 
 
 ## FAQs
 
-For FAQs about the Harness Platform or other Harness modules, go to the [Harness FAQs](/docs/category/faqs).
+For FAQs about the Harness Platform or other Harness modules, go to the [Harness FAQs](/docs/faqs).
 
 ## Troubleshooting
 
