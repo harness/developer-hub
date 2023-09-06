@@ -19,13 +19,37 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 1.67.1
+## Latest: Version 1.67.2
 
 ### New features and enhancements
 
-- The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4918) 
+This release does not include new features. 
 
 ### Early access
+
+This release does not include early access features. 
+
+### Fixed issues
+
+- Fixed an issue with setting up SSL certificates in Checkmarx, which caused Java keytools to fail. Upgrading to JDK-11 fixed the issue. (STO-6512)
+
+### Hotfixes
+
+This release does not include hotfixes. 
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Latest: Version 1.67.1
+
+##### New features and enhancements
+
+- The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4918) 
+
+##### Early access
 
 This release does not include early access features. 
 
@@ -44,7 +68,7 @@ This release does not include early access features.
 
 -->
 
-### Fixed issues
+##### Fixed issues
 
 - Fixed a pagination issue in the Security Tests page where switching between different pages resulted in a "Failed to get issues" error. The error occurred when switching from a page of issues (such as 21-40) to another issue for which those settings were invalid. (STO-6465)
 
@@ -61,16 +85,6 @@ This release does not include early access features.
 ### Hotfixes
 
 This release does not include hotfixes. 
-
-
-
-
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### SonarQube runner update, August 25, 2023
 
