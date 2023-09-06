@@ -84,7 +84,11 @@ This release does not have early access features.
 
 *  Fixed an intermittent issue where Helm deployment pipelines would report the Helm repository as not found.  (CDS-76919)
 
+<!-- Adding per this comment: https://harness.atlassian.net/browse/CDS-75488?focusedCommentId=567310 -->
 
+* Due to intermittent issues with the `cf` CLI, the Tanzu Application Services (TAS) Rolling deployment step failed to create the application. (CDS-75250)
+
+  Now, before performing a rolling deployment, the TAS Rolling deployment step first verifies that the application exists. If the application does not exist, it deploys the application without using the rolling deployment strategy. If the application exists, it performs a rolling upgrade.
 
 ### Hotfixes
 
@@ -165,6 +169,7 @@ This release does not include early access features.
 - Fixed an issue on the Pipeline Executions page where the Services filter didn't list all services. (CDS-73277)
 
 - Improved the error message shown in the UI if the entity type of a new version of a template is different: `Failed to save the template <NAME> because an existing template of different type has the same identifier` (CDS-73243)
+
 
 ##### Hotfixes
 
