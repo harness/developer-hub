@@ -48,7 +48,7 @@ Harness NextGen release 805xx includes the following changes for the Harness Del
 
 - The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
 
-- The delegate expiration policy has been extended from 3 months to 6 months. You now only have to update delegates only once every 6 months. (PL-39452)
+- The delegate expiration policy has been extended from 3 months to 6 months. You now only have to update delegates once every 6 months. (PL-39452)
 
 ### Early access features
 
