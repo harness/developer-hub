@@ -8,8 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Feature Flags levels up the power of feature flags with smart capabilities such as GitOps, pipelines, automations and monitoring.
-
+Harness Feature Flags (FF) is a feature management solution with smart capabilities, such as GitOps, pipelines, automations, and monitoring.
 
 ```
 if(HarnessFeatureFlag["newamazingfeature"] == true) {  
@@ -29,32 +28,32 @@ Watch this video for an introduction to Feature Flags:
 https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695-->
 <docvideo src="https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695" /> 
 
-## How do feature flags work?
+## First time setup 
 
-Using Feature Flags is simple.
+Here's how to get started with Harness Feature Flags:
 
 - Install one of our [open-source SDKS](https://developer.harness.io/docs/category/sdks-overview) into your application code. 
-- Add a flag statement around the code you want to control
-- The SDKs will fetch the right configuration per session from Harness 
+- Add a flag statement around the code you want to control.
+- The SDKs will fetch the right configuration per session from Harness.
 - Use the Feature Flags UI to toggle flags on or off for some or all of your end users.
 
-## How Do SDKs work?
+## Using Feature Flags SDKs
 
-SDKs are the libraries you add to your code to authenticate, configure and manage Feature Flag usage.
+SDKs are the libraries you add to your code to authenticate, configure and manage feature flag usage.
 
-All of our SDKs are open-source, provided per-language and backed by public APIs.
+All of our SDKs are open-source, provided per-language. and backed by public APIs.
 
 The SDKs all follow the same basic logic:
 
-- Authenticate with Harness
-- Identify a ["target"](https://developer.harness.io/docs/category/manage-target-users-and-groups) for the session
-- Retrieve an evaluation for all relevant flags for the session
-- Serve the correct code path
-- Send metrics back to Harness
+- Authenticate with Harness.
+- Identify a [target](https://developer.harness.io/docs/category/manage-target-users-and-groups) for the session.
+- Retrieve an evaluation for all relevant flags for the session.
+- Serve the correct code path.
+- Send metrics back to Harness.
 
 ## Reasons to use Feature Flags
 
-Feature Flags provide the following opportunities to software delivery teams:
+Feature Flags provide the following opportunities to software delivery teams
 
 ### Ship only when you're ready
 

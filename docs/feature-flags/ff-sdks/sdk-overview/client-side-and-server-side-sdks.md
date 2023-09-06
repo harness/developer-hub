@@ -18,15 +18,16 @@ Harness Feature Flags provides several SDKs in different languages to help you a
 
 The client and server-side SDKs have different security considerations as well as some behavioral and architectural differences. This topic will help you understand the difference between Harness Feature Flag's client-side and server-side SDKs.
 
-## What are Feature Flag SDKs?
+## Introduction to Feature Flags SDKs
 
-SDKs are the libraries you add to your code to authenticate, configure and manage Feature Flag usage.
+SDKs are the libraries you add to your code to authenticate, configure, and manage feature flag usage.
 
-All of our SDKs are open-source, provided per-language and backed by public APIs. They handle the job of authenticating with Harnss, establishing the correct values for the session, handling fallback behaviors in the case of errors and sending metrics back to Harness over time.
+All of our SDKs are open-source, provided per-language, and backed by public APIs. They handle the job of authenticating with Harness, establishing the correct values for the session, handling fallback behaviors in the case of errors, and sending metrics back to Harness over time.
 
-For more information, see our [Feature Flags overview page.](https://developer.harness.io/docs/feature-flags/ff-onboarding/cf-feature-flag-overview)
+For more information, go to the [Feature Flags overview page](https://developer.harness.io/docs/feature-flags/ff-onboarding/cf-feature-flag-overview).
 
 ## SDK architecture
+
 ```mdx-code-block
 <img src={sdk_arch} alt="A screenshot of the Harness Platform that highlights the Create Project button in the Feature Flags module." height="500" width="500" />
 ```
