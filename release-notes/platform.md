@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-08-22T10:00:30
+date: 2023-09-07T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -30,9 +30,63 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## Latest: Version 80307
+## Latest: Version 805xx
 
 ### New features and enhancements
+
+- When Harness is configured to use the App Role ID to fetch an authentication token from Hashicorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
+
+  This issue has been fixed. You can now specify whether or not you want to retain the token to reduce the number of requests made. Possible values are `True` and `False`. The default value is `True`.
+
+- Go has been upgraded from version 1.20.5 to version 1.21.0. This upgrade remediates CVE-2023-39533. (PL-40734)
+
+- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. (PL-39723)
+  
+  The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**).
+
+  You are prompted to sign the EULA only once. It is not presented subsequently.
+  
+  The setting is inherited at the project scope.
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- The **Create or Select an Existing Connector** dialog did not show any results when you filtered on Nexus connectors. (PL-40904)
+  
+  The associated API is now fixed.
+
+- The count of failed streams on the **Failed Streaming** card (on the **Account Audit Trail** page) continued to include problematic destinations even after those destinations were removed. (PL-40641, ZD-49004)
+
+  This issue is now fixed. The error count includes only available destinations. 
+
+- A role that you created would not appear when you typed its name on the Manage Role Bindings page, and you could therefore not use the Harness application to bind that role to a user group. The issue was caused by the role assignment API retrieving only the first 100 roles in the ascending order (the page size is 100), and the associated client-side search limiting your search to that set. Needless to say, if the role you wanted was not part of that set, it did not appear in your search. (PL-40363, ZD-48229)
+  
+  This issue is now fixed. A newly introduced server-side search includes roles that are beyond the page size limit.
+
+- If the renewal of a HashiCorp Vault token that is used for token-based authentication fails, Harness attempts to renew the token several thousand times a day and writes an internal log entry for each attempt. (PL-32647)
+
+  To prevent the buildup of internal logs, Harness pauses its attempts to renew a token if two consecutive renewal attempts fail. Harness resumes its renewal attempts when you perform one of the following tasks:
+    - You update the associated HashiCorp Vault connector.
+    - You test the associated HashiCorp Vault connector manually and the test succeeds.
+
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Version 80307
+
+##### New features and enhancements
 
 - To support MongoDB 5.0, the Debezium library has been upgraded to version 1.9. (PL-40491)
 
@@ -42,11 +96,11 @@ The following deprecated API endpoints will no longer be supported:
 
   This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-### Early access features
+##### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+##### Fixed issues
 
 - When you navigated to the Pipelines page, Harness checked for a Continuous Integration license. If you did not have a CI license, you were redirected to the CI Start Trial page because the Pipelines page was once part of the CI module. 
 
@@ -69,14 +123,9 @@ This release does not include early access features.
 
   The issue is now fixed. 
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 10, 2023, version 80208
 
