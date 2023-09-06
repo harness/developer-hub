@@ -26,8 +26,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 This release does not include new features or enhancements.
 
-<!-- 805xx/56xx - fix link formatting if any links-->
-<!-- (CI-9000) -->
+<!-- 805xx/56xx -->
+<!-- This release does not include new features or enhancements. -->
 
 ### Early access features
 
