@@ -63,7 +63,7 @@ This release does not include early access features.
 
   This issue is now fixed. The error count includes only available destinations. 
 
-- A role that you created would not appear when you typed its name on the **Manage Role Bindings** page. Therefore, you could not use the Harness application to bind that role to a user group. The issue was caused by the role assignment API retrieving only the first 100 roles in the ascending order (the page size is 100), and the associated client-side search limiting your search to that set. If the role you wanted was not part of that set, it did not appear in your search. (PL-40363, ZD-48229)
+- A role that you created would not appear when you typed its name on the **Manage Role Bindings** page. Therefore, you could not use the Harness application to bind that role to a user group. The issue was caused by the role assignment API retrieving only the first 100 roles in the ascending order (the page size is 100), and the associated client-side search being limited to those 100 roles. If the role you wanted was not part of this initial set of roles, it did not appear in your search. (PL-40363, ZD-48229)
   
   This issue is now fixed. A newly introduced server-side search includes roles that are beyond the page size limit.
 
