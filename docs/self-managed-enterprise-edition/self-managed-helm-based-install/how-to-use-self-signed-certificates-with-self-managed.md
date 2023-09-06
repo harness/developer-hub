@@ -70,7 +70,7 @@ Repeat this command for each certificate you want to include in the truststore.
 
   The `XXXXXXXXXXXXXXXXXXXXXXXXXXX` placeholder indicates the position for the certificate body. Enclose each certificate in `BEGIN CERTIFICATE` and `END CERTIFICATE` comments.
 
-3. If you are installing a GitOps agent, update the namespace to use the namespace where the agent is installed.
+3. If you are installing a GitOps agent, update the namespace to the respective namespace where the agent is installed.
 
 4. Save the file as `addcerts.yaml`. Apply the manifest to your cluster.
 
