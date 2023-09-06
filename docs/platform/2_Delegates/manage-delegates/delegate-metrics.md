@@ -321,11 +321,11 @@ To configure the delegate resource threshold, make the following changes to the 
         value: "true"
    ```
 
-3. Set the `RESOURCE_USAGE_THRESHOLD` env variable to the cpu/memory threshold. When the threshold is exceeded, the delegate rejects new tasks.
+3. Set the `DELEGATE_USAGE_THRESHOLD` env variable to the cpu/memory threshold. When the threshold is exceeded, the delegate rejects new tasks.
 
    ```
    env:
-      - name: RESOURCE_USAGE_THRESHOLD
+      - name: DELEGATE_USAGE_THRESHOLD
         value: "80"
    ```
    :::info note
