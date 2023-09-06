@@ -21,7 +21,10 @@ Use the **Issues Report** to examine metrics related to issues in your issue man
 
 The following settings are available to configure the Issues Report:
 
-* **Filters:** Select attributes from the **Add filter** dropdown menu that you want to use to filter the data, and then select filter values and operators. Depending on the selected attribute, you can select one or more filter values, select values to exclude, or use pattern matching rather than strict values. If you add multiple filters, they are inherently combined by `AND` operators.
+* **Filters:** Select attributes that you want to use to filter the data, and then select filter values and operators. Depending on the selected attribute, you can select one or more filter values, select values to exclude, or use pattern matching rather than strict values. If you add multiple filters, they are inherently combined by `AND` operators.
+   * **Dependency Analysis:** Use this option to include dependent or linked issues in the data.
+   * **Status:** Select specific issue statuses to include in the data.
+   * **Projects:** Select specific projects to include in the data.
 * **Metrics:** Select a metric to use for the Y-axis. You can select either **Number of Tickets** or **Sum of Story Points**.
 * **Aggregations:**
    * **X-axis:** Select the attribute to use for the X-axis. For example, if you selected the **Number of Tickets** metric for the Y-axis, you could select **Issues Resolved by week** for the X-axis. Additional examples of X-axis dimensional attributes include **Project**, **Assignee**, **Labels**, **Priority**, and so on.

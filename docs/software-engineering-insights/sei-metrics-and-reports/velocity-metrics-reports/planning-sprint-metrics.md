@@ -219,6 +219,14 @@ The **Sprint Metrics Single Stat** widget presents a single sprint metric averag
 
 For example, the **Sprint Metrics Single Stat** widget can help you [use historical metrics for sprint prediction and performance assessment](#use-historical-metrics-for-sprint-prediction-and-performance-assessment).
 
+#### Sprint Metrics Single Stat configuration options
+
+* **Metric Selection:** Select the [sprint metric](#sprint-metrics) or [sprint metrics ratio](#sprint-metrics-ratios) that you want to show on this widget.
+* **Ideal Range:** Define ideal ranges for metrics such as velocity points, commit ratios, and more. You can set upper and lower bounds to indicate acceptable performance ranges.
+* **Sprint Creep Grace Period:** Define a grace period during which any additional work or changes introduced at the beginning of the sprint are considered part of the original commitment rather than creep.
+* **Additional Done Statuses:** Specify additional ticket statuses that you want to consider equivalent to **Done** for the purpose of metrics calculation.
+* **Issue Management System:** Select the issue management system from which to pull data for the widget. Available systems depend on your configured [integrations](/docs/category/integrations).
+
 ### Other reports
 
 * **Sprint Impact of Unestimated Tickets Report**
@@ -287,14 +295,6 @@ Using the above points values to produce sprint metrics ratios, the results of t
 
 You can use historical cycle time data and key metrics to evaluate a team's performance, predict the number of items that can be completed in the next sprint, enhance sprint planning, and improve overall efficiency.
 
-Use [Sprint Metrics Single Stat widgets](#sprint-metrics-single-stat) to present any of the [sprint metrics](#sprint-metrics) or [sprint metrics ratios](#sprint-metrics-ratios) on your Insights, such as the done to commit ratio, scope creep (unplanned work) ratio, sprint velocity, or creep to commit ratio.
-
-The following configurations are recommended:
-
-* Metric Selection: Choose the relevant metrics from the available options to monitor and analyze.
-* Ideal Range: This setting allows you to define a range for metrics such as velocity points, commit ratios, and more. You can set upper and lower bounds to indicate acceptable performance ranges. You can configure ideal ranges for metrics that require performance boundaries.
-* Sprint Creep Grace Period: Defines a grace period within which any additional work or changes introduced during the sprint are still considered part of the original commitment.
-* Additional Done Statuses: Enables you to specify additional ticket statuses that should be considered as "done" for the purpose of metrics calculation.
-* Issue Management System: Integration with your issue management system, enabling automatic data retrieval and updates for seamless metric tracking.
+Use [Sprint Metrics Single Stat widgets](#sprint-metrics-single-stat) to present the [sprint metrics](#sprint-metrics) or [sprint metrics ratios](#sprint-metrics-ratios) on your Insights, such as the done to commit ratio, scope creep (unplanned work) ratio, sprint velocity, or creep to commit ratio.
 
 After configuring the widgets, use the provided statistics to estimate the number of items for the next sprint, evaluate performance, and identify trends.

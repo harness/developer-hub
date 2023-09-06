@@ -4,7 +4,7 @@ description: Collection admins oversee specific Collections.
 sidebar_position: 60
 ---
 
-Collection admins have visibility into data for specific [Collections](./collections-overview.md), including [Trellis Scores](../sei-metrics-and-reports/trellis-score.md).
+Collection admins have visibility into data for specific [Collections](./collections-overview.md), including [Trellis Scores](../sei-metrics-and-reports/trellis-score.md) and Insights.
 
 You must be an SEI Admin to add or modify Collection Admins.
 
@@ -86,6 +86,12 @@ Users with the Viewer role can either view all Trellis Scores (if included on an
 2. Select **Access Control** under **Project Setup**.
 3. Select **Users** in the header, and then select the user you want to edit.
 4. To remove access to all Trellis Scores, make sure **Trellis Access** is *not* selected.
+
+:::info
+
+A user with the Viewer role has visibility to all Insights for all Collections, unless you map the user to specific Collections.
+
+:::
 
 ```mdx-code-block
   </TabItem>

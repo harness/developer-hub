@@ -35,6 +35,7 @@ Workflow profile settings include:
 * **Lead Time for Changes**, **Deployment Frequency**, **Mean Time to Restore**, and **Change Failure Rate**: Modify these settings to refine your [DORA metrics](../sei-metrics-and-reports/dora-metrics.md) calculations.
   * **Stages:** You can change the start event that initiates the first stage, and you can add, edit, and remove stages. When editing stages, you can change fields or data that drive stage changes, define ideal and acceptable time ranges, grades, and more. This refines how you track KPIs.
   * **Issue Management System:** If applicable, select the issue management system to associated with this profile.
+  * **All Jobs Included:** Select this option to automatically include all upcoming and new jobs without individually selecting them in the Workflow profile.
 * **Association:** Modify the Collections associated with this profile.
 
 ## Configuration examples
