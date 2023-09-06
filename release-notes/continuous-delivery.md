@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-08-10T10:00:15
+date: 2023-09-05T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -35,7 +35,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 <Kustomizedep />
 
 
-## Latest: Version 80307
+## Latest: Version 80406
 
 ### New features and enhancements
 
@@ -43,10 +43,89 @@ This release does not have new features.
 
 ### Early access features
 
+This release does not include early access features.
+  
+### Fixed issues
+
+- The control data start time stamp was missing in the API response, despite the presence of control data for the throughput metric when the overall analysis indicated "no analysis." (OIP-762)
+
+  This issue has been resolved. The control data time stamp is now included in the API response, even if the overall analysis status is "no analysis".
+
+- Fixed an issue where users could not specify runtime inputs for some advanced settings (such as the looping strategy) in step groups and step group templates. With this fix, runtime inputs are supported for all advanced step group settings. (CDS-77246, ZD-49339, ZD-49427)
+
+- Fixed a UI issue that caused some edit buttons to not appear. (CDS-76977)
+
+- Fixed an issue where adding a second Artifact Source to an AWS ASG service replaces (rather than adding to) the existing Artifact Source.  (CDS-76843, ZD-49050)
+
+- Fixed an issue where the K8s Apply step did not correctly evaluate expressions for the **Command Type** field. (CDS-76632)
+
+- Fixed an issue where the reconciliation for input set templates did not check for differences in old vs. new YAML for a given input set. The issue occurred because there was no flag to monitor for changes in YAML strings. (CDS-76533).
+
+  This fix introduces a new `yamlDiffPresent` boolean in `InputSetYamlDiffDTO` and its relevant unit tests. The purpose of this flag is similar to validYAML, which determines whether the current YAML is valid or not.
+
+- Fixed a UI issue where fields in Add Stage did not reposition correctly when the window size was decreased (CDS-76431).
+
+- Fixed an issue where characters could get arranged incorrectly when updating an expression within a string value. For example, updating the expression in `test/var/<+expression.name>/login` might result in `test/var/<+expression.name`**/>**`login`. This fix ensures that expressions within strings are updated correctly.  (CDS-76354, ZD-48515)
+
+- Fixed an issue where users could not save a Manual Approval step as a template when `autoApprove : action` is set to `APPROVE` or `REJECT`.  (CDS-76350)
+
+- Added an information banner and documnetation link to the **Synchronization Barrier** step. The referenced content highlights best practices when synchronizing deployments using barriers. (CDS-76291, ZD-48636)
+
+- Fixed an issue where the Kubernetes connector in a container step doesn't respect the delegate selector tags set at pipeline level. With this fix, the connector selects delegates specified in the pipeline rather than the connector, which is the correct behavior. (CDS-76105, ZD-48542)
+
+- Fixed a UI issue where the **Environment** tab in a Deploy stage did not display new custom variables after they were created.  (CDS-76068)
+
+- Removed the **Reconcile** option for individual input sets on the **Input Sets** page. (CDS-75845)
+
+- Implemented a fix to ensure that user-entered values are always populated on the **Inputs** tab when running or rerunning a pipeline. (CDS-75593, ZD-48181)
+
+- Fixed a filtering issue on the **Pipeline Executions** page. (CDS-75224)
+  
+  If the service received empty arrays for fields in a filter, it added the fields to the filtering criteria with empty values, thereby not returning accurate results.
+  
+  The fix handles empty arrays, and saved filters return only fields that have values.
+
+- Added the following tooltip for the Build stage: `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration`. (CDS-75080, ZD-47902, ZD-49804) 
+
+- Added a tooltip to the Build stage: `CI Stage can be skipped with New Artifact/Manifest Trigger using selective stage configuration.` (CDS-74137)
+
+- Fixed a filtering issue when using pipeline tags in the **Pipelines** and **Pipeline Executions** pages. (CDS-73807, ZD-47148)
+
+  When a user uses pipeline tags to filter pipelines or executions, the following behavior will now be observed: 
+
+  - When a user enters only a string in the filter tags, all pipelines/executions with a tag key or value matching that string will be returned. 
+
+  - When a user enters a `key:value` pair in the filter rags,  all  pipelines/executions with a tag pair matching `key:value` will be returned.
+
+  - When a user enters `"":value` pair in the filter tags,  all the pipelines/executions with a tag pair matching `"":value` will be returned.
+
+  - When a user enters a `key:""` pair in the filter tags, all the pipelines/executions with a tag pair matching `key:""` will be returned.
+
+- Fixed an issue on the Pipeline Executions page where the Services filter didn't list all services. (CDS-73277)
+
+- Improved the error message shown in the UI if the entity type of a new version of a template is different: `Failed to save the template <NAME> because an existing template of different type has the same identifier` (CDS-73243)
+
+### Hotfixes
+
+This release does not include hotfixes. 
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+## Version 80307
+
+##### New features and enhancements
+
+This release does not have new features.
+
+##### Early access features
+
 - Added support for Post Prod Rollback for ASG deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/rollback-deployments/). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-77450, CDS-76352)
 
   
-### Fixed issues
+##### Fixed issues
 
 - Fixed a FirstGen-to-NextGen migration issue where the migrator did not filter out duplicate keys when extracting variables. With this fix, the migrator allows unique keys only. (CDS-76576)
 
@@ -68,17 +147,6 @@ This release does not have new features.
 
 - Fixed an issue with the **Repository Name** filter in the **Builds** page. Some users could not filter on builds that pulled their source code from a specific repository. If you experienced this issue, you will need to delete any saved filters that use the **Repository Name** filter and create them again. (CDS-75281, ZD-47876, ZD-48201)	
 
-- Fixed a filtering issue when using pipeline tags in the **Pipelines** and **Pipeline Executions** pages. (CDS-73807, ZD-47148)
-
-  When a user uses pipeline tags to filter pipelines or executions, the following behavior will now be observed: 
-
-  - When a user enters only a string in the filter tags, all pipelines/executions with a tag key or value matching that string will be returned. 
-
-  - When a user enters a `key:value` pair in the filter rags,  all  pipelines/executions with a tag pair matching `key:value` will be returned.
-
-  - When a user enters `"":value` pair in the filter tags,  all the pipelines/executions with a tag pair matching `"":value` will be returned.
-
-  - When a user enters a `key:""` pair in the filter tags, all the pipelines/executions with a tag pair matching `key:""` will be returned.
 
 - Fixed an issue where logs were not visible after a shell script step got expired. With this fix, the pipeline will now publish expire events to close the log stream correctly after expiring a step.  (CDS-73695, ZD-47049)
 
@@ -142,14 +210,10 @@ This release does not have new features.
 
   This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes. 
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 10, 2023, version 80208
 
@@ -1014,13 +1078,13 @@ This release does not include any early access features.
 
   The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions.
 
-  - [AWS KMS](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
-  - [AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
-  - [Azure Key Vault](/docs/platform/Secrets/Secrets-Management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
-  - [Google KMS](/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
-  - [Google Cloud secret manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
-  - [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
-  - [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
+  - [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
+  - [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
+  - [Azure Key Vault](/docs/platform/secrets/secrets-management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
+  - [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
+  - [Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
+  - [Custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
+  - [HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
 
 - A unique custom webhook token is added to the custom webhook URL when triggering a deployment using cURL. (CDS-59511, ZD-34797)
 
@@ -2298,7 +2362,7 @@ Any new Jira connectors that you create must include the new `auth` object, and 
 
 The new fields override the previously used `username` and `passwordRef` authentication fields. The older fields are now deprecated.
 
-These changes are backward incompatible. Therefore, you must also update the Terraform provider for creating a Jira connector to the latest version (version 0.14.12) so that these new fields are provided. You also need to provide these new fields in API calls that create or update a Jira connector.
+These changes are backward incompatible. Therefore, you must also update the Terraform Provider for creating a Jira connector to the latest version (version 0.14.12) so that these new fields are provided. You also need to provide these new fields in API calls that create or update a Jira connector.
 
 - The default Helm version is manifests is Helm version 3 now. (CDS-52961)
 - You can leverage Drone SCM service to fetch manifest files from Azure DevOps repositories. (CDS-53176, CDS-53850)

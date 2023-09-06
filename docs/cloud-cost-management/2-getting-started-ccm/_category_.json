@@ -1,12 +1,12 @@
 {
-    "label":"Get started",
+    "label":"Get started with CCM",
     "position": 2,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Get started"
+       "title":"Get started with Harness CCM"
     }
     }
  

@@ -14,12 +14,12 @@ The ability to use the credentials of a specific Harness Delegate is behind the 
 
 You can link your Google Cloud Secret Manager to Harness and use it to store any sensitive data you use in Harness, including secrets.
 
-Harness also supports [Google KMS as a secrets manager](./10-add-google-kms-secrets-manager.md).This topic explains how to add a GCP Secrets Manager in Harness.
+Harness also supports [Google KMS as a secrets manager](/docs/platform/Secrets/Secrets-Management/10-add-google-kms-secrets-manager.md).This topic explains how to add a GCP Secrets Manager in Harness.
 
 ## Before you begin
 
 * See [Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
-* See [Secrets Management Overview](./1-harness-secret-manager-overview.md)
+* See [Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
 
 ## Limitations
 
@@ -76,13 +76,13 @@ Select one of the following options to configure details for the Google cloud se
 - **Specify credentials here**
 - **Use the credentials of a specific Harness Delegate (IAM role, service account, etc)**
 
-![](../static/GCP-details.png)
+![](../../Secrets/static/GCP-details.png)
 
 ### Specify credentials here
 
 #### Attach a Google Secret Manager credentials file
 
-You must export your Google Cloud service account key and add it as an [Encrypted File Secret](../3-add-file-secrets.md) in Harness.
+You must export your Google Cloud service account key and add it as an [Encrypted File Secret](/docs/platform/secrets/add-file-secrets) in Harness.
 
 1. In the Google Cloud console, select **IAM & admin** > **Service account**.
 2. Scroll to the service account you want to use. If no service account is present, create one.
@@ -94,9 +94,9 @@ See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-cont
 6. Go back to Harness.
 7. In **Google Secrets Manager Credentials File**, select the encrypted file you just added in Harness.
 
-   ![](../static/GCP-specifyCredentials.png)
+   ![](../../Secrets/static/GCP-specifyCredentials.png)
    
-You can also create a new [File Secret](../3-add-file-secrets.md) here and add the Google Cloud service account key that you downloaded.
+You can also create a new [File Secret](/docs/platform/secrets/add-file-secrets) here and add the Google Cloud service account key that you downloaded.
 
 Click **Continue**.
 
@@ -132,7 +132,7 @@ The **Add new Encrypted Text** settings appear.
 6. The default selection is **Inline Secret Value**.
 7. Enter the **Secret Value**.
 8. Select **Configure Region** to add the region(s) for your secret.
-9. Click **Save**.![](../static/add-a-google-cloud-secret-manager-41.png)
+9. Click **Save**.![](../../Secrets/static/add-a-google-cloud-secret-manager-41.png)
 
 ## Add a secret reference to the GCP Secrets Manager
 
@@ -150,7 +150,7 @@ The **Add new Encrypted Text** settings appear.
 You can either enter a version number like `1`, `2`, or enter `latest` to reference the latest version.
 9. Click **Save**.
 
-   ![](../static/add-a-google-cloud-secret-manager-42.png)
+   ![](../../Secrets/static/add-a-google-cloud-secret-manager-42.png)
 
 ## Add an encrypted file secret to the GCP Secrets Manager
 
@@ -166,13 +166,13 @@ The **Add new Encrypted File** settings appear.
 7. Select **Configure Region** to add the region(s) for your secret.
 8. Click **Save**.
 
-   ![](../static/add-a-google-cloud-secret-manager-43.png)
+   ![](../../Secrets/static/add-a-google-cloud-secret-manager-43.png)
 
 ## See also
 
-* [Add Google KMS as a Harness Secret Manager](./10-add-google-kms-secrets-manager.md)
-* [Add an AWS KMS Secret Manager](./7-add-an-aws-kms-secrets-manager.md)
-* [Add an AWS Secret Manager](./6-add-an-aws-secret-manager.md)
-* [Add an Azure Key Vault Secret Manager](../../Secrets/Secrets-Management/8-azure-key-vault.md)
-* [Add a HashiCorp Vault Secret Manager](./12-add-hashicorp-vault.md)
+* [Add Google KMS as a Harness Secret Manager](/docs/platform/Secrets/Secrets-Management/10-add-google-kms-secrets-manager.md)
+* [Add an AWS KMS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
+* [Add an AWS Secret Manager](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
+* [Add an Azure Key Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/8-azure-key-vault.md)
+* [Add a HashiCorp Vault Secret Manager](/docs/platform/Secrets/Secrets-Management/12-add-hashicorp-vault.md)
 

@@ -4,40 +4,31 @@ description: Use plain text and encrypted files in your deployments
 sidebar_position: 7
 ---
 
-You can use files added to the **Config Files** section in your Harness services in your manifests, such as in a ConfigMap. You can reference unencrypted and encrypted files, and they can be single or multiline.
+You can add files to your Harness services and then reference and use the files in your service manifests/specifications and pipelines.
 
-## Supported platforms
+Files are added to the **Config Files** section in your Harness services.
 
-### Harness file store
+Files can be stored in the following locations.
 
-All platform [integrations](/docs/continuous-delivery/cd-integrations) (Kubernetes, etc) support config files stored in the Harness File Store.
+- **Harness file store:** All platform [integrations](/docs/continuous-delivery/cd-integrations) (Kubernetes, etc.) support config files stored in the Harness [file store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
+- **Git providers:** You can use config files in any Git provider, including GitHub, GitLab, and Bitbucket. You connect to these providers using Harness connectors. Ensure that the connector credentials have read permissions on the target repository.
 
-### Git providers
-
-:::note
-
-Currently, Git provider support is behind the feature flag `CDS_GIT_CONFIG_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-You can use config files in any Git provider, including GitHub, GitLab, and Bitbucket. You connect to these providers using Harness connectors. Ensure that the connector credentials have read permissions on the target repository.
-
-## Important notes
+## Important notes on config files
 
 - Files must be 1MB or less.
 - Only JSON, YAML, and text files are supported.
 - You cannot use Harness variables in an encrypted text config file.
 - You cannot reference other config files within a config file.
-- Config Files cannot be binaries. 
+- Config files cannot be binaries. 
 
-### Expressions
+### Expressions are not allowed in references
 
-- Harness expressions in the parameter field of the `getAsString()` and `getAsBytes()` functions are not supported, for example: `<+configFile.getAsString(“<+serviceVariable.var_name>”)>`.
+Config files are referenced using the `<+configFile.getAsString("CONFIG_FILE_ID")>` format, as described in [Referencing and encoding config files](#referencing-and-encoding-config-files).
+
+You cannot use Harness expressions in the parameter field of the `getAsString()` and `getAsBase64()` functions. For example, this expression will fail: `<+configFile.getAsString(“<+serviceVariable.var_name>”)>`.
 
 
 ## Config file capabilities
-
-Harness supports the ability to add any file type to a service. Common types like JSON and XML are popular in our SSH and WinRM integrations. 
 
 You can add plain or encrypted text files. Both types can be referenced using a Harness expression, discussed below.
 
@@ -45,9 +36,9 @@ With a plain text config file, Harness renders the contents of the file.
 
 With an encrypted text config file, you need to base64 decode it before you can reference it within the deployment.
 
-## Adding config files to a service
+## Add config files to a service
 
-You can add config files to any Harness service deployment type.
+You can add config files to any Harness service deployment type (Kubernetes, ECS, etc.).
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -89,7 +80,7 @@ service:
 
 The encoded file is added as a [Harness secret](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/). The secret must be created separately if you are using YAML.
 
-You will use the `identifier` to reference the config file.
+You will use the `configFile.identifier` value to reference the config file.
 
 You can attach multiple files in a config file. Simply add a new line:
 
@@ -104,14 +95,14 @@ You can attach multiple files in a config file. Simply add a new line:
   <TabItem value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-1. In the Harness service, in Config Files, select **Add Config File**.
+1. In the Harness service, in **Config Files**, select **Add Config File**.
 2. In **Config File Source**, select **Harness**, and select **Continue**.
 3. In **Config File Identifier**, enter a name for the file.
 4. In **Select file type**, select **File Store** or **Encrypted**. Encrypted files are stored as [Harness secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 5. Select **Add** to attach multiple files as a single config file.
 6. Select **Submit**.
 
-You will use the value you entered in **Config File Identifier** to reference the config file.
+You will use the value you entered in **Config File Identifier** to reference the config file as an expression in the format `<+configFile.getAsString("CONFIG_FILE_ID")>`.
 
 ```mdx-code-block
   </TabItem>
@@ -124,10 +115,24 @@ You can attach multiple files to one config file. All the files must be either p
 
 ## Referencing and encoding config files
 
-Files added in the **Config Files** section of a service are referenced using the Harness expression `<+configFile.getAsString("config_file_Id")>`.
+Files added in the **Config Files** section of a service are referenced using the following Harness expressions.
 
-* Plain text file contents: `<+configFile.getAsString("config_file_Id")>`
-* Base64-encoded file contents: `<+configFile.getAsBase64("config_file_Id")>`
+* Plain text file contents: `<+configFile.getAsString("CONFIG_FILE_ID")>`
+* Base64-encoded file contents: `<+configFile.getAsBase64("CONFIG_FILE_ID")>`
+
+If the config file has multiple text or encrypted files attached, you must use fileStore or secrets variables expressions: 
+
+- `<+fileStore.getAsString("SCOPED_FILEPATH")>`  
+- `<+fileStore.getAsBase64("SCOPED_FILEPATH")>`
+- `<+secrets.getValue("SCOPED_SECRET_ID")>`
+
+Here are some examples:
+
+- `<+configFile.getAsString("cf_file")>`
+- `<+configFile.getAsBase64("cf_file")>`
+- `<+fileStore.getAsString("/folder1/configFile")>`
+- `<+fileStore.getAsBase64("account:/folder1/folder2/configFile")>`
+- `<+secrets.getValue("account.MySecretFileIdentifier")>`
 
 ### Use Base64 to avoid new lines
 

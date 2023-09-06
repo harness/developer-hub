@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can use AWS Secrets Manager for your Harness secrets.
 
-Unlike AWS KMS, AWS Secrets Manager stores both secrets and encrypted keys. With AWS KMS, Harness stores the secret in its Harness store and retrieves the encryption keys from KMS. For information on using an AWS KMS Secrets Manager, go to [Add an AWS KMS Secrets Manager](../Secrets-Management/7-add-an-aws-kms-secrets-manager.md).
+Unlike AWS KMS, AWS Secrets Manager stores both secrets and encrypted keys. With AWS KMS, Harness stores the secret in its Harness store and retrieves the encryption keys from KMS. For information on using an AWS KMS Secrets Manager, go to [Add an AWS KMS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager).
 
 This topic describes how to add an AWS Secret Manager in Harness.
 
@@ -118,7 +118,7 @@ For more information, go to [Finding the Key ID and ARN](https://docs.aws.amazon
 
 Click **Create or Select a Secret**.
 
-In the secret settings dialog, you can create/select a [Secret](../2-add-use-text-secrets.md) and enter your AWS Access Key as it's value.
+In the secret settings dialog, you can create/select a [Secret](/docs/platform/secrets/add-use-text-secrets) and enter your AWS Access Key as it's value.
 
 The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to connect to Secret Manager.
 
@@ -126,7 +126,7 @@ The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to 
 
 Click **Create or Select a Secret**.
 
-You can either create a new [Secret](../2-add-use-text-secrets.md) with your Access Key ID's secret key as its **Value** or use an existing secret.
+You can either create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your Access Key ID's secret key as its **Value** or use an existing secret.
 
 #### Secret Name Prefix
 
@@ -140,13 +140,13 @@ Select the AWS **Region** for the Secret Manager.
 
 If you select this option, Harness will authenticate using the IAM role assigned to the AWS host running the Delegate you select. You can select a Delegate using a Delegate Selector.
 
-Refer to [Secret Name Prefix](./6-add-an-aws-secret-manager.md#secret-name-prefix) and [Region](./6-add-an-aws-secret-manager.md#region) explained above to add these details.
+Refer to [Secret Name Prefix](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md#secret-name-prefix) and [Region](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md#region) explained above to add these details.
 
 ### Option: Assume Role Using STS on Delegate
 
 This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature. Typically, you use `AssumeRole` within your account or for AWS cross-account access.
 
-Refer to [Secret Name Prefix](./6-add-an-aws-secret-manager.md#secret-name-prefix) and [Region](./6-add-an-aws-secret-manager.md#region) explained above to add these details.
+Refer to [Secret Name Prefix](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md#secret-name-prefix) and [Region](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md#region) explained above to add these details.
 
 #### Role ARN
 

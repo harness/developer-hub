@@ -57,7 +57,7 @@ import TabItem from '@theme/TabItem';
 ```
 
 * **Username:** Enter the username for your Docker registry account.
-* **Password:** In your Docker registry, create a personal access token with **Read, Write, Delete** permissions. Then, create a [Harness secret](/docs/platform/Secrets/add-use-text-secrets) for your Docker registry personal access token.
+* **Password:** In your Docker registry, create a personal access token with **Read, Write, Delete** permissions. Then, create a [Harness secret](/docs/platform/secrets/add-use-text-secrets) for your Docker registry personal access token.
 
 :::info Docker registry permissions
 

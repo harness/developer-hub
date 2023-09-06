@@ -12,7 +12,7 @@ This topic provides an overview of how Harness Policy As Code implemented govern
 
 
 :::note
-Looking for the quickstart? See [Harness Policy As Code Quickstart](harness-governance-quickstart.md).
+Looking for the quickstart? See [Harness Policy As Code Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
 :::
 
@@ -84,9 +84,9 @@ Policies are written in the OPA policy language, Rego.
 
 Harness policies are written and tested using the built-in policy editor.
 
-![](./static/harness-governance-overview-07.png)
+![](../../Governance/14_Policy-as-code/static/harness-governance-overview-07.png)
 
-For an example of how to use the policy editor, see [Harness Policy As Code Quickstart](harness-governance-quickstart.md).
+For an example of how to use the policy editor, see [Harness Policy As Code Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
 #### Policy Library
 
@@ -94,7 +94,7 @@ The Policy Editor includes a library of policies that cover many common governan
 
 Sample policies are also useful references while writing your policy. When you import an example, a sample payload is also loaded for testing the policy.
 
-![](./static/harness-governance-overview-08.png)
+![](../../Governance/14_Policy-as-code/static/harness-governance-overview-08.png)
 
 You can simply use the library policies to quickly generate the policy you want to create.
 
@@ -102,12 +102,12 @@ You can simply use the library policies to quickly generate the policy you want 
 
 In the Policy Editor, you can select sample entities to test your policy on. For example, Pipelines.
 
-![](./static/harness-governance-overview-09.png)
+![](../../Governance/14_Policy-as-code/static/harness-governance-overview-09.png)
 #### Testing Terminal
 
 The Testing Terminal lets you test the policy against real inputs while you're developing it. You can select input payloads from previous evaluations to test what will happen when your policy is evaluated.
 
-![](./static/harness-governance-overview-10.png)
+![](../../Governance/14_Policy-as-code/static/harness-governance-overview-10.png)
 
 #### Policy Input Payload User Metadata
 
@@ -157,7 +157,7 @@ Policies are only enforced once they are added to a Policy Set. In the Policy Se
 
 Each policy in the set is also assigned a severity that determines what will happen if the policy evaluation fails (Error and Exit, Warn and Continue).
 
-![](./static/harness-governance-overview-11.png)
+![](../../Governance/14_Policy-as-code/static/harness-governance-overview-11.png)
 
 Policy Sets are stored to the Harness OPA server for a given entity type and event in Harness. The entity (Pipelines, etc) and event (On Save, On Run, etc) associated with a Policy Set determine when the policies in that set are evaluated.
 
@@ -171,7 +171,7 @@ When you create a policy, you identify the Harness entities were the policy is a
 
 For example, here's a policy that applies the [Harness Approval](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/) steps:
 
-![](./static/harness-governance-overview-12.png)
+![](../../Governance/14_Policy-as-code/static/harness-governance-overview-12.png)
 
 Currently, governance can be applied to the following Harness entities and events.
 
@@ -191,7 +191,7 @@ Severities:
 * **On error (Error and Exit):** a message is shown and the action does not complete.
 * **On warning (Warn and Continue):** a message is shown and the action is completed.
 
-The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. See [Add a Governance Policy Step to a Pipeline](add-a-governance-policy-step-to-a-pipeline.md).
+The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. See [Add a Governance Policy Step to a Pipeline](/docs/platform/Governance/14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md).
 
 #### Feature Flags
 
@@ -203,13 +203,13 @@ Policy Sets can be configured to evaluate policies on these Feature Flag events:
 * Flag is created.
 * Flag is toggled on or off.
 
-See [Use Harness Policy As Code for Feature Flags](using-harness-policy-engine-for-feature-flags.md).
+See [Use Harness Policy As Code for Feature Flags](/docs/platform/Governance/14_Policy-as-code/using-harness-policy-engine-for-feature-flags.md).
 
 #### Custom
 
 You can define a policy with the entity type Custom.
 
-The Custom entity type provides flexibility to enforce policy evaluations against any input payload during Pipeline execution. This is done using the Policy step. See [Add a Governance Policy Step to a Pipeline](add-a-governance-policy-step-to-a-pipeline.md).
+The Custom entity type provides flexibility to enforce policy evaluations against any input payload during Pipeline execution. This is done using the Policy step. See [Add a Governance Policy Step to a Pipeline](/docs/platform/Governance/14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md).
 
 Custom entity types are open ended. There is no pre-set JSON schema that is used for Custom policies. The payload that the policy is evaluated against is determined by you (defined in the Policy step).
 
@@ -221,11 +221,11 @@ Policies and Policy Sets are saved at the Harness Account, Organization, or Proj
 * A policy at the Org level can only be added to Policy Sets in that Org and its Project.
 * A policy at the Project level can only be added to Policy Sets in that Project.
 
-![](./static/harness-governance-overview-13.png)
+![](../../Governance/14_Policy-as-code/static/harness-governance-overview-13.png)
 
 ### See also
 
-* [Harness Policy As Code Quickstart](harness-governance-quickstart.md)
-* [Add a Policy Step to a Pipeline](add-a-governance-policy-step-to-a-pipeline.md)
+* [Harness Policy As Code Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
+* [Add a Policy Step to a Pipeline](/docs/platform/Governance/14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
 * [Harness Policy As Code Overview for Feature Flags](/docs/feature-flags/harness-policy-engine)
 

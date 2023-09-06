@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-08-10T10:00
+date: 2023-08-22T10:00
 sidebar_position: 2
 ---
 
@@ -18,13 +18,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Added support for Post Prod Rollback for ASG deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/rollback-deployments/). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-77450, CDS-76352)
 
-### Harness Delegate, version 80308
+### Harness Delegate, version 80308, and Continuous Integration, version 5408
 
-**GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
+**GitHub App authentication for GitHub connectors (CI-8577)**
 
 This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 
-With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings), and you can use GitHub connectors with GitHub App authentication in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
+With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
 
 ## August 10, 2023
 
@@ -98,9 +98,6 @@ This feature flag is now disabled by default and must be re-enabled if your CI-t
 You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities. (STO-5896)
 
 This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more information, go to [Set up target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines).
-
-
-
 
 #### July 5, 2023
 

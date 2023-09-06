@@ -54,7 +54,7 @@ You can use Harness secrets for the username and password in your script. For e
 ```bash
 curl -sSf -u "<+secrets.getValue("username")>:<+secrets.getValue("password")>" -O 'https://mycompany.jfrog.io/module/example/manifest.zip'
 ```
-For more information, see [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
+For more information, see [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 
 ## Start a pipeline

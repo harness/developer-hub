@@ -201,7 +201,7 @@ Harness CCM also provides the ability to create connectors via API using a Stack
 ### Create a Service Account and API key in Harness
 
 1. At the Account level, [create a service account](/docs/platform/role-based-access-control/add-and-manage-service-account) with the **Admin** role for **All Account Level Resources** or **All Resources Including Child Scopes**.
-2. [Create a service account token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#create-service-account-api-keys-and-tokens). Save the API Key, which will be used when creating AWS connectors via the API below.
+2. [Create a service account token](/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens). Save the API Key, which will be used when creating AWS connectors via the API below.
 
 ### Create a StackSet in AWS
 

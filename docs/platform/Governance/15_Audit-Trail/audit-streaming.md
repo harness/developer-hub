@@ -46,13 +46,15 @@ To add a streaming destination in Harness:
 
 7. Select **Continue**.
    
-   ![](./static/audit-streaming.png)
+   ![](../../Governance/15_Audit-Trail/static/audit-streaming.png)
 
 ## Configure the streaming connector
 
 1. Select **Amazon S3**.
 
-2. In **Select Connector**, select an existing AWS Cloud Provider connector or create a new one.
+2. In **Select Connector**, select an existing AWS Cloud Provider connector or create a new one. 
+
+   You must use the **Connect through a Harness Delegate** connectivity mode option when you set up your AWS Cloud Provider connector. Audit streaming does not support the **Connect through Harness Platform** connector option.
 
    Go to [Add an AWS connector](../../7_Connectors/Cloud-providers/add-aws-connector.md) for steps to create a new AWS Cloud Provider connector.
 
@@ -62,7 +64,7 @@ To add a streaming destination in Harness:
    
    Harness writes all the streaming records to this destination.
 
-   ![](./static/streaming-connector.png)
+   ![](../../Governance/15_Audit-Trail/static/streaming-connector.png)
 
 5. Select **Save** and **Continue**.
 
@@ -94,14 +96,14 @@ You can change the audit stream configuration by clicking three dots beside the 
 
 - **Delete**: Delete the audit stream destination.
 
-![](./static/edit-delete.png)
+![](../../Governance/15_Audit-Trail/static/edit-delete.png)
 
 
 ## Amazon S3 audit file details
 
 Here is an example of an audit stream file in one of the Amazon S3 buckets.
 
-![](./static/s3-auditstream-file.png)
+![](../../Governance/15_Audit-Trail/static/s3-auditstream-file.png)
 
 This file has a list of audit events in JSON format.
 

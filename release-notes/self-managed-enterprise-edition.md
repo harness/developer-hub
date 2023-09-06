@@ -803,13 +803,13 @@ gsutil -m cp \
   
   The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
   
-  * [AWS KMS](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
-  * [AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
-  * [Azure Key Vault](/docs/platform/Secrets/Secrets-Management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
-  * [Google KMS](/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
-  * [Google Cloud secret manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
-  * [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
-  * [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
+  * [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
+  * [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
+  * [Azure Key Vault](/docs/platform/secrets/secrets-management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
+  * [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
+  * [Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
+  * [Custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
+  * [HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
 
 - The option to **Auto-Reject previous deployments paused in this step on approval** is added to the Approval step. (CDS-58063)
   
@@ -1158,9 +1158,9 @@ gsutil -m cp \
 
   - This issue has been resolved. Now the missing data is treated according to user preference (GOOD, BAD, or IGNORE), contributes to error budget burn rate, and is included in notifications.
 
-- Encountering an error when configuring monitored services using the Harness Terraform provider. (SRM-14684)  
+- Encountering an error when configuring monitored services using the Harness Terraform Provider. (SRM-14684)  
   
-  The Harness Terraform provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
+  The Harness Terraform Provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
 
 - The ErrorBudgetReset API is incorrectly accepting Rolling type SLOs along with Calendar type SLOs. (SRM-14692)  
 
@@ -1543,7 +1543,7 @@ This release includes the following Harness module and component versions.
 
 - Fixed a minor UI issue where selecting the **Commits** tab on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds) caused the navigation menu to expand. (CI-6274)
 
-- You can now successfully use [references to secrets in non-Harness Secret Managers](/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets) in CI pipelines. Previously, these references failed because CI handles secrets as environment variables and some characters in these types of secret references aren't supported for environment variables. Now, CI automatically replaces unsupported characters with supported ones so it can process these references as environment variables. (CI-7443, ZD-41124)
+- You can now successfully use [references to secrets in non-Harness Secret Managers](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets) in CI pipelines. Previously, these references failed because CI handles secrets as environment variables and some characters in these types of secret references aren't supported for environment variables. Now, CI automatically replaces unsupported characters with supported ones so it can process these references as environment variables. (CI-7443, ZD-41124)
 
 - Fixed an issue where looping strategies were not working for some steps. (CI-7499, ZD-41659)
 
@@ -4013,6 +4013,10 @@ This release introduces the following fixes.
 
 This release introduces the following features and enhancements.
 
+- Added ingress support for Kubernetes versions 1.22 and higher for KOTS installations. (SMP-670)
+
+   ![](./static/kots-k8s-1.22.png)
+
 - You can now optionally configure Rolling, Rolling Rollback, and Blue/Green deployments. This option can be implemented in YAML. (CDS-40386)
 
 - You can now use an ECS Run Task step from an ECS swimlane. (CDS-4313)
@@ -4261,17 +4265,13 @@ CDS-36661
 
 Updated the provisioner ID to conform to other steps.
 
-CDS-40897 A
-
-dded serviceHeader API refresh on save and update activity.
+CDS-40897 Added serviceHeader API refresh on save and update activity.
 
 CDS-41461
 
 Changed UI label text and made cosmetic changes to the layout of CD edit screens.
 
-CDS-41492 A
-
-dded caching to the API call to list repositories in Artifactory.
+CDS-41492 Added caching to the API call to list repositories in Artifactory.
 
 CDS-41532, ZD-3324
 
@@ -4491,7 +4491,7 @@ ZD-33910, ZD-34304, ZD-34547, ZD-35359
 
 Added execution capability in CI send status task.
 
-CI=5463
+CI-5463
 
 Added UI validation to ensure the Limit Memory and Limit CPU fields have the required formats. Previously, incorrect values for these fields were flagged during a build, which would cause the build to fail.
 

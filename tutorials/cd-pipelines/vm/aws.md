@@ -95,7 +95,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     - Finally, select **Save and Continue** and verify the connection to remote server is successful.
 2. Create a secret to store the AWS secrete key.
     - In **Project Setup**, select **Secrets**.
-    - , and then select **Text**.
+    - Click **New Secret**, and then select **Text**.
     - Enter the secret name `harness_awssecretkey`.
     - For the secret value, paste in the AWS Secret Key.
     - Select **Save**.
@@ -110,14 +110,14 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 </details>
 
 1. Create an **AWS connector**.
-    - Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/1-aws-connector.yml).
+    - Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/aws-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
     - In the YAML, replace **AWS_ACCESS_KEY_ID** with the AWS Access Key ID value.
     - Select **Save Changes** and verify that the new connector named **harness_awsconnector** is successfully created.
     - Finally, select **Test** under **Connectivity Status** to ensure the connection is successful.
 2. Create a **Artifactory Connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
-    - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/2-artifactory-connector.yml).
+    - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/artifactory-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
     - Select **Save Changes** and verify that the new connector named **harness_artifactrepo** is successfully created.
@@ -134,9 +134,9 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In **Default Project**, select **Environments**.
     - Select **New Environment** and toggle to **YAML** to use the YAML editor.
-    - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/3-environment.yml) and paste it into the YAML editor and select **Save**.
+    - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/environment.yml) and paste it into the YAML editor and select **Save**.
     - In **Infrastructure Definitions**, select **Infrastructure Definition** and select **Edit YAML**.
-    - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/4-infrastructure-definition.yml) and paste it into the YAML editor.
+    - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/infrastructure-definition.yml) and paste it into the YAML editor.
     - In the Infra Definition YAML, replace **AWS_REGION** with the region where your instance is running and **INSTANCE_NAME** with the name of the instance.
     - Select **Save** and verify that the environment and infrastructure definition is created successfully.
 
@@ -153,7 +153,7 @@ In Harness, services represent what you deploy to environments. You use services
     - Select **New Service**.
     - Name the service `harness_ssh`.
     - Select **Save**, and then in the **Configuration** tab, toggle to **YAML** to use the YAML editor.
-    - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/5-service.yml) and paste it into the YAML editor.
+    - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/service.yml) and paste it into the YAML editor.
     - Select **Save** and verify that the service **harness_ssh** is successfully created.
 
 ### Pipeline
@@ -184,7 +184,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 </details>
 
-- Copy the contents of [pipeline-ssh-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/6-pipeline-ssh-canary.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-ssh-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/pipeline-ssh-canary.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
@@ -202,7 +202,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 </details>
 
-- Copy the contents of [pipeline-ssh-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/6-pipeline-ssh-rolling.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-ssh-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/pipeline-ssh-rolling.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
@@ -220,7 +220,7 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 
 </details>
 
-- Copy the contents of [pipeline-ssh-basic.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/6-pipeline-ssh-basic.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-ssh-basic.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/pipeline-ssh-basic.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
@@ -330,14 +330,14 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 </details>
 
 1. Create a **AWS connector**.
-    - Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/1-aws-connector.yml).
+    - Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/aws-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
     - In the YAML, replace **AWS_ACCESS_KEY_ID** with the AWS Access Key ID value.
     - Select **Save Changes** and verify that the new connector named **harness_awsconnector** is successfully created.
     - Finally, select **Test** under **Connectivity Status** to ensure the connection is successful.
 2. Create a **Artifactory Connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
-    - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/2-artifactory-connector.yml).
+    - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/artifactory-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste in the copied YAML.
     - Select **Save Changes** and verify that the new connector named **harness_artifactrepo** is successfully created.
@@ -354,9 +354,9 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In **Default Project**, select **Environments**.
     - Select **New Environment** and toggle to **YAML** to use the YAML editor.
-    - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/3-environment.yml) and paste it into the YAML editor and select **Save**.
+    - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/environment.yml) and paste it into the YAML editor and select **Save**.
     - In **Infrastructure Definitions**, select **Infrastructure Definition**, and the select **Edit YAML**.
-    - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/4-infrastructure-definition.yml) and paste it into the YAML editor.
+    - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/infrastructure-definition.yml) and paste it into the YAML editor.
     - In the Infra Definition YAML, replace **AWS_REGION** with the region where your instance is running and **INSTANCE_NAME** with the name of the instance.
     - Select **Save** and verify that the environment and infrastructure definition is created successfully.
 
@@ -373,7 +373,7 @@ In Harness, services represent what you deploy to environments. You use services
     - Select **New Service**.
     - Name the service `harness_winrm`.
     - Select **Save**, and then in the **Configuration** tab, toggle to **YAML** to use the YAML editor.
-    - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/5-service.yml) and paste it into the YAML editor.
+    - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/service.yml) and paste it into the YAML editor.
     - Select **Save** and verify that the Service **harness_ssh** is successfully created.
 
 ### Pipeline
@@ -422,7 +422,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 </details>
 
-- Copy the contents of [pipeline-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/6-pipeline-rolling.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/pipeline-rolling.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
@@ -440,7 +440,7 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 
 </details>
 
-- Copy the contents of [pipeline-basic.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/6-pipeline-basic.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-basic.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/pipeline-basic.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 

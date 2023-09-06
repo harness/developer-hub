@@ -126,7 +126,7 @@ For this reason, it's important that all your Project members know the Provision
 
 1. Select a Secrets Manager to use for encrypting/decrypting and saving the Terraform plan file.
 
-See [Harness Secrets Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
+See [Harness Secrets Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 
 A Terraform plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terraform plan file as plain text.
 
@@ -143,6 +143,12 @@ When the `terraform plan` command runs on the Harness Delegate, the Delegate e
 When the plan is applied, the Harness Manager passes the encrypted data to the Delegate.
 
 The Delegate decrypts the encrypted plan and applies it using the `terraform apply` command.
+
+```note
+
+Please enable the `CDS_TERRAFORM_TERRAGRUNT_PLAN_ENCRYPTION_ON_MANAGER_NG` feature flag if the default Harness secret manager is selected for the encryption/decryption of Terraform plans. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+
+```
 
 ### Configuration File Repository
 
@@ -300,7 +306,7 @@ If you are entering secrets (for credentials, etc.), use Harness secret referenc
 secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 ```
 
-See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
+See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ### Remote variables
 
@@ -377,7 +383,7 @@ terraform {
 
 See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
-You can use Harness secrets for credentials. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
+You can use Harness secrets for credentials. See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ## Targets
 
@@ -397,7 +403,7 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
+You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ## Advanced settings
 
