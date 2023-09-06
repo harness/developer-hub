@@ -20,7 +20,7 @@ import target_group_5 from './static/2-add-target-groups-10.png'
  While targets are often users, a target can be anything that can be uniquely identified. For example, a target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.
 :::
 
-Target groups are a collection of [targets](add-targets.md) that allow you to serve Feature Flag Variations to a list of users in bulk. You can group targets into a group either by picking individual targets or by defining rules that automatically map targets to a target group. For example, you can add individual targets `joe@harness.io` and `jane@harness.io` to the QA internal users group or you can define a rule that all the emails ending with `@harness.io` are added to the QA internal users group.
+Target groups are a collection of [targets](add-targets.md) that allows you to serve Feature Flag Variations to a list of users in bulk. You can group targets into a group either by picking individual targets or by defining rules that automatically map targets to a target group. For example, you can add individual targets `joe@harness.io` and `jane@harness.io` to the QA internal users group or you can define a rule that all the emails ending with `@harness.io` are added to the QA internal users group.
 
 You can also do the opposite and exclude specific targets from a target group.  
 
