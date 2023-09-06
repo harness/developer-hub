@@ -46,7 +46,7 @@ This release does not have early access features.
 
 ### Fixed issues
 
-* Fixed a UI issue observed when retrying a pipeline execution: the wrong **Execution Id** was displayed because the UI was evaluating the `sequenceId` based on the root `executionId`. With this fix, the **Execution Id** is based on the back-end data for the current pipeline execution. (CDS-76697)
+* Fixed a UI issue observed when retrying a pipeline execution: the wrong **Execution Id** was displayed because the UI was evaluating the `sequenceId` based on the root `executionId`. With this fix, the **Execution Id** is based on the back-end data for the current pipeline execution. (CDS-78305)
 
 * Fixed the following issue: when a user re-ran a pipeline execution with a different branch selected, the pipeline would execute with the last branch selected. With this fix, the pipeline always runs with the current branch selected in **Run Pipeline**. (CDS-77826)
 
@@ -56,7 +56,7 @@ This release does not have early access features.
   - [harnessdev/serverless-package:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-package/3.30.1-1.0.1/images/sha256-1448b1566186023df78cc79b529c06256e327890b5018ed05632775a7c5c4992?context=explore)
   - [harnessdev/serverless-rollback:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-rollback/3.30.1-1.0.1/images/sha256-c023e84a4a7450c4978535569b03e8909a7e6daa9c2fa0ad4ff70a6ee52e02e7?context=explore)
 
-* Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838)
+* Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
 
 * Fixed an issue when using the OCI Helm connector with anonymous credentials: Harness would incorrectly derive the source port from OCI repository and the connection validation would fail. With this fix, Harness deducts default port 443 if no port is provided in the URL itself. (CDS-77298)
 
@@ -64,7 +64,7 @@ This release does not have early access features.
 
 * Fixed a UI issue when running a pipeline with an input set that  allows multiple choices (checkboxes) for a field. Previously, if no checkboxes were selected for a field, the pipeline set the value to an empty string. This could cause the pipeline execution to fail. With this fix, the pipeline sets field to undefined if no checkboxes are selected. (CDS-77221)
 
-* Fixed an issue where users could not save modified input sets from from the YAML view. (CDS-77117)
+* Fixed an issue where users could not save modified input sets from from the YAML view. (CDS-77117, ZD-49265)
 
 * Fixed a UI issue observed when retrying a pipeline execution: the wrong **Execution Id** was displayed because the UI was evaluating the `sequenceId` based on the root `executionId`. With this fix, the **Execution Id** is based on the back-end data for the current pipeline execution. (CDS-76697)
 
