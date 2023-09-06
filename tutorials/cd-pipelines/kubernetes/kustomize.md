@@ -42,11 +42,11 @@ You can choose to proceed with the tutorial either by using the command-line int
 
 ## Before you begin
 
-Verify the following:
+Complete the following tasks:
 
-1. **Obtain Harness API Token**. For steps, go to the Harness documentation on [creating a personal API token](https://developer.harness.io/docs/platform/resource-development/apis/add-and-manage-api-keys/).
-2. **Obtain GitHub personal access token with repo permissions**. For steps, go to the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
-3. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness delegates and deploying a sample application in a local development environment.
+1. **Obtain a Harness API Token**. For steps, go to the Harness documentation on [creating a personal API token](https://developer.harness.io/docs/platform/resource-development/apis/add-and-manage-api-keys/).
+2. **Obtain a GitHub personal access token (PAT) with repo permissions**. For steps, go to the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
+3. **Obtain a Kubernetes cluster**. Use your own Kubernetes cluster. If you do not have one, we recommend that you use [K3D](https://k3d.io/v5.5.1/) for installing Harness delegates and deploying a sample application in a local development environment.
     - Check [delegate System and network requirements](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-requirements).
 4. **Install [Helm CLI](https://helm.sh/docs/intro/install/)**.
 5. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
@@ -55,7 +55,7 @@ Verify the following:
 ## Getting Started with Harness CD
 ----------------------------------
 
-1. Download and Configure Harness CLI
+1. Download and configure the Harness CLI.
 
 ```mdx-code-block
 <Tabs>
@@ -108,54 +108,54 @@ source ~/.bash_profile
 <TabItem value="Windows">
 ```
 
-a. Open Windows Powershell and run the command below to download the Harness CLI
+a. Open Windows Powershell and run the following command to download the Harness CLI.
 
 ```
 Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
 ```
     
-b. Extract the downloaded zip file and change directory to extracted file location
+b. Extract the downloaded Zip file and change the directory to the extracted file location.
 
-c. Follow the steps below to make it accessible via terminal
+c. Perform the following steps to make it accessible through a terminal.
 
 ```
 $currentPath = Get-Location 
 [Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$currentPath", [EnvironmentVariableTarget]::Machine)
 ```
 
-d. Restart terminal
+d. Restart the terminal.
 
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
 
-2. Clone the Forked **harnessed-example-apps** repo and change directory.
+2. Clone the forked **harnessed-example-apps** repo and change the directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps 
     ```
-    > Note: Replace `GITHUB_ACCOUNTNAME` with your GitHub Account name.
+    > Note: Replace `GITHUB_ACCOUNTNAME` with your GitHub account name.
 
-3. Login to Harness from CLI
+3. Log in to Harness from the CLI.
     ```bash
     harness login --api-key  --account-id HARNESS_API_TOKEN 
     ```
-    > Note: Replace `HARNESS_API_TOKEN` with Harness API Token that you obtained during the prerequisite section of this tutorial.
+    > Note: Replace `HARNESS_API_TOKEN` with the Harness API token that you obtained during the prerequisite section of this tutorial.
 
 :::caution
 
-For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
+For the pipeline to run successfully, perform all of the following steps as they are, including the naming conventions.
 
 :::
 
 ### Delegate
 
-The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifact registries, cloud platforms, etc. The delegate is installed in the target infrastructure (Kubernetes cluster) and performs operations including deployment and integration. To learn more about the delegate, go to [delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifact registries, cloud platforms, etc. The delegate is installed in the target infrastructure (Kubernetes cluster) and performs operations including deployment and integration. To learn more about the delegate, go to [delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
-4. Log into [Harness UI](https://app.harness.io/). In **Project Setup**, select **Delegates**.
+4. Log in to the [Harness UI](https://app.harness.io/). In **Project Setup**, select **Delegates**.
     - Select **Delegates**.
-        - Select **Install delegate**. For this tutorial, let's explore how to install the delegate using Helm.
+        - Select **Install delegate**. For this tutorial, let's explore how to install the delegate by using Helm.
         - Add the Harness Helm chart repo to your local Helm registry.  
 
         ```bash
@@ -165,7 +165,7 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
         ```bash
         helm repo update harness-delegate
         ```
-        -  In the command provided, `ACCOUNT_ID`, `MANAGER_ENDPOINT`, and `DELEGATE_TOKEN` are auto-populated values that you can obtain from the delegate Installation wizard.  
+        -  Run the following command, replacing `ACCOUNT_ID`, `MANAGER_ENDPOINT`, and `DELEGATE_TOKEN` with the corresponding auto-populated values from the delegate installation wizard.  
 
             ```bash
             helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
@@ -177,7 +177,7 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
              --set replicas=1 --set upgrader.enabled=false \
              --set delegateToken=DELEGATE_TOKEN
             ```
-    - Verify that the delegate is installed successfully and can connect to the Harness Manager.
+    - Verify that the delegate is installed successfully and can connect to Harness Manager.
     - You can also follow the [Install Harness delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/) tutorial to install the delegate using the Terraform Helm Provider or Kubernetes manifest.
 
 
@@ -185,16 +185,16 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret management solution. To learn more about secrets in Harness, go to [Secrets Management](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
 
-5. Create a secret to store GitHub PAT. This will be used in the next step to create GitHub connector.
+5. Create a secret to store the GitHub PAT. This will be used in the next step to create a GitHub connector.
 
     ```bash
     harness secret  --token GITHUB_PAT apply 
     ```
-    > Note: Replace `GITHUB_PAT` with GitHub PAT that you obtained during the prerequisite section of this tutorial.
+    > Note: Replace `GITHUB_PAT` with the GitHub PAT that you obtained during the prerequisite section of this tutorial.
 
 ### Connectors
 
-Connectors in Harness enable integration with 3rd party tools, providing connection and authentication at deployment runtime. For example, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. To learn more about connectors, go to [Connectors](https://developer.harness.io/docs/category/connectors).
+Connectors in Harness enable integration with third-party tools, providing connection and authentication at deployment runtime. For example, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. To learn more about connectors, go to [Connectors](https://developer.harness.io/docs/category/connectors).
 
 6. Create a **GitHub connector**.
     ```bash
@@ -231,7 +231,7 @@ In Harness, services represent what you deploy to environments. You use services
 
 ### Pipeline
 
-A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing and follow that up with CD for artifact deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
 
 
 ```mdx-code-block
@@ -269,7 +269,7 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/bluegreen-pipelin
 <TabItem value="Rolling">
 ```
 
-Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
+Rolling deployments incrementally add nodes in a single environment with a new service version, either one node at a time or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
 
 ```bash
 harness pipeline --file kustomize-guestbook/harnesscd-pipeline/rolling-pipeline.yml apply
@@ -315,7 +315,7 @@ For the pipeline to run successfully, please follow all of the following steps a
 
 ### Delegate
 
-The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifact registries, cloud platforms, etc. The delegate is installed in the target infrastructure (Kubernetes cluster) and performs operations including deployment and integration. To learn more about the delegate, go to [delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between Harness Manager and various providers such as artifact registries and cloud platforms. The delegate is installed in the target infrastructure (Kubernetes cluster) and performs operations including deployment and integration. To learn more about the delegate, go to [delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
 3. In **Project Setup**, select **Delegates**.
     - Select **Tokens**.
