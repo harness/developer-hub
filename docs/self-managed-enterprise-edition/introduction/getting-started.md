@@ -72,7 +72,7 @@ To get started with Harness Self-Managed Enterprise Edition, go to the following
 * Harness CCM: [Introduction to Cloud Cost Management](/docs/cloud-cost-management/getting-started-ccm/continuous-efficiency-overview).
 * Harness CET: [Set up Continuous Error Tracking (CET)](/docs/continuous-error-tracking/getting-started/cet-setup).
 * Harness CI: [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
-* Harness CD: [CD Pipeline Basics](../../continuous-delivery/get-started/cd-pipeline-basics.md).
+* Harness CD: [CD Pipeline Basics](../../continuous-delivery/get-started/key-concepts.md).
 * Harness FF: [Get started with a flag](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags).
 * Harness STO: [Security Testing Orchestration Basics](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
-* Harness Chaos Engineering: [Get started with Harness Chaos Engineering](/docs/category/get-started-with-harness-chaos-engineering-ce).
+* Harness Chaos Engineering: [Get started with Harness Chaos Engineering](/docs/category/get-started-with-ce).

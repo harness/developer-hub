@@ -25,7 +25,7 @@ Most resources shown below will support any of the three scopes.
 
 ## Authentication
 
-The recommended way to authenticate with the Harness Terraform provider is environment variables. 
+The recommended way to authenticate with the Harness Terraform Provider is environment variables. 
 
 You should set at least:
 

@@ -53,14 +53,21 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 #### Scan Mode
 
+
+
 ```mdx-code-block
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeDataload from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
+<!-- 
+add Dataload support per DOC-2794 
+-->
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
+<StoSettingScanModeDataload />   
 <StoSettingScanModeIngest />
 
 <a name="scan-config"></a>
