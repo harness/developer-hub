@@ -1,6 +1,6 @@
 ---
-hide_table_of_contents: false
-hide_title: uri
+hide_table_of_contents: true
+hide_title: true
 title: Chaos Engineering Docs
 # id: chaos-engineering
 ---
