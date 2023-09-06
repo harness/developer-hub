@@ -48,9 +48,9 @@ Harness NextGen release 805xx includes the following changes for the Harness Del
 
 - The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
 
-- Earlier, Harness had an N-3 support policy for delegates. (PL-39452)
+- Harness has an N-3 support policy for delegates on a different version than Harness Manager. N-3 means that the current version and the three previous versions are supported. For example, if you have version 23.03.XXXXX installed, Harness supports all images from 23.01.XXXXX to 23.03.XXXXX.
 
-   Now, the delegate expiration is calculated using the version difference between Harness Manager and the delegate. If the delegate and Harness Manager are on the same version, the delegate expiration is 24 weeks.
+   With this release, if the delegate and Harness Manager are on the same version, the delegate expiration is 24 weeks. (PL-39452)
 
 ### Early access features
 
