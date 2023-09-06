@@ -36,6 +36,8 @@ Harness NextGen release 805xx includes the following changes for the Harness Del
 
 - Upgraded `io.netty:netty*` to version `4.1.94.final` to address vulnerabilities. (CI-8971, ZD-48488)
 
+- API Call logs now include details such as Response, size, duration , HTTP Verb, and Response code in the summary. (OIP-767)
+
 - If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
 
    Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
