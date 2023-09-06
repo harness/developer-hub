@@ -35,7 +35,7 @@ The following deprecated API endpoints will no longer be supported:
 
 ### New features and enhancements
 
-- When Harness is configured to use the App Role ID to fetch an authentication token from Hashicorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
+- When Harness is configured to use the App Role Id to fetch an authentication token from HashiCorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
 
   This issue has been fixed. You can now specify whether or not you want to retain the token to reduce the number of requests made. Possible values are `True` and `False`. The default value is `True`.
 
@@ -45,7 +45,7 @@ The following deprecated API endpoints will no longer be supported:
   
   The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**).
 
-  You are prompted to sign the EULA only once. It is not presented subsequently.
+  Each account user must sign the EULA only once.
   
   The setting is inherited at the project scope.
 
