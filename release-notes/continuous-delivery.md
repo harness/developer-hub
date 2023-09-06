@@ -70,13 +70,15 @@ This release does not have early access features.
 
 * Fixed an issue observed when deploying Artifactory artifacts, where the pipeline execution would save the generic artifact metadata incorrectly. Note that this fix applies to new pipeline executions only. (CDS-76302, ZD-48430)
 
-* Fixed an issue in the **Run Pipeline** UI when running child pipelines . Previously, **Pipeline Variables** was indented under **Stage**, which implied that **Pipeline Variables** was a new stage. (CDS-74138)
+* Fixed an issue in the **Run Pipeline** UI when running child pipelines . Previously, **Pipeline Variables** was in a new container, which implied that **Pipeline Variables** was a new stage. (CDS-74138)
   
   ![](static/cds-74138-00-before.png)
 
-  With this fix, **Pipeline Variables** is unindented to make it clear that these are inputs from the child pipeline. 
+  With this fix, **Pipeline Variables** is indented under the same container to make it clear that these are inputs from the child pipeline. 
   
   ![](static/cds-74138-01-after.png)
+
+  <!-- https://harness.atlassian.net/browse/CDS-74138?focusedCommentId=567699 -->
 
 * API Call logs now include details such as Response, size, duration, HTTP Verb, and Response code in the summary. (OIP-767)
 
