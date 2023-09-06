@@ -41,7 +41,7 @@ Here's how to get started with Harness Feature Flags:
 
 SDKs are the libraries you add to your code to authenticate, configure and manage feature flag usage.
 
-All of our SDKs are open-source, provided per-language. and backed by public APIs.
+All of our SDKs are open-source, provided per-language, and backed by public APIs.
 
 The SDKs all follow the same basic logic:
 
