@@ -5,7 +5,7 @@ sidebar_position: 220
 ---
 
 :::note
-This workflow requires a basic knowledge of governance policies and how to implement them using [Harness Policy as Code](/docs/platform/Governance/Policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/).
+This workflow requires a basic knowledge of governance policies and how to implement them using [Harness Policy as Code](/docs/platform/governance/Policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/).
 :::
 
 Whenever you run a scan, Harness collects output variables that capture the number of issues detected at each severity. These variables also track "new" issues were found in the current scan but not in the baseline or in the previous scan. For more information, go to:

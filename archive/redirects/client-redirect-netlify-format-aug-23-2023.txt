@@ -157,7 +157,7 @@ https://developer.harness.io/docs/service-reliability-management/continuous-erro
 https://developer.harness.io/docs/service-reliability-management/continuous-error-tracking/error-tracking-event-dashboard https://developer.harness.io/docs/continuous-error-tracking/getting-started/cet-event-dashboard
 https://developer.harness.io/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc https://developer.harness.io/docs/continuous-error-tracking/getting-started/cet-arc
 https://developer.harness.io/docs/category/9mefqceij0-cv-category https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step
-https://developer.harness.io/docs/platform/Security/add-use-text-secrets https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets
+https://developer.harness.io/docs/platform/Security/add-use-text-secrets https://developer.harness.io/docs/platform/secrets/add-use-text-secrets
 https://developer.harness.io/docs/platform/Security/add-file-secrets https://developer.harness.io/docs/platform/Secrets/add-file-secrets
 https://developer.harness.io/docs/platform/Security/add-use-ssh-secrets https://developer.harness.io/docs/platform/Secrets/add-use-ssh-secrets
 https://developer.harness.io/docs/platform/Security/harness-secret-manager-overview https://developer.harness.io/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview
@@ -664,8 +664,8 @@ https://developer.harness.io/docs/continuous-integration/ci-technical-reference/
 https://developer.harness.io/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache
 https://developer.harness.io/docs/continuous-integration/ci-technical-reference/ci-git-clone-step https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline
 https://developer.harness.io/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem https://developer.harness.io/docs/self-managed-enterprise-edition/monitor-harness-on-prem
-https://developer.harness.io/docs/platform/Get-started/platform-concepts/view-account-info-and-subscribe-to-alerts https://developer.harness.io/docs/platform/Get-started/view-account-info-and-subscribe-to-alerts
-https://developer.harness.io/docs/platform/Get-started/platform-concepts/platform-overview https://developer.harness.io/docs/platform/Get-started/platform-overview
+https://developer.harness.io/docs/platform/get-started/platform-concepts/view-account-info-and-subscribe-to-alerts https://developer.harness.io/docs/platform/get-started/view-account-info-and-subscribe-to-alerts
+https://developer.harness.io/docs/platform/get-started/platform-concepts/platform-overview https://developer.harness.io/docs/platform/get-started/key-concepts
 https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database https://developer.harness.io/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database
 https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm
 https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference

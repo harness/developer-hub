@@ -64,7 +64,7 @@ Instead, if you publish output variables in your shell script command, structure
 
 You can use Harness secrets in your Shell Script steps.
 
-For more information, go to [add text secrets](/docs/platform/Secrets/add-use-text-secrets).
+For more information, go to [add text secrets](/docs/platform/secrets/add-use-text-secrets).
 
 Basically, you use `<+secrets.getValue("secret_Id")>` to refer to the secret.
 
@@ -170,14 +170,20 @@ If you select **Target Host**, depending on the script type, enter the following
 
 **Bash**
 * **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you defined the stage **Infrastructure**, and the Harness Delegate must have network access to the target host. You can also enter the variable `<+instance.name>` and the script will execute on whichever target host is used during deployment.
-* **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, go to [add SSH keys](/docs/platform/Secrets/add-use-ssh-secrets/).
+* **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, go to [add SSH keys](/docs/platform/secrets/add-use-ssh-secrets).
 * **Working Directory** provide the working directory for the script to be executed, keep in mind that the directory path should be present on the host.
 
 **PowerShell**
 * **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you defined the stage **Infrastructure**, and the Harness Delegate must have network access to the target host. You can also enter the variable `<+instance.name>` and the script will execute on whichever target host is used during deployment.
-* **WinRM Credential:** select the WinRM credentials to use for the PowerShell session. For information on setting up WinRM credentials, go to [add WinRM credential](/docs/platform/Secrets/add-winrm-keys).
+* **WinRM Credential:** select the WinRM credentials to use for the PowerShell session. For information on setting up WinRM credentials, go to [add WinRM credential](/docs/platform/secrets/add-winrm-keys).
 * **Working Directory:** provide the working directory for the script to be executed. Keep in mind that the directory path should be present on the host.
   
+### Notes on working directory
+
+import WorkingDir from '/docs/continuous-delivery/shared/working-dir.md';
+
+<WorkingDir name="WorkingDir" />
+
 ### Advanced step settings
 
 In **Advanced**, you can use the following options:
@@ -336,7 +342,7 @@ See [select delegates with selectors](/docs/platform/Delegates/manage-delegates/
 If you select **Target Host**, enter the following:
 
 * **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you created the workflow, and the Harness Delegate must have network access to the target host. You can also enter the variable `<+instance.name>` and the script will execute on whichever target host is used during deployment.
-* **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, go to [add SSH keys](/docs/platform/Secrets/add-use-ssh-secrets).
+* **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, go to [add SSH keys](/docs/platform/secrets/add-use-ssh-secrets).
 
 ## Use cases
 

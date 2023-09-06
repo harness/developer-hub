@@ -46,7 +46,7 @@ This release does not include hotfixes.
 <details>
 <summary>2023 releases</summary>
 
-#### August 10, 2023, version 80119
+#### August 10, 2023, version 80204
 
 ##### What's new
 
@@ -110,13 +110,11 @@ This release does not include any new features.
 
 Create and manage monitored services at the Project level (SRM-14580)
 
-You can now seamlessly create and manage monitored services at the Project level, as well as within the SRM, CET, and CD modules. You can view and manage the monitored services, regardless of where they were created. The monitored service list presents specific insights based on where you are accessing it.
+You can now seamlessly create and manage monitored services at the Project level, as well as within the SRM and CD modules. You can view and manage the monitored services, regardless of where they were created. The monitored service list presents specific insights based on where you are accessing it.
 
   - Project level: Shows service names and health source count, while interactive module icons allow you to effortlessly navigate to specific modules for a detailed view.
     
   - CD module: Presents monitored service names alongside configured health sources, providing a comprehensive overview of health status.
-    
-  - CET module: Displays monitored service names while indicating the configuration status of Error Tracking Agents and notifications.
     
   - SRM module: Provides information, including monitored service status, name, SLO specifics, recent changes, 24-hour health trends, score, and dependency status.
 
@@ -279,9 +277,9 @@ This release does not include any early access features.
 
     This issue has been resolved, and error budget burn rate notifications are now being sent for composite SLOs.
 
-- Encountering an error when configuring monitored services using the Harness Terraform provider. (SRM-14684)  
+- Encountering an error when configuring monitored services using the Harness Terraform Provider. (SRM-14684)  
   
-  The Harness Terraform provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
+  The Harness Terraform Provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
 
 - On the Composite SLO Details page, the environment links under the monitored services were broken. (SRM-14645)  
   

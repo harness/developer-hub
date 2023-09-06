@@ -14,13 +14,13 @@ You can enforce policies in the following ways:
 * **Enforce policies at a scope:** Create a policy and apply it to all pipelines in your account, organization, and project. 
 
   Policy evaluation occurs on pipeline-level events like **On Run** and **On Save**.
-For more information, go to [Harness Policy As Code quickstart](/docs/platform/Governance/Policy-as-code/harness-governance-quickstart).
+For more information, go to [Harness Policy As Code quickstart](/docs/platform/governance/Policy-as-code/harness-governance-quickstart).
 
 * **Enforce policies at any stage:** Create a policy step and include a policy set and JSON payload to evaluate. 
 
   When the pipeline reaches the policy step, policy evaluation occurs. Data such as resolved expressions can be evaluated when the pipeline runs.
 
-For information about how to add a policy step to a stage, go to [Add a policy step to a pipeline](/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline).
+For information about how to add a policy step to a stage, go to [Add a policy step to a pipeline](/docs/platform/governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline).
 
 This topic provides sample policies you can use in policy steps and on pipeline-level events like **On Run** and **On Save**.
 

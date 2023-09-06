@@ -2,18 +2,20 @@
 title: Automate onboarding with Harness
 description: Automate the provisioning of resources to Harness via the Harness Terraform Provider.
 sidebar_position: 3
+redirect_from:
+  - /docs/platform/Resource-Development/Terraform/automate-harness-onboarding
 ---
 
-Harness offers a first-class Terraform provider to automate adoption and growth.
+Harness offers a first-class Terraform Provider to automate adoption and growth.
 
-To use the Harness Terraform provider, go to [Harness' Terraform module](https://registry.terraform.io/providers/harness/harness/latest/docs) in the HashiCorp Terraform Registry. Select **Next Gen** to see all the resources Harness supports for provisioning.
+To use the Harness Terraform Provider, go to [Harness' Terraform module](https://registry.terraform.io/providers/harness/harness/latest/docs) in the HashiCorp Terraform Registry. Select **Next Gen** to see all the resources Harness supports for provisioning.
 
-This topic uses a [sample repository](https://github.com/thisrohangupta/harness) to explain the steps to automate onboarding using the Harness Terraform provider.
+This topic uses a [sample repository](https://github.com/thisrohangupta/harness) to explain the steps to automate onboarding using the Harness Terraform Provider.
 
 ## Important
 
 - To get started with the Harness provider, Harness recommends installing a delegate with Terraform CLI. You need the delegate to build out the automation pipelines to create the various resources.
-- Harness recommends making changes using Git when using the Terraform provider.
+- Harness recommends making changes using Git when using the Terraform Provider.
 - Defining your resources like service, environment, infrastructure definition, etc. via Terraform is a one-way sync. By using Terraform, you define the object in Git. After you commit the change, a Harness pipeline provisions the resource to your account. 
 - Any changes you make via Git are propagated to the UI via this pipeline, which fetches the Terraform file definition for the resource.
 - To avoid configuration mismatches, any changes you make in the UI must be reconciled and updated in the YAML.

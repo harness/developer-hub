@@ -1,15 +1,14 @@
 {
-    "label": "APIs",
+    "label": "Get started with Platform",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
-    "position": 3,
-
+    "position": "2",
     "link": {
         "type": "generated-index",
-        "title": "APIs"
+        "title": "Get started with Harness Platform"
     },
     "customProps": {
-        "helpdocs_category_id": "pm96bpz4kf"
+        
     }
 }

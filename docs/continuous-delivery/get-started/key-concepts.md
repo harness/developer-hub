@@ -1,62 +1,34 @@
 ---
-title: CD pipeline basics
-description: This topic covers CD pipeline basics to get you ready to start building pipelines easily.
-sidebar_position: 2
+title: Key concepts
+description: Key concepts for Harness CD & GitOps
 helpdocs_topic_id: cqgeblt4uh
 helpdocs_category_id: dxej4ug0n5
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 2
+redirect_from:
+  - /docs/continuous-delivery/get-started/cd-pipeline-basics
 ---
-
-This topic covers CD Pipeline basics to get you ready to start building Pipelines easily.
 
 For details on Harness' Key Concepts, go to [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
 
-## Pipelines
+## Introduction
 
-A CD Pipeline is a series of Stages where each Stage deploys a Service to an Environment.
+This table explains how to map your existing CD needs to the key Harness concepts outlined on this page.
 
-A CD Pipeline can perform many additional CD operations, including, but not limited to:
-
-* Propagating Services and their definitions across Stages.
-* Approvals using integrations like Jira and ServiceNow.
-* Synchronizing stage deployments using barriers.
-* Notifications.
-* and many other operations.
-
-## Stages
-
-A CD Stage is a subset of a Pipeline that contains the logic to perform one major segment of the deployment process. Stages are based on the different milestones of your release process, such as dev, qa, and prod releases, and approvals.
-
-This table explains how Stages perform your CD operations:
-
-
-
-|                                   |                                           |
+|       **Your CD Process**         |     **Harness CD Concept**                |
 | --------------------------------- | ----------------------------------------- |
-| **Your CD Process**                           | **CD Pipelines**                          |
 | What you are deploying            | Service and Service Definition            |
 | Where you are deploying it        | Environment and Infrastructure Definition |
-| How you are deploying it          | Execution steps and Failure Strategy      |
+| How you are deploying it          | Steps and Failure Strategy                |
 | When you want it deployed         | Triggers                                  |
-| Who can approve deployment stages | Approval steps and stages                 |
+| Who can approve deployment stages | Approval Steps and Stages                 |
 
+## Service
 
-See the following:
+A Service represents your microservices and other workloads that can be deployed, monitored, or changed independently.
 
-* [Add a Stage](/docs/platform/8_Pipelines/add-a-stage.md)
-* [Add a Stage Template Quickstart](/docs/platform/13_Templates/add-a-stage-template.md)
-* [Stage and Step Conditional Execution Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-
-### Services
-
-A Service represents your microservices and other workloads.
-
-A Service is an entity to be deployed, monitored, or changed independently.
-
-When a Service is added to the stage in a Pipeline, you define its Service Definition. Service Definitions represent the real artifacts, manifests, and variables of a Service. They are the actual files and variable values.
-
-You can also propagate and override a Service in subsequent stages by selecting its name in that stage's Service settings.
+When a Service is added to the stage in a Pipeline, you define its Service Definition. Service Definitions represent the real artifacts, manifests, and variables of a Service. They are the actual files and variable values. You can also propagate and override a Service in subsequent stages by selecting its name in that stage's Service settings.
 
 For examples, go to:
 
@@ -65,7 +37,7 @@ For examples, go to:
 
 ### Service Instance
 
-A **Service Instance** is the number of running Service instances at any given moment (pods in case of Kubernetes, hosts in case of SSH-based deployments, etc).
+A **Service Instance** is the number of instances of a service running at any given moment (pods in case of Kubernetes, hosts in case of SSH-based deployments, etc).
 
 Harness periodically tracks the count of running Service Instances every 10 minutes and stores it in the Harness database.
 
@@ -73,21 +45,38 @@ Harness uses a Service-based license model to charge Harness customers using its
 
 For more information, go to [Service-based Licensing and Usage for CD](./service-licensing-for-cd.md).
 
-### Environments and Infrastructure
+## Environment
 
 Environments represent your deployment targets logically (QA, Prod, etc). You can add the same Environment to as many Stages as you need.
+
+### Infrastructure Definition
 
 Infrastructure Definitions represent an Environment's infrastructure physically. They are the actual target clusters, hosts, etc.
 
 For an example, go to [Kubernetes Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
+## Pipeline
 
-### Execution Steps
+A CD Pipeline is a series of Stages where each Stage deploys a Service to an Environment. It can perform many additional CD operations, including, but not limited to:
 
-Execution steps perform the CD operations like applying a manifest, asking for approval, rollback, and so on.
+* Propagating Services and their definitions across Stages.
+* Approvals using integrations like Jira and ServiceNow.
+* Synchronizing stage deployments using barriers.
+* Notifications.
+* and many other operations.
 
-Harness automatically adds the steps you need for the deployment strategy you select. You can then add additional steps to perform many other operations.
+### Stage
 
-You can run steps in parallel and apply execution conditions and failure strategies to them individually or as step groups.
+A CD Stage is a subset of a Pipeline that contains the logic to perform one major segment of the deployment process. Stages are based on the different milestones of your release process, such as dev, qa, and prod releases, and approvals.
+
+See the following:
+
+* [Add a Stage](/docs/platform/8_Pipelines/add-a-stage.md)
+* [Add a Stage Template Quickstart](/docs/platform/13_Templates/add-a-stage-template.md)
+* [Stage and Step Conditional Execution Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+
+### Step
+
+Steps perform the CD operations like applying a manifest, asking for approval, rollback, and so on. Harness automatically adds the steps you need for the deployment strategy you select. You can then add additional steps to perform many other operations. You can run steps in parallel and apply execution conditions and failure strategies to them individually or as step groups.
 
 For examples, go to:
 
@@ -97,7 +86,7 @@ For examples, go to:
 * [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step)
 * [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step)
 
-### Connectors
+## Connectors
 
 Connectors contain the information necessary to integrate and work with 3rd party tools such as Git providers, artifact repos, and target infrastructure.
 
@@ -111,29 +100,29 @@ For example, go to:
 * [Docker Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
 * [Git Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
 
-#### Permissions
+### Permissions
 
 The third-party credentials used in Harness connectors require different permissions depending on your deployment type (Kubernetes, ECS, Serverless, etc) and the tasks your pipelines will perform in those platforms.
 
 For example, if your Pipeline deploys a Docker image to a Kubernetes cluster, you will need a Connector that can pull the images and any related manifests from their repositories. Also, you will need another Connector that can push the image to the target cluster and create any objects you need (Secrets, Deployments, etc).
 
-### Delegates
+## Delegates
 
 The Harness Delegate is a software service you install in your environment that connects to the Harness Manager and performs tasks using your container orchestration platforms, artifact repositories, monitoring systems, etc.
 
-#### Credentials and permissions
+### Credentials and permissions
 
 The Delegate uses the credentials set up in the Connectors used by the Pipeline to perform deployment tasks.
 
 The Delegate also needs permissions in the target environment to execute deployment tasks. These permissions are granted in the Delegate config file or the environment account you use when installing the Delegate.
 
-### Variables
+## Variables
 
 Pipeline and Stage variables are custom variables you can add and reference in your Pipeline and Stage. They're available across the Pipeline. You can propagate and override their values in later stages.
 
 For more information, go to [Built-in Harness Variables Reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
 
-### Triggers
+## Triggers
 
 You can run your Pipelines manually or use triggers to initiate their execution.
 
@@ -145,11 +134,11 @@ For examples, go to:
 * [Trigger Pipelines on New Helm Chart](../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md)
 * [Trigger Pipelines using Git Events](../../platform/11_Triggers/triggering-pipelines.md)
 
-### Advanced settings
+## Advanced settings
 
 Pipelines, Stages, and steps have advanced settings to control the flow of operations.
 
-#### Inputs and overlays
+### Inputs and overlays
 
 Harness Input Sets are collections of runtime inputs for a Pipeline provided before execution.
 
@@ -159,7 +148,7 @@ With Input Sets and Overlays, you can make a single Pipeline template that can b
 
 For more information, go to [Input Sets and Overlays](../../platform/8_Pipelines/input-sets.md).
 
-#### Conditional executions
+### Conditional executions
 
 You can set conditions on when you run Stages and steps. For example, `Execute This Stage Only if Prior Pipeline or Stage Failed`.
 
@@ -167,7 +156,7 @@ The stage Conditional Execution applies to all steps that do not have their own 
 
 For more information, go to [Stage and Step Conditional Execution Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
-#### Failure strategies
+### Failure strategies
 
 A failure strategy defines how your Stages and steps handle different failure conditions.
 

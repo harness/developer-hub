@@ -96,7 +96,7 @@ You need a private key for your GitHub app to configure your Harness GitHub conn
    openssl pkcs8 -topk8 -inform PEM -outform PEM -in <your-key>.pem -out converted-github-app.pem -nocrypt
    ```
 
-5. In Harness, store the converted key file as a [Harness encrypted file secret](/docs/platform/Secrets/add-file-secrets).
+5. In Harness, store the converted key file as a [Harness encrypted file secret](/docs/platform/secrets/add-file-secrets).
 
 ## Configure the GitHub connector
 

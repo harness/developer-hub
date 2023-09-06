@@ -50,7 +50,7 @@ Model your process using a full-featured REST API:
 
 ![](./static/cd-pipeline-modeling-overview-04.png)
 
-For more details, go to [Get started with Harness APIs](/docs/platform/automation/APIs/api-quickstart).
+For more details, go to [Get started with Harness APIs](/docs/platform/automation/api/api-quickstart).
 
 ### How do I automate my CD process in Harness?
 
@@ -100,7 +100,7 @@ This topic provided a high level overview of how you can model your software del
 For more details and example, go to:
 
 * [CD tutorials](/tutorials/cd-pipelines/)
-* [CD overview and key concepts](./cd-pipeline-basics.md)
+* [CD overview and key concepts](./key-concepts.md)
 * [Service-based licensing and usage for CD](./service-licensing-for-cd.md)
 * [Deployment concepts and strategies](../manage-deployments/deployment-concepts.md)
 

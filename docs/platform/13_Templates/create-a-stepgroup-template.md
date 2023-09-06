@@ -92,9 +92,9 @@ To select the stage type, do the following:
 
    You can add more steps to form a step group.
    
-   You can also create step group templates using the Harness API or Harness Terraform provider.
+   You can also create step group templates using the Harness API or Harness Terraform Provider.
 
-   Harness detects the step group object and automatically creates the step group template based on the YAML body. You need not define any additional fields in the API or Terraform provider.
+   Harness detects the step group object and automatically creates the step group template based on the YAML body. You need not define any additional fields in the API or Terraform Provider.
 
    For more information on creating templates using API, go to [Create a Template](https://apidocs.harness.io/tag/Templates#operation/createTemplate).
 

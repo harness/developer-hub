@@ -109,7 +109,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 
 #### Create a Physical Data Center connector
 
-1. Copy the contents of [pdc-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/1-pdc-connector.yml).
+1. Copy the contents of [pdc-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/pdc-connector.yml).
 2. In Harness, in **Project Setup**, select **Connectors**.
 3. Select **Create via YAML Builder** and paste the copied YAML.
 4. In the YAML, replace **HOST_IP_OR_FQDN** with the Host IP/FQDN and **DELEGATE_NAME** with the installed delegate name. To obtain the delegate name, navigate to **Default Project** > **Project Setup** > **Delegates**.
@@ -119,7 +119,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 #### Create a Artifactory connector
 
 For this tutorial, we'll use an artifact for a ToDo List app, `todolist.war`, which is available in a public Harness Artifactory repo.
-1. Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/2-artifactory-connector.yml).
+1. Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/artifactory-connector.yml).
 2. In Harness, in **Project Setup**, select **Connectors**.
 3. Select **Create via YAML Builder** and paste the copied YAML.
 4. Select **Save Changes** and verify that the new connector named **harness_artifactrepo** is successfully created.
@@ -136,9 +136,9 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In **Default Project**, select **Environments**.
 2. Select **New Environment** and toggle to **YAML** to use the YAML editor.
-3. Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/3-environment.yml) and paste it into the YAML editor and select **Save**.
+3. Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/environment.yml) and paste it into the YAML editor and select **Save**.
 4. In **Infrastructure Definitions**, select **Infrastructure Definition** and select **Edit YAML**.
-5. Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/4-infrastructure-definition.yml) and paste it into the YAML editor.
+5. Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/infrastructure-definition.yml) and paste it into the YAML editor.
 6. Select **Save** and verify that the environment and infrastructure definition is created successfully.
 
 ### Set up the Harness service
@@ -154,7 +154,7 @@ In Harness, services represent what you deploy to environments. You use services
 2. Select **New Service**.
 3. Name the service `harness_ssh`.
 4. Select **Save**, and then in the **Configuration** tab, toggle to **YAML** to use the YAML editor.
-5. Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/5-service.yml) and paste it into the YAML editor.
+5. Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/service.yml) and paste it into the YAML editor.
 6. Select **Save** and verify that the Service **harness_ssh** is successfully created.
 
 ### Set up the pipeline
@@ -184,7 +184,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 </details>
 
-1. Copy the contents of [pipeline-ssh-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/6-pipeline-ssh-canary.yml) and paste it into the YAML editor.
+1. Copy the contents of [pipeline-ssh-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/pipeline-ssh-canary.yml) and paste it into the YAML editor.
 2. Select **Save**.
 3. You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
@@ -202,7 +202,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 </details>
 
-1. Copy the contents of [pipeline-ssh-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/6-pipeline-ssh-rolling.yml) and paste it into the YAML editor.
+1. Copy the contents of [pipeline-ssh-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/pipeline-ssh-rolling.yml) and paste it into the YAML editor.
 2. Select **Save**.
 3. You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
@@ -220,7 +220,7 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 
 </details>
 
-1. Copy the contents of [pipeline-ssh-basic.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/6-pipeline-ssh-basic.yml) and paste it into the YAML editor.
+1. Copy the contents of [pipeline-ssh-basic.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/pipeline-ssh-basic.yml) and paste it into the YAML editor.
 2. Select **Save**.
 3. You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
@@ -329,7 +329,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 </details>
 
 5. Create a **Physical Data Center connector**.
-    - Copy the contents of [pdc-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/1-pdc-connector.yml).
+    - Copy the contents of [pdc-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/pdc-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
     - In the YAML, replace **HOST_IP_OR_FQDN:PORT** with the Host IP/FQDN along with the PORT number to **5985** and **DELEGATE_NAME** with the installed delegate name. To obtain the delegate name, navigate to **Default Project** > **Project Setup** > **Delegates**.
@@ -337,7 +337,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     - Finally, select **Test** under **CONNECTIVITY STATUS** to ensure the connection is successful.
 
 6. Create a **Artifactory Connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
-    - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/2-artifactory-connector.yml).
+    - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/artifactory-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
     - Select **Save Changes** and verify that the new connector named **harness_artifactrepo** is successfully created.
@@ -354,9 +354,9 @@ Environments define the deployment location, categorized as **Production** or **
 
 7. In **Default Project**, select **Environments**.
     - Select **New Environment** and toggle to **YAML** to use the YAML editor.
-    - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/3-environment.yml) and paste it into the YAML editor and select **Save**.
+    - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/environment.yml) and paste it into the YAML editor and select **Save**.
     - In **Infrastructure Definitions**, select **Infrastructure Definition** and select **Edit YAML**.
-    - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/4-infrastructure-definition.yml) and paste it into the YAML editor.
+    - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/infrastructure-definition.yml) and paste it into the YAML editor.
     - Select **Save** and verify that the environment and infrastructure definition is created successfully.
 
 ### Services
@@ -372,7 +372,7 @@ In Harness, services represent what you deploy to environments. You use services
     - Select **New Service**.
     - Name the service `harness_winrm`.
     - Select **Save**, and then in the **Configuration** tab, toggle to **YAML** to use the YAML editor.
-    - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/5-service.yml) and paste it into the YAML editor.
+    - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/service.yml) and paste it into the YAML editor.
     - Select **Save** and verify that the Service **harness_ssh** is successfully created.
 
 ### Pipeline
@@ -402,7 +402,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 </details>
 
-- Copy the contents of [pipeline-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/6-pipeline-canary.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/pipeline-canary.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
@@ -420,7 +420,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 </details>
 
-- Copy the contents of [pipeline-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/6-pipeline-rolling.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/pipeline-rolling.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 
@@ -438,7 +438,7 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 
 </details>
 
-- Copy the contents of [pipeline-basic.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/6-pipeline-basic.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-basic.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/winrm/pipeline-basic.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 

@@ -2,6 +2,8 @@
 title: Advanced Terraform onboarding
 description: A guide to writing onboarding automation using terraform
 sidebar_position: 4
+redirect_from:
+  - /docs/platform/Resource-Development/Terraform/advanced-terraform-onboarding
 ---
 
 The Harness Solution Architecture team has curated a collection of terraform modules that aim to help onboard new teams and applications to the Harness platform.
@@ -23,7 +25,7 @@ Most resources shown below will support any of the three scopes.
 
 ## Authentication
 
-The recommended way to authenticate with the Harness Terraform provider is environment variables. 
+The recommended way to authenticate with the Harness Terraform Provider is environment variables. 
 
 You should set at least:
 

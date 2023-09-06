@@ -1,14 +1,15 @@
 {
-    "label": "Favourites",
+    "label": "API",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
-    "position": "19",
+    "position": 3,
+
     "link": {
         "type": "generated-index",
-        "title": "Favourites"
+        "title": "Harness REST API"
     },
     "customProps": {
-        
+        "helpdocs_category_id": "pm96bpz4kf"
     }
 }

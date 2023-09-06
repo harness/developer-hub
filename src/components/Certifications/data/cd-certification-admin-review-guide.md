@@ -33,7 +33,7 @@
 | Configure User Group Notification - Slack, Email, etc.| [Notification Preferences](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences)|
 | Understand how to notify based in response to Pipeline and stage events| [Add a pipeline notification strategy](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/)| 
 | **11. GitOps**   ||
-| Explain the principles of GitOps using a comprehension/use case| [Harness GitOps Basics](https://developer.harness.io/docs/continuous-delivery/gitops/harness-git-ops-basics)|
+| Explain the principles of GitOps using a comprehension/use case| [Harness GitOps Basics](https://developer.harness.io/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics/)|
 | Learn to install the GitOps agent and connect your Kubernetes cluster to Harness| [Install a Harness GitOps Agent](https://developer.harness.io/docs/continuous-delivery/gitops/install-a-harness-git-ops-agent)| 
 | **12. Templates**                                                                                                                  ||
 | Understand Harness Templates - Pipeline, Stage, Step| [Harness Templates](https://developer.harness.io/docs/platform/templates/use-a-template/)|

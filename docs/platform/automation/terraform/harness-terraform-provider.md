@@ -6,6 +6,8 @@ helpdocs_topic_id: 7cude5tvzh
 helpdocs_category_id: w6r9f17pk3
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/Resource-Development/Terraform/harness-terraform-provider
 ---
 
 Terraform is an infrastructure as code (IaC) tool that allows you to build, change, and version infrastructure safely and efficiently.​
@@ -27,7 +29,7 @@ This quickstart shows you how to write your configurations in Terraform and prov
 * You must have a Personal Access Token (PAT) or a Service Access Token (SAT).
 
 
-For detailed steps on how to generate a PAT, see [Create personal API keys and tokens](/docs/platform/automation/APIs/add-and-manage-api-keys#create-personal-api-keys-and-tokens).
+For detailed steps on how to generate a PAT, see [Create personal API keys and tokens](/docs/platform/automation/api/add-and-manage-api-keys#create-personal-api-keys-and-tokens).
 
 ### Important
 
@@ -78,7 +80,7 @@ Enter your PAT or SAT in `platform_api_key`.
 Harness recommends using SAT to install the Harness Terraform Provider.
 :::
 
-For detailed steps on how to generate a PAT or SAT, go to [Manage API keys](/docs/platform/automation/APIs/add-and-manage-api-keys).
+For detailed steps on how to generate a PAT or SAT, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
 
 
 ```
@@ -170,54 +172,12 @@ If you do not provide the `org_id` and the `project_id` in the configuration, th
 
 #### Add Pipeline details
 
+For an example, see the example usage at [harness_platform_pipeline](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_pipeline) and copy it into your pipeline. 
 
-```
-resource "harness_platform_pipeline" "approval_pipeline" {  
-    identifier  = "approval_pipeline"  
-    name        = "Approval Pipeline"  
-    description = "Simple Approval Stage pipeline generated through Terraform"  
-    project_id  = "terraform_test_project"  
-    org_id      = "terraform_example_org"  
-  
-    yaml        = <<PIPETEXT  
-    pipeline:  
-        name: "Approval Pipeline"  
-        identifier: "Approval_Pipeline"  
-        projectIdentifier: "terraform_test_project"  
-        orgIdentifier: "terraform_example_org"  
-        tags: {}  
-        stages:  
-             - stage:  
-                name: Approval  
-                identifier: Approval  
-                description: ""  
-                type: Approval  
-                spec:  
-                    execution:  
-                        steps:  
-                            - step:  
-                                name: Approval Step  
-                                identifier: Approval_Step  
-                                type: HarnessApproval  
-                                timeout: 1d  
-                                spec:  
-                                    approvalMessage: Please review the following information and approve the pipeline progression  
-  
-includePipelineExecutionHistory: true  
-                                    approvers:  
-                                        minimumCount: 1  
-disallowPipelineExecutor: false  
-                                        userGroups:  
-                                            - account.testmv  
-                                    approverInputs: []  
-                    tags: {}  
-PIPETEXT  
-}
-```
-Your Pipeline now appears in the list of Pipelines within the scope of your Project.
+Your pipeline now appears in the list of pipelines within the scope of your project.
 
 ![](./static/harness-terraform-provider-04.png)
-To try it out, see [Harness Pipeline](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_pipeline).
+
 
 ### Provision Harness infrastructure
 
@@ -251,7 +211,7 @@ terraform import
 ```
 To learn more about the life cycle of a Terraform resource, see [Lifecycle of a Terraform Resource](https://freecontent.manning.com/the-lifecycle-of-a-terraform-resource/).
 
-To try out Harness Terraform provider, see [Harness Provider](https://registry.terraform.io/providers/harness/harness/latest/docs).
+To try out Harness Terraform Provider, see [Harness Provider](https://registry.terraform.io/providers/harness/harness/latest/docs).
 
 ### Next steps
 

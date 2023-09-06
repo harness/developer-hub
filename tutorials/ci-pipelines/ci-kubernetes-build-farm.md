@@ -131,7 +131,7 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
 5. Configure the **Credentials** as follows, and then select **Continue**:
 
    * **Username:** Enter the username for the GitHub account where you forked the tutorial repo.
-   * **Personal Access Token:** Create a secret for the personal access token you created earlier. Harness secrets are safe; they're stored in the [Harness Secret Manager](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
+   * **Personal Access Token:** Create a secret for the personal access token you created earlier. Harness secrets are safe; they're stored in the [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
    * **Enable API access:** Select this option and select the same personal access token secret.
 
    ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-16.png)

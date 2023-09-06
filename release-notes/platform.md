@@ -30,6 +30,7 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+
 ## Latest: Version 805xx
 
 ### New features and enhancements
@@ -72,17 +73,77 @@ This release does not include early access features.
     - You update the associated HashiCorp Vault connector.
     - You test the associated HashiCorp Vault connector manually and the test succeeds.
 
-
 ### Hotfixes
 
 This release does not include hotfixes.
-
-
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+  
+#### Version 80406
+
+##### New features and enhancements
+
+- Earlier, Harness had an N-3 support policy for delegates. (PL-39452)
+   Now, the delegate expiration is calculated using the version difference between Harness Manager and the delegate. If the delegate and Harness Manager are on the same version, the delegate expiration is 24 weeks.
+
+- Earlier, in the audit trail, all changes to a user principal's role assignment were logged with the generic Update action type. The record offered no additional information about whether a role assignment was created, updated, or deleted. (PL-39799, ZD-46451)
+
+  Now, role assignment changes are logged with one of the following, more informative action types:
+    - Role Assignment Created
+    - Role Assignment Updated
+    - Role Assignment Deleted
+
+- Earlier, in delegate selection logs, the non-selected error message included all mismatched selectors.
+
+   Now, the non-selected error message includes only selectors mismatched within the scope. (PL-40651)
+
+- You can now create secrets in child scopes using the parent scope in Secret Manager. For example, you can create secrets inside a project using the Secret Manager created at the Org or Account level. (PL-38949)
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues
+
+- In some scenarios, when the delegate tried to send a heartbeat to connect to Harness Manager and MongoDB was down, Harness Manager sent a self_destruct message to stop the delegate. (PL-38122)
+
+  This issue is fixed. Harness Manager no longer sends `self_destruct messages`, the delegate continues to run, and the delegate tries to send a heartbeat again after one minute.
+
+- The Harness user interface did not give you the option to view more than ten resources in a resource group. (PL-40747, ZD-49413)
+
+  This issue is now fixed.
+
+- With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631)
+
+  This issue is fixed. Harness catches the exception and continues with delegate startup.
+
+- A few minutes after you linked a Harness user group to a different LDAP group, the change was reverted. That is, the user group gets linked to the previous LDAP group. The behavior persisted even if you deleted the user group, created a new user group with the same name, and then associated it with the second LDAP group. (PL-40558, ZD-48332)
+
+  This issue is now fixed.
+
+- When adding users to a user group, you had to manually select users from the menu; pasting email addresses in the text box did not work. (PL-40559)
+
+  Now, in addition to selecting users from the menu, you can paste users' email addresses in the text box.
+
+- Earlier, when you clicked an expired link in an invitation email, Harness displayed the following message: “We couldn’t find an invitation matching the email address you entered. Please search your email for an invitation from Harness or contact your admin." This message was inaccurate. (PL-40597)
+
+  Now, Harness displays the following message when you click a link in an expired invitation: "This invitation URL has expired. Please request for a new invitation from your admin."
+
+- If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
+
+  Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
+
+- Attempts to use the `harness_platform_user` resource to create or delete users results in an error. The message "Request failed as you have an older version of entity, please reload the page and try again" is displayed and the Terraform state goes out of sync with Harness. (PL-39870, ZD-47107)
+
+  This issue has been fixed. 
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
 
 #### Version 80307
 

@@ -811,9 +811,9 @@ A successful Application sync will display the following status tree under **Res
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Terraform provider">
+<TabItem value="Terraform Provider">
 ```
-Harness offers a [Terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you declaratively manage Harness GitOps entities alongside your application and cluster resources. These steps walk through using Terraform to create and install the GitOps agent, define related Harness entities, and deploy a sample application to your cluster.
+Harness offers a [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you declaratively manage Harness GitOps entities alongside your application and cluster resources. These steps walk through using Terraform to create and install the GitOps agent, define related Harness entities, and deploy a sample application to your cluster.
 
 <docimage path={require('../static/k8s-manifest-tutorial/terraform_harness_resources.png')} width="50%" height="50%" title="Click to view full size image" />
 
@@ -826,7 +826,7 @@ Before proceeding:
 
 <br/>
 
-### Harness Terraform provider
+### Harness Terraform Provider
 
 1. Clone or download the Harness [gitops-terraform-onboarding](https://github.com/harness-community/gitops-terraform-onboarding) project.
 
@@ -841,9 +841,9 @@ cd gitops-terraform-onboarding/
 terraform init
 ```
 <details open>
-<summary>What is a Terraform provider?</summary>
+<summary>What is a Terraform Provider?</summary>
 
-A Terraform provider is a plugin that allows Terraform to define and manage resources using a particular software API. In this tutorial these resources will be Harness entities.
+A Terraform Provider is a plugin that allows Terraform to define and manage resources using a particular software API. In this tutorial these resources will be Harness entities.
 
 </details>
 

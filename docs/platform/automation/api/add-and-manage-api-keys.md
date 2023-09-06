@@ -6,6 +6,9 @@ helpdocs_topic_id: tdoad7xrh9
 helpdocs_category_id: w4rzhnf27d
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/Resource-Development/APIs/add-and-manage-api-keys
+  - /docs/platform/automation/api/add-and-manage-api-keys
 ---
 
 ```mdx-code-block
@@ -44,7 +47,7 @@ Use these steps to create an API key and personal access token (PAT) for your pe
 
    Your API keys carry many privileges. Don't store them in publicly-accessible areas.
 
-   After [rotating tokens](/docs/platform/automation/APIs/add-and-manage-api-keys#rotate-tokens) make sure you always use the new token.
+   After [rotating tokens](/docs/platform/automation/api/add-and-manage-api-keys#rotate-tokens) make sure you always use the new token.
 
    :::
 
@@ -73,7 +76,7 @@ Use these steps to create an API key and service account token (SAT) for a servi
 
    API keys carry many privileges. Don't store them in publicly-accessible areas.
 
-   After [rotating tokens](/docs/platform/automation/APIs/add-and-manage-api-keys#rotate-tokens) make sure you always use the new token.
+   After [rotating tokens](/docs/platform/automation/api/add-and-manage-api-keys#rotate-tokens) make sure you always use the new token.
 
    :::
 

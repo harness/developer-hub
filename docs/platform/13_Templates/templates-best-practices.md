@@ -528,7 +528,7 @@ When deciding where to store your templates, you should consider the following:
 
 With the answers to the above questions, you can decide if you want to store the templates at the account, org, or project level in the Harness platform.
 
-You can manage the creation and state of your templates via our Terraform provider. For more information, go to the [Harness platform template Terraform provider resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_template).
+You can manage the creation and state of your templates via our Terraform Provider. For more information, go to the [Harness platform template Terraform Provider resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_template).
 
 #### Sample Terraform resource snippet
 
@@ -643,7 +643,7 @@ template:
             executionTarget: {}
 ```
 
-You can manage the creation and state of your templates via our Terraform provider. For more information, go to the [Harness platform template Terraform provider resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_template).
+You can manage the creation and state of your templates via our Terraform Provider. For more information, go to the [Harness platform template Terraform Provider resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_template).
 
 The following is a sample Terraform resource snippet.
 
