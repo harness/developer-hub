@@ -499,6 +499,22 @@ You've just learned how to use Harness CD to deploy an application using a Kusto
 - Keep learning about Harness CD. Add triggers to your pipeline that'll respond to Git events by following this [guide](https://developer.harness.io/docs/platform/Triggers/triggering-pipelines).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more Tutorials and resources.
 
+## How to Deploy Your Own App Using Harness?
+
+You can integrate your own microservice application into this tutorial by following the steps outlined below:
+
+- Utilize the same Delegate that you deployed as part of this tutorial. Alternatively, deploy a new Delegate, but remember to use the newly created Delegate identifier when creating Connectors.
+
+- If you intend to use a private Git repository that hosts your Kustomize files, create a Harness Secret containing the Git Personal Access Token (PAT). Subsequently, create a new Git Connector using this secret.
+
+- Create a Kubernetes Connector if you plan to deploy your applications on a new Kubernetes environment. Make sure to update the Infrastructure Definition to reference this newly created Kubernetes connector.
+
+- Once all the aforementioned steps are completed, create a new Harness Service that leverages Kustomize for deploying applications.
+
+- Lastly, establish a new Deployment Pipeline and select the newly created Infrastructure Definition, and Service. Choose a deployment strategy that aligns with your microservice application's deployment needs.
+
+- Voila! You're now ready to deploy your own application using Harness.
+
 ```mdx-code-block
 </TabItem>
 <TabItem value="GitOps workflow">
