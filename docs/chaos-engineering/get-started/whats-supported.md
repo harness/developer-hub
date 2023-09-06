@@ -4,7 +4,7 @@ sidebar_position: 10
 ---
 
 This topic lists the platforms and technologies that Harness Chaos Engineering (CE) supports for deploying chaos infrastructure.
-To learn more about chaos infrastructure, please refer [chaos infrastructure](/docs/chaos-engineering/technical-reference/architecture#chaos-infrastructure).
+To learn more about chaos infrastructure, go to [Chaos infrastructure](/docs/chaos-engineering/technical-reference/architecture#chaos-infrastructure).
 
 
 ## Chaos infrastructure
@@ -13,7 +13,7 @@ To learn more about chaos infrastructure, please refer [chaos infrastructure](/d
 
 The following table shows the supported operating systems and distributions for deploying chaos infrastructure.
 
-| Platform | Distribution | Version | Harness cloud | Self-Managed enterprise edition |
+| Platform | Distribution | Version | Harness cloud | Self-Managed Enterprise Edition |
 | -  | - | - | - | - |
 | Kubernetes | OpenShift | k8s 1.21+ | ✅ | ✅ |
 | Kubernetes | Rancher | k8s 1.21+ | ✅ | ✅ |
@@ -52,11 +52,11 @@ The following table shows available fault types and where they are supported. Fo
 | **State change**<br />For example, VM stop, Pod kill, etc.  |  ✅  |  ✅  |   ✅   |   ✅   |  ✅  |   ✅  |   ✅   |
 | **Managed Services**<br />For example, AWS ECS agent stop, Azure web app stop, etc. |   |   |   |   ✅   |  ✅  |   ✅  |   ✅   |
 
-## CE on Harness Self-Managed Enterprise Edition (SMP)
+## CE on Harness Self-Managed Enterprise Edition
 
 Chaos Engineering on Harness Self-Managed Enterprise Edition is in feature parity with Harness Cloud(SaaS) with the following limitations:
 * Harness enterprise chaos hub is not supported by default.
-* Please contact [Harness Support](mailto:support@harness.io) for getting access to Harness enterprise chaos hub.
-* Once you have access to enterprise chaos hub, you can add a custom chaos hub by following the steps mentioned [here](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).
+* Contact [Harness Support](mailto:support@harness.io) for access to the Harness enterprise chaos hub.
+* Once you have access to the enterprise chaos hub, you can add a custom chaos hub. For more information, go to [Add a custom chaos hub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).
 
 For more information, go to [Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition) and [CE on SMP](/docs/chaos-engineering/ce-on-smp/ce-smp-roadmap).
