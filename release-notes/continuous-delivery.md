@@ -48,7 +48,7 @@ This release does not have early access features.
 
 * Fixed a UI issue observed when retrying a pipeline execution: the wrong **Execution Id** was displayed because the UI was evaluating the `sequenceId` based on the root `executionId`. With this fix, the **Execution Id** is based on the back-end data for the current pipeline execution. (CDS-76697)
 
-* Fixed the following issue: when a user re-ran a pipeline execution with a different branch selected, the pipeline would execute with the last branch selected. With this fix, the pipeline always runs with the current branch selected. (CDS-77826)
+* Fixed the following issue: when a user re-ran a pipeline execution with a different branch selected, the pipeline would execute with the last branch selected. With this fix, the pipeline always runs with the current branch selected in **Run Pipeline**. (CDS-77826)
 
 * The following Node.js v20 images are now available on Docker Hub. (CDS-77801)
   - [harnessdev/serverless-preparerollback:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-preparerollback/3.30.1-1.0.1/images/sha256-30994cb1fef9b206babecbe61b10144591db51cddec2e5386a0ab228d542b32f?context=explore)
