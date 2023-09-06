@@ -15,11 +15,11 @@ Applies to Helm-based installation only.
 
 Harness Self-Managed Enterprise Edition supports authorization by self-signed certificate. This topic explains how to modify the delegate truststore for the use of self-signed certificates in the self-managed environment. 
 
-Harness delegates and GitOps agents make outbound connections to the resources you specify, such as artifact servers and verification providers. These services typically use trusted public certificates that are included in the operating system or the JRE.
+Harness Delegates and GitOps agents make outbound connections to the resources you specify, such as artifact servers and verification providers. These services typically use trusted public certificates that are included in the operating system or the JRE.
 
-For self-signed certificates, you must add the self-signed certificates that you use to the delegate or GitOps agent. This topic describes that process.
+For self-signed certificates, you must add the self-signed certificates that you use to the delegate or GitOps agent as described in this topic.
 
-The process this topic describes is supported for use with the legacy delegate in combination with Harness CD, CI, and STO modules, or the Harness GitOps agent. 
+Harness supports this process for the legacy delegate with Harness CD, CI, and STO modules, or the Harness GitOps agent.
 
 ```caution Important
 
@@ -70,7 +70,7 @@ Repeat this command for each certificate you want to include in the truststore.
 
   The `XXXXXXXXXXXXXXXXXXXXXXXXXXX` placeholder indicates the position for the certificate body. Enclose each certificate in `BEGIN CERTIFICATE` and `END CERTIFICATE` comments.
 
-3. If you are installing a GitOps agent, please update the namespace to the respective namespace where the agent is installed.
+3. If you are installing a GitOps agent, update the namespace to use the namespace where the agent is installed.
 
 4. Save the file as `addcerts.yaml`. Apply the manifest to your cluster.
 
@@ -78,7 +78,7 @@ Repeat this command for each certificate you want to include in the truststore.
    kubectl apply -f addcerts.yaml
    ```
 
-5. If another tool such as Argo CD deletes the secret, you must recreate the secret. Add a MinIO YAML `minio.yaml` manifest file with the following values in addition to your other Harness manifests:
+5. If another tool such as Argo CD deletes the secret, you must recreate the secret. Add a `minio.yaml` manifest file with the following values in addition to your other Harness manifests:
 
    ```yaml
    apiVersion: v1
