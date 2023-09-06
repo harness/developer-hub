@@ -13,7 +13,7 @@ To learn more about chaos infrastructure, go to [Chaos infrastructure](/docs/cha
 
 The following table shows the supported operating systems and distributions for deploying chaos infrastructure.
 
-| Platform | Distribution | Version | Harness cloud | Self-Managed Enterprise Edition |
+| Platform | Distribution | Version | Harness SaaS | Self-Managed Enterprise Edition |
 | -  | - | - | - | - |
 | Kubernetes | OpenShift | k8s 1.21+ | ✅ | ✅ |
 | Kubernetes | Rancher | k8s 1.21+ | ✅ | ✅ |
@@ -54,7 +54,7 @@ The following table shows available fault types and where they are supported. Fo
 
 ## CE on Harness Self-Managed Enterprise Edition
 
-Chaos Engineering on Harness Self-Managed Enterprise Edition is in feature parity with Harness Cloud(SaaS) with the following limitations:
+Chaos Engineering on Harness Self-Managed Enterprise Edition is in feature parity with Harness SaaS with the following limitations:
 * Harness enterprise chaos hub is not supported by default.
 * Contact [Harness Support](mailto:support@harness.io) for access to the Harness enterprise chaos hub.
 * Once you have access to the enterprise chaos hub, you can add a custom chaos hub. For more information, go to [Add a custom chaos hub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).

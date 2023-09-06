@@ -8,7 +8,7 @@ This topic lists the various categories of Kubernetes faults and the container p
 
 ### Supported Kubernetes faults and required container permissions
 
-The following table shows the supported Kubernetes faults and the permissions required on fault containers to execute them.
+The following table shows the supported Kubernetes faults and the required fault container permissions to execute them.
 
 | Chaos category | Faults | Requires root user on fault container | Requires privileged fault containers |
 | -  | - | - | - |
