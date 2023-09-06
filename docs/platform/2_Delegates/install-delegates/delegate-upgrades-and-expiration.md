@@ -211,7 +211,7 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
 ## Delegate expiration policy
 
-Delegates expire after six months. Delegate expiration does not mean the delegate stops working. It means that you may experience issues because the backend has moved too far ahead, making the delegate no longer backward compatible. If you do not have automatic upgrade enabled, Harness recommends upgrading the delegate at least once per quarter. 
+Delegates expire after six months. Delegate expiration does not mean the delegate stops working. You may experience issues because the backend has moved too far ahead, and the delegate is no longer backward compatible. If you do not have automatic upgrade enabled, Harness recommends upgrading the delegate at least once per quarter. 
 
 ### Determine when your delegate expires
 
