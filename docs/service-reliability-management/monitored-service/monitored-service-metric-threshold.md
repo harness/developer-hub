@@ -7,6 +7,10 @@ sidebar_position: 2
 
 # Custom thresholds for service health analysis
 
+:::info note
+Currently, this feature is behind the feature flag `CVNG_METRIC_THRESHOLD`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 In addition to utilizing AI/ML for service health analysis of monitored services, you use the custom threshold feature to set up rules that can change how service health behaves. You can create the following rules:
 
 - **Ignore Threshold**: Instructs Harness to skip analyzing service health for specific metric or value combinations.
