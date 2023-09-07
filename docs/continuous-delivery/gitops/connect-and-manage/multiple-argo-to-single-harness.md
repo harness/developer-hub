@@ -162,6 +162,16 @@ For example, the Argo CD repo `https://github.com/argoproj/gitops-engine.git` is
 
 ![](./static/multiple-argo-to-single-harness-76.png)
 
+### Not able to see your Argo CD entities in Harness UI?
+
+In some Argo CD versions its not mandatory to provide a value for the project for entities. So make sure the entity has a project associated with it.
+
+If your entity does not have a project associated with it and you are not able to edit the entity from Argo CD UI then you have an option to patch that entity directly in the cluster to have a project and other values. The entities are stored in different formats in the cluster, for eg. Clusters, Repositories, Repository Credentials Templates are stored in `Secret` and GPG keys and Repository Certificates are stored in `ConfigMap` in the namespace where the Argo CD is installed. 
+
+
+
+
+
 ## Creating GitOps Clusters with multiple projects
 
 When you have multiple Argo CD projects mapped to your Harness Project, you can choose which Argo CD project to use when you create a new GitOps Cluster in your Harness Project.
