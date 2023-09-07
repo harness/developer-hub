@@ -31,7 +31,7 @@ The following deprecated API endpoints will no longer be supported:
 - GET api/resourcegroup
 
 
-## Latest: Version 805xx
+## Latest: Version 80504
 
 ### New features and enhancements
 
@@ -77,9 +77,9 @@ This release does not include early access features.
   
   This issue is now fixed. A newly introduced server-side search includes roles that are beyond the page size limit.
 
-- If the renewal of a HashiCorp Vault token that is used for token-based authentication fails, Harness attempts to renew the token several thousand times a day and writes an internal log entry for each attempt. (PL-32647)
-
-  To prevent the buildup of internal logs, Harness pauses its attempts to renew a token if two consecutive renewal attempts fail. Harness resumes its renewal attempts when you perform one of the following tasks:
+- If the renewal of a HashiCorp Vault token that is used for token-based authentication fails, Harness attempts to renew the token perpetually. These attempts load the system and seem amplified in scenarios in which the connector or service is no longer in use. (PL-32647)
+  
+  To handle such scenarios better, Harness now pauses its attempts to renew a token if two consecutive renewal attempts fail. Harness resumes its renewal attempts when you perform one of the following tasks:
     - You update the associated HashiCorp Vault connector.
     - You test the associated HashiCorp Vault connector manually and the test succeeds.
 
