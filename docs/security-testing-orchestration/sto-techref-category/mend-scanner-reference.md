@@ -124,12 +124,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Domain
 
-
-```mdx-code-block
-import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
-```
-
-<StoSettingAuthDomain />
+The fully-qualified URL to the scanner. The default is `https://saas.whitesourcesoftware.com/api`
 
 <!-- ============================================================================= -->
 <a name="auth-enforce-ssl"></a>
@@ -142,8 +137,9 @@ import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md'
 
 <StoSettingProductSSL />
 
-<!-- ============================================================================= -->
+<!-- ============================================================================= 
 <a name="auth-access-api-version"></a>
+
 
 #### API Version
 
@@ -153,7 +149,9 @@ import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-ver
 
 <StoSettingApiVersion />
 
-<!-- ============================================================================= -->
+
+
+<!-- ============================================================================= 
 <a name="auth-type"></a>
 
 #### Type
@@ -170,7 +168,7 @@ import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
 
 The user key for your user account. Harness recommends that you use the API key for your Mend organization: in the Mend UI, click the **Account Settings** button in the top right.
 
-You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.my-mend-user-key")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 
 <!-- ============================================================================= -->
@@ -180,7 +178,7 @@ You should create a Harness text secret with your encrypted token and reference 
 
 The API key for your Mend organization. This step is required if you want to run a scan in an organization _other than_ the default organization for your user account. in the Mend UI, go to **Integration** > **Organization** > **API Key**.
 
-You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.my-mend-org-api-key")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ### Scan Tool
 
@@ -188,16 +186,19 @@ You should create a Harness text secret with your encrypted token and reference 
 
 #### Lookup Type
 
-```mdx-code-block
-import StoSettingToolLookupType from './shared/step_palette/_sto-ref-ui-tool-prod-lookup-type.md';
-```
-<StoSettingToolLookupType  />
+You can specify the Mend product or project **By Token** or **By Name**. 
 
-#### Project Name
+#### Product Name / Token
 
-If you're running an orchestrated scan on a code repository, you can use this setting to specify the  specific files to exclude from the scan. By default, a Mend scan includes all files in the code repository. 
+The name or token of the  [Mend product](https://docs.mend.io/bundle/sca_user_guide/page/understanding_organizations__products_and_projects.html#Product) that you want to scan. 
 
-This setting corresponds to the [**excludes** configuration parameter](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) for the Mend United Agent. 
+This field is required for Orchestration and Extraction scans. 
+
+#### Project Name / Token
+
+The name or token of the [Mend project](https://docs.mend.io/bundle/sca_user_guide/page/understanding_organizations__products_and_projects.html#Project) that you want to scan. 
+
+This field is required for Extraction scans. 
 
 
 #### Include 
@@ -211,14 +212,15 @@ This setting corresponds to the [**Includes** configuration parameter](https://d
 
 #### Exclude
 
-```mdx-code-block
-import StoSettingToolExclude from './shared/step_palette/_sto-ref-ui-tool-exclude.md';
-```
+If you're running an orchestrated scan on a code repository, you can use this setting to specify the  specific files to exclude from the scan. By default, a Mend scan includes all files in the code repository. 
 
-<StoSettingToolExclude />
+This setting corresponds to the [**excludes** configuration parameter](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) for the Mend United Agent. 
 
 <!-- ============================================================================= -->
 
+<!-- 
+
+Excluding...I don't see this field in the step palette
 
 #### Project Version
 
@@ -229,7 +231,7 @@ import StoSettingToolProjectVersion from './shared/step_palette/_sto-ref-ui-tool
 <a name="product-project-version"></a>
 <StoSettingToolProjectVersion />
 
-
+-->
 
 <!--   Log Level, CLI flags, and Fail on Severity ------------------------------------------------------------------------------------------------- -->
 
@@ -246,7 +248,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 <StoSettingLogLevel />
 
+#### Additional CLI flags
 
+You can add a `tool_args` setting to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional parameters. For example, you can save logs for STO-initiated scans in a separate folder on the Mend server like this: `log.files.path /tmp/sto_scan_logs`.
 
 #### Fail on Severity
 
@@ -257,7 +261,9 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Settings
 
-You can add a `tool_args` setting to run the [Unified Agent binary](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images#) with specific command-line arguments. For example, you can exclude certain files from the scan like this:  `tool_args` = `-excludes **/*javadoc.jar`.
+You can add a `tool_args` setting to run the scanner with additional arguments. For example, you can pipe your scan output to a file like this: `tool-args > /tmp/sto_scan_logs/scan-session-output.LATEST.txt`.
+
+<!-- Don't know if this is a good example, or even if it works...I'm assuming the Settings field in the step palette is intended more for non-scanner-specific command-line arguments. -->
 
 
 ### Additional Configuration
@@ -279,7 +285,7 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
-## Security step configuration (_deprecated_)
+## Security step configuration (_legacy_)
 
 You can set up Mend scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
@@ -309,6 +315,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 	- `appendToProductByToken`
 	- `appendToProductByName`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+* `tool_args` You can add a `tool_args` setting to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional parameters. For example, you can save logs for STO-initiated scans in a separate folder on the Mend server like this: `tool_args log.files.path /tmp/sto_scan_logs`.
 		
 :::note
 You must configure the following settings depending on the product lookup type  — i.e., whether you are using the names or tokens to reference the Mend product:
@@ -337,7 +344,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 ## Mend orchestration pipeline example
 
-The following pipeline shows an end-to-end orchestration workflow. The Mend step includes the settings needed to run an orchestrated scan: `access_token`, `domain`, `access_id`, and `product_name`.
+The following pipeline shows an end-to-end orchestration workflow. The Mend step includes the settings needed to run this specific scan: [`access_token`](#access-token), [`domain`](#domain), [`access_id`](#access-id), and [`product_name`](#product-name--token).
 
 ![](static/mend-orch-pipeline-example.png)
 

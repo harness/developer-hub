@@ -273,7 +273,7 @@ In the **Advanced** settings, you can use the following options:
 
 
 
-## Security step configuration (_deprecated_)
+## Security step configuration (_legacy_)
 
 
 You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.

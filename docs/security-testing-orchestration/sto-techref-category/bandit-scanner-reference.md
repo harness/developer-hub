@@ -187,7 +187,7 @@ In the **Advanced** settings, you can use the following options:
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
 
-## Security step configuration (_deprecated_)
+## Security step configuration (_legacy_)
 
 You can set up a Security step with [Bandit](https://bandit.readthedocs.io/en/latest/) to find common security issues in your Python code.
 
