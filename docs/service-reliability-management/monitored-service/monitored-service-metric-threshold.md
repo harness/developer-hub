@@ -93,7 +93,7 @@ To set Fail-Fast Thresholds rule:
 
 ## Impact of Fail-Fast Threshold breach on the Service Health dashboard
 
-When a metric breaches the Fail-Fast Threshold, it triggers the following events on the Service Health dashboard of the monitored service:
+When a metric breaches the Fail-Fast Threshold, you can see the impact on the service health dashboard, as detailed below.
 
 - The timeline graph displays the health score as zero throughout the breach period.
 
