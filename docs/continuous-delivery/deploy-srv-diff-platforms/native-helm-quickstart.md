@@ -53,7 +53,7 @@ import TabItem from '@theme/TabItem';
 
 Helm 2 was deprecated by the Helm community in November 2020 and is no longer supported by Helm. If you continue to maintain the Helm 2 binary on your delegate, it might introduce high and critical vulnerabilities and put your infrastructure at risk.
   
-To safeguard your operations and protect against potential security vulnerabilities, Harness will launch an update to deprecate the Helm 2 binary from delegates with an immutable image type (image tag `yy.mm.xxxxx`) on **July 30, 2023**. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+To safeguard your operations and protect against potential security vulnerabilities, Harness deprecated the Helm 2 binary from delegates with an immutable image type (image tag `yy.mm.xxxxx`). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 If your delegate is set to auto-upgrade, Harness will automatically remove the binary from your delegate. This will result in pipeline and workflow failures for services deployed via Helm 2. 
 
@@ -77,7 +77,7 @@ A Native Helm deployment requires the following:
 * Helm chart.
 * Kubernetes cluster.
 * A **Kubernetes service account** with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. In general, the cluster-admin permission or namespace admin permission is enough.  
-For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
+For more information, go to [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
 
 ## Native Helm deploy stage
 
@@ -85,7 +85,7 @@ The following steps take you through a typical Native Helm pipeline stage setup 
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
+**Create a Project for your new CD Pipeline:** If you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. Go to [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
 
 :::
 
@@ -104,7 +104,7 @@ Next, we'll add the NGINX Helm chart for the deployment.
 
 ## Add a Helm chart to a Native Helm service
 
-To add a Helm chart in this example, we will add a Harness connector to the HTTP server hosting the chart. This connector uses a Harness Delegate to verify credentials and pull charts. Ensure you have a Harness delegate installed also. For steps on installing a delegate, go to [Delegate installation overview](http://localhost:3000/docs/platform/Delegates/install-delegates/overview).
+To add a Helm chart in this example, we will add a Harness connector to the HTTP server hosting the chart. This connector uses a Harness Delegate to verify credentials and pull charts. Ensure you have a Harness Delegate installed also. For steps on installing a delegate, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
 
 1. In the Harness service for your Native Helm deployment, in **Manifests**, select **Add Manifest**.
 
@@ -119,12 +119,12 @@ To add a Helm chart in this example, we will add a Harness connector to the HTTP
 6. In **Helm Repository URL**, enter `https://charts.bitnami.com/bitnami`.
 7. In **Authentication**, select **Anonymous**.
 8. Select **Continue**.
-9. In **Delegates Setup**, select/create a delegate and then select **Save and Continue**.
+9. In **Delegates Setup**, select/create a delegate, and then select **Save and Continue**.
     
-    For steps on installing a delegate, go to [Delegate installation overview](http://localhost:3000/docs/platform/Delegates/install-delegates/overview).
+    For steps on installing a delegate, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
 
     When you are done, the Connector is tested. If it fails, your Delegate might not be able to connect to `https://charts.bitnami.com/bitnami`. Review its network connectivity and ensure it can connect.  
-    If you are using Helm v2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+    If you are using Helm v2, you will need to install Helm v2 and Tiller on the delegate pod. For steps on installing software on the delegate, go to [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 10. In **Manifest Details**, enter the following settings can select **Submit**.
    * **Manifest Identifier**: enter **nginx**.
    * **Chart Name**: enter **nginx**.
@@ -163,7 +163,7 @@ For details on Harness provisioning, go to [Provisioning overview](/docs/continu
 1. In **Infrastructure**, in **Environment**, select **New Environment**.
 2. In **Name**, enter **quickstart**, select **Non-Production**, and select **Save**.
 3. In **Infrastructure Definition**, select the **Kubernetes**.
-4. In **Cluster Details**, select **Select Connector**. We'll create a new Kubernetes Connector to your target platform. We'll use the same Delegate you installed earlier.
+4. In **Cluster Details**, select **Select Connector**. We'll create a new Kubernetes connector to your target platform. We'll use the same Delegate you installed earlier.
 5. Select **New Connector**.
 6. Enter a name for the Connector and select **Continue**.
 7. In **Details**, select **Use the credentials of a specific Harness Delegate**, and then select **Continue**.

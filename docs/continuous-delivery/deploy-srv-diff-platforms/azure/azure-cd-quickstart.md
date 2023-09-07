@@ -27,7 +27,7 @@ Make sure you have the following set up before you begin modeling your pipeline 
 	+ **AKS:** the **Owner** role must be assigned.
 	+ For a custom role, see the permissions in [Add a Microsoft Azure Cloud connector](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector).
 
-* **AKS Cluster:** You'll need a target AKS cluster for the deployment. You can also host the Harness delegate in this cluster. Ensure your cluster meets the following minimum requirements for the delegate (it should also have the resources needed for the app you deploying):
+* **AKS Cluster:** You'll need a target AKS cluster for the deployment. You can also host the Harness Delegate in this cluster. Ensure your cluster meets the following minimum requirements for the delegate (it should also have the resources needed for the app you deploying):
   * **Number of nodes:** 2.
   * **vCPUs, Memory, Disk Size:** 4vCPUs, 16GB memory, 100GB disk. In AKS, the **Standard DS2 v2** machine type is enough for this quickstart.
   * **Networking:** outbound HTTPS for the Harness connection to **app.harness.io**, **github.com**, and **hub.docker.com**. Allow TCP port 22 for SSH.
@@ -44,28 +44,28 @@ Here's how you set up a Harness pipeline stage for your deployment.
 
 ## Add the AKS manifest and values YAML
 
-In the new Harness service, you can add a Kubernetes manifest for your deployment. As an example, you can use a [publicly-available manifest and values file](https://github.com/wings-software/harness-docs/tree/main/default-k8s-manifests/Manifests/Files/templates) available from Harness.
+In the new Harness service, you can add a Kubernetes manifest for your deployment. As an example, you can use a [publicly-available manifest and values file](https://github.com/wings-software/harness-docs/tree/main/default-k8s-manifests/Manifests/Files/templates) from Harness.
 
 1. In **Service Definition**, in **Deployment Type**, ensure **Kubernetes** is selected.
 2. In **Manifests**, select **Add Manifest**.
 3. Select **K8s Manifest**, and select **Continue**.
 4. In **Select K8sManifest Store**, select **GitHub**, and then select **New GitHub Connector**.
 5. The **Git Connector** settings appear. Enter the following settings.
-   - **Name:** enter a name for the connector, like **Quickstart**.- **URL Type:** select **Repository**.
-   - **Connection Type:** select **HTTP**.
-   - **Git Repository URL:** enter `https://github.com/wings-software/harness-docs.git`.
-   - **Username and Token:** enter the username and a Github Personal Access Token for your Github account. You'll have to create a Harness secret for the password.
+   - **Name:** Enter a name for the connector, like **Quickstart**.- **URL Type:** select **Repository**.
+   - **Connection Type:** Select **HTTP**.
+   - **Git Repository URL:** Enter `https://github.com/wings-software/harness-docs.git`.
+   - **Username and Token:** Enter the username and a Github Personal Access Token for your Github account. You'll have to create a Harness secret for the password.
    - In **Personal Access Token**, select **Create or Select a Secret**.
    - Select **New Secret Text**.
    - In **Secret Name**, enter a name for the secret like **github-pat**.
-   - In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
+   - In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, go to [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
    - Ensure you PAT has the **repo** scope selected:
   
   ![](static/azure-repo.png)
   
 6. Select **Continue**.
 7. In **Connect to the provider**, select **Connect through a Harness Delegate**, and select **Continue**. 
-8. Select or add a Harness delegate to your environment. For details on adding a delegate, go to [Delegate installation overview](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
+8. Select or add a Harness Delegate to your environment. For details on adding a delegate, go to [Delegate installation overview](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
 9. Back in **Specify K8s Manifest Store**, select **Continue**.
 10. In **Manifest Details**, enter the following settings, test the connection, and select **Submit**.
 
@@ -81,7 +81,7 @@ In the new Harness service, you can add a Kubernetes manifest for your deploymen
 
   Next, let's add the values.yaml file for the deployment.
 
-  Harness supports Go templating with a values YAML file by default so you can template your manifests. Also, you can use [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables) in your values.yaml file. 
+  Harness supports Go templating with a values YAML file by default so you can template your manifests. Also, you can use [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables) in your `values.yaml` file. 
 
   We will use a [values.yaml file](https://github.com/wings-software/harness-docs/blob/main/default-k8s-manifests/Manifests/Files/ng_values_dockercfg.yaml) that uses the `<+artifact.image>` expression to reference the artifact you will add later in **Artifacts**.
   
@@ -155,7 +155,7 @@ You add an artifact from your ACR repo to the Harness service. For example, we'l
      + For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector).
   
 7. Select **Continue**.
-8. In **Delegates Setup**, select **Only use Delegates with all of the following tags**, and then select the Delegate you used earlier.
+8. In **Delegates Setup**, select **Only use Delegates with all of the following tags**, and then select the delegate you used earlier.
 9. Select **Save and Continue**.
 10. The Connection Test is performed. Once it's completed, you'll be back in **ACR Repository**. Select **Continue**.
 11. In **Artifact Details**, select the Subscription Id where the artifact source is located.
