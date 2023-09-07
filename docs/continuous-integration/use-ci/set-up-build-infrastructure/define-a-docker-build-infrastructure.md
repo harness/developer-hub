@@ -13,6 +13,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
+<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
 You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Harness Docker Runner. When the pipeline runs, the Harness Docker Runner runs the build actions in the environment where it is installed. The delegate handles communication between the Harness Platform and the Harness Docker Runner.
 
 Local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
@@ -177,13 +179,13 @@ sudo chmod +x drone-docker-runner-darwin-arm64
 To configure a local runner build infrastructure for Windows, you need two machines:
 
 * A Windows machine where the Harness Docker Runner will run. This machine must have Docker for Windows. The Harness Docker Runner runs as a container.
-* A Linux machine where the Harness Delegate will run. This machine must have Docker. The delegate runs as a container.
+* A Linux or macOS machine where the Harness Delegate will run. This machine must have Docker. The delegate runs as a container.
 
 There is a one-to-one relationship between Harness Docker Runners and Harness Delegates. If you need to run three local hosts, each must have a runner and a delegate.
 
 #### Install the delegate
 
-On the Linux machine where you want to run the delegate, use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
+On the Linux or macOS machine where you want to run the delegate, use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
 
 * Add `-e DELEGATE_TAGS="windows-amd64"`.
 * Add `-e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000`.

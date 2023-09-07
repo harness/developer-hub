@@ -4,9 +4,9 @@ description: Set up a Harness macOS build farm that uses an Anka registry and co
 sidebar_position: 40
 ---
 
-:::note
+<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-This build infrastructure option is only available with Harness CI Team and Enterprise plans.
+:::note
 
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
