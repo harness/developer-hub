@@ -199,7 +199,7 @@ This field is required for Extraction scans.
 
 #### Include 
 
-If you're running an orchestrated scan on a code repository, you can use this setting to specify the  specific files to include in the scan. By default, a Mend scan includes all files in the code repository. 
+If you're running an orchestrated scan on a code repository, you can use this setting to specify the files to include in the scan. By default, a Mend scan includes all files in the code repository. 
 
 This setting corresponds to the [**Includes** configuration parameter](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) for the Mend United Agent. 
 
