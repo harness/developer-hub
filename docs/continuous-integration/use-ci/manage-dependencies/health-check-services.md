@@ -2,7 +2,6 @@
 title: Run health checks on background services
 description: Use step groups to run health checks on separate background services.
 sidebar_position: 40
-sidebar_label: Health check background services
 ---
 
 ```mdx-code-block
@@ -28,8 +27,6 @@ For example, if you want to run health checks on two services, create two step g
         name: build
         spec:
           cloneCodebase: false
-          infrastructure:
-            ...
           execution:
             steps:
               - parallel: ## Parallel flag.
@@ -63,8 +60,6 @@ For a **Background** step to run a service, the build environment must have the 
         name: build
         spec:
           cloneCodebase: false
-          infrastructure:
-            ...
           execution:
             steps:
               - parallel:
@@ -82,7 +77,6 @@ For a **Background** step to run a service, the build environment must have the 
                                 POSTGRES_USER: postgres
                                 POSTGRES_DB: test1
                                 POSTGRES_PASSWORD: password
-                                PGDATA: /tmp/pgdata1
                               entrypoint:
                                 - docker-entrypoint.sh
                                 - "-p 5433"
@@ -100,7 +94,6 @@ For a **Background** step to run a service, the build environment must have the 
                                 POSTGRES_USER: postgres
                                 POSTGRES_DB: test2
                                 POSTGRES_PASSWORD: password
-                                PGDATA: /tmp/pgdata2
                               entrypoint:
                                 - docker-entrypoint.sh
                                 - "-p 5434"
@@ -189,8 +182,6 @@ For the **Run** step to run the health check commands, the build environment mus
         name: build
         spec:
           cloneCodebase: false
-          infrastructure:
-            ...
           execution:
             steps:
               - parallel:
@@ -208,7 +199,6 @@ For the **Run** step to run the health check commands, the build environment mus
                                 POSTGRES_USER: postgres
                                 POSTGRES_DB: test1
                                 POSTGRES_PASSWORD: password
-                                PGDATA: /tmp/pgdata1
                               entrypoint:
                                 - docker-entrypoint.sh
                                 - "-p 5433"
@@ -235,7 +225,6 @@ For the **Run** step to run the health check commands, the build environment mus
                                 POSTGRES_USER: postgres
                                 POSTGRES_DB: test2
                                 POSTGRES_PASSWORD: password
-                                PGDATA: /tmp/pgdata2
                               entrypoint:
                                 - docker-entrypoint.sh
                                 - "-p 5434"
@@ -336,7 +325,7 @@ For the **Run** step to run the health check commands, the build environment mus
 </Tabs>
 ```
 
-## Configure other steps and test the pipeline
+## Test and finalize the pipeline
 
 Run your pipeline to test your background services and health checks. You can monitor and review build logs on the [Build details page](../viewing-builds.md).
 
@@ -350,7 +339,7 @@ Once you've confirmed that the background services and health checks are functio
 
 ## Pipeline YAML examples
 
-These examples demonstrate use two step groups to run health checks on two PostgreSQL services.
+These pipeline YAML examples use two step groups to run health checks on two PostgreSQL services.
 
 ```mdx-code-block
 <Tabs>
@@ -388,7 +377,6 @@ pipeline:
                                 POSTGRES_USER: postgres
                                 POSTGRES_DB: test1
                                 POSTGRES_PASSWORD: password
-                                PGDATA: /tmp/pgdata1
                               entrypoint:
                                 - docker-entrypoint.sh
                                 - "-p 5433"
@@ -415,7 +403,6 @@ pipeline:
                                 POSTGRES_USER: postgres
                                 POSTGRES_DB: test2
                                 POSTGRES_PASSWORD: password
-                                PGDATA: /tmp/pgdata2
                               entrypoint:
                                 - docker-entrypoint.sh
                                 - "-p 5434"
