@@ -102,10 +102,10 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 #### Version 80309
 
-- Do not evaluate service variables on the bash shell when exporting them in SSH command step. (CDS-75775)
+- Do not evaluate service variables on the Bash shell when exporting them in Command step. (CDS-75775)
 
-  If a service variable has bash interpretable characters like dollar ($), they will remain as is when exported in the step. Previously, they were being 
-  evaluated using the bash interpreter ( eg. "abc$1abc" would actually be sent as "abc$bc")
+  If a service variable has bash-interpretable characters like dollar ($), they will remain as is when exported in the Command step. Previously, they were being 
+  evaluated using the bash interpreter (for example, "abc$1abc" would actually be sent as "abc$bc").
 
 
 #### Version 80308
