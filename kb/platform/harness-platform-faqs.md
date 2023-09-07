@@ -563,3 +563,15 @@ We supported spotinst ASG in FG and we also have spotinst for ng also: [here](ht
 ### Can you pull in from multiple different Okta providers for multiple different teams with different RBAC/group needs?
 
 Only one SSO provider allowed.
+
+### Do Cloud Connector will propagate the tags to AWS calls ?
+
+No, Cloud connector will not propagate the tags.
+
+### Where can we see the logs of AWS calls?
+
+Limited logging (we do not log all the calls, may be there is an debug flag). Delegate logs will show the capability check.
+
+### Like CI, can CD Delegate act as an orchestrator?
+
+By "Like CI" are they implying "lite-engine". If so, the answer is Yes when using container steps only and not otherwise.
