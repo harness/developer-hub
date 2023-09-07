@@ -32,7 +32,7 @@ You should set at least:
 - `HARNESS_ACCOUNT_ID`: Your Harness account id.
 - `HARNESS_PLATFORM_API_KEY`: A user or service account token.
 
-You can read more about the provider [here](https://registry.terraform.io/providers/harness/harness/latest/docs) or view our quick-start guide [here](https://developer.harness.io/docs/platform/terraform/harness-terraform-provider/).
+You can read more about the provider [here](https://registry.terraform.io/providers/harness/harness/latest/docs) or view our [quick-start guide](/docs/platform/automation/terraform/harness-terraform-provider).
 
 ## [Structure](https://github.com/harness-community/terraform-harness-structure)
 
