@@ -69,7 +69,7 @@ Most entities, such as ConfigMaps, repository credentials, and applications will
 
 ### Sample repository configuration
 
-Following is a sample repository configuration:
+Here's a sample repository configuration:
 
 ```yaml
 apiVersion: v1
@@ -88,7 +88,7 @@ stringData:
 
 ### Sample cluster configuration
 
-Following is a sample cluster config:
+Here's a sample cluster config:
 
 ```yaml
 apiVersion: v1
@@ -111,7 +111,7 @@ type: Opaque
 
 #### Additional fields for clusters and repositories
 
-Following are the additional fields required for clusters and repositories:
+Here are the additional fields required for clusters and repositories:
 
 - `stringData.project` or `data.project`, whose value is the AppProject name. Provide this field only if you want the entity to reside within the scope of a Harness project or organization.
 
@@ -121,7 +121,7 @@ The remaining fields remain the same as in Argo CD.
 
 ### Sample Argo AppProject configuration
 
-Following is a sample configuration for the Argo CD AppProject:
+Here's a sample configuration for the Argo CD AppProject:
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -159,14 +159,14 @@ Following are the additional fields required for the AppProject:
 The remaining fields remain the same as in Argo CD.
 
 :::note
-By default, Harness creates an AppProject for you when you create the repository and cluster at the beginning of this procedure. The name of this AppProject is available on the agent details page. If you are creating a new AppProject, remember to add the mapping for the Argo project to the Harness project in the GitOps Agent, and then use the value of `metadata.name` in the project field of the entity configurations. The UI requires that information to show the entities.
+By default, Harness creates an AppProject for you when you create the repository and cluster at the beginning of this procedure. The name of this AppProject is available on the agent details page, under **Mapped Harness Project**. If you are creating a new AppProject, remember to add the [mapping for the Argo project to the Harness project in the GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness), and then use the value of `metadata.name` in the project field of the entity configurations. The UI requires that information to show the entities.
 :::
 
 You can use all other entity configurations without modifying them.
 
 ### Sample application
 
-Following is a sample for application:
+Here's a sample application:
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
