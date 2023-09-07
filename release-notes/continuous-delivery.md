@@ -46,9 +46,9 @@ This release does not have early access features.
 
 ### Fixed issues
 
-* Fixed a UI issue observed when retrying a pipeline execution: the wrong **Execution Id** was displayed because the UI was evaluating the `sequenceId` based on the root `executionId`. With this fix, the **Execution Id** is based on the back-end data for the current pipeline execution. (CDS-78305)
+* Fixed a UI issue observed where the wrong **Execution Id** was displayed when retrying a pipeline execution. The wrong **Execution Id** was displayed because the UI was evaluating the `sequenceId` based on the root `executionId`. With this fix, the **Execution Id** is based on the backend data for the current pipeline execution. (CDS-78305)
 
-* Fixed the following issue: when a user re-ran a pipeline execution with a different branch selected, the pipeline would execute with the last branch selected. With this fix, the pipeline always runs with the current branch selected in **Run Pipeline**. (CDS-77826)
+* When users reran a remote pipeline with a new branch selected, the pipeline would execute with the previous branch selected. With this fix, the pipeline always runs with the current branch selected in **Run Pipeline**. (CDS-77826)
 
 * The following Node.js v20 images are now available on Docker Hub. (CDS-77801)
   - [harnessdev/serverless-preparerollback:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-preparerollback/3.30.1-1.0.1/images/sha256-30994cb1fef9b206babecbe61b10144591db51cddec2e5386a0ab228d542b32f?context=explore)
@@ -58,9 +58,9 @@ This release does not have early access features.
 
 * Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
 
-* Fixed an issue when using the OCI Helm connector with anonymous credentials: Harness would incorrectly derive the source port from OCI repository and the connection validation would fail. With this fix, Harness deducts default port 443 if no port is provided in the URL itself. (CDS-77298)
+* When using the OCI Helm connector with anonymous credentials, Harness would incorrectly derive the source port from the OCI repository and the connection validation would fail. With this fix, Harness does not add default port 443 if no port is provided in the URL itself. (CDS-77298)
 
-* Fixed an issue where users could not specify runtime inputs for some advanced settings (such as Looping Strategy) in step groups and step-group templates. With this fix, runtime inputs are supported for all advanced step-group settings. (CDS-77246, ZD-49339, ZD-49427)
+* Fixed an issue where users could not specify runtime inputs for some advanced settings (such as Looping Strategy) in step groups and step group templates. With this fix, runtime inputs are supported for all advanced step group settings. (CDS-77246, ZD-49339, ZD-49427)
 
 * Fixed a UI issue when running a pipeline with an input set that  allows multiple choices (checkboxes) for a field. Previously, if no checkboxes were selected for a field, the pipeline set the value to an empty string. This could cause the pipeline execution to fail. With this fix, the pipeline sets field to undefined if no checkboxes are selected. (CDS-77221)
 
@@ -80,7 +80,7 @@ This release does not have early access features.
 
   <!-- https://harness.atlassian.net/browse/CDS-74138?focusedCommentId=567699 -->
 
-* API Call logs now include details such as Response, size, duration, HTTP Verb, and Response code in the summary. (OIP-767)
+* API call logs summary now includes details such as response, size, duration, HTTP verb, and response code. (OIP-767)
 
 * Fixed an issue that resulted in Null Pointer Exceptions when running a pipeline manually with a  `<+trigger.connectorRef>` expression. This expression gets its data from the trigger payload. With this fix, the pipeline correctly handles the case where the trigger payload is null.  (CDS-77736, ZD-49685, ZD-49720, ZD-49722)
 
