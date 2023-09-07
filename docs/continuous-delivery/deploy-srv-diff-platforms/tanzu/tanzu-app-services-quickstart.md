@@ -738,10 +738,12 @@ enhancement ticket = https://harness.atlassian.net/browse/CDS-75250
 
 -->
 
-Use this deployment method when you want to apply a rolling upgrade to an existing deployment. You can also use this method with load-balancing scenarios that require reduced downtime. This method deploys an application on all pods or instances in a single environment incrementally added one-by-one with a new service or artifact version.
+Use this deployment method when you want to apply a rolling upgrade to an existing deployment. You can also use this method with load-balancing scenarios that require reduced downtime. 
+
+This method deploys a new service or artifact version on all pods or instances in a single environment incrementally.
 
 :::info note
-Before performing a rolling deployment, the TAS Rolling deployment step first verifies that the application exists in Tanzu. If the application does not exist, it deploys the application without a rolling deployment strategy. If the application exists, it performs a incremental rolling upgrade.
+Before performing a rolling deployment, the TAS Rolling Deploy step first verifies that the application exists in Tanzu. If the application does not exist, it deploys the application using a Basic deployment strategy. If the application exists, it performs a rolling upgrade.
 :::
 
 1. In Execution Strategies, select **Rolling**, and then click **Use Strategy**.
