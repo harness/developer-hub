@@ -96,7 +96,7 @@ TBD commenting out until I hear back from RG https://harness.atlassian.net/brows
 
 *  Fixed an intermittent issue where Helm deployment pipelines would report the Helm repository as not found.  (CDS-76919)
 
-  This item requires Harness Delegate version 805xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 <!-- Adding per this comment: https://harness.atlassian.net/browse/CDS-75488?focusedCommentId=567310 -->
 
