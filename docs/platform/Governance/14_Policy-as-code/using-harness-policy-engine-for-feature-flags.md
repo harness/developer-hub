@@ -130,9 +130,6 @@ You can only test a policy in the Testing Terminal if you have previously run a 
 After you create an individual policy, you must add it to a Policy Set before you can apply it to your Feature Flags.
 
 1. In **Policies**, click **Policy Sets**, then click **New Policy Set**.
-
-![](https://lh4.googleusercontent.com/f2GbzvnKR5dw5iVaHRfr695eq16qFYya38-I9tSzDH37UZRPljOzGaLmGuGBLdtsWvtQzWDgL8uNRfmLjy-gsWepN1HKw8XXrgpAFo71o13aT0VAp-JJ3noiRvPlumo_-NfG0crI)
-
 2. In **Name**, enter the name of the Policy Set.
 3. (Optional) In **Description**, enter a description of the Policy Set.
 4. In **Entity type** that this policy applies to, select **Feature Flag**.

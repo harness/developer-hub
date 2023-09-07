@@ -59,6 +59,7 @@ import TabItem from '@theme/TabItem';
     - Kustomize:
       - Kustomize Patches are only supported in YAML, not JSON
       - Kustomize Containerized Plugins are not supported
+      - Kustomize manifests and patches do **not** support the [custom remote manifest](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) feature.
     - Harness managed resources:
       - Deployment
       - Secrets
@@ -749,8 +750,18 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
 </Tabs>
 ```
 
-## Notes
+### Notes
 
 - AWS and Azure GovCloud: Harness is now certified in Azure GovCloud and AWS GovCloud.
 
+## Harness Self-Managed Enterprise Edition (SMP) including offline Environments
 
+All CD features supported in Harness SaaS are also supported in Self-Managed Enterprise Edition with the following exceptions:
+
+- **Dashboards:** Harness [CD Dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments) might not be completely functional with a bundled [Timescale community edition](https://docs.timescale.com/about/latest/timescaledb-editions/) version installation.
+- **Triggers:** The feature flag `CD_GIT_WEBHOOK_POLLING` must be enabled for Github polling with two factor authentication. For more information, go to [Polling frequency](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#polling-frequency).
+- **ServiceNow:** ServiceNow versions [Utah](https://www.servicenow.com/now-platform/latest-release.html) and earlier are supported.
+- **Jira:** Jira on-premise versions < 9.0 are supported. To support Jira on-premise >= 9.0, the feature flag `SPG_USE_NEW_METADATA` must be enabled.
+- **GitOps:** The Harness GitOps Agent does not support custom certificates in Self-Managed Enterprise Edition.
+- **GitOps:** The Harness GitOps Agent does not yet support installing agents in specific cluster namespaces in Self-Managed Enterprise Edition.
+- **Policy as Code:** Harness Git Experience support for OPA policies is not supported in Self-Managed Enterprise Edition.

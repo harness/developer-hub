@@ -8,10 +8,6 @@ You can add files to your Harness services and then reference and use the files 
 
 Files are added to the **Config Files** section in your Harness services.
 
-You can reference unencrypted and encrypted files, and they can be single or multiline.
-
-## Supported storage for config files
-
 Files can be stored in the following locations.
 
 - **Harness file store:** All platform [integrations](/docs/continuous-delivery/cd-integrations) (Kubernetes, etc.) support config files stored in the Harness [file store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).

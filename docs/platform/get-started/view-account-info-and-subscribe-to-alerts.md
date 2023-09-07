@@ -1,7 +1,7 @@
 ---
 title: View account info and subscribe to downtime alerts
 description: Harness provides a summary of your account information and enables you to subscribe to downtime alerts for the cluster hosting your Harness account.
-sidebar_position: 80
+sidebar_position: 3
 ---
 
 Harness provides a summary of your account information and enables you to subscribe to downtime alerts for the cluster hosting your Harness account.

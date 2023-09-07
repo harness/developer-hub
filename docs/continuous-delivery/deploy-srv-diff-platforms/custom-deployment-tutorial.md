@@ -247,7 +247,7 @@ The stage is created and you are on the **Service** tab.
 
 Next we'll define the Harness Service using the Deployment Template you created and a Docker artifact for deployment.
 
-If you are new to Harness, learn about the basics in [CD overview and key concepts](/docs/continuous-delivery/get-started/cd-pipeline-basics) and [CD Pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+If you are new to Harness, learn about the basics in [CD overview and key concepts](/docs/continuous-delivery/get-started/key-concepts) and [CD Pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
 
 ## Create the Service
 

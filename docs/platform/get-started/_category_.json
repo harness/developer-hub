@@ -1,12 +1,12 @@
 {
-    "label": "Get Started",
+    "label": "Get started with Platform",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "position": "2",
     "link": {
         "type": "generated-index",
-        "title": "Get Started"
+        "title": "Get started with Harness Platform"
     },
     "customProps": {
         

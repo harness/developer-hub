@@ -8,7 +8,7 @@ keywords: [delegate,delegate minimal image]
 
 Harness recommends that you use the Harness Delegate minimal image (*`yy.mm.xxxxx.minimal`*) when you set up the Harness Platform for production use. This image has been thoroughly scanned and is free of any high or critical vulnerabilities. Users focused on security tend to prefer this option. 
 
-However, the minimal delegate image lacks some binaries that are required for Continuous Deployment (CD) steps to function properly and remain vulnerability-free from third-party tools. Consequently, using the minimal delegate image requires you to configure your delegates and install necessary binaries. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+However, the minimal delegate image lacks some binaries that are required for Continuous Delivery (CD) steps to function properly and remain vulnerability-free from third-party tools. Consequently, using the minimal delegate image requires you to configure your delegates and install necessary binaries. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 The Harness Delegate minimal image (*`yy.mm.xxxxx.minimal`*) is a lighter, more secure version of the default Harness Delegate image. Its main purpose is to provide an enhanced security profile for users, especially those who prioritize their systems' security. The Harness Delegate minimal images includes the following features.
 
