@@ -33,6 +33,10 @@ This release does not include early access features.
 - With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631, ZD-48998, ZD-49702)
 
    This issue is fixed. Harness catches the exception and continues with delegate startup.
+   
+   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+
 
 ### Version 80407
 

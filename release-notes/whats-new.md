@@ -39,12 +39,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - The delegate expiration policy has been extended from 3 months to 6 months. You now only have to update delegates once every 6 months. (PL-39452)
 
+   This item requires Harness Delegate version 805xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
 - The OWASP Java HTML Sanitizer version is upgraded to 20220608.1. (PL-40807)
 
 - The Mozilla Rhino library has been upgraded from version 1.7R4 to 1.7.14. (PL-40808)
 
 - The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
-
+- If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
+   Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
+   
+   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 ## September 5, 2023
 
 ### Harness Platform, version 80406
