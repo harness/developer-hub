@@ -130,7 +130,30 @@ The following **Advanced** settings are available for the **Kubernetes** infrast
 
 ### Volumes
 
-A list of the volumes you want to mount onto the pod running the stage.
+You can add a list of volumes you want to mount onto the pod that is running the stage.
+
+* **Mount Path:** Enter the path to the volume.
+* **Type:** Select **Empty Directory**, **Host Path**, or **Persistent Volume Claim**.
+* If **Type** is **Empty Directory**, you can specify the storage **Medium** and volume's maximum memory **Size**.
+* If **Type** is **Host Path**, you must specify **Path** and you can specify an optional **Path Type**.
+* If **Type** is **Persistent Volume Claim**, you must specify a **Claim Name** and whether the volume is **Read Only**.
+
+The following YAML example shows two Empty Directory volumes that would be used for PostgreSQL data.
+
+```yaml
+            spec:
+              connectorRef: YOUR_K8S_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_K8S_CLUSTER_NAMESPACE
+              volumes:
+                - mountPath: /tmp/pgdata1
+                  type: EmptyDir
+                  spec:
+                    medium: ""
+                - mountPath: /tmp/pgdata2
+                  type: EmptyDir
+                  spec:
+                    medium: ""
+```
 
 ### Service Account Name
 
