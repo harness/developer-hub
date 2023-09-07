@@ -301,9 +301,9 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `ingestionOnly`, `dataLoad`, or `orchestratedScan`
 * `scan_type` = `container` or `repository`
 * `product_domain` (*optional*) — The default is `https://saas.whitesourcesoftware.com/api`.
-* [`product_access_id`](#access-id).
+* [`product_access_id`](#access-id)
 * [`product_access_token`](#access-token)
-* [`product_include`](#include).
+* [`product_include`](#include)
 * `product_config_name` = `default`
 * [`fail_on_severity`](#fail-on-severity)
 * `tool_args` You can add a `tool_args` setting to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional parameters. For example, you can save logs for STO-initiated scans in a separate folder on the Mend server like this: `tool_args log.files.path /tmp/sto_scan_logs`.
