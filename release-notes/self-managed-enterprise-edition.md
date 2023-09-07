@@ -21,6 +21,43 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 ### New features and enhancements
 
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.8.x](https://github.com/harness/helm-charts/releases/tag/harness-0.8.x) |
+| Air Gap Bundle | [0.8.x](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.x) |
+| NG Manager | xxxxx |
+| CI Manager | xxxx |
+| Pipeline Service | x.xx.xx |
+| Platform Service | xxxxx |
+| Access Control Service | xxxxx |
+| Change Data Capture | xxxxx |
+| Test Intelligence Service | release-xxx |
+| NG UI | x.xxx.xx |
+| LE NG | xxxxx |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.8.x/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.x/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.x/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.x/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.x/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.x/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.x/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.x/sto_images.tgz" \
+  .
+```
+
+#### Self-Managed Enterprise Edition
+
+- You can now use your Redis password in your external self-managed Redis database. (SMP-1860) 
+
 #### Continuous Delivery & GitOps
 
 - Removed Helm version 3.1 from delegates with an immutable image type (image tag `yy.mm.xxxxx`). (CDS-58892, ZD-47520, ZD-48553)

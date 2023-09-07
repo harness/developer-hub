@@ -18,6 +18,17 @@ Release notes are displayed with the most recent release first.
 
 ## Latest: Version 802xx
 
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 802xx |
+| Watcher | 802xx |
+| Verification Service | 802xx |
+| UI | 802xx |
+| Learning Engine | xxxxx | 
+| Gateway | xxxxx |
+
 ### New features and enhancements
 
 - Open HFT Chronicle Queue has been upgraded from version 5.19.2 to version 5.22.28 to enable the upgrade of JDK from version 11 to version 17. (PL-39953)
