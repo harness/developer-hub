@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-09-07T10:00
+date: 2023-09-08T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -56,7 +56,7 @@ This release does not include any new early access features.
 
 ### Fixed issues
 
-- Fixed a Nexus artifact issue where a fetch would time out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
+- Fixed a Nexus artifact issue where a fetch timed out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
 
 - Fixed an intermittent issue where Helm deployment pipelines would report the Helm repository as not found. (CDS-76919)
 
