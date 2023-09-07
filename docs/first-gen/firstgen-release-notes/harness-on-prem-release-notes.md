@@ -16,7 +16,29 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](https://devel
 
 Release notes are displayed with the most recent release first.
 
-## July 31, 2023, patch release for version 79819
+## Latest: Version 802xx
+
+### New features and enhancements
+
+- Open HFT Chronicle Queue has been upgraded from version 5.19.2 to version 5.22.28 to enable the upgrade of JDK from version 11 to version 17. (PL-39953)
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- Fixed an issue where Nexus 2 artifact details would appear as `null` (for example, `null:870`) in the Harness UI. (CDS-74053)
+
+- Fixed a UI display issue where the **Deployment Specification** popover did not allow you to select a type. (CDS-75314)
+
+- The account component made two calls to the account details and usage APIs. (PLG-2351)
+
+- Pagination on the Secrets list page did not display correctly. (PL-38776)
+
+- Update operations for GCP Secrets Manager failed in FirstGen SMP environments. (PL-40151)
+
+### July 31, 2023, patch release for version 79819
 
 This release includes the following module and component versions.
 
@@ -29,7 +51,7 @@ This release includes the following module and component versions.
 | Learning Engine | 67903 | 
 | Gateway | 11201 |
 
-### What's new
+#### What's new
 
 - Upgraded the delegate JRE to 11.0.19_7. (PL-37994)
 
@@ -39,11 +61,11 @@ This release includes the following module and component versions.
 
 - You can now skip steady state checks for native Helm deployments. This helps avoid Harness running unnecessary checks for resources where this is not required. This option is available in Helm Deployment and Helm Rollback steps. This feature requires delegate version 1.0.797xx or higher. (CDS-70124)
 
-### Early access
+#### Early access
 
 This release does not include any early access features.
 
-### Fixed issues
+#### Fixed issues
 
 - Helm delegate installation failed in Self-Managed Enterprise Edition. (PL-39028)
 
