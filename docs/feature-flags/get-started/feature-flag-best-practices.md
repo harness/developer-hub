@@ -8,6 +8,8 @@ helpdocs_topic_id: 2ltqamulhy
 helpdocs_category_id: iqgyied1c0
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-onboarding/feature-flag-best-practices
 ---
 
 To help you get the most out of your Feature Flags, we’ve drawn up some best practices that you can implement to manage them. The points below aren’t mandatory but they can help you organize your Flags and plan for the future so you don’t have to revise them at a later date.

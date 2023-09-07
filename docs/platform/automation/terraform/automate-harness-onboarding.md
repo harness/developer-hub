@@ -367,7 +367,7 @@ trigger:
 
 ## Onboard a service
 
-For onboarding a Service onto Harness you will need to use the [Harness Terraform Resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service). In Harness, you can create a [service](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/) at the project, organization or account level.
+For onboarding a Service onto Harness you will need to use the [Harness Terraform Resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service). In Harness, you can create a [service](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview/) at the project, organization or account level.
 
 Your will need to create this YAML and store it in your Github Repository.
 
@@ -487,7 +487,7 @@ The pipeline looks like this:
 ## Onboard an environment
 
 For onboarding an environment, Harness recommends using the environment resource in the [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment). 
-In Harness, you can create an [environment](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/) at the project, organization, and account scope.
+In Harness, you can create an [environment](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview/) at the project, organization, and account scope.
 
 Your need to create this YAML and store it in your GitHub Repository.
 
@@ -605,7 +605,7 @@ pipeline:
 ## Onboard an infrastructure definition
 
 For onboarding an Environment, we recommend using the infrastructure definition in our [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment). 
-In Harness, you can create an [Infrastructure Definition](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/) at the project, organization and account scope.
+In Harness, you can create an [Infrastructure Definition](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview/) at the project, organization and account scope.
 
 ```YAML
 resource "harness_platform_infrastructure" "infrastructure" {
@@ -702,7 +702,7 @@ Please review these topics to get familiar with the Harness constructs:
 
 - [Harness Key Concepts](/docs/get-started/learn-harness-key-concepts)
 - [Projects, Orgs, Account](/docs/platform/organizations-and-projects/projects-and-organizations/)
-- [Service, Environments](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/)
+- [Service, Environments](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview/)
 
 ### Create a project for resource automation
 

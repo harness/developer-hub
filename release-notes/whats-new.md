@@ -1464,7 +1464,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   
   During deployment, the required task is deployed with the desired count provided in the **Service Definition**. 
 
-  Go to [ECS deployment tutorial](/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial) for more information.
+  Go to [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial) for more information.
 
 - You can now view the ServiceNow Active Directory Federation Services (ADFS) and Jira Personal Access Token (PAT) in the **Credentials** section of the **Connectors** page. (CDS-55670)
   
@@ -2330,7 +2330,7 @@ You can now use a readOnly vault as a default SM. (PL-24491)
 
 - ECS deployments: deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies.
 
-  For more information, go to: [ECS deployment tutorial](/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial/).
+  For more information, go to: [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
 
 - Traditional deployments using SSH or WinRM: deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
 

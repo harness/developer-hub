@@ -1249,7 +1249,7 @@ This release includes the following Harness module and component versions.
 
   <docimage path={require('./static/eca1e7dd02fa705e9158c78f44ab49676270e4a477cc260e817c06da91bdf631.png')} width="60%" height="60%" title="Click to view full size image" />
 
-- The **Retry** timeout failure strategy is now supported in [TAS steps](/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) App Setup, App Resize, and Swap Routes. (CDS-55117)
+- The **Retry** timeout failure strategy is now supported in [TAS steps](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart) App Setup, App Resize, and Swap Routes. (CDS-55117)
   
   If you set the [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/) on these Tanzu Application Services (TAS) steps, you can now select **Retry** for **Timeout Failures**.
 
@@ -1650,7 +1650,7 @@ This release includes the following Harness module and component versions.
 
   DeployToAll is a Boolean field in the step that can have true, false, or null values. The DeployToAll value was not set correctly when re-running pipelines because null checks were not present in all places where DeployToAll was referred to. This is now fixed.
 
-- The [Deployment Template](/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial/)'s **Referenced By** setting was throwing an error. (CDS-58073)
+- The [Deployment Template](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/)'s **Referenced By** setting was throwing an error. (CDS-58073)
   
   The search filters in the template is fixed now. The **Referenced By** setting now shows the pipelines that are using the template. 
 
@@ -1993,7 +1993,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
   
   During deployment, the required task is deployed with the desired count provided in the **Service Definition**.
 
-  Go to [ECS deployment tutorial](/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial) for more information.
+  Go to [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial) for more information.
 - A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart/) to enable map and unmap routes. (CDS-50535)
 
   In the **Execution** tab of the TAS pipeline, you can now add a **Route Mapping** step for any execution strategy to configure route mapping or unmapping.
@@ -2514,7 +2514,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
   This issue is fixed. Helm commmand flags are now available when you select the Harness File Store.
 - The environment's **Service Overrides** were not operating additively. (CDS-53373)
   
-  You can override specific service options using the [Service Overrides settings](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview#service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
+  You can override specific service options using the [Service Overrides settings](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview#service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
 
   ![Service Overrides settings](static/88805f0c3a1feca13b5437edbd6c7574e8f540a6e9ffe07f760a450546c93c41.png)
 

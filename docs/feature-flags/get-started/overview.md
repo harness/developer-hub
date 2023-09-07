@@ -7,6 +7,8 @@ helpdocs_topic_id: 7n9433hkc0
 helpdocs_category_id: tsswat9k6o
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-onboarding/cf-feature-flag-overview
 ---
 
 Harness Feature Flags (FF) is a feature management solution with smart capabilities, such as GitOps, pipelines, automations, and monitoring.
@@ -33,7 +35,7 @@ https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695-->
 
 Here's how to get started with Harness Feature Flags:
 
-- Install one of our [open-source SDKS](https://developer.harness.io/docs/category/sdks-overview) into your application code. 
+- Install one of our [open-source SDKS](/docs/category/sdks-overview) into your application code. 
 - Add a flag statement around the code you want to control.
 - The SDKs will fetch the right configuration per session from Harness.
 - Use the Feature Flags UI to toggle flags on or off for some or all of your end users.
@@ -47,7 +49,7 @@ All of our SDKs are open-source, provided per-language, and backed by public API
 The SDKs all follow the same basic logic:
 
 - Authenticate with Harness.
-- Identify a [target](https://developer.harness.io/docs/category/manage-target-users-and-groups) for the session.
+- Identify a [target](/docs/category/manage-target-users-and-groups) for the session.
 - Retrieve an evaluation for all relevant flags for the session.
 - Serve the correct code path.
 - Send metrics back to Harness.

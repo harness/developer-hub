@@ -32,7 +32,7 @@ For getting started quickly, you can use our [sample code from the .NET SDK READ
 
 Make sure you read and understand:
 
-* [Feature Flags Overview](../../get-started/cf-feature-flag-overview.md)
+* [Feature Flags Overview](../../get-started/overview)
 * [Getting Started with Feature Flags](/docs/feature-flags/get-started/getting-started-with-feature-flags)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)

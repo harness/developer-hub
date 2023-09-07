@@ -27,14 +27,14 @@ import {
             module: MODULES.cet,
             description:
               "Understand concepts and benefits.",
-            link: "/docs/continuous-error-tracking/get-started/cet-overview",
+            link: "/docs/continuous-error-tracking/get-started/overview",
           },
           {
             title: "Start tracking errors",
             module: MODULES.cet,
             description:
               "Learn how to install CET Agent and track errors.",
-            link: "/docs/continuous-error-tracking/get-started/cet-setup",
+            link: "/docs/continuous-error-tracking/get-started/onboarding-guide",
           },
         ],
       },

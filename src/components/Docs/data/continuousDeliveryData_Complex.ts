@@ -42,7 +42,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.cd,
           description:
             "This topic covers CD Pipeline basics to get you ready to start building Pipelines easily.",
-          link: "/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics",
+          link: "/docs/continuous-delivery/onboard-cd/cd-concepts/key-concepts",
         },
         {
           title: "CD pipeline modeling overview",
@@ -56,7 +56,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.cd,
           description:
             "This topic describes Harness Continuous Delivery (CD) services and environments.",
-          link: "/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview",
+          link: "/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview",
         },
       ],
     },

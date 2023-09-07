@@ -10,6 +10,8 @@ helpdocs_topic_id: qym3qtrexy
 helpdocs_category_id: iqgyied1c0
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-onboarding/java-quickstart
 ---
 
 This guide shows you how to create a Feature Flag in Harness and use the Feature Flags Java SDK in your application.

@@ -53,7 +53,7 @@ export const featuredTutorials: CardItem[] = [
               module: MODULES.cd,
               description:
                 "",
-              link: "/docs/continuous-delivery/get-started/cd-pipeline-basics",
+              link: "/docs/continuous-delivery/get-started/key-concepts",
             },
             {
               title: "CD pipeline modelling overview",

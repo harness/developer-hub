@@ -1563,7 +1563,7 @@ This release does not include any early access features.
 
   ![picture 67](static/162273825052b81df3a86e5b649c38bdcf12f9175bd60cb7db872d223c2635c5.png)
 
-- The **Retry** timeout failure strategy is now supported in [TAS steps](/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) App Setup, App Resize, and Swap Routes. (CDS-55117)
+- The **Retry** timeout failure strategy is now supported in [TAS steps](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart) App Setup, App Resize, and Swap Routes. (CDS-55117)
 
   If you set the [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/) on these Tanzu Application Services (TAS) steps, you can now select **Retry** for **Timeout Failures**.
 
@@ -1639,7 +1639,7 @@ This release does not include any early access features.
 
 ##### Fixed issues
 
-- RBAC was enforced for [environment groups](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/) based on environment group identifiers. (CDS-45758)
+- RBAC was enforced for [environment groups](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview/) based on environment group identifiers. (CDS-45758)
 
   Previously, you would see an error when trying to view environment groups if you had access to view only certain environment groups. Now, you can view those environment groups to which you have View access.
 
@@ -1659,7 +1659,7 @@ This release does not include any early access features.
 
   The JEXL condition was not being evaluated and when the expression evaluated to `false` the step would still execute. This is now fixed and the JEXL expression is used correctly.
 
-- The [Deployment Template](/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial/)'s **Referenced By** setting was throwing an error. (CDS-58073)
+- The [Deployment Template](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/)'s **Referenced By** setting was throwing an error. (CDS-58073)
 
   The search filters in the template is fixed now. The **Referenced By** setting now shows the pipelines that are using the template.
 
@@ -1800,7 +1800,7 @@ This release does not include any early access features.
 
   For more information, go to [freeze deployments](/docs/continuous-delivery/cd-deployments-category/deployment-freeze/).
 
-- A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) to enable map and unmap routes. (CDS-50535)
+- A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart) to enable map and unmap routes. (CDS-50535)
 
   In the **Execution** tab of the TAS pipeline, you can now add a **Route Mapping** step for any execution strategy to configure route mapping or unmapping.
 
@@ -1933,7 +1933,7 @@ This release does not include any early access features.
 
   During deployment, the required task is deployed with the desired count provided in the **Service Definition**.
 
-  Go to [ECS deployment tutorial](/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial) for more information.
+  Go to [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial) for more information.
 
 - You can now view the ServiceNow Active Directory Federation Services (ADFS) and Jira Personal Access Token (PAT) in the **Credentials** section of the **Connectors** page. (CDS-55670)
 
@@ -2160,7 +2160,7 @@ connector:
 </Tabs>
 ```
 
-- The **Resize Strategy** field in the **Canary App Setup** step of a [Tanzu Application Services (TAS, formerly PCF) deployment](/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) can be added as runtime input when using the canary deployment strategy. (CDS-53201)
+- The **Resize Strategy** field in the **Canary App Setup** step of a [Tanzu Application Services (TAS, formerly PCF) deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart) can be added as runtime input when using the canary deployment strategy. (CDS-53201)
 
   ![](static/canary-app-set-up-resize.png)
 
@@ -2412,7 +2412,7 @@ These changes are backward incompatible. Therefore, you must also update the Ter
 
 - The environment's **Service Overrides** were not operating additively. (CDS-53373)
 
-  You can override specific service options using the [Service Overrides settings](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview#service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
+  You can override specific service options using the [Service Overrides settings](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview#service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
 
   ![Service Overrides settings](static/88805f0c3a1feca13b5437edbd6c7574e8f540a6e9ffe07f760a450546c93c41.png)
 
@@ -2711,7 +2711,7 @@ This release does not include new features.
 
   The environments header section was cramped when the environment request DTO had a description but there was no description in the environment YAML. This is now fixed.
 
-- An error appears when overriding a variable with a secret/number using an [environment override](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/#service-overrides). (CDS-51783)
+- An error appears when overriding a variable with a secret/number using an [environment override](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview/#service-overrides). (CDS-51783)
 
   This is now fixed and both secrets and numbers can be used to override service variables using environment overrides.
 

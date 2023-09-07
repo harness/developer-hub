@@ -9,6 +9,8 @@ helpdocs_topic_id: g8ajhy6msi
 helpdocs_category_id: u0gbfyk4p4
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-onboarding/ff-security-compliance/manage-access-control
 ---
 
 Harness provides Role-Based Access Control (RBAC) that enables you to control user and group access to Harness resources according to the user's role. By using RBAC, you can increase security and improve efficiency.
@@ -34,6 +36,6 @@ The following topics can help you understand how to implement Access Control:
 
 * [Manage users](/docs/platform/role-based-access-control/add-users)
 * [Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
-* [Manage Resource Groups](../../../platform/role-based-access-control/add-resource-groups)
-* [Manage Roles](../../../platform/role-based-access-control/add-manage-roles)
+* [Manage Resource Groups](../../platform/role-based-access-control/add-resource-groups)
+* [Manage Roles](../../platform/role-based-access-control/add-manage-roles)
 

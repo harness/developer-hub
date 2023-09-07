@@ -1,13 +1,13 @@
 | Topic | Material                                                                                                                                                              
 | :------------------------------ | :------------------------------ | 
 |**1. Application Architectures and Services for Deployment** | |
-| Define Continuous Delivery | [CD overview and key concepts](/docs/continuous-delivery/get-started/cd-pipeline-basics/) |
+| Define Continuous Delivery | [CD overview and key concepts](/docs/continuous-delivery/get-started/key-concepts/) |
 | Delegates | [Delegate overview ](/docs/platform/delegates/delegate-concepts/delegate-overview/) |
 | Service Overrides | [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview#service-overrides) |
 | Artifact/Kubernetes Manifest Sources  | [Harness Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step) |
 | Overrides  | [Propagate and Override CD Services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services) |
 |**2. Swimlanes** | |
-| Services and Environments | [Services and environments overview](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/) |
+| Services and Environments | [Services and environments overview](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview/) |
 | Infrastructure and Environments | [Kubernetes Infrastructure](/docs/continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure/) |
 | SSH Deployments | [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng) |
 | Blue/Green Deployments  | [Create a Kubernetes Blue Green Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment) |
@@ -21,7 +21,7 @@
 | Cloud Formation Provider | [CloudFormation How-tos](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos) |
 | Git Trigger  | [Triggers](/docs/category/triggers/) |
 | Webhooks  | [Trigger Pipelines using Git Events](/docs/platform/triggers/triggering-pipelines/) |
-| API Triggers  | [Get started with Harness APIs](/docs/platform/Resource-Development/APIs/api-quickstart) |
+| API Triggers  | [Get started with Harness APIs](/docs/platform/automation/api/api-quickstart) |
 | Policy as Code  | [Policy as Code Overview](/docs/platform/Governance/Policy-as-code/harness-governance-overview/) |
 | Kubernetes Sidecars | [Add a Kubernetes Sidecar Container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container) |
 | Approvals | [Approvals](/docs/category/approvals/) |

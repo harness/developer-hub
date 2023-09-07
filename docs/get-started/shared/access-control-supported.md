@@ -1,6 +1,6 @@
 The following table lists Harness support for SSO protocols and tools.
 
-Go to [Add and Manage Access Control](/docs/feature-flags/get-started/ff-security-compliance/manage-access-control.md).
+Go to [Add and Manage Access Control](/docs/feature-flags/ff-security-compliance/manage-access-control.md).
 
 | SSO Type                                                                     | SSO Providers          | Authentication Supported | Authorization (Group Linking) Supported | SCIM Provisioning |
 | ---------------------------------------------------------------------------- | ---------------------- | ------------------------ | --------------------------------------- | ----------------- |

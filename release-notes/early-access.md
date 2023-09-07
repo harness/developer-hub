@@ -556,7 +556,7 @@ In addition to deploying tasks as part of your standard ECS deployment, you can 
 
 This functionality is behind feature flags: NG_SVC_ENV_REDESIGN and ECS_NG
 
-For more information, go to the [ECS tutorial's run task step](/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial/).
+For more information, go to the [ECS tutorial's run task step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
 
 #### October 7, 2022
 
@@ -566,7 +566,7 @@ For more information, go to the [ECS tutorial's run task step](/docs/continuous-
 
 Enable Feature Flags NG_SVC_ENV_REDESIGN and ECS_NG.
 
-For more information, go to the [ECS deployment tutorial](/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial/).
+For more information, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
 
 - Traditional deployments using SSH or WinRM: deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
 

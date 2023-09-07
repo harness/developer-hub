@@ -8,6 +8,8 @@ helpdocs_topic_id: 0a2u2ppp8s
 helpdocs_category_id: iqgyied1c0
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/feature-flags/ff-onboarding/getting-started-with-feature-flags
 ---
 
 This guide describes the basic steps for getting started with Harness Feature Flags.
