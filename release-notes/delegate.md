@@ -145,7 +145,15 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
   Now, before performing a rolling deployment, the TAS Rolling deployment step first verifies that the application exists. If the application does not exist, it deploys the application without using the rolling deployment strategy. If the application exists, it performs a rolling upgrade. 
 
-##### Version 80308
+#### Version 80309
+
+- Do not evaluate service variables on the Bash shell when exporting them in Command step. (CDS-75775)
+
+  If a service variable has bash-interpretable characters like dollar ($), they will remain as is when exported in the Command step. Previously, they were being 
+  evaluated using the bash interpreter (for example, "abc$1abc" would actually be sent as "abc$bc").
+
+
+#### Version 80308
 
 - In certain scenarios for Amazon ECS blue/green deployments, the green application was not rolling back. We have added functionality to handle this scenario. We now consistently roll back the green service in Amazon ECS blue/green deployments. (CDS-76795, ZD-49005)
 

@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-08-26T10:00:10
+date: 2023-09-07T10:00:10
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -18,18 +18,57 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 5408
+## Latest: Version 5504
 
-<!-- Aug 26 2023 -->
+<!-- Sept 07 2023 -->
 
 ### New features and enhancements
+
+This release does not include new features or enhancements.
+
+<!-- 805xx/56xx -->
+<!-- This release does not include new features or enhancements. -->
+
+### Early access features
+
+This release does not include early access features.
+
+<!-- 805xx/56xx -->
+<!-- This release does not include early access features. -->
+<!-- Delegate-dependent CI-8577 already documented. -->
+
+### Fixed issues
+
+* [Git event webhook triggers](/docs/platform/Triggers/triggering-pipelines) based on GitHub Issue comments failed if the [GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference) connected through the Harness Platform and the account had no delegates. Despite the connector not requiring a delegate, the trigger still failed. This has been fixed. (CI-9150)
+
+<!-- 805xx/56xx - Fix link formatting -->
+<!-- Pipelines failed due to a 409 error that occurs if multiple BuildKit (https://docs.docker.com/build/buildkit) instances attempt to create the same file in a GCP bucket, such as with the Save Cache to GCS step (/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs). Now, such errors are ignored when exporting a cache. At the point in a pipeline when a cache is saved, the image is already built and pushed, and errors, such as this 409 error, should not prevent saving the cache. (CI-9323, ZD-49698) -->
+<!-- already documented in prior release (CI-9322, ZD-48837, ZD-49619) -->
+<!-- Removed the `DRONE_WORKSPACE` environment variable from the local runner build infrastructure because it overwrote the working directory. This variable is equivalent to `HARNESS_WORKSPACE` (/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var/#harness_workspace), which doesn't incorrectly overwrite the working directory. (CI-9303) -->
+<!-- Upgraded `io.netty:netty*` to version `4.1.94.final` to address vulnerabilities. This item requires Harness Delegate version 805xx. For information about features that require a specific delegate version, go to the Delegate release notes (/release-notes/delegate). (CI-8971, ZD-48488) -->
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+<!-- 805xx/56xx -->
+<!-- This release does not include hotfixes. -->
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### August 26, 2023, version 5408
+
+##### New features and enhancements
 
 * You can use GitHub connectors with [GitHub App authentication](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings) in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline). (CI-8367)
 * Improved support for `DRONE_` environment variables in CI pipelines. This improves compatibility for [plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)
 
 <!-- /docs/continuous-integration/use-ci/optimize-and-more/ci-env-var-->
 
-### Early access features
+##### Early access features
 
 **GitHub App authentication for GitHub connectors (CI-8577)**
 
@@ -37,7 +76,7 @@ This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION` and it r
 
 With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
 
-### Fixed issues
+##### Fixed issues
 
 * Improved the way [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) handles tests that call more tests. Previously, this rarely caused inaccurate renderings in the call graph visualization for Java-based tests. (CI-9053)
 * Fixed an issue where, if you selected runtime input for the codebase connector and repository name in a pipeline template, these settings reverted to fixed values after saving any other change to the template. (CI-8885, ZD-47680, ZD-47744)
@@ -45,16 +84,11 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 * Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. This fix requires Harness Delegate version 803xx or later. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate). (CI-9122)
 * Fixed an issue where some secrets were not masked as expected in logs. (CI-8134)
 * [Webhook triggers](/docs/platform/triggers/triggering-pipelines/) now reattempt calls to SCM APIs if the connection was reset or there was a server-side error. This fixes an issue where intermittent outages in connections to SCM APIs failed to trigger builds. (CI-8904, ZD-47605)
-* Filtering the [build list](/docs/continuous-integration/use-ci/viewing-builds) by **Build Type: Branch** now correctly excludes PR builds. (CI-9322)
+* Filtering the [build list](/docs/continuous-integration/use-ci/viewing-builds) by **Build Type: Branch** now correctly excludes PR builds. (CI-9322, ZD-48837, ZD-49619)
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 10, 2023, version 5301
 
