@@ -18,20 +18,20 @@ Harness provides preloaded **By Harness** (pre-defined) and **Custom** (user
 * Explore the cloud cost data in a logical and structured manner
 * View your cloud costs at a glance, understand what is costing the most, and analyze cost trends
 
-This Dashboard will not be available if you have not selected **AWS** **Resource Breakdown Dashboard** feature when setting up [CCM for AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md). This topic describes how to view the **By Harness AWS Resource Breakdown Dashboard** and get more information about that data.
+This Dashboard will not be available if you have not selected **AWS** **Resource Breakdown Dashboard** feature when setting up [CCM for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md). This topic describes how to view the **By Harness AWS Resource Breakdown Dashboard** and get more information about that data.
 
 ![](./static/view-aws-resource-breakdown-cost-dashboard-47.png)
 
 
 ## Prerequisites
 
-* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](../../2-getting-started-ccm/5-access-control/manage-access-control-for-ccm-dashboards.md).
-* Ensure that you have set up Cloud Cost Management (CCM) for the [AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) cloud provider.
+* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](../../get-started/5-access-control/manage-access-control-for-ccm-dashboards.md).
+* Ensure that you have set up Cloud Cost Management (CCM) for the [AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md) cloud provider.
 * Ensure that you have added all the required permissions for your cloud provider. The data available in the Dashboard depends on the permissions you provided to the AWS cloud provider when setting up the CCM. 
 
 ## Data Ingestion for AWS Resource Breakdown Dashboard
 
-Once you have set up cost visibility for the [AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) cloud provider and the data is available in the Perspective, you can view **AWS Cost Dashboards**. The data in the Dashboard is updated dynamically.
+Once you have set up cost visibility for the [AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md) cloud provider and the data is available in the Perspective, you can view **AWS Cost Dashboards**. The data in the Dashboard is updated dynamically.
 
 ## View AWS Resource Breakdown Dashboard
 
@@ -60,12 +60,12 @@ The **AWS Resource Breakdown Dashboard** is displayed:
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](https://developer.harness.io/docs/platform/Dashboards/create-dashboards)
-* [Create Visualizations and Graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs)
+* [Create Dashboards](/docs/platform/Dashboards/create-dashboards)
+* [Create Visualizations and Graphs](/docs/platform/Dashboards/create-visualizations-and-graphs)
 
 ### Next Steps
 
-* [Use Dashboard Actions](https://developer.harness.io/docs/platform/Dashboards/use-dashboard-actions)
-* [Download Dashboard Data](https://developer.harness.io/docs/platform/Dashboards/download-dashboard-data)
-* [Create Conditional Alerts](https://developer.harness.io/docs/platform/Dashboards/create-conditional-alerts)
-* [Schedule and Share Dashboards](https://developer.harness.io/docs/platform/Dashboards/share-dashboards)
+* [Use Dashboard Actions](/docs/platform/Dashboards/use-dashboard-actions)
+* [Download Dashboard Data](/docs/platform/Dashboards/download-dashboard-data)
+* [Create Conditional Alerts](/docs/platform/Dashboards/create-conditional-alerts)
+* [Schedule and Share Dashboards](/docs/platform/Dashboards/share-dashboards)

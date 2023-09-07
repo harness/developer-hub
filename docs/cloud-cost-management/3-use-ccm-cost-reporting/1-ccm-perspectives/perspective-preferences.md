@@ -37,7 +37,7 @@ To edit preferences for a specific perspective:
 5. Enable and disable preferences based on your requirements.
 6. Select **Apply**.
 
-  The cost data shown in the perspective chart is influenced by the set preferences. But it's important to note that for these changes to be permanent and take effect, you need to edit the perspective and update the preferences accordingly. Applying the preferences on the perspective page will not make the changes persistent. To learn how to edit a perspective, go to [Edit a perspective](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#edit-a-perspective).
+  The cost data shown in the perspective chart is influenced by the set preferences. But it's important to note that for these changes to be permanent and take effect, you need to edit the perspective and update the preferences accordingly. Applying the preferences on the perspective page will not make the changes persistent. To learn how to edit a perspective, go to [Edit a perspective](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#edit-a-perspective).
 ## General preferences
 
 The following preferences are applicable to all perspectives. By default, some of these preferences are enabled. However, you could choose to disable or enable these preferences in individual perspectives. 
@@ -57,7 +57,7 @@ The following preferences are applicable to all perspectives. By default, some o
 
 * **Show "unallocated" costs on clusters**
 
-  In certain graphs, you may come across an item labeled as **Unallocated**. This entry is included to provide a comprehensive view of all costs. When you examine the **Total Cost** in the perspective, it encompasses the costs of all items, including the unallocated cost. This option is available only in perspectives with cluster rules. For more information, go to [Unallocated Cost](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/harness-key-cloud-cost-concepts/#unallocated-cost).
+  In certain graphs, you may come across an item labeled as **Unallocated**. This entry is included to provide a comprehensive view of all costs. When you examine the **Total Cost** in the perspective, it encompasses the costs of all items, including the unallocated cost. This option is available only in perspectives with cluster rules. For more information, go to [Unallocated Cost](/docs/cloud-cost-management/get-started/harness-key-cloud-cost-concepts/#unallocated-cost).
   
     ![](./static/create-cost-perspectives-25.png)
     
@@ -132,4 +132,4 @@ The following cost factors retrieved from your GCP Billing Export data can be in
   
 To know how to analyze the perspective data, go to [Analyze cost for GCP](../3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md).
 
-For details about the **GCP Invoice Month** filter, go to [Add filters](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-gcp-using-perspectives#option-add-filter).
+For details about the **GCP Invoice Month** filter, go to [Add filters](/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-gcp-using-perspectives#option-add-filter).

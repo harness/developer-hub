@@ -24,7 +24,7 @@ The steps available in a Custom stage are also available in standard stages.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 * [Add a Stage](add-a-stage.md)
 
 ### Limitations
@@ -79,10 +79,10 @@ These steps are also available in CI, CD, and Approval stages.
 
 For details on the different steps, see:
 
-* [General CD](https://developer.harness.io/docs/category/general-cd-execution-steps)
+* [General CD](/docs/category/general-cd-execution-steps)
 * [Using Shell Scripts in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step)
 * [Create an HTTP Step Template](../13_Templates/harness-template-library.md)
-* [Approvals](https://developer.harness.io/docs/category/approvals)
+* [Approvals](/docs/category/approvals)
 * [Synchronize Deployments using Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers/)
 * [Add a Policy Engine Step to a Pipeline](/docs/platform/Governance/14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
 * [Terraform How-tos](/docs/category/terraform)

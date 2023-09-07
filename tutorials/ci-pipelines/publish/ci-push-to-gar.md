@@ -26,9 +26,9 @@ This tutorial shows how to use a Harness Continuous Integration (CI) pipeline to
 You'll learn how to:
 
 - [x] Use [kaniko](https://github.com/GoogleContainerTools/kaniko) to build an application container image.
-- [x] Create [**projects**](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#organizations-and-projects) in your Harness account.
-- [x] Add [**secrets**](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#secrets-management) to projects.
-- [x] Add a Google Cloud Platform (GCP) [**Connector**](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#connectors) to a project.
+- [x] Create [**projects**](/docs/get-started/learn-harness-key-concepts/#organizations-and-projects) in your Harness account.
+- [x] Add [**secrets**](/docs/get-started/learn-harness-key-concepts/#secrets-management) to projects.
+- [x] Add a Google Cloud Platform (GCP) [**Connector**](/docs/get-started/learn-harness-key-concepts/#connectors) to a project.
 - [x] Use a CI pipeline to build and push an application container image.
 
 In this tutorial you'll build a simple **Go** application that calls `https://httpbin.org/get` and returns a JSON response, such as:

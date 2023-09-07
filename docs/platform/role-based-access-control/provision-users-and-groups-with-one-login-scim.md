@@ -25,7 +25,7 @@ With the OneLogin SCIM integration, don't change provisioned users' email addres
 You need an understanding of:
 
 * System for Cross-domain Identity Management (SCIM).
-* [Harness' key concepts](../../getting-started/learn-harness-key-concepts.md).
+* [Harness' key concepts](../../get-started/key-concepts.md).
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 You must be an Administrator in your OneLogin account, and you must be an **Account Admin** in Harness.
@@ -34,7 +34,7 @@ You need a Harness [API key and unexpired token](/docs/platform/automation/api/a
 
 ## Add the Harness app to OneLogin
 
-For more information, go to the OneLogin documentation on [Adding apps](https://www.onelogin.com/getting-started/free-trial-plan/add-apps-manual).
+For more information, go to the OneLogin documentation on [Adding apps](https://www.onelogin.com/get-started/free-trial-plan/add-apps-manual).
 
 1. In OneLogin, go to **Applications** and select **Add App**.
 2. Search for `Harness`, and select the Harness app.

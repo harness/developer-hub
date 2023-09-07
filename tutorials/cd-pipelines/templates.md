@@ -25,13 +25,13 @@ Harness templates allow you to design reusable content, logic, and parameters, e
 
 ## Before you begin 
 
-Make sure you have followed the [get started](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/manifest) tutorial, and have a deployment pipeline up and running. 
+Make sure you have followed the [get started](/tutorials/cd-pipelines/kubernetes/manifest) tutorial, and have a deployment pipeline up and running. 
 
 ## Save a pipeline as template
 
-1. Assuming you already have followed the the [get-started](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/manifest) tutorial and created a `guestbook` deployment pipeline, go to the **Pipeline Studio** of the `guestbook` pipeline you have created, and on the top right corner click on the dropdown beside **Save** button. 
+1. Assuming you already have followed the the [get-started](/tutorials/cd-pipelines/kubernetes/manifest) tutorial and created a `guestbook` deployment pipeline, go to the **Pipeline Studio** of the `guestbook` pipeline you have created, and on the top right corner click on the dropdown beside **Save** button. 
 2. Select **Save as Template**, enter the **Name** `harness-deployment-template` and the **Version Label** `0.0.1`. 
-   1. You have 3 options under **Save To** to declare the scope of the template: [Project, Organization](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts#organizations-and-projects), and [Account](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts#account). 
+   1. You have 3 options under **Save To** to declare the scope of the template: [Project, Organization](/docs/get-started/learn-harness-key-concepts#organizations-and-projects), and [Account](/docs/get-started/learn-harness-key-concepts#account). 
 3. For this tutorial, select **Save To** `Project`.
 
 ### Set up Template

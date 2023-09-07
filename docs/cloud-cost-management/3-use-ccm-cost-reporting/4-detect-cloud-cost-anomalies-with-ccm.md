@@ -131,5 +131,5 @@ For example, when you click the GCP perspective, it displays the data for the en
 
 
 :::note
-Access to perspectives and the associated anomalies depends on the role assignment. For more information, go to [Manage access control for CCM Perspective folders](../2-getting-started-ccm/5-access-control/manage-access-control-perspective-folders.md).
+Access to perspectives and the associated anomalies depends on the role assignment. For more information, go to [Manage access control for CCM Perspective folders](../get-started/5-access-control/manage-access-control-perspective-folders.md).
 :::

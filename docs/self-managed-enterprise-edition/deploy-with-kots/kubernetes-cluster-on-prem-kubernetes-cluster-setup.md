@@ -20,7 +20,7 @@ Maintenance mode means the following:
 :::
 
 
-This topic covers installing Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** in an existing Kubernetes cluster. Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** uses the [KOTS kubectl plugin](https://kots.io/kots-cli/getting-started/) for installation.
+This topic covers installing Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** in an existing Kubernetes cluster. Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** uses the [KOTS kubectl plugin](https://kots.io/kots-cli/get-started/) for installation.
 
 To install Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen**, first you install Harness Self-Managed Enterprise Edition - Kubernetes Cluster **FirstGen**, and then you install NextGen as an application.
 
@@ -732,9 +732,9 @@ Now you can add Harness Self-Managed Enterprise Edition NextGen as a new applica
 
    ![](./static/kubernetes-cluster-on-prem-kubernetes-cluster-setup-33.png)
 
-   If you are familiar with Harness, you can skip [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
+   If you are familiar with Harness, you can skip [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
 
-   Try the [Tutorials and quickstarts](../../getting-started/quickstarts.md).
+   Try the [Tutorials and quickstarts](../../get-started/quickstarts.md).
 
 ## Updating Harness NextGen
 

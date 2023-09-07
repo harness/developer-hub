@@ -14,13 +14,13 @@ You can connect to an artifact repo inline when developing your Pipeline, or sep
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../../../docs/getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
 
 ### AWS, Azure, and Google Cloud Storage artifacts
 
 Connectors for artifacts stored in Google Cloud Storage or Amazon S3 are added as **Cloud Providers** Connectors, not **Artifact Repositories**.
 
-If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](https://developer.harness.io/docs/category/cloud-platform-connectors).
+If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
 
 For Azure ACR, use the **Docker Registry** Connector, described below.
 

@@ -1131,7 +1131,7 @@ module.exports = {
     // Created by SudheendraKatte for SRM Docs reorg, PR-1276, on Apr 12, 2023
     {
       from: "/docs/service-reliability-management/howtos-service-reliability-management/service-reliability-management-basics",
-      to: "/docs/service-reliability-management/getting-started/service-reliability-management-basics",
+      to: "/docs/service-reliability-management/get-started/key-concepts",
     },
     {
       from: "/docs/service-reliability-management/howtos-service-reliability-management/slo-driven-deployment-governance",

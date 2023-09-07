@@ -33,7 +33,7 @@ Looking for other methods? See [Add Kubernetes Manifests](/docs/continuous-deliv
 
 ## Supported platforms and technologies
 
-See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies).
+See [Supported Platforms and Technologies](/docs/get-started/supported-platforms-and-technologies).
 
 ## Limitations
 
@@ -153,7 +153,7 @@ That's all the setup required. You can now deploy the Service and the script is 
 
 When configuring a Helm chart with Custom Remote manifests, in the **Manifest Details** > **Advanced** section, you can select a **Helm Version**, and then add the command flags that you wish to pass based on the version. 
 
-For more information on Helm command flags, go to [Add Helm chart](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts/#add-the-helm-chart).
+For more information on Helm command flags, go to [Add Helm chart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts/#add-the-helm-chart).
 
 
 ## Notes

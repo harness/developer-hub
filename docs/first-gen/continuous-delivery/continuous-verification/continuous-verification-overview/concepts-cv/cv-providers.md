@@ -13,7 +13,7 @@ This topic lists the verification providers that integrate with Harness, and lin
 
 ### Verification Providers Supported
 
-[See the list of providers](https://developer.harness.io/docs/category/continuous-verification-1).
+[See the list of providers](/docs/category/continuous-verification-1).
 
 
 ### Analysis Support by Provider

@@ -35,7 +35,7 @@ You'll learn how to:
    * GitHub Package Registry
    * Azure Artifacts
    * Jenkins
-* Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/). 
+* Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization/). 
 * Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it. 
 
 ## Connect to a TAS provider
@@ -77,7 +77,7 @@ import DelegateInstall from '/tutorials/platform/install-delegate.md';
 <DelegateInstall />
 </details>
 
-To learn more, watch the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview) video.
+To learn more, watch the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview) video.
 
 9.  In **Set Up Delegates**, select the **Connect using Delegates with the following Tags** option and enter your delegate name.
 10. Select **Save and Continue**.
@@ -228,7 +228,7 @@ Pipelines are collections of stages. For this tutorial, we'll create a new pipel
 
 ## Create the Harness TAS service
 
-Harness services represent your microservices or applications. You can add the same service to as many stages as you need. Services contain your artifacts, manifests, config files, and variables. For more information, go to [services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
+Harness services represent your microservices or applications. You can add the same service to as many stages as you need. Services contain your artifacts, manifests, config files, and variables. For more information, go to [services and environments overview](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
 
 ### Create a new service
 

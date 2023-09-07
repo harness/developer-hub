@@ -36,16 +36,16 @@ export const featuredTutorials: CardItem[] = [
   // Docs
   export const docsCards: CardSections = [
     {
-      name: "Get started with CD",
+      name: "Get started with Harness CD & GitOps",
       description:
         "",
       list: [
         {
-          title: "Get started",
+          title: "Onboarding guide",
           module: MODULES.cd,
           description:
-            "Learn the basics of Harness Continuous Delivery (CD).",
-          link: "/docs/category/get-started-with-cd",
+            "A self-service onboarding guide for Harness CD & GitOps.",
+          link: "/docs/continuous-delivery/get-started/onboarding-guide",
           // @Roshni: sample code for the sub categories -->
           /*children: [
             {

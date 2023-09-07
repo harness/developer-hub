@@ -22,9 +22,9 @@ You will learn how to:
 
 ### Before you begin
 
-* Review [Harness key concepts​](/docs/getting-started/learn-harness-key-concepts)
+* Review [Harness key concepts​](/docs/get-started/key-concepts)
 * See [Templates overview](/docs/platform/templates/template/)
-* See [CI quickstarts​](/docs/continuous-integration/ci-quickstarts/ci-pipeline-quickstart/)
+* See [CI quickstarts​](/docs/continuous-integration/get-started/tutorials)
 
 ### Permissions
 

@@ -27,14 +27,14 @@ import {
             module: MODULES.cet,
             description:
               "Understand concepts and benefits.",
-            link: "/docs/continuous-error-tracking/getting-started/cet-overview",
+            link: "/docs/continuous-error-tracking/get-started/cet-overview",
           },
           {
             title: "Start tracking errors",
             module: MODULES.cet,
             description:
               "Learn how to install CET Agent and track errors.",
-            link: "/docs/continuous-error-tracking/getting-started/cet-setup",
+            link: "/docs/continuous-error-tracking/get-started/cet-setup",
           },
         ],
       },
@@ -49,7 +49,7 @@ import {
             module: MODULES.cet,
             description:
               "Get a comprehensive view of all the monitored services and events.",
-            link: "/docs/continuous-error-tracking/getting-started/cet-event-dashboard",
+            link: "/docs/continuous-error-tracking/get-started/cet-event-dashboard",
           },
           {
             title: "Explore events",
@@ -63,7 +63,7 @@ import {
             module: MODULES.cet,
             description:
               "Get to the root of events in production and staging environments using the Automated Root Cause (ARC) screen.",
-            link: "/docs/continuous-error-tracking/getting-started/cet-arc",
+            link: "/docs/continuous-error-tracking/get-started/cet-arc",
           },
           {
             title: "Create Jira tickets",

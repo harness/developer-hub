@@ -30,7 +30,7 @@ This is one of several build infrastructure options, for example, you can also r
 
 ## Install Anka and create a VM on a Mac node
 
-The first step is to set up the Anka software on one of your Mac nodes (such as a Mac Mini) and create a VM. For details, go to [Getting Started](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/) in the Anka documentation.
+The first step is to set up the Anka software on one of your Mac nodes (such as a Mac Mini) and create a VM. For details, go to [Getting Started](https://docs.veertu.com/anka/anka-virtualization-cli/get-started/) in the Anka documentation.
 
 When you finish this workflow, you will have a macOS node with a working VM. After you set up the Anka registry, you can then push the node and the VM to the registry.
 
@@ -42,11 +42,11 @@ This enables connectivity between the Harness runner and the VMs. On the VM host
 anka modify $VM_NAME add port-forwarding service -g 9079
 ```
 
-For details, go to the Anka documentation about [Modifying your VM](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/modifying-your-vm/).
+For details, go to the Anka documentation about [Modifying your VM](https://docs.veertu.com/anka/anka-virtualization-cli/get-started/modifying-your-vm/).
 
 ##  Set up the Anka controller and registry
 
-Set up the Anka registry and controller. For details, go to the Anka documentation about [Setting up the Controller & Registry](https://docs.veertu.com/anka/anka-build-cloud/getting-started/setup-controller-and-registry/).
+Set up the Anka registry and controller. For details, go to the Anka documentation about [Setting up the Controller & Registry](https://docs.veertu.com/anka/anka-build-cloud/get-started/setup-controller-and-registry/).
 
 When you finish this workflow you will have:
 

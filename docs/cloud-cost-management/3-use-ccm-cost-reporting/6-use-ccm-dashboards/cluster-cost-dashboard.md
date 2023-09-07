@@ -25,12 +25,12 @@ This topic describes how to view the **By Harness Cluster Cost Dashboard** and
 
 ## Before You Begin
 
-* [Set Up Cloud Cost Management for Kubernetes](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
-* [Manage Access Control for CCM Dashboards](../../2-getting-started-ccm/5-access-control/manage-access-control-for-ccm-dashboards.md)
+* [Set Up Cloud Cost Management for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
+* [Manage Access Control for CCM Dashboards](../../get-started/5-access-control/manage-access-control-for-ccm-dashboards.md)
 
 ## Prerequisites
 
-* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](../../2-getting-started-ccm/5-access-control/manage-access-control-for-ccm-dashboards.md).
+* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](../../get-started/5-access-control/manage-access-control-for-ccm-dashboards.md).
 * Ensure that you have set up Cloud Cost Management (CCM) for the Kubernetes clusters.
 * Ensure that you have added all the required permissions for your cluster. The data available in the Dashboard depends on the permissions you provided to the Kubernetes clusters when setting up CCM.
 
@@ -108,15 +108,15 @@ Perform the following steps to view Cluster Cost Dashboard:
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](https://developer.harness.io/docs/platform/Dashboards/create-dashboards)
-* [Create Visualizations and Graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs)
+* [Create Dashboards](/docs/platform/Dashboards/create-dashboards)
+* [Create Visualizations and Graphs](/docs/platform/Dashboards/create-visualizations-and-graphs)
 
 ### Next Steps
 
-* [Use Dashboard Actions](https://developer.harness.io/docs/platform/Dashboards/use-dashboard-actions)
-* [Download Dashboard Data](https://developer.harness.io/docs/platform/Dashboards/download-dashboard-data)
-* [Create Conditional Alerts](https://developer.harness.io/docs/platform/Dashboards/create-conditional-alerts)
-* [Schedule and Share Dashboards](https://developer.harness.io/docs/platform/Dashboards/share-dashboards)
+* [Use Dashboard Actions](/docs/platform/Dashboards/use-dashboard-actions)
+* [Download Dashboard Data](/docs/platform/Dashboards/download-dashboard-data)
+* [Create Conditional Alerts](/docs/platform/Dashboards/create-conditional-alerts)
+* [Schedule and Share Dashboards](/docs/platform/Dashboards/share-dashboards)
 
 
 

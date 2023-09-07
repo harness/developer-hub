@@ -25,11 +25,11 @@ In this topic:
 
 ### General
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What CD platforms and tools does Harness support?
 
-Harness [supports all of the most common platforms](../getting-started/supported-platforms-and-technologies.md) and deployment use cases.
+Harness [supports all of the most common platforms](../get-started/supported-platforms-and-technologies.md) and deployment use cases.
 
 Here's a summary of Harness CD support for popular platforms and tools.
 
@@ -170,7 +170,7 @@ Yes, select **Re-run Pipeline**.
 
 ### Kubernetes
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Harness Kubernetes deployment?
 
@@ -385,7 +385,7 @@ A Harness Kubernetes deployment runs `kubectl apply` for manifest files. There
 
 ### Terraform
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### How does Harness support Terraform?
 
@@ -423,7 +423,7 @@ See [Remove provisioned infrastructure with the Terraform Destroy step](../cont
 
 ### Harness Configure as Code
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### Can I create my deployments using YAML?
 
@@ -435,7 +435,7 @@ See [Harness YAML quickstart](../platform/8_Pipelines/harness-yaml-quickstart.md
 
 ### Harness Git Experience
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### Can I sync my Harness project with my repo?
 
@@ -445,7 +445,7 @@ See [Harness Git Experience Quickstart](../platform/10_Git-Experience/configure-
 
 ### Community Edition
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### Do you have a free version of Harness CD?
 
@@ -477,7 +477,7 @@ If you would like us to stop processing your data, or if you have any other ques
 
 ### Azure Web Apps
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### Can I deploy Azure Web Apps?
 
@@ -500,7 +500,7 @@ The Rolling strategy doesn't suit Azure Web App deployments, as they use slots f
 
 ### AWS ASG
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is an ASG deployment?
 
@@ -536,7 +536,7 @@ AWS has the following limitations to keep in mind:
 
 ### AWS ECS
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Harness ECS deployment?
 
@@ -635,13 +635,13 @@ During failure scenarios, ECS circuit breaker performs a rollback automatically 
 
 ### AWS Lambda
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Lambda deployment?
 
 In Harness, you specify the location of the function definition, artifact, and AWS account. Harness will deploy the Lambda function and automatically route the traffic from the old version of the Lambda function to the new version on each deployment.
 
-**Looking for Serverless.com Framework Lambda?** Harness also supports Serverless.com Framework Lambda deployments. For more information, go to [AWS Lambda deployments (Serverless.com Framework)](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart).
+**Looking for Serverless.com Framework Lambda?** Harness also supports Serverless.com Framework Lambda deployments. For more information, go to [AWS Lambda deployments (Serverless.com Framework)](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart).
 
 #### What are the limitations?
 
@@ -671,7 +671,7 @@ Harness supports all of the popular Git platforms for storing your function defi
 
 ### Spot Elastigroup
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Spot deployment in Harness?
 
@@ -685,7 +685,7 @@ You can deploy AWS ASGs using Harness and the Spot Elastigroup management platfo
 
 ### Google Cloud Functions
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Google Cloud Function deployment?
 
@@ -713,7 +713,7 @@ Harness supports the following:
 
 ### AWS Lambda (Serverless.com Framework)
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Lambda Serverless.com Framework deployment?
 
@@ -740,7 +740,7 @@ Serverless Lambda deployments are versioned using the timestamp of their deploym
 
 ### Tanzu Application Services (TAS)
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 ### What is a TAS deployment?
 
@@ -756,7 +756,7 @@ Basic, canary, blue green, and rolling.
 
 ### Traditional deployments
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 
 #### What are traditional deployments?
@@ -779,7 +779,7 @@ Harness provides deployment support for all of the major artifact, approval, pro
 
 Harness also supports uncommon, custom platforms using platform agnostic connectors and [custom triggers](../platform/11_Triggers/trigger-deployments-using-custom-triggers.md).
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Harness custom deployment?
 
@@ -791,7 +791,7 @@ Custom deployments use shell scripts to connect to target platforms, obtain targ
 
 ### Harness entities
 
-For an overview of Harness entities, see [Learn Harness' key concepts](../getting-started/learn-harness-key-concepts.md).
+For an overview of Harness entities, see [Learn Harness' key concepts](../get-started/key-concepts.md).
 
 #### What are organizations and projects?
 
@@ -859,7 +859,7 @@ See Harness [Connectors how-tos](/docs/category/connectors).
 
 ### Secrets management
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### How does Harness manage secrets?
 
