@@ -31,6 +31,8 @@ This release does not include early access features.
 
 * Fixed an issue where using multiple HTTP Helm chart repositories could lead to an increase in CPU utilization on the delegate due to background validation tasks for the Harness HTTP Helm Repo connector. This was caused by running Helm repository updates during the validation tasks. (CDS-76433, ZD-48363)
 
+  This item requires Harness Delegate version 805xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 * Fixed a Nexus artifact issue where a fetch timed out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
   
 <!-- NOTE RE FIXED ISSUE CDS-73884
