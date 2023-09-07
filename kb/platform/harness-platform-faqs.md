@@ -535,3 +535,15 @@ There are two types of api token, one can be created at user profile level and t
 #### How do we assign permission to the api tokens ?
 
 We do not assign permission directly to the account tokens. They inherit the permissions from the user if they are created at the user profile level or the service account if they are created at service account level.
+
+#### Harness Conditional Alerts and Notifications
+
+Conditional alerts are a useful tool, which you can utilize to trigger notifications on specific conditions that are met or exceeded. 
+
+See [https://developer.harness.io/docs/platform/dashboards/create-conditional-alerts/]
+
+#### Receiving 429 error response with regards to rate limit
+
+Harness has several rate limiters on the platform. Sending multiple requests in quick succession will generate the 429 response. 
+
+See [https://developer.harness.io/docs/platform/rate-limits/]
