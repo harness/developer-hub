@@ -158,7 +158,7 @@ import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
 
 <!-- ============================================================================= -->
 
-#### Access ID
+#### Access Id
 
 The user key for your Mend personal account: in the Mend UI, click the **Account Settings** button in the top right.
 
@@ -297,32 +297,36 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 * `product_name` = `whitesource`
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `ingestionOnly`, `dataLoad`, or `orchestratedScan`
-* `scan_type` = `container`
-* `product_domain` (*optional*) — The default is `https://saas.whitesourcesoftware.com/api`
-* `product_access_id`
-* `product_access_token`
-* `product_include`
+* `scan_type` = `container` or `repository`
+* `product_domain` (*optional*) — The default is `https://saas.whitesourcesoftware.com/api`.
+* [`product_access_id`](#access-id).
+* [`product_access_token`](#access-token)
+* [`product_include`](#include).
 * `product_config_name` = `default`
-* `product_lookup_type`(*optional*)
-- Accepted value(s) when `policy_type` is set to `dataLoad`: 
-  - `byName`
-	- `byTokens`
-- Accepted value(s) when `policy_type` is set to `orchestratedScan`: 
-	- `appendToProductByToken`
-	- `appendToProductByName`
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+* [`fail_on_severity`](#fail-on-severity)
 * `tool_args` You can add a `tool_args` setting to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional parameters. For example, you can save logs for STO-initiated scans in a separate folder on the Mend server like this: `tool_args log.files.path /tmp/sto_scan_logs`.
 
 <!-- Same example as described in Additional CLI Flags above -->
 		
-:::note
-You must configure the following settings depending on the product lookup type  — i.e., whether you are using the names or tokens to reference the Mend product:
-:::
+#### Lookup settings
 
-* `product_product_name`
-* `product_project_name`
-* `product_project_token`
-* `product_project_token`
+Lookup settings are required for `dataLoad` and `orchestratedScan` modes.
+
+*  `product_lookup_type` You can specify the Mend product or project by token or by name.
+    - When `policy_type` is set to `dataLoad`: 
+      - `byName`
+      - `byTokens`
+    - When `policy_type` is set to `orchestratedScan`: 
+      - `appendToProductByName`
+      - `appendToProductByToken`
+
+Required for `dataLoad` and `orchestratedScan` modes: 
+* [`product_product_name`](#product-name--token)
+* [`product_product_token`](#product-name--token)
+
+Required for `dataLoad` modes: 
+* [`product_project_name`](#project-name--token)
+* [`product_project_token`](#project-name--token)
 
 #### Container scan settings
 
