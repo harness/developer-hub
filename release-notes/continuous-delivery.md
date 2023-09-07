@@ -70,7 +70,7 @@ This release does not have early access features.
 
 * Fixed an issue observed when deploying Artifactory artifacts, where the pipeline execution would save the generic artifact metadata incorrectly. Note that this fix applies to new pipeline executions only. (CDS-76302, ZD-48430)
 
-* Fixed an issue in the **Run Pipeline** UI when running child pipelines . Previously, **Pipeline Variables** was in a new container, which implied that **Pipeline Variables** was a new stage. (CDS-74138)
+* Fixed an issue in the **Run Pipeline** UI when running chained pipelines . Previously, **Pipeline Variables** was in a new container, which implied that **Pipeline Variables** was a new stage. (CDS-74138)
   
   ![](static/cds-74138-00-before.png)
 
