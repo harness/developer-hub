@@ -165,3 +165,7 @@ You could assign the version value to a variable in a run step with a command so
 #### Why the changes made on the container image filesystem in a CI step is not available in the subseqent step where the same container image is used?
 
 When we pick a container image for a step, any changes we make there will only affect that step. The next step won't notice these changes even we use the same image unless we edit the `/harness` directory, which is automatically shared among all steps.
+
+#### Can we increase the Workflow Queuing queue limit ?
+
+No, for the Harness based locking on infrastructure, currently the max is 20 and its not configurable, since we allow only 1 concurrent execution per infra. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/workflow-queuing/#limitations).
