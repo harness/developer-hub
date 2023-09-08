@@ -84,7 +84,7 @@ You can move existing delegates with an immutable image type (image tag `yy.mm.x
 
 Before you migrate an existing delegate to an mTLS-enabled delegate, make sure that you meet the following prerequisites.
 
-- The delegate must have an immutable image type (image tag `yy.mm.xxxxx`). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+- The delegate must have an immutable image type (image tag _`yy.mm.xxxxx`_). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 - You must have access to the delegate YAML. 
 
