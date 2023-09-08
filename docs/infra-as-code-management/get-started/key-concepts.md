@@ -13,7 +13,7 @@ Infrastructure as Code (IaC) is the ability to define cloud resources as code de
 
 A company offering the ability to run cloud resources on your behalf, for example AWS, Azure, GCP, and others.
 
-For information about how to connect to a cloud provider, go to [Connect to a cloud provider](/docs/platform/7_Connectors/Cloud-providers/connect-to-a-cloud-provider).
+For information about how to connect to a cloud provider, go to [Connect to a cloud provider](/docs/category/cloud-providers).
 
 ## Cloud resource
 

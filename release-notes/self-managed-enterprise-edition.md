@@ -1644,7 +1644,7 @@ This release includes the following Harness module and component versions.
 
 - The GitOps Clusters step was missing null checks. (CDS-58049)
   
-  The Gitops Clusters step is added automatically during pipeline runtime when the stage **GitOps** option is selected. For example, in [PR pipeline](/docs/continuous-delivery/cd-gitops/harness-git-ops-application-set-tutorial).
+  The Gitops Clusters step is added automatically during pipeline runtime when the stage **GitOps** option is selected. For example, in [PR pipeline](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
   
   <docimage path={require('./static/73cdc440ba09f067a25838780163b73f1afb34dc16e3fb4c625b6a84d0c295cf.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -2473,7 +2473,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 - YAML validation succeeded even when whitespaces were added in the command flags of a Helm chart. (CDS-53708)
 
   This issue is fixed. Command flags no longer accept empty values.
-- Empty Kubernetes [values YAML](/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files/) file paths are displayed. (CDS-53623)
+- Empty Kubernetes [values YAML](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files/) file paths are displayed. (CDS-53623)
   
   When you add a Kubernetes manifest you have the option to add a values YAML file. In cases where users did not add a values YAML file, the Harness UI was showing an empty path. 
   
@@ -2514,7 +2514,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
   This issue is fixed. Helm commmand flags are now available when you select the Harness File Store.
 - The environment's **Service Overrides** were not operating additively. (CDS-53373)
   
-  You can override specific service options using the [Service Overrides settings](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview#service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
+  You can override specific service options using the [Service Overrides settings](/docs/continuous-delivery/get-started/services-and-environments-overview#service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
 
   ![Service Overrides settings](static/88805f0c3a1feca13b5437edbd6c7574e8f540a6e9ffe07f760a450546c93c41.png)
 
@@ -2539,7 +2539,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
   The App Resize step is used in Blue Green deployments. When the **Desired Instances - Old Version** setting is set to `0`, it can cause downtime issues because the old instances are downsized before the new instances are scaled up. 
   
   A warning message will now appear when the value of **Desired Instances - Old Version** is set to `0`. The message highlights the impact. The value `0` can still be set as it is a valid scenario.
-- The [deployment freeze](/docs/continuous-delivery/cd-deployments-category/deployment-freeze/) time range validation was throwing a 500 error. (CDS-53359)
+- The [deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze/) time range validation was throwing a 500 error. (CDS-53359)
 
   Time range validation was performed only when the status of freeze window was enabled. This was causing an error because disabled freeze windows were allowed invalid duration settings.
   

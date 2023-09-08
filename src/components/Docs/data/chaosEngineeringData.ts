@@ -19,14 +19,14 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.ce,
           description:
             "Learn the basics of Harness Chaos Engineering.",
-          link: "/docs/chaos-engineering/get-started/introduction",
+          link: "/docs/chaos-engineering/get-started/overview",
         },
         {
           title: "Terminology",
           module: MODULES.ce,
           description:
             "Familiarize yourself with chaos engineering terminology.",
-          link: "/docs/chaos-engineering/get-started/terminologies",
+          link: "/docs/chaos-engineering/get-started/key-concepts",
         },
   ],
 },

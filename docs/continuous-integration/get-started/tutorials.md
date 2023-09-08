@@ -6,6 +6,8 @@ helpdocs_topic_id: x0d77ktjw8
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/continuous-integration/ci-quickstarts/ci-pipeline-quickstart
 ---
 
 In addition to the reference documentation, there are a variety of CI tutorials available.

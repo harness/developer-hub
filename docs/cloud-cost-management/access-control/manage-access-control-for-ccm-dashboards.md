@@ -6,6 +6,8 @@ helpdocs_topic_id: ng6yaxqi2r
 helpdocs_category_id: ak4v1iorl3
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/cloud-cost-management/getting-started-ccm/access-control/manage-access-control-for-ccm-dashboards
 ---
 
 # Manage access control for CCM dashboards

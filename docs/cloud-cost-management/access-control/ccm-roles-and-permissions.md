@@ -6,6 +6,8 @@ helpdocs_topic_id: di9dut7jki
 helpdocs_category_id: b943tytof4
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/cloud-cost-management/getting-started-ccm/access-control/ccm-roles-and-permissions
 ---
 
 # CCM Roles and Permissions

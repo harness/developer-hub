@@ -34,7 +34,7 @@
 | Understand how to notify based in response to Pipeline and stage events| [Add a pipeline notification strategy](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/)| 
 | **11. GitOps**   ||
 | Explain the principles of GitOps using a comprehension/use case| [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics/)|
-| Learn to install the GitOps agent and connect your Kubernetes cluster to Harness| [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/install-a-harness-git-ops-agent)| 
+| Learn to install the GitOps agent and connect your Kubernetes cluster to Harness| [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent)| 
 | **12. Templates**                                                                                                                  ||
 | Understand Harness Templates - Pipeline, Stage, Step| [Harness Templates](/docs/platform/templates/use-a-template/)|
 | Learn to create a Template - Pipeline, or Stage| [Create a pipeline template](/docs/platform/Templates/create-pipeline-template)| 

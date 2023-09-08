@@ -54,7 +54,7 @@ The new stage is created. Next, we'll add a Harness service to represent the app
 
 ### Add a Harness service
 
-Harness services represent your microservices or applications. You can add the same service to as many stages as you need. For more information, go to [services and environments overview](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview).
+Harness services represent your microservices or applications. You can add the same service to as many stages as you need. For more information, go to [services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 ```mdx-code-block
 import Tabs1 from '@theme/Tabs';

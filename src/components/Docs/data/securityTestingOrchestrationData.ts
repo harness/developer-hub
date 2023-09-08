@@ -42,14 +42,14 @@ import {
               module: MODULES.sto,
               description:
                 "Dive in with these tutorials.",
-              link: "/docs/security-testing-orchestration/get-started/sto-tutorials",
+              link: "/docs/security-testing-orchestration/get-started/tutorials",
             },
             {
               title: "STO basics",
               module: MODULES.sto,
               description:
                 "Learn about the security scanning problems facing developers and how STO provides the solutions they need.",
-              link: "/docs/security-testing-orchestration/get-started/security-testing-orchestration-basics",
+              link: "/docs/security-testing-orchestration/get-started/overview",
             },
             {
               title: "STO concepts",

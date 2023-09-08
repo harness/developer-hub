@@ -473,7 +473,7 @@ const config = {
           "^/docs/category/terragrunt.*",
           "^/docs/category/traditional-deployments-ssh.*",
           "^/docs/category/custom-deployments.*",
-          "^/docs/category/continuous-verification-1.*",
+          "^/docs/category/continuous-verification.*",
           "^/docs/category/model-your-cd-pipeline.*",
           "^/docs/category/harness-git-based-how-tos.*",
         ],

@@ -36,7 +36,7 @@ The following table lists the main capabilities of SRM:
 
 ## Further reading
 
-- [Tutorials](/tutorials/manage-service-reliability)
+- [Tutorials](/tutorials/service-reliability)
 - [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies/#service-reliability-management)
 
 ## Next steps

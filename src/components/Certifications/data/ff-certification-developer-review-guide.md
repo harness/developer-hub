@@ -5,7 +5,7 @@
 | Understand the benefits of using feature flags in a development process          | [Best practices for managing flags](/docs/feature-flags/get-started/feature-flag-best-practices)    |
 | Familiarize with the terminology used in Harness.io's feature flag capabilities  | [Overview of Feature Flags](/docs/feature-flags/get-started/overview)               |
 | **2. Harness.io's Feature Flag Fundamentals  **                                     |                                                                                                                                   |
-| Learn about the basics of Harness.io's feature flag capabilities                 | [Get started with a flag](/docs/feature-flags/get-started/getting-started-with-feature-flags)       |
+| Learn about the basics of Harness.io's feature flag capabilities                 | [Get started with a flag](/docs/feature-flags/get-started/onboarding-guide)       |
 | Identify different types of feature flags within the Harness.io environment      | [Change the variations of your flags](/docs/feature-flags/ff-creating-flag/manage-variations)         |
 | Familiarize with the different statuses of feature flags                         | [Use the FF dashboard](/docs/feature-flags/ff-data/dashboard)                                         |
 | **3. Managing Feature Flags in Harness.io  **                                       |                                                                                                                                   |

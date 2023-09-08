@@ -79,7 +79,7 @@ These steps are also available in CI, CD, and Approval stages.
 
 For details on the different steps, see:
 
-* [General CD](/docs/category/general-cd-execution-steps)
+* [General CD](/docs/continuous-delivery/x-platform-cd-features/executions/stages-steps-strategies)
 * [Using Shell Scripts in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step)
 * [Create an HTTP Step Template](../13_Templates/harness-template-library.md)
 * [Approvals](/docs/category/approvals)

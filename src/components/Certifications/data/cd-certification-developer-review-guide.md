@@ -7,11 +7,11 @@
 | Artifact/Kubernetes Manifest Sources  | [Harness Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step) |
 | Overrides  | [Propagate and Override CD Services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services) |
 |**2. Swimlanes** | |
-| Services and Environments | [Services and environments overview](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview/) |
-| Infrastructure and Environments | [Kubernetes Infrastructure](/docs/continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure/) |
+| Services and Environments | [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview/) |
+| Infrastructure and Environments | [Kubernetes Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure) |
 | SSH Deployments | [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng) |
 | Blue/Green Deployments  | [Create a Kubernetes Blue Green Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment) |
-| Canary Deployments  | [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment) |
+| Canary Deployments  | [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/manage-deployments/deployment-concepts) |
 |**3. Continuous Delivery** | |
 | Barriers | [Synchronize Parallel Stages and Step Groups ](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers/) |
 | Conditional Execution  | [Stage and Step Conditional Execution Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) |
@@ -32,7 +32,7 @@
 | HTTP Execution Checks | [HTTP step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/)|
 |**5. GitOps** | |
 | GitOps Basics  | [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics/) |
-| Install GitOps Agent  | [Harness CD GitOps Tutorial](/docs/continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart/) |
+| Install GitOps Agent  | [Harness CD GitOps Tutorial](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart) |
 |**6. Data Visibility**| |
 | Describe Dashboards| [Overview and Service dashboards](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments) |
 | Selectors  | [Select delegates with delegate selectors and tags](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/) |

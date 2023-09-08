@@ -1475,7 +1475,7 @@ Delegate version: 77431
 
 - You can now create secrets using the Google Cloud Secret Manager in Harness. (PL-28978)
 
-  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/security/add-a-google-cloud-secret-manager/).
+  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager/).
 
 - You can now select modules and configure your own navigation in Harness. (SPG-153)
 
@@ -1709,7 +1709,7 @@ Delegate version: 77021
 <<<<<<< Updated upstream
   For more information, go to [Add a HashiCorp Vault secret manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault/).
 =======
-  For more information, see [HashiCorp Vault Secrets](/docs/platform/security/add-hashicorp-vault/).
+  For more information, see [HashiCorp Vault Secrets](/docs/platform/secrets/secrets-management/add-hashicorp-vault/).
 >>>>>>> Stashed changes
 
 - Harness will now send email notification for user invites when the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES is enabled. (PL-26218, ZD-32152,35287)

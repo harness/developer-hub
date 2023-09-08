@@ -265,7 +265,7 @@ export const featuredTutorials: CardItem[] = [
               module: MODULES.cd,
               description:
                 "Deploy a Serverless Lambda application to AWS Lambda using Harness.",
-              link: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart",
+              link: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart",
             },
             {
               title: "Tanzu Application Services (TAS)",
@@ -286,7 +286,7 @@ export const featuredTutorials: CardItem[] = [
               module: MODULES.cd,
               description:
                 "Deploy non-native applications using custom Deployment Templates in Harness.",
-              link: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial",
+              link: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial",
             },
           ]*/  
         }, 
@@ -434,7 +434,7 @@ export const featuredTutorials: CardItem[] = [
               module: MODULES.cd,
               description:
                 "",
-              link: "/docs/continuous-delivery/gitops/install-a-harness-git-ops-agent",
+              link: "/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent",
             },
             {
               title: "Add Harness GitOps repository",
@@ -476,7 +476,7 @@ export const featuredTutorials: CardItem[] = [
               module: MODULES.cd,
               description:
                 "",
-              link: "/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial",
+              link: "/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial",
             },
           ]*/
         },

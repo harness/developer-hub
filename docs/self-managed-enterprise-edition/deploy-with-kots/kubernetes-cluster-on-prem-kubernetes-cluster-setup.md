@@ -734,7 +734,7 @@ Now you can add Harness Self-Managed Enterprise Edition NextGen as a new applica
 
    If you are familiar with Harness, you can skip [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
 
-   Try the [Tutorials and quickstarts](../../get-started/quickstarts.md).
+   Try the [Tutorials and quickstarts](../../get-started/tutorials).
 
 ## Updating Harness NextGen
 

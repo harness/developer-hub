@@ -451,7 +451,7 @@ You can re-run builds in debug mode through the **Builds**, **Execution**, and *
   ```
   <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
   ```
-  For more information, go to [Perform a Kubernetes dry run](/docs/continuous-delivery/cd-execution/kubernetes-executions/k8s-dry-run/).
+  For more information, go to [Perform a Kubernetes dry run](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/k8s-dry-run).
 
 #### February 6, 2023
 
@@ -502,7 +502,7 @@ This feature is behind the feature flag SRM_LOG_HOST_SAMPLING_ENABLE.
 
 Nexus 3 is now supported for Azure Web App artifacts. (CDS-46372)
 
-For more information, see [Azure Web Apps deployment tutorial](/docs/continuous-delivery/onboard-cd/cd-quickstarts/azure-web-apps-tutorial/)
+For more information, see [Azure Web Apps deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial)
 
 This functionality is behind a feature flag: AZURE_WEB_APP_NG_NEXUS_PACKAGE
 
@@ -524,7 +524,7 @@ This functionality is behind a feature flag: TERRAFORM_REMOTE_BACKEND_CONFIG.
 
 You can now create secrets using the Google Cloud Secret Manager in Harness. (PL-28978)
 
-- For more information, see [Add a Google Cloud Secret Manager](/docs/platform/security/add-a-google-cloud-secret-manager/)
+- For more information, see [Add a Google Cloud Secret Manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager/)
 
 - You can now select modules and configure your own navigation in Harness. (SPG-153)
 

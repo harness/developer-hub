@@ -138,7 +138,7 @@ For more information, see [Harness Policy as Code](/docs/category/policy-as-code
 
 Harness Role-Based Access Control (RBAC) helps you manage who has access to your Harness resources, what they can do with those resources, and in what scope they have access.​
 
-For more information, see [Role-based Access Control](/docs/category/role-based-access-control)
+For more information, see [Role-based Access Control](/docs/category/access-control-1)
 
 ### Subscriptions
 

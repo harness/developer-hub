@@ -2,6 +2,8 @@
 title: Asset governance rules
 description: This topic describes how to add and manage access control for cloud asset governance rules.
 # sidebar_position: 40
+redirect_from:
+  - /docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov
 ---
 
 # Manage access control for asset governance rules

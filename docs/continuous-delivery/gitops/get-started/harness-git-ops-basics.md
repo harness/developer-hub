@@ -48,7 +48,7 @@ You can deploy any Kubernetes objects.
 
 You can deploy services and infrastructure or just bootstrap infrastructure.
 
-You can deploy an ApplicationSet and update it using a PR pipeline. See [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/cd-gitops/harness-git-ops-application-set-tutorial/).
+You can deploy an ApplicationSet and update it using a PR pipeline. See [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 
 ## Harness Platform Integration
 

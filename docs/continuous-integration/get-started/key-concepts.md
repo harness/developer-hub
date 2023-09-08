@@ -6,6 +6,8 @@ helpdocs_topic_id: 3amcd8hn53
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/continuous-integration/ci-quickstarts/ci-pipeline-basics
 ---
 
 This topic covers basic terminology and concepts related to CI pipelines. For general Harness Platform terminology and concepts, go to [Harness key concepts](../../get-started/key-concepts.md). For information about creating pipelines and configuring pipeline components go to [CI pipeline creation overview](../use-ci/prep-ci-pipeline-components.md).

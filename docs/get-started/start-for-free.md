@@ -18,5 +18,5 @@ After you have signed up for an account, go to the following topics to learn mor
 
 * [Harness Platform architecture](harness-platform-architecture.md)
 * [Key concepts](key-concepts.md)
-* [Tutorials and quickstart guides](quickstarts.md)
+* [Tutorials and quickstart guides](tutorials.md)
 

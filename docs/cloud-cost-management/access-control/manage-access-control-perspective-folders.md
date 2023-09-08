@@ -2,6 +2,8 @@
 title: Perspective folders
 description: This topic describes how to add and manage access control for CCM Perspectives folder.
 # sidebar_position: 30
+redirect_from:
+  - /docs/cloud-cost-management/getting-started-ccm/access-control/manage-access-control-perspective-folders
 ---
 
 # Manage access control for CCM perspective folders
@@ -57,7 +59,7 @@ A user can create **Budgets** for Perspectives only within the folders that they
 
 Similarly, on the **Anomalies** page, users can only view those anomalies associated with the perspectives located within specific folders that they have access to. The anomalies displayed also depend on the Perspective rule that restricts the user to a particular cloud provider account or a cost category, or a region. The out-of-the-box perspectives provided by Harness, as well as any other perspectives outside these folders, are not displayed. For more information about Anomalies, go to [Detect Cloud Cost Anomalies](../../3-use-ccm-cost-reporting/4-detect-cloud-cost-anomalies-with-ccm.md).
 
-For users with restricted access, **Recommendations** are displayed only for the Perspectives located within specific folders that they have access to. The user will be able to view and apply these recommendations. For more information, go to [Recommendations](../../4-use-ccm-cost-optimization/1-ccm-recommendations/1-home-recommendations.md).
+For users with restricted access, **Recommendations** are displayed only for the Perspectives located within specific folders that they have access to. The user will be able to view and apply these recommendations. For more information, go to [Recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/1-ccm-recommendations/1-home-recommendations.md).
 
 
 A user with folder restrictions does not have permission to create new folders. This means that the user can only work within the existing folder structure that has been set up for them by an administrator.

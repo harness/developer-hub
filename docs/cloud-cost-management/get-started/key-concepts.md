@@ -1,7 +1,7 @@
 ---
 title: Key concepts
 description: Defines key concepts for the CCM module.
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: hs7cyi1nix
 helpdocs_category_id: j4adbv9wn7
 helpdocs_is_private: false

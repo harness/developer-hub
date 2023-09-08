@@ -44,7 +44,7 @@ You can choose to proceed with the tutorial either by using the command-line int
 
 Complete the following tasks:
 
-1. **Obtain a Harness API Token**. For steps, go to the Harness documentation on [creating a personal API token](https://developer.harness.io/docs/platform/resource-development/apis/add-and-manage-api-keys/).
+1. **Obtain a Harness API Token**. For steps, go to the Harness documentation on [creating a personal API token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/).
 2. **Obtain a GitHub personal access token (PAT) with repo permissions**. For steps, go to the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
 3. **Obtain a Kubernetes cluster**. Use your own Kubernetes cluster. If you do not have one, we recommend that you use [K3D](https://k3d.io/v5.5.1/) for installing Harness delegates and deploying a sample application in a local development environment.
     - Check [delegate System and network requirements](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-requirements).
@@ -517,7 +517,7 @@ Harness also offers a Hosted GitOps solution, and a tutorial for it will be avai
 Verify the following:
 
 1. **A Kubernetes cluster**. We recommend [K3D](https://k3d.io/v5.5.1/) for installing the Harness GitOps Agent and deploying a sample application in a local development environment.
-    - Check [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/install-a-harness-git-ops-agent/#requirements).
+    - Check [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/#requirements).
 2. Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub web interface.
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
@@ -667,7 +667,7 @@ On successful Application sync, you'll see the below status tree under **Resourc
 You've just learned how to use **Harness GitOps** to deploy an application using a Kustomize template.
 
 #### What's Next?
-- Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial).
+- Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
 ```mdx-code-block

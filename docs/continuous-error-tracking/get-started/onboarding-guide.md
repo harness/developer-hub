@@ -1,5 +1,5 @@
 ---
-title: Set up
+title: Onboarding guide
 description: Add a monitored service and install an Error Tracking Agent.
 sidebar_position: 20
 ---

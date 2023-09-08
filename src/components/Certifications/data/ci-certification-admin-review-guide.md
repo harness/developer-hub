@@ -4,7 +4,7 @@
 | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------|
 | **1. Introduction to Harness and Key Concepts** ||
 | Understand continuous integration fundamentals, including critical stages or steps | [Harness CI](/tutorials/ci-pipelines/fastest-ci/#harness-ci) |
-|Grasp the core concepts: "Pipeline, Stages, Step Groups, Steps" and Harness hierarchy "Account, Organizations, Projects" | [Key Concepts](/docs/get-started/learn-harness-key-concepts/) |
+|Grasp the core concepts: "Pipeline, Stages, Step Groups, Steps" and Harness hierarchy "Account, Organizations, Projects" | [Key Concepts](/docs/get-started/key-concepts/) |
 | Familiarize with Harness Manager and the role of Harness Delegate for CI capability | [CI Pipeline Basics](/docs/continuous-integration/get-started/key-concepts) |
 | **2. Harness Build Infrastructure and Configuration** ||
 | Explore Harness Cloud supported platforms, OS, and build infrastructures | [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/) |

@@ -112,7 +112,7 @@ In this section, you add a health source to manage service level, select an SLI 
 
 #### Add a health source to manage service level
 
-Health source is your APM or logging tool that you have connected with Harness. If you have not yet connected your APM or logging tool with Harness, go to [Connect to Monitoring and Logging Systems](/docs/platform/Connectors/connect-to-monitoring-and-logging-systems).
+Health source is your APM or logging tool that you have connected with Harness. If you have not yet connected your APM or logging tool with Harness, go to [Connect to Monitoring and Logging Systems](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems).
 
 To add a health source:
 

@@ -474,7 +474,7 @@ Finally, it's time to execute your pipeline.
 You've just learned how to use Harness CD to deploy an application using a Google Cloud Functions gen 1 to Google Cloud.
 
 #### What's Next?
-- Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial).
+- Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.  
 
 ```mdx-code-block

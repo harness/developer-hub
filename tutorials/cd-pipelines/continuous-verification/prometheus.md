@@ -92,7 +92,7 @@ The Continuous Verification configuration is currently represented by two concer
 4. Set Duration to “5 min”
 5. Leave the Artifact Tag to `<+serviceConfig.artifacts.primary.tag>`.
 
-Next you will configure the Health Source [[Monitored Service](/docs/service-reliability-management/monitored-service/create-monitored-service/)] for your application [e.g [Harness Service](/docs/get-started/learn-harness-key-concepts#services)]. 
+Next you will configure the Health Source [[Monitored Service](/docs/service-reliability-management/monitored-service/create-monitored-service/)] for your application [e.g [Harness Service](/docs/get-started/key-concepts#services)]. 
 
 1. When prompted to, add your [Prometheus Connection Details](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-prometheus).
 	1. If using NodePort, would `http://node_public_ip:nodeport`. 

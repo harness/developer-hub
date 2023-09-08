@@ -17,8 +17,8 @@ import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported
 ## Requirements
 
 Make sure you have: 
-* A Harness pipeline with a [CD stage](/docs/continuous-delivery/onboard-cd/cd-concepts/key-concepts).
-* A [Harness service with an artifact source](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview).
+* A Harness pipeline with a [CD stage](/docs/continuous-delivery/get-started/key-concepts).
+* A [Harness service with an artifact source](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 ## Configure the artifact image path and tag as runtime inputs
 

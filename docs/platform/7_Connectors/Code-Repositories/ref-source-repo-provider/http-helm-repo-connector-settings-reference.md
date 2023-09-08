@@ -19,7 +19,7 @@ For instructions on how to use this Connector to perform specific tasks, see [He
 
 ### Limitations
 
-For Helm charts stored in repos such as **Amazon S3** or **GCS** (Google Cloud Storage), you will need a Cloud Provider for that account. For more information, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
+For Helm charts stored in repos such as **Amazon S3** or **GCS** (Google Cloud Storage), you will need a Cloud Provider for that account. For more information, see [Cloud Platform Connectors](/docs/category/cloud-providers).
 
 ### Name
 

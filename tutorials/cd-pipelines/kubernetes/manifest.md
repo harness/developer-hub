@@ -45,7 +45,7 @@ You can choose to proceed with the tutorial either by using the command-line int
 
 Verify the following:
 
-1. **Obtain Harness API Token**. For steps, go to the Harness documentation on [creating a personal API token](/docs/platform/resource-development/apis/add-and-manage-api-keys/).
+1. **Obtain Harness API Token**. For steps, go to the Harness documentation on [creating a personal API token](/docs/platform/automation/api/add-and-manage-api-keys/).
 2. **Obtain GitHub personal access token with repo permissions**. For steps, go to the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
 3. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness delegates and deploying a sample application in a local development environment.
     - Check [delegate System and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
@@ -638,7 +638,7 @@ Whether you're new to GitOps or have already used Argo CD, this guide will assis
 Verify that you have the following:
 
 1. **A Kubernetes cluster**. We recommend [K3D](https://k3d.io/v5.5.1/) for installing the Harness GitOps Agent and deploying a sample application in a local development environment.
-    - For requirements, go to [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/install-a-harness-git-ops-agent/#requirements).
+    - For requirements, go to [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/#requirements).
 2. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
@@ -821,7 +821,7 @@ Harness offers a [Terraform Provider](https://registry.terraform.io/providers/ha
 
 Before proceeding:
 
-1. Generate a [Harness API token](/docs/platform/resource-development/apis/add-and-manage-api-keys/#create-personal-api-keys-and-tokens).
+1. Generate a [Harness API token](/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens).
 1. Make sure [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) is installed on a computer that can connect to your cluster.
 
 <br/>
@@ -999,7 +999,7 @@ kubectl delete service guestbook-ui -n default
 You've just learned how to use **Harness GitOps** to deploy an application using a Kubernetes manifest.
 
 #### What's Next?
-- Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial).
+- Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.  
 
 ```mdx-code-block

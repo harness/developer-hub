@@ -168,5 +168,5 @@ Capturing your changes in the URL enables you to share your tuned recommendation
 
 ### Next steps
 
-* [Optimize Kubernetes Costs with Workload Recommendations](../../4-use-ccm-cost-optimization/1-ccm-recommendations/workload-recommendations.md)
+* [Optimize Kubernetes Costs with Workload Recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/1-ccm-recommendations/workload-recommendations.md)
 

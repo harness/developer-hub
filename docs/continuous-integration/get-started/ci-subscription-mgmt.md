@@ -2,6 +2,8 @@
 title: Subscriptions and licenses
 description: View and manage your CI subscriptions and licenses.
 sidebar_position: 70
+redirect_from:
+  - /docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt
 ---
 
 ```mdx-code-block

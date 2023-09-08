@@ -9,8 +9,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview
-  - /docs/self-managed-enterprise-edition/introduction/getting-started-with-self-managed-enterprise-edition
-  - /docs/self-managed-enterprise-edition/introduction/getting-started
+  - /docs/self-managed-enterprise-edition/get-started/onboarding-guide-with-self-managed-enterprise-edition
+  - /docs/self-managed-enterprise-edition/get-started/onboarding-guide
 ---
 
 This topic provides an architecture overview, installation links, and the basics on how to create a Harness account and your first project. Perform these tasks soon after you install Harness Self-Managed Enterprise Edition, before you move on to other configuration tasks.
@@ -74,6 +74,6 @@ To get started with Harness Self-Managed Enterprise Edition, go to the following
 * Harness CET: [Set up Continuous Error Tracking (CET)](/docs/continuous-error-tracking/get-started/onboarding-guide).
 * Harness CI: [CI Pipeline Quickstart](../../continuous-integration/get-started/tutorials.md).
 * Harness CD: [CD Pipeline Basics](../../continuous-delivery/get-started/key-concepts.md).
-* Harness FF: [Get started with a flag](/docs/feature-flags/get-started/getting-started-with-feature-flags).
+* Harness FF: [Get started with a flag](/docs/feature-flags/get-started/onboarding-guide).
 * Harness STO: [Security Testing Orchestration Basics](../../security-testing-orchestration/get-started/overview.md).
 * Harness Chaos Engineering: [Get started with Harness Chaos Engineering](/docs/category/get-started-with-ce).

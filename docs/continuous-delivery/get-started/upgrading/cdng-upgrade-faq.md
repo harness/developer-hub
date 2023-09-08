@@ -144,12 +144,12 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
     
     GraphQL APIs are not used in NextGen. They are replaced with REST APIs. The API endpoints are different and take different arguments. You must rewrite API-based automation to reintegrate with Harness NextGen.
 
-  - For details on NextGen APIs, go to [APIs](/docs/category/apis).
+  - For details on NextGen APIs, go to [APIs](/docs/category/api).
 - **Artifact collection**. Harness will not migrate the artifact history of a FirstGen artifact source to NextGen.
     
     Harness NextGen does not perform artifact polling to collect the list of artifacts and maintain a history for future selection. NextGen fetches the list of tags at pipeline runtime. 
 
-  - For details on NextGen artifact collection, review the artifact sources covered in [Harness Kubernetes services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services).
+  - For details on NextGen artifact collection, review the artifact sources covered in [Harness Kubernetes services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
 ## What are my CD NextGen upgrade options?
 

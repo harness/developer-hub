@@ -7,7 +7,7 @@ helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
-  - /docs/get-started/learn-harness-key-concepts
+  - /docs/get-started/key-concepts
 ---
 
 Before you begin using Harness modules, you should be familiar with the key concepts.
@@ -172,5 +172,5 @@ It allows for flexibility while making best practices easy to follow and poor pr
 
 Most importantly, it takes away the pain points of software development, delivery, verification, etc, and gives you confidence in their management and success.
 
-**What's next?** [Sign up for Harness](https://app.harness.io/auth/#/signup/) and then try a [quickstart](quickstarts.md).
+**What's next?** [Sign up for Harness](https://app.harness.io/auth/#/signup/) and then try a [quickstart](tutorials.md).
 

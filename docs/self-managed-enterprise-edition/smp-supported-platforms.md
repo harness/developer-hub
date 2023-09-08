@@ -52,7 +52,7 @@ The following permissions are required:
 ## Supported functionality
 * [Self-signed certificates](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed/)
 * [Air-gap mode](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/)
-* [Infrastructure monitoring](/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem/)
+* [Infrastructure monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem)
 * [Backup and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
 * [External Database](/tutorials/self-managed-enterprise-edition)
 * Disaster Recovery (coming soon)

@@ -13,9 +13,9 @@ This tutorial shows how you can use a Harness Continuous Integration (CI) pipeli
 
 You'll learn how to:
 
-- [x] Create [__projects__](/docs/get-started/learn-harness-key-concepts/#organizations-and-projects) in your Harness account.
-- [x] Add [__secrets__](/docs/get-started/learn-harness-key-concepts/#secrets-management) to projects.
-- [x] Add a Docker Registry [__Connector__](/docs/get-started/learn-harness-key-concepts/#connectors) to a project.
+- [x] Create [__projects__](/docs/get-started/key-concepts/#organizations-and-projects) in your Harness account.
+- [x] Add [__secrets__](/docs/get-started/key-concepts/#secrets-management) to projects.
+- [x] Add a Docker Registry [__Connector__](/docs/get-started/key-concepts/#connectors) to a project.
 - [x] Use a CI pipeline to build and push a multi-architecture Rust application container image.
 
 In this tutorial, you'll use [Rust](https://rust-lang.org) to build a simple REST API called `greeter-api`.

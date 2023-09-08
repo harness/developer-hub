@@ -215,7 +215,7 @@ The Update Framework (TUF) is an open source specification for that provides ins
 
 Harness includes native TUF support via the following:
 
-- Deployment templates: [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial) use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
+- Deployment templates: [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial) use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
   - Deployment Templates can obtain the required metadata for native TUF support, and generate and validate signatures in the software lifecycle.
 - OCI image registry support:
   - TUF recommends the use of an OCI image-spec container registry. Harness supports [OCI registry for Helm charts](/docs/first-gen/firstgen-platform/account/manage-connectors/add-helm-repository-servers/#oci-registry).

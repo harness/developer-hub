@@ -132,9 +132,9 @@ You can automate YAML configurations in Git and pass them to API calls for CRUD 
 
 For more information on Harness Terraform Provider, go to: 
 
-- [Terraform Provider Quickstart](/docs/platform/terraform/harness-terraform-provider-overview/)
-- [Terraform Provider Automated Onboarding Guide](/docs/platform/Terraform/automate-harness-onboarding)
-- [Terraform Provider Scaling Automation Guide](/docs/platform/Terraform/advanced-terraform-onboarding)
+- [Terraform Provider Quickstart](/docs/platform/automation/terraform/harness-terraform-provider-overview)
+- [Terraform Provider Automated Onboarding Guide](/docs/platform/automation/terraform/automate-harness-onboarding)
+- [Terraform Provider Scaling Automation Guide](/docs/platform/automation/terraform/advanced-terraform-onboarding)
 - [Terraform Registry for Harness Provider](https://registry.terraform.io/providers/harness/harness/latest/docs)
 
 
@@ -150,4 +150,4 @@ Harness recommends using the Git Experience to manage pipelines, input sets, and
 
 Harness recommends Terraform Provider for external resources managed separately from the pipeline. Using Terraform, you can manage and audit Harness Continuous Deployment configurations. Additionally, you can automate the definition of service, environment, and infrastructure life cycles via Harness pipelines.
  
-For more information, go to [Terraform Provider Automated Onboarding Guide](/docs/platform/Terraform/automate-harness-onboarding).
+For more information, go to [Terraform Provider Automated Onboarding Guide](/docs/platform/automation/terraform/automate-harness-onboarding).

@@ -1639,7 +1639,7 @@ This release does not include any early access features.
 
 ##### Fixed issues
 
-- RBAC was enforced for [environment groups](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview/) based on environment group identifiers. (CDS-45758)
+- RBAC was enforced for [environment groups](/docs/continuous-delivery/get-started/services-and-environments-overview/) based on environment group identifiers. (CDS-45758)
 
   Previously, you would see an error when trying to view environment groups if you had access to view only certain environment groups. Now, you can view those environment groups to which you have View access.
 
@@ -1665,7 +1665,7 @@ This release does not include any early access features.
 
 - The GitOps Clusters step was missing null checks. (CDS-58049)
 
-  The Gitops Clusters step is added automatically during pipeline runtime when the stage **GitOps** option is selected. For example, in [PR pipeline](/docs/continuous-delivery/cd-gitops/harness-git-ops-application-set-tutorial).
+  The Gitops Clusters step is added automatically during pipeline runtime when the stage **GitOps** option is selected. For example, in [PR pipeline](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 
   <docimage path={require('./static/73cdc440ba09f067a25838780163b73f1afb34dc16e3fb4c625b6a84d0c295cf.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -1798,7 +1798,7 @@ This release does not include any early access features.
   - At the organization level freeze window, you can access account and organization level services and environments.
   - At the project level freeze window, you can access account, organization, and project level services and environments.
 
-  For more information, go to [freeze deployments](/docs/continuous-delivery/cd-deployments-category/deployment-freeze/).
+  For more information, go to [freeze deployments](/docs/continuous-delivery/manage-deployments/deployment-freeze/).
 
 - A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart) to enable map and unmap routes. (CDS-50535)
 
@@ -2172,7 +2172,7 @@ connector:
 
 ##### Fixed issues
 
-- The [Harness GitOps](/docs/continuous-delivery/cd-gitops/harness-git-ops-basics) execution summary was stopping the page from loading correctly when the environment Id and name were different. (CDS-54950)
+- The [Harness GitOps](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics) execution summary was stopping the page from loading correctly when the environment Id and name were different. (CDS-54950)
 
   Now the environment Id is managed and resolved to the name, and the page does not crash.
 
@@ -2386,7 +2386,7 @@ These changes are backward incompatible. Therefore, you must also update the Ter
   When the HTTP request body contained unresolved expressions (both invalid expressions and runtime inputs), the HTTP step was not sending the request body.
   The HTTP step now supports sending unresolved Harness expressions in the request body.
 
-- Empty Kubernetes [values YAML](/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files/) file paths are displayed. (CDS-53623)
+- Empty Kubernetes [values YAML](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files/) file paths are displayed. (CDS-53623)
 
   When you add a Kubernetes manifest you have the option to add a values YAML file. In cases where users did not add a values YAML file, the Harness UI was showing an empty path.
 
@@ -2412,7 +2412,7 @@ These changes are backward incompatible. Therefore, you must also update the Ter
 
 - The environment's **Service Overrides** were not operating additively. (CDS-53373)
 
-  You can override specific service options using the [Service Overrides settings](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview#service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
+  You can override specific service options using the [Service Overrides settings](/docs/continuous-delivery/get-started/services-and-environments-overview#service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
 
   ![Service Overrides settings](static/88805f0c3a1feca13b5437edbd6c7574e8f540a6e9ffe07f760a450546c93c41.png)
 
@@ -2432,7 +2432,7 @@ These changes are backward incompatible. Therefore, you must also update the Ter
 
   Now the HTTP response codes for authentication or authorization errors are displayed.
 
-- The [deployment freeze](/docs/continuous-delivery/cd-deployments-category/deployment-freeze/) time range validation was throwing a 500 error. (CDS-53359)
+- The [deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze/) time range validation was throwing a 500 error. (CDS-53359)
 
   Time range validation was performed only when the status of freeze window was enabled. This was causing an error because disabled freeze windows were allowed invalid duration settings.
 
@@ -2615,7 +2615,7 @@ This release does not include new features.
   <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
   ```
 
-  For more information, go to [Perform a Kubernetes dry run](/docs/continuous-delivery/cd-execution/kubernetes-executions/k8s-dry-run/).
+  For more information, go to [Perform a Kubernetes dry run](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/k8s-dry-run).
 
 ##### Fixed issues
 
@@ -2711,7 +2711,7 @@ This release does not include new features.
 
   The environments header section was cramped when the environment request DTO had a description but there was no description in the environment YAML. This is now fixed.
 
-- An error appears when overriding a variable with a secret/number using an [environment override](/docs/continuous-delivery/docs/continuous-delivery/get-started/services-and-environments-overview/#service-overrides). (CDS-51783)
+- An error appears when overriding a variable with a secret/number using an [environment override](/docs/continuous-delivery/get-started/services-and-environments-overview/#service-overrides). (CDS-51783)
 
   This is now fixed and both secrets and numbers can be used to override service variables using environment overrides.
 

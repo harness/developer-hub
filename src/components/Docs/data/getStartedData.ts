@@ -102,7 +102,7 @@ import {
             module: MODULES.platform,
             description:
               "Learn about the key concepts and terms used in Harness products.",
-            link: "/docs/get-started/learn-harness-key-concepts",
+            link: "/docs/get-started/key-concepts",
           },
           {
             title: "Supported platforms and technologies",
