@@ -536,42 +536,31 @@ There are two types of api token, one can be created at user profile level and t
 
 We do not assign permission directly to the account tokens. They inherit the permissions from the user if they are created at the user profile level or the service account if they are created at service account level.
 
-### Do we have docs for the infrastructure requirements for a user looking to install a Service Mesh Platform (SMP) specifically for use with chaos testing?
+### Do we have docs for the infrastructure requirements for a user looking to install a Self Managed Platform (SMP) ?
 
 Yes, we do have docs for installation of SMP, refer to this [Documentation](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/harness-helm-chart#production-environment-deployment-infrastructure).
 
-### Which STO pipeline we can use to scan any new vulnerabilities after installing new delegate?
+### What is the permission needed for adding SMTP configuration, I am getting error `Missing permission core_smtp_edit on smtp` while trying to add Authentication Settings or Account Settings?
 
-We can use below mentioned pipeline: [here](https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/ci/orgs/default/projects/IMImages/pipelines/Delegateimagescan/executions?storeType=INLINE&page=0).
+The permission needed for this Account Admin and as of now only Account Admin can edit the SMTP configuration.
 
-### What is the permission needed for adding SMTP configuration as customer is getting error `Missing permission core_smtp_edit on smtp` while trying to add Authentication Settings or Account Settings?
+### Does Harness allow you to set 2 AMI’s with different CPU architecture?
 
-As of now, Account admin only able to add the SMTP connector.
-
-<!-- ### While migrating from CG to NG, user has created a K8s connector using delegate, but the delegate is failing the eligibility test.
-
-User should check if delegate has the required accesses and is installed at right cluster/namespace and also serviceAccountName should be properly set in development specifications otherwise it will use default SA. -->
-
-<!-- ### Does Harness allow you to set 2 AMI’s with different CPU architecture?
-
-Harness doesn't allow in the same ASG. -->
+Harness doesn't allow in the same ASG.
 
 ### How can you control on-demand or spot provisioning within ASG group / target?
 
-We supported spotinst ASG in FG and we also have spotinst for ng also: [here](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment).
+We supported spotinst ASG in FG and we also have spotinst for NG also, to know more about it please read the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment).
 
-### Can you pull in from multiple different Okta providers for multiple different teams with different RBAC/group needs?
+### Can I pull in from multiple different Okta providers for multiple different teams with different RBAC/group needs?
 
-Only one SSO provider allowed.
+No, we support only one SSO provider at a time which is configured at account level.
 
-### Do Cloud Connector will propagate the tags to AWS calls ?
+### Will Cloud Connector propagate the tags to AWS calls ?
 
-No, Cloud connector will not propagate the tags.
+No, The Cloud connector will not propagate the tags to AWS while making calls.
 
 ### Where can we see the logs of AWS calls?
 
-Limited logging (we do not log all the calls, may be there is an debug flag). Delegate logs will show the capability check.
+We have limited logging for the AWS Calls.
 
-### Like CI, can CD Delegate act as an orchestrator?
-
-By "Like CI" are they implying "lite-engine". If so, the answer is Yes when using container steps only and not otherwise.

@@ -1066,3 +1066,8 @@ For testing scenarios you can run the terraform without remote backend for savin
 #### How can we add newline in mail body sent from email step ?
 
 The email body sent uses a html format and hence the newline character will not work for adding newline entries. We need to make use of html line break for this `<br>`.
+
+#### Can CD Delegate act as an orchestrator?
+
+We support CD delegate act as an orchestrator only while using container steps and with lite-engine only .
+
