@@ -214,7 +214,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 <StoSettingIngestionFile  />
 
-## Security step settings (_deprecated_)
+## Security step settings (_legacy_)
 
 #### Docker-in-Docker requirements
 

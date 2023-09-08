@@ -8,8 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Feature Flags (FF) is a feature management solution that lets you change your software's functionality without deploying new code. It does this by allowing you to hide code or behavior without having to ship new versions of the software. A feature flag is like a powerful `if` statement.
-
+Harness Feature Flags (FF) is a feature management solution with smart capabilities, such as GitOps, pipelines, automations, and monitoring.
 
 ```
 if(HarnessFeatureFlag["newamazingfeature"] == true) {  
@@ -29,9 +28,32 @@ Watch this video for an introduction to Feature Flags:
 https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695-->
 <docvideo src="https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695" /> 
 
+## First time setup 
+
+Here's how to get started with Harness Feature Flags:
+
+- Install one of our [open-source SDKS](https://developer.harness.io/docs/category/sdks-overview) into your application code. 
+- Add a flag statement around the code you want to control.
+- The SDKs will fetch the right configuration per session from Harness.
+- Use the Feature Flags UI to toggle flags on or off for some or all of your end users.
+
+## Using Feature Flags SDKs
+
+SDKs are the libraries you add to your code to authenticate, configure and manage feature flag usage.
+
+All of our SDKs are open-source, provided per-language, and backed by public APIs.
+
+The SDKs all follow the same basic logic:
+
+- Authenticate with Harness.
+- Identify a [target](https://developer.harness.io/docs/category/manage-target-users-and-groups) for the session.
+- Retrieve an evaluation for all relevant flags for the session.
+- Serve the correct code path.
+- Send metrics back to Harness.
+
 ## Reasons to use Feature Flags
 
-Feature Flag management provides the following opportunities to the developers:
+Feature Flags provide the following opportunities to software delivery teams
 
 ### Ship only when you're ready
 

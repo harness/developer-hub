@@ -187,7 +187,7 @@ In the **Advanced** settings, you can use the following options:
 
 
 
-## Security step settings (_deprecated_)
+## Security step settings (_legacy_)
 
 You can set up a Security step with [Aqua Trivy](https://aquasecurity.github.io/trivy) to detect vulnerabilities and misconfigurations in your container images.
 

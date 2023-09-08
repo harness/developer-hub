@@ -89,7 +89,7 @@ In **Advanced**, you can use the following options:
 
 ## Captured environment variables from Jenkins builds
 
-For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject plugin](https://wiki.jenkins.io/display/JENKINS/EnvInject+Plugin). The plugin does not provide full compatibility with the pipeline plugin. Go to [known incompatibilities](https://wiki.jenkins.io/display/JENKINS/EnvInject+Plugin#EnvInjectPlugin-Knownincompatibilities) from Jenkins for more information. Harness captures certain environment variables from the Jenkins build.
+For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject plugin](https://plugins.jenkins.io/envinject/). The plugin does not provide full compatibility with the pipeline plugin. Go to [known incompatibilities](https://plugins.jenkins.io/envinject/#EnvInjectPlugin-Knownincompatibilities) from Jenkins for more information. Harness captures certain environment variables from the Jenkins build.
 
 The following list shows examples of the environment variables and the expressions you can use to reference them.
 
@@ -123,7 +123,7 @@ To reference the job information in another stage in this pipeline, use the full
 
 ## Multibranch pipeline support
 
-For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject plugin](https://wiki.jenkins.io/display/JENKINS/EnvInject+Plugin). The plugin does not provide full compatibility with the pipeline plugin. Go to [known incompatibilities](https://wiki.jenkins.io/display/JENKINS/EnvInject+Plugin#EnvInjectPlugin-Knownincompatibilities) from Jenkins for more information. The Jenkins multibranch pipeline (workflow multibranch) feature enables you to automatically create a Jenkins pipeline for each branch on your source control repo.
+For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject plugin](https://plugins.jenkins.io/envinject/). The plugin does not provide full compatibility with the pipeline plugin. Go to [known incompatibilities](https://plugins.jenkins.io/envinject/#EnvInjectPlugin-Knownincompatibilities) from Jenkins for more information. The Jenkins multibranch pipeline (workflow multibranch) feature enables you to automatically create a Jenkins pipeline for each branch on your source control repo.
 
 Each branch has its own [Jenkinsfile](https://jenkins.io/doc/book/pipeline/jenkinsfile/), which can be changed independently. This features enables you to handle branches better by automatically grouping builds from feature or experimental branches.
 

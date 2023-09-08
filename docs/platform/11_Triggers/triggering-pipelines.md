@@ -272,7 +272,7 @@ For example, if the pipeline is executed manually, the `<+pipeline.triggerType>`
 pipeline.triggerType:  WEBHOOK
 ```
 
-### Null comparisons
+## Null comparisons
 
 You can also use JEXL comparisons with Trigger expressions.
 
@@ -372,7 +372,7 @@ pipeline:
 
 </details>
 
-### Troubleshooting
+## Troubleshooting
 
 If a pipeline does not start in response to an incoming event, do the following:
 

@@ -986,7 +986,7 @@ See:
 
 #### Can I run CF CLI commands and scripts during deployment?
 
-Yes. You can run any [CF CLI command](https://docs.cloudfoundry.org/cf-cli/cf-help.html) or script at any point in your Harness TAS Workflows.
+Yes. You can run any [CF CLI command](https://cli.cloudfoundry.org/en-US/v6/) or script at any point in your Harness TAS Workflows.
 
 See [Run CF CLI Commands and Scripts in a Workflow](../continuous-delivery/pcf-deployments/run-cf-cli-commands-and-scripts-in-a-workflow.md).
 

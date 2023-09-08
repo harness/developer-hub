@@ -1066,3 +1066,58 @@ For testing scenarios you can run the terraform without remote backend for savin
 #### How can we add newline in mail body sent from email step ?
 
 The email body sent uses a html format and hence the newline character will not work for adding newline entries. We need to make use of html line break for this `<br>`.
+
+#### Can CD Delegate act as an orchestrator?
+
+We support CD delegate act as an orchestrator only while using container steps and with lite-engine only .
+
+#### Saving Inputsets in a different repo than the pipeline
+
+You can save input sets in a different repo from the pipeline. All you need to do is go to Account Settings --> Account Resources --> Default Settings
+Go under Git Experience and checkmark Allow different repo for Pipeline and InputSets. Now while trying to save the input you can save it in a different repo. 
+
+#### Mark step as Failed in a running pipeline(User marked Failure) 
+
+You can now mark Step in a pipeline as Failed. To enable the option, go to Account Settings --> Account Resources --> Default Settings
+Go under Pipelines and checkmark Allow users to mark a running Step as failure. 
+
+#### How to view Deployment history (Artifact SHA) for a single service on an environment
+
+You can go to Service under the project --> Summary will show you the details with what artifact version and environment. 
+
+#### Harness enabling auto-deployment
+
+To have automatic deployment in Harness, you can make use of triggers. On new artifact. 
+https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-a-time-schedule/
+As soon as your build is complete and it publishes a new artifact you can setup a trigger on that and it will trigger a Harness Deployment. 
+
+#### Question about deployToAll yaml field, The pipeline yaml for the environment contains deployToAll field. What does that field do?
+
+The field is used when you use the deploy to multiple infrastructures option. 
+This field is for deploy to all infra inside an environment. 
+ 
+[Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv/)
+ 
+#### How to exit a workflow without marking it as failed
+
+You can add a failure strategy in the deploy stage by either ignoring the failure for the shell script or getting a manual intervention where you can mark that step as a success. 
+
+#### 2 Deployments in pipeline, is it possible for me to rollback the stage 1 deployment if the stage 2 tests returned errors?
+
+We do have a pipeline rollback feature that is behind a feature flag. This might work better as you would be able to have both stages separate, with different steps, as you did before, but a failure in the test job stage could roll back both stages.
+ 
+[Documentation](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-for-pipelines)
+  
+Also, for the kubernetes job, if you use the Apply step instead of Rollout then the step will wait for the job to complete before proceeding, and you would not need the wait step.
+
+#### Backup resource yaml files
+
+We do have git experience where you can save your yaml files for pipeline , inputset and templates to your git. 
+
+[Documentation](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities)
+ 
+We don't save yaml's for service and other entities like we used to in First Generation: [Documentation](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code/#does-the-configuration-as-code-support-matrix-include-entities-supported-by-git-experience)
+ 
+[Documentation](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code/#why-did-harness-reduce-the-number-of-supported-entities-backed-by-git)
+
+

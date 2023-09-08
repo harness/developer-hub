@@ -535,3 +535,58 @@ There are two types of api token, one can be created at user profile level and t
 #### How do we assign permission to the api tokens ?
 
 We do not assign permission directly to the account tokens. They inherit the permissions from the user if they are created at the user profile level or the service account if they are created at service account level.
+
+#### Do we have docs for the infrastructure requirements for a user looking to install a Self Managed Platform (SMP) ?
+
+Yes, we do have docs for installation of SMP, refer to this [Documentation](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/harness-helm-chart#production-environment-deployment-infrastructure).
+
+#### What is the permission needed for adding SMTP configuration, I am getting error Missing permission core_smtp_edit on smtp while trying to add Authentication Settings or Account Settings?
+
+The permission needed for this Account Admin and as of now only Account Admin can edit the SMTP configuration.
+
+#### Does Harness allow you to set 2 AMI’s with different CPU architecture?
+
+Harness doesn't allow in the same ASG.
+
+#### How can you control on-demand or spot provisioning within ASG group / target?
+
+We supported spotinst ASG in FG and we also have spotinst for NG also, to know more about it please read the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment).
+
+#### Can I pull in from multiple different Okta providers for multiple different teams with different RBAC/group needs?
+
+No, we support only one SSO provider at a time which is configured at account level.
+
+#### Will Cloud Connector propagate the tags to AWS calls ?
+
+No, The Cloud connector will not propagate the tags to AWS while making calls.
+
+#### Where can we see the logs of AWS calls?
+
+We have limited logging for the AWS Calls.
+
+#### Delegate Selector in connector
+
+The delegate selector in connector always works as AND and not OR. Say you have delegate A named "ABC" and delegate B named "BCD". In the connector selector options you will need to give only 1 tag either "ABC" or "BCD". In case you need to have multiple delegate there then you will need to add custom tags to the delegate and specify the common one in the sector. 
+
+#### If the value for secret starts with # for reference scerets
+
+In case you value start with # in case of reference secrets, always use Double quotes as “#” is a special character to represent comments and it will work as expected.
+
+Ex: The value for the secret is say "#7767test"
+```echo "<+secrets.getValue("account.aaaatestaaatest")>" ```
+
+#### User deletion from UI when it is provisioned via SCIM
+
+Harness now allows admin to delete users from Harness UI even if the user is provisioned via SCIM, this is only supposed to be used in case the Users ends up in a state the SCIM App was removed and hence the User can't be removed.
+As this can cause issues if the User is a part of say 2 Accounts the backend entry for the user won't be removed and from that specific account it might removed. Now reprovisioning the User from SCIM app will give error as the user is still present with the same user id in backend. Hence you will need to remove the user completely from the SCIM app and provision him again as a new user. 
+
+#### Is their a way we can check what delegates are running/doing any particular time.
+You can review the delegate logs so ideally it should show the task that it was executing around the time frame.
+
+#### Getting error IllegalArgumentException: kubectl is not installed for version V1_13. Available versions are: []
+If you are using minimal delegate images than this error can come and need to install the kubectl version and check $PATh if its updated correctly
+
+#### Delegate is not coming up with no space left error
+While starting delegate we install some third party binaries(kubectl, helm etc) so those need some space so make sure delegate machne has some disk space left
+
+

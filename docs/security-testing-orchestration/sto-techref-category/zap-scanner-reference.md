@@ -222,7 +222,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step configuration (_deprecated_)
+## Security step configuration (_legacy_)
 
 #### Scan policy types
 
