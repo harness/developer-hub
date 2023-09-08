@@ -44,13 +44,15 @@ The GCS destination bucket name.
 
 ### Source Path
 
-Path to the artifact file/folder you want to upload.
+Path to the file or directory that you want to upload.
 
 If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 
 ### Target
 
-The path, relative to the **Bucket** where you want to store the artifact. If no target path is provided, the artifact is saved to `[bucket]/`.
+Provide a path, relative to the **Bucket**, where you want to store the artifact. Do not include the bucket name; you specified this in **Bucket**.
+
+If you don't specify a **Target**, Harness uploads the artifact to the bucket's main directory.
 
 ### Run as User
 
