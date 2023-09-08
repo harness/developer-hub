@@ -162,13 +162,13 @@ For example, the Argo CD repo `https://github.com/argoproj/gitops-engine.git` is
 
 ![](./static/multiple-argo-to-single-harness-76.png)
 
-### Unable to see your Argo CD entities in Harness UI?
+### Make sure that your Argo CD entities are visibile in the Harness UI
 
-In some Argo CD versions it is not mandatory to provide a value for the project for the entities. So we need to make sure that the entity has a project associated with it.
+In some Argo CD versions, you are not required to specify a project for your entities. However, for the entities to be visible in the Harness UI, you must associate the entities with a project. 
 
-If your entity does not have a project associated with it and you are not able to edit the entity from Argo CD UI then you have an option to patch that entity directly in the cluster to have a project and other values. The entities are stored in different formats in the cluster, for eg. Clusters, Repositories, Repository Credentials Templates are stored in `Secret` and GPG keys and Repository Certificates are stored in `ConfigMap` in the namespace where the Argo CD is installed. 
+If you are unable to edit an entity from the Argo CD UI, you can edit that entity in the cluster so that they have a project and other required values. The entities are stored in different formats in the cluster. For example, clusters, repositories, and repository credential templates are stored in `Secret`, and GnuPG keys and repository certificates are stored in `ConfigMap` in the namespace in which Argo CD is installed. 
 
-Edit the respective secret of the entity and Add the fields `project` and `name` in the `data` or `stringData` block. You can see some examples in [this](/docs/continuous-delivery/gitops/connect-and-manage/manage-argo-configs.md#git-configuration-files) doc.
+Edit the respective secret of the entity and add the fields `project` and `name` in the `data` or `stringData` block. For examples, go to [Manage an Argo CD configuration by using Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/manage-argo-configs.md#git-configuration-files).
 
 
 ## Creating GitOps Clusters with multiple projects
