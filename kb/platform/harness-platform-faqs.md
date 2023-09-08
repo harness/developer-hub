@@ -540,7 +540,7 @@ We do not assign permission directly to the account tokens. They inherit the per
 
 Yes, we do have docs for installation of SMP, refer to this [Documentation](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/harness-helm-chart#production-environment-deployment-infrastructure).
 
-### What is the permission needed for adding SMTP configuration, I am getting error `Missing permission core_smtp_edit on smtp` while trying to add Authentication Settings or Account Settings?
+### What is the permission needed for adding SMTP configuration, I am getting error Missing permission core_smtp_edit on smtp while trying to add Authentication Settings or Account Settings?
 
 The permission needed for this Account Admin and as of now only Account Admin can edit the SMTP configuration.
 
