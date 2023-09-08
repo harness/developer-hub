@@ -535,3 +535,32 @@ There are two types of api token, one can be created at user profile level and t
 #### How do we assign permission to the api tokens ?
 
 We do not assign permission directly to the account tokens. They inherit the permissions from the user if they are created at the user profile level or the service account if they are created at service account level.
+
+### Do we have docs for the infrastructure requirements for a user looking to install a Self Managed Platform (SMP) ?
+
+Yes, we do have docs for installation of SMP, refer to this [Documentation](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/harness-helm-chart#production-environment-deployment-infrastructure).
+
+### What is the permission needed for adding SMTP configuration, I am getting error Missing permission core_smtp_edit on smtp while trying to add Authentication Settings or Account Settings?
+
+The permission needed for this Account Admin and as of now only Account Admin can edit the SMTP configuration.
+
+### Does Harness allow you to set 2 AMI’s with different CPU architecture?
+
+Harness doesn't allow in the same ASG.
+
+### How can you control on-demand or spot provisioning within ASG group / target?
+
+We supported spotinst ASG in FG and we also have spotinst for NG also, to know more about it please read the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment).
+
+### Can I pull in from multiple different Okta providers for multiple different teams with different RBAC/group needs?
+
+No, we support only one SSO provider at a time which is configured at account level.
+
+### Will Cloud Connector propagate the tags to AWS calls ?
+
+No, The Cloud connector will not propagate the tags to AWS while making calls.
+
+### Where can we see the logs of AWS calls?
+
+We have limited logging for the AWS Calls.
+
