@@ -1230,7 +1230,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 - The **Manage Services** tab has been removed from the services dashboard page. (CDS-57974)
   
   Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](/docs/platform/role-based-access-control/add-manage-roles) apply to a single Services page only.
-- The [Shell Script step](/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts) input and output variables are now optional. (CDS-57766, CDS-56448)
+- The [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) input and output variables are now optional. (CDS-57766, CDS-56448)
   
   Input and output variables were mandatory, but now you can choose whether to fill in values. This allows you more flexibility when modeling your pipeline.
   Here's an example where the script declares two variables but one is set as a runtime input and one is empty.
@@ -1489,7 +1489,7 @@ Enabled audit trail for budget groups. (CCM-11387)
     ![](./static/cost-category-builder-2.png)
 
   
-  For more information, go to [Use Cost Categories](/docs/cloud-cost-management/use-cloud-cost-management/ccm-cost-categories/use-ccm-cost-categories).
+  For more information, go to [Use Cost Categories](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/cost-categories-usage).
 
 #### March 15, 2023, version 78712
 
@@ -1815,7 +1815,7 @@ This release introduces the following new features and enhancements:
 
 - Harness now supports the integration of GCP Secrets Manager for all users. (PL-31051)
   
-  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/Security/add-a-google-cloud-secret-manager)
+  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager)
 
 - There is a limit on the number of entities that can be created for **FREE** and **COMMUNITY** users in Harness. (PL-30838)
   
@@ -2222,7 +2222,7 @@ A new React Client SDK has been released for Feature Flags as version 1.0.0. For
 
   The Command step should always be run after the the Fetch Instances step.
 
-  See [Use the Command step to download, copy, or run scripts](/docs/continuous-delivery/cd-execution/cd-general-steps/download-and-copy-artifacts-using-the-command-step).
+  See [Use the Command step to download, copy, or run scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step).
 
 ##### Harness Platform
 
@@ -2264,7 +2264,7 @@ The Custom Git Connector now supports connection via the Harness Platform, in ad
   - NEW_UNASSIGNED (Reserved for future use)
   - NEW_TOTAL (STO-4866)
 
-- STO Overview – The [STO Overview](/docs/continuous-delivery/cd-execution/cd-general-steps/download-and-copy-artifacts-using-the-command-step) provides a single, interactive view of all baseline issues detected by all scans in your project. A time series chart shows the daily distribution of issues by severity over the past 30 or 90 days. A daily snapshot shows the sum of all baseline issues based on the latest scan of each baseline. You can also drill down into active, failed, and in-progress baseline scans. (STO-3629)
+- STO Overview – The [STO Overview](/docs/security-testing-orchestration/get-started/overview) provides a single, interactive view of all baseline issues detected by all scans in your project. A time series chart shows the daily distribution of issues by severity over the past 30 or 90 days. A daily snapshot shows the sum of all baseline issues based on the latest scan of each baseline. You can also drill down into active, failed, and in-progress baseline scans. (STO-3629)
 
 - STO scans on VMs using Docker delegates – You can now run builds with STO scans using Docker delegates running on Linux VMs in AWS and other cloud platforms. This extends the support for STO scans with Kubernetes delegates.
 
@@ -2283,7 +2283,7 @@ The Custom Git Connector now supports connection via the Harness Platform, in ad
 
 ####3 Cloud Cost Management
 
-You can now add labels to enable node pool recommendations. kops cluster node label is added for node pool recommendations. See [Labels for node pool recommendations](/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations/) for more information. (CCM-9309)
+You can now add labels to enable node pool recommendations. kops cluster node label is added for node pool recommendations. See [Labels for node pool recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations) for more information. (CCM-9309)
 
 ##### Harness Platform
 
@@ -2309,7 +2309,7 @@ The Infrastructure tab in Build steps has been updated to show only supported op
 <<<<<<< Updated upstream
   For more information about delegate auto-upgrade, go to [Delegate automatic upgrades and expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/).
 =======
-  For more information about delegate auto-upgrade, see [Delegate Auto-Update](/docs/platform/delegates/delegate-guide/delegate-auto-update/).
+  For more information about delegate auto-upgrade, see [Delegate Auto-Update](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/).
 >>>>>>> Stashed changes
 
 - A loader is now displayed on click of Run Pipeline to indicate that the Pipeline is running. (PIE-5396)
@@ -2318,7 +2318,7 @@ The Infrastructure tab in Build steps has been updated to show only supported op
 
 You can now add a default pipeline to your Feature Flags that will be applied when you add targeting rules, or when you enable or disable a Flag. This means that you can ensure your Flag changes go through the process you want them to, allowing for better security and more consistent operations. For example, you can add an approval step so all your production Flag changes must be approved before they are executed, or you can send a Slack notification every time a Flag changes.
 
-For more information about how to use a default pipeline for your Flags, go to [Add a Default Pipeline for Flag Changes](/docs/feature-flags/ff-using-flags/ff-build-pipeline/default-pipeline-ff/).
+For more information about how to use a default pipeline for your Flags, go to [Add a Default Pipeline for Flag Changes](/docs/feature-flags/ff-build-pipeline/default-pipeline-ff).
 
 #### October 7, 2022
 
@@ -2414,7 +2414,7 @@ For information about the current plans you can subscribe to, go to [Pricing & P
 
   When you select Secret and reference the output variable later in the Pipeline, Harness will automatically sanitize the resolved secret value in the logs.
 
-  See [Using Shell Scripts in CD Stages](/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts/).
+  See [Using Shell Scripts in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/).
 
 ##### Harness Platform
 
@@ -2580,13 +2580,13 @@ The Build UI now shows a new VM icon. (CI-4630)
 
   We were showing $0.00 recommendation savings for ECS. Now only recommendations with minimum savings amount > $1 are shown on the list page.
 
-  For more information, refer to [Optimize AWS ECS Costs with Recommendations](/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/ecs-recommendations/).
+  For more information, refer to [Optimize AWS ECS Costs with Recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/ecs-recommendations).
 
 - Perspectives CSV download improvement (CCM-7908)
 
   Perspectives CSV was downloading 2 times on first download.
 
-  For more information, refer to [Create Cost Perspectives](/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/create-cost-perspectives/).
+  For more information, refer to [Create Cost Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives).
 
 - More descriptive browser tab titles were added (CCM-7869)
 
@@ -2606,7 +2606,7 @@ The Build UI now shows a new VM icon. (CI-4630)
         * PagerDuty Notifications
         * Microsoft Teams Notifications
 
-  For more information, refer to [Manage Notifications](/docs/category/notifications), [Add a Pipeline Notification Strategy](/docs/continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events/).
+  For more information, refer to [Manage Notifications](/docs/category/notifications), [Add a Pipeline Notification Strategy](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events).
 
 - Improved error messages in the console view for Pipeline execution.​ (PIE-3915, ZD-31031)
 

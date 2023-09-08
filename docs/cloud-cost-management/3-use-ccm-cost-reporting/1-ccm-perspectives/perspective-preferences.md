@@ -57,7 +57,7 @@ The following preferences are applicable to all perspectives. By default, some o
 
 * **Show "unallocated" costs on clusters**
 
-  In certain graphs, you may come across an item labeled as **Unallocated**. This entry is included to provide a comprehensive view of all costs. When you examine the **Total Cost** in the perspective, it encompasses the costs of all items, including the unallocated cost. This option is available only in perspectives with cluster rules. For more information, go to [Unallocated Cost](/docs/cloud-cost-management/get-started/harness-key-cloud-cost-concepts/#unallocated-cost).
+  In certain graphs, you may come across an item labeled as **Unallocated**. This entry is included to provide a comprehensive view of all costs. When you examine the **Total Cost** in the perspective, it encompasses the costs of all items, including the unallocated cost. This option is available only in perspectives with cluster rules. For more information, go to [Unallocated Cost](/docs/cloud-cost-management/get-started/key-concepts#unallocated-cost).
   
     ![](./static/create-cost-perspectives-25.png)
     

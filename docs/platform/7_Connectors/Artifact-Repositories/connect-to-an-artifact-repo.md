@@ -20,7 +20,7 @@ You can connect to an artifact repo inline when developing your Pipeline, or sep
 
 Connectors for artifacts stored in Google Cloud Storage or Amazon S3 are added as **Cloud Providers** Connectors, not **Artifact Repositories**.
 
-If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
+If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-providers).
 
 For Azure ACR, use the **Docker Registry** Connector, described below.
 

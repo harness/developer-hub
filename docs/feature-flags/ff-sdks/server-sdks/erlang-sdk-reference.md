@@ -396,7 +396,7 @@ This will only affect evaluation log statements. The `log_level` you set applies
 
 The SDK by default starts up a single instance called `default` which is configured with your project API key.
 If different parts of your application need to use 
-specific [projects](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project/), you can start up additional client instances using by defining additional configuration for each unique project.
+specific [projects](/docs/feature-flags/ff-creating-flag/create-a-project/), you can start up additional client instances using by defining additional configuration for each unique project.
 
 :::info note
 If the default instance fails to start, for example, due to an authentication error with the API key, then the SDK fails to boot and any additional instances do not start. To prevent the default instance from starting, 

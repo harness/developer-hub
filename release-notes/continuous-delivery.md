@@ -1550,7 +1550,7 @@ This release does not include any early access features.
 
   Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](/docs/platform/role-based-access-control/add-manage-roles) apply to a single Services page only.
 
-- The [Shell Script step](/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts) input and output variables are now optional. (CDS-57766, CDS-56448)
+- The [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) input and output variables are now optional. (CDS-57766, CDS-56448)
 
   Input and output variables were mandatory, but now you can choose whether to fill in values. This allows you more flexibility when modeling your pipeline.
   Here's an example where the script declares two variables but one is set as a runtime input and one is empty.
@@ -1655,7 +1655,7 @@ This release does not include any early access features.
 
   The GitOps Fetch Linked Apps step output was not set correctly, leading to a null value for the step. This has been fixed and the step now returns the linked apps correctly.
 
-- The [Container step](/docs/continuous-delivery/cd-execution/cd-general-steps/container-step/) was not using the JEXL expression [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) logic correctly. (CDS-58081)
+- The [Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step) was not using the JEXL expression [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) logic correctly. (CDS-58081)
 
   The JEXL condition was not being evaluated and when the expression evaluated to `false` the step would still execute. This is now fixed and the JEXL expression is used correctly.
 
@@ -1990,7 +1990,7 @@ This release does not include any early access features.
   This issue is fixed.
 
 - The CD Container step was not working because Harness added an invalid character in the default step name. (CDS-54733, CDS-54386, ZD-40724, ZD-40938, ZD-41170)
-  The [Container step](/docs/continuous-delivery/cd-execution/cd-general-steps/container-step/) lets you run any Docker container in your Kubernetes cluster as part of your continuous deployment (CD) stage. Harness orchestrates the container in your cluster as part of your Harness deployment.
+  The [Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step) lets you run any Docker container in your Kubernetes cluster as part of your continuous deployment (CD) stage. Harness orchestrates the container in your cluster as part of your Harness deployment.
   When creating a Container step, Harness appended the step name with an `_` character. This led to an invalid container name because the step name is used to name the container.
   Now, the `_` is no longer added to the container name.
 - Dragging and dropping the steps of one stage to another stage generated a service propagation modal. (CDS-54340)
@@ -2182,7 +2182,7 @@ connector:
 
 - Harness was unable to resolve any settings using expressions in the Jenkins artifact resource. (CDS-54670)
 
-  [Harness integrates with Jenkins](/docs/continuous-delivery/cd-execution/cd-general-steps/run-jenkins-jobs-in-cd-pipelines/) to run Jenkins jobs and dynamically capture inputs and outputs from the jobs.
+  [Harness integrates with Jenkins](/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-jenkins-jobs-in-cd-pipelines) to run Jenkins jobs and dynamically capture inputs and outputs from the jobs.
 
   When an expression was used in the Jenkins connector, Harness was unable to resolve the expression because the frontend was not sending the pipeline Id to the runtime API call in the backend correctly.
 
@@ -2381,7 +2381,7 @@ These changes are backward incompatible. Therefore, you must also update the Ter
 
   We now support GAR artifact sources that use package names containing `/`.
 
-- The [HTTP step](/docs/continuous-delivery/cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines/) isn't sending the request body. (CDS-53792, ZD-40378)
+- The [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/) isn't sending the request body. (CDS-53792, ZD-40378)
 
   When the HTTP request body contained unresolved expressions (both invalid expressions and runtime inputs), the HTTP step was not sending the request body.
   The HTTP step now supports sending unresolved Harness expressions in the request body.
@@ -2426,7 +2426,7 @@ These changes are backward incompatible. Therefore, you must also update the Ter
 
   :::
 
-- The HTTP response codes and body details were not being displayed in the [HTTP step](/docs/continuous-delivery/cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines/) execution. (CDS-53363)
+- The HTTP response codes and body details were not being displayed in the [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/) execution. (CDS-53363)
 
   When an HTTP step was executed with authentication or authorization errors, the HTTP response codes (401, 403) were not displayed in the execution details.
 
@@ -2485,7 +2485,7 @@ This release does not include early access features.
 
 ##### Fixed issues
 
-- The Kubernetes [Scale step](/docs/continuous-delivery/cd-execution/kubernetes-executions/scale-kubernetes-replicas/) fails when the Kubernetes resource `kind` starts with lowercase. (CDS-53382)
+- The Kubernetes [Scale step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas/) fails when the Kubernetes resource `kind` starts with lowercase. (CDS-53382)
 
   The Scale step wasn't properly handling the case of the Kubernetes resources declared in the manifest. For example, `Deployment` was treated as a valid input but `deployment` was not.
 
@@ -2517,7 +2517,7 @@ This release does not include early access features.
 
   Now Harness is showing the correct file types for the manifest type selected by users. For example, in Kubernetes values YAML, Helm chart values YAML, Kustomize files, Kustomize patches files, OpenShift params files, OpenShift template files.
 
-- Invalid characters in [Shell Script step](/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts/) output variables were allowed. (CDS-52946, ZD-39734)
+- Invalid characters in [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/) output variables were allowed. (CDS-52946, ZD-39734)
 
   Harness now shows a warning when executing the Shell Script step that tells users if any exported variables are using invalid characters or empty values. For example, bash does not support hyphenated variables but users might add hyphens to their exported variables.
 
@@ -2671,7 +2671,7 @@ This release does not include new features.
 
   When **Runtime input** is selected for **Tags** in the SSH AWS infrastructure and no value is selected in **Run Pipeline**, the **Tags** value is set to an empty string in the pipeline YAML. This is now fixed and an empty object is added instead.
 
-- ServiceNow [Import Set step](/docs/continuous-delivery/cd-advanced/ticketing-systems-category/servicenow-import-set/) not showing error message when the staging list call fails. (CDS-50874)
+- ServiceNow [Import Set step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/servicenow-import-set) not showing error message when the staging list call fails. (CDS-50874)
 
   We now show a detailed error message when the API fails to select the ServiceNow connector.
 
@@ -2681,7 +2681,7 @@ This release does not include new features.
 
   ![Deployment Type](static/adc95dc9af6b3beecc06149fc8045fd66f6ad514a37d2583addea35354643801.png)
 
-- The [Email step](/docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/email_step/) is sending an error even though the email is sent. (CDS-50952)
+- The [Email step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/) is sending an error even though the email is sent. (CDS-50952)
 
   In the **Email** step, when there is an invalid address in the **to** setting and a valid email in the **cc** setting, mail is sent to the cc address, but the step is marked as failed. This has been fixed. The Email step is marked as success if emails are sent to the cc address.
 
@@ -2729,11 +2729,11 @@ This release does not include new features.
 
   This issue was happening because users were allowed to use restricted special characters for the trigger **Name** field. We have updated the validation for the **Name** field so now users will not be able to use restricted special characters.
 
-- There is a [Shell Script step](/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts/) discrepancy when adding multiple steps. (CDS-52120)
+- There is a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/) discrepancy when adding multiple steps. (CDS-52120)
 
   The template case was missing for calculating the step count using of the default step name. Now a template case for calculating correct step count of the default name is added.
 
-- The Kubernetes [Apply step](/docs/continuous-delivery/cd-execution/kubernetes-executions/deploy-manifests-using-apply-step) does not work with inline values overrides. (CDS-52167)
+- The Kubernetes [Apply step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step) does not work with inline values overrides. (CDS-52167)
 
   Overriding inline values using the Harness file store was not working. We have incorporated a new method to handle this use case and it is working.
 
@@ -2830,7 +2830,7 @@ This release does not include new features.
 
 - The PagerDuty notifications are not showing start and end dates for pipeline/stage execution. (CDS-49852)
 
-  The PagerDuty template was using the wrong placeholder for [PagerDuty notifications](/docs/continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events/#option-pagerduty-notifications). The template is now modified to use the correct placeholder name.
+  The PagerDuty template was using the wrong placeholder for [PagerDuty notifications](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#pagerduty-notifications). The template is now modified to use the correct placeholder name.
 
 - The deployment freeze recurrence time should be greater than the start time. (CDS-49840)
 

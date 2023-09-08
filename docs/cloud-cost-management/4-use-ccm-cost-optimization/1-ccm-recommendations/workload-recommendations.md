@@ -245,7 +245,7 @@ which is equal to `0.4 + 0.4 + 0.4 = 1.2`
 
 ### Next steps
 
-* [Optimize Kubernetes Costs with Node Pool Recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/1-ccm-recommendations/node-pool-recommendations.md)
+* [Optimize Kubernetes Costs with Node Pool Recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations)
 * [Analyze Cost for Kubernetes Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md)
 
 ### See also
