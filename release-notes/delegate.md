@@ -84,6 +84,10 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 ### Hotfixes
 
+#### Version 80313
+
+- We are receiving high number of errors on prod related to `OverlappingFileLockException`. This is caused by Chronicle Queue library which we are using. With this version, we have upgraded the Chronicle libraries which has already this fix in place.
+
 #### Version 80312
 
 - In previous versions, when utilizing Artifactory as an artifact source, there was an issue where the retrieval of artifacts failed when the specified path included regular expressions, and the path structure was nested rather than flat. We are pleased to announce that this release addresses and resolves this issue.
