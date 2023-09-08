@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - September 06, 2023
+## Latest - September 08, 2023
 
 ### New features and enhancements
 
@@ -25,17 +25,31 @@ This release does not include new features.
 
 This release does not include early access features.
 
+### Fixed issues in the iOS SDK
+
+- Fix runtime failure when target is nil (FFM-9282)
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Sept 06, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
 ### Fixed issues in the Java SDK
 
 - Standardised SDK error codes (FFM-8148)
 - Removed dependencies Guava and MapDB (FFM-8840)
 - Added retry enhancements to authentication failures (FFM-8150)
 - Local connector now creates metrics folder (FFM-4023)
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 24, 2023
 
