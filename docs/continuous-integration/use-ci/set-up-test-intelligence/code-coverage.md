@@ -302,8 +302,8 @@ The [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/
    * **Container Registry:** Select a Docker connector.
    * **Image:** Enter `plugins/artifact-metadata-publisher`.
    * **Settings:** Add the following two settings as key-value pairs.
-      * `file_urls`: The URL to the code coverage artifact that was uploaded in the **Upload Artifacts** step.
-      * `artifact_file`: `artifact.txt`
+      * `file_urls`: Provide the URL to the code coverage artifact that was uploaded in the **Upload Artifacts** step. If you uploaded multiple artifacts, you can provide a list of URLs.
+      * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
 ```mdx-code-block
   </TabItem>
@@ -327,8 +327,8 @@ The [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/
                        connectorRef: account.harnessImage
                        image: plugins/artifact-metadata-publisher
                        settings:
-                         file_urls: ## Provide the URL to the code coverage artifact that was uploaded in the Upload Artifacts step.
-                         artifact_file: artifact.txt
+                         file_urls: ## Provide the URL to the code coverage artifact that was uploaded in the Upload Artifacts step. If you uploaded multiple artifacts, you can provide a list of URLs.
+                         artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
    ```
 
 ```mdx-code-block
@@ -359,8 +359,9 @@ The [S3 Upload and Publish Drone plugin](https://github.com/harness-community/dr
       * `aws_secret_access_key`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`
       * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`
       * `aws_bucket`: The target S3 bucket.
-      * `artifact_file`: `source/path/to/artifact.tar.gz`
-      * `source`: `path/to/target/artifact.tar.gz`
+      * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+      * `source`: Provide the path, in the build workspace, to the file or directory that you want to upload. If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
+      * `target`: Optional.
    * **Image Pull Policy:** Select **If Not Present**
 
 ```mdx-code-block
@@ -384,12 +385,15 @@ The [S3 Upload and Publish Drone plugin](https://github.com/harness-community/dr
                          aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to a Harness secret or pipeline variable containing your AWS access key.
                          aws_default_region: ap-southeast-2 ## Set to your default AWS region.
                          aws_bucket: bucket-name ## The target S3 bucket.
-                         artifact_file: source/path/to/artifact.tar.gz
-                         source: path/to/target/artifact.tar.gz
+                         artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+                         source: path/to/target/artifact.xml ## Provide the path, in the build workspace, to the file or directory that you want to upload.
+                         target: <+pipeline.name>/<+pipeline.sequenceId> ## Optional. Provide a path, relative to the 'aws_bucket', where you want to store the artifact. Do not include the bucket name; you specified this in 'aws_bucket'. If the specified path doesn't exist in the bucket, Harness creates the folder or folders when uploading the artifact. If you don't specify a 'target', Harness uploads the artifact to the bucket's main directory.
                        imagePullPolicy: IfNotPresent
    ```
 
-For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/references/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key.
+For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/references/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key. You could also use expressions for `target`, such as `<+pipeline.name>/<+pipeline.sequenceId>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
+
+If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 
 ```mdx-code-block
   </TabItem>

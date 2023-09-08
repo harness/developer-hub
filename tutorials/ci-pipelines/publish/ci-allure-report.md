@@ -54,7 +54,7 @@ If you haven't created a pipeline before, try [Get started with the fastest CI](
 
 3. In your cloud storage, create a bucket or repo where you can upload your artifact.
 
-   To access the artifact directly from the **Artifacts** tab, the upload location must be publicly available. If the location is not publicly available, you might need to log in to view the artifact. For example, this tutorial uses a publicly available GCS bucket to store the report.
+   To access the artifact directly from the **Artifacts** tab, the upload location must be publicly available. If the location is not publicly available, you might need to log in to view the artifact or use an different artifact URL (such as a console view URL). This tutorial uses a publicly available GCS bucket to store the report.
 
 ## Prepare artifacts to upload
 
@@ -129,7 +129,7 @@ For example, this tutorial uploads the combined Allure report to GCS:
                     connectorRef: YOUR_GCP_CONNECTOR_ID
                     bucket: YOUR_GCS_BUCKET
                     sourcePath: target/allure-report/complete.html
-                    target: <+pipeline.sequenceId>/index.html
+                    target: <+pipeline.sequenceId>
 ```
 
 :::tip
@@ -162,15 +162,30 @@ For example, this step publishes the URL for the combined Allure report on GCS:
                     connectorRef: account.harnessImage
                     image: plugins/artifact-metadata-publisher
                     settings:
-                      file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/index.html ## Cloud storage URL for the previously-uploaded artifact.
-                      artifact_file: artifact.txt
+                      file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html ## Provide the URL in your cloud storage bucket for the previously-uploaded artifact. If you uploaded multiple artifacts, you can provide a list of URLs.
+                      artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 ```
 
-:::tip
+:::info
 
-The resolved value of `file_urls` is the URL that is published on the **Artifacts** tab. It is derived from the upload location specified in your upload artifact step.
+For `file_url`, provide the URL to the artifact that uses the **Bucket**, **Target**, and artifact name specified in the **Upload Artifacts** step. The format depends on your cloud storage provider. For example:
 
-For example, this tutorial uses `https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/index.html`, which contains the value of `bucket` and `target` from the upload artifact step. When the pipeline runs, the expression `<+pipeline.sequenceId>` is resolved into a valid URL.
+* GCS: `https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION`
+* S3: `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`
+
+The resolved value of `file_urls` is the URL that is published on the **Artifacts** tab. It is derived from the upload location specified in the **Upload Artifact** step.
+
+For example, this tutorial uses `https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html`, which references the value of `bucket`, `target`, and artifact object name from the Upload Artifact step. When the pipeline runs, the expression `<+pipeline.sequenceId>` is resolved into a valid URL.
+
+For private S3 buckets, use the console view URL, such as `https://s3.console.aws.amazon.com/s3/object/BUCKET?region=REGION&prefix=TARGET/ARTIFACT_NAME_WITH_EXTENSION`.
+
+If you uploaded multiple artifacts, you can provide a list of URLs, such as:
+
+```yaml
+                      file_urls:
+                        - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact1.html
+                        - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact2.txt
+```
 
 :::
 
@@ -200,14 +215,19 @@ Add a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/plugin
                       aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to a Harness secret or pipeline variable containing your AWS access key.
                       aws_default_region: ap-southeast-2 ## Set to your default AWS region.
                       aws_bucket: BUCKET_NAME ## The target S3 bucket.
-                      artifact_file: source/path/to/artifact.tar.gz
-                      source: path/to/target/artifact.tar.gz
+                      artifact_file: artifact.txt ## Provide any '.txt' file name. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+                      source: target/allure-report/complete.html ## Provide the path, in the build workspace, to the file or directory that you want to upload.
+                      target: <+pipeline.sequenceId> ## Optional. Provide a path, relative to the 'aws_bucket', where you want to store the artifact. Do not include the bucket name; you specified this in 'aws_bucket'. If the specified path doesn't exist in the bucket, Harness creates the folder or folders when uploading the artifact. If you don't specify a 'target', Harness uploads the artifact to the bucket's main directory.
                     imagePullPolicy: IfNotPresent
 ```
 
 :::tip
 
 For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/references/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) that contain your AWS access ID and key.
+
+This tutorial also uses an expression for the `target`: The expression `<+pipeline.sequenceId>` creates a directory based on the incremental build ID. This ensures that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
+
+If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 
 :::
 
@@ -293,7 +313,7 @@ pipeline:
                     connectorRef: YOUR_GCP_CONNECTOR_ID
                     bucket: YOUR_GCS_BUCKET
                     sourcePath: target/allure-report/complete.html
-                    target: <+pipeline.sequenceId>/index.html
+                    target: <+pipeline.sequenceId>
               - step:
                   type: Plugin
                   name: publish artifact metadata
@@ -302,7 +322,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: plugins/artifact-metadata-publisher
                     settings:
-                      file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/index.html
+                      file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html
                       artifact_file: artifact.txt
 ```
 
@@ -383,7 +403,7 @@ pipeline:
                     connectorRef: YOUR_GCP_CONNECTOR_ID
                     bucket: YOUR_GCS_BUCKET
                     sourcePath: target/allure-report/complete.html
-                    target: <+pipeline.sequenceId>/index.html
+                    target: <+pipeline.sequenceId>
               - step:
                   type: Plugin
                   name: publish artifact metadata
@@ -392,7 +412,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: plugins/artifact-metadata-publisher
                     settings:
-                      file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/index.html
+                      file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html
                       artifact_file: artifact.txt
 ```
 

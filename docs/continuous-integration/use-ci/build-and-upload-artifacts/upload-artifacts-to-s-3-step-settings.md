@@ -93,7 +93,7 @@ The name of the S3 bucket name where you want to upload the artifact.
 
 ### Source Path
 
-Path to the artifact file/folder that you want to upload.
+Path to the file or directory that you want to upload.
 
 If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 
@@ -103,9 +103,9 @@ Endpoint URL for S3-compatible providers. This setting is not needed for AWS.
 
 ### Target
 
-The path, relative to the S3 **Bucket**, where you want to store the artifact. Do not include the bucket name; you specified this in **Bucket**.
+Provide a path, relative to the S3 **Bucket**, where you want to store the artifact. Do not include the bucket name; you specified this in **Bucket**.
 
-If no path is specified, the artifact is saved to `[bucket]/[key]`.
+If you don't specify a **Target**, Harness uploads the artifact to the bucket's main directory.
 
 ### Run as User
 
@@ -157,8 +157,8 @@ Configure the **Plugin** step settings as follows:
 * **Container Registry:** Select a Docker connector.
 * **Image:** Enter `plugins/artifact-metadata-publisher`.
 * **Settings:** Add the following two settings as key-value pairs.
-  * `file_urls`: The URL to the target artifact that was uploaded in the **Upload Artifacts to S3** step.
-  * `artifact_file`: `artifact.txt`
+  * `file_urls`: Provide the URL to the artifact that was uploaded in the **Upload Artifacts to S3** step, such as `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`. If you uploaded multiple artifacts, you can provide a list of URLs. If your S3 bucket is private, use the console view URL, such as `https://s3.console.aws.amazon.com/s3/object/BUCKET?region=REGION&prefix=TARGET/ARTIFACT_NAME_WITH_EXTENSION`.
+  * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
 ```mdx-code-block
   </TabItem>
@@ -176,9 +176,14 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
                     connectorRef: account.harnessImage
                     image: plugins/artifact-metadata-publisher
                     settings:
-                      file_urls: ## Provide the URL to the target artifact that was uploaded in the Upload Artifacts to S3 step.
+                      file_urls: https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION
                       artifact_file: artifact.txt
 ```
+
+* `connectorRef`: Use the built-in Docker connector (`account.harness.Image`) or specify your own Docker connector.
+* `image`: Must be `plugins/artifact-metadata-publisher`.
+* `file_urls`: Provide the URL to the target artifact that was uploaded in the **Upload Artifacts to S3** step, such as `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`. If you uploaded multiple artifacts, you can provide a list of URLs. If your S3 bucket is private, use the console view URL, such as `https://s3.console.aws.amazon.com/s3/object/BUCKET?region=REGION&prefix=TARGET/ARTIFACT_NAME_WITH_EXTENSION`.
+* `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
 ```mdx-code-block
   </TabItem>
@@ -211,8 +216,9 @@ Configure the **Plugin** step settings as follows:
    * `aws_secret_access_key`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`.
    * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`.
    * `aws_bucket`: The target S3 bucket.
-   * `artifact_file`: `source/path/to/artifact.tar.gz`
-   * `source`: `path/to/target/artifact.tar.gz`
+   * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+   * `source`: Provide the path, in the build workspace, to the file or directory that you want to upload. If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
+   * `target`: Optional. Provide a path, relative to the `aws_bucket`, where you want to store the artifact. Do not include the bucket name; you specified this in `aws_bucket`. If the specified path doesn't exist in the bucket, Harness creates the folder or folders when uploading the artifact. If you don't specify a `target`, Harness uploads the artifact to the bucket's main directory. You might want to use expressions, such as `<+pipeline.name>/<+pipeline.sequenceId>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
 * **Image Pull Policy:** Select **If Not Present**.
 
 ```mdx-code-block
@@ -228,21 +234,24 @@ Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that
                   name: s3-upload-publish
                   identifier: custom_plugin
                   spec:
-                    connectorRef: account.harnessImage
-                    image: harnesscommunity/drone-s3-upload-publish
+                    connectorRef: account.harnessImage ## Use the built-in Docker connector or specify your own connector.
+                    image: harnesscommunity/drone-s3-upload-publish ## Required.
                     settings:
                       aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference to a Harness secret or pipeline variable containing your AWS access ID.
                       aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to a Harness secret or pipeline variable containing your AWS access key.
                       aws_default_region: ap-southeast-2 ## Set to your default AWS region.
                       aws_bucket: bucket-name ## The target S3 bucket.
-                      artifact_file: source/path/to/artifact.tar.gz
-                      source: path/to/target/artifact.tar.gz
+                      artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+                      source: path/to/target/artifact.tar.gz ## Provide the path, in the build workspace, to the file or directory that you want to upload.
+                      target: <+pipeline.name>/<+pipeline.sequenceId> ## Optional. Provide a path, relative to the 'aws_bucket', where you want to store the artifact. Do not include the bucket name; you specified this in 'aws_bucket'. If the specified path doesn't exist in the bucket, Harness creates the folder or folders when uploading the artifact. If you don't specify a 'target', Harness uploads the artifact to the bucket's main directory.
                     imagePullPolicy: IfNotPresent
 ```
 
 :::tip
 
-For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/references/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key.
+For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/references/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key. You could also use expressions for `target`, such as `<+pipeline.name>/<+pipeline.sequenceId>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
+
+If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 
 :::
 
@@ -255,3 +264,15 @@ For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/pla
   </TabItem>
 </Tabs>
 ```
+
+:::tip
+
+On the Artifacts tab, select the step name to expand the list of artifact links associated with that step.
+
+If your pipeline has multiple steps that uploading artifacts, use the dropdown menu on the Artifacts tab to switch between lists of artifacts uploaded by different steps.
+
+<!-- ![](./static/artifacts-tab-with-link.png) -->
+
+<docimage path={require('./static/artifacts-tab-with-link.png')} />
+
+:::

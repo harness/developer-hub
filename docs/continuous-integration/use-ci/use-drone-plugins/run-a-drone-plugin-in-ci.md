@@ -177,8 +177,8 @@ An example of the **Plugin** step configuration is provided below; however, your
                     connectorRef: account.harnessImage ## A Docker connector ID
                     image: plugins/artifact-metadata-publisher
                     settings:
-                      file_urls: https://storage.googleapis.com/.../index.html ## URL for the storage location where the data file is located.
-                      artifact_file: artifact.txt ## The name of the artifact file
+                      file_urls: https://storage.googleapis.com/mybucket/index.html ## Provide a URL to the artifact you want to show on the artifact tab. You can provide a list of multiple URLs to show multiple links on the Artifacts tab.
+                      artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 ```
 
 For more information about uploading and publishing artifacts, go to [Build and upload artifacts](/docs/category/build-and-upload-artifacts).

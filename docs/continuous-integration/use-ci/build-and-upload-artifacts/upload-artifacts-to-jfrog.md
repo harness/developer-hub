@@ -101,8 +101,8 @@ Configure the **Plugin** step settings as follows:
 * **Container Registry:** Select a Docker connector.
 * **Image:** Enter `plugins/artifact-metadata-publisher`.
 * **Settings:** Add the following two settings as key-value pairs.
-  * `file_urls`: The URL to the target artifact that was uploaded in the **Upload Artifacts to JFrog Artifactory** step.
-  * `artifact_file`: `artifact.txt`
+  * `file_urls`: Provide a URL to the artifact that was uploaded in the **Upload Artifacts to JFrog Artifactory** step. If you uploaded multiple artifacts, you can provide a list of URLs.
+  * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
 ```mdx-code-block
   </TabItem>
@@ -117,11 +117,11 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
                   name: publish artifact metadata
                   identifier: publish_artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
-                    image: plugins/artifact-metadata-publisher
+                    connectorRef: account.harnessImage ## Use the built-in Docker connector or specify your own Docker connector.
+                    image: plugins/artifact-metadata-publisher ## Required.
                     settings:
-                      file_urls: ## Provide the URL to the target artifact that was uploaded in the Upload Artifacts to JFrog Artifactory step.
-                      artifact_file: artifact.txt
+                      file_urls: ## Provide the URL to the artifact that was uploaded in the Upload Artifacts to JFrog Artifactory step. If you uploaded multiple artifacts, you can provide a list of URLs.
+                      artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 ```
 
 ```mdx-code-block

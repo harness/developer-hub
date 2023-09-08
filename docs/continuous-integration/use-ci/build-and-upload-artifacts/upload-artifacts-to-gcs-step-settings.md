@@ -97,8 +97,8 @@ Configure the **Plugin** step settings as follows:
 * **Container Registry:** Select a Docker connector.
 * **Image:** Enter `plugins/artifact-metadata-publisher`.
 * **Settings:** Add the following two settings as key-value pairs.
-  * `file_urls`: A GCS URL using the **Bucket** and **Target** specified in the **Upload Artifacts to GCS** step, such as `https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH.html`.
-  * `artifact_file`: `artifact.txt`
+  * `file_urls`: Provide a GCS URL that uses the **Bucket**, **Target**, and artifact name specified in the **Upload Artifacts to GCS** step, such as `https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION`. If you uploaded multiple artifacts, you can provide a list of URLs.
+  * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
 ```mdx-code-block
   </TabItem>
@@ -116,11 +116,14 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
                     connectorRef: account.harnessImage
                     image: plugins/artifact-metadata-publisher
                     settings:
-                      file_urls: https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH.html
+                      file_urls: https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION
                       artifact_file: artifact.txt
 ```
 
-For `file_urls`, use the **Bucket** and **Target** that you specified in the **Upload Artifacts to GCS** step.
+* `connectorRef`: Use the built-in Docker connector (`account.harness.Image`) or specify your own Docker connector.
+* `image`: Must be `plugins/artifact-metadata-publisher`.
+* `file_urls`: Provide a GCS URL that uses the `bucket`, `target`, and artifact name specified in the **Upload Artifacts to GCS** step, such as `https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION`. If you uploaded multiple artifacts, you can provide a list of URLs.
+* `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
 ```mdx-code-block
   </TabItem>
