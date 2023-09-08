@@ -6,7 +6,7 @@ redirect_from:
   - /docs/continuous-delivery/gitops/harness-git-ops-agent-with-self-signed-certificates
 ---
 
-Harness Self-Managed Enterprise Edition supports authorization by self-signed certificate. This topic describes how to use self-signed certificates with the Harness GitOps agent.
+Harness Self-Managed Enterprise Edition supports self-signed certificates. This topic describes how to use self-signed certificates with the Harness GitOps agent.
 
 In this topic we will do the following:
 
