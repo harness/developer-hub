@@ -580,6 +580,13 @@ Ex: The value for the secret is say "#7767test"
 Harness now allows admin to delete users from Harness UI even if the user is provisioned via SCIM, this is only supposed to be used in case the Users ends up in a state the SCIM App was removed and hence the User can't be removed.
 As this can cause issues if the User is a part of say 2 Accounts the backend entry for the user won't be removed and from that specific account it might removed. Now reprovisioning the User from SCIM app will give error as the user is still present with the same user id in backend. Hence you will need to remove the user completely from the SCIM app and provision him again as a new user. 
 
+#### Is their a way we can check what delegates are running/doing any particular time.
+You can review the delegate logs so ideally it should show the task that it was executing around the time frame.
 
+#### Getting error IllegalArgumentException: kubectl is not installed for version V1_13. Available versions are: []
+If you are using minimal delegate images than this error can come and need to install the kubectl version and check $PATh if its updated correctly
+
+#### Delegate is not coming up with no space left error
+While starting delegate we install some third party binaries(kubectl, helm etc) so those need some space so make sure delegate machne has some disk space left
 
 
