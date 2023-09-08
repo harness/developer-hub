@@ -152,6 +152,10 @@ This release does not include early access features.
 
 - Fixed an issue where the Kubernetes connector in a container step doesn't respect the delegate selector tags set at pipeline level. With this fix, the connector selects delegates specified in the pipeline rather than the connector, which is the correct behavior. (CDS-76105, ZD-48542)
 
+  This fix is behind the feature flag `CD_CONTAINER_STEP_DELEGATE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+
+  <!-- https://harness.atlassian.net/browse/CDS-76105?focusedCommentId=568984 -->
+
 - Fixed a UI issue where the **Environment** tab in a Deploy stage did not display new custom variables after they were created.  (CDS-76068)
 
 - Removed the **Reconcile** option for individual input sets on the **Input Sets** page. (CDS-75845)
