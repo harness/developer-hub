@@ -183,6 +183,13 @@ For details about the chart values, explanations of the default values, and desc
 
 <!-- PR-1000 -->
 
+For self signed certificates there are additional steps:
+1. [Install delegates with custom certificates](https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
+[2. Configure a Kubernetest build farm to use self-signed certificates
+](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
+3. [Configure GitOps Agent with Self-signed certificates](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates/)
+
+
 ## Next steps
 
 After installation is complete, you should create the initial Harness account, and then [create organizations and projects](../../platform/organizations-and-projects/create-an-organization.md).
