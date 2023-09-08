@@ -86,7 +86,7 @@ You must export your Google Cloud service account key and add it as an [Encrypte
 2. Scroll to the service account you want to use. If no service account is present, create one.
 3. Grant this service account the Google Cloud Secret Manager permissions needed.  
 To do this, edit the service account and click **Permissions**. Click **Roles**, and then add the roles needed.  
-Go to [Managing secrets](https://cloud.google.com/secret-manager/docs/access-control) from Google.
+Go to [Managing secrets](https://cloud.google.com/secret-manager/docs/access-control) in the Google Cloud documentation.
 4. Open your service account's Actions ⋮ menu, then select **Create key.**
 5. In the resulting **Create private key** dialog, select the **JSON** option, create the key, and download it to your computer.
 6. Go back to Harness.

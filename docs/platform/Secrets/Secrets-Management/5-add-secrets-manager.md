@@ -40,7 +40,7 @@ Looking for specific secret managers? Go to:
 6. If you choose to set this secret manager as the default, select **Use as Default Secret Manager**.
 7. Click **Finish**.
 
-When a new Default Secret Manager is set up, only new Cloud Provider and/Connector secret fields are encrypted and stored in the new Default Secret Manager. Cloud Providers and Connectors that were created before the modification, are unaffected.
+When a new Default Secret Manager is set up, only new Cloud Provider and/or Connector secret fields are encrypted and stored in the new Default Secret Manager. Cloud Providers and Connectors that were created before the modification, are unaffected.
 
 ### Secret manager scope
 

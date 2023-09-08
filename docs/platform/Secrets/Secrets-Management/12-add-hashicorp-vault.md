@@ -59,7 +59,7 @@ To assign a **Secret ID**, you can create a new [**Secret**](/docs/platform/secr
 
 The SecretId should not expire and it should be valid until it is manually revoked. Harness uses the App Role ID and Secret ID you supply to fetch a Vault Auth Token dynamically whenever there is a CRUD operation of secrets related to this Vault. For example, when creating a secret in this Vault, Harness internally uses this App Role Id and Secret ID and makes a call to vault via the delegate to generate a token. Now, this token is used to make the actual secret creation call to vault. This token is never received on the Harness side. It resides in the delegate and is destroyed after the creation of the secret.
 
-For more information, go to [RoleID](https://www.vaultproject.io/docs/auth/approle.html#roleid) and [Authenticating Applications with HashiCorp Vault AppRole](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle) from HashiCorp.
+For more information, go to [RoleID](https://www.vaultproject.io/docs/auth/approle.html#roleid) and [Authenticating Applications with HashiCorp Vault AppRole](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle) in the HashiCorp documentation.
 
 If you encounter errors, setting [token\_num\_uses](https://www.vaultproject.io/api-docs/auth/approle#token_num_uses) to `0` can often resolve problems.
 
@@ -110,7 +110,7 @@ Next, use the new token with Harness. To do this, perform the below steps:
 * The secret settings page appears. Here you can either **Create a new** [**Secret**](/docs/platform/secrets/add-use-text-secrets) or **Select an existing secret**. If creating a new Secret, enter the token which you created in the **Secret Value** field.
   ![](../../Secrets/static/add-hashicorp-vault-22.png)
 
-For detailed steps on creating a secret, go to [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+For detailed steps on creating a secret, go to [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets).
 
 If you have already added a Secret with your token, you can choose the same as shown below:
 
@@ -143,7 +143,7 @@ In the AWS Auth method, there are two authentication types:
 
 Harness recommends using the IAM technique for authentication since it is more versatile and complies with standard practises.
 
-To authenticate with AWS Auth, make sure you have configured the vault with entries for **Header**, **Role**, and **Region**. For more information, go to [AWS Auth Method](https://www.vaultproject.io/docs/auth/aws#iam-auth-method).
+To authenticate with AWS Auth, make sure you have configured the vault with entries for **Header**, **Role**, and **Region**. For more information, go to [AWS Auth Method](https://www.vaultproject.io/docs/auth/aws#iam-auth-method) in the Vault documentation.
 
 You must add the **Server ID Header** from Vault as a [Harness Encrypted Text Secret](/docs/platform/secrets/add-use-text-secrets) and select it for **Server Id Header** in Harness.
 
@@ -161,14 +161,14 @@ To authenticate with Kubernetes Auth, make sure you have created a role in the v
 
 ![](../../Secrets/static/add-hashicorp-vault-27.png)
 
-For more information, go to [Kubernetes Auth Method](https://www.vaultproject.io/docs/auth/kubernetes#configuration).
+For more information, go to [Kubernetes Auth Configuration](https://www.vaultproject.io/docs/auth/kubernetes#configuration) in the Vault documentation.
 
 In **Role Name**, enter the role you have configured in the Vault.
 
 ![](../../Secrets/static/add-hashicorp-vault-28.png)
 In **Service Account Token Path** enter the JSON Web Token (JWT) path. This is the path where the JWT token is mounted. The default path of this token is `/var/run/secrets/kubernetes.io/serviceaccount/token`.
 
-For more information, go to [Service Account Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+For more information, go to [Service Account Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens) in the Kubernetes documentation.
 
 ### Step 2: Select Secret Engine and Version
 

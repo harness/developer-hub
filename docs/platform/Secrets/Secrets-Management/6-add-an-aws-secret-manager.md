@@ -67,7 +67,7 @@ The following policy list enables Harness to perform all the secrets operations 
 }
 ```
 
-Go to [Using Identity-based Policies (IAM Policies) for Secret Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_identity-based-policies.html) from AWS.
+Go to [Using Identity-based Policies (IAM Policies) for Secret Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_identity-based-policies.html) in the AWS documentation.
 
 To test use the AWS account when running [aws secretsmanager list-secrets](https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/list-secrets.html#examples) on either the Harness Delegate host or another host.
 
@@ -155,7 +155,7 @@ Enter the Amazon Resource Name (ARN) of the role that you want to assume. This r
 
 If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 
-For more information, go to [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) from AWS.
+For more information, go to [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) in the AWS documentation.
 
 #### Assume Role Duration
 
