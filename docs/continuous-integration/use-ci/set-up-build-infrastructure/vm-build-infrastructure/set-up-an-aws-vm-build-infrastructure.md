@@ -33,7 +33,7 @@ The following diagram illustrates a CI build farm using AWS VMs. The [Harness De
 
 This is an advanced configuration. Before beginning, you should be familiar with:
 
-* [Harness key concepts](../../../../getting-started/learn-harness-key-concepts.md)
+* [Harness key concepts](../../../../get-started/key-concepts.md)
 * [CI pipeline creation](../../prep-ci-pipeline-components.md)
 * [Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
 * [CI Build stage settings](../ci-stage-settings.md)

@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
 Drone plugins are Docker containers that perform predefined tasks. You can use the **Plugin** step to run plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/) in your Harness CI pipelines. You can also [write your own custom plugins](./custom_plugins.md). For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md).
 
-This topic assumes you're familiar with [pipeline creation](../prep-ci-pipeline-components.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+This topic assumes you're familiar with [pipeline creation](../prep-ci-pipeline-components.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 
 <details>
 <summary>About Drone</summary>

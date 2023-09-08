@@ -172,7 +172,7 @@ const config = {
             items: [
               {
                 label: "Get Started",
-                to: "docs/getting-started",
+                to: "docs/get-started",
               },
               {
                 label: "Continuous Integration",
@@ -219,7 +219,7 @@ const config = {
                 to: "docs/self-managed-enterprise-edition",
               },
               {
-                label: "Harness FirstGen",
+                label: "FirstGen",
                 to: "docs/first-gen",
               },
               {
@@ -473,7 +473,7 @@ const config = {
           "^/docs/category/terragrunt.*",
           "^/docs/category/traditional-deployments-ssh.*",
           "^/docs/category/custom-deployments.*",
-          "^/docs/category/continuous-verification-1.*",
+          "^/docs/category/continuous-verification.*",
           "^/docs/category/model-your-cd-pipeline.*",
           "^/docs/category/harness-git-based-how-tos.*",
         ],

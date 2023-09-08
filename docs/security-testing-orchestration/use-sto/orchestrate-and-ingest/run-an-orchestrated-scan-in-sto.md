@@ -12,7 +12,7 @@ An *orchestrated scan* is a fully automated workflow that scans an object and in
 
 STO supports orchestrated scan for popular open-source scanners such as Aqua-Trivy and Bandit as well as commercial scanners such as SonarQube.
 
-In the following example workflow, you will clone the base pipeline created in [Set up Harness for STO](../../onboard-sto/set-up-harness-for-sto.md) and configure it to scan a Docker image using Aqua Trivy.
+In the following example workflow, you will clone the base pipeline created in [Set up Harness for STO](../../get-started/onboarding-guide.md) and configure it to scan a Docker image using Aqua Trivy.
 
 1. In the Pipeline Studio, go to the project where you create your base pipeline. Click the top-right menu, choose **Clone**, and save the new pipeline as **Trivy Image Scan Orchestrated**.
 2. In your new pipeline, go to **securityTestStage** and open the **banditScan** step.

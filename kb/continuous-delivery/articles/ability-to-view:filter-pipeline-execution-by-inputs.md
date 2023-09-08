@@ -17,7 +17,7 @@ Filtering pipeline executions: You can filter pipeline executions by name, ident
 
 Here are some additional resources that you may find helpful:
 
-* Pipeline executions documentation: https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/
+* Pipeline executions documentation: /docs/platform/pipelines/view-and-compare-pipeline-executions/
 * Pipeline execution API: https://apidocs.harness.io/tag/Pipeline-Execution-Details/
 
 ## Problem statement

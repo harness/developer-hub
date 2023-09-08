@@ -173,7 +173,7 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
 
 ## Create a pipeline
 
-Pipelines are comprised of one or more stages. Each stage has one or more steps that manage and automate builds, tests, deployments, and other important build and release tasks. To learn more about pipeline components, go to [CI pipeline components](/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics).
+Pipelines are comprised of one or more stages. Each stage has one or more steps that manage and automate builds, tests, deployments, and other important build and release tasks. To learn more about pipeline components, go to [CI pipeline components](/docs/continuous-integration/get-started/key-concepts).
 
 1. Select **Pipelines**, and then select **Create a Pipeline**.
 2. Enter a **Name** for the pipeline. Harness automatically creates a pipeline ID based on the name. Once the pipeline is created, you can't change the ID. You can use the ID to reference subordinate elements of a pipeline, such as the names of variables within the pipeline.

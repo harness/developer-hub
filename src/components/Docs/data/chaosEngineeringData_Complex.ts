@@ -112,7 +112,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.ce,
           description:
             "Learn the basics of Harness Chaos Engineering.",
-          link: "/docs/chaos-engineering/get-started/introduction-to-chaos-module",
+          link: "/docs/chaos-engineering/get-started/overview",
         },
       ],
     },
@@ -125,7 +125,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.ce,
           description:
             "Familiarize with chaos engineering terminologies.",
-          link: "/docs/chaos-engineering/get-started/terminologies",
+          link: "/docs/chaos-engineering/get-started/key-concepts",
         },
       ],
     }, 

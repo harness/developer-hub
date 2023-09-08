@@ -16,7 +16,7 @@ Use the Azure Repos connector to [connect to Azure SCM repos](../Code-Repositori
 
 :::tip
 
-If you're using Harness **Cloud Cost Management (CCM)**, you can [Set Up Cloud Cost Management for Azure](../../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
+If you're using Harness **Cloud Cost Management (CCM)**, you can [Set Up Cloud Cost Management for Azure](../../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md).
 
 :::
 
@@ -693,5 +693,5 @@ For Azure deployments, note the following:
 
 * [Azure ACR to AKS CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
-* [Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Harness Key Concepts](../../../get-started/key-concepts.md)
 * [CD Pipeline Basics](/docs/continuous-delivery/get-started/key-concepts)

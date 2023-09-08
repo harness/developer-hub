@@ -591,7 +591,7 @@ Install Terraform on the delegate to fix this.
 
 In some Harness CloudFormation and ECS deployments you might get failures with `ThrottlingException` or `Rate exceeded` errors for CloudFormation and ECS API calls.
 
-For more information, go to [AWS backoff strategy](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-backoff-strategy).
+For more information, go to [AWS backoff strategy](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-backoff-strategy).
 
 ## Harness secret managers
 

@@ -27,7 +27,7 @@ For instructions, go to [View artifacts on the Artifacts tab](#view-artifacts-on
 
 You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 
-If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 
 ## Prepare artifacts to upload
 
@@ -70,7 +70,7 @@ S3 buckets use [private ACLs](https://docs.aws.amazon.com/AmazonS3/latest/usergu
 
 Stages with **Upload Artifacts to S3** steps must have a `PLUGIN_USER_ROLE_ARN` stage variable if:
 
-* Your [AWS connector's authentication uses a cross-account role (ARN)](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#enable-cross-account-access-sts-role). You can use `PLUGIN_USER_ROLE_ARN` to specify the full ARN value corresponding with the AWS connector's ARN.
+* Your [AWS connector's authentication uses a cross-account role (ARN)](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#enable-cross-account-access-sts-role). You can use `PLUGIN_USER_ROLE_ARN` to specify the full ARN value corresponding with the AWS connector's ARN.
 * Your AWS connector uses [**Assume IAM Role on Delegate** authentication](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings). If your connector doesn't use **AWS Access Key** authentication, then the **Upload Artifact to S3** step uses the IAM role of the build pod or build VM (depending on your build infrastructure). You can use `PLUGIN_USER_ROLE_ARN` to select a different role than the default role assumed by the build pod/machine. This is similar to [`sts assume-role`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/assume-role.html).
 
 To add the `PLUGIN_USER_ROLE_ARN` stage variable:

@@ -113,7 +113,7 @@ import DelegateInstall from '/tutorials/platform/install-delegate.md';
 <DelegateInstall />
 </details>
 
-To learn more, watch the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview) video.
+To learn more, watch the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview) video.
 
 
 6. Back in **Set Up Delegates**, you can select the new Delegate.
@@ -231,7 +231,7 @@ If you run into any errors, it is typically because the cluster does meet the re
 * Add a Kubernetes rolling update.
 * Deploy your Kubernetes pipeline to your target cluster.
 
-Next, try Harness [Continuous Integration](/docs/continuous-integration) to build a codebase, upload it to a repo, and run unit and integrations tests: [CI pipeline quickstart](/docs/continuous-integration/ci-quickstarts/ci-pipeline-quickstart).
+Next, try Harness [Continuous Integration](/docs/continuous-integration) to build a codebase, upload it to a repo, and run unit and integrations tests: [CI pipeline quickstart](/docs/continuous-integration/get-started/tutorials).
 
 ## Clean up the deployment
 

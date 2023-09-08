@@ -97,11 +97,11 @@ For more information, go to [JSON and XML functors](/docs/continuous-delivery/x-
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Step execution inputs and outputs
 
@@ -141,7 +141,7 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 
 ## Delegate proxy
 
-HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](https://developer.harness.io/docs/platform/Delegates/manage-delegates/configure-delegate-proxy-settings).
+HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](/docs/platform/Delegates/manage-delegates/configure-delegate-proxy-settings).
 
 ## Header capability check
 
@@ -256,7 +256,7 @@ You can add the HTTP step to any CD Pipeline stage independent of deployment str
 
 In **URL**, enter a URL for the call. It must include the `http://` scheme.
 
-For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/)..
+For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](/docs/platform/references/runtime-inputs/)..
 
 You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
 

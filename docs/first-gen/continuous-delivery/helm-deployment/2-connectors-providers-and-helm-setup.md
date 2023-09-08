@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md).This topic describes how to set up the Harness Delegate, Connectors, and Cloud Providers for Helm, and provides some basic Helm setup information.
+This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md).This topic describes how to set up the Harness Delegate, Connectors, and Cloud Providers for Helm, and provides some basic Helm setup information.
 
 Harness includes both Kubernetes and Helm deployments, and you can Helm charts in both. Harness [Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster. See [Helm Charts](../kubernetes-deployments/use-a-helm-repository-with-kubernetes.md).
 

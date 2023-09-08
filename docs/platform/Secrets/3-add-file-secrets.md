@@ -20,11 +20,12 @@ You can add an encrypted file secrets at the project, organization, and account 
 2. Select **Secrets**.
 3. Select **Secret**, and then select **File**.
 
-   <!-- ![](../Secrets/static/add-file-secrets-55.png) -->
-
-   <docimage path={require('../Secrets/static/add-file-secrets-55.png')} />
+   ![](./static/add-file-secrets.png)
 
 4. Select the [Secrets Manager](/docs/category/secrets-management) that you want to use to store the secret.
+
+   ![](../Secrets/static/add-file-secrets-56.png)
+
 5. Enter a name for the secret.
 
    You can use this name to reference the encrypted file secret in pipelines, steps, connectors, and so on.
@@ -33,9 +34,8 @@ You can add an encrypted file secrets at the project, organization, and account 
 
 6. Select **Browse** and locate the file you want to store as a secret.
 7. Optionally, you can enter a **Description** and **Tags**.
-8. Select **Save**
+8. Select **Save**.
 
-![](../Secrets/static/add-file-secrets-56.png)
 
 ## Reference an encrypted file secret
 
@@ -43,7 +43,7 @@ You can reference a encrypted file secret in any resource that allows files, suc
 
 ### Reference by name
 
-When populating a UI field, you can search and select secrets by the **Secret Name**
+When populating a UI field, you can search and select secrets by the **Secret Name**.
 
 ![SSH credential settings, including an SSH key file field.](../Secrets/static/add-file-secrets-57.png)
 
