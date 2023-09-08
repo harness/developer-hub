@@ -34,7 +34,7 @@ You need a Harness [API key and unexpired token](/docs/platform/automation/api/a
 
 ## Add the Harness app to OneLogin
 
-For more information, go to the OneLogin documentation on [Adding apps](https://www.onelogin.com/get-started/free-trial-plan/add-apps-manual).
+For more information, go to the OneLogin documentation on [Adding apps](https://www.onelogin.com/getting-started/free-trial-plan/add-apps-manual).
 
 1. In OneLogin, go to **Applications** and select **Add App**.
 2. Search for `Harness`, and select the Harness app.
