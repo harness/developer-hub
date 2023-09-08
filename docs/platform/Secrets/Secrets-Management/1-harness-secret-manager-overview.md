@@ -29,8 +29,8 @@ Harness sends only encrypted data to the Secret Manager, as follows: 
 
 1. Your browser sends data over HTTPS to Harness Manager.
 2. Harness Manager relays encrypted data to the Harness Delegate, also over HTTPS.
-3. The Delegate exchanges a key pair with the Secret Manager, over an encrypted connection.
-4. The Harness Delegate uses the encrypted key and the encrypted secret and then discards them. The keys never leave the Delegate.
+3. The delegate exchanges a key pair with the Secret Manager, over an encrypted connection.
+4. The Harness Delegate uses the encrypted key and the encrypted secret and then discards them. The keys never leave the delegate.
 
 
 :::info note
@@ -74,7 +74,7 @@ Harness does not currently support migrating secrets from the random-key secrets
 
 :::
 
-If you created a Harness trial account, a Delegate is typically provisioned by Harness, and the default Harness Secret Manager performs encryption/decryption.
+If you created a Harness trial account, a delegate is typically provisioned by Harness, and the default Harness Secret Manager performs encryption/decryption.
 
 #### Harness Secrets and Harness Git Experience
 

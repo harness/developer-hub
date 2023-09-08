@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can use Google [Cloud Key Management Service](https://cloud.google.com/security-key-management) (Cloud KMS) as a Harness Secret Manager. Once Google KMS is added as a Secrets Manager, you can create encrypted secrets in Google KMS and use them in your Harness account.
 
-For details on Harness Secret Managers, see [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+For details on Harness Secret Managers, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 
 This topic describes how to add a Google KMS Secret Manager in Harness.
 
@@ -21,7 +21,7 @@ This topic describes how to add a Google KMS Secret Manager in Harness.
 
 ### Add a Secret Manager
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
 
 You can add a Connector from any module in your Project in Project setup, or in your Organization or Account Resources.
 
@@ -53,7 +53,7 @@ Select **Security** > **Key** **Management**.
 
 Select/create a key ring. Select/create a key in the key ring.
 
-To create resources in this or the next step, see Google Cloud's [Creating Symmetric Keys](https://cloud.google.com/kms/docs/creating-keys) topic.Open the Actions menu (⋮), then click **Copy Resource Name**.
+To create resources in this or the next step, go to Google Cloud's [Creating Symmetric Keys](https://cloud.google.com/kms/docs/creating-keys) topic. Open the Actions menu (⋮), and then select **Copy Resource Name**.
 
 ![](../../Secrets/static/add-google-kms-secrets-manager-65.png)
 
@@ -73,11 +73,11 @@ In Google Cloud Console, go to the IAM page.
 
 Locate the Principal you want to use, and click Edit.
 
-In Edit permissions, add the Cloud KMS CryptoKey Encrypter/Decrypter role and click Save.
+In Edit permissions, add the Cloud KMS CryptoKey Encrypter/Decrypter role, and then select **Save**.
 
 ![](../../Secrets/static/add-google-kms-secrets-manager-67.png)
 
-See Google [Permissions and roles](https://cloud.google.com/kms/docs/reference/permissions-and-roles) and Cloud's Using Cloud IAM with KMSCloud's Using Cloud IAM with KMS topics.
+Go to Google [Permissions and roles](https://cloud.google.com/kms/docs/reference/permissions-and-roles) and Cloud's Using Cloud IAM with KMSCloud's Using Cloud IAM with KMS topics.
 
 Next, you'll select the Service Account for that Principal and export its Key file.
 
@@ -95,7 +95,7 @@ In the resulting Create private key dialog, select JSON, create the key, and dow
 
 Return to the Secret Manager's Details page in Harness.
 
-Under GCP KMS Credentials File, click **Create or Select a Secret**. You can create a new [File Secret](/docs/platform/secrets/add-file-secrets)  and upload the key file you just exported from Google Cloud.
+Under GCP KMS Credentials File, click **Create or Select a Secret**. You can create a new [File Secret](/docs/platform/secrets/add-file-secrets) and upload the key file you just exported from Google Cloud.
 
 ![](../../Secrets/static/add-google-kms-secrets-manager-69.png)
 

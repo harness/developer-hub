@@ -25,10 +25,10 @@ Looking for specific secret managers? Go to:
 
 ### Step 1: Configure Secret Manager
 
-1. Select your **Account** or **Organization** or **Project**.
-2. Select **Connectors** in **Setup**.
-3. Create new **Connector.** The **Connectors** page appears**.**
-4. Select a Secret Manager type under **Secret Managers**. 
+1. Select your **Account**, **Organization**, or **Project**.
+2. In **Setup**, select **Connectors**.
+3. Create a new **Connector**. The **Connectors** page appears.
+4. Under **Secret Managers**, select a Secret Manager type. 
    
    Go to:
    * [Add an AWS KMS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
@@ -40,13 +40,23 @@ Looking for specific secret managers? Go to:
 6. If you choose to set this secret manager as the default, select **Use as Default Secret Manager**.
 7. Click **Finish**.
 
-When a new Default Secret Manager is set up, only new Cloud Provider and/Connector secret fields are encrypted and stored in the new Default Secret Manager. Cloud Providers and Connectors that were created before the modification, are unaffected. Where is the Secret for the Secret Manager Stored?
+When a new Default Secret Manager is set up, only new Cloud Provider and/or Connector secret fields are encrypted and stored in the new Default Secret Manager. Cloud Providers and Connectors that were created before the modification, are unaffected.
+
+### Secret manager scope
+
+You can add secrets to the Org or Project scopes using a Secret Manager with an Account or Org scope. For example, you can create secrets inside a project using the Secret Manager created at the Org or Account level.
+
+When you create a secret, Harness shows the list of secret managers at the parent scope and up the hierarchy. If you create a secret at the project level, Harness lists all secret managers scoped at the Account, Org, and Project levels.
+
+![](../../Secrets/static/select-secrets-manager-scope2.png)
+
+Harness creates new secrets with secret manager scope information and identifiers. Harness displays the secret manager scope on the secret list page.
+
+### Where are secrets stored?
 
 Harness stores all your secrets in your Secret Manager.
 
 The secret you use to connect Harness to your Secret Manager (password, etc) is stored in the Harness Default Secret Manager.
-
-You can't add secrets to the Org or Project scopes using an Account or Org Scope Secret Manager.
 
 ### Next steps
 
