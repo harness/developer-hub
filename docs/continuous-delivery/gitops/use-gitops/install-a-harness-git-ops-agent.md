@@ -1,7 +1,7 @@
 ---
 title: Install a Harness GitOps Agent
 description: This topic describes how to install a worker process that runs in your environment and performs GitOps tasks.
-sidebar_position: 3
+sidebar_position: 2
 helpdocs_topic_id: 52r3l5q67u
 helpdocs_category_id: 013h04sxex
 helpdocs_is_private: false
