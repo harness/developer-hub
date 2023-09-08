@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-08-23T10:00
+date: 2023-09-15T10:00
 sidebar_position: 13
 ---
 ```mdx-code-block
@@ -123,6 +123,8 @@ gsutil -m cp \
   This item is available with Harness Platform version 80022 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now view delegate logs when validating a connector that uses a delegate to establish connections. (PL-37919)
+
+- The delegate expiration policy has been extended from 3 months to 6 months. You now only have to update delegates once every 6 months. (PL-39452)
 
 - Earlier, when an administrator enabled the account-level two-factor authentication (2FA) setting, it affected users in the following manner:
   1. Users who had set that account as their default account received 2FA emails, and the user-level 2FA setting was enabled across all their profiles. The users were not allowed to disable the setting.
