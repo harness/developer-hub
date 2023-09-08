@@ -13,7 +13,7 @@ helpdocs_is_published: true
 
 #### Can we enable BuildKit support for the native build and push step?
 
-Currently, our OOTB build and push step utilize Kaniko for building Docker images. To incorporate BuildKit support we would need to use dind build in a run step and more details about dind build can be reffered [here](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/)
+Currently, our OOTB build and push step utilize Kaniko for building Docker images. To incorporate BuildKit support we would need to use dind build in a run step and more details about dind build can be reffered [here](/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/)
 
 
 #### Account verification error for CI Builds (Free Trial account with hosted builds)
@@ -31,7 +31,7 @@ There's direct option to change such things. Go to template listing page, click 
 
 #### How do I share data between steps in a CI stage?
 
-We could use shared paths to allow steps within a stage to share data with each other. You can specify custom paths for data sharing or cache purposes. For more details on this please refer to https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages 
+We could use shared paths to allow steps within a stage to share data with each other. You can specify custom paths for data sharing or cache purposes. For more details on this please refer to /docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages 
 
 #### Is it possible to use different build infrastructures within a pipeline?
 
@@ -56,7 +56,7 @@ We can calculate the service licenses and instances in following methods for CG 
 - Based on service instances we calculate the number of consumed licenses
 - 1 service license is equal to 20 active service instances
 
-Please find an example [here]( https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#example)
+Please find an example [here]( /docs/continuous-delivery/get-started/service-licensing-for-cd/#example)
 
 #### What should we do on experiencing OOM on java heap for the delgate ?
 
@@ -77,7 +77,7 @@ to a file and upload in case they can't see the full line.
 
 #### Is there a way to generate a dynamic file with some information in one stage of the pipeline and consume that file content in a different pipeline stage?
 
-You can refer to this in following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/)
+You can refer to this in following [Documentation](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/)
 
 #### When we pull artifact/images do we store them on delegate?
 
@@ -89,7 +89,7 @@ The workaround here is to use single replica delegates for these types of tasks 
 
 #### Can we skip manually creating the kubeconfig when using the native EKS deployment method in AWS, since we provide connection details in the AWS connector?
 
-Yes, we do not need to create the kubeconfig file manually. We just need to have this binary installed on the delegate ```aws-iam-authenticator```. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks)
+Yes, we do not need to create the kubeconfig file manually. We just need to have this binary installed on the delegate ```aws-iam-authenticator```. Please refer more on this in the following [Documentation](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks)
 
 #### Is it supported to run docker-compose from the docker in docker step?
 Yes, it's supported to run the docker-compose from the docker in docker step.
@@ -101,7 +101,7 @@ Yes, user need to install docker and docker CLI in order to work.
 No, the Post-Command script will only run if the "Run test" step pass.
 
 #### Is there a way to use the newer version of kaniko?
-Yes, The user can update the kaniko image as suggested in this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/).
+Yes, The user can update the kaniko image as suggested in this [doc](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/).
 
 #### Using <+codebase.gitUser> results in "None" when using Python as Shell for a Run step
 
@@ -126,7 +126,7 @@ This is not natively supported however we could have a pipeline listening on del
 #### How can we check build VM resource utilization for build running in Harness cloud?
 
 Currently this is not supported natively. We could use use a parallel step to check the resources utilised. More detailas about this can be found in the below doc
-https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures
+/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures
 
 #### Why can't we find the Notify Option in my Stage Template?
 
@@ -156,7 +156,7 @@ This could be due to the fact that the user/account that is added to the organiz
 #### How can we send mail from the CI pipeline with an attachement?
 
 You could send mail from the CI pipeline by using the drone plugin https://plugins.drone.io/plugins/email. More details about how the drone plugin can be used in Harness CI pipeline can be reffered in the below doc
-https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/
+/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/
 
 #### How can I retrieve the Maven project version from the pom.xml file and pass it to the subsequent Docker build step as the build argument?
 

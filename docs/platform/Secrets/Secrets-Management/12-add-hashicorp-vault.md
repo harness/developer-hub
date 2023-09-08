@@ -16,7 +16,7 @@ The video below provides an overview of how to use HashiCorp Vault as an externa
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
 * [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
 * Make sure that the Harness Delegate can connect to the Vault URL.
 * Make sure you have View and Create/Edit permissions for secrets.​

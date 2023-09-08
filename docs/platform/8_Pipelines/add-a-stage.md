@@ -19,7 +19,7 @@ The process of adding a stage to a pipeline is the same for all Harness modules.
 
 This functionality is limited to the modules and settings that you have access to.
 
-This topic assumes you are familiar with [Harness' key concepts](../../getting-started/learn-harness-key-concepts.md) and you have a [Harness project](../organizations-and-projects/create-an-organization.md).
+This topic assumes you are familiar with [Harness' key concepts](../../get-started/key-concepts.md) and you have a [Harness project](../organizations-and-projects/create-an-organization.md).
 
 ## Add a stage
 

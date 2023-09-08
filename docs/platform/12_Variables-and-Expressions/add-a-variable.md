@@ -24,7 +24,7 @@ Harness include many built-in variables for obtaining information like artifact 
 
 ## Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
 * Make sure you have the required [permissions](../role-based-access-control/add-manage-roles) on **Variables** to add and manage variables.
   
   ![](./static/add-a-variable-00.png)

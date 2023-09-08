@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This article addresses some frequently asked questions about the security features in Harness.
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 ## General
 

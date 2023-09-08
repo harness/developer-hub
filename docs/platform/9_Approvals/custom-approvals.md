@@ -24,7 +24,7 @@ This topic describes how to add Custom Approval stages and steps.
 
 ### Before You Begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 * [Add a Stage](../8_Pipelines/add-a-stage.md)
 
 ## Requirements and limitations

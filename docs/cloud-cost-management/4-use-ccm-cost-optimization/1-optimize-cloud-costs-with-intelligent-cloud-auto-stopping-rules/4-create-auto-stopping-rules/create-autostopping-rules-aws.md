@@ -19,8 +19,8 @@ AutoStopping Rules make sure that your non-production resources run only when us
 ## Prerequisites
 
 * Ensure that you have AWS EC2 VMs or Auto Scaling Groups created.
-* Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
-* Permissions to create a cross-account role. See [AWS Access Permissions](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-access-permissions).
+* Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
+* Permissions to create a cross-account role. See [AWS Access Permissions](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#aws-access-permissions).
 * To create an AutoStopping rule using an AutoStopping proxy load balancer: 
    * You must provide the required permissions to Harness to create a VM in your AWS account.
    * You must provide the required permissions to read the secrets and fetch the certificates stored in the secret for TLS-based flows.

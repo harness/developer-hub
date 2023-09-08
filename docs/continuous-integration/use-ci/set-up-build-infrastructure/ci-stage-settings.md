@@ -17,7 +17,7 @@ To create, edit, and delete stages in CI pipelines, you need either Project Admi
 1. In Harness, edit or [create a pipeline](../prep-ci-pipeline-components.md).
 2. Select **Add Stage**, and then select **Build**.
 3. Enter a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
-4. Select the [Overview](#overview), [Infrastructure](#infrastructure), [Execution](#execution), and [Advanced](#advanced) tabs to configure the stage settings, [set up the build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure), and add steps to the stage.
+4. Select the [Overview](#overview), [Infrastructure](#infrastructure), [Execution](#execution), and [Advanced](#advanced) tabs to configure the stage settings, [set up the build infrastructure](/docs/category/set-up-build-infrastructure), and add steps to the stage.
 
 :::
 

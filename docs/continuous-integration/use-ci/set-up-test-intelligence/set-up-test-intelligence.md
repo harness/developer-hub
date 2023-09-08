@@ -95,7 +95,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run Tests** step. Your pipeline must be associated with a [supported codebase](#supported-codebases).
 
-If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md) or go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
+If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../get-started/tutorials.md) or go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
 
 The build environment must have the necessary binaries for the **Run Tests** step to execute your test commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Container registry and image settings](#container-registry-and-image).
 

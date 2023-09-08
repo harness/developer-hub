@@ -4,7 +4,7 @@ description: Trigger pipelines from a non-Harness CI system.
 sidebar_position: 8
 ---
 
-Harness includes a [native CI system](https://developer.harness.io/docs/category/get-started-with-ci) that can build and test code and push your artifact to any repository. You can set [triggers](https://developer.harness.io/docs/category/triggers) on Harness pipelines that execute a pipeline when a change is made in the code or artifact repository.
+Harness includes a [native CI system](/docs/category/get-started-with-ci) that can build and test code and push your artifact to any repository. You can set [triggers](/docs/category/triggers) on Harness pipelines that execute a pipeline when a change is made in the code or artifact repository.
 
 In some cases, you might be using a third-party CI system. You can still execute Harness pipelines when changes are made to the code or artifact repositories used by that system.
 
@@ -17,8 +17,8 @@ import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported
 ## Requirements
 
 Make sure you have: 
-* A Harness pipeline with a [CD stage](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics).
-* A [Harness service with an artifact source](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
+* A Harness pipeline with a [CD stage](/docs/continuous-delivery/get-started/key-concepts).
+* A [Harness service with an artifact source](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 ## Configure the artifact image path and tag as runtime inputs
 
@@ -52,7 +52,7 @@ Make sure you have:
    
     ![](./static/custom-webhook-trigger-configuration.png)
 
-5. In **Conditions**, specify any [conditions](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/) to be met before running the pipeline, and select **Continue**. 
+5. In **Conditions**, specify any [conditions](/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/) to be met before running the pipeline, and select **Continue**. 
    
     For example, execute the pipeline if the source or target branch name matches a pattern.
 

@@ -20,7 +20,7 @@ Looking for the quickstart? See [Harness Policy As Code Quickstart](/docs/platfo
 
 Before learning about Harness Policy As Code, you should have an understanding of the following:
 
-* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
 
 ### How does Harness use OPA?
 
@@ -195,7 +195,7 @@ The Policy step in a Pipeline also enables evaluating policies during Pipeline e
 
 #### Feature Flags
 
-Policies are evaluated against Harness [Feature Flags](/docs/feature-flags/ff-onboarding/cf-feature-flag-overview).  
+Policies are evaluated against Harness [Feature Flags](/docs/feature-flags/get-started/overview).  
 
 Policy Sets can be configured to evaluate policies on these Feature Flag events:
 
