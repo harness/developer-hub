@@ -12,7 +12,7 @@ All delegates include proxy settings you can use to change how the delegate conn
 
 By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme settings.
 
-### Kubernetes Proxy Settings
+### Kubernetes delegate proxy settings
 
 The proxy settings are in the `harness-delegate.yaml` file:
 
@@ -42,11 +42,11 @@ The proxy settings are in the `harness-delegate.yaml` file:
 ```
 The `PROXY_MANAGER` setting determines whether the delegate bypasses proxy settings to reach the Harness Manager in the cloud. If you want to bypass, enter `false`.
 
-#### In-Cluster Kubernetes Delegate with Proxy
+#### In-Cluster Kubernetes delegate with proxy
 
-If an in-cluster Kubernetes Delegate has a proxy configured, then `NO_PROXY` must contain the cluster master IP. This enables the delegate to skip the proxy for in-cluster connections.
+If an in-cluster Kubernetes delegate has a proxy configured, then `NO_PROXY` must contain the cluster master IP. This enables the delegate to skip the proxy for in-cluster connections.
 
-### Sample Docker delegate installation script
+### Sample Docker delegate installation script with a proxy scheme
 
 The following script installs a Docker delegate with an HTTP proxy scheme.
 
@@ -66,7 +66,7 @@ docker run --cpus=1 --memory=2g \
   -e MANAGER_HOST_AND_PORT=https://<YOUR_MANAGER_HOST_AND_PORT>/delegate:23.09.80505
 ```
 
-### Subnet Masks not Supported
+### Subnet masks not supported
 
 You cannot use delegate proxy settings to specify the Cluster Service Network CIDR notation and make the delegate bypass the proxy to talk to the Kubernetes API.
 
