@@ -86,7 +86,9 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 #### Version 80313
 
-- We are receiving high number of errors on prod related to `OverlappingFileLockException`. This is caused by Chronicle Queue library which we are using. With this version, we have upgraded the Chronicle libraries which has already this fix in place.
+- There were several `OverlappingFileLockException` errors caused by the version of the Chronicle Queue library used. (CCM-14174)
+
+   The issue has been resolved. We upgraded the Chronicle Queue library to fix the errors.
 
 #### Version 80312
 
