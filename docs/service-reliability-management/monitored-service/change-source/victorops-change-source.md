@@ -55,7 +55,7 @@ To copy the webhook URL from the monitored service, do the following:
 
 You need to integrate the webhook you created in Harness SRM with VictorOps to start receiving the incidents alerts.
 
-To integrate Harness webook with VictorOps:
+To integrate Harness webook with VictorOps, do the following:
 
 1. Log in to VictorOps and select **Integrations** on the menu bar.
 
