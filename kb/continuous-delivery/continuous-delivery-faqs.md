@@ -1131,8 +1131,13 @@ On our roadmap, we will provide git experience for service, environments and ove
 
 #### Do we support propogation of multiple service stage ?
 
-No, thi feature is yet to be added, we will update about this very soon.
+No, this feature is yet to be added, we will update about this very soon.
 
 #### Is the expression <+configFile.getAsBase64("myFile")> only supported when using service config file and not a config file in File Store? 
 
 Yes, It works for config files added to the service and not any config file from the file store. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/#reference-files-in-the-file-store-using-an-expression).
+
+#### Can we increase the Workflow Queue limit ?
+
+No, for the Harness based locking on infrastructure, currently the max is 20 and its not configurable, since we allow only 1 concurrent execution per infra. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/workflow-queuing/#limitations).
+
