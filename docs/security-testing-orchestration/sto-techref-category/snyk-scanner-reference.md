@@ -14,6 +14,11 @@ For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security
 
 ## Before you begin
 
+### Important notes
+
+- Container Image scans are currently supported for Ingestion scan modes only.
+- 
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block
@@ -34,13 +39,15 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 The recommended workflow is add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
+<!-- 
+
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 ```
 
 <StoScannerStepNotes />
 
-<!-- 
+
 <details>
     <summary>Scanner Template</summary>
 
@@ -60,13 +67,11 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 ```mdx-code-block
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
-<StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
@@ -94,6 +99,12 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
 <StoSettingScanTypeCont />
+
+:::info note
+
+
+
+:::
 
 
 #### Name 
@@ -135,7 +146,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 ### Authentication
 
 
-#### Access Token
+#### Access Token (_Orchestration scans_)
 
 ```mdx-code-block
 import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
@@ -227,6 +238,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
+
+## Synk ingestion pipeline example
 
 
 
