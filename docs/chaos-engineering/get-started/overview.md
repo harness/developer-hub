@@ -1,7 +1,7 @@
 ---
 title: Harness Chaos Engineering (CE) Overview
 sidebar_label: Overview
-sidebar_position: 2
+sidebar_position: 1
 redirect_from:
   - /docs/chaos-engineering/get-started/introduction-to-chaos-module
 ---

@@ -7,7 +7,7 @@ helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
-  - /docs/get-started/supported-platforms-and-technologies
+  - /docs/getting-started/supported-platforms-and-technologies
 ---
 
 This topic lists Harness support for platforms, methodologies, and related technologies for NextGen modules.

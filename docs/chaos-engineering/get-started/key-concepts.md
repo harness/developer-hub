@@ -2,7 +2,7 @@
 title: Key concepts
 sidebar_position: 2
 redirect_from:
-  - /docs/chaos-engineering/get-started/key-concepts
+  - /docs/chaos-engineering/get-started/terminologies
 ---
 
 ![Component Relationship](./static/terminologies/component-relationship.png)

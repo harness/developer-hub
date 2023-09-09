@@ -2,6 +2,8 @@
 title: Automated Root Cause (ARC)
 description: Get to the root of events in production and staging environments. 
 sidebar_position: 40
+redirect_from:
+  - /docs/continuous-error-tracking/getting-started/cet-arc
 ---
 
 The Automated Root Cause (ARC) screen provides a powerful mechanism to get to the root of events in production and staging environments. 

@@ -7,7 +7,7 @@ helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
-  - /docs/get-started/key-concepts
+  - /docs/getting-started/key-concepts
 ---
 
 Before you begin using Harness modules, you should be familiar with the key concepts.
