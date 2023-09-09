@@ -9,7 +9,7 @@ sidebar_position: 70
 You can configure VictorOps as a custom change source to monitor incidents.
 
 
-Configuring VictorOps as a change source involves the following steps:
+To configure VictorOps as a change source, do the following:
 
 1. [Add VictorOps as a custom change source in the Harness SRM monitored service and generate a webhook.](#add-victorops-as-a-change-source)
    
