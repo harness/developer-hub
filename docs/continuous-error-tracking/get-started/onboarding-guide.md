@@ -2,6 +2,8 @@
 title: Onboarding guide
 description: Add a monitored service and install an Error Tracking Agent.
 sidebar_position: 20
+redirect_from:
+  - /docs/continuous-error-tracking/getting-started/cet-setup
 ---
 
 # Set up Continuous Error Tracking (CET)

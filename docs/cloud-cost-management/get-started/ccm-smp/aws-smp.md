@@ -2,6 +2,8 @@
 title: AWS 
 description: The procedure to set up CCM for AWS by using Harness Self-Managed Enterprise Edition.
 # sidebar_position: 2
+redirect_from:
+  - /docs/cloud-cost-management/getting-started-ccm/ccm-smp/aws-smp
 ---
 
 # Manage AWS costs by using CCM on Harness Self-Managed Enterprise Edition

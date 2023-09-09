@@ -9,8 +9,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview
-  - /docs/self-managed-enterprise-edition/get-started/onboarding-guide-with-self-managed-enterprise-edition
-  - /docs/self-managed-enterprise-edition/get-started/onboarding-guide
+  - /docs/self-managed-enterprise-edition/introduction/getting-started
+
 ---
 
 This topic provides an architecture overview, installation links, and the basics on how to create a Harness account and your first project. Perform these tasks soon after you install Harness Self-Managed Enterprise Edition, before you move on to other configuration tasks.
