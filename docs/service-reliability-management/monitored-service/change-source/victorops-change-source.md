@@ -4,7 +4,7 @@ description: Configure VictorOps change source to monitor incidents.
 sidebar_position: 70
 ---
 
-# VictorOps change source
+# Configure VictorOps change source
 
 You can configure VictorOps as a custom change source to monitor incidents.
 
