@@ -1120,4 +1120,20 @@ We don't save yaml's for service and other entities like we used to in First Gen
  
 [Documentation](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code/#why-did-harness-reduce-the-number-of-supported-entities-backed-by-git)
 
+#### Harness Platform Rate limits
 
+Please note that harness does limit accessive API and execution limitations. Harness does reserve the right to change these limits. 
+See site fore more details [https://developer.harness.io/docs/platform/rate-limits/]
+
+#### Harness secrets tied to connector, and what to watch for. 
+
+Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
+
+#### How to visualize and compare pipeline changes? 
+
+Harness allows users to compare changes to a pipeline YAML. This is often useful tool to determine why a pipeline has changed behavior. 
+See site for more details [https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/]
+
+#### Harness rollback deployments. 
+
+Harness Rollback deployments initiate a rollback of the most recent successful deployment. Note that this feature is behind a feature flag '''POST_PROD_ROLLBACK'''. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS)
