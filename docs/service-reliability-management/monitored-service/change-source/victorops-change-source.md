@@ -13,7 +13,7 @@ To configure VictorOps as a change source, do the following:
 
 1. [Add VictorOps as a custom change source in the Harness SRM monitored service and generate a webhook.](#add-victorops-as-a-change-source)
    
-[Integrate Harness webhook with VictorOps.](#integrate-harness-webhook-with-victorops)
+2. [Integrate Harness webhook with VictorOps.](#integrate-harness-webhook-with-victorops)
 
 
 ## Add VictorOps as a change source
