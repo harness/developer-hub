@@ -183,7 +183,7 @@ For details about the chart values, explanations of the default values, and desc
 
 <!-- PR-1000 -->
 
-There are additional steps for self signed certificates:
+There are additional steps for self-signed certificates:
 
 1. [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
 2. [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
