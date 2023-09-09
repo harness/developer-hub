@@ -42,7 +42,7 @@ To add VictorOps as a change source to a monitored service, do the following:
 
 To configure your VictorOps to send incident reports to the monitored service in Harness SRM, you'll need to obtain a webhook from the SRM monitored service.
 
-To copy the webhook URL from the monitored service:
+To copy the webhook URL from the monitored service, do the following:
 
 1. From the list of monitored services, select the monitored service in which you have created the VictorOps incident change source, and go to the **Configuration** tab.  
 
