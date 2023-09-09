@@ -18,7 +18,7 @@ To configure VictorOps as a change source, do the following:
 
 ## Add VictorOps as a change source
 
-To add VictorOps as a change source to a monitored service:
+To add VictorOps as a change source to a monitored service, do the following:
 
 1. In your Harness project, go to **Service Reliability** > **Monitored Services**.  
    A list of monitored services is displayed.
