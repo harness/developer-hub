@@ -23,7 +23,7 @@ To add VictorOps as a change source to a monitored service, do the following:
 1. In your Harness project, go to **Service Reliability** > **Monitored Services**.  
    A list of monitored services is displayed.
 
-2. Locate the monitored service for which you want to add a custom change source, select the three vertical dots next to it, and then select **Edit service**.  
+2. Locate the monitored service for which you want to add a custom change source, select **More Options** (&vellip;), and then select **Edit service**.  
    The Configurations page appears.
 
 3. On the **Configurations** page, go to the **Change Sources**, and select **+ Add New Change Source**.  
