@@ -33,7 +33,7 @@ To add VictorOps as a change source to a monitored service, do the following:
 5. Enter a name for the change source. For example, VictoreOps.
 
 6.  Select **Submit**.  
-    The custom incident change source gets added to the monitored service. A webhook URL and cURL commands are generated.
+    The custom incident change source is added to the monitored service. A webhook URL and cURL commands are generated.
 
     <docimage path={require('./static/add-victorops-change-source.png')} />
 
