@@ -89,7 +89,7 @@ To integrate Harness webook with VictorOps, do the following:
 
 ### Advanced Option: Customizing Webhooks for Different Monitored Services
 
-If you need to trigger different webhooks depending on specific rules or want to associate different webhook URLs with each custom change source in various monitored services, you can achieve this through VictorOps Alert Rules Engine.
+If you need to trigger different webhooks depending on specific rules or want to associate different webhook URLs with each custom change source in various monitored services, you can do this through the VictorOps Alert Rules Engine.
 
 To create a rule in Alert Rules Engine:
 
