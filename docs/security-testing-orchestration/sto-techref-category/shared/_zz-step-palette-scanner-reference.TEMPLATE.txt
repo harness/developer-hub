@@ -122,7 +122,7 @@ In the **Advanced** settings, you can use the following options:
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
 
-## Security step configuration (_deprecated_)
+## Security step configuration (_legacy_)
  
  <details><summary>Set up a $SCANNER_NAME scan in a Security step</summary>
  

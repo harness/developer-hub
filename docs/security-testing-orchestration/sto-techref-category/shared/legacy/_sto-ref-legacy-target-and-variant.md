@@ -9,8 +9,8 @@ Make sure that you give unique, descriptive names for the target and variant. Th
 
 :::
 
-You can see the target name, type, and variant in the [Test Targets](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines.md) UI:
+You can see the target name, type, and variant in the [Test Targets](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines.md) UI:
 
 ![Target name, type, and branch](../../static/repo-settings.png)
 
-For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines).
+For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).

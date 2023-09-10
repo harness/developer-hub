@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 When viewing execution details, you can search logs in the console view.
 
-To view execution details, you must have run a pipeline at least once. If you haven't run a pipeline before, try a [tutorial](/docs/getting-started/quickstarts/) to get started with Harness.
+To view execution details, you must have run a pipeline at least once. If you haven't run a pipeline before, try a [tutorial](/tutorials/) to get started with Harness.
 
 ## Search step logs
 

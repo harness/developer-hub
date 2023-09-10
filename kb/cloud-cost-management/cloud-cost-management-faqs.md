@@ -77,7 +77,7 @@ The correct ALB is selected as the load balancer when creating the AutoStopping 
 
 #### Do we have functionality to just alert on ANY anomoly found to a specific email? if so how?
 
-we can set alerts for any perspective created [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm/#create-an-anomaly-alert-for-your-perspective), the alerts can be sent over a mail.
+we can set alerts for any perspective created [here](/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm/#create-an-anomaly-alert-for-your-perspective), the alerts can be sent over a mail.
 
 #### How are anomalies associated with specific perspectives and which notification channels are used for alerting?
 

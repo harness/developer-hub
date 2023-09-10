@@ -19,7 +19,7 @@ This topic explains how to configure the **Build and Push to ACR** step in a Har
 
 ## Add the Build and Push to ACR step
 
-Add the **Build and Push to ACR** step to the [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../prep-ci-pipeline-components.md) If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+Add the **Build and Push to ACR** step to the [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../prep-ci-pipeline-components.md) If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 
 The **Build and Push to ACR** step settings are described below. Some settings are located under **Optional Configuration** in the visual pipeline editor.
 
@@ -132,4 +132,4 @@ If the build succeeds, you can find your pushed image on ACR.
 * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 * [Delegate overview](/docs/platform/Delegates/delegate-concepts/delegate-overview)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
-* [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Harness key concepts](../../../get-started/key-concepts.md)

@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::info note
-This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../getting-started/learn-harness-key-concepts.md).
+This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../get-started/key-concepts.md).
 :::
 
 Harness provides a summary of your account information and enables you to subscribe to downtime alerts for the cluster hosting your Harness account.

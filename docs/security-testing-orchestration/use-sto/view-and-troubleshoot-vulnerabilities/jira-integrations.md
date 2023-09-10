@@ -44,7 +44,7 @@ This integration has a separate setup path that is unrelated to other Jira-relat
 ## Create a Jira ticket from a detected issue
 
 :::note
-You can only create Jira tickets for targets that have baselines specified. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines).
+You can only create Jira tickets for targets that have baselines specified. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
 :::
 
 1. Go to the **Pipeline Execution** &gt; **Security Tests** page with the detected issue. 

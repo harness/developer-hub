@@ -30,7 +30,7 @@ You need a CI pipeline with a **Build** (`CI`) stage.
 <details>
 <summary>Prepare a pipeline</summary>
 
-If you haven't created a pipeline before, review the [CI pipeline creation overview](../prep-ci-pipeline-components.md) or try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+If you haven't created a pipeline before, review the [CI pipeline creation overview](../prep-ci-pipeline-components.md) or try one of the [CI tutorials](../../get-started/tutorials.md).
 
 To add a **Build** stage to an existing pipeline:
 1. Go to the pipeline you want to edit.
