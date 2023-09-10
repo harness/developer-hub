@@ -1121,3 +1121,112 @@ We don't save yaml's for service and other entities like we used to in First Gen
 [Documentation](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code/#why-did-harness-reduce-the-number-of-supported-entities-backed-by-git)
 
 
+### Does the container step in CD override the entry point when using the command input?
+
+The entry point in the base image will be overwritten as we have to run the commands specified in the run step.
+
+### How does Harness Terraform Work and Rollback Work?
+Harness integrates with Terraform to create tasks that define infrastructure changes, execute Terraform plans, and apply changes to your infrastructure. In case of issues or failures, it provides the capability to roll back to a previously known good state using Terraform state management.
+
+### What are Service Variables in the context of Harness?
+Service Variables in Harness are dynamic parameters or values that can be used within your deployment workflows to customize and control the behaviour of your services and pipelines.
+
+### What is the purpose of overriding Service Variables in the Environment configured in the Stage Harness?
+Overriding Service Variables allows you to modify or specify specific values for your services in a particular environment or stage, ensuring that each deployment uses the appropriate configurations.
+
+### How do I override Service Variables in a Harness Environment within a Stage?
+You can override Service Variables in Harness by navigating to the specific Environment within a Stage configuration and then editing the Environment's settings. You can specify new values for the Service Variables in the Environment settings.
+
+### Can I override Service Variables for only certain services within an Environment
+You can selectively override Service Variables for specific services within an Environment.
+
+### What happens if I don't override Service Variables for a specific Environment in a Stage?
+If you don't override Service Variables for a particular Environment in a Stage, the values defined at the Service level will be used as the default configuration. This can be useful for consistent settings across multiple Environments.
+
+### Can I use expressions or reference other variables when overriding Service Variables?
+You can use expressions and reference other variables when overriding Service Variables in Harness. This allows you to create dynamic configurations based on the values of other variables or calculations.
+
+### Are there any safety measures to prevent unintended changes when overriding Service Variables?
+Harness typically provides auditing features to track changes made to Service Variables, helping prevent unintended changes and ensuring accountability.
+
+### Can I revert or undo the overrides for Service Variables in an Environment?
+You can revert or undo the overrides for Service Variables in an Environment anytime you can revert variables to their default values.
+
+### What are some common use cases for overriding Service Variables in an Environment?
+
+   - **Environment-specific configurations:** Tailoring database connection strings, API endpoints, or resource sizes for different environments (e.g., dev, staging, production).
+   - **Scaling:** Adjusting resource allocation and load balancer settings for different deployment environments.
+
+### Where can I find more information and documentation on overriding Service Variables in Harness?
+You can find detailed documentation and resources on how to override Service Variables in Harness here:https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides/
+
+### What can be templated using Harness Templates in Next Gen?
+You can create templates for various components like steps, stages, and pipelines.
+
+### Can I version control Harness Templates?
+Yes, Harness typically provides version control for templates, allowing you to track changes and roll back to previous versions if needed.
+
+### Can I share templates across different projects or teams?
+Yes, you can share templates across projects and teams in Harness If the template is created at the organisation and account level scope, making it easy to maintain consistency and best practices.
+
+### Can I customize or modify templates for specific use cases?
+Yes, you can customize templates for specific use cases by creating versions of templates and making adjustments as needed. Templates provide a starting point that can be used for specific requirements.
+
+### Is it possible to deploy Cloud Functions across multiple GCP regions with Harness?
+Yes, you can configure deployment pipelines in Harness to deploy your Google Cloud Functions across multiple regions for redundancy and improved performance.
+
+### What deployment strategies can I use with Google Cloud Functions in Harness?
+The harness supports various deployment strategies, including Blue/Green, Canary, and Rolling deployments. You can choose the strategy that best fits your use case and define deployment criteria and rollback conditions accordingly.
+
+### Can I use Harness to manage environment-specific configurations for my Cloud Functions?
+Yes, Harness supports environment-specific configurations for your functions. You can use Harness secrets management to store sensitive information, such as API keys or database credentials, and inject them into your Cloud Functions during deployment.
+
+### What types of events can trigger notifications in Harness pipelines?
+Notifications can be triggered for various events, such as pipeline starts, pipeline successes, pipeline failures, specific workflow steps, and manual approvals. You can customize the triggers based on your requirements.
+
+### What is Kustomize, and how does it relate to Harness Next-Gen?
+Kustomize is a Kubernetes-native configuration management tool that simplifies the customization of Kubernetes manifests. In Harness Next-Gen, Kustomize is used to manage and customize Kubernetes manifests for deployments.
+
+### What are Kustomize overlays, and why are they useful?
+Kustomize overlays are a way to customize and extend Kubernetes manifests without modifying the original base manifests. Overlays allow you to apply environment-specific configurations, such as namespace, labels, and resource limits, to the base manifests, making it easier to manage different environments (e.g., dev, test, prod) within a single repository.
+
+### Can I use variables and secrets with Kustomize overlays in Harness?
+Yes, you can use Harness variables and secrets in your Kustomize overlays to parameterize configurations and securely manage sensitive data.
+
+### What is the deployment process for Kustomize-based applications in Harness Next-Gen?
+When you deploy a Kustomize-based application in Harness, Harness will automatically apply the specified overlay based on the target environment, ensuring that the Kustomized Kubernetes manifests are deployed correctly.
+
+### Can I preview and validate Kustomize manifests in Harness before deployment?**
+Yes, Harness provides a preview and validation feature for Kustomize manifests, allowing you to review and validate the customised manifests for correctness before initiating a deployment.
+
+### What are the benefits of using Kustomize manifest with Harness Next-Gen for Kubernetes deployments?
+Using Kustomize with Harness simplifies the management of Kubernetes manifests by providing a declarative and version-controlled approach to customizations. It ensures consistency across environments and simplifies the deployment process.
+
+### Does Harness Next-Gen support GitOps workflows with Helm Charts?
+Yes, you can integrate Harness Next-Gen with Git repositories that use Helm Charts for GitOps workflows. Harness can synchronize with your Git repository, pull Helm Charts, and deploy them as needed.
+
+### Can I use Helm Charts from public repositories like Helm Hub with Harness Next-Gen?
+You can use Helm Charts from public Helm repositories like Helm Hub. Harness Next-Gen allows you to specify the Helm repository URL and Chart version when configuring your deployment.
+
+### Can I use SSH keys for authentication in Harness Next-Gen SSH deployments?
+Yes, Harness Next-Gen supports SSH key-based authentication. When deploying to remote servers, you can configure Harness to use SSH keys for secure authentication.
+
+### Can I use SSH deployments in combination with other deployment strategies in Harness Next-Gen?
+Yes, you can incorporate SSH deployments into your deployment pipelines along with other strategies, such as container deployments or Helm Chart deployments, to support complex multi-tiered applications.
+
+### Which versions of ArgoCd that the latest version of the GitOps agent support? 
+We currently support v2.7.8
+ 
+### The GitOps agent updater, can you advise that this will update the agent, argocd and redis? Is this also true if use the option to bring our own ArgoCd?
+ 
+It is used to update agents only whenever a new version is available. The Argo CD components upgrade must be done manually
+
+ 
+### Also, is it possible to automate the provisioning of the GitOps agent using a helm chart without having to register/create the agent in the UI first? At the moment it looks like you need to create the agent in the UI which then generates the yaml or helm chart for you.
+Yes, using Terraform, it is possible to automate the provisioning of the GitOps agent without having to register/create an agent in the UI.
+
+### Is there a way in the harness where we can use bash shell over WinRM connection?
+Yes, you can use Bash shell over WinRM connection in Harness. In the Shell Script step, you can select Bash as the Script Type and specify the WinRM target host to execute the script on.
+
+### Is it possible to use Helm hooks in Harness Helm deployments?
+Yes, you can use Helm hooks in Harness Helm deployments. Helm hooks allow you to execute specific actions or scripts at different points in the Helm chart's lifecycle, such as before or after installing or upgrading a release. Harness supports the use of Helm hooks as part of your Helm deployment process.
