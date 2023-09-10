@@ -23,9 +23,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Harness Platform, version 80406
 
-- Earlier, Harness had an N-3 support policy for delegates. (PL-39452)
-   Now, the delegate expiration is calculated using the version difference between Harness Manager and the delegate. If the delegate and Harness Manager are on the same version, the delegate expiration is 24 weeks.
-
 - Earlier, in the audit trail, all changes to a user principal's role assignment were logged with the generic Update action type. The record offered no additional information about whether a role assignment was created, updated, or deleted. (PL-39799, ZD-46451)
 
   Now, role assignment changes are logged with one of the following, more informative action types:
