@@ -165,3 +165,23 @@ You could assign the version value to a variable in a run step with a command so
 #### Why the changes made on the container image filesystem in a CI step is not available in the subseqent step where the same container image is used?
 
 When we pick a container image for a step, any changes we make there will only affect that step. The next step won't notice these changes even we use the same image unless we edit the `/harness` directory, which is automatically shared among all steps.
+
+#### Resource allocations for Kubernetes
+
+Running a CI build on Kubernetes build infrastructure. Customers can utilize CPU and Memory resource allocations per Run Step and Run Test Step. 
+
+#### What kind of build infrastructure can I use?
+
+Harness supports multiple types of operating systems and architecture. Including Linux, MacOS, and Windows. For more details please check out our documentation on this capability: [https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/]
+
+#### Cache Intelligence on Harness Cloud Infrastructure
+
+Harness only currently supports cache intelligence on the Harness Cloud infrastructure. 
+See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/]
+
+#### Additional considerations when running concurrent builds
+
+While running concurrent builds, customers may want to consider the queued intelligence feature in Harness CI. This feature is behind a feature flag. 
+
+See [https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence/]
+
