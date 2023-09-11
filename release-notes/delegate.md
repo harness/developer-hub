@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-09-12T10:00
+date: 2023-09-11T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -36,7 +36,7 @@ Harness NextGen release 80504 includes the following changes for the Harness Del
 
 - Upgraded `io.netty:netty*` to version `4.1.94.final` to address vulnerabilities. (CI-8971, ZD-48488)
 
-- API Call logs now include details such as response, size, duration , HTTP verb, and response code in the summary. (OIP-767)
+- API Call logs now include details such as response, size, duration, HTTP verb, and response code in the summary. (OIP-767)
 
 - If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
 
