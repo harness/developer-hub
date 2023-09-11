@@ -185,6 +185,8 @@ For details about the chart values, explanations of the default values, and desc
 
 <!-- PR-1000 -->
 
+## Use self-signed certificates with Helm-based installations
+
 There are additional steps for self-signed certificates:
 
 1. [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
