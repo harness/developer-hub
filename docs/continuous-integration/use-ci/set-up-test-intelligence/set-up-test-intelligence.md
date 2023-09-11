@@ -291,6 +291,8 @@ The first time you enable Test Intelligence on a repo, you must run *all* tests 
 
 ### Enable parallelism (test splitting) for Test Intelligence
 
+<!-- Test splitting for python requires `junit_family=xunit1` in the code repo's `pytest.ini` file, or `-o junit_family="xunit1"` in the Build Arguments. CI-9225 automatically includes the build argument, so manual inclusion is no longer required. However, if they use their own reporting (to be used elsewhere than Harness) in pytest.ini, it is overridden. I am not sure if this caveat needs to be documented yet. -->
+
 You can enable parallelism and test splitting in your **Run Tests** steps to further optimize test times.
 
 With parallelism, you specify how you want Harness to divide the work for a step or stage. When you use parallelism and test splitting with Test Intelligence, Harness divides the work after test selection. This means that your test execution time is reduced by both test selection and parallelism.
@@ -1474,5 +1476,3 @@ If you encounter errors with TI for Python, make sure you meet the following req
 * The [Build Arguments](#build-arguments) don't include coverage flags (`--cov` or `coverage`), and the [Pre-Command](#pre-command) doesn't install code coverage tools.
 * The Python 3 binary is preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or installed at runtime in the [Pre-Command](#pre-command).
 * If you use another command, such as `python`, to invoke Python 3, you have added an alias, such as `python3 = "python"`.
-
-If you [enabled test splitting for TI](#enable-parallelism-test-splitting-for-test-intelligence), you must set `junit_family=xunit1` in your code repo's `pytest.ini` file or include `-o junit_family="xunit1"` in the [Build Arguments](#build-arguments). <!-- until CI-9225 is done -->
