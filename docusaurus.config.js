@@ -203,6 +203,10 @@ const config = {
                 to: "docs/chaos-engineering",
               },
               {
+                label: "Software Engineering Insights",
+                to: "https://docs.propelo.ai/welcome-to-propelo/",
+              },
+              {
                 label: "Continuous Error Tracking",
                 to: "docs/continuous-error-tracking",
               },
