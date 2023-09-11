@@ -12,7 +12,7 @@ A pipeline is an end-to-end process that completes a workflow, such as delivers 
 
 You might encounter situations where you want to run some, but not all, stages. For example, if only one stage fails, you might want to rerun only the failed stage. In Harness, you can select specific stages to run, rather than the entire pipeline.
 
-This topic assumes you're familiar with [Harness' key concepts](../../getting-started/learn-harness-key-concepts.md), you have a [Harness project](../organizations-and-projects/create-an-organization.md), and you have a pipeline with multiple [stages](../8_Pipelines/add-a-stage.md). You must also have **Execute** permissions for pipelines in your project, such as the [Pipeline Executor role](../role-based-access-control/add-manage-roles.md).
+This topic assumes you're familiar with [Harness' key concepts](../../get-started/key-concepts.md), you have a [Harness project](../organizations-and-projects/create-an-organization.md), and you have a pipeline with multiple [stages](../8_Pipelines/add-a-stage.md). You must also have **Execute** permissions for pipelines in your project, such as the [Pipeline Executor role](../role-based-access-control/add-manage-roles.md).
 
 ## Dependent and independent stages
 

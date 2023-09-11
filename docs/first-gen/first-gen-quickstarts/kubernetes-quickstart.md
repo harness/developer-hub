@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::note
-This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
+This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
 :::
 
 This quickstart shows you how to deploy a publicly available Docker image to your Kubernetes cluster using a Canary Deployment strategy in Harness.

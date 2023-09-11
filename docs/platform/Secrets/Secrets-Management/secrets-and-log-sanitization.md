@@ -34,10 +34,10 @@ Harness sends only encrypted data to the Secrets Manager, as follows: 
 
 1. Your browser sends data over HTTPS to Harness Manager.
 2. Harness Manager relays encrypted data to the Harness Delegate, also over HTTPS.
-3. The Delegate exchanges a key pair with the secrets manager, over an encrypted connection.
-4. The Harness Delegate uses the encrypted key and the encrypted secret, and then discards them. The keys never leave the Delegate.
+3. The delegate exchanges a key pair with the secrets manager, over an encrypted connection.
+4. The Harness Delegate uses the encrypted key and the encrypted secret, and then discards them. The keys never leave the delegate.
 
-Any secrets manager requires a running Harness Delegate to encrypt and decrypt secrets. Any Delegate that references a secret requires direct access to the secrets manager.You can manage your secrets in Harness using either a Key Management Service or third-party Secrets Managers.
+Any secrets manager requires a running Harness Delegate to encrypt and decrypt secrets. Any delegate that references a secret requires direct access to the secrets manager. You can manage your secrets in Harness using either a Key Management Service or third-party Secrets Managers.
 
 ### Sanitization
 

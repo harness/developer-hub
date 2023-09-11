@@ -121,7 +121,7 @@ You might want to use that the first time you set up an Azure Web App deployment
 
 ### Harness delegate requirement
 
-As covered in [Harness Platform architecture](/docs/getting-started/harness-platform-architecture), a Harness delegate must be installed in your infrastructure for Harness to perform tasks.
+As covered in [Harness Platform architecture](/docs/get-started/harness-platform-architecture), a Harness delegate must be installed in your infrastructure for Harness to perform tasks.
 
 You can install a Harness delegate in your infrastructure as part of adding the connector for the **App Services Configuration** or **Artifacts**.
 

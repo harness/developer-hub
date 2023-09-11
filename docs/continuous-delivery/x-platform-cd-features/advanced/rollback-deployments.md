@@ -31,7 +31,7 @@ Rollback deployment initiates a rollback of your most-recent successful deployme
 
 Harness assumes that you have created a pipeline with multiple deployments so that the rollback step can roll the pipeline back to the last successful deployment when triggered. For more details on creating a pipeline, go to [Create your first CD pipeline](/tutorials/cd-pipelines/kubernetes/manifest).
 
-1. Open your [services dashboard](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments#individual-service-dashboards).
+1. Open your [services dashboard](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments#individual-service-dashboards).
 2. In **Summary**, in the **Environments & Groups** panel, select the deployment you want to rollback, and then select the instances link.
    
    Let's see an example pipeline where the artifacts, `library/nginx:stable-perl` is deployed first, and `library/nginx:stable-bullseye-perl` is deployed next.

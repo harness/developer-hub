@@ -29,7 +29,7 @@ Create a trigger for a CD pipeline and it should automatically pick the tag valu
 
 ## Resolution
 
-For the above usecase we should use Ternary operators https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#ternary-operators 
+For the above usecase we should use Ternary operators /docs/platform/variables-and-expressions/harness-variables/#ternary-operators 
 
 You can give a condition :
 ```
@@ -37,7 +37,7 @@ You can give a condition :
 ```
  
 
-For the true condition <+pipeline.triggerType> should be WEHOOK_CUSTOM https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggertype 
+For the true condition <+pipeline.triggerType> should be WEHOOK_CUSTOM /docs/platform/variables-and-expressions/harness-variables/#pipelinetriggertype 
 and for the false condition you can put a runtime input <+input> or a pipeline varibale
 
 Finally the ternary operator condition should look like: 

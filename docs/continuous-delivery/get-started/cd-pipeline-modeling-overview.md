@@ -42,7 +42,7 @@ Model your process in code using a full-featured YAML editor:
 
 ![](./static/cd-pipeline-modeling-overview-03.png)
 
-For more details, go to [Harness YAML Quickstart](https://developer.harness.io/docs/platform/pipelines/harness-yaml-quickstart/) and [YAML Reference: Pipelines](../../platform/8_Pipelines/w_pipeline-steps-reference/yaml-reference-cd-pipeline.md).
+For more details, go to [Harness YAML Quickstart](/docs/platform/pipelines/harness-yaml-quickstart) and [YAML Reference: Pipelines](/docs/platform/Pipelines/w_pipeline-steps-reference/yaml-reference-cd-pipeline).
 
 #### REST API
 

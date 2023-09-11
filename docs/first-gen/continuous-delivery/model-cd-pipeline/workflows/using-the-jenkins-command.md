@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). [NextGen](/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-jenkins-jobs-in-cd-pipelines) integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenkins jobs, to dynamically capture output variables from the jobs, and to pull artifacts from Jenkins. 
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). [NextGen](/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-jenkins-jobs-in-cd-pipelines) integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenkins jobs, to dynamically capture output variables from the jobs, and to pull artifacts from Jenkins. 
 
 Harness' integration requires Jenkins version 2.130 or higher.
 

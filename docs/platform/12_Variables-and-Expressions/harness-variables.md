@@ -618,7 +618,7 @@ For CD pipelines, the Id is named execution. For CI pipelines, the Id is named b
 
 ![](./static/harness-variables-26.png)
 
-You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](https://developer.harness.io/tutorials/ci-pipelines/kubernetes-build-farm/) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
+You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm/) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
 
 ### <+pipeline.startTs>
 
@@ -1329,7 +1329,7 @@ The step name.
 
 ### <+step.identifier>
 
-The step [identifier](https://developer.harness.io/docs/platform/references/entity-identifier-reference/).
+The step [identifier](/docs/platform/references/entity-identifier-reference/).
 
 ### <+step.executionUrl>
 
@@ -1443,7 +1443,7 @@ If you use this variable in a pipeline, such as in a Shell script step, Harness 
 
 ## Strategy
 
-You can use Harness expressions to retrieve the current execution status of the [looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy.
+You can use Harness expressions to retrieve the current execution status of the [looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy.
   
 The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
 
@@ -1865,6 +1865,6 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 
 For more information migrating to NextGen, go to the following:
 
-- [Harness FirstGen vs Harness NextGen](https://developer.harness.io/docs/getting-started/harness-first-gen-vs-harness-next-gen)
+- [Harness FirstGen vs Harness NextGen](/docs/get-started/harness-first-gen-vs-harness-next-gen)
 - [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
 - [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)

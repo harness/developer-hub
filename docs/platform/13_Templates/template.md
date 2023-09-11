@@ -128,7 +128,7 @@ You can store different versions of templates on:
 
 Before switching to a different template version, be sure to set the branch and repository context. Since versions can exist in multiple branches, Harness needs to know where to render template versions.
 
-For more information on branching and version management with branching, go to [Template Library with Git Experience docs](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/#branch-selection-logic-for-fetching-referenced-entities-in-remote-pipelines).
+For more information on branching and version management with branching, go to [Template Library with Git Experience docs](/docs/platform/git-experience/configure-git-experience-for-harness-entities/#branch-selection-logic-for-fetching-referenced-entities-in-remote-pipelines).
 
 ### Stable version
 

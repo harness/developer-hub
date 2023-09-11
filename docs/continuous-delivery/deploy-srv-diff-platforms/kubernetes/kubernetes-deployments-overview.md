@@ -8,7 +8,7 @@ This topic describes the concept of a Harness Kubernetes deployment by describin
 
 For a quick tutorial, see the [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
-Learn [Harness' Key Concepts](/docs/getting-started/learn-harness-key-concepts) before you review Kubernetes deployment basics.
+Learn [Harness' Key Concepts](/docs/get-started/key-concepts) before you review Kubernetes deployment basics.
 
 ## Before you begin
 

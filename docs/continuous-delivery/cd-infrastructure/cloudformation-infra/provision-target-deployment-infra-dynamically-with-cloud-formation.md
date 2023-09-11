@@ -72,7 +72,7 @@ For details on configuring the **Create Stack** step, go to [Provision with the 
 ### AWS Connector
 
 
-In the Create Stack step, you will add or select a Harness [AWS Connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/) that will be used for this step. The AWS Connector will include the credentials needed to perform the provisioning.
+In the Create Stack step, you will add or select a Harness [AWS Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/) that will be used for this step. The AWS Connector will include the credentials needed to perform the provisioning.
 
 1. Add or select the Harness [AWS Connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference) that will be used for this step. The AWS Connector will include the credentials needed to perform the provisioning.
 
@@ -252,11 +252,11 @@ Harness checks if the stack is in `ROLLBACK_COMPLETE` state before the deploymen
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Map outputs to target infra settings
 
@@ -306,7 +306,7 @@ By default, Harness adds an Approval step between the Create Stack and Delete St
 
 You can also use other Approval step types.
 
-Ensure that the credentials include the `ec2:DescribeRegions` policy described in [AWS connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/).
+Ensure that the credentials include the `ec2:DescribeRegions` policy described in [AWS connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/).
 
 See also: [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html) from AWS.
 
