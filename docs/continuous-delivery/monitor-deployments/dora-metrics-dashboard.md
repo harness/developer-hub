@@ -44,7 +44,7 @@ pipeline:
 
 ## Create queries to pull data into your DORA dashboard
 
-After you [create a DORA metrics dashboard](../../platform/18_Dashboards/create-dashboards.md), you can [add tiles](https://developer.harness.io/docs/platform/dashboards/create-dashboards/#step-2-add-tiles-to-a-dashboard) to the dashboard. 
+After you [create a DORA metrics dashboard](../../platform/18_Dashboards/create-dashboards.md), you can [add tiles](/docs/platform/dashboards/create-dashboards/#step-2-add-tiles-to-a-dashboard) to the dashboard. 
 
 You can edit, delete, resize, move postions, or download data of the tiles. 
 
@@ -64,7 +64,7 @@ To gain deeper insights, you can create queries in the dashboard to capture data
 2. Select the following filters.
     * In **Deployments**, select **Custom Aggregation Period**, then select the time period.
     * In **Deployments**, select **Total Deployments**.
-3. Configure your visualisation options. For more information, go to [create visualisation and graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs).
+3. Configure your visualisation options. For more information, go to [create visualisation and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
 4. Select **Run**.
 5. Select **Save** to save the query as a tile on your dashboard.
 
@@ -76,7 +76,7 @@ To gain deeper insights, you can create queries in the dashboard to capture data
 2. Select the following filters.
     * In **Deployments**, select **Custom Aggregation Period**, then select the time period.
     * In **Reverted Deployments**, select **Mean Time to Restore**.
-3. Configure your visualisation options. For more information, go to [create visualisation and graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs).
+3. Configure your visualisation options. For more information, go to [create visualisation and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
 4. Select **Run**.
 5. Select **Save** to save the query as a tile on your dashboard.
 
@@ -88,7 +88,7 @@ To gain deeper insights, you can create queries in the dashboard to capture data
 2. Select the following filters.
     * In **Deployments**, select **Custom Aggregation Period**, then select the time period.
     * In **Deployments**, select **Change Failure Rate**.
-3. Configure your visualisation options. For more information, go to [create visualisation and graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs).
+3. Configure your visualisation options. For more information, go to [create visualisation and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
 4. Select **Run**.
 5. Select **Save** to save the query as a tile on your dashboard.
 

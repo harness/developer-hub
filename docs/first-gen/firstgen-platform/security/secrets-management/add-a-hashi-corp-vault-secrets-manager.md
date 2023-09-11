@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/add-hashicorp-vault).To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secrets Manager.
+This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/add-hashicorp-vault).To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secrets Manager.
 
 ### Before You Begin
 

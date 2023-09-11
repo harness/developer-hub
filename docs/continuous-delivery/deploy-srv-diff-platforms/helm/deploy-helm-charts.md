@@ -41,7 +41,7 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
 
 ## Supported platforms and technologies
 
-See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies).
+See [Supported Platforms and Technologies](/docs/get-started/supported-platforms-and-technologies).
 
 ## ChartMuseum binaries
 
@@ -137,7 +137,7 @@ Adding a Helm chart is a simple process of connecting Harness to the Git or HTTP
    ![](./static/deploy-helm-charts-02.png)
 5. In **Specify Helm Chart Store**, select the type of repo or or cloud storage service (Google Cloud Storage, AWS S3) you're using.
 
-For the steps and settings of each option, see the [Connect to an Artifact Repo](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/) How-tos.
+For the steps and settings of each option, see the [Connect to an Artifact Repo](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/) How-tos.
 
 If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-providers).
 
@@ -189,7 +189,7 @@ Here's an example:
 
 ![](./static/deploy-helm-charts-03.png)
 
-If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
+If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](/docs/platform/Delegates/install-delegates/overview).
 
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 

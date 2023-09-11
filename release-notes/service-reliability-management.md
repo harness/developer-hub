@@ -243,7 +243,7 @@ This release does not include any early access features.
 
 ##### What's new
 
-- Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](https://developer.harness.io/docs/continuous-error-tracking). (SRM-14701)
+- Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](/docs/continuous-error-tracking). (SRM-14701)
 
 - Clicking on a Prometheus metrics entry in the Service Health page of a monitored service directly navigates you to the Prometheus metrics dashboard. (SRM-14699)
 

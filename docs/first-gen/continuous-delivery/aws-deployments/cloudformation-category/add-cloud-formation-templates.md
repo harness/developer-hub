@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).This topic describes how to set up a Harness Infrastructure Provisioner for CloudFormation.
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).This topic describes how to set up a Harness Infrastructure Provisioner for CloudFormation.
 
 Once the Harness Infrastructure Provisioner is set up, you can use it to define a deployment target in a Harness Infrastructure Definition.
 

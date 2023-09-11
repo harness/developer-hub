@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). For information about delegates in Harness NextGen, see [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md). Large enterprises are highly regulated and auditing the deployments happening in their environments is critical. These audits might take into account deployment information across years.
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). For information about delegates in Harness NextGen, see [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md). Large enterprises are highly regulated and auditing the deployments happening in their environments is critical. These audits might take into account deployment information across years.
 
 Harness provides advanced auditing in the Harness Manager, as described in [Audit Trail](../../../firstgen-platform/security/auditing-howtos/audit-trail.md), and deployment information in the **Deployments** page and [dashboards](../../../firstgen-platform/fg-monitoring/main-and-services-dashboards.md), but large enterprises want to save deployment information to their centralized archives for years to come.
 

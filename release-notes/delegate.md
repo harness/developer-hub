@@ -84,6 +84,12 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 ### Hotfixes
 
+#### Version 80313
+
+- There were several `OverlappingFileLockException` errors caused by the version of the Chronicle Queue library used. (CCM-14174)
+
+   The issue has been resolved. We upgraded the Chronicle Queue library to fix the errors.
+
 #### Version 80312
 
 - In previous versions, when utilizing Artifactory as an artifact source, there was an issue where the retrieval of artifacts failed when the specified path included regular expressions, and the path structure was nested rather than flat. We are pleased to announce that this release addresses and resolves this issue.
@@ -388,7 +394,7 @@ Harness NextGen release 79516 includes the following changes for the Harness Del
   
   To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
 
-  For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
+  For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
 
 - Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
 

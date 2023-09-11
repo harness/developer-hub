@@ -20,7 +20,12 @@ mTLS is an advanced feature. Contact [Harness Support](mailto:support@harness.io
 
 ## Create a CA certificate and a client certificate
 
-Harness does not create or distribute the CA and client certificates that are used for mTLS. You must set up the certificates and explicitly provide them to the delegate by mounting a Kubernetes secret. 
+Harness does not create or distribute the CA and client certificates that are used for mTLS. You must set up the certificates and explicitly provide them to the delegate by mounting a Kubernetes secret.
+
+:::caution Important note
+Project-level certificates are not supported for mTLS delegates.
+
+:::
 
 In the following examples, OpenSSL is used to create the required certificates. For the `Subject`, use the text of your choice. It does not have to match the mTLS DNS name or contain `harness.io`. 
 
@@ -79,7 +84,7 @@ You can move existing delegates with an immutable image type (image tag `yy.mm.x
 
 Before you migrate an existing delegate to an mTLS-enabled delegate, make sure that you meet the following prerequisites.
 
-- The delegate must have an immutable image type (image tag `yy.mm.xxxxx`). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+- The delegate must have an immutable image type (image tag _`yy.mm.xxxxx`_). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 - You must have access to the delegate YAML. 
 

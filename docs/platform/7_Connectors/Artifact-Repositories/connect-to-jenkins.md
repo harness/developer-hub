@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Continuous Integration (CI) can be performed in Harness using the module and [CI Pipelines](../../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md).
+Continuous Integration (CI) can be performed in Harness using the module and [CI Pipelines](../../../continuous-integration/get-started/key-concepts.md).
 
 If you are using Harness Continuous Delivery (CD) but not Harness Continuous Integration (CI), you can still perform CI using the **Jenkins** step in your CD Stage.
 
