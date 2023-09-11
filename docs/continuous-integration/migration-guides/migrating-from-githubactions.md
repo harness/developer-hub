@@ -97,7 +97,7 @@ jobs:
 </Tabs>
 ```
 
-For more information about Harness terminology, features, and pipeline components, go to [CI pipeline basics](../get-started/key-concepts.md).
+For more information about Harness terminology, features, and pipeline components, go to the [CI key concepts](../get-started/key-concepts.md).
 
 Both Harness CI and GitHub Actions workflows are written in YAML. Whereas GitHub Actions workflow configurations are always stored in the `.github/workflows` directory in your code repo, Harness provides you a choice of inline pipeline storage or [importing pipelines from Git](/docs/platform/git-experience/import-a-pipeline/). Harness also provides both visual and code-based pipeline editors.
 

@@ -15,7 +15,7 @@ This topic explains how to use the Harness Docker Registry Connector to connect 
 
 ### Before you begin
 
-* [CI pipeline basics](../../../continuous-integration/get-started/key-concepts.md)
+* [CI key concepts](../../../continuous-integration/get-started/key-concepts.md)
 * [Harness Delegate Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
 
 ### Review: Managing IAM Policies in IBM Cloud

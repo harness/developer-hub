@@ -19,10 +19,12 @@ Input Sets and Overlays allow you to create a Pipeline template that can use dif
 
 ### Before you begin
 
-* [CI pipeline tutorials](../../continuous-integration/get-started/tutorials.md)
-* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
-* [Input Sets and Overlays](input-sets.md)
-* [Runtime Inputs](../20_References/runtime-inputs.md)
+Review the following:
+
+* [CI tutorials](../../continuous-integration/get-started/tutorials.md)
+* [Kubernetes deployments in Harness CD overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [Input sets and overlays](input-sets.md)
+* [Runtime inputs](../20_References/runtime-inputs.md)
 
 ### Step 1: Create the Input Sets
 

@@ -63,7 +63,7 @@ stages:
 </Tabs>
 ```
 
-For more information about Harness terminology, features, and pipeline components, go to [CI pipeline basics](/docs/continuous-integration/get-started/key-concepts).
+For more information about Harness terminology, features, and pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
 When creating pipelines, CircleCI supports pipeline configuration as code only. In contrast, the Harness CI Pipeline Studio provides both a visual editor and a YAML code editor.
 

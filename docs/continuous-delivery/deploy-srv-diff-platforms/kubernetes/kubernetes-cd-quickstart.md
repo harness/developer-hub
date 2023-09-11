@@ -231,7 +231,7 @@ If you run into any errors, it is typically because the cluster does meet the re
 * Add a Kubernetes rolling update.
 * Deploy your Kubernetes pipeline to your target cluster.
 
-Next, try Harness [Continuous Integration](/docs/continuous-integration) to build a codebase, upload it to a repo, and run unit and integrations tests: [CI pipeline quickstart](/docs/continuous-integration/get-started/tutorials).
+Next, try using Harness [Continuous Integration](/docs/continuous-integration/get-started/tutorials) to build a codebase, upload it to a repo, and run unit and integrations tests.
 
 ## Clean up the deployment
 

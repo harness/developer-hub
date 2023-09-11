@@ -64,7 +64,7 @@ If you want to try creating a pipeline for yourself, these tutorials walk throug
 * [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
 * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 
-For information about CI pipeline components, go to [CI pipeline basics](/docs/continuous-integration/get-started/key-concepts).
+For information about CI pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
 ## Features
 

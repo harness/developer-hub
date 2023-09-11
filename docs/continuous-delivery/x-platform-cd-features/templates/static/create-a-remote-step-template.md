@@ -22,9 +22,11 @@ You'll learn how to: 
 
 ### Before you begin
 
-* Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md)
-* See [Templates Overview](template.md).
-* See [CIE Quickstarts](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
+Review the following:
+
+* [Harness key concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md)
+* [Templates overview](template.md).
+* [CI tutorials](/docs/continuous-integration/get-started/tutorials)
 
 ### Permissions
 
