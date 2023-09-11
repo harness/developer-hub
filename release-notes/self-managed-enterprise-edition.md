@@ -25,8 +25,8 @@ This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
 | :-- | :--: |
-| Helm Chart | [0.8.x](https://github.com/harness/helm-charts/releases/tag/harness-0.8.x) |
-| Air Gap Bundle | [0.8.x](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.x) |
+| Helm Chart | [0.9.0](https://github.com/harness/helm-charts/releases/tag/harness-0.9.0) |
+| Air Gap Bundle | [0.9.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.9.0) |
 | NG Manager | xxxxx |
 | CI Manager | xxxx |
 | Pipeline Service | x.xx.xx |
@@ -43,14 +43,14 @@ Some admins might not have Google account access to download air gap bundles. As
 
 ```
 gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.8.x/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.x/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.x/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.x/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.x/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.x/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.x/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.x/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.0/sto_images.tgz" \
   .
 ```
 
