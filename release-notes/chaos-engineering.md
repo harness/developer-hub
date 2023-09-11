@@ -18,9 +18,54 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest: Version 1.18.7
+## Latest: Version 1.19.2
 
 ### What's new
+
+* Added Asupport for Authentication & HTTPs in HTTP Probes for Kubernetes chaos faults. (CHAOS-2381)
+
+* Added support for the destination ports for the provided destination IPs and hosts in network chaos faults. (CHAOS-2336)
+
+* Added support for authentication and TLS in Prometheus probes in Kubernetes chaos faults. (CHAOS-2295)
+
+* Chaos Studio has been enhanced to not show ChaosHubs with no experiments/faults during experiment creation. (CHAOS-2283)
+
+* A New option has been added to preserve or delete the chaos experiment resources with a single toggle. Experiment resources can be preserved for debugging purposes. (CHAOS-2255)
+
+* Enhanced Docker Service Kill chaos fault to support containerd service as well. User can select type of service via a new tunable (SERVICE_NAME) they want to kill. (CHAOS-2220)
+
+* Added support for experiment run specific manifest download from auxiliary nav when viewing specific run details. (CHAOS-1832)
+
+### Early access
+
+* Linux Chaos Faults (This feature is currently behind a feature flag named `CHAOS_LINUX_ENABLED`)
+    - Added support for targetting multiple network interfaces in network faults. (CHAOS-2349)
+    - The script generated to add linux infrastructure had incorrect flags due to changes in terminologies, this has now been corrected to reflect updated installation flags. (CHAOS-2313)
+
+* Resilience Probes (This feature is currently behind a feature flag named `CHAOS_PROBES_ENABLED`)
+    - Users had to click on Setup Probe button 2 times. It should now work only with a single click. It was dependent on formik validations, which in turn was halting the functionality of handleSubmit due to incorrect Yup validations. (CHAOS-2364)
+   - When using same probes in 2 faults under same chaos experiment, Probe API was returning probe 2 times in 2nd fault. This was due to probeNames being a global variable and using the same probe name multiple times was causing the name to get appended without re-initializing the variable. Scoping it down to local scope fixed this issue. (CHAOS-2452)
+
+### Fixed issues
+
+* The logs for "install chaos experiment" step were getting lost immediately post execution. This issue was occurring in the subscriber component, after the custom pods cleanup, the component was still trying to stream Kubernetes pod logs. As a fix, we have added a check to fetch the pod details and gracefully return the error if pods are not found with a proper error message. (CHAOS-2321)
+
+* As Account Viewer, Users were not able to view Chaos Dashboards. This was happening because `getDashboards` API was missing routingID which was failing the API calls. This has been fixed now. (CHAOS-1797)
+
+* Frontend was making unnecessary query to backend for listWorkflow API whenever changing experiment details via UI. Now ChaosStep has been optimized to only query when changing selected experiment using memoisation. (CHAOS-883)
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### September 8, 2023, Version 1.18.7
+
+##### What's new
 
 * Added Audit Event (Update) for Chaos Infrastructures upgrades which are triggered by SYSTEM/Cron Job Upgrader Automatically. (CHAOS-2350)
 
@@ -33,28 +78,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     - Kubectl binary has been upgraded to v1.28.0 to reduce 2 vulnerabilities in K8s as well as chaos-go-runner docker image.
     - Argo components like workflow-controller and argo-exec have been upgraded to v3.4.10 which resolves all vulnerabilities in respective components.
 
-### Early access
+##### Early access
 
 * Linux Chaos Faults (This feature is currently behind a feature flag named `CHAOS_LINUX_ENABLED`)
     - Enhanced fault execution logs to also include logs from commands like stress-ng, tc & dd as well. (CHAOS-2309)
     - All APIs for services with respect to Linux Chaos have been migrated from the GraphQL and GRPC apis to REST. Users upgrading to 1.18.x need to upgrade all Linux Chaos Infrastructures.
 
-### Fixed issues
+##### Fixed issues
 
 * Fixed the faults logs getting truncated when the log size is high. It was happening because logs were having a buffer size of 2000 bytes, if the log size was higher, logs were getting truncated. As part of the fix, we made the buffer resizable and optimized the flow. (CHAOS-2257)
 
 * The UI wasn't fully updated post the probe schema changes to support explicit units definition (s, ms). Added units for probe run properties in UI. (CHAOS-2235)
 
 * Users were able to create different experiments with the same name, since the experiment names carry a lot of significance and they should be unique. A name validation is added whenever a new experiment is saved & users will be provided with an error if an experiment with the same name already exists. (CHAOS-2233)
-
-### Hotfixes
-
-This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 21, 2023, version 1.17.3
 
