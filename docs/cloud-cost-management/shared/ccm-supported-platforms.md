@@ -586,7 +586,7 @@ Review the following information about what installation infrastructure and CCM 
 
 ### Supported installation infrastructure for CCM on Harness Self-Managed Enterprise Edition
 
-Azure is the only supported installation infrastructure. If you do not install Harness Self-Managed Enterprise Edition on Azure, then you cannot use the CCM features. 
+AWS is the only supported installation infrastructure. If you do not install Harness Self-Managed Enterprise Edition on AWS, then you cannot use the CCM features. 
 
 ### Supported CCM features on Harness Self-Managed Enterprise Edition
 
@@ -600,7 +600,7 @@ The following table provides the feature support matrix for CCM on Harness Self-
 |BI dashboards |✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
 |Anomaly detection  | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
 |Currency standardization | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-|Recommendations |❌ | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Recommendations |✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 |Asset governance | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 
