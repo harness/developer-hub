@@ -39,7 +39,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - The delegate expiration policy has been extended from 3 months to 6 months. You now only have to update delegates once every 6 months. (PL-39452)
 
-   This item requires Harness Delegate version 805xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - The OWASP Java HTML Sanitizer version is upgraded to 20220608.1. (PL-40807)
 
