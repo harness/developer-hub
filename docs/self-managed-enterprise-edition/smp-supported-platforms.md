@@ -50,7 +50,7 @@ The following permissions are required:
 * Contact [Harness Support](mailto:support@harness.io) for license information.
 
 ## Supported functionality
-* [Self-signed certificates](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed/)
+* [Self-signed certificates](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga#helm-chart-values)
 * [Air-gap mode](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/)
 * [Infrastructure monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem)
 * [Backup and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
