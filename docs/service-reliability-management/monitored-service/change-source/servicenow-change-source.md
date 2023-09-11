@@ -95,7 +95,7 @@ A business rule is essential to define trigger conditions and configure the Harn
    
 2. In the **When to run** tab, set the conditions for the business rule. Ensure it includes the following conditions:
    
-   - **When**: Specify when the rule should execute: when this business rule should execute: "display", "before", "async", or "after" the database operation is complete.
+   - **When**: Specify when the rule should execute: "display", "before", "async", or "after" the database operation is complete.
    
    - **On which Operations**: Determine on which database operations the rule should execute.
    
