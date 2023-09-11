@@ -6,6 +6,8 @@ helpdocs_topic_id: 6tblwmh830
 helpdocs_category_id: 66qbyn7ugu
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed
 ---
 
 This document explains how to use Helm to install, upgrade, or uninstall Harness Self-Managed Enterprise Edition. This document describes an installation on Google Kubernetes Engine (GKE). The same installation process, however, applies to installations on Kubernetes versions 1.*x* and later.
