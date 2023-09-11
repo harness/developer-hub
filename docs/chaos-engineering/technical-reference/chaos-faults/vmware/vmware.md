@@ -11,6 +11,8 @@ import { experiments } from "./experiments"
 
 <!-- Heading Description -->
 
+<div>
+
 ## Introduction
 
 VMware faults disrupt the resources running on a VMware cluster. Depending on the type of instance the fault targets, VMware faults are categorized into various types.
