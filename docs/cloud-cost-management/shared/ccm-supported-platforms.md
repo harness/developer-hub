@@ -590,7 +590,7 @@ Azure is the only supported installation infrastructure. If you do not install H
 
 ### Supported CCM features on Harness Self-Managed Enterprise Edition
 
-The following table provides the feature support matrix for CCM on Harness Self-Managed Enterprise Edition. For more information, go to [Self-Managed Enterprise Edition](../../self-managed-enterprise-edition.md) and [CCM on SMP](../2-getting-started-ccm/ccm-smp/1-smp-ccm-roadmap.md).
+The following table provides the feature support matrix for CCM on Harness Self-Managed Enterprise Edition. 
   
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **Connected environment** | **Air-gapped environment** |
 | --- | --- | --- | --- | --- | --- | --- |
