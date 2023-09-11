@@ -7,7 +7,7 @@ helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
-  - /docs/get-started/quickstarts
+  - /docs/getting-started/quickstarts
 ---
 
 **New to Harness?** Tutorials will quickly take you from novice to advanced. Select what you want to do from the list below to see the available tutorials.

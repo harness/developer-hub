@@ -2,6 +2,8 @@
 title: Events summary
 description: Identify and prioritize critical errors.
 sidebar_position: 30
+redirect_from:
+  - /docs/continuous-error-tracking/getting-started/cet-event-dashboard
 ---
 
 The Continuous Error Tracking Events dashboard displays a comprehensive list of all the monitored services and events.

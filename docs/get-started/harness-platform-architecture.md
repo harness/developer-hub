@@ -7,7 +7,7 @@ helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
-  - /docs/get-started/harness-platform-architecture
+  - /docs/getting-started/harness-platform-architecture
 ---
 
 The Harness Platform is a self-service CI/CD platform that enables end-to-end software delivery. The Platform includes the following modules to help you build, test, deploy, and verify software:

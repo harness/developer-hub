@@ -7,7 +7,7 @@ helpdocs_category_id:
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
-  - /docs/security-testing-orchestration/onboard-sto/key-concepts/severities
+  - /docs/internal-developer-portal/getting-started/register-a-new-software-component
 ---
 
 You can register any new software component with the software catalog by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.

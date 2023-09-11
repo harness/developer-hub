@@ -118,13 +118,13 @@ export const featuredTutorials: CardItem[] = [
     },
 
     {
-      name: "Terminologies",
+      name: "Key concepts",
       list: [
         {
-          title: "Familiarize with chaos engineering terminologies",
+          title: "Familiarize with chaos engineering concepts",
           module: MODULES.ce,
           description:
-            "Familiarize with chaos engineering terminologies.",
+            "Familiarize with chaos engineering concepts.",
           link: "/docs/chaos-engineering/get-started/key-concepts",
         },
       ],
