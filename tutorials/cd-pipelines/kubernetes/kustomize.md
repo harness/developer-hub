@@ -499,19 +499,19 @@ You've just learned how to use Harness CD to deploy an application using a Kusto
 - Keep learning about Harness CD. Add triggers to your pipeline that'll respond to Git events by following this [guide](https://developer.harness.io/docs/platform/Triggers/triggering-pipelines).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more Tutorials and resources.
 
-## How to Deploy Your Own App Using Harness?
+## How to deploy your own app by using Harness
 
 You can integrate your own microservice application into this tutorial by following the steps outlined below:
 
-- Utilize the same Delegate that you deployed as part of this tutorial. Alternatively, deploy a new Delegate, but remember to use the newly created Delegate identifier when creating Connectors.
+- Utilize the same delegate that you deployed as part of this tutorial. Alternatively, deploy a new delegate, but remember to use a newly created delegate identifier when creating connectors.
 
-- If you intend to use a private Git repository that hosts your Kustomize files, create a Harness Secret containing the Git Personal Access Token (PAT). Subsequently, create a new Git Connector using this secret.
+- If you intend to use a private Git repository that hosts your Kustomize files, create a Harness secret containing the Git personal access token (PAT). Subsequently, create a new Git connector using this secret.
 
-- Create a Kubernetes Connector if you plan to deploy your applications on a new Kubernetes environment. Make sure to update the Infrastructure Definition to reference this newly created Kubernetes connector.
+- Create a Kubernetes connector if you plan to deploy your applications in a new Kubernetes environment. Make sure to update the infrastructure definition to reference this newly created Kubernetes connector.
 
-- Once all the aforementioned steps are completed, create a new Harness Service that leverages Kustomize for deploying applications.
+- Once you complete all the aforementioned steps, create a new Harness service that leverages Kustomize for deploying applications.
 
-- Lastly, establish a new Deployment Pipeline and select the newly created Infrastructure Definition, and Service. Choose a deployment strategy that aligns with your microservice application's deployment needs.
+- Lastly, establish a new deployment pipeline and select the newly created infrastructure definition and service. Choose a deployment strategy that aligns with your microservice application's deployment needs.
 
 - Voila! You're now ready to deploy your own application using Harness.
 

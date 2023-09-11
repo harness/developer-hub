@@ -621,21 +621,21 @@ You've just learned how to use Harness CD to deploy an application using a Kuber
 - Keep learning about Harness CD. For example, add [Triggers](https://developer.harness.io/docs/platform/Triggers/triggering-pipelines) to your pipeline that initiate pipeline deployments in response to Git events.
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
-## How to Deploy Your Own App Using Harness?
+## How to deploy your own app by using Harness
 
 You can integrate your own microservice application into this tutorial by following the steps outlined below:
 
-- Utilize the same Delegate that you deployed as part of this tutorial. Alternatively, deploy a new Delegate, but remember to use the newly created Delegate identifier when creating Connectors.
+- Utilize the same delegate that you deployed as part of this tutorial. Alternatively, deploy a new delegate, but remember to use a newly created delegate identifier when creating Connectors.
 
-- If you intend to use a private Git repository that hosts your Manifest files, create a Harness Secret containing the Git Personal Access Token (PAT). Subsequently, create a new Git Connector using this secret.
+- If you intend to use a private Git repository that hosts your manifest files, create a Harness secret containing the Git personal access token (PAT). Subsequently, create a new Git connector using this secret.
 
-- Create a Kubernetes Connector if you plan to deploy your applications on a new Kubernetes environment. Make sure to update the Infrastructure Definition to reference this newly created Kubernetes connector.
+- Create a Kubernetes connector if you plan to deploy your applications in a new Kubernetes environment. Make sure to update the infrastructure definition to reference this newly created Kubernetes connector.
 
-- Once all the aforementioned steps are completed, create a new Harness Service that leverages Kubernetes Manifests for deploying applications.
+- Once you complete all the aforementioned steps, create a new Harness service that leverages Kubernetes manifests for deploying applications.
 
-- Lastly, establish a new Deployment Pipeline and select the newly created Infrastructure Definition, and Service. Choose a deployment strategy that aligns with your microservice application's deployment needs.
+- Lastly, establish a new deployment pipeline and select the newly created infrastructure definition and service. Choose a deployment strategy that aligns with your microservice application's deployment needs.
 
-- Voila! You're now ready to deploy your own application using Harness.
+- Voila! You're now ready to deploy your own application by using Harness.
 
 ```mdx-code-block
 </TabItem>
