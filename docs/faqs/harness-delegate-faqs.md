@@ -27,9 +27,9 @@ Harness Platform has two major components:
 
 #### How is the delegate updated?
 
-There are two options.
+There are two options, automatic and manual.
 
-##### Automated
+##### Delegate automatic updates
 
 The delegate updates automatically. The delegate installation also installs a **Watcher** program that checks the Harness cloud periodically for new versions.
 
@@ -37,7 +37,7 @@ Watcher ensures there is exactly one delegate process of each published version 
 
 If there is a published version that is not running, Watcher downloads the JAR file for that version securely over HTTPS, installs it, and updates the delegate connection to Harness Manager. There is no downtime.
 
-##### Non-automated
+##### Delegate manual updates
 
 You update the delegate. When you install a delegate by downloading the delegate YAML file from Harness, you select the self-managed option.
 
@@ -50,7 +50,7 @@ The delegate image is signed. You can check it by running this command (with the
 ```
 docker trust inspect --pretty harness/delegate:yy.mm.xxxxx
 ```
-#### Can I use the same YAML to create an automated or non-automated delegate?
+#### Can I use the same YAML to create an automatically updated and manually updated delegate?
 
 No. The YAML specifications for the two types are different.
 
