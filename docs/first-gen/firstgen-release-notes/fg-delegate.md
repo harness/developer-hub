@@ -34,9 +34,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80500, Harness Delegate version 80505
+## Latest: Harness version 80504, Harness Delegate version 80505
 
-Harness FirstGen release 80500 includes the following changes for the Harness Delegate.
+Harness FirstGen release 80504 includes the following changes for the Harness Delegate.
 
 ### New features and enhancements
 
