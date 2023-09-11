@@ -16,7 +16,7 @@ Retrying a Pipeline or Stage is different from rerunning a Pipeline or Stage. Wh
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 * [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
 * [Add a Stage](../8_Pipelines/add-a-stage.md)
 * Make sure you have **Execute** permissions for Pipeline to run a specific Stage of the Pipeline. For example, the [Pipeline Executor](../role-based-access-control/permissions-reference) default role in the Project where your Pipeline is located.

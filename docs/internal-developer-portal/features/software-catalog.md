@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-![](../getting-started/static/catalog-screenshot.png)
+![](../get-started/static/catalog-screenshot.png)
 
 The software catalog is a centralized registry for all your software (services, websites, libraries, data pipelines, and so on), and it helps you track their ownership, metadata, and dependencies. The catalog is built from metadata YAML files, each of which is stored with its code and owned by a team. It is powered by the [Backstage Software Catalog](https://backstage.io/docs/features/software-catalog/).
 
@@ -39,7 +39,7 @@ spec:
   system: project-x
 ```
 
-For information about how to register a software component, go to [register a new software component](../getting-started/register-a-new-software-component.md). For YAML reference documentation, go to [backstage.io](https://backstage.io/docs/features/software-catalog/descriptor-format).
+For information about how to register a software component, go to [register a new software component](../get-started/register-a-new-software-component.md). For YAML reference documentation, go to [backstage.io](https://backstage.io/docs/features/software-catalog/descriptor-format).
 
 ## Software ecosystem modelling
 
@@ -49,7 +49,7 @@ The catalog is home to several types of software components such as services, we
 
 You can access catalog APIs to retrieve software components from the catalog, register new components, or build your automation on top of it.
 
-Start by generating a Harness API Key as described in [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys). Then, by using your Harness account ID and the API Key, you can make requests to the IDP catalog APIs as follows:
+Start by generating a Harness API Key as described in [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). Then, by using your Harness account ID and the API Key, you can make requests to the IDP catalog APIs as follows:
 
 ```
 curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations' \

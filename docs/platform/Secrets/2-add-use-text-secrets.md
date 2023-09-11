@@ -30,11 +30,11 @@ Secrets can be added inline while setting up a connector or other setting, and t
 
 :::info
 
-You can't create secrets that point to secret managers in a different [scope](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes). For example, if you create a secret at the project scope, you cannot reference a secret manager in a different project. To reference secrets across projects, create the secret at the organization or account scope.
+You can create secrets that point to secret managers in a different [scope](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes). For example, you can create secrets inside a project using the Secret Manager created at the Org or Account level.
 
 :::
 
-To add an encrypted text secret in the account scope: 
+To add an encrypted text secret in the account scope, do the following: 
 
 1. In your Harness account, select **ACCOUNT SETTINGS**.
    
@@ -42,15 +42,11 @@ To add an encrypted text secret in the account scope:
 
 3. Select **New Secret**, and then select **Text**.
    
-   ```mdx-code-block
-   <img src={add_text_secret} alt="add_text_secret" height="200" width="500"/>
-   ```
+   ![](./static/add-text-secrets.png)
 
    The **Add new Encrypted Text** settings appear.
 
-   ```mdx-code-block
-   <img src={add_encrypted_text} alt="add_encrypted_text" height="200" width="500"/>
-   ```
+   ![](./static/add-encrypted-text.png)
 
 4. In **Secrets Manager** select the secrets manager you will use to encrypt this secret.
 
@@ -66,7 +62,7 @@ To add an encrypted text secret in the account scope:
 
    - **Reference Secret**: Enter the name of the existing secret in your Secret Manager that you want your **Reference Secret** to refer to, and then select **Test** to test the reference path. You can reference existing secrets in Azure Key Vault, Hashicorp Vault, AWS Secrets Manager, or GCP Secrets Manager.
 
-     ![](./static/test-secret-reference-path.png)
+     ![](../Secrets/static/test-secret-reference-path.png)
 
 7. Select **Save**.
 
@@ -89,7 +85,7 @@ You can also edit the secret in the connector.
 
 For an Encrypted Text secret that's been scoped to a Project, you reference the secret in using the secret identifier in the expression: `<+secrets.getValue("your_secret_Id")>`.
 
-![](./static/add-use-text-secrets-50.png)
+![](../Secrets/static/add-use-text-secrets-50.png)
 
 Always reference a secret in an expression using its identifier. Names will not work.For example, if you have a text secret with the identifier `Docker_Hub_MRC`, you can reference it in a Shell Script step like this:
 
@@ -128,7 +124,7 @@ When a secret is displayed in an output, Harness substitutes the secret value wi
 
 For example, here the secret values referenced in a Shell Script step are replaced with `*****`:
 
-![](./static/add-use-text-secrets-51.png)
+![](../Secrets/static/add-use-text-secrets-51.png)
 If you accidentally use a very common value in your secret, like whitespace, the `*` substitution might appear in multiple places in the output.
 
 If you see an output like this, review your secret and fix the error.
@@ -189,7 +185,7 @@ echo <+secrets.getValue("linebreaks")> | base64 -d
 ```
 The result loses any secret sanitization.
 
-![](./static/add-use-text-secrets-52.png)
+![](../Secrets/static/add-use-text-secrets-52.png)
 ## Nested expressions using string concatenation
 
 You can use the + operator or concat method inside the secret reference. For example, each of these expressions use one method and another Harness variable expression:

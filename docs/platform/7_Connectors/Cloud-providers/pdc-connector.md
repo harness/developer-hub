@@ -6,7 +6,7 @@ sidebar_position: 5
 
 You can connect Harness to the physical data centers (PDCs) where you will deploy your services.
 
-PDCs are typically used in traditional deployments, including [Secure Shell (SSH)](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng) and [WinRM](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial).
+PDCs are typically used in traditional deployments, including [Secure Shell (SSH)](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng) and [WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial).
 
 ## Add a Physical Data Center connector
 

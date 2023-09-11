@@ -159,7 +159,7 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Administer Harness Self-Managed Enterprise Edition",
+                label: "Administer Harness Self-Managed EE",
                 to: "tutorials/self-managed-enterprise-edition",
               },
             ],
@@ -172,7 +172,7 @@ const config = {
             items: [
               {
                 label: "Get Started",
-                to: "docs/getting-started",
+                to: "docs/get-started",
               },
               {
                 label: "Continuous Integration",
@@ -203,6 +203,10 @@ const config = {
                 to: "docs/chaos-engineering",
               },
               {
+                label: "Software Engineering Insights",
+                to: "https://docs.propelo.ai/welcome-to-propelo/",
+              },
+              {
                 label: "Continuous Error Tracking",
                 to: "docs/continuous-error-tracking",
               },
@@ -219,7 +223,7 @@ const config = {
                 to: "docs/self-managed-enterprise-edition",
               },
               {
-                label: "Harness FirstGen",
+                label: "FirstGen",
                 to: "docs/first-gen",
               },
               {
@@ -228,7 +232,7 @@ const config = {
               },
               {
                 label: "FAQs",
-                to: "docs/frequently-asked-questions",
+                to: "docs/faqs",
               },
               {
                 label: "Troubleshooting",
@@ -269,6 +273,10 @@ const config = {
               {
                 label: "Instructions",
                 to: "certifications/instructions",
+              },
+              {
+                label: "FAQs",
+                to: "certifications/faqs",
               },
             ],
           },
@@ -342,6 +350,10 @@ const config = {
                 to: "https://harness.io/products/chaos-engineering",
               },
               {
+                label: "Software Engineering Insights",
+                to: "https://www.harness.io/products/software-engineering-insights",
+              },
+              {
                 label: "Continuous Error Tracking",
                 to: "https://www.harness.io/products/continuous-error-tracking",
               },
@@ -377,6 +389,10 @@ const config = {
               {
                 label: "Release Notes",
                 href: "/release-notes/whats-new",
+              },
+              {
+                label: "Feature Requests",
+                to: "https://ideas.harness.io",
               },
             ],
           },
@@ -461,7 +477,7 @@ const config = {
           "^/docs/category/terragrunt.*",
           "^/docs/category/traditional-deployments-ssh.*",
           "^/docs/category/custom-deployments.*",
-          "^/docs/category/continuous-verification-1.*",
+          "^/docs/category/continuous-verification.*",
           "^/docs/category/model-your-cd-pipeline.*",
           "^/docs/category/harness-git-based-how-tos.*",
         ],

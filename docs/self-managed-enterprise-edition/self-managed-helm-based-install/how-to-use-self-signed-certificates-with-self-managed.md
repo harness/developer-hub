@@ -15,12 +15,18 @@ Applies to Helm-based installation only.
 
 Harness Self-Managed Enterprise Edition supports authorization by self-signed certificate. This topic explains how to modify the delegate truststore for the use of self-signed certificates in the self-managed environment. 
 
-Harness Delegate makes outbound connections to the resources you specify—for example, artifact servers and verification providers. These services typically use public certificates that are included in the operating system or the JRE. You must add the self-signed certificates that you use to the delegate. The process that this topic describes is supported for use with the legacy delegate in combination with the Harness CD, CI, and STO modules. 
+Harness Delegates and GitOps agents make outbound connections to the resources you specify, such as artifact servers and verification providers. These services typically use trusted public certificates that are included in the operating system or the JRE.
 
-**IMPORTANT**
+For self-signed certificates, you must add the self-signed certificates that you use to the delegate or GitOps agent as described in this topic.
+
+Harness supports this process for the legacy delegate with Harness CD, CI, and STO modules, or the Harness GitOps agent.
+
+```caution Important
 
 * For Golang 1.15 and later, the self-signed certificate must include a Subject Alternative Name (SAN). For more information, go to the JFrog [knowledge base](https://jfrog.com/knowledge-base/general-what-should-i-do-if-i-get-an-x509-certificate-relies-on-legacy-common-name-field-error/).
 * For truststores used with Istio, the size of the RSA key must not exceed 2048 bits.
+
+```
 
 ## Create the truststore
 
@@ -64,13 +70,15 @@ Repeat this command for each certificate you want to include in the truststore.
 
   The `XXXXXXXXXXXXXXXXXXXXXXXXXXX` placeholder indicates the position for the certificate body. Enclose each certificate in `BEGIN CERTIFICATE` and `END CERTIFICATE` comments.
 
-3. Save the file as `addcerts.yaml`. Apply the manifest to your cluster.
+3. If you are installing a GitOps agent, update the namespace to the respective namespace where the agent is installed.
+
+4. Save the file as `addcerts.yaml`. Apply the manifest to your cluster.
 
    ```
    kubectl apply -f addcerts.yaml
    ```
 
-4. If another tool such as Argo deletes the secret, you must recreate the secret. Add a MinIO YAML manifest `minio.yaml` file with the following values in addition to your other Harness manifests:
+5. If another tool such as Argo CD deletes the secret, you must recreate the secret. Add a `minio.yaml` manifest file with the following values in addition to your other Harness manifests:
 
    ```yaml
    apiVersion: v1
@@ -364,3 +372,13 @@ spec:
    - port: 8080  
 
 ```
+
+## Modify the GitOps Agent YAML
+
+1. Open the `gitops-agent.yml` file in your editor.
+2. In the `{ GitopsAgentName }-agent` ConfigMap, set the value of `GITOPS_SERVICE_HTTP_TLS_ENABLED` config to `true`.
+3. Save and apply the modified manifest:
+
+   ```
+   kubectl apply -f gitops-agent.yml
+   ```

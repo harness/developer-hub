@@ -832,7 +832,7 @@ module.exports = {
     // Created by Rashmi Sahoo to fix platform re-direct April 19th, 2023
     {
       from: "/docs/platform/Security/add-use-text-secrets",
-      to: "/docs/platform/Secrets/add-use-text-secrets",
+      to: "/docs/platform/secrets/add-use-text-secrets",
     },
     {
       from: "/docs/platform/Security/add-file-secrets",
@@ -1159,8 +1159,8 @@ module.exports = {
     // Created by ravilach to fix CD Cert re-directs April 15th, 2023
 
     {
-      from: "/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics",
-      to: "/docs/continuous-delivery/get-started/cd-pipeline-basics",
+      from: "/docs/continuous-delivery/onboard-cd/cd-concepts/key-concepts",
+      to: "/docs/continuous-delivery/get-started/key-concepts",
     },
     {
       from: "/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview",
@@ -3086,12 +3086,12 @@ module.exports = {
     },
     // Created by bfisher for DOC-3432 on July 20, 2023
     {
-      from: "/docs/platform/Get-started/platform-concepts/view-account-info-and-subscribe-to-alerts",
-      to: "/docs/platform/Get-started/view-account-info-and-subscribe-to-alerts",
+      from: "/docs/platform/get-started/platform-concepts/view-account-info-and-subscribe-to-alerts",
+      to: "/docs/platform/get-started/view-account-info-and-subscribe-to-alerts",
     },
     {
-      from: "/docs/platform/Get-started/platform-concepts/platform-overview",
-      to: "/docs/platform/Get-started/platform-overview",
+      from: "/docs/platform/get-started/platform-concepts/platform-overview",
+      to: "/docs/platform/get-started/key-concepts",
     },
     // Created by bfisher for DOC-3458 on July 25, 2023
     {

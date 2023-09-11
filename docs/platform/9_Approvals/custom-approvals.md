@@ -24,7 +24,7 @@ This topic describes how to add Custom Approval stages and steps.
 
 ### Before You Begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 * [Add a Stage](../8_Pipelines/add-a-stage.md)
 
 ## Requirements and limitations
@@ -320,7 +320,7 @@ Instead, if you publish output variables in your Custom Approval command, struct
 
 You can use Harness secrets in your Custom Approval steps.
 
-See [Add Text Secrets](../Secrets/2-add-use-text-secrets.md).
+See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 Basically, you use `<+secrets.getValue("secret_Id")>` to refer to the secret Id.
 

@@ -24,7 +24,7 @@ You need to include a Docker-in-Docker background service in your stage if eithe
        4. Under **Optional Configuration**, select the **Privileged** checkbox.
 
 ```mdx-code-block
-import set_up_harness_25 from '/docs/security-testing-orchestration/onboard-sto/static/set-up-harness-for-sto-25.png'
+import set_up_harness_25 from '/docs/security-testing-orchestration/get-started/static/set-up-harness-for-sto-25.png'
 ```
 
 ```mdx-code-block

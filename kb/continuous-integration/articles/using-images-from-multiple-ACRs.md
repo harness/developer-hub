@@ -9,7 +9,7 @@ The harness does not have its own built-in container image registry to store and
 
 When deploying applications using Harness, you typically need to specify the image repository and tag for each service or microservice you want to deploy. Harness then pulls the specified images from the container image registry (e.g., Docker Hub, ECR, GCR, ACR) and deploys them to your target environment.
 
-More information on this here: https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr
+More information on this here: /docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr
 
 ## Problem statement
 

@@ -38,14 +38,14 @@ Overall, the TokenRequest API provides a more flexible and extensible authentica
 
 To select which API to use:
 
-- **Auth Provider API**: this is the current default. You do not have to change the default settings of Harness connectors or the Harness delegates you use.
-- **TokenRequest API**: you must install the provider-specific plugin on the Harness delegate(s) to use the TokenRequest API introduced in Kubernetes 1.22.
+- **Auth Provider API**: this is the current default. You do not have to change the default settings of Harness connectors or the Harness Delegates you use.
+- **TokenRequest API**: you must install the provider-specific plugin on the Harness Delegate(s) to use the TokenRequest API introduced in Kubernetes 1.22.
 
 ### Install the gke-gcloud-auth-plugin on the delegate
 
 When using the Harness GCP connector with Kubernetes version >= 1.22, you can use the **gke-gcloud-auth-plugin** to authenticate to GKE cluster.
 
-The Harness GCP connector has 2 credential types. For each type, you must install the following dependencies in the Harness delegates you use or Harness will follow the old Auth Provider API format.
+The Harness GCP connector has 2 credential types. For each type, you must install the following dependencies in the Harness Delegates you use or Harness will follow the old Auth Provider API format.
 
 - **Service Account Key** (`ServiceAccountKey`): gcloud and gke-gcloud-auth-plugin binary.
 - **Inherit From Delegate** (`InheritFromDelegate`): gcloud and gke-gcloud-auth-plugin binary.
@@ -94,15 +94,25 @@ For more information, go to [Install the gcloud CLI](https://cloud.google.com/sd
 
 Before you begin, you must:
 
-* **Assign IAM roles to the GCP service account or Harness delegate that you will attach to the connector.**
+* **Assign IAM roles to the GCP service account or Harness Delegate that you will attach to the connector.**
   * The necessary IAM roles and policies depend on which GCP service you'll use with Harness and which operations you'll want Harness to perform in GCP.
   * GCP connectors can also inherit IAM roles from Harness delegates running in GCP. If you want your connector to inherit from a delegate, make sure the delegate has the necessary roles.
-  * If you find that the IAM role associated with your GCP connector doesn't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the GCP account or the Harness delegate that your GCP connector is using. You might need to wait up to five minutes for the change to take effect.
+  * If you find that the IAM role associated with your GCP connector doesn't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the GCP account or the Harness Delegate that your GCP connector is using. You might need to wait up to five minutes for the change to take effect.
   * For a list of roles and policies, go to [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/7_Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
   * The [GCP Policy Simulator](https://cloud.google.com/iam/docs/simulating-access) is useful for evaluating policies and access.
 * **Check your GKE version.**
   * Harness supports GKE 1.19 and later.
   * If you use a version prior to GKE 1.19, please enable Basic Authentication. If Basic authentication is inadequate for your security requirements, use the [Kubernetes Cluster Connector](./add-a-kubernetes-cluster-connector.md).
+* **Add the GKE metadata server IP to your `NO_PROXY` list.**
+  * If you use a GCP connector that inherits credentials from a delegate, which uses a proxy, and the GKE cluster or VM where the delegate is installed uses Workload Identity to authenticate, then you must add the GKE metadata server IP (`169.254.169.254`) to your `NO_PROXY` list. To verify the IP address, go to [Understanding the GKE metadata server](https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity#metadata_server) in the GCP docs. To add the IP address to your `NO_PROXY` list, do the following:
+  
+    - Open the `harness-delegate.yaml` you used to create the delegate, and add the GKE metadata server IP address to the `NO_PROXY` setting in the `StatefulSet` spec:
+
+       ```yaml
+           - name: NO_PROXY  
+             value: "169.254.169.254"
+       ```
+      Apply `harness-delegate.yaml` again to restart the Kubernetes delegate (`kubectl apply -f harness-delegate.yaml`).
 
 ## Add a GCP connector and configure credentials
 
@@ -112,13 +122,13 @@ Before you begin, you must:
    Harness automatically creates an **Id** ([entity identifier](/docs/platform/20_References/entity-identifier-reference.md)) for the connector based on the **Name**.
 4. Select **Continue** to configure credentials. Select one of the following authentication options:
    * Select **Specify credentials here** to use a GCP service account key.
-   * Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its authentication credentials from the Harness delegate that is running in GCP.
+   * Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its authentication credentials from the Harness Delegate that is running in GCP.
 5. Select **Continue** to proceed to **Select Connectivity Mode**.
 
 <details>
 <summary>Learn more about credential inheritance</summary>
 
-* **IAM role inheritance:** The connector inherits the GCP IAM role assigned to the delegate in GCP, such a Harness Kubernetes delegate running in Google Kubernetes Engine (GKE). Ensure the delegate has the IAM roles that your connector needs to perform the necessary operations.
+* **IAM role inheritance:** The connector inherits the GCP IAM role assigned to the delegate in GCP, such as a Harness Kubernetes delegate running in Google Kubernetes Engine (GKE). Ensure the delegate has the IAM roles that your connector needs to perform the necessary operations.
 * **GCP workload identity:** If you installed the Harness [Kubernetes delegate](/docs/first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate.md) in a Kubernetes cluster in GKE that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, then the Google Cloud Platform (GCP) connector inherits these credentials if it uses that delegate.
 * **Role and policy changes:** If you find that the IAM role associated with your GCP connector doesn't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the Harness delegate that your GCP connector is using. You may need to wait up to five minutes for the change to take effect.
 * **See also:**
@@ -133,11 +143,11 @@ Harness uses GCP connectors during pipeline runs to authenticate and perform ope
 
 1. Select how you want Harness to connect to GCP:
    * **Connect through Harness Platform:** Use a direct, secure communication between Harness and GCP.
-   * **Connect through a Harness Delegate:** Harness communicates with GCP through a Harness delegate in GCP. You must choose this option if you chose to inherit delegate credentials.
-2. If connecting through a Harness delegate, select either:
-   * **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegates Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
-   * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
-     * Select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate Installation Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+   * **Connect through a Harness Delegate:** Harness communicates with GCP through a Harness Delegate in GCP. You must choose this option if you chose to inherit delegate credentials.
+2. If connecting through a Harness Delegate, select either:
+   * **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+   * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about delegate tags, go to [Use delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors).
+     * Select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 3. Select **Save and Continue** to run the connection test, and then, if the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
 
 <details>

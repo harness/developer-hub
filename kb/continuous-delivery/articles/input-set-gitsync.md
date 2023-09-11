@@ -5,7 +5,7 @@ title: Gti Sync issues with Input Sets.
 # Introduction
 
 An Input Set includes all the runtime inputs that are not permanent in the Pipeline. Runtime inputs contain the values that you would be prompted to provide when you executed the Pipeline.
-More on this is detailed out here https://developer.harness.io/docs/platform/git-experience/manage-input-sets-in-simplified-git-experience/
+More on this is detailed out here /docs/platform/git-experience/manage-input-sets-in-simplified-git-experience/
 
 ## Problem Statement
 

@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
 To use a username and password for authentication, do the following:
 
 1. Enter **Username**.
-2. In **Password/API Key**, create a new password or API key or enter an existing one. For **API Key**, use a [Harness Text Secret](../../Secrets/2-add-use-text-secrets.md).
+2. In **Password/API Key**, create a new password or API key or enter an existing one. For **API Key**, use a [Harness Text Secret](/docs/platform/secrets/add-use-text-secrets).
 3. Select **Continue**.
 
 ```mdx-code-block

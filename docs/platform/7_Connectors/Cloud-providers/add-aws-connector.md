@@ -156,6 +156,6 @@ For a list of roles and policies, go to the [AWS Connector Settings Reference](.
 
 ## See also
 
-* [Harness Key Concepts](../../../../docs/getting-started/learn-harness-key-concepts.md)
-* [Supported Platforms and Technologies](../../../../docs/getting-started/supported-platforms-and-technologies.md)
+* [Harness Key Concepts](../../../get-started/key-concepts.md)
+* [Supported Platforms and Technologies](../../../../docs/get-started/supported-platforms-and-technologies.md)
 * [AWS connector settings reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md)

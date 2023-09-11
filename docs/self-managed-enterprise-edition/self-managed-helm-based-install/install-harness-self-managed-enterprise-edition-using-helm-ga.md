@@ -183,14 +183,20 @@ For details about the chart values, explanations of the default values, and desc
 
 <!-- PR-1000 -->
 
+There are additional steps for self-signed certificates:
+
+1. [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
+2. [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
+3. [Configure GitOps Agent with self-signed certificates](/docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates/)
+
 ## Next steps
 
 After installation is complete, you should create the initial Harness account, and then [create organizations and projects](../../platform/organizations-and-projects/create-an-organization.md).
 
 To get started with the modules, review the following topics:
 
-* For Harness Continuous Integration, go to [CI pipeline basics](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md).
-* For Harness Continuous Delivery & GitOps, go to [CD overview and key concepts](/docs/continuous-delivery/get-started/cd-pipeline-basics.md).
-* For Harness Security Testing Orchestration, go to [STO Basics](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
-* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-harness-chaos-engineering-ce).
+* For Harness Continuous Integration, go to [CI pipeline basics](../../continuous-integration/get-started/key-concepts.md).
+* For Harness Continuous Delivery & GitOps, go to [CD overview and key concepts](/docs/continuous-delivery/get-started/key-concepts.md).
+* For Harness Security Testing Orchestration, go to [STO Basics](../../security-testing-orchestration/get-started/overview.md).
+* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-ce).
 * For Harness Continous Error Tracking, go to [CET Tutorials](/tutorials/error-tracking/)

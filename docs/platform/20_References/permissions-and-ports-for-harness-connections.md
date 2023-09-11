@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The permissions and ports listed in this topic are for all of the integrations Harness supports across its FirstGen and NextGen product suites. For more information, see [Harness FirstGen vs Harness NextGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md).The following table lists the permissions and ports needed for the Harness Delegate to access Connectors such as artifact servers, cloud providers, verification, and security providers. You configure these settings in the Harness Manager.
+The permissions and ports listed in this topic are for all of the integrations Harness supports across its FirstGen and NextGen product suites. For more information, see [Harness FirstGen vs Harness NextGen](../../get-started/harness-first-gen-vs-harness-next-gen.md).The following table lists the permissions and ports needed for the Harness Delegate to access Connectors such as artifact servers, cloud providers, verification, and security providers. You configure these settings in the Harness Manager.
 
 * **Artifact servers:** The Delegate pulls artifacts and metadata from artifact servers using the account and ports required by the artifact server.
 * **Deployments:** Most Harness deployments to Virtual Machines (for example, AWS, GCP, Azure, Datacenter) are performed using SSH over port 22. The VPC firewall setting might also require additional open ports for administration, such as HTTP 443.
@@ -42,7 +42,7 @@ In general, if you are already connecting to your artifact servers, cloud, verif
 | Kubernetes Cluster | One of the following:* Same cluster as kubernetes delegate. Use this option if you installed the Harness delegate in your cluster. <li>Username and password.</li><li>CA certificate, client certificate, and client key. Key passphrase and key algorithm are optional.</li><li>For OpenShift: Kubernetes service account token.</li>| Depends where the cluster is hosted, such as GCP or AWS. |  [Authenticating](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) |
 | Logz | Token-based. | HTTPS: 443. |  [Announcing the Logz.io Search API](https://logz.io/blog/announcing-the-logz-io-search-api/) |
 | OpenShift | Kubernetes service account token. | HTTPS: 443. |  [Enabling Service Account Authentication](https://docs.openshift.com/container-platform/3.6/dev_guide/service_accounts.html#enabling-service-account-authentication) |
-| New Relic | API key. | HTTPS: 443. | [Access to REST API keys](https://docs.newrelic.com/docs/apis/getting-started/intro-apis/access-rest-api-keys) |
+| New Relic | API key. | HTTPS: 443. | [Access to REST API keys](https://docs.newrelic.com/docs/apis/get-started/intro-apis/access-rest-api-keys) |
 | Nexus | User account with Repository View Privilege or read for repository. | TCP: 8081. |  [Nexus Managing Security](https://help.sonatype.com/repomanager2/configuration/managing-security) |
 | Tanzu Application Service (formerly Pivotal Cloud Foundry) | User account with Admin, Org Manager, or Space Manager role. The user account must be able to update spaces, orgs, and applications. | HTTP: 80 or 443. | [Orgs, Spaces, Roles, and Permissions](https://docs.pivotal.io/pivotalcf/2-2/concepts/roles.html#roles) |
 | Prometheus | None. | Depends on where the Prometheus server is hosted. For example, on AWS, port 9090 might be required. |  [Configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/) |

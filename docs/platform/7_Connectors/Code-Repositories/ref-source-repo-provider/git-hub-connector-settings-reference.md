@@ -90,8 +90,8 @@ Authentication is required for all accounts and repos, including read-only repos
 ```
 
 1. For **Authentication**, select **Username and Token**.
-2. In the **Username** field, enter your personal GitHub account name. You can use either plaintext or a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
-3. In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
+2. In the **Username** field, enter your personal GitHub account name. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
+3. In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
 <!--Is this method required for accounts with 2FA? Do OAuth, GH App, & SSH key support accounts w/ 2FA? -->
 
@@ -137,7 +137,7 @@ SSH connections require an SSH key or a GitHub deploy key.
 
 [GitHub deploy keys](https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys) grant access to a single repo. Using a deploy key ensures that the connector only works with the specific repo you defined in the [Details settings](#details-settings).
 
-SSH keys must be in PEM format. OpenSSH keys are not supported. For details on creating SSH keys and adding them to your GitHub account, go to the GitHub documentation about [adding a new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/Secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
+SSH keys must be in PEM format. OpenSSH keys are not supported. For details on creating SSH keys and adding them to your GitHub account, go to the GitHub documentation about [adding a new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
 
 :::tip
 
@@ -185,7 +185,7 @@ Currently, the option to use a GitHub App as the primary authentication method f
 
    ![](../../static/git-hub-app-support-59.png)
 
-4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/Secrets/add-file-secrets).
+4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/secrets/add-file-secrets).
 
 ```mdx-code-block
   </TabItem>
@@ -244,7 +244,7 @@ To use this authentication method, you need to create and install a GitHub App, 
 
    ![](../../static/git-hub-app-support-59.png)
 
-4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/Secrets/add-file-secrets).
+4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/secrets/add-file-secrets).
 
 ```mdx-code-block
   </TabItem>
@@ -260,7 +260,7 @@ Select whether you want Harness to connect directly to your GitHub account or re
 
 If you select **Connect through the Harness Platform**, the Harness Manager exchanges a key pair with the Secrets Manager configured in Harness using an encrypted connection. Next, the Harness Manager uses the encrypted key and the encrypted secret and then discards them. The keys never leave the Harness Manager. Secrets are always encrypted in transit, in memory, and in the Harness database.
 
-**Connect through a Harness Delegate**, a [Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) handles the connection. This option is often used for [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview).
+**Connect through a Harness Delegate**, a [Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) handles the connection. This option is often used for [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/get-started/onboarding-guide).
 
 </details>
 

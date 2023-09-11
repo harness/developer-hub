@@ -1,7 +1,7 @@
 ---
 title: Ingest Scan Results from Snyk
 description: This workflow describes how to ingest Snyk scan results into a Harness pipeline.  
-sidebar_position: 50
+sidebar_position: 90
 ---
 
 This workflow describes how to ingest Snyk scan results into a Harness pipeline. STO supports the following scan approaches for the following Snyk products:
@@ -11,11 +11,11 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 
 ### Important notes
 
-* You must have a [Snyk API key](https://docs.snyk.io/snyk-api-info/authentication-for-api) to run Snyk scans. You should also create a [Harness secret](/docs/platform/Secrets/Secrets-Management/secrets-and-log-sanitization) for your API key.
+* You must have a [Snyk API key](https://docs.snyk.io/snyk-api-info/authentication-for-api) to run Snyk scans. You should also create a [Harness secret](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization) for your API key.
 
 * This workflow assumes you're familiar with the following:
 
-  * [Set up Harness for STO](../../onboard-sto/set-up-harness-for-sto.md) 
+  * [Set up Harness for STO](../../get-started/onboarding-guide.md) 
   * [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) 
   * [Setup requirements for AWS CodePipeline](https://docs.snyk.io/integrations/ci-cd-integrations/aws-codepipeline-integration/setup-requirements-for-aws-codepipeline)
   

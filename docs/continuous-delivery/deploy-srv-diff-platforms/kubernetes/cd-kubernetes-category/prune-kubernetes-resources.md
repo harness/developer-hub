@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to perform Kubernetes pruning using Harness.
+This topic describes how to perform Kubernetes pruning using Harness. 
 
 Changes to the manifests used in Harness Kubernetes deployments can result in orphaned resources you are unaware of.
 
@@ -36,7 +36,7 @@ Pruning is supported for the following deployment strategies:
 * Rolling Deployments
 * Blue Green Deployments
 
-See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies).
+See [Supported Platforms and Technologies](/docs/get-started/supported-platforms-and-technologies).
 
 ## Important notes
 
@@ -67,20 +67,21 @@ When the **Enable Kubernetes Pruning** setting is enabled, Kubernetes Rolling de
 4. During rollback, any new resources that were created in the failed deployment stage that were not in the last successful release are deleted also.
 
 </details>
+
 <details>
 <summary>Blue Green deployments</summary>
 
 When the **Enable Kubernetes Pruning** setting is enabled, Kubernetes Blue Green deployments manage pruning as follows:
 
-1. In the first step of a Blue Green deployment, the new version of the release is deployed to the stage environment (pod set).
-2. Harness prunes by comparing the new and previous releases in the stage pod set. Harness prunes the resources from the last successful release which are not in the current release.
+- Harness does not recreate pruned resources during rollbacks caused by failure. 
+  - By default, rollback for Blue Green deployments only consists of swapping back the service selectors.
+- Pruning is not performed on the immediate previous release. Harness prunes the resources of all older non-primary releases (n-2 release onwards). For example:
 
-Let's look at an example.
+1. release r1 → a, b, c
+2. release r2 → a, b, d
+3. release r3 → a, b, e (only c is pruned)
+4. release r4 → a, b, e (d is now pruned) 
 
-1. Deployment 1 is successfully deployed. It contained manifests for resources a, b, and c.
-2. Deployment 2 failed. It contained manifests for resources a, c, and d, but not b.
-3. Before failure, resource d is created and resource b is pruned.
-4. During rollback, Harness recreates the previously pruned resource b and deletes resource d.
 
 </details>
 

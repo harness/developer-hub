@@ -23,7 +23,7 @@ If you are using the Harness On-Prem offering, then you will need to add an SMTP
 
 ### Limitations
 
-Configuring your SMTP server is required only if you are using [Harness On-Prem](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md), or if you wish to use your own SMTP server instead of the Harness SaaS default SMTP option.
+Configuring your SMTP server is required only if you are using [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/get-started/onboarding-guide), or if you wish to use your own SMTP server instead of the Harness SaaS default SMTP option.
 
 ### Step 1: Add SMTP Configuration
 

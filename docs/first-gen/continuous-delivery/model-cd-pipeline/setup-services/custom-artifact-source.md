@@ -142,7 +142,7 @@ The following image shows the Jenkins step build and store a variable named **Je
 
 Now that the artifact is collected, a second Workflow can deploy the artifact.
 
-The `${Jenkins.description}` requires that Jenkins have the [Description Setter](https://wiki.jenkins.io/display/JENKINS/Description+Setter+Plugin) plugin installed. See [Harness Built-in Parameter Variables](../workflows/using-the-jenkins-command.md#harness-built-in-parameter-variables) for Jenkins.
+The `${Jenkins.description}` requires that Jenkins have the [Description Setter](https://plugins.jenkins.io/description-setter/) plugin installed. See [Harness Built-in Parameter Variables](../workflows/using-the-jenkins-command.md#harness-built-in-parameter-variables) for Jenkins.
 
 ### Option 2: Use the Shell Script Command
 

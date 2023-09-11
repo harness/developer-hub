@@ -55,7 +55,7 @@ As one example, if flags are for user-facing new features, give flags a name tha
 
 However, over time, you’ll want to phase out this flag as the features become permanent in production. This one flag alone might flip fifty others all on its own! You can imagine how it would be hard to find this flag to flip the features on, and then to clean it up. Here, it might make more sense to call the flag _Privacy_Features_Europe_. 
 
-In the end, the point is to make individual feature flags easier to find, especially so if non-engineering users will be making use of them. With Harness, you can even enforce naming conventions with the use of [global governance policies for feature flags](https://developer.harness.io/docs/feature-flags/harness-policy-engine/).
+In the end, the point is to make individual feature flags easier to find, especially so if non-engineering users will be making use of them. With Harness, you can even enforce naming conventions with the use of [global governance policies for feature flags](/docs/feature-flags/harness-policy-engine/).
 
 ### Avoid tech debt hell
 
@@ -67,7 +67,7 @@ The downside is, with many new features and anyone having access to implement fe
 
 We don’t believe there is any such thing as too many feature flags, but you want to make sure that you are removing stale, unnecessary, or out-of-date feature flags as you launch new flags for each new feature. This will make it a lot simpler to avoid the downsides that come with bloated feature flag systems and keep reaping the benefits.
 
-Have conversations up front. How often will you remove stale flags? Who is responsible? Are there different owners for different types of flags? Which are permanent feature flags that should never be removed? It's worth knowing that [Harness even brings to your attention the number of stale flags in your system](https://developer.harness.io/docs/feature-flags/ff-creating-flag/filtering-flags-by-state/).
+Have conversations up front. How often will you remove stale flags? Who is responsible? Are there different owners for different types of flags? Which are permanent feature flags that should never be removed? It's worth knowing that [Harness even brings to your attention the number of stale flags in your system](/docs/feature-flags/ff-creating-flag/filtering-flags-by-state/).
 
 Some of the largest enterprises, such as Facebook, Pinterest, and Netflix, regularly make use of feature flags to collect data and deliver the best experience for their user base. These organizations have thousands of flags, and it’s imperative that hygiene is appropriately handled to ensure operability at scale.
 
@@ -89,7 +89,7 @@ Similarly, being able to test a change in any given environment and collect data
 
 ### Consider trunk-based development
 
-Trunk-based development will help your teams move faster and pull complexity and risk out of your code deployment and feature release process. By having fewer long-lived branches and code paths, and more feature flags keeping changes dark even in your production environment, you will be able to merge more, deploy more, and ultimately reduce risk substantially. [Read more on trunk-based development.](https://developer.harness.io/tutorials/feature-flags/trunk-based)
+Trunk-based development will help your teams move faster and pull complexity and risk out of your code deployment and feature release process. By having fewer long-lived branches and code paths, and more feature flags keeping changes dark even in your production environment, you will be able to merge more, deploy more, and ultimately reduce risk substantially. [Read more on trunk-based development.](/tutorials/feature-flags/trunk-based)
 
 ### Think about operational toggles (not just a release toggle)
 
