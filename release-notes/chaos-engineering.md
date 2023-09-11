@@ -2,7 +2,7 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-08-21T10:00
+date: 2023-09-11T10:00
 sidebar_position: 9
 ---
 ```mdx-code-block
@@ -22,37 +22,37 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### What's new
 
-* Added support for Authentication & HTTPs in HTTP Probes for Kubernetes chaos faults. (CHAOS-2381)
+* Added support for Authentication and HTTPs in HTTP Probes for Kubernetes chaos faults. (CHAOS-2381)
 
 * Added support for the destination ports for the provided destination IPs and hosts in network chaos faults. (CHAOS-2336)
 
 * Added support for authentication and TLS in Prometheus probes in Kubernetes chaos faults. (CHAOS-2295)
 
-* Chaos Studio has been enhanced to not show ChaosHubs with no experiments/faults during experiment creation. (CHAOS-2283)
+* Chaos Studio no longer shows ChaosHubs with no experiments/faults during experiment creation. (CHAOS-2283)
 
-* A New option has been added to preserve or delete the chaos experiment resources with a single toggle. Experiment resources can be preserved for debugging purposes. (CHAOS-2255)
+* A new option has been added to preserve or delete the chaos experiment resources with a single toggle. Experiment resources can be preserved for debugging purposes. (CHAOS-2255)
 
-* Enhanced Docker Service Kill chaos fault to support containerd service as well. User can select type of service via a new tunable (SERVICE_NAME) they want to kill. (CHAOS-2220)
+* The Docker Service Kill chaos fault was enhanced to support containerd service as well. Users can select the type of service via a new tunable (SERVICE_NAME) they want to kill. (CHAOS-2220)
 
 * Added support for experiment run specific manifest download from auxiliary nav when viewing specific run details. (CHAOS-1832)
 
 ### Early access
 
 * Linux Chaos Faults (This feature is currently behind a feature flag named `CHAOS_LINUX_ENABLED`)
-    - Added support for targetting multiple network interfaces in network faults. (CHAOS-2349)
-    - The script generated to add linux infrastructure had incorrect flags due to changes in terminologies, this has now been corrected to reflect updated installation flags. (CHAOS-2313)
+    - Added support for targeting multiple network interfaces in network faults. (CHAOS-2349)
+    - The script generated to add the Linux infrastructure had incorrect flags due to changes in terminologies. This has now been corrected to reflect updated installation flags. (CHAOS-2313)
 
 * Resilience Probes (This feature is currently behind a feature flag named `CHAOS_PROBES_ENABLED`)
-    - Users had to click on Setup Probe button 2 times. It should now work only with a single click. It was dependent on formik validations, which in turn was halting the functionality of handleSubmit due to incorrect Yup validations. (CHAOS-2364)
-   - When using same probes in 2 faults under same chaos experiment, Probe API was returning probe 2 times in 2nd fault. This was due to probeNames being a global variable and using the same probe name multiple times was causing the name to get appended without re-initializing the variable. Scoping it down to local scope fixed this issue. (CHAOS-2452)
+    - Users had to select the **Setup Probe** button 2 times. It should now work only with a single click. It was dependent on formik validations, which in turn was halting the functionality of handleSubmit due to incorrect Yup validations. (CHAOS-2364)
+   - When using the same probes in two faults under same chaos experiment, Probe API was returning the probe two times in the second fault. This was due to probeNames being a global variable and using the same probe name multiple times was causing the name to be appended without re-initializing the variable. Scoping it down to local scope fixed this issue. (CHAOS-2452)
 
 ### Fixed issues
 
-* The logs for "install chaos experiment" step were getting lost immediately post execution. This issue was occurring in the subscriber component, after the custom pods cleanup, the component was still trying to stream Kubernetes pod logs. As a fix, we have added a check to fetch the pod details and gracefully return the error if pods are not found with a proper error message. (CHAOS-2321)
+* The logs for the **install chaos experiment** step were getting lost immediately post execution. This issue was occurring in the subscriber component, after the custom pods cleanup, the component was still trying to stream Kubernetes pod logs. As a fix, we have added a check to fetch the pod details and gracefully return the error if pods are not found with a proper error message. (CHAOS-2321)
 
-* As Account Viewer, Users were not able to view Chaos Dashboards. This was happening because `getDashboards` API was missing routingID which was failing the API calls. This has been fixed now. (CHAOS-1797)
+* As Account Viewer, users were not able to view Chaos Dashboards. This was happening because the `getDashboards` API was missing routingID, which was failing the API calls. This has been fixed now. (CHAOS-1797)
 
-* Frontend was making unnecessary query to backend for listWorkflow API whenever changing experiment details via UI. Now ChaosStep has been optimized to only query when changing selected experiment using memoisation. (CHAOS-883)
+* The frontend was making unnecessary queries to the backend for listWorkflow API whenever changing experiment details via the UI. Now ChaosStep has been optimized to only query when changing selected experiment using memoization. (CHAOS-883)
 
 ### Hotfixes
 
