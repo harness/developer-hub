@@ -39,7 +39,7 @@ If there is a published version that is not running, Watcher downloads the JAR f
 
 ##### Delegate manual updates
 
-You update the delegate. When you install a delegate by downloading the delegate YAML file from Harness, you select the self-managed option.
+You update the delegate. When you install a delegate by downloading the delegate YAML file from Harness, you select the manual update option.
 
 The delegate is upgraded using a ring methodology commonly used in software release management.
 
