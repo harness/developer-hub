@@ -17,6 +17,7 @@ import StoConceptTargets from '../shared/_targets.md';
 <figcaption>Test Targets page</figcaption>
 </figure>
 
+<a name="baselines"></a>
 
 ```mdx-code-block
 import StoConceptBaselines from '/docs/security-testing-orchestration/onboard-sto/shared/_baselines.md';

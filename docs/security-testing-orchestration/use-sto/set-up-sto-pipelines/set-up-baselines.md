@@ -6,6 +6,16 @@ sidebar_position: 10
 
 It is good practice to specify a baseline for every target. The baseline represents the root variant, such as the `main` branch or the `latest` tag. In some cases, you might want to use the name of the latest official release as the baseline. Baselines make it easy to identify issues in the baseline vs. issues in a downstream variant derived from that baseline. 
 
+<details><summary>Why you should set a baseline for every target</summary>
+
+```mdx-code-block
+import StoWhyDefineBaselines from '/docs/security-testing-orchestration/onboard-sto/shared/_why-define-baselines.md';
+```
+
+<StoWhyDefineBaselines />
+
+</details>
+
 To view all targets in your account, and specify baselines for your targets, go to **Security Tests** (left menu) and then **Test Targets**.
 
 <figure>
