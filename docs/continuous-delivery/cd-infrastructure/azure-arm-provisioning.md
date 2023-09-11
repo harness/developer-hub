@@ -32,7 +32,7 @@ This topic provides steps on using Harness to provision a target environment or 
 
 ### Azure roles required
 
-See ARM in [Add a Microsoft Azure connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector/).
+See ARM in [Add a Microsoft Azure connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector/).
 
 ### Harness role permissions required
 
@@ -90,7 +90,7 @@ Here are the different options for adding the step.
   <TabItem value="YAML" label="YAML" default>
 ```
 
-Here's a YAML example of a step that uses a template and parameter file stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store). The `subscription` and `resourceGroup` are set as [runtime inputs](https://developer.harness.io/docs/platform/references/runtime-inputs) so you can select them each time the pipeline runs.
+Here's a YAML example of a step that uses a template and parameter file stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store). The `subscription` and `resourceGroup` are set as [runtime inputs](/docs/platform/references/runtime-inputs) so you can select them each time the pipeline runs.
 
 ```yaml
 
@@ -415,8 +415,8 @@ ARM Rollback request send successfully
 
 In the **Advanced** tab in all of steps, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview/)

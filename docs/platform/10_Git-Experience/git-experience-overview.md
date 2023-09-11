@@ -125,7 +125,7 @@ Harness Git Experience helps you do the following:
 
 #### Git connector
 
-A Harness Git Connector is used to sync your Harness Project with your Git repo. You can set up a [Git Connector](https://developer.harness.io/docs/category/code-repo-connectors) first and simply select it when setting up Git Experience, or you can create a Git Connector as part of the Git Experience setup.
+A Harness Git Connector is used to sync your Harness Project with your Git repo. You can set up a [Git Connector](/docs/category/code-repo-connectors) first and simply select it when setting up Git Experience, or you can create a Git Connector as part of the Git Experience setup.
 
 You will need a Harness Git Connector to connect with the Git provider and perform operations like generating a webhook. Your Git Connector credentials are used to commit to Git when operations are performed using API.
 

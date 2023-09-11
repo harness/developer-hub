@@ -18,7 +18,7 @@ Harness also supports [Google KMS as a secrets manager](/docs/platform/Secrets/
 
 ## Before you begin
 
-* Go to [Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+* Go to [Harness Key Concepts](/docs/get-started/key-concepts)
 * Go to [Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
 
 ## Google Cloud secret manager important notes
@@ -33,7 +33,7 @@ Harness also supports [Google KMS as a secrets manager](/docs/platform/Secrets/
 * You cannot update the name of an inline or referenced secret stored in the Google Cloud Secret Manager using the Harness Secret Manager.
 * Harness does not support changing an inline secret to a reference secret or vice versa in Harness.
 
-For more information, go to [Supported Platforms and Technologies](../../../getting-started/supported-platforms-and-technologies.md).
+For more information, go to [Supported Platforms and Technologies](/docs/get-started/supported-platforms-and-technologies).
 
 ## Google Cloud secret manager permission requirements
 

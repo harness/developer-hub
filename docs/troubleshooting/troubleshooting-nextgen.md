@@ -591,7 +591,7 @@ Install Terraform on the delegate to fix this.
 
 In some Harness CloudFormation and ECS deployments you might get failures with `ThrottlingException` or `Rate exceeded` errors for CloudFormation and ECS API calls.
 
-For more information, go to [AWS backoff strategy](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-backoff-strategy).
+For more information, go to [AWS backoff strategy](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-backoff-strategy).
 
 ## Harness secret managers
 
@@ -655,3 +655,14 @@ If a Harness policy engine policy set is enabled and your pipeline or other reso
 Contact your Harness account administrator to resolve the issue. If the policy set has an error, you can disable it by locating the policy set and turning off the **Enforced** toggle.
 
 ![](./static/troubleshooting-nextgen-04.png)
+
+## YAML builder
+
+This section covers common problems experienced when using the [YAML pipeline builder](/docs/platform/pipelines/harness-yaml-quickstart/).
+
+### The incoming YAML document exceeds the limit: 3145728 code points
+
+This error happens when you are adding YAML that exceeds the Harness limit of 3MB.
+
+To fix this error, you will need to reduce the size of the pipeline or template.
+

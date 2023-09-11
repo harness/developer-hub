@@ -22,7 +22,7 @@ Looking for the quickstart? Go to [Harness Policy As Code quickstart](/docs/plat
 
 Before learning about Harness Policy As Code, you should have an understanding of the following:
 
-* [Learn Harness' key concepts](/docs/getting-started/learn-harness-key-concepts)
+* [Learn Harness' key concepts](/docs/get-started/key-concepts)
 
 ### How does Harness use OPA?
 
@@ -197,7 +197,7 @@ The Policy step in a Pipeline also enables evaluating policies during Pipeline e
 
 #### Feature Flags
 
-Policies are evaluated against Harness [Feature Flags](/docs/feature-flags/ff-onboarding/cf-feature-flag-overview).  
+Policies are evaluated against Harness [Feature Flags](/docs/feature-flags/get-started/overview).  
 
 Policy Sets can be configured to evaluate policies on these Feature Flag events:
 
@@ -209,11 +209,11 @@ See [Use Harness Policy As Code for Feature Flags](/docs/platform/governance/Pol
 
 #### Connectors
 
-Policies are evaluated against Harness [Connectors](https://developer.harness.io/docs/category/connectors).
+Policies are evaluated against Harness [Connectors](/docs/category/connectors).
 
 You can configure a Policy Set to evaluate policies when you save a container.
 
-Go to [Use Harness Policy As Code for Connectors](https://developer.harness.io/docs/platform/Governance/Policy-as-code/sample-policy-use-case#connector-policy-samples).
+Go to [Use Harness Policy As Code for Connectors](/docs/platform/Governance/Policy-as-code/sample-policy-use-case#connector-policy-samples).
 
 
 #### Template

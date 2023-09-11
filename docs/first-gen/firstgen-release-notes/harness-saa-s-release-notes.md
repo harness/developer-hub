@@ -16,7 +16,7 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-## Latest: Version 80407
+## Latest: Version 80504
 
 ### New features and enhancements
 
@@ -28,9 +28,55 @@ This release does not include early access features.
 
 ### Fixed issues
 
+* Fixed an issue where using multiple HTTP Helm chart repositories could lead to an increase in CPU utilization on the delegate due to background validation tasks for the Harness HTTP Helm Repo connector. This was caused by running Helm repository updates during the validation tasks. (CDS-76433, ZD-48363)
+
+  This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+* Fixed a Nexus artifact issue where a fetch timed out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
+
+   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  
+<!-- NOTE RE FIXED ISSUE CDS-73884
+https://harness.atlassian.net/browse/CDS-73884?focusedCommentId=566535 we fixed this issue for first gen with the same ticket, hence it is showing up in 805 release notes. 
+-->
+
+### Version 80407
+
+### New features and enhancements
+
+- The OWASP Java HTML Sanitizer version is upgraded to 20220608.1. (PL-40807)
+
+- The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631, ZD-48998, ZD-49702)
+
+   This issue is fixed. Harness catches the exception and continues with delegate startup.
+   
+   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+
+
+### Version 80407
+
+#### New features and enhancements
+
+This release does not include new features.
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
+
 - Fixed retries of the delegate task acquire call in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the acquire call retry flow. Tasks timed out because the delegate was not able to acquire the data. The 'taskData' field in Harness Manager is now populated to fix the issue. (PL-40646)
 
-### Hotfixes
+#### Hotfixes
 
 This release does not include hotfixes.
 
@@ -226,7 +272,7 @@ The fixed issue below is available with version 79411 and does not require a new
 
 - CD license utilization data was not reported for some accounts. (CDS-69101)
   
-  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
+  [License usage](/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
 
 - HTML characters in the `userName` caused issues during deployments. The following characters are no longer allowed in the `userName`: `:` , `/` , `<` , `>` , `=` , `(` , `)`. (PL-24129)
 
@@ -405,7 +451,7 @@ This release does not include new features.
 
 #### Early access
 
-- Large repositories are now supported for [Azure Repo](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OTIMIZED_GET_FETCH_FILES`.
+- Large repositories are now supported for [Azure Repo](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OTIMIZED_GET_FETCH_FILES`.
 
 	Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
@@ -536,7 +582,7 @@ Delegate version: 78101
   
   This functionality is behind a feature flag: `CDS_TERRAFORM_S3_SUPPORT`.
   
-  You can now use AWS S3 as a file source in the Terraform [Provision](https://developer.harness.io/docs/first-gen/continuous-delivery/terraform-category/terraform-provisioner-step) and [Apply](https://developer.harness.io/docs/first-gen/continuous-delivery/terraform-category/using-the-terraform-apply-command) steps.
+  You can now use AWS S3 as a file source in the Terraform [Provision](/docs/first-gen/continuous-delivery/terraform-category/terraform-provisioner-step) and [Apply](/docs/first-gen/continuous-delivery/terraform-category/using-the-terraform-apply-command) steps.
 
 #### Fixed issues
 

@@ -18,7 +18,7 @@ export default function CD() {
             <h1>Self-Managed Enterprise Edition Documentation</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials">
+            <Link href="/tutorials/self-managed-enterprise-edition">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />

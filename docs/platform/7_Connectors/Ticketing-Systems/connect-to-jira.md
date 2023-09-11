@@ -14,7 +14,7 @@ Looking for How-tos? Go to [Create Jira Issues in CD Stages](/docs/continuous-de
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
 
 ### Limitations
 

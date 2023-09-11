@@ -15,7 +15,7 @@ This topic explains how to use the Harness Docker Registry Connector to connect 
 
 ### Before you begin
 
-* [CI pipeline basics](../../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md)
+* [CI pipeline basics](../../../continuous-integration/get-started/key-concepts.md)
 * [Harness Delegate Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
 
 ### Review: Managing IAM Policies in IBM Cloud
@@ -28,7 +28,7 @@ When you switch or modify the IAM role, it might take up to 5 minutes to take ef
 
 ### Supported Platforms and Technologies
 
-For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../../getting-started/supported-platforms-and-technologies.md).
+For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../../get-started/supported-platforms-and-technologies.md).
 
 ### Step 1: Generate an API Key in IBM Cloud Console
 

@@ -242,7 +242,7 @@ If you used an existing Argo CD Project, you will see the existing Argo CD Proje
 
 ![](./static/install-a-harness-git-ops-agent-94.png)
 
-See [Entity Identifier Reference](https://developer.harness.io/docs/platform/references/entity-identifier-reference/).
+See [Entity Identifier Reference](/docs/platform/References/entity-identifier-reference).
 
 ### Mapping additional Argo CD projects to Harness projects
 
@@ -350,9 +350,9 @@ The Harness GitOps Agent can work on environments where traffic is routed throug
 
 Here are some answers to commonly asked GitOps Agent questions.
 
-### What version of GitOps Agent supports what version of Repo server, Redis cache, and ApplicationSet?
+### What version of GitOps Agent supports what version of Repo server and Redis cache?
 
-GitOps Agent v0.52.0 supports redis:7.0.8-alpine, Repo server [argocd:v2.5.16](http://quay.io/argoproj/argocd:v2.5.16), and [argocd-applicationset:v0.4.1](http://quay.io/argoproj/argocd-applicationset:v0.4.1).
+GitOps Agent v0.58.0 supports redis:7.0.8-alpine and Repo server [argocd:v2.7.8](http://quay.io/argoproj/argocd:v2.7.8).
 
 ### How long is a GitOps Agent version supported?
 

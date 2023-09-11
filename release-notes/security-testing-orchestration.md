@@ -60,7 +60,7 @@ This release does not include early access features.
 
     ![](static/sto-click-row-to-view-exemptions.png)
 
-  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
     ![](static/sto-exemption-details-no-baseline-selected.png)
 
@@ -244,7 +244,7 @@ Harness AI Development Assistant (AIDA) uses state-of-the-art AI technology to s
 
 Harness AIDA reduces developer toil by streamlining and simplifying the process of fixing vulnerabilities. It enables developers and security personnel to manage security-issue backlogs and address critical issues promptly. Harness AIDA can dramatically reduce your TTR, speed up your software development lifecycle, and improve the security posture of your applications and services.
 
-For more information, go to [Remediations with AIDA](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 
 ##### Fixed issues
 

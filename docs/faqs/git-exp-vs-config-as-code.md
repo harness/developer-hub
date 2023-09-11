@@ -18,7 +18,7 @@ sidebar_position: 8
 
 In the Git Experience, Git acts as the primary source of truth. As a result, Harness does not keep a record of any resources other than the pipeline name, identifier, and configuration required to retrieve the pipeline from Git. Moreover, Harness does not perform reconciliation or cross-synchronization of resources. Instead, it leverages the native capabilities of Git, such as branching, managing files in different repositories, and prioritizing the state of the file in Git above all other sources.
 
-For more information, go to [Git Experience](https://developer.harness.io/docs/category/git-experience).
+For more information, go to [Git Experience](/docs/category/git-experience).
 
 
 ## What is Configuration as Code in FirstGen?
@@ -30,7 +30,7 @@ You can use Configuration as Code to configure pipelines, triggers, workflows, e
 You cannot choose a non-default branch to test changes for any entity. Also, configurations can only be managed in a central Git repository.
 :::
 
-For More details on the Harness First Gen Configuration as Code, go to [Configuration as Code](https://developer.harness.io/docs/category/configuration-as-code).
+For More details on the Harness First Gen Configuration as Code, go to [Configuration as Code](/docs/category/configuration-as-code).
 
 :::important
 Configuration as Code is not the same as Git Experience.
@@ -83,9 +83,9 @@ There were Git sync issues with Configuration as Code while maintaining the corr
 
 For more information, go to:
 
-- [Pipelines](https://developer.harness.io/docs/platform/git-experience/manage-a-harness-pipeline-repo-using-git-experience/)
-- [Input Set](https://developer.harness.io/docs/platform/Git-Experience/manage-input-sets-in-simplified-git-experience)
-- [Templates](https://developer.harness.io/docs/platform/Templates/templates-best-practices#remote-template-versioning)
+- [Pipelines](/docs/platform/git-experience/manage-a-harness-pipeline-repo-using-git-experience/)
+- [Input Set](/docs/platform/Git-Experience/manage-input-sets-in-simplified-git-experience)
+- [Templates](/docs/platform/Templates/templates-best-practices#remote-template-versioning)
 
 ## Why doesn't the Git Experience support services, environments and infrastructure definitions?
 
@@ -132,9 +132,9 @@ You can automate YAML configurations in Git and pass them to API calls for CRUD 
 
 For more information on Harness Terraform Provider, go to: 
 
-- [Terraform Provider Quickstart](https://developer.harness.io/docs/platform/terraform/harness-terraform-provider-overview/)
-- [Terraform Provider Automated Onboarding Guide](https://developer.harness.io/docs/platform/Terraform/automate-harness-onboarding)
-- [Terraform Provider Scaling Automation Guide](https://developer.harness.io/docs/platform/Terraform/advanced-terraform-onboarding)
+- [Terraform Provider Quickstart](/docs/platform/automation/terraform/harness-terraform-provider-overview)
+- [Terraform Provider Automated Onboarding Guide](/docs/platform/automation/terraform/automate-harness-onboarding)
+- [Terraform Provider Scaling Automation Guide](/docs/platform/automation/terraform/advanced-terraform-onboarding)
 - [Terraform Registry for Harness Provider](https://registry.terraform.io/providers/harness/harness/latest/docs)
 
 
@@ -150,4 +150,4 @@ Harness recommends using the Git Experience to manage pipelines, input sets, and
 
 Harness recommends Terraform Provider for external resources managed separately from the pipeline. Using Terraform, you can manage and audit Harness Continuous Deployment configurations. Additionally, you can automate the definition of service, environment, and infrastructure life cycles via Harness pipelines.
  
-For more information, go to [Terraform Provider Automated Onboarding Guide](https://developer.harness.io/docs/platform/Terraform/automate-harness-onboarding).
+For more information, go to [Terraform Provider Automated Onboarding Guide](/docs/platform/automation/terraform/automate-harness-onboarding).

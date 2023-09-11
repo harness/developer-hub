@@ -25,7 +25,7 @@ This topic walks you through the steps to create a pipeline template.
 
 * Review [Templates overview](template.md) to understand template concepts.
 * Review [Permissions reference](../role-based-access-control/permissions-reference) to learn about the permissions required to create a template at various scopes.
-* Review [Pipelines and stages](https://developer.harness.io/docs/category/pipelines).
+* Review [Pipelines and stages](/docs/category/pipelines).
 
 ### Limitations
 

@@ -6,6 +6,8 @@ helpdocs_topic_id: 6tblwmh830
 helpdocs_category_id: 66qbyn7ugu
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed
 ---
 
 This document explains how to use Helm to install, upgrade, or uninstall Harness Self-Managed Enterprise Edition. This document describes an installation on Google Kubernetes Engine (GKE). The same installation process, however, applies to installations on Kubernetes versions 1.*x* and later.
@@ -183,14 +185,22 @@ For details about the chart values, explanations of the default values, and desc
 
 <!-- PR-1000 -->
 
+## Use self-signed certificates with Helm-based installations
+
+There are additional steps for self-signed certificates:
+
+1. [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
+2. [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
+3. [Configure GitOps Agent with self-signed certificates](/docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates/)
+
 ## Next steps
 
 After installation is complete, you should create the initial Harness account, and then [create organizations and projects](../../platform/organizations-and-projects/create-an-organization.md).
 
 To get started with the modules, review the following topics:
 
-* For Harness Continuous Integration, go to [CI pipeline basics](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md).
+* For Harness Continuous Integration, go to [CI pipeline basics](../../continuous-integration/get-started/key-concepts.md).
 * For Harness Continuous Delivery & GitOps, go to [CD overview and key concepts](/docs/continuous-delivery/get-started/key-concepts.md).
-* For Harness Security Testing Orchestration, go to [STO Basics](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
+* For Harness Security Testing Orchestration, go to [STO Basics](../../security-testing-orchestration/get-started/overview.md).
 * For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-ce).
 * For Harness Continous Error Tracking, go to [CET Tutorials](/tutorials/error-tracking/)
