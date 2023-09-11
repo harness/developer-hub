@@ -54,7 +54,7 @@ export const moduleList: CardItem[] = [
     link: "docs/chaos-engineering",
   },
   {
-    title: "Software Enginnering Insights",
+    title: "Software Engineering Insights",
     module: MODULES.sei,
     // icon: "img/icon_idp.svg",
     description: (
