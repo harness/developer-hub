@@ -1120,6 +1120,26 @@ We don't save yaml's for service and other entities like we used to in First Gen
  
 [Documentation](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code/#why-did-harness-reduce-the-number-of-supported-entities-backed-by-git)
 
+#### Do we allow one-time scheduling of pipeline execution ?
+
+Yes, one can set a cron rule that just happens once, it has repeat reschedule icon in UI. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#run-once).
+
+#### Do we expect the 2-way git sync functionality to be added to NextGen?
+
+No, we are not bringing the 2 way git sync back in its first Gen form. Instead, we provide git experience support for pipelines, templates today.
+On our roadmap, we will provide git experience for service, environments and overrides.Please refer more on this in the following [Documentation](https://developer.harness.io/docs/faqs/git-exp-vs-config-as-code/).
+
+#### Do we support propogation of multiple service stage ?
+
+No, this feature is yet to be added, we will update about this very soon.
+
+#### Is the expression <+configFile.getAsBase64("myFile")> only supported when using service config file and not a config file in File Store? 
+
+Yes, It works for config files added to the service and not any config file from the file store. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/#reference-files-in-the-file-store-using-an-expression).
+
+#### Can we increase the Workflow Queue limit ?
+
+No, for the Harness based locking on infrastructure, currently the max is 20 and its not configurable, since we allow only 1 concurrent execution per infra. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/workflow-queuing/#limitations).
 
 ### Does the container step in CD override the entry point when using the command input?
 
