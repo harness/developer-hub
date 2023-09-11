@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-09-07T10:00
+date: 2023-09-11T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,7 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: September 7, 2023
+## Latest: September 11, 2023
 
 ### Harness Platform, version 80504
 
@@ -46,10 +46,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - The Mozilla Rhino library has been upgraded from version 1.7R4 to 1.7.14. (PL-40808)
 
 - The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
+
 - If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
    Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
    
    This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
 ## September 5, 2023
 
 ### Harness Platform, version 80406

@@ -35,7 +35,7 @@ The following deprecated API endpoints will no longer be supported:
 
 ### New features and enhancements
 
-- When Harness is configured to use the App Role Id to fetch an authentication token from HashiCorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
+- When Harness is configured to use the AppRole ID to fetch an authentication token from HashiCorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
 
   This issue has been fixed. You can now specify whether or not you want to retain the token to reduce the number of requests made. Possible values are `True` and `False`. The default value is `True`.
 
@@ -58,11 +58,13 @@ The following deprecated API endpoints will no longer be supported:
 - The Mozilla Rhino library has been upgraded from version 1.7R4 to 1.7.14. (PL-40808)
 
 - The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
+
 - If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
 
    Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
    
    This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
 ### Early access features
 
 This release does not include early access features.
