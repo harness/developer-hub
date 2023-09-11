@@ -22,7 +22,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### What's new
 
-* Added Asupport for Authentication & HTTPs in HTTP Probes for Kubernetes chaos faults. (CHAOS-2381)
+* Added support for Authentication & HTTPs in HTTP Probes for Kubernetes chaos faults. (CHAOS-2381)
 
 * Added support for the destination ports for the provided destination IPs and hosts in network chaos faults. (CHAOS-2336)
 
