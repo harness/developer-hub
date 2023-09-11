@@ -86,7 +86,7 @@ To learn more, go to [Create an incident](https://docs.servicenow.com/en-US/bund
 
 ### Create a business rule in ServiceNow
 
-A business rule is essential for defining trigger conditions and configuring the Harness webhook in ServiceNow. Below are the steps to create a business rule that meets the requirements for using ServiceNow as a custom change source in Harness SRM.
+A business rule is essential to define trigger conditions and configure the Harness webhook in ServiceNow. Below are the steps to create a business rule that meets the requirements to use ServiceNow as a custom change source in Harness SRM.
 
 1. In your ServiceNow account, navigate to **System Definition** > **Business Rules**, and then select **New**.  
    The settings page appears.
