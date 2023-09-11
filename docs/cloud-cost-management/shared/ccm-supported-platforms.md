@@ -579,9 +579,17 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
 Harness does not currently support AWS China regions.
 :::
 
-## CCM on Harness Self-Managed Enterprise Edition (SMP)
+## CCM on Harness Self-Managed Enterprise Edition
 
-The following table provides the feature support matrix for CCM on Harness SMP. For more information, go to [Self-Managed Enterprise Edition](../../self-managed-enterprise-edition.md) and [CCM on SMP](../2-getting-started-ccm/ccm-smp/1-smp-ccm-roadmap.md).
+Review the following information about what installation infrastructure and CCM features are supported on Harness Self-Managed Enterprise Edition. 
+
+### Supported installation infrastructure for CCM on Harness Self-Managed Enterprise Edition
+
+Azure is the only supported installation infrastructure. If you do not install Harness Self-Managed Enterprise Edition on Azure, then you cannot use the CCM features. 
+
+### Supported CCM features on Harness Self-Managed Enterprise Edition
+
+The following table provides the feature support matrix for CCM on Harness Self-Managed Enterprise Edition. For more information, go to [Self-Managed Enterprise Edition](../../self-managed-enterprise-edition.md) and [CCM on SMP](../2-getting-started-ccm/ccm-smp/1-smp-ccm-roadmap.md).
   
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **Connected environment** | **Air-gapped environment** |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -591,8 +599,8 @@ The following table provides the feature support matrix for CCM on Harness SMP. 
 |BI dashboards |✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
 |Anomaly detection  | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
 |Currency standardization | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-|Recommendations | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
-|AutoStopping rules | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+|Recommendations |❌ | ❌ | ❌ | ✅ | ✅ | ✅ |
+|AutoStopping | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 |Asset governance | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 
 
@@ -600,4 +608,4 @@ The following table provides the feature support matrix for CCM on Harness SMP. 
 Perspective preferences are not supported on Harness SMP.
 :::
 
-For a comprehensive list of supported features in other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).
+For a comprehensive list of supported features in other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
