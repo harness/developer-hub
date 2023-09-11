@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 ```
 
 :::important
-Currently, this feature is behind the feature flag `PL_ENABLE_MULTIPLE_IDP_SUPPORT`. Contact Harness Support to enable the feature.
+Currently, this feature is behind the feature flag `PL_ENABLE_MULTIPLE_IDP_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 Harness supports multiple identity providers (IdPs) for user authentication using SAML.
@@ -18,10 +18,13 @@ This topic explains how to set up multiple SAML providers in Harness.
 
 ## Configure multiple SAML providers
 
-To configure multiple SAML providers in Harness: 
+To configure multiple SAML providers in Harness, do the following:
+
 1. Select **ACCOUNT SETTINGS**, and then select **Authentication**.
 2. Add the SAML providers you need.
+
     a. If no SAML providers are configured for the account, select **SAML Provider**. 
+    
     b. If one or more SAML providers are configured, select **Add SAML Provider**.
    The SAML Provider settings appear.
 3. In **Name**, enter a name for the SAML provider.
@@ -30,11 +33,9 @@ To configure multiple SAML providers in Harness:
 
 ## Select a SAML provider
 
-1. Select one of the following SAML provider: 
-   - Azure
-   - Okta
-   - OneLogin
-   - Other
+To select a SAML provider, do the following:
+
+1. Select a SAML provider.
    
    ```mdx-code-block
    <Tabs>
@@ -69,15 +70,14 @@ To configure multiple SAML providers in Harness:
    </Tabs>
    ```
 
-   
-
 2. Select **Continue**.
 3. Select **Submit**.
+
    The SAML provider is now listed in **Login via SAML**.
 
    ![](./static/multiple-idp-list-saml.png)
 
-Configure more SAML providers by repeating the steps.
+   Configure more SAML providers by repeating the steps.
 
 ## Enable login via SAML
 

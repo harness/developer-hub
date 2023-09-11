@@ -18,46 +18,64 @@ This topic provides an overview of Authentication in Harness. It describes vario
 
 Harness Access control includes:
 
-* Authentication — This checks who the user is.
-* Authorization — This checks what the user can do.
-* Auditing — This logs what the user does.
+* Authentication: Checks who the user is.
+* Authorization: Checks what the user can do.
+* Auditing: Logs what the user does.
 
-This topic focuses on Authentication. For more on Authorization, see [Access Management (RBAC) Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md).
+This topic focuses on *authentication*. For information about *authorization*, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 Users in Administrator groups can use Authentication Settings to restrict access to an organization's Harness account. The options you choose will apply to all your account's users. These options include:
 
-* [Enable Public OAuth Providers](#enable-public-oauth-providers)
-* [Enable SAML Providers](#enable-security-assertion-markup-language-saml-providers)
-* [Enforce Password Policies](#enforce-password-policies)
-  * [Enforce Password Strength](#enforce-password-strength)
-  * [Enforce Password Expiration](#enforce-password-expiration)
-  * [Enforce Lockout After Failed Logins](#enforce-lockout-after-failed-logins)
-* [Enforce Two Factor Authentication](#enforce-two-factor-authentication)
-* [Restrict Email Domains](#restrict-email-domains)
+- [Before you begin](#before-you-begin)
+- [Review: Authentication Settings](#review-authentication-settings)
+- [Configure Authentication](#configure-authentication)
+	- [Enable Public OAuth Providers](#enable-public-oauth-providers)
+	- [Enable Security Assertion Markup Language (SAML) Providers](#enable-security-assertion-markup-language-saml-providers)
+- [Enforce Password Policies](#enforce-password-policies)
+	- [Enforce Password Strength](#enforce-password-strength)
+	- [Enforce Password Expiration](#enforce-password-expiration)
+	- [Enforce Lockout After Failed Logins](#enforce-lockout-after-failed-logins)
+- [Enforce Two Factor Authentication](#enforce-two-factor-authentication)
+- [Set Up Vanity URL](#set-up-vanity-url)
+- [Restrict Email Domains](#restrict-email-domains)
+- [Set inactive session timeout](#set-inactive-session-timeout)
 
-### Configure Authentication
+### Configure authentication
 
-* In **Home**, Click **Authentication** under **ACCOUNT SETUP.**
-* The **Authentication: Configuration** page appears.![](./static/authentication-overview-41.png)
-* You can choose one of the below as the default Authentication method:
+To configure authentication, do the following:
+
+1. In **Home**, select **Account Settings**, and then select **Authentication**.
+
+   The **Authentication** page opens.
+
+   ![](./static/authentication-overview-41.png)
+
+2. Select one of the below default Authentication methods:
 	+ Login via a Harness Account or Public OAuth Providers
 	+ SAML Provider
+	+ LDAP Provider
+
+3. Configure your settings for the selected method.
 	
 #### Enable Public OAuth Providers
 
 In the **Use Public OAuth Providers** section, you can enable Harness logins via a range of single sign-on mechanisms. Enable this slider to expose sliders for enabling individual OAuth partners.  
-For more on OAuth Providers, see [Single Sign-On with OAuth](../3_Authentication/4-single-sign-on-sso-with-oauth.md).![](./static/authentication-overview-42.png)
+For more on OAuth Providers, go to [Single Sign-On with OAuth](../3_Authentication/4-single-sign-on-sso-with-oauth.md).
+
+![](./static/authentication-overview-42.png)
+
 #### Enable Security Assertion Markup Language (SAML) Providers
 
 Select **SAML Provider** to enable a SAML Provider. To do this, you should first disable any configured public OAuth providers.  
-For more on adding a SAML Provider, see [Single Sign-On with SAML](../3_Authentication/3-single-sign-on-saml.md).
+For more on adding a SAML Provider, go to [Single Sign-On with SAML](../3_Authentication/3-single-sign-on-saml.md).
 
 ### Enforce Password Policies
 
 You'll see specific controls to govern the following password requirements:
-	+ Enforce password strength
-	+ Periodically expire passwords
-	+ Enforce Two Factor Authentication
+
+- Enforce password strength
+- Periodically expire passwords
+- Enforce Two Factor Authentication
 	
 #### Enforce Password Strength
 
@@ -86,9 +104,10 @@ You can see a summary on the main Authentication page:
 ![](./static/authentication-overview-46.png)
 ### Enforce Two Factor Authentication
 
-Select **Enforce Two Factor Authentication** to enforce 2FA for all users in Harness. This option will govern all logins — whether through SSO providers or Harness username/password combinations. For more information on Two-Factor Authentication see [Two-Factor Authentication](../3_Authentication/2-two-factor-authentication.md).
+Select **Enforce Two Factor Authentication** to enforce 2FA for all users in Harness. This option will govern all logins — whether through SSO providers or Harness username/password combinations. For more information on Two-Factor Authentication, go to [Two-factor authentication](../3_Authentication/2-two-factor-authentication.md).
 
 ![](./static/authentication-overview-47.png)
+
 ### Set Up Vanity URL
 
 You can access `app.harness.io` using your own unique subdomain URL.
@@ -104,10 +123,12 @@ Contact [Harness Support](mailto:support@harness.io) to set up your Account's 
 Select **Only allow users with the following email domains:** to allow (whitelist) only certain domains as usable in login credentials. In the dialog shown below, build your allowlist by simply typing your chosen domains into the **Domains** multi-select field.
 
 ![](./static/authentication-overview-48.png)
-Click **Save**. You can see the success message - **Domain restrictions have been updated successfully** displayed on top of the page and the domains you have whitelisted in the panel.
+
+Select **Save**. You can see the success message - **Domain restrictions have been updated successfully** displayed on top of the page and the domains you have whitelisted in the panel.
 
 ![](./static/authentication-overview-49.png)
-Your resulting allowlist will impose a further filter on logins to Harness via both SSO providers and Harness username/passwords.You can modify your domain selections by clicking the Edit icon.
+
+Your resulting allowlist will impose a further filter on logins to Harness via both SSO providers and Harness username/passwords. You can modify your domain selections by clicking the Edit icon.
 
 ![](./static/authentication-overview-50.png)
 
@@ -115,7 +136,7 @@ Your resulting allowlist will impose a further filter on logins to Harness via b
 
 Harness logs a user out of their account after a session timeout if there has been no activity.
 
-To configure your account's session timeout: 
+To configure your account's session timeout, do the following: 
 
 1. In your Harness account, select **Account Settings**.
 
@@ -127,4 +148,4 @@ To configure your account's session timeout:
 
    You can set this to a minimum of 30 minutes and a maximum of 4320 minutes.
 
-![](./static/SessionTimeout.png)
+   ![](./static/SessionTimeout.png)

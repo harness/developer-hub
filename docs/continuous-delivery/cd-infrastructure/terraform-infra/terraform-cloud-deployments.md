@@ -4,12 +4,6 @@ description: Connect to a Terraform Cloud/Enterprise instance and run your works
 sidebar_position: 9
 ---
 
-:::note
-
-Currently, Terraform Cloud support is behind the feature flag `CDS_TERRAFORM_CLOUD`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 In addition to running Terraform configuration files locally on the Harness Delegate, Harness supports running Terraform Cloud and Enterprise workspaces.
 
 This topic explains how to run your Terraform Cloud and Enterprise workspaces in Harness CD stages.
@@ -19,11 +13,11 @@ This topic explains how to run your Terraform Cloud and Enterprise workspaces in
 
 For details on running Terraform configuration files locally on the delegate, go to:
 
-* [Provision Target Deployment Infra Dynamically with Terraform](provision-infra-dynamically-with-terraform)
-* [Plan Terraform Provisioning with the Terraform Plan Step](run-a-terraform-plan-with-the-terraform-plan-step)
-* [Provision with the Terraform Apply Step](run-a-terraform-plan-with-the-terraform-apply-step)
-* [Remove Provisioned Infra with the Terraform Destroy Step](remove-provisioned-infra-with-terraform-destroy)
-* [Rollback Provisioned Infra with the Terraform Rollback Step](rollback-provisioned-infra-with-the-terraform-rollback-step)
+* [Provision Target Deployment Infra Dynamically with Terraform](provision-infra-dynamically-with-terraform.md)
+* [Plan Terraform Provisioning with the Terraform Plan Step](run-a-terraform-plan-with-the-terraform-plan-step.md)
+* [Provision with the Terraform Apply Step](run-a-terraform-plan-with-the-terraform-apply-step.md)
+* [Remove Provisioned Infra with the Terraform Destroy Step](remove-provisioned-infra-with-terraform-destroy.md)
+* [Rollback Provisioned Infra with the Terraform Rollback Step](rollback-provisioned-infra-with-the-terraform-rollback-step.md)
 
 
 </details>

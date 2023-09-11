@@ -23,7 +23,7 @@ The remainder of this article provides a quick summary of the internal security 
 
 You must connect your Kubernetes infrastructure (clusters or namespaces) to CE to discover the microservices and execute chaos experiments on them. The connection between your Kubernetes infrastructure and CE is enabled by a set of deployments on the Kubernetes cluster. The deployments comprise a relay (subscriber) that communicates with the CE control plane and custom controllers, which carry out the chaos experiment business logic. 
 
-This group of deployments (known as the execution plane) is referred to as the [chaos infrastructure](../../configure-chaos-experiments/chaos-infrastructure/connect-chaos-infrastructures).
+This group of deployments (known as the execution plane) is referred to as the [chaos infrastructure](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures).
 
 The chaos infrastructure connects to the control plane by making outbound requests over HTTPS (port number 443) to claim and perform chaos tasks. The connections don’t require you to create rules for inbound traffic. A unique ID, named cluster ID, is assigned to the chaos infrastructure. The chaos infrastructure shares a dedicated key, named access-key, with the control plane. Both cluster ID and access key are generated during installation. Every API request made to the control plane includes these identifiers for authentication purposes.
 
@@ -35,7 +35,7 @@ Harness can leverage the same cluster (or namespace) to inject chaos into infras
 
 ### Kubernetes roles for chaos infrastructure 
 
-The deployments that make up the chaos infrastructure can be installed with cluster-wide scope or namespace-only scope. These deployments are mapped to a dedicated service account that can execute all supported chaos experiments for that scope. To learn more about connecting to a chaos infrastructure in cluster or namespace mode, go to [connect chaos infrastructures](../../configure-chaos-experiments/chaos-infrastructure/connect-chaos-infrastructures). Mapping deployments to dedicated service accounts is considered as the first level of blast radius control.
+The deployments that make up the chaos infrastructure can be installed with cluster-wide scope or namespace-only scope. These deployments are mapped to a dedicated service account that can execute all supported chaos experiments for that scope. To learn more about connecting to a chaos infrastructure in cluster or namespace mode, go to [connect chaos infrastructures](/docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures). Mapping deployments to dedicated service accounts is considered as the first level of blast radius control.
 
 The permissions are listed below for reference. 
 
@@ -64,7 +64,7 @@ Refer to the [authentication overview](../../../platform/authentication/authenti
 
 ### User authorization and role-based access control 
 
-The chaos module leverages the [access control](../../../platform/Role-Based-Access-Control/rbac-in-harness) capabilities of Harness to restrict user action on chaos resources, which adhere to the same account-organization-project identification as the rest of the platform resources.  
+The chaos module leverages [Harness access control](../../../platform/role-based-access-control/rbac-in-harness) capabilities to restrict user action on chaos resources, which adhere to the same account-organization-project identification as the rest of the platform resources.  
 
 The foundational elements of the chaos engineering process, chaos infrastructure, chaos hubs, chaos experiments, and chaos gamedays are registered as the module resources, with permissions exercised against them. These resources are scoped at the project level.
 
@@ -78,7 +78,7 @@ Harness Chaos Engineering leverages secrets for administrative or management pur
 
 ### Secrets to access chaos artifact (Git) repositories  
 
-CE allows you to add one or more [chaos hubs](../../get-started/terminologies/) to enable users to select stored chaos artifacts such as fault and experiment templates. Setting up a chaos hub involves connecting to the respective canonical source—the Git repository—by using Personal Access Tokens (PAT) or SSH keys. The module also supports committing artifacts into the repository, so you must ensure that the keys have the right scope and permissions in the Git organization.
+CE allows you to add one or more [chaos hubs](../../get-started/key-concepts/) to enable users to select stored chaos artifacts such as fault and experiment templates. Setting up a chaos hub involves connecting to the respective canonical source—the Git repository—by using Personal Access Tokens (PAT) or SSH keys. The module also supports committing artifacts into the repository, so you must ensure that the keys have the right scope and permissions in the Git organization.
 
 The chaos module leverages the native Git Connectors provided by the Harness platform to achieve this connectivity, which in turn leverages the Harness Secret Manager to store the PAT or SSH keys 
 

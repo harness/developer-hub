@@ -5,12 +5,12 @@ The following settings are required for every Security step:
 
 :::note
 
-Make sure that you give unique, descriptive names for the target and variant. This will make it much easier to navigate your scan results in the STO UI. 
+Make sure that you give unique, descriptive names for the target and variant. This makes navigating your scan results in the STO UI much easier. 
 
 :::
 
-You can see the target name, type, and variant in the [Test Targets](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines.md) UI:
+You can see the target name, type, and variant in the [Test Targets](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines.md) UI:
 
 ![Target name, type, and branch](../../static/repo-settings.png)
 
-For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines).
+For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).

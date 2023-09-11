@@ -26,7 +26,7 @@ Docker-in-Docker must run in privileged mode to work properly. Use caution becau
 These steps assume you are familiar with the following concepts:
 
 * Pipeline configuration, such as in the [build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
-* [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Harness key concepts](../../../get-started/key-concepts.md)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 
 ## Step 1: Set Up the CI Stage
@@ -39,7 +39,7 @@ In the Overview tab for the new Build Stage, configure the Stage as follows:
 * Under Shared Paths, add the following:
 	+ `/var/run`
 	+ `/var/lib/docker`
-* Under Advanced, add [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) for your Docker Hub Personal Access Token and any other fields you want to parameterize. For passwords and Personal Access Tokens, select **Secret** as the variable type.
+* Under **Advanced**, add [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) for your Docker Hub Personal Access Token and any other fields you want to parameterize. For passwords and Personal Access Tokens, select **Secret** as the variable type.
 
 ## Step 2: Define the Build Farm Infrastructure
 
@@ -59,7 +59,7 @@ In the Execution tab, add a [Background step](../manage-dependencies/background-
 
 Provide arguments as a list in **Entry Point**.
 
-For example, the entry point for the `docker:dind` image is `dockerd-entrypoint.sh`. If you want to add an `--mtu` argument, you would include both the image entry point and the argument in your step's **Entry Point** specification.
+For example, the entry point for the `docker:dind` image is `docker-entrypoint.sh`. If you want to add an `--mtu` argument, you would include both the image entry point and the argument in your step's **Entry Point** specification.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -81,7 +81,7 @@ import TabItem from '@theme/TabItem';
 
 ```yaml
 entrypoint:
-  - dockerd-entrypoint.sh
+  - docker-entrypoint.sh
   - "--mtu=1450"
 ```
 

@@ -1,0 +1,13 @@
+{
+  "position": 15,
+  "label": "CE on Harness Self-Managed Enterprise Edition",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+      "type":"generated-index",
+      "title":"CE on Harness Self-Managed Enterprise Edition"
+   },
+  "customProps": {
+    "description": "CE on Harness Self-Managed Enterprise Edition documentation"
+  }
+}

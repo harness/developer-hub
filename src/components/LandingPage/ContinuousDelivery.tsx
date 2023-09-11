@@ -5,7 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard from "./TutorialCard";
 // Defined card list in "./data/continuousDeliveryData.tsx"
-import { PlansList, FeaturedList, CDList } from "./data/continuousDeliveryData";
+import { K8SList, ServerlessList, VMList, ECSList, AdvList } from "./data/continuousDeliveryData";
 
 export default function CD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -84,17 +84,26 @@ export default function CD() {
         </div>
       </div>
       <div className={styles.subSection}>
-        <h3 id="get-started">Get Started for Free</h3>
-        <TutorialCard FeatureList={PlansList} />
+        <h3 id="get-started">Automate Kubernetes deployments with a CD Pipeline or GitOps Workflow</h3>
+        <TutorialCard FeatureList={K8SList} />
       </div>
       <div className={styles.subSection}>
-        <h3>Featured Tutorials</h3>
-        <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
+        <h3 id="get-started">Automate Serverless deployments with a CD Pipeline</h3>
+        <TutorialCard FeatureList={ServerlessList} />
       </div>
       <div className={styles.subSection}>
-        <h3 id="all-tutorials">All CD & GitOps Tutorials</h3>
-        <TutorialCard FeatureList={CDList} />
+        <h3 id="get-started">Automate Linux or Windows VM deployments with a CD Pipeline</h3>
+        <TutorialCard FeatureList={VMList} />
       </div>
+      <div className={styles.subSection}>
+        <h3 id="get-started">Automate Amazon ECS deployments with a CD Pipeline</h3>
+        <TutorialCard FeatureList={ECSList} />
+      </div>
+      <div className={styles.subSection}>
+        <h3 id="get-started">Learn Advanced CD & GitOps</h3>
+        <TutorialCard FeatureList={AdvList} />
+      </div>
+      
     </div>
     // </Layout>
   );

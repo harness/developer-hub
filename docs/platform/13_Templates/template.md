@@ -14,13 +14,12 @@ Templates enhance developer productivity, reduce onboarding time, and enforce st
 
 This topic provides an overview of templates in Harness.
 
-## Limitations
-
-Harness templates have the following temporary limitations:
+## Important notes
 
 * When you delete an existing template with active pipeline references, Harness deletes the references.
-* When you convert a runtime input in a template to a fixed value, the input type does not change in the linked pipeline. You must manually edit the linked pipeline YAML and provide the fixed values.
+* When you convert a runtime input in a template to a fixed value, the input type does not change in the linked pipeline. You must manually edit the linked pipeline YAML and provide the fixed values. You must reconcile the template state in the pipeline before executing it.
 * When you convert a fixed type input to a runtime input in your template, the input type does not change in the linked pipeline. You must click the template in the linked pipeline to refresh it and save the pipeline again.
+* Pipeline templates with chained pipeline stages are not supported.
 
 ## What is a template in Harness?
 
@@ -51,7 +50,7 @@ For example, if you have some tasks or operations that every pipeline must do, t
 
 ## Templates scopes
 
-You can add templates at any [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md) in Harness.
+You can add templates at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) in Harness.
 
 The following table shows what it means to add templates at different scopes or hierarchies:
 
@@ -81,8 +80,13 @@ You can define a fixed value service at the org or account level according to yo
 You can add the following types of templates to your Harness account/org/project:
 
 * Step
+* Step Group
 * Stage
 * Pipeline
+* Deployment
+* Monitored Service
+* Secrets Manager
+* Artifact Source
 
 ### Step template
 
@@ -114,6 +118,17 @@ For detailed steps to create a pipeline template, go to [Create a pipeline templ
 Versioning a template enables you to create a new template without modifying the existing one. When you plan to introduce a major change in a project that depends on an existing template, you can use versioning. You can create multiple versions of a template.
 
 You can make changes to the same version of the template, as long as the template's inputs remain unaltered. You must create a new version of the template for any changes in the inputs.
+
+#### Versioning with Git Experience 
+
+You can store different versions of templates on:
+1. Different branches in different repositories.
+2. Different branches in the same repository.
+3. The same branch and same repository.
+
+Before switching to a different template version, be sure to set the branch and repository context. Since versions can exist in multiple branches, Harness needs to know where to render template versions.
+
+For more information on branching and version management with branching, go to [Template Library with Git Experience docs](/docs/platform/git-experience/configure-git-experience-for-harness-entities/#branch-selection-logic-for-fetching-referenced-entities-in-remote-pipelines).
 
 ### Stable version
 

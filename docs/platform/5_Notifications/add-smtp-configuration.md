@@ -19,11 +19,11 @@ If you are using the Harness On-Prem offering, then you will need to add an SMTP
 
 ### Before you begin
 
-* [User Group Notification Preferences](../3_User-Management/4-add-user-groups.md#option-notification-preferences)
+* [User Group Notification Preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences)
 
 ### Limitations
 
-Configuring your SMTP server is required only if you are using [Harness On-Prem](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md), or if you wish to use your own SMTP server instead of the Harness SaaS default SMTP option.
+Configuring your SMTP server is required only if you are using [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/get-started/onboarding-guide), or if you wish to use your own SMTP server instead of the Harness SaaS default SMTP option.
 
 ### Step 1: Add SMTP Configuration
 
@@ -32,6 +32,7 @@ In your Harness account, go to **Account Settings**.
 Click **Account Resources.**
 
 ![](./static/add-smtp-configuration-00.png)
+
 Click **SMTP Configuration** and then click **Setup**.
 
 The SMTP Configuration settings appear.
@@ -83,6 +84,7 @@ Click **Continue** after the test is successful.
 SMTP is configured for your account.
 
 ![](./static/add-smtp-configuration-04.png)
+
 ### Option: Send Notifications for a User Group using Email
 
 In your **Account**/**Organization**/**Project** click Access Control.
@@ -98,9 +100,11 @@ Enter the email address from which you want to send email notifications.
 You can also send email notifications to all the members of this user group by selecting **Send email to all users part of this group**.
 
 ![](./static/add-smtp-configuration-05.png)
+
 Click **Save**.
 
 ![](./static/add-smtp-configuration-06.png)
+
 ### Option: Send Notification for a Pipeline
 
 You can send Pipeline event notifications using email. Event notifications are set up using **Notify** option in your Pipeline.

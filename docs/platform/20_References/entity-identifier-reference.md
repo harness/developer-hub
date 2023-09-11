@@ -1,7 +1,7 @@
 ---
 title: Entity identifier reference
-description: Many Harness entities and resources include a unique Id (entity Identifier) that's immutable once the entity is created. Identifiers provide a permanent way to refer to an entity, and avoid issues th…
-# sidebar_position: 2
+description: Many Harness entities and resources include a unique Id (entity Identifier) that's immutable once the entity is created.
+sidebar_position: 5
 helpdocs_topic_id: li0my8tcz3
 helpdocs_category_id: fb16ljb8lu
 helpdocs_is_private: false
@@ -37,6 +37,11 @@ The `identifier` field is immutable because Harness Entities use this field to i
 Identifiers have the following restrictions:
 
 * Identifiers must start with a-z, A-Z, or \_. Identifiers can then be followed by 0-9, a-z, A-Z, \_ or $.
+
+	:::note
+	Custom roles cannot start with an underscore( _ ) because Harness-managed role identifiers start with an underscore.
+	:::
+
 * Identifiers are case-sensitive. 
 * Identifiers shouldn't be any of the following words:
 	+ or

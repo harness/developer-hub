@@ -1,6 +1,6 @@
 ---
-title: Searching the console view
-description: Pipeline executions can be viewed in Console View and you can quickly search the logs for each step.
+title: Search the console view
+description: When viewing execution details, you can search logs in the console view.
 sidebar_position: 10
 helpdocs_topic_id: gnht939ijo
 helpdocs_category_id: kncngmy17o
@@ -8,36 +8,46 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Pipeline executions can be viewed in Console View and you can quickly search the logs for each step.
+When viewing execution details, you can search logs in the console view.
 
+To view execution details, you must have run a pipeline at least once. If you haven't run a pipeline before, try a [tutorial](/tutorials/) to get started with Harness.
 
-### Before you begin
+## Search step logs
 
-Before you can search execution logs, you need to run a Pipeline. See [Quickstarts](../../getting-started/quickstarts.md) to set up and run a Pipeline in minutes.
+1. Go to the execution details page, and make sure **Console View** is enabled.
 
-### Step: Search the Execution Step Logs
+   ![](./static/searching-the-console-view-41.png)
 
-In the Pipeline execution, click **Console View**.
+2. Select the step that has the logs that you want to search.
+3. In the **Console Logs**, select the **Search** icon or use the *find in page* keyboard shortcut, which is `CMD + F` on macOS or `Ctrl + F` on Linux or Microsoft Windows.
 
-![](./static/searching-the-console-view-41.png)
-In the Console View of an execution, click the step you want to search.
+   ![](./static/searching-the-console-view-42.png)
 
-Enter `Cmd + f` (Mac), `Ctrl + f` (Windows).
+4. Enter your search query. Results are immediately highlighted.
 
-You can also click the search icon.
+   ![](./static/searching-the-console-view-43.png)
 
-![](./static/searching-the-console-view-42.png)
-The search appears.
+## Console search keyboard shortcuts
 
-Type in your search query and the results are highlighted immediately.
+You can use these shortcuts when searching logs.
 
-![](./static/searching-the-console-view-43.png)
-### Option: Console Keyboard Shortcuts
+* `CMD/Ctrl + F`: Enable search.
+* `Up`: Move to the previous search result.
+* `Down` or `Enter`: Move to the next search result.
+* `Esc`: Clear and exit search.
 
-Use the following shortcuts to search in the logs:
+## Configure log settings
 
-* `Up` to go up or go to the next search result.
-* `Down` to go down or go to the previous search result.
-* `Enter` to go to the next search result.
-* `Esc` to cancel search.
+You can configure your preferences for log level and date and time information.
 
+1. Go to the execution details page, and make sure **Console View** is enabled.
+
+   ![](./static/searching-the-console-view-41.png)
+
+2. In the **Console Logs**, select the **Settings** icon.
+
+   ![](./static/console-view-preferences1.png)
+
+3. Configure your log settings as desired, and then select **Enable**.
+
+   ![](./static/console-view-preferences2.png)

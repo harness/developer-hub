@@ -19,7 +19,7 @@ import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported
 ## Requirements
 
 Make sure that you have met the following requirements:
-* You have a Harness pipeline with a [CD stage](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics).
+* You have a Harness pipeline with a [CD stage](/docs/continuous-delivery/get-started/key-concepts).
 * You have set the service and infrastructure as runtime inputs so that you can provide the value in **Trigger>** **Configuration** tab.
 
 ## Execute a specific pipeline stage using triggers
@@ -35,7 +35,7 @@ Make sure that you have met the following requirements:
   
   Here is a sample trigger YAML: 
   
-  ```
+  ```yaml
   trigger:
   name: stage3Trigger
   identifier: stage3Trigger

@@ -10,7 +10,9 @@ This topic describes how to override the default behavior and use a private regi
 
 ### Create STO scanner images with your own SSL certificates (_optional_)
 
-You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
+Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates.
+
+In this workflow, you set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and Harness Manager.
 
 :::note
 Running container image scans as a non-root user is not currently supported.
@@ -69,6 +71,12 @@ USER 1000
 
 1. Download the scan images you need, test and validate the images, and store them in your private registry. 
 
+   :::note
+   
+   Do not change the image names in your private registry. The image names must match the names specified by Harness.
+
+   :::
+
    Harness maintains a Container Image Registry that is dedicated exclusively to hosting Harness-supported images. You can download your scan images from this registry instead of Docker Hub. To view the list of images in this registry, enter the following command:
    ```
    curl -X  GET https://app.harness.io/registry/_catalog
@@ -83,7 +91,7 @@ USER 1000
      
      Do not include the scheme (such as `http://` or `https://`).
 
-   * `runner_registry_image_prefix : harness`
+   * `runner_registry_image_prefix : harness` — Do not change this setting. 
 
    * `runner_registry_username`  — As needed
 

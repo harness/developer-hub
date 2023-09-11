@@ -26,7 +26,7 @@ You will learn how to:
 ### Before you begin
 
 * [Templates overview](template.md)
-* [Harness secrets management overview](../Secrets/Secrets-Management/1-harness-secret-manager-overview.md)
+* [Harness secrets management overview](/docs/platform/Secrets/Secrets-Management/1-harness-secret-manager-overview.md)
 
 ### Required permissions
 
@@ -36,13 +36,13 @@ You will learn how to:
 
 ### Templates overview
 
-* You can add secret manager templates to template libraries at any [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
+* You can add secret manager templates to template libraries at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 * You can use [tags](../20_References/tags-reference.md) to group templates. You can search or filter templates using these tags.
 * If you change the template inputs, you must update the entities referencing the template for the changes to be reflected.
 
 ### Secret manager template scope
 
-You can add secret manager templates at any [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md) in Harness.
+You can add secret manager templates at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) in Harness.
 
 The following table shows what it means to add templates at different scopes or hierarchies:
 
@@ -104,7 +104,7 @@ Harness allows you to use [Fixed values and runtime inputs](../20_References/ru
    ![The image shows the configuration tab for creating a secrets manager template. The user has specified three variables whose data type is string and whose values are to be specified at run time](./static/create-a-secret-manager-template-32.png)
 3. Select **Execution Target**. This is where you want to execute the script that you just added.  
 If you want to run the shell script on a target host and not on the Harness Delegate, you must first create the required connection attributes.  
-To access an SSH-based custom secrets manager, create an SSH credential first. Go to [Add SSH keys](../Secrets/4-add-use-ssh-secrets.md) for the procedure to create SSH credentials.  
+To access an SSH-based custom secrets manager, create an SSH credential first. Go to [Add SSH keys](/docs/platform/Secrets/4-add-use-ssh-secrets.md) for the procedure to create SSH credentials.  
 This does not apply if you want to run the custom secrets manager on the Harness Delegate.
 4. Select **Specify Host** to execute the script on a specific host.
    
@@ -119,5 +119,5 @@ This does not apply if you want to run the custom secrets manager on the Harness
 
 ### See also
 
-* [Add a custom secret manager](../Secrets/Secrets-Management/9-custom-secret-manager.md)
+* [Add a custom secret manager](/docs/platform/Secrets/Secrets-Management/9-custom-secret-manager.md)
 

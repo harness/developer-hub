@@ -37,9 +37,9 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              <a href="/docs/chaos-engineering/get-started/introduction-to-chaos-module">Chaos engineering</a> lets you proactively inject controlled chaos experiments into your software environments to increase their resilience. 
-              With our extensive fault libraries, you 
-              can identify potential issues before they cause major problems, so you can minimize risk and downtime. 
+              <a href="/docs/chaos-engineering/get-started/overview">Harness Chaos Engineering (CE)</a> provides the end-to-end tooling required to achieve Continuous Resilience in your
+              Software Development Life Cycle. Using Harness CE, your developers, QA teams, and SREs inject chaos experiments in a controlled fashion, either to assert resilience against pre-determined faults, or to find weaknesses
+              against them. Harness CE helps to achieve faster incident response and recovery times, increases overall service resilience, optimizes costs, and results in an improved customer experience.
             </p>
           </div>
         </div>

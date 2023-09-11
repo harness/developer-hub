@@ -16,7 +16,7 @@ Setup is a simple process of generating a Webhook in Microsoft Teams and adding 
 
 ### Before you begin
 
-* See [User Group Notification Preferences](../3_User-Management/4-add-user-groups.md#option-notification-preferences)
+* See [User Group Notification Preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences)
 
 ### Review: Requirements
 
@@ -37,6 +37,7 @@ In **Incoming Webhook**, enter a name, such as **Harness**.
 Right-click and save the Harness icon from here:
 
 ![](./static/send-notifications-to-microsoft-teams-12.png)
+
 Click **Upload Image** and add the Harness icon you downloaded.
 
 Next, you'll create the Webhook URL needed by Harness.
@@ -61,7 +62,7 @@ Select the User Group to which you want to add notification preferences.
 
 In **Notification Preferences**, select **Microsoft Teams Webhook URL**.
 
-Paste the Webhook into **Microsoft Teams Webhook URL** or add it as an [Encrypted Text](../Secrets/2-add-use-text-secrets.md) in Harness and reference it here.
+Paste the Webhook into **Microsoft Teams Webhook URL** or add it as an [Encrypted Text](/docs/platform/secrets/add-use-text-secrets) in Harness and reference it here.
 
 For example, if you have a text secret with the identifier `teamswebhookURL`, you can reference it like this: ​
 

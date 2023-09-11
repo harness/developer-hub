@@ -16,7 +16,7 @@ Once connected, you can use Kubernetes and Harness for provisioning infrastructu
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../../../docs/getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 
 ### Visual summary
@@ -66,7 +66,7 @@ When you switch or modify the IAM role, it might take up to 5 minutes to take ef
 
 ### Supported platforms and technologies
 
-For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../../../docs/getting-started/supported-platforms-and-technologies.md).
+For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../../../docs/get-started/supported-platforms-and-technologies.md).
 
 ### Add a Kubernetes cluster connector
 
@@ -194,13 +194,13 @@ If you do not have Harness Delegates, click **Install New Delegate** to add one 
 
 Harness uses Kubernetes Cluster Connectors at Pipeline runtime to authenticate and perform operations with Kubernetes. Authentications and operations are performed by Harness Delegates.
 
-You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks delegates, go to [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 
-You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+You can use delegate tags to select one or more delegates. For details on delegate tags, go to [Use delegate selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
-If you need to install a Delegate, see [Delegate Installation Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) or the [Visual Summary](#visual_summary) above.
+If you need to install a delegate, see [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) or the [Visual Summary](#visual_summary) above.
 
 Click **Save and Continue**.
 
-Harness tests the credentials you provided using the Delegates you selected.
+Harness tests the credentials you provided using the delegates you selected.
 

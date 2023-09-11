@@ -21,6 +21,10 @@ The inline tutorial below shows you how to install the default delegate for your
 
 The default delegate image, denoted by the `yy.mm.xxxxx` image tag, includes a set of pre-installed 3rd-party custom binaries for convenience. You can find the list of these binaries [here](/docs/platform/Delegates/delegate-concepts/delegate-image-types#third-party-tools-included-in-the-delegate-image-type). If you are concerned about the security vulnerabilities that potentially come with these pre-installed binaries, our recommendation is to use the minimal delegate noted below.
 
+The video below shows how to install a delegate.
+
+ <docvideo src="https://www.loom.com/embed/a935f18296ee4156900efcf60f20f224" width="100%" height="600" />
+
 ## Install minimal delegate with 3rd party custom binaries
 
 The minimal delegate image, denoted by the `yy.mm.xxxxx.minimal` image tag, does not include any pre-installed 3rd-party custom binaries for ensuring the lowest footprint and hence lowest number of security vulnerabilities.
@@ -73,34 +77,31 @@ The legacy Kubernetes delegate, denoted `latest` container image tag, is used pr
 
 ### Install Docker delegate using Podman
 
-You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile. The example below uses a delegate with the immutable image type. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). 
+You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile. 
 
-#### Sample Podman file
+To install the Docker delegate using Podman, do the following:
 
-```
-sudo apt-get -y update
+1. In Harness, select **Deployments**, then select your project.
+2. Under **Project Setup**, select **Delegates**.
+3. Select **Install a Delegate** to open the **New Delegate** dialog.
 
-sudo apt-get -y install podman
+   ![](./static/install-a-docker-delegate-podman.png)
 
-podman run --restart=always --hostname="$(hostname -f)"  \
--e DELEGATE_NAME=YOUR_DELEGATE_NAME  \
--e NEXT_GEN="true"  \
--e DELEGATE_TYPE="DOCKER"  \
--e ACCOUNT_ID=YOUR_ACCOUNT_ID  \
--e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN  \
--e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/  \
--e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  \
-delegate:yy.mm.xxxxx
+4. Under **Select where you want to install your Delegate**, select **Docker**.
 
-podman ps
-```
+5. Copy the Docker installation command.
 
-Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` value with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+6. Paste the Docker installation command from the UI in your CLI, and replace the `docker run` command with the `podman run` command below.
 
-| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
-| ------------------------| -------------------------------------------	|
-| SaaS prod-1  	 		| `https://app.harness.io`       				|
-| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
-| SaaS prod-3  	 		| `https://app3.harness.io`        				|
-| [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
-| [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
+   ```bash
+   podman run --restart=always --hostname="$(hostname -f)"
+   -e DELEGATE_NAME=docker-delegate \
+   -e NEXT_GEN="true" \
+   -e DELEGATE_TYPE="DOCKER" \
+   -e ACCOUNT_ID=<ACCOUNT_ID_COPIED_FROM_THE_UI_COMMAND> \
+   -e DELEGATE_TOKEN=<DELEGATE_TOKEN_COPIED_FROM_THE_UI_COMMAND>= \
+   -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
+   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.07.79904 
+   ```
+
+7. Run the command.

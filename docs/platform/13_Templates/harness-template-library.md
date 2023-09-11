@@ -23,8 +23,8 @@ You'll learn how to: 
 ### Before you begin
 
 * Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
-* The HTTP template in this quickstart is added to a CD Pipeline. If you are new to Harness CD, go to [CD Quickstarts](https://developer.harness.io/tutorials/cd-pipelines).
-* Go to [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
+* The HTTP template in this quickstart is added to a CD Pipeline. If you are new to Harness CD, go to [CD Quickstarts](/tutorials/cd-pipelines).
+* Go to [CI pipeline tutorials](../../continuous-integration/get-started/tutorials.md).
 
 ### Step 1: Create a Template
 
@@ -34,13 +34,8 @@ To create a project-level template, do the following:
 
 1. In Harness, navigate to the **Deployments** module.
 2. In **Projects**, select the desired project.
-
-![](./static/harness-template-library-34.png)
-
-3. Select **Templates** under **Project Setup**.
-
+3. Under **Project Setup**, select **Templates**.
 4. Select **New Template**.
-
 5. Select **Step** to create a step template.
 
    The **Create New Step Template** settings appear.

@@ -7,8 +7,12 @@ import styles from "./styles.module.scss";
 export default function LearnAboutPlatform(): JSX.Element {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const [showMore, setShowMore] = useState(false);
+  const [showMoreRelease, setShowMoreRelease] = useState(false);
   const toggleShowMore = () => {
     setShowMore(!showMore);
+  };
+  const toggleShowMoreRelease = () => {
+    setShowMoreRelease(!showMoreRelease);
   };
   return (
     <section className={styles.learnAboutPlatform}>
@@ -80,7 +84,7 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
-            <a href="/docs/category/role-based-access-control">
+            <a href="/docs/category/access-control-1">
               <h4>Role-Based Access Control</h4>
               <p>Use Roles &amp; User Groups for authorization</p>
             </a>
@@ -113,7 +117,7 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
-            <a href="/docs/category/apis">
+            <a href="/docs/category/api">
               <h4>REST API</h4>
               <p>
                 Integrate with your ecosystem using REST API clients written in
@@ -161,7 +165,7 @@ export default function LearnAboutPlatform(): JSX.Element {
           </a>
         </li>
       </ul>
-      {showMore && (
+      {showMoreRelease && (
         <ul className={styles.platformListMore}>
           <li>
             <a href="/release-notes/continuous-integration">
@@ -200,9 +204,24 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
+            <a href="/release-notes/continuous-error-tracking">
+              <h4>Continuous Error Tracking</h4>
+              <p>New features and fixed issues for the CET module</p>
+            </a>
+          </li>
+          <li>
             <a href="/release-notes/chaos-engineering">
               <h4>Chaos Engineering</h4>
               <p>New features and fixed issues for the CE module</p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/internal-developer-portal">
+              <h4>Internal Developer Portal</h4>
+              <p>
+                New features and fixed issues for the Harness Internal Developer
+                Portal
+              </p>
             </a>
           </li>
           <li>
@@ -229,8 +248,8 @@ export default function LearnAboutPlatform(): JSX.Element {
         </ul>
       )}
       <div className={styles.btnShowMore}>
-        <button onClick={toggleShowMore}>
-          See {showMore ? "Less △" : "Module & Platform Release Notes ▽"}
+        <button onClick={toggleShowMoreRelease}>
+          See {showMoreRelease ? "Less △" : "Module & Platform Release Notes ▽"}
         </button>
       </div>
     </section>

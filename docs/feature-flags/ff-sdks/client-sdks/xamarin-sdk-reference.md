@@ -12,6 +12,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpno />
 
 
@@ -23,8 +26,8 @@ For getting started quickly, you can [clone](https://docs.github.com/en/reposit
 
 Make sure you read and understand the following:
 
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](../../get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
@@ -171,6 +174,10 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
+## Close the SDK client
+
+<Closeclient />
+
 ## Xamarin for iOS
 
 The Xamarin SDK uses a Harness binding library in a NuGet package for iOS.
@@ -178,7 +185,6 @@ The Xamarin SDK uses a Harness binding library in a NuGet package for iOS.
 ### Install the SDK
 
 Install the SDK package in your application, for example:
-
 
 ```
 Install-Package ff-ios-xamarin-client-sdk -Version 0.5.1

@@ -12,10 +12,10 @@ Harness does not require scripting, and configurations are passed to pipelines s
 
 Harness CI provides proprietary technologies, like Cache Intelligence and Test Intelligence, that make Harness CI [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools.
 
-* Harness [Test Intelligence (TI)](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With IT, it's possible to reduce build cycle times by up to 90% without compromising application quality.
+* Harness [Test Intelligence (TI)](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With TI, it's possible to reduce build cycle times by up to 90% without compromising application quality.
 * Harness [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md) is a proprietary technology that reduces pipeline execution time by automatically caching well-known directories for languages like Java and Node.js.
 
-Harness CI is part of The [Harness Platform](/docs/getting-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
+Harness CI is part of The [Harness Platform](/docs/get-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
 
 * Role-Based Access Control (RBAC) helps you control user and group access to Harness resources according to users' roles. Using RBAC increases security and improves efficiency.
 * Harness Policy as Code is a centralized policy management and rules service that leverages the Open Policy Agent (OPA) to meet compliance requirements across software delivery and enforce governance policies.
@@ -30,7 +30,7 @@ Harness CI offers built-in support for GitHub Actions. You can use the [GitHub A
 Harness CI offers the following additional advantages over GitHub Actions:
 
 * Harness offers a variety of [build infrastructure options](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), including Apple silicon and Linux arm64 options.
-* Harness supports both [Terraform](/docs/platform/resource-development/terraform/harness-terraform-provider-overview/) and [CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-provisioning-with-harness/) infrastructure provisioning with simpler structures and configurations than their corresponding GitHub Actions.
+* Harness supports both [Terraform](/docs/platform/automation/terraform/harness-terraform-provider-overview) and [CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-provisioning-with-harness) infrastructure provisioning with simpler structures and configurations than their corresponding GitHub Actions.
 * GitHub Actions does not provide a native Accelerate metrics dashboard, whereas Harness offers both a dedicated dashboard and the ability to configure alerts.
 
 ## Comparison: Workflow architecture
@@ -97,7 +97,7 @@ jobs:
 </Tabs>
 ```
 
-For more information about Harness terminology, features, and pipeline components, go to [CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts) and [CI pipeline basics](../ci-quickstarts/ci-pipeline-basics.md).
+For more information about Harness terminology, features, and pipeline components, go to [CI pipeline basics](../get-started/key-concepts.md).
 
 Both Harness CI and GitHub Actions workflows are written in YAML. Whereas GitHub Actions workflow configurations are always stored in the `.github/workflows` directory in your code repo, Harness provides you a choice of inline pipeline storage or [importing pipelines from Git](/docs/platform/git-experience/import-a-pipeline/). Harness also provides both visual and code-based pipeline editors.
 
@@ -302,7 +302,7 @@ pipeline:
   <TabItem value="gha" label="GitHub Actions" default>
 ```
 
-Github Actions workflows are inherently associated with a code repo because the workflow YAML exists in the `.github/workflows` directory in the target code repo. The workflow can use [actions/checkout](https://github.com/actions/checkout) in a step to clone the associated codebase into the workflow workspace.
+GitHub Actions workflows are inherently associated with a code repo because the workflow YAML exists in the `.github/workflows` directory in the target code repo. The workflow can use [actions/checkout](https://github.com/actions/checkout) in a step to clone the associated codebase into the workflow workspace.
 
 ```yaml
 name: Github_actions
@@ -575,8 +575,8 @@ In GitHub Actions, triggers are defined in the workflow based on Git events agai
 Harness CI supports webhook, artifact, manifest and schedule triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on `cron` expressions. To learn more about creating triggers, go to:
 
 * [Trigger Pipelines using Git Event Payload Conditions](/docs/platform/triggers/triggering-pipelines/)
-* [Triggers](https://developer.harness.io/docs/category/triggers)
-* [Built-in CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference)
+* [Triggers](/docs/category/triggers)
+* [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference)
 
 ```mdx-code-block
 <Tabs>
@@ -637,7 +637,6 @@ trigger:
 
 Review the following information before proceeding with migration:
 
-* [CI Concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts)
 * [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md)
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
 * [Speed up Harness CI pipelines using parallelism](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)

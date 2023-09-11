@@ -52,7 +52,7 @@ For detailed information about a plugin's settings, go to the plugin's page on t
 
 ![](./static/plugin-marketplace-readme-link.png)
 
-<figcaption>Figure 1: The README link is at the top of each plugin's Drone Plugin Marketplace page.</figcaption>
+<figcaption>The README link is at the top of each plugin's Drone Plugin Marketplace page.</figcaption>
 </figure>
 
 ### Output variables
@@ -86,6 +86,10 @@ For each expression:
 * Replace `STEP_ID` with the ID of the **Plugin** step.
 * Replace `VAR_NAME` with the relevant variable name.
 * In cross-stage references, replace `STAGE_ID` with the ID of the stage where the **Plugin** step exists.
+
+<!-- H3 Environment variables
+
+Harness CI supports `DRONE_` environment variables. For more information, go to the CI environment variables reference ../optimize-and-more/ci-env-var.md .-->
 
 ## Image Pull Policy
 

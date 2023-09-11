@@ -18,7 +18,7 @@ A matrix enables you to run the same Stage or Step multiple times with different
 
 You can apply matrix strategies to both CI and CD workflows. This topic assumes that you are familiar with the following:
 
-* [CD Pipeline Basics](/docs/continuous-delivery/get-started/cd-pipeline-basics) and [CI pipeline basics](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md)
+* [CD Pipeline Basics](/docs/continuous-delivery/get-started/key-concepts) and [CI pipeline basics](../../continuous-integration/get-started/key-concepts.md)
 * [Looping Strategies Overview](looping-strategies-matrix-repeat-and-parallelism.md)
 * [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
 

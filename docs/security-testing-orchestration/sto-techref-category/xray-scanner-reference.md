@@ -4,28 +4,44 @@ description: Image scans with Jfrog Xray
 sidebar_position: 330
 ---
 
-You can set up Jfrog Xray scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can ingest scan results from JFrog Xray, a software composition analyis (SCA) solution that integrates with Artifactory and identifies vulnerabilities in open-source libraries and packages used in your code.
+
+<!-- 
+
+RP INCLUDE FIRST INTRO SENTENCE
+https://jfrog.com/help/r/get-started-with-the-jfrog-platform/jfrog-xray
+
+-->
+
+The standard workflow is to create a CI Build or Security Tests stage to your pipeline, add a Security step, and then use `setting:value` pairs to configure the step as specified below.
+
+
 
 ## Before you begin
 
-### Docker-in-Docker requirements
+:::info important notes
 
-```mdx-code-block
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+- Harness STO supports `ingestionOnly` scans with Jfrog Xray. `orchestrationOnly` and `dataLoad` scans are not supported. 
 
-<StoDinDRequirements />
+- For information about running Xray scans with custom SSL certificates, go to [Authenticating with RSA Keys](https://jfrog.com/help/r/jfrog-cli/authenticating-with-rsa-keys) in the JFrog documentation.
 
-### Root access requirements
+<!-- 
 
-```mdx-code-block
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
+RP - NEED TO SET UP CUSTOM CERTS TO RUN XRAY SCANS
+IF YOU WANT TO RUN XRAY SCANS USING CUSTOM CERTS, REFER TO https://jfrog.com/help/r/jfrog-cli/authenticating-with-rsa-keys
 
-<StoRootRequirements />
+-->
+
+- If you need to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. 
+
+  You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
+:::
 
 
-### Security step settings
+## Security step settings
+
+You can add a Security step to a Security Tests or CI Build stage and then configure it as described below.
 
 ### Target and variant
 
@@ -43,13 +59,6 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `product_config_name` = `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-### Container scan settings
-
-```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-```
-
-<StoLegacyContainer />
 
 ### Ingestion file
 
@@ -65,7 +74,3 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
 <StoSettingFailOnSeverity />
-
-
-
-

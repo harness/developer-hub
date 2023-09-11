@@ -10,7 +10,7 @@ To view all targets in your account, and specify baselines for your targets, go 
 
 <figure>
 
-![](../../onboard-sto/static/targets-and-baselines.png)
+![](../../get-started/static/targets-and-baselines.png)
 
 <figcaption>Figure 1: <b>Test Targets</b> page</figcaption>
 
@@ -18,9 +18,13 @@ To view all targets in your account, and specify baselines for your targets, go 
 
 ## Specify a default baseline using regular expressions
 
+<!-- 
+
 :::note
 Currently, this feature is behind the Feature Flag `STO_BASELINE_REGEX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
+
+-->
 
 In some cases, you might want to specify the name of the latest release for your target baseline. Suppose your organization publishes releases with names such as: 
 

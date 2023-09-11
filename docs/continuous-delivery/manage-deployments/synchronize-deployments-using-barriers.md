@@ -16,6 +16,10 @@ Harness provides multiple options for controlling resource usage and protecting 
 
 :::
 
+## Important notes
+
+* You cannot use barriers with [Matrix, Looping, and Repeat](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism) strategies. 
+
 ## Barriers and Synchronization
 
 When deploying interdependent services, such as microservices or a large and complicated application, there might be a need to coordinate the timing of the different components' deployments. A common example is the need to verify a group of services only after *all the services* are deployed successfully.
@@ -66,4 +70,5 @@ You cannot use a Harness variable expression in **Barrier Reference**.Now you ca
 
 * You can have multiple barriers in a stage/step group. Every barrier in the same stage/step group must use a unique **Barrier Reference**.
 * Ensure the Barrier Reference string for each related barrier across the different stages/step groups matches.
+
 

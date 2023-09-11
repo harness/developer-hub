@@ -142,7 +142,7 @@ Harness uses the following combinations as criteria to identify similar active p
 
 * Account identifier
 * Org identifier
-* Project identfier
+* Project identifier
 * Pipeline identifier
 * Repository URL
 * PR number
@@ -152,7 +152,7 @@ Harness uses the following combinations as criteria to identify similar active p
 Harness uses the following combinations as criteria to identify similar active pipeline runs for **Push** events.
 * Account identifier
 * Org identifier
-* Project identfier
+* Project identifier
 * Pipeline identifier
 * Repository URL
 * Ref (the value of `ref` from the Git push webhook payload)
@@ -178,7 +178,7 @@ Now all GitHub webhooks for this project must be authenticated. This means all G
 
 ### Polling frequency
 
-:::note
+:::info note
 
 Currently, this feature is only available for GitHub webhooks, and it is behind the feature flag `CD_GIT_WEBHOOK_POLLING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
@@ -194,7 +194,7 @@ You must also enter the GitHub webhook's ID in **Webhook Id**, which can be foun
 
 ![Getting a webhook ID from a GitHub webhook page URL.](./static/752891ea2d0d9bcee2511ad039994271c20f002eb525570b5bc8038915b85da1.png)
 
-:::note
+:::info note
 
 In case the API call using the GitHub retrofit REST client to fetch the webhook events fail, Harness makes a simple cURL request to do the same.
 
@@ -277,12 +277,12 @@ Some operators require single values and some operators allow single or multiple
 
 Single-value operators include:
 
-* **Equals** and **Not Equals** - Expects a single, full path value.
-* **Starts With** - Expects a single value. Harness matches any full path starting with the value.
-* **Ends With** - Expects a single value. Harness matches any full path ending with the value.
-* **Contains** - Expects a single value. Harness matches any full path containing the value.
-* **In** and **Not In** - Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`. You can use Regex to specify all files in a parent folder, such as `ci/*`.
-* **Regex** - Expects a single Regex value. Harness matches full paths based on the Regex. You can use complex Regex expressions, such as `^((?!README\.md).)*$`. You can use this operator to specify multiple paths, and you can use Regex to specify all files in a parent folder, such as `ci/*`.
+* **Equals** and **Not Equals:** Expects a single, full path value.
+* **Starts With:** Expects a single value. Harness matches any full path starting with the value.
+* **Ends With:** Expects a single value. Harness matches any full path ending with the value.
+* **Contains:** Expects a single value. Harness matches any full path containing the value.
+* **In** and **Not In:** Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`. You can use Regex to specify all files in a parent folder, such as `ci/*`.
+* **Regex:** Expects a single Regex value. Harness matches full paths based on the Regex. You can use complex Regex expressions, such as `^((?!README\.md).)*$`. You can use this operator to specify multiple paths, and you can use Regex to specify all files in a parent folder, such as `ci/*`.
 
 ### Matches Value
 
@@ -392,11 +392,13 @@ You can specify [runtime inputs](../run-pipelines-using-input-sets-and-overlays.
 
 You can use [built-in Git payload expressions](#built-in-git-payload-expressions) and [JEXL expressions](#jexl-conditions) in this setting.
 
+When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab includes the **Pipeline Reference Branch** field. This field is set to `<+trigger.branch>` by default. Any build started by this trigger uses the pipeline and Input Set definitions in the branch specified in the webhook payload. This default is applicable for webhook-based triggers only. For all other trigger types, you must enter a specific branch name.
+
 ## Webhook registration
 
-For all Git providers supported by Harness, the webhook is automatically created in the repo. You usually don't need to copy the URL and add it to your repo's webhook settings.
+For all Git providers supported by Harness, a webhook is automatically created in the repo. Usually, the webhook is automatically registered. If automatic registration fails, you can [manually register the webhook](#manual-and-custom-webhook-registration).
 
-The following Git events are automatically added to the webhooks that Harness registers.
+For each repo, Harness creates one webhook with a superset of all permissions, rather than separate webhooks for each Git event type. The following Git events are included in the webhooks that Harness registers.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -442,12 +444,6 @@ import TabItem from '@theme/TabItem';
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="YAML" label="YAML">
-```
-
-
-```mdx-code-block
-  </TabItem>
 </Tabs>
 ```
 
@@ -467,6 +463,8 @@ For information about other provider's token scopes, go to:
 * [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
 * [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
 
+:::
+
 :::info note
 Harness Self-Managed Enterprise Edition does not support webhook triggers for Helm-based installations using self-signed certificates.
 :::
@@ -483,17 +481,13 @@ Harness Self-Managed Enterprise Edition does not support webhook triggers for He
 
 :::info Custom webhook URL format
 
-The format for the custom webhook URL is as follows:
-
-```
-https://app.harness.io/pipeline/api/webhook/custom?accountIdentifier=<accountID>&orgIdentifier=<orgID>&projectIdentifier=<projectID>&pipelineIdentifier=<pipelineID>&triggerIdentifier=<triggerID>
-```
+The format for the custom webhook URL is `https://app.harness.io/pipeline/api/webhook/custom?accountIdentifier=ACCOUNT_ID&orgIdentifier=ORG_ID&projectIdentifier=PROJECT_ID&pipelineIdentifier=PIPELINE_ID&triggerIdentifier=TRIGGER_ID`
 
 The `orgIdentifier` and `projectIdentifier` are mandatory.
 
 The `pipelineIdentifier` and `triggerIdentifier` target the webhook at the specific pipeline and trigger.
 
-In some cases, you won't want to target the webhook at the specific pipeline and trigger. For example, there are events in GitHub that are not covered by Harness and you might want to set up a custom trigger for those events that applies to all pipelines and their triggers in a project. To instruct Harness to evaluate the custom trigger against all pipelines (until it finds matching **Conditions**), remove `pipelineIdentifier` and `triggerIdentifier` from the URL before adding it to your repo.
+In some cases, you won't want to target the webhook at the specific pipeline and trigger. For example, there are events in GitHub that are not covered by Harness and you might want to set up a custom trigger for those events that applies to all pipelines and their triggers in a project. To instruct Harness to evaluate the custom trigger against all pipelines (until it finds matching **Conditions**), remove `pipelineIdentifier` and `triggerIdentifier` from the URL before adding the trigger to your repo.
 
 :::
 

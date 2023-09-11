@@ -14,11 +14,11 @@ You can use the **Upload Artifacts to GCS** step in your CI pipelines to upload 
 
 You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 
-If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 
 ## Prepare artifacts to upload
 
-Add steps to your pipeline that generate artifacts to upload, such as [Run steps](../set-up-test-intelligence/configure-run-tests-step-settings.md). The steps you use depend on what artifacts you ultimately want to upload.
+Add steps to your pipeline that generate artifacts to upload, such as [Run steps](../run-ci-scripts/run-step-settings.md). The steps you use depend on what artifacts you ultimately want to upload.
 
 ## Upload artifacts to GCS
 
@@ -44,11 +44,13 @@ The GCS destination bucket name.
 
 ### Source Path
 
-Path to the artifact file/folder you want to upload. Harness creates the compressed file automatically.
+Path to the artifact file/folder you want to upload.
+
+If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 
 ### Target
 
-The path, relative to the **Bucket** where you want to store the cache. If no target path is provided, the cache is saved to `[bucket]/`.
+The path, relative to the **Bucket** where you want to store the artifact. If no target path is provided, the artifact is saved to `[bucket]/`.
 
 ### Run as User
 

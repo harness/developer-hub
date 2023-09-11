@@ -12,11 +12,11 @@ For example, it is a common practice in Ruby builds to add or change gems. In a 
 
 Multilayer caching is an advanced pattern that requires you to be familiar with:
 
-* [CI pipeline creation](../prep-ci-pipeline-components.md)
-* **Save Cache** and **Restore Cache** steps
+* [CI pipeline creation](../prep-ci-pipeline-components.md).
+* **Save Cache** and **Restore Cache** steps:
   * [Save and Restore Cache from S3](./saving-cache.md)
   * [Save and Restore Cache from GCS](./save-cache-in-gcs.md)
-* [Failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/)
+* [Failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
 * [Conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/), particularly [step conditions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions).
 
 ## Pattern for multilayer caching in CI pipelines
@@ -125,7 +125,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: account.jhttp
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
         build: <+input>
 ```
 

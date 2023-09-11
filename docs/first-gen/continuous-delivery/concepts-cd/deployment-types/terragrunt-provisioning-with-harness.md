@@ -88,7 +88,7 @@ The account used for the Cloud Provider will require platform-specific permissio
 
 ### Supported Terraform Versions with Terragrunt
 
-The following recommendations are from [Terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/supported-terraform-versions/). In practice, as Terragrunt notes, the version compatibility is more relaxed.
+The following recommendations are from [Terragrunt](https://terragrunt.gruntwork.io/docs/get-started/supported-terraform-versions/). In practice, as Terragrunt notes, the version compatibility is more relaxed.
 
 
 

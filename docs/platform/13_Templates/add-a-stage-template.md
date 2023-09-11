@@ -27,12 +27,12 @@ You'll learn how to: 
 * Review [Templated overview](template.md).
 * Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
 * The stage template in this quickstart is added to a CD Pipeline. If you are new to Harness CD, go to [CD Quickstarts](/tutorials/cd-pipelines).
-* You can also create CI Build Stage Templates and Manual and Jira Approval Stage Templates. Go to ​[CI tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md), [Using manual Harness approval stages](../9_Approvals/adding-harness-approval-stages.md), and [Adding Jira approval stages and steps](../9_Approvals/adding-jira-approval-stages.md).
+* You can also create CI Build Stage Templates and Manual and Jira Approval Stage Templates. Go to ​[CI tutorials](../../continuous-integration/get-started/tutorials.md), [Using manual Harness approval stages](../9_Approvals/adding-harness-approval-stages.md), and [Adding Jira approval stages and steps](../9_Approvals/adding-jira-approval-stages.md).
 * The stage template in this quickstart uses runtime inputs. Runtime inputs are placeholders for values that will be provided when you start a pipeline execution. Go to [Fixed values, runtime inputs, and expressions](../20_References/runtime-inputs.md).
 
 ### Review: Templates
 
-* You can add templates to template libraries at any [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
+* You can add templates to template libraries at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 * [Tags](../20_References/tags-reference.md) can be used to group templates. You can search or filter templates using these tags.
 * You can have nested templates. You can refer to a stage template from your pipeline template.
 
@@ -44,10 +44,7 @@ To create a template, do the following:
 
 1. In Harness, navigate to the **Deployments** module.
 2. In **Projects**, select the desired project.
-
-   ![](./static/add-a-stage-template-48.png)
-
-3. Select **Templates** under **Project Setup**.
+3. Under **Project Setup**, select **Templates**.
 
 4. Select **New Template**.
 

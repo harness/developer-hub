@@ -1,7 +1,7 @@
 ---
 title: Allowlist Harness domains and IPs
-description: Harness SaaS Delegates only need outbound access to the Harness domain name (most commonly, app.harness.io) and, optionally, to logging.googleapis.com. The URL logging.googleapis.com is used to provi…
-# sidebar_position: 2
+description: Harness SaaS Delegates only need outbound access to the Harness domain name (most commonly, app.harness.io) and, optionally, to logging.googleapis.com.
+sidebar_position: 1
 helpdocs_topic_id: ooelo06uy5
 helpdocs_category_id: fb16ljb8lu
 helpdocs_is_private: false

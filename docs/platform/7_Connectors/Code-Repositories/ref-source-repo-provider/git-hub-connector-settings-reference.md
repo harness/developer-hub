@@ -45,7 +45,7 @@ import TabItem from '@theme/TabItem';
 
 In the **GitHub Account URL** field, provide only the account-identifying portion of the GitHub URL, such as `https://github.com/YOUR_ACCOUNT_NAME/`. Do not include a repo name. The URL format depends on the **Connection Type**:
 
-* **HTTP:** `https://github.com/YOUR_ACCOUNT_NAME/`
+* **HTTP:** `https://github.com/YOUR_ACCOUNT_NAME/` or `https://github.com`
 * **SSH:** `git@github.com:YOUR_ACCOUNT_NAME/`
 
 ### Test Repository
@@ -81,14 +81,8 @@ Provide authentication credentials for the connector.
 
 Authentication is required for all accounts and repos, including read-only repos. The **Connection Type** you chose in the [Details settings](#details-settings) determines the available **Authentication** methods:
 
-* For **HTTP** connections, you can use **OAuth** or **Username and Token** authentication.
+* For **HTTP** connections, you can use **Username and Token**, **OAuth**, or **GitHub App** authentication.
 * For **SSH** connections, you must use **SSH Key** authentication.
-
-:::tip GitHub App authentication
-
-You can also use a GitHub App for authentication in a Harness GitHub Connector. For instructions, go to [Use a GitHub App in a GitHub Connector](../../Code-Repositories/git-hub-app-support.md).
-
-:::
 
 ```mdx-code-block
 <Tabs>
@@ -96,10 +90,10 @@ You can also use a GitHub App for authentication in a Harness GitHub Connector. 
 ```
 
 1. For **Authentication**, select **Username and Token**.
-2. In the **Username** field, enter your personal GitHub account name. You can use either plaintext or a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
-3. In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
+2. In the **Username** field, enter your personal GitHub account name. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
+3. In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
-<!-- is this method required for accounts with 2FA? Do OAuth & SSH key support accounts w/ 2FA? -->
+<!--Is this method required for accounts with 2FA? Do OAuth, GH App, & SSH key support accounts w/ 2FA? -->
 
 :::info Personal access token permissions
 
@@ -143,7 +137,7 @@ SSH connections require an SSH key or a GitHub deploy key.
 
 [GitHub deploy keys](https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys) grant access to a single repo. Using a deploy key ensures that the connector only works with the specific repo you defined in the [Details settings](#details-settings).
 
-SSH keys must be in PEM format. OpenSSH keys are not supported. For details on creating SSH keys and adding them to your GitHub account, go to the GitHub documentation about [adding a new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/Secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
+SSH keys must be in PEM format. OpenSSH keys are not supported. For details on creating SSH keys and adding them to your GitHub account, go to the GitHub documentation about [adding a new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
 
 :::tip
 
@@ -167,6 +161,34 @@ For more information about GitHub's deprecation of RSA support, go to the GitHub
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="ghapp" label="GitHub App">
+```
+
+You can use a GitHub App to authenticate a Harness GitHub connector. To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support).
+
+:::note
+
+Currently, the option to use a GitHub App as the primary authentication method for a GitHub connector is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+1. For **Authentication**, select **GitHub App**.
+2. Enter the **GitHub Installation Id**. You can find the installation ID in the URL of your installed GitHub App, such as:
+
+   ```
+   https://github.com/settings/installations/INSTALLATION_ID
+   ```
+
+   ![](../../static/git-hub-app-support-58.png)
+
+3. Enter the **GitHub Application Id**. You can find the app ID on the **General** tab when viewing your GitHub App in GitHub.
+
+   ![](../../static/git-hub-app-support-59.png)
+
+4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/secrets/add-file-secrets).
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
@@ -174,11 +196,21 @@ For more information about GitHub's deprecation of RSA support, go to the GitHub
 
 This setting is only available for connection types and authentication methods where it is not already enabled by default.
 
-You must enable API access to use Git-based triggers, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access requires personal access token authentication.
+API access is required for any operations that require Harness to call GitHub APIs, such as using the Harness Git Experience, cloning codebases, automatically detecting branch names when you manually run pipelines, using Git webhook triggers, and updating Git statuses.
 
-In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md). If you selected **Username and Token** authentication, use the same personal access token secret for both **Personal Access Token** fields.
+Enabling API access requires configuring an API authentication method, either a personal access token or a GitHub App.
 
-![](../../static/add-a-git-hub-connector-36.png)
+```mdx-code-block
+<Tabs>
+  <TabItem value="pat" label="Personal Access Token" default>
+```
+
+1. For **API Authentication**, select **Personal Access Token**.
+2. In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
+
+   If you are using **Username and Token** authentication, use the same personal access token secret for both **Personal Access Token** fields.
+
+   ![](../../static/add-a-git-hub-connector-36.png)
 
 <details>
 <summary>Personal access token permissions</summary>
@@ -192,6 +224,33 @@ To use a personal access token with a GitHub organization that uses SAML single 
 
 </details>
 
+```mdx-code-block
+  </TabItem>
+  <TabItem value="ghapp" label="GitHub App">
+```
+
+To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support).
+
+1. For **API Authentication**, select **GitHub App**.
+2. Enter the **GitHub Installation Id**. You can find the installation ID in the URL of your installed GitHub App, such as:
+
+   ```
+   https://github.com/settings/installations/INSTALLATION_ID
+   ```
+
+   ![](../../static/git-hub-app-support-58.png)
+
+3. Enter the **GitHub Application Id**. You can find the app ID on the **General** tab when viewing your GitHub App in GitHub.
+
+   ![](../../static/git-hub-app-support-59.png)
+
+4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/secrets/add-file-secrets).
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
 ## Connectivity Mode settings
 
 Select whether you want Harness to connect directly to your GitHub account or repo, or if you want Harness to communicate with your GitHub account or repo through a delegate.
@@ -201,7 +260,7 @@ Select whether you want Harness to connect directly to your GitHub account or re
 
 If you select **Connect through the Harness Platform**, the Harness Manager exchanges a key pair with the Secrets Manager configured in Harness using an encrypted connection. Next, the Harness Manager uses the encrypted key and the encrypted secret and then discards them. The keys never leave the Harness Manager. Secrets are always encrypted in transit, in memory, and in the Harness database.
 
-**Connect through a Harness Delegate**, a [Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) handles the connection. This option is often used for [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview).
+**Connect through a Harness Delegate**, a [Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) handles the connection. This option is often used for [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/get-started/onboarding-guide).
 
 </details>
 

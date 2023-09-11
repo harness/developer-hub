@@ -1,6 +1,6 @@
 ---
 title: Monitoring options
-description: Monitor the infrastructure of your installation
+description: Monitor the infrastructure of your on-prem Harness Self-Managed Enterprise Edition installation.
 sidebar_position: 25
 helpdocs_topic_id: ho0c1at9nv
 helpdocs_category_id: 75ydek1suj
@@ -220,7 +220,7 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
   helm install grafana grafana/grafana -n <Namespace>
   ```
 
-2. Install a Bitnami packaged Grafana operator. For instructions, go to [Install the Operator](https://grafana.com/docs/agent/latest/operator/getting-started/) in the Grafana documentation.
+2. Install a Bitnami packaged Grafana operator. For instructions, go to [Install the Operator](https://grafana.com/docs/agent/latest/operator/get-started/) in the Grafana documentation.
 
 ## Open the Grafana dashboard
 

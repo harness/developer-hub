@@ -8,7 +8,7 @@ Steps can be added to pipelines individually or as a step group.
 
 Individual steps and steps in step groups can be run serially or in parallel.
 
-Unlike individual steps, a step group can apply conditional execution (skip conditions), failure strategy, and Rollback steps to all steps in the group.
+Unlike individual steps, a step group can apply conditional execution (skip conditions) and a failure strategy to all steps in the group.
 
 You can also run pipeline **stages** in parallel. Deploy multiple services simultaneously and perform flow control using Barriers. Go to [synchronize deployments using barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers) for more information. This topic describes how to add a step group in a stage.
 
@@ -18,7 +18,15 @@ Review the following topics before you add step groups.
 
 ## Important notes
 
-* Currently, Harness supports step groups in Deploy and Custom stages only. CI stage support is coming soon.
+* Currently, Harness supports step groups in Deploy and Custom stages only. For information about using step groups in CI, go to [Use step groups to organize CI steps](/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups).
+* When you run steps in parallel you cannot reference the outputs of one step in another step. The output for one step might not be available when another step requests it.
+* Delegate selectors can be configured for each step in the step group. You cannot configure a delegate selector at the group level.
+* Step groups cannot have nested step groups, but you can put groups of steps next to each other in a step group:
+
+![](./utilities/static/step-groups-04.png)
+
+The steps **in** each group run in parallel but each group runs serially.
+
 
 ## Containerized step groups
 
@@ -44,7 +52,7 @@ https://www.youtube.com/watch?v=J5eHYSbE8cg-->
 
 Running steps in parallel can be beneficial in many ways, such as:
 
-* Simulating load using multiple [HTTP steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines).
+* Simulating load using multiple [HTTP steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step).
 * Running multiple [Verify steps](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) for different providers (AppDynamics, Splunk, Prometheus, etc).
 * Running independent steps that don't need to be run serially.
 * Running multiple Kubernetes [Apply steps](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) to deploy multiple Kubernetes resources at once.
@@ -83,7 +91,7 @@ Execution input is not supported for step group variables.
 
 A step group can have its own conditional execution settings separate from the conditional execution settings for the stage. The conditional execution settings of the step group apply to all of its steps.
 
-For more information, go to [step skip condition settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/).
+For more information, go to [step skip condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/).
 
 The conditional execution settings of any step in a step group overrides the conditional execution settings of the step group.
 
@@ -93,13 +101,9 @@ If you do not use step group conditional execution settings, then the stage's co
 
 A step group can have its own failure strategy separate from the failure strategy for the stage.
 
-The failure strategy can execute the Rollback steps for the step group.
+The failure strategy can execute the Rollback steps for the step/stage.
 
-The step group Rollback steps are only run if the failure strategy for the step group has **Rollback Step Group** selected.
-
-![](./utilities/static/step-groups-01.png)
-
-Go to [step failure strategy settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) for more information.
+Go to [step failure strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) for more information.
 
 The failure strategy of any step in a step group overrides the Failure Strategy of the step group.
 
@@ -113,19 +117,6 @@ Add any step and configure its **Advanced** settings.
 
 A step's **Advanced** settings override the **Advanced** settings of the step group.
 
-## Add rollback steps
-
-A step group can have its own rollback steps separate from the rollback steps for the stage.
-
-The step group rollback steps are only run if the failure strategy for the step group has **Rollback Step Group** selected.
-
-In the step group, click the **Execution/Rollback** toggle:
-
-![](./utilities/static/step-groups-02.png)
-
-In the Rollback view, click **Add Step** to add a rollback step.
-
-For example, you can use the Rolling Rollback step for a [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
 
 ## Reference step group steps
 
@@ -141,13 +132,145 @@ For example, to reference the URL setting in an HTTP step in a step group with t
 
 `<+pipeline.stages.HTTP.spec.execution.steps.Group1.steps.OPTIONS.spec.url>`
 
-## Important notes
+## Override service variables in step groups
 
-* When you run steps in parallel you cannot reference the outputs of one step in another step. The output for one step might not be available when another step requests it.
-* Delegate selectors can be configured for each step in the step group. You cannot configure a delegate selector at the group level.
-* Step groups cannot have nested step groups, but you can put groups of steps next to each other in a step group:
+You can customize and override service variables during the execution of a step group. This provides significant flexibility and control over your pipelines. The expression `<+serviceVariableOverrides.VARIABLE_NAME>`overrides the original value of `VARIABLE_NAME`. You can use this expression in values YAML files and other parts of the pipeline where variables are used.  
 
-![](./utilities/static/step-groups-04.png)
+:::note Important notes
+- An overridden value is available only within the scope of the step group execution. In cases where a child group is included in a parent group, the child group override takes precedence. 
 
-The steps **in** each group run in parallel but each group runs serially.
+    The pipeline overrides variables based on the following priority:
+    1. Step group override (child group, during execution)
+    2. Step group override (parent group, during execution)
+    3. Service environment overrides
+    4. Environment configuration
+    5. Service variable value (default)
+
+- Step group overrides are not recommended for artifacts and other objects fetched in the **Service** section of a pipeline stage. The one exception is scripts in [custom remote manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/), because they can also be used during the **Execution** section of a pipeline stage.
+
+<details><summary>Pipeline example: overriding variables in step groups</summary>
+
+The following pipeline illustrates how to override service variables. The service definition has two defined variables, `svar1` and `svar2`. The pipeline overrides these variables as follows:
+
+* The `parent` step group overrides `svar1` with the value `fromStepGroup_OverriddenAtParentStepGroup`.
+* The `parent` step group also has a variable `svarParent` with the value `DefinedAtParentLevel`. The `child` step group overrides this with the value `OverridenByChildStepGroup`.
+* The `child` step group overrides `svar2` with the value `fromStepGroup_OverriddenAtChildLevel`. 
+
+
+<figure>
+
+![](./static/override-service-variables-pipeline-example.png)
+
+<figcaption>Overriding service variables in a pipeline - example</figcaption>
+</figure>
+
+
+```yaml
+pipeline:
+  projectIdentifier: svcredesignhinger
+  orgIdentifier: harness
+  tags: {}
+  stages:
+    - stage:
+        name: dep
+        identifier: dep
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: TestStepGroupOverridesService
+          environment:
+            environmentRef: qa
+            environmentInputs:
+              identifier: qa
+              type: PreProduction
+              variables:
+                - name: rtvar1123
+                  type: String
+                  value: <+input>
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: delegateInfra2
+          execution:
+            steps:
+              - stepGroup:
+                  name: parent
+                  identifier: parent
+                  steps:
+                    - step:
+                        type: ShellScript
+                        name: ShellScript_2
+                        identifier: ShellScript_2
+                        spec:
+                          shell: Bash
+                          onDelegate: true
+                          source:
+                            type: Inline
+                            spec:
+                              script: echo <+serviceVariableOverrides.svarParent>
+                          environmentVariables: []
+                          outputVariables: []
+                        timeout: 10m
+                    - stepGroup:
+                        name: child
+                        identifier: child
+                        steps:
+                          - step:
+                              type: ShellScript
+                              name: ShellScript_1
+                              identifier: ShellScript_1
+                              spec:
+                                shell: Bash
+                                onDelegate: true
+                                source:
+                                  type: Inline
+                                  spec:
+                                    script: |+
+                                      echo <+serviceVariableOverrides.svar1>
+                                      echo <+serviceVariableOverrides.svar2>
+
+                                      echo "child overriding parent value"
+                                      echo <+serviceVariableOverrides.svarParent>
+
+                                environmentVariables: []
+                                outputVariables: []
+                              timeout: 10m
+                        variables:
+                          - name: svar2
+                            type: String
+                            value: fromStepGroup_OverriddenAtChildLevel
+                            description: ""
+                            required: false
+                          - name: svarParent
+                            type: String
+                            value: OverridenByChildStepGroup
+                            description: ""
+                            required: false
+                  variables:
+                    - name: svar1
+                      type: String
+                      value: fromStepGroup_OverriddenAtParentStepGroup
+                      description: ""
+                      required: false
+                    - name: svarParent
+                      type: String
+                      value: DefinedAtParentLevel
+                      description: ""
+                      required: false
+            rollbackSteps: []
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+  identifier: StepGroupLevelOverrides
+  name: StepGroupLevelOverrides 
+
+```
+
+</details>
+
 

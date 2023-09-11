@@ -25,7 +25,7 @@ You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3
 
 This topic explains how to configure the **Save Cache to S3** and **Restore Cache From S3** steps in Harness CI.
 
-You cannot share access credentials or other [Text Secrets](/docs/platform/Secrets/add-use-text-secrets) across Stages.
+You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across Stages.
 
 :::info
 
@@ -455,6 +455,6 @@ graph TD
 
 ## Caching with non-private ACL
 
-If your bucket's ACL is set to something other than `private` (blank, `bucket-owner-full-control`, or something else), then you must add a [stage variable](/docs/platform/pipelines/add-a-stage/#option-stage-variables) called `PLUGIN_ACL` and set the value to the relevant ACL value.
+If your bucket's ACL is set to something other than `private` (blank, `bucket-owner-full-control`, or something else), then you must add a [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) called `PLUGIN_ACL` and set its value to the relevant ACL value.
 
 The default value for `PLUGIN_ACL` is `private`, so if your bucket's ACL is something other than `private`, you must set this environment variable accordingly.

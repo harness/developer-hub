@@ -44,8 +44,8 @@ For Harness On-Prem, enter **customer1**.
 :::
    
 8. In **Authentication**, you can choose one of the following options:
-	* **Username and Password**: In **User Name** and **Password**, enter the credentials to authenticate with the AppDynamics server. In **Password**, you can choose [Create or Select a secret](../../Secrets/2-add-use-text-secrets.md)**.**
-	* **API Client**: In **Client Id** and **Client Secret** fields, enter a valid Id and secret string that the application uses to prove its identity when requesting a token. In **Client Secret**, you can choose [Create or Select a secret](../../Secrets/2-add-use-text-secrets.md).
+	* **Username and Password**: In **User Name** and **Password**, enter the credentials to authenticate with the AppDynamics server. In **Password**, you can choose [Create or Select a secret](/docs/platform/secrets/add-use-text-secrets)**.**
+	* **API Client**: In **Client Id** and **Client Secret** fields, enter a valid Id and secret string that the application uses to prove its identity when requesting a token. In **Client Secret**, you can choose [Create or Select a secret](/docs/platform/secrets/add-use-text-secrets).
   
 9. Click **Continue**. The Setup Delegates settings appear.
 10. You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
@@ -81,20 +81,24 @@ You cannot use a Grafana URL.
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
-3. Click **+** **Connector**, and click **New Relic**in **Monitoring and Logging Systems**. The New Relic connector settings appear.
+3. Click **+** **Connector**, and click **New Relic** in **Monitoring and Logging Systems**. The New Relic connector settings appear.
    
    ![](../static/connect-to-monitoring-and-logging-systems-15.png)
    
 4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
 5. Click **Continue**.
-6. In the **New Relic** **URL** field, enter the URL of your New Relic account. 
+6. In the **New Relic** **URL** field, select the URL of your New Relic Insights API. 
+
+:::info note
+New Relic supports multiple APIs. The Harness Connector leverages the New Relic Insights API, which supports NRQL. See Step 8 for creating an Insights API Key.
+:::
    
    ![](../static/connect-to-monitoring-and-logging-systems-16.png)
 
 7.  To get the **New Relic Account ID** for your New Relic account, copy the number after the **/accounts/** portion of the URL in the New Relic Dashboard.
 8.  In **Encrypted** **API Key**, you can choose **Create or Select a secret.**
 
-For secrets and other sensitive settings, select or create a new [Text Secret.](../../Secrets/2-add-use-text-secrets.md)Enter the API key needed to connect with the server.
+For secrets and other sensitive settings, select or create a new [Text Secret](/docs/platform/secrets/add-use-text-secrets). Enter the API key needed to connect with the server.
 
 For steps on generating the New Relic API key, follow this doc from New Relic: [Insights query API](https://docs.newrelic.com/docs/apis/insights-apis/query-insights-event-data-api/).
 
@@ -144,7 +148,7 @@ We've given this role access to **All non-internal indexes**. However, we could
 
 
 :::info note
-For secrets and other sensitive settings, select or create a new [Text Secret.](../../Secrets/2-add-use-text-secrets.md)
+For secrets and other sensitive settings, select or create a new [Text Secret.](/docs/platform/secrets/add-use-text-secrets)
 
 :::
 
@@ -170,6 +174,63 @@ The following roles must be attached to the account used to connect Harness and 
 
 See [Access control](https://cloud.google.com/monitoring/access-control) from Google.
 
+
+### Add Splunk Observability [SignalFX]
+
+1. Open a Harness Project.
+   
+2. Under **Project Setup**, select **Connectors** > **+ New Connector**.
+
+3. Under **Monitoring and Logging Systems**, select **Splunk Observability [SignalFX]**.
+   
+   The connector settings dialog appears.
+
+4. In the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**.  
+   
+   If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+
+5. In the **Credentials** tab, enter the following, and then select **Next**:
+
+      - In **URL**, enter the URL of your Splunk Observability [SignalFX] account. The URL format should be one of the following:
+  
+         - For streaming ingestion: `https://stream.<realm>.signalfx.com`
+  
+         - For API access: `https://api.<realm>.signalfx.com`
+
+         Where `<realm>` is your specific realm identifier.
+   
+      - In **API Token**, select **Create or Select a Secret**. In the Create or Select an Existing Secret dialog that appears, you can either select an existing token that you have generated in Splunk Observability. The token must have the authorization scope set as `API Token`.
+       
+      To create a new secret:
+
+         1. Select **+ New Secret Text**. 
+   
+         2. In the Add new Encrypted Text dialog, select a secret manager and enter a name for the secret.
+   
+         3.  In **Secret Value**, enter the API token generated in Splunk Observability (SignalFx). The token must have the authorization scope set as `API Token`. To learn about creating Splunk Observability (SignalFx) API access token, go to [Create and manage authentication tokens using Splunk Observability Cloud](https://docs.splunk.com/Observability/admin/authentication/authentication-tokens/tokens.html).
+   
+         4.  Add an optional description and a tag, and then select **Save**.  
+   
+            The secret appears in the **API Token** field.
+    
+6.  In the **Delegates Setup** tab, choose one of the following:
+    
+      - **Use any available Delegate**: Harness automatically assigns an available delegate.
+   
+      - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
+    
+7.  Select **Save and Continue**. Harness verifies the connection.
+    
+8.  After successful verification, select **Finish**.
+    
+    The Splunk Observability [SignalFX] connector is added to the list of connectors.
+   
+    ![Splunk Observability [SignalFX] connector](../static/connect-to-monitoring-and-logging-systems-signalfx-35.png)
+
+9.  Select a connector to view its details.
+
+   ![Splunk Observability [SignalFX] connector details](../static/connect-to-monitoring-and-logging-systems-signalfx-35a.png)
+    
 
 ### Add Datadog
 
@@ -259,7 +320,9 @@ You must use HTTPS to establishing connections with Dynatrace.
       2. In the Dynatrace menu, select **Access tokens** > Select **Generate new token**.
       3. Enter a name for your token.
       4. Be sure to provide a meaningful name for each token you generate. Proper naming helps you efficiently manage your tokens and delete them when they're no longer needed.
-      5. Select the following scopes: **Read metrics**, **Read entities**, and **Read events**.
+      5. Select the following scopes: 
+         - **Read metrics**: This is needed to fetch data from the Dynatrace service for collecting information to perform verification.
+         - **Read entities**: This is necessary to obtain the list of Dynatrace services and the available metrics for the specified service.
       6. Select **Generate token**.
       7. Copy the generated token to the clipboard. Store the token in a password manager for future use. You can only access your token once upon creation. You can't reveal it afterward.
 
@@ -295,9 +358,9 @@ You must use HTTPS to establishing connections with Dynatrace.
 4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
 5. Click **Continue**.
 6. In **URL**, enter the URL of the metrics data provider. For example, **https://mycompany.appd.com.**
-7.  In **Headers**, enter the query headers required by your metrics data provider. In **Key**, enter a valid query key. In **Value**, you can create or select a key by clicking [**Create or Select a Secret**](../../Secrets/2-add-use-text-secrets.md)**.** You can also enter a **Plaintext** value**.**
+7.  In **Headers**, enter the query headers required by your metrics data provider. In **Key**, enter a valid query key. In **Value**, you can create or select a key by clicking [**Create or Select a Secret**](/docs/platform/secrets/add-use-text-secrets)**.** You can also enter a **Plaintext** value**.**
 8.  Click **Next**. The **Parameters** setting appears.
-9.  In **Parameters**, enter the request parameters. In **Key**, enter a valid query key. In **Value**, you can create or select by clicking [**Create or Select a Secret**](../../Secrets/2-add-use-text-secrets.md) or enter a **Plaintext** value**.**
+9.  In **Parameters**, enter the request parameters. In **Key**, enter a valid query key. In **Value**, you can create or select by clicking [**Create or Select a Secret**](/docs/platform/secrets/add-use-text-secrets) or enter a **Plaintext** value**.**
 10. Click **Next**. The **Validation Path** settings appear.
 11. In **Request Method**, select **GET** or **POST**.
 12. In **Validation Path**, enter the query string from your metric provider.

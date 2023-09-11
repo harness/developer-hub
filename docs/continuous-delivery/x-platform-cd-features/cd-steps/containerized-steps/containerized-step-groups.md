@@ -39,6 +39,7 @@ This option is disabled for deployment types that do not support containerized s
 - You can use the same cluster to run the Harness delegate and the containerized step group(s), but it is not required.
 - Currently, containerized step groups are supported in the following deployment types:
   - [AWS SAM (Serverless Application Model)](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments)
+  - [Serverless.com framework for AWS Lambda deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart#before-you-begin)
 
 
 ## Add a containerized step group
@@ -49,13 +50,13 @@ Whether the containerized step group is added automatically or manually, you mus
 
 Here are the steps for adding a containerized step group manually: 
 
-1. In your Deploy (CD) or Custom stage, in **Execution**, select **Add Step**, and then select **Add Step Group**.
+1. In your Deploy (CD) stage, in **Execution**, select **Add Step**, and then select **Add Step Group**.
 2. To configure a step group as containerized, enable the **Enable container based execution** setting.
 3. Configure the following settings.
 
 ### Kubernetes Cluster
 
-Select or add a Harness Kubernetes Cluster connector to connect to the cluster where this container will run.
+Select or add a Harness Kubernetes Cluster connector to connect to the cluster where the containers will run.
 
 ### Namespace
 
@@ -163,16 +164,16 @@ curl -X  GET https://app.harness.io/registry/_catalog
 
 Add or select a connector to use instead of the default connector uses for the Harness Container Image Registry.
 
-For more information, go to [Connect to Harness container image registry Using Docker connector](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/).
+For more information, go to [Connect to Harness container image registry Using Docker connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/).
 
 ### Advanced settings
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 
 ## Containerized step group example
 
@@ -220,7 +221,7 @@ Started container lite-engine
 
 ## Harness Docker connector for all group steps
 
-In each step in the containerized step group, you must provide a Harness connector to a container registry and an image for the container step to run in.
+In each step in the containerized step group, you must provide a Harness connector to a container registry and an image for the container step to run.
 
 You can create the connector in the any of the steps and then select it in the other steps, or you can create it separately and select it in the steps.
 
@@ -391,7 +392,7 @@ Supply a list of arguments in `exec` format. Enter each argument separately.
 
 ![Entry Point commands](../static/0c005ac860103a5b7fb3355c95dc13ff5eab09baae3d7636ec7bf40c7ccc166e.png)  
 
-<figcaption>Figure 4: <b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
+<figcaption><b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
 </figure>
 
 ```mdx-code-block

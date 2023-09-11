@@ -18,7 +18,7 @@ This topic describes how to create an org, invite Harness users to it as members
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 
 ### Prerequisites
 
@@ -103,6 +103,6 @@ Harness recommends removing RBAC access to the project and only allowing users t
 
 ### See also
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Harness Role-Based Access Control Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
+* [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 

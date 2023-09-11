@@ -15,13 +15,13 @@ Harness includes a built-in Secret Management feature that enables you to store 
 
 ### Before you begin
 
-* See [Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+* Go to [Harness Key Concepts](../../../get-started/key-concepts.md)
 
 ### Visual Summary
 
 You can choose to use your own secret management solution, or the built-in Harness Secret Manager. This diagram shows how Harness handles secrets:
 
-![](../static/harness-secret-manager-overview-44.png)
+![](../../Secrets/static/harness-secret-manager-overview-44.png)
 
 ### Harness Secret Management Process Overview
 
@@ -29,11 +29,11 @@ Harness sends only encrypted data to the Secret Manager, as follows: 
 
 1. Your browser sends data over HTTPS to Harness Manager.
 2. Harness Manager relays encrypted data to the Harness Delegate, also over HTTPS.
-3. The Delegate exchanges a key pair with the Secret Manager, over an encrypted connection.
-4. The Harness Delegate uses the encrypted key and the encrypted secret and then discards them. The keys never leave the Delegate.
+3. The delegate exchanges a key pair with the Secret Manager, over an encrypted connection.
+4. The Harness Delegate uses the encrypted key and the encrypted secret and then discards them. The keys never leave the delegate.
 
 
-:::note
+:::info note
 Any secret manager requires a running Harness Delegate to encrypt and decrypt secrets. Any delegate that references a secret requires direct access to the Secret Manager.
 
 :::
@@ -63,25 +63,25 @@ These Secret Managers store the key, perform encryption and decryption, and also
 In Community and Self-Managed Enterprise Edition accounts, Harness uses a random-key secrets store as the Harness Secret Manager.
 
 
-:::note
-By default, Self-Managed Enterprise Edition installations use the local MongoDB database for the default Harness Secret Manager. Harness does not recommend using the local MongoDB database. Once you have installed Self-Managed Enterprise Edition, [Add a secret manager](./5-add-secrets-manager.md). 
+:::info note
+By default, Self-Managed Enterprise Edition installations use the local MongoDB database for the default Harness Secret Manager. Harness does not recommend using the local MongoDB database. Once you have installed Self-Managed Enterprise Edition, [Add a secret manager](/docs/platform/Secrets/Secrets-Management/5-add-secrets-manager.md). 
 
 :::
 
 
-:::note
+:::info note
 Harness does not currently support migrating secrets from the random-key secrets store. If you add secrets to the random-key secrets store, you will need to re-create them in any custom secret manager you configure later.
 
 :::
 
-If you created a Harness trial account, a Delegate is typically provisioned by Harness, and the default Harness Secret Manager performs encryption/decryption.
+If you created a Harness trial account, a delegate is typically provisioned by Harness, and the default Harness Secret Manager performs encryption/decryption.
 
 #### Harness Secrets and Harness Git Experience
 
 When you set up [Harness Git Experience](../../10_Git-Experience/git-experience-overview.md), you select the Connectivity Mode for Git syncing. You have two options:
 
 * **Connect Through Manager:** Harness SaaS will connect to your Git repo whenever you make a change and Git and Harness sync.
-* **Connect Through Delegate:** Harness will make all connections using the Harness Delegate. This option is used for Self-Managed Enterprise Edition frequently, but it is also used for Harness SaaS. See [Harness Self-Managed Enterprise Edition Overview](../../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md).
+* **Connect Through Delegate:** Harness will make all connections using the Harness Delegate. This option is used for Self-Managed Enterprise Edition frequently, but it is also used for Harness SaaS. Go to [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/get-started/onboarding-guide).
 
 If you select **Connect Through Manager**, the Harness Manager decrypts the secrets you have set up in the Harness Secret Manager.
 

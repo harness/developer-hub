@@ -12,7 +12,7 @@ The delegate is instrumented for the collection of the following delegate agent 
   
 | **Metric name** | **Description** |
 | :-- | :-- |
-| `io_harness_custom_metric_task_execution_time` | The time it takes to complete a task. |
+| `io_harness_custom_metric_task_execution_time` | The time it takes to complete a task (in seconds). |
 | `io_harness_custom_metric_tasks_currently_executing` | The number of tasks underway. |
 | `io_harness_custom_metric_task_timeout` | The number of tasks that time out before completion. |
 | `io_harness_custom_metric_task_completed` | The number of tasks completed. |
@@ -22,7 +22,7 @@ The delegate is instrumented for the collection of the following delegate agent 
 | `io_harness_custom_metric_resource_consumption_above_threshold`* | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. For more information, go to [Configure delegate resource threshold](#configure-delegate-resource-threshold). |
 
 :::info note
-Metrics notated with * above only visible if you start your delegate with `DYNAMIC_REQUEST_HANDLING` to be true in your delegate yaml. Go to [Configure delegate resource threshold](#configure-delegate-resource-threshold) for more information.
+Metrics notated with * above only visible if you start your delegate with `DYNAMIC_REQUEST_HANDLING` set to `true` in your delegate YAML. Go to [Configure delegate resource threshold](#configure-delegate-resource-threshold) for more information.
 
 Also note that the above metrics are available only if your delegate version is later than 23.05.79311.
 :::
@@ -300,7 +300,7 @@ spec:
 You can set the delegate to reject new tasks if x% of memory is being consumed. You can then spin up new delegates when resources are above the threshold.
 
 :::info note
-The `resource_consumption_above_threshold` metric is currently behind the feature flag `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+The `io_harness_custom_metric_resource_consumption_above_threshold` metric is only visible if you start your delegate with DYNAMIC_REQUEST_HANDLING set to `true` in your delegate YAML. 
 :::
 
 To configure the delegate resource threshold, make the following changes to the delegate YAML file:
@@ -321,11 +321,11 @@ To configure the delegate resource threshold, make the following changes to the 
         value: "true"
    ```
 
-3. Set the `RESOURCE_USAGE_THRESHOLD` env variable to the cpu/memory threshold. When the threshold is exceeded, the delegate rejects new tasks.
+3. Set the `DELEGATE_RESOURCE_THRESHOLD` env variable to the cpu/memory threshold. When the threshold is exceeded, the delegate rejects new tasks.
 
    ```
    env:
-      - name: RESOURCE_USAGE_THRESHOLD
+      - name: DELEGATE_RESOURCE_THRESHOLD
         value: "80"
    ```
    :::info note

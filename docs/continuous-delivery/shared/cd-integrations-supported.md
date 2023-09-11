@@ -59,6 +59,7 @@ import TabItem from '@theme/TabItem';
     - Kustomize:
       - Kustomize Patches are only supported in YAML, not JSON
       - Kustomize Containerized Plugins are not supported
+      - Kustomize manifests and patches do **not** support the [custom remote manifest](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) feature.
     - Harness managed resources:
       - Deployment
       - Secrets
@@ -114,7 +115,7 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.24.9
 - 1.25.6
 
-For details on other tools and versions included in Harness, see [Delegate-required SDKs](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-required-sdks).
+For details on other tools and versions included in Harness, see [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks).
 
 Guidelines:
 
@@ -271,7 +272,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
     - IRSA
     - Access Key and Secret Key
     - IAM Role
-    - GovCloud Support
+    - GovCloud supported
 - **Supported platforms for deployment:**
   - AWS cloud, any region
 - **Versions and tooling support:**
@@ -282,6 +283,26 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
     - Amazon S3
 
 </details>
+
+<details>
+<summary>AWS SAM</summary>
+
+- **Overview:**
+  - [AWS SAM](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments)
+- **Supported connectors for deployment:**
+  - AWS cloud connector
+    - Access key and secret key
+- **Supported platforms for deployment:**
+  - AWS cloud, any region
+- **Versions and tooling support:**
+  - AWS SDK
+  - Harness supports standard SAM templates.
+- **Supported integrations:**
+  - All Git providers are supported for SAM templates.
+  - Currently, you cannot add artifacts to your Harness SAM service.
+
+</details>
+
 
 <details>
 <summary>Traditional: WinRM</summary>
@@ -378,7 +399,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 - **Supported integrations:**
   - Artifact Repository:
     - Google Cloud Storage
-    - Google Source Repository (Gen 1 Only)
+    - Google Cloud Storage and Google Cloud Source (Gen 1 Only)
 
 </details>
 
@@ -421,7 +442,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 - **Limitations:**
   - Deployment Behavior:
     - Harness only supports AWS Lambda Functions to be deployed via Serverless.com Framework
-    - Harness builds and deploys Lambda Functions, users cannot split up the tasks to build functions and deploy functions separately natively via the swimlane
+    - Harness builds and deploys Lambda Functions> You cannot split up the tasks to build functions and deploy functions separately as part of Harness support.
   - Not supported application types:
     - Google Functions
     - Azure Functions
@@ -459,7 +480,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <details>
 <summary>Builds in CD</summary>
 
-Continuous Integration (CI) can be performed in Harness using the module and [CI pipelines](/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics).
+Continuous Integration (CI) can be performed in Harness using the module and [CI pipelines](/docs/continuous-integration/get-started/key-concepts).
 
 If you are using Harness Continuous Delivery (CD) but not Harness Continuous Integration (CI), you can still perform CI using the Jenkins step in your CD stage.
 
@@ -474,13 +495,14 @@ Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenk
 <summary>GitOps</summary>
 
 - **Overview:**
-  - [GitOps](/docs/continuous-delivery/gitops/harness-git-ops-basics)
-  - [GitOps Quickstart](/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart)
+  - [GitOps](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics)
+  - [GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart)
 
 Harness GitOps lets you perform GitOps deployments in Harness. You define the desired state of the service you want to deploy in your Git manifest, and then use Harness GitOps to sync state with your live Kubernetes cluster.
 
 GitOps supports the following:
 
+- Argo CD version supported: 2.7.8.
 - Source Repositories:
   - All Git providers.
   - HTTP Helm repos.
@@ -498,7 +520,10 @@ GitOps supports the following:
   - SSH Known Host Entry.
 - GnuPG Keys:
   - GnuPG Public Key Data (ASCII-armored).
-
+- **Limitations:**
+  - Self-hosted environments
+    - Agents installed in custom namespaces are not yet supported.
+  
 </details>
 
 <details>
@@ -535,9 +560,10 @@ Harness supports the following infrastructure provisioning tools:
 
 - [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
 - [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
-- Azure ARM and Blueprint
+- [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
 - [AWS CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos)
-- Shell script (custom)
+- [Shell script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning) (custom)
 
 ### Terraform version support
 
@@ -566,29 +592,44 @@ terraform --version
 
 Some Harness features might require specific Terraform versions.
 
+:::info note
+Harness also supports Terraform Cloud and Enterprise.
+:::
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Controls/Utilities" label="Controls/Utilities">
 ```
 
+- **Containerized steps:**
+  - [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups)
+  - Multiple step types can be run containerized.
 - **Controls:**
   - [Strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts): basic, rolling, canary, blue green, custom.
   - [Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers)
   - [Resource Constraints](/docs/continuous-delivery/manage-deployments/deployment-resource-constraints)
   - [Queue steps](/docs/continuous-delivery/manage-deployments/control-resource-usage-with-queue-steps)
   - [Deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze)
-  - [Failure strategies](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings//)
-  - [Conditional executions](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-  - [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-  - [Triggers](https://developer.harness.io/docs/category/triggers)
-  - [Input set and overlays](https://developer.harness.io/docs/platform/pipelines/input-sets/)
+  - [Failure strategies](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+  - [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+  - [Looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+  - [Triggers](/docs/category/triggers)
+  - [Input set and overlays](/docs/platform/pipelines/input-sets/)
 - **Utilities:**
-  - [Run a Docker container in a CD stage](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/container-step)
-  - [Using HTTP requests in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines)
-  - [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts)
-  - [Use the Command step to download or copy artifacts and configs, or run scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/download-and-copy-artifacts-using-the-command-step)
-  - [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/run-a-script-on-multiple-target-instances)
-  - [Pausing pipeline execution using the Wait step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/wait-step)
+  - [Run a Docker container in a CD stage](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step)
+  - [Using HTTP requests in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step)
+  - [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step)
+  - [Use the Command step to download or copy artifacts and configs, or run scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step)
+  - [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances)
+  - [Wait step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/wait-step)
+  - [Email step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step)
+  - [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors)
+- **Build:**
+  - [Background step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/background-step)
+  - [Git Clone step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step)
+  - [GitHub Action Plugin step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/github-action-plugin)
+  - [Run step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step)
+  - [Plugin step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/plugin-step)
 
 ```mdx-code-block
   </TabItem>
@@ -597,13 +638,13 @@ Some Harness features might require specific Terraform versions.
 
 Manifests, specifications, config files, and other deployment files can be pulled from the following providers:
 
-- [Harness File Store](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/)
-- [Git on any platform](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
-- [Github](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-- [GitLab](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-- [Bitbucket](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-- [AWS CodeCommit](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
-- [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo/)
+- [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/)
+- [Git on any platform](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
+- [Github](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+- [GitLab](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+- [Bitbucket](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+- [AWS CodeCommit](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
+- [Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo/)
 
 
 The following table lists where you can store your manifests or config files for each integration.
@@ -709,8 +750,19 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
 </Tabs>
 ```
 
-## Notes
+### Notes
 
 - AWS and Azure GovCloud: Harness is now certified in Azure GovCloud and AWS GovCloud.
 
+## Harness Self-Managed Enterprise Edition (SMP) including offline Environments
 
+All CD features supported in Harness SaaS are also supported in Self-Managed Enterprise Edition with the following exceptions:
+
+- **Dashboards:** Harness [CD Dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments) might not be completely functional with a bundled [Timescale community edition](https://docs.timescale.com/about/latest/timescaledb-editions/) version installation.
+- **Triggers:** The feature flag `CD_GIT_WEBHOOK_POLLING` must be enabled for Github polling with two factor authentication. For more information, go to [Polling frequency](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#polling-frequency).
+- **ServiceNow:** ServiceNow versions [Utah](https://www.servicenow.com/now-platform/latest-release.html) and earlier are supported.
+- **Jira:** Jira on-premise versions < 9.0 are supported. To support Jira on-premise >= 9.0, the feature flag `SPG_USE_NEW_METADATA` must be enabled.
+- **GitOps:** The Harness GitOps Agent does not support custom certificates in Self-Managed Enterprise Edition.
+- **GitOps:** The Harness GitOps Agent does not yet support installing agents in specific cluster namespaces in Self-Managed Enterprise Edition.
+- **Policy as Code:** Harness Git Experience support for OPA policies is not supported in Self-Managed Enterprise Edition.
+- **Harness AI Development Assistant(AIDA):** To support AIDA in Self Managed Enterprise Edition running in an offline environment, you must whitelist https://harness.openai.azure.com

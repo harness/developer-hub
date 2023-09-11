@@ -4,7 +4,6 @@ description: Stream your audit logs to an external destination.
 sidebar_position: 3
 ---
 
-
 :::important
 Currently, this feature is in Beta and behind the feature flag `PL_AUDIT_LOG_STREAMING_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
@@ -47,13 +46,15 @@ To add a streaming destination in Harness:
 
 7. Select **Continue**.
    
-![](./static/audit-streaming.png)
+   ![](../../Governance/15_Audit-Trail/static/audit-streaming.png)
 
 ## Configure the streaming connector
 
 1. Select **Amazon S3**.
 
-2. In **Select Connector**, select an existing AWS Cloud Provider connector or create a new one.
+2. In **Select Connector**, select an existing AWS Cloud Provider connector or create a new one. 
+
+   You must use the **Connect through a Harness Delegate** connectivity mode option when you set up your AWS Cloud Provider connector. Audit streaming does not support the **Connect through Harness Platform** connector option.
 
    Go to [Add an AWS connector](../../7_Connectors/Cloud-providers/add-aws-connector.md) for steps to create a new AWS Cloud Provider connector.
 
@@ -63,7 +64,7 @@ To add a streaming destination in Harness:
    
    Harness writes all the streaming records to this destination.
 
-   ![](./static/streaming-connector.png)
+   ![](../../Governance/15_Audit-Trail/static/streaming-connector.png)
 
 5. Select **Save** and **Continue**.
 
@@ -95,14 +96,14 @@ You can change the audit stream configuration by clicking three dots beside the 
 
 - **Delete**: Delete the audit stream destination.
 
-![](./static/edit-delete.png)
+![](../../Governance/15_Audit-Trail/static/edit-delete.png)
 
 
 ## Amazon S3 audit file details
 
 Here is an example of an audit stream file in one of the Amazon S3 buckets.
 
-![](./static/s3-auditstream-file.png)
+![](../../Governance/15_Audit-Trail/static/s3-auditstream-file.png)
 
 This file has a list of audit events in JSON format.
 
@@ -124,10 +125,10 @@ Streamed audit events have a predictable schema in the body of the response.
 |**Field**       |  **Description**     |   **Is required**    |
 |  ---  |  ---  |  ---  |
 |   auditEventId    |  Unique ID for the audit event.     |   Required    |
-|   auditEventAuthor    |  [Principal](../../4_Role-Based-Access-Control/1-rbac-in-harness.md#harness-rbac-components) attached with audit event.    |   Required    |
+|   auditEventAuthor    |  [Principal](/docs/platform/role-based-access-control/rbac-in-harness#rbac-components) attached with audit event.    |   Required    |
 |    auditModule   | Module for which the audit event is generated.      |   Required    |
 |   auditResource    |  Resource audited.     |  Required     |
-|   auditResourceScope    |  [Scope](../../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope) of the audited resource.     |   Required    |
+|   auditResourceScope    |  [Scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) of the audited resource.     |   Required    |
 |  auditAction     |  Action on the audited resource.     |  Required     |
 |    auditEventTime   |  Date and time of the event.     | Required      |
 |   auditHttpRequestInfo    |  Details of the HTTP request.     |  Optional     |
@@ -136,7 +137,7 @@ Streamed audit events have a predictable schema in the body of the response.
 
 ### JSON payload
 
-```
+```json
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",

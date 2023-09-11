@@ -1,7 +1,7 @@
 ---
 title: Entity deletion reference
-description: This topic covers the rules governing the deletion of Harness entities. Entity Connections. Entities are connected. A Role entity is applied to User entities. Deleting an entity, such as a Role, impa…
-# sidebar_position: 2
+description: This topic covers the rules governing the deletion of Harness entities.
+sidebar_position: 4
 helpdocs_topic_id: amj1oz4x4k
 helpdocs_category_id: fb16ljb8lu
 helpdocs_is_private: false
@@ -59,6 +59,7 @@ For example, if a user was assigned to a role that had the Create/Edit Pipeline 
 A User entity is identified by their Id. The Id is the email address used to invite and sign up the User:
 
 ![](./static/entity-deletion-reference-01.png)
+
 A User and its Id can be deleted. 
 
 When a User is deleted, their Id (email address) can’t be used until the User is completely removed from the system. See [Entity Retention Policy](entity-retention-policy.md).
@@ -94,6 +95,7 @@ You can force delete a Harness entity even if your pipelines or other entities r
 - Environments
 - Environment Groups
 - Templates
+- File Store files
 
   
 The Harness account admin can enable or disable the force delete option in the account's default settings.

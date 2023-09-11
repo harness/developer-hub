@@ -13,7 +13,7 @@ You can use a Secure Shell (SSH) deployment type to deploy your artifacts to VM 
 
 :::note
 
-Many traditional deployments use runtime environments such as Tomcat or JBoss. Your target hosts should have these installed before deployment. You can use the Harness [Command](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/download-and-copy-artifacts-using-the-command-step) step to install them in the same pipeline as your SSH deployment.
+Many traditional deployments use runtime environments such as Tomcat or JBoss. Your target hosts should have these installed before deployment. You can use the Harness [Command](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step) step to install them in the same pipeline as your SSH deployment.
 
 :::
 
@@ -113,96 +113,269 @@ In **Artifact Details**, enter the following:
 9.  Select **Continue** to set up the target Environment.
 
 
-## SSH Environments
+## Define the target infrastructure
 
-In the stage **Environment** section, you define the infrastructure definition for the target hosts.
+You define the target infrastructure for your deployment in the **Environment** settings of the pipeline stage. You can define an environment separately and select it in the stage, or create the environment within the stage **Environment** tab.
 
-### Add the target infrastructure
+There are two methods of specifying the deployment target infrastructure:
 
-1. In **Specify Environment**, select **New Environment** and enter a name. 
-2. For **Environment Type**, select **Pre-****Production**, and select **Save**.
-3. For **Specify Infrastructure**, select **New infrastructure**.
-4. Enter a name for the new infrastructure.
-5. For **Select Infrastructure Type**, select where you want to deploy. For this example, we'll use **Physical Data Center**.
-   1. Keep the default selection: **Select preconfigured hosts from Physical Data Center**.
+- **Pre-existing**: the target infrastructure already exists and you simply need to provide the required settings.
+- **Dynamically provisioned**: the target infrastructure will be dynamically provisioned on-the-fly as part of the deployment process.
+
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+
+### Selecting hosts
+
+When you set up the Infrastructure Definition for the stage, there are three options for selecting the target hosts:
+
+- **Specify hosts**
+- **Select preconfigured hosts from Physical Data Center**
+- **Map Dynamically Provisioned Infrastructure**
+
+The **Specify hosts** or **Select preconfigured hosts from Physical Data Center** options are used when you are deploying to a pre-existing infrastructure.
+
+The **Map Dynamically Provisioned Infrastructure** option is used when your are deploying to a dynamically provisioned infrastructure.
+
+### Pre-existing infrastructure
+
+Let's look at an example of setting up an Infrastructure Definition for a pre-existing infrastructure.
+
+1. In **Specify Environment**, select/create an environment. 
+2. In the environment, in **Specify Infrastructure**, select **New infrastructure**.
+3. Enter a name for the new infrastructure.
+4. For **Select Infrastructure Type**, select where you want to deploy. For this example, we'll use **Physical Data Center**.
+   1. Keep the default selection, **Physical Data Center**.
    
    ![](static/ssh-ng-174.png)
 
-### Create the PDC connector for the hosts
+#### Create the PDC connector for the hosts
 
-1. In **Infrastructure Definition**, for **Connector**, select **Select Connector** to create the Connector for PDC.
-   
-   ![](static/ssh-ng-175.png)
-
+1. In **Infrastructure Definition**, for **Connector**, select **Select Connector** to create the Connector for the PDC.
 2. In **Create or Select an Existing Connector**, select **New Connector**.
-3.  In **Physical Data Center**, enter a name for this connector: **PDC-Connector**.
+3.  In **Physical Data Center**, enter a name for this connector, such as **PDC-Connector**.
 4.  Select **Continue**.
-   
-   ![](static/ssh-ng-176.png)
-
-5.  In **Details**, keep the default for **Manually enter host names** and enter the hostname for the EC2 instance.
+5.  In **Details**, keep the default for **Manually enter host names** and enter the hostname(s) for the target instance(s).
 6.  Select **Continue**.
-
-   ![](static/ssh-ng-177.png)
-
 7.  In **Delegates Setup**, keep the default for **Use any available Delegate**. 
 8.  Select **Save and Continue**. Harness validates connectivity for the PDC connector.
-   
-   ![](static/ssh-ng-178.png)
-   
 9.  Select **Finish**. The Infrastructure Definition is updated with the PDC Connector.
   
 ![](static/ssh-ng-179.png)
 
 
-### Use an SSH credential for authenticating to the target hosts
+#### Use an SSH credential for authenticating to the target hosts
 
-You can use an SSH Key or Kerberos for authenticating to the target host. In this tutorial, we will use an SSH Key.
+You can use an SSH Key or Kerberos for authenticating to the target host(s). In this example, we will use an SSH Key.
 
 1. In **Specify Credentials**, select **Create or Select a Secret**.
 2. In **Create or Select an Existing Secret**, select **New SSH Credential**.
 3. In **SSH Details**, for **Name**, enter a name for this SSH Credential and select **Continue**.
+4. In **Configuration and Authentication**, there are three authentication options. In this example, we will use **Username/SSH Key**. Select the down-drop menu and select **Username/SSH Key**.
+5. Enter a username, such as **ec2-user**.
    
-   ![](static/ssh-ng-180.png)
-
-4. In **Configuration and Authentication**, you have three authentication options: In this example, we will use **Username/SSH Key**. Select the down-drop menu and select **Username/SSH Key**.
+   :::tip
    
-   ![](static/ssh-ng-181.png)
-
-5. For username, enter **ec2-user**. This is the user for the EC2 instance.
+   Always use **ec2-user** for EC2 instances.
+   
+   :::
 6. For **Select or create a SSH Key**, select **Create or Select a Secret**.
 7. in **Create or Select an Existing Secret**, select **New Secret File**.
-   
-   ![](static/ssh-ng-182.png)
-
-8. in **Add new Encrypted File**, enter a name for **Secret Name**: **ssh-key-name**. This is the name you will use to reference this file.
-9. For **Select File**, select **Browse**. On your machine, browse for the .pem file that you downloaded from your EC2 instance. Select that file and Harness uploads it to the **Select File** field. 
+8. in **Add new Encrypted File**, enter a name for **Secret Name**, such as **ssh-key-name**. This is the name you will use to reference this file.
+9.  For **Select File**, select **Browse**. On your machine, select the secret file that you downloaded from your instance (for EC2, use the .pem file). 
 10. Select **Save**.
-   
-   ![](static/ssh-ng-183.png)
-
 11. In **Configuration and Authentication**, keep the default values for **Passphrase** and **SSH port**. Select **Save and Continue**.
+12. In **Verify Connection**, enter the hostname for the instance in the **Add a Host Name to start verification** field and select **Connection Test**.
+13. The Secure Shell connection to the instance is tested. Select **Finish**. Select **Continue**.
     
-    ![](static/ssh-ng-184.png)
+    You can use the **Preview Hosts** section to test the connection at any time.
     
-12. In **Verify Connection**, enter the hostname for the EC2 instance in the **Add a Host Name to start verification** field and select **Connection Test**.
-    
-    ![](static/ssh-ng-185.png)
-    
-13. The Secure Shell connection to the EC2 instance is tested. Select **Finish**. Select **Continue**.
-    
-    ![](static/ssh-ng-186.png)
-    
-    You can use the **Preview Hosts** section to test the connection at any time.\
-    
-    ![](static/ssh-ng-187.png)
-
 14. Select **Save**.
 15. Back in **Environment**, select **Continue**.
 
 Next, you'll select the deployment strategy for this stage, the package type, and the number of instances to deploy on.
 
-![](static/ssh-ng-188.png)
+### Dynamically provisioned infrastructure
+
+:::note
+
+Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
+
+1. **Add dynamic provisioning to the CD stage**:
+   1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+   2. Select the type of provisioner that you want to use.
+   
+      Harness automatically adds the provisioner steps for the provisioner type you selected.
+   3. Configure the provisioner steps to run your provisioning scripts.
+   4. Select or create a Harness infrastructure in **Environment**.
+2. **Map the provisioner outputs to the Infrastructure Definition**:
+   1. In the Harness infrastructure, enable the option **Map Dynamically Provisioned Infrastructure**.
+   2. Map the provisioning script/template outputs to the required infrastructure settings.
+
+#### Supported provisioners
+
+The following provisioners are supported for SSH deployments:
+
+- Terraform
+- Terragrunt
+- Terraform Cloud
+- CloudFormation
+- Azure Resource Manager (ARM)
+- Azure Blueprint
+- Shell Script
+
+#### Adding dynamic provisioning to the stage
+
+To add dynamic provisioning to a Harness pipeline Deploy stage, do the following:
+
+1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+2. Select the type of provisioner that you want to use.
+   
+   Harness automatically adds the necessary provisioner steps.
+3. Set up the provisioner steps to run your provisioning scripts.
+
+For documentation on each of the required steps for the provisioner you selected, go to the following topics:
+
+- Terraform:
+  - [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
+  - [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+  - [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step). To see the Terraform Rollback step, toggle the **Rollback** setting.
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
+- [Terraform Cloud](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments)
+- CloudFormation:
+  - [Create Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/provision-with-the-cloud-formation-create-stack-step)
+  - [Delete Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/remove-provisioned-infra-with-the-cloud-formation-delete-step)
+  - [Rollback Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/rollback-provisioned-infra-with-the-cloud-formation-rollback-step). To see the Rollback Stack step, toggle the **Rollback** setting.
+- [Azure Resource Management (ARM)](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
+- [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
+
+
+#### Mapping provisioner output
+
+Once you set up dynamic provisioning in the stage, you must map outputs from your provisioning script/template to specific settings in the Harness Infrastructure Definition used in the stage.
+
+1. In the same CD Deploy stage where you enabled dynamic provisioning, select or create (**New Infrastructure**) a Harness infrastructure.
+2. In the Harness infrastructure, in **Select Infrastructure Type**, select **Physical Data Center**, **Azure**, or **AWS**.
+3. In **Select Hosts/Azure/Amazon Web Services Infrastructure Details**, enable the option **Map Dynamically Provisioned Infrastructure**.
+   
+   A **Provisioner** setting is added and configured as a runtime input.
+4. Map the provisioning script/template outputs to the required infrastructure settings.
+
+To provision the target deployment infrastructure, Harness needs specific infrastructure information from your provisioning script. You provide this information by mapping specific Infrastructure Definition settings in Harness to outputs from your template/script.
+
+For SSH infrastructures, Harness needs the following settings mapped to outputs:
+
+- Physical Data Center (PDC):
+  - **Host Array Path**
+  - **Host Data Mapping**: you should map outputs for all of the necessary connection information. For example, if the VM(s) on a cloud platform:
+    - hostname
+    - privateIp
+    - subnetId
+    - region
+- Azure:
+  - **Subscription Id**
+  - **Resource Group**
+  - **Tag** (optional)
+- AWS:
+  - **Region**
+  - **Tag** (optional)
+
+:::note
+
+Ensure the mapped settings are set to the **Expression** option.
+
+:::
+
+#### Host Array Path
+
+For SSH PDC deployments, you use the expression `<+provisioner.OUTPUT_NAME>` for the **Host Array Path** setting. 
+
+For the subsequent **Host Data Mapping** key-value pairs, you use the expression format `<+HOST_PROPERTY>`. For example, `<+public_dns>`.
+
+Here's an example:
+
+![picture 1](static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png)  
+
+
+#### Example
+
+Here's a snippet of a Terraform script that provisions the infrastructure for an AWS EC2 VM SSH deployment and includes the required outputs for Physical Data Center:
+
+```json
+
+provider "aws" {
+  region = "us-east-1"  # Replace with your desired AWS region
+}
+
+resource "aws_vpc" "example" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "example" {
+  vpc_id            = aws_vpc.example.id
+  cidr_block        = "10.0.1.0/24"
+}
+
+resource "aws_security_group" "example" {
+  name_prefix = "example-"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.example.id
+  vpc_security_group_ids = [aws_security_group.example.id]
+
+  tags = {
+    Name = "ExampleInstance"
+  }
+}
+
+output "hostname" {
+  value = aws_instance.example.public_dns
+}
+
+output "privateIp" {
+  value = aws_instance.example.private_ip
+}
+
+output "subnetId" {
+  value = aws_subnet.example.id
+}
+
+output "region" {
+  value = provider.aws.region
+}
+
+```
+
+
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.region>`.
+
+<figure>
+
+<docimage path={require('./static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png')} width="60%" height="60%" title="Click to view full size image" />
+
+<figcaption>Figure: Mapped outputs</figcaption>
+</figure>
+
+#### Reference mapped instance properties
+
+Once you have mapped provisioning script outputs to the stage Infrastructure Definition, you can reference them in **Execution** of the stage.
+
+To reference a mapped output, you use an expression in the format `<+instance.properties.*>`.
+
+For example, here are some **Host Data Mapping** *keys* and expressions that reference them:
+
+- hostname: `<+instance.properties.hostname>`
+- privateIp: `<+instance.properties.privateIp>`
+- subnetId: `<+instance.properties.subnetId>`
+- region: `<+instance.properties.region>`
+
 
 ## SSH Executions
 
@@ -371,7 +544,7 @@ Harness creates 2 phases.
 
 ![](static/ssh-ng-197.png)
 
-You can add any Approval steps inside the Phase Group. For more information, go to [Approvals](https://developer.harness.io/docs/category/approvals).
+You can add any Approval steps inside the Phase Group. For more information, go to [Approvals](/docs/category/approvals).
 
 The looping strategy for the first phase deploys to 50% of the hosts (partitions):
 
@@ -453,5 +626,5 @@ For Microsoft Azure or AWS:
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
 
-For more details, go to [Built-in and custom Harness variables reference](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/).
+For more details, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/).
 

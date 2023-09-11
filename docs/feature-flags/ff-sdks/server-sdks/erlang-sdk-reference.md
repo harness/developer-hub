@@ -8,6 +8,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpno />
 
 This topic describes how to use the Harness Feature Flags Erlang SDK for your Erlang or Elixir based application. 
@@ -21,8 +24,8 @@ For getting started quickly:
 
 Make sure you read and understand:
 
-* [Feature Flags Overview](/docs/feature-flags/ff-onboarding/cf-feature-flag-overview)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](/docs/feature-flags/get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks)
 * [Communication Strategy Between SDKs and Harness Feature Flags](/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags)
 
@@ -283,11 +286,11 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-To help prevent memory leaks, we recommend closing the SDK when it’s not in use.
+<Closeclient />
 
-To close the SDK, run one of the following commands. 
+To close the SDK, run one of the following commands: 
 
 * **For Erlang applications:**
 
@@ -393,7 +396,7 @@ This will only affect evaluation log statements. The `log_level` you set applies
 
 The SDK by default starts up a single instance called `default` which is configured with your project API key.
 If different parts of your application need to use 
-specific [projects](https://developer.harness.io/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project/), you can start up additional client instances using by defining additional configuration for each unique project.
+specific [projects](/docs/feature-flags/ff-creating-flag/create-a-project/), you can start up additional client instances using by defining additional configuration for each unique project.
 
 :::info note
 If the default instance fails to start, for example, due to an authentication error with the API key, then the SDK fails to boot and any additional instances do not start. To prevent the default instance from starting, 
@@ -621,7 +624,7 @@ go to [Erlang project config](#erlang-project-config) and [Elixir project config
 
 ### Use the Relay Proxy
 
-When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/ff-using-flags/relay-proxy/) you must change the default URL and events URL to `http://localhost:7000` when initializing the SDK. 
+When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/relay-proxy/deploy-relay-proxy) you must change the default URL and events URL to `http://localhost:7000` when initializing the SDK. 
 
 To do this, pass the new URLs in when initializing the SDK, as shown below.
 

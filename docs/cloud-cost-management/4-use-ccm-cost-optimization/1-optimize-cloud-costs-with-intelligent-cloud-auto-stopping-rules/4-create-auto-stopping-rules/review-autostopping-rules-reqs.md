@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic covers the requirements for creating [AutoStopping Rules](../1-add-connectors/1-auto-stopping-rules.md) on all supported cloud platforms. Before you begin creating AutoStopping Rules, make sure you've reviewed the following:
+This topic covers the requirements for creating [AutoStopping Rules](../1-auto-stopping-rules.md) on all supported cloud platforms. Before you begin creating AutoStopping Rules, make sure you've reviewed the following:
 
 * Prerequisites
 * Questionnaire about your cloud setup and resources
@@ -22,8 +22,8 @@ Review the following prerequisites and set up related questions.
 The following prerequisites are needed:
 
 * Ensure that you have AWS EC2 VMs or Auto Scaling Groups created
-* Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
-* Permissions to create a cross-account role. See [AWS Access Permissions](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-access-permissions)
+* Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
+* Permissions to create a cross-account role. See [AWS Access Permissions](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#aws-access-permissions)
 
 #### Questionnaire
 
@@ -61,7 +61,7 @@ Review the following prerequisites.
 #### Prerequisites
 
 The following prerequisites are needed:
-* See [Set up cost visibility for AWS](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) for the following topics:
+* See [Set up cost visibility for AWS](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md) for the following topics:
 	* Access to CUR. See Cost and Usage Reports (CUR) and CCM Requirements.
 	* Permissions to create a cross-account role. See AWS Access Permissions.
 	* Permissions for AWS ECS and Resource Inventory Management. See AWS ECS and Resource Inventory Management.
@@ -129,11 +129,11 @@ Review the following prerequisites and set up related questions.
 
 The following prerequisites are needed:
 
-* Ingress controller installed. For more information, go to [Supported Ingress Controllers for Kubernetes AutoStopping](../../../../getting-started/supported-platforms-and-technologies.md#cloud-cost-management).
+* Ingress controller installed. For more information, go to [Supported Ingress Controllers for Kubernetes AutoStopping](../../../../get-started/supported-platforms-and-technologies.md#cloud-cost-management).
 * Ensure that you have Cluster Autoscaler enabled for EKS with managed node groups
 * For EKS:
-	+ Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
-	+ Permissions to create a cross-account role. See [AWS Access Permissions](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-access-permissions)
+	+ Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
+	+ Permissions to create a cross-account role. See [AWS Access Permissions](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#aws-access-permissions)
 
 #### Questionnaire
 
@@ -182,5 +182,5 @@ Review the following set up related questions.
 
 ### Next Steps
 
-* [AutoStopping Rules](../1-add-connectors/1-auto-stopping-rules.md)
+* [AutoStopping Rules](../1-auto-stopping-rules.md)
 

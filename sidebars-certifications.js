@@ -39,11 +39,29 @@ const sidebars = {
           label: "Continuous Integration",
           id: "continuous-integration",
         },
+        //CCM
+        {
+          type: "doc",
+          label: "Cloud Cost Management",
+          id: "cloud-cost-management",
+        },
+        //ff
+        {
+          type: "doc",
+          label: "Feature Flags",
+          id: "feature-flags",
+        },
         // Instructions
         {
           type: "doc",
           label: "Instructions",
           id: "instructions",
+        },
+         // FAQs
+         {
+          type: "doc",
+          label: "FAQs",
+          id: "faqs",
         },
       ],
     },

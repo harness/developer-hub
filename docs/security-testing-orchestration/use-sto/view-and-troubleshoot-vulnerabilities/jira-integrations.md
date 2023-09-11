@@ -31,7 +31,7 @@ This integration has a separate setup path that is unrelated to other Jira-relat
 
 2. Create a Jira connector as described in [Connect to Jira](/docs/platform/Connectors/Ticketing-Systems/connect-to-jira/). Note the following:
     * Create your connector at the Account level.
-    * Create a [text secret](/docs/platform/Secrets/add-use-text-secrets/) for your Atlassian API key. You must use the Harness Secret Manager to store this key. Don't use an external secret store, such as Vault.
+    * Create a [text secret](/docs/platform/secrets/add-use-text-secrets) for your Atlassian API key. You must use the Harness Secret Manager to store this key. Don't use an external secret store, such as Vault.
 
 3. Go to the **Account Settings** &gt; **Tickets** page and select the following: 
    
@@ -44,7 +44,7 @@ This integration has a separate setup path that is unrelated to other Jira-relat
 ## Create a Jira ticket from a detected issue
 
 :::note
-You can only create Jira tickets for targets that have baselines specified. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines).
+You can only create Jira tickets for targets that have baselines specified. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
 :::
 
 1. Go to the **Pipeline Execution** &gt; **Security Tests** page with the detected issue. 

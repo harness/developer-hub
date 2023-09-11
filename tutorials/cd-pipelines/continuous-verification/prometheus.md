@@ -14,7 +14,7 @@ description: Verify Kubernetes Deployments with Prometheus
   target="_self"
 />
 
-When validating a deployment, looking at external systems such as APM, logging, or monitoring solutions is an approach to validate deployments in a systematic manner. Harness Continuous Verification has the capability of querying these systems on your behalf to validate your deployments. Harness also has the ability to [apply AI/ML](https://developer.harness.io/docs/continuous-delivery/verify/cv-concepts/machine-learning) to watch markers that are trending towards failure or regression. 
+When validating a deployment, looking at external systems such as APM, logging, or monitoring solutions is an approach to validate deployments in a systematic manner. Harness Continuous Verification has the capability of querying these systems on your behalf to validate your deployments. Harness also has the ability to [apply AI/ML](/docs/continuous-delivery/verify/cv-concepts/machine-learning) to watch markers that are trending towards failure or regression. 
 
 In this tutorial, we will [deploy an application that writes to a Prometheus](https://github.com/harness-apps/cv-example-app) endpoint and is validated by Harness Continuous Verification. 
 
@@ -25,8 +25,8 @@ In this tutorial, we will [deploy an application that writes to a Prometheus](ht
 To deploy to Kubernetes with Harness, you will need a manifest and access to a Kubernetes cluster. To deploy the Sample Application in an existing K8s cluster:
 
 * A Harness Account ([Sign Up Here](https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started))
-* Connectivity to [GitHub](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-* Connectivity to [Docker Hub](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
+* Connectivity to [GitHub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+* Connectivity to [Docker Hub](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
 * A Prometheus Endpoint
 
 If you do not have access to [Prometheus](https://prometheus.io/), can install the Prometheus on your Kubernetes cluster. 
@@ -69,7 +69,7 @@ The [Spring Boot Sample Application](https://github.com/harness-apps/cv-example-
 By installing the Prometheus Helm Chart into your Kubernetes cluster, you also get a good set of Kubernetes-centric metrics that are scrapped and exported for your convenience. 
 
 ## Verifying a Deployment with Harness
-There are a few objects to line up in Harness. Starting with the un-validated deployment itself. A deeper dive on deploying a manifest can be found in the [Kubernetes Manifest Tutorial](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/manifest). Then wiring in the Verify Step to your Pipeline and configuring the Prometheus PromQL queries to validate the application against.
+There are a few objects to line up in Harness. Starting with the un-validated deployment itself. A deeper dive on deploying a manifest can be found in the [Kubernetes Manifest Tutorial](/tutorials/cd-pipelines/kubernetes/manifest). Then wiring in the Verify Step to your Pipeline and configuring the Prometheus PromQL queries to validate the application against.
 
 1. Create a new Harness Kubernetes Deployment.
 2. In the Service Configuration, wire a Kubernetes Manifest to:
@@ -88,13 +88,13 @@ The Continuous Verification configuration is currently represented by two concer
 
 1. Add the Verify Step after your Rolling Deployment. 
 2. Set Continuous Verification Type to “Rolling Update”.
-3. Set [Sensitivity](https://developer.harness.io/docs/continuous-delivery/verify/cv-concepts/machine-learning#sensitivity) to “High”.
+3. Set [Sensitivity](/docs/continuous-delivery/verify/cv-concepts/machine-learning#sensitivity) to “High”.
 4. Set Duration to “5 min”
 5. Leave the Artifact Tag to `<+serviceConfig.artifacts.primary.tag>`.
 
-Next you will configure the Health Source [[Monitored Service](https://developer.harness.io/docs/service-reliability-management/monitored-service/create-monitored-service/)] for your application [e.g [Harness Service](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts#services)]. 
+Next you will configure the Health Source [[Monitored Service](/docs/service-reliability-management/monitored-service/create-monitored-service/)] for your application [e.g [Harness Service](/docs/get-started/key-concepts#services)]. 
 
-1. When prompted to, add your [Prometheus Connection Details](https://developer.harness.io/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-prometheus).
+1. When prompted to, add your [Prometheus Connection Details](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-prometheus).
 	1. If using NodePort, would `http://node_public_ip:nodeport`. 
 2. The Sample Application writes to Prometheus Metrics  `CV_Counter_Example_total` and `CV_Gauge_Examplel`. Can query for the [Counter](https://prometheus.io/docs/concepts/metric_types/#counter). 
 3. Define the Health Source Configuration to have a Metric called `Prometheus Counter`.
@@ -130,7 +130,7 @@ Clicking View Details will allow you to see what values were used for the compar
 
 ![Details](../static/cv-prom/details.png)
 
-Since Harness Continuous Verification uses AI/ML to help determine regressions, you can also wire in [static values](https://developer.harness.io/docs/continuous-delivery/verify/cv-concepts/machine-learning/#plain-threshold-based-verification) that are known failures such as long response times or deviations from a value. This example is just the start of what is possible with Continuous Verification.
+Since Harness Continuous Verification uses AI/ML to help determine regressions, you can also wire in [static values](/docs/continuous-delivery/verify/cv-concepts/machine-learning/#plain-threshold-based-verification) that are known failures such as long response times or deviations from a value. This example is just the start of what is possible with Continuous Verification.
 
 ## Next Steps with Verifying Your Deployments with Harness
-There is a lot of possibility with validating your deployments with Harness. You can enact different [automatic or manual failure strategies](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/#failure-strategy-settings) in your pipeline. More complex deployments such as [Multi Service Deployments](https://developer.harness.io/kb/continuous-delivery/articles/cv-multi-service) can benefit from Harness Continuous Verification. With the [Sample Application](https://github.com/harness-apps/cv-example-app#modifying-application), feel free to modify/fork the application to come up with more different scenarios. 
+There is a lot of possibility with validating your deployments with Harness. You can enact different [automatic or manual failure strategies](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/#failure-strategy-settings) in your pipeline. More complex deployments such as [Multi Service Deployments](https://developer.harness.io/kb/continuous-delivery/articles/cv-multi-service) can benefit from Harness Continuous Verification. With the [Sample Application](https://github.com/harness-apps/cv-example-app#modifying-application), feel free to modify/fork the application to come up with more different scenarios. 

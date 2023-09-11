@@ -16,7 +16,7 @@ You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md
 ## Requirements
 
 * You have access to a Sonatype Nexus Repository Manager instance.
-* You have a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+* You have a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 * Your pipeline has steps that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
 
 ## Add the Plugin step
@@ -35,7 +35,7 @@ You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md
 | Keys | Type | Description | Value example |
 | - | - | - | - |
 | `username` | String | A username for accessing Nexus Repository Manager. | <ul><li>`admin`</li><li>`test-user`</li></ul> |
-| `password` | String | An [expression referencing a secret](/docs/platform/Secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier) containing the password for the specified username. | `<+secrets.getValue("nexus_password")>` |
+| `password` | String | An [expression referencing a secret](/docs/platform/secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier) containing the password for the specified username. | `<+secrets.getValue("nexus_password")>` |
 | `server_url` | Public URL | The URL of your Nexus Repository Manager instance. | `http://34.235.128.201:8081/` |
 | `filename` | String | The path to the target artifact that you want to upload. | `./target/example-1.0.jar` |
 | `format` | String | The repository format. | <ul><li>`maven2`</li><li>`raw`</li></ul> |
@@ -83,7 +83,7 @@ The following YAML example describes a [Plugin step](../use-drone-plugins/plugin
 | Keys | Type | Description | Value example |
 | - | - | - | - |
 | `username` | String | A username for accessing Nexus Repository Manager. | <ul><li>`admin`</li><li>`test-user`</li></ul> |
-| `password` | String | An [expression referencing a secret](/docs/platform/Secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier) containing the password for the specified username. | `<+secrets.getValue("nexus_password")>` |
+| `password` | String | An [expression referencing a secret](/docs/platform/secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier) containing the password for the specified username. | `<+secrets.getValue("nexus_password")>` |
 | `server_url` | Public URL | The URL of your Nexus Repository Manager instance. | `http://11.222.333.444:8000/` |
 | `filename` | String | The path to the target artifact that you want to upload. | `./target/example-1.0.jar` |
 | `format` | String | The repository format. | <ul><li>`maven2`</li><li>`raw`</li></ul> |
@@ -99,9 +99,9 @@ The following YAML example describes a [Plugin step](../use-drone-plugins/plugin
 
 :::tip Tips
 
-You can use variable expressions for **Settings** values, such as `password: <+stage.variables.nexus_password>`, which uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
+You can use variable expressions for **Settings** values. For example, `password: <+stage.variables.nexus_password>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
 
-Create [text secrets](/docs/platform/Secrets/add-use-text-secrets) for sensitive information, such as passwords.
+Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords.
 
 :::
 

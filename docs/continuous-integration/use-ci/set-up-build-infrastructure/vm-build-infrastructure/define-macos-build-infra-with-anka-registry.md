@@ -6,6 +6,8 @@ sidebar_position: 40
 
 :::note
 
+This build infrastructure option is only available with Harness CI Team and Enterprise plans.
+
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
@@ -23,6 +25,8 @@ This topic describes the high-level workflow for setting up a Harness macOS buil
 The following diagram shows how Harness CI and Anka work together. Once you set up the Harness and Anka components, you can easily scale up your build farm with additional templates, build nodes, and VMs.
 
 ![](../static/macos-build-infra-with-anka-registry-mult-nodes.png)
+
+This is one of several build infrastructure options, for example, you can also run on [Azure VMs](define-a-ci-build-infrastructure-in-azure.md) or [GCP VMs](define-a-ci-build-infrastructure-in-google-cloud-platform.md).
 
 ## Install Anka and create a VM on a Mac node
 
@@ -52,15 +56,13 @@ When you finish this workflow you will have:
 
 :::note
 
-Optionally, you can enable token authentication for the controller and registry as described in the Anka documentation about [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/token-authentication).
+Optionally, you can enable token authentication for the controller and registry as described in the Anka documentation about [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/root-token-authentication/).
 
 :::
 
 ## Install the Harness delegate and runner
 
 Set up the Harness delegate and runner.
-
-In addition to macOS, you can run your delegate and runner on [Docker](../define-a-docker-build-infrastructure.md), [Azure](define-a-ci-build-infrastructure-in-azure.md), and [Google Cloud Platform](define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
 
 For information about installing delegates, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 

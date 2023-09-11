@@ -326,7 +326,10 @@ body {
 a:hover {
   color: var(--ifm-color-primary-light);
 }
-
+h2{
+  display: flex;
+  align-items: center;
+}
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
   --ifm-color-primary: var(--primary-5);
@@ -386,6 +389,7 @@ a:hover {
 .theme-doc-markdown h3 > img {
   margin-right: 0.2em;
 }
+
 
 .theme-doc-markdown img[class^="img_"] {
   border: 1px solid #d9dae5;
@@ -610,12 +614,22 @@ ol ol,
 ul ol {
   list-style-type: lower-alpha;
 }
-/* .navbar__logo{
-  margin-bottom: 10px;
-} */
+
 .navbar__logo{
   margin-bottom: 10px;
 }
+
+
+figcaption{
+  font-style: italic;
+  margin-top: 0;
+  padding-top: 0;
+  scale: 0.9
+}
+figure p{
+  margin-bottom: 0;
+}
+
 @media screen and (min-width: 1200px) {
   /* style for the search bar in higher resolution */
   .searchBar {

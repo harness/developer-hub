@@ -4,7 +4,7 @@ description: Learn how to manage SLOs through code using Terraform based entitie
 sidebar_position: 3
 ---
 
-Harness provides tools such as [Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview/) and Terraform, to help you manage entities using code. 
+Harness provides tools such as [Git Experience](/docs/platform/git-experience/git-experience-overview/) and Terraform, to help you manage entities using code. 
 
 Using the SLO as code feature of Harness SRM, you can manage Service Level Objectives (SLOs) through code. SRM supports SLO as code for Terraform based entities. This means that the definition of the entity is stored in GitHub using Terraform based files.
 
@@ -68,7 +68,7 @@ On the **Advanced** tab, select the delegate that you created as the default del
 Select **Apply Changes** to save and add the Terraform Plan step to the pipeline.
 
 ## Create a webhook trigger
-To learn how to create a webhook trigger, go to [Trigger Deployments using Custom Triggers](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/).
+To learn how to create a webhook trigger, go to [Trigger Deployments using Custom Triggers](/docs/platform/triggers/trigger-deployments-using-custom-triggers/).
 
 
 ## Add a webhook to the GitHub repository

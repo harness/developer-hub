@@ -34,17 +34,17 @@ Queue steps can be used on different pipelines or even multiple executions of th
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ### Test
 
 Let's look at a simple example to show how Queue steps work.
 
-Here's the YAML for the pipeline that contains a Custom stage with a Queue step followed by a [shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step that runs a Bash `sleep 30`.
+Here's the YAML for the pipeline that contains a Custom stage with a Queue step followed by a [shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step that runs a Bash `sleep 30`.
 
 You can copy it and paste it into your Harness project. You need to update the `projectIdentifier` and `orgIdentifier` settings to match your current [project and org](/docs/platform/organizations-and-projects/projects-and-organizations).
 

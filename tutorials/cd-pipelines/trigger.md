@@ -1,5 +1,5 @@
 ---
-sidebar_position: 66
+sidebar_position: 5
 title: Pipeline Triggers
 description: Tutorial to get started with Triggers in Harness Pipelines.
 ---
@@ -24,9 +24,9 @@ Triggers in a Harness Continuous Delivery (CD) pipeline are used to automaticall
 
 Verify the following:
 
-- **Existing Harness CD pipeline.** If you are a new user or haven't created a pipeline yet, then kindly check our [CD tutorials](https://developer.harness.io/tutorials/cd-pipelines) to create one.
+- **Existing Harness CD pipeline.** If you are a new user or haven't created a pipeline yet, then kindly check our [CD tutorials](/tutorials/cd-pipelines) to create one.
 - **Existing GitHub connector**.
-    - If you are a new user or haven't created a Git connector yet, **fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface, then kindly follow the steps in [Git Connector](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-code-repo#connect-to-github) to create one and point the connector to the fork.
+    - If you are a new user or haven't created a Git connector yet, **fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface, then kindly follow the steps in [Git Connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo#connect-to-github) to create one and point the connector to the fork.
 
 ## Implement a trigger using Git events
 
@@ -62,9 +62,9 @@ Verify the following:
 
 Verify the following:
 
-- **Existing Harness CD pipeline.** If you are a new user or haven't created a pipeline yet, then kindly check our [CD tutorials](https://developer.harness.io/tutorials/cd-pipelines) to create one.
+- **Existing Harness CD pipeline.** If you are a new user or haven't created a pipeline yet, then kindly check our [CD tutorials](/tutorials/cd-pipelines) to create one.
 - **Existing GitLab connector**.
-    - If you are a new user or haven't created a GitLab connector yet, then kindly check [GitLab Connector](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo/#connect-to-gitlab) to create one and point the connector to the source repo.
+    - If you are a new user or haven't created a GitLab connector yet, then kindly check [GitLab Connector](/docs/platform/connectors/code-repositories/connect-to-code-repo/#connect-to-gitlab) to create one and point the connector to the source repo.
 
 ## Implement a trigger using GitLab events
 
@@ -100,7 +100,7 @@ Verify the following:
 
 Verify the following:
 
-- **Existing Harness CD pipeline.** If you are a new user or haven't created a pipeline yet, then kindly check our [CD tutorials](https://developer.harness.io/tutorials/cd-pipelines) to create one.
+- **Existing Harness CD pipeline.** If you are a new user or haven't created a pipeline yet, then kindly check our [CD tutorials](/tutorials/cd-pipelines) to create one.
 
 ## Implement a trigger using a Custom URL
 

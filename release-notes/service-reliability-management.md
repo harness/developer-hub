@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-07-18T10:00:20
+date: 2023-09-06T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -18,36 +18,26 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 18, 2023, version 79922
+## Latest: Version 80402
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### New features and enhancements
 
-This release does not include any new features.
+- The **Service Health** tab on the monitored service details page has been renamed to **Change Impact**. (SRM-15261)
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-
+### Early access features
 This release does not include any early access features.
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues
 
 This release does not include any fixed issues.
 
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
+### Hotfixes
+
+This release does not include hotfixes.
+
 
 ## Previous releases
 
@@ -55,11 +45,94 @@ This release does not include any fixed issues.
 <summary>2023 releases</summary>
 
 
-#### July 06, 2023, version 79812
+#### August 22, 2023, version 80300
 
 ##### What's new
 
 This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+
+#### August 10, 2023, version 80204
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+
+#### August 04, 2023, version 80119
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+
+#### July 27, 2023, version 80021
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+
+#### July 21, 2023, version 79922
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+
+#### July 06, 2023, version 79812
+
+##### What's new
+
+Create and manage monitored services at the Project level (SRM-14580)
+
+You can now seamlessly create and manage monitored services at the Project level, as well as within the SRM and CD modules. You can view and manage the monitored services, regardless of where they were created. The monitored service list presents specific insights based on where you are accessing it.
+
+  - Project level: Shows service names and health source count, while interactive module icons allow you to effortlessly navigate to specific modules for a detailed view.
+    
+  - CD module: Presents monitored service names alongside configured health sources, providing a comprehensive overview of health status.
+    
+  - SRM module: Provides information, including monitored service status, name, SLO specifics, recent changes, 24-hour health trends, score, and dependency status.
 
 ##### Early access
 
@@ -138,6 +211,7 @@ This release does not include any early access features.
 
   - If a monitored service has been updated with new analysis data, it is given higher priority and displayed before other services on the list.
 
+
 #### June 09, 2023, version 79517
 
 ##### What's new
@@ -185,7 +259,7 @@ This release does not include any early access features.
 
 ##### What's new
 
-- Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](https://developer.harness.io/docs/continuous-error-tracking). (SRM-14701)
+- Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](/docs/continuous-error-tracking). (SRM-14701)
 
 - Clicking on a Prometheus metrics entry in the Service Health page of a monitored service directly navigates you to the Prometheus metrics dashboard. (SRM-14699)
 
@@ -219,9 +293,9 @@ This release does not include any early access features.
 
     This issue has been resolved, and error budget burn rate notifications are now being sent for composite SLOs.
 
-- Encountering an error when configuring monitored services using the Harness Terraform provider. (SRM-14684)  
+- Encountering an error when configuring monitored services using the Harness Terraform Provider. (SRM-14684)  
   
-  The Harness Terraform provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
+  The Harness Terraform Provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
 
 - On the Composite SLO Details page, the environment links under the monitored services were broken. (SRM-14645)  
   

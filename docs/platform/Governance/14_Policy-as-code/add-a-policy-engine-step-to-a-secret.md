@@ -10,14 +10,14 @@ helpdocs_is_published: true
 
 Harness provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies.
 
-You can create the policy and apply it to all Secrets in your Account, Org, and Project. The policy is evaluated on Secret-level events like **On Save,** which occurs during Secret Creation and Updates. See [Harness Governance Quickstart](harness-governance-quickstart.md).​
+You can create the policy and apply it to all Secrets in your Account, Org, and Project. The policy is evaluated on Secret-level events like **On Save,** which occurs during Secret Creation and Updates. See [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).​
 
 This topic describes how to add a Policy step to a Secret.
 
 ### Before you begin
 
-* [Harness Governance Overview](harness-governance-overview.md)
-* [Harness Governance Quickstart](harness-governance-quickstart.md).
+* [Harness Governance Overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
+* [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 * Policies use OPA authoring language Rego. For more information, see [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
 
 ### Limitations
@@ -28,20 +28,16 @@ This topic describes how to add a Policy step to a Secret.
 
 In Harness, go to **Account Settings**.
 
-Click **Policies**.
+Select **Policies**.
 
-![](./static/add-a-policy-engine-step-to-a-secret-46.png)
-
-Click **Policies**, and then click **New Policy**.
-
-![](./static/add-a-policy-engine-step-to-a-secret-47.png)
+Select **Policies**, and then select **New Policy**.
 **New Policy** settings appear.
+
+![](../../Governance/14_Policy-as-code/static/add-a-policy-engine-step-to-a-secret-48.png)
 
 Enter a **Name** for your policy and click **Apply**.
 
-![](./static/add-a-policy-engine-step-to-a-secret-48.png)
 Next, you need to add your policy. Enter your own Rego policy. For example:
-
 
 ```
 package docexamplepolicy  
@@ -70,23 +66,23 @@ In **On what event should the Policy Set be evaluated**, select **On save.**
 
 Click **Continue**.
 
-![](./static/add-a-policy-engine-step-to-a-secret-49.png)
+![](../../Governance/14_Policy-as-code/static/add-a-policy-engine-step-to-a-secret-49.png)
 Existing Secrets are not automatically updated with policies. Policies can be applied to Secrets only on a save when they are created or updated.In **Policy evaluation criteria**, click **Add Policy.**
 
 **Select Policy** settings appear. Select the policy you want to use from the list.
 
-![](./static/add-a-policy-engine-step-to-a-secret-50.png) 
+![](../../Governance/14_Policy-as-code/static/add-a-policy-engine-step-to-a-secret-50.png) 
 
 Select the severity and action you want to apply when the policy isn’t adhered to. You can select one of the following
 
 * **Warn & continue** - You will receive a warning if the policy is not met when the Secret is evaluated, but the Secret will be saved and you may proceed.
-* **Error and exit** - You'll get an error and be exited without saving the Secret if the policy isn't met when the Secret is examined.![](./static/add-a-policy-engine-step-to-a-secret-51.png)
+* **Error and exit** - You'll get an error and be exited without saving the Secret if the policy isn't met when the Secret is examined.![](../../Governance/14_Policy-as-code/static/add-a-policy-engine-step-to-a-secret-51.png)
 
 Click **Apply**, and then click **Finish**.
 
 To enforce your Policy Set, toggle on the **Enforced** button.
 
-![](./static/add-a-policy-engine-step-to-a-secret-52.png)
+![](../../Governance/14_Policy-as-code/static/add-a-policy-engine-step-to-a-secret-52.png)
 ### Step 3: Apply the Policy to a Secret
 
 After you have created your Policy Set, and added your policies to it, apply the policy to a Secret. 
