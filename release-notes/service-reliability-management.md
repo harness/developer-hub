@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-08-22T10:00:20
+date: 2023-09-06T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -18,11 +18,11 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest: Version 80300
+## Latest: Version 80402
 
 ### New features and enhancements
 
-This release does not include new features.
+- The **Service Health** tab on the monitored service details page has been renamed to **Change Impact**. (SRM-15261)
 
 
 ### Early access features
@@ -31,9 +31,7 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-- Unable to update the change source configuration within a monitored service. (SRM-15083)
-  
-  This issue has been resolved. You can now easily update the change source configuration within your monitored service.
+This release does not include any fixed issues.
 
 
 ### Hotfixes
@@ -45,6 +43,22 @@ This release does not include hotfixes.
 
 <details>
 <summary>2023 releases</summary>
+
+
+#### August 22, 2023, version 80300
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
 
 #### August 10, 2023, version 80204
 
@@ -58,7 +72,8 @@ This release does not include any early access features.
 
 ##### Fixed issues
 
-This release does not include any new features.
+This release does not include any fixed issues.
+
 
 #### August 04, 2023, version 80119
 
@@ -72,7 +87,8 @@ This release does not include any early access features.
 
 ##### Fixed issues
 
-This release does not include any new features.
+This release does not include any fixed issues.
+
 
 #### July 27, 2023, version 80021
 
@@ -86,7 +102,7 @@ This release does not include any early access features.
 
 ##### Fixed issues
 
-This release does not include any new features.
+This release does not include any fixed issues.
 
 
 #### July 21, 2023, version 79922
@@ -101,7 +117,7 @@ This release does not include any early access features.
 
 ##### Fixed issues
 
-This release does not include any new features.
+This release does not include any fixed issues.
 
 
 #### July 06, 2023, version 79812
