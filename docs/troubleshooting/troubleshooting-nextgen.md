@@ -658,7 +658,7 @@ Contact your Harness account administrator to resolve the issue. If the policy s
 
 ## YAML builder
 
-This section covers common problems experienced when using the [YAML pipeline builder](https://developer.harness.io/docs/platform/pipelines/harness-yaml-quickstart/).
+This section covers common problems experienced when using the [YAML pipeline builder](/docs/platform/pipelines/harness-yaml-quickstart/).
 
 ### The incoming YAML document exceeds the limit: 3145728 code points
 
