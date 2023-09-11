@@ -1,6 +1,6 @@
 ---
 title: Publish anything to the Artifacts tab
-sidebar_position: 3
+sidebar_position: 4
 description: You can publish any URL to the Artifacts tab.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, maven, Allure]
 slug: /ci-pipelines/publish/artifacts-tab
@@ -227,7 +227,7 @@ For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/pla
 
 This tutorial also uses an expression for the `target`: The expression `<+pipeline.sequenceId>` creates a directory based on the incremental build ID. This ensures that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
 
-If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
+If you want to upload a compressed file, you must use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to compress the artifact before uploading it.
 
 :::
 

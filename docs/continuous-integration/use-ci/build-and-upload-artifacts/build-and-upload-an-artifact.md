@@ -1,6 +1,6 @@
 ---
 title: Build and push an artifact
-description: Add a Build and Push step to build and push an artifact to a repo.
+description:  There are many ways you can use Harness CI to upload artifacts.
 sidebar_position: 10
 helpdocs_topic_id: 8l31vtr4hi
 helpdocs_category_id: mi8eo3qwxm
@@ -8,20 +8,23 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Add a **Build and Push** step to your CI pipeline to build your codebase and then push the artifact, such as a Docker image, to a repo. The following repos are supported:
+There are many ways you can use Harness CI to upload artifacts, such as Docker images.
 
-* [Docker Hub](./build-and-push-to-docker-hub-step-settings.md)
-* [Azure Container Registry (ACR)](./build-and-push-to-acr.md)
-* [Google Container Registry (GCR)](./build-and-push-to-gcr.md)
-* [Amazon Elastic Container Registry (ECR)](./build-and-push-to-ecr-step-settings.md)
-* [Google Artifact Registry (GAR)](/tutorials/ci-pipelines/publish/google-gar#configure-pipeline-steps)
+**Build and Push** steps build your codebase and then push the artifact to a repo. You can:
 
-Harness CI also supports uploading any build artifacts to cloud storage:
+* [Build and Push to Docker Hub](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md)
+* [Build and Push to Azure Container Registry (ACR)](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr.md)
+* [Build and Push to Google Container Registry (GCR)](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md)
+* [Build and Push to Amazon Elastic Container Registry (ECR)](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings.md)
 
-* [Upload Artifacts to JFrog](./upload-artifacts-to-jfrog.md)
-* [Upload Artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md)
-* [Upload Artifacts to S3](./upload-artifacts-to-s-3-step-settings.md)
-* [Upload Artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md)
+**Upload Artifact** steps upload artifacts. These steps *don't* include build commands. You can:
+
+* [Upload Artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+* [Upload Artifacts to GCS](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+* [Upload Artifacts to S3](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+* [Upload Artifacts to Sonatype Nexus](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
+
+For other upload locations, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) to build and upload the artifact. For an example, go to the [Publish to Google Artifact Registry (GAR) tutorial](/tutorials/ci-pipelines/publish/google-gar).
 
 <details>
 <summary>Video summary</summary>
@@ -46,12 +49,12 @@ With Kubernetes cluster build infrastructures, **Build and Push** steps use [kan
 
 If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
 
-If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot.md).
 
 :::
 
-1. Go to **Pipelines** and create a pipeline or edit an existing pipeline. If you're not familiar with creating pipelines, go to the [CI pipeline creation overview](../prep-ci-pipeline-components.md).
-2. Configure the pipeline's codebase, if you have not already done so. For details, go to [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
+1. Go to **Pipelines** and create a pipeline or edit an existing pipeline. If you're not familiar with creating pipelines, go to the [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md).
+2. Configure the pipeline's codebase, if you have not already done so. For details, go to [Create and configure a codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md).
 
    :::tip
 
@@ -60,21 +63,20 @@ If your security policy doesn't allow running as root, go to [Build and push wit
    :::
 
 3. If your pipeline doesn't already have a **Build** stage, select **Add Stage**, and then select **Build**.
-4. On the **Build** stage's **Infrastructure** tab, configure the build infrastructure. For example, you can [set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md). For details about all infrastructure settings, go to [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
+4. On the **Build** stage's **Infrastructure** tab, configure the build infrastructure. For example, you can [set up a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md). For details about all infrastructure settings, go to [CI Build stage settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md).
 5. In the **Build** stage's **Execution** tab, select **Add Step**, and then select a **Build and Push** step from the Step Library.
 
    For all **Build and Push** steps, you select or create a connector for the target repo, add repo-specific information, and specify Dockerfile information. For information about each **Build and Push** step's settings, go to the topic that corresponds with your registry provider:
 
-   * Docker: [Build and Push an image to Docker Registry step settings](./build-and-push-to-docker-hub-step-settings.md)
-   * Azure Container Registry (ACR): [Build and Push to ACR step settings](./build-and-push-to-acr.md) or [Build and Push an image to Docker Registry step settings](./build-and-push-to-docker-hub-step-settings.md)
-   * Google Container Registry (GCR): [Build and Push to GCR step settings](./build-and-push-to-gcr.md)
-   * Amazon Elastic Container Registry (ECR): [Build and Push to ECR step settings](./build-and-push-to-ecr-step-settings.md)
-   * Google Artifact Registry (GAR): Use a **Run** step, as described in the [GAR CI tutorial](/tutorials/ci-pipelines/publish/google-gar#configure-pipeline-steps).
+   * Docker: [Build and Push an image to Docker Registry step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md)
+   * Azure Container Registry (ACR): [Build and Push to ACR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr.md) or [Build and Push an image to Docker Registry step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md)
+   * Google Container Registry (GCR): [Build and Push to GCR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md)
+   * Amazon Elastic Container Registry (ECR): [Build and Push to ECR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings.md)
+   * Google Artifact Registry (GAR): Use a **Run** step, as described in the [GAR CI tutorial](/tutorials/ci-pipelines/publish/google-gar).
 
 6. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
-<details>
-<summary>YAML example: CI pipeline with a Build and Push step</summary>
+### YAML example
 
 Here's a YAML example of a CI pipeline that has a **Build** stage with a **Build and Push** step:
 
@@ -114,8 +116,6 @@ pipeline:
   projectIdentifier: CI_Quickstart
   orgIdentifier: default
 ```
-
-</details>
 
 ## Run the pipeline
 
@@ -218,7 +218,7 @@ With the built-in **Build and Push** steps:
    * **Value:** `true`
 4. Save and run the pipeline.
 
-With the Buildah plugin (which is used to [build and push with non-root users](./build-and-push-nonroot.md)):
+With the Buildah plugin (which is used to [build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot.md)):
 
 1. In your CI pipeline, go to the **Build** stage that includes the **Plugin** step with the Buildah plugin.
 2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.

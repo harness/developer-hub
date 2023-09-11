@@ -1,5 +1,5 @@
 ---
-title: Harness Continuous Integration (CI) Overview
+title: Harness Continuous Integration (CI) overview
 sidebar_label: Overview
 description: Harness CI simplifies the code development and testing process.
 sidebar_position: 1
