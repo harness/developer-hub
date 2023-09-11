@@ -625,7 +625,7 @@ You've just learned how to use Harness CD to deploy an application using a Kuber
 
 You can integrate your own microservice application into this tutorial by following the steps outlined below:
 
-- Utilize the same delegate that you deployed as part of this tutorial. Alternatively, deploy a new delegate, but remember to use a newly created delegate identifier when creating Connectors.
+- Utilize the same delegate that you deployed as part of this tutorial. Alternatively, deploy a new delegate, but remember to use a newly created delegate identifier when creating connectors.
 
 - If you intend to use a private Git repository that hosts your manifest files, create a Harness secret containing the Git personal access token (PAT). Subsequently, create a new Git connector using this secret.
 
