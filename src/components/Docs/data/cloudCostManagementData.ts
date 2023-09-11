@@ -40,7 +40,7 @@ import {
             module: MODULES.ccm,
             description:
               "Learn the basic concepts of Harness Cloud Cost Management and how to set up CCM for your cloud accounts.",
-            link: "/docs/category/get-started-1",
+            link: "/docs/category/get-started-with-ccm",
           },
           {
             title: "Cost reporting",

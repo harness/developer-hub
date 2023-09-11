@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Events Notifications
+title: Pipeline Notifications
 description: Tutorial to send notifiactions based on pipeline events.
 ---
 # Notifications 
@@ -60,9 +60,9 @@ This tutorial focuses on how to notify users of different pipeline events using 
 - Copy and store the webhook URL for further use. 
 
 5. In **Notification Method**, select `Slack`.
-6. Paste the webhook in **Slack Webhook URL**. Harness recommends that you add the webhook as an **[encrypted text](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets)** secret and reference it in **Slack Webhook URL** as an **expression**.
+6. Paste the webhook in **Slack Webhook URL**. Harness recommends that you add the webhook as an **[encrypted text](/docs/platform/Secrets/add-use-text-secrets)** secret and reference it in **Slack Webhook URL** as an **expression**.
     - For example, `<+secrets.getValue("slackwebhookURL")>​`.
-7. Now additionally you can use the **user-group** created above, if it is associated with the slack channels to send notifications, for more information on the same follow the instructions mentioned [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#notify-slack-channels-in-user-groups)
+7. Now additionally you can use the **user-group** created above, if it is associated with the slack channels to send notifications, for more information on the same follow the instructions mentioned [here](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#notify-slack-channels-in-user-groups)
 
 8. Select **Finish** and your notification is created. 
 
@@ -75,7 +75,7 @@ This tutorial focuses on how to notify users of different pipeline events using 
 - Copy or store this key from PagerDuty's **Configuration** > **Services** > **Service Details dialog** > **Integrations** tab.
 
 5. In **Notification Method**, select `Pagerduty`.
-6. Create an **[encrypted text](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets)** secret with the name `pagerdutykey` for the PagerDuty service you have created above, and reference it in **PagerDuty Key** using an expression. Harness will send notifications using this key.
+6. Create an **[encrypted text](/docs/platform/Secrets/add-use-text-secrets)** secret with the name `pagerdutykey` for the PagerDuty service you have created above, and reference it in **PagerDuty Key** using an expression. Harness will send notifications using this key.
     - For example, you can reference a secret within the Org scope using an expression with `org`:  
       
     ```
@@ -88,7 +88,7 @@ This tutorial focuses on how to notify users of different pipeline events using 
 <TabItem value="Microsoft Teams">
 ```
 
-For steps on creating Microsoft Teams notifications, follow the detailed instructions [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#microsoft-teams-notifications) in Harness Docs.
+For steps on creating Microsoft Teams notifications, follow the detailed instructions [here](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#microsoft-teams-notifications) in Harness Docs.
 
 ```mdx-code-block
 </TabItem>

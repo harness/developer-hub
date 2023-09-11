@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can view the compiled Harness pipeline YAML used for your pipeline execution. You can also compare two executions. Comparing pipeline YAML helps you understand the changes that occurred between executions, which can help with troubleshooting.
 
-This topic assumes you're familiar with [CD pipeline basics](/docs/continuous-delivery/get-started/cd-pipeline-basics) and/or [CI pipeline basics](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md).
+This topic assumes you're familiar with [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts) and/or [CI pipeline basics](../../continuous-integration/get-started/key-concepts.md).
 
 ## View compiled YAML
 

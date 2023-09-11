@@ -1,7 +1,7 @@
 ---
 title: Monitored service template
 description: Onboard with monitored service template
-# sidebar_position: 4
+# sidebar_position: 5
 ---
 
 Monitored Service template is a predefined set of monitored service configuration settings. Templates remove the hassle of setting up the configuration every time you create a new monitored service. Templates improve productivity and bring in standardization.

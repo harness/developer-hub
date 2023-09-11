@@ -20,9 +20,9 @@ import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
-* [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
+* [CI pipeline tutorials](../../continuous-integration/get-started/tutorials.md)
 
 ### Add a trigger to a pipeline
 

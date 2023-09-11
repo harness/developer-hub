@@ -39,7 +39,30 @@ import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported
 
 <Variables />
 
-### Important notes
+## Supported artifact providers for artifact triggers
+
+You can use the following artifact providers to triggers pipelines:
+
+- ACR (Azure Container Registry)
+- Amazon S3
+- Artifactory Registry
+- Bamboo
+- Custom Artifact
+- Docker Registry
+- ECR (Amazon Elastic Container Registry)
+- GCR (Google Container Registry)
+- Github Package Registry
+- Google Artifact Registry
+- Google Cloud Storage
+
+The following artifact providers are supported behind the feature flag `CD_TRIGGER_V2`:
+
+- Jenkins
+- Azure Artifacts
+- Nexus3 Registry
+- Amazon Machine Image (AMI)
+
+## Important notes
 
 * If more than one artifact is collected during the polling interval (one minute), only one deployment will be started and will use the last artifact collected.
 * The trigger is executed based on **file names** and not metadata changes.

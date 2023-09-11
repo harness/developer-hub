@@ -10,7 +10,7 @@ To open the Security Testing Dashboard, select **Dashboards** (left menu) and th
 
 :::note
 - This dashboard requires an Enterprise account.
-- This dashboard shows only results for targets that have baselines defined. You should define a baseline for every target in your project. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines).
+- This dashboard shows only results for targets that have baselines defined. You should define a baseline for every target in your project. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
 - You must click **Refresh** (top right) to apply the filter after you configure it.
 - To view details for an issue from the search results, click the pipeline name or ID and choose **View in Harness Platform**. 
 

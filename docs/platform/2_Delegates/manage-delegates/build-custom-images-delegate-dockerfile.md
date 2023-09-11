@@ -9,9 +9,9 @@ You can use the Harness Delegate Dockerfile to build custom delegate images. The
 The repository includes the `Dockerfile-minimal` and `Dockerfile-ubuntu` versions. 
 
 :::info note
-If you build and use custom images, you can choose to enable or disable automatic upgrades for Kubernetes delegates. To learn more about automatic upgrades with custom images, go to [Use automatic upgrade with custom delegate images](https://developer.harness.io/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration#use-automatic-upgrade-with-custom-delegate-images).
+If you build and use custom images, you can choose to enable or disable automatic upgrades for Kubernetes delegates. To learn more about automatic upgrades with custom images, go to [Use automatic upgrade with custom delegate images](/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration#use-automatic-upgrade-with-custom-delegate-images).
 
-For more information on delegate automatic upgrades and the delegate expiration policy, go to [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration).
+For more information on delegate automatic upgrades and the delegate expiration policy, go to [Delegate automatic upgrades and expiration policy](/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration).
 :::
 
 ## Dockerfile tools
@@ -37,7 +37,7 @@ To build the image, you need two arguments:
 
 The build version to use for your account is available in the [Harness API documentation](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/publishedDelegateVersion).
 
-To learn about delegate version support expiration, go to [Delegate expiration policy](https://developer.harness.io/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-policy).
+To learn about delegate version support expiration, go to [Delegate expiration policy](/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-policy).
 
 Here is an example script to get the version, which uses `curl` to fetch and `jq` to parse:
 

@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting Harness
 description: Harness error messages, causes, and solutions.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: jzklic4y2j
 helpdocs_category_id: svxv7bn8as
 helpdocs_is_private: false
@@ -12,9 +12,8 @@ This topic contains general troubleshooting information for error messages and o
 
 If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or [Harness Community Forum](https://community.harness.io/).
 
-### Contents
-<!-- TOC start -->
-- [Contents](#contents)
+ ### Contents
+
 - [Login issues](#login-issues)
   - [Logged out automatically](#logged-out-automatically)
     - [Troubleshooting steps](#troubleshooting-steps)
@@ -74,14 +73,13 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
 - [Shell scripts](#shell-scripts)
   - [FileNotFoundExeption inside shell script execution task](#filenotfoundexeption-inside-shell-script-execution-task)
 - [Harness policy engine](#harness-policy-engine)
-  - [Policy evaluation failed](#policy-evaluation-failed)
-<!-- TOC end -->
+  - [Policy evaluation failed](#policy-evaluation-failed) 
 
-### Login issues
+## Login issues
 
 The following issues can occur when logging in to Harness.
 
-#### Logged out automatically
+### Logged out automatically
 
 You are logged out of your Harness Manager session automatically, forcing you to log back in.
 
@@ -89,7 +87,7 @@ You are logged out of your Harness Manager session automatically, forcing you to
 If you log out of Harness Manager in one browser tab, Harness might log you out of all tabs.Typically, the solution is to clear local storage.
 :::
 
-##### Troubleshooting steps
+#### Troubleshooting steps
 
 1. Log out of Harness Manager from all Chrome tabs. (Harness only supports the Chrome desktop browser.)
 2. Clear Chrome Local Storage for `app.harness.io` in **chrome://settings/siteData**.
@@ -97,12 +95,12 @@ If you log out of Harness Manager in one browser tab, Harness might log you out 
 
 You should not be logged out anymore.
 
-##### Notes
+#### Notes
 
 * Chrome [Session storage](https://developers.google.com/web/tools/chrome-devtools/storage/sessionstorage) is used by Harness Manager. If you close all the tabs running Harness Manager and then open a new tab running Harness Manager, you will likely need to log in again.
 * A Chrome session will timeout after 5 minutes, but a session timeout can also happen if the tab running Harness Manager is idle for 24 hours. However, as long as the tab is not closed, Harness Manager will continue keep polling to check if a refresh is needed for the token. For example, if you have kept the tab open for 3 days, you might still be logged in, as long as the workstation has not been turned off or entered sleep mode preventing the refresh.
 
-### Delegate issues
+## Delegate issues
 
 The Harness delegate runs as a service in your target deployment environment, on a host, a pod, a container, or as a task. The delegate makes outbound HTTPS connections over port 443 to run remote SSH and API calls. The delegate uses the credentials you provide in Harness connections to cloud providers and artifact servers.
 
@@ -112,7 +110,7 @@ If you suspect network connectivity is causing the delegate to fail, troubleshoo
 
 The following sections provide solutions to delegate issues.
 
-#### Failure to assign a delegate to a perpetual task
+### Failure to assign a delegate to a perpetual task
 
 Harness does many background operations on a regular basis, such as collecting information about your cluster and deployed software. This ensures that the number of instances we report is correct, among other information.
 
@@ -120,7 +118,7 @@ This error message is related to these background operations. Subsequent, schedu
 
 If these errors clear, typically a local or remote networking or similar issue is the cause.
 
-#### Duplicate output in deployment logs
+### Duplicate output in deployment logs
 
 This is a symptom of running duplicate delegates. We call this the double delegate problem.
 
@@ -147,13 +145,13 @@ IllegalArgumentException: Custom Resource Definition Optional[destinationrules.n
   
 Failed.
 ```
-#### Running multiple delegates on the same host
+### Running multiple delegates on the same host
 
 If deployment entities are getting added and removed in the same deployment, you might have two delegates running on the same host.
 
 Do not run multiple delegates on the same host, pod, or container. This will result in the delegates overwriting each other's tasks.
 
-#### Delegate setup
+### Delegate setup
 
 Most often, Delegate errors are the result of delegate setup issues. Ensure you are familiar with how the delegate and Harness Manager work together. See [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 
@@ -161,7 +159,7 @@ Another common issue is the SSH key used by the delegate to deploy to a target h
 
 The delegate is monitored locally using its Watcher component. The Watcher component has a watcher.log file that can provide delegate version information for troubleshooting.
 
-#### Delegate can't connect to Harness Manager
+### Delegate can't connect to Harness Manager
 
 If the delegate can't connect to Harness Manager, try the following:
 
@@ -176,7 +174,7 @@ If the delegate can't connect to Harness Manager, try the following:
 7. For some cloud platforms, like AWS EC2, ensure that security groups allow outbound traffic on HTTPS 443.
 8. Try a different workstation or a smartphone to confirm the connection issue is not local to a single host.
 
-#### Delegate successes followed by failures
+### Delegate successes followed by failures
 
 If you have incorrectly used the same Kubernetes delegate YAML file for multiple delegates, you will see delegate successes followed by failures in the delegate logs. This sequence is the result of one delegate succeeding in its operation and the same operation failing with the second delegate.
 
@@ -186,21 +184,21 @@ To avoid any delegate conflicts, always use a new Kubernetes delegate YAML downl
 
 For Kubernetes delegates, you can increase the number of replicas run using a single delegate download YAML file (change the `replicas` setting in the file), but to run multiple delegates, use a new delegate download from Harness for each delegate.
 
-#### No delegates could reach the resource
+### No delegates could reach the resource
 
 This error means that no delegate could meet the URL criteria for validation. For more information, see [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#how-does-harness-manager-pick-delegates).
 
-#### Google Cloud Platform: cluster has unschedulable pods
+### Google Cloud Platform: cluster has unschedulable pods
 
 If you do not have enough space available in your Kubernetes cluster, you might receive the following error:
 
 ![](./static/troubleshooting-nextgen-00.png)
 
-##### Cause
+#### Cause
 
 Depending on the size of your cluster, without autoscaling enabled or enough space, your cluster cannot run the delegate.
 
-##### Solution
+#### Solution
 
 Add more space or turn on autoscaling, wait for the cluster to restart, reconnect to the cluster, and then rerun the following command:
 
@@ -208,7 +206,7 @@ Add more space or turn on autoscaling, wait for the cluster to restart, reconnec
 
 For more information, see [Autoscaling deployments](https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps#autoscaling_deployments) from Google.
 
-#### Deleting a Kubernetes delegate
+### Deleting a Kubernetes delegate
 
 In the case where you have to delete a Harness delegate from your Kubernetes cluster, you can delete the StatefulSet for the delegate.
 
@@ -220,7 +218,7 @@ For example, if you have the delegate pod name `mydelegate-vutpmk-0`, you can de
 
 Note that the `-0` suffix in the pod name is removed for the StatefulSet name.
 
-#### Self-destruct sequence initiated
+### Self-destruct sequence initiated
 
 This rare error can be noticed in delegate logs:
 
@@ -232,15 +230,15 @@ Delegate 0000 received heartbeat response 0s after sending. 26s since last respo
   
 Self destruct sequence initiated...
 ```
-##### Cause
+#### Cause
 
 Delegate self-destructing because there are two delegates with the same name, probably deployed to two different clusters.
 
-##### Solution
+#### Solution
 
 Remove one delegate. Typically, one delegate is in the wrong cluster. Remove that delegate.
 
-#### Need to use long polling for delegate connection to Harness Manager
+### Need to use long polling for delegate connection to Harness Manager
 
 By default, the Harness delegate connects to Harness Manager over a TLS-backed WebSocket connection, sometimes called a Secure WebSocket connection, using the `wss://` scheme ([RFC 6455](https://tools.ietf.org/html/rfc6455#section-11.1.2)).
 
@@ -259,7 +257,7 @@ For a Kubernetes Delegate, you can set the `POLL_FOR_TASKS` setting to `true` in
           value: "true"  
 ...
 ```
-#### KubernetesClientException: Operation: [list] for kind: [Deployment] with name: [null] in namespace: [default] failed
+### KubernetesClientException: Operation: [list] for kind: [Deployment] with name: [null] in namespace: [default] failed
 
 If you have a proxy set up on the network where the Harness Kubernetes Delegate is running, you need to add the cluster master host name or IP address in the delegate harness-delegate.yaml `NO_PROXY` list.
 
@@ -279,23 +277,23 @@ io.fabric8.kubernetes.client.KubernetesClientException: Operation: [list]  for k
 ```
 3. Apply harness-delegate.yaml again to restart the Kubernetes delegate (`kubectl apply -f harness-delegate.yaml`).
 
-### Artifact collection
+## Artifact collection
 
 This section lists common errors you might receive when Harness attempts to collect artifacts.
 
-#### Stage hanging on artifact collection
+### Stage hanging on artifact collection
 
 If a delegate has been offline for an extended period of time, you might need to reset the Harness connector credentials.
 
-### Common errors and alerts
+## Common errors and alerts
 
 This section lists common error and alert messages you might receive.
 
-#### No delegates could reach the resource
+### No delegates could reach the resource
 
 This error means that no delegate could meet the URL validation criteria. When a task is ready to be assigned, Harness Manager first validates its lists of delegates to see which delegate should be assigned the task. It validates the delegate by using the URL in the task, such as an API call or SSH command. See [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#how-does-harness-manager-pick-delegates).
 
-#### Harness SecretStore is not able to encrypt/decrypt
+### Harness SecretStore is not able to encrypt/decrypt
 
 Error message:
 
@@ -307,7 +305,7 @@ This error results when Harness Secret Manager (named **Harness SecretStore**) i
 
 Check [Harness site status](https://status.harness.io/) and [AWS status](https://status.aws.amazon.com/) (search for **AWS Key Management Service**).
 
-#### You are not authorized to perform this operation: AmazonEC2: Status code 403
+### You are not authorized to perform this operation: AmazonEC2: Status code 403
 
 This error occurs when you are testing a Harness AWS connector and the credentials used for the connection do not include a policy with the [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action.
 
@@ -317,7 +315,7 @@ This is described in [Add an AWS connector](/docs/platform/Connectors/Cloud-prov
 
 Ensure that one of the IAM roles assigned to the user account used for AWS connector credentials contains the DescribeRegions action.
 
-#### Git-upload-pack not permitted
+### Git-upload-pack not permitted
 
 One possible cause of this error is if you are using a personal access token (PAT) for your GitHub connector and your GitHub organization uses SAML single sign-on (SSO).
 
@@ -327,7 +325,7 @@ To use a personal access token with a GitHub organization that uses SAML single 
 ```
 org.eclipse.jgit.api.errors.TransportException: https://github.com/*******/*******: git-upload-pack not permitted on 'https://github.com/*******/*******/'
 ```
-### Naming conventions
+## Naming conventions
 
 :::note
 Typically, names for Harness entities can only contain alphanumerics, \_ and -.
@@ -337,15 +335,15 @@ Some naming conventions in repositories and other artifact sources, or in target
 
 Character support in Harness environment and infrastructure definition entity names is restricted to alphanumeric characters, underlines, and hyphens. The restriction is due to compatibility issues with Harness backend components, database keys, and the YAML flow where Harness creates files with entity names on file systems.
 
-### Secrets
+## Secrets
 
 The following issues can occur when using Harness secrets.
 
-#### Secrets values hidden In log output
+### Secrets values hidden In log output
 
 If a secret's unencrypted value shares some content with the value of another Harness variable, Harness will hide the secret's value in any logs. Harness replaces the secret's conflicting value with the secret's name in any log displays. This is for security only, and the actual value of the secrets and variables are still substituted correctly.
 
-#### AWS KMS 403
+### AWS KMS 403
 
 The Harness delegate runs in your target deployment environment and needs access to the default Harness AWS KMS for secrets management. If it does not have access, the following error can occur:
 
@@ -363,11 +361,11 @@ Next, ensure that your proxies are not blocking the URL or port 443.
 
 If this does not fix your error, and you are not using the default Harness KMS secret store, the AWS KMS access key provided in Harness for your own KMS store is likely invalid.
 
-### Triggers
+## Triggers
 
 This section covers error messages you might see when creating, updating, deleting, or executing a trigger. It includes authorization or permission steps to resolve the errors.
 
-#### zsh: no matches found
+### zsh: no matches found
 
 If you are using macOS Catalina, the default shell is zsh. The zsh shell requires that you escape the ? character in your cURL command or put quotes around the URL.
 
@@ -383,7 +381,7 @@ The following command works:
 ```
 curl -X POST -H 'content-type: application/json' --url "https://app.harness.io/gateway/api/webhooks/xxx?accountId=xxx -d '{"application":"fCLnFhwsTryU-HEdKDVZ1g","parameters":{"Environment":"K8sv2","test":"foo"}}'"
 ```
-#### User does not have "Deployment: execute" permission
+### User does not have "Deployment: execute" permission
 
 Error messages of the form `User does not have "Deployment: execute" permission` indicate that your user group's role settings do not include **Pipeline:** **Execute**.
 
@@ -391,11 +389,11 @@ Error messages of the form `User does not have "Deployment: execute" permission`
 
 To resolve this, see [Manage roles](../platform/role-based-access-control/add-manage-roles).
 
-### Continuous delivery
+## Continuous delivery
 
 The following issues can occur when running Pipeline deployments.
 
-#### Error with release name too long
+### Error with release name too long
 
 In the deployment logs in Harness you may get an error similar to this:
 
@@ -405,7 +403,7 @@ In the deployment logs in Harness you may get an error similar to this:
 
 This is an error coming from the kubernetes cluster stating that the release name is too long.  This can be adjusted in Environments > click Name of the Environment in Question > Infrastructure Definitions > click Name of the Infrastructure Definition in Question > scroll down > expand Advanced > modify the Release name to be something shorter
 
-#### Error in log when there is no error
+### Error in log when there is no error
 
 When Harness captures commands output, it captures both standard out (stdout) and standard error (stderr) to the screen. Information from stdout receives the prefix `INFO` while information from stderr receives the prefix `ERROR`. This is meant to allow our users to know where the information they see comes from.
 
@@ -427,15 +425,15 @@ As you can see, the err.txt file has the cURL command output that in Harness wil
 
 If Harness does not show standard error, then many errors will not be captured, confusing customers. Therefore, Harness shows the standard error in its logs.
 
-### Continuous integration
+## Continuous integration
 
 For troubleshooting advice specific to Continuous Integration, go to [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md).
 
-### Helm
+## Helm
 
 The following troubleshooting information should help you diagnose common Helm problems.
 
-#### Unable to get an update from the chart repository
+### Unable to get an update from the chart repository
 
 If Harness cannot get an update from a chart repo you have set up for your Helm service, during deployment, you might see the following message:
 
@@ -445,11 +443,11 @@ Unable to get an update from the "XYZ" chart repository ... read: connection res
 ```
 To fix this, find the delegate that the Helm update ran on, and then SSH to the delegate host and run the Helm commands manually. This will confirm if you are having an issue with your Harness setup or a general connectivity issue.
 
-### Kubernetes
+## Kubernetes
 
 The following problems can occur when developing and deploying to Kubernetes.
 
-#### The deployment is invalid...may not be specified when `value` is not empty
+### The deployment is invalid...may not be specified when `value` is not empty
 
 Every Harness deployment creates a new release with an incrementally increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap. This ConfigMap is essential for release tracking, versioning, and rollback.
 
@@ -459,7 +457,7 @@ If the ConfigMap is edited using kubectl or another tool between deployments fut
 
 This type of error is experienced in standard Kubernetes deployments when attempting to use `kubectl apply` on a manifest whose resources have been previously modified using `kubectl edit`. For example, see the comments in this [Kubernetes issue](https://github.com/kubernetes/kubernetes/issues/78607).
 
-#### NullPointerException: release name is reserved for internal Harness ConfigMap
+### NullPointerException: release name is reserved for internal Harness ConfigMap
 
 The release name you enter in the infrastructure definition **Release name** is reserved for the internal Harness ConfigMap used for tracking the deployment.
 
@@ -467,7 +465,7 @@ The release name you enter in the infrastructure definition **Release name** is 
 
 See [Define your kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
 
-#### The server doesn't have a resource type "deployments"
+### The server doesn't have a resource type "deployments"
 
 When you attempt to connect to the Kubernetes cluster via **GCP**, the Kubernetes cluster must have **Basic authentication enabled** or the connection will fail. For more information, see [Control plane security](https://cloud.google.com/kubernetes-engine/docs/concepts/security-overview#control_plane_security) from GCP. From GCP:
 
@@ -480,7 +478,7 @@ You can handle cluster authentication in Google Kubernetes Engine by using Cloud
 
 This is required because some API classes, such as the [MasterAuth class](https://developers.google.com/resources/api-libraries/documentation/container/v1/java/latest/com/google/api/services/container/model/MasterAuth.html), require HTTP basic authentication or client certificates.
 
-#### Invalid value LabelSelector
+### Invalid value LabelSelector
 
 If you are deploying different Harness pipelines to the same cluster during testing or experimentation, you might encounter a selector error such as this:
 
@@ -518,7 +516,7 @@ service "kubernetes" deleted
 ```
 Rerun the Harness deployment and the error should not occur.
 
-#### Cannot create property
+### Cannot create property
 
 The following error message can appear if a property, such as the security settings (securityContext) in the pod or container, are located in the wrong place in the specification:
 
@@ -548,11 +546,11 @@ spec:
       runAsUser: 2000  
       allowPrivilegeEscalation: false
 ```
-### Terraform
+## Terraform
 
 The following are resolutions to common configuration problems when [Terraform provisioning with Harness](../continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness.md).
 
-#### Provisioned resources already exist (Terraform state file locked)
+### Provisioned resources already exist (Terraform state file locked)
 
 When a [Terraform Apply](../continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step.md) step fails because of a timeout, subsequent deployments might see following error message:
 
@@ -570,7 +568,7 @@ Locking and unlocking of tfstate files is handled by Terraform automatically. Yo
 
 After timeout, no resources may be added to the state file. A manual cleanup of any resources created must be performed as well.
 
-#### TerraformValidation - Terraform validation result: false
+### TerraformValidation - Terraform validation result: false
 
 Harness performs the following validation when you use Terraform in a deployment:
 
@@ -589,13 +587,13 @@ The message `Terraform validation result: false` means Terraform is not installe
 
 Install Terraform on the delegate to fix this.
 
-### AWS ECS
+## AWS ECS
 
 In some Harness CloudFormation and ECS deployments you might get failures with `ThrottlingException` or `Rate exceeded` errors for CloudFormation and ECS API calls.
 
-For more information, go to [AWS backoff strategy](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-backoff-strategy).
+For more information, go to [AWS backoff strategy](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-backoff-strategy).
 
-### Harness secret managers
+## Harness secret managers
 
 If the Harness delegate(s) cannot authenticate with a secret manager, you might see an error message such as this:
 
@@ -614,29 +612,29 @@ curl -X POST -d '{"role_id":"<APPROLE_ID>", "secret_id":"<SECRET_ID>"}' https://
 ```
 If the delegate fails to connect, it is likely because of the credentials or a networking issue.
 
-### SAML SSO
+## SAML SSO
 
 The following errors might occur during the set up or use of SAML SSO.
 
-#### Signed in user is not assigned to a role for the project (Harness)
+### Signed in user is not assigned to a role for the project (Harness)
 
 A user registered in the Harness project in the Azure portal is not able to access the application and gets this error.
 
-##### Cause
+#### Cause
 
 If the email address used in Harness is different from the email address in the Azure app, you will get an error saying that the user is not assigned to a role for the Harness application.
 
-##### Solution
+#### Solution
 
 Make sure the email address used in Harness matches the email address in the Azure app.
 
 For more information about SAML SSO configuration with Azure, see [Single sign-on (SSO) with SAML](../platform/3_Authentication/3-single-sign-on-saml.md).
 
-### Shell scripts
+## Shell scripts
 
 This section covers common problems experienced when using a [Shell script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step.
 
-#### FileNotFoundExeption inside shell script execution task
+### FileNotFoundExeption inside shell script execution task
 
 This error happens when you are publishing output and your Shell Script step exits early from its script.
 
@@ -644,11 +642,11 @@ If you exit from the script (`exit 0`), values for the context cannot be read.
 
 If you publish output variables in your Shell Script step, structure your script with `if...else` blocks to ensure it always runs to the end of the script.
 
-### Harness policy engine
+## Harness policy engine
 
 The following errors might occur during the set up or use of [Harness policy engine](/docs/platform/governance/Policy-as-code/harness-governance-overview).
 
-#### Policy evaluation failed
+### Policy evaluation failed
 
 If a Harness policy engine policy set is enabled and your pipeline or other resource does not pass the set, a message similar to the following is displayed:
 

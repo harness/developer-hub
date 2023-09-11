@@ -16,7 +16,7 @@ This topic shows you how to view Audit Trails for your Harness account.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 
 ### Step: View an Audit Trail

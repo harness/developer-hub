@@ -15,10 +15,6 @@ You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-featur
 * [Connect to Jira](/docs/platform/Connectors/Ticketing-Systems/connect-to-jira): You can add a Harness Jira connector before or during the Create Jira step setup.
 * [Adding Jira approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages)
 
-## Visual Summary
-
-The following video shows you how to use the Jira Create, Jira Update, and Jira Approval steps:
-
 ## Limitations
 
 * Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, and `String`. Harness does not integrate with Jira fields that manage users, issue links, or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration.
@@ -28,13 +24,14 @@ The following video shows you how to use the Jira Create, Jira Update, and Jira 
 1. In a Harness CD or Approval stage, in **Execution**, select **Add Step**.
 2. Select **Jira Update**. The Jira Update step appears.
 
-![](./static/update-jira-issues-in-cd-stages-14.png)
+   ![](./static/update-jira-issues-in-cd-stages-14.png)
 
 3. In **Name**, enter a name that describes the step.
 4. In **Timeout**, enter how long you want Harness to try to update the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps)).
 5. In **Jira Connector**, create or select the [Jira connector](/docs/platform/Connectors/Ticketing-Systems/connect-to-jira) to use.
-6. In **Project**, select a Jira project from the list. A Jira project is used to create the issue key and ID when the issue is created. The unique issue number is created automatically by Jira.
-7. In **Issue Type**, select a Jira issue type from the list of types in the Jira project you selected.
+6. In **Issue Key**, enter the Jira issue key of the issue you want to update.
+7. Select **Apply Changes**.
+8. Select **Save**.
 
 ## Use an expression in Issue Key
 
@@ -42,33 +39,35 @@ In **Issue Key**, you can use an expression to reference the Key ID from another
 
 The Jira Create or Jira Update step you want to reference must be before the Jira Update step that references it in the stage.
 
-First, identify the step where you want to get the ID from. In this example, we'll use a Jira Create step.
+To use an expression in **Issue Key**, do the following:
 
-You'll have to close the Jira Update step to get the the ID from the previous step. An ID is required, so you can just enter any number for now and click **Save**. In the pipeline, select **Execution History**.
+1. Identify the step where you want to get the ID from. In this example, we'll use a Jira Create step.
 
-Select a successful execution, and click the Jira Create step in the execution.
+   You'll have to close the Jira Update step to get the the ID from the previous step. An ID is required, so you can just enter any number for now and click **Save**. In the pipeline, select **Execution History**.
 
-Select the **Output** tab, locate the **Key** setting, and select the copy button.
+2. Select a successful execution, and click the Jira Create step in the execution.
 
-![](./static/update-jira-issues-in-cd-stages-15.png)
+3. Select the **Output** tab, locate the **Key** setting, and select the copy button.
 
-The expression will look something like this:
+   ![](./static/update-jira-issues-in-cd-stages-15.png)
 
-`<+pipeline.stages.Jira_Stage.spec.execution.steps.jiraCreate.issue.key>`
+   The expression will look something like this:
 
-Now you have the expression that references the key ID from this step.
+   `<+pipeline.stages.Jira_Stage.spec.execution.steps.jiraCreate.issue.key>`
 
-Go back to your Jira Update step. You can just select **Edit Pipeline**.
+   Now you have the expression that references the key ID from this step.
 
-In **Issue Key**, select **Expression**.
+4. Go back to your Jira Update step. You can just select **Edit Pipeline**.
 
-![](./static/update-jira-issues-in-cd-stages-16.png)
+5. In **Issue Key**, select **Expression**.
 
-**Issue Key**, paste in the expression you copied from the previous Jira Create step.
+   ![](./static/update-jira-issues-in-cd-stages-16.png)
 
-Now this Jira Update step will update the issue created by the Jira Create step.
+6. **Issue Key**, paste in the expression you copied from the previous Jira Create step.
 
-Some users can forget that when you use a Jira Create step it creates a new, independent Jira issue every time it is run. If you are using the same issue ID in Jira Update, you are updating a new issue every run.
+   Now this Jira Update step will update the issue created by the Jira Create step.
+
+   Some users can forget that when you use a Jira Create step it creates a new, independent Jira issue every time it is run. If you are using the same issue ID in Jira Update, you are updating a new issue every run.
 
 ### Optional configuration
 
@@ -126,7 +125,7 @@ Harness supports updating the Jira Issue Type.
    
 3. Select a new issue type to modify the Issue Type of the selected Jira issue, and select **Apply Changes**. 
 
-  ![](static/update-issue-type.png)
+   ![](static/update-issue-type.png)
 
 The issue type for the selected Jira Issue is now updated with the issue type you selected.
 
@@ -134,11 +133,11 @@ The issue type for the selected Jira Issue is now updated with the issue type yo
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Apply and test
 

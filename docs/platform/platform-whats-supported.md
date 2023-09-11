@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 This topic lists the supported Harness Platform features and integrations you can use for deploying and verifying your apps.
 
-For a comprehensive list that includes all Harness modules, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).
+For a comprehensive list that includes all Harness modules, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
 
 ```mdx-code-block
   <Tabs>
@@ -21,22 +21,22 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
   <TabItem value="Git Experience" label="Git Experience">
 ```
 
-import Gitxsup from '/docs/getting-started/shared/gitx-whats-supported.md'
+import Gitxsup from '/docs/get-started/shared/gitx-whats-supported.md'
 
 <Gitxsup />
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Access control" label="Access control">
+  <TabItem value="Access control" label="Access Control">
 ```
 
-import Accessconsup from '/docs/getting-started/shared/access-control-supported.md'
+import Accessconsup from '/docs/get-started/shared/access-control-supported.md'
 
 <Accessconsup />
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Accounts/Orgs/Projects/Other resources" label="Accounts Organizations Projects">
+  <TabItem value="Accounts/Orgs/Projects/Other resources" label="Accounts Orgs Projects">
 ```
 
 Harness enables you to manage access control at the following [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#overview-of-the-hierarchical-setup-in-harness).
@@ -60,7 +60,7 @@ import Delimagetypes from '/docs/platform//2_Delegates/shared/delegate-image-typ
 
 - Install delegate minimal image without SDKs
 
-- [Install delegate maximal image without certified SDKs](/docs/getting-started/supported-platforms-and-technologies/#sdks-installed-with-harness-delegate)
+- [Install delegate maximal image without certified SDKs](/docs/get-started/supported-platforms-and-technologies/#sdks-installed-with-harness-delegate)
 
 
 ```mdx-code-block
@@ -77,17 +77,17 @@ Notification methods supported for various pipeline events are:
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Secret management" label="Secret management">
+  <TabItem value="Secret management" label="Secrets Management">
 ```
 
-import Secretmgmtsup from '/docs/getting-started/shared/secret-management-supported.md'
+import Secretmgmtsup from '/docs/get-started/shared/secret-management-supported.md'
 
 <Secretmgmtsup />
 
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="User management" label="User management">
+  <TabItem value="User management" label="User Management">
 ```
 
 A Harness user is any individual registered with Harness with a unique email address. A User can be a part of multiple accounts. Go to the following topics to learn more about how to add and manage users.
@@ -99,7 +99,7 @@ A Harness user is any individual registered with Harness with a unique email add
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Self-Managed Enterprise Edition" label="Self-Managed Enterprise Edition">
+  <TabItem value="Self-Managed Enterprise Edition" label="Self-Managed EE">
 ```
 
 import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';

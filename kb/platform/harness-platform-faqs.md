@@ -10,15 +10,15 @@ description: Frequently asked questions about Harness Platform.
 
 For security reasons you would need to connect to Vault to view the secrets.  You can use them however.
 
-[https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault/](https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault/)
+[/docs/platform/secrets/secrets-management/add-hashicorp-vault/](/docs/platform/secrets/secrets-management/add-hashicorp-vault/)
 
-[https://developer.harness.io/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/](https://developer.harness.io/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/)
+[/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/)
 
-[https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/)
+[/docs/platform/secrets/secrets-management/harness-secret-manager-overview/](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/)
 
 You can reference the secrets using the following as a guide
 
-[https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier)
+[/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier](/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier)
 
 #### I'm getting an error "missing expected [" whereas I did not get it before
 
@@ -68,12 +68,12 @@ No, as of now we don't support but it is in our roadmap.
 
 #### Do we have some kind of dashboards where I can track my current status of delegates ?
 
-Yes , you can setup prometheus to get the metrics . For more Information on setting that up, please go through the following [Documentation](https://developer.harness.io/docs/platform/delegates/manage-delegates/delegate-metrics)
+Yes , you can setup prometheus to get the metrics . For more Information on setting that up, please go through the following [Documentation](/docs/platform/delegates/manage-delegates/delegate-metrics)
 
 #### Does delegates logs are only sent to Harness or can I also query delegate logs in my own cloud logging system ?
 
 By default, delegate logs are only sent to Harness and it can be enabled/disabled using this env variable - `STACK_DRIVER_LOGGING_ENABLED
-`. To know more about this, please go through the following [Documentation](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled)
+`. To know more about this, please go through the following [Documentation](/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled)
 
 #### I have setup SAML Successfully , but it doesn't populate in Link to SSO inside usergroup 
 
@@ -139,7 +139,7 @@ We differentiate the delegate YAML based on the value of `DELEGATE_TOKEN`
 #### There are ‘Delegate Profiles’ for delegates in the CG. There are 'Startup Script' in it. What the equivalent of that in NG
 
 You can make use of INIT_SCRIPT as below while launching delegate:
-https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-delegates/run-initialization-scripts-on-delegates/
+/docs/first-gen/firstgen-platform/account/manage-delegates/run-initialization-scripts-on-delegates/
 
 #### How to find User login activity in Harness
 
@@ -147,8 +147,8 @@ You can filter and find user login activity in Audit trail(Both in CG and NG)
 
 #### How to Secure storage of the Delegate Token
 
-You can Store delegate tokens as Kubernetes secrets: : https://developer.harness.io/docs/platform/delegates/secure-delegates/store-delegate-tokens-as-secrets/
-You can also store the token in vault and can reference the token in yaml:  https://developer.harness.io/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/#option-rotate-tokens 
+You can Store delegate tokens as Kubernetes secrets: : /docs/platform/delegates/secure-delegates/store-delegate-tokens-as-secrets/
+You can also store the token in vault and can reference the token in yaml:  /docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/#option-rotate-tokens 
 
 #### Not seeing any data for newly added User
 
@@ -396,7 +396,7 @@ It's present for saml based login because authentication is taken care by SAML p
 
 #### Do we have documentation for installing a custom certificate in a K8-based delegate?
 
-Yes we can install custom certificates on K8-Based Delegate, refer to this [Documentation](https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
+Yes we can install custom certificates on K8-Based Delegate, refer to this [Documentation](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
 
 #### What happens with the rejected tasks in delegate ?
 
@@ -424,7 +424,7 @@ No, we don't have auto-upgrade for docker delegate, but you can update your dock
 
 #### Do we have rate limit For FirstGen, exporting deployment logs? Can this be removed or modified per account?
 
-Yes , we do have rate limits, more information can be read over here [Documentation](https://developer.harness.io/docs/platform/rate-limits). We cannot remove rate limits per account , but you can always request for an increase.
+Yes , we do have rate limits, more information can be read over here [Documentation](/docs/platform/rate-limits). We cannot remove rate limits per account , but you can always request for an increase.
 
 #### Is there a way to get a secret as base64 encoded?
 
@@ -458,7 +458,7 @@ If these user groups were previously provisioned via SCIM and marked as "externa
 
 Project Identifier can't be renamed as it is set when the project is created. We can always rename the Project Name but not the identifier.
 
-#### This documentation https://developer.harness.io/docs/platform/delegates/manage-delegates/delegate-metrics/ shows the following metric available: io_harness_custom_metric_task_execution_time. What does it represent? Seconds? Milliseconds?
+#### This documentation /docs/platform/delegates/manage-delegates/delegate-metrics/ shows the following metric available: io_harness_custom_metric_task_execution_time. What does it represent? Seconds? Milliseconds?
 
 The time it takes to complete a task (in seconds)
 
@@ -489,11 +489,11 @@ We donot have this option as of now.
 
 #### Can the delegate upgrader job be set to point to a custom private registry?
 
-Yes, delegate upgrader job can be set to point to a custom private registry, refer to this [Documentation](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
+Yes, delegate upgrader job can be set to point to a custom private registry, refer to this [Documentation](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
 
 #### Can we set `SCM_SKIP_SSL = true` while working on docker delegate?
 
-Yes, we can add it when running the docker delegate with -e option, refer to [Documentation](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#scm-request-failed-with-unknown).
+Yes, we can add it when running the docker delegate with -e option, refer to [Documentation](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#scm-request-failed-with-unknown).
 
 #### Will user can create one more project under the project ?
 
@@ -501,7 +501,7 @@ As per the current design you can not create project under the project. The proj
 
 #### How to customized build pipeline. Ex: Create a script to clone the repo from TFS?
 
-User can run a script in a run step of a build pipeline as detailed in this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) and you should be able to clone the repo.
+User can run a script in a run step of a build pipeline as detailed in this [doc](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) and you should be able to clone the repo.
 
 #### How the active service count will show in License subscription?
 
@@ -514,3 +514,93 @@ This behavior is expected when there are many branches in the repo due to pagina
 #### Howmany branches will be listed in branch dropdown UI when we try to open a git enabled pipeline?
 
 We typically list 20 to 30 branches, depending on the git provider as fetching all branches would be time-consuming.
+
+#### Where can we add the env attributes for delegate while doing helm chart installation ?
+
+Delegate deployment for helm chart installation is configured to pick the evnironment variable from configmap. Check the name of the configmap in the chart deployment yaml, the attribute is envFrom and edit the configmap to add the corresponding environment variables.
+
+
+#### How does delegate identify its scope for registration ?
+
+While installing delegates we do not explicitely configure it to connect at account , organisation or project scope. It is decided based on the scope of the delegate token. If the token is from project scope the delegate will register at project level. Same goes with organisation and account level.
+
+#### Will the delegate continue to work if we delete the delegate token being used ?
+
+The delegate registration is only valid till the delegate token with which it has registered is available and not expired/revoked. If the delegate token is deleted the delegate registration will no longer be valid and it will fail authorization.
+
+#### How many types of api token are there ?
+
+There are two types of api token, one can be created at user profile level and they are prefixed with `pat.xxxx....` standing for personal account token. The second one can be created at service account level which is prefixed as `sat.xxxxx....` which stands for service account token.
+
+#### How do we assign permission to the api tokens ?
+
+We do not assign permission directly to the account tokens. They inherit the permissions from the user if they are created at the user profile level or the service account if they are created at service account level.
+
+
+#### Harness Conditional Alerts and Notifications
+
+Conditional alerts are a useful tool, which you can utilize to trigger notifications on specific conditions that are met or exceeded. 
+
+See [https://developer.harness.io/docs/platform/dashboards/create-conditional-alerts/]
+
+#### Receiving 429 error response with regards to rate limit
+
+Harness has several rate limiters on the platform. Sending multiple requests in quick succession will generate the 429 response. 
+
+See [https://developer.harness.io/docs/platform/rate-limits/]
+
+#### Do we have docs for the infrastructure requirements for a user looking to install a Self Managed Platform (SMP) ?
+
+Yes, we do have docs for installation of SMP, refer to this [Documentation](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/harness-helm-chart#production-environment-deployment-infrastructure).
+
+#### What is the permission needed for adding SMTP configuration, I am getting error Missing permission core_smtp_edit on smtp while trying to add Authentication Settings or Account Settings?
+
+The permission needed for this Account Admin and as of now only Account Admin can edit the SMTP configuration.
+
+#### Does Harness allow you to set 2 AMI’s with different CPU architecture?
+
+Harness doesn't allow in the same ASG.
+
+#### How can you control on-demand or spot provisioning within ASG group / target?
+
+We supported spotinst ASG in FG and we also have spotinst for NG also, to know more about it please read the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment).
+
+#### Can I pull in from multiple different Okta providers for multiple different teams with different RBAC/group needs?
+
+No, we support only one SSO provider at a time which is configured at account level.
+
+#### Will Cloud Connector propagate the tags to AWS calls ?
+
+No, The Cloud connector will not propagate the tags to AWS while making calls.
+
+#### Where can we see the logs of AWS calls?
+
+We have limited logging for the AWS Calls.
+
+#### Delegate Selector in connector
+
+The delegate selector in connector always works as AND and not OR. Say you have delegate A named "ABC" and delegate B named "BCD". In the connector selector options you will need to give only 1 tag either "ABC" or "BCD". In case you need to have multiple delegate there then you will need to add custom tags to the delegate and specify the common one in the sector. 
+
+#### If the value for secret starts with # for reference scerets
+
+In case you value start with # in case of reference secrets, always use Double quotes as “#” is a special character to represent comments and it will work as expected.
+
+Ex: The value for the secret is say "#7767test"
+```echo "<+secrets.getValue("account.aaaatestaaatest")>" ```
+
+#### User deletion from UI when it is provisioned via SCIM
+
+Harness now allows admin to delete users from Harness UI even if the user is provisioned via SCIM, this is only supposed to be used in case the Users ends up in a state the SCIM App was removed and hence the User can't be removed.
+As this can cause issues if the User is a part of say 2 Accounts the backend entry for the user won't be removed and from that specific account it might removed. Now reprovisioning the User from SCIM app will give error as the user is still present with the same user id in backend. Hence you will need to remove the user completely from the SCIM app and provision him again as a new user. 
+
+#### Is their a way we can check what delegates are running/doing any particular time.
+You can review the delegate logs so ideally it should show the task that it was executing around the time frame.
+
+#### Getting error IllegalArgumentException: kubectl is not installed for version V1_13. Available versions are: []
+If you are using minimal delegate images than this error can come and need to install the kubectl version and check $PATh if its updated correctly
+
+#### Delegate is not coming up with no space left error
+While starting delegate we install some third party binaries(kubectl, helm etc) so those need some space so make sure delegate machne has some disk space left
+
+
+

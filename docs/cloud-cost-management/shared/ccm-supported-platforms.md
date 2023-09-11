@@ -59,7 +59,7 @@ Any of the following CCM cloud connectors in a healthy state:
 
 ### Documentation link
 
- [Perspectives overview](https://developer.harness.io/docs/category/perspectives)
+ [Perspectives overview](/docs/category/perspectives)
 
 
 </details>
@@ -111,7 +111,7 @@ Any of the following CCM cloud connectors in a healthy state:
 
 ### Documentation link
 
- [Cost Categories overview](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories)
+ [Cost Categories overview](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories)
 
 
 </details>
@@ -145,7 +145,7 @@ If you have cloud provider bills in different currencies, currency standardizati
 
 ### Documentation link
 
-[Set up currency preferences](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/currency-preferences)
+[Set up currency preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/currency-preferences)
 
 
 </details>
@@ -190,7 +190,7 @@ Any of the following CCM cloud connectors in a healthy state:
 
 ### Documentation link
 
- [Detect cloud cost anomalies](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm)
+ [Detect cloud cost anomalies](/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm)
 
 </details>
 
@@ -240,7 +240,7 @@ The following data can be consumed through dashboards:
 
 ### Documentation link
 
- [Dashboards](https://developer.harness.io/docs/category/dashboards)
+ [Dashboards](/docs/category/dashboards)
 
 </details>
 
@@ -371,7 +371,7 @@ The supported Kubernetes version for AutoStopping is 1.19 or higher.
 
 ### **Documentation link** 
 
- [AutoStopping rules](https://developer.harness.io/docs/category/autostopping-rules)
+ [AutoStopping rules](/docs/category/autostopping-rules)
 
 </details>
 
@@ -445,7 +445,7 @@ The recommendations are computed by analyzing the past utilization of CPU and me
 
 ### Documentation link
 
-[Recommendations](https://developer.harness.io/docs/category/recommendations)
+[Recommendations](/docs/category/recommendations)
 
 </details>
 
@@ -515,7 +515,7 @@ The recommendations are computed by analyzing the past utilization of CPU and me
 
 ### Documentation link 
 
-[Asset Governance](https://developer.harness.io/docs/category/asset-governance/)
+[Asset Governance](/docs/category/asset-governance/)
 
 </details>
 
@@ -565,7 +565,7 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
 
 ### Documentation link
 
-[Budgets](https://developer.harness.io/docs/category/budgets)
+[Budgets](/docs/category/budgets)
 
 </details>
 
@@ -578,6 +578,7 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
 :::important note
 Harness does not currently support AWS China regions.
 :::
+
 
 ## CCM on Harness Self-Managed Enterprise Edition
 

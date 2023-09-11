@@ -72,4 +72,4 @@ The following section lists where you can use AutoStopping rules:
 * Google Compute Engine (GCE) VMs
 * Kubernetes Clusters (GKE)
 
-
+To troubleshoot AutoStopping rules, go to [Troubleshoot AutoStopping rules and Proxy](../../../troubleshooting/cloud-cost-management/autostopping-troubleshooting.md).

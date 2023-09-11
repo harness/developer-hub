@@ -75,7 +75,7 @@ In addition to ingesting scan data in the external scanner's native format, STO 
 ####  STO support by CI build infrastructure type
 
 ```mdx-code-block
-import StoInfraSupport from '/docs/security-testing-orchestration/onboard-sto/shared/_supported-infrastructures.md';
+import StoInfraSupport from '/docs/security-testing-orchestration/get-started/shared/_supported-infrastructures.md';
 ```
 
 <StoInfraSupport />

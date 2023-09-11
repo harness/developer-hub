@@ -42,7 +42,7 @@ Model your process in code using a full-featured YAML editor:
 
 ![](./static/cd-pipeline-modeling-overview-03.png)
 
-For more details, go to [Harness YAML Quickstart](https://developer.harness.io/docs/platform/pipelines/harness-yaml-quickstart.md) and [YAML Reference: Pipelines](../../platform/8_Pipelines/w_pipeline-steps-reference/yaml-reference-cd-pipeline.md).
+For more details, go to [Harness YAML Quickstart](/docs/platform/pipelines/harness-yaml-quickstart) and [YAML Reference: Pipelines](/docs/platform/Pipelines/w_pipeline-steps-reference/yaml-reference-cd-pipeline).
 
 #### REST API
 
@@ -100,7 +100,7 @@ This topic provided a high level overview of how you can model your software del
 For more details and example, go to:
 
 * [CD tutorials](/tutorials/cd-pipelines/)
-* [CD overview and key concepts](./cd-pipeline-basics.md)
+* [CD overview and key concepts](./key-concepts.md)
 * [Service-based licensing and usage for CD](./service-licensing-for-cd.md)
 * [Deployment concepts and strategies](../manage-deployments/deployment-concepts.md)
 

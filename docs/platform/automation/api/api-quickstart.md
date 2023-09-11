@@ -89,7 +89,7 @@ Harness uses rate limiting to control traffic and ensure the stability of the pl
 
 ### Example: Create a project through API
 
-A Harness [project](../../../getting-started/learn-harness-key-concepts.md#organizations-and-projects) is a group of Harness modules and their pipelines and other resources.
+A Harness [project](../../../get-started/key-concepts.md#organizations-and-projects) is a group of Harness modules and their pipelines and other resources.
 
 The following `curl` command creates a Harness project called `APISample` in the `default` Harness organization. To use this command replace `ACCOUNT_ID` with your [Harness account ID](#get-your-account-id), and replace `API_KEY_TOKEN` with your [token](#create-a-harness-api-key-and-token). If you want to create a project under a different organization, replace `default` in the command with the desired organization ID.
 

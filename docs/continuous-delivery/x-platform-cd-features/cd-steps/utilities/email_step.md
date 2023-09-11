@@ -15,9 +15,9 @@ The Email step has the following features:
 
 - Send emails during pipeline executions.
 - You can use the Harness SMTP Server included with your Harness account.
-- Use your own SMTP server by adding it to Harness. For more information, go to [add SMTP configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration).
-- You can use this step as a [step template](https://developer.harness.io/docs/platform/Templates/run-step-template-quickstart) or as part of a [stage template](https://developer.harness.io/docs/platform/Templates/add-a-stage-template). 
-- You can manage this step's configuration via [Harness Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview).
+- Use your own SMTP server by adding it to Harness. For more information, go to [add SMTP configuration](/docs/platform/notifications/add-smtp-configuration).
+- You can use this step as a [step template](/docs/platform/Templates/run-step-template-quickstart) or as part of a [stage template](/docs/platform/Templates/add-a-stage-template). 
+- You can manage this step's configuration via [Harness Git Experience](/docs/platform/git-experience/git-experience-overview).
 - You can send emails to Harness users and users outside of Harness using the SMTP server in your Harness
 
 ## Visual summary
@@ -53,7 +53,7 @@ You can set **To** as a runtime input.
   
 You can pass in the email as a Harness expression, such as `<+pipeline.triggeredBy>`.
 
-For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs).
+For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs).
 
 ## CC
  
@@ -65,7 +65,7 @@ You can provide a subject for the email.
 
 This subject can be a fixed string (for example, `Prod Deployment Notification`), a string with expressions (for example, `<+env.name> Deployment Notification`), or a runtime input.
 
-For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs).
+For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs).
 
 ## Body
 
@@ -73,7 +73,7 @@ The **Body** is a string field. You can enter in text and Harness expressions. H
 
 You can use HTML formatting in **Body**.
 
-For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs).
+For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs).
 
 ## Sending emails to non-Harness users
 
@@ -90,7 +90,7 @@ To send emails to non-Harness users, you must configure your own SMTP server and
 
 To send emails to non-Harness users, do the following:
 
-1. Add your own SMTP server. For details, go to [Add SMTP configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration/).
+1. Add your own SMTP server. For details, go to [Add SMTP configuration](/docs/platform/notifications/add-smtp-configuration/).
 2. In **Default Settings** (at the account, organization, or project level), select **Continuous Deployment**, and then set **Enable Emails to be sent to non-Harness Users** to **true**.
   
   <docimage path={require('./static/de6a52a680b74f1dd5535a5e2fed34ef8ed9be4f2af244a29636a0c497cda016.png')} width="60%" height="60%" title="Click to view full size image" />  
@@ -104,15 +104,15 @@ Enable **Allow Overrides** to allow a project to override the setting of its org
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Options
 
-You can send emails using your own SMTP Server. For more information, go to [add SMTP configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration).
+You can send emails using your own SMTP Server. For more information, go to [add SMTP configuration](/docs/platform/notifications/add-smtp-configuration).
 
 ## Email delivery failures
 
@@ -120,5 +120,5 @@ Currently, Harness is unable to check whether the emails sent using the Email st
 
 If you are encountering issues with email delivery, please open a Harness support ticket. 
 
-If you are using a custom email provider (as described in [Add SMTP configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration/)) Harness will not have access to your emails. Please check your email provider and server log to determine the cause of the error.
+If you are using a custom email provider (as described in [Add SMTP configuration](/docs/platform/notifications/add-smtp-configuration/)) Harness will not have access to your emails. Please check your email provider and server log to determine the cause of the error.
 

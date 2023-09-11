@@ -1,4 +1,4 @@
-import gs from "./components/Docs/GettingStarted";
+import gs from "./components/Docs/GetStarted";
 
 
 export enum MODULES {

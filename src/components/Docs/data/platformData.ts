@@ -38,11 +38,18 @@ export const featuredTutorials: CardItem[] = [
         "",
       list: [
         {
-          title: "Tutorials",
+          title: "Onboarding guide",
           module: MODULES.platform,
           description:
-            "Try hands-on tutorials to get started quickly.",
-          link: "/tutorials/platform",
+            "A self-service onboarding guide for Harness Platform.",
+          link: "/docs/platform/get-started/onboarding-guide",
+        },
+        {
+          title: "Key concepts",
+          module: MODULES.platform,
+          description:
+            "Key concepts of the Harness Platform.",
+          link: "/docs/platform/get-started/key-concepts",
         },
         {
           title: "Delegates",

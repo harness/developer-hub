@@ -24,8 +24,8 @@ For getting started quickly:
 
 Make sure you read and understand:
 
-* [Feature Flags Overview](/docs/feature-flags/ff-onboarding/cf-feature-flag-overview)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](/docs/feature-flags/get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks)
 * [Communication Strategy Between SDKs and Harness Feature Flags](/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags)
 
@@ -396,7 +396,7 @@ This will only affect evaluation log statements. The `log_level` you set applies
 
 The SDK by default starts up a single instance called `default` which is configured with your project API key.
 If different parts of your application need to use 
-specific [projects](https://developer.harness.io/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project/), you can start up additional client instances using by defining additional configuration for each unique project.
+specific [projects](/docs/feature-flags/ff-creating-flag/create-a-project/), you can start up additional client instances using by defining additional configuration for each unique project.
 
 :::info note
 If the default instance fails to start, for example, due to an authentication error with the API key, then the SDK fails to boot and any additional instances do not start. To prevent the default instance from starting, 
