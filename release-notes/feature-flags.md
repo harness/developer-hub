@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-09-06T13:49:25
+date: 2023-09-08T13:49:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -27,7 +27,7 @@ This release does not include early access features.
 
 ### Fixed issues in the iOS SDK
 
-- Fix runtime failure when target is nil (FFM-9282)
+- Fix runtime failure when target is nil. (FFM-9282)
 
 ## Previous releases
 
@@ -46,10 +46,10 @@ This release does not include early access features.
 
 ### Fixed issues in the Java SDK
 
-- Standardised SDK error codes (FFM-8148)
-- Removed dependencies Guava and MapDB (FFM-8840)
-- Added retry enhancements to authentication failures (FFM-8150)
-- Local connector now creates metrics folder (FFM-4023)
+- Standardized SDK error codes. (FFM-8148)
+- Removed dependencies Guava and MapDB. (FFM-8840)
+- Added retry enhancements to authentication failures. (FFM-8150)
+- Local connector now creates a metrics folder. (FFM-4023)
 
 #### August 24, 2023
 
