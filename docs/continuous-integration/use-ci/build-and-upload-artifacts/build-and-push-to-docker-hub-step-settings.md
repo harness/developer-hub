@@ -26,6 +26,70 @@ Because the **Build and Push an image to Docker Registry** step is equivalent to
 
 :::
 
+## YAML example
+
+```yaml
+pipeline:
+  name: CI Quickstart
+  identifier: CI_Quickstart
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.CI_Quickstart
+        repoName: goHelloWorldServer
+        build: <+input>
+  stages:
+    - stage:
+        name: Build Test and Push
+        identifier: Build_Test_and_Push
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: Build and push image to Docker Hub
+                  identifier: Build_and_push_image_to_Docker_Hub
+                  spec:
+                    connectorRef: account.Docker_Quickstart
+                    repo: cretzman/ciquickstart
+                    tags:
+                      - <+pipeline.sequenceId>
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.cidelegate
+              namespace: harness-delegate-uat
+  projectIdentifier: CI_Quickstart
+  orgIdentifier: default
+```
+
+## Run the pipeline
+
+For example, these are the logs for a step that pushed to a Docker repo in a pipeline using a Kubernetes cluster build infrastructure:
+
+```
+/kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=cretzman/ciquickstart:13
+Retrieving image manifest alpine:3.12
+Retrieving image alpine:3.12
+Retrieving image manifest alpine:3.12
+Retrieving image alpine:3.12
+Built cross stage deps: map[]
+Retrieving image manifest alpine:3.12
+Retrieving image alpine:3.12
+Retrieving image manifest alpine:3.12
+Retrieving image alpine:3.12
+Executing 0 build triggers
+Unpacking rootfs as cmd ADD go-sample-app /bin/ requires it.
+LABEL maintainer="John Doe <john.doe@example.com>"
+Applying label maintainer=John Doe <john.doe@example.com>
+Using files from context: [/step-exec/workspace/go-sample-app]
+ADD go-sample-app /bin/
+Taking snapshot of files...
+ENTRYPOINT ["/bin/go-sample-app"]
+```
+
 ## Settings
 
 Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.

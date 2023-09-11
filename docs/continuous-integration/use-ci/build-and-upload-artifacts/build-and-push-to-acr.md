@@ -12,16 +12,53 @@ This topic explains how to configure the **Build and Push to ACR** step in a Har
 
 ## Requirements
 
-* **Must use a Kubernetes Cluster build infrastructure:** The **Build and Push to ACR** step is supported for [Kubernetes cluster build infrastructures](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) only. For other build infrastructures, use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-hub-step-settings.md) to push to ACR.
-* **Must run as root:** With a Kubernetes cluster build infrastructure, all **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). This tool requires root access to build the Docker image, and it doesn't support non-root users.
-   * If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
-   * If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+You need:
 
-## Add the Build and Push to ACR step
+* Access to ACR and an ACR repo where you can upload your image.
+* An [Azure Cloud Provider connector](#azure-connector).
+* A [Harness CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) that uses a Linux platform on a Kubernetes cluster build infrastructure.
 
-Add the **Build and Push to ACR** step to the [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../prep-ci-pipeline-components.md) If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+### Kubernetes cluster build infrastructure is required
 
-The **Build and Push to ACR** step settings are described below. Some settings are located under **Optional Configuration** in the visual pipeline editor.
+The **Build and Push to ACR** step is supported for Linux platforms on [Kubernetes cluster build infrastructures](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) only. For other platforms and build infrastructures, use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-hub-step-settings.md) to push to ACR.
+
+### Root access is required
+
+With Kubernetes cluster build infrastructures, all **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). This tool requires root access to build the Docker image, and it doesn't support non-root users.
+
+If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
+
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+
+## Add a Build and Push to ACR step
+
+In your pipeline's **Build** stage, add a **Build and Push to ACR** step and configure the [settings](#build-and-push-to-acr-step-settings) accordingly.
+
+Here is a YAML example of a minimum **Build and Push to ACR** step.
+
+```yaml
+              - step:
+                  type: BuildAndPushACR
+                  name: BuildAndPushACR_1
+                  identifier: BuildAndPushACR_1
+                  spec:
+                    connectorRef: YOUR_AZURE_CONNECTOR_ID
+                    repository: CONTAINER-REGISTRY-NAME.azurecr.io/IMAGE-NAME
+                    tags:
+                      - <+pipeline.sequenceId>
+```
+
+When you run a pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the **Build and Push to ACR** step succeeds, you can find the uploaded image on ACR.
+
+:::tip
+
+For information about build images without pushing, building multi-architecture images, using Harness expressions for tags, and setting kaniko runtime flags, go to [Useful techniques for Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#useful-techniques).
+
+:::
+
+## Build and Push to ACR step settings
+
+The **Build and Push to ACR** step has the following settings. Some settings are located under **Optional Configuration** in the visual pipeline editor.
 
 ### Name
 
@@ -35,7 +72,7 @@ For more information about Azure connectors, including details about required pe
 
 ### Repository
 
-The URL for the target ACR repository where you want to push your artifact. You must use this format: `<container-registry-name>.azurecr.io/<image-name>`.
+The URL for the target ACR repository where you want to push your artifact. You must use this format: `CONTAINER-REGISTRY-NAME.azurecr.io/IMAGE-NAME`.
 
 ### Subscription Id
 
@@ -116,20 +153,3 @@ You can find the following settings on the **Advanced** tab in the step settings
 * [Conditional Execution](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md): Set conditions to determine when/if the step should run.
 * [Failure Strategy](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md): Control what happens to your pipeline when a step fails.
 * [Looping Strategies Overview -- Matrix, Repeat, and Parallelism](/docs/platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md): Define a looping strategy for an individual step.
-
-## Run the pipeline
-
-After saving the pipeline, select **Run** to run the pipeline.
-
-On the [build details page](../viewing-builds.md), you can see the logs for each step as they run.
-
-If the build succeeds, you can find your pushed image on ACR.
-
-## See also
-
-* [Useful techniques for Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#useful-techniques) (Build without pushing, build multi-architecture images, use Harness expressions for tags, and set kaniko runtime flags)
-* [Use Run steps](../run-ci-scripts/run-step-settings.md)
-* [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
-* [Delegate overview](/docs/platform/Delegates/delegate-concepts/delegate-overview)
-* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
-* [Harness key concepts](../../../get-started/key-concepts.md)

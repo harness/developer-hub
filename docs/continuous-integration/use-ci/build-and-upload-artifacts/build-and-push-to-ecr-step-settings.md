@@ -36,7 +36,7 @@ If your security policy doesn't allow running as root, go to [Build and push wit
 
 In your pipeline's **Build** stage, add a **Build and Push to ECR** step and configure the [settings](#build-and-push-to-ecr-step-settings) accordingly.
 
-Here is a basic YAML example of an **Build and Push to ECR** step.
+Here is a YAML example of a minimum **Build and Push to ECR** step.
 
 ```yaml
               - step:
