@@ -830,7 +830,7 @@ A successful Application sync will display the following status tree under **Res
 ```
 Harness offers a [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you declaratively manage Harness GitOps entities alongside your application and cluster resources. These steps walk through using Terraform to create and install the GitOps agent, define related Harness entities, and deploy a sample application to your cluster.
 
-<docimage path={require('../static/k8s-manifest-tutorial/terraform_harness_resources.png')} width="50%" height="50%" title="Click to view full size image" />
+<docvideo src="https://www.youtube.com/watch?v=U_XkKcfg8ts" width="75%" />
 
 <br/><br/>
 
@@ -910,6 +910,12 @@ Never store your Harness API Key in a plain text configuration file or in versio
 A Terraform module is a collection of files that define the desired state to be enforced by Terraform. These files normally have the .tf extension.
 
 </details>
+
+<br/>
+
+<docimage path={require('../static/k8s-manifest-tutorial/terraform_harness_resources.png')} width="50%" height="50%" title="Click to view full size image" />
+
+<br/><br/>
 
 1. Open **agent.tf**. This file defines the GitOps agent in Harness and then deploys the agent manifest to your cluster. The agent is created using the harness_gitops_platform_agent resource.
 
