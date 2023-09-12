@@ -57,12 +57,8 @@ export const moduleList: CardItem[] = [
     title: "Software Engineering Insights",
     module: MODULES.sei,
     // icon: "img/icon_idp.svg",
-    description: (
-      <>
-       Assess engineering team productivity, remove roadblocks, and automate processes to increase efficiency.
-      </>
-    ),
-    link: "https://docs.propelo.ai/welcome-to-propelo/",
+    description: <>Use data-led insights to remove bottlenecks and improve productivity.</>,
+    link: "docs/software-engineering-insights",
   },
   {
     title: "Continuous Error Tracking",
