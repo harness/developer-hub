@@ -40,7 +40,7 @@ This release does not include any early access features.
     This issue has been resolved. Now, in cases where the "sources" field is received as null, the system treats it as equivalent to `{ healthSources: [], changeSources: [] }`.
 
 
-- The SRM default dashboard is currently non-functional, rendering it unusable. (SRM-15372)
+- The SRM default dashboard was non-functional, rendering it unusable. (SRM-15372)
   
     This issue has been resolved. Now, the SRM default dashboard is fully operational.
 
