@@ -35,7 +35,7 @@ import {
             module: MODULES.sei,
             description:
               "Learn about the benefits and features of Harness Software Engineering Insights, as well as how to get started with SEI.",
-            link: "/docs/software-engineering-insights/sei-get-started/sei-overview",
+            link: "/docs/software-engineering-insights/get-started/overview",
           },
         ],
       },

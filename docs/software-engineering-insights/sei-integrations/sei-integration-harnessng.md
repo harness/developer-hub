@@ -11,7 +11,7 @@ Use the SEI Harness integration to integrate SEI with your Harness modules.
 
 :::info
 
-The SEI Harness integration is only for Harness NextGen modules. For an explanation of the difference between Harness FirstGen and NextGen, go to [Harness FirstGen vs Harness NextGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen).
+The SEI Harness integration is only for Harness NextGen modules. For an explanation of the difference between Harness FirstGen and NextGen, go to [Harness FirstGen vs Harness NextGen](/docs/get-started/harness-first-gen-vs-harness-next-gen).
 
 :::
 

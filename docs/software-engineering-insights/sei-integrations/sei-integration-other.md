@@ -75,7 +75,7 @@ SEI supports custom CI/CD integrations through webhooks. Use this for CI/CD tool
 
 * Summary: Post CI/CD data to SEI
 * Method: POST
-* Base URL: `https://api.levelops.io/v1/generic-requests`
+* Base URL: `https://api.levelops.io/v1/generic-requests` or `https://api.propelo.ai/v1/generic-requests`
 * Header: Requires API key authorization. The content type is `application/json`
 * Body: Contains a `data` object with `request_type` and `payload`.
 

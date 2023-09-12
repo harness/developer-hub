@@ -34,7 +34,7 @@ Use [Propels](/docs/category/propels-and-tables) to add human-in-the-loop automa
 
 ## See also
 
-* [Get started with Harness](/docs/getting-started)
-* [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies)
+* [Get started with Harness](/docs/get-started)
+* [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies)
 * [Propelo and Harness](./propelo-and-harness.md)
 * [Troubleshooting and FAQs](../sei-troubleshooting-faqs.md)

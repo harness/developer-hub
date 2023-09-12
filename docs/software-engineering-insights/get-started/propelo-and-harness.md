@@ -6,11 +6,13 @@ sidebar_position: 20
 
 In January 2023, Harness acquired Propelo, now called Harness Software Engineering Insights (SEI). This page provides information for former Propelo customers who are now using Software Engineering Insights in the Harness Platform.
 
+This documentation is written for the SEI module within the Harness Platform. If you're migrating from standalone SEI (formerly Propelo), use the [standalone SEI documentation](https://docs.propelo.ai/welcome-to-propelo/) until your migration is complete.
+
 For more information about the acquisition, go to the [Harness blog](https://www.harness.io/blog/harness-acquires-propelo).
 
 ## Get started with Harness
 
-If you're new to Harness, go to [Get started with Harness](/docs/getting-started).
+If you're new to Harness, go to [Get started with Harness](/docs/get-started).
 
 ## Authentication, access, and user management
 
