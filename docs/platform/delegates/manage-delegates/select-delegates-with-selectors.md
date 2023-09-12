@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness runs tasks by using Harness Delegate to connect your environment to resources. Harness selects the best delegate based on previous use or round-robin selection. For more information, go to [How Harness Manager picks delegates](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#how-harness-manager-picks-delegates).
+Harness runs tasks by using Harness Delegate to connect your environment to resources. Harness selects the best delegate based on previous use or round-robin selection. For more information, go to [How Harness Manager picks delegates](/docs/platform/delegates/delegate-concepts/delegate-overview.md#how-harness-manager-picks-delegates).
 
 In some cases, you might want Harness to select specific delegates. In these cases, you can use the **Delegate Selector** settings in Pipelines, Connectors, and so on, with corresponding delegate tags.
 
@@ -33,7 +33,7 @@ You can also add tags to the **Tags** field during the setup process:
 
 ![](./static/select-delegates-with-selectors-17.png)
 
-For detailed information on how delegates are selected during execution, go to [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+For detailed information on how delegates are selected during execution, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
 
 You can select a delegate based on its tags in the **Delegate Selector** settings of Harness entities like pipelines and connectors.
 
@@ -107,7 +107,7 @@ Delegates can be selected for the connector used in a stage's **Infrastructure**
 
 ![](./static/select-delegates-with-selectors-25.png)
 
-import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
+import Selector from '/docs/platform/delegates/shared/selector-infrastructure.md'
 
 <Selector />
 
@@ -139,4 +139,4 @@ https://harness-24.wistia.com/medias/8ffcic0xpi-->
 
 ### See also
 
-* [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
+* [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md)

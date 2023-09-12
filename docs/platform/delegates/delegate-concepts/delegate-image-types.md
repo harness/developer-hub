@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import Delimagetypes from '/docs/platform//2_Delegates/shared/delegate-image-types-intro-table.md'
+import Delimagetypes from '/docs/platform/delegates/shared/delegate-image-types-intro-table.md'
 
 <Delimagetypes />
 
