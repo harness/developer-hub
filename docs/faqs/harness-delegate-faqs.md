@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This article addresses some frequently asked questions about Harness Delegates.
+This topic addresses some frequently asked questions about Harness Delegates.
 
 ### General
 
@@ -60,7 +60,7 @@ Yes. For more information, go to [Build custom delegate images with third-party 
 
 #### How does Harness Manager identify delegates?
 
-All delegates are identified by your Harness account ID that is contained in the delegate YAML.
+All delegates are identified by your Harness account ID in the delegate YAML.
 
 Depending on the type of delegate, there are additional factors.
 
@@ -105,7 +105,7 @@ For information on delegate types, go to [Delegate image types](/docs/platform/d
 #### Where do I install the Harness Delegate?
 
 * **Evaluating Harness:** When evaluating Harness, you might want to install the delegate locally. Ensure that it has access to the artifact sources, deployment environments, and verification providers you want to use with Harness.
-* **Development, QA, and Production:** The delegate should be installed behind your firewall and in the same VPC as the micro-services you are deploying. The delegate must have access to the artifact servers, deployment environments, and cloud providers it needs.
+* **Development, QA, and Production:** The delegate should be installed behind your firewall and in the same VPC as the microservices you are deploying. The delegate must have access to the artifact servers, deployment environments, and cloud providers it needs.
 
 #### When do I install the Harness Delegate?
 
