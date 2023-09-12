@@ -104,21 +104,21 @@ If the connector is for an entire account, rather than a specific repository, yo
 
 Select Git events and, if applicable, one or more actions that will initiate the trigger.
 
-| **Payload Type** | **Event** | **Actions**                                                                                                                                                                                                       |
-| --- | --- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **GitHub** | Pull Request | Select one or more of the following:<ul><li>Close</li><li>Edit</li><li>Open</li><li>Reopen</li><li>Label</li><li>Unlabel</li><li>Synchronize</li></ul>                                                            |
-| | Push | GitHub push triggers respond to commit and tag creation actions by default.                                                                                                                                       |
-| | Release | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li><li>Prerelease</li><li>Publish</li><li>Release</li><li>Unpublish</li></ul>                                                     |
-| | Issue Comment (Only comments on pull requests are supported.) | Select one or more of the following:<ul><li>Created</li><li>Deleted</li><li>Edited</li></ul>                                                                                                                      |
-| **GitLab** | Merge Request | Select one or more of the following:<ul><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li><li>Sync</li></ul>                                                                                 |
-| | Merge Request Comment | Create                                                                                                                                                                                                            |
-| | Push | GitLab push triggers respond to commit and tag creation actions by default.                                                                                                                                       |
-| **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul>                                                                                                         |
-| | Pull Request Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> Note that this event type is  currently supported only for Bitbucket cloud, and not for Bitbucket on-premises triggers. |
-| | Push | Bitbucket Cloud push triggers respond to commit and tag creation actions by default.                                                                                                                              |
-| **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul>                                                                                                                         |
-| | Issue Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul>                                                                                                                          |
-| | Push | Azure SCM push triggers respond to commit actions by default.                                                                                                                                                     |
+| **Payload Type** | **Event** | **Actions** |
+| --- | --- |--------------------------------|
+| **GitHub** | Pull Request | Select one or more of the following:<ul><li>Close</li><li>Edit</li><li>Open</li><li>Reopen</li><li>Label</li><li>Unlabel</li><li>Synchronize</li></ul> |
+| | Push | GitHub push triggers respond to commit and tag creation actions by default. |
+| | Release | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li><li>Prerelease</li><li>Publish</li><li>Release</li><li>Unpublish</li></ul> |
+| | Issue Comment (Only comments on pull requests are supported.) | Select one or more of the following:<ul><li>Created</li><li>Deleted</li><li>Edited</li></ul> |
+| **GitLab** | Merge Request | Select one or more of the following:<ul><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li><li>Sync</li></ul> |
+| | Merge Request Comment | Create |
+| | Push | GitLab push triggers respond to commit and tag creation actions by default. |
+| **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul> |
+| | Pull Request Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> Note that this event type is currently supported only for Bitbucket cloud, and not for Bitbucket on-premises triggers. |
+| | Push | Bitbucket Cloud push triggers respond to commit and tag creation actions by default. |
+| **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul><br/>This event type doesn't support the **Changed Files** [condition](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference#source-branch-target-branch-and-changed-files-conditions), because the Azure DevOps API doesn't provide a mechanism to fetch files in a PR. |
+| | Issue Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
+| | Push | Azure SCM push triggers respond to commit actions by default. This event type supports the **Changed Files** [condition](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference#source-branch-target-branch-and-changed-files-conditions). |
 
 Harness uses your Harness account ID to map incoming events. Harness takes the incoming event and compares it to ALL triggers in the account. You can see the event ID that Harness mapped to a trigger in the webhook's event response body `data`, for example:
 
@@ -300,6 +300,12 @@ For example, the following image shows a trigger that would start a pipeline if 
 * The target branch equals `main`.
 
 ![Example source branch and target branch configurations.](./static/triggers-reference-12.png)
+
+:::info Azure Repos
+
+With Azure Repos, **Changed Files** conditions are supported for **Push** [events](#event-and-actions) only. **Changed Files** conditions aren't supported for **Pull Request** events because the Azure DevOps API doesn't provide a mechanism to fetch files in a PR.
+
+:::
 
 ### Header Conditions
 
