@@ -44,7 +44,7 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the iOS SDK
+##### Fixed issues in the iOS SDK
 
 - Fix runtime failure when target is nil. (FFM-9282)
 
@@ -58,7 +58,7 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the Java SDK
+##### Fixed issues in the Java SDK
 
 - Standardized SDK error codes. (FFM-8148)
 - Removed dependencies Guava and MapDB. (FFM-8840)
@@ -75,7 +75,7 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the Apex SDK
+##### Fixed issues in the Apex SDK
 
 Released Apex SDK 0.1.2 - Avoid loading all flag/target segment config into two cache keys, instead use a key per item, so we don’t exceed SFDC account limits and get cache.ItemSizeLimitExceededException (FFM-9071)
 
