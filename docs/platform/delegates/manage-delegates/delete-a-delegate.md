@@ -16,7 +16,7 @@ Harness Delegate is installed as a Kubernetes [Deployment](https://kubernetes.io
 
 You can verify the delegate you're using by looking at its manifest file or by running `kubectl get all -n harness-delegate-ng`.
 
-To delete a legacy delegate, skip to the "Delete a legacy delegate" section.
+To delete a legacy delegate, go to the [Delete a legacy delegate](#delete-a-legacy-delegate) section.
 
 ### Delete a delegate
 

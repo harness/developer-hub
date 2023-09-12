@@ -100,7 +100,7 @@ If you are adding the image location to Harness as an Artifact in the Service De
 5. Enter the name in **Manifest Name**.
 6. In **Custom Remote Manifest Extraction Script**, enter the path to the Git repo where your remote manifest script is available. This script runs on the Harness Delegate selected for the deployment.
 7. In **Extracted Manifest File Location**, enter the folder path for the manifests.
-8. In **Define Delegate Selector**, Harness selects the best delegate.  Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate. Go to [Use delegate selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md) for more information.
+8. In **Define Delegate Selector**, Harness selects the best delegate.  Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate. Go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md) for more information.
 
    :::info note
    Delegate selectors do not override service infrastructure connectors. Delegate selectors only determine the delegate that executes the operations of your pipeline.

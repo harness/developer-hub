@@ -87,7 +87,7 @@ The start and end times use the time zone set in the ServiceNow account selected
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md)
 * [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 

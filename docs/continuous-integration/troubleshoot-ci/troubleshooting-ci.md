@@ -60,8 +60,8 @@ environment:
 
 For more information about self-signed certificates, delegates, and delegate environment variables, go to:
 
-* [Delegate environment variables](/docs/platform/2_Delegates/delegate-reference/delegate-environment-variables.md)
-* [Docker delegate environment variables](/docs/platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md)
+* [Delegate environment variables](/docs/platform/delegates/delegate-reference/delegate-environment-variables.md)
+* [Docker delegate environment variables](/docs/platform/delegates/delegate-reference/docker-delegate-environment-variables.md)
 * [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md)
 * [Install delegates](/docs/category/install-delegates)
 * [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)

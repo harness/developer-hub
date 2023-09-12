@@ -87,7 +87,7 @@ apt-get update && apt-get install google-cloud-cli && apt-get install google-clo
 </details>
 
 
-For more information, go to [Install the gcloud CLI](https://cloud.google.com/sdk/docs/install) from Google and [Delegate installation overview](/docs/platform/2_Delegates/install-delegates/overview.md).
+For more information, go to [Install the gcloud CLI](https://cloud.google.com/sdk/docs/install) from Google and [Delegate installation overview](/docs/platform/delegates/install-delegates/overview.md).
 
 
 ## Before you begin
@@ -145,9 +145,9 @@ Harness uses GCP connectors during pipeline runs to authenticate and perform ope
    * **Connect through Harness Platform:** Use a direct, secure communication between Harness and GCP.
    * **Connect through a Harness Delegate:** Harness communicates with GCP through a Harness Delegate in GCP. You must choose this option if you chose to inherit delegate credentials.
 2. If connecting through a Harness Delegate, select either:
-   * **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+   * **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
    * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about delegate tags, go to [Use delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors).
-     * Select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+     * Select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 3. Select **Save and Continue** to run the connection test, and then, if the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
 
 <details>
