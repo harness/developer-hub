@@ -106,7 +106,7 @@ TBD commenting out until I hear back from RG https://harness.atlassian.net/brows
 
 * Previously, when configuring Datadog metrics for continuous verification, you could save the configuration without specifying a "Service Instance Identifier". (OIP-833)
 
-  This issue has been resolved. Now, validation checks are implemented that require users to provide a "Service Instance Identifier" when enabling continuous verification for Datadog metrics. 
+  This issue has been resolved. Now, validation checks are implemented that require you to provide a "Service Instance Identifier" when enabling continuous verification for Datadog metrics. 
 
 ### Hotfixes
 
