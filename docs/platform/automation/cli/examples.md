@@ -24,7 +24,7 @@ In this section, we'll walk through an example to show how you can use the Harne
 
     :::
 
-4. Make sure you have a delegate configured and running smoothly. If not, you can also refer to the [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/) guide for steps on setting up the delegate using Helm, Terraform Helm Provider, or Kubernetes manifest.
+4. Make sure you have a delegate configured and running smoothly. If not, you can also refer to the [Install Harness Delegate on Kubernetes or Docker](/tutorials/platform/install-delegate/) guide for steps on setting up the delegate using Helm, Terraform Helm Provider, or Kubernetes manifest.
 
 5. Now, let's create all the resources that is required to execute a pipeline successfully. Let's start with creating a **Harness Secret** to store GitHub PAT.
     - Obtain GitHub personal access token with repo permissions. For steps, go to the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).

@@ -34,8 +34,8 @@ You can install `harness` CLI utility on Linux, MacOS, or Windows in order to in
 ```
 
 ```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz
-tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.14-alpha/harness-v0.0.14-alpha-linux-arm64.tar.gz
+tar -xvf harness-v0.0.14-alpha-linux-arm64.tar.gz
 ```
 
 ```mdx-code-block
@@ -44,8 +44,8 @@ tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz
 ```
 
 ```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz
-tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.14-alpha/harness-v0.0.14-alpha-linux-amd64.tar.gz
+tar -xvf harness-v0.0.14-alpha-linux-amd64.tar.gz
 ```
 
 ```mdx-code-block
@@ -70,13 +70,16 @@ harness --version
 ```
 
 ### Installing the CLI on MacOS
+
 1. Run commands below on terminal
-```curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
-tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+
+```
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.14-alpha/harness-v0.0.14-alpha-darwin-amd64.tar.gz 
+tar -xvf harness-v0.0.14-alpha-darwin-amd64.tar.gz 
 export PATH="$(pwd):$PATH" 
 echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile   
 ```
-(If you are using different variation of terminal , replace `~/.bash_profile` with your bash profile file path)
+(If you are using different variation of terminal, replace `~/.bash_profile` with your bash profile file path)
 
 ```mdx-code-block
 </TabItem>
@@ -86,7 +89,7 @@ echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
 ### Installing the CLI on Windows
 1. Run the commands below in Windows Powershell:
 ```
-Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.14-alpha/harness-v0.0.14-alpha-windows-amd64.zip -OutFile ./harness.zip
 ```
 2. Extract the downloaded zip file and change directory to extracted file location
 3. Run following command in powershell to setup environment variables:
@@ -102,7 +105,7 @@ Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/
 
 ## Configuring Harness CLI
 
-1. Obtain **Harness API Token**. You can follow the steps outlined in the Harness documentation's guide on [how to create a personal API token](https://developer.harness.io/docs/platform/resource-development/apis/add-and-manage-api-keys/).
+1. Obtain **Harness API Token**. You can follow the steps outlined in the Harness documentation's guide on [how to create a personal API token](/docs/platform/automation/api/add-and-manage-api-keys).
 
 2. Retrieve your `Account ID` by navigating within the `Harness UI` to `ACCOUNT SETTINGS` > `Overview` > `Account Id`.
 
