@@ -56,7 +56,7 @@ No. The YAML specifications for the two types are different.
 
 #### Can I create my own delegate?
 
-Yes. For more information, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+Yes. For more information, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### How does Harness Manager identify delegates?
 
@@ -121,7 +121,7 @@ Yes. You can use a simple script to support scenarios where you want to name, co
 
 Developers often need to create delegates in multiple clusters in their environments (Dev, UAT, SIT, Stage, Prod, and so on). This script method gives developers a quick alternative to using the manual process in Harness Manager.
 
-For more information, go to [Automate delegate installation](../platform/2_Delegates/install-delegates/automate-delegate-installation.md).
+For more information, go to [Automate delegate installation](../platform/delegates/install-delegates/automate-delegate-installation.md).
 
 ### Delegate requirements
 
@@ -142,14 +142,14 @@ Remember that the memory and CPU requirements are for the delegate only. Your de
 
 #### What are the delegate network requirements?
 
-To learn more, go to [Delegate requirements](../platform/2_Delegates/delegate-concepts/delegate-requirements.md) and [Permissions and ports for Harness connections](../platform/20_References/permissions-and-ports-for-harness-connections.md).
+To learn more, go to [Delegate requirements](../platform/delegates/delegate-concepts/delegate-requirements.md) and [Permissions and ports for Harness connections](../platform/20_References/permissions-and-ports-for-harness-connections.md).
 
 #### What are the delegate access requirements?
 
 * The Harness Delegate does not require root account access, but the Kubernetes and Docker delegates run as root by default. This is to enable the delegate to install applications using the INIT environment variable in the delegate YAML. If you do not need to install applications, then you can use a non-root account or install the application without the delegate.
 * If you do not run the delegate as root, be aware that you cannot install any software using a delegate.
 
-For more information, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For more information, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### What are the delegate limitations for deployments?
 
@@ -161,7 +161,7 @@ For more information, go to [Build custom delegate images with third-party tools
 Yes. All of the delegate settings include proxy settings you can use to change how the delegate connects to Harness Manager.
 
 :::info note
-By default, the Harness Delegate uses HTTP and HTTPS in its `PROXY_SCHEME` settings. For more information, go to [Configure delegate proxy settings](../platform/2_Delegates/manage-delegates/configure-delegate-proxy-settings.md).
+By default, the Harness Delegate uses HTTP and HTTPS in its `PROXY_SCHEME` settings. For more information, go to [Configure delegate proxy settings](../platform/delegates/manage-delegates/configure-delegate-proxy-settings.md).
 :::
 
 ### Delegate selection
@@ -206,11 +206,11 @@ Yes. The delegate config file includes an `INIT` environment variable that you c
 
 You can run scripts when you first install the delegate, or add your scripts to an existing delegate and rerun its setup.
 
-For more information, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For more information, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### Can I install software on delegate hosts using Harness?
 
-Yes. For more information, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+Yes. For more information, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### Can I use Harness secret expressions in a delegate script?
 
@@ -224,7 +224,7 @@ You can install delegates with custom certificates. For more information, go to 
 
 Yes. By default, the delegate uses a trusted certificate to connect to the Harness Manager over HTTPS.
 
-For Harness SaaS, you can add a self-signed certificates on the delegate host using a [delegate script](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md), or by simply importing the certificate on the host.
+For Harness SaaS, you can add a self-signed certificates on the delegate host using a [delegate script](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md), or by simply importing the certificate on the host.
 
 #### Can I override the truststore of the delegate?
 
@@ -278,7 +278,7 @@ For delegate troubleshooting, go to [Troubleshooting](/docs/category/troubleshoo
 
 Most delegate issues are:
 
-* The delegate does not meet system, network, or access requirements. For more information, go to [Delegate requirements](../platform/2_Delegates/delegate-concepts/delegate-requirements.md) and [Permissions and ports for Harness connections](../platform/20_References/permissions-and-ports-for-harness-connections.md).
+* The delegate does not meet system, network, or access requirements. For more information, go to [Delegate requirements](../platform/delegates/delegate-concepts/delegate-requirements.md) and [Permissions and ports for Harness connections](../platform/20_References/permissions-and-ports-for-harness-connections.md).
 	+ Keep in mind that the delegate host or node needs resources to host the delegate and other software. The delegate resource requirements should be factored in, but they are not the minimum requirements for the infrastructure.
 * The delegate is not running.
 * The delegate does not have required permissions. The delegate uses the credentials you enter in Harness connectors to connect to cloud providers, artifact servers, etc.  
