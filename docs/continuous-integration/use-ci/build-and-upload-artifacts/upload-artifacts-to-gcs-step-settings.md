@@ -85,7 +85,7 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 ## View artifacts on the Artifacts tab
 
-You can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../viewing-builds.md). To do this, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to GCS** step.
+You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../viewing-builds.md). To do this, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to GCS** step.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -134,6 +134,22 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
   </TabItem>
 </Tabs>
 ```
+
+## Run the pipeline
+
+When you run the pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the Upload Artifacts step succeeds, you can find the artifact on GCS. If you used the Artifact Metadata Publisher plugin, you can find the artifact URL on the [Artifacts tab](../viewing-builds.md).
+
+:::tip
+
+On the Artifacts tab, select the step name to expand the list of artifact links associated with that step.
+
+If your pipeline has multiple steps that uploading artifacts, use the dropdown menu on the Artifacts tab to switch between lists of artifacts uploaded by different steps.
+
+<!-- ![](./static/artifacts-tab-with-link.png) -->
+
+<docimage path={require('./static/artifacts-tab-with-link.png')} />
+
+:::
 
 ## YAML examples
 
@@ -291,7 +307,3 @@ pipeline:
   </TabItem>
 </Tabs>
 ```
-
-## Run the pipeline
-
-When you run the pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the Upload Artifacts step succeeds, you can find the artifact on GCS. If you used the Artifact Metadata Publisher plugin, you can find the artifact URL on the [Artifacts tab](../viewing-builds.md).

@@ -24,7 +24,7 @@ You can publish any URL to the **Artifacts** tab on the [Build details page](/do
 
 * Create an artifact, such as a test report.
 * Upload the artifact to cloud storage, such as S3.
-* Use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) or [S3 Upload and Publish Drone plugin](https://github.com/harness-community/drone-s3-upload-publish) to publish the artifact URL on the **Artifacts** tab.
+* Use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) or [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3-upload-publish) to publish the artifact URL on the **Artifacts** tab.
 
 This tutorial demonstrates how to do this by creating a Harness CI pipeline that builds a Java Maven application and generates an [Allure report](https://qameta.io/allure-report/) that you can view in Harness.
 
@@ -147,7 +147,7 @@ At this point, you can run the pipeline and then manually find the uploaded arti
   <TabItem value="artifactmetadata" label="Artifact Metadata Publisher plugin" default>
 ```
 
-The [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) pulls content from cloud storage and publishes it to the **Artifacts** tab. You can use this plugin with any cloud storage provider.
+The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) pulls content from cloud storage and publishes it to the **Artifacts** tab. You can use this plugin with any cloud storage provider.
 
 To use this plugin, add a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) after your upload artifact step.
 
@@ -163,7 +163,7 @@ For example, this step publishes the URL for the combined Allure report on GCS:
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html ## Provide the URL in your cloud storage bucket for the previously-uploaded artifact. If you uploaded multiple artifacts, you can provide a list of URLs.
-                      artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+                      artifact_file: artifact.txt ## Provide any '.txt' file name. Harness uses this to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 ```
 
 :::info
@@ -194,7 +194,7 @@ If you uploaded multiple artifacts, you can provide a list of URLs, such as:
   <TabItem value="s3publisher" label="S3 Upload and Publish plugin">
 ```
 
-If you use S3 as your cloud storage provider, you can use the [S3 Upload and Publish Drone plugin](https://github.com/harness-community/drone-s3-upload-publish) to both upload your artifact and publish the URL to the **Artifacts** tab.
+If you use S3 as your cloud storage provider, you can use the [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3-upload-publish) to both upload your artifact and publish the URL to the **Artifacts** tab.
 
 If you use this plugin, you **do not** need an **Upload Artifacts to S3** step in your pipeline.
 
@@ -211,13 +211,13 @@ Add a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/plugin
                     connectorRef: account.harnessImage
                     image: harnesscommunity/drone-s3-upload-publish
                     settings:
-                     aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference to a Harness secret or pipeline variable containing your AWS access ID.
-                      aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to a Harness secret or pipeline variable containing your AWS access key.
+                     aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference to your AWS access ID.
+                      aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to your AWS access key.
                       aws_default_region: ap-southeast-2 ## Set to your default AWS region.
                       aws_bucket: BUCKET_NAME ## The target S3 bucket.
-                      artifact_file: artifact.txt ## Provide any '.txt' file name. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
-                      source: target/allure-report/complete.html ## Provide the path, in the build workspace, to the file or directory that you want to upload.
-                      target: <+pipeline.sequenceId> ## Optional. Provide a path, relative to the 'aws_bucket', where you want to store the artifact. Do not include the bucket name; you specified this in 'aws_bucket'. If the specified path doesn't exist in the bucket, Harness creates the folder or folders when uploading the artifact. If you don't specify a 'target', Harness uploads the artifact to the bucket's main directory.
+                      artifact_file: artifact.txt ## Provide any '.txt' file name. Harness uses this to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+                      source: target/allure-report/complete.html ## Provide the path to the file or directory that you want to upload.
+                      target: <+pipeline.sequenceId> ## Optional. Provide a path, relative to the 'aws_bucket', where you want to store the artifact. Do not include the bucket name. If unspecified, Harness uploads the artifact to the bucket's main directory.
                     imagePullPolicy: IfNotPresent
 ```
 

@@ -77,7 +77,7 @@ Go has built-in code coverage functionality.
    * If you're using JaCoCo, use the [JaCoCo Drone plugin](https://github.com/harness-community/drone-jacoco-s3) in a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md). This plugin uploads your JaCoCo code coverage report to S3 and publishes it to the **Artifacts** tab on the [Build details page](../viewing-builds.md).
    * With other Java code coverage tools:
       * Add an [Upload Artifacts to GCS step](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md) or [Upload Artifacts to S3 step](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md).
-      * Use the Artifact Metadata Publisher Drone plugin to [view your code coverage report on the Artifacts tab](#view-code-coverage-reports-on-the-artifacts-tab).
+      * Use the **Artifact Metadata Publisher** plugin to [view your code coverage report on the Artifacts tab](#view-code-coverage-reports-on-the-artifacts-tab).
 
 ### JavaScript
 
@@ -283,7 +283,7 @@ You can use [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) to view 
   <TabItem value="artifactmetadata" label="Artifact Metadata Publisher plugin" default>
 ```
 
-The [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) pulls content from cloud storage and publishes it to the **Artifacts** tab.
+The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) pulls content from cloud storage and publishes it to the **Artifacts** tab.
 
 ```mdx-code-block
 <Tabs>
@@ -328,7 +328,7 @@ The [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/
                        image: plugins/artifact-metadata-publisher
                        settings:
                          file_urls: ## Provide the URL to the code coverage artifact that was uploaded in the Upload Artifacts step. If you uploaded multiple artifacts, you can provide a list of URLs.
-                         artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+                         artifact_file: artifact.txt ## Provide any '.txt' file name. Harness uses this to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
    ```
 
 ```mdx-code-block
@@ -341,7 +341,7 @@ The [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/
   <TabItem value="s3publisher" label="S3 Upload and Publish plugin">
 ```
 
-The [S3 Upload and Publish Drone plugin](https://github.com/harness-community/drone-s3-upload-publish) uploads a specified file or directory to AWS S3 and publishes it to the **Artifacts** tab.
+The [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3-upload-publish) uploads a specified file or directory to AWS S3 and publishes it to the **Artifacts** tab.
 
 ```mdx-code-block
 <Tabs>
@@ -381,13 +381,13 @@ The [S3 Upload and Publish Drone plugin](https://github.com/harness-community/dr
                        connectorRef: account.harnessImage
                        image: harnesscommunity/drone-s3-upload-publish
                        settings:
-                         aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference to a Harness secret or pipeline variable containing your AWS access ID.
-                         aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to a Harness secret or pipeline variable containing your AWS access key.
+                         aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference your AWS access ID.
+                         aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to your AWS access key.
                          aws_default_region: ap-southeast-2 ## Set to your default AWS region.
                          aws_bucket: bucket-name ## The target S3 bucket.
-                         artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
-                         source: path/to/target/artifact.xml ## Provide the path, in the build workspace, to the file or directory that you want to upload.
-                         target: <+pipeline.name>/<+pipeline.sequenceId> ## Optional. Provide a path, relative to the 'aws_bucket', where you want to store the artifact. Do not include the bucket name; you specified this in 'aws_bucket'. If the specified path doesn't exist in the bucket, Harness creates the folder or folders when uploading the artifact. If you don't specify a 'target', Harness uploads the artifact to the bucket's main directory.
+                         artifact_file: artifact.txt ## Provide any '.txt' file name. Harness uses this to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+                         source: path/to/target/artifact.xml ## Provide the path to the file or directory that you want to upload.
+                         target: <+pipeline.name>/<+pipeline.sequenceId> ## Optional. Provide a path, relative to the 'aws_bucket', where you want to store the artifact. Do not include the bucket name. If unspecified, Harness uploads the artifact to the bucket's main directory.
                        imagePullPolicy: IfNotPresent
    ```
 

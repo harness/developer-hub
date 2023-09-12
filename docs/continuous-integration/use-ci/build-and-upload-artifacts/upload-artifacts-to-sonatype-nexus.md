@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-You can use the [Nexus Publish Drone plugin](https://github.com/harness-community/drone-nexus-publish) in your CI pipelines to upload artifacts to [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository).
+You can use the [Nexus Publish plugin](https://github.com/harness-community/drone-nexus-publish) in your CI pipelines to upload artifacts to [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository).
 
 You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md). For other upload locations, you can use a script in a [Run step](../run-ci-scripts/run-step-settings.md).
 
@@ -102,13 +102,11 @@ You can use variable expressions for **Settings** values. For example, `password
 
 Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords.
 
-When you run the pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the Nexus Publisher plugin step succeeds, you can find the artifact in your Sonatype Nexus repo. You can use the Artifact Metadata Publisher plugin to [view artifacts on the Artifacts tab](#view-artifacts-on-the-artifacts-tab).
-
 :::
 
 ## View artifacts on the Artifacts tab
 
-You can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifact URLs on the [Artifacts tab](../viewing-builds.md). This makes it easier to find artifacts associated with specific builds. To do this, add another **Plugin** step after the Nexus Publisher plugin step.
+You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifact URLs on the [Artifacts tab](../viewing-builds.md). This makes it easier to find artifacts associated with specific builds. To do this, add another **Plugin** step after the Nexus Publisher plugin step.
 
 ```mdx-code-block
 <Tabs>
@@ -153,6 +151,24 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
   </TabItem>
 </Tabs>
 ```
+
+## Run the pipeline
+
+When you run the pipeline, you can observe the step logs on the [build details page](../viewing-builds.md).
+
+If the Nexus Publisher plugin step succeeds, you can find the artifact in your Sonatype Nexus repo. You can use the Artifact Metadata Publisher plugin to [view artifacts on the Artifacts tab](#view-artifacts-on-the-artifacts-tab).
+
+:::tip
+
+On the Artifacts tab, select the step name to expand the list of artifact links associated with that step.
+
+If your pipeline has multiple steps that uploading artifacts, use the dropdown menu on the Artifacts tab to switch between lists of artifacts uploaded by different steps.
+
+<!-- ![](./static/artifacts-tab-with-link.png) -->
+
+<docimage path={require('./static/artifacts-tab-with-link.png')} />
+
+:::
 
 ## YAML example
 

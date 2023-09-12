@@ -84,7 +84,7 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 ## View artifacts on the Artifacts tab
 
-You can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../viewing-builds.md). To do this, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to JFrog Artifactory** step.
+You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../viewing-builds.md). To do this, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to JFrog Artifactory** step.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -145,6 +145,18 @@ If the Upload Artifacts step succeeds, you can find the artifact in your JFrog r
 ![](./static/upload-artifacts-to-jfrog-522.png)
 
 If you used the Artifact Metadata Publisher, you can find a link to the artifact on the [Artifacts tab](../viewing-builds.md).
+
+:::tip
+
+On the Artifacts tab, select the step name to expand the list of artifact links associated with that step.
+
+If your pipeline has multiple steps that uploading artifacts, use the dropdown menu on the Artifacts tab to switch between lists of artifacts uploaded by different steps.
+
+<!-- ![](./static/artifacts-tab-with-link.png) -->
+
+<docimage path={require('./static/artifacts-tab-with-link.png')} />
+
+:::
 
 ## Troubleshooting
 
