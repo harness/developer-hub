@@ -16,7 +16,23 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-## Latest: Version 80504
+## Latest: Version 807xx
+
+### New features and enhancements
+
+- Harness no longer allows you to upload a Microsoft Excel or CSV file as a configuration file for a service. These files can contain executable payloads that have undesirable consequences. (PL-40796, ZD-44419)
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- When you attempted to view the change log of an encrypted text secret, if the resultant API request returned an HTTP 400 response code, the Harness FirstGen user interface failed to show an informative message. Instead, it showed the following message and prompted you to refresh your browser page to continue: "Something went wrong... This error has been reported and we are looking into it with high priority." (PL-40957, ZD-49757)
+  
+  This issue has been fixed. The Harness UI now shows you a more informative message in the **Change Log** dialog.
+
+## Version 80504
 
 ### New features and enhancements
 

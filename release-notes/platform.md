@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-09-11T10:00:30
+date: 2023-09-18T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -31,9 +31,42 @@ The following deprecated API endpoints will no longer be supported:
 - GET api/resourcegroup
 
 
-## Latest: Version 80504
+## Latest: Version 807xx
 
 ### New features and enhancements
+
+This release does not include new feature and enhancements.
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- Emails inviting users to a Harness project included a stack trace. (PL-40991, ZD-50038)
+
+  This issue has been fixed. 
+
+- After the release of Harness Platform version 80120, the platform did not allow you to view the delegates that you could view earlier, even though you continued to belong to a user group that had permissions to operate on the delegates in your project (the user group had permissions for both delegate configurations and delegates). Harness displayed the following message: `You are not authorized to view delegate configurations. You are missing the following permission: View delegate configurations ...` (PL-40757, ZD-49023)
+
+  This issue has been fixed. 
+
+- The Harness UI fetched only the first 200 organizations when you performed a search for an organization in the **Create Project** dialog (the page size for the API request is 200). If an organization you wanted to specify was not part of this initial set of organizations, the Harness UI did not generate additional API requests, and you were blocked on creating your project. (PL-39198)
+
+  This issue has been fixed. You can now search for and select any organization in your account.
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+  
+#### Version 80504
+
+##### New features and enhancements
 
 - When Harness is configured to use the AppRole ID to fetch an authentication token from HashiCorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
 
@@ -65,11 +98,11 @@ The following deprecated API endpoints will no longer be supported:
    
    This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-### Early access features
+##### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+##### Fixed issues
 
 - The **Create or Select an Existing Connector** dialog did not show any results when you filtered on Nexus connectors. (PL-40904)
   
@@ -91,15 +124,10 @@ This release does not include early access features.
     - You update the associated HashiCorp Vault connector.
     - You test the associated HashiCorp Vault connector manually and the test succeeds.
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-  
 #### Version 80406
 
 ##### New features and enhancements
