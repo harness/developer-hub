@@ -33,7 +33,7 @@ Looking for other methods? See [Add Kubernetes Manifests](/docs/continuous-deliv
 
 ## Supported platforms and technologies
 
-See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies).
+See [Supported Platforms and Technologies](/docs/get-started/supported-platforms-and-technologies).
 
 ## Limitations
 
@@ -54,7 +54,7 @@ You can use Harness secrets for the username and password in your script. For e
 ```bash
 curl -sSf -u "<+secrets.getValue("username")>:<+secrets.getValue("password")>" -O 'https://mycompany.jfrog.io/module/example/manifest.zip'
 ```
-For more information, see [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
+For more information, see [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 
 ## Start a pipeline
@@ -153,7 +153,7 @@ That's all the setup required. You can now deploy the Service and the script is 
 
 When configuring a Helm chart with Custom Remote manifests, in the **Manifest Details** > **Advanced** section, you can select a **Helm Version**, and then add the command flags that you wish to pass based on the version. 
 
-For more information on Helm command flags, go to [Add Helm chart](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts/#add-the-helm-chart).
+For more information on Helm command flags, go to [Add Helm chart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts#add-the-helm-chart).
 
 
 ## Notes

@@ -32,7 +32,7 @@ To do this, create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/l
 
 For example:
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -79,7 +79,7 @@ There are two required policies to read from AWS S3:
 * **Description:** `Provides read-only access to all buckets via the AWS Management Console`
 * **Policy JSON:**
 
-```
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -104,7 +104,7 @@ There are two required policies to read from AWS S3:
 * **Description:** `Harness S3 policy that uses EC2 permissions.`
 * **Policy JSON:**
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -131,7 +131,7 @@ There are two [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest
 * **Description:** `Custom policy for pushing to S3.`
 * **Policy JSON:**
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -145,6 +145,29 @@ There are two [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest
 }
 ```
 
+:::info note
+If the S3 bucket uses a custom AWS Key Management Service (KMS) key, you must set the `kms:GenerateDataKey` permission to allow write access. For more information, go to [S3 bucket access default encryption](https://repost.aws/knowledge-center/s3-bucket-access-default-encryption) in the AWS Knowledge Center.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllObjectActions",
+            "Effect": "Allow",
+            "Action": [
+              "kms:Decrypt",
+              "kms:GenerateDataKey",
+              "s3:*Object"
+            ],
+            "Resource": ["arn:aws:s3:::bucket-name/*"]
+        }
+    ]
+}
+```
+
+:::
+
 </details>
 
 <details>
@@ -154,21 +177,25 @@ There are two [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest
 * **Description:** `Harness S3 policy that uses EC2 permissions.`
 * **Policy JSON:**
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
         {
             "Sid": "VisualEditor0",
             "Effect": "Allow",
-            "Action": "ec2:DescribeRegions",
+            "Action":  [
+              "kms:Decrypt",
+              "kms:GenerateDataKey",
+              "ec2:DescribeRegions"
+            ],
             "Resource": "*"
         }
     ]
 }
 ```
 
-</details>
+</details> 
 
 ### Read and Write to AWS S3
 
@@ -179,7 +206,7 @@ You can have a single policy that reads and writes to an S3 bucket.
 
 Here is a JSON example of a policy that includes AWS console access:
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -212,6 +239,46 @@ Here is a JSON example of a policy that includes AWS console access:
 }
 ```
 
+:::info note
+If the S3 bucket uses a custom AWS Key Management Service (KMS) key, you must set the `kms:GenerateDataKey` permission to allow write access. For more information, go to [S3 bucket access default encryption](https://repost.aws/knowledge-center/s3-bucket-access-default-encryption) in the AWS Knowledge Center.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ConsoleAccess",
+            "Effect": "Allow",
+            "Action": [
+                "kms:Decrypt",
+                "kms:GenerateDataKey",
+                "s3:GetAccountPublicAccessBlock",
+                "s3:GetBucketAcl",
+                "s3:GetBucketLocation",
+                "s3:GetBucketPolicyStatus",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:ListAllMyBuckets"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "ListObjectsInBucket",
+            "Effect": "Allow",
+            "Action": "s3:ListBucket",
+            "Resource": ["arn:aws:s3:::bucket-name"]
+        },
+        {
+            "Sid": "AllObjectActions",
+            "Effect": "Allow",
+            "Action": "s3:*Object",
+            "Resource": ["arn:aws:s3:::bucket-name/*"]
+        }
+    ]
+}
+```
+
+:::
+
 </details>
 
 For more information, go to the following AWS documentation:
@@ -230,7 +297,7 @@ Use these policies to pull or push to ECR. For more information, go to the AWS d
 * **Description:** `Provides read-only access to Amazon EC2 Container Registry repositories.`
 * **Policy JSON:**
 
-```
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -261,7 +328,7 @@ Use these policies to pull or push to ECR. For more information, go to the AWS d
 * **Policy ARN:** `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess`
 * **Policy JSON:**
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -302,7 +369,7 @@ The required policies depend on what you are provisioning. Here are some example
 
 This example policy gives full access to create and manage EKS clusters.
 
-```
+```json
 {
      "Version": "2012-10-17",
      "Statement": [
@@ -329,7 +396,7 @@ This example policy gives full access to create and manage EKS clusters.
 
 This example policy gives limited permission to EKS clusters.
 
-```
+```json
  {
      "Version": "2012-10-17",
      "Statement": [
@@ -390,7 +457,7 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
   
   Here's a sample `kubeconfig`:
   
-  ```
+  ```yaml
   apiVersion: v1
   clusters:
   - cluster:
@@ -472,7 +539,7 @@ To create the AWS user, do the following:
 <details>
 <summary>IAMCredentials.json</summary>
 
-```
+```json
 {
     "Statement": [
         {
@@ -599,7 +666,7 @@ To install Serverless on a Kubernetes delegate, edit the delegate YAML to instal
 1. Open the delegate YAML in a text editor.
 2. Locate the environment variable `INIT_SCRIPT` in the `StatefulSet`.
 
-```
+```yaml
 ...
         - name: INIT_SCRIPT
           value: ""
@@ -608,7 +675,7 @@ To install Serverless on a Kubernetes delegate, edit the delegate YAML to instal
 
 3. Replace the `value` with the follow Serverless installation script:
 
-```
+```yaml
 ...
         - name: INIT_SCRIPT
           value: |-
@@ -649,7 +716,7 @@ The AWS connector settings include:
 * **Tags**: Go to [Tags reference](../../../20_References/tags-reference.md).
 * **Credentials**: Credentials that enable Harness to connect your AWS account. There are three primary options:
   * **Assume IAM Role on Delegate:** This assumes the SA of the Delegate. Ensure the IAM roles attached to the nodes have the right access. This is often the simplest method for connecting Harness to your AWS account and services. Once you select this option, you can select a delegate in the next step of AWS connector creation. Typically, the delegate runs in the target infrastructure.
-  * **AWS Access Key:** The [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](../../../Secrets/2-add-use-text-secrets.md) for both.
+  * **AWS Access Key:** The [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](/docs/platform/secrets/add-use-text-secrets) for both.
   * **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate.
 * **AWS Backoff Strategy:** Go to [AWS Backoff Strategy](#aws-backoff-strategy) below.
 
@@ -683,7 +750,7 @@ The following steps assume this is a new delegate installation and a new AWS con
 5. Add the service account with access to IAM role to the delegate YAML. There are two sections in the Delegate YAML that you must update:
    1. Update the `ClusterRoleBinding` by replacing the subject name `default` with the name of the service account with the attached IAM role, for example:
 
-      ```
+      ```yaml
       ---
       apiVersion: rbac.authorization.k8s.io/v1beta1
       kind: ClusterRoleBinding
@@ -702,7 +769,7 @@ The following steps assume this is a new delegate installation and a new AWS con
 
     2. Add `serviceAccountName` to the `StatefulSet` spec. For example:
 
-      ```
+      ```yaml
       ...
           spec:
             serviceAccountName: myserviceaccount  // New line. Use the same service account name you used in the ClusterRole Binding.

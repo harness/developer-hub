@@ -24,16 +24,16 @@ Perform the following steps to create an AutoStopping proxy for your cloud resou
 
 1. In the **Harness** application, go to **Cloud Costs**.
 2. Under **Setup**, click **Load Balancers**.
-3. Click **Create New Load Balancer**.
+3. Select **Create New Load Balancer**.
 4. Select **Azure**. 
 5. Choose an existing connector or create a new one.
-6. Click **Continue**.
-7. Click **Create AutoStopping Proxy**. 
-8. Click **Continue**.
+6. Select **Continue**.
+7. Select **Create AutoStopping Proxy**. 
+8. Select **Continue**.
 9. In the **Create a new AutoStopping Proxy** window, enter the following information:
     1. Provide a name for the AutoStopping Proxy.
     2. Enter the URL to specify the domain. Make sure that you have updated the DNS mapping in your DNS provider.
-    3. Click **Continue**.
+    3. Select **Continue**.
 
       ![](./static/azure-autoproxy-creation.png)
 
@@ -43,7 +43,7 @@ Perform the following steps to create an AutoStopping proxy for your cloud resou
 13. Select the **Subnet**.
 14. Select the **Security Group** to define the security rules that determine the inbound and outbound traffic.
 15. **TLS Certificate Secret Version**: Enter the value displayed in the **Secret Identifier** field on the Azure console. 
-On your Azure console, go to **Key Vaults**. Under **Objects**, click **Secrets**. 
+On your Azure console, go to **Key Vaults**. Under **Objects**, Select **Secrets**. 
 
 
 :::note
@@ -54,7 +54,7 @@ It is recommended to create the secret using the Azure CLI, and not using the Ge
 Example:
        
 ```
- key-vault % az keyvault secret set --vault-name "sandy-test" --name "MultilineSecret" --file "secretfile.txt"
+ key-vault % az keyvault secret set --vault-name "sandy-test" --name "MultilineSecret" --file "secretfile.crt"
 {
   "attributes": {
     "created": "2022-11-23T10:00:45+00:00",
@@ -74,8 +74,7 @@ Example:
   },
   "value": "This is my\nmulti-line\nsecret\n"
 }
-sandeepbhat@Sandeep Bhat key-vault % vi private-key.txt
-sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-test" --name "PrivateKeytest" --file "private-key.txt"
+sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-test" --name "PrivateKeytest" --file "private-key.pem"
 {
   "attributes": {
     "created": "2022-11-23T10:02:03+00:00",
@@ -101,6 +100,6 @@ sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-
 16. **TLS Private Key Secret Version**: Create another secret for the private key and enter the value in this field.
 17. **Machine type**: Select the type of VM that you want to set the AutoStopping rule for.
 18. **Key Pair**: Enter the SSH key pair.
-19. **API Key**: Enter the NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/Resource-Development/APIs/api-quickstart) for more information.
+19. **API Key**: Enter the NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/automation/api/api-quickstart) for more information.
 20. Enable **Allocate Static IP** if you need to access the VM outside the Resource Group. Update the DNS route to point to the public IP. You don't need to enable this field it is pointing to a private IP provided the DNS resolves. For example, when the DNS resolution is done within the Resource Group.
-21. Click **Save**.
+21. Select **Save**.

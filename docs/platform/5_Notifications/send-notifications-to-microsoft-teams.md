@@ -62,7 +62,7 @@ Select the User Group to which you want to add notification preferences.
 
 In **Notification Preferences**, select **Microsoft Teams Webhook URL**.
 
-Paste the Webhook into **Microsoft Teams Webhook URL** or add it as an [Encrypted Text](../Secrets/2-add-use-text-secrets.md) in Harness and reference it here.
+Paste the Webhook into **Microsoft Teams Webhook URL** or add it as an [Encrypted Text](/docs/platform/secrets/add-use-text-secrets) in Harness and reference it here.
 
 For example, if you have a text secret with the identifier `teamswebhookURL`, you can reference it like this: ​
 

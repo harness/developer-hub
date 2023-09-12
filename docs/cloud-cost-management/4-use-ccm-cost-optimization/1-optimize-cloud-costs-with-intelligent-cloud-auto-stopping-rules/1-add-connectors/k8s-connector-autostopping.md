@@ -55,7 +55,7 @@ You need a target Kubernetes cluster for the Harness Delegate and deployment. Ma
 :::important
 These sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services. Ensure that the cluster has enough memory, storage, and CPU for all of its resource consumers.
 :::
-* Make sure you are a member of the Harness Administrator Group in the Harness FirstGen version. This is required to [create an API key](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
+* Make sure you are a member of the Harness Administrator Group in the Harness FirstGen version. This is required to [create an API key](/docs/platform/automation/api/add-and-manage-api-keys).
 * **Metrics Server**: Metrics Server must be running on the Kubernetes cluster where your Harness Kubernetes Delegate is installed. Before enabling CCM for Kubernetes, you must make sure the utilization data for pods and nodes is available.
   
   
@@ -89,8 +89,8 @@ The following section lists the support for Kubernetes clusters for AutoStopping
 
 There are two ways to add a Kubernetes cluster connector:
 
-* **When Setting Up the Connectors**: You can create Connectors from the Account Resources option in the Account Setup. See [Connect Your Kuberenetes Cluster to CCM](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md).
-* **When Creating an AutoStopping Rule**: You can also add a Connector inline when creating an AutoStopping Rule. If you've added a Kubernetes Connector already as described in the [Connect Your Kuberenetes Cluster to CCM](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md), you can simply select your Kubernetes Connector for which you want to create AutoStopping Rules. This topic explains how to add a Kuberenetes cluster inline when creating an AutoStopping Rule.
+* **When Setting Up the Connectors**: You can create Connectors from the Account Resources option in the Account Setup. See [Connect Your Kuberenetes Cluster to CCM](../../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md).
+* **When Creating an AutoStopping Rule**: You can also add a Connector inline when creating an AutoStopping Rule. If you've added a Kubernetes Connector already as described in the [Connect Your Kuberenetes Cluster to CCM](../../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md), you can simply select your Kubernetes Connector for which you want to create AutoStopping Rules. This topic explains how to add a Kuberenetes cluster inline when creating an AutoStopping Rule.
   
     ![](./static/k8s-connector-autostopping-08.png)
 
@@ -130,7 +130,7 @@ If you have not created a cloud provider connector already, click **New Connecto
     
 	  ![](./static/k8s-connector-autostopping-13.png)
 10. Click **Create a new connector**.
-11. See [Set up CCM for Kubernetes](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md) for instructions on creating a new connector.
+11. See [Set up CCM for Kubernetes](../../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md) for instructions on creating a new connector.
 
 ### Next Step
 

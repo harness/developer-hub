@@ -19,12 +19,12 @@ This topic describes how to use an Okta SCIM integration for automated provision
 You need an understanding of:
 
 * System for Cross-domain Identity Management (SCIM).
-* [Harness' key concepts](../../getting-started/learn-harness-key-concepts.md).
+* [Harness' key concepts](../../get-started/key-concepts.md).
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 You must be an Administrator in your Okta account, and you must be an **Account Admin** in Harness.
 
-You need a Harness [API key and unexpired token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) that has all **Users** and **User Groups** [permissions](/docs/platform/Resource-Development/APIs/api-permissions-reference). API keys inherit permissions from the user they are associated with. If you use an API key for a [service account](./add-and-manage-service-account.md), make sure the service account has all **Users** and **User Groups** permissions.
+You need a Harness [API key and unexpired token](/docs/platform/automation/api/add-and-manage-api-keys) that has all **Users** and **User Groups** [permissions](/docs/platform/automation/api/api-permissions-reference). API keys inherit permissions from the user they are associated with. If you use an API key for a [service account](./add-and-manage-service-account.md), make sure the service account has all **Users** and **User Groups** permissions.
 
 ## Create an Okta app integration
 
@@ -89,7 +89,7 @@ Authorize your Okta app with Harness.
 
 7. For **Authentication Mode**, select **HTTP Header**, and enter your Harness API token in **Bearer**.
 
-   For instructions on creating Harness API keys and tokens, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
+   For instructions on creating Harness API keys and tokens, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
 
    ![](./static/provision-users-with-okta-scim-10.png)
 

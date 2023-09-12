@@ -418,7 +418,7 @@ You can also propagate services between stages. For more information, go to [Pro
 
 When you use Harness GitOps you can add GitOps clusters to an environment. 
 
-To learn more about Harness GitOps, go to [Harness GitOps basics](/docs/continuous-delivery/gitops/harness-git-ops-basics). 
+To learn more about Harness GitOps, go to [Harness GitOps basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics). 
 
 Next, when you create a pipeline, you can select the environment and the GitOps cluster(s) to use.
 

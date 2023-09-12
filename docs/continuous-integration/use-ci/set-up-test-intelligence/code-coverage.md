@@ -223,7 +223,7 @@ To integrate Coveralls in your Harness CI pipelines, follow the Coveralls docume
 
 * For **Step 2: Choose an integration**, use the **Universal Coverage Reporter**.
 * For **Step 3: Configure your project to send coverage to Coveralls**:
-  * Create a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) for your `COVERALLS_REPO_TOKEN`.
+  * Create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) for your `COVERALLS_REPO_TOKEN`.
   * Add the `COVERALLS_REPO_TOKEN` environment variable to steps in your CI pipelines that run tests with code coverage.
   * For the environment variable value, use a Harness expression to [reference the encrypted text secret](/docs/platform/secrets/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier), such as `<+secrets.getValue("YOUR_COVERALLS_SECRET_ID")>`.
 

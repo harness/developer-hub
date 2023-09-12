@@ -1,0 +1,14 @@
+{
+    "label":"Get started with SMP",
+    "position": 10,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Get started with Harness Self-Managed Enterprise Edition"
+    },
+    "customProps":{
+       "helpdocs_category_id":"tvlmjozubh"
+    }
+ }

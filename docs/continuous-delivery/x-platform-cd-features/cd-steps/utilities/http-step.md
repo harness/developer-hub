@@ -1,6 +1,6 @@
 ---
 title: HTTP step
-description: Run HTTP methods in your pipeline.
+description: Run HTTP methods and validate assertions in your pipeline.
 sidebar_position: 1
 ---
 
@@ -8,82 +8,72 @@ This topic describes the settings for the HTTP step.
 
 You can use the HTTP step to run HTTP methods containing URLs, methods, headers, assertions, and variables.
 
-## Step settings
+## Basic settings in the HTTP step
 
-The following sections cover the step settings.
+The following list covers the step settings.
 
-### Name
+- Name: The name of the step. You'll use this name when you reference the step settings. For example, if the step name is HTTP and you want to reference the URL entered in its **URL** setting, use: `<+pipeline.stages.tooltips.spec.execution.steps.HTTP.spec.url>`.
+- Timeout: The timeout for the step. Timeouts can be set at the pipeline level also.
+- URL: The URL for the HTTP call.
+- Method: The [HTTP method](https://restfulapi.net/http-methods/#summary) to use in the step.
+- Request body: The message body of the HTTP message.
 
-The name of the step. You'll use this name when you reference the step settings.
+## Assertions in the HTTP step
 
-For example, if the step name is HTTP and you want to reference the URL entered in its **URL** setting, use:
+**Assertion** is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, use the assertion `<+httpResponseCode>==200`.
 
-`<+pipeline.stages.tooltips.spec.execution.steps.HTTP.spec.url>`
-
-### Timeout
-
-The timeout for the step. Use:
-
-* `w` for weeks
-* `d` for days
-* `h` for hours
-* `m` for minutes
-* `s` for seconds
-* `ms` for milliseconds
-
-The maximum is `53w`.
-
-Timeouts can be set at the pipeline level also.
-
-### URL
-
-The URL for the HTTP call.
-
-### Method
-
-The [HTTP method](https://restfulapi.net/http-methods/#summary) to use in the step.
-
-### Request body
-
-The message body of the HTTP message.
-
-### Assertion
-
-Assertion is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, use the assertion `<+httpResponseCode> == 200`.
-
-The expression `<+httpResponseCode> == 200` will evaluate to true if the HTTP call returns a 200 code.
+The expression `<+httpResponseCode>==200` will evaluate to true if the HTTP call returns a 200 code. You can also use the reverse expression `200==<+httpResponseCode>`.
 
 Expressions can use the following aliases to refer to the HTTP responses, URL, and method.
 
 * `<+httpResponseCode>`
+* `<+httpUrl>`
+* `<+httpMethod>`
 * `<+httpResponseBody>`
 
-### Headers
+### String assertions in the HTTP step
+
+To assert using strings in expressions, use double quotes. Without double quotes, JEXL mistakes the assertions as an expression.
+
+Here are some examples:
+
+- Correct: `"<+pipeline.variables.var1>"=="http"`.
+- Incorrect: `<+pipeline.variables.var1>==http`.
+
+### Integer assertions in the HTTP step
+
+Assertions using integers should be done without any quotes because both sides of the JEXL assertion should use a number format.
+
+Here are some examples:
+
+- Correct: `<+pipeline.variables.EXPECTED_RESPONSE>==<+httpResponseCode>`.
+- Incorrect: `<+pipeline.variables.EXPECTED_RESPONSE>"=="<+httpResponseCode>`.
+
+## Headers in the HTTP step
 
 Enter the media type for the message. For example, if you are using the GET method, the headers are used to specify the GET response body message type.
 
-In **Key**, enter `Token`
-
-In **Value**, enter `<+secrets.getValue("aws-playground_AWS_secret_key")>`
+1. In **Key**, enter `Token`
+2. In **Value**, enter `<+secrets.getValue("aws-playground_AWS_secret_key")>`
 
 Another method:
 
 * **Key**: `variable:`
 * **Value**: `var1,var2:var3`
 
-You can copy the key and paste it in the HTTP step **Header** setting. For more information, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
+You can copy the key and paste it in the HTTP step **Header** setting. For more information, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
 
-### Input variables
+## Input variables in the HTTP step
 
 Create input variables that can be used by other fields within the step. The **Value** setting can contain fixed values, expressions, or runtime inputs.
 
 These variables can be used by other fields like URLs by using the following expressions: 
 
-```<+spec.inputVariables.variable_name>``` or ```<+step.spec.inputVariables.variable_name>```
+`<+spec.inputVariables.variable_name>` or `<+step.spec.inputVariables.variable_name>`
 
 ![](./static/http-step-06.png)
 
-### Output variables
+## Output variables in the HTTP step
 
 Create output variables to be used by other steps in the stage. The **Value** setting can contain any HTTP step input, output, or response information.
 
@@ -103,15 +93,15 @@ To concatenate strings within the JSON functor:
 
 For more information, go to [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
 
-### Advanced step settings
+## Advanced step settings
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Step execution inputs and outputs
 
@@ -151,7 +141,7 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 
 ## Delegate proxy
 
-HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](https://developer.harness.io/docs/platform/Delegates/manage-delegates/configure-delegate-proxy-settings).
+HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](/docs/platform/Delegates/manage-delegates/configure-delegate-proxy-settings).
 
 ## Header capability check
 
@@ -230,7 +220,7 @@ Other common uses are:
 * Open Policy Agent (OPA) policy agent call.
 * General HTTP testing calls to the deployed application.
 
-Go to [Harness REST API quickstart](/docs/platform/Resource-Development/APIs/api-quickstart) for more information.
+Go to [Harness REST API quickstart](/docs/platform/automation/api/api-quickstart) for more information.
 
 ### Add the HTTP step
 
@@ -266,7 +256,7 @@ You can add the HTTP step to any CD Pipeline stage independent of deployment str
 
 In **URL**, enter a URL for the call. It must include the `http://` scheme.
 
-For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/)..
+For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](/docs/platform/references/runtime-inputs/)..
 
 You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
 
@@ -286,7 +276,7 @@ Harness can allow URLs with invalid characters such as a blank space, `^`, `{`, 
 
 <!-- ### Using secrets in the HTTP step URL
 
-In some cases, you might want to use a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) in the **URL** setting. For example, `https://www.google.com/<+secrets.getValue("xyz")>`.
+In some cases, you might want to use a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) in the **URL** setting. For example, `https://www.google.com/<+secrets.getValue("xyz")>`.
 
 It's important to know how Harness uses the secret when evaluating the URL.
 
@@ -330,6 +320,24 @@ Expressions can use the following aliases to refer to the HTTP responses, URL, a
 * `<+httpMethod>`
 * `<+httpResponseBody>`
 
+### String assertions in the HTTP step
+
+To assert using strings in expressions, use double quotes. Without double quotes, JEXL mistakes the assertions as an expression.
+
+Here are some examples:
+
+- Correct: `"<+pipeline.variables.var1>"=="http"`.
+- Incorrect: `<+pipeline.variables.var1>==http`.
+
+### Integer assertions in the HTTP step
+
+Assertions using integers should be done without any quotes because both sides of the JEXL assertion should use a number format.
+
+Here are some examples:
+
+- Correct: `<+pipeline.variables.EXPECTED_RESPONSE>==<+httpResponseCode>`.
+- Incorrect: `<+pipeline.variables.EXPECTED_RESPONSE>"=="<+httpResponseCode>`.
+
 You can use a Fixed Value, Runtime Input, or Expression.
 
 You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too.
@@ -345,7 +353,7 @@ You can use a Fixed Value, Runtime Input, or Expression.
 
 You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too.
 
-You can reference [Harness secrets](/docs/platform/Secrets/add-use-text-secrets) in the **Value** setting too.
+You can reference [Harness secrets](/docs/platform/secrets/add-use-text-secrets) in the **Value** setting too.
 
 For example, in **Key**, enter `Token`.
 

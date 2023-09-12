@@ -5,7 +5,7 @@ title: CV with Multi Service Deployments
 
 # Introduction
 
-[Continuous Verification](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step/) is a critical step in the deployment pipeline that validates deployments. Harness CV integrates with APMs and logging tools to verify that the deployment is running safely and efficiently. Harness CV applies machine learning algorithms to every deployment for identifying normal behavior. This allows Harness to identify and flag anomalies in future deployments. During the Verify step, Harness CV automatically triggers a rollback if anomalies are found.
+[Continuous Verification](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step/) is a critical step in the deployment pipeline that validates deployments. Harness CV integrates with APMs and logging tools to verify that the deployment is running safely and efficiently. Harness CV applies machine learning algorithms to every deployment for identifying normal behavior. This allows Harness to identify and flag anomalies in future deployments. During the Verify step, Harness CV automatically triggers a rollback if anomalies are found.
 
 This topic provides an overview of how you can leverage templates to perform CV in a multi-service or multi-environment deployment.
 
@@ -61,7 +61,7 @@ For the inputs under `Service` and `Environment` use `<+service.identifier>` and
 
 Finally, add the queries for the metrics you configured in the template.
 
-The important part here and how we get CV to work for multi-service deploys is that we can use [Harness variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#service) in our query. Things like `<+service.name>` or `<+service.identifier>`. If those cannot be used to generisize your queries you can also create *service variables* in your service definitions to attach your health-source-specific labels to the respective Harness services. For example you could create a service variable for `app_name` and then reference it in your query with `<+serviceVariables.myvar>`.
+The important part here and how we get CV to work for multi-service deploys is that we can use [Harness variables](/docs/platform/variables-and-expressions/harness-variables/#service) in our query. Things like `<+service.name>` or `<+service.identifier>`. If those cannot be used to generisize your queries you can also create *service variables* in your service definitions to attach your health-source-specific labels to the respective Harness services. For example you could create a service variable for `app_name` and then reference it in your query with `<+serviceVariables.myvar>`.
 
 Here is an example prometheus query that gets a metric based off a kubernetes application name using a service variable:
 

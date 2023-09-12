@@ -11,7 +11,7 @@ helpdocs_is_published: true
 Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. This document explains how to set up SAML authentication.
 
 :::info note
-If the [Harness Self-Managed Enterprise Edition](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md) version is not accessed using the HTTPS load balancer, SAML authentication will fail. Make sure you access the Harness Self-Managed Enterprise Edition version using an HTTPS load balancer, and not an HTTP load balancer.
+If the [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/get-started/onboarding-guide) version is not accessed using the HTTPS load balancer, SAML authentication will fail. Make sure you access the Harness Self-Managed Enterprise Edition version using an HTTPS load balancer, and not an HTTP load balancer.
 :::
 
 ## Support formats
@@ -41,7 +41,7 @@ Ensure that you have at least two corresponding user accounts when setting up an
 To set up Harness with Okta as a SAML SSO provider, you exchange the necessary information between your Okta app and Harness.
 
 :::info note
-Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to [SAML SSO with Harness Overview](#saml-sso-with-harness-overview).
+Users are not created as part of the SAML SSO integration. Okta user accounts must exist prior to exchanging information between your Okta account and Harness. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to [SAML SSO with Harness Overview](#saml-sso-with-harness-overview).
 :::
 
 This section describes the steps you must perform to use an Okta app for Harness SAML SSO.
@@ -318,6 +318,44 @@ The following image shows the basic exchange of information between Harness and 
 
 ![](./static/single-sign-on-saml-79.png)
 
+### Users in over 150 groups
+
+When a user has many group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
+
+If a user is a member of a larger number of groups, the groups are omitted and a link to the Graph endpoint to obtain group information is included instead.
+
+To invoke the API, Harness requires **Client ID** and **Client Secret** for your registered app.
+
+To get this information, do the following:
+
+1. In your Azure account, go to **App registrations**.
+2. Click on your app. Copy the Application (client) ID and paste it in **Client ID** in your Harness account.
+3. In your Azure account, go to **App registrations**. Click **Certificates and Secrets**.
+4. Click New Client Secret.
+5. Add a description and click **Add**.
+6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](../Secrets/2-add-use-text-secrets.md).
+7. Select the above secret reference in the Client Secret field in your Harness account.
+
+When the user authenticating SAML is part of more than 150 groups in Azure active directory, you must set `User.Read.All` access for the application if you want to configure the optional **Client ID** and **Client Secret**. For more information on Azure application permissions, go to [Application permissions](https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93) in the Azure documentation.
+
+To set `User.Read.All` access for the application, do the following:
+
+1. In Azure, go to **Manage**, and then select **API Permissions**.
+2. Select **Add a permission**.
+3. Under **Microsoft APIs**, select Microsoft Graph, and then select **Application permissions**.
+4. Add the `User.Read.All` permission.
+
+The following App registration permissions are required to configure the optional `client-id` and `client-secret` for Harness SAML SSO with the Azure app:
+
+- `Directory.ReadWrite.All`
+- `Group.ReadWrite.All`
+- `GroupMember.ReadWrite.All`
+- `User.ReadWrite.All`
+
+:::info note
+You must set the above for both Delegated permissions and Application permissions.
+:::
+
 ### Azure User Accounts
 
 The Harness User accounts and their corresponding Azure user accounts must have the same email addresses.
@@ -344,7 +382,7 @@ You must enter the **Harness SAML Endpoint URL** from Harness in your Azure app 
 Next, you will use the **SAML SSO Provider** settings in Harness to set up your Azure app **Single sign-on**.
 
 :::info note
-For [Harness Self-Managed Enterprise Edition](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md), replace **app.harness.io** with your custom URL.  
+For [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/get-started/onboarding-guide), replace **app.harness.io** with your custom URL.  
 If you use a custom Harness subdomain in any Harness version, like **example.harness.io**, use that URL.
 :::
 
@@ -419,7 +457,7 @@ To test Azure SSO using Azure, do the following:
    
    ![](./static/single-sign-on-saml-90.png)
 
-2. In the **Test** panel, click **Sign in as current user**. If the settings are correct, you are logged into Harness. If you cannot log into Harness, the **Test** panel will provide debugging information. See also [Debug SAML-based single sign-on to applications in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-v1-debug-saml-sso-issues?WT.mc_id=UI_AAD_Enterprise_Apps_Testing_Experience) from Azure.
+2. In the **Test** panel, click **Sign in as current user**. If the settings are correct, you are logged into Harness. If you cannot log into Harness, the **Test** panel will provide debugging information. For more information, go to [Debug SAML-based single sign-on to applications in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-v1-debug-saml-sso-issues?WT.mc_id=UI_AAD_Enterprise_Apps_Testing_Experience) from Azure.
 
 To test Azure SSO using Harness, do the following:
 
@@ -523,7 +561,7 @@ To get this information, do the following:
 3. In your Azure account, go to **App registrations**. Click **Certificates and Secrets**.
 4. Click New Client Secret.
 5. Add a description and click Add.
-6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](../Secrets/2-add-use-text-secrets.md).
+6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](/docs/platform/secrets/add-use-text-secrets).
 7. Select the above secret reference in the Client Secret field in your Harness account.
    
    ![](./static/single-sign-on-saml-100.png)

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart.md).This topic describes how to set up the Harness Kubernetes Service and Artifact Source for an Azure deployment:
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart.md).This topic describes how to set up the Harness Kubernetes Service and Artifact Source for an Azure deployment:
 
 * [Application Setup](2-service-and-artifact-source.md#application-setup)
 * [Harness Service Setup](2-service-and-artifact-source.md#harness-service-setup)

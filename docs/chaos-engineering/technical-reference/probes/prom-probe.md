@@ -177,6 +177,118 @@ Listed below is the probe schema for the Prometheus probe, with properties share
   </tr>
 </table>
 
+### Authentication
+
+This establishes a fundamental authentication mechanism for the Prometheus server. The username:password, encoded in base64, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field. 
+It's important to note that `credentials` and `credentialsFile` are two options that cannot be used simultaneously.
+
+<table>
+  <tr>
+   <td><strong>Field</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+   <td><strong>Type</strong>
+   </td>
+   <td><strong>Range</strong>
+   </td>
+   <td><strong>Notes</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>credentials
+   </td>
+   <td>Flag to hold the basic auth credentials in base64 format
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>credentials</code> comprises the Prometheus server's basic authentication credentials in the form of username:password, encoded using base64 format
+   </td>
+  </tr>
+  <tr>
+   <td> credentialsFile
+   </td>
+   <td>Flag to hold the basic auth credentials file path
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>credentials</code> encompasses the filepath for basic authentication credentials, which are mounted to the experiment pod as volume secrets. These secrets consist of username:password encoded in base64 format for the Prometheus server
+   </td>
+  </tr>
+</table>
+
+### TLS
+
+It offers the mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key, to perform the validation. 
+Alternatively, you have the option to enable the `insecureSkipVerify` check to bypass certificate validation.
+
+<table>
+  <tr>
+   <td><strong>Field</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+   <td><strong>Type</strong>
+   </td>
+   <td><strong>Range</strong>
+   </td>
+   <td><strong>Notes</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>caFile
+   </td>
+   <td>Flag to hold the ca file path
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>caFile</code> holds the file path of the CA certificates utilized for server TLS verification
+   </td>
+  </tr>
+  <tr>
+   <td>certFile
+   </td>
+   <td>Flag to hold the client cert file path
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>certFile</code> holds the file path of the client certificates utilized for TLS verification
+   </td>
+  </tr>
+  <tr>
+   <td>keyFile
+   </td>
+   <td>Flag to hold the client key file path
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>keyFile</code> holds the file path of the client key utilized for TLS verification
+   </td>
+   </tr>
+  <tr>
+   <td>insecureSkipVerify
+   </td>
+   <td>Flag to skip the tls certificates checks
+   </td>
+   <td>Optional
+   </td>
+   <td><code>boolean</code>
+   </td>
+   <td>The <code>insecureSkipVerify</code> skip the tls certificates checks
+   </td>
+  </tr>
+</table>
+
 ### Run properties
 
 <table>
@@ -278,6 +390,10 @@ probe:
       comparator:
         criteria: "==" #supports >=,<=,>,<,==,!= comparison
         value: "<value-for-criteria-match>"
+      auth:
+        credentials: "base64(<username:password>)"
+      tlsConfig:
+        insecureSkipVerify: true
     mode: "Edge"
     runProperties:
       probeTimeout: 5

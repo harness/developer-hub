@@ -186,7 +186,7 @@ When defined in a **Plugin** step's **Settings**, don't include the `PLUGIN_` pr
 
 You can use [Harness expressions](/docs/platform/references/runtime-inputs/#expressions) for **Settings** values. For example `password: <+stage.variables.[TOKEN_SECRET]>` supplies a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) containing a [secret](/docs/category/secrets) to a setting called `password`.
 
-Related to this, it is a best practice to use [text secrets](/docs/platform/Secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by plugins.
+Related to this, it is a best practice to use [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by plugins.
 
 :::
 
@@ -197,3 +197,9 @@ The following resources demonstrate how to create Drone plugins. The process for
 * [Drone tutorial: Example Bash plugin](https://docs.drone.io/plugins/tutorials/bash/)
 * [Drone tutorial: Example Go plugin](https://docs.drone.io/plugins/tutorials/golang/)
 * [Video tutorial: Building your first Drone plugin](https://www.youtube.com/watch?v=JJgkX9ZYPpY)
+
+<!--:::tip
+
+Harness CI supports `DRONE_` environment variables. For more information, go to the CI environment variables reference ../optimize-and-more/ci-env-var.md .
+
+:::-->

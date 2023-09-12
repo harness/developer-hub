@@ -200,7 +200,7 @@ Enable the following permissions in AWS to execute cloud governance rules:
 :::info
 * This is not an exhaustive list; you may require additional permissions to support custom rules.
 * A yellow underline in a custom policy indicates that you need permission to support the underlined filters and/or actions.
-To learn how to add missing permissions in AWS, go to [Add permissions](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#add-permissions).
+To learn how to add missing permissions in AWS, go to [Add permissions](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#add-permissions).
 :::
 
 

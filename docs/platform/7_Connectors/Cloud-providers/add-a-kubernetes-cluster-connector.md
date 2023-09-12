@@ -16,7 +16,7 @@ Once connected, you can use Kubernetes and Harness for provisioning infrastructu
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../../../docs/getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 
 ### Visual summary
@@ -66,7 +66,7 @@ When you switch or modify the IAM role, it might take up to 5 minutes to take ef
 
 ### Supported platforms and technologies
 
-For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../../../docs/getting-started/supported-platforms-and-technologies.md).
+For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../../../docs/get-started/supported-platforms-and-technologies.md).
 
 ### Add a Kubernetes cluster connector
 

@@ -6,7 +6,7 @@ sidebar_position: 60
 
 To stay aligned and better serve customers, development teams need to understand how a feature is being released, when Jira issues have been deployed, and whether a build has passed or failed. Jira integrations in your CI pipelines provide insights into feature development and release information in Jira by automatically updating the **Deployment** or **Build** fields in Jira.
 
-To integrate Harness CI and Jira, install the **CI Enterprise by Harness** app in your Jira instance, generate an authentication token, and then add a **Plugin** step to your pipeline. If you haven't created a Harness CI pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+To integrate Harness CI and Jira, install the **CI Enterprise by Harness** app in your Jira instance, generate an authentication token, and then add a **Plugin** step to your pipeline. If you haven't created a Harness CI pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 
 ## Install the app
 
@@ -14,7 +14,7 @@ The **CI Enterprise by Harness** app uses the [Jira Drone plugin](https://plugin
 
 1. Install the [CI Enterprise by Harness app](https://marketplace.atlassian.com/apps/1227511/ci-enterprise-by-harness) in your Jira instance.
 2. Go to the **CI Enterprise by Harness** app configuration page.
-3. Generate an authentication token, and save it as a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets).
+3. Generate an authentication token, and save it as a [Harness text secret](/docs/platform/secrets/add-use-text-secrets).
 
 ## Add a Plugin step
 
@@ -36,7 +36,7 @@ import TabItem3 from '@theme/TabItem';
 
 | Keys | Required or optional | Description | Value example |
 | - | - | - | - |
-| `CONNECT_KEY` | Required | [An expression referencing your Jira auth token secret](/docs/platform/Secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier). | `<+secrets.getValue("jiraKey")>` |
+| `CONNECT_KEY` | Required | [An expression referencing your Jira auth token secret](/docs/platform/secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier). | `<+secrets.getValue("jiraKey")>` |
 | `PROJECT` | Required | Your Jira project key.<br/>For example, a project called `My Test` might have a project key of `MYT`. | `MYT` |
 | `INSTANCE` <!--CONNECT_HOSTNAME?--> | Required | Your Jira hostname prefix, such as `myorg` in `myorg.atlassian.net`. | `myorg` |
 | `ENVIRONMENT_NAME` | Optional | If included, Harness updates the Jira **Deployment** field when there is a deployment to the specified environment.<br/>If omitted, Harness updates the Jira **Build** field. | `production` |
@@ -82,7 +82,7 @@ To update the Jira **Deployment** field, instead of the **Build** field, include
 
 | Keys | Required or optional | Description | Value example |
 | - | - | - | - |
-| `CONNECT_KEY` | Required | [An expression referencing your Jira auth token secret](/docs/platform/Secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier). | `<+secrets.getValue("jiraKey")>` |
+| `CONNECT_KEY` | Required | [An expression referencing your Jira auth token secret](/docs/platform/secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier). | `<+secrets.getValue("jiraKey")>` |
 | `PROJECT` | Required | Your Jira project key.<br/>For example, a project called `My Test` might have a project key of `MYT`. | `MYT` |
 | `INSTANCE` <!--CONNECT_HOSTNAME?--> | Required | Your Jira hostname prefix, such as `myorg` in `myorg.atlassian.net`. | `myorg` |
 | `ENVIRONMENT_NAME` | Optional | If included, Harness updates the Jira **Deployment** field when there is a deployment to the specified environment.<br/>If omitted, Harness updates the Jira **Build** field. | `production` |

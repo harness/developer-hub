@@ -2,6 +2,8 @@
 title: Wait step
 description: Pause pipeline execution using the Wait step.
 sidebar_position: 5
+redirect_from:
+  - /docs/continuous-delivery/cd-execution/cd-general-steps/wait-step
 ---
 
 :::note

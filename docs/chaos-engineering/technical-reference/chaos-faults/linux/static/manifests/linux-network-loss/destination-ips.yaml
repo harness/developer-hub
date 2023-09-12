@@ -7,4 +7,4 @@ metadata:
 spec:
   networkChaos/inputs:
     destinationIPs: '1.1.1.1'
-    networkInterface: "eth0"
+    networkInterfaces: "eth0"

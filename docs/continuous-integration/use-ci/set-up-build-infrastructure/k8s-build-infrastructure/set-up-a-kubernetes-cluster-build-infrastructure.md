@@ -11,11 +11,17 @@ helpdocs_is_published: true
 
 This topic describes how you can use a Kubernetes cluster build infrastructure for the **Build** stage in a Harness CI pipeline.
 
-This topic assumes you have a basic understanding of [Harness' key concepts](/docs/getting-started/learn-harness-key-concepts.md).
+This topic assumes you have a basic understanding of [Harness' key concepts](/docs/get-started/key-concepts.md).
 
 ## Important notes
 
 Review the following important information about using Kubernetes cluster build infrastructures for your Harness CI builds.
+
+:::info
+
+The Kubernetes cluster build infrastructure option is only available with Harness CI Team and Enterprise plans.
+
+:::
 
 ### Privileged mode is required for Docker-in-Docker
 
