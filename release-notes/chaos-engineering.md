@@ -34,7 +34,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Enhanced Docker Service Kill chaos fault to support containerd service as well. User can select type of service via a new tunable (SERVICE_NAME) they want to kill. (CHAOS-2220)
 
-* Added support for experiment run specific manifest download from auxiliary nav when viewing specific run details. (CHAOS-1832)
+* Added support for experiment run specific manifest download. Now, Users can download experiment run specific manifest from right sidebar on Execution graph page. (CHAOS-1832)
 
 ### Early access
 
@@ -44,7 +44,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Resilience Probes (This feature is currently behind a feature flag named `CHAOS_PROBES_ENABLED`)
     - Users had to click on Setup Probe button 2 times. It should now work only with a single click. It was dependent on formik validations, which in turn was halting the functionality of handleSubmit due to incorrect Yup validations. (CHAOS-2364)
-   - When using same probes in 2 faults under same chaos experiment, Probe API was returning probe 2 times in 2nd fault. This was due to probeNames being a global variable and using the same probe name multiple times was causing the name to get appended without re-initializing the variable. Scoping it down to local scope fixed this issue. (CHAOS-2452)
+    - When using the same probes in two faults under same chaos experiment, Probe API was returning the probe two times in the second fault. This was due to `probeNames` being a global variable and using the same probe name multiple times was causing the name to be appended without re-initializing the variable. Scoping it down to local scope fixed this issue. (CHAOS-2452)
 
 ### Fixed issues
 
