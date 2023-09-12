@@ -1,6 +1,6 @@
 ---
-title: Ingest Scan Results from Snyk
-description: This workflow describes how to ingest Snyk scan results into a Harness pipeline.  
+title: Run Snyk scans and ingest results
+description: Use Snyk to scan repositories and container images  
 sidebar_position: 90
 ---
 
@@ -52,7 +52,7 @@ The scan stage in this pipeline has the following steps:
 
 1. Add a [codebase connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) to your pipeline that points to the repository you want to scan. 
 
-2. Add a Security Tests or Build stage to your pipeline
+2. Add a Security Tests or Build stage to your pipeline.
 
 3. Go to the Overview tab of the stage. Under **Shared Paths**, enter the following path: `/shared/customer_artifacts`
 

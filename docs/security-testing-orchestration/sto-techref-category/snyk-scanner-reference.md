@@ -10,14 +10,9 @@ Harness STO supports the following scan types for the following Snyk products:
 * Snyk Code  —  `ingestionOnly` 
 * Snyk Container  — `ingestionOnly` 
 
-For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans.md).
+For complete end-to-end workflow descriptions, go to [Run Snyk scans and ingest results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans.md).
 
 ## Before you begin
-
-### Important notes
-
-- Container Image scans are currently supported for Ingestion scan modes only.
-- 
 
 ### Docker-in-Docker requirements
 
@@ -99,12 +94,6 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
 <StoSettingScanTypeCont />
-
-:::info note
-
-
-
-:::
 
 
 #### Name 
@@ -238,8 +227,4 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
-
-## Synk ingestion pipeline example
-
-
 
