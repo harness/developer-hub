@@ -28,20 +28,15 @@ You can't delete predefined profiles. If you don't want to use a predefined prof
 
 Configure basic information for the Trellis profile, such as a **Name** and an optional **Description**.
 
-## Association
+## Associations and exclusions
 
-In the **Association** section of your Trellis profile, you can map [Collections](../sei-collections/manage-collections.md) to the Trellis profile and configure **Advanced Options**.
+In the **Association** section of your Trellis profile, you can map [Collections](../sei-collections/manage-collections.md) to the Trellis profile, map development stages, and configure exclusions.
 
-<!-- image .gitbook/assets/Collection_mapping_profile.png - mapping Collections in trellis profile -->
-
-The **Advanced Options** include:
-
-* **List the PRs/commits to be excluded from the current Trellis profile:** These settings are useful in scenarios where you want to ignore certain types of PRs and commits.
-  * If excluding PRs, the commits associated with those PRs are also excluded.
-  * If excluding commits, only the commits are excluded. PRs that contain those commits are not excluded.
-* **List the development stages involved:** Select the relevant issue management statuses to attribute work done by your team.
-
-<!-- image .gitbook/assets/Status\_mapping\_advanced\_options.png - Associations section - advanced options -->
+* **Associations:** Select Collections to associate with this Trellis Profile.
+* **Development stage mapping:** Select relevant development stages as defined in your issue management tool. This is useful if you want to attribute scores to developers based on their contributions at different stages of a project's life cycle.
+* **Exclusions:** Exclusions are useful in scenarios where you want to ignore certain types of PRs and commits.
+   * **Exclude pull requests:** List PRs to exclude from Trellis Score calculations. If excluding PRs, the commits associated with those PRs are also excluded.
+   * **Exclude commits:** List commits to exclude from Trellis Score calculations. If excluding commits, only the commits are excluded. PRs that contain those commits are not excluded, unless you also excluded them in **Exclude pull requests**.
 
 ## Factors and Weights
 
@@ -56,8 +51,6 @@ In the subsections for the individual factors, you can:
 
 * Adjust the metrics that are included in each factor's calculation. For information about the metrics behind each factor, go to [Trellis Score](../sei-metrics-and-reports/trellis-score.md).
 * Define target performance ranges for each metric.
-
-<!-- image .gitbook/assets/Quality\_factor\_conf (1).png - Adjusting the Quality factor in a Trellis profile -->
 
 ### Enable the Impact factor
 

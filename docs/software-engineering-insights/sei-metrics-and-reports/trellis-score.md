@@ -4,7 +4,7 @@ description: Trellis Scores helps you understand your team's productivity.
 sidebar_position: 70
 ---
 
-Trellis Scores are a proprietary scoring mechanism from SEI. Your Trellis Score helps you understand your team's productivity. Trellis Scores are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. You can adjust the weight given to each factor.
+Trellis Scores are a proprietary scoring mechanism from SEI that help you understand your team's productivity. Trellis Scores are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. You can adjust the weight given to each factor, allowing for tailored assessments based on individual profiles.
 
 ## Quality
 
@@ -14,6 +14,12 @@ Quality is defined by two metrics: Percentage of rework and percentage of legacy
 * **Percentage of Legacy Rework:** This measure reflects changes to old code and changes added more than 30 days ago. A lower percentage of change is associated with a better Trellis Score. Industry standards recommend that an acceptable percentage is between between 7.5 and 37.5 percent.
 
 By default, all changes to code written in the last 30 days are considered rework.
+
+:::info What is rework?
+
+Rework is defined as changes to existing code, regardless of the age of the code. This includes alterations, fixes, enhancements, or optimizations. Rework is measured to gauge code stability, the frequency of necessary changes, and the efficiency of development efforts.
+
+:::
 
 ## Impact
 
@@ -25,7 +31,7 @@ To configure this, go to [Configure the Impact Factor in a Trellis profile](../s
 
 :::
 
-Impact is defined by two metrics: High impact bugs worked on per month and high impact stories worked on per month.
+Impact is defined by two metrics: High impact bugs worked on per month and high impact stories worked on per month. *Impact* refers to the ticket's perceived significance or priority.
 
 * **High Impact bugs worked on per month:** This measure represents the number of resolved, high impact bug tickets that the developer was assigned to in the past 30 days. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of bugs worked on per month is between 2 and 3.
 * **High Impact stories worked on per month:** This measure represents the number of resolved, high impact story tickets that the developer was assigned to in the past 30 days. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of stories worked on per month is between 3 and 7.5.
@@ -45,9 +51,9 @@ Volume measures the quantity of code that the developer is working on. The defau
 
 Speed measures the pace at which developers are writing and submitting code. Speed is determined by the following three metrics:
 
-* **Average Coding Days per Week:** A coding day is any day where a developer commits code. The recommended goal for coding days per week is 3.2 days.
-* **Average PR Cycle Time:** This represents the time elapsed from PR creation to closing. The average PR cycle time should be less than 7 days.
-* **Average Time Spent Working On Issues:** This is the average time spent on each issue resolved in the last 30 days. This typically doesn't include time spent in the **Done** status. Time is counted only when the developer is assigned to an issue. The average time spent working on issues should be between 3 and 5 days.
+* **Average Coding Days per Week:** A coding day is any day where a developer commits code. This metric is calculated by dividing the number of coding days by a specified number of weeks. This metric quantifies how consistently developers actively contribute code to the codebase. Higher values indicate frequent code commits, which can indicate faster development. The recommended goal for coding days per week is 3.2 days.
+* **Average PR Cycle Time:** This represents the time elapsed from PR creation to closing. The average PR cycle time should be less than 7 days. This metric is calculated as the elapsed time between PR creation and closure.
+* **Average Time Spent Working On Issues:** This is the average time spent on each issue resolved in the last 30 days or any specified time period. This typically doesn't include time spent in the **Done** status. Time is counted only when the developer is assigned to an issue. The average time spent working on issues should be between 3 and 5 days. This metric is calculated by dividing the total time by the total number of issues recorded in the period.
 
 :::caution
 
@@ -77,7 +83,7 @@ A [Trellis profile](../sei-profiles/trellis-profile.md) is required to calculate
 
 In the **Factors and Weights** section of your Trellis profile, you can enable and disable individual [factors] to include or exclude them from your Trellis Score calculation.
 
-<!-- image: factors and weights section of trellis profile -->
+You can set benchmarks or thresholds for each factor. Benchmarks define target performance levels that need to be met or exceeded for a positive score.
 
 You can also adjust the weight of each factor. Assign a low weight (1-5) to make less important factors have a lower impact on your score. Assign a higher weight (5-10) to make more important factors have a higher impact on your score.
 
@@ -116,7 +122,7 @@ You can edit the widget to show different values (add/remove columns) or apply f
 <figcaption>Individual Raw Stats</figcaption>
 </figure>
 
-You can also use the **Download** icon to download the raw stats report.
+You can use the **Download** icon to download the raw stats report.
 
 <figure>
 

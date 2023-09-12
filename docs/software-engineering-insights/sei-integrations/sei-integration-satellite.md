@@ -96,6 +96,13 @@ If the proxy uses `https`, then the connection only works with a valid SSL certi
 
 </details>
 
+:::info
+
+* The recommended memory for one container is 4GB to 6GB.
+* You can deploy multiple containers for the same integration using the same configuration file.
+
+:::
+
 ## Run the Satellite container
 
 ```mdx-code-block
@@ -273,7 +280,7 @@ template:
         imagePullPolicy: Always
         resources:
           limits:
-          memory: "512Mi"
+          memory: "5Gi"
           cpu: "1000m"
         volumeMounts:
           - name: config-volume
