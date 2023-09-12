@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-09-08T13:49:25
+date: 2023-09-11T13:49:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -27,7 +27,7 @@ This release does not include early access features.
 
 ### Fixed issues in the Javascript SDK
 
-- Changing evaluation handling for Flutter Web (FFM-8963)
+- Changing evaluation handling for Flutter Web. (FFM-8963)
 
 ## Previous releases
 
