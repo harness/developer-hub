@@ -343,9 +343,9 @@ This fault helps determine how resilient an application is when a specific proce
 
 <FaultDetailsCard category="vmware">
 
-### VMware Windows Disk Fill
+### VMware Windows Disk Stress
 
-VMware Windows Disk Fill fills the disk space on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+VMware Windows Disk Stress fills the disk space on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <accordion color="green">
 <summary>Use cases</summary>
