@@ -163,9 +163,9 @@ export const experiments: ExperimentDetails[] = [
     category: "vmware",
   },
   {
-    name: "VMware Windows Disk Fill",
+    name: "VMware Windows Disk Stress",
     description:
-      "VMware Windows Disk Fill fills the disk space on Windows OS based VMware VM.",
+      "VMware Windows Disk Stress fills the disk space on Windows OS based VMware VM.",
     tags: ["disk"],
     category: "vmware",
   },
