@@ -594,9 +594,9 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 </Tabs>
 ```
 
-### Execute the pipeline
+### Manually execute deployment pipelines
 
-Finally, it's time to execute your pipeline. 
+Finally, it's time to execute your pipeline. Every exection of a CD pipeline leads to a deployment.
 
 1.   Select **Run**, and then select **Run Pipeline** to initiate the deployment.
      - Observe the execution logs as Harness deploys the workload and checks for steady state.
@@ -612,13 +612,22 @@ Finally, it's time to execute your pipeline.
          kubectl port-forward svc/guestbook-ui 8080:80
          ```
 
+### Automate deployments
+
+#### Using Triggers
+
+With [Pipeline Triggers](/docs/category/triggers), you can start automating your deployments based on events happening in an external system. This system could be a Source Repository, an Artifact Repository, or a third party system. Any Developer with Pipeline Create and Edit permissions can configure a trigger in Harness. 
+
+Follow the [Pipeline Triggers](/tutorials/cd-pipelines/trigger) tutorial to see triggers in action.
+
+#### Using API
+
 ### Congratulations!🎉
 
 You've just learned how to use Harness CD to deploy an application using a Kubernetes manifest.
 
 #### What's Next?
 
-- Keep learning about Harness CD. For example, add [Triggers](/docs/platform/Triggers/triggering-pipelines) to your pipeline that initiate pipeline deployments in response to Git events.
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
 ## How to deploy your own app by using Harness

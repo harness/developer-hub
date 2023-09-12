@@ -26,7 +26,7 @@ This table explains how to map your existing CD needs to the key Harness concept
 
 ## Service
 
-A Service represents your microservices and other workloads that can be deployed, monitored, or changed independently.
+A Harness Service is a logical construct that represents your microservices and other workloads. Each Service can be deployed, monitored, or changed independently.
 
 When a Service is added to the stage in a Pipeline, you define its Service Definition. Service Definitions represent the real artifacts, manifests, and variables of a Service. They are the actual files and variable values. You can also propagate and override a Service in subsequent stages by selecting its name in that stage's Service settings.
 
@@ -37,7 +37,7 @@ For examples, go to:
 
 ### Service Instance
 
-A **Service Instance** is the number of instances of a service running at any given moment (pods in case of Kubernetes, hosts in case of SSH-based deployments, etc).
+A logical Service when deployed onto the infrastructure of choice comes into existence in the form of service instances. For example, a Kubernetes service when deployed with a replica count of 3 leads to creation of 3 service instances. Hence, the **Service Instance** term in Harness represents the number of instances of a service running at any given moment (pods in case of Kubernetes, hosts in case of SSH-based deployments, etc).
 
 Harness periodically tracks the count of running Service Instances every 10 minutes and stores it in the Harness database.
 
