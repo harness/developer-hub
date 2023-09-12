@@ -48,7 +48,7 @@ Delegate images are on [Docker Hub](https://hub.docker.com/r/harness/delegate-im
 The delegate image is signed. You can check it by running this command (with the current version number):
 
 ```
-docker trust inspect --pretty harness/delegate:yy.mm.xxxxx
+docker trust inspect --pretty harness/delegate:yy.mm.verno
 ```
 #### Can I use the same YAML to create an automatically updated and manually updated delegate?
 
