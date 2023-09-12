@@ -3,7 +3,7 @@ title: Harness UI Overview
 description: Explore the Harness UI and navigate to the desired modules.
 sidebar_position: 40
 redirect_from:
-  - /docs/get-started/harness-ui-overview
+  - /docs/getting-started/harness-ui-overview
 ---
 
 ```mdx-code-block

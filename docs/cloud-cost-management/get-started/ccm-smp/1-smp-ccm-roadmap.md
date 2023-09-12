@@ -2,6 +2,8 @@
 title: Roadmap and feature availability
 description: The features available and the roadmap for the self-Managed Enterprise edition of Harness Cloud Cost Management.
 # sidebar_position: 10
+redirect_from:
+  - /docs/cloud-cost-management/getting-started-ccm/ccm-smp/smp-ccm-roadmap
 ---
 
 

@@ -6,6 +6,8 @@ helpdocs_topic_id: 6tblwmh830
 helpdocs_category_id: 66qbyn7ugu
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed
 ---
 
 This document explains how to use Helm to install, upgrade, or uninstall Harness Self-Managed Enterprise Edition. This document describes an installation on Google Kubernetes Engine (GKE). The same installation process, however, applies to installations on Kubernetes versions 1.*x* and later.
@@ -182,6 +184,14 @@ To verify installation, do the following:
 For details about the chart values, explanations of the default values, and descriptions of the fields, go to [https://github.com/harness/helm-charts#values](https://github.com/harness/helm-charts#values).
 
 <!-- PR-1000 -->
+
+## Use self-signed certificates with Helm-based installations
+
+There are additional steps for self-signed certificates:
+
+1. [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
+2. [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
+3. [Configure GitOps Agent with self-signed certificates](/docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates/)
 
 ## Next steps
 

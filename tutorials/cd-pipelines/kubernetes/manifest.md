@@ -621,6 +621,21 @@ You've just learned how to use Harness CD to deploy an application using a Kuber
 - Keep learning about Harness CD. For example, add [Triggers](/docs/platform/Triggers/triggering-pipelines) to your pipeline that initiate pipeline deployments in response to Git events.
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
+## How to deploy your own app by using Harness
+
+You can integrate your own microservice application into this tutorial by following the steps outlined below:
+
+- Utilize the same delegate that you deployed as part of this tutorial. Alternatively, deploy a new delegate, but remember to use a newly created delegate identifier when creating connectors.
+
+- If you intend to use a private Git repository that hosts your manifest files, create a Harness secret containing the Git personal access token (PAT). Subsequently, create a new Git connector using this secret.
+
+- Create a Kubernetes connector if you plan to deploy your applications in a new Kubernetes environment. Make sure to update the infrastructure definition to reference this newly created Kubernetes connector.
+
+- Once you complete all the aforementioned steps, create a new Harness service that leverages Kubernetes manifests for deploying applications.
+
+- Lastly, establish a new deployment pipeline and select the newly created infrastructure definition and service. Choose a deployment strategy that aligns with your microservice application's deployment needs.
+
+- Voila! You're now ready to deploy your own application by using Harness.
 
 ```mdx-code-block
 </TabItem>
@@ -815,7 +830,7 @@ A successful Application sync will display the following status tree under **Res
 ```
 Harness offers a [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you declaratively manage Harness GitOps entities alongside your application and cluster resources. These steps walk through using Terraform to create and install the GitOps agent, define related Harness entities, and deploy a sample application to your cluster.
 
-<docimage path={require('../static/k8s-manifest-tutorial/terraform_harness_resources.png')} width="50%" height="50%" title="Click to view full size image" />
+<docvideo src="https://www.youtube.com/watch?v=U_XkKcfg8ts" width="75%" />
 
 <br/><br/>
 
@@ -895,6 +910,12 @@ Never store your Harness API Key in a plain text configuration file or in versio
 A Terraform module is a collection of files that define the desired state to be enforced by Terraform. These files normally have the .tf extension.
 
 </details>
+
+<br/>
+
+<docimage path={require('../static/k8s-manifest-tutorial/terraform_harness_resources.png')} width="50%" height="50%" title="Click to view full size image" />
+
+<br/><br/>
 
 1. Open **agent.tf**. This file defines the GitOps agent in Harness and then deploys the agent manifest to your cluster. The agent is created using the harness_gitops_platform_agent resource.
 

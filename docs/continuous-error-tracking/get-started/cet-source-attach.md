@@ -2,6 +2,8 @@
 title: Connect your Source Code
 description: Instantly link the application errors to the corresponding source code. 
 sidebar_position: 25
+redirect_from:
+  - /docs/continuous-error-tracking/getting-started/cet-source-attach
 ---
 
 # Connect your source code

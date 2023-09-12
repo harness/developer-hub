@@ -205,6 +205,15 @@ const sidebars = {
             },
           ],
         },
+          // SEI
+          {
+            type: "link",
+            label: "Software Engineering Insights",
+            href: "https://docs.propelo.ai/welcome-to-propelo/",
+            customProps: {
+              description: "Learn how to increase engineering team productivity and efficiency.",
+            },
+          },
         // Custom Continuous Error Tracking landing page
         {
           /* Uncomment this block while we have a generated-index page for module docs

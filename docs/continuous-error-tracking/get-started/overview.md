@@ -3,6 +3,8 @@ title: Harness Continuous Error Tracking (CET) Overview
 sidebar_label: Overview
 description: Get an overview of Harness Continuous Error Tracking (CET).
 sidebar_position: 10
+redirect_from:
+  - /docs/continuous-error-tracking/getting-started/cet-overview
 ---
 
 # Continuous Error Tracking overview

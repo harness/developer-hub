@@ -7,7 +7,7 @@ helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
-  - /docs/get-started/harness-first-gen-vs-harness-next-gen
+  - /docs/getting-started/harness-first-gen-vs-harness-next-gen
 ---
 
 Harness has two versions of its product suite.
