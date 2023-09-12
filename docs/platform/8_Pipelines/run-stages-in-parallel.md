@@ -13,7 +13,7 @@ You can run stages in parallel when you want to perform parallel operations. For
 
 ## Requirements
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 * [Add a Stage](add-a-stage.md)
 
 ## Running stages in parallel

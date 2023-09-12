@@ -290,6 +290,8 @@ These variables are related to the lite-engine service.
 
 Always `/harness`, which is the default [workspace](../caching-ci-data/share-ci-data-across-steps-and-stages.md#share-data-between-steps-in-a-stage). This is where Harness clones the codebase, and it is the working directory for all steps in a stage.
 
+<!-- The DRONE_WORKSPACE environment variable doesn't exist in local runner build infrastructures. -->
+
 ### \_ID variables
 
 * `HARNESS_ACCOUNT_ID`

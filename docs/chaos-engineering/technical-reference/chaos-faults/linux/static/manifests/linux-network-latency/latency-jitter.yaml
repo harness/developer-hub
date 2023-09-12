@@ -8,4 +8,4 @@ spec:
   networkChaos/inputs:
     latency: "1000"
     jitter: "200"
-    networkInterface: "eth0"
+    networkInterfaces: "eth0"

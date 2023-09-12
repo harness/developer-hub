@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness supports Cloud Foundry CLI version 6 and 7. Support for version 7 is behind the Feature Flag `CF_CLI7`. You can read about it in [Add Container Images for Tanzu Deployments](add-container-images-for-pcf-deployments.md).You can use the CF Command to run any [CF CLI command](https://docs.cloudfoundry.org/cf-cli/cf-help.html) or script at any point in your Harness Tanzu (formerly PCF) Workflows.
+Harness supports Cloud Foundry CLI version 6 and 7. Support for version 7 is behind the Feature Flag `CF_CLI7`. You can read about it in [Add Container Images for Tanzu Deployments](add-container-images-for-pcf-deployments.md).You can use the CF Command to run any [CF CLI command](https://cli.cloudfoundry.org/en-US/v6/) or script at any point in your Harness Tanzu (formerly PCF) Workflows.
 
 ### Before You Begin
 

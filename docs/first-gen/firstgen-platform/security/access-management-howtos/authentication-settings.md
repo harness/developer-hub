@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/3_Authentication/1-authentication-overview.md).Administrators can use Authentication Settings to restrict access to an organization's Harness account. The options you choose will apply to all your account's users. These options include:
+This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/3_Authentication/1-authentication-overview.md).Administrators can use Authentication Settings to restrict access to an organization's Harness account. The options you choose will apply to all your account's users. These options include:
 
 * Enabling specific SSO (single sign-on) mechanisms and providers.
 * Enforcing password policies (strength, expiration, and lockout).

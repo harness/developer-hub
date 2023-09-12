@@ -38,7 +38,7 @@ https://www.youtube.com/watch?v=y8s351IJLXw-->
 
 ## Add a trigger to a pipeline
 
-These steps assume you're familiar with [creating CD pipelines](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) or [creating CI pipelines](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md). Your pipeline must have a defined codebase for the trigger to listen on. For more information, go to [Create and Configure a Codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md).
+These steps assume you're familiar with [creating CD pipelines](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) or [creating CI pipelines](../../continuous-integration/get-started/tutorials.md). Your pipeline must have a defined codebase for the trigger to listen on. For more information, go to [Create and Configure a Codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md).
 
 
 1. Go to your pipeline in Harness.
@@ -272,7 +272,7 @@ For example, if the pipeline is executed manually, the `<+pipeline.triggerType>`
 pipeline.triggerType:  WEBHOOK
 ```
 
-### Null comparisons
+## Null comparisons
 
 You can also use JEXL comparisons with Trigger expressions.
 
@@ -372,7 +372,7 @@ pipeline:
 
 </details>
 
-### Troubleshooting
+## Troubleshooting
 
 If a pipeline does not start in response to an incoming event, do the following:
 
