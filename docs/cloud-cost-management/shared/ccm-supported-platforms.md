@@ -13,11 +13,11 @@ import TabItem from '@theme/TabItem';
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **RBAC Support** |
 | --- | --- | --- | --- | --- | --- |
 |Perspectives | ✅  | ✅  | ✅  | ✅  | ✅ |
-|Cost Categories | ✅  | ✅  | ✅  | ✅ | |
+|Cost categories | ✅  | ✅  | ✅  | ✅ | |
 |BI dashboards |✅  |✅ | ✅ | ✅ | ✅ |
 |Anomaly detection  | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Currency Standardisation | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Inventory Management | Supported services and products: <ul><li>EC2</li><li> RDS</li><li>EBS</li></ul> | Supported services and products: <ul><li>Azure VM</li></ul>| Supported services and products: <ul><li>Instances</li><li> Disks</li></ul> | NA | Managed through Dashboards |
+|Currency standardization | ✅ | ✅ | ✅ | ✅ | ✅ |
+|Inventory management | Supported services and products: <ul><li>EC2</li><li> RDS</li><li>EBS</li></ul> | Supported services and products: <ul><li>Azure VM</li></ul>| Supported services and products: <ul><li>Instances</li><li> Disks</li></ul> | NA | Managed through Dashboards |
 
 <details>
 <summary>Perspectives</summary>
@@ -575,9 +575,38 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
   </TabItem>
 </Tabs>
 ```
-
-
 :::important note
 Harness does not currently support AWS China regions.
 :::
+
+
+## CCM on Harness Self-Managed Enterprise Edition
+
+Review the following information about what installation infrastructure and CCM features are supported on Harness Self-Managed Enterprise Edition. 
+
+### Supported installation infrastructure for CCM on Harness Self-Managed Enterprise Edition
+
+AWS is the only supported installation infrastructure. If you do not install Harness Self-Managed Enterprise Edition on AWS, then you cannot use the CCM features. 
+
+### Supported CCM features on Harness Self-Managed Enterprise Edition
+
+The following table provides the feature support matrix for CCM on Harness Self-Managed Enterprise Edition. 
+  
+| **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **Connected environment** | **Air-gapped environment** |
+| --- | --- | --- | --- | --- | --- | --- |
+|Perspectives | ✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Cost categories | ✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Budgets | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ |
+|BI dashboards |✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Anomaly detection  | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Currency standardization | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+|Recommendations |✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
+|AutoStopping | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+|Asset governance | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+
+:::note
+Perspective preferences are not supported on Harness SMP.
+:::
+
 For a comprehensive list of supported features in other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
