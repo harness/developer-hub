@@ -34,7 +34,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Version 80504
+## Latest: Harness version 80504, Harness Continuous Verification version 1.0.8
 
 ### New features and enhancements
 
@@ -103,6 +103,10 @@ TBD commenting out until I hear back from RG https://harness.atlassian.net/brows
 * Due to intermittent issues with the `cf` CLI, the Tanzu Application Services (TAS) Rolling deployment step failed to create the application. (CDS-75250)
 
   Now, before performing a rolling deployment, the TAS Rolling deployment step first verifies that the application exists. If the application does not exist, it deploys the application using a Basic deployment strategy. If the application exists, it performs a rolling upgrade.
+
+* Previously, when configuring Datadog metrics for continuous verification, you could save the configuration without specifying a **Service Instance Identifier**. (OIP-833)
+
+  This issue has been resolved. Now, validation checks are implemented that require you to provide a **Service Instance Identifier** when enabling continuous verification for Datadog metrics. 
 
 ### Hotfixes
 
