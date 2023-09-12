@@ -11,7 +11,7 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 
 ## Important notes
 
-* Snyk Code and Snyk Container scans require a [Snyk API key](https://docs.snyk.io/snyk-api-info/authentication-for-api). You should also create a [Harness secret](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization) for your API key.
+* Snyk Code and Snyk Container scans require a [Snyk API key](https://docs.snyk.io/snyk-api-info/authentication-for-api). You should create a [Harness secret](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization) for your API key.
 
 * For an overview of recommended Snyk workflows, go to [CI/CD adoption and deployment](https://docs.snyk.io/integrations/snyk-ci-cd-integrations/snyk-ci-cd-integration-deployment-and-strategies/ci-cd-adoption-and-deployment) in the Snyk documentation.
 
@@ -25,22 +25,50 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 
   - Harness recommends that you use [language-specific Snyk container images](https://hub.docker.com/r/snyk/snyk) to run your scans. 
 
-  - Go to [Scan a repository: workflow example](#scan-a-repository-workflow-example) below.
+  - For complete end-to-end examples, go to: 
+    - [Scan a repository: orchestration example](#scan-a-repository-orchestration-example)
+    - [Scan a repository: ingestion example](#scan-a-repository-ingestion-example)
 
 * If you're scanning a container image, note the following:
 
-  - Container image scans require Docker-in-Docker running in Privileged mode as a background service.
+  - Container image scans require Docker-in-Docker running in Privileged mode as a background service. 
+
+  - For a complete end-to-end example, go to [Scan a container image: workflow example](#scan-a-container-image-workflow-example) below.
   
-  - Snyk recommends running [`snyk monitor`](https://docs.snyk.io/snyk-cli/commands/monitor) with container scans. When you run this command, the following happens:
+<!-- removed info on using snyk monitor, see https://harness.atlassian.net/browse/DOC-2718?focusedCommentId=571223 -->
 
-    - The local scanner uploads a `requirements.txt` file to your Snyk instance. This file contains details about the most recent scan. 
-    - The Snyk instance creates a project that corresponds to the Harness pipeline. 
-    - Once the project is created, the Snyk instance runs a daily scan of the container and notifies you of any new vulnerabilities. 
-    - Every time you run a new scan in the STO pipeline, the local scanner sends a new `requirements.txt` file to your Snyk instance.
+## Scan a repository: orchestration example
 
-## Scan a repository: workflow example
+This example uses a Snyk step in Orchestration mode  to scan a repository. This is the simplest workflow: the Snyk step runs the scan and ingests the results, with minimal configuration required. 
 
-The following example describes how to use [`snyk test`](https://docs.snyk.io/snyk-cli/commands/test) to scan a local .NET image built using Nuget. 
+<!-- TBD What Snyk CLI command does the orchestration step use?  -->
+
+![](../static/snyk-scans-pipeline-orchestration-00.png)
+
+1. Add a [codebase connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) that points to the repository you want to scan. 
+
+2. Add a Security Tests or Build stage to your pipeline.
+
+<!-- commenting out this step, doesn't look like it's necessary for orchestration scans
+
+3. Go to the Overview tab of the stage. Under **Shared Paths**, enter the following path: `/shared/customer_artifacts`
+
+-->
+
+3. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:  
+
+   1. Scan Mode = **Orchestration**
+   2. Target Type = **Repository**
+   3. Target Name = (_user-defined_)
+   4. Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_)
+   5. Access Token =  [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization) (_Harness secret_)   
+
+6. Apply your changes, then save and run the pipeline. 
+
+
+## Scan a repository: ingestion example
+
+The following example uses [`snyk code test`](https://docs.snyk.io/snyk-cli/commands/test) to scan a local .NET image built using Nuget. 
 
 The scan stage in this pipeline has the following steps:
 
@@ -69,7 +97,7 @@ The scan stage in this pipeline has the following steps:
       # snyk SCA scan
       # Use <+codebase.branch> to specify branch to scan at runtime
       # Harness recommends that you always save the scan results to a SARIF file 
-      snyk --file=SubSolution.sln test \
+      snyk code test --file=SubSolution.sln  \
          --target_reference  <+codebase.branch> \
          --sarif-file-output=/shared/customer_artifacts/snyk_sca.sarif | true
       ``` 
@@ -78,7 +106,7 @@ The scan stage in this pipeline has the following steps:
  
    3. In the Run step **Environment Variables** field, under **Optional Configuration**, add a variable to access your Snyk API key:
  
-      `SNYK_TOKEN` = `<+secrets.getValue("snyk_api_token")>`  
+      `SNYK_TOKEN` = [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization)`  
       
       Your Run step should now look like this:
       
@@ -93,87 +121,16 @@ The scan stage in this pipeline has the following steps:
    1. Scan Mode = **Ingestion**
    2. Target Type = **Repository**
    3. Target Name = (_user-defined_)
-   4. Variant = **`<+codebase.branch>`** (_runtime expression_)
+   4. Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_)
    5. Ingestion =  **`/shared/customer_artifacts/snyk_sca.sarif`**    
 
 6. Apply your changes, then save and run the pipeline. 
 
-### Snyk repository scan: pipeline example
 
-The following illustrates an end-to-end pipeline for building and scanning a .NET image.
-
-```yaml 
-
-pipeline:
-  projectIdentifier: STO
-  orgIdentifier: default
-  tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: Subsolution
-        repoName: SubSolution
-        build: <+input>
-  stages:
-    - stage:
-        name: test
-        identifier: test
-        type: SecurityTests
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: Build
-                  identifier: Build
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: snyk/snyk:dotnet
-                    shell: Sh
-                    command: |
-                      # populates the dotnet dependencies
-                      dotnet restore SubSolution.sln
-
-                      # snyk SCA scan
-                      snyk --file=SubSolution.sln test \
-                         --target_reference  <+codebase.branch> \
-                         --sarif-file-output=/shared/customer_artifacts/snyk_sca.sarif | true
-                    envVariables:
-                      SNYK_TOKEN: <+secrets.getValue("sergeysnyktoken")>
-              - step:
-                  type: Snyk
-                  name: Snyk SCA
-                  identifier: Snyk_SCA
-                  spec:
-                    mode: ingestion
-                    config: default
-                    target:
-                      name: snyk-scan-example-for-docs
-                      type: repository
-                      variant: <+codebase.branch>
-                    advanced:
-                      log:
-                        level: info
-                    ingestion:
-                      file: /shared/customer_artifacts/snyk_sca.sarif
-          sharedPaths:
-            - /shared/customer_artifacts
-        variables:
-  identifier: sergeysnyklabdbothwell
-  name: sergey-snyk-lab-dbothwell
-
-```
 
 ## Scan a container image: workflow example
 
-In this example, we run the [`snyk container test`](https://docs.snyk.io/snyk-cli/commands/container-test) command to scan a container image. The scan stage consists of three steps:
+This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands/container-test) to scan a container image. The scan stage consists of three steps:
 
 - A Background step that runs Docker-in-Docker as a background service in Privileged mode (required when scanning a container image).
 
@@ -210,7 +167,7 @@ In this example, we run the [`snyk container test`](https://docs.snyk.io/snyk-cl
 
    6. Under **Environment Variables**, add a variable for your Snyk API token. Make sure that you save your token to a [Harness secret](/docs/platform/secrets/add-use-text-secrets/):
       
-      SNYK_TOKEN = `<+secrets.getValue("snyk_api_token")>`  
+      SNYK_TOKEN = [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization) 
 
    7. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**. 
  
@@ -226,7 +183,151 @@ In this example, we run the [`snyk container test`](https://docs.snyk.io/snyk-cl
 
 5. Apply your changes, then save and run the pipeline.
 
-### Snyk container image scan: pipeline example
+## Snyk pipeline examples
+
+### Snyk repository scan (orchestration)
+
+The following illustrates the [repository orchestration workflow example](#scan-a-repository-orchestration-example) above for building and scanning a .NET image.
+
+<details><summary>YAML pipeline, repository scan, Orchestration mode</summary>
+
+```yaml 
+
+pipeline:
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: snyklabs
+        repoName: java-goof
+        build: <+input>
+  stages:
+    - stage:
+        name: scan
+        identifier: scan
+        description: ""
+        type: SecurityTests
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: myharnessdelegate
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Snyk
+                  name: snyk java scan
+                  identifier: snyk_java_scan
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      name: snyk-labs-java-goof
+                      type: repository
+                      variant: <+codebase.branch>
+                    advanced:
+                      log:
+                        level: debug
+                      args:
+                        cli: "-d -X"
+                    imagePullPolicy: Always
+                    auth:
+                      access_token: <+secrets.getValue("snyk_api_token")>
+  identifier: snyk_orchestration_doc_example
+  name: snyk_orchestration_doc_example
+
+
+```
+</details>
+
+### Snyk repository scan (ingestion)
+
+The following illustrates the [repository ingestion workflow example](#scan-a-repository-ingestion-example) above for building and scanning a .NET image.
+
+<details><summary>YAML pipeline, repository scan, Ingestion mode</summary>
+
+```yaml 
+
+pipeline:
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: Subsolution
+        repoName: SubSolution
+        build: <+input>
+  stages:
+    - stage:
+        name: test
+        identifier: test
+        type: SecurityTests
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Build
+                  identifier: Build
+                  spec:
+                    connectorRef: mydockerhubconnector
+                    image: snyk/snyk:dotnet
+                    shell: Sh
+                    command: |
+                      # populates the dotnet dependencies
+                      dotnet restore SubSolution.sln
+
+                      # snyk SCA scan
+                      snyk --file=SubSolution.sln test \
+                         --target_reference  <+codebase.branch> \
+                         --sarif-file-output=/shared/customer_artifacts/snyk_sca.sarif | true
+                    envVariables:
+                      SNYK_TOKEN: <+secrets.getValue("sergeysnyktoken")>
+              - step:
+                  type: Snyk
+                  name: Snyk SCA
+                  identifier: Snyk_SCA
+                  spec:
+                    mode: ingestion
+                    config: default
+                    target:
+                      name: snyk-scan-example-for-docs
+                      type: repository
+                      variant: <+codebase.branch>
+                    advanced:
+                      log:
+                        level: info
+                    ingestion:
+                      file: /shared/customer_artifacts/snyk_sca.sarif
+          sharedPaths:
+            - /shared/customer_artifacts
+        variables:
+  identifier: snyk_ingestion_doc_example
+  name: snyk_ingestion_doc_example
+
+```
+</details>
+
+### Snyk container image scan (ingestion)
+
+The following illustrates the [container image ingestion workflow example](#scan-a-container-image-workflow-example) above for building and scanning a .NET image.
+
+<details><summary>YAML pipeline, container image scan, Ingestion mode</summary>
 
 ```yaml
 
@@ -245,8 +346,8 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: stoqadelegate
-              namespace: harness-qa-delegate
+              connectorRef: myharnessdelegate
+              namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
@@ -260,7 +361,7 @@ pipeline:
                   name: background-dind-service
                   identifier: Background_1
                   spec:
-                    connectorRef: dbothwelldocker
+                    connectorRef: mydockerhubconnector
                     image: docker:dind
                     shell: Sh
                     privileged: true
@@ -269,7 +370,7 @@ pipeline:
                   name: run-snyk-scan
                   identifier: Run_1
                   spec:
-                    connectorRef: DockerHub
+                    connectorRef: mydockerhubconnector
                     image: snyk/snyk:docker
                     shell: Sh
                     command: |
@@ -279,9 +380,6 @@ pipeline:
                       snyk container test \
                             snykgoof/big-goof-1g:100 -d \
                             --sarif-file-output=/shared/customer_artifacts/snyk_code_test.sarif  || true
-                      # cat /shared/customer_artifacts/snyk_code_test.sarif
-
-                      # snyk monitor
                     privileged: true
                     envVariables:
                       SNYK_TOKEN: <+secrets.getValue("snyk_api_token")>
@@ -325,6 +423,4 @@ pipeline:
 
 
 ```
-  
-
-
+</details>
