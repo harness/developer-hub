@@ -214,7 +214,7 @@ For information about **Run** step settings, go to [Use Run steps](../run-ci-scr
 
 ## Build an artifact from both code repos
 
-Now that the files from both repos will be cloned into a common workspace, you can add a step to build an image using code from both repos, such as a [Build and Push an image to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings).
+Now that the files from both repos will be cloned into a common workspace, you can add a step to build an image using code from both repos, such as a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings).
 
 Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#dockerfile) that assume files are located at the codebase's root directory if not otherwise specified. This is because the pipeline's default codebase files are cloned in the root folder (`/harness`), while other codebase files are cloned into subfolders.
 

@@ -56,7 +56,10 @@ When you run a pipeline, you can observe the step logs on the [build details pag
 
 :::tip
 
-For information about build images without pushing, building multi-architecture images, using Harness expressions for tags, and setting kaniko runtime flags, go to [Useful techniques for Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#useful-techniques).
+You can also:
+
+* [Build images without pushing](./build-without-push.md)
+* [Build multi-architecture images](./build-multi-arch.md)
 
 :::
 
@@ -121,6 +124,24 @@ Add each tag separately.
 
 ![](./static/build-and-push-to-ecr-step-settings-24.png)
 
+:::tip
+
+When you push an image to a repo, you tag the image so you can identify it later. For example, in one pipeline stage, you push the image, and, in a later stage, you use the image name and tag to pull it and run integration tests on it.
+
+Harness expressions are a useful way to define tags. For example, you can use the expression `<+pipeline.sequenceId>` as a tag. This expression represents the incremental build ID, such as `9`. By using a variable expression, rather than a fixed value, you don't have to use the same image name every time.
+
+For example, if you use `<+pipeline.sequenceId>` as a tag, after the pipeline runs, you can see the `Build Id` in the output.
+
+![](./static/build-and-upload-an-artifact-15.png)
+
+And you can see where the Build ID is used to tag your image:
+
+![](./static/build-and-upload-an-artifact-12.png)
+
+Later in the pipeline, you can use the same expression to pull the tagged image, such as `myrepo/myimage:<+pipeline.sequenceId>`.
+
+:::
+
 ### Base Image Connector
 
 Select an authenticated connector to download base images from a Docker-compliant registry. If you do not specify a **Base Image Connector**, the step downloads base images without authentication. Specifying a **Base Image Connector** is recommended because unauthenticated downloads generally have a lower rate limit than authenticated downloads.
@@ -128,6 +149,8 @@ Select an authenticated connector to download base images from a Docker-complian
 ### Optimize
 
 With Kubernetes cluster build infrastructures, select this option to enable `--snapshotMode=redo`. This setting causes file metadata to be considered when creating snapshots, and it can reduce the time it takes to create snapshots. For more information, go to the kaniko documentation for the [snapshotMode flag](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#flag---snapshotmode).
+
+For information about setting other kaniko runtime flags, go to [Set kaniko runtime flags](#set-kaniko-runtime-flags).
 
 ### Dockerfile
 
@@ -180,3 +203,26 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 * [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+
+### Conditions, looping, and failure strategies
+
+You can find the following settings on the **Advanced** tab in the step settings pane:
+
+* [Conditional Execution](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md): Set conditions to determine when/if the step should run.
+* [Failure Strategy](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md): Control what happens to your pipeline when a step fails.
+* [Looping Strategies Overview -- Matrix, Repeat, and Parallelism](/docs/platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md): Define a looping strategy for an individual step.
+
+### Set kaniko runtime flags
+
+With Kubernetes cluster build infrastructures, **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md).
+
+You can set kaniko runtime flags by adding [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) formatted as `PLUGIN_FLAG_NAME`. For example, to set `--skip-tls-verify`, you would add a stage variable named `PLUGIN_SKIP_TLS_VERIFY` and set the variable value to `true`.
+
+```yaml
+        variables:
+          - name: PLUGIN_SKIP_TLS_VERIFY
+            type: String
+            description: ""
+            required: false
+            value: "true"
+```

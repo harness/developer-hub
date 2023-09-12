@@ -8,23 +8,90 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory). You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md).
+You can use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory).
 
-This topic assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to the [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and the [CI tutorials](../../get-started/tutorials.md).
+You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md). For other upload locations, you can use a script in a [Run step](../run-ci-scripts/run-step-settings.md).
 
-## Prepare artifacts to upload
+## Requirements
 
-Add steps to your CI pipeline that generate artifacts to upload. The steps you use depend on what artifacts you ultimately want to upload. For example, [Run steps](../run-ci-scripts/run-step-settings.md) and [Plugin steps](../use-drone-plugins/explore-ci-plugins.md) are useful for running scripts.
+* You have access to a JFrog Artifactory instance.
+* You have a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+* Your pipeline has steps that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
+## Add the Upload Artifacts step
 
-## Upload artifacts to JFrog Artifactory
+In your pipeline's **Build** stage, add an **Upload Artifacts to JFrog Artifactory** step and configure the [settings](#upload-artifacts-to-jfrog-step-settings) accordingly.
 
-Add an **Upload Artifacts to JFrog Artifactory** step to your pipeline. This step's settings are described below.
+Here is a YAML example of a minimum **Upload Artifacts to JFrog Artifactory** step.
 
-:::info
+```yaml
+              - step:
+                  type: ArtifactoryUpload
+                  name: ArtifactoryUpload_1
+                  identifier: ArtifactoryUpload_1
+                  spec:
+                    connectorRef: YOUR_ARTIFACTORY_CONNECTOR_ID
+                    target: groupId/artifactId/version
+                    sourcePath: path/to/source
+```
 
-Depending on the stage's build infrastructure, some settings may be unavailable or located under **Optional Configuration** in the visual pipeline editor. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+When you run the pipeline, you can observe the step logs on the [build details page](../viewing-builds.md).
 
-:::
+![](static/upload-artifacts-to-jfrog-520.png)
+
+If the Upload Artifacts step succeeds, you can find the artifact in your JFrog repo.
+
+![](./static/upload-artifacts-to-jfrog-522.png)
+
+## View artifacts on the Artifacts tab
+
+You can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../viewing-builds.md). To do this, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to JFrog Artifactory** step.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+Configure the **Plugin** step settings as follows:
+
+* **Name:** Enter a name.
+* **Container Registry:** Select a Docker connector.
+* **Image:** Enter `plugins/artifact-metadata-publisher`.
+* **Settings:** Add the following two settings as key-value pairs.
+  * `file_urls`: Provide a URL to the artifact that was uploaded in the **Upload Artifacts to JFrog Artifactory** step. If you uploaded multiple artifacts, you can provide a list of URLs.
+  * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
+
+```yaml
+               - step:
+                  type: Plugin
+                  name: publish artifact metadata
+                  identifier: publish_artifact_metadata
+                  spec:
+                    connectorRef: account.harnessImage ## Use the built-in Docker connector or specify your own Docker connector.
+                    image: plugins/artifact-metadata-publisher ## Required.
+                    settings:
+                      file_urls: ## Provide the URL to the artifact that was uploaded in the Upload Artifacts to JFrog Artifactory step. If you uploaded multiple artifacts, you can provide a list of URLs.
+                      artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Upload Artifacts to JFrog step settings
+
+The **Upload Artifacts to JFrog Artifactory** step has the following settings. Depending on the build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 ### Name
 
@@ -69,65 +136,6 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 * [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-
-## Confirm the upload
-
-After you add the steps and save the pipeline, select **Run** to run the pipeline.
-
-On the [build details page](../viewing-builds.md), you can see the logs for each step as they run.
-
-![](static/upload-artifacts-to-jfrog-520.png)
-
-On JFrog, you can see the uploaded artifacts.
-
-![](./static/upload-artifacts-to-jfrog-522.png)
-
-## View artifacts on the Artifacts tab
-
-As an alternative to manually finding artifacts on JFrog, you can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../viewing-builds.md). To do this, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to JFrog Artifactory** step.
-
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs>
-  <TabItem value="Visual" label="Visual">
-```
-
-Configure the **Plugin** step settings as follows:
-
-* **Name:** Enter a name.
-* **Container Registry:** Select a Docker connector.
-* **Image:** Enter `plugins/artifact-metadata-publisher`.
-* **Settings:** Add the following two settings as key-value pairs.
-  * `file_urls`: Provide a URL to the artifact that was uploaded in the **Upload Artifacts to JFrog Artifactory** step. If you uploaded multiple artifacts, you can provide a list of URLs.
-  * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="YAML" label="YAML" default>
-```
-
-Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
-
-```yaml
-               - step:
-                  type: Plugin
-                  name: publish artifact metadata
-                  identifier: publish_artifact_metadata
-                  spec:
-                    connectorRef: account.harnessImage ## Use the built-in Docker connector or specify your own Docker connector.
-                    image: plugins/artifact-metadata-publisher ## Required.
-                    settings:
-                      file_urls: ## Provide the URL to the artifact that was uploaded in the Upload Artifacts to JFrog Artifactory step. If you uploaded multiple artifacts, you can provide a list of URLs.
-                      artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
-```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
 ## Troubleshooting
 
