@@ -131,7 +131,7 @@ The build environment must have the necessary binaries for the **Run Tests** ste
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="java" label="Java and Kotlin" default>
+  <TabItem value="java" label="Java, Kotlin" default>
 ```
 
 ```yaml
@@ -529,7 +529,7 @@ You can also install tools at runtime in [Pre-Command](#pre-command), provided t
 
 ### Language
 
-Select the source code language to build: **C#**, **Java**, **Kotlin**, **Python**, or **Scala**. Some languages have additional language-specific settings.
+Select the source code language to build: **C#**, **Java**, **Kotlin**, **Scala**, or **Python**. Some languages have additional language-specific settings.
 
 ```mdx-code-block
 <Tabs>
@@ -578,6 +578,10 @@ Select the framework version to test.
 This setting is only available if you select **DOTNET** as the [Build Tool](#build-tool).
 
 Supply a comma-separated list of namespace prefixes that you want to test.
+
+#### Test Globs
+
+You can override the default test globs pattern.
 
 ```mdx-code-block
   </TabItem>
@@ -636,10 +640,10 @@ You can provide a comma-separated list of test annotations used in unit testing.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="kotlin" label="Kotlin">
+  <TabItem value="kotlin" label="Kotlin, Scala">
 ```
 
-Kotlin doesn't have additional language-specific settings.
+Kotlin and Scala don't have additional language-specific settings.
 
 ```mdx-code-block
   </TabItem>
@@ -652,14 +656,13 @@ Currently, TI for Python is behind the feature flag `CI_PYTHON_TI`. Contact [Har
 
 :::
 
-Python doesn't have additional language-specific settings. If necessary, you can set `PYTHONPATH` in the [Environment Variables](#environment-variables).
+#### Test Globs
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="scala" label="Scala">
-```
+You can override the default test globs pattern. For example, if the default is `*_test.py` or `test_*.py`, you could override it to any other pattern, s uch as `.test.py`.
 
-Scala doesn't have additional language-specific settings.
+#### PYTHONPATH
+
+If necessary, you can set `PYTHONPATH` in the [Environment Variables](#environment-variables).
 
 ```mdx-code-block
   </TabItem>
@@ -680,29 +683,13 @@ Select the build automation tool. Supported tools vary by **Language**.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Java" label="Java" default>
+  <TabItem value="Java" label="Java, Kotlin, Scala" default>
 ```
 
 * [Bazel](https://bazel.build/)
 * [Maven](https://maven.apache.org/)
 * [Gradle](https://gradle.org/)
-
-:::info Bazel container images
-
-If you use a Bazel [container image](#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](../run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
-
-Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm if Bazel is already installed.
-
-:::
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Kotlin" label="Kotlin">
-```
-
-* [Bazel](https://bazel.build/)
-* [Maven](https://maven.apache.org/)
-* [Gradle](https://gradle.org/)
+* [Sbt](https://www.scala-sbt.org/) (Scala only)
 
 :::info Bazel container images
 
@@ -723,24 +710,6 @@ Bazel is already installed on Harness Cloud runners, and you don't need to speci
 :::tip
 
 You can [use pytest to run unittest](https://docs.pytest.org/en/latest/how-to/unittest.html).
-
-:::
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Scala" label="Scala">
-```
-
-* [Bazel](https://bazel.build/)
-* [Maven](https://maven.apache.org/)
-* [Gradle](https://gradle.org/)
-* [Sbt](https://www.scala-sbt.org/)
-
-:::info Bazel container images
-
-If you use a Bazel [container image](#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](../run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
-
-Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm if Bazel is already installed.
 
 :::
 
@@ -780,24 +749,21 @@ For NUnit, provide runtime executables and arguments for tests, such as:
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Java" label="Java" default>
+  <TabItem value="Java" label="Java, Kotlin, Scala" default>
 ```
 
-Provide runtime arguments for tests, for example:
+Provide runtime arguments for tests.
 
-```yaml
-                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
-```
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Kotlin" label="Kotlin">
-```
-
-Provide runtime arguments for tests, for example:
+For example, this can be simply `test`:
 
 ```yaml
                     args: test
+```
+
+Or you can include additional flags, such as:
+
+```yaml
+                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
 ```
 
 ```mdx-code-block
@@ -819,18 +785,6 @@ Provide runtime arguments for tests, for example:
 
 :::
 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Scala" label="Scala">
-```
-
-Provide runtime arguments for tests, for example:
-
-```yaml
-                    args: test
-```
-
 ```mdx-code-block
   </TabItem>
 </Tabs>
@@ -851,7 +805,7 @@ If a script is supplied here, select the corresponding **Shell** option.
 :::info Setup Python
 
 * Use **Pre-Command** to install the Python 3 binary if it is not already installed on the build machine or available in the specified [Container Registry and Image](#container-registry-and-image). Python 3 is preinstalled on Harness Cloud runners.
-* Don't install coverage tools in **Pre-Command**. The Run Tests step inherently includes coverage for Python, and Harness automatically installs coverage tools if they aren't already available.
+* You don't need to install coverage tools in **Pre-Command**. The Run Tests step inherently includes coverage for Python, and Harness automatically installs coverage tools if they aren't already available. If you install a coverage tool, Harness uses the version you install instead of the included version.
 * Python 3 is required. If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
 
 :::
@@ -951,10 +905,10 @@ These examples use Harness Cloud build infrastructure.
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="java" label="Java and Kotlin" default>
+  <TabItem value="java" label="Java, Kotlin, Scala" default>
 ```
 
-This example shows a pipeline that runs tests with Maven and Test Intelligence.
+This example shows a pipeline that runs tests on Java with Maven and Test Intelligence. By changing the `language`, this pipeline could be used for Kotlin or Scala.
 
 ```yaml
 pipeline:
@@ -981,59 +935,8 @@ pipeline:
                   name: Run Tests
                   identifier: Run_Tests
                   spec:
-                    language: Java ## Specify Java or Kotlin.
-                    buildTool: Maven ## Specify Bazel, Maven, or Gradle.
-                    args: test
-                    packages: io.harness.
-                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
-                    postCommand: mvn package -DskipTests
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "target/reports/*.xml"
-          platform:
-            arch: Amd64
-            os: Linux
-          runtime:
-            spec: {}
-            type: Cloud
-```
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="scala" label="Scala">
-```
-
-This example shows a pipeline that runs tests with Maven and Test Intelligence.
-
-```yaml
-pipeline:
-  name: Test Intelligence Demo
-  identifier: testintelligencedemo
-  projectIdentifier: default
-  orgIdentifier: default
-  properties:
-    ci:
-      codebase:
-        build: <+input>
-        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
-  stages:
-    - stage:
-        type: CI
-        identifier: Build_and_Test
-        name: Build and Test
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
-              - step:
-                  type: RunTests
-                  name: Run Tests
-                  identifier: Run_Tests
-                  spec:
-                    language: Scala
-                    buildTool: Maven ## Specify Bazel, Maven, Gradle, or Sbt.
+                    language: Java ## Specify Java, Kotlin, or Scala.
+                    buildTool: Maven ## For Java or Kotlin, specify Bazel, Maven, or Gradle. For Scala, specify Bazel, Maven, Gradle, or Sbt.
                     args: test
                     packages: io.harness.
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
@@ -1056,7 +959,7 @@ pipeline:
   <TabItem value="csharp" label=".NET Core">
 ```
 
-This example shows a pipeline that runs tests with .NET Core and Test Intelligence.
+This example shows a pipeline that runs tests on C# with .NET Core and Test Intelligence.
 
 ```yaml
 pipeline:
@@ -1114,7 +1017,7 @@ pipeline:
   <TabItem value="python" label="Python">
 ```
 
-This example shows a pipeline that runs tests with pytest and Test Intelligence.
+This example shows a pipeline that runs tests on Python with pytest and Test Intelligence.
 
 ```yaml
 pipeline:
@@ -1182,10 +1085,10 @@ These examples use a Kubernetes cluster build infrastructure.
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="java" label="Java and Kotlin" default>
+  <TabItem value="java" label="Java, Kotlin, Scala" default>
 ```
 
-This example shows a pipeline that runs tests with Maven and Test Intelligence.
+This example shows a pipeline that runs tests on Java with Maven and Test Intelligence. By changing the `language`, this pipeline could be used for Kotlin or Scala.
 
 ```yaml
 pipeline:
@@ -1214,63 +1117,8 @@ pipeline:
                   spec:
                     connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
                     image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
-                    language: Java ## Specify Java or Kotlin.
-                    buildTool: Maven ## Specify Bazel, Maven, or Gradle.
-                    args: test
-                    packages: io.harness.
-                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
-                    postCommand: mvn package -DskipTests
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "target/reports/*.xml"
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
-              namespace: YOUR_KUBERNETES_NAMESPACE
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
-```
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="scala" label="Scala">
-```
-
-This example shows a pipeline that runs tests with Maven and Test Intelligence.
-
-```yaml
-pipeline:
-  name: Test Intelligence Demo
-  identifier: testintelligencedemo
-  projectIdentifier: default
-  orgIdentifier: default
-  properties:
-    ci:
-      codebase:
-        build: <+input>
-        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
-  stages:
-    - stage:
-        type: CI
-        identifier: Build_and_Test
-        name: Build and Test
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
-              - step:
-                  type: RunTests
-                  name: Run Tests
-                  identifier: Run_Tests
-                  spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
-                    image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
-                    language: Scala
-                    buildTool: Maven ## Specify Bazel, Maven, Gradle, or Sbt.
+                    language: Java ## Specify Java, Kotlin, or Scala.
+                    buildTool: Maven ## For Java or Kotlin, specify Bazel, Maven, or Gradle. For Scala, specify Bazel, Maven, Gradle, or Sbt.
                     args: test
                     packages: io.harness.
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
@@ -1295,7 +1143,7 @@ pipeline:
   <TabItem value="csharp" label=".NET Core">
 ```
 
-This example shows a pipeline that runs tests with .NET Core and Test Intelligence.
+This example shows a pipeline that runs tests on C# with .NET Core and Test Intelligence.
 
 ```yaml
 pipeline:
@@ -1357,7 +1205,7 @@ pipeline:
   <TabItem value="python" label="Python">
 ```
 
-This example shows a pipeline that runs tests with pytest and Test Intelligence.
+This example shows a pipeline that runs tests on Python with pytest and Test Intelligence.
 
 ```yaml
 pipeline:
@@ -1473,6 +1321,7 @@ If you encounter errors with TI for Python, make sure you meet the following req
 * You don't use resource file relationships. TI doesn't support resource file relationships.
 * You don't use dynamic loading and metaclasses. TI might miss tests or changes in repos that use dynamic loading or metaclasses.
 * Your [Build Tool](#build-tool) is pytest or unittest.
-* The [Build Arguments](#build-arguments) don't include coverage flags (`--cov` or `coverage`), and the [Pre-Command](#pre-command) doesn't install code coverage tools.
+* The [Build Arguments](#build-arguments) don't include coverage flags (`--cov` or `coverage`).
+* You don't need to install coverage tools in the [Pre-Command](#pre-command). These are already included.
 * The Python 3 binary is preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or installed at runtime in the [Pre-Command](#pre-command).
 * If you use another command, such as `python`, to invoke Python 3, you have added an alias, such as `python3 = "python"`.
