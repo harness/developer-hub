@@ -105,7 +105,7 @@ Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/
 
 ## Configuring Harness CLI
 
-1. Obtain **Harness API Token**. You can follow the steps outlined in the Harness documentation's guide on [how to create a personal API token](/docs/platform/resource-development/apis/add-and-manage-api-keys/).
+1. Obtain **Harness API Token**. You can follow the steps outlined in the Harness documentation's guide on [how to create a personal API token](/docs/platform/automation/api/add-and-manage-api-keys).
 
 2. Retrieve your `Account ID` by navigating within the `Harness UI` to `ACCOUNT SETTINGS` > `Overview` > `Account Id`.
 
