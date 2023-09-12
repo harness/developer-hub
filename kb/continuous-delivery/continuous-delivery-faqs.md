@@ -1120,6 +1120,25 @@ We don't save yaml's for service and other entities like we used to in First Gen
  
 [Documentation](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code/#why-did-harness-reduce-the-number-of-supported-entities-backed-by-git)
 
+
+#### Running into Harness Platform Rate limits?
+
+Please note that harness does limit accessive API and execution limitations. Harness does reserve the right to change these limits. 
+See site fore more details [https://developer.harness.io/docs/platform/rate-limits/]
+
+#### How are Harness secrets tied to connector, and what to watch for. 
+
+Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
+
+#### How to visualize and compare pipeline changes? 
+
+Harness allows users to compare changes to a pipeline YAML. This is often useful tool to determine why a pipeline has changed behavior. 
+See site for more details [https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/]
+
+#### Harness rollback deployments. 
+
+Harness Rollback deployments initiate a rollback of the most recent successful deployment. Note that this feature is behind a feature flag '''POST_PROD_ROLLBACK'''. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS)
+
 #### Do we allow one-time scheduling of pipeline execution ?
 
 Yes, one can set a cron rule that just happens once, it has repeat reschedule icon in UI. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#run-once).
@@ -1250,3 +1269,4 @@ Yes, you can use Bash shell over WinRM connection in Harness. In the Shell Scrip
 
 ### Is it possible to use Helm hooks in Harness Helm deployments?
 Yes, you can use Helm hooks in Harness Helm deployments. Helm hooks allow you to execute specific actions or scripts at different points in the Helm chart's lifecycle, such as before or after installing or upgrading a release. Harness supports the use of Helm hooks as part of your Helm deployment process.
+
