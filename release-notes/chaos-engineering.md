@@ -34,7 +34,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * The Docker Service Kill chaos fault was enhanced to support containerd service as well. Users can select the type of service via a new tunable (SERVICE_NAME) they want to kill. (CHAOS-2220)
 
-* Added support for experiment run specific manifest download. Now, Users can download experiment run specific manifest from right sidebar on Execution graph page. (CHAOS-1832)
+* Added support for downloading an experiment run specific manifest. Now, users can download experiment run specific manifest from the right sidebar on the Execution graph page. (CHAOS-1832)
 
 ### Early access
 
