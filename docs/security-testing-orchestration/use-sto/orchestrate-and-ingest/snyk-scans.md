@@ -68,7 +68,7 @@ This example uses a Snyk step in Orchestration mode  to scan a repository. This 
 
 ## Scan a repository: ingestion example
 
-The following example uses [`snyk code test`](https://docs.snyk.io/snyk-cli/commands/test) to scan a local .NET image built using Nuget. 
+The following example uses [`snyk test`](https://docs.snyk.io/snyk-cli/commands/test) to scan a local .NET image built using Nuget. 
 
 The scan stage in this pipeline has the following steps:
 
@@ -97,9 +97,9 @@ The scan stage in this pipeline has the following steps:
       # snyk SCA scan
       # Use <+codebase.branch> to specify branch to scan at runtime
       # Harness recommends that you always save the scan results to a SARIF file 
-      snyk code test --file=SubSolution.sln  \
+      snyk test --file=SubSolution.sln  \
          --target_reference  <+codebase.branch> \
-         --sarif-file-output=/shared/customer_artifacts/snyk_sca.sarif | true
+         --sarif-file-output=/shared/customer_artifacts/snyk_sast.sarif | true
       ``` 
 
    2. For the Run step **Image**, use a [supported Snyk image](https://github.com/snyk/snyk-images#current-images) based on the type of code in your codebase.  
@@ -122,7 +122,7 @@ The scan stage in this pipeline has the following steps:
    2. Target Type = **Repository**
    3. Target Name = (_user-defined_)
    4. Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_)
-   5. Ingestion =  **`/shared/customer_artifacts/snyk_sca.sarif`**    
+   5. Ingestion =  **`/shared/customer_artifacts/snyk_sast.sarif`**    
 
 6. Apply your changes, then save and run the pipeline. 
 
@@ -159,7 +159,7 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
       ```bash
       snyk container test \
           snykgoof/big-goof-1g:100 -d \
-          --sarif-file-output=/shared/customer_artifacts/snyk_code_test.sarif  || true
+          --sarif-file-output=/shared/customer_artifacts/snyk_container_scan.sarif  || true
       ```
       Snyk maintains a set of [snykgoof](https://hub.docker.com/u/snykgoof) repositories that you can use for testing your container-image scanning workflows.
 
@@ -173,13 +173,13 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
  
       This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise the build will exit with a error code before STO can ingest the data.
     
-4. Add a [Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference)
+4. Add a [Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) and configure it as follows:
 
    1. Scan Mode = **Ingestion**
    2. Target Type = **Container Image**
    3. Target Name = (_user-defined_)
    4. Variant = (_runtime expression_)
-   5. Ingestion =  **`/shared/customer_artifacts/snyk_sca.sarif`**    
+   5. Ingestion =  **`/shared/customer_artifacts/snyk_container_scan.sarif`**    
 
 5. Apply your changes, then save and run the pipeline.
 
@@ -293,15 +293,15 @@ pipeline:
                       dotnet restore SubSolution.sln
 
                       # snyk SCA scan
-                      snyk --file=SubSolution.sln test \
+                      snyk test --file=SubSolution.sln \
                          --target_reference  <+codebase.branch> \
-                         --sarif-file-output=/shared/customer_artifacts/snyk_sca.sarif | true
+                         --sarif-file-output=/shared/customer_artifacts/snyk_sast.sarif | true
                     envVariables:
-                      SNYK_TOKEN: <+secrets.getValue("sergeysnyktoken")>
+                      SNYK_TOKEN: <+secrets.getValue("sto-api-token")>
               - step:
                   type: Snyk
-                  name: Snyk SCA
-                  identifier: Snyk_SCA
+                  name: Snyk SAST
+                  identifier: Snyk_SAST
                   spec:
                     mode: ingestion
                     config: default
@@ -313,7 +313,7 @@ pipeline:
                       log:
                         level: info
                     ingestion:
-                      file: /shared/customer_artifacts/snyk_sca.sarif
+                      file: /shared/customer_artifacts/snyk_sast.sarif
           sharedPaths:
             - /shared/customer_artifacts
         variables:
@@ -379,7 +379,7 @@ pipeline:
 
                       snyk container test \
                             snykgoof/big-goof-1g:100 -d \
-                            --sarif-file-output=/shared/customer_artifacts/snyk_code_test.sarif  || true
+                            --sarif-file-output=/shared/customer_artifacts/snyk_container_scan.sarif  || true
                     privileged: true
                     envVariables:
                       SNYK_TOKEN: <+secrets.getValue("snyk_api_token")>
@@ -402,7 +402,7 @@ pipeline:
                       runner_tag: develop
                     imagePullPolicy: Always
                     ingestion:
-                      file: /shared/customer_artifacts/snyk_code_test.sarif
+                      file: /shared/customer_artifacts/snyk_container_scan.sarif
                   failureStrategies:
                     - onFailure:
                         errors:
