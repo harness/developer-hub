@@ -12,7 +12,7 @@ This article addresses some frequently asked questions about Harness Delegates.
 
 ### General
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is the Harness Delegate?
 
@@ -92,7 +92,7 @@ You could even have a delegate in one cloud platform use a resource in a separat
 
 ### Delegate installation
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What types of delegates are there?
 
@@ -125,7 +125,7 @@ Go to [Automate delegate installation](../platform/2_Delegates/install-delegates
 
 ### Delegate requirements
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What are the delegate system requirements?
 
@@ -162,7 +162,7 @@ By default, the Harness Delegate uses HTTP and HTTPS in its `Proxy Scheme` setti
 
 ### Delegate selection
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### How does Harness Manager pick delegates for tasks?
 
@@ -193,7 +193,7 @@ Delegate selectors use the tags you add to delegates. For more information, go t
 
 ### Running scripts and installations on delegates
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### Can I run scripts on delegate hosts using Harness?
 
@@ -213,7 +213,7 @@ No. You can add your passwords, tokens, etc to your scripts, but you cannot use 
 
 ### Installing certificates on the delegate
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### Can I import certificates on the delegate host?
 
@@ -227,7 +227,7 @@ Yes. For more information, go to [Truststore override for delegates](../platform
 
 ### Copying and downloading artifacts by using the delegate
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### How does the delegate download or copy an artifact to the target host?
 
@@ -235,7 +235,7 @@ For container-based deployments such as Kubernetes, the delegate pulls the artif
 
 ### Delegate and Kubernetes namespaces
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What Kubernetes namespace does the delegate use?
 
@@ -263,7 +263,7 @@ You can target the delegate to specific namespaces buy editing its YAML file wit
 
 ### Delegate high availability (HA)
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### Does the delegate support HA?
 
@@ -301,7 +301,7 @@ If you want to install Kubernetes delegates in separate clusters, do not use the
 
 ### Troubleshooting the delegate
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What are common problems with the delegate?
 

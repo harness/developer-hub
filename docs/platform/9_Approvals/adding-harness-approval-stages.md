@@ -12,7 +12,7 @@ You can specify Harness User Group(s) to approve or reject a Pipeline at any poi
 
 Approvals are added in between Stages to prevent the Pipeline execution from proceeding without an approval.
 
-For example, in a [CI Build pipeline](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md), you might want to add an approval stage between a Build Stage and an Integration Test Stage.
+For example, in a [CI Build pipeline](../../continuous-integration/get-started/tutorials.md), you might want to add an approval stage between a Build Stage and an Integration Test Stage.
 
 Other approval methods are:
 

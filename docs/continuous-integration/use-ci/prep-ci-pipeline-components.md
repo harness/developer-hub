@@ -6,7 +6,7 @@ sidebar_position: 10
 
 This topic provides an overview of CI pipeline creation and configuration, including common components, such as **Build** stages, steps, and codebases, as well as advanced settings.
 
-For definitions of terms like stage, step, build infrastructure, delegate, connector, and so on, go to [CI pipeline components](../ci-quickstarts/ci-pipeline-basics.md).
+For definitions of terms like stage, step, build infrastructure, delegate, connector, and so on, go to [CI pipeline components](../get-started/key-concepts.md).
 
 ## Pipelines
 
@@ -23,7 +23,7 @@ You can run a pipeline manually or set up triggers to automatically run it on a 
 4. If you want to use a [pipeline template](/docs/platform/Templates/template), select **Start with Template**.
 5. Select **Start**.
 
-You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure pipeline settings. For a guided experience, try one of the [CI tutorials](../ci-quickstarts/ci-pipeline-quickstart.md).
+You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure pipeline settings. For a guided experience, try one of the [CI tutorials](../get-started/tutorials.md).
 
 :::tip
 

@@ -16,7 +16,7 @@ This article addresses some frequently asked questions about Harness Cloud Cost 
 
 No. You can create an AWS connector in the master or linked account. CCM requires one connector per AWS account (master or linked).
 
-It is recommended to create a CUR at the master account to avoid the CUR creation step for each linked account. For more information, see [AWS connector requirements](../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md) and [Cost and Usage Reports (CUR) and CCM requirements](../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements).
+It is recommended to create a CUR at the master account to avoid the CUR creation step for each linked account. For more information, see [AWS connector requirements](../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md) and [Cost and Usage Reports (CUR) and CCM requirements](../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements).
 
 #### What kind of access does Harness CCM need to the cost and usage reports (CUR)?
 
@@ -30,7 +30,7 @@ Read [this](https://medium.com/harness-engineering/inner-workings-of-harnesss-cl
 
 #### Do I need to create a CloudFormation stack?
 
-Yes. You need to [create a CloudFormation stack](../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#create-cross-account-role) to provision IAM Roles and corresponding policies to grant access for the required features.
+Yes. You need to [create a CloudFormation stack](../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#create-cross-account-role) to provision IAM Roles and corresponding policies to grant access for the required features.
 
 #### Do you import the data into your account?
 
@@ -42,7 +42,7 @@ AWS ingests data at source (S3 bucket) four times a day. CCM takes about two hou
 
 #### What AWS access permissions/policies are required for CCM?
 
-See [AWS access permissions](../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-access-permissions) for the details.
+See [AWS access permissions](../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#aws-access-permissions) for the details.
 
 #### To save on S3 storage costs, can I delete CUR files from the source S3 bucket after they've been ingested in CCM?
 
@@ -54,7 +54,7 @@ No. You need a delegate only when connecting to a Kubernetes cluster, such as on
 
 #### What types of access do you get to my accounts?
 
-CCM gets read-only access to the cost data along with a list of all the member (or linked) accounts. CCM does not get access to any other privileges. However, for AutoStopping, CCM requires additional privileged permissions to orchestrate the underlying infrastructure. See [AWS resource optimization using AutoStopping rules](../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-resource-optimization-using-autostopping-rules).
+CCM gets read-only access to the cost data along with a list of all the member (or linked) accounts. CCM does not get access to any other privileges. However, for AutoStopping, CCM requires additional privileged permissions to orchestrate the underlying infrastructure. See [AWS resource optimization using AutoStopping rules](../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#aws-resource-optimization-using-autostopping-rules).
 
 #### Can CCM get historical data from the CUR?
 
@@ -68,7 +68,7 @@ Yes, you can create multiple Azure connectors for each Harness Account.
 
 * You can create multiple Azure connectors per Azure Tenant with unique subscription IDs.
 * If you have separate billing exports for each of your subscriptions in your Azure account, set up separate connectors in Harness to view the cloud cost of all the subscriptions in CCM.
-* See [Set up Cloud Cost Management for Azure](../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
+* See [Set up Cloud Cost Management for Azure](../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md).
 
 #### What types of access do you get to my accounts?
 

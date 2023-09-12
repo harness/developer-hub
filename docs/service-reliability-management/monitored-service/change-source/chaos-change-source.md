@@ -21,13 +21,13 @@ For detailed instructions on connecting a chaos fault to a monitored service, go
 
 ## Check the impact of a fault on a monitored service
 
-Once you've connected faults to monitored services corresponding to your target environment, when you run the experiment(s) containing those faults, you can use the [**SRM SLOs**](/docs/service-reliability-management/getting-started/slo-dashboard) and [**Changes**](/docs/service-reliability-management/change-impact-analysis/change-impact-analysis-changes-dash-board) dashboards page to check the health of those services.
+Once you've connected faults to monitored services corresponding to your target environment, when you run the experiment(s) containing those faults, you can use the [**SRM SLOs**](/docs/service-reliability-management/get-started/slo-dashboard) and [**Changes**](/docs/service-reliability-management/change-impact-analysis/change-impact-analysis-changes-dash-board) dashboards page to check the health of those services.
 
 To check the impact of a fault on a monitored service:
 
 1. In Harness, select **Service Reliability**.
 
-	The [Service Level Objectives (SLOs) dashboard](/docs/service-reliability-management/getting-started/slo-dashboard) appears, listing SLOs, their associated monitored services, status, [error budget](/docs/service-reliability-management/getting-started/slo-dashboard#error-budget-details), etc.
+	The [Service Level Objectives (SLOs) dashboard](/docs/service-reliability-management/get-started/slo-dashboard) appears, listing SLOs, their associated monitored services, status, [error budget](/docs/service-reliability-management/get-started/slo-dashboard#error-budget-details), etc.
 	
 	![The SRM SLOs dashboard, listing 3 SLOs, and their associated monitored services](./static/srm-slo-dashboard.png) 
 
@@ -47,7 +47,7 @@ To check the impact of a fault on a monitored service:
 
 	For example, in the image above, the pointer is centered around one of the diamonds on the **Chaos Experiments** timeline, and there are two Chaos Events at that point in time. The corresponding events are also listed in the **Changes** section at the bottom of the page.
 
-1. Below the timeline, in the Changes section, select a change event to see [SLO details](/docs/service-reliability-management/getting-started/slo-dashboard#slo-details-page).
+1. Below the timeline, in the Changes section, select a change event to see [SLO details](/docs/service-reliability-management/get-started/slo-dashboard#slo-details-page).
 
 	Here you can see performance trends and the error budget for the SLO, among other details. 
 

@@ -60,7 +60,7 @@ import {
             module: MODULES.platform,
             description:
               "Learn the differences between Harness SaaS and self-managed products.",
-            link: "/docs/self-managed-enterprise-edition/introduction/getting-started",
+            link: "/docs/self-managed-enterprise-edition/get-started/onboarding-guide",
           },
         ],
       },

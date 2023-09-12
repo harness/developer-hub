@@ -17,7 +17,7 @@ Harness CI provides proprietary technologies, like Cache Intelligence and Test I
 
 In addition, you can [use plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) to include GitHub Actions, Bitrise Integrations, Jira updates, and more in your Harness CI pipelines.
 
-Harness CI is part of The [Harness Platform](/docs/getting-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
+Harness CI is part of The [Harness Platform](/docs/get-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
 
 * [Secrets management](/docs/category/secrets-management) through the [Harness secrets manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) or an [external secrets manager](/docs/platform/secrets/secrets-management/add-secrets-manager).
 * Role-Based Access Control (RBAC) helps you control user and group access to Harness resources according to users' roles. Using RBAC increases security and improves efficiency.
@@ -77,7 +77,7 @@ step1:
 </Tabs>
 ```
 
-For more information about Harness terminology, features, and pipeline components, go to [CI pipeline basics](../ci-quickstarts/ci-pipeline-basics.md).
+For more information about Harness terminology, features, and pipeline components, go to [CI pipeline basics](../get-started/key-concepts.md).
 
 ### Jobs and steps
 
@@ -614,7 +614,7 @@ Webhooks are a convenient way to trigger CI builds on demand by sending an HTTP 
 
 In GitLab CI, pipelines can be triggered only through API.
 
-Harness CI supports webhook, artifact, manifest and schedule triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on `cron` expressions. To learn more about creating a trigger, go to [Triggers](https://developer.harness.io/docs/category/triggers).
+Harness CI supports webhook, artifact, manifest and schedule triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on `cron` expressions. To learn more about creating a trigger, go to [Triggers](/docs/category/triggers).
 
 ```mdx-code-block
 <Tabs>

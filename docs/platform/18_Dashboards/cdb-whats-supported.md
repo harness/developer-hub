@@ -6,7 +6,7 @@ sidebar_position: 1
 
 This topic lists the supported dashboard features and integrations you can use in Harness.
 
-For a comprehensive list that includes all Harness modules, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies).
+For a comprehensive list that includes all Harness modules, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
 
 ## Custom Dashboards Harness module support
 

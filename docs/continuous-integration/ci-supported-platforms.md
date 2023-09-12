@@ -11,4 +11,4 @@ import Ci from '/docs/continuous-integration/shared/ci-supported-platforms.md';
 
 <Ci />
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).

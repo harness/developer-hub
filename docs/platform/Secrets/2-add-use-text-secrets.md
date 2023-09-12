@@ -30,11 +30,11 @@ Secrets can be added inline while setting up a connector or other setting, and t
 
 :::info
 
-You can't create secrets that point to secret managers in a different [scope](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes). For example, if you create a secret at the project scope, you cannot reference a secret manager in a different project. To reference secrets across projects, create the secret at the organization or account scope.
+You can create secrets that point to secret managers in a different [scope](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes). For example, you can create secrets inside a project using the Secret Manager created at the Org or Account level.
 
 :::
 
-To add an encrypted text secret in the account scope: 
+To add an encrypted text secret in the account scope, do the following: 
 
 1. In your Harness account, select **ACCOUNT SETTINGS**.
    
@@ -42,15 +42,11 @@ To add an encrypted text secret in the account scope:
 
 3. Select **New Secret**, and then select **Text**.
    
-   ```mdx-code-block
-   <img src={add_text_secret} alt="add_text_secret" height="200" width="500"/>
-   ```
+   ![](./static/add-text-secrets.png)
 
    The **Add new Encrypted Text** settings appear.
 
-   ```mdx-code-block
-   <img src={add_encrypted_text} alt="add_encrypted_text" height="200" width="500"/>
-   ```
+   ![](./static/add-encrypted-text.png)
 
 4. In **Secrets Manager** select the secrets manager you will use to encrypt this secret.
 
