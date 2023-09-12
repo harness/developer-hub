@@ -110,58 +110,58 @@ A business rule is essential to define trigger conditions and configure the Harn
    ```
 
    (function executeRule(current, previous /*null when async*/ ) {
-      try {
-         var r = new sn_ws.RESTMessageV2();
-         r.setEndpoint("https://app.harness.io/cv/api/webhook/custom-change?accountIdentifier=vpCkHKsDSxK9_KYfjCTMKA&orgIdentifier=cvng&projectIdentifier=SRM_Sanity&monitoredServiceIdentifier=customchange_prod&changeSourceIdentifier=serviceNowCustom");
-         r.setHttpMethod("post");
-         r.setRequestHeader("content-type","application/json");
-         r.setRequestHeader("X-Api-Key","pat.vpCkHKsDSxK9_KYfjCTMKA.645a3e9a849f5d37022adc96.SNy6VxThxDBQFwOzoTSV");
-         
-         //Mandatory Variables
-         var number = current.getValue("number");
-         var user = current.getValue("sys_created_by");
-         var created_at = current.getValue("sys_created_on");
-         var long_created_at = new GlideDateTime(created_at).getNumericValue();
-         var name = current.getValue("short_description");
-         var description = current.getValue("description");
-         var instanceURL = gs.getProperty('glide.servlet.uri');
-         var link = instanceURL + current.getLink();
-         //var service = current.getValue("service");
-         //var environment = current.getValue("u_environment");
+   try {
+      var r = new sn_ws.RESTMessageV2();
+      r.setEndpoint("Harness webhook");
+      r.setHttpMethod("post");
+      r.setRequestHeader("content-type","application/json");
+      r.setRequestHeader("X-Api-Key","Harness x-api-key");
+      
+      //Mandatory Variables
+      var number = current.getValue("number");
+      var user = current.getValue("sys_created_by");
+      var created_at = current.getValue("sys_created_on");
+      var long_created_at = new GlideDateTime(created_at).getNumericValue();
+      var name = current.getValue("short_description");
+      var description = current.getValue("description");
+      var instanceURL = gs.getProperty('glide.servlet.uri');
+      var link = instanceURL + current.getLink();
+      //var service = current.getValue("service");
+      //var environment = current.getValue("u_environment");
 
-         var obj = {
-            "eventIdentifier": number,
-               "user": user,
-               "startTime": long_created_at,
-            "endTime": long_created_at,
-               "eventDetail":{
-               "description": description,
-               "externalLinkToEntity": link,
-               "name": name
-            }
-         };
-         
-         var body = JSON.stringify(obj);
-         gs.info("Webhook body: " + body);
-         r.setRequestBody(body);
+      var obj = {
+         "eventIdentifier": number,
+            "user": user,
+            "startTime": long_created_at,
+         "endTime": long_created_at,
+            "eventDetail":{
+            "description": description,
+            "externalLinkToEntity": link,
+            "name": name
+         }
+      };
+      
+      var body = JSON.stringify(obj);
+      gs.info("Webhook body: " + body);
+      r.setRequestBody(body);
 
-         var response = r.execute();
-         var httpStatus = response.getStatusCode();
-      } catch (ex) {
-         var message = ex.message;
-         gs.error("Error message: " + message);
-      }
+      var response = r.execute();
+      var httpStatus = response.getStatusCode();
+   } catch (ex) {
+      var message = ex.message;
+      gs.error("Error message: " + message);
+   }
 
-      gs.info("Webhook target HTTP status response: " + httpStatus);
+   gs.info("Webhook target HTTP status response: " + httpStatus);
 
-   })(current, previous);
+})(current, previous);
 
    ```
 
 </details>
 
       
-4.  Save the business rule.
+1.  Save the business rule.
 
 To learn more, go to [Create a business rule](https://docs.servicenow.com/bundle/rome-application-development/page/script/business-rules/task/t_CreatingABusinessRule.html).
 
