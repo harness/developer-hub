@@ -8,6 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 This topic describes the settings and permissions for the Bitbucket connector. Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket. The following settings are applicable to both versions.
 
 ## Overview settings
@@ -35,11 +40,6 @@ Select the protocol, **HTTP** or **SSH**, to use for cloning and authentication.
 Enter the URL for the Bitbucket account or repository that you want to connect to. The required value is determined by the **URL Type**, **Connection Type**, and your Bitbucket account type (Cloud or Data Center).
 
 ```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
-
-```mdx-code-block
 <Tabs>
   <TabItem value="account" label="URL Type: Account" default>
 ```
@@ -50,8 +50,8 @@ The URL format depends on the **Connection Type** and your Bitbucket account typ
 
 | Connection Type | Bitbucket Cloud | Bitbucket Data Center (On-Prem) |
 | --------------- | --------------- | ------------------------------- |
-| HTTP | `https://bitbucket.org/USERNAME/` or `https://bitbucket.org` | `https://bitbucket.YOUR_ORG_HOSTNAME/scm/` |
-| SSH | `git@bitbucket.org:USERNAME/` | `git@bitbucket.YOUR_ORG_HOSTNAME/` |
+| HTTP | `https://bitbucket.org/USERNAME/` or `https://bitbucket.org` | `https://bitbucket.YOUR-ORG-HOSTNAME/scm/` |
+| SSH | `git@bitbucket.org:USERNAME/` | `git@bitbucket.YOUR-ORG-HOSTNAME/` |
 
 <figure>
 
@@ -78,8 +78,8 @@ The URL format depends on the **Connection Type** and your Bitbucket account typ
 
 | Connection Type | Bitbucket Cloud | Bitbucket Data Center (On-Prem) |
 | --------------- | --------------- | ------------------------------- |
-| HTTP | `https://bitbucket.org/<username>/<repo-name>.git` | `https://bitbucket.<your-org-hostname>/scm/<project-id>/<repo-name>.git` |
-| SSH | `git@bitbucket.org:<username>/<repo-name>.git` | `git@bitbucket.<your-org-hostname>/<project-id>/<repo-name>.git` |
+| HTTP | `https://bitbucket.org/USERNAME/REPO-NAME.git` | `https://bitbucket.YOUR-ORG-HOSTNAME.com/scm/PROJECT-ID/REPO-NAME.git` |
+| SSH | `git@bitbucket.org:USERNAME/REPO-NAME.git` | `git@bitbucket.YOUR-ORG-HOSTNAME/PROJECT-ID/REPO-NAME.git` |
 
 <figure>
 
@@ -100,11 +100,15 @@ The URL format depends on the **Connection Type** and your Bitbucket account typ
 </Tabs>
 ```
 
-:::tip
+:::info On-Prem Accounts
 
-There are several different formats possible for Bitbucket Data Center (On-Prem) accounts, such as `bitbucket.myorg.com`, `bitbucket.my.org.com`, and so on. You may also need to use a `<domain-name>:<port>` format for the authority portion of SSH URLs, such as `bitbucket.myorg.com:8080`. This depends on your server and firewall configuration. If the connection test fails, make sure you've used the appropriate URL format.
+There are several possible URL formats for Bitbucket Data Center (On-Prem) accounts, such as `bitbucket.myorg.com` or `bitbucket.my.org.com`, as well as variations of repo URLs. Your URL might not match the examples above, and you might need to modify the URL.
 
-![Bitbucket connector Details settings configured to connect to an On-Prep account using an SSH URL with a port number.](./static/bitbucket-connector-settings-reference-ssh-with-port.png)
+For SSH URLs, you may need to use a `DOMAIN-NAME:PORT` format for the authority portion, such as `bitbucket.myorg.com:8080`. This depends on your server and firewall configuration. If the connection test fails, make sure you've used the appropriate URL format.
+
+![Bitbucket connector Details settings configured to connect to an On-Prem account using an SSH URL with a port number.](./static/bitbucket-connector-settings-reference-ssh-with-port.png)
+
+If your On-Prem repo URL has an extra segment before the project ID or a multi-segment project ID, such as `bitbucket.myorg.com/scm/DESCRIPTOR/PROJECT-ID/REPO-NAME.git`, some API functionality can fail if you use the full URL. To fix this, exclude the extra segment when you enter the URL in the **Bitbucket Repository URL** field.
 
 :::
 
@@ -112,11 +116,11 @@ There are several different formats possible for Bitbucket Data Center (On-Prem)
 
 This field is only required if the **URL Type** is **Account**. Provide a path to a repo in your Bitbucket account that Harness can use to test the connector. Harness uses this repo path to validate the connection only. When you use this connector in a pipeline, you'll specify a true code repo in your pipeline configuration or at runtime.
 
-For Bitbucket Cloud accounts, the **Test Repository** path format is: `<repo-name>.git`.
+For Bitbucket Cloud accounts, the **Test Repository** path format is: `REPO-NAME.git`.
 
 ![Test Repository field populated with the path to a Bitbucket Cloud repo.](./static/bitbucket-account-cloud-testrepo.png)
 
-For BitBucket Data Center (On-Prem) accounts, you must include the project ID, such as `<project-id>/<repo-name>.git`.
+For BitBucket Data Center (On-Prem) accounts, you must include the project ID, such as `PROJECT-ID/REPO-NAME.git`.
 
 ![Test Repository field populated with the path to a Bitbucket Data Center repo.](./static/bitbucket-account-onprem-testrepo.png)
 
@@ -129,13 +133,8 @@ Provide authentication credentials for the connector.
 The **Connection Type** you chose in the [Details settings](#details-settings) determines the **Authentication** method.
 
 ```mdx-code-block
-import Tabs2 from '@theme/Tabs';
-import TabItem2 from '@theme/TabItem';
-```
-
-```mdx-code-block
-<Tabs2>
-  <TabItem2 value="http" label="Username and Password" default>
+<Tabs>
+  <TabItem value="http" label="Username and Password" default>
 ```
 
 The **HTTP** Connection Type requires **Username** and **Password** authentication for all accounts and repos, including read-only repos.
@@ -153,8 +152,8 @@ If you use a Google account to log in to Bitbucket, you must use an App password
 Bitbucket accounts with two-factor authentication must use access tokens.
 
 ```mdx-code-block
-  </TabItem2>
-  <TabItem2 value="ssh" label="SSH Key">
+  </TabItem>
+  <TabItem value="ssh" label="SSH Key">
 ```
 
 The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
@@ -174,8 +173,8 @@ Make sure to follow the prompts to finish creating the key. For more information
 :::
 
 ```mdx-code-block
-  </TabItem2>
-</Tabs2>
+  </TabItem>
+</Tabs>
 ```
 
 ### Enable API access
@@ -193,6 +192,8 @@ You must provide an account-level app password or token. Repo-level tokens are n
 :::caution
 
 For **HTTP** Connection Types, use the same password you used earlier, and make sure the **Username** fields are both plain-text or both encrypted. Don't use a plain-text username for one field and a secret for the other.
+
+For On-Prem repos, if the repo URL has an extra segment before the project ID, such as `bitbucket.myorg.com/scm/DESCRIPTOR/PROJECT-ID/REPO-NAME.git`, some API functionality can fail if you use the full URL. To fix this, remove the extra segment from the [Bitbucket Repository URL](#bitbucket-accountrepository-url).
 
 :::
 
@@ -227,3 +228,7 @@ The connection test may also fail if the token doesn't have sufficient privilege
 ### Status doesn't update in BitBucket Cloud PRs
 
 BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect status updates in PRs due to some statuses failing to send. If you encounter this issue with BitBucket Cloud, contact [Harness Support](mailto:support@harness.io) to troubleshoot this issue by enabling a feature flag, `CI_BITBUCKET_STATUS_KEY_HASH`.
+
+### Some API functions fail for On-Prem repos
+
+If your On-Prem repo URL has an extra segment before the project ID or a multi-segment project ID, such as `bitbucket.myorg.com/scm/DESCRIPTOR/PROJECT-ID/REPO-NAME.git`, some API functionality can fail if you use the full URL. To fix this, remove the extra segment from the [Bitbucket Repository URL](#bitbucket-accountrepository-url).
