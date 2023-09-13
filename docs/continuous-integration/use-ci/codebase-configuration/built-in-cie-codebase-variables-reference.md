@@ -19,7 +19,7 @@ This topic describes how codebase variables are resolved and the built-in Harnes
 
 For more information about variables and expressions, go to:
 
-* [Built-in and custom Harness variables reference](../../../platform/12_Variables-and-Expressions/harness-variables.md)
+* [Built-in and custom Harness variables reference](../../../platform/variables-and-expressions/harness-variables.md)
 * [CI environment variables reference](../optimize-and-more/ci-env-var.md)
 
 ## Requirements

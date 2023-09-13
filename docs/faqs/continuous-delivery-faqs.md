@@ -871,7 +871,7 @@ See [Harness secrets management overview](/docs/platform/secrets/secrets-manage
 
 Harness includes built-in expressions to identify settings.
 
-See [Built-in Harness variables reference](../platform/12_Variables-and-Expressions/harness-variables.md).
+See [Built-in Harness variables reference](../platform/variables-and-expressions/harness-variables.md).
 
 Most settings in Harness pipelines allow you to use fixed values, runtime inputs, and expressions.
 
@@ -881,7 +881,7 @@ See [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and
 
 Yes. Everything in Harness can be referenced by a fully qualified name (FQN). The FQN is the path to a setting in the YAML definition of your pipeline.
 
-See [Built-in Harness variables reference](../platform/12_Variables-and-Expressions/harness-variables.md).
+See [Built-in Harness variables reference](../platform/variables-and-expressions/harness-variables.md).
 
 #### Can I enter values at runtime?
 

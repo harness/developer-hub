@@ -346,7 +346,7 @@ To change the approval group during the pipeline run, edit the **Manual Approval
 
 Use expressions to reference Harness input, output, and execution variables. These variables represent settings and values that exist in the pipeline before and during execution.
 
-For more information, go to the [built-in and custom Harness variables reference](../12_Variables-and-Expressions/harness-variables.md).
+For more information, go to the [built-in and custom Harness variables reference](../variables-and-expressions/harness-variables.md).
 
 ```mdx-code-block
 <Tabs>

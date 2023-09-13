@@ -181,7 +181,7 @@ Select how long you want Harness to analyze and monitor the logs/APM data points
 
 The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md)
+In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md)
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 

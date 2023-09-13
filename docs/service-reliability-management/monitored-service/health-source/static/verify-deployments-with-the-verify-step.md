@@ -190,7 +190,7 @@ Harness waits 2-3 minutes to allow enough time for the data to be sent to the ve
 
 ## Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](../../../platform/12_Variables-and-Expressions/harness-variables.md) to reference the artifact in the stage Service settings.
+In **Artifact Tag**, use a [Harness expression](../../../platform/variables-and-expressions/harness-variables.md) to reference the artifact in the stage Service settings.
 
 The expression `<+serviceConfig.artifacts.primary.tag>` references the primary artifact.
 

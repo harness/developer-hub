@@ -14,7 +14,7 @@ This topic assumes you're familiar with [CD pipeline basics](/docs/continuous-de
 
 ## View compiled YAML
 
-A pipeline's compiled execution YAML is the YAML used in for execution, including all resolved [runtime inputs, expressions](../variables-and-expressions/runtime-inputs.md), and [variables](../12_Variables-and-Expressions/harness-variables.md).
+A pipeline's compiled execution YAML is the YAML used in for execution, including all resolved [runtime inputs, expressions](../variables-and-expressions/runtime-inputs.md), and [variables](../variables-and-expressions/harness-variables.md).
 
 To view compiled YAML:
 

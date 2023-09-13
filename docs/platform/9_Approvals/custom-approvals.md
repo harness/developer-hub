@@ -42,7 +42,7 @@ In the Custom Approval step, you enter a script that is executed at Pipeline run
 
 If the script fails, the step fails and the step or stage [Failure Strategy](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) is initiated.
 
-You must set approval criteria. Approval criteria can use the results of the script or other Harness features such as [Harness built-in or custom variables](../12_Variables-and-Expressions/harness-variables.md).
+You must set approval criteria. Approval criteria can use the results of the script or other Harness features such as [Harness built-in or custom variables](../variables-and-expressions/harness-variables.md).
 
 Rejection criteria is optional.
 
@@ -55,7 +55,7 @@ Criteria can be the following:
 	+ Harness supports JEXL expressions and you can use these with script outputs or Harness variables to create expressions.
 	+ If the resolved JEXL expression is a Boolean true, the approval criteria is met.
 	+ For example, you could evaluate the output from a previous [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step named **test** by referencing its output in a JEXL expression and comparing it to the value `Approved`: `<+execution.steps.test.output.outputVariables.status>=="Approved"`.
-	+ See [Built-in and Custom Harness Variables Reference](../12_Variables-and-Expressions/harness-variables.md) and [Extracting Characters from Harness Variable Expressions](../12_Variables-and-Expressions/extracting-characters-from-harness-variable-expressions.md).
+	+ Go to [Built-in and Custom Harness Variables Reference](../variables-and-expressions/harness-variables.md) and [Extracting Characters from Harness Variable Expressions](../variables-and-expressions/extracting-characters-from-harness-variable-expressions.md).
 
 ## Add a Custom Approval stage
 
@@ -153,7 +153,7 @@ Custom Approval steps must have at least one **Approval Criteria**. You can also
 
 Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
 
-In **Conditions**, you can define approval criteria using outputs from the step script, [Harness expressions](../12_Variables-and-Expressions/harness-variables.md), or your custom ticketing system.
+In **Conditions**, you can define approval criteria using outputs from the step script, [Harness expressions](../variables-and-expressions/harness-variables.md), or your custom ticketing system.
 
 If you use Harness expressions, ensure that the expression can be resolved at runtime.
 
@@ -190,7 +190,7 @@ If you add rejection criteria it is used in addition to the settings in **Appro
 
 ### Option: Harness Expressions in Variables
 
-You can use [Harness variable expressions](../12_Variables-and-Expressions/harness-variables.md) in your scripts and in the **Script Input Variables** and **Script Output Variables**.
+You can use [Harness variable expressions](../variables-and-expressions/harness-variables.md) in your scripts and in the **Script Input Variables** and **Script Output Variables**.
 
 For **Script Input Variables** and **Script Output Variables**, you simply select **Expression**, and then paste in the Harness variable expression.
 
