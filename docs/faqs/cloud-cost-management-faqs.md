@@ -394,7 +394,7 @@ Please reverify if the Slack and email channels have been properly configured fo
 
 #### How much time does it take for sending alerts to the customers for an anomaly ?
 
-As soon as anomalies are detected at our end we immediately send both slack as well as email notifications to our customers regarding it.
+As soon as anomalies are detected at our end, we immediately send both slack as well as email notifications to our customers regarding it.
 
 #### Do we support fetching anomalies on perspective made through labels ?
 
@@ -406,7 +406,7 @@ No, as of now we don’t support feeding data for future events or holidays.
 
 #### Anomaly drill down from the perspective screen does not seem to be filtering the anomaly list correctly ?
 
-No, that's not accurate. When you perform a drill-down from the perspective screen to view anomalies, we apply a time filter that specifically retrieves all anomalies of that particular day. This process ensures that the anomalies are accurately fetched, and the user is presented with all anomalies from that particular day, allowing them to take appropriate action.
+When you perform a drill-down from the perspective screen to view anomalies, we apply a time filter that specifically retrieves all anomalies of that particular day. This process ensures that the anomalies are accurately fetched, and the user is presented with all anomalies from that particular day, allowing them to take appropriate action.
 
 #### I see an anomaly at the AWS usage type level. Why is it that I'm not observing the same anomaly at the AWS service or AWS account level?
 
@@ -417,8 +417,6 @@ We display anomalies at the most granular level of the hierarchy and intentional
 #### I am seeing a large number of anomalies being detected which do not seem like anomalies to me ?
 
 Before proceeding, please double-check whether you have configured a new connector specifically for that particular cloud service. If you have indeed set up a new connector, please be aware that our machine learning models may not yet have sufficient training data for accurately identifying anomalies. To obtain reliable anomaly results, we typically require a minimum of 14 days' worth of training data.
-
-If you haven't configured a new connector, but you still believe that some reported anomalies do not align with your expectations, please don't hesitate to reach out to us. We are committed to assisting you and will make every effort to address any concerns you may have.
 
 ### General AutoStopping rules
 
