@@ -66,7 +66,9 @@ This release does not include any new early access features.
 
 ### Hotfixes
 
-The current version does not include a hotfix release.
+#### Version 80506
+
+- This fix will help reduce number of api calls made to Git Providers during deployment.
 
 ## Previous releases
 
