@@ -175,9 +175,9 @@ Note the following as you troubleshoot and fix your security issues:
 
 </details>
 
-The Issue Details pane has the information you need to troubleshoot and fix your security vulnerabilities.
+The Issue Details pane has useful information for troubleshooting your security vulnerabilities. 
 
-* In the Issues table (bottom left), click the row for the critical issue **subprocess\_popen\_with\_shell\_equals\_true**. The Issue Details pane opens.
+1. Expand the **Common to dvpwa:master** list (bottom left) and select the critical issue **sB324:hashlib**. The Issue Details pane opens.
 
   ![](./static/sto-standalone-workflows-15.png)
 
@@ -188,10 +188,25 @@ The Issue Details pane has the information you need to troubleshoot and fix your
 		- High 7.0 - 8.9
 		- Critical 9.0 - 10.0
 	+ The **Occurrences List** shows all occurrences of this specific issue in the test target.
-* Examine the Occurrences List for this issue. Note that, to eliminate this vulnerability from the repo, you can need to fix multiple occurrences in multiple files:
+
+2. Select the Reference Identifier link ([CWE-327](https://cwe.mitre.org/data/definitions/327.html)).
+
+   **Issue Details** includes specific information about each vulnerability. In this case, you can view detailed information about the issue in the Common Weakness Enumeration database, a community-developed list of software and hardware weakness types. 
+
+3. Examine the Occurrences List for this issue. (You might need to scroll down in the pane.) Note that, to eliminate this vulnerability from the repo, you can need to fix multiple occurrences in multiple files:
 	+ **Occurrence 1:** Line 39 in `/code/sqli/dao/review.py`
 	+ **Occurrence 2:** Line 26 in `/code/sqli/dao/course.py`
 	+ etc.
+
+<details open><summary>Key Concept: Issues details are derived from the external scanner</summary>  
+
+Many of the details you see for each issue are derived from the external scanner. These details can differ, depending on the scan tool you're using. In this tutorial we're using Bandit, which is a free, open-source scan tool. In general, paid scanners provide more extensive details (such as remediation steps) than free one.
+
+Here's an example of a container image vulnerability detected by a paid version of Snyk:
+
+![](./static/sto-integrated-workflows-10-snyk-with-remediation-steps.png)
+
+</details>
 
 ### New feature: AI-enhanced remediation 
 

@@ -8,47 +8,68 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This tutorial builds on the [Create a standalone STO pipeline](/tutorials/security-tests/standalone-pipeline) tutorial. You need to complete the standalone STO pipeline first. This pipeline scans a test target and reports on the vulnerabilities, but it doesn't do anything else.
+This tutorial builds on the [Create a standalone STO pipeline](/tutorials/security-tests/standalone-pipeline) tutorial. You need to complete the standalone STO pipeline, which  scans a test target and reports on the vulnerabilities, but doesn't do anything else.
 
 In this tutorial, you'll learn how to integrate STO functionality into CI and CD pipelines. The core benefit of STO in an integrated pipeline is to fail the pipeline if a scanner finds any "show-stopper" vulnerabilities. The following sections describe the different failure strategies you can implement.
 
 For the list of supported scanners, see [Security step settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference).
 
-### Review: ingestion Workflows
+## Objectives
 
-STO supports three different workflows to ingest scan results into a pipeline:
+This tutorial guides you through the following workflows:
 
-* [Orchestrated workflows](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto) — A Security step runs a scan with predefined settings and ingests the results.
-* [Ingestion-Only workflows](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) — Run a scan in a Run step, or outside the pipeline, and save in a shared folder. A Security step then ingests the results.
-* Data-Load workflows — A Security step downloads and ingests results from an external scanner.
+1. Set up a security step to fail automatically if it detects an issue with the specified severity or higher.
+2. Request an exemption ("ignore rule") for a specific issue.
+3. Approve the exception. Once approved, the exemption won't fail the pipeline even if it equals or exceeds the severity threshold.
+
+<!-- 
+<details open><summary> Review: Security Testing roles</summary>
+
+Harness includes two RBAC roles specifically for STO users:
+
+* **Developer** role — Permissions needed for developer workflows. Developers can request exemptions but can't approve them. 
+* **SecOps** role — Permissions needed for Security Operations staff. Only SecOps users can approve exemption requests. 
+
+For more information, go to [Add Security Testing roles](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto#add-security-testing-roles).
+
+</details>
+
+-->
+
 
 ### Fail pipelines on severity
 
-**Key Concept: Fail on Severity**  
-Every Security step supports a `fail_on_severity` setting. If any vulnerability with the specified severity or higher is found, the pipeline fails. It is good practice to include this setting in every Security step in an integrated pipeline.
+<details open><summary> Key concept: fail_on_severity</summary> 
 
-1. In the Pipeline Studio, open the **STO Tutorial 1** pipeline > **SecurityTestStage** stage > **banditScan** step.
-2. Under **Settings**, add the following: `fail_on_severity` = `CRITICAL`
+Every STO scan step has a `fail_on_severity` setting. If any vulnerability with the specified severity or higher is found, the pipeline fails. It is good practice to set `fail_on_severity` in every scan step in an integrated pipeline.
+
+</details>
+
+1. In the Pipeline Studio, open the pipeline that you created in the [Standalone pipeline](/tutorials/security-tests/standalone-pipeline) tutorial.
+2. Open the Bandit step.
+2. Set **Fail on Severity** to **Critical**. 
 3. Click **Apply Changes**, save the updated pipeline, and run a new build with the **DEMO-001** branch.
 
    ![](./static/sto-integrated-workflows-00.png)
 
-The pipeline now fails because the bandit step is now configured to fail on any vulnerability with a severity of low or higher. The last log message in the bandit step log is:
+The pipeline now fails because the Bandit step is now configured to fail on any vulnerability with a severity of low or higher. The last log message in the bandit step log is:
 ```
-Exited with message: fail_on_severity is set to CRITICAL and that threshold was reached.
+Exited with message: fail_on_severity is set to critical and that threshold was reached.
 ```
 
 ### Exemptions for specific issues
 
-**Key Concept: Issue Exemptions**  
-In some cases, developers might want to create "ignore rules" that override the `fail_on_severity` setting. If an issue is marked as Ignored, it will not fail the pipeline. Developer users cannot create Ignore Rules; only SecOps users have this permission.
+<details open><summary> Key concept: Exemptions, requests, and approvals</summary>  
 
-Harness provides two pre-defined roles for STO:
+- In some cases, a developer might want to request an exemption ("ignore rule") for a specific issue. If an exemption is approved, the issue will not fail the pipeline even if it meets the  <code>fail_on_severity</code> threshold. 
 
-* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Create a standalone pipeline](/tutorials/security-tests/standalone-pipeline). A Developer can set up security pipelines, run scans, and view results. A Developer can also request (but not approve) Ignore rules for specific issues.
-* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions. In addition, SecOps users can approve Ignore rules. These workflows are covered in this tutorial.
+- Developer users can request exemptions, but only SecOps users can approve them.
 
-In this section, you'll create an Ignore rule and approve it as SecOps user. In many real-world scenarios, two separate people will be performing the workflow: a developer creates an Ignore Rule, but the rule isn't active until a SecOps person approves it.
+- For information about setting up your roles and permissions, go to [Add Security Testing roles](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto#add-security-testing-roles).
+
+</details>
+
+In this section, you'll create an exemption and approve it as SecOps user. In many real-world scenarios, two separate people will be performing the workflow: a developer creates an Ignore Rule, but the rule isn't active until a SecOps person approves it.
 
 1. Make sure that you have the SecOps role assigned to yourself:
 	1. Click **Account Settings** (left menu) > **Access Control**.
@@ -62,35 +83,35 @@ In this section, you'll create an Ignore rule and approve it as SecOps user. In 
 
   In the following step, you will create an Ignore request for each of the two critical issues found: `subprocess_popen_with_shell_equals_true` (only in the current scan) and `haslib` (common to the baseline scan).
 
-3. In the **Security Tests** tab, do the following steps for each of the two critical issues:
-	1. Click in the row to open the **Issue Details** pane.
-	2. Click the **Ignore** button.
+3. In the **Security Tests** tab, do the following steps for the critical issue:
+	1. Select the critical issue in the issues table (bottom left) to open **Issue Details**.
+	2. Select **Request Exemption**.
   
      ![](./static/sto-integrated-workflows-02.png)
      
-	3. In the **Request to Ignore an Issue** popup, configure the Ignore request as follows:
-		1. Where do you want this issue to be ignored? **This pipeline** (*if available*)
+	3. In **Request Exemption for Issue**, configure the exemption request as follows:
+		1. Where do you want this issue to be exempted? **This pipeline** 
 		2. For how long? **1 Day** (*if available*)
-		3. Reason this issue should be exempted: **Temporary exemption for tutorial workflow**
+		3. Reason this issue should be exempted: **Other**
+        4. Further describe the reason this issue should be exempted: **Tutorial example pipeline, not for use in QA or Prod environments**
 		4. Click **Create Request**.
     
        ![](./static/sto-integrated-workflows-03.png)
        
-4. Click **Security Tests** (left menu) and then **Security Review** (second-from-left menu).
+4. Click **Security Tests** (left menu) and then **Exemptions** (second-from-left menu).
+
 5. In the Security Review page, click the "thumbs-up" buttons to approve both exemptions.
 
    ![](./static/sto-integrated-workflows-04.png)
    
 6. Go back to your pipeline and run another build with the **DEMO-001** branch. When the build finishes, go to the **Security Tests** page.
-7. In the issues table (bottom), each section has a set of show/hide buttons for different issue types: Critical, High, Medium. Low, and Info. Note that each section now includes an **Ignored** button. Also note that the ignored issues are hidden by default.
+
+7. Click **Exempted** (far right, under **Security Executions**). Note that the Critical, High, and other buttons act as toggles to show and hide specific issues in the issues table. If you select and unselect **Exempted**, the exempted issues switch between visible and hidden. 
 
    ![](./static/sto-integrated-workflows-05.png)
 
-8. Click the **Ignored** buttons (right) and the expand/contract buttons (left) so that both ignored issues are visible.
 
-   ![](./static/sto-integrated-workflows-06.png)
-
-9. Go to **Security Tests** > **Security Review**. Then click **Approved** to show the Ignore rules you created and approved.
+9. Go to **Security Tests** > **Exemptions**. Then click **Approved** to show the Ignore rules you created and approved.
 10. Click the Delete (**X**) buttons on the right to delete both rules.
 
     ![](./static/sto-integrated-workflows-07.png)
