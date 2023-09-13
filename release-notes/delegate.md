@@ -66,7 +66,11 @@ This release does not include any new early access features.
 
 ### Hotfixes
 
-The current version does not include a hotfix release.
+#### Version 80506
+
+- API calls made to Git providers during deployments caused rate limit errors. (CDS-78950)
+
+  The issue has been resolved. Harness reduced the number of API calls made to Git providers during deployment.
 
 ## Previous releases
 
