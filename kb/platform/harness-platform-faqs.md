@@ -602,5 +602,8 @@ If you are using minimal delegate images than this error can come and need to in
 #### Delegate is not coming up with no space left error
 While starting delegate we install some third party binaries(kubectl, helm etc) so those need some space so make sure delegate machne has some disk space left
 
+#### Does the NextGen platform support the same cron syntax for triggers as the FirstGen platform?
+Yes, the NextGen platform supports both the QUARTZ and UNIX syntax formats for cron triggers. You can find further details in our documentation here: [Schedule Pipelines Using Cron Triggers](https://developer.harness.io/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
+
 
 
