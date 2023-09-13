@@ -4,10 +4,82 @@ description: Examples of various use cases of Harness CLI.
 sidebar_position: 2
 ---
 
-In this section, we'll walk through an example to show how you can use the Harness CLI utility tool. We'll set up a pipeline and all the things it needs to deploy a sample guestbook application to your Kubernetes environment.
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
+In this segment, we'll guide you through a example demonstrating how to utilize the Harness CLI tool. You have the option to either establish a Harness GitOps workflow or configure a pipeline along with all necessary components to deploy a test guestbook application to your Kubernetes setup.
 
 ## Let's Begin
+
+```mdx-code-block
+<Tabs>
+<TabItem value="GitOps Example">
+```
+
+1. Refer [Install and Configure Harness CLI](./install.md) doc to setup and configure Harness CLI.
+
+2. Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub web interface.
+
+3. Clone the Forked **harnessed-example-apps** repo and change directory.
+    ```bash
+    git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
+    cd harnesscd-example-apps 
+    ```
+    :::note
+    
+    Replace `GITHUB_ACCOUNTNAME` with your GitHub Account name.
+
+    :::
+
+4. Make sure you have a GitOps Agent configured and running smoothly. If not, you can also refer to the [Install Harness GitOps Agent](docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent) for steps on creating a new Harness GitOps Agent or on utilizing existing ArgoCD Agent.
+
+5. Before proceeding, store the Agent Identifier value as an environment variable for use in the subsequent commands:
+    ```bash
+    export AGENT_NAME=GITOPS_AGENT_IDENTIFIER
+    ```
+    > Note: Replace `GITOPS_AGENT_IDENTIFIER` with GitOps Agent Identifier.
+
+6. Create a **GitOps Repository**.
+    ```bash
+    harness gitops-repository --file guestbook/harness-gitops/repository.yml apply --agent-identifier $AGENT_NAME
+    ```
+
+7. Create a **GitOps Cluster**.
+    ```bash
+    harness gitops-cluster --file guestbook/harness-gitops/cluster.yml apply --agent-identifier $AGENT_NAME
+    ```
+
+8. Create a **GitOps Application**.
+    ```bash
+    harness gitops-application --file guestbook/harness-gitops/application.yml apply --agent-identifier $AGENT_NAME
+    ```
+
+9. At last, it's time to synchronize the application with your Kubernetes setup.
+
+  - Navigate to Harness UI > Default Project > GitOps > Applications, then click on gitops-application. Choose Sync, followed by Synchronize to kick off the application deployment.
+
+    - Observe the Sync state as Harness synchronizes the workload under `Resource View` tab.
+    ![Harness GitOps Sync Success](./static/gitops-sync-success.png)
+
+    - After a successful execution, you can check the deployment in your Kubernetes cluster using the following command:  
+
+    ```bash
+    kubectl get pods -n default
+    ```
+    - To access the Guestbook application deployed via the Harness pipeline, port forward the service and access it at [http://localhost:8080](http://localhost:8080):  
+
+    ```bash
+    kubectl port-forward svc/kustomize-guestbook-ui 8080:80
+    ```
+
+10. Congratulations! You successfully used `harness` CLI utility tool to create and execute a GitOps workflow.
+
+```mdx-code-block
+</TabItem>
+<TabItem value="CD Pipeline Example">
+```
 
 1. Refer [Install and Configure Harness CLI](./install.md) doc to setup and configure Harness CLI.
 
@@ -82,3 +154,7 @@ In this section, we'll walk through an example to show how you can use the Harne
 
 13. Congratulations! You successfully used `harness` CLI utility tool to create and execute a pipeline.
 
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
