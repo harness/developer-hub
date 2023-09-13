@@ -314,7 +314,7 @@ When using these environment variables, make sure to enter a **Name** and **Valu
 
 You may also reference environment variables in the script by their name. For example, in Bash, this would be `$var_name` or `${var_name}`. In Windows PowerShell, the reference would be `$Env:varName`.
 
-For **Value**, you may enter [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/).
+For **Value**, you may enter [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 For example, if you created the environment variables `DB_HOST`, `DB_URL`, and `DB_PASSWORD`, your script could reference them like this:
 

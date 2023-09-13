@@ -134,7 +134,7 @@ For example, this tutorial uploads the combined Allure report to GCS:
 
 :::tip
 
-The `target` value uses a [Harness expression](/docs/platform/references/runtime-inputs/#expressions), `<+pipeline.sequenceId>`, to ensure that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
+The `target` value uses a [Harness expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions), `<+pipeline.sequenceId>`, to ensure that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
 
 :::
 
@@ -207,7 +207,7 @@ Add a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/plugin
 
 :::tip
 
-For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/references/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) that contain your AWS access ID and key.
+For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) that contain your AWS access ID and key.
 
 :::
 

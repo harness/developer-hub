@@ -275,7 +275,7 @@ Now you can provide values for any runtime inputs in the service. Let's go into 
 
 :::note
 
-For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md).
+For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
 :::
 

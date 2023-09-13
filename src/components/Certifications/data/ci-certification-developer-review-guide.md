@@ -6,7 +6,8 @@
 |Familiarize with artifacts, packages, and different CI build infrastructures|[Harness CI](/tutorials/ci-pipelines/fastest-ci)|
 |Set up and configure connectors like Git and Docker Hub|[Connect to an Artifact Repo](/docs/get-started/key-concepts)|
 |**2. Grasp the role of Harness Delegate and differences between Pipeline Studio and YAML structure**||
-|Understand and use Harness expressions and variables|[Fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/)|
+|Understand and use Harness expressions and variables|[Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs
+)|
 |Get familiar with different types of artifacts and scanning options | [Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab/)
 |**3. Discover supported platforms and Operating Systems on Harness Cloud**||
 |Define and configure connectors, and understand their usage|[Create a connector using YAML](/docs/platform/Connectors/create-a-connector-using-yaml)|

@@ -19,7 +19,7 @@ This topic describes how codebase variables are resolved and the built-in Harnes
 
 For more information about variables and expressions, go to:
 
-* [Built-in and custom Harness variables reference](../../../platform/12_Variables-and-Expressions/harness-variables.md)
+* [Built-in and custom Harness variables reference](../../../platform/variables-and-expressions/harness-variables.md)
 * [CI environment variables reference](../optimize-and-more/ci-env-var.md)
 
 ## Requirements
@@ -74,7 +74,7 @@ Codebase variables aren't resolved in these scenarios:
 
 ## Reference codebase variables
 
-You can use [Harness' expressions](/docs/platform/references/runtime-inputs/#expressions) to reference various codebase attributes in your **Build** (`CI`) stages. Expressions are formatted as `<+PARENT.CHILD>`, such as `<+codebase.commitSha>`, where `commitSha` is an attribute within `codebase`.
+You can use [Harness' expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference various codebase attributes in your **Build** (`CI`) stages. Expressions are formatted as `<+PARENT.CHILD>`, such as `<+codebase.commitSha>`, where `commitSha` is an attribute within `codebase`.
 
 For example, you can add a [Run step](../run-ci-scripts/run-step-settings.md) with a series of `echo` commands to your pipeline to reference codebase variables:
 

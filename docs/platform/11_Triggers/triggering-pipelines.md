@@ -153,7 +153,7 @@ For more information about **Attributes**, **Operators**, **Matching Values**, a
 
 ## Set pipeline input
 
-Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md), such as codebase branch names or artifact versions and tags.
+Pipelines often have [Runtime Inputs](../variables-and-expressions/runtime-inputs.md), such as codebase branch names or artifact versions and tags.
 
 1. Provide values for the inputs or use [Input Sets](../8_Pipelines/input-sets.md).
 2. Select **Create Trigger** to save your trigger.

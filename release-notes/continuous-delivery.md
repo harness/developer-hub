@@ -1829,7 +1829,7 @@ This release does not include any early access features.
 
 ##### What's new
 
-- Harness supports manually adding service or environment [runtime inputs](/docs/platform/references/runtime-inputs/) in the pipeline YAML. (CDS-54249)
+- Harness supports manually adding service or environment [runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs/) in the pipeline YAML. (CDS-54249)
 
   You can now manually add service or environment runtime input expressions in the pipeline YAML. The values added to the YAML are reflected on the Harness UI.
 

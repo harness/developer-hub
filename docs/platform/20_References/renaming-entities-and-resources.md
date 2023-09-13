@@ -12,7 +12,7 @@ Entities and Resources in Harness have names and Ids ([entity Identifier](harnes
 
 ![](./static/renaming-entities-and-resources-11.png)
 
-Entity Ids are used to refer to Harness entities in [Harness variable expressions](../12_Variables-and-Expressions/harness-variables.md).
+Entity Ids are used to refer to Harness entities in [Harness variable expressions](../variables-and-expressions/harness-variables.md).
 
 Ids are immutable once the entity has been created, but names can be changed at any time.
 

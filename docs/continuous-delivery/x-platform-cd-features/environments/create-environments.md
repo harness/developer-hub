@@ -443,4 +443,4 @@ When you run the pipeline, you can select the environment for their runtime inpu
 
 ![](./static/services-and-environments-runtime-input-02.png)
 
-For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/).
+For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs/).

@@ -46,7 +46,7 @@ Click on the failed deployment that you want to retry and click **Retry** **Fail
 The Retry Pipeline settings appear.
 
 ![](./static/resume-pipeline-deployments-02.png)
-Choose the failed Stage or any previous Stage to retry the Pipeline. The [Runtime Inputs](../20_References/runtime-inputs.md) for the selected and later stages are automatically filled from the previous execution. You can modify these Runtime Inputs while retrying the Pipeline.
+Choose the failed Stage or any previous Stage to retry the Pipeline. The [Runtime Inputs](../variables-and-expressions/runtime-inputs.md) for the selected and later stages are automatically filled from the previous execution. You can modify these Runtime Inputs while retrying the Pipeline.
 
 ### Option: Retry Parallel Stages
 

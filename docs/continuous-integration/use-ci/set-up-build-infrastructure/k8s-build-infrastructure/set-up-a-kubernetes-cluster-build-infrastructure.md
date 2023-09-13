@@ -136,7 +136,7 @@ For example, assume you have a pipeline with three stages called `alpha`, `beta`
 
 In the **Build** stage's **Infrastructure** tab, select the Kubernetes cluster connector you created previously.
 
-In **Namespace**, enter the Kubernetes namespace to use. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md).
+In **Namespace**, enter the Kubernetes namespace to use. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](/docs/platform/variables-and-expressions/runtime-inputs).
 
 You may need to configure the settings described below, as well as other advanced settings described in [CI Build stage settings](../ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
 

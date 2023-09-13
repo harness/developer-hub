@@ -23,7 +23,7 @@ Harness provide multiple options for controlling resource usage and protecting c
 2. In **Flow Control**, select **Queue**.
 3. Enter a name and timeout for the Queue step.
 4. In **Resource Key**, enter a unique key. This is the same key you will add to the Queue steps in other pipelines.
-5. The **Resource Key** supports Fixed Values, Runtime Inputs, and Expressions. For more information, go to [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/).
+5. The **Resource Key** supports Fixed Values, Runtime Inputs, and Expressions. For more information, go to [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 6. In **Run next queued execution after completion of**, select one of the following:
    + **Pipeline:** The entire pipeline must complete before the queued pipelines can deploy.
    + **Stage:** The current Stage must complete before the queued pipelines can deploy.

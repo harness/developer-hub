@@ -13,7 +13,7 @@ This topic describes default (built-in) and custom Harness expressions, as well 
 For information about referencing variables, using expressions, and adding custom variables, go to:
 
 * [Variables and expressions](/docs/category/variables-and-expressions)
-* [Fixed values, runtime inputs, and expressions](../20_References/runtime-inputs.md)
+* [Fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md)
 
 ## What is a Harness variable expression?
 
@@ -248,7 +248,7 @@ At runtime, Harness will replace the variable with the runtime value.
 
 You can also paste expressions that don't appear. For example, expressions that reference settings in previous stages.
 
-For more information, go to [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
+For more information, go to [Fixed Values, Runtime Inputs, and Expressions](../variables-and-expressions/runtime-inputs.md).
 
 ## Expression guidelines and boundaries
 

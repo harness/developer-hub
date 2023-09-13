@@ -18,7 +18,7 @@ This topic assumes you're familiar with [Harness' key concepts](../../get-starte
 
 Stages can be dependent on input from previous stages.
 
-Some settings can be propagated from one stage to another, such as infrastructure settings, [Services](/docs/continuous-delivery/x-platform-cd-features/services/services-overview), and [Environments](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview). Also, you can use [expressions](../20_References/runtime-inputs.md) to reference stage settings, such as stage variables, and step input and outputs across stages.
+Some settings can be propagated from one stage to another, such as infrastructure settings, [Services](/docs/continuous-delivery/x-platform-cd-features/services/services-overview), and [Environments](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview). Also, you can use [expressions](../variables-and-expressions/runtime-inputs.md) to reference stage settings, such as stage variables, and step input and outputs across stages.
 
 An *independent stage* is a stage that doesn't use settings from any other stage.
 
@@ -40,7 +40,7 @@ To run specific stages, you must enable selective stage execution.
 
    ![](./static/run-specific-stage-in-pipeline-45.png)
 
-3. If required, provide [runtime inputs](../20_References/runtime-inputs.md#runtime-inputs).
+3. If required, provide [runtime inputs](../variables-and-expressions/runtime-inputs.md#runtime-inputs).
 
    ![](./static/run-specific-stage-in-pipeline-46.png)
 

@@ -69,7 +69,7 @@ You reference stage variables **within their stage** using the expression `<+
 
 You reference stage variables **outside their stage** using the expression `<+pipeline.stages.[stage Id].variables.[variable name]>`.
 
-See [Built-in and Custom Harness Variables Reference](../12_Variables-and-Expressions/harness-variables.md).
+See [Built-in and Custom Harness Variables Reference](../variables-and-expressions/harness-variables.md).
 
 ### Step 2: Add Execution Steps
 

@@ -182,7 +182,7 @@ You can see the `serviceConfig` options:
 
 ![](./static/harness-yaml-quickstart-25.png)
 
-For this quickstart, we'll just use `service` and `serviceDefinition`. We're just looking at the structure so we'll use [Runtime Inputs](../20_References/runtime-inputs.md) wherever we can:
+For this quickstart, we'll just use `service` and `serviceDefinition`. We're just looking at the structure so we'll use [Runtime Inputs](../variables-and-expressions/runtime-inputs.md) wherever we can:
 
 
 ```
@@ -222,7 +222,7 @@ You can see the `infrastructure` options:
 
 ![](./static/harness-yaml-quickstart-26.png)
 
-For this quickstart, we'll just use `environment` and `infrastructureDefinition`. We're just looking at the structure so we'll use [Runtime Inputs](../20_References/runtime-inputs.md) wherever we can:
+For this quickstart, we'll just use `environment` and `infrastructureDefinition`. We're just looking at the structure so we'll use [Runtime Inputs](../variables-and-expressions/runtime-inputs.md) wherever we can:
 
 
 ```

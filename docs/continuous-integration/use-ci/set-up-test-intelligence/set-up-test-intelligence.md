@@ -723,7 +723,7 @@ You can inject environment variables into the step container and use them in the
 
 You can reference environment variables in the **Command**, **Pre-Command**, or **Post-Command** scripts by name, such as `$var_name`.
 
-Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
+Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs/). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
 
 <figure>
 

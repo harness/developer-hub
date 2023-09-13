@@ -120,7 +120,7 @@ The Delegate also needs permissions in the target environment to execute deploym
 
 Pipeline and Stage variables are custom variables you can add and reference in your Pipeline and Stage. They're available across the Pipeline. You can propagate and override their values in later stages.
 
-For more information, go to [Built-in Harness Variables Reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
+For more information, go to [Built-in Harness Variables Reference](../../platform/variables-and-expressions/harness-variables.md).
 
 ## Triggers
 
