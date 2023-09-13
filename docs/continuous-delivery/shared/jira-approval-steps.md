@@ -139,6 +139,12 @@ pipeline:
 
 </details>
 
+Here's a video that demonstrates how to pass an issue key:
+
+<!-- Video:
+https://www.loom.com/share/c3e9e58ee8044b70994af2c103408223?sid=b6c9de26-f737-4860-889d-2cc9611043d7-->
+<docvideo src="https://www.loom.com/share/c3e9e58ee8044b70994af2c103408223?sid=b6c9de26-f737-4860-889d-2cc9611043d7" />
+
 
 The expression follows the format `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.issue.key>`.
 
