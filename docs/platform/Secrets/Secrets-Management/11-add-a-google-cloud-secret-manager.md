@@ -110,7 +110,7 @@ Click **Continue**.
 
 ## Step 4: Setup delegates
 
-1. In **Delegates** **Setup**, enter [**Selectors**](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific delegates that you want to allow to connect to this connector.
+1. In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific delegates that you want to allow to connect to this connector.
 2. Click **Save and** **Continue**.
 
 ## Step 5: Test connection

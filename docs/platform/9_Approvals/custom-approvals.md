@@ -87,7 +87,7 @@ In **Script**, enter your script.
 
 The script is executed on the host of the Harness Delegate that runs the step. The script is not executed on the deployment target host(s).
 
-You can select one or more specific Delegates using the [Delegate Selector](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) setting in the step's **Advanced** settings.
+You can select one or more specific Delegates using the [Delegate Selector](../delegates/manage-delegates/select-delegates-with-selectors.md) setting in the step's **Advanced** settings.
 
 #### Timeout, Retry Interval, and Script Timeout
 
@@ -198,7 +198,7 @@ For **Script Input Variables** and **Script Output Variables**, you simply se
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-step-using-tags)
+* [Delegate Selector](../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-step-using-tags)
 * [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 

@@ -103,7 +103,7 @@ Click **Save** and then **Continue**.
 
 ### Set up delegates
 
-In **Delegates** **Setup**, use [**Selectors**](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) to select any specific delegates that you want this Connector to use. Click **Save and Continue.**
+In **Delegates** **Setup**, use [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) to select any specific delegates that you want this Connector to use. Click **Save and Continue.**
 
 ### Test Connection
 

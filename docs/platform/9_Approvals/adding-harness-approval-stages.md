@@ -179,7 +179,7 @@ Go to:
 
 * [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Use delegate selectors](../2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Use delegate selectors](../delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ### See also
 

@@ -194,11 +194,11 @@ If you do not have Harness Delegates, click **Install New Delegate** to add one 
 
 Harness uses Kubernetes Cluster Connectors at Pipeline runtime to authenticate and perform operations with Kubernetes. Authentications and operations are performed by Harness Delegates.
 
-You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks delegates, go to [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks delegates, go to [Delegates overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
 
-You can use delegate tags to select one or more delegates. For details on delegate tags, go to [Use delegate selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+You can use delegate tags to select one or more delegates. For details on delegate tags, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
 
-If you need to install a delegate, see [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) or the [Visual Summary](#visual_summary) above.
+If you need to install a delegate, see [Delegate installation overview](/docs/platform/delegates/install-delegates/overview) or the [Visual Summary](#visual_summary) above.
 
 Click **Save and Continue**.
 

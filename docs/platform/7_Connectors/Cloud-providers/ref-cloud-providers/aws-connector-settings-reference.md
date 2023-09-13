@@ -705,7 +705,7 @@ In rare cases when the delegate OS does not support `apt`, such as Red Hat Linux
 
 If you use the **Enable cross-account access (STS Role)** option in the AWS connector for a Serverless Lambda deployment, the delegate that is used by the connector must have the AWS CLI installed. The AWS CLI is not required for the other authentication methods.
 
-For more information about installing software with the delegate, go to [Build custom delegate images with third-party tools](../../../2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For more information about installing software with the delegate, go to [Build custom delegate images with third-party tools](../../../delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 ## Harness AWS connector settings
 
@@ -745,7 +745,7 @@ The following steps assume this is a new delegate installation and a new AWS con
        --override-existing-serviceaccounts —region=us-east-1
    ```
 
-3. In Harness, download the Harness Kubernetes delegate YAML file. For instructions, go to [Install a Kubernetes delegate](../../../2_Delegates/install-delegates/overview.md).
+3. In Harness, download the Harness Kubernetes delegate YAML file. For instructions, go to [Install a Kubernetes delegate](../../../delegates/install-delegates/overview.md).
 4. Open the delegate YAML file in text editor.
 5. Add the service account with access to IAM role to the delegate YAML. There are two sections in the Delegate YAML that you must update:
    1. Update the `ClusterRoleBinding` by replacing the subject name `default` with the name of the service account with the attached IAM role, for example:
@@ -783,7 +783,7 @@ The following steps assume this is a new delegate installation and a new AWS con
       ```
 
 6. Save the delegate YAML file.
-7. [Install the Kubernetes delegate](../../../2_Delegates/install-delegates/overview.md) in your EKS cluster and register the delegate with Harness. When you install the delegate in the cluster, the SA you added is used, and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.
+7. [Install the Kubernetes delegate](../../../delegates/install-delegates/overview.md) in your EKS cluster and register the delegate with Harness. When you install the delegate in the cluster, the SA you added is used, and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.
 8. In Harness, create a new AWS connector.
 9. For **Credentials**, select **Use IRSA**.
 10. For **Select Connectivity Mode**, select **Connect through a Harness Delegate**, and then select the delegate you just installed.

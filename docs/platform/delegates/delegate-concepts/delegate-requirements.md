@@ -72,12 +72,12 @@ If you do not enable gRPC connections, the following limitations apply:
 
 ## Add certificates and other software to the delegate
 
-For steps on adding certificates or other software to the delegate, go to [Common delegate initialization scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md).
+For steps on adding certificates or other software to the delegate, go to [Common delegate initialization scripts](/docs/platform/delegates/delegate-reference/common-delegate-profile-scripts.md).
 
 ## Delegate access requirements
 
-Harness Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (`INIT_SCRIPT`), you can use a non-root account or install the application without the delegate. For more information, go to [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+Harness Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (`INIT_SCRIPT`), you can use a non-root account or install the application without the delegate. For more information, go to [Delegate installation overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
 
-If you do not run the delegate as root, you cannot use [delegate initialization scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md) to install software.
+If you do not run the delegate as root, you cannot use [delegate initialization scripts](/docs/platform/delegates/delegate-reference/common-delegate-profile-scripts.md) to install software.
 
 

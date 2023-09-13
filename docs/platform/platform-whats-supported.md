@@ -50,7 +50,7 @@ Harness enables you to manage access control at the following [scopes](/docs/pla
   <TabItem value="Delegates" label="Delegates">
 ```
 
-import Delimagetypes from '/docs/platform//2_Delegates/shared/delegate-image-types-intro-table.md'
+import Delimagetypes from '/docs/platform/delegates/shared/delegate-image-types-intro-table.md'
 
 <Delimagetypes />
 

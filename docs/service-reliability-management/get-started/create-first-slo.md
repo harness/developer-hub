@@ -16,7 +16,7 @@ A Service Level Objective (SLO) is a target for the level of service you aim to 
 
 ## Prerequisites
 
-- A Harness Delegate. Ensure that you have installed a Harness Delegate, and it can communicate with Harness, your health source, and change sources. For more information, go to [Get started with delegates](/docs/platform/2_Delegates/install-delegates/overview.md).
+- A Harness Delegate. Ensure that you have installed a Harness Delegate, and it can communicate with Harness, your health source, and change sources. For more information, go to [Get started with delegates](/docs/platform/delegates/install-delegates/overview.md).
   
 - An Organization in Harness. If you have not already created one, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization.md).
 

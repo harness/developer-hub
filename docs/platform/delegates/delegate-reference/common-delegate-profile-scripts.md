@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can run scripts on Harness Delegate pods, hosts, and containers to install applications or run commands.
 
-For more information about running scripts, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md). This topic provides information on script availability and some common delegate initialization scripts.
+For more information about running scripts, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md). This topic provides information on script availability and some common delegate initialization scripts.
 
 ### Limitations
 

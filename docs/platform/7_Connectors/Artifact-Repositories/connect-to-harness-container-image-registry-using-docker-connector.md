@@ -31,7 +31,7 @@ If you choose to override the `harnessImageConnector`, you may also avoid trigge
 ### Before you begin
 
 * [CI pipeline basics](../../../continuous-integration/get-started/key-concepts.md)
-* [Harness Delegate Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
+* [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md)
 * [Docker Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
 
 ### Review: Allowlist app.harness.io
@@ -42,7 +42,7 @@ If app.harness.io is not allowlisted, you must allowlist it before proceeding.
 
 :::note
 
-As a general best practice, you should allowlist Harness Domains and IPs. For more information, go to **Allowlist Harness Domains and IPs** in [Delegate Requirements and Limitations](../../2_Delegates/delegate-concepts/delegate-requirements.md).
+As a general best practice, you should allowlist Harness Domains and IPs. For more information, go to **Allowlist Harness Domains and IPs** in [Delegate system requirements](../../delegates/delegate-concepts/delegate-requirements.md).
 
 :::
 
@@ -92,17 +92,17 @@ By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.do
 
 ### Step 3: Set Up Delegates
 
-Harness uses Docker Registry Connectors at Pipeline runtime to pull images and perform operations. You can select Any Available Harness Delegate and Harness will select the best Delegate at runtime. For a description of how Harness picks Delegates, see [Delegates Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+Harness uses Docker Registry Connectors at Pipeline runtime to pull images and perform operations. You can select Any Available Harness Delegate and Harness will select the best delegate at runtime. For a description of how Harness picks delegates, see [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
 
-You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+You can use delegate tags to select one or more delegates. For details on delegate tags, go to [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
 
-If you need to install a Delegate, see [Delegate Installation Overview](../../2_Delegates/delegate-concepts/delegate-overview.md).
+If you need to install a delegate, go to [Delegate installation overview](../../delegates/install-delegates/overview).
 
 Click **Save and Continue**.
 
 ### Step 4: Verify Test Connection
 
-Harness tests the credentials you provided using the Delegates you selected.
+Harness tests the credentials you provided using the delegates you selected.
 
 ![](../../7_Connectors/static/connect-to-harness-container-image-registry-using-docker-connector-48.png)
 If the credentials fail, you'll see an error. Click **Edit Credentials** to modify your credentials.
@@ -113,7 +113,7 @@ Click **Finish**.
 
 This step is only applicable when you want to override the default Delegate and download build images using the Connector you just created.
 
-In the Build Stage, go to the Infrastructure tab and specify your build-image Connector in the **Override Image Connector** field. The Delegate will use this Connector to download images from the Harness repository.
+In the Build Stage, go to the Infrastructure tab and specify your build-image Connector in the **Override Image Connector** field. The delegate will use this Connector to download images from the Harness repository.
 
 ![](../../7_Connectors/static/connect-to-harness-container-image-registry-using-docker-connector-49.png)
 ### Step 6: Run the Pipeline

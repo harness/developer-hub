@@ -86,7 +86,7 @@ In cases where you select specific delegates to perform the task, Harness uses t
 In cases where you do not select specific delegates, Harness selects an available delegate to perform the task based on the following:
 
 * **Heartbeats:** Running delegates send heartbeats to the Harness Manager in one minute intervals. If the Manager does not have a heartbeat for a delegate when a task is ready to be assigned, it does not assign the task to that delegate.
-* **Tags:** For more information, go to [Select delegates with tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+* **Tags:** For more information, go to [Select delegates with tags](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
 * **Capability:** The delegate checks connectivity to your external systems to determine whether it can carry out the task. This process allows other delegates to assist in case access issues are found.
 
 #### Delegate selection in pipelines
@@ -109,13 +109,13 @@ Here you use delegate tags to select the delegate(s) to use.
 
 The delegates assigned to connectors and steps are used during pipeline execution.
 
-If no delegates are selected, then the delegates are selected as described in [Task assignment](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#task-assignment).
+If no delegates are selected, then the delegates are selected as described in [Task assignment](/docs/platform/delegates/delegate-concepts/delegate-overview.md#task-assignment).
 
 If no delegates are selected for a CD step in its **Delegate Selector** setting, Harness prioritizes the delegate used successfully for the infrastructure connector.
 
 Harness will try this delegate first for the step task because this delegate has been successful in the target environment.
 
-import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
+import Selector from '/docs/platform/delegates/shared/selector-infrastructure.md'
 
 <Selector />
 
@@ -181,7 +181,7 @@ When Harness makes a connection via its delegates, it selects the best delegate 
 
 To ensure a specific delegate is used by a Harness entity, you can add tags to delegates and then reference the tags in commands and connectors.
 
-For more information, go to [Use delegate selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+For more information, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ### Delegate logs
 

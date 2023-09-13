@@ -31,7 +31,7 @@ The minimal delegate image, denoted by the `yy.mm.xxxxx.minimal` image tag, does
 
 ### Use INIT_SCRIPT
 
-This option installs the 3rd party custom binaries on a delegate container instance without changing the delegate image itself. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly [here](/docs/platform/2_Delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
+This option installs the 3rd party custom binaries on a delegate container instance without changing the delegate image itself. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly [here](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
 <details>
 <summary>Use INIT_SCRIPT</summary>
@@ -40,7 +40,7 @@ This option installs the 3rd party custom binaries on a delegate container insta
 
 ### Build a custom image
 
-This option installs the 3rd party custom binaries on a new custom delegate image that uses the Harness minimal delegate image as its base image. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly [here](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+This option installs the 3rd party custom binaries on a new custom delegate image that uses the Harness minimal delegate image as its base image. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly [here](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 <details>
 <summary>Build a custom image</summary>
@@ -51,7 +51,7 @@ This option installs the 3rd party custom binaries on a new custom delegate imag
 
 ### Network proxy
 
-For network proxy details, go to [Configure delegate proxy settings](/docs/platform/2_Delegates/manage-delegates/configure-delegate-proxy-settings.md).
+For network proxy details, go to [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings.md).
 
 ### CI-specific variables
 
@@ -59,7 +59,7 @@ For CI-specific variables, go to [Install the delegate](/docs/continuous-integra
 
 ### Custom certificates
 
-For custom certificates, go to [Install delegates with custom certificates](/docs/platform/2_Delegates/secure-delegates/install-delegates-with-custom-certs.md).
+For custom certificates, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs.md).
 
 ### Group names
 
@@ -69,11 +69,11 @@ The legacy delegate used `DELEGATE_GROUP_NAME` for group names. This environment
 
 ### Install Docker delegate to Amazon ECS Fargate
 
-You can install the Docker delegate into Amazon ECS Fargate. For more information, go to [Deploy a Docker delegate to Amazon ECS or AWS Fargate](/docs/platform/2_Delegates/install-delegates/docker-delegate-to-ecs-fargate.md).
+You can install the Docker delegate into Amazon ECS Fargate. For more information, go to [Deploy a Docker delegate to Amazon ECS or AWS Fargate](/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate.md).
 
 ### Install a legacy Kubernetes delegate
 
-The legacy Kubernetes delegate, denoted `latest` container image tag, is used primarily in Harness FirstGen had the auto-upgrade setting ON by default and did not have the flexibility to turn OFF this setting if needed. This type of delegate is now deprecated for new Harness accounts. For more information, go to [Install a legacy Kubernetes delegate](/docs/platform/2_Delegates/install-delegates/install-a-kubernetes-delegate.md).
+The legacy Kubernetes delegate, denoted `latest` container image tag, is used primarily in Harness FirstGen had the auto-upgrade setting ON by default and did not have the flexibility to turn OFF this setting if needed. This type of delegate is now deprecated for new Harness accounts. For more information, go to [Install a legacy Kubernetes delegate](/docs/platform/delegates/install-delegates/install-a-kubernetes-delegate.md).
 
 ### Install Docker delegate using Podman
 

@@ -16,7 +16,7 @@ Harness Delegate is installed as a Kubernetes [Deployment](https://kubernetes.io
 
 You can verify the delegate you're using by looking at its manifest file or by running `kubectl get all -n harness-delegate-ng`.
 
-To delete a legacy delegate, skip to the "Delete a legacy delegate" section.
+To delete a legacy delegate, go to the [Delete a legacy delegate](#delete-a-legacy-delegate) section.
 
 ### Delete a delegate
 
@@ -63,7 +63,7 @@ Locate the delegate in the Harness account/Project/Org, click more options (⋮)
 
 ### Delete replica pods
 
-Deleted replica pods unregister and clear out during shutdown after they complete all running tasks if the graceful shutdown period is sufficient. The grace period is configurable. For more information on graceful shutdown, go to [Graceful delegate shutdown](/docs/platform/2_Delegates/delegate-concepts/graceful-delegate-shutdown-process.md).
+Deleted replica pods unregister and clear out during shutdown after they complete all running tasks if the graceful shutdown period is sufficient. The grace period is configurable. For more information on graceful shutdown, go to [Graceful delegate shutdown](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process.md).
 
 If you do not delete the delegate in the UI, Harness automatically removes it after six hours. 
 
