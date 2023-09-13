@@ -1269,3 +1269,4 @@ Yes, you can use Bash shell over WinRM connection in Harness. In the Shell Scrip
 
 ### Is it possible to use Helm hooks in Harness Helm deployments?
 Yes, you can use Helm hooks in Harness Helm deployments. Helm hooks allow you to execute specific actions or scripts at different points in the Helm chart's lifecycle, such as before or after installing or upgrading a release. Harness supports the use of Helm hooks as part of your Helm deployment process.
+
