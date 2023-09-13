@@ -514,6 +514,7 @@ Here are some syntax examples to reference the Terraform module using the SSH pr
 
 ```bash
 source = "git@github.com:your-username/your-private-module.git"
+```
 
 ### Module Configuration
 
@@ -529,8 +530,11 @@ terraform {
 //  source = "git::git@github.com:Tathagat-289/terraformResources.git//module3"  
   source = "github.com/Tathagat-289/terraformResources//module3"  
 }  
-  
+```
+
 # Include all settings from the root terragrunt.hcl file  
+
+```
 include {  
   path = find_in_parent_folders()  
 }  
@@ -555,9 +559,10 @@ You have two options:
    - Terragrunt Apply and Destroy steps do not support inheriting from a Terragrunt Plan step when **All Modules** is selected in the Terragrunt Plan step's **Module Configuration**.
   
   :::
+
 - **Specific Module**. Harness will use a single terragrunt.hcl file in the folder you specify in **Path**.
 
-The **Path** setting supports [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/).
+The **Path** setting supports [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 
 ### Workspace
@@ -600,7 +605,7 @@ In the workspace interpolation sequence you can see the count is assigned by app
     
     Using the example above, if you provide the name `production`, the count will be 3.
 
-    You can also set **Workspace** as a [runtime inputs or expression](/docs/platform/references/runtime-inputs/) and use a different workspace name each time the pipeline is run.
+    You can also set **Workspace** as a [runtime inputs or expression](/docs/platform/variables-and-expressions/runtime-inputs/) and use a different workspace name each time the pipeline is run.
 
 
 ### Terraform Var Files
@@ -692,7 +697,7 @@ For examples, see the settings available for [AWS S3](https://www.terraform.io/d
 
   If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.
 
-  You can also use [runtime inputs or expressions](/docs/platform/references/runtime-inputs/) for your targets. 
+  You can also use [runtime inputs or expressions](/docs/platform/variables-and-expressions/runtime-inputs/) for your targets. 
 
   For example, you can create a stage variable named `module` and then enter the variable `<+stage.variables.module>` in **Targets**. 
 
@@ -878,6 +883,7 @@ Here is an example of the YAML for a Terragrunt Destroy step that inherits from 
   </TabItem2>
   <TabItem2 value="Terragrunt Rollback" label="Terragrunt Rollback">
 ```
+
 Here is an example of the YAML for a Terragrunt Rollback step:
 
 ```yaml
@@ -898,4 +904,3 @@ Here is an example of the YAML for a Terragrunt Rollback step:
 
 </Tabs2>
 ```
-

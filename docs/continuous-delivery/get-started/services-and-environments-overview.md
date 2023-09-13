@@ -673,7 +673,7 @@ When you run the pipeline, you can select the service and environment for their 
 
 ![](./static/services-and-environments-runtime-input-02.png)
 
-For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md).
+For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 ## Services and environments RBAC
 

@@ -430,7 +430,7 @@ Service variables are a powerful way to template your services or make them more
 
 In the **Variables** section of the service, you can add service variables and then reference them in any of the ASG configuration files you added to the service.
 
-For example, you could create a variable named **desiredCapacity** and set its value as a [fixed value, runtime input, or expression](/docs/platform/references/runtime-inputs/).
+For example, you could create a variable named **desiredCapacity** and set its value as a [fixed value, runtime input, or expression](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 ![service variable](./static/c590ccda5addd62225b690d85c60237b2f6e9378e8ed4b02ba3e82ba9bda29e9.png)  
 

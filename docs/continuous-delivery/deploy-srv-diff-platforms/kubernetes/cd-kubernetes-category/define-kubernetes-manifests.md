@@ -121,7 +121,7 @@ In Harness, these variables come from multiple places:
 
 ![](./static/define-kubernetes-manifests-29.png)
 
-At runtime, the Harness variables in the values.yaml file are replaced with the values you entered in the Stage as fixed values or as [Runtime Inputs](/docs/platform/References/runtime-inputs).
+At runtime, the Harness variables in the values.yaml file are replaced with the values you entered in the Stage as fixed values or as [Runtime Inputs](/docs/platform/variables-and-expressions/runtime-inputs).
 
 See [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables) and [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
 
