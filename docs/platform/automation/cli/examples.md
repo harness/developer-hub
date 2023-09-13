@@ -33,7 +33,7 @@ In this segment, we'll guide you through a example demonstrating how to utilize 
 
     :::
 
-4. Make sure you have a GitOps Agent configured and running smoothly. If not, you can also refer to the [Install Harness GitOps Agent](docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent) for steps on creating a new Harness GitOps Agent or on utilizing existing ArgoCD Agent.
+4. Make sure you have a GitOps Agent configured and running smoothly. If not, you can also refer to the [Install Harness GitOps Agent](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/) for steps on creating a new Harness GitOps Agent or on utilizing existing ArgoCD Agent.
 
 5. Before proceeding, store the Agent Identifier value as an environment variable for use in the subsequent commands:
     ```bash
