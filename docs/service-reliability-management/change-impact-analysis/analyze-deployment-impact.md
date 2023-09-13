@@ -19,11 +19,11 @@ If you're building a deployment stage and are currently on the **Execution** tab
 1. Select the **+** icon, and then choose **Add Step**.  
     The Step Library page appears.
 
+    <docimage path={require('./static/analyze-deployment-add-step.png')} />
+
 2. In the **Service Reliability** section, select **Analyze Deployment Impact**.  
    
    The Analyze Deployment Impact settings page appears.
-
-<docimage path={require('./static/analyze-deployment-add-step.png')} />
 
 
 ### Add Analyze Deployment Impact step to an existing deployment stage
@@ -43,11 +43,15 @@ If you already have a deployment stage:
    The Analyze Deployment Impact settings page appears.
 
 
-### Define the name and time out information
+### Configure Analyze Deployment Impact step settings
 
-Analyze Deployment Impact settings page, go to the **Step Parameters** tab, and do the following:
+The Analyze Deployment Impact settings page provides options to configure the step.
 
-1. Name: Harness automatically assigns a name for the Analyze Deployment Impact step. For example, if you are adding the Analyze Deployment Impact step for the first time, the default name would be AnalyzeDeploymentImpact_1 and if you are adding the Analyze Deployment Impact step for the first time, the default name would be AnalyzeDeploymentImpact_2.
+ <docimage path={require('./static/analyze-deployment-add-step-settings.png')} />
+
+On the Analyze Deployment Impact settings page, go to the **Step Parameters** tab, and do the following:
+
+1. **Name**: Harness automatically assigns a name for the **Analyze Deployment Impact** step. For example, if you are adding the **Analyze Deployment Impact** step for the first time, the default name would be "AnalyzeDeploymentImpact_1" and if you are adding the **Analyze Deployment Impact** step for the first time, the default name would be "AnalyzeDeploymentImpact_2".
 
 2. Select how long Harness should run the analysis. The minimum duration is one day, and the maximum duration is 5 days.
    
@@ -60,29 +64,47 @@ Analyze Deployment Impact settings page, go to the **Step Parameters** tab, and 
    - **s** for seconds. For example, to define 500 seconds, enter 500s.
    - **ms** for milliseconds. For example, to define 1000 milliseconds, enter 1000ms.
 
-   The maximum timeout value you can set is **53w**. You can also set timeouts at the pipeline level.
+   You can also set timeouts at the pipeline level.
    
 4. Choose a **Monitored Service** from the dropdown list to assess the impact of your deployment on the service's health.
+   
    By default, the dropdown pre-selects the monitored service that corresponds to the service and environment you are currently deploying updates to. However, you can also select a different monitored service from the list if you want to analyze the impact of deployment on the health of that specific monitored service.
 
    Example:
-   Suppose you are deploying updates to your "WebServer" monitored service. In the **Monitored Service** dropdown list, it will be displayed as "Default (WebServer)." This option will already be selected, indicating that Harness will analyze the impact of your deployment on the health of the "WebServer" monitored service for the chosen duration in the Analyze Deployment step.
+   Suppose you are deploying updates to your "Payments" monitored service. In the **Monitored Service** dropdown list, it will be displayed as "Default (Payments)." This option will already be selected, indicating that Harness analyzes the impact of your deployment on the health of the "Payments" monitored service for the chosen duration in the Analyze Deployment step.
    
-   Now, let's say you want to assess how your deployment might affect the health of your "Database" monitored service. To do this, simply select "Database" from the dropdown.
+   Now, let's say you want to assess how your deployment might affect the health of your "Checkout" monitored service. To do this, simply select "Checkout" from the dropdown.
 
-   When you select a monitored service, the health source and the notifications configured for that monitored service are displayed. If you have not configured a health source or notifications, you can do it by simply selecting the **Configure Health Source** or **Configure notifications** links.
+   When you select a monitored service, the health source and the notifications configured for that monitored service are displayed. 
+   
+  5. Optionally, you can also configure health sources or notifications:
 
-5. Select **Apply Changes** to save the Analyze Deployment Impact step settings.
+      - **Health source**: To configure a health source, select the **Configure Health Source** link. This opens a new tab, taking you to the health source configuration page of the monitored service that you selected. To learn about how to configure a health source, go to [Add a health source](../monitored-service/create-monitored-service.md#add-a-health-source).
+   
+      - **Notifications**: You can configure notifications for monitored services. Your team receives alerts whenever the deployment pipeline that is associated with the monitored service is executed.  
+      To configure notifications, select the **Configure notifications** link. This opens a new tab, taking you to the Notifications page of the monitored service that you selected. To learn about how to configure notifications, go to [Monitored service notifications](../notifications/monitoredservice-notifications.md).
+  
+   
+      :::important
+      When configuring the notification rule, ensure that, on the Conditions page, you select **Deployment Impact Analysis** from the **Conditions** dropdown list.
+         
+      :::
+
+
+5. Select **Apply Changes** to save the Analyze Deployment Impact step settings.  
    The Analyze Deployment Impact step is added to the deployment.
-
-<docimage path={require('./static/analyze-deployment-add-step-settings.png')} />
 
  
 ## View Analyze Deployment Impact step result
 
 When you run the pipeline, Harness also runs the Analyze Deployment Impact step and generates results.
 
-To view the Analyze Deployment Impact step results for a pipeline:
+:::info note
+When the **Analyze Deployment Impact** step is running, the status is displayed as **Running**. You can select **Abort** to stop the step.
+:::
+
+
+To view the **Analyze Deployment Impact** step results for a pipeline:
 
 1. In your Harness project, navigate to the **Deployments** module > **Pipelines**, and then select a pipeline to which you have added the **Analyze Deployment Impact** step.
    
@@ -105,18 +127,12 @@ To view the Analyze Deployment Impact step results for a pipeline:
 
 When you run a deployment pipeline that has the **Analyze Deployment Impact** step added, Harness analyzes the impact of deployment on the health of the monitored service (associated with the **Analyze Deployment Impact** step) and generates an Impact Analysis Report.
 
-
-### View Impact Analysis Report
-
-You can access the Impact Analysis Report in the following ways:
-
-
-#### From the pipeline
+To view the Impact Analysis Report, follow these steps:
 
 1. In your Harness project, navigate to the **Deployments** module > **Pipelines**, and then select a pipeline from which you want to access the Impact Analysis Report.
 
   :::info note
-  Note You must have added **Analyze Deployment Impact** step.
+  You must have added **Analyze Deployment Impact** step.
   :::
 
    
@@ -132,8 +148,6 @@ You can access the Impact Analysis Report in the following ways:
 
 <docimage path={require('./static/analyze-deployment-change-impact-report.png')} />
 
-
-#### From the monitored service
 
 You can also view the Impact Analysis Report directly for the monitored service.
 
@@ -168,8 +182,8 @@ The Impact Analysis Report includes the following information:
     
   - Start and end times: The date and time when the analysis started and when it concluded.
     
-  - Analysis status: The status of the analysis, which can be one of the following: Running, Completed, or Aborted.
+  - Analysis status: The status of the analysis, which can be one of the following: **Running**, **Completed**, or **Aborted**.
     
-  - Service health and SLO performance: Service health score and SLO performance trend chart.
+  - Service health and SLO performance: Service health score and SLO performance trend chart for the duration of the analysis.
 
 
