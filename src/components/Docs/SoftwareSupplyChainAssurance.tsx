@@ -18,7 +18,7 @@ export default function SSCA() {
             <h1>Software Supply Chain Assurance Documentation</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/software-supply-chain-assurance">
+            <Link href="/tutorials/secure-supply-chain">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />

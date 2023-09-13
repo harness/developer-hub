@@ -73,9 +73,6 @@ export default function SSCA() {
               </Link>
             </div>
           </div>
-          <div>
-            <img src={`${baseUrl}img/ssca.svg`} />
-          </div>
         </div>
       </div>
       <div className={styles.subSection}>
@@ -90,3 +87,8 @@ export default function SSCA() {
     // </Layout>
   );
 }
+
+// line 76-78:
+//          <div>
+//            <img src={`${baseUrl}img/ssca.svg`} />
+//          </div>
