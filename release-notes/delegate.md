@@ -68,7 +68,9 @@ This release does not include any new early access features.
 
 #### Version 80506
 
-- This fix will help reduce number of api calls made to Git Providers during deployment.
+- API calls made to Git providers during deployments caused rate limit errors. (CDS-78950)
+
+  The issue has been resolved. Harness reduced the number of API calls made to Git providers during deployment.
 
 ## Previous releases
 
