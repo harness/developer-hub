@@ -165,6 +165,6 @@ If you want to force all stages to use the same commit ID, even if there are cha
 
 ## See also
 
-* [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md)
+* [Runtime Inputs](/docs/platform/variables-and-expressions/runtime-inputs)
 * [Create a Connector using YAML](../../../platform/7_Connectors/create-a-connector-using-yaml.md)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)

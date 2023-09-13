@@ -73,7 +73,7 @@ UNIX Expression
 
 ### Set pipeline input
 
-Pipelines often have [Runtime inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
+Pipelines often have [Runtime inputs](../variables-and-expressions/runtime-inputs.md) like codebase branch names or artifact versions and tags.
 
 Provide values for the inputs. You can also use [Input sets](../8_Pipelines/input-sets.md).
 

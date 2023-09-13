@@ -12,7 +12,7 @@ This topic describes the YAML schema for a Pipeline.
 
 It includes common examples of the major schema entries.
 
-New to Harness YAML? See [Harness YAML Quickstart](../harness-yaml-quickstart.md).
+New to Harness YAML? Go to [Harness YAML Quickstart](../harness-yaml-quickstart.md).
 
 ## Viewing the YAML Schema
 
@@ -537,7 +537,7 @@ You can use Fixed Value, Runtime Input, and Expressions for most settings.
 ![](./static/yaml-reference-cd-pipeline-04.png)
 See also:
 
-* [Fixed Values, Runtime Inputs, and Expressions](../../20_References/runtime-inputs.md)
+* [Fixed Values, Runtime Inputs, and Expressions](../../variables-and-expressions/runtime-inputs.md)
 
 ### Flow Control
 

@@ -60,9 +60,9 @@ Harness looks to see what has changed in the repo to determine if a new chart ve
 When you add the Helm Chart to Harness as a Manifest, you have different options for the Chart Version.
 
 ![](./static/trigger-pipelines-on-new-helm-chart-04.png)
-* **Fixed Value:** if you use [Fixed Value](../20_References/runtime-inputs.md) for **Chart Version** (for example, `0.1.4`), Helm Chart Triggers will work, but Harness will not select the latest chart version. Instead, Harness will select the hardcoded chart version in **Chart Version** (`0.1.4`).
-* **Runtime Input:** if you use [Runtime input](../20_References/runtime-inputs.md) for **Chart Version**, you can enter the version to use in your trigger as part of the **Trigger Pipeline Inputs**. Go to [Select pipeline inputs](trigger-pipelines-on-new-helm-chart.md#step-4-select-pipeline-inputs) below.
-* **Expression:** if you use [Expression](../20_References/runtime-inputs.md) for **Chart Version**, you can:
+* **Fixed Value:** if you use [Fixed Value](../variables-and-expressions/runtime-inputs.md) for **Chart Version** (for example, `0.1.4`), Helm Chart Triggers will work, but Harness will not select the latest chart version. Instead, Harness will select the hardcoded chart version in **Chart Version** (`0.1.4`).
+* **Runtime Input:** if you use [Runtime input](../variables-and-expressions/runtime-inputs.md) for **Chart Version**, you can enter the version to use in your trigger as part of the **Trigger Pipeline Inputs**. Go to [Select pipeline inputs](trigger-pipelines-on-new-helm-chart.md#step-4-select-pipeline-inputs) below.
+* **Expression:** if you use [Expression](../variables-and-expressions/runtime-inputs.md) for **Chart Version**, you can:
 	+ Use a [Harness variable expression](../12_Variables-and-Expressions/harness-variables.md), like a Service variable.
 	+ Use the expression `<+trigger.manifest.version>` to have the new chart version that initiated the Trigger passed in as the version to deploy.
 
@@ -134,7 +134,7 @@ Harness supports standard Java regex. For example, if Regex is enabled and the i
 
 ### Select Pipeline Inputs
 
-If your Pipeline uses [Runtime Inputs](../20_References/runtime-inputs.md) or [Input Sets](../8_Pipelines/input-sets.md), you can select the inputs to use when the Trigger executes the Pipeline.
+If your Pipeline uses [Runtime Inputs](../variables-and-expressions/runtime-inputs.md) or [Input Sets](../8_Pipelines/input-sets.md), you can select the inputs to use when the Trigger executes the Pipeline.
 
 For example, here's an example where you select Runtime Inputs in the Trigger:
 

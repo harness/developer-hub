@@ -88,7 +88,7 @@ Currently, only the **Custom** entity type is supported. The JSON payload you ad
 
 The **Policy Set** and **Payload** settings allow for Fixed Values, Runtime Inputs, and Expressions.
 
-For details on how these work in Harness, go to [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs).
+For details on how these work in Harness, go to [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
 #### Fixed Values
 

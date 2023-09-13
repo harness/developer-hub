@@ -875,7 +875,7 @@ See [Built-in Harness variables reference](../platform/12_Variables-and-Expressi
 
 Most settings in Harness pipelines allow you to use fixed values, runtime inputs, and expressions.
 
-See [Fixed values, runtime inputs, and expressions](/docs/platform/20_References/runtime-inputs.md).
+See [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
 #### Can I reference settings using expressions?
 
@@ -887,7 +887,7 @@ See [Built-in Harness variables reference](../platform/12_Variables-and-Expressi
 
 Yes. You can use runtime Inputs to set placeholders for values that will be provided when you start a pipeline execution.
 
-See [Fixed values, runtime inputs, and expressions](/docs/platform/20_References/runtime-inputs.md).
+See [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
 #### Can I evaluate values at run time?
 
@@ -897,7 +897,7 @@ All of these variables represent settings and values in the pipeline before and 
 
 At run time, Harness will replace the variable with the runtime value.
 
-See [Fixed Values, runtime inputs, and expressions](/docs/platform/20_References/runtime-inputs.md).
+See [Fixed Values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
 #### Error evaluating certain expressions in a Harness pipeline
 

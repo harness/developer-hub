@@ -185,11 +185,11 @@ You can delete your templates at any time. When you delete a template, all refer
 ![](./static/template-13.png)
 ## Template inputs
 
-You can customize templates using placeholder expressions and [Runtime Inputs](../20_References/runtime-inputs.md) for their parameters and data types. Each time you run a pipeline that uses the template, users can provide values for these inputs.
+You can customize templates using placeholder expressions and [Runtime Inputs](../variables-and-expressions/runtime-inputs.md) for their parameters and data types. Each time you run a pipeline that uses the template, users can provide values for these inputs.
 
 ![](./static/template-14.png)
 
-Go to [Fixed values, runtime inputs, and expressions](../20_References/runtime-inputs.md) for more information.
+Go to [Fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md) for more information.
 
 ## Template YAML
 
