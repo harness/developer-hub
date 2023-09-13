@@ -259,6 +259,14 @@ Currently, there is no limit to the number of connectors per account.
 
 There is no restriction, but Harness recommends avoiding having the same connectors in FirstGen and NextGen.
 
+#### Do we support moving the recommendations from Applied to Open recommendations section ? 
+
+No. Currently we support only moving the recommendations from Open to applied section as of now
+
+#### Why are there no recommendations for GCP?
+
+We don’t support any GCP-specific recommendations as of today. We only have the support for the recommendations mentioned in the [doc](https://developer.harness.io/docs/category/recommendations)
+
 #### How frequently do we ingest AWS EC2/EBS metrics?
 
 All inventory metrics are pulled in once every hour.
@@ -280,9 +288,9 @@ The hourly granularity of cluster data is retained for 14 days. After 14 days, C
 
 ## On-premises
 
-#### Does CCM support on-premises platform installations?
+#### Does CCM support on-premises/Self Managed Platform (SMP) installations?
 
-Currently, no. Harness is working on providing this functionality.
+Yes. CCM supports the following features and functionalities in SMP environment. Connectors set up is supported only on AWS and Kubernetes as of now. Also we support Perspectives, Budgets, Scheduled Reports, Cost categories, Anomalies and Recommendations for now.
 
 #### Efficiency score
 
@@ -332,7 +340,7 @@ Yes, Harness considers RIs and Savings Plans to provide insights into potential 
 
 #### What is the limit to the number of Perspectives that I can create in an account?
 
-You can create up to 250 Perspectives in an account. See [Create cost perspectives](../cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md).
+You can create up to 10k Perspectives in an account. See [Create cost perspectives](../cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md).
 
 #### Will I be able to see tags in Perspectives?
 
@@ -356,6 +364,10 @@ To resolve any cost differences between the Perspective and Dashboard in Harness
 
   ![](./static/dashboard-time-filters.png)
 
+### How costs are displayed if the perspective contains costs which aren't associated with the grouped by identity ?
+We show `No` followed by `<group by>` for costs that don’t have any relation with the selected `<group by>`. 
+
+Example : If a perspective contains rules for both AWS and GCP, and if the group by is done on GCP > SKU, the costs assosciated with other than GCP SKU will be displayed as No SKUs.
 
 
 ### Budgets and reports
