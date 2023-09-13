@@ -17,11 +17,11 @@ export const FeaturedList: CardItem[] = [
     link: "/tutorials/secure-supply-chain/generate-sbom",
   },
   {
-    title: "Generate and verify SLSA provenance",
+    title: "Generate and verify SLSA Provenance",
     module: MODULES.ssca,
     icon: "img/icon_ssca.svg",
     description: (
-      <>Use SSCA module steps to generate and verify SLSA provenance in Harness pipelines.</>
+      <>Use SSCA module steps to generate and verify SLSA Provenance in Harness pipelines.</>
     ),
     newDoc: true,
     type: [docType.Documentation],
@@ -44,11 +44,11 @@ export const SSCAList: CardItem[] = [
     link: "/tutorials/secure-supply-chain/generate-sbom",
   },
   {
-    title: "Generate and verify SLSA provenance",
+    title: "Generate and verify SLSA Provenance",
     module: MODULES.ssca,
     icon: "img/icon_ssca.svg",
     description: (
-      <>Use SSCA module steps to generate and verify SLSA provenance in Harness pipelines.</>
+      <>Use SSCA module steps to generate and verify SLSA Provenance in Harness pipelines.</>
     ),
     newDoc: true,
     type: [docType.Documentation],
