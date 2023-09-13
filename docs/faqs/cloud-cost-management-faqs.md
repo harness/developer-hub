@@ -384,10 +384,6 @@ Anomaly detection jobs are executed once per day.
 
 Yes we do consider daily, weekly and monthly seasonalities while detecting anomalies.
 
-#### Do we need to enable any flag for anomaly detection to work ?
-
-No, as of now.
-
 #### Do we support daily alerts for anomalies ?
 
 Yes we do support daily alerts for anomalies
