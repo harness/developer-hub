@@ -372,6 +372,52 @@ The budget alerts are sent out daily at 2.30 p.m. GMT.
 
 No limit as of now.
 
+
+
+### Anomaly Detection
+
+#### How frequently do you run anomaly detection jobs ?
+
+Anomaly detection jobs are executed once per day.
+
+#### Do we consider seasonal factors while detecting anomalies ?
+
+Yes we do consider daily, weekly and monthly seasonalities while detecting anomalies.
+
+#### Do we support daily alerts for anomalies ?
+
+Yes we do support daily alerts for anomalies
+
+#### We didn’t get the slack/email notifications for anomaly despite the fact that we have we have set up channels for them ?
+
+Please reverify if the Slack and email channels have been properly configured for that specific perspective. If a particular anomaly is associated with multiple perspectives, we only send one notification to avoid redundancy. In this scenario, the notification is sent for the perspective that was created first among all the perspectives that share the same anomaly
+
+#### How much time does it take for sending alerts to the customers for an anomaly ?
+
+As soon as anomalies are detected at our end, we immediately send both slack as well as email notifications to our customers regarding it.
+
+#### Do we support fetching anomalies on perspective made through labels ?
+
+No, currently we do not have support for retrieving anomalies based on perspective labels.
+
+#### Is there a way we can proactively feed data to anomaly detection for future events or holidays ?
+
+No, as of now we don’t support feeding data for future events or holidays.
+
+#### Anomaly drill down from the perspective screen does not seem to be filtering the anomaly list correctly ?
+
+When you perform a drill-down from the perspective screen to view anomalies, we apply a time filter that specifically retrieves all anomalies of that particular day. This process ensures that the anomalies are accurately fetched, and the user is presented with all anomalies from that particular day, allowing them to take appropriate action.
+
+#### I see an anomaly at the AWS usage type level. Why is it that I'm not observing the same anomaly at the AWS service or AWS account level?
+
+We display anomalies at the most granular level of the hierarchy and intentionally exclude them from higher levels. This approach enables customers to precisely identify the root cause of the anomaly." The hierarchy level for clusters and different cloud providers are as follows  
+
+![](./static/ccm-faqs-00.png)
+
+#### I am seeing a large number of anomalies being detected which do not seem like anomalies to me ?
+
+Before proceeding, please double-check whether you have configured a new connector specifically for that particular cloud service. If you have indeed set up a new connector, please be aware that our machine learning models may not yet have sufficient training data for accurately identifying anomalies. To obtain reliable anomaly results, we typically require a minimum of 14 days' worth of training data.
+
 ### General AutoStopping rules
 
 This section addresses some frequently asked questions about [Harness intelligent cloud AutoStopping rules](../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-auto-stopping-rules.md).
