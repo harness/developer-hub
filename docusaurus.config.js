@@ -207,6 +207,10 @@ const config = {
                 to: "https://docs.propelo.ai/welcome-to-propelo/",
               },
               {
+                label: "Software Supply Chain Assurance",
+                to: "docs/software-supply-chain-assurance",
+              },
+              {
                 label: "Continuous Error Tracking",
                 to: "docs/continuous-error-tracking",
               },

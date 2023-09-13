@@ -9,6 +9,7 @@ import { CCMList } from "./data/cloudCostManagementData";
 import { FFList } from "./data/featureFlagsData";
 import { SRMList } from "./data/serviceReliabilityManagementData";
 import { STOList } from "./data/securityTestingOrchestrationData";
+import { SSCAList } from "./data/softwareSupplyChainAssuranceData";
 import { CEList } from "./data/chaosEngineeringData";
 import { PlatformList } from "./data/platformData";
 import { CETList } from "./data/continuousErrorTrackingData";
@@ -94,6 +95,13 @@ export default function AllTutorials() {
           <h3>Run Chaos Experiments</h3>
         </div>
         <TutorialCard FeatureList={CEList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/icon_ssca.svg`} />
+          <h3>Secure Supply Chain</h3>
+        </div>
+        <TutorialCard FeatureList={SSCAList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
