@@ -336,6 +336,10 @@ AutoScaling groups behind ALB running HTTP(s) workloads
   - AutoPilot mode
 - Kops
 
+:::important note
+Harness does not currently support importing a VM for AutoStopping proxy creation. Harness will provision the AutoStopping proxy.
+:::
+
 ##### Supported resources
   - Deployment
   - Statefulset
@@ -365,6 +369,11 @@ The supported Kubernetes version for AutoStopping is 1.19 or higher.
 
   - API
   - Terraform
+
+:::important note
+Harness does not currently support proxy provisioning via Terraform.
+
+:::
 
 ### **Supported Platforms**
   - SaaS
