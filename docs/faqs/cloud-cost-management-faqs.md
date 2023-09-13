@@ -386,7 +386,7 @@ Yes we do consider daily, weekly and monthly seasonalities while detecting anoma
 
 #### Do we need to enable any flag for anomaly detection to work ?
 
-No, as of now. Earlier we did have a flag “CCM_ANOMALY_DETECTION_NG Feature Flag” but later we decided to delete it.
+No, as of now.
 
 #### Do we support daily alerts for anomalies ?
 
