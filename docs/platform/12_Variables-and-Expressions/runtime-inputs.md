@@ -6,6 +6,8 @@ helpdocs_topic_id: f6yobn7iq0
 helpdocs_category_id: fb16ljb8lu
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/References/runtime-inputs
 ---
 
 ```mdx-code-block
