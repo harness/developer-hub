@@ -267,6 +267,10 @@ No. Currently we support only moving the recommendations from Open to applied se
 
 We don’t support any GCP-specific recommendations as of today. We only have the support for the recommendations mentioned in the [doc](https://developer.harness.io/docs/category/recommendations)
 
+#### How long do we show the recommendations ? 
+
+For Workload, Node Pool and Azure VM recommendations we will keep showing the recommendation for 7 days and for EC2 and ECS recommendations it will be 15 days. This is only for the recommendation details page. On the recommendation listing page we only show the recommendations which were updated in last 4 days.
+
 #### How frequently do we ingest AWS EC2/EBS metrics?
 
 All inventory metrics are pulled in once every hour.
