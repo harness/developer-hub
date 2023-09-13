@@ -7,7 +7,7 @@ helpdocs_category_id: fb16ljb8lu
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
-  - /docs/platform/variables-and-expressions/runtime-inputs
+  - /docs/platform/References/runtime-inputs
 ---
 
 ```mdx-code-block
