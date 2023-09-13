@@ -74,7 +74,7 @@ Codebase variables aren't resolved in these scenarios:
 
 ## Reference codebase variables
 
-You can use [Harness' expressions](/docs/platform/references/runtime-inputs/#expressions) to reference various codebase attributes in your **Build** (`CI`) stages. Expressions are formatted as `<+PARENT.CHILD>`, such as `<+codebase.commitSha>`, where `commitSha` is an attribute within `codebase`.
+You can use [Harness' expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference various codebase attributes in your **Build** (`CI`) stages. Expressions are formatted as `<+PARENT.CHILD>`, such as `<+codebase.commitSha>`, where `commitSha` is an attribute within `codebase`.
 
 For example, you can add a [Run step](../run-ci-scripts/run-step-settings.md) with a series of `echo` commands to your pipeline to reference codebase variables:
 

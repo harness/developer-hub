@@ -41,7 +41,7 @@ You cannot use Harness variables expressions in your Kubernetes object manifest 
 
 When you select the artifact repo for the artifact, like a Docker Hub repo, you specify the artifact and tag/version to use. 
 
-You can select a specific tag/version, use a [runtime input](/docs/platform/references/runtime-inputs/) so that you are prompted for the tag/version when you run the pipeline, or you can use an Harness variable expression to pass in the tag/version at execution.
+You can select a specific tag/version, use a [runtime input](/docs/platform/variables-and-expressions/runtime-inputs/) so that you are prompted for the tag/version when you run the pipeline, or you can use an Harness variable expression to pass in the tag/version at execution.
 
 Here's an example where a runtime input is used and you select which image version/tag to deploy.
 
@@ -489,7 +489,7 @@ To add an artifact from GCR, do the following:
 12. In **Image Path**, enter the name of the artifact you want to deploy.
 
     Images in repos need to reference a path starting with the project Id that the artifact is in, for example: `myproject-id/image-name`.
-13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select a [runtime input or expression](/docs/platform/references/runtime-inputs/).
+13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select a [runtime input or expression](/docs/platform/variables-and-expressions/runtime-inputs/).
     
     ![](./static/kubernetes-services-10.png)
     

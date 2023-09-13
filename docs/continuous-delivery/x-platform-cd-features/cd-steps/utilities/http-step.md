@@ -256,7 +256,7 @@ You can add the HTTP step to any CD Pipeline stage independent of deployment str
 
 In **URL**, enter a URL for the call. It must include the `http://` scheme.
 
-For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](/docs/platform/references/runtime-inputs/)..
+For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](/docs/platform/variables-and-expressions/runtime-inputs/)..
 
 You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
 

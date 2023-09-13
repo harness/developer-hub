@@ -722,7 +722,7 @@ You can enable "Skip Terraform Refresh when inheriting Terraform plan" option, p
 
 #### For variables do we have options to intake parameters via dropdown or radio buttons etc ?
 
-Yes we do, here in the following [Documentation](/docs/platform/references/runtime-inputs/#supplying-runtime-inputs-during-execution) , with allowed values you can have multiple inputs to select from range of values allowed.
+Yes we do, here in the following [Documentation](/docs/platform/variables-and-expressions/runtime-inputs/#supplying-runtime-inputs-during-execution) , with allowed values you can have multiple inputs to select from range of values allowed.
 
 #### In fetch pipeline summary API, what does the fields "numOfErrors" and "deployments" mean?
 

@@ -355,8 +355,8 @@ The [S3 Upload and Publish Drone plugin](https://github.com/harness-community/dr
    * **Container Registry:** Select a Docker connector.
    * **Image:** Enter `harnesscommunity/drone-s3-upload-publish`.
    * **Settings:** Add the following seven settings as key-value pairs.
-      * `aws_access_key_id`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`
-      * `aws_secret_access_key`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`
+      * `aws_access_key_id`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`
+      * `aws_secret_access_key`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`
       * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`
       * `aws_bucket`: The target S3 bucket.
       * `artifact_file`: `url.txt`
@@ -389,7 +389,7 @@ The [S3 Upload and Publish Drone plugin](https://github.com/harness-community/dr
                        imagePullPolicy: IfNotPresent
    ```
 
-For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/references/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key.
+For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key.
 
 ```mdx-code-block
   </TabItem>

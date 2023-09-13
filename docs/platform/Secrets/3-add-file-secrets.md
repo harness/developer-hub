@@ -49,7 +49,7 @@ When populating a UI field, you can search and select secrets by the **Secret Na
 
 ### Reference by ID
 
-To reference encrypted file secrets in YAML or in fields that require expressions, you must use the ID in a [Harness expression](/docs/platform/references/runtime-inputs#expressions).
+To reference encrypted file secrets in YAML or in fields that require expressions, you must use the ID in a [Harness expression](/docs/platform/variables-and-expressions/runtime-inputs#expressions).
 
 1. Locate the ID, next to the **Secret Name**, in the secret's settings.
 

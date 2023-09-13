@@ -1327,7 +1327,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 ##### Continuous Delivery
 
-- Harness supports manually adding service or environment [runtime inputs](/docs/platform/references/runtime-inputs/) in the pipeline YAML. (CDS-54249)
+- Harness supports manually adding service or environment [runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs/) in the pipeline YAML. (CDS-54249)
 
   You can now manually add service or environment runtime input expressions in the pipeline YAML. The values added to the YAML are reflected on the Harness UI. 
   
@@ -1810,7 +1810,7 @@ These changes are backward incompatible. Therefore, you must also update the Ter
 
 ##### Continuous Integration
 
-In addition to fixed values and runtime inputs, you can now use [expressions](/docs/platform/references/runtime-inputs) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
+In addition to fixed values and runtime inputs, you can now use [expressions](/docs/platform/variables-and-expressions/runtime-inputs) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
 
 ![The CI pipeline codebase configuration settings window.](static/ci-pipeline-codebase-reponame-exp.png)
 

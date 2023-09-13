@@ -152,7 +152,7 @@ You will still be able to select the template in services in this project.
 
 **Artifact Repository Type** is the only setting in the template that must be a fixed value. The remaining settings can be runtime inputs and expressions also. 
 
-For information on runtime inputs and expressions, go to [fixed values runtime inputs and expressions](/docs/platform/references/runtime-inputs/).
+For information on runtime inputs and expressions, go to [fixed values runtime inputs and expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 Runtime inputs can be useful in artifact source templates because they let your team members select the repository, path, and tags to use when they run pipelines using artifact source templates.
 

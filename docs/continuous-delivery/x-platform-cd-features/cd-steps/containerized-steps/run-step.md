@@ -274,7 +274,7 @@ To create an output variable, do the following in the step where the output vari
 
 ### Reference an output variable
 
-To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/references/runtime-inputs/#expressions) that includes the originating step's Id and the variable's name.
+To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) that includes the originating step's Id and the variable's name.
 
 Use either of the following expressions to reference an output variable in another step in the same stage:
 
