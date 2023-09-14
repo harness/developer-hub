@@ -67,8 +67,6 @@ You can exempt known issues from  `fail_on_severity` so that they don't stop the
 
 2. The SecOps user approves the request or rejects it. Developer users can request exemptions, but only SecOps users can approve them.
 
-- For information about setting up your roles and permissions, go to [Add Security Testing roles](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto#add-security-testing-roles).
-
 </details>
 
 In this section, you'll create an exemption as a developer and then approve it as SecOps user. (In many real-world scenarios, two separate people will be performing the workflow.)
