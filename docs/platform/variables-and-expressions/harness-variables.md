@@ -431,13 +431,96 @@ For example:
 ```
 
 
-### Ternary operators
+### Ternary operator
 
 When using ternary conditional `?:` operators, do not use spaces between the operators and values. Ensure the expression is wrapped within `<+ >`.
+:::note Important
+
+When you evaluate Harness expressions using ternary operators, or any operator, ensure that the expression will be resolved at the time of the evaluation. For example, if you use an expression for the value of a pipeline stage step setting, such as `<+pipeline.stages.mystage.spec.execution.steps.Apply.executionUrl>`, ensure that the evaluation using that step happens after the step has executed.
+
+:::
+
+Ternary operators in Harness follow the standard format, but you cannot use spaces between the operators and values. 
 
 For example, `<+condition ? <value_if_true> : <value_if_false>>` will not work. 
 
 Use `<+condition?<value_if_true>:<value_if_false>>` instead.
+Ensure the expression is wrapped within `<+ >`:
+
+```
+<+condition?<value_if_true>:<value_if_false>>
+```
+
+<details>
+<summary>Pipeline example</summary>
+
+Here's a simple Harness YAML pipeline example of evaluating a Harness variable value with the ternary operator: 
+
+```yaml
+
+pipeline:
+  name: exp
+  identifier: exp
+  projectIdentifier: CD_Docs
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: ternarydemo
+        identifier: ternarydemo
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo <+stage.variables.myvar>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+              - step:
+                  type: ShellScript
+                  name: ternary
+                  identifier: ternary
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo <+ <+stage.variables.myvar> == "1.1"?"this is right":"this is wrong" >
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+        variables:
+          - name: myvar
+            type: String
+            description: ""
+            required: true
+            value: "1.1"
+
+
+```
+
+In this example, there is a stage variable named `myvar` with a value of `1.1`. In the `ShellScript` step named `ternary` the variable expression for the stage variable, `<+stage.variables.myvar>`, is evaluated with the ternary expression:
+
+`<+ <+stage.variables.myvar> == "1.1"?"this is right":"this is wrong" >`
+
+</details>
+
+
+
+Ternary operators are also discussed in the [Harness Knowledge Base](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
 
 ### Equals operator
 
