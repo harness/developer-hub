@@ -628,7 +628,7 @@ If the email address used in Harness is different from the email address in the 
 
 Make sure the email address used in Harness matches the email address in the Azure app.
 
-For more information about SAML SSO configuration with Azure, see [Single sign-on (SSO) with SAML](../platform/3_Authentication/3-single-sign-on-saml.md).
+For more information about SAML SSO configuration with Azure, see [Single sign-on (SSO) with SAML](../platform/authentication/single-sign-on-saml.md).
 
 ## Shell scripts
 

@@ -23,7 +23,7 @@ To create, edit, and delete stages in CI pipelines, you need either Project Admi
 
 ## Stage Name
 
-Enter a name summarizing the stage's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the stage's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Description
 
@@ -31,7 +31,7 @@ Optional text string.
 
 ## Tags
 
-For details, go to the [Tags Reference](../../../platform/20_References/tags-reference.md).
+For details, go to the [Tags Reference](../../../platform/references/tags-reference.md).
 
 ## Clone Codebase
 

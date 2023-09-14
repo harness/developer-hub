@@ -23,7 +23,7 @@ Harness supports AppDynamics metrics for applications. However, Harness doesn't 
 
 ## Before You Begin
 
-[Add AppDynamics as a verification provider](./platform/../../../../platform/7_Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems.md)
+[Add AppDynamics as a verification provider](./platform/../../../../platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems.md)
 
 ## Review: CV Setup Options
 
@@ -177,8 +177,8 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In Advanced, you can select the following options:
 
-* [Step Skip Condition Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 * [Select Delegates with Selectors](../../platform/../../platform/delegates/manage-delegates/select-delegates-with-selectors.md)
 
 

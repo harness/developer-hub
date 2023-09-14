@@ -8,7 +8,7 @@ For example, in a [Kubernetes Blue Green Deployment](/docs/continuous-delivery/
 
 ### Before you begin
 
-* [Connect to ServiceNow](/docs/platform/7_Connectors/Ticketing-Systems/connect-to-service-now.md)
+* [Connect to ServiceNow](/docs/platform/connectors/Ticketing-Systems/connect-to-service-now.md)
 
 ### Review: ServiceNow Approval Stages vs Steps
 
@@ -43,13 +43,13 @@ In the pipeline, click **ServiceNow Approval.** The **ServiceNow Approval** sett
 
 ![](./static/service-now-approvals-03.png)
 
-In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](/docs/platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
+In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
 
 You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, 1d for one day.
 
 ServiceNow communication can take a few minutes. Do not use a brief timeout.
 
-The maximum is 3w 3d 20h 30m. In **ServiceNow** **Connector,** create or select the [ServiceNow Connector](/docs/platform/7_Connectors/Ticketing-Systems/connect-to-service-now.md) you want to use.
+The maximum is 3w 3d 20h 30m. In **ServiceNow** **Connector,** create or select the [ServiceNow Connector](/docs/platform/connectors/Ticketing-Systems/connect-to-service-now.md) you want to use.
 
 Select the ServiceNow **Ticket Type**. Use the same type as the ticket you created in the Workflow.
 
@@ -63,7 +63,7 @@ The **Approval Criteria** in the step determines if the Pipeline or stage is a
 
 ![](./static/service-now-approvals-04.png)
 
-Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](/docs/platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to `True` for the step to be successful.
+Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps.md).You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to `True` for the step to be successful.
 
 In **Conditions**, you can use the ServiceNow ticket related fields to define approval criteria.
 
@@ -88,8 +88,8 @@ The start and end times use the time zone set in the ServiceNow account selected
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md)
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Skip Condition Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 
 ### Step 3: Apply and Test
 
@@ -117,6 +117,6 @@ For details, go to **Custom table support** in [Create ServiceNow tickets in CD 
 
 ## See also
 
-* [Using Manual Harness Approval Stages](/docs/platform/9_Approvals/adding-harness-approval-stages.md)
+* [Using Manual Harness Approval Stages](/docs/platform/approvals/adding-harness-approval-stages.md)
 * [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md)
 

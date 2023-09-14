@@ -10,7 +10,7 @@ Looking to create or update Jira issues? See [Create Jira Issues in CD Stages](/
 
 ### Before you begin
 
-* [Connect to Jira](/docs/platform/7_Connectors/Ticketing-Systems/connect-to-jira.md)
+* [Connect to Jira](/docs/platform/connectors/Ticketing-Systems/connect-to-jira.md)
 * [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages)
 * [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
 
@@ -54,13 +54,13 @@ When you add a Jira Approval stage, Harness automatically adds Jira Create, Jira
 
 In **Name**, enter a name that describes the step.
 
-In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](/docs/platform//8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
+In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](/docs/platform//pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
 
 You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, 1d for one day.
 
 Jira communication can take a few minutes. Do not use a brief timeout.
 
-The maximum is 3w 3d 20h 30m. In **Jira Connector**, create or select the [Jira Connector](/docs/platform//7_Connectors/Ticketing-Systems/connect-to-jira.md) to use.
+The maximum is 3w 3d 20h 30m. In **Jira Connector**, create or select the [Jira Connector](/docs/platform//connectors/Ticketing-Systems/connect-to-jira.md) to use.
 
 In **Project**, select the Jira project that contains the issue you want to evaluate.
 
@@ -108,7 +108,7 @@ The **Approval Criteria** in the step determines if the Pipeline or stage is app
 
 ![](./static/adding-jira-approval-stages-11.png)
 
-Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](/docs/platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination they both must evaluate to `True` for the step to be successful.
+Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination they both must evaluate to `True` for the step to be successful.
 
 In **Conditions**, you simply use the Jira Field, Operator, and Value to define approval criteria.
 
@@ -124,8 +124,8 @@ If you add rejection criteria it is used in addition to the settings in **Approv
 
 In Advanced, you can use the following options:
 
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ### Step 3: Apply and Test
 
@@ -159,5 +159,5 @@ For example, `<+issue.Status> == "Done"` in the Approval Criteria **JEXL Express
 
 ### See also
 
-* [Using Manual Harness Approval Stages](/docs/platform/9_Approvals/adding-harness-approval-stages.md)
+* [Using Manual Harness Approval Stages](/docs/platform/approvals/adding-harness-approval-stages.md)
 * [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md)

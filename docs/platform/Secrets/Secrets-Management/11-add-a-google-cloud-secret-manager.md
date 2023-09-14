@@ -63,7 +63,7 @@ This topic explains the steps to add a Google Cloud Secrets Manager to the accou
 ## Add overview
 
 1. In **Name**, enter a name for your secret manager.
-2. You can choose to update the **Id** or let it be the same as your secret manager's name. For more information, go to [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
+2. You can choose to update the **Id** or let it be the same as your secret manager's name. For more information, go to [Entity Identifier Reference](../../references/entity-identifier-reference.md).
 3. Enter the **Description** for your secret manager.
 4. Enter **Tags** for your secret manager.
 5. Click **Continue.**

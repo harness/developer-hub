@@ -34,13 +34,13 @@ The **Create Stack** step is where you connect Harness to your templates and pro
 
 In **Name**, enter a name for the step, for example, **C****reate EC2 Instance**.
 
-Harness will create an [Entity Id](/docs/platform/20_References/entity-identifier-reference.md) using the name. The Id is very important. You can use an Harness expression and Id to refer to settings in this step from another step.
+Harness will create an [Entity Id](/docs/platform/references/entity-identifier-reference.md) using the name. The Id is very important. You can use an Harness expression and Id to refer to settings in this step from another step.
 
 See [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md).
 
 ### Timeout
 
-In **Timeout**, enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
+In **Timeout**, enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
 ### Provisioner Identifier
 

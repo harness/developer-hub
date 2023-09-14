@@ -44,4 +44,4 @@ To access the dashboards outside the CCM module, perform the following steps:
 3. Click the required tile to view the corresponding dashboard.
 
 ## See also
-* [Use Dashboard Actions](../../../platform/18_Dashboards/use-dashboard-actions.md)
+* [Use Dashboard Actions](../../../platform/dashboards/use-dashboard-actions.md)
