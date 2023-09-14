@@ -1,11 +1,11 @@
 {
-   "label":"SLSA compliance",
+   "label":"Comply with SLSA",
    "position": 50,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"SLSA compliance"
+      "title":"Comply with SLSA"
    }
 }

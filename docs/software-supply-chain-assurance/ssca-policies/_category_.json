@@ -1,11 +1,11 @@
 {
-   "label":"SSCA policy enforcement",
+   "label":"Enforce SSCA policies",
    "position": 40,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"SSCA policy enforcement"
+      "title":"Enforce SSCA policies"
    }
 }

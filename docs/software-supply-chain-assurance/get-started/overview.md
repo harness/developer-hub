@@ -26,10 +26,11 @@ Harness SSCA module provides a robust solution for establishing trust in the sof
 
 To realize the [objectives](#software-supply-chain-assurance-objectives), the SSCA module offers features such as:
 
-* **SBOM generation and management.**
-* **Policy enforcement** for open-source governance.
-* **Comprehensive visibility** into component usage and deployment environments.
-* **Remediation paths** to effectively address zero-day vulnerabilities in open-source components.
-* **SLSA Level 2 compliance** with provenance generation and verification.
+* SBOM generation and management.
+* Policy enforcement for open-source governance.
+* Comprehensive visibility into component usage and deployment environments.
+* SLSA Level 2 compliance with provenance generation and verification.
+
+<!-- * **Remediation paths** to effectively address zero-day vulnerabilities in open-source components. -->
 
 For more information about these features and how SSCA integrates with the Harness Platform, go to the [SSCA key concepts](./key-concepts.md).

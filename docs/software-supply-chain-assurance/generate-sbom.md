@@ -1,7 +1,8 @@
 ---
 title: Generate and manage SBOM
 description: Generate and manage SBOM with Harness SSCA
-sidebar_position: 20
+sidebar_position: 30
+sidebar_label: Generate SBOM
 ---
 
 ```mdx-code-block
@@ -43,8 +44,8 @@ The **SSCA Orchestration** step has the following settings:
 * **SBOM Tool:** Select the tool to use to generate the SBOM, such as **Syft**.
 * **SBOM Format:** Select **SPDX** or **CycloneDX**.
 * **Artifact Type:** Select the type of artifact that the SBOM is for, such as **Image**.
-* **Container Registry:** Select the [connector](/docs/category/connectors) for the container registry where your artifact is stored. For example, if the image is on Docker Hub, you need a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-* **Image:** The repo path, in your container registry, and tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
+* **Container Registry:** select the [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where the artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
+* **Image:** The repo path (in your container registry) and tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
 * **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
 * **Password:** The [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) containing the password for the private key.
 
@@ -56,11 +57,10 @@ The **SSCA Orchestration** step has the following settings:
 
 If you're using Docker-compliant ECR or GCR repositories, you must:
 
-1. Use a [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-2. Configure the connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
+1. Configure your [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
    * For ECR, refer to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
    * For GCR, refer to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
-3. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`
+2. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`
 
 :::
 
@@ -72,4 +72,4 @@ When the pipeline runs, the **SSCA Orchestration** step does the following:
 * Generates and signs an attestation using the provided key and password.
 * Stores the SBOM in Harness and uploads the `.att` file to your container registry alongside the image.
 
-The signed attestation is stored, as an `.att` file, in the artifact repository along with the image. You can also find the SBOM on the **Artifacts** tab on the **Execution details** page in Harness. For more information, go to [View attestations and violations](./ssca-view-results.md)
+The signed attestation is stored, as an `.att` file, in the artifact repository along with the image. You can also find the SBOM on the **Artifacts** tab on the **Execution details** page in Harness. For more information, go to [View attestations and violations](./ssca-view-results.md).

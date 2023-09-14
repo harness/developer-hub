@@ -68,7 +68,7 @@ You can use remediation flows in the SSCA module to respond quickly and effectiv
 
 ## SLSA compliance
 
-With the Harness SSCA module, you can achieve SLSA Level 2 compliance by generating SLSA Provenance according to the SLSA specifications.
+With the Harness SSCA module, you can achieve SLSA Level 2 compliance by generating SLSA Provenance according to the [SLSA v1.0 spec](https://slsa.dev/).
 
 Provenance attestations are stored as `.att` files in the artifact repository along with the image. You can also find the SLSA Provenance on the **Execution details** page in Harness. For more information, go to [View attestations and violations](../ssca-view-results.md).
 
@@ -94,11 +94,20 @@ Pipelines are comprised of stages and steps.
 
 ### Connectors
 
-Connectors contain the information necessary to integrate and work with third-party tools, such as Git providers and artifact repos. For example, a GitHub connector authenticates with a GitHub account and/or repo and fetches files as part of a deploy stage. Harness uses connectors at pipeline runtime to authenticate and run operations in external tools.
+[Connectors](/docs/category/connectors) contain the information necessary to integrate and work with third-party tools, such as Git providers and artifact repos. For example, a GitHub connector authenticates with a GitHub account and/or repo and fetches files as part of a deploy stage. Harness uses connectors at pipeline runtime to authenticate and run operations in external tools.
 
 Connectors require different permissions depending on your build environment and the tasks your pipeline performs. For example, if your pipeline builds and pushes an image to Docker Hub, you need a connector that can connect to your Docker Hub repo and push images.
 
-For more information, go to the Harness Platform documentation on [Connectors](/docs/category/connectors).
+:::info
+
+For SSCA, you must use [Docker Registry connectors](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for Docker-compliant container registries, such as Docker Hub, Docker-compliant Amazon ECR, or Docker-compliant GCR.
+
+If you're using Docker-compliant ECR or GCR repos, you must configure your [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
+
+* For ECR, refer to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
+* For GCR, refer to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
+
+:::
 
 ### Delegates
 

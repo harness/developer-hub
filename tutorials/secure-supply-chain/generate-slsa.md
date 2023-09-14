@@ -6,7 +6,7 @@ title: Generate and verify SLSA Provenance
 slug: /secure-supply-chain/generate-slsa
 ---
 
-This tutorial explains how you can use the Harness SSCA steps in Harness CI/CD pipelines to generate and verify [SLSA Provenance](https://slsa.dev/spec/v1.0/provenance).
+You can use the Harness SSCA steps in Harness CI/CD pipelines to generate and verify [SLSA Provenance](https://slsa.dev/spec/v1.0/provenance).
 
 To complete this tutorial, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage). For example, the pipeline created in this tutorial has a **Build** stage with one step and a **Deploy** stage with two steps.
 
@@ -35,6 +35,12 @@ When your pipeline runs, the private key is used to sign the SLSA Provenance, an
 
 ## Generate SLSA Provenance
 
+When you run a pipeline with SLSA generation enabled, Harness SSCA:
+
+* Generates an SLSA Provenance for the image created in the **Build** stage.
+* Generates and signs an attestation using the provided key and password.
+* Stores the SLSA Provenance in Harness and uploads the `.att` file to your container registry alongside the image.
+
 Enable SLSA Provenance generation in the **Build** stage settings.
 
 1. In your Harness pipeline, select the **Build** stage, and then select the **Overview** tab.
@@ -45,12 +51,6 @@ Enable SLSA Provenance generation in the **Build** stage settings.
 <!-- ![](./static/slsa-build-stage-settings.png) -->
 
 <docimage path={require('./static/slsa-build-stage-settings.png')} />
-
-When you run a pipeline with SLSA generation enabled, Harness SSCA:
-
-* Generates an SLSA Provenance for the image created in the **Build** stage.
-* Generates and signs an attestation using the provided key and password.
-* Stores the SLSA Provenance in Harness and uploads the `.att` file to your container registry alongside the image.
 
 ## Create policies
 
@@ -89,45 +89,39 @@ OPA polices used for SLSA Provenance verification are different from [SSCA polic
 
 ## Verify provenance
 
-1. Add the **SLSA Verification** step to your **Deploy** stage. This is a container step that must be inside a [container group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
-2. Configure the **SLSA Verification** settings as follows:
+The **SLSA Verification** step does the following:
 
-   * **Name:** Enter a name for the step.
-   * **Artifact Source:** Provide information about the artifact that needs SLSA Provenance verification.
-      * **Container Registry:** Select the [connector](/docs/category/connectors) for the container registry where the relevant artifact is stored. For example, if the image is on Docker Hub, you need a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-      * **Image:** The repo path, in your container registry, for the image to verify, such as `my-docker-repo/my-artifact`.
-      * **Tag:** The tag for the image, such as `latest`.
-   * **Public Key:** A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key to use to verify the authenticity of the attestation.
+* Verifies the authenticity of the attestation.
+* Verifies the provenance data by applying the specified policy set.
+* Records the policy evaluation results in the step's logs.
+* Reports the overall pass/fail for SLSA verification on the **Artifacts** tab.
+
+1. Add the **SLSA Verification** step to your **Deploy** stage. This is a container step that must be inside a [container group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
+2. Enter a **Name** for the step.
+3. For **Container Registry**, select the [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where the artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
+
+   If you're using Docker-compliant ECR or GCR repositories, you must configure your Docker Registry connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
+
+   * For ECR, refer to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
+   * For GCR, refer to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+
+4. For **Image**, enter the repo path (in your container registry) for the image that you want to verify, such as `my-docker-repo/my-artifact`.
+
+   For Docker-compliant ECR or GRC repositories, provide the full URI for the image, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`
+
+5. For **Tag**, enter the tag for the image, such as `latest`.
+
+6. For **Public Key**, select the [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key to use to verify the authenticity of the attestation.
 
    <!-- ![](./static/slsa-verify-step-basic.png) -->
 
    <docimage path={require('./static/slsa-verify-step-basic.png')} />
 
-3. On the **Advanced** tab for the **SLSA Verification** step, expand the **Policy Enforcement** section, and then add your SLSA Provenance verification OPA policies.
+7. On the **Advanced** tab for the **SLSA Verification** step, expand the **Policy Enforcement** section, and then add your SLSA Provenance verification OPA policies.
 
    <!-- ![](./static/slsa-verify-step-adv.png) -->
 
    <docimage path={require('./static/slsa-verify-step-adv.png')} />
-
-
-:::info ECR and GCR repos
-
-If you're using Docker-compliant ECR or GCR repositories, you must:
-
-1. Use a [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-2. Configure the connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
-   * For ECR, refer to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
-   * For GCR, refer to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
-3. Use the full URI for the **Image** in your **SLSA Verification** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`
-
-:::
-
-When the pipeline runs, the **SLSA Verification** step does the following:
-
-* Verifies the authenticity of the attestation.
-* Verifies the provenance data by applying the specified policy set.
-* Records the evaluation results for each policy and shows them in the step's logs.
-* Shows an overall pass/fail for SLSA verification on the **Artifacts** tab.
 
 ## View attestations and violations
 
