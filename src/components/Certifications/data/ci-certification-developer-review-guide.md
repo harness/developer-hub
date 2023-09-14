@@ -10,7 +10,7 @@
 )|
 |Get familiar with different types of artifacts and scanning options | [Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab/)
 |**3. Discover supported platforms and Operating Systems on Harness Cloud**||
-|Define and configure connectors, and understand their usage|[Create a connector using YAML](/docs/platform/Connectors/create-a-connector-using-yaml)|
+|Define and configure connectors, and understand their usage|[Create a connector using YAML](/docs/platform/connectors/create-a-connector-using-yaml)|
 |Learn about the Harness Delegate and Harness Manager|[Harness Platform architecture](/docs/get-started/harness-platform-architecture/)|
 |**4. RBAC, best practices, and small configuration tasks**||
 |Understand shared paths and Drone/CI plugins |[CI pipeline basics](/docs/continuous-integration/get-started/key-concepts)|

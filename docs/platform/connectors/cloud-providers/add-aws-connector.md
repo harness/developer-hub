@@ -8,13 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Use a Harness AWS connector to integrate AWS with Harness. Use AWS with Harness to obtain artifacts, communicate with AWS services, provision infrastructure, and deploy microservices and other workloads. If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the platform-agnostic [Kubernetes Cluster connector](../..connectors/../Cloud-providers/connect-to-a-cloud-provider.md) or the [EKS cloud connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks).
+Use a Harness AWS connector to integrate AWS with Harness. Use AWS with Harness to obtain artifacts, communicate with AWS services, provision infrastructure, and deploy microservices and other workloads. If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the platform-agnostic [Kubernetes Cluster connector](../..connectors/../cloud-providers/connect-to-a-cloud-provider.md) or the [EKS cloud connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks).
 
 This topic explains how to set up an AWS connector.
 
 ## Configure roles and policies
 
-The necessary IAM roles and policies needed by the AWS account used in the connector depend on which AWS service you are using with Harness and which operations you want Harness to perform in AWS. For an extensive description of roles and policies, go to the [AWS Connector Settings Reference](../../../platform/connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
+The necessary IAM roles and policies needed by the AWS account used in the connector depend on which AWS service you are using with Harness and which operations you want Harness to perform in AWS. For an extensive description of roles and policies, go to the [AWS Connector Settings Reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 
 AWS connectors can also inherit IAM roles from Harness delegates running in AWS. If you want your connector to inherit from a delegate, make sure the delegate has the necessary roles.
 
@@ -118,8 +118,8 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
 
 </details>
 
-6. To use cross-account ARN, select **Enable cross-account access (STS Role)**. This option is available for all authentication methods, but it may not be supported by all pipeline steps. For more information about cross-account access in AWS connectors, go to the [AWS connector settings reference](../../../platform/connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
-7. By default, Harness uses the `us-east-1` region to test the credentials for AWS connectors. If you want to use a different region or an AWS GovCloud account, select it in the **Test Region** field. For more information about AWS GovCloud support, go to the [AWS connector settings reference](../../../platform/connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
+6. To use cross-account ARN, select **Enable cross-account access (STS Role)**. This option is available for all authentication methods, but it may not be supported by all pipeline steps. For more information about cross-account access in AWS connectors, go to the [AWS connector settings reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
+7. By default, Harness uses the `us-east-1` region to test the credentials for AWS connectors. If you want to use a different region or an AWS GovCloud account, select it in the **Test Region** field. For more information about AWS GovCloud support, go to the [AWS connector settings reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 8. Select **Continue** to proceed to **Select Connectivity Mode**.
    
 :::tip
@@ -150,7 +150,7 @@ Due to the limited scope of the initial connection test, credentials can pass th
 
 If you experience any errors with AWS connectors, verify that the IAM roles and policies it is using are correct. Notably, the [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
 
-For a list of roles and policies, go to the [AWS Connector Settings Reference](../../../platform/connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
+For a list of roles and policies, go to the [AWS Connector Settings Reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 
 </details>
 
@@ -158,4 +158,4 @@ For a list of roles and policies, go to the [AWS Connector Settings Reference](.
 
 * [Harness Key Concepts](../../../get-started/key-concepts.md)
 * [Supported Platforms and Technologies](../../../../docs/get-started/supported-platforms-and-technologies.md)
-* [AWS connector settings reference](../../../platform/connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md)
+* [AWS connector settings reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md)

@@ -69,7 +69,7 @@ You need a dedicated S3 bucket for your Harness CI cache operations, and you nee
 
 </details>
 
-For more information on configuring an S3 connector and S3 bucket policies, go to [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector) and the [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+For more information on configuring an S3 connector and S3 bucket policies, go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) and the [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 Optionally, you can create a [lifecycle configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html) to automatically delete old cache data from your S3 bucket.
 
@@ -140,8 +140,8 @@ This step doesn't support AWS connectors that have enabled cross-account access 
 
 For more information about roles and permissions for AWS connectors, go to:
 
-* [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector)
-* [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+* [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector)
+* [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 #### Region
 
@@ -290,8 +290,8 @@ This step doesn't support AWS connectors that have enabled cross-account access 
 
 For more information about roles and permissions for AWS connectors, go to:
 
-* [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector)
-* [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
+* [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector)
+* [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
 
 #### Region
 

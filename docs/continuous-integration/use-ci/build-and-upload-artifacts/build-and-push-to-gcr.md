@@ -32,7 +32,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 ### GCP Connector
 
-The Harness GCP connector to use to connect to GCR. The GCP account associated with the GCP connector needs specific roles. For more information, go to [Google Cloud Platform (GCP) connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
+The Harness GCP connector to use to connect to GCR. The GCP account associated with the GCP connector needs specific roles. For more information, go to [Google Cloud Platform (GCP) connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
 
 This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
 

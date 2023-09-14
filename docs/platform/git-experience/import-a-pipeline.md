@@ -51,7 +51,7 @@ This topic shows you how to import a Pipeline to the CD module.
    ```
 
 4. Enter a **Name** for your Pipeline.
-5. In **Git Connector**, select or create a Git Connector to connect to your Git repo. For steps, see [Code Repo Connectors](../connectors/Code-Repositories/connect-to-code-repo.md).
+5. In **Git Connector**, select or create a Git Connector to connect to your Git repo. For steps, see [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
    
    <details>
    <summary>

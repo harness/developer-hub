@@ -45,7 +45,7 @@ To create a template, do the following:
 
 To create a remote template, do the following:
 
-  1. In **Git Connector**, select or create a Git Connector to the repo for your project.​ For more information, go to [Code Repo Connectors](../connectors/Code-Repositories/connect-to-code-repo.md).
+  1. In **Git Connector**, select or create a Git Connector to the repo for your project.​ For more information, go to [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
   2. In **Repository**, select your repository.
 
      :::note

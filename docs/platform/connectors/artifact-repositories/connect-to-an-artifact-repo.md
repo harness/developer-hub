@@ -30,11 +30,11 @@ You can add an artifact repository connector at the account, org, or project sco
 
 This topic will explain how to add it at the project scope. The process is same for org and account.
 
-Steps on adding the artifact repository connector inline when developing a pipeline are covered in the relevant How-to and Technical Reference topics. For example, adding a Docker Registry is covered in the [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) and [Docker Connector Settings Reference](../../../platform/connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md).
+Steps on adding the artifact repository connector inline when developing a pipeline are covered in the relevant How-to and Technical Reference topics. For example, adding a Docker Registry is covered in the [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) and [Docker Connector Settings Reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md).
 
 ### Add an Artifactory repository
 
-For details on settings and permissions, see [Artifactory Connector Settings Reference](../../connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference.md).
+For details on settings and permissions, see [Artifactory Connector Settings Reference](../../connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference.md).
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
@@ -52,7 +52,7 @@ For details on settings and permissions, see [Artifactory Connector Settings Ref
 
 ### Add a Docker registry
 
-For details on settings and permissions, see [Docker Connector Settings Reference](../../../platform/connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md).The Docker Connector is platform-agnostic and can be used to connect to any Docker container registry, but Harness provides first class support for registries in AWS and GCR. See [Add an AWS Connector](../Cloud-providers/add-aws-connector.md), [Google Cloud Platform (GCP) Connector Settings Reference](../Cloud-providers/connect-to-google-cloud-platform-gcp.md).
+For details on settings and permissions, see [Docker Connector Settings Reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md).The Docker Connector is platform-agnostic and can be used to connect to any Docker container registry, but Harness provides first class support for registries in AWS and GCR. See [Add an AWS Connector](../cloud-providers/add-aws-connector.md), [Google Cloud Platform (GCP) Connector Settings Reference](../cloud-providers/connect-to-google-cloud-platform-gcp.md).
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
@@ -77,7 +77,7 @@ Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart
 
 If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to the service **Artifacts** section. See [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts).
 
-For details on settings and permissions, see [HTTP Helm Repo Connector Settings Reference](../../../platform/connectors/Code-Repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).
+For details on settings and permissions, see [HTTP Helm Repo Connector Settings Reference](../../../platform/connectors/code-repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.

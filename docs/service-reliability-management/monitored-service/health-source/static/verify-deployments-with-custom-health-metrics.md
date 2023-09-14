@@ -15,7 +15,7 @@ Harness offers support for all major APM vendors and log providers, but there ar
 
 ## Before You Begin
 
-[Add Custom Health as a Verification Provider](..//docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-custom-health)
+[Add Custom Health as a Verification Provider](..//docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-custom-health)
 
 ## Review: CV Setup Options
 

@@ -68,7 +68,7 @@ This section explains steps to move an [inline pipeline](../pipelines/add-a-stag
    
    ![](../git-experience/static/move-pipeline-togit.png)
 
-5. In **Git Connector**, select or create a Git Connector to the repo for your Project. For more information, see [Code Repo Connectors](../connectors/Code-Repositories/connect-to-code-repo.md).
+5. In **Git Connector**, select or create a Git Connector to the repo for your Project. For more information, see [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
    
    <details>
    <summary> IMPORTANT </summary>

@@ -44,7 +44,7 @@ To create a remote policy in Harness:
 1. Select **Policies** and then select **New Policy**.
 2. Enter a name for your policy.
 3. Select **Remote**. The additional settings appear to configure Git Experience.
-4. In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](../../connectors/Code-Repositories/connect-to-code-repo.md).
+4. In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](../../connectors/code-repositories/connect-to-code-repo.md).
 5. In **Repository**, select your repository. If your repository isn't listed, enter its name since only a select few repositories are filled here.
 6. In **Git Branch**, select your branch. If your branch isn't listed, enter its name since only a select few branches are filled here.
 7. Harness pre-populates the **Rego Path**. You can change this path and the file name.

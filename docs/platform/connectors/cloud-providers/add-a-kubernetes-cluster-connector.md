@@ -12,7 +12,7 @@ You can connect Harness with your Kubernetes clusters using a Kubernetes Cluster
 
 Once connected, you can use Kubernetes and Harness for provisioning infrastructure, running a CI build farm, and deploying microservices and other workloads to clusters.
 
-**What roles should my Kubernetes account have?** What roles and policies needed by the account used in the Connector depend on what operations you are using Harness for in the cluster. For a list of roles and policies, see [Kubernetes Cluster Connector Settings Reference](../../../platform/connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
+**What roles should my Kubernetes account have?** What roles and policies needed by the account used in the Connector depend on what operations you are using Harness for in the cluster. For a list of roles and policies, see [Kubernetes Cluster Connector Settings Reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
 ### Before you begin
 
@@ -35,7 +35,7 @@ You can use different methods for authenticating with the Kubernetes cluster, bu
 
 The Role used must have either the `cluster-admin` permission in the target cluster or admin permissions in the target namespace.
 
-For a detailed list of roles and policies, see [Kubernetes Cluster Connector Settings Reference](../../../platform/connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
+For a detailed list of roles and policies, see [Kubernetes Cluster Connector Settings Reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
 In general, the following permissions are require:
 
@@ -94,7 +94,7 @@ Select one of the following:
 	+ Next, enter the **Service Account Key** or other credentials. You can use any service account; the service account doesn't have to be attached to a delegate.
 * **Use the credentials of a specific Harness Delegate**: Select this option to have the Connector inherit the credentials used by the Harness Delegate running in the cluster. You can install a Delegate as part of adding this Connector.
 
-For details on all of the credential settings, see [Kubernetes Cluster Connector Settings Reference](../../../platform/connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
+For details on all of the credential settings, see [Kubernetes Cluster Connector Settings Reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
 #### Obtaining the Service Account token using kubectl
 

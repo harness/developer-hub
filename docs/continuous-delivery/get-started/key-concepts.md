@@ -96,9 +96,9 @@ For example, a GitHub Connector authenticates with a GitHub account and repo and
 
 For example, go to:
 
-* [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector)
-* [Docker Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
-* [Git Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
+* [Add a Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector)
+* [Docker Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
+* [Git Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
 
 ### Permissions
 

@@ -36,7 +36,7 @@ Text string describing the step's purpose.
 
 ### Artifactory Connector
 
-Select the Harness Artifactory connector to use for this upload. The JFrog Account associated with the connector must have read/write permission. For more information, go to the [Artifactory connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
+Select the Harness Artifactory connector to use for this upload. The JFrog Account associated with the connector must have read/write permission. For more information, go to the [Artifactory connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
 
 This step supports Artifactory connectors that use either anonymous or username and password authentication.
 

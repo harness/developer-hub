@@ -100,7 +100,7 @@ You need a private key for your GitHub app to configure your Harness GitHub conn
 
 ## Configure the GitHub connector
 
-You can use your GitHub App as either the [primary authentication method](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication) or the [API access authentication method](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access) for your GitHub connector.
+You can use your GitHub App as either the [primary authentication method](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication) or the [API access authentication method](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access) for your GitHub connector.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';

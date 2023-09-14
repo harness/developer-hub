@@ -14,7 +14,7 @@ The Kubernetes cluster connector is a platform-agnostic connection to a Kubernet
 
 For cloud platform-specific connections, go to platform [Cloud Connectors](/docs/category/cloud-providers/).
 
-Looking for the How-to? Go to [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
+Looking for the How-to? Go to [Add a Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
 
 ## Video Summary
 
@@ -28,9 +28,9 @@ https://www.youtube.com/watch?v=wUC23lmqfnY-->
 
 The Kubernetes cluster connector is platform-agnostic. You can use it to access a cluster on any platform.
 
-The Kubernetes cluster connector can't access platform-specific services and resources. For those, use a platform-specific connector, like the [GCP connector](../../../connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md) or the [AWS connector](../../../connectors/Cloud-providers/add-aws-connector.md).
+The Kubernetes cluster connector can't access platform-specific services and resources. For those, use a platform-specific connector, like the [GCP connector](../../../connectors/cloud-providers/connect-to-google-cloud-platform-gcp.md) or the [AWS connector](../../../connectors/cloud-providers/add-aws-connector.md).
 
-For more information, go to [Add a Google Cloud Platform (GCP) Connector](../../../connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md) and [Add an AWS Connector](../../../connectors/Cloud-providers/add-aws-connector.md).
+For more information, go to [Add a Google Cloud Platform (GCP) Connector](../../../connectors/cloud-providers/connect-to-google-cloud-platform-gcp.md) and [Add an AWS Connector](../../../connectors/cloud-providers/add-aws-connector.md).
 
 For example, let's say you have a GKE Kubernetes cluster hosted in GCP. You can use the Kubernetes cluster connector to connect Harness to the cluster in GCP, but the Kubernetes cluster connector can't also access Google Container Registry (GCR).
 

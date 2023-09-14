@@ -17,7 +17,7 @@ This topic covers how to add and configure Dynatrace as a Health Source for the 
 
 ## Before You Begin
 
-[Add Dynatrace as a verification provider](..//docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-dynatrace)
+[Add Dynatrace as a verification provider](..//docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-dynatrace)
 
 ## Review: CV Setup Options
 

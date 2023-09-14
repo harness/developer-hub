@@ -164,7 +164,7 @@ For more information about GitHub's deprecation of RSA support, go to the GitHub
   <TabItem value="ghapp" label="GitHub App">
 ```
 
-You can use a GitHub App to authenticate a Harness GitHub connector. To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support).
+You can use a GitHub App to authenticate a Harness GitHub connector. To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support).
 
 :::note
 
@@ -229,7 +229,7 @@ To use a personal access token with a GitHub organization that uses SAML single 
   <TabItem value="ghapp" label="GitHub App">
 ```
 
-To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support).
+To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support).
 
 1. For **API Authentication**, select **GitHub App**.
 2. Enter the **GitHub Installation Id**. You can find the installation ID in the URL of your installed GitHub App, such as:

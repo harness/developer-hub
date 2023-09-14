@@ -55,7 +55,7 @@ For instructions on setting up the IAM user for CodeCommit connections, go to th
 
 1. In your Harness project, select **Connectors** under **Project Setup**.
 2. Select **New Connector** and select **AWS CodeCommit** under **Code Repositories**.
-3. Configure the [AWS CodeCommit connector settings](../../connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md):
+3. Configure the [AWS CodeCommit connector settings](../../connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md):
 
    * Enter a **Name**.
    * Select **Repository** to connect to one repo or select **Region** to connect to an entire AWS region. Selecting **Region** lets you use one connector for all repos in that region.

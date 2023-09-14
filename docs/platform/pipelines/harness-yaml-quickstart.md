@@ -238,7 +238,7 @@ For this quickstart, we'll just use `environment` and `infrastructureDefinition`
                               namespace: <+input>  
                               releaseName: <+input>
 ```
-In `infrastructureDefinition`, you can see that we are using a [Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector) for a platform-agnostic direct connection to the target cluster.
+In `infrastructureDefinition`, you can see that we are using a [Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) for a platform-agnostic direct connection to the target cluster.
 
 #### Stage Execution
 

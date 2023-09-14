@@ -31,7 +31,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 The Harness Azure Cloud connector to use to connect to your ACR. This step supports Azure Cloud connectors that use access key authentication. This step doesn't support Azure Cloud connectors that inherit delegate credentials.
 
-For more information about Azure connectors, including details about required permissions, go to [Add a Microsoft Azure Cloud Provider connector](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector).
+For more information about Azure connectors, including details about required permissions, go to [Add a Microsoft Azure Cloud Provider connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
 
 ### Repository
 

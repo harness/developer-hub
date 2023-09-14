@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Use a Harness Google Cloud Platform (GCP) connector to integrate GCP with Harness. Use GCP with Harness to obtain artifacts, communicate with GCP services, provision infrastructure, and deploy microservices and other workloads.
 
-You can use the GCP connector to connect to Kubernetes clusters in GCP. You can also use the [platform-agnostic Kubernetes Cluster connector](../../../platform/connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
+You can use the GCP connector to connect to Kubernetes clusters in GCP. You can also use the [platform-agnostic Kubernetes Cluster connector](../../../platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
 This topic explains how to set up a GCP connector.
 
@@ -98,7 +98,7 @@ Before you begin, you must:
   * The necessary IAM roles and policies depend on which GCP service you'll use with Harness and which operations you'll want Harness to perform in GCP.
   * GCP connectors can also inherit IAM roles from Harness delegates running in GCP. If you want your connector to inherit from a delegate, make sure the delegate has the necessary roles.
   * If you find that the IAM role associated with your GCP connector doesn't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the GCP account or the Harness Delegate that your GCP connector is using. You might need to wait up to five minutes for the change to take effect.
-  * For a list of roles and policies, go to [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
+  * For a list of roles and policies, go to [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
   * The [GCP Policy Simulator](https://cloud.google.com/iam/docs/simulating-access) is useful for evaluating policies and access.
 * **Check your GKE version.**
   * Harness supports GKE 1.19 and later.
@@ -132,7 +132,7 @@ Before you begin, you must:
 * **GCP workload identity:** If you installed the Harness [Kubernetes delegate](/docs/first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate.md) in a Kubernetes cluster in GKE that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, then the Google Cloud Platform (GCP) connector inherits these credentials if it uses that delegate.
 * **Role and policy changes:** If you find that the IAM role associated with your GCP connector doesn't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the Harness delegate that your GCP connector is using. You may need to wait up to five minutes for the change to take effect.
 * **See also:**
-  * [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md)
+  * [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md)
   * [GCP Policy Simulator](https://cloud.google.com/iam/docs/simulating-access)
 
 </details>
@@ -159,10 +159,10 @@ Due to the limited scope of the initial connection test, credentials can pass th
 
 If you experience any errors with GCP connectors, verify that the IAM roles and policies it is using are correct.
 
-For a list of roles and policies, go to the [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
+For a list of roles and policies, go to the [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
 
 </details>
 
 ## See also
 
-* [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md)
+* [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md)

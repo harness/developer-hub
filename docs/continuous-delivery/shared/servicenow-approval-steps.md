@@ -8,7 +8,7 @@ For example, in a [Kubernetes Blue Green Deployment](/docs/continuous-delivery/
 
 ### Before you begin
 
-* [Connect to ServiceNow](/docs/platform/connectors/Ticketing-Systems/connect-to-service-now.md)
+* [Connect to ServiceNow](/docs/platform/connectors/ticketing-systems/connect-to-service-now.md)
 
 ### Review: ServiceNow Approval Stages vs Steps
 
@@ -49,7 +49,7 @@ You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**`�
 
 ServiceNow communication can take a few minutes. Do not use a brief timeout.
 
-The maximum is 3w 3d 20h 30m. In **ServiceNow** **Connector,** create or select the [ServiceNow Connector](/docs/platform/connectors/Ticketing-Systems/connect-to-service-now.md) you want to use.
+The maximum is 3w 3d 20h 30m. In **ServiceNow** **Connector,** create or select the [ServiceNow Connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now.md) you want to use.
 
 Select the ServiceNow **Ticket Type**. Use the same type as the ticket you created in the Workflow.
 

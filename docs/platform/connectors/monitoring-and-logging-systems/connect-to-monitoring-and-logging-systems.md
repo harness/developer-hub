@@ -161,11 +161,11 @@ For secrets and other sensitive settings, select or create a new [Text Secret.]
 
 
 :::info note
-For details on settings and permissions, see [Google Cloud Platform (GCP) Connector Settings Reference](../Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
+For details on settings and permissions, see [Google Cloud Platform (GCP) Connector Settings Reference](../cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
 
 :::
 
-Google Cloud Metrics and Google Cloud Logs are supported with GCP connector. See [Add a GCP Connector](../Cloud-providers/connect-to-a-cloud-provider.md#step-add-a-gcp-connector).
+Google Cloud Metrics and Google Cloud Logs are supported with GCP connector. See [Add a GCP Connector](../cloud-providers/connect-to-a-cloud-provider.md#step-add-a-gcp-connector).
 
 The following roles must be attached to the account used to connect Harness and Google Cloud Operations as a Google Cloud Provider:
 

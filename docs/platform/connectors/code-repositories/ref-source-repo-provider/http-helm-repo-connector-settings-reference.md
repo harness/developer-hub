@@ -60,6 +60,6 @@ If the charts are backed by HTTP basic authentication, you can also supply the u
 
 ### See also
 
-* [AWS Connector Settings Reference](../../Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md)
-* [Google Cloud Platform (GCP) Connector Settings Reference](../../Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md)
+* [AWS Connector Settings Reference](../../cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md)
+* [Google Cloud Platform (GCP) Connector Settings Reference](../../cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md)
 

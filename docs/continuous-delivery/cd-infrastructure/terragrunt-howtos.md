@@ -315,7 +315,7 @@ Here, you'll add a connection to the Terragrunt script repo.
 2. Click the provider where your files are hosted.
     
     ![picture 4](../cd-advanced/terragrunt/static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png
-3. Select or create a [Git connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) for your repo.
+3. Select or create a [Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) for your repo.
 4. Once you have selected a connector, click **Continue**.
 5. In **Config File Details**, provide the Git repo details.
 6. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id**.
@@ -483,7 +483,7 @@ The **Configuration File Repository** setting is available in the Terragrunt Pla
 2. Click the provider where your files are hosted.
     
     ![picture 4](./static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png)
-3. Select or create a [Git connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) for your repo.
+3. Select or create a [Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) for your repo.
 4. Once you have selected a connector, click **Continue**.
    
    In **Config File Details**, provide the Git repo details.

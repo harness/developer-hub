@@ -33,7 +33,7 @@ Select **Policies**.
 Select **Policies**, and then select **New Policy**.
 **New Policy** settings appear.
 
-![](../../Governance/policy-as-code/static/add-a-policy-engine-step-to-a-secret-48.png)
+![](../../governance/policy-as-code/static/add-a-policy-engine-step-to-a-secret-48.png)
 
 Enter a **Name** for your policy and click **Apply**.
 
@@ -66,23 +66,23 @@ In **On what event should the Policy Set be evaluated**, select **On save.**
 
 Click **Continue**.
 
-![](../../Governance/policy-as-code/static/add-a-policy-engine-step-to-a-secret-49.png)
+![](../../governance/policy-as-code/static/add-a-policy-engine-step-to-a-secret-49.png)
 Existing Secrets are not automatically updated with policies. Policies can be applied to Secrets only on a save when they are created or updated.In **Policy evaluation criteria**, click **Add Policy.**
 
 **Select Policy** settings appear. Select the policy you want to use from the list.
 
-![](../../Governance/policy-as-code/static/add-a-policy-engine-step-to-a-secret-50.png) 
+![](../../governance/policy-as-code/static/add-a-policy-engine-step-to-a-secret-50.png) 
 
 Select the severity and action you want to apply when the policy isn’t adhered to. You can select one of the following
 
 * **Warn & continue** - You will receive a warning if the policy is not met when the Secret is evaluated, but the Secret will be saved and you may proceed.
-* **Error and exit** - You'll get an error and be exited without saving the Secret if the policy isn't met when the Secret is examined.![](../../Governance/policy-as-code/static/add-a-policy-engine-step-to-a-secret-51.png)
+* **Error and exit** - You'll get an error and be exited without saving the Secret if the policy isn't met when the Secret is examined.![](../../governance/policy-as-code/static/add-a-policy-engine-step-to-a-secret-51.png)
 
 Click **Apply**, and then click **Finish**.
 
 To enforce your Policy Set, toggle on the **Enforced** button.
 
-![](../../Governance/policy-as-code/static/add-a-policy-engine-step-to-a-secret-52.png)
+![](../../governance/policy-as-code/static/add-a-policy-engine-step-to-a-secret-52.png)
 ### Step 3: Apply the Policy to a Secret
 
 After you have created your Policy Set, and added your policies to it, apply the policy to a Secret. 

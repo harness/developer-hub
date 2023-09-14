@@ -13,7 +13,7 @@ This topic provides settings and permissions for the Docker connector.
 :::info Important notes
 
 * **Docker registry rate limits:** Harness is restricted by the limits of the Docker repo, such as [Docker Hub limits](https://docs.docker.com/docker-hub/download-rate-limit/) for pulling Docker images from Docker repos.
-* **Docker Registries in Cloud Platforms:** The Docker connector is platform-agnostic and can be used to connect to any Docker container registry. Harness also provides first class support for registries in AWS and GCR through [AWS connectors](../../../connectors/Cloud-providers/add-aws-connector.md) and [Google Cloud Platform (GCP) connectors](../../../connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md).
+* **Docker Registries in Cloud Platforms:** The Docker connector is platform-agnostic and can be used to connect to any Docker container registry. Harness also provides first class support for registries in AWS and GCR through [AWS connectors](../../../connectors/cloud-providers/add-aws-connector.md) and [Google Cloud Platform (GCP) connectors](../../../connectors/cloud-providers/connect-to-google-cloud-platform-gcp.md).
 
 :::
 

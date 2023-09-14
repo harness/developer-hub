@@ -65,7 +65,7 @@ In your Harness account, click **Home**.
 
 Click **Projects**, and then click **New Project**.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-56.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-56.png)
 
 Name the Project **Quickstart**, and click **Save and Continue**.
 
@@ -73,7 +73,7 @@ In **Invite Collaborators**, click **Save and Continue**. You automatically be a
 
 Your new Project is created.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-57.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-57.png)
 
 Next we'll add a Pipeline that we'll evaluate later using OPA policies.
 
@@ -87,11 +87,11 @@ Click **Pipelines**, and then click **Create a Pipeline**.
 
 Name the Pipeline **Policy Example** and click **Start**.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-58.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-58.png)
 
 In Pipeline Studio, click **YAML** to switch to the YAML editor.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-59.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-59.png)
 
 Click **Edit YAML**.
 
@@ -142,7 +142,7 @@ Click **Save**. The Pipeline is now saved.
 
 Click **Visual** and you can see it's a simple Pipeline with a manual [Approval stage](../../approvals/adding-harness-approval-stages.md) and one [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step that echoes `hello`.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-60.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-60.png)
 
 Next, we'll create a policy that requires any Pipeline with an Approval stage to also contain an Approval step in that stage.
 
@@ -205,11 +205,11 @@ Select **Policies**, and then select **New Policy**.
 
 Name the new policy **Quickstart**, and click **Apply**. The policy editor appears.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-62.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-62.png)
 
 In **Library**, in **Sample Policies**, click **Pipeline - Approval**.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-63.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-63.png)
 
 The policy appears:
 
@@ -239,7 +239,7 @@ Click **Use this Sample**.
 
 The policy is selected and sample input is provided.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-64.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-64.png)
 
 Let's edit this policy to test the Pipeline we created.
 
@@ -264,17 +264,17 @@ Since **Input** only uses JSON and we pasted in YAML, you will see an error like
 
 Click the format button (&lt;/&gt;) to convert the YAML to JSON.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-65.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-65.png)
 
 Harness Pipelines can be created in YAML, but Rego evaluates JSON.In the JSON, you can see the Fully Qualified Names (FQNs) of the labels your Rego references.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-66.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-66.png)
 
 The input payload contains user `metadata` for the user that initiated the event. Metadata includes roles, groups, etc, and is added to every evaluation automatically. This can be used for policies where you want to evaluate users.Click **Test**.
 
 In **Output**, you can see that the Pipeline failed the policy because it is missing an Approval step.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-67.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-67.png)
 
 We'll fix the Pipeline later in this quickstart. The important thing is we know it works.
 
@@ -290,11 +290,11 @@ For this quickstart, we'll just create a Policy Set using our single policy.
 
 Click **Policy Sets**.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-68.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-68.png)
 
 In **Policy Sets**, click **New Policy Set**.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-69.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-69.png)
 
 Name the new Policy Set **Quickstart**.
 
@@ -304,7 +304,7 @@ In **Entity Type that this policy set applies to**, select **Pipeline**.
 
 In **On what event should the policy set be evaluated**, select **On Run**.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-70.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-70.png)
 
 Click **Continue**.
 
@@ -314,17 +314,17 @@ In **Policy to Evaluate**, click **Add Policy**.
 
 In **Select** **Policy**, click **Project Quickstart**, and select the **Quickstart** policy you created.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-71.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-71.png)
 
 Be sure to select **Error and exit**.
 
 Click **Apply**.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-72.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-72.png)
 
 Click **Finish**. The new Policy Set is listed.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-73.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-73.png)
 
 This Policy Set will be evaluated on every Pipeline.
 
@@ -346,7 +346,7 @@ The Policy Set is evaluated and the Pipeline execution fails.
 
 In the Pipeline execution, click **Policy Evaluations**.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-74.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-74.png)
 
 You can see the Policy Set that failed the Pipeline, and the reason for the failure. Clicking the Policy Set name will take you to the Policy Set.
 
@@ -360,7 +360,7 @@ Switch to the YAML editor and click **Edit YAML**.
 
 Add a new line before the `- step:` for the **Shell Script** step.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-75.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-75.png)
 
 On the new line, paste the YAML for a [Manual Approval](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/) step:
 
@@ -389,7 +389,7 @@ The Pipeline runs. It passed the Policy Set successfully.
 
 The new Approval step appears during execution.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-76.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-76.png)
 
 Click **Approve** to finish running the Pipeline.
 
@@ -401,11 +401,11 @@ You can review policy evaluations in a few places.
 
 On the Pipeline deployment summary (**Execution History**), click **Policy Evaluations**.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-77.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-77.png)
 
 You can see Policy Set evaluations listed.
 
-![](../../Governance/policy-as-code/static/harness-governance-quickstart-78.png)
+![](../../governance/policy-as-code/static/harness-governance-quickstart-78.png)
 
 #### Review in Governance Overview
 
@@ -427,7 +427,7 @@ In this tutorial, you:
 
 ### See also
 
-* [Add a Policy Engine Step to a Pipeline](/docs/platform/Governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
+* [Add a Policy Engine Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
 * [Harness Policy As Code Overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
 * [Harness Policy As Code Overview for Feature Flags](/docs/feature-flags/harness-policy-engine)
 

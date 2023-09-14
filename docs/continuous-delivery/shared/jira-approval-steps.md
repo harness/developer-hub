@@ -10,7 +10,7 @@ Looking to create or update Jira issues? See [Create Jira Issues in CD Stages](/
 
 ### Before you begin
 
-* [Connect to Jira](/docs/platform/connectors/Ticketing-Systems/connect-to-jira.md)
+* [Connect to Jira](/docs/platform/connectors/ticketing-systems/connect-to-jira.md)
 * [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages)
 * [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
 
@@ -60,7 +60,7 @@ You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**`�
 
 Jira communication can take a few minutes. Do not use a brief timeout.
 
-The maximum is 3w 3d 20h 30m. In **Jira Connector**, create or select the [Jira Connector](/docs/platform//connectors/Ticketing-Systems/connect-to-jira.md) to use.
+The maximum is 3w 3d 20h 30m. In **Jira Connector**, create or select the [Jira Connector](/docs/platform//connectors/ticketing-systems/connect-to-jira.md) to use.
 
 In **Project**, select the Jira project that contains the issue you want to evaluate.
 

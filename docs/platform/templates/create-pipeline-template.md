@@ -131,7 +131,7 @@ To add infrastructure details, do the following:
 
 3. In **Cluster Details**, enter **Connector** and **Namespace** details. Harness pipelines allow you to use [fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md) also.
 
-4. In **Connector**, select a connector from the list. To create a new connector, go to [Kubernetes cluster connector settings reference](../connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md) and [Add a Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
+4. In **Connector**, select a connector from the list. To create a new connector, go to [Kubernetes cluster connector settings reference](../connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md) and [Add a Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
 
 5. In **Namespace**, enter the namespace. For example, `default`.
 

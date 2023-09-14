@@ -17,7 +17,7 @@ This topic covers how to add and configure Datadog as a Health Source for the Ve
 
 ## Before You Begin
 
-[Add Datadog as a verification provider](..//docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-datadog)
+[Add Datadog as a verification provider](..//docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-datadog)
 
 ## Review: CV Setup Options
 

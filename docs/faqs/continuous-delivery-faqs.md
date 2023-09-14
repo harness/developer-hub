@@ -287,7 +287,7 @@ See [Ignore a manifest file during deployment](../continuous-delivery/deploy-sr
 
 #### Can I pull an image from a private registry?
 
-Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Artifact connector](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
+Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Artifact connector](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml file added in the Service **Manifests** section must contain `dockercfg: <+artifact.imagePullSecret>` . This key will import the credentials from the Docker credentials file in the artifact.
 
@@ -837,7 +837,7 @@ You can also propagate and override a service in subsequent stages by selecting 
 
 Harness supports all of the common repos.
 
-See [Connect to an artifact repo](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
+See [Connect to an artifact repo](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
 #### What's a Harness environment?
 

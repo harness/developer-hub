@@ -75,7 +75,7 @@ Harness includes a platform-agnostic artifact registry type named Docker Registr
 
 1. In the repository setting, select or create the Harness registry connector. For example, if you selected **Docker Registry** in **Artifact Repository Type**, the repository setting is named **Docker Registry Repository**.
 
-For information on registry connectors, go to [connect to an artifact repo](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
+For information on registry connectors, go to [connect to an artifact repo](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
 You can also select **Runtime input** or **Expression** for this setting.
 

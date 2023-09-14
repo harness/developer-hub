@@ -17,7 +17,7 @@ This topic covers how to add and configure AppDynamics as a Health Source for th
 
 ## Before You Begin
 
-[Add AppDynamics as a verification provider](..//docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
+[Add AppDynamics as a verification provider](..//docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
 
 ## Review: CV Setup Options
 

@@ -20,7 +20,7 @@ See the following topics:
 - [Physical Data Center connector](pdc-connector.md)
 
 See also:
-- [Harness connectors API](https://apidocs.harness.io/tag/Connectors)
+- [Harness connectors API](https://apidocs.harness.io/tag/connectors)
 - [Harness Terraform Provider connector resources](https://registry.terraform.io/providers/harness/harness/latest/docs)
 
 ## Cloud provider connector scope

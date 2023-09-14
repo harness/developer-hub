@@ -70,7 +70,7 @@ connector:
 </TabItem>
 <TabItem value="API" label="API">
 ```
-Create a connector using [Connector API](https://apidocs.harness.io/tag/Connectors).
+Create a connector using [Connector API](https://apidocs.harness.io/tag/connectors).
 
 ```
 curl -i -X POST \

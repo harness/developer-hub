@@ -28,7 +28,7 @@ When creating a Dynatrace query:
 
 ## Before You Begin
 
-[Add Dynatrace as a verification provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-dynatrace)
+[Add Dynatrace as a verification provider](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-dynatrace)
 
 
 :::info

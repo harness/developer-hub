@@ -131,7 +131,7 @@ You will need a Harness Git Connector to connect with the Git provider and perfo
 
 
 :::info note
-**Important:** The Connector must use the **Enable API access** option and **Username and Token** authentication. Harness requires the token to access the Git API. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector. For detailed steps to add a Git Connector, see [Code Repo Connectors](../connectors/Code-Repositories/connect-to-code-repo.md).
+**Important:** The Connector must use the **Enable API access** option and **Username and Token** authentication. Harness requires the token to access the Git API. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector. For detailed steps to add a Git Connector, see [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
 
 :::
 

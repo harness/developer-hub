@@ -154,7 +154,7 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
-3. Create or select the GCP connector to connect Harness to GCR, and then select **Continue**. For steps on GCP connectors, go to [Add a Google Cloud Platform (GCP) Connector](../connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md).
+3. Create or select the GCP connector to connect Harness to GCR, and then select **Continue**. For steps on GCP connectors, go to [Add a Google Cloud Platform (GCP) Connector](../connectors/cloud-providers/connect-to-google-cloud-platform-gcp.md).
 4. In **Artifact Details**, in GCR Registry URL, select the location of the registry, listed as **Hostname** in GCR.
    
    ![](./static/trigger-on-a-new-artifact-26.png)
@@ -172,7 +172,7 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
-3. Create or select the AWS Connector to connect Harness to ECR, and then select **Continue**. For steps on AWS connectors, go to [AWS Connector Settings Reference](../connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
+3. Create or select the AWS Connector to connect Harness to ECR, and then select **Continue**. For steps on AWS connectors, go to [AWS Connector Settings Reference](../connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 4. In **Artifact Details**, in **Region**, select the region for the ECR service you are using.
 5. In **Image Path**, enter the path to the repo and image. You can copy the URI value from the repo in ECR. For example, `public.ecr.aws/l7w9l6a8/todolist` (public repo) or `085111111113.dkr.ecr.us-west-2.amazonaws.com/todolist` (private repo).
 6. Select **Continue**.
@@ -184,7 +184,7 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
-3. Create or select the AWS Connector to connect Harness to S3, and then select **Continue**. For steps on AWS Connectors, go to [AWS Connector Settings Reference](../connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
+3. Create or select the AWS Connector to connect Harness to S3, and then select **Continue**. For steps on AWS Connectors, go to [AWS Connector Settings Reference](../connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 4. In **Artifact Details**, in **Region**, select the region for the S3 service you are using. While S3 is regionless, Harness needs a region for the S3 API.
 5. In **Bucket Name**, enter the S3 bucket name.
 6. In **File Path Regex**, enter a regex like `todolist*.zip`. The expression must either contain a `*` or end with `/`.
@@ -197,7 +197,7 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, click **Define Artifact Source**.
-3. Create or select the Artifactory connector to connect Harness to Artifactory, and then select **Continue**. For steps on Artifactory connectors, go to [Artifactory Connector Settings Reference](../connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference.md).
+3. Create or select the Artifactory connector to connect Harness to Artifactory, and then select **Continue**. For steps on Artifactory connectors, go to [Artifactory Connector Settings Reference](../connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference.md).
 4. In **Artifact Details**, in **Repository Format**, select **Generic** or **Docker**.
 	1. Generic:
 		1. **Repository:** enter the **Name** of the repo.
@@ -215,7 +215,7 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
-3. Create or select the Azure connector to connect Harness to ACR, and then select **Continue**. For steps on Azure connectors, go to [Add a Microsoft Azure Cloud Connector](../connectors/Cloud-providers/add-a-microsoft-azure-connector.md).
+3. Create or select the Azure connector to connect Harness to ACR, and then select **Continue**. For steps on Azure connectors, go to [Add a Microsoft Azure Cloud Connector](../connectors/cloud-providers/add-a-microsoft-azure-connector.md).
 4. In **Artifact Details**, in **Subscription Id**, select the Subscription Id from the ACR registry.
 5. In **Registry**, select the registry you want to use.
 6. In **Repository**, select the repository to use.

@@ -112,7 +112,7 @@ Click **Remote**. The additional settings appear to configure Git Experience.
 
 ![](./static/configure-git-experience-for-harness-entities-39.png)
 
-In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](../connectors/Code-Repositories/connect-to-code-repo.md).
+In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
 
 ![](./static/configure-git-experience-for-harness-entities-40.png)
 

@@ -12,7 +12,7 @@ With the Microsoft Azure connector, your Harness pipelines can pull Azure artifa
 
 The Microsoft Azure connector is for ACR, AKS, ARM, Blueprint, Web Apps, and virtual machines for traditional (SSH/WinRM) deployments.
 
-Use the Azure Repos connector to [connect to Azure SCM repos](../Code-Repositories/connect-to-a-azure-repo.md)
+Use the Azure Repos connector to [connect to Azure SCM repos](../code-repositories/connect-to-a-azure-repo.md)
 
 :::tip
 
@@ -224,7 +224,7 @@ The following JSON sample creates a custom role with the required permissions. T
 
 Harness supports 500 images from an ACR repo. If you don't see some of your images, then you might have exceeded this limit. This is the result of an Azure API limitation.
 
-If you connect to an ACR repo via the platform-agnostic [Docker Connector](../../../platform/connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md), the limit is 100.
+If you connect to an ACR repo via the platform-agnostic [Docker Connector](../../../platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md), the limit is 100.
 
 :::
 
@@ -363,7 +363,7 @@ There are three options for connecting Harness to an AKS cluster:
 * Kubernetes RBAC, enabled.
 * Azure RBAC, enabled or disabled.
 
-For more information, go to the **Deployments (CD)** section of the [Kubernetes cluster connector settings reference](../../connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
+For more information, go to the **Deployments (CD)** section of the [Kubernetes cluster connector settings reference](../../connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
 ### AKS role requirements
 
