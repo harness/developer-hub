@@ -35,7 +35,9 @@ The following deprecated API endpoints will no longer be supported:
 
 ### New features and enhancements
 
-This release does not include new feature and enhancements.
+- To enhance security, Harness has added settings to enable and disable Slack, Microsoft Teams, webhook, and PagerDuty notification channels at the account scope. (PL-39921)
+
+  By default, all notification channels are enabled on an account. To disable a given notification channel, in Harness, go to **Account Settings** > **Account Resources** > **Default Settings** > **Notifications**, and turn off the corresponding toggle. When a notification channel is in the disabled state, no notification is sent for that channel, whether existing or new, until you enable the channel again.
 
 ### Early access features
 
@@ -43,13 +45,15 @@ This release does not include early access features.
 
 ### Fixed issues
 
-- Emails inviting users to a Harness project included a stack trace. (PL-40991, ZD-50038)
+- Emails inviting users to a Harness project included a stack trace. The issue was limited to users who had single sign-on enabled on their accounts. (PL-40991, ZD-50038)
 
-  This issue has been fixed. 
+  This issue has been fixed.
 
-- After the release of Harness Platform version 80120, the platform did not allow you to view the delegates that you could view earlier, even though you continued to belong to a user group that had permissions to operate on the delegates in your project (the user group had permissions for both delegate configurations and delegates). Harness displayed the following message: `You are not authorized to view delegate configurations. You are missing the following permission: View delegate configurations ...` (PL-40757, ZD-49023)
+- If there are no delegate configurations to show on the **Delegate Configurations** tab of your project's **Delegates** page, the Harness UI hides the tab. Any errors associated with retrieving data for that tab are, therefore, also invisible to users. This behavior is expected and by design. However, after the deployment of Harness NextGen UI version 0.356.18, this behavior changed: if there were no delegate configurations to show and the associated API request resulted in an error, the associated error message was displayed on the other two tabs of the project's **Delegates** page, namely, the **Delegates** and **Tokens** tabs.
 
-  This issue has been fixed. 
+For example, if you were not authorized to view delegate configurations, and if there were no delegate configurations to show on the **Delegate Configurations** tab, Harness would display the error `You are not authorized to view delegate configurations. You are missing the following permission: View delegate configurations ...` on the **Delegates** and **Tokens** tabs. (PL-40757, ZD-49023)
+
+  This issue has been fixed.
 
 - The Harness UI fetched only the first 200 organizations when you performed a search for an organization in the **Create Project** dialog (the page size for the API request is 200). If an organization you wanted to specify was not part of this initial set of organizations, the Harness UI did not generate additional API requests, and you were blocked on creating your project. (PL-39198)
 
