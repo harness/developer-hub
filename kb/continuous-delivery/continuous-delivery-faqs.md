@@ -1281,4 +1281,3 @@ You can create workflow variable and set the value to corresponding metadata fie
 
 #### How to clone files from git repository within a Shell script step?
 We do not natively support leveraging GitHub Connectors within a shell script. However, you can configure an SSH Key or HTTP Authentication by referring to the same secret as your connector does in your shell script. This way, you only need to define and rotate your credentials in one place.
-
