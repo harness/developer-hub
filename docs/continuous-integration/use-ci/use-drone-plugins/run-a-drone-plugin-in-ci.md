@@ -132,7 +132,7 @@ You could also [write a custom plugin](./custom_plugins.md) that downloads, unzi
 
 You can use variable expressions for **Settings** values. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
 
-Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by the plugin.
+Create [text secrets](/docs/platform/tecrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by the plugin.
 
 When you run the pipeline, [check the log output](../viewing-builds.md) to verify that the plugin works as intended.
 
@@ -315,7 +315,7 @@ It's often easier to define complex settings in the Harness Pipeline Studio's YA
 
 ### Text secrets
 
-The following snippets illustrate the different ways that Drone and Harness CI handle [text secrets](/docs/platform/secrets/add-use-text-secrets).
+The following snippets illustrate the different ways that Drone and Harness CI handle [text secrets](/docs/platform/tecrets/add-use-text-secrets).
 
 ```mdx-code-block
 <Tabs>

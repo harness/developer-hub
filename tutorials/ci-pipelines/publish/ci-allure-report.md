@@ -48,7 +48,7 @@ If you haven't created a pipeline before, try [Get started with the fastest CI](
 
    :::tip
 
-   Store authentication and access keys for connectors as [Harness secrets](/docs/platform/secrets/add-file-secrets).
+   Store authentication and access keys for connectors as [Harness secrets](/docs/platform/tecrets/add-file-secrets).
 
    :::
 

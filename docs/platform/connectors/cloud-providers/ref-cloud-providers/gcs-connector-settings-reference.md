@@ -77,7 +77,7 @@ GCP connector settings include:
 <details>
 <summary>Store service account keys as Harness secrets</summary>
 
-You can store a GCP service account key in a [Harness Encrypted Text secret](/docs/platform/secrets/add-use-text-secrets).
+You can store a GCP service account key in a [Harness Encrypted Text secret](/docs/platform/tecrets/add-use-text-secrets).
 
 To obtain the Google Cloud's service account key file, go to the Google documentation on [Creating and managing service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). JSON format is required.
 

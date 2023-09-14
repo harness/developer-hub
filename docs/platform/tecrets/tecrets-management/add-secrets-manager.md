@@ -67,7 +67,7 @@ The secret you use to connect Harness to your Secret Manager (password, etc) is 
 	+ [Add Google KMS as a Harness Secret Manager](/docs/platform/tecrets/tecrets-management/add-google-kms-secrets-manager.md)
 	+ [Add an AWS Secrets Manager](/docs/platform/tecrets/tecrets-management/add-an-aws-secret-manager.md)
 * Managing Secrets
-	+ [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets)
-	+ [Add File Secrets](/docs/platform/secrets/add-file-secrets)
-	+ [Add SSH Keys](/docs/platform/Secrets/4-add-use-ssh-secrets.md)
+	+ [Add Text Secrets](/docs/platform/tecrets/add-use-text-secrets)
+	+ [Add File Secrets](/docs/platform/tecrets/add-file-secrets)
+	+ [Add SSH Keys](/docs/platform/tecrets/4-add-use-ssh-secrets.md)
 

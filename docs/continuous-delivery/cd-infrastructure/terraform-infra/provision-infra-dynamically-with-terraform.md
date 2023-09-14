@@ -306,7 +306,7 @@ If you are entering secrets (for credentials, etc.), use Harness secret referenc
 secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 ```
 
-See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+See [Add Text Secrets](/docs/platform/tecrets/add-use-text-secrets).
 
 ### Remote variables
 
@@ -383,7 +383,7 @@ terraform {
 
 See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
-You can use Harness secrets for credentials. See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+You can use Harness secrets for credentials. See [Add Text Secrets](/docs/platform/tecrets/add-use-text-secrets).
 
 ## Targets
 
@@ -403,7 +403,7 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/tecrets/add-use-text-secrets).
 
 ## Advanced settings
 

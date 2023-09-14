@@ -21,8 +21,8 @@ You can add secret text and files to your script using Harness built-in secret m
 For details on using secret managers and secrets, go to:
 
 - [Harness secrets management overview](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview/)
-- [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets)
-- [Add and reference file secrets](/docs/platform/Secrets/add-file-secrets)
+- [Add and reference text secrets](/docs/platform/tecrets/add-use-text-secrets)
+- [Add and reference file secrets](/docs/platform/tecrets/add-file-secrets)
 
 ### Harness role permissions required
 

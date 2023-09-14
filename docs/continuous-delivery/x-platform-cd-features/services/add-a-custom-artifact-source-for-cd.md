@@ -89,7 +89,7 @@ Enter the following settings.
 
   `HARNESS_ARTIFACT_RESULT_PATH` is a random, unique file path created on the Delegate by Harness.
 
-  You can use [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) in the script. For example:
+  You can use [Harness text secrets](/docs/platform/tecrets/add-use-text-secrets) in the script. For example:
 
   ```
   curl -u 'harness' <+secrets.getValue("repo_password")> https://myrepo.example.io/todolist/json/ > $HARNESS_ARTIFACT_RESULT_PATH

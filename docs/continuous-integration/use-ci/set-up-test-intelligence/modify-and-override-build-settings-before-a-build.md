@@ -10,11 +10,11 @@ helpdocs_is_published: true
 
 Use the following steps to override secrets in a [Maven settings.xml file](https://maven.apache.org/settings.html) by modifying the **Build** stage settings when the pipeline runs.
 
-These steps assume you have an understanding of the [Harness Secret Manager](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview) or that you know how to [add your own secrets manager](/docs/platform/tecrets/tecrets-management/add-secrets-manager). You should also be familiar with [adding text secrets](/docs/platform/secrets/add-use-text-secrets), [adding file secrets](/docs/platform/secrets/add-file-secrets), and [adding SSH secrets](/docs/platform/secrets/add-use-ssh-secrets).
+These steps assume you have an understanding of the [Harness Secret Manager](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview) or that you know how to [add your own secrets manager](/docs/platform/tecrets/tecrets-management/add-secrets-manager). You should also be familiar with [adding text secrets](/docs/platform/tecrets/add-use-text-secrets), [adding file secrets](/docs/platform/tecrets/add-file-secrets), and [adding SSH secrets](/docs/platform/tecrets/add-use-ssh-secrets).
 
 ## Create a secret at the account level
 
-Create a [text secret](/docs/platform/secrets/add-use-text-secrets) at the account level that contains the content of your `settings.xml` file.
+Create a [text secret](/docs/platform/tecrets/add-use-text-secrets) at the account level that contains the content of your `settings.xml` file.
 
 You need the `Account: Secrets: Create/Edit/View` permission for the Harness Platform to be able to do this. For more information, go to the [Permission Reference](/docs/platform/role-based-access-control/permissions-reference).
 

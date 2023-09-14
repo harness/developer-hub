@@ -37,7 +37,7 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 ## Add CodeCov Upload Token secret
 
-Follow the steps in [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets) to store your CodeCov Upload Token as a secret in Harness.
+Follow the steps in [Add and reference text secrets](/docs/platform/tecrets/add-use-text-secrets) to store your CodeCov Upload Token as a secret in Harness.
 
 ## Add the Run step
 
@@ -80,7 +80,7 @@ import TabItem from '@theme/TabItem';
 7. Under **Optional Configuration**, add a `CODECOV_TOKEN` **Environment Variable**:
 
    * Key: `CODECOV_TOKEN`
-   * Value: An expression calling your [CodeCov Upload Token secret](#add-codecov-upload-token-secret), based on the scope where it was declared and the secret's ID, such as `<+secrets.getValue("my_codecov_upload_token")>`. For syntax examples, go to [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets).
+   * Value: An expression calling your [CodeCov Upload Token secret](#add-codecov-upload-token-secret), based on the scope where it was declared and the secret's ID, such as `<+secrets.getValue("my_codecov_upload_token")>`. For syntax examples, go to [Add and reference text secrets](/docs/platform/tecrets/add-use-text-secrets).
 
 8. Under **Optional Configuration**, add one or more **Report Paths**, such as `**/*.xml`.
 9. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
@@ -109,7 +109,7 @@ In Harness, go to the pipeline where you want to include CodeCov, and add a `Run
       *  `spec: paths:` List one or more report paths, such as `- "**/*.xml"`.
    *  `envVariables:` Declare your [CodeCov Upload Token secret](#add-codecov-upload-token-secret) as an environment variable.
       *  Key: `CODECOV_TOKEN`
-      *  Value: An expression calling your CodeCov Upload Token secret, based on the scope where it was declared and the secret's ID, such as `<+secrets.getValue("my_codecov_upload_token")>`. For syntax examples, go to [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets).
+      *  Value: An expression calling your CodeCov Upload Token secret, based on the scope where it was declared and the secret's ID, such as `<+secrets.getValue("my_codecov_upload_token")>`. For syntax examples, go to [Add and reference text secrets](/docs/platform/tecrets/add-use-text-secrets).
 
 The following YAML example describes a `Run` step that uses `pytest` and the CodeCov Uploader Tool.
 

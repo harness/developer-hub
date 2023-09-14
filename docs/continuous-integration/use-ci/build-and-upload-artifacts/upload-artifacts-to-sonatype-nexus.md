@@ -35,7 +35,7 @@ You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md
 | Keys | Type | Description | Value example |
 | - | - | - | - |
 | `username` | String | A username for accessing Nexus Repository Manager. | <ul><li>`admin`</li><li>`test-user`</li></ul> |
-| `password` | String | An [expression referencing a secret](/docs/platform/secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier) containing the password for the specified username. | `<+secrets.getValue("nexus_password")>` |
+| `password` | String | An [expression referencing a secret](/docs/platform/tecrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier) containing the password for the specified username. | `<+secrets.getValue("nexus_password")>` |
 | `server_url` | Public URL | The URL of your Nexus Repository Manager instance. | `http://34.235.128.201:8081/` |
 | `filename` | String | The path to the target artifact that you want to upload. | `./target/example-1.0.jar` |
 | `format` | String | The repository format. | <ul><li>`maven2`</li><li>`raw`</li></ul> |
@@ -83,7 +83,7 @@ The following YAML example describes a [Plugin step](../use-drone-plugins/plugin
 | Keys | Type | Description | Value example |
 | - | - | - | - |
 | `username` | String | A username for accessing Nexus Repository Manager. | <ul><li>`admin`</li><li>`test-user`</li></ul> |
-| `password` | String | An [expression referencing a secret](/docs/platform/secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier) containing the password for the specified username. | `<+secrets.getValue("nexus_password")>` |
+| `password` | String | An [expression referencing a secret](/docs/platform/tecrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier) containing the password for the specified username. | `<+secrets.getValue("nexus_password")>` |
 | `server_url` | Public URL | The URL of your Nexus Repository Manager instance. | `http://11.222.333.444:8000/` |
 | `filename` | String | The path to the target artifact that you want to upload. | `./target/example-1.0.jar` |
 | `format` | String | The repository format. | <ul><li>`maven2`</li><li>`raw`</li></ul> |
@@ -101,7 +101,7 @@ The following YAML example describes a [Plugin step](../use-drone-plugins/plugin
 
 You can use variable expressions for **Settings** values. For example, `password: <+stage.variables.nexus_password>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
 
-Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords.
+Create [text secrets](/docs/platform/tecrets/add-use-text-secrets) for sensitive information, such as passwords.
 
 :::
 

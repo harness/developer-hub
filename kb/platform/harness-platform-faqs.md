@@ -18,7 +18,7 @@ For security reasons you would need to connect to Vault to view the secrets.  Yo
 
 You can reference the secrets using the following as a guide
 
-[/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier](/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier)
+[/docs/platform/tecrets/add-use-text-secrets/#reference-the-secret-by-identifier](/docs/platform/tecrets/add-use-text-secrets/#reference-the-secret-by-identifier)
 
 #### I'm getting an error "missing expected [" whereas I did not get it before
 

@@ -95,7 +95,7 @@ In the resulting Create private key dialog, select JSON, create the key, and dow
 
 Return to the Secret Manager's Details page in Harness.
 
-Under GCP KMS Credentials File, click **Create or Select a Secret**. You can create a new [File Secret](/docs/platform/secrets/add-file-secrets) and upload the key file you just exported from Google Cloud.
+Under GCP KMS Credentials File, click **Create or Select a Secret**. You can create a new [File Secret](/docs/platform/tecrets/add-file-secrets) and upload the key file you just exported from Google Cloud.
 
 ![](../../secrets/static/add-google-kms-secrets-manager-69.png)
 

@@ -80,7 +80,7 @@ Select one of the following options to configure details for the Google cloud se
 
 #### Attach a Google Secret Manager credentials file
 
-You must export your Google Cloud service account key and add it as an [Encrypted File Secret](/docs/platform/secrets/add-file-secrets) in Harness.
+You must export your Google Cloud service account key and add it as an [Encrypted File Secret](/docs/platform/tecrets/add-file-secrets) in Harness.
 
 1. In the Google Cloud console, select **IAM & admin** > **Service account**.
 2. Scroll to the service account you want to use. If no service account is present, create one.
@@ -94,7 +94,7 @@ Go to [Managing secrets](https://cloud.google.com/secret-manager/docs/access-co
 
    ![](../../secrets/static/GCP-specifyCredentials.png)
    
-You can also create a new [File Secret](/docs/platform/secrets/add-file-secrets) here and add the Google Cloud service account key that you downloaded.
+You can also create a new [File Secret](/docs/platform/tecrets/add-file-secrets) here and add the Google Cloud service account key that you downloaded.
 
 Click **Continue**.
 

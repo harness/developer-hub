@@ -16,9 +16,9 @@ First, let's review secrets in Harness, and then look at how Harness sanitizes l
 
 You can create secrets in Harness as described in:
 
-* [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
-* [Add and Reference File Secrets](/docs/platform/secrets/add-file-secrets)
-* [Add SSH Secrets](/docs/platform/Secrets/4-add-use-ssh-secrets.md)
+* [Add and Reference Text Secrets](/docs/platform/tecrets/add-use-text-secrets)
+* [Add and Reference File Secrets](/docs/platform/tecrets/add-file-secrets)
+* [Add SSH Secrets](/docs/platform/tecrets/4-add-use-ssh-secrets.md)
 
 For text and file secrets, the secrets are stored in the Secrets Manager. For steps to add a Secret Manager, see [Add a Secret Manager](/docs/platform/tecrets/tecrets-management/add-secrets-manager.md).
 

@@ -18,7 +18,7 @@ Configure the **WinRM Credential** settings as follows:
      Enter the following authentication details:  
      1. **Domain**: Enter the Active Directory domain name with which the user account in the credential is registered.
      2. **Username**: Enter the user name for this connection. The user must belong to the same Active Directory domain as the Windows instances that this connection uses. These are the same user account credentials you would use when logging in to the VM through an application such as Microsoft Remote Desktop.
-     3. **Password**: Create or select an existing [encrypted file secret](/docs/platform/secrets/add-file-secrets) that contains the relevant WinRM key file.
+     3. **Password**: Create or select an existing [encrypted file secret](/docs/platform/tecrets/add-file-secrets) that contains the relevant WinRM key file.
      4. **Use SSL**: (Recommended) Select to enable an HTTPS connection instead of an HTTP connection. 
      5. **Skip Cert Check**: Select to skip the certificate check. When connected over HTTPS, the client doesn't validate the server certificate. 
      6. **WinRM Port**: Leave the default port or enter a new port if needed.
@@ -107,7 +107,7 @@ Configure the **WinRM Credential** settings as follows:
         :::
      6. **TGT Generation**: Select one of the following options:
         * **Key Tab File**: Generates a new TGT from KDC every time you authenticate with the service.
-        * **Password**: Use Harness [encrypted text secrets](/docs/platform/secrets/add-use-text-secrets) to save the password and refer to it using this option.
+        * **Password**: Use Harness [encrypted text secrets](/docs/platform/tecrets/add-use-text-secrets) to save the password and refer to it using this option.
 
 3. Select **Save and Continue**.
 4. Enter the **Host Name** of the remote server you want to connect to. For example, if the server is an AWS EC2 instance, the host name might be similar to `ec2-54-175-135-106.compute-1.amazonaws.com`.

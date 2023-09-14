@@ -274,7 +274,7 @@ You can use either the visual or YAML editor to add pipeline steps. This tutoria
 
 ### Add a Google service account secret key
 
-1. [Create a Harness encrypted file secret](/docs/platform/secrets/add-file-secrets/) with the following configuration:
+1. [Create a Harness encrypted file secret](/docs/platform/tecrets/add-file-secrets/) with the following configuration:
 
    - **Secrets Manager**: **Harness Built-in Secret Manager**
    - **Secret Name**: Enter _harness tutorial sa key_. **Description** and **Tags** are optional.

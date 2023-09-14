@@ -144,7 +144,7 @@ To configure the details for your Azure Key Vault connector, you can do one of t
    If you do not enter a GUID, Harness uses the default subscription for the [Client ID](#setup-delegates) you've provided above.
    :::
 
-4. In **Key**, select **Create or Select a Secret**. For detailed steps on creating a new secret, go to [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+4. In **Key**, select **Create or Select a Secret**. For detailed steps on creating a new secret, go to [Add Text Secrets](/docs/platform/tecrets/add-use-text-secrets).
 
    ![](../../secrets/static/specify-credentials.png)
 

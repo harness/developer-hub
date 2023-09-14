@@ -117,7 +117,7 @@ For more information, go to [Finding the Key ID and ARN](https://docs.aws.amazon
 
 Click **Create or Select a Secret**.
 
-In the secret settings dialog, you can create/select a [Secret](/docs/platform/secrets/add-use-text-secrets) and enter your AWS Access Key as it's value.
+In the secret settings dialog, you can create/select a [Secret](/docs/platform/tecrets/add-use-text-secrets) and enter your AWS Access Key as it's value.
 
 The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to connect to Secret Manager.
 
@@ -125,7 +125,7 @@ The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to 
 
 Click **Create or Select a Secret**.
 
-You can either create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your Access Key ID's secret key as its **Value** or use an existing secret.
+You can either create a new [Secret](/docs/platform/tecrets/add-use-text-secrets) with your Access Key ID's secret key as its **Value** or use an existing secret.
 
 #### Secret Name Prefix
 

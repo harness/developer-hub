@@ -130,7 +130,7 @@ Harness uses a *connector* to connect to your Git repositories.
 
    For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
 
-2. Save the token as a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) named `GITHUB_PAT`.
+2. Save the token as a [Harness text secret](/docs/platform/tecrets/add-use-text-secrets) named `GITHUB_PAT`.
 
 3. In your Harness `terraform_integration_demos` project, under **Project Setup**, select **Connectors**, and create a new **GitHub** code repository connector.
 4. Enter a **Name** and select **Continue**.
@@ -194,7 +194,7 @@ You need Google Service Account (GSA) credentials (as a JSON key) to query your 
        --iam-account="gke-user@${GCP_PROJECT}.iam.gserviceaccount.com"
    ```
 
-5. In your Harness project, save the GSA key as a [Harness file secret](/docs/platform/secrets/add-file-secrets).
+5. In your Harness project, save the GSA key as a [Harness file secret](/docs/platform/tecrets/add-file-secrets).
 
 ## Create a Terraform workspace
 
@@ -286,7 +286,7 @@ This pipeline pulls public images from Docker Hub. If you do not want to use the
    - `terraform_workspace` - The value `$TF_WORKSPACE`.
    - `terraform_cloud_organization` - The value `$TF_CLOUD_ORGANIZATION`.
 
-3. Add [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for `terraform_cloud_api_token`, `terraform_workspace` and `terraform_cloud_organization`. You added the `google_application_credentials` secret earlier in the tutorial.
+3. Add [Harness text secrets](/docs/platform/tecrets/add-use-text-secrets) for `terraform_cloud_api_token`, `terraform_workspace` and `terraform_cloud_organization`. You added the `google_application_credentials` secret earlier in the tutorial.
 
    <!-- ![Secrets list](../static/ci-tfc-notif-trigger/tfc-notif-trigger-9.png) -->
 

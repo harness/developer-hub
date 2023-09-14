@@ -26,8 +26,8 @@ The set of security features that Harness provides includes the following featur
 * [Password policies](../platform/authentication/authentication-overview.md#enforce-password-policies)
 * [Two-factor authentication](../platform/authentication/two-factor-authentication.md)
 * [Single sign-on (SSO)](../platform/authentication/single-sign-on-saml.md#saml-sso-with-harness-overview)
-* [Text encryption](/docs/platform/secrets/add-use-text-secrets)
-* [File encryption](/docs/platform/secrets/add-file-secrets)
+* [Text encryption](/docs/platform/tecrets/add-use-text-secrets)
+* [File encryption](/docs/platform/tecrets/add-file-secrets)
 * [Auditing](/docs/platform/governance/audit-trail/audit-trail.md)
 
 ### Are delegate communications secure?
@@ -151,9 +151,9 @@ For more information, go to [Harness secrets management overview](/docs/platform
 
 Harness supports:
 
-* [Text encryption](/docs/platform/secrets/add-use-text-secrets) (for strings, such as passwords).
-* [File encryption](/docs/platform/secrets/add-file-secrets) (for files, such as configuration files).
-* [SSH connection credentials](/docs/platform/secrets/add-use-ssh-secrets)
+* [Text encryption](/docs/platform/tecrets/add-use-text-secrets) (for strings, such as passwords).
+* [File encryption](/docs/platform/tecrets/add-file-secrets) (for files, such as configuration files).
+* [SSH connection credentials](/docs/platform/tecrets/add-use-ssh-secrets)
 
 ### Where can I use a secret?
 
@@ -167,8 +167,8 @@ In Harness Secrets Management, you pick a type of secret, and then enter the sec
 
 For detailed instructions, go to:
 
-* [Use encrypted text secrets](/docs/platform/secrets/add-use-text-secrets)
-* [Use encrypted file secrets](/docs/platform/secrets/add-file-secrets)
+* [Use encrypted text secrets](/docs/platform/tecrets/add-use-text-secrets)
+* [Use encrypted file secrets](/docs/platform/tecrets/add-file-secrets)
 
 ### How do I use a secret?
 
@@ -183,8 +183,8 @@ You can also use Harness expressions to reference secrets:
 
 For more information, go to:
 
-* [Use encrypted text secrets](/docs/platform/secrets/add-use-text-secrets)
-* [Use encrypted file secrets](/docs/platform/secrets/add-file-secrets)
+* [Use encrypted text secrets](/docs/platform/tecrets/add-use-text-secrets)
+* [Use encrypted file secrets](/docs/platform/tecrets/add-file-secrets)
 
 ### Are my secrets exposed in logs?
 
