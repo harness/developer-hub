@@ -23,7 +23,7 @@ Harness supports AppDynamics metrics for applications. However, Harness doesn't 
 
 ## Before You Begin
 
-[Add AppDynamics as a verification provider](./platform/../../../../platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems.md)
+[Add AppDynamics as a verification provider](./platform/../../../../platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems.md)
 
 ## Review: CV Setup Options
 
