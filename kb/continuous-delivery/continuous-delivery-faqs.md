@@ -1279,3 +1279,5 @@ Usually Git PAT is stored in secret manager and you reference that secret inside
 #### We have templated workflow variables and wish these can be passed from git based Triggers. The values for these variables will be metadata of a pull request
 You can create workflow variable and set the value to corresponding metadata field available as per type of trigger pullrequest variable
 
+#### Is it possible to add variables at the Infrastructure Definition level?
+As of now, Harness does not provide direct support for variables within infrastructure definitions. However, you can achieve a similar outcome by using tags in the form of `key:value`. For example, you can define a tag like `region:us-east` and reference it using the following expression: `<+infra.tags.region>`.
