@@ -39,6 +39,8 @@ To get a token from Harness:
 
     ![Add token from a service account](./static/jira-add-token-from-service-account.png) 
 
+** Note** that you only need the **"Account Viewer"** role.
+
 1. Fill out the **New Token** form, and then select **Generate Token**.
 
 1. Copy the value of the token and then select **Close**.
