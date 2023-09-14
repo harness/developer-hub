@@ -38,7 +38,7 @@ fd063bc7c00116ac948dd3e57df8d4a8bbca1518:docs/cloud-cost-management/2-use-cloud-
 0136b6f32bdde0ba409cb8daaae52584a6ea9288:docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-auto-stopping-rules-for-terraform.md:generic-api-key:192
 4d8575fb992267f0018971b6464cc10f1d0a8edf:docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-azure-autoproxy-lb.md:private-key:80
 08f6ef4f22b1acddaf39b47cdfbd333affb43fe8:docs/platform/2_Delegates/delegate-reference/YAML/sample-harness-delegate-yaml-with-nfs-volume-mounted.md:generic-api-key:44
-98ddea6ad3fe0dd3da0695d4c6754662c49f3989:docs/platform/triggers/trigger-deployments-using-custom-triggers.md:generic-api-key:384
+98ddea6ad3fe0dd3da0695d4c6754662c49f3989:docs/platform/11_Triggers/trigger-deployments-using-custom-triggers.md:generic-api-key:384
 b406f6d5d15ebe78d33b0d3aad329862bb79be39:docs/platform/2_Delegates/delegate-guide/delegate-image-types.md:generic-api-key:82
 b406f6d5d15ebe78d33b0d3aad329862bb79be39:docs/platform/2_Delegates/delegate-guide/delegate-image-types.md:generic-api-key:238
 bf418b448752afbc12cb9bcbd952a0af8de4eb58:docs/platform/2_Delegates/delegate-guide/delegate-image-types.md:generic-api-key:82
