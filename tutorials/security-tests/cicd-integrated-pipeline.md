@@ -88,7 +88,11 @@ In this section, you'll create an Ignore rule and approve it as SecOps user. In 
 
 8. Click the **Ignored** buttons (right) and the expand/contract buttons (left) so that both ignored issues are visible.
 
+<!--  TBD 
+
    ![](./static/sto-integrated-workflows-06.png)
+
+-->
 
 9. Go to **Security Tests** > **Security Review**. Then click **Approved** to show the Ignore rules you created and approved.
 10. Click the Delete (**X**) buttons on the right to delete both rules.
