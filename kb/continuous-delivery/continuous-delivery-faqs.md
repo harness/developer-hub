@@ -1270,3 +1270,12 @@ Yes, you can use Bash shell over WinRM connection in Harness. In the Shell Scrip
 ### Is it possible to use Helm hooks in Harness Helm deployments?
 Yes, you can use Helm hooks in Harness Helm deployments. Helm hooks allow you to execute specific actions or scripts at different points in the Helm chart's lifecycle, such as before or after installing or upgrading a release. Harness supports the use of Helm hooks as part of your Helm deployment process.
 
+#### I have a placmenetStrategy defined but I don't see it reflected in the task.
+Please check if you have defined placement strategy in service definition and not under task definition
+
+#### When I started setting up the pipelines in Harness, I used my Github PAT. But I couldn't find where I set it and was wondering if it's allowed to be updated by the PAT owner or from your side.
+Usually Git PAT is stored in secret manager and you reference that secret inside connector, so need to update the PAT in secret manager where it's stored.
+
+#### We have templated workflow variables and wish these can be passed from git based Triggers. The values for these variables will be metadata of a pull request
+You can create workflow variable and set the value to corresponding metadata field available as per type of trigger pullrequest variable
+
