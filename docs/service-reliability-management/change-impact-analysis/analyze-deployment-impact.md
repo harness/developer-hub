@@ -34,7 +34,7 @@ If you already have a deployment stage:
    
 2. On the stage settings pane, select the **Execution** tab.
 
-3. On the pipeline, hover over where you want the Analyze Deployment Impact step, select the **+** icon, and then choose **Add Step**.
+3. In the stage, select **Add Step** where you want to add the Analyze Deployment Impact step.
    
    The Step Library page appears. You can add a step at various points in the pipeline, such as the beginning, end, in between existing steps, or below an existing step. Simply choose the location where you want to add the step and follow the prompts to add it.
 
