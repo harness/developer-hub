@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 description: Testing in production, trunk-based development, using feature flags by default - these are all Feature Flags Best Practices. Learn more now, and make your feature flag experience as beneficial as it can be.
 ---
 

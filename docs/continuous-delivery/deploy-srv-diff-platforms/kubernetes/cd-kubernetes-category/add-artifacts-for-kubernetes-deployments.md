@@ -156,7 +156,7 @@ import TabItem from '@theme/TabItem';
 
 1. Select **Docker Registry**, and click **Continue**.
 2. The **Docker Registry** settings appear.
-3. Select a [Docker Registry Connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) or create a new one.
+3. Select a [Docker Registry Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) or create a new one.
 4. In your Docker Registry Connector, to connect to a public Docker registry like Docker Hub, use `https://registry.hub.docker.com/v2/`. To connect to a private Docker registry, use `https://index.docker.io/v2/`.Click **Continue**.
 5. In **Image path**, enter the name of the artifact you want to deploy, such as **library/nginx**.
 6. In **Tag**, enter the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
@@ -223,7 +223,7 @@ Based on your server and network configuration, choose one of the following and 
 </TabItem>
 <TabItem value="Artifactory" label="Artifactory">
 ```
-1. Select an [Artifactory Connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) or create a new one.
+1. Select an [Artifactory Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) or create a new one.
    
 ![](./static/add-artifacts-for-kubernetes-deployments-11.png)
 
@@ -231,13 +231,13 @@ Based on your server and network configuration, choose one of the following and 
 
 2. Click **Continue**. The **Artifact Details** settings appear.
 
-3. In **Repository URL**, enter the URL you would use in the Docker login to fetch the artifact. This is the same as the domain name and port you use for `docker login hostname:port`. For more information, see [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
+3. In **Repository URL**, enter the URL you would use in the Docker login to fetch the artifact. This is the same as the domain name and port you use for `docker login hostname:port`. For more information, see [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
 
 4. In **Repository**, enter the name of the repository where the artifact is located.
 
 5. In **Artifact Path**, enter the name of the artifact you want to deploy. For example `nginx`, `private/nginx`, `public/org/nginx`.
 
-6. In **Tag**, select the tag for the image/artifact. For more information, see [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
+6. In **Tag**, select the tag for the image/artifact. For more information, see [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
 
    ![](./static/add-artifacts-for-kubernetes-deployments-13.png)
 

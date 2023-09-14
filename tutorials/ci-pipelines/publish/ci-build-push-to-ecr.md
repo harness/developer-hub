@@ -45,7 +45,7 @@ In this tutorial, you'll create a pipeline that uses a sample codebase, runs a s
 1. Fork the [tutorial repo](https://github.com/pavanbelagatti/harness-ci-example) into your GitHub account. This sample code repo has a Dockerfile with instructions to build our image. Assuming you have created an ECR repo on AWS, you can use Harness CI to build, test, and push an image to your ECR repo.
 2. In Harness, [create a project](/docs/platform/organizations-and-projects/create-an-organization/#create-a-project) or select an existing project.
 3. [Create a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) to connect to the account where you forked the tutorial repo.
-4. [Create an AWS Cloud Provider connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+4. [Create an AWS Cloud Provider connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
    * In **Credentials**, select **AWS Access Key** authentication.
    * In **Select Connectivity Mode**, select **Connect through Harness Platform**.
