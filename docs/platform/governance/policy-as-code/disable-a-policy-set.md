@@ -12,14 +12,14 @@ By default, a new Harness Policy Set is disabled. This default prevents someone 
 
 In some cases, you might have an enabled Policy Set and need to disable it. For example, if a Policy Set is enabled and an unintended Pipeline or other resource does not pass the Policy Set's evaluation, you will receive a failure, like this:
 
-![](../../hovernance/policy-as-code/static/disable-a-policy-set-53.png)
+![](../../governance/policy-as-code/static/disable-a-policy-set-53.png)
 You can contact your Harness account admin to resolve the issue or, if the Policy Set is in error, you can disable it by locating the Policy Set and toggling the **Enforced** setting to off:
 
-![](../../hovernance/policy-as-code/static/disable-a-policy-set-54.png)
+![](../../governance/policy-as-code/static/disable-a-policy-set-54.png)
 ### Before you begin
 
-* [Harness Policy As Code Overview](/docs/platform/hovernance/policy-as-code/harness-governance-overview)
-* [Harness Policy As Code Quickstart](/docs/platform/hovernance/policy-as-code/harness-governance-quickstart)
+* [Harness Policy As Code Overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
+* [Harness Policy As Code Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
 
 ### Step 1: Locate the Policy Set
 
@@ -29,7 +29,7 @@ Click **Policy Sets**.
 
 Toggle the **Enforced** setting to off.
 
-![](../../hovernance/policy-as-code/static/disable-a-policy-set-55.png)
+![](../../governance/policy-as-code/static/disable-a-policy-set-55.png)
 
 ### Notes
 
@@ -37,5 +37,5 @@ Toggle the **Enforced** setting to off.
 
 ### See also
 
-* [Add a Policy Step to a Pipeline](/docs/platform/hovernance/policy-as-code/add-a-governance-policy-step-to-a-pipeline)
+* [Add a Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline)
 

@@ -84,7 +84,7 @@ For details on the different steps, see:
 * [Create an HTTP Step Template](../templates/harness-template-library.md)
 * [Approvals](/docs/category/approvals)
 * [Synchronize Deployments using Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers/)
-* [Add a Policy Engine Step to a Pipeline](/docs/platform/hovernance/policy-as-code/add-a-governance-policy-step-to-a-pipeline)
+* [Add a Policy Engine Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline)
 * [Terraform How-tos](/docs/category/terraform)
 
 CI and CD-specific steps, like a Rolling Deployment, are not available in the Custom stage.

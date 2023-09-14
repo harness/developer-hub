@@ -72,7 +72,7 @@ Tutorials:
 Adding governance guardrails with Open Policy Agent (OPA) based policies is easy. Edit one of the policy-as-code samples or writer your own.
 
 Docs:
-[Policy as Code overview](/docs/platform/hovernance/Policy-as-code/harness-governance-overview)
+[Policy as Code overview](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## Templates
 Templates enhance developer productivity, reduce onboarding time, and enforce standardization across the teams that use Harness. You can create re-usable logic for managing Harness entities like steps, stages, and pipelines. You can link templates in your pipelines or share them with your teams for improved efficiency.

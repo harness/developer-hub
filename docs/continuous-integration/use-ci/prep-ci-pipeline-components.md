@@ -43,7 +43,7 @@ In addition to a default [codebase](#codebases), the following settings are conf
 * [Variables](/docs/category/variables-and-expressions)
 * [Notifications](/docs/category/notifications)
 * [Flow Control: Synchronization barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
-* [Policy Sets](/docs/platform/hovernance/Policy-as-code/harness-governance-overview)
+* [Policy Sets](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 * Advanced Options: Pipeline Timeout Settings, [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
 
 :::tip

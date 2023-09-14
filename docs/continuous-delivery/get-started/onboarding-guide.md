@@ -47,7 +47,7 @@ We recommend you either use Git Experience, Harness Terraform Provider or the Ha
 
 ## Step 5. Add governance guardrails 
 
-- [Policy-as-Code](/docs/platform/hovernance/Policy-as-code/harness-governance-overview)
+- [Policy-as-Code](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## Step 6. Become a Harness Certified Expert
 

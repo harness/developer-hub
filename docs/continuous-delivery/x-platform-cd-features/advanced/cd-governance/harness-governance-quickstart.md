@@ -32,7 +32,7 @@ You'll learn how to:
 
 * **What you don't need:** this quickstart is only intended to show you how Pipeline governance works and so we use a simple Pipeline that only contains an Approval stage. You do not need a Kubernetes cluster or other host as a CD deployment target or CI build farm. You do not need a running Harness Delegate.
 * Review [Harness Key Concepts](/docs/get-started/key-concepts) to establish a general understanding of Harness.
-* The [Harness Policy As Code overview](/docs/platform/hovernance/Policy-as-code/harness-governance-overview) provides a concise overview of Harness Policy As Code.
+* The [Harness Policy As Code overview](/docs/platform/governance/Policy-as-code/harness-governance-overview) provides a concise overview of Harness Policy As Code.
 * **New to OPA Policy Authoring?** OPA policies are written in OPA's Rego policy language. We'll provide the policy you need for this quickstart, but it's also helpful to have some familiarity with Rego before writing and reading policies.
 	+ **Highly recommend:** Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
 	+ See [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) from OPA. The [Rego Cheatsheet](https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/) is also helpful to have on hand.
@@ -53,7 +53,7 @@ In Harness, you add Rego policies to a Policy Set and select the Harness entitie
 
 When certain events happen (e.g. saving or running a Pipeline), Harness reaches out to the Harness OPA server to evaluate the action using the Policy Set.
 
-For more details, see [Harness Policy As Code overview](/docs/platform/hovernance/Policy-as-code/harness-governance-overview).
+For more details, see [Harness Policy As Code overview](/docs/platform/governance/Policy-as-code/harness-governance-overview).
 
 ### Create a Project
 

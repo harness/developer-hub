@@ -339,7 +339,7 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
     * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
     * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-    * [Policy Enforcement](/docs/platform/hovernance/Policy-as-code/harness-governance-overview)
+    * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 
 6. Select **Save**. 
 
@@ -382,7 +382,7 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
     * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
     * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-    * [Policy Enforcement](/docs/platform/hovernance/Policy-as-code/harness-governance-overview)
+    * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 7. Select **Apply Changes**. 
 8. Select **Save**. 
 
@@ -471,7 +471,7 @@ With this incremental traffic shift strategy, you are controlling the percentage
     * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
     * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-    * [Policy Enforcement](/docs/platform/hovernance/Policy-as-code/harness-governance-overview)
+    * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 
 6. Select **Save**.   
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness has first-class support for [Azure Resource Manager (ARM) templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview) and Azure [Blueprints](https://docs.microsoft.com/en-us/azure/hovernance/blueprints/overview) as infrastructure provisioners.
+Harness has first-class support for [Azure Resource Manager (ARM) templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview) and Azure [Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview) as infrastructure provisioners.
 
 You can use ARM templates to provision the deployment target environment in Azure, or to simply provision any Azure infrastructure.
 
