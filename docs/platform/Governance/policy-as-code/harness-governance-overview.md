@@ -191,7 +191,7 @@ Severities:
 * **On error (Error and Exit):** a message is shown and the action does not complete.
 * **On warning (Warn and Continue):** a message is shown and the action is completed.
 
-The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. See [Add a Governance Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline.md).
+The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. See [Add a Governance Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline).
 
 #### Feature Flags
 
@@ -209,7 +209,7 @@ See [Use Harness Policy As Code for Feature Flags](/docs/platform/governance/pol
 
 You can define a policy with the entity type Custom.
 
-The Custom entity type provides flexibility to enforce policy evaluations against any input payload during Pipeline execution. This is done using the Policy step. See [Add a Governance Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline.md).
+The Custom entity type provides flexibility to enforce policy evaluations against any input payload during Pipeline execution. This is done using the Policy step. See [Add a Governance Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline).
 
 Custom entity types are open ended. There is no pre-set JSON schema that is used for Custom policies. The payload that the policy is evaluated against is determined by you (defined in the Policy step).
 
@@ -226,6 +226,6 @@ Policies and Policy Sets are saved at the Harness Account, Organization, or Proj
 ### See also
 
 * [Harness Policy As Code Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
-* [Add a Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
+* [Add a Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline)
 * [Harness Policy As Code Overview for Feature Flags](/docs/feature-flags/harness-policy-engine)
 

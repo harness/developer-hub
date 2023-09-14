@@ -37,5 +37,5 @@ Toggle the **Enforced** setting to off.
 
 ### See also
 
-* [Add a Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
+* [Add a Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline)
 

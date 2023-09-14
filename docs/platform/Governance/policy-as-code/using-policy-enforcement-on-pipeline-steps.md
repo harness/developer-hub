@@ -194,7 +194,7 @@ In the example below, we provided deploy and the variable was assigned "deploy" 
 
 ## See also
 
-* [Add Policy Step in Pipeline](/docs/platform/governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline)
+* [Add Policy Step in Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline)
 
 
 
