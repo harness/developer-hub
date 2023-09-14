@@ -17,33 +17,33 @@ It is a best practice in software supply chain security to produce declarations 
 
 * **Software Bill of Materials (SBOM):** An inventory of components used in producing an artifact.
 * **SLSA Provenance:** A description of how an artifact was produced.
-* **Attestation:** A signed confirmation of the authenticity of an SBOM or SLSA Provenance.
+* **Attestation:** A digitally signed SBOM or SLSA Provenance that can be verified for authenticity.
 
 For a detailed explanation of software supply chain security concepts and terms, go to the [SLSA terminology documentation](https://slsa.dev/spec/v1.0/terminology).
 
 ## SBOM generation and management
 
-Software Bills of Materials (SBOMs) are essential for understanding the components and dependencies within an application, which in turn enables organizations to manage open-source component risks effectively.
+A Software Bill of Materials (SBOM) is essential for understanding the components and dependencies within an application, which in turn enables organizations to manage open-source component risks effectively.
 
-The Harness SSCA module provides comprehensive capabilities for generating, managing, and analyzing SBOMs for software artifacts, as described below.
+The Harness SSCA module provides comprehensive capabilities for generating, managing, and analyzing SBOM for software artifacts, as described below.
 
 ### Integration with other Harness modules and third-party tools
 
-The SSCA module integrates with the CI and CD stages of Harness [pipelines](#pipelines), ensuring that SBOMs are generated for every build of your software artifacts and, optionally, before deployment, as well. This helps you maintain up-to-date information about the components used in your applications at all times. Additionally, you have the flexibility to use your preferred SBOM generation tool.
+The SSCA module integrates with the CI and CD stages of Harness [pipelines](#pipelines), ensuring that an SBOM is generated for every build of your software artifacts and, optionally, before deployment, as well. This helps you maintain up-to-date information about the components used in your applications at all times. Additionally, you have the flexibility to use your preferred SBOM generation tool.
 
 The SSCA module can also integrate with third-party SBOM generation tools, such as Syft and FossID. In the SSCA module, this is referred to as *orchestrating* with a tool, and it allows you to use your preferred SBOM generation tools or tools standardized and approved by security and governance teams
 
 ### SBOM formats
 
-You can generate SBOMs in popular standard formats, such as CycloneDX and SPDX.
+SSCA can generate SBOM in popular standard formats, such as CycloneDX and SPDX.
 
-Because SBOMs can be generated in various formats and standards, the SSCA module normalizes your SBOMs to extract the relevant information, such as component name, version, supplier, and licensing data. This normalization process ensures that your SBOM data is consistent, easy to manage, and can be used for [policy enforcement](#policy-enforcement) and further analysis.
+Because there are multiple SBOM formats and standards, the SSCA module normalizes your SBOM to extract the relevant information, such as component name, version, supplier, and licensing data. This normalization process ensures that your SBOM data is consistent, easy to manage, and can be used for [policy enforcement](#policy-enforcement) and further analysis.
 
 ### Attest and store
 
-When an SBOM is generated, the SSCA module generates and signs the attestation, ensuring that the information is accurate and trustworthy. The attestations are then securely stored in an artifact repository, where you can access and analyze them as needed. SBOMs are also stored in the Harness Platform so that you can download, analyze, and share them as needed.
+When an SBOM is generated, the SSCA module generates and signs the attestation, ensuring that the information is accurate and trustworthy. The attestations are then securely stored in your artifact repository, where you can access and analyze them as needed. SBOM are also stored in the Harness Platform so that you can download, analyze, and share them as needed.
 
-Attestations are stored as `.att` files in the artifact repository, specified in your build or deploy stage, along with the image. You can also find and explore SBOM and attestation artifacts on the **Execution details** page in Harness. For more information, go to [View results](../ssca-view-results.md).
+Attestations are stored as `.att` files in the artifact repository, specified in your build or deploy stage, along with the image. You can also find the SBOM on the **Execution details** page in Harness. For more information, go to [View attestations and violations](../ssca-view-results.md).
 
 ## Policy management and enforcement
 
@@ -84,9 +84,9 @@ You can use remediation flows in the SSCA module to respond quickly and effectiv
 
 ## SLSA compliance
 
-With the Harness SSCA module, you can achieve SLSA Level 2 compliance by generating SLSA Provenance files (and attestations) according to the SLSA specifications.
+With the Harness SSCA module, you can achieve SLSA Level 2 compliance by generating SLSA Provenance according to the SLSA specifications.
 
-Provenance and attestations are stored as `.att` files in the artifact repository, specified in your build or deploy stage, along with the image. You can also find and explore SLSA Provenance and attestation artifacts on the **Execution details** page in Harness. For more information, go to [View results](../ssca-view-results.md).
+Provenance attestations are stored as `.att` files in the artifact repository along with the image. You can also find the SLSA Provenance on the **Execution details** page in Harness. For more information, go to [View attestations and violations](../ssca-view-results.md).
 
 ## Harness Platform components
 

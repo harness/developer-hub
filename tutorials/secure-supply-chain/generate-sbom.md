@@ -33,8 +33,8 @@ This tutorial explains how to configure the **SSCA Orchestration** and **SSCA En
 
 Keys are used to sign and verify attestations.
 
-1. Use a tool, such as [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/), to generate a public and private key pair.
-2. Create two [Harness file secrets](/docs/platform/secrets/add-file-secrets), one for the private key and one for the public key.
+1. Generate a public and private key pair. For example, you can use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate key pairs.
+2. Create two [Harness file secrets](/docs/platform/secrets/add-file-secrets), one for the private key file and one for the public key file.
 3. Create a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) to store the password for the private key.
 
 The SSCA steps in your Harness pipelines use the private key to sign attestations and the public key to verify the authenticity of the attestations.
@@ -54,8 +54,8 @@ The **SSCA Orchestration** step has the following settings:
 * **Artifact Type:** Select the type of artifact that the SBOM is for, such as **Image**.
 * **Container Registry:** Select the [connector](/docs/category/connectors) for the container registry where your artifact is stored. For example, if the image is on Docker Hub, you need a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 * **Image:** The repo path, in your container registry, and tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
-* **Private Key:** A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing a key to use to sign the attestation.
-* **Password:** A [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) containing the password for the private key.
+* **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
+* **Password:** The [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) containing the password for the private key.
 
 <!-- ![](./static/sbom-ssca-orch-step.png) -->
 
@@ -69,11 +69,11 @@ When the pipeline runs, the **SSCA Orchestration** step does the following:
 
 ## Create policies
 
-You must create and store SSCA policies in the Harness File Store.
+You must create the [SSCA policies](/docs/category/ssca-policy-enforcement) that you want Harness SSCA to enforce. Create these policies in the Harness File Store.
 
 1. In your Harness Project, go to **File Store** under **Project Setup**. You can also create policies at the Account and Org scopes.
 2. Select **New**, and select the manifest as file usage type.
-3. Enter the [policy definitions](/docs/category/ssca-policy-enforcement), and then select **Save**.
+3. Enter the policy definitions, and then select **Save**.
 
 <!-- ![](./static/ssca-policy-file-store.png) -->
 
@@ -92,9 +92,9 @@ The **SSCA Enforcement** step has the following settings:
 * **Artifact Type:** Select the type of artifact, such as **Image**.
 * **Container Registry:** Select the [connector](/docs/category/connectors) for the container registry where your artifact is stored. For example, if the image is on Docker Hub, you need a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 * **Image:** The repo path, in your container registry, and tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
-* **Public Key:** A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key to use to verify the authenticity of the attestation.
+* **Public Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key to use to verify the authenticity of the attestation.
 * **File Path:** Path to the [policy file](#create-policies) to use for enforcement. You must create and store policies in the Harness File Store.
-* **Password:** A [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) containing the password for the private key.
+* **Password:** The [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) containing the password for the private key.
 
 <!-- ![](./static/policy-ssca-enforce-step.png) -->
 
@@ -106,7 +106,7 @@ When the pipeline runs, the **SSCA Enforce** step does the following:
 * Applies policies defined in the specified policy file.
 * Records policy violations and shows them on the **Artifacts** tab on the **Execution details** page.
 
-## View results
+## View attestations and violations
 
 When the pipeline runs, the SBOM is generated and the attestation is signed. The signed attestation is stored, as an `.att` file, in the artifact repository along with the image.
 
