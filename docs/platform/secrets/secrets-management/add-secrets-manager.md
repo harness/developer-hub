@@ -69,5 +69,5 @@ The secret you use to connect Harness to your Secret Manager (password, etc) is 
 * Managing Secrets
 	+ [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets)
 	+ [Add File Secrets](/docs/platform/secrets/add-file-secrets)
-	+ [Add SSH Keys](/docs/platform/secrets/4-add-use-ssh-secrets.md)
+	+ [Add SSH Keys](/docs/platform/secrets/add-use-ssh-secrets.md)
 
