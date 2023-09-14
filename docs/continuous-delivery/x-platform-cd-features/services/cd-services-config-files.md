@@ -78,7 +78,7 @@ service:
     type: Ssh
 ```
 
-The encoded file is added as a [Harness secret](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/). The secret must be created separately if you are using YAML.
+The encoded file is added as a [Harness secret](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview/). The secret must be created separately if you are using YAML.
 
 You will use the `configFile.identifier` value to reference the config file.
 
@@ -98,7 +98,7 @@ You can attach multiple files in a config file. Simply add a new line:
 1. In the Harness service, in **Config Files**, select **Add Config File**.
 2. In **Config File Source**, select **Harness**, and select **Continue**.
 3. In **Config File Identifier**, enter a name for the file.
-4. In **Select file type**, select **File Store** or **Encrypted**. Encrypted files are stored as [Harness secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
+4. In **Select file type**, select **File Store** or **Encrypted**. Encrypted files are stored as [Harness secrets](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview/).
 5. Select **Add** to attach multiple files as a single config file.
 6. Select **Submit**.
 

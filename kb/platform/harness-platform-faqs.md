@@ -10,11 +10,11 @@ description: Frequently asked questions about Harness Platform.
 
 For security reasons you would need to connect to Vault to view the secrets.  You can use them however.
 
-[/docs/platform/secrets/secrets-management/add-hashicorp-vault/](/docs/platform/secrets/secrets-management/add-hashicorp-vault/)
+[/docs/platform/tecrets/tecrets-management/add-hashicorp-vault/](/docs/platform/tecrets/tecrets-management/add-hashicorp-vault/)
 
-[/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/)
+[/docs/platform/tecrets/tecrets-management/reference-existing-secret-manager-secrets/](/docs/platform/tecrets/tecrets-management/reference-existing-secret-manager-secrets/)
 
-[/docs/platform/secrets/secrets-management/harness-secret-manager-overview/](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/)
+[/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview/](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview/)
 
 You can reference the secrets using the following as a guide
 

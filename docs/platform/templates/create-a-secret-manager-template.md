@@ -26,7 +26,7 @@ You will learn how to:
 ### Before you begin
 
 * [Templates overview](template.md)
-* [Harness secrets management overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview.md)
+* [Harness secrets management overview](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview.md)
 
 ### Required permissions
 
@@ -119,5 +119,5 @@ This does not apply if you want to run the custom secrets manager on the Harness
 
 ### See also
 
-* [Add a custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager.md)
+* [Add a custom secret manager](/docs/platform/tecrets/tecrets-management/custom-secret-manager.md)
 

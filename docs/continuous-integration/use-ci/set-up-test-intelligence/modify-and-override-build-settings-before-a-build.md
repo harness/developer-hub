@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Use the following steps to override secrets in a [Maven settings.xml file](https://maven.apache.org/settings.html) by modifying the **Build** stage settings when the pipeline runs.
 
-These steps assume you have an understanding of the [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) or that you know how to [add your own secrets manager](/docs/platform/secrets/secrets-management/add-secrets-manager). You should also be familiar with [adding text secrets](/docs/platform/secrets/add-use-text-secrets), [adding file secrets](/docs/platform/secrets/add-file-secrets), and [adding SSH secrets](/docs/platform/secrets/add-use-ssh-secrets).
+These steps assume you have an understanding of the [Harness Secret Manager](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview) or that you know how to [add your own secrets manager](/docs/platform/tecrets/tecrets-management/add-secrets-manager). You should also be familiar with [adding text secrets](/docs/platform/secrets/add-use-text-secrets), [adding file secrets](/docs/platform/secrets/add-file-secrets), and [adding SSH secrets](/docs/platform/secrets/add-use-ssh-secrets).
 
 ## Create a secret at the account level
 

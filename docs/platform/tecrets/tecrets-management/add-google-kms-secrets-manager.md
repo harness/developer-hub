@@ -10,14 +10,14 @@ helpdocs_is_published: true
 
 You can use Google [Cloud Key Management Service](https://cloud.google.com/security-key-management) (Cloud KMS) as a Harness Secret Manager. Once Google KMS is added as a Secrets Manager, you can create encrypted secrets in Google KMS and use them in your Harness account.
 
-For details on Harness Secret Managers, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+For details on Harness Secret Managers, go to [Harness Secret Manager Overview](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview).
 
 This topic describes how to add a Google KMS Secret Manager in Harness.
 
 ### Before you begin
 
 * [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
-* [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+* [Harness Secret Manager Overview](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview)
 
 ### Add a Secret Manager
 

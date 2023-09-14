@@ -132,11 +132,11 @@ For more information, go to [Two-factor authentication](../platform/authenticati
 
 Google Cloud Key Management Service is the default Secrets Manager in Harness, and you can use your own secrets manager with Harness. Harness integrates with these common secret managers:
 
-* [Add Google KMS as a Harness secrets manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager)
-* [Add an AWS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager)
-* [Add an AWS KMS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
-* [Add an Azure Key Vault Secrets Manager](/docs/platform/secrets/secrets-management/azure-key-vault)
-* [Add a HashiCorp Vault Secrets Manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault)
+* [Add Google KMS as a Harness secrets manager](/docs/platform/tecrets/tecrets-management/add-google-kms-secrets-manager)
+* [Add an AWS Secret Manager](/docs/platform/tecrets/tecrets-management/add-an-aws-secret-manager)
+* [Add an AWS KMS Secrets Manager](/docs/platform/tecrets/tecrets-management/add-an-aws-kms-secrets-manager)
+* [Add an Azure Key Vault Secrets Manager](/docs/platform/tecrets/tecrets-management/azure-key-vault)
+* [Add a HashiCorp Vault Secrets Manager](/docs/platform/tecrets/tecrets-management/add-hashicorp-vault)
 
 <figure>
 
@@ -145,7 +145,7 @@ Google Cloud Key Management Service is the default Secrets Manager in Harness, a
 <figcaption>A diagram illustrating how Harness handles secrets.</figcaption>
 </figure>
 
-For more information, go to [Harness secrets management overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+For more information, go to [Harness secrets management overview](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview).
 
 ### What kind of secrets are supported?
 

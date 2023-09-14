@@ -155,7 +155,7 @@ Do not run multiple delegates on the same host, pod, or container. This will res
 
 Most often, Delegate errors are the result of delegate setup issues. Ensure you are familiar with how the delegate and Harness Manager work together. Go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
-Another common issue is the SSH key used by the delegate to deploy to a target host is incorrect. This can happen if the SSH key in [Harness secrets management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) was set up incorrectly, or if it is not the correct key for the target host, or the target host is not set up to allow SSH connections.
+Another common issue is the SSH key used by the delegate to deploy to a target host is incorrect. This can happen if the SSH key in [Harness secrets management](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview) was set up incorrectly, or if it is not the correct key for the target host, or the target host is not set up to allow SSH connections.
 
 The delegate is monitored locally using its Watcher component. The Watcher component has a watcher.log file that can provide delegate version information for troubleshooting.
 
@@ -602,7 +602,7 @@ If the Harness delegate(s) cannot authenticate with a secret manager, you might 
 Was not able to login Vault using the AppRole auth method.   
 Please check your credentials and try again
 ```
-For most authentication issues, try to connect to the [Harness Secrets Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) from the host running your Harness delegate(s). This is done simply by using a cURL command and the same login credentials you provided when you set up the Harness Secrets Manager.
+For most authentication issues, try to connect to the [Harness Secrets Manager](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview) from the host running your Harness delegate(s). This is done simply by using a cURL command and the same login credentials you provided when you set up the Harness Secrets Manager.
 
 For example, here is a cURL command for HashiCorp Vault:
 

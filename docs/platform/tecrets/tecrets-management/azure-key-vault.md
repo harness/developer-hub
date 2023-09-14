@@ -12,7 +12,7 @@ To store and use encrypted secrets (such as access keys) and files, you can add 
 
 ## Before you begin
 
-* Go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+* Go to [Harness Secret Manager Overview](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview).
 * Go to [About Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) by Microsoft.
 * Go to [Azure Key Vault Basic Concepts](https://docs.microsoft.com/en-us/azure/key-vault/general/basic-concepts).
 * Make sure you have set up an Azure account.
@@ -20,7 +20,7 @@ To store and use encrypted secrets (such as access keys) and files, you can add 
 
 ## Secret manager overview
 
-For a full overview of how your secrets are used with the Secrets Managers you configure in Harness, go to [Harness Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) and [Harness Security FAQs](../../../faqs/harness-security-faqs.md).
+For a full overview of how your secrets are used with the Secrets Managers you configure in Harness, go to [Harness Secrets Management Overview](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview) and [Harness Security FAQs](../../../faqs/harness-security-faqs.md).
 
 Here's a visual summary:
 
@@ -136,7 +136,7 @@ To configure the details for your Azure Key Vault connector, you can do one of t
    * Copy the **Directory (tenant) ID** of the Azure Active Directory (AAD) where you created your application, and paste it into the Harness dialog's **Tenant ID** field. (For details, go to Microsoft Azure's [Get values for signing in](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) topic.)
 3. In **Subscription**, you can optionally enter your Azure Subscription ID (GUID).
 
-   To find this ID, navigate to Azure's **Subscriptions** page, as outlined above in [Step 1: Create Azure Reader Role](/docs/platform/secrets/secrets-management/azure-key-vault.md#create-an-azure-reader-role). From the resulting list of subscriptions, copy the **Subscription ID** beside the subscription that contains your vaults.
+   To find this ID, navigate to Azure's **Subscriptions** page, as outlined above in [Step 1: Create Azure Reader Role](/docs/platform/tecrets/tecrets-management/azure-key-vault.md#create-an-azure-reader-role). From the resulting list of subscriptions, copy the **Subscription ID** beside the subscription that contains your vaults.
 
    ![](../../secrets/static/azure-key-vault-11.png)
 

@@ -14,12 +14,12 @@ The ability to use the credentials of a specific Harness Delegate is behind the 
 
 You can link your Google Cloud Secret Manager to Harness and use it to store any sensitive data you use in Harness, including secrets.
 
-Harness also supports [Google KMS as a secrets manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager.md).This topic explains how to add a GCP Secrets Manager in Harness.
+Harness also supports [Google KMS as a secrets manager](/docs/platform/tecrets/tecrets-management/add-google-kms-secrets-manager.md).This topic explains how to add a GCP Secrets Manager in Harness.
 
 ## Before you begin
 
 * Go to [Harness Key Concepts](/docs/get-started/key-concepts)
-* Go to [Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+* Go to [Secrets Management Overview](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview)
 
 ## Google Cloud secret manager important notes
 
@@ -173,9 +173,9 @@ The **Add new Encrypted File** settings appear.
 
 ## See also
 
-* [Add Google KMS as a Harness Secret Manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager.md)
-* [Add an AWS KMS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
-* [Add an AWS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md)
-* [Add an Azure Key Vault Secret Manager](/docs/platform/secrets/secrets-management/azure-key-vault.md)
-* [Add a HashiCorp Vault Secret Manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault.md)
+* [Add Google KMS as a Harness Secret Manager](/docs/platform/tecrets/tecrets-management/add-google-kms-secrets-manager.md)
+* [Add an AWS KMS Secret Manager](/docs/platform/tecrets/tecrets-management/add-an-aws-kms-secrets-manager)
+* [Add an AWS Secret Manager](/docs/platform/tecrets/tecrets-management/add-an-aws-secret-manager.md)
+* [Add an Azure Key Vault Secret Manager](/docs/platform/tecrets/tecrets-management/azure-key-vault.md)
+* [Add a HashiCorp Vault Secret Manager](/docs/platform/tecrets/tecrets-management/add-hashicorp-vault.md)
 

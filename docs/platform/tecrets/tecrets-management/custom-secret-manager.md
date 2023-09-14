@@ -16,7 +16,7 @@ This topic explains how to add and use a Custom Secret Manager in Harness.
 
 ### Before you begin
 
-* [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+* [Harness Secret Manager Overview](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview)
 
 ### Permissions
 

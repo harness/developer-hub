@@ -26,7 +26,7 @@ Before you begin, make sure you are familiar with the following concepts and hav
 
 ### Create a secret to store your GitHub Personal Access Token
 
-To ensure the security of your personal access token, we recommend storing it in a safe place like the [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview). Follow these steps to create a secret and store your GitHub Personal Access Token:
+To ensure the security of your personal access token, we recommend storing it in a safe place like the [Harness Secret Manager](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview). Follow these steps to create a secret and store your GitHub Personal Access Token:
 
 1. Generate a personal access token in your **GitHub** account.
 2. Navigate to the  Secret Manager and create a new secret. [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets).

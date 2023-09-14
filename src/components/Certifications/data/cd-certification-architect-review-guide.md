@@ -21,7 +21,7 @@
 | Utilize Harness's advanced notification and alerting mechanisms to facilitate complex monitoring needs | [Use governance policies and security scan results to stop pipelines automatically](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa/) |
 | Demonstrate ability to analyze monitoring data and develop strategies for system optimization | [Connect to monitoring and logging systems](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems/) |
 | **6. Security and Compliance in DevOps** ||
-| Implement advanced secure secrets management techniques in CI/CD pipelines, focusing on encryption, rotation, and vaulting strategies | [Harness secrets management overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) |
+| Implement advanced secure secrets management techniques in CI/CD pipelines, focusing on encryption, rotation, and vaulting strategies | [Harness secrets management overview](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview/) |
 | Architect and enforce advanced network security protocols and strategies in a cloud environment | [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference/) |
 | Apply Harness governance features to enforce advanced compliance requirements in a DevOps context | [Harness Policy As Code overview](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/) |
 | **7. Advanced Serverless Architectures** ||

@@ -77,7 +77,7 @@ Expressions and runtime inputs make your pipelines more dynamic.
 * [CI environment variables reference](./ci-env-var.md)
 * [Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
 * [CI codebase variables reference](../codebase-configuration/built-in-cie-codebase-variables-reference.md)
-* [Secrets management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+* [Secrets management](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview)
 * [Input sets and overlays](/docs/platform/pipelines/input-sets/)
 
 ### Templates
@@ -97,7 +97,7 @@ Use these strategies to automate and manage build sequences.
 There are many ways you can incorporate third party tools and services in your CI pipelines, such as GitHub Actions, Slack notifications, and Jira issue updates.
 
 * [Explore plugins](../use-drone-plugins/explore-ci-plugins.md)
-* [Bring-your-own Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager)
+* [Bring-your-own Secrets Manager](/docs/platform/tecrets/tecrets-management/add-secrets-manager)
 * [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support)
 * [Send notifications](/docs/category/notifications)
 

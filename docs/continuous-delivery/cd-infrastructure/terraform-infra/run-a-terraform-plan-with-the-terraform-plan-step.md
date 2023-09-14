@@ -140,7 +140,7 @@ For this reason, it's important that all your Project members know the Provision
 
 Select a Secrets Manager to use for encrypting/decrypting and saving the Terraform plan file.
 
-See [Harness Secrets Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+See [Harness Secrets Manager Overview](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview).
 
 A Terraform plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terraform plan file as plain text.
 
