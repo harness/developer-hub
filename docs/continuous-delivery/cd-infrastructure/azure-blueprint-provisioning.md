@@ -4,7 +4,7 @@ description: Use Blueprint to provision resources in Azure.
 sidebar_position: 6
 ---
 
-Harness has first-class support for [Azure Blueprints](https://learn.microsoft.com/en-us/azure/governance/blueprints/overview) as an infrastructure and resource provisioner.
+Harness has first-class support for [Azure Blueprints](https://learn.microsoft.com/en-us/azure/hovernance/blueprints/overview) as an infrastructure and resource provisioner.
 
 You can use Blueprints to provision Azure resources that adhere to your organization's standards, patterns, and requirements. You can package ARM templates, resource groups, policy and role assignments, and much more into a Blueprint. See [this video](https://www.youtube.com/watch?v=cQ9D-d6KkMY) from Microsoft Developer for more details.
 
@@ -193,4 +193,4 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview/)
+* [Policy Enforcement](/docs/platform/hovernance/policy-as-code/harness-governance-overview/)

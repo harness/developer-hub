@@ -34,7 +34,7 @@ For example, you can use policies to ensure your Feature Flags: 
 This topic provides an overview of how Harness Policy Engine works with Feature Flags.
 
 :::info note
- For steps to set up your policies on the Harness Platform, go to [Use Harness Policy Engine for Feature Flags.](/docs/platform/governance/Policy-as-code/using-harness-policy-engine-for-feature-flags)
+ For steps to set up your policies on the Harness Platform, go to [Use Harness Policy Engine for Feature Flags.](/docs/platform/hovernance/Policy-as-code/using-harness-policy-engine-for-feature-flags)
 :::
 
 ## Before you begin
@@ -76,7 +76,7 @@ Then, when a Feature Flag is saved, Harness reaches out to the Harness OPA serve
    ```
 3. Run the policy against your Feature Flags.
 
-When you create the policy you can choose whether a Feature Flag receives only a warning message, or receives an error and can’t be saved when the policy isn’t met. For more information about how to do this, go to [Creating a Policy](/docs/platform/governance/Policy-as-code/using-harness-policy-engine-for-feature-flags#step-1-creating-a-policy).
+When you create the policy you can choose whether a Feature Flag receives only a warning message, or receives an error and can’t be saved when the policy isn’t met. For more information about how to do this, go to [Creating a Policy](/docs/platform/hovernance/Policy-as-code/using-harness-policy-engine-for-feature-flags#step-1-creating-a-policy).
 
 * **Success**: You create a Feature Flag and name it `ABC-567`, which matches the naming regex you set. When you save the flag, the policy rule is evaluated, returns `Flag created`, and the flag is saved.
 * **Warning**: You create a Feature Flag and name it `Flag2`, which doesn’t match the naming regex you set. The flag is saved but you receive the following warning message:
@@ -89,5 +89,5 @@ When you create the policy you can choose whether a Feature Flag receives only a
 
 ## Next step
 
-To add policies for Feature Flags, go to [Use Harness Policy Engine for Feature Flags](/docs/platform/governance/Policy-as-code/using-harness-policy-engine-for-feature-flags).
+To add policies for Feature Flags, go to [Use Harness Policy Engine for Feature Flags](/docs/platform/hovernance/Policy-as-code/using-harness-policy-engine-for-feature-flags).
 

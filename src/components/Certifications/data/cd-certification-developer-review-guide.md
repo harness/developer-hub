@@ -22,7 +22,7 @@
 | Git Trigger  | [Triggers](/docs/category/triggers/) |
 | Webhooks  | [Trigger Pipelines using Git Events](/docs/platform/triggers/triggering-pipelines/) |
 | API Triggers  | [Get started with Harness APIs](/docs/platform/automation/api/api-quickstart) |
-| Policy as Code  | [Policy as Code Overview](/docs/platform/governance/Policy-as-code/harness-governance-overview/) |
+| Policy as Code  | [Policy as Code Overview](/docs/platform/hovernance/Policy-as-code/harness-governance-overview/) |
 | Kubernetes Sidecars | [Add a Kubernetes Sidecar Container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container) |
 | Approvals | [Approvals](/docs/category/approvals/) |
 | Failure Strategies  | [Define a Failure Strategy on Stages and Steps](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/) |

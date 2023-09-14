@@ -554,7 +554,7 @@ The Azure roles provided in the connector must allow Harness to provision the Az
 
 ## Azure Blueprints
 
-In Azure, the permissions required to create and delete Blueprints are listed in [Permissions in Azure Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview#permissions-in-azure-blueprints) from Azure.
+In Azure, the permissions required to create and delete Blueprints are listed in [Permissions in Azure Blueprints](https://docs.microsoft.com/en-us/azure/hovernance/blueprints/overview#permissions-in-azure-blueprints) from Azure.
 
 The Azure roles required on the service principal used by Harness depend on the scope type of your Blueprint definition.
 

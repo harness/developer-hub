@@ -28,7 +28,7 @@ The set of security features that Harness provides includes the following featur
 * [Single sign-on (SSO)](../platform/authentication/single-sign-on-saml.md#saml-sso-with-harness-overview)
 * [Text encryption](/docs/platform/secrets/add-use-text-secrets)
 * [File encryption](/docs/platform/secrets/add-file-secrets)
-* [Auditing](/docs/platform/governance/audit-trail/audit-trail)
+* [Auditing](/docs/platform/hovernance/audit-trail/audit-trail)
 
 ### Are delegate communications secure?
 
@@ -207,7 +207,7 @@ For information about best practices for using secrets in pipelines, go to the [
 
 ### Can I view all my setup events and changes in Harness?
 
-Yes. Harness provides auditing of events for Harness resources within your account. The [Audit trail](/docs/platform/governance/audit-trail/audit-trail) enables you to track and review all events in one place.
+Yes. Harness provides auditing of events for Harness resources within your account. The [Audit trail](/docs/platform/hovernance/audit-trail/audit-trail) enables you to track and review all events in one place.
 
 ### What is recorded on the Audit Trail?
 
@@ -235,7 +235,7 @@ You can save your filters, too.
 
 ### Does Harness provide governance features?
 
-Yes. The Harness [pipeline governance](/docs/platform/governance/Policy-as-code/harness-governance-overview) feature enables you to measure how conformant your pipelines are with your regulatory and operations standards.
+Yes. The Harness [pipeline governance](/docs/platform/hovernance/Policy-as-code/harness-governance-overview) feature enables you to measure how conformant your pipelines are with your regulatory and operations standards.
 
 ### How do I set up governance?
 

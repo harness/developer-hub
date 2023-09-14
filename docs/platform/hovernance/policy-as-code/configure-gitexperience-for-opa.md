@@ -8,7 +8,7 @@ sidebar_position: 9
 You can create policies and store them in your Git repository. These policies are called remote policies.
 Whenever you modify your policy and push the changes, Harness uses the updated policies.
 
-For information on creating an inline policy, go to [Harness Policy As Code Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
+For information on creating an inline policy, go to [Harness Policy As Code Quickstart](/docs/platform/hovernance/policy-as-code/harness-governance-quickstart).
 
 This topic explains how to create a remote policy and apply it using Harness Git Experience.
 

@@ -35,7 +35,7 @@ For a conceptual overview of provisioning with ARM and Blueprints, including vid
 	+ `101-boilerplate-mng`: Blueprint definition name.
 	+ `v1`: new Blueprint version number.
 	+ `locks`: determines whether users, groups, and service principals with permissions can modify and delete resources deployed by the Blueprint service principal.
-	+ `parameters`: list of dynamic parameters that are applied to resources during deployment. See [Creating dynamic blueprints through parameters](https://docs.microsoft.com/en-us/azure/governance/blueprints/concepts/parameters) from Azure.
+	+ `parameters`: list of dynamic parameters that are applied to resources during deployment. See [Creating dynamic blueprints through parameters](https://docs.microsoft.com/en-us/azure/hovernance/blueprints/concepts/parameters) from Azure.
 	+ `scope`: the subscription where blueprint definition will be assigned.
 * Your assign.json file must have a `scope` property (`properties.scope`) for management group level assignments. The `scope` is the target subscription of the Blueprint assignment (format: `/subscriptions/{subscriptionId}`). For management group level assignments, the property is required.  
 For example:
@@ -74,7 +74,7 @@ The `scope` property is required for deployment using management groups. If the 
 * `blueprintId` must follow the next pattern `/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}/versions/{versionId}`. If not, an exception is thrown.
 * If the Blueprint definition is created and published at the management group scope, Harness only supports assignment to one subscription during deployment. Harness doesn't support assignment to multiple subscriptions. You can only state one subscription as the value of `scope` property in the assign.json file.
 * The assignment name is generated automatically.
-* The artifacts name is taken from artifact `name` property in artifact.json. If `name` doesn’t exist in artifact.json, the file name is used. The artifact name is important because of its use with the `dependsOn` property. See [Understand the deployment sequence in Azure Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/concepts/sequencing-order) from Azure.
+* The artifacts name is taken from artifact `name` property in artifact.json. If `name` doesn’t exist in artifact.json, the file name is used. The artifact name is important because of its use with the `dependsOn` property. See [Understand the deployment sequence in Azure Blueprints](https://docs.microsoft.com/en-us/azure/hovernance/blueprints/concepts/sequencing-order) from Azure.
 * If the blueprint.json file contains the `name` property and that name is not the same as the `name` provided in the assign.json file, this error message is shown:
 ```
 Not match blueprint name found in blueprint json file with properties.blueprintId property in assign json file.  
