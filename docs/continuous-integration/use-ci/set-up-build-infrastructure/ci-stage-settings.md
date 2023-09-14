@@ -23,7 +23,7 @@ To create, edit, and delete stages in CI pipelines, you need either Project Admi
 
 ## Stage Name
 
-Enter a name summarizing the stage's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the stage's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Description
 
@@ -31,7 +31,7 @@ Optional text string.
 
 ## Tags
 
-For details, go to the [Tags Reference](../../../platform/20_References/tags-reference.md).
+For details, go to the [Tags Reference](../../../platform/references/tags-reference.md).
 
 ## Clone Codebase
 
@@ -125,7 +125,7 @@ The Kubernetes cluster build infrastructure option is only available with Harnes
 The following **Platform** settings are available:
 
 * **Select the Operating System:** Select the relevant OS.
-* **Kubernetes Cluster:** Select a [Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
+* **Kubernetes Cluster:** Select a [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
 * **Namespace:** Enter the Kubernetes namespace to use in the target cluster. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../platform/variables-and-expressions/runtime-inputs).
 
 The following **Advanced** settings are available for the **Kubernetes** infrastructure:
@@ -236,7 +236,7 @@ If you use large images in your Build stage's steps, you might find that the ini
 
 ### Override Image Connector
 
-By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
+By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
 ```mdx-code-block
   </TabItem>
@@ -267,7 +267,7 @@ The following **Platform** settings are available:
 
 * **Select the Operating System:** Select the build infrastructure OS.
 * **Pool Name:** Enter the pool name as specified in the `pool.yml` setup file in your build infrastructure.
-* **Override Image Connector:** By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
+* **Override Image Connector:** By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
 ```mdx-code-block
   </TabItem>

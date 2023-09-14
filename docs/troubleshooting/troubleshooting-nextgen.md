@@ -311,7 +311,7 @@ This error occurs when you are testing a Harness AWS connector and the credentia
 
 The DescribeRegions action is required for all AWS connectors. Harness tests the connection using an API call for the DescribeRegions action.
 
-This is described in [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+This is described in [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
 Ensure that one of the IAM roles assigned to the user account used for AWS connector credentials contains the DescribeRegions action.
 
@@ -471,8 +471,8 @@ When you attempt to connect to the Kubernetes cluster via **GCP**, the Kubernete
 
 You can handle cluster authentication in Google Kubernetes Engine by using Cloud IAM as the identity provider. However, legacy username-and-password-based authentication is enabled by default in Google Kubernetes Engine. For enhanced authentication security, you should ensure that you have disabled Basic Authentication by setting an empty username and password for the MasterAuth configuration. In the same configuration, you can also disable the client certificate which ensures that you have one less key to think about when locking down access to your cluster.
 
-* If Basic authentication is inadequate for your security requirements, use the [Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
-* While it can be easier to use the [Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector) for Kubernetes cluster deployments, to use a Kubernetes cluster on Google GKE, Harness requires a combination of basic authentication and/or client certificate to be enabled on the cluster:
+* If Basic authentication is inadequate for your security requirements, use the [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
+* While it can be easier to use the [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) for Kubernetes cluster deployments, to use a Kubernetes cluster on Google GKE, Harness requires a combination of basic authentication and/or client certificate to be enabled on the cluster:
 
 ![](./static/troubleshooting-nextgen-02.png)
 
@@ -591,7 +591,7 @@ Install Terraform on the delegate to fix this.
 
 In some Harness CloudFormation and ECS deployments you might get failures with `ThrottlingException` or `Rate exceeded` errors for CloudFormation and ECS API calls.
 
-For more information, go to [AWS backoff strategy](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-backoff-strategy).
+For more information, go to [AWS backoff strategy](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-backoff-strategy).
 
 ## Harness secret managers
 
@@ -628,7 +628,7 @@ If the email address used in Harness is different from the email address in the 
 
 Make sure the email address used in Harness matches the email address in the Azure app.
 
-For more information about SAML SSO configuration with Azure, see [Single sign-on (SSO) with SAML](../platform/3_Authentication/3-single-sign-on-saml.md).
+For more information about SAML SSO configuration with Azure, see [Single sign-on (SSO) with SAML](../platform/authentication/single-sign-on-saml.md).
 
 ## Shell scripts
 

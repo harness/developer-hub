@@ -301,7 +301,7 @@ You can only use variable expressions in the JEXL conditions that can be resolve
 
 Conditional execution settings are used to determine if the stage *should be run*, and therefore you cannot use variable expressions that can't be resolved until the stage *is run*.
 
-For more information on conditional execution, go to [Stage and Step Conditional Execution Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+For more information on conditional execution, go to [Stage and Step Conditional Execution Settings](../pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 ### Variable value size
 
@@ -502,7 +502,7 @@ You can use Harness expressions to reference various environment variables and [
 
 ### <+account.identifier>
 
-The entity [identifier](../20_References/entity-identifier-reference.md) of the Harness account.
+The entity [identifier](../references/entity-identifier-reference.md) of the Harness account.
 
 ![](./static/harness-variables-22.png)
 
@@ -522,7 +522,7 @@ For more information, go to [Add Account, Org, and Project-level Variables](add-
 
 ### <+org.identifier>
 
-The entity [identifier](../20_References/entity-identifier-reference.md) of an organization.
+The entity [identifier](../references/entity-identifier-reference.md) of an organization.
 
 ![](./static/harness-variables-23.png)
 
@@ -554,7 +554,7 @@ All Harness Tags attached to the project.
 
 ### <+project.identifier>
 
-The entity [identifier](../20_References/entity-identifier-reference.md) of the Harness project.
+The entity [identifier](../references/entity-identifier-reference.md) of the Harness project.
 
 ### Custom project variables
 
@@ -572,7 +572,7 @@ https://www.youtube.com/watch?v=lqbmO6EVGuU-->
 
 ### <+pipeline.identifier>
 
-The [identifier](../20_References/entity-identifier-reference.md) (Id) for the pipeline.
+The [identifier](../references/entity-identifier-reference.md) (Id) for the pipeline.
 
 ![](./static/harness-variables-24.png)
 
@@ -640,7 +640,7 @@ Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
 
 ### <+pipeline.triggeredBy.name>
 
-The name of the user or the trigger name if the pipeline is triggered using a webhook. For more information, go to [Trigger Pipelines using Git Events](../11_Triggers/triggering-pipelines.md).
+The name of the user or the trigger name if the pipeline is triggered using a webhook. For more information, go to [Trigger Pipelines using Git Events](../triggers/triggering-pipelines.md).
 
 If a user name is not present in the event payload, the `<+pipeline.triggeredBy.name>` expression will resolve as empty. For example, in the SaaS edition of Bitbucket, a user name is not present.
 
@@ -736,13 +736,13 @@ The description of the stage where the expression is evaluated.
 
 ### <+stage.tags>
 
-The tags on the stage where the expression is evaluated. For more information, go to [Tags Reference](../20_References/tags-reference.md).
+The tags on the stage where the expression is evaluated. For more information, go to [Tags Reference](../references/tags-reference.md).
 
 These tags are different from Docker image tags.
 
 ### <+stage.identifier>
 
-The [entity identifier](../20_References/entity-identifier-reference.md) of the stage where the expression is evaluated.
+The [entity identifier](../references/entity-identifier-reference.md) of the stage where the expression is evaluated.
 
 ### <+stage.output.hosts>
 
@@ -750,7 +750,7 @@ Lists all of the target hosts when deploying to multiple hosts.
 
 When you are deploying to multiple hosts, such as with an SSH, WinRM, or deployment template stage, you can run the same step on all of the target hosts.
 
-To run the step on all hosts, you use the repeat [Looping Strategy](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
+To run the step on all hosts, you use the repeat [Looping Strategy](../pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
 
 
 ```
@@ -844,7 +844,7 @@ To reference a specific tag use `<+service.tags.TAG_KEY>`.
 
 ### <+service.identifier>
 
-The [entity identifier](../20_References/entity-identifier-reference.md) of the service where the expression is evaluated.
+The [entity identifier](../references/entity-identifier-reference.md) of the service where the expression is evaluated.
 
 ### <+service.type>
 
@@ -1103,7 +1103,7 @@ The type of repository used to add this artifact in the service **Artifacts**. F
 
 ### <+artifacts.primary.connectorRef>
 
-The [entity identifier](../20_References/entity-identifier-reference.md) for the connector used to connect to the artifact repository.
+The [entity identifier](../references/entity-identifier-reference.md) for the connector used to connect to the artifact repository.
 
 ![](./static/harness-variables-39.png)
 
@@ -1226,7 +1226,7 @@ The name of the stage environment.
 
 ### <+env.identifier>
 
-The [entity identifier](../20_References/entity-identifier-reference.md) of the stage's environment.
+The [entity identifier](../references/entity-identifier-reference.md) of the stage's environment.
 
 ### <+env.description>
 
@@ -1371,7 +1371,7 @@ The following instance expressions are supported in SSH, WinRM, and custom deplo
 
 For details on these deployment types, go to [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng), [WinRM deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial), and [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
-To use these instance expressions in a step, you must use the repeat [Looping Strategy](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
+To use these instance expressions in a step, you must use the repeat [Looping Strategy](../pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
 
 ```
 repeat:  
@@ -1562,7 +1562,7 @@ Here are some examples:
 
 ### <+trigger.artifact.build>
 
-Resolves to the artifact version (such as a Docker Tag) that initiated an [On New Artifact Trigger](../11_Triggers/trigger-on-a-new-artifact.md).
+Resolves to the artifact version (such as a Docker Tag) that initiated an [On New Artifact Trigger](../triggers/trigger-on-a-new-artifact.md).
 
 When you add a new artifact trigger, you select the artifact to listen on, and its **Tag** setting is automatically populated with `<+trigger.artifact.build>`.
 
@@ -1585,13 +1585,13 @@ For example:
 * `<+trigger.event>`
 	+ PR, PUSH, etc.
 
-For a complete list, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For a complete list, see [Triggers Reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
 ### Triggers and RBAC
 
 Harness RBAC is applied to triggers in Harness, but it is not applied to the repositories used by the triggers.
 
-For example, you might have an [On New Artifact Trigger](../11_Triggers/trigger-on-a-new-artifact.md) that is started when a new artifact is added to the artifact repo. Or a [Webhook Trigger](../11_Triggers/triggering-pipelines.md) that is started when a PR is merged.
+For example, you might have an [On New Artifact Trigger](../triggers/trigger-on-a-new-artifact.md) that is started when a new artifact is added to the artifact repo. Or a [Webhook Trigger](../triggers/triggering-pipelines.md) that is started when a PR is merged.
 
 You can select who can create and use these triggers within Harness. However, you must use your repository's RBAC to control who can add the artifacts or initiate events that start the Harness trigger.
 

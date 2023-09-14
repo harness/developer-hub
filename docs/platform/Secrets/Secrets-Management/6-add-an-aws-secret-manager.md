@@ -89,7 +89,7 @@ For information on restrictions on names and maximum quotas, go to [Quotas for A
 
 Enter a **Name** for your secret manager.
 
-You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, go to [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
+You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, go to [Entity Identifier Reference](../../references/entity-identifier-reference.md).
 
 Enter a **Description** for your secret manager.
 

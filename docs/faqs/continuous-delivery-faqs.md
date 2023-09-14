@@ -287,7 +287,7 @@ See [Ignore a manifest file during deployment](../continuous-delivery/deploy-sr
 
 #### Can I pull an image from a private registry?
 
-Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Artifact connector](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
+Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Artifact connector](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml file added in the Service **Manifests** section must contain `dockercfg: <+artifact.imagePullSecret>` . This key will import the credentials from the Docker credentials file in the artifact.
 
@@ -431,7 +431,7 @@ Yes. Harness allows you to configure settings such as pipelines, triggers, conn
 
 ![](./static/continuous-delivery-faqs-06.png)
 
-See [Harness YAML quickstart](../platform/8_Pipelines/harness-yaml-quickstart.md).
+See [Harness YAML quickstart](../platform/pipelines/harness-yaml-quickstart.md).
 
 ### Harness Git Experience
 
@@ -441,7 +441,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Yes. You can sync your Harness project with a Git repo. The Harness project can be synced with one repo and the connectors used in the project can be synced in the same repo or separately with other repos or branches.
 
-See [Harness Git Experience Quickstart](../platform/10_Git-Experience/configure-git-experience-for-harness-entities.md).
+See [Harness Git Experience Quickstart](../platform/git-experience/configure-git-experience-for-harness-entities.md).
 
 ### Community Edition
 
@@ -777,7 +777,7 @@ Blank canvas, basic, rolling, and canary.
 
 Harness provides deployment support for all of the major artifact, approval, provisioner, and cloud platforms.
 
-Harness also supports uncommon, custom platforms using platform agnostic connectors and [custom triggers](../platform/11_Triggers/trigger-deployments-using-custom-triggers.md).
+Harness also supports uncommon, custom platforms using platform agnostic connectors and [custom triggers](../platform/triggers/trigger-deployments-using-custom-triggers.md).
 
 For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
@@ -837,7 +837,7 @@ You can also propagate and override a service in subsequent stages by selecting 
 
 Harness supports all of the common repos.
 
-See [Connect to an artifact repo](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
+See [Connect to an artifact repo](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
 #### What's a Harness environment?
 

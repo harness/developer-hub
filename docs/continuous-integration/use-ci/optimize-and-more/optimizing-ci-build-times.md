@@ -98,7 +98,7 @@ There are many ways you can incorporate third party tools and services in your C
 
 * [Explore plugins](../use-drone-plugins/explore-ci-plugins.md)
 * [Bring-your-own Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager)
-* [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support)
+* [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support)
 * [Send notifications](/docs/category/notifications)
 
 ## Increase step resources

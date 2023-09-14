@@ -81,7 +81,7 @@ docker run --rm \
 
 Plugins are distributed as Docker images.
 
-If your plugin image is private, others in your organization can use your plugin in their Harness CI pipelines by using a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for the private registry where your plugin image is stored.
+If your plugin image is private, others in your organization can use your plugin in their Harness CI pipelines by using a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for the private registry where your plugin image is stored.
 
 If your plugin image is public, you can share it with anyone. You can submit a pull request to the [drone-plugin-index repository](https://github.com/drone/drone-plugin-index) if you'd like your plugin to be considered for the [Drone Plugins Marketplace](https://plugins.drone.io/).
 
@@ -104,7 +104,7 @@ import TabItem from '@theme/TabItem';
 Add the **Plugin** step to the **Build** stage of your CI pipeline. The following settings are always or usually required:
 
 * **Name:** A name for the step.
-* **Container Registry:** A [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that can connect to the Docker registry where you uploaded the plugin image.
+* **Container Registry:** A [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that can connect to the Docker registry where you uploaded the plugin image.
 * **Image:** The plugin's Docker repo and image.
 * **Settings:** Key-value pairs representing plugin settings. Settings are derived from [variables in your plugin script](#variables-in-plugin-scripts).
 
@@ -127,7 +127,7 @@ Add the `Plugin` step to your `CI` stage. The following settings are always or u
 
 * `type: Plugin`
 * `name:` A name for the step
-* `connectorRef:` The ID of a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that can connect to the Docker registry where you uploaded the plugin image.
+* `connectorRef:` The ID of a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that can connect to the Docker registry where you uploaded the plugin image.
 * `image:` The plugin's Docker repo and image.
 * `settings:` A mapping of key-value pairs representing plugin settings. Settings are derived from [variables in your plugin script](#variables-in-plugin-scripts).
 

@@ -62,7 +62,7 @@ This topic shows you how to create a Secret Manager Template at the Project scop
 6. Click **Start**.![](../../Secrets/static/custom-secret-manager-33.png)
 7. Enter your script in **Script**.
 8. Click **Save**.  
-For detailed steps to create a Secret Manager Template, go to [Create a Secret Manager Template](../../13_Templates/create-a-secret-manager-template.md).
+For detailed steps to create a Secret Manager Template, go to [Create a Secret Manager Template](../../templates/create-a-secret-manager-template.md).
 
 ### Step 2: Add a Custom Secret Manager
 
@@ -80,7 +80,7 @@ This topic shows you how to add a Custom Secret Manager in the Project scope.
    
    The Custom Secret Manager settings appear.
 4. Enter a **Name** for your Custom Secret Manager. Click **Continue**.
-5. Click **Select Template**. The Template Library appears with all the [Secret Manager Templates](../../13_Templates/create-a-secret-manager-template.md) listed.
+5. Click **Select Template**. The Template Library appears with all the [Secret Manager Templates](../../templates/create-a-secret-manager-template.md) listed.
 6. Select the desired scope and select a Secret Manager Template from the Template Library.
    
    ![](../../Secrets/static/custom-secret-manager-35.png)

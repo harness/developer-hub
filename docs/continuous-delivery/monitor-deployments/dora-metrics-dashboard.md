@@ -8,7 +8,7 @@ DevOps Research and Assessment (DORA) metrics is a standard measure of DevOps pe
 
 ## Create queries to pull data into your DORA dashboard
 
-After you [create a DORA metrics dashboard](../../platform/18_Dashboards/create-dashboards.md), you can [add tiles](/docs/platform/dashboards/create-dashboards/#step-2-add-tiles-to-a-dashboard) to the dashboard. 
+After you [create a DORA metrics dashboard](../../platform/dashboards/create-dashboards.md), you can [add tiles](/docs/platform/dashboards/create-dashboards/#step-2-add-tiles-to-a-dashboard) to the dashboard. 
 
 You can edit, delete, resize, move postions, or download data of the tiles. 
 
