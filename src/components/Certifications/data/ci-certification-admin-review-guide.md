@@ -32,7 +32,7 @@
 | Delve into debugging and troubleshooting techniques, including running pipeline steps locally | [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci/) |
 | **8. Policy-Based Governance and Compliance** ||
 | Explore and configure policy as code with OPA and Rego | [Harness Policy As Code quickstart](/docs/platform/hovernance/Policy-as-code/harness-governance-quickstart) |
-| Familiarize with account audit trails and their respective use cases | [View audit trail](/docs/platform/hovernance/audit-trail/audit-trail.md) |
+| Familiarize with account audit trails and their respective use cases | [View audit trail](https://developer.harness.io/docs/platform/hovernance/audit-trail/audit-trail) |
 | **9. Enterprise Features and Dashboards** ||
 | Delve into Enterprise dashboards, including custom options like Looker | [Best practices for building dashboards](/docs/platform/dashboards/dashboard-best-practices/) |
 | Explore Pipeline Studio's execution history and other related features | [Run pipelines using input sets and overlays](/docs/platform/pipelines/run-pipelines-using-input-sets-and-overlays/) |
