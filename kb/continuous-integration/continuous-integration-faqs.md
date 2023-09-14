@@ -185,3 +185,7 @@ While running concurrent builds, customers may want to consider the queued intel
 
 See [https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence/]
 
+#### How to assert an environment variable within JEXL conditions?
+
+While we support output variables that can point to an environment variable, we do not support the direct referencing of environment variables in JEXL conditions, even when using the feature flag `CI_OUTPUT_VARIABLES_AS_ENV`, which automatically makes environment variables available for other steps in the same Build (CI) stage.
+
