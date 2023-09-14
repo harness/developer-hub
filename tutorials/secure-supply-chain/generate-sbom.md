@@ -6,9 +6,9 @@ title: Generate SBOM and enforce policies
 slug: /secure-supply-chain/generate-sbom
 ---
 
-This tutorial explains how you can use the Harness SSCA steps in Harness CI/CD pipelines to generate SBOM and enforce software supply chain security policies.
+You can use the Harness SSCA steps in Harness CI/CD pipelines to generate SBOM and enforce software supply chain security policies.
 
-To complete this tutorial, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage). For example, the pipeline created in this tutorial has a **Build** stage with three steps and a **Deploy** stage with two steps.
+To generate SBOM in Harness, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage). For example, the pipeline created in this tutorial has a **Build** stage with three steps and a **Deploy** stage with two steps.
 
 * **Build** stage:
   * **Run** step: Build and test an artifact (image).
@@ -61,6 +61,18 @@ The **SSCA Orchestration** step has the following settings:
 
 <docimage path={require('./static/sbom-ssca-orch-step.png')} />
 
+:::info ECR and GCR repos
+
+If you're using Docker-compliant ECR or GCR repositories, you must:
+
+1. Use a [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+2. Configure the connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
+   * For ECR, refer to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
+   * For GCR, refer to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
+3. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`
+
+:::
+
 When the pipeline runs, the **SSCA Orchestration** step does the following:
 
 * Generates an SBOM in the specified format.
@@ -99,6 +111,18 @@ The **SSCA Enforcement** step has the following settings:
 <!-- ![](./static/policy-ssca-enforce-step.png) -->
 
 <docimage path={require('./static/policy-ssca-enforce-step.png')} />
+
+:::info ECR and GCR repos
+
+If you're using Docker-compliant ECR or GCR repositories, you must:
+
+1. Use a [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+2. Configure the connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
+   * For ECR, refer to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
+   * For GCR, refer to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
+3. Use the full URI for the **Image** in your **SSCA Enforcement** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`
+
+:::
 
 When the pipeline runs, the **SSCA Enforce** step does the following:
 
