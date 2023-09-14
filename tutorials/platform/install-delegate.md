@@ -127,8 +127,7 @@ To install a Helm delegate for Harness Self-Managed Enterprise Edition in an air
 helm repo add harness-delegate --ca-file <.PEM_FILE_PATH> <HELM_CHART_URL_FROM_UI>
 ```
 
-For more information on requirements for air-gapped environments, go to [Install in an air-gapped environment
-](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment).
+For more information on requirements for air-gapped environments, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment).
 
 :::
 
@@ -169,7 +168,7 @@ provider "helm" {
 }
 ```
 
-Now replace the variables in the file with your Harness accound ID and delegate token values. Replace `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+Now replace the variables in the file with your Harness account ID and delegate token values. Replace `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
 
 | Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
 | ------------------------| -------------------------------------------	|
@@ -275,7 +274,7 @@ docker run --cpus=1 --memory=2g \
   -e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
   -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
   -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
-  harness/delegate:23.03.78904
+  harness/delegate:yy.mm.verno
 ```
 Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, to find your Harness cluster location, select **Account Settings**, and then select **Overview**. In **Account Overview**, look in **Account Settings**. It is listed next to **Harness Cluster Hosting Account**.
 
@@ -402,7 +401,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
    kubectl logs -f <harnessDelegateName> -n <namespace>
    ```
 
-   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
+   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficient Kubernetes cluster resources.
 
 4. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
 
@@ -439,7 +438,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
    kubectl logs -f <harnessDelegateName> -n <namespace>
    ```
 
-   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
+   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficient Kubernetes cluster resources.
 
 4. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
 
@@ -466,7 +465,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
    kubectl logs -f <harnessDelegateName> -n <namespace>
    ```
 
-   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
+   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficient Kubernetes cluster resources.
 
 3. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
 
