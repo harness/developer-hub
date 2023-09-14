@@ -63,88 +63,30 @@ import {
         },
 
         {
-          name: "SBOM",
+          name: "Secure your supply chain",
           description:
             "",
           list: [
             {
-              title: "tile1",
+              title: "Generate SBOM",
               module: MODULES.ssca,
               description:
-                "desc.",
-              link: "/docs/software-supply-chain-assurance/get-started/overview",
+                "Generate, manage, and analyze SBOM for software artifacts.",
+              link: "/docs/software-supply-chain-assurance/generate-sbom",
             },
             {
-                title: "tile1",
+                title: "Enforce security policies",
                 module: MODULES.ssca,
                 description:
-                  "desc.",
-                link: "/docs/software-supply-chain-assurance/get-started/overview",
+                  "Verify SBOM attestations and scan for software supply chain security policy violations.",
+                link: "/docs/category/enforce-ssca-policies",
             },
             {
-                title: "tile1",
+                title: "Comply with SLSA",
                 module: MODULES.ssca,
                 description:
-                  "desc.",
-                link: "/docs/software-supply-chain-assurance/get-started/overview",
-            },
-          ],
-        },
-
-        {
-          name: "Policies",
-          description:
-            "",
-          list: [
-            {
-                title: "tile1",
-                module: MODULES.ssca,
-                description:
-                  "desc.",
-                link: "/docs/software-supply-chain-assurance/get-started/overview",
-            },
-            {
-                title: "tile1",
-                module: MODULES.ssca,
-                description:
-                  "desc.",
-                link: "/docs/software-supply-chain-assurance/get-started/overview",
-            },
-            {
-                title: "tile1",
-                module: MODULES.ssca,
-                description:
-                  "desc.",
-                link: "/docs/software-supply-chain-assurance/get-started/overview",
-            },
-          ],
-        },
-
-        {
-          name: "SLSA",
-          description:
-            "",
-          list: [
-            {
-                title: "tile1",
-                module: MODULES.ssca,
-                description:
-                  "desc.",
-                link: "/docs/software-supply-chain-assurance/get-started/overview",
-            },
-            {
-                title: "tile1",
-                module: MODULES.ssca,
-                description:
-                  "desc.",
-                link: "/docs/software-supply-chain-assurance/get-started/overview",
-            },
-            {
-                title: "tile1",
-                module: MODULES.ssca,
-                description:
-                  "desc.",
-                link: "/docs/software-supply-chain-assurance/get-started/overview",
+                  "Generate, manage, and verify SLSA Provenance.",
+                link: "/docs/category/comply-with-slsa",
             },
           ],
         },

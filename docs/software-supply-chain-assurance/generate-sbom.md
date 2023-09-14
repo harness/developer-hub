@@ -21,7 +21,7 @@ For a step-by-step walkthrough, try this tutorial: [Generate SBOM and enforce po
 
 ### Prepare a pipeline
 
-To generate SBOM in Harness, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage).
+To generate SBOM in Harness, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components), a [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage), or both.
 
 ### Generate a key pair
 
@@ -43,7 +43,7 @@ The **SSCA Orchestration** step has the following settings:
 * **Name:** Enter a name for the step.
 * **SBOM Tool:** Select the tool to use to generate the SBOM, such as **Syft**.
 * **SBOM Format:** Select **SPDX** or **CycloneDX**.
-* **Artifact Type:** Select the type of artifact that the SBOM is for, such as **Image**.
+* **Artifact Type:** Select **Image**.
 * **Container Registry:** select the [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where the artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
 * **Image:** The repo path (in your container registry) and tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
 * **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
@@ -73,3 +73,9 @@ When the pipeline runs, the **SSCA Orchestration** step does the following:
 * Stores the SBOM in Harness and uploads the `.att` file to your container registry alongside the image.
 
 The signed attestation is stored, as an `.att` file, in the artifact repository along with the image. You can also find the SBOM on the **Artifacts** tab on the **Execution details** page in Harness. For more information, go to [View attestations and violations](./ssca-view-results.md).
+
+:::tip
+
+After generating an SBOM, you can use it to [enforce SSCA policies](./ssca-policies/enforce-ssca-policies.md).
+
+:::

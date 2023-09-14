@@ -16,21 +16,20 @@ To address these challenges, the Harness Software Supply Chain Assurance (SSCA) 
 Harness SSCA module provides a robust solution for establishing trust in the software supply chain, managing open-source components, ensuring policy compliance, identifying security vulnerabilities, and enabling rapid response to new threats. The SSCA module aims to achieve the following objectives:
 
 * **Prevent:** Stop the use of harmful or unauthorized open-source components.
-* **Track:** Provide real-time visibility into the usage and deployment of open-source components.
 * **Report:** Generate compliance reports adhering to both internal governance policies and external regulations.
 * **Trust:** Establish trust in the software supply chain so that the artifacts produced can be trusted.
 
 <!-- After remediation capability added: * **Remediate:** Respond quickly and effectively to threats by updating and deploying the patched version of impacted components. -->
+<!-- after dashboards/views added: * **Track:** Provide real-time visibility into the usage and deployment of open-source components. -->
 
 ## Software Supply Chain Assurance features
 
 To realize the [objectives](#software-supply-chain-assurance-objectives), the SSCA module offers features such as:
 
 * SBOM generation and management.
-* Policy enforcement for open-source governance.
-* Comprehensive visibility into component usage and deployment environments.
+* Supply chain security policy enforcement.
 * SLSA Level 2 compliance with provenance generation and verification.
 
-<!-- * **Remediation paths** to effectively address zero-day vulnerabilities in open-source components. -->
+<!-- * Remediation paths to effectively address zero-day vulnerabilities in open-source components. * Comprehensive visibility into component usage and deployment environments.-->
 
 For more information about these features and how SSCA integrates with the Harness Platform, go to the [SSCA key concepts](./key-concepts.md).

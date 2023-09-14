@@ -41,20 +41,22 @@ You can create custom policies to define rules for open-source component usage b
 
 The SSCA module supports these policy types:
 
-* **Deny list policies:** Define components, or combinations of component attributes, that are not allowed. If a component is part of the deny list, the policy fails.
-* **Allow list policies:** Define components or combinations of component attributes that are allowed. If a component is not part of the allow list, the policy fails.
+* **Deny list policies:** Define components, or combinations of component attributes, that are not allowed. If an artifact includes a component that is part of the deny list, the artifact's policy evaluation fails.
+* **Allow list policies:** Define components or combinations of component attributes that are allowed. If an artifact includes a component that *is not* part of the allow list, the artifact's policy evaluation fails.
 
 ### Policy enforcement
 
-The SSCA module enforces policies in the CI and CD stages of the software development lifecycle, ensuring that you build and deploy only compliant software artifacts. When an artifact moves through the CI and CD stages of your [pipelines](#pipelines), the SSCA module checks the artifact and its associated SBOM against your defined policies. If any violations are detected, response actions are triggered based on your policy settings.
+The SSCA module enforces policies in the CI and CD stages of the software development lifecycle, ensuring that you build and deploy only compliant software artifacts. When an artifact moves through the CI and CD stages of your [pipelines](#pipelines), the SSCA module checks the artifact and its associated SBOM against your defined policies. You can review any detected policy violations on the **Execution details** page in Harness. For more information, go to [View attestations and violations](../ssca-view-results.md).
 
-## Comprehensive visibility
+<!-- Future: If any violations are detected, response actions are activated based on your policy configurations. -->
+
+<!--H2 Comprehensive visibility
 
 The SSCA module provides several ways to review your software supply chain's health and security.
 
 * **SSCA Dashboard:** Provides an overview of open-source component usage, policy violations, and license usage across your software artifacts. Use this dashboard to quickly understand and monitor your software supply chain's health at a high level.
 * **Component View:** Provides a detailed perspective of the open-source components used within your software artifacts. By offering in-depth component information, the Component View helps you better understand your software supply chain and more effectively manage component-related risks.
-* **Artifact View:** Provides a detailed perspective on individual software artifacts, including associated open-source components and deployment environments. By offering in-depth artifact information, the Artifact View helps you better understand your software supply chain and more effectively manage artifact-related risks.
+* **Artifact View:** Provides a detailed perspective on individual software artifacts, including associated open-source components and deployment environments. By offering in-depth artifact information, the Artifact View helps you better understand your software supply chain and more effectively manage artifact-related risks. -->
 
 <!-- H2 Remediation workflows
 

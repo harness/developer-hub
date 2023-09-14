@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 You can use the Harness SSCA steps in Harness CI/CD pipelines to generate SBOM and enforce software supply chain security policies.
 
-To generate SBOM in Harness, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage). For example, the pipeline created in this tutorial has a **Build** stage with three steps and a **Deploy** stage with two steps.
+To generate SBOM in Harness, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components), a [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage), or both. For example, the pipeline created in this tutorial has a **Build** stage with three steps and a **Deploy** stage with two steps.
 
 ```mdx-code-block
 <Tabs>
@@ -95,11 +95,12 @@ The **SSCA Orchestration** step does the following:
 
 ## Create policies
 
-You must [create SSCA policies](/docs/software-supply-chain-assurance/ssca-policies/create-ssca-policies) that you want Harness SSCA to enforce. Create these policies in the Harness File Store.
+You must [create SSCA policies](/docs/software-supply-chain-assurance/ssca-policies/create-ssca-policies) that you want Harness SSCA to enforce. Create SSCA policy files in the Harness File Store.
 
 1. In your Harness Project, go to **File Store** under **Project Setup**. You can also create policies at the Account and Org scopes.
-2. Select **New**, and select the manifest as file usage type.
-3. Enter the policy definitions, and then select **Save**.
+2. Select **New**, and then select **New File**.
+3. Enter a **Name**, and then select **Manifest** for **File Usage**.
+4. Enter the [policy definitions](/docs/software-supply-chain-assurance/ssca-policies/define-ssca-policies) in the text editor, and then select **Save**.
 
 <!-- ![](./static/ssca-policy-file-store.png) -->
 
@@ -132,7 +133,6 @@ The **SSCA Enforcement** step does the following:
 
 6. For **Public Key**, select the [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key to use to verify the authenticity of the attestation.
 7. For **File Path**, provide the path to your [SSCA policy file](#create-policies).
-8. For **Password**, select the [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) containing the password for the private key.
 
 <!-- ![](./static/policy-ssca-enforce-step.png) -->
 
