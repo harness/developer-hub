@@ -65,7 +65,7 @@ kind: Secret
 metadata:  
   name: {{.Values.name}}-dockercfg  
   annotations:  
-    harness.io/skip-versioning: true  
+    harness.io/skip-versioning: 'true'  
 data:  
   .dockercfg: {{.Values.dockercfg}}  
 type: kubernetes.io/dockercfg  
