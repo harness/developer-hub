@@ -95,7 +95,7 @@ On the Analyze Deployment Impact settings page, go to the **Step Parameters** ta
    The Analyze Deployment Impact step is added to the deployment.
 
  
-## View Analyze Deployment Impact step result
+## View Analyze Deployment Impact step results
 
 When you run the pipeline, Harness also runs the Analyze Deployment Impact step and generates results.
 
