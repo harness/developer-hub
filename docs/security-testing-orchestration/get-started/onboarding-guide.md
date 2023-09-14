@@ -25,11 +25,11 @@ This topic describes the steps you need to do to set up STO in your pipeline.
 
 The entire setup workflow should take about 30 minutes.
 
-# STO Requirements
+## STO Requirements 
 
 Make sure you meet the following requirements before you perform [STO Setup Procedures](#sto-setup-procedures) steps described below.
 
-## External Requirements
+### External Requirements
 
 Before you start setting up Harness, make sure you have the following:
 
@@ -37,13 +37,13 @@ Before you start setting up Harness, make sure you have the following:
 * Docker Hub account — STO uses Docker-in-Docker to run scans. The Pipeline needs to pull the **docker:dind** image from Docker Hub.
 * [Kubernetes cluster](#install-the-harness-delegate) — Infrastructure for running builds.
 
-## Harness User Requirements
+### Harness User Requirements
 
 * To set up STO, you need Administrative privileges at the Account level (Account Admin role). It is not enough to have Administrative privileges at the Project level (Project Admin role).
 * Developers need a Security Testing Developer role to run tests and view results.
 * Security Operations staff need a Security Testing SecOps role to run tests, view results, and approve security exemptions.
 
-## Harness Account Requirements
+### Harness Account Requirements
 
 Harness recommends you create the following resources at the Account level. This enables you to use them across all projects and pipelines in the account.
 
@@ -52,15 +52,13 @@ Harness recommends you create the following resources at the Account level. This
 * Git codebase connector — Required if you want to scan a codebase in your pipeline.
 * Docker Hub connector — Required to download images needed to run the pipeline.
 
-## Harness Pipeline Requirements
 
-* To run security scans, the pipeline requires a Background step that runs a Docker-in-Docker service.
 
-# STO Setup Procedures
+## STO Setup Procedures
 
 The following sections describe the workflow for setting up STO. Once you complete this workflow, you'll have the build infrastructure and connectors required to build a pipeline and run security scans. You'll also have an STO-enabled pipeline that you can clone and configure based on your security requirements.
 
-## Add Security Testing roles
+### Add Security Testing roles
 
 Harness includes two RBAC roles specifically for STO users:
 
@@ -84,7 +82,7 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 
 </details>
 
-## Set up a build infrastructure for STO
+### Set up a build infrastructure for STO
 
 You need a Harness build infrastructure to run scans in STO. First, review the [STO support by CI build infrastructure type
 ](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#sto-support-by-ci-build-infrastructure-type). Then select the infrastructure you want to use: 
@@ -93,14 +91,14 @@ You need a Harness build infrastructure to run scans in STO. First, review the [
 - [Local Kubernetes build infrastructure](#install-a-kubernetes-delegate-for-sto) Recommended when you want to run ephemeral builds-at-scale in your own infrastructure.
 - [Local Docker build infrastructure](#install-a-local-docker-delegate-for-sto) Recommended for small, limited builds, such as a one-off build on your local machine.
 
-### Use Harness Cloud build infrastructure for STO
+#### Use Harness Cloud build infrastructure for STO
 
 With Harness Cloud, you can run builds in isolation on Harness-hosted VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines. Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure. No initial setup is required.
 
 For more information, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
 
 
-### Install a Kubernetes delegate for STO
+#### Install a Kubernetes delegate for STO
 
 Executing builds in a Kubernetes cluster is useful when you want to run ephemeral builds-at-scale in your own infrastructure. When running builds in a Kubernetes cluster, each stage executes in a pod, and the stage's steps share the pod's resources.
 
@@ -156,14 +154,14 @@ To set up the build infrastructure, you add a connector to your Kubernetes clust
   
 </details>
 
-### Install a local Docker delegate for STO
+#### Install a local Docker delegate for STO
 
 A local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. 
 
 For more information, go to [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) in the CI documentation. 
 
 
-## Create secrets for your Git and DockerHub access credentials
+### Create secrets for your Git and DockerHub access credentials
 
 Harness includes a built-in Secrets Manager that enables you to store encrypted secrets, such as access keys, and use them in your Harness account. Secrets are always stored in encrypted form and are not accessible by Harness. Only the delegate, which runs in your infrastructure, can access them.
 
@@ -190,7 +188,7 @@ In this step, you'll create a secret for your GitHub and DockerHub access tokens
 </details>
 
 
-## Create a Docker Hub connector
+### Create a Docker Hub connector
 
 A Docker Hub connector is required to run a Docker-in-Docker service as described in [Set up the Security Tests stage](#set-up-security-tests-stage) below. It is also required for any pipeline that scans or uploads a built image.
 
@@ -213,7 +211,7 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 
 </details>
 
-## Create a Codebase Connector
+### Create a Codebase Connector
 
 You'll need a GitHub Connector to do the [STO Tutorials](/tutorials/security-tests/standalone-pipeline). 
 
@@ -249,11 +247,11 @@ To do the STO tutorials, point the connector at the following repo: <https://git
 
 </details>
 
-# Create a base pipeline for STO
+## Create a base pipeline for STO
 
 The following procedure creates a pipeline with the STO functionality required to run scans on your repos, images, and instances. Once you set up this pipeline, you can clone it to a new pipeline and update the pipeline to set up your scans. This workflow is described in the [Create a standalone STO pipeline](/tutorials/security-tests/standalone-pipeline) tutorial.
 
-## Add a Security Test stage
+### Add a Security Test stage
 
 1. In the Pipeline Studio, click **Home** > **Projects** and choose the project where you want to create the pipeline.
 
@@ -267,9 +265,11 @@ The following procedure creates a pipeline with the STO functionality required t
 	 
 2. Click **Select Modules** (left menu) and then select **Security Tests**.
 
+<!-- 
   ```mdx-code-block
    <img src={set_up_harness_20_NEW} alt="Choose the STO module" height="50%" width="50%" />
   ```
+  -->
 	 
 3. In Create New Pipeline:
 	1. Select **Pipelines** > **Create a Pipeline**. 
@@ -291,7 +291,7 @@ The following procedure creates a pipeline with the STO functionality required t
   ```
 
 
-## Set up the Security Tests stage
+### Set up the Security Tests stage
 
 1. In the **Overview** tab, under **Shared Paths**, click **Add** and enter the path `/var/run`.
 
@@ -322,7 +322,7 @@ In the **Execution** tab, do the following:
     ```
 -->
 
-## Add a Bandit scanner step
+### Add a Bandit scanner step
 
 ```mdx-code-block
 import set_up_harness_tut_select_variant_field_type from './static/sto-basics-tut-select-variant-field-type.png'
@@ -349,7 +349,7 @@ import set_up_harness_26 from './static/configure-bandit-step.png'
 	   ```
 
 
-# Run the pipeline (*optional*)
+## Run the pipeline (*optional*)
 
 1. Click **Run**.
 2. Select Git Branch, enter **master** for the branch name, and then click **Run Pipeline**.

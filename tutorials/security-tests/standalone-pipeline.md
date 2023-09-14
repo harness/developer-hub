@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This tutorial shows you how to use the Harness Security Testing Orchestration (STO) module to perform code security scanning in a Harness Pipeline. You'll set up a Pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
+This tutorial shows you how to use the Harness Security Testing Orchestration (STO) module to perform code security scanning in a Harness pipeline. You'll set up a pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
 
 This tutorial covers standalone or "audit-only" workflows that don't require any other Harness components. In the  [Create an integrated STO/CI pipeline](./cicd-integrated-pipeline.md) tutorial, you'll learn how to integrate STO into Harness CI and CD workflows and protect your repos, containers, and artifacts from vulnerabilities automatically.
 
@@ -17,12 +17,12 @@ This tutorial covers standalone or "audit-only" workflows that don't require any
 You'll learn how to:
 
 1. Run the Pipeline and analyze the security issues found by the scanner.
-2. Create a baseline for your test targets and use the baseline to identify new issues in a development branch vs. inherited issues in the baseline.
+2. Select a baseline for your test targets and use the baseline to identify  issues in a development branch only vs. issues also found in the baseline branch.
 3. View issue details in the Harness UI and use these details to pinpoint and resolve issues in your code.
 
 ## Before you begin
 
-You must perform all the required steps in [Set Up Harness for STO](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto). This topic describes how to do the following:
+You must perform all the required steps in [Set Up Harness for STO](/docs/security-testing-orchestration/get-started/onboarding-guide). This topic describes how to do the following:
 
 1. Add the necessary user roles for your developers and security personnel.
 2. Set up your build infrastructure.
@@ -31,6 +31,7 @@ You must perform all the required steps in [Set Up Harness for STO](/docs/securi
 
 You will use a clone of this pipeline in these tutorials.
 
+<!-- 
 <details open><summary> Review: ingestion workflows</summary>
 
 ```mdx-code-block
@@ -40,6 +41,8 @@ import StoSupportedMethods from '/docs/security-testing-orchestration/sto-techre
 <StoSupportedMethods />
 
 </details>
+
+-->
 
 <details open><summary> Review: what's supported in Harness STO</summary>
 
@@ -55,7 +58,7 @@ This Pipeline has only one scanner but you can easily add more later. For the li
 
 ## Clone your STO base pipeline
 
-1. Go to the project with the [base STO pipeline](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto/#create-an-sto-pipeline) project.
+1. Go to the project with the [base STO pipeline](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) project.
 2. Click the top-right menu, choose **Clone**, and save the new pipeline as **STO Tutorial 1**.
 
    ![](./static/sto-standalone-workflows-10.png)
@@ -86,17 +89,17 @@ Let's look at the Bandit step to see how it's configured.
 		<tr>
 			<td>Scan Mode</td>
 			<td>Orchestration</td>
-			<td>Indicates that this is an orchestrated scan as opposed to a ingestion-only or data-upload scan.</td>
+			<td>Indicates that this is an <a href="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods">orchestrated scan</a> as opposed to a ingestion-only or data-upload scan. </td>
 		</tr>
 		<tr>
 			<td>Target Name</td>
 			<td><code>dvpwa</code></td>
-			<td>Every STO scan has a target name, which is a user-defined label for the code repository, container, application, or configuration to scan. </td>
+			<td>Every STO scan has a <a href="/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines">target name</a>, which is a user-defined label for the code repository, container, application, or configuration to scan. </td>
 		</tr>
 		<tr>
 			<td>Target Variant</td>
 			<td><code>&lt;+codebase.branch&gt;</code></td>
-			<td>Every STO scan has a specified variant that specifies the branch, tag, or other target variant to scan.  </td>
+			<td>Every STO scan has a specified <a href="/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines">variant</a> that specifies the branch, tag, or other target variant to scan.  </td>
 		</tr>
 	</table>
 
@@ -104,7 +107,7 @@ Let's look at the Bandit step to see how it's configured.
 
 The Step library includes a Security step for setting up scanners: open the step and configure the scan as a set of key/value pairs under Settings.
 
-The Step Library also includes _scanner templates_ for popular scanners such as Bandit, OWASP, Snyk, Grype, and SonarQube. These steps have preconfigured options that greatly simplify the process of setting up a scanner. 
+The Step Library also includes <a href="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates">scanner templates</a> for popular scanners such as Bandit, OWASP, Snyk, Grype, and SonarQube. These steps have preconfigured options that greatly simplify the process of setting up a scanner. 
 
 In the Bandit scanner template, for example, the **Scan Configuration** and **Target Type** fields are read-only because each option supports one option only. If a scanner supports multiple target types, such as repositories and container images, **Target Type** is editable and the menu is pre-populated with the supported target types. 
 
@@ -189,7 +192,7 @@ The Issue Details pane has useful information for troubleshooting your security 
 		- Critical 9.0 - 10.0
 	+ The **Occurrences List** shows all occurrences of this specific issue in the test target.
 
-2. Select the Reference Identifier link ([CWE-327](https://cwe.mitre.org/data/definitions/327.html)).
+2. Select the Reference Identifier link ([CWE-78](https://cwe.mitre.org/data/definitions/78.html)).
 
    **Issue Details** includes specific information about each vulnerability. In this case, you can view detailed information about the issue in the Common Weakness Enumeration database, a community-developed list of software and hardware weakness types. 
 
