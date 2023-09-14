@@ -29,11 +29,11 @@ In **Connectors**, click **Connector**.
 
 In **Secret Managers**, click **GCP KMS** under **Secret Managers**.
 
-![](../../Secrets/static/add-google-kms-secrets-manager-63.png)
+![](../../secrets/static/add-google-kms-secrets-manager-63.png)
 
 The **GCP Key Management Service** settings appear.
 
-![](../../Secrets/static/add-google-kms-secrets-manager-64.png)
+![](../../secrets/static/add-google-kms-secrets-manager-64.png)
 
 In **Name,** enter a name for your Secret Manager.  You will use this name to select this Secret Manager when adding or selecting a secret.
 
@@ -55,13 +55,13 @@ Select/create a key ring. Select/create a key in the key ring.
 
 To create resources in this or the next step, go to Google Cloud's [Creating Symmetric Keys](https://cloud.google.com/kms/docs/creating-keys) topic. Open the Actions menu (⋮), and then select **Copy Resource Name**.
 
-![](../../Secrets/static/add-google-kms-secrets-manager-65.png)
+![](../../secrets/static/add-google-kms-secrets-manager-65.png)
 
 A reference to the key is now on your clipboard.
 
 Paste the reference into an editor. You can now copy and paste its substrings into each of the Harness Secret Manager’s **Details** settings as shown below.
 
-![](../../Secrets/static/add-google-kms-secrets-manager-66.png)
+![](../../secrets/static/add-google-kms-secrets-manager-66.png)
 
 ### Attach Service Account Key (Credentials) File
 
@@ -75,7 +75,7 @@ Locate the Principal you want to use, and click Edit.
 
 In Edit permissions, add the Cloud KMS CryptoKey Encrypter/Decrypter role, and then select **Save**.
 
-![](../../Secrets/static/add-google-kms-secrets-manager-67.png)
+![](../../secrets/static/add-google-kms-secrets-manager-67.png)
 
 Go to Google [Permissions and roles](https://cloud.google.com/kms/docs/reference/permissions-and-roles) and Cloud's Using Cloud IAM with KMSCloud's Using Cloud IAM with KMS topics.
 
@@ -89,7 +89,7 @@ Open your service account's Actions ⋮ menu, then select **Manage keys**.
 
 Select **ADD KEY** > **Create new key**.
 
-![](../../Secrets/static/add-google-kms-secrets-manager-68.png)
+![](../../secrets/static/add-google-kms-secrets-manager-68.png)
 
 In the resulting Create private key dialog, select JSON, create the key, and download it to your computer.
 
@@ -97,7 +97,7 @@ Return to the Secret Manager's Details page in Harness.
 
 Under GCP KMS Credentials File, click **Create or Select a Secret**. You can create a new [File Secret](/docs/platform/secrets/add-file-secrets) and upload the key file you just exported from Google Cloud.
 
-![](../../Secrets/static/add-google-kms-secrets-manager-69.png)
+![](../../secrets/static/add-google-kms-secrets-manager-69.png)
 
 Click **Save** and then **Continue**.
 
@@ -109,4 +109,4 @@ In **Delegates** **Setup**, use [**Selectors**](../../delegates/manage-delegat
 
 In **Connection Test**, click **Finish** after your connection is successful**.**
 
-![](../../Secrets/static/add-google-kms-secrets-manager-70.png)
+![](../../secrets/static/add-google-kms-secrets-manager-70.png)

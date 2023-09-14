@@ -28,7 +28,7 @@ You can also use this workflow if the external scanner requires additional files
 
 - Harness STO does not support certificate bundles. Each certificate should be specified in its own file. If you have a bundle that you want to use with an external scanner, Harness recommends that you split the bundle into individual files.
 
-- Store each certificate file as a [Harness file secret](/docs/platform/Secrets/add-file-secrets). You can also use third-party managers such as HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager. For more information, go to [Harness Secrets Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
+- Store each certificate file as a [Harness file secret](/docs/platform/Secrets/add-file-secrets). You can also use third-party managers such as HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager. For more information, go to [Harness Secrets Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 
 * You must include all required files in  **/shared/customer_artifacts/** or a related subfolder, as described below. You can include any number of certificates or other files in or under this folder.
 

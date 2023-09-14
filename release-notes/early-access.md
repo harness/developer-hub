@@ -590,7 +590,7 @@ For more information, see [Create a remote step template](/docs/platform/Templat
 
 - You can now use expressions to reference pre-existing secrets in Vault using a fully-qualified path. (PL-28352)
 
-For more information, see [HashiCorp Vault Secrets](/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets#option-hashicorp-vault-secrets).
+For more information, see [HashiCorp Vault Secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets#option-hashicorp-vault-secrets).
 
 - Harness will now send email notification for user invites when the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES is enabled. (PL-26218, ZD-32152,35287)
 
@@ -610,7 +610,7 @@ You can onboard any secret manager with Harness and reference their secrets in H
 
 This is behind the feature flag CUSTOM_SECRET_MANAGER_NG.
 
-See [Add a custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager).
+See [Add a custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager).
 
 #### July 7, 2022
 
