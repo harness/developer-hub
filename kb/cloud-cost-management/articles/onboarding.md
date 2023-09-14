@@ -4,6 +4,8 @@ The first goal when onboarding to CCM is to get all cloud billing data into Harn
 
 ## AWS
 
+![](../static/ccm-onboarding-aws.png)
+
 Accounts in AWS are structured via organizations. The first step is to [create a CUR](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur) (Cost Usage Report) in the master payer account in their AWS org. Once the CUR is created, we create an initial Harness AWS account connector tied to the master account that points to the CUR.
 
 When configuring the AWS connector you are asked what features to enable. Usually (if following AWS best practices) there shouldn't be any other resources in the master account. This means we can usually only enable cost access for this account and not the others. If the customer still wants, you can enable the other features as needed.
@@ -77,6 +79,8 @@ To make sure that EC2 recommendations are shown from all the AWS member accounts
 
 ## Azure
 
+![](../static/ccm-onboarding-azure.png)
+
 Subscriptions in Azure are organized in a Tenant with management groups. We first [create a billing export](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#azure-billing-exports) under the root tenant payer scope and then configure this export in Harness to get billing data ingested.
 
 To [create a billing export](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#azure-billing-exports) we first need a storage account it can be written to. You then go to the cost management pane in your azure portal and select the enterprise billing scope. Then on the left there is an option for exports.
@@ -126,6 +130,8 @@ To get VM recommendations, you needs to [enable Azure Advisor VM/VMSS recommenda
 
 ## GCP
 
+![](../static/ccm-onboarding-gcp.png)
+
 Projects in gcp are structured via organizations. You should have a billing project in your GCP organization, this is the first project we should create a connector for. First you need to [create a billing export](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#gcp-billing-export) in this billing project. You can optionally create a “detailed” billing export which exposes resource level information.
 
 The Harness GCP connector wizard walks you through entering the billing export information, and after checking the features you want to enable, prompts you with an itemized list of actions to take to grant this access to your GCP project. Again we are given a Harness owned service account that you can simply add to your organization. To save time you can give this access at the organization level to streamline the process
@@ -150,6 +156,8 @@ resource "harness_platform_connector_gcp_cloud_cost" "billing" {
 ```
 
 ## Kubernetes
+
+![](../static/ccm-onboarding-k8s.png)
 
 To start gathering k8s cloud costs, we need an existing Harness k8s connector at the account level. We can either go the route of deploying a delegate into every k8s cluster and creating corresponding k8s connectors for each delegate/custer, or if a central delegate is able to reach other cluster APIs then you can use one central delegate and use the master URL and credential method for your k8s connectors. As deploying multiple delegates is the most common method, we will focus on that here.
 
