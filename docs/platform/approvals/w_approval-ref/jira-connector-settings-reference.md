@@ -34,7 +34,7 @@ In Jira, the base URL is set to the same URL that Web browsers use to view your 
 
 ### Credentials
 
-Enter your credentials. For **API Key**, use a Harness [Text Secret](/docs/platform/tecrets/add-use-text-secrets). Go to [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) from Atlassian.
+Enter your credentials. For **API Key**, use a Harness [Text Secret](/docs/platform/secrets/add-use-text-secrets). Go to [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) from Atlassian.
 
 ### See also
 

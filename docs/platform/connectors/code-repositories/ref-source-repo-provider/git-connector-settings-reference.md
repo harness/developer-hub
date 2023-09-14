@@ -95,9 +95,9 @@ Provide authentication credentials for the connector. The **Connection Type** yo
 
 The **HTTP** Connection Type requires **Username** and **Password** authentication for all accounts and repos, including read-only repos.
 
-In the **Username** field, enter the Git account username. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/tecrets/add-use-text-secrets).
+In the **Username** field, enter the Git account username. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
-In the **Password** field, provide the account password or a personal access token. Passwords and tokens are stored as [Harness encrypted text secrets](/docs/platform/tecrets/add-use-text-secrets).
+In the **Password** field, provide the account password or a personal access token. Passwords and tokens are stored as [Harness encrypted text secrets](/docs/platform/secrets/add-use-text-secrets).
 
 If your Git account uses two-factor authentication, you must provide a personal access token for the **Password**.
 
@@ -106,7 +106,7 @@ If your Git account uses two-factor authentication, you must provide a personal 
   <TabItem value="ssh" label="SSH Key">
 ```
 
-The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/tecrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
+The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
 
 :::tip
 

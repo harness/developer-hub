@@ -154,7 +154,7 @@ Specifies a path for the offline config directory. The default is `/config`.
     * **account-identifier**: Enter your account identifier for which you want to retrieve the config. You can copy the account ID from the Harness Manager. In Harness Manager's address bar, copy the **Harness account ID** from your Harness URL. The Harness account ID comes after `account` in the URL. For example in the following URL, the account ID is `1a2b3c`: `https://app.harness.io/#/account/1a2b3c`.
     * **org-identifier**: Enter your organization identifier for which you want to retrieve the config. For more information, go to [Create a Harness Organization](/docs/platform/organizations-and-projects/create-an-organization).
     * **api-keys**: Enter your server SDK key. For more information, go to [Create an SDK key](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
-    * **auth-secret**: Enter your authentication secret details. A secret that is used by the proxy to sign the [JWTs](https://jwt.io/) that it sends to the SDKs. For more information, go to [Add a Secrets Manager](/docs/platform/tecrets/tecrets-management/add-secrets-manager/).
+    * **auth-secret**: Enter your authentication secret details. A secret that is used by the proxy to sign the [JWTs](https://jwt.io/) that it sends to the SDKs. For more information, go to [Add a Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager/).
 
     **Examples**
 

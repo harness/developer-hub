@@ -276,7 +276,7 @@ Harness can allow URLs with invalid characters such as a blank space, `^`, `{`, 
 
 <!-- ### Using secrets in the HTTP step URL
 
-In some cases, you might want to use a [Harness text secret](/docs/platform/tecrets/add-use-text-secrets) in the **URL** setting. For example, `https://www.google.com/<+secrets.getValue("xyz")>`.
+In some cases, you might want to use a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) in the **URL** setting. For example, `https://www.google.com/<+secrets.getValue("xyz")>`.
 
 It's important to know how Harness uses the secret when evaluating the URL.
 
@@ -353,7 +353,7 @@ You can use a Fixed Value, Runtime Input, or Expression.
 
 You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too.
 
-You can reference [Harness secrets](/docs/platform/tecrets/add-use-text-secrets) in the **Value** setting too.
+You can reference [Harness secrets](/docs/platform/secrets/add-use-text-secrets) in the **Value** setting too.
 
 For example, in **Key**, enter `Token`.
 

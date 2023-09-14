@@ -89,7 +89,7 @@ Authentication is required for all accounts and repos, including read-only repos
 
 1. For **Authentication**, select **Username and Password**.
 2. In the **Username** field, enter `git`. Do not enter any other value besides `git`.
-3. In the **Password** field, provide your GitLab account password as a [Harness encrypted text secret](/docs/platform/tecrets/add-use-text-secrets).
+3. In the **Password** field, provide your GitLab account password as a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
 ```mdx-code-block
   </TabItem>
@@ -98,7 +98,7 @@ Authentication is required for all accounts and repos, including read-only repos
 
 1. For **Authentication**, select **Username and Token**.
 2. In the **Username** field, enter `git`. Do not enter any other value besides `git`.
-3. In the **Personal Access Token** field, provide a GitLab [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) as a [Harness encrypted text secret](/docs/platform/tecrets/add-use-text-secrets).
+3. In the **Personal Access Token** field, provide a GitLab [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) as a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
 :::info Personal access token permissions
 
@@ -127,7 +127,7 @@ Currently, OAuth for GitLab connectors is behind a feature flag. Contact [Harnes
   <TabItem value="ssh" label="SSH Key">
 ```
 
-SSH connections require an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/tecrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
+SSH connections require an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
 
 For details on creating SSH keys and adding them to your GitLab account, go to the GitLab documentation about [Using SSH keys to communicate with GitLab](https://docs.gitlab.com/ee/user/ssh.html).
 
@@ -156,7 +156,7 @@ This setting is only available for connection types and authentication methods w
 
 You must enable API access to use Git-based triggers, Git Sync, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access requires personal access token authentication.
 
-In the **Personal Access Token** field, provide a GitLab [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) as a [Harness encrypted text secret](/docs/platform/tecrets/add-use-text-secrets). If you selected **Username and Token** authentication, use the same personal access token secret for both **Personal Access Token** fields.
+In the **Personal Access Token** field, provide a GitLab [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) as a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets). If you selected **Username and Token** authentication, use the same personal access token secret for both **Personal Access Token** fields.
 
 :::info Personal access token permissions
 

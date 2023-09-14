@@ -50,7 +50,7 @@ Docs: [Connectors](/docs/category/connectors)
 - [Cloud Providers](/docs/category/cloud-providers)
 - [Monitoring & Logging Systems](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
 - [Ticketing Systems](/docs/category/ticketing-systems-1)
-- [Secret Managers](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview)
+- [Secret Managers](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
 
 
 ## Service Accounts & API Keys

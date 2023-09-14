@@ -460,7 +460,7 @@ If your pipeline succeeded, add two more steps to build your Rust application im
 
    The `DOCKER_HUB_PASSWORD` and `IMAGE_TAG` environment variable values must be the __Expression__ type. Select the thumbtack to change the value type.
 
-   `secrets.getValue` is an expression that allows Harness to get the value from your `docker_hub_password` secret that you created earlier in the tutorial. For more information, go to [Add and Reference Text Secrets - Reference encrypted text by identifier](/docs/platform/tecrets/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier).
+   `secrets.getValue` is an expression that allows Harness to get the value from your `docker_hub_password` secret that you created earlier in the tutorial. For more information, go to [Add and Reference Text Secrets - Reference encrypted text by identifier](/docs/platform/secrets/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier).
 
    `codebase.shortCommitSha` allows you to get the Git commit short SHA. It is one of several [Build-in codebase variables](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
 

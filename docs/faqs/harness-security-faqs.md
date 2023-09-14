@@ -26,8 +26,8 @@ The set of security features that Harness provides includes the following featur
 * [Password policies](../platform/authentication/authentication-overview.md#enforce-password-policies)
 * [Two-factor authentication](../platform/authentication/two-factor-authentication.md)
 * [Single sign-on (SSO)](../platform/authentication/single-sign-on-saml.md#saml-sso-with-harness-overview)
-* [Text encryption](/docs/platform/tecrets/add-use-text-secrets)
-* [File encryption](/docs/platform/tecrets/add-file-secrets)
+* [Text encryption](/docs/platform/secrets/add-use-text-secrets)
+* [File encryption](/docs/platform/secrets/add-file-secrets)
 * [Auditing](/docs/platform/governance/audit-trail/audit-trail.md)
 
 ### Are delegate communications secure?
@@ -132,11 +132,11 @@ For more information, go to [Two-factor authentication](../platform/authenticati
 
 Google Cloud Key Management Service is the default Secrets Manager in Harness, and you can use your own secrets manager with Harness. Harness integrates with these common secret managers:
 
-* [Add Google KMS as a Harness secrets manager](/docs/platform/tecrets/tecrets-management/add-google-kms-secrets-manager)
-* [Add an AWS Secret Manager](/docs/platform/tecrets/tecrets-management/add-an-aws-secret-manager)
-* [Add an AWS KMS Secrets Manager](/docs/platform/tecrets/tecrets-management/add-an-aws-kms-secrets-manager)
-* [Add an Azure Key Vault Secrets Manager](/docs/platform/tecrets/tecrets-management/azure-key-vault)
-* [Add a HashiCorp Vault Secrets Manager](/docs/platform/tecrets/tecrets-management/add-hashicorp-vault)
+* [Add Google KMS as a Harness secrets manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager)
+* [Add an AWS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager)
+* [Add an AWS KMS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
+* [Add an Azure Key Vault Secrets Manager](/docs/platform/secrets/secrets-management/azure-key-vault)
+* [Add a HashiCorp Vault Secrets Manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault)
 
 <figure>
 
@@ -145,15 +145,15 @@ Google Cloud Key Management Service is the default Secrets Manager in Harness, a
 <figcaption>A diagram illustrating how Harness handles secrets.</figcaption>
 </figure>
 
-For more information, go to [Harness secrets management overview](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview).
+For more information, go to [Harness secrets management overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 
 ### What kind of secrets are supported?
 
 Harness supports:
 
-* [Text encryption](/docs/platform/tecrets/add-use-text-secrets) (for strings, such as passwords).
-* [File encryption](/docs/platform/tecrets/add-file-secrets) (for files, such as configuration files).
-* [SSH connection credentials](/docs/platform/tecrets/add-use-ssh-secrets)
+* [Text encryption](/docs/platform/secrets/add-use-text-secrets) (for strings, such as passwords).
+* [File encryption](/docs/platform/secrets/add-file-secrets) (for files, such as configuration files).
+* [SSH connection credentials](/docs/platform/secrets/add-use-ssh-secrets)
 
 ### Where can I use a secret?
 
@@ -167,8 +167,8 @@ In Harness Secrets Management, you pick a type of secret, and then enter the sec
 
 For detailed instructions, go to:
 
-* [Use encrypted text secrets](/docs/platform/tecrets/add-use-text-secrets)
-* [Use encrypted file secrets](/docs/platform/tecrets/add-file-secrets)
+* [Use encrypted text secrets](/docs/platform/secrets/add-use-text-secrets)
+* [Use encrypted file secrets](/docs/platform/secrets/add-file-secrets)
 
 ### How do I use a secret?
 
@@ -183,8 +183,8 @@ You can also use Harness expressions to reference secrets:
 
 For more information, go to:
 
-* [Use encrypted text secrets](/docs/platform/tecrets/add-use-text-secrets)
-* [Use encrypted file secrets](/docs/platform/tecrets/add-file-secrets)
+* [Use encrypted text secrets](/docs/platform/secrets/add-use-text-secrets)
+* [Use encrypted file secrets](/docs/platform/secrets/add-file-secrets)
 
 ### Are my secrets exposed in logs?
 

@@ -494,7 +494,7 @@ For details on Harness provisioning, go to [Provisioning overview](/docs/continu
 7. Enter the following and click **Save and Continue**.
 	* **Name:** `AWS Serverless`.
 	* **Credentials:** `AWS Access Key`. Enter the AWS access key for the AWS User you created with the required policies in [Before You Begin](#before-you-begin).
-	* Enter the secret key as a [Harness Text Secret](/docs/platform/tecrets/add-use-text-secrets). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
+	* Enter the secret key as a [Harness Text Secret](/docs/platform/secrets/add-use-text-secrets). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
 	* **Delegates Setup:** `Only use Delegates with all of the following tags`.
 	* Select the Delegate you added earlier in this quickstart.
 1. The **Connection Test** verifies the connection. Click **Finish**.
@@ -1004,7 +1004,7 @@ plugins:
 
 See:
 
-* [Add and Reference Text Secrets](/docs/platform/tecrets/add-use-text-secrets)
+* [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
 * [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables)
 * [Run Pipelines using Input Sets and Overlays](/docs/platform/Pipelines/run-pipelines-using-input-sets-and-overlays)
 

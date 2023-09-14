@@ -111,7 +111,7 @@ Harness expressions and secrets can be used in templates. They are resolved at r
 
 See:
 
-* [Add and Reference Text Secrets](/docs/platform/tecrets/add-use-text-secrets)
+* [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
 * [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### Stack Name
@@ -176,7 +176,7 @@ Harness expressions and secrets can be used in parameter files and in the **Para
 
 See:
 
-* [Add and Reference Text Secrets](/docs/platform/tecrets/add-use-text-secrets)
+* [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
 * [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### Option: CloudFormation Parameters Overrides
@@ -189,7 +189,7 @@ In **CloudFormation Parameters Overrides**, click **Retrieve Names from template
 
 For each parameter you want to override, enter a new values in **Value**.
 
-Harness text secrets are supported. See [Add and Reference Text Secrets](/docs/platform/tecrets/add-use-text-secrets).
+Harness text secrets are supported. See [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ### Option: Role ARN
 

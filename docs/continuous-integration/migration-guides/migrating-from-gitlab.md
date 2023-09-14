@@ -19,7 +19,7 @@ In addition, you can [use plugins](../use-ci/use-drone-plugins/explore-ci-plugin
 
 Harness CI is part of The [Harness Platform](/docs/get-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
 
-* [Secrets management](/docs/category/secrets-management) through the [Harness secrets manager](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview) or an [external secrets manager](/docs/platform/tecrets/tecrets-management/add-secrets-manager).
+* [Secrets management](/docs/category/secrets-management) through the [Harness secrets manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) or an [external secrets manager](/docs/platform/secrets/secrets-management/add-secrets-manager).
 * Role-Based Access Control (RBAC) helps you control user and group access to Harness resources according to users' roles. Using RBAC increases security and improves efficiency.
 * Harness Policy as Code is a centralized policy management and rules service that leverages the Open Policy Agent (OPA) to meet compliance requirements across software delivery and enforce governance policies.
 * The Harness Enterprise Ready Self-Managed Edition is an end-to-end solution for continuous, self-managed delivery. You can install and update Harness Self-Managed Enterprise Edition using online or offline (air-gapped) methods.

@@ -597,7 +597,7 @@ Harness is working with the Azure team for a resolution (see [issue 27221](https
 
 #### Using secrets and variables settings
 
-You can use [Harness secrets](/docs/platform/tecrets/add-use-text-secrets) and Service or Workflow variables in the **Application settings** and **Connection strings** in the Harness Service.
+You can use [Harness secrets](/docs/platform/secrets/add-use-text-secrets) and Service or Workflow variables in the **Application settings** and **Connection strings** in the Harness Service.
 
 These settings use JSON, so ensure that you use quotes around the variable or secret reference:
 

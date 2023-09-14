@@ -198,7 +198,7 @@ For this reason, it's important that all your project members know the provision
 
 #### Secret Manager
 
-* Select a Harness [secrets manager](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview) to use for encrypting/decrypting and saving the Terragrunt plan file.
+* Select a Harness [secrets manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to use for encrypting/decrypting and saving the Terragrunt plan file.
 
 A Terragrunt plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terragrunt plan file as plain text.
 

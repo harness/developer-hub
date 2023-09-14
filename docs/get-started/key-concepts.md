@@ -152,7 +152,7 @@ Harness includes built-in secrets management to store your encrypted secrets, su
 
 ![](./static/learn-harness-key-concepts-17.png)
 
-See [Harness Secrets Management Overview](/docs/platform/tecrets/tecrets-management/harness-secret-manager-overview).
+See [Harness Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 
 ### YAML and Git
 

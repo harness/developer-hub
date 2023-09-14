@@ -131,7 +131,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "",
-          link: "/docs/platform/tecrets/tecrets-management/reference-existing-secret-manager-secrets",
+          link: "/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets",
       },
       {
         title: "Git Experience vs Config as Code",

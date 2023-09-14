@@ -162,7 +162,7 @@ import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
 
 The user key for your Mend personal account: in the Mend UI, click the **Account Settings** button in the top right.
 
-You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.my-mend-user-key")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/tecrets/add-use-text-secrets).
+You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.my-mend-user-key")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 
 <!-- ============================================================================= -->
@@ -174,7 +174,7 @@ The API key for your Mend organization.
 
 This field is required. If you want to run a scan in an organization other than the default organization for your account, generate an Access Token in that specific organization. In the Mend UI, go to **Integration** > **Organization** > **API Key**.
 
-You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.my-mend-org-api-key")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/tecrets/add-use-text-secrets).
+You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.my-mend-org-api-key")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ### Scan Tool
 

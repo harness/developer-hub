@@ -334,7 +334,7 @@ spec:
 ```
 The secret output in the manifest will be asterisks (\*). The secret value is not displayed.
 
-See [Add Text Secrets](/docs/platform/tecrets/add-use-text-secrets).
+See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ## Overlays and multibases
 

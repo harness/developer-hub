@@ -28,7 +28,7 @@ You can use the following caching methods to share data across stages:
 * [Save and Restore Caches from S3 buckets](saving-cache.md)
 * [Save and Restore Caches from GCS buckets](save-cache-in-gcs.md)
 
-You cannot share access credentials or other [Text Secrets](/docs/platform/tecrets/add-use-text-secrets) across stages.
+You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
 
 If you need to maintain a long-running service for the duration of a stage, use a [Background step](../manage-dependencies/background-step-settings.md).
 
@@ -40,7 +40,7 @@ Use the following caching methods to reduce build time:
 * [Save and Restore Caches from S3 buckets](saving-cache.md)
 * [Save and Restore Caches from GCS buckets](save-cache-in-gcs.md)
 
-You cannot share access credentials or other [Text Secrets](/docs/platform/tecrets/add-use-text-secrets) with caching.
+You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) with caching.
 
 :::tip Multilayer caching
 

@@ -79,7 +79,7 @@ For Nexus 3.x, Harness supports only the Docker repository format as the artifac
 
 The username and password for the Nexus account.
 
-The password uses a [Harness Encrypted Text secret](/docs/platform/tecrets/add-use-text-secrets).
+The password uses a [Harness Encrypted Text secret](/docs/platform/secrets/add-use-text-secrets).
 
 ### Nexus Artifact Details
 
