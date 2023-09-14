@@ -172,18 +172,18 @@ To view the Impact Analysis Report:
 
 The Impact Analysis Report includes the following information:
 
-  - Report name: This is the name of the Analyze Deployment Impact step and serves as the report's title, for example, "Impact Analysis Report: AnalyzeDeploymentImpact_1".
+  - **Report name:** This is the name of the Analyze Deployment Impact step and serves as the report's title, for example, "Impact Analysis Report: AnalyzeDeploymentImpact_1".
     
-  - Service and environment: Details about the specific service and environment where the deployment was executed.
+  - **Service and environment:** Details about the specific service and environment where the deployment was executed.
     
-  - User information: Information about the user who initiated the deployment and when it was executed.
+  - **User information:** Information about the user who initiated the deployment and when it was executed.
     
-  - Analysis duration: The duration for which the analysis was carried out.
+  - **Analysis duration:** The duration for which the analysis was carried out.
     
-  - Start and end times: The date and time when the analysis started and when it concluded.
+  - **Start and end times:** The date and time when the analysis started and when it concluded.
     
-  - Analysis status: The status of the analysis, which can be one of the following: **Running**, **Completed**, or **Aborted**.
+  - **Analysis status:** The status of the analysis, which can be one of the following: **Running**, **Completed**, or **Aborted**.
     
-  - Service health and SLO performance: Service health score and SLO performance trend chart for the duration of the analysis.
+  - **Service health and SLO performance:** Service health score and SLO performance trend chart for the duration of the analysis.
 
 
