@@ -73,7 +73,7 @@ On the Analyze Deployment Impact settings page, go to the **Step Parameters** ta
    Example:
    Suppose you are deploying updates to your "Payments" monitored service. In the **Monitored Service** dropdown list, it will be displayed as "Default (Payments)." This option will already be selected, indicating that Harness analyzes the impact of your deployment on the health of the "Payments" monitored service for the chosen duration in the Analyze Deployment step.
    
-   Now, let's say you want to assess how your deployment might affect the health of your "Checkout" monitored service. To do this, simply select "Checkout" from the dropdown.
+   Now, let's say you want to assess how your deployment might affect the health of your Checkout monitored service. To do this, simply select **Checkout** from the dropdown.
 
    When you select a monitored service, the health source and the notifications configured for that monitored service are displayed. 
    
