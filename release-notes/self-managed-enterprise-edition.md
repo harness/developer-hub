@@ -2916,7 +2916,7 @@ This release includes the following Harness module and component versions.
 
 - The Redisson client library has been upgraded to version 3.17.7 across all services for enhanced performance and bug resolution. This update will not affect any business operations. (PL-31136)
 - The [Role Assignment](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now includes the principal's name and email address in the response. (PL-31064, ZD-36050)
-- Harness now supports the integration of GCP Secrets Manager for all users. For more information, go to [Add a Google Cloud Secret Manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager). (PL-31051)
+- Harness now supports the integration of GCP Secrets Manager for all users. For more information, go to [Add a Google Cloud Secret Manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager). (PL-31051)
 - The following role-assignments are removed for all the existing users across all the accounts:
   - Account Viewer - All Account Level Resources: This was a role-assignment within the account scope and has been removed for all the users. This does not apply in the following scenarios:
   - If an account has enabled the feature flag ACCOUNT_BASIC_ROLE_ONLY.

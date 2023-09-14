@@ -21,7 +21,7 @@ This topic explains how to add and use a Custom Secret Manager in Harness.
 ### Permissions
 
 * Create/Edit Secrets
-* Create/Edit Connectors![](../../Secrets/static/custom-secret-manager-31.png)
+* Create/Edit Connectors![](../../secrets/static/custom-secret-manager-31.png)
 
 ### Important
 
@@ -59,7 +59,7 @@ This topic shows you how to create a Secret Manager Template at the Project scop
 3. Click Secret Manager. The Secret Manager Template settings appear.
 4. Enter a **Name** for your Secret Manager Template.
 5. Enter a **Version Label**.
-6. Click **Start**.![](../../Secrets/static/custom-secret-manager-33.png)
+6. Click **Start**.![](../../secrets/static/custom-secret-manager-33.png)
 7. Enter your script in **Script**.
 8. Click **Save**.  
 For detailed steps to create a Secret Manager Template, go to [Create a Secret Manager Template](../../templates/create-a-secret-manager-template.md).
@@ -76,14 +76,14 @@ This topic shows you how to add a Custom Secret Manager in the Project scope.
 2. In Project Setup, click **Connectors** and then click **New Connector**.
 3. In **Secret Managers**, click **Custom Secret Manager**.
 
-   ![](../../Secrets/static/custom-secret-manager-34.png)
+   ![](../../secrets/static/custom-secret-manager-34.png)
    
    The Custom Secret Manager settings appear.
 4. Enter a **Name** for your Custom Secret Manager. Click **Continue**.
 5. Click **Select Template**. The Template Library appears with all the [Secret Manager Templates](../../templates/create-a-secret-manager-template.md) listed.
 6. Select the desired scope and select a Secret Manager Template from the Template Library.
    
-   ![](../../Secrets/static/custom-secret-manager-35.png)
+   ![](../../secrets/static/custom-secret-manager-35.png)
 
   You can also search for a specific Secret Manager Template by entering its name in **Search**.
   Once you select the Secret Manager Template, the details are displayed in the Template Studio.  

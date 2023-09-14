@@ -139,13 +139,13 @@ Select the AWS **Region** for the Secret Manager.
 
 If you select this option, Harness will authenticate using the IAM role assigned to the AWS host running the Delegate you select. You can select a Delegate using a Delegate Selector.
 
-Refer to [Secret Name Prefix](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md#secret-name-prefix) and [Region](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md#region) explained above to add these details.
+Refer to [Secret Name Prefix](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md#secret-name-prefix) and [Region](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md#region) explained above to add these details.
 
 ### Option: Assume Role Using STS on Delegate
 
 This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature. Typically, you use `AssumeRole` within your account or for AWS cross-account access.
 
-Refer to [Secret Name Prefix](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md#secret-name-prefix) and [Region](/docs/platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md#region) explained above to add these details.
+Refer to [Secret Name Prefix](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md#secret-name-prefix) and [Region](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md#region) explained above to add these details.
 
 #### Role ARN
 

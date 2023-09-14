@@ -1853,7 +1853,7 @@ This release introduces the following new features and enhancements:
 
 - Harness now supports the integration of GCP Secrets Manager for all users. (PL-31051)
   
-  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager)
+  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager)
 
 - There is a limit on the number of entities that can be created for **FREE** and **COMMUNITY** users in Harness. (PL-30838)
   
@@ -2136,7 +2136,7 @@ infrastructure:
 
 - You can now refer to existing secrets of Azure Key Vault, AWS secret manager, and GCP secret manager. (PL-29915)
 
-  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets).
+  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets).
 
 - You can now use the Git client to commit changes while creating or updating pipelines using Bitbucket on-prem as the Git provider. (PIE-6423)
 

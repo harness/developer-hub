@@ -27,7 +27,7 @@ In **Connectors**, click **Connector**.
 
 In **Secret Managers**, click **AWS KMS**. The **AWS Key Management Service** settings appear.
 
-![](../../Secrets/static/add-an-aws-kms-secrets-manager-53.png)
+![](../../secrets/static/add-an-aws-kms-secrets-manager-53.png)
 ### Step 2: Overview
 
 Enter **Name** for your secret manager.
@@ -54,7 +54,7 @@ Use your AWS IAM user login credentials.
 
 Either from the JSON for the **Key Policy**, or in the AWS **IAM** console, under **Encryption keys,** gather the **AWS Access Key ID**, **AWS Secret Key**, and **Amazon Resource Name (ARN)**.
 
-![](../../Secrets/static/add-an-aws-kms-secrets-manager-54.png)
+![](../../secrets/static/add-an-aws-kms-secrets-manager-54.png)
 For more information, go to [Finding the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) from Amazon.
 
 #### AWS Access Key ID
