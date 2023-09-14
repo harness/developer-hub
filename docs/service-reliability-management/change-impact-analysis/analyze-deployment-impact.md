@@ -45,7 +45,7 @@ If you already have a deployment stage:
 
 ### Configure Analyze Deployment Impact step settings
 
-The Analyze Deployment Impact settings page provides options to configure the step.
+The Analyze Deployment Impact step provides the following options.
 
  <docimage path={require('./static/analyze-deployment-add-step-settings.png')} />
 
