@@ -77,7 +77,7 @@ Notification methods supported for various pipeline events are:
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Secret management" label="Secrets Management">
+  <TabItem value="Secret management" label="Secrets Mgmt">
 ```
 
 import Secretmgmtsup from '/docs/get-started/shared/secret-management-supported.md'
@@ -87,7 +87,7 @@ import Secretmgmtsup from '/docs/get-started/shared/secret-management-supported.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="User management" label="User Management">
+  <TabItem value="User management" label="User Mgmt">
 ```
 
 A Harness user is any individual registered with Harness with a unique email address. A User can be a part of multiple accounts. Go to the following topics to learn more about how to add and manage users.
