@@ -81,7 +81,7 @@ USER 1000
    ```
    curl -X  GET https://app.harness.io/registry/_catalog
    ```
-   You can also [set up your CI pipelines](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) to download build images from this registry instead of Docker Hub.
+   You can also [set up your CI pipelines](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) to download build images from this registry instead of Docker Hub.
 
 2. For each Security Scan step, add these settings:
 

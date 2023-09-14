@@ -189,7 +189,7 @@ Currently, the Cache Intelligence Visual Editor fields are behind the feature fl
 1. Edit the pipeline, and select the **Build** stage where you want to enable Cache Intelligence.
 2. Select the **Overview** tab for the stage.
 3. Make sure **Enable Cache Intelligence** is selected.
-4. Enter the custom key value in **Key**. You can use [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs) for the key value.
+4. Enter the custom key value in **Key**. You can use [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs) for the key value.
 
    <!-- ![](./static/cache_int_custom_key.png) -->
 
@@ -200,7 +200,7 @@ Currently, the Cache Intelligence Visual Editor fields are behind the feature fl
   <TabItem value="YAML" label="YAML" default>
 ```
 
-To customize the cache key in the YAML editor, add `key: CUSTOM_KEY_VALUE` under `stage.spec.caching`. You can use [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs) for the key value.
+To customize the cache key in the YAML editor, add `key: CUSTOM_KEY_VALUE` under `stage.spec.caching`. You can use [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs) for the key value.
 
 The following YAML example uses `<+input>`, which prompts the user to supply a cache key value at runtime.
 

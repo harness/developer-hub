@@ -95,7 +95,7 @@ Perform the following steps to view the GCP Cost Dashboard:
 	
 	  ![](./static/gcp-dashboard-30.png)
 12. Click **Back** to go back to the previous page in the Dashboard.
-13. Click **Download** to download the Dashboard. See [Download Dashboard Data](../../../platform/18_Dashboards/download-dashboard-data.md).
+13. Click **Download** to download the Dashboard. See [Download Dashboard Data](../../../platform/dashboards/download-dashboard-data.md).
 14. You can also drill into Most Expensive Products by Month and view details in the Dashboard.
     
 	  ![](./static/gcp-dashboard-31.png)

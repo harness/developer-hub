@@ -52,7 +52,7 @@ Enter a name summarizing the step's purpose.
 
 ### Id
 
-For information about this setting, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
+For information about this setting, go to [Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md).
 
 ### Description
 

@@ -94,7 +94,7 @@ rules:
   - watch
 ```
   
-* You need to create a Kubernetes Cloud Provider Connector for each Kubernetes cluster. One connector can access only one cluster. See [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
+* You need to create a Kubernetes Cloud Provider Connector for each Kubernetes cluster. One connector can access only one cluster. See [Add a Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
  
 ## Create CCM Connector
 For the CCM Kubernetes connector, you need to reference an existing Cloud Provider Kubernetes Connector. Otherwise, you need to create one.
@@ -210,7 +210,7 @@ import TabItem from '@theme/TabItem';
 ### Overview
  
 1. In the **Kubernetes Connector** wizard, in the **Overview** section, from the **Reference an existing connector** drop-down list, select your Cloud Provider Kubernetes Connector.  
-If you do not have Cloud Provider Kubernetes Connector already created, select **Create a new connector**. See [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
+If you do not have Cloud Provider Kubernetes Connector already created, select **Create a new connector**. See [Add a Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
 2. The name for your connector is automatically populated. You can choose to edit the name. This name appears on the **Perspectives** page to identify this cluster.
    
 3. Select **Save and Continue**.

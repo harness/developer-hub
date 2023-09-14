@@ -602,5 +602,8 @@ If you are using minimal delegate images than this error can come and need to in
 #### Delegate is not coming up with no space left error
 While starting delegate we install some third party binaries(kubectl, helm etc) so those need some space so make sure delegate machne has some disk space left
 
+#### Can I get user group and user lists in CSV or Excel?
+No, we don't support that feature currently.
+
 
 

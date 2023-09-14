@@ -469,7 +469,7 @@ The **Run Tests** step has the following settings.
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
 
 **Description** is optional.
 
@@ -723,7 +723,7 @@ You can inject environment variables into the step container and use them in the
 
 You can reference environment variables in the **Command**, **Pre-Command**, or **Post-Command** scripts by name, such as `$var_name`.
 
-Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
+Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs/). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
 
 <figure>
 
@@ -767,9 +767,9 @@ These settings specify the maximum resources used by the container at runtime:
 
 The timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution continues.
 
-To change what happens when steps fail, go to [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
+To change what happens when steps fail, go to [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
-To configure when pipelines should skip certain steps, go to [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+To configure when pipelines should skip certain steps, go to [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 ## Pipeline YAML examples
 

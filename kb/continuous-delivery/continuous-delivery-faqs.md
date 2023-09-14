@@ -722,7 +722,7 @@ You can enable "Skip Terraform Refresh when inheriting Terraform plan" option, p
 
 #### For variables do we have options to intake parameters via dropdown or radio buttons etc ?
 
-Yes we do, here in the following [Documentation](/docs/platform/references/runtime-inputs/#supplying-runtime-inputs-during-execution) , with allowed values you can have multiple inputs to select from range of values allowed.
+Yes we do, here in the following [Documentation](/docs/platform/variables-and-expressions/runtime-inputs/#supplying-runtime-inputs-during-execution) , with allowed values you can have multiple inputs to select from range of values allowed.
 
 #### In fetch pipeline summary API, what does the fields "numOfErrors" and "deployments" mean?
 
@@ -1269,4 +1269,13 @@ Yes, you can use Bash shell over WinRM connection in Harness. In the Shell Scrip
 
 ### Is it possible to use Helm hooks in Harness Helm deployments?
 Yes, you can use Helm hooks in Harness Helm deployments. Helm hooks allow you to execute specific actions or scripts at different points in the Helm chart's lifecycle, such as before or after installing or upgrading a release. Harness supports the use of Helm hooks as part of your Helm deployment process.
+
+#### I have a placmenetStrategy defined but I don't see it reflected in the task.
+Please check if you have defined placement strategy in service definition and not under task definition
+
+#### When I started setting up the pipelines in Harness, I used my Github PAT. But I couldn't find where I set it and was wondering if it's allowed to be updated by the PAT owner or from your side.
+Usually Git PAT is stored in secret manager and you reference that secret inside connector, so need to update the PAT in secret manager where it's stored.
+
+#### We have templated workflow variables and wish these can be passed from git based Triggers. The values for these variables will be metadata of a pull request
+You can create workflow variable and set the value to corresponding metadata field available as per type of trigger pullrequest variable
 
