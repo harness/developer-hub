@@ -69,7 +69,7 @@ When the pipeline runs, the **SSCA Orchestration** step does the following:
 
 ## Create policies
 
-You must create the [SSCA policies](/docs/category/ssca-policy-enforcement) that you want Harness SSCA to enforce. Create these policies in the Harness File Store.
+You must [create SSCA policies](/docs/software-supply-chain-assurance/ssca-policies/create-ssca-policies) that you want Harness SSCA to enforce. Create these policies in the Harness File Store.
 
 1. In your Harness Project, go to **File Store** under **Project Setup**. You can also create policies at the Account and Org scopes.
 2. Select **New**, and select the manifest as file usage type.

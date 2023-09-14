@@ -17,9 +17,10 @@ Harness SSCA module provides a robust solution for establishing trust in the sof
 
 * **Prevent:** Stop the use of harmful or unauthorized open-source components.
 * **Track:** Provide real-time visibility into the usage and deployment of open-source components.
-* **Remediate:** Respond quickly and effectively to threats by updating and deploying the patched version of impacted components.
 * **Report:** Generate compliance reports adhering to both internal governance policies and external regulations.
 * **Trust:** Establish trust in the software supply chain so that the artifacts produced can be trusted.
+
+<!-- After remediation capability added: * **Remediate:** Respond quickly and effectively to threats by updating and deploying the patched version of impacted components. -->
 
 ## Software Supply Chain Assurance features
 

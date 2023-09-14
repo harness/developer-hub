@@ -58,7 +58,7 @@ You must create a set of OPA policies that you want Harness SSCA to use for SLSA
 
 :::info
 
-OPA polices used for SLSA Provenance verification are different from the [SSCA policies](/docs/category/ssca-policy-enforcement) used for SSCA policy enforcement.
+OPA polices used for SLSA Provenance verification are different from [SSCA policies](/docs/software-supply-chain-assurance/ssca-policies/create-ssca-policies) used for SSCA policy enforcement.
 
 :::
 
