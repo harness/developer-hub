@@ -16,7 +16,7 @@ To add the **Analyze Deployment Impact** step to your pipeline, use one of the m
 
 If you're building a deployment stage and are currently on the **Execution** tab:
 
-1. Select the **+** icon, and then choose **Add Step**.  
+1. Select **Add Step**.  
     The Step Library page appears.
 
     <docimage path={require('./static/analyze-deployment-add-step.png')} />
