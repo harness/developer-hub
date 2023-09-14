@@ -42,7 +42,7 @@ This release does not include any early access features.
 
   This issue has been resolved. Now, values are displayed for all variables on the ARC screen.
 
-- When configuring notifications for code errors and selecting the "Any" option, the "Timeout Error" type was incorrectly listed as one of the choices in the dropdown menu. (CET-1514)
+- When configuring notifications for code errors and selecting the **Any** option, the **Timeout Error** type was incorrectly listed as one of the choices in the dropdown menu. (CET-1514)
 
   This issue has been resolved. Now, when configuring notifications for code errors and selecting the "Any" option, the "Timeout Error" type is not listed in the dropdown menu.
 
