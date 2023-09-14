@@ -34,13 +34,70 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80504, Harness Continuous Verification version 1.0.8
+## Latest: Harness version 807xx, Harness Continuous Verification version 1.x.x
 
 ### New features and enhancements
 
 This release does not have new features.
 
 ### Early access features
+
+– Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-67121)
+
+### Fixed issues
+
+- Previously, the delegate selector was available in the Configure Container step YAML only. This option is now available as an advanced option in the Configure Container step UI. (CDS-78948, ZD-50674)
+
+  ![](./static/cds-78948-delegate-selector-in-config-container-step-ui.png)
+
+- Users can now see the conditional execution icon when the referenced stage or step template has conditional executions configured as runtime inputs only. (CDS-78795)
+
+- Fixed a UI issue in the Pipeline Executions list page related to expanding Executions to view their details. If a new execution was started and displayed on the page, all the displayed executions moved down a line but the expanded execution stayed in the same relative position on the screen (3rd from the top, 4th from the top etc.). 
+
+  With the fix, the correct Execution stays expanded even if new ones get added to the list page. The caveat here is that if the execution id of the expanded execution changes (say when we rerun it), the state is reset on the list page. (CDS-78674, ZD-49928) 
+
+– Fixed an RBAC issue where a user was part of a User Group configured to approve a step but could not approve or reject it. The root cause was that the User Group selected for a pipeline approval also required View permission. With this fix, the User Group does not require View permission for a member of that group to approve a pipeline execution. (CDS-78573, ZD-50139)
+
+- Fixed a Pipeline Execution UI issue where durations of less than 1s were displayed incorrctly. (CDS-78324)
+
+- Previously, you could not re-run a pipeline from a stage that failed as part of a looping strategy. With this fix, **Re-run from Last Failed Stage** pre-selects the last stage that failed as part of a looping strategy. This behavior applies even if the stage failed with a conditional execution set to Always execute this stage. (CDS-77463)
+
+- Previously, only key-value maps were supported as payloads for webhooks. Now, arrays are supported as well. (CDS-77413, ZD-49460)
+
+- Fixed an issue observed when trying to create a Container (CD) step from a template based on a Run (CI) step. With this fix, you can create a Container step from any compatible step templates. (CDS-76756)
+
+- Fixed an issue observed where a Deploy step and subsequent steps proceeded as intended but the pipeline execution appeared stuck in the UI. This was due to a back-end issue where the log processor would miss `lastUpdatedAt` updates if a node had already processed. With this fix, the processor updates `lastUpdatedAt` before it checks if the node has already been processed. (CDS-76521)
+
+- You can now view policy-related updates in the Pipeline Execution console view. (CDS-75213, ZD-46498) 
+
+<!-- 
+
+https://harness.atlassian.net/browse/CDS-78305?focusedCommentId=573244
+
+I documented this as a Fixed Issue in the 805 release notes. Did this get pushed to 807? 
+
+- Fixed a UI issue observed when retrying a pipeline execution: the wrong Execution Id was displayed because the UI was evaluating the sequenceId based on the root executionId. With this fix, the Execution Id is based on the back-end data for the current pipeline execution. (CDS-78305)
+
+-->
+
+
+### Hotfixes
+
+This release does not have hotfixes.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Harness version 80504, Harness Continuous Verification version 1.0.8
+
+##### New features and enhancements
+
+This release does not have new features.
+
+##### Early access features
 
 This release does not include early access features. 
 
@@ -52,7 +109,7 @@ TBD commenting out until I hear back from RG https://harness.atlassian.net/brows
 
 -->
 
-### Fixed issues
+##### Fixed issues
 
 * Fixed a UI issue observed where the wrong **Execution Id** was displayed when retrying a pipeline execution. The wrong **Execution Id** was displayed because the UI was evaluating the `sequenceId` based on the root `executionId`. With this fix, the **Execution Id** is based on the backend data for the current pipeline execution. (CDS-78305)
 
@@ -64,7 +121,6 @@ TBD commenting out until I hear back from RG https://harness.atlassian.net/brows
   - [harnessdev/serverless-package:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-package/3.30.1-1.0.1/images/sha256-1448b1566186023df78cc79b529c06256e327890b5018ed05632775a7c5c4992?context=explore)
   - [harnessdev/serverless-rollback:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-rollback/3.30.1-1.0.1/images/sha256-c023e84a4a7450c4978535569b03e8909a7e6daa9c2fa0ad4ff70a6ee52e02e7?context=explore)
 
-* Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
 
 * When using the OCI Helm connector with anonymous credentials, Harness would incorrectly derive the source port from the OCI repository and the connection validation would fail. With this fix, Harness does not add default port 443 if no port is provided in the URL itself. (CDS-77298)
 
@@ -108,15 +164,9 @@ TBD commenting out until I hear back from RG https://harness.atlassian.net/brows
 
   This issue has been resolved. Now, validation checks are implemented that require you to provide a **Service Instance Identifier** when enabling continuous verification for Datadog metrics. 
 
-### Hotfixes
+##### Hotfixes
 
-This release does not have hotfixes.
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
+* Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
 
 #### Version 80406
 
