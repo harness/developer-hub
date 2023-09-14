@@ -605,5 +605,30 @@ While starting delegate we install some third party binaries(kubectl, helm etc) 
 #### Can I get user group and user lists in CSV or Excel?
 No, we don't support that feature currently.
 
+#### How can I assign the same delegate replica to all steps in my pipeline?
+While there isn't a dedicated configuration option for this purpose, you can output the environment variable $HOSTNAME in a Shell script and refer the delegate selector of the subsequent steps to that output.
+**Short example:**
+```
+# Step 1
+name: select_delegate
+identifier: select_delegate
+spec:
+  spec:
+    script: |
+      HOST_SELECTOR=$HOSTNAME
+  ...
+  outputVariables:
+    - name: HOST_SELECTOR
+      type: String
+      value: HOST_SELECTOR
+
+# Step 2
+name: use delegate
+identifier: use_delegate
+spec:
+  ...
+  delegateSelectors:
+    - <+execution.steps.select_delegate.output.outputVariables.HOST_SELECTOR>
+```
 
 
