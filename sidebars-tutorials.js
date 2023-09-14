@@ -127,7 +127,7 @@ const sidebars = {
         // SSCA
         {
           type: "category",
-          label: "Secure supply chain",
+          label: "Secure Supply Chain",
           link: {
             type: "doc",
             id: "secure-supply-chain",

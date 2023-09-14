@@ -14,13 +14,7 @@ When an SBOM or SLSA Provenance is generated, along with a signed attestation, i
 
 <docimage path={require('./static/view-result-att-in-docker-hub.png')} />
 
-On the **Execution details** page in Harness, you can view and download the SBOM from the **SBOM** column on the **Artifacts** tab.
-
-<!-- ![](./static/view-result-sbom-artifact.png) -->
-
-<docimage path={require('./static/view-result-sbom-artifact.png')} />
-
-You can get the SLSA Provenance from the **Artifact Type** column on the **Artifacts** tab.
+On the **Execution details** page in Harness, you can view and download SBOM and SLSA Provenance from the **Artifacts** tab.
 
 <!-- ![](./static/view-result-slsa-artifact.png) -->
 

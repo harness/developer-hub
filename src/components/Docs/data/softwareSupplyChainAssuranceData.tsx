@@ -75,7 +75,7 @@ import {
               link: "/docs/software-supply-chain-assurance/generate-sbom",
             },
             {
-                title: "Enforce security policies",
+                title: "Enforce SSCA policies",
                 module: MODULES.ssca,
                 description:
                   "Verify SBOM attestations and scan for software supply chain security policy violations.",

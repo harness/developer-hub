@@ -146,11 +146,7 @@ When the pipeline runs, the SBOM is generated and the attestation is signed. The
 
 <docimage path={require('./static/view-result-att-in-docker-hub.png')} />
 
-When viewing the **Execution details** page in Harness, you can view and download the SBOM from **SBOM** column on the **Artifacts** tab.
-
-<!-- ![](./static/view-result-sbom-artifact.png) -->
-
-<docimage path={require('./static/view-result-sbom-artifact.png')} />
+When viewing the **Execution details** page in Harness, you can view and download the SBOM from the **Artifacts** tab.
 
 :::tip
 
@@ -158,7 +154,7 @@ If your pipeline has multiple stages, the **Artifacts** tab is filtered by stage
 
 :::
 
-You can see the number of policy violations in the **Violations** column on the **Artifacts** tab.
+You can also see the number of policy violations in the **Violations** column on the **Artifacts** tab.
 
 <!-- ![](./static/view-result-policy-violations.png) -->
 

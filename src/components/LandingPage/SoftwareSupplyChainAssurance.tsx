@@ -12,7 +12,7 @@ export default function SSCA() {
     // <Layout title="SSCA" description="SSCA">
     //   <ul className={styles.breadCrumb}>
     //     <li>Get Started</li>
-    //     <li>Secure supply chain</li>
+    //     <li>Secure Supply Chain</li>
     //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
