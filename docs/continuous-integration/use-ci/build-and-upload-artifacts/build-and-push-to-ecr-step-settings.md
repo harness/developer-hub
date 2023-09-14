@@ -29,22 +29,22 @@ If your security policy doesn't allow running as root, go to [Build and push wit
 
 ## Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## AWS Connector
 
-Select the Harness [AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector) to use to connect to ECR.
+Select the Harness [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) to use to connect to ECR.
 
-This step supports all [AWS connector authentication methods](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings) (AWS access key, delegate IAM role assumption, IRSA, and cross-account access), but an additional stage variable might be required to [assume IAM roles or use ARNs](#stage-variable-required-to-assume-iam-role-and-arns).
+This step supports all [AWS connector authentication methods](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings) (AWS access key, delegate IAM role assumption, IRSA, and cross-account access), but an additional stage variable might be required to [assume IAM roles or use ARNs](#stage-variable-required-to-assume-iam-role-and-arns).
 
-The AWS IAM roles and policies associated with the AWS account for your Harness AWS connector must allow pushing to ECR. For more information, go to the [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+The AWS IAM roles and policies associated with the AWS account for your Harness AWS connector must allow pushing to ECR. For more information, go to the [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 ### Stage variable required to assume IAM role or use ARNs
 
 Stages with **Build and Push to ECR** steps must have a `PLUGIN_USER_ROLE_ARN` stage variable if:
 
-* Your [AWS connector's authentication uses a cross-account role (ARN)](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#enable-cross-account-access-sts-role). You can use `PLUGIN_USER_ROLE_ARN` to specify the full ARN value corresponding with the AWS connector's ARN.
-* Your AWS connector uses [**Assume IAM Role on Delegate** authentication](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings). If your connector doesn't use **AWS Access Key** authentication, then the **Build and Push to ECR** step uses the IAM role of the build pod or build VM (depending on your build infrastructure). You can use `PLUGIN_USER_ROLE_ARN` to select a different role than the default role assumed by the build pod/machine. This is similar to [`sts assume-role`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/assume-role.html).
+* Your [AWS connector's authentication uses a cross-account role (ARN)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#enable-cross-account-access-sts-role). You can use `PLUGIN_USER_ROLE_ARN` to specify the full ARN value corresponding with the AWS connector's ARN.
+* Your AWS connector uses [**Assume IAM Role on Delegate** authentication](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings). If your connector doesn't use **AWS Access Key** authentication, then the **Build and Push to ECR** step uses the IAM role of the build pod or build VM (depending on your build infrastructure). You can use `PLUGIN_USER_ROLE_ARN` to select a different role than the default role assumed by the build pod/machine. This is similar to [`sts assume-role`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/assume-role.html).
 
 To add the `PLUGIN_USER_ROLE_ARN` stage variable:
 
@@ -137,5 +137,5 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

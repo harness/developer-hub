@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/3_Authentication/3-single-sign-on-saml.md). Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure.
+This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/authentication/single-sign-on-saml.md). Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure.
 
 If the [Harness On-Prem](../../../starthere-firstgen/harness-on-premise-versions.md) version is not accessed using HTTPS load balancer, SAML authentication will fail. Make sure you access the Harness On-Prem version using a HTTPS load balancer, and not a HTTP load balancer. This document explains how to set up SAML authentication and authorization.
 

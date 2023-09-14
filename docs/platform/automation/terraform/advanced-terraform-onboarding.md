@@ -32,7 +32,8 @@ You should set at least:
 - `HARNESS_ACCOUNT_ID`: Your Harness account id.
 - `HARNESS_PLATFORM_API_KEY`: A user or service account token.
 
-You can read more about the provider [here](https://registry.terraform.io/providers/harness/harness/latest/docs) or view our quick-start guide [here](https://developer.harness.io/docs/platform/terraform/harness-terraform-provider/).
+You can read more about the provider [here](https://registry.terraform.io/providers/harness/harness/latest/docs) or view our [quick-start guide](/docs/platform/automation/terraform/harness-terraform-provider).
+
 
 ## [Structure](https://github.com/harness-community/terraform-harness-structure)
 
@@ -217,7 +218,7 @@ module "devops" {
 
 ### [User accounts](https://github.com/harness-community/terraform-harness-rbac/tree/main/modules/user_accounts)
 
-It is not recommended that you create user accounts with terraform. Instead you should explore enabling [SSO](https://developer.harness.io/docs/platform/authentication/single-sign-on-sso-with-oauth/), [SCIM](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim), or SSO linked groups to control user access from your IDP.
+It is not recommended that you create user accounts with terraform. Instead you should explore enabling [SSO](/docs/platform/authentication/single-sign-on-sso-with-oauth/), [SCIM](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim), or SSO linked groups to control user access from your IDP.
 
 ## [Connectors](https://github.com/harness-community/terraform-harness-connectors)
 
@@ -238,7 +239,7 @@ module "dev_k8s_delegate" {
 }
 ```
 
-[Read more about k8s connectors on our developer hub](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector)
+[Read more about k8s connectors on our developer hub](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector)
 
 ### [SCM GitHub](https://github.com/harness-community/terraform-harness-connectors/tree/main/modules/scms/github)
 
@@ -261,7 +262,7 @@ module "github" {
 }
 ```
 
-[Read more about GitHub connectors on our developer hub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+[Read more about GitHub connectors on our developer hub](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 
 ## [Delivery](https://github.com/harness-community/terraform-harness-delivery)
 
@@ -294,7 +295,7 @@ environment:
 }
 ```
 
-[Read more about environments on our developer hub](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/)
+[Read more about environments on our developer hub](/docs/continuous-delivery/get-started/services-and-environments-overview/)
 
 ### [Infrastructures](https://github.com/harness-community/terraform-harness-delivery/tree/main/modules/environments)
 
@@ -383,7 +384,7 @@ service:
 }
 ```
 
-[Read more about services on our developer hub](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/)
+[Read more about services on our developer hub](/docs/continuous-delivery/get-started/services-and-environments-overview/)
 
 ## [Content](https://github.com/harness-community/terraform-harness-content)
 

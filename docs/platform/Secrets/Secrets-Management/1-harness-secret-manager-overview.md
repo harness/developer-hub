@@ -15,7 +15,7 @@ Harness includes a built-in Secret Management feature that enables you to store 
 
 ### Before you begin
 
-* Go to [Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+* Go to [Harness Key Concepts](../../../get-started/key-concepts.md)
 
 ### Visual Summary
 
@@ -29,8 +29,8 @@ Harness sends only encrypted data to the Secret Manager, as follows: 
 
 1. Your browser sends data over HTTPS to Harness Manager.
 2. Harness Manager relays encrypted data to the Harness Delegate, also over HTTPS.
-3. The Delegate exchanges a key pair with the Secret Manager, over an encrypted connection.
-4. The Harness Delegate uses the encrypted key and the encrypted secret and then discards them. The keys never leave the Delegate.
+3. The delegate exchanges a key pair with the Secret Manager, over an encrypted connection.
+4. The Harness Delegate uses the encrypted key and the encrypted secret and then discards them. The keys never leave the delegate.
 
 
 :::info note
@@ -74,14 +74,14 @@ Harness does not currently support migrating secrets from the random-key secrets
 
 :::
 
-If you created a Harness trial account, a Delegate is typically provisioned by Harness, and the default Harness Secret Manager performs encryption/decryption.
+If you created a Harness trial account, a delegate is typically provisioned by Harness, and the default Harness Secret Manager performs encryption/decryption.
 
 #### Harness Secrets and Harness Git Experience
 
-When you set up [Harness Git Experience](../../10_Git-Experience/git-experience-overview.md), you select the Connectivity Mode for Git syncing. You have two options:
+When you set up [Harness Git Experience](../../git-experience/git-experience-overview.md), you select the Connectivity Mode for Git syncing. You have two options:
 
 * **Connect Through Manager:** Harness SaaS will connect to your Git repo whenever you make a change and Git and Harness sync.
-* **Connect Through Delegate:** Harness will make all connections using the Harness Delegate. This option is used for Self-Managed Enterprise Edition frequently, but it is also used for Harness SaaS. Go to [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/introduction/getting-started).
+* **Connect Through Delegate:** Harness will make all connections using the Harness Delegate. This option is used for Self-Managed Enterprise Edition frequently, but it is also used for Harness SaaS. Go to [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/get-started/onboarding-guide).
 
 If you select **Connect Through Manager**, the Harness Manager decrypts the secrets you have set up in the Harness Secret Manager.
 

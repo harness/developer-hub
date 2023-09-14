@@ -92,7 +92,7 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 ## Prepare the codebase
 
 1. Fork the tutorial repo [keen-software/goHelloWorldServer](https://github.com/keen-software/goHelloWorldServer) to your GitHub account. Alternately, you can use your own code repo. This tutorial works for any Git repo that you can access.
-2. Create a GitHub personal access token with the `repo`, `admin:repo_hook`, and `user` scopes. For instructions, go to the GitHub documentation on [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
+2. Create a GitHub personal access token with the `repo`, `admin:repo_hook`, and `user` scopes. For instructions, go to the GitHub documentation on [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
 3. Make note of the token; you'll need it later in the tutorial.
 4. In Harness, switch to the **Project** you want to use for this tutorial, or create a project.
 
@@ -115,7 +115,7 @@ If this is your first project with CI, the CI pipeline wizard starts after you s
 
 ### Create a GitHub connector
 
-Next, you'll create a _connector_ that allows Harness to connect to your Git codebase, and you'll install a Harness Delegate in your Kubernetes cluster. A connector is a configurable object that connects to an external resource automatically while the pipeline runs. For more information, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
+Next, you'll create a _connector_ that allows Harness to connect to your Git codebase, and you'll install a Harness Delegate in your Kubernetes cluster. A connector is a configurable object that connects to an external resource automatically while the pipeline runs. For more information, go to the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 
 1. Under **Project Setup**, select **Connectors**.
 2. Select **New Connector**, and then select **GitHub** under **Code Repositories**.
@@ -171,7 +171,7 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
 
 ## Create a pipeline
 
-Pipelines are comprised of one or more stages. Each stage has one or more steps that manage and automate builds, tests, deployments, and other important build and release tasks. To learn more about pipeline components, go to [CI pipeline components](/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics).
+Pipelines are comprised of one or more stages. Each stage has one or more steps that manage and automate builds, tests, deployments, and other important build and release tasks. To learn more about pipeline components, go to [CI pipeline components](/docs/continuous-integration/get-started/key-concepts).
 
 1. Select **Pipelines**, and then select **Create a Pipeline**.
 2. Enter a **Name** for the pipeline. Harness automatically creates a pipeline ID based on the name. Once the pipeline is created, you can't change the ID. You can use the ID to reference subordinate elements of a pipeline, such as the names of variables within the pipeline.
@@ -196,7 +196,7 @@ Next, you need to define the build infrastructure. Harness offers several [build
 1. Select the **Infrastructure** tab for your Build stage.
 2. Under **Infrastructure**, select **Kubernetes**.
 3. Under **Platform**, select the **Kubernetes Cluster** field to open the **Create or Select an Existing Connector** window.
-4. Select **New Connector**, and configure the connector as follows. For detailed instructions and information about these settings, go to [Add a Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector/).
+4. Select **New Connector**, and configure the connector as follows. For detailed instructions and information about these settings, go to [Add a Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector/).
 
    * **Name:** Enter `ci-delegate`
    * **Details:** Select **Use the credentials of a specific Harness Delegate**.

@@ -43,5 +43,5 @@ Below is a picture of the cloud shell you will see during an exam.
 5. Follow the instructions provided within the lab environment to complete the hands-on exercises. The instructions will guide you through the necessary steps and provide any additional information or resources you may need.
 6. As you progress through the lab, make sure to read the instructions carefully and perform the tasks as directed. 
 
-
-
+## Troubleshooting
+Please see our [FAQ](/certifications/faqs) section for troubleshooting tips. You can also email our certification team at [certifications@harness.io](mailto:certifications@harness.io).

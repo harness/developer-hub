@@ -13,20 +13,20 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-In Harness CI, you set up a [codebase](./create-and-configure-a-codebase.md) by creating a [Harness connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) that connects to a Git repo. Pipelines use this connector to clone the code that you want to build and test. When a pipeline runs, Harness also fetches Git details and displays them in the [build details](../viewing-builds.md).
+In Harness CI, you set up a [codebase](./create-and-configure-a-codebase.md) by creating a [Harness connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) that connects to a Git repo. Pipelines use this connector to clone the code that you want to build and test. When a pipeline runs, Harness also fetches Git details and displays them in the [build details](../viewing-builds.md).
 
 This topic describes how codebase variables are resolved and the built-in Harness expressions that you can use to reference Git codebase attributes in your pipelines.
 
 For more information about variables and expressions, go to:
 
-* [Built-in and custom Harness variables reference](../../../platform/12_Variables-and-Expressions/harness-variables.md)
+* [Built-in and custom Harness variables reference](../../../platform/variables-and-expressions/harness-variables.md)
 * [CI environment variables reference](../optimize-and-more/ci-env-var.md)
 
 ## Requirements
 
 You must use a supported codebase: GitHub, Bitbucket, or GitLab.
 
-Your [code repo connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) must use **Username and Token** authentication and allow API access (**Enable API access**).
+Your [code repo connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) must use **Username and Token** authentication and allow API access (**Enable API access**).
 
 ## Variable resolution
 
@@ -74,7 +74,7 @@ Codebase variables aren't resolved in these scenarios:
 
 ## Reference codebase variables
 
-You can use [Harness' expressions](/docs/platform/references/runtime-inputs/#expressions) to reference various codebase attributes in your **Build** (`CI`) stages. Expressions are formatted as `<+PARENT.CHILD>`, such as `<+codebase.commitSha>`, where `commitSha` is an attribute within `codebase`.
+You can use [Harness' expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference various codebase attributes in your **Build** (`CI`) stages. Expressions are formatted as `<+PARENT.CHILD>`, such as `<+codebase.commitSha>`, where `commitSha` is an attribute within `codebase`.
 
 For example, you can add a [Run step](../run-ci-scripts/run-step-settings.md) with a series of `echo` commands to your pipeline to reference codebase variables:
 

@@ -22,8 +22,8 @@ You can't share access credentials or other [Text Secrets](/docs/platform/secret
 
 This topic assumes you have created a pipeline and that you are familiar with the following:
 
-* [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md)
-* [CI pipeline basics](../../ci-quickstarts/ci-pipeline-basics.md)
+* [Harness key concepts](/docs/get-started/key-concepts.md)
+* [CI pipeline basics](../../get-started/key-concepts.md)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * [Build infrastructure](/docs/category/set-up-build-infrastructure)
 
@@ -31,12 +31,12 @@ This topic assumes you have created a pipeline and that you are familiar with th
 
 You need a dedicated GCS bucket for your Harness cache operations. Don't save files to the bucket manually. The Retrieve Cache operation fails if the bucket includes any files that don't have a Harness cache key.
 
-You need a [GCP connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/) that authenticates through a GCP service account key. To do this:
+You need a [GCP connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/) that authenticates through a GCP service account key. To do this:
 
 1. In GCP, create an IAM service account. Note the email address generated for the IAM service account; you can use this to identify the service account when assigning roles.
-2. Assign the required GCS roles to the service account, as described in the [GCP connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#gcs-and-gcr-role-requirements).
+2. Assign the required GCS roles to the service account, as described in the [GCP connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#gcs-and-gcr-role-requirements).
 3. Generate a JSON-formatted service account key.
-4. In the GCP connector's **Details**, select **Specify credentials here**, and then provide the service account key for authentication. For more information, refer to **Store service account keys as Harness secrets** in the [GCP connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#gcp-connector-settings).
+4. In the GCP connector's **Details**, select **Specify credentials here**, and then provide the service account key for authentication. For more information, refer to **Store service account keys as Harness secrets** in the [GCP connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#gcp-connector-settings).
 
 ## Add save and restore cache steps
 
@@ -128,11 +128,11 @@ Depending on the stage's build infrastructure, some settings may be unavailable 
 
 #### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 #### GCP Connector
 
-The Harness connector for the GCP account where you want to save the cache. For more information, go to [Google Cloud Platform (GCP) connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
+The Harness connector for the GCP account where you want to save the cache. For more information, go to [Google Cloud Platform (GCP) connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
 
 This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
 
@@ -182,8 +182,8 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 </details>
 
@@ -212,7 +212,7 @@ Depending on the stage's build infrastructure, some settings may be unavailable 
 
 #### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 #### GCP Connector
 
@@ -260,8 +260,8 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 </details>
 

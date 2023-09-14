@@ -115,7 +115,7 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.24.9
 - 1.25.6
 
-For details on other tools and versions included in Harness, see [Delegate-required SDKs](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-required-sdks).
+For details on other tools and versions included in Harness, see [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks).
 
 Guidelines:
 
@@ -480,7 +480,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <details>
 <summary>Builds in CD</summary>
 
-Continuous Integration (CI) can be performed in Harness using the module and [CI pipelines](/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics).
+Continuous Integration (CI) can be performed in Harness using the module and [CI pipelines](/docs/continuous-integration/get-started/key-concepts).
 
 If you are using Harness Continuous Delivery (CD) but not Harness Continuous Integration (CI), you can still perform CI using the Jenkins step in your CD stage.
 
@@ -610,11 +610,11 @@ Harness also supports Terraform Cloud and Enterprise.
   - [Resource Constraints](/docs/continuous-delivery/manage-deployments/deployment-resource-constraints)
   - [Queue steps](/docs/continuous-delivery/manage-deployments/control-resource-usage-with-queue-steps)
   - [Deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze)
-  - [Failure strategies](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings//)
-  - [Conditional executions](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-  - [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-  - [Triggers](https://developer.harness.io/docs/category/triggers)
-  - [Input set and overlays](https://developer.harness.io/docs/platform/pipelines/input-sets/)
+  - [Failure strategies](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+  - [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+  - [Looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+  - [Triggers](/docs/category/triggers)
+  - [Input set and overlays](/docs/platform/pipelines/input-sets/)
 - **Utilities:**
   - [Run a Docker container in a CD stage](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step)
   - [Using HTTP requests in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step)
@@ -638,13 +638,13 @@ Harness also supports Terraform Cloud and Enterprise.
 
 Manifests, specifications, config files, and other deployment files can be pulled from the following providers:
 
-- [Harness File Store](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/)
-- [Git on any platform](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
-- [Github](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-- [GitLab](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-- [Bitbucket](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-- [AWS CodeCommit](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
-- [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo/)
+- [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/)
+- [Git on any platform](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
+- [Github](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+- [GitLab](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+- [Bitbucket](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+- [AWS CodeCommit](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
+- [Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo/)
 
 
 The following table lists where you can store your manifests or config files for each integration.
@@ -763,4 +763,6 @@ All CD features supported in Harness SaaS are also supported in Self-Managed Ent
 - **ServiceNow:** ServiceNow versions [Utah](https://www.servicenow.com/now-platform/latest-release.html) and earlier are supported.
 - **Jira:** Jira on-premise versions < 9.0 are supported. To support Jira on-premise >= 9.0, the feature flag `SPG_USE_NEW_METADATA` must be enabled.
 - **GitOps:** The Harness GitOps Agent does not support custom certificates in Self-Managed Enterprise Edition.
+- **GitOps:** The Harness GitOps Agent does not yet support installing agents in specific cluster namespaces in Self-Managed Enterprise Edition.
 - **Policy as Code:** Harness Git Experience support for OPA policies is not supported in Self-Managed Enterprise Edition.
+- **Harness AI Development Assistant(AIDA):** To support AIDA in Self Managed Enterprise Edition running in an offline environment, you must whitelist https://harness.openai.azure.com

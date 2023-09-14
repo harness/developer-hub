@@ -41,7 +41,7 @@ export const featuredTutorials: CardItem[] = [
           title: "Onboarding guide",
           module: MODULES.platform,
           description:
-            "Onboarding guide for the Harness Platform.",
+            "A self-service onboarding guide for Harness Platform.",
           link: "/docs/platform/get-started/onboarding-guide",
         },
         {
@@ -112,7 +112,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "Use OPA policies to enforce governance.",
-          link: "/docs/platform/Governance/Policy-as-code/harness-governance-quickstart",
+          link: "/docs/platform/governance/Policy-as-code/harness-governance-quickstart",
         },
       ],
   },

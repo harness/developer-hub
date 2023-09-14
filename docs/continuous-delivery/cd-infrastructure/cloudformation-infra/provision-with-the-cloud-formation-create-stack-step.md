@@ -34,13 +34,13 @@ The **Create Stack** step is where you connect Harness to your templates and pro
 
 In **Name**, enter a name for the step, for example, **C****reate EC2 Instance**.
 
-Harness will create an [Entity Id](/docs/platform/20_References/entity-identifier-reference.md) using the name. The Id is very important. You can use an Harness expression and Id to refer to settings in this step from another step.
+Harness will create an [Entity Id](/docs/platform/references/entity-identifier-reference.md) using the name. The Id is very important. You can use an Harness expression and Id to refer to settings in this step from another step.
 
-See [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md).
+See [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md).
 
 ### Timeout
 
-In **Timeout**, enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
+In **Timeout**, enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
 ### Provisioner Identifier
 
@@ -112,7 +112,7 @@ Harness expressions and secrets can be used in templates. They are resolved at r
 See:
 
 * [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
+* [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### Stack Name
 
@@ -157,7 +157,7 @@ In **Cloud Formation Parameter Files**, click **Add**.
 
 In **Parameter File Connector**, select your Git platform, and the select or add a Git Connector. See [Code Repo Connectors](https://newdocs.helpdocs.io/category/xyexvcc206) for steps on adding a Git Connector.
 
-For AWS S3, see [Add an AWS Connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+For AWS S3, see [Add an AWS Connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
 In **Parameter File Details**, enter the following:
 
@@ -177,7 +177,7 @@ Harness expressions and secrets can be used in parameter files and in the **Para
 See:
 
 * [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
+* [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### Option: CloudFormation Parameters Overrides
 
@@ -235,9 +235,9 @@ Harness checks if the stack is in `ROLLBACK_COMPLETE` state before the deploymen
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 

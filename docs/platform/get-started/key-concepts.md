@@ -32,8 +32,8 @@ User: A Harness User is any individual registered with Harness with a unique ema
 User Group: A collection of users can be grouped into a User Group. User Groups then act as a principal for role assignment (see next section) as well as a notification receiver. Notifications can be configured with email/alias, Slack Webhook, Microsoft Teams Webhook and PagerDuty as channels.
 
 Docs: 
-[User Management](/docs/platform/role-based-access-control/add-users) | 
-[User Group Management](/docs/platform/role-based-access-control/add-user-groups)
+- [User Management](/docs/platform/role-based-access-control/add-users) 
+- [User Group Management](/docs/platform/role-based-access-control/add-user-groups)
 
 ## Role-Based Access Control (RBAC)
 RBAC enables users and user groups to be assigned resource-specific permissions. The specific list of resources is grouped into a resource group. The assignment of a role to a resource group makes the role actionable and is known as a role binding. Role bindings act on the scope of the entire Account, only the shared resources of an Account, one or more Organizations, and one or more Projects. 
@@ -44,11 +44,11 @@ Docs:
 ## Connectors
 Connectors enable the integration of the Harness Platform with external systems by managing the authentication and authorization settings needed. 
 
-Docs:[Connectors](/docs/category/connectors)
+Docs: [Connectors](/docs/category/connectors)
 - [Source Code Repositories](/docs/category/code-repositories)
 - [Artifact Repositories](/docs/category/artifact-repositories)
 - [Cloud Providers](/docs/category/cloud-providers)
-- [Monitoring & Logging Systems](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
+- [Monitoring & Logging Systems](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
 - [Ticketing Systems](/docs/category/ticketing-systems-1)
 - [Secret Managers](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview)
 
@@ -57,21 +57,36 @@ Docs:[Connectors](/docs/category/connectors)
 Service accounts are similar to users but without any human user association since they are meant for external systems to integrate with Harness Platform. You assign roles and resource groups to service accounts, and then you create API keys for the service account. These API keys are used to authenticate and authorize remote services attempting to perform operations in Harness through Harness APIs. The API keys inherit the role bindings assigned to the service account.
 
 Docs:
-Manage service accounts
+[Manage service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account)
 
 ## Delegates
 Harness Delegate is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate to execute CD pipeline and other tasks on your behalf, without any of your secrets leaving your network. You can install the Harness Delegate on either Docker or Kubernetes.
 
 Docs:
-Delegate Overview
-Tutorials:
-Install Delegate on Kubernetes or Docker
+[Delegate Overview](/docs/platform/Delegates/delegate-concepts/delegate-overview)
 
-## Governance using Policy-as-Code 
+Tutorials:
+[Install Delegate on Kubernetes or Docker](/tutorials/platform/install-delegate)
+
+## Governance using Policy as Code
+Adding governance guardrails with Open Policy Agent (OPA) based policies is easy. Edit one of the policy-as-code samples or writer your own.
+
+Docs:
+[Policy as Code overview](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## Templates
+Templates enhance developer productivity, reduce onboarding time, and enforce standardization across the teams that use Harness. You can create re-usable logic for managing Harness entities like steps, stages, and pipelines. You can link templates in your pipelines or share them with your teams for improved efficiency.
+
+Docs:
+[Templates overview](/docs/platform/Templates/template)
+
+Tutorials:
+[Pipeline templates](/tutorials/cd-pipelines/templates)
 
 ## Automation
-### Terraform Provider
-### CLI
-### API
+You can automate the management of Harness entities in your account using one or more of the following approaches.
+
+Docs:
+- [Terraform Provider](/docs/category/terraform-provider)
+- [CLI](/docs/category/cli)
+- [API](/docs/category/api)

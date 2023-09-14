@@ -22,17 +22,17 @@ If your security policy doesn't allow running as root, go to [Build and push wit
 
 ## Add the Build and Push to GCR step
 
-Add the **Build and Push to GCR** step to the [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../prep-ci-pipeline-components.md) If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+Add the **Build and Push to GCR** step to the [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../prep-ci-pipeline-components.md) If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 
 The **Build and Push to GCR** step settings are described below. Depending on the stage's build infrastructure, some settings may be unavailable or located under **Optional Configuration** in the visual pipeline editor. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ### GCP Connector
 
-The Harness GCP connector to use to connect to GCR. The GCP account associated with the GCP connector needs specific roles. For more information, go to [Google Cloud Platform (GCP) connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
+The Harness GCP connector to use to connect to GCR. The GCP account associated with the GCP connector needs specific roles. For more information, go to [Google Cloud Platform (GCP) connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
 
 This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
 
@@ -119,15 +119,15 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ### Advanced settings
 
 You can find the following settings on the **Advanced** tab in the step settings pane:
 
-* [Conditional Execution](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md): Set conditions to determine when/if the step should run.
-* [Failure Strategy](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md): Control what happens to your pipeline when a step fails.
+* [Conditional Execution](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md): Set conditions to determine when/if the step should run.
+* [Failure Strategy](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md): Control what happens to your pipeline when a step fails.
 
 ## Run the pipeline
 
@@ -148,4 +148,4 @@ If the build succeeds, you can find your pushed image on GCR.
 * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 * [Delegate overview](/docs/platform/Delegates/delegate-concepts/delegate-overview)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
-* [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Harness key concepts](../../../get-started/key-concepts.md)

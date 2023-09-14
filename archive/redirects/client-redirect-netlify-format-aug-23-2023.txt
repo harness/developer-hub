@@ -237,7 +237,7 @@ https://developer.harness.io/docs/feature-flags/ff-using-flags/ff-build-pipeline
 https://developer.harness.io/docs/feature-flags/ff-using-flags/ff-build-pipeline/default-pipeline-ff https://developer.harness.io/docs/feature-flags/ff-build-pipeline/default-pipeline-ff
 https://developer.harness.io/docs/feature-flags/ff-using-flags/relay-proxy https://developer.harness.io/docs/feature-flags/relay-proxy
 https://developer.harness.io/docs/feature-flags/ff-using-flags/relay-proxy/deploy-relay-proxy https://developer.harness.io/docs/feature-flags/relay-proxy/deploy-relay-proxy
-https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics
+https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/key-concepts https://developer.harness.io/docs/continuous-delivery/get-started/key-concepts
 https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview https://developer.harness.io/docs/continuous-delivery/get-started/services-and-environments-overview
 https://developer.harness.io/tutorials/build-code https://developer.harness.io/tutorials/ci-pipelines
 https://developer.harness.io/tutorials/build-code/fastest-ci https://developer.harness.io/tutorials/ci-pipelines/fastest-ci

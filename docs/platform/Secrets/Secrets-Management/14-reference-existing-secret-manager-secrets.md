@@ -91,7 +91,6 @@ To dynamically reference secrets in HashiCorp Vault, make sure you use the expre
 `<+secrets.getValue()>`
 :::
 
-
 ### Option: AWS Secrets Manager secrets
 
 You can create a Harness secret that refers to an existing secret in AWS Secrets Manager using the name of the secret, and a prefix if needed. For example, `mySecret`.

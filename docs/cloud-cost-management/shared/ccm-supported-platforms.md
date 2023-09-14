@@ -13,11 +13,11 @@ import TabItem from '@theme/TabItem';
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **RBAC Support** |
 | --- | --- | --- | --- | --- | --- |
 |Perspectives | ✅  | ✅  | ✅  | ✅  | ✅ |
-|Cost Categories | ✅  | ✅  | ✅  | ✅ | |
+|Cost categories | ✅  | ✅  | ✅  | ✅ | |
 |BI dashboards |✅  |✅ | ✅ | ✅ | ✅ |
 |Anomaly detection  | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Currency Standardisation | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Inventory Management | Supported services and products: <ul><li>EC2</li><li> RDS</li><li>EBS</li></ul> | Supported services and products: <ul><li>Azure VM</li></ul>| Supported services and products: <ul><li>Instances</li><li> Disks</li></ul> | NA | Managed through Dashboards |
+|Currency standardization | ✅ | ✅ | ✅ | ✅ | ✅ |
+|Inventory management | Supported services and products: <ul><li>EC2</li><li> RDS</li><li>EBS</li></ul> | Supported services and products: <ul><li>Azure VM</li></ul>| Supported services and products: <ul><li>Instances</li><li> Disks</li></ul> | NA | Managed through Dashboards |
 
 <details>
 <summary>Perspectives</summary>
@@ -59,7 +59,7 @@ Any of the following CCM cloud connectors in a healthy state:
 
 ### Documentation link
 
- [Perspectives overview](https://developer.harness.io/docs/category/perspectives)
+ [Perspectives overview](/docs/category/perspectives)
 
 
 </details>
@@ -111,7 +111,7 @@ Any of the following CCM cloud connectors in a healthy state:
 
 ### Documentation link
 
- [Cost Categories overview](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories)
+ [Cost Categories overview](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories)
 
 
 </details>
@@ -145,7 +145,7 @@ If you have cloud provider bills in different currencies, currency standardizati
 
 ### Documentation link
 
-[Set up currency preferences](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/currency-preferences)
+[Set up currency preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/currency-preferences)
 
 
 </details>
@@ -190,7 +190,7 @@ Any of the following CCM cloud connectors in a healthy state:
 
 ### Documentation link
 
- [Detect cloud cost anomalies](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm)
+ [Detect cloud cost anomalies](/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm)
 
 </details>
 
@@ -240,7 +240,7 @@ The following data can be consumed through dashboards:
 
 ### Documentation link
 
- [Dashboards](https://developer.harness.io/docs/category/dashboards)
+ [Dashboards](/docs/category/dashboards)
 
 </details>
 
@@ -336,6 +336,10 @@ AutoScaling groups behind ALB running HTTP(s) workloads
   - AutoPilot mode
 - Kops
 
+:::important note
+Harness does not currently support importing a VM for AutoStopping proxy creation. Harness will provision the AutoStopping proxy.
+:::
+
 ##### Supported resources
   - Deployment
   - Statefulset
@@ -366,12 +370,17 @@ The supported Kubernetes version for AutoStopping is 1.19 or higher.
   - API
   - Terraform
 
+:::important note
+Harness does not currently support proxy provisioning via Terraform.
+
+:::
+
 ### **Supported Platforms**
   - SaaS
 
 ### **Documentation link** 
 
- [AutoStopping rules](https://developer.harness.io/docs/category/autostopping-rules)
+ [AutoStopping rules](/docs/category/autostopping-rules)
 
 </details>
 
@@ -445,7 +454,7 @@ The recommendations are computed by analyzing the past utilization of CPU and me
 
 ### Documentation link
 
-[Recommendations](https://developer.harness.io/docs/category/recommendations)
+[Recommendations](/docs/category/recommendations)
 
 </details>
 
@@ -515,7 +524,7 @@ The recommendations are computed by analyzing the past utilization of CPU and me
 
 ### Documentation link 
 
-[Asset Governance](https://developer.harness.io/docs/category/asset-governance/)
+[Asset Governance](/docs/category/asset-governance/)
 
 </details>
 
@@ -565,7 +574,7 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
 
 ### Documentation link
 
-[Budgets](https://developer.harness.io/docs/category/budgets)
+[Budgets](/docs/category/budgets)
 
 </details>
 
@@ -575,9 +584,38 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
   </TabItem>
 </Tabs>
 ```
-
-
 :::important note
 Harness does not currently support AWS China regions.
 :::
-For a comprehensive list of supported features in other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).
+
+
+## CCM on Harness Self-Managed Enterprise Edition
+
+Review the following information about what installation infrastructure and CCM features are supported on Harness Self-Managed Enterprise Edition. 
+
+### Supported installation infrastructure for CCM on Harness Self-Managed Enterprise Edition
+
+AWS is the only supported installation infrastructure. If you do not install Harness Self-Managed Enterprise Edition on AWS, then you cannot use the CCM features. 
+
+### Supported CCM features on Harness Self-Managed Enterprise Edition
+
+The following table provides the feature support matrix for CCM on Harness Self-Managed Enterprise Edition. 
+  
+| **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **Connected environment** | **Air-gapped environment** |
+| --- | --- | --- | --- | --- | --- | --- |
+|Perspectives | ✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Cost categories | ✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Budgets | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ |
+|BI dashboards |✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Anomaly detection  | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Currency standardization | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+|Recommendations |✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
+|AutoStopping | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+|Asset governance | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+
+:::note
+Perspective preferences are not supported on Harness SMP.
+:::
+
+For a comprehensive list of supported features in other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).

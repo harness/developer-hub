@@ -76,7 +76,7 @@ connector:
   <TabItem1 value="API" label="API">
 ```
 
-Create the Terraform Cloud connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors/#operation/createConnector) API.
+Create the Terraform Cloud connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors/#operation/createConnector) API.
 
 <details>
 <summary>Terraform Cloud connector API example</summary>

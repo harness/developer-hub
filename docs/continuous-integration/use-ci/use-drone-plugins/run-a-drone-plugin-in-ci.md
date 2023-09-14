@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
 Drone plugins are Docker containers that perform predefined tasks. You can use the **Plugin** step to run plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/) in your Harness CI pipelines. You can also [write your own custom plugins](./custom_plugins.md). For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md).
 
-This topic assumes you're familiar with [pipeline creation](../prep-ci-pipeline-components.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+This topic assumes you're familiar with [pipeline creation](../prep-ci-pipeline-components.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 
 <details>
 <summary>About Drone</summary>
@@ -43,7 +43,7 @@ Add the **Plugin** step to the **Build** stage of your CI pipeline, and configur
 
 * **Name:** Enter a name for the step.
 * **Description:** Optional description.
-* **Container Registry:** Select a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+* **Container Registry:** Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 * **Image:** Enter the plugin's Docker image, such as `plugins/download`. You can find this on the plugin's page on the [Drone Plugins Marketplace](https://plugins.drone.io/).
 * **Settings:** Enter key-value pairs representing plugin settings. You can find this on the plugin's page on the [Drone Plugins Marketplace](https://plugins.drone.io/) or in the plugin's README.
 * For information about other settings, go to the [Plugin step settings reference](./plugin-step-settings-reference.md).
@@ -61,7 +61,7 @@ Add the `Plugin` step to your `CI` stage with the following settings:
 
 * `type: Plugin`
 * `name:` A name for the step
-* `connectorRef:` The ID of a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+* `connectorRef:` The ID of a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 * `image:` The plugin's Docker image, such as `plugins/download`. You can find this on the plugin's page on the [Drone Plugins Marketplace](https://plugins.drone.io/).
 * `settings:` A mapping of key-value pairs representing plugin settings. You can find this on the plugin's page on the [Drone Plugins Marketplace](https://plugins.drone.io/) or in the plugin's README.
 * For information about other settings, go to the [Plugin step settings reference](./plugin-step-settings-reference.md).

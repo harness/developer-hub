@@ -16,7 +16,7 @@ You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md
 ## Requirements
 
 * You have access to a Sonatype Nexus Repository Manager instance.
-* You have a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+* You have a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 * Your pipeline has steps that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
 
 ## Add the Plugin step
@@ -28,7 +28,7 @@ You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md
 
 1. In your CI pipeline's **Build** stage, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md).
 2. Enter a **Name** and optional **Description**.
-3. For **Container Registry**, select a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+3. For **Container Registry**, select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 4. In the **Image** field, enter `harnesscommunity/publish-nexus-repository:1.1.1`.
 5. Under **Optional Configuration**, add **Settings** to configure the Nexus Publisher plugin's properties, as described in the following table.
 
@@ -76,7 +76,7 @@ The following YAML example describes a [Plugin step](../use-drone-plugins/plugin
 *  `type: Plugin`
 *  `name:` Specify a step name.
 *  `identifier:` Specify a unique step ID.
-*  `connectorRef:` Specify a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+*  `connectorRef:` Specify a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 *  `image: harnesscommunity/publish-nexus-repository:1.1.1`
 *  `settings:` Configure the Nexus Publisher plugin's properties, as described in the following table.
 

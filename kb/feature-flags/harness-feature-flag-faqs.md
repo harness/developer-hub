@@ -61,7 +61,7 @@ When the SDK performs authentication, it receives a JWT. By signing this JWT wit
 
 #### The documentation mentions adding a secret manager. Is using a secret manager mandatory for configuring the auth-secret?
 
-Yes, using a secret manager is a requirement when configuring the auth-secret. The secret manager ensures that sensitive information like the authentication secret is securely stored and managed. You can find detailed instructions on setting up a secret manager [here](https://developer.harness.io/docs/feature-flags/relay-proxy/configuration/#auth)
+Yes, using a secret manager is a requirement when configuring the auth-secret. The secret manager ensures that sensitive information like the authentication secret is securely stored and managed. You can find detailed instructions on setting up a secret manager [here](/docs/feature-flags/relay-proxy/configuration/#auth)
 
 #### If I have targets set and then do a percentage rollout on a feature flag, does the percentage include those already opted in, effectively stacking percentages?
 
@@ -69,7 +69,7 @@ No, target-specific overrides take priority. The rollout percentage applies to u
 
 #### Is there a document explaining the behavior after an SDK's feature flag change?
 
-Yes, you can find a detailed overview of how Harness Feature Flags' SDKs behave after a flag change in the provided chart [here](https://developer.harness.io/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags/)
+Yes, you can find a detailed overview of how Harness Feature Flags' SDKs behave after a flag change in the provided chart [here](/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags/)
 
 #### For target groups with a criteria of type "Target based on condition" is there any way of seeing which targets are actually part of the group?
 

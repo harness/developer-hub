@@ -19,19 +19,19 @@ This topic explains how to configure the **Build and Push to ACR** step in a Har
 
 ## Add the Build and Push to ACR step
 
-Add the **Build and Push to ACR** step to the [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../prep-ci-pipeline-components.md) If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+Add the **Build and Push to ACR** step to the [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../prep-ci-pipeline-components.md) If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 
 The **Build and Push to ACR** step settings are described below. Some settings are located under **Optional Configuration** in the visual pipeline editor.
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ### Azure Connector
 
 The Harness Azure Cloud connector to use to connect to your ACR. This step supports Azure Cloud connectors that use access key authentication. This step doesn't support Azure Cloud connectors that inherit delegate credentials.
 
-For more information about Azure connectors, including details about required permissions, go to [Add a Microsoft Azure Cloud Provider connector](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector).
+For more information about Azure connectors, including details about required permissions, go to [Add a Microsoft Azure Cloud Provider connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
 
 ### Repository
 
@@ -106,16 +106,16 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ### Advanced settings
 
 You can find the following settings on the **Advanced** tab in the step settings pane:
 
-* [Conditional Execution](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md): Set conditions to determine when/if the step should run.
-* [Failure Strategy](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md): Control what happens to your pipeline when a step fails.
-* [Looping Strategies Overview -- Matrix, Repeat, and Parallelism](/docs/platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md): Define a looping strategy for an individual step.
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md): Set conditions to determine when/if the step should run.
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md): Control what happens to your pipeline when a step fails.
+* [Looping Strategies Overview -- Matrix, Repeat, and Parallelism](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism.md): Define a looping strategy for an individual step.
 
 ## Run the pipeline
 
@@ -132,4 +132,4 @@ If the build succeeds, you can find your pushed image on ACR.
 * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 * [Delegate overview](/docs/platform/Delegates/delegate-concepts/delegate-overview)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
-* [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Harness key concepts](../../../get-started/key-concepts.md)

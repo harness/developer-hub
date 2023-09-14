@@ -14,7 +14,7 @@ You can create services from:
 * An account
 * An Organization
 
-If you are new to Harness, review [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md) and [create your first CD pipeline](/tutorials/cd-pipelines/kubernetes/manifest).
+If you are new to Harness, review [Harness key concepts](/docs/get-started/key-concepts.md) and [create your first CD pipeline](/tutorials/cd-pipelines/kubernetes/manifest).
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -74,7 +74,7 @@ When using an account level deployment stage template, you can referencing an ac
 
 However, when using a deployment stage in a pipeline that has service configured as a runtime input, you can pick services from project, organization, or account levels to pass them as runtime inputs based on your RBAC. 
 
-Go to [add a stage template](/docs/platform/13_Templates/add-a-stage-template.md) for more information.
+Go to [add a stage template](/docs/platform/templates/add-a-stage-template.md) for more information.
 :::
 
 Expand the section below to see a sample account level service YAML.
@@ -275,7 +275,7 @@ Now you can provide values for any runtime inputs in the service. Let's go into 
 
 :::note
 
-For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md).
+For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
 :::
 

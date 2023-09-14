@@ -95,7 +95,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run Tests** step. Your pipeline must be associated with a [supported codebase](#supported-codebases).
 
-If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md) or go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
+If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../get-started/tutorials.md) or go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
 
 The build environment must have the necessary binaries for the **Run Tests** step to execute your test commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Container registry and image settings](#container-registry-and-image).
 
@@ -469,7 +469,7 @@ The **Run Tests** step has the following settings.
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
 
 **Description** is optional.
 
@@ -723,7 +723,7 @@ You can inject environment variables into the step container and use them in the
 
 You can reference environment variables in the **Command**, **Pre-Command**, or **Post-Command** scripts by name, such as `$var_name`.
 
-Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
+Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs/). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
 
 <figure>
 
@@ -767,9 +767,9 @@ These settings specify the maximum resources used by the container at runtime:
 
 The timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution continues.
 
-To change what happens when steps fail, go to [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
+To change what happens when steps fail, go to [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
-To configure when pipelines should skip certain steps, go to [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+To configure when pipelines should skip certain steps, go to [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 ## Pipeline YAML examples
 
