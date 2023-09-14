@@ -44,7 +44,7 @@ This release does not include any early access features.
 
 - When configuring notifications for code errors and selecting the **Any** option, the **Timeout Error** type was incorrectly listed as one of the choices in the dropdown menu. (CET-1514)
 
-  This issue has been resolved. Now, when configuring notifications for code errors and selecting the "Any" option, the "Timeout Error" type is not listed in the dropdown menu.
+  This issue has been resolved. Now, when configuring notifications for code errors and selecting the **Any** option, the **Timeout Error** type is not listed in the dropdown menu.
 
 - Clear filters button on the Event Summary screen was enabled, even though it was supposed to be disabled when nothing is filtered yet.(CET-1613)
   
