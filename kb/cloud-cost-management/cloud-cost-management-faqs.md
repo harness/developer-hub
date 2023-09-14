@@ -34,6 +34,19 @@ The order of perspectives in the list is determined by their creation timestamp,
 
 Perspectives supports Net amortized, Unblended, Amortized and Effective Cost.
 
+#### Does Harness provide currency standardization?
+
+Yes, Harness CCM offers the flexibility to view your cloud spending data in the currency of your preference. For further information, please refer this [document](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/currency-preferences/).
+
+#### How many Perspectives am I allowed to generate within an account?
+
+You can create as many as 10,000 Perspectives in a single account.
+
+#### How are costs presented in perspectives when there are expenses that are not linked to the chosen grouping criteria?
+
+We display `No` followed by the selected `<group by>` for costs that do not have any correlation with the specified `<group by>` criteria.
+For instance, if a perspective encompasses rules for both AWS and GCP, and the grouping is based on GCP > SKU, any expenses unrelated to GCP SKUs will be displayed as "No SKUs."
+
 ### Recommendations
 
 #### We have found that some AWS EC2 instances are still visible in recommendations list even they are stopped before 2-3 days ago. is it the usual behavior for stopped ec2s?
@@ -45,7 +58,19 @@ Once a recommendation is generated, it is not updated at a later time. So regard
 
 If the instance is in a stopped state it takes ~2-3 days for the recommendation to disappear, same is the behaviour for terminated instances too.
 
+#### Do we support moving the recommendations from the Applied to Open recommendations section?
 
+No. We support only moving the recommendations from the Open to the applied section now.
+
+#### Are there any recommendations specific to GCP, other than the nodepool and workload recommendations for clusters in GCP?
+
+Currently, we do not offer any GCP-specific recommendations. Our support is limited to the recommendations outlined in the [documentation](https://developer.harness.io/docs/category/recommendations).
+
+#### Does CCM offer support for on-premises/Self Managed Platform (SMP) installations?
+
+Yes, CCM does support on-premises/Self Managed Platform (SMP) installations. It provides the following features and functionalities within an SMP environment:
+1) The Connectors setup is currently supported exclusively on AWS and Kubernetes.
+2) Additionally, CCM supports Perspectives, Budgets, Scheduled Reports, Cost categories, Anomalies, and Recommendations in this environment.
 
 ### Governance
 
