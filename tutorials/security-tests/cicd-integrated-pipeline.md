@@ -61,15 +61,17 @@ Exited with message: fail_on_severity is set to critical and that threshold was 
 
 <details open><summary> Key concept: Exemptions, requests, and approvals</summary>  
 
-- In some cases, a developer might want to request an exemption ("ignore rule") for a specific issue. If an exemption is approved, the issue will not fail the pipeline even if it meets the  <code>fail_on_severity</code> threshold. 
+You can exempt known issues from  `fail_on_severity` so that they don't stop the pipeline even when a scan detects them. The following steps outline the workflow:
 
-- Developer users can request exemptions, but only SecOps users can approve them.
+1. A developer requests an exemption to a rule and forwards the request to a SecOps user.
+
+2. The SecOps user approves the request or rejects it. Developer users can request exemptions, but only SecOps users can approve them.
 
 - For information about setting up your roles and permissions, go to [Add Security Testing roles](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto#add-security-testing-roles).
 
 </details>
 
-In this section, you'll create an exemption and approve it as SecOps user. In many real-world scenarios, two separate people will be performing the workflow: a developer creates an Ignore Rule, but the rule isn't active until a SecOps person approves it.
+In this section, you'll create an exemption as a developer and then approve it as SecOps user. (In many real-world scenarios, two separate people will be performing the workflow.)
 
 1. Make sure that you have the SecOps role assigned to yourself:
 	1. Click **Account Settings** (left menu) > **Access Control**.
@@ -83,7 +85,7 @@ In this section, you'll create an exemption and approve it as SecOps user. In ma
 
   In the following step, you will create an Ignore request for each of the two critical issues found: `subprocess_popen_with_shell_equals_true` (only in the current scan) and `haslib` (common to the baseline scan).
 
-3. In the **Security Tests** tab, do the following steps for the critical issue:
+3. In the **Security Tests** tab, do the following steps for each critical issue:
 	1. Select the critical issue in the issues table (bottom left) to open **Issue Details**.
 	2. Select **Request Exemption**.
   
@@ -106,7 +108,7 @@ In this section, you'll create an exemption and approve it as SecOps user. In ma
    
 6. Go back to your pipeline and run another build with the **DEMO-001** branch. When the build finishes, go to the **Security Tests** page.
 
-7. Click **Exempted** (far right, under **Security Executions**). Note that the Critical, High, and other buttons act as toggles to show and hide specific issues in the issues table. If you select and unselect **Exempted**, the exempted issues switch between visible and hidden. 
+7. Click **Exempted** (far right, under **Security Executions**). Note that this button, like the Critical, High, and other buttons, acts as a toggle to show and hide specific issues in the issues table. If you select and unselect **Exempted**, the exempted issues switch between visible and hidden. 
 
    ![](./static/sto-integrated-workflows-05.png)
 
@@ -161,6 +163,7 @@ You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure
 3. The Failure Strategy in the Build step initiates a 30-minute pause before proceeding.
 4. The developer and security team evaluate the issues and then abort the pipeline or allow it to proceed.
 
+<!-- 
 ### Integrated STO/CI Workflow Example
 
 The following pipeline provides a simple example of how you can implement STO into a CI workflow. This is an expanded version of the standalone STO stage we have been working with. The [YAML](#integrated-workflow-yaml) of this pipeline is provided below.
@@ -169,16 +172,19 @@ The following pipeline provides a simple example of how you can implement STO in
 
 This pipeline works as follows:
 
-1. The **owasp scan** step has `fail_on_severity` set to `HIGH`. It scans the **master** branch of the [dvpwa](https://github.com/anxolerd/dvpwa) repo and detects one Critical issue, which results in an error.
-2. The **Build Image** step is set up to build (but not push) an image from the dvpwa repo. It has a Failure Strategy that responds to the error from owasp as follows:
-	1. Pauses the pipeline and waits for you to choose what to do. You examine the detected issues and decide if you want to proceed.
-	2. If you don't choose to proceed after 20 minutes, the pipeline aborts.
-3. If you click Proceed, the **Build Image** step builds an image from the repo.
-4. The **aqua-trivy** step also has `fail_on_severity` set to `HIGH`. It scans the resulting image, detects issues with high and critical severities and generates an error, which causes the pipeline to fail.
+1. The **backgroundDinD** step runs Docker-in-Docker as a background service. This is required to run the Docker process that builds and pushes the image.
+1. The **banditScan** step  scans a GitHub repo that includes the files required to build an image from the repository code. 
+   In this case, `fail_on_severity` is set to `none`. We want to scan the repository, but we also want to build a local image. We'll implement `fail_on_severity` when we scan the built image.
+2. The **buildImage** builds a local container image from the repository. It has a Failure Strategy that responds to any error in the previous step — such a failure due to a critical vulnerability — by ignoring it and proceeding with default values. 
+3. The **aquaTrivyScan** step uses the open-source tool **Aqua Trivy** to scan the local image. It has `fail_on_severity` set to `critical`.
+4. If the Aqua Trivy 
+
 
 You can view all issues from all scanners in the **Security Tests** tab, and also filter the issue list by scanner.
 
 ![](./static/sto-integrated-workflows-09.png)
+
+-->
 
 ### Congratulations!
 
@@ -189,6 +195,8 @@ In this tutorial, you learned how to:
 3. Run a pipeline and scan its codebase and the container image.
 4. View the normalized and deduplicated security results in the Security dashboard.
 
+
+<!-- 
 ### Integrated Workflow YAML
 
 Here's the YAML of the integrated workflow example we examined in this tutorial.
@@ -306,3 +314,4 @@ pipeline:
 ```
 </details>
 
+-->
