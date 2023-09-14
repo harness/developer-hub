@@ -220,7 +220,10 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 ##### Hotfixes
 
-##### Version 80313
+#### Version 80314
+- Previously while escaping single quotes in envVariables same map was passed to subsequent command units which caused escaped single quotes to escape again, now subsequent command units will not escape single quotes again.
+
+#### Version 80313
 
 - There were several `OverlappingFileLockException` errors caused by the version of the Chronicle Queue library used. (CCM-14174)
 
