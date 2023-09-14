@@ -36,16 +36,16 @@ export const featuredTutorials: CardItem[] = [
   // Docs
   export const docsCards: CardSections = [
     {
-      name: "Get started with CD",
+      name: "Get started with Harness CD & GitOps",
       description:
         "",
       list: [
         {
-          title: "Get started",
+          title: "Onboarding guide",
           module: MODULES.cd,
           description:
-            "Learn the basics of Harness Continuous Delivery (CD).",
-          link: "/docs/category/get-started-with-cd",
+            "A self-service onboarding guide for Harness CD & GitOps.",
+          link: "/docs/continuous-delivery/get-started/onboarding-guide",
           // @Roshni: sample code for the sub categories -->
           /*children: [
             {
@@ -53,7 +53,7 @@ export const featuredTutorials: CardItem[] = [
               module: MODULES.cd,
               description:
                 "",
-              link: "/docs/continuous-delivery/get-started/cd-pipeline-basics",
+              link: "/docs/continuous-delivery/get-started/key-concepts",
             },
             {
               title: "CD pipeline modelling overview",
@@ -265,7 +265,7 @@ export const featuredTutorials: CardItem[] = [
               module: MODULES.cd,
               description:
                 "Deploy a Serverless Lambda application to AWS Lambda using Harness.",
-              link: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart",
+              link: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart",
             },
             {
               title: "Tanzu Application Services (TAS)",
@@ -286,7 +286,7 @@ export const featuredTutorials: CardItem[] = [
               module: MODULES.cd,
               description:
                 "Deploy non-native applications using custom Deployment Templates in Harness.",
-              link: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial",
+              link: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial",
             },
           ]*/  
         }, 
@@ -434,7 +434,7 @@ export const featuredTutorials: CardItem[] = [
               module: MODULES.cd,
               description:
                 "",
-              link: "/docs/continuous-delivery/gitops/install-a-harness-git-ops-agent",
+              link: "/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent",
             },
             {
               title: "Add Harness GitOps repository",
@@ -476,7 +476,7 @@ export const featuredTutorials: CardItem[] = [
               module: MODULES.cd,
               description:
                 "",
-              link: "/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial",
+              link: "/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial",
             },
           ]*/
         },

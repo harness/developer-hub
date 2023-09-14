@@ -17,7 +17,7 @@ To create, edit, and delete stages in CI pipelines, you need either Project Admi
 1. In Harness, edit or [create a pipeline](../prep-ci-pipeline-components.md).
 2. Select **Add Stage**, and then select **Build**.
 3. Enter a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
-4. Select the [Overview](#overview), [Infrastructure](#infrastructure), [Execution](#execution), and [Advanced](#advanced) tabs to configure the stage settings, [set up the build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure), and add steps to the stage.
+4. Select the [Overview](#overview), [Infrastructure](#infrastructure), [Execution](#execution), and [Advanced](#advanced) tabs to configure the stage settings, [set up the build infrastructure](/docs/category/set-up-build-infrastructure), and add steps to the stage.
 
 :::
 
@@ -126,7 +126,7 @@ The following **Platform** settings are available:
 
 * **Select the Operating System:** Select the relevant OS.
 * **Kubernetes Cluster:** Select a [Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
-* **Namespace:** Enter the Kubernetes namespace to use in the target cluster. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
+* **Namespace:** Enter the Kubernetes namespace to use in the target cluster. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../platform/variables-and-expressions/runtime-inputs).
 
 The following **Advanced** settings are available for the **Kubernetes** infrastructure:
 

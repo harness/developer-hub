@@ -40,9 +40,9 @@ Harness integrates with the following third-party Secret Managers along with a b
 * GCP KMS
 * HashiCorp Vault
 
-You can also use third-party Secrets Managers that are not integrated with Harness, to store your encrypted secrets. With Harness Custom Secret Manager you can integrate Harness with your third-party Secret Managers and read or access your secrets.
+You can use third-party Secrets Managers not integrated with Harness to store encrypted secrets. With Harness Custom Secret Manager, you can integrate Harness with your third-party Secret Managers and read or access your secrets.
 
-Your Custom Secret Manager uses a shell script that you can execute either on a Delegate or on a remote host which is connected to the Delegate. Harness fetches and reads your secrets from the third-party Secret Manager through this shell script.
+Your Custom Secret Manager uses a shell script that you can execute either on a delegate or on a remote host which is connected to the delegate. Harness fetches and reads your secrets from the third-party Secret Manager through this shell script.
 
 ### Step 1: Create a Secret Manager Template
 
@@ -51,7 +51,11 @@ You can create a Secret Manager Template at Account, Org, or Project scope.
 This topic shows you how to create a Secret Manager Template at the Project scope.
 
 1. In your Harness Account, go to your Project.
-2. In Project Setup, click **Templates** and then click **New Template**.![](../../Secrets/static/custom-secret-manager-32.png)
+
+2. In Project Setup, click **Templates**, and then click **New Template**.
+   
+   ![](../static/custom-secret-manager-32.png)
+
 3. Click Secret Manager. The Secret Manager Template settings appear.
 4. Enter a **Name** for your Secret Manager Template.
 5. Enter a **Version Label**.
@@ -66,7 +70,7 @@ You can add a Custom Secret Manager at Account, Org, and Project scope.
 
 To do this, go to Project setup, Organization, or Account Resources.
 
-This topic shows you how to add a Custome Secret Manager in the Project scope.
+This topic shows you how to add a Custom Secret Manager in the Project scope.
 
 1. In your Harness Account, go to your Project.
 2. In Project Setup, click **Connectors** and then click **New Connector**.
@@ -85,13 +89,13 @@ This topic shows you how to add a Custome Secret Manager in the Project scope.
   Once you select the Secret Manager Template, the details are displayed in the Template Studio.  
 7. Click **Use Template**.
 8. Enter values for the required Input Variables.  
-   Harness allows you to use [Fixed Values and Runtime Inputs](../../20_References/runtime-inputs.md).
+   Harness allows you to use [Fixed Values and Runtime Inputs](../../variables-and-expressions/runtime-inputs).
 	
 	![](../static/custom-secret-manager-36.png)
 
 9. Click **Fixed** to make the variable values fixed. Harness won't ask you these values when you create Secrets.
 10. Click **Continue**.
-11. In **Delegates** **Setup**, enter [**Selectors**](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Save and Continue**.
+11. In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Save and Continue**.
 12. In **Connection Test**, click **Finish** after your connection is successful**.**
 
 ### Step 3: Use the Custom Secret Manager

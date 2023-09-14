@@ -40,4 +40,20 @@ See: [https://github.com/harness/drone/commit/d50e89d4114a3fed49a1317f147078269a
 1. HAProxy is used to load balance the drone server UI requests, and balance requests from the drone runner to the server. 
 2. Redis for queues and pub/sub. Used for runner events, logs streaming, build cancellation events, and finally the build queue itself. 
 
+#### GitHub will deprecate OAuth via query params, and it seems like the format of the token is changing as well, so will Drone setup work or w need to change anything
+Drone uses github client id and client secret for authentication and uses http header to pass that while making api calls and do not include in query parameter, so these changes from github end should not impact.
 
+#### Can we use DRONE_DOCKER_CONFIG while running docker build manually
+The credentials provided by DRONE_DOCKER_CONFIG are only used by Drone to pull images defined in the image section of the yaml. These credentials are not injected into pipeline steps (for security reasons) which is why the credentials are not available to you when manually running docker build.
+
+#### How to use Drone Enterprise for free as organizations with under $1 million US dollars in annual gross revenue as mentioned here: https://docs.drone.io/enterprise/
+ You can "build the Enterprise Edition from source without build limits":
+https://docs.drone.io/enterprise/#how-do-i-use-the-enterprise-edition-for-free
+
+#### How to share configuration files across the pipeline to reuse same configuration
+Drone has build templates that can be shared across projects. A project can use a template and provide project-specific information to alter the build.
+
+
+#### Getting ERROR Database error 42704: type "number" does not exist while migrating from sqlite to Postgres
+It seems like as the build_deploy_id is type of number and this type is not present in PostgreSQL, So You have to create a new table with type bigint and than copy the data after renaming the table to get this working
+https://github.com/dimitri/pgloader/issues/1284 

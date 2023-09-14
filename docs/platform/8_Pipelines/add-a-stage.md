@@ -19,7 +19,7 @@ The process of adding a stage to a pipeline is the same for all Harness modules.
 
 This functionality is limited to the modules and settings that you have access to.
 
-This topic assumes you are familiar with [Harness' key concepts](../../getting-started/learn-harness-key-concepts.md) and you have a [Harness project](../organizations-and-projects/create-an-organization.md).
+This topic assumes you are familiar with [Harness' key concepts](../../get-started/key-concepts.md) and you have a [Harness project](../organizations-and-projects/create-an-organization.md).
 
 ## Add a stage
 
@@ -83,7 +83,7 @@ To add stage variables, go to a stage's **Overview** tab, expand the **Advanced*
 </Tabs>
 ```
 
-Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/References/runtime-inputs).
+Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
 Stage variables are available across the pipeline and you can override their values in later stages. You can also reference stage variables in files fetched at runtime. For example, you could create a stage variable called `NAME` and then reference it in the Kubernetes `values.yaml` file used by that stage by calling the stage variable expression: `<+stage.variables.NAME>`. For example:
 

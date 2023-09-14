@@ -15,8 +15,8 @@ This topic explains how to use the Harness Docker Registry Connector to connect 
 
 ### Before you begin
 
-* [CI pipeline basics](../../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md)
-* [Harness Delegate Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
+* [CI pipeline basics](../../../continuous-integration/get-started/key-concepts.md)
+* [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md)
 
 ### Review: Managing IAM Policies in IBM Cloud
 
@@ -28,7 +28,7 @@ When you switch or modify the IAM role, it might take up to 5 minutes to take ef
 
 ### Supported Platforms and Technologies
 
-For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../../getting-started/supported-platforms-and-technologies.md).
+For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../../get-started/supported-platforms-and-technologies.md).
 
 ### Step 1: Generate an API Key in IBM Cloud Console
 
@@ -81,11 +81,11 @@ Click **Save**, and **Continue**.
 
 Harness uses Docker Registry Connectors at Pipeline runtime to authenticate and perform operations with IBM Cloud Registry. Authentications and operations are performed by Harness Delegates.
 
-You can select Any Available Harness Delegate and Harness will select the delegate. For a description of how Harness picks delegates, go to [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+You can select Any Available Harness Delegate and Harness will select the delegate. For a description of how Harness picks delegates, go to [Delegates overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
 
-You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, go to [Use delegate selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
 
-If you need to install a delegate, go to [Delegate Installation Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+If you need to install a delegate, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
 The delegate(s) you use must have networking connectivity to the IBM Cloud Container Registry.
 

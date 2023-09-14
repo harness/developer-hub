@@ -20,9 +20,9 @@ import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
-* [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
+* [CI pipeline tutorials](../../continuous-integration/get-started/tutorials.md)
 
 ### Add a trigger to a pipeline
 
@@ -73,7 +73,7 @@ UNIX Expression
 
 ### Set pipeline input
 
-Pipelines often have [Runtime inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
+Pipelines often have [Runtime inputs](../variables-and-expressions/runtime-inputs.md) like codebase branch names or artifact versions and tags.
 
 Provide values for the inputs. You can also use [Input sets](../8_Pipelines/input-sets.md).
 

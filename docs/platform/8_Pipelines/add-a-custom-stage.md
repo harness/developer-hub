@@ -24,7 +24,7 @@ The steps available in a Custom stage are also available in standard stages.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 * [Add a Stage](add-a-stage.md)
 
 ### Limitations
@@ -34,7 +34,7 @@ The steps available in a Custom stage are also available in standard stages.
 * Licensing is applied to the steps in Custom stage. For example, CD Steps such as the HTTP step are available inside Custom stage only if you have CD license.
 * There is no Rollback functionality in a Custom stage.
 	+ Rollbacks can be achieved via conditional execution. For example, run a step only is something failed/succeeded previously.
-* You can select which Delegate to use for each step in a Custom stage using the step's **Delegate Selector** setting. If this setting is not used, then Harness will select a Delegate using its standard selection process. See [Delegates Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+* You can select which Delegate to use for each step in a Custom stage using the step's **Delegate Selector** setting. If this setting is not used, then Harness will select a Delegate using its standard selection process. Go to [Delegated overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
 * Custom stage can be used as a template like other stage types. Step templates can be used inside a Custom stage, and the Pipeline containing the Custom stage can also be used as a Template.
 
 ### Visual Summary
@@ -69,7 +69,7 @@ You reference stage variables **within their stage** using the expression `<+
 
 You reference stage variables **outside their stage** using the expression `<+pipeline.stages.[stage Id].variables.[variable name]>`.
 
-See [Built-in and Custom Harness Variables Reference](../12_Variables-and-Expressions/harness-variables.md).
+See [Built-in and Custom Harness Variables Reference](../variables-and-expressions/harness-variables.md).
 
 ### Step 2: Add Execution Steps
 
@@ -79,10 +79,10 @@ These steps are also available in CI, CD, and Approval stages.
 
 For details on the different steps, see:
 
-* [General CD](https://developer.harness.io/docs/category/general-cd-execution-steps)
+* [General CD](/docs/continuous-delivery/x-platform-cd-features/executions/stages-steps-strategies)
 * [Using Shell Scripts in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step)
 * [Create an HTTP Step Template](../13_Templates/harness-template-library.md)
-* [Approvals](https://developer.harness.io/docs/category/approvals)
+* [Approvals](/docs/category/approvals)
 * [Synchronize Deployments using Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers/)
 * [Add a Policy Engine Step to a Pipeline](/docs/platform/Governance/14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
 * [Terraform How-tos](/docs/category/terraform)

@@ -153,7 +153,7 @@ Do not run multiple delegates on the same host, pod, or container. This will res
 
 ### Delegate setup
 
-Most often, Delegate errors are the result of delegate setup issues. Ensure you are familiar with how the delegate and Harness Manager work together. See [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+Most often, Delegate errors are the result of delegate setup issues. Ensure you are familiar with how the delegate and Harness Manager work together. Go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
 Another common issue is the SSH key used by the delegate to deploy to a target host is incorrect. This can happen if the SSH key in [Harness secrets management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) was set up incorrectly, or if it is not the correct key for the target host, or the target host is not set up to allow SSH connections.
 
@@ -186,7 +186,7 @@ For Kubernetes delegates, you can increase the number of replicas run using a si
 
 ### No delegates could reach the resource
 
-This error means that no delegate could meet the URL criteria for validation. For more information, see [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#how-does-harness-manager-pick-delegates).
+This error means that no delegate could meet the URL criteria for validation. For more information, go to [How does Harness Manager pick delegates?](/docs/platform/delegates/delegate-concepts/delegate-overview.md#how-does-harness-manager-pick-delegates).
 
 ### Google Cloud Platform: cluster has unschedulable pods
 
@@ -291,7 +291,7 @@ This section lists common error and alert messages you might receive.
 
 ### No delegates could reach the resource
 
-This error means that no delegate could meet the URL validation criteria. When a task is ready to be assigned, Harness Manager first validates its lists of delegates to see which delegate should be assigned the task. It validates the delegate by using the URL in the task, such as an API call or SSH command. See [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#how-does-harness-manager-pick-delegates).
+This error means that no delegate could meet the URL validation criteria. When a task is ready to be assigned, Harness Manager first validates its lists of delegates to see which delegate should be assigned the task. It validates the delegate by using the URL in the task, such as an API call or SSH command. Go to [How does Harness Manager pick delegates?](/docs/platform/delegates/delegate-concepts/delegate-overview.md#how-does-harness-manager-pick-delegates).
 
 ### Harness SecretStore is not able to encrypt/decrypt
 
@@ -591,7 +591,7 @@ Install Terraform on the delegate to fix this.
 
 In some Harness CloudFormation and ECS deployments you might get failures with `ThrottlingException` or `Rate exceeded` errors for CloudFormation and ECS API calls.
 
-For more information, go to [AWS backoff strategy](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-backoff-strategy).
+For more information, go to [AWS backoff strategy](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-backoff-strategy).
 
 ## Harness secret managers
 
@@ -655,3 +655,14 @@ If a Harness policy engine policy set is enabled and your pipeline or other reso
 Contact your Harness account administrator to resolve the issue. If the policy set has an error, you can disable it by locating the policy set and turning off the **Enforced** toggle.
 
 ![](./static/troubleshooting-nextgen-04.png)
+
+## YAML builder
+
+This section covers common problems experienced when using the [YAML pipeline builder](/docs/platform/pipelines/harness-yaml-quickstart/).
+
+### The incoming YAML document exceeds the limit: 3145728 code points
+
+This error happens when you are adding YAML that exceeds the Harness limit of 3MB.
+
+To fix this error, you will need to reduce the size of the pipeline or template.
+

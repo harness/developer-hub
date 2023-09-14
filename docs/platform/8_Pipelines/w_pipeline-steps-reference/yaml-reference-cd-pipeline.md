@@ -12,7 +12,7 @@ This topic describes the YAML schema for a Pipeline.
 
 It includes common examples of the major schema entries.
 
-New to Harness YAML? See [Harness YAML Quickstart](../harness-yaml-quickstart.md).
+New to Harness YAML? Go to [Harness YAML Quickstart](../harness-yaml-quickstart.md).
 
 ## Viewing the YAML Schema
 
@@ -33,7 +33,7 @@ In addition to the YAML schema available at [github.com/harness/harness-schema](
 
 The Harness Pipeline Studio has both a Visual Editor and a YAML Editor.
 
-The best way to get started with Harness YAML is to create a pipeline in the Visual Editor and then switch to the YAML Editor. If you haven't created a pipeline yet, try a [tutorial](https://developer.harness.io/tutorials) to get started with Harness.
+The best way to get started with Harness YAML is to create a pipeline in the Visual Editor and then switch to the YAML Editor. If you haven't created a pipeline yet, try a [tutorial](/tutorials) to get started with Harness.
 
 The YAML editor validates YAML before allowing you to save it.
 
@@ -524,7 +524,7 @@ Here is an example of a Canary Deployment step.
 ```
 See also:
 
-* [CD How-tos](https://developer.harness.io/docs/category/advanced-cd-use-cases)
+* [CD How-tos](/docs/category/advanced-cd-use-cases)
 
 ### Fixed Value, Runtime Input, and Expression
 
@@ -537,7 +537,7 @@ You can use Fixed Value, Runtime Input, and Expressions for most settings.
 ![](./static/yaml-reference-cd-pipeline-04.png)
 See also:
 
-* [Fixed Values, Runtime Inputs, and Expressions](../../20_References/runtime-inputs.md)
+* [Fixed Values, Runtime Inputs, and Expressions](../../variables-and-expressions/runtime-inputs.md)
 
 ### Flow Control
 

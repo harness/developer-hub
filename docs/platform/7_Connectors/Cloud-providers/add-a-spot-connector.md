@@ -33,7 +33,7 @@ import DelegateInstall from '/tutorials/platform/install-delegate.md';
 <DelegateInstall />
 </details>
 
-To learn more, watch the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview) video.
+To learn more, watch the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview) video.
 
 ## Add the Spot Elastigroup cloud provider
 

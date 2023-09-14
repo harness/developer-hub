@@ -7,7 +7,7 @@ title: Output variables with chained pipeline
 
 Pipeline chaining refers to the process of linking multiple pipelines together, where the output of one pipeline becomes the input of another. This allows for the sequential execution of processing steps, creating a complex workflow. By automating this chain, you can ensure proper testing and deployment of applications, enhancing the overall efficiency and reliability of the process.
 
-More details on this here: https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/
+More details on this here: /docs/platform/pipelines/pipeline-chaining/
 
 ## Problem statement
 

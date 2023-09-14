@@ -74,7 +74,7 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
        --override-existing-serviceaccounts —region=us-east-1
    ```
 
-3. In Harness, download the Harness Kubernetes delegate YAML file. For instructions, go to [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/install-a-kubernetes-delegate.md).
+3. In Harness, download the Harness Kubernetes delegate YAML file. For instructions, go to [Install a Kubernetes delegate](../../../platform/delegates/install-delegates/install-a-kubernetes-delegate.md).
 4. Open the delegate YAML file in text editor.
 5. Add the service account with access to IAM role to the delegate YAML. There are two sections in the Delegate YAML that you must update:
    1. Update the `ClusterRoleBinding` by replacing the subject name `default` with the name of the service account with the attached IAM role, for example:
@@ -114,7 +114,7 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
       For legacy delegate, add `serviceAccountName` to the Statefulset spec.
 
 6. Save the delegate YAML file.
-7. If you haven't already installed the delegate, [Install the Kubernetes delegate](../../../platform/2_Delegates/install-delegates/overview.md) in your EKS cluster and register the delegate with Harness. When you install the delegate in the cluster, the SA you added is used, and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.
+7. If you haven't already installed the delegate, [Install the Kubernetes delegate](../../../platform/delegates/install-delegates/overview.md) in your EKS cluster and register the delegate with Harness. When you install the delegate in the cluster, the SA you added is used, and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.
 
 </details>
 
@@ -136,9 +136,9 @@ Harness uses AWS connectors during pipeline runs to authenticate and perform ope
    * **Connect through Harness Platform:** Use a direct, secure communication between Harness and AWS.
    * **Connect through a Harness Delegate:** Harness communicates with AWS through a Harness delegate in AWS. You must choose this option if you chose **Use IRSA** or **Assume IAM Role on Delegate**.
 2. If connecting through a Harness delegate, select either:
-   * **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegates Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
-   * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
-     * Select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate Installation Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+   * **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
+   * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
+     * Select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
 3. Select **Save and Continue** to run the connection test, and then, if the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
 
 <details>
@@ -156,6 +156,6 @@ For a list of roles and policies, go to the [AWS Connector Settings Reference](.
 
 ## See also
 
-* [Harness Key Concepts](../../../../docs/getting-started/learn-harness-key-concepts.md)
-* [Supported Platforms and Technologies](../../../../docs/getting-started/supported-platforms-and-technologies.md)
+* [Harness Key Concepts](../../../get-started/key-concepts.md)
+* [Supported Platforms and Technologies](../../../../docs/get-started/supported-platforms-and-technologies.md)
 * [AWS connector settings reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md)

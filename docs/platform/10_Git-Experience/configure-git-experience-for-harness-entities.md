@@ -64,7 +64,7 @@ For this, you must specify a Harness Git Connector, a repo, branch details, and 
 
 This topic explains how to create a remote pipeline and execute it using Harness Git Experience.
 
-You can also store your configurations in Harness, by selecting the **Inline** option while creating resources. For more information on creating an inline pipeline, see [Pipelines and Stages](https://developer.harness.io/docs/category/pipelines).
+You can also store your configurations in Harness, by selecting the **Inline** option while creating resources. For more information on creating an inline pipeline, see [Pipelines and Stages](/docs/category/pipelines).
 
 ![](./static/configure-git-experience-for-harness-entities-37.png)
 

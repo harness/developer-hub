@@ -314,7 +314,7 @@ When using these environment variables, make sure to enter a **Name** and **Valu
 
 You may also reference environment variables in the script by their name. For example, in Bash, this would be `$var_name` or `${var_name}`. In Windows PowerShell, the reference would be `$Env:varName`.
 
-For **Value**, you may enter [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/).
+For **Value**, you may enter [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 For example, if you created the environment variables `DB_HOST`, `DB_URL`, and `DB_PASSWORD`, your script could reference them like this:
 
@@ -459,14 +459,14 @@ curl -X  GET https://app.harness.io/registry/_catalog
 
 Add or select a connector to use instead of the default connector uses for the Harness Container Image Registry.
 
-For more information, go to [Connect to Harness container image registry Using Docker connector](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/).
+For more information, go to [Connect to Harness container image registry Using Docker connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/).
 
 ## Advanced settings
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)

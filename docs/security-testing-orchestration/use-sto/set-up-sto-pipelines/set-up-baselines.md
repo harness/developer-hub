@@ -20,7 +20,7 @@ To view all targets in your account, and specify baselines for your targets, go 
 
 <figure>
 
-![](../../onboard-sto/static/targets-and-baselines.png)
+![](../../get-started/static/targets-and-baselines.png)
 
 <figcaption>Figure 1: <b>Test Targets</b> page</figcaption>
 

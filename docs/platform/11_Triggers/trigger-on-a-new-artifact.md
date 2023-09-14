@@ -96,7 +96,7 @@ When you add a Harness service to the CD stage, you can set the artifact tag to 
 
 ![](./static/trigger-on-a-new-artifact-22.png)
 
-If you use a [Fixed Value](../20_References/runtime-inputs.md) for the artifact **Tag** (for example, **2**), when the trigger executes the pipeline, Harness will deploy the artifact with that tag (**2**).
+If you use a [Fixed Value](../variables-and-expressions/runtime-inputs.md) for the artifact **Tag** (for example, **2**), when the trigger executes the pipeline, Harness will deploy the artifact with that tag (**2**).
 
 If you want the pipeline to deploy the artifact version that initiated the trigger, use the expression `<+trigger.artifact.build>`.
 

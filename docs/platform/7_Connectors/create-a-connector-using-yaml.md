@@ -17,7 +17,7 @@ This topic shows you how to add a Connector using the YAML Builder.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 
 ### Step 1: Create Secrets or Keys
 

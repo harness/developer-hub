@@ -260,7 +260,7 @@ To add a Values YAML file, do the following:
 7. In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
 8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo).
    
-   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes delegate](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
+   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes delegate](/docs/platform/Delegates/install-delegates/overview).
 9.  Once you've selected a Connector, click **Continue**.
 10. In **Manifest Details**, you tell Harness where the values.yaml is located.
 11. In **Manifest Identifier**, enter a name that identifies the file, like **values**.
@@ -927,7 +927,7 @@ You cannot use Harness variables expressions in your Kubernetes object manifest 
 
 When you select the artifact repo for the artifact, like a Docker Hub repo, you specify the artifact and tag/version to use. 
 
-You can select a specific tag/version, use a [runtime input](/docs/platform/references/runtime-inputs/) so that you are prompted for the tag/version when you run the pipeline, or you can use an Harness variable expression to pass in the tag/version at execution.
+You can select a specific tag/version, use a [runtime input](/docs/platform/variables-and-expressions/runtime-inputs/) so that you are prompted for the tag/version when you run the pipeline, or you can use an Harness variable expression to pass in the tag/version at execution.
 
 Here's an example where a runtime input is used and you select which image version/tag to deploy.
 
@@ -1370,7 +1370,7 @@ To add an artifact from GCR, do the following:
 12. In **Image Path**, enter the name of the artifact you want to deploy.
 
     Images in repos need to reference a path starting with the project Id that the artifact is in, for example: `myproject-id/image-name`.
-13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select a [runtime input or expression](/docs/platform/references/runtime-inputs/).
+13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select a [runtime input or expression](/docs/platform/variables-and-expressions/runtime-inputs/).
     
     ![](./static/kubernetes-services-10.png)
     
@@ -1588,7 +1588,7 @@ To add an artifact from Google Artifact Registry, do the following:
 16. In **Repository Name**, enter the name of the repo.
 17. In **Package**, enter the artifact name.
 18. In **Version Details**, select **Value** or **Regex**.
-19. In **Version**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select [runtime input or expression](/docs/platform/references/runtime-inputs/).
+19. In **Version**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select [runtime input or expression](/docs/platform/variables-and-expressions/runtime-inputs/).
     
     ![](./static/kubernetes-services-11.png)
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
@@ -2888,7 +2888,7 @@ To add an artifact from Github Packages, do the following:
 13. In **Package Name**, select the name of the package.
 14. In **Version**, select the version to use. 
   
-  If you use [runtime input](/docs/platform/references/runtime-inputs/), when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+  If you use [runtime input](/docs/platform/variables-and-expressions/runtime-inputs/), when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 15. Select **Submit**. The Artifact is added to the Service Definition.
 
 ```mdx-code-block
@@ -3198,7 +3198,7 @@ env:
 
 You can set variable values as runtime inputs and then provide their values when the pipeline is run.
 
-For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
+For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 ### Harness pipeline, stage, service, and built-in variables
 

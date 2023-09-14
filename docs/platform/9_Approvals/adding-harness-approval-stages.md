@@ -12,7 +12,7 @@ You can specify Harness User Group(s) to approve or reject a Pipeline at any poi
 
 Approvals are added in between Stages to prevent the Pipeline execution from proceeding without an approval.
 
-For example, in a [CI Build pipeline](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md), you might want to add an approval stage between a Build Stage and an Integration Test Stage.
+For example, in a [CI Build pipeline](../../continuous-integration/get-started/tutorials.md), you might want to add an approval stage between a Build Stage and an Integration Test Stage.
 
 Other approval methods are:
 
@@ -179,7 +179,7 @@ Go to:
 
 * [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Use delegate selectors](../2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Use delegate selectors](../delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ### See also
 

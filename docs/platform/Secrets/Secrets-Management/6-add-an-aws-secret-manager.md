@@ -26,7 +26,7 @@ Harness uses the same minimum IAM policies for AWS secret manager access as the 
 The AWS account you use for the AWS Secret Manager must have the following policies at a minimum:
 
 
-```
+```json
 {  
     "Version": "2012-10-17",  
     "Statement": {  
@@ -45,7 +45,7 @@ These policies let you list secrets which will allow you to add the Secret Manag
 The following policy list enables Harness to perform all the secrets operations you might need:
 
 
-```
+```json
 {  
     "Version": "2012-10-17",  
     "Statement": {  
@@ -66,7 +66,8 @@ The following policy list enables Harness to perform all the secrets operations 
     }  
 }
 ```
-See [Using Identity-based Policies (IAM Policies) for Secret Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_identity-based-policies.html) from AWS.
+
+Go to [Using Identity-based Policies (IAM Policies) for Secret Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_identity-based-policies.html) in the AWS documentation.
 
 To test use the AWS account when running [aws secretsmanager list-secrets](https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/list-secrets.html#examples) on either the Harness Delegate host or another host.
 
@@ -80,19 +81,17 @@ In **Connectors**, click **Connector**.
 
 In **Secret Managers**, click **AWS Secrets Manager**. The AWS Secrets Manager settings appear.
 
-
 :::note
 For information on restrictions on names and maximum quotas, go to [Quotas for AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_limits.html).
 :::
 
-
 ### Step 2: Overview
 
-Enter **Name** for your secret manager.
+Enter a **Name** for your secret manager.
 
 You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, go to [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
-Enter **Description** for your secret manager.
+Enter a **Description** for your secret manager.
 
 Enter **Tags** for your secret manager.
 
@@ -156,7 +155,7 @@ Enter the Amazon Resource Name (ARN) of the role that you want to assume. This r
 
 If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 
-For more information, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) from AWS.
+For more information, go to [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) in the AWS documentation.
 
 #### Assume Role Duration
 
@@ -164,7 +163,7 @@ Enter the AssumeRole Session Duration. Go to Session Duration in the [AssumeRole
 
 ### Step 4: Setup Delegates
 
-In **Setup Delegates,** enter [**Selectors**](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector.
+In **Setup Delegates,** enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector.
 
 ### Step 5: Test Connection
 

@@ -108,7 +108,7 @@ The **About Your Stage** settings appear.
 
 To add service details, do the following:
 
-1. In **Select Service**, select an existing service that you want to deploy from the **Specify Service** list or create a new one. You can also use [Fixed values, runtime inputs, and expressions](../20_References/runtime-inputs.md).
+1. In **Select Service**, select an existing service that you want to deploy from the **Specify Service** list or create a new one. You can also use [Fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md).
 2. Select **Continue**.
 3. In **Specify Environment**, select an existing environment or add a new one.
 4. In **Specify Infrastructure**, select an existing infrastructure or add a new one.

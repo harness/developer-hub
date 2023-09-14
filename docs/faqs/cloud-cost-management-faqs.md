@@ -16,7 +16,7 @@ This article addresses some frequently asked questions about Harness Cloud Cost 
 
 No. You can create an AWS connector in the master or linked account. CCM requires one connector per AWS account (master or linked).
 
-It is recommended to create a CUR at the master account to avoid the CUR creation step for each linked account. For more information, see [AWS connector requirements](../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md) and [Cost and Usage Reports (CUR) and CCM requirements](../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements).
+It is recommended to create a CUR at the master account to avoid the CUR creation step for each linked account. For more information, see [AWS connector requirements](../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md) and [Cost and Usage Reports (CUR) and CCM requirements](../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements).
 
 #### What kind of access does Harness CCM need to the cost and usage reports (CUR)?
 
@@ -30,7 +30,7 @@ Read [this](https://medium.com/harness-engineering/inner-workings-of-harnesss-cl
 
 #### Do I need to create a CloudFormation stack?
 
-Yes. You need to [create a CloudFormation stack](../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#create-cross-account-role) to provision IAM Roles and corresponding policies to grant access for the required features.
+Yes. You need to [create a CloudFormation stack](../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#create-cross-account-role) to provision IAM Roles and corresponding policies to grant access for the required features.
 
 #### Do you import the data into your account?
 
@@ -42,7 +42,7 @@ AWS ingests data at source (S3 bucket) four times a day. CCM takes about two hou
 
 #### What AWS access permissions/policies are required for CCM?
 
-See [AWS access permissions](../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-access-permissions) for the details.
+See [AWS access permissions](../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#aws-access-permissions) for the details.
 
 #### To save on S3 storage costs, can I delete CUR files from the source S3 bucket after they've been ingested in CCM?
 
@@ -54,7 +54,7 @@ No. You need a delegate only when connecting to a Kubernetes cluster, such as on
 
 #### What types of access do you get to my accounts?
 
-CCM gets read-only access to the cost data along with a list of all the member (or linked) accounts. CCM does not get access to any other privileges. However, for AutoStopping, CCM requires additional privileged permissions to orchestrate the underlying infrastructure. See [AWS resource optimization using AutoStopping rules](../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-resource-optimization-using-autostopping-rules).
+CCM gets read-only access to the cost data along with a list of all the member (or linked) accounts. CCM does not get access to any other privileges. However, for AutoStopping, CCM requires additional privileged permissions to orchestrate the underlying infrastructure. See [AWS resource optimization using AutoStopping rules](../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#aws-resource-optimization-using-autostopping-rules).
 
 #### Can CCM get historical data from the CUR?
 
@@ -68,7 +68,7 @@ Yes, you can create multiple Azure connectors for each Harness Account.
 
 * You can create multiple Azure connectors per Azure Tenant with unique subscription IDs.
 * If you have separate billing exports for each of your subscriptions in your Azure account, set up separate connectors in Harness to view the cloud cost of all the subscriptions in CCM.
-* See [Set up Cloud Cost Management for Azure](../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
+* See [Set up Cloud Cost Management for Azure](../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md).
 
 #### What types of access do you get to my accounts?
 
@@ -371,6 +371,52 @@ The budget alerts are sent out daily at 2.30 p.m. GMT.
 #### What is the limit on a budget setup per Perspective?
 
 No limit as of now.
+
+
+
+### Anomaly Detection
+
+#### How frequently do you run anomaly detection jobs ?
+
+Anomaly detection jobs are executed once per day.
+
+#### Do we consider seasonal factors while detecting anomalies ?
+
+Yes we do consider daily, weekly and monthly seasonalities while detecting anomalies.
+
+#### Do we support daily alerts for anomalies ?
+
+Yes we do support daily alerts for anomalies
+
+#### We didn’t get the slack/email notifications for anomaly despite the fact that we have we have set up channels for them ?
+
+Please reverify if the Slack and email channels have been properly configured for that specific perspective. If a particular anomaly is associated with multiple perspectives, we only send one notification to avoid redundancy. In this scenario, the notification is sent for the perspective that was created first among all the perspectives that share the same anomaly
+
+#### How much time does it take for sending alerts to the customers for an anomaly ?
+
+As soon as anomalies are detected at our end, we immediately send both slack as well as email notifications to our customers regarding it.
+
+#### Do we support fetching anomalies on perspective made through labels ?
+
+No, currently we do not have support for retrieving anomalies based on perspective labels.
+
+#### Is there a way we can proactively feed data to anomaly detection for future events or holidays ?
+
+No, as of now we don’t support feeding data for future events or holidays.
+
+#### Anomaly drill down from the perspective screen does not seem to be filtering the anomaly list correctly ?
+
+When you perform a drill-down from the perspective screen to view anomalies, we apply a time filter that specifically retrieves all anomalies of that particular day. This process ensures that the anomalies are accurately fetched, and the user is presented with all anomalies from that particular day, allowing them to take appropriate action.
+
+#### I see an anomaly at the AWS usage type level. Why is it that I'm not observing the same anomaly at the AWS service or AWS account level?
+
+We display anomalies at the most granular level of the hierarchy and intentionally exclude them from higher levels. This approach enables customers to precisely identify the root cause of the anomaly." The hierarchy level for clusters and different cloud providers are as follows  
+
+![](./static/ccm-faqs-00.png)
+
+#### I am seeing a large number of anomalies being detected which do not seem like anomalies to me ?
+
+Before proceeding, please double-check whether you have configured a new connector specifically for that particular cloud service. If you have indeed set up a new connector, please be aware that our machine learning models may not yet have sufficient training data for accurately identifying anomalies. To obtain reliable anomaly results, we typically require a minimum of 14 days' worth of training data.
 
 ### General AutoStopping rules
 

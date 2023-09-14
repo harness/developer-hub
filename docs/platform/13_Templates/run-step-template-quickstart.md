@@ -23,8 +23,8 @@ You'll learn how to: 
 ### Before you begin
 
 * Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
-* The Run template in this quickstart is added to a CD pipeline. If you are new to Harness CD, go to [CD Quickstarts](https://developer.harness.io/tutorials/cd-pipelines).
-* Go to ​[CI tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
+* The Run template in this quickstart is added to a CD pipeline. If you are new to Harness CD, go to [CD Quickstarts](/tutorials/cd-pipelines).
+* Go to ​[CI tutorials](../../continuous-integration/get-started/tutorials.md).
 
 ### Step 1: Create a template
 
@@ -70,7 +70,7 @@ To add step parameters, do the following:
 
 6. Select **Save**. The new template appears under the **Templates** list.
 
-   **Use Runtime Inputs instead of variable expressions:** when you want to template settings in a Stage or step template, use [Runtime inputs](../20_References/runtime-inputs.md) instead of variable expressions. When Harness tries to resolve variable expressions to specific stage-level settings using fully-qualified names, it can cause issues at runtime. Every pipeline where the stage or step template is inserted must utilize the exact same names for fully-qualified name references to operate. With runtime inputs, you can supply values for a setting at deployment runtime.
+   **Use Runtime Inputs instead of variable expressions:** when you want to template settings in a Stage or step template, use [Runtime inputs](../variables-and-expressions/runtime-inputs.md) instead of variable expressions. When Harness tries to resolve variable expressions to specific stage-level settings using fully-qualified names, it can cause issues at runtime. Every pipeline where the stage or step template is inserted must utilize the exact same names for fully-qualified name references to operate. With runtime inputs, you can supply values for a setting at deployment runtime.
 
 ### Step 3: Add the run step template to a pipeline
 

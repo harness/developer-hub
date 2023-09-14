@@ -19,12 +19,12 @@ This topic covers how to add and configure the Verify step.
 
 ## Before You Begin
 
-* [Learn Harness' Key Concepts](/docs/getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](/docs/get-started/key-concepts.md)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 
 ## Supported Platforms and Technologies
 
-See **Continuous Verification** in [Supported Platforms and Technologies](../../../getting-started/supported-platforms-and-technologies.md).
+See **Continuous Verification** in [Supported Platforms and Technologies](../../../get-started/supported-platforms-and-technologies.md).
 
 ## Review: What is Harness Continuous Verification (CV)?
 
@@ -190,7 +190,7 @@ Harness waits 2-3 minutes to allow enough time for the data to be sent to the ve
 
 ## Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](../../../platform/12_Variables-and-Expressions/harness-variables.md) to reference the artifact in the stage Service settings.
+In **Artifact Tag**, use a [Harness expression](../../../platform/variables-and-expressions/harness-variables.md) to reference the artifact in the stage Service settings.
 
 The expression `<+serviceConfig.artifacts.primary.tag>` references the primary artifact.
 

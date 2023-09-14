@@ -12,9 +12,9 @@ This topic provides settings and permissions for the Kubernetes Cluster Connecto
 
 The Kubernetes cluster connector is a platform-agnostic connection to a Kubernetes cluster located anywhere.
 
-For cloud platform-specific connections, go to platform [Cloud Connectors](https://developer.harness.io/docs/category/cloud-platform-connectors/).
+For cloud platform-specific connections, go to platform [Cloud Connectors](/docs/category/cloud-providers/).
 
-Looking for the How-to? Go to [Add a Kubernetes Cluster Connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
+Looking for the How-to? Go to [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
 
 ## Video Summary
 
@@ -166,7 +166,7 @@ When you select a delegate, the Harness Delegate inherits the Kubernetes service
 
 The service account associated with the delegate pod must have the Kubernetes `cluster-admin` role.
 
-Go to [Install a Kubernetes Delegate](../../../2_Delegates/install-delegates/overview.md).
+Go to [Install a Kubernetes delegate](../../../delegates/install-delegates/overview.md).
 
 ### Master URL
 
@@ -298,8 +298,8 @@ AWS EKS is supported using the Inherit Delegate Credentials option in the Kubern
 
 To install a delegate in your AWS infrastructure, do the following:
 
-* Install a Harness Kubernetes Delegate in your EKS cluster. You must be logged in as an admin user when you run the `kubectl apply -f harness-delegate.yaml` command.
-* Give it a name that you can recognize as an EKS cluster delegate. For information on installing a Kubernetes Delegate, go to [Install a Kubernetes Delegate](../../../2_Delegates/install-delegates/overview.md).
+* Install a Harness Kubernetes delegate in your EKS cluster. You must be logged in as an admin user when you run the `kubectl apply -f harness-delegate.yaml` command.
+* Give it a name that you can recognize as an EKS cluster delegate. For information on installing a Kubernetes delegate, go to [Install a Kubernetes delegate](../../../delegates/install-delegates/overview.md).
 * In the Kubernetes Cluster Connector settings, select the delegate.
 * When setting up the EKS cluster as the target Infrastructure, select the Kubernetes Cluster Connector.
 

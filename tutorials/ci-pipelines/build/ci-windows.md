@@ -397,7 +397,7 @@ If not already included on your build machine, you can specify a container image
 <TabItem value="Harness Cloud">
 ```
 
-In steps that allow you to supply your own commands, such as [**Run** steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#shell-and-command) and [**Background** steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
+In steps that allow you to supply your own commands, such as [**Run** steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#shell-and-command) and [**Background** steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
 
 ```yaml
               - step:
@@ -419,7 +419,7 @@ You can also use **Run** steps to install different shell tools into the build e
 <TabItem value="Self-hosted">
 ```
 
-In steps that allow you to supply your own commands, such as [**Run** steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#shell-and-command) and [**Background** steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
+In steps that allow you to supply your own commands, such as [**Run** steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#shell-and-command) and [**Background** steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
 
 ```yaml
               - step:

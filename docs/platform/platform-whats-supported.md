@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 This topic lists the supported Harness Platform features and integrations you can use for deploying and verifying your apps.
 
-For a comprehensive list that includes all Harness modules, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).
+For a comprehensive list that includes all Harness modules, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
 
 ```mdx-code-block
   <Tabs>
@@ -21,7 +21,7 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
   <TabItem value="Git Experience" label="Git Experience">
 ```
 
-import Gitxsup from '/docs/getting-started/shared/gitx-whats-supported.md'
+import Gitxsup from '/docs/get-started/shared/gitx-whats-supported.md'
 
 <Gitxsup />
 
@@ -30,7 +30,7 @@ import Gitxsup from '/docs/getting-started/shared/gitx-whats-supported.md'
   <TabItem value="Access control" label="Access Control">
 ```
 
-import Accessconsup from '/docs/getting-started/shared/access-control-supported.md'
+import Accessconsup from '/docs/get-started/shared/access-control-supported.md'
 
 <Accessconsup />
 
@@ -50,7 +50,7 @@ Harness enables you to manage access control at the following [scopes](/docs/pla
   <TabItem value="Delegates" label="Delegates">
 ```
 
-import Delimagetypes from '/docs/platform//2_Delegates/shared/delegate-image-types-intro-table.md'
+import Delimagetypes from '/docs/platform/delegates/shared/delegate-image-types-intro-table.md'
 
 <Delimagetypes />
 
@@ -60,7 +60,7 @@ import Delimagetypes from '/docs/platform//2_Delegates/shared/delegate-image-typ
 
 - Install delegate minimal image without SDKs
 
-- [Install delegate maximal image without certified SDKs](/docs/getting-started/supported-platforms-and-technologies/#sdks-installed-with-harness-delegate)
+- [Install delegate maximal image without certified SDKs](/docs/get-started/supported-platforms-and-technologies/#sdks-installed-with-harness-delegate)
 
 
 ```mdx-code-block
@@ -80,7 +80,7 @@ Notification methods supported for various pipeline events are:
   <TabItem value="Secret management" label="Secrets Management">
 ```
 
-import Secretmgmtsup from '/docs/getting-started/shared/secret-management-supported.md'
+import Secretmgmtsup from '/docs/get-started/shared/secret-management-supported.md'
 
 <Secretmgmtsup />
 

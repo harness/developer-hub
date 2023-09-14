@@ -25,7 +25,7 @@ This topic walks you through the steps to create a pipeline template.
 
 * Review [Templates overview](template.md) to understand template concepts.
 * Review [Permissions reference](../role-based-access-control/permissions-reference) to learn about the permissions required to create a template at various scopes.
-* Review [Pipelines and stages](https://developer.harness.io/docs/category/pipelines).
+* Review [Pipelines and stages](/docs/category/pipelines).
 
 ### Limitations
 
@@ -113,9 +113,9 @@ To add a stage to the template, do the following:
 
 ### Step 3: Add service details
 
-In **About the Service**, select the service that you want to deploy from the **Specify Service** list. You can also use [fixed values, runtime inputs, and expressions](../20_References/runtime-inputs.md).
+In **About the Service**, select the service that you want to deploy from the **Specify Service** list. You can also use [fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md).
 
-**Use Runtime Inputs instead of variable expressions:** when you update template settings in a stage or step template, use [runtime inputs](../20_References/runtime-inputs.md) instead of variable expressions. When Harness tries to resolve variable expressions to specific stage-level settings using fully-qualified names, it can cause issues at runtime. Every pipeline where the stage or step template is inserted must use the same names for fully-qualified name references to operate. With runtime inputs, you can supply values for a setting at deployment runtime.In **Service Definition**, select the **Deployment Type**. **Deployment Type** defines how your service will be deployed.
+**Use Runtime Inputs instead of variable expressions:** when you update template settings in a stage or step template, use [runtime inputs](../variables-and-expressions/runtime-inputs.md) instead of variable expressions. When Harness tries to resolve variable expressions to specific stage-level settings using fully-qualified names, it can cause issues at runtime. Every pipeline where the stage or step template is inserted must use the same names for fully-qualified name references to operate. With runtime inputs, you can supply values for a setting at deployment runtime.In **Service Definition**, select the **Deployment Type**. **Deployment Type** defines how your service will be deployed.
 
 ![](./static/create-pipeline-template-72.png)
 
@@ -123,13 +123,13 @@ In **About the Service**, select the service that you want to deploy from the **
 
 To add infrastructure details, do the following:
 
-1. In **Infrastructure**, in **Specify Environment**, select the setting for your pipeline execution, for example, **Runtime input**. Harness pipelines allow you to use [fixed values, runtime inputs, and expressions](../20_References/runtime-inputs.md). Environments represent your deployment targets logically (QA, Prod, etc). You can add the same environment to as many stages as you need.
+1. In **Infrastructure**, in **Specify Environment**, select the setting for your pipeline execution, for example, **Runtime input**. Harness pipelines allow you to use [fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md). Environments represent your deployment targets logically (QA, Prod, etc). You can add the same environment to as many stages as you need.
 
    ![](./static/create-pipeline-template-73.png)
 
 2. In **Infrastructure Definition**, select the method for Harness to reach your Kubernetes cluster. Infrastructure definitions represent the physical infrastructure of the environment. They are the actual clusters, hosts, etc. For example, the target infrastructure definition for a Kubernetes deployment. By separating environments and infrastructure definitions, you can use the same environment in multiple stages while changing the target infrastructure settings with each stage.
 
-3. In **Cluster Details**, enter **Connector** and **Namespace** details. Harness pipelines allow you to use [fixed values, runtime inputs, and expressions](../20_References/runtime-inputs.md) also.
+3. In **Cluster Details**, enter **Connector** and **Namespace** details. Harness pipelines allow you to use [fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md) also.
 
 4. In **Connector**, select a connector from the list. To create a new connector, go to [Kubernetes cluster connector settings reference](../7_Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md) and [Add a Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
 

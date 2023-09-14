@@ -14,7 +14,7 @@ You can create services from:
 * An account
 * An Organization
 
-If you are new to Harness, review [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md) and [create your first CD pipeline](/tutorials/cd-pipelines/kubernetes/manifest).
+If you are new to Harness, review [Harness key concepts](/docs/get-started/key-concepts.md) and [create your first CD pipeline](/tutorials/cd-pipelines/kubernetes/manifest).
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -275,7 +275,7 @@ Now you can provide values for any runtime inputs in the service. Let's go into 
 
 :::note
 
-For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md).
+For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
 :::
 

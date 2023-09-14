@@ -38,7 +38,7 @@ https://www.youtube.com/watch?v=y8s351IJLXw-->
 
 ## Add a trigger to a pipeline
 
-These steps assume you're familiar with [creating CD pipelines](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) or [creating CI pipelines](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md). Your pipeline must have a defined codebase for the trigger to listen on. For more information, go to [Create and Configure a Codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md).
+These steps assume you're familiar with [creating CD pipelines](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) or [creating CI pipelines](../../continuous-integration/get-started/tutorials.md). Your pipeline must have a defined codebase for the trigger to listen on. For more information, go to [Create and Configure a Codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md).
 
 
 1. Go to your pipeline in Harness.
@@ -153,7 +153,7 @@ For more information about **Attributes**, **Operators**, **Matching Values**, a
 
 ## Set pipeline input
 
-Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md), such as codebase branch names or artifact versions and tags.
+Pipelines often have [Runtime Inputs](../variables-and-expressions/runtime-inputs.md), such as codebase branch names or artifact versions and tags.
 
 1. Provide values for the inputs or use [Input Sets](../8_Pipelines/input-sets.md).
 2. Select **Create Trigger** to save your trigger.

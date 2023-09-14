@@ -34,7 +34,7 @@ This topic describes how to add a Policy step to a Stage.
 * Currently, the Policy Step is available in Deploy, Custom, and Approval Stages.
 * Currently, only the **Custom** entity type is supported for the Policy step.
 	+ A Custom entity type allows flexibility to enforce policy evaluations during Pipeline execution with different input data. For example, Terraform plans and deployment Environment details. A Policy Set with a Custom type does not have an event configured.
-* [Runtime Inputs](../../20_References/runtime-inputs.md) are expanded before evaluation. You cannot perform checks to ensure a setting is always a Runtime Input, Expression, or Fixed Value.
+* [Runtime Inputs](../../variables-and-expressions/runtime-inputs.md) are expanded before evaluation. You cannot perform checks to ensure a setting is always a Runtime Input, Expression, or Fixed Value.
 
 ### Visual Summary
 
@@ -107,7 +107,7 @@ In **Payload**, enter the payload to be evaluated by the Policy Set(s) you selec
 
 The **Policy Set** and **Payload** settings allow for Fixed Values, Runtime Inputs, and Expressions.
 
-For details on how these work in Harness, go to [Fixed Values, Runtime Inputs, and Expressions](../../20_References/runtime-inputs.md).
+For details on how these work in Harness, go to [Fixed Values, Runtime Inputs, and Expressions](../../variables-and-expressions/runtime-inputs.md).
 
 #### Fixed Values
 
@@ -118,6 +118,7 @@ Fixed Values is show in the **Policy Set** and **Payload** settings earlier in t
 You can select Runtime Inputs for one or both settings and when the Pipeline is executed you can provide the Policy Set and/or Payload for the step.
 
 ![](../../Governance/14_Policy-as-code/static/add-a-governance-policy-step-to-a-pipeline-04.png)
+
 #### Expressions
 
 You can select Expressions for one or both settings and when the Pipeline is executed Harness will resolve the expressions for the Policy Set and/or Payload for the step.

@@ -22,7 +22,7 @@ You'll learn how to:
 
 ## Before you begin
 
-You must perform all the required steps in [Set Up Harness for STO](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto). This topic describes how to do the following:
+You must perform all the required steps in [Set Up Harness for STO](/docs/security-testing-orchestration/get-started/onboarding-guide). This topic describes how to do the following:
 
 1. Add the necessary user roles for your developers and security personnel.
 2. Set up your build infrastructure.
@@ -55,7 +55,7 @@ This Pipeline has only one scanner but you can easily add more later. For the li
 
 ## Clone your STO base pipeline
 
-1. Go to the project with the [base STO pipeline](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto/#create-an-sto-pipeline) project.
+1. Go to the project with the [base STO pipeline](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) project.
 2. Click the top-right menu, choose **Clone**, and save the new pipeline as **STO Tutorial 1**.
 
    ![](./static/sto-standalone-workflows-10.png)

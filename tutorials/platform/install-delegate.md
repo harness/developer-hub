@@ -340,7 +340,7 @@ Select **Continue**. After the health checks pass, your delegate is available fo
 
 You can now route communication to external systems in Harness connectors and pipelines by selecting this delegate via a delegate selector.
 
-import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
+import Selector from '/docs/platform/delegates/shared/selector-infrastructure.md'
 
 <Selector />
 

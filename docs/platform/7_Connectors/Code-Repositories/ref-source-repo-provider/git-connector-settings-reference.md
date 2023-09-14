@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the platform-agnostic Git connector. For specialized connectors for popular Git platforms, like GitHub, go to [Code Repo Connectors](https://developer.harness.io/docs/category/code-repo-connectors).
+This topic provides settings and permissions for the platform-agnostic Git connector. For specialized connectors for popular Git platforms, like GitHub, go to [Code Repo Connectors](/docs/category/code-repo-connectors).
 
 ## Overview settings
 
@@ -141,7 +141,7 @@ Select whether you want Harness to connect directly to your Git account or repo,
 
 If you select **Connect through a Harness Delegate**, you can select **Use any available Delegate** or **Only use Delegates with all of the following tags**.
 
-If you want to use specific delegates, you must identify those delegates. For more information, go to [Select Delegates with Tags](../../../2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+If you want to use specific delegates, you must identify those delegates. For more information, go to [Use delegate selectors](../../../delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ## Troubleshooting
 

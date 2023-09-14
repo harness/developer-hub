@@ -36,7 +36,7 @@ In **Name**, enter a name for the step, for example, **C****reate EC2 Instance
 
 Harness will create an [Entity Id](/docs/platform/20_References/entity-identifier-reference.md) using the name. The Id is very important. You can use an Harness expression and Id to refer to settings in this step from another step.
 
-See [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md).
+See [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md).
 
 ### Timeout
 
@@ -112,7 +112,7 @@ Harness expressions and secrets can be used in templates. They are resolved at r
 See:
 
 * [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
+* [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### Stack Name
 
@@ -177,7 +177,7 @@ Harness expressions and secrets can be used in parameter files and in the **Para
 See:
 
 * [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
+* [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### Option: CloudFormation Parameters Overrides
 
@@ -235,9 +235,9 @@ Harness checks if the stack is in `ROLLBACK_COMPLETE` state before the deploymen
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 

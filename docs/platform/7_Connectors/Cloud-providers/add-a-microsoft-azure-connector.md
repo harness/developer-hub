@@ -16,7 +16,7 @@ Use the Azure Repos connector to [connect to Azure SCM repos](../Code-Repositori
 
 :::tip
 
-If you're using Harness **Cloud Cost Management (CCM)**, you can [Set Up Cloud Cost Management for Azure](../../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
+If you're using Harness **Cloud Cost Management (CCM)**, you can [Set Up Cloud Cost Management for Azure](../../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md).
 
 :::
 
@@ -109,7 +109,7 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 </details>
 
 
-For more information, go to [kubelogin](https://github.com/Azure/kubelogin/releases) from Azure and [Delegate installation overview](/docs/platform/2_Delegates/install-delegates/overview.md).
+For more information, go to [kubelogin](https://github.com/Azure/kubelogin/releases) from Azure and [Delegate installation overview](/docs/platform/delegates/install-delegates/overview.md).
 
 ## Roles, permission, and cluster requirements
 
@@ -347,10 +347,10 @@ The following JSON sample creates a custom role with the required permissions. T
 There are three options for connecting Harness to an AKS cluster:
 
 * Use the platform-agnostic [Kubernetes cluster connector](./add-a-kubernetes-cluster-connector.md) with a Kubernetes or Helm delegate.
-    + You'll need to install a [Kubernetes delegate](../../../platform/2_Delegates/install-delegates/overview.md) in the target AKS cluster, and then use the delegate's credentials for the Kubernetes cluster connector's authentication method.
+    + You'll need to install a [Kubernetes delegate](../../../platform/delegates/install-delegates/overview.md) in the target AKS cluster, and then use the delegate's credentials for the Kubernetes cluster connector's authentication method.
 	+ You won't need to provide Microsoft Azure Service Principal or Managed Identity credentials.
 * Use a **Microsoft Azure Cloud Provider connector**, as described in this topic, with a Kubernetes delegate.
-    + You'll need to install a [Kubernetes delegate](../../../platform/2_Delegates/install-delegates/overview.md) in the target AKS cluster, and then use the delegate's credentials for the Azure connector's authentication method.
+    + You'll need to install a [Kubernetes delegate](../../../platform/delegates/install-delegates/overview.md) in the target AKS cluster, and then use the delegate's credentials for the Azure connector's authentication method.
 	+ You'll need to provide the Microsoft Azure Environment.
 	+ If you use a User Assigned Managed Identity, you'll need to provide the Application (client) Id.
 	+ If you use a System Assigned Managed Identity, you won't need to provide any Ids.
@@ -632,7 +632,7 @@ If you select **Specify credentials here**, you must provide Microsoft Azure app
 <details>
 <summary>Inherit credentials from the delegate</summary>
 
-If you have [installed a Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) in your Azure subscription (preferably in your target AKS cluster), select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit authentication credentials from the delegate.
+If you have [installed a Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview.md) in your Azure subscription (preferably in your target AKS cluster), select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit authentication credentials from the delegate.
 
 1. For **Environment**, select **Azure Global** or **US Government**.
 2. For **Authentication**, select **System Assigned Managed Identity** or **User Assigned Managed Identity**.
@@ -682,7 +682,7 @@ For example, you could use this shell script in a Harness Run step:
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n <namespace>
 ```
 
-Steps can be executed on any delegate or you can select specific delegates using the [Delegate Selector](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md) setting.
+Steps can be executed on any delegate or you can select specific delegates using the [Delegate Selector](../../delegates/manage-delegates/select-delegates-with-selectors.md) setting.
 
 For Azure deployments, note the following:
 
@@ -693,5 +693,5 @@ For Azure deployments, note the following:
 
 * [Azure ACR to AKS CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
-* [Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Harness Key Concepts](../../../get-started/key-concepts.md)
 * [CD Pipeline Basics](/docs/continuous-delivery/get-started/key-concepts)

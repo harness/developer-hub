@@ -99,7 +99,7 @@ To configure input variables for the shell script, do the following:
 
 1. Select **Configuration**, and then select **Add Input Variable**.
 2. Add **Name**, **Type**, and **Value** for the input variables in your script.  
-Harness allows you to use [Fixed values and runtime inputs](../20_References/runtime-inputs.md).
+Harness allows you to use [Fixed values and runtime inputs](../variables-and-expressions/runtime-inputs.md).
 
    ![The image shows the configuration tab for creating a secrets manager template. The user has specified three variables whose data type is string and whose values are to be specified at run time](./static/create-a-secret-manager-template-32.png)
 3. Select **Execution Target**. This is where you want to execute the script that you just added.  

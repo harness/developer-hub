@@ -28,8 +28,8 @@ For example, the Tag **docs** has been added to two Projects and so a search for
 
 ### Limitations
 
-* [Runtime inputs](runtime-inputs.md) (`<+input>`) are not supported in Tags.
-* Harness variable expressions cannot be used in Tags. See [Built-in Harness Variables Reference](../12_Variables-and-Expressions/harness-variables.md).
+* [Runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs) (`<+input>`) are not supported in Tags.
+* Harness variable expressions cannot be used in Tags. See [Built-in Harness Variables Reference](../variables-and-expressions/harness-variables.md).
 
 ### Delegate Tags and General Tags
 
@@ -41,7 +41,7 @@ Delegate Tags are different from general Tags in the following ways:
 
 ### Tag Expressions
 
-You can reference Tags using [Harness expressions](../12_Variables-and-Expressions/harness-variables.md).
+You can reference Tags using [Harness expressions](../variables-and-expressions/harness-variables.md).
 
 You simply reference the tagged entity and then use `tags.[tag name]`, like `<+pipeline.tags.docs>`
 
@@ -54,4 +54,4 @@ For example, here are several different references:
 
 ### Related Reference Material
 
-* [Built-in and custom Harness variables reference](../12_Variables-and-Expressions/harness-variables.md)
+* [Built-in and custom Harness variables reference](../variables-and-expressions/harness-variables.md)

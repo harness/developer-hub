@@ -22,7 +22,7 @@ Using recommendations without proper assessment could result in unexpected chang
 
 ## Before You begin
 
-* [Set Up Cloud Cost Management for Kubernetes](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [Set Up Cloud Cost Management for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
 * [CCM Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
 
 ## How are workload recommendations computed?
@@ -31,7 +31,7 @@ In Harness CCM, the workload recommendations are computed by analyzing the past 
 
 The computation adds a 15% buffer to the recommended resources by default. CCM also allows you to add any additional buffer using the Tune recommendations option.
 
-When you enable [Cost Visibility](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md) for your [Kubernetes Cluster](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector), the [Delegate](../../../platform/2_Delegates/delegate-concepts/delegate-overview.md) associated with your Connector starts collecting CPU and memory resource utilization metrics for every node and pod (including individual containers) present in the cluster every minute using a metrics server.  CCM relies on the Metrics Server and initializes recommendations after an initial data collection of 24-48 hours. The Metrics Server is queried by the controller every minute for utilization data.
+When you enable [Cost Visibility](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md) for your [Kubernetes Cluster](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector), the [Delegate](../../../platform/delegates/delegate-concepts/delegate-overview.md) associated with your Connector starts collecting CPU and memory resource utilization metrics for every node and pod (including individual containers) present in the cluster every minute using a metrics server.  CCM relies on the Metrics Server and initializes recommendations after an initial data collection of 24-48 hours. The Metrics Server is queried by the controller every minute for utilization data.
 
 The utilization data collected every minute is then aggregated in the Delegate for a 20-minute window. The 20-minute aggregated data is then sent to Harness:
 
@@ -192,7 +192,7 @@ The following details are displayed:
 	+ Cluster
 * **Cost details**: The following cost details are displayed:
 	+ **Total Cost**: For Kubernetes clusters, the total cost is the sum of all the node costs. For ECS clusters, the sum of all container instances.
-	+ **Idle Cost**: Idle cost is the cost of idle resources (CPU and memory) allocated to a Kubernetes pod or an Amazon ECS task but is not utilized. For more information, see [Idle Cost](../../2-getting-started-ccm/2-harness-key-cloud-cost-concepts.md#idle-cost).
+	+ **Idle Cost**: Idle cost is the cost of idle resources (CPU and memory) allocated to a Kubernetes pod or an Amazon ECS task but is not utilized. For more information, see [Idle Cost](../../get-started/key-concepts.md#idle-cost).
 	+ **Utilized Cost**: Utilized cost is the cost estimate for the utilized node or pod resources.
 * **Aggregation**: The aggregated CPU and memory utilization value of your workload. The values are displayed as the following:
 	+ **Time-weighted**: This considers the active duration of pods when calculating the CPU and memory utilization.
@@ -245,7 +245,7 @@ which is equal to `0.4 + 0.4 + 0.4 = 1.2`
 
 ### Next steps
 
-* [Optimize Kubernetes Costs with Node Pool Recommendations](../../4-use-ccm-cost-optimization/1-ccm-recommendations/node-pool-recommendations.md)
+* [Optimize Kubernetes Costs with Node Pool Recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations)
 * [Analyze Cost for Kubernetes Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md)
 
 ### See also

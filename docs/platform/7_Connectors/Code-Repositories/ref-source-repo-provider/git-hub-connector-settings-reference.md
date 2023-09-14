@@ -260,7 +260,7 @@ Select whether you want Harness to connect directly to your GitHub account or re
 
 If you select **Connect through the Harness Platform**, the Harness Manager exchanges a key pair with the Secrets Manager configured in Harness using an encrypted connection. Next, the Harness Manager uses the encrypted key and the encrypted secret and then discards them. The keys never leave the Harness Manager. Secrets are always encrypted in transit, in memory, and in the Harness database.
 
-**Connect through a Harness Delegate**, a [Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) handles the connection. This option is often used for [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/introduction/getting-started).
+**Connect through a Harness Delegate**, a [Harness delegate](/docs/platform/delegates/delegate-concepts/delegate-overview.md) handles the connection. This option is often used for [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/get-started/onboarding-guide).
 
 </details>
 
@@ -268,7 +268,7 @@ If you select **Connect through the Harness Platform**, the Harness Manager exch
 
 If you select **Connect through a Harness Delegate**, you can select **Use any available Delegate** or **Only use Delegates with all of the following tags**.
 
-If you want to use specific delegates, you must identify those delegates. For more information, go to [Select Delegates with Tags](../../../2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+If you want to use specific delegates, you must identify those delegates. For more information, go to [Use delegate selectors](../../../delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ### Kubernetes delegate with self-signed certificates
 

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes Harness Continuous Delivery (CD) services and environments.
 
-If you are new to Harness, please review [Harness key concepts](../../getting-started/learn-harness-key-concepts.md) and [CD pipeline modeling overview](./cd-pipeline-modeling-overview.md).
+If you are new to Harness, please review [Harness key concepts](../../get-started/key-concepts.md) and [CD pipeline modeling overview](./cd-pipeline-modeling-overview.md).
 
 ## Video: Services
 
@@ -673,7 +673,7 @@ When you run the pipeline, you can select the service and environment for their 
 
 ![](./static/services-and-environments-runtime-input-02.png)
 
-For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md).
+For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 ## Services and environments RBAC
 
