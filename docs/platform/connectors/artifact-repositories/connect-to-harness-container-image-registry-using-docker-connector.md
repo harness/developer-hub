@@ -30,8 +30,8 @@ If you choose to override the `harnessImageConnector`, you may also avoid trigge
 
 ### Before you begin
 
-* [CI pipeline basics](../../../continuous-integration/get-started/key-concepts.md)
-* [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md)
+* [CI key concepts](../../../continuous-integration/get-started/key-concepts.md)
+* [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md)
 * [Docker Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
 
 ### Review: Allowlist app.harness.io

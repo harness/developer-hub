@@ -23,7 +23,7 @@ You can't share access credentials or other [Text Secrets](/docs/platform/secret
 This topic assumes you have created a pipeline and that you are familiar with the following:
 
 * [Harness key concepts](/docs/get-started/key-concepts.md)
-* [CI pipeline basics](../../get-started/key-concepts.md)
+* [CI key concepts](../../get-started/key-concepts.md)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * [Build infrastructure](/docs/category/set-up-build-infrastructure)
 

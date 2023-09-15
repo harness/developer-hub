@@ -24,11 +24,11 @@ You'll learn how to: 
 
 ### Before you begin
 
-* Review [Templated overview](template.md).
-* Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
-* The stage template in this quickstart is added to a CD Pipeline. If you are new to Harness CD, go to [CD Quickstarts](/tutorials/cd-pipelines).
-* You can also create CI Build Stage Templates and Manual and Jira Approval Stage Templates. Go to ​[CI tutorials](../../continuous-integration/get-started/tutorials.md), [Using manual Harness approval stages](../approvals/adding-harness-approval-stages.md), and [Adding Jira approval stages and steps](../approvals/adding-jira-approval-stages.md).
-* The stage template in this quickstart uses runtime inputs. Runtime inputs are placeholders for values that will be provided when you start a pipeline execution. Go to [Fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md).
+* Review [Templates overview](template.md).
+* Review the [Harness key concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md).
+* This topic adds a stage template to a CD pipeline. If you are new to Harness CD, review the [CD tutorials](/tutorials/cd-pipelines).
+* You can also create CI Build stage template, as well as manual approval stage and Jira approval stage templates. For more information, go to the [CI tutorials](../../continuous-integration/get-started/tutorials.md), [Using manual Harness approval stages](../approvals/adding-harness-approval-stages.md), and [Adding Jira approval stages and steps](../approvals/adding-jira-approval-stages.md).
+* The stage template in this topic uses runtime inputs. Runtime inputs are placeholders for values that you provide when you start a pipeline execution. For more information, go to [Fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md).
 
 ### Review: Templates
 

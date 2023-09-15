@@ -17,6 +17,8 @@ title: Build on a Kubernetes cluster
   target="_self"
 />
 
+<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
 This tutorial shows you how to create a two-stage Harness CI pipeline that uses a Kubernetes cluster build infrastructure. The pipeline builds and runs a unit test on a codebase, uploads the artifact to Docker Hub, and then runs integration tests. This tutorial uses publicly-available code, images, and your Github and Docker Hub accounts.
 
 :::info
@@ -240,9 +242,9 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 
 7. Under **Optional Configuration**, add a **Report Path** and enter `*.xml`.
 8. Select **Apply Changes** to save the step.
-9. Add a [Build and Push an Image to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) to your Build stage, and configure it as follows:
+9. Add a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) to your Build stage, and configure it as follows:
 
-   * **Name:** Enter a name, such as `Build and push image to Docker Registry`.
+   * **Name:** Enter a name, such as `Build and push to Docker`.
    * **Docker Connector:** Select the Docker Hub connector you created for the **Run** step.
    * **Docker Repository:** Enter your Docker Hub username and the destination repo name formatted as `[docker_username]/[repo_name]`. For example: `mydockerhub/ci_tutorial_repo`.
    * **Tags:** Add a tag and enter `<+pipeline.sequenceId>`.

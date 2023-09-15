@@ -1,6 +1,6 @@
 ---
 title: Google GAR
-sidebar_position: 2
+sidebar_position: 3
 description: Build and push an application container to Google Artifact Registry using a CI pipeline.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, Go, GCP]
 slug: /ci-pipelines/publish/google-gar
