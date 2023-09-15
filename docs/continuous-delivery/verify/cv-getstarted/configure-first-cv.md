@@ -81,7 +81,7 @@ The next step is to create a monitored service for the Verify step. Harness CV u
 
 
 :::info note
-When setting up the pipeline, if you've configured service or environment as runtime values, the auto-create option for monitored services won't be available. When you run the pipeline, Harness combines the service and environment values to create a monitored service. If a monitored service with the same name already exists in your project, it will be assigned to the pipeline. If not, Harness skips the verification step.
+When setting up the pipeline, if you've configured a service or an environment as runtime values, the auto-create option for monitored services won't be available. When you run the pipeline, Harness combines the service and environment values to create a monitored service. If a monitored service with the same name already exists in your project, it will be assigned to the pipeline. If not, Harness skips the verification step.
 
 For instance, when you run the pipeline, if you input the service as `todolist` and the environment as `dev`, Harness creates a monitored service with the name `todolist_dev`. If a monitored service with that name exists, Harness assigns it to the pipeline. If not, Harness skips the Verification step.
 :::
