@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/3_Authentication/2-two-factor-authentication.md).Two-Factor Authentication (2FA) can be managed in two ways:
+This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/authentication/two-factor-authentication.md).Two-Factor Authentication (2FA) can be managed in two ways:
 
 * **Individual user:** You can set up 2FA for your own **User Profile** without impacting other user accounts.
 * **All account users:** If you have **Manage Account** permissions, you can enforce 2FA for all users in Harness. First, you set up 2FA for your own account, and then you can enforce 2FA account-wide in the Harness account's **Login Settings**.

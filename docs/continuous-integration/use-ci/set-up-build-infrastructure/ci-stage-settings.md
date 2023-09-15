@@ -23,7 +23,7 @@ To create, edit, and delete stages in CI pipelines, you need either Project Admi
 
 ## Stage Name
 
-Enter a name summarizing the stage's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the stage's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Description
 
@@ -31,7 +31,7 @@ Optional text string.
 
 ## Tags
 
-For details, go to the [Tags Reference](../../../platform/20_References/tags-reference.md).
+For details, go to the [Tags Reference](../../../platform/references/tags-reference.md).
 
 ## Clone Codebase
 
@@ -83,7 +83,10 @@ For information about supported tools, enabling cache intelligence, and configur
 
 ### Advanced: Stage Variables
 
-[Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. For an example use case, go to [Useful techniques: Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#useful-techniques).
+[Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. There are many uses for these variables. For some examples, go to:
+
+* [Build images without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push.md)
+* [Set kaniko runtime flags](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md#set-kaniko-runtime-flags)
 
 ## Infrastructure
 
@@ -102,6 +105,8 @@ import TabItem from '@theme/TabItem';
   <TabItem value="cloud" label="Cloud">
 ```
 
+<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
 Use the **Cloud** infrastructure option for [Harness Cloud build infrastructure](./use-harness-cloud-build-infrastructure.md).
 
 The following **Platform** settings are available:
@@ -114,25 +119,44 @@ The following **Platform** settings are available:
   <TabItem value="kubernetes" label="Kubernetes" default>
 ```
 
+<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
 Use the **Kubernetes** infrastructure option to [set up a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
-
-:::info
-
-The Kubernetes cluster build infrastructure option is only available with Harness CI Team and Enterprise plans.
-
-:::
 
 The following **Platform** settings are available:
 
 * **Select the Operating System:** Select the relevant OS.
-* **Kubernetes Cluster:** Select a [Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
-* **Namespace:** Enter the Kubernetes namespace to use in the target cluster. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
+* **Kubernetes Cluster:** Select a [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
+* **Namespace:** Enter the Kubernetes namespace to use in the target cluster. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../platform/variables-and-expressions/runtime-inputs).
 
 The following **Advanced** settings are available for the **Kubernetes** infrastructure:
 
 ### Volumes
 
-A list of the volumes you want to mount onto the pod running the stage.
+You can add a list of volumes you want to mount onto the pod that is running the stage.
+
+* **Mount Path:** Enter the path to the volume.
+* **Type:** Select **Empty Directory**, **Host Path**, or **Persistent Volume Claim**.
+* If **Type** is **Empty Directory**, you can specify the storage **Medium** and volume's maximum memory **Size**.
+* If **Type** is **Host Path**, you must specify **Path** and you can specify an optional **Path Type**.
+* If **Type** is **Persistent Volume Claim**, you must specify a **Claim Name** and whether the volume is **Read Only**.
+
+The following YAML example shows two Empty Directory volumes that would be used for PostgreSQL data.
+
+```yaml
+            spec:
+              connectorRef: YOUR_K8S_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_K8S_CLUSTER_NAMESPACE
+              volumes:
+                - mountPath: /tmp/pgdata1
+                  type: EmptyDir
+                  spec:
+                    medium: ""
+                - mountPath: /tmp/pgdata2
+                  type: EmptyDir
+                  spec:
+                    medium: ""
+```
 
 ### Service Account Name
 
@@ -236,12 +260,14 @@ If you use large images in your Build stage's steps, you might find that the ini
 
 ### Override Image Connector
 
-By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
+By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="local" label="Local">
 ```
+
+<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
 Use the **Local** infrastructure option for a [local runner build infrastructure](./define-a-docker-build-infrastructure.md).
 
@@ -255,19 +281,15 @@ The following **Platform** settings are available:
   <TabItem value="vm" label="VMs">
 ```
 
+<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
 Use the **VMs** infrastructure option for [self-hosted cloud provider VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
-
-:::info
-
-The VM build infrastructure option is only available with Harness CI Team and Enterprise plans.
-
-:::
 
 The following **Platform** settings are available:
 
 * **Select the Operating System:** Select the build infrastructure OS.
 * **Pool Name:** Enter the pool name as specified in the `pool.yml` setup file in your build infrastructure.
-* **Override Image Connector:** By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
+* **Override Image Connector:** By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
 ```mdx-code-block
   </TabItem>

@@ -19,7 +19,7 @@ Fixed Values are the values that you enter while configuring the template. These
 
 Runtime inputs are values that you are prompted to enter while using the template. When you set a field as Runtime input, it becomes a placeholder for values that you need to provide while using the template to create a monitored health service.  
 
-For more information see [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md).
+For more information see [Fixed Values, Runtime Inputs, and Expressions](../../platform/variables-and-expressions/runtime-inputs.md).
 
 ### Create a Monitored Service Template
 

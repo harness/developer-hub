@@ -325,7 +325,7 @@ Harness services represent your microservices or applications. You can add the s
    * [Google Cloud Storage (GCS)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-cloud-storage-gcs)
    * [GitHub Package Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#github-packages)
    * Azure Artifacts
-   * [Jenkins](/docs/platform/Connectors/Artifact-Repositories/connect-to-jenkins)
+   * [Jenkins](/docs/platform/connectors/artifact-repositories/connect-to-jenkins)
    
    For this tutorial, we will use Artifactory.
    :::

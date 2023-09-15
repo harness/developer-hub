@@ -16,29 +16,32 @@ USAGE:
    harness [global options] command [command options] [arguments...]
 
 VERSION:
-   vX.X.X
+   development
 
 COMMANDS:
-   update, upgrade        Check for updates and upgrade the CLI
-   secret, secret-token   Secrets specific commands. eg: apply (create/update), delete
-   service, svc           Service specific commands, eg: apply (create/update), delete, list
-   environment, env       Environment specific commands, eg: apply (create/update), delete, list
-   connector, conn        Connector specific commands, eg: apply (create/update), delete, list
-   infrastructure, infra  Infrastructure specific commands, eg: apply (create/update), delete, list
-   pipeline, pipeline     Pipeline specific commands, eg: apply (create/update), delete, list
-   login, login           Login with account identifier and api key.
-   account, acc           Fetch Account details
-   help, h                Shows a list of commands or help for one command
+   update, upgrade                 Check for updates and upgrade the CLI
+   secret, secret-token            Secrets specific commands. eg: apply (create/update), delete
+   service, svc                    Service specific commands, eg: apply (create/update), delete, list
+   environment, env                Environment specific commands, eg: apply (create/update), delete, list
+   connector, conn                 Connector specific commands, eg: apply (create/update), delete, list
+   gitops-application, gitops-app  Gitops application specific commands, eg: apply (create/update), delete, list
+   gitops-cluster, gitops-cluster  Gitops Cluster specific commands, eg: apply (create/update), delete, list
+   gitops-repository, gitops-repo  Gitops repository specific commands, eg: apply (create/update), delete, list
+   infrastructure, infra           Infrastructure specific commands, eg: apply (create/update), delete, list
+   pipeline, pipeline              Pipeline specific commands, eg: apply (create/update), delete, list
+   login, login                    Login with account identifier and api key.
+   account, acc                    Fetch Account details
+   help, h                         Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
-   --base-url              Provide the NG_BASE_URL for self managed platforms
-   --api-key               API_KEY for the target account to authenticate & authorise the user.
-   --account-id            API_KEY for the target account to authenticate & authorise the user.
+   --base-url NG_BASE_URL  provide the NG_BASE_URL for self managed platforms
+   --api-key API_KEY       API_KEY for the target account to authenticate & authorise the user.
+   --account-id value      provide an Account Identifier of the user
    --load FILE             FILE to load flags from.
-   --debug                 Prints debug level logs (default: false)
-   --json                  Log as JSON instead of standard ASCII formatter (default: false)
-   --help, -h              Show help
-   --version, -v           Print the version
+   --debug                 prints debug level logs (default: false)
+   --json                  log as JSON instead of standard ASCII formatter (default: false)
+   --help, -h              show help
+   --version, -v           print the version
 ```
 
 ## Description
@@ -47,21 +50,27 @@ Setup Harness CD & GitOps in a few commands
 
 ## Commands
 
-`harness login`          - Authenticate via the CLI by providing an API token and an Account Identifier.
+`harness login`              - Authenticate via the CLI by providing an API token and an Account Identifier.
 
-`harness update`         - Updates the CLI.
+`harness update`             - Updates the CLI.
 
-`harness secret`         - Creates or deletes a Harness Secret.
+`harness secret`             - Creates or deletes a Harness Secret.
 
-`harness connector`      - Creates, deletes or update a Harness Connector.
+`harness connector`          - Creates, deletes or update a Harness Connector.
 
-`harness environment`    - Creates, deletes or update a Harness Environment.
+`harness gitops-repository`  - Creates, deletes or update a GitOps Repository.
 
-`harness infrastructure` - Creates, deletes or update a Harness Infeastructure.
+`harness gitops-cluster`     - Creates, deletes or update a GitOps Cluster.
 
-`harness service`        - Creates, delete or update a Harness Service.
+`harness gitops-application` - Creates, deletes or update a GitOps Application.
 
-`harness pipeline`       - Creates, delete or update a Harness Pipeline.
+`harness environment`        - Creates, deletes or update a Harness Environment.
+
+`harness infrastructure`     - Creates, deletes or update a Harness Infeastructure.
+
+`harness service`            - Creates, delete or update a Harness Service.
+
+`harness pipeline`           - Creates, delete or update a Harness Pipeline.
 
 ## Global Options
 

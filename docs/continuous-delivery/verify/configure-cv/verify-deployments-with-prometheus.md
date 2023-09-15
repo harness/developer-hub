@@ -27,7 +27,7 @@ This topic covers how to add and configure Prometheus as a Health Source for the
 
 ## Before You Begin
 
-- [Add Prometheus as a verification provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
+- [Add Prometheus as a verification provider](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
 
 
 ## Review: CV Setup Options
@@ -201,7 +201,7 @@ Select how long you want Harness to analyze and monitor the logs/APM data points
 
 The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
+In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md).
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -209,8 +209,8 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 * [Select Delegates with Selectors](../../platform/../../platform/delegates/manage-delegates/select-delegates-with-selectors.md)
 
 

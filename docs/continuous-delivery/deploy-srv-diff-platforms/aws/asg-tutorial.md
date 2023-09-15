@@ -430,7 +430,7 @@ Service variables are a powerful way to template your services or make them more
 
 In the **Variables** section of the service, you can add service variables and then reference them in any of the ASG configuration files you added to the service.
 
-For example, you could create a variable named **desiredCapacity** and set its value as a [fixed value, runtime input, or expression](/docs/platform/references/runtime-inputs/).
+For example, you could create a variable named **desiredCapacity** and set its value as a [fixed value, runtime input, or expression](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 ![service variable](./static/c590ccda5addd62225b690d85c60237b2f6e9378e8ed4b02ba3e82ba9bda29e9.png)  
 
@@ -1329,7 +1329,7 @@ In the **Advanced** settings of all step, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## Notes
 
