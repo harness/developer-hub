@@ -17,13 +17,13 @@ This topic assumes you have an understanding of the [CI pipeline creation proces
 
 Harness uses code repo connectors to connect to Git providers, such as Bitbucket, GitHub, GitLab, and others. You can create code repo connectors for entire accounts or specific repositories. You can view a list of your saved connectors in **Connectors** under **Project Setup**. The following topics provide more information about creating code repo connectors:
 
-* Azure Repos: [Connect to Azure Repos](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo)
-* Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-* GitHub: [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-* GitLab: [GitLab Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+* Azure Repos: [Connect to Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
+* Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+* GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+* GitLab: [GitLab Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 * Other Git providers:
-  * [Git connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
-  * [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo)
+  * [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
+  * [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
 
 The CodeCommit, Azure, Bitbucket, GitHub, and GitLab connectors have authorization settings as required by their respective providers. The Git connector can connect with any provider using basic authentication over HTTPS.
 
@@ -159,7 +159,7 @@ If codebase cloning takes longer than expected when the build is triggered by a 
 
 ### The same Git commit is not used in all stages
 
-If your pipeline has multiple stages, each stage that has **Clone codebase** enabled will clone the codebase during stage initialization. If your pipeline uses the generic [Git connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference) and a commit is made to the codebase after a pipeline run has started, it is possible for later stages to clone the newer commit, rather than the same commit that the pipeline started with.
+If your pipeline has multiple stages, each stage that has **Clone codebase** enabled will clone the codebase during stage initialization. If your pipeline uses the generic [Git connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference) and a commit is made to the codebase after a pipeline run has started, it is possible for later stages to clone the newer commit, rather than the same commit that the pipeline started with.
 
 If you want to force all stages to use the same commit ID, even if there are changes in the repository while the pipeline is running, you must use a [code repo connector](#code-repo-connectors) for a specific SCM provider, rather than the generic Git connector.
 
@@ -190,6 +190,6 @@ properties:
 
 ## See also
 
-* [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md)
-* [Create a Connector using YAML](../../../platform/7_Connectors/create-a-connector-using-yaml.md)
+* [Runtime Inputs](/docs/platform/variables-and-expressions/runtime-inputs)
+* [Create a Connector using YAML](../../../platform/connectors/create-a-connector-using-yaml.md)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)

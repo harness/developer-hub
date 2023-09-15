@@ -297,7 +297,7 @@ step1:
 
 In Harness CI, you specify *connectors* and images for each step, if necessary. Depending on the step type, the commands you are running, and your build infrastructure, you may not need to specify an image. For example, if a binary is already available on your build farm, you may not need to pull an image for that binary.
 
-For example, the following step includes a `connectorRef` referencing a Docker connector. [Docker connectors](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
+For example, the following step includes a `connectorRef` referencing a Docker connector. [Docker connectors](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
 
 ```yaml
               - step:

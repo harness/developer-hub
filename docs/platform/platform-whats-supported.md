@@ -50,7 +50,7 @@ Harness enables you to manage access control at the following [scopes](/docs/pla
   <TabItem value="Delegates" label="Delegates">
 ```
 
-import Delimagetypes from '/docs/platform//2_Delegates/shared/delegate-image-types-intro-table.md'
+import Delimagetypes from '/docs/platform/delegates/shared/delegate-image-types-intro-table.md'
 
 <Delimagetypes />
 
@@ -77,7 +77,7 @@ Notification methods supported for various pipeline events are:
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Secret management" label="Secrets Management">
+  <TabItem value="Secret management" label="Secrets Mgmt">
 ```
 
 import Secretmgmtsup from '/docs/get-started/shared/secret-management-supported.md'
@@ -87,7 +87,7 @@ import Secretmgmtsup from '/docs/get-started/shared/secret-management-supported.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="User management" label="User Management">
+  <TabItem value="User management" label="User Mgmt">
 ```
 
 A Harness user is any individual registered with Harness with a unique email address. A User can be a part of multiple accounts. Go to the following topics to learn more about how to add and manage users.

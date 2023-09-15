@@ -19,7 +19,7 @@ You need to include a Docker-in-Docker background service in your stage if eithe
     1. Click **Add Step** and then choose **Background**.
     2. Configure the Background step as follows:
        1. Dependency Name = `dind`
-       2. Container Registry = The Docker connector to download the DinD image. If you don't have one defined, go to [Docker connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+       2. Container Registry = The Docker connector to download the DinD image. If you don't have one defined, go to [Docker connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
        3. Image = `docker:dind`
        4. Under **Optional Configuration**, select the **Privileged** checkbox.
 

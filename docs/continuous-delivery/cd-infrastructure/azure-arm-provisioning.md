@@ -90,7 +90,7 @@ Here are the different options for adding the step.
   <TabItem value="YAML" label="YAML" default>
 ```
 
-Here's a YAML example of a step that uses a template and parameter file stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store). The `subscription` and `resourceGroup` are set as [runtime inputs](/docs/platform/references/runtime-inputs) so you can select them each time the pipeline runs.
+Here's a YAML example of a step that uses a template and parameter file stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store). The `subscription` and `resourceGroup` are set as [runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs) so you can select them each time the pipeline runs.
 
 ```yaml
 

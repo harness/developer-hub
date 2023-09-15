@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-08-22T10:00:20
+date: 2023-09-12T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -18,11 +18,11 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest: Version 80300
+## Latest: Version 1.0.8
 
 ### New features and enhancements
 
-This release does not include new features.
+This release does not include any new features.
 
 
 ### Early access features
@@ -31,9 +31,18 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-- Unable to update the change source configuration within a monitored service. (SRM-15083)
+- Pagerduty events were not being deleted after the deletion of a project or organization. (SRM-15263)
+
+   This issue has been resolved. Deleting a project or organization no longer leaves behind orphaned Pagerduty events.
+
+- The API endpoint `/cv/api/monitored-service/versions_int1` was not functioning correctly. (SRM-15321)
   
-  This issue has been resolved. You can now easily update the change source configuration within your monitored service.
+    This issue has been resolved. Now, in cases where the "sources" field is received as null, the system treats it as equivalent to `{ healthSources: [], changeSources: [] }`.
+
+
+- The SRM default dashboard was non-functional, rendering it unusable. (SRM-15372)
+  
+    This issue has been resolved. Now, the SRM default dashboard is fully operational.
 
 
 ### Hotfixes
@@ -45,6 +54,39 @@ This release does not include hotfixes.
 
 <details>
 <summary>2023 releases</summary>
+
+#### September 6, 2023, version 80402
+
+### New features and enhancements
+
+- The **Service Health** tab on the monitored service details page has been renamed to **Change Impact**. (SRM-15261)
+
+### Early access features
+This release does not include any early access features.
+
+### Fixed issues
+
+This release does not include any fixed issues.
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### August 22, 2023, version 80300
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
 
 #### August 10, 2023, version 80204
 
@@ -58,7 +100,8 @@ This release does not include any early access features.
 
 ##### Fixed issues
 
-This release does not include any new features.
+This release does not include any fixed issues.
+
 
 #### August 04, 2023, version 80119
 
@@ -72,7 +115,8 @@ This release does not include any early access features.
 
 ##### Fixed issues
 
-This release does not include any new features.
+This release does not include any fixed issues.
+
 
 #### July 27, 2023, version 80021
 
@@ -86,7 +130,7 @@ This release does not include any early access features.
 
 ##### Fixed issues
 
-This release does not include any new features.
+This release does not include any fixed issues.
 
 
 #### July 21, 2023, version 79922
@@ -101,7 +145,7 @@ This release does not include any early access features.
 
 ##### Fixed issues
 
-This release does not include any new features.
+This release does not include any fixed issues.
 
 
 #### July 06, 2023, version 79812

@@ -183,7 +183,7 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 ### Secrets
 
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret management solution. To learn more about secrets in Harness, go to [Secrets Management](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret management solution. To learn more about secrets in Harness, go to [Secrets Management](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
 5. Create a secret to store the GitHub PAT. This will be used in the next step to create a GitHub connector.
 
@@ -353,7 +353,7 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 ### Secrets
 
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret management solution. To learn more about secrets in Harness, go to [Secrets Management](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret management solution. To learn more about secrets in Harness, go to [Secrets Management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
 4. In **Project Setup**, select **Secrets**.
     - Select **New Secret** > **Text**.
@@ -498,6 +498,22 @@ You've just learned how to use Harness CD to deploy an application using a Kusto
 #### What's Next?
 - Keep learning about Harness CD. Add triggers to your pipeline that'll respond to Git events by following this [guide](/docs/platform/Triggers/triggering-pipelines).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more Tutorials and resources.
+
+## How to deploy your own app by using Harness
+
+You can integrate your own microservice application into this tutorial by following the steps outlined below:
+
+- Utilize the same delegate that you deployed as part of this tutorial. Alternatively, deploy a new delegate, but remember to use a newly created delegate identifier when creating connectors.
+
+- If you intend to use a private Git repository that hosts your Kustomize files, create a Harness secret containing the Git personal access token (PAT). Subsequently, create a new Git connector using this secret.
+
+- Create a Kubernetes connector if you plan to deploy your applications in a new Kubernetes environment. Make sure to update the infrastructure definition to reference this newly created Kubernetes connector.
+
+- Once you complete all the aforementioned steps, create a new Harness service that leverages Kustomize for deploying applications.
+
+- Lastly, establish a new deployment pipeline and select the newly created infrastructure definition and service. Choose a deployment strategy that aligns with your microservice application's deployment needs.
+
+- Voila! You're now ready to deploy your own application using Harness.
 
 ```mdx-code-block
 </TabItem>

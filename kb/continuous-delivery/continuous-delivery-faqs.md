@@ -237,7 +237,7 @@ We do not have a way to create a new pipeline using Graphql in FirstGen. However
 
 #### Do we support rollback of deployment post production ? 
 
-Yes, certainly we have that capability, to know more about this please see, [Documentation](/docs/continuous-delivery/x-platform-cd-features/advanced/rollback-deployments/)
+Yes, certainly we have that capability, to know more about this please see, [Documentation](/docs/continuous-delivery/manage-deployments/rollback-deployments)
 
 #### How can I override the lite-engine image for the Container Run step,to pull images from ECR instead of docker hub? 
 
@@ -722,7 +722,7 @@ You can enable "Skip Terraform Refresh when inheriting Terraform plan" option, p
 
 #### For variables do we have options to intake parameters via dropdown or radio buttons etc ?
 
-Yes we do, here in the following [Documentation](/docs/platform/references/runtime-inputs/#supplying-runtime-inputs-during-execution) , with allowed values you can have multiple inputs to select from range of values allowed.
+Yes we do, here in the following [Documentation](/docs/platform/variables-and-expressions/runtime-inputs/#supplying-runtime-inputs-during-execution) , with allowed values you can have multiple inputs to select from range of values allowed.
 
 #### In fetch pipeline summary API, what does the fields "numOfErrors" and "deployments" mean?
 
@@ -1120,6 +1120,25 @@ We don't save yaml's for service and other entities like we used to in First Gen
  
 [Documentation](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code/#why-did-harness-reduce-the-number-of-supported-entities-backed-by-git)
 
+
+#### Running into Harness Platform Rate limits?
+
+Please note that harness does limit accessive API and execution limitations. Harness does reserve the right to change these limits. 
+See site fore more details [https://developer.harness.io/docs/platform/rate-limits/]
+
+#### How are Harness secrets tied to connector, and what to watch for. 
+
+Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
+
+#### How to visualize and compare pipeline changes? 
+
+Harness allows users to compare changes to a pipeline YAML. This is often useful tool to determine why a pipeline has changed behavior. 
+See site for more details [https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/]
+
+#### Harness rollback deployments. 
+
+Harness Rollback deployments initiate a rollback of the most recent successful deployment. Note that this feature is behind a feature flag '''POST_PROD_ROLLBACK'''. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS)
+
 #### Do we allow one-time scheduling of pipeline execution ?
 
 Yes, one can set a cron rule that just happens once, it has repeat reschedule icon in UI. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#run-once).
@@ -1250,3 +1269,13 @@ Yes, you can use Bash shell over WinRM connection in Harness. In the Shell Scrip
 
 ### Is it possible to use Helm hooks in Harness Helm deployments?
 Yes, you can use Helm hooks in Harness Helm deployments. Helm hooks allow you to execute specific actions or scripts at different points in the Helm chart's lifecycle, such as before or after installing or upgrading a release. Harness supports the use of Helm hooks as part of your Helm deployment process.
+
+#### I have a placmenetStrategy defined but I don't see it reflected in the task.
+Please check if you have defined placement strategy in service definition and not under task definition
+
+#### When I started setting up the pipelines in Harness, I used my Github PAT. But I couldn't find where I set it and was wondering if it's allowed to be updated by the PAT owner or from your side.
+Usually Git PAT is stored in secret manager and you reference that secret inside connector, so need to update the PAT in secret manager where it's stored.
+
+#### We have templated workflow variables and wish these can be passed from git based Triggers. The values for these variables will be metadata of a pull request
+You can create workflow variable and set the value to corresponding metadata field available as per type of trigger pullrequest variable
+

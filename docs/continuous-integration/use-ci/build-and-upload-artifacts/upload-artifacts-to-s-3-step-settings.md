@@ -54,18 +54,18 @@ The **Upload Artifacts to S3** step has the following settings. Depending on the
 
 #### Name
 
-Enter a name summarizing the step's purpose. Harness generates an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
+Enter a name summarizing the step's purpose. Harness generates an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
 
 #### AWS Connector
 
-Select the Harness [AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector) to use when connecting to AWS S3.
+Select the Harness [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) to use when connecting to AWS S3.
 
 :::info
 
-* This step might not support all [AWS connector authentication methods](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings).
+* This step might not support all [AWS connector authentication methods](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings).
 * You can use buckets with disabled ACLs.
 * Additional stage variables are required for [non-default ACLs](#stage-variable-required-for-non-default-acls) or to [assume IAM roles or use ARNs](#stage-variable-required-to-assume-iam-roles-or-use-arns).
-* The AWS IAM roles and policies associated with the AWS account for your AWS connector must allow pushing to S3. For more information, go to the [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+* The AWS IAM roles and policies associated with the AWS account for your AWS connector must allow pushing to S3. For more information, go to the [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 :::
 
@@ -82,8 +82,8 @@ S3 buckets use [private ACLs](https://docs.aws.amazon.com/AmazonS3/latest/usergu
 
 Stages with **Upload Artifacts to S3** steps must have a `PLUGIN_USER_ROLE_ARN` stage variable if:
 
-* Your [AWS connector's authentication uses a cross-account role (ARN)](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#enable-cross-account-access-sts-role). You can use `PLUGIN_USER_ROLE_ARN` to specify the full ARN value corresponding with the AWS connector's ARN.
-* Your AWS connector uses [**Assume IAM Role on Delegate** authentication](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings). If your connector doesn't use **AWS Access Key** authentication, then the **Upload Artifact to S3** step uses the IAM role of the build pod or build VM (depending on your build infrastructure). You can use `PLUGIN_USER_ROLE_ARN` to select a different role than the default role assumed by the build pod/machine. This is similar to [`sts assume-role`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/assume-role.html).
+* Your [AWS connector's authentication uses a cross-account role (ARN)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#enable-cross-account-access-sts-role). You can use `PLUGIN_USER_ROLE_ARN` to specify the full ARN value corresponding with the AWS connector's ARN.
+* Your AWS connector uses [**Assume IAM Role on Delegate** authentication](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings). If your connector doesn't use **AWS Access Key** authentication, then the **Upload Artifact to S3** step uses the IAM role of the build pod or build VM (depending on your build infrastructure). You can use `PLUGIN_USER_ROLE_ARN` to select a different role than the default role assumed by the build pod/machine. This is similar to [`sts assume-role`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/assume-role.html).
 
 To add the `PLUGIN_USER_ROLE_ARN` stage variable:
 
@@ -133,8 +133,8 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ### View artifacts on the Artifacts tab
 
@@ -203,8 +203,8 @@ In your pipeline's **Build** stage, add a [Plugin step](../use-drone-plugins/plu
 * **Container Registry:** Select a Docker connector.
 * **Image:** Enter `harnesscommunity/drone-s3-upload-publish`.
 * **Settings:** Add the following seven settings as key-value pairs.
-   * `aws_access_key_id`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`.
-   * `aws_secret_access_key`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`.
+   * `aws_access_key_id`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`.
+   * `aws_secret_access_key`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`.
    * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`.
    * `aws_bucket`: The target S3 bucket.
    * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
@@ -240,7 +240,7 @@ In your pipeline's `CI` stage, add a [Plugin step](../use-drone-plugins/plugin-s
 
 :::tip
 
-For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/references/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key. You could also use expressions for `target`, such as `<+pipeline.name>/<+pipeline.sequenceId>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
+For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key. You could also use expressions for `target`, such as `<+pipeline.name>/<+pipeline.sequenceId>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
 
 If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 

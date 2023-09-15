@@ -42,9 +42,9 @@ If you haven't created a pipeline before, try [Get started with the fastest CI](
 
 2. For S3, GCS, and JFrog, you must have a Harness connector to use with the **Upload Artifact** step:
 
-   * S3: [AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector)
-   * GCS: [GCP connector](/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp)
-   * JFrog: [Artifactory connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference)
+   * S3: [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector)
+   * GCS: [GCP connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp)
+   * JFrog: [Artifactory connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference)
 
    :::tip
 
@@ -105,7 +105,7 @@ For example, this tutorial uses three **Run** steps to generate and prepare an a
 
 :::tip
 
-For `connectorRef`, you can use the built-in Docker connector, `account.harnessImage`, or use your own [Docker Hub connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+For `connectorRef`, you can use the built-in Docker connector, `account.harnessImage`, or use your own [Docker Hub connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 
 :::
 
@@ -134,7 +134,7 @@ For example, this tutorial uploads the combined Allure report to GCS:
 
 :::tip
 
-The `target` value uses a [Harness expression](/docs/platform/references/runtime-inputs/#expressions), `<+pipeline.sequenceId>`, to ensure that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
+The `target` value uses a [Harness expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions), `<+pipeline.sequenceId>`, to ensure that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
 
 :::
 
@@ -223,7 +223,7 @@ Add a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/plugin
 
 :::tip
 
-For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/references/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) that contain your AWS access ID and key.
+For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) that contain your AWS access ID and key.
 
 This tutorial also uses an expression for the `target`: The expression `<+pipeline.sequenceId>` creates a directory based on the incremental build ID. This ensures that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
 

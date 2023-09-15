@@ -45,7 +45,7 @@ If the Infrastructure Definition's Cloud Provider uses a delegate selector (supp
 
 In these cases, you should not add a delegate selector to any step in the Workflow. The Workflow is already using a selector via its Infrastructure Definition's Cloud Provider.
 
-import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
+import Selector from '/docs/platform/delegates/shared/selector-infrastructure.md'
 
 <Selector />
 

@@ -1,6 +1,6 @@
 ---
 title: Harness Delegate FAQs
-description: This article addresses some frequently asked questions about Harness Delegates.
+description: This topic addresses some frequently asked questions about Harness Delegates.
 sidebar_position: 7
 helpdocs_topic_id: ndl5p9zhih
 helpdocs_category_id: y7j7dl46ua
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This article addresses some frequently asked questions about Harness Delegates.
+This topic addresses some frequently asked questions about Harness Delegates.
 
 ### General
 
@@ -16,7 +16,7 @@ For an overview of Harness support for platforms, methodologies, and related tec
 
 #### What is the Harness Delegate?
 
-The Harness Delegate is a service you run in your local network or VPC to connect all of your artifact, infrastructure, collaboration, verification and other providers with Harness Manager.
+The Harness Delegate is a service you run in your local network or VPC to connect all of your artifact, infrastructure, collaboration, verification, and other providers with Harness Manager.
 
 Harness Platform has two major components:
 
@@ -27,9 +27,9 @@ Harness Platform has two major components:
 
 #### How is the delegate updated?
 
-There are two options.
+There are two options, automatic and manual.
 
-##### Automatic
+##### Delegate automatic updates
 
 The delegate updates automatically. The delegate installation also installs a **Watcher** program that checks the Harness cloud periodically for new versions.
 
@@ -37,9 +37,9 @@ Watcher ensures there is exactly one delegate process of each published version 
 
 If there is a published version that is not running, Watcher downloads the JAR file for that version securely over HTTPS, installs it, and updates the delegate connection to Harness Manager. There is no downtime.
 
-##### Self-Managed
+##### Delegate manual updates
 
-You update the delegate. When you install a delegate by downloading the delegate YAML file from Harness, you select the self-managed option.
+You update the delegate. When you install a delegate by downloading the delegate YAML file from Harness, you select the manual update option.
 
 The delegate is upgraded using a ring methodology commonly used in software release management.
 
@@ -48,31 +48,31 @@ Delegate images are on [Docker Hub](https://hub.docker.com/r/harness/delegate-im
 The delegate image is signed. You can check it by running this command (with the current version number):
 
 ```
-docker trust inspect --pretty harness/delegate:22.03.74407
+docker trust inspect --pretty harness/delegate:yy.mm.verno
 ```
-#### Can the same YAML be used to create automatic or self-managed delegates?
+#### Can I use the same YAML to create an automatically updated and manually updated delegate?
 
 No. The YAML specifications for the two types are different.
 
 #### Can I create my own delegate?
 
-Yes. For more information, go to [Create a custom delegate that includes custom tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+Yes. For more information, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### How does Harness Manager identify delegates?
 
-All delegates are identified by your Harness account ID. This is contained in the delegate YAML.
+All delegates are identified by your Harness account ID in the delegate YAML.
 
 Depending on the type of delegate, there are additional factors.
 
-For delegates running on virtual machines, such as Docker delegates running on an AWS EC2 instance, the delegate is identified by the combination of host name and IP address.
+- For delegates running on virtual machines, such as Docker delegates running on an AWS EC2 instance, the delegate is identified by the combination of host name and IP address.
 
-Therefore, if the host name or IP address changes on the VM, Harness Manager cannot identify the delegate. The private IP address is used. The delegate connects to Harness Manager; Harness Manager does not initiate a connection to the delegate. Therefore, the public IP address of the delegate is typically not required.
+   Therefore, if the host name or IP address changes on the VM, Harness Manager cannot identify the delegate. The private IP address is used. The delegate connects to Harness Manager; Harness Manager does not initiate a connection to the delegate. Therefore, the public IP address of the delegate is typically not required.
 
-For Kubernetes delegates, the IP address can change (for example, when a pod is rescheduled). Consequently, Kubernetes delegates are identified by a suffix using a unique six letter code in their host name (the first six letters in your account ID).
+- For Kubernetes delegates, the IP address can change (for example, when a pod is rescheduled). Consequently, Kubernetes delegates are identified by a suffix using a unique six letter code in their host name (the first six letters in your account ID).
 
 #### What data does the delegate send to Harness Manager?
 
-The delegate and Harness Manager (through SaaS) establish a Secure WebSocket channel (WebSocket over TLS) to send new delegate task event notifications (not the tasks themselves) and exchange connection heartbeats. If the WebSocket connection is dropped, the Harness delegate falls back to outbound-only, polling-based task fetch.
+The delegate and Harness Manager (through SaaS) establish a Secure WebSocket channel (WebSocket over TLS) to send new delegate task event notifications (not the tasks themselves) and exchange connection heartbeats. If the WebSocket connection drops, the Harness Delegate falls back to outbound-only, polling-based task fetch.
 
 * **Heartbeat:** The delegate sends a [heartbeat](https://en.wikipedia.org/wiki/Heartbeat_(computing)) to let Harness Manager know that it is running.
 * **Deployment data:** The information from the API executions the delegate performs are sent to Harness Manager for display in pages such as the **Deployments** page.
@@ -80,7 +80,7 @@ The delegate and Harness Manager (through SaaS) establish a Secure WebSocket cha
 
 #### Can I add IP addresses for Harness Delegate to an allowlist?
 
-Yes. For more information, go to [Allowlist Harness domains and IPs](../platform/20_References/allowlist-harness-domains-and-ips.md).
+Yes. For more information, go to [Allowlist Harness domains and IPs](../platform/references/allowlist-harness-domains-and-ips.md).
 
 #### Do I need separate delegates for different isolated environments?
 
@@ -92,7 +92,7 @@ You could even have a delegate in one cloud platform use a resource in a separat
 
 ### Delegate installation
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
+For delegate installation instructions, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
 
 #### What types of delegates are there?
 
@@ -100,12 +100,12 @@ Harness provides different types of delegates to give you flexibility in how you
 
 You are not limited to using a delegate of the same type as your deployment platform, although that is more complicated to set up initially.
 
-For delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 #### Where do I install the Harness Delegate?
 
 * **Evaluating Harness:** When evaluating Harness, you might want to install the delegate locally. Ensure that it has access to the artifact sources, deployment environments, and verification providers you want to use with Harness.
-* **Development, QA, and Production:** The delegate should be installed behind your firewall and in the same VPC as the micro-services you are deploying. The delegate must have access to the artifact servers, deployment environments, and cloud providers it needs.
+* **Development, QA, and Production:** The delegate should be installed behind your firewall and in the same VPC as the microservices you are deploying. The delegate must have access to the artifact servers, deployment environments, and cloud providers it needs.
 
 #### When do I install the Harness Delegate?
 
@@ -121,7 +121,7 @@ Yes. You can use a simple script to support scenarios where you want to name, co
 
 Developers often need to create delegates in multiple clusters in their environments (Dev, UAT, SIT, Stage, Prod, and so on). This script method gives developers a quick alternative to using the manual process in Harness Manager.
 
-Go to [Automate delegate installation](../platform/2_Delegates/install-delegates/automate-delegate-installation.md).
+For more information, go to [Automate delegate installation](../platform/delegates/install-delegates/automate-delegate-installation.md).
 
 ### Delegate requirements
 
@@ -129,23 +129,27 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 #### What are the delegate system requirements?
 
-It depends on the size of the delegate you are installing. For example, for the Kubernetes delegate, your Kubernetes cluster must have the unallocated resources required to run the Harness Delegate workload:
+One delegate size does not fit all use cases, so Harness lets you pick from several options:
 
-* Laptop: 1.6GB memory, 0.5CPU
-* Small: 3.3GB memory, 1CPU
-* Medium: 6.6GB memory, 2CPU
-* Large: 13.2GB memory, 4CPU
+| Replicas | Required memory / CPU | Maximum parallel deployments and builds across replicas |
+| :--: |  :--: | :--: |
+| 1 | 2 GB / 0.5 CPU | 10 |
+| 2 | 4 GB / 1 CPU | 20 |
+| 4 | 8 GB / 2 CPU | 40 |
+| 8 | 16 GB / 4 CPU | 80 |
+
+Remember that the memory and CPU requirements are for the delegate only. Your delegate host/pod/container will need more computing resources for its operations systems and other services, such as Docker or Kubernetes.
 
 #### What are the delegate network requirements?
 
-Go to [Delegate requirements](../platform/2_Delegates/delegate-concepts/delegate-requirements.md) and [Permissions and ports for Harness connections](../platform/20_References/permissions-and-ports-for-harness-connections.md).
+To learn more, go to [Delegate requirements](../platform/delegates/delegate-concepts/delegate-requirements.md) and [Permissions and ports for Harness connections](../platform/references/permissions-and-ports-for-harness-connections.md).
 
 #### What are the delegate access requirements?
 
 * The Harness Delegate does not require root account access, but the Kubernetes and Docker delegates run as root by default. This is to enable the delegate to install applications using the INIT environment variable in the delegate YAML. If you do not need to install applications, then you can use a non-root account or install the application without the delegate.
-* If you do not run the Delegate as root, be aware that you cannot install any software using a delegate.
+* If you do not run the delegate as root, be aware that you cannot install any software using a delegate.
 
-For more information, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For more information, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### What are the delegate limitations for deployments?
 
@@ -157,29 +161,29 @@ For more information, go to [Build custom delegate images with third-party tools
 Yes. All of the delegate settings include proxy settings you can use to change how the delegate connects to Harness Manager.
 
 :::info note
-By default, the Harness Delegate uses HTTP and HTTPS in its `Proxy Scheme` settings. Go to [Configure delegate proxy settings](../platform/2_Delegates/manage-delegates/configure-delegate-proxy-settings.md).
+By default, the Harness Delegate uses HTTP and HTTPS in its `PROXY_SCHEME` settings. For more information, go to [Configure delegate proxy settings](../platform/delegates/manage-delegates/configure-delegate-proxy-settings.md).
 :::
 
 ### Delegate selection
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
+For an overview of delegate selection, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/).
 
 #### How does Harness Manager pick delegates for tasks?
 
-When a task is ready to be assigned, Harness Manager first validates its lists of delegates to see which delegate should be assigned the task.
+When a task is ready to be assigned, Harness Manager first validates its list of delegates to see which delegate to assign.
 
 The following information describes how Harness Manager validates and assigns tasks to a delegate:
 
-* **Heartbeats:** Running delegates send heartbeats to the Harness Manager in one-minute intervals. If Harness Manager does not have a heartbeat for a delegate when a task is ready to be assigned, it will not assign the task to that delegate.
+* **Heartbeats:** Running delegates send heartbeats to Harness Manager in one-minute intervals. If Harness Manager does not have a heartbeat for a delegate when a task is ready to be assigned, it does not assign the task to that delegate.
 * **Delegate** **selectors:** You can select specific delegates for each pipeline step using delegate selectors.
 
 ![](./static/harness-delegate-faqs-10.png)
 
-Delegate selectors use the tags you add to delegates. For more information, go to [Select delegates with selectors and tags](../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+Delegate selectors use the tags you add to delegates. For more information, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/).
 * **Allowlist:** After a delegate is validated for a task, it is added to an allowlist for that task and will likely be used again for that task. The criteria is the URL associated with the task, such as a connection to a cloud platform, repository, or API. A delegate is allowed to perform all tasks using that URL. The time-to-live (TTL) for the allow list is six hours; the TTL is reset with each successful task validation.
 * **Deny list:** If a delegate fails to perform a task, that delegate is added to a deny list for that task and will not be tried again. The TTL for denial is 5 minutes. This is true if there is only one delegate and even if the delegate is selected for that task with a selector, such as with a shell script command in a workflow.
 
-import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
+import Selector from '/docs/platform/delegates/shared/selector-infrastructure.md'
 
 <Selector />
 
@@ -189,11 +193,12 @@ Yes, for all pipeline steps you can use delegate selectors to select specific de
 
 ![](./static/harness-delegate-faqs-11.png)
 
-Delegate selectors use the tags you add to delegates. For more information, go to [Select delegates with selectors and tags](../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+Delegate selectors use the tags you add to delegates. For more information, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/).
 
 ### Running scripts and installations on delegates
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
+You can run scripts on Harness Delegate pods, hosts, and containers to install applications or run commands. For more information, go to [Common delegate initialization scripts
+](/docs/platform/delegates/delegate-reference/common-delegate-profile-scripts/).
 
 #### Can I run scripts on delegate hosts using Harness?
 
@@ -201,29 +206,29 @@ Yes. The delegate config file includes an `INIT` environment variable that you c
 
 You can run scripts when you first install the delegate, or add your scripts to an existing delegate and rerun its setup.
 
-For more information, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For more information, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### Can I install software on delegate hosts using Harness?
 
-Yes. For more information, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+Yes. For more information, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### Can I use Harness secret expressions in a delegate script?
 
-No. You can add your passwords, tokens, etc to your scripts, but you cannot use [Harness text secrets](/docs/platform/secrets/add-use-text-secrets).
+No. You can add your passwords, tokens, etc. to your scripts, but you cannot use [Harness text secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ### Installing certificates on the delegate
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
+You can install delegates with custom certificates. For more information, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/).
 
 #### Can I import certificates on the delegate host?
 
 Yes. By default, the delegate uses a trusted certificate to connect to the Harness Manager over HTTPS.
 
-For the Harness SaaS edition, you can add a self-signed certificates on the delegate host using a [delegate script](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md), or by simply importing the certificate on the host.
+For Harness SaaS, you can add a self-signed certificates on the delegate host using a [delegate script](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md), or by simply importing the certificate on the host.
 
 #### Can I override the truststore of the delegate?
 
-Yes. For more information, go to [Truststore override for delegates](../platform/2_Delegates/secure-delegates/trust-store-override-for-delegates.md).
+Yes. For more information, go to [Truststore override for delegates](/docs/platform/Delegates/secure-delegates/trust-store-override-for-delegates).
 
 ### Copying and downloading artifacts by using the delegate
 
@@ -261,56 +266,22 @@ The distributed model is more complex, but it prevents a team member from deploy
 
 You can target the delegate to specific namespaces buy editing its YAML file with a role, role binding, and service account limited to a specific namespace.
 
-### Delegate high availability (HA)
+### Does the delegate support high availability (HA)?
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
-#### Does the delegate support HA?
-
-Yes. You might need to install multiple delegates depending on how many deployment tasks you do concurrently, and on the compute resources you are providing to each delegate. Typically, you will need one delegate for every 300–500 service instances across your applications.
-
-In addition to compute considerations, you can enable HA for the Harness Delegate. HA involves installing multiple delegates in your environment.
-
-For example, in Kubernetes deployments, you can set up two Kubernetes delegates, each in its own pod in the same target Kubernetes cluster. To do so, edit the delegate `spec` you download from Harness to have multiple replicas:
-
-```
-...  
-apiVersion: apps/v1beta1  
-kind: StatefulSet  
-metadata:  
-  labels:  
-    harness.io/app: harness-delegate  
-    harness.io/account: xxxx  
-    harness.io/name: test  
-  name: test-zeaakf  
-  namespace: harness-delegate  
-spec:  
-  replicas: 2  
-  selector:  
-    matchLabels:  
-      harness.io/app: harness-delegate  
-...
-```
-:::caution
-For Kubernetes, you only need one delegate in the cluster. Simply increase the number of replicas, and nothing else. Do not add another delegate to the cluster in an attempt to achieve high availability.
-:::
-
-:::info note
-If you want to install Kubernetes delegates in separate clusters, do not use the same YAML `spec` and name for both delegates. Download a new YAML `spec` from Harness for each delegate you want to install. This avoids name conflicts. For more information, go to [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
-:::
+Yes. For information on delegate HA, go to [Delegate high availability](/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-high-availability-ha).
 
 ### Troubleshooting the delegate
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
+For delegate troubleshooting, go to [Troubleshooting](/docs/category/troubleshooting).
 
 #### What are common problems with the delegate?
 
 Most delegate issues are:
 
-* Delegate does not meet system, network, or access requirements. For more information, go to [Delegate requirements](../platform/2_Delegates/delegate-concepts/delegate-requirements.md) and [Permissions and ports for Harness connections](../platform/20_References/permissions-and-ports-for-harness-connections.md).
+* The delegate does not meet system, network, or access requirements. For more information, go to [Delegate requirements](../platform/delegates/delegate-concepts/delegate-requirements.md) and [Permissions and ports for Harness connections](../platform/references/permissions-and-ports-for-harness-connections.md).
 	+ Keep in mind that the delegate host or node needs resources to host the delegate and other software. The delegate resource requirements should be factored in, but they are not the minimum requirements for the infrastructure.
-* Delegate is not running.
-* Delegate does not have required permissions. The delegate uses the credentials you enter in Harness connectors to connect to cloud providers, artifact servers, etc.  
+* The delegate is not running.
+* The delegate does not have required permissions. The delegate uses the credentials you enter in Harness connectors to connect to cloud providers, artifact servers, etc.  
 In most cases, this is a user account. In some cases, the host/pod/container running the delegate has a user, profile, or IAM account assigned to it, and the connector inherits those credentials.  
 The credentials used by the delegate must have the roles and permissions required to perform the task. For example, if the IAM user account used for an AWS connector does not have the roles required for EKS deployments, it will fail.  
 The deployment indicates which pipeline step failed because of delegate permission issues.  
