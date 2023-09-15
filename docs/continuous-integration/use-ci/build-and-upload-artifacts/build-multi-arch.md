@@ -14,7 +14,7 @@ To build multi-architecture images in a CI pipeline, use a separate stage to bui
 For example, the following pipeline has two stages. The two stages have similar components, but they differ according to the architecture of the image that the stage builds. Each stage has:
 
 * A variation of a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures). Notice that each stage uses a different Kubernetes cluster connector (`infrastructure.spec.connectorRef`) and other settings due to the different architecture requirements.
-* A [Run step](../run-ci-scripts/run-step-settings.md) that prepares the DockerFile.
+* A [Run step](../run-ci-scripts/run-step-settings.md) that prepares the Dockerfile.
 * A [Build and Push step](./build-and-upload-an-artifact.md) that builds and uploads the image.
 
 ```yaml

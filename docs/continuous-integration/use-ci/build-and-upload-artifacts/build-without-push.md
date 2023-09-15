@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-You can build images without pushing them. For example, you can use your CI pipeline to test a DockerFile from your codebase to verify that the resulting image is correct before you push it to your Docker repository.
+You can build images without pushing them. For example, you can use your CI pipeline to test a Dockerfile from your codebase to verify that the resulting image is correct before you push it to your Docker repository.
 
 The configuration depends on your build infrastructure.
 

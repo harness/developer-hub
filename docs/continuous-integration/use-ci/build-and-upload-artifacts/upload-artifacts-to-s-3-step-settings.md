@@ -261,9 +261,9 @@ If you used the **Artifact Metadata Publisher** or **S3 Upload and Publish** plu
 
 :::tip
 
-On the Artifacts tab, select the step name to expand the list of artifact links associated with that step.
+On the **Artifacts** tab, select the step name to expand the list of artifact links associated with that step.
 
-If your pipeline has multiple steps that uploading artifacts, use the dropdown menu on the Artifacts tab to switch between lists of artifacts uploaded by different steps.
+If your pipeline has multiple steps that upload artifacts, use the dropdown menu on the **Artifacts** tab to switch between lists of artifacts uploaded by different steps.
 
 <!-- ![](./static/artifacts-tab-with-link.png) -->
 

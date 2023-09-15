@@ -12,7 +12,7 @@ redirect_from:
 
 [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) is a fully managed service from AWS that you can use to store and manage Docker images securely and reliably. In addition, ECR provides a simple web-based interface for creating, managing, and sharing Docker images and integrating them with other AWS services. For more information, go to the AWS documentation on [Pushing a Docker image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html).
 
-In Harness CI, you can use a **Build and Push to ECR** step to build an image from your codebase and pushes it to your Amazon ECR container registry repo. This is one of several options for [building and pushing artifacts in Harness CI](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
+In Harness CI, you can use a **Build and Push to ECR** step to build an image from your codebase and push it to your Amazon ECR container registry repo. This is one of several options for [building and pushing artifacts in Harness CI](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
 ## Requirements
 
@@ -128,13 +128,13 @@ Add each tag separately.
 
 When you push an image to a repo, you tag the image so you can identify it later. For example, in one pipeline stage, you push the image, and, in a later stage, you use the image name and tag to pull it and run integration tests on it.
 
-Harness expressions are a useful way to define tags. For example, you can use the expression `<+pipeline.sequenceId>` as a tag. This expression represents the incremental build ID, such as `9`. By using a variable expression, rather than a fixed value, you don't have to use the same image name every time.
+Harness expressions are a useful way to define tags. For example, you can use the expression `<+pipeline.sequenceId>` as a tag. This expression represents the incremental build identifier, such as `9`. By using a variable expression, rather than a fixed value, you don't have to use the same image name every time.
 
 For example, if you use `<+pipeline.sequenceId>` as a tag, after the pipeline runs, you can see the `Build Id` in the output.
 
 ![](./static/build-and-upload-an-artifact-15.png)
 
-And you can see where the Build ID is used to tag your image:
+And you can see where the `Build Id` is used to tag your image:
 
 ![](./static/build-and-upload-an-artifact-12.png)
 
