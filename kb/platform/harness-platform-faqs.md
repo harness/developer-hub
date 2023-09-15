@@ -610,5 +610,20 @@ No, we don't support that feature currently.
 * `23.XX.8XXXX`: This format corresponds to the standard delegate image. It includes all the default binaries and is a suitable choice for users who are relatively new to Harness and do not have stringent security requirements. This image provides a comprehensive set of tools and functionalities for general usage.
 * `1.0.8XXX`X`: This format denotes an older version of the delegate, often referred to as the legacy delegate. New Harness accounts no longer include this delegate version, and users are strongly encouraged to migrate to the standard delegate for better compatibility, performance, and security.
 
+#### What if a delegate pod returns '''CrashLoopBackOff'''? 
+If the state of the delegate pod is CrashLoopBackOff, check your allocation of compute resources (CPU and memory) to the cluster. A state of CrashLoopBackOff indicates insufficent Kubernetes cluster resources.
 
+#### How can I check the status of the delegate on my cluster?
+You can run the command '''kubectl describe pods -n <namespace>'''
+
+#### What if a delegate pod does not start? 
+You can check the delegate logs by running the command '''kubectl logs -f <harnessDelegateName> -n <namespace>'''
+
+#### What if a delegate pod is not healthy? 
+You can run the kubectl describe command to get more details '''kubectl describe <pod_name> -n <namespace>'''
+
+#### How to get around rate limiting throttling while trying to access Harness images on the public Harness docker repos?
+Instead of using anonymous access, you can select username and password for authentication. 
+
+More details here: [https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/] 
 
