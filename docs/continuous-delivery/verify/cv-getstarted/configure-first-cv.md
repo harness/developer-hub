@@ -126,7 +126,7 @@ On the Verify settings page, do the following to add and define the health sourc
          
    5. In the **Select Feature** field, choose **SumoLogic Cloud Metrics**.  
    
-    [Select health source](./static/cv-simple-cv-select-healthsource.png)
+    ![Select health source](./static/cv-simple-cv-select-healthsource.png)
 
    6. Select **Next**.  
    
@@ -141,11 +141,12 @@ The following steps describe defining a query and configuring a risk profile:
    The Add Metric dialog appears.
 
 2. Enter the following information, and then select **Submit**:  
-      - **Metric name**: Enter a name for the metric. For example, Memory Metric.
-      - **Group name**: If the group to which you want to add the metric already exists, select it.   
-     If you want to create a new group, select **+ Add New**. In the Add Group Name dialog, enter a group name, and then select **Submit**.
+      - **Metric name**: Enter a name for the metric. For example, "SumoLogic Metric".
+      - **Group name**: Create a new group, by selecting **+ Add New**. In the Add Group Name dialog, enter a group name. For example, "SumoLogic".
 
-3. In the Add Metric dialog, select **Submit**.   
+3. Select **Submit**.
+   
+4. In the Add Metric dialog, select **Submit**.   
    A new group and metric are created. The query specifications and mapping settings are displayed. These settings help you get the desired metric data from your health source and map it to the Harness service.
 
 
@@ -165,7 +166,7 @@ The following steps describe defining a query and configuring a risk profile:
    ![Memory usage records and charts](./static/cv-sumologic-select-metric-query-memory-chart-records.png)
 
 
-#### Assign services and configure risk profile
+### Assign services and configure risk profile
 
 1. In the **Assign** section, select **Continuous Verification (Applied to the pipelines in the Continuous Deployment)**.
 
@@ -177,12 +178,34 @@ The following steps describe defining a query and configuring a risk profile:
   ![Assign services and configure the risk profile](./static/cv-simple-cv-healthsource-assign-service.png)
   
 
+#### Configure threshold
+
+Harness CV evaluates the metrics based on the fail-fast threshold you configure. If the metrics breach the fail-fast threshold, the verification step fails. In the context of the [SumoLogic query](#define-a-query) you defined, the purpose here is to set a threshold for memory usage beyond which the application is considered to be in a problematic state, and the verification fails.
+
+To set fail-fast threshold, follow these steps:
+
+1. Expand **Advanced (Optional)**, go to the **Fail-Fast Thresholds** tab, and then select the **+ Add Threshold** button.
+
+2. From the **Metric** dropdown, select **SumoLogic Metric**. This is the metric you created in the [Define metric configuration settings](#define-metric-configuration-settings) step.
+
+3. In the **Action** field, select what the CV should do when applying the rule. Let's select **Fail Immediately**.
+
+4. In the **Criteria** field, choose **Percentage Deviation**, and from the greater than select **1**. The purpose here is to set a threshold for memory usage beyond which the system or application is considered to be in a problematic state, and action should be taken.
+
+![Configure threshold](./static/cv-simple-cv-select-failfast-threshold.png)
+
+
 ### Save the health source settings
 
 1. After configuring all the settings, select **Submit** to add the health source to the Verify step.
    
-2. Select **Apply Changes** to save the changes made to the **Verify** step.  
-   This completes adding and setting up CV in your Harness pipeline.
+2. Select **Apply Changes** to save the changes made to the **Verify** step. You will now see the health source listed in the **Health Sources** section.
+   
+3. Select **Save**.
+   
+   You have successfully added and configured CV in your Harness pipeline.
+
+![Configure threshold](./static/cv-simple-cv-healthsource-added.png)
 
 
 ## Run the pipeline
