@@ -129,11 +129,11 @@ import Gitxsup from '/docs/get-started/shared/gitx-whats-supported.md'
 
 <Gitxsup />
 
-## Access control
+## Authentication
 
-import Accessconsup from '/docs/get-started/shared/access-control-supported.md'
+import Authsup from '/docs/get-started/shared/auth-supported.md'
 
-<Accessconsup />
+<Authsup />
 
 ## Secret management
 
