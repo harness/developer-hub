@@ -72,7 +72,7 @@ On the Verify settings page, do the following:
    
 2. In **Duration**, choose a duration. Harness uses the data points within this duration for analysis. For instance, if you select 15 minutes, Harness analyzes the first 15 minutes of your health source data.
    
-3. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the **Service** tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference the primary artifact. To learn about artifact expression, go to [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables).
+3. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the **Service** tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference the primary artifact. To learn about artifact expression, go to [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables).
 
 
 ## Create a monitored service
