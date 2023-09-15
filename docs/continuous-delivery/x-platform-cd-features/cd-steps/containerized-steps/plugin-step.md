@@ -19,6 +19,10 @@ You can use plugins for anything. If it can be scripted, it can be a plugin. For
 - Print an extended build history.
 - Create a file, write to it, and store it remotely.
 
+## Important notes
+
+- You cannot use this step with a non-root user at this time.
+
 ## Supported plugins
 
 You can build your own plugins or use one of the many preexisting plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/) and [GitHub Actions Marketplace](https://github.com/marketplace?type=actions).

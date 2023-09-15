@@ -34,6 +34,7 @@ This option is disabled for deployment types that do not support containerized s
 
 ## Important notes
 
+- You cannot use a containerized step group's steps with a non-root user at this time.
 - CD containerized step groups are only supported in a Deploy stage. They are not supported in a Custom stage.
 - Not all steps are supported in containerized step groups. You can see which steps are supported when you try to add steps in the containerized step group.
 - You can use the same cluster to run the Harness delegate and the containerized step group(s), but it is not required.

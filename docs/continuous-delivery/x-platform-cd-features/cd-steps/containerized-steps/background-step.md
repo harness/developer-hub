@@ -18,6 +18,10 @@ A Background step starts a service and then proceeds. For any later step that re
 
 :::
 
+## Important notes
+
+- You cannot use this step with a non-root user at this time.
+
 ## Docker in Docker (DinD)
 
 Some steps in a containerized step group might require Docker in Docker (DinD). For example, some deployment types might use DinD because of the requirements of their platforms.

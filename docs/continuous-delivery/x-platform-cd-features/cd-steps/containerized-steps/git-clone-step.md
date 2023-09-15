@@ -35,6 +35,10 @@ By cloning the repository, you gain access to the necessary code, scripts, or co
 
 </details>
 
+## Important notes
+
+- You cannot use this step with a non-root user at this time.
+
 ## Add the Git Clone step
 
 The Git Clone step uses a containerized step group. For more information, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md).

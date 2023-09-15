@@ -67,6 +67,9 @@ Harness provides built-in scanning and vulnerability assessment using [Security 
 
 </details>
 
+## Important notes
+
+- You cannot use this step with a non-root user at this time.
 
 ## Add the GitHub Action Plugin step
 
