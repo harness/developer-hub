@@ -27,12 +27,12 @@ import Gitxsup from '/docs/get-started/shared/gitx-whats-supported.md'
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Access control" label="Access Control">
+  <TabItem value="Authentication" label="Authentication">
 ```
 
-import Accessconsup from '/docs/get-started/shared/access-control-supported.md'
+import Authsup from '/docs/get-started/shared/auth-supported.md'
 
-<Accessconsup />
+<Authsup />
 
 ```mdx-code-block
   </TabItem>
