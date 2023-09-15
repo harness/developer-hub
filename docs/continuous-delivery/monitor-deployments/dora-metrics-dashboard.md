@@ -106,7 +106,7 @@ pipeline:
 
 Lead Time to Production shows the median duration of deployments.
 
-1. Enter a name your query. For example, Lead Time to Production. 
+1. Enter a name for your query. For example, Lead Time to Production. 
 2. In **Deployments**, select **Custom Aggregation Period**, then select the time period.
 3. In **Deployments**, select **Median Duration**.
 4. Configure your visualization options. For more information, go to [create visualization and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
