@@ -17,7 +17,7 @@ The error indicates that the Harness GitOps Agent is unable to connect to Redis 
 
 Add the following `podSelector` settings to the `NetworkPolicy` objects defined in your existing Argo CD *argocd-redis* and *argocd-repo-server* services.
 
-The following table lists the `NetworkPolicy` objects for HA and non-HA Agents, and include the YAML before and after the new `podSelector` is added.
+The following table lists the `NetworkPolicy` objects for HA and non-HA Agents, and includes the YAML before and after the new `podSelector` is added.
 
 | **NetworkPolicy** | **HA Agent** |
 | --- | --- |
