@@ -184,7 +184,7 @@ Harness CV evaluates the metrics based on the fail-fast threshold you configure.
 
 To set a fail-fast threshold, follow these steps:
 
-1. Expand **Advanced (Optional)**, go to the **Fail-Fast Thresholds** tab, and then select the **+ Add Threshold** button.
+1. Expand **Advanced (Optional)**, go to the **Fail-Fast Thresholds** tab, and then select **+ Add Threshold**.
 
 2. From the **Metric** dropdown, select **SumoLogic Metric**. This is the metric you created in the [Define metric configuration settings](#define-metric-configuration-settings) step.
 
