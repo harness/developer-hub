@@ -4,7 +4,13 @@ description: Add a Policy step to your stage.
 sidebar_position: 3
 ---
 
-Currently, this feature is behind the feature flags `OPA_PIPELINE_GOVERNANCE` and `CUSTOM_POLICY_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Harness provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies.
+:::note
+
+Currently, this feature is behind the feature flags `OPA_PIPELINE_GOVERNANCE` and `CUSTOM_POLICY_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+::: 
+
+Harness provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies.
 
 You can enforce policies in two ways:
 
