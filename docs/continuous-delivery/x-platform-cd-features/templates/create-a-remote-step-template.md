@@ -15,16 +15,18 @@ This topic walks you through the steps to create a Remote step template.
 
 ### Objectives
 
-You'll learn how to: 
+You'll learn how to:
 
-* Create a Remote Run step template.​
-* Define template parameters.​
+* Create a Remote Run step template.
+* Define template parameters.
 
 ### Before you begin
 
-* Review [Harness key concepts​](/docs/get-started/key-concepts)
-* See [Templates overview](/docs/platform/templates/template/)
-* See [CI quickstarts​](/docs/continuous-integration/get-started/tutorials)
+Review the following:
+
+* [Harness key concepts](/docs/get-started/key-concepts)
+* [Templates overview](/docs/platform/templates/template/)
+* [CI tutorials](/docs/continuous-integration/get-started/tutorials)
 
 ### Permissions
 

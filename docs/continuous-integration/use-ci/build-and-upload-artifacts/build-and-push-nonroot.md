@@ -119,10 +119,10 @@ Many Buildah plugin settings correspond with settings for the built-in **Build a
 
 | Destination | Buildah image | Buildah main.go | Equivalent Build and Push step |
 | ----------- | --------------------- | ------------------------------------- | ------------------------------ |
-| Docker Hub | `buildah-docker` | [Docker main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-docker/main.go) | [Build and Push to Docker Hub settings](./build-and-push-to-docker-hub-step-settings.md) |
-| ACR | `buildah-acr` | [ACR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-acr/main.go) | [Build and Push to ACR settings](./build-and-push-to-acr.md) |
-| ECR | `buildah-ecr` | [ECR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-ecr/main.go) | [Build and Push to ECR settings](./build-and-push-to-ecr-step-settings.md) |
-| GCR | `buildah-grc` | [GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go) | [Build and Push to GCR settings](./build-and-push-to-gcr.md) |
+| Docker Hub | `buildah-docker` | [Docker main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-docker/main.go) | [Build and Push to Docker Hub](./build-and-push-to-docker-hub-step-settings.md) |
+| ACR | `buildah-acr` | [ACR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-acr/main.go) | [Build and Push to ACR](./build-and-push-to-acr.md) |
+| ECR | `buildah-ecr` | [ECR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-ecr/main.go) | [Build and Push to ECR](./build-and-push-to-ecr-step-settings.md) |
+| GCR | `buildah-grc` | [GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go) | [Build and Push to GCR](./build-and-push-to-gcr.md) |
 
 ## YAML example
 

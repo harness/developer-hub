@@ -468,3 +468,73 @@ pipeline:
   </TabItem>
 </Tabs>
 ```
+
+## Troubleshooting: Failed to get image entrypoint
+
+If you get a `failed to get image entrypoint` error when using a Kubernetes cluster build infrastructure, you might need to [mount volumes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#volumes) for the PostgreSQL data and then reference those volumes in the **Background** steps.
+
+1. In the build infrastructure settings, mount one empty directory volume for each PostgreSQL service.
+
+   ```yaml
+       - stage:
+           identifier: run_postgres
+           type: CI
+           name: run postgres
+           description: ""
+           spec:
+             cloneCodebase: false
+             infrastructure:
+               type: KubernetesDirect
+               spec:
+                 connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+                 namespace: YOUR_KUBERNETES_NAMESPACE
+                 volumes:
+                   - mountPath: /tmp/pgdata1 ## Empty volume for first PostgreSQL instance.
+                     type: EmptyDir
+                     spec:
+                       medium: ""
+                   - mountPath: /tmp/pgdata2 ## Empty volume for second PostgreSQL instance.
+                     type: EmptyDir
+                     spec:
+                       medium: ""
+                 automountServiceAccountToken: true
+                 nodeSelector: {}
+                 os: Linux
+   ```
+
+2. In each PostgreSQL **Background** step, add a `PGDATA` environment variable, and set the value to the corresponding empty directory path.
+
+   ```yaml
+                     - step:
+                         identifier: Background_1
+                         type: Background
+                         name: Background_1
+                         spec:
+                           connectorRef: account.harnessImage
+                           image: postgres
+                           shell: Sh
+                           entrypoint:
+                             - docker-entrypoint.sh
+                             - "-p 5433"
+                           envVariables:
+                             POSTGRES_USER: postgres
+                             POSTGRES_DB: test
+                             POSTGRES_PASSWORD: password
+                             PGDATA: /tmp/pgdata1 ## Path for first mounted volume.
+                     - step:
+                         identifier: Background_2
+                         type: Background
+                         name: Background_2
+                         spec:
+                           connectorRef: account.harnessImage
+                           image: postgres
+                           shell: Sh
+                           entrypoint:
+                             - docker-entrypoint.sh
+                             - "-p 5434"
+                           envVariables:
+                             POSTGRES_USER: postgres
+                             POSTGRES_DB: test1
+                             POSTGRES_PASSWORD: password
+                             PGDATA: /tmp/pgdata2 ## Path for second mounted volume.
+   ```

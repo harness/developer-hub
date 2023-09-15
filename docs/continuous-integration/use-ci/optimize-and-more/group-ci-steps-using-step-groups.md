@@ -10,9 +10,10 @@ helpdocs_is_published: true
 
 You can add steps to CI pipelines individually or in step groups. Steps in step groups can run serially or in parallel. Step groups can have [Conditional Execution, Failure Strategy, and Looping Strategy](#advanced-settings) settings that apply to all steps in the group.
 
-One reason you might use step groups is to improve test times in pipelines that include a lot of tests. This is one of the [optimization methods](./optimizing-ci-build-times.md) you can use to speed up your CI pipelines.
+Step groups are one of the [optimization methods](./optimizing-ci-build-times.md) you can use to speed up your CI pipelines. You might use step groups to:
 
-![](./static/group-ci-steps-using-step-groups-16.png)
+* Improve test times in pipelines that include a lot of tests.
+* [Run health checks on background services](../manage-dependencies/health-check-services.md).
 
 :::info
 
@@ -40,7 +41,46 @@ One reason you might use step groups is to improve test times in pipelines that 
 3. Enter a name for the step group, and then select **Apply Changes**.
 4. Add or drag steps into the step group and configure the steps as usual.
 
-## Advanced settings
+   ![](./static/group-ci-steps-using-step-groups-16.png)
+
+The following YAML example includes one stage with three steps. Two steps are in a step group, and one step isn't in the step group.
+
+```yaml
+    - stage:
+        type: CI
+        name: build
+        identifier: build
+        spec:
+          cloneCodebase: false
+          infrastructure:
+            ...
+          execution:
+            steps: ## Step container for the entire stage.
+              - stepGroup: ## Step group flag.
+                  name: sg1 ## Step group name.
+                  identifier: sg1 ## Step group ID.
+                  steps: ## Step container for the step group. The following two steps are in the step group.
+                    - step:
+                        type: Run
+                        name: Run_1
+                        identifier: Run_1
+                        spec:
+                          ...
+                    - step:
+                        type: Run
+                        name: Run_2
+                        identifier: Run_2
+                        spec:
+                         ...
+              - step: ## This step is outdented so that it is not in the step group.
+                  type: Run
+                  name: Run_3
+                  identifier: Run_3
+                  spec:
+                    ...
+```
+
+### Advanced settings
 
 Step groups can have [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/), [Failure Strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps), and [Looping Strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) settings that apply to all steps in the group. However, if a step in the group has its own step-level **Conditional Execution** and **Failure Strategy**, then the individual step's settings override the step group's settings for that single step.
 

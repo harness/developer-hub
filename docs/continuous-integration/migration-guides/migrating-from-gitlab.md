@@ -77,7 +77,7 @@ step1:
 </Tabs>
 ```
 
-For more information about Harness terminology, features, and pipeline components, go to [CI pipeline basics](../get-started/key-concepts.md).
+For more information about Harness terminology, features, and pipeline components, go to the [CI key concepts](../get-started/key-concepts.md).
 
 ### Jobs and steps
 

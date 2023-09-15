@@ -163,6 +163,31 @@ If your pipeline has multiple stages, each stage that has **Clone codebase** ena
 
 If you want to force all stages to use the same commit ID, even if there are changes in the repository while the pipeline is running, you must use a [code repo connector](#code-repo-connectors) for a specific SCM provider, rather than the generic Git connector.
 
+## Git fetch fails with invalid index-pack output when cloning large repos
+
+The following `git fetch` error might cause a pipeline to fail during build initialization when cloning the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md): `fetch-pack: invalid index-pack output`.
+
+This can occur with large code repos and indicates that the build machine might have insufficient resources to clone the repo.
+
+To resolve this, edit the pipeline's YAML and allocate `memory` and `cpu` resources in the `codebase` configuration. For example:
+
+```yaml
+properties:
+  ci:
+    codebase:
+      connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+      repoName: YOUR_CODE_REPO_NAME
+      build:
+        type: branch
+        spec:
+          branch: <+input>
+      sslVerify: false
+      resources:
+        limits:
+          memory: 4G ## Set the maximum memory to use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
+          cpu: "2" ## Set the maximum number of cores to use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`.
+```
+
 ## See also
 
 * [Runtime Inputs](/docs/platform/variables-and-expressions/runtime-inputs)
