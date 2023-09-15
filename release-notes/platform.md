@@ -37,11 +37,7 @@ The following deprecated API endpoints will no longer be supported:
 
 - To enhance security, Harness has added settings to enable and disable Slack, Microsoft Teams, webhook, and PagerDuty notification channels at the account scope. (PL-39921)
 
-<<<<<<< HEAD
   For more information about notification settings, go to [Notification settings](/docs/platform/Settings/notification-settings).
-=======
-  For more information about notification settings, go to [Notification settings](/docs/platform/17_Settings/notification-settings).
->>>>>>> 1a524c5455601c850322edc69e6b4c150d98b2f1
 
 ### Early access features
 
