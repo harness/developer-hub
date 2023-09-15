@@ -190,7 +190,7 @@ To set a fail-fast threshold, follow these steps:
 
 3. In the **Action** field, select what the CV should do when applying the rule. Let's select **Fail Immediately**.
 
-4. In the **Criteria** field, choose **Percentage Deviation**, and from the greater than select **1**. The purpose here is to set a threshold for memory usage beyond which the system or application is considered to be in a problematic state, and action should be taken.
+4. In the **Criteria** field, choose **Percentage Deviation**, and from the greater than select **1**. This sets a threshold for memory usage beyond which the system or application is considered to be in a problematic state, and action should be taken.
 
 ![Configure threshold](./static/cv-simple-cv-select-failfast-threshold.png)
 
