@@ -211,7 +211,7 @@ terraform import
 ```
 To learn more about the life cycle of a Terraform resource, see [Lifecycle of a Terraform Resource](https://freecontent.manning.com/the-lifecycle-of-a-terraform-resource/).
 
-To try out Harness Terraform provider, see [Harness Provider](https://registry.terraform.io/providers/harness/harness/latest/docs).
+To try out Harness Terraform Provider, see [Harness Provider](https://registry.terraform.io/providers/harness/harness/latest/docs).
 
 ### Next steps
 

@@ -16,6 +16,12 @@ description: Build and Deploy a NodeJS App to Kubernetes
 
 DevOps continues to grow in popularity among software development teams. It’s not surprising, given the benefits: a streamlined workflow leads to faster release frequency and deployment cycles, quicker bug detection, efficient rollback in case of any error, and a more productive team overall. DevOps engineers ensure that the processes and practices of code development, testing, and release are streamlined to reduce inefficiency, risk, and time to market. Coupled with continuous integration (CI) and continuous delivery (CD), DevOps helps IT organizations streamline their development process by automating manual tasks related to code deployment. Let’s explore how you can adopt CI/CD to improve your organization’s efficiency and delivery pipeline.
 
+:::info
+
+[Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-kubernetes-manifest).
+
+:::
+
 ## Continuous integration
 First, let’s take a look at what CI/CD is and what its benefits are. Although these two concepts are often discussed together, each has its own role in the software development process. 
 

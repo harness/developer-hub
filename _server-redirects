@@ -13,5 +13,15 @@
 # Added by schoudhury on 8-29-2023
 /docs/category/apis /docs/category/api
 
+# Added by schoudhury on 9-3-2023
+/docs/continuous-delivery/get-started/cd-tutorial /tutorials/cd-pipelines
+/docs/continuous-delivery/get-started/create-first-pipeline /tutorials/cd-pipelines/kubernetes/manifest
+/docs/category/get-started /docs/category/get-started-with-cd
+/docs/category/get-started-with-harness-chaos-engineering-ce /docs/category/get-started-with-ce
+/docs/category/get-started-1 /docs/category/get-started-with-ccm
+
+# Added by schoudhury on 9-5-2023
+/docs/category/quickstarts /tutorials/category/cloud-autostopping
+
 # Redirects generated from Front Matter [sytem generated goes below here]:
 

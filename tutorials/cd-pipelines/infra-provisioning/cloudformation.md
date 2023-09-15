@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 ```
 :::info
 
-Dynamic provisioning is only supported in [Service and Environments v1](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2), and will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
+Dynamic provisioning is only supported in [Service and Environments v1](/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2), and will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
 
 :::
 
@@ -62,7 +62,7 @@ Verify that you have the following:
 1. **A Kubernetes cluster** in CloudFormation: Create a **stack** in CloudFormation to provision an **EKS cluster** to be used as **deployment infrastructure**.
 2. **Obtain GitHub personal access token with the repo scope**. See the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). 
 3. Fork the **[harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website, which contains the **CF template** file. 
-4. A functioning **Harness pipeline** that deploys an application on your cluster using a manifest. Please follow this [get started tutorial](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/manifest) to set it up. 
+4. A functioning **Harness pipeline** that deploys an application on your cluster using a manifest. Please follow this [get started tutorial](/tutorials/cd-pipelines/kubernetes/manifest) to set it up. 
 
 ### Get started
 
@@ -199,7 +199,7 @@ Verify that you have the following:
 
 :::note
 
-You can also follow the [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/) tutorial to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
+You can also follow the [Install Harness Delegate on Kubernetes or Docker](/tutorials/platform/install-delegate/) tutorial to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
 
 :::
 

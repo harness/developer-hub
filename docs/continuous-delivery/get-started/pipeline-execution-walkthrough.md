@@ -293,8 +293,8 @@ This topic explained how a CD pipeline execution uses Harness entities and setti
 
 For more information on creating CD pipelines, go to:
 
-- [CD tutorials](https://developer.harness.io/tutorials/cd-pipelines)
-- [Create your first CD pipeline](https://developer.harness.io/docs/continuous-delivery/get-started/create-first-pipeline)
+- [CD tutorials](/tutorials/cd-pipelines)
+
 
 
 

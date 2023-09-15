@@ -24,6 +24,7 @@ Review the video [Kustomize: Deploy Your App with Template Free YAML](https://yo
 ## Limitations
 
 * Harness supports Kustomize and Kustomize Patches for [Rolling](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment), [Canary](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment), [Blue Green](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment) strategies, and the Kubernetes [Apply](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) and [Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources) steps.
+* Kustomize manifests and patches do **not** support the [custom remote manifest](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) feature.
 * Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
 * You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
 * **Kustomize binary versions:**  
@@ -68,7 +69,7 @@ All connections and operations are performed by Harness Delegates. You can add t
 5. In **Specify Kustomize Store**, select your Git provider, such as **GitHub**.
 
    If you already have a Git Connector that points to your Kustomization files, then select that. If not, click **New GitHub Connector**.
-6. The **Git Connector** settings appear. Enter the settings described in [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo).
+6. The **Git Connector** settings appear. Enter the settings described in [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
 7. Click **Continue**.
 8. In **Manifest Details**, enter the following settings, test the connection, and click **Submit**. We are going to provide connection and path information for a kustomization located at `https://github.com/wings-software/harness-docs/blob/main/kustomize/helloWorld/kustomization.yaml`.
   * **Manifest Identifier:** enter **kustomize**.
@@ -183,7 +184,7 @@ You cannot use Harness variables in the base manifest or kustomization.yaml. You
 
 ![](./static/use-kustomize-for-kubernetes-deployments-04.png)
 
-2. In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo).
+2. In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
 
    The Git Connector should point to the Git account or repo where you Kustomize files are located. In **Kustomize Patches** you will specify the path to the actual patch files.
 

@@ -16,7 +16,7 @@ Currently, this feature is behind the Feature Flags `TIME_SCALE_CG_SYNC` and `CU
 
 :::
 
-The **FirstGen** custom dashboards in Harness NextGen display information for your Harness FirstGen deployments. See [Harness FirstGen vs Harness NextGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md).
+The **FirstGen** custom dashboards in Harness NextGen display information for your Harness FirstGen deployments. See [Harness FirstGen vs Harness NextGen](../../get-started/harness-first-gen-vs-harness-next-gen.md).
 
 Dashboards help you model and analyze business metrics and operational data. You can use this data to make data-driven business decisions. Using charts, data tables, and filters, Dashboards help you get the most useful deployments data.
 
@@ -141,7 +141,7 @@ Here's an example that explains how you can create your own Dashboard to view yo
 
 	* **Deployments**: Pipeline Name, Failed Deployments, and Total Deployments
 	* **Services**: Failed Service Deployments, Successful Service Deployments, and Total Service Deployments
-4.  Configure your visualization options. For more information, see [Create Visualizations and Graphs](../../platform/18_Dashboards/create-visualizations-and-graphs.md).
+4.  Configure your visualization options. For more information, see [Create Visualizations and Graphs](../../platform/dashboards/create-visualizations-and-graphs.md).
 5.  Once you have set up your query, click **Run**.
    
    ![](../cd-dashboards/static/view-deployments-current-gen-dashboard-50.png)
@@ -159,16 +159,16 @@ Here's an example that explains how you can create your own Dashboard to view yo
 
 You can also perform the following actions on the Dashboard:
 
-* [Use Dashboard Actions](../../platform/18_Dashboards/use-dashboard-actions.md)
-* [Download Dashboard Data](../../platform/18_Dashboards/download-dashboard-data.md)
-* [Create Conditional Alerts](../../platform/18_Dashboards/create-conditional-alerts.md)
-* [Schedule and Share Dashboards](../../platform/18_Dashboards/share-dashboards.md)
+* [Use Dashboard Actions](../../platform/dashboards/use-dashboard-actions.md)
+* [Download Dashboard Data](../../platform/dashboards/download-dashboard-data.md)
+* [Create Conditional Alerts](../../platform/dashboards/create-conditional-alerts.md)
+* [Schedule and Share Dashboards](../../platform/dashboards/share-dashboards.md)
 
 ## Next Steps
 
 Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](../../platform/18_Dashboards/create-dashboards.md)
-* [Create Visualizations and Graphs](../../platform/18_Dashboards/create-visualizations-and-graphs.md)
-* [Add Custom Fields](../../platform/18_Dashboards/add-custom-fields.md)
+* [Create Dashboards](../../platform/dashboards/create-dashboards.md)
+* [Create Visualizations and Graphs](../../platform/dashboards/create-visualizations-and-graphs.md)
+* [Add Custom Fields](../../platform/dashboards/add-custom-fields.md)
 

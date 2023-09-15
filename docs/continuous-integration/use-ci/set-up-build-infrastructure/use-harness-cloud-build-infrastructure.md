@@ -4,6 +4,8 @@ description: You can use Harness-hosted build infrastructure for your Harness CI
 sidebar_position: 20
 ---
 
+<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
 With Harness Cloud, you can run builds in isolation on Harness-hosted VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines. Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.
 
 Harness Cloud provides the following advantages:
@@ -25,7 +27,7 @@ The steps in each stage execute on the stage's dedicated VM. This allows the sta
 
 ## Build credits
 
-All plans get 2000 free build credits each month. For more information about Harness Cloud build credit consumption, go to [Subscriptions and licenses](../../ci-quickstarts/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
+All plans get 2000 free build credits each month. For more information about Harness Cloud build credit consumption, go to [Subscriptions and licenses](../../get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
 
 ## Requirements
 

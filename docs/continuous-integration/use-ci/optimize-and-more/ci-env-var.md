@@ -39,7 +39,7 @@ You can automatically [trigger pipelines using Git events](/docs/platform/Trigge
 `PLUGIN_` variables represent [plugin](../use-drone-plugins/explore-ci-plugins.md) settings, and they are defined in either:
 
 * The [plugin step's settings](../use-drone-plugins/plugin-step-settings-reference.md#settings). For example, `setting.url` becomes `PLUGIN_URL` at runtime.
-* Stage variables. For example, you can use the `PLUGIN_DRY_RUN` stage variable to [Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#build-a-docker-image-without-pushing).-->
+* Stage variables. For example, you can use the `PLUGIN_DRY_RUN` stage variable to [Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push.md).-->
 
 <!-- ## Codebase and trigger variables
 
@@ -290,6 +290,8 @@ These variables are related to the lite-engine service.
 
 Always `/harness`, which is the default [workspace](../caching-ci-data/share-ci-data-across-steps-and-stages.md#share-data-between-steps-in-a-stage). This is where Harness clones the codebase, and it is the working directory for all steps in a stage.
 
+<!-- The DRONE_WORKSPACE environment variable doesn't exist in local runner build infrastructures. -->
+
 ### \_ID variables
 
 * `HARNESS_ACCOUNT_ID`
@@ -435,7 +437,7 @@ Other environment variables might existing in your pipelines depending on the st
 * `JDK`
 * `JFROG_PASSWORD`
 * `JFROG_USERNAME`
-* `PLUGIN_ARTIFACT_FILE`
+* `PLUGIN_ARTIFACT_FILE`: Harness uses this to show links on the [Artifacts tab](../viewing-builds.md).
 * `PLUGIN_PIPELINE`
 * `GCP_BAZEL_CACHE_CRED_PATH`
 * `GCP_KEY`
