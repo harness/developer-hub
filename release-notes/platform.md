@@ -37,7 +37,7 @@ The following deprecated API endpoints will no longer be supported:
 
 - To enhance security, Harness has added settings to enable and disable Slack, Microsoft Teams, webhook, and PagerDuty notification channels at the account scope. (PL-39921)
 
-  By default, all notification channels are enabled on an account. To disable a given notification channel, in Harness, go to **Account Settings** > **Account Resources** > **Default Settings** > **Notifications**, and turn off the corresponding toggle. When a notification channel is in the disabled state, no notification is sent for that channel, whether existing or new, until you enable the channel again.
+  For more information about notification settings, go to [Notification settings](docs/platform/17_Settings/notification-settings).
 
 ### Early access features
 
