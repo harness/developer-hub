@@ -106,7 +106,7 @@ To install the delegate, do the following:
 
 6. Run the command.
 
-   The command uses the default [values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) located in the [delegate-helm-chart](https://github.com/harness/delegate-helm-chart) GitHub repo. If you want change one or more values in a persistent manner instead of the command line, you can download and update the `values.yaml` file as per your need. You can use the updated `values.yaml` file as shown below.
+   The command uses the default [values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) located in the [delegate-helm-chart](https://github.com/harness/delegate-helm-chart) GitHub repo. If you want to change one or more values in a persistent manner instead of the command line, you can download and update the `values.yaml` file as per your need. You can use the updated `values.yaml` file as shown below.
 
    ```
    helm upgrade -i firstk8sdel --namespace harness-delegate-ng --create-namespace \
