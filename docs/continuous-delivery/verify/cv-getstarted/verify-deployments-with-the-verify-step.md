@@ -10,16 +10,12 @@ Harness CV is a critical step in the deployment pipeline that validates deployme
 
 This topic provides an overview of the prerequisites and steps involved in setting up Harness CV.
 
-:::info note
-If you are already familiar with setting up Harness CV and the verification step and are looking for instructions on configuring the verification step for a specific health source, then go to [Configure CV](/docs/category/configure-cv).
-:::
-
 
 ## Before You Begin
 
-* [Learn Harness' Key Concepts](./getting-started/../../../../getting-started/learn-harness-key-concepts.md).
-* [Learn about Kubernetes deployments](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
-* [Refer to the supported platforms and technologies](../getting-started/../../../getting-started/supported-platforms-and-technologies.md)
+* [Learn Harness' Key Concepts](/docs/get-started/key-concepts).
+* [Learn about Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
+* [Refer to the supported platforms and technologies](../../../get-started/supported-platforms-and-technologies.md)
 
 
 ## Deployment strategies for CV
@@ -65,9 +61,8 @@ You can configure the pipeline to fail if there is no data from the health sourc
 Harness CV monitors health trend deviations using logs and metrics obtained from the health source, such as APM and logging tools, via a monitored service. A health source is an APM or logging tool that monitors and aggregates data in your deployment environment. You can add multiple health sources.
 
 
-## Next steps
+## Further reading
 
-- To start using Harness CV, go to [Configure CV](/docs/category/configure-cv).
 - To understand more about Harness CV, go to the [knowledge base](/kb/continuous-delivery).
 
 
