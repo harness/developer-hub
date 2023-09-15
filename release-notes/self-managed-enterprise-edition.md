@@ -564,6 +564,66 @@ You are missing the following permission: "View default settings" in Account sco
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
 
+##### 0.8.3
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.8.3](https://github.com/harness/helm-charts/releases/tag/harness-0.8.3) |
+| Air Gap Bundle | [0.8.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.3) |
+| NG Manager | 79821 |
+| CI Manager | 4903 |
+| Pipeline Service | 1.37.13 |
+| Platform Service | 79601 |
+| Access Control Service | 79400 |
+| Change Data Capture | 79819 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.353.10 |
+| LE NG | 68004 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.8.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/sto_images.tgz" \
+  .
+```
+
+#### Self-Managed Enterprise Edition
+
+- Harness updated CI Manager and the delegate to improve performance testing.(SMP-2022)
+
+- Added the following rule to the `log-service` virtual service. (SMP-2023)
+
+   ```yaml
+   - uri:
+        prefix: /log-service//
+   ```
+
+#### Cloud Cost Management
+
+- Updated the Helm chart to support proxy configuration for AWS SDK clients. (CCM-14374)
+
+#### Custom Dashboards
+
+- Updated to an FIPS compliant algorithm for short term caching key generation. (CDB-1107)
+
+#### Chaos Engineering
+
+- Added support for Chaos Engineering version 1.19.x. (CHAOS-2544)
+
+##### 0.8.2
+
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
