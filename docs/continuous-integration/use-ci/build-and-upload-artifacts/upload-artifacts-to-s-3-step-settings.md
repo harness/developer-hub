@@ -63,10 +63,10 @@ Select the Harness [AWS connector](/docs/platform/connectors/cloud-providers/add
 :::info
 
 * This step might not support all [AWS connector authentication methods](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings).
+* You can use buckets with disabled ACLs.
 * Additional stage variables are required for [non-default ACLs](#stage-variable-required-for-non-default-acls) or to [assume IAM roles or use ARNs](#stage-variable-required-to-assume-iam-roles-or-use-arns).
 * The AWS IAM roles and policies associated with the AWS account for your AWS connector must allow pushing to S3. For more information, go to the [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
-<!--* You can use buckets with disabled ACLs.-->
 :::
 
 ##### Stage variable required for non-default ACLs
