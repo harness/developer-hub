@@ -180,7 +180,7 @@ The following steps describe defining a query and configuring a risk profile:
 
 #### Configure threshold
 
-Harness CV evaluates the metrics based on the fail-fast threshold you configure. If the metrics breach the fail-fast threshold, the verification step fails. In the context of the [SumoLogic query](#define-a-query) you defined, the purpose here is to set a threshold for memory usage beyond which the application is considered to be in a problematic state, and the verification fails.
+Harness CV evaluates the metrics based on the fail-fast threshold you configure. If the metrics exceed the fail-fast threshold, the verification step fails. In the context of the [SumoLogic query](#define-a-query) you defined, the threshold sets a memory usage limit beyond which the application is considered to be in a problematic state, and the verification fails.
 
 To set fail-fast threshold, follow these steps:
 
