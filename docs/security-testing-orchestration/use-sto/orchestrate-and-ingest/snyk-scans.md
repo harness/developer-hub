@@ -60,7 +60,8 @@ This example uses a Snyk step in Orchestration mode  to scan a repository. This 
    1. Scan Mode = **Orchestration**
    2. Target Type = **Repository**
    3. Target Name = (_user-defined_)
-   4. Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_)
+   <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
+   4. Variant = (_user-defined_)
    5. Access Token =  [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization) (_Harness secret_)   
 
 6. Apply your changes, then save and run the pipeline. 
@@ -68,7 +69,7 @@ This example uses a Snyk step in Orchestration mode  to scan a repository. This 
 
 ## Scan a repository: ingestion example
 
-The following example uses [`snyk test`](https://docs.snyk.io/snyk-cli/commands/test) to scan a local .NET image built using Nuget. 
+The following example uses [`snyk test`](https://docs.snyk.io/snyk-cli/commands/test) to scan a .NET repository. 
 
 The scan stage in this pipeline has the following steps:
 
@@ -91,15 +92,13 @@ The scan stage in this pipeline has the following steps:
       In this example, we want to scan a .NET repository. The [setup requirements](https://docs.snyk.io/integrations/snyk-ci-cd-integrations/aws-codepipeline-integration/setup-requirements-for-aws-codepipeline) topic says: _Build only required if no packages.config file present._ The repo does not contain this file.  Given this, we enter the following code in the **Command** field:
 
       ```bash
-      # Populates the dotnet dependencies
+      # populates the dotnet dependencies
       dotnet restore SubSolution.sln
 
-      # snyk SCA scan
-      # Use <+codebase.branch> to specify branch to scan at runtime
-      # Harness recommends that you always save the scan results to a SARIF file 
-      snyk test --file=SubSolution.sln  \
-         --target_reference  <+codebase.branch> \
-         --sarif-file-output=/shared/customer_artifacts/snyk_sast.sarif | true
+      # scan the code repository
+      snyk code test \
+         --file=SubSolution.sln  \
+         --sarif-file-output=/shared/customer_artifacts/snyk_sast.sarif || true
       ``` 
 
    2. For the Run step **Image**, use a [supported Snyk image](https://github.com/snyk/snyk-images#current-images) based on the type of code in your codebase.  
@@ -121,11 +120,11 @@ The scan stage in this pipeline has the following steps:
    1. Scan Mode = **Ingestion**
    2. Target Type = **Repository**
    3. Target Name = (_user-defined_)
-   4. Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_)
+  <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
+   4. Variant = (_user-defined_)
    5. Ingestion =  **`/shared/customer_artifacts/snyk_sast.sarif`**    
 
 6. Apply your changes, then save and run the pipeline. 
-
 
 
 ## Scan a container image: workflow example
@@ -178,16 +177,76 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
    1. Scan Mode = **Ingestion**
    2. Target Type = **Container Image**
    3. Target Name = (_user-defined_)
-   4. Variant = (_runtime expression_)
+  <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
+   4. Variant = (_user-defined_)
    5. Ingestion =  **`/shared/customer_artifacts/snyk_container_scan.sarif`**    
 
 5. Apply your changes, then save and run the pipeline.
 
+## Scan an Infrastructure as Code (IaC) repository: ingestion example
+
+:::note
+
+Support for Snyk scans of IaC repositories is a beta feature. For more information, contact [Harness Support](mailto:support@harness.io).
+
+:::
+
+The following example uses [`snyk iac test`](https://docs.snyk.io/snyk-cli/commands/iac-test) to scan a an [example IaC code repository](https://github.com/snyk/terraform-goof) provided by Snyk. 
+
+The scan stage in this pipeline has the following steps:
+
+- A Run step installs the build; then it scans the image and saves the output to a shared folder. 
+
+- A Snyk step then ingests the output file.
+
+![](../static/snyk-scans-iac-00.png)
+
+1. Add a [codebase connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) to your pipeline that points to the repository you want to scan. 
+
+2. Add a Security Tests or Build stage to your pipeline.
+
+3. Go to the Overview tab of the stage. Under **Shared Paths**, enter the following path: `/shared/customer_artifacts`
+
+4. Add a **Run** step that runs the build (if required), scans the repo, and saves the results to the shared folder:
+        
+   1. In the Run step **Command** field, add code to run the scan and save the scan results to the shared folder. 
+
+      ```bash
+      snyk iac test --sarif --sarif-file-output=/shared/customer_artifacts/snyk_iac.json /harness || true
+      cat /shared/customer_artifacts/snyk_iac.json
+      ``` 
+
+   2. For the Run step **Image**, use a [supported Snyk image](https://github.com/snyk/snyk-images#current-images) based on the type of code in your codebase.  
+ 
+   3. In the Run step **Environment Variables** field, under **Optional Configuration**, add a variable to access your Snyk API key:
+ 
+      `SNYK_TOKEN` = [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization)`  
+      
+      Your Run step should now look like this:
+      
+      ![](../static/snyk-scans-iac-run-step-01.png)
+ 
+   4. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**. 
+ 
+      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise the build will exit with a error code before STO can ingest the data.
+   
+5. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:  
+
+   1. Scan Mode = **Ingestion**
+   2. Target Type = **Repository**
+   3. Target Name = (_user-defined_)
+  <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
+   4. Variant = (_user-defined_)
+   5. Ingestion =  **`/shared/customer_artifacts/snyk_iac.sarif`**    
+
+6. Apply your changes, then save and run the pipeline. 
+
+
 ## Snyk pipeline examples
 
-### Snyk repository scan (orchestration)
+### Snyk code repository scan (orchestration)
 
-The following illustrates the [repository orchestration workflow example](#scan-a-repository-orchestration-example) above for building and scanning a .NET image.
+The following illustrates the [repository orchestration workflow example](#scan-a-repository-orchestration-example) above for scanning a Java project.
 
 <details><summary>YAML pipeline, repository scan, Orchestration mode</summary>
 
@@ -231,7 +290,7 @@ pipeline:
                     target:
                       name: snyk-labs-java-goof
                       type: repository
-                      variant: <+codebase.branch>
+                      variant: main
                     advanced:
                       log:
                         level: debug
@@ -247,7 +306,7 @@ pipeline:
 ```
 </details>
 
-### Snyk repository scan (ingestion)
+### Snyk code repository scan (ingestion)
 
 The following illustrates the [repository ingestion workflow example](#scan-a-repository-ingestion-example) above for building and scanning a .NET image.
 
@@ -282,20 +341,29 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Build
-                  identifier: Build
+                  name: Snyk_Build
+                  identifier: Snyk_Build
                   spec:
                     connectorRef: mydockerhubconnector
                     image: snyk/snyk:dotnet
                     shell: Sh
                     command: |
+                      
                       # populates the dotnet dependencies
                       dotnet restore SubSolution.sln
 
-                      # snyk SCA scan
-                      snyk test --file=SubSolution.sln \
-                         --target_reference  <+codebase.branch> \
-                         --sarif-file-output=/shared/customer_artifacts/snyk_sast.sarif | true
+                      # Test for any known security issues using Static Code Analysis
+                      # https://docs.snyk.io/snyk-cli/commands/code-test
+                      snyk code test \
+                       --file=SubSolution.sln  \
+                       --sarif-file-output=/shared/customer_artifacts/snyk_scan_results.sarif || true
+
+                      # Check project for open source vulnerabilities
+                      # https://docs.snyk.io/snyk-cli/commands/test
+                      # snyk test \
+                      #   --file=SubSolution.sln  \
+                      #   --sarif-file-output=/shared/customer_artifacts/snyk_scan_results.sarif || true
+
                     envVariables:
                       SNYK_TOKEN: <+secrets.getValue("sto-api-token")>
               - step:
@@ -308,12 +376,12 @@ pipeline:
                     target:
                       name: snyk-scan-example-for-docs
                       type: repository
-                      variant: <+codebase.branch>
+                      variant: master
                     advanced:
                       log:
                         level: info
                     ingestion:
-                      file: /shared/customer_artifacts/snyk_sast.sarif
+                      file: /shared/customer_artifacts/snyk_scan_results.sarif
           sharedPaths:
             - /shared/customer_artifacts
         variables:
@@ -424,3 +492,114 @@ pipeline:
 
 ```
 </details>
+
+
+### Snyk IaC repository scan (ingestion)
+
+The following illustrates the [container image ingestion workflow example](#scan-a-container-image-workflow-example) for building and scanning an IaC repository.
+
+<details><summary>YAML pipeline, IaC repository scan, Ingestion mode</summary>
+
+```yaml
+
+pipeline:
+  allowStageExecutions: false
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: snyk_terraform_goof
+        build: <+input>
+  stages:
+    - stage:
+        name: scan
+        identifier: build
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: myharnessdelegate
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          sharedPaths:
+            - /shared/customer_artifacts/
+          execution:
+            steps:
+              - stepGroup:
+                  name: Generation
+                  identifier: Generation
+                  steps:
+                    - step:
+                        type: Run
+                        name: Snyk IaC Run
+                        identifier: Run_1
+                        spec:
+                          connectorRef: DockerHub
+                          image: snyk/snyk:linux
+                          shell: Sh
+                          command: |
+                            
+                            # https://docs.snyk.io/snyk-cli/commands/iac-test
+                            snyk iac test --sarif --sarif-file-output=/shared/customer_artifacts/snyk_iac.json /harness || true
+                            cat /shared/customer_artifacts/snyk_iac.json
+
+                          envVariables:
+                            SNYK_TOKEN: <+secrets.getValue("snyk_api_token")>
+                      isAnyParentContainerStepGroup: false
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - AllErrors
+                        action:
+                          type: Abort
+              - step:
+                  type: Snyk
+                  name: Snyk ingest
+                  identifier: Snyk_1
+                  spec:
+                    mode: ingestion
+                    config: default
+                    target:
+                      name: snyk/terraform-goof
+                      type: repository
+                      variant: master
+                    advanced:
+                      log:
+                        level: info
+                    settings:
+                      runner_tag: develop
+                    imagePullPolicy: Always
+                    ingestion:
+                      file: /shared/customer_artifacts/snyk_iac.json
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - AllErrors
+                        action:
+                          type: Ignore
+                  when:
+                    stageStatus: Success
+        variables:
+          - name: runner_tag
+            type: String
+            value: dev
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: Abort
+  identifier: IaCv2_Snyk_docexample_Clone
+  name: IaCv2 - Snyk - docexample - Clone
+
+
+```
+</details>
+
+
