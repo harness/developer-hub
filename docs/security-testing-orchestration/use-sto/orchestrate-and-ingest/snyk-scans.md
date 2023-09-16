@@ -98,7 +98,7 @@ The scan stage in this pipeline has the following steps:
       # scan the code repository
       snyk code test \
          --file=SubSolution.sln  \
-         --sarif-file-output=/shared/customer_artifacts/snyk_sast.sarif || true
+         --sarif-file-output=/shared/customer_artifacts/snyk_scan_results.sarif || true
       ``` 
 
    2. For the Run step **Image**, use a [supported Snyk image](https://github.com/snyk/snyk-images#current-images) based on the type of code in your codebase.  
