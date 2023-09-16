@@ -122,7 +122,7 @@ The scan stage in this pipeline has the following steps:
    3. Target Name = (_user-defined_)
   <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
    4. Variant = (_user-defined_)
-   5. Ingestion =  **`/shared/customer_artifacts/snyk_sast.sarif`**    
+   5. Ingestion =  **`/shared/customer_artifacts/snyk_scan_results.sarif`**    
 
 6. Apply your changes, then save and run the pipeline. 
 
