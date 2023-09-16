@@ -1291,3 +1291,13 @@ No, we cannot control the sequence for Multi Services/Environment deployments. P
 #### Do we have an example for ternary operators ?
 
 Yes, pleare refer to the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/)
+
+#### Does Harness Support Google cloud functions 1st Gen and 2nd Gen?
+Yes, Harness supports both 1st gen and 2nd gen. 
+
+See: [https://developer.harness.io/docs/faqs/continuous-delivery-faqs/#google-cloud-functions]
+
+#### How can I use Harness CD with Google Cloud Functions?
+Harness CD pipelines help you to orchestrate and automate your Google Cloud Function deployments and push updated functions to Google Cloud.
+
+See: [https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func/]
