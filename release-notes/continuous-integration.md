@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-09-18T10:00:10
+date: 2023-09-25T10:00:10
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -20,7 +20,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest: Version 58xx
 
-<!-- Sept 18 2023 -->
+<!-- Sept 25 2023 -->
 
 ### New features and enhancements
 
