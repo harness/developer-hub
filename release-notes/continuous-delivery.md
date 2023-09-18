@@ -42,7 +42,7 @@ This release does not have new features.
 
 ### Early access features
 
-– Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-67121)
+– Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-78243)
 
 ### Fixed issues
 
@@ -58,6 +58,7 @@ This release does not have new features.
 
 – Fixed an RBAC issue where a user was part of a User Group configured to approve a step but could not approve or reject it. The root cause was that the User Group selected for a pipeline approval also required View permission on User Groups. With this fix, the User Group does not require View permission for a member of that group to approve a pipeline execution. (CDS-78573, ZD-50139)
 
+
 - Fixed a Pipeline Execution UI issue where durations of less than 1s were displayed incorrctly. (CDS-78324)
 
 - Previously, you could not re-run a pipeline from a stage that failed as part of a looping strategy. With this fix, **Re-run from Last Failed Stage** pre-selects the last stage that failed as part of a looping strategy. This behavior applies even if the stage failed with a conditional execution set to Always execute this stage. (CDS-77463)
@@ -70,6 +71,8 @@ This release does not have new features.
 
 - You can now view policy-related updates in the Pipeline Execution console view. (CDS-75213, ZD-46498) 
 
+- Fixed an issue observed in the Pipeline Run form when rerunning pipelines stored in Git. Even when a user changed the branch name in the form,  subsequent reruns of the pipeline still used the YAML from the Git branch of the first run. With the fix, you can now switch branches and it works as expected. (CDS-74577)
+
 <!-- 
 
 https://harness.atlassian.net/browse/CDS-78305?focusedCommentId=573244
@@ -77,6 +80,16 @@ https://harness.atlassian.net/browse/CDS-78305?focusedCommentId=573244
 I documented this as a Fixed Issue in the 805 release notes. Did this get pushed to 807? 
 
 - Fixed a UI issue observed when retrying a pipeline execution: the wrong Execution Id was displayed because the UI was evaluating the sequenceId based on the root executionId. With this fix, the Execution Id is based on the back-end data for the current pipeline execution. (CDS-78305)
+
+-->
+
+<!--
+
+TBD 
+
+https://harness.atlassian.net/browse/CDS-77505
+
+
 
 -->
 
