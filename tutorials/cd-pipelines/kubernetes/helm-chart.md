@@ -663,7 +663,7 @@ Use the following command to add a Harness GitOps cluster.
 harness gitops-cluster --file helm-guestbook/harness-gitops/cluster.yml apply --agent-identifier $AGENT_NAME
 ```
 
-### Create a Harness GitOps application
+### Add a Harness GitOps application
 
 <details open>
 <summary>What is a GitOps Application?</summary>
@@ -723,7 +723,7 @@ A Harness GitOps Cluster is the target deployment cluster that is compared to th
 6. Select **Save & Continue** and wait for Harness to verify the conenction.
 7. Select **Finish**.
 
-### Create a Harness GitOps application
+### Add a Harness GitOps application
 
 <details open>
 <summary>What is a GitOps Application?</summary>
