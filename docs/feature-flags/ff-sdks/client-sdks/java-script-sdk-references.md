@@ -264,6 +264,8 @@ To configure the modes:
 const options = {
   streamEnabled: true, // Enable or disable streaming - default is enabled
   pollingEnabled: true, // Enable or disable polling - default is enabled if stream enabled, or disabled if stream disabled.
+  pollingInterval: 60000, // Polling interval in ms, default is 60000ms which is the minimum. If set below this, will default to 60000ms.
+
 }
 
 const client = initialize(
