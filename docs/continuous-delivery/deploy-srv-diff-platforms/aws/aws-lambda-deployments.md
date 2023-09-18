@@ -216,6 +216,12 @@ Here is a NodeJS hello world function example:
 }
 ```
 
+:::note
+
+Every field name in function definition should follow camelcase with first letter in small cap.
+
+:::
+
 You can use Harness service variables in your function definition JSON.
 
 Services variables allow your function definition to be reusable across multiple Lambda functions. 
