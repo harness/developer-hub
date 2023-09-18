@@ -237,26 +237,25 @@ To provide a set of evaluations:
 
 ## Streaming and Polling Mode
 
-By default, Harness Feature Flags SDK has streaming enabled and polling disabled. Both modes can be toggled according to your preference using the SDK's configurations.
+By default, Harness Feature Flags SDK has streaming enabled and polling enabled. Both modes can be toggled according to your preference using the SDK's configuration.
 
 ### Streaming Mode
-Streaming mode establishes a continuous connection between your application and Harness' servers. This allows for real-time updates on feature flags without requiring periodic checks. If an error occurs while streaming and `pollingEnabled` is set to `true`, the SDK will automatically fall back to polling mode until streaming can be reestablished. If `pollingEnabled` is `false`, streaming will attempt to reconnect without falling back to polling.
+Streaming mode establishes a continuous connection between your application and the Feature Flags service.
+This allows for real-time updates on feature flags without requiring periodic checks.
+If an error occurs while streaming and `pollingEnabled` is set to `true`,
+the SDK will automatically fall back to polling mode until streaming can be reestablished.
+If `pollingEnabled` is `false`, streaming will attempt to reconnect without falling back to polling.
 
 ### Polling Mode
-In polling mode, the SDK will periodically check with the Harness servers to retrieve updates for feature flags. The frequency of these checks can be adjusted using the SDK's configurations.
+In polling mode, the SDK will periodically check with the Feature Flags service to retrieve updates for feature flags. The frequency of these checks can be adjusted using the SDK's configurations.
 
 ### No Streaming or Polling
 If both streaming and polling modes are disabled (`streamEnabled: false` and `pollingEnabled: false`),
-the SDK will not automatically fetch feature flag updates after the initial fetch. This means that after the initial load, any changes made to the feature flags on the Harness server will not be reflected in the application until the SDK is re-initialized or one of the modes is re-enabled.
+the SDK will not automatically fetch feature flag updates after the initial fetch.
+This means that after the initial load, any changes made to the feature flags on the Harness server will not be reflected in the application until the SDK is re-initialized or one of the modes is re-enabled.
 
 This configuration might be useful in specific scenarios where you want to ensure a consistent set of feature flags
 for a session or when the application operates in an environment where regular updates are not necessary. However, it's essential to be aware that this configuration can lead to outdated flag evaluations if the flags change on the server.
-
-To use the SDK with both modes disabled:
-
-### Configurations
-While both streaming and polling can be enabled, if both are active, streaming takes precedence.
-If streaming encounters an issue and `pollingEnabled` is set to `true`, the SDK will switch to polling mode as a backup until streaming is recovered. If `pollingEnabled` is set to `false`, the SDK will continue attempting to reconnect via streaming.
 
 To configure the modes:
 
@@ -264,7 +263,7 @@ To configure the modes:
 
 const options = {
   streamEnabled: true, // Enable or disable streaming - default is enabled
-  pollingEnabled: false, // Enable or disable polling - default is disabled. Enable to fallback to polling if streaming encounters an issue.
+  pollingEnabled: true, // Enable or disable polling - default is enabled if stream enabled, or disabled if stream disabled.
 }
 
 const client = initialize(
@@ -276,8 +275,7 @@ const client = initialize(
             host: location.href
           }
         },
-        options,
-
+        options
 )
 ```
 
