@@ -58,6 +58,8 @@ This release does not have new features.
 
 – Fixed an RBAC issue where a user was part of a User Group configured to approve a step but could not approve or reject it. The root cause was that the User Group selected for a pipeline approval also required View permission on User Groups. With this fix, the User Group does not require View permission for a member of that group to approve a pipeline execution. (CDS-78573, ZD-50139)
 
+- Fixed an issue related to reconciliation of templates that included the CloudFormations steps. The Capabilities section in the step was not validated correctly in the reconciliation, leading to repeated messages to reconcile. With this fix, the reconcile message does not come up erroneously. (CDS-78359, ZD-50240)
+
 
 - Fixed a Pipeline Execution UI issue where durations of less than 1s were displayed incorrctly. (CDS-78324)
 
