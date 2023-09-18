@@ -192,7 +192,6 @@ This exception occurs because the length of the public key is not the same as th
 
 The solution is similar to resolving the handshake exception. Follow the [steps above](#handshake-exception-solutions) to find the correct CA certs to install.
 
-
 ## Certificate inspection commands
 
 The following commands can help you inspect your certificates. 
@@ -206,7 +205,6 @@ Keytool -printcert -file /path/to/cert
 ```
 openssl x509 -text -noout -in certificate.pem 
 ```
-
 
 ### Inspect a truststore file
 
