@@ -8,6 +8,7 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 * Snyk Open Source ([orchestratedScan](./run-an-orchestrated-scan-in-sto.md), [ingestionOnly](./ingest-scan-results-into-an-sto-pipeline.md))
 * Snyk Code ([ingestionOnly](./ingest-scan-results-into-an-sto-pipeline.md))
 * Snyk Container ([ingestionOnly](./ingest-scan-results-into-an-sto-pipeline.md))
+* Snyk infrastructure as Code  — ([ingestionOnly](./ingest-scan-results-into-an-sto-pipeline.md)) is in BETA
 
 ## Important notes
 
