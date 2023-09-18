@@ -13,7 +13,7 @@ To address these challenges, the Harness Software Supply Chain Assurance (SSCA) 
 
 ## Software Supply Chain Assurance objectives
 
-Harness SSCA module provides a robust solution for establishing trust in the software supply chain, managing open-source components, ensuring policy compliance, identifying security vulnerabilities, and enabling rapid response to new threats. The SSCA module aims to achieve the following objectives:
+Harness SSCA module provides a robust solution for establishing trust in the software supply chain, managing open-source components, ensuring policy compliance, and enabling rapid response to new threats. The SSCA module aims to achieve the following objectives:
 
 * **Prevent:** Stop the use of harmful or unauthorized open-source components.
 * **Report:** Generate compliance reports adhering to both internal governance policies and external regulations.

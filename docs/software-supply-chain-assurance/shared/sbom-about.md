@@ -6,7 +6,7 @@ The Harness SSCA module provides comprehensive capabilities for generating, mana
 
 The SSCA module integrates with the CI and CD stages of Harness pipelines, ensuring that an SBOM is generated for every build of your software artifacts and, optionally, before deployment, as well. This helps you maintain up-to-date information about the components used in your applications at all times. Additionally, you have the flexibility to use your preferred SBOM generation tool.
 
-The SSCA module can also integrate with third-party SBOM generation tools, such as Syft and FossID. In the SSCA module, this is referred to as *orchestrating* with a tool, and it allows you to use your preferred SBOM generation tools or tools standardized and approved by security and governance teams
+The SSCA module can also integrate with third-party SBOM generation tools, such as Syft. In the SSCA module, this is referred to as *orchestrating* with a tool, and it allows you to use your preferred SBOM generation tools or tools standardized and approved by security and governance teams
 
 ### SBOM formats
 

@@ -3,7 +3,8 @@ The Harness SSCA module supports the following components and standards.
 ### SBOM tools
 
 * Syft
-* Blackduck
+
+<!-- * Blackduck -->
 
 ### SBOM formats
 
