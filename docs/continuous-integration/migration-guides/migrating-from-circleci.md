@@ -63,7 +63,7 @@ stages:
 </Tabs>
 ```
 
-For more information about Harness terminology, features, and pipeline components, go to [CI pipeline basics](/docs/continuous-integration/get-started/key-concepts).
+For more information about Harness terminology, features, and pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
 When creating pipelines, CircleCI supports pipeline configuration as code only. In contrast, the Harness CI Pipeline Studio provides both a visual editor and a YAML code editor.
 
@@ -295,7 +295,7 @@ Harness integrates with many different types of repositories and providers. A co
 
 In addition to codebase configuration, you can also use connectors in individual steps to specify Docker images or even [clone additional codebases](../use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md) in the same pipeline.
 
-For example, in the following YAML example, the `connectorRef` references a Docker connector. [Docker connectors](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
+For example, in the following YAML example, the `connectorRef` references a Docker connector. [Docker connectors](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
 
 ```yaml
               - step:

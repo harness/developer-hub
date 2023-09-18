@@ -451,7 +451,7 @@ This release does not include new features.
 
 #### Early access
 
-- Large repositories are now supported for [Azure Repo](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OTIMIZED_GET_FETCH_FILES`.
+- Large repositories are now supported for [Azure Repo](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OTIMIZED_GET_FETCH_FILES`.
 
 	Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
@@ -748,7 +748,7 @@ Delegate: 77609
 
 #### Fixed issues
 
-* Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md). (DEL-4888)
+* Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md). (DEL-4888)
 * Removed the delegate dependency on Java driver component `mongo-java-driver` . This eliminates vulnerability [CVE-2021-20328](https://nvd.nist.gov/vuln/detail/CVE-2021-20328) affecting client-side field level encryption (CSFLE). (DEL-5308)
 * Changed the base image that the non-legacy delegate uses to `redhat/ubi8-minimal:latest`. This ensures that each release includes all OS-level security updates. (DEL-5386)
 * Disabling the feature flag `LDAP_SECRET_AUTH` restricts referencing secrets for LDAP connection. (PL-29668)  

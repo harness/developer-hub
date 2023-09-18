@@ -97,7 +97,7 @@ jobs:
 </Tabs>
 ```
 
-For more information about Harness terminology, features, and pipeline components, go to [CI pipeline basics](../get-started/key-concepts.md).
+For more information about Harness terminology, features, and pipeline components, go to the [CI key concepts](../get-started/key-concepts.md).
 
 Both Harness CI and GitHub Actions workflows are written in YAML. Whereas GitHub Actions workflow configurations are always stored in the `.github/workflows` directory in your code repo, Harness provides you a choice of inline pipeline storage or [importing pipelines from Git](/docs/platform/git-experience/import-a-pipeline/). Harness also provides both visual and code-based pipeline editors.
 
@@ -326,7 +326,7 @@ jobs:
 
 In Harness CI, each pipeline has a codebase specification that identifies the code repo (input) that the pipeline uses to build an artifact (output). [Codebase configuration](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) has two components:
 
-* The codebase _connector_, such as a [GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference), that specifies the codebase URL and required credentials to access your code repos.
+* The codebase _connector_, such as a [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference), that specifies the codebase URL and required credentials to access your code repos.
 * A series of settings describing how you want the pipeline to clone and build the repo.
 
 When you create a Harness CI pipeline, you specify a default codebase to use for all stages in the pipeline. By default, each stage automatically clones the designated code repo from your Git provider into the stage's build infrastructure when the pipeline runs.
@@ -352,7 +352,7 @@ Harness integrates with many different types of repositories and providers. A co
 
 In addition to codebase configuration, you can also use connectors in individual steps to specify Docker images or even [clone additional codebases](../use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md) in the same pipeline.
 
-For example, in the following YAML example, the `connectorRef` references a Docker connector. [Docker connectors](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
+For example, in the following YAML example, the `connectorRef` references a Docker connector. [Docker connectors](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
 
 ```yaml
               - step:
@@ -403,7 +403,7 @@ To log in to Docker Hub in a GitHub Actions workflow, you use `docker/login-acti
   <TabItem value="harness" label="Harness">
 ```
 
-To interact with Docker registries in Harness, you use a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). In the following YAML example, the `connectorRef` references a Docker connector and the `image` indicates the image to pull. You do not need an extra step to connect to Docker - Harness handles the login/connection through the connector configuration.
+To interact with Docker registries in Harness, you use a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). In the following YAML example, the `connectorRef` references a Docker connector and the `image` indicates the image to pull. You do not need an extra step to connect to Docker - Harness handles the login/connection through the connector configuration.
 
 ```yaml
               - step:

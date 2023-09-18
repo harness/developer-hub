@@ -20,7 +20,7 @@ In Harness, a health source refers to a mapping that establishes a connection be
 
 ## Prerequisites
 
-- A Grafana Loki connector in the Harness platform. To learn how to add a Grafana Loki connector, go to [Add Grafana Loki](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-grafana-loki).
+- A Grafana Loki connector in the Harness platform. To learn how to add a Grafana Loki connector, go to [Add Grafana Loki](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-grafana-loki).
 
 - A monitored service created in the Harness SRM. If you haven't yet created one, go to [Create a monitored service](/docs/service-reliability-management/monitored-service/create-monitored-service).
 

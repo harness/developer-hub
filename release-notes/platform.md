@@ -1077,7 +1077,7 @@ This release does not include any early access feature.
 
 - Harness now supports the integration of GCP Secrets Manager for all users. (PL-31051)
   
-  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager)
+  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager)
 
 - There is a limit on the number of entities that can be created for **FREE** and **COMMUNITY** users in Harness. (PL-30838)
   
@@ -1954,7 +1954,7 @@ Users can assign roles to the built-in user group at a specific scope, which bec
 
   This is behind the feature flag CUSTOM_SECRET_MANAGER_NG.
 
-See [Add a Custom Secret Manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager).
+See [Add a Custom Secret Manager](/docs/platform/secrets/secrets-management/custom-secret-manager).
 
 ##### Fixed issues
 
