@@ -124,7 +124,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
    Here's an example of an invalid override:
    
    ```
-   helm upgrade harness/harness -f old.yaml`
+   helm upgrade harness/harness -f old.yaml
 
    Error: execution error at (harness/templates/NOTES.txt:53:4): 
 
