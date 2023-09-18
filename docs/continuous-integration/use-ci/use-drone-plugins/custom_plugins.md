@@ -190,7 +190,7 @@ Related to this, it is a best practice to use [text secrets](/docs/platform/secr
 
 :::
 
-## See also
+## Custom plugin demos and examples
 
 The following resources demonstrate how to create Drone plugins. The process for creating the plugin is the same, but, when using the plugin in a pipeline, be aware that there are [differences between Drone YAML and Harness YAML](./run-a-drone-plugin-in-ci.md#convert-drone-yaml-to-harness-yaml).
 

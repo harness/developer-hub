@@ -17,7 +17,7 @@ In Harness CI, you set up a [codebase](./create-and-configure-a-codebase.md) by 
 
 This topic describes how codebase [environment variables](../optimize-and-more/ci-env-var.md) are resolved and the [Harness expressions](../../../platform/variables-and-expressions/harness-variables.md) that you can use to reference Git codebase attributes in your pipelines.
 
-## When and how are codebase variables resolved?
+## Variable resolution
 
 The values of codebase variables depends on:
 

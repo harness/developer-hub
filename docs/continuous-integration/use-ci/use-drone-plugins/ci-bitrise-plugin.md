@@ -1,11 +1,11 @@
 ---
-title: Use the Bitrise plugin step
+title: Use the Bitrise step
 description: Use Bitrise Integrations in your Harness CI pipelines.
 sidebar_position: 50
 ---
 
 
-With the **Bitrise plugin** step, you can use [Bitrise Integrations](https://bitrise.io/integrations/steps) in your Harness CI pipelines. For more information about plugins in CI pipelines, go to [Explore plugins](./explore-ci-plugins.md).
+With the **Bitrise plugin** step (also called the **Bitrise** step), you can use [Bitrise Integrations](https://bitrise.io/integrations/steps) in your Harness CI pipelines. For more information about plugins in CI pipelines, go to [Explore plugins](./explore-ci-plugins.md).
 
 :::info
 
@@ -13,9 +13,9 @@ Currently, the **Bitrise plugin** step is supported for the Harness Cloud build 
 
 :::
 
-## Usage example
+## Bitrise step usage example
 
-In the following YAML example, a **Bitrise plugin** step uses the [Bitrise Android Build step](https://bitrise.io/integrations/steps/android-build). It calls the source repo ([bitrise-steplib/bitrise-step-android-build](https://github.com/bitrise-steplib/bitrise-step-android-build)) and provides configuration parameters as described in the [Android Build README](https://github.com/bitrise-steplib/bitrise-step-android-build#android-build).
+In the following YAML example, a Harness **Bitrise** step runs the [Android Build Bitrise step](https://bitrise.io/integrations/steps/android-build). It calls the source repo ([bitrise-steplib/bitrise-step-android-build](https://github.com/bitrise-steplib/bitrise-step-android-build)) and provides configuration parameters as described in the [Android Build README](https://github.com/bitrise-steplib/bitrise-step-android-build#android-build).
 
 ```yaml
               - step:
@@ -29,7 +29,7 @@ In the following YAML example, a **Bitrise plugin** step uses the [Bitrise Andro
                       build_type: 'apk'
 ```
 
-## Settings and specifications
+## Bitrise step settings and specifications
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -41,7 +41,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="YAML" label="YAML editor" default>
 ```
 
-To add a **Bitrise plugin** step to your pipeline YAML, add a `Bitrise` step, for example:
+Add a `Bitrise` step to your pipeline, for example:
 
 ```yaml
               - step:
@@ -80,9 +80,7 @@ In the Visual editor, add the **Bitrise plugin** step to your pipeline's **Build
 
 Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-### Description
-
-Optional text string describing the step's purpose.
+The **Description** is optional.
 
 ### Uses
 
