@@ -54,7 +54,131 @@ gsutil -m cp \
   .
 ```
 
+:::caution
+
+The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes. Helm upgrades will fail unless new override files are used correctly. The package includes a `migrate-values-0.9.x.sh` file. You can use this script to convert the old `override.yaml` file to the new format.
+
+:::
+
 #### Self-Managed Enterprise Edition
+
+- Harness updated the Helm chart to optimize packaging and module delivery. (SMP-1588)
+   
+   **Restructured Helm charts**
+
+   Release 0.9.0 includes restructured Helm charts and modularization.
+
+   **Migration script**
+
+   The helm package includes migrate-values-0.9.x.sh script under scripts directory. It expects an argument of file path to old override.yaml. 
+
+   This script uses `yq`. You must install `yq` binaries to run the script.
+
+   **Sample usage**
+
+   ```
+   chmod 700 migrate-values-0.9.x
+   ./migrate-values-0.9.x -f <PATH_TO_OLD_OVERRIDE_FILE>
+   ```
+
+   The output is a new file that includes your old file name with `-migrated` appended for example, `<YOUR_OLD_FILE_NAME>-migrated.yaml`. 
+
+   You can now upgrade your instance with the latest charts and your new override file. For example:
+
+   1. Run the following to find the release name.
+   
+      ```
+      helm ls -A
+      ```
+
+      The output will be similar to the following.
+   
+      ```
+      NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
+      harness                 harness         16              2023-09-07 19:31:44.126091 -0700 -0700  deployed        harness-0.8.2   1.0.79819 
+      ```
+
+   2. Run the following to get the old override file.
+
+      ```
+      helm get values harness -n harness > oldvalues.yaml
+      ```
+
+   3. Run `migrate-values-0.9.x` to get the `oldvalues-migrated.yaml` file output.
+
+      ```
+      chmod 700 migrate-values-0.9.x
+      ./migrate-values-0.9.x -f oldvalues.yaml
+      ```
+
+   4. Upgrade to the latest Helm chart. Use `harness/harness` for the `chartSource` or the path of your chart's directory.
+
+       ```
+       helm upgrade harness <chartSource> -f oldvalues-migrated.yaml
+       ```
+
+   **Validation checks**
+
+   The Helm package includes checks that to prevent upgrades that do not include the correct set of overrides. When you use the correct set of overrides, the checks will pass and allow you to upgrade.
+
+   Here's an example of an invalid override:
+   
+   ```
+   helm upgrade harness/harness -f old.yaml`
+
+   Error: execution error at (harness/templates/NOTES.txt:53:4): 
+
+   Validation Error: 
+   values/override.yaml files require changes to work with the new Harness Helm Charts structure 
+
+   In harness-0.9.x, Harness helm charts have been restructured and the impacted fields in provided values/override.yaml need to be migrated by following the steps below 
+
+   Steps:
+   1. Download 'migrate-values-0.9.x.sh' script by navigating to the below URL:
+
+      https://github.com/harness/helm-charts/blob/release/0.9.0/src/harness/scripts/migrate-values-0.9.x.sh
+
+      Note: migrate-values-0.9.x.sh script requires 'yq' to be installed
+
+  2. Get values from the installed harness release:
+
+     helm get values my-release > old_values.yaml 
+
+  3. Run 'migrate-values-0.9.x.sh' script with the old_values.yaml as input to restructure it to work with the new Harness Helm Charts structure  
+
+     ./migrate-values-0.9.x.sh -f old_values.yaml  
+
+  4. A new values file with 'migrated' suffix will be created: old_values-migrated.yaml  
+  5. Upgrade Harness using the migrated values file as follows:  
+
+     helm upgrade my-release harness/harness -n <namespace> -f old_values-migrated.yaml  
+
+   Impacted fields/values:  
+  
+    ti-service : platform.ti-service --> ci.ti-service 
+    cv-nextgen : platform.cv-nextgen --> srm.cv-nextgen 
+    verification-svc : platform.verification-svc --> srm.verification-svc 
+   le-nextgen : platform.le-nextgen --> srm.le-nextgen 
+   harness-secrets : platform.harness-secrets --> platform.bootstrap.harness-secrets 
+   minio : platform.minio --> platform.bootstrap.database.minio 
+   redis : platform.redis --> platform.bootstrap.database.redis 
+   timescaledb : platform.timescaledb --> platform.bootstrap.database.timescaledb 
+   postgresql : infra.postgresql --> platform.bootstrap.database.postgresql 
+   clickhouse : ccm.clickhouse --> global.database.clickhouse 
+   nextgen-ce : ccm.nextgen-ce --> global.database.ce-nextgen 
+   ng-custom-dashboards : ngcustomdashboard.ng-custom-dashboards --> platform.ng-custom-dashboards 
+   looker : ngcustomdashboard.looker --> platform.looker 
+   enable-receivers : srm.enable-receivers --> cet.enable-receivers 
+   et-service : srm.et-service --> cet.et-service 
+   et-collector : srm.et-collector --> cet.et-collector 
+   et-receiver-decompile : srm.et-receiver-decompile --> cet.et-receiver-decompile 
+   et-receiver-hit : srm.et-receiver-hit --> cet.et-receiver-hit 
+   et-receiver-sql : srm.et-receiver-sql --> cet.et-receiver-sql 
+   et-receiver-agent : srm.et-receiver-agent --> cet.et-receiver-agent 
+   chaos-driver : chaos.chaos-driver -->  
+   nginx : global.ingress.nginx --> platform.bootstrap.networking.nginx 
+   defaultbackend : global.ingress.defaultbackend --> platform.bootstrap.networking.defaultbackend
+   ```
 
 - Harness Self-Managed Enterprise Edition now supports self-managed MinIO object storage for disaster recovery. (SMP-1671)
 
@@ -67,6 +191,8 @@ gsutil -m cp \
    The `override-perf-ci-cd-ff.yaml` file in available in the [Harness Helm chart repo](https://github.com/harness/helm-charts/blob/release/0.9.0/src/harness/override-perf-ci-cd-ff.yaml).
 
 - You can now use your Redis password in your external self-managed Redis database. (SMP-1860)
+
+   For more information, go to [Use an external self-managed Redis database with your installation](/tutorials/self-managed-enterprise-edition/use-an-external-redis-database).
 
 #### Continuous Delivery & GitOps
 
