@@ -35,9 +35,7 @@ By cloning the repository, you gain access to the necessary code, scripts, or co
 
 </details>
 
-## Important notes
 
-- You cannot use this step with a non-root user at this time.
 
 ## Add the Git Clone step
 

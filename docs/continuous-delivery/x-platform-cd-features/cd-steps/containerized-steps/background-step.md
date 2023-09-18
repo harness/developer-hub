@@ -18,9 +18,7 @@ A Background step starts a service and then proceeds. For any later step that re
 
 :::
 
-## Important notes
 
-- You cannot use this step with a non-root user at this time.
 
 ## Docker in Docker (DinD)
 
