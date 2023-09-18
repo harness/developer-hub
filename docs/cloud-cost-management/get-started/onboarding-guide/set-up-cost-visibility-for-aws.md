@@ -613,6 +613,39 @@ If you come across an error message indicating missing permissions, as displayed
 
 For more information, go to [Editing IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html).
 
+### Commitment Orchestrator
+
+Enable the following permissions in AWS to be able to provide an overview of your compute spend and potential savings data:
+
+
+```
+"ec2:DescribeReservedInstancesOfferings",
+"ce:GetSavingsPlansUtilization",
+"ce:GetReservationUtilization",
+"ec2:DescribeInstanceTypeOfferings",
+"ce:GetDimensionValues",
+"ce:GetSavingsPlansUtilizationDetails",
+"ec2:DescribeReservedInstances",
+"ce:GetReservationCoverage",
+"ce:GetSavingsPlansCoverage",
+"savingsplans:DescribeSavingsPlans",
+"organizations:DescribeOrganization"
+```
+
+Enable the following permissions in AWS to be able to perform the automated actions to optimize resource utilization:
+
+
+```
+"ec2:PurchaseReservedInstancesOffering",
+"ec2:GetReservedInstancesExchangeQuote",
+"ec2:DescribeInstanceTypeOfferings",              
+"ec2:AcceptReservedInstancesExchangeQuote",              
+"ec2:DescribeReservedInstancesModifications",   
+"ec2:ModifyReservedInstances"
+
+```
+
+
 ## Next steps
 
 * [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)

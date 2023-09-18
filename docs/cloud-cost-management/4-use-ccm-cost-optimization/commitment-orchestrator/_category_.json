@@ -1,0 +1,12 @@
+{
+    "label":"Commitment Orchestrator",
+    "position": 3,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Optimize cloud costs b using Commitment Orchestrator"
+    }
+    }
+ 
