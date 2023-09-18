@@ -243,7 +243,6 @@ To provide a set of evaluations:
   ```
 
 ## Streaming and Polling Mode
-
 By default, Harness Feature Flags SDK has streaming enabled and polling enabled. Both modes can be toggled according to your preference using the SDK's configuration.
 
 ### Streaming Mode
@@ -296,22 +295,66 @@ The `cf` method allows you to listen for the different events triggered by SDK a
 
 
 ```
-cf.on(Event.READY, flags => {  
-  // Event happens when connection to server is established  
-  // flags contains all evaluations against SDK key  
-})  
-  
-cf.on(Event.CHANGED, flagInfo => {  
-  // Event happens when a changed event is pushed  
-  // flagInfo contains information about the updated feature flag  
-})  
-  
-cf.on(Event.DISCONNECTED, () => {  
-  // Event happens when connection is disconnected  
-})  
-  
-cf.on(Event.ERROR, () => {  
-  // Event happens when a connection error has occurred  
+client.on(Event.READY, flags => {
+  // Event happens when connection to server is established
+  // flags contains all evaluations against SDK key
+})
+
+client.on(Event.FLAGS_LOADED, evaluations => {
+  // Event happens when flags are loaded from the server
+})
+
+client.on(Event.CACHE_LOADED, evaluations => {
+  // Event happens when flags are loaded from the cache
+})
+
+client.on(Event.CHANGED, flagInfo => {
+  // Event happens when a changed event is pushed
+  // flagInfo contains information about the updated feature flag
+})
+
+client.on(Event.DISCONNECTED, () => {
+  // Event happens when connection is disconnected
+})
+
+client.on(Event.CONNECTED, () => {
+  // Event happens when connection established
+})
+
+client.on(Event.RESUMED, () => {
+  // Event happens when a connection has disconnected but then reconnected
+})
+
+client.on(Event.POLLING, () => {
+  // Event happens when polling begins
+})
+
+client.on(Event.POLLING_STOPPED, () => {
+  // Event happens when polling stops
+})
+
+client.on(Event.ERROR, error => {
+  // Event happens when connection some error has occurred
+})
+
+client.on(Event.ERROR_AUTH, error => {
+  // Event happens when unable to authenticate
+})
+
+client.on(Event.ERROR_FETCH_FLAGS, error => {
+  // Event happens when unable to fetch flags from the service
+})
+
+client.on(Event.ERROR_FETCH_FLAG, error => {
+  // Event happens when unable to fetch an individual flag from the service
+})
+
+client.on(Event.ERROR_METRICS, error => {
+  // Event happens when unable to report metrics back to the service
+})
+
+client.on(Event.ERROR_STREAM, error => {
+  // Event happens when the stream returns an error
 })
 ```
 ### Close the event listener
