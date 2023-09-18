@@ -16,7 +16,7 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 
 * For an overview of recommended Snyk workflows, go to [CI/CD adoption and deployment](https://docs.snyk.io/integrations/snyk-ci-cd-integrations/snyk-ci-cd-integration-deployment-and-strategies/ci-cd-adoption-and-deployment) in the Snyk documentation.
 
-* Snyk recommends running [`snyk monitor`](https://docs.snyk.io/snyk-cli/commands/monitor) with container 
+* Snyk recommends running [`snyk monitor`](https://docs.snyk.io/snyk-cli/commands/monitor) with container images.
 
 * If you're scanning a code repository, note the following:
 
@@ -84,13 +84,13 @@ The scan stage in this pipeline has the following steps:
 
 2. Add a Security Tests or Build stage to your pipeline.
 
-3. Go to the Overview tab of the stage. Under **Shared Paths**, enter the following path: `/shared/customer_artifacts`
+3. Go to the **Overview** tab of the stage. Under **Shared Paths**, enter the following path: `/shared/customer_artifacts`.
 
 4. Add a **Run** step that runs the build (if required), scans the repo, and saves the results to the shared folder:
         
    1. In the Run step **Command** field, add code to build a local image (if required) and save the scan results to the shared folder. 
       
-      In this example, we want to scan a .NET repository. The [setup requirements](https://docs.snyk.io/integrations/snyk-ci-cd-integrations/aws-codepipeline-integration/setup-requirements-for-aws-codepipeline) topic says: _Build only required if no packages.config file present._ The repo does not contain this file.  Given this, we enter the following code in the **Command** field:
+      In this example, we want to scan a .NET repository. The [setup requirements](https://docs.snyk.io/integrations/snyk-ci-cd-integrations/aws-codepipeline-integration/setup-requirements-for-aws-codepipeline) topic says: _Build only required if no packages.config file present._ The repo does not contain this file.  Enter the following code in the **Command** field:
 
       ```bash
       # populates the dotnet dependencies
@@ -114,7 +114,7 @@ The scan stage in this pipeline has the following steps:
  
    4. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**. 
  
-      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise the build will exit with a error code before STO can ingest the data.
+      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build will exit with an error code before STO can ingest the data.
    
 5. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:  
 
@@ -147,7 +147,7 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
    1. Dependency Name = `dind`
    2. Container Registry = The Docker connector to download the DinD image. If you don't have one defined, go to [Docker connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
    3. Image = `docker:dind`
-   4. Under **Optional Configuration**, select the **Privileged** checkbox.
+   4. Under **Optional Configuration**, select the **Privileged** option.
 
 3. Add a **Run** step and set it up as follows:
 
@@ -171,7 +171,7 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
 
    7. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**. 
  
-      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise the build will exit with a error code before STO can ingest the data.
+      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build will exit with an error code before STO can ingest the data.
     
 4. Add a [Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) and configure it as follows:
 
@@ -229,7 +229,7 @@ The scan stage in this pipeline has the following steps:
  
    4. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**. 
  
-      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise the build will exit with a error code before STO can ingest the data.
+      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build will exit with an error code before STO can ingest the data.
    
 5. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:  
 
