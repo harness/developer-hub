@@ -70,13 +70,11 @@ You can manage your payment method and billing admins in your Harness account. G
 
 This section explains billing and credit consumption for Harness Cloud builds.
 
-### Key terms
+* **What is a Harness Cloud build?:** A *build on Harness Cloud* occurs when a user runs a pipeline that uses [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+* **What is build execution time?":** The *Build execution time* is the number of minutes that a build takes to complete, counted by the number of minutes used per machine type, and totaled across all machines and machine types used to complete the build.
+* **What is a build minute?:** A *build minute* is one minute of build execution time. Each build minute [consumes credits](#credit-consumption).
 
-* A *build on Harness Cloud* occurs when a user runs a pipeline that uses [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
-* *Build execution time* is the number of minutes that a build takes to complete, counted by the number of minutes used per machine type, and totaled across all machines and machine types used to complete the build.
-* A *build minute* is one minute of build execution time.
-
-### Credits
+### Credit consumption
 
 Each build minute consumes credits. The rate per build minute, and the resulting credits consumption, depends on the target environment (such as OS type, machine resources, and so on) that you use for the Harness Cloud build.
 

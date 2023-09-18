@@ -29,12 +29,12 @@ The steps in each stage execute on the stage's dedicated VM. This allows the sta
 
 All plans get 2000 free build credits each month. For more information about Harness Cloud build credit consumption, go to [Subscriptions and licenses](../../get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
 
-## Requirements
+## Harness Cloud requirements for connectors and secrets
 
-* You must use Harness Secret Manager to store connector credentials and other secrets.
-* All connectors must connect through the Harness Platform, not the delegate.
+* You must use the built-in Harness Secret Manager to store connector credentials and other secrets.
+* All connectors must connect through the Harness Platform, not a delegate.
 * AWS connectors can't use IRSA or AssumeRole.
-* GCP and Azure connectors can't inherit credentials from the delegate.
+* GCP and Azure connectors can't use authentication that inherits credentials from the delegate.
 
 For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](./which-build-infrastructure-is-right-for-me.md).
 

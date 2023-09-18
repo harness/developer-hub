@@ -13,7 +13,7 @@ The [Git Large File Storage (LFS)](https://git-lfs.com/) client is an extension 
 
 To run `git lfs` commands, such as `git lfs clone`, in Harness CI, use **Run** steps to install the Git LFS client and run commands.
 
-## Requirements
+## Git LFS requirements
 
 * You are familiar with Git LFS and you have already configured your repos for LFS.
 * You have a CI pipeline with a **Build** stage. If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../get-started/tutorials.md) or review [CI pipeline creation overview](../prep-ci-pipeline-components.md).
@@ -141,6 +141,6 @@ For example, this step runs `git lfs clone`. The `connectorRef` and `image` are 
 </Tabs>
 ```
 
-## Run the Pipeline
+## Git LFS logs
 
 Save and run your pipeline. While the build runs, you can observe the step logs on the [Build details page](../viewing-builds.md).
