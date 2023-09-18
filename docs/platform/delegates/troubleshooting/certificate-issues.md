@@ -28,9 +28,9 @@ To resolve the handshake exception, do the following:
 
 2. Install the certificate on the delegate.
 
-   1. If your delegate version is 803xx or later, mount the custom certificates to a path in the container and launch the delegate with the `CUSTOM_CERTS_PATH` environment variable to the path inside the container.
+   1. If your delegate version is 807xx or later, mount the custom certificates to a path in the container and launch the delegate with the `CA_CERTS_DIR` environment variable to the path inside the container.
 
-   2. If your delegate version is earlier than 803xx, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/). Remember to add the certificates to both the Java truststore and the pod.
+   2. If your delegate version is earlier than 807xx, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/). Remember to add the certificates to both the Java truststore and the pod.
 
 3. Follow the appropriate steps below, based on whether you use the OpenSSL tool.
 
@@ -172,17 +172,13 @@ To resolve the exception when OpenSSL tool isn't present, do the following:
     
     3. If the installation succeeds, following the OpenSSL steps above. If the installation fails, continue with the steps below.
 
-2. Use the cURL commands below to find the Common Name (CN) servers that are missing in your CA bundle.
+2. Use the cURL commands below to find the issuers that are missing in your CA bundle.
    
    ```
    curl -vk <YOUR_URL>
    ```
 
-   ```
-   curl -vk <YOUR_URL>
-   ```
-
-3. Find the certificate for each CN by going to the domain in your browser or download the certificate.
+3. Find the certificate for each issuer by going to the domain in your browser or download the certificate.
 
 </details>
 
@@ -196,25 +192,6 @@ This exception occurs because the length of the public key is not the same as th
 
 The solution is similar to resolving the handshake exception. Follow the [steps above](#handshake-exception-solutions) to find the correct CA certs to install.
 
-## PKCS #7 certificate errors
-
-PKCS #7 certificates are a common type of CA certs, but they are not supported by the Harness Delegate. Harness relies on keytool and RHEL to import certificates, and they are not supported to import PKCS #7 certificates. 
-
-### PKCS #7 certificate errors solution
-
-Harness recommends that you convert your certificates to a x509 PEM file by running the following applicable command.
-
-**PKCS #7 cert file in DER format**
-
-```
-openssl -pkcs7 -print_certs -inform der -in <path/to/cert/file> -out <output/file/path>
-```
-
-**PKCS #7 cert file in PEM format**
-
-```
-openssl -pkcs7 -print_certs -inform pem -in <path/to/cert/file> -out <output/file/path>
-```
 
 ## Certificate inspection commands
 
@@ -230,11 +207,6 @@ Keytool -printcert -file /path/to/cert
 openssl x509 -text -noout -in certificate.pem 
 ```
 
-### Inspect a certificate chain - PKCS#7 file
-
-```
-openssl pkcs7 -print_certs -inform der -in /path/to/cert
-```
 
 ### Inspect a truststore file
 
