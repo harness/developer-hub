@@ -52,7 +52,7 @@ In this topic we will do the following:
 
 3. Update the namespace to the respective namespace where the agent is installed.
 
-4. Save the file as `addcerts.yaml`. Then pply the manifest to your cluster.
+4. Save the file as `addcerts.yaml`. Then apply the manifest to your cluster.
 
    ```
    kubectl apply -f addcerts.yaml -n {agent-namespace}
