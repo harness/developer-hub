@@ -185,7 +185,7 @@ To configure your Redis database, do the following:
 
 6. Set the database memory to 2GB.
 
-7. Skip the database password. 
+7. Enter the database password. 
 
 8. Select **Create**.
 
@@ -241,6 +241,6 @@ To configure your Harness environment and Helm chart, do the following:
          hosts:
          - <YOUR_INTERNAL_ENDPOINT_AND_PORT>
          secretName: ""
-         userKey: ""
-         passwordKey: ""
+         userKey: "YOUR_REDIS_USERNAME"
+         passwordKey: "YOUR_REDIS_PASSWORD"
    ```
