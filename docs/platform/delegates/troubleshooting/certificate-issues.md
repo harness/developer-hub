@@ -196,26 +196,6 @@ This exception occurs because the length of the public key is not the same as th
 
 The solution is similar to resolving the handshake exception. Follow the [steps above](#handshake-exception-solutions) to find the correct CA certs to install.
 
-## PKCS #7 certificate errors
-
-PKCS #7 certificates are a common type of CA certs, but they are not supported by the Harness Delegate. Harness relies on keytool and RHEL to import certificates, and they are not supported to import PKCS #7 certificates. 
-
-### PKCS #7 certificate errors solution
-
-Harness recommends that you convert your certificates to a x509 PEM file by running the following applicable command.
-
-**PKCS #7 cert file in DER format**
-
-```
-openssl -pkcs7 -print_certs -inform der -in <path/to/cert/file> -out <output/file/path>
-```
-
-**PKCS #7 cert file in PEM format**
-
-```
-openssl -pkcs7 -print_certs -inform pem -in <path/to/cert/file> -out <output/file/path>
-```
-
 ## Certificate inspection commands
 
 The following commands can help you inspect your certificates. 
@@ -228,12 +208,6 @@ Keytool -printcert -file /path/to/cert
 
 ```
 openssl x509 -text -noout -in certificate.pem 
-```
-
-### Inspect a certificate chain - PKCS#7 file
-
-```
-openssl pkcs7 -print_certs -inform der -in /path/to/cert
 ```
 
 ### Inspect a truststore file
