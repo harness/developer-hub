@@ -129,55 +129,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
    Error: execution error at (harness/templates/NOTES.txt:53:4): 
 
    Validation Error: 
-   values/override.yaml files require changes to work with the new Harness Helm Charts structure 
-
-   In harness-0.9.x, Harness helm charts have been restructured and the impacted fields in provided values/override.yaml need to be migrated by following the steps below 
-
-   Steps:
-   1. Download 'migrate-values-0.9.x.sh' script by navigating to the below URL:
-
-      https://github.com/harness/helm-charts/blob/release/0.9.0/src/harness/scripts/migrate-values-0.9.x.sh
-
-      Note: migrate-values-0.9.x.sh script requires 'yq' to be installed
-
-  2. Get values from the installed harness release:
-
-     helm get values my-release > old_values.yaml 
-
-  3. Run 'migrate-values-0.9.x.sh' script with the old_values.yaml as input to restructure it to work with the new Harness Helm Charts structure  
-
-     ./migrate-values-0.9.x.sh -f old_values.yaml  
-
-  4. A new values file with 'migrated' suffix will be created: old_values-migrated.yaml  
-  5. Upgrade Harness using the migrated values file as follows:  
-
-     helm upgrade my-release harness/harness -n <namespace> -f old_values-migrated.yaml  
-
-   Impacted fields/values:  
-  
-    ti-service : platform.ti-service --> ci.ti-service 
-    cv-nextgen : platform.cv-nextgen --> srm.cv-nextgen 
-    verification-svc : platform.verification-svc --> srm.verification-svc 
-   le-nextgen : platform.le-nextgen --> srm.le-nextgen 
-   harness-secrets : platform.harness-secrets --> platform.bootstrap.harness-secrets 
-   minio : platform.minio --> platform.bootstrap.database.minio 
-   redis : platform.redis --> platform.bootstrap.database.redis 
-   timescaledb : platform.timescaledb --> platform.bootstrap.database.timescaledb 
-   postgresql : infra.postgresql --> platform.bootstrap.database.postgresql 
-   clickhouse : ccm.clickhouse --> global.database.clickhouse 
-   nextgen-ce : ccm.nextgen-ce --> global.database.ce-nextgen 
-   ng-custom-dashboards : ngcustomdashboard.ng-custom-dashboards --> platform.ng-custom-dashboards 
-   looker : ngcustomdashboard.looker --> platform.looker 
-   enable-receivers : srm.enable-receivers --> cet.enable-receivers 
-   et-service : srm.et-service --> cet.et-service 
-   et-collector : srm.et-collector --> cet.et-collector 
-   et-receiver-decompile : srm.et-receiver-decompile --> cet.et-receiver-decompile 
-   et-receiver-hit : srm.et-receiver-hit --> cet.et-receiver-hit 
-   et-receiver-sql : srm.et-receiver-sql --> cet.et-receiver-sql 
-   et-receiver-agent : srm.et-receiver-agent --> cet.et-receiver-agent 
-   chaos-driver : chaos.chaos-driver -->  
-   nginx : global.ingress.nginx --> platform.bootstrap.networking.nginx 
-   defaultbackend : global.ingress.defaultbackend --> platform.bootstrap.networking.defaultbackend
+   values/override.yaml files require changes to work with the new Harness Helm Charts structure
    ```
 
 - Harness Self-Managed Enterprise Edition now supports self-managed MinIO object storage for disaster recovery. (SMP-1671)
