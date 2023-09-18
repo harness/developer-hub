@@ -321,10 +321,6 @@ client.on(Event.CONNECTED, () => {
   // Event happens when connection established
 })
 
-client.on(Event.RESUMED, () => {
-  // Event happens when a connection has disconnected but then reconnected
-})
-
 client.on(Event.POLLING, () => {
   // Event happens when polling begins
 })
