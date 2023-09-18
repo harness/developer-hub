@@ -3326,6 +3326,10 @@ With these requirements met, the cluster imports the credentials from the Docker
 </details>
 
 
+:::warning
+Please be mindful that certain expressions within artifact sources may only be fully resolved at the time of pipeline execution. Notably, expressions like `<+project.name>` and `<+org.name>` may not provide values when trying to populate runtime dropdowns, including those used for loading tags.
+:::
+
 ## Sidecar workloads
 
 You can use Harness to deploy both primary and sidecar Kubernetes workloads.
