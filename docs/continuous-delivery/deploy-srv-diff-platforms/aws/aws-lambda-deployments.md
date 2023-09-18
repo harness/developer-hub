@@ -218,7 +218,7 @@ Here is a NodeJS hello world function example:
 
 :::note
 
-Every field name in function definition should follow camelcase with first letter in small cap.
+Every field name in the function definition must be written in camel case, with the first letter in lowercase.
 
 :::
 
