@@ -165,9 +165,16 @@ To configure the SDK, you can add `Options`, for example:
 
 
 ```
-interface Options {  
-  baseUrl?: string  
-  debug?: boolean  
+interface Options {
+  baseUrl?: string
+  eventUrl?: string
+  eventsSyncInterval?: number
+  pollingInterval?: number
+  pollingEnabled?: boolean
+  streamEnabled?: boolean
+  allAttributesPrivate?: boolean
+  privateAttributeNames?: string[]
+  debug?: boolean
 }
 ```
 ### Complete the initialization
