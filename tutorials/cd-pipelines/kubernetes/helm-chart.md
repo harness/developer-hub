@@ -527,6 +527,164 @@ Once you have installed the Agent, Harness will start importing all the entities
 </Tabs>
 ```
 
+```mdx-code-block
+<Tabs>
+<TabItem value="CLI">
+```
+1. Download and Configure Harness CLI.
+
+    ```mdx-code-block
+    <Tabs>
+    <TabItem value="MacOS">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="Linux">
+    ```
+
+    ```mdx-code-block
+    <Tabs>
+    <TabItem value="ARM">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
+    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="AMD">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
+    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    </Tabs>
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="Windows">
+    ```
+
+    a. Open Windows Powershell and run the command below to download the Harness CLI.
+
+    ```
+    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+    ```
+        
+    b. Extract the downloaded zip file and change directory to extracted file location.
+
+    c. Follow the steps below to make it accessible via terminal.
+
+    ```
+    $currentPath = Get-Location 
+    [Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$currentPath", [EnvironmentVariableTarget]::Machine)
+    ```
+
+    d. Restart terminal.
+
+    ```mdx-code-block
+    </TabItem>
+    </Tabs>
+    ```
+
+2. Clone the Forked **harnessed-example-apps** repo and change directory.
+    ```bash
+    git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
+    cd harnesscd-example-apps
+    ```
+    :::note
+    
+    Replace `GITHUB_ACCOUNTNAME` with your GitHub Account name.
+
+    :::
+
+3. Log in to Harness from the CLI.
+    ```bash
+    harness login --api-key  --account-id HARNESS_API_TOKEN 
+    ```
+    :::note
+    
+    Replace `HARNESS_API_TOKEN` with Harness API Token that you obtained during the prerequisite section of this tutorial.
+
+    :::
+
+:::caution
+
+For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
+
+:::
+
+### Add a Harness GitOps repository
+
+<details open>
+<summary>What is a GitOps Repository?</summary>
+    
+A Harness GitOps Repository is a repository containing the declarative description of a desired state. The declarative description can be in Kubernetes manifests, Helm Chart, Kustomize manifests, etc.
+
+</details>
+
+Use the following command to add a Harness GitOps repository.
+
+```
+harness gitops-repository --file helm-guestbook/harness-gitops/repository.yml apply --agent-identifier $AGENT_NAME
+```
+
+### Add a Harness GitOps cluster
+
+<details open>
+<summary>What is a GitOps Cluster?</summary>
+    
+A Harness GitOps Cluster is the target deployment cluster that is compared to the desire state. Clusters are synced with the source manifests you add as GitOps Repositories.
+
+</details>
+
+Use the following command to add a Harness GitOps cluster.
+
+```
+harness gitops-cluster --file helm-guestbook/harness-gitops/cluster.yml apply --agent-identifier $AGENT_NAME
+```
+
+### Create a Harness GitOps application
+
+<details open>
+<summary>What is a GitOps Application?</summary>
+    
+GitOps Applications are how you manage GitOps operations for a given desired state and its live instantiation.
+   
+A GitOps Application collects the Repository (**what you want to deploy**), Cluster (**where you want to deploy**), and Agent (**how you want to deploy**). You select these entities when you set up your Application.
+
+</details>
+
+Use the following command to create a Gitops application
+
+```
+harness gitops-application --file helm-guestbook/harness-gitops/application.yml apply --agent-identifier $AGENT_NAME
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="UI">
+```
+
 ### Add a Harness GitOps repository
 
 <details open>
@@ -565,7 +723,7 @@ A Harness GitOps Cluster is the target deployment cluster that is compared to th
 6. Select **Save & Continue** and wait for Harness to verify the conenction.
 7. Select **Finish**.
 
-### Add a Harness GitOps application
+### Create a Harness GitOps application
 
 <details open>
 <summary>What is a GitOps Application?</summary>
@@ -611,6 +769,11 @@ A GitOps Application collects the Repository (**what you want to deploy**), Clus
 11. Select **master** as the **target Revision** and enter `kustomize-guestbook` in the **Path** and hit enter.
 12. Select **Continue** to select the **Cluster** created in the above steps.
 13. Enter the target **Namespace** for Harness GitOps to sync the application. Enter `default` and select **Finish**
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 ### Sync the application 
 
