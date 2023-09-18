@@ -27,7 +27,7 @@ Harness provide multiple options for controlling resource usage and protecting c
 2. In **Flow Control**, click **Queue**.
 3. Enter a name and timeout for the Queue step.
 4. In **Resource Key**, enter a unique key. This is the same key you will add to the Queue steps in other Pipelines.
-5. The **Resource Key** supports Fixed Values, Runtime Inputs, and Expressions. See [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md).
+5. The **Resource Key** supports Fixed Values, Runtime Inputs, and Expressions. See [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 6. In **Run next queued execution after completion of**, select one of the following:
    + **Pipeline:** the entire Pipeline must complete before the queued Pipelines can deploy.
    + **Stage:** the current Stage must complete before the queued Pipelines can deploy.
@@ -38,17 +38,17 @@ Queue steps can be used on different Pipelines or even multiple executions of th
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ### Test
 
 Let's look at a simple example to show how Queue steps work.
 
-Here's the YAML for the Pipeline that contains a Custom Stage with a Queue Step followed by a [Shell Script](../x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step that runs a Bash `sleep 30`.
+Here's the YAML for the Pipeline that contains a Custom Stage with a Queue Step followed by a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step that runs a Bash `sleep 30`.
 
 You can copy it and paste it into your Harness Project. You simply need to update the `projectIdentifier` and `orgIdentifier` settings to match your current [Project and Org](../../platform/organizations-and-projects/projects-and-organizations.md).
 

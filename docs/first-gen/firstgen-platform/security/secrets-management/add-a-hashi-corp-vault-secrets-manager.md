@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault).To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secrets Manager.
+This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/add-hashicorp-vault).To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secrets Manager.
 
 ### Before You Begin
 
@@ -67,7 +67,7 @@ The App Role option enables the Harness Vault Secrets Manager to authenticate wi
 
 The Vault AppRole method allows multiple roles to be defined, corresponding to different applications, and each with different levels of access. To authenticate with Vault, the application is assigned a static Role ID and a dynamically generated Secret ID, which are both required to log in and fetch a Vault token.
 
-The SecretId should not expire and it should be valid until it is manually revoked. This SecretId is needed to generate new tokens when the older tokens expire.The App Role ID and Secret ID you supply will be used by Harness to fetch a Vault Auth Token dynamically at configured intervals set in Renewal Interval.
+The SecretId should not expire and it should be valid until it is manually revoked. Harness uses the App Role ID and Secret ID you supply to fetch a Vault Auth Token dynamically whenever there is a CRUD operation of secrets related to this Vault. For example, when creating a secret in this Vault, Harness internally uses this App Role Id and Secret ID and makes a call to vault via the delegate to generate a token. Now, this token is used to make the actual secret creation call to vault. This token is never received on the Harness side. It resides in the delegate and is destroyed after the creation of the secret.
 
 For more information, see [RoleID](https://www.vaultproject.io/docs/auth/approle.html#roleid) and [Authenticating Applications with HashiCorp Vault AppRole](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle) from HashiCorp.
 
@@ -170,7 +170,7 @@ You can expect a delay during the Vault renewal. A periodic job runs to check if
 
 To validate a non-read only Vault Secrets Manager, Harness creates a dummy secret in the secret engine.
 
-The event for creating the dummy secret this will show up on [Audit Trail](/docs/platform/Governance/Audit-Trail/audit-trail) as if the user who initiated the creation of the Vault Secrets Manager created the secret. The path of the secret is as follows:
+The event for creating the dummy secret this will show up on [Audit Trail](/docs/platform/governance/audit-trail/audit-trail.md) as if the user who initiated the creation of the Vault Secrets Manager created the secret. The path of the secret is as follows:
 
 v2 Secret Engine:
 

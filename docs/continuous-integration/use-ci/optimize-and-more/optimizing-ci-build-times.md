@@ -72,11 +72,12 @@ You can use [step groups](./group-ci-steps-using-step-groups.md) to organize com
 Expressions and runtime inputs make your pipelines more dynamic.
 
 * [Variables and expressions](/docs/category/variables-and-expressions/)
-* [Stage variables](/docs/platform/Pipelines/add-a-stage#option-stage-variables)
-* [Fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/)
-* [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
-* [Built-in CI codebase variables reference](../codebase-configuration/built-in-cie-codebase-variables-reference.md)
-* [Secrets management](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview)
+* [Stage variables](/docs/platform/Pipelines/add-a-stage#stage-variables)
+* [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs)
+* [CI environment variables reference](./ci-env-var.md)
+* [Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
+* [CI codebase variables reference](../codebase-configuration/built-in-cie-codebase-variables-reference.md)
+* [Secrets management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
 * [Input sets and overlays](/docs/platform/pipelines/input-sets/)
 
 ### Templates
@@ -96,8 +97,8 @@ Use these strategies to automate and manage build sequences.
 There are many ways you can incorporate third party tools and services in your CI pipelines, such as GitHub Actions, Slack notifications, and Jira issue updates.
 
 * [Explore plugins](../use-drone-plugins/explore-ci-plugins.md)
-* [Bring-your-own Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-secrets-manager)
-* [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support)
+* [Bring-your-own Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager)
+* [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support)
 * [Send notifications](/docs/category/notifications)
 
 ## Increase step resources

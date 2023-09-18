@@ -25,7 +25,7 @@ You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3
 
 This topic explains how to configure the **Save Cache to S3** and **Restore Cache From S3** steps in Harness CI.
 
-You cannot share access credentials or other [Text Secrets](/docs/platform/Secrets/add-use-text-secrets) across Stages.
+You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across Stages.
 
 :::info
 
@@ -69,7 +69,7 @@ You need a dedicated S3 bucket for your Harness CI cache operations, and you nee
 
 </details>
 
-For more information on configuring an S3 connector and S3 bucket policies, go to [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector) and the [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+For more information on configuring an S3 connector and S3 bucket policies, go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) and the [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 Optionally, you can create a [lifecycle configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html) to automatically delete old cache data from your S3 bucket.
 
@@ -124,7 +124,7 @@ Depending on the stage's build infrastructure, some settings may be unavailable 
 
 #### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 #### AWS Connector
 
@@ -140,8 +140,8 @@ This step doesn't support AWS connectors that have enabled cross-account access 
 
 For more information about roles and permissions for AWS connectors, go to:
 
-* [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector)
-* [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+* [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector)
+* [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 #### Region
 
@@ -208,8 +208,8 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 </details>
 
@@ -272,7 +272,7 @@ Depending on the stage's build infrastructure, some settings may be unavailable 
 
 #### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 #### AWS Connector
 
@@ -290,8 +290,8 @@ This step doesn't support AWS connectors that have enabled cross-account access 
 
 For more information about roles and permissions for AWS connectors, go to:
 
-* [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector)
-* [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
+* [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector)
+* [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
 
 #### Region
 
@@ -347,8 +347,8 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 </details>
 
@@ -455,6 +455,6 @@ graph TD
 
 ## Caching with non-private ACL
 
-If your bucket's ACL is set to something other than `private` (blank, `bucket-owner-full-control`, or something else), then you must add a [stage variable](/docs/platform/pipelines/add-a-stage/#option-stage-variables) called `PLUGIN_ACL` and set the value to the relevant ACL value.
+If your bucket's ACL is set to something other than `private` (blank, `bucket-owner-full-control`, or something else), then you must add a [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) called `PLUGIN_ACL` and set its value to the relevant ACL value.
 
 The default value for `PLUGIN_ACL` is `private`, so if your bucket's ACL is something other than `private`, you must set this environment variable accordingly.

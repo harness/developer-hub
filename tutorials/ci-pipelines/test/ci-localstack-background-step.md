@@ -29,7 +29,7 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 1. Create a new pipeline in Harness CI.
 2. Click **Add Stage** and select **Build**. Give your stage a name, optionally configure the repository to be cloned, then click **Set Up Stage**.
-3. Select "Cloud" in the **Infrastructure** tab.
+3. Select **Cloud** in the **Infrastructure** tab.
 
 ### Add Background Step
 

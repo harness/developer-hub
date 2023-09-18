@@ -1,5 +1,5 @@
 ---
-title: AWS ASG deployments
+title: AWS ASG
 description: Deploy an ASG using Harness CD.
 sidebar_position: 1
 ---
@@ -430,7 +430,7 @@ Service variables are a powerful way to template your services or make them more
 
 In the **Variables** section of the service, you can add service variables and then reference them in any of the ASG configuration files you added to the service.
 
-For example, you could create a variable named **desiredCapacity** and set its value as a [fixed value, runtime input, or expression](https://developer.harness.io/docs/platform/references/runtime-inputs/).
+For example, you could create a variable named **desiredCapacity** and set its value as a [fixed value, runtime input, or expression](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 ![service variable](./static/c590ccda5addd62225b690d85c60237b2f6e9378e8ed4b02ba3e82ba9bda29e9.png)  
 
@@ -558,7 +558,7 @@ To create an environment, do the following:
 2. Select **New Environment**.
 3. Enter a name for the new environment.
 4. In **Environment Type**, select **Production** or **Pre-Production**.
-   The **Production** or **Pre-Production** settings can be used in [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness/) to restrict who can deploy to these environments.
+   The **Production** or **Pre-Production** settings can be used in [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness) to restrict who can deploy to these environments.
 5. Select **Save**. The new environment is created.
 
 Pipelines require that an environment have an infrastructure definition. We'll cover that next.
@@ -1287,9 +1287,9 @@ The ASG Blue Green Deploy step has the following settings:
 
 - **Load Balancer:** select the load balancer to use.
 - **Prod Listener:** select the listener to use for prod traffic.
-- **Prod Listener Rule ARN (optional):** select the ARN for the prod listener rule.
+- **Prod Listener Rule ARN:** select the ARN for the prod listener rule.
 - **Stage Listener:** select the listener to use for stage traffic.
-- **Stage Listener Rule ARN (optional):** select the ARN for the stage listener rule.
+- **Stage Listener Rule ARN:** select the ARN for the stage listener rule.
 
 Harness fetches these AWS settings using the Harness AWS connector you have set up in the **Infrastructure Definition** in the **Environment** section of the stage.
 
@@ -1325,11 +1325,11 @@ Harness stores configurations of the ASG you are deploying twice:
 
 In the **Advanced** settings of all step, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## Notes
 

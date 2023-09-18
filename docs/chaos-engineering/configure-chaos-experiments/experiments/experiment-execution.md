@@ -15,7 +15,7 @@ The below diagram shows the flow of control when a user creates a new chaos expe
    * **Chaos infrastructure:** Which chaos infrastructure will be targeted as part of the experiment.
    * **Fault and fault tunables:** The fault templates can be fetched from any connected chaos hubs, where the tunables can be modified wherever necessary. Multiple faults can be added in any desired order.
    * **Fault probes:** Optionally, additional probes can be defined on top of the default “Healthcheck” probe for a fault, to validate custom hypothesis conditions as part of the experiment.
-   * **Fault weights:** Fault weights define the importance of a fault with respect to other faults present in an experiment. More formally, it is used for calculating the experiment’s resiliency score, a quantitative measure of the target environment’s resiliency when the respective experiment is performed.
+   * **Fault weights:** Fault weights define the importance of a fault with respect to other faults present in an experiment. More formally, it is used for calculating the experiment’s [**resilience score**](/docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score), a quantitative measure of the target environment’s resilience when the respective experiment is performed.
 
    The experiment is now created and ready to be executed.
 
@@ -41,21 +41,4 @@ Experiments are templates to create new chaos experiments, which contain a colle
 
 Both experiments and faults are stored as manifests in an appropriate directory structure. Hence, you can add new experiment templates and faults directly to the repository as files. In addition, you can derive the experiment templates from the existing experiments and save them to the Chaos Hub from the UI.
 
-## What is resiliency score?
-
-**Resiliency score** is a quantitative measure of how resilient is the target environment when the respective chaos experiment is performed on it.
-
-While creating a chaos experiment, certain weights are assigned to all the constituent faults. These weights signify the priority/importance of the respective fault. The higher the weight, the more significant is the fault.
-
-The weight priority is generally divided into three sections:
-
-- `0-3`: Low Priority
-- `4-6`: Medium Priority
-- `7-10`: High Priority
-
-Once a weight has been assigned to the fault, we look for the Probe Success Percentage (a ratio of successful checks v/s total probes) for that experiment itself post the chaos and calculate the total resilience result for that experiment as a multiplication of the weight given and the probe success percentage returned after the Chaos Run.
-
-```
-Fault Resilience = (Fault Weight * Probe Success Percentage)
-Overall Resilience Score = Cumulative Fault Resilience / Sum of the assigned weights of the experiments
-```
+You can also create your own custom chaos hub, where you can maintain and share your custom experiments and faults. For more information, go to [Add a custom chaos hub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).

@@ -1,7 +1,7 @@
 ---
 title: Add a pipeline notification strategy
 description: Notify users of different pipeline events.
-sidebar_position: 300
+sidebar_position: 3
 ---
 
 This topic describes how to notify users of different pipeline events using popular notification methods.
@@ -12,7 +12,7 @@ Event notifications are set up using **Notification Rules** in your pipeline. Yo
 
 This topic describes how to set up **Notification Rules** in your pipeline.
 
-You can set notifications preferences on user groups also. Go to [add and manage user groups](/docs/platform/User-Management/add-user-groups) for more information.
+You can set notifications preferences on user groups also. Go to [Manage user groups](/docs/platform/role-based-access-control/add-user-groups) for more information.
 
 
 ## Limitations
@@ -78,7 +78,7 @@ When you are done, you'll have a webhook that looks something like this:
 
 Copy the webhook.
 
-You either paste the Webhook into **Slack Webhook URL** or add it as an [encrypted text](/docs/platform/Secrets/add-use-text-secrets) in Harness and reference it here.
+You either paste the Webhook into **Slack Webhook URL** or add it as an [encrypted text](/docs/platform/secrets/add-use-text-secrets) in Harness and reference it here.
 
 For example, if you have a text secret with the identifier `slackwebhookURL`, you can reference it like this:​
 
@@ -104,7 +104,7 @@ You can reference a secret within the Account scope using an expression with `ac
 
 ## PagerDuty notifications
 
-For PagerDuty notifications, enter the key for a PagerDuty account or service or add it as an [encrypted text](/docs/platform/Secrets/add-use-text-secrets) in Harness and reference it in **PagerDuty Key**. Harness will send notifications using this key.
+For PagerDuty notifications, enter the key for a PagerDuty account or service or add it as an [encrypted text](/docs/platform/secrets/add-use-text-secrets) in Harness and reference it in **PagerDuty Key**. Harness will send notifications using this key.
 
 For example, if you have a text secret with the identifier `pagerdutykey`, you can reference it like this:​
 
@@ -166,7 +166,7 @@ The channel indicates that the connector was set up.
 
 ![](./static/notify-users-of-pipeline-events-10.png)
 
-In Harness, in **Notification Method** settings, enter the webhook URL for your Microsoft Teams channel in **Microsoft Teams Webhook URL** or add it as an [encrypted text](/docs/platform/Secrets/add-use-text-secrets) and reference it here.
+In Harness, in **Notification Method** settings, enter the webhook URL for your Microsoft Teams channel in **Microsoft Teams Webhook URL** or add it as an [encrypted text](/docs/platform/secrets/add-use-text-secrets) and reference it here.
 
 For example, if you have a text secret with the identifier `teamswebhookURL`, you can reference it like this:​
 
@@ -186,6 +186,139 @@ You can reference a secret within the Account scope using an expression with `ac
 ```bash
 <+secrets.getvalue("account.your-secret-Id")>​​
 ```
+
+## Webhook Notifications
+
+:::info 
+
+Currently, this feature is behind the feature flag, `PIE_WEBHOOK_NOTIFICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Use Webhook notifications to inform an external application of an event. 
+
+Select the Webhook notification method, and then enter the URL to be called when the event occurs. 
+
+You can also use expressions to compose this URL. For example, `https://companyurl.notify.com/execution=-<+pipeline.executionId>`. 
+
+Note that the expression must be evaluated in the context of the event. For example, stage related expressions may not be valid for pipeline start events. 
+
+The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
+
+### JSON for webhook notifications
+
+<details>
+<summary>Here's the JSON Harness posts to your webhook endpoint.</summary>
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "accountIdentifier": {
+      "type": "string"
+    },
+    "orgIdentifier": {
+      "type": "string"
+    },
+    "projectIdentifier": {
+      "type": "string"
+    },
+    "pipelineIdentifier": {
+      "type": "string"
+    },
+    "planExecutionId": {
+      "type": "string"
+    },
+    "stageIdentifier": {
+      "type": "string"
+    },
+    "stepIdentifier": {
+      "type": "string"
+    },
+    "executionUrl": {
+      "type": "string"
+    },
+    "pipelineUrl": {
+      "type": "string"
+    },
+    "eventType": {
+      "type": "string",
+      "enum": [
+        "AllEvents",
+        "PipelineStart",
+        "PipelineSuccess",
+        "PipelineFailed",
+        "PipelineEnd",
+        "PipelinePaused",
+        "StageSuccess",
+        "StageFailed",
+        "StageStart",
+        "StepFailed"
+      ]
+    },
+    "nodeStatus": {
+      "type": "string"
+    },
+    "triggeredBy": {
+      "type": "object",
+      "properties": {
+        "triggerType": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "moduleInfo": {
+      "type": "object",
+      "properties": {
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "environments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "envGroups": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "infrastructures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "startTime": {
+      "type": "string"
+    },
+    "startTs": {
+      "type": "integer"
+    },
+    "endTime": {
+      "type": "string"
+    },
+    "endTs": {
+      "type": "integer"
+    }
+  }
+}
+```
+
+</details>
 
 ## Notify Slack channels in user groups
 

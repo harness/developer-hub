@@ -99,6 +99,16 @@ Each environment card shows the following:
   Select **Open Execution** in the instance details to see the pipeline execution that deployed the service instance.
 - **Deployments:** each deployment to a selected environment or environment group. If you filter using **My Deployments** you see only those deployments that your user account initiated.
 
+### How instance information is obtained
+
+Harness runs a perpetual task that constantly polls for the same combination of Harness service/artifact + Harness environment + Harness infrastructure definition. The instance count and details are updated as a result of this polling.
+
+The perpetual task is alive for 2 weeks, even after the instances are downsized/deleted.
+
+**Deployed By** shows the email address of the Harness user that initiated the deployment.
+
+**Deployed By** will show `AUTO_SCALED` for instances that are scaled outside of the Harness deployment. For example, if you log into the Kubernetes cluster and manually auto-scale instances.
+
 ### Artifacts tab
 
 The **Artifacts** tab shows how the service is mapped to multiple artifacts.
@@ -204,5 +214,111 @@ Here's a quick video showing how to create a CD custom dashboard:
 https://www.youtube.com/watch?v=9fqbYP6iK3g-->
 <docvideo src="https://www.youtube.com/watch?v=9fqbYP6iK3g" />
 
-See [Create Dashboards](../../platform/18_Dashboards/create-dashboards.md).
+See [Create Dashboards](../../platform/dashboards/create-dashboards.md).
 
+
+### Monitor Harness and Jira approvals using custom CD dashboards
+
+Harness CD includes an extensive set of dashboard components that provide visibility into your Harness and Jira approvals. You can create custom dashbards that quickly answer questions such as:
+
+* Which Harness and Jira Approval steps are currently waiting for approval?
+* Which Jira Create and Update steps failed, and when?  
+* Which Jira tickets have been rejected in the Jira Approval step? 
+* Which deployments resulted in new or updated Jira tickets?
+* How many approvals and rejections occurred in the specified time window? 
+
+
+:::note Important notes
+
+- Currently, this feature is behind the Feature Flag `CDS_STEP_EXECUTION_DATA_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+- Dashboard components for ServiceNow approvals are not currently available. 
+
+:::
+
+
+<figure>
+
+![](./static/cd-approvals-dashboard-example.png)
+
+<figcaption>CD approvals dashboard - example</figcaption>
+</figure>
+
+
+You can use the following components to monitor the performance of your deployment pipelines:
+
+- Harness Approval
+
+  - Step type
+
+  - Duration
+
+  - Status
+
+  - Approver
+
+  - Error messages
+
+  - Approval message
+
+- Jira Approval
+
+  - Step type
+
+  - Issue Type
+
+  - Jira Ticket URL (or issue key and project if the URL is unavailable)
+
+-  JIRA Create/Update
+
+   - Step type
+
+   - Duration
+
+   - Status
+
+   - Error messages
+
+   - Jira Ticket URL
+
+   - Ticket Status
+
+### Monitor deployment performance using custom CD dashboards
+
+Harness CD includes an extensive set of dashboard components that provide visibility into the performance of your deployment pipelines. You can create custom dashboards to answer questions such as:
+
+* Which stages and steps contain performance bottlenecks? 
+
+* Which stages and steps have the most failures? 
+
+* How much time is spent deploying artifacts vs. waiting for Jira approvals and other manual interventions? 
+
+:::note
+This feature is behind the feature flag `CDS_CUSTOM_STAGE_EXECUTION_DATA_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+<figure>
+
+![CD deployment performance dashboard - example](./static/cd-performance-monitoring-dashboard.png)
+<figcaption>CD deployment performance dashboard - example</figcaption>
+</figure>
+
+You can use the following components to monitor the performance of your deployment pipelines: 
+
+- Manifest data (only for HelmChart Manifest type for Helm/K8s deployments)
+
+  - Helm version 
+
+  - Chart Version
+
+  - Manifest identifier
+
+- Custom Stage Details
+
+  - Stage type
+
+  - Duration
+
+  - Status
+
+  - Failure message

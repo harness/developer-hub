@@ -4,6 +4,8 @@ description: Set up a Harness macOS build farm that uses an Anka registry and co
 sidebar_position: 40
 ---
 
+<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
 :::note
 
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -15,14 +17,16 @@ This topic describes the high-level workflow for setting up a Harness macOS buil
 - [Install Anka and create a VM on a Mac node](#install-anka-and-create-a-vm-on-a-mac-node)
 - [Set up port forwarding on the VM](#set-up-port-forwarding-on-the-vm)
 - [Set up the Anka controller and registry](#set-up-the-anka-controller-and-registry)
-- [Install the Harness delegate and runner](#install-the-harness-delegate-and-runner)
-- [Set up the Harness runner to communicate with the Anka controller](#set-up-the-harness-runner-to-communicate-with-the-anka-controller)
+- [Install the delegate and runner](#install-the-delegate-and-runner)
+- [Set up the runner to communicate with the Anka controller](#set-up-the-runner-to-communicate-with-the-anka-controller)
 - [Set up the delegate in the Harness pipeline](#set-up-the-delegate-in-the-harness-pipeline)
 - [Add other Mac nodes and VM templates to the Anka registry](#add-other-mac-nodes-and-vm-templates-to-the-anka-registry)
 
 The following diagram shows how Harness CI and Anka work together. Once you set up the Harness and Anka components, you can easily scale up your build farm with additional templates, build nodes, and VMs.
 
 ![](../static/macos-build-infra-with-anka-registry-mult-nodes.png)
+
+This is one of several build infrastructure options, for example, you can also run on [Azure VMs](define-a-ci-build-infrastructure-in-azure.md) or [GCP VMs](define-a-ci-build-infrastructure-in-google-cloud-platform.md).
 
 ## Install Anka and create a VM on a Mac node
 
@@ -52,21 +56,19 @@ When you finish this workflow you will have:
 
 :::note
 
-Optionally, you can enable token authentication for the controller and registry as described in the Anka documentation about [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/token-authentication).
+Optionally, you can enable token authentication for the controller and registry as described in the Anka documentation about [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/root-token-authentication/).
 
 :::
 
-## Install the Harness delegate and runner
+## Install the delegate and runner
 
-Set up the Harness delegate and runner.
+Set up the Harness Delegate and Harness Docker Runner.
 
-In addition to macOS, you can run your delegate and runner on [Docker](../define-a-docker-build-infrastructure.md), [Azure](define-a-ci-build-infrastructure-in-azure.md), and [Google Cloud Platform](define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
+For information about installing delegates, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
-For information about installing delegates, go to [Delegate installation overview](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview.md).
+## Set up the runner to communicate with the Anka controller
 
-## Set up the Harness runner to communicate with the Anka controller
-
-On the Harness runner host, update up the `pool.env` file as shown in the following Drone Runner config example:
+On the Harness runner host, update up the `pool.env` file as shown in the following Harness Docker Runner config example:
 
 ``` yaml
  - name: anka-build

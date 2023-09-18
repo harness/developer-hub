@@ -7,9 +7,14 @@ title: Hands on Labs instructions
 
 :::info
 
-These instructions are in BETA and in support of our Admin and Architect level exams. 
+These instructions are in support of our Admin and Architect level exams. 
 
 :::
+
+## Video of Experience
+Video on experience you will follow in the below instructions.
+
+<docvideo src="https://www.youtube.com/watch?v=v8kOnhNopkc" />
 
 ## Accessing your Hands-On Exam 
 
@@ -38,5 +43,5 @@ Below is a picture of the cloud shell you will see during an exam.
 5. Follow the instructions provided within the lab environment to complete the hands-on exercises. The instructions will guide you through the necessary steps and provide any additional information or resources you may need.
 6. As you progress through the lab, make sure to read the instructions carefully and perform the tasks as directed. 
 
-
-
+## Troubleshooting
+Please see our [FAQ](/certifications/faqs) section for troubleshooting tips. You can also email our certification team at [certifications@harness.io](mailto:certifications@harness.io).

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how you can share CI data across steps and stages.
+This topic describes how you can cache and share data across steps, stages, and builds.
 
 ## Share data between steps in a stage
 
@@ -22,21 +22,37 @@ For example, the maven `m2` repo is stored in `/root/.m2` by default, which is o
 
 ## Share data across stages
 
-You must use one of the following caching methods to share data across stages:
+You can use the following caching methods to share data across stages:
 
 * [Harness Cache Intelligence](./cache-intelligence.md)
 * [Save and Restore Caches from S3 buckets](saving-cache.md)
 * [Save and Restore Caches from GCS buckets](save-cache-in-gcs.md)
 
-You cannot share access credentials or other [Text Secrets](/docs/platform/Secrets/add-use-text-secrets) across stages. For complete end-to-end examples, go to the following:
+You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
 
 If you need to maintain a long-running service for the duration of a stage, use a [Background step](../manage-dependencies/background-step-settings.md).
+
+## Use caching to reduce build time
+
+Use the following caching methods to reduce build time:
+
+* [Harness Cache Intelligence](./cache-intelligence.md)
+* [Save and Restore Caches from S3 buckets](saving-cache.md)
+* [Save and Restore Caches from GCS buckets](save-cache-in-gcs.md)
+
+You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) with caching.
+
+:::tip Multilayer caching
+
+For multilayer caching, use multiple **Restore Cache** and **Save Cache** steps according to the pattern described in [Multilayer caching](./multilayer-caching.md).
+
+:::
 
 ## Docker layer caching
 
 Remote Docker layer caching can dramatically improve build times by sharing layers across pipelines, stages, and steps. You can set up Docker layer caching in the following steps:
 
-* [Build and Push to Docker Registry](../build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md)
+* [Build and Push to Docker](../build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md)
 * [Build and Push to ECR](../build-and-upload-artifacts/build-and-push-to-ecr-step-settings.md)
 * [Build and Push to GCR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md)
 

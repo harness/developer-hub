@@ -79,7 +79,7 @@ You can use: 
 
 For example, 1d for one day.
 
-The maximum timeout duration is 24 days.The timeout countdown appears when the step in executed.
+The maximum timeout duration is 53 weeks.The timeout countdown appears when the step in executed.
 
 ![](./static/using-harness-approval-steps-in-cd-stages-01.png)
 
@@ -99,7 +99,7 @@ The maximum timeout duration is 24 days.The timeout countdown appears when the s
 
 ## Select approvers
 
-1. In **User Groups**, select the Harness user groups that will approve the step. For more information, go to [add and manage user groups](/docs/platform/User-Management/add-user-groups).
+1. In **User Groups**, select the Harness user groups that will approve the step. For more information, go to [Manage user groups](/docs/platform/role-based-access-control/add-user-groups).
 2. In **Number of approvers that are required at this step**, enter how many of the users in the user groups must approve the step.
    
    ![](./static/adding-harness-approval-stages.png)
@@ -161,11 +161,11 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## See also
 

@@ -1,1 +1,14 @@
-{"label": "Create AutoStopping Rules", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "Create AutoStopping Rules"}, "customProps": {"position": "To position the category, enter a number and move this to the root level.", "helpdocs_category_id": "biypfy9p1i"}}
+{
+    "label":"Create AutoStopping Rules",
+    "position": 40,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Create AutoStopping Rules"
+    },
+    "customProps": {
+        "helpdocs_category_id": "biypfy9p1i"
+    }
+}

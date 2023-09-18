@@ -52,7 +52,7 @@ import TabItem from '@theme/TabItem';
 1. In the CD stage **Execution**, select **Add Step**.
 2. Select the **Dry Run** step.
 3. Enter a name for the step.
-4. In **Timeout**, enter how long this step should run before failing and initiating the step or stage [failure strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings//).
+4. In **Timeout**, enter how long this step should run before failing and initiating the step or stage [failure strategy](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings).
 
     You can use:
 
@@ -121,7 +121,7 @@ For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` th
 <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
 ```
 
-You can enter the expression in subsequent steps such as the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) or [Approval](/docs/category/approvals/) steps.
+You can enter the expression in subsequent steps such as the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) or [Approval](/docs/category/approvals/) steps.
 
 
 ## Dry Run steps and Skip Dry Run settings

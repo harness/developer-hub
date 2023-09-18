@@ -29,7 +29,7 @@ To use cost categories, your Harness user account must belong to a user group wi
 
 * **Cloud Cost Management**: **Cost Categories**: **Create/Edit**
 
-For more details, go to [CCM Roles and Permissions](../../2-getting-started-ccm/5-access-control/ccm-roles-and-permissions.md).
+For more details, go to [CCM Roles and Permissions](/docs/cloud-cost-management/access-control/ccm-roles-and-permissions.md).
 
 ## Visual summary
 
@@ -47,21 +47,21 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ## Create cost categories
 
-You can create a Cost Category
+To create a cost category perform the following steps:
 
 1. In your Harness application, go to **Cloud Costs**.
 2. Go to **Setup**, and then select **Cost Categories**.
 3. Select **New Cost Category**.
 
 
-You can also create a new Cost Category when you create a Perspective.
+You can also create a new cost category when you create a perspective.
 
 ![](./static/use-ccm-cost-categories-01.png)
 
-The new Cost Category appears.
+The new cost category appears.
 
 
-4. In the new Cost Category, enter a name. For example, if this Cost Category is for departments, you could name it **Departments**.
+4. In the new cost category, enter a name. For example, if this cost category is for departments, you could name it **Departments**.
 
   ![](./static/cost-category-builder-1.png)
 
@@ -70,7 +70,21 @@ The new Cost Category appears.
 1. Select **New Cost Bucket**.
 2. Enter a name for the cost bucket, such as the name of a department.
 3. Define the rules (data sources) for the cost bucket. You could add multiple conditions to this rule using the AND operator.  
-Add a new row for each rule until the cost bucket correctly includes all the costs incurred for this bucket. These rules are defined using the OR operator.  
+Add a new row for each rule until the cost bucket correctly includes all costs incurred. These rules are defined using the OR operator. You can add another cost category as a rule when defining your cost buckets.
+
+   
+:::important important
+* You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
+
+ To illustrate, consider the scenario of creating a cost category, `CC1`, which includes a cost bucket, `CB1`. While defining the cost bucket rules for `CB1`, if you intend to nest a cost category, `CC2` that contains a cost bucket, `CB2`, you must ensure that neither `CC1` nor `CC2` includes a shared cost bucket.
+* You cannot add the same cost category as a rule in the cost bucket.
+* You cannot create cyclic nested cost categories, where a cost category is nested within each other.
+
+ Consider an example where you have a cost category named `CC1`, which includes a cost bucket called `CB1`. Additionally, you have another cost category named `CC2`, which includes a cost bucket called `CB2`. When defining the cost bucket rules, it is essential to avoid adding `CC2` as a rule in `CC1` and adding `CC1` as a rule in `CC2`. Similarly, it is not allowed to create a nested structure where CC1 nests CC2, which in turn nests CC3, then CC4, and finally circles back to CC1.
+* You can nest cost categories to a maximum of 20 levels.
+:::
+
+
 Typically, you want to create multiple cost buckets in the cost category. For example, if the Cost Category is for departments, you would create a cost bucket for each department such as finance, operations, facilities, and so on.
 
   ![](./static/use-ccm-cost-categories-03.png)
@@ -82,6 +96,11 @@ The AND and OR operators are used to filter data based on more than one conditio
  * OR: use OR to filter data sources that include one of the criteria. You can use AND and OR together.
   
     ![](./static/use-ccm-cost-categories-04.png)
+
+
+:::important note
+You can create a maximum of 1000 cost buckets.
+:::
 
 ### Create shared cost buckets
 
@@ -97,12 +116,10 @@ For example, consider two cost targets named team A and team B. These two teams 
   ![](./static/cost-category-builder-2.png)
   
    
-:::info important
-  * You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
-  * You cannot add the same cost category as a rule in the cost bucket.
-  * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
-  * You can nest cost categories to a maximum of 20 levels.
+:::important note
+You can create a maximum of 10 shared cost buckets.
 :::
+
 
 ### Manage unallocated costs
 

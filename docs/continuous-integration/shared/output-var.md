@@ -29,7 +29,18 @@ In the following YAML example, step `alpha` exports an output variable called `m
 
 </details>
 
-### Create an output variable
+:::caution
+
+If an output variable value contains a secret, be aware that the secret will be visible in the [build details](/docs/continuous-integration/use-ci/viewing-builds.md):
+
+*  On the **Output** tab of the step where the output variable originates.
+*  In the build logs for any later steps that reference that variable.
+
+For information about best practices for using secrets in pipelines, go to the [Secrets documentation](/docs/category/secrets).
+
+:::
+
+#### Create an output variable
 
 To create an output variable, do the following in the step where the output variable originates:
 
@@ -41,9 +52,9 @@ To create an output variable, do the following in the step where the output vari
 
 2. In the step's **Output Variables**, declare the variable name, such as `myVar`.
 
-### Reference an output variable
+#### Reference an output variable
 
-To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/references/runtime-inputs/#expressions) that includes the originating step's ID and the variable's name.
+To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) that includes the originating step's ID and the variable's name.
 
 Use either of the following expressions to reference an output variable in another step in the same stage:
 

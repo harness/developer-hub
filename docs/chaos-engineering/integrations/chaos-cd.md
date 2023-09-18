@@ -3,7 +3,29 @@ title: Use CE with Continuous Delivery
 sidebar_position: 2
 ---
 
-You can add chaos experiments to Harness Continuous Delivery (CD) pipelines as part of your deployment process. This ensures that you validate your system resiliency with every new deployment. For example, you might consider injecting these types of faults as chaos steps in your CD pipeline:
+You can add chaos experiments to Harness Continuous Delivery (CD) pipelines as part of your deployment process. This ensures that you validate your system resiliency with every new deployment. Some benefits include:
+
+* Uncovering resilience unknowns
+* Increasing developer efficiency
+* Reducing resilience debt
+
+Learn more about these benefits in our CE/CD integration [blog](https://www.harness.io/blog/chaos-experiments-in-harness-cd-pipelines).
+
+## Use cases for chaos experiments in CD pipelines
+
+These use cases consist of validating deployments against:
+
+* Existing resilience conditions
+* Newly added resilience conditions
+* Changes to the platform on which the target deployments run
+* Production incidents and alerts
+* Configuration changes
+
+Learn more about these use cases in our CE/CD integration [blog](https://www.harness.io/blog/chaos-experiments-in-harness-cd-pipelines).
+
+### Examples of chaos faults to use in your CD pipeline
+
+You might consider injecting these types of faults as chaos steps in your CD pipeline:
 
 * **Network chaos faults** can be used for verifying service or microservice dependencies on each other when there's latency, or when one of the microservices is down. The [Pod network latency](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-latency/) fault is an example.
 
@@ -12,11 +34,28 @@ You can add chaos experiments to Harness Continuous Delivery (CD) pipelines as p
 * **HTTP chaos faults** can be used for verifying how services or APIs behave when one of the APIs is under chaos. The [Pod HTTP latency](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-latency/) fault is an example.
 
 For more information, see: 
-* [CD tutorials](/docs/continuous-delivery/get-started/cd-tutorial)
+* [CD tutorials](/tutorials/cd-pipelines)
 * [Tutorial on integrating chaos and CD](/tutorials/chaos-experiments/integration-with-harness-cd)
 * [Harness pipelines](/docs/category/pipelines)
+* [Blog: CE experiments in CD Pipelines](https://www.harness.io/blog/chaos-experiments-in-harness-cd-pipelines)
 
-## Add a chaos experiment to a CD pipeline
+## Summary of steps to use CE with CD
+
+These are the high-level steps to use CE with CD using a selected experiment, though you can use many experiments.
+
+1. [Add a chaos experiment](#step-1-add-a-chaos-experiment-and-run-it) and run it to make sure it completes.
+1. [Add this experiment to the CD pipeline](#step-2-add-a-chaos-experiment-to-a-cd-pipeline) as a chaos step.
+1. [Choose a failure strategy](#step-3-choose-a-failure-strategy).
+
+## Step 1: Add a chaos experiment and run it
+
+[Create a chaos experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments) and run it to make sure it runs to completion. 
+
+In the example below, the relevant [probes](/docs/chaos-engineering/configure-chaos-experiments/probes/configure-and-add-probe) are added to avoid a false positive or false negative scenario around the resilience score.
+
+![Completed chaos experiments with probes shown](./static/exp-run-complete-with-probes.png)
+
+## Step 2: Add a chaos experiment to a CD pipeline
 
 Pipelines are organized into stages, each of which handles a major segment of the pipeline process. There are several types of stages available, and you can add chaos experiments as steps in these three stage types:
 
@@ -77,6 +116,22 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 1. Select **Apply Changes** to save this step in the pipeline, and then select **Save** to save changes to the pipeline.
 
+## Step 3: Choose a failure strategy
+
+[A failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) specifies the actions to take if pipeline stages or steps fail due to different conditions. You can configure a failure strategy against each chaos step (experiment) in the pipeline, or through a shell script step at the end of the execution of all chaos steps. Below are examples showing these two options.
+
+### Example 1: Failure strategy for one chaos step
+
+In this example, the failure strategy is **Rollback** for **All Errors** on a specific chaos step. You can also choose different types of errors and different strategies to use for each.
+
+![Failure strategy for a chaos step](./static/fail-strategy-one-exp.png)
+
+### Example 2: Conditional failure step at the end of several chaos steps
+
+In this example, the failure strategy uses a **Shell Script** step after all the chaos steps in the CD pipeline. This step conditionally applies a shell script that specifies actions to take in case of failure. You can configure this step to add the script, and specify the conditions under which it is executed.
+
+![Conditional failure Shell Script step shown in a CD pipeline after many chaos steps](./static/fail-strategy-many-exp.png)   
+
 ## What happens when the CD pipeline runs with a chaos step
 
 When the CD pipeline is triggered:
@@ -88,5 +143,7 @@ When the CD pipeline is triggered:
 * In the CD pipeline, if the chaos step (the experiment) fails, you can select the failed step to see the log, which includes the resilience score obtained and how many chaos probes passed or failed.
 	* You can select **View Detailed Execution** to go to the experiment's execution page in CE.
 
-* Based on the experiment's success or failure, you can decide whether to continue with the deployment. You can automate this by defining a failure strategy in your pipeline. For more information, go to [Define a failure strategy on stages and steps](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps). 
+* Based on the experiment's success or failure, you can decide whether to continue with the deployment. You can automate this by defining a [failure strategy](#step-3-choose-a-failure-strategy) in your pipeline. 
+
+	For more information, go to [Define a failure strategy on stages and steps](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps). 
 

@@ -1,0 +1,15 @@
+{
+    "label": "Triggers",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "12",
+    "link": {
+        "type": "generated-index",
+        "title": "Triggers"
+    },
+    "customProps": {
+        
+        "helpdocs_category_id": "oya6qhmmaw"
+    }
+}

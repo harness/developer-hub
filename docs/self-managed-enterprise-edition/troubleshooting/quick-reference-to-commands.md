@@ -1,10 +1,10 @@
 ---
 title: Quick command reference
-description: Helpful commands for troubleshooting.
+description: Helpful commands for troubleshooting the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 90
 ---
 
-This topic provides a short list of commands that are useful for troubleshooting Harness Self-Managed Platform Edition.
+This topic provides a short list of commands that are useful for troubleshooting Harness Self-Managed Enterprise Edition.
 
 :::info note
 Variables are enclosed in angle brackets (< >).

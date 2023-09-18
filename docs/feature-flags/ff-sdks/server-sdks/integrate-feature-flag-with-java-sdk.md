@@ -12,6 +12,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpyes from '../shared/note-smp-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpyes />
 
 
@@ -23,14 +26,14 @@ For getting started quickly, you can use our [sample code from the Java SDK READ
 
 Make sure you read and understand:
 
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](../../get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.2.3.**
+The current version of this SDK is **1.2.4.**
 
 ## Requirements
 
@@ -104,7 +107,7 @@ To add a Target, build it and pass in arguments for the following:
 | --- | --- | --- | --- |
 | **Parameter** | **Description** | **Required?** | **Example** |
 | `identifier` | Unique ID for the TargetRead **Regex requirements for Target names and identifiers** below for accepted characters. | Required | `.identifier("HT_1")` |
-| `name` | Name for this Target. This does not have to be unique. **Note**: If you don’t provide a value, the name will be the same as the identifier.Read **Regex requirements for Target names and identifiers** below for accepted characters. | Optional**Note**: If you don't want to send a name, don't send the parameter. Sending an empty argument will cause an error. | `.name("Harness_Target_1")` |
+| `name` | Name for this Target. This does not have to be unique. **Note**: If you don’t provide a value, the name will be the same as the identifier.Read **Regex requirements for Target names and identifiers** below for accepted characters. | Optional<br />**Note**: If you don't want to send a name, don't send the parameter. Sending an empty argument will cause an error. | `.name("Harness_Target_1")` |
 | `attributes` | Additional data you can store for a Target, such as email addresses or location. | Optional | `.attributes(new HashMap<String, Object>())` |
 
 <details>
@@ -244,14 +247,18 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
+<Closeclient />
 
+To close the SDK client: 
 
-```
-cfClient.close();
-```
+* Call the following function>
+
+  ```
+  cfClient.close();
+  ```
+  
 ## Additional options
 
 ### Develop on your local environment

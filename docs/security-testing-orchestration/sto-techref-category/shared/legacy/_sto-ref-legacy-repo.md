@@ -1,4 +1,4 @@
-<details><summary>Repository scan settings</summary>
+<!-- details><summary>Repository scan settings</summary -->
 
 The following settings apply to all scanners where the `scan_type` is `repository`.
 
@@ -16,8 +16,8 @@ The following settings apply to all scanners where the `scan_type` is `repositor
 
 -->
 
-You can see the target name, type, and variant in the [Test Targets](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines.md) UI:
+You can see the target name, type, and variant in the [Test Targets](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines.md) UI:
 
 ![Target name, type, and branch](../../static/repo-settings.png)
 
-</details>
+<!-- /details -->
