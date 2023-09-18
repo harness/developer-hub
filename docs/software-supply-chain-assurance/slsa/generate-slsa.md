@@ -14,7 +14,7 @@ For a step-by-step walkthrough, try this tutorial: [Generate and verify SLSA Pro
 
 ## Prepare a pipeline
 
-To generate SLSA Provenance in Harness, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage).
+To generate SLSA Provenance in Harness, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
 ## Generate a key pair
 
