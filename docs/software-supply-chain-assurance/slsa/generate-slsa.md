@@ -8,7 +8,7 @@ You can use Harness SSCA to achieve [SLSA](https://slsa.dev/) Level 2 compliance
 
 :::tip Tutorial
 
-For a step-by-step walkthrough, try this tutorial: [Generate and verify SLSA Provenance](/tutorials/secure-supply-chain/generate-slsa)
+For a step-by-step walkthrough, try this tutorial: [Generate and verify SLSA Provenance](/tutorials/secure-supply-chain/generate-slsa).
 
 :::
 

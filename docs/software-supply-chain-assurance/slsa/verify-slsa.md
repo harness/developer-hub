@@ -8,7 +8,7 @@ You can use Harness SSCA to verify SLSA Provenance and confirm that you can trus
 
 :::tip Tutorial
 
-For a step-by-step walkthrough, try this tutorial: [Generate and verify SLSA Provenance](/tutorials/secure-supply-chain/generate-slsa)
+For a step-by-step walkthrough, try this tutorial: [Generate and verify SLSA Provenance](/tutorials/secure-supply-chain/generate-slsa).
 
 :::
 
@@ -34,7 +34,7 @@ OPA polices used for SLSA Provenance verification are different from [SSCA polic
 
 :::
 
-1. In your Harness Project, go to **Policies** under **Project Setup**. You can also create policies at the Account and Org scopes.
+1. In your Harness Project, under **Project Setup**, go to **Policies**. You can also create policies at the Account and Org scopes.
 2. Select **Policies**, and then [create policies](/docs/platform/Governance/Policy-as-code/harness-governance-quickstart#create-the-policy) for the individual rules that you want to enforce. You can select from the policy library or write your own policies.
 3. [Create policy sets](/docs/platform/Governance/Policy-as-code/harness-governance-quickstart#step-3-create-a-policy-set) to group related policies. You must have at least one policy set.
 
@@ -81,9 +81,9 @@ The **SLSA Verification** step has the following settings:
 If you're using Docker-compliant ECR or GCR repositories, you must:
 
 1. Configure your [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
-   * For ECR, refer to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
-   * For GCR, refer to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
-2. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`
+   * For ECR, go to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
+   * For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
+2. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`.
 
 :::
 

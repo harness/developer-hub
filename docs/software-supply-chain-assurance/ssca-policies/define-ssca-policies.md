@@ -101,11 +101,11 @@ It is important to understand the trustworthiness of a license before adding it 
 
 Safe licenses are licenses that are commonly used and approved by the [Open Source Initiative (OSI)](https://opensource.org/). They include licenses like Apache License 2.0, MIT License, and BSD License. These licenses allow users to modify and distribute the code without any restrictions, as long as the license terms are followed.
 
-Some licenses are considered risky licenses because they might impose additional requirements or restrictions on users. For example, the GNU General Public License (GPL) is considered risky, because it requires that any software that uses or modifies GPL-licensed code to be released under the GPL license as well. This can be problematic for organizations that want to keep their proprietary software closed source.
+Some licenses are considered risky licenses because they might impose additional requirements or restrictions on users. For example, the GNU General Public License (GPL) is considered risky, because it requires that any software that uses or modifies GPL-licensed code be released under the GPL license as well. This can be problematic for organizations that want to keep their proprietary software closed source.
 
 #### Use regex in license lists
 
-You can use regex in the `licenses` section of the `allow_list` to match a range of license, rather than having to specify each license individually.
+You can use regex in the `licenses` section of the `allow_list` to match a range of licenses, rather than having to specify each license individually.
 
 * **Exact match:** To create a rule that requires an exact match, use an expression such as `^AFL-1.1$`.
 * **Contains:** To create a rule that matches any license containing a certain string, use an expression such as `AFL-1.1`. This example matches any license containing this string, such as `MALF-1.1` or `AFL-1.1.2`.
@@ -154,7 +154,7 @@ A PURL is a type of URL that provides a standardized way of identifying a packag
 
 The following policy file uses both `deny_list` and `allow_list` policies to address these criteria:
 
-* Prevent components with known critical vulnerabilities from being used in the artifact. These component and versions are listed in the `deny_list`.
+* Prevent components with known critical vulnerabilities from being used in the artifact. These components and versions are listed in the `deny_list`.
 * Allow only safe licenses to be used according to the guidance in the [SPDX License List](https://spdx.org/licenses/). These licenses are listed in the `allow_list`. The `licenses` section of the `allow_list` supports regex for better matching.
 
 ```

@@ -21,6 +21,6 @@ When you [enforce SSCA policies](./enforce-ssca-policies.md) in a Harness pipeli
 
 :::tip Tutorial
 
-For an end-to-end walkthrough, try this tutorial: [Generate SBOM and enforce policies](/tutorials/secure-supply-chain/generate-sbom)
+For an end-to-end walkthrough, try this tutorial: [Generate SBOM and enforce policies](/tutorials/secure-supply-chain/generate-sbom).
 
 :::

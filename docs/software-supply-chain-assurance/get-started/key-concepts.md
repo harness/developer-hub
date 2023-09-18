@@ -106,8 +106,8 @@ For SSCA, you must use [Docker Registry connectors](/docs/platform/Connectors/Cl
 
 If you're using Docker-compliant ECR or GCR repos, you must configure your [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
-* For ECR, refer to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
-* For GCR, refer to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
+* For ECR, go to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
+* For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
 
 :::
 
@@ -115,9 +115,9 @@ If you're using Docker-compliant ECR or GCR repos, you must configure your [Dock
 
 The Harness Delegate is a software service you install in an environment, such as a Kubernetes cluster, that connects to the Harness Manager and performs tasks using your container orchestration platforms, artifact repositories, monitoring systems, and so on.
 
-The Delegate uses the credentials set up in the connectors used by the pipeline to perform deployment tasks. Additionally, the Delegate needs permissions in the target environment to execute build tasks. These permissions are granted in the Delegate config file or the environment account you use when installing the Delegate.
+The delegate uses the credentials set up in the connectors used by the pipeline to perform deployment tasks. Additionally, the delegate needs permissions in the target environment to execute build tasks. These permissions are granted in the delegate config file or the environment account you use when installing the delegate.
 
-For more information, go to the Harness Platform documentation on [Delegates](/docs/category/delegates).
+For more information, go to the Harness Platform documentation on [delegates](/docs/category/delegates).
 
 ### Variables and expressions
 
