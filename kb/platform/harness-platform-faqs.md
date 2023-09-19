@@ -602,7 +602,7 @@ If you are using minimal delegate images than this error can come and need to in
 #### Delegate is not coming up with no space left error
 While starting delegate we install some third party binaries(kubectl, helm etc) so those need some space so make sure delegate machne has some disk space left
 
-### Is there a tool available for unit testing Harness rego policies before deployment?
+#### Is there a tool available for unit testing Harness rego policies before deployment?
 No, we don't provide a dedicated tool for testing Harness rego policies. However, you can use the general-purpose testing tool provided by Open Policy Agent (OPA) to test your policies. More details can be found in the Policy Testing with [OPA documentation](https://www.openpolicyagent.org/docs/latest/cli/#opa-eval).
 
 #### How can I assign the same delegate replica to all steps in my pipeline?
@@ -641,5 +641,23 @@ No, we don't support that feature currently.
 * `23.XX.8XXXX`: This format corresponds to the standard delegate image. It includes all the default binaries and is a suitable choice for users who are relatively new to Harness and do not have stringent security requirements. This image provides a comprehensive set of tools and functionalities for general usage.
 * `1.0.8XXX`X`: This format denotes an older version of the delegate, often referred to as the legacy delegate. New Harness accounts no longer include this delegate version, and users are strongly encouraged to migrate to the standard delegate for better compatibility, performance, and security.
 
+#### How to retrieve the correct author's email on a GitHub Pull Request Event?
+When you push commits from the command line, the email address that you have configured in [Git]((https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address)) is associated with your commits. However, for web-based operations, GitHub provides an option to maintain privacy regarding your email address. To ensure that you can fetch the correct user email through the expression `<codebase.gitUserEmail>`, you will need to disable the ["Keep my email addresses private"]((https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/blocking-command-line-pushes-that-expose-your-personal-email-address)) option in your GitHub settings.
+
+#### Why is my commitSha resolving as null on manual runs?
+The expression `<+trigger.commitSha>` is available when the event comes from a Git operation. Instead, use the expression `<+codebase.commitSha>` for parsing manual triggers.
+
+#### How can I specify my pipeline to select a delegate based on a tag?
+In the advanced tab of your pipeline, you can add specific tags in the [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#delegate-tags) field.
+
+#### How can I prevent lockouts when using SSO for login?
+To prevent lockouts or in case of OAuth downtime, a user in the Harness Administrators Group can utilize the [Local Login](https://developer.harness.io/docs/platform/authentication/single-sign-on-sso-with-oauth/#harness-local-login) URL [http://app.harness.io/auth/#/local-login] to log in and update the OAuth settings.
+For the Harness production cluster *prod-3*, the local login URL is [https://app3.harness.io/auth/#/local-login].
+
+#### How can I autoscale a delegate using HPA?
+By default, Helm delegates have autoscaling disabled, which you can enable by setting the value autoscaling.enabled=false. For Kubernetes delegates, you need to write an HPA manifest to scale the delegate's replicas.
+
+#### When defining a secret with a dollar sign, the shell prints the secret partially
+Harness doesn't allow the `$` symbol in your secret value. If your secret value includes this symbol, you must use single quotes when you use the expression in a script.
 
 
