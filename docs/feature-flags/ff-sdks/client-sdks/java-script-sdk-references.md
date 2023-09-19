@@ -325,6 +325,12 @@ client.on(Event.POLLING, () => {
   // Event happens when polling begins
 })
 
+client.on(Event.POLLING_CHANGED, flagInfo => {
+  // Event happens when SDK polls for flags
+  // flagInfo contains the polled feature flags
+})
+
+
 client.on(Event.POLLING_STOPPED, () => {
   // Event happens when polling stops
 })
