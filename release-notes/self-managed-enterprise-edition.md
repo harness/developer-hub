@@ -56,7 +56,7 @@ gsutil -m cp \
 
 :::caution
 
-The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes. You must migrate your Helm chart to include new override files. If you do not migrate your Helm chart override files, Helm upgrades will fail. The patch release package includes a `migrate-values-0.9.x.sh` file. You can use this script to convert the old `override.yaml` file to the new format.
+The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes. You must migrate your Helm chart to include new override files. If you do not migrate your Helm chart override files, Helm upgrades will fail. The patch release package includes a `migrate-values-0.9.x.sh` script to convert the old `override.yaml` file to the new format.
 
 :::
 
@@ -140,7 +140,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 - You can now apply Harness' recommended high performance configuration to reach a scale of 1000 concurrent pipelines. (SMP-1836)
 
-   The `override-perf-ci-cd-ff.yaml` file in available in the [Harness Helm chart repo](https://github.com/harness/helm-charts/blob/release/0.9.0/src/harness/override-perf-ci-cd-ff.yaml).
+   The `override-perf-ci-cd-ff.yaml` file is available in the [Harness Helm chart repo](https://github.com/harness/helm-charts/blob/release/0.9.0/src/harness/override-perf-ci-cd-ff.yaml).
 
 - You can now use your Redis password in your external self-managed Redis database. (SMP-1860)
 
