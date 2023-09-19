@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-09-11T10:00:30
+date: 2023-09-19T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -30,10 +30,65 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-
-## Latest: Version 80504
+## Latest: Version 80711
 
 ### New features and enhancements
+
+-  The delegate Helm chart is now included in the delegate proxy configuration. You can pull the Helm chart from `https://<YOUR_LOADBALANCER_URL>/storage/harness-download/delegate-helm-chart/`. (PL-39190)
+
+- The heartbeat interval that perpetual tasks use to test connectors has been increased from 10 minutes to 30 minutes. This change aims to reduce the number of errors logged due to failed heartbeats. The new heartbeat interval is used with any connectors that you create after this deployment. Tasks associated with existing connectors require migration to the new interval. Harness will migrate such perpetual tasks in all accounts in a phased manner. This activity does not require any action from you or other users of the platform. (PL-39399)
+
+- To enhance security, Harness has added settings to enable and disable Slack, Microsoft Teams, webhook, and PagerDuty notification channels at the account scope. (PL-39921)
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- Earlier, you could only see a maximum of three tags on the Delegates list page. (PL-38936)
+
+   This issue has been fixed. You can now see all the tags for all delegates.
+
+- The Harness UI fetched only the first 200 organizations when you performed a search for an organization in the **Create Project** dialog (the page size for the API request is 200). If an organization you wanted to specify was not part of this initial set of organizations, the Harness UI did not generate additional API requests, and you were blocked on creating your project. (PL-39198)
+
+  This issue has been fixed. You can now search for and select any organization in your account.
+
+- Updates to the role assignments of a user group in one project caused role assignments to get updated in other projects in the organization. The issue was observed in the following scenario:
+    - You used a regex query to update role assignments in a project.
+    - Identifiers of other projects in the organization overlapped with that of the project in which you updated role assignments. 
+    - Identifiers of user groups in those other projects matched the identifier of the user group you updated. (PL-39780, ZD-46314)
+
+- When Harness is configured to use the AppRole ID to fetch an authentication token from HashiCorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
+
+  This issue has been fixed. You can now specify whether or not you want to retain the token to reduce the number of requests made. Possible values are `True` and `False`. The default value is `True`.
+
+- If there are no delegate configurations to show on the **Delegate Configurations** tab of your project's **Delegates** page, the Harness UI hides the tab. Any errors associated with retrieving data for that tab are, therefore, also invisible to users. This behavior is expected and by design. However, after the deployment of Harness NextGen UI version 0.356.18, this behavior changed: if there were no delegate configurations to show and the associated API request resulted in an error, the associated error message was displayed on the other two tabs of the project's **Delegates** page, namely, the **Delegates** and **Tokens** tabs.
+
+  For example, if you were not authorized to view delegate configurations, and if there were no delegate configurations to show on the **Delegate Configurations** tab, Harness would display the error `You are not authorized to view delegate configurations. You are missing the following permission: View delegate configurations ...` on the **Delegates** and **Tokens** tabs. (PL-40757, ZD-49023)
+
+  This issue has been fixed.
+
+- The **Create or Select an Existing Connector** dialog did not show any results when you filtered on Nexus connectors. (PL-40904)
+  
+  The associated API is now fixed.
+
+- Emails inviting users to a Harness project included a stack trace. The issue was limited to users who had single sign-on enabled on their accounts. (PL-40991, ZD-50038)
+
+  This issue has been fixed.
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+  
+#### Version 80504
+
+##### New features and enhancements
 
 - When Harness is configured to use the AppRole ID to fetch an authentication token from HashiCorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
 
@@ -65,11 +120,11 @@ The following deprecated API endpoints will no longer be supported:
    
    This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-### Early access features
+##### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+##### Fixed issues
 
 - The **Create or Select an Existing Connector** dialog did not show any results when you filtered on Nexus connectors. (PL-40904)
   
@@ -91,15 +146,10 @@ This release does not include early access features.
     - You update the associated HashiCorp Vault connector.
     - You test the associated HashiCorp Vault connector manually and the test succeeds.
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-  
 #### Version 80406
 
 ##### New features and enhancements
@@ -1077,7 +1127,7 @@ This release does not include any early access feature.
 
 - Harness now supports the integration of GCP Secrets Manager for all users. (PL-31051)
   
-  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager)
+  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager)
 
 - There is a limit on the number of entities that can be created for **FREE** and **COMMUNITY** users in Harness. (PL-30838)
   
@@ -1954,7 +2004,7 @@ Users can assign roles to the built-in user group at a specific scope, which bec
 
   This is behind the feature flag CUSTOM_SECRET_MANAGER_NG.
 
-See [Add a Custom Secret Manager](/docs/platform/secrets/secrets-management/custom-secret-manager).
+See [Add a Custom Secret Manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager).
 
 ##### Fixed issues
 
