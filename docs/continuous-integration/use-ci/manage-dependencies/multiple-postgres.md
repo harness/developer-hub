@@ -182,7 +182,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
 ```
 
 1. In the same **Build** stage as your **Background** steps, add a **Run** step after (*not* in parallel with) your **Background** steps.
-2. Configure the [Run step settings](../run-ci-scripts/run-step-settings.md#settings). Required settings depend on your build infrastructure.
+2. Configure the [Run step settings](../run-ci-scripts/run-step-settings.md#run-step-settings). Required settings depend on your build infrastructure.
 
 ```mdx-code-block
 <Tabs>
@@ -207,7 +207,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
    psql -U postgres -d test1 -h Background_2 -p 5434
    ```
 
-* Configure [other settings](../run-ci-scripts/run-step-settings.md#settings), if needed.
+* Configure [other settings](../run-ci-scripts/run-step-settings.md#run-step-settings), if needed.
 
 ```mdx-code-block
   </TabItem>
@@ -233,7 +233,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
    psql -U postgres -d test1 -h localhost -p 5434
    ```
 
-* Configure [other settings](../run-ci-scripts/run-step-settings.md#settings), if needed.
+* Configure [other settings](../run-ci-scripts/run-step-settings.md#run-step-settings), if needed.
 
 ```mdx-code-block
   </TabItem>

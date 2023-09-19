@@ -204,9 +204,9 @@ In Harness, go to the pipeline where you want to add the `Run` step. In the `CI`
 </Tabs>
 ```
 
-## Settings
+## Run step settings
 
-The **Run** step has the following settings.
+The CI **Run** step has the following settings.
 
 :::info
 
@@ -501,7 +501,7 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 * [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
-## Logs and test results
+## Run step logs and test results
 
 During and after pipeline runs, you can find step logs on the [Build details page](../viewing-builds.md).
 

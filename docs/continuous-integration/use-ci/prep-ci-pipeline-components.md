@@ -144,3 +144,13 @@ See also:
 ### Environment variables
 
 For information about environment variables, go to the [CI environment variables reference](./optimize-and-more/ci-env-var.md).
+
+## Visual and YAML editors
+
+Harness CI provides two, interchangeable options for creating pipelines: The **Visual** editor and the **YAML** editor.
+   * The **Visual** editor provides a GUI experience where you can easily configure settings, add and remove steps and stages, and drag-and-drop steps and stages to rearrange them, organize them in parallel, or add or remove them from step groups.
+   * The **YAML** editor provides a text editor experience for creating pipelines.
+
+You can freely switch between the two modes. When editing a pipeline in Harness, use the selector at the top of the **Pipeline Studio** to switch between the **Visual** and **YAML** editors.
+
+![](./static/harness-yaml-quickstart-21.png)
