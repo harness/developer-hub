@@ -56,7 +56,7 @@ gsutil -m cp \
 
 :::caution
 
-The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes. Helm upgrades will fail unless new override files are used correctly. The package includes a `migrate-values-0.9.x.sh` file. You can use this script to convert the old `override.yaml` file to the new format.
+The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes. You must migrate your Helm chart to include new override files. If you do not migrate your Helm chart override files, Helm upgrades will fail. The patch release package includes a `migrate-values-0.9.x.sh` file. You can use this script to convert the old `override.yaml` file to the new format.
 
 :::
 
@@ -70,9 +70,9 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
    **Migration script**
 
-   The helm package includes migrate-values-0.9.x.sh script under scripts directory. It expects an argument of file path to old override.yaml. 
+   The Helm package includes `migrate-values-0.9.x.sh` script in the scripts directory. You must add the file path to your old `override.yaml` file when you execute the script. 
 
-   This script uses `yq`. You must install `yq` binaries to run the script.
+   This script requires `yq`. You must install `yq` binaries to run the script.
 
    **Sample usage**
 
