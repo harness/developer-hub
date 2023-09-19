@@ -401,8 +401,6 @@ This YAML example includes two stages. The first stage creates a cache bucket an
                                     failIfKeyNotFound: true  
 ```
 
-</details>
-
 ## Cache step logs
 
 You can observe and review build logs on the [Build details page](../viewing-builds.md).
