@@ -20,13 +20,17 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 #### New features and enhancements
 
-- Excel and .csv files are now blocked from upload in the **File Configuration** dialog. (PL-40796, ZD-44419)
+This release does not include new features.
 
 #### Early access features
 
 This release does not include early access features.
 
 #### Fixed issues
+
+- Earlier, you could upload Excel and .csv files in the **File Configuration** dialog. (PL-40796, ZD-44419)
+
+   This issue is fixed. Excel and .csv files in the **File Configuration** dialog are now blocked.
 
 - The Secrets Management Change Log page returned errors when fetching the `changeLogData` API. (PL-40957, ZD-49757)
 
