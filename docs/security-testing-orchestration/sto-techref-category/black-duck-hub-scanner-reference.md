@@ -1,6 +1,5 @@
 ---
 title: Black Duck Hub scanner reference for STO
-description: Repository scans with Bandit
 description: Image and repository scans with Black Duck Open Hub scanner
 sidebar_position: 60
 ---
