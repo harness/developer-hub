@@ -75,15 +75,15 @@ Tags can be added to Harness applications and the following application componen
 
 ## Step 1: Assign required permissions
 
-Your options for interacting with tags depend on your Harness [User group permissions](/docs/platform/user-management/harness-default-user-groups/), as follows:
+Your options for interacting with tags depend on your Harness [User group permissions](/docs/platform/role-based-access-control/add-user-groups/), as follows:
 
 * All users can view tags (and values) that have been applied to applications and their components.
-* Users' [Application permissions](/docs/platform/role-based-access-control/ref-access-management/permissions-reference/) determine their ability to apply, update, and remove tags on specific applications and application components.
-* Users who have the [Account permission:](/docs/platform/role-based-access-control/ref-access-management/permissions-reference/) **Manage Tags** can create tag keys, impose Allowed Values on keys, and edit and delete keys.
+* Users' [Application permissions](/docs/platform/role-based-access-control/permissions-reference/) determine their ability to apply, update, and remove tags on specific applications and application components.
+* Users who have the [Account permission:](/docs/platform/role-based-access-control/permissions-reference/) **Manage Tags** can create tag keys, impose Allowed Values on keys, and edit and delete keys.
 
 ### Applying tags
 
-Users who have appropriate [Application-level permissions](/docs/platform/role-based-access-control/ref-access-management/permissions-reference/) can add and modify tags on the Harness Application components listed above under [Tag scope](#tag_scope).
+Users who have appropriate [Application-level permissions](/docs/platform/role-based-access-control/permissions-reference/) can add and modify tags on the Harness Application components listed above under [Tag scope](#tag_scope).
 
 ## Step 2: Add tags
 
