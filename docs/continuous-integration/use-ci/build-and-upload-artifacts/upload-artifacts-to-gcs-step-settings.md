@@ -8,9 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use the **Upload Artifacts to GCS** step in your CI pipelines to upload artifacts to Google Cloud Storage (GCS). For more information on GCS, go to the Google Cloud documentation on [Uploads and downloads](https://cloud.google.com/storage/docs/uploads-downloads). You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md).
-
-## Requirements
+You can use the **Upload Artifacts to GCS** step in your CI pipelines to upload artifacts to Google Cloud Storage (GCS). For more information on GCS, go to the Google Cloud documentation on [Uploads and downloads](https://cloud.google.com/storage/docs/uploads-downloads).
 
 You need:
 
@@ -18,6 +16,8 @@ You need:
 * A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 * Steps in your pipeline that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
 * A [GCP connector](#gcp-connector).
+
+You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md).
 
 ## Add an Upload Artifacts to GCS step
 
@@ -135,7 +135,7 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
 </Tabs>
 ```
 
-## Run the pipeline
+## Build logs and artifact files
 
 When you run the pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the Upload Artifacts step succeeds, you can find the artifact on GCS. If you used the Artifact Metadata Publisher plugin, you can find the artifact URL on the [Artifacts tab](../viewing-builds.md).
 
@@ -151,7 +151,7 @@ If your pipeline has multiple steps that upload artifacts, use the dropdown menu
 
 :::
 
-## YAML examples
+## Pipeline YAML examples
 
 ```mdx-code-block
 <Tabs>

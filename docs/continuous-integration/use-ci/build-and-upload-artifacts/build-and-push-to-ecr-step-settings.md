@@ -14,8 +14,6 @@ redirect_from:
 
 In Harness CI, you can use a **Build and Push to ECR** step to build an image from your codebase and push it to your Amazon ECR container registry repo. This is one of several options for [building and pushing artifacts in Harness CI](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
-## Requirements
-
 You need:
 
 * An [AWS account](https://aws.amazon.com/resources/create-account/) with an ECR repository.
@@ -24,7 +22,7 @@ You need:
 * A [Harness CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 * An [AWS Cloud Provider connector](#aws-connector).
 
-### Kubernetes cluster build infrastructures require root access
+## Kubernetes cluster build infrastructures require root access
 
 With Kubernetes cluster build infrastructures, **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md). Kaniko requires root access to build the Docker image. It doesn't support non-root users.
 

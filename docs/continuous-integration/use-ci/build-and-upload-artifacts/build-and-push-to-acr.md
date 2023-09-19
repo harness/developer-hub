@@ -10,19 +10,17 @@ helpdocs_is_published: true
 
 This topic explains how to configure the **Build and Push to ACR** step in a Harness CI pipeline. This step is used to build and push to [Azure Container Registry (ACR)](https://azure.microsoft.com/en-us/products/container-registry).
 
-## Requirements
-
 You need:
 
 * Access to ACR and an ACR repo where you can upload your image.
 * An [Azure Cloud Provider connector](#azure-connector).
 * A [Harness CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) that uses a Linux platform on a Kubernetes cluster build infrastructure.
 
-### Kubernetes cluster build infrastructure is required
+## Kubernetes cluster build infrastructure is required
 
 The **Build and Push to ACR** step is supported for Linux platforms on [Kubernetes cluster build infrastructures](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) only. For other platforms and build infrastructures, use the [Build and Push to Docker Registry step](./build-and-push-to-docker-hub-step-settings.md) to push to ACR.
 
-### Root access is required
+## Root access is required
 
 With Kubernetes cluster build infrastructures, all **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). This tool requires root access to build the Docker image, and it doesn't support non-root users.
 
