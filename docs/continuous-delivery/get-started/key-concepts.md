@@ -70,9 +70,9 @@ A CD Stage is a subset of a Pipeline that contains the logic to perform one majo
 
 See the following:
 
-* [Add a Stage](/docs/platform/8_Pipelines/add-a-stage.md)
-* [Add a Stage Template Quickstart](/docs/platform/13_Templates/add-a-stage-template.md)
-* [Stage and Step Conditional Execution Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Add a Stage](/docs/platform/pipelines/add-a-stage.md)
+* [Add a Stage Template Quickstart](/docs/platform/templates/add-a-stage-template.md)
+* [Stage and Step Conditional Execution Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 
 ### Step
 
@@ -96,9 +96,9 @@ For example, a GitHub Connector authenticates with a GitHub account and repo and
 
 For example, go to:
 
-* [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector)
-* [Docker Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
-* [Git Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
+* [Add a Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector)
+* [Docker Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
+* [Git Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
 
 ### Permissions
 
@@ -120,7 +120,7 @@ The Delegate also needs permissions in the target environment to execute deploym
 
 Pipeline and Stage variables are custom variables you can add and reference in your Pipeline and Stage. They're available across the Pipeline. You can propagate and override their values in later stages.
 
-For more information, go to [Built-in Harness Variables Reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
+For more information, go to [Built-in Harness Variables Reference](../../platform/variables-and-expressions/harness-variables.md).
 
 ## Triggers
 
@@ -130,9 +130,9 @@ You can trigger a Pipeline based on Git events, manifest changes, schedules, new
 
 For examples, go to:
 
-* [Trigger Pipelines on a New Artifact](../../platform/11_Triggers/trigger-on-a-new-artifact.md)
-* [Trigger Pipelines on New Helm Chart](../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md)
-* [Trigger Pipelines using Git Events](../../platform/11_Triggers/triggering-pipelines.md)
+* [Trigger Pipelines on a New Artifact](../../platform/triggers/trigger-on-a-new-artifact.md)
+* [Trigger Pipelines on New Helm Chart](../../platform/triggers/trigger-pipelines-on-new-helm-chart.md)
+* [Trigger Pipelines using Git Events](../../platform/triggers/triggering-pipelines.md)
 
 ## Advanced settings
 
@@ -146,7 +146,7 @@ Overlays are groups of Input Sets. Overlays enable you to provide several Input 
 
 With Input Sets and Overlays, you can make a single Pipeline template that can be used for multiple scenarios. Each scenario can be defined in an Input Set or Overlay and simply selected at runtime.
 
-For more information, go to [Input Sets and Overlays](../../platform/8_Pipelines/input-sets.md).
+For more information, go to [Input Sets and Overlays](../../platform/pipelines/input-sets.md).
 
 ### Conditional executions
 
@@ -154,7 +154,7 @@ You can set conditions on when you run Stages and steps. For example, `Execute T
 
 The stage Conditional Execution applies to all steps that do not have their own Conditional Execution. A step's Conditional Execution overrides its stage's Conditional Execution.
 
-For more information, go to [Stage and Step Conditional Execution Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+For more information, go to [Stage and Step Conditional Execution Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 ### Failure strategies
 
@@ -164,6 +164,6 @@ The failure strategy contains error conditions that must occur for the strategy 
 
 Failure strategies are a critical pipeline design component that determine what fails a step or stage and what to do when the failure occurs.
 
-For more information, go to [Step and Stage Failure Strategy References](/docs/platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).
+For more information, go to [Step and Stage Failure Strategy References](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps.md).
 
 

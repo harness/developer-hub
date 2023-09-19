@@ -633,5 +633,13 @@ spec:
 #### Does the NextGen platform support the same cron syntax for triggers as the FirstGen platform?
 Yes, the NextGen platform supports both the QUARTZ and UNIX syntax formats for cron triggers. You can find further details in our documentation here: [Schedule Pipelines Using Cron Triggers](https://developer.harness.io/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
 
+#### Can I get user group and user lists in CSV or Excel?
+No, we don't support that feature currently.
+
+#### What are the differences between the delegate tags formats?
+* `XX.XX.XXXXX.minimal`: This tag represents the minimal image format, which is recommended for production usage. It stands out due to its absence of high or critical vulnerabilities, making it a secure choice. Furthermore, this image format is lighter than the default option because it doesn't have the default binaries installed.
+* `23.XX.8XXXX`: This format corresponds to the standard delegate image. It includes all the default binaries and is a suitable choice for users who are relatively new to Harness and do not have stringent security requirements. This image provides a comprehensive set of tools and functionalities for general usage.
+* `1.0.8XXX`X`: This format denotes an older version of the delegate, often referred to as the legacy delegate. New Harness accounts no longer include this delegate version, and users are strongly encouraged to migrate to the standard delegate for better compatibility, performance, and security.
+
 
 

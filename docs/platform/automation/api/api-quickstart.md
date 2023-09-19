@@ -165,7 +165,7 @@ curl -i -X POST \
   }'
 ```
 
-You can create all types of connectors with this endpoint. For this endpoint's specifications, go to the [Harness API reference documentation](https://apidocs.harness.io/tag/Connectors#operation/createConnector).
+You can create all types of connectors with this endpoint. For this endpoint's specifications, go to the [Harness API reference documentation](https://apidocs.harness.io/tag/connectors#operation/createConnector).
 
 A successful response includes the `connector` data from the request, as well as creation timestamps, various metadata and settings, and a correlation ID. For example:
 
@@ -195,7 +195,7 @@ If the response is successful, you can find your new connector in Harness in you
 
 A pipelines are end-to-end workflows. There are several types of pipelines across the Harness modules.
 
-The following `curl` command creates a simple CD pipeline that contains a `hello world` shell script. The pipeline uses [Runtime Inputs](../../20_References/runtime-inputs.md) (`<+input>`) for most settings. The pipeline is created in the `default` Harness organization under the [APISample project](#example-create-a-project-through-api).
+The following `curl` command creates a simple CD pipeline that contains a `hello world` shell script. The pipeline uses [Runtime Inputs](../../variables-and-expressions/runtime-inputs.md) (`<+input>`) for most settings. The pipeline is created in the `default` Harness organization under the [APISample project](#example-create-a-project-through-api).
 
 To use this command replace `ACCOUNT_ID` with your [Harness account ID](#get-your-account-id), and replace `API_KEY_TOKEN` with your [token](#create-a-harness-api-key-and-token).
 

@@ -153,7 +153,7 @@ The following cases *always* require environment variables:
 1. Add the **GitHub Action plugin** step to your pipeline's **Build** stage.
 2. Enter a **Name** and optional **Description**.
 
-   Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+   Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 3. For **Uses**, specify the repo and branch or tag of the GitHub Action that you want to use, for example `actions/setup-go@v3`.
 
@@ -174,8 +174,8 @@ The following cases *always* require environment variables:
 
 6. Optionally, you can set the **Timeout**. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-   * [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-   * [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+   * [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+   * [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 :::tip Tips
 
@@ -399,6 +399,14 @@ The following table compares GitHub Action YAML with Harness CI Action step YAML
 </tr>
 </table>
 
-## Troubleshooting: Can't connect to Docker daemon
+## Troubleshooting the Action step
+
+### Can't connect to Docker daemon
 
 <DindTrbs />
+
+### Not a git repository (or any of the parent directories)
+
+This error occurs if the GitHub Action you're using requires a codebase to be present, such as the [GraphQL Inspector](https://github.com/marketplace/actions/graphql-inspector) or [DevCycle Feature Flag Code Usages](https://github.com/marketplace/actions/devcycle-feature-flag-code-usages) Actions. The Action step isn't compatible with such Actions at this time.
+
+If the Action allows you to override the `working-directory`, such as with the [CodeCov Action](https://github.com/codecov/codecov-action/blob/e1dd05cde2ed37d100f658b34ea423728ba1812e/action.yml#L107), you can use this setting to specify the correct working directory. If no such setting is available, then the Action is not compatible with Harness CI at this time.

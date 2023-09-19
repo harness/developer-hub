@@ -15,7 +15,7 @@ Harness offers support for all major APM vendors and log providers, but there ar
 
 ## Before You Begin
 
-[Add Custom Health as a Verification Provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-custom-health)
+[Add Custom Health as a Verification Provider](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-custom-health)
 
 ## Review: CV Setup Options
 
@@ -195,7 +195,7 @@ Select how long you want Harness to analyze and monitor the APM data points. Har
 
 The recommended **Duration** is **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
+In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md).
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -203,8 +203,8 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 * [Select Delegates with Selectors](../../platform/../../platform/delegates/manage-delegates/select-delegates-with-selectors.md)
 
 

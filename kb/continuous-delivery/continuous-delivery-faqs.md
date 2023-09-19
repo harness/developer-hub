@@ -65,7 +65,7 @@ If you use a looping strategy then you will not be able to apply conditional exe
 
 #### How to upload a file into a specific folder present in the harness filestore from the pipeline stage (PowerShell script)?
 
-This can be achieved by using an API which you can invoke using PowerShell https://apidocs.harness.io/tag/File-Store/#operation/create
+This can be achieved by using an API which you can invoke using [PowerShell]( https://apidocs.harness.io/tag/File-Store/#operation/create).
 
 #### How to Use Expressions or Variables in Repeat Looping Strategy?
 
@@ -79,7 +79,7 @@ Always execute step runs regardless of success or failure but in order to trigge
 
 No, Harness uses a fixed limit of 2 in its release history cleanup logic. This value cannot be changed. 
 
-See - /docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#important-notes
+See - [here](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#important-notes)
 
 #### What happens if my manifest files are changed during pipeline execution, will harness pick the latest file?
 
@@ -101,7 +101,7 @@ Check this for more info - /docs/platform/secrets/add-use-text-secrets
 
 The K8s delete command/step does not work with native helm deployment because Harness has different logic to maintain versioning and rollback for native helm and k8s.In the case of the native helm, If the deployment fails, we’ll uninstall it ourselves. However, if the user wants to pass some command flags with Uninstall, that can be passed by selecting Uninstall and passing the relevant command flags. 
 
-Check this for more details - /docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#uninstall-command-flag
+Check this for more details - [here](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#uninstall-command-flag)
 
 #### How do I run helm uninstall after a successful deployment?
 
@@ -379,8 +379,7 @@ You cannot do it if the stage is part of the same pipeline. However, using Pipel
 
 #### How can we use conditionals within variables using jexl?
 
-You can use Ternary operators to achieve this use case more information on this here: /docs/platform/variables-and-expressions/harness-variables/#ternary-operators
-
+You can use Ternary operators to achieve this use case more information on this [here](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#ternary-operators).
 #### How do we easily change git folders in a repo for the git exp project?
 
 The default branch and file path will not be changeable after the creation as we store data in Git end and only metadata is stored in Harness. 
@@ -453,27 +452,28 @@ So older deployments will not be available.
 
 #### Currently we make use of this feature from FirstGen. Is there, or will there be an equivalent feature in Next Gen?
 
-/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint/ 
+Consider the below mentionings :
 
-You can Use Webhook notifications in NG to inform an external application of an event.
-/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#webhook-notifications 
+- Reference 1 : [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint/)
+
+- Reference 2 : You can Use Webhook notifications in NG to inform an external application of an event. Refer to this [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#webhook-notifications) 
 
 #### How to use spilt function on variable
 
 You can split on any delimiter and use index based access.
 For ex: if you have a variable with prod-environment-variable so you can use below to get prod
-<+<+pipeline.variables.envVar>.split('-')[0]>
+```<+<+pipeline.variables.envVar>.split('-')[0]>```
 
 #### How to use Substring function on variable
 
 You can use substring function and need to pass starting and end index
 For ex: if you have a variable with prod-environment-variable so you can use below to get prod
-<+<+pipeline.variables.envVar>.substring(0,3)>
+```<+<+pipeline.variables.envVar>.substring(0,3)>```
 
 #### How to pass value to a variable manually while running from ui if same pipeline is configured to run via trigger and using variable from trigger.
 
 You can check the triggerType variable to identify if pipeline was invoked via trigger or manually and can use below jell condition 
-<+<+pipeline.triggerType>=="MANUAL"?<+pipeline.variables.targetBranch>:<+trigger.targetBranch>>
+```<+<+pipeline.triggerType>=="MANUAL"?<+pipeline.variables.targetBranch>:<+trigger.targetBranch>>```
 
 #### Can I set up advanced deployment strategies for Google Cloud Functions, like canary deployments?
 
@@ -491,21 +491,21 @@ OR
 
 #### Can a non-git-sync'd pipeline consume a git-sync'd template from a non-default branch?
 
-Yes an Inline pipeline can consume a template from non-default branch.  More on this can be referenced here https://developer.harness.io/release-notes/whats-new/#continuous-delivery-version-79811
+Yes an Inline pipeline can consume a template from non-default branch.  More on this can be referenced [here](https://developer.harness.io/release-notes/whats-new/#continuous-delivery-version-79811)
 
 #### Is there a way I can update the git repo where the pipeline YAML resides?
 
-Yes you can use this API https://apidocs.harness.io/tag/Pipelines#operation/update-pipeline-git-metadata to update the Git repo of the pipeline.
+Yes, you can use this [API](https://apidocs.harness.io/tag/Pipelines#operation/update-pipeline-git-metadata) to update the Git repo of the pipeline.
 
 #### Is there a way to generate a dynamic file with some information in one stage of the pipeline and consume that file content in a different pipeline stage?
 
 For CI :
 
-You can refer to this doc : /docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/
+You can refer to this [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/).
 
 For CD :
 
-You can use API to create file in harness file store and then refer it to other stage. https://apidocs.harness.io/tag/File-Store#operation/listFilesAndFolders
+You can use API to create file in harness file store and then refer it to other stage. Refer [here](https://apidocs.harness.io/tag/File-Store#operation/listFilesAndFolders).
 
 Or
 
@@ -513,11 +513,11 @@ You can just write a file on the delegate and use the same delegate.
 
 #### How can I get pipeline exectuion details via API
 
-This API can be used to fetch pipleine execution details : https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
-
+This API can be used to fetch pipleine execution details. Refer more on this [here](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
+)
 #### How to do a Flank Deployment in Harness?
 
-You can use Deployment Templates for this use case. You can find more information on this here: /docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/
+You can use Deployment Templates for this use case. You can find more information on this [here](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/).
 
 #### How to test harness entities (service, infra, environment) changes through automation
 
@@ -722,7 +722,7 @@ You can enable "Skip Terraform Refresh when inheriting Terraform plan" option, p
 
 #### For variables do we have options to intake parameters via dropdown or radio buttons etc ?
 
-Yes we do, here in the following [Documentation](/docs/platform/references/runtime-inputs/#supplying-runtime-inputs-during-execution) , with allowed values you can have multiple inputs to select from range of values allowed.
+Yes we do, here in the following [Documentation](/docs/platform/variables-and-expressions/runtime-inputs/#supplying-runtime-inputs-during-execution) , with allowed values you can have multiple inputs to select from range of values allowed.
 
 #### In fetch pipeline summary API, what does the fields "numOfErrors" and "deployments" mean?
 
@@ -1112,13 +1112,11 @@ Also, for the kubernetes job, if you use the Apply step instead of Rollout then 
 
 #### Backup resource yaml files
 
-We do have git experience where you can save your yaml files for pipeline , inputset and templates to your git. 
-
+- We do have git experience where you can save your yaml files for pipeline , inputset and templates to your git. 
 [Documentation](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities)
  
-We don't save yaml's for service and other entities like we used to in First Generation: [Documentation](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code/#does-the-configuration-as-code-support-matrix-include-entities-supported-by-git-experience)
- 
-[Documentation](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code/#why-did-harness-reduce-the-number-of-supported-entities-backed-by-git)
+- We don't save yaml's for service and other entities like we used to in First Generation: 
+[Documentation 1](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code/#does-the-configuration-as-code-support-matrix-include-entities-supported-by-git-experience) and [Documentation 2](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code/#why-did-harness-reduce-the-number-of-supported-entities-backed-by-git).
 
 
 #### Running into Harness Platform Rate limits?
@@ -1160,113 +1158,146 @@ Yes, It works for config files added to the service and not any config file from
 
 No, for the Harness based locking on infrastructure, currently the max is 20 and its not configurable, since we allow only 1 concurrent execution per infra. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/workflow-queuing/#limitations).
 
-### Does the container step in CD override the entry point when using the command input?
+#### Does the container step in CD override the entry point when using the command input?
 
 The entry point in the base image will be overwritten as we have to run the commands specified in the run step.
 
-### How does Harness Terraform Work and Rollback Work?
+#### How does Harness Terraform Work and Rollback Work?
 Harness integrates with Terraform to create tasks that define infrastructure changes, execute Terraform plans, and apply changes to your infrastructure. In case of issues or failures, it provides the capability to roll back to a previously known good state using Terraform state management.
 
-### What are Service Variables in the context of Harness?
+#### What are Service Variables in the context of Harness?
 Service Variables in Harness are dynamic parameters or values that can be used within your deployment workflows to customize and control the behaviour of your services and pipelines.
 
-### What is the purpose of overriding Service Variables in the Environment configured in the Stage Harness?
+#### What is the purpose of overriding Service Variables in the Environment configured in the Stage Harness?
 Overriding Service Variables allows you to modify or specify specific values for your services in a particular environment or stage, ensuring that each deployment uses the appropriate configurations.
 
-### How do I override Service Variables in a Harness Environment within a Stage?
+#### How do I override Service Variables in a Harness Environment within a Stage?
 You can override Service Variables in Harness by navigating to the specific Environment within a Stage configuration and then editing the Environment's settings. You can specify new values for the Service Variables in the Environment settings.
 
-### Can I override Service Variables for only certain services within an Environment
+#### Can I override Service Variables for only certain services within an Environment
 You can selectively override Service Variables for specific services within an Environment.
 
-### What happens if I don't override Service Variables for a specific Environment in a Stage?
+#### What happens if I don't override Service Variables for a specific Environment in a Stage?
 If you don't override Service Variables for a particular Environment in a Stage, the values defined at the Service level will be used as the default configuration. This can be useful for consistent settings across multiple Environments.
 
-### Can I use expressions or reference other variables when overriding Service Variables?
+#### Can I use expressions or reference other variables when overriding Service Variables?
 You can use expressions and reference other variables when overriding Service Variables in Harness. This allows you to create dynamic configurations based on the values of other variables or calculations.
 
-### Are there any safety measures to prevent unintended changes when overriding Service Variables?
+#### Are there any safety measures to prevent unintended changes when overriding Service Variables?
 Harness typically provides auditing features to track changes made to Service Variables, helping prevent unintended changes and ensuring accountability.
 
-### Can I revert or undo the overrides for Service Variables in an Environment?
+#### Can I revert or undo the overrides for Service Variables in an Environment?
 You can revert or undo the overrides for Service Variables in an Environment anytime you can revert variables to their default values.
 
-### What are some common use cases for overriding Service Variables in an Environment?
+#### What are some common use cases for overriding Service Variables in an Environment?
 
    - **Environment-specific configurations:** Tailoring database connection strings, API endpoints, or resource sizes for different environments (e.g., dev, staging, production).
    - **Scaling:** Adjusting resource allocation and load balancer settings for different deployment environments.
 
-### Where can I find more information and documentation on overriding Service Variables in Harness?
+#### Where can I find more information and documentation on overriding Service Variables in Harness?
 You can find detailed documentation and resources on how to override Service Variables in Harness here:https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides/
 
-### What can be templated using Harness Templates in Next Gen?
+#### What can be templated using Harness Templates in Next Gen?
 You can create templates for various components like steps, stages, and pipelines.
 
-### Can I version control Harness Templates?
+#### Can I version control Harness Templates?
 Yes, Harness typically provides version control for templates, allowing you to track changes and roll back to previous versions if needed.
 
-### Can I share templates across different projects or teams?
+#### Can I share templates across different projects or teams?
 Yes, you can share templates across projects and teams in Harness If the template is created at the organisation and account level scope, making it easy to maintain consistency and best practices.
 
-### Can I customize or modify templates for specific use cases?
+#### Can I customize or modify templates for specific use cases?
 Yes, you can customize templates for specific use cases by creating versions of templates and making adjustments as needed. Templates provide a starting point that can be used for specific requirements.
 
-### Is it possible to deploy Cloud Functions across multiple GCP regions with Harness?
+#### Is it possible to deploy Cloud Functions across multiple GCP regions with Harness?
 Yes, you can configure deployment pipelines in Harness to deploy your Google Cloud Functions across multiple regions for redundancy and improved performance.
 
-### What deployment strategies can I use with Google Cloud Functions in Harness?
+#### What deployment strategies can I use with Google Cloud Functions in Harness?
 The harness supports various deployment strategies, including Blue/Green, Canary, and Rolling deployments. You can choose the strategy that best fits your use case and define deployment criteria and rollback conditions accordingly.
 
-### Can I use Harness to manage environment-specific configurations for my Cloud Functions?
+#### Can I use Harness to manage environment-specific configurations for my Cloud Functions?
 Yes, Harness supports environment-specific configurations for your functions. You can use Harness secrets management to store sensitive information, such as API keys or database credentials, and inject them into your Cloud Functions during deployment.
 
-### What types of events can trigger notifications in Harness pipelines?
+#### What types of events can trigger notifications in Harness pipelines?
 Notifications can be triggered for various events, such as pipeline starts, pipeline successes, pipeline failures, specific workflow steps, and manual approvals. You can customize the triggers based on your requirements.
 
-### What is Kustomize, and how does it relate to Harness Next-Gen?
+#### What is Kustomize, and how does it relate to Harness Next-Gen?
 Kustomize is a Kubernetes-native configuration management tool that simplifies the customization of Kubernetes manifests. In Harness Next-Gen, Kustomize is used to manage and customize Kubernetes manifests for deployments.
 
-### What are Kustomize overlays, and why are they useful?
+#### What are Kustomize overlays, and why are they useful?
 Kustomize overlays are a way to customize and extend Kubernetes manifests without modifying the original base manifests. Overlays allow you to apply environment-specific configurations, such as namespace, labels, and resource limits, to the base manifests, making it easier to manage different environments (e.g., dev, test, prod) within a single repository.
 
-### Can I use variables and secrets with Kustomize overlays in Harness?
+#### Can I use variables and secrets with Kustomize overlays in Harness?
 Yes, you can use Harness variables and secrets in your Kustomize overlays to parameterize configurations and securely manage sensitive data.
 
-### What is the deployment process for Kustomize-based applications in Harness Next-Gen?
+#### What is the deployment process for Kustomize-based applications in Harness Next-Gen?
 When you deploy a Kustomize-based application in Harness, Harness will automatically apply the specified overlay based on the target environment, ensuring that the Kustomized Kubernetes manifests are deployed correctly.
 
-### Can I preview and validate Kustomize manifests in Harness before deployment?**
+#### Can I preview and validate Kustomize manifests in Harness before deployment?**
 Yes, Harness provides a preview and validation feature for Kustomize manifests, allowing you to review and validate the customised manifests for correctness before initiating a deployment.
 
-### What are the benefits of using Kustomize manifest with Harness Next-Gen for Kubernetes deployments?
+#### What are the benefits of using Kustomize manifest with Harness Next-Gen for Kubernetes deployments?
 Using Kustomize with Harness simplifies the management of Kubernetes manifests by providing a declarative and version-controlled approach to customizations. It ensures consistency across environments and simplifies the deployment process.
 
-### Does Harness Next-Gen support GitOps workflows with Helm Charts?
+#### Does Harness Next-Gen support GitOps workflows with Helm Charts?
 Yes, you can integrate Harness Next-Gen with Git repositories that use Helm Charts for GitOps workflows. Harness can synchronize with your Git repository, pull Helm Charts, and deploy them as needed.
 
-### Can I use Helm Charts from public repositories like Helm Hub with Harness Next-Gen?
+#### Can I use Helm Charts from public repositories like Helm Hub with Harness Next-Gen?
 You can use Helm Charts from public Helm repositories like Helm Hub. Harness Next-Gen allows you to specify the Helm repository URL and Chart version when configuring your deployment.
 
-### Can I use SSH keys for authentication in Harness Next-Gen SSH deployments?
+#### Can I use SSH keys for authentication in Harness Next-Gen SSH deployments?
 Yes, Harness Next-Gen supports SSH key-based authentication. When deploying to remote servers, you can configure Harness to use SSH keys for secure authentication.
 
-### Can I use SSH deployments in combination with other deployment strategies in Harness Next-Gen?
+#### Can I use SSH deployments in combination with other deployment strategies in Harness Next-Gen?
 Yes, you can incorporate SSH deployments into your deployment pipelines along with other strategies, such as container deployments or Helm Chart deployments, to support complex multi-tiered applications.
 
-### Which versions of ArgoCd that the latest version of the GitOps agent support? 
+#### Which versions of ArgoCd that the latest version of the GitOps agent support? 
 We currently support v2.7.8
  
-### The GitOps agent updater, can you advise that this will update the agent, argocd and redis? Is this also true if use the option to bring our own ArgoCd?
+#### The GitOps agent updater, can you advise that this will update the agent, argocd and redis? Is this also true if use the option to bring our own ArgoCd?
  
 It is used to update agents only whenever a new version is available. The Argo CD components upgrade must be done manually
 
  
-### Also, is it possible to automate the provisioning of the GitOps agent using a helm chart without having to register/create the agent in the UI first? At the moment it looks like you need to create the agent in the UI which then generates the yaml or helm chart for you.
+#### Also, is it possible to automate the provisioning of the GitOps agent using a helm chart without having to register/create the agent in the UI first? At the moment it looks like you need to create the agent in the UI which then generates the yaml or helm chart for you.
 Yes, using Terraform, it is possible to automate the provisioning of the GitOps agent without having to register/create an agent in the UI.
 
-### Is there a way in the harness where we can use bash shell over WinRM connection?
+#### Is there a way in the harness where we can use bash shell over WinRM connection?
 Yes, you can use Bash shell over WinRM connection in Harness. In the Shell Script step, you can select Bash as the Script Type and specify the WinRM target host to execute the script on.
 
-### Is it possible to use Helm hooks in Harness Helm deployments?
+#### Is it possible to use Helm hooks in Harness Helm deployments?
 Yes, you can use Helm hooks in Harness Helm deployments. Helm hooks allow you to execute specific actions or scripts at different points in the Helm chart's lifecycle, such as before or after installing or upgrading a release. Harness supports the use of Helm hooks as part of your Helm deployment process.
 
+#### I have a placmenetStrategy defined but I don't see it reflected in the task.
+Please check if you have defined placement strategy in service definition and not under task definition
+
+#### When I started setting up the pipelines in Harness, I used my Github PAT. But I couldn't find where I set it and was wondering if it's allowed to be updated by the PAT owner or from your side.
+Usually Git PAT is stored in secret manager and you reference that secret inside connector, so need to update the PAT in secret manager where it's stored.
+
+#### We have templated workflow variables and wish these can be passed from git based Triggers. The values for these variables will be metadata of a pull request
+You can create workflow variable and set the value to corresponding metadata field available as per type of trigger pullrequest variable
+
+#### How to clone files from git repository within a Shell script step?
+We do not natively support leveraging GitHub Connectors within a shell script. However, you can configure an SSH Key or HTTP Authentication by referring to the same secret as your connector does in your shell script. This way, you only need to define and rotate your credentials in one place.
+
+#### Can I send content of a pipeline as attachment in email within harness ?
+
+No, email step in pipelines do not support attachments.
+
+#### Can I control sequence of serial and parellel in  Multi Services/Environments ?
+
+No, we cannot control the sequence for Multi Services/Environment deployments. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv/#deploying-in-parallel-or-serial)
+
+#### Do we have an example for ternary operators ?
+
+Yes, pleare refer to the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/)
+
+#### Does Harness Support Google cloud functions 1st Gen and 2nd Gen?
+Yes, Harness supports both 1st gen and 2nd gen. 
+
+See: [https://developer.harness.io/docs/faqs/continuous-delivery-faqs/#google-cloud-functions]
+
+#### How can I use Harness CD with Google Cloud Functions?
+Harness CD pipelines help you to orchestrate and automate your Google Cloud Function deployments and push updated functions to Google Cloud.
+
+See: [https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func/]
