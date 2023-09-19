@@ -14,7 +14,7 @@ Harness has introduced an enhanced experience for service, environment, and infr
 
 Overrides can be defined at project, organization, and account levels.
 
-In **Account Settings > Account Resources > Continuous Deployment**, set the **Enable Service Override V2** to `true` for the enhanced overrides experience. 
+In **Account Settings > Account Resources > Default Settings > Continuous Deployment**, set the **Enable Service Override V2** to `true` for the enhanced overrides experience. 
 
 ![overridesV2](./static/overrides-v2.png)
 
