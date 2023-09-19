@@ -8,7 +8,7 @@ Harness enables you to provide metadata for organizing, searching, and filtering
 
 ## Before you begin
 
-* Go to [Platform overview](/docs/platform/1_Get-started/platform-concepts/platform-overview.md).
+* Go to [Onboarding guide](/docs/platform/get-started/onboarding-guide).
 * Go to [Tags reference](/docs/platform/references/tags-reference/).
 
 ## Review: Tag guidelines
@@ -21,14 +21,14 @@ Using tags, you can overlay your organization’s structure onto Harness resourc
 * Marking applications and components for reuse, preservation, or deletion.
 * Allocating costs.
 
-Some examples of Tag keys, with representative values, are:
+Some examples of tag keys, with representative values, are:
 
 * `org: engineering`
 * `owner: jenny`
 * `validUntil: 1557444441`
 * `do-not-delete`
 
-The final Tag example above is a key with no value. If assigned to a component, such a tag with no value simply acts like a flag.
+The final tag example above is a key with no value. If assigned to a component, such a tag with no value simply acts like a flag.
 
 ### Tag format restrictions
 
@@ -44,13 +44,13 @@ The final Tag example above is a key with no value. If assigned to a component, 
 
 * A Harness account can maintain a maximum of 500 tag names.
 * Each application, or application component, can have a maximum of 50 tags applied.
-* Each instance of a tag key can have only one value when applied to an application or component, .
+* Each instance of a tag key can have only one value when applied to an application or component.
 * The Tag-name prefix `harness.io/` is reserved for future use by Harness.
 
 **Tag names** (keys) have the following restrictions:
 
 * Length: 1 to 128 characters.
-* Allowed characters: letters, numbers, spaces, `_,-,/`
+* Allowed characters: letters, numbers, spaces, `_,-,/`.
 * Names: Must be unique across your Harness account.
 * Names are case-sensitive.
 * Names must not begin with the characters `_, -` or spaces.
@@ -59,13 +59,13 @@ The final Tag example above is a key with no value. If assigned to a component, 
 **Tag values**, when applied to applications or components, have the following restrictions:
 
 * Length: 0 to 256 characters. (Entering a value is optional—unless the tag key imposes [Allowed values](#allowed_values), in which case one of those values is required.)
-* Allowed characters: letters, numbers, spaces, `_,-,/`
+* Allowed characters: letters, numbers, spaces, `_,-,/`.
 * Values are case-sensitive.
 * Must not begin with the characters `_, -` or spaces.
 
 ## Review: Tag scope
 
-Tags can be added to Harness applications, and to the following application components:
+Tags can be added to Harness applications and the following application components:
 
 * Service
 * Environment
@@ -75,7 +75,7 @@ Tags can be added to Harness applications, and to the following application comp
 
 ## Step 1: Assign required permissions
 
-Your options for interacting with Tags depend on your Harness [User group permissions](/docs/platform/user-management/harness-default-user-groups/), as follows:
+Your options for interacting with tags depend on your Harness [User group permissions](/docs/platform/user-management/harness-default-user-groups/), as follows:
 
 * All users can view tags (and values) that have been applied to applications and their components.
 * Users' [Application permissions](/docs/platform/role-based-access-control/ref-access-management/permissions-reference/) determine their ability to apply, update, and remove tags on specific applications and application components.
