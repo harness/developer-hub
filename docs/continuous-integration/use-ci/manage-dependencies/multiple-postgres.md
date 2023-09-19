@@ -11,12 +11,12 @@ import TabItem from '@theme/TabItem';
 
 This topic explains how to use **Background** steps to run multiple PostgreSQL instances in a Harness CI pipeline.
 
-## Requirements
+You need:
 
-* You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
-* You need an understanding of PostgreSQL and the [psql command](https://www.postgresql.org/docs/current/app-psql.html).
+* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
+* An understanding of PostgreSQL and the [psql command](https://www.postgresql.org/docs/current/app-psql.html).
 
-## Add Background steps
+## Add PostgreSQL Background steps
 
 Add one **Background** step for each PostgreSQL service you need to run.
 
@@ -170,7 +170,7 @@ For the `POSTGRES_PASSWORD`, you can use an expression to [reference a Harness t
 </Tabs>
 ```
 
-## Test the services
+## Test the PostgreSQL services
 
 You can add a [Run step](../run-ci-scripts/run-step-settings.md) to confirm your PostgreSQL services are running before running other steps that need to interact with those services.
 
