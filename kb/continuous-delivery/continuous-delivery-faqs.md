@@ -1314,6 +1314,7 @@ You can always create dashboards to help you gain insights into your data. Howev
 ### Does a pipeline delegate selector override the service infrastructure?
 It doesn't override the service infrastructure. Instead, it only changes which delegate will execute the necessary operations of your pipeline.
 
+<<<<<<< HEAD
 ### Can Harness able to monitor for when a particular image tag changes on DockerHub in order to initiate a hands-free build and push to our repo?
 Yes, You can setup a trigger based on the image tag changes on DockerHub repo as suggested in this[ doc.](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/)
 
@@ -1337,3 +1338,32 @@ By using the following expression on the target stage, you will be able to propa
 
 ###  Why can I run the pipeline during a freeze window?
 You're probably an administrator or you have the permission to [override freeze windows](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#access-control). Users with this role can still perform deployments.
+=======
+#### What does the error 'org.eclipse.jgit.api.errors.TransportException: git-upload-pack not permitted on' mean?
+
+This error typically indicates a permission issue related to the Git connector used in the pipeline. It often occurs when the credentials or tokens being used for Git access lack the necessary permissions to clone or access the specified repository. To resolve it, validate the authentication setup and ensure the provided credentials have the required permissions for the repository in question.
+
+### Harness Annotations and Their Usage
+
+#### What annotations can be applied in Harness?
+
+Harness provides several annotations that can be applied to Kubernetes resources. Here are the annotations and their purposes:
+
+1. `harness.io/skip-versioning: "true"`:
+   - Purpose: Use this annotation when versioning of a resource is not required. Harness stores this information in a ConfigMap in your Kubernetes cluster.
+   - Reference: [Kubernetes Versioning and Annotations](/docs/first-gen/firstgen-platform/techref-category/cd-ref/platforms-ref/versioning-and-annotations.md)
+
+2. `harness.io/direct-apply: "true"|"false"`:
+   - Purpose: Set this annotation to "true" to make a manifest an unmanaged workload. This is useful for scenarios like Canary and Blue-Green deployments where you want to deploy additional workloads as unmanaged.
+   - Reference: [What can I deploy in Kubernetes?](/docs/first-gen/firstgen-platform/techref-category/cd-ref/platforms-ref/what-can-i-deploy-in-kubernetes.md)
+
+3. `annotations: harness.io/primary-service: "true"` and `annotations: harness.io/stage-service: "true"`:
+   - Purpose: Use these annotations when you have multiple services, and Harness needs to identify the primary service. These annotations are commonly used in Blue-Green Deployments.
+   - Reference: [Create a Kubernetes Blue-Green deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
+
+4. `harness.io/skipPruning: "true"`:
+   - Purpose: Apply this annotation to ensure that a resource is not pruned. This is typically used for resources deployed by Harness to prevent accidental removal.
+   - Reference: [Prune Kubernetes resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources.md)
+
+These annotations help customize and control how Harness manages and deploys resources in your Kubernetes environment.
+>>>>>>> f4c98012f (Adding 2 questions to CDS FAQ)
