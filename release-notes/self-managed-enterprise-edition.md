@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-08-23T10:00
+date: 2023-09-19T10:00
 sidebar_position: 13
 ---
 ```mdx-code-block
@@ -599,11 +599,13 @@ gsutil -m cp \
   .
 ```
 
+#### New features and enhancements
+
 #### Self-Managed Enterprise Edition
 
-- Harness updated CI Manager and the delegate to improve performance testing.(SMP-2022)
+- Updated CI Manager and the delegate to improve performance testing.(SMP-2022)
 
-- Added the following rule to the `log-service` virtual service. (SMP-2023)
+- Added the following rule to the `log-service` virtual service for performance testing. (SMP-2033)
 
    ```yaml
    - uri:
@@ -614,13 +616,49 @@ gsutil -m cp \
 
 - Updated the Helm chart to support proxy configuration for AWS SDK clients. (CCM-14374)
 
-#### Custom Dashboards
+- Updated the Helm chart to support AWS regions other than the default `us-east-1` region. (CCM-14415)
+   
+   ```
+   S3
+   s3.<region>.amazonaws.com
+   <bucket>.s3.<region>.amazonaws.com
 
-- Updated to an FIPS compliant algorithm for short term caching key generation. (CDB-1107)
+   STS
+   sts.<region>.amazonaws.com
+
+   EC2
+   ec2.<region>.amazonaws.com
+
+   ECS
+   ecs.<region>.amazonaws.com
+
+   cloudwatch
+   monitoring.<region>.amazonaws.com
+   ```
 
 #### Chaos Engineering
 
 - Added support for Chaos Engineering version 1.19.x. (CHAOS-2544)
+
+#### Continuous Delivery
+
+- Added the GitOps feature flag at the org level. (CDS-79545)
+
+#### Custom Dashboards
+
+- Updated to an FIPS compliant algorithm for short term caching key generation. (CDB-1107)
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+#### Continuous Integration
+
+- Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used delegate selectors based on delegate tags, and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. (CI-8831, ZD-47647)
+
+- (CI-9262)
 
 ##### 0.8.2
 
@@ -657,10 +695,19 @@ gsutil -m cp \
   .
 ```
 
+#### New features and enhancements
+
 - Updated the UBI to 8.8 to address potential Go vulnerabilities. (CDS-75674)
 
 - Added a prefix for all log service created streams and support for backward compatibility with earlier streams. (CI-9000)
 
+#### Early access features
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+This release does not include any fixed issues.
 
 ## Previous releases
 
@@ -704,11 +751,11 @@ gsutil -m cp \
   .
 ```
 
-#### What's new
+#### New features and enhancements
 
 This release does not include new features.
 
-#### Early access
+#### Early access features
 
 This release does not include any early access features.
 
@@ -756,7 +803,7 @@ gsutil -m cp \
   .
 ```
 
-#### What's new
+#### New features and enhancements
 
 - Send emails to non-Harness users. (CDS-69561, CDS-58625, ZD-42496)
   
@@ -768,7 +815,7 @@ gsutil -m cp \
 
 - The [Harness Helm charts](https://github.com/harness/helm-charts) `values.yaml` file is updated to include Error Tracking images. (SMP-1615)
 
-#### Early access
+#### Early access features
 
 This release does not include any early access features.
 
@@ -812,7 +859,7 @@ gsutil -m cp \
   .
 ```
 
-#### What's new
+#### New features and enhancements
 
 #### Continuous Integration
 
@@ -931,7 +978,7 @@ gsutil -m cp \
 
 - The Monitored Service listing page now displays a summary of changes related to the number of feature flags and chaos experiments, along with the other custom change sources. (SRM-14742)
 
-#### Early access
+#### Early access features
 
 #### Continuous Integration
 
@@ -1248,7 +1295,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.347.19 |
 | LE NG | 67808 |
 
-#### What's new
+#### New features and enhancements
 
 #### Self-Managed Enterprise Edition
 
@@ -1455,7 +1502,7 @@ This release includes the following Harness module and component versions.
 
 - An icon appears on the SLO performance trend chart timeline to indicate when the error budget was reset and the amount of budget that was added. (SRM-14550)
 
-#### Early access
+#### Early access features
 
 ##### Harness Delegate
 
@@ -1889,7 +1936,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-#### What's new
+#### New features and enhancements
 
 - You can now use an external database with your installation. For more information, go to [Use an external database](/tutorials/self-managed-enterprise-edition). (SMP-545)
 
@@ -1968,7 +2015,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 | LE NG | 67708 |
 
 
-#### What's new
+#### New features and enhancements
 
 #### Self-Managed Enterprise Edition
 - Beginning with v0.5.0, Harness will no longer publish `harness-prod` or `harness-demo` Helm charts. Harness will publish the `harness` base chart only. If you currently use the `harness-prod` or `harness-demo` Helm chart, you must download your `custom-override.yaml` file from [the helm-charts repository](https://github.com/harness/helm-charts/tree/main/src) and use the following commands to upgrade:
