@@ -32,15 +32,11 @@ The final Tag example above is a key with no value. If assigned to a component, 
 
 ### Tag format restrictions
 
-Tag names and values are restricted to the following format:
+- Tag names and values are restricted to the following format:
 
-`^[/A-Za-z0-9 _-]+`
+   `^[/A-Za-z0-9 _-]+`
 
-If you are adding tags in workflows and pipelines, you can use variable expressions in the names and values. Variable expressions follow the format `${<variable_name>}`.
-
-When the variable expression is evaluated by Harness, it does **not** need to meet the standard tag format restrictions. It has no restrictions.
-
-For more information, go to [Use expressions in workflow and pipeline tags](use-expressions-in-workflow-and-pipeline-tags.md).
+- Harness variable expressions cannot be used in tags.
 
 ### Tag general restrictions
 
