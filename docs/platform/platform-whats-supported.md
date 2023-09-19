@@ -44,11 +44,11 @@ The Harness Platform is structured hierarchically with three levels of access: A
 
 ### Scopes
 
-The Account scope is the highest level. It is your Harness account, and it encompasses all the resources within your Harness subscription.
+- **Account** is the highest level. It is your Harness account, and it encompasses all the resources within your Harness subscription.
 
-The Organization scope encompasses projects, resources, and users in a specific domain or business unit. This allows for the management of resources and permissions unique to an organization, separate from other areas of the account.
+- **Organization** encompasses projects, resources, and users in a specific domain or business unit. This allows for the management of resources and permissions unique to an organization, separate from other areas of the account.
 
-The Project scope contains related resources, such as apps, pipelines, and environments. This allows for the management of resources and permissions specific to a particular project, separate from the larger org (business unit) and account.
+- **Project** contains related resources, such as apps, pipelines, and environments. This allows for the management of resources and permissions specific to a particular project, separate from the larger org (business unit) and account.
 
 The scope at which you create resources depends on the level of control and visibility you require. For example, if you create a connector at the account scope, it is available to all organizations and projects within the account. However, if you create a connector at the organization scope, it is only available to that organization and any projects under that organization. It is not available at the account scope or to other organizations. This lets you control access to your resources more effectively and prevent unauthorized access.
 
