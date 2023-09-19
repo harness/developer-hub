@@ -27,7 +27,7 @@ import Gitxsup from '/docs/get-started/shared/gitx-whats-supported.md'
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Authentication" label="Authentication">
+  <TabItem value="AuthN" label="AuthN">
 ```
 
 import Authsup from '/docs/get-started/shared/auth-supported.md'
