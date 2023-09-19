@@ -142,7 +142,7 @@ Role-based access control (RBAC) lets you control who can access your resources 
 
 Using RBAC helps you:
 
-- Ensure users can only access the information and resources necessary to perform their tasks. This reduces the risk of security breaches and unauthorized access to sensitive data.
+- Ensure that users can only access the information and resources necessary to perform their tasks. This reduces the risk of security breaches and unauthorized access to sensitive data.
 - Create systematic, repeatable permissions assignments. RBAC saves time and increases efficiency for administrators who otherwise have to manage access for individual user accounts. You can quickly add and change roles, as well as implement them across APIs.
 - Increase accountability by clearly defining who has access to which resources and information. This makes it easier to track and audit user activities, helping to identify and prevent misuse or abuse of access privileges.
 - Comply more effectively with regulatory and statutory requirements for confidentiality and privacy. It helps you enforce privacy and data protection policies.
