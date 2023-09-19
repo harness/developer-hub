@@ -3327,7 +3327,7 @@ With these requirements met, the cluster imports the credentials from the Docker
 
 
 :::warning
-Please be mindful that certain expressions within artifact sources may only be fully resolved at the time of pipeline execution. Notably, expressions like `<+project.name>` and `<+org.name>` may not provide values when trying to populate runtime dropdowns, including those used for loading tags.
+It's important to keep in mind that some expressions in artifact sources may not be fully resolved during pipeline execution. This means that certain expressions such as `<+project.name>` and `<+org.name>` may not provide values when trying to populate runtime dropdowns, including those used to load tags.
 :::
 
 ## Sidecar workloads
