@@ -630,5 +630,8 @@ spec:
     - <+execution.steps.select_delegate.output.outputVariables.HOST_SELECTOR>
 ```
 
+#### Does the NextGen platform support the same cron syntax for triggers as the FirstGen platform?
+Yes, the NextGen platform supports both the QUARTZ and UNIX syntax formats for cron triggers. You can find further details in our documentation here: [Schedule Pipelines Using Cron Triggers](https://developer.harness.io/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
+
 
 
