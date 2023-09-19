@@ -122,6 +122,7 @@ import Secretmgmtsup from '/docs/get-started/shared/secret-management-supported.
   <TabItem value="Access Control" label="Access Control">
 ```
 
+
 Role-based access control (RBAC) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups.
 
 - [Manage users](/docs/platform/role-based-access-control/add-users): A Harness user is an individual with a unique email registered with Harness. Users can be associated with multiple accounts and user groups.
