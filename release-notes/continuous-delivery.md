@@ -46,7 +46,7 @@ This release does not have new features.
 
 ### Fixed issues
 
-- Previously, the delegate selector was available in the Configure Container step YAML only. This option is now available as an advanced option in the Configure Container step UI. (CDS-78948, ZD-50674)
+- Previously, the delegate selector was available in the Container step YAML only. This option is now available as an advanced option in the Container step UI. (CDS-78948, ZD-50674)
 
   ![](./static/cds-78948-delegate-selector-in-config-container-step-ui.png)
 
@@ -54,13 +54,13 @@ This release does not have new features.
 
 - Fixed a UI issue in the Pipeline Executions list page related to expanding Executions to view their details. If a new execution was started and displayed on the page, all the displayed executions moved down a line but the expanded execution stayed in the same relative position on the screen (3rd from the top, 4th from the top etc.). 
 
-  With the fix, the correct Execution stays expanded even if new ones get added to the list page. The caveat here is that if the execution id of the expanded execution changes (say when we rerun it), the state is reset on the list page. (CDS-78674, ZD-49928) 
+  With the fix, the correct Execution stays expanded even if new ones get added to the list page. The caveat here is that if the execution Id of the expanded execution changes (e.g. it is rerun), the state is reset on the list page. (CDS-78674, ZD-49928) 
 
 - Fixed an RBAC issue where a user was part of a User Group configured to approve a step but could not approve or reject it. The root cause was that the User Group selected for a pipeline approval also required View permission on User Groups. With this fix, the User Group does not require View permission for a member of that group to approve a pipeline execution. (CDS-78573, ZD-50139)
 
-- Fixed an issue related to reconciliation of templates that included the CloudFormations steps. The Capabilities section in the step was not validated correctly in the reconciliation, leading to repeated messages to reconcile. With this fix, the reconcile message does not come up erroneously. (CDS-78359, ZD-50240)
+- Fixed an issue related to reconciliation of templates that included the CloudFormation steps. The Specify Capabilities setting in the step was not validated correctly in the reconciliation, leading to repeated messages to reconcile. With this fix, the reconcile message does not come up erroneously. (CDS-78359, ZD-50240)
 
-- Fixed a Pipeline Execution UI issue where durations of less than 1s were displayed incorrctly. (CDS-78324)
+- Fixed a Pipeline Execution UI issue where durations of less than 1s were displayed incorrectly. (CDS-78324)
 
 <!-- 
 
@@ -83,9 +83,9 @@ This ticket is showing up in the 807xx release notes list but I already document
 - Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
 
 
-- Fixed an issue where step templates used in stage templates were being resolved into steps automatically. With this fix, the Add Variable button in Template Studio (similar to Pipeline Studio) is disabled for any referenced child template. However, Add Variable is not disabled for creating, updating, or deleting pipeline variables in a pipeline template or stage variables in a stage template. (CDS-77739, ZD-49520, ZD-49737)
+- Fixed an issue where step templates used in stage templates were being resolved into steps automatically. With this fix, the **New Variable** button in Template Studio (similar to Pipeline Studio) is disabled for any referenced child template. However, **New Variable** is not disabled for creating, updating, or deleting pipeline variables in a pipeline template or stage variables in a stage template. (CDS-77739, ZD-49520, ZD-49737)
 
-- Users can now open remote pipelines imported from Git even when there are errors in the YAML, to visualise the errors and change branch if needed. (CDS-77505, ZD-49446, ZD-50346)
+- Users can now open remote pipelines imported from Git even when there are errors in the YAML. (CDS-77505, ZD-49446, ZD-50346)
 
 - Previously, you could not re-run a pipeline from a stage that failed as part of a looping strategy. With this fix, **Re-run from Last Failed Stage** pre-selects the last stage that failed as part of a looping strategy. This behavior applies even if the stage failed with a conditional execution set to Always execute this stage. (CDS-77463)
 
