@@ -1,5 +1,5 @@
 ---
-title: CodeQL Scanner Reference
+title: CodeQL Scanner Reference for STO
 description: Repository scans with CodeQL
 sidebar_position: 103
 ---
@@ -23,7 +23,7 @@ The following steps outline the basic workflow:
    
 This topic includes an [end-to-end YAML pipeline](#yaml-pipeline-example) that illustrates this workflow. 
 
-## Before you begin
+## Important notes for running CodeQL scans in STO
 
 <!-- 
 ### Docker-in-Docker requirements
@@ -54,7 +54,7 @@ You can set up your STO scan images and pipelines to run scans as non-root and e
 
 :::
 
-## CodeQL step configuration
+## CodeQL step settings for STO scans
 
 The recommended workflow is to add a CodeQL step to a Security Tests or CI Build stage and then configure it as described below. You can also configure CodeQL scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 

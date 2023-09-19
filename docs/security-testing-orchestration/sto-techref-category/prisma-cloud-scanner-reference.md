@@ -6,7 +6,7 @@ sidebar_position: 210
 
 You can scan container images using Prisma Cloud.
 
-## Before you begin
+## Important notes for running Prisma Cloud scans in STO
 
 ### Docker-in-Docker requirements
 

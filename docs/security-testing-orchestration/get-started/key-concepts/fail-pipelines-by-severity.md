@@ -1,5 +1,5 @@
 ---
-title: Failing pipelines by severity
+title: Failing pipelines by severity in STO
 description: Fail integrated pipelines based on the severity of detected issues
 sidebar_position: 40
 redirect_from:
@@ -8,7 +8,7 @@ redirect_from:
 
 You can set up your pipelines to fail automatically if a scan step detects any issues with a specified [severity](./severities.md) or higher. This is good practice for all integrated pipelines because it ensures that the pipeline doesn't build and publish updates with serious vulnerabilities. 
 
-## Basic workflow: Fail on Severity
+## Basic workflow to fail pipelines by severity in STO
 
 ```mdx-code-block
 import StoConceptFailOnSeverity from '../../sto-techref-category/shared/step_palette/_sto-ref-ui-fail-on-severity.md';
@@ -20,7 +20,7 @@ import StoConceptFailOnSeverity from '../../sto-techref-category/shared/step_pal
 `fail_on_severity` is a "brute-force" approach to stopping your pipelines. As soon as a scan step detects a blocking issue, the pipeline stops and does not retain output variables or any other security-test data. For this reason, you might want to stop your pipelines using policies as described below. 
 :::
 
-## Advanced workflow: Use Policy as Code to stop pipelines and notify users
+## Use Policy as Code to fail pipelines and notify users in STO
 
 You can implement robust failure-handling mechanisms using [Harness Policy as Code](/docs/category/policy-as-code). Using policies to stop pipelines has the following advantages:
 

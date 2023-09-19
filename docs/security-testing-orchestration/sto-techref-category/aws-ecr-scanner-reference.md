@@ -1,12 +1,12 @@
 ---
-title: AWS ECR scanner reference
+title: AWS ECR scanner reference for STO
 description: Image scans with AWS ECR
 sidebar_position: 30
 ---
 
 You can scan your container images using [Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html). 
 
-## Before you begin
+## Important notes for running AWS ECR scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -26,7 +26,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 <StoRootRequirements />
 
 
-## AWS ECR step configuration
+## AWS ECR step settings for STO scans
 
 The recommended workflow is add an AWS ECR step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 

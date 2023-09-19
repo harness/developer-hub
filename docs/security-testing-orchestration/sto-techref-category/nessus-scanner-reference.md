@@ -1,12 +1,12 @@
 ---
-title: Nessus scanner reference
+title: Nessus scanner reference for STO
 description: Instance scans with Nessus
 sidebar_position: 170
 ---
 
 You can run Nessus scans on your instances using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Before you begin
+## Important notes for running Nessus scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -24,7 +24,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Security step settings
+## Security step settings for Nessus scans in STO
 
 ### Target and variant
 

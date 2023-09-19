@@ -1,12 +1,12 @@
 ---
-title: Amazon Image scanner reference
+title: Amazon Image scanner reference for STO
 description: Image scans with AWS Image scanner
 sidebar_position: 20
 ---
 
 You can set up an Amazon Image scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Before you begin
+## Important notes for running Amazon Image scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -26,7 +26,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 
 
-## Security step settings
+## Security step settings for Amazon Image scans in STO
 
 
 * `product_name` = `aws-ecr`

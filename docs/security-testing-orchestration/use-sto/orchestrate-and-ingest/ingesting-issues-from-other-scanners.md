@@ -1,5 +1,5 @@
 ---
-title: Ingest scan results from unsupported scanners in Harness STO
+title: Ingest scan results from unsupported scanners into Harness STO
 description: How to ingest data from scan tools that currently have no integration in STO.
 sidebar_position: 100
 helpdocs_topic_id: ymkcm5lypf
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can ingest custom issues from any scanning tool. STO supports a generic JSON format for ingesting data from unsupported scanners that cannot publish to SARIF.
 
-### Important notes
+### Important notes for importing data from unsupported scanners into STO
 
 - This workflow is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [What's supported](/docs/security-testing-orchestration/whats-supported) and click **Harness STO scanner support** to expand.
 
@@ -18,7 +18,7 @@ You can ingest custom issues from any scanning tool. STO supports a generic JSON
 
 - For STO to ingest your scan results, the ingestion file must match the [JSON format](#json-data-format-reference) specified below.
 
-### Required Steps
+### Required steps to ingest data from unsupported scanners into STO
 
 1. In your Harness pipeline, go to the Overview tab of the security stage and enter a shared path such as `/shared/customer_artifacts`.
  
@@ -90,7 +90,7 @@ The full JSON takes the form:
 ```
 
 
-#### **Required fields**
+#### Required fields for Harness STO JSON schema
 
 |  |  |  |
 | --- | --- | --- |
@@ -100,9 +100,7 @@ The full JSON takes the form:
 | `subProduct` | String | The scan tool name to apply to the individual occurrence of the issue. |
 | `severity` | Float | CVSS 3.0 score (a number from 1.0-10.0) |
 
-#### **Recommended fields**
-
-
+#### Recommended fields for Harness STO JSON schema
 
 |  |  |  |
 | --- | --- | --- |
@@ -124,7 +122,7 @@ The full JSON takes the form:
 | `tags` | String | Logical metadata tags, which can be leveraged to describe asset owners, teams, business units, etc. |
 | `url` | String | Recommended to assist in triaging errors (if present). |
 
-#### **Optional fields**
+#### Optional fields for Harness STO JSON schema
 
 |  |  |  |
 | --- | --- | --- |
@@ -141,7 +139,7 @@ The full JSON takes the form:
 | `referenceIdentifiers` | Array | An array of Vulnerability identifiers, such as `cve`, `cwe`, etc. Here's an example. Note that the `type` value must be lowercase. &#13; `“referenceIdentifiers”: [     {“type” : “cve”,“id” : “79”},     {"type" : "cwe", "id" : "83"}]`  |
 
 
-##### Custom fields
+##### Custom fields for Harness STO JSON schema
 
 You can add custom fields to an issue. The only restriction is that you cannot use any of the [reserved keywords](#reserved-keywords) listed above. To include raw, unrefined data, add the prefix "`_raw`" to the field name. For example, you can add the following "`_raw`" fields to an issue:
 
@@ -168,7 +166,7 @@ The custom fields will get grouped together at the end of the issue details like
 
 ![](../static/ingesting-issues-from-other-scanners-01.png)
 
-#### Reserved Keywords
+#### Reserved keywords for Harness STO JSON schema
 
 The following keywords are reserved and cannot be used in your JSON file:
 
@@ -191,7 +189,7 @@ The following keywords are reserved and cannot be used in your JSON file:
 * `target`
 * `targetId`
 
-## Pipeline example
+## Pipeline example for ingesting data from an unsupported schame into STO
 
 The following pipeline shows an end-to-end ingestion workflow. The pipeline consist of a Security Tests stage with two steps:
 

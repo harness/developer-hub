@@ -1,5 +1,5 @@
 ---
-title: Exemptions
+title: Exemptions to override Failing pipelines on Severity in STO
 description: How to override Fail on Severity for specific vulnerabilities
 sidebar_position: 50
 redirect_from:

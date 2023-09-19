@@ -1,5 +1,5 @@
 ---
-title: View issues in target baselines over time
+title: View issues in target baselines over time in the Security Testing Overview
 description: The STO Overview page enables you to see all detected issues in your target baselines.
 sidebar_position: 10
 helpdocs_topic_id: 2ap1uol6ti

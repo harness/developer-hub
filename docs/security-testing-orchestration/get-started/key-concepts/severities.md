@@ -1,5 +1,5 @@
 ---
-title: Severity scores and levels
+title: Severity scores and levels in STO
 description: How issue severity scores and levels are calculated
 sidebar_position: 20
 redirect_from:

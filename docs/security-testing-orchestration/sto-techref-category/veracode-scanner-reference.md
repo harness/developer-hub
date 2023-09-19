@@ -1,5 +1,5 @@
 ---
-title: Veracode Scanner Reference
+title: Veracode Scanner Reference for STO
 description: Repository scans with Veracode
 sidebar_position: 320
 helpdocs_topic_id: cy0deg32w9
@@ -20,7 +20,7 @@ For instructions, go to the [Veracode docs](https://docs.veracode.com) and searc
 Harness recommends you create [text secrets](/docs/platform/secrets/add-use-text-secrets) for your authentication credentials — password, API key, API secret key, etc. — and access your secrets using `<+secrets.getValue("my-secret")>`.
 * The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) and [Veracode - Activate Scenario](https://community.harness.io/t/veracode-activate-scenario/1067) blog posts include useful information about how to ingest Veracode scan results into Harness.
 
-## Before you begin
+## Important notes for running Veracode scans in STO
 
 ### Docker-in-Docker requirements
 

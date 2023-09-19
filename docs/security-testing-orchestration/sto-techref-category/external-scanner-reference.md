@@ -1,6 +1,6 @@
 ---
-title: External (JSON) scanner reference
-description: Ingest data using 
+title: Harness STO JSON scanner reference for unsupported scanners
+description: Ingest data using the Harness STO JSON schema
 sidebar_position: 130
 ---
 

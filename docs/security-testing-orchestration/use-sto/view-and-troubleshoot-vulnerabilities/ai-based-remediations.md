@@ -1,5 +1,5 @@
 ---
-title: Fix issues using AI-enhanced remediation steps
+title: Fix security issues using AI-enhanced remediation steps in STO
 description: Enhanced remediation using Harness AI Development Assistant (AIDA)
 sidebar_position: 5
 ---
@@ -12,12 +12,12 @@ import Workflow from '/docs/security-testing-orchestration/use-sto/shared/sto-ai
 
 <Intro />
 
-## Important notes
+## Important notes for AI-enhanced remediation steps in STO
 
 
 <Notes />
 
 
-## Workflow description
+## Workflow description for using AI-enhanced remediation steps in STO
 
 <Workflow />

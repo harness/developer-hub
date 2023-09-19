@@ -18,7 +18,7 @@ In the following example workflow, you will clone the base pipeline created in [
 2. In your new pipeline, go to **securityTestStage** and open the **banditScan** step.
 3. Rename the step to **ScanContainerImage**.
 
-### Scan settings
+### Settings for orchestrated scans in STO
 
 Orchestrated scan settings generall fall into two categories: information about the scan operation, and information about the object to scan.
 
@@ -28,7 +28,7 @@ Specify the following:
 2. The scanner settings to use: `product_config_name` = `aqua-trivy`
 3. The scan type: `policy_type` = `orchestratedScan`
 
-### Scanned object settings
+### Scanned object settings for orchestrated scans in STO
 
 Now you can specify the object to scan. In this example, you'll scan an image on Docker Hub based on the [DVPWA](https://github.com/anxolerd/dvpwa) GitHub project. Specify the following:
 
@@ -41,7 +41,7 @@ This is based on the image you would specify using the `docker pull` command. In
  Therefore, specify: `container_project` = `ubuntu`
 5. The image tag. In this case, enter: `container_tag` = `latest`
 
-### Save the pipeline and run the scan
+### Save the pipeline and run the orchstrated scan
 
 Now that you've set up the Security step with the previous settings, you can save and run the pipeline. When the pipeline finishes, click **Security Tests** to view the results.
 

@@ -8,7 +8,7 @@ Some organizations prefer to use custom SSL certificates instead of certificates
 
 Harness supports three workflows for using custom certificates. You can add your certs to the delegate, to individual pipelines, or to the container images you use to run your scans. 
 
-## When to use this workflow
+## When to add customer certificates to a delegate for STO
 
 Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates. This workflow is recommended if both of the following are true:
 
@@ -16,7 +16,7 @@ Harness STO supports [three workflows](/docs/security-testing-orchestration/use-
 
 - You can configure the delegate directly.
 
-## Important notes
+## Important notes for adding customer certificates to a delegate for STO
 
 - This workflow is supported for Kubernetes and Docker delegates only, and requires direct access to the delegate. If you don't meet these requirements, you can add your certs to [individual pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-pipelines) or to [custom scanner images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry) instead.
 
@@ -31,7 +31,7 @@ Harness STO supports [three workflows](/docs/security-testing-orchestration/use-
 - To troubleshoot SSL issues, go to [Troubleshooting tips](#troubleshooting-tips) below. 
 
 
-### Workflow descriptions
+### Workflows for adding customer certificates to a delegate for STO
 
 The Harness CI docs describe how to add custom certificates to a delegate.
 

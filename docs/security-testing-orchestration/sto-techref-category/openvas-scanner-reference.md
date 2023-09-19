@@ -1,12 +1,12 @@
 ---
-title: OpenVAS scanner reference
+title: OpenVAS scanner reference for STO
 description: Instance scans with OpenVAS
 sidebar_position: 200
 ---
 
 You can run OpenVAS scans on your instances using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Before you begin
+## Important notes for running OpenVAS scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -24,7 +24,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Security step settings
+## Security step settings for OpenVAS scans in STO
 
 ### Target and variant
 

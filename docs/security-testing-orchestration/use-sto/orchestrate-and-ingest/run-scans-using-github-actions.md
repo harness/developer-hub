@@ -1,5 +1,5 @@
 ---
-title: Run scans using GitHub Action and Drone Plugin steps
+title: Run STO scans using GitHub Action and Drone Plugin steps
 description: STO can ingest data from any scanner that can publish in SARIF format.  
 sidebar_position: 70
 ---
@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities, such as security scanning, in GitHub. This topic describes how to run GitHub Action scans and ingest the results into your Harness pipelines.  
 
-### Important notes 
+### Important notes for using GitHub Action and Drone Plugin steps in STO 
 
 * GitHub Action security scans are useful primarily for integrated CI/STO pipelines, which require both CI and STO licenses. For more information, go to [Migrate from GitHub Actions to Harness CI](/docs/continuous-integration/migration-guides/migrating-from-githubactions/).
 
@@ -34,7 +34,7 @@ import TabItem from '@theme/TabItem';
 * As described below, you need to translate settings from the GitHub Action YAML to the Harness pipeline YAML. It is good practice to configure these settings in the YAML editor.
 
 
-<!-- action -->
+### Example setups for using GitHub Action and Drone Plugin steps in STO 
 
 
 ```mdx-code-block

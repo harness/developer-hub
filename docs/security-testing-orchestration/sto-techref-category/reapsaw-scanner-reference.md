@@ -1,12 +1,12 @@
 ---
-title: Reapsaw scanner reference
+title: Reapsaw scanner reference for STO
 description: Repository scans with Qwiet
 sidebar_position: 260
 ---
 
 You can run Reapsaw scans on your repositories using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Before you begin
+## Important notes for running Reapsaw scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -24,7 +24,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Security step settings
+## Security step settings for Reapsaw scans in STO
 
 ### Target and variant
 

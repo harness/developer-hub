@@ -1,5 +1,5 @@
 ---
-title: Mend (formerly Whitesource) scanner reference
+title: Mend (formerly Whitesource) scanner reference for STO
 description: Container and repository scans with Mend
 sidebar_position: 160
 ---
@@ -7,7 +7,7 @@ sidebar_position: 160
 You can scan container images and repositories using [Mend](https://www.mend.io). 
 
 
-## Before you begin
+## Important notes for running Mend scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -25,7 +25,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Mend step configuration
+## Mend step settings for STO scans
 
 The recommended workflow is add a Mend step to a Security Tests or CI Build stage and then configure it as described below. 
 
@@ -283,7 +283,7 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
-## Security step configuration (_legacy_)
+## Security step settings for Mend scans in STO (_legacy_)
 
 You can set up Mend scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

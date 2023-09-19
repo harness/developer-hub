@@ -1,5 +1,5 @@
 ---
-title: Burp scanner reference
+title: Burp scanner reference for STO
 description: Instance scans with Burp
 sidebar_position: 80
 ---
@@ -18,7 +18,7 @@ To set up a Burp scan:
 
 </details>
 
-## Before you begin
+## Important notes for running Burp scans in STO
 
 
 
@@ -214,7 +214,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 <StoSettingIngestionFile  />
 
-## Security step settings (_legacy_)
+## Security step settings for Burpo scans in STO (_legacy_)
 
 #### Docker-in-Docker requirements
 

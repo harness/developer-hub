@@ -1,12 +1,12 @@
 ---
-title: Nikto scanner reference
+title: Nikto scanner reference for STO
 description: Instance scans with Nikto
 sidebar_position: 190
 ---
 
 You can scan your instances using [Nikto](https://Nikto.org/), an open-source scanner that runs tests against web servers to detect dangerous files/programs, outdated server versions, and problems with specific server releases. 
 
-## Before you begin
+## Important notes for running Nikto scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -24,7 +24,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Nikto step configuration
+## Nikto step settings for STO scans
 
 The recommended workflow is add a Nikto step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
@@ -195,7 +195,7 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
-## Security step settings (*deprecated*)
+## Security step settings for Nikto scans in STO (*deprecated*)
 
 You can set up Nikto scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

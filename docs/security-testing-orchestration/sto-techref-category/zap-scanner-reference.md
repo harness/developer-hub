@@ -1,5 +1,5 @@
 ---
-title: Zed Attack Proxy (ZAP) Scanner Reference
+title: Zed Attack Proxy (ZAP) Scanner Reference for STO
 description: App instance scans using ​Zed Attack Proxy (ZAP)
 sidebar_position: 400
 helpdocs_topic_id: m9494vxwac
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 [Zed Attack Proxy (ZAP)](https://www.zaproxy.org/get-started/) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
 
-## Before you begin
+## Important notes for running ZAP scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -28,7 +28,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Zap step configuration
+## Zap step settings for STO scans
 
 The recommended workflow is add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. You can also configure ZAP scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
@@ -222,7 +222,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step configuration (_legacy_)
+## Security step settings for ZAP scans in STO (_legacy_)
 
 #### Scan policy types
 
@@ -239,7 +239,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 <StoLegacyTargetAndVariant />
 
-#### ZAP scan Settings
+#### ZAP scan settings
 
 * `product_name` = `zap`
 * `scan_type` = `instance`
@@ -254,7 +254,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `instance_type` = `website`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-#### Optional Settings
+#### Optional settings
 
 * `instance_path` — Specify if the app URL includes a path beyond the domain. If you want to scan `https://app.my-domain.com/myModule/myApp`, the instance path is `myModule/myApp`.
 * `instance_port` — Specify if the site is accessed using a non-default port.

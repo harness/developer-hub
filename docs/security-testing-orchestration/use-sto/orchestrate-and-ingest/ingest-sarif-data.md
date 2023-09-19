@@ -1,18 +1,18 @@
 ---
-title: Ingest SARIF scan results
+title: Ingest SARIF scan results into STO
 description: You can easily ingest from any scanner can publish results in SARIF format.
 sidebar_position: 45
 ---
 
 [Static Analysis Results Interchange Format (SARIF)](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning) is an open data format supported by many scan tools, especially tools available as GitHub Actions. You can easily ingest SARIF 2.1.0 data from any tool that supports this format. 
 
-### Important notes
+### Important notes for ingesting SARIF data into STO
 
 - This workflow is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [What's supported](/docs/security-testing-orchestration/whats-supported) and click **Harness STO scanner support** to expand.
 
 - Harness STO also supports an STO Custom JSON format for unsupported scanners that can't publish to SARIF. For more information, go to [Ingest Results from Unsupported Scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md).  
 
-### Ingestion workflow description
+### Workflow for ingesting SARIF data into STO
 
 The following workflow describes how to set up an ingestion pipeline for any scanner that supports SARIF. 
 
@@ -56,7 +56,7 @@ Here's an example of how to configure a Gitleaks step to ingest a SARIF data fil
 
 
 
-## Example workflows for ingesting SARIF scan results
+## Example workflows for ingesting SARIF data into STO
 
 The following topics describe end-to-end example pipelines for ingesting SARIF data:
 

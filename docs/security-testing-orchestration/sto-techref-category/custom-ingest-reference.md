@@ -1,5 +1,5 @@
 ---
-title: Custom Ingest settings reference
+title: Custom Ingest settings reference for STO
 description: ingest JSON or SARIF data from external scanners.
 sidebar_position: 105
 ---

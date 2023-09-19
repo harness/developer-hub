@@ -1,5 +1,5 @@
 ---
-title: OWASP Dependency Check scanner reference
+title: OWASP Dependency Check scanner reference for STO
 description: Repository scans with OWASP Dependency Check
 sidebar_position: 210
 ---
@@ -7,7 +7,7 @@ sidebar_position: 210
 You can scan your code repositories using [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/), an SCA tool for detecting publicly disclosed vulnerabilities contained within a project’s dependencies.
 
 
-## Before you begin
+## Important notes for running PRODUCT scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -180,7 +180,7 @@ In the **Advanced** settings, you can use the following options:
 
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
-## Security step settings (*deprecated*)
+## Security step settings for PRODUCT scans in STO (*deprecated*)
 
 You can set up OWASP scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
