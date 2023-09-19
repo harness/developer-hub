@@ -1301,3 +1301,15 @@ See: [https://developer.harness.io/docs/faqs/continuous-delivery-faqs/#google-cl
 Harness CD pipelines help you to orchestrate and automate your Google Cloud Function deployments and push updated functions to Google Cloud.
 
 See: [https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func/]
+
+#### Is it possible to add variables at the Infrastructure Definition level?
+As of now, Harness does not provide direct support for variables within infrastructure definitions. However, you can achieve a similar outcome by using tags in the form of `key:value`. For example, you can define a tag like `region:us-east` and reference it using the following expression: `<+infra.tags.region>`.
+
+### What does the "Freeze Window" feature in a CD pipeline do and what does it block?
+The "Freeze Window" feature in a CD (Continuous Delivery) pipeline allows for the creation of a period during which certain actions, specifically those related to CD stages, are restricted. However, account administrators can still execute CD pipelines during this freeze window by default. Users without the "Override" permission cannot execute pipelines containing CD stages during the freeze window. The freeze window primarily affects actions associated with CD stages in the pipeline. More details about its functionality can be found in this section: [Freeze Windows Only Apply to CD Stages](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#freeze-windows-only-apply-to-cd-stages).
+
+### How can I generate a report of all deployments made so far?
+You can always create dashboards to help you gain insights into your data. However, please note that we have a default retention period for CDS of 6 months. If you need to extend this period, please reach out to Harness support.
+
+### Does a pipeline delegate selector override the service infrastructure?
+It doesn't override the service infrastructure. Instead, it only changes which delegate will execute the necessary operations of your pipeline.
