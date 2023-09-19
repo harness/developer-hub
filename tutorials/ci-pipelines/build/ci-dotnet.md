@@ -278,7 +278,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
                     shell: Sh
                     command: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -313,7 +313,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
                     shell: Sh
                     command: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -365,7 +365,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                     runOnlySelectedTests: true
                     preCommand: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
                       dotnet restore
                       dotnet build
                     postCommand: trx2junit results.trx
@@ -398,7 +398,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                     runOnlySelectedTests: true
                     preCommand: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
                       dotnet restore
                       dotnet build
                     postCommand: trx2junit results.trx
@@ -618,7 +618,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -727,7 +727,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
