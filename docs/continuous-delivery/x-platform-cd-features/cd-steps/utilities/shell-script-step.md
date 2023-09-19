@@ -138,7 +138,7 @@ When the script in the Shell Script step is run, Harness executes the script on 
 
 If you select **Bash**, Harness will use `sh` because it is standardized and portable across POSIX systems.
 
-To support different host system, or to explicit set the **Bash** option to use bash, you might wish to begin your script with a shebang line that identifies the shell language, such as `#!/bin/sh` (shell), `#!/bin/bash` (bash), or `#!/bin/dash` (dash). 
+To support different host systems, or to explicit set the **Bash** option to use bash, you should begin your script with a shebang line that identifies the shell language, such as `#!/bin/sh` (shell), `#!/bin/bash` (bash), or `#!/bin/dash` (dash). 
 
 For more information, see the [Bash manual](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents) from the GNU project.
 
@@ -210,7 +210,7 @@ When the script in the Shell Script step is run, Harness executes the script on 
 
 If you select **Bash**, Harness will use `sh` because it is standardized and portable across POSIX systems.
 
-For this reason, you might wish to begin your script with a shebang line that identifies the shell language, such as `#!/bin/sh` (shell), `#!/bin/bash` (bash), or `#!/bin/dash` (dash). For more information, see the [Bash manual](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents) from the GNU project.
+To support different host systems, or to explicit set the **Bash** option to use bash, you should begin your script with a shebang line that identifies the shell language, such as `#!/bin/sh` (shell), `#!/bin/bash` (bash), or `#!/bin/dash` (dash). For more information, see the [Bash manual](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents) from the GNU project.
 
 To capture the shell script output in a variable, do the following:
 
