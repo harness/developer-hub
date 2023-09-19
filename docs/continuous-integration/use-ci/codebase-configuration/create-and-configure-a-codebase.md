@@ -163,7 +163,7 @@ If your pipeline has multiple stages, each stage that has **Clone codebase** ena
 
 If you want to force all stages to use the same commit ID, even if there are changes in the repository while the pipeline is running, you must use a [code repo connector](#code-repo-connectors) for a specific SCM provider, rather than the generic Git connector.
 
-## Git fetch fails with invalid index-pack output when cloning large repos
+### Git fetch fails with invalid index-pack output when cloning large repos
 
 The following `git fetch` error might cause a pipeline to fail during build initialization when cloning the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md): `fetch-pack: invalid index-pack output`.
 

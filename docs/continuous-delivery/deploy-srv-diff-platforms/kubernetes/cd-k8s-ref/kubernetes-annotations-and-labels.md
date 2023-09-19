@@ -18,10 +18,10 @@ The following Annotations can be put on resource specifications in the Harness S
 
 | **Annotation** | **Value** | **Usage** |
 | --- | --- | --- |
-| `harness.io/skip-versioning` | `"true"|"false"` | By default, all the ConfigMap and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) resources are versioned by Harness. Corresponding references in PodSpec are also updated with versions.Set to `true` to exclude versioning of a resource (for example ConfigMap or Secret). |
-| `harness.io/direct-apply` | `"true"|"false"` | Set to `true` to make a manifest an unmanaged workload.A **managed** workload in Harness is a workload taken to steady state and verified at steady state. If it fails to reach steady state, rollback occurs.An **unmanaged** workload is simply run without checking for steady state.For example, a Canary Deployment requires a minimum of 1 Deployment or StatefulSet as a managed workload. You can deploy additional workloads in the deployment by using the `harness.io/direct-apply: true` for the additional workload manifest.See [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes). |
-| `harness.io/primary-service` | `"true"|"false"` | Identifies the primary Kubernetes service in a Blue/Green deployment. |
-| `harness.io/stage-service` | `"true"|"false"` | Identifies the Kubernetes stage service in a Blue/Green deployment. |
+| `harness.io/skip-versioning` | "true"|"false" | By default, all the ConfigMap and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) resources are versioned by Harness. Corresponding references in PodSpec are also updated with versions.Set to `true` to exclude versioning of a resource (for example ConfigMap or Secret). |
+| `harness.io/direct-apply` | "true"|"false" | Set to `true` to make a manifest an unmanaged workload.A **managed** workload in Harness is a workload taken to steady state and verified at steady state. If it fails to reach steady state, rollback occurs.An **unmanaged** workload is simply run without checking for steady state.For example, a Canary Deployment requires a minimum of 1 Deployment or StatefulSet as a managed workload. You can deploy additional workloads in the deployment by using the `harness.io/direct-apply: true` for the additional workload manifest.See [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes). |
+| `harness.io/primary-service` | "true"|"false" | Identifies the primary Kubernetes service in a Blue/Green deployment. |
+| `harness.io/stage-service` | "true"|"false" | Identifies the Kubernetes stage service in a Blue/Green deployment. |
 
 ## Labels
 

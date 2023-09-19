@@ -25,13 +25,7 @@ To create, edit, and delete stages in CI pipelines, you need either Project Admi
 
 Enter a name summarizing the stage's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-## Description
-
-Optional text string.
-
-## Tags
-
-For details, go to the [Tags Reference](../../../platform/references/tags-reference.md).
+The description and [tags](../../../platform/references/tags-reference.md) are optional.
 
 ## Clone Codebase
 
@@ -41,15 +35,13 @@ If not selected, Harness does not clone the codebase when initializing the stage
 
 ## Configure Codebase
 
-Specify the pipeline's default codebase configuration. These settings are available when you add the first stage to a pipeline. After you add the first stage, you manage these under the pipeline's overall **Codebase** settings. For more information about codebase configuration, go to [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
+Specify the pipeline's default codebase configuration.
 
-### Connector
+* **Connector:** A Harness code repo connector that connects to the repository where the codebase is located. For information about code repo connectors, go to [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
+* **Repository URL:** If not populated automatically, enter the full URL to the code repository that you want the pipeline to use.
 
-A Harness code repo connector that connects to the repository where the codebase is located. For information about code repo connectors, go to [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
 
-### Repository URL
-
-If not populated by default, enter the full URL to the code repository that you want the pipeline to use.
+These settings are available when you add the first stage to a pipeline. After you add the first stage, you manage these under the pipeline's overall **Codebase** settings. For more information about codebase configuration, go to [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
 
 ## Overview
 
@@ -80,6 +72,10 @@ For other build tools or non-default cache locations, you must provide custom ca
 Optionally, you can specify a custom cache **Key**
 
 For information about supported tools, enabling cache intelligence, and configuring custom cache paths and keys, go to the [Cache Intelligence](../caching-ci-data/cache-intelligence.md) documentation.
+
+### SLSA Provenance
+
+These settings are for the [Harness SSCA module](/docs/software-supply-chain-assurance).
 
 ### Advanced: Stage Variables
 

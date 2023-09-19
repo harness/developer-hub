@@ -1,6 +1,6 @@
-The following table lists Harness support for SSO protocols and tools.
+The following table lists the supported Authentication features and various ways to authenticate users. Users in Administrator groups can use Authentication Settings to restrict access to an organization's Harness account. The options you choose will apply to all of your account's users.
 
-Go to [Add and Manage Access Control](/docs/feature-flags/ff-security-compliance/manage-access-control.md).
+For more information, go to [Authentication overview](/docs/platform/authentication/authentication-overview).
 
 | SSO Type                                                                     | SSO Providers          | Authentication Supported | Authorization (Group Linking) Supported | SCIM Provisioning |
 | ---------------------------------------------------------------------------- | ---------------------- | ------------------------ | --------------------------------------- | ----------------- |
