@@ -615,7 +615,8 @@ The following table provides the feature support matrix for CCM on Harness Self-
 
 
 :::note
-Perspective preferences are not supported on Harness SMP.
+- Perspective preferences are not supported on Harness SMP.
+- The cost data for Kubernetes workloads will be derived from the public pricing provided by the respective cloud provider.
 :::
 
 For a comprehensive list of supported features in other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
