@@ -660,4 +660,6 @@ By default, Helm delegates have autoscaling disabled, which you can enable by se
 #### When defining a secret with a dollar sign, the shell prints the secret partially
 Harness doesn't allow the `$` symbol in your secret value. If your secret value includes this symbol, you must use single quotes when you use the expression in a script.
 
+#### How can I access comprehensive information on Harness Security, including disaster recovery procedures, infrastructure details, and policies?
+For in-depth insights into Harness' security practices, including disaster recovery procedures, infrastructure aspects, and policies, we recommend visiting our [Trust Center](https://trust.harness.io/). This centralized resource is designed to provide you with all the necessary information regarding the security measures we have in place to safeguard your data and operations.
 
