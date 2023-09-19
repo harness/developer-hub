@@ -644,6 +644,10 @@ gsutil -m cp \
 
 - Added the GitOps feature flag at the org level. (CDS-79545)
 
+#### Continuous Integration
+
+- Added support to set the `LOG_STREAMING _URL` from Harness Delegate by default for CI pipelines. If the delegate is outside of the cluster, the fallback log service URL is `LOG_SERVICE_ENDPOINT` from CI. (CI-9262, ZD-48974)
+
 #### Custom Dashboards
 
 - Updated to an FIPS compliant algorithm for short term caching key generation. (CDB-1107)
@@ -657,8 +661,6 @@ This release does not include any early access features.
 #### Continuous Integration
 
 - Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used delegate selectors based on delegate tags, and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. (CI-8831, ZD-47647)
-
-- (CI-9262)
 
 ##### 0.8.2
 
