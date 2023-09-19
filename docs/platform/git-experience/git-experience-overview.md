@@ -13,7 +13,7 @@ import create_pipeline from './static/git-experience-overview-02.png'
 import branch_selection from './static/git-experience-overview-03.png'
 ```
 
-Harness Git Experience allows you to store your resource configurations, such as pipelines and input sets, in Git. ou can use Git as the source of truth and modify your configurations using your Git credentials.
+Harness Git Experience allows you to store your resource configurations, such as pipelines and input sets, in Git. You can use Git as the source of truth and modify your configurations using your Git credentials.
 
 With Harness Git Experience, you can easily select the repository and branch from which to execute your pipelines. This provides seamless access to your Harness resources and their configurations stored in Git, simplifying your pipeline execution.
 
