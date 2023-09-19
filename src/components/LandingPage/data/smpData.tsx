@@ -63,4 +63,16 @@ export const SMPList: CardItem[] = [
     time: "15 min",
     link: "/tutorials/self-managed-enterprise-edition/use-an-external-postgres-database",
   },
+  {
+    title: "Configure external self-managed object storage with MinIO",
+    module: MODULES.smp,
+    icon: "img/logo.svg",
+    description: (
+      <>Learn how to use self-managed MinIO object storage with Self-Managed Enterprise Edition installations.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/self-managed-enterprise-edition/use-self-managed-minio-object-storage",
+  },
 ];

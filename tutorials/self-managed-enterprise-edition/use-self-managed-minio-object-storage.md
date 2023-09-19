@@ -1,17 +1,17 @@
 ---
-title: Self-managed object storage with MinIO for disaster recovery
-sidebar_label: Self-managed object storage
-description: Set up self-managed object storage with MinIO for disaster recovery.
+title: Use self-managed object storage with MinIO
+sidebar_label: External self-managed MinIO
+description: Learn how to use self-managed object storage with MinIO.
 sidebar_position: 2
 ---
 
-Harness Self-Managed Enterprise Edition enables you to configure self-managed object storage with MinIO for disaster recovery. MinIO is an object storage server designed for large-scale private cloud infrastructure. It aggregates persistent volumes into scalable distributed object storage using Amazon S3 REST APIs.
+Harness Self-Managed Enterprise Edition enables you to configure self-managed object storage with MinIO. MinIO is an object storage server designed for large-scale private cloud infrastructure. It aggregates persistent volumes into scalable distributed object storage using Amazon S3 REST APIs.
 
 You can install MinIO on your preferred VMs and provide the endpoint in your Harness Helm charts. This topic describes how to set up 4 MinIO servers.
 
 ### Prerequisites
 
-Make sure to meet the MinIO prerequisites before you set up self-managed object storage for disaster recovery. For prerequisites, go to [Object Storage for Linux](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html#prerequisites) in the MinIO documentation.
+Make sure to meet the MinIO prerequisites before you set up self-managed object storage. For prerequisites, go to [Object Storage for Linux](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html#prerequisites) in the MinIO documentation.
 
 ### MinIO hardware requirements
 
