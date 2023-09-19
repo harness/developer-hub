@@ -1,6 +1,8 @@
-The following table lists Harness support for cloud platform secrets management services.
+Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness connectors and pipelines.
 
-Go to [Harness Secrets Management Overview](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager).
+For more information, go to [Harness Secrets Management Overview](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager).
+
+In addition to the built-in Secret Manager, Harness Platform supports the cloud platform secrets management services in the following table.
 
 | Provider Name                                                               | Key Encryption Support | Encrypted Data Stored with Harness | Support for Referencing Existing Secrets |
 | --------------------------------------------------------------------------- | ---------------------- | ------------------------------------ | ---------------------------------------- |
