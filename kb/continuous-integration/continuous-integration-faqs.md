@@ -179,9 +179,9 @@ Harness supports multiple types of operating systems and architecture. Including
 Harness only currently supports cache intelligence on the Harness Cloud infrastructure. 
 See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/]
 
-
 #### Additional considerations when running concurrent builds
 
 While running concurrent builds, customers may want to consider the queued intelligence feature in Harness CI. This feature is behind a feature flag. 
 
 See [https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence/]
+
