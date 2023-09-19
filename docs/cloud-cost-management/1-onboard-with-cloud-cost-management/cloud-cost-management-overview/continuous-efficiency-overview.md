@@ -127,3 +127,12 @@ Yes. CE provides alerts, reports, and forecasts you can fine-tune.
 
 CE uses the same cost and usage report as your cloud platform.
 
+**Do the recommendations consider our compute savings plan, RIs, and Savings Plans?** 
+
+No, the node pool recommendations do not take into account RI (Reserved Instances) and savings plans. The potential monthly spend and savings are calculated using a public pricing API and do not consider any discounts or savings from your compute savings plan.
+
+**Why do ECS clusters get added automatically to the default perspective while EKS clusters don't?**
+
+When you add an AWS account that contains both ECS and EKS clusters, our system will automatically fetch and display ECS cluster data in the Cluster default perspective. To include EKS cluster data, you'll need to set up the K8S connector separately. For setup instructions, please refer to the documentation here.
+In the AWS default perspective, users can view the total cost of both ECS and EKS services. However, in the Cluster default perspective, we provide a breakdown of the cost for each cluster, along with the option to drill down for more detailed information.
+
