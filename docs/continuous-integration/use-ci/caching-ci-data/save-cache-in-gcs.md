@@ -117,7 +117,7 @@ Here is an example of the YAML for a **Restore Cache from GCS** step.
 
 ### GCS save and restore cache step settings
 
-The **Save Cache to GCS** and **Restore Cache from GCS** steps have the following settings. Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using these steps in a stage with VM or Harness Cloud build infrastructure.
+The **Save Cache to GCS** and **Restore Cache from GCS** steps have the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using these steps in a stage with VM or Harness Cloud build infrastructure.
 
 #### Name
 

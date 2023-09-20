@@ -62,7 +62,7 @@ echo '<+secrets.getValue("account.settingsXML")>' > settings.xml
 </Tabs>
 ```
 
-## Modify the mvn test command
+## Modify the Maven test command
 
 Once the `settings.xml` file exists in the Harness working directory, Maven can read your text secret from this file if you run `mvn test` with the `-s` flag. For example:
 

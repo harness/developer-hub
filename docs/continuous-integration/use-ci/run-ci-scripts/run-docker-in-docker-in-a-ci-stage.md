@@ -170,7 +170,7 @@ pipeline:
                   name: Background
                   identifier: Background
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
                     image: docker:dind
                     shell: Sh
                     privileged: true
@@ -179,7 +179,7 @@ pipeline:
                   name: Run
                   identifier: Run
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
                     image: docker:run_step_image
                     shell: Sh
                     command: |-

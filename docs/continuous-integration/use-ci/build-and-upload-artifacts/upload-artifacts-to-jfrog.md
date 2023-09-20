@@ -38,7 +38,7 @@ Here is a YAML example of a minimum **Upload Artifacts to JFrog Artifactory** st
 
 ### Upload Artifacts to JFrog step settings
 
-The **Upload Artifacts to JFrog Artifactory** step has the following settings. Depending on the build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+The **Upload Artifacts to JFrog Artifactory** step has the following settings. Depending on the build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 #### Name
 

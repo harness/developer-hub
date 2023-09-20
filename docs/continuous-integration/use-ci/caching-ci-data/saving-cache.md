@@ -113,7 +113,7 @@ Here is a YAML example of a **Save Cache to S3** step.
 
 ### Save Cache to S3 step settings
 
-The **Save Cache to S3** step has the following settings. Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+The **Save Cache to S3** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 #### Name
 
@@ -254,7 +254,7 @@ The `key` value in this step must match the `key` value in your **Save Cache to 
 
 ### Restore Cache from S3 step settings
 
-The **Restore Cache from S3** step has the following settings. Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+The **Restore Cache from S3** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 #### Name
 

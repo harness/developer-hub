@@ -28,7 +28,7 @@ A Background step starts a service and then proceeds. For any later step that re
 
 * Background steps do not support failure strategies or output variables.
 * If the pipeline runs on a VM build infrastructure, you can run the background service directly on the VM rather than in a container. To do this, leave the **Container Registry** and **Image** fields blank.
-* Depending on the stage's build infrastructure, some settings may be unavailable, optional, or located under **Additional Configuration**.
+* Depending on the stage's build infrastructure, some settings might be unavailable, optional, or located under **Additional Configuration**.
 
 :::
 

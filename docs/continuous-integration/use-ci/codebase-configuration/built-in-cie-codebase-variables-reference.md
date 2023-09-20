@@ -23,9 +23,9 @@ The values of codebase variables depends on:
 
 * The pipeline's [codebase](./create-and-configure-a-codebase.md) configuration. For full support, you must use a supported codebase: GitHub, Bitbucket, or GitLab. With other providers, some variables might not be resolved.
 * The pipeline's [code repo connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) must use **Username and Token** authentication and allow API access (**Enable API access**).
-* The build start conditions (webhook trigger or manual).
+* How the build started, whether manually or by a webhook trigger.
 
-A variable is resolved only if the build includes the necessary information for that variable. For example, `<+codebase.prNumber>` is only resolved if the build started from a pull request. Builds that aren't started from a PR won't have a PR number to assign to that variable. Builds that aren't associated with a PR won't have a PR number to apply to that variable.
+A variable is resolved only if the build includes the necessary information for that variable. For example, `<+codebase.prNumber>` is only resolved if the build started from a pull request. Builds that aren't started from a PR won't have a PR number to assign to that variable.
 
 :::info
 
@@ -131,7 +131,7 @@ You can use expressions to reference the value of some `DRONE_` environment vari
 
 :::
 
-## Build start condition variables
+## Build start variables
 
 These variables describe how the build started.
 
@@ -158,7 +158,9 @@ You can use this expression to create conditions based on build type, such as `<
 * Expression: `<+trigger.event>`
 * Exclusions: Not available for manual builds.
 
-## Branch, PR, and tag data variables
+## Branch, PR, and tag variables
+
+These variables provide information about the branch, PR, or tag associated with the build.
 
 ### codebase.branch
 
@@ -220,7 +222,9 @@ You can use this expression to create conditions based on build type, such as `<
    * Manual builds: `<+codebase.targetBranch>`
    * Webhook triggers: `<+codebase.targetBranch>` or `<+trigger.targetBranch>`
 
-## Commit data variables
+## Commit variables
+
+These variables provide information about some commits associated with the build.
 
 ### codebase.baseCommitSha
 
@@ -266,7 +270,9 @@ This *isn't* the same as the short SHA returned by [`<+codebase.shortCommitSha>`
 * Value: The short SHA (seven characters) of the build's [commit SHA](#codebasecommitsha).
 * Expression: `<+codebase.shortCommitSha>`
 
-## Git user data variables
+## Git user variables
+
+These variables provide information about the Git user account associated with the build.
 
 ### codebase.gitUser
 
@@ -290,7 +296,9 @@ This *isn't* the same as the short SHA returned by [`<+codebase.shortCommitSha>`
 * Value: User ID of the Git account associated with the build. Can be `null` or masked in build logs.
 * Expression: `<+codebase.gitUserId>`
 
-## Repo data variables
+## Repo variables
+
+These variables provide information about the Git repo associated with the build.
 
 ### codebase.repoUrl
 

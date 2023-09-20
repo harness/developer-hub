@@ -48,7 +48,7 @@ Here is a YAML example of a minimum **Upload Artifacts to S3** step.
 
 ### Upload Artifacts to S3 step settings
 
-The **Upload Artifacts to S3** step has the following settings. Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
+The **Upload Artifacts to S3** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
 
 #### Name
 
