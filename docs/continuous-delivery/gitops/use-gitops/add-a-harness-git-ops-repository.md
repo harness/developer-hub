@@ -170,6 +170,17 @@ Credentials Template is not supported for OCI Helm repository.
 :::
 
 ```mdx-code-block
+</TabItem>
+<TabItem value="Using a self-signed certificate" label="Using a self-signed certificate">
+```
+If you are connecting a repository on a HTTPS server using a self-signed certificate, or a certificate signed by a Certificate Authority, the repository certificate should be created before the repository.
+
+1. Create repository certificate
+   - Select **TLS Repository Certificate** in Repository Type.
+   - Enter the name of the repository server issuing the certificate. For example, `github.harness.internal`.
+   - Paste the certificate in the TLS Certificate field. Enclose each certificate in BEGIN CERTIFICATE and END CERTIFICATE comments.
+
+```mdx-code-block
 </TabItem>    
 <TabItem value="OCI Helm repository with ESO" label="OCI Helm repository with ESO">
 ```
