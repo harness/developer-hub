@@ -1366,4 +1366,7 @@ Harness provides several annotations that can be applied to Kubernetes resources
    - Reference: [Prune Kubernetes resources](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources/)
 
 These annotations help customize and control how Harness manages and deploys resources in your Kubernetes environment.
+<<<<<<< HEAD
 >>>>>>> f4c98012f (Adding 2 questions to CDS FAQ)
+=======
+>>>>>>> fb01b5c94 (Fixing broke links for FAQ questions)
