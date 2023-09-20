@@ -66,9 +66,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Cost category enhancement (CCM-12879)
 
-  Implemented a new feature that enables users to copy cost buckets from one cost category to multiple cost categories simultaneously. You have the flexibility to choose any number of buckets for copying. Upon selection, a popup prompt appears, allowing users to specify the target cost categories for copying the selected buckets. Upon successful completion, you receive a success notification along with relevant details.
+  Implemented a new feature that enables users to copy cost buckets from one cost category to multiple cost categories simultaneously. You have the flexibility to choose any number of buckets for copying. Upon selection, a popup prompt appears, allowing you to specify the target cost categories for copying the selected buckets. Upon successful completion, you receive a success notification along with relevant details.
   
-  However, it's important to note that while copying you may encounter issues if the destination cost category already has a bucket with the same name as the selected one. In such cases, you can address the conflict by renaming the bucket before attempting the copy operation again.
+  However, it's important to note that while copying you may encounter issues if the destination cost category already has a bucket with the same name as the copied one. In such cases, you can address the conflict by renaming the bucket before attempting the copy operation again.
 
     <docimage path={require('./static/ccm-copy-cost-buckets.gif')} width="60%" height="60%" title="Click to view full size image" />
 
