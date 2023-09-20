@@ -15,7 +15,9 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
+
 ## Latest - September 11, 2023
+
 
 ### New features and enhancements
 
@@ -28,6 +30,7 @@ This release does not include early access features.
 ### Fixed issues in the Javascript SDK
 
 - Changing evaluation handling for Flutter Web. (FFM-8963)
+
 
 ## Previous releases
 
@@ -76,6 +79,20 @@ This release does not include new features.
 This release does not include early access features.
 
 ##### Fixed issues in the Apex SDK
+
+Released Apex SDK 0.1.2 - Avoid loading all flag/target segment config into two cache keys, instead use a key per item, so we don’t exceed SFDC account limits and get cache.ItemSizeLimitExceededException (FFM-9071)
+
+#### August 24, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+### Fixed issues in the Apex SDK
 
 Released Apex SDK 0.1.2 - Avoid loading all flag/target segment config into two cache keys, instead use a key per item, so we don’t exceed SFDC account limits and get cache.ItemSizeLimitExceededException (FFM-9071)
 

@@ -336,6 +336,10 @@ AutoScaling groups behind ALB running HTTP(s) workloads
   - AutoPilot mode
 - Kops
 
+:::important note
+Harness does not currently support importing a VM for AutoStopping proxy creation. Harness will provision the AutoStopping proxy.
+:::
+
 ##### Supported resources
   - Deployment
   - Statefulset
@@ -365,6 +369,11 @@ The supported Kubernetes version for AutoStopping is 1.19 or higher.
 
   - API
   - Terraform
+
+:::important note
+Harness does not currently support proxy provisioning via Terraform.
+
+:::
 
 ### **Supported Platforms**
   - SaaS
@@ -606,7 +615,8 @@ The following table provides the feature support matrix for CCM on Harness Self-
 
 
 :::note
-Perspective preferences are not supported on Harness SMP.
+- Perspective preferences are not supported on Harness SMP.
+- The cost data for Kubernetes workloads will be derived from the public pricing provided by the respective cloud provider.
 :::
 
 For a comprehensive list of supported features in other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).

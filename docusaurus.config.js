@@ -144,6 +144,11 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Secure Supply Chain",
+                to: "tutorials/secure-supply-chain",
+              },
+              {
+                // type: "doc",
                 label: "Track Errors",
                 to: "tutorials/error-tracking",
               },
@@ -205,6 +210,10 @@ const config = {
               {
                 label: "Software Engineering Insights",
                 to: "docs/software-engineering-insights",
+              },
+              {
+                label: "Software Supply Chain Assurance",
+                to: "docs/software-supply-chain-assurance",
               },
               {
                 label: "Continuous Error Tracking",
@@ -352,6 +361,10 @@ const config = {
               {
                 label: "Software Engineering Insights",
                 to: "https://www.harness.io/products/software-engineering-insights",
+              },
+              {
+                label: "Software Supply Chain Assurance",
+                to: "https://www.harness.io/products/software-supply-chain-assurance",
               },
               {
                 label: "Continuous Error Tracking",

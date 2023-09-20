@@ -18,6 +18,7 @@ The Harness Platform is a self-service CI/CD platform that enables end-to-end so
 * Cloud Cost Management
 * Service Reliability Management
 * Security Testing Orchestration
+* Software Supply Chain Assurance
 * Chaos Engineering
 * Continuous Error Tracking
 * Software Engineering Insights
@@ -35,7 +36,7 @@ The Harness Platform has two components:
 * **Harness Manager:** Harness Manager is where your CI/CD and other configurations are stored and your pipelines are managed. Your pipelines can be managed purely through Git as well.  
 Pipelines are triggered manually in the Harness Manager or automatically in response to Git events, schedules, new artifacts, and so on.  
 Harness Manager is available either as SaaS (running in the Harness cloud) or as self-managed (running in your infrastructure).
-* **Harness Delegate:** The Harness Delegate is a software service you install in your environment. It connects to the Harness Manager and performs tasks using your container orchestration platforms, artifact repositories, monitoring systems, etc. The Delegate is key to enabling Harness to perform CI/CD tasks, but you don't need to install it right away. You can install the Delegate as part of the flow when setting up your Pipelines or Connectors. For more information, go to [Delegates Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+* **Harness Delegate:** The Harness Delegate is a software service you install in your environment. It connects to the Harness Manager and performs tasks using your container orchestration platforms, artifact repositories, monitoring systems, etc. The Delegate is key to enabling Harness to perform CI/CD tasks, but you don't need to install it right away. You can install the Delegate as part of the flow when setting up your Pipelines or Connectors. For more information, go to [Delegates overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
 
 ![Harness Delegate overview](./static/harness-platform-architecture-00.png)
 

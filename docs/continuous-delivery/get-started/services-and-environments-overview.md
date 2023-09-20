@@ -63,7 +63,7 @@ When using an account level deployment stage template, you can referencing an ac
 
 However, when using a deployment stage in a pipeline that has service configured as a runtime input, you can pick services from project, organization, or account levels to pass them as runtime inputs based on your RBAC. 
 
-Go to [add a stage template](/docs/platform/13_Templates/add-a-stage-template.md) for more information.
+Go to [add a stage template](/docs/platform/templates/add-a-stage-template.md) for more information.
 :::
 
 Expand the section below to see a sample account level service YAML.
@@ -673,7 +673,7 @@ When you run the pipeline, you can select the service and environment for their 
 
 ![](./static/services-and-environments-runtime-input-02.png)
 
-For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md).
+For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 ## Services and environments RBAC
 

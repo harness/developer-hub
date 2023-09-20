@@ -193,7 +193,7 @@ Severities:
 * **On error (Error and Exit):** a message is shown and the action does not complete.
 * **On warning (Warn and Continue):** a message is shown and the action is completed.
 
-The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. Go to [add a Governance Policy step to a pipeline](/docs/platform/governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline) for more information.
+The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. Go to [add a Governance Policy step to a pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline) for more information.
 
 #### Feature Flags
 
@@ -213,7 +213,7 @@ Policies are evaluated against Harness [Connectors](/docs/category/connectors).
 
 You can configure a Policy Set to evaluate policies when you save a container.
 
-Go to [Use Harness Policy As Code for Connectors](/docs/platform/Governance/Policy-as-code/sample-policy-use-case#connector-policy-samples).
+Go to [Use Harness Policy As Code for Connectors](/docs/platform/governance/Policy-as-code/sample-policy-use-case#connector-policy-samples).
 
 
 #### Template
@@ -238,7 +238,7 @@ You can now manage template configuration by running policies on Template Save. 
 
 You can define a policy with the entity type Custom.
 
-The Custom entity type provides flexibility to enforce policy evaluations against any input payload during Pipeline execution. This is done using the Policy step. Go to [add a Governance Policy step to a pipeline](/docs/platform/governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline) for more information.
+The Custom entity type provides flexibility to enforce policy evaluations against any input payload during Pipeline execution. This is done using the Policy step. Go to [add a Governance Policy step to a pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline) for more information.
 
 Custom entity types are open ended. There is no pre-set JSON schema that is used for Custom policies. The payload that the policy is evaluated against is determined by you (defined in the Policy step).
 

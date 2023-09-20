@@ -6,13 +6,14 @@
 |Familiarize with artifacts, packages, and different CI build infrastructures|[Harness CI](/tutorials/ci-pipelines/fastest-ci)|
 |Set up and configure connectors like Git and Docker Hub|[Connect to an Artifact Repo](/docs/get-started/key-concepts)|
 |**2. Grasp the role of Harness Delegate and differences between Pipeline Studio and YAML structure**||
-|Understand and use Harness expressions and variables|[Fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/)|
+|Understand and use Harness expressions and variables|[Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs
+)|
 |Get familiar with different types of artifacts and scanning options | [Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab/)
 |**3. Discover supported platforms and Operating Systems on Harness Cloud**||
-|Define and configure connectors, and understand their usage|[Create a connector using YAML](/docs/platform/Connectors/create-a-connector-using-yaml)|
+|Define and configure connectors, and understand their usage|[Create a connector using YAML](/docs/platform/connectors/create-a-connector-using-yaml)|
 |Learn about the Harness Delegate and Harness Manager|[Harness Platform architecture](/docs/get-started/harness-platform-architecture/)|
 |**4. RBAC, best practices, and small configuration tasks**||
-|Understand shared paths and Drone/CI plugins |[CI pipeline basics](/docs/continuous-integration/get-started/key-concepts)|
+|Understand shared paths and Drone/CI plugins |[CI key concepts](/docs/continuous-integration/get-started/key-concepts)|
 |Learn about caching and test intelligence in Harness|[Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)|
 |**5. Configure triggers, input sets, overlays, and failure strategies in CI**||
 |Understand and apply conditional execution and looping strategies|[Looping strategies overview -- matrix, repeat, and parallelism](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)|

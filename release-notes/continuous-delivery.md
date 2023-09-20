@@ -34,13 +34,114 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80504, Harness Continuous Verification version 1.0.8
+## Latest: Harness version 80711
 
 ### New features and enhancements
 
 This release does not have new features.
 
 ### Early access features
+
+– Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-78243)
+
+### Fixed issues
+
+- Previously, the delegate selector was available in the Container step YAML only. This option is now available as an advanced option in the Container step UI. (CDS-78948, ZD-50674)
+
+  ![](./static/cds-78948-delegate-selector-in-config-container-step-ui.png)
+
+- Users can now see the conditional execution icon when the referenced stage or step template has conditional executions configured as runtime inputs only. (CDS-78795)
+
+- Fixed a UI issue in the Pipeline Executions list page related to expanding Executions to view their details. If a new execution was started and displayed on the page, all the displayed executions moved down a line but the expanded execution stayed in the same relative position on the screen (3rd from the top, 4th from the top etc.). 
+
+  With the fix, the correct Execution stays expanded even if new ones get added to the list page. The caveat here is that if the execution Id of the expanded execution changes (e.g. it is rerun), the state is reset on the list page. (CDS-78674, ZD-49928) 
+
+- Fixed an RBAC issue where a user was part of a User Group configured to approve a step but could not approve or reject it. The root cause was that the User Group selected for a pipeline approval also required View permission on User Groups. With this fix, the User Group does not require View permission for a member of that group to approve a pipeline execution. (CDS-78573, ZD-50139)
+
+- Fixed an issue related to reconciliation of templates that included the CloudFormation steps. The Specify Capabilities setting in the step was not validated correctly in the reconciliation, leading to repeated messages to reconcile. With this fix, the reconcile message does not come up erroneously. (CDS-78359, ZD-50240)
+
+- Fixed a Pipeline Execution UI issue where durations of less than 1s were displayed incorrectly. (CDS-78324)
+
+<!-- 
+
+https://harness.atlassian.net/browse/CDS-78305?focusedCommentId=573244
+
+I documented this as a Fixed Issue in the 805 release notes. Did this get pushed to 807? 
+
+-->
+
+- Fixed a UI issue observed when retrying a pipeline execution: the wrong Execution Id was displayed because the UI was evaluating the sequenceId based on the root executionId. With this fix, the Execution Id is based on the back-end data for the current pipeline execution. (CDS-78305)
+
+<!--
+
+https://harness.atlassian.net/browse/CDS-77793?focusedCommentId=573257
+
+This ticket is showing up in the 807xx release notes list but I already documented this is in the 80504 relnotes. I’ll move this from  Fixed Issues to Hotfixes  in 80504 release notes, this will show up when I publish the  807 release notes. 
+
+-->
+
+- Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
+
+
+- Fixed an issue where step templates used in stage templates were being resolved into steps automatically. With this fix, the **New Variable** button in Template Studio (similar to Pipeline Studio) is disabled for any referenced child template. However, **New Variable** is not disabled for creating, updating, or deleting pipeline variables in a pipeline template or stage variables in a stage template. (CDS-77739, ZD-49520, ZD-49737)
+
+- Users can now open remote pipelines imported from Git even when there are errors in the YAML. (CDS-77505, ZD-49446, ZD-50346)
+
+- Previously, you could not re-run a pipeline from a stage that failed as part of a looping strategy. With this fix, **Re-run from Last Failed Stage** pre-selects the last stage that failed as part of a looping strategy. This behavior applies even if the stage failed with a conditional execution set to Always execute this stage. (CDS-77463)
+
+- Previously, only key-value maps were supported as payloads for webhooks. Now, arrays are supported as well. (CDS-77413, ZD-49460)
+
+- Fixed an issue observed when trying to create a Container (CD) step from a template based on a Run (CI) step. With this fix, you can create a Container step from any compatible step templates. (CDS-76756, ZD-48569)
+
+- Fixed an issue with the **File Store** UI screens, where changes made to the configuration were not getting displayed immediately. Users needed to refresh the screen to see it. With the fix, the screen is updated correctly. (CDS-76547, ZD-50495)
+
+- Fixed an issue where the Kubernetes connector in a Container step doesn't respect the pipeline-level delegate selector tags. With this fix, the connector selects delegates specified in the pipeline rather than the connector, which is the correct behavior. 
+
+  This fix is behind the feature flag `CD_CONTAINER_STEP_DELEGATE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag. (CDS-76105, ZD-48542)
+
+<!--
+
+- Fixed an issue observed where a Deploy step and subsequent steps proceeded as intended but the pipeline execution appeared stuck in the UI. This was due to a back-end issue where the log processor would miss `lastUpdatedAt` updates if a node had already processed. With this fix, the processor updates `lastUpdatedAt` before it checks if the node has already been processed. (CDS-76521)
+
+-->
+
+- You can now view policy-related updates in the Pipeline Execution console view. (CDS-75213, ZD-46498) 
+
+- Fixed an issue observed in the Pipeline Run form when rerunning pipelines stored in Git. Even when a user changed the branch name in the form,  subsequent reruns of the pipeline still used the YAML from the Git branch of the first run. With the fix, you can now switch branches and it works as expected. (CDS-74577)
+
+
+
+<!--
+TBD 
+
+https://harness.atlassian.net/browse/CDS-77505
+
+-->
+
+
+
+
+
+
+
+
+### Hotfixes
+
+This release does not have hotfixes.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Harness version 80504, Harness Continuous Verification version 1.0.8
+
+##### New features and enhancements
+
+This release does not have new features.
+
+##### Early access features
 
 This release does not include early access features. 
 
@@ -52,7 +153,7 @@ TBD commenting out until I hear back from RG https://harness.atlassian.net/brows
 
 -->
 
-### Fixed issues
+##### Fixed issues
 
 * Fixed a UI issue observed where the wrong **Execution Id** was displayed when retrying a pipeline execution. The wrong **Execution Id** was displayed because the UI was evaluating the `sequenceId` based on the root `executionId`. With this fix, the **Execution Id** is based on the backend data for the current pipeline execution. (CDS-78305)
 
@@ -64,7 +165,6 @@ TBD commenting out until I hear back from RG https://harness.atlassian.net/brows
   - [harnessdev/serverless-package:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-package/3.30.1-1.0.1/images/sha256-1448b1566186023df78cc79b529c06256e327890b5018ed05632775a7c5c4992?context=explore)
   - [harnessdev/serverless-rollback:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-rollback/3.30.1-1.0.1/images/sha256-c023e84a4a7450c4978535569b03e8909a7e6daa9c2fa0ad4ff70a6ee52e02e7?context=explore)
 
-* Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
 
 * When using the OCI Helm connector with anonymous credentials, Harness would incorrectly derive the source port from the OCI repository and the connection validation would fail. With this fix, Harness does not add default port 443 if no port is provided in the URL itself. (CDS-77298)
 
@@ -108,15 +208,9 @@ TBD commenting out until I hear back from RG https://harness.atlassian.net/brows
 
   This issue has been resolved. Now, validation checks are implemented that require you to provide a **Service Instance Identifier** when enabling continuous verification for Datadog metrics. 
 
-### Hotfixes
+##### Hotfixes
 
-This release does not have hotfixes.
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
+* Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
 
 #### Version 80406
 
@@ -1829,7 +1923,7 @@ This release does not include any early access features.
 
 ##### What's new
 
-- Harness supports manually adding service or environment [runtime inputs](/docs/platform/references/runtime-inputs/) in the pipeline YAML. (CDS-54249)
+- Harness supports manually adding service or environment [runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs/) in the pipeline YAML. (CDS-54249)
 
   You can now manually add service or environment runtime input expressions in the pipeline YAML. The values added to the YAML are reflected on the Harness UI.
 
@@ -1973,7 +2067,7 @@ This release does not include any early access features.
 
 ##### What's new
 
-- [Azure Repo](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo) is now supported as a manifest repo for Amazon Elastic Container Service (ECS) and Serverless.com Framework Lambda deployments. (CDS-54961)
+- [Azure Repo](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo) is now supported as a manifest repo for Amazon Elastic Container Service (ECS) and Serverless.com Framework Lambda deployments. (CDS-54961)
 
   When creating Amazon ECS or Serverless.com Framework Lambda deployment pipelines, you can now use Azure Repo as a manifest repo in the service definition.
 
@@ -2249,7 +2343,7 @@ connector:
 
 ##### Early access
 
-- Large repositories are now supported for [Azure Repo](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
+- Large repositories are now supported for [Azure Repo](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
 
   Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
@@ -2734,7 +2828,7 @@ This release does not include new features.
 
   ![picture 46](static/8e8505663a06ebf516784c0eb7316e5ca680a119515af7ae027259ec271df198.png)
 
-- Added an **Anonymous** credential option in [OCI Helm Registry connector](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo/). (CDS-50173, ZD-38625)
+- Added an **Anonymous** credential option in [OCI Helm Registry connector](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/). (CDS-50173, ZD-38625)
 
   The OCI Helm Registry connector supported anonymous credentials but there was no UI option. This issue has been resolved. The OCI Helm Registry now has an **Anonymous** option. This enables you to connect to public OCI registries from Azure, AWS, JFrog, etc., and deploy Helm charts from these registries.
 

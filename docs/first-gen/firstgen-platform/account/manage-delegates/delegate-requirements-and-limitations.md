@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::note 
-This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/2_Delegates/delegate-concepts/delegate-requirements.md).
+This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/delegates/delegate-concepts/delegate-requirements.md).
 :::
 
 This topic lists the limitations and requirements of the Harness Delegate.

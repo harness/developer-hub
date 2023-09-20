@@ -61,6 +61,13 @@ export const moduleList: CardItem[] = [
     link: "docs/software-engineering-insights",
   },
   {
+    title: "Software Supply Chain Assurance",
+    module: MODULES.ssca,
+    // icon: "img/icon_ssca.svg",
+    description: "Secure your software supply chain.",
+    link: "docs/software-supply-chain-assurance",
+  },
+  {
     title: "Continuous Error Tracking",
     module: MODULES.cet,
     // icon: "img/icon_cet.svg",

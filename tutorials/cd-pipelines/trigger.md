@@ -11,6 +11,12 @@ import TabItem from '@theme/TabItem';
 
 This tutorial will help you to get started with triggers in Harness pipelines.
 
+:::info
+
+[Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-kubernetes-manifest).
+
+:::
+
 ## Why use triggers?
 
 Triggers in a Harness Continuous Delivery (CD) pipeline are used to automatically initiate pipeline stages or actions based on specific events or conditions, such as Git events, new Helm Charts, new artifacts, or specific time intervals. Triggers in Harness CD enable faster feedback cycles, enhanced efficiency, and decreased reliance on manual intervention during the deployment process.
@@ -26,7 +32,7 @@ Verify the following:
 
 - **Existing Harness CD pipeline.** If you are a new user or haven't created a pipeline yet, then kindly check our [CD tutorials](/tutorials/cd-pipelines) to create one.
 - **Existing GitHub connector**.
-    - If you are a new user or haven't created a Git connector yet, **fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface, then kindly follow the steps in [Git Connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo#connect-to-github) to create one and point the connector to the fork.
+    - If you are a new user or haven't created a Git connector yet, **fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface, then kindly follow the steps in [Git Connector](/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) to create one and point the connector to the fork.
 
 ## Implement a trigger using Git events
 

@@ -15,7 +15,7 @@ Learn how to connect your code repository to the monitored service. Help your de
 ## Prerequisites
 
 * You must have an agent configured. 
-* Setup a **Connector** for the code repository you intend to track. If you do not have a code repository connector, then go to  [Setup Connector](/platform/7_Connectors/Code-Repositories/connect-to-code-repo.md).
+* Setup a **Connector** for the code repository you intend to track. If you do not have a code repository connector, then go to  [Setup Connector](/platform/connectors/code-repositories/connect-to-code-repo.md).
 
 
 ## Set up Source Attach

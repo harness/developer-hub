@@ -48,7 +48,7 @@ The last applied event preference is displayed on the Update event preference pa
 
 You can create a Jira ticket only for the events for which you have already set the event preference.
 
-**Prerequisite**: You should have added a Jira connector at the Project, Org, or Account level. To learn how to add a Jira connector, go to [Add a Jira Connector](/docs/platform/Connectors/Ticketing-Systems/connect-to-jira#add-a-jira-connector). 
+**Prerequisite**: You should have added a Jira connector at the Project, Org, or Account level. To learn how to add a Jira connector, go to [Add a Jira Connector](/docs/platform/connectors/ticketing-systems/connect-to-jira#add-a-jira-connector). 
 
 To create a Jira ticket:
 

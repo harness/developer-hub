@@ -14,7 +14,7 @@ import image_2 from './static/delegate-installation-overview-18.png'
 import image_3 from './static/delegate-installation-overview-19.png'
 ```
 
-This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).This topic discusses general Delegate installation information. For Delegate requirements and limitations, see [Delegate Requirements and Limitations](delegate-requirements-and-limitations.md).
+This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/delegates/delegate-concepts/delegate-overview.md).This topic discusses general Delegate installation information. For Delegate requirements and limitations, see [Delegate Requirements and Limitations](delegate-requirements-and-limitations.md).
 
 For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen).
 
