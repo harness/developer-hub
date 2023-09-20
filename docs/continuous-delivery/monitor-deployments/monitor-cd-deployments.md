@@ -156,6 +156,10 @@ To use custom sequencing, do the following:
   
   You can disable custom sequencing by toggling it off.
 
+ ### Charts tab
+
+ The **Charts** tab enables you to view the version and other details about the Helm chart deployed to a given environment.  
+
 ## Platform Dashboards
 
 The account-wide Platform Dashboards in Harness contain built-in dashboards that provide advanced details about your deployments and services.
