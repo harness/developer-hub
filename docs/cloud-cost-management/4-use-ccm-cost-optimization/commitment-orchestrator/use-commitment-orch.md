@@ -4,7 +4,7 @@ description: Optimize the utilization of Amazon EC2 Reserved Instances (RIs) by 
 sidebar_position: 3
 ---  
 
-# Optimize the utilization of EC2 Reserved Instances using the Commitment Orchestrator 
+# Optimize utilization of EC2 Reserved Instances using Commitment Orchestrator 
 
 Optimize the utilization of Amazon EC2 Reserved Instances (RIs) by setting up Harness Commitment Orchestrator. 
 
