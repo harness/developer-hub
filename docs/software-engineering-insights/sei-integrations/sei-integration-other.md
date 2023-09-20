@@ -68,8 +68,40 @@ The following table lists other Jenkins plugins for which the Job Reporter plugi
 SEI supports custom CI/CD integrations through webhooks. Use this for CI/CD tools that don't have a dedicated [SEI integration](./sei-integrations-overview.md), such as Jenkins and GitHub Actions.
 
 1. Create a [Harness API key and token](/docs/platform/automation/api/add-and-manage-api-keys) to use for authorization.
-2. Contact [Harness Support](mailto:support@harness.io) to get a UUID to identify your CI/CD system.
-3. Configure the webhook API call according to the following webhook specification.
+2. [Generate a UUID](#generate-a-uuid) to identify your CI/CD system and connect it to SEI.
+3. Configure the webhook API call according to the [webhook specification](#webhook-specification).
+
+### Generate a UUID
+
+You must generate a Universally Unique Identifier (UUID) for custom Continuous Integration/Continuous Deployment (CI/CD) integrations. The UUID uniquely identifies and connects your custom integration in SEI.
+
+You need:
+
+* Access to the SEI API with a valid access token.
+* A CI/CD integration, such as Jenkins, that you want to associate with SEI through a UUID.
+
+These steps use a Jenkins integration to demonstrate how to generate a UUID.
+
+1. To create a mock Jenkins integration, go to **Settings**, select **Integrations**, and then install the **Jenkins CI/CD integration**.
+2. Enter a **Name** for the integration. The **Description** and **Tags** are optional.
+3. Use the SEI API to generate a UUID for the Jenkins integration, for example:
+
+   ```
+   curl --location 'https://api.propelo.ai/v1/cicd/instances' \
+   --header 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+   --header 'Content-Type: application/json' \
+   --data '{
+       "integration_id": "4620",
+       "name": "Custom CICD Integration",
+       "type": "jenkins"
+   }'
+   ```
+
+You can find the `integration_id` in the mock Jenkins integration you created in SEI. This curl command generates a UUID for an integration named `Custom CICD Integration`.
+
+4. Using the UUID returned by the SEI API, update the UUID for your custom integration in SEI. This identifies and connects your custom integration in SEI.
+5. Import [Propels](../sei-propels-scripts/propels-overview.md) templates from the [SEI propels template repo](https://github.com/harness/sei-propels-templates). SEI provides Propels templates for CI/CD integrations. You can customize these templates to suit your specific CI/CD tool, such as Jenkins.
+6. Schedule Propel automation. Utilize the first node in the Propel tempalte to schedule automation tasks for your custom CI/CD integration. For example, with Jenkins, you can use automation to trigger Jenkins jobs, manage deployments, and monitor the integration's performance.
 
 ### Webhook specification
 
