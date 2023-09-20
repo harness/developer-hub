@@ -55,7 +55,7 @@ export default function CertificationsChaos() {
   }, [searchKey]);
 
   return (
-    <div className={styles.certificationsCD}>
+    <div className={styles.certificationsCE}>
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>

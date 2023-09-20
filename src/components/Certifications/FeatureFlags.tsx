@@ -51,7 +51,7 @@ export default function FeatureFlags() {
   }, [searchKey]);
 
   return (
-    <div className={styles.certificationsCI}>
+    <div className={styles.certificationsFF}>
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
