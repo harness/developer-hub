@@ -12,7 +12,14 @@ Review the notes below to learn about the early access (aka beta) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - August 22, 2023
+
+## Latest - September 19, 2023
+
+### Continuous Delivery, version 80711
+
+– Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-67121)
+
+## August 22, 2023
 
 ### Continuous Delivery, version 80307
 
@@ -24,7 +31,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 
-With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
+With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
 
 ## August 10, 2023
 
@@ -376,7 +383,7 @@ You can re-run builds in debug mode through the **Builds**, **Execution**, and *
 
 ##### Continuous Delivery
 
-- Large repositories are now supported for [Azure Repo](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
+- Large repositories are now supported for [Azure Repo](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
 
   Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
@@ -590,7 +597,7 @@ For more information, see [Create a remote step template](/docs/platform/Templat
 
 - You can now use expressions to reference pre-existing secrets in Vault using a fully-qualified path. (PL-28352)
 
-For more information, see [HashiCorp Vault Secrets](/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets#option-hashicorp-vault-secrets).
+For more information, see [HashiCorp Vault Secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets#option-hashicorp-vault-secrets).
 
 - Harness will now send email notification for user invites when the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES is enabled. (PL-26218, ZD-32152,35287)
 
@@ -610,7 +617,7 @@ You can onboard any secret manager with Harness and reference their secrets in H
 
 This is behind the feature flag CUSTOM_SECRET_MANAGER_NG.
 
-See [Add a custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager).
+See [Add a custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager).
 
 #### July 7, 2022
 

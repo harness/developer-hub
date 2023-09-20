@@ -38,6 +38,10 @@ TI is always up to date and syncs when you merge code to any branch.
 
 After a build runs, TI gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. You can find the Test results and the TI call graph visualization on the **Build details** page. The call graph visualization shows the changed classes and methods that caused each test to be selected.
 
+<!-- Video: Test Intelligence demo
+https://www.loom.com/share/6f65a77dfdac42639eab745a0b391ce3?sid=9e25316e-b0cf-40b8-9917-39d299f58121-->
+<docvideo src="https://www.loom.com/share/6f65a77dfdac42639eab745a0b391ce3?sid=9e25316e-b0cf-40b8-9917-39d299f58121" />
+
 <!-- Test Intelligence architecture
 
 Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **Run Tests** step.
@@ -469,7 +473,7 @@ The **Run Tests** step has the following settings.
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
 
 **Description** is optional.
 
@@ -767,9 +771,9 @@ These settings specify the maximum resources used by the container at runtime:
 
 The timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution continues.
 
-To change what happens when steps fail, go to [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
+To change what happens when steps fail, go to [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
-To configure when pipelines should skip certain steps, go to [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+To configure when pipelines should skip certain steps, go to [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 ## Pipeline YAML examples
 

@@ -13,7 +13,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-In Harness CI, you set up a [codebase](./create-and-configure-a-codebase.md) by creating a [Harness connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) that connects to a Git repo. Pipelines use this connector to clone the code that you want to build and test. When a pipeline runs, Harness also fetches Git details and displays them in the [build details](../viewing-builds.md).
+In Harness CI, you set up a [codebase](./create-and-configure-a-codebase.md) by creating a [Harness connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) that connects to a Git repo. Pipelines use this connector to clone the code that you want to build and test. When a pipeline runs, Harness also fetches Git details and displays them in the [build details](../viewing-builds.md).
 
 This topic describes how codebase variables are resolved and the built-in Harness expressions that you can use to reference Git codebase attributes in your pipelines.
 
@@ -26,7 +26,7 @@ For more information about variables and expressions, go to:
 
 You must use a supported codebase: GitHub, Bitbucket, or GitLab.
 
-Your [code repo connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) must use **Username and Token** authentication and allow API access (**Enable API access**).
+Your [code repo connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) must use **Username and Token** authentication and allow API access (**Enable API access**).
 
 ## Variable resolution
 

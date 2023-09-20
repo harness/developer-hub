@@ -165,7 +165,7 @@ curl -i -X POST \
   }'
 ```
 
-You can create all types of connectors with this endpoint. For this endpoint's specifications, go to the [Harness API reference documentation](https://apidocs.harness.io/tag/Connectors#operation/createConnector).
+You can create all types of connectors with this endpoint. For this endpoint's specifications, go to the [Harness API reference documentation](https://apidocs.harness.io/tag/connectors#operation/createConnector).
 
 A successful response includes the `connector` data from the request, as well as creation timestamps, various metadata and settings, and a correlation ID. For example:
 

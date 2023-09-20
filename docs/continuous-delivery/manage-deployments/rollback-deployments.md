@@ -21,6 +21,7 @@ Post deployment rollback initiates a rollback of your most recent successful dep
   - AWS Auto Scale Group (ASG)
   - Tanzu Application Services (TAS)
   - Amazon Elastic Container Service (ECS)
+  - Native Helm
 
     Harness anticipates expanding this feature to other deployment types in the future.
 * You can rollback successful pipelines only. The rollback option is not available for failed pipelines.

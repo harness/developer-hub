@@ -290,7 +290,7 @@ export default function CertificationsCI() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Continuous Integration - Architect (BETA)</h2>
+                  <h2>Continuous Integration - Architect</h2>
                   <img
                     src={`${baseUrl}img/cert_arc_ci_badge.svg`}
                     alt="Harness Certified Expert - CI Architect"
@@ -302,7 +302,7 @@ export default function CertificationsCI() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide (BETA)</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
                     design, implementation and management of CI. This exam builds
@@ -333,7 +333,7 @@ export default function CertificationsCI() {
           {/* Arch Exam Details  */}
 
           <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details (BETA) </h2>
+            <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
             <ArchitectCertificationExamDetails />
               <div className={styles.btnContainer}>

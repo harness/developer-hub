@@ -161,7 +161,7 @@ If you are adding the image location to Harness as an Artifact in the Service De
 
 1. In **Manifests**, click **Add Manifest**.
 2. In **Specify Manifest Type**, select **K8s Manifest**, and then click **Next**.
-3. In **Specify K8s Manifest Store**, select the Git provider. In this example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo).
+3. In **Specify K8s Manifest Store**, select the Git provider. In this example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
 4. Click **Continue**. **Manifest Details** appears.
    
    ![](./static/define-kubernetes-manifests-30.png)

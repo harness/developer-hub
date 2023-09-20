@@ -9,6 +9,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
 This topic describes how you can use a Kubernetes cluster build infrastructure for the **Build** stage in a Harness CI pipeline.
 
 This topic assumes you have a basic understanding of [Harness' key concepts](/docs/get-started/key-concepts.md).
@@ -16,12 +18,6 @@ This topic assumes you have a basic understanding of [Harness' key concepts](/do
 ## Important notes
 
 Review the following important information about using Kubernetes cluster build infrastructures for your Harness CI builds.
-
-:::info
-
-The Kubernetes cluster build infrastructure option is only available with Harness CI Team and Enterprise plans.
-
-:::
 
 ### Privileged mode is required for Docker-in-Docker
 
@@ -77,7 +73,7 @@ Go to [Configure a Kuberneted build farm to use self-signed certificates](./conf
 
 ## Process overview
 
-After you set up the Kubernetes cluster that you want to use as your build infrastructure, you use a Harness [Kubernetes Cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector) and Harness Delegate to create a connection between Harness and your cluster.
+After you set up the Kubernetes cluster that you want to use as your build infrastructure, you use a Harness [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) and Harness Delegate to create a connection between Harness and your cluster.
 
 Here's a short video that walks you through adding a Harness Kubernetes Cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, then the Kubernetes Cluster connector uses the delegate to connect to the cluster.
 
@@ -91,7 +87,7 @@ Follow the steps below to set up your Kubernetes cluster build infrastructure. F
 
 ## Step 1: Create a Kubernetes cluster
 
-Make sure your Kubernetes cluster meets the build infrastructure requirements in the [CI cluster requirements](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference#harness-ci-cluster-requirements) and the Harness-specific [permissions required for CI](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference#permissions-required).
+Make sure your Kubernetes cluster meets the build infrastructure requirements in the [CI cluster requirements](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference#harness-ci-cluster-requirements) and the Harness-specific [permissions required for CI](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference#permissions-required).
 
 You need to install the Harness Kubernetes Delegate on the same cluster you use as your build infrastructure. Make sure that the cluster has enough memory and CPU for the Delegate you are installing. Harness Kubernetes Delegates can be in a different [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) than the one you provide while defining the build farm infrastructure for the CI pipeline.
 
