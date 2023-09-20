@@ -1,7 +1,7 @@
 ---
 title: CI codebase variables reference
 description: Use Harness' built-in expressions to reference various Git codebase attributes in pipeline stages.
-sidebar_position: 30
+sidebar_position: 40
 helpdocs_topic_id: 576gjpak61
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
