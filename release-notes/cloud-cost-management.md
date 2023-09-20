@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-09-04T10:00
+date: 2023-09-20T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -20,12 +20,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: version 
+## Latest: version 80804
 
 ### New features and enhancements
 
-
-
+This release does not include any early access features.
 
 ### Early access features
 
@@ -33,7 +32,9 @@ This release does not include any early access features.
 
 ### Fixed issues
 
+* Previously, on the AutoStopping details page, the dry-run flag did not invoke the savings API when turned on. (CCM-14232)
 
+  This issue has been fixed. Now, the cost savings are correctly displayed in the dry-run mode.
   
 
 
@@ -42,16 +43,35 @@ This release does not include any early access features.
 <details>
 <summary>2023 releases</summary>
 
-#### September 07, 2023, version 80702
+#### September 7, 2023, version 80702
 
 ##### New features and enhancements
+
+  * Cost category enhancement (CCM-12879)
+
+  Implemented a new feature that enables users to copy cost buckets from one cost category to multiple cost categories simultaneously. You have the flexibility to choose any number of buckets for copying. Upon selection, a popup prompt appears, allowing users to specify the target cost categories for copying the selected buckets. Upon successful completion, you receive a success notification along with relevant details.
+  
+  However, it's important to note that while copying you may encounter issues if the destination cost category already has a bucket with the same name as the selected one. In such cases, you can address the conflict by renaming the bucket before attempting the copy operation again.
+
+    <docimage path={require('./static/ccm-copy-cost-buckets.gif')} width="60%" height="60%" title="Click to view full size image" />
 
 
 ##### Early access features
 
+This release does not include any early access features.
+
 
 ##### Fixed issues
 
+* An issue with the budget group warning message (CCM-14150)
+
+  Previously, there was a discrepancy between the dates displayed in the warning message and those in the budget table column. This issue has been fixed now, and the dates are consistent on both the table and the warning message.
+
+    <docimage path={require('./static/ccm-budget-group-warning-msg.png')} width="60%" height="60%" title="Click to view full size image" />
+
+* Previously, users were unable to schedule the same AutoStopping rule for the same time in different time zones, such as setting the rule to run at 8 PM - 9 PM IST and 8 PM - 9 PM EDT, which was considered an overlap. (CCM-14181)
+
+  This issue has been resolved. Added validation to check for time zones to allow multiple schedules for a single rule.
 
 
 
