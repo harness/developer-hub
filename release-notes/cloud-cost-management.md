@@ -20,15 +20,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: version 80606
+## Latest: version 
 
 ### New features and enhancements
 
-* Display refunds or discounts on the graph within perspectives. (CCM-13443)
-
-  Previously, our graph in perspectives didn't display refunds or discounts, resulting in empty spots when values were negative. This enhancement improves this by aggregating negative values into a red-colored bar chart. You can now toggle a button in **General Preferences** to view these previously hidden negative costs.
-
-    <docimage path={require('./static/aws-preferences-ccm13443.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 
@@ -37,6 +32,45 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 This release does not include any early access features.
 
 ### Fixed issues
+
+
+  
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### September 07, 2023, version 80702
+
+##### New features and enhancements
+
+
+##### Early access features
+
+
+##### Fixed issues
+
+
+
+
+#### September 04, 2023, version 80606
+
+##### New features and enhancements
+
+* Display refunds or discounts on the graph within perspectives. (CCM-13443)
+
+  Previously, our graph in perspectives didn't display refunds or discounts, resulting in empty spots when values were negative. This enhancement improves this by aggregating negative values into a red-colored bar chart. You can now toggle a button in **General Preferences** to view these previously hidden negative costs.
+
+    <docimage path={require('./static/aws-preferences-ccm13443.png')} width="60%" height="60%" title="Click to view full size image" />
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
 
 * After editing an existing cost category, previously, when attempting to create a new one, the drawer displayed the details for the last accessed cost category. (CCM-13973)
 
@@ -53,16 +87,10 @@ This release does not include any early access features.
 * The screen went blank when deleting all characters in the AutoStopping Rule Name field while editing the rule. (CCM-13816)
 
   This issue has been resolved.
-  
 
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 23, 2023, version 80500
-s
+
 ##### New features and enhancements
 
 * ServiceNow integration with Recommendations (CCM-11150)
