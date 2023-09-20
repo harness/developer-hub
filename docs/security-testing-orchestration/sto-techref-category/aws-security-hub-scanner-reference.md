@@ -181,7 +181,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 
 
-## Security step settings for AWS Security Hub scans in STO (*deprecated*)
+## Security step settings for AWS Security Hub scans in STO (*legacy*)
 
 You can set up an AWS Security Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

@@ -1,6 +1,6 @@
 ---
-title: Exemptions to override Failing pipelines on Severity in STO
-description: How to override Fail on Severity for specific vulnerabilities
+title: Exemptions to override the Fail on Severity threshold for specific issues in STO
+description: How to override the `fail_on_severity` threshold for specific issues
 sidebar_position: 50
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/key-concepts/exemptions

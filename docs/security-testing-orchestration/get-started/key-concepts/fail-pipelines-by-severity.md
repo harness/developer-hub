@@ -1,5 +1,5 @@
 ---
-title: Failing pipelines by severity in STO
+title: Fail on Severity threshold to fail STO pipelines based on the severity of detected issues
 description: Fail integrated pipelines based on the severity of detected issues
 sidebar_position: 40
 redirect_from:
