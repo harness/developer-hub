@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-09-19T10:00
+date: 2023-09-20T10:00
 sidebar_position: 13
 ---
 ```mdx-code-block
@@ -572,14 +572,14 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.8.3](https://github.com/harness/helm-charts/releases/tag/harness-0.8.3) |
 | Air Gap Bundle | [0.8.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.3) |
-| NG Manager | 79821 |
-| CI Manager | 4903 |
+| NG Manager | 79823 |
+| CI Manager | 4905 |
 | Pipeline Service | 1.37.13 |
 | Platform Service | 79601 |
 | Access Control Service | 79400 |
 | Change Data Capture | 79819 |
 | Test Intelligence Service | release-177 |
-| NG UI | 0.353.10 |
+| NG UI | 0.353.17 |
 | LE NG | 68004 |
 
 **Alternative air gap bundle download method**
@@ -638,11 +638,11 @@ gsutil -m cp \
 
 #### Chaos Engineering
 
-- Added support for Chaos Engineering version 1.19.x. (CHAOS-2544)
+- Added support for Chaos Engineering version 1.19.x. For more information, go to the [Chaos Engineering release notes](/release-notes/chaos-engineering/#latest-version-1192). (CHAOS-2544)
 
 #### Continuous Delivery
 
-- Added the GitOps feature flag at the org level. (CDS-79545)
+- Added functionality to support GitOps section at Org level. (CDS-79545)
 
 #### Continuous Integration
 
