@@ -9,17 +9,17 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-You can use the [Nexus Publish Drone plugin](https://github.com/harness-community/drone-nexus-publish) in your CI pipelines to upload artifacts to [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository).
+You can use the [Nexus Publish plugin](https://github.com/harness-community/drone-nexus-publish) in your CI pipelines to upload artifacts to [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository).
 
-You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md).
+You need:
 
-## Requirements
+* Access to a Sonatype Nexus Repository Manager instance.
+* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+* Steps in your pipeline that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
 
-* You have access to a Sonatype Nexus Repository Manager instance.
-* You have a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
-* Your pipeline has steps that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
+You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md). For other upload locations, you can use a script in a [Run step](../run-ci-scripts/run-step-settings.md).
 
-## Add the Plugin step
+## Use the Nexus Publish plugin
 
 ```mdx-code-block
 <Tabs>
@@ -28,7 +28,7 @@ You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md
 
 1. In your CI pipeline's **Build** stage, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md).
 2. Enter a **Name** and optional **Description**.
-3. For **Container Registry**, select a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+3. For **Container Registry**, select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 4. In the **Image** field, enter `harnesscommunity/publish-nexus-repository:1.1.1`.
 5. Under **Optional Configuration**, add **Settings** to configure the Nexus Publisher plugin's properties, as described in the following table.
 
@@ -70,13 +70,12 @@ The following YAML example describes a [Plugin step](../use-drone-plugins/plugin
                       attributes: "-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin" ## Key-value pairs providing additional metadata
 ```
 
-<details>
-<summary>Plugin step specifications</summary>
+### Plugin step specifications
 
 *  `type: Plugin`
 *  `name:` Specify a step name.
 *  `identifier:` Specify a unique step ID.
-*  `connectorRef:` Specify a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+*  `connectorRef:` Specify a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 *  `image: harnesscommunity/publish-nexus-repository:1.1.1`
 *  `settings:` Configure the Nexus Publisher plugin's properties, as described in the following table.
 
@@ -89,8 +88,6 @@ The following YAML example describes a [Plugin step](../use-drone-plugins/plugin
 | `format` | String | The repository format. | <ul><li>`maven2`</li><li>`raw`</li></ul> |
 | `repository` | String | The name of the repository where you want to upload the artifact. | `maven-releases` |
 | `attributes` | String of key-value pairs | Component and asset attributes providing additional artifact metadata.  `"-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"` |
-
-</details>
 
 ```mdx-code-block
   </TabItem>
@@ -105,10 +102,75 @@ Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive
 
 :::
 
-<details>
-<summary>Pipeline YAML example</summary>
+## View artifacts on the Artifacts tab
 
-The following YAML example is for a pipeline that includes steps to build an artifact and then upload it to Sonatype Nexus.
+You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifact URLs on the [Artifacts tab](../viewing-builds.md). This makes it easier to find artifacts associated with specific builds. To do this, add another **Plugin** step after the Nexus Publisher plugin step.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+Configure the **Plugin** step to use the Artifact Metadata Publisher plugin:
+
+* **Name:** Enter a name.
+* **Container Registry:** Select a Docker connector.
+* **Image:** Enter `plugins/artifact-metadata-publisher`.
+* **Settings:** Add the following two settings as key-value pairs.
+  * `file_urls`: The URL to the artifact that was uploaded by the Nexus Publisher plugin. If you uploaded multiple artifacts, you can provide a list of URLs.
+  * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
+
+```yaml
+               - step:
+                  type: Plugin
+                  name: publish artifact metadata
+                  identifier: publish_artifact_metadata
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/artifact-metadata-publisher
+                    settings:
+                      file_urls: https://complete/url/to/artifact/on/nexus
+                      artifact_file: artifact.txt
+```
+
+* `connectorRef`: Use the built-in Docker connector (`account.harness.Image`) or specify your own Docker connector.
+* `image`: Must be `plugins/artifact-metadata-publisher`.
+* `file_urls`: Provide the URL to the artifact that was uploaded by the Nexus Publisher plugin. If you uploaded multiple artifacts, you can provide a list of URLs.
+* `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Build logs and artifact files
+
+When you run the pipeline, you can observe the step logs on the [build details page](../viewing-builds.md).
+
+If the Nexus Publisher plugin step succeeds, you can find the artifact in your Sonatype Nexus repo. You can use the Artifact Metadata Publisher plugin to [view artifacts on the Artifacts tab](#view-artifacts-on-the-artifacts-tab).
+
+:::tip
+
+On the **Artifacts** tab, select the step name to expand the list of artifact links associated with that step.
+
+If your pipeline has multiple steps that upload artifacts, use the dropdown menu on the **Artifacts** tab to switch between lists of artifacts uploaded by different steps.
+
+<!-- ![](./static/artifacts-tab-with-link.png) -->
+
+<docimage path={require('./static/artifacts-tab-with-link.png')} />
+
+:::
+
+## Pipeline YAML example
+
+This example pipeline has steps that build an artifact, upload it to a Sonatype Nexus repo, and then use the Artifact Metadata Publisher plugin to show a link to the artifact on the **Artifacts** tab.
 
 ```yaml
 pipeline:
@@ -135,7 +197,7 @@ pipeline:
               - step:
                   type: Run
                   name: Build
-                  identifier: Run_3
+                  identifier: build
                   spec:
                     shell: Sh
                     command: "mvn clean package"
@@ -154,50 +216,6 @@ pipeline:
                       filename: ./target/example-1.0.jar
                       repository: maven-releases
                       attributes: "-CgroupId=org.dronetest -CartifactId=example -Cversion=1.0 -Aextension=jar -Aclassifier=bin"
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-```
-
-</details>
-
-## Confirm the upload
-
-After you add the steps and save the pipeline, select **Run** to run the pipeline.
-
-On the [build details page](../viewing-builds.md), you can see the logs for each step as they run.
-
-After the **Plugin** step runs, confirm that the artifact uploaded to Sonatype Nexus.
-
-## View artifacts on the Artifacts tab
-
-As an alternative to manually finding artifacts on Sonatype Nexus, you can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../viewing-builds.md). To do this, add another **Plugin** step after the Nexus Publisher plugin step.
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="Visual" label="Visual">
-```
-
-Configure the **Plugin** step to use the Artifact Metadata Publisher plugin:
-
-* **Name:** Enter a name.
-* **Container Registry:** Select a Docker connector.
-* **Image:** Enter `plugins/artifact-metadata-publisher`.
-* **Settings:** Add the following two settings as key-value pairs.
-  * `file_urls`: The URL to the target artifact that was uploaded by the Nexus Publisher plugin.
-  * `artifact_file`: `artifact.txt`
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="YAML" label="YAML" default>
-```
-
-Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
-
-```yaml
                - step:
                   type: Plugin
                   name: publish artifact metadata
@@ -206,11 +224,12 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
                     connectorRef: account.harnessImage
                     image: plugins/artifact-metadata-publisher
                     settings:
-                      file_urls: ## Provide the URL to the target artifact that was uploaded by the Nexus Publisher plugin.
+                      file_urls: https://repository.sonatype.org/content/sites/...
                       artifact_file: artifact.txt
-```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
 ```

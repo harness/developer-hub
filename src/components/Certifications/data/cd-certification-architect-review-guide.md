@@ -3,7 +3,7 @@
 |**1. Advanced Cloud Infrastructure Management**  | |
 | Demonstrate advanced skills in navigating cloud service providers, and their offerings, and developing robust and scalable cloud architectures | [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/)|
 | Apply deep knowledge of Linux, its utilities and scripting for automation and management of complex cloud environments | [Linux chaos infrastructure advanced management](/docs/chaos-engineering/chaos-infrastructure/linux-chaos-infrastructure-advanced-management) |
-| Design, implement, and manage sophisticated Infrastructure as Code (IaC) systems for comprehensive control of cloud resources | [Add an Infrastructure Definition](/docs/first-gen/continuous-delivery/model-cd-pipeline/environments/infrastructure-definitions/)|
+| Design, implement, and manage sophisticated Infrastructure as Code (IaC) systems for comprehensive control of cloud resources | [Provision Infrastructure](/docs/continuous-delivery/cd-infrastructure/provisioning-overview)|
 | **2. Container Orchestration and Management**||
 | Develop advanced containerized solutions, focusing on optimizing images, security, and isolation techniques | [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) |
 | Architect, deploy, and manage complex, large-scale containerized applications using Kubernetes and other orchestration tools | [Add a Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector/) |

@@ -1150,7 +1150,7 @@ We're pleased to present Harness Self-Managed Enterprise Edition Minor Release 7
 The following new features and enhancements were added to Harness Self-Managed Enterprise Edition:
 
 * Custom selector API for Delegate NG Token management is available now. (DEL-3558, ZD-21717, ZD-27515)
-	+ See [Secure Delegates with Tokens](../../platform/2_Delegates/secure-delegates/secure-delegates-with-tokens.md).
+	+ See [Secure Delegates with Tokens](../../platform/delegates/secure-delegates/secure-delegates-with-tokens.md).
 * Harness can now send key Workflow and Pipeline deployment events to a URL endpoint as a JSON payload. This helps in analyzing how Workflows and Pipelines are performing, using other tools that consume and build dashboards for the events. This feature is now public and not behind the Feature Flag`FF APP_TELEMETRY`. (CDS-35193)
 	+ See [Publish Workflow Events](../continuous-delivery/concepts-cd/deployments-overview/publish-workflow-events-to-an-http-endpoint.md).
 	+ See [Publish Pipeline Events](../continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint.md).

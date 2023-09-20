@@ -9,13 +9,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Welcome to the **_Harness CLI_** Documentation!
-
 **Harness CLI** serves as your gateway to frictionless interaction with the intelligent Harness Platform directly through the command-line interface, providing you with a powerful and efficient means to manage Harness and its diverse set of resources.
 
 This documentation section will serve as your compass, guiding you through the installation, configuration, and upgrade of the Harness CLI utility.
 
-## Installing Harness CLI
+## Install Harness CLI
 
 You can install `harness` CLI utility on Linux, MacOS, or Windows in order to interact with Harness Platform from a command-line interface.
 
@@ -24,7 +22,7 @@ You can install `harness` CLI utility on Linux, MacOS, or Windows in order to in
 <TabItem value="Linux">
 ```
 
-### Installing the CLI on Linux
+### Install the CLI on Linux
 
 1. Download and extract the Harness CLI binary.
 
@@ -34,8 +32,8 @@ You can install `harness` CLI utility on Linux, MacOS, or Windows in order to in
 ```
 
 ```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz
-tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.15-Preview/harness-v0.0.15-Preview-linux-arm64.tar.gz
+tar -xvf harness-v0.0.15-Preview-linux-arm64.tar.gz
 ```
 
 ```mdx-code-block
@@ -44,8 +42,8 @@ tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz
 ```
 
 ```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz
-tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.15-Preview/harness-v0.0.15-Preview-linux-amd64.tar.gz
+tar -xvf harness-v0.0.15-Preview-linux-amd64.tar.gz
 ```
 
 ```mdx-code-block
@@ -69,24 +67,27 @@ harness --version
 <TabItem value="MacOS">
 ```
 
-### Installing the CLI on MacOS
+### Install the CLI on MacOS
+
 1. Run commands below on terminal
-```curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
-tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+
+```
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.15-Preview/harness-v0.0.15-Preview-darwin-amd64.tar.gz 
+tar -xvf harness-v0.0.15-Preview-darwin-amd64.tar.gz 
 export PATH="$(pwd):$PATH" 
 echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile   
 ```
-(If you are using different variation of terminal , replace `~/.bash_profile` with your bash profile file path)
+(If you are using different variation of terminal, replace `~/.bash_profile` with your bash profile file path)
 
 ```mdx-code-block
 </TabItem>
 <TabItem value="Windows">
 ```
 
-### Installing the CLI on Windows
+### Install the CLI on Windows
 1. Run the commands below in Windows Powershell:
 ```
-Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.15-Preview/harness-v0.0.15-Preview-windows-amd64.zip -OutFile ./harness.zip
 ```
 2. Extract the downloaded zip file and change directory to extracted file location
 3. Run following command in powershell to setup environment variables:
@@ -100,9 +101,9 @@ Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/
 </Tabs>
 ```
 
-## Configuring Harness CLI
+## Configure Harness CLI
 
-1. Obtain **Harness API Token**. You can follow the steps outlined in the Harness documentation's guide on [how to create a personal API token](https://developer.harness.io/docs/platform/resource-development/apis/add-and-manage-api-keys/).
+1. Obtain **Harness API Token**. You can follow the steps outlined in the Harness documentation's guide on [how to create a personal API token](/docs/platform/automation/api/add-and-manage-api-keys).
 
 2. Retrieve your `Account ID` by navigating within the `Harness UI` to `ACCOUNT SETTINGS` > `Overview` > `Account Id`.
 

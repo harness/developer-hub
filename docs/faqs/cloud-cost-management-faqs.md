@@ -356,7 +356,14 @@ To resolve any cost differences between the Perspective and Dashboard in Harness
 
   ![](./static/dashboard-time-filters.png)
 
+#### Do the recommendations consider our compute savings plan, RIs, and Savings Plans?
 
+No, the node pool recommendations do not take into account RI (Reserved Instances) and savings plans. The potential monthly spend and savings are calculated using a public pricing API and do not consider any discounts or savings from your compute savings plan.
+
+#### Why do ECS clusters get added automatically to the default perspective while EKS clusters don't?
+
+When you add an AWS account that contains both ECS and EKS clusters, our system will automatically fetch and display ECS cluster data in the Cluster default perspective. To include EKS cluster data, you'll need to set up the K8S connector separately. For setup instructions, please refer to the documentation here.
+In the AWS default perspective, users can view the total cost of both ECS and EKS services. However, in the Cluster default perspective, we provide a breakdown of the cost for each cluster, along with the option to drill down for more detailed information.
 
 ### Budgets and reports
 
@@ -371,6 +378,52 @@ The budget alerts are sent out daily at 2.30 p.m. GMT.
 #### What is the limit on a budget setup per Perspective?
 
 No limit as of now.
+
+
+
+### Anomaly Detection
+
+#### How frequently do you run anomaly detection jobs ?
+
+Anomaly detection jobs are executed once per day.
+
+#### Do we consider seasonal factors while detecting anomalies ?
+
+Yes we do consider daily, weekly and monthly seasonalities while detecting anomalies.
+
+#### Do we support daily alerts for anomalies ?
+
+Yes we do support daily alerts for anomalies
+
+#### We didn’t get the slack/email notifications for anomaly despite the fact that we have we have set up channels for them ?
+
+Please reverify if the Slack and email channels have been properly configured for that specific perspective. If a particular anomaly is associated with multiple perspectives, we only send one notification to avoid redundancy. In this scenario, the notification is sent for the perspective that was created first among all the perspectives that share the same anomaly
+
+#### How much time does it take for sending alerts to the customers for an anomaly ?
+
+As soon as anomalies are detected at our end, we immediately send both slack as well as email notifications to our customers regarding it.
+
+#### Do we support fetching anomalies on perspective made through labels ?
+
+No, currently we do not have support for retrieving anomalies based on perspective labels.
+
+#### Is there a way we can proactively feed data to anomaly detection for future events or holidays ?
+
+No, as of now we don’t support feeding data for future events or holidays.
+
+#### Anomaly drill down from the perspective screen does not seem to be filtering the anomaly list correctly ?
+
+When you perform a drill-down from the perspective screen to view anomalies, we apply a time filter that specifically retrieves all anomalies of that particular day. This process ensures that the anomalies are accurately fetched, and the user is presented with all anomalies from that particular day, allowing them to take appropriate action.
+
+#### I see an anomaly at the AWS usage type level. Why is it that I'm not observing the same anomaly at the AWS service or AWS account level?
+
+We display anomalies at the most granular level of the hierarchy and intentionally exclude them from higher levels. This approach enables customers to precisely identify the root cause of the anomaly." The hierarchy level for clusters and different cloud providers are as follows  
+
+![](./static/ccm-faqs-00.png)
+
+#### I am seeing a large number of anomalies being detected which do not seem like anomalies to me ?
+
+Before proceeding, please double-check whether you have configured a new connector specifically for that particular cloud service. If you have indeed set up a new connector, please be aware that our machine learning models may not yet have sufficient training data for accurately identifying anomalies. To obtain reliable anomaly results, we typically require a minimum of 14 days' worth of training data.
 
 ### General AutoStopping rules
 

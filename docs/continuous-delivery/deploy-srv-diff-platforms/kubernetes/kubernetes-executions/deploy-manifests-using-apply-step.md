@@ -141,7 +141,7 @@ You can enter multiple file paths in **File Path**. Simply click **Add File**.
 
 ### File path runtime inputs
 
-You can set [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/References/runtime-inputs) for File Path settings.
+You can set [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs) for File Path settings.
 
 Here are the options:
 

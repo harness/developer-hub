@@ -639,11 +639,11 @@ Harness also supports Terraform Cloud and Enterprise.
 Manifests, specifications, config files, and other deployment files can be pulled from the following providers:
 
 - [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/)
-- [Git on any platform](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
-- [Github](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-- [GitLab](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-- [Bitbucket](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-- [AWS CodeCommit](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
+- [Git on any platform](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
+- [Github](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+- [GitLab](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+- [Bitbucket](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+- [AWS CodeCommit](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
 - [Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo/)
 
 

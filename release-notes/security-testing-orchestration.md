@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 1.67.2
+## Version 1.68.0
 
 ### New features and enhancements
 
@@ -31,7 +31,12 @@ This release does not include early access features.
 
 ### Fixed issues
 
-- Fixed an issue with setting up SSL certificates in Checkmarx, which caused Java keytools to fail. Upgrading to JDK-11 fixed the issue. (STO-6512)
+- Fixed the following UI issues in in **Security Tests**: 
+
+  - Users with view access for Security Issues at the Project level, but not the Account level, could not view issue details. (STO-6421)
+
+  - Some scanners such as Gitleaks would appear with the label **Unknown Scan Tool** rather than the correct product name. (STO-6454) (STO-6337)
+
 
 ### Hotfixes
 
@@ -43,7 +48,25 @@ This release does not include hotfixes.
 <details>
 <summary>2023 releases</summary>
 
-#### Latest: Version 1.67.1
+#### Version 1.67.2
+
+##### New features and enhancements
+
+This release does not include new features. 
+
+##### Early access
+
+This release does not include early access features. 
+
+##### Fixed issues
+
+- Fixed an issue with setting up SSL certificates in Checkmarx, which caused Java keytools to fail. Upgrading to JDK-11 fixed the issue. (STO-6512)
+
+### Hotfixes
+
+This release does not include hotfixes. 
+
+#### Version 1.67.1
 
 ##### New features and enhancements
 

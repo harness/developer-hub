@@ -1,6 +1,6 @@
 ---
 title: Google GAR
-sidebar_position: 2
+sidebar_position: 3
 description: Build and push an application container to Google Artifact Registry using a CI pipeline.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, Go, GCP]
 slug: /ci-pipelines/publish/google-gar
@@ -16,6 +16,7 @@ slug: /ci-pipelines/publish/google-gar
   closable={true}
   target="_self"
 />
+
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -317,7 +318,7 @@ You can use either the visual or YAML editor to add pipeline steps. This tutoria
 
    | Variable Name                    | Value                                            | Description                                                                                                                    |
    | -------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-   | `PLUGIN_SERVICE_ACCOUNT_JSON`    | `<+secrets.getValue("harness_tutorial_sa_key")>` | The Google service account secret key.<br/>The [input type](/docs/platform/references/runtime-inputs/) must be **Expression**. |
+   | `PLUGIN_SERVICE_ACCOUNT_JSON`    | `<+secrets.getValue("harness_tutorial_sa_key")>` | The Google service account secret key.<br/>The [input type](/docs/platform/variables-and-expressions/runtime-inputs/) must be **Expression**. |
    | `GOOGLE_APPLICATION_CREDENTIALS` | `/kaniko/sa.json`                                | The json file where the service account key content will be written.                                                           |
    | `PLUGIN_IMAGE`                   | `$PLUGIN_IMAGE`                                  | The container image name.<br/>The value for `$PLUGIN_IMAGE` comes from `$TUTORIAL_HOME/.env`.                                  |
 

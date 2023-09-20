@@ -72,7 +72,7 @@ You can create pipelines visually or using code, and switch back and forth as ne
 | **Visual** | **YAML** |
 | ![](static/pipeline_visual.png) | ![](static/pipeline_yaml.png) |
 
-See [Harness YAML Quickstart](../platform/8_Pipelines/harness-yaml-quickstart.md).
+See [Harness YAML Quickstart](../platform/pipelines/harness-yaml-quickstart.md).
 
 Pipeline Studio guides you in setting up and running your pipelines with ready-to-use steps.
 
@@ -88,7 +88,7 @@ Some stages, like a deploy stage, use strategies that automatically add the nece
 
 ![](./static/learn-harness-key-concepts-12.png)
 
-See [Add a Stage](../platform/8_Pipelines/add-a-stage.md).
+See [Add a Stage](../platform/pipelines/add-a-stage.md).
 
 ### Steps and step groups
 

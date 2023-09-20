@@ -198,7 +198,7 @@ For this reason, it's important that all your project members know the provision
 
 #### Secret Manager
 
-* Select a Harness [secrets manager](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview) to use for encrypting/decrypting and saving the Terragrunt plan file.
+* Select a Harness [secrets manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to use for encrypting/decrypting and saving the Terragrunt plan file.
 
 A Terragrunt plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terragrunt plan file as plain text.
 
@@ -315,7 +315,7 @@ Here, you'll add a connection to the Terragrunt script repo.
 2. Click the provider where your files are hosted.
     
     ![picture 4](../cd-advanced/terragrunt/static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png
-3. Select or create a [Git connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) for your repo.
+3. Select or create a [Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) for your repo.
 4. Once you have selected a connector, click **Continue**.
 5. In **Config File Details**, provide the Git repo details.
 6. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id**.
@@ -483,7 +483,7 @@ The **Configuration File Repository** setting is available in the Terragrunt Pla
 2. Click the provider where your files are hosted.
     
     ![picture 4](./static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png)
-3. Select or create a [Git connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) for your repo.
+3. Select or create a [Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) for your repo.
 4. Once you have selected a connector, click **Continue**.
    
    In **Config File Details**, provide the Git repo details.
@@ -514,6 +514,7 @@ Here are some syntax examples to reference the Terraform module using the SSH pr
 
 ```bash
 source = "git@github.com:your-username/your-private-module.git"
+```
 
 ### Module Configuration
 
@@ -529,8 +530,11 @@ terraform {
 //  source = "git::git@github.com:Tathagat-289/terraformResources.git//module3"  
   source = "github.com/Tathagat-289/terraformResources//module3"  
 }  
-  
+```
+
 # Include all settings from the root terragrunt.hcl file  
+
+```
 include {  
   path = find_in_parent_folders()  
 }  
@@ -555,9 +559,10 @@ You have two options:
    - Terragrunt Apply and Destroy steps do not support inheriting from a Terragrunt Plan step when **All Modules** is selected in the Terragrunt Plan step's **Module Configuration**.
   
   :::
+
 - **Specific Module**. Harness will use a single terragrunt.hcl file in the folder you specify in **Path**.
 
-The **Path** setting supports [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/).
+The **Path** setting supports [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 
 ### Workspace
@@ -600,7 +605,7 @@ In the workspace interpolation sequence you can see the count is assigned by app
     
     Using the example above, if you provide the name `production`, the count will be 3.
 
-    You can also set **Workspace** as a [runtime inputs or expression](/docs/platform/references/runtime-inputs/) and use a different workspace name each time the pipeline is run.
+    You can also set **Workspace** as a [runtime inputs or expression](/docs/platform/variables-and-expressions/runtime-inputs/) and use a different workspace name each time the pipeline is run.
 
 
 ### Terraform Var Files
@@ -692,7 +697,7 @@ For examples, see the settings available for [AWS S3](https://www.terraform.io/d
 
   If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.
 
-  You can also use [runtime inputs or expressions](/docs/platform/references/runtime-inputs/) for your targets. 
+  You can also use [runtime inputs or expressions](/docs/platform/variables-and-expressions/runtime-inputs/) for your targets. 
 
   For example, you can create a stage variable named `module` and then enter the variable `<+stage.variables.module>` in **Targets**. 
 
@@ -878,6 +883,7 @@ Here is an example of the YAML for a Terragrunt Destroy step that inherits from 
   </TabItem2>
   <TabItem2 value="Terragrunt Rollback" label="Terragrunt Rollback">
 ```
+
 Here is an example of the YAML for a Terragrunt Rollback step:
 
 ```yaml
@@ -898,4 +904,3 @@ Here is an example of the YAML for a Terragrunt Rollback step:
 
 </Tabs2>
 ```
-

@@ -13,7 +13,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Drone Runner. When the pipeline runs, the Drone Runner runs the build actions in the environment where it is installed. The delegate handles communication between Harness and the Drone Runner.
+<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
+You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Harness Docker Runner. When the pipeline runs, the Harness Docker Runner runs the build actions in the environment where it is installed. The delegate handles communication between the Harness Platform and the Harness Docker Runner.
 
 Local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
 
@@ -24,10 +26,6 @@ The Harness Docker Delegate is limited by the total amount of memory and CPU on 
 * Default 0.5 CPU.
 * Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
 * The machine where the delegate runs must have Docker installed.
-
-### STO pipelines
-
-If you have STO scan steps in your pipeline, you can set up your certificates using the workflow described below. However, there are some additional steps and requirements. For more information, go to [Adding Custom Artifacts to STO Pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
 
 ## Install the delegate and runner
 
@@ -58,16 +56,22 @@ docker run --cpus=1 --memory=2g --net=host \
 
 Make sure to create the delegate at the appropriate scope, such as the project level or account level.
 
-#### Install the Drone Runner
+#### Install the Harness Docker Runner
 
-The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
+The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
 
-1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases) corresponding to your build farm's OS and architecture.
+1. Download a [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases) corresponding to your build farm's OS and architecture.
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
    export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
+
+   :::info
+
+   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+
+   :::
 
 3. Enable execution permissions for the Runner. For example:
 
@@ -81,7 +85,7 @@ The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the 
    sudo ./drone-docker-runner-linux-arm64 server
    ```
 
-Here is an example of the three commands to install the Linux arm64 Drone Runner with self-signed certificates:
+Here is an example of the three commands to install the Linux arm64 Harness Docker Runner with self-signed certificates:
 
 ```
 export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
@@ -117,16 +121,22 @@ docker run --cpus=1 --memory=2g \
 
 Make sure to create the delegate at the appropriate scope, such as the project level or account level.
 
-#### Install the Drone Runner
+#### Install the Harness Docker Runner
 
-The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
+The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
 
-1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases) corresponding to your build farm's OS and architecture.
+1. Download a [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases) corresponding to your build farm's OS and architecture.
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
    export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
+
+   :::info
+
+   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+
+   :::
 
 3. Enable execution permissions for the Runner. For example:
 
@@ -159,7 +169,7 @@ The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the 
 
 </details>
 
-Here is an example of the three commands to install the Darwin amd64 Drone Runner with self-signed certificates:
+Here is an example of the three commands to install the Darwin amd64 Harness Docker Runner with self-signed certificates:
 
 ```
 export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
@@ -176,21 +186,21 @@ sudo chmod +x drone-docker-runner-darwin-arm64
 
 To configure a local runner build infrastructure for Windows, you need two machines:
 
-* A Windows machine where the Drone Runner will run. This machine must have Docker for Windows. The Drone Runner runs as a container.
-* A Linux machine where the Harness Delegate will run. This machine must have Docker. The delegate runs as a container.
+* A Windows machine where the Harness Docker Runner will run. This machine must have Docker for Windows. The Harness Docker Runner runs as a container.
+* A Linux or macOS machine where the Harness Delegate will run. This machine must have Docker. The delegate runs as a container.
 
-There is a one-to-one relationship between Drone Runners and Harness Delegates. If you need to run three local hosts, each must have a runner and a delegate.
+There is a one-to-one relationship between Harness Docker Runners and Harness Delegates. If you need to run three local hosts, each must have a runner and a delegate.
 
 #### Install the delegate
 
-On the Linux machine where you want to run the delegate, use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
+On the Linux or macOS machine where you want to run the delegate, use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
 
 * Add `-e DELEGATE_TAGS="windows-amd64"`.
 * Add `-e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000`.
 
 :::caution
 
-The `RUNNER_URL` must point to the Windows machine where the Drone Runner will run.
+The `RUNNER_URL` must point to the Windows machine where the Harness Docker Runner will run.
 
 :::
 
@@ -211,19 +221,19 @@ docker run --cpus=1 --memory=2g \
 
 Make sure to create the delegate at the appropriate scope, such as the project level or account level.
 
-#### Install the Drone Runner
+#### Install the Harness Docker Runner
 
-The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
+The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
 
 :::caution
 
-Run the Drone Runner executable on the Windows machine that you specified in the delegate's `RUNNER_URL`.
+Run the Harness Docker Runner executable on the Windows machine that you specified in the delegate's `RUNNER_URL`.
 
 Use PowerShell to run these commands.
 
 :::
 
-1. On the target Windows machine where you want to run the Drone Runner, download the Windows [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
+1. On the target Windows machine where you want to run the Harness Docker Runner, download the Windows [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases).
 2. Open a terminal with Administrator privileges.
 3. To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
@@ -231,7 +241,12 @@ Use PowerShell to run these commands.
    $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
    ```
 
-   With Windows, volume mapping must be folder-to-folder.
+   :::info
+
+   * With Windows, volume mapping must be folder-to-folder.
+   * If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+
+   :::
 
 4. Run the following command to start the runner binary:
 
@@ -239,7 +254,7 @@ Use PowerShell to run these commands.
    drone-docker-runner-windows-amd64.exe server
    ```
 
-Here is an example of the two commands to install the Windows amd64 Drone Runner with self-signed certificates:
+Here is an example of the two commands to install the Windows amd64 Harness Docker Runner with self-signed certificates:
 
 ```
 $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
@@ -316,7 +331,7 @@ For example, assume you have a pipeline with three stages called `alpha`, `beta`
 
 :::
 
-## Troubleshooting
+## Troubleshooting the delegate connection
 
 The delegate should connect to your instance after you finish the installation workflow above. If the delegate does not connect after a few minutes, run the following commands to check the status:
 
