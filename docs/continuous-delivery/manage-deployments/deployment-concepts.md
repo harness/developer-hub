@@ -38,7 +38,7 @@ For information on approval stages and steps, go to:
 
 ## Rolling deployment
 
-With a rolling deployment, all nodes within a single environment are in a series replaced one-by-one or in N batches (as defined by a window size) with a new service/artifact version.
+With a rolling deployment, all nodes within a single environment are replaced one-by-one serially, or in N batches (as defined by a window size) with a new service/artifact version.
 
 ![](../cd-deployments-category/static/deployment-concepts-00.png)
 
