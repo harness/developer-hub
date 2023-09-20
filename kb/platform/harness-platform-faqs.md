@@ -649,3 +649,7 @@ This issue can occur if a User Group was provisioned via SCIM (System for Cross-
 #### What is the recommended resolution for this issue?
 
 To resolve this issue, you need to de-provision the affected User Group from Harness and then provision the same User Group again. This will create a new Harness Identifier for the group, ensuring that any naming restrictions are applied correctly, and it should no longer contain hyphens or other disallowed characters.
+
+ 
+#### Why Harness delegate instance status is showing Expiring in 2 months but the latest version is valid for 3 months?
+For the immutable delegate instance status we will show Expiring in 2 months only, it's the expected behaviour.
