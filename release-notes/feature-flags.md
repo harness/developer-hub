@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-09-11T13:49:25
+date: 2023-09-20T13:49:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -28,7 +28,7 @@ This release does not include early access features.
 
 ### Fixed issues in the iOS SDK
 
-- Fixed issue with metric target evaluation (FFM-9409)
+- Fixed issue with metric target evaluation. (FFM-9409)
 
 ## Previous releases
 
@@ -47,7 +47,7 @@ This release does not include early access features.
 
 ##### Fixed issues in the Javascript SDK
 
-- Emit flags as part of polling intervals using POLLING_CHANGED event (FFM-9045)
+- Emit flags as part of polling intervals using POLLING_CHANGED event. (FFM-9045)
 
 #### September 11, 2023
 
