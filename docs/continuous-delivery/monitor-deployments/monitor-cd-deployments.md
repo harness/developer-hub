@@ -156,9 +156,16 @@ To use custom sequencing, do the following:
   
   You can disable custom sequencing by toggling it off.
 
- ### Charts tab
+### Chart Versions tab
 
- The **Charts** tab enables you to view the version and other details about the Helm chart deployed to a given environment.  
+ The **Chart Versions** tab shows tiles for each Helm chart used to deploy the service (and a tile for any non-Helm deployments). Each tile shows the instances/artifact, environment, and latest deployment time. 
+
+<docimage path={require('/docs/continuous-delivery/monitor-deployments/static/cds-77310-charts-tab-callouts.png')} width="100%" height="100%" title="Click to view full size image" />
+
+To view details for a specific Helm chart, click the version link in the tile.
+
+<docimage path={require('/docs/continuous-delivery/monitor-deployments/static/cds-77310-chart-version-tile-callouts.png')} width="80%" height="80%" title="Click to view full size image" />
+
 
 ## Platform Dashboards
 
