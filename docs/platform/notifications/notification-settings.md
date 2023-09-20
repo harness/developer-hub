@@ -12,7 +12,7 @@ When a notification channel is in the disabled state, no notification is sent fo
 You can enable or disable the following notification channels:
 - Slack
 - Microsoft Teams
-- webhook
+- Webhooks
 - PagerDuty
 
 To disable a given notification channel, in Harness, go to **Account Settings** > **Account Resources** > **Default Settings** > **Notifications**, and then turn off the corresponding toggle. 
