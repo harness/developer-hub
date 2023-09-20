@@ -617,24 +617,6 @@ gsutil -m cp \
 - Updated the Helm chart to support proxy configuration for AWS SDK clients. (CCM-14374)
 
 - Updated the Helm chart to support AWS regions other than the default `us-east-1` region. (CCM-14415)
-   
-   ```
-   S3
-   s3.<region>.amazonaws.com
-   <bucket>.s3.<region>.amazonaws.com
-
-   STS
-   sts.<region>.amazonaws.com
-
-   EC2
-   ec2.<region>.amazonaws.com
-
-   ECS
-   ecs.<region>.amazonaws.com
-
-   cloudwatch
-   monitoring.<region>.amazonaws.com
-   ```
 
 ##### Chaos Engineering
 
