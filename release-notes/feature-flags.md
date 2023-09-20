@@ -16,8 +16,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - September 11, 2023
-
+## Latest - September 20, 2023
 
 ### New features and enhancements
 
@@ -27,15 +26,42 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the Javascript SDK
+### Fixed issues in the iOS SDK
 
-- Changing evaluation handling for Flutter Web. (FFM-8963)
-
+- Fixed issue with metric target evaluation (FFM-9409)
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### September 19, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Javascript SDK
+
+- Emit flags as part of polling intervals using POLLING_CHANGED event (FFM-9045)
+
+#### September 11, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Javascript SDK
+
+- Changing evaluation handling for Flutter Web. (FFM-8963)
 
 #### Sept 08, 2023
 
