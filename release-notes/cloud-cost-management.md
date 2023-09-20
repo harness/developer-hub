@@ -73,7 +73,9 @@ This release does not include any early access features.
 
   This issue has been resolved. Added validation to check for time zones to allow multiple schedules for a single rule.
 
+* Multiple `OverlappingFileLockException` errors were occurring due to the Chronicle Queue library version used. Consequently, this issue led to Perspectives not displaying any data. (CCM-14174)
 
+  The issue is resolved now. The Chronicle Queue library has been upgraded to a newer version, resolving the errors.
 
 #### September 04, 2023, version 80606
 
