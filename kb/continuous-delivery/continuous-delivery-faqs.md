@@ -1351,19 +1351,19 @@ Harness provides several annotations that can be applied to Kubernetes resources
 
 1. `harness.io/skip-versioning: "true"`:
    - Purpose: Use this annotation when versioning of a resource is not required. Harness stores this information in a ConfigMap in your Kubernetes cluster.
-   - Reference: [Kubernetes Versioning and Annotations](/docs/first-gen/firstgen-platform/techref-category/cd-ref/platforms-ref/versioning-and-annotations.md)
+   - Reference: [Kubernetes Versioning and Annotations](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-annotations-and-labels/)
 
 2. `harness.io/direct-apply: "true"|"false"`:
    - Purpose: Set this annotation to "true" to make a manifest an unmanaged workload. This is useful for scenarios like Canary and Blue-Green deployments where you want to deploy additional workloads as unmanaged.
-   - Reference: [What can I deploy in Kubernetes?](/docs/first-gen/firstgen-platform/techref-category/cd-ref/platforms-ref/what-can-i-deploy-in-kubernetes.md)
+   - Reference: [What can I deploy in Kubernetes?](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes/)
 
 3. `annotations: harness.io/primary-service: "true"` and `annotations: harness.io/stage-service: "true"`:
    - Purpose: Use these annotations when you have multiple services, and Harness needs to identify the primary service. These annotations are commonly used in Blue-Green Deployments.
-   - Reference: [Create a Kubernetes Blue-Green deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
+   - Reference: [Create a Kubernetes Blue-Green deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment/)
 
 4. `harness.io/skipPruning: "true"`:
    - Purpose: Apply this annotation to ensure that a resource is not pruned. This is typically used for resources deployed by Harness to prevent accidental removal.
-   - Reference: [Prune Kubernetes resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources.md)
+   - Reference: [Prune Kubernetes resources](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources/)
 
 These annotations help customize and control how Harness manages and deploys resources in your Kubernetes environment.
 >>>>>>> f4c98012f (Adding 2 questions to CDS FAQ)
