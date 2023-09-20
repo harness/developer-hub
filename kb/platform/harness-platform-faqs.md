@@ -663,3 +663,36 @@ Harness doesn't allow the `$` symbol in your secret value. If your secret value 
 #### How can I access comprehensive information on Harness Security, including disaster recovery procedures, infrastructure details, and policies?
 For in-depth insights into Harness' security practices, including disaster recovery procedures, infrastructure aspects, and policies, we recommend visiting our [Trust Center](https://trust.harness.io/). This centralized resource is designed to provide you with all the necessary information regarding the security measures we have in place to safeguard your data and operations.
 
+#### How do we provision users with pre-defined or custom roles?
+With Harness, users and groups can be created automatically via SCIM. Permissions in Harness are granted via roles. You can use built-in roles or create your own at every Harness level (Account, Organization, and Project). You can assign roles to groups, and assigning roles to groups gives all the users in the group the permissions spelled out in the role. You can read all about it here: [Role-Based Access Control (RBAC) in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/).
+
+#### My delegate shows that it will expire in 2 months. Will my delegate be shut down after?
+Harness follows an N-3 support policy for delegates, which means we support the current version and the three preceding versions. With a new version released approximately every two weeks, each update brings enhanced features and general fixes. For instance, if you have version `23.03.XXXXX` installed, all images from `23.01.XXXXX` to `23.03.XXXXX` are supported. Delegate expiration doesn't imply that the delegate ceases to function. However, it may lead to potential issues if the backend advances significantly, causing the delegate to lose backward compatibility. To avoid this, we recommend upgrading the delegate at least once per quarter if you don't have [automatic upgrades](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#how-automatic-upgrade-works-in-the-kubernetes-manifest) enabled.
+
+#### How do I create a custom URL for my Harness account?
+If you want a vanity URL, you can reach out through our support and request to create a custom subdomain, for instance: `mycompany.harness.io`.
+
+#### How do I identify files changed in a git push event?
+We don't support this feature natively, but you can write a similar script to the following:
+```
+commits='<+trigger.payload.commits>'
+
+# Extract the values of added, removed, and modified attributes using string manipulation
+added=$(echo "$commits" | sed -n 's/.*"added":\s*\(\[[^]]*\]\).*/\1/p')
+removed=$(echo "$commits" | sed -n 's/.*"removed":\s*\(\[[^]]*\]\).*/\1/p')
+modified=$(echo "$commits" | sed -n 's/.*"modified":\s*\(\[[^]]*\]\).*/\1/p')
+
+# Remove the square brackets and quotes from the extracted values
+added=$(echo "$added" | tr -d '[],"')
+removed=$(echo "$removed" | tr -d '[],"')
+modified=$(echo "$modified" | tr -d '[],"')
+
+# Concatenate the values into an array
+array=($added $removed $modified)
+
+# Print the concatenated array
+for element in "${array[@]}"; do
+    echo "$element"
+done
+``
+
