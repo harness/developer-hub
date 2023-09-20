@@ -55,7 +55,7 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **R
    * TI identifies the programming language and uses the **Run Tests** step to run the selected tests in that step's container. The **Run Tests** step, through the Test Runner Agent, parses the test results and returns the results to the TI service.
 -->
 
-## Supported codebases
+## Supported codebases for Test Intelligence
 
 Test Intelligence is available for:
 
@@ -135,7 +135,7 @@ The build environment must have the necessary binaries for the **Run Tests** ste
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="java" label="Java, Kotlin" default>
+  <TabItem value="java" label="Java, Kotlin, Scala" default>
 ```
 
 ```yaml
@@ -146,34 +146,8 @@ The build environment must have the necessary binaries for the **Run Tests** ste
                   spec:
                     connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
                     image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
-                    language: Java ## Specify Java or Kotlin.
-                    buildTool: Maven ## Specify Bazel, Maven, or Gradle.
-                    args: test
-                    packages: io.harness.
-                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
-                    postCommand: mvn package -DskipTests
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "target/reports/*.xml"
-```
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="scala" label="Scala">
-```
-
-```yaml
-              - step:
-                  type: RunTests
-                  name: Run Tests
-                  identifier: Run_Tests
-                  spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
-                    image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
-                    language: Scala
-                    buildTool: Maven ## Specify Bazel, Maven, Gradle, or Sbt.
+                    language: Java ## Specify Java, Kotlin, or Scala.
+                    buildTool: Maven ## For Java or Kotlin, specify Bazel, Maven, or Gradle. For Scala, specify Bazel, Maven, Gradle, or Sbt.
                     args: test
                     packages: io.harness.
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
@@ -429,15 +403,17 @@ config:
     - "img/**/*"
 ```
 
-## View test reports
+## View test reports and test selection
 
-To view the test report, go to the [Tests tab](./viewing-tests.md) on the [Build details page](../viewing-builds.md). The test report content is based on the tests you configured for the **Run Tests** step.
+To view test reports and understand which tests were selected by Test Intelligence, go to the [Build details page](../viewing-builds.md) and select the [Tests tab](./viewing-tests.md). The test report content is based on the tests that ran in the **Run Tests** step.
 
-![](./static/set-up-test-intelligence-03.png)
+<!-- ![](./static/set-up-test-intelligence-03.png) -->
 
-In order for the **Tests** tab to show tests, your test reports must be in JUnit XML format, because Harness parses test reports that are in JUnit XML format only. For more information about formatting unit test reports, go to [Format test reports](./test-report-ref.md).
+<docimage path={require('./static/set-up-test-intelligence-03.png')} />
 
-Expand the sections below to learn more about the **Tests** tab contents.
+The **Tests** tab can only show tests if your test reports are in JUnit XML format, because Harness parses test reports that are in JUnit XML format only. For information about formatting unit test reports, go to [Format test reports](./test-report-ref.md).
+
+Expand the sections below to learn more about information available on the **Tests** tab.
 
 <details>
 <summary>Test Execution Overview</summary>
@@ -488,17 +464,9 @@ Select **Expand graph** to view the TI Visualization, which shows why a specific
 
 </details>
 
-## Settings
+## Run Tests step settings
 
-The **Run Tests** step has the following settings.
-
-:::info
-
-* Some settings are located under **Additional Configuration** in the Pipeline Studio's visual editor.
-* Some settings are only applicable to certain languages or build tools.
-* Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
-
-:::
+The **Run Tests** step has the following settings. Some settings are optional, and some settings are only available for specific languages or build tools. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 ### Name
 
@@ -596,9 +564,15 @@ You can override the default test globs pattern.
 
 #### Do you want to enable Error Tracking?
 
+:::info
+
+This setting requires the [CET module](/docs/continuous-error-tracking/get-started/overview). This setting is only configurable in the Visual editor (not YAML).
+
+:::
+
 Error tracking helps you be more proactive at discovering and remediating errors early in the software development lifecycle. It help s you more easily discover issues and assess the quality of code before it reaches production.
 
-Select **Yes** to enable error tracking. When enabled, a set of commands are auto-populated in the [Pre-Command field](#pre-command). Review these commends to ensure they are compatible with your build. The auto-populated commands are enclosed between `#ET-SETUP-BEGIN` and `#ET-SETUP-END`, for example:
+Select **Yes** to enable error tracking. When enabled, a set of commands are auto-populated in the [Pre-Command](#pre-command). Review these commends to ensure they are compatible with your build. The auto-populated commands are enclosed between `#ET-SETUP-BEGIN` and `#ET-SETUP-END`, for example:
 
 ```
 #ET-SETUP-BEGIN
@@ -638,16 +612,20 @@ Error tracking output is reported on the [Error Tracking tab](../viewing-builds.
 
 #### Test Annotations
 
-This setting is located under **Additional Configuration**.
+You can provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. If not specified, the defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`.
 
-You can provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. If not specified, the defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`
+This setting is located under **Additional Configuration** in the Visual editor, or you can configure it in YAML as `testAnnotations: annotation1, annotation2, annotation3`.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="kotlin" label="Kotlin, Scala">
 ```
 
-Kotlin and Scala don't have additional language-specific settings.
+#### Test Annotations
+
+You can provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. If not specified, the defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`
+
+For Kotlin and Scala, you must configure this setting in YAML, such as: `testAnnotations: annotation1, annotation2, annotation3`.
 
 ```mdx-code-block
   </TabItem>
