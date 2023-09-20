@@ -2,12 +2,15 @@
 sidebar_position: 1
 description: Harness CI simplifies the code development and testing process.
 keywords: [CI]
-title: What is Harness CI
-slug: /ci-pipelines/ci-concepts
+title: Harness CI overview
+slug: /ci-pipelines/ci-overview
+hide_table_of_concents: true
+redirect_from:
+  - /tutorials/ci-pipelines/ci-concepts
 ---
 
 ```mdx-code-block
-import WhatCi from '/docs/continuous-integration/ci-quickstarts/ci-concepts.md';
+import WhatCi from '/docs/continuous-integration/get-started/overview.md';
 ```
 
 <WhatCi />

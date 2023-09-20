@@ -38,11 +38,18 @@ export const featuredTutorials: CardItem[] = [
         "",
       list: [
         {
-          title: "Tutorials",
+          title: "Onboarding guide",
           module: MODULES.platform,
           description:
-            "Try hands-on tutorials to get started quickly.",
-          link: "/tutorials/platform",
+            "A self-service onboarding guide for Harness Platform.",
+          link: "/docs/platform/get-started/onboarding-guide",
+        },
+        {
+          title: "Key concepts",
+          module: MODULES.platform,
+          description:
+            "Key concepts of the Harness Platform.",
+          link: "/docs/platform/get-started/key-concepts",
         },
         {
           title: "Delegates",
@@ -70,7 +77,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "Access and manage Harness account and resources with APIs.",
-          link: "/docs/category/apis",
+          link: "/docs/category/api",
         },
         {
           title: "Terraform Provider",
@@ -105,7 +112,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "Use OPA policies to enforce governance.",
-          link: "/docs/platform/Governance/Policy-as-code/harness-governance-quickstart",
+          link: "/docs/platform/governance/Policy-as-code/harness-governance-quickstart",
         },
       ],
   },
@@ -124,14 +131,14 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "",
-          link: "/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets",
+          link: "/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets",
       },
       {
         title: "Git Experience vs Config as Code",
           module: MODULES.platform,
           description:
             "",
-          link: "/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code",
+          link: "/docs/faqs/git-exp-vs-config-as-code",
       },
     ],
   }

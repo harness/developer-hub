@@ -54,6 +54,24 @@ export const moduleList: CardItem[] = [
     link: "docs/chaos-engineering",
   },
   {
+    title: "Software Engineering Insights",
+    module: MODULES.sei,
+    // icon: "img/icon_idp.svg",
+    description: (
+      <>
+       Assess engineering team productivity, remove roadblocks, and automate processes to increase efficiency.
+      </>
+    ),
+    link: "https://docs.propelo.ai/welcome-to-propelo/",
+  },
+  {
+    title: "Software Supply Chain Assurance",
+    module: MODULES.ssca,
+    // icon: "img/icon_ssca.svg",
+    description: "Secure your software supply chain.",
+    link: "docs/software-supply-chain-assurance",
+  },
+  {
     title: "Continuous Error Tracking",
     module: MODULES.cet,
     // icon: "img/icon_cet.svg",
@@ -74,4 +92,5 @@ export const moduleList: CardItem[] = [
     ),
     link: "docs/internal-developer-portal",
   },
+  
 ];

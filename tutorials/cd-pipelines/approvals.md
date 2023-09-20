@@ -1,4 +1,5 @@
 ---
+sidebar_position: 7
 hide_table_of_contents: true
 title: Approvals
 description: Set-up approvals in CD Pipeline. 
@@ -19,7 +20,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-This tutorial demonstrates how to use Approvals in Harness CD pipelines. 
+This tutorial demonstrates how to use approvals in Harness CD pipelines. 
 
 :::info
 
@@ -113,8 +114,8 @@ You can add the Jira Approval step in Approval stages or in CD stages. The Jira 
 
 Verify that you have the following:
 
-1. **Personal Access Token:** Add the [JIRA API token](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) as a Harness [Text Secret](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets#add-a-text-secret), with the name `jirapat`
-2. **JIRA Connector:** For this tutorial you need to create a [JIRA Connector](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-jira/#add-a-jira-connector) of the name `jira-approval`. If you've done the [Deploy using Kubernetes Manifest](tutorials/cd-pipelines/kubernetes/manifest.md) tutorial, use this [jira-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/approval/jira-connector.yml) to create connector under the project setup. 
+1. **Personal Access Token:** Add the [JIRA API token](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) as a Harness [Text Secret](/docs/platform/secrets/add-use-text-secrets#add-a-text-secret), with the name `jirapat`
+2. **JIRA Connector:** For this tutorial you need to create a [JIRA Connector](/docs/platform/connectors/ticketing-systems/connect-to-jira/#add-a-jira-connector) of the name `jira-approval`. If you've done the [Deploy using Kubernetes Manifest](tutorials/cd-pipelines/kubernetes/manifest.md) tutorial, use this [jira-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/approval/jira-connector.yml) to create connector under the project setup. 
     
     - In the YAML, replace the `JIRA_URL` with your company base URL for Jira applications, for example: `https://mycompany.atlassian.net`.
     - Replace the `Username` with the email ID you use to log in to Jira.
@@ -152,8 +153,8 @@ Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `D
     You do not need to use the Jira Create and Jira Update steps with the Jira Approval step. They are included in the `Jira Approval stage` because many users want to create a Jira issue, approve/reject based on its settings, and then update the issue all in one stage.
 
     ::: 
-3. Follow the steps [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages/#add-a-jira-create-step) and update the **Jira Create** step.
-4. Similarly, follow the steps [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages#add-a-jira-update-step), and update the **Jira Update** step. 
+3. Follow the steps [here](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages/#add-a-jira-create-step) and update the **Jira Create** step.
+4. Similarly, follow the steps [here](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages#add-a-jira-update-step), and update the **Jira Update** step. 
 5. For the **Jira Approval** step, follow the instructions above in [Add the JIRA Approval step](#add-the-jira-approval-step). 
 6. Drag the deploy-guestbook demo stage to the right of the jira-approval stage. 
 7. **Save** and **Run** the pipeline. 
@@ -177,7 +178,7 @@ Approvals can be added as stages or in-between stage steps to prevent stage exec
 
 Verify that you have the following:
 
-1. **ServiceNow Connector**: You need to connect to ServiceNow using the [connector](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-service-now/#add-a-servicenow-connector). 
+1. **ServiceNow Connector**: You need to connect to ServiceNow using the [connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now/#add-a-servicenow-connector). 
 
 2. **ServiceNow Ticket**: Create a dummy ServiceNow ticket with the `state` of the ticket set to `new`.  
 

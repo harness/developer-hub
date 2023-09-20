@@ -30,7 +30,7 @@ You need a CI pipeline with a **Build** (`CI`) stage.
 <details>
 <summary>Prepare a pipeline</summary>
 
-If you haven't created a pipeline before, review the [CI pipeline creation overview](../prep-ci-pipeline-components.md) or try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+If you haven't created a pipeline before, review the [CI pipeline creation overview](../prep-ci-pipeline-components.md) or try one of the [CI tutorials](../../get-started/tutorials.md).
 
 To add a **Build** stage to an existing pipeline:
 1. Go to the pipeline you want to edit.
@@ -248,6 +248,16 @@ For more examples of GitHub Actions in Plugin steps, go to the [GitHub Actions S
 
 :::
 
-## Troubleshooting: Can't connect to Docker daemon
+## Troubleshooting the GitHub Actions plugin
+
+The following troubleshooting advice applies to the GitHub Actions Drone plugin in Harness CI.
+
+### Can't connect to Docker daemon
 
 <DindTrbs />
+
+### Not a git repository (or any of the parent directories)
+
+This error occurs if the GitHub Action you're using requires a codebase to be present, such as the [GraphQL Inspector](https://github.com/marketplace/actions/graphql-inspector) or [DevCycle Feature Flag Code Usages](https://github.com/marketplace/actions/devcycle-feature-flag-code-usages) Actions. The GitHub Actions Drone plugin isn't compatible with such Actions at this time.
+
+If the Action allows you to override the `working-directory`, such as with the [CodeCov Action](https://github.com/codecov/codecov-action/blob/e1dd05cde2ed37d100f658b34ea423728ba1812e/action.yml#L107), you can use this setting to specify the correct working directory. If no such setting is available, then the Action is not compatible with Harness CI at this time.

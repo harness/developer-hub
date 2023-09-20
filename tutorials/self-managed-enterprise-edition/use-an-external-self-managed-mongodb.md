@@ -32,7 +32,7 @@ Harness recommends a MongoDB three member replica set configuration with the fol
 
 External database setup requires the following software:
 
-- Supported OS: TimescaleDB supports Debian 11, Ubuntu, and CentOS
+- Supported OS: Ubuntu 20.04
 
 ## Network requirements
 

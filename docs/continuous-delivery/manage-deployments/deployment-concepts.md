@@ -12,7 +12,14 @@ You have likely heard terms like *blue/green* and *canary* when it comes to depl
 
 This topic will explain these strategies to give you an idea of how to approach deployments in Harness, and to help you decide what strategy is best for you.
 
-### Deploy with or without gates
+## Deployment strategies video
+
+<!-- Video:
+https://www.loom.com/share/be4c27f216324f2f94880319f12a2238?sid=9bea2c3d-089a-48bb-acec-9c8edfbac2dd-->
+<docvideo src="https://www.loom.com/share/be4c27f216324f2f94880319f12a2238?sid=9bea2c3d-089a-48bb-acec-9c8edfbac2dd" />
+
+
+## Deploy with or without gates
 
 CD deployments are typically performed using manual approvals before deploying changes to production. These approvals are often called approval gates or release gates. 
 
@@ -30,9 +37,9 @@ Harness supports gated and no-gate CD by default. You can use several approval s
 
 For information on approval stages and steps, go to:
 
-- [Using manual harness approval stages](https://developer.harness.io/docs/platform/Approvals/adding-harness-approval-stages)
-- [Adding Jira approval stages and steps](https://developer.harness.io/docs/platform/Approvals/adding-jira-approval-stages)
-- [Adding ServiceNow approval steps and stages](https://developer.harness.io/docs/platform/Approvals/service-now-approvals)
+- [Using manual harness approval stages](/docs/platform/Approvals/adding-harness-approval-stages)
+- [Adding Jira approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages)
+- [Adding ServiceNow approval steps and stages](/docs/platform/Approvals/service-now-approvals)
 
 ## Rolling deployment
 

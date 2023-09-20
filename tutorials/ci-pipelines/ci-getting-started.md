@@ -17,6 +17,8 @@ slug: /ci-pipelines/fastest-ci
   target="_blank"
 />
 
+<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
 :::info
 
 [Sign up for free to try the world's fastest CI](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Top-Banner)

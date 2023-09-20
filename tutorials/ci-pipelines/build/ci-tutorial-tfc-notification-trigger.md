@@ -128,9 +128,9 @@ Harness uses a *connector* to connect to your Git repositories.
 
 1. In the GitHub account where you forked the tutorial repos, [create a GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the `repo`, `admin:repo_hook`, and `user` scopes.
 
-   For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
+   For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
 
-2. Save the token as a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets/) named `GITHUB_PAT`.
+2. Save the token as a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) named `GITHUB_PAT`.
 
 3. In your Harness `terraform_integration_demos` project, under **Project Setup**, select **Connectors**, and create a new **GitHub** code repository connector.
 4. Enter a **Name** and select **Continue**.
@@ -158,7 +158,7 @@ Harness uses a *connector* to connect to your Git repositories.
 7. For **Select Connectivity Mode**, select **Connect through the Harness Platform**, and then select **Save and Continue**.
 8. Wait while Harness tests the connection, and then select **Finish**.
 
-For more information about creating GitHub connectors go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
+For more information about creating GitHub connectors go to the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 
 ## Create a GSA key
 
@@ -194,7 +194,7 @@ You need Google Service Account (GSA) credentials (as a JSON key) to query your 
        --iam-account="gke-user@${GCP_PROJECT}.iam.gserviceaccount.com"
    ```
 
-5. In your Harness project, save the GSA key as a [Harness file secret](/docs/platform/Secrets/add-file-secrets/).
+5. In your Harness project, save the GSA key as a [Harness file secret](/docs/platform/secrets/add-file-secrets).
 
 ## Create a Terraform workspace
 
@@ -267,7 +267,7 @@ Create a pipeline by importing a premade pipeline from one of the tutorial repos
 
 :::tip
 
-This pipeline pulls public images from Docker Hub. If you do not want to use the default `account.harnessImage` connector, you can use a different Docker connector, as described in [Connect to Harness Container Image Registry using Docker Connector](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector).
+This pipeline pulls public images from Docker Hub. If you do not want to use the default `account.harnessImage` connector, you can use a different Docker connector, as described in [Connect to Harness Container Image Registry using Docker Connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
 
 :::
 
@@ -286,7 +286,7 @@ This pipeline pulls public images from Docker Hub. If you do not want to use the
    - `terraform_workspace` - The value `$TF_WORKSPACE`.
    - `terraform_cloud_organization` - The value `$TF_CLOUD_ORGANIZATION`.
 
-3. Add [Harness text secrets](/docs/platform/Secrets/add-use-text-secrets/) for `terraform_cloud_api_token`, `terraform_workspace` and `terraform_cloud_organization`. You added the `google_application_credentials` secret earlier in the tutorial.
+3. Add [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for `terraform_cloud_api_token`, `terraform_workspace` and `terraform_cloud_organization`. You added the `google_application_credentials` secret earlier in the tutorial.
 
    <!-- ![Secrets list](../static/ci-tfc-notif-trigger/tfc-notif-trigger-9.png) -->
 

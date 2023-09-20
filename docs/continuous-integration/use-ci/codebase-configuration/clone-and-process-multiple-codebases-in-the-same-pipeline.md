@@ -60,7 +60,7 @@ The **Git Clone** step has the following settings. Depending on the stage's buil
 
 ### Name, Id, and Description
 
-Enter a **Name** summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a **Name** summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 The **Description** is an optional text string.
 
@@ -70,18 +70,17 @@ Select a connector for the source control provider hosting the code repo that yo
 
 The following topics provide more information about creating code repo connectors:
 
-* Azure Repos: [Connect to Azure Repos](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo)
-* Bitbucket: [Bitbucket connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-* GitHub: [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-   * The **Git Clone** step doesn't support GitHub connectors that use GitHub App authentication.
-* GitLab: [GitLab Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+* Azure Repos: [Connect to Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
+* Bitbucket: [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+* GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+* GitLab: [GitLab Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 * Other Git providers:
-  * [Git connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
-  * [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo)
+  * [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
+  * [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
 
 ### Repository Name
 
-If the connector's [URL Type](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference#url-type) is **Repository**, then **Repository Name** is automatically populated based on the repository defined in the connector's configuration.
+If the connector's [URL Type](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference#url-type) is **Repository**, then **Repository Name** is automatically populated based on the repository defined in the connector's configuration.
 
 If the connector's URL Type is **Account**, then you must specify the name of the code repo that you want to clone into the pipeline workspace.
 
@@ -91,11 +90,11 @@ For **Build Type**, select **Git Branch** if you want the step to clone code fro
 
 :::tip
 
-You can use [fixed values, runtime input, or variable expressions](/docs/platform/references/runtime-inputs/) for the branch and tag names. For example, you can enter `<+input>` for the branch or tag name to supply a branch or tag name at runtime. You could also use expressions to match the pipeline's [codebase](./create-and-configure-a-codebase.md) branch or tag so that, for example, the pipeline and the Git Clone step both pull code from the same environment, such as `production` when a production build runs or `development` when a development build runs.
+You can use [fixed values, runtime input, or variable expressions](/docs/platform/variables-and-expressions/runtime-inputs/) for the branch and tag names. For example, you can enter `<+input>` for the branch or tag name to supply a branch or tag name at runtime. You could also use expressions to match the pipeline's [codebase](./create-and-configure-a-codebase.md) branch or tag so that, for example, the pipeline and the Git Clone step both pull code from the same environment, such as `production` when a production build runs or `development` when a development build runs.
 
 :::
 
-This setting applies only to the repo specified in this **Git Clone** step. It is separate from the `codebase` object for the pipeline's **Build** stage. If you want this **Git Clone** step's repo to use the same branch or commit as the primary codebase, specify either `<+codebase.branch>` or `<+codebase.tag>` for **Branch Name** or **Tag Name**. These expressions pull runtime input from the pipeline; for example, if the pipeline's primary codebase uses the `development` branch, then the **Git Clone** step clones the `development` branch from its repo. For more information, go to the [Built-in CI codebase variables reference](./built-in-cie-codebase-variables-reference.md).
+This setting applies only to the repo specified in this **Git Clone** step. It is separate from the `codebase` object for the pipeline's **Build** stage. If you want this **Git Clone** step's repo to use the same branch or commit as the primary codebase, specify either `<+codebase.branch>` or `<+codebase.tag>` for **Branch Name** or **Tag Name**. These expressions pull runtime input from the pipeline; for example, if the pipeline's primary codebase uses the `development` branch, then the **Git Clone** step clones the `development` branch from its repo. For more information, go to the [CI codebase variables reference](./built-in-cie-codebase-variables-reference.md).
 
 ### Clone Directory
 
@@ -138,8 +137,8 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ### SSH-keyscan timeout
 
@@ -215,7 +214,7 @@ For information about **Run** step settings, go to [Use Run steps](../run-ci-scr
 
 ## Build an artifact from both code repos
 
-Now that the files from both repos will be cloned into a common workspace, you can add a step to build an image using code from both repos, such as a [Build and Push an image to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings).
+Now that the files from both repos will be cloned into a common workspace, you can add a step to build an image using code from both repos, such as a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings).
 
 Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#dockerfile) that assume files are located at the codebase's root directory if not otherwise specified. This is because the pipeline's default codebase files are cloned in the root folder (`/harness`), while other codebase files are cloned into subfolders.
 

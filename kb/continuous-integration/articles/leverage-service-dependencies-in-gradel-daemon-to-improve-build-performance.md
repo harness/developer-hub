@@ -15,7 +15,7 @@ Testing Automation: After the build is complete, the CI system can run various a
 
 By automating the build and testing process through Harness CI, teams can achieve faster and more reliable software delivery, reducing the manual overhead and risk of human errors.
 
-More information on this is here: https://developer.harness.io/docs/continuous-integration
+More information on this is here: /docs/continuous-integration
 
 ## Problem statement
 

@@ -20,7 +20,7 @@ Maintenance mode means the following:
 :::
 
 
-This topic covers installing Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** in an existing Kubernetes cluster. Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** uses the [KOTS kubectl plugin](https://kots.io/kots-cli/getting-started/) for installation.
+This topic covers installing Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** in an existing Kubernetes cluster. Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** uses the [KOTS kubectl plugin](https://kots.io/kots-cli/get-started/) for installation.
 
 To install Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen**, first you install Harness Self-Managed Enterprise Edition - Kubernetes Cluster **FirstGen**, and then you install NextGen as an application.
 
@@ -481,7 +481,7 @@ To set up future versions of Harness Self-Managed Enterprise Edition, in the KOT
 2. Set up an SMTP Collaboration Provider in Harness for email notifications from the Harness Manager.  
 Ensure you open the correct port for your SMTP provider, such as [Office 365](https://support.office.com/en-us/article/server-settings-you-ll-need-from-your-email-provider-c82de912-adcc-4787-8283-45a1161f3cc3).
 
-1. [Add a Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-secrets-manager). By default, Harness Self-Managed Enterprise Edition installations use the local Harness MongoDB for the default Harness Secrets Manager. This is not recommended.  
+1. [Add a Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager). By default, Harness Self-Managed Enterprise Edition installations use the local Harness MongoDB for the default Harness Secrets Manager. This is not recommended.  
 
 After Harness Self-Managed Enterprise Edition installation, configure a new Secret Manager (Vault, AWS, etc). You will need to open your network for the Secret Manager connection.
 
@@ -732,9 +732,9 @@ Now you can add Harness Self-Managed Enterprise Edition NextGen as a new applica
 
    ![](./static/kubernetes-cluster-on-prem-kubernetes-cluster-setup-33.png)
 
-   If you are familiar with Harness, you can skip [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
+   If you are familiar with Harness, you can skip [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
 
-   Try the [Tutorials and quickstarts](../../getting-started/quickstarts.md).
+   Try the [Tutorials and quickstarts](../../get-started/tutorials).
 
 ## Updating Harness NextGen
 

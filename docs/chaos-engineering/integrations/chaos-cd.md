@@ -34,7 +34,7 @@ You might consider injecting these types of faults as chaos steps in your CD pip
 * **HTTP chaos faults** can be used for verifying how services or APIs behave when one of the APIs is under chaos. The [Pod HTTP latency](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-latency/) fault is an example.
 
 For more information, see: 
-* [CD tutorials](/docs/continuous-delivery/get-started/cd-tutorial)
+* [CD tutorials](/tutorials/cd-pipelines)
 * [Tutorial on integrating chaos and CD](/tutorials/chaos-experiments/integration-with-harness-cd)
 * [Harness pipelines](/docs/category/pipelines)
 * [Blog: CE experiments in CD Pipelines](https://www.harness.io/blog/chaos-experiments-in-harness-cd-pipelines)

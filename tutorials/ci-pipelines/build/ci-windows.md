@@ -397,7 +397,7 @@ If not already included on your build machine, you can specify a container image
 <TabItem value="Harness Cloud">
 ```
 
-In steps that allow you to supply your own commands, such as [**Run** steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#shell-and-command) and [**Background** steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
+In steps that allow you to supply your own commands, such as [**Run** steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#shell-and-command) and [**Background** steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
 
 ```yaml
               - step:
@@ -419,7 +419,7 @@ You can also use **Run** steps to install different shell tools into the build e
 <TabItem value="Self-hosted">
 ```
 
-In steps that allow you to supply your own commands, such as [**Run** steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#shell-and-command) and [**Background** steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
+In steps that allow you to supply your own commands, such as [**Run** steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#shell-and-command) and [**Background** steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#shell-entry-point-and-command), you specify the `shell` in the step's settings.
 
 ```yaml
               - step:
@@ -531,7 +531,7 @@ pipeline:
 <TabItem value="Self-hosted">
 ```
 
-If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
+If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 ```yaml
 pipeline:

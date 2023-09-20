@@ -41,7 +41,7 @@ export const featureList: CardItem[] = [
     title: "Manage Service Reliability",
     module: MODULES.srm,
     icon: "img/icon_srm.svg",
-    description: <>Monitor SLOs, track error budgets, and debug code errors.</>,
+    description: <>Monitor SLOs, track error budgets, and analyze impact of changes.</>,
     type: [docType.Documentation],
     link: "tutorials/service-reliability",
   },
@@ -62,11 +62,21 @@ export const featureList: CardItem[] = [
     link: "tutorials/chaos-experiments",
   },
   {
-    title: "Track Errors",
+    title: "Secure Supply Chain",
+    module: MODULES.ssca,
+    icon: "img/icon_ssca.svg",
+    description: (
+      <>Set up your pipelines to secure your software supply chain.</>
+    ),
+    type: [docType.Documentation],
+    link: "tutorials/secure-supply-chain",
+  },
+  {
+    title: "Track Errors in Code",
     module: MODULES.cet,
     icon: "img/icon_cet.svg",
     description: (
-      <>Find and fix issues in minutes with code level visibility.</>
+      <>Find & fix issues in minutes with deep visibility into code.</>
     ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
     link: "tutorials/error-tracking",
@@ -96,5 +106,17 @@ export const featureList: CardItem[] = [
     ),
     type: [docType.Documentation],
     link: "tutorials/platform",
+  },
+  {
+    title: "Administer Harness Self-Managed Enterprise Edition",
+    module: MODULES.platform,
+    icon: "img/logo.svg",
+    description: (
+      <>
+        Install Harness Platform on self-managed Kubernetes cluster.
+      </>
+    ),
+    type: [docType.Documentation],
+    link: "tutorials/self-managed-enterprise-edition",
   },
 ];

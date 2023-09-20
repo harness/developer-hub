@@ -250,11 +250,11 @@ To add a Harness Github connector:
    
        ![](static/harness-git-ops-application-set-tutorial-52.png)
    
-       You will store the PAT in a [Harness Text Secret](/docs/platform/Secrets/add-use-text-secrets). For details on Secrets Management, go to [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
+       You will store the PAT in a [Harness Text Secret](/docs/platform/secrets/add-use-text-secrets). For details on Secrets Management, go to [Harness Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
     
     7. Select **Enable API access** and use the same Harness secret.
     
-    For more information, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
+    For more information, go to the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 3. Select **Continue**.
 4. In **Connect to the provider**, select **Connect through Harness Platform**., and then click **Save and Continue**.
 5. When the **Connection Test** in complete, click **Continue**.
@@ -275,11 +275,11 @@ To add a Bitbucket connector:
     4. **GitHub Repository URL:** enter the HTTP URL for repo you used for your ApplicationSet, such as `https://bitbucket.org/johnsmith/applicationset.git`.
     5. **Authentication:** select **Username and Token**. For the token, use a Personal Access Token (PAT) from Bitbucket. If you are logged into Bitbucket, go to [HTTP access tokens](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html). You must provide an account-level app password or token. Repo-level tokens are not supported.
    
-       Store the PAT in a [Harness Text Secret](/docs/platform/Secrets/add-use-text-secrets). For details on Secrets Management, go to [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
+       Store the PAT in a [Harness Text Secret](/docs/platform/secrets/add-use-text-secrets). For details on Secrets Management, go to [Harness Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
     
     6. Select **Enable API access** and use the same Harness secret.
     
-    For more information, go to [Bitbucket connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference).
+    For more information, go to [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference).
 3. Select **Continue**.
 4. In **Connect to the provider**, select **Connect through Harness Platform**, and then click **Save and Continue**.
 5. After the Connection Test is complete, click **Continue**.

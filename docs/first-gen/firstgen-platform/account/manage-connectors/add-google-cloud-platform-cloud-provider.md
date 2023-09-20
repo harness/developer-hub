@@ -82,7 +82,7 @@ The GCP service account used for any credentials requires **Kubernetes Engine D
 Another option is to use a service account that has only the Storage Object Viewer permission needed to query GCR, and then use either an in-cluster Kubernetes Delegate or a direct [Kubernetes Cluster](cloud-providers.md#kubernetes-cluster) Cloud Provider with the Kubernetes service account token for performing deployment.
 :::
 
-Harness supports GKE 1.19 and later. If you use a version prior to GKE 1.19, please enable Basic Authentication. If Basic authentication is inadequate for your security requirements, use the [Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
+Harness supports GKE 1.19 and later. If you use a version prior to GKE 1.19, please enable Basic Authentication. If Basic authentication is inadequate for your security requirements, use the [Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
 
 ## Review: Google GCS and GCR Requirements
 

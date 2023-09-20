@@ -1,6 +1,6 @@
 ---
 title: Google GAR
-sidebar_position: 2
+sidebar_position: 3
 description: Build and push an application container to Google Artifact Registry using a CI pipeline.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, Go, GCP]
 slug: /ci-pipelines/publish/google-gar
@@ -26,9 +26,9 @@ This tutorial shows how to use a Harness Continuous Integration (CI) pipeline to
 You'll learn how to:
 
 - [x] Use [kaniko](https://github.com/GoogleContainerTools/kaniko) to build an application container image.
-- [x] Create [**projects**](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#organizations-and-projects) in your Harness account.
-- [x] Add [**secrets**](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#secrets-management) to projects.
-- [x] Add a Google Cloud Platform (GCP) [**Connector**](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#connectors) to a project.
+- [x] Create [**projects**](/docs/get-started/key-concepts/#organizations-and-projects) in your Harness account.
+- [x] Add [**secrets**](/docs/get-started/key-concepts/#secrets-management) to projects.
+- [x] Add a Google Cloud Platform (GCP) [**Connector**](/docs/get-started/key-concepts/#connectors) to a project.
 - [x] Use a CI pipeline to build and push an application container image.
 
 In this tutorial you'll build a simple **Go** application that calls `https://httpbin.org/get` and returns a JSON response, such as:
@@ -317,7 +317,7 @@ You can use either the visual or YAML editor to add pipeline steps. This tutoria
 
    | Variable Name                    | Value                                            | Description                                                                                                                    |
    | -------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-   | `PLUGIN_SERVICE_ACCOUNT_JSON`    | `<+secrets.getValue("harness_tutorial_sa_key")>` | The Google service account secret key.<br/>The [input type](/docs/platform/references/runtime-inputs/) must be **Expression**. |
+   | `PLUGIN_SERVICE_ACCOUNT_JSON`    | `<+secrets.getValue("harness_tutorial_sa_key")>` | The Google service account secret key.<br/>The [input type](/docs/platform/variables-and-expressions/runtime-inputs/) must be **Expression**. |
    | `GOOGLE_APPLICATION_CREDENTIALS` | `/kaniko/sa.json`                                | The json file where the service account key content will be written.                                                           |
    | `PLUGIN_IMAGE`                   | `$PLUGIN_IMAGE`                                  | The container image name.<br/>The value for `$PLUGIN_IMAGE` comes from `$TUTORIAL_HOME/.env`.                                  |
 

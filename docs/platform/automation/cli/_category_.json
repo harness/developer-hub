@@ -1,0 +1,14 @@
+{
+    "label": "CLI",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": 2,
+    "link": {
+        "type": "generated-index",
+        "title": "Harness CLI [Public Preview]"
+    },
+    "customProps": {   
+        
+    }
+}

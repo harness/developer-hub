@@ -31,7 +31,7 @@ Since the `JENKINS_TOKEN` variable is used in the application configuration, you
 
 ### Delegate proxy
 
-If your Jenkins instance is available on the public internet, this plugin does not require a delegate proxy to work. However, if the Jenkins instance is behind a network firewall, ensure that you have a [Harness Delegate](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview) running in your network. You can enter the host name or IP address of your Jenkins instance and select the delegate that should have access to the Jenkins instance. The delegate serves as an HTTP proxy for communications between IDP and your Jenkins instance.
+If your Jenkins instance is available on the public internet, this plugin does not require a delegate proxy to work. However, if the Jenkins instance is behind a network firewall, ensure that you have a [Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) running in your network. You can enter the host name or IP address of your Jenkins instance and select the delegate that should have access to the Jenkins instance. The delegate serves as an HTTP proxy for communications between IDP and your Jenkins instance.
 
 ## Layout
 

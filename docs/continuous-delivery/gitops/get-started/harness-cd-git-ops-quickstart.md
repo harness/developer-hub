@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/gitops/add-harness-git-ops-repository-credentials-template
+  - /docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart
 ---
 
 This topic describes how to use Harness GitOps to deploy services by syncing the Kubernetes manifests in your source repos with your target clusters.
@@ -232,7 +233,7 @@ You will also provide the credentials to use when connecting to the target clust
 8. In **Authentication**, select **Service Account**.
 9.  In **Service Account Token**, paste in the Service Account Token for the cluster's **default** namespace.
 
-To use a Kubernetes Service Account (SA) and token, you will need to either use an existing SA that has `cluster-admin` or *admin* permissions in the namespace, or create a new SA and grant it the permissions. This is described in [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
+To use a Kubernetes Service Account (SA) and token, you will need to either use an existing SA that has `cluster-admin` or *admin* permissions in the namespace, or create a new SA and grant it the permissions. This is described in [Add a Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
 
 To create a cluster entity using IAM role in Amazon EKS, go to [Creating a GitOps cluster with IAM role](/docs/continuous-delivery/gitops/use-gitops/create-cluster-with-iam.md).
 

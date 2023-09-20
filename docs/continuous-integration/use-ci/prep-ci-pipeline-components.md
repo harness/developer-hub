@@ -6,7 +6,7 @@ sidebar_position: 10
 
 This topic provides an overview of CI pipeline creation and configuration, including common components, such as **Build** stages, steps, and codebases, as well as advanced settings.
 
-For definitions of terms like stage, step, build infrastructure, delegate, connector, and so on, go to [CI pipeline components](../ci-quickstarts/ci-pipeline-basics.md).
+For definitions of terms like stage, step, build infrastructure, delegate, connector, and so on, go to [CI pipeline components](../get-started/key-concepts.md).
 
 ## Pipelines
 
@@ -23,7 +23,7 @@ You can run a pipeline manually or set up triggers to automatically run it on a 
 4. If you want to use a [pipeline template](/docs/platform/Templates/template), select **Start with Template**.
 5. Select **Start**.
 
-You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure pipeline settings. For a guided experience, try one of the [CI tutorials](../ci-quickstarts/ci-pipeline-quickstart.md).
+You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure pipeline settings. For a guided experience, try one of the [CI tutorials](../get-started/tutorials.md).
 
 :::tip
 
@@ -43,7 +43,7 @@ In addition to a default [codebase](#codebases), the following settings are conf
 * [Variables](/docs/category/variables-and-expressions)
 * [Notifications](/docs/category/notifications)
 * [Flow Control: Synchronization barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
-* [Policy Sets](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Policy Sets](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 * Advanced Options: Pipeline Timeout Settings, [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
 
 :::tip
@@ -113,27 +113,20 @@ A stage contains one or more steps. Each step is a series of commands that perfo
 
 Stages and steps have advanced settings to control the flow of operations.
 
-<details>
-<summary>Conditional Executions</summary>
+### Conditional Executions
 
 Use [conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) to specify when a stage or step should run. For example, you can specify that a particular stage should run only if the prior pipeline or stage failed.
 
 You can specify conditional execution settings for an entire stage and for individual steps. A stage's conditional execution settings apply to all steps in that stage that don't have their own step-level conditional execution settings. A step's conditional execution settings overrides the stage's conditional execution settings.
 
-</details>
-
-<details>
-<summary>Looping Strategies</summary>
+### Looping Strategies
 
 For information about looping strategies to go:
 
 * [Looping strategies - matrix, repeat, parallelism](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
 * [Optimize and enhance CI pipelines](/docs/category/optimize-and-enhance)
 
-</details>
-
-<details>
-<summary>Failure Strategies</summary>
+### Failure Strategies
 
 [Failure strategies](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) define how your stages and steps handle different failure conditions.
 
@@ -148,4 +141,6 @@ See also:
 
 * [Retry failed executions](/docs/platform/Pipelines/resume-pipeline-deployments)
 
-</details>
+### Environment variables
+
+For information about environment variables, go to the [CI environment variables reference](./optimize-and-more/ci-env-var.md).

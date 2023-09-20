@@ -10,7 +10,7 @@ Looking to create or update Jira issues? See [Create Jira Issues in CD Stages](/
 
 ### Before you begin
 
-* [Connect to Jira](/docs/platform/7_Connectors/Ticketing-Systems/connect-to-jira.md)
+* [Connect to Jira](/docs/platform/connectors/ticketing-systems/connect-to-jira.md)
 * [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages)
 * [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
 
@@ -54,13 +54,13 @@ When you add a Jira Approval stage, Harness automatically adds Jira Create, Jira
 
 In **Name**, enter a name that describes the step.
 
-In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](/docs/platform//8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
+In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](/docs/platform//pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
 
 You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, 1d for one day.
 
 Jira communication can take a few minutes. Do not use a brief timeout.
 
-The maximum is 3w 3d 20h 30m. In **Jira Connector**, create or select the [Jira Connector](/docs/platform//7_Connectors/Ticketing-Systems/connect-to-jira.md) to use.
+The maximum is 3w 3d 20h 30m. In **Jira Connector**, create or select the [Jira Connector](/docs/platform//connectors/ticketing-systems/connect-to-jira.md) to use.
 
 In **Project**, select the Jira project that contains the issue you want to evaluate.
 
@@ -68,37 +68,121 @@ In **Issue Key**, enter the Jira issue key of the issue you want to evaluate.
 
 In **Retry Interval**, set how long the step should wait to fetch details again for calculating Approval or Rejection criteria.
 
-### Option: Use an Expression in Issue Key
+### Passing Jira issue keys using expressions
 
-In **Issue Key**, you can use an expression to reference the Key ID from another Jira Create or Jira Update step.
+In **Issue Key**, you can use an expression to reference the issue key from another Jira Create or Jira Update step.
 
-The Jira Create or Jira Update step you want to reference must be before the Jira Approval step that references it in the Pipeline and stage.
+<details>
+<summary>Example pipeline</summary>
 
-First, identify the step where you want to get the ID from.
+Here's an example pipeline showing a Jira Create step (with the Id `Jira_Create`) and two subsequent Jira Update steps, JiraUpdate_1 and JiraUpdate_2. 
 
-You'll have to close the Jira Approval step to get the ID from the previous step. An ID is required, so you can just enter any number for now and click **Save**. In the Pipeline, click **Execution History**.
+JiraUpdate_1 references the issue key from the Jira Create step using the expression `<+pipeline.stages.Jira_Stage.spec.execution.steps.Jira_Create.issue.key>`. 
 
-Select a successful execution, and click the Jira Create/Update step in the execution.
+JiraUpdate_2 references the issue key from JiraUpdate_1 using the expression `<+execution.steps.JiraUpdate_1.spec.issueKey>`, but it could also use the expression `<+pipeline.stages.Jira_Stage.spec.execution.steps.Jira_Create.issue.key>`.
 
-Click the **Output** tab, locate the **Key** setting, and click the copy button.
+```yaml
+pipeline:
+  name: Jira
+  identifier: Jira
+  projectIdentifier: CD_Docs
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Jira Stage
+        identifier: Jira_Stage
+        description: ""
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: Jira Create
+                  identifier: Jira_Create
+                  type: JiraCreate
+                  timeout: 5m
+                  spec:
+                    connectorRef: Jira
+                    projectKey: TJI
+                    issueType: Bug
+                    fields:
+                      - name: Summary
+                        value: test for doc
+              - step:
+                  type: JiraUpdate
+                  name: JiraUpdate_1
+                  identifier: JiraUpdate_1
+                  spec:
+                    connectorRef: Jira
+                    issueKey: <+pipeline.stages.Jira_Stage.spec.execution.steps.Jira_Create.issue.key>
+                    transitionTo:
+                      transitionName: ""
+                      status: In Progress
+                    fields: []
+                  timeout: 10m
+              - step:
+                  type: JiraUpdate
+                  name: JiraUpdate_2
+                  identifier: JiraUpdate_2
+                  spec:
+                    connectorRef: Jira
+                    issueKey: <+execution.steps.JiraUpdate_1.spec.issueKey>
+                    transitionTo:
+                      transitionName: ""
+                      status: Will Not Fix
+                    fields: []
+                  timeout: 10m
+        tags: {}
 
-![](./static/adding-jira-approval-stages-09.png)
+```
 
-The expression will look something like this:
+</details>
 
-`<+pipeline.stages.Jira_Stage.spec.execution.steps.jiraCreate.issue.key>`
+Here's a video that demonstrates how to pass an issue key:
 
-Now you have the expression that references the key ID from this step.
+<!-- Video:
+https://www.loom.com/share/c3e9e58ee8044b70994af2c103408223?sid=b6c9de26-f737-4860-889d-2cc9611043d7-->
+<docvideo src="https://www.loom.com/share/c3e9e58ee8044b70994af2c103408223?sid=b6c9de26-f737-4860-889d-2cc9611043d7" />
 
-Go back to your Jira Approval step. You can just select **Edit Pipeline**.
 
-In **Issue Key**, select **Expression**.
+The expression follows the format `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.issue.key>`.
 
-![](./static/adding-jira-approval-stages-10.png)
+:::important
 
-In **Issue Key**, paste in the expression you copied from the previous Jira Create/Update step.
+The Jira Create or Jira Update step you want to reference must be **before** the Jira Update step that references it in the pipeline and stage.
 
-Now this Jira Approval step will use the issue created by the Jira Create/Update step.
+:::
+
+There are two ways to get the information for the expression:
+
+- **Use the standard expression:** In the Jira Update step **Issue Key**, select **Expression**, and then paste the expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.issue.key>` with the correct `STAGE_ID` and `STEP_ID` values for the Jira Create step that creates the issue key.
+  
+  ![picture 0](static/f1e2ce091ba77fae22dbafbd06e9e2a994a13850118aa1700043c126f53eda7c.png)  
+
+  :::tip
+  
+  When you have the Jira **Create** step open in Pipeline Studio, you can copy the `STAGE_ID` and `STEP_ID` values from the browser URL: `stageId=STAGE_ID&sectionId=EXECUTION&stepId=steps.0.step.STEP_ID`.
+  
+    For example, `stageId=Jira_Stage&sectionId=EXECUTION&stepId=steps.0.step.Jira_Create`.
+  
+  :::
+- **Copy the expression from an executed step:** Select a successful execution, and click the Jira Create step in the execution.
+  - Click the **Output** tab, locate the **Key** setting, and click the copy button.
+  
+  ![](./static/adding-jira-approval-stages-09.png)  
+  
+  Now you have the expression that references the issue key from this step.
+  
+  Go back to your Jira Update step. You can just select **Edit Pipeline**.
+  
+  In **Issue Key**, select **Expression**.
+
+  ![](./static/adding-jira-approval-stages-10.png)
+
+  In **Issue Key**, paste in the expression you copied from the previous Jira Create/Update step.
+
+With either method, the Jira Update step will use the issue created by the Jira Create step.
 
 Some users can forget that when you use a Jira Create step it creates a new, independent Jira issue every time it is run. If you are using the same issue ID in Jira Approval, you are approving using a new issue every run.
 
@@ -108,7 +192,7 @@ The **Approval Criteria** in the step determines if the Pipeline or stage is app
 
 ![](./static/adding-jira-approval-stages-11.png)
 
-Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](/docs/platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination they both must evaluate to `True` for the step to be successful.
+Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination they both must evaluate to `True` for the step to be successful.
 
 In **Conditions**, you simply use the Jira Field, Operator, and Value to define approval criteria.
 
@@ -124,8 +208,8 @@ If you add rejection criteria it is used in addition to the settings in **Approv
 
 In Advanced, you can use the following options:
 
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ### Step 3: Apply and Test
 
@@ -159,5 +243,5 @@ For example, `<+issue.Status> == "Done"` in the Approval Criteria **JEXL Express
 
 ### See also
 
-* [Using Manual Harness Approval Stages](/docs/platform/9_Approvals/adding-harness-approval-stages.md)
+* [Using Manual Harness Approval Stages](/docs/platform/approvals/adding-harness-approval-stages.md)
 * [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md)

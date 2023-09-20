@@ -1,5 +1,5 @@
 import React from "react";
-import { CardItem, docType } from "../TutorialCard";
+import { CardItem, docType, CardSections } from "../TutorialCard";
 import { MODULES } from "../../../constants";
 
 /* Define the cards here */
@@ -74,7 +74,9 @@ export const VMList: CardItem[] = [
     title: "Physical Data Center",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: <>Deploy an app to a Linux or Windows VM in a physical data center.</>,
+    description: (
+      <>Deploy an app to a Linux or Windows VM in a physical data center.</>
+    ),
     type: [docType.Documentation],
     time: "20min",
     link: "/tutorials/cd-pipelines/vm/pdc",
@@ -98,16 +100,37 @@ export const AdvList: CardItem[] = [
     title: "Trigger CD Pipeline on New Artifact Version",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: <>Trigger CD Pipeline on New Artifact Version</>,
+    description: (
+      <>Enable auto pipeline triggers on every release of Artifact.</>
+    ),
     type: [docType.Documentation],
     time: "20min",
     link: "/tutorials/cd-pipelines/trigger",
   },
   {
+    title: "Create Pipeline Templates",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: (
+      <>
+        Create reusable pipeline templates for CD pipelines and link them to
+        your pipelines{" "}
+      </>
+    ),
+    type: [docType.Documentation],
+    time: "20min",
+    link: "/tutorials/cd-pipelines/templates",
+  },
+  {
     title: "Set up an approval step in a CD pipeline",
     module: MODULES.cd,
     icon: "img/icon_cv.svg",
-    description: <>Enable Harness user groups to approve or reject a stage in a CD pipeline.</>,
+    description: (
+      <>
+        Enable Harness user groups to approve or reject a stage in a CD
+        pipeline.
+      </>
+    ),
     newDoc: true,
     type: [docType.Documentation],
     time: "20min",
@@ -117,7 +140,9 @@ export const AdvList: CardItem[] = [
     title: "Continuous Verification with Prometheus",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: <>Verify Deployments with Prometheus & Auto Rollback on Failures</>,
+    description: (
+      <>Verify Deployments with Prometheus & Auto Rollback on Failures</>
+    ),
     type: [docType.Documentation],
     time: "20min",
     link: "/tutorials/cd-pipelines/continuous-verification/prometheus",
@@ -130,5 +155,43 @@ export const AdvList: CardItem[] = [
     type: [docType.Documentation],
     time: "20min",
     link: "/tutorials/cd-pipelines/unified-cicd",
+  },
+];
+
+export const CDList: CardSections = [
+  {
+    name: "Automate Kubernetes deployments with a CD Pipeline or GitOps Workflow",
+    list: K8SList,
+    // description: "optional",
+    // module: MODULES.cd, // optional
+    // icon: "path/to/img/optional",
+  },
+  {
+    name: "Automate Serverless deployments with a CD Pipeline",
+    list: ServerlessList,
+    // description: "optional",
+    // module: MODULES.cd, // optional
+    // icon: "path/to/img/optional",
+  },
+  {
+    name: "Automate Linux or Windows VM deployments with a CD Pipeline",
+    list: VMList,
+    // description: "optional",
+    // module: MODULES.cd, // optional
+    // icon: "path/to/img/optional",
+  },
+  {
+    name: "Automate Amazon ECS deployments with a CD Pipeline",
+    list: ECSList,
+    // description: "optional",
+    // module: MODULES.cd, // optional
+    // icon: "path/to/img/optional",
+  },
+  {
+    name: "Learn Advanced CD & GitOps",
+    list: AdvList,
+    // description: "optional",
+    // module: MODULES.cd, // optional
+    // icon: "path/to/img/optional",
   },
 ];

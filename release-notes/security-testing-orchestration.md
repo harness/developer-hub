@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-08-23T10:00
+date: 2023-08-30T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 9
 ---
@@ -19,12 +19,62 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-
-## Latest: Version 1.66.1
+## Version 1.68.0
 
 ### New features and enhancements
 
-This release does not include new features.
+This release does not include new features. 
+
+### Early access
+
+This release does not include early access features. 
+
+### Fixed issues
+
+- Fixed the following UI issues in in **Security Tests**: 
+
+  - Users with view access for Security Issues at the Project level, but not the Account level, could not view issue details. (STO-6421)
+
+  - Some scanners such as Gitleaks would appear with the label **Unknown Scan Tool** rather than the correct product name. (STO-6454) (STO-6337)
+
+
+### Hotfixes
+
+This release does not include hotfixes. 
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Version 1.67.2
+
+##### New features and enhancements
+
+This release does not include new features. 
+
+##### Early access
+
+This release does not include early access features. 
+
+##### Fixed issues
+
+- Fixed an issue with setting up SSL certificates in Checkmarx, which caused Java keytools to fail. Upgrading to JDK-11 fixed the issue. (STO-6512)
+
+### Hotfixes
+
+This release does not include hotfixes. 
+
+#### Version 1.67.1
+
+##### New features and enhancements
+
+- The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4918) 
+
+##### Early access
+
+This release does not include early access features. 
 
 <!--
 - This release includes the following UI enhancements for working with exemptions. (STO-6078)
@@ -33,20 +83,61 @@ This release does not include new features.
 
     ![](static/sto-click-row-to-view-exemptions.png)
 
-  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
 
     ![](static/sto-exemption-details-no-baseline-selected.png)
 
-- The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4918) 
+  These enhancements are behind the Feature Flag `FF_STO_EXEMPTION_DETAILS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
 
 -->
 
+##### Fixed issues
 
-### Early access features
+- Fixed a pagination issue in the Security Tests page where switching between different pages resulted in a "Failed to get issues" error. The error occurred when switching from a page of issues (such as 21-40) to another issue for which those settings were invalid. (STO-6465)
+
+- Fixed an issue where the Security Tests page would fail with a 500 internal error if the scan detected no issues. (STO-6437, ZD-49803)
+
+- Previously, the Black Duck Hub step ran DOCKER scans only by default. With this release, the scanner runs DETECTOR and SIGNATURE scans by default as well. (STO-6447)
+
+  You can configure this step with supported command-line arguments. For more information, go to [Additional CLI flags](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference#additional-cli-flags) in the [Black Duck Hub scanner reference](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference). 
+
+- Fixed a UI issue in the Security Tests tag where the clickable severity tiles &mdash; introduced in version 1.64.1, described [below](#august-09-2023-version-1641) &mdash; had an extra border on the right. (STO-6372)
+
+
+
+### Hotfixes
+
+This release does not include hotfixes. 
+
+#### SonarQube runner update, August 25, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
 
 This release does not include early access features. 
 
-### Fixed issues
+##### Fixed issues
+
+This update to the SonarQube runner includes the following fixed issues:
+
+- Fixed an issue where the SonarQube step would ignore additional path segments in the domain name. If the domain was set to `https://mysonar.com/sonar`, for example, the SonarQube step would ignore the full path and try to communicate with `https://mysonar.com`. (STO-6442)
+
+- Fixed an issue where the SonarQube step could not override some SonarQube scan CLI parameters specified in the **Additional CLI arguments** field. (STO-6443)
+
+#### Version 1.66.1
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features. 
+
+##### Fixed issues
 
 <!-- 
 
@@ -62,17 +153,10 @@ This release does not include early access features.
 
 
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
 
-
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 09, 2023, version 1.64.1
 
@@ -183,7 +267,7 @@ Harness AI Development Assistant (AIDA) uses state-of-the-art AI technology to s
 
 Harness AIDA reduces developer toil by streamlining and simplifying the process of fixing vulnerabilities. It enables developers and security personnel to manage security-issue backlogs and address critical issues promptly. Harness AIDA can dramatically reduce your TTR, speed up your software development lifecycle, and improve the security posture of your applications and services.
 
-For more information, go to [Remediations with AIDA](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 
 ##### Fixed issues
 

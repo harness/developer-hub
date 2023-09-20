@@ -27,7 +27,7 @@ This topic provides steps on using Harness to provision a target environment or 
 
 ### Azure roles required
 
-See Blueprint in [Add a Microsoft Azure connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector/).
+See Blueprint in [Add a Microsoft Azure connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector/).
 
 ### Harness role permissions required
 
@@ -189,8 +189,8 @@ The following example provides a blueprint description, specifies the target sco
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview/)

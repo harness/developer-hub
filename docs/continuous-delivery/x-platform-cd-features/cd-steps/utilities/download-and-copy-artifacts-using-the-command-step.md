@@ -217,6 +217,12 @@ You specify the file to tail, such as `auth.log`, and the pattern to search (gr
 6. For **Pattern to search**, enter the pattern to search for in the file. Harness uses grep on the pattern.
 7. Use **Deployment Templates** to run the download command on the target hosts, add the command after the Fetch Instances step. Go to [looping strategy and target hosts](#looping-strategy-and-target-hosts) below for more information.
 
+### Notes on working directory
+
+import WorkingDir from '/docs/continuous-delivery/shared/working-dir.md';
+
+<WorkingDir name="WorkingDir" />
+
 ## Input variables
 
 While you can declare a variable in your command script using a Harness expression or string for its value, using input variables provides some additional benefits:
@@ -255,13 +261,19 @@ The format to reference the output variable can be one of the following:
 
 * Within the stage:
 	+ Referencing the step output:
-		- `<+steps.[step_id].output.outputVariables.[output_variable_name]>`.
+		- `<+steps.STEP_ID.output.outputVariables.OUTPUT_VARIABLE_NAME>`.
 	+ Referencing the step output execution:
-		- `<+execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
+		- `<+execution.steps.STEP_ID.output.outputVariables.OUTPUT_VARIABLE_NAME>`
 * Anywhere in the pipeline:
-	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
+	+ `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.OUTPUT_VARIABLE_NAME>`
 
-For example, it could be `<+steps.Shell_Script.output.outputVariables.newname>`.
+For example, it could be `<+steps.Deploy_0.output.outputVariables.newname>`.
+
+### Output variable notes
+
+- **Secret output variables:** Harness supports String and Secret output variables in the Command step. Secret output variables are masked in console logs and in step outputs.
+- **Rollback output variables:** If output variables are configured on a Command step in the stage **Rollback** section, those output variables are used during stage rollback only. 
+
 
 ## Run on delegate
 
@@ -313,7 +325,7 @@ Legend:
 
 :::note
 
-The WinRM deployment type supports Download Artifact only. You cannot use Cope Artifact in WinRM deployments.
+The WinRM deployment type supports Download Artifact only. You cannot use the **Copy** command type with **Artifact** in WinRM deployments.
 
 :::
 

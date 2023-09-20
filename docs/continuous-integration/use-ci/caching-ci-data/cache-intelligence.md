@@ -13,6 +13,10 @@ Modern continuous integration systems execute pipelines inside ephemeral environ
 
 There are several ways to configure caching in Harness CI, such as Cache Intelligence, Save and Restore Cache steps, and mounting volumes. Save and Restore Cache steps and mounted volumes require you to manage the cache. With Cache Intelligence, Harness automatically caches and restores common dependencies. Cache Intelligence also doesn't require you to bring your own storage, because the cache is stored in the Harness-hosted environment, Harness Cloud.
 
+<!-- Video: Cache Intelligence demo
+https://www.loom.com/share/20703014b50042b5972e14cefea87f49?sid=d87d4bad-6482-44f2-a379-0b843c399a26-->
+<docvideo src="https://www.loom.com/share/20703014b50042b5972e14cefea87f49?sid=d87d4bad-6482-44f2-a379-0b843c399a26" />
+
 ## Supported build infrastructures
 
 Currently, Cache Intelligence is only available for Linux and Windows platforms on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), the Harness-hosted build environment.
@@ -189,7 +193,7 @@ Currently, the Cache Intelligence Visual Editor fields are behind the feature fl
 1. Edit the pipeline, and select the **Build** stage where you want to enable Cache Intelligence.
 2. Select the **Overview** tab for the stage.
 3. Make sure **Enable Cache Intelligence** is selected.
-4. Enter the custom key value in **Key**. You can use [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs) for the key value.
+4. Enter the custom key value in **Key**. You can use [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs) for the key value.
 
    <!-- ![](./static/cache_int_custom_key.png) -->
 
@@ -200,7 +204,7 @@ Currently, the Cache Intelligence Visual Editor fields are behind the feature fl
   <TabItem value="YAML" label="YAML" default>
 ```
 
-To customize the cache key in the YAML editor, add `key: CUSTOM_KEY_VALUE` under `stage.spec.caching`. You can use [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs) for the key value.
+To customize the cache key in the YAML editor, add `key: CUSTOM_KEY_VALUE` under `stage.spec.caching`. You can use [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs) for the key value.
 
 The following YAML example uses `<+input>`, which prompts the user to supply a cache key value at runtime.
 
@@ -226,7 +230,7 @@ The following YAML example uses `<+input>`, which prompts the user to supply a c
 
 You can use the Cache Intelligence API to get information about the cache or delete the cache.
 
-To invoke these APIs, you must have an API key with [core_account_edit](/docs/platform/Resource-Development/APIs/api-permissions-reference) permissions. For information about API keys, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
+To invoke these APIs, you must have an API key with [core_account_edit](/docs/platform/automation/api/api-permissions-reference) permissions. For information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
 
 ### Get cache metadata
 

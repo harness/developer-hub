@@ -17,9 +17,9 @@ Harness CI provides proprietary technologies, like Cache Intelligence and Test I
 
 In addition, you can [use plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) to include GitHub Actions, Bitrise Integrations, Jira updates, and more in your Harness CI pipelines.
 
-Harness CI is part of The [Harness Platform](/docs/getting-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
+Harness CI is part of The [Harness Platform](/docs/get-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
 
-* [Secrets management](/docs/category/secrets-management) through the [Harness secrets manager](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview) or an [external secrets manager](/docs/platform/Secrets/Secrets-Management/add-secrets-manager).
+* [Secrets management](/docs/category/secrets-management) through the [Harness secrets manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) or an [external secrets manager](/docs/platform/secrets/secrets-management/add-secrets-manager).
 * Role-Based Access Control (RBAC) helps you control user and group access to Harness resources according to users' roles. Using RBAC increases security and improves efficiency.
 * Harness Policy as Code is a centralized policy management and rules service that leverages the Open Policy Agent (OPA) to meet compliance requirements across software delivery and enforce governance policies.
 * The Harness Enterprise Ready Self-Managed Edition is an end-to-end solution for continuous, self-managed delivery. You can install and update Harness Self-Managed Enterprise Edition using online or offline (air-gapped) methods.
@@ -77,7 +77,7 @@ step1:
 </Tabs>
 ```
 
-For more information about Harness terminology, features, and pipeline components, go to [CI pipeline basics](../ci-quickstarts/ci-pipeline-basics.md).
+For more information about Harness terminology, features, and pipeline components, go to the [CI key concepts](../get-started/key-concepts.md).
 
 ### Jobs and steps
 
@@ -297,7 +297,7 @@ step1:
 
 In Harness CI, you specify *connectors* and images for each step, if necessary. Depending on the step type, the commands you are running, and your build infrastructure, you may not need to specify an image. For example, if a binary is already available on your build farm, you may not need to pull an image for that binary.
 
-For example, the following step includes a `connectorRef` referencing a Docker connector. [Docker connectors](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
+For example, the following step includes a `connectorRef` referencing a Docker connector. [Docker connectors](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
 
 ```yaml
               - step:
@@ -614,7 +614,7 @@ Webhooks are a convenient way to trigger CI builds on demand by sending an HTTP 
 
 In GitLab CI, pipelines can be triggered only through API.
 
-Harness CI supports webhook, artifact, manifest and schedule triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on `cron` expressions. To learn more about creating a trigger, go to [Triggers](https://developer.harness.io/docs/category/triggers).
+Harness CI supports webhook, artifact, manifest and schedule triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on `cron` expressions. To learn more about creating a trigger, go to [Triggers](/docs/category/triggers).
 
 ```mdx-code-block
 <Tabs>
