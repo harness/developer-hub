@@ -173,12 +173,13 @@ Credentials Template is not supported for OCI Helm repository.
 </TabItem>
 <TabItem value="Using a self-signed certificate" label="Using a self-signed certificate">
 ```
-If you intend to establish a connection to a repository hosted on an HTTPS server and plan to use either a self-signed certificate or one signed by a Certificate Authority, it is essential to generate the repository certificate prior to setting up the repository itself.
+If you intend to establish an HTTPS connection to a repository and plan to use either a self-signed certificate or one signed by a private Certificate Authority (CA), it is essential to generate the repository certificate prior to setting up the repository itself.
 
-1. Create repository certificate
-   - Select **TLS Repository Certificate** in Repository Type.
-   - In the **Repository Server Name** enter the name of the repository server issuing the certificate. For example, `github.harness.internal`.
-   - Paste the certificate in the **TLS Certificate** field. Enclose each certificate in BEGIN CERTIFICATE and END CERTIFICATE comments.
+1. To create repository certificate:
+   - In **GitOps**, in **Settings**, select **Repository Certificates**, and then select **New Repository Certificate**.
+   - In **Repository Type**, select **TLS Repository Certificate**.
+   - In **Repository Server Name**, enter the name of the repository server issuing the certificate. For example, `github.mycompany.internal`.
+   - Paste the certificate in **TLS Certificate (PEM Format)**. Enclose each certificate in `BEGIN CERTIFICATE` and `END CERTIFICATE` comments.
 
 ```mdx-code-block
 </TabItem>    
