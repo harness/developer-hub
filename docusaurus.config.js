@@ -248,6 +248,10 @@ const config = {
                 to: "docs/troubleshooting",
               },
               {
+                label: "Harness Cloud Operations",
+                to: "docs/harness-cloud-operations",
+              },
+              {
                 label: "API Reference",
                 to: "https://apidocs.harness.io/",
               },
