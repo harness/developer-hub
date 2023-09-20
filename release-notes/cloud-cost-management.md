@@ -24,7 +24,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
-This release does not include any early access features.
+This release does not include any new features.
 
 ### Early access features
 
