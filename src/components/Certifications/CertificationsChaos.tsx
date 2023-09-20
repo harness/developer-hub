@@ -66,11 +66,8 @@ export default function CertificationsChaos() {
           </div>
           <h1>Chaos Engineering Certifications</h1>
           <div>
-            Eliminate scripting and manual deployments with Argo CD-as-a-Service
-            and powerful, easy-to-use pipelines. Empower your teams to deliver
-            new features, faster – with AI/ML for automated canary and
-            blue/green deployments, advanced verification, and intelligent
-            rollback.
+            Discover how your applications stand up to real-world failure scenarios. 
+            Gain insights to construct a resilient system that minimizes downtime and saves on costs.
           </div>
         </div>
         <div className={styles.right}>
