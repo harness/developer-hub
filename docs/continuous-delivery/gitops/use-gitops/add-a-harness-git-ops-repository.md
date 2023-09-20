@@ -173,7 +173,7 @@ Credentials Template is not supported for OCI Helm repository.
 </TabItem>
 <TabItem value="Using a self-signed certificate" label="Using a self-signed certificate">
 ```
-If you are connecting a repository on a HTTPS server using a self-signed certificate, or a certificate signed by a Certificate Authority, the repository certificate should be created before the repository.
+If you intend to establish a connection to a repository hosted on an HTTPS server and plan to use either a self-signed certificate or one signed by a Certificate Authority, it is essential to generate the repository certificate prior to setting up the repository itself.
 
 1. Create repository certificate
    - Select **TLS Repository Certificate** in Repository Type.
