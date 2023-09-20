@@ -105,4 +105,4 @@ There are many ways you can incorporate third party tools and services in your C
 
 Check your infrastructure monitoring tools for potential bottlenecks during the time windows when your builds are running. Increasing memory or CPU capacity in your Build steps might help speed up your builds.
 
-You can also [enforce pipeline concurrency limits](/docs/platform/settings/pipeline-settings/).
+You can also [enforce pipeline concurrency limits](docs/platform/pipelines/w_pipeline-steps-reference/pipeline-settings.md).
