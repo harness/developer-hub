@@ -6,7 +6,7 @@ sidebar_position: 10
 
 Harness Software Engineering Insights (SEI) analyzes data from over 40 DevOps tools to compute [DORA metrics and over 100 other insightful metrics](/docs/category/metrics-and-reports) that provide the missing insights to help you deliver software faster with better quality.
 
-SEI [integrates](/docs/category/integrations) seamlessly with the Harness platform, works with other common CI/CD tools (such as Jenkins, CircleCI, Gitlab, and Azure), and provides popular third-party integrations (such as Azure, Jira, and GitHub). Enterprise companies with heterogeneous environments are able to fetch data from disparate DevOps tools and receive centralized visibility into their SDLC process.
+SEI [integrates](/docs/category/integrations) seamlessly with the Harness platform, works with other common CI/CD tools (such as Jenkins, CircleCI, Gitlab, and Azure), and provides popular third-party integrations (such as Azure, Jira, and GitHub). Enterprise companies with heterogeneous environments are able to fetch data from disparate DevOps tools and receive centralized visibility into their software development lifecycle (SDLC) process.
 
 SEI achieves this by looking at different facets of the SDLC process where bottlenecks are prevalent, such as:
 
