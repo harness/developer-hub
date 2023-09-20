@@ -16,7 +16,7 @@ You can use the **GitHub Action plugin** step (also called the **GitHub Action**
 
 :::info
 
-Currently, the **GitHub Action** step is supported for the Harness Cloud build infrastructure only.
+Currently, the **GitHub Action** step is supported for Harness Cloud build infrastructure only.
 
 For other build infrastructures, you can use the [GitHub Actions Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
 
