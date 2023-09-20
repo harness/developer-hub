@@ -177,8 +177,8 @@ If you are connecting a repository on a HTTPS server using a self-signed certifi
 
 1. Create repository certificate
    - Select **TLS Repository Certificate** in Repository Type.
-   - Enter the name of the repository server issuing the certificate. For example, `github.harness.internal`.
-   - Paste the certificate in the TLS Certificate field. Enclose each certificate in BEGIN CERTIFICATE and END CERTIFICATE comments.
+   - In the **Repository Server Name** enter the name of the repository server issuing the certificate. For example, `github.harness.internal`.
+   - Paste the certificate in the **TLS Certificate** field. Enclose each certificate in BEGIN CERTIFICATE and END CERTIFICATE comments.
 
 ```mdx-code-block
 </TabItem>    
