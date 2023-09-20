@@ -601,9 +601,9 @@ gsutil -m cp \
 
 #### New features and enhancements
 
-#### Self-Managed Enterprise Edition
+##### Self-Managed Enterprise Edition
 
-- Updated CI Manager and the delegate to improve performance testing.(SMP-2022)
+- Updated CI Manager and the delegate to improve performance testing. (SMP-2022)
 
 - Added the following rule to the `log-service` virtual service for performance testing. (SMP-2033)
 
@@ -612,7 +612,7 @@ gsutil -m cp \
         prefix: /log-service//
    ```
 
-#### Cloud Cost Management
+##### Cloud Cost Management
 
 - Updated the Helm chart to support proxy configuration for AWS SDK clients. (CCM-14374)
 
@@ -636,19 +636,19 @@ gsutil -m cp \
    monitoring.<region>.amazonaws.com
    ```
 
-#### Chaos Engineering
+##### Chaos Engineering
 
 - Added support for Chaos Engineering version 1.19.x. For more information, go to the [Chaos Engineering release notes](/release-notes/chaos-engineering/#latest-version-1192). (CHAOS-2544)
 
-#### Continuous Delivery
+##### Continuous Delivery
 
 - Added functionality to support GitOps section at Org level. (CDS-79545)
 
-#### Continuous Integration
+##### Continuous Integration
 
-- Added support to set the `LOG_STREAMING _URL` from Harness Delegate by default for CI pipelines. If the delegate is outside of the cluster, the fallback log service URL is `LOG_SERVICE_ENDPOINT` from CI. (CI-9262, ZD-48974)
+- To support  CI pipelines, Harness added support to set the Harness Delegate environment variable `LOG_STREAMING _URL` by default. If the delegate is outside of the cluster, the fallback log service URL is `LOG_SERVICE_ENDPOINT` from CI. (CI-9262, ZD-48974)
 
-#### Custom Dashboards
+##### Custom Dashboards
 
 - Updated to an FIPS compliant algorithm for short term caching key generation. (CDB-1107)
 
@@ -658,7 +658,7 @@ This release does not include any early access features.
 
 #### Fixed issues
 
-#### Continuous Integration
+##### Continuous Integration
 
 - Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used delegate selectors based on delegate tags, and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. (CI-8831, ZD-47647)
 
