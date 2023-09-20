@@ -1,7 +1,7 @@
 ---
 title: Key concepts
 description: Basic terminology and concepts related to CI pipelines
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: 3amcd8hn53
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false
