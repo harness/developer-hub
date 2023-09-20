@@ -183,3 +183,7 @@ We display anomalies at the most granular level of the hierarchy and intentional
 #### I am seeing a large number of anomalies being detected which do not seem like anomalies to me ?
 
 Before proceeding, please double-check whether you have configured a new connector specifically for that particular cloud service. If you have indeed set up a new connector, please be aware that our machine learning models may not yet have sufficient training data for accurately identifying anomalies. To obtain reliable anomaly results, we typically require a minimum of 14 days' worth of training data.
+
+#### Why can't my CCM connector retrieve data from an old billing table?
+
+CCM Connectors, by default, only collect data from billing tables that have had updates within the last 24 hours. If your table hasn't had any updated data within this period, we will skip the collection process.

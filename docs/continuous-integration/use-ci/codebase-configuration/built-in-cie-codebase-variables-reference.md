@@ -15,22 +15,17 @@ import TabItem from '@theme/TabItem';
 
 In Harness CI, you set up a [codebase](./create-and-configure-a-codebase.md) by creating a [Harness connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) that connects to a Git repo. Pipelines use this connector to clone the code that you want to build and test. When a pipeline runs, Harness also fetches Git details and displays them in the [build details](../viewing-builds.md).
 
-This topic describes how codebase variables are resolved and the built-in Harness expressions that you can use to reference Git codebase attributes in your pipelines.
-
-For more information about variables and expressions, go to:
-
-* [Built-in and custom Harness variables reference](../../../platform/variables-and-expressions/harness-variables.md)
-* [CI environment variables reference](../optimize-and-more/ci-env-var.md)
-
-## Requirements
-
-You must use a supported codebase: GitHub, Bitbucket, or GitLab.
-
-Your [code repo connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) must use **Username and Token** authentication and allow API access (**Enable API access**).
+This topic describes how codebase [environment variables](../optimize-and-more/ci-env-var.md) are resolved and the [Harness expressions](../../../platform/variables-and-expressions/harness-variables.md) that you can use to reference Git codebase attributes in your pipelines.
 
 ## Variable resolution
 
-The value of codebase variables depends on the pipeline's [codebase](./create-and-configure-a-codebase.md) and the build start conditions (webhook trigger or manual). A variable is resolved only if the build includes the necessary information for that variable. For example, `<+codebase.prNumber>` is only resolved if the build started from a pull request. Builds that aren't started from a PR won't have a PR number to assign to that variable. Builds that aren't associated with a PR won't have a PR number to apply to that variable.
+The values of codebase variables depends on:
+
+* The pipeline's [codebase](./create-and-configure-a-codebase.md) configuration. For full support, you must use a supported codebase: GitHub, Bitbucket, or GitLab. With other providers, some variables might not be resolved.
+* The pipeline's [code repo connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) must use **Username and Token** authentication and allow API access (**Enable API access**).
+* How the build started, whether manually or by a webhook trigger.
+
+A variable is resolved only if the build includes the necessary information for that variable. For example, `<+codebase.prNumber>` is only resolved if the build started from a pull request. Builds that aren't started from a PR won't have a PR number to assign to that variable.
 
 :::info
 
@@ -67,7 +62,7 @@ Values in the webhook payload are mapped to the build's codebase variables. The 
 
 ### Unresolved variables
 
-Codebase variables aren't resolved in these scenarios:
+Some codebase variables aren't resolved in these scenarios:
 
 * **Cron triggers:** Builds started from cron triggers don't contain specific Git event information and, therefore, don't provide a payload to resolve codebase variables in the same way as PR and push triggers.
 * **Non-default codebases:** Codebase variables are only resolved for the pipeline's [default codebase](./create-and-configure-a-codebase.md). If a pipeline [clones additional codebases](./clone-and-process-multiple-codebases-in-the-same-pipeline.md) through **Run** or **Git Clone** steps, codebase variables are not produced for these additional codebases.
@@ -136,7 +131,7 @@ You can use expressions to reference the value of some `DRONE_` environment vari
 
 :::
 
-## Build start conditions
+## Build start variables
 
 These variables describe how the build started.
 
@@ -163,7 +158,9 @@ You can use this expression to create conditions based on build type, such as `<
 * Expression: `<+trigger.event>`
 * Exclusions: Not available for manual builds.
 
-## Branch, PR, and tag data
+## Branch, PR, and tag variables
+
+These variables provide information about the branch, PR, or tag associated with the build.
 
 ### codebase.branch
 
@@ -207,7 +204,7 @@ You can use this expression to create conditions based on build type, such as `<
    * Webhook triggers: `<+codebase.sourceBranch>` or `<+trigger.sourceBranch>`
 * Exclusions:
    * Tag builds: Always `null`.
-   * Branch builds: `null` or the same as [`<+codebase.branch>`](#branch).
+   * Branch builds: `null` or the same as [`<+codebase.branch>`](#codebasebranch).
 
 ### codebase.tag
 
@@ -219,13 +216,15 @@ You can use this expression to create conditions based on build type, such as `<
 
 * Value:
    * PR builds: The PR's target branch.
-   * Branch builds: `null` or the same as [`<+codebase.branch>`](#branch).
+   * Branch builds: `null` or the same as [`<+codebase.branch>`](#codebasebranch).
    * Tag builds: `null` or the tag path, such as `refs/tags/TAG_NAME`.
 * Expression:
    * Manual builds: `<+codebase.targetBranch>`
    * Webhook triggers: `<+codebase.targetBranch>` or `<+trigger.targetBranch>`
 
-## Commit data
+## Commit variables
+
+These variables provide information about some commits associated with the build.
 
 ### codebase.baseCommitSha
 
@@ -256,7 +255,7 @@ You can use this expression to create conditions based on build type, such as `<
 
 For Bitbucket PR builds (manual or webhook), this expression returns a *shortened* SHA due to the Bitbucket webhook payload only sending shortened SHAs.
 
-This *isn't* the same as the short SHA returned by [`<+codebase.shortCommitSha>`](#shortcommitsha).
+This *isn't* the same as the short SHA returned by [`<+codebase.shortCommitSha>`](#codebaseshortcommitsha).
 
 :::
 
@@ -268,10 +267,12 @@ This *isn't* the same as the short SHA returned by [`<+codebase.shortCommitSha>`
 
 ### codebase.shortCommitSha
 
-* Value: The short SHA (seven characters) of the build's [commit SHA](#commitsha).
+* Value: The short SHA (seven characters) of the build's [commit SHA](#codebasecommitsha).
 * Expression: `<+codebase.shortCommitSha>`
 
-## Git user data
+## Git user variables
+
+These variables provide information about the Git user account associated with the build.
 
 ### codebase.gitUser
 
@@ -295,7 +296,9 @@ This *isn't* the same as the short SHA returned by [`<+codebase.shortCommitSha>`
 * Value: User ID of the Git account associated with the build. Can be `null` or masked in build logs.
 * Expression: `<+codebase.gitUserId>`
 
-## Repo data
+## Repo variables
+
+These variables provide information about the Git repo associated with the build.
 
 ### codebase.repoUrl
 

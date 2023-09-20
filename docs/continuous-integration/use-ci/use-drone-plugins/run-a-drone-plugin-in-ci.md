@@ -188,7 +188,7 @@ For more information about uploading and publishing artifacts, go to [Build and 
 <details>
 <summary>GitHub Actions plugin</summary>
 
-* With Harness Cloud build infrastructure, use the [GitHub Action plugin step](./ci-github-action-step.md).
+* With Harness Cloud build infrastructure, use the [GitHub Action step](./ci-github-action-step.md).
 * With other build infrastructures, use the [GitHub Actions Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
 
 </details>

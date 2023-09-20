@@ -12,9 +12,11 @@ You have likely heard terms like *blue/green* and *canary* when it comes to depl
 
 This topic will explain these strategies to give you an idea of how to approach deployments in Harness, and to help you decide what strategy is best for you.
 
+## Deployment strategies video
+
 <docvideo src="https://www.youtube.com/watch?v=VJjDbwoxLfM" />
 
-### Deploy with or without gates
+## Deploy with or without gates
 
 CD deployments are typically performed using manual approvals before deploying changes to production. These approvals are often called approval gates or release gates. 
 

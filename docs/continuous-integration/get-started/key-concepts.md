@@ -68,7 +68,7 @@ Docker Plugins are Docker containers that perform predefined tasks and run in **
 
 For more information, go to [Use Plugins](/docs/category/use-plugins/), [Plugin step settings](../use-ci/use-drone-plugins/plugin-step-settings-reference.md), and [Run a Drone plugin in CI](../use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
 
-If you're using Harness Cloud build infrastructure, you can also use the [GitHub Action plugin step](../use-ci/use-drone-plugins/ci-github-action-step.md) and [Bitrise plugin step](../use-ci/use-drone-plugins/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
+If you're using Harness Cloud build infrastructure, you can also use the [GitHub Action step](../use-ci/use-drone-plugins/ci-github-action-step.md) and [Bitrise step](../use-ci/use-drone-plugins/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
 
 ## Dependencies and background services
 

@@ -53,7 +53,7 @@ import TabItem from '@theme/TabItem';
 
    For information about the settings to set, go to the external scanner documentation.
 
-   For a complete description of how to set up a GitHub Action Plugin step, go to [Use the GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step).
+   For a complete description of how to set up a GitHub Action step, go to [Use the GitHub Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step).
 
 
    <table>

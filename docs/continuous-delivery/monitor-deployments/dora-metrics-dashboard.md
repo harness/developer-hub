@@ -8,17 +8,19 @@ DevOps Research and Assessment (DORA) metrics is a standard measure of DevOps pe
 
 ## Create queries to pull data into your DORA dashboard
 
-After you [create a DORA metrics dashboard](../../platform/dashboards/create-dashboards.md), you can [add tiles](/docs/platform/dashboards/create-dashboards/#step-2-add-tiles-to-a-dashboard) to the dashboard. 
+After you [create a DORA metrics dashboard](https://developer.harness.io/docs/platform/dashboards/create-dashboards/), you can [add tiles](https://developer.harness.io/docs/platform/dashboards/create-dashboards/#step-2-add-tiles-to-a-dashboard) to the dashboard. 
 
-You can edit, delete, resize, move postions, or download data of the tiles. 
+You can edit, delete, resize, move positions, or download data of the tiles. 
 
 Using the DORA metrics dashboard, you can view the following metrics.
 
 * **Deployments Frequency** tells you how many deployments happened in a particular duration. This metric helps measure the consistency of software delivery and delivery performance. 
 * **Mean Time to Restore (MTTR)** tells you the time taken to restore an issue found in the production environment.  
-* **Change Failure Rate** is the percentage of failure rate across all services in a given time period. 
+* **Change Failure Rate** is the percentage of failure rate across all services in a given time period.
+* **Lead Time to Production** shows the median duration of deployments.
 
-![](../cd-dashboards/static/dora-dashboard.png)
+![picture 1](static/2ab6c57ffae6974916e7d6c40878bf83bcbcd8734376c1a682bc79d6f18b0d60.png)  
+
 
 To gain deeper insights, you can create queries in the dashboard to capture data. Harness captures metrics for each service-environment combination within a pipeline. If you have a multi-service pipeline, metrics for each service-environment combination will be captured and reported separately.
 
@@ -28,23 +30,11 @@ To gain deeper insights, you can create queries in the dashboard to capture data
 2. Select the following filters.
     * In **Deployments**, select **Custom Aggregation Period**, then select the time period.
     * In **Deployments**, select **Total Deployments**.
-3. Configure your visualisation options. For more information, go to [create visualisation and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
+3. Configure your visualization options. For more information, go to [create visualization and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
 4. Select **Run**.
 5. Select **Save** to save the query as a tile on your dashboard.
 
 ![](../cd-dashboards/static/deployment-frequency.png)
-
-## Change failure rate
-
-1. Enter a name your query. For example, Change Failure Rate. 
-2. Select the following filters.
-    * In **Deployments**, select **Custom Aggregation Period**, then select the time period.
-    * In **Deployments**, select **Change Failure Rate**.
-3. Configure your visualisation options. For more information, go to [create visualisation and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
-4. Select **Run**.
-5. Select **Save** to save the query as a tile on your dashboard.
-
-![](../cd-dashboards/static/change-failure-rate.png)
 
 ## Mean time to restore
 
@@ -52,7 +42,7 @@ To gain deeper insights, you can create queries in the dashboard to capture data
 2. Select the following filters.
     * In **Deployments**, select **Custom Aggregation Period**, then select the time period.
     * In **Reverted Deployments**, select **Mean Time to Restore**.
-3. Configure your visualisation options. For more information, go to [create visualisation and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
+3. Configure your visualization options. For more information, go to [create visualization and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
 4. Select **Run**.
 5. Select **Save** to save the query as a tile on your dashboard.
 
@@ -101,6 +91,29 @@ pipeline:
           - identifier: "Infra_2"
 ```
 
+## Change failure rate
+
+1. Enter a name your query. For example, Change Failure Rate. 
+2. In **Deployments**, select **Custom Aggregation Period**, then select the time period.
+    * In **Deployments**, select **Change Failure Rate**.
+3. Configure your visualization options. For more information, go to [create visualization and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
+4. Select **Run**.
+5. Select **Save** to save the query as a tile on your dashboard.
+
+![](../cd-dashboards/static/change-failure-rate.png)
+
+## Lead time to production
+
+Lead Time to Production shows the median duration of deployments.
+
+1. Enter a name for your query. For example, Lead Time to Production. 
+2. In **Deployments**, select **Custom Aggregation Period**, then select the time period.
+3. In **Deployments**, select **Median Duration**.
+4. Configure your visualization options. For more information, go to [create visualization and graphs](/docs/platform/Dashboards/create-visualizations-and-graphs).
+5. Select **Run**.
+6. Select **Save** to save the query as a tile on your dashboard.
+
+![picture 0](static/0d658c5d680e7d165ec15ece8f89d73bb206e23d5c7a70304456b09abcfacdd0.png)  
 
 
 
