@@ -106,7 +106,7 @@ We only support auto upgrade for delegates in K8s Infra.
 
 #### Is SAML single logout url supported ?
 
-Yes it is supported, this can be configured while setting up SAML.
+Yes it is supported, this can be configured while setting up SAML. The logout URL must be in HTTPS format.
 
 #### What is the Idle Session Timeout ? Can it be configured ?
 
