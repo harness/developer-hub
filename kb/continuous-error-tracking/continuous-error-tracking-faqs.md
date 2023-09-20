@@ -11,4 +11,8 @@ helpdocs_is_published: true
 # FAQ
 
 
-### Coming Soon
+#### How do I setup the application name of the JVM to be monitored with the CET agent?
+
+There are two ways one can setup the application name within the CET agent:
+- For the environment variable, use the parameter ET_APPLICATION_NAME=
+- For the JVM argument, use the parameter -Dharness.etagent.application.name=
