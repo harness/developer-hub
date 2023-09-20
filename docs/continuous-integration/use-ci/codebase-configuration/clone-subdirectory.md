@@ -6,7 +6,7 @@ sidebar_position: 30
 
 If you want to clone a subdirectory instead of your entire Git repo, you can disable the pipeline's default codebase and then run your `git` commands in a **Run** step.
 
-You can also use this pattern if you need to use specific `git clone` arguments when cloning your codebase.
+You can also use this pattern if you need to use specific `git clone` arguments to clone your codebase.
 
 ## Disable Clone Codebase
 
