@@ -208,7 +208,7 @@ The build environment must have the necessary binaries for the **Run Tests** ste
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
                       dotnet restore
                       dotnet build
                     postCommand: trx2junit results.trx
@@ -927,7 +927,7 @@ pipeline:
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
                       dotnet restore
                       dotnet build
                     postCommand: trx2junit results.trx
@@ -1109,7 +1109,7 @@ pipeline:
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
                       dotnet restore
                       dotnet build
                     postCommand: trx2junit results.trx

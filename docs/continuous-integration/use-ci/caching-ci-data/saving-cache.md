@@ -14,18 +14,14 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Caching enables sharing data across stages. Caching also speeds up builds by reusing data from expensive fetch operations in previous jobs.
-
 Caching has two primary benefits:
 
-* Run pipelines faster by reusing the expensive fetch operation data from previous builds
-* Share data across stages
+* Run pipelines faster by reusing the expensive fetch operation data from previous builds.
+* Share data across stages.
 
-You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3** step, and restore it in the same stage or a following stage using the **Restore Cache From S3** step.
+You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3** step, and restore it in the same stage or a following stage using the **Restore Cache From S3** step. You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
 
 This topic explains how to configure the **Save Cache to S3** and **Restore Cache From S3** steps in Harness CI.
-
-You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across Stages.
 
 :::info
 
@@ -33,11 +29,15 @@ If you are using Harness Cloud build infrastructure, you can use [Cache Intellig
 
 :::
 
-## Requirements
+## S3 bucket and AWS connector requirements
 
-You need a dedicated S3 bucket for your Harness CI cache operations, and you need an AWS connector with read/write access to this S3 bucket.
+You need:
 
-<details><summary>Sample S3 Cache Bucket Policy</summary>
+* A dedicated S3 bucket for your Harness CI cache operations.
+* An [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) with read/write access to your S3 bucket.
+* An optional [lifecycle configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html), if you want to automatically delete old cache data from your S3 bucket.
+
+Here is an example of an S3 cache bucket policy:
 
 ```json
 {
@@ -67,17 +67,17 @@ You need a dedicated S3 bucket for your Harness CI cache operations, and you nee
 }
 ```
 
-</details>
-
-For more information on configuring an S3 connector and S3 bucket policies, go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) and the [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
-
-Optionally, you can create a [lifecycle configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html) to automatically delete old cache data from your S3 bucket.
-
 :::caution
 
-Use a dedicated bucket for your Harness CI cache operations. Do not save files to the bucket manually. The Restore Cache operation will fail if the bucket includes any files that do not have a Harness cache key.
+You must use a dedicated bucket for your Harness CI cache operations. Do not save files to the bucket manually. The Restore Cache operation will fail if the bucket includes any files that do not have a Harness cache key.
 
 :::
+
+### Caching with non-private ACL
+
+If your bucket's ACL is set to something other than `private` (such as blank, `bucket-owner-full-control`, or something else), then you must add a [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) named `PLUGIN_ACL`. Set the value to the relevant ACL value.
+
+The default value for `PLUGIN_ACL` is `private`, so if your bucket's ACL is something other than `private`, you must set this environment variable accordingly.
 
 ## Add the Save Cache to S3 step
 
@@ -113,14 +113,7 @@ Here is a YAML example of a **Save Cache to S3** step.
 
 ### Save Cache to S3 step settings
 
-<details>
-<summary>Save Cache to S3 step settings</summary>
-
-:::info
-
-Depending on the stage's build infrastructure, some settings may be unavailable or located under **Optional Configuration** in the visual pipeline editor. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
-
-:::
+The **Save Cache to S3** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 #### Name
 
@@ -130,15 +123,17 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 The Harness AWS connector to use when saving the cache to S3. The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to write to S3.
 
-:::note
+:::info
 
-This step supports AWS connectors using **AWS Access Key**, **Assume IAM role on Delegate**, and IRSA authentication methods *without* cross-account access (ARN/STS).
+This step supports AWS connectors using **AWS access key**, **Assume IAM role on delegate**, and **IRSA** authentication methods *without* cross-account access (ARN/STS).
 
-This step doesn't support AWS connectors that have enabled cross-account access (ARN/STS) for any authentication method.
+[IRSA requires modifications to the delegate YAML](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings:~:text=Configure%20IRSA%20credentials%20for%20AWS%20connectors) and build infrastructure settings. The service account to be used for uploading to S3 must be specified in the delegate YAML and in the [Service Account Name](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name) in the stage's build infrastructure settings.
+
+This step *doesn't* support AWS connectors that have enabled cross-account access (ARN/STS) for any authentication method.
 
 :::
 
-For more information about roles and permissions for AWS connectors, go to:
+For more information about roles, permissions, and configuration for AWS connectors, go to:
 
 * [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector)
 * [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
@@ -211,11 +206,9 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 * [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
-</details>
+### Set shared paths for cache locations outside the stage workspace
 
-#### Stage setting: Shared paths
-
-Pipeline steps within a stage share the same [workspace](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#workspace). You can optionally [share paths](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage) outside the workspace between steps in your stage by setting `spec.sharedPaths`.
+Steps in the same stage share the same [workspace](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#workspace), which is `/harness`. If your steps need to use data in locations outside the stage workspace, you must specify these as [shared paths](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage). This is required if you want to cache directories outside `/harness`. For example:
 
 ```yaml
   stages:
@@ -261,14 +254,7 @@ The `key` value in this step must match the `key` value in your **Save Cache to 
 
 ### Restore Cache from S3 step settings
 
-<details>
-<summary>Restore Cache from S3 step settings</summary>
-
-:::info
-
-Depending on the stage's build infrastructure, some settings may be unavailable or located under **Optional Configuration** in the visual pipeline editor. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
-
-:::
+The **Restore Cache from S3** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 #### Name
 
@@ -350,12 +336,9 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 * [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
-</details>
+## Go, Node, and Maven cache key and path requirements
 
-
-## Language-specific requirements
-
-The cache key and paths differ by language.
+There are specific requirements for cache keys and paths for Go, Node.js, and Maven.
 
 ```mdx-code-block
 <Tabs>
@@ -452,9 +435,3 @@ graph TD
     B2(Read from Cache)
   end
 ```
-
-## Caching with non-private ACL
-
-If your bucket's ACL is set to something other than `private` (blank, `bucket-owner-full-control`, or something else), then you must add a [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) called `PLUGIN_ACL` and set its value to the relevant ACL value.
-
-The default value for `PLUGIN_ACL` is `private`, so if your bucket's ACL is something other than `private`, you must set this environment variable accordingly.
