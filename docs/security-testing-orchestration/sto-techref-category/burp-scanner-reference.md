@@ -215,7 +215,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 <StoSettingIngestionFile  />
 
-## Security step settings for Burpo scans in STO (_legacy_)
+## Security step settings for Burp scans in STO (_legacy_)
 
 #### Docker-in-Docker requirements
 
