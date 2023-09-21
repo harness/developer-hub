@@ -2,8 +2,12 @@ Harness can reference JSON secrets in vault so you can manage your secrets lifec
 
 For example, you can store a secret in vault with the following JSON.
 
-```json
+```
 path: /<path>/user
+```
+
+```json
+
 value: {
   "username": "sample_user",
   "password": "P@ssw0rd!123",
