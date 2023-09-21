@@ -1338,7 +1338,7 @@ By using the following expression on the target stage, you will be able to propa
 
 ###  Why can I run the pipeline during a freeze window?
 You're probably an administrator or you have the permission to [override freeze windows](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#access-control). Users with this role can still perform deployments.
-=======
+
 #### What does the error 'org.eclipse.jgit.api.errors.TransportException: git-upload-pack not permitted on' mean?
 
 This error typically indicates a permission issue related to the Git connector used in the pipeline. It often occurs when the credentials or tokens being used for Git access lack the necessary permissions to clone or access the specified repository. To resolve it, validate the authentication setup and ensure the provided credentials have the required permissions for the repository in question.
@@ -1366,7 +1366,24 @@ Harness provides several annotations that can be applied to Kubernetes resources
    - Reference: [Prune Kubernetes resources](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources/)
 
 These annotations help customize and control how Harness manages and deploys resources in your Kubernetes environment.
-<<<<<<< HEAD
->>>>>>> f4c98012f (Adding 2 questions to CDS FAQ)
-=======
->>>>>>> fb01b5c94 (Fixing broke links for FAQ questions)
+
+### How can Harness address resource management challenges in continuous delivery, particularly with Terraform pipelines?**
+
+Harness provides a solution through a feature called "queue steps." This feature allows you to control concurrent execution at the delegate level, effectively limiting the resources used by concurrent processes.
+
+### What are queue steps in Harness, and how do they work?**
+
+Queue steps in Harness enable you to define a specific number of steps that can be executed simultaneously within a pipeline. You can configure the queue step by setting the maximum number of steps allowed to run concurrently and specify a timeout value.
+
+### How can I use queue steps to control resource usage in my Harness pipelines?**
+
+To use queue steps in your Harness pipeline:
+
+1. Open the desired pipeline in Harness.
+2. Select the stage where you want to add the queue step.
+3. Click the "Add Step" button and choose "Queue" from the available steps.
+4. Configure the queue step by specifying the maximum number of concurrent steps and a timeout value.
+5. Add the steps you want to run within the queue step. These steps will execute one at a time, respecting the maximum concurrent limit.
+6. Save your changes and run the pipeline.
+
+For detailed guidance on using queue steps to control resource usage in Harness pipelines, refer to the Harness documentation section titled [Control Resource Usage with Queue Steps](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/control-resource-usage-with-queue-steps/)
