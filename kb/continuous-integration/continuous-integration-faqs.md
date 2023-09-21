@@ -185,6 +185,10 @@ While running concurrent builds, customers may want to consider the queued intel
 
 See [https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence/]
 
+#### How to assert an environment variable within JEXL conditions?
+
+While we support output variables that can point to an environment variable, we do not support the direct referencing of environment variables in JEXL conditions, even when using the feature flag `CI_OUTPUT_VARIABLES_AS_ENV`, which automatically makes environment variables available for other steps in the same Build (CI) stage.
+
 ####  How can I download files from an S3 bucket in Harness?
 
 You have two common options to download files from an S3 bucket in Harness:
@@ -194,7 +198,6 @@ You have two common options to download files from an S3 bucket in Harness:
 #### How are Harness secrets tied to connector. 
 
 Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
-
 
 #### You have security concerns with pulling Harness delegate images from a public repo?
 
