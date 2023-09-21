@@ -23,10 +23,12 @@ This topic explains how to add and use a Custom Secret Manager in Harness.
 * Create/Edit Secrets
 * Create/Edit Connectors![](../../secrets/static/custom-secret-manager-31.png)
 
-### Important
+:::info important
 
-* Harness Custom Secret Manager is a read-only Secret Manager.
+* Harness Custom Secret Manager is a read-only Secret Manager. You cannot reference secrets in vault.
 * Harness can read/decrypt secrets, but it cannot write secrets to the Custom Secrets Manager.
+
+:::
 
 ### Harness Custom Secret Manager Overview
 
