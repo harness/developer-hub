@@ -1367,15 +1367,15 @@ Harness provides several annotations that can be applied to Kubernetes resources
 
 These annotations help customize and control how Harness manages and deploys resources in your Kubernetes environment.
 
-### How can Harness address resource management challenges in continuous delivery, particularly with Terraform pipelines?**
+#### How can Harness address resource management challenges in continuous delivery, particularly with Terraform pipelines?
 
 Harness provides a solution through a feature called "queue steps." This feature allows you to control concurrent execution at the delegate level, effectively limiting the resources used by concurrent processes.
 
-### What are queue steps in Harness, and how do they work?**
+#### What are queue steps in Harness, and how do they work?
 
 Queue steps in Harness enable you to define a specific number of steps that can be executed simultaneously within a pipeline. You can configure the queue step by setting the maximum number of steps allowed to run concurrently and specify a timeout value.
 
-### How can I use queue steps to control resource usage in my Harness pipelines?**
+#### How can I use queue steps to control resource usage in my Harness pipelines?
 
 To use queue steps in your Harness pipeline:
 
