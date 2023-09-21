@@ -144,3 +144,125 @@ Here's an example of a common Kubernetes pipeline. To copy it and paste it into 
 
 </details>
 
+## Manually performing a deployment in Harness Manager
+
+Depending on the project you have access to and the pipeline you have permissions to, a Harness user can log in and deploy a service using the Harness Manager UI. 
+
+To learn more, go to the [Harness CD tutorials](https://developer.harness.io/tutorials/cd-pipelines/) for various deployment tutorials, or you can review [Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
+
+Video overview:
+
+<!-- Video:
+https://www.loom.com/share/f9c552631cd642ba88ae136b3c87fbbf?sid=abe997b1-f678-4eff-a9e0-6d96617d578b-->
+<docvideo src="https://www.loom.com/share/f9c552631cd642ba88ae136b3c87fbbf?sid=abe997b1-f678-4eff-a9e0-6d96617d578b" />
+
+## Automating deployments with triggers
+
+With Harness triggers, you can start automating your deployments from any location, such as a source repository, an artifact repository, or a third party system. 
+
+Any Developer with pipeline create and edit permissions can configure a trigger in Harness. Developers who engage with the trigger's listening source (webhook, artifact repository, etc.) can fire off a trigger. 
+
+Let's look at an example of a GitHub webhook trigger automated deployment.
+
+Here is the pipeline trigger in Harness.
+
+![picture 2](static/cffafc65dd298f2ec44127c3749ce5dc04bd0fd4c1d85cbb3cfa77a3b2e0c705.png)  
+
+Here's the webhook in GitHub.
+
+![picture 3](static/19ead132474caeca59b5e067a59a59e7fbd6651d3f3c014e3f56542613f7883c.png)  
+
+Once the webhook is auto-created in your GitHub repository, Harness will receive Git events from the webhook to initiate pipeline execution.
+
+In Harness, the trigger will indicate when it was activated.
+
+![picture 4](static/5e92c0a459ce1aa0be9764aca84d06150e0461fffc3e1f276edf3a77dacbf1b8.png)  
+
+Navigate to the **Pipeline Executions** page and you will see pipeline initiated by the trigger:
+
+![picture 5](static/64961df8cbf568bf89988e3d609c180626613dbb8bfceee26777c5004a0e4f6e.png)  
+
+For more information, go to [Trigger pipelines using Git events](/docs/platform/triggers/triggering-pipelines).
+
+## Automating deployments using the Harness API
+
+If you are the pipeline executor, you can also initiate pipeline executions via API. The API lets you integrate with any third party system to initiate and pass parameters to a Harness pipeline. 
+
+For more information, go to [Execute a Pipeline with Input Set References](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/postPipelineExecuteWithInputSetList).
+
+```curl
+
+curl -i -X POST \
+  'https://app.harness.io/pipeline/api/pipeline/execute/IDENTIFIER/inputSetList?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string&moduleType=string&branch=string&repoIdentifier=string&getDefaultFromOtherRepo=true&useFQNIfError=false&notesForPipelineExecution=' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: YOUR_API_KEY_HERE' \
+  -d '{
+    "inputSetReferences": [
+      "string"
+    ],
+    "withMergedPipelineYaml": true,
+    "stageIdentifiers": [
+      "string"
+    ],
+    "lastYamlToMerge": "string"
+  }'
+
+```
+
+## Responding to Harness approvals
+
+Many pipelines have approvals as quality gates. Approvals require developers to review the pipeline's progress to ensure nothing is going wrong. 
+
+Depending on your user group and access to the project, you can can see the approval action on the Home Screen.
+
+![picture 7](static/6d2691bd6369d33b25b689942e2a0df3a6323f8eeb8ce356176558b85fc8ed4e.png)  
+
+And in the pipeline, you can view and add comments to your approval. This information will be stored and logged with the pipeline for auditing.
+
+![picture 8](static/dd1c42ed04b5df33e8f1658c9e8ca03d5f363de80487d118607c445e25119f24.png)  
+
+Select **Approve** and the pipeline will progress. If you reject the approval, the pipeline will end and initiate rollback or the [pipeline failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings).
+
+For more information, go to [Using manual Harness approval stages](/docs/platform/approvals/adding-harness-approval-stages), and the [Approvals](https://developer.harness.io/tutorials/cd-pipelines/approvals) and [Notifications](https://developer.harness.io/tutorials/cd-pipelines/notifications) tutorials.
+
+
+## Assigning roles to new team members
+
+If your Harness Administrator hasn’t set up the user groups, roles, and permissions for all your development teams, and if you are a Project Administrator, you can add your teammates to the project yourself.
+
+For more information, go to [Manage users](/docs/platform/role-based-access-control/add-users).
+
+## Add pipeline notifications
+
+If you are Pipeline Creator or Editor, you can add pipeline notifications to notify yourself and your teammates of deployment progress and status. 
+
+Harness integrates with Slack, Webhook, MS Teams, PagerDuty, and Emails. For more information, go to the [Notifications](https://developer.harness.io/tutorials/cd-pipelines/notifications) tutorial.
+
+![picture 9](static/1b0c5cbdb16fd4f264f725d7ade91618344e79a1b28bb4c6857a9522e2c4dc4d.png)  
+
+## Reviewing deployments
+
+After a deployment occurs, you want to know what was deployed and where, so you can track the version of a service or an artifact across different environments. 
+
+For more information, go to [Monitor deployments and services in CD dashboards](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments).
+
+Go to **Environments** to see  an environment. The summary dashboard will show what version of a service is deployed in your environment.
+
+![picture 10](static/7fd30b9ef6efa251bdf6eeb7532ab4a16691ce7bf09022e72707175343d5a81a.png)  
+
+You can also view the same information from a service perspective.
+
+![picture 11](static/3e0260ac6e63fd7a321af4019602385f7ba01a17e58d3fed987927c44076bde9.png)  
+
+## Conclusion
+
+Thanks for reading this Developer role ramp-up guide! If you have any feedback or suggestions on how to improve it, please [reach out to us](support@harness.io).
+
+
+
+
+
+
+
+
+
