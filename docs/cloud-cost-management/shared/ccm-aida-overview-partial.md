@@ -18,7 +18,7 @@ Harness AIDA offers comprehensive support with the following functionalities:
 Harness recommends using the rules generated with AIDA as references to build your policies.
 :::
 
-For more information about using AIDA to create rules and view comprehensive information about out-of-the-box and custom rules, go to [Create rules with Harness AIDA](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/cag-aida/gen-ai-use)
+For more information about using AIDA to create rules and view comprehensive information about out-of-the-box and custom rules, go to [Create rules with Harness AIDA](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/cag-aida/gen-ai-use).
 
 For more information about the AIDA legal terms and data privacy, review the following Harness legal pages:
 
