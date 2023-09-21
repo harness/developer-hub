@@ -27,7 +27,7 @@ To view the SRM dashboards, follow these steps:
     
 2. Select **Service Reliability**.
    
-   The dashboard list is displayed, that includes the following pre-configured Service Reliability dashboards:
+   The dashboard list is displayed, which includes the following pre-configured Service Reliability dashboards:
 
    - SLO Health
    - SLO History
