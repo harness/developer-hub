@@ -123,7 +123,7 @@ export default function CertificationsChaos() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Chaos Engineering - Developer </h2>
+                  <h2>Chaos Engineering - Developer (BETA COMING SOON) </h2>
                   <img
                     src={`${baseUrl}img/cert_dev_ce_badge.svg`}
                     alt="Harness Certified Expert - Chaos Engineering Developer"
@@ -135,12 +135,12 @@ export default function CertificationsChaos() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide</h3>
+                  {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy your applications
                     with Chaos Engineering projects.
-                  </div>
-                  <DeveloperCertificationReviewGuide />
+                  </div> */}
+                  {/* <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
                     <Link href="https://university.harness.io/certified-continuous-delivery-developer">
                       <button className={styles.moreDetails}>
@@ -153,6 +153,11 @@ export default function CertificationsChaos() {
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
                     </Link>*/}
+                  {/* </div> */}
+                  <h3>Coming Soon...</h3>
+                  <div className={styles.desc}>
+                    Assess key technical job functions and advanced skills in
+                    design, implementation and management of ce.
                   </div>
                 </div>
               </div>
@@ -160,7 +165,7 @@ export default function CertificationsChaos() {
           </div>
 
           {/* Developer Exam Details */}
-          <div className={styles.examDetails}>
+          {/* <div className={styles.examDetails}>
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
@@ -170,15 +175,10 @@ export default function CertificationsChaos() {
                     Register for Exam
                   </button>
                 </Link>
-                {/* <Link href="/tutorials/cd-pipelines">
-                      <button className={styles.startLearning}>
-                        <span>Start learning</span>
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </button>
-                    </Link>*/}
+              
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Administrator Tab Content */}
@@ -202,7 +202,7 @@ export default function CertificationsChaos() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Chaos Engineering - Administrator</h2>
+                  <h2>Chaos Engineering - Administrator (BETA COMING SOON)</h2>
                   <img
                     src={`${baseUrl}img/cert_adm_ce_badge.svg`}
                     alt="Harness Certified Expert -Chaos Engineering Administrator"
@@ -214,7 +214,7 @@ export default function CertificationsChaos() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide</h3>
+                  {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy and maintain Chaos
                     Engineering projects and the overall Harness Platform. This
@@ -230,13 +230,18 @@ export default function CertificationsChaos() {
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
-                    </Link>
-                    {/* <Link href="/tutorials/cd-pipelines">
+                    </Link> */}
+                  {/* <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
                     </Link>*/}
+                  {/* </div> */}
+                  <h3>Coming Soon...</h3>
+                  <div className={styles.desc}>
+                    Assess key technical job functions and advanced skills in
+                    design, implementation and management of CE.
                   </div>
                 </div>
               </div>
@@ -244,7 +249,7 @@ export default function CertificationsChaos() {
           </div>
 
           {/* Admin Exam Details */}
-          <div className={styles.examDetails}>
+          {/* <div className={styles.examDetails}>
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
@@ -254,15 +259,10 @@ export default function CertificationsChaos() {
                     Register for Exam
                   </button>
                 </Link>
-                {/* <Link href="/tutorials/cd-pipelines">
-                      <button className={styles.startLearning}>
-                        <span>Start learning</span>
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </button>
-                    </Link>*/}
+            
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Architect Tab Content */}
@@ -286,7 +286,7 @@ export default function CertificationsChaos() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Chaos Engineering - Architect</h2>
+                  <h2>Chaos Engineering - Architect (BETA COMING SOON)</h2>
                   <img
                     src={`${baseUrl}img/cert_arc_ce_badge.svg`}
                     alt="Harness Certified Expert - Chaos Engineering Architect"
@@ -298,7 +298,7 @@ export default function CertificationsChaos() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide</h3>
+                  {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
                     design, implementation and management of Chaos Engineering.
@@ -314,13 +314,18 @@ export default function CertificationsChaos() {
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
-                    </Link>
-                    {/* <Link href="/tutorials/cd-pipelines">
+                    </Link> */}
+                  {/* <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
                     </Link>*/}
+                  {/* </div> */}
+                  <h3>Coming Soon...</h3>
+                  <div className={styles.desc}>
+                    Assess key technical job functions and advanced skills in
+                    design, implementation and management of CE.
                   </div>
                 </div>
               </div>
@@ -328,7 +333,7 @@ export default function CertificationsChaos() {
           </div>
 
           {/* Arch Exam Details */}
-          <div className={styles.examDetails}>
+          {/* <div className={styles.examDetails}>
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <ArchitectCertificationExamDetails />
@@ -338,15 +343,10 @@ export default function CertificationsChaos() {
                     Register for Exam
                   </button>
                 </Link>
-                {/* <Link href="/tutorials/cd-pipelines">
-                      <button className={styles.startLearning}>
-                        <span>Start learning</span>
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </button>
-                    </Link>*/}
+         
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
