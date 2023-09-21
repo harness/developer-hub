@@ -23,6 +23,10 @@ Harness CD also includes a general scripting step, the [Shell Script](/docs/cont
 
 The Run step settings are described below.
 
+## Important notes
+
+- You cannot use this step with a non-root user at this time.
+
 ## Container Registry and Image
 
 **Container Registry** is a Harness Docker registry connector for the image that you want Harness to run commands on, such as Docker Hub.

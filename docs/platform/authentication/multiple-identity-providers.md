@@ -27,8 +27,8 @@ To configure multiple SAML providers in Harness, do the following:
     
     b. If one or more SAML providers are configured, select **Add SAML Provider**.
    The SAML Provider settings appear.
-3. In **Name**, enter a name for the SAML provider.
-4. If you want a friendly name to be displayed on the login screen, enter the name in **Friendly Name**.
+3. In **Name**, enter a name for the SAML provider. Names can only contain alphanumeric characters, `_`, `-`, `.`, and spaces.
+4. If you want a friendly name to be displayed on the login screen, enter the name in **Friendly Name**. **Friendly Names** can only contain alphanumeric characters, `_`, `-`, `.`, and spaces.
 5. Select **Continue**.
 
 ## Select a SAML provider

@@ -10,16 +10,14 @@ helpdocs_is_published: true
 
 You can use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory).
 
-You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md). For other upload locations, you can use a script in a [Run step](../run-ci-scripts/run-step-settings.md).
-
-## Requirements
-
 You need:
 
 * Access to a JFrog Artifactory instance.
 * A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 * Steps in your pipeline that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
 * An [Artifactory connector](#artifactory-connector).
+
+You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md). For other upload locations, you can use a script in a [Run step](../run-ci-scripts/run-step-settings.md).
 
 ## Add an Upload Artifacts to JFrog step
 
@@ -40,7 +38,7 @@ Here is a YAML example of a minimum **Upload Artifacts to JFrog Artifactory** st
 
 ### Upload Artifacts to JFrog step settings
 
-The **Upload Artifacts to JFrog Artifactory** step has the following settings. Depending on the build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+The **Upload Artifacts to JFrog Artifactory** step has the following settings. Depending on the build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 #### Name
 
@@ -134,7 +132,7 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
 </Tabs>
 ```
 
-## Run the pipeline
+## Build logs and artifact files
 
 When you run the pipeline, you can observe the step logs on the [build details page](../viewing-builds.md).
 
@@ -158,7 +156,7 @@ If your pipeline has multiple steps that upload artifacts, use the dropdown menu
 
 :::
 
-## Troubleshooting
+## Troubleshooting the Upload Artifacts to JFrog step
 
 You might encounter these issues when using the **Upload Artifacts to JFrog Artifactory** step.
 

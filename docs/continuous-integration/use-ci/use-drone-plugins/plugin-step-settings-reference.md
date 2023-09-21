@@ -12,7 +12,7 @@ This topic provides settings for the **Plugin** step. For more information about
 
 :::info
 
-Depending on the stage's build infrastructure, some settings may be unavailable or located under **Optional Configuration**.
+Depending on the stage's build infrastructure, some settings might be unavailable or optional.
 
 :::
 
@@ -34,7 +34,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 :::info
 
-These fields are located under **Optional Configuration** for stages that use [self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures) or [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+These fields are optional when using a [self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures) or [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
 :::
 

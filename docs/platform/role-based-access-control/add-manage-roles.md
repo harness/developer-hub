@@ -62,7 +62,6 @@ These roles are not specific to any modules. They are for administration and ove
 | Organization Viewer | Organization |
 | Project Admin | Project |
 | Project Viewer | Project |
-| Pipeline Admin | Account |
 | Pipeline Executor | Project |
 
 ### Module-specific roles

@@ -12,7 +12,11 @@ You have likely heard terms like *blue/green* and *canary* when it comes to depl
 
 This topic will explain these strategies to give you an idea of how to approach deployments in Harness, and to help you decide what strategy is best for you.
 
-### Deploy with or without gates
+## Deployment strategies video
+
+<docvideo src="https://www.youtube.com/watch?v=VJjDbwoxLfM" />
+
+## Deploy with or without gates
 
 CD deployments are typically performed using manual approvals before deploying changes to production. These approvals are often called approval gates or release gates. 
 
@@ -36,27 +40,27 @@ For information on approval stages and steps, go to:
 
 ## Rolling deployment
 
-With a rolling deployment, all nodes within a single environment are incrementally added one-by-one or in N batches (as defined by a window size) with a new service/artifact version.
+With a rolling deployment, all nodes within a single environment are replaced one-by-one serially, or in N batches (as defined by a window size) with a new service/artifact version.
 
 ![](../cd-deployments-category/static/deployment-concepts-00.png)
 
 ### When to use rolling deployments
 
-* When you need to support both new and old deployments.
-* Load balancing scenarios that require reduced downtime.
+* Balancing speed and safety. Nodes are replaced in an immediate series. 
+* Ramping load balancing scenarios that require reduced downtime.
 
-One use of rolling deployments is as the stage following a canary deployment in a deployment pipeline. For example, in the first stage you can perform a canary deployment to a QA environment and verify each group of nodes and, once successful, you perform a rolling to production.
+One use of rolling deployments is as the stage preceeding a canary deployment in a deployment pipeline. For example, in the first stage you can perform a rolling deployment to a QA environment, once successful, you perform a canary deployment to production incrementally.
 
 #### Pros
 
-* Simple, relatively simple to rollback, less risk than Basic deployment.
-* Gradual app rollout with increasing traffic.
+* Introduces an automatic incremental deployment; less risk than Basic deployment.
+* Does not require additional infrastructure such as a Blue Green deployment.
 
 #### Cons
 
-* Verification gates between nodes difficult and slow.
+* Verification gates between nodes difficult since a rolling deployment is designed to be executed in a series. 
 * App/DB needs to support both new and old artifacts. Manual checks/verification at each increment could take a long time.
-* Lost transactions and logged-off users are also something to take into consideration.
+* Draining / lost transactions and logged-off users are also something to take into consideration which is a risk with any deployment type for stateful apps.
 
 See [Create a Kubernetes Rolling Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md).
 
@@ -85,11 +89,11 @@ Some vendors call this a red/black deployment.
 
 #### Cons
 
-* Replicating a production environment can be complex and expensive (i.e. microservice downstream dependencies).
+* Replicating a production environment can be complex and expensive (i.e. microservice downstream dependencies and infrastructure).
 * QA/UAT test coverage may not identify all anomalies & regressions in blue environment.
 * An outage or SPOF could have wide-scale business impact before rollback kicks in.
 * Current transactions and sessions will be lost due to the physical switch from one machine serving the traffic to another one.
-* Database compatibility (schema changes, backward compatibility).
+* Database compatibility (schema changes, backward compatibility) which is a risk with any deployment type for stateful apps.
 
 See:
 
@@ -121,7 +125,7 @@ This is currently the most common way to deploy apps/services into production.
 * Scripting canary deployments can be complex (Harness automates this process).
 * Manual verification can take time (Harness automates this process with Continuous Verification).
 * Required monitoring and instrumentation for testing in production (APM, Log, Infra, End User, etc).
-* Database compatibility (schema changes, backward compatibility).
+* Database compatibility (schema changes, backward compatibility) which is a risk with any deployment type for stateful apps.
 
 For Kubernetes, Harness does this a little differently.
 

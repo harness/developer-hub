@@ -294,7 +294,7 @@ To configure replication, do the following:
    ```
    listen_addresses = '*'
    wal_level = replica
-   archive_command = 'test ! -f /var/lib/postgresql/14/main/archive/%f && cp %p /var/lib/postgresql/14/main/archive/%f'
+   archive_command = 'test ! -f /var/lib/postgresql/13/main/archive/%f && cp %p /var/lib/postgresql/13/main/archive/%f'
    archive_mode = on
    max_wal_senders = 2
    max_replication_slots = 4
@@ -393,7 +393,7 @@ To initiate replication, do the following:
 6. Run the following to check the logs and verify that the replica works. 
    
    ```
-   tail -f /var/lib/postgresql/postgresql-14-main.log
+   tail -f /var/log/postgresql/postgresql-13-main.log
    ```
 
    The output should be similar to the following.

@@ -27,10 +27,6 @@ The Harness Docker Delegate is limited by the total amount of memory and CPU on 
 * Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
 * The machine where the delegate runs must have Docker installed.
 
-### STO pipelines
-
-If you have STO scan steps in your pipeline, you can set up your certificates using the workflow described below. However, there are some additional steps and requirements. For more information, go to [Adding Custom Artifacts to STO Pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
-
 ## Install the delegate and runner
 
 ```mdx-code-block
@@ -70,6 +66,12 @@ The Harness Docker Runner service performs the build work. The delegate needs th
    ```
    export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
+
+   :::info
+
+   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+
+   :::
 
 3. Enable execution permissions for the Runner. For example:
 
@@ -129,6 +131,12 @@ The Harness Docker Runner service performs the build work. The delegate needs th
    ```
    export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
+
+   :::info
+
+   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+
+   :::
 
 3. Enable execution permissions for the Runner. For example:
 
@@ -233,7 +241,12 @@ Use PowerShell to run these commands.
    $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
    ```
 
-   With Windows, volume mapping must be folder-to-folder.
+   :::info
+
+   * With Windows, volume mapping must be folder-to-folder.
+   * If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+
+   :::
 
 4. Run the following command to start the runner binary:
 
@@ -318,7 +331,7 @@ For example, assume you have a pipeline with three stages called `alpha`, `beta`
 
 :::
 
-## Troubleshooting
+## Troubleshooting the delegate connection
 
 The delegate should connect to your instance after you finish the installation workflow above. If the delegate does not connect after a few minutes, run the following commands to check the status:
 
