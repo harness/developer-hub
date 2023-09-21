@@ -1319,3 +1319,21 @@ Yes, You can setup a trigger based on the image tag changes on DockerHub repo as
 
 ### Can we trigger a pipeline with a git push on bitbucket?
 Yes, you can trigger the pipeline with a git event through bitbucket. You can refer to our [doc](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) and [video](https://www.youtube.com/watch?v=y8s351IJLXw&t=113s&ab_channel=harness) tutorial.
+
+### Why can't I refer to an output within a CD stage using a looping strategy anymore? 
+If you're using an absolute expression (for example: `<+pipeline.stages.stage_identifier>`), it will break your pipeline because matrices create a new identifier per iteration (`stage_1`, `stage_2`). To avoid your pipeline breaking, you can shortcut your expression to the step name (for example: `<+steps.step_identifier>`), and then you don't need to specify the stage identifier.
+
+### When the Harness Approval times out, how do I mark the pipeline as a successful execution?
+On the Harness Approval step or the custom one, go to the advanced tab and include a failure strategy; the perform action should be "Mark as Success."
+
+### How do I dynamically load values.yaml per environment?
+Many of Harness's fields allow you to switch from a static field to an expression field. In your Helm chart/kubernetes manifests declaration, you can switch the values field to an expression field and use an expression like `<+env.name>-values.yaml`. Then, in your repository, create a value per environment.
+
+###  How do I propagate an environment's namespace to another stage?
+By using the following expression on the target stage, you will be able to propagate the namespace. Expression: `<+pipeline.stages.STAGE_IDENTIFIER.spec.infrastructure.output.namespace>`
+
+### How do I redeploy all services in a new cluster?
+ Currently, this isn't possible. You need to redeploy all of your CD pipelines with a new infrastructure target.
+
+###  Why can I run the pipeline during a freeze window?
+You're probably an administrator or you have the permission to [override freeze windows](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#access-control). Users with this role can still perform deployments.
