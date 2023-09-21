@@ -72,39 +72,44 @@ To set up a MongoDB VM, do the following:
    ```
 
 5. Add the Mongo third party repository.
+
    Debian:
+
    ```
    echo "deb [arch=amd64] https://repo.mongodb.org/apt/debian $(lsb_release -cs)/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
    ```
+
    Ubuntu 21.10 and later:
+
    ```
    echo "deb [arch=amd64] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
    ```
-7. Run the following command to issue a MongoDB public GPG key.
+   
+6. Run the following command to issue a MongoDB public GPG key.
 
    ```
    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 656408E390CFB1F5
    ```
 
-8. Run the following to update the key.
+7. Run the following to update the key.
 
    ```
    apt-get update
    ```
 
-9. Run the following to install MongoDB.
+8. Run the following to install MongoDB.
 
    ```
    apt-get install -y mongodb-org=4.4.19 mongodb-org-server=4.4.19 mongodb-org-shell=4.4.19 mongodb-org-mongos=4.4.19 mongodb-org-tools=4.4.19
    ```
 
-10. Run the following to start MongoDB.
+9. Run the following to start MongoDB.
 
    ```
    systemctl start mongod
    ```
 
-11. Verify that MongoDB started successfully.
+10. Verify that MongoDB started successfully.
 
    ```
    systemctl status mongod
