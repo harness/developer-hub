@@ -278,7 +278,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
                     shell: Sh
                     command: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -313,7 +313,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
                     shell: Sh
                     command: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -365,7 +365,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                     runOnlySelectedTests: true
                     preCommand: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
                       dotnet restore
                       dotnet build
                     postCommand: trx2junit results.trx
@@ -398,7 +398,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                     runOnlySelectedTests: true
                     preCommand: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
                       dotnet restore
                       dotnet build
                     postCommand: trx2junit results.trx
@@ -423,7 +423,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 
 The .NET SDK is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-If you need a specific .NET Core SDK version that isn't already installed, you can use a **Run** step to install it, or you can use the [setup-dotnet](https://github.com/actions/setup-dotnet) action in a [GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/).
+If you need a specific .NET Core SDK version that isn't already installed, you can use a **Run** step to install it, or you can use the [setup-dotnet](https://github.com/actions/setup-dotnet) action in a [GitHub Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/).
 
 <details>
 <summary>Install one .NET SDK version</summary>
@@ -437,6 +437,19 @@ If you need a specific .NET Core SDK version that isn't already installed, you c
                     uses: actions/setup-dotnet@v3
                     with:
                       dotnet-version: '3.1.x'
+```
+
+On Windows platforms, you might also need to run the [setup-msbuild](https://github.com/microsoft/setup-msbuild) action.
+
+```yaml
+              - step:
+                  type: Action
+                  name: Install dotnet
+                  identifier: install_dotnet
+                  spec:
+                    uses: actions/setup-msbuild@v1
+                    with: ## Optional. Specify a specific version of visual Studio if you have multiple versions installed.
+                      vs-version: '16.4'
 ```
 
 </details>
@@ -467,6 +480,19 @@ If you need a specific .NET Core SDK version that isn't already installed, you c
                       dotnet-version: <+matrix.dotnetVersion>
 ```
 
+On Windows platforms, you might also need to run the [setup-msbuild](https://github.com/microsoft/setup-msbuild) action.
+
+```yaml
+              - step:
+                  type: Action
+                  name: Install dotnet
+                  identifier: install_dotnet
+                  spec:
+                    uses: actions/setup-msbuild@v1
+                    with: ## Optional. Specify a specific version of visual Studio if you have multiple versions installed.
+                      vs-version: '16.4'
+```
+
 </details>
 
 ```mdx-code-block
@@ -474,7 +500,7 @@ If you need a specific .NET Core SDK version that isn't already installed, you c
 <TabItem value="Self-hosted">
 ```
 
-Specify the desired [.NET SDK image](https://hub.docker.com/_/python) tag in your steps. There is no need for a separate install step when using Docker.
+Specify the desired [.NET SDK image](https://mcr.microsoft.com/en-us/product/dotnet/framework/sdk/tags) tag in your steps. There is no need for a separate install step when using Docker.
 
 <details>
 <summary>Use one .NET SDK version</summary>
@@ -491,6 +517,8 @@ Specify the desired [.NET SDK image](https://hub.docker.com/_/python) tag in you
                     command: |-
                       dontet --info
 ```
+
+On Windows platforms, you might also need to [install Microsoft Build Tools into the container](https://learn.microsoft.com/en-us/visualstudio/install/build-tools-container?view=vs-2019).
 
 </details>
 
@@ -522,6 +550,8 @@ Specify the desired [.NET SDK image](https://hub.docker.com/_/python) tag in you
                     command: |-
                       dotnet --info
 ```
+
+On Windows platforms, you might also need to [install Microsoft Build Tools into the container](https://learn.microsoft.com/en-us/visualstudio/install/build-tools-container?view=vs-2019).
 
 </details>
 
@@ -588,7 +618,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -622,7 +652,7 @@ pipeline:
 <TabItem value="Self-hosted">
 ```
 
-If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
+If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
 <summary>YAML example</summary>
@@ -697,7 +727,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
               - step:
                   type: Run
                   identifier: build_dotnet_app

@@ -9,7 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-CI pipelines build and test code that is pulled from a Git code repository. When you add a **Build** stage to a CI pipeline, you select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. This topic explains how to configure codebase settings for CI pipelines.
+CI pipelines build and test code that is pulled from a Git code repository. When you add a Build stage to a CI pipeline, you can select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. This can be referred to as the *default codebase* for the build. This topic explains how to configure codebase settings for CI pipelines and Build stages.
 
 This topic assumes you have an understanding of the [CI pipeline creation process](../prep-ci-pipeline-components.md).
 
@@ -17,19 +17,21 @@ This topic assumes you have an understanding of the [CI pipeline creation proces
 
 Harness uses code repo connectors to connect to Git providers, such as Bitbucket, GitHub, GitLab, and others. You can create code repo connectors for entire accounts or specific repositories. You can view a list of your saved connectors in **Connectors** under **Project Setup**. The following topics provide more information about creating code repo connectors:
 
-* Azure Repos: [Connect to Azure Repos](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo)
-* Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-* GitHub: [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-* GitLab: [GitLab Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+* Azure Repos: [Connect to Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
+* Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+* GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+* GitLab: [GitLab Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 * Other Git providers:
-  * [Git connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
-  * [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo)
+  * [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
+  * [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
 
 The CodeCommit, Azure, Bitbucket, GitHub, and GitLab connectors have authorization settings as required by their respective providers. The Git connector can connect with any provider using basic authentication over HTTPS.
 
-## Configure a pipeline's default codebase
+If you prefer to use the YAML editor, you can [create connectors in YAML](../../../platform/connectors/create-a-connector-using-yaml.md).
 
-When you add a **Build** stage to a CI pipeline, you select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored.
+## Configure the default codebase
+
+When you add a **Build** stage to a CI pipeline, you can select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. The first codebase declared in a pipeline becomes the pipeline's *default codebase*.
 
 1. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
 2. Enter a **Stage Name**. **Description** and **Tags** are optional.
@@ -38,16 +40,18 @@ When you add a **Build** stage to a CI pipeline, you select a [code repo connect
 5. If **Repository Name** is not automatically populated, you can specify a repository to use for this pipeline. You can also set this field to `<+input>` to specify a repo at runtime.
 6. Select **Set Up Stage**.
 
+If you need to change the connector or other default codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration). If you don't want every stage to clone the default codebase, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages).
+
 ![Configuring the codebase when adding a Build stage.](./static/create-and-configure-a-codebase-00.png)
 
 <details>
-<summary>YAML example: Basic codebase configuration</summary>
+<summary>YAML example: Default codebase configuration</summary>
 
 ```yaml
 pipeline:
   name: tutorial example
   identifier: tutorial_example
-  projectIdentifier: tutorial_test
+  projectIdentifier: default
   orgIdentifier: default
   tags: {}
   properties:
@@ -60,11 +64,31 @@ pipeline:
 
 </details>
 
-The first codebase declared in a pipeline becomes the pipeline's default codebase. If you need to change the connector or other codebase settings, go to [Edit the default codebase configuration](#edit-the-codebase-configuration).
+## Disable Clone Codebase for specific stages
 
-Once a default codebase is established, when you add subsequent stages to the pipeline, you can disable **Clone Codebase** for those stages, but you can't change the connector or repo. Usually, you disable **Clone Codebase** only if the codebase is not needed for the stage's operations. However, you can also [use a Git Clone step to clone multiple code repos in a pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
+After defining the default codebase in the first Build stage, when you add subsequent stages to the pipeline, you can disable **Clone Codebase** for individual stages. You might disable **Clone Codebase** if the codebase is not needed for the stage's operations, or you need to use specific `git clone` arguments (such as to [clone a subdirectory instead of an entire repo](./clone-subdirectory.md)). You can also [clone multiple code repos in a pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
 
-## Edit the codebase configuration
+In the Visual editor, you can disable **Clone Codebase** in the stage's **Overview** tab.
+
+<!-- ![](./static/disable-clone-codebase-visual.png) -->
+
+<docimage path={require('./static/disable-clone-codebase-visual.png')} />
+
+In the YAML editor, set `cloneCodebase` to `false` in the `stage.spec`.
+
+```yaml
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+```
+
+For more information about Build stage settings, go to [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
+
+## Edit the default codebase configuration
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -157,14 +181,35 @@ If cloning your codebase takes more time than expected, try setting **Limit Memo
 
 If codebase cloning takes longer than expected when the build is triggered by a pull request, set **Pull Request Clone Strategy** to **Source Branch** and set **Depth** to `1`.
 
+You could also use specific `git clone` arguments instead of cloning the entire default codebase or using built-in cloning strategy, as explained in [Clone a subdirectory](./clone-subdirectory.md).
+
 ### The same Git commit is not used in all stages
 
-If your pipeline has multiple stages, each stage that has **Clone codebase** enabled will clone the codebase during stage initialization. If your pipeline uses the generic [Git connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference) and a commit is made to the codebase after a pipeline run has started, it is possible for later stages to clone the newer commit, rather than the same commit that the pipeline started with.
+If your pipeline has multiple stages, each stage that has **Clone codebase** enabled will clone the codebase during stage initialization. If your pipeline uses the generic [Git connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference) and a commit is made to the codebase after a pipeline run has started, it is possible for later stages to clone the newer commit, rather than the same commit that the pipeline started with.
 
 If you want to force all stages to use the same commit ID, even if there are changes in the repository while the pipeline is running, you must use a [code repo connector](#code-repo-connectors) for a specific SCM provider, rather than the generic Git connector.
 
-## See also
+### Git fetch fails with invalid index-pack output when cloning large repos
 
-* [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md)
-* [Create a Connector using YAML](../../../platform/7_Connectors/create-a-connector-using-yaml.md)
-* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
+The following `git fetch` error might cause a pipeline to fail during build initialization when cloning the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md): `fetch-pack: invalid index-pack output`.
+
+This can occur with large code repos and indicates that the build machine might have insufficient resources to clone the repo.
+
+To resolve this, edit the pipeline's YAML and allocate `memory` and `cpu` resources in the `codebase` configuration. For example:
+
+```yaml
+properties:
+  ci:
+    codebase:
+      connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+      repoName: YOUR_CODE_REPO_NAME
+      build:
+        type: branch
+        spec:
+          branch: <+input>
+      sslVerify: false
+      resources:
+        limits:
+          memory: 4G ## Set the maximum memory to use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
+          cpu: "2" ## Set the maximum number of cores to use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`.
+```

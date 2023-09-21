@@ -62,9 +62,9 @@ Harness has introduced the following new APIs to support the v2 experience:
 For steps on using these APIs, go to [Migrating from v1 services and environments to v2](#migrating-from-v1-services-and-environments-to-v2). 
 
 
-## Terraform provider automation
+## Terraform Provider automation
 
-Customers using the Harness Terraform provider will need to update their service and environment automation to use the v2 plugin resources:
+Customers using the Harness Terraform Provider will need to update their service and environment automation to use the v2 plugin resources:
 
 - [harness_platform_service (Resource)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service)
 - [harness_platform_environment (Resource)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment)
@@ -92,7 +92,7 @@ The following changes apply to services:
 
 #### Service YAML updates
 
-Here is a a YAML sample that demonstrates the changes in v2.
+Here is a YAML sample that demonstrates the changes in v2.
 
 ```yaml
 service:
@@ -226,14 +226,14 @@ When creating a service via the Harness REST API, there is a new [service endpoi
 }
 ```
 
-#### Terraform provider
+#### Terraform Provider
 
-Please review the changes to the Harness Terraform provider service resource.
+Please review the changes to the Harness Terraform Provider service resource.
 
 - The Harness Terraform Provider [service resource endpoint](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service) has not changed.
 - The service resource payload has a new field added for service creation: `yaml`.
 - `yaml` is not mandatory for service object creation.
-- When creating a service without `yaml` defined, the Terraform provider will create a skeleton service that cannot be used for immediate deployment.
+- When creating a service without `yaml` defined, the Terraform Provider will create a skeleton service that cannot be used for immediate deployment.
 - The `yaml` field defines the actual definition of the service so it can be used in a pipeline for deployment.
 
 ```yaml
@@ -390,17 +390,17 @@ Here are a few important details:
 }
 ```
 
-#### Terraform provider
+#### Terraform Provider
 
 Please review the changes to the Harness Terraform Provider environment resource.
 
-- The Harness Terraform provider [environment resource endpoint](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment) has not changed.
+- The Harness Terraform Provider [environment resource endpoint](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment) has not changed.
 - The environment resource payload has a new field added for environment creation: `yaml`.
 - `yaml` is not mandatory for environment object creation.
 - Harness has a new [resource endpoint for environment groups](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment_group).
 - Harness has a new [resource endpoint for environment service configuration overrides](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment_service_overrides).
 
-##### New Terraform provider environment resource
+##### New Terraform Provider environment resource
 
 ```yaml
 resource "harness_platform_environment" "example" {
@@ -507,11 +507,11 @@ infrastructureDefinition:
   allowSimultaneousDeployments: false
 ```
 
-#### Infrastructure definition Terraform provider
+#### Infrastructure definition Terraform Provider
 
 Harness has released a new Terraform Provider [resource for infrastructure definitions](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure).
 
-##### New Terraform provider infrastructure definition resource
+##### New Terraform Provider infrastructure definition resource
 
 ```yaml
 resource "harness_platform_infrastructure" "example" {

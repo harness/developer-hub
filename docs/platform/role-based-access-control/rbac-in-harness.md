@@ -28,9 +28,13 @@ If you're not familiar with RBAC, check out this blog post on [User and Role Man
 
 Before configuring RBAC in Harness, you should have an understanding of:
 
-* [Harness' key concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Harness' key concepts](../../get-started/key-concepts.md)
 * [Creating organizations and projects](../organizations-and-projects/create-an-organization.md)
 * The functionality of the modules in your Harness account.
+
+The video below gives an overview of RBAC in Harness.
+
+ <docvideo src="https://www.loom.com/embed/b71549af4874451e9885dfe67ddfb0c2" width="100%" height="600" />
 
 ## Permissions hierarchy (scopes)
 
@@ -84,7 +88,7 @@ Principals include:
 
 * [Users](/docs/platform/role-based-access-control/add-users): Individual users in Harness. Each user can belong to many user groups. You can assign roles and resource groups directly to users, or they can inherit these from user groups that they belong to.
 * [User Groups](/docs/platform/role-based-access-control/add-user-groups): User groups contain multiple Harness users. Roles and resource groups are assigned to groups. The permissions and access granted by the assigned roles and resource groups are applied to all group members. You can create user groups at all [scopes](#permissions-hierarchy-scopes).
-* [Service Accounts](/docs/platform/role-based-access-control/add-and-manage-service-account): Service accounts are like API users. You assign roles and resource groups to service accounts. Service accounts also have one or more [API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys), which authenticate and authorize remote services attempting to perform operations in Harness through Harness APIs.
+* [Service Accounts](/docs/platform/role-based-access-control/add-and-manage-service-account): Service accounts are like API users. You assign roles and resource groups to service accounts. Service accounts also have one or more [API keys](/docs/platform/automation/api/add-and-manage-api-keys), which authenticate and authorize remote services attempting to perform operations in Harness through Harness APIs.
 
 ### Resource groups
 

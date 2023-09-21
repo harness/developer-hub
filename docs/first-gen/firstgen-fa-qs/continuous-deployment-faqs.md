@@ -193,7 +193,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Harness [supports all of the most common platforms](../starthere-firstgen/supported-platforms.md) and deployment use cases. For example, you can deploy applications to cloud platforms, VM images and auto scaling groups, CI/CD pipelines, and dynamically build infrastructure.
 
-Always start with the Quickstarts in [Start Here](/docs/category/quickstarts-1/). These will take you from novice to advanced Harness user in a matter of minutes.
+Always start with the Quickstarts in [Start Here](/docs/category/quickstarts/). These will take you from novice to advanced Harness user in a matter of minutes.
 
 The following topics will walk you through how Harness implements common deployments according to platforms and scenarios:
 
@@ -986,7 +986,7 @@ See:
 
 #### Can I run CF CLI commands and scripts during deployment?
 
-Yes. You can run any [CF CLI command](https://docs.cloudfoundry.org/cf-cli/cf-help.html) or script at any point in your Harness TAS Workflows.
+Yes. You can run any [CF CLI command](https://cli.cloudfoundry.org/en-US/v6/) or script at any point in your Harness TAS Workflows.
 
 See [Run CF CLI Commands and Scripts in a Workflow](../continuous-delivery/pcf-deployments/run-cf-cli-commands-and-scripts-in-a-workflow.md).
 

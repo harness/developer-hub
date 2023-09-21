@@ -1,0 +1,15 @@
+{
+    "label": "Variables and Expressions",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "13",
+
+    "link": {
+        "type": "generated-index",
+        "title": "Variables and Expressions"
+    },
+    "customProps": {
+        "helpdocs_category_id": "bp8t5hf922"
+    }
+}

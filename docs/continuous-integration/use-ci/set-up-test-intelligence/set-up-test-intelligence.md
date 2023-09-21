@@ -38,6 +38,10 @@ TI is always up to date and syncs when you merge code to any branch.
 
 After a build runs, TI gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. You can find the Test results and the TI call graph visualization on the **Build details** page. The call graph visualization shows the changed classes and methods that caused each test to be selected.
 
+<!-- Video: Test Intelligence demo
+https://www.loom.com/share/6f65a77dfdac42639eab745a0b391ce3?sid=9e25316e-b0cf-40b8-9917-39d299f58121-->
+<docvideo src="https://www.loom.com/share/6f65a77dfdac42639eab745a0b391ce3?sid=9e25316e-b0cf-40b8-9917-39d299f58121" />
+
 <!-- Test Intelligence architecture
 
 Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **Run Tests** step.
@@ -95,7 +99,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run Tests** step. Your pipeline must be associated with a [supported codebase](#supported-codebases).
 
-If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md) or go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
+If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../get-started/tutorials.md) or go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
 
 The build environment must have the necessary binaries for the **Run Tests** step to execute your test commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Container registry and image settings](#container-registry-and-image).
 
@@ -204,7 +208,7 @@ The build environment must have the necessary binaries for the **Run Tests** ste
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
                       dotnet restore
                       dotnet build
                     postCommand: trx2junit results.trx
@@ -281,7 +285,61 @@ Suppose you have a pipeline that runs 100 tests, and each test takes about one s
 
 Note that while parallelism for TI can improve the total time it takes to run all tests, some tests may still take a long time to run if, by their nature, they are intensive, long-running tests.
 
-To enable parallelism for TI, you must set a parallelism `strategy` on either the **Run Tests** step or the stage where you have the **Run Tests** step, and you must add the `enableTestSplitting` parameter to your **Run Tests** step. You can also add the optional parameter `testSplitStrategy`.
+To enable parallelism for TI, you must set a parallelism `strategy` on either the **Run Tests** step or the stage where you have the **Run Tests** step, add the `enableTestSplitting` parameter to your **Run Tests** step, and use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) to create a unique results file for each run. Optionally, you can include the `testSplitStrategy` parameter and environment variables to differentiate parallel runs.
+
+1. Go to the pipeline where you want to enable parallelism for TI.
+2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
+
+   You can do this in either the visual or YAML editor. In the visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
+
+   :::caution
+
+   If you use step-level parallelism, you must ensure that your test runners won't interfere with each other because all parallel steps work in the same directory.
+
+   :::
+
+3. Switch to the YAML editor, if you were not already using it.
+4. Find the `RunTests` step, and then find the `spec` section.
+5. Add `enableTestSplitting: true`.
+6. The `testSplitStrategy` parameter is optional. If you include it, you can choose either `TestCount` or `ClassTiming`.
+
+   Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test count uses simple division to split the tests into workloads. The default is `ClassTiming` if you omit this parameter. However, the maximum possible number of workloads is determined by the parallelism `strategy` you specified on the step or stage. For example, if you set `parallelism: 5`, tests are split into a maximum of five workloads.
+
+7. Modify the `reports.paths` value to use a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+strategy.iteration>`. This ensures there is a unique results file for each parallel run. For example:
+
+   ```yaml
+                          reports:
+                            spec:
+                              paths:
+                                - "target/surefire-reports/result_<+strategy.iteration>.xml"
+                            type: JUnit
+   ```
+
+8. You can add environment variables to differentiate parallel runs in build logs.
+
+   * Add two environment variables to the `step.spec`: `HARNESS_STAGE_INDEX: <+strategy.iteration>` and `HARNESS_STAGE_TOTAL: <+strategy.iterations>`.
+   * Add a `preCommand` to echo the variables' values so you can easily see the values in build logs.
+
+   ```yaml
+                 - step:
+                     type: RunTests
+                     identifier: Run_Tests_with_Intelligence
+                     name: Run Tests with Intelligence
+                     spec:
+                       language: Java
+                       buildTool: Maven
+                       envVariables: ## Optional environment variables to differentiate parallel runs.
+                         HARNESS_STAGE_INDEX: <+strategy.iteration> # Index of current parallel run.
+                         HARNESS_STAGE_TOTAL: <+strategy.iterations> # Total parallel runs.
+                       preCommand: |- ## Optional. Echo environment variables to differentiate parallel runs in build logs.
+                         echo $HARNESS_STAGE_INDEX
+                         echo $HARNESS_STAGE_TOTAL
+                       args: test
+                       ...
+   ```
+
+<details>
+<summary>YAML example: Test Intelligence with test splitting</summary>
 
 ```yaml
     - stage:
@@ -293,22 +351,28 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
           execution:
             steps:
               - step:
+                  type: RunTests
                   identifier: Run_Tests_with_Intelligence
                   name: Run Tests with Intelligence
                   spec:
                     language: Java
                     buildTool: Maven
+                    envVariables: ## Optional environment variables to differentiate parallel runs.
+                      HARNESS_STAGE_INDEX: <+strategy.iteration> # Index of current parallel run.
+                      HARNESS_STAGE_TOTAL: <+strategy.iterations> # Total parallel runs.
+                    preCommand: |- ## Optional. Echo environment variables to differentiate parallel runs in build logs.
+                      echo $HARNESS_STAGE_INDEX
+                      echo $HARNESS_STAGE_TOTAL
                     args: test
+                    runOnlySelectedTests: true ## Enable TI.
                     enableTestSplitting: true ## Enable test splitting.
                     testSplitStrategy: ClassTiming ## Optional. Can be ClassTiming or TestCount. Default is ClassTiming.
                     postCommand: mvn package -DskipTests
                     reports:
                       spec:
                         paths:
-                          - "target/surefire-reports/*.xml"
+                          - "target/surefire-reports/result_<+strategy.iteration>.xml" ## Use an expression to generate a unique results file for each parallel run.
                       type: JUnit
-                    runOnlySelectedTests: true ## Enable TIe.
-                  type: RunTests
           platform:
             arch: Amd64
             os: Linux
@@ -319,23 +383,7 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
           parallelism: 3 ## Set the number of groups to use for test splitting.
 ```
 
-1. Go to the pipeline where you want to enable parallelism for TI.
-2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
-
-   You can do this in either the visual or YAML editor. In the visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
-
-   :::caution
-
-   If you use step-level parallelism, you must ensure that your test runners won't interfere with each other, because all parallel steps work on the same directory.
-
-   :::
-
-3. Switch to the YAML editor, if you were not already using it.
-4. Find the `RunTests` step, and then find the `spec` section.
-5. Add `enableTestSplitting: true`.
-6. The `testSplitStrategy` parameter is optional. If you include it, you can choose either `TestCount` or `ClassTiming`.
-
-   Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test count uses simple division to split the tests into workloads. The default is `ClassTiming` if you omit this parameter. However, the maximum possible number of workloads is determined by the parallelism `strategy` you specified on the step or stage. For example, if you set `parallelism: 5`, tests are split into a maximum of five workloads.
+</details>
 
 ### Ignore tests or files
 
@@ -425,11 +473,9 @@ The **Run Tests** step has the following settings.
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
 
-### Description
-
-Optional text string.
+**Description** is optional.
 
 ### Container Registry and Image
 
@@ -681,7 +727,7 @@ You can inject environment variables into the step container and use them in the
 
 You can reference environment variables in the **Command**, **Pre-Command**, or **Post-Command** scripts by name, such as `$var_name`.
 
-Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
+Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs/). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline.
 
 <figure>
 
@@ -725,9 +771,9 @@ These settings specify the maximum resources used by the container at runtime:
 
 The timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution continues.
 
-To change what happens when steps fail, go to [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
+To change what happens when steps fail, go to [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
-To configure when pipelines should skip certain steps, go to [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+To configure when pipelines should skip certain steps, go to [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 ## Pipeline YAML examples
 
@@ -881,7 +927,7 @@ pipeline:
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
                       dotnet restore
                       dotnet build
                     postCommand: trx2junit results.trx
@@ -1063,7 +1109,7 @@ pipeline:
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
                       dotnet tool install -g trx2junit
-                      export PATH="$:/root/.dotnet/tools"
+                      export PATH="$PATH:/root/.dotnet/tools"
                       dotnet restore
                       dotnet build
                     postCommand: trx2junit results.trx

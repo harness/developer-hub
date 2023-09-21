@@ -81,7 +81,7 @@ docker run --rm \
 
 Plugins are distributed as Docker images.
 
-If your plugin image is private, others in your organization can use your plugin in their Harness CI pipelines by using a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for the private registry where your plugin image is stored.
+If your plugin image is private, others in your organization can use your plugin in their Harness CI pipelines by using a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for the private registry where your plugin image is stored.
 
 If your plugin image is public, you can share it with anyone. You can submit a pull request to the [drone-plugin-index repository](https://github.com/drone/drone-plugin-index) if you'd like your plugin to be considered for the [Drone Plugins Marketplace](https://plugins.drone.io/).
 
@@ -104,7 +104,7 @@ import TabItem from '@theme/TabItem';
 Add the **Plugin** step to the **Build** stage of your CI pipeline. The following settings are always or usually required:
 
 * **Name:** A name for the step.
-* **Container Registry:** A [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that can connect to the Docker registry where you uploaded the plugin image.
+* **Container Registry:** A [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that can connect to the Docker registry where you uploaded the plugin image.
 * **Image:** The plugin's Docker repo and image.
 * **Settings:** Key-value pairs representing plugin settings. Settings are derived from [variables in your plugin script](#variables-in-plugin-scripts).
 
@@ -127,7 +127,7 @@ Add the `Plugin` step to your `CI` stage. The following settings are always or u
 
 * `type: Plugin`
 * `name:` A name for the step
-* `connectorRef:` The ID of a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that can connect to the Docker registry where you uploaded the plugin image.
+* `connectorRef:` The ID of a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that can connect to the Docker registry where you uploaded the plugin image.
 * `image:` The plugin's Docker repo and image.
 * `settings:` A mapping of key-value pairs representing plugin settings. Settings are derived from [variables in your plugin script](#variables-in-plugin-scripts).
 
@@ -184,16 +184,22 @@ When defined in a **Plugin** step's **Settings**, don't include the `PLUGIN_` pr
 
 :::tip Expressions and secrets
 
-You can use [Harness expressions](/docs/platform/references/runtime-inputs/#expressions) for **Settings** values. For example `password: <+stage.variables.[TOKEN_SECRET]>` supplies a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) containing a [secret](/docs/category/secrets) to a setting called `password`.
+You can use [Harness expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) for **Settings** values. For example `password: <+stage.variables.[TOKEN_SECRET]>` supplies a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) containing a [secret](/docs/category/secrets) to a setting called `password`.
 
-Related to this, it is a best practice to use [text secrets](/docs/platform/Secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by plugins.
+Related to this, it is a best practice to use [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by plugins.
 
 :::
 
-## See also
+## Custom plugin demos and examples
 
 The following resources demonstrate how to create Drone plugins. The process for creating the plugin is the same, but, when using the plugin in a pipeline, be aware that there are [differences between Drone YAML and Harness YAML](./run-a-drone-plugin-in-ci.md#convert-drone-yaml-to-harness-yaml).
 
 * [Drone tutorial: Example Bash plugin](https://docs.drone.io/plugins/tutorials/bash/)
 * [Drone tutorial: Example Go plugin](https://docs.drone.io/plugins/tutorials/golang/)
 * [Video tutorial: Building your first Drone plugin](https://www.youtube.com/watch?v=JJgkX9ZYPpY)
+
+<!--:::tip
+
+Harness CI supports `DRONE_` environment variables. For more information, go to the CI environment variables reference ../optimize-and-more/ci-env-var.md .
+
+:::-->

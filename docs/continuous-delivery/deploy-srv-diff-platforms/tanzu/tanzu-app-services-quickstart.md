@@ -35,7 +35,7 @@ You'll learn how to:
    * GitHub Package Registry
    * Azure Artifacts
    * Jenkins
-* Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/). 
+* Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization/). 
 * Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it. 
 
 ## Connect to a TAS provider
@@ -77,7 +77,7 @@ import DelegateInstall from '/tutorials/platform/install-delegate.md';
 <DelegateInstall />
 </details>
 
-To learn more, watch the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview) video.
+To learn more, watch the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview) video.
 
 9.  In **Set Up Delegates**, select the **Connect using Delegates with the following Tags** option and enter your delegate name.
 10. Select **Save and Continue**.
@@ -228,7 +228,7 @@ Pipelines are collections of stages. For this tutorial, we'll create a new pipel
 
 ## Create the Harness TAS service
 
-Harness services represent your microservices or applications. You can add the same service to as many stages as you need. Services contain your artifacts, manifests, config files, and variables. For more information, go to [services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
+Harness services represent your microservices or applications. You can add the same service to as many stages as you need. Services contain your artifacts, manifests, config files, and variables. For more information, go to [services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 ### Create a new service
 
@@ -325,7 +325,7 @@ Harness services represent your microservices or applications. You can add the s
    * [Google Cloud Storage (GCS)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-cloud-storage-gcs)
    * [GitHub Package Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#github-packages)
    * Azure Artifacts
-   * [Jenkins](/docs/platform/Connectors/Artifact-Repositories/connect-to-jenkins)
+   * [Jenkins](/docs/platform/connectors/artifact-repositories/connect-to-jenkins)
    
    For this tutorial, we will use Artifactory.
    :::
@@ -731,9 +731,20 @@ Now the pipeline stage is complete and can be deployed.
   </TabItem2>
   <TabItem2 value="Rolling" label="Rolling">
 ```
-The TAS rolling deployment deploys all pods or instances in a single environment incrementally added one-by-one with a new service or artifact version.
+<!-- 
 
-Use this deployment method when you want to support both new and old deployments. You can also use with load balancing scenarios that require reduced downtime. 
+doc ticket = https://harness.atlassian.net/browse/CDS-75488 
+enhancement ticket = https://harness.atlassian.net/browse/CDS-75250
+
+-->
+
+Use this deployment method when you want to apply a rolling upgrade to an existing deployment. You can also use this method with load-balancing scenarios that require reduced downtime. 
+
+This method deploys a new service or artifact version on all pods or instances in a single environment incrementally.
+
+:::info note
+Before performing a rolling deployment, the TAS Rolling Deploy step first verifies that the application exists in Tanzu. If the application does not exist, it deploys the application by using a Basic deployment strategy. If the application exists, it performs a rolling upgrade.
+:::
 
 1. In Execution Strategies, select **Rolling**, and then click **Use Strategy**.
 2. The rolling deploy step is added. 

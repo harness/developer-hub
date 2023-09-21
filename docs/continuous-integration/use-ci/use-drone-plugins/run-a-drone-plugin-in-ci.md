@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
 Drone plugins are Docker containers that perform predefined tasks. You can use the **Plugin** step to run plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/) in your Harness CI pipelines. You can also [write your own custom plugins](./custom_plugins.md). For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md).
 
-This topic assumes you're familiar with [pipeline creation](../prep-ci-pipeline-components.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+This topic assumes you're familiar with [pipeline creation](../prep-ci-pipeline-components.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 
 <details>
 <summary>About Drone</summary>
@@ -43,7 +43,7 @@ Add the **Plugin** step to the **Build** stage of your CI pipeline, and configur
 
 * **Name:** Enter a name for the step.
 * **Description:** Optional description.
-* **Container Registry:** Select a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+* **Container Registry:** Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 * **Image:** Enter the plugin's Docker image, such as `plugins/download`. You can find this on the plugin's page on the [Drone Plugins Marketplace](https://plugins.drone.io/).
 * **Settings:** Enter key-value pairs representing plugin settings. You can find this on the plugin's page on the [Drone Plugins Marketplace](https://plugins.drone.io/) or in the plugin's README.
 * For information about other settings, go to the [Plugin step settings reference](./plugin-step-settings-reference.md).
@@ -61,7 +61,7 @@ Add the `Plugin` step to your `CI` stage with the following settings:
 
 * `type: Plugin`
 * `name:` A name for the step
-* `connectorRef:` The ID of a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+* `connectorRef:` The ID of a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 * `image:` The plugin's Docker image, such as `plugins/download`. You can find this on the plugin's page on the [Drone Plugins Marketplace](https://plugins.drone.io/).
 * `settings:` A mapping of key-value pairs representing plugin settings. You can find this on the plugin's page on the [Drone Plugins Marketplace](https://plugins.drone.io/) or in the plugin's README.
 * For information about other settings, go to the [Plugin step settings reference](./plugin-step-settings-reference.md).
@@ -132,7 +132,7 @@ You could also [write a custom plugin](./custom_plugins.md) that downloads, unzi
 
 You can use variable expressions for **Settings** values. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
 
-Create [text secrets](/docs/platform/Secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by the plugin.
+Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by the plugin.
 
 When you run the pipeline, [check the log output](../viewing-builds.md) to verify that the plugin works as intended.
 
@@ -151,7 +151,11 @@ For information about a plugin's settings, go to the plugin's page on the [Drone
 
 ### Output variables
 
-For information about output variables produced by plugins, refer to [Output variables in the Plugin step settings reference](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables).
+For information about output variables produced by plugins, go to [Plugin step settings: Output variables](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables).
+
+<!-- H3 Environment variables
+
+Harness CI supports `DRONE_` environment variables. For more information, go to the CI environment variables reference ../optimize-and-more/ci-env-var.md .-->
 
 ### Plugin configuration examples
 
@@ -162,7 +166,7 @@ Here are some YAML examples and additional information about specific Drone plug
 
 Use the [artifact-metadata-publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish a URL of an artifact file to the [Artifacts tab](../viewing-builds.md).
 
-An example of the **Plugin** step configuration is provided below; however your pipeline must also include steps to upload the file that you want to link to on the Artifacts tab, as demonstrated in the [Publish any URL to the Artifacts tab tutorial](/tutorials/ci-pipelines/publish/artifacts-tab/).
+An example of the **Plugin** step configuration is provided below; however, your pipeline must also include steps to upload the file that you want to link to on the **Artifacts** tab, as demonstrated in the [Artifacts tab tutorial](/tutorials/ci-pipelines/publish/artifacts-tab/).
 
 ```yaml
                - step:
@@ -173,16 +177,18 @@ An example of the **Plugin** step configuration is provided below; however your 
                     connectorRef: account.harnessImage ## A Docker connector ID
                     image: plugins/artifact-metadata-publisher
                     settings:
-                      file_urls: https://storage.googleapis.com/.../index.html ## URL for the storage location where the data file is located.
-                      artifact_file: artifact.txt ## The name of the artifact file
+                      file_urls: https://storage.googleapis.com/mybucket/index.html ## Provide a URL to the artifact you want to show on the artifact tab. You can provide a list of multiple URLs to show multiple links on the Artifacts tab.
+                      artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 ```
+
+For more information about uploading and publishing artifacts, go to [Build and upload artifacts](/docs/category/build-and-upload-artifacts).
 
 </details>
 
 <details>
 <summary>GitHub Actions plugin</summary>
 
-* With Harness Cloud build infrastructure, use the [GitHub Action plugin step](./ci-github-action-step.md).
+* With Harness Cloud build infrastructure, use the [GitHub Action step](./ci-github-action-step.md).
 * With other build infrastructures, use the [GitHub Actions Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
 
 </details>
@@ -309,7 +315,7 @@ It's often easier to define complex settings in the Harness Pipeline Studio's YA
 
 ### Text secrets
 
-The following snippets illustrate the different ways that Drone and Harness CI handle [text secrets](/docs/platform/Secrets/add-use-text-secrets).
+The following snippets illustrate the different ways that Drone and Harness CI handle [text secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ```mdx-code-block
 <Tabs>

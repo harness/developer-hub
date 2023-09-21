@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes Harness Continuous Delivery (CD) services and environments.
 
-If you are new to Harness, please review [Harness key concepts](../../getting-started/learn-harness-key-concepts.md) and [CD pipeline modeling overview](./cd-pipeline-modeling-overview.md).
+If you are new to Harness, please review [Harness key concepts](../../get-started/key-concepts.md) and [CD pipeline modeling overview](./cd-pipeline-modeling-overview.md).
 
 ## Video: Services
 
@@ -63,7 +63,7 @@ When using an account level deployment stage template, you can referencing an ac
 
 However, when using a deployment stage in a pipeline that has service configured as a runtime input, you can pick services from project, organization, or account levels to pass them as runtime inputs based on your RBAC. 
 
-Go to [add a stage template](/docs/platform/13_Templates/add-a-stage-template.md) for more information.
+Go to [add a stage template](/docs/platform/templates/add-a-stage-template.md) for more information.
 :::
 
 Expand the section below to see a sample account level service YAML.
@@ -276,7 +276,7 @@ Next you can define all of its settings:
 * **Infrastructure Definitions:** represent one or more environment infrastructures.
   * Infrastructure definitions are the actual clusters, hosts, etc., where Harness deploys a service. For example, you might have a QA environment with separate Kubernetes clusters (infrastructure definitions) for each service you want to test.
   * You can add multiple infrastructure definitions to a single environment and select an infrastructure definition when you add the environment to a stage.
-* **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps Basics](/docs/continuous-delivery/gitops/harness-git-ops-basics.md).
+* **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md).
 
 
 ### Creating environments at an account or organization level
@@ -649,7 +649,7 @@ When you have **Variables** with the same name at two or more of the environment
 
 When you use Harness GitOps you can add GitOps clusters to an environment. 
 
-To learn more about Harness GitOps, go to [Harness GitOps Basics](/docs/continuous-delivery/gitops/harness-git-ops-basics.md). 
+To learn more about Harness GitOps, go to [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md). 
 
 Next, when you create a pipeline, you can select the environment and the GitOps cluster(s) to use.
 
@@ -673,7 +673,7 @@ When you run the pipeline, you can select the service and environment for their 
 
 ![](./static/services-and-environments-runtime-input-02.png)
 
-For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md).
+For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 ## Services and environments RBAC
 

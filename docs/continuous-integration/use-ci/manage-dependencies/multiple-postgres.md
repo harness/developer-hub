@@ -11,12 +11,12 @@ import TabItem from '@theme/TabItem';
 
 This topic explains how to use **Background** steps to run multiple PostgreSQL instances in a Harness CI pipeline.
 
-## Requirements
+You need:
 
-* You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
-* You need an understanding of PostgreSQL and the [psql command](https://www.postgresql.org/docs/current/app-psql.html).
+* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
+* An understanding of PostgreSQL and the [psql command](https://www.postgresql.org/docs/current/app-psql.html).
 
-## Add Background steps
+## Add PostgreSQL Background steps
 
 Add one **Background** step for each PostgreSQL service you need to run.
 
@@ -170,7 +170,7 @@ For the `POSTGRES_PASSWORD`, you can use an expression to [reference a Harness t
 </Tabs>
 ```
 
-## Test the services
+## Test the PostgreSQL services
 
 You can add a [Run step](../run-ci-scripts/run-step-settings.md) to confirm your PostgreSQL services are running before running other steps that need to interact with those services.
 
@@ -182,7 +182,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
 ```
 
 1. In the same **Build** stage as your **Background** steps, add a **Run** step after (*not* in parallel with) your **Background** steps.
-2. Configure the [Run step settings](../run-ci-scripts/run-step-settings.md#settings). Required settings depend on your build infrastructure.
+2. Configure the [Run step settings](../run-ci-scripts/run-step-settings.md#run-step-settings). Required settings depend on your build infrastructure.
 
 ```mdx-code-block
 <Tabs>
@@ -207,7 +207,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
    psql -U postgres -d test1 -h Background_2 -p 5434
    ```
 
-* Configure [other settings](../run-ci-scripts/run-step-settings.md#settings), if needed.
+* Configure [other settings](../run-ci-scripts/run-step-settings.md#run-step-settings), if needed.
 
 ```mdx-code-block
   </TabItem>
@@ -233,7 +233,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
    psql -U postgres -d test1 -h localhost -p 5434
    ```
 
-* Configure [other settings](../run-ci-scripts/run-step-settings.md#settings), if needed.
+* Configure [other settings](../run-ci-scripts/run-step-settings.md#run-step-settings), if needed.
 
 ```mdx-code-block
   </TabItem>
@@ -468,3 +468,73 @@ pipeline:
   </TabItem>
 </Tabs>
 ```
+
+## Troubleshooting: Failed to get image entrypoint
+
+If you get a `failed to get image entrypoint` error when using a Kubernetes cluster build infrastructure, you might need to [mount volumes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#volumes) for the PostgreSQL data and then reference those volumes in the **Background** steps.
+
+1. In the build infrastructure settings, mount one empty directory volume for each PostgreSQL service.
+
+   ```yaml
+       - stage:
+           identifier: run_postgres
+           type: CI
+           name: run postgres
+           description: ""
+           spec:
+             cloneCodebase: false
+             infrastructure:
+               type: KubernetesDirect
+               spec:
+                 connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+                 namespace: YOUR_KUBERNETES_NAMESPACE
+                 volumes:
+                   - mountPath: /tmp/pgdata1 ## Empty volume for first PostgreSQL instance.
+                     type: EmptyDir
+                     spec:
+                       medium: ""
+                   - mountPath: /tmp/pgdata2 ## Empty volume for second PostgreSQL instance.
+                     type: EmptyDir
+                     spec:
+                       medium: ""
+                 automountServiceAccountToken: true
+                 nodeSelector: {}
+                 os: Linux
+   ```
+
+2. In each PostgreSQL **Background** step, add a `PGDATA` environment variable, and set the value to the corresponding empty directory path.
+
+   ```yaml
+                     - step:
+                         identifier: Background_1
+                         type: Background
+                         name: Background_1
+                         spec:
+                           connectorRef: account.harnessImage
+                           image: postgres
+                           shell: Sh
+                           entrypoint:
+                             - docker-entrypoint.sh
+                             - "-p 5433"
+                           envVariables:
+                             POSTGRES_USER: postgres
+                             POSTGRES_DB: test
+                             POSTGRES_PASSWORD: password
+                             PGDATA: /tmp/pgdata1 ## Path for first mounted volume.
+                     - step:
+                         identifier: Background_2
+                         type: Background
+                         name: Background_2
+                         spec:
+                           connectorRef: account.harnessImage
+                           image: postgres
+                           shell: Sh
+                           entrypoint:
+                             - docker-entrypoint.sh
+                             - "-p 5434"
+                           envVariables:
+                             POSTGRES_USER: postgres
+                             POSTGRES_DB: test1
+                             POSTGRES_PASSWORD: password
+                             PGDATA: /tmp/pgdata2 ## Path for second mounted volume.
+   ```

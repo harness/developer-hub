@@ -4,7 +4,7 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard from "./TutorialCard";
-import { FeaturedList, CETList } from "./data/continuousErrorTrackingData";
+import {  CETList,FeaturedList } from "./data/continuousErrorTrackingData";
 
 export default function CET() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();

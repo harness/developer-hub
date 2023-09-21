@@ -28,7 +28,7 @@ You can use the following caching methods to share data across stages:
 * [Save and Restore Caches from S3 buckets](saving-cache.md)
 * [Save and Restore Caches from GCS buckets](save-cache-in-gcs.md)
 
-You cannot share access credentials or other [Text Secrets](/docs/platform/Secrets/add-use-text-secrets) across stages.
+You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
 
 If you need to maintain a long-running service for the duration of a stage, use a [Background step](../manage-dependencies/background-step-settings.md).
 
@@ -40,7 +40,7 @@ Use the following caching methods to reduce build time:
 * [Save and Restore Caches from S3 buckets](saving-cache.md)
 * [Save and Restore Caches from GCS buckets](save-cache-in-gcs.md)
 
-You cannot share access credentials or other [Text Secrets](/docs/platform/Secrets/add-use-text-secrets) with caching.
+You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) with caching.
 
 :::tip Multilayer caching
 
@@ -52,7 +52,7 @@ For multilayer caching, use multiple **Restore Cache** and **Save Cache** steps 
 
 Remote Docker layer caching can dramatically improve build times by sharing layers across pipelines, stages, and steps. You can set up Docker layer caching in the following steps:
 
-* [Build and Push to Docker Registry](../build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md)
+* [Build and Push to Docker](../build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md)
 * [Build and Push to ECR](../build-and-upload-artifacts/build-and-push-to-ecr-step-settings.md)
 * [Build and Push to GCR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md)
 

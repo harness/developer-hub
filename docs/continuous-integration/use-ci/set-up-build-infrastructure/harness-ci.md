@@ -38,9 +38,9 @@ Here are some examples of Harness CI images and the purpose of each image. Build
 
 ## I don't want to pull images from a public repo
 
-If you don't want the Harness Delegate to pull images from a public repo for security reasons, you can add a special **Harness Container Image Registry** connector to your Harness account. With this connector, the Delegate pulls these images from the **Harness Container Image Registry** only. For instructions on configuring this connector, go to [Connect to Harness Container Image Registry using Docker connector](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector).
+If you don't want the Harness Delegate to pull images from a public repo for security reasons, you can add a special **Harness Container Image Registry** connector to your Harness account. With this connector, the Delegate pulls these images from the **Harness Container Image Registry** only. For instructions on configuring this connector, go to [Connect to Harness Container Image Registry using Docker connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
 
-By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.docker.com/u/harness) to pull the images. If you experience rate limiting issues when pulling images, provide login information in the [Harness Container Image Registry Docker connector's authentication settings](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials).
+By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.docker.com/u/harness) to pull the images. If you experience rate limiting issues when pulling images, provide login information in the [Harness Container Image Registry Docker connector's authentication settings](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials).
 
 ## CI image updates
 
@@ -65,7 +65,7 @@ You can use the Harness CI `execution-config` API to update the images used in y
 
 :::info Authentication
 
-You can use either `X-API-KEY: $API_KEY` or `Authorization: Bearer $token` for authentication. For more information, go to [Manage API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
+You can use either `X-API-KEY: $API_KEY` or `Authorization: Bearer $token` for authentication. For more information, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
 
 :::
 

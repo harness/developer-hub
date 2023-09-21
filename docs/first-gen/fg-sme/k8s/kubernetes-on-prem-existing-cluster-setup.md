@@ -14,7 +14,7 @@ This topic covers installing Harness Self-Managed Enterprise Edition - Kubernete
 This topic assumes that you are very familiar with Kubernetes, and can perform the standard Kubernetes and managing configurations using [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/) overlays.
 :::
 
-Harness Self-Managed Enterprise Edition - Kubernetes Cluster uses the [KOTS kubectl plugin](https://kots.io/kots-cli/getting-started/) for installation. This topic covers installing KOTS in your existing cluster as part of setting up Harness Self-Managed Enterprise Edition.
+Harness Self-Managed Enterprise Edition - Kubernetes Cluster uses the [KOTS kubectl plugin](https://kots.io/kots-cli/get-started/) for installation. This topic covers installing KOTS in your existing cluster as part of setting up Harness Self-Managed Enterprise Edition.
 
 Installing Harness Self-Managed Enterprise Edition into an existing Kubernetes cluster is a simple process where you prepare your existing cluster and network, and use the KOTS admin tool and Kustomize to complete the installation and deploy Harness.
 

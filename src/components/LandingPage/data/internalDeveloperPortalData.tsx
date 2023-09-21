@@ -27,4 +27,14 @@ export const IDPList: CardItem[] = [
     time: "10min",
     link: "/tutorials/internal-developer-portal/service-onboarding-pipeline",
   },
+  {
+    title: "Using short-lived secrets as inputs to service onboarding",
+    module: MODULES.idp,
+    icon: "img/icon_idp.svg",
+    description: <>Using a short-lived secret to trigger a service onboarding pipeline</>,
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/internal-developer-portal/using-secret-as-an-input",
+  },
 ];

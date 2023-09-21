@@ -17,7 +17,7 @@ This topic covers how to add and configure Datadog as a Health Source for the Ve
 
 ## Before You Begin
 
-[Add Datadog as a verification provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-datadog)
+[Add Datadog as a verification provider](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-datadog)
 
 ## Review: CV Setup Options
 
@@ -202,7 +202,7 @@ Enter a name for the query in **Name your Query**.
 
 In **Log Indexes**, select a log index from the list.
 
-In **Service Instance Identifier**, click the drop-down to select the path of the service instance.
+In **Service Instance Identifier**, select the drop-down and choose the path of the service instance. Any of the tags used in metric or log can be used as service instance identifier. It should correspond to instances that are running. The drop-down list contains all the tags returned by data through the API. For more information, go to [List tags by metric name](https://docs.datadoghq.com/api/latest/metrics/#list-tags-by-metric-name).
 
 Click **Submit**. The Health Source is displayed in the Verify step.
 

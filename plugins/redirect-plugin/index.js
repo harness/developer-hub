@@ -38,10 +38,13 @@ async function docsPluginEnhanced(context, options) {
         return null;
       }
       const outPutPath = path.join(outDir, destPath);
+
+      //Will need to change the filename variable when we change the file
       const clientRedirectNetlifyPath = path.resolve(
         __dirname,
-        "../../archive/redirects/client-redirect-netlify-format-aug-16-2023.txt"
+        "../../archive/redirects/client-redirect-netlify-format-aug-23-2023.txt"
       );
+
       const exists = fs.existsSync(outPutPath);
       // const exists2 = fs.existsSync(clientRedirectNetlifyPath);
       // console.log("client reditect path ",  clientRedirectNetlifyPath);
@@ -59,52 +62,59 @@ async function docsPluginEnhanced(context, options) {
 
       docs.map((post) => {
         const {
-          id: metadataId,
+          // id: metadataId,
           // metadata: {
-          title: metadataTitle,
+          // title: metadataTitle,
           permalink,
           frontMatter,
           // description,
-          lastUpdatedAt,
+          // lastUpdatedAt,
+          source,
           // },
         } = post;
-        const { id, title, data, redirect_from } = frontMatter;
+        const {
+          //  id,
+          title,
+          //  data,
+          redirect_from,
+        } = frontMatter;
 
-        const dispId = id || metadataId;
-        const dispTitle = title || metadataTitle;
-        const dispDate = data || lastUpdatedAt || "";
+        // const dispId = id || metadataId;
+        // const dispTitle = title || metadataTitle;
+        // const dispDate = data || lastUpdatedAt || "";
 
         if (redirect_from) {
           if (Array.isArray(redirect_from)) {
             redirect_from.forEach((al) => {
-              strRedirects += `# ID: ${dispId} Title: ${dispTitle} ${
-                dispDate ? "Date: " + dispDate : ""
-              }\r\n${al} ${permalink}\r\n\r\n`;
+              strRedirects += `# MD Path : ${source} \r\n${al} ${permalink}\r\n\r\n`;
             });
           } else {
-            strRedirects += `\r\n${redirect_from} ${permalink}\r\n\r\n`;
+            strRedirects += `# MD Path : ${source} \r\n${redirect_from} ${permalink}\r\n\r\n`;
           }
         }
 
         return title;
       });
 
+      //Historic and User Generated Redirects, appeneding to _server-redirects
       if (!exists) {
-        const historyRedirectsPath = path.resolve(
+        const serverRedirectsPath = path.resolve(
           __dirname,
-          "../../_history-redirects"
+          "../../_server-redirects"
         );
-        fs.copySync(historyRedirectsPath, outPutPath);
+        fs.copySync(serverRedirectsPath, outPutPath);
         fs.appendFileSync(outPutPath, strRedirects);
-        fs.appendFileSync(
-          outPutPath,
-          "\r\n# client-redirect-netlify-format appeneded from archives \r\n"
-        );
+        // if we need to append on the first line 
+        // fs.appendFileSync(
+        //   outPutPath,
+        //   "\r\n# client-redirect-netlify-format-aug-23-2023.txt appeneded from Archives \r\n\r\n"
+        // );
+        //Historic Client Re-riects
         fs.readFile(clientRedirectNetlifyPath, function (err, data) {
           if (err) throw err;
           fs.appendFileSync(
             outPutPath,
-            "\r\n# client-redirect-netlify-format appeneded from archives \r\n"
+            "\r\n# client-redirect-netlify-format-aug-23-2023.txt appeneded from Archives: \r\n\r\n"
           );
           fs.appendFileSync(outPutPath, data, function (err) {
             if (err) throw err;

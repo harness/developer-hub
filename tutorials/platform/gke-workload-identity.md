@@ -6,10 +6,6 @@ title: Install Harness Delegate on Google Kubernetes Engine (GKE) With Workload 
 ---
 
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 
 **Workload Identity** allows a Kubernetes service account in your GKE cluster to act as a Google IAM Service account. Pods that use the configured KSA automatically authenticate as the IAM service account when accessing Google Cloud APIs.
 
@@ -155,7 +151,7 @@ The following section deploys a Harness Delegate onto the GKE cluster.
 
     :::tip
 
-    You can find the endpoint corresponding to your **Harness Cluster Hosting Account** from <https://developer.harness.io/tutorials/platform/install-delegate/>
+    You can find the endpoint corresponding to your **Harness Cluster Hosting Account** from </tutorials/platform/install-delegate/>
 
     :::
 

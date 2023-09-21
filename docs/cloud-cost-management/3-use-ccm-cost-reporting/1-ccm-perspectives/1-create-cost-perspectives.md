@@ -132,7 +132,7 @@ For details on adding Budgets, Reports, and Alerts go to:
 
 * [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md)
 * [Share Your Cost Perspective Report](../../3-use-ccm-cost-reporting/1-ccm-perspectives/4-share-cost-perspective-report.md)
-* [Detect Cloud Cost Anomalies with CCM](../../3-use-ccm-cost-reporting/4-detect-cloud-cost-anomalies-with-ccm.md)
+* [Detect Cloud Cost Anomalies with CCM](/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm)
 
 ## Perspective Preferences
 

@@ -12,13 +12,13 @@ This topic provides settings for the **Plugin** step. For more information about
 
 :::info
 
-Depending on the stage's build infrastructure, some settings may be unavailable or located under **Optional Configuration**.
+Depending on the stage's build infrastructure, some settings might be unavailable or optional.
 
 :::
 
 ## Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Description
 
@@ -34,7 +34,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 :::info
 
-These fields are located under **Optional Configuration** for stages that use [self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures) or [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+These fields are optional when using a [self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures) or [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
 :::
 
@@ -87,6 +87,10 @@ For each expression:
 * Replace `VAR_NAME` with the relevant variable name.
 * In cross-stage references, replace `STAGE_ID` with the ID of the stage where the **Plugin** step exists.
 
+<!-- H3 Environment variables
+
+Harness CI supports `DRONE_` environment variables. For more information, go to the CI environment variables reference ../optimize-and-more/ci-env-var.md .-->
+
 ## Image Pull Policy
 
 If you specified a [Container Registry and Image](#container-registry-and-image), you can specify an image pull policy:
@@ -112,5 +116,5 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

@@ -28,13 +28,13 @@ import TabItem from '@theme/TabItem';
 
 4. Enter a stage name and an optional description and tag. Select **Set Up Stage**. 
 
-5. On the **Workspace** tab, select an existing workspace or select **+ Create New Workspace** to create a new workspace. 
+5. On the **Workspace** tab, select an existing workspace or select **+ Create New Workspace** to create a new workspace. A workspace can also be determined during execution if the value is set to be `runtime input`.
 
-6. Select the **Execution** tab, and then select the option to provision for Terraform. Five operations are supported: init, plan, apply, destroy, plan-destroy.
+6. Select the **Execution** tab, and then from **Common Operations**, select **Provision**.
 
 7. Select **Use Strategy**.
 
-  Init, plan, and apply steps are added.
+  Init, plan, and apply steps are added. You can also customize the pipeline and add more steps.
 
 8. Select **Save**, and then select **Run Pipeline**. 
 
@@ -42,9 +42,9 @@ import TabItem from '@theme/TabItem';
 
 10. Select **Resources** to see the attribute details. 
 
-    The execution completed and the state was created. Harness IaCM provides state management, so the state was saved in the Harness backend. This implicit step happens behind the scenes during pipeline execution, and you don’t need to configure it. 
+    The execution was completed, and the state was created. Harness IaCM provides state management, so the state was saved in the Harness backend. This implicit step happens behind the scenes during pipeline execution; you don’t need to configure it. 
 
-    You can also define a trigger to the pipeline to be executed when there is a change in the Terraform configuration.
+    You can also define a trigger for the pipeline to be executed when there is a change in the Terraform configuration.
 
 ```mdx-code-block
   </TabItem>
@@ -106,40 +106,32 @@ pipeline:
 
 ## Destory a workspace
 
-You can use the Harness Visual Editor or YAML to destroy, or tear down, a workspace. To destroy a workspace in your pipeline stage, add the “init” , “plan-destroy”,  and “destroy” steps.
+You can use the Harness Visual Editor or YAML to create a pipeline that will tear down (destroy) a workspace. 
 
-* The steps required for teardown are init, plan, and destroy, or init, plan-destroy.
 
-* The init step initialises Terraform by downloading all the modules that are required and preparing the worker to perform the Terraform operations.
-
-    * Third-party plugins that don’t need a plan can be included here.
-
-* The plan-destroy step generates a Terraform plan. This Terraform plan is accessible to all the steps after the IaCM Terraform plan, and can be referenced using the expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.parsedPlan>`.
-
-    * Third-party plugins that require a plan can be added here.
-
-* Lastly, the destroy step destroys the plan generated in the previous step.
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="Visual" label="Visual">
 ```
 
-1. Select **Add Step**.
+1. In the Harness project pane, select **Pipelines**.
+2. Select **+ Create a Pipeline** and set up a pipeline. 
+3. Select **Add Stage**, and then on the **Select Stage Type** pane, select **Infrastructure**.
+4. Enter a stage name and an optional description and tag. Select **Set Up Stage**. 
+5. On the **Workspace** tab, select an existing workspace or select **+ Create New Workspace** to create a new workspace. A workspace can also be determined during execution if the value is set to be `runtime input`.
+6. On the **Execution** tab, in **Common Operations**, select **Destroy**.
+7. Select **Use Strategy**.
 
-2. Select the **IACMTerraformPlugin**.
+  Init, plan, and destroy steps are added. You can also customize the pipeline and add more steps.
 
-3. Provide the name and timeout, and select the command `init`.
+8. Select **Save**, and then select **Run Pipeline**. 
 
-4. Repeat the above steps for **plan-destroy** and **destroy**.
+* The plan-destroy step generates a Terraform plan. This Terraform plan is accessible to all the steps after the IaCM Terraform plan, and can be referenced using the expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.parsedPlan>`.
 
-    ![Teardown sequence](./static/teardown.png)
+9. After the plan is created, switch to the **Resources** tab to see all the resources and Terraform outputs that will be generated once the plan is applied. You can see which resources will be removed from the state. 
 
-5. Select **Save**, and then select **Run Pipeline**. 
-
-6. After the plan is created, switch to the **Resources** tab to see all the resources and Terraform outputs that will be generated once the plan is applied. You can see which resources will be added, changed, or removed from the state. 
-
-7. Select **Resources** to see the attribute details. 
+10. Select **Resources** to see the attribute details. 
 
 ```mdx-code-block
   </TabItem>

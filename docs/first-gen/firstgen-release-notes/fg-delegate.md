@@ -34,15 +34,15 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80308, Harness Delegate version 80308
+## Latest: Harness version 80504, Harness Delegate version 80505
 
-Harness FirstGen release 80308 includes the following changes for the Harness Delegate.
+Harness FirstGen release 80504 includes the following changes for the Harness Delegate.
 
 ### New features and enhancements
 
-- If you use the App Role authentication method in the Hashicorp Vault connector, you can choose to cache the vault token. The token is cached on the Harness Delegate for a time duration equal to the TTL of the vault token, with 1% leeway. 
+- The OWASP Java HTML Sanitzer version is upgraded to 20220608.1. (PL-40807)
 
-  By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
+- The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
 
 ### Early access features
 
@@ -50,9 +50,13 @@ This release does not include any new early access features.
 
 ### Fixed issues
 
-- Fixed an issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240)
+- Fixed an issue when using multiple HTTP Helm Chart repositories that could lead to an increase in CPU utilization on the delegate due to background connector validation tasks. This was caused by running Helm repository update during the validation tasks. (CDS-76433, ZD-48363)
 
-- Fixed the delegate task *acquire call* retry flow in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the *acquire call* retry flow. Tasks timed out because the delegate couldn't acquire the data. To fix this issue, the 'taskData' field in Harness Manager is now populated. (PL-40646)
+- With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631, ZD-48998, ZD-49702)
+
+This issue is fixed. Harness catches the exception and continues with delegate startup.
+
+- Need draft RN (CDS-76433, ZD-48363)
 
 ### Hotfixes
 
@@ -62,6 +66,30 @@ The current version does not include a hotfix release.
 
 <details>
 <summary>2023 releases</summary>
+
+#### Harness version 80308, Harness Delegate version 80308
+
+Harness FirstGen release 80308 includes the following changes for the Harness Delegate.
+
+##### New features and enhancements
+
+- If you use the App Role authentication method in the Hashicorp Vault connector, you can choose to cache the vault token. The token is cached on the Harness Delegate for a time duration equal to the TTL of the vault token, with 1% leeway. 
+
+  By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
+
+##### Early access features
+
+This release does not include any new early access features.
+
+##### Fixed issues
+
+- Fixed an issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240)
+
+- Fixed the delegate task *acquire call* retry flow in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the *acquire call* retry flow. Tasks timed out because the delegate couldn't acquire the data. To fix this issue, the 'taskData' field in Harness Manager is now populated. (PL-40646)
+
+##### Hotfixes
+
+The current version does not include a hotfix release.
 
 #### August 4, 2023, Harness version 80120, Harness Delegate version 80104
 

@@ -13,9 +13,9 @@ This tutorial shows how you can use a Harness Continuous Integration (CI) pipeli
 
 You'll learn how to:
 
-- [x] Create [__projects__](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#organizations-and-projects) in your Harness account.
-- [x] Add [__secrets__](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#secrets-management) to projects.
-- [x] Add a Docker Registry [__Connector__](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#connectors) to a project.
+- [x] Create [__projects__](/docs/get-started/key-concepts/#organizations-and-projects) in your Harness account.
+- [x] Add [__secrets__](/docs/get-started/key-concepts/#secrets-management) to projects.
+- [x] Add a Docker Registry [__Connector__](/docs/get-started/key-concepts/#connectors) to a project.
 - [x] Use a CI pipeline to build and push a multi-architecture Rust application container image.
 
 In this tutorial, you'll use [Rust](https://rust-lang.org) to build a simple REST API called `greeter-api`.
@@ -145,6 +145,10 @@ While the Harness platform has several modules, this tutorial focuses on the Con
 ### Compare build infrastructure options
 
 Pipelines require build infrastructure to run. When you create CI pipelines, you can use either Harness-hosted infrastructure or bring your own build infrastructure. This tutorial uses Harness-hosted infrastructure, also called Harness Cloud.
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
 ```mdx-code-block
 <Tabs>
@@ -456,9 +460,9 @@ If your pipeline succeeded, add two more steps to build your Rust application im
 
    The `DOCKER_HUB_PASSWORD` and `IMAGE_TAG` environment variable values must be the __Expression__ type. Select the thumbtack to change the value type.
 
-   `secrets.getValue` is an expression that allows Harness to get the value from your `docker_hub_password` secret that you created earlier in the tutorial. For more information, go to [Add and Reference Text Secrets - Reference encrypted text by identifier](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier).
+   `secrets.getValue` is an expression that allows Harness to get the value from your `docker_hub_password` secret that you created earlier in the tutorial. For more information, go to [Add and Reference Text Secrets - Reference encrypted text by identifier](/docs/platform/secrets/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier).
 
-   `codebase.shortCommitSha` allows you to get the Git commit short SHA. It is one of several [Build-in codebase variables](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
+   `codebase.shortCommitSha` allows you to get the Git commit short SHA. It is one of several [Build-in codebase variables](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
 
    :::
 
@@ -498,7 +502,7 @@ Use these URLs to verify the application:
 
 ## Optional exercise: Improve build times
 
-You may have noticed that the Rust build downloads crates from the registry for each step: `rgreeter`, `test` and `build`. You can improve build times by allowing steps to share a cache. For more information, go to [Share and Cache CI Data](https://developer.harness.io/docs/category/share-and-cache-ci-data).
+You may have noticed that the Rust build downloads crates from the registry for each step: `rgreeter`, `test` and `build`. You can improve build times by allowing steps to share a cache. For more information, go to [Share and Cache CI Data](/docs/category/share-and-cache-ci-data).
 
 If you want to try this with your Rust app tutorial pipeline, you'll need to add two additional steps to create and restore a cache. Here are some hints to help you with this exercise:
 

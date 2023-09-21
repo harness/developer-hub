@@ -29,7 +29,7 @@ https://www.loom.com/share/f9bfceb163454af89c7baf50c66ae916-->
 
 ## Before you begin
 
-You should be familiar with the [Harness' Key Concepts](/docs/getting-started/learn-harness-key-concepts.md) and how to [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
+You should be familiar with the [Harness' Key Concepts](/docs/get-started/key-concepts.md) and how to [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
 
 ## Create a pipeline
 
@@ -59,7 +59,7 @@ An FF pipeline is organized into stages. Each stage contains the logic to perfor
 
 	You can edit the name in the **Overview** tab of the stage anytime.
 
-	Changing the stage name doesn't change the stage identifier (ID). The stage identifier is created when you first name the stage and it cannot be changed. For more information, go to [Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md).
+	Changing the stage name doesn't change the stage identifier (ID). The stage identifier is created when you first name the stage and it cannot be changed. For more information, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md).
 
 Once you've created a stage, you can see the name and ID in the **Overview** tab.
 

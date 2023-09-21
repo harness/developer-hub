@@ -13,7 +13,7 @@ The STO Overview enables you to see all detected issues in your `main` branches,
 <details><summary>Why you should define a baseline for every target</summary>
 
 ```mdx-code-block
-import StoWhyDefineBaselines from '/docs/security-testing-orchestration/onboard-sto/shared/_why-define-baselines.md';
+import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/_why-define-baselines.md';
 ```
 
 <StoWhyDefineBaselines />

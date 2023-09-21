@@ -22,7 +22,7 @@ When configuring an APM tool or a log management tool in Harness CV and construc
 
 To learn how to add a health source, go to [Configure CV](/docs/category/configure-cv).
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
 
 
 

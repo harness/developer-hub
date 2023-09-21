@@ -2,6 +2,8 @@
 title: Wait step
 description: Pause pipeline execution using the Wait step.
 sidebar_position: 5
+redirect_from:
+  - /docs/continuous-delivery/cd-execution/cd-general-steps/wait-step
 ---
 
 :::note
@@ -48,7 +50,7 @@ If you use runtime input, you can enter the wait time when you run the pipeline.
 
 If you use an expression, ensure that the expression resolves to one of the allowed time values. 
 
-For information, go to [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/). 
+For information, go to [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs/). 
 
 ## Marking the Wait step as success or fail
 

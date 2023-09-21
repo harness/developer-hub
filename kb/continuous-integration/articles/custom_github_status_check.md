@@ -19,7 +19,7 @@ keywords: [Continuous Integration, CI Tutorial, GitHub, Status Check]
 
 Before you begin, make sure you are familiar with the following concepts and have the necessary resources:
 
-* [Harness CI Basics](/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics): Familiarize yourself with the basics of Harness CI.
+* [Harness CI Basics](/docs/continuous-integration/get-started/key-concepts): Familiarize yourself with the basics of Harness CI.
 * [CI Run Step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings): Understand how to configure a CI Run Step in your pipeline.
 * [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens): Generate a personal access token in your GitHub account, which will be used for authentication.
 * [Pipeline](/docs/platform/Pipelines/harness-yaml-quickstart): Have an existing pipeline in Harness where you want to add the **GitHub Status Check**.

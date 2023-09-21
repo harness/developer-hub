@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 description: This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitors.
 keywords: [CI]
 title: See the fastest CI in action
@@ -16,6 +16,8 @@ slug: /ci-pipelines/fastest-ci
   closable={true}
   target="_blank"
 />
+
+<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
 :::info
 

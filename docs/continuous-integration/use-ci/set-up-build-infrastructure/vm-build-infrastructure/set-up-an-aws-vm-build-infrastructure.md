@@ -13,8 +13,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
+<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
 :::note
+
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
 :::
 
 This topic describes how to use AWS VMs as Harness CI build infrastructure. To do this, you will create an Ubuntu VM and install a Harness Delegate and Drone VM Runner on it. The runner creates VMs dynamically in response to CI build requests. You can also configure the runner to hibernate AWS Linux and Windows VMs when they aren't needed.
@@ -29,7 +33,7 @@ The following diagram illustrates a CI build farm using AWS VMs. The [Harness De
 
 This is an advanced configuration. Before beginning, you should be familiar with:
 
-* [Harness key concepts](../../../../getting-started/learn-harness-key-concepts.md)
+* [Harness key concepts](../../../../get-started/key-concepts.md)
 * [CI pipeline creation](../../prep-ci-pipeline-components.md)
 * [Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
 * [CI Build stage settings](../ci-stage-settings.md)

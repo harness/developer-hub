@@ -25,7 +25,7 @@ Perform the following steps to add an AWS connector for AutoStopping Rules:
 
   ![](./static/connect-to-an-aws-connector-01.png)
 3. Click **Connect to your AWS account** drop-down list and then click **New Connector**.
-4. See [Set up Cloud Cost Management for AWS](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) for further instructions.
+4. See [Set up Cloud Cost Management for AWS](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md) for further instructions.
 
 ### Next Steps
 

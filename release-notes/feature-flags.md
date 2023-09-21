@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-08-23T15:00:25
+date: 2023-09-20T13:49:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -15,7 +15,8 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - August 23, 2023
+
+## Latest - September 20, 2023
 
 ### New features and enhancements
 
@@ -25,16 +26,131 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the Javascript SDK
+### Fixed issues in the iOS SDK
 
-* If the SDK was being suspended while inside a mobile app in a webview, our SDK didn't support this usecase and required workarounds. (FFM-8176)
-
-* Removed a third-party SSE library causing event-handling errors. (FFM-8855)
+- Fixed issue with metric target evaluation. (FFM-9409)
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### September 19, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Javascript SDK
+
+- Emit flags as part of polling intervals using POLLING_CHANGED event. (FFM-9045)
+
+#### September 11, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Javascript SDK
+
+- Changing evaluation handling for Flutter Web. (FFM-8963)
+
+#### Sept 08, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the iOS SDK
+
+- Fix runtime failure when target is nil. (FFM-9282)
+
+#### Sept 06, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Java SDK
+
+- Standardized SDK error codes. (FFM-8148)
+- Removed dependencies Guava and MapDB. (FFM-8840)
+- Added retry enhancements to authentication failures. (FFM-8150)
+- Local connector now creates a metrics folder. (FFM-4023)
+
+#### August 24, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Apex SDK
+
+Released Apex SDK 0.1.2 - Avoid loading all flag/target segment config into two cache keys, instead use a key per item, so we don’t exceed SFDC account limits and get cache.ItemSizeLimitExceededException (FFM-9071)
+
+#### August 24, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+### Fixed issues in the Apex SDK
+
+Released Apex SDK 0.1.2 - Avoid loading all flag/target segment config into two cache keys, instead use a key per item, so we don’t exceed SFDC account limits and get cache.ItemSizeLimitExceededException (FFM-9071)
+
+#### August 24, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the React Client SDK
+
+Released React Client 1.5.0 - bumped JavaScript SDK version to 1.15.0 (FFM-9133)
+
+#### August 23, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Javascript SDK
+
+* If the SDK was being suspended while inside a mobile app in a webview, our SDK didn't support this usecase and required workarounds. (FFM-8176)
+
+* Removed a third-party SSE library causing event-handling errors. (FFM-8855)
 
 #### August 23, 2023
 
@@ -472,7 +588,7 @@ This release does not include early access features.
 
 The **Python** server SDK has been updated to version **1.2.0** with the following updates. (FFM-8300)
 
-  * To improve performance, the SDK now sends targets to the metrics service in batches of 1000. Up to 200 batches, or 200K unique targets, can be sent in the metrics window. This is not user-configurable, and is controlled through the SDK. For more information, go to [Feature Flag FAQs](/docs/frequently-asked-questions/harness-faqs/harness-feature-flag-faqs#how-does-the-metric-aggregatebatch-the-data-before-sending-it-to-harness).
+  * To improve performance, the SDK now sends targets to the metrics service in batches of 1000. Up to 200 batches, or 200K unique targets, can be sent in the metrics window. This is not user-configurable, and is controlled through the SDK. For more information, go to [Feature Flag FAQs](/docs/faqs/harness-feature-flag-faqs#how-does-the-metric-aggregatebatch-the-data-before-sending-it-to-harness).
 
   * The SDK no longer allows `events_sync_interval` to be set below 60 seconds. If it is, the value defaults to 60 seconds.
 

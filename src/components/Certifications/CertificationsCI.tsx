@@ -290,7 +290,7 @@ export default function CertificationsCI() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Continuous Integration - Architect (BETA COMING SOON)</h2>
+                  <h2>Continuous Integration - Architect</h2>
                   <img
                     src={`${baseUrl}img/cert_arc_ci_badge.svg`}
                     alt="Harness Certified Expert - CI Architect"
@@ -302,7 +302,7 @@ export default function CertificationsCI() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide (BETA Coming Soon)</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
                     design, implementation and management of CI. This exam builds
@@ -313,7 +313,7 @@ export default function CertificationsCI() {
                   </div>
                   <ArchitectCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="#">
+                    <Link href="https://university.harness.io/continuous-integration-architect">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -333,11 +333,11 @@ export default function CertificationsCI() {
           {/* Arch Exam Details  */}
 
           <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details (BETA Coming Soon) </h2>
+            <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
             <ArchitectCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="#">
+                <Link href="https://university.harness.io/continuous-integration-architect">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>

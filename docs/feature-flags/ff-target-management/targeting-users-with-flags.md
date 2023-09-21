@@ -69,6 +69,12 @@ To add specific Targets: 
 
       ![The Targeting Tab of a Flag with percentage roll out applied](./static/3-targeting-users-with-flags-04.png)
 
+## More about percentage rollouts
+
+Percentage rollouts use the target identifier and a murmur3 hash to produce a determinstic result that will be the same across all SDKs for the same target.
+
+This guarantees that a user who is being served a flag value as part of a percentage rollout will get the same flag value in all services regardless of which SDKs are being used.
+
    :::info note
    You can only use Percentage Rollouts on a single target group for each flag.
    :::

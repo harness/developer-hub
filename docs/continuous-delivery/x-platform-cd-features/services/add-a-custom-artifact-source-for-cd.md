@@ -89,7 +89,7 @@ Enter the following settings.
 
   `HARNESS_ARTIFACT_RESULT_PATH` is a random, unique file path created on the Delegate by Harness.
 
-  You can use [Harness text secrets](/docs/platform/Secrets/add-use-text-secrets) in the script. For example:
+  You can use [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) in the script. For example:
 
   ```
   curl -u 'harness' <+secrets.getValue("repo_password")> https://myrepo.example.io/todolist/json/ > $HARNESS_ARTIFACT_RESULT_PATH
@@ -126,7 +126,7 @@ Enter the following settings.
 
 * **Version**: Enter the version number for this deployment, or select Runtime Input or Expression to select the version dynamically.
 
-  For more information on Fixed Value, Runtime Input, and Expression got to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/References/runtime-inputs).
+  For more information on Fixed Value, Runtime Input, and Expression got to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
   When you done Artifact Details will look something like this:
 
