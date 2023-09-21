@@ -11,7 +11,7 @@ Currently, AIDA is a beta feature that is behind these feature flags:
 * CI: `CI_AI_ENHANCED_REMEDIATIONS`
 * STO: `STO_AI_ENHANCED_REMEDIATIONS`
 
-Contact [Harness Support](mailto:support@harness.io) to enable this feature in your Harness modules.
+Contact [Harness Support](mailto:support@harness.io) to enable these features.
 
 :::
 
@@ -37,7 +37,7 @@ To learn more about the AI capabilities in Harness, go to each module's AIDA doc
 
 To enable AIDA in your Harness account:
 
-1. Contact [Harness Support](mailto:support@harness.io) to enable the feature flags for AIDA in CCM, CI, and/or STO.
+1. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag for AIDA in CCM, CI, and/or STO.
 2. Agree to the AIDA EULA. Review the [AIDA Terms](https://www.harness.io/legal/aida-terms) and [AIDA Data Privacy](https://www.harness.io/legal/aida-privacy) information.
 3. Enable AIDA in your Harness account. Go to **Account Settings**, select **Account Resources**, select the **Harness AIDA** tile, and then enable the **Harness AI Development Assistant (AIDA)** setting.
 

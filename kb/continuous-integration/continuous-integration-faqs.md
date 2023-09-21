@@ -183,7 +183,7 @@ See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-
 
 While running concurrent builds, customers may want to consider the queued intelligence feature in Harness CI. This feature is behind a feature flag. 
 
-See [https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence/] -->
+See https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence/ -->
 
 <!-- QUEUE INTELLIGENCE IS CURRENTLY NON-FUNCTIONING. WILL UN-COMMENT WHEN IT IS FIXED. PLEASE DIRECT QUESTIONS TO #DOCUMENTATION. -->
 
