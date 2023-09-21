@@ -18,7 +18,7 @@ Contact [Harness Support](mailto:support@harness.io) to enable the features.
 
 :::
 
-The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software development lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empowers teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
+The Harness platform leverages Harness AI Development Assistant (AIDA:tm:) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software development lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empowers teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
 
 Following are some key benefits of Harness AIDA:
 
