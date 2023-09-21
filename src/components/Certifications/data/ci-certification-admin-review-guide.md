@@ -33,7 +33,7 @@
 | **8. Policy-Based Governance and Compliance** ||
 | Explore and configure policy as code with OPA and Rego | [Harness Policy As Code quickstart](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-quickstart) |
 | Enforce governance within pipelines and understand templates for Harness CI | [Manage access control for asset governance rules](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov/) |
-| Familiarize with account audit trails and their respective use cases | [View audit trail](https://developer.harness.io/docs/platform/governance/audit-trail/audit-trail/) |
+| Familiarize with account audit trails and their respective use cases | [View audit trail](https://developer.harness.io/docs/platform/governance/audit-trail/) |
 | **9. Enterprise Features and Dashboards** ||
 | Delve into Enterprise dashboards, including custom options like Looker | [Best practices for building dashboards](https://developer.harness.io/docs/platform/dashboards/dashboard-best-practices/) |
 | Explore Pipeline Studio's execution history and other related features | [Run pipelines using input sets and overlays](https://developer.harness.io/docs/platform/pipelines/run-pipelines-using-input-sets-and-overlays/) |
