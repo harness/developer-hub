@@ -17,7 +17,7 @@ To access the SLO Health dashboard, do the following:
    
    The dashboard list is displayed, which includes the default SLO Health and SLO History dashboards.
 
-2. Select the SLO Health dashboard.
+2. Select the **SLO Health** dashboard.
    
    The SLO Health dashboard is displayed.
 
@@ -31,7 +31,6 @@ SLO Health dashboard consists of the following key components:
 - [SLO Health Status tile](#slo-health-status-tile)
 
 - [Health Status Summary tile](#health-status-summary-tile)
-
 
 
 ### SLO Health Status tile

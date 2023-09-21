@@ -17,7 +17,7 @@ To access the SLO History dashboard, do the following:
    
    The dashboard list is displayed, that includes the default SLO Health and SLO History dashboards.
 
-2. Select the SLO History dashboard.
+2. Select the **SLO History** dashboard.
    
    The SLO History dashboard is displayed.
 
@@ -44,7 +44,7 @@ The SLO History dashboard displays the following key metrics:
 
 - **Period type**: The type of time period for measurement. For example, calendar or rolling.
 
-- **SLO percentage**: Measure of how well you're meeting your target. This shows how close you are to achieving your SLO.
+- **SLO Target**: Your set SLO target percentage.
 
 - **SLI percentage**: The percentage of Service Level Indicators (SLIs) achieved for the corresponding SLOs. SLIs are specific metrics used to evaluate SLOs.
 
@@ -57,14 +57,3 @@ The SLO History dashboard displays the following key metrics:
 :::info note
 You can customize the data displayed in the SLO History tile using filters to focus on specific aspects of your SLO health metrics and history.
 :::
-
-
-### Health Status Summary Tile
-
-The Health Status Summary tile provides a visual summary of the data presented in the SLO Health Status tile. It includes:
-
-- **Percentage of SLOs that are healthy, unhealthy, and need attention**: This gives you an overall picture of the health status of your SLOs.
-  
-- **Percentage of SLOs whose error budgets are exhausted**: This is a summary of SLOs that have gone beyond their allocated error budgets.
-  
-- **Percentage of SLOs that need observation**: This indicates which SLOs require additional monitoring and analysis.
