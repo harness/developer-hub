@@ -1,6 +1,6 @@
 ---
 title: Auto-generate Jira tickets for detected issues in STO
-description: You can easily create Jira tickets for any issue detected during an STO pipeline execution.
+description: You can create Jira tickets for any issue detected during an STO pipeline execution.
 sidebar_label: Auto-generate Jira tickets for detected issues
 sidebar_position: 30
 ---

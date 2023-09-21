@@ -66,7 +66,7 @@ This topic assumes that you have the following:
 3. Send a notification of your exemption request — via email, Slack, Jira, etc. — to your SecOps reviewer. Your notification should include the URL to the Security Tests page with the relevant issue selected.
 
 
-## Review, Approve, and Reject STO exemptions (_SecOps users only_)
+## Review, approve, and reject STO exemptions (_SecOps users only_)
 
 An exemption, if approved, overrides the default behavior for running a pipeline build:
 

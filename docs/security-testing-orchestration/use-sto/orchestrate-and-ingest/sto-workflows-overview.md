@@ -17,7 +17,7 @@ This provides the most flexibility. You can ingest results from highly targeted 
 * [Data-Load workflows](#data-load-workflows) — A Security step downloads and ingests results from an external scanner.  
 This workflow is supported for scanners that provide methods for transferring data programmatically.
 
-### Orchestrated Workflows in STO
+### Orchestrated workflows in STO
 
 You can set up a fully orchestrated workflow in a one Security step. The runs the scans and ingests the detected issues. This is the easiest workflow to implement and is good for running scans with default settings.
 
@@ -36,7 +36,7 @@ For an example of the setup workflow, go to [Run an Orchestrated Scan in an STO 
 * The object to scan: in this case, a Docker Hub image. This step also specifies the domain, project, and tag.
   ![](../static/sto-workflows-overview-02.png)
 
-### Ingestion-Only workflows in STO
+### Ingestion-only workflows in STO
 
 Ingestion-only workflows enable you ingest data from advanced scans with custom settings, and also from scanners that do not currently have STO integrations. Ingestion-only workflows provide the most flexibility and robustness, but can also require the most work to set up.
 
@@ -55,7 +55,7 @@ Running the scanner outside of the Security step enables you to customize the sc
 	+ Information about the scan and the scanned object: the object type and the container project and tag
 	  ![](../static/sto-workflows-overview-03.png)
 
-### Data-Load workflows in STO
+### Data-load workflows in STO
 
 Data-load scans are a sub-category of orchestrated scans. Instead of running a scan, the Security step pulls issues from an external source. In this case, you configure the Security Step to download from the external tool rather than running an orchestrated scan. This workflow is supported for scanners such as Veracode that support downloading results via an API endpoint.
 

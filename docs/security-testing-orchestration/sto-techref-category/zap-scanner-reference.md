@@ -29,7 +29,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Zap step settings for STO scans
+## ZAP step settings for STO scans
 
 The recommended workflow is add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. You can also configure ZAP scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
@@ -255,7 +255,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `instance_type` = `website`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-#### Optional settings
+#### Optional settings for ZAP scans
 
 * `instance_path` — Specify if the app URL includes a path beyond the domain. If you want to scan `https://app.my-domain.com/myModule/myApp`, the instance path is `myModule/myApp`.
 * `instance_port` — Specify if the site is accessed using a non-default port.

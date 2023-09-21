@@ -21,7 +21,7 @@ helpdocs_is_published: true
 * By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestrated and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube scan step. 
 :::
 
-## Important notes for running Snyk scans in STO
+## Important notes for running SonarQube scans in STO
 
 You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
 

@@ -190,7 +190,7 @@ The following keywords are reserved and cannot be used in your JSON file:
 * `target`
 * `targetId`
 
-## Pipeline example for ingesting data from an unsupported schame into STO
+## Pipeline example for ingesting data from an unsupported schema into STO
 
 The following pipeline shows an end-to-end ingestion workflow. The pipeline consist of a Security Tests stage with two steps:
 
