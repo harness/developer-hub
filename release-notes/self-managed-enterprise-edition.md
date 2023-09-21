@@ -145,6 +145,8 @@ If you have pipelines running on Harness Cloud that rely on specific component v
    1. If you have user management permissions, you can list all the Personal Access Tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
    2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
+- The delegate JRE has been upgraded to version 11.0.19_7. This upgrade might result in disconnection for delegates with self-signed certificates. For instructions on setting up delegates with custom certificates, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/). (PL-37994, SMP-1696)
+
 #### Harness Platform
 
 - You can now sort pipelines in the pipelines list by selecting the sortable column headers or the sort dropdown. (PL-31527)
