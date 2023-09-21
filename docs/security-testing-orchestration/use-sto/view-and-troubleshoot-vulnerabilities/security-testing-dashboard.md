@@ -1,5 +1,5 @@
 ---
-title: Navigate and drill down into detected vulnerabilities in the Security Testing Dashboard
+title: Navigate and drill down into detected issues in the Security Testing Dashboard
 description: View, navigate, discover, and investigate detected issues in the Security Testing Dashboard. 
 sidebar_label: Navigate and drill down into detected issues
 sidebar_position: 60

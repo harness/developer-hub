@@ -12,7 +12,7 @@ helpdocs_is_published: true
 Veracode is a popular tool for scanning code repos for security issues and vulnerabilities. Veracode performs dynamic (automated penetration test) and static (automated code review) code analysis and finds security vulnerabilities that include malicious code as well as the absence of functionality that can lead to security breaches.
 
 
-## Prerequisites
+## Important notes for running Veracode scans in STO 
 
 * Before you can ingest scan results, you must perform all the Veracode prerequisites for the repo that you're scanning. If you're scanning a Java repo, for example, the Veracode documentation outlines the specific packaging and compilation requirements for scanning your Java applications.  
 For specific requirements, got to the [Veracode docs](https://docs.veracode.com) and search for *Veracode Packaging Requirements*.
@@ -20,8 +20,6 @@ For specific requirements, got to the [Veracode docs](https://docs.veracode.com)
 For instructions, go to the [Veracode docs](https://docs.veracode.com) and search for *Generate Veracode API Credentials*.  
 Harness recommends you create [text secrets](/docs/platform/secrets/add-use-text-secrets) for your authentication credentials — password, API key, API secret key, etc. — and access your secrets using `<+secrets.getValue("my-secret")>`.
 * The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) and [Veracode - Activate Scenario](https://community.harness.io/t/veracode-activate-scenario/1067) blog posts include useful information about how to ingest Veracode scan results into Harness.
-
-## Important notes for running Veracode scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -39,7 +37,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Required Settings
+## Required Settings for Veracode scans in STO
 
 * `product_name` = `veracode`
 * `scan_type` = `repository`
@@ -71,7 +69,7 @@ In most cases, this should match the repo name used in your Git provider.
 
    The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) blog post describes in more detail how you can find your application IDs and project names.     
 
-##  Ingestion settings
+###  Ingestion settings
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
@@ -79,7 +77,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
-## Fail on Severity
+### Fail on Severity
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```

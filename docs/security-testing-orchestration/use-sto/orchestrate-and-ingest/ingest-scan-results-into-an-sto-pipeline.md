@@ -1,5 +1,5 @@
 ---
-title: Ingest Scan Results into an STO Pipeline
+title: Run an Ingestion-Only scan in an STO Pipeline
 description: With ingestionOnly, the scanner saves the results to a shared folder. The pipeline then ingests this data and analyzes, deduplicates, and displays the results.
 sidebar_label: Ingestion-only workflows
 sidebar_position: 30

@@ -7,6 +7,15 @@ redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines
 ---
 
+This topic discusses the following STO topics:
+- [Targets](#targets)
+- [Variants](#variants)
+- [Baselines](#baselines)
+   - [Why you should define a baseline for every STO target](#why-you-should-define-a-baseline-for-every-sto-target)
+
+
+## Targets
+
 ```mdx-code-block
 import StoConceptTargets from '../shared/_targets.md';
 ```
@@ -20,6 +29,15 @@ import StoConceptTargets from '../shared/_targets.md';
 <figcaption>Test Targets page</figcaption>
 </figure>
 
+## Variants
+
+```mdx-code-block
+import StoConceptVariants from '/docs/security-testing-orchestration/get-started/shared/_variants.md';
+```
+
+<StoConceptVariants />
+
+## Baselines
 
 ```mdx-code-block
 import StoConceptBaselines from '/docs/security-testing-orchestration/get-started/shared/_baselines.md';
@@ -28,10 +46,10 @@ import StoConceptBaselines from '/docs/security-testing-orchestration/get-starte
 <StoConceptBaselines />
 
 
-
 ```mdx-code-block
 import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/_why-define-baselines.md';
 ```
+### Why you should define a baseline for every STO target
 
 <StoWhyDefineBaselines />
 
