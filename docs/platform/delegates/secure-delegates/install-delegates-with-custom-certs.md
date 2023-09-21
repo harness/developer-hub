@@ -437,3 +437,12 @@ To install a Docker delegate with self-signed certificates, do the following:
    ```
 
 3. Run the Docker command.
+
+:::info important
+For Shell, you must add the following lines to the `init.sh` file in your delegate directory `/opt/harness-delegate` to save the certificate settings.
+
+```
+export JAVA_OPTS=‘-Djavax.net.ssl.trustStore=./cacerts -Djavax.net.ssl.trustStorePassword=changeit
+export WATCHER_JAVA_OPTS=‘-Djavax.net.ssl.trustStore=./cacerts -Djavax.net.ssl.trustStorePassword=changeit
+```
+:::
