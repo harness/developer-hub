@@ -30,7 +30,7 @@ SLO Health dashboard consists of the following key components:
 
 - [SLO Health Status tile](#slo-health-status-tile)
 
-[Health Status Summary tile](#health-status-summary-tile)
+- [Health Status Summary tile](#health-status-summary-tile)
 
 
 
