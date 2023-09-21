@@ -675,6 +675,7 @@ If you want a vanity URL, you can reach out through our support and request to c
 #### How do I identify files changed in a git push event?
 We don't support this feature natively, but you can write a similar script to the following:
 ```
+# Get commits from the payload
 commits='<+trigger.payload.commits>'
 
 # Extract the values of added, removed, and modified attributes using string manipulation
