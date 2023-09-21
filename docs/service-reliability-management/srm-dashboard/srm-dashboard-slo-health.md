@@ -44,7 +44,7 @@ The SLO Health Status tile displays the following information:
 
 - **Evaluation type**: The method used for evaluating the SLO. For example, window or request based.
 
-- **Environment name**: The environment where the SLO is applied. For Example, production, Terraform, and so on.
+- **Environment name**: The environment where the SLO is applied. For example, production, Terraform, and so on.
 
 - **Service name**: The name of the service associated with the SLO.
 
