@@ -1,6 +1,7 @@
 ---
 title: Exemptions ("ignore rules") for specific issues in STO
 description: You can specify exemptions (ignore rules) for specific security issues. An ignore rule allows pipeline builds to proceed even if a security scan detects an issue. 
+sidebar_label: Override the Fail on Severity threshold for specific issues
 sidebar_position: 60
 ---
 

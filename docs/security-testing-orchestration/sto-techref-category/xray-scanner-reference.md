@@ -1,6 +1,7 @@
 ---
 title: Jfrog Xray scanner reference for STO
 description: Image scans with Jfrog Xray
+sidebar_label: Jfrog Xray scanner reference
 sidebar_position: 330
 ---
 

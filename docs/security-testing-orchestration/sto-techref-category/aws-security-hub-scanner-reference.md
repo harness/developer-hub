@@ -1,6 +1,7 @@
 ---
 title: AWS Security Hub scanner reference for STO
 description: Configuration scans with AWS Image scanner
+sidebar_label: AWS Security Hub scanner reference
 sidebar_position: 40
 ---
 

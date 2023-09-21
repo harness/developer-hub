@@ -1,6 +1,7 @@
 ---
 title: Reapsaw scanner reference for STO
 description: Repository scans with Qwiet
+sidebar_label: Reapsaw scanner reference scanner reference
 sidebar_position: 260
 ---
 

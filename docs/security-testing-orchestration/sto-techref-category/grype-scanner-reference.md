@@ -1,6 +1,7 @@
 ---
 title: Grype scanner reference for STO
 description: Image scans with Grype
+sidebar_label: Grype scanner reference
 sidebar_position: 156
 ---
 

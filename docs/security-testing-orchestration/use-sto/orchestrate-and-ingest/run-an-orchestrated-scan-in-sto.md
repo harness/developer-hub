@@ -1,6 +1,7 @@
 ---
 title: Run an Orchestrated Scan in an STO Pipeline
 description: An orchestrated scan is a fully automated workflow that scans an object and ingests the results into Harness in one Security step. Orchestrated scans are the easiest to set up and are a great way to get started with STO.
+sidebar_label: Orchestration workflows
 sidebar_position: 20
 helpdocs_topic_id: wk018r6x3g
 helpdocs_category_id: utstv3qzqt

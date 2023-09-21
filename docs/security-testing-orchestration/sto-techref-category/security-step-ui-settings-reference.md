@@ -1,6 +1,7 @@
 ---
 title: Security step UI settings reference for STO
 description: All the available UI settings to configure individual scans.
+sidebar_label: Security step UI settings reference
 sidebar_position: 1000
 ---
 

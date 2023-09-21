@@ -1,5 +1,5 @@
 ---
-title: Security Step Settings Reference
+title: Security step settings reference
 description: All the Scanner Provider settings for the Security step.
 sidebar_position: 10
 helpdocs_topic_id: 0k0iubnzql

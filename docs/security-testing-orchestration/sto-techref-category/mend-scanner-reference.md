@@ -1,6 +1,7 @@
 ---
 title: Mend (formerly Whitesource) scanner reference for STO
 description: Container and repository scans with Mend
+sidebar_label: Mend scanner reference
 sidebar_position: 160
 ---
 

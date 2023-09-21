@@ -1,6 +1,7 @@
 ---
 title: Ingest SARIF scan results into STO
 description: You can easily ingest from any scanner can publish results in SARIF format.
+sidebar_label: Ingest SARIF scan results
 sidebar_position: 45
 ---
 

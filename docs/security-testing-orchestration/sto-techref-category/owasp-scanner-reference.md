@@ -1,6 +1,7 @@
 ---
-title: OWASP Dependency Check scanner reference for STO
+title: OWASP Dependency-Check scanner reference for STO
 description: Repository scans with OWASP Dependency Check
+sidebar_label: OWASP Dependency-Check scanner reference
 sidebar_position: 210
 ---
 

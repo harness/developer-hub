@@ -2,6 +2,7 @@
 title: Investigate issues in an STO pipeline scan
 description: View, navigate, discover, and investigate detected issues from an individual scan 
 sidebar_position: 10
+sidebar_label: View, navigate, discover, and investigate detected issues
 ---
 
 To view scan results from a pipeline execution, go to **Pipeline Executions**, select the execution, and then go to the **Security Tests** tab. 

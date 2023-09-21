@@ -1,6 +1,7 @@
 ---
 title: Nessus scanner reference for STO
 description: Instance scans with Nessus
+sidebar_label: Nessus scanner reference
 sidebar_position: 170
 ---
 

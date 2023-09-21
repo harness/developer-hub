@@ -1,6 +1,7 @@
 ---
-title: Prisma Cloud (formerly Twistlock) scanner reference
+title: Prisma Cloud (formerly Twistlock) scanner reference for STO
 description: Image scans with Prisma Cloud
+sidebar_label: Prisma Cloud (formerly Twistlock) scanner reference
 sidebar_position: 210
 ---
 

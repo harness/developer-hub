@@ -1,6 +1,7 @@
 ---
 title: Ingest scan results from unsupported scanners into Harness STO
 description: How to ingest data from scan tools that currently have no integration in STO.
+sidebar_label: Ingest from unsupported scanners
 sidebar_position: 100
 helpdocs_topic_id: ymkcm5lypf
 helpdocs_category_id: utstv3qzqt

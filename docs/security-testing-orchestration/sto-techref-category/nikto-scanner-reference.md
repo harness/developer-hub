@@ -1,6 +1,7 @@
 ---
 title: Nikto scanner reference for STO
 description: Instance scans with Nikto
+sidebar_label: Nikto scanner reference
 sidebar_position: 190
 ---
 

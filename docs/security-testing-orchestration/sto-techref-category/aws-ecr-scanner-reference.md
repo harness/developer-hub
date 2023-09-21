@@ -1,6 +1,7 @@
 ---
 title: AWS ECR scanner reference for STO
 description: Image scans with AWS ECR
+sidebar_label: AWS ECR scanner reference
 sidebar_position: 30
 ---
 

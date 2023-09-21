@@ -1,6 +1,7 @@
 ---
 title: Nexus scanner reference for STO
 description: Repository scans with Nexus
+sidebar_label: Nexus scanner reference
 sidebar_position: 180
 ---
 

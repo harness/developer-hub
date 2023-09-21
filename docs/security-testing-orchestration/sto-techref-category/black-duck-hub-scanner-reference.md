@@ -1,6 +1,7 @@
 ---
 title: Black Duck Hub scanner reference for STO
 description: Image and repository scans with Black Duck Open Hub scanner
+sidebar_label: Black Duck Hub scanner reference
 sidebar_position: 60
 ---
 

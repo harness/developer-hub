@@ -1,5 +1,5 @@
 ---
-title: STO Ingestion Workflows
+title: STO ingestion workflows
 description: STO supports three workflows for ingesting data --  run a local scan (orchestrated), ingest results from a shared folder (ingestion-only), and download results from an external scanner (data-load).
 sidebar_position: 10
 helpdocs_topic_id: cjqnd71y07

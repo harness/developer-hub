@@ -2,6 +2,7 @@
 title: Fail on Severity threshold to fail STO pipelines based on the severity of detected issues
 description: Fail integrated pipelines based on the severity of detected issues
 sidebar_position: 40
+sidebar_label: Fail pipelines by severity
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/key-concepts/fail-pipelines-by-severity
 ---

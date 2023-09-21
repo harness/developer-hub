@@ -1,6 +1,7 @@
 ---
 title: Run STO scans using GitHub Action and Drone Plugin steps
 description: STO can ingest data from any scanner that can publish in SARIF format.  
+sidebar_label: Scan and ingest from GitHub Actions and Drone Plugins
 sidebar_position: 70
 ---
 

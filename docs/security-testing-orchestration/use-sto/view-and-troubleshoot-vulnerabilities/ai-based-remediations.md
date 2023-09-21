@@ -1,6 +1,7 @@
 ---
 title: Fix security issues using AI-enhanced remediation steps in STO
 description: Enhanced remediation using Harness AI Development Assistant (AIDA)
+sidebar_label: Use AI to fix security issues
 sidebar_position: 5
 ---
 

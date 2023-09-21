@@ -1,6 +1,7 @@
 ---
 title: Amazon Image scanner reference for STO
 description: Image scans with AWS Image scanner
+sidebar_label: Amazon Image scanner reference 
 sidebar_position: 20
 ---
 

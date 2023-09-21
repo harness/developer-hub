@@ -1,6 +1,7 @@
 ---
 title: Metasploit scanner reference for STO
 description: Instance scans with Metasploit
+sidebar_label: Metasploit scanner reference
 sidebar_position: 160
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Nmap (Network Mapper) scanner reference for STO
 description: Instance scans with Nmap
+sidebar_label: Nmap (Network Mapper) scanner reference
 sidebar_position: 200
 ---
 

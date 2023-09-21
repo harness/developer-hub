@@ -1,6 +1,7 @@
 ---
 title: Burp scanner reference for STO
 description: Instance scans with Burp
+sidebar_label: Burp scanner reference
 sidebar_position: 80
 ---
 

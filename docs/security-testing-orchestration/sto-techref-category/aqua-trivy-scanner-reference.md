@@ -2,6 +2,7 @@
 title: Aqua Trivy scanner reference for STO
 description: Image scans with Aqua Trivy
 sidebar_position: 30
+sidebar_label: Aqua Trivy scanner reference
 helpdocs_topic_id: 079248uzcu
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false

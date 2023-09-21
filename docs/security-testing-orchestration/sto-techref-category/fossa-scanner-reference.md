@@ -1,6 +1,7 @@
 ---
 title: Fossa scanner reference for STO
 description: Image and repository scans with Fossa
+sidebar_label: Fossa scanner reference
 sidebar_position: 150
 ---
 
