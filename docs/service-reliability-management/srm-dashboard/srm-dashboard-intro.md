@@ -32,7 +32,7 @@ To view the SRM dashboards, do the following:
    - SLO Health
    - SLO History
 
-<docimage path={require('./static/srm-dashboards.png')} />
+   <docimage path={require('./static/srm-dashboards.png')} />
 
 
 ## View a specific SRM dashboard
