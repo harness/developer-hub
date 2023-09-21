@@ -258,7 +258,7 @@ Simply add this step where you want to initiate a rollback. Note that this comma
 
 ### Value of the image field in the output of the Rollout Deployment step
 
-The `image` field on the **Output** tab of the Rollout Deployment step shows the image tag that you provided only if the SHA256 digest of the image is not available in the container registry. If the digest is available, the field displays the digest instead of the tag. This is a result of default kubectl behavior: kubectl attempts to return the digest because the digest is unique and can be used to verify a deployment. It returns the tag as a fallback option if the digest is unavialable. You must keep this behavior in mind when reviewing the output of the Rollout step. 
+The `image` field on the **Output** tab of the Rollout Deployment step shows the SHA256 digest of the image instead of the image tag. Kubernetes returns the SHA256 digest of the image because the digest is unique and can be used to verify the deployment. However, if you want to verify the deployment by using the tag, look for the tag in the deployment logs.  
 
 
 ## Next Steps
