@@ -19,7 +19,7 @@ This topic provides comprehensive insights into Harness SRM dashboards.
 
 ## View Service Reliability dashboards
 
-To view the SRM dashboards, follow these steps:
+To view the SRM dashboards, do the following:
 
 1. In your Harness project, navigate to **Dashboards**. 
 
