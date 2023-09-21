@@ -51,7 +51,9 @@ The SLO Health Status tile displays the following information:
 
 - **Period type**: The type of time period for measurement. For example, calendar or rolling.
 
-- **SLO percentage**: This shows how close you are to achieving your SLO. It's a measure of how well you're meeting your target.
+- **SLO Target**: Your set SLO target percentage.
+
+- **SLI percentage**: The percentage of Service Level Indicators (SLIs) achieved for the corresponding SLOs. SLIs are specific metrics used to evaluate SLOs.
 
 - **User journey**: The specific user journey associated with the SLO.
 
@@ -64,7 +66,7 @@ The SLO Health Status tile displays the following information:
 You can customize the data displayed in the SLO Health Status tile using filters to focus on specific aspects of your SLO health metrics.
 :::
 
-
+ 
 ### Health Status Summary tile
 
 The Health Status Summary tile provides a visual summary of the data presented in the SLO Health Status tile. It includes:
