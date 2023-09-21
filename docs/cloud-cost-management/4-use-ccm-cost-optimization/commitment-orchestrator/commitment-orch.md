@@ -49,7 +49,7 @@ AWS offers two types of Reserved Instances: **Standard** and **Convertible**. Th
 
 You can exchange your Convertible Reserved instance for another Convertible Reserved Instance with a different configuration, including instance family, operating system, and tenancy. There are no limits to how many times you perform an exchange, as long as the new Convertible Reserved Instance is of an equal or higher value than the Convertible Reserved Instances that you are exchanging. For more information, go to [Exchange Convertible Reserved Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-convertible-exchange.html).
 
-For more information about Reserved Instances, go to [Reserved Instances. \
+For more information about Reserved Instances, go to [Reserved Instances. 
 ](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html)
 
 
@@ -62,9 +62,7 @@ To accomplish this, the Commitment Orchestrator matches the available RIs with t
 
 By using the Commitment Orchestrator, you can ensure that your organization is fully utilizing all available resources, saving money, and optimizing performance.
 
-For example:
-
-Imagine a scenario where you have one Reserved Instance of type `r5.large`, but the On-Demand instances you're currently using are `t2.micro`, `c5.large`, and `t3.micro`. To optimize the utilization of your available resources, the `r5.large` is converted to `c5.large` automatically to meet your requirements.
+For example, imagine a scenario where you have one Reserved Instance of type `r5.large`, but the On-Demand instances you're currently using are `t2.micro`, `c5.large`, and `t3.micro`. To optimize the utilization of your available resources, the `r5.large` is converted to `c5.large` automatically to meet your requirements.
 
 <!--1. First, you can convert the Reserved Instance of r5.large to t2.nano. This leaves you with 22 t2.nano Reserved Instances (the exact number may vary based on pricing).
 2. Next, you can convert some of the t2.nano instances to c5.large to match the On-Demand instances. Given the hourly price of c5.large, you can exchange 14 t2.nano instances for one c5.large instance. However, this won't result in an exact match for the price of c5.large, so you will need to pay the difference for the exchange. It's important to note that you cannot exchange 15 t2.nano instances for one c5.large instance to avoid the difference in amount.

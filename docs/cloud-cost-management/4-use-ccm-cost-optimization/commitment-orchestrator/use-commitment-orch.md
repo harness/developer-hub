@@ -4,9 +4,11 @@ description: Optimize the utilization of Amazon EC2 Reserved Instances (RIs) by 
 sidebar_position: 3
 ---  
 
-# Optimize utilization of EC2 Reserved Instances using Commitment Orchestrator 
+:::note
+Currently, this feature is behind the feature flag **CCM_COMM_SETUP**. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
-Optimize the utilization of Amazon EC2 Reserved Instances (RIs) by setting up Harness Commitment Orchestrator. 
+This topic explains how to optimize the utilization of Amazon EC2 Reserved Instances (RIs) by setting up Harness Commitment Orchestrator. 
 
 
 ## Prerequisites
@@ -14,11 +16,23 @@ Optimize the utilization of Amazon EC2 Reserved Instances (RIs) by setting up Ha
 Ensure that you meet the following prerequisites to set up Commitment Orchestrator:
 
 * Add the master payer account of AWS in Harness with CUR configured. For more information, go to [Cost and Usage Report](https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html).
-* Add the set of roles on the master account to enable Harness to perform certain actions. Go to [Set up CCM for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#commitment-orchestrator).
+* If you want to view the commitment utilization data and the potential cost savings, you need to enable the permissions as displayed in the following screenshot: 
+  
+    <docimage path={require('./static/commitment-visibility-permissions.png')} width="50%" height="50%" title="Click to view full size image" />
+
+ If you want to set up commitment orchestrator and enable automated actions, you must add the set of roles on the master account to enable Harness to perform certain actions as displayed in the following screenshot:
+
+  <docimage path={require('./static/commitment-setup-permissions.png')} width="50%" height="50%" title="Click to view full size image" />
+
+ For more information about the permissions that need to be added, go to [Set up CCM for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#commitment-orchestrator).
+
+  
 * Enable Cost Explorer to show data linked to child accounts. For more information, go to [Granting Cost Explorer Access](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-access.html#grant-ce-access).
 
 
 ## Set up Commitment Orchestrator
+
+Perform the following tasks to configure commitment orchestrator in your environment: 
 
 1. In the Harness application, go to **Cloud Costs**.
 2. Select **Commitment Orchestrator**.
