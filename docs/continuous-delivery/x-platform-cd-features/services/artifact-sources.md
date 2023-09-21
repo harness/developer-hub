@@ -3636,6 +3636,12 @@ With these requirements met, the cluster imports the credentials from the Docker
 </details>
 
 
+:::warning
+
+When selecting artifacts/tags in Harness dropdown menus, if the artifacts/tags use Harness expressions, please keep in mind that some expressions can’t be resolved outside of pipeline execution. For example, artifacts/tags expressions using `<+project.name>` or `<+org.name>` will not resolve to values in runtime dropdowns, including those used to load tags.
+
+:::
+
 ## Sidecar workloads
 
 You can use Harness to deploy both primary and sidecar Kubernetes workloads.
