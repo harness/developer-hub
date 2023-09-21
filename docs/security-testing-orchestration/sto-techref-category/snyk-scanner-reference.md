@@ -1,6 +1,7 @@
 ---
-title: Snyk scanner reference
+title: Snyk scanner reference for STO
 description: Image and repository scans with Snyk
+sidebar_label: Snyk scanner reference
 sidebar_position: 290
 ---
 
@@ -13,7 +14,7 @@ Harness STO supports the following scan types for the following Snyk products:
 
 For complete end-to-end workflow descriptions, go to [Run Snyk scans and ingest results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans.md).
 
-## Before you begin
+## Important notes for running Snyk scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -189,7 +190,7 @@ In the **Advanced** settings, you can use the following options:
 
 
 
-## Security step configuration (_legacy_)
+## Security step settings for Snyk scans in STO (_legacy_)
 
 You can set up Snyk scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

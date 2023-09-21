@@ -67,7 +67,7 @@ USER 1000
 
 </details>
 
-### Workflow description
+### Workflow for configuring STO to download images from a private registry
 
 1. Download the scan images you need, test and validate the images, and store them in your private registry. 
 
@@ -106,7 +106,7 @@ USER 1000
    * `no_proxy`  — A comma-separated list of hosts to bypass the proxy
 
 
-### YAML example
+### YAML example for configuring STO to download images from a private registry
 
 The following pipeline downloads its Security Scan image (bandit) and all of its CI build images from the Harness Image Registry. 
 
@@ -172,7 +172,5 @@ pipeline:
         variables: []
   identifier: STO_Tutorial_1
   name: STO Tutorial 1
-
-
 
 ```

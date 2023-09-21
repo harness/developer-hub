@@ -1,6 +1,7 @@
 ---
-title: Semgrep scanner reference
+title: Semgrep scanner reference for STO
 description: Repository scans with Semgrep
+sidebar_label: Semgrep settings reference
 sidebar_position: 270
 ---
 
@@ -8,7 +9,7 @@ sidebar_position: 270
 You can scan repositories using [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories. 
 
 
-## Before you begin
+## Important notes for running Semgrep scans in STO
 
 <!-- 
 ### Docker-in-Docker requirements
