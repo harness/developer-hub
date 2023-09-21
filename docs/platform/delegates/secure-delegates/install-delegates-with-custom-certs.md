@@ -390,50 +390,50 @@ To install a Docker delegate with self-signed certificates, do the following:
    -v <localPathToCerts>:/<containerPathToCerts> \
    ```
 
-Example:
+   For example, the following Docker run command installs a Docker delegate for Harness Self-Managed Enterprise Edition with self-signed certificates.
 
-```bash
-#!/bin/bash -e
-# Copyright 2021 Harness Inc. All rights reserved.
-# Use of this source code is governed by the PolyForm Free Trial 1.0.0 license
-# that can be found in the licenses directory at the root of this repository, also available at
-# https://polyformproject.org/wp-content/uploads/2020/05/PolyForm-Free-Trial-1.0.0.txt.
+   ```bash
+   #!/bin/bash -e
+   # Copyright 2021 Harness Inc. All rights reserved.
+   # Use of this source code is governed by the PolyForm Free Trial 1.0.0 license
+   # that can be found in the licenses directory at the root of this repository, also available at
+   # https://polyformproject.org/wp-content/uploads/2020/05/PolyForm-Free-Trial-1.0.0.txt.
+   
+   sudo docker pull docker.io/harness/delegate:latest
 
-sudo docker pull docker.io/harness/delegate:latest
-
-sudo docker run -d --restart unless-stopped --hostname="$(hostname -f | head -c 63)" \
--e ACCOUNT_ID=<PUT_YOUR_ACCOUNT_ID_HERE> \
--e DELEGATE_TOKEN=<PUT_YOUR_DELEGATE_TOKEN_HERE> \
--e MANAGER_HOST_AND_PORT=<PUT_YOUR_MANAGER_HOST_AND_PORT_HERE> \
--e WATCHER_STORAGE_URL=<PUT_YOUR_LOAD_BALANCER_URL_HERE>/storage/wingswatchers \
--e WATCHER_CHECK_LOCATION=watcherprod.txt \
--e DELEGATE_STORAGE_URL=<PUT_YOUR_LOAD_BALANCER_URL_HERE>/storage/wingsdelegates \
--e DELEGATE_CHECK_LOCATION=delegateprod.txt \
--e HELM_DESIRED_VERSION= \
--e JRE_VERSION=11.0.19_7 \
--e HELM3_PATH= \
--e HELM_PATH= \
--e KUSTOMIZE_PATH= \
--e KUBECTL_PATH= \
--e CF_PLUGIN_HOME= \
--e CF_CLI6_PATH= \
--e CF_CLI7_PATH= \
--e OC_PATH= \
--e DELEGATE_NAME=<PUT_YOUR_DELEGATE_NAME_HERE> \
--e DELEGATE_PROFILE=<PUT_YOUR_DELEGATE_PROFILE_HERE> \
--e DELEGATE_TYPE=DOCKER \
--e DEPLOY_MODE=KUBERNETES_ONPREM \
--e PROXY_HOST= \
--e PROXY_PORT= \
--e PROXY_SCHEME= \
--e PROXY_USER= \
--e PROXY_PASSWORD= \
--e NO_PROXY= \
--e PROXY_MANAGER=true \
--e JAVA_OPTS='-Xms64M -Djavax.net.ssl.trustStore=<containerPathToCerts> -Djavax.net.ssl.trustStorePassword=changeit' \
--e POLL_FOR_TASKS=false \
--v <localPathToCerts>:/<containerPathToCerts> \
-docker.io/harness/delegate:latest
-```
+   sudo docker run -d --restart unless-stopped --hostname="$(hostname -f | head -c 63)" \
+   -e ACCOUNT_ID=<PUT_YOUR_ACCOUNT_ID_HERE> \
+   -e DELEGATE_TOKEN=<PUT_YOUR_DELEGATE_TOKEN_HERE> \
+   -e MANAGER_HOST_AND_PORT=<PUT_YOUR_MANAGER_HOST_AND_PORT_HERE> \
+   -e WATCHER_STORAGE_URL=<PUT_YOUR_LOAD_BALANCER_URL_HERE>/storage/wingswatchers \
+   -e WATCHER_CHECK_LOCATION=watcherprod.txt \
+   -e DELEGATE_STORAGE_URL=<PUT_YOUR_LOAD_BALANCER_URL_HERE>/storage/wingsdelegates \
+   -e DELEGATE_CHECK_LOCATION=delegateprod.txt \
+   -e HELM_DESIRED_VERSION= \
+   -e JRE_VERSION=11.0.19_7 \
+   -e HELM3_PATH= \
+   -e HELM_PATH= \
+   -e KUSTOMIZE_PATH= \
+   -e KUBECTL_PATH= \
+   -e CF_PLUGIN_HOME= \
+   -e CF_CLI6_PATH= \
+   -e CF_CLI7_PATH= \
+   -e OC_PATH= \
+   -e DELEGATE_NAME=<PUT_YOUR_DELEGATE_NAME_HERE> \
+   -e DELEGATE_PROFILE=<PUT_YOUR_DELEGATE_PROFILE_HERE> \   
+   -e DELEGATE_TYPE=DOCKER \
+   -e DEPLOY_MODE=KUBERNETES_ONPREM \
+   -e PROXY_HOST= \
+   -e PROXY_PORT= \
+   -e PROXY_SCHEME= \
+   -e PROXY_USER= \
+   -e PROXY_PASSWORD= \
+   -e NO_PROXY= \
+   -e PROXY_MANAGER=true \
+   -e JAVA_OPTS='-Xms64M -Djavax.net.ssl.trustStore=<containerPathToCerts> -Djavax.net.ssl.trustStorePassword=changeit' \
+   -e POLL_FOR_TASKS=false \
+   -v <localPathToCerts>:/<containerPathToCerts> \
+   docker.io/harness/delegate:latest
+   ```
 
 3. Run the Docker command.
