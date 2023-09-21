@@ -95,7 +95,7 @@ To set up a PostgreSQL VM, do the following:
 3. Add the PostgreSQL third-party repository to get the latest PostgreSQL packages.
 
    ```
-   sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+   sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
    ```
 
 4. Add the PostgreSQL third-party repository.
