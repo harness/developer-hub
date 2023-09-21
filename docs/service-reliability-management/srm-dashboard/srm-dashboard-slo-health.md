@@ -15,7 +15,7 @@ To access the SLO Health dashboard, do the following:
 
 1. Within your Harness project, navigate to **Dashboards**. On the Dashboards page, select **Service Reliability**.
    
-   The dashboard list is displayed, that includes the default SLO Health and SLO History dashboards.
+   The dashboard list is displayed, which includes the default SLO Health and SLO History dashboards.
 
 2. Select the SLO Health dashboard.
    
