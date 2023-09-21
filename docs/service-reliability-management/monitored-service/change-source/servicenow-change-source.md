@@ -161,7 +161,7 @@ A business rule is essential to define trigger conditions and configure the Harn
 </details>
 
       
-1.  Save the business rule.
+4.  Save the business rule.
 
 To learn more, go to [Create a business rule](https://docs.servicenow.com/bundle/rome-application-development/page/script/business-rules/task/t_CreatingABusinessRule.html).
 
