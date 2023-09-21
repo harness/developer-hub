@@ -9,7 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-[Zed Attack Proxy (ZAP)](https://www.zaproxy.org/get-started/) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
+[Zed Attack Proxy (ZAP)](https://www.zaproxy.org) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
 
 ## Important notes for running ZAP scans in STO
 

@@ -6,7 +6,7 @@ sidebar_position: 155
 
 ---
 
-You can scan your code repositories using [Gitleaks](https://github.com/PyCQA/GitLeaks), an open-source tool designed to find common security issues in Python code. 
+You can scan your code repositories using [Gitleaks](https://github.com/gitleaks), an open-source tool designed to find common security issues in Python code. 
 
 Gitleaks can publish results to [Static Analysis Results Interchange Format (SARIF)](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning), an open data format supported by many scan tools. 
 
