@@ -199,9 +199,10 @@ If you don’t want to or cannot add the ACL policy (with read permission for sy
 
 1. Identify the engine version of the Secret Manager in Vault.
 2. In **Secret Engine Name**, enter the name of the Secret Engine.
-3. In **Secret Engine** **Version**, enter the engine version.
+3. In **Secret Engine Version**, enter the engine version.
 
-You cannot change the Secret Engine later. Harness blocks editing this setting later since there might be secrets that are created/referenced under this secret engine. Changing the secret engine might break references to those secrets.
+   You cannot change the Secret Engine later. Harness blocks editing this setting later since there might be secrets that are created/referenced under this secret engine. Changing the secret engine might break references to those secrets.
+4. In **Kubernetes Auth Endpoint**, enter the authentication endpoint, if configured. The default value is `Kubernetes`.
 
 ### Step 3: Renewal Interval (minutes)
 
@@ -226,7 +227,7 @@ v1 Secret Engine:
 
 The secret can fail because of various reasons.
 
-1. Using the Token/App Role, the V**ault** authentication is not successful.
+1. Using the Token/App Role, the **Vault** authentication is not successful.
 2. The following **permission** is not available in any of the policies attached to the Token/App Role. If this permission is not available, the user will not be able to fetch the list of secret engines from the customer vault and Harness will show a single option of Secret Engine named **“secret”** with version 2, which might be incorrect for the customer. Make sure to add the permission to a policy attached to the Token/App Role as follows:
 
    ```
@@ -238,7 +239,7 @@ The secret can fail because of various reasons.
 
 ### Step 4: Read-only Vault
 
-If required by your organization's security practices, select the **Read-only Vault** check box. This selection authorizes Harness to read secrets from Vault, but not to create or manage secrets within Vault.
+If required by your organization's security practices, select the **Read-only Vault** option. This selection authorizes Harness to read secrets from Vault, but not to create or manage secrets within Vault.
 
 ![](../../secrets/static/add-hashicorp-vault-30.png)
 
