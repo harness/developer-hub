@@ -24,8 +24,8 @@ Custom fields are a combination of first-class dimensions and predefined functio
 
 To get started with the custom fields, you need to select an Explore for your tile.
 
-1. Create a Dashboard. See [Step 1: Create a Dashboard](create-dashboards.md#step-1-create-a-dashboard).
-2. Add tiles to your Dashboard. See [Step 2: Add Tiles to a Dashboard](create-dashboards.md#step-2-add-tiles-to-a-dashboard).
+1. Create a Dashboard. Go to [Step 1: Create a Dashboard](create-dashboards.md#step-1-create-a-dashboard).
+2. Add tiles to your Dashboard. Go to [Step 2: Add Tiles to a Dashboard](create-dashboards.md#step-2-add-tiles-to-a-dashboard).
 3. Select an Explore for your tile.
 4. Give your tile a name. This will be the name of the tile on the dashboard.
 5. In **Custom Fields**, click **Add**.![](./static/add-custom-fields-27.png)
@@ -34,14 +34,14 @@ To get started with the custom fields, you need to select an Explore for your ti
 	* Custom Dimension
 	* Custom Measure
 	* Table Calculation
-	* For more information, see [Custom Field Types](https://connect.looker.com/library/document/adding-custom-fields?version=22.2#custom_field_types).
+	* For more information, go to [Adding custom fields](https://cloud.google.com/looker/docs/custom-fields) in the GCP documentation.
 
 ### Create Custom Dimension
 
 Perform the following steps to create a Custom Dimension.
 
 1. In **Custom Fields**, click **Add**, and then click **Custom Dimension**.
-2. In **Edit custom dimension**, in **Expression**, enter the expression for your dimension. For supported functions and operators see, [Functions and operators](https://docs.looker.com/exploring-data/creating-looker-expressions/looker-functions-and-operators).
+2. In **Edit custom dimension**, in **Expression**, enter the expression for your dimension. For supported functions and operators, go to [Functions and operators](https://docs.looker.com/exploring-data/creating-looker-expressions/looker-functions-and-operators).
 3. (Optional) Select the format for your dimension.
 4. In **Name**, enter a name for your dimension. The name will appear in Custom Fields to identify your dimension.![](./static/add-custom-fields-28.png)
 5. Once you're done, click **Save**.
@@ -99,7 +99,7 @@ Table calculations can perform mathematical, logical (true/false), lexical (text
 
 Perform the following steps to use Table Calculation for your custom fields.
 
-In **Custom Fields**, click **Add**, and then click **Table Calculation**. For details, see [Using Table Calculation](https://connect.looker.com/library/document/using-table-calculations?version=22.2).
+In **Custom Fields**, click **Add**, and then click **Table Calculation**. For details, go to [Using table calculations](https://cloud.google.com/looker/docs/table-calculations) in the GCP documentation.
 
 ### Next steps
 

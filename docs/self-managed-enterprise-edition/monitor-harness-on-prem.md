@@ -220,7 +220,7 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
   helm install grafana grafana/grafana -n <Namespace>
   ```
 
-2. Install a Bitnami packaged Grafana operator. For instructions, go to [Install the Operator](https://grafana.com/docs/agent/latest/operator/get-started/) in the Grafana documentation.
+2. Install a Bitnami packaged Grafana operator. For instructions, go to [Install the Operator](https://grafana.com/docs/agent/latest/operator/getting-started/) in the Grafana documentation.
 
 ## Open the Grafana dashboard
 

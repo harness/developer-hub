@@ -1116,7 +1116,7 @@ Also, for the kubernetes job, if you use the Apply step instead of Rollout then 
 [Documentation](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities)
  
 - We don't save yaml's for service and other entities like we used to in First Generation: 
-[Documentation 1](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code/#does-the-configuration-as-code-support-matrix-include-entities-supported-by-git-experience) and [Documentation 2](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/git-exp-vs-config-as-code/#why-did-harness-reduce-the-number-of-supported-entities-backed-by-git).
+[Documentation 1](https://developer.harness.io/docs/faqs/git-exp-vs-config-as-code#does-the-configuration-as-code-support-matrix-include-entities-supported-by-git-experience) and [Documentation 2](https://developer.harness.io/docs/faqs/git-exp-vs-config-as-code#why-did-harness-reduce-the-number-of-supported-entities-backed-by-git).
 
 
 #### Running into Harness Platform Rate limits?
