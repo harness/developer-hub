@@ -393,7 +393,7 @@ To initiate replication, do the following:
 6. Run the following to check the logs and verify that the replica works. 
    
    ```
-   tail -f /var/lib/postgresql/postgresql-14-main.log
+   tail -f /var/log/postgresql/postgresql-13-main.log
    ```
 
    The output should be similar to the following.
