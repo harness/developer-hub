@@ -101,8 +101,7 @@ The SDK is initialized for a specific target, enabling personalized flag evaluat
 
 #### We used to have complex rules with "OR" conditions in Optimizely for target groups. Does Harness support similar complex rules or just "OR" rules?
 
-```
-json
+```json
 [
   "and",
   [
@@ -151,7 +150,6 @@ json
     ]
   ]
 ]
-
 ```
 
 Currently, Harness supports "OR" rules for defining target groups. However, if you require complex "AND" rules or more intricate rule combinations, you can achieve this by providing an additional attribute that combines the criteria you need. For example, you can create a new attribute that combines both the "name1" and "name2" fields to meet your specific conditions.
