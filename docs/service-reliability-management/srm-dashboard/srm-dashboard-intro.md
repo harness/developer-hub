@@ -39,7 +39,7 @@ To view the SRM dashboards, follow these steps:
 
 To view a specific Service Reliability dashboard, do the following:
 
-1.	In the dashboard list, locate the dashboard you wish to explore and select it. The selected dashboard opens, displaying the relevant metrics and data. For example, if you want to view the SLO Health dashboard, simply select it in the list.
+- In the dashboard list, locate the dashboard you wish to explore and select it. The selected dashboard opens, displaying the relevant metrics and data. For example, if you want to view the SLO Health dashboard, simply select it in the list.
 
 
 ## Next steps
