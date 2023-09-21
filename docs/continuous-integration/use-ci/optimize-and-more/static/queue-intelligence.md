@@ -4,6 +4,8 @@ description: Queue builds that CI can't run concurrently.
 sidebar_position: 20
 ---
 
+<!-- topic hidden until feature is fixed -->
+
 :::note
 
 Currently, this feature is behind a feature flag. Contact Harness Support to enable the feature.
