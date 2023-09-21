@@ -21,33 +21,11 @@ Harness CI supports launching GitHub Actions as part of a pipeline stage using t
 
 This topic describes how to use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step to run GitHub Actions. When your pipeline runs, the GitHub Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
 
-For information about the specialized **GitHub Action plugin** step, go to [Use the GitHub Action plugin step](./ci-github-action-step.md).
-
-## Prerequisites
-
-You need a CI pipeline with a **Build** (`CI`) stage.
-
-<details>
-<summary>Prepare a pipeline</summary>
-
-If you haven't created a pipeline before, review the [CI pipeline creation overview](../prep-ci-pipeline-components.md) or try one of the [CI tutorials](../../get-started/tutorials.md).
-
-To add a **Build** stage to an existing pipeline:
-1. Go to the pipeline you want to edit.
-2. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
-3. Enter a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
-4. To configure the build infrastructure, select your **Build** stage, and then select the **Infrastructure** tab.
-5. After configuring the build infrastructure, select the **Execution** tab to begin adding steps to the stage.
-
-For more information, go to:
-
-* [Create and Configure a Codebase](../codebase-configuration/create-and-configure-a-codebase.md).
-* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
-* [Set up build infrastructure](/docs/category/set-up-build-infrastructure).
-
-</details>
+For information about the specialized **GitHub Action plugin** step, go to [Use the GitHub Action step](./ci-github-action-step.md).
 
 ## Add the Plugin step
+
+You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 
 1. In your pipeline's **Build** stage, and a [Plugin step](./plugin-step-settings-reference.md).
 2. Enter a **Name** and optional **Description**.
@@ -57,7 +35,7 @@ For more information, go to:
 
    **Privileged** is required because the GitHub Actions Drone Plugin uses [nektos/act](https://github.com/nektos/act) to run GitHub Actions in Harness CI, which requires DinD (Docker-in-Docker) to run images. <!--If you're using local runner or VM build infra, do you need privileged? -->
 
-### Define variables and attributes
+### Define Action variables and attributes
 
 Use **Settings** to specify the GitHub Action you want to use and to pass variables and attributes required by the Action and the Drone Plugin. You must specify `uses` and `with`. You can use `env` to specify environment variables, such as GitHub tokens to access [private Action repos](#private-action-repos).
 
@@ -177,15 +155,6 @@ In this example, two parallel `Plugin` steps run the same GitHub Action. Each st
                            XDG_CACHE_HOME: /home/ubuntu/.cache2
 ```
 
-## Test your pipeline
-
-1. Select **Apply Changes** to save the step settings, and then select **Save** to save the pipeline.
-2. Select **Run** to test the pipeline.
-
-You can observe the GitHub Action in the build's logs.
-
-![](./static/run-a-github-action-in-cie-532.png)
-
 ## Pipeline YAML example
 
 This YAML example uses a `Plugin` step to run the Google `upload-cloud-storage` GitHub Action. It uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) to store a token secret required by the Action. If you copy this example, you need to modify the placeholder values, image, and other settings according to your needs. You'll also need to create your own secret and stage variable.
@@ -247,6 +216,14 @@ pipeline:
 For more examples of GitHub Actions in Plugin steps, go to the [GitHub Actions Support in Harness CI blog post](https://harness.io/blog/continuous-integration/github-actions-support-harness-ci/).
 
 :::
+
+## Action logs
+
+When you run the pipeline, you can observe the GitHub Action plugin logs in the build's logs.
+
+<!-- ![](./static/run-a-github-action-in-cie-532.png) -->
+
+<docimage path={require('./static/run-a-github-action-in-cie-532.png')} />
 
 ## Troubleshooting the GitHub Actions plugin
 

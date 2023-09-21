@@ -13,12 +13,14 @@ helpdocs_is_published: true
 
 You can run Windows builds in your Kubernetes build infrastructure. Windows Server 2019 images are available for running CI Builds and for out-of-the-box CI steps such as Run, Save, and Restore.
 
-## Important notes
+:::info
 
 * The following steps aren't supported on Windows platforms on Kubernetes cluster build infrastructures: **Build and Push an image to Docker Registry**, **Build and Push to ECR**, and **Build and Push to GCR**. Try using the [buildah plugin](../../build-and-upload-artifacts/build-and-push-nonroot.md) instead.
 * **Docker commands aren't supported.** If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure; however, Windows doesn't support privileged mode. If you need to run Docker commands, you must use another build infrastructure, such as [Harness Cloud](../use-harness-cloud-build-infrastructure.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), where you can run Docker commands directly on the host.
 
-### Windows Server 2019 is required
+:::
+
+## Windows Server 2019 is required
 
 Only Windows Server 2019 images are supported.
 
@@ -50,7 +52,7 @@ COPY --from=core /windows/system32/netapi32.dll /windows/system32/netapi32.dll
 
 :::
 
-## YAML example
+## Pipeline YAML example
 
 This example pipeline runs on a Windows platform on a Kubernetes cluster build infrastructure. Note the presence of `os` and `nodeSelector` in `stage.spec.infrastructure.spec`.
 

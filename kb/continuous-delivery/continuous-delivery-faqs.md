@@ -1313,3 +1313,9 @@ You can always create dashboards to help you gain insights into your data. Howev
 
 ### Does a pipeline delegate selector override the service infrastructure?
 It doesn't override the service infrastructure. Instead, it only changes which delegate will execute the necessary operations of your pipeline.
+
+### Can Harness able to monitor for when a particular image tag changes on DockerHub in order to initiate a hands-free build and push to our repo?
+Yes, You can setup a trigger based on the image tag changes on DockerHub repo as suggested in this[ doc.](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/)
+
+### Can we trigger a pipeline with a git push on bitbucket?
+Yes, you can trigger the pipeline with a git event through bitbucket. You can refer to our [doc](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) and [video](https://www.youtube.com/watch?v=y8s351IJLXw&t=113s&ab_channel=harness) tutorial.
