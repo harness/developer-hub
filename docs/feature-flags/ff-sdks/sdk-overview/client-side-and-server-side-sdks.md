@@ -24,7 +24,7 @@ SDKs are the libraries you add to your code to authenticate, configure, and mana
 
 All of our SDKs are open-source, provided per-language, and backed by public APIs. They handle the job of authenticating with Harness, establishing the correct values for the session, handling fallback behaviors in the case of errors, and sending metrics back to Harness over time.
 
-For more information, go to the [Feature Flags overview page](https://developer.harness.io/docs/feature-flags/ff-onboarding/overview).
+For more information, go to the [Feature Flags overview page](https://developer.harness.io/docs/feature-flags/get-started/overview).
 
 ## SDK architecture
 
