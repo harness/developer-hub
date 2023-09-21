@@ -256,22 +256,9 @@ resource "harness_platform_service" "example" {
 </Tabs>
 ```
 
-## Runtime inputs and expressions in services
+## Using runtime input services with inputs and expressions
 
-If you use runtime inputs for settings in a service, you will need to provide values for these inputs when you run the pipeline using the service.
-
-If you use expressions in a service, Harness must be able to resolve these expressions when users run the pipeline using the service.
-
-Let's look at an example.
-
-1. In a Harness Deploy stage, in **Service**, select **Runtime input** for the service.
-   
-   ![](./static/services-and-environments-runtime-input-01.png)
-2. When you run the pipeline, you can select the service to use.
-   
-   ![](./static/services-and-environments-runtime-input-02.png)
-
-Now you can provide values for any runtime inputs in the service. Let's go into more detail in the next section.
+Services are often configured using runtime inputs or expressions so you can change service settings for different deployment scenarios at pipeline runtime. 
 
 :::note
 
@@ -279,21 +266,84 @@ For more information on runtime inputs and expressions, go to [Fixed Values, Run
 
 :::
 
+
+Often, the service option in a pipeline is also set as a runtime input so you can select which service to use when you deploy the pipeline. 
+
+Also, the pipeline that deploys the service might be triggered in response to changes in a service's artifact or manifest.
+
+There are a few things to note when using services with or as runtime inputs:
+- Service runtime inputs are not configurable in the pipeline that deploys the service.
+- Service runtime inputs are not configurable in the trigger.
+
+### Why are service inputs not configurable?
+
+Many Harness settings and options are dependent on the specific values set in a service. When a value is set as runtime input, Harness can't identify what configurations to render in the user interface.
+
+
 ### Selecting settings when the service is an expression
 
-If you are using a runtime input for the service in a stage, and the service you are going to select has runtime inputs for some of its own settings, you can select inputs for these settings when you select the service in **Run Pipeline**.
+If you use an expression in a service setting, Harness must be able to resolve the expressions when you run the pipeline using the service.
 
-Let's look at an example.
+There are a few options you can use to support expressions when a service is set as a runtime input in a pipeline, or when the service itself uses runtime inputs. These options are covered in the following sections.
 
-Here is a service with an artifact that has runtime inputs for its artifact **Tag** and **Digest** settings.
+### Use trigger payload data to configure the service at runtime
 
-![picture 0](static/c150c96ef6caae9bd4124fb70d3a8f6550ad7d1f3577c65172c9c2643f1749a4.png)  
+You can pass in this data when the pipeline execution is triggered using a custom cURL trigger.
 
-Next, when you run a pipeline that has the **Service** setting as a runtime input, you select the service that has runtime inputs for its artifact **Tag** and **Digest** settings.
+For more information, go to [Passing data in Custom triggers](/docs/platform/triggers/custom-trigger-passing-data).
 
-As you can see, you can now select the artifact **Tag** and **Digest** settings.
+Here's the YAML for a service in a pipeline that uses trigger payload data for the service reference, primary artifact, and tag:
 
-![picture 1](static/0fefa40bd146ba01cf7c3d13e26e7bc08cc414a731b890b231eb7708df314f4a.png)  
+```yaml
+spec:
+  service:
+    serviceRef: <+trigger.payload.serviceId>
+    serviceInputs:
+      serviceDefinition:
+        type: TAS
+        spec:
+          artifacts:
+            primary:
+              primaryArtifactRef: <+trigger.payload.artifactId>
+              sources:
+                - identifier: <+trigger.payload.artifactId>
+                  type: Nexus2Registry
+                  spec:
+                    tag: <+trigger.payload.tag>
+```
+
+To supply the data you simply provide the payload key-value pairs in the cURL command you use to execute the pipeline:
+
+```
+curl -X POST -H 'Content-Type: application/json' --url 'webhook_url' -d '{"serviceId": "Kubernetes", "artifactId": "nginx", "tag": "abc"}'
+```
+
+### Use pipeline variables and trigger payload data to configure the service at runtime
+
+You can create pipeline variables and map those to service settings. When you run the pipeline, you can provide values for the variables to define the service.
+
+For example, here are pipeline variables for a service's artifact and tags.
+
+![picture 6](static/62e0417c8075a66b582c4f77873cc04c228a985c2f4bc7ca2994e2768ade208b.png)  
+
+Next, you map the pipeline variables to the services' artifact settings using expressions:
+
+![picture 4](static/039bb495a010a86dd319421b1d1e4c50296c818933b3173376e83c9378ad0b9e.png)  
+
+You can also map a pipeline variable for the service name as an expression:
+
+![picture 5](static/bf5d06238223ce766372f48a1ec1cc356413c542064d2806ebe9b9d48716e161.png)  
+
+When you run the pipeline, you are prompted to provide values for the pipeline variables.
+
+![picture 7](static/d29655cbf1b0a6f129c0b1c02ad492fb2499b7fe0a14a7463811fae43209ff44.png)  
+
+
+You can also map these same pipeline variables to trigger payload data expressions. 
+
+![picture 8](static/7e52eb23cfcb0461224b9ed278b6ad699945ec80e4b15c768010b2835f072b0d.png)  
+
+When you initiate the trigger using the cURL command, the key-value pairs in the command are used for the pipeline variables. Finally, those pipeline variable values are used to define the service.
 
 
 ## Next steps
