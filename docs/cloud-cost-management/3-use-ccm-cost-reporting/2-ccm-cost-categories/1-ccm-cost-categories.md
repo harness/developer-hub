@@ -102,6 +102,29 @@ The AND and OR operators are used to filter data based on more than one conditio
 You can create a maximum of 1000 cost buckets.
 :::
 
+#### Copy cost buckets
+
+You can copy cost buckets from one cost category to multiple cost categories simultaneously. You have the flexibility to choose any number of buckets for copying. Upon selection, a popup prompt appears, allowing you to specify the target cost categories for copying the selected buckets. Upon successful completion, you receive a success notification along with relevant details.
+
+
+:::important note
+While copying, you may encounter issues if the destination cost category already has a bucket with the same name as the copied one. In such cases, you can address the conflict by renaming the bucket before attempting the copy operation again.
+:::
+
+
+To copy cost buckets from one cost category to another, perform the following steps:   
+
+1. On the **Cost Categories** page, expand the cost category from which you want to copy the cost buckets.
+2. Select **Manage Cost Buckets**.
+3. Select the cost buckets you want to copy.
+4. Select **Copy**.
+5. A popup appears displaying the source cost category from which you've copied the cost buckets. Within this popup, select the target cost categories to which you intend to copy the cost buckets.
+6. Select **View Details** on the confirmation message and make sure the intended cost buckets have been copied to the required cost categories.
+   
+
+  <docimage path={require('./static/ccm-copy-cost-buckets.gif')} width="60%" height="60%" title="Click to view full size image" />
+
+
 ### Create shared cost buckets
 
 1. Select **+ New Shared Bucket**.
