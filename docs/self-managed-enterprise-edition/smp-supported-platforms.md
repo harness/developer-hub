@@ -58,5 +58,5 @@ The following permissions are required:
 * Disaster Recovery (coming soon)
 
 ## What's not supported
-* Self Managed Enterprise is not validated with the FIPS-enabled K8S environment
+* Self-Managed Enterprise Edition is not validated with the FIPS-enabled K8S environment.
 
