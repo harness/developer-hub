@@ -610,45 +610,45 @@ No, we don't support that feature currently.
 * `23.XX.8XXXX`: This format corresponds to the standard delegate image. It includes all the default binaries and is a suitable choice for users who are relatively new to Harness and do not have stringent security requirements. This image provides a comprehensive set of tools and functionalities for general usage.
 * `1.0.8XXX`X`: This format denotes an older version of the delegate, often referred to as the legacy delegate. New Harness accounts no longer include this delegate version, and users are strongly encouraged to migrate to the standard delegate for better compatibility, performance, and security.
 
-### Do we not have OOTB roles at the project level?
+#### Do we not have OOTB roles at the project level?
 
 Yes, we do have a Project Admin role built in and also no ability to delete built in roles. Org and Project specific built-in roles are available only after the corresponding entity is created and they are only available in the respective scope.
 
-### What is the reason of delegates to be blacklist?
+#### What is the reason of delegates to be blacklist?
 
 The logic of blacklist of delegates is that every delegate task has one or more that one validation/capability check, when the task comes, we see if we ever has done validation for the capability. This is cached for 6 hours so if we have validated connectivity it will be valid for 6 hours, if this is the first time or 6 hours are passed, then will execute the validation logic, if the validation fails, the delegate is blacklisted for the criteria for 5 mins and if within five minutes a task with same critieria comes then delegate will be blacklisted for it.
 So check what validation crieterias were added in the task and what validation is failing.
 
-### What are the  K8s version requirements for Delegate installations?
+#### What are the  K8s version requirements for Delegate installations?
 
 We try to support all the active K8S releases (that’s last 3 releases according to our versioning policy), i.e. we support anything that’s not EOL.
 
-### Can we increase the daily deployment limit to 10000 for a customer?
+#### Can we increase the daily deployment limit to 10000 for a customer?
 
 Yes, we are capable of increasing the daily deployment limit > 10000 per day.
 
-### How the delegates share information like a Helm Chart and its contents on the same stage?
+#### How the delegates share information like a Helm Chart and its contents on the same stage?
 
 It is divided in two steps first is to download the values.yaml files on any of the delegate (it could be just a 1 or more delegates depending upon how many values.yaml have been configured) and then pass them to the next step. Then delegate downloads the Helm chart and then use the values.yaml files that were passed by the previous step.
 So,  Delegate 1 executed the Fetch Files will pass the values/manifests to Delegate 2 that will execute the Helm Install/Apply.
 
-### How do the delegates communicate with each other when they are sharing information?
+#### How do the delegates communicate with each other when they are sharing information?
 
 The delegates don't communicate with each other. They go through the manager(Harness) to retrieve the result of the tasks performed by another delegate.
 
-### Do the customer files are stored in the manager during the execution while the Delegate 1 is communicating directly with Delegate 2?
+#### Do the customer files are stored in the manager during the execution while the Delegate 1 is communicating directly with Delegate 2?
 
 We don't store the customer's manifest files in the Harness Manager. Only values.yaml files are passed through the Manager(Harness).
 
-### Do the secrets in values.yaml files are rendered on the manager(Harness)?
+#### Do the secrets in values.yaml files are rendered on the manager(Harness)?
 
 No, these secrets are never rendered on the manager(Harness). They only get rendered in the delegate.
 
-### Is it possible to define per User Groups who can/can’t open support tickets?
+#### Is it possible to define per User Groups who can/can’t open support tickets?
 
 Currently anyone in the account would be able to open a ticket, and access is not restricted.
 
-### Do we have any docs for install and upgrade the SMP cluster?
+#### Do we have any docs for install and upgrade the SMP cluster?
 
 Yes, we have the docs, you can refer to this [Documentation](https://harness.atlassian.net/wiki/spaces/~63f950e3e76fc61320f65127/pages/21474541915/Internal+-+Install+and+upgrade+SMP?atlOrigin=eyJpIjoiOWJlMDhlNDJhZjM2NGUyN2E2MGU2ZDRkODQwZjUxZmQiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ).
 
