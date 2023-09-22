@@ -74,8 +74,8 @@ This release does not include any new early access features.
 
 #### Version 23.09.80510
 
-- Support for Artifact Path filter for Artifactory (CDS-77244, CDS-79760)
-- Decrement the task count when DELEGATE_TASK_CAPACITY is enabled (PL-41367)
+- Added support for the Artifactory **Artifact Path** filter. (CDS-77244, CDS-79760)
+- Decrement the task count when `DELEGATE_TASK_CAPACITY` is enabled. (PL-41367)
 
 ## Previous releases
 
