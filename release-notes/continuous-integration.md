@@ -37,7 +37,7 @@ When [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/ai
 
 ### Fixed issues
 
-* <!-- unclear --> (CI-9240)
+* (CI-9240)
 * Fixed an issue with UI rendering of error messages related to Test Intelligence call graph visualizations. (CI-9198)
 * Fixed two issues related to [runtime input](/docs/platform/variables-and-expressions/runtime-inputs#runtime-inputs) (`<+input>`) with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). (CI-9177)
    * Previously, if you used runtime input for [custom cache paths](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-paths), Harness wouldn't prompt for input and, instead, ran the pipeline with an empty path. Now, Harness correctly prompts for this input when you run the pipeline.
