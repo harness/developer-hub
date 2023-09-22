@@ -44,6 +44,17 @@ import StoSupportedScanners from '/docs/security-testing-orchestration/sto-techr
 </details>
 
 
+<details><summary>Supported scanner versions and input formats</summary>
+
+```mdx-code-block
+import StoSupportedVersions from '/docs/security-testing-orchestration/sto-techref-category/shared/_supported-versions-and-data-formats.md';
+```
+
+<StoSupportedVersions />
+
+</details>
+
+
 <details><summary>Scanner binaries used in STO container images</summary>
 
 ```mdx-code-block

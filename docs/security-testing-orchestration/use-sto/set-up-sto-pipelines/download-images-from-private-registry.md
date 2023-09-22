@@ -99,9 +99,9 @@ USER 1000
 
    If you need to use a proxy server, you must also specify the following: 
 
-   * `http_proxy`  —  The hostname and port to use for proxied HTTP requests
+   * `http_proxy`  —  The HTTP hostname and port to use for proxied HTTP requests
   
-   * `https_proxy`  —  The hostname and port to use for proxied HTTPS requests
+   * `https_proxy`  —  The HTTPS hostname and port to use for proxied HTTPS requests
 
    * `no_proxy`  — A comma-separated list of hosts to bypass the proxy
 
