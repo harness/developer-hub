@@ -25,7 +25,7 @@ This topic explains how to add and use a Custom Secret Manager in Harness.
 
 :::info important
 
-* Harness Custom Secret Manager is a read-only Secret Manager. You cannot reference secrets in vault.
+* Harness Custom Secret Manager is a read-only Secret Manager. It's not possible to create reference secrets. However, Harness Custom Secret Manager enables you to define templates that include logic to connect to and retrieve secrets from the secret manager. Your template specifies how the secret is retrieved and whether it's a string or JSON format.
 * Harness can read/decrypt secrets, but it cannot write secrets to the Custom Secrets Manager.
 
 :::

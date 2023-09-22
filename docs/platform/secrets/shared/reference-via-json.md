@@ -1,4 +1,4 @@
-Harness can reference JSON secrets in vault so you can manage your secrets lifecycle independently.
+Harness allows you to manage the lifecycle of your secrets independently by referencing JSON secrets in the vault.
 
 For example, you can store a secret in vault with the following JSON.
 
@@ -15,8 +15,4 @@ For example, you can store a secret in vault with the following JSON.
 
 ```
 
-You can reference the secret path or use XPath for more complex JSON.
-
-```
-/<path>/user/database.password
-```
+To reference a JSON secret and password stored in `/<path>/user`, you need to create a reference secret with the following format: `/<path>/user#database.password`.
