@@ -10,50 +10,32 @@ helpdocs_is_published: true
 
 This topic describes CI Build stage settings. For more information about configuring stages in CI pipelines, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
 
-:::info Add a Build stage to a pipeline
-
 To create, edit, and delete stages in CI pipelines, you need either Project Admin or Project Member permissions. For more information, go to the [Permission Reference](/docs/platform/role-based-access-control/permissions-reference).
+
+## Add a Build stage to a pipeline
 
 1. In Harness, edit or [create a pipeline](../prep-ci-pipeline-components.md).
 2. Select **Add Stage**, and then select **Build**.
-3. Enter a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
-4. Select the [Overview](#overview), [Infrastructure](#infrastructure), [Execution](#execution), and [Advanced](#advanced) tabs to configure the stage settings, [set up the build infrastructure](/docs/category/set-up-build-infrastructure), and add steps to the stage.
+3. In **Stage Name**, enter a name summarizing the stage's purpose.
 
-:::
+   Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** when you first add the stage. After you add the stage, it the **Id** can't be changed.
 
-## Stage Name
+   The description and [tags](../../../platform/references/tags-reference.md) are optional.
 
-Enter a name summarizing the stage's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+4. Configure the default codebase settings.
 
-## Description
+   * **Clone Codebase:** When enabled, Harness automatically clones the [codebase](../codebase-configuration/create-and-configure-a-codebase.md), specified by the **Connector** and **Repository URL**, before executing the steps in the stage. If disabled, Harness doesn't clone a codebase when initializing the stage.
+   * **Connector:** A Harness code repo connector that connects to the repository where the codebase is located. For information about code repo connectors and the default codebase configuration, go to [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
+   * **Repository URL:** If not populated automatically, enter the full URL to the code repository that you want the pipeline to use.
 
-Optional text string.
+   The codebase **Connector** and **Repository URL** settings are available when you add the *first* stage to a pipeline. After you add the first stage, you manage these in the pipeline's **Codebase** settings (not the stage's settings). For more information, go to [Edit the default codebase configuration](../codebase-configuration/create-and-configure-a-codebase.md#edit-the-default-codebase-configuration).
 
-## Tags
-
-For details, go to the [Tags Reference](../../../platform/references/tags-reference.md).
-
-## Clone Codebase
-
-When selected, Harness automatically clones the [codebase](../codebase-configuration/create-and-configure-a-codebase.md) before executing the steps in the stage.
-
-If not selected, Harness does not clone the codebase when initializing the stage.
-
-## Configure Codebase
-
-Specify the pipeline's default codebase configuration. These settings are available when you add the first stage to a pipeline. After you add the first stage, you manage these under the pipeline's overall **Codebase** settings. For more information about codebase configuration, go to [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
-
-### Connector
-
-A Harness code repo connector that connects to the repository where the codebase is located. For information about code repo connectors, go to [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
-
-### Repository URL
-
-If not populated by default, enter the full URL to the code repository that you want the pipeline to use.
+5. Select **Set Up Stage**.
+6. Select the [Overview](#overview), [Infrastructure](#infrastructure), [Execution](#execution), and [Advanced](#advanced) tabs to configure the stage settings, [set up the build infrastructure](/docs/category/set-up-build-infrastructure), and add steps to the stage.
 
 ## Overview
 
-These settings are found on the **Overview** tab after adding a stage to a pipeline.
+These settings are found on the **Overview** tab after adding a Build stage to a pipeline.
 
 ### Stage Details
 
@@ -80,6 +62,10 @@ For other build tools or non-default cache locations, you must provide custom ca
 Optionally, you can specify a custom cache **Key**
 
 For information about supported tools, enabling cache intelligence, and configuring custom cache paths and keys, go to the [Cache Intelligence](../caching-ci-data/cache-intelligence.md) documentation.
+
+### SLSA Provenance
+
+These settings are for the [Harness SSCA module](/docs/software-supply-chain-assurance).
 
 ### Advanced: Stage Variables
 

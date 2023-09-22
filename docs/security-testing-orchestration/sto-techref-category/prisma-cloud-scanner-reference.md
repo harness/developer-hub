@@ -1,12 +1,13 @@
 ---
-title: Prisma Cloud (formerly Twistlock) scanner reference
+title: Prisma Cloud (formerly Twistlock) scanner reference for STO
 description: Image scans with Prisma Cloud
+sidebar_label: Prisma Cloud (formerly Twistlock) scanner reference
 sidebar_position: 210
 ---
 
 You can scan container images using Prisma Cloud.
 
-## Before you begin
+## Important notes for running Prisma Cloud scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -24,7 +25,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## PrismaCloud step configuration
+## Prisma Cloud step configuration in STO
 
 The recommended workflow is add a PrismaCloud step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Prisma Cloud scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
@@ -320,7 +321,7 @@ In the **Advanced** settings, you can use the following options:
 
 
 
-## Security step configuration (_legacy_)
+## Security step settings for Prisma Cloud scans in STO (_legacy_)
 
 You can set up Prisma Cloud scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

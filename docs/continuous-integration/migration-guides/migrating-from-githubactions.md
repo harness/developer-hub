@@ -23,7 +23,7 @@ Harness CI is part of The [Harness Platform](/docs/get-started/harness-platform-
 
 ### GitHub Actions plugins
 
-Harness CI offers built-in support for GitHub Actions. You can use the [GitHub Action plugin step](../use-ci/use-drone-plugins/ci-github-action-step.md) in pipelines that use [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md). For other build infrastructures, you can use the [GitHub Actions Drone plugin in a Plugin step](../use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md).
+Harness CI offers built-in support for GitHub Actions. You can use the [GitHub Action step](../use-ci/use-drone-plugins/ci-github-action-step.md) in pipelines that use [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md). For other build infrastructures, you can use the [GitHub Actions Drone plugin in a Plugin step](../use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md).
 
 ### Other advantages
 

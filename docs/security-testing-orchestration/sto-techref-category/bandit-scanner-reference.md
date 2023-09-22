@@ -1,6 +1,7 @@
 ---
-title: Bandit Scanner Reference
+title: Bandit scanner reference for STO
 description: Repository scans with Bandit
+sidebar_label: Bandit scanner reference
 sidebar_position: 50
 helpdocs_topic_id: n3dcx6wzb3
 helpdocs_category_id: m01pu2ubai
@@ -11,7 +12,7 @@ helpdocs_is_published: true
 You can scan your code repositories using [Bandit](https://github.com/PyCQA/bandit), an open-source tool designed to find common security issues in Python code. 
 
 
-## Before you begin
+## Important notes for running Bandit scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -31,7 +32,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Bandit step configuration
+## Bandit step settings for STO scans
 
 The recommended workflow is to add a Bandit step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Bandit scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
@@ -187,7 +188,7 @@ In the **Advanced** settings, you can use the following options:
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
 
-## Security step configuration (_legacy_)
+## Security step settings for Bandit scans in STO (_legacy_)
 
 You can set up a Security step with [Bandit](https://bandit.readthedocs.io/en/latest/) to find common security issues in your Python code.
 

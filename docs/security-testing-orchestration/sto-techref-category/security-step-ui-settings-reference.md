@@ -1,6 +1,7 @@
 ---
-title: Security step UI settings reference
+title: Security step UI settings reference for STO
 description: All the available UI settings to configure individual scans.
+sidebar_label: Security step UI settings reference
 sidebar_position: 1000
 ---
 
@@ -18,7 +19,7 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 <!-- ============================================================================= -->
 
-## Configuring a Security step  
+## Configuring an STO scanner template 
 To set up a scan using the scanner template, add a SecurityTests stage to your pipeline. Then add a Security step for the scanner of interest and configure the step using the available options. 
 
 <details>

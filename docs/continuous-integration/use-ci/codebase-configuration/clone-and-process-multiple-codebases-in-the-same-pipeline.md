@@ -56,7 +56,7 @@ Add a **Git Clone** step to clone a second repo into the pipeline's workspace.
                         branch: main
 ```
 
-The **Git Clone** step has the following settings. Depending on the stage's build infrastructure, some settings may be unavailable.
+The **Git Clone** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable.
 
 ### Name, Id, and Description
 

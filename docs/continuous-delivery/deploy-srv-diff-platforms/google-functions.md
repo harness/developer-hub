@@ -155,6 +155,12 @@ To use Google Cloud Functions, in the Harness service, in **Deployment Type**, y
 
 Next, in **Google Cloud Function Environment Version**, you select **1st gen** or **2nd gen**.
 
+:::note
+
+The option you select in **Google Cloud Function Environment Version** determines the Google Cloud Function options displayed in the UI. You cannot use an expression in this setting.
+
+:::
+
 - Google Functions 2nd gen: The YAML parameters for Google Functions 2nd gen are defined in the [google.cloud.functions.v2 function message](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#function) from Google Cloud.
   - You can define details of the [ServiceConfig](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#google.cloud.functions.v2.ServiceConfig) and [BuildConfig](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#buildconfig) via the YAML as seen in the below examples.
 - Google Functions 1st gen: The YAML parameters for Google Functions 1st gen are defined in the [google.cloud.functions.v1 CloudFunction message](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v1#cloudfunction) from Google Cloud.

@@ -11,15 +11,13 @@ import TabItem from '@theme/TabItem';
 
 You can use the [Nexus Publish plugin](https://github.com/harness-community/drone-nexus-publish) in your CI pipelines to upload artifacts to [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository).
 
-You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md). For other upload locations, you can use a script in a [Run step](../run-ci-scripts/run-step-settings.md).
-
-## Requirements
-
 You need:
 
 * Access to a Sonatype Nexus Repository Manager instance.
 * A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 * Steps in your pipeline that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
+
+You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md). For other upload locations, you can use a script in a [Run step](../run-ci-scripts/run-step-settings.md).
 
 ## Use the Nexus Publish plugin
 
@@ -152,7 +150,7 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
 </Tabs>
 ```
 
-## Run the pipeline
+## Build logs and artifact files
 
 When you run the pipeline, you can observe the step logs on the [build details page](../viewing-builds.md).
 
@@ -170,7 +168,7 @@ If your pipeline has multiple steps that upload artifacts, use the dropdown menu
 
 :::
 
-## YAML example
+## Pipeline YAML example
 
 This example pipeline has steps that build an artifact, upload it to a Sonatype Nexus repo, and then use the Artifact Metadata Publisher plugin to show a link to the artifact on the **Artifacts** tab.
 

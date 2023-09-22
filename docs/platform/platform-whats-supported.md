@@ -27,23 +27,51 @@ import Gitxsup from '/docs/get-started/shared/gitx-whats-supported.md'
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Access control" label="Access Control">
+  <TabItem value="AuthN" label="AuthN">
 ```
 
-import Accessconsup from '/docs/get-started/shared/access-control-supported.md'
+import Authsup from '/docs/get-started/shared/auth-supported.md'
 
-<Accessconsup />
+<Authsup />
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Accounts/Orgs/Projects/Other resources" label="Accounts Orgs Projects">
 ```
 
-Harness enables you to manage access control at the following [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#overview-of-the-hierarchical-setup-in-harness).
+The Harness Platform is structured hierarchically with three levels of access: Account, Organization (Org), and Project. Each level can have its own set of permissions configured, allowing for delegation of responsibilities to various teams. This approach facilitates efficient organization and management of resources, enabling granular access control that is both scalable and easy to manage.
 
-- Account
-- Organization
-- Project
+
+### Scopes
+
+- **Account** is the highest level. It is your Harness account, and it encompasses all the resources within your Harness subscription.
+
+- **Organization** encompasses projects, resources, and users in a specific domain or business unit. This allows for the management of resources and permissions unique to an organization, separate from other areas of the account.
+
+- **Project** contains related resources, such as apps, pipelines, and environments. This allows for the management of resources and permissions specific to a particular project, separate from the larger org (business unit) and account.
+
+The scope at which you create resources depends on the level of control and visibility you require. For example, if you create a connector at the account scope, it is available to all organizations and projects within the account. However, if you create a connector at the organization scope, it is only available to that organization and any projects under that organization. It is not available at the account scope or to other organizations. This lets you control access to your resources more effectively and prevent unauthorized access.
+
+To learn about organizations and projects, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization/).
+
+### Resources across scopes
+
+The following table lists the resources that are available at various scopes in Harness:
+
+| **Resources** | **Account** | **Org** | **Project** |
+| --- | --- | --- | --- |
+| **Pipeline** | No | No | Yes |
+| **Services** | Yes | Yes | Yes |
+| **Environments** | Yes | Yes | Yes |
+| **Git Management** | No | No | Yes |
+| **Connectors** | Yes | Yes | Yes |
+| **Secrets** | Yes | Yes | Yes |
+| **SMTP Configuration** | Yes | No | No |
+| **Templates** | Yes | Yes | Yes |
+| **Audit Trail** | Yes | Yes | Yes |
+| **Delegates** | Yes | Yes | Yes |
+| **Governance** | Yes | Yes | Yes |
+
 
 ```mdx-code-block
   </TabItem>
@@ -68,12 +96,16 @@ import Delimagetypes from '/docs/platform/delegates/shared/delegate-image-types-
   <TabItem value="Notifications" label="Notifications">
 ```
 
-Notification methods supported for various pipeline events are: 
+Notifications are used to alert your team of new, resurfaced, or critical events. With notifications, you can ensure your team is aware of important events that require action.
 
-- Slack
-- Email
+Harness Platform supports the following notification methods.
+
+- [Slack](/docs/platform/notifications/send-notifications-using-slack/)
+- [Email](/docs/platform/notifications/add-smtp-configuration)
+- [Microsoft Teams](/docs/platform/notifications/send-notifications-to-microsoft-teams).
 - PagerDuty
-- Microsoft Teams
+- Webhook
+
 
 ```mdx-code-block
   </TabItem>
@@ -87,15 +119,43 @@ import Secretmgmtsup from '/docs/get-started/shared/secret-management-supported.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="User management" label="User Mgmt">
+  <TabItem value="Access Control" label="Access Control">
 ```
 
-A Harness user is any individual registered with Harness with a unique email address. A User can be a part of multiple accounts. Go to the following topics to learn more about how to add and manage users.
 
-- [Manage user groups](/docs/platform/role-based-access-control/add-user-groups)
-- [Manage roles](/docs/platform/role-based-access-control/add-manage-roles)
-- [Manage resource groups](/docs/platform/role-based-access-control/add-resource-groups)
+Role-based access control (RBAC) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups.
 
+- [Manage users](/docs/platform/role-based-access-control/add-users): A Harness user is an individual with a unique email registered with Harness. Users can be associated with multiple accounts and user groups.
+
+- [Manage roles](/docs/platform/role-based-access-control/add-manage-roles): Roles are an [RBAC component](/docs/platform/role-based-access-control/rbac-in-harness/#rbac-components) that contain a specific set of [permissions](/docs/platform/role-based-access-control/permissions-reference/) that define what actions can be taken on Harness resources, such as viewing, creating, editing, or deleting. When you assign a role to a user, user group, or service account, the permissions defined in the role are automatically granted to the intended target.
+
+   Harness includes some [built-in roles](/docs/platform/role-based-access-control/add-manage-roles/#built-in-roles), and you can also create your own [custom roles](/docs/platform/role-based-access-control/add-manage-roles/#create-a-role) to provide fine-grained access control.
+
+- [Manage resource groups](/docs/platform/role-based-access-control/add-resource-groups): Resource groups are an [RBAC component](/docs/platform/role-based-access-control/rbac-in-harness/#rbac-components) that determine which objects a user or service account can access. Objects are any Harness resource, including projects, pipelines, connectors, secrets, delegates, environments, users, and more. When you assign resource groups to a user, user group, or service account, the access defined in the resource group is granted to the target user, group, or service account.
+
+   Harness includes some [built-in resource groups](/docs/platform/role-based-access-control/add-resource-groups/#built-in-resource-groups), and you can create [custom resource groups](/docs/platform/role-based-access-control/add-resource-groups/#create-a-resource-group), to provide fine-grained access control.
+
+- [Manage user groups](/docs/platform/role-based-access-control/add-user-groups): User groups contain multiple Harness users. You assign [roles](/docs/platform/role-based-access-control/add-manage-roles/) and [resource groups](/docs/platform/role-based-access-control/add-resource-groups/) to user groups. The permissions and access granted by the assigned roles and resource groups are applied to all group members.
+
+   You can also assign roles and resource groups to individual users that are not in a group. However, user groups help keep your RBAC organized and make it easier to manage permissions and access. Instead of modifying each user individually, you can edit the permissions and access for the entire group at once.
+   
+   Harness includes some [built-in user groups](/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups), and you can [create user groups manually](/docs/platform/role-based-access-control/add-user-groups/#create-user-groups-manually), through [inheritance](/docs/platform/role-based-access-control/add-user-groups/#create-roles-by-inheritance-assign-roles), or through [automated provisioning](/docs/platform/role-based-access-control/add-user-groups/#use-automated-provisioning). You can create user groups at all [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes).
+
+Using RBAC helps you:
+
+- Ensure that users can only access the information and resources necessary to perform their tasks. This reduces the risk of security breaches and unauthorized access to sensitive data.
+- Create systematic, repeatable permissions assignments. RBAC saves time and increases efficiency for administrators who otherwise have to manage access for individual user accounts. You can quickly add and change roles, as well as implement them across APIs.
+- Increase accountability by clearly defining who has access to which resources and information. This makes it easier to track and audit user activities, helping to identify and prevent misuse or abuse of access privileges.
+- Comply more effectively with regulatory and statutory requirements for confidentiality and privacy. It helps you enforce privacy and data protection policies.
+- Provision users and groups with SCIM - System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automated user provisioning. In Harness, automated provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automated provisioning also edits and removes users and user groups as and when required.
+
+   - [Okta (SCIM)](/docs/platform/role-based-access-control/provision-users-with-okta-scim/)
+   - [Azure AD (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim/)
+   - [OneLogin (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim/)
+
+- Use just-in-time (JIT) user provisioning: Automated provisioning eliminates repetitive tasks related to manual provisioning and simplifies user management.
+
+   JIT provisioning in Harness lets you provision users automatically when they first sign-in to Harness through SAML SSO. Harness supports JIT provisioning only for new users logging in through an IdP, such as Okta.
 
 ```mdx-code-block
   </TabItem>

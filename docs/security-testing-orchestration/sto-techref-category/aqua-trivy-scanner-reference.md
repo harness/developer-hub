@@ -1,7 +1,8 @@
 ---
-title: Aqua Trivy scanner reference
+title: Aqua Trivy scanner reference for STO
 description: Image scans with Aqua Trivy
 sidebar_position: 30
+sidebar_label: Aqua Trivy scanner reference
 helpdocs_topic_id: 079248uzcu
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -14,7 +15,7 @@ You can scan your container images using [Aqua Trivy](https://github.com/aquasec
 STO supports container scans only with Aqua Trivy.
 :::
 
-## Before you begin
+## Important notes for running Aqua Trivy scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -37,7 +38,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 
 
-## Aqua Trivy step configuration
+## Aqua Trivy step settings for STO scans
 
 The recommended workflow is add an AquaTrivy step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Aqua Trivy scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
@@ -187,7 +188,7 @@ In the **Advanced** settings, you can use the following options:
 
 
 
-## Security step settings (_legacy_)
+## Security step settings for Aqua Trivy scans in STO (_legacy_)
 
 You can set up a Security step with [Aqua Trivy](https://aquasecurity.github.io/trivy) to detect vulnerabilities and misconfigurations in your container images.
 

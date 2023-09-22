@@ -18,16 +18,14 @@ To upload artifacts to AWS or other S3 providers, such as [MinIO](https://min.io
 * [Use the Upload Artifacts to S3 step](#use-the-upload-artifacts-to-s3-step) with the optional Artifact Metadata Publisher plugin.
 * [Use the S3 Upload and Publish plugin](#use-the-s3-upload-and-publish-plugin).
 
-You can also [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md).
-
-## Requirements
-
-You need:
+To upload artifacts to S3, you need:
 
 * Access to an S3 instance.
 * A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 * Steps in your pipeline that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
 * An [AWS connector](#aws-connector), if you want to use the **Upload Artifacts to S3** step.
+
+You can also [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md).
 
 ## Use the Upload Artifacts to S3 step
 
@@ -50,7 +48,7 @@ Here is a YAML example of a minimum **Upload Artifacts to S3** step.
 
 ### Upload Artifacts to S3 step settings
 
-The **Upload Artifacts to S3** step has the following settings. Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
+The **Upload Artifacts to S3** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
 
 #### Name
 
@@ -63,10 +61,10 @@ Select the Harness [AWS connector](/docs/platform/connectors/cloud-providers/add
 :::info
 
 * This step might not support all [AWS connector authentication methods](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings).
+* You can use buckets with disabled ACLs.
 * Additional stage variables are required for [non-default ACLs](#stage-variable-required-for-non-default-acls) or to [assume IAM roles or use ARNs](#stage-variable-required-to-assume-iam-roles-or-use-arns).
 * The AWS IAM roles and policies associated with the AWS account for your AWS connector must allow pushing to S3. For more information, go to the [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
-<!--* You can use buckets with disabled ACLs.-->
 :::
 
 ##### Stage variable required for non-default ACLs
@@ -251,7 +249,7 @@ If you want to upload a compressed file, you must use a [Run step](../run-ci-scr
 </Tabs>
 ```
 
-## Run the pipeline
+## Build logs and artifact files
 
 When you run the pipeline, you can observe the step logs on the [build details page](../viewing-builds.md).
 
@@ -271,7 +269,7 @@ If your pipeline has multiple steps that upload artifacts, use the dropdown menu
 
 :::
 
-## YAML examples
+## Pipeline YAML examples
 
 ```mdx-code-block
 <Tabs>

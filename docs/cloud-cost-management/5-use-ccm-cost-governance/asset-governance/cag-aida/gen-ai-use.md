@@ -5,8 +5,9 @@ description: This topic describes how to create rules and view rule descriptions
 # sidebar_position: 1
 ---
 
+This topic explains how to create rules and view rule descriptions by using Harness AI Development Assistant (AIDA:tm:).
 
-This topic explains how to create rules and view rule descriptions by using Harness AI Development Assistant (AIDA).
+You must [enable AIDA in your Harness account](/docs/platform/Harness-AIDA/aida-overview.md#enable-aida) to access this functionality.
 
 ## Create a rule by using Harness AIDA
 
@@ -20,7 +21,3 @@ import View from '/docs/cloud-cost-management/shared/ccm-aida-view-rule-partial.
 ## View rule description by using Harness AIDA
 
 <View />
-
-
-
-   
