@@ -626,10 +626,6 @@ gsutil -m cp \
 
 - Added functionality to support GitOps section at Org level. (CDS-79545)
 
-##### Continuous Integration
-
-- To support  CI pipelines, Harness added support to set the Harness Delegate environment variable `LOG_STREAMING _URL` by default. If the delegate is outside of the cluster, the fallback log service URL is `LOG_SERVICE_ENDPOINT` from CI. (CI-9262, ZD-48974)
-
 ##### Custom Dashboards
 
 - Updated to an FIPS compliant algorithm for short term caching key generation. (CDB-1107)
