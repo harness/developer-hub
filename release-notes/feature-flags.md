@@ -15,9 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-
-## Latest - September 11, 2023
-
+## Latest - September 22, 2023
 
 ### New features and enhancements
 
@@ -27,15 +25,43 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the Javascript SDK
+### Fixed issues in the Flutter SDK
 
-- Changing evaluation handling for Flutter Web. (FFM-8963)
-
+- Flutter SDK 2.1.0 released to support Flutter Web
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### Sept 22, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Feature Flags server
+
+- Fixed incorrect flag casing prev enting evaluation (FFM-9416)
+- Active environment was not persisting when clicking to target pages (FFM-8053)
+
+#### Sept 11, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Javascript SDK
+
+- Changing evaluation handling for Flutter Web. (FFM-8963)
 
 #### Sept 08, 2023
 
