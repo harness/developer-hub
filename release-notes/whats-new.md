@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-09-19T10:00
+date: 2023-09-28T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,17 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: September 19, 2023
+## Latest: September 28, 2023
+
+### Continuous Integration, version 59xx
+
+[Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) now supports manual branch builds (the **Git Branch** build type). This is in addition to existing support for manual PR builds, as well as PR and push webhook triggers. When you [enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/#enable-test-intelligence), you can use a manual branch build to [Generate the initial call graph](/docs/continuous-integration/use-ci/set-up-test-intelligence/#generate-the-initial-call-graph), and for subsequent pipeline runs. (CI-8932)
+
+<!-- ![](./static/ci-8932.png) -->
+
+<docimage path={require('./static/ci-8932.png')} />
+
+## September 19, 2023
 
 ### Harness Platform, version 80711
 
