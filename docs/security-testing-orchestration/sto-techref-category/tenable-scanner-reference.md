@@ -1,13 +1,14 @@
 ---
-title: Tenable scanner reference
+title: Tenable scanner reference for STO
 description: Instance scans with Tenable
+sidebar_label: Tenable scanner reference
 sidebar_position: 310
 ---
 
 
 You can set up Tenable scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Before you begin
+## Important notes for running Tenable scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -25,7 +26,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Security step settings
+## Security step settings for Tenable scans in STO
 
 ### Target and variant
 

@@ -11,11 +11,11 @@ Harness Platform is purpose built to help developers and DevOps teams deliver so
 ### SaaS
 Harness SaaS is a fully-managed cloud version of Harness Platform that is accessible via multiple plans.
 
-- Free Plan: [Signup for a free account](https://app.harness.io/auth/#/signup/?module=cd&utm_medium=harness-developer-hub)
+- Free Plan: [Sign up for a free account](https://app.harness.io/auth/#/signup/?module=cd&utm_medium=harness-developer-hub)
 
 - Team & Enterprise Plans: You must have received an invitation email from your Account Administrator. Reach out to [support@harness.io](mailto:support@harness.io) if you need more information or if you do not know who your Account Administrator is.
 
-After your account has been created, you can sign in to your Harness account at https://app.harness.io/auth/#/signin
+After your account has been created, you can sign in to your Harness account at https://app.harness.io/auth/#/signin.
 
 ### Self-Managed Enterprise Edition
 [Harness Self-Managed Enterprise Edition (aka SMP)](/docs/self-managed-enterprise-edition/get-started/onboarding-guide) is a self-managed, Kubernetes-native version of Harness Platform that runs on your own public or private cloud infrastructure. This option requires access to a Harness SMP license key as well as ability to download Harness SMP software (container images & Helm Chart). Reach out to [support@harness.io](mailto:support@harness.io) if you do not have access to either the license key or the download location.
@@ -24,7 +24,7 @@ After your account has been created, you can sign in to your Harness account at 
 
 - After you install, follow these [instructions](/docs/self-managed-enterprise-edition/get-started/onboarding-guide#create-your-harness-account) to create your Harness Account on SMP.
 
-You can sign in to your Harness Account on SMP anytime at [http://your-domain-name/auth/#/signin](http://your-domain-name/auth/#/signin)
+You can sign in to your Harness Account on SMP anytime at `http://<YOUR_DOMAIN_NAME>/auth/#/signin`.
 
 ## Step 1. Review key concepts
 

@@ -1,6 +1,7 @@
 ---
-title: Use governance policies and security scan results to stop pipelines automatically 
+title: Use governance policies and security scan results to stop STO pipelines automatically 
 description: How to create and apply governance policies to stop pipelines automatically based on detected severities
+sidebar_label: Stop pipelines using OPA
 sidebar_position: 220
 ---
 

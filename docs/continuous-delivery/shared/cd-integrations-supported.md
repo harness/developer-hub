@@ -765,4 +765,4 @@ All CD features supported in Harness SaaS are also supported in Self-Managed Ent
 - **GitOps:** The Harness GitOps Agent does not support custom certificates in Self-Managed Enterprise Edition.
 - **GitOps:** The Harness GitOps Agent does not yet support installing agents in specific cluster namespaces in Self-Managed Enterprise Edition.
 - **Policy as Code:** Harness Git Experience support for OPA policies is not supported in Self-Managed Enterprise Edition.
-- **Harness AI Development Assistant(AIDA):** To support AIDA in Self Managed Enterprise Edition running in an offline environment, you must whitelist https://harness.openai.azure.com
+- **Harness AI Development Assistant (AIDA):** To support AIDA in Self-Managed Enterprise Edition running in an offline environment, you must add `https://harness.openai.azure.com` to your allowlist.

@@ -561,7 +561,7 @@ Supply a comma-separated list of namespace prefixes that you want to test.
 
 #### Do you want to enable Error Tracking?
 
-Error tracking helps you be more proactive at discovering and remediating errors early in the software development lifecycle. It help s you more easily discover issues and assess the quality of code before it reaches production.
+Error tracking helps you be more proactive at discovering and remediating errors early in the software delivery lifecycle. It helps you more easily discover issues and assess the quality of code before it reaches production.
 
 Select **Yes** to enable error tracking. When enabled, a set of commands are auto-populated in the [Pre-Command field](#pre-command). Review these commends to ensure they are compatible with your build. The auto-populated commands are enclosed between `#ET-SETUP-BEGIN` and `#ET-SETUP-END`, for example:
 

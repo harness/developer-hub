@@ -1,12 +1,13 @@
 ---
-title: Nexus scanner reference
+title: Nexus scanner reference for STO
 description: Repository scans with Nexus
+sidebar_label: Nexus scanner reference
 sidebar_position: 180
 ---
 
 You can run Nexus scans on your repositories using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Before you begin
+## Important notes for running Nexus scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -24,7 +25,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Security step settings
+## Security step settings for Nexus scans in STO
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 

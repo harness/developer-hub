@@ -50,7 +50,7 @@ const config = {
         //   exclude: ["**/shared/**", "**/static/**"],
         //   routeBasePath: "docs", //CHANGE HERE
         // },
-        docs:false,
+        docs: false,
         sitemap: {
           // changefreq: 'weekly',
           // priority: 0.5,
@@ -282,6 +282,10 @@ const config = {
               {
                 label: "Feature Flags",
                 to: "certifications/feature-flags",
+              },
+              {
+                label: "Chaos Engineering",
+                to: "certifications/chaos-engineering",
               },
               {
                 label: "Instructions",

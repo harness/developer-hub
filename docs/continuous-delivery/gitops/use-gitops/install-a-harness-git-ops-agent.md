@@ -370,4 +370,4 @@ The Argo CD components upgrade must be done manually.
 
 * [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md)
 * [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md)
-* [Troubleshooting](docs/continuous-delivery/gitops/gitops-ref/troubleshooting.md)
+* [Troubleshooting](/docs/continuous-delivery/gitops/gitops-ref/troubleshooting)

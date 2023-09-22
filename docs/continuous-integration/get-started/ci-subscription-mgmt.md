@@ -1,7 +1,7 @@
 ---
 title: Subscriptions and licenses
 description: View and manage your CI subscriptions and licenses.
-sidebar_position: 70
+sidebar_position: 5
 redirect_from:
   - /docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt
 ---
