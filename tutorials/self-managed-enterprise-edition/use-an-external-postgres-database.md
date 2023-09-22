@@ -107,7 +107,7 @@ To set up a PostgreSQL VM, do the following:
 5. Update your local repository list.
 
    ```
-   sudo apt-get update
+   apt-get update
    ```
 
 6. Install PostgreSQL.
