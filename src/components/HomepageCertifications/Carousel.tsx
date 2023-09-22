@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Carousel.module.scss";
-import CertCard from "../Certifications/CertCard";
+import CertCard from "./CertCard";
 const Carousel = ({ certs }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentIndexPlusOne, setCurrentIndexPlusOne] = useState(1);
@@ -11,14 +11,14 @@ const Carousel = ({ certs }) => {
     setCurrentIndexPlusOne(newCurrentIndexPlusOne);
   }, [currentIndex]);
 
-  const incrementIndex = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % certs.length);
-  };
+  // const incrementIndex = () => {
+  //   setCurrentIndex((prevIndex) => (prevIndex + 1) % certs.length);
+  // };
 
-  useEffect(() => {
-    const intervalId = setInterval(incrementIndex, 5000);
-    return () => clearInterval(intervalId);
-  }, []);
+  // useEffect(() => {
+  //   const intervalId = setInterval(incrementIndex, 5000);
+  //   return () => clearInterval(intervalId);
+  // }, []);
 
   const handleDotClick = (index: number) => {
     setCurrentIndex(index);

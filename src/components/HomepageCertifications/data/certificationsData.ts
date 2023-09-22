@@ -24,21 +24,21 @@ export const certifications: CardItem[] = [
     description:
       "Drastically reduce rollbacks, deploy faster with less risk,spend more time building and coding, and less time fixing production with Progressive Delivery.",
     link: "/certifications/feature-flags",
-    numberOfCerts: 3,
+    numberOfCerts: 1,
   },
-  {
-    title: "Cloud Cost Management Certifications",
-    module: MODULES.ccm,
-    description:
-      " Save time, reduce effort, and save on your cloud bill with intelligent cloud cost automation.Detect and stop cloud cost anomalies as they occur, to avoid unpleasant billing surprises with a FinOps approach.",
-    link: "/certifications/cloud-cost-management",
-    numberOfCerts: 3,
-  },
-  {
-    title: "Chaos Engineering Certifications",
-    module: MODULES.ce,
-    description: "Comming Soon",
-    link: "/certifications/chao-engineering",
-    numberOfCerts: 3,
-  },
+  // {
+  //   title: "Cloud Cost Management Certifications",
+  //   module: MODULES.ccm,
+  //   description:
+  //     " Save time, reduce effort, and save on your cloud bill with intelligent cloud cost automation.Detect and stop cloud cost anomalies as they occur, to avoid unpleasant billing surprises with a FinOps approach.",
+  //   link: "/certifications/cloud-cost-management",
+  //   numberOfCerts: 3,
+  // },
+  // {
+  //   title: "Chaos Engineering Certifications",
+  //   module: MODULES.ce,
+  //   description: "Comming Soon",
+  //   link: "/certifications/chao-engineering",
+  //   numberOfCerts: 3,
+  // },
 ];
