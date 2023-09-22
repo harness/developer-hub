@@ -653,3 +653,11 @@ To resolve this issue, you need to de-provision the affected User Group from Har
  
 #### Why Harness delegate instance status is showing Expiring in 2 months but the latest version is valid for 3 months?
 For the immutable delegate instance status we will show Expiring in 2 months only, it's the expected behaviour.
+
+#### Why am I not seeing my deployments in the Overview page of the project? 
+
+Please check the timeframe for the page. By default the timeframe is set to 30 days. You can adjust this to a different time frame. 
+
+#### Harness dashboard is not showing a previous deployment, why? 
+
+Please check the timeframe for the dashboard page. By default Harness sets this value at 30 days. It is possible that the deployment was executed before this timeframe. 
