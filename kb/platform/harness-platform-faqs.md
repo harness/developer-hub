@@ -652,4 +652,35 @@ To resolve this issue, you need to de-provision the affected User Group from Har
 
  
 #### Why Harness delegate instance status is showing Expiring in 2 months but the latest version is valid for 3 months?
+
 For the immutable delegate instance status we will show Expiring in 2 months only, it's the expected behaviour.
+
+#### When we recommend setting `POLL_FOR_TASKS` to true in a non production environment?
+
+For customers who do not want to take the web socket path due to any infrastructure challenges, we recommend enabling POLL_FOR_TASKS.
+For customers with polling enabled, delegate checks with the harness for any task to execute based on the interval set, versus web socket communication being immediate.
+
+#### Is polling mode works only for legacy delegates, not for immutable delegates?
+
+Currently Polling only support for legacy delegates, not for immutable by default. Polling mode works for immutable delegate too, if you add `POLL_FOR_TASK` as true in yaml.
+
+#### what does it mean by `Delegate Identifier=DETECTING`?
+
+`Delegate Identifier=DETECTING` is auto upgrade which can be on or off, for more details you can refer here [Documentation](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#determine-if-automatic-upgrade-is-enabled).
+
+#### What is cron job in k8s manifest and why it is needed?
+
+The Kubernetes manifest has a component called upgrader. The upgrader is a cron job that runs every hour. Every time it runs, it makes a call to Harness Manager to determine which delegate version is published for the account. The cronjob is required for Auto upgrade flow.
+
+#### How can we disable cron job?
+
+If you need auto upgrade to be disabled they can perform operations: First run the following command to suspend auto-upgrade on the installed image: `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>` Secondly in the delegate manifest, locate the CronJob resource. In the resource spec, set the suspend field to true: `spec: --suspend: true` .
+
+#### When do we have Services and Environments available at Org and Account Level in SMP?
+
+This `CDS_OrgAccountLevelServiceEnvEnvGroup` FF is required to have Services and Environments available at Org and Account Level.
+
+#### Why we do not see Dashboards in an SMP Installation?
+
+Dashboard is a licensed functionality. To enable it you need to get a license. Also for more details you can refer here [Documentation](https://harness.atlassian.net/wiki/spaces/NGCD/pages/21440168105/Enabling+Harness+Custom+Dashboard+on+SMP).
+
