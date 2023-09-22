@@ -15,7 +15,7 @@ The following steps describe the high-level workflow:
    * [Scanner template setup](#scanner-template-setup)
    * [Security step setup](#security-step-setup)
 
-## Create STO scanner images with your own SSL certificates (_optional_)
+## Create STO scanner images with your own SSL certificates (optional)
 
 Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates.
 
@@ -101,7 +101,7 @@ You need a Docker connector that points to your private container registry. For 
 
 ### Scanner template setup
 
-Do the following if you're using a step with a scanner template rather than a generic **Security** step. A scanner template is a Security Test step with a scanner-specific UI, such as [**Black Duck Hub**](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference), [**CodeQL**](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference#codeql-step-settings-for-sto-scans), and [**Snyk**](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference#snyk-step-configuration).
+Do the following if you're using a scanner template rather than a generic **Security** step. A scanner template is a **Security Test** step with a scanner-specific UI, such as [**Black Duck Hub**](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference), [**CodeQL**](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference#codeql-step-settings-for-sto-scans), and [**Snyk**](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference#snyk-step-configuration).
 
 1. In the stage where you're setting up the scanner template, go to the **Infrastructure** tab. 
 
@@ -135,7 +135,7 @@ Do the following if you're using a generic **Security** step for you scan.
 
   :::note
 
-  `runner_registry` settings are not supported for scanner templates.
+  These settings are supported by the **Security** step only. They are not supported by scanner templates.
 
   :::
 
