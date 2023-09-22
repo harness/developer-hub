@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-09-19T10:00:10
+date: 2023-09-22T10:00:10
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -41,7 +41,9 @@ This release does not include early access features.
 
 ### Hotfixes
 
-This release does not include hotfixes.
+<!-- Sept 22 2023 -->
+
+* **Version 5802:** Fixed an issue where build pods weren't cleaned up after the build finished. This was due to the cleanup task targeting pods to cleanup by pod IP address. In scenarios where a pod creation request fails, there is no pod IP available for the cleanup task to target. Now, the cleanup task can use pod names or IP addresses. (CI-9699, CI-9688, ZD-51016, ZD-51035, ZD-51064)
 
 ## Previous releases
 

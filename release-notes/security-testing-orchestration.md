@@ -62,7 +62,7 @@ This release does not include early access features.
 
 - Fixed an issue with setting up SSL certificates in Checkmarx, which caused Java keytools to fail. Upgrading to JDK-11 fixed the issue. (STO-6512)
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes. 
 
@@ -105,7 +105,7 @@ This release does not include early access features.
 
 
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes. 
 
