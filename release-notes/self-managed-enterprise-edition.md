@@ -185,7 +185,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. 
   
-  Harness Delegate version 79503 is required for this feature.
+  Harness Delegate version 23.06.79503 is required for this feature.
 
 - Added a new field in the release history for Blue Green deployments to differentiate between environments. (CDS-69961)
   
@@ -195,7 +195,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
-  This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.06.79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
 
 #### Continuous Integration
 
@@ -355,7 +355,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 - Fixed an issue where the applications created outside Harness were deleted during rollback if a Tanzu Application Services (TAS) Rolling deployment failed the first time. (CDS-71397)
   
-  This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.06.79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
 
 - The expressions corresponding to objects like list, maps, and so on were incorrectly converted to string type using the Java `String.valueOf` method resulting in incorrect formatting. (CDS-71619)
   
@@ -445,7 +445,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
    This issue has been resolved by adding a code validation. The field no longer accepts values above 4320 minutes.
 
-   This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item requires Harness Delegate version 23.06.79707. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Enhanced handling and logging for the `No enum constant io.harness.delegate.message.MessengerType.WATCHEIN` exception to enable the actual malformed message. This error indicates that a message is malformed and only occurs when there is a write error such as out of disk, process killed, etc. (PL-38245)
 
@@ -489,7 +489,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   This issue is now fixed. The connectors list shows the connectors for which users have resource group permissions set.
 
-  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - SCIM PATCH requests for deleting a Harness user return a “user does not exist” message in a successful delete operation. (PL-38868, ZD-44150)
 
@@ -515,7 +515,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   Prefixes that begin with a slash are now supported. 
 
-  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Improved randomness when there are multiple eligible delegates with no tasks running to avoid selecting the same delegate each time. (PL-39219)
 
@@ -795,7 +795,7 @@ gsutil -m cp \
 
   For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
 
-  Harness Delegate version 79503 is required for this feature.
+  Harness Delegate version 23.06.79503 is required for this feature.
 
 - The [Harness Helm charts](https://github.com/harness/helm-charts) `values.yaml` file is updated to include Error Tracking images. (SMP-1615)
 
@@ -890,7 +890,7 @@ gsutil -m cp \
 
 - Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
   
-  The Harness Delegate version 79307 is required for this feature.
+  The Harness Delegate version 23.05.79307 is required for this feature.
   
   The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
   
@@ -918,7 +918,7 @@ gsutil -m cp \
 
 - Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
   
-  The Harness Delegate version 79307 is required for this feature. 
+  The Harness Delegate version 23.05.79307 is required for this feature. 
   
   For more information, go to [Schedule pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/).
 
@@ -940,7 +940,7 @@ gsutil -m cp \
 
 - The **Connector Details** page now shows whether a connector is connected via a delegate or via Harness Platform. (PL-32673)
 
-- The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set a secret expiration date. The Harness Delegate version 79307 is required for this feature. (PL-32708, PL-38465, ZD-42524)
+- The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set a secret expiration date. The Harness Delegate version 23.05.79307 is required for this feature. (PL-32708, PL-38465, ZD-42524)
 
 #### Service Reliability Management
 
@@ -1017,7 +1017,7 @@ gsutil -m cp \
 
 - Previously, in situations where a build pod wasn't created, an error occurred when the cleanup event couldn't find details of a pod to cleanup. Now, handling has been added to avoid this error. (CI-8065)
 
-- Fixed an issue where Git status updates failed if the Azure repository/project name had white space. Harness now decodes white spaces in URLs so the Git status update request can succeed. The [Harness Delegate version 79503 or later](/release-notes/delegate) is required for this fix. (CI-8105, ZD-44679)
+- Fixed an issue where Git status updates failed if the Azure repository/project name had white space. Harness now decodes white spaces in URLs so the Git status update request can succeed. The [Harness Delegate version 23.06.79503 or later](/release-notes/delegate) is required for this fix. (CI-8105, ZD-44679)
 
 #### Continuous Delivery & GitOps
 
@@ -1043,7 +1043,7 @@ gsutil -m cp \
   
   Previously, the parent pipeline's **planExecutionId**, **projectId**, and **orgId** were passed in the child pipeline, and hence, the interrupt functionality for chained pipeline was not working. This issue is fixed by passing the the correct **planExecutionId**, **projectId**, and **orgId** for the child pipeline. There is no need to hide these buttons anymore.
 
-- Fixed an issue in the the Harness Delegate version 79307 by eliminating NPE during ASG pipeline execution. (CDS-59383)
+- Fixed an issue in the the Harness Delegate version 23.05.79307 by eliminating NPE during ASG pipeline execution. (CDS-59383)
 
 - Instance sync was not implemented for Azure Kubernetes Service (AKS). (CDS-59544)
   
@@ -1067,7 +1067,7 @@ gsutil -m cp \
 
 - Pipelines with multi-level templates displayed Java errors because a secret was referenced by another secret. (CDS-68094)
   
-  This issue is fixed in the Harness Delegate version 79307 by improving the error messages.
+  This issue is fixed in the Harness Delegate version 23.05.79307 by improving the error messages.
 
 - Fixed an issue where tabular data was not showing up properly in service dashboards for empty artifacts. (CDS-68100)
 
@@ -1081,7 +1081,7 @@ gsutil -m cp \
 
 - The access denied exception was saving the OAuth secret in the Harness Source Code Manager (SCM) user profile. (CDS-68144)
   
-  This issue is fixed in the Harness Delegate version 79307 by passing the context correctly from the SCM service to the Git service. 
+  This issue is fixed in the Harness Delegate version 23.05.79307 by passing the context correctly from the SCM service to the Git service. 
 
 - Made code enhancements to prevent disabling triggers if validation fails during runtime. (CDS-68168, ZD-43588)
   
@@ -1106,7 +1106,7 @@ gsutil -m cp \
     - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
     - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
 
-  This issue is fixed in the Harness Delegate version 79307. This change does not create any behavioral changes.
+  This issue is fixed in the Harness Delegate version 23.05.79307. This change does not create any behavioral changes.
 
 - The Harness UI displayed incorrect default value for conditional execution. (CDS-68600)
   
@@ -1122,7 +1122,7 @@ gsutil -m cp \
   
   Added additional test coverage for some workflows to resolve this issue.
 
-- Fixed an issue where the expressions of tags were not rendered properly. This issue is fixed in the Harness Delegate version 79307. (CDS-68703, ZD-43797)
+- Fixed an issue where the expressions of tags were not rendered properly. This issue is fixed in the Harness Delegate version 23.05.79307. (CDS-68703, ZD-43797)
 
 - Fixed an issue where error logs were removed to stop error flooding into GCP logs when Git authentication fails. (CDS-68760)
 
@@ -1180,7 +1180,7 @@ gsutil -m cp \
 
 - Invites to users fail with an unauthorized error while RBAC setup is still in progress. (PL-32117)
 
-  A polling system ensures that RBAC setup has been completed. The Harness Delegate version 79307 is required for this fix.
+  A polling system ensures that RBAC setup has been completed. The Harness Delegate version 23.05.79307 is required for this fix.
 
 - The comparison of email addresses during sign-in is case-sensitive. (PL-32198)
 
@@ -1189,7 +1189,7 @@ gsutil -m cp \
 - Custom Secret Manager creation does not consider the delegate selector. (PL-32260)
 
   In Custom SM configuration, decrypting secrets using the SSH connection to validate delegate selection fixed this issue.
-  The Harness Delegate version 79307 is required for this fix.
+  The Harness Delegate version 23.05.79307 is required for this fix.
 
 - The creation of SSH or WinRM secrets in a project or organization after disabling Harness' built-in secret manager is not supported. (PL-32562)
   
@@ -1408,7 +1408,7 @@ This release includes the following Harness module and component versions.
   
   Previously, triggers used the round robin algorithm to select any available delegate within a project or account. Now, the delegate-based trigger polling selects the same delegate you used in the connectors for triggers. 
 
-  The Harness Delegate version 79307 is required for this feature.
+  The Harness Delegate version 23.05.79307 is required for this feature.
 
 - Trigger artifact and manifest expressions (`<+trigger.artifact.build>` or `<+trigger.manifest.version>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192, CDS-50585)
   
@@ -5066,7 +5066,7 @@ For more information, see Install Self-Managed Enterprise Edition Using Helm.
 
 #### August 31, 2022, minor release 76324
 
-Delegate version 76324
+Delegate version 23.08.76324
 
 ##### What's new
 
