@@ -22,6 +22,9 @@ Consider the following user and access type requirements:
 * **User Access Type: Programmatic access:** This enables an access key ID and secret access key for the AWS API, CLI, SDK, and other development tools.
 * **DescribeRegions:** Required for all AWS Cloud Provider connections.
 
+:::important
+Amazon requires the Amazon EKS Pod execution role to run pods on the AWS Fargate infrastructure. For more information, go to [Amazon EKS Pod execution IAM role](https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html) in the AWS documentation.
+
 :::caution
 
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS connectors regardless of what AWS service you are using for your target or build infrastructure.
@@ -32,7 +35,7 @@ To do this, create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/l
 
 For example:
 
-```json
+```
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -79,7 +82,7 @@ There are two required policies to read from AWS S3:
 * **Description:** `Provides read-only access to all buckets via the AWS Management Console`
 * **Policy JSON:**
 
-```json
+```
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -104,7 +107,7 @@ There are two required policies to read from AWS S3:
 * **Description:** `Harness S3 policy that uses EC2 permissions.`
 * **Policy JSON:**
 
-```json
+```
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -131,7 +134,7 @@ There are two [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest
 * **Description:** `Custom policy for pushing to S3.`
 * **Policy JSON:**
 
-```json
+```
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -144,29 +147,6 @@ There are two [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest
     ]
 }
 ```
-
-:::info note
-If the S3 bucket uses a custom AWS Key Management Service (KMS) key, you must set the `kms:GenerateDataKey` permission to allow write access. For more information, go to [S3 bucket access default encryption](https://repost.aws/knowledge-center/s3-bucket-access-default-encryption) in the AWS Knowledge Center.
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "AllObjectActions",
-            "Effect": "Allow",
-            "Action": [
-              "kms:Decrypt",
-              "kms:GenerateDataKey",
-              "s3:*Object"
-            ],
-            "Resource": ["arn:aws:s3:::bucket-name/*"]
-        }
-    ]
-}
-```
-
-:::
 
 </details>
 
@@ -177,25 +157,21 @@ If the S3 bucket uses a custom AWS Key Management Service (KMS) key, you must se
 * **Description:** `Harness S3 policy that uses EC2 permissions.`
 * **Policy JSON:**
 
-```json
+```
 {
     "Version": "2012-10-17",
     "Statement": [
         {
             "Sid": "VisualEditor0",
             "Effect": "Allow",
-            "Action":  [
-              "kms:Decrypt",
-              "kms:GenerateDataKey",
-              "ec2:DescribeRegions"
-            ],
+            "Action": "ec2:DescribeRegions",
             "Resource": "*"
         }
     ]
 }
 ```
 
-</details> 
+</details>
 
 ### Read and Write to AWS S3
 
@@ -206,7 +182,7 @@ You can have a single policy that reads and writes to an S3 bucket.
 
 Here is a JSON example of a policy that includes AWS console access:
 
-```json
+```
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -238,46 +214,6 @@ Here is a JSON example of a policy that includes AWS console access:
     ]
 }
 ```
-
-:::info note
-If the S3 bucket uses a custom AWS Key Management Service (KMS) key, you must set the `kms:GenerateDataKey` permission to allow write access. For more information, go to [S3 bucket access default encryption](https://repost.aws/knowledge-center/s3-bucket-access-default-encryption) in the AWS Knowledge Center.
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "ConsoleAccess",
-            "Effect": "Allow",
-            "Action": [
-                "kms:Decrypt",
-                "kms:GenerateDataKey",
-                "s3:GetAccountPublicAccessBlock",
-                "s3:GetBucketAcl",
-                "s3:GetBucketLocation",
-                "s3:GetBucketPolicyStatus",
-                "s3:GetBucketPublicAccessBlock",
-                "s3:ListAllMyBuckets"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Sid": "ListObjectsInBucket",
-            "Effect": "Allow",
-            "Action": "s3:ListBucket",
-            "Resource": ["arn:aws:s3:::bucket-name"]
-        },
-        {
-            "Sid": "AllObjectActions",
-            "Effect": "Allow",
-            "Action": "s3:*Object",
-            "Resource": ["arn:aws:s3:::bucket-name/*"]
-        }
-    ]
-}
-```
-
-:::
 
 </details>
 
@@ -297,7 +233,7 @@ Use these policies to pull or push to ECR. For more information, go to the AWS d
 * **Description:** `Provides read-only access to Amazon EC2 Container Registry repositories.`
 * **Policy JSON:**
 
-```json
+```
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -328,7 +264,7 @@ Use these policies to pull or push to ECR. For more information, go to the AWS d
 * **Policy ARN:** `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess`
 * **Policy JSON:**
 
-```json
+```
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -369,7 +305,7 @@ The required policies depend on what you are provisioning. Here are some example
 
 This example policy gives full access to create and manage EKS clusters.
 
-```json
+```
 {
      "Version": "2012-10-17",
      "Statement": [
@@ -396,7 +332,7 @@ This example policy gives full access to create and manage EKS clusters.
 
 This example policy gives limited permission to EKS clusters.
 
-```json
+```
  {
      "Version": "2012-10-17",
      "Statement": [
@@ -457,7 +393,7 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
   
   Here's a sample `kubeconfig`:
   
-  ```yaml
+  ```
   apiVersion: v1
   clusters:
   - cluster:
@@ -484,13 +420,12 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
           - "$cluster_name"
   ```
   
-  
-  :::note
+  :::info note
   `aws-iam-authenticator` supports the role to be assumed and external ID as arguments. If the connector is configured with a cross-account access and external ID, `kubeconfig` can be modified accordingly.
   ::: 
   
-* You have created a delegate with an immutable image and installed the `aws-iam-authenticator` in the delegate.
-    1. Open the `delegate.yaml` in a text editor.
+* You have created a delegate with an immutable image type and installed the `aws-iam-authenticator` in the delegate. For more information on delegate types, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
+    1. Open the `delegate.yaml` file in a text editor.
     2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
     3. Replace `value: ""` with the following script to install `aws-iam-authenticator`. For more information, go to [install AWS IAM authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
       
@@ -506,6 +441,247 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
       
 * You're using Kubernetes version 1.22 or later. Harness uses a [client-go credential plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins) to authenticate the connection to the EKS cluster. Support for EKS is deprecated for Kubernetes 1.21 and earlier versions.
 
+* You have created the EKS cluster.
+
+   ```
+   eksctl create cluster eks-ec2-fargate-combo-delegate-test
+   ```
+   Run the following to list Fargate profiles in an EKS cluster.
+
+   ```
+   aws eks list-fargate-profiles --cluster-name cdp-eks-cluster
+   ```
+   For more information, go to [Getting started with AWS Fargate using Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/fargate-getting-started.html) in the AWS documentation.
+
+* You have created a Fargate profile.
+
+  ```bash
+   aws eks create-fargate-profile --fargate-profile-name test-fargate-profile --cluster-name cdp-eks-cluster --pod-execution-role-arn arn:aws:iam::XXXXX:role/AmazonEKSFargatePodExecutionRole --selectors "namespace=sainath-test, labels={infra=fargate}"
+   ```
+
+   ```bash
+   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" unzip awscliv2.zip
+   ./aws/install
+   ```
+   
+   ```bash
+   eksctl create iamserviceaccount --cluster=cdp-eks-cluster --name=<cluster-name> --namespace=harness-delegate --attach-policy-arn=
+   ```
+
+   ```bash
+   kubectl apply -f ~/Desktop/new/harness-delegate-kubernetes/harness-delegate.yaml
+   ```
+   
+   ```bash
+   aws sts get-caller-identity
+   ```
+
+   ```bash
+   apt-get update && apt-get install -yy less
+   ```
+
+   ```bash
+   eksctl get nodegroups --cluster=cdp-eks-cluster
+   ```
+   
+   ```bash
+   eksctl create iamserviceaccount --cluster=<clusterName> --name=<serviceAccountName> --tags "Owner=Owner_Name,Team=Team_Name" --override-existing-serviceaccounts
+   ```
+
+   ```bash
+   kubectl describe pod test-new-xicobc-0 -n harness-delegate | grep AWS_WEB_IDENTITY_TOKEN_FILE:
+   ```
+
+### Sample delegate YAML file
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: harness-delegate
+​
+---
+​
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: harness-delegate-cluster-admin
+subjects:
+  - kind: ServiceAccount
+#    name: default
+    name: cdp-delegate
+    namespace: harness-delegate
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+​
+---
+​
+apiVersion: v1
+kind: Secret
+metadata:
+  name: eks-test-new-proxy
+  namespace: harness-delegate
+type: Opaque
+data:
+  # Enter base64 encoded username and password, if needed
+  PROXY_USER: ""
+  PROXY_PASSWORD: ""
+​
+---
+​
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    harness.io/app: harness-delegate
+    harness.io/account: xicobc
+    harness.io/name: eks-test-new
+  # Name must contain the six letter account identifier: xicobc
+  name: eks-test-new-xicobc
+  namespace: harness-delegate
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      harness.io/app: harness-delegate
+      harness.io/account: xicobc
+      harness.io/name: eks-test-new
+  serviceName: ""
+  template:
+    metadata:
+      labels:
+        harness.io/app: harness-delegate
+        harness.io/account: xicobc
+        harness.io/name: eks-test-new
+        infra: fargate
+    spec:
+      imagePullSecrets:
+        - name: regcredpreqa
+      serviceAccountName: cdp-delegate  
+      containers:
+      - image: harness/delegate:latest
+        imagePullPolicy: Always
+        name: harness-delegate-instance
+        ports:
+          - containerPort: 8080
+        resources:
+          limits:
+            memory: "2Gi"
+          requests:
+            cpu: "0.5"
+        readinessProbe:
+          exec:
+            command:
+              - test
+              - -s
+              - delegate.log
+          initialDelaySeconds: 20
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command:
+              - bash
+              - -c
+              - '[[ -e /opt/harness-delegate/msg/data/watcher-data && $(($(date +%s000) - $(grep heartbeat /opt/harness-delegate/msg/data/watcher-data | cut -d ":" -f 2 | cut -d "," -f 1))) -lt 300000 ]]'
+          initialDelaySeconds: 240
+          periodSeconds: 10
+          failureThreshold: 2
+        env:
+        - name: JAVA_OPTS
+          value: "-Xms64M"
+        - name: ACCOUNT_ID
+          value: 
+        - name: MANAGER_HOST_AND_PORT
+          value: 
+        - name: DEPLOY_MODE
+          value: KUBERNETES
+        - name: DELEGATE_NAME
+          value: eks-test-new
+        - name: DELEGATE_TYPE
+          value: "KUBERNETES"
+        - name: DELEGATE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: INIT_SCRIPT
+          value: ""
+        - name: DELEGATE_PROFILE
+          value: 
+        - name: DELEGATE_TOKEN
+          value: 
+        - name: WATCHER_STORAGE_URL
+          value: 
+        - name: WATCHER_CHECK_LOCATION
+          value: current.version
+        - name: DELEGATE_STORAGE_URL
+          value: 
+        - name: DELEGATE_CHECK_LOCATION
+          value: delegateqa.txt
+        - name: HELM_DESIRED_VERSION
+          value: ""
+        - name: CDN_URL
+          value: 
+        - name: REMOTE_WATCHER_URL_CDN
+          value: 
+        - name: JRE_VERSION
+          value: 11.0.14
+        - name: HELM3_PATH
+          value: ""
+        - name: HELM_PATH
+          value: ""
+        - name: KUSTOMIZE_PATH
+          value: ""
+        - name: KUBECTL_PATH
+          value: ""
+        - name: POLL_FOR_TASKS
+          value: "false"
+        - name: ENABLE_CE
+          value: "false"
+        - name: PROXY_HOST
+          value: ""
+        - name: PROXY_PORT
+          value: ""
+        - name: PROXY_SCHEME
+          value: ""
+        - name: NO_PROXY
+          value: ""
+        - name: PROXY_MANAGER
+          value: "true"
+        - name: PROXY_USER
+          valueFrom:
+            secretKeyRef:
+              name: eks-test-new-proxy
+              key: PROXY_USER
+        - name: PROXY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: eks-test-new-proxy
+              key: PROXY_PASSWORD
+        - name: GRPC_SERVICE_ENABLED
+          value: "true"
+        - name: GRPC_SERVICE_CONNECTOR_PORT
+          value: "8080"
+      restartPolicy: Always
+​
+---
+​
+apiVersion: v1
+kind: Service
+metadata:
+  name: delegate-service
+  namespace: harness-delegate
+spec:
+  type: ClusterIP
+  selector:
+    harness.io/app: harness-delegate
+    harness.io/account: xicobc
+    harness.io/name: test-new
+  ports:
+    - port: 8080
+```
+
 Here's a quick video demonstrating Native EKS authentication support for Kubernetes:
 
 <!-- Video:
@@ -518,11 +694,11 @@ There are three authentication options for the AWS connector when used for AWS E
 
 * [AWS Access Key](#aws-access-key)
 * [Assume IAM Role on Delegate](#assume-iam-role-on-delegate)
-* [Use IRSA](#use-irsa-iam-roles-for-service-accounts)
+* [Use IRSA](#configure-irsa-credentials-for-AWS-connectors)
 
 You can also use STS roles with Serverless Lambda deployments. For details about this, go to [Serverless cross-account access (STS Role)](#serverless-cross-account-access-sts-role).
 
-For instructions for Serverless Lambda deployments, go to [Serverless Lambda CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart).
+For instructions for Serverless Lambda deployments, go to [Serverless Lambda CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart).
 
 ### Permissions
 
@@ -539,7 +715,7 @@ To create the AWS user, do the following:
 <details>
 <summary>IAMCredentials.json</summary>
 
-```json
+```
 {
     "Statement": [
         {
@@ -666,57 +842,55 @@ To install Serverless on a Kubernetes delegate, edit the delegate YAML to instal
 1. Open the delegate YAML in a text editor.
 2. Locate the environment variable `INIT_SCRIPT` in the `StatefulSet`.
 
-```yaml
-...
-        - name: INIT_SCRIPT
-          value: ""
-...
-```
+   ```
+   ...
+           - name: INIT_SCRIPT
+             value: ""
+   ...
+   ```
 
 3. Replace the `value` with the follow Serverless installation script:
 
-```yaml
-...
-        - name: INIT_SCRIPT
-          value: |-
-            #!/bin/bash
-            echo "Start"
-            export DEBIAN_FRONTEND=noninteractive
-            echo "non-inte"
-            apt-get update
-            echo "updagte"
-            apt install -yq npm
-            echo "npm"
-            npm install -g serverless@v2.50.0
-            echo "Done"
-...
-```
+   ```
+   ...
+           - name: INIT_SCRIPT
+             value: |-
+               #!/bin/bash
+               echo "Start"
+               export DEBIAN_FRONTEND=noninteractive
+               echo "non-inte"
+               apt-get update
+               echo "updagte"
+               apt install -yq npm
+               echo "npm"
+               npm install -g serverless@v2.50.0
+               echo "Done"
+   ...
+   ```
 
-:::note
-
-In rare cases when the delegate OS does not support `apt`, such as Red Hat Linux, you must edit this script to install `npm`. The rest of the code should remain the same.
-
-:::
+   :::info note
+   In rare cases when the delegate OS does not support `apt`, such as Red Hat Linux, you must edit this script to install `npm`. The rest of the code should remain the same.
+   :::
 
 4. Save the YAML file as `harness-delegate.yml`.
-5. Apply the delegate YAML: `kubectl apply -f harness-delegate.yml`
+5. Apply the delegate YAML: `kubectl apply -f harness-delegate.yml`.
 
 ### Serverless cross-account access (STS Role)
 
 If you use the **Enable cross-account access (STS Role)** option in the AWS connector for a Serverless Lambda deployment, the delegate that is used by the connector must have the AWS CLI installed. The AWS CLI is not required for the other authentication methods.
 
-For more information about installing software with the delegate, go to [Build custom delegate images with third-party tools](../../../delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For more information about installing software with the delegate, go to [Build custom delegate images with third-party tools](../../../2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 ## Harness AWS connector settings
 
 The AWS connector settings include:
 * **Name:** The name for the connector.
-* **Id:** Go to [Entity Identifier reference](../../../references/entity-identifier-reference.md).
+* **Id:** Go to [Entity Identifier reference](../../../20_References/entity-identifier-reference.md).
 * **Description:** Text string.
-* **Tags**: Go to [Tags reference](../../../references/tags-reference.md).
+* **Tags**: Go to [Tags reference](../../../20_References/tags-reference.md).
 * **Credentials**: Credentials that enable Harness to connect your AWS account. There are three primary options:
-  * **Assume IAM Role on Delegate:** This assumes the SA of the Delegate. Ensure the IAM roles attached to the nodes have the right access. This is often the simplest method for connecting Harness to your AWS account and services. Once you select this option, you can select a delegate in the next step of AWS connector creation. Typically, the delegate runs in the target infrastructure.
-  * **AWS Access Key:** The [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](/docs/platform/secrets/add-use-text-secrets) for both.
+  * **Assume IAM Role on Delegate:** This assumes the SA of the delegate. Ensure the IAM roles attached to the nodes have the right access. This is often the simplest method for connecting Harness to your AWS account and services. Once you select this option, you can select a delegate in the next step of AWS connector creation. Typically, the delegate runs in the target infrastructure.
+  * **AWS Access Key:** The [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](../../../Secrets/2-add-use-text-secrets.md) for both.
   * **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate.
 * **AWS Backoff Strategy:** Go to [AWS Backoff Strategy](#aws-backoff-strategy) below.
 
@@ -731,7 +905,7 @@ The following steps assume this is a new delegate installation and a new AWS con
 
 :::
 
-1. Create the IAM role with the policies that you want the Delegate to use. The policies you select depend on what AWS resources you are deploying via the delegate. For details, go to the [AWS permissions and policies](#aws-permissions-and-policies) section.
+1. Create the IAM role with the policies that you want the delegate to use. The policies you select depend on what AWS resources you are deploying via the delegate. For details, go to the [AWS permissions and policies](#aws-permissions-and-policies) section.
 2. In the cluster where the delegate will be installed, create a service account and attach the IAM role to it.
    Here is an example of how to create a new service account in the cluster where you will install the delegate and attach the IAM policy to it:
 
@@ -745,12 +919,12 @@ The following steps assume this is a new delegate installation and a new AWS con
        --override-existing-serviceaccounts —region=us-east-1
    ```
 
-3. In Harness, download the Harness Kubernetes delegate YAML file. For instructions, go to [Install a Kubernetes delegate](../../../delegates/install-delegates/overview.md).
+3. In Harness, download the Harness Kubernetes delegate YAML file. For instructions, go to [Install a Kubernetes delegate](../../../2_Delegates/install-delegates/overview.md).
 4. Open the delegate YAML file in text editor.
-5. Add the service account with access to IAM role to the delegate YAML. There are two sections in the Delegate YAML that you must update:
+5. Add the service account with access to IAM role to the delegate YAML. There are two sections in the delegate YAML that you must update:
    1. Update the `ClusterRoleBinding` by replacing the subject name `default` with the name of the service account with the attached IAM role, for example:
 
-      ```yaml
+      ```
       ---
       apiVersion: rbac.authorization.k8s.io/v1beta1
       kind: ClusterRoleBinding
@@ -769,7 +943,7 @@ The following steps assume this is a new delegate installation and a new AWS con
 
     2. Add `serviceAccountName` to the `StatefulSet` spec. For example:
 
-      ```yaml
+      ```
       ...
           spec:
             serviceAccountName: myserviceaccount  // New line. Use the same service account name you used in the ClusterRole Binding.
@@ -783,7 +957,7 @@ The following steps assume this is a new delegate installation and a new AWS con
       ```
 
 6. Save the delegate YAML file.
-7. [Install the Kubernetes delegate](../../../delegates/install-delegates/overview.md) in your EKS cluster and register the delegate with Harness. When you install the delegate in the cluster, the SA you added is used, and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.
+7. [Install the Kubernetes delegate](../../../2_Delegates/install-delegates/overview.md) in your EKS cluster and register the delegate with Harness. When you install the delegate in the cluster, the SA you added is used, and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.
 8. In Harness, create a new AWS connector.
 9. For **Credentials**, select **Use IRSA**.
 10. For **Select Connectivity Mode**, select **Connect through a Harness Delegate**, and then select the delegate you just installed.
