@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-08-22T10:00
+date: 2023-09-28T10:00
 sidebar_position: 2
 ---
 
@@ -13,19 +13,30 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - September 19, 2023
+## Latest - September 28, 2023
+
+### Continuous Integration, version 59xx
+
+When [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida), stage-level error analysis is available for failed stages without steps. If a stage has steps, step-level error analysis occurs instead. The Harness AI Development Assistant (AIDA:tm:) for CI is a beta feature that is behind the feature flag `CI_AI_ENHANCED_REMEDIATIONS`. (CI-9102)
+
+## September 19, 2023
 
 ### Continuous Delivery, version 80711
 
-– Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-67121)
+- Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-67121)
 
-## August 22, 2023
+## Previous releases
 
-### Continuous Delivery, version 80307
+<details>
+<summary>2023 releases</summary>
+
+#### August 22, 2023
+
+##### Continuous Delivery, version 80307
 
 - Added support for Post Prod Rollback for ASG deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Post deployment rollback](/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-77450, CDS-76352)
 
-### Harness Delegate, version 80308, and Continuous Integration, version 5408
+##### Harness Delegate, version 80308, and Continuous Integration, version 5408
 
 **GitHub App authentication for GitHub connectors (CI-8577)**
 
@@ -33,37 +44,30 @@ This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact
 
 With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
 
-## August 10, 2023
+#### August 10, 2023
 
-### Continuous Integration, version 5301
+##### Continuous Integration, version 5301
 
 * Enable and configure Cache Intelligence in the Visual editor. (CI-8917)
    * The Cache Intelligence visual editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
    * You can enable and configure [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to Harness Cloud build infrastructure.
 
-## August 9, 2023
+#### August 9, 2023
 
-### Security Testing Orchestration, version 1.64.1
+##### Security Testing Orchestration, version 1.64.1
 
 * The **Security Tests** tab includes a set of pull-down menus so you can filter the issues lists by Target, Target Type, Step, Stage, and Scanner. (STO-5212).
   ![Click on a tile to filter issues by severity](./static/sto-pulldown-filters-sto-5212.png)
 
    This feature is behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
 
-## August 4, 2023
+#### August 4, 2023
 
-### Continuous Delivery, version 80120
+##### Continuous Delivery, version 80120
 
 - You can now migrate Services with Helm Chart from Helm Repository stored Artifacts from CG to NG. This will help in migrations. The Feature Flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG` needs to be enabled for this feature. (CDS-73894)
 
 - You can now configure multiple Helm Charts in the manifests. This provides feature parity with Harness FirstGen. Helm Charts can now be configured from the Helm Repository as Artifacts that allow users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service. The Feature Flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG` needs to be enabled for this feature to work in your environment. (CDS-70209)
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
 
 #### July 28, 2023
 

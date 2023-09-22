@@ -73,7 +73,7 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
 
 - The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
 
-- If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
+- If the Email step failed to send a notification, the following message was displayed: "Failed to send the email. Check SMTP configuration." The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
    Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
    
    This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
@@ -107,9 +107,9 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
 
 - You can now create secrets in child scopes using the parent scope in Secret Manager. For example, you can create secrets inside a project using the Secret Manager created at the Org or Account level. (PL-38949)
 
-## September 1, 2023
+## September 4, 2023
 
-### Cloud Cost Management
+### Cloud Cost Management, version 80606
 
 - Display refunds or discounts on the graph within perspectives. (CCM-13443)
 
