@@ -1,5 +1,5 @@
 :::note
-Currently, AIDA for asset governance is a beta feature that is behind the feature flag `CCM_GOVERNANCE_GENAI_ENABLE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, AIDA:tm: for asset governance is a beta feature that is behind the feature flag `CCM_GOVERNANCE_GENAI_ENABLE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 By enforcing governance rules, asset governance policies play a crucial role in governing cloud assets and optimizing costs. At times, authoring these policies can be challenging and confusing. In such situations, the Harness AI Development Assistant (AIDA) can assist with creating policies. Harness AIDA offers a user-friendly interface and serves as an excellent starting point for establishing the necessary policies. By leveraging this tool, you can streamline the process of policy development and ensure that the required policies are effectively implemented.
