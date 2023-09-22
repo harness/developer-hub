@@ -682,5 +682,4 @@ This `CDS_OrgAccountLevelServiceEnvEnvGroup` FF is required to have Services and
 
 #### Why we do not see Dashboards in an SMP Installation?
 
-Dashboard is a licensed functionality. To enable it you need to get a license. Also for more details you can refer here [Documentation](https://harness.atlassian.net/wiki/spaces/NGCD/pages/21440168105/Enabling+Harness+Custom+Dashboard+on+SMP).
-
+Dashboard is a licensed functionality. To enable it you need to get a license.
