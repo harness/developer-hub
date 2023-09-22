@@ -61,7 +61,7 @@ Change sources enable you to monitor change events related to deployments, infra
   
 </details>
 
-To know how to add a change source, go to [Change sources](/docs/category/change-sources-catalog).
+To learn how to add a change source, go to [Change sources](/docs/category/change-sources-catalog).
 
 </TabItem>
 
