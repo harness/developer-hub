@@ -33,7 +33,6 @@ const Carousel = ({ certs }) => {
 
   return (
     <>
-   
       <div className={styles.carousel}>
         <div className={styles.twoCards}>
           <CertCard thumb={true} key={certs.title} {...certs[currentIndex]} />
