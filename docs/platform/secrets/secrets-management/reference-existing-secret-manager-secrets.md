@@ -221,3 +221,9 @@ To reference a specific version of a secret, use the following expression:
 To dynamically reference secrets in GCP secret manager, make sure you use the expression in the following format:
 `<+secrets.getValue()>`
 :::
+
+## Reference JSON secrets
+
+import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
+
+<Refj />
