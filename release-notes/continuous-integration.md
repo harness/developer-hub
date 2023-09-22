@@ -37,7 +37,6 @@ This release does not include early access features.
 * Fixed two issues in the Get Started workflow: (CI-9147)
    * Removed a redundant field validation for **Branch**, which is not required if you deselect **Store in Git**.
    * **Pipeline Name** is no longer ignored. Previously, pipelines were named `Build REPO_NAME`, regardless of what you entered in **Pipeline Name**.
-* Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) based on [delegate tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#delegate-tags), and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. <!-- not sure if dependent on delegate release 807xx. --> (CI-8831, ZD-47647)
 
 ### Hotfixes
 
