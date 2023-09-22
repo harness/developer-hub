@@ -17,7 +17,7 @@ This topic provides a comprehensive list of health sources and change sources su
 <Tabs>
 <TabItem value="Health sources" label="Health sources">
 
-Health sources in Harness SRM are APMs (Application Performance Monitoring) or log providers that allow you to monitor changes in your service's health trends. The following health sources are supported:
+Health sources in Harness SRM are APM (Application Performance Monitoring) or log providers that allow you to monitor changes in your service's health trends. The following health sources are supported:
 
 <details>
 <summary><b>Harness supported health sources</b></summary>
