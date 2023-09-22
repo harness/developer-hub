@@ -98,3 +98,29 @@ In polling mode, the SDK periodically polls the server for configuration updates
 #### What happens during client-side SDK initialization?
 
 The SDK is initialized for a specific target, enabling personalized flag evaluations.
+
+#### What do I need in order to get started with Harness Feature Flag?
+
+First, you will need a GitHub account
+An editor such as an IDE
+Harness Feature Flag account
+The ability to run NPM install in your local environment
+
+
+#### What is the link to the NPM install?
+
+Install NPM package at this link: [https://docs.npmjs.com/cli/v7/commands/npm-install]
+
+
+#### How to get started with GitHub/ Git and Feature Flags?
+
+You will need to clone the repository on your machine by leveraging GIT clone '''git clone https://github.com/google-pay/react-store.git''' 
+
+### How to add a Feature Flags SDK to the project?
+
+An example of adding an SDK to a project can be found at this link: [https://developer.harness.io/tutorials/feature-flags/typescript-react#adding-the-feature-flags-sdk-to-the-project]
+
+
+#### How to configure the source code for feature flags?
+
+You need to have the source code level setup so that the application can communcate witih Harness Feature Flags. A great source of information on setting this up can be found at this Harness docs site: [https://developer.harness.io/tutorials/feature-flags/typescript-react#configure-your-source-code-for-feature-flags]
