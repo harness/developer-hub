@@ -37,12 +37,13 @@ When [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/ai
 
 ### Fixed issues
 
-* (CI-9240)
-* (CI-9198)
-* (CI-9177)
-* delegate dependent (CI-9428, ZD-50027)
-* delegate dependent (CI-8831, ZD-47647)
-* delegate dependent (CI-5883)
+* <!-- unclear --> (CI-9240)
+* Fixed an issue with UI rendering of error messages related to Test Intelligence call graph visualizations. (CI-9198)
+* Fixed two issues related to [runtime input](/docs/platform/variables-and-expressions/runtime-inputs#runtime-inputs) (`<+input>`) with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). (CI-9177)
+   * Previously, if you used runtime input for [custom cache paths](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-paths), Harness wouldn't prompt for input and, instead, ran the pipeline with an empty path. Now, Harness correctly prompts for this input when you run the pipeline.
+   * Previously, if you used runtime input for [custom cache keys](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-keys), you couldn't save the pipeline due to an improper schema validation error. This is fixed.
+* If a step used [runtime input for conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#conditional-execution-as-a-runtime-input), but no runtime input was provided at pipeline runtime, then the pipeline passed the literal string `<+input>` instead of an empty object. This is fixed. This item requires Harness Delegate version 808xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-9428, ZD-50027)
+* Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) based on [delegate tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#delegate-tags), and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. This item requires Harness Delegate version 808xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- The CI change was in 5801 but required delegate 807xx, which there was none, so the delegate portion is in 808xx --> (CI-8831, ZD-47647)
 
 ### Hotfixes
 
@@ -70,7 +71,6 @@ This release does not include early access features.
 * Fixed two issues in the Get Started workflow: (CI-9147)
    * Removed a redundant field validation for **Branch**, which is not required if you deselect **Store in Git**.
    * **Pipeline Name** is no longer ignored. Previously, pipelines were named `Build REPO_NAME`, regardless of what you entered in **Pipeline Name**.
-* Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) based on [delegate tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#delegate-tags), and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. <!-- not sure if dependent on delegate release 807xx. --> (CI-8831, ZD-47647)
 
 ##### Hotfixes
 
