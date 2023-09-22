@@ -38,11 +38,9 @@ The recommended workflow is add a Snyk step to a Security Tests or CI Build stag
 
 <!-- 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 
 <details>
@@ -190,7 +188,7 @@ In the **Advanced** settings, you can use the following options:
 
 
 
-## Security step settings for Snyk scans in STO (_legacy_)
+## Security step settings for Snyk scans in STO (legacy)
 
 You can set up Snyk scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

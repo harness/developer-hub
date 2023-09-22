@@ -19,11 +19,9 @@ The Custom Ingest step is intended for scanners that have no supported integrati
 
 Hiding notes added when Step Palettes were first introducted, per Rajiv 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 -->
 

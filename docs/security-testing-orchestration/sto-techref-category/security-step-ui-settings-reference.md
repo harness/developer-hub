@@ -11,11 +11,9 @@ Some Security steps include a scanner template UI for setting up a scan. This to
 <!-- ============================================================================= -->
 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <!-- ============================================================================= -->
 

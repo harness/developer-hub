@@ -30,11 +30,9 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 The recommended workflow is add a Fossa step to a Security Tests or CI Build stage and then configure it as described below. 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <!--details>
     <summary>Scanner Template</summary>

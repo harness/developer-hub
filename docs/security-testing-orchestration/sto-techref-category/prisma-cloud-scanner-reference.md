@@ -30,11 +30,9 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 The recommended workflow is add a PrismaCloud step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Prisma Cloud scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <details>
     <summary>Scanner Template</summary>
@@ -321,7 +319,7 @@ In the **Advanced** settings, you can use the following options:
 
 
 
-## Security step settings for Prisma Cloud scans in STO (_legacy_)
+## Security step settings for Prisma Cloud scans in STO (legacy)
 
 You can set up Prisma Cloud scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
