@@ -37,15 +37,17 @@ const Carousel = ({ certs }) => {
         </div>
 
         <div className={styles.indicator}>
-          {certs.map((_, index: number) => (
-            <div
-              key={index}
-              className={`${styles.dot}   ${
-                currentIndex === index ? styles.active : ""
-              }`}
-              onClick={() => handleDotClick(index)}
-            ></div>
-          ))}
+          {Array(certs.length - 1)
+            .fill("item")
+            .map((_, index: number) => (
+              <div
+                key={index}
+                className={`${styles.dot}   ${
+                  currentIndex === index ? styles.active : ""
+                }`}
+                onClick={() => handleDotClick(index)}
+              ></div>
+            ))}
         </div>
       </div>
     </>
