@@ -7,36 +7,26 @@ title: Hands on Labs instructions
 
 :::info
 
-These instructions are in BETA and in support of our Admin and Architect level exams. 
+These instructions are in support of our Admin and Architect level exams. 
 
 :::
 
-## Accessing your Hands On Exam 
+## Video of Experience
+Video on experience you will follow in the below instructions.
 
-1. After registering for the administrator or architect level exam, you will find two exam items in your registration: 
-   - A 50-question multiple-choice knowledge exam
-   - A Hands-on exam with a Cloud Shell using Instruqt
+<docvideo src="https://www.youtube.com/watch?v=v8kOnhNopkc" />
 
-2. Before accessing the hands-on exam, you need to pass the knowledge exam.
+## Accessing your Hands-On Exam 
 
-3. Once you access the Hands-on exam, our proctor site will check your connectivity.
+1. After registering for the administrator or architect level exam, the final question will be the hands-on exam. 
 
-4. After your system is verified by the proctor, you will be presented with our terms and conditions. Please read and accept them to proceed.
+2. Once you access the hands-on exam, you will see instructions to open the Instruqt Hands-On exam by copy and pasting the exam URL in a new tab.  
 
-5. On the following screen, click the **Start Exam** button to begin the Hands-on exam.
+	![New Tab](./static/new-tab.png)
 
-6. Within this screen, you will see a toolbar to the right of this question, you will then see a Widget that will house your Instruqt Hands-On Labs, click the icon below to display your labs: 
+3. Follow the instructions provided within the hands-on labs to complete the exercises. Make sure to finish all the labs. Once you have completed all the labs, a secret password will be displayed which will be used for credit.
 
-![Instruqt Widget](./static/instruqt-widget-scorpion.png)
-
-7. A widget will appear, housing your Instruqt Hands-On Labs. 
-8. To expand the window to complete your labs, click the arrow icons to navigate between the hands-on widget and the question below:
-
-![Arrow Button](./static/scorpion-arrow.png)
-
-8. Follow the instructions provided within the hands-on labs to complete the exercises. Make sure to finish all the labs. Once you have completed all the labs, a secret password will be displayed.
-
-9. At this point, return to the main exam window and answer the question related to the secret password. This step ensures that you have finished all the labs.
+4. At this point, return to the main exam window and answer the question related to the secret password. This step ensures that you have finished all the labs.
 
 By following these steps, you will be able to access and complete the hands-on exam using Instruqt. Good luck!
 
@@ -51,7 +41,7 @@ Below is a picture of the cloud shell you will see during an exam.
 3. Instruqt will now launch the lab environment for you. You may need to wait for a few moments while the environment initializes.
 4. Once the lab environment is ready, you will be presented with a web-based terminal or console interface. This interface allows you to interact with the lab environment and perform the required tasks.
 5. Follow the instructions provided within the lab environment to complete the hands-on exercises. The instructions will guide you through the necessary steps and provide any additional information or resources you may need.
-6. As you progress through the lab, make sure to read the instructions carefully and perform the tasks as directed. If you encounter any issues or have questions, you can refer to the lab's chat or discussion panel for assistance.
+6. As you progress through the lab, make sure to read the instructions carefully and perform the tasks as directed. 
 
-
-
+## Troubleshooting
+Please see our [FAQ](/certifications/faqs) section for troubleshooting tips. You can also email our certification team at [certifications@harness.io](mailto:certifications@harness.io).

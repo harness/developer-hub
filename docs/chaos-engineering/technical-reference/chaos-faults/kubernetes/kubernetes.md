@@ -437,13 +437,13 @@ Pod network latency is a Kubernetes pod-level chaos fault that introduces latenc
 - It tests the application's resilience to lossy (or flaky) networks.
 
 <accordion color="green">
-    <summary>Use cases</summary>
-The fault degrades the network without the pod being marked as unhealthy (or unworthy) of traffic by kube-proxy (unless there is a liveness probe that measures thw latency and restarts (or crashes) the container). This fault simulates issues within the pod network (or microservice communication) across services in different availability zones(or regions).
+    <summary>View fault usage</summary>
+The fault degrades the network without the pod being marked as unhealthy (or unworthy) of traffic by kube-proxy (unless there is a liveness probe that measures the latency and restarts or crashes the container). This fault simulates issues within the pod network (or microservice communication) across services in different availability zones or regions.
 
 This can be resolved by using middleware that switches traffic based on certain SLOs or performance parameters.
-Another way is to set up alerts and notifications to highlight a degradation, so that it can be addressed, and fixed. Another way is to understand the impact of the failure and determine the last point in the application stack before degradation.
+Another way is to set up alerts and notifications to highlight a degradation so that it can be addressed and fixed. Another way is to understand the impact of the failure and determine the last point in the application stack before degradation.
 
-The applications may stall or get corrupted while waiting endlessly for a packet. This fault limits the impact (blast radius) to only the traffic that you wish to test by specifying the IP addresses. This fault will help to improve the resilience of your services over time.
+The applications may stall or get corrupted while waiting endlessly for a packet. This fault limits the impact (blast radius) to only the traffic that you wish to test by specifying the IP addresses. This fault helps to improve the resilience of your services over time.
 </accordion>
 
 </FaultDetailsCard>
@@ -452,7 +452,7 @@ The applications may stall or get corrupted while waiting endlessly for a packet
 
 ### Pod network loss
 
-Pod network loss is a Kubernetes pod-level chaos fault that causes packet loss in a specific container by starting a traffic control (tc) process with netem rules to add egress (or ingress) loss.
+Pod network loss is a Kubernetes pod-level chaos fault that causes packet loss in a specific container by starting a traffic control (tc) process with netem rules to add egress or ingress loss.
 
 - It tests the application's resilience to lossy (or flaky) network.
 
@@ -474,6 +474,145 @@ Pod network partition is a Kubernetes pod-level fault that blocks 100% ingress a
 <accordion color="green">
     <summary>Use cases</summary>
 It can test the application's resilience to lossy (or flaky) network.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod IO Latency
+
+Pod IO latency is a Kubernetes pod-level fault that delays the system calls of files located within the mounted volume of the pod.
+
+- It can test the application's resilience for the latency in i/o operations.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+It can test the application's resilience for the latency in i/o operations.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod IO Error
+
+Pod IO error is a Kubernetes pod-level fault that returns an error on the system calls of files located within the mounted volume of the pod.
+
+- It can test the application's resilience for the errors in i/o operations.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+It can test the application's resilience for the errors in i/o operations.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod IO Attribute Override
+
+Pod IO attribute override is a Kubernetes pod-level fault that modify the properties of files located within the mounted volume of the pod.
+
+- It can test the application's resilience for the different values of file properties.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+It can test the application's resilience for the different values of file properties.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Time Chaos
+
+Time Chaos is a Kubernetes pod-level fault that introduces controlled time offsets to disrupt the system time of the target pod
+
+- It can test the application's resilience for invalid system time.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+It can test the application's resilience for invalid system time.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod API latency
+
+Pod API latency is a Kubernetes pod-level chaos fault that injects api request and response latency by starting proxy server and redirecting the traffic through it.
+
+- It injects the latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It evaluates the application's resilience to lossy (or flaky) API requests and responses.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API requests and response.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod API Status Code
+
+Pod API status code is a Kubernetes pod-level chaos fault that change the API response status code and optionally api response body through path filtering.
+
+- It overrides the api status code of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It evaluates the application's resilience to lossy (or flaky) responses.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API responses.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod API modify header
+
+Pod API modify header is a Kubernetes pod-level chaos fault that overrides the header values of API requests and responses with the user-provided values for the given keys.
+
+- It modifies the headers of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It evaluates the application's resilience to lossy (or flaky) requests and responses.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod API modify body
+
+Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value.
+
+- It modifies the body of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It evaluates the application's resilience to lossy (or flaky) requests and responses.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod network rate limit
+
+Pod network rate limit is a Kubernetes pod-level chaos fault that generates Traffic Control (tc) rules with Token Bucket Filter (TBF) to assess Kubernetes pod resilience under limited network bandwidth condition.
+
+- It tests the application's resilience to limited or slow network bandwidth.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+It tests the application's resilience to limited or slow network bandwidth.
 </accordion>
 
 </FaultDetailsCard>

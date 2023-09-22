@@ -19,6 +19,14 @@ Harness Continuous Verification (CV) integrates with Elasticsearch to:
 
 This topic describes how to set up an Elasticsearch health source when adding a CV step to your Continuous Deployment (CD).
 
+
+:::important
+- Harness only supports the Lucene query language. 
+
+- Use the Java-supported format when specifying dates in a query.
+:::
+
+
 ## Prerequisite
 
 Elasticsearch is added as a verification provider in Harness.
@@ -76,6 +84,40 @@ You can add a step at various points in the pipeline such as the beginning, end,
    - **ms** for milliseconds. For example, to define 1000 milliseconds, enter 1000ms.
 
 3. The maximum timeout value you can set is **53w**. You can also set timeouts at the pipeline level.
+
+### Node filtering
+
+:::info note
+Currently, this feature is behind the feature flag `CV_UI_DISPLAY_NODE_REGEX_FILTER`. Contact Harness Support to enable the feature.
+:::
+
+The node filtering feature allows you to select specific nodes within your Kubernetes environment using the PodName label. This allows for focused analysis, enabling you to choose specific nodes as service instances for in-depth analysis.
+
+Harness CV autonomously identifies new nodes as they are added to the cluster. However, the node filtering feature allows you to focus the analysis explicitly on the nodes that you want to analyze. Imagine you have a Kubernetes cluster with multiple nodes, and you want to analyze the performance of pods running on specific nodes. You want to analyze the nodes that match a certain naming pattern.
+
+Procedure:
+
+1.	On the Verify settings page, expand **Optional** to navigate to the node filtering settings section.
+
+2.	(Optional) Select **Use node details from CD** if you want Harness CV to collect and analyze the metrics and log details for the recently deployed nodes.
+
+3.	Specify the **Control Nodes** and **Test Nodes**:
+
+      - **Control Nodes**: These are the nodes against which the test nodes are compared. You can specify the control nodes to provide a baseline for analysis.
+      
+      - **Test Nodes**: These are the nodes that Harness CV evaluates and compares against the control nodes.
+
+      To specify the **Control Nodes** and **Test Nodes**, in one of the following ways:
+
+         - Type node names: Enter the names of specific nodes you want to include in the analysis.
+         
+         - Use simple patterns (Regex): Define a regular expression pattern to match the nodes you want to filter. For example, if your nodes follow a naming convention such as "node-app-1", "node-app-2", and so on, you could use a pattern such as "node-app-*" to include all nodes with names starting with "node-app-".
+
+      Example: Let's say you want Harness CV to analyze the only nodes that have "backend" in their PodName label:
+         
+         1. In the Control Nodes field, enter "backend-control-node" as the control node.
+      
+         2. In the Test Nodes field, enter the pattern "backend-*" to include all nodes with names starting with "backend-".
  
 
 ## Select a continuous verification type, sensitivity, and duration
@@ -83,16 +125,23 @@ You can add a step at various points in the pipeline such as the beginning, end,
 1. In **Continuous Verification Type**, select a type that matches your deployment strategy. The following options are available:
    
    - **Auto**: Harness automatically selects the best continuous verification type based on the deployment strategy.
+   
    - **Rolling Update**: Rolling deployment is a deployment technique that gradually replaces old versions of a service with a new version by replacing the infrastructure on which the service runs. Rolling updates are useful in situations where a sudden changeover might cause downtime or errors.
+   
    - **Canary**: Canary deployment involves a two-phased deployment. In phase one, new pods and instances with the new service version are added to a single environment. In phase two, a rolling update is performed in the same environment. Canary deployment helps to detect issues with the new deployment before fully deploying it.
+   
    - **Blue Green**: Blue-green deployment is a technique used to deploy services to a production environment by gradually shifting user traffic from an old version to a new one. The previous version is referred to as the blue environment, while the new version is known as the green environment. Upon completion of the transfer, the blue environment remains on standby in case of a need for rollback or can be removed from production and updated to serve as the template for future updates.
-   - **Load Test**: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment.
+   
+   - **Load Test**: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment. When you choose "Load Test," you must also choose one of these options:
+      - **Last Successful Job Run**: Compare the test data with the data from the previous successful verification.
+[Set successful verification as a baseline for load testing](#set-successful-verification-as-a-baseline)
+
 
 2. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. When the sensitivity is set to **High**, any anomaly, no matter how small, will be treated as a verification failure. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
    
 3. In **Duration**, choose a duration. Harness will use the data points within this duration for analysis. For instance, if you select 10 minutes, Harness will analyze the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
    
-4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
+4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md).
    
 5. Select **Fail On No Analysis** if you want the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
@@ -246,3 +295,38 @@ The following screenshots show successful and failed verifications in a deployme
 ![Failed verification step](./static/cv-sumologic-pipeline-fail.png)
 
 
+## Set a pinned baseline
+
+:::info note
+Currently, this feature is behind the feature flag `SRM_ENABLE_BASELINE_BASED_VERIFICATION`. Contact Harness Support to enable the feature.
+:::
+
+You can set specific verification in a successful pipeline execution as a baseline. This is available with **Load Testing** as the verification type.
+
+
+### Set successful verification as a baseline
+
+To set a verification as baseline for future verifications:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline you want to use as the baseline.
+   
+2. Select the successful pipeline execution with the verification that you want to use as the baseline.
+   
+   The pipeline execution is displayed.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   The selected verification is now set as the baseline for future verifications.
+
+
+### Replace an existing pinned baseline
+
+To use a new baseline from a pipeline and replace the existing pinned baseline, follow these steps:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline from which you want to remove the baseline.
+
+2. Select the successful pipeline execution with the verification that you have previously pinned as the baseline.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   A confirmation alert message appears, asking if you want to replace the existing pinned baseline with the current verification. After you confirm, the existing pinned baseline gets replaced with the current verification.

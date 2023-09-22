@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 8
 title: iOS and macOS applications
 description: Use a CI pipeline to build and test iOS and macOS applications.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
@@ -52,6 +52,9 @@ To use M1 machines with Harness Cloud, use the `Arm64` architecture.
           platform:
             os: MacOS ## selects macOS operating system
             arch: Arm64 ## selects M1 architecture
+          runtime:
+            type: Cloud
+            spec: {}
 ```
 
 If you need to use Intel-based architecture, [Rosetta](https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment) is pre-installed on Harness Cloud's M1 machines. If you need to use it, add the prefix `arch -x86_64` to commands in your scripts. Keep in mind that running apps through Rosetta can impact performance. Use native Apple Silicon apps whenever possible to ensure optimal performance.
@@ -61,7 +64,7 @@ If you need to use Intel-based architecture, [Rosetta](https://developer.apple.c
   <TabItem value="selfhosted" label="Self-hosted">
 ```
 
-To configure a self-hosted macOS build infrastructure, go to [Set up a macOS VM build infrastructure with Anka Registry](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) or [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
+To configure a self-hosted macOS build infrastructure, go to [Set up a macOS VM build infrastructure with Anka Registry](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) or [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
 This example uses a VM build infrastructure:
 
@@ -173,8 +176,6 @@ You can [add package dependencies](https://developer.apple.com/documentation/xco
 
 Add caching to your stage.
 
-<!-- unknown checksum key and path for both hosted and self-hosted infras.-->
-
 ```mdx-code-block
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
@@ -215,7 +216,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: AWS_Connector
                     region: us-east-1
                     bucket: your-s3-bucket
-                    key: cache-{{ checksum "cache.ipa" }} ## What is the cache key for xcode?
+                    key: cache-{{ checksum "cache.ipa" }}
                     archiveFormat: Tar
               - step:
                   type: Run
@@ -240,7 +241,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: AWS_Connector
                     region: us-east-1
                     bucket: your-s3-bucket
-                    key: cache-{{ checksum "cache.ipa" }} ## What is the cache key for xcode?
+                    key: cache-{{ checksum "cache.ipa" }}
                     sourcePaths:
                       - "/Users/anka/Library/Developer/Xcode/DerivedData"
                     archiveFormat: Tar
@@ -374,8 +375,6 @@ Use `xcode-select` in a **Run** step to switch between pre-installed versions of
 
 <!-- this command starts prompts that need interaction. Don't know how to authorize it so the install proceeds. It takes a while Not sure installing xcode as part of a pipeline step is a good idea?
 
-If your application requires a specific Xcode version, you can a **Run** step to install it.
-
 ```yaml
               - step:
                   type: Run
@@ -385,34 +384,6 @@ If your application requires a specific Xcode version, you can a **Run** step to
                     shell: Sh
                     command: |-
                       xcode-select --install
-```
--->
-
-<!-- I don't know why you would use multiple xcode versions.
-
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
-
-```yaml
-    - stage:
-        strategy:
-          matrix:
-            pythonVersion:
-              - 3.11.2
-              - 3.10.10
-```
-
-2. Reference the matrix variable in your steps.
-
-```yaml
-              - step:
-                  type: Action
-                  name: Install python
-                  identifier: installpython
-                  spec:
-                    uses: actions/setup-python@v4
-                    with:
-                      python-version: <+ stage.matrix.pythonVersion >
-                      token: <+ secrets.getValue("github_token") >
 ```
 -->
 
@@ -437,8 +408,6 @@ If your build infrastructure machines have multiple versions of Xcode installed,
 
 <!-- this command starts prompts that need interaction. Don't know how to authorize it so the install proceeds. It takes a while Not sure installing xcode as part of a pipeline step is a good idea?
 
-If your application requires a specific Xcode version, you can a **Run** step to install it.
-
 ```yaml
               - step:
                   type: Run
@@ -451,34 +420,6 @@ If your application requires a specific Xcode version, you can a **Run** step to
 ```
 -->
 
-<!-- I don't know why you would use multiple xcode versions.
-
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
-
-```yaml
-    - stage:
-        strategy:
-          matrix:
-            pythonVersion:
-              - 3.11.2
-              - 3.10.10
-```
-
-2. Reference the matrix variable in your steps.
-
-```yaml
-              - step:
-                  type: Action
-                  name: Install python
-                  identifier: installpython
-                  spec:
-                    uses: actions/setup-python@v4
-                    with:
-                      python-version: <+ stage.matrix.pythonVersion >
-                      token: <+ secrets.getValue("github_token") >
-```
--->
-
 ```mdx-code-block
 </TabItem>
 </Tabs>
@@ -486,7 +427,7 @@ If your application requires a specific Xcode version, you can a **Run** step to
 
 ## Deploy to the App Store
 
-The following examples use [Fastlane in a Continuous Integration setup](https://docs.fastlane.tools/best-practices/continuous-integration/) to deploy an app to the Apple App Store. The environment variables in these examples use [secrets](https://developer.harness.io/docs/category/secrets) and [expressions](https://developer.harness.io/docs/platform/Variables-and-Expressions/harness-variables) to store and recall sensitive values, such as `FASTLANE_PASSWORD=<+secrets.getValue('fastlanepassword')>`.
+The following examples use [Fastlane in a Continuous Integration setup](https://docs.fastlane.tools/best-practices/continuous-integration/) to deploy an app to the Apple App Store. The environment variables in these examples use [secrets](/docs/category/secrets) and [expressions](/docs/platform/Variables-and-Expressions/harness-variables) to store and recall sensitive values, such as `FASTLANE_PASSWORD=<+secrets.getValue('fastlanepassword')>`.
 
 To learn more about app distribution, go to the Apple Developer documentation on [Distribution](https://developer.apple.com/documentation/xcode/distribution).
 
@@ -645,7 +586,7 @@ To learn more about app distribution, go to the Apple Developer documentation on
 
 ## Full pipeline examples
 
-The following pipeline examples install dependencies, cache dependencies, and build and test an xcode project.
+The following pipeline examples install dependencies, cache dependencies, and build and test an Xcode project.
 
 ```mdx-code-block
 <Tabs>
@@ -714,7 +655,7 @@ pipeline:
   <TabItem value="selfhosted" label="Self-hosted">
 ```
 
-This pipeline uses [self-hosted VM build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+This pipeline uses a [self-hosted VM build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache).
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), repository name, and other applicable values. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
@@ -804,7 +745,7 @@ pipeline:
 
 ## Next steps
 
-Now that you have created a pipeline that builds and tests a iOS/macOS app, you could:
+Now that you have created a pipeline that builds and tests an iOS/macOS app, you could:
 
 * Create [triggers](/docs/category/triggers) to automatically run your pipeline.
 * Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).

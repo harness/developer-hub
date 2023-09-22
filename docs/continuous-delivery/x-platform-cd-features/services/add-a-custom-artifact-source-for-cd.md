@@ -27,7 +27,7 @@ For **Deployment Type**, select **Kubernetes**. Custom Artifact is supported in 
 
 You can now see the **Manifests** and **Artifacts** sections.
 
-We'll focus on **Artifacts** to demonstrate custom artifact, but you can find information on manifests in [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services).
+We'll focus on **Artifacts** to demonstrate custom artifact, but you can find information on manifests in [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
 ## Add a custom artifact source
 
@@ -89,7 +89,7 @@ Enter the following settings.
 
   `HARNESS_ARTIFACT_RESULT_PATH` is a random, unique file path created on the Delegate by Harness.
 
-  You can use [Harness text secrets](/docs/platform/Secrets/add-use-text-secrets) in the script. For example:
+  You can use [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) in the script. For example:
 
   ```
   curl -u 'harness' <+secrets.getValue("repo_password")> https://myrepo.example.io/todolist/json/ > $HARNESS_ARTIFACT_RESULT_PATH
@@ -126,7 +126,7 @@ Enter the following settings.
 
 * **Version**: Enter the version number for this deployment, or select Runtime Input or Expression to select the version dynamically.
 
-  For more information on Fixed Value, Runtime Input, and Expression got to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/References/runtime-inputs).
+  For more information on Fixed Value, Runtime Input, and Expression got to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
   When you done Artifact Details will look something like this:
 
@@ -225,13 +225,13 @@ namespace: <+infra.namespace>
 ...
 ```
 
-For details on using *values.yaml* in Harness, go to [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services).
+For details on using *values.yaml* in Harness, go to [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
 [Harness Variables and Expressions](/docs/platform/Variables-and-Expressions/harness-variables) can be added to Values files (for example values.yaml), not the manifests themselves. This provides more flexibility.
 
 ## Shell script step
 
-In the stage **Execution** section, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step.
+In the stage **Execution** section, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step.
 
 In **Script**, reference the artifact and any additional attributes you configured. Here's an example where the stage is named Kube:
 

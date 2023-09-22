@@ -1,9 +1,8 @@
 ---
 sidebar_position: 1
 description: Install Harness Delegate on Kubernetes or Docker
+title: Install Harness Delegate on Kubernetes or Docker
 ---
-
-# Install Harness Delegate on Kubernetes or Docker
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -74,7 +73,7 @@ Now that you have access to a Kubernetes cluster, you can install the delegate u
 
 ### Install the Helm chart
 
-As a prerequisite, you must have [Helm v3](https://helm.sh/docs/intro/install/) installed on the machine from which you connect to your Kubernetes cluster. 
+As a prerequisite, you must have [Helm v3](https://helm.sh/docs/intro/install/) installed on the machine from which you connect to your Kubernetes cluster.
 
 You can now install the delegate using the delegate Helm chart. First, add the `harness-delegate` Helm chart repo to your local Helm registry.
 
@@ -84,49 +83,43 @@ helm repo update
 helm search repo harness-delegate
 ```
 
-You can see that there are two Helm charts available. We will use the `harness-delegate/harness-delegate-ng` chart in this tutorial.
+We will use the `harness-delegate/harness-delegate-ng` chart in this tutorial.
 ```
 NAME                                	CHART VERSION	APP VERSION	DESCRIPTION                                
 harness-delegate/harness-delegate-ng	1.0.8        	1.16.0     	A Helm chart for deploying harness-delegate
 ```
 
-Now we are ready to install the delegate. The following command installs/upgrades `firstk8sdel` delegate (which is a Kubernetes workload) in the `harness-delegate-ng` namespace using the `harness-delegate/harness-delegate-ng` Helm chart. 
+Now we are ready to install the delegate. The following example installs/upgrades `firstk8sdel` delegate (which is a Kubernetes workload) in the `harness-delegate-ng` namespace using the `harness-delegate/harness-delegate-ng` Helm chart. 
 
-```
-helm upgrade -i firstk8sdel --namespace harness-delegate-ng --create-namespace \
-  harness-delegate/harness-delegate-ng \
-  --set delegateName=firstk8sdel \
-  --set accountId=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
-  --set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE \
-  --set managerEndpoint=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
-  --set delegateDockerImage=harness/delegate:23.02.78306 \
-  --set replicas=1 --set upgrader.enabled=false
-```
+To install the delegate, do the following:
 
-The above command uses the default [values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) located in the [delegate-helm-chart](https://github.com/harness/delegate-helm-chart) GitHub repo. If you want change one or more values in a persistent manner instead of the command line, you can download and update the values.yaml file as per your need. You can use the updated values.yaml file as shown below.
+1. In Harness, select **Deployments**, then select your project.
+2. Under **Project Setup**, select **Delegates**.
+3. Select **Install a Delegate** to open the **New Delegate** dialog.
 
-```
-helm upgrade -i firstk8sdel --namespace harness-delegate-ng --create-namespace \
-  harness-delegate/harness-delegate-ng \
-  -f values.yaml \
-  --set delegateName=firstk8sdel \
-  --set accountId=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
-  --set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE \
-  --set managerEndpoint=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
-  --set delegateDockerImage=harness/delegate:23.02.78306 \
-  --set replicas=1 --set upgrader.enabled=false
-```
+   ![](./static/install-delegate/install-a-k8s-delegate-helm.png)
 
-Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+4. Under **Select where you want to install your Delegate**, select **Kubernetes**.   
 
-| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
-| ------------------------| -------------------------------------------	|
-| SaaS prod-1  	 		| `https://app.harness.io`       				|
-| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
-| SaaS prod-3  	 		| `https://app3.harness.io`        				|
-| [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
-| [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
+5. Under **Install your Delegate**, select **Helm Chart**.
 
+6. Copy the `helm upgrade` command.
+
+   The command uses the default [values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) located in the [delegate-helm-chart](https://github.com/harness/delegate-helm-chart) GitHub repo. If you want to change one or more values in a persistent manner instead of the command line, you can download and update the `values.yaml` file as needed. You can use the updated `values.yaml` file as shown below.
+
+   ```
+   helm upgrade -i firstk8sdel --namespace harness-delegate-ng --create-namespace \
+     harness-delegate/harness-delegate-ng \
+     -f values.yaml \
+     --set delegateName=firstk8sdel \
+     --set accountId=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+     --set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE \
+     --set managerEndpoint=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
+     --set delegateDockerImage=harness/delegate:yy.mm.verno \
+     --set replicas=1 --set upgrader.enabled=false
+   ```
+
+7. Run the command.
 
 ```mdx-code-block
 </TabItem>
@@ -147,7 +140,7 @@ module "delegate" {
   delegate_name = "firstk8sdel"
   namespace = "harness-delegate-ng"
   manager_endpoint = "PUT_YOUR_MANAGER_HOST_AND_PORT_HERE"
-  delegate_image = "harness/delegate:23.02.78306"
+  delegate_image = "harness/delegate:yy.mm.verno"
   replicas = 1
   upgrader_enabled = false
 
@@ -164,7 +157,7 @@ provider "helm" {
 }
 ```
 
-Now replace the variables in the file with your Harness accound ID and delegate token values. Replace `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+Now replace the variables in the file with your Harness account ID and delegate token values. Replace `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
 
 | Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
 | ------------------------| -------------------------------------------	|
@@ -255,24 +248,45 @@ Ensure that you have the Docker runtime installed on your host. If not, use one 
 - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
 - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
-- [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
+- [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
 
 <h3> Install on Docker </h3>
 
-Now you can install the delegate using the following command.
+To install the delegate, do the following:
 
-```bash
-docker run --cpus=1 --memory=2g \
-  -e DELEGATE_NAME=docker-delegate \
-  -e NEXT_GEN="true" \
-  -e DELEGATE_TYPE="DOCKER" \
-  -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
-  -e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
-  -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
-  -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
-  harness/delegate:23.03.78904
-```
-Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+1. In Harness, select **Deployments**, then select your project.
+
+2. Under **Project Setup**, select **Delegates**.
+
+3. Select **Install a Delegate** to open the **New Delegate** dialog.
+
+4. Under **Select where you want to install your Delegate**, select **Docker**.
+
+4. Under **Install your Delegate**, enter a **Delegate Name**.
+
+5. Copy the `docker run` command.
+
+   ```bash
+   docker run --cpus=1 --memory=2g \
+     -e DELEGATE_NAME=docker-delegate \
+     -e NEXT_GEN="true" \
+     -e DELEGATE_TYPE="DOCKER" \
+     -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+     -e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
+     -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
+     -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
+     harness/delegate:yy.mm.verno
+   ```
+
+6. Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, to find your Harness cluster location, select **Account Settings**, and then select **Overview**. In **Account Overview**, look in **Account Settings**. It is listed next to **Harness Cluster Hosting Account**.
+
+7. Run the command.
+
+For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts).
+
+![](./static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
+
+For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
 
 | Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
 | ------------------------| -------------------------------------------	|
@@ -282,12 +296,50 @@ Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Mana
 | [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
 | [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
 
-To use local runner build infrastructure, modify the delegate command using the instructions to install the delegate in [Use local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate)
+If you are using a local runner CI build infrastructure, modify the delegate install command as explained in [Use local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate)
 
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
+
+## Deploy using a custom role
+
+During delegate installation, you have the option to deploy using a custom role. To use a custom role, you must edit the delegate YAML file.
+
+Harness supports the following custom roles:
+
+- `cluster-admin`
+- `cluster-viewer`
+- `namespace-admin`
+- custom cluster roles
+
+To deploy using a custom cluster role, do the following:
+
+1. Open the delegate YAML file in your text editor.
+
+2. Add the custom cluster role to the `roleRef` field in the delegate YAML.
+
+   ```yaml
+   ---
+   apiVersion: rbac.authorization.k8s.io/v1beta1
+   kind: ClusterRoleBinding
+   metadata:
+     name: harness-delegate-cluster-admin
+   subjects:
+     - kind: ServiceAccount
+       name: default
+       namespace: harness-delegate-ng
+   roleRef:
+     kind: ClusterRole
+     name: cluster-admin
+     apiGroup: rbac.authorization.k8s.io
+   ---
+   ```
+
+   In this example, the `cluster-admin` role is defined.
+
+3. Save the delegate YAML file. 
 
 ## Verify delegate connectivity
 
@@ -302,7 +354,11 @@ Select **Continue**. After the health checks pass, your delegate is available fo
 ### Docker
 ![Delegate Available](static/install-delegate/docker_available.png)
 
-You can now route communication to external systems in Harness connectors and pipelines by selecting this delegate via a delegate selector. 
+You can now route communication to external systems in Harness connectors and pipelines by selecting this delegate via a delegate selector.
+
+import Selector from '/docs/platform/delegates/shared/selector-infrastructure.md'
+
+<Selector />
 
 ## Troubleshooting
 
@@ -349,7 +405,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
    kubectl logs -f <harnessDelegateName> -n <namespace>
    ```
 
-   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
+   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficient Kubernetes cluster resources.
 
 4. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
 
@@ -386,7 +442,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
    kubectl logs -f <harnessDelegateName> -n <namespace>
    ```
 
-   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
+   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficient Kubernetes cluster resources.
 
 4. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
 
@@ -413,7 +469,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
    kubectl logs -f <harnessDelegateName> -n <namespace>
    ```
 
-   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
+   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficient Kubernetes cluster resources.
 
 3. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
 

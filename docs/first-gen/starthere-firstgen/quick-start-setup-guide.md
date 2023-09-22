@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::note
-This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../getting-started/quickstarts.md).
+This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../get-started/tutorials).
 :::
 
 Harness includes a built-in Tour that walks you through deploying the Harness Sample App
@@ -182,5 +182,5 @@ The **To-Do List** app is deployed and running in your Kubernetes cluster. This 
 
 ## Next Steps
 
-Now that you've installed the Harness Sample App, proceed to our [Tour Harness Manager](meet-harness.md) topic or one of the [Quickstarts](/docs/category/get-started).
+Now that you've installed the Harness Sample App, proceed to our [Tour Harness Manager](meet-harness.md) topic or one of the [Quickstarts](/docs/category/quickstarts).
 

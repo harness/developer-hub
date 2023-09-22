@@ -12,6 +12,8 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
 <Smpno />
 
 This topic describes how to use the Harness Feature Flags Java SDK for your Java application.
@@ -22,14 +24,14 @@ For getting started quickly, you can use our [sample code from the Python SDK R
 
 You should read and understand the following:
 
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](../../get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.1.15**.
+The current version of this SDK is **1.2.2**.
 
 ## Requirements
 
@@ -202,14 +204,18 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK Client
 
-To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
+<Closeclient />
 
+To close the SDK client:
 
-```
-client.close()
-```
+* Assuming you have initialized an SDK client instance named `client`, call the following function:
+
+    ```
+    client.close()
+    ```
+
 ## Additional options
 
 ### Configure your logger
@@ -301,9 +307,14 @@ The SDK logs the following codes for certain lifecycle events, for example authe
 | **5002** | Streaming event received                                                                 |
 | **5003** | Streaming disconnected and is retrying to connect                                        |
 | **5004** | Streaming stopped                                                                        |
+| **5005** | Stream is still retrying to connect after 4 attempts                                     |
 | **6000** | Evaluation was successfully                                                              |
 | **6001** | Evaluation failed and the default value was returned                                     |
 | **7000** | Metrics service has started                                                              |
 | **7001** | Metrics service has stopped                                                              |
 | **7002** | Metrics posting failed                                                                   |
 | **7003** | Metrics posting success                                                                  |
+| **7004** | Metrics max target size exceeded                                                         |
+| **7005** | Metrics batch targets sending success                                                    |
+| **7006** | Metrics batch targets sending failed                                                     |
+

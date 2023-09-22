@@ -1,7 +1,8 @@
 ---
-title: Aqua Trivy scanner reference
+title: Aqua Trivy scanner reference for STO
 description: Image scans with Aqua Trivy
 sidebar_position: 30
+sidebar_label: Aqua Trivy scanner reference
 helpdocs_topic_id: 079248uzcu
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -14,16 +15,30 @@ You can scan your container images using [Aqua Trivy](https://github.com/aquasec
 STO supports container scans only with Aqua Trivy.
 :::
 
-## Before you begin
+## Important notes for running Aqua Trivy scans in STO
+
+### Docker-in-Docker requirements
+
 
 ```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 ```
 
-<StoCreateDinD />
+<StoDinDRequirements />
 
 
-## Aqua Trivy step configuration
+### Root access requirements 
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
+
+
+
+
+## Aqua Trivy step settings for STO scans
 
 The recommended workflow is add an AquaTrivy step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Aqua Trivy scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
@@ -36,7 +51,7 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 <details>
     <summary>Scanner Template</summary>
 
-![](static/step-palette-00.png) 
+![](static/aqua-trivy-security-scan-step.png) 
 
 </details>
 
@@ -169,15 +184,13 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
 
-## Security step configuration (_deprecated_)
- 
- <details><summary>Set up an Aqua Trivy scan in a Security step</summary>
- 
- You can set up a Security step with [Aqua Trivy](https://aquasecurity.github.io/trivy) to detect vulnerabilities and misconfigurations in your container images.
+## Security step settings for Aqua Trivy scans in STO (_legacy_)
+
+You can set up a Security step with [Aqua Trivy](https://aquasecurity.github.io/trivy) to detect vulnerabilities and misconfigurations in your container images.
 
 #### Important Notes
 
@@ -190,7 +203,15 @@ STO supports the following `policy_type` settings for Aqua-Trivy:
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
 
-#### Required settings
+#### Target and variant
+
+```mdx-code-block
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+```
+
+<StoLegacyTargetAndVariant />
+
+#### Aqua Trivy scan settings
 
 * `product_name` = `aqua-trivy`
 * `scan_type` = `containerImage`, `ingestionOnly`
@@ -202,6 +223,8 @@ STO supports the following `policy_type` settings for Aqua-Trivy:
 * `container_tag` — The tag of the image to scan, for example `latest`
 * `container_type` — Set to `local_image`, `docker_v2`, `jfrog_artifactory`, or `aws_ecr`  
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+
+#### Container scan settings
 
 The following settings are also required, depending on the container type:
 + if `container_type` = `docker_v2`
@@ -215,18 +238,16 @@ The following settings are also required, depending on the container type:
 	- `container_access_id`: Username
 	- `container_access_token`: Password/Token
 
+#### Ingestion file 
+
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
 
-</details>
 
-
-
-
-## YAML configuration
+## YAML pipeline example
 
 ```mdx-code-block
 import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';

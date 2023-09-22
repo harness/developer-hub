@@ -19,14 +19,14 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.ce,
           description:
             "Learn the basics of Harness Chaos Engineering.",
-          link: "/docs/chaos-engineering/get-started/introduction-to-chaos-module",
+          link: "/docs/chaos-engineering/get-started/overview",
         },
         {
-          title: "Terminologies",
+          title: "Terminology",
           module: MODULES.ce,
           description:
-            "Familiarize with chaos engineering terminologies.",
-          link: "/docs/chaos-engineering/get-started/terminologies",
+            "Familiarize yourself with chaos engineering terminology.",
+          link: "/docs/chaos-engineering/get-started/key-concepts",
         },
   ],
 },
@@ -38,21 +38,21 @@ import { MODULES } from "@site/src/constants"
           title: "AWS faults",
           module: MODULES.ce,
           description:
-            "Execute AWS chaos faults",
+            "Execute AWS chaos faults.",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/",
         },
         {
           title: "Kubernetes faults",
           module: MODULES.ce,
           description:
-            "Execute Kubernetes chaos faults ",
+            "Execute Kubernetes chaos faults. ",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/",
         },
         {
           title: "Azure faults",
           module: MODULES.ce,
           description:
-            "Execute Azure chaos faults",
+            "Execute Azure chaos faults.",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/",
         },
         {
@@ -66,35 +66,35 @@ import { MODULES } from "@site/src/constants"
           title: "VMware faults",
           module: MODULES.ce,
           description:
-            "Execute VMware chaos faults",
+            "Execute VMware chaos faults.",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/",
         },
         {
           title: "Load faults",
           module: MODULES.ce,
           description:
-            "Execute load chaos faults",
+            "Execute load chaos faults.",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/load/",
         },
         {
           title: "Kube-resilience faults",
           module: MODULES.ce,
           description:
-            "Execute kube-resilience chaos faults",
+            "Execute kube-resilience chaos faults.",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/kube-resilience/",
         },
         {
           title: "Security chaos faults",
           module: MODULES.ce,
           description:
-            "Execute security chaos faults",
+            "Execute security chaos faults.",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/security-chaos/",
         },
         {
           title: "Linux chaos faults",
           module: MODULES.ce,
           description:
-            "Execute Linux chaos faults",
+            "Execute Linux chaos faults.",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/linux/",
         },
 ];

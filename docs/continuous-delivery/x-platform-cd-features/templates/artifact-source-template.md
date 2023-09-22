@@ -75,7 +75,7 @@ Harness includes a platform-agnostic artifact registry type named Docker Registr
 
 1. In the repository setting, select or create the Harness registry connector. For example, if you selected **Docker Registry** in **Artifact Repository Type**, the repository setting is named **Docker Registry Repository**.
 
-For information on registry connectors, go to [connect to an artifact repo](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
+For information on registry connectors, go to [connect to an artifact repo](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
 You can also select **Runtime input** or **Expression** for this setting.
 
@@ -87,7 +87,7 @@ You can also select **Runtime input** or **Expression** for this setting.
 
 Different repository types have different **Artifact Details** settings.
 
-For information on how to configure each repository's settings, see the examples in [Harness Kubernetes services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services).
+For information on how to configure each repository's settings, see the examples in [Harness Kubernetes services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
 ### Tags
 
@@ -152,7 +152,7 @@ You will still be able to select the template in services in this project.
 
 **Artifact Repository Type** is the only setting in the template that must be a fixed value. The remaining settings can be runtime inputs and expressions also. 
 
-For information on runtime inputs and expressions, go to [fixed values runtime inputs and expressions](/docs/platform/references/runtime-inputs/).
+For information on runtime inputs and expressions, go to [fixed values runtime inputs and expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 Runtime inputs can be useful in artifact source templates because they let your team members select the repository, path, and tags to use when they run pipelines using artifact source templates.
 

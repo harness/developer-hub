@@ -11,7 +11,7 @@ import {
       {
         title: "Create a standalone STO pipeline",
         module: MODULES.sto,
-        icon: "img/icon_cd.svg",
+        icon: "img/icon_sto.svg",
         description: "Set up a pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.",
         newDoc: true,
         type: [docType.Documentation],
@@ -20,8 +20,8 @@ import {
       },
       {
         title: "Deploy a Helm Chart using CD Community Edition",
-        module: MODULES.cd,
-        icon: "img/icon_cd.svg",
+        module: MODULES.sto,
+        icon: "img/icon_sto.svg",
         description: "Add a scan step to a CI pipeline and set up the pipeline to fail if a scan finds any show-stopper vulnerabilities.",
         newDoc: true,
         type: [docType.Documentation],
@@ -42,14 +42,14 @@ import {
               module: MODULES.sto,
               description:
                 "Dive in with these tutorials.",
-              link: "/docs/security-testing-orchestration/onboard-sto/sto-tutorials",
+              link: "/docs/security-testing-orchestration/get-started/tutorials",
             },
             {
               title: "STO basics",
               module: MODULES.sto,
               description:
                 "Learn about the security scanning problems facing developers and how STO provides the solutions they need.",
-              link: "/docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics",
+              link: "/docs/security-testing-orchestration/get-started/overview",
             },
             {
               title: "STO concepts",

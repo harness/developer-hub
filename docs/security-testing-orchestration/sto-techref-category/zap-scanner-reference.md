@@ -1,6 +1,7 @@
 ---
-title: Zed Attack Proxy (ZAP) Scanner Reference
+title: Zed Attack Proxy (ZAP) scanner reference for STO
 description: App instance scans using ​Zed Attack Proxy (ZAP)
+sidebar_label: Zed Attack Proxy (ZAP) scanner reference
 sidebar_position: 400
 helpdocs_topic_id: m9494vxwac
 helpdocs_category_id: m01pu2ubai
@@ -8,9 +9,27 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-[Zed Attack Proxy (ZAP)](https://www.zaproxy.org/getting-started/) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
+[Zed Attack Proxy (ZAP)](https://www.zaproxy.org) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
 
-## Zap step configuration
+## Important notes for running ZAP scans in STO
+
+### Docker-in-Docker requirements
+
+```mdx-code-block
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+```
+
+<StoDinDRequirements />
+
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
+
+## ZAP step settings for STO scans
 
 The recommended workflow is add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. You can also configure ZAP scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
@@ -22,7 +41,7 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 <StoScannerStepNotes />
 
 <details>
-    <summary>Scanner Template</summary>
+    <summary>Scanner Template example</summary>
 
 ![](static/step-palette-00.png) 
 
@@ -201,12 +220,10 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step configuration (_deprecated_)
-
-<details><summary>Set up a ZAP scan in a Security step</summary>
+## Security step settings for ZAP scans in STO (_legacy_)
 
 #### Scan policy types
 
@@ -215,7 +232,15 @@ STO supports the following scan policy types for ZAP:
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is easier to set up and supports scans with default or predefined settings.
 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
 
-#### Required Settings
+#### Target and variant
+
+```mdx-code-block
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+```
+
+<StoLegacyTargetAndVariant />
+
+#### ZAP scan settings
 
 * `product_name` = `zap`
 * `scan_type` = `instance`
@@ -230,7 +255,7 @@ STO supports the following scan policy types for ZAP:
 * `instance_type` = `website`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-#### Optional Settings
+#### Optional settings for ZAP scans
 
 * `instance_path` — Specify if the app URL includes a path beyond the domain. If you want to scan `https://app.my-domain.com/myModule/myApp`, the instance path is `myModule/myApp`.
 * `instance_port` — Specify if the site is accessed using a non-default port.
@@ -242,13 +267,3 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
-
-</details>
-
-## YAML configuration
-
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
-
-<StoSettingYAMLexample />

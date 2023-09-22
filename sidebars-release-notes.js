@@ -7,7 +7,7 @@ const sidebars = {
     // Release Notes Parent
     {
       type: "category",
-      label: "Release notes",
+      label: "Release Notes",
       link: {
         type: "doc",
         id: "whats-new",
@@ -27,10 +27,10 @@ const sidebars = {
         },
       ],
     },
+      /*
     {
       type: "category",
       label: "Subscribe via RSS",
-      /*
       link: {
         type: "link",
         label: "Subscribe via RSS",
@@ -40,7 +40,6 @@ const sidebars = {
           target: "_blank",
         },
       },
-      */
       collapsed: true,
       items: [
         {
@@ -135,8 +134,26 @@ const sidebars = {
         },
         {
           type: "link",
+          label: "Software Supply Chain Assurance release notes",
+          href: "pathname:///release-notes/software-supply-chain-assurance/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
           label: "Continuous Error Tracking release notes",
           href: "pathname:///release-notes/continuous-error-tracking/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
+          label: "Internal Developer Portal release notes",
+          href: "pathname:///release-notes/internal-developer-portal/rss.xml",
           className: "sidebar-item-rss",
           customProps: {
             target: "_blank",
@@ -169,8 +186,8 @@ const sidebars = {
             target: "_blank",
           },
         },
-      ],
-    },
+      ]
+    }, */
     // {
     //   type: "link",
     //   label: "Subscribe via RSS",

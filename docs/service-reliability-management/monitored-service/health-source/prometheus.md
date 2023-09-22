@@ -1,12 +1,20 @@
 ---
 title: Prometheus
 description: Add Prometheus health source to a monitored service.
-sidebar_position: 9
+sidebar_position: 10
 ---
 
 In Harness, a health source is a mapping that connects a Service in Harness to a service running in a deployment environment that is being monitored by an Application Performance Monitoring (APM) or logging tool. This mapping allows Harness to collect metrics and data from the APM or logging tool and use it to determine the health and status of the Service in Harness.
 
 This topic describes how to set up Prometheus as a health source in a monitored service.
+
+:::important
+- Prometheus queries must include filters (enclosed in curly braces) to specify the nodes or data points you want to sample.
+
+- Prometheus queries must produce a single value (scalar). To learn more about Prometheus queries, go to [QUERYING PROMETHEUS](https://prometheus.io/docs/prometheus/latest/querying/basics/).
+
+- The Prometheus connector and health source provided by Harness are compatible with Mimir, Cortex, Thanos, Coralogix, and VictoriaMetrics platforms.
+:::
 
 
 ## Prerequisites

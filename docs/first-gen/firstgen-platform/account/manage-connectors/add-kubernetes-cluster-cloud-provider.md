@@ -161,6 +161,14 @@ To use a Kubernetes Service Account (SA) and token, you will need to either use 
 For example, here's a manifest that creates a new SA named `harness-service-account` in the `default` namespace.
 
 
+:::note
+
+The Kubernetes SA token is not automatically generated if the SAs are provisioned under Kubernetes versions 1.24 or later. Create a new SA token and decode it to the `base64` format.
+
+:::
+
+
+
 ```
 # harness-service-account.yml  
 apiVersion: v1  
@@ -328,7 +336,7 @@ Any other Kubernetes permissions depends on what is in your manifests.
 [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) is documented by Kubernetes.
 
 :::note
-The exact API versions depends on the Kubernetes cluster version that evolves over time as entity types get promoted. For example, the [API for v1.20](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/).
+The exact API versions depends on the Kubernetes cluster version that evolves over time as entity types get promoted.
 :::
 
 ## Option: AWS EKS Support

@@ -18,7 +18,7 @@ This topic describes how to create an org, invite Harness users to it as members
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 
 ### Prerequisites
 
@@ -41,7 +41,7 @@ The resources in the org are available to all of its projects.
    ![](static/create-an-organization-01.png)
 
 3. In **Name**, enter a name for your organization.
-4. Enter **Description**, and [Tags](../20_References/tags-reference.md) for your new org.
+4. Enter **Description**, and [Tags](../references/tags-reference.md) for your new org.
 5. Click **Save and Continue**.
 
 ### Invite collaborators
@@ -69,7 +69,7 @@ You can create Projects in the Org from the projects section of Harness, or from
 
 1. In Harness, go to **Home** and click **Projects**.
 2. Click **+Project**.
-3. Name the project, and select a color. The Id of the project is generated automatically. See [Harness Entity Reference](../20_References/harness-entity-reference.md).
+3. Name the project, and select a color. The Id of the project is generated automatically. See [Harness Entity Reference](../references/harness-entity-reference.md).
 4. In **Organization**, select the org you created.
 5. Add a description and tags, and then click **Save and Continue**.
 6. In **Invite Collaborators**, type a member's name and select it.
@@ -87,8 +87,22 @@ Next, the Harness modules appear.
 3. When you open the project, all the modules are displayed.
 4. Pick a module and click **Create New Pipeline** to get started!
 
+
+### Project FAQs
+
+#### Can I move resources between projects?
+
+Harness does not support moving resources between projects or organizations at the moment.
+
+#### What is the best way to decommission a project while retaining its history?
+
+Harness recommends removing RBAC access to the project and only allowing users to view it or hiding it from most users. Admins are the only ones who can view configurations and deployment history in a project. Deleting a project will also delete its deployment history. In order to keep your history, it is better to leave the project available but block access and usage.
+
+
+
+
 ### See also
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Harness Role-Based Access Control Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
+* [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 

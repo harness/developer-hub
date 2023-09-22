@@ -113,7 +113,7 @@ You can create alerts to receive notifications when an anomaly is detected. To c
      ![](./static/detect-cloud-cost-anomalies-with-ccm-03.png)
 3. Select the **Perspective** for which you want to create an alert.
 4. Click **add channel** to add anomaly alert channels.
-5. Select **Slack Webhook URL** or **Email** and enter the details to receive notifications. To learn how to create a Slack webhook URL, see [Send Notifications Using Slack](../../platform/5_Notifications/send-notifications-using-slack.md).
+5. Select **Slack Webhook URL** or **Email** and enter the details to receive notifications. To learn how to create a Slack webhook URL, see [Send Notifications Using Slack](../../platform/notifications/send-notifications-using-slack.md).
 6. Click **Save and Continue**.  
    An anomaly alert is created. Click the alert to view the anomalies on the **Perspectives** page.
 
@@ -131,5 +131,5 @@ For example, when you click the GCP perspective, it displays the data for the en
 
 
 :::note
-Access to perspectives and the associated anomalies depends on the role assignment. For more information, go to [Manage access control for CCM Perspective folders](../2-getting-started-ccm/5-access-control/manage-access-control-perspective-folders.md).
+Access to perspectives and the associated anomalies depends on the role assignment. For more information, go to [Manage access control for CCM Perspective folders](/docs/cloud-cost-management/access-control/manage-access-control-perspective-folders.md).
 :::

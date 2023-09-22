@@ -1,6 +1,7 @@
 ---
-title: Snyk scanner reference
+title: Snyk scanner reference for STO
 description: Image and repository scans with Snyk
+sidebar_label: Snyk scanner reference
 sidebar_position: 290
 ---
 
@@ -9,20 +10,33 @@ Harness STO supports the following scan types for the following Snyk products:
 * Snyk Open Source — `orchestratedScan` and `ingestionOnly` 
 * Snyk Code  —  `ingestionOnly` 
 * Snyk Container  — `ingestionOnly` 
+* Snyk infrastructure as Code  — `ingestionOnly` is in BETA
 
-For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans.md).
+For complete end-to-end workflow descriptions, go to [Run Snyk scans and ingest results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans.md).
 
-## Before you begin
+## Important notes for running Snyk scans in STO
+
+### Docker-in-Docker requirements
 
 ```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 ```
 
-<StoCreateDinD />
+<StoDinDRequirements />
+
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
 
 ## Snyk step configuration
 
 The recommended workflow is add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+
+<!-- 
 
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
@@ -30,12 +44,15 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 <StoScannerStepNotes />
 
+
 <details>
     <summary>Scanner Template</summary>
 
 ![](static/step-palette-00.png) 
 
 </details>
+
+-->
 
 ### Scan
 
@@ -47,13 +64,11 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 ```mdx-code-block
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
-<StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
@@ -122,7 +137,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 ### Authentication
 
 
-#### Access Token
+#### Access Token (_Orchestration scans_)
 
 ```mdx-code-block
 import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
@@ -171,35 +186,35 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
 
-## Security step configuration (_deprecated_)
-
-<details><summary>Set up a Snyk scan in a Security step</summary>
-
+## Security step settings for Snyk scans in STO (_legacy_)
 
 You can set up Snyk scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
+#### Target and variant
 
 ```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
 ```
 
-<StoSecurityStepConfig />
+<StoLegacyTargetAndVariant />
 
+#### Snyk scan settings
 
 * `product_name` = `snyk`:
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) =  `containerImage` or `repository`
+* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) : `containerImage` or `repository`
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods)
 	+ accepted value for `containerImage`: `ingestionOnly`
 	+ accepted values for `repository`: `orchestratedScan`, `ingestionOnly`
 * `product_access_token`
-* `product_config_name` = `default`
-* `snyk_api` = URL to the Snyk instance, if you're using an on-prem installation.
+* `product_config_name` : `default`
+* `snyk_api` :  URL to the Snyk instance, if you're using an on-prem installation.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+
+#### Container scan settings
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
@@ -207,11 +222,7 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 
 <StoLegacyContainer />
 
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
-<StoLegacyRepo />
+#### Ingestion file
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
@@ -219,12 +230,3 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
-</details>
-
-## YAML configuration
-
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
-
-<StoSettingYAMLexample />

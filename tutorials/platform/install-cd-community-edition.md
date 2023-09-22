@@ -3,7 +3,6 @@ sidebar_position: 1
 hide_table_of_contents: true
 title: Install CD Community Edition
 ---
-# Install CD Community Edition
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';

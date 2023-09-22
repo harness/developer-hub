@@ -28,10 +28,10 @@ Using recommendations without proper assessment could result in unexpected chang
 
 ## Before you begin
 
-* Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
+* Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
 * To obtain governance recommendations, configure a Harness AWS CCM connector with the **Cloud Governance** feature enabled.
-* Make sure that you have added the required permissions in your AWS account. Go to [AWS access permissions for Cloud asset governance](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#cloud-asset-governance).
-* To add missing permissions, go to [Add permissions](../../5-use-ccm-cost-governance/asset-governance/asset-governance.md#add-permissions).
+* Make sure that you have added the required permissions in your AWS account. Go to [AWS access permissions for Cloud asset governance](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#cloud-asset-governance-rules).
+* To add missing permissions, go to [Add permissions](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#add-permissions).
 
 
 ## Types of governance recommendations

@@ -141,7 +141,7 @@ You can enter multiple file paths in **File Path**. Simply click **Add File**.
 
 ### File path runtime inputs
 
-You can set [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/References/runtime-inputs) for File Path settings.
+You can set [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs) for File Path settings.
 
 Here are the options:
 
@@ -337,7 +337,7 @@ You can use the Apply step in your Kustomize deployments.
 
 When you use Kustomize, the **File Path** in the Apply Step should be set according to how you set up the Manifest Details in the Service.
 
-For details, see **Kustomize deployment with the Apply step** in [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments).
+For details, see **Kustomize deployment with the Apply step** in [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/use-kustomize-for-kubernetes-deployments).
 
 ## Notes
 

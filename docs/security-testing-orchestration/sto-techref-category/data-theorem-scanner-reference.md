@@ -1,21 +1,42 @@
 ---
-title: Data Theorem scanner reference
+title: Data Theorem scanner reference for STO
 description: Repository scans with Data Theorem
+sidebar_label: Data Theorem scanner reference
 sidebar_position: 110
 ---
 
+You can run Data Theorem scans on your instances using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Security step settings
 
-You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+## Important notes for running Data Theorem scans in STO
 
-<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
+### Docker-in-Docker requirements
 
 ```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 ```
 
-<StoSecurityStepConfig />
+<StoDinDRequirements />
+
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
+
+## Security step settings for Data Theorem scans in STO
+
+### Target and variant
+
+```mdx-code-block
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+```
+
+<StoLegacyTargetAndVariant />
+
+### Data Theorem scan settings
 
 * `product_name` = `data-theorem`
 * `product_config_name` = `default`
@@ -26,11 +47,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 	+ `product_access_token`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
-<StoLegacyRepo />
+### Ingestion file
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
@@ -38,7 +55,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
-#### Fail on Severity
+### Fail on Severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';

@@ -1,10 +1,11 @@
 ---
-title: Generate automated emails for detected issues
+title: Generate automated emails for detected issues in STO
 description: Send emails automatically based on severity levels
+sidebar_label: Set up email notifications
 sidebar_position: 20
 ---
 
-When you run a scan, the security step generates a set of [output variables](/docs/security-testing-orchestration/onboard-sto/key-concepts/output-variables) that capture the number of issues detected at each severity level: CRITICAL, HIGH, MEDIUM, and so on. This topic describes how to set up automatic notifications based on these variables. 
+When you run a scan, the security step generates a set of [output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables) that capture the number of issues detected at each severity level: CRITICAL, HIGH, MEDIUM, and so on. This topic describes how to set up automatic notifications based on these variables. 
 
 In this workflow, you add an Email step that sends a notification whenever the previous scan step finishes successfully. 
 

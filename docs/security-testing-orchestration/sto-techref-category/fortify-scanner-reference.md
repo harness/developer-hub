@@ -1,13 +1,41 @@
 ---
-title: Fortify scanner reference
+title: Fortify scanner reference for STO
 description: Repository scans with Fortify
+sidebar_label: Fortify scanner reference
 sidebar_position: 144
 ---
 
-You can set up Fortify scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can run Fortify scans on your repositories using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-### Security step settings
+## Important notes for running Fortify scans in STO
 
+### Docker-in-Docker requirements
+
+```mdx-code-block
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+```
+
+<StoDinDRequirements />
+
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
+
+## Security step settings for Fortify scans in STO
+
+### Target and variant
+
+```mdx-code-block
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+```
+
+<StoLegacyTargetAndVariant />
+
+### Fortify scan settings
 
 * `product_name` = `fortify`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository`
@@ -15,11 +43,7 @@ You can set up Fortify scans using a Security step: create a CI Build or Securit
 * `product_config_name` =`default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
-<StoLegacyRepo />
+### Ingestion file
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
@@ -28,7 +52,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 <StoLegacyIngest />
 
 
-#### Fail on Severity
+### Fail on Severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';

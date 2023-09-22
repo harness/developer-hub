@@ -26,12 +26,9 @@ For Helm binary versions with feature flags requirements, contact [Harness Suppo
 
 ### Helm Binary v3.5 to v3.7
 
-The use of Helm binaries version 3.5 or later requires the following feature flags to be enabled on your Harness account:
+The use of Helm binaries version 3.5 or later requires the following feature flag to be enabled on your Harness account:
 
-* `DISABLE_HELM_REPO_YAML_CACHE`
 * `BYPASS_HELM_FETCH`
-
-This is required because of changes to Helm CLI in Helm version 3.5. The process that the`helm repo add` command uses to invoke the`helm repo update` command changed.
 
 ### Helm v3.8.0 Binary
 
@@ -173,7 +170,7 @@ For Helm 3:
 `./stop`  
 `./start`
 
-For more information about Shell Script Delegates, see the Harness AWS [AMI Quickstart](/docs/category/get-started) documentation.
+For more information about Shell Script Delegates, see the Harness AWS [AMI Quickstart](/docs/first-gen/first-gen-quickstarts/aws-ami-deployments) documentation.
 
 ### Helm
 

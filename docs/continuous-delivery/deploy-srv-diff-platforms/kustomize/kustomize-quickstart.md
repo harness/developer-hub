@@ -1,7 +1,7 @@
 ---
-title: Kustomize deployments
+title: Kustomize deployments overview
 description: This topic walks you through deploying a kustomization using Harness.
-sidebar_position: 4
+sidebar_position: 1
 helpdocs_topic_id: uiqe6jz9o1
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
@@ -10,32 +10,24 @@ helpdocs_is_published: true
 
 Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kubernetes deployments. You can use overlays, multibase, plugins, sealed secrets, etc, just as you would in any native kustomization.
 
-This Kustomize tutorial will deploy multiple variants of a simple public Hello World server using a [rolling update strategy](../kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment) in Harness.
+This Kustomize overview describes how to deploy multiple variants of a simple public Hello World server using a [rolling update strategy](../kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment) in Harness.
 
-## Objectives
+This topic summarizes how to:
 
-You'll learn how to:
+* Install and launch a Harness Kubernetes delegate in your target cluster.
+* Set up a Kustomize pipeline.
+* Run the new Kustomize pipeline and deploy an NGINX Docker image to your target cluster.
 
-* Install and launch a Harness Kubernetes Delegate in your target cluster.
-* Set up a Kustomize Pipeline.
-* Run the new Kustomize Pipeline and deploy an NGINX Docker image to your target cluster.
-
-## Before you begin
-
-Make sure you have the following set up before you begin this quickstart:
-
-* **GitHub account:** this quickstart uses a publicly available kustomization and Docker image. DockerHub allows anonymous connections, but GitHub requires that you log into your account to access their repos.
-
-### Visual summary
+## Video summary of Kustomize deployments
 
 <!-- Video:
 https://harness-1.wistia.com/medias/j920372crr -->
 <docvideo src="https://harness-1.wistia.com/medias/j920372crr" />
 
 
-### Set up your Kubernetes cluster
+## Set up your Kubernetes cluster for Kustomize
 
-You'll need a target Kubernetes cluster for the Harness Delegate and deployment. Ensure your cluster meets the following requirements:
+You'll need a target Kubernetes cluster for the Harness Delegate and deployment. For example, here are some basic cluster requirements:
 
 * **Number of nodes:** 2.
 * **vCPUs, Memory, Disk Size:** 4vCPUs, 16GB memory, 100GB disk. In GKE, the **e2-standard-4** machine type is enough for this quickstart.
@@ -43,13 +35,13 @@ You'll need a target Kubernetes cluster for the Harness Delegate and deployment.
 * A **Kubernetes service account** with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. In general, the cluster-admin permission or namespace admin permission is enough.  
 For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
 
-## Create the Deploy stage
+## Create the deploy stage for Kustomize
 
-Pipelines are collections of stages. For this quickstart, we'll create a new Pipeline and add a single stage.
+Pipelines are collections of stages. For this topic, we'll create a new pipeline and add a single stage.
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness project, create a project for your new CD pipeline. Ensure that you add the **Continuous Delivery** module to the project. For more information, go to [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
 
 :::
 
@@ -80,7 +72,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 
 Once you have created a Service, it is persistent and can be used throughout the stages of this or any other Pipeline in the Project.
 
-## Add the kustomization
+## Add the kustomization to the Harness service
 
 Now we can connect Harness to the repo containing the kustomization. We'll use a publicly available [hellword kustomization](https://github.com/wings-software/harness-docs/tree/main/kustomize/helloWorld) cloned from Kustomize.
 
@@ -193,7 +185,22 @@ All connections and operations are performed by Harness Delegates. So we'll also
 
 Now that the kustomization is defined, you can define the target cluster for your deployment.
 
-## Define your target cluster
+## Define the infrastructure for Kustomize
+
+There is nothing unique about defining the target cluster infrastructure definition for a Kustomize deployment. It is the same process as a typical Harness Kubernetes deployment.
+
+For more information, go to [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure).
+
+### Pre-existing and dynamically provisioned infrastructure for Kustomize
+
+There are two methods of specifying the deployment target infrastructure:
+
+- **Pre-existing**: the target infrastructure already exists and you simply need to provide the required settings.
+- **Dynamically provisioned**: the target infrastructure will be dynamically provisioned on-the-fly as part of the deployment process.
+
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+
+### Define a pre-existing target cluster for Kustomize
 
 The target cluster is your own Kubernetes cluster, hosted in your cloud environment. This is where we will deploy the kustomization and its Docker image.
 
@@ -215,7 +222,7 @@ Harness connects to all of the common cloud platforms and provides a platform-ag
 
    ![](static/kustomize-quickstart-74.png)
 
-The Kubernetes Cluster Connector is covered in detail [here](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference), but let's quickly walk through it.
+The Kubernetes Cluster Connector is covered in detail [here](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference), but let's quickly walk through it.
 
 Let's look at the steps:
 
@@ -237,7 +244,7 @@ Let's look at the steps:
    The target infrastructure is complete. Now we can add our stage steps.
 9.  Click **Next**.
 
-## Add a Rollout Deployment step
+## Add a Rollout Deployment step for Kustomize
 
 When you click **Next** the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts) options are provided:
 
@@ -247,7 +254,7 @@ When you click **Next** the [deployment strategy](/docs/continuous-delivery/mana
 
 The Rollout Deployment step is added. There's nothing to set up. Harness will perform a Kubernetes rolling update in your target cluster automatically.
 
-## Deploy and review
+## Deploy the Kustomize pipeline and review
 
 1. Click **Save** and then **Run**.
 2. Click **Run Pipeline**. Harness will verify the Pipeline and Connectors and then run the Pipeline.
@@ -288,11 +295,11 @@ Next, try the following quickstarts:
 * [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 * [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart)
 
-### Clean Up
+## Clean up the Kustomize deployment
 
 For steps on deleting the Delgate, go to [Delegate a delegate](/docs/platform/Delegates/manage-delegates/delete-a-delegate).
 
-### Next Steps
+## Next steps
 
-See [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments) for more details on all the settings and Kustomize support in Harness.
+See [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/use-kustomize-for-kubernetes-deployments) for more details on all the settings and Kustomize support in Harness.
 
