@@ -258,7 +258,7 @@ resource "harness_platform_service" "example" {
 
 ## Using runtime input services with inputs and expressions
 
-Services are often configured using runtime inputs or expressions so you can change service settings for different deployment scenarios at pipeline runtime. 
+Services are often configured using runtime inputs or expressions, so you can change service settings for different deployment scenarios at pipeline runtime. 
 
 :::note
 
@@ -267,7 +267,7 @@ For more information on runtime inputs and expressions, go to [Fixed Values, Run
 :::
 
 
-Often, the service option in a pipeline is also set as a runtime input so you can select which service to use when you deploy the pipeline. 
+Often, the service option in a pipeline is also set as a runtime input, so you can select which service to use when you deploy the pipeline. 
 
 Also, the pipeline that deploys the service might be triggered in response to changes in a service's artifact or manifest.
 
@@ -312,7 +312,7 @@ spec:
                     tag: <+trigger.payload.tag>
 ```
 
-To supply the data you simply provide the payload key-value pairs in the cURL command you use to execute the pipeline:
+To supply the data, you simply provide the payload key-value pairs in the cURL command you use to execute the pipeline:
 
 ```
 curl -X POST -H 'Content-Type: application/json' --url 'webhook_url' -d '{"serviceId": "Kubernetes", "artifactId": "nginx", "tag": "abc"}'
