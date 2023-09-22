@@ -651,5 +651,46 @@ Currently anyone in the account would be able to open a ticket, and access is no
 #### Do we have any docs for install and upgrade the SMP cluster?
 
 Yes, we have the docs, you can refer to this [Documentation](https://harness.atlassian.net/wiki/spaces/~63f950e3e76fc61320f65127/pages/21474541915/Internal+-+Install+and+upgrade+SMP?atlOrigin=eyJpIjoiOWJlMDhlNDJhZjM2NGUyN2E2MGU2ZDRkODQwZjUxZmQiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ).
+#### What rate limiting policy does Harness employ for API requests?
 
+Harness imposes a rate limiting policy on API requests to ensure system stability. This policy sets a limit of 350 queries per minute (QPM) and 5.833 queries per second (QPS) for all external-facing APIs.
 
+#### How is the rate limit calculated?
+
+The rate limit is imposed based on both QPM (queries per minute) and QPS (queries per second). If an account exceeds 350 QPM or 5.833 QPS, the requests will be throttled for all external-facing APIs.
+
+#### How does the Rate Limiter work within a minute?
+
+Within a minute, the Rate Limiter dynamically allocates time intervals. For 50 seconds, it allows up to 6 QPS, and for the remaining 10 seconds, it restricts the rate to 5 QPS.
+
+#### What happens when the rate limit is exceeded?
+
+If the rate limit is exceeded during API requests, you may encounter HTTP status code 429 (Server Errors) indicating that the rate limit has been exceeded. This is a temporary restriction, and it is recommended to wait until the rate limit resets before making additional requests.
+
+#### How can I pass input variables to pipelines using a custom Curl trigger in Harness?
+
+You can pass input variables to a pipeline using a custom Curl trigger in Harness by making a POST request to the Webhook URL associated with the pipeline trigger. You can include your custom variables as JSON data in the request body. Here's an example command:
+
+```shell
+curl -X POST -H 'content-type: application/json' \
+--url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Triggers&triggerIdentifier=Custom' \
+-d '{"sample_key": "sample_value"}'
+```
+
+Replace `{"sample_key": "sample_value"}` with your custom variables, such as `{"tag": "stable-perl"}`, which can be declared as part of the pipeline and provided as runtime inputs when triggering the pipeline.
+
+#### What should I do if I want to update an existing User Group in Harness, but I encounter an error preventing me from saving the changes?
+
+If you encounter an error when attempting to save changes to an existing User Group in Harness, particularly an error related to the Harness Identifier, it may be due to a restriction on naming Entity identifiers. According to Harness design specifications, certain characters, such as hyphens (e.g., "-"), are not allowed in Entity identifiers.
+
+#### Why am I experiencing this issue with User Groups?
+
+This issue can occur if a User Group was provisioned via SCIM (System for Cross-domain Identity Management) before October 2022, and it contained a hyphen ("-") in its name. At that time, the hyphen was allowed, but the design restrictions have since changed.
+
+#### What is the recommended resolution for this issue?
+
+To resolve this issue, you need to de-provision the affected User Group from Harness and then provision the same User Group again. This will create a new Harness Identifier for the group, ensuring that any naming restrictions are applied correctly, and it should no longer contain hyphens or other disallowed characters.
+
+ 
+#### Why Harness delegate instance status is showing Expiring in 2 months but the latest version is valid for 3 months?
+For the immutable delegate instance status we will show Expiring in 2 months only, it's the expected behaviour.

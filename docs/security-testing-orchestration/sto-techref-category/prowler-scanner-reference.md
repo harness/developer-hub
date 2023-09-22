@@ -1,13 +1,14 @@
 ---
-title: Prowler scanner reference
+title: Prowler scanner reference for STO
 description: Configuration scans with Prowler
+sidebar_label: Prowler scanner reference
 sidebar_position: 220
 ---
 
 
 You can scan your configurations using [Prowler](https://github.com/prowler-cloud/prowler), an open-source tool for performing AWS, GCP and Azure security best practices assessments, audits, incident response, continuous monitoring, hardening and forensics readiness. 
 
-## Before you begin
+## Important notes for running Prowler scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -205,7 +206,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step settings (*deprecated*)
+## Security step settings for Prowler scans in STO (*legacy*)
 
 You can set up Prowler scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

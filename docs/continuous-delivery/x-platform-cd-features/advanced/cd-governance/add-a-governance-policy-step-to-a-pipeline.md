@@ -4,7 +4,13 @@ description: Add a Policy step to your stage.
 sidebar_position: 3
 ---
 
-Currently, this feature is behind the feature flags `OPA_PIPELINE_GOVERNANCE` and `CUSTOM_POLICY_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Harness provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies.
+:::note
+
+Currently, this feature is behind the feature flags `OPA_PIPELINE_GOVERNANCE` and `CUSTOM_POLICY_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+::: 
+
+Harness provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies.
 
 You can enforce policies in two ways:
 
@@ -31,6 +37,10 @@ This topic describes how to add a Policy step to a Stage.
 ### Visual Summary
 
 Here's a quick video showing you how to use the Policy step to evaluate a custom JSON payload.
+
+<!-- Video:
+https://www.youtube.com/watch?v=D6jZoY6TfOM-->
+<docvideo src="https://www.youtube.com/watch?v=D6jZoY6TfOM" />
 
 ### Step 1: Add the Policy Step
 

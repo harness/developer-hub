@@ -16,17 +16,37 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-## Latest: Version 80504
+### Latest: Version 80711
 
-### New features and enhancements
+#### New features and enhancements
 
 This release does not include new features.
 
-### Early access features
+#### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+#### Fixed issues
+
+- Earlier, you could upload Excel and .csv files in the **File Configuration** dialog. (PL-40796, ZD-44419)
+
+   This issue is fixed. Excel and .csv files in the **File Configuration** dialog are now blocked.
+
+- The Secrets Management Change Log page returned errors when fetching the `changeLogData` API. (PL-40957, ZD-49757)
+
+   This issue is fixed.
+
+### Version 80504
+
+#### New features and enhancements
+
+This release does not include new features.
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
 
 * Fixed an issue where using multiple HTTP Helm chart repositories could lead to an increase in CPU utilization on the delegate due to background validation tasks for the Harness HTTP Helm Repo connector. This was caused by running Helm repository updates during the validation tasks. (CDS-76433, ZD-48363)
 
@@ -42,25 +62,23 @@ https://harness.atlassian.net/browse/CDS-73884?focusedCommentId=566535 we fixed 
 
 ### Version 80407
 
-### New features and enhancements
+#### New features and enhancements
 
 - The OWASP Java HTML Sanitizer version is upgraded to 20220608.1. (PL-40807)
 
 - The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
 
-### Early access features
+#### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+#### Fixed issues
 
 - With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631, ZD-48998, ZD-49702)
 
    This issue is fixed. Harness catches the exception and continues with delegate startup.
    
    This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
-
-
 
 ### Version 80407
 

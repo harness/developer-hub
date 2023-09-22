@@ -224,4 +224,10 @@ export const experiments: ExperimentDetails[] = [
     tags: ["pod"],
     category: "kubernetes",
   },
+  {
+    name: "Pod network rate limit",
+    description:"Pod network rate limit fault generates Traffic Control (tc) rules with Token Bucket Filter (TBF) to assess Kubernetes pod resilience under limited network bandwidth condition",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
 ];

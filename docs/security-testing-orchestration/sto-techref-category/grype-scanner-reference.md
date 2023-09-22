@@ -1,13 +1,14 @@
 ---
-title: Grype scanner reference
+title: Grype scanner reference for STO
 description: Image scans with Grype
+sidebar_label: Grype scanner reference
 sidebar_position: 156
 ---
 
 You can scan container images using [Grype](https://github.com/anchore/grype).
 
 
-## Before you begin
+## Important notes for running Grype scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -243,11 +244,8 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
  
-## Security step configuration (_legacy_)
+## Security step settings for Grype scans in STO (_legacy_)
  
-
-
-
 You can set up a Security step with [Grype](https://github.com/anchore/grype) to detect vulnerabilities and misconfigurations in your container images.
 
 

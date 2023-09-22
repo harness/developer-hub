@@ -1,6 +1,7 @@
 ---
-title: Snyk scanner reference
+title: Snyk scanner reference for STO
 description: Image and repository scans with Snyk
+sidebar_label: Snyk scanner reference
 sidebar_position: 290
 ---
 
@@ -9,10 +10,11 @@ Harness STO supports the following scan types for the following Snyk products:
 * Snyk Open Source — `orchestratedScan` and `ingestionOnly` 
 * Snyk Code  —  `ingestionOnly` 
 * Snyk Container  — `ingestionOnly` 
+* Snyk infrastructure as Code  — `ingestionOnly` is in BETA
 
-For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans.md).
+For complete end-to-end workflow descriptions, go to [Run Snyk scans and ingest results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans.md).
 
-## Before you begin
+## Important notes for running Snyk scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -34,13 +36,15 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 The recommended workflow is add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
+<!-- 
+
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 ```
 
 <StoScannerStepNotes />
 
-<!-- 
+
 <details>
     <summary>Scanner Template</summary>
 
@@ -60,13 +64,11 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 ```mdx-code-block
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
-<StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
@@ -135,7 +137,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 ### Authentication
 
 
-#### Access Token
+#### Access Token (_Orchestration scans_)
 
 ```mdx-code-block
 import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
@@ -188,7 +190,7 @@ In the **Advanced** settings, you can use the following options:
 
 
 
-## Security step configuration (_legacy_)
+## Security step settings for Snyk scans in STO (_legacy_)
 
 You can set up Snyk scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
@@ -227,6 +229,4 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
-
-
 

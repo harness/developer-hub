@@ -16,7 +16,7 @@ You can use the Harness CI **Re-run in Debug Mode** feature to quickly and secur
 
 You can also use **Re-run in Debug Mode** to troubleshoot local builds.
 
-## Requirements
+## Debug mode requirements
 
 Debug mode is available if the following conditions are met:
 

@@ -4,7 +4,7 @@ description: There are many ways you can use Harness CI to upload artifacts.
 keywords: [CI]
 title: Publish artifacts overview
 slug: /ci-pipelines/publish/ci-artifacts-overview
-hide_table_of_concents: true
+hide_table_of_contents: true
 ---
 
 ```mdx-code-block

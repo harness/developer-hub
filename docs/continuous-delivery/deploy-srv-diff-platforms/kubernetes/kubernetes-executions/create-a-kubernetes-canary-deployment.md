@@ -12,11 +12,12 @@ This topic will walk you through creating a Canary deployment in Harness for a D
 
 Harness Canary and [Blue Green](create-a-kubernetes-blue-green-deployment.md) stage steps only support Kubernetes Deployment workloads. The [Rolling Deployment](create-a-kubernetes-rolling-deployment.md) step supports all other workloads except Jobs. The [Apply step](deploy-manifests-using-apply-step.md) can deploy any workloads or objects.
 
-## Before you begin
+## Canary deployment strategy video
 
-* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md)
-* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md)
+<!-- Video:
+https://www.youtube.com/watch?v=tM1OaofCpyg-->
+<docvideo src="https://www.youtube.com/watch?v=tM1OaofCpyg" />
+
 
 ## What workloads can I deploy?
 

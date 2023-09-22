@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-09-11T10:00
+date: 2023-09-19T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,25 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: September 12, 2023
+## Latest: September 19, 2023
+
+### Harness Platform, version 80711
+
+-  The delegate Helm chart is now included in the delegate proxy configuration. You can pull the Helm chart from `https://<YOUR_LOADBALANCERURL>/storage/harness-download/delegate-helm-chart/`. (PL-39190)
+
+- The heartbeat interval that perpetual tasks use to test connectors has been increased from 10 minutes to 30 minutes. This change aims to reduce the number of errors logged due to failed heartbeats. The new heartbeat interval is used with any connectors that you create after this deployment. Tasks associated with existing connectors require migration to the new interval. Harness will migrate such perpetual tasks in all accounts in a phased manner. This activity does not require any action from you or other users of the platform. (PL-39399)
+
+- To enhance security, Harness has added settings to enable and disable Slack, Microsoft Teams, webhook, and PagerDuty notification channels at the account scope. (PL-39921)
+
+- When Harness is configured to use the AppRole ID to fetch an authentication token from HashiCorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
+
+  This issue has been fixed. You can now specify whether or not you want to retain the token to reduce the number of requests made. Possible values are `True` and `False`. The default value is `True`.
+
+### Continuous Integration, version 5801
+
+You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings) with buckets with [disabled ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html). (CI-8371, ZD-45677)
+
+## September 12, 2023
 
 ### Continuous Error Tracking, version ET-Service 5.26.1
 
@@ -59,6 +77,18 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
    Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
    
    This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+## September 7, 2023
+
+### Cloud Cost Management, version 80702
+
+* Cost category enhancement (CCM-12879)
+
+  Implemented a new feature that enables users to copy cost buckets from one cost category to multiple cost categories simultaneously. You have the flexibility to choose any number of buckets for copying. Upon selection, a popup prompt appears, allowing you to specify the target cost categories for copying the selected buckets. Upon successful completion, you receive a success notification along with relevant details.
+  
+  However, it's important to note that while copying you may encounter issues if the destination cost category already has a bucket with the same name as the copied one. In such cases, you can address the conflict by renaming the bucket before attempting the copy operation again.
+
+    <docimage path={require('./static/ccm-copy-cost-buckets.gif')} width="60%" height="60%" title="Click to view full size image" />
 
 ## September 5, 2023
 
@@ -2344,11 +2374,7 @@ The Infrastructure tab in Build steps has been updated to show only supported op
 
 - The functionality of the delegate auto-upgrade components was enhanced. On installation, the AutoUpgrade feature displays a status message of Synchronizing. If the component does not receive an API call from the upgrader within 90 minutes, the status message changes to OFF. This affects delegates that are installed with upgrader components.
 
-<<<<<<< Updated upstream
   For more information about delegate auto-upgrade, go to [Delegate automatic upgrades and expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/).
-=======
-  For more information about delegate auto-upgrade, see [Delegate Auto-Update](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/).
->>>>>>> Stashed changes
 
 - A loader is now displayed on click of Run Pipeline to indicate that the Pipeline is running. (PIE-5396)
 

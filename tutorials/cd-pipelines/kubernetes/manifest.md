@@ -622,9 +622,9 @@ Follow the [Pipeline Triggers](/tutorials/cd-pipelines/trigger) tutorial to see 
 
 #### Using API
 
-You can also utilize the [Harness API](docs/category/api) to manage resources, view, create/edit, or delete them.
+You can also utilize the [Harness API](/docs/category/api) to manage resources, view, create/edit, or delete them.
 
-Refer to the [Get started with Harness API](docs/platform/automation/api/api-quickstart) guide to learn how to use the API for automation.
+Refer to the [Get started with Harness API](/docs/platform/automation/api/api-quickstart) guide to learn how to use the API for automation.
 
 ### Congratulations!🎉
 

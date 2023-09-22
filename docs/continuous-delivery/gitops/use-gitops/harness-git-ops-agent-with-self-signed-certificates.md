@@ -1,5 +1,5 @@
 ---
-title: Harness GitOps Agent with self-signed certificates.
+title: Harness GitOps Agent with self-signed certificates
 description: This topic describes how to install and configure Harness GitOps Agent to connect to Harness with self-signed certificates.
 sidebar_position: 3
 redirect_from:
@@ -38,7 +38,7 @@ In this topic we will do the following:
 
   The `XXXXXXXXXXXXXXXXXXXXXXXXXXX` placeholder indicates the position for the certificate body. Enclose each certificate in `BEGIN CERTIFICATE` and `END CERTIFICATE` comments.
 
-  One way to get the certificate using `openssl`,   
+  Here's one way to get the certificate using `openssl`:   
   
   ```
   openssl s_client -servername NAME -connect HOST:PORT  
@@ -52,7 +52,7 @@ In this topic we will do the following:
 
 3. Update the namespace to the respective namespace where the agent is installed.
 
-4. Save the file as `addcerts.yaml`. Apply the manifest to your cluster.
+4. Save the file as `addcerts.yaml`. Then apply the manifest to your cluster.
 
    ```
    kubectl apply -f addcerts.yaml -n {agent-namespace}

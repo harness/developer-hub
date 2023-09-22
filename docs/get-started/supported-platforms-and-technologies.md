@@ -21,7 +21,7 @@ import PartialExample from '/docs/continuous-delivery/shared/cd-integrations-sup
 <PartialExample name="integrations" />
 
 
-## Continuous Integration (CI) 
+## Continuous Integration (CI)
 
 import Ci from '/docs/continuous-integration/shared/ci-supported-platforms.md';
 
@@ -123,17 +123,23 @@ Most providers are used in both Pipeline Notification Strategies and User Group 
 | [ServiceNow](../platform/approvals/service-now-approvals.md)                                      | N/A          | Yes                        |
 | [PagerDuty](../continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md   | N/A                        |
 
+## Software Supply Chain Assurance (SSCA)
+
+import Ssca from '/docs/software-supply-chain-assurance/shared/ssca-supported.md';
+
+<Ssca />
+
 ## Harness Git Experience
 
 import Gitxsup from '/docs/get-started/shared/gitx-whats-supported.md'
 
 <Gitxsup />
 
-## Access control
+## Authentication
 
-import Accessconsup from '/docs/get-started/shared/access-control-supported.md'
+import Authsup from '/docs/get-started/shared/auth-supported.md'
 
-<Accessconsup />
+<Authsup />
 
 ## Secret management
 
