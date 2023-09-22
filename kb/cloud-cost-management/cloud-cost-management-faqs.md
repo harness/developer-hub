@@ -44,8 +44,9 @@ You can create as many as 10,000 Perspectives in a single account.
 
 #### How are costs presented in perspectives when there are expenses that are not linked to the chosen grouping criteria?
 
-We display `No` followed by the selected `<group by>` for costs that do not have any correlation with the specified `<group by>` criteria.
+CCM displays `No` followed by the selected `<group by>` for costs that do not have any correlation with the specified `<group by>` criteria.
 For instance, if a perspective encompasses rules for both AWS and GCP, and the grouping is based on GCP > SKU, any expenses unrelated to GCP SKUs will be displayed as "No SKUs."
+For more information, go to [Create Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#review-no-accountprojectetc).
 
 ### Recommendations
 
@@ -60,17 +61,23 @@ If the instance is in a stopped state it takes ~2-3 days for the recommendation 
 
 #### Do we support moving the recommendations from the Applied to Open recommendations section?
 
-No. We support only moving the recommendations from the Open to the applied section now.
+No. Currently, CCM supports only moving the recommendations from the **Open** to the **Applied** tab.
 
 #### Are there any recommendations specific to GCP, other than the nodepool and workload recommendations for clusters in GCP?
 
-Currently, we do not offer any GCP-specific recommendations. Our support is limited to the recommendations outlined in the [documentation](https://developer.harness.io/docs/category/recommendations).
+Currently, CCM does not offer any GCP-specific recommendations. Our support is limited to the recommendations outlined in the [documentation](https://developer.harness.io/docs/category/recommendations).
 
 #### Does CCM offer support for on-premises/Self Managed Platform (SMP) installations?
 
-Yes, CCM does support on-premises/Self Managed Platform (SMP) installations. It provides the following features and functionalities within an SMP environment:
-1) The Connectors setup is currently supported exclusively on AWS and Kubernetes.
-2) Additionally, CCM supports Perspectives, Budgets, Scheduled Reports, Cost categories, Anomalies, and Recommendations in this environment.
+Yes. CCM supports the following features and functionalities in the SMP environment for AWS and Kubernetes:
+- Connector setup 
+- Perspectives
+- Budgets
+- Scheduled reports
+- Cost categories
+- Anomalies 
+- Recommendations 
+For more information, go to [CCM on Harness Self-Managed Enterprise Edition](https://developer.harness.io/docs/category/ccm-on-harness-self-managed-enterprise-edition).
 
 ### Governance
 
