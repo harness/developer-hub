@@ -65,7 +65,7 @@ No. Currently, CCM supports only moving the recommendations from the **Open** to
 
 #### Are there any recommendations specific to GCP, other than the nodepool and workload recommendations for clusters in GCP?
 
-Currently, CCM does not offer any GCP-specific recommendations. Our support is limited to the recommendations outlined in the [documentation](https://developer.harness.io/docs/category/recommendations).
+Currently, CCM does not offer any GCP-specific recommendations. Support is limited to the recommendations specified in the [documentation](https://developer.harness.io/docs/category/recommendations).
 
 #### Does CCM offer support for on-premises/Self Managed Platform (SMP) installations?
 
