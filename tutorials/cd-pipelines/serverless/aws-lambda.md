@@ -130,6 +130,106 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 3. For the secret value, paste the access token for your AWS user account. The Harness delegate uses this credential to authenticate Harness with AWS at deployment runtime.
 4. Select **Save**.
 
+```mdx-code-block
+<Tabs>
+<TabItem value="CLI">
+```
+1. Download and Configure Harness CLI.
+
+    ```mdx-code-block
+    <Tabs>
+    <TabItem value="MacOS">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="Linux">
+    ```
+
+    ```mdx-code-block
+    <Tabs>
+    <TabItem value="ARM">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
+    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="AMD">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
+    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    </Tabs>
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="Windows">
+    ```
+
+    a. Open Windows Powershell and run the command below to download the Harness CLI.
+
+    ```
+    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+    ```
+        
+    b. Extract the downloaded zip file and change directory to extracted file location.
+
+    c. Follow the steps below to make it accessible via terminal.
+
+    ```
+    $currentPath = Get-Location 
+    [Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$currentPath", [EnvironmentVariableTarget]::Machine)
+    ```
+
+    d. Restart terminal.
+
+    ```mdx-code-block
+    </TabItem>
+    </Tabs>
+    ```
+
+2. Clone the Forked **harnessed-example-apps** repo and change directory.
+    ```bash
+    git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
+    cd harnesscd-example-apps 
+    ```
+    :::note
+    
+    Replace `GITHUB_ACCOUNTNAME` with your GitHub Account name.
+
+    :::
+
+3. Log in to Harness from the CLI.
+    ```bash
+    harness login --api-key  --account-id HARNESS_API_TOKEN 
+    ```
+    :::note
+    
+    Replace `HARNESS_API_TOKEN` with Harness API Token that you obtained during the prerequisite section of this tutorial.
+
+    :::
+
 ## Connectors
 
 <details open>
@@ -140,6 +240,29 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 </details>
 
 1. Create the **GitHub connector**.
+    1. Replace **GITHUB_USERNAME** with your GitHub account username in the `github-connector.yaml` 
+    2. Replace **DELEGATE_NAME** under delegate selectors with Delegate Name. 
+    2. In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+    3. Now create the **GitHub connector** using the following CLI command:
+        ```
+        harness connector --file "/serverless-lambda/harnesscd-pipeline/github-connector.yml" apply --git-user <YOUR GITHUB USERNAME>
+        ```
+2. Create the **AWS Connector**.
+    1. 
+```mdx-code-block
+</TabItem>
+<TabItem value="UI">
+```
+## Connectors
+
+<details open>
+<summary>What are connectors?</summary>
+
+Connectors in Harness enable integration with 3rd party tools, providing authentication for operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](/docs/category/connectors).
+
+</details>
+
+1. Create the **GitHub Connector**.
     1. Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/github-connector.yml).
     2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     3. Select **Create via YAML Builder** and paste the copied YAML.
@@ -224,6 +347,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     
     Observe the execution logs as Harness deploys the function.
 
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 ## Congratulations!🎉
 
