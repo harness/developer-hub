@@ -2,7 +2,7 @@
 title: Grype scanner reference for STO
 description: Image scans with Grype
 sidebar_label: Grype scanner reference
-sidebar_position: 156
+sidebar_position: 10
 ---
 
 You can scan container images using [Grype](https://github.com/anchore/grype).
@@ -30,9 +30,6 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ## Grype step configuration
 
 The recommended workflow is add a Grype step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Grype scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
-
-
-
 
 
 
@@ -302,3 +299,13 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
+
+## Set up Grype in an airgapped environment
+
+#### Initial setup 
+
+- Set up a private registry per your local container images, Grype databases, and support files. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
+- Set up Grype per [Offline and air-gapped environments](https://github.com/anchore/grype#offline-and-air-gapped-environments) in the Grype documentation. 
+
+  The Grype container image provided by Harness includes a vulnerability database out of the box. However, you need to 

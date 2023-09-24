@@ -2,7 +2,7 @@
 title: Nmap (Network Mapper) scanner reference for STO
 description: Instance scans with Nmap
 sidebar_label: Nmap (Network Mapper) scanner reference
-sidebar_position: 200
+sidebar_position: 270
 ---
 
 You can scan your instances using [Nmap](https://nmap.org/), an open-source tool used for network exploration, host discovery, and security auditing. 

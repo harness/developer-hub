@@ -2,7 +2,7 @@
 title: Fossa scanner reference for STO
 description: Image and repository scans with Fossa
 sidebar_label: Fossa scanner reference
-sidebar_position: 150
+sidebar_position: 190
 ---
 
 You can scan container images and repositories using [Fossa](https://www.fossa.com), a scanner that detects security vulnerabilities and other issues in open-source projects. 

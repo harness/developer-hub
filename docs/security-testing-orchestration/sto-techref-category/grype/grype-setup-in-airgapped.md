@@ -1,13 +1,14 @@
 ---
-title: Prisma Cloud (formerly Twistlock) scanner reference for STO
-description: Image scans with Prisma Cloud
-sidebar_label: Prisma Cloud (formerly Twistlock) scanner reference
-sidebar_position: 300
+title: Grype scanner reference for STO
+description: Image scans with Grype
+sidebar_label: Grype scanner reference
+sidebar_position: 10
 ---
 
-You can scan container images using Prisma Cloud.
+You can scan container images using [Grype](https://github.com/anchore/grype).
 
-## Important notes for running Prisma Cloud scans in STO
+
+## Important notes for running Grype scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -25,15 +26,14 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Prisma Cloud step configuration in STO
 
-The recommended workflow is add a PrismaCloud step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Prisma Cloud scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+## Grype step configuration
 
-
-
+The recommended workflow is add a Grype step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Grype scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
 
+<!-- 
 <details>
     <summary>Scanner Template</summary>
 
@@ -41,7 +41,9 @@ The recommended workflow is add a PrismaCloud step to a Security Tests or CI Bui
 
 </details>
 
-### Scan
+-->
+
+### Scan settings
 
 
 <a name="scan-mode"></a>
@@ -50,14 +52,12 @@ The recommended workflow is add a PrismaCloud step to a Security Tests or CI Bui
 
 ```mdx-code-block
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
+import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
-<StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
 
@@ -70,23 +70,18 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 <StoSettingProductConfigName />
 
 
-### Target
+### Target Settings
 
 <a name="target-type"></a>
 
 #### Type
 
 ```mdx-code-block
-import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
-import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
 import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
 ```
-<a name="scan-type"></a>
-<StoSettingScanType />
-<StoSettingScanTypeRepo />
+
 <StoSettingScanTypeCont />
 
-<a name="target-name"></a>
 
 #### Name 
 
@@ -121,7 +116,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 <!-- ============================================================================= -->
 <a name="container-type"></a>
 
-#### Type 
+#### Type  
 
 ```mdx-code-block
 import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
@@ -186,83 +181,6 @@ import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-
 <StoSettingImageAccessToken />
 
 
-### Authentication
-
-<!-- ============================================================================= -->
-<a name="auth-domain"></a>
-
-#### Domain (_extraction_)
-
-
-```mdx-code-block
-import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
-```
-
-<StoSettingAuthDomain />
-
-<!-- ============================================================================= -->
-<a name="auth-enforce-ssl"></a>
-
-#### Enforce SSL
-
-```mdx-code-block
-import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
-```
-
-<StoSettingProductSSL />
-
-<!-- ============================================================================= -->
-<a name="auth-access-api-version"></a>
-
-#### API Version
-
-```mdx-code-block
-import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-version.md';
-```
-
-<StoSettingApiVersion />
-
-<!-- ============================================================================= -->
-<a name="auth-type"></a>
-
-#### Type
-
-```mdx-code-block
-import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
-```
-
-<StoSettingAuthType />
-
-<!-- ============================================================================= -->
-
-<a name="auth-access-id"></a>
-
-#### Access ID
-
-```mdx-code-block
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
-```
-
-<StoSettingAuthAccessID />
-
-<!-- ============================================================================= -->
-<a name="auth-access-token"></a>
-
-#### Access Token
-
-```mdx-code-block
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-```
-
-
-<StoSettingAuthAccessToken />
-
-### Scan Tool
-
-#### Image Name
-
-For Extraction scans, the name of the image that you want to extract from Prisma Cloud. 
-
 ### Log Level, CLI flags, and Fail on Severity
 
 <a name="log-level"></a>
@@ -285,6 +203,8 @@ import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 
 <StoSettingCliFlags />
 
+<a name="fail-on-severity"></a>
+
 
 #### Fail on Severity
 
@@ -294,9 +214,10 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 <StoSettingFailOnSeverity />
 
 
+
 ### Settings
 
-You can add a `tool_args` setting to run the [twistcli images scan binary](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images#) with specific command-line arguments. For example, you can prevent the scan from publishing results to the Console like this:  `tool_args` : `--publish FALSE`.
+You can add a `tool_args` setting to run the [grype scanner](https://github.com/anchore/grype) with specific command-line arguments. For example, you can report vulnerabilities with known fixes only using `--only-fixed`: `tool_args` = `--only-fixed`.
 
 ### Additional Configuration
 
@@ -317,11 +238,16 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
+ 
+## Security step settings for Grype scans in STO (legacy)
+ 
+You can set up a Security step with [Grype](https://github.com/anchore/grype) to detect vulnerabilities and misconfigurations in your container images.
 
 
-## Security step settings for Prisma Cloud scans in STO (legacy)
+#### Important Notes
 
-You can set up Prisma Cloud scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+* STO supports Grype scans of containers and repositories.
+* STO supports [orchestrated scans](../use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
 
 #### Target and variant
 
@@ -331,22 +257,34 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 <StoLegacyTargetAndVariant />
 
-#### Prisma Cloud scan settings
+#### Grype scan Settings
 
-* `product_name` = `twistlock`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) : `containerImage`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) :  `orchestratedScan`, `dataLoad`, or `ingestionOnly`
-* When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan` or `dataLoad`:
-	+ `product_image_name`
-	+ `product_domain`
-	+ `product_access_id`
-	+ `product_access_token`
-* `product_config_name`
-	+ Accepted values(s):
-		- `default`
+* `product_name` = `grype`
+* `policy_type` = `orchestratedScan`
+* `scan_type` = `repository` or `container`
+* `product_config_name` = `default`
+* `container_domain` — The image registry domain, for example `docker.io`
+* `container_project` — The image owner and project, for example `harness/delegate`
+* `container_tag` — The tag of the image to scan, for example `latest`
+* `container_type` — Set to `local_image`, `docker_v2`, `jfrog_artifactory`, or `aws_ecr`  
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-#### Container image scan settings
+<!-- 
+The following settings are also required, depending on the container type:
++ if `container_type` = `docker_v2`
+	- `container_access_id`: Username
+	- `container_access_token`: Password/token 
++ if `container_type` = `aws_ecr`
+	- `container_access_id`: Username
+	- `container_access_token`: Password/token 
+	- `container_region`: Image registry AWS region
++ if `container_type` = `jfrog_artifactory`
+	- `container_access_id`: Username
+	- `container_access_token`: Password/token
+
+-->
+
+#### Container scan settings
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
@@ -361,3 +299,13 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
+
+## Set up Grype in an airgapped environment
+
+#### Initial setup 
+
+- Set up a private registry per your local container images, Grype databases, and support files. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
+- Set up Grype per [Offline and air-gapped environments](https://github.com/anchore/grype#offline-and-air-gapped-environments) in the Grype documentation. 
+
+  The Grype container image provided by Harness includes a vulnerability database out of the box. However, you need to 

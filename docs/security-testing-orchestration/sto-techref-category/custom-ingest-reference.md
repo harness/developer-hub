@@ -2,7 +2,7 @@
 title: Custom Ingest step reference for STO
 description: ingest JSON or SARIF data from external scanners
 sidebar_label: Custom Ingest step reference
-sidebar_position: 105
+sidebar_position: 130
 ---
 
 The Custom Ingest step enables you to ingest results from any third-party scanner. Harness STO supports two generic data formats:

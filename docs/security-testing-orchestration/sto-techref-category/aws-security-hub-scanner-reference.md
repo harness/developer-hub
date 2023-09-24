@@ -2,7 +2,7 @@
 title: AWS Security Hub scanner reference for STO
 description: Configuration scans with AWS Image scanner
 sidebar_label: AWS Security Hub scanner reference
-sidebar_position: 40
+sidebar_position: 50
 ---
 
 You can scan your configurations using [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html), which provides a comprehensive view of your security state in AWS and helps you check your environment against security industry standards and best practices. 

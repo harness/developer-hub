@@ -2,7 +2,7 @@
 title: CodeQL scanner reference for STO
 description: Repository scans with CodeQL
 sidebar_label: CodeQL scanner reference
-sidebar_position: 103
+sidebar_position: 120
 ---
 
 <!-- hiding this topic until the integration is ready to GA -->

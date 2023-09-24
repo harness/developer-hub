@@ -2,7 +2,7 @@
 title: Zed Attack Proxy (ZAP) scanner reference for STO
 description: App instance scans using ​Zed Attack Proxy (ZAP)
 sidebar_label: Zed Attack Proxy (ZAP) scanner reference
-sidebar_position: 400
+sidebar_position: 430
 helpdocs_topic_id: m9494vxwac
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false

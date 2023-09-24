@@ -2,7 +2,7 @@
 title: Checkmarx scanner reference for STO
 description: Repository scans with Checkmarx
 sidebar_label: Checkmarx scanner reference
-sidebar_position: 90
+sidebar_position: 100
 ---
 
 You can scan your repositories using Checkmarx. Harness STO supports the following workflows:

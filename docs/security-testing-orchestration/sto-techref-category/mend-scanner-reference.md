@@ -2,7 +2,7 @@
 title: Mend (formerly Whitesource) scanner reference for STO
 description: Container and repository scans with Mend
 sidebar_label: Mend scanner reference
-sidebar_position: 160
+sidebar_position: 220
 ---
 
 You can scan container images and repositories using [Mend](https://www.mend.io). 

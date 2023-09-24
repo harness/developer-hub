@@ -2,7 +2,7 @@
 title: Semgrep scanner reference for STO
 description: Repository scans with Semgrep
 sidebar_label: Semgrep settings reference
-sidebar_position: 270
+sidebar_position: 360
 ---
 
 

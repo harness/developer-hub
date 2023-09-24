@@ -1,0 +1,14 @@
+{
+    "label": "Grype",
+    "position": 210,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+       "type": "generated-index",
+       "title": "Grype"
+    },
+    "customProps": {
+       "helpdocs_category_id": "m01pu2ubai"
+    }
+ }

@@ -2,7 +2,7 @@
 title: AWS ECR scanner reference for STO
 description: Image scans with AWS ECR
 sidebar_label: AWS ECR scanner reference
-sidebar_position: 30
+sidebar_position: 40
 ---
 
 You can scan your container images using [Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html). 

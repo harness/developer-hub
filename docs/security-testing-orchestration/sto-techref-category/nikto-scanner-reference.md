@@ -2,7 +2,7 @@
 title: Nikto scanner reference for STO
 description: Instance scans with Nikto
 sidebar_label: Nikto scanner reference
-sidebar_position: 190
+sidebar_position: 260
 ---
 
 You can scan your instances using [Nikto](https://cirt.net/Nikto2), an open-source scanner that runs tests against web servers to detect dangerous files/programs, outdated server versions, and problems with specific server releases. 

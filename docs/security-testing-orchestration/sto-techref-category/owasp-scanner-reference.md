@@ -2,7 +2,7 @@
 title: OWASP Dependency-Check scanner reference for STO
 description: Repository scans with OWASP Dependency Check
 sidebar_label: OWASP Dependency-Check scanner reference
-sidebar_position: 210
+sidebar_position: 290
 ---
 
 You can scan your code repositories using [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/), an SCA tool for detecting publicly disclosed vulnerabilities contained within a project’s dependencies.

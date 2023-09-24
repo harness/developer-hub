@@ -2,7 +2,7 @@
 title: Brakeman scanner reference for STO
 description: Repository scans with Brakeman
 sidebar_label: Brakeman scanner reference
-sidebar_position: 70
+sidebar_position: 80
 ---
 
 You can run [Brakeman](https://brakemanscanner.org/) scans on your Ruby on Rails applications. 

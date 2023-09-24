@@ -2,7 +2,7 @@
 title: Gitleaks scanner reference for STO
 description: Repository scans with Gitleaks
 sidebar_label: Gitleaks scanner reference
-sidebar_position: 155
+sidebar_position: 200
 
 ---
 

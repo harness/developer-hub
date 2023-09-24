@@ -1,7 +1,7 @@
 ---
 title: SonarQube SonarScanner reference for STO
 description: Repository scans with SonarQube SonarScanner
-sidebar_position: 300
+sidebar_position: 390
 sidebar_label: SonarQube SonarScanner scanner reference
 helpdocs_topic_id: 4qe4h3cl28
 helpdocs_category_id: m01pu2ubai
