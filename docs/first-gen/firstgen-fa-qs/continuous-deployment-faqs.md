@@ -507,7 +507,9 @@ See the **Pricing FAQ** at [Harness Pricing](https://harness.io/pricing/).
 
 #### Does Harness support AWS Serverless Application Model (SAM) templates?
 
-No. Harness CloudFormation integration does not support AWS Serverless Application Model (SAM) templates. Only standard [AWS CloudFormation templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html#w2ab1b5c15b7).
+Yes. Harness CloudFormation integration does support AWS Serverless Application Model (SAM) templates, as well as standard [AWS CloudFormation templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html#w2ab1b5c15b7).
+
+For more details, go to [AWS SAM](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments).
 
 #### What deployment strategies can I use CloudFormation with?
 
