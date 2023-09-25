@@ -57,7 +57,7 @@ This example uses a Snyk step in Orchestration mode  to scan a repository. This 
 
 -->
 
-3. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:  
+3. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:  
 
    1. Scan Mode = **Orchestration**
    2. Target Type = **Repository**
@@ -117,7 +117,7 @@ The scan stage in this pipeline has the following steps:
  
       This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build will exit with an error code before STO can ingest the data.
    
-5. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:  
+5. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:  
 
    1. Scan Mode = **Ingestion**
    2. Target Type = **Repository**
@@ -174,7 +174,7 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
  
       This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build will exit with an error code before STO can ingest the data.
     
-4. Add a [Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) and configure it as follows:
+4. Add a [Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference) and configure it as follows:
 
    1. Scan Mode = **Ingestion**
    2. Target Type = **Container Image**
@@ -232,7 +232,7 @@ The scan stage in this pipeline has the following steps:
  
       This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build will exit with an error code before STO can ingest the data.
    
-5. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:  
+5. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:  
 
    1. Scan Mode = **Ingestion**
    2. Target Type = **Repository**

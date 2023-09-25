@@ -3,7 +3,7 @@ title: Grype scanner reference for STO
 description: Image scans with Grype
 sidebar_label: Grype scanner reference
 sidebar_position: 10
-redirect_from: /docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference
+redirect_from: /docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference
 ---
 
 You can scan container images using [Grype](https://github.com/anchore/grype).
