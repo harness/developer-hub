@@ -13,13 +13,13 @@ To run Grype scans in an air-gapped environment, you need the following:
 
 - A private registry or local file server for your local container images, Grype databases, support files, and other artifacts. You need a local web server so that you can request local artifacts via HTTP and HTTPS.
 
-  Documentation about setting up a private registry is outside the scope of this topic. For more information, go to the documentation for the artifact tool you want to use. One popular tool for airgapped environments is JFrog Artifactory; [this blog post](https://jfrog.com/blog/using-artifactory-with-an-air-gap/) provides a comprehensive overview. 
+  Documentation about setting up a private registry is outside the scope of this topic. For more information, go to the documentation for the artifact tool you want to use. One popular tool for air-gapped environments is JFrog Artifactory; [this blog post](https://jfrog.com/blog/using-artifactory-with-an-air-gap/) provides a comprehensive overview. 
 
-  <!-- TBD any other external tools we want to mention? I googled around for information about the other artifact repositories we support, or at least have connectors for...Bamboo, Azure Artifacts, Nexus, etc....I didn't find a lot of info about running these tools in airgapped environments  -->
+  <!-- TBD any other external tools we want to mention? I googled around for information about the other artifact repositories we support, or at least have connectors for...Bamboo, Azure Artifacts, Nexus, etc....I didn't find a lot of info about running these tools in air-gapped environments  -->
 
 - After you set up your registry, you need to load local copies your Harness container images. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
-- Set up Grype per [Offline and air-gapped environments](https://github.com/anchore/grype#offline-and-air-gapped-environments) in the Grype documentation. 
+- You then need to set up Grype per [Offline and air-gapped environments](https://github.com/anchore/grype#offline-and-air-gapped-environments) in the Grype documentation. 
 
 ## Initial setup
 
@@ -62,13 +62,17 @@ The Grype container image provided by Harness includes the latest database at th
    
    3. Set up a copy of `listing.json` in your local registry. This file specifies the local Grype databases available for running scans.
       1. Download a copy of the [`listing.json`](https://github.com/anchore/grype/blob/main/grype/db/test-fixtures/listing.json) file and upload it to your local registry.  
-      2. Delete the `2` entry and update the `1` entry with the  `"built"`, `"version"`, `"url"`, and `"checksum"` values for the database you just added to the registry.  
+      2. Edit your local `listing.json` so that it has one entry with the  `"built"`, `"version"`, `"url"`, and `"checksum"` values for the database you just added to the registry. 
+      3. Upload your local `listing.json` to your local registry. 
+
+      For more information, go to [Grype's databases](https://github.com/anchore/grype#grypes-database) in the Grype documentation.
    
    4. Add this setting to the Grype step in your Harness pipeline: 
 
-      `GRYPE_DB_UPDATE_URL` = The URL to the `listing.json` in your local registry, for example `http://my-local-registry:<PORT_NUMBER>/grype-dbs/listing.json`
+      - `GRYPE_DB_UPDATE_URL` = The URL to the `listing.json` in your local registry, for example `http://my-local-registry:<PORT_NUMBER>/grype-dbs/listing.json`
 
       When you run a scan with this setup, Grype uses the most recent database specified in `listing.json`.
+      <!-- Need to confirm this. -->
 
    5. Run the pipeline again and verify that the Grype step runs as intended.     
 
