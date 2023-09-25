@@ -23,7 +23,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Service Reliability Management, version 1.1.3
 
-- SRM Dashboards now include comprehensive data for Composite Service Level Objectives (Composite SLOs). This enhancement offers users a holistic view of both Simple and Composite SLO performance. (SRM-15419)
+- SRM dashboards now include comprehensive data for composite Service Level Objectives (composite SLOs). This enhancement offers users a holistic view of both simple and composite SLO performance. (SRM-15419)
 
 ## September 19, 2023
 
