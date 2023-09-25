@@ -1,6 +1,6 @@
 ---
-title: OverOps to CET Migration Guide
-description:  OverOps to CET Migration Guide
+title: OverOps to CET Upgrade Guide
+description:  Guide to help users upgrade to CET from OverOps
 sidebar_position: 21
 redirect_from:
   - /docs/continuous-error-tracking/getting-started/cet-setup
