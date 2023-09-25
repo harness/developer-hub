@@ -592,6 +592,7 @@ helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml
 ```
 Example: `helm upgrade ccm . -n harness -f old_values.yaml`
 
+### Connected environment
 
 ```
 global:
@@ -615,6 +616,71 @@ ccm:
     clickhouse:
       enabled: true
 ```
+
+### Air-gapped environment
+
+CCM leverages AWS APIs that require connectivity from the isolated (air-gapped) instance. To grant access to these AWS APIs, establish VPC endpoints for the respective AWS services. For services lacking VPC endpoints, use a proxy to facilitate access.
+
+```
+global:
+  ccm:
+    enabled: true
+  smtpCreateSecret:
+    enabled: true
+  license:
+    ng: <SMP NG License with CCM>
+  # -- To enable the use of a proxy for AWS SDK calls to services such as organization, CUR (Cost and Usage Report), CE (Cost Explorer), and IAM (Identity and Access Management), set the `global.proxy.enabled` parameter to true.
+  # -- Set the `global.proxy.host` parameter by specifying the proxy host or IP address (for example, localhost, 127.0.0.1)
+  # -- Set the `global.proxy.port` parameter by specifying the proxy port. It takes an integer value.
+  # -- Set the `global.proxy.username` parameter and global.proxy.password parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
+  # -- Set the `global.proxy.protocol` parameter by specifying http or https depending on the proxy configuration.
+  proxy:
+    enabled: false
+    host: localhost
+    port: 80
+    username: ""
+    password: ""
+    protocol: http
+  # -- By default, the AWS SDK uses the `us-east-1` endpoint URLs as the default for calls to STS (Security Token Service), ECS (Elastic Container Service), and CloudWatch services. However, if there is a need to specify a different region, you have the option to customize the endpoint URLs using the following configuration:
+  # -- Set the `global.awsServiceEndpointUrls.enabled` parameter to true to enable endpoint URLs.
+  # -- Set a valid AWS region in the `global.awsServiceEndpointUrls.endPointRegion.host` parameter to specify the region where this endpoint is accessible.
+  # -- Set the the STS (Security Token Service) endpoint URL in the `global.awsServiceEndpointUrls.stsEndPointUrl` parameter.
+  # -- Set the ECS (Elastic Container Service) endpoint URL in the `global.awsServiceEndpointUrls.ecsEndPointUrl` parameter.
+  # -- Set the CloudWatch endpoint URL in the `global.awsServiceEndpointUrls.cloudwatchEndPointUrl` parameter.
+  awsServiceEndpointUrls:
+    enabled: false
+    endPointRegion: us-east-2
+    stsEndPointUrl: https://sts.us-east-2.amazonaws.com
+    ecsEndPointUrl: https://ecs.us-east-2.amazonaws.com
+    cloudwatchEndPointUrl: https://monitoring.us-east-2.amazonaws.com
+
+ccm:
+  clickhouse:
+      enabled: true
+  batch-processing:
+    cloudProviderConfig:
+      S3_SYNC_CONFIG_BUCKET_NAME: <S3_SYNC_CONFIG_BUCKET_NAME> [AWS Setup - bucket name from here 'harness-ccm-service-data-bucket-<accountid>']
+      S3_SYNC_CONFIG_REGION: <S3_SYNC_CONFIG_REGION> [AWS Setup - Create S3 buckets step - Use region from here]
+    clickhouse:
+      enabled: true
+    cliProxy:
+      enabled: false
+      host: localhost 
+      port: 80
+      username: ""
+      password: ""
+      protocol: http
+  # -- Set the `ccm.cloud-info.proxy.httpsProxyEnabled` parameter to true to route AWS SDK calls for EC2 and pricing through a proxy.
+  # -- Configure the `ccm.cloud-info.proxy.httpsProxyUrl` parameter with the appropriate proxy URL. For example, if your HTTP proxy is running on localhost port 1234 and requires authentication, you can use a format like http://username:password@proxy.example.com:1234. If no username and password are required, a value like http://proxy.example.com:1234 can be provided.
+  cloud-info:
+    proxy:
+      httpsProxyEnabled: false
+      httpsProxyUrl: http://proxy.example.com:1234
+  nextgen-ce:
+    clickhouse:
+      enabled: true
+```
+
 
 ## Handling Kubernetes secrets
 
