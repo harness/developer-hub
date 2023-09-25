@@ -48,6 +48,26 @@ CCM displays `No` followed by the selected `<group by>` for costs that do not ha
 For instance, if a perspective encompasses rules for both AWS and GCP, and the grouping is based on GCP > SKU, any expenses unrelated to GCP SKUs will be displayed as "No SKUs."
 For more information, go to [Create Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#review-no-accountprojectetc).
 
+#### How can I retrieve details about the compute generating the cost within a perspective that is managed by a cost category rule? Additionally, how can I obtain information about its uptime, memory utilization, and CPU usage?
+
+In the context of cost categories, we currently provide information through two columns: `total cost` and `cost trend`. However, users have the option to delve deeper into workload details, allowing them to access information such as the start and stop times of individual pods.
+
+#### How are costs calculated, and is there a specific formula for it?
+
+Indeed, CCM offers a formula to illustrate the calculation process. For a detailed explanation, please consult the [documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/key-concepts/) provided.
+
+#### Is it possible to modify the formula for calculations, specifically for CPU, memory, or idle costs?
+
+No, the formula is predetermined and cannot be altered. However, if you are utilizing Kubernetes on bare metal infrastructure (excluding GCP, AWS, or Azure), you do have the option to adjust the pricing for compute calculations related to nodes and pods. For more details, please refer to the [documentation](https://developer.harness.io/docs/faqs/cloud-cost-management-faqs/#hows-cost-calculated-for-k8s-on-cloud-providers-and-k8s-on-bare-metal) provided.
+
+#### How is cost allocation determined? Is it based on actual usage, requests, limits, or the higher of requests or actual usage?
+
+The cost is allocated based on the maximum of either requests or actual usage.
+
+#### Is storage included in the cost calculation, particularly in the context of Kubernetes, specifically AKS?
+
+Yes, storage costs are indeed included in the total cost calculation. From the cluster perspective, the total cost encompasses memory costs, CPU costs, and storage costs, providing a comprehensive view of all expenses.
+
 ### Recommendations
 
 #### We have found that some AWS EC2 instances are still visible in recommendations list even they are stopped before 2-3 days ago. is it the usual behavior for stopped ec2s?
