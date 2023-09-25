@@ -1,7 +1,8 @@
 ---
-title: SonarQube SonarScanner reference
+title: SonarQube SonarScanner reference for STO
 description: Repository scans with SonarQube SonarScanner
 sidebar_position: 300
+sidebar_label: SonarQube SonarScanner scanner reference
 helpdocs_topic_id: 4qe4h3cl28
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -20,14 +21,15 @@ helpdocs_is_published: true
 * By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestrated and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube scan step. 
 :::
 
-## Before you begin
+## Important notes for running SonarQube scans in STO
 
 You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
 
 You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
 
-## SonarQube step configuration
+## SonarQube step settings for STO scans
+
 
 The recommended workflow is to add a SonarQube step to a Security Tests or CI Build stage and then configure it as described below.
 
@@ -249,7 +251,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step configuration (_legacy_)
+## Security step settings for SonarQube scans in STO (_legacy_)
 
 You can add a Security step to a Security Tests or CI Build stage and then configure it as described below. 
 

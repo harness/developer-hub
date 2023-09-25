@@ -1,18 +1,19 @@
 ---
-title: Gitleaks scanner reference
+title: Gitleaks scanner reference for STO
 description: Repository scans with Gitleaks
+sidebar_label: Gitleaks scanner reference
 sidebar_position: 155
 
 ---
 
-You can scan your code repositories using [Gitleaks](https://github.com/PyCQA/GitLeaks), an open-source tool designed to find common security issues in Python code. 
+You can scan your code repositories using [Gitleaks](https://github.com/gitleaks), an open-source tool designed to find common security issues in Python code. 
 
 Gitleaks can publish results to [Static Analysis Results Interchange Format (SARIF)](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning), an open data format supported by many scan tools. 
 
 For a description of the end-to-end workflow, go to [Ingest SARIF data](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
 
 
-## GitLeaks step configuration
+## Gitleaks step settings for STO scans
 
 The recommended workflow is to add a GitLeaks step to a Security Tests or CI Build stage and then configure it as described below.  
 
@@ -174,7 +175,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
-## Gitleaks step configuration example
+## Gitleaks step configuration example for STO
 
 Here's an example of a configured Gitleaks step.
 
@@ -198,7 +199,7 @@ Here's an example of a configured Gitleaks step.
     description: gitleaks step
 ```
 
-## Gitleaks ingestion pipeline example
+## Gitleaks ingestion pipeline example for STO
 
 The following pipeline shows an end-to-end ingestion workflow. The pipeline consists of a Build stage with two steps:
 

@@ -4,7 +4,7 @@ description: Harness CI simplifies the code development and testing process.
 keywords: [CI]
 title: Harness CI overview
 slug: /ci-pipelines/ci-overview
-hide_table_of_concents: true
+hide_table_of_contents: true
 redirect_from:
   - /tutorials/ci-pipelines/ci-concepts
 ---

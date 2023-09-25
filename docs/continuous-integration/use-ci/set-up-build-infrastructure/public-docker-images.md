@@ -17,9 +17,9 @@ The Harness Community public images are optional images you can use to quickly s
 
 :::
 
-## Available images
+## Available pre-built images
 
-Available images include a base image and several language and service images. The language and service images are derived from the base image.
+Available images include a base image and several images for specific languages and services. The language and service images are derived from the base image.
 
 The Docker images are available on the [Harness Community Docker Hub](https://hub.docker.com/u/harnesscommunity).
 
@@ -69,7 +69,7 @@ The following tools are installed on all public images:
 * wget
 * zip
 
-### Base image
+### CI base image
 
 The Harness Community [CI base image](https://hub.docker.com/r/harnesscommunity/base) is an Ubuntu-based lightweight image that installs the minimum utilities required to run most builds on Harness CI, including an Ubuntu Linux OS (22.04), Git, Docker, Docker Compose, Dockerize, curl, ssh, and so on.
 
@@ -83,7 +83,7 @@ To use the base image in a pipeline, reference it in a step's `spec.image`, for 
                    command: sudo npm install -g npm ## This is an example command.
 ```
 
-### Language images
+### Language-specific images
 
 The Harness Community language images are pre-built images for specific programming languages. Each tag contains a complete version of the specified language, an SDK (if applicable), and any binaries/tools required for Harness CI builds. For example, the Ruby image includes a complete Ruby version, the `gem` command, and Bundler, among other binaries/tools.
 
@@ -112,7 +112,7 @@ To use a language image in a pipeline, reference it in a step's `spec.image`, fo
                    command: bundle exec rake test ## This is an example command.
 ```
 
-### Service images
+### Service-specific images
 
 The Harness Community service images are pre-built images for specific services, like databases. In a CI pipeline, configure these images *after* language images.
 
@@ -130,13 +130,13 @@ To use a service image in a pipeline, reference it in a step's `spec.image`, for
                    command: bundle exec rake test ## This is an example command.
 ```
 
-## Image updates
+## Pre-built image updates
 
 The Harness Community updates the pre-built images as needed for bug fixes and enhancements. Updates can impact image functionality in your pipelines. Follow the `#continuous-integration` channel on [Harness Community Slack](https://developer.harness.io/community) to get notified about image updates.
 
-## Best practice: Use a specific image tag
+## Use a specific image tag
 
-Images are based on the most recent Ubuntu LTS Docker image, and they have the base libraries for the specified language for service. Using the most specific image possible makes your builds more predictable by avoiding incorporating unwanted, upstream changes until you can test them.
+The pre-built images are based on the most recent Ubuntu LTS Docker image, and they have the base libraries for the specified language for service. Using the most specific image possible makes your builds more predictable by avoiding incorporating unwanted, upstream changes until you can test them.
 
 For example, instead of using `image: harnesscommunity/node:latest`, use a specific version number, like `node:18.6`.
 

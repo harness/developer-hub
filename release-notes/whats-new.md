@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-09-19T10:00
+date: 2023-09-25T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,13 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: September 19, 2023
+## Latest: September 25, 2023
+
+### Service Reliability Management, version 1.1.3
+
+- SRM dashboards now include comprehensive data for composite Service Level Objectives (composite SLOs). This enhancement offers users a holistic view of both simple and composite SLO performance. (SRM-15419)
+
+## September 19, 2023
 
 ### Harness Platform, version 80711
 
@@ -65,7 +71,7 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
 
 - The delegate expiration policy has been extended from 3 months to 6 months. You now only have to update delegates once every 6 months. (PL-39452)
 
-   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - The OWASP Java HTML Sanitizer version is upgraded to 20220608.1. (PL-40807)
 
@@ -76,7 +82,19 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
 - If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
    Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
    
-   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+## September 7, 2023
+
+### Cloud Cost Management, version 80702
+
+* Cost category enhancement (CCM-12879)
+
+  Implemented a new feature that enables users to copy cost buckets from one cost category to multiple cost categories simultaneously. You have the flexibility to choose any number of buckets for copying. Upon selection, a popup prompt appears, allowing you to specify the target cost categories for copying the selected buckets. Upon successful completion, you receive a success notification along with relevant details.
+  
+  However, it's important to note that while copying you may encounter issues if the destination cost category already has a bucket with the same name as the copied one. In such cases, you can address the conflict by renaming the bucket before attempting the copy operation again.
+
+    <docimage path={require('./static/ccm-copy-cost-buckets.gif')} width="60%" height="60%" title="Click to view full size image" />
 
 ## September 5, 2023
 
@@ -158,7 +176,7 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
 
   By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ##### Harness Delegate, version 80308
 
@@ -261,15 +279,15 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
 
 - Upgraded the Helm binary from version 3.8 to 3.12. (CDS-58931)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Upgraded go-template binary to version 0.4.3, which uses go version 1.20. (CDS-58919)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Removed Helm version 3.1 from delegates with an immutable image type (image tag `yy.mm.xxxxx`). (CDS-58892, ZD-47520, ZD-48553)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ##### Harness Delegate, version 80104
 
@@ -426,7 +444,7 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
 
   If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
-This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ##### Continuous Delivery, version 79916
 
@@ -458,7 +476,7 @@ This item requires Harness Delegate version 79904. For information about feature
 
 - Support for expressions in remote Terraform Var files hosted on Github and S3. (CDS-68612, ZD-43917, ZD-45714)
   
-  This feature requires the latest delegate version, 79904, to display console logs during execution correctly.
+  This feature requires the latest delegate version, 23.07.79904, to display console logs during execution correctly.
 
 ##### Harness Delegate, version 79904
 
@@ -785,7 +803,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
 
-  Harness Delegate version 79503 is required for this feature.
+  Harness Delegate version 23.06.79503 is required for this feature.
 - Use labels for matrix naming strategy. (CDS-68030)
   
   To use the matrix labels naming strategy, do the following: 
@@ -957,7 +975,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 * A warning now appears if you try to save a template with an existing identifier and an updated version label. This warns you that it will be merged with the existing template (upon confirmation). (CDS-47301)
 
-* The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set secret expiration date. The Harness Delegate version 79307 is required for this feature. (PL-32708, ZD-42524)
+* The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set secret expiration date. The Harness Delegate version 23.05.79307 is required for this feature. (PL-32708, ZD-42524)
 
 * AuthZ now considers the SAML setting that the user logged in to when multiple SAML settings are present and the user belongs to more than one of them. The user will be removed from any other SAML settings that the same user might have been part of and synced with Harness through previous SAML logins. (PL-32484) 
 
@@ -971,7 +989,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   When you set the failure strategy to **Ignore Failure**, the failure of the steps or stages are ignored and marked as success instead of failed. 
 - Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
   
-  The Harness Delegate version 79307 is required for this feature. 
+  The Harness Delegate version 23.05.79307 is required for this feature. 
   
   For more information, go to [Schedule pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/).
 - Support for creating or updating a variable of type, secret in the Update Release Repo step is now removed. (CDS-58530)
@@ -992,7 +1010,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 - You can now use the expression, [`<+lastPublished.tag>`](/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions) if you want to deploy the last successfully published artifact version. (CDS-53512)
 - Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
   
-  The Harness Delegate version 79307 is required for this feature.
+  The Harness Delegate version 23.05.79307 is required for this feature.
   
   The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
   
@@ -1014,7 +1032,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   
   Previously, triggers used the round robin algorithm to select any available delegate within a project or account. Now, the delegate-based trigger polling selects the same delegate you used in the connectors for triggers. 
 
-  The Harness Delegate version 79307 is required for this feature.
+  The Harness Delegate version 23.05.79307 is required for this feature.
   
 
 #### May 17, 2023, STO Core version 1.53.0
@@ -1856,7 +1874,7 @@ In addition to fixed values and runtime inputs, you can now use [expressions](/d
 * [Pipeline execution status links](/docs/continuous-integration/use-ci/viewing-builds) in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
 * Improved handling of Azure repo URLs in [Git webhook pipeline triggers](/docs/platform/triggers/triggering-pipelines). (CI-5720)
 
-##### Delegate version 78306
+##### Delegate version 23.02.78306
 
 This release introduces the following new features and enhancements:
 

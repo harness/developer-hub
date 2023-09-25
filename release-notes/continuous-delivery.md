@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-09-11T10:00:15
+date: 2023-09-19T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -192,11 +192,11 @@ TBD commenting out until I hear back from RG https://harness.atlassian.net/brows
 
 * Fixed an issue that resulted in Null Pointer Exceptions when running a pipeline manually with a  `<+trigger.connectorRef>` expression. This expression gets its data from the trigger payload. With this fix, the pipeline correctly handles the case where the trigger payload is null.  (CDS-77736, ZD-49685, ZD-49720, ZD-49722)
 
-  This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 *  Fixed an intermittent issue where Helm deployment pipelines would report the Helm repository as not found.  (CDS-76919)
 
-  This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 <!-- Adding per this comment: https://harness.atlassian.net/browse/CDS-75488?focusedCommentId=567310 -->
 
@@ -353,39 +353,39 @@ This release does not have new features.
 
 - Fixed a delegate issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a <=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - Introduced a validation to ensure that only repos that are allowed on the basis of `repoAllowList` can be set for a Pipeline, InputSets, and Templates while using the [Edit Git details](/docs/platform/git-experience/configure-git-experience-for-harness-entities/#edit-git-details-for-a-pipeline) feature. (CDS-75828)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed a delegate issue where exceptions happened due to k8s kubectl “connection-refused” errors. With this fix, these exceptions are now classified as connectivity errors. This gives you proper control to implement failure strategies based on errors of type Connectivity. (CDS-75777, ZD-48380)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed a delegate issue observed in Blue Green deployments of ASG services, where a repeat deployment incorrectly could result in a scaling down of instances to 0. (CDS-75560)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed a delegate issue observed in pipeline executions with service overrides. If an encrypted config file was deleted, a log message would show the path to the deleted file. (CDS-75153, ZD-47557) 
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed a delegate issue where a `<+configFile.getAsBase64(content)>` expression would get parsed incorrectly if it contained multiple lines. (CDS-73424)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed a UI issue where pipelines, input sets, and executions were ordered incorrectly due to case-sensitive sorting of the element list. With this release, the UI now uses case-insensitive sorting when it lists pipelines, input sets, and pipeline executions. (CDS-73216)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed a delegate-selector issue in Jira, ServiceNow and Bamboo build steps. When a delegate selector was added at the step/stage/pipeline level, it did not override the selector coming from the connector. This meant that both the delegate selectors were getting checked during the step execution. With this fix, if any selector is at the step/stage/pipeline level, it overrides the selector coming from the connector. This is the default behavior in every other step type. (CDS-71025)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed an issue where Azure webhook triggers did not work as expected because the delegate could not parse repository URLs in the format `https://{ORG}@dev.azure.com/{ORG}/{PROJECT}/_git/{REPO}`. With this fix, the delegate can parse these URLs and Azure webhook triggers work as expected. (CDS-59023)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ##### Hotfixes
 
@@ -435,15 +435,15 @@ This release does not have Early Access features.
 
 - Upgraded the Helm binary from version 3.8 to 3.12. (CDS-58931)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Upgraded go-template binary to version 0.4.3, which uses Go version 1.20. (CDS-58919)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Removed Helm version 3.1 from delegates with an immutable image type (image tag `yy.mm.xxxxx`). (CDS-58892, ZD-47520, ZD-48553)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 
 ##### Early access
@@ -475,7 +475,7 @@ This release does not have Early Access features.
 
 - Fixed an issue where users could not use the Blue Green Stage Scale Down step with a manifest kind that was not present in the Kind list used by Harness. Now, the Blue Green Stage Scale Down Step will not fail for unknown manifest kinds. (CDS-74259, ZD-47431)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - Fixed an issue that resulted in failures when deploying a Tanzu service with a `vars.yaml` file. (CDS-74163, ZD-47412)
 
@@ -498,47 +498,47 @@ This release does not have Early Access features.
       - route: route2.apps.tas-harness.com
   ```
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - Fixed an issue where the Terraform Plan step would exit with code 0 even when there was a change as per the generated plan. This would happen when using the **Export JSON representation of Terraform Plan** option. Now, the step exits with the correct code (2) based on the `terraform plan` command. (CDS-74144, ZD-47379)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 -  Fixed an issue where command execution logs were incomplete even though the pipeline ran successfully. This issue was observed when using Command steps in SSH or WinRM deployments. (CDS-74042, ZD-46904)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - Fixed a Nexus Artifact issue where a fetch would time out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed an issue where the Override Image Connector did not properly configure the image path in the container step. This issue has been resolved. The Override Image Connector now correctly configures the image path, including the host name. (CDS-73727, ZD-43089, ZD-46916, ZD-47578, ZD-47716)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed an issue where WinRM deployments would not honor the configured timeout. For example, the step would time out by default in 30 minutes even when the configured timeout was 1 day. Now, the WinRM session timeout is set to the higher of the default and configured timeouts. (CDS-73641, ZD-46904, ZD-48180)
 
   This fix is behind the feature flag `DISABLE_WINRM_COMMAND_ENCODING`. Contact [Harness Support](mailto:support@harness.io) to enable this fix.
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed an issue where Helm deployment steps timed out after the initial installation/upgrade phase, preventing the execution of a Helm rollback step. (CDS-73264, ZD-46163)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Previously, when a fixed value was specified to a pipeline build, the Service step used pattern matching to verify the value.  Now, the Service step verifies the value by using an exact match. (CDS-72911)
 
   For example, suppose the **Jenkins Build** field is set to 1. Previously, the check would pass even if build 1 was absent and build 41 was present. With this fix, the check passes only if build 1 is present. 
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The `kubectl` command now includes retry logic to handle connectivity issues. (CDS-72869)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed an issue in Artifactory deployments where the **Artifact Path** pull-down menu would populate even when the Artifactory connector failed to process a regular expression. Now, when a regex is supplied to an artifact tag in the pipeline for a service, the **Artifact Path** menu populates correctly based on the regex. (CDS-72737, ZD-46236)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 
 
@@ -650,7 +650,7 @@ This release does not include early access features.
 
 - Support for expressions in remote Terraform Var files hosted on Github and S3. (CDS-68612, ZD-43917, ZD-45714)
   
-  This feature requires the latest Delegate version, 79904, to display console logs during execution correctly.
+  This feature requires the latest Delegate version, 23.07.79904, to display console logs during execution correctly.
 
 
 
@@ -669,29 +669,29 @@ This release does not include early access features.
 
 - The **Helm Deploy** step timed out during the Helm steady state check and Helm rollback failed to initialize. (CDS-73264)
 
-  This is now fixed and the rollback does execute. Please make sure your Harness delegate(s) are on delegate version 80104 to use these changes.
+  This is now fixed and the rollback does execute. Please make sure your Harness delegate(s) are on delegate version 23.08.80104 to use these changes.
 
 - The `<+configFile.getAsBase64()>` expression not resolving correctly when the content had new lines. (CDS-73424)
   
   The issue occurred with newline characters while encoding config files. This is fixed and Harness now replaces newline characters with unicode.
 
-  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The sort order on the pipelines list page was incorrect. (CDS-73216)
   
   Now, Harness supports case-insensitive sorting for pipelines, input sets, and pipeline executions.
 
-  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 - Artifactory artifact source **Artifact Name** regex value was not working correctly. (CDS-73150)
   
   Harness has added support for regex values for generic type Artifactory artifacts.
 
-  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 - Cron triggers artifact setting failed when modified regex did not match any build. (CDS-72589, ZD-46323)
   
   Harness initially modifies the regex to see if it matches any build. The trigger was failing if it did not match. Now, if the regex does not match any build, Harness will use the original regex.
 
-  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Deserialization of `isGitDefaultBranch` in `ScmGitMetadata` was failing in platform service. (CDS-73805)
   
@@ -1013,7 +1013,7 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
   For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
 
-  Harness Delegate version 79503 is required for this feature.
+  Harness Delegate version 23.06.79503 is required for this feature.
 
 - Use labels for matrix naming strategy. (CDS-68030)
 
@@ -1036,13 +1036,13 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
   During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
-  Harness Delegate version 79503 is required for this feature.
+  Harness Delegate version 23.06.79503 is required for this feature.
 
 - Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
 
   This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`.
 
-  Harness Delegate version 79503 is required for this feature.
+  Harness Delegate version 23.06.79503 is required for this feature.
 
 ##### Fixed issues
 
@@ -1095,7 +1095,7 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
 ##### Harness Manager delegate fixed issues
 
-The fixed issues below are available with version 79503 and do not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
+The fixed issues below are available with version 23.06.79503 and do not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
 
 - Fixed an issue where the `eventPayload` expressions were not resolving when rerunning a failed pipeline that was previously fired by using a trigger. (CDS-70559)
 
@@ -1225,7 +1225,7 @@ This release does not include any early access features.
 
 - Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
 
-  The Harness Delegate version 79307 is required for this feature.
+  The Harness Delegate version 23.05.79307 is required for this feature.
 
   For more information, go to [Schedule pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/).
 
@@ -1251,7 +1251,7 @@ This release does not include any early access features.
 - You can now use the expression, [`<+lastPublished.tag>`](/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions) if you want to deploy the last successfully published artifact version. (CDS-53512)
 - Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
 
-  The Harness Delegate version 79307 is required for this feature.
+  The Harness Delegate version 23.05.79307 is required for this feature.
 
   The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions.
 
@@ -1275,7 +1275,7 @@ This release does not include any early access features.
 
   Previously, triggers used the round robin algorithm to select any available delegate within a project or account. Now, the delegate-based trigger polling selects the same delegate you used in the connectors for triggers.
 
-  The Harness Delegate version 79307 is required for this feature.
+  The Harness Delegate version 23.05.79307 is required for this feature.
 
 ##### Early Access
 
@@ -1349,7 +1349,7 @@ This release does not include any early access features.
   This issue is fixed by adding descriptive error messages for the ASG Blue Green deployment Rollback step.
 
 - Fixed an issue where the delegate select field is empty in the UI even if a delegate is present in the YAML. (CDS-58188)
-- Fixed an issue where the expressions of tags were not rendered properly. This issue is fixed in the Harness Delegate version 79307. (CDS-68703, ZD-43797)
+- Fixed an issue where the expressions of tags were not rendered properly. This issue is fixed in the Harness Delegate version 23.05.79307. (CDS-68703, ZD-43797)
 - Executions were failing with `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]` error message. (CDS-68293, ZD-43753, ZD-43769)
 
   The Fabric8 library used by Harness is upgraded from version 5.x to 6.x. Harness was explicitly using snake.yaml version 2.x due to vulnerabilities present in the 1.x version.
@@ -1364,22 +1364,22 @@ This release does not include any early access features.
   - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
   - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
 
-  This issue is fixed in the Harness Delegate version 79307. This change does not create any behavioral changes.
+  This issue is fixed in the Harness Delegate version 23.05.79307. This change does not create any behavioral changes.
 
 - The access denied exception was saving the OAuth secret in the Harness Source Code Manager (SCM) user profile. (CDS-68144)
 
-  This issue is fixed in the Harness Delegate version 79307 by passing the context correctly from the SCM service to the Git service.
+  This issue is fixed in the Harness Delegate version 23.05.79307 by passing the context correctly from the SCM service to the Git service.
 
 - Pipelines with multi-level templates displayed Java errors because a secret was referenced by another secret. (CDS-68094)
 
-  This issue is fixed in the Harness Delegate version 79307 by improving the error messages.
+  This issue is fixed in the Harness Delegate version 23.05.79307 by improving the error messages.
 
-- Fixed an issue in the the Harness Delegate version 79307 by eliminating NPE during ASG pipeline execution. (CDS-59383)
+- Fixed an issue in the the Harness Delegate version 23.05.79307 by eliminating NPE during ASG pipeline execution. (CDS-59383)
 - The Canary Delete step during rollback skipped deleting Canary resources if the forward Canary Delete step expired.(CDS-58704)
 
   Canary Delete step rely on the Harness release history when Canary Deployment step expires. Harness release history wasn't getting updated, and wasn't made available for the Canary Delete step during rollback because the Watch API call request wasn't getting interrupted properly.
 
-  This issue was fixed in the Harness Delegate version 79307. Now the Canary Delete step is properly deleting canary workloads when the forward Canary Deployment step expires.
+  This issue was fixed in the Harness Delegate version 23.05.79307. Now the Canary Delete step is properly deleting canary workloads when the forward Canary Deployment step expires.
 
 - Fixed an issue by adding support for retrying `sockettimeoutExceptions` as they can occur due to intermittent issues during a Kubernetes deployment. (CDS-57688)
 
