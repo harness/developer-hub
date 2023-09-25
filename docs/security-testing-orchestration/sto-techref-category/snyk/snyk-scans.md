@@ -2,7 +2,7 @@
 title: Run Snyk scans and ingest results
 description: Use Snyk to scan repositories and container images  
 sidebar_position: 20
-redirect_from: /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans
+redirect_from: /docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans
 ---
 
 This workflow describes how to ingest Snyk scan results into a Harness pipeline. STO supports the following scan approaches for the following Snyk products:
