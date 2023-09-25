@@ -158,6 +158,11 @@ To use custom sequencing, do the following:
 
 ### Chart Versions tab
 
+:::note Important Notes
+- This information appears only for services that were deployed using Helm charts. 
+- Currently, this feature is behind the Feature Flag `CDC_SERVICE_DASHBOARD_REVAMP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
  The **Chart Versions** tab shows tiles for each Helm chart used to deploy the service (and a tile for any non-Helm deployments). Each tile shows the instances/artifact, environment, and latest deployment time. 
 
 <docimage path={require('/docs/continuous-delivery/monitor-deployments/static/cds-77310-charts-tab-callouts.png')} width="100%" height="100%" title="Click to view full size image" />

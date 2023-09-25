@@ -34,12 +34,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   - The Pipeline Executions table for the service now shows the Helm chart version in the drilldown information for that execution. 
 
-  :::note
-
-  This information appears only for services that were deployed using Helm charts. 
-
+ 
+  :::note Important Notes
+  - This information appears only for services that were deployed using Helm charts. 
+  - Currently, this feature is behind the Feature Flag `CDC_SERVICE_DASHBOARD_REVAMP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
   :::
-
 ## August 22, 2023
 
 ### Continuous Delivery, version 80307
