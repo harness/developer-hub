@@ -219,7 +219,7 @@ For more information on this feature, go to the documentation on [Output variabl
 
   This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. 
   
-  Harness Delegate version 79503 is required for this feature.
+  Harness Delegate version 23.06.79503 is required for this feature.
 
 #### May 23, 2023, version 79306
 
