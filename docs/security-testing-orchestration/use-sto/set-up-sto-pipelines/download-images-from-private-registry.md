@@ -109,6 +109,7 @@ Do the following if you're using a scanner template rather than a generic **Secu
 
    ![](../static/override-image-connector.png)
 
+
 3. If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
 
    1. Open the scanner step and expand **Additional Configuration**. 
@@ -152,6 +153,7 @@ Do the following if you're using a generic **Security** step for you scan:
    1. Open the scanner step and expand **Additional Configuration**. 
    
    2. Set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
+
 
 ## YAML example for configuring STO to download images from a private registry
 
