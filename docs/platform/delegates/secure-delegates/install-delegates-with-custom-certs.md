@@ -370,7 +370,7 @@ spec:
 For Docker delegates, certificates are in `/opt/harness-delegate/<JDK_folder>/lib/security/cacerts`.
 
 :::info note
-The `<JDKf_folder>` location depends on the delegate.
+The `<JDK_folder>` location depends on the delegate.
 :::
 
 To install a Docker delegate with self-signed certificates, do the following:
