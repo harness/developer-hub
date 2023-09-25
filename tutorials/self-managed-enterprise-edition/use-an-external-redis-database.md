@@ -230,7 +230,12 @@ To test your connectivity using, do the following:
 After you've tested your connectivity, you're ready to configure your Harness environment.
 
 To configure your Harness environment and Helm chart, do the following:
-
+- Create a secret in the namespace where harness is installed with following data
+   ```yaml
+   data:
+     root-password: <redis-password>
+     root-username: ""
+   ```
 - Add the following override entries to your newly-installed Harness Redis instance.
 
    ```yaml
@@ -241,6 +246,6 @@ To configure your Harness environment and Helm chart, do the following:
          hosts:
          - <YOUR_INTERNAL_ENDPOINT_AND_PORT>
          secretName: ""
-         userKey: "YOUR_REDIS_USERNAME"
-         passwordKey: "YOUR_REDIS_PASSWORD"
+         userKey: "root-username"
+         passwordKey: "root-password"
    ```
