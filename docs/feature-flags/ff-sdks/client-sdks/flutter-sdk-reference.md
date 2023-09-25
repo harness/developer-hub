@@ -34,7 +34,7 @@ You should read and understand the following:
 
 The current version of this SDK is **2.0.0.**
 
-## Flutter and Dart Requirements
+## Flutter and Dart requirements
 
 To use version 2 and greater of this SDK, make sure you:
 
@@ -59,12 +59,13 @@ To use version 1 and earlier versions of this SDK, make sure you:
 To check if you have installed the prerequisites, run the `flutter doctor` command. 
 :::
 
-## Install the SDK 
+## Install the SDK for Flutter Web
+
+To install the SDK, you must add the dependency, import the required packages, and then embed the JavaScript SDK.
 
 ### Add the dependency
 
 Begin by adding the Feature Flag Flutter SDK dependency to your pubspec.yaml file:
-
 
 ```
 ff_flutter_client_sdk: ^2.1.0
@@ -80,13 +81,11 @@ import 'package:ff_flutter_client_sdk/CfConfiguration.dart';
 import 'package:ff_flutter_client_sdk/CfTarget.dart';
 ```
 
-### SDK Installation for Flutter Web
+### Embed the JavaScript SDK
 
-If you're targeting a Flutter web application:
+Be sure that you have added the dependency and imported the required packages before you begin this step. 
 
-1. Follow the steps mentioned above to set up the SDK in your project.
-
-2. Embed our JavaScript SDK by adding the following script tag to the `<head>` section of your web page:
+1. Embed our JavaScript SDK by adding the following script tag to the `<head>` section of your web page:
 ```html
   <script src="https://sdk.ff.harness.io/1.19.2/sdk.client-iife.js"></script>
 ```
