@@ -1,5 +1,5 @@
 import { MODULES } from "../../../constants";
-import  { CardItem } from "../../Certifications/CertCard";
+import { CardItem } from "../../Certifications/CertCard";
 // Define the certs section cards here
 export const certifications: CardItem[] = [
   {
@@ -25,6 +25,14 @@ export const certifications: CardItem[] = [
       "Drastically reduce rollbacks, deploy faster with less risk,spend more time building and coding, and less time fixing production with Progressive Delivery.",
     link: "/certifications/feature-flags",
     numberOfCerts: 1,
+  },
+  {
+    title: "Continuous Delivery & GitOps Certifications",
+    module: MODULES.cd,
+    description:
+      "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way.",
+    link: "/certifications/continuous-delivery",
+    numberOfCerts: 3,
   },
   // {
   //   title: "Cloud Cost Management Certifications",
