@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-09-19T10:00
+date: 2023-09-25T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,13 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: September 19, 2023
+## Latest: September 25, 2023
+
+### Service Reliability Management, version 1.1.3
+
+- SRM dashboards now include comprehensive data for composite Service Level Objectives (composite SLOs). This enhancement offers users a holistic view of both simple and composite SLO performance. (SRM-15419)
+
+## September 19, 2023
 
 ### Harness Platform, version 80711
 
