@@ -44,21 +44,21 @@ You can create as many as 10,000 Perspectives in a single account.
 
 #### How are costs presented in perspectives when there are expenses that are not linked to the chosen grouping criteria?
 
-CCM displays `No` followed by the selected `<group by>` for costs that do not have any correlation with the specified `<group by>` criteria.
+CCM displays `No` followed by the selected `<group by>` for costs that do not have any correlation with the specified `<group by>` criterion.
 For instance, if a perspective encompasses rules for both AWS and GCP, and the grouping is based on GCP > SKU, any expenses unrelated to GCP SKUs will be displayed as "No SKUs."
 For more information, go to [Create Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#review-no-accountprojectetc).
 
 #### How can I retrieve details about the compute generating the cost within a perspective that is managed by a cost category rule? Additionally, how can I obtain information about its uptime, memory utilization, and CPU usage?
 
-In the context of cost categories, we currently provide information through two columns: `total cost` and `cost trend`. However, users have the option to delve deeper into workload details, allowing them to access information such as the start and stop times of individual pods.
+In the context of cost categories, CCM currently provides information in two columns: `Total cost` and `Cost trend`. However, users have the option to delve deeper into workload details, allowing them to access information such as the start and stop times of individual pods.
 
 #### How are costs calculated, and is there a specific formula for it?
 
-Indeed, CCM offers a formula to illustrate the calculation process. For a detailed explanation, please consult the [documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/key-concepts/) provided.
+Indeed, CCM offers a formula to illustrate the calculation process. For a detailed explanation, go to [documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/key-concepts/).
 
 #### Is it possible to modify the formula for calculations, specifically for CPU, memory, or idle costs?
 
-No, the formula is predetermined and cannot be altered. However, if you are utilizing Kubernetes on bare metal infrastructure (excluding GCP, AWS, or Azure), you do have the option to adjust the pricing for compute calculations related to nodes and pods. For more details, please refer to the [documentation](https://developer.harness.io/docs/faqs/cloud-cost-management-faqs/#hows-cost-calculated-for-k8s-on-cloud-providers-and-k8s-on-bare-metal) provided.
+No, the formula is predetermined and cannot be altered. However, if you are utilizing Kubernetes on bare metal infrastructure (excluding GCP, AWS, or Azure), you do have the option to adjust the pricing for compute calculations related to nodes and pods. For more details, go to [How's the cost calculated for K8s on CSPs and K8s on bare metal?](https://developer.harness.io/docs/faqs/cloud-cost-management-faqs/#hows-cost-calculated-for-k8s-on-cloud-providers-and-k8s-on-bare-metal).
 
 #### How is cost allocation determined? Is it based on actual usage, requests, limits, or the higher of requests or actual usage?
 
