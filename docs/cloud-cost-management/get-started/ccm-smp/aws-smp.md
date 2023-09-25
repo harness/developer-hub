@@ -665,11 +665,11 @@ ccm:
       S3_SYNC_CONFIG_REGION: <S3_SYNC_CONFIG_REGION> [AWS Setup - Create S3 buckets step - Use region from here]
     clickhouse:
       enabled: true
-  # -- To enable the use of a proxy for AWS S3 sync, set the `ccm.batch-processing.cliProxy.enabled` parameter to true.
-  # -- Set the `ccm.batch-processing.cliProxy.host` parameter by specifying the proxy host or IP address (for example, localhost, 127.0.0.1)
-  # -- Set the `ccm.batch-processing.cliProxy.port` parameter by specifying the proxy port. It takes an integer value.
-  # -- Set the `ccm.batch-processing.cliProxy.username` parameter and `ccm.batch-processing.cliProxy.password` parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
-  # -- Set the `ccm.batch-processing.cliProxy.protocol` parameter by specifying HTTP or HTTPS depending on the proxy configuration.
+    # -- To enable the use of a proxy for AWS S3 sync, set the `ccm.batch-processing.cliProxy.enabled` parameter to true.
+    # -- Set the `ccm.batch-processing.cliProxy.host` parameter by specifying the proxy host or IP address (for example, localhost, 127.0.0.1)
+    # -- Set the `ccm.batch-processing.cliProxy.port` parameter by specifying the proxy port. It takes an integer value.
+    # -- Set the `ccm.batch-processing.cliProxy.username` parameter and `ccm.batch-processing.cliProxy.password` parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
+    # -- Set the `ccm.batch-processing.cliProxy.protocol` parameter by specifying HTTP or HTTPS depending on the proxy configuration.
     cliProxy:
       enabled: false
       host: localhost 
@@ -979,5 +979,5 @@ Increase TimescaleDB to 100Gi: `kubectl edit pvc wal-volume-harness-timescaledb-
 
 ## Next steps
 
-- [Kubernetes connector setup](../../4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/k8s-connector-autostopping.md)
-- [AWS connector setup](../../4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md)
+- [Kubernetes connector setup](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes#create-ccm-connector)
+- [AWS connector setup](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#connect-ccm-to-your-aws-account)
