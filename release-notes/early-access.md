@@ -21,6 +21,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - The Services Dashboard includes new support for Helm Chart deployments. (CDS-73310)
 
+  :::note Important Notes
+  
+  - This information appears only for services that were deployed using Helm charts. 
+  
+  - Currently, this feature is behind the Feature Flag `CDC_SERVICE_DASHBOARD_REVAMP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+  
+  :::
+
   This dashboard includes the following enhancements:
 
   - Tiles in the service overview (**Environments** tab) now show the Helm Chart versions (if any) deployed in each environment.
@@ -34,11 +42,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   - The Pipeline Executions table for the service now shows the Helm chart version in the drilldown information for that execution. 
 
- 
-  :::note Important Notes
-  - This information appears only for services that were deployed using Helm charts. 
-  - Currently, this feature is behind the Feature Flag `CDC_SERVICE_DASHBOARD_REVAMP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-  :::
 ## August 22, 2023
 
 ### Continuous Delivery, version 80307
