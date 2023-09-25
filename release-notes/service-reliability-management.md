@@ -33,7 +33,7 @@ This release does not include any early access features.
 
 - FireHydrant notifications were not being triggered as expected for monitored services without any configured Service Level Objectives (SLOs). (SRM-15458)
 
-  This issue has been successfully resolved. Firehydrant notifications will now be triggered for all monitored services, irrespective of whether SLOs are configured.
+  This issue has been resolved. FireHydrant notifications will now be triggered for all monitored services, irrespective of whether SLOs are configured.
 
 
 ### Hotfixes
