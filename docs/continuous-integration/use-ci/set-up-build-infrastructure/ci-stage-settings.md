@@ -119,7 +119,7 @@ The following **Advanced** settings are available for the **Kubernetes** infrast
 
 ### Volumes
 
-You can add a list of volumes you want to mount onto the pod that is running the stage.
+You can add a list of volumes you want to mount onto the pod where the stage runs.
 
 * **Mount Path:** Enter the path to the volume.
 * **Type:** Select **Empty Directory**, **Host Path**, or **Persistent Volume Claim**.
@@ -218,11 +218,11 @@ If you enable **Run as Non-Root**, then you must:
 :::
 
 * **Run as Non-Root:** Enable this option to run all steps as a non-root user. If enabled, you must specify a default user ID for all containers in the **Run as User** field.
-* **Run as User:** Specify a user ID, such as `1000`, to use for all containers in the pod. You can also set **Run as User** values for individual steps. If you set **Run as User** on a step, it overrides the build infrastructure **Run as User** setting.
+* **Run as User:** Specify a user ID, such as `1000`, to use for all containers (steps) in the pod (stage). You can also set **Run as User** values for individual steps. If you set **Run as User** on a step, it overrides the build infrastructure **Run as User** setting.
 
 ### Priority Class
 
-Set the stage pod's [`PriorityClass`](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass) in case resources run out on the host node. You can specify a `PriorityClass` from your build infrastructure or use the predefined classes `system-cluster-critical` or `system-node-critical`, which ensure that the stage is always scheduled first.
+Set the Build stage pod's [`PriorityClass`](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass) in case resources run out on the host node. You can specify a `PriorityClass` from your build infrastructure or use the predefined classes `system-cluster-critical` or `system-node-critical`, which ensure that the stage is always scheduled first.
 
 If you leave this field blank, the `PriorityClass` is set to the `globalDefault`, if your infrastructure has one defined, or `0`, which is the lowest priority.
 
@@ -232,7 +232,7 @@ A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-evict
 
 ### Tolerations
 
-A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), which allow (but do not require) the pods to schedule onto nodes with matching taints.
+A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), which allow (but do not require) Build stage pods to schedule onto nodes with matching taints.
 
 ### Host Names
 
