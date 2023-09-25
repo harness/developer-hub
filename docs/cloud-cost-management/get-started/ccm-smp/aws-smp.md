@@ -18,7 +18,7 @@ You need to perform the following tasks to set up CCM for AWS:
 1. [Add a new user for programmatic access](#add-a-new-user-for-programmatic-access).
 2. [Create Amazon S3 Bucket](#create-amazon-s3-bucket).
 3. [Edit the CF template](#edit-the-cf-template).
-4. [Upload CF template to S3 bucket](#upload-cf-template-to-s3-bucket).
+4. [Upload the CF template to S3 bucket](#upload-cf-template-to-s3-bucket).
 5. [Deploy workloads via Helm charts](#deploy-workloads-via-helm-charts).
    
 ## Add a new user for programmatic access
