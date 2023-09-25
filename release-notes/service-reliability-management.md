@@ -22,7 +22,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
-SRM Dashboards now include comprehensive data for Composite Service Level Objectives (Composite SLOs). This enhancement gives you a holistic view of both Simple and Composite SLO performance. (SRM-15419)
+SRM dashboards now include comprehensive data for composite Service Level Objectives (composite SLOs). This enhancement gives you a holistic view of both simple and composite SLO performance. (SRM-15419)
 
 
 ### Early access features
