@@ -260,7 +260,7 @@ You can also view the same information from a service perspective.
 
 ## Conclusion
 
-Thanks for reading this Developer role ramp-up guide! If you have any feedback or suggestions on how to improve it, please [reach out to us](support@harness.io).
+Thanks for reading this Developer role ramp-up guide! If you have any feedback or suggestions on how to improve it, please [reach out to us](mailto:support@harness.io).
 
 
 
