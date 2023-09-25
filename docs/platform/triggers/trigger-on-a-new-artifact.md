@@ -64,8 +64,15 @@ The following artifact providers are supported behind the feature flag `CD_TRIGG
 
 ## Important notes
 
-* If more than one artifact is collected during the polling interval (one minute), only one deployment will be started and will use the last artifact collected.
-* The trigger is executed based on **file names** and not metadata changes.
+#### One Artifact Triggers Deployment
+If more than one artifact is collected during the polling interval (one minute), only one deployment will be started and will use the last artifact collected.
+
+#### All Artifacts Trigger Deployment
+Currently, this feature is behind the feature flag `SPG_TRIGGER_FOR_ALL_ARTIFACTS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. All the artifacts collected during the polling interval will trigger a deployment, with one deployment triggered for each artifact collected.
+
+#### Trigger is based on File Name
+The trigger is executed based on **file names** and not metadata changes.
+
 * Do not trigger on the **latest** tag of an artifact, such as a Docker image. With latest, Harness only has metadata, such as the tag name, which has not changed, and so Harness does not know if anything has changed. The trigger will not be executed.
 * In Harness, you can select who is able to create and use triggers within Harness, but you must use your repository's RBAC to control who can add the artifacts or initiate the events that start the Harness trigger.
 * Whenever you create a trigger for the first time, Harness recommends submitting a tag or pushing an artifact to verify its functionality. By doing this, the trigger will execute and the pipeline will run as expected when subsequent tags are pushed.
