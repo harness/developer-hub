@@ -17,7 +17,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Continuous Delivery, version 80711
 
-- Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-67121)
+- Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is behind the Feature Flag `POST_PROD_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-67121)
 
 - The Services Dashboard includes new support for Helm Chart deployments. (CDS-73310)
 
@@ -31,7 +31,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   This dashboard includes the following enhancements:
 
-  - Tiles in the service overview (**Environments** tab) now show the Helm Chart versions (if any) deployed in each environment.
+  - Tiles in the service overview (**Environments** tab) now show the Helm chart versions (if any) deployed in each environment.
 
     <docimage path={require('./static/cds-73310-environments-and-groups-tiles-callouts.png')} width="40%" height="40%" title="Click to view full size image" /> 
 
