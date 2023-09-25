@@ -233,7 +233,7 @@ To configure your Harness environment and Helm chart, do the following:
 - Create a secret in the namespace where harness is installed with following data
    ```yaml
    data:
-     root-password: <redis-password>
+     root-password: <REDIS_PASSWORD>
      root-username: ""
    ```
 - Add the following override entries to your newly-installed Harness Redis instance.
@@ -245,7 +245,7 @@ To configure your Harness environment and Helm chart, do the following:
          installed: false
          hosts:
          - <YOUR_INTERNAL_ENDPOINT_AND_PORT>
-         secretName: "redis-secret"
-         userKey: "root-username"
-         passwordKey: "root-password"
+         secretName: "REDIS_SECRET"
+         userKey: "ROOT_USERNAME"
+         passwordKey: "ROOT_PASSWORD"
    ```
