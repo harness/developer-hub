@@ -22,34 +22,34 @@ Triggers in a Harness Continuous Delivery (CD) pipeline are used to automaticall
 Verify the following:
 
 - **Existing Harness CD pipeline.** If you are a new user or haven't created a pipeline yet, then kindly check our [CD tutorials](/tutorials/cd-pipelines) to create one.
-- **Existing Docker connector with Credential Type Credential Type `Username and Password`**.
-    - If you are a new user or haven't created a Docker connector yet, then kindly follow the steps in [Docker Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) to create new one.
+- **Existing Docker connector with Credential Type `Username and Password`**.
+    - Create a Docker connector if you don't have one yet. For more information, go to [Docker Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 
 ## Implement a trigger using Docker Hub Artifact
 
 
-1. Log into [Harness](https://app.harness.io/).
+1. Log in to your Harness instance. 
 2. Select **Projects**, and then select **Default Project**.
 
     :::caution
 
-    For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
+    For the pipeline to run successfully, you must follow all of the following steps as they are, including the naming conventions.
 
     :::
 3. In **Default Project**, select **Pipelines**.
     - Select an existing pipeline or create a new pipeline by following any of our CD tutorials.
-    - Choose the CD Stage
+    - Choose the CD stage.
 
 ### Let's Start by Making the Modifications to the CD Stage to Implement Docker Registry Artifact Trigger
 
 4. Now, in the **Harness Service** to the CD stage, you can set the artifact tag to use in Artifacts Details.
-    - Go to **Service** tab and click on edit icon of the Service where we want to add Artifact details.
+    - Go to **Service** tab and click on edit icon of the Service where you want to add Artifact details.
     - Under **Artifacts**, ensure you have selected Artifact Repository Type **Docker Registry**.
-    - Click **Continue** and choose the created **Docker Connector**
-    - In the next step, enter a name for this artifact and enter the name of the artifact image you want to deploy.
-        - Now for the **Tag**, change it to type **Expressions** and type `<+trigger.artifact.build>`
+    - Click **Continue** and choose the created **Docker Connector**.
+    - In the next step, enter a name for this artifact, and enter the name of the artifact image you want to deploy.
+        - For the **Tag**, change it to type **Expressions** and enter `<+trigger.artifact.build>`.
         - With `<+trigger.artifact.build>`, the pipeline will deploy the artifact image version that initiated the trigger.
-    - To deploy this artifact image, you just need to reference it in the stage's service definition in your manifests using the expression `<+artifact.image>`. For more details, go to [Add Container Images as Artifacts for Kubernetes Deployments](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/).
+    - To deploy this artifact image, you simply need to reference it in the stage's service definition in your manifests using the expression `<+artifact.image>`. For more details, go to [Add Container Images as Artifacts for Kubernetes Deployments](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/).
 
 ### Create a Docker Registry Artifact Trigger
 
@@ -57,7 +57,14 @@ Verify the following:
     - Select **New Trigger** and choose **Docker Registry** under **Artifact**.
     - Now, toggle to **YAML** to use the YAML editor.
     - Copy the contents of [docker-trigger.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/triggers/docker-trigger.yml) and paste it into the YAML editor.
-    - In the YAML, replace **ORGANIZATION_ID**, **PROJECT_ID**, **PIPELINE_ID**, **DOCKER_CONNECTOR**, **MAINTAINER/IMAGE**, **CD_STAGE_ID** and **ARTIFACT_ID** with the organization identifier, project identifier, pipeline identifier, Docker connector identifier, name of the artifact you want to deploy (eg: `library/nginx`), CD Stage identifier in the pipeline and the Artifact identifier which you'll get from the Service associated with the Pipeline.
+    - In the YAML, replace the following fields:
+      -  **ORGANIZATION_ID** = your organization identifier
+      -  **PROJECT_ID** = your project identifier
+      -  **PIPELINE_ID** = your pipeline identifier
+      -  **DOCKER_CONNECTOR** = your Docker connector identifier
+      -  **MAINTAINER/IMAGE** = the name of the artifact you want to deploy (eg: `library/nginx`)
+      -  **CD_STAGE_ID** = the CD Stage identifier in the pipeline
+      -  **ARTIFACT_ID** the Artifact identifier, which you'll get from the Service associated with the Pipeline.
     - Finally, select **Create Trigger** and observe that the status is in _pending_ state as Harness starts collecting the tags information from the registry.
 
         <docimage path={require('./static/triggers/docker-trigger.png')} width="80%" height="80%" title="Click to view full size image" />
