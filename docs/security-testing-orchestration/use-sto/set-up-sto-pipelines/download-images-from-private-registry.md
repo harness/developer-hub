@@ -107,7 +107,7 @@ Do the following if you're using a scanner template rather than a generic **Secu
 
 2. Under **Advanced**, go to **Override Image Connector (optional)** and select the connector to your private registry. You might need to scroll down to see this option.
 
-   ![](./static/override-image-connector.png)
+   ![](../static/override-image-connector.png)
 
 3. If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
 
