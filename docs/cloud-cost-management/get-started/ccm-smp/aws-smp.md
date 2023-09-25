@@ -24,7 +24,7 @@ You need to perform the following tasks to set up CCM for AWS:
 ## Add a new user for programmatic access
 
 1. Sign in to your [AWS console](https://console.aws.amazon.com/).
-2. Create a new user. For example,` harness-ccm-service-user`. For more information, go to [Adding a user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
+2. Create a new user. For example, `harness-ccm-service-user`. For more information, go to [Adding a user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
 3. Set up programmatic user access keys by using the policy given below.
    
 <details>
@@ -658,6 +658,8 @@ ccm:
   clickhouse:
       enabled: true
   batch-processing:
+    additionalConfigs:
+      AWS_CUR_BILLING: false
     cloudProviderConfig:
       S3_SYNC_CONFIG_BUCKET_NAME: <S3_SYNC_CONFIG_BUCKET_NAME> [AWS Setup - bucket name from here 'harness-ccm-service-data-bucket-<accountid>']
       S3_SYNC_CONFIG_REGION: <S3_SYNC_CONFIG_REGION> [AWS Setup - Create S3 buckets step - Use region from here]
