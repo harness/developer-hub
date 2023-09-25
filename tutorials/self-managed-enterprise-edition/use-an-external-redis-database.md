@@ -245,7 +245,7 @@ To configure your Harness environment and Helm chart, do the following:
          installed: false
          hosts:
          - <YOUR_INTERNAL_ENDPOINT_AND_PORT>
-         secretName: ""
+         secretName: "redis-secret"
          userKey: "root-username"
          passwordKey: "root-password"
    ```
