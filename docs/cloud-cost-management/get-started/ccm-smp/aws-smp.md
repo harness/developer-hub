@@ -555,7 +555,7 @@ Resources:
 ```
 </details>
 
-## Upload CF template to S3 bucket
+## Upload the CF template to S3 bucket
 
 Upload the YAML template to S3 bucket `harness-ccm-service-template-bucket-<accountid>`.
 1. Go to **Amamzon S3** > **ccm-service-template-bucket**.
@@ -632,7 +632,7 @@ global:
   # -- To enable the use of a proxy for AWS SDK calls to services such as organization, CUR (Cost and Usage Report), CE (Cost Explorer), and IAM (Identity and Access Management), set the `global.proxy.enabled` parameter to true.
   # -- Set the `global.proxy.host` parameter by specifying the proxy host or IP address (for example, localhost, 127.0.0.1)
   # -- Set the `global.proxy.port` parameter by specifying the proxy port. It takes an integer value.
-  # -- Set the `global.proxy.username` parameter and global.proxy.password parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
+  # -- Set the `global.proxy.username` parameter and `global.proxy.password` parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
   # -- Set the `global.proxy.protocol` parameter by specifying http or https depending on the proxy configuration.
   proxy:
     enabled: false
@@ -641,7 +641,7 @@ global:
     username: ""
     password: ""
     protocol: http
-  # -- By default, the AWS SDK uses the `us-east-1` endpoint URLs as the default for calls to STS (Security Token Service), ECS (Elastic Container Service), and CloudWatch services. However, if there is a need to specify a different region, you have the option to customize the endpoint URLs using the following configuration:
+  # -- CCM uses `us-east-1` as the default region where the respective endpoint URLs are used for STS (Security Token Service), ECS (Elastic Container Service), and CloudWatch services. However, if there is a need to specify a different region, you have the option to customize the endpoint URLs using the following configuration:
   # -- Set the `global.awsServiceEndpointUrls.enabled` parameter to true to enable endpoint URLs.
   # -- Set a valid AWS region in the `global.awsServiceEndpointUrls.endPointRegion.host` parameter to specify the region where this endpoint is accessible.
   # -- Set the the STS (Security Token Service) endpoint URL in the `global.awsServiceEndpointUrls.stsEndPointUrl` parameter.
@@ -663,6 +663,11 @@ ccm:
       S3_SYNC_CONFIG_REGION: <S3_SYNC_CONFIG_REGION> [AWS Setup - Create S3 buckets step - Use region from here]
     clickhouse:
       enabled: true
+  # -- To enable the use of a proxy for AWS S3 sync, set the `ccm.batch-processing.cliProxy.enabled` parameter to true.
+  # -- Set the `ccm.batch-processing.cliProxy.host` parameter by specifying the proxy host or IP address (for example, localhost, 127.0.0.1)
+  # -- Set the `ccm.batch-processing.cliProxy.port` parameter by specifying the proxy port. It takes an integer value.
+  # -- Set the `ccm.batch-processing.cliProxy.username` parameter and `ccm.batch-processing.cliProxy.password` parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
+  # -- Set the `ccm.batch-processing.cliProxy.protocol` parameter by specifying HTTP or HTTPS depending on the proxy configuration.
     cliProxy:
       enabled: false
       host: localhost 
@@ -969,3 +974,8 @@ SMTP_USERNAME: <SMTP_USERNAME>
 :::important important
 Increase TimescaleDB to 100Gi: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. Features like Recommendations and Anomalies within CCM services use it.
 :::
+
+## Next steps
+
+- [Kubernetes connector setup](../../4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/k8s-connector-autostopping.md)
+- [AWS connector setup](../../4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md)
