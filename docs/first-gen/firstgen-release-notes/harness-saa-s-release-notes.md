@@ -50,11 +50,11 @@ This release does not include early access features.
 
 * Fixed an issue where using multiple HTTP Helm chart repositories could lead to an increase in CPU utilization on the delegate due to background validation tasks for the Harness HTTP Helm Repo connector. This was caused by running Helm repository updates during the validation tasks. (CDS-76433, ZD-48363)
 
-  This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 * Fixed a Nexus artifact issue where a fetch timed out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
 
-   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
   
 <!-- NOTE RE FIXED ISSUE CDS-73884
 https://harness.atlassian.net/browse/CDS-73884?focusedCommentId=566535 we fixed this issue for first gen with the same ticket, hence it is showing up in 805 release notes. 
@@ -78,7 +78,7 @@ This release does not include early access features.
 
    This issue is fixed. Harness catches the exception and continues with delegate startup.
    
-   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 ### Version 80407
 
@@ -112,7 +112,7 @@ This release does not include early access features.
 
 - Fixed a delegate issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240, ZD-48548)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - Fixed an issue where using the Export Manifest with Inherit Manifest in a Kubernetes deployment could lead to skipping resource versioning. With this fix, resource versioning is happening correctly in this deployment scenario. (CDS-75781, ZD-47209)
 
@@ -337,7 +337,7 @@ This release does not include early access features.
     - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
     - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
 
-  This issue is fixed in the Harness Delegate version 79307. This change does not create any behavioral changes. 
+  This issue is fixed in the Harness Delegate version 23.05.79307. This change does not create any behavioral changes. 
 - Null pointer exception occurs when generating audit events for user groups with null values. (PL-32144)
 - No members appear in user group list even after the user has been added via SCIM. (PL-32482)
 
@@ -575,7 +575,7 @@ No early access features are available in this release.
 
 ### January 17, 2023, version 78105
 
-Delegate version: 78101
+Delegate version: 23.01.78101
 
 #### What's new
 
@@ -610,7 +610,7 @@ Delegate version: 78101
 
 ### January 5, 2023, version 78105
 
-Delegate version: 78100
+Delegate version: 23.01.78100
 
 #### What's new
   
@@ -680,7 +680,7 @@ Delegate version: 78100
 
 ### December 22, 2022, version 77908
 
-Delegate version: 77802
+Delegate version: 22.12.77802
 
 #### What's new
 
@@ -1044,7 +1044,7 @@ This fix is behind the feature flag `DO_NOT_RENEW_APPROLE_TOKEN`.
 
 ### August 25, 2022, version 76425
 
-* Delegate Version: 76420
+* Delegate Version: 22.08.76420
 
 #### Enhancements
 
@@ -1132,7 +1132,7 @@ New fields parent\_pipeline\_id and created\_by\_type fields in timescaledb.
 
 ### August 8, 2022, version 76128
 
-* Delegate version: 76128
+* Delegate version: 22.08.76128
 
 #### What's new
 
@@ -1237,7 +1237,7 @@ The discovery process for immutable Delegates is limited to checking the followi
 
 ### August 1, 2022, version 76003
 
-* Delegate version: 76028
+* Delegate version: 22.08.76028
 
 #### What's new
 
