@@ -1,14 +1,15 @@
 ---
 title: Run Snyk scans and ingest results
 description: Use Snyk to scan repositories and container images  
-sidebar_position: 90
+sidebar_position: 20
+redirect_from: /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans
 ---
 
 This workflow describes how to ingest Snyk scan results into a Harness pipeline. STO supports the following scan approaches for the following Snyk products:
-* Snyk Open Source ([orchestratedScan](./run-an-orchestrated-scan-in-sto.md), [ingestionOnly](./ingest-scan-results-into-an-sto-pipeline.md))
-* Snyk Code ([ingestionOnly](./ingest-scan-results-into-an-sto-pipeline.md))
-* Snyk Container ([ingestionOnly](./ingest-scan-results-into-an-sto-pipeline.md))
-* Snyk infrastructure as Code  — ([ingestionOnly](./ingest-scan-results-into-an-sto-pipeline.md)) is in BETA
+* Snyk Open Source ([orchestratedScan](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md), [ingestionOnly](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md))
+* Snyk Code ([ingestionOnly](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md))
+* Snyk Container ([ingestionOnly](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md))
+* Snyk infrastructure as Code  — ([ingestionOnly](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md)) is in BETA
 
 ## Important notes for running Snyk scans in STO
 

@@ -8,7 +8,7 @@ Harness maintains its own set of scan images for [STO-supported scanners](/docs/
 
 This topic describes how to override the default behavior and use a private registry instead. You can download the scan images you need, perform your own security checks on the images, upload them to a private registry, and then set up your STO steps to download images from this registry. 
 
-### Create STO scanner images with your own SSL certificates (_optional_)
+### Create STO scanner images with your own SSL certificates (optional)
 
 Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates.
 
