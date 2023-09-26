@@ -22,6 +22,7 @@ To enable PR automation, you should follow these steps:
      * Event - select 'Pull Request'
      * Actions - select "Any Actions" or specific actions that you'd like the PR pipeline to be triggered off
      * Click "Continue"
+       
    ![Resources](./static/pr-set1.png)
 
 On the second page of the trigger editor, you can specify that the trigger should only be activated when files within a certain folder are changed e.g., in this case, the trigger activates only if the PR affects files in the “terratest/examples/” folder.
