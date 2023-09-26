@@ -44,7 +44,8 @@ The GCP and Azure Cloud Providers will not inherit credentials from the Delegate
 
 ##### Running Scripts with a Delegate Outside of the Target Cluster
 
-If you use a Delegate installed outside of the target cluster, any scripts in your Pipeline need to use the `${HARNESS_KUBE_CONFIG_PATH}` expression to reference the path to a Harness-generated kubeconfig file containing the credentials you provided. 
+If you use a Delegate installed outside of the target cluster, any scripts in your Pipeline need to use the `${HARNESS_KUBE_CONFIG_PATH}` expression to reference the path to a Harness-generated kubeconfig file containing the credentials you provided.
+
 For example:
 
 
