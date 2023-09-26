@@ -44,8 +44,7 @@ The GCP and Azure Cloud Providers will not inherit credentials from the Delegate
 
 ##### Running Scripts with a Delegate Outside of the Target Cluster
 
-If you use a Delegate installed outside of the target cluster, any scripts in your Pipeline need to use the `${HARNESS_KUBE_CONFIG_PATH}` expression to reference the path to a Harness-generated kubeconfig file containing the credentials you provided. If the step is  shell script, then you can select the a checkbox Include Infrastructure Selectors to use a Delegate installed outside of the target cluster.
-
+If you use a Delegate installed outside of the target cluster, any scripts in your Pipeline need to use the `${HARNESS_KUBE_CONFIG_PATH}` expression to reference the path to a Harness-generated kubeconfig file containing the credentials you provided. 
 For example:
 
 
@@ -53,23 +52,6 @@ For example:
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n pod-test
 ```
 
-```
-- step:
-    identifier: ShellScript_1
-    type: ShellScript
-    name: ShellScript_1
-    spec:
-      shell: Bash
-      onDelegate: true
-      includeInfraSelectors: true
-      source:
-        type: Inline
-        spec:
-          script: echo 2
-      environmentVariables: []
-      outputVariables: []
-    timeout: 10m
-```
 Now the script will run using the correct credentials.
 
 #### Target Namespace
