@@ -34,13 +34,54 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80711
+## Latest: Harness version 808xx
 
 ### New features and enhancements
 
-This release does not have new features.
+- Harness CD has a new account-level setting to override the default behavior when deleting a pipeline, which deletes all past executions of that pipeline as well. (CDS-71173, ZD-50017)
+
+  - When SETTING_LABEL_TBD is set to true (the default), Harness deletes all executions of a pipeline when that pipeline is deleted.
+
+  - When SETTING_LABEL_TBD is set to false, older pipeline executions remain in the system even when the corresponding pipelines are deleted. You can view these executions in the Pipeline Executions list and open them to view details, but you cannot re-run them.
+
+  If a new pipeline is created with the same Id, the old executions are automatically associated with the new pipeline. This is expected functionality since the pipeline Id is used to associate executions with pipelines.
+
+  To configure this setting, go to Account > Settings > Account Resources > Pipeline > SETTING_LABEL_TBD. 
+
+– This release improves the UI feedback when executing an Approval step. Previously, the pipeline execution log console could appear stuck at the Approval step even after the pipeline processed the step successfully. This release includes a back-end optimization to ensure that the Pipeline Execution UI processes and displays log messages for Approval steps in real time. (CDS-76996, ZD-48401)
+
 
 ### Early access features
+
+This release does not include Early Access features. 
+
+### Fixed issues
+
+- Fixed an issue where using empty config files for a service in an SSH/WinRM deployment caused the pipeline to fail with a Null Pointer Exception.  (CDS-79578, ZD-50811)
+
+- Fixed an issue where using empty config files for a service in an SSH/WinRM deployment caused the pipeline to fail with a Null Pointer Exception.  (CDS-79578, ZD-50811)
+
+– When applying a pipeline filter that includes one or more services, the Pipelines page did not show pipelines that matched the services list in the filter. (CDS-79569, ZD-50830)
+
+
+
+
+### Hotfixes
+
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Harness version 80711
+
+##### New features and enhancements
+
+This release does not have new features.
+
+##### Early access features
 
 - Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is behind the Feature Flag `POST_PROD_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-78243)
 
@@ -68,7 +109,7 @@ This release does not have new features.
 
 
 
-### Fixed issues
+##### Fixed issues
 
 - Previously, the delegate selector was available in the Container step YAML only. This option is now available as an advanced option in the Container step UI. (CDS-78948, ZD-50674)
 
@@ -145,19 +186,6 @@ https://harness.atlassian.net/browse/CDS-77505
 
 
 
-
-
-
-
-### Hotfixes
-
-This release does not have hotfixes.
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### Harness version 80504, Harness Continuous Verification version 1.0.8
 
