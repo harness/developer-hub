@@ -2,7 +2,7 @@
 title: Qwiet AI (formerly ShiftLeft) scanner reference for STO
 description: Repository scans with Qwiet
 sidebar_label: Qwiet AI (formerly ShiftLeft) scanner reference
-sidebar_position: 250
+sidebar_position: 330
 ---
 
 You can set up Qwiet scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.

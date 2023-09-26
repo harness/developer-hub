@@ -21,7 +21,11 @@ You need to include a Docker-in-Docker background service in your stage if eithe
        1. Dependency Name = `dind`
        2. Container Registry = The Docker connector to download the DinD image. If you don't have one defined, go to [Docker connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
        3. Image = `docker:dind`
-       4. Under **Optional Configuration**, select the **Privileged** checkbox.
+       4. Under **Entry Point**, add the following: `dockerd` 
+          
+          Harness recommends using `dockerd` as a faster and more secure way to set up the background step. For more information, go to the **TLS** section in the [Docker quick reference](https://hub.docker.com/_/docker).
+
+       5. Under **Optional Configuration**, select the **Privileged** checkbox.
 
 ```mdx-code-block
 import set_up_harness_25 from '/docs/security-testing-orchestration/get-started/static/set-up-harness-for-sto-25.png'

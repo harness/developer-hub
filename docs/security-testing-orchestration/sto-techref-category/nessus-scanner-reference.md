@@ -2,7 +2,7 @@
 title: Nessus scanner reference for STO
 description: Instance scans with Nessus
 sidebar_label: Nessus scanner reference
-sidebar_position: 170
+sidebar_position: 240
 ---
 
 You can run Nessus scans on your instances using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.

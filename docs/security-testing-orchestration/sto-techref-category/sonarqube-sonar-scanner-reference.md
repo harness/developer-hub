@@ -1,7 +1,7 @@
 ---
 title: SonarQube SonarScanner reference for STO
 description: Repository scans with SonarQube SonarScanner
-sidebar_position: 300
+sidebar_position: 390
 sidebar_label: SonarQube SonarScanner scanner reference
 helpdocs_topic_id: 4qe4h3cl28
 helpdocs_category_id: m01pu2ubai
@@ -36,12 +36,10 @@ The recommended workflow is to add a SonarQube step to a Security Tests or CI Bu
 A Docker-in-Docker background step is not required for this workflow.
 
 <!--
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
 
-<StoScannerStepNotes />
+
+
 
 -->
 
@@ -251,7 +249,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step settings for SonarQube scans in STO (_legacy_)
+## Security step settings for SonarQube scans in STO (legacy)
 
 You can add a Security step to a Security Tests or CI Build stage and then configure it as described below. 
 

@@ -101,13 +101,14 @@ You need a Docker connector that points to your private container registry. For 
 
 ### Scanner template setup
 
-Do the following if you're using a scanner template rather than a generic **Security** step. A scanner template is a **Security Test** step with a scanner-specific UI, such as [**Black Duck Hub**](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference), [**CodeQL**](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference#codeql-step-settings-for-sto-scans), and [**Snyk**](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference#snyk-step-configuration).
+Do the following if you're using a scanner template rather than a generic **Security** step. A scanner template is a **Security Test** step with a scanner-specific UI, such as [**Black Duck Hub**](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference), [**CodeQL**](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference#codeql-step-settings-for-sto-scans), and [**Snyk**](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#snyk-step-configuration).
 
 1. In the stage where you're setting up the scanner template, go to the **Infrastructure** tab. 
 
 2. Under **Advanced**, go to **Override Image Connector (optional)** and select the connector to your private registry. You might need to scroll down to see this option.
 
-   ![](./static/override-image-connector.png)
+   ![](../static/override-image-connector.png)
+
 
 3. If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
 
@@ -152,6 +153,7 @@ Do the following if you're using a generic **Security** step for you scan:
    1. Open the scanner step and expand **Additional Configuration**. 
    
    2. Set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
+
 
 ## YAML example for configuring STO to download images from a private registry
 
