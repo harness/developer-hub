@@ -8,37 +8,38 @@ redirect_from:
 
 # Upgrade to CET from OverOps
 
-## Follow the steps below to upgrade your service to the CET module:
+Upgrading your service from OverOps to CET involves the follwing steps:
 
-1. Identify a service that can be onboarded to CET. The first service selected, can be a non-prod service for the POC.
+1. Choose a service suitable for onboarding to CET, preferably starting with a non-production service for the Proof of Concept (POC).
 
-2. Setup a Project in the CET.
+2. Create a project in the CET.
 
-3. Setup Monitored Service.
+3. Setup a monitored service.
 
-4. Install the Harness Error Tracking Agent for the service, by following the steps here.
+4. Install the Harness Error Tracking Agent and configure it with the monitored service.
 
-5. Once the agent is successfully installed and app is running  user can see the events being reported by the agent.
+   After successfully installing the agent and ensuring that your application is running, you'll be able to view the events reported by the agent.
 
-6. As events are being reported, next step will be to set up the notifications so the user does not miss any important events/issues. Instructions to setup the notification can be found here [Notifications](./cet-notifications.md).
+5. Configure notifications for timely event alerts. To learn how to notifications, go to [Notifications](./cet-notifications.md).
 
 
-## Identify a good candidate service to be onboarded to the CET for POC
+## Select an Appropriate Service for CET Onboarding POC
 
-1. As a first step, identify a non-prod service to onboard on to Harness CET.
-    example: Name: cet-migration-poc
+Follow the steps below to choose an appropriate service for CET onboarding POC.
 
-    Env: staging
+1. Select non-production service to onboard onto Harness CET. For instance:
+   - Name: cet-migration-poc
+   - Environment: Staging2
 
-2. Get a Harness account from the CSM. You can do that by submitting a request using support@harness.io.
+2. Get a Harness account from the CSM by submitting a request using support@harness.io.
 
-    example: ashutosh.pardeshi@harness.io
-
-3. Request a CET license to be applied to the account.
+3. Request a CET license for your Harness account.
 
 ## Setup Project
 
-1. Once the access has been granted to the Harness account, user can now log in to the Harness account and navigate to the Error Tracking module.
+Follow the steps below to set up a project:
+
+1. Log in to your Harness account and navigate to the Error Tracking module.
 
     ![Setup New Project](./static/cet-create-project-0.png)
 
@@ -46,33 +47,33 @@ redirect_from:
 
     ![Create New Project](./static/cet-create-project-1.png)
 
-3. Congratulations on creating your very first project. Now you may, navigate to the project. Next step is to create a monitored service.
-  
+3. Once your project is created, navigate to it to continue the setup. 
+
     ![Select New Project](./static/cet-create-project-2.png)
+   
 
 ## Add a monitored service
 
-A Harness Monitored Service is a combination of service and environment. Harness monitors the following via a monitored service:
-
-* Code-level exceptions and errors from the data collected by the Error Tracking Agent.
-
-The following steps explain how to create a monitored service, and define service and environments for tracking code errors and exceptions:
+A Harness monitored service combines a specific service with an environment to monitor code-level exceptions and errors collected by the Error Tracking Agent. Follow these steps to create a monitored service and specify the service and environments for tracking code errors and exceptions:
 
 1. In your Harness project, navigate to the **Continuous Error Tracking** module, and then select **Monitored Services**.
 
 2. Select **+ Create Monitored Service**.
 
    The Create New Monitored Service page appears.
+   
    ![Navigate to Monitored Services](./static/setup-monitored-service-0.png)
 
-3. Select a service. A Service represents your microservices and other workloads. To add a new service:
+3. Select a service. A Service represents your microservices or other workloads. To add a new service do the following:
 
     1. Select **+ New Service**.
         ![Add New Service](./static/setup-monitored-service-1.png)
+       
     2. In the New Service dialog, enter a **name** for the service, optional **tag**, and optional **description**, and then select **Save**.
         ![Select Service Name](./static/setup-monitored-service-2.png)
 
 4. Select an environment where the Harness Service is deployed (QA, prod, and so on). To create a new environment:
+   
     1. Select **+ New Environment**.
         ![Select New Environment](./static/setup-monitored-service-3.png)
     2. In the Create Environment dialog, enter a name for the new environment, select an environment type such as production or pre-production, and then select **Save**.
@@ -90,7 +91,7 @@ The following steps explain how to create a monitored service, and define servic
 
 ## Create a token for the Error Tracking Agent
 
-To create a token, do the following:
+Follow these steps to create a token for the Error Tracking Agent:
 
 1. Expand **PROJECT SETUP** and then select **Tokens**.
 
@@ -108,7 +109,7 @@ To create a token, do the following:
 
 5. Select **Close**.
 
-   The newly created token is added to the list of tokens.
+   The newly created token appears on the list of tokens.
 
 :::info note
 You can copy the token anytime by selecting the clipboard icon.
@@ -118,12 +119,13 @@ You can copy the token anytime by selecting the clipboard icon.
 ## Install an Error Tracking Agent
 
 The Harness Error Tracking Agent must be installed on a Java application to capture application code and variables. This native agent library is attached to the Java Virtual Machine (JVM)/Common Language Runtime (CLR) during runtime. It can be deployed into any Kubernetes container without altering the image. The Agent fingerprints the program code loaded into the JVM/CLR and captures the complete state of the code and the host/container in order to identify anomalies.
+The Harness Error Tracking Agent must be installed on Java applications, allowing it to capture application code and variables. This native agent library attaches itself to the Java Virtual Machine (JVM) or Common Language Runtime (CLR) during runtime. It can be deployed within any Kubernetes container without altering the image. The Agent profiles the program code loaded into the JVM/CLR and captures the complete state of the code and the host/container to identify anomalies.
 
-This topic provides details about:
+The following sections provide details about:
 
 * Compatibility and requirements to install an Error Tracking Agent.
 * Latest releases
-* Steps to install an Error Tracking Agent on a Java Application.
+* Instructions to install the Error Tracking Agent on a Java Application.
 
 
 ### Compatibility and requirements
@@ -227,8 +229,9 @@ ENV ET_DEPLOYMENT_NAME=1
 ENV ET_ENV_ID=staging
 ENV ET_TOKEN=b34*****-****-****-****-***********42a
 ```
-1. Add JVM arguments to the Docker image, which instructs the JVM to load the Agent. This is done by adding `agentpath:/harness/lib/libETAgent.so`to the application `ENTRYPOINT`. For example, `ENTRYPOINT java -agentpath:/harness/lib/libETAgent.so -jar yourapp.jar`. This parameter can also be specified using `JAVA_TOOL_OPTIONS`, for example `ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"`.
-2. Once the Dockerfile is updated, rebuild the Docker image and restart any containers running on it to start monitoring using Error Tracking.
+3. Add JVM arguments to the Docker image, which instructs the JVM to load the Agent. This is done by adding `agentpath:/harness/lib/libETAgent.so`to the application `ENTRYPOINT`. For example, `ENTRYPOINT java -agentpath:/harness/lib/libETAgent.so -jar yourapp.jar`. This parameter can also be specified using `JAVA_TOOL_OPTIONS`, for example `ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"`.
+
+4. Once the Dockerfile is updated, rebuild the Docker image and restart any containers running on it to start monitoring using Error Tracking.
 
 ```
  FROM openjdk:8-jre
@@ -312,7 +315,7 @@ If you are using the Self-Managed Enterprise Edition, make sure to set the ET_CO
 
 After installing Error Tracking Agent, you should verify that it is connected to Harness. To verify the Error Tracking Agent connection, do the following:
 
-1. Expand **PROJECT SETUP** and then select **Agents**.
+- Expand **PROJECT SETUP** and then select **Agents**.
 
     A comprehensive list of Error Tracking Agents is displayed along with the information such as service name, environment, deployment version, Agent version, Agent status, token name, and so on. Ensure that the Agent that you installed is listed, and the status is **CONNECTED**.
 
