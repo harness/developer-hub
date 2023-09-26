@@ -2,7 +2,7 @@
 title: Tenable scanner reference for STO
 description: Instance scans with Tenable
 sidebar_label: Tenable scanner reference
-sidebar_position: 310
+sidebar_position: 400
 ---
 
 

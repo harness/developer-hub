@@ -1,14 +1,14 @@
 {
-    "label": "STO technical reference",
-    "position": 30,
+    "label": "Grype",
+    "position": 210,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
        "type": "generated-index",
-       "title": "STO technical reference"
+       "title": "Grype"
     },
     "customProps": {
-      "helpdocs_category_id": "m01pu2ubai"
-   }
+       "helpdocs_category_id": "m01pu2ubai"
+    }
  }
