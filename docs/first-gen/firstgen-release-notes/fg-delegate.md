@@ -20,13 +20,7 @@ To identify the cluster that hosts your account, open Harness FirstGen, go to **
 
 For FirstGen SaaS release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, go to [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
-#### Deprecation notices
-
-**Helm 2**
-
-import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
-
-<Helmdep />
+#### Deprecation notice
 
 **Kustomize 3.4.5**
 
