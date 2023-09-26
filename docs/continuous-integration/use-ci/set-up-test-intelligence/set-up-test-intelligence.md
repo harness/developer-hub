@@ -564,13 +564,15 @@ You can override the default test globs pattern.
 
 #### Do you want to enable Error Tracking?
 
+<!-- Error Tracking currently only available for Java, not Kotlin or Scala -->
+
 :::info
 
 This setting requires the [CET module](/docs/continuous-error-tracking/get-started/overview). This setting is only configurable in the Visual editor (not YAML).
 
 :::
 
-Error tracking helps you be more proactive at discovering and remediating errors early in the software development lifecycle. It help s you more easily discover issues and assess the quality of code before it reaches production.
+Error tracking helps you be more proactive at discovering and remediating errors early in the software delivery lifecycle. It helps you more easily discover issues and assess the quality of code before it reaches production.
 
 Select **Yes** to enable error tracking. When enabled, a set of commands are auto-populated in the [Pre-Command](#pre-command). Review these commends to ensure they are compatible with your build. The auto-populated commands are enclosed between `#ET-SETUP-BEGIN` and `#ET-SETUP-END`, for example:
 

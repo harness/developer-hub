@@ -68,7 +68,7 @@ export default function SSCA() {
               >
                 Tutorials <i className="fa-solid fa-arrow-right"></i>
               </Link>
-              <Link href="https://harness.io/products/software-supply-chain-assurance">
+              <Link href="https://www.harness.io/products/software-supply-chain-assurance">
                 <button className={styles.link}>Learn more</button>
               </Link>
             </div>

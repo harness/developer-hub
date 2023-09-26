@@ -179,11 +179,17 @@ Harness supports multiple types of operating systems and architecture. Including
 Harness only currently supports cache intelligence on the Harness Cloud infrastructure. 
 See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/]
 
-#### Additional considerations when running concurrent builds
+<!-- #### Additional considerations when running concurrent builds
 
 While running concurrent builds, customers may want to consider the queued intelligence feature in Harness CI. This feature is behind a feature flag. 
 
-See [https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence/]
+See https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence/ -->
+
+<!-- QUEUE INTELLIGENCE IS CURRENTLY NON-FUNCTIONING. WILL UN-COMMENT WHEN IT IS FIXED. PLEASE DIRECT QUESTIONS TO #DOCUMENTATION. -->
+
+#### How to assert an environment variable within JEXL conditions?
+
+While we support output variables that can point to an environment variable, we do not support the direct referencing of environment variables in JEXL conditions, even when using the feature flag `CI_OUTPUT_VARIABLES_AS_ENV`, which automatically makes environment variables available for other steps in the same Build (CI) stage.
 
 ####  How can I download files from an S3 bucket in Harness?
 
@@ -194,7 +200,6 @@ You have two common options to download files from an S3 bucket in Harness:
 #### How are Harness secrets tied to connector. 
 
 Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
-
 
 #### You have security concerns with pulling Harness delegate images from a public repo?
 
@@ -396,3 +401,11 @@ Yes, we have a option to manually set or customize cache keys if your project ha
 
 #### Is there any API available for the Cache Intelligence?
 Yes, you can check the cache info and delete through the API. You can refer to this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-intelligence-api) for the API.
+
+#### How many build credits are we allowed to use with Harness free version
+
+Free monthly credits for up to 2,000 build minutes.
+
+#### I want to develop a build built for MacOS, do I have to use homebrew as the installer?
+
+No, Harness also supports multiple versions of xcode. Please see our document on iOS and macOS applications for more details [https://developer.harness.io/tutorials/ci-pipelines/build/ios/]

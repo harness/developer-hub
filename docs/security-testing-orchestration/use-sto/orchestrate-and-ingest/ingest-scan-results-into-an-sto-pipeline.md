@@ -1,6 +1,7 @@
 ---
-title: Ingest Scan Results into an STO Pipeline
+title: Run an Ingestion-Only scan in an STO Pipeline
 description: With ingestionOnly, the scanner saves the results to a shared folder. The pipeline then ingests this data and analyzes, deduplicates, and displays the results.
+sidebar_label: Ingestion-only workflows
 sidebar_position: 30
 helpdocs_topic_id: d24n34qdbk
 helpdocs_category_id: utstv3qzqt
@@ -17,7 +18,7 @@ STO also supports a generic JSON format if you want to to ingest data from tools
 * A Run step saves scan results to a shared folder. The step might run the scan locally or download results from an external source.
 * A Security step ingests the results from the shared folder. Then it analyzes, deduplicates, and displays the results.
 
-### Example Workflow
+### Example workflow to ingest scan results into STO 
 
 The following example describes how to scans a local image using [Aqua Trivy](https://aquasecurity.github.io/trivy/dev/docs/), a popular open-source scanner, and ingest the results. A Run step installs Trivy; then it scans the image and saves the output to a shared folder. A Security step then ingests the output file.
 
@@ -69,7 +70,7 @@ For the Trivy scan, we need to specify additional information about the scanned 
 -  For example: `docker pull redhat/ubi8-minimal:latest`
 - `container_tag` = `latest`
 
-### YAML Pipeline Example
+### YAML example pipeline to ingest scan results into STO
 
 The following example is based on the example workflow described in this topic.
 

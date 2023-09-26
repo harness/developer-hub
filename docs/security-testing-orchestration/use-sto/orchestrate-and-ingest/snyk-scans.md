@@ -10,7 +10,7 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 * Snyk Container ([ingestionOnly](./ingest-scan-results-into-an-sto-pipeline.md))
 * Snyk infrastructure as Code  — ([ingestionOnly](./ingest-scan-results-into-an-sto-pipeline.md)) is in BETA
 
-## Important notes
+## Important notes for running Snyk scans in STO
 
 * Snyk Code and Snyk Container scans require a [Snyk API key](https://docs.snyk.io/snyk-api-info/authentication-for-api). You should create a [Harness secret](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization) for your API key.
 
@@ -38,7 +38,7 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
   
 <!-- removed info on using snyk monitor, see https://harness.atlassian.net/browse/DOC-2718?focusedCommentId=571223 -->
 
-## Scan a repository: orchestration example
+## Snyk repository orchestration example
 
 This example uses a Snyk step in Orchestration mode  to scan a repository. This is the simplest workflow: the Snyk step runs the scan and ingests the results, with minimal configuration required. 
 
@@ -68,7 +68,7 @@ This example uses a Snyk step in Orchestration mode  to scan a repository. This 
 6. Apply your changes, then save and run the pipeline. 
 
 
-## Scan a repository: ingestion example
+## Snyk repository ingestion example
 
 The following example uses [`snyk test`](https://docs.snyk.io/snyk-cli/commands/test) to scan a .NET repository. 
 
@@ -128,7 +128,7 @@ The scan stage in this pipeline has the following steps:
 6. Apply your changes, then save and run the pipeline. 
 
 
-## Scan a container image: workflow example
+## Snyk container image ingestion example
 
 This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands/container-test) to scan a container image. The scan stage consists of three steps:
 
@@ -184,7 +184,7 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
 
 5. Apply your changes, then save and run the pipeline.
 
-## Scan an Infrastructure as Code (IaC) repository: ingestion example
+## Snyk Infrastructure as Code (IaC) repository ingestion example
 
 :::note
 
@@ -192,7 +192,7 @@ Support for Snyk scans of IaC repositories is a beta feature. For more informati
 
 :::
 
-The following example uses [`snyk iac test`](https://docs.snyk.io/snyk-cli/commands/iac-test) to scan a an [example IaC code repository](https://github.com/snyk/terraform-goof) provided by Snyk. 
+The following example uses [`snyk iac test`](https://docs.snyk.io/snyk-cli/commands/iac-test) to scan a an IaC code repository. 
 
 The scan stage in this pipeline has the following steps:
 

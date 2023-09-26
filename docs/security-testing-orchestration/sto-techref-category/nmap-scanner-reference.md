@@ -1,12 +1,13 @@
 ---
-title: Nmap (Network Mapper) scanner reference
+title: Nmap (Network Mapper) scanner reference for STO
 description: Instance scans with Nmap
+sidebar_label: Nmap (Network Mapper) scanner reference
 sidebar_position: 200
 ---
 
 You can scan your instances using [Nmap](https://nmap.org/), an open-source tool used for network exploration, host discovery, and security auditing. 
 
-## Before you begin
+## Important notes for running Nmap scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -216,7 +217,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step settings (*deprecated*)
+## Security step settings for Nmap scans in STO (*legacy*)
 
 You can set up Nmap scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

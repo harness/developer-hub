@@ -1,7 +1,7 @@
 ---
 title: Git Large File Storage
 description: Use Run steps to install Git LFS and run git lfs commands.
-sidebar_position: 40
+sidebar_position: 50
 ---
 
 ```mdx-code-block
