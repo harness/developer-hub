@@ -239,16 +239,80 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 
 </details>
 
-1. Create the **GitHub connector**.
-    1. Replace **GITHUB_USERNAME** with your GitHub account username in the `github-connector.yaml` 
-    2. Replace **DELEGATE_NAME** under delegate selectors with Delegate Name. 
+1. Create the **GitHub connector**. 
+    1. Replace **DELEGATE_NAME** under delegate selectors with Delegate Name. 
     2. In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
     3. Now create the **GitHub connector** using the following CLI command:
         ```
-        harness connector --file "/serverless-lambda/harnesscd-pipeline/github-connector.yml" apply --git-user <YOUR GITHUB USERNAME>
+        harness connector --file "/serverless-lambda/harnesscd-pipeline/github-connector.yml" apply
         ```
 2. Create the **AWS Connector**.
-    1. 
+    1. In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+    2. Now create the **AWS Connector** using the following CLI command:
+        ```
+        harness connector --file "/serverless-lambda/harnesscd-pipeline/aws-connector.yml" apply
+        ```
+
+## Environment
+
+<details open>
+<summary>What are Harness environments?</summary>
+
+Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+
+</details>
+
+1. Use the following CLI Command to create **Environments** in your Harness project:
+
+    ```
+    harness environment --file "/serverless-lambda/harnesscd-pipeline/environment.yml" apply
+    ```
+
+2. In your new environment, add **Infrastructure Definitions** using the following CLI command:
+
+    ```
+    harness infrastructure --file "/serverless-lambda/harnesscd-pipeline/infrastructure-definition.yml" apply 
+    ```
+
+## Services
+
+<details open>
+<summary>What are Harness services?</summary>
+
+In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+
+</details>
+
+1. Use the following CLI command to create **Services** in your Harness Project. 
+
+    ```
+    harness service -file "/serverless-lambda/harnesscd-pipeline/service.yml" apply
+    ```
+
+## Deploy AWS Lambda using Serverless.com Framework
+
+<details open>
+<summary>What are Harness pipelines?</summary>
+
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact/function deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
+
+</details>
+
+1. CLI Command for serverless deployment:
+    ```
+    harness pipeline --file "/serverless-lambda/harnesscd-pipeline/serverless-deployment.yml" apply
+    ```
+
+2. In your Harness pipeline YAML editor, paste the YAML.
+3. Select **Save**.
+   
+   You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
+   
+   <docimage path={require('../static/harness-cicd-tutorial/serverless-aws-lambda.png')}/>  
+4. Finally, it's time to execute the pipeline. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
+    
+    Observe the execution logs as Harness deploys the function.
+
 ```mdx-code-block
 </TabItem>
 <TabItem value="UI">
@@ -555,6 +619,210 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     3. For the secret value, add the AWS [Secret access key](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html).
     4. Select **Save**.
 
+```mdx-code-block
+<Tabs>
+<TabItem value="CLI">
+```
+
+1. Download and Configure Harness CLI.
+
+    ```mdx-code-block
+    <Tabs>
+    <TabItem value="MacOS">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="Linux">
+    ```
+
+    ```mdx-code-block
+    <Tabs>
+    <TabItem value="ARM">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
+    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="AMD">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
+    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    </Tabs>
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="Windows">
+    ```
+
+    a. Open Windows Powershell and run the command below to download the Harness CLI.
+
+    ```
+    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+    ```
+        
+    b. Extract the downloaded zip file and change directory to extracted file location.
+
+    c. Follow the steps below to make it accessible via terminal.
+
+    ```
+    $currentPath = Get-Location 
+    [Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$currentPath", [EnvironmentVariableTarget]::Machine)
+    ```
+
+    d. Restart terminal.
+
+    ```mdx-code-block
+    </TabItem>
+    </Tabs>
+    ```
+
+2. Clone the Forked **harnessed-example-apps** repo and change directory.
+    ```bash
+    git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
+    cd harnesscd-example-apps 
+    ```
+    :::note
+    
+    Replace `GITHUB_ACCOUNTNAME` with your GitHub Account name.
+
+    :::
+
+3. Log in to Harness from the CLI.
+    ```bash
+    harness login --api-key  --account-id HARNESS_API_TOKEN 
+    ```
+    :::note
+    
+    Replace `HARNESS_API_TOKEN` with Harness API Token that you obtained during the prerequisite section of this tutorial.
+
+    :::
+
+## Connectors
+
+<details open>
+<summary>What are connectors?</summary>
+
+Connectors in Harness enable integration with 3rd party tools, providing authentication for operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](/docs/category/connectors).
+
+</details>
+
+1. Create the **GitHub connector**. 
+    1. Replace **DELEGATE_NAME** under delegate selectors with Delegate Name. 
+    2. In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+    3. Now create the **GitHub connector** using the following CLI command:
+        ```
+        harness connector --file "/aws-lambda/harnesscd-pipeline/git-connector.yml" apply
+        ```
+2. Create the **AWS Connector**.
+    1. In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+    2. Now create the **AWS Connector** using the following CLI command:
+        ```
+        harness connector --file "/aws-lambda/harnesscd-pipeline/aws-connector.yml" apply
+        ```
+
+## Environment
+
+<details open>
+<summary>What are Harness environments?</summary>
+
+Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+
+</details>
+
+1. Use the following CLI Command to create **Environments** in your Harness project:
+
+    ```
+    harness environment --file "/aws-lambda/harnesscd-pipeline/environment.yml" apply
+    ```
+
+2. In your new environment, add **Infrastructure Definitions** using the following CLI command:
+
+    ```
+    harness infrastructure --file "/aws-lambda/harnesscd-pipeline/infrastructure-definition.yml" apply 
+    ```
+
+## Services
+
+<details open>
+<summary>What are Harness services?</summary>
+
+In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+
+</details>
+
+### Function definition and function artifacts
+
+<details open>
+<summary>What is AWS Lambda Function Definition?</summary>
+
+Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html) to create a new Lambda function in the specified AWS account and region. In Harness, you use a [JSON configuration file](https://github.com/harness-community/harnesscd-example-apps/blob/master/aws-lambda/function-definition.json) to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API.
+</details>
+
+#### Setting up Lambda functions
+
+1. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repo, edit the [function-definition.json](https://github.com/harness-community/harnesscd-example-apps/blob/master/aws-lambda/function-definition.json) file in your fork and **add the ARN for your role having full AWS Lambda access** in which you want to deploy the serverless application.
+
+2. Use the following CLI command to create **Services** in your Harness Project. 
+
+    ```
+    harness service -file "/aws-lambda/harnesscd-pipeline/service.yml" apply
+    ```
+
+## Deploy the serverless application on AWS Lambda
+
+<details open>
+<summary>What are Harness pipelines?</summary>
+
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
+
+</details>
+
+1. CLI Command for serverless deployment:
+    ```
+    harness pipeline --file "/aws-lambda/harnesscd-pipeline/pipeline.yml" apply
+    ```
+2. In your Harness pipeline YAML editor, paste the YAML.
+3. Select **Save**.
+   
+   You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
+   
+   <docimage path={require('../static/harness-cicd-tutorial/serverless-aws-lambda-native.png')}/>  
+4. Finally, it's time to execute the Pipeline. Select **Run**.
+
+5. Enter the **Primary Artifact** name and **File Path** for the artifact. 
+
+6.  Select **Run Pipeline** to initiate the deployment.
+    
+    Observe the execution logs as Harness deploys the function.
+
+
+```mdx-code-block
+</TabItem>
+<TabItem value="UI">
+```
 ### Connectors
 
 <details open>
@@ -665,6 +933,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     
     Observe the execution logs as Harness deploys the function.
 
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 ## Congratulations!🎉
 
