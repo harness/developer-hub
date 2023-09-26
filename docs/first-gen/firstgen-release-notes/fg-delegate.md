@@ -34,38 +34,56 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80504, Harness Delegate version 23.09.80505
+## Latest: Harness version 808xx, Harness Delegate version 23.09.808xx
 
-Harness FirstGen release 80504 includes the following changes for the Harness Delegate.
+Harness FirstGen release 808xx includes the following changes for the Harness Delegate.
 
 ### New features and enhancements
 
-- The OWASP Java HTML Sanitzer version is upgraded to 20220608.1. (PL-40807)
-
-- The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
+This release does not include new features or enhancements.
 
 ### Early access features
 
-This release does not include any new early access features.
+This release does not include early access features.
 
 ### Fixed issues
 
-- Fixed an issue when using multiple HTTP Helm Chart repositories that could lead to an increase in CPU utilization on the delegate due to background connector validation tasks. This was caused by running Helm repository update during the validation tasks. (CDS-76433, ZD-48363)
-
-- With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631, ZD-48998, ZD-49702)
-
-This issue is fixed. Harness catches the exception and continues with delegate startup.
-
-- Need draft RN (CDS-76433, ZD-48363)
+- You can no longer update `Delegatelp` or `DelegateName` using the delegate update API without Manage Delegate or Administer Other Account Functions permissions. (PL-40795, ZD-44419)
 
 ### Hotfixes
 
-The current version does not include a hotfix release.
+This release does not include hotfixes.
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### Harness version 80504, Harness Delegate version 23.09.80505
+
+Harness FirstGen release 80504 includes the following changes for the Harness Delegate.
+
+##### New features and enhancements
+
+- The OWASP Java HTML Sanitzer version is upgraded to 20220608.1. (PL-40807)
+
+- The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues
+
+- Fixed an issue when using multiple HTTP Helm Chart repositories that could lead to an increase in CPU utilization on the delegate due to background connector validation tasks. This was caused by running Helm repository update during the validation tasks. (CDS-76433, ZD-48363)
+
+- With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631, ZD-48998, ZD-49702)
+
+   This issue is fixed. Harness catches the exception and continues with delegate startup.
+
+##### Hotfixes
+
+This release does not include hotfixes.
 
 #### Harness version 80308, Harness Delegate version 23.08.80308
 
@@ -79,7 +97,7 @@ Harness FirstGen release 80308 includes the following changes for the Harness De
 
 ##### Early access features
 
-This release does not include any new early access features.
+This release does not include early access features.
 
 ##### Fixed issues
 
@@ -89,17 +107,17 @@ This release does not include any new early access features.
 
 ##### Hotfixes
 
-The current version does not include a hotfix release.
+This release does not include hotfixes.
 
 #### August 4, 2023, Harness version 80120, Harness Delegate version 23.08.80104
 
 ##### What's new
 
-This release does not include any new features.
+This release does not include new features.
 
 ##### Early access
 
-This release does not include any new early access features.
+This release does not include early access features.
 
 ##### Fixed issues
 
@@ -145,11 +163,11 @@ Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
 
 ##### Early access
 
-This release does not include any new early access features.
+This release does not include early access features.
 
 ##### Fixed issues
 
-This release does not include any fixed issues.
+This release does not include fixed issues.
 
 #### June 28, 2023, Harness version 79714, Harness Delegate version 23.06.79707
 
@@ -161,7 +179,7 @@ This release does not include any fixed issues.
 
 ##### Early access
 
-This release does not include any new early access features.
+This release does not include early access features.
 
 ##### Fixed issues
 
@@ -190,7 +208,7 @@ This release does not include any new early access features.
 
 ##### Early access 
 
-This release does not include any new early access features.
+This release does not include early access features.
 
 ##### Fixed issues
 
@@ -206,11 +224,11 @@ Harness FirstGen release 79306 includes the following feature changes and fixes 
 
 ##### What's new
 
-This release does not include any new features.
+This release does not include new features.
 
 ##### Early access 
 
-This release does not include any new early access features. 
+This release does not include early access features. 
 
 ##### Fixed issues
 
@@ -241,11 +259,11 @@ Harness FirstGen release 79111 includes the following feature changes and fixes 
 
 ##### What's new
 
-This release does not include any new features.
+This release does not include new features.
 
 ##### Early access 
 
-This release does not include any new early access features. 
+This release does not include early access features. 
 
 ##### Fixed issues
 
@@ -285,11 +303,11 @@ Use an api-key with account edit permission in the API header.
 
 ##### Early access 
 
-This release does not include any new early access features. 
+This release does not include early access features. 
 
 ##### Fixed issues
 
-This release does not include any fixed issues. 
+This release does not include fixed issues. 
 
 #### March 15, 2023, Harness version 78712, Harness Delegate version 23.03.78705
 
@@ -297,11 +315,11 @@ Harness FirstGen release 78712 includes the following feature changes and fixes 
 
 ##### What's new
 
-This release does not include any new features. 
+This release does not include new features. 
 
 ##### Early access 
 
-This release does not include any new early access features. 
+This release does not include early access features. 
 
 ##### Fixed issues
 
@@ -323,7 +341,7 @@ Harness FirstGen release 78619 includes the following feature changes and fixes 
 
 ##### Early access 
 
-This release does not include any new early access features. 
+This release does not include early access features. 
 
 ##### Fixed issues
 
@@ -341,7 +359,7 @@ Harness FirstGen release 78507 includes the following feature changes and fixes 
 
 ##### Fixed issues
 
-This release does not include fixed issues for Harness Delegate.
+This release does not include fixed issues.
 
 #### February 15, 2023, Harness version 78421, Harness Delegate version 23.02.78306
 

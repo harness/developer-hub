@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-09-11T10:00
+date: 2023-09-28T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -28,11 +28,61 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80504, Harness Delegate version 23.09.80505
+## Latest: Harness version 808xx, Harness Delegate version 23.09.808xx
+
+Harness NextGen release 808xx includes the following changes for the Harness Delegate.
+
+### New features and enhancements
+
+- Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
+
+   - `org.bouncycastle:bcpg-jdk15on:jar:1.70` to `org.bouncycastle:bcpg-jdk18on:jar:1.76`
+   - `org.bouncycastle:bcpkix-jdk15on:jar:1.70` to `org.bouncycastle:bcpkix-jdk18on:jar:1.76`
+   - `org.bouncycastle:bcprov-ext-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-ext-jdk18on:jar:1.76`
+   - `org.bouncycastle:bcprov-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-jdk18on:jar:1.76`
+
+### Early access features
+
+This release does not include any new early access features.
+
+### Fixed issues
+
+- Delegates failed to reauthenticate with the proxy after the initial proxy session expired. (PL-40630, ZD-48981, ZD-49626)
+
+   The following updates to delegate communication with Harness Manager over proxy resolve this issue.
+
+   - Removed `return null` when Harness Manager receives the required 407 proxy authentication.
+   
+   - Added the following variables for the `asyncHttpClient` to authenticate with the proxy.
+      - `org.asynchttpclient.AsyncHttpClientConfig.proxy.user`
+      - `org.asynchttpclient.AsyncHttpClientConfig.proxy.password`
+
+- Aborted tasks that were previously assigned displayed an incorrect error message. (PL-41226, ZD-49908, ZD-50652)
+
+  The UI now displays the correct error message.
+
+- The UI allowed all users to select the **Copy token** option from the **More Options** (&vellip;) menu. (PL-41155)
+
+   This issue has been resolved. Now, only users with the required permissions to copy tokens are able to select the **Copy token** option.
+
+- If a step used [runtime input for conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#conditional-execution-as-a-runtime-input), but no runtime input was provided at pipeline runtime, then the pipeline passed the literal string `<+input>` instead of an empty object. This is fixed. (CI-9428, ZD-50027)
+
+- Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) based on [delegate tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#delegate-tags), and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. (CI-8831, ZD-47647)
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>Expand this section to view changes to previous releases</summary>
+
+#### Harness version 80504, Harness Delegate version 23.09.80505
 
 Harness NextGen release 80504 includes the following changes for the Harness Delegate.
 
-### New features and enhancements
+##### New features and enhancements
 
 - Upgraded `io.netty:netty*` to version `4.1.94.final` to address vulnerabilities. (CI-8971, ZD-48488)
 
@@ -50,37 +100,32 @@ Harness NextGen release 80504 includes the following changes for the Harness Del
 
 - The delegate expiration policy has been extended from 3 months to 6 months. You now only have to update delegates once every 6 months. (PL-39452)
 
-### Early access features
+##### Early access features
 
 This release does not include any new early access features.
 
-### Fixed issues
+##### Fixed issues
 
 - Fixed a Nexus artifact issue where a fetch timed out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
 
 - Fixed an intermittent issue where Helm deployment pipelines would report the Helm repository as not found. (CDS-76919)
 
-- Fixed an issue that resulted in Null Pointer Exceptions when running a pipeline manually with a  `<+trigger.connectorRef>` expression. This expression gets its data from the trigger payload. With this fix, the pipeline correctly handles the case where the trigger payload is null. (CDS-77736, ZD-49685, ZD-49720, ZD-49722)
+- Fixed an issue that resulted in Null Pointer Exceptions when running a pipeline manually with a `<+trigger.connectorRef>` expression. This expression gets its data from the trigger payload. With this fix, the pipeline correctly handles the case where the trigger payload is null. (CDS-77736, ZD-49685, ZD-49720, ZD-49722)
 
 - Fixed an issue where the `ACCOUNT_SECRET` environment variable was overriding the `DELEGATE_TOKEN` value in the delegate's Docker container for delegates with an immutable image type (image tag `yy.mm.xxxxx`). (PL-40728)
 
-### Hotfixes
+##### Hotfixes
 
-#### Version 23.09.80506
+##### Version 23.09.80506
 
 - API calls made to Git providers during deployments caused rate limit errors. (CDS-78950)
 
   The issue has been resolved. Harness reduced the number of API calls made to Git providers during deployment.
 
-#### Version 23.09.80510
+##### Version 23.09.80510
 
 - Added support for the Artifactory **Artifact Path** filter. (CDS-77244, CDS-79760)
 - Decrement the task count when `DELEGATE_TASK_CAPACITY` is enabled. (PL-41367)
-
-## Previous releases
-
-<details>
-<summary>Expand this section to view changes to previous releases</summary>
 
 #### Harness version 80307, Harness Delegate version 23.08.80308
 
@@ -138,13 +183,13 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 ##### Hotfixes
 
-#### Version 80313
+##### Version 80313
 
 - There were several `OverlappingFileLockException` errors caused by the version of the Chronicle Queue library used. (CCM-14174)
 
    The issue has been resolved. We upgraded the Chronicle Queue library to fix the errors.
 
-#### Version 80312
+##### Version 80312
 
 - In previous versions, when utilizing Artifactory as an artifact source, there was an issue where the retrieval of artifacts failed when the specified path included regular expressions, and the path structure was nested rather than flat. We are pleased to announce that this release addresses and resolves this issue.
 
@@ -160,7 +205,7 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
   Now, before performing a rolling deployment, the TAS Rolling deployment step first verifies that the application exists. If the application does not exist, it deploys the application without using the rolling deployment strategy. If the application exists, it performs a rolling upgrade. 
 
-#### Version 23.09.80309
+##### Version 23.09.80309
 
 - Do not evaluate service variables on the Bash shell when exporting them in Command step. (CDS-75775)
 
@@ -168,7 +213,7 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
   evaluated using the bash interpreter (for example, "abc$1abc" would actually be sent as "abc$bc").
 
 
-#### Version 23.08.80308
+##### Version 23.08.80308
 
 - In certain scenarios for Amazon ECS blue/green deployments, the green application was not rolling back. We have added functionality to handle this scenario. We now consistently roll back the green service in Amazon ECS blue/green deployments. (CDS-76795, ZD-49005)
 
