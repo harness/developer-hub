@@ -29,3 +29,18 @@ Say Gateway has a partial outage for 50 minutes then:
 
 * 30% of 50 minutes = 15 minutes = 900 seconds will be the downtime.
 * If this was the only incident for a 90 day duration (7776000 seconds) , the uptime then will be (1–900/7776000) * 100 = (1–0.000115740740741) * 100 = 99.988
+
+## Service Level Indicators specific to Harness Modules
+
+## Continuous Delivery (Current Gen)
+| **SLI**                                   | **Threshold**                                                | Outage Kind    |
+|-------------------------------------------|--------------------------------------------------------------|----------------|
+| Dashboard ART                             | Greater than 10 seconds for a consecutive duration of 5 mins | Partial Outage |
+| Pipeline and Workflow executions ART      | Greater than 30 seconds for a consecutive duration of 5 mins | Partial Outage |
+
+## Continuous Delivery (Next Gen)
+| **SLI**                                                               | **Threshold**                                                | Outage Kind    |
+|-----------------------------------------------------------------------|--------------------------------------------------------------|----------------|
+| Dashboard ART                             | Greater than 10 seconds for a consecutive duration of 5 mins(P95) | Partial Outage |
+| Pipeline and Workflow executions ART (manager > /api/executions)      | Greater than 30 seconds for a consecutive duration of 5 mins | Partial Outage |
+
