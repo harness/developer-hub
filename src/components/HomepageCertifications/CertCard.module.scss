@@ -1,162 +1,140 @@
-.card-enter {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
-.card-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 500ms, transform 500ms;
-}
-
-.card-exit {
-  opacity: 1;
-}
-
-.card-exit-active {
-  opacity: 0;
-  transition: opacity 500ms;
-}
-
-
-
-
-.certCard{
-    border-radius: 8px;
-    // box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
-    box-shadow: 0px 1px 3px rgb(40 41 61 / 16%), 0px 0px 2px rgb(40 41 61 / 16%);
-    padding: 32px 32px 56px 32px;
-    // margin: 0 2.75% 30px 0;
-    background: var(--white);
-    width: 31.5%;
-    // width: 440px;
-    font-family: 'Inter';
-    border: 2px solid transparent;
-    position: relative;
-    min-height: 350px;
-    min-width: 250px;
-    &.thumb {
-        width: 48.5%;
-        background-color: var(--white);
-        padding: 24px;
-        h4 {
-            font-size: 20px;
-            line-height: 28px;
-        }
-        p{
-            font-size: 14px;
-            line-height: 22px;
-        }
+.certCard {
+  border-radius: 8px;
+  // box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+  box-shadow: 0px 1px 3px rgb(40 41 61 / 16%), 0px 0px 2px rgb(40 41 61 / 16%);
+  padding: 32px 32px 56px 32px;
+  // margin: 0 2.75% 30px 0;
+  background: var(--white);
+  width: 31.5%;
+  // width: 440px;
+  font-family: "Inter";
+  border: 2px solid transparent;
+  position: relative;
+  min-height: 350px;
+  min-width: 250px;
+  height: 400px;
+  &.thumb {
+    width: 48.5%;
+    background-color: var(--white);
+    padding: 24px;
+    h4 {
+      font-size: 20px;
+      line-height: 28px;
     }
+    p {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  .numberOfCerts {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 13px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    img {
+      height: 16px;
+      width: auto;
+      margin-right: 0.5em;
+    }
+  }
+  .moduleLine {
+    display: flex;
+    justify-content: space-between;
+    span {
+      color: var(--gray-700);
+    }
+    h6 {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 13px;
+      /* identical to box height, or 108% */
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #6b6d85;
+      display: flex;
+      align-items: center;
+      img {
+        width: 24px;
+        margin-right: 8px;
+      }
+    }
+  }
+  h4 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    color: #0b0b0d;
     &:hover {
-        text-decoration: none;
+      color: var(--primary);
     }
-    .numberOfCerts {
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 13px;
-        margin-bottom: 16px;
-        display: flex;
-        align-items: center;
-        img {
-            height: 16px;
-            width: auto;
-            margin-right: 0.5em;
-        }
-    }
-    .moduleLine{
-        display: flex;
-        justify-content: space-between;
-        span {
-            color: var(--gray-700);
-        }
-        h6{
-            font-weight: 500;
-            font-size: 12px;
-            line-height: 13px;
-            /* identical to box height, or 108% */
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: #6B6D85;
-            display: flex;
-            align-items: center;
-            img{
-                width: 24px;
-                margin-right: 8px;
-            }
-        }
-    }
-    h4{
-        font-weight: 500;
-        font-size: 24px;
-        line-height: 32px;
-        color: #0B0B0D;
-        &:hover {
-            color: var(--primary);
-        }
-    }
-    p{
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 28px;
-        /* or 175% */
-        /* Light/Text/Primary */
-        color: #0B0B0D;
-    }
-    .productVersion {
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 13px;
-        /* identical to box height, or 108% */
-        /* Light/Text/Tertiary */
-        color: #6B6D85;
-        position: absolute;
-        bottom: 32px;
-    }
+  }
+  p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    /* or 175% */
+    /* Light/Text/Primary */
+    color: #0b0b0d;
+  }
+  .productVersion {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 13px;
+    /* identical to box height, or 108% */
+    /* Light/Text/Tertiary */
+    color: #6b6d85;
+    position: absolute;
+    bottom: 32px;
+  }
 }
 
 .certCard:hover {
-    border: 2px solid var(--primary);
+  border: 2px solid var(--primary);
 }
-.cd:hover{
-    border-color: var(--mod-cd-200);
+.cd:hover {
+  border-color: var(--mod-cd-200);
 }
-.ci:hover{
-    border-color: var(--mod-ci-200);
+.ci:hover {
+  border-color: var(--mod-ci-200);
 }
-.ff:hover{
-    border-color: var(--mod-ff-200);
+.ff:hover {
+  border-color: var(--mod-ff-200);
 }
-.ccm:hover{
-    border-color: var(--mod-ccm-200);
+.ccm:hover {
+  border-color: var(--mod-ccm-200);
 }
-.srm:hover{
-    border-color: var(--mod-srm-200);
+.srm:hover {
+  border-color: var(--mod-srm-200);
 }
-.sto:hover{
-    border-color: var(--mod-sto-200);
+.sto:hover {
+  border-color: var(--mod-sto-200);
 }
-.ce:hover{
-    border-color: var(--mod-ce-200);
+.ce:hover {
+  border-color: var(--mod-ce-200);
 }
-.platform:hover{
-    border-color: var(--primary);
+.platform:hover {
+  border-color: var(--primary);
 }
 
 @media screen and (max-width: 1130px) {
-// @media screen and (max-width: 768px) {
-    .certCard{
-        width: 48.5%;
-    }
+  // @media screen and (max-width: 768px) {
+  .certCard {
+    width: 48.5%;
+  }
 }
 
 @media screen and (max-width: 512px) {
-    /* for mobile */
-    .certCard{
-        width: unset;
-        &.thumb {
-            width: unset;
-            margin-top: 1.5em;
-        }
+  /* for mobile */
+  .certCard {
+    width: unset;
+    &.thumb {
+      width: unset;
+      margin-top: 1.5em;
     }
+  }
 }

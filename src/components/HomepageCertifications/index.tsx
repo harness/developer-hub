@@ -7,12 +7,14 @@ import styles from "./styles.module.scss";
 import { getCertBadges } from "../Certifications/LandingPage";
 import CertCard from "../Certifications/CertCard";
 import { certifications } from "./data/certificationsData";
-import Carousel from "./Carousel";
+import CarouselV from "./Carousel";
+
 
 // harness-platform.svg | secret-mgmt.svg
 export default function HomepageCertifications(): JSX.Element {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const certBadges = getCertBadges(baseUrl);
+
   return (
     <section className={styles.homepageCertifications}>
       <div className={styles.inner}>
@@ -38,7 +40,7 @@ export default function HomepageCertifications(): JSX.Element {
               </div>
             </div>
             <div className={styles.right}>
-              <Carousel certs={certifications} />
+              <CarouselV certs={certifications} />
             </div>
           </div>
         </div>
