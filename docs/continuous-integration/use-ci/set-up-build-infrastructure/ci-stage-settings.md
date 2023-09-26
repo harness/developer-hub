@@ -232,7 +232,7 @@ A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-evict
 
 ### Tolerations
 
-A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), which allow (but do not require) Build stage pods to schedule onto nodes with matching taints.
+A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) that allow (but do not require) Build stage pods to be scheduled onto nodes with matching taints.
 
 ### Host Names
 
