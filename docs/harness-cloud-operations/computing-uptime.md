@@ -51,4 +51,37 @@ Say Gateway has a partial outage for 50 minutes then:
 | GitOps APIs ART     | Greater than 10 seconds for a consecutive duration of 5 mins| Major Outage |
 | GitOps APIs ART     | Greater than 5 seconds for a consecutive duration of 5 mins| Partial Outage |
 
+## Continuous Integration 
+| **SLI**                                                               | **Threshold**                                                | Outage Kind    |
+|-----------------------------------------------------------------------|--------------------------------------------------------------|----------------|
+| CI Manager                             | Greater than 30 seconds for a consecutive duration of 5 mins | Major Outage |
+| CI Manager Execution health      | No executions messages for more than 30 mins | Major Outage |
+
+## Cloud Cost Management 
+| **SLI**                                                               | **Threshold**                                                | Outage Kind    |
+|-----------------------------------------------------------------------|--------------------------------------------------------------|----------------|
+| GraphQL / REST API                             | Greater than 30 seconds for a consecutive duration of 5 mins | Major Outage |
+| Drops in the incoming message count event-service      | No incoming messages for more than 30 mins | Major Outage |
+| Lightwing APIs ART      | Greater than 30 seconds for a consecutive duration of 5 mins | Major Outage |
+| Faktory Queue job wait time      | Greater than 30 sec for a consecutive duration of 5 mins | Major Outage |
+
+## Feature Flags 
+| **SLI**                                                               | **Threshold**                                                | Outage Kind    |
+|-----------------------------------------------------------------------|--------------------------------------------------------------|----------------|
+| Feature Flag Dashboard RestAPI ART                            | Greater than 30 seconds for a consecutive duration of 5 mins | Partial Outage |
+| Evaluation API      | Greater than 45 seconds for consecutive duration of 5min | Major Outage |
+| Metrics API      | Greater than 45 seconds for consecutive duration of 5min | Partial Outage |
+
+## Security Testing Orchestration 
+| **SLI**                                                               | **Threshold**                                                | Outage Kind    |
+|-----------------------------------------------------------------------|--------------------------------------------------------------|----------------|
+| STO Call-HTTP to pipeline-service ART                            | Greater than 10 seconds for a consecutive duration of 5 mins | Major Outage |
+| STO Call-HTTP to pipeline-service ART                            | Greater than 5 seconds for a consecutive duration of 5 mins | Partial Outage |
+| STO Core API ART                            | Greater than 30 seconds for a consecutive duration of 5 mins  | Major Outage |
+| STO pipeline - Create/modify                            | Greater than 30 seconds for a consecutive duration of 5 mins   | Partial Outage |
+
+
+
+
+
 
