@@ -57,7 +57,7 @@ This release does not include any new early access features.
       - `org.asynchttpclient.AsyncHttpClientConfig.proxy.user`
       - `org.asynchttpclient.AsyncHttpClientConfig.proxy.password`
 
-- Aborted tasks that were previously assigned displayed an incorrect error message. (PL-41226, ZD-49908, ZD-50652)
+- When steps timed out for aborted tasks that were previously assigned, the UI displayed an incorrect error message. (PL-41226, ZD-49908, ZD-50652)
 
   The UI now displays the correct error message.
 
