@@ -323,7 +323,7 @@ Ensure the **Terraform Plan** step is configured before the apply step.
 
 This section explains the steps to set up a sample trigger.
 
-Harness recommends using the [GitHub Webhook](/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/) trigger because you can make changes in GitHub and based of a branch condition, push, pull request, issue comment, etc. you can fire off the pipeline to make changes. The trigger doesn't need to be GitHub.
+Harness recommends using the [GitHub Webhook](/docs/platform/triggers/triggers-reference) trigger because you can make changes in GitHub and based of a branch condition, push, pull request, issue comment, etc. you can fire off the pipeline to make changes. The trigger doesn't need to be GitHub.
 
 Harness supports the following: 
 - GitHub

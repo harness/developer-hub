@@ -12,9 +12,11 @@ You can schedule Pipeline executions using Cron-based Triggers.
 
 For example, you can have a Pipeline run every Monday at 1AM. Harness will generate the Cron expression (`0 1 * * MON`).
 
-For general triggers reference, go to [Triggers reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For general triggers reference, go to the [Triggers reference](./triggers-reference).
 
+```mdx-code-block
 import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+```
 
 <Variables />
 
@@ -102,8 +104,3 @@ The below example runs on **At 1:45 PM, on day 13 of the month, and on Tuesday, 
 `45 13 13 09 Tue`
 
 ![](./static/schedule-pipelines-using-cron-triggers-21.png)
-
-### See also
-
-* [Triggers reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md)
-

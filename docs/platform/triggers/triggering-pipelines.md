@@ -12,7 +12,7 @@ You can trigger pipelines in response to Git events that match specific payload 
 
 Triggers enable event-driven CI/CD and support the practice of every commit building and/or deploying to a target environment.
 
-This topic demonstrates how to create a trigger for GitHub payload conditions. It shows how to use **Conditions** settings to create a highly-specific trigger; however **Conditions** are optional, and you can create simple triggers that respond to, for example, any Pull Request activity on a certain repo. For information about triggers settings, go to the [Triggers reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md). For information about the Harness Git Experience, go to the [Harness Git Experience Overview](../git-experience/git-experience-overview.md)
+This topic demonstrates how to create a trigger for GitHub payload conditions. It shows how to use **Conditions** settings to create a highly-specific trigger; however **Conditions** are optional, and you can create simple triggers that respond to, for example, any Pull Request activity on a certain repo. For information about triggers settings, go to the [Triggers reference](./triggers-reference.md). For information about the Harness Git Experience, go to the [Harness Git Experience Overview](../git-experience/git-experience-overview.md)
 
 :::info
 
@@ -63,10 +63,10 @@ All triggers in a Harness account have the same URL: `https://app.harness.io/gat
    * A connector is required for all Git trigger types except **Custom**. In the connector's **Credentials** settings, make sure API access is enabled.
    * For **Custom** triggers, you must set up the external tool to send payloads to to the trigger URL. Refer to your tool's documentation for instructions on sending payloads.
 
-4. For **Event**, select a [Git event type](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference#event-and-actions), and, if required, select one or more **Actions**.
+4. For **Event**, select a [Git event type](./triggers-reference.md#event-and-actions), and, if required, select one or more **Actions**.
 5. Configure additional settings, such as **Auto-abort Previous Execution**, **Configure Secret**, and **Polling Frequency**, according to your desired trigger configuration.
 
-For details on trigger settings, go to the [Triggers reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For details on trigger settings, go to the [Triggers reference](./triggers-reference.md).
 
 ## Set trigger conditions
 
@@ -92,7 +92,7 @@ If you want a trigger that uses `OR`, `NOT`, or other operators across the paylo
 
 :::
 
-Some information about **Conditions** is provided in the following sections. For much more detail on **Conditions**, including **Operators**, go to the [Triggers reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md).
+Some information about **Conditions** is provided in the following sections. For much more detail on **Conditions**, including **Operators**, go to the [Triggers reference](./triggers-reference.md).
 
 <details>
 <summary>Branches and Changed Files</summary>
@@ -103,7 +103,7 @@ If you want to specify multiple paths, use the **Regex** operator. You can also 
 
 ![](./static/trigger-pipelines-using-custom-payload-conditions-30.png)
 
-For more information about **Attributes**, **Operators**, **Matching Values**, and **Conditions**, go to the [Triggers reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For more information about **Attributes**, **Operators**, **Matching Values**, and **Conditions**, go to the [Triggers reference](./triggers-reference.md).
 
 </details>
 
@@ -114,7 +114,7 @@ In **Header Conditions**, define attributes for Git webhook header data and corr
 
 In the **Attribute** field, the header expression format is `<+trigger.header['key-name']>`, such as `<+trigger.header['X-GitHub-Event']>`.
 
-For more information about **Attributes**, **Operators**, **Matching Values**, and **Header Conditions**, go to the [Triggers reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For more information about **Attributes**, **Operators**, **Matching Values**, and **Header Conditions**, go to the [Triggers reference](./triggers-reference.md).
 
 </details>
 
@@ -125,7 +125,7 @@ CThese conditions are based on the values of the webhook's JSON payload. Harness
 
 To reference payload values, you use `<+eventPayload.[path-to-key-name]`, for example `<+eventPayload.repository.full_name>`.
 
-For more information about **Attributes**, **Operators**, **Matching Values**, and **Payload Conditions**, go to the [Triggers reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For more information about **Attributes**, **Operators**, **Matching Values**, and **Payload Conditions**, go to the [Triggers reference](./triggers-reference.md).
 
 </details>
 
@@ -147,7 +147,7 @@ Here are some examples of valid combined JEXL and Harness expressions:
 * `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"`
 * `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") && (<+trigger.payload.repository.owner.name> == "wings-software" || <+trigger.payload.repository.owner.name> == "harness")`
 
-For more information about **Attributes**, **Operators**, **Matching Values**, and **JEXL Conditions**, go to the [Triggers reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For more information about **Attributes**, **Operators**, **Matching Values**, and **JEXL Conditions**, go to the [Triggers reference](./triggers-reference.md).
 
 </details>
 
@@ -162,7 +162,7 @@ The trigger is added to the triggers page. The last step is [webhook registratio
 
 ## Register the webhook in the Git provider
 
-For all Git providers supported by Harness, non-custom webhooks are automatically created in the repo. For details about automatically-registered Git events, go to the [Triggers reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For all Git providers supported by Harness, non-custom webhooks are automatically created in the repo. For details about automatically-registered Git events, go to the [Triggers reference](./triggers-reference.md).
 
 
 However, if automatic registration fails or you created a custom webhook, you must manually copy the webhook URL and add it to your repo webhooks.
@@ -201,7 +201,7 @@ For information about other provider's token scopes, go to:
 
    ![](./static/trigger-pipelines-using-custom-payload-conditions-34.png)
 
-For more information about manual webhook registration, go to the [Triggers reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For more information about manual webhook registration, go to the [Triggers reference](./triggers-reference.md).
 
 <details>
 <summary>Common causes of Webhook registration failed errors</summary>

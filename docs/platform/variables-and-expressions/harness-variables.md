@@ -1668,7 +1668,7 @@ For example:
 * `<+trigger.event>`
 	+ PR, PUSH, etc.
 
-For a complete list, see [Triggers Reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For a complete list, see [Triggers Reference](../triggers/triggers-reference.md).
 
 ### Triggers and RBAC
 

@@ -882,7 +882,7 @@ gsutil -m cp \
   }
   ```
 
-- You can add metadata or [JEXL conditions](/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#jexl-conditions) on artifact triggers just like custom triggers. (CDS-51928)
+- You can add metadata or [JEXL conditions](/docs/platform/triggers/triggers-reference/#jexl-conditions) on artifact triggers just like custom triggers. (CDS-51928)
 
 - Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
   
