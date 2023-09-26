@@ -46,15 +46,11 @@ Select the Jenkins server you added as a Harness Jenkins connector. For more inf
 
 ## Polling Frequency
 
-Set the polling interval for verifying the progress of step execution.
+Set the polling interval for verifying the progress of step execution. Must be less than the timeout configured for the step.
 
-:::note
+Default: 5 sec
 
-* Default polling frequency is 5 seconds.
-* Polling frequency should not be less than 5 seconds.
-* Polling frequency should be less than **Timeout** configured for step.
-
-:::
+Minimum value: 5 sec
 
 ## Job/Folder name
 
