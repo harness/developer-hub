@@ -2223,7 +2223,7 @@ The following JSON sample creates a custom role with the required permissions. T
 <details>
 <summary>Use Nexus artifacts</summary>
 
-You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference).
+You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/connectors/artifact-repositories/nexus-connector-settings-reference).
 
 ```mdx-code-block
 import Tabs10 from '@theme/Tabs';
@@ -2385,7 +2385,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
   <TabItem10 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference).
+You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/connectors/artifact-repositories/nexus-connector-settings-reference).
 
 To add an artifact from Nexus, do the following:
 

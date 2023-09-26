@@ -181,7 +181,7 @@ Currently, this feature is behind the Feature Flag `NG_NEXUS_ARTIFACTORY`. Cont
 
    ![](./static/add-artifacts-for-kubernetes-deployments-04.png)
 
-1. Select a [Nexus Connector](/docs/platform/Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference) or create a new one.
+1. Select a [Nexus Connector](/docs/platform/connectors/artifact-repositories/nexus-connector-settings-reference) or create a new one.
 
    ![](./static/add-artifacts-for-kubernetes-deployments-05.png)
 
@@ -209,7 +209,7 @@ Based on your server and network configuration, choose one of the following and 
   
       ![](./static/add-artifacts-for-kubernetes-deployments-09.png)
   
-      For details on the settings, see [Nexus Connector Settings Reference](/docs/platform/Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference).
+      For details on the settings, see [Nexus Connector Settings Reference](/docs/platform/connectors/artifact-repositories/nexus-connector-settings-reference).
   
       You can optionally add validations to Tags. To do this, click the settings icon and select the validation type.
   

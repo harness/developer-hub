@@ -1,7 +1,7 @@
 ---
 title: Connect to an Artifact repository
 description: Doc explaining steps to create Artifactory Repository connector.
-sidebar_position: 3
+sidebar_position: 2
 helpdocs_topic_id: xxvnk67c5x
 helpdocs_category_id: o1zhrfo8n5
 helpdocs_is_private: false
@@ -155,7 +155,7 @@ The AWS ECR authorization token in only valid for 12 hours. [This is an AWS limi
 
 ### Add a Nexus repository
 
-For details on settings and permissions, see [Nexus Connector Settings Reference](../../../platform/pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference.md).
+For details on settings and permissions, see [Nexus Connector Settings Reference](./nexus-connector-settings-reference.md).
 
 1. Open a Harness Project.
 2. In **Project Setup**, select **Connectors**.

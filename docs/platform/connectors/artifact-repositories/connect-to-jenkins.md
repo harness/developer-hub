@@ -1,7 +1,7 @@
 ---
 title: Connect to Jenkins
 description: Connect Harness to Jenkins using a Harness Jenkins Connector.
-sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: 7frr40zml5
 helpdocs_category_id: o1zhrfo8n5
 helpdocs_is_private: false
@@ -59,7 +59,7 @@ If you are using the Jenkins SaaS (cloud) edition, the URL is in your browser's 
 
 If you are using the standalone edition of Jenkins, the URL is located in **Manage Jenkins**, **Jenkins Location**:
 
-![](../../connectors/static/connect-to-jenkins-10.png)
+![](../static/connect-to-jenkins-10.png)
 
 ### Step 3: Authentication
 

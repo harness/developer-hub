@@ -2496,7 +2496,7 @@ To add an artifact from an S3 bucket, do the following:
 <details>
 <summary>Use Nexus artifacts</summary>
 
-You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference/).
+You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/connectors/artifact-repositories/nexus-connector-settings-reference).
 
 
 ```mdx-code-block
