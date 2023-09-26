@@ -8,6 +8,8 @@ redirect_from: /docs/security-testing-orchestration/sto-techref-category/grype/g
 
 You can scan container images using [Grype](https://github.com/anchore/grype).
 
+For information about setting up Grype in an air-gapped environment, go to [Set up Grype in air-gapped environments](/docs/security-testing-orchestration/sto-techref-category/grype/grype-setup-in-airgapped.md).
+
 
 ## Important notes for running Grype scans in STO
 
@@ -301,12 +303,3 @@ import StoLegacyIngest from '../shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
-## Set up Grype in an airgapped environment
-
-#### Initial setup 
-
-- Set up a private registry per your local container images, Grype databases, and support files. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
-
-- Set up Grype per [Offline and air-gapped environments](https://github.com/anchore/grype#offline-and-air-gapped-environments) in the Grype documentation. 
-
-  The Grype container image provided by Harness includes a vulnerability database out of the box. However, you need to 

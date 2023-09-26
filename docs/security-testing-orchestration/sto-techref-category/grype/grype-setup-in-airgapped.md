@@ -5,7 +5,7 @@ sidebar_label: Set up Grype in air-gapped environments
 sidebar_position: 20
 ---
 
-This topic describes how to set up Anchore Grype in an air-gapped environment. It is provided as a supplement to [Offline and air-gapped environments](https://github.com/anchore/grype#offline-and-air-gapped-environments) in the Grype documentation. 
+This topic describes how to set up Grype in an air-gapped environment. It is provided as a supplement to [Offline and air-gapped environments](https://github.com/anchore/grype#offline-and-air-gapped-environments) in the Grype documentation. 
 
 ## Before you begin
 
