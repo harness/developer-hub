@@ -42,5 +42,13 @@ Say Gateway has a partial outage for 50 minutes then:
 | **SLI**                                                               | **Threshold**                                                | Outage Kind    |
 |-----------------------------------------------------------------------|--------------------------------------------------------------|----------------|
 | Dashboard ART                             | Greater than 10 seconds for a consecutive duration of 5 mins(P95) | Partial Outage |
-| Pipeline and Workflow executions ART (manager > /api/executions)      | Greater than 30 seconds for a consecutive duration of 5 mins | Partial Outage |
+| Event In Queue Time      | Greater than 30 seconds for a consecutive duration of 10 mins | Major Outage |
+| Event In Queue Time      | Greater than 20s for a consecutive duration of 10 mins | Partial Outage |
+| List Executions P95 (Pipeline execution summary)     | If greater than 10 seconds for 5 mins consecutive then major outage| Major Outage |
+| List Executions P95 (Pipeline execution summary)`     | If greater than 5 seconds for 5 mins consecutive then partial outage| Partial Outage |
+| List Executions P95 (Pipeline list)     | If greater than 10 seconds for 5 mins consecutive then major outage| Major Outage |
+| List Executions P95 (Pipeline list)`    | If greater than 5 seconds for 5 mins consecutive then partial outage| Partial Outage |
+| GitOps APIs ART     | Greater than 10 seconds for a consecutive duration of 5 mins| Major Outage |
+| GitOps APIs ART     | Greater than 5 seconds for a consecutive duration of 5 mins| Partial Outage |
+
 
