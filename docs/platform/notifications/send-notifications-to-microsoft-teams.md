@@ -1,7 +1,7 @@
 ---
 title: Send notifications to Microsoft Teams
 description: This topic explains how to send user group notifications using Microsoft Teams.
-# sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: xcb28vgn82
 helpdocs_category_id: y9pmm3ig37
 helpdocs_is_private: false

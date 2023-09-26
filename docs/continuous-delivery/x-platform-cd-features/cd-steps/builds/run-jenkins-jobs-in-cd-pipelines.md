@@ -44,6 +44,14 @@ In your CD stage's **Execution**, select **Add Step**, then select **Jenkins**.
 
 Select the Jenkins server you added as a Harness Jenkins connector. For more information, go to [connect to Jenkins](/docs/platform/connectors/artifact-repositories/connect-to-jenkins).
 
+## Polling Frequency
+
+Set the polling interval for verifying the progress of step execution. Must be less than the timeout configured for the step.
+
+Default: 5 sec
+
+Minimum value: 5 sec
+
 ## Job/Folder name
 
 Select the Jenkins job (also called a project) to execute. The list is automatically populated using the Jenkins server you set up in the Jenkins connector you selected.

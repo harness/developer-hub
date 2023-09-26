@@ -23,7 +23,30 @@ When [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/ai
 
 ### Continuous Delivery, version 80711
 
-- Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-67121)
+- Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is behind the Feature Flag `POST_PROD_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-67121)
+
+- The Services Dashboard includes new support for Helm Chart deployments. (CDS-73310)
+
+  :::note Important Notes
+  
+  - This information appears only for services that were deployed using Helm charts. 
+  
+  - Currently, this feature is behind the Feature Flag `CDC_SERVICE_DASHBOARD_REVAMP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+  
+  :::
+
+  This dashboard includes the following enhancements:
+
+  - Tiles in the service overview (**Environments** tab) now show the Helm chart versions (if any) deployed in each environment.
+
+    <docimage path={require('./static/cds-73310-environments-and-groups-tiles-callouts.png')} width="40%" height="40%" title="Click to view full size image" /> 
+
+  - The Environment and Artifacts tables now show Helm chart information about each instance.  
+  - The **Chart Versions** tab shows tiles for each Helm chart used to deploy the service (and a tile for any non-Helm deployments). Each tile shows the instances/artifact, environment, and latest time for each deployment. 
+
+    <docimage path={require('./static/cds-77310-chart-tab-panels.png')} width="75%" height="75%" title="Click to view full size image" />   
+
+  - The Pipeline Executions table for the service now shows the Helm chart version in the drilldown information for that execution. 
 
 ## Previous releases
 

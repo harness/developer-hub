@@ -185,11 +185,15 @@ To configure your Redis database, do the following:
 
 6. Set the database memory to 2GB.
 
+7. Skip the database password.
+
+<!---
 7. Enter the database password. 
+--->
 
-8. Select **Create**.
+9. Select **Create**.
 
-9. Copy the **Internal Endpoint** for later use.
+10. Copy the **Internal Endpoint** for later use.
 
 ### Test connectivity
 
@@ -230,15 +234,33 @@ To test your connectivity using, do the following:
 After you've tested your connectivity, you're ready to configure your Harness environment.
 
 To configure your Harness environment and Helm chart, do the following:
+
+<!--- 
 - Create a secret in the namespace where harness is installed with following data
    ```yaml
    data:
      root-password: <REDIS_PASSWORD>
      root-username: ""
-   ```
+   ``` 
+--->
+
 - Add the following override entries to your newly-installed Harness Redis instance.
 
    ```yaml
+   global:
+     database:
+       redis:
+         installed: false
+         hosts:
+         - <YOUR_INTERNAL_ENDPOINT_AND_PORT>
+         secretName: ""
+         userKey: ""
+         passwordKey: ""
+   ```
+
+
+<!---
+```yaml
    global:
      database:
        redis:
@@ -249,3 +271,7 @@ To configure your Harness environment and Helm chart, do the following:
          userKey: "ROOT_USERNAME"
          passwordKey: "ROOT_PASSWORD"
    ```
+
+--->
+
+
