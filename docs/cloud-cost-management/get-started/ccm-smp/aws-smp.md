@@ -580,16 +580,14 @@ Make a note of the following:
 git clone git@github.com:harness/helm-charts.git
 cd main/src/harness
 ```
-2. Upgrade charts if you're already using Harness Self-managed Enterprise Edition services.
+2. Upgrade charts if you're already using Harness Self-managed Enterprise Edition services. Perform the following steps to update the override files:
+     1. Retrieve the current override values provided during the installation or upgrade of the Helm charts.
+          ```
+          helm get values <chart-name> -n <namespace> > override.yaml
+          ```
+          
+      1. After obtaining the override file, you can make necessary modifications based on the type of environment.
 
-a. Retrieve the current override values provided during the installation or upgrade of the Helm charts. 
-
-```
-helm get values <chart-name> -n <namespace> > override.yaml
-```
-For example, `helm upgrade ccm . -n harness -f old_values.yaml`.
-
-  b. After obtaining the override file, you can make necessary modifications based on the type of environment, whether it's a connected or air-gapped setup.
 
 <details>
 <summary>Override file changes for a connected environment</summary>
@@ -617,8 +615,6 @@ ccm:
       enabled: true
 ```
 </details>
-
-
 
 <details>
 <summary>Override file changes for an air-gapped environment</summary>
@@ -694,13 +690,14 @@ ccm:
 ```
 </details>
 
-c. After making the necessary updates to the override file, you can proceed with the Helm chart upgrade.
+3. After making the necessary updates to the override file, you can proceed with the Helm chart upgrade.  
+
 
 ```
 helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml 
 ```
-
-For example, `helm upgrade ccm . -n harness -f old_values.yaml`.
+          
+    
 
 ## Handling Kubernetes secrets
 
