@@ -63,13 +63,7 @@ Drone images are updated as needed. All Drone image updates are backward-compati
 
 You can use the Harness CI `execution-config` API to update the images used in your infrastructure.
 
-:::info Authentication
-
-You can use either `X-API-KEY: $API_KEY` or `Authorization: Bearer $token` for authentication.
-
-For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
-
-:::
+API key authentication is required. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io/#section/Introduction/Authentication).
 
 1. Send a `get-default-config` request to get a list of the latest Harness CI build images and tags. You can use the `infra` parameter to get `k8` images or `VM` images.
 
