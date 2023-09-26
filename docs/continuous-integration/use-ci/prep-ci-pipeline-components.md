@@ -151,3 +151,5 @@ Harness CI provides two interchangeable modes for creating pipelines: The **Visu
 You can freely switch between the two editors. When editing a pipeline in Harness, use the selector at the top of the **Pipeline Studio** to switch between the **Visual** and **YAML** editors.
 
 ![](./static/harness-yaml-quickstart-21.png)
+
+For more information about Harness YAML, go to the [Harness YAML overview](/docs/platform/pipelines/harness-yaml-quickstart).

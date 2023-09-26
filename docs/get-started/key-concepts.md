@@ -72,7 +72,7 @@ You can create pipelines visually or using code, and switch back and forth as ne
 | **Visual** | **YAML** |
 | ![](static/pipeline_visual.png) | ![](static/pipeline_yaml.png) |
 
-See [Harness YAML Quickstart](../platform/pipelines/harness-yaml-quickstart.md).
+For more information about YAML in Harness, go to the [Harness YAML overview](../platform/pipelines/harness-yaml-quickstart.md).
 
 Pipeline Studio guides you in setting up and running your pipelines with ready-to-use steps.
 

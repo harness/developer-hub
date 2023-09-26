@@ -1,7 +1,7 @@
 ---
 title: Webhook triggers reference
 description: This topic provides settings information for triggers.
-# sidebar_position: 2
+sidebar_position: 9
 helpdocs_topic_id: rset0jry8q
 helpdocs_category_id: lussbhnyjt
 helpdocs_is_private: false
