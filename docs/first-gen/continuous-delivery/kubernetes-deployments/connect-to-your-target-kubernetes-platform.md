@@ -52,7 +52,6 @@ For example:
 ```
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n pod-test
 ```
-
 Now the script will run using the correct credentials.
 
 #### Target Namespace
