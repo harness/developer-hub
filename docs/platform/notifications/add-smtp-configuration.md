@@ -1,7 +1,7 @@
 ---
 title: Add SMTP configuration
 description: Explains how to configure SMTP for email-based deployment notifications, approvals, and tracking.
-# sidebar_position: 2
+sidebar_position: 2
 helpdocs_topic_id: d43r71g20s
 helpdocs_category_id: y9pmm3ig37
 helpdocs_is_private: false
