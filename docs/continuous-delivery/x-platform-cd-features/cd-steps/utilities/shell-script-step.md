@@ -351,7 +351,7 @@ If you select **Target Host**, enter the following:
 * **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, go to [add SSH keys](/docs/platform/secrets/add-use-ssh-secrets).
 
 ### Running Scripts with a Delegate Inside of the Target Cluster
-If your deployment type is Kubernetes, then you can select the checkbox Include Infrastructure Selectors to use a Delegate installed inside the target cluster. This will will force the shell script to run on a delegate with the selectors defined by the k8s connector defined in the infrastructure definition.
+If your deployment type is Kubernetes, then you can select the checkbox **Include Infrastructure Selectors** to use a Delegate installed inside the target cluster. This will will force the shell script to run on a delegate with the selectors defined by the k8s connector defined in the infrastructure definition.
 
 ![](./static/include-infra-selectors.png)
 
