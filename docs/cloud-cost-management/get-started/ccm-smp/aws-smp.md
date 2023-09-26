@@ -196,7 +196,7 @@ You need to perform the following tasks to set up CCM for AWS:
 
 </details>
 
-:::important
+:::important note
 Make a note of your AWS Access key and Secret key.
 :::
 ## Create Amazon S3 Bucket
@@ -224,7 +224,6 @@ Make a note of your AWS Access key and Secret key.
         }
     ]
 }
-
   ```
   
 
@@ -565,7 +564,7 @@ Upload the YAML template to S3 bucket `harness-ccm-service-template-bucket-<acco
   <docimage path={require('./static/aws-upload-cf-tempalte.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
-:::important
+:::important note
 Make a note of the following: 
 
 - The names of the two S3 buckets.
@@ -575,24 +574,25 @@ Make a note of the following:
 
 ## Deploy workloads via Helm charts
 
-1. Clone chart repository
+1. Clone the chart repository.
 
 ```
 git clone git@github.com:harness/helm-charts.git
 cd main/src/harness
-
 ```
 2. Upgrade charts if you're already using Harness Self-managed Enterprise Edition services.
 
+a. Retrieve the current override values provided during the installation or upgrade of the Helm charts. 
 
 ```
 helm get values <chart-name> -n <namespace> > override.yaml
-update override.yaml with ccm specific configuration provided below
-helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml
 ```
-Example: `helm upgrade ccm . -n harness -f old_values.yaml`
+For example, `helm upgrade ccm . -n harness -f old_values.yaml`.
 
-### Connected environment
+  b. After obtaining the override file, you can make necessary modifications based on the type of environment, whether it's a connected or air-gapped setup.
+
+<details>
+<summary>Override file changes for a connected environment</summary>
 
 ```
 global:
@@ -616,10 +616,15 @@ ccm:
     clickhouse:
       enabled: true
 ```
+</details>
 
-### Air-gapped environment
+
+
+<details>
+<summary>Override file changes for an air-gapped environment</summary>
 
 CCM leverages AWS APIs that require connectivity from the isolated (air-gapped) instance. To grant access to these AWS APIs, establish VPC endpoints for the respective AWS services. For services lacking VPC endpoints, use a proxy to facilitate access.
+
 
 ```
 global:
@@ -659,7 +664,7 @@ ccm:
       enabled: true
   batch-processing:
     additionalConfigs:
-      AWS_CUR_BILLING: false
+      AWS_CUR_BILLING: 'false'
     cloudProviderConfig:
       S3_SYNC_CONFIG_BUCKET_NAME: <S3_SYNC_CONFIG_BUCKET_NAME> [AWS Setup - bucket name from here 'harness-ccm-service-data-bucket-<accountid>']
       S3_SYNC_CONFIG_REGION: <S3_SYNC_CONFIG_REGION> [AWS Setup - Create S3 buckets step - Use region from here]
@@ -687,7 +692,15 @@ ccm:
     clickhouse:
       enabled: true
 ```
+</details>
 
+c. After making the necessary updates to the override file, you can proceed with the Helm chart upgrade.
+
+```
+helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml 
+```
+
+For example, `helm upgrade ccm . -n harness -f old_values.yaml`.
 
 ## Handling Kubernetes secrets
 
