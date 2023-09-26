@@ -288,7 +288,7 @@ Note that while parallelism for TI can improve the total time it takes to run al
 To enable parallelism for TI, you must set a parallelism `strategy` on either the **Run Tests** step or the stage where you have the **Run Tests** step, add the `enableTestSplitting` parameter to your **Run Tests** step, and use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) to create a unique results file for each run. Optionally, you can include the `testSplitStrategy` parameter and environment variables to differentiate parallel runs.
 
 1. Go to the pipeline where you want to enable parallelism for TI.
-2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
+2. [Define the parallelism strategy](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
 
    You can do this in either the visual or YAML editor. In the visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
 

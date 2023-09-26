@@ -218,7 +218,7 @@ matrix-pipeline-example.yml
 ```
 ### See also
 
-* [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
-* [Looping Strategies Overview: Matrix, Repeat, and Parallelism](looping-strategies-matrix-repeat-and-parallelism.md)
-* [Speed Up CI Test Pipelines Using Parallelism](speed-up-ci-test-pipelines-using-parallelism.md)
+* [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md)
+* [Looping Strategies Overview: Matrix, Repeat, and Parallelism](./looping-strategies-matrix-repeat-and-parallelism.md)
+* [Use parallelism to improve test times](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism)
 

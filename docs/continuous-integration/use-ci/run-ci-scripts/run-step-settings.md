@@ -52,7 +52,7 @@ This example runs `pytest`, includes [code coverage](../set-up-test-intelligence
 
 :::tip
 
-You can use `parallelism` and `split_tests` to [define test splitting in a Run step](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting) and improve test times.
+You can use `parallelism` and `split_tests` to [define test splitting in a Run step](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting) and improve test times.
 
 :::
 

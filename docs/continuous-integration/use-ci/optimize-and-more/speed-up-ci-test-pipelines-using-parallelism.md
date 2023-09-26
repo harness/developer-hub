@@ -1,14 +1,16 @@
 ---
-title: Speed up CI test pipelines using parallelism
+title: Use parallelism to improve test times
 description: Use parallelism to run tests in parallel.
-# sidebar_position: 2
+sidebar_position: 4
 helpdocs_topic_id: kce8mgionj
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism
 ---
 
-To decrease test cycle time, utilize parallelism by dividing tests into multiple sets and running them in parallel. *Parallelism* is one of the [looping strategies](looping-strategies-matrix-repeat-and-parallelism.md) available in Harness pipelines. Whenever it's possible to divide the tasks of a particular step or stage into multiple sets and execute them concurrently, parallelism can be used to [speed things up](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md).
+To decrease test cycle time, utilize parallelism by dividing tests into multiple sets and running them in parallel. *Parallelism* is one of the [looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism.md) available in Harness pipelines. Whenever it's possible to divide the tasks of a particular step or stage into multiple sets and execute them concurrently, parallelism can be used to [speed things up](./optimizing-ci-build-times.md).
 
 Most CI pipelines are set up to run tests with every new commit. When you [set up parallelism in a pipeline](#set-up-parallelism-in-a-pipeline), you must specify the following:
 
@@ -29,9 +31,9 @@ The diagram below demonstrates how parallelism can accelerate your CI pipelines.
 
 ## Important notes
 
-* When using parallelism, it's important to take into account any resource limitations that exist in your build infrastructure. For more information, go to [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md).
+* When using parallelism, it's important to take into account any resource limitations that exist in your build infrastructure. For more information, go to [Best Practices for Looping Strategies](/docs/platform/pipelines/best-practices-for-looping-strategies.md).
 * You can apply a parallelism strategy to an entire stage or to individual steps within a stage.
-* When implementing parallelism in a step rather than a stage, you must ensure that each test-group step generates a report with a unique filename to prevent conflicts. You can accomplish this by utilizing the `<+strategy.iteration>` [expression](/docs/platform/Variables-and-Expressions/harness-variables) in your `reports.paths`. This expression represents the test group's parallel run index, ranging from `0` to `parallelism - 1`.
+* When implementing parallelism in a step rather than a stage, you must ensure that each test-group step generates a report with a unique filename to prevent conflicts. You can accomplish this by utilizing the `<+strategy.iteration>` [expression](/docs/platform/variables-and-expressions/harness-variables) in your `reports.paths`. This expression represents the test group's parallel run index, ranging from `0` to `parallelism - 1`.
 * To publish your test results, your output files must be in [JUnit](https://junit.org/junit5/) XML format. How you publish your test results depends on the specific language, test runner, and formatter used in your repo. For more information, go to the [Publish test reports section](#define-the-test-reports).
 * If your stage utilizes Harness Cloud build infrastructure, you can directly call the `split_tests` binary from the **Run** step's `command`. For example, you would use `split_tests` instead of `/addon/bin/split_tests`.
 
@@ -82,7 +84,7 @@ The following YAML example shows a **Run** step that uses [pytest](https://docs.
 
 :::info
 
-The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence).
+The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
 
 :::
 
@@ -113,7 +115,7 @@ To define these attributes in the Pipeline Studio, go to the step that implement
 
 3. Set up the `split_tests` command with the splitting criteria based on file size (`--split-by file_size`). For more information, go to [Define test splitting](#define-test-splitting).
 4. Define your test reports. Your reports must be in JUnit XML format. For more information, go to [Publish test reports](#publish-test-reports).
-5. Run your pipeline to make sure all your steps complete successfully. You can see the parallel copies of your step running on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds).
+5. Run your pipeline to make sure all your steps complete successfully. You can see the parallel copies of your step running on the [Build details page](../viewing-builds).
 
    ![Parallel steps in a build.](./static/speed-up-ci-test-pipelines-using-parallelism-51.png)
 
@@ -163,7 +165,7 @@ import TabItem from '@theme/TabItem';
 
 :::info
 
-The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence).
+The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
 
 :::
 
@@ -343,7 +345,7 @@ pipeline:
 
 ## See also
 
-* [Optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md)
-* [Looping Strategies Overview: Matrix, For Loop, and Parallelism](../pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
-* [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
-* [Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)
+* [Optimize and enhance CI pipelines](./optimizing-ci-build-times.md)
+* [Looping Strategies Overview: Matrix, For Loop, and Parallelism](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
+* [Best Practices for Looping Strategies](/docs/platform/pipelines/best-practices-for-looping-strategies.md)
+* [Run a Stage or Step Multiple Times using a Matrix](/docs/platform/pipelines/run-a-stage-or-step-multiple-times-using-a-matrix.md)

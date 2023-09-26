@@ -625,5 +625,5 @@ Harness provides inline pipeline storage or storing [Pipeline YAML (Pipeline-as-
 Review the following information before proceeding with migration:
 
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
-* [Speed up Harness CI pipelines using parallelism](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)
+* [Speed up Harness CI pipelines using parallelism](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism)
 * [Harness Platform documentation](/docs/platform)

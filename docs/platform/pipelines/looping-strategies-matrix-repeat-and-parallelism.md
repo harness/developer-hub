@@ -161,8 +161,8 @@ For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
 
 ## See also
 
-* [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
-* [Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)
-* [Speed Up CI Test Pipelines Using Parallelism](../pipelines/speed-up-ci-test-pipelines-using-parallelism.md)
+* [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md)
+* [Run a Stage or Step Multiple Times using a Matrix](./run-a-stage-or-step-multiple-times-using-a-matrix.md)
+* [Use parallelism to improve test times](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism)
 * [Optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md)
 
