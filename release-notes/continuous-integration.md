@@ -37,7 +37,7 @@ When [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/ai
 
 ### Fixed issues
 
-* (CI-9240)
+* To avoid conflicts with user-provided loggers for .NET builds, Harness installs and injects the default logger only if a logger is not specified in the [Run Tests step's Build Arguments](/docs/continuous-integration/use-ci/set-up-test-intelligence/#build-arguments). (CI-9240)
 * Fixed an issue with UI rendering of error messages related to Test Intelligence call graph visualizations. (CI-9198)
 * Fixed two issues related to [runtime input](/docs/platform/variables-and-expressions/runtime-inputs#runtime-inputs) (`<+input>`) with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). (CI-9177)
    * Previously, if you used runtime input for [custom cache paths](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-paths), Harness wouldn't prompt for input and, instead, ran the pipeline with an empty path. Now, Harness correctly prompts for this input when you run the pipeline.
