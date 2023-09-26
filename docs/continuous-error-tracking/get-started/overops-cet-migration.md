@@ -1,6 +1,6 @@
 ---
 title: Upgrade from OverOps to CET
-description: A comprehensive guide to assist you in transitioning from OverOps to CET (Continuous Error Tracking).
+description: A comprehensive guide to assist you in transitioning from OverOps to CET.
 sidebar_position: 21
 redirect_from:
   - /docs/continuous-error-tracking/getting-started/cet-setup
