@@ -135,7 +135,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 - Harness Self-Managed Enterprise Edition now supports self-managed MinIO object storage for disaster recovery. (SMP-1671)
 
 <!--- 
-   For more information, go to [Self-managed object storage](/docs/self-managed-enterprise-edition/advanced-configurations/self-managed-object-storage-dr).
+   For more information, go to [Self-managed object storage](/tutorials/self-managed-enterprise-edition/use-self-managed-minio-object-storage/).
 --->
 
 - You can now apply Harness' recommended high performance configuration to reach a scale of 1000 concurrent pipelines. (SMP-1836)
