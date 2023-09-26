@@ -54,9 +54,7 @@ This release does not include any new early access features.
 
 - With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631, ZD-48998, ZD-49702)
 
-This issue is fixed. Harness catches the exception and continues with delegate startup.
-
-- Need draft RN (CDS-76433, ZD-48363)
+   This issue is fixed. Harness catches the exception and continues with delegate startup.
 
 ### Hotfixes
 
