@@ -116,5 +116,6 @@ To update your system to use the latest database:
          ```  
 
       2. Download the latest archive and transfer it to your local registry.
-   2. Update the `listing.json` file in your local registry: add a new entry with the `"built"`, `"version"`, `"url"`, and `"checksum"` values for the database you just added.  
+   2. Update the `listing.json` file in your local registry: add a new entry with the `"built"`, `"version"`, `"url"`, and `"checksum"` values for the database you just added. 
+      Make sure you update the `"url"` to point to your local registry. 
  
