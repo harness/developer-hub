@@ -11,7 +11,7 @@ This topic describes how to set up Anchore Grype in an air-gapped environment. I
 
 To run Grype scans in an air-gapped environment, you need the following:
 
-- A private registry or local file server for your local container images, Grype databases, support files, and other artifacts. You need a local web server so that you can request local artifacts via HTTP and HTTPS.
+- A private registry or local file server for your local container images, Grype databases, support files, and other artifacts. You need a local web server so that the Grype step can request local artifacts via HTTP and HTTPS.
 
   Documentation about setting up a private registry is outside the scope of this topic. For more information, go to the documentation for the artifact tool you want to use. One popular tool for air-gapped environments is JFrog Artifactory; [this blog post](https://jfrog.com/blog/using-artifactory-with-an-air-gap/) provides a comprehensive overview. 
 
@@ -44,12 +44,9 @@ The Grype container image provided by Harness includes the latest database at th
 
 ## Production setup
 
-1. To run Grype in a production environment, you need to set up a mechanism to transfer the latest Grype  database to your local environment. The following steps outline the basic workflow.
-
-   1. Install the Grype scanner in an online environment. You need this to download the latest databases from Grype. 
-      For more information, go to [Installation](https://github.com/anchore/grype#installation) in the Grype documentation.  
+To run Grype in a production environment, you need to set up a mechanism to transfer the latest Grype  database to your local registry. The following steps outline the basic workflow. 
    
-   2. Add a copy of the latest Grype database to your local registry: 
+   1. Add a copy of the latest Grype database to your local registry: 
       1. Download a JSON of the latest databases from this URL:
 
          ```http
@@ -60,28 +57,46 @@ The Grype container image provided by Harness includes the latest database at th
 
       2. Download the latest database and upload it to your local registry.    
    
-   3. Set up a copy of `listing.json` in your local registry. This file specifies the local Grype databases available for running scans.
+   2. Set up a copy of `listing.json` in your local registry. This file specifies the local Grype databases available for running scans.
       1. Download a copy of the [`listing.json`](https://github.com/anchore/grype/blob/main/grype/db/test-fixtures/listing.json) file and upload it to your local registry.  
-      2. Edit your local `listing.json` so that it has one entry with the  `"built"`, `"version"`, `"url"`, and `"checksum"` values for the database you just added to the registry. 
-      3. Upload your local `listing.json` to your local registry. 
+      2. Edit your local `listing.json` so that it has one entry with the  `"built"`, `"version"`, `"url"`, and `"checksum"` values for the database you just uploaded. 
 
-      For more information, go to [Grype's databases](https://github.com/anchore/grype#grypes-database) in the Grype documentation.
+         Your `listing.json` should now look something like this example. Note that the `url` now points to the local database. 
+
+         ```json
+         {
+         "available": {
+            "1": [
+               {
+               "built": "2023-09-24T01:25:55Z",
+               "checksum": "sha256:a676908681232596b549934651e65109b11dce1c6a86c034a32110653fd95e71",
+               "url": "https://artifactory.myorg.internal:443/artifactory/example-repo-local/grype/vulnerability-db_v1_2023-09-24T01:25:55Z_c1e349e7e8023eb909f4.tar.gz",
+               "version": 1
+               }
+               ]
+            }
+         }
+         ```
+
+      3. Upload your updated `listing.json` to your local registry. 
+
+      For more information about Grype databases, go to [Grype's databases](https://github.com/anchore/grype#grypes-database) in the Grype documentation.
    
-   4. Add this setting to the Grype step in your Harness pipeline: 
+   3. Add this setting to the Grype step in your Harness pipeline: 
 
-      - `GRYPE_DB_UPDATE_URL` = The URL to the `listing.json` in your local registry, for example `http://my-local-registry:<PORT_NUMBER>/grype-dbs/listing.json`
+      - `GRYPE_DB_UPDATE_URL` = The URL to the `listing.json` in your local registry, for example `ttps://artifactory.myorg.internal:443/artifactory/example-repo-local/grype/listing.json`
 
-      When you run a scan with this setup, Grype uses the most recent database specified in `listing.json`.
-      <!-- Need to confirm this. -->
-
-   5. Run the pipeline again and verify that the Grype step runs as intended.     
+   4. Run the pipeline again and verify that the Grype step runs as intended.     
 
 2. Before your Grype step is production-ready, you need to configure the Grype scanner to check the database build time and fail the scan if the database is stale. To enable the staleness check, set the following settings in the Grype step as follows:
 
    1. `GRYPE_DB_VALIDATE_AGE` = `TRUE` Enables the staleness check for the database. (You added this setting as part of the [initial setup](#initial-setup).)
    2. `GRYPE_DB_MAX_ALLOWED_BUILT_AGE` = The maximum allowable age of a database before it is considered stale and the Grype scan fails. Specify the age using [golang's time duration syntax](https://pkg.go.dev/time#ParseDuration). Valid examples include `24h` (one day) and `120h` (five days). 
 
-   <!-- TBD how often does Grype update these databases? Is there a "good" time window we can specify as a default? -->
+<!-- 
+TBD 1 When you run a scan with this setup, does Grype use the most recent database specified in `listing.json`?
+TBD 2 Any specific guidance for a good max-allowed time? It looks like Grype updates their databases more-or-less daily.
+-->
 
 ## Update the database (ongoing)
 
