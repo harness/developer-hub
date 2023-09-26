@@ -1,6 +1,6 @@
 ---
-title: OverOps to CET Upgrade Guide
-description:  Guide to help users upgrade to CET from OverOps
+title: Upgrade from OverOps to CET
+description: A comprehensive guide to assist you in transitioning from OverOps to CET (Continuous Error Tracking).
 sidebar_position: 21
 redirect_from:
   - /docs/continuous-error-tracking/getting-started/cet-setup
@@ -20,7 +20,7 @@ Upgrading your service from OverOps to CET involves the follwing steps:
 
    After successfully installing the agent and ensuring that your application is running, you'll be able to view the events reported by the agent.
 
-5. Configure notifications for timely event alerts. To learn how to notifications, go to [Notifications](./cet-notifications.md).
+5. Configure notifications for timely event alerts.
 
 
 ## Select an Appropriate Service for CET Onboarding POC
@@ -142,8 +142,6 @@ To learn about supported operating systems such as Java Virtual Machine (JVM) an
 | Graviton |  [Download](https://get.et.harness.io/releases/latest/arm/harness-et-agent.tar.gz) |
 | Windows | [Download](https://get.et.harness.io/releases/latest/win/harness-et-agent.zip) |
 | AIX | [Download](https://get.et.harness.io/releases/latest/aix/harness-et-agent.tar.gz) |
-
-
 
 
 ### Install an Error Tracking Agent
@@ -318,6 +316,11 @@ After installing Error Tracking Agent, you should verify that it is connected to
 - Expand **PROJECT SETUP** and then select **Agents**.
 
     A comprehensive list of Error Tracking Agents is displayed along with the information such as service name, environment, deployment version, Agent version, Agent status, token name, and so on. Ensure that the Agent that you installed is listed, and the status is **CONNECTED**.
+
+
+## Configure notifications
+
+Configure notifications for timely event alerts. To learn how to notifications, go to [Notifications](/docs/continuous-error-tracking/cet-notifications.
 
 
 ## Next steps
