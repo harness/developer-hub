@@ -72,9 +72,9 @@ trigger:
 
 ### Trigger object metadata
 
-* **Name** and **Id**: Enter a name for the trigger. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the trigger is saved. Once saved, you can change the name but not the Id.
+* **Name** and **Id**: Enter a name for the trigger. Harness automatically assigns an **Id** ([Entity Identifier Reference](../references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the trigger is saved. Once saved, you can change the name but not the Id.
 * **Description**: Optional text string.
-* **Tags**: Go to the [Tags Reference](../../references/tags-reference.md).
+* **Tags**: Go to the [Tags Reference](../references/tags-reference.md).
 
 ### Payload Type
 
@@ -396,7 +396,7 @@ The JEXL `in` operator is not supported in the **JEXL Condition** field.
 
 ## Pipeline Input
 
-You can specify [runtime inputs](../run-pipelines-using-input-sets-and-overlays.md) for the trigger to use, such as Harness Service and artifact.
+You can specify [runtime inputs](../pipelines/run-pipelines-using-input-sets-and-overlays.md) for the trigger to use, such as Harness Service and artifact.
 
 You can use [built-in Git payload expressions](#built-in-git-payload-expressions) and [JEXL expressions](#jexl-conditions) in this setting.
 

@@ -129,6 +129,10 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 The URL of the SonarQube server. Required for Orchestration and Extraction scans. This value corresponds to the [`sonar.host.url`](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/analysis-parameters/#mandatory-parameters) setting in SonarQube.
 
+```mdx-code-block
+import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
+```
+
 <StoSettingAuthDomain />
 
 <!-- ============================================================================= -->
