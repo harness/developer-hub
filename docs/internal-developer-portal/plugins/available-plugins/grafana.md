@@ -75,12 +75,12 @@ This plugin exports three UI cards that you can show on the **Overview** tab of 
 
 To configure the plugin for a service in the software catalog, set the following annotations in its `catalog-info.yaml` definition file.
 
-The following selector will return dashboards that have a `my-service` or a` my-service-slo` tag and have a `generated` tag.
+The following selector will return dashboards under the folder `folder-id` and `folder-name`
 
 ```yaml
 metadata:
   annotations:
-    grafana/dashboard-selector: "(tags @> 'my-service' || tags @> 'my-service-slo') && tags @> 'generated'"
+    grafana/dashboard-selector: "folderUrl == 'https://<grafana-url>/dashboards/f/<folder-id>/<folder-name>'"
 ```
 
 Supported variables:
@@ -99,14 +99,6 @@ Supported binary operators:
 
 Supported unary operators:
 * `!`: logical negation
-
-Note that the `tags @> "my-service"` selector can be simplified as:
-
-```yaml
-metadata:
-  annotations:
-    grafana/dashboard-selector: my-service
-```
 
 Annotation to embed the overview dashboard referenced by its URL
 
