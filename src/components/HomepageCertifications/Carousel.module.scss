@@ -17,6 +17,12 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+    i {
+      color: white;
+    }
+    i:hover {
+      transform: scale(1.2);
+    }
     .dot {
       background-color: #333;
       width: 15px;
@@ -35,5 +41,3 @@
     flex-direction: column;
   }
 }
-
-

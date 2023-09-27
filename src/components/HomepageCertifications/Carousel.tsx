@@ -15,7 +15,7 @@ const Carousel = ({ certs }) => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setFlag(false);
-    }, 500); 
+    }, 500);
 
     return () => {
       // This cleanup function will clear the timeout if the component unmounts
@@ -23,6 +23,27 @@ const Carousel = ({ certs }) => {
     };
   }, [flag]);
 
+  useEffect(() => {
+    setCurrentDotIndex(currentIndex / 2);
+  }, [currentIndex]);
+
+  const handleNext = () => {
+    if (currentIndex == certs.length - 1) {
+      setCurrentIndex(0);
+    } else {
+      setCurrentIndex(currentIndex + 2);
+    }
+
+    setFlag(true);
+  };
+  const handlePrev = () => {
+    if (currentIndex == 0) {
+      setCurrentIndex(certs.length - 1);
+    } else {
+      setCurrentIndex(currentIndex - 2);
+    }
+    setFlag(true);
+  };
   return (
     <>
       <div className={styles.carousel}>
@@ -38,6 +59,7 @@ const Carousel = ({ certs }) => {
         </div>
 
         <div className={styles.indicator}>
+          <i onClick={handlePrev} className=" fa-solid fa-chevron-left"></i>
           {Array(Math.ceil(certs.length / 2))
             .fill("item")
             .map((_, index) => (
@@ -51,6 +73,7 @@ const Carousel = ({ certs }) => {
                 }}
               ></div>
             ))}
+          <i onClick={handleNext} className="fa-solid fa-chevron-right"></i>
         </div>
       </div>
     </>

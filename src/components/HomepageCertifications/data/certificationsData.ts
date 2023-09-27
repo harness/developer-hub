@@ -27,14 +27,6 @@ export const certifications: CardItem[] = [
     numberOfCerts: 1,
   },
   // {
-  //   title: "Continuous Delivery & GitOps Certifications",
-  //   module: MODULES.cd,
-  //   description:
-  //     "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way.",
-  //   link: "/certifications/continuous-delivery",
-  //   numberOfCerts: 3,
-  // },
-  // {
   //   title: "Cloud Cost Management Certifications",
   //   module: MODULES.ccm,
   //   description:
