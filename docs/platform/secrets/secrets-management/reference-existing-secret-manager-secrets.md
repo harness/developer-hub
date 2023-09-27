@@ -16,7 +16,7 @@ Harness does not query the secret manager for existing secrets, but you can crea
 ### Before you begin
 
 * Go to [AWS KMS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
-* Go to [AWS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md)
+* Go to [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md)
 * Go to [Azure Key Vault Secret Manager](/docs/platform/secrets/secrets-management/azure-key-vault.md)
 * Go to [HashiCorp Vault Secret Manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault.md)
 

@@ -15,4 +15,4 @@ For example, you can store a secret in vault with the following JSON.
 
 ```
 
-To reference a JSON secret and password stored in `/<path>/user`, you need to create a reference secret with the following format: `/<path>/user#database.password`.
+To reference a JSON secret and password stored in `/<path>/user`, create a reference secret with the following format: `/<path>/user#database.password`.
