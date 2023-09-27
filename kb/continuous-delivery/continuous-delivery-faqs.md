@@ -1436,3 +1436,18 @@ To use queue steps in your Harness pipeline:
 6. Save your changes and run the pipeline.
 
 For detailed guidance on using queue steps to control resource usage in Harness pipelines, refer to the Harness documentation section titled [Control Resource Usage with Queue Steps](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/control-resource-usage-with-queue-steps/)
+
+#### How to identify which stage executed again as part of re-run for failed pipeline
+Navigate to the stage and you will able to see message “This stage has been re-executed.”
+
+#### Logs timestamp and start/end time of pipeline is not matching.
+This usually happens if any failed pipeline was re-run and some of stage were not ran and we do show logs for older execution
+In retry we do copy the logs from previous execution for the stage which we are actually not running.
+For example: original execution stage1 → stage2 → stage3->stage4.
+If the original execution is failing at stage3 and we retry from stage3, the logs for stage1 and stage2 in latest execution will be copied from original execution along with the log timings.
+
+#### Can we access Phase level exported context variable in Rollback step
+No phase level exported variable will not be accessible in Rollback and need to export context variable on workflow level 
+
+#### How can I schedule cron trigger "at 10:00 every 3 months **4th Monday** of every month UTC" ?
+You can use  0 0 10 ? 1/3 2#4 *
