@@ -41,7 +41,7 @@ You can choose to proceed with the tutorial either by using the command-line int
 <TabItem value="cli" label="CLI">
 ```
 
-## Before you begin
+## Before you begin {#before-you-begin-cli}
 
 Verify the following:
 
@@ -53,7 +53,7 @@ Verify the following:
 5. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
     - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
-## Getting Started with Harness CD
+## Getting Started with Harness CD {#getting-started-harness-cd-cli}
 ----------------------------------
 
 1. Download and Configure Harness CLI.
@@ -347,7 +347,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 </TabItem>
 <TabItem value="ui" label="UI">
 ```
-## Before you begin
+## Before you begin {#before-you-begin-ui}
 
 Verify that you have the following:
 
@@ -358,7 +358,7 @@ Verify that you have the following:
 4. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) for more information on forking a GitHub repository.
 
-## Getting Started with Harness CD
+## Getting Started with Harness CD {#getting-started-harness-cd-ui}
 ----------------------------------
 
 1. Log in to [Harness](https://app.harness.io/).
@@ -661,7 +661,7 @@ Whether you're new to GitOps or have already used Argo CD, this guide will assis
 
 :::
 
-## Before you begin
+## Before you begin {#before-you-begin-gitops}
 
 Verify that you have the following:
 
@@ -674,7 +674,7 @@ Verify that you have the following:
 --------------------------------------
 
 ```mdx-code-block
-<Tabs>
+<Tabs queryString="iac">
 <TabItem value="ui" label="UI">
 ```
 
