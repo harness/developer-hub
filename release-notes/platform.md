@@ -56,7 +56,7 @@ This release does not include early access features.
 
   This issue has been fixed. If the SMTP configuration does not use a password, the password field does not show asterisks.
 
-- In the connector configuration wizard, if you selected Azure Key Vault or GCP Secret Manager and then selected the Use the credentials of a specific Harness Delegate (IAM role, service account, etc) option, the wizard did not show the Use as Default Secret Manager checkbox. You could, however, achieve this configuration through the Harness API. (PL-41054)
+- In the connector configuration wizard, if you selected Azure Key Vault or GCP Secret Manager and then selected the **Use the credentials of a specific Harness Delegate (IAM role, service account, etc)** option, the wizard did not show the **Use as Default Secret Manager** checkbox. You could, however, achieve this configuration through the Harness API. (PL-41054)
 
   This issue has been fixed. 
 
@@ -90,7 +90,7 @@ This release does not include early access features.
 
   This item requires Harness Delegate version yy.mm.verno. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-- The UI allowed all users to select the **Copy token** option from the **More Options** menu. (PL-41155)
+- The UI allowed all users to select the **Copy token** option from the **More Options** (&vellip;) menu. (PL-41155)
   
   This issue has been resolved. Now, only users with the required permissions to copy tokens are able to select the **Copy token** option.
 

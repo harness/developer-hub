@@ -32,6 +32,8 @@ This release does not include early access features.
 
   This issue has been resolved and the desired access check has been applied.
 
+- You can no longer update `Delegatelp` or `DelegateName` using the delegate update API. (PL-40795, ZD-44419)
+
 ### Version 80711
 
 #### New features and enhancements
