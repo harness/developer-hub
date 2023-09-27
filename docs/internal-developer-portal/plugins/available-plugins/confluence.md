@@ -18,7 +18,7 @@ This plugin requires a backend configuration to make calls to Confluence with au
 
 Replace `<list-of-spaces>` with a comma-separated list of the Confluence spaces that you want to include in the search. Enclose the list in brackets, as follows: `spaces: [ENG, IT, OPS]`. For the spaces you specify, indexing occurs every 12 hours. If the list is empty, the plugin does not index spaces. 
 
-Replace  `<your-username>` with the user name. 
+Replace  `<your-username>` with the user name which is essentially the email (for example alice@mycompany.com). 
 
 ```yaml
 confluence:
