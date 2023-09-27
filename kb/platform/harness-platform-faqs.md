@@ -811,3 +811,19 @@ This `CDS_OrgAccountLevelServiceEnvEnvGroup` FF is required to have Services and
 #### Why we do not see Dashboards in an SMP Installation?
 
 Dashboard is a licensed functionality. To enable it you need to get a license.
+
+#### I'm getting the error Unsupported block type with the Run on Remote Workspace (https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/#run-on-remote-workspace)
+
+It might be due to the configuration.  Try this instead for the terraform config file:
+```
+terraform {
+  backend "remote" {
+    hostname     = "http://app.terraform.io "
+    organization = "your-organization"
+    workspaces {
+      name = "your-workspace"
+    }
+  }
+}
+```
+
