@@ -41,21 +41,35 @@ Harness NextGen release 808xx includes the following changes for the Harness Del
    - `org.bouncycastle:bcprov-ext-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-ext-jdk18on:jar:1.76`
    - `org.bouncycastle:bcprov-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-jdk18on:jar:1.76`
 
+- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-41063)
+
 ### Early access features
 
 This release does not include any new early access features.
 
 ### Fixed issues
 
+- Harness did not handle the `Unknown Host Exception` error appropriately and, consequently, showed the misleading "Delegates are not available for performing operation" message when you configured LDAP incorrectly (for example, you entered an incorrect host or port number). (PL-28077)
+
+  This issue has been fixed.
+
+- Harness showed JSON Web Token URLs in Delegate task logs associated with shell script task failures. (PL-39102)
+
+  This issue has been fixed.
+
 - Delegates failed to reauthenticate with the proxy after the initial proxy session expired. (PL-40630, ZD-48981, ZD-49626)
 
    The following updates to delegate communication with Harness Manager over proxy resolve this issue.
 
-   - Removed `return null` when Harness Manager receives the required 407 proxy authentication.
+   - Removed `return null` when the delegate receives the required 407 proxy authentication.
    
    - Added the following variables for the `asyncHttpClient` to authenticate with the proxy.
       - `org.asynchttpclient.AsyncHttpClientConfig.proxy.user`
       - `org.asynchttpclient.AsyncHttpClientConfig.proxy.password`
+
+- Harness Platform release 80504 did not allow you to create empty user groups. (PL-41005, ZD-50411, ZD-50475)
+
+  This issue has been fixed.
 
 - When steps timed out for aborted tasks that were previously assigned, the UI displayed an incorrect error message. (PL-41226, ZD-49908, ZD-50652)
 

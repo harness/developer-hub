@@ -42,7 +42,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-- You can no longer update `Delegatelp` or `DelegateName` using the delegate update API without Manage Delegate or Administer Other Account Functions permissions. (PL-40795, ZD-44419)
+- You can no longer update `Delegatelp` or `DelegateName` using the delegate update API. (PL-40795, ZD-44419)
 
 ### Hotfixes
 
