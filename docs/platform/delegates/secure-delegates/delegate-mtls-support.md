@@ -89,24 +89,32 @@ Before you migrate an existing delegate to an mTLS-enabled delegate, make sure t
 - You must have access to the delegate YAML.
 
 ### Migrate a delegate to an mTLS-enabled Docker delegate
-One docker command can do the job. An example command looks like below
-```
-docker run -d --cpus=1 --memory=2g -u root -v Path/To/client.crt:/etc/mtls/client.crt -v Path/To/client.key:/etc/mtls/client.key \
-  -e DELEGATE_NAME=docker-delegate \
-  -e NEXT_GEN="true" \
-  -e DELEGATE_TYPE="DOCKER" \
-  -e ACCOUNT_ID=[your account id] \
-  -e DELEGATE_CLIENT_CERTIFICATE_PATH=/etc/mtls/client.crt \
-  -e DELEGATE_CLIENT_CERTIFICATE_KEY_PATH=/etc/mtls/client.key \
-  -e DELEGATE_TOKEN=********** \
-  -e LOG_STREAMING_SERVICE_URL=https://<YOUR_FQDN>.agent.harness.io/log-service/ \
-  -e MANAGER_HOST_AND_PORT=https://<YOUR_FQDN>.agent.harness.io harness/delegate:yy.mm.verno
-```
-1. `-v`: Mounts your `client.crt` and `client.key` files to delegate docker container
-2. Update `DELEGATE_CLIENT_CERTIFICATE_PATH` to the location of client.crt inside the container. In this example, it's `/etc/mtls/client.crt`
-3. Update `DELEGATE_CLIENT_CERTIFICATE_KEY_PATH` to the location of client.key inside the container. In this example, it's `/etc/mtls/client.key`
+
+To migrate an existing delegate for mTLS support, you run a Docker command.
+
+To migrate a delegate to an mTLS-enabled Docker delegate, do the following.
+
+1. Copy the following example command.
+
+   ```
+   docker run -d --cpus=1 --memory=2g -u root -v Path/To/client.crt:/etc/mtls/client.crt -v Path/To/client.key:/etc/mtls/client.key \
+     -e DELEGATE_NAME=docker-delegate \
+     -e NEXT_GEN="true" \
+     -e DELEGATE_TYPE="DOCKER" \
+     -e ACCOUNT_ID=[your account id] \
+     -e DELEGATE_CLIENT_CERTIFICATE_PATH=/etc/mtls/client.crt \
+     -e DELEGATE_CLIENT_CERTIFICATE_KEY_PATH=/etc/mtls/client.key \
+     -e DELEGATE_TOKEN=********** \
+     -e LOG_STREAMING_SERVICE_URL=https://<YOUR_FQDN>.agent.harness.io/log-service/ \
+     -e MANAGER_HOST_AND_PORT=https://<YOUR_FQDN>.agent.harness.io harness/delegate:yy.mm.verno
+   ```
+
+   `-v`: Mounts your `client.crt` and `client.key` files to the delegate Docker container.
+2. Update `DELEGATE_CLIENT_CERTIFICATE_PATH` to the location of `client.crt` inside the container. In this example, it's `/etc/mtls/client.crt`.
+3. Update `DELEGATE_CLIENT_CERTIFICATE_KEY_PATH` to the location of `client.key` inside the container. In this example, it's `/etc/mtls/client.key`.
 4. Update `MANAGER_HOST_AND_PORT` value to `https://<YOUR_FQDN>.agent.harness.io`
-5. Update the `LOG_STREAMING_SERVICE_URL` value to `https://<YOUR_FQDN>.agent.harness.io/log-service/`
+5. Update the `LOG_STREAMING_SERVICE_URL` value to `https://<YOUR_FQDN>.agent.harness.io/log-service/`.
+6. Run the command.
 
 ### Migrate a delegate to an mTLS-enabled Kubernetes delegate
 
