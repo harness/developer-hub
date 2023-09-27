@@ -86,12 +86,6 @@ In **Timeout**, enter how long Harness should wait to complete the Terraform App
 
 ### Run on remote workspace
 
-:::note
-
-Currently, this feature is behind the feature flag `CD_TERRAFORM_CLOUD_CLI_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Enable this option to identify whether the Terraform configuration uses a Terraform remote backend.
 
 When enabled, you cannot provide the workspace input in Harness. The workspace will be outlined in your configuration for the remote backend.
@@ -352,12 +346,6 @@ You can use an inline or remote state file.
 
 ### Using a remote state file with Terraform Apply
 
-:::note
-
-Currently, remote state file support is behind the feature flag `TERRAFORM_REMOTE_BACKEND_CONFIG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 1. In Backend Configuration, select **Remote**.
 2. Click **Specify Backend Config File**
 3. Select your provider (GitHub, Artifactory, S3, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
@@ -541,12 +529,6 @@ Here's an example of decrypted Terraform JSON output:
 
 
 ## Command line options
-
-:::note
-
-Currently, FEATURE_NAME is behind the feature flag `CDS_TERRAFORM_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
 
