@@ -109,7 +109,7 @@ https://harness.atlassian.net/browse/CDS-79071?focusedCommentId=579969
 
 - The output of the Kubernetes Dry Run step did not generate a valid Kubernetes manifest due to masking of the secrets values (CDS-78507).
 
-  Harness was masking all the secrets values using the character  set `***` for both stringData and data fields in Secrets Resources. Since data field supports only Base64 encoded values, this resulted in an invalid manifest. With this fix, Harness uses a valid value to maske these data fields (`Kioq`, the Base64 value of `***`).
+  Harness was masking all the secrets values using the character set `***` for both stringData and data fields in Secrets Resources. Since the data field supports only Base64 encoded values, this resulted in an invalid manifest. With this fix, Harness uses a valid value to mask these data fields (`Kioq`, the Base64 value of `***`).
 
   This item requires Harness Delegate version 23.09.808xx. For information about features that require a specific delegate version, go to the Delegate release notes.
 
@@ -129,7 +129,7 @@ https://harness.atlassian.net/browse/CDS-79071?focusedCommentId=579969
 
   This item requires Harness Delegate version 23.09.808xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- The Kustomize 3.5.4 Binary is now removed from the immutable delegate and all kustomize tasks are routed via Kubectl binary. (CDS-58893, ZD-48553)
+- The Kustomize 3.5.4 binary is now removed from the immutable delegate and all Kustomize tasks are routed via Kubectl binary. (CDS-58893, ZD-48553)
 
   This item requires Harness Delegate version 23.09.808xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
