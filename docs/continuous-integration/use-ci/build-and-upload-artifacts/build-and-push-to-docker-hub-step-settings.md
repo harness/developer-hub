@@ -181,7 +181,7 @@ You can find the following settings on the **Advanced** tab in the step settings
 
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings): Set conditions to determine when/if the step should run.
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings): Control what happens to your pipeline when a step fails.
-* [Looping Strategies Overview -- Matrix, Repeat, and Parallelism](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism): Define a looping strategy for an individual step.
+* [Looping strategies overview](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism): Define a matrix, repeat, or parallelism strategy for an individual step.
 
 ### Set kaniko runtime flags
 

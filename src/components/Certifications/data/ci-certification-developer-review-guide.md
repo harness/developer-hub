@@ -16,7 +16,7 @@
 |Understand shared paths and Drone/CI plugins |[CI key concepts](/docs/continuous-integration/get-started/key-concepts)|
 |Learn about caching and test intelligence in Harness|[Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)|
 |**5. Configure triggers, input sets, overlays, and failure strategies in CI**||
-|Understand and apply conditional execution and looping strategies|[Looping strategies overview -- matrix, repeat, and parallelism](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)|
+|Understand and apply conditional execution and looping strategies|[Looping strategies overview](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)|
 |Learn about advanced options such as timeout settings and selective stage executions|[CI Build stage settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/)|
 |**6. Set up notifications based on pipeline events**||
 |Configure and run steps on host vs containers|[Run Step Settings](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#set-container-resources)|

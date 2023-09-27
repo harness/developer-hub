@@ -114,7 +114,6 @@ And use the `<+matrix.jira>` expression instead.
 ### See also
 
 * [Optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times)
-* [How to Run a Stage or Step Multiple Times using a Matrix](./run-a-stage-or-step-multiple-times-using-a-matrix.md)
-* [Looping Strategies Overview: Matrix, Repeat, and Parallelism](./looping-strategies-matrix-repeat-and-parallelism.md)
+* [Looping strategies overview](./looping-strategies-matrix-repeat-and-parallelism.md)
 * [Use parallelism to improve test times](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism)
 

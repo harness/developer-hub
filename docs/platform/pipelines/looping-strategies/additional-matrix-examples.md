@@ -1,7 +1,7 @@
 ---
 title: Additional matrix examples
 description: Specific examples for matrix.
-sidebar_position: 4
+sidebar_position: 5
 redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/additional-matrix-examples
 ---

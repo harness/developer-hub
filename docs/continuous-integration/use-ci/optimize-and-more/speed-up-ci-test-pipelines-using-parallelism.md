@@ -346,6 +346,5 @@ pipeline:
 ## See also
 
 * [Optimize and enhance CI pipelines](./optimizing-ci-build-times.md)
-* [Looping Strategies Overview: Matrix, For Loop, and Parallelism](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Looping strategies overview](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Best Practices for Looping Strategies](/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies)
-* [Run a Stage or Step Multiple Times using a Matrix](/docs/platform/pipelines/looping-strategies/run-a-stage-or-step-multiple-times-using-a-matrix)

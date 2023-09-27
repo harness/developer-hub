@@ -1,7 +1,7 @@
 ---
 title: Run a stage or step multiple times using a matrix
 description: A matrix enables you to run the same Stage or Step multiple times with different parameters.  Matrix strategies also make your Pipelines more readable, clean, and easy to maintain.
-sidebar_position: 6
+sidebar_position: 4
 helpdocs_topic_id: kay7z1bi01
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
@@ -22,7 +22,7 @@ You can apply matrix strategies to both CI and CD workflows. This topic assumes 
 
 * [CD key concepts](/docs/continuous-delivery/get-started/key-concepts)
 * [CI key concepts](/docs/continuous-integration/get-started/key-concepts.md)
-* [Looping Strategies Overview](./looping-strategies-matrix-repeat-and-parallelism.md)
+* [Looping strategies overview](./looping-strategies-matrix-repeat-and-parallelism.md)
 * [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md)
 
 ### Important Notes
@@ -33,7 +33,7 @@ You can apply matrix strategies to both CI and CD workflows. This topic assumes 
 ### Add a Matrix Strategy to a Stage or Step
 
 1. In the Pipeline Studio, go to the **Advanced** tab of the Stage or Step where you want to apply the Looping strategy.
-2. Under Looping Strategies, select **Matrix**. You can also use a Loop strategy to iterate through a simple list. See [Looping Strategies Overview: Matrix, Repeat, and Parallelism](./looping-strategies-matrix-repeat-and-parallelism.md).
+2. Under Looping Strategies, select **Matrix**. You can also use a looping (repeat) strategy to iterate through a simple list. For more information on matrix, looping, and parallelism, go to [Looping strategies overview](./looping-strategies-matrix-repeat-and-parallelism.md).
 3. Enter the YAML definition for your strategy as illustrated in the following examples.
 
 ### CI Example: Run an App in `[browser]` on `[os]`
@@ -221,6 +221,6 @@ matrix-pipeline-example.yml
 ### See also
 
 * [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md)
-* [Looping Strategies Overview: Matrix, Repeat, and Parallelism](./looping-strategies-matrix-repeat-and-parallelism.md)
+* [Looping strategies overview](./looping-strategies-matrix-repeat-and-parallelism.md)
 * [Use parallelism to improve test times](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism)
 
