@@ -29,7 +29,7 @@ This tutorial will get you started with Harness Continuous Delivery (CD). We wil
 :::
 
 ```mdx-code-block
-<Tabs>
+<Tabs defaultValue="GitOps Workflow">
 <TabItem value="CD pipeline">
 ```
 Harness CD pipelines allow you to orchestrate and automate your deployment workflows, and push updated application images to your target Kubernetes cluster. Pipelines allow extensive control over how you want to progress artifacts through various dev / test / stage / prod clusters, while running a variety of scans & tests to ensure quality and stability standards you and team may have defined.
@@ -652,7 +652,7 @@ You can integrate your own microservice application into this tutorial by follow
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="GitOps workflow">
+<TabItem value="GitOps Workflow">
 ```
 Harness GitOps (built on top of Argo CD) watches the state of your application as defined in a Git repo, and can pull (either automatically, or when instructed to do so) these changes into your Kubernetes cluster, leading to an application sync.
 :::info

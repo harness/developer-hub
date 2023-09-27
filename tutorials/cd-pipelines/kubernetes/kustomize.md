@@ -29,7 +29,7 @@ This tutorial helps you get started with Harness Continuous Delivery (CD). We wi
 :::
 
 ```mdx-code-block
-<Tabs>
+<Tabs defaultValue="GitOps Workflow">
 <TabItem value="CD pipeline">
 ```
 
@@ -517,7 +517,7 @@ You can integrate your own microservice application into this tutorial by follow
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="GitOps workflow">
+<TabItem value="GitOps Workflow">
 ```
 
 :::info
