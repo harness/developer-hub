@@ -1,5 +1,5 @@
 ---
-title: Looping strategies overview
+title: Use looping strategies
 description: Looping strategies include matrix, repeat, and parallelism strategies.
 sidebar_position: 1
 helpdocs_topic_id: eh4azj73m4
@@ -20,6 +20,13 @@ Looping strategies optimize your pipelines by running steps or stages concurrent
    * With a matrix strategy, you don't need to make a separate step for each variation. You can iterate over one step that swaps out the matrix input each time it runs.
 * **Repeat:** Repeat stages or steps multiple times. Supports iterating over a simple list.
    * For example, to build artifacts for multiple JDK versions in the same Build stage, you can loop over one step, rather than making separate copies for each JDK version.
+
+:::info
+
+* There is no limit on the number of dimensions you can include in a matrix or the number of looping strategies you can define in a pipeline.
+* Avoid complex looping scenarios unless you clearly understand the resources that your scenario will require. For more information, go to [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md).
+
+:::
 
 ## Parallelism strategies
 
@@ -47,15 +54,15 @@ For more information about parallelism strategies, go to:
 
 ## Matrix strategies
 
-Matrix strategies are highly flexible and support complex combinations of variable inputs.
+Matrix strategies are highly flexible and support complex combinations of variable inputs. With a matrix, you can run the same stage or step multiple times with different parameters each time. Matrix strategies eliminate the need to make separate copies of nearly identical stages and steps. Matrix strategies also make your pipelines more readable, clean, and easy to maintain. You can define matrix strategies to support workflows such as:
 
-First, define a matrix of configurations that you want the stage or step to iterate over. Each axis has a user-defined tag (such as `env`, `service`, `platform`, `browser`, `jdk`, and so on) and a list of values.
+* A **Run** step that load-tests a UI feature in four different browsers and on three different platforms.
+* A **Build** stage that builds artifacts for ten different JDK versions.
+* A **Deploy** stage that deploys three different services to four different environments.
 
-Then, use `<+matrix.TAG>` expressions (such as `<+matrix.jdk>`, `<+matrix.env>`, or `<+matrix.service>`) in your step or stage settings to call the list of values for each tag.
+When a pipeline with a matrix strategy runs, Harness creates multiple copies of the stage or step, according to the specifications in the `matrix` strategy, and runs them in parallel.
 
-When the pipeline runs, Harness creates multiple copies of the stage or step, according to the specifications in the `matrix` strategy, and runs them in parallel.
-
-The following YAML example include two tags: `service` and `env`. The `service` tag has three values, and the `env` tag has two values. When the pipeline runs, Harness produces six instances - One for each `service` value combined with each `env` value (svc1 on env1, svc1 on env2, svc2 on env1, svc2 on env2, svc3 on env1, and svc3 on env2).
+The following YAML example includes a matrix with two dimensions: `service` and `env`. The `service` dimension has three values, and the `env` dimension has two values. When the pipeline runs, Harness produces six instances - One for each `service` value combined with each `env` value (svc1 on env1, svc1 on env2, svc2 on env1, and so on).
 
 ```yaml
 matrix:
@@ -63,71 +70,8 @@ matrix:
   env: [env1, env2] ## There are two environments to iterate over.
 ```
 
-<!-- inserted content -->
-
-
-A matrix enables you to run the same Stage or Step multiple times with different parameters. Matrix strategies eliminate the need to copy the same stage or step with different inputs for each variation. Matrix strategies also make your Pipelines more readable, clean, and easy to maintain. You can easily define matrix strategies to support workflows such as:
-
-* A Run Step that load-tests a UI feature in 4 different browsers and 3 different platforms.
-* A Build Stage that builds artifacts for 10 different JDK versions.
-* A Deploy Stage that deploys 3 different services to 4 different environments.
-
-### Before you begin
-
-You can apply matrix strategies to both CI and CD workflows. This topic assumes that you are familiar with the following:
-
-* [CD key concepts](/docs/continuous-delivery/get-started/key-concepts)
-* [CI key concepts](/docs/continuous-integration/get-started/key-concepts.md)
-* [Looping strategies overview](./looping-strategies-matrix-repeat-and-parallelism.md)
-* [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md)
-
-### Important Notes
-
-* There is no limit on the number of dimensions you can include in a matrix or the number of looping strategies you define in a Pipeline.
-* You should avoid complex looping scenarios unless you clearly understand the resources that your scenario will require. See [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md).
-
-### Add a Matrix Strategy to a Stage or Step
-
-1. In the Pipeline Studio, go to the **Advanced** tab of the Stage or Step where you want to apply the Looping strategy.
-2. Under Looping Strategies, select **Matrix**. You can also use a looping (repeat) strategy to iterate through a simple list. For more information on matrix, looping, and parallelism, go to [Looping strategies overview](./looping-strategies-matrix-repeat-and-parallelism.md).
-3. Enter the YAML definition for your strategy as illustrated in the following examples.
-
-### Using Matrix Variables in Your Pipeline
-
-You can reference matrix values in your Stages and Steps using `<+matrix.`*`tag`*`>`. Here are some examples.
-
-Given the CI example above, you can enter the following in a Run Step to output the current run:
-
-
-```
-echo “Testing app in <+matrix.browser> on <+matrix.os>”
-```
- 
-
-Suppose you have a matrix in a Stage and another in a member Step. The Stage matrix has tags `browser` and `os`. The Step matrix has tags `browser` and `os`. You can reference both sets of tags from within the Step like this:
-
-
-```
-echo "stage values (parent):"  
-echo "Current service for stage: <+stage.matrix.browser>"  
-echo "Current os for stage: <+stage.matrix.os>"  
-echo "step values (local):"  
-echo "Current browser for step: <+matrix.browser>"  
-echo "Current os for step: <+matrix.os>"
-```
-Given the CD example above, you can go to the Service tab of the Deploy Stage and specify the service using `<+matrix.service>`.
-
-![](./static/run-a-stage-or-step-multiple-times-using-a-matrix-40.png)
-
-The following variables are also supported:
-
-* `<+strategy.iteration>` — The current iteration.
-* `<+strategy.iterations>` — The total number of iterations.
-* `<+repeat.item>` — The value of the item when iterating through a list using the `repeat` and `items` keywords.
-
-### YAML Pipeline Example
-
-The following example illustrates how you can define matrix strategies in a pipeline.
+<details>
+<summary>Pipeline YAML example with matrix strategies</summary>
 
 ```yaml
     pipeline:  
@@ -198,11 +142,69 @@ The following example illustrates how you can define matrix strategies in a pipe
                   maxConcurrency: 2
 ```
 
-<!-- end inserted content -->
+</details>
+
+### Configure a matrix strategy
+
+First, define a matrix of configurations that you want the stage or step to iterate over. A matrix is a series of dimensions, each consisting of a user-defined tag (such as `env`, `service`, `platform`, `browser`, `jdk`, and so on) and a list of values. You can do this in the YAML editor or in the **Advanced** settings for the stage/step in the Visual editor.
+
+```yaml
+matrix:
+  tag1: [value1, value2, value3]
+  tag2: [value1, value2]
+```
+
+Then, use `<+matrix.TAG>` expressions (such as `<+matrix.jdk>`, `<+matrix.env>`, or `<+matrix.service>`) in your step or stage settings to call the list of values for each tag. For example, this **Run** step references a matrix that iterates over values for `browser` and `os`.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Run_tests
+                  identifier: Run_test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      echo "Testing app in <+matrix.browser> on <+matrix.os>"
+                      ...
+```
+
+You can also use matrix values as variable values. For example, this [Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step.md) iterates over a list of Python versions to install multiple versions of Python in the build workspace.
+
+```yaml
+              - step:
+                  type: Action
+                  name: Install python
+                  identifier: installpython
+                  spec:
+                    uses: actions/setup-python@v4
+                    with:
+                      python-version: <+stage.matrix.pythonVersion>
+                      token: <+secrets.getValue("github_token")>
+```
+
+### Matrix expressions in multi-layer matrix strategies
+
+If a stage and step both have matrix strategies with the same tag labels, you need to use specific expressions to reference matrix values in the step or stage.
+
+* `<+stage.matrix.TAG>`: Use this expression to reference a value in a stage level matrix strategy.
+* `<+matrix.TAG`: Use this expression to reference a value in a step level matrix strategy.
+
+For example:
+
+```
+echo "Stage values (parent):"  
+echo "Current service for stage: <+stage.matrix.browser>"  
+echo "Current os for stage: <+stage.matrix.os>"  
+echo "Step values (local):"  
+echo "Current browser for step: <+matrix.browser>"  
+echo "Current os for step: <+matrix.os>"
+```
 
 ### Exclude combinations
 
 Use the `exclude` keyword to filter out combinations that you don't want to iterate over.
+
+The following YAML example exclude two specific combinations from the matrix:
 
 ```yaml
 matrix:
@@ -215,35 +217,15 @@ matrix:
      env: env2
 ```
 
-<!-- begin insert -->
+You can also exclude any combination containing a specific value. The following YAML example includes a matrix strategy that excludes any combination containing `macos`:
 
-### Excluding Combinations from a Matrix
-
-You can use the `exclude` keyword to exclude certain combinations from being run. Suppose you don’t want to run the app in Safari on Windows. In this case, you can exclude this combination from the run matrix: 
-
-
+```yaml
+matrix:
+    browser: [chrome, safari, firefox]
+    os: [macos, windows, linux]
+    exclude:
+      - os: macos
 ```
-matrix:  
-    browser: [chrome, safari, firefox ]  
-    os: [ macos, windows, linux ]  
-    exclude:               
-        - browser: safari  
-          os: windows  
-maxConcurrency: 3 # test the app across 3 Stages running concurrently
-```
-You can also exclude all combinations based on just one value. If you want to exclude all combinations with MacOS, for example, you can do the following: 
-
-
-```
-matrix:  
-    browser: [chrome, safari, firefox ]  
-    os: [ macos, windows, linux ]  
-    exclude:               
-      - os: macos  
-maxConcurrency: 4 # test the app across 4 Stages running concurrently
-```
-
-<!-- end insert -->
 
 ### Limit resource usage
 
@@ -263,20 +245,17 @@ If the matrix strategy produces more instances than are allowed by the `maxConcu
 By default, Harness uses indices for the matrix naming strategy. If you prefer, you can change your account, organization, or project settings to use labels.
 
 1. Navigate to the **Default Settings** for your account, organization, or project:
-
    * To modify account settings, select **Account Settings**, select **Account Resources**, and then select **Default Settings**.
    * To modify organization settings, select **Account Settings**, select **Organizations**, select the organization you want to configure, and then select **Default Settings**.
    * To modify project settings, go to the project you want to configure, and, under **Project Setup**, select **Default Settings**.
-
 2. Expand the **Pipeline** settings.
 3. Set **Enable Matrix Labels By Name** to **True**.
 4. Select **Save**.
 
-### Learn more about matrix strategies
+### Matrix examples and best practices
 
 * [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md)
 * [Matrix examples](./additional-matrix-examples.md)
-* [Optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md)
 
 ## Repeat strategies
 

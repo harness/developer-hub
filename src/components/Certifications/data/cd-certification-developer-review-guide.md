@@ -15,8 +15,8 @@
 |**3. Continuous Delivery** | |
 | Barriers | [Synchronize Parallel Stages and Step Groups ](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers/) |
 | Conditional Execution  | [Stage and Step Conditional Execution Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) |
-| Steps | [Looping strategies overview ](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) |
-| Looping Strategies | [Best Practices for Looping Strategies ](/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies) |
+| Steps | [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) |
+| Looping Strategies | [Best Practices for Looping Strategies](/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies) |
 | Terraform Provider | [Harness Terraform Provider overview](/docs/platform/automation/terraform/harness-terraform-provider-overview/)|
 | Cloud Formation Provider | [CloudFormation How-tos](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos) |
 | Git Trigger  | [Triggers](/docs/category/triggers/) |
