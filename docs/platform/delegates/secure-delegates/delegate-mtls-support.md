@@ -92,7 +92,7 @@ Before you migrate an existing delegate to an mTLS-enabled delegate, make sure t
 
 To migrate an existing delegate for mTLS support, you run a Docker command.
 
-To migrate a delegate to an mTLS-enabled Docker delegate, do the following.
+To migrate a delegate for mTLS support, do the following:
 
 1. Copy the following example command.
 
@@ -110,9 +110,9 @@ To migrate a delegate to an mTLS-enabled Docker delegate, do the following.
    ```
 
    `-v`: Mounts your `client.crt` and `client.key` files to the delegate Docker container.
-2. Update `DELEGATE_CLIENT_CERTIFICATE_PATH` to the location of `client.crt` inside the container. In this example, it's `/etc/mtls/client.crt`.
-3. Update `DELEGATE_CLIENT_CERTIFICATE_KEY_PATH` to the location of `client.key` inside the container. In this example, it's `/etc/mtls/client.key`.
-4. Update `MANAGER_HOST_AND_PORT` value to `https://<YOUR_FQDN>.agent.harness.io`
+2. Update the `DELEGATE_CLIENT_CERTIFICATE_PATH` to the location of `client.crt` inside the container. In this example, it's `/etc/mtls/client.crt`.
+3. Update the `DELEGATE_CLIENT_CERTIFICATE_KEY_PATH` to the location of `client.key` inside the container. In this example, it's `/etc/mtls/client.key`.
+4. Update the `MANAGER_HOST_AND_PORT` value to `https://<YOUR_FQDN>.agent.harness.io`.
 5. Update the `LOG_STREAMING_SERVICE_URL` value to `https://<YOUR_FQDN>.agent.harness.io/log-service/`.
 6. Run the command.
 
