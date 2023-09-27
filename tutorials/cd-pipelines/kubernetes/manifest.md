@@ -29,16 +29,16 @@ This tutorial will get you started with Harness Continuous Delivery (CD). We wil
 :::
 
 ```mdx-code-block
-<Tabs defaultValue="GitOps Workflow">
-<TabItem value="CD pipeline">
+<Tabs defaultValue="gitops" queryString="pipeline">
+<TabItem value="cd-pipeline" label="CD pipeline">
 ```
 Harness CD pipelines allow you to orchestrate and automate your deployment workflows, and push updated application images to your target Kubernetes cluster. Pipelines allow extensive control over how you want to progress artifacts through various dev / test / stage / prod clusters, while running a variety of scans & tests to ensure quality and stability standards you and team may have defined.
 
 You can choose to proceed with the tutorial either by using the command-line interface (Harness CLI) or the user interface (Harness UI).
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="CLI">
+<Tabs queryString="interface">
+<TabItem value="cli" label="CLI">
 ```
 
 ## Before you begin
@@ -59,8 +59,8 @@ Verify the following:
 1. Download and Configure Harness CLI.
 
     ```mdx-code-block
-    <Tabs>
-    <TabItem value="MacOS">
+    <Tabs queryString="cli-os">
+    <TabItem value="macos" label="MacOS">
     ```
 
     ```bash
@@ -72,12 +72,12 @@ Verify the following:
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="Linux">
+    <TabItem value="linux" label="linux">
     ```
 
     ```mdx-code-block
-    <Tabs>
-    <TabItem value="ARM">
+    <Tabs queryString="linux-platform">
+    <TabItem value="arm" label="ARM">
     ```
 
     ```bash
@@ -89,7 +89,7 @@ Verify the following:
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="AMD">
+    <TabItem value="amd" label="AMD">
     ```
 
     ```bash
@@ -106,7 +106,7 @@ Verify the following:
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="Windows">
+    <TabItem value="windows"  label="Windows">
     ```
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
@@ -345,7 +345,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="UI">
+<TabItem value="ui" label="UI">
 ```
 ## Before you begin
 
@@ -652,7 +652,7 @@ You can integrate your own microservice application into this tutorial by follow
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="GitOps Workflow">
+<TabItem value="gitops" label="GitOps Workflow">
 ```
 Harness GitOps (built on top of Argo CD) watches the state of your application as defined in a Git repo, and can pull (either automatically, or when instructed to do so) these changes into your Kubernetes cluster, leading to an application sync.
 :::info
