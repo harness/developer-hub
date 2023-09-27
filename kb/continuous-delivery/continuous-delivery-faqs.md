@@ -416,7 +416,7 @@ Expression to assert on Strings would require double quotes. Please note that it
 
 #### Can I customize the looping conditions and behaviour?
 
-Yes, Harness NextGen often offers customization options to define the loop exit conditions, maximum iteration counts, sleep intervals between iterations, and more information [here](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+Yes, Harness NextGen often offers customization options to define the loop exit conditions, maximum iteration counts, sleep intervals between iterations, and more information [here](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 #### What are the use cases for utilizing a Looping Strategy in Harness NextGen?
 
 Looping strategies are useful for scenarios like canary deployments, gradual rollouts, and validation checks where you want to keep iterating until you achieve the desired result.
@@ -687,7 +687,7 @@ No, Versioning is not done when declarative rollback is enabled. Please refer mo
 
 #### How do I use an output from one stage in a looping strategy of another stage ?
 
-If there is certainty in terms of number of Stages created, this could be achieved by creating a intermediary shell script which is concatenating output variables from previous stages with a “,” and building a list which can them be passed onto the next stage for lopping over this list. For more on this please refer this in following [Documentation](https://developer.harness.io/docs/platform/pipelines/best-practices-for-looping-strategies/)
+If there is certainty in terms of number of Stages created, this could be achieved by creating a intermediary shell script which is concatenating output variables from previous stages with a “,” and building a list which can them be passed onto the next stage for lopping over this list. For more on this please refer this in following [Documentation](https://developer.harness.io/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies)
 
 #### Do we support services and envs at the org level ?
 

@@ -117,12 +117,12 @@ You can specify conditional execution settings for an entire stage and for indiv
 
 For information about looping strategies to go:
 
-* [Looping strategies - matrix, repeat, parallelism](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
+* [Looping strategies - matrix, repeat, parallelism](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Optimize and enhance CI pipelines](/docs/category/optimize-and-enhance)
 
 ### Failure Strategies
 
-[Failure strategies](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) define how your stages and steps handle different failure conditions.
+[Failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) define how your stages and steps handle different failure conditions.
 
 Each failure strategy is comprised of the following:
 

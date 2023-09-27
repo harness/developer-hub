@@ -277,7 +277,7 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 <details>
 <summary>Install multiple Python versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:
@@ -333,7 +333,7 @@ Specify the desired [Python Docker image](https://hub.docker.com/_/python) tag i
 <details>
 <summary>Use multiple Python versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:

@@ -550,7 +550,7 @@ GitLab CI jobs run in parallel by default, whereas in Harness CI steps and stage
         ...
 ```
 
-In addition to parallelism, you can use Harness CI's [looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism) to make your pipelines more dynamic and versatile. These strategies allow your pipelines to execute the same set of tasks multiple times for several different configurations without requiring you to intentionally create unique steps or stages for each iteration. This is achieved by mentioning user-defined tags and referencing them in the pipeline using the following expression syntax: `<+matrix.usertag>`
+In addition to parallelism, you can use Harness CI's [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) to make your pipelines more dynamic and versatile. These strategies allow your pipelines to execute the same set of tasks multiple times for several different configurations without requiring you to intentionally create unique steps or stages for each iteration. This is achieved by mentioning user-defined tags and referencing them in the pipeline using the following expression syntax: `<+matrix.usertag>`
 
 As in GitLab CI, you also can combine parallelism and matrix strategies in Harness CI, as shown in the following examples.
 

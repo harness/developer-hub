@@ -2,11 +2,13 @@
 title: Additional matrix examples
 description: Specific examples for matrix.
 sidebar_position: 4
+redirect_from:
+  - /docs/platform/pipelines/w_pipeline-steps-reference/additional-matrix-examples
 ---
 
 This topic provides various examples of using matrix in your pipeline stages or steps.
 
-For detailed information on using matrix in your pipeline, go to [Run a Stage or Step Multiple Times using a Matrix](../run-a-stage-or-step-multiple-times-using-a-matrix.md)
+For detailed information on using matrix in your pipeline, go to [Run a Stage or Step Multiple Times using a Matrix](./run-a-stage-or-step-multiple-times-using-a-matrix.md)
 
 ## Runtime input support in matrix
 

@@ -421,7 +421,7 @@ ID of the user that started the build.
 
 ## Matrix strategy variables
 
-These variables track [matrix strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
+These variables track [matrix strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 
 * `HARNESS_NODE_INDEX`: Provides the index of a parallel run within a matrix strategy. Ranges from `0` to `parallelism -1`.
 * `HARNESS_NODE_TOTAL`: Provides the total number of elements in a matrix strategy. Equivalent to the value of `parallelism` in the pipeline's YAML.

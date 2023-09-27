@@ -6,7 +6,7 @@ sidebar_position: 2
 
 When you are deploying to multiple hosts, such as with an SSH, WinRM, or deployment template stage, you can run the same step on all of the target hosts.
 
-To run the step on all hosts, you use the **Repeat** [looping strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) and identify all the hosts for the stage as the target:
+To run the step on all hosts, you use the **Repeat** [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) and identify all the hosts for the stage as the target:
 
 
 ```yaml
@@ -59,7 +59,7 @@ For Microsoft Azure or AWS:
 
 ## Set looping strategy
 
-The Repeat [looping strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) allows you to repeat the step for all target hosts. The strategy will iterate through the list of hosts. The list of hosts is identified with the expression `<+stage.output.hosts>`.
+The Repeat [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) allows you to repeat the step for all target hosts. The strategy will iterate through the list of hosts. The list of hosts is identified with the expression `<+stage.output.hosts>`.
 
 1. In your step, select **Advanced**.
 2. Select **Looping Strategy**.

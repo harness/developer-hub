@@ -280,7 +280,7 @@ If your application requires a specific Node version, add a **Run** step to inst
 <details>
 <summary>Install multiple Node versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:
@@ -338,7 +338,7 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 <details>
 <summary>Use multiple node versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:

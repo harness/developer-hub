@@ -346,7 +346,7 @@ kubectl describe deployment nginx-deployment
 ```
 ![](./static/custom-deployment-tutorial-27.png)
 
-Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](../../platform/pipelines/looping-strategies-matrix-repeat-and-parallelism.mdn the step's **Advanced** section.
+Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) in the step's **Advanced** section.
 
 1. Click **Advanced**.
 2. Click **Looping Strategy**.
@@ -509,7 +509,7 @@ For example, here is a Shell Script step that outputs these expressions:
 
 1. In the step, in **Advanced**, click **Looping Strategy**.
 2. Select **Repeat**.
-3. In **Repeat**, use the Repeat [Looping Strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) and identify all the hosts for the stage as the target:
+3. In **Repeat**, use the Repeat [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) and identify all the hosts for the stage as the target:
 
 ```yaml
 repeat:  

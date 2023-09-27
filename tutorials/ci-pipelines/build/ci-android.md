@@ -427,7 +427,7 @@ If you need to install additional versions, use a **Run** step. These examples u
 <details>
 <summary>Use multiple versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:
@@ -488,7 +488,7 @@ These examples use [faberNovel/docker-android](https://github.com/faberNovel/doc
 <details>
 <summary>Use multiple versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:

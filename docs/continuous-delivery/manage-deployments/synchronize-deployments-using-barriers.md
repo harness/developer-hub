@@ -18,7 +18,7 @@ Harness provides multiple options for controlling resource usage and protecting 
 
 ## Important notes
 
-* You cannot use barriers with [Matrix, Looping, and Repeat](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism) strategies. 
+* You cannot use barriers with [Matrix, Looping, and Repeat](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) strategies. 
 
 ## Barriers and Synchronization
 

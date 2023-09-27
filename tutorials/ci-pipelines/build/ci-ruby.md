@@ -273,7 +273,7 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 <details>
 <summary>Use multiple Ruby versions</summary>
 
-1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:
@@ -327,7 +327,7 @@ Specify the desired [Ruby Docker image](https://hub.docker.com/_/ruby) tag in yo
 <details>
 <summary>Use multiple Ruby versions</summary>
 
-1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:

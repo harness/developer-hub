@@ -1,11 +1,13 @@
 ---
 title: Best practices for looping strategies
 description: Review this topic before you implement a Matrix and Parallelism strategy in your pipeline.
-# sidebar_position: 2
+sidebar_position: 2
 helpdocs_topic_id: q7i0saqgw4
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/pipelines/best-practices-for-looping-strategies
 ---
 
 Harness recommends the following best practices for implementing Matrix and Parallelism strategies in your Pipelines.

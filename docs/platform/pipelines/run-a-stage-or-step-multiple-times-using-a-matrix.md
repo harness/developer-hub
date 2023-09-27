@@ -19,19 +19,19 @@ A matrix enables you to run the same Stage or Step multiple times with different
 You can apply matrix strategies to both CI and CD workflows. This topic assumes that you are familiar with the following:
 
 * [CD key concepts](/docs/continuous-delivery/get-started/key-concepts)
-* [CI key concepts](../../continuous-integration/get-started/key-concepts.md)
-* [Looping Strategies Overview](looping-strategies-matrix-repeat-and-parallelism.md)
-* [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
+* [CI key concepts](/docs/continuous-integration/get-started/key-concepts.md)
+* [Looping Strategies Overview](./looping-strategies-matrix-repeat-and-parallelism.md)
+* [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md)
 
 ### Important Notes
 
 * There is no limit on the number of dimensions you can include in a matrix or the number of looping strategies you define in a Pipeline.
-* You should avoid complex looping scenarios unless you clearly understand the resources that your scenario will require. See [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md).
+* You should avoid complex looping scenarios unless you clearly understand the resources that your scenario will require. See [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md).
 
 ### Add a Matrix Strategy to a Stage or Step
 
 1. In the Pipeline Studio, go to the **Advanced** tab of the Stage or Step where you want to apply the Looping strategy.
-2. Under Looping Strategies, select **Matrix**. You can also use a Loop strategy to iterate through a simple list. See [Looping Strategies Overview: Matrix, Repeat, and Parallelism](looping-strategies-matrix-repeat-and-parallelism.md).
+2. Under Looping Strategies, select **Matrix**. You can also use a Loop strategy to iterate through a simple list. See [Looping Strategies Overview: Matrix, Repeat, and Parallelism](./looping-strategies-matrix-repeat-and-parallelism.md).
 3. Enter the YAML definition for your strategy as illustrated in the following examples.
 
 ### CI Example: Run an App in `[browser]` on `[os]`

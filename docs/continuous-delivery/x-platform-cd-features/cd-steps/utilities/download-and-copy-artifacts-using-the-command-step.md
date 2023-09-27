@@ -291,7 +291,7 @@ Since a deployment template can be used on any host type, the Command step can o
 
 ## Looping strategy and target hosts
 
-To run the Command step on all the target hosts, you must use the repeat [looping strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) and expression `<+stage.output.hosts>`:
+To run the Command step on all the target hosts, you must use the repeat [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) and expression `<+stage.output.hosts>`:
 
 
 ```

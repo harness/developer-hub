@@ -117,6 +117,6 @@ To reference stage variables in other stages, use the expression `<+pipeline.sta
 
 On the **Advanced** tab, you can configure:
 
-* [Conditional executions](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure strategies](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Looping strategies - Matrix, repeat, parallelism](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
+* [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure strategies](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping strategies - Matrix, repeat, parallelism](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)

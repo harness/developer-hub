@@ -177,7 +177,7 @@ Select one of the following **Looping Strategy** options to run step multiple ti
 - Repeat
 - Parallelism
 
-For more information, go to [Looping strategies overview](../pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
+For more information, go to [Looping strategies overview](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md)
 
 Select **Save**. Enter a comment for the changes, and then select **Save**.
 

@@ -833,7 +833,7 @@ Lists all of the target hosts when deploying to multiple hosts.
 
 When you are deploying to multiple hosts, such as with an SSH, WinRM, or deployment template stage, you can run the same step on all of the target hosts.
 
-To run the step on all hosts, you use the repeat [Looping Strategy](../pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
+To run the step on all hosts, you use the repeat [Looping Strategy](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
 
 
 ```
@@ -1454,7 +1454,7 @@ The following instance expressions are supported in SSH, WinRM, and custom deplo
 
 For details on these deployment types, go to [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng), [WinRM deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial), and [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
-To use these instance expressions in a step, you must use the repeat [Looping Strategy](../pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
+To use these instance expressions in a step, you must use the repeat [Looping Strategy](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
 
 ```
 repeat:  
@@ -1526,7 +1526,7 @@ If you use this variable in a pipeline, such as in a Shell script step, Harness 
 
 ## Strategy
 
-You can use Harness expressions to retrieve the current execution status of the [looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy.
+You can use Harness expressions to retrieve the current execution status of the [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) for nodes (stages/steps) using a matrix or repeat strategy.
   
 The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
 
