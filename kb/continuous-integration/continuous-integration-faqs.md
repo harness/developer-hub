@@ -126,7 +126,7 @@ This is not natively supported however we could have a pipeline listening on del
 #### How can we check build VM resource utilization for build running in Harness cloud?
 
 Currently this is not supported natively. We could use use a parallel step to check the resources utilised. More detailas about this can be found in the below doc
-/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures
+[https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures)
 
 #### Why can't we find the Notify Option in my Stage Template?
 
@@ -147,7 +147,7 @@ The step in Harness determines its status based on the exit status received from
 #### How can we configure the CI codebase step to clone the repo recursively? 
 
 Currently, the clone codebase step doesn't support the flag recursive However you could use the git credentials from Codebase Connector in Run Step and run the git command with the required flags. More details about this can be reffered in the below doc 
-https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/
+[https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/](https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/)
 
 #### Why the build status is not reflecting on the PR if the repository is in a github orginisation despite having full permission for the token used in the git connector?
 
@@ -155,8 +155,8 @@ This could be due to the fact that the user/account that is added to the organiz
 
 #### How can we send mail from the CI pipeline with an attachement?
 
-You could send mail from the CI pipeline by using the drone plugin https://plugins.drone.io/plugins/email. More details about how the drone plugin can be used in Harness CI pipeline can be reffered in the below doc
-/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/
+You could send mail from the CI pipeline by using the drone plugin [https://plugins.drone.io/plugins/email](https://plugins.drone.io/plugins/email). More details about how the drone plugin can be used in Harness CI pipeline can be reffered in the below doc
+[https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/)
 
 #### How can I retrieve the Maven project version from the pom.xml file and pass it to the subsequent Docker build step as the build argument?
 
@@ -177,7 +177,7 @@ Harness supports multiple types of operating systems and architecture. Including
 #### Cache Intelligence on Harness Cloud Infrastructure
 
 Harness only currently supports cache intelligence on the Harness Cloud infrastructure. 
-See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/]
+See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)
 
 <!-- #### Additional considerations when running concurrent builds
 
@@ -401,3 +401,11 @@ Yes, we have a option to manually set or customize cache keys if your project ha
 
 #### Is there any API available for the Cache Intelligence?
 Yes, you can check the cache info and delete through the API. You can refer to this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-intelligence-api) for the API.
+
+#### How many build credits are we allowed to use with Harness free version
+
+Free monthly credits for up to 2,000 build minutes.
+
+#### I want to develop a build built for MacOS, do I have to use homebrew as the installer?
+
+No, Harness also supports multiple versions of xcode. Please see our document on iOS and macOS applications for more details [https://developer.harness.io/tutorials/ci-pipelines/build/ios/]
