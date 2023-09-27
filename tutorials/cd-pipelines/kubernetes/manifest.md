@@ -675,7 +675,7 @@ Verify that you have the following:
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="UI">
+<TabItem value="ui" label="UI">
 ```
 
 1. Login to [Harness](https://app.harness.io/).
@@ -839,7 +839,7 @@ A successful Application sync will display the following status tree under **Res
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Terraform Provider">
+<TabItem value="terraform" label="Terraform Provider">
 ```
 Harness offers a [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you declaratively manage Harness GitOps entities alongside your application and cluster resources. These steps walk through using Terraform to create and install the GitOps agent, define related Harness entities, and deploy a sample application to your cluster.
 
