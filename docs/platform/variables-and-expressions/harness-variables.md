@@ -1260,6 +1260,28 @@ Here are the sidecar expressions:
 * `<+artifacts.sidecars.SIDECAR_IDENTIFIER.tag>`
 * `<+artifacts.sidecars.SIDECAR_IDENTIFIER.connectorRef>`
 
+## Approval
+
+Whenever a user grants an approval in an Approval stage or step, the pipeline maintains the user information of the approver for the rest of the pipeline execution.  You can use these variables in notifications after an approval gets granted.  
+
+In the following example, a Deploy stage has two Approval steps. For each approval, the pipeline maintains a separate set of approval variables. Use the index to access the array element that contains the variables for the relevant approval.
+
+![](./static/approved-user-pipeline-example.png)
+
+### <+approval.approvalActivities[0].user.name>
+
+The Harness username of the approver.
+
+### <+approval.approvalActivities[0].user.email>
+
+The email address of the approver.
+
+### <+approval.approvalActivities[0].comments>
+
+Any comments the user added to the approval, formatted as a single string. This variable is populated from the Comment output variable in the approval step or stage.  
+
+
+
 ## Config files
 
 Files added in the **Config Files** section of a service are referenced using the following Harness expressions.
