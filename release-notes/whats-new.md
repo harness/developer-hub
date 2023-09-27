@@ -19,7 +19,26 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: September 25, 2023
+## Latest: September 28, 2023
+
+### Continuous Delivery, version 808xx
+
+- Harness CD has a new account-level setting to override the default behavior when deleting a pipeline, which deletes all past executions of that pipeline as well. (CDS-71173, ZD-50017)
+
+  When `do_not_delete_pipeline_execution_details` is set to `true` (the default), older pipeline executions remain in the system even when the corresponding pipelines are deleted. You can view these executions in the Pipeline Executions list and open them to view details, but you cannot re-run them.
+
+  When `do_not_delete_pipeline_execution_details` is set to `false`, 
+  Harness deletes all executions of a pipeline when that pipeline is deleted.
+
+  If a new pipeline is created with the same Id, the old executions are automatically associated with the new pipeline. This is expected functionality since the pipeline Id is used to associate executions with pipelines.
+
+  To configure this setting, use the [Harness CLI](/docs/platform/automation/cli/reference).
+
+- There was no way in Pipeline Studio to add step group variables when creating a step group template. This section has now been added. (CDS-78683)
+
+- This release improves the UI feedback when executing an Approval step. Previously, the pipeline execution log console could appear stuck at the Approval step even after the pipeline processed the step successfully. This release includes a back-end optimization to ensure that the Pipeline Execution UI processes and displays log messages for Approval steps in real time. (CDS-76996, ZD-48401)
+
+## September 25, 2023
 
 ### Service Reliability Management, version 1.1.3
 
