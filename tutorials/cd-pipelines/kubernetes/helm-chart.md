@@ -27,7 +27,7 @@ This tutorial is designed to help you get started with Harness Continuous Delive
 :::
 
 ```mdx-code-block
-<Tabs>
+<Tabs defaultValue="GitOps Workflow">
 <TabItem value="CD Pipeline">
 ```
 You can choose to proceed with the tutorial either by using the command-line interface (Harness CLI) or the user interface (Harness UI).
