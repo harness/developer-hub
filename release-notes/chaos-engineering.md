@@ -18,9 +18,43 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest: Version 1.19.2
+## Latest: Version 1.20.1
 
 ### What's new
+
+* Added support for targetting specific ports when using API Chaos Faults via a new tunable i.e DESTINATION_PORTS (CHAOS-2475)
+
+* Added support for HTTPs protocol in API Chaos Faults. (CHAOS-2145)
+
+### Early access
+
+* Chaos Guard (This feature is currently behind a feature flag named `CHAOS_SECURITY_GOVERNANCE`)
+    - Added support for evaluation of mulitple app labels in when running experiments with multiple target app labels. (CHAOS-2315)
+
+* Linux Chaos Faults (This feature is currently behind a feature flag named `CHAOS_LINUX_ENABLED`)
+    - In linux experiments, sometimes , Resilience Score was showing as 0, although only one probe had failed. This was happening because of incorrect propagation of the probe error which led to its misinterpretation as an experimental error rather than a probe failure & it has been fixed now. (CHAOS-2472)
+
+* Resilience Probes (This feature is currently behind a feature flag named `CHAOS_PROBES_ENABLED`)
+    - Enhanced mode selection drawer to show UI according to selected mode by the users. (Previously it was showing image indicating SOT for all modes irrespective of selected mode) (CHAOS-1997)
+
+### Fixed issues
+
+* There was an issue where users were getting an error when experiment triggered via pipeline failed to start & there is no notifyID created. This has been fixed now. (CHAOS-2490)
+
+* Fixed the issue where the topology settings (taint-tolerations, nodeselectors) made in the advanced configuration section during experiment construction were getting applied only to the Argo workflow pods. Now, the topology settings are propogated to Chaos Fault Pods as well. (CHAOS-2186)
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### September 8, 2023, Version 1.19.2
+
+##### What's new
 
 * Added support for Authentication and HTTPs in HTTP Probes for Kubernetes chaos faults. (CHAOS-2381)
 
@@ -36,7 +70,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Added support for downloading an experiment run specific manifest. Now, users can download experiment run specific manifest from the right sidebar on the Execution graph page. (CHAOS-1832)
 
-### Early access
+##### Early access
 
 * Linux Chaos Faults (This feature is currently behind a feature flag named `CHAOS_LINUX_ENABLED`)
     - Added support for targeting multiple network interfaces in network faults. (CHAOS-2349)
@@ -46,7 +80,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     - Users had to select the **Setup Probe** button 2 times. It should now work only with a single click. It was dependent on formik validations, which in turn was halting the functionality of handleSubmit due to incorrect Yup validations. (CHAOS-2364)
     - When using the same probes in two faults under same chaos experiment, Probe API was returning the probe two times in the second fault. This was due to probeNames being a global variable and using the same probe name multiple times was causing the name to be appended without re-initializing the variable. Scoping it down to local scope fixed this issue. (CHAOS-2452)
 
-### Fixed issues
+##### Fixed issues
 
 * The logs for the **install chaos experiment** step were getting lost immediately post execution. This issue was occurring in the subscriber component, after the custom pods cleanup, the component was still trying to stream Kubernetes pod logs. As a fix, we have added a check to fetch the pod details and gracefully return the error if pods are not found with a proper error message. (CHAOS-2321)
 
@@ -54,16 +88,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * The frontend was making unnecessary queries to the backend for listWorkflow API whenever changing experiment details via the UI. Now ChaosStep has been optimized to only query when changing selected experiment using memoization. (CHAOS-883)
 
-### Hotfixes
-
-This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
-#### September 8, 2023, Version 1.18.7
+#### September 1, 2023, Version 1.18.7
 
 ##### What's new
 
