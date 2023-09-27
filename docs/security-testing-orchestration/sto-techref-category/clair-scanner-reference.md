@@ -1,12 +1,13 @@
 ---
-title: Clair scanner reference
+title: Clair scanner reference for STO
 description: Image scans with Clair
-sidebar_position: 100
+sidebar_label: Clair scanner reference
+sidebar_position: 110
 ---
 
 You can set up Clair scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Before you begin
+## Important notes for running Clair scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -24,7 +25,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Security step settings
+## Security step settings for Clair scans in STO
 
 ### Target and variant
 

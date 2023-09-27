@@ -28,7 +28,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80504, Harness Delegate version 80505
+## Latest: Harness version 80504, Harness Delegate version 23.09.80505
 
 Harness NextGen release 80504 includes the following changes for the Harness Delegate.
 
@@ -66,18 +66,32 @@ This release does not include any new early access features.
 
 ### Hotfixes
 
-#### Version 80506
+#### Version 23.09.80506
 
 - API calls made to Git providers during deployments caused rate limit errors. (CDS-78950)
 
   The issue has been resolved. Harness reduced the number of API calls made to Git providers during deployment.
+
+#### Version 23.09.80510
+
+- Added support for the Artifactory **Artifact Path** filter. (CDS-77244, CDS-79760)
+
+- The task count did not decrease when a task was aborted and the `DELEGATE_TASK_CAPACITY` environment variable was enabled. (PL-41367) (PL-41367)
+
+   Harness recommends that you upgrade to delegate version 23.09.80511 to resolve this issue.
+
+#### Version 23.09.80511
+
+- Previously, there was an issue with the task capacity limiter for delegates where the counter didn't decrement when a task was aborted. (PL-41408)
+
+   This issue has been fixed. Now, when you deploy a delegate and set the `DELEGATE_TASK_CAPACITY` environment variable, the number of concurrent tasks for the delegate is limited to the specified capacity. 
 
 ## Previous releases
 
 <details>
 <summary>Expand this section to view changes to previous releases</summary>
 
-#### Latest: Harness version 80307, Harness Delegate version 80308
+#### Harness version 80307, Harness Delegate version 23.08.80308
 
 Harness NextGen release 80307 includes the following changes for the Harness Delegate.
 
@@ -149,13 +163,13 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
    This fix is behind the feature flag `CDS_ECS_BG_GREEN_SERVICE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the fix.
 
-##### Version 80310
+##### Version 23.08.80310
 
 - Due to intermittent issues with the cf CLI, the Tanzu Application Services (TAS) Rolling deployment step failed to create the application. (CDS-75250)
 
   Now, before performing a rolling deployment, the TAS Rolling deployment step first verifies that the application exists. If the application does not exist, it deploys the application without using the rolling deployment strategy. If the application exists, it performs a rolling upgrade. 
 
-#### Version 80309
+#### Version 23.09.80309
 
 - Do not evaluate service variables on the Bash shell when exporting them in Command step. (CDS-75775)
 
@@ -163,13 +177,13 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
   evaluated using the bash interpreter (for example, "abc$1abc" would actually be sent as "abc$bc").
 
 
-#### Version 80308
+#### Version 23.08.80308
 
 - In certain scenarios for Amazon ECS blue/green deployments, the green application was not rolling back. We have added functionality to handle this scenario. We now consistently roll back the green service in Amazon ECS blue/green deployments. (CDS-76795, ZD-49005)
 
    This fix is behind the feature flag `CDS_ECS_BG_GREEN_SERVICE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the fix.
 
-#### August 4, 2023, Harness version 80120, Harness Delegate version 80104
+#### August 4, 2023, Harness version 80120, Harness Delegate version 23.08.80104
 
 ##### What's new
 
@@ -282,25 +296,25 @@ This release does not include any early access features.
 
    This issue has been resolved through improved message read performance and an increased read timeout.
 
-#### August 8, 2023 Harness Delegate hotfix version 79910
+#### August 8, 2023 Harness Delegate hotfix version 23.08.79910
 
 - The delegate stopped trying to reconnect to the WebSocket if the infrastructure experienced a network outage for over five minutes. (PL-40547)
 
   This issue is fixed. The delegate keeps trying to reconnect to the WebSocket until it's successful.
                                
-#### August 7, 2023 Harness Delegate hotfix version 79909
+#### August 7, 2023 Harness Delegate hotfix version 23.08.79909
 
 - The pipeline console did not show any logs to indicate that Kubernetes infrastructure container initialization and completion tasks were in progress.
 
   Now, to improve your experience, the console shows logs to indicate when the task begins and ends. (CDS-74522, ZD-47616)
 
-#### July 20, 2023 Harness Delegate hotfix version 79906
+#### July 20, 2023 Harness Delegate hotfix version 23.07.79906
 
 - Helm deployment steps timed out after the initial installation/upgrade phase, preventing the execution of a Helm rollback step. (CDS-73264)
 
    This issue is now fixed.
 
-#### July 18, 2023, Harness version 79916, Harness Delegate version 79904
+#### July 18, 2023, Harness version 79916, Harness Delegate version 23.07.79904
 
 Harness NextGen release 79916 includes the following changes for the Harness Delegate.
 
@@ -364,7 +378,7 @@ Harness NextGen release 79916 includes the following changes for the Harness Del
 
    This issue is now fixed.
 
-#### June 28, 2023, Harness version 79714, Harness Delegate version 79707
+#### June 28, 2023, Harness version 79714, Harness Delegate version 23.06.79707
 
 Harness NextGen release 79714 includes the following changes for the Harness Delegate.
 
@@ -428,7 +442,7 @@ Harness NextGen release 79714 includes the following changes for the Harness Del
    This issue has been resolved by adding a code validation. The field no longer accepts values above 4320 minutes.
 
 
-#### June 9, 2023, Harness version 79516, Harness Delegate version 79503
+#### June 9, 2023, Harness version 79516, Harness Delegate version 23.06.79503
 
 Harness NextGen release 79516 includes the following changes for the Harness Delegate.
 
@@ -498,7 +512,7 @@ Harness NextGen release 79516 includes the following changes for the Harness Del
 
 - Fixed an issue where the `eventPayload` expressions were not resolving when rerunning a failed pipeline that was previously fired by using a trigger. (CDS-70559)
 
-#### May 23, 2023, Harness version 79306, Harness Delegate version 79307
+#### May 23, 2023, Harness version 79306, Harness Delegate version 23.05.79307
 
 Harness NextGen release 79306 includes the following changes for the Harness Delegate.
 
@@ -586,7 +600,7 @@ Harness NextGen release 79306 includes the following changes for the Harness Del
    This issue was fixed by updating the delegate YAML. Delegate startup now fails when you use a legacy delegate image with an immutable delegate.
 
 
-#### April 22, 2023, Harness version 79111, Harness Delegate version 79106
+#### April 22, 2023, Harness version 79111, Harness Delegate version 23.04.79106
 
 Harness NextGen release 79111 includes the following changes for the Harness Delegate.
 
@@ -655,7 +669,7 @@ This release does not include any early access features.
 
 - Set the delegate `LANG` environment variable to en_US.UTF-8 by default. (DEL-6221)
 
-#### March 31, 2023, Harness version 78914, Harness Delegate version 78904
+#### March 31, 2023, Harness version 78914, Harness Delegate version 23.03.78904
 
 Harness release 78914 includes the following changes for the Harness Delegate.
 
@@ -672,7 +686,7 @@ This release does not include any early access features.
 
 This release does not include any fixed issues.
 
-#### March 24, 2023, Harness version 78817, Harness Delegate version 78705
+#### March 24, 2023, Harness version 78817, Harness Delegate version 23.03.78705
 
 Harness NextGen release 78817 includes the following changes for the Harness Delegate.
 
@@ -691,7 +705,7 @@ Minor fixes to the delegate installation wizard. (DEL-6073)
 Previously, Helm was not pre-selected when you switched from Docker to Kubernetes. This has been fixed. Additionally, values that need to be copied in the Kubernetes manifest were moved into a copy block. 
 
 
-#### March 15, 2023, Harness version 78712, Harness Delegate version 78705
+#### March 15, 2023, Harness version 78712, Harness Delegate version 23.03.78705
 
 Harness NextGen release 78712 includes the following changes for the Harness Delegate.
 
@@ -719,7 +733,7 @@ This issue was fixed with the following updates:
 - Fail one minute after the last rebroadcast attempt. 
 
 
-#### March 8, 2023, Harness version 78619, Harness Delegate version 78500
+#### March 8, 2023, Harness version 78619, Harness Delegate version 23.03.78500
 
 Harness NextGen release 78619 includes the following changes for the Harness Delegate.
 
@@ -749,7 +763,7 @@ This release does not include any early access features.
 The new delegate installation wizard is now available in all delegate installation worfklows. (DEL-5989)
 
 
-#### February 23, 2023, Harness version 78507, Harness Delegate version 78500
+#### February 23, 2023, Harness version 78507, Harness Delegate version 23.02.78500
 
 Harness NextGen release 78507 includes the following changes for the Harness Delegate.
 
@@ -771,7 +785,7 @@ This release includes the following fixes:
 
 - Fixed an issue that interfered with the delegate installation process. Delegate API requests did not include the context that was required; organization and project ID information was not being sent with requests. The required context is now included. (DEL-5951)
 
-#### February 15, 2023, Harness version 78421, Harness Delegate version 78306
+#### February 15, 2023, Harness version 78421, Harness Delegate 23.02.version 78306
 
 Harness NextGen release 78421 includes the following changes for the Harness Delegate.
 
@@ -794,7 +808,7 @@ This release includes the following fixes:
 - Resolved a problem that caused SCM log information to be displayed in the Watcher. The information was redirected to the delegate `slf4j` stream for display in the delegate logs. (DEL-5744)
 
 
-#### February 6, 2023, Harness version 78321, Harness Delegate version 78306
+#### February 6, 2023, Harness version 78321, Harness Delegate version 23.02.78306
 
 Harness NextGen release 78321 includes the following changes for the Harness Delegate.
 
@@ -837,7 +851,7 @@ This release introduces the following security enhancements:
   | scm | The Harness-generated library and version are changed with every fix. | The Harness-generated library and version are changed with every fix. |
 
 
-#### January 17, 2023, Harness version 78214, Harness Delegate version 78101
+#### January 17, 2023, Harness version 78214, Harness Delegate version 23.01.78101
 
 Harness NextGen release 78214 includes no changed features or fixes for the Harness Delegate.
 

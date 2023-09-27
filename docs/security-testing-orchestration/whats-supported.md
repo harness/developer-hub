@@ -44,6 +44,17 @@ import StoSupportedScanners from '/docs/security-testing-orchestration/sto-techr
 </details>
 
 
+<details><summary>Supported scanner versions and input formats</summary>
+
+```mdx-code-block
+import StoSupportedVersions from '/docs/security-testing-orchestration/sto-techref-category/shared/_supported-versions-and-data-formats.md';
+```
+
+<StoSupportedVersions />
+
+</details>
+
+
 <details><summary>Scanner binaries used in STO container images</summary>
 
 ```mdx-code-block
@@ -123,7 +134,7 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
 
 All STO features supported in [Harness SaaS](#harness-saas) are also supported in Self-Managed Enterprise Edition with the following exceptions:
 - Custom dashboards
-- Harness AI Development Assistant (AIDA) for STO
+- Harness AI Development Assistant (AIDA&trade;) for STO
 - You cannot run SaaS-based scans if there is no connectivity between Harness and the external SaaS environment.  
 
 ## Harness SMP in offline environments

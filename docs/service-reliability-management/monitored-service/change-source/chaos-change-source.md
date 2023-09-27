@@ -1,10 +1,9 @@
 ---
-title: Chaos experiment
+title: Connect a chaos experiment
+sidebar_label: Chaos experiment
 description: Learn to connect a chaos experiment to a monitored service.
 sidebar_position: 10
 ---
-
-# Connect a chaos experiment to a monitored service
 
 :::info note
 This feature is currently behind two feature flags: `CHAOS_SRM_EVENT` and `SRM_INTERNAL_CHANGE_SOURCE_CE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.

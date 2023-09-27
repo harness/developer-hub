@@ -8,7 +8,14 @@ Harness maintains its own set of scan images for [STO-supported scanners](/docs/
 
 This topic describes how to override the default behavior and use a private registry instead. You can download the scan images you need, perform your own security checks on the images, upload them to a private registry, and then set up your STO steps to download images from this registry. 
 
-### Create STO scanner images with your own SSL certificates (_optional_)
+The following steps describe the high-level workflow:
+1. [Create STO scanner images with your own SSL certificates (optional)](#create-sto-scanner-images-with-your-own-ssl-certificates-optional)
+2. [Create a connector to your private registry](#create-a-connector-to-your-private-registry)
+3. [Configure the pipeline to download images from your registry](#configure-the-pipeline-to-download-images-from-your-registry)
+   * [Scanner template setup](#scanner-template-setup)
+   * [Security step setup](#security-step-setup)
+
+## Create STO scanner images with your own SSL certificates (optional)
 
 Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates.
 
@@ -67,7 +74,11 @@ USER 1000
 
 </details>
 
-### Workflow description
+## Create a connector to your private registry
+
+You need a Docker connector that points to your private container registry. For more information, go to [Docker Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/).
+
+## Configure the pipeline to download images from your registry
 
 1. Download the scan images you need, test and validate the images, and store them in your private registry. 
 
@@ -83,7 +94,33 @@ USER 1000
    ```
    You can also [set up your CI pipelines](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) to download build images from this registry instead of Docker Hub.
 
-2. For each Security Scan step, add these settings:
+2. Set up your pipeline to download the images from your private registry, based on the type of step you're using to run your scans:
+
+   - [Scanner template step](#scanner-template-setup)
+   - [Security step](#security-step-setup)
+
+### Scanner template setup
+
+Do the following if you're using a scanner template rather than a generic **Security** step. A scanner template is a **Security Test** step with a scanner-specific UI, such as [**Black Duck Hub**](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference), [**CodeQL**](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference#codeql-step-settings-for-sto-scans), and [**Snyk**](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#snyk-step-configuration).
+
+1. In the stage where you're setting up the scanner template, go to the **Infrastructure** tab. 
+
+2. Under **Advanced**, go to **Override Image Connector (optional)** and select the connector to your private registry. You might need to scroll down to see this option.
+
+   ![](../static/override-image-connector.png)
+
+
+3. If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
+
+   1. Open the scanner step and expand **Additional Configuration**. 
+   
+   2. Set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
+
+### Security step setup 
+
+Do the following if you're using a generic **Security** step for you scan:
+
+1. Open the **Security** step and add these settings: 
 
    * `runner_registry_domain`  —  The URL of the Docker registry where the images are stored. 
      
@@ -97,7 +134,13 @@ USER 1000
 
    * `runner_registry_token`  — As needed
 
-   If you need to use a proxy server, you must also specify the following: 
+  :::note
+
+  These settings are supported by the **Security** step only. They are not supported by scanner templates.
+
+  :::
+
+2. If you need to use a proxy server, you must also specify the following: 
 
    * `http_proxy`  —  The hostname and port to use for proxied HTTP requests
   
@@ -105,8 +148,14 @@ USER 1000
 
    * `no_proxy`  — A comma-separated list of hosts to bypass the proxy
 
+3. If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
 
-### YAML example
+   1. Open the scanner step and expand **Additional Configuration**. 
+   
+   2. Set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
+
+
+## YAML example for configuring STO to download images from a private registry
 
 The following pipeline downloads its Security Scan image (bandit) and all of its CI build images from the Harness Image Registry. 
 
@@ -172,7 +221,5 @@ pipeline:
         variables: []
   identifier: STO_Tutorial_1
   name: STO Tutorial 1
-
-
 
 ```

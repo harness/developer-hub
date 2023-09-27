@@ -126,7 +126,7 @@ This is not natively supported however we could have a pipeline listening on del
 #### How can we check build VM resource utilization for build running in Harness cloud?
 
 Currently this is not supported natively. We could use use a parallel step to check the resources utilised. More detailas about this can be found in the below doc
-/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures
+[https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures)
 
 #### Why can't we find the Notify Option in my Stage Template?
 
@@ -147,7 +147,7 @@ The step in Harness determines its status based on the exit status received from
 #### How can we configure the CI codebase step to clone the repo recursively? 
 
 Currently, the clone codebase step doesn't support the flag recursive However you could use the git credentials from Codebase Connector in Run Step and run the git command with the required flags. More details about this can be reffered in the below doc 
-https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/
+[https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/](https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/)
 
 #### Why the build status is not reflecting on the PR if the repository is in a github orginisation despite having full permission for the token used in the git connector?
 
@@ -155,8 +155,8 @@ This could be due to the fact that the user/account that is added to the organiz
 
 #### How can we send mail from the CI pipeline with an attachement?
 
-You could send mail from the CI pipeline by using the drone plugin https://plugins.drone.io/plugins/email. More details about how the drone plugin can be used in Harness CI pipeline can be reffered in the below doc
-/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/
+You could send mail from the CI pipeline by using the drone plugin [https://plugins.drone.io/plugins/email](https://plugins.drone.io/plugins/email). More details about how the drone plugin can be used in Harness CI pipeline can be reffered in the below doc
+[https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/)
 
 #### How can I retrieve the Maven project version from the pom.xml file and pass it to the subsequent Docker build step as the build argument?
 
@@ -177,13 +177,19 @@ Harness supports multiple types of operating systems and architecture. Including
 #### Cache Intelligence on Harness Cloud Infrastructure
 
 Harness only currently supports cache intelligence on the Harness Cloud infrastructure. 
-See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/]
+See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)
 
-#### Additional considerations when running concurrent builds
+<!-- #### Additional considerations when running concurrent builds
 
 While running concurrent builds, customers may want to consider the queued intelligence feature in Harness CI. This feature is behind a feature flag. 
 
-See [https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence/]
+See https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence/ -->
+
+<!-- QUEUE INTELLIGENCE IS CURRENTLY NON-FUNCTIONING. WILL UN-COMMENT WHEN IT IS FIXED. PLEASE DIRECT QUESTIONS TO #DOCUMENTATION. -->
+
+#### How to assert an environment variable within JEXL conditions?
+
+While we support output variables that can point to an environment variable, we do not support the direct referencing of environment variables in JEXL conditions, even when using the feature flag `CI_OUTPUT_VARIABLES_AS_ENV`, which automatically makes environment variables available for other steps in the same Build (CI) stage.
 
 ####  How can I download files from an S3 bucket in Harness?
 
@@ -194,7 +200,6 @@ You have two common options to download files from an S3 bucket in Harness:
 #### How are Harness secrets tied to connector. 
 
 Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
-
 
 #### You have security concerns with pulling Harness delegate images from a public repo?
 
@@ -321,3 +326,86 @@ This is expected behaviour as we start background step and will immedeatly move 
 #### How can we configure a step/stage/pipeline to fail/pass based on the % of test cases failure/success?
 
 We wouldn't be able to natively configure a stage/pipeline to fail/pass depending the % of test cases failure/success. To achieve this use case, we would need to manually parse the test result which will be created after the test step execution and have few variables exported from the test step which will have the  % of test cases failure/success and then the value of this variable can decide the status of the stage/pipeline.
+
+#### How can we reduce the high execution time in build and push step because the pipeline is not able to cache a remote repo?
+
+You can reconfigure the docker file to create the cache layer and install the dependencies before moving other files to improve the execution time.
+
+
+#### How can we improve the build process duration apart from cache layer?
+
+You can increase the Memory and CPU of the Build and Push step to improve the build process duration.
+
+
+#### Is there any best practices to follow while implementing the pipeline for build time?
+
+Yes, you can refer to our [documentation](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/#optimize-docker-images) to optimize and enhance the build process.
+
+
+#### How can I reduce the time spent on downloading dependencies during CI builds?
+
+You can pre-build Docker images that include all required dependencies and periodically update these images with the latest dependencies. This approach minimizes download time during the build process.
+
+
+#### What are the benefits of excluding unnecessary files and packages from Docker images?
+
+Excluding unnecessary files and packages not only reduces build times but also results in smaller, more efficient, and portable Docker images.
+
+
+#### What is a workspace in a pipeline, and how does it work?
+
+Workspace is a temporary volume that is created when the pipeline runs. It serves as the current working directory for all the steps within a stage. During initialization, the pipeline clones your codebase to the root of this workspace. The workspace persists for the entire duration of the stage, allowing steps to communicate and share state information. 
+
+#### Is workspace persists after the stage completion?
+No, the workspace is destroyed when the stage ends.
+
+
+#### Can I share additional volumes between steps in a stage?
+
+Yes, you can share additional volumes between steps in a stage by adding Shared Paths in the Build stage settings. This will allows you to specify specific directories or locations for all steps in the stage can access and share data from, in addition to the default workspace.
+
+#### What is Harness Cloud's cache storage limit per account?
+
+Harness Cloud provides up to 2GB of cache storage per account. 
+
+
+#### What is the cache retention window in Harness Cloud?
+
+Cache retention window in Harness Cloud is set at 15 days after it is initially stored. Also, the retention window resets whenever the cache is updated or modified.
+
+
+#### Can different pipelines within the same account access and use the same cache storage?
+The cache storage is shared among all pipelines within the account.
+
+
+#### What is the default cache storage location in Cache Intelligence?
+By default, Cache Intelligence stores data to be cached in the /harness directory.
+
+#### How do I specify custom cache paths in Cache Intelligence?
+To specify custom cache paths in Cache Intelligence, you can provide a list of locations that you want to be cached. For the detailed process you can refer to this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-paths).
+
+
+#### Can I use custom cache paths on a Windows platform with Cache Intelligence?
+
+Yes, you can use custom cache paths, including on Windows platforms, with Cache Intelligence. 
+
+
+#### How does Harness generate cache keys for caching build artifacts?
+
+Harness generates cache keys by creating a hash of the build lock file(s) detected during the build process. Examples of lock files include pom.xml, build.gradle, or package.json. The contents of these files are used to compute a unique hash, which serves as the cache key.
+
+
+#### Can I manually set or customize cache keys in Harness?
+Yes, we have a option to manually set or customize cache keys if your project has specific requirements. For the process you refer to this [doc.](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-keys)
+
+
+#### Is there any API available for the Cache Intelligence?
+Yes, you can check the cache info and delete through the API. You can refer to this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-intelligence-api) for the API.
+
+#### How many build credits are we allowed to use with Harness free version
+
+Free monthly credits for up to 2,000 build minutes.
+
+#### I want to develop a build built for MacOS, do I have to use homebrew as the installer?
+
+No, Harness also supports multiple versions of xcode. Please see our document on iOS and macOS applications for more details [https://developer.harness.io/tutorials/ci-pipelines/build/ios/]

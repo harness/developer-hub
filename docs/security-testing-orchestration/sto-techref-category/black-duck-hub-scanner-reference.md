@@ -1,13 +1,14 @@
 ---
-title: Black Duck Hub scanner reference
+title: Black Duck Hub scanner reference for STO
 description: Image and repository scans with Black Duck Open Hub scanner
-sidebar_position: 60
+sidebar_label: Black Duck Hub scanner reference
+sidebar_position: 70
 ---
 
 
 You can scan your container images using Black Duck Hub, a comprehensive and versatile open-source scanner. 
 
-## Before you begin
+## Important notes for running Black Duck Hub scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -25,15 +26,13 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## BlackDuck step configuration
+## Black Duck Hub step settings for STO scans
 
 The recommended workflow is add a BlackDuck step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <!-- 
 <details>
@@ -296,7 +295,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step configuration (_legacy_)
+## Security step settings for Black Duck Hub scans in STO (legacy)
 
 You can set up a Black Duck Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

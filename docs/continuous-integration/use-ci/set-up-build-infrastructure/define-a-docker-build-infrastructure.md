@@ -27,10 +27,6 @@ The Harness Docker Delegate is limited by the total amount of memory and CPU on 
 * Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
 * The machine where the delegate runs must have Docker installed.
 
-### STO pipelines
-
-If you have STO scan steps in your pipeline, you can set up your certificates using the workflow described below. However, there are some additional steps and requirements. For more information, go to [Adding Custom Artifacts to STO Pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
-
 ## Install the delegate and runner
 
 ```mdx-code-block
@@ -71,24 +67,30 @@ The Harness Docker Runner service performs the build work. The delegate needs th
    export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
 
+   :::info
+
+   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+
+   :::
+
 3. Enable execution permissions for the Runner. For example:
 
    ```
-   sudo chmod +x drone-docker-runner-linux-arm64
+   sudo chmod +x harness-docker-runner-linux-arm64
    ```
 
 4. Start the runner binary. For example:
 
    ```
-   sudo ./drone-docker-runner-linux-arm64 server
+   sudo ./harness-docker-runner-linux-arm64 server
    ```
 
 Here is an example of the three commands to install the Linux arm64 Harness Docker Runner with self-signed certificates:
 
 ```
 export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
-sudo chmod +x drone-docker-runner-linux-arm64
-./drone-docker-runner-linux-arm64 server
+sudo chmod +x harness-docker-runner-linux-arm64
+./harness-docker-runner-linux-arm64 server
 ```
 
 ```mdx-code-block
@@ -130,16 +132,22 @@ The Harness Docker Runner service performs the build work. The delegate needs th
    export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
 
+   :::info
+
+   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+
+   :::
+
 3. Enable execution permissions for the Runner. For example:
 
    ```
-   sudo chmod +x drone-docker-runner-darwin-amd64
+   sudo chmod +x harness-docker-runner-darwin-amd64
    ```
 
 4. Start the runner binary. For example:
 
    ```
-   ./drone-docker-runner-darwin-amd64 server
+   ./harness-docker-runner-darwin-amd64 server
    ```
 
 5. If [macOS Gatekeeper](https://support.apple.com/en-us/HT202491) stops the installation because it can't check for malicious software, you need to modify **Security & Privacy** settings to allow this app to run.
@@ -165,8 +173,8 @@ Here is an example of the three commands to install the Darwin amd64 Harness Doc
 
 ```
 export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
-sudo chmod +x drone-docker-runner-darwin-arm64
-./drone-docker-runner-darwin-arm64 server
+sudo chmod +x harness-docker-runner-darwin-arm64
+./harness-docker-runner-darwin-arm64 server
 ```
 
 ```mdx-code-block
@@ -233,19 +241,24 @@ Use PowerShell to run these commands.
    $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
    ```
 
-   With Windows, volume mapping must be folder-to-folder.
+   :::info
+
+   * With Windows, volume mapping must be folder-to-folder.
+   * If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+
+   :::
 
 4. Run the following command to start the runner binary:
 
    ```
-   drone-docker-runner-windows-amd64.exe server
+   harness-docker-runner-windows-amd64.exe server
    ```
 
 Here is an example of the two commands to install the Windows amd64 Harness Docker Runner with self-signed certificates:
 
 ```
 $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
-drone-docker-runner-windows-amd64.exe server
+harness-docker-runner-windows-amd64.exe server
 ```
 
 ```mdx-code-block
@@ -318,7 +331,7 @@ For example, assume you have a pipeline with three stages called `alpha`, `beta`
 
 :::
 
-## Troubleshooting
+## Troubleshooting the delegate connection
 
 The delegate should connect to your instance after you finish the installation workflow above. If the delegate does not connect after a few minutes, run the following commands to check the status:
 

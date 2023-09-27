@@ -1,12 +1,13 @@
 ---
-title: AWS ECR scanner reference
+title: AWS ECR scanner reference for STO
 description: Image scans with AWS ECR
-sidebar_position: 30
+sidebar_label: AWS ECR scanner reference
+sidebar_position: 40
 ---
 
 You can scan your container images using [Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html). 
 
-## Before you begin
+## Important notes for running AWS ECR scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -26,16 +27,9 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 <StoRootRequirements />
 
 
-## AWS ECR step configuration
+## AWS ECR step settings for STO scans
 
 The recommended workflow is add an AWS ECR step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
-
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
-
-<StoScannerStepNotes />
-
 
 
 ### Scan settings
@@ -242,3 +236,56 @@ In the **Advanced** settings, you can use the following options:
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+
+
+## Security step settings for Amazon ECR scans in STO (legacy)
+
+* `product_name` = `aws-ecr`
+* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) =`containerImage`
+* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods)= `dataLoad`, `ingestionOnly`
+* `product_config_name` =`default`
+* `container_project` = The name of the scanned ECR container with the results you want to ingest.
+* `container_tag` = The container tag for the given container project.
+* `configuration_access_id` = Your AWS Access ID secret
+* `configuration_access_token` = Your AWS Access Token secret
+* `configuration_region` = The AWS region where the container is located. For example, `us-east-1`
+* `container_domain` = URI of the ECR container with the scan results you want to load.
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+
+### Target and variant
+
+```mdx-code-block
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+```
+
+<StoLegacyTargetAndVariant />
+
+
+### Container settings
+
+
+```mdx-code-block
+import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+```
+
+
+<StoLegacyContainer />
+
+### Ingestion file
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+
+<StoLegacyIngest />
+
+###  Fail on Severity
+
+<!--
+```mdx-code-block
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+```
+-->
+
+<StoSettingFailOnSeverity />

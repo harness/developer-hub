@@ -18,15 +18,13 @@ You can use either the **Build and Push an image to Docker Registry** step or th
 
 :::
 
-## Requirements
-
 You need:
 
 * Access to a Docker registry.
 * A [Harness CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 * A [Docker connector](#docker-connector).
 
-### Kubernetes cluster build infrastructures require root access
+## Kubernetes cluster build infrastructures require root access
 
 With Kubernetes cluster build infrastructures, **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md). Kaniko requires root access to build the Docker image. It doesn't support non-root users.
 
@@ -65,7 +63,7 @@ You can also:
 
 ## Build and Push to Docker step settings
 
-The **Build and Push an image to Docker Registry** step has the following settings. Depending on the build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
+The **Build and Push an image to Docker Registry** step has the following settings. Depending on the build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
 
 ### Name
 
