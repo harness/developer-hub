@@ -2,6 +2,8 @@
 title: Run stages in parallel
 description: Perform parallel stage executions.
 sidebar_position: 3
+redirect_from:
+  - /docs/platform/pipelines/run-stages-in-parallel
 ---
 
 You can run stages in parallel when you want to perform parallel operations. For example:
@@ -10,7 +12,7 @@ You can run stages in parallel when you want to perform parallel operations. For
 - In [CD stages](/docs/continuous-delivery/get-started/key-concepts#stage), parallel execution of deployments can help reduce deployment times and increase the efficiency of the process.
 - in [Infrastructure as Code (IaC)](https://www.harness.io/products/infrastructure-as-code-management), parallel execution of IaC scripts can speed up the creation of resources and improve the scalability of infrastructure.
 
-To run stages in parallel, [add stages](add-a-stage.md) to your pipeline, and then arrange the stages to run in parallel.
+To run stages in parallel, [add stages](../add-a-stage.md) to your pipeline, and then arrange the stages to run in parallel.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';

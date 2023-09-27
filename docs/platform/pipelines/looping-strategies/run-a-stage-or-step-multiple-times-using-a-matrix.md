@@ -6,6 +6,8 @@ helpdocs_topic_id: kay7z1bi01
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/pipelines/run-a-stage-or-step-multiple-times-using-a-matrix
 ---
 
 A matrix enables you to run the same Stage or Step multiple times with different parameters. Matrix strategies eliminate the need to copy the same stage or step with different inputs for each variation. Matrix strategies also make your Pipelines more readable, clean, and easy to maintain. You can easily define matrix strategies to support workflows such as:
