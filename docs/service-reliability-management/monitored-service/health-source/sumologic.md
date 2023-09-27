@@ -1,5 +1,6 @@
 ---
-title: Sumo Logic
+title: Configure Sumo Logic as health source
+sidebar_label: Sumo Logic
 description: Add Sumo Logic health source to a monitored service. 
 sidebar_position: 12
 ---
