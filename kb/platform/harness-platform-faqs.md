@@ -641,6 +641,48 @@ No, we don't support that feature currently.
 * `23.XX.8XXXX`: This format corresponds to the standard delegate image. It includes all the default binaries and is a suitable choice for users who are relatively new to Harness and do not have stringent security requirements. This image provides a comprehensive set of tools and functionalities for general usage.
 * `1.0.8XXX`X`: This format denotes an older version of the delegate, often referred to as the legacy delegate. New Harness accounts no longer include this delegate version, and users are strongly encouraged to migrate to the standard delegate for better compatibility, performance, and security.
 
+
+#### Do we not have OOTB roles at the project level?
+
+Yes, we do have a Project Admin role built in and also no ability to delete built in roles. Org and Project specific built-in roles are available only after the corresponding entity is created and they are only available in the respective scope.
+
+#### What is the reason of delegates to be blacklist?
+
+The logic of blacklist of delegates is that every delegate task has one or more that one validation/capability check, when the task comes, we see if we ever has done validation for the capability. This is cached for 6 hours so if we have validated connectivity it will be valid for 6 hours, if this is the first time or 6 hours are passed, then will execute the validation logic, if the validation fails, the delegate is blacklisted for the criteria for 5 mins and if within five minutes a task with same critieria comes then delegate will be blacklisted for it.
+So check what validation crieterias were added in the task and what validation is failing.
+
+#### What are the  K8s version requirements for Delegate installations?
+
+We try to support all the active K8S releases (that’s last 3 releases according to our versioning policy), i.e. we support anything that’s not EOL.
+
+#### Can we increase the daily deployment limit to 10000 for a customer?
+
+Yes, we are capable of increasing the daily deployment limit > 10000 per day.
+
+#### How the delegates share information like a Helm Chart and its contents on the same stage?
+
+It is divided in two steps first is to download the values.yaml files on any of the delegate (it could be just a 1 or more delegates depending upon how many values.yaml have been configured) and then pass them to the next step. Then delegate downloads the Helm chart and then use the values.yaml files that were passed by the previous step.
+So,  Delegate 1 executed the Fetch Files will pass the values/manifests to Delegate 2 that will execute the Helm Install/Apply.
+
+#### How do the delegates communicate with each other when they are sharing information?
+
+The delegates don't communicate with each other. They go through the manager(Harness) to retrieve the result of the tasks performed by another delegate.
+
+#### Do the customer files are stored in the manager during the execution while the Delegate 1 is communicating directly with Delegate 2?
+
+We don't store the customer's manifest files in the Harness Manager. Only values.yaml files are passed through the Manager(Harness).
+
+#### Do the secrets in values.yaml files are rendered on the manager(Harness)?
+
+No, these secrets are never rendered on the manager(Harness). They only get rendered in the delegate.
+
+#### Is it possible to define per User Groups who can/can’t open support tickets?
+
+Currently anyone in the account would be able to open a ticket, and access is not restricted.
+
+#### Do we have any docs for install and upgrade the SMP cluster?
+
+Yes, we have the docs, you can refer to this [Documentation](https://harness.atlassian.net/wiki/spaces/~63f950e3e76fc61320f65127/pages/21474541915/Internal+-+Install+and+upgrade+SMP?atlOrigin=eyJpIjoiOWJlMDhlNDJhZjM2NGUyN2E2MGU2ZDRkODQwZjUxZmQiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ).
 #### How to retrieve the correct author's email on a GitHub Pull Request Event?
 When you push commits from the command line, the email address that you have configured in [Git](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address) is associated with your commits. However, for web-based operations, GitHub provides an option to maintain privacy regarding your email address. To ensure that you can fetch the correct user email through the expression `<codebase.gitUserEmail>`, you will need to disable the ["Keep my email addresses private"](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/blocking-command-line-pushes-that-expose-your-personal-email-address) option in your GitHub settings.
 
@@ -738,4 +780,34 @@ This issue can occur if a User Group was provisioned via SCIM (System for Cross-
 To resolve this issue, you need to de-provision the affected User Group from Harness and then provision the same User Group again. This will create a new Harness Identifier for the group, ensuring that any naming restrictions are applied correctly, and it should no longer contain hyphens or other disallowed characters.
  
 #### Why Harness delegate instance status is showing Expiring in 2 months but the latest version is valid for 3 months?
+
 For the immutable delegate instance status we will show Expiring in 2 months only, it's the expected behaviour.
+
+#### When we recommend setting `POLL_FOR_TASKS` to true in a non production environment?
+
+For customers who do not want to take the web socket path due to any infrastructure challenges, we recommend enabling POLL_FOR_TASKS.
+For customers with polling enabled, delegate checks with the harness for any task to execute based on the interval set, versus web socket communication being immediate.
+
+#### Is polling mode works only for legacy delegates, not for immutable delegates?
+
+Currently Polling only support for legacy delegates, not for immutable by default. Polling mode works for immutable delegate too, if you add `POLL_FOR_TASK` as true in yaml.
+
+#### what does it mean by `Delegate Identifier=DETECTING`?
+
+`Delegate Identifier=DETECTING` is auto upgrade which can be on or off, for more details you can refer here [Documentation](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#determine-if-automatic-upgrade-is-enabled).
+
+#### What is cron job in k8s manifest and why it is needed?
+
+The Kubernetes manifest has a component called upgrader. The upgrader is a cron job that runs every hour. Every time it runs, it makes a call to Harness Manager to determine which delegate version is published for the account. The cronjob is required for Auto upgrade flow.
+
+#### How can we disable cron job?
+
+If you need auto upgrade to be disabled they can perform operations: First run the following command to suspend auto-upgrade on the installed image: `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>` Secondly in the delegate manifest, locate the CronJob resource. In the resource spec, set the suspend field to true: `spec: --suspend: true` .
+
+#### When do we have Services and Environments available at Org and Account Level in SMP?
+
+This `CDS_OrgAccountLevelServiceEnvEnvGroup` FF is required to have Services and Environments available at Org and Account Level.
+
+#### Why we do not see Dashboards in an SMP Installation?
+
+Dashboard is a licensed functionality. To enable it you need to get a license.

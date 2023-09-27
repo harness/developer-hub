@@ -2,7 +2,7 @@
 title: Nmap (Network Mapper) scanner reference for STO
 description: Instance scans with Nmap
 sidebar_label: Nmap (Network Mapper) scanner reference
-sidebar_position: 200
+sidebar_position: 270
 ---
 
 You can scan your instances using [Nmap](https://nmap.org/), an open-source tool used for network exploration, host discovery, and security auditing. 
@@ -29,11 +29,9 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 The recommended workflow is add an Nmap step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 
 ### Scan settings

@@ -107,7 +107,7 @@ This release does not include early access features.
 - Delegates failed to reauthenticate with the proxy after the initial proxy session expired. (PL-40630, ZD-48981, ZD-49626)
   
   The following updates to delegate communication with Harness Manager over proxy resolve this issue.
-  - Removed `return null` when Harness Manager receives the required 407 proxy authentication.
+  - Removed `return null` when the delegate receives the required 407 proxy authentication.
   - Added the following variables for the `asyncHttpClient` to authenticate with the proxy.
     - `org.asynchttpclient.AsyncHttpClientConfig.proxy.user`
     - `org.asynchttpclient.AsyncHttpClientConfig.proxy.password`

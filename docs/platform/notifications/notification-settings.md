@@ -2,7 +2,7 @@
 title: Notification settings
 description: Configure notification settings for the account.
 keywords: [Notification Settings, Slack notifications, Microsoft Teams notifications, webhook notifications, PagerDuty notifications]
-# sidebar_position: 1
+sidebar_position: 1
 ---
 
 With notification settings, you can enable or disable notification channels at an account level. By default, all notification channels are enabled on an account. Organizations and projects in the account inherit the account-level settings.

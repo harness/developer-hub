@@ -1,8 +1,8 @@
 ---
-title: Security step UI settings reference for STO
-description: All the available UI settings to configure individual scans.
-sidebar_label: Security step UI settings reference
-sidebar_position: 1000
+title: Scanner template settings reference for STO
+description: All available UI settings for scanner templates.
+sidebar_label: Security step settings reference
+sidebar_position: 600
 ---
 
 
@@ -11,11 +11,9 @@ Some Security steps include a scanner template UI for setting up a scan. This to
 <!-- ============================================================================= -->
 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <!-- ============================================================================= -->
 

@@ -75,7 +75,16 @@ This release does not include any new early access features.
 #### Version 23.09.80510
 
 - Added support for the Artifactory **Artifact Path** filter. (CDS-77244, CDS-79760)
-- Decrement the task count when `DELEGATE_TASK_CAPACITY` is enabled. (PL-41367)
+
+- The task count did not decrease when a task was aborted and the `DELEGATE_TASK_CAPACITY` environment variable was enabled. (PL-41367) (PL-41367)
+
+   Harness recommends that you upgrade to delegate version 23.09.80511 to resolve this issue.
+
+#### Version 23.09.80511
+
+- Previously, there was an issue with the task capacity limiter for delegates where the counter didn't decrement when a task was aborted. (PL-41408)
+
+   This issue has been fixed. Now, when you deploy a delegate and set the `DELEGATE_TASK_CAPACITY` environment variable, the number of concurrent tasks for the delegate is limited to the specified capacity. 
 
 ## Previous releases
 

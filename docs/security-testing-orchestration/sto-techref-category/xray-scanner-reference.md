@@ -2,7 +2,7 @@
 title: Jfrog Xray scanner reference for STO
 description: Image scans with Jfrog Xray
 sidebar_label: Jfrog Xray scanner reference
-sidebar_position: 330
+sidebar_position: 420
 ---
 
 You can ingest scan results from JFrog Xray, a software composition analyis (SCA) solution that integrates with Artifactory and identifies vulnerabilities in open-source libraries and packages used in your code.

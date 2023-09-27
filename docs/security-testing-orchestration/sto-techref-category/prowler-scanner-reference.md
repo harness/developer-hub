@@ -2,7 +2,7 @@
 title: Prowler scanner reference for STO
 description: Configuration scans with Prowler
 sidebar_label: Prowler scanner reference
-sidebar_position: 220
+sidebar_position: 310
 ---
 
 
