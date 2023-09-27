@@ -57,3 +57,21 @@ Drone has build templates that can be shared across projects. A project can use 
 #### Getting ERROR Database error 42704: type "number" does not exist while migrating from sqlite to Postgres
 It seems like as the build_deploy_id is type of number and this type is not present in PostgreSQL, So You have to create a new table with type bigint and than copy the data after renaming the table to get this working
 https://github.com/dimitri/pgloader/issues/1284 
+
+#### Cron scheduling is not working while Using Drone cloud
+Cron scheduling is not available and disabled for Drone Cloud. This feature is only available while using self-hosting.
+
+#### How t get the logs for a build via api/cli
+You van use either of the way:
+Api: GET /api/repos/{owner}/{repo}/builds/{build}/logs/{stage}/{step}
+Cli:  drone log view <repo/name> <build> <stage> <step>
+
+#### How to change the Runner type for a pipeline
+Drone yaml will have the field type:  which need to update dicker/kubernetes
+
+#### How to create a primary admin user in drone
+When you configure the Drone server you can create the initial administrative account by passing the below environment variable,
+DRONE_USER_CREATE=username:octocat,admin:true
+
+#### Instead of creating new Admin User can we use already existing user and make them as Admin
+Yes you can provide an existing username. Drone will update the account and grant administrator role on server restart
