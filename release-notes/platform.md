@@ -70,7 +70,7 @@ This release does not include early access features.
    
   The UI now displays the correct error message.
   
-  This item is available with Harness Platform version 808xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the Delegate release notes.
+  This item is available with Harness Platform version 808xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Harness Platform release 80504 did not allow you to create empty user groups. (PL-41005, ZD-50411, ZD-50475)
 
@@ -94,7 +94,7 @@ This release does not include early access features.
   
   This issue has been resolved. Now, only users with the required permissions to copy tokens are able to select the **Copy token** option.
 
-  This item is available with Harness Platform version 808xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the Delegate release notes.
+  This item is available with Harness Platform version 808xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
   - `org.bouncycastle:bcpg-jdk15on:jar:1.70` to `org.bouncycastle:bcpg-jdk18on:jar:1.76`
@@ -102,7 +102,7 @@ This release does not include early access features.
   - `org.bouncycastle:bcprov-ext-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-ext-jdk18on:jar:1.76`
   - `org.bouncycastle:bcprov-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-jdk18on:jar:1.76`
 
-  This item requires Harness Delegate version 23.09.808xx. For information about features that require a specific delegate version, go to Delegate release notes.
+  This item requires Harness Delegate version 23.09.808xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Delegates failed to reauthenticate with the proxy after the initial proxy session expired. (PL-40630, ZD-48981, ZD-49626)
   
@@ -112,7 +112,7 @@ This release does not include early access features.
     - `org.asynchttpclient.AsyncHttpClientConfig.proxy.user`
     - `org.asynchttpclient.AsyncHttpClientConfig.proxy.password`
 
-  This item requires Harness Delegate version 23.09.808xx. For information about features that require a specific delegate version, go to Delegate release notes.
+  This item requires Harness Delegate version 23.09.808xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Hotfixes
 
