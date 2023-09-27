@@ -1,5 +1,6 @@
 ---
-title: Custom health sources
+title: Configure custom health sources
+sidebar_label: Custom health sources
 description: Add a custom health source to a monitored service.
 sidebar_position: 3
 ---

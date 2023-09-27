@@ -1,5 +1,6 @@
 ---
-title: Datadog
+title: Configure Datadog as health source
+sidebar_label: Datadog
 description: Add Datadog health source to a monitored service.
 sidebar_position: 4
 ---

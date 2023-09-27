@@ -1,5 +1,6 @@
 ---
-title: New Relic
+title: Configure New Relic as health source
+sidebar_label: New Relic
 description: Add New Relic health source to a monitored service.
 sidebar_position: 9
 ---
