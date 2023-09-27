@@ -1436,3 +1436,9 @@ To use queue steps in your Harness pipeline:
 6. Save your changes and run the pipeline.
 
 For detailed guidance on using queue steps to control resource usage in Harness pipelines, refer to the Harness documentation section titled [Control Resource Usage with Queue Steps](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/control-resource-usage-with-queue-steps/)
+
+#### I'm getting `Secret in version "v1" cannot be handled as a Secret: illegal base64 data at input byte`.  What does it mean?
+
+K8s secrets need to be encoded with base64.  If the encoding is wrong you might get this error.  If creating a k8s secrets and it's not base64 encoded you can use stringData instead:
+https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
+
