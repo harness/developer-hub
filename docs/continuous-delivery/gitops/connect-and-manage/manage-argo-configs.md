@@ -147,6 +147,9 @@ spec:
   sourceRepos:
   - '*'
 ```
+:::note
+A Harness account id is a Mongo document id that could start with underslash _.
+However, this is not a valid k8s label as per [k8s docs](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set). So we are hashing accountId as `b.<harness-account-id>.e`
 
 #### Additional fields required for the Argo CD AppProject
 
