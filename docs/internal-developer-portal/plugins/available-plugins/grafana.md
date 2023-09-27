@@ -15,10 +15,10 @@ description: Associate alerts and dashboards to components.
 ### Application configuration YAML
 
 This plugin requires a backend proxy configuration to make calls to Grafana with authentication. 
-In the following configuration, replace `<grafana-url>` with the grafana instance (for example https://grafana.mycompany.com) and similarly replace public domain as well.
+In the following configuration, replace `<grafana-url>` with the Grafana instance (for example https://grafana.mycompany.com) and similarly replace public domain as well.
 Make sure that the slash `/` is not added at the end. 
 
-If unified alerting is enabled in grafana, then mark `unifiedAlerting` as true
+If [unified alerting](https://grafana.com/blog/2021/06/14/the-new-unified-alerting-system-for-grafana-everything-you-need-to-know/) is enabled in Grafana, then mark `unifiedAlerting` as true
 
 ```yaml
 proxy:
@@ -41,8 +41,9 @@ Since the `GRAFANA_TOKEN` variable is used in the application configuration, you
 
 ### Delegate proxy
 
-If your Grafana instance is self-hosted or has an IP address allowlist, include the base URL `grafana.mycompany.com` in the delegate proxy section. If your Grafana instance is hosted on a public cloud and can be accessed directly using a token, skip this section.
-After adding the host, you can select one or more delegates that have access to the host.
+If your Grafana instance is hosted on a public cloud and can be accessed directly using a token, skip this section.
+
+If your Grafana instance is self-hosted or has an IP address allowlist, include the base URL `grafana.mycompany.com` in the delegate proxy section.
 
 :::note
 
