@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-09-19T10:00:30
+date: 2023-09-28T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -30,9 +30,99 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## Latest: Version 80711
+## Latest: Version 808xx
 
 ### New features and enhancements
+
+- Access control lists (ACLs) have now been optimized by the removal of ACLs that are no longer necessary and by ensuring that redundant ACLs are no longer created for new role assignments. (PL-41154)
+
+- The default interval for synchronizing LDAP groups has been increased from 15 minutes to 1 hour. This value is customizable, so you can set it to a value of your choice. (PL-40860)
+
+- The **Assign Roles** dialog listed the built-in Account Viewer role when you were assigning roles to a user group, and it did not provide a way for you to remove that role. You could, however, remove the Account Viewer role when updating the role assignments in the **Manage Role Bindings** dialog.
+
+  This issue has been fixed. You can now remove the Account Viewer role when assigning roles to a user group. (PL-32413)
+
+- The Roles page now supports a list view in addition to the existing card view. In addition to the information shown in the card view, the list view shows you which resources are selected for the role. To see the list view, in the top-right corner of the Roles page, select the list view button. (PL-32183)
+
+- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-41063)
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- The password field in the SMTP configuration wizard showed asterisks, which are typically used to mask passwords, even when the SMTP configuration did not use a password. This issue caused confusion about whether a password was in fact in use. (PL-41159)
+
+  This issue has been fixed. If the SMTP configuration does not use a password, the password field does not show asterisks.
+
+- In the connector configuration wizard, if you selected Azure Key Vault or GCP Secret Manager and then selected the Use the credentials of a specific Harness Delegate (IAM role, service account, etc) option, the wizard did not show the Use as Default Secret Manager checkbox. You could, however, achieve this configuration through the Harness API. (PL-41054)
+
+  This issue has been fixed. 
+
+<!--- - WIP - asked Ashish Sanodia to update the PRNS field. (PL-40718) -->
+
+- API requests for creating and updating projects (`POST v1/orgs/{org}/projects` and `POST v1/orgs/{org}/projects/{project}`, respectively) were considered invalid if you specified a value for the `org` parameter both in the body of the request and in the URL path, and the two values did not match. In this scenario, the following message was displayed: `Invalid request: Request is having different org in payload and param` (PL-40668)
+
+  This issue has been fixed by the removal of the parameter from the request body schema. You are now required to provide this parameter only in the URL path.
+
+- When steps timed out for aborted tasks that were previously assigned, the UI displayed an incorrect error message. (PL-41226, ZD-49908, ZD-50652)
+   
+  The UI now displays the correct error message.
+  
+  This item is available with Harness Platform version 808xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the Delegate release notes.
+
+- Harness Platform release 80504 did not allow you to create empty user groups. (PL-41005, ZD-50411, ZD-50475)
+
+  This issue has been fixed.
+
+  This item requires Harness Delegate version yy.mm.verno. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+- Harness showed JSON Web Token URLs in Delegate task logs associated with shell script task failures. (PL-39102)
+
+  This issue has been fixed.
+
+  This item requires Harness Delegate version yy.mm.verno. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+- Harness did not handle the `Unknown Host Exception` error appropriately and, consequently, showed the misleading "Delegates are not available for performing operation" message when you configured LDAP incorrectly (for example, you entered an incorrect host or port number). (PL-28077)
+
+  This issue has been fixed.
+
+  This item requires Harness Delegate version yy.mm.verno. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+- The UI allowed all users to select the **Copy token** option from the **More Options** menu. (PL-41155)
+  
+  This issue has been resolved. Now, only users with the required permissions to copy tokens are able to select the **Copy token** option.
+
+  This item is available with Harness Platform version 808xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the Delegate release notes.
+
+- Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
+  - `org.bouncycastle:bcpg-jdk15on:jar:1.70` to `org.bouncycastle:bcpg-jdk18on:jar:1.76`
+  - `org.bouncycastle:bcpkix-jdk15on:jar:1.70` to `org.bouncycastle:bcpkix-jdk18on:jar:1.76`
+  - `org.bouncycastle:bcprov-ext-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-ext-jdk18on:jar:1.76`
+  - `org.bouncycastle:bcprov-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-jdk18on:jar:1.76`
+
+  This item requires Harness Delegate version 23.09.808xx. For information about features that require a specific delegate version, go to Delegate release notes.
+
+- Delegates failed to reauthenticate with the proxy after the initial proxy session expired. (PL-40630, ZD-48981, ZD-49626)
+  
+  The following updates to delegate communication with Harness Manager over proxy resolve this issue.
+  - Removed `return null` when Harness Manager receives the required 407 proxy authentication.
+  - Added the following variables for the `asyncHttpClient` to authenticate with the proxy.
+    - `org.asynchttpclient.AsyncHttpClientConfig.proxy.user`
+    - `org.asynchttpclient.AsyncHttpClientConfig.proxy.password`
+
+  This item requires Harness Delegate version 23.09.808xx. For information about features that require a specific delegate version, go to Delegate release notes.
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+#### Version 80711
+
+##### New features and enhancements
 
 -  The delegate Helm chart is now included in the delegate proxy configuration. You can pull the Helm chart from `https://<YOUR_LOADBALANCER_URL>/storage/harness-download/delegate-helm-chart/`. (PL-39190)
 
@@ -42,11 +132,11 @@ The following deprecated API endpoints will no longer be supported:
 
   For more information, go to [Notification settings](/docs/platform/notifications/notification-settings).
 
-### Early access features
+##### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+##### Fixed issues
 
 - Earlier, you could only see a maximum of three tags on the Delegates list page. (PL-38936)
 
@@ -79,11 +169,9 @@ This release does not include early access features.
 
   This issue has been fixed.
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
-
-## Previous releases
 
 <details>
 <summary>2023 releases</summary>

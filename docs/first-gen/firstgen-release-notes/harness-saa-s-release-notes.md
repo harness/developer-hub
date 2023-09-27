@@ -16,7 +16,23 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### Latest: Version 80711
+### Latest: Version 808xx
+
+#### New features and enhancements
+
+- The default interval for synchronizing LDAP groups has been increased from 15 minutes to 1 hour. This value is customizable, so you can set it to a value of your choice. (PL-40860)
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- A few pages about environment and service were missing access checks allowing users to read data without the right permissions. (PL-41378, ZD-44419)
+
+  This issue has been resolved and the desired access check has been applied.
+
+### Version 80711
 
 #### New features and enhancements
 
@@ -32,9 +48,9 @@ This release does not include early access features.
 
    This issue is fixed. Excel and .csv files in the **File Configuration** dialog are now blocked.
 
-- The Secrets Management Change Log page returned errors when fetching the `changeLogData` API. (PL-40957, ZD-49757)
+- When you attempted to view the change log of an encrypted text secret, if the resultant API request returned an HTTP 400 response code, the Harness FirstGen user interface failed to show an appropriate message. Instead, it showed the following message and prompted you to refresh your browser page to continue: “Something went wrong... This error has been reported and we are looking into it with high priority.” (PL-40957, ZD-49757)
 
-   This issue is fixed.
+  This issue has been fixed. The Harness UI now shows you a more appropriate message in the Change Log dialog.
 
 ### Version 80504
 
