@@ -12,6 +12,12 @@ Maintaining a good template management system is essential for your deployments.
 
 This topic explains the best practices for template management.
 
+:::note
+
+For guidance on ramping up your teams using templates, go to [Templates ramp-up guide](/docs/continuous-delivery/ramp-up/rampup-templates).
+
+:::
+
 ## Role-based access control for templates
 
 You can create templates at the account, org, or project scope and can configure corresponding permissions at each of these scopes.
