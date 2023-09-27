@@ -409,3 +409,8 @@ Free monthly credits for up to 2,000 build minutes.
 #### I want to develop a build built for MacOS, do I have to use homebrew as the installer?
 
 No, Harness also supports multiple versions of xcode. Please see our document on iOS and macOS applications for more details [https://developer.harness.io/tutorials/ci-pipelines/build/ios/]
+
+#### I'm getting Error: ErrImagePull.  What does it mean?
+
+It could mean the image is not available at the repository it's being pulled from or networking issues 
+
