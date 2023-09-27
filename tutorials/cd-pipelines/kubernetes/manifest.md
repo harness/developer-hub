@@ -72,7 +72,7 @@ Verify the following:
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="linux" label="linux">
+    <TabItem value="linux" label="Linux">
     ```
 
     ```mdx-code-block
@@ -82,7 +82,7 @@ Verify the following:
 
     ```bash
     curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+    tar -xvf harness-v0.0.13-alpha-darwin-arm64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
