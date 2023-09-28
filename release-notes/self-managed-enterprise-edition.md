@@ -196,10 +196,6 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 - To support CI pipelines, Harness added support to set the Harness Delegate environment variable `LOG_STREAMING _URL` by default. If the delegate is outside of the cluster, the fallback log service URL is `LOG_SERVICE_ENDPOINT` from CI. (CI-9262, ZD-48974)
 
-#### Custom Dashboards
-
-- For ArgoCD, Looker now includes `models.persistent.storageClass` and `database.persistent.storageClass` fields to override any `storageClass` field used in PVC that has a higher precedence over `global.storageClass`. Looker also now includes `models.persistent.existingClaim` and `database.persistent.existingClaim` to use an existing PVC. (CDB-1149)
-
 #### Harness Platform
 
 - A new `getAzureKeyVaultClient` API is available to fetch the list of Azure vaults. (PL-28392, ZD-44045)
@@ -428,7 +424,6 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
                 - account:/s	
   ```
 
-
 - Harness does not currently support using expressions in failure strategies, so this support has been removed from the UI. Harness has a roadmap item to simplify YAML definitions, which will support using expressions in failure strategies. (CDS-73614)
 
 - Fixed an issue where WinRM deployments would not honor the configured timeout. For example, the step would time out by default in 30 minutes even when the configured timeout was 1 day. Now, the WinRM session timeout is set to the higher of the default and configured timeouts. (CDS-73641, ZD-46904, ZD-48180)
@@ -536,6 +531,9 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 - Fixed an issue that caused [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) to be incompatible with Maven 3.9. (CI-8891)
 
+#### Custom Dashboards
+
+- Argo CD deployments were failing. Looker now includes `models.persistent.storageClass` and `database.persistent.storageClass` fields to override any `storageClass` field used in PVC that has a higher precedence over `global.storageClass`. Looker also now includes `models.persistent.existingClaim` and `database.persistent.existingClaim` to use an existing PVC. These updates resolve the issue. (CDB-1149)
 
 #### Feature Flags
 
