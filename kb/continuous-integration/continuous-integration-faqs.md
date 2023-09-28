@@ -373,6 +373,14 @@ Harness Cloud provides up to 2GB of cache storage per account.
 
 Cache retention window in Harness Cloud is set at 15 days after it is initially stored. Also, the retention window resets whenever the cache is updated or modified.
 
+#### I'm seeing `Failed to pull image "artifactory.yourDomainNameGoesHere.com/harness/ci-addon:1.16.22": rpc error: code = Unknown desc = Error response from daemon: unknown: Not Found`.  What does this mean?
+
+It means the harness internal image `ci-addon:1.16.22` is not present in your artifact repository and you are using the id harnessImage for the connector for your artifact respository in harness.  This id can be used for your images as well but is reserved for harness images.  You can proxy and pull the images to your own repository
+https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#ci-images-list or the harnessImage connector can be referenced to use https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials
+```
+https://app.harness.io/registry
+```
+
 
 #### Can different pipelines within the same account access and use the same cache storage?
 The cache storage is shared among all pipelines within the account.
