@@ -18,6 +18,12 @@ Suppose that trigger payload has multiple records and you want to search for a p
 
 We can set up the AWS Secret Manager connector, then save the ECR auth token into it. Set up automatic token rotation (say at 10hr intervals) within AWS secret manager. Then have the Harness connector link to that AWS SecretManager secret, so it pulls a fresh token every time.
 
+#### How do I submit a feature request for the Harness Platform?
+
+In the documentation scroll down and at the bottom under Resources click on Feature Requests.  It will lead you to this internal portal: https://ideas.harness.io/
+
+We can set up the AWS Secret Manager connector, then save the ECR auth token into it. Set up automatic token rotation (say at 10hr intervals) within AWS secret manager. Then have the Harness connector link to that AWS SecretManager secret, so it pulls a fresh token every time.
+
 #### In First Gen we use WINDOWS_RUNTIME_PATH while setting up a runtime directory, what is the corresponding way in Next Gen?
 
 In NG we are not using any setup variables anymore, since it is Harness's internal step where we basically create a temp dir for the execution. We are creating a working directory in the Command Init unit on this %USERPROFILE% location.
