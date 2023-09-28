@@ -804,6 +804,10 @@ The Kubernetes manifest has a component called upgrader. The upgrader is a cron 
 
 If you need auto upgrade to be disabled they can perform operations: First run the following command to suspend auto-upgrade on the installed image: `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>` Secondly in the delegate manifest, locate the CronJob resource. In the resource spec, set the suspend field to true: `spec: --suspend: true` .
 
+#### What are delegate rings?
+
+Harness uses the ring methodology commonly used in software release management for delegate releases.  There are 4 rings and to mimimize impact should issues occur on new delegate releases each Harness account is designated a specific ring which correlates to the latest delegate version for that account.
+
 #### When do we have Services and Environments available at Org and Account Level in SMP?
 
 This `CDS_OrgAccountLevelServiceEnvEnvGroup` FF is required to have Services and Environments available at Org and Account Level.
