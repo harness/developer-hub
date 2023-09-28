@@ -71,6 +71,10 @@ No, target-specific overrides take priority. The rollout percentage applies to u
 
 Yes, you can find a detailed overview of how Harness Feature Flags' SDKs behave after a flag change in the provided chart [here](/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags/)
 
+#### When using the jira integration and configuring it for the first time with the Harness Token I am getting the error `Harness API token is invalid` despite just creating the token?
+
+The token most likely needs the `Account Viewer` role across at the account level created
+
 #### For target groups with a criteria of type "Target based on condition" is there any way of seeing which targets are actually part of the group?
 
 No since the criteria might pertain to attributes. Evaluations are done in realtime based on what the attributes are sent, so it’s totally possible to have the same target match or not match based on an individual SDK’s usage
