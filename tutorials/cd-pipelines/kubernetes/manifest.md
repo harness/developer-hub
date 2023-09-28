@@ -29,7 +29,7 @@ This tutorial will get you started with Harness Continuous Delivery (CD). We wil
 :::
 
 ```mdx-code-block
-<Tabs>
+<Tabs queryString="pipeline">
 <TabItem value="gitops" label="GitOps Workflow">
 ```
 Harness GitOps (built on top of Argo CD) watches the state of your application as defined in a Git repo, and can pull (either automatically, or when instructed to do so) these changes into your Kubernetes cluster, leading to an application sync.
@@ -74,8 +74,8 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
    - When are prompted with **Do you have any existing Argo CD instances?**, select **Yes** if you already have a Argo CD Instance, or else choose **No** to install the **Harness GitOps Agent**.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Harness GitOps Agent Fresh Install">
+<Tabs  queryString="gitopsagent">
+<TabItem value="agent-fresh-install" label="Harness GitOps Agent Fresh Install">
 ```
 
 - Select **No**, and then select **Start**.
@@ -94,7 +94,7 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Harness GitOps Agent with existing Argo CD instance">
+<TabItem value="existingargo" label="Harness GitOps Agent with existing Argo CD instance">
 ```
 
 - Select **Yes**, and then select **Start**.
@@ -662,8 +662,8 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Canary">
+<Tabs queryString="deployment">
+<TabItem value="canary" label="Canary">
 ```
 
 <details open>
@@ -684,7 +684,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Blue Green">
+<TabItem value="bg" label="Blue Green">
 ```
 
 <details open>
@@ -704,7 +704,7 @@ Blue Green deployments involve running two identical environments (stage and pro
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Rolling">
+<TabItem value="rolling" label="Rolling">
 ```
 <details open>
 <summary>What are Rolling deployments?</summary>
