@@ -44,6 +44,45 @@ The message `failed to delete app in argo: failed to execute delete app task: rp
 
 To delete the application, remove the finalizer or delete its resources. Removing the finalizer should lead to the app being deleted automatically. For more information about the Argo CD app deletion finalizer, go to the [Argo CD documentation](https://argo-cd.readthedocs.io/), switch to the [supported Argo CD version](docs/continuous-delivery/cd-integrations.md), and then perform a search for the app deletion finalizer.
 
+### Error: Unable to delete or create app due to "error: create not allowed while custom resource definition is terminating"
+
+During creation or deletion of any GitOps app, if the process fails with the message `failed to create app in argo: failed to execute create app task: rpc error: code = Unknown desc = error creating application: create not allowed while custom resource definition is terminating` or some similar message about CRD being stuck in termination state, the cause is most likely due to some resource of this CRD pending deletion due to it having a finalizer.
+
+In order for this CRD to complete termination, the finalizer from the pending resourcce needs to be removed.
+Possible CRD's causing this could most likely be one of these three: `applications.argoproj.io`, `applicationsets.argoproj.io` or 
+`appprojects.argoproj.io`
+
+Execute the following command to get pending resources for the CRD stuck in termination(You can check the status of any CRD using `kubectl get crd` and then check any of these using `kubectl describe crd <crd_name>`)
+
+```
+$ kubectl get <CRD> -n <namespace>
+```
+
+```
+$ kubectl patch <CRD> <stuckresourcename> -n <namespace> --type json --patch="[{ \"op\": \"remove\", \"path\": \"/metadata/finalizers\" }]"
+```
+
+For example if the CRD `applications.argoproj.io` is stuck in the `TERMINATING` state in the `harness` namespace, this is how you can verify and patch it's resource causing it to be stuck.
+
+```
+$ kubectl get applications.argoproj.io -n harness
+
+NAME        STATUS     SYNC
+test-app    Unknown    Unknown
+```
+
+```
+$ kubectl patch applications.argoproj.io test -n harness --type json --patch="[{ \"op\": \"remove\", \"path\": \"/metadata/finalizers\" }]"
+
+applications.argoproj.io/test patched
+```
+
+This will now let the CRD `applications.argoproj.io` terminate gracefully.
+
+NOTE: CRD's are cluster scoped and the resources themselves can be cluster or namespace-scoped so pay attention to usage of -n(namespace flag) while executing these commands.
+
+If there are multiple resources which are causing this, you can use something similar to [this](https://github.com/argoproj/argo-cd/issues/1329#issuecomment-1247176754) as well to fix it.
+
 ### Issue: Agent degraded when installing a Bring Your Own Argo CD (BYOA) agent with a Helm chart
 
 Execute the following script with the name of the agent as the argument. The agent name should be as shown in the Harness GitOps UI:
