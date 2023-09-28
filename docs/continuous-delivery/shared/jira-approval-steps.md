@@ -234,6 +234,10 @@ For example, `<+issue.Status> == "Done"` in the Approval Criteria **JEXL Express
 ![](./static/adding-jira-approval-stages-13.png)
 
 `Status` is an issue field. You can use any issue field.
+  
+ If a field in the JEXL criteria includes spaces, enclose the field in quotation marks, as shown in the following example:
+
+`<+issue.Priority> == "P1" && <+issue."1-line Update"> == "test" && <+issue."Remaining Estimate"> == "2h" && <+issue.Description> == "new description"`
 
 ### Approval variables
 
