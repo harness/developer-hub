@@ -2,7 +2,11 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
+<<<<<<< HEAD
 date: 2023-09-29T10:00
+=======
+date: 2023-09-28T10:00
+>>>>>>> main
 sidebar_position: 13
 ---
 ```mdx-code-block
@@ -1237,6 +1241,148 @@ You are missing the following permission: "View default settings" in Account sco
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
 
+<<<<<<< HEAD
+=======
+#### 0.8.4
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.8.4](https://github.com/harness/helm-charts/releases/tag/harness-0.8.4) |
+| Air Gap Bundle | [0.8.4](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.4) |
+| NG Manager | 79823 |
+| CI Manager | 4905 |
+| Pipeline Service | 1.37.13 |
+| Platform Service | 79601 |
+| Access Control Service | 79400 |
+| Change Data Capture | 79819 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.353.17 |
+| LE NG | 68004 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.8.4/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.4/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.4/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.4/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.4/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.4/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.4/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.4/sto_images.tgz" \
+  .
+```
+
+#### New features and enhancements
+
+- Added support to GitOps for self-signed certificates. (CDS-79756, ZD-50988)
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+- After you imported projects, the Argo config app was not visible in the UI. (CDS-78811)
+
+   This issue has been resolved with an update to the app mapping process during project import.
+
+- There were two issues you might experience when you created a new repository using the account level agent. (CDS-79971)
+
+   - On the Verification step, Harness created the repository. If you closed the dialog, the list didn't refresh. Now, the list refreshes on the Verification step.
+
+   - If you tried to edit settings without closing the new repository modal, Harness didn't send the agent scope. You had to close the form and then make your changes. Now, you can edit from the same modal.
+
+- When you created a cluster or an agent, on the Verification step, Harness created the repository. If you closed the dialog, the list didn't refresh. Now, the list refreshes on the Verification step. (CDS-79982)
+
+- Harness limited repo certificate data to 2048 characters. With this limitation, you could only add one certificate. (CDS-79896)
+
+   This issue has been resolved by removing the character limit, and you can now add multiple repo certificates.
+
+#### 0.8.3
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.8.3](https://github.com/harness/helm-charts/releases/tag/harness-0.8.3) |
+| Air Gap Bundle | [0.8.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.3) |
+| NG Manager | 79823 |
+| CI Manager | 4905 |
+| Pipeline Service | 1.37.13 |
+| Platform Service | 79601 |
+| Access Control Service | 79400 |
+| Change Data Capture | 79819 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.353.17 |
+| LE NG | 68004 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.8.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.8.3/sto_images.tgz" \
+  .
+```
+
+#### New features and enhancements
+
+##### Self-Managed Enterprise Edition
+
+- Updated CI Manager and the delegate to improve performance testing. (SMP-2022)
+
+- Added the following rule to the `log-service` virtual service for performance testing. (SMP-2033)
+
+   ```yaml
+   - uri:
+        prefix: /log-service//
+   ```
+
+##### Cloud Cost Management
+
+- Updated the Helm chart to support proxy configuration for AWS SDK clients. (CCM-14374)
+
+- Updated the Helm chart to support AWS regions other than the default `us-east-1` region. (CCM-14415)
+
+##### Chaos Engineering
+
+- Added support for Chaos Engineering version 1.19.x. For more information, go to the [Chaos Engineering release notes](/release-notes/chaos-engineering/#latest-version-1192). (CHAOS-2544)
+
+##### Continuous Delivery
+
+- Added functionality to support GitOps section at Org level. (CDS-79545)
+
+##### Custom Dashboards
+
+- Updated to an FIPS compliant algorithm for short term caching key generation. (CDB-1107)
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+##### Continuous Integration
+
+- Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used delegate selectors based on delegate tags, and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. (CI-8831, ZD-47647)
+
+#### 0.8.2
+
+>>>>>>> main
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
