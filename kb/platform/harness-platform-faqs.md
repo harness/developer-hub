@@ -66,6 +66,10 @@ If the same user was manually added first and now pushed from SCIM, it would be 
 
 No, as of now we don't support but it is in our roadmap.
 
+#### We don't have certain projects but the harness terraform modules continue to read them in. We want to remove these unwanted data if exist in harness. Please assist on it ?
+
+Potentially they could still be in the state file if changes were made outside of the it.  Inspect your state file
+
 #### Do we have some kind of dashboards where I can track my current status of delegates ?
 
 Yes , you can setup prometheus to get the metrics . For more Information on setting that up, please go through the following [Documentation](/docs/platform/delegates/manage-delegates/delegate-metrics)
