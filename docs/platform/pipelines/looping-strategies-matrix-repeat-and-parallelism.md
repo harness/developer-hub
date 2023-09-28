@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Looping strategies enable you to run a Stage or Step multiple times with different inputs. This eliminates the need to copy the same Stage or Step for each variation you need. It also makes the Pipeline more readable, clean, and easy to maintain. Looping strategies enable use cases such as:
+Looping strategies enable you to run a stage or step multiple times with different inputs. This eliminates the need to copy the same stage or step for each variation you need. It also makes the pipeline more readable, clean, and easy to maintain. Looping strategies enable use cases such as:
 
 * You want to test a UI feature in multiple browsers and platforms. You can define a matrix that specifies the browsers and platforms to test.
 * You want to build artifacts for multiple JDK versions in the same Build Stage.
