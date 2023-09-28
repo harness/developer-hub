@@ -19,7 +19,7 @@ The Changes dashboard is divided into the following sections:
 - Changes Timeline
 - Changes list
 
-![Changes dashboard](./static/change-impact-changes-dashboard.png)
+<docimage path={require('./static/change-impact-changes-dashboard.png')} />
 
 #### Filters
 
@@ -28,8 +28,8 @@ You can customize the Changes dashboard by using the following filters:
 - **Time Range**: Select the time period for which you want to see change events. The available filters are **Last 4 hours**, **Last 24 hours**, **Last 3 days**, **Last 7 days**, and **Last month**.
 - **Services**: Select the monitored service for which you want to see changes. You can select multiple monitored services.
 - **Environments**: Select the environment for which you want to see changes. You can select multiple environments.
-- **Change Types**: Select the type of change source for which you want to see changes. The available filters are **Deployment**, **Infrastructure**, **Incidents**, and **Feature Flags**.
-- **Sources**: Select the source for which you want to see changes. For example, Harness CD NextGen, Harness CD, Kubernetes, PagerDuty, and Feature Flags. You can select multiple change sources.
+- **Change Types**: Select the type of change source for which you want to see changes. The available filters are **Deployment**, **Infrastructure**, **Incidents**, **Feature Flags**, and **Chaos Experiment**.
+- **Sources**: Select the source for which you want to see changes. For example, Harness CD NextGen, Harness CD, Kubernetes, PagerDuty, Harness FF (Harness Feature Flag), and Harness CE (Harness Chaos Experiment). You can select multiple change sources.
 
 
 #### Changes timeline
@@ -38,11 +38,11 @@ The **Changes Timeline** section shows a graphical representation of all the cha
 
 You can hover over a change event icon to see the details.
 
-![Change event details](./static/change-impact-hover-change-events.png)
+<docimage path={require('./static/change-impact-hover-change-events.png')} />
 
 To view the change details for a specific time slot, select the time slot on the Changes timeline. A time window appears with the details of all the changes that occurred in that specific time slot. You can change the time slot by using the handles.
 
-![change event time window](./static/change-impact-change-event-timewindow.png)
+<docimage path={require('./static/change-impact-change-event-timewindow.png')} />
 
 
 #### Changes list
@@ -55,7 +55,7 @@ The Changes list displays all the change events along with the following details
 - **TYPE**: Type of the change source. For example, infrastructure.
 - **SOURCE**: Name of the change source. For example, K8sCluster.
 
-![changes list](./static/change-impact-changes-list.png)
+<docimage path={require('./static/change-impact-changes-list.png')} />
 
 
 ### View change event details
@@ -71,4 +71,4 @@ The change event details screen appears. It displays the following details:
 
 You can hover over the timeline to view the change event details.
 
-![Change event details](./static/change-impact-change-event-details.png)
+<docimage path={require('./static/change-impact-change-event-details.png')} />
