@@ -35,13 +35,12 @@ Before you start setting up Harness, make sure you have the following:
 
 * Git account and Personal Access Token — If you are scanning a repo, you need an account and access token with the Git provider.
 * Docker Hub account — STO uses Docker-in-Docker to run scans. The Pipeline needs to pull the **docker:dind** image from Docker Hub.
-* [Kubernetes cluster](#install-the-harness-delegate) — Infrastructure for running builds.
+* A [build infrastructure](#set-up-a-build-infrastructure-for-sto) for executing pipelines and scanning targets.
 
 ### Harness User Requirements
-
-* To set up STO, you need Administrative privileges at the Account level (Account Admin role). It is not enough to have Administrative privileges at the Project level (Project Admin role).
 * Developers need a Security Testing Developer role to run tests and view results.
 * Security Operations staff need a Security Testing SecOps role to run tests, view results, and approve security exemptions.
+* To assign these roles, you need an Account Admin role. Project Admin permissions aren't enough. 
 
 ### Harness Account Requirements
 
@@ -51,8 +50,6 @@ Harness recommends you create the following resources at the Account level. This
 * Secret for Git access credentials — Required to set up a codebase connector.
 * Git codebase connector — Required if you want to scan a codebase in your pipeline.
 * Docker Hub connector — Required to download images needed to run the pipeline.
-
-
 
 ## STO Setup Procedures
 
@@ -348,7 +345,7 @@ import set_up_harness_26 from './static/configure-bandit-step.png'
 	   ```
 
 
-## Run the pipeline (*optional*)
+## Run the pipeline (optional)
 
 1. Click **Run**.
 2. Select Git Branch, enter **master** for the branch name, and then click **Run Pipeline**.

@@ -134,7 +134,7 @@ The **Security Tests** tab shows the issues that the scanner found in the test t
 
 <details open><summary> Key concept: baselines</summary> 
 
-A _target baseline_ identifies the "prod" variant of the target, such as the main branch or the latest tag. Defining a baseline makes it easy to identify “shift-right” issues in production targets and “shift-left” issues in downstream variants.
+A _target baseline_ identifies the "prod" variant of the target, such as the main branch or the latest tag. Defining a baseline makes it easy to distinguish between “shift-right” issues in production targets and “shift-left” issues in downstream variants.
 
 Note the following:
 
@@ -196,11 +196,11 @@ The Issue Details pane has useful information for troubleshooting your security 
 
    **Issue Details** includes specific information about each vulnerability. In this case, you can view detailed information about the issue in the Common Weakness Enumeration database, a community-developed list of software and hardware weakness types. 
 
-3. Examine the **Occurrences** list for this issue. (You might need to scroll down in the pane.) Here you can find additional details about each individual occurrence of the issue. Note that, to eliminate this vulnerability from the repo, you can need to fix multiple occurrences in multiple files:
+3. Examine the **Occurrences** list for this issue. (You might need to scroll down in the pane.) Here you can find additional details about each individual occurrence of the issue. Note that, to eliminate this vulnerability from the repo, you need to fix multiple occurrences:
 	
    ![](./static/sto-standalone-workflows-16-indiv-issue-details.png)
 
-<details open><summary>Key Concept: Issues details are derived from the external scanner</summary>  
+<details open><summary>Key Concept: Issue details are derived from the external scanner</summary>  
 
 Many of the details you see for each issue are derived from the external scanner. These details can differ, depending on the scan tool you're using. In this tutorial we're using Bandit, which is a free, open-source scan tool. In general, paid scanners provide more extensive details (such as remediation steps) than free ones.
 

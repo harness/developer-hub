@@ -41,7 +41,9 @@ For more information, go to [Add Security Testing roles](/docs/security-testing-
 
 <details open><summary> Key concept: fail_on_severity</summary> 
 
-Every STO scan step has a `fail_on_severity` setting. If any vulnerability with the specified severity or higher is found, the pipeline fails. It is good practice to set `fail_on_severity` in every scan step in an integrated pipeline.
+Every STO scan step has a `fail_on_severity` setting. If any vulnerability with the specified severity or higher is found, the pipeline fails.
+
+It is good practice to set `fail_on_severity` in every scan step in an integrated pipeline.
 
 </details>
 
