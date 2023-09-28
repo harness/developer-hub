@@ -242,6 +242,7 @@ Once LDAP is set up and enabled in Harness, you cannot add a second LDAP SSO ent
 The default LDAP user synchronization interval is 1 hour. The interval is specified as a cron expression and is configurable.
 
 To configure a synchronization schedule, in **Enter a custom cron expression**, modify the default cron expression to suit your requirement.
+
 The page includes a tabular breakdown of the cron expression for ease of understanding and verification. The **Cron expression** field shows you whether or not the cron expression is valid.
 
 ### Add a Harness User Group with LDAP users
