@@ -46,6 +46,12 @@ Unfortunately, JEXL conditions do not support the direct usage of environment va
 
 Max delay is 60s, we run pt iterator every 60s for task assignment
 
+#### Is TLS 1.3 supported ?
+
+Both the Harness Delegate & SaaS support TLS 1.3 and in fact this is the default TLS version.  Technically however each specific task implementation can create it’s own separate HTTP client that advertises whatever TLS version they choose and the connector check is using task specific HTTP client and not delegate's HTTP client. There are some tasks that are preferring TLSv1.2 in some use cases (possibly due to legacy reasons). Note that this may change in the future and full TLS 1.3 support can eventually be rolled out but as of yet there are some specific connectors that prefer TLS 1.2.
+
+Max delay is 60s, we run pt iterator every 60s for task assignment
+
 #### What is the delegate poll interval for new PT tasks. (Max delay from PT being assigned to delegate picking it up and executing it, say there is only 1 delegate) ?
 
 It depends on task to task, you can find the interval for your task in perpetualTaskScheduleConfig in dms db
