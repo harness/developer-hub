@@ -108,6 +108,13 @@ We only support auto upgrade for delegates in K8s Infra.
 
 Yes it is supported, this can be configured while setting up SAML.
 
+#### Can I use the delegate image from my immutable delegate and replace it in the YAML for the statefulset from the legacy delegate ?
+
+This is not supported.  The immutable delegate image should be run with delegate yaml generated from the UI which will generate a deployment if immutable delegate is enabled for the account https://apidocs.harness.io/tag/Accounts#operation/isImmutableDelegateEnabled
+
+Here is an example manifest file for NextGen:
+https://developer.harness.io/docs/platform/delegates/install-delegates/overview/#example-manifest-file
+
 #### What is the Idle Session Timeout ? Can it be configured ?
 
 The idle session timeout is of 24 hours, we also support configuring the session timeout, it can be acheived by visiting Account Setting.
