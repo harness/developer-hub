@@ -22,6 +22,10 @@ We can set up the AWS Secret Manager connector, then save the ECR auth token int
 
 In NG we are not using any setup variables anymore, since it is Harness's internal step where we basically create a temp dir for the execution. We are creating a working directory in the Command Init unit on this %USERPROFILE% location.
 
+#### I am getting an error as follows `Error Summary Invalid request: At least 1 valid user group is required in [Approval]`. What is that I am doing wrong here?
+
+The variable being passed for the Approvers > User Groups is potentially invalid or at the wrong scope
+
 #### In templateInput window why do we only show variables that have runtime input and not the ones which have a static value for input?
 
 We only show runtime because we intend to show the user what is required of them for input.
