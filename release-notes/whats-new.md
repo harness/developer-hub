@@ -21,18 +21,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest: September 28, 2023
 
-### Continuous Delivery, version 808xx
+### Continuous Delivery, version 80811
 
-- Harness CD has a new account-level setting to override the default behavior when deleting a pipeline, which deletes all past executions of that pipeline as well. (CDS-71173, ZD-50017)
-
-  When `do_not_delete_pipeline_execution_details` is set to `true` (the default), older pipeline executions remain in the system even when the corresponding pipelines are deleted. You can view these executions in the Pipeline Executions list and open them to view details, but you cannot re-run them.
-
-  When `do_not_delete_pipeline_execution_details` is set to `false`, 
-  Harness deletes all executions of a pipeline when that pipeline is deleted.
-
-  If a new pipeline is created with the same Id, the old executions are automatically associated with the new pipeline. This is expected functionality since the pipeline Id is used to associate executions with pipelines.
-
-  To configure this setting, use the [Harness CLI](/docs/platform/automation/cli/reference).
 
 - There was no way in Pipeline Studio to add step group variables when creating a step group template. This section has now been added. (CDS-78683)
 
