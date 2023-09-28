@@ -218,6 +218,12 @@ After deployment you can [follow the auto-stopping rule creation wizard](/docs/g
 
 After the initial setup it is best to get an overview of Perspectives, Budgets, Anomalies, Recommendations, and Cost Categories.
 
+### RBAC
+
+![](../static/ccm-onboarding-rbac.png)
+
+You should discuss with the CCM SME team (who usually would have CCM Admin or similar permissions in Harness) what other personas there are that will be accessing CCM. Once you define those personas and the things they will need to do within CCM, you can use Groups, Roles, and Resource Groups to define access profiles and assign access to groups of users.
+
 ### Cost Categories
 
 [Cost Catagories](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories/) are important to cover early on, as if they seem valuable to the CCM user they should be implemented early so they can be leveraged in perspectives and dashboards.
