@@ -21,7 +21,6 @@ interface Props {
 const DocsTag: React.FC<Props> = (props) => {
   const { siteConfig } = useDocusaurusContext();
   const baseUrl = siteConfig.url;
-  console.log(props.iconColor);
 
   return (
     <>
