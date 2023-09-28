@@ -13,6 +13,10 @@ Modern continuous integration systems execute pipelines inside ephemeral environ
 
 There are several ways to configure caching in Harness CI, such as Cache Intelligence, Save and Restore Cache steps, and mounting volumes. Save and Restore Cache steps and mounted volumes require you to manage the cache. With Cache Intelligence, Harness automatically caches and restores common dependencies. Cache Intelligence also doesn't require you to bring your own storage, because the cache is stored in the Harness-hosted environment, Harness Cloud.
 
+<!-- Video: Cache Intelligence demo
+https://www.loom.com/share/20703014b50042b5972e14cefea87f49?sid=d87d4bad-6482-44f2-a379-0b843c399a26-->
+<docvideo src="https://www.loom.com/share/20703014b50042b5972e14cefea87f49?sid=d87d4bad-6482-44f2-a379-0b843c399a26" />
+
 ## Supported build infrastructures
 
 Currently, Cache Intelligence is only available for Linux and Windows platforms on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), the Harness-hosted build environment.
@@ -226,24 +230,24 @@ The following YAML example uses `<+input>`, which prompts the user to supply a c
 
 You can use the Cache Intelligence API to get information about the cache or delete the cache.
 
-To invoke these APIs, you must have an API key with [core_account_edit](/docs/platform/automation/api/api-permissions-reference) permissions. For information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
+API key authentication is required. You need a [Harness API key](/docs/platform/automation/api/add-and-manage-api-keys) with [core_account_edit](/docs/platform/automation/api/api-permissions-reference) permission. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io/#section/Introduction/Authentication).
 
 ### Get cache metadata
 
 Get metadata about the cache, such as the size and path.
 
 ```
-curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID' \
+curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $AUTH_TOKEN'
+--header 'X-API-KEY: $API_KEY'
 ```
 
 ### Delete cache
 
-Delete the cache. You can include an optional `path` parameter to delete a specific sub-directory in the cache.
+Delete the entire cache, or use the optional `path` parameter to delete a specific subdirectory in the cache.
 
 ```
-curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID&path=/path/to/deleted/directory' \
+curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache?path=/path/to/deleted/directory' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $AUTH_TOKEN'
+--header 'X-API-KEY: $API_KEY'
 ```

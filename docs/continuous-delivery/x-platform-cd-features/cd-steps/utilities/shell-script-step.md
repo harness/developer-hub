@@ -132,11 +132,15 @@ The name of the step.
 
 ### Script Type
 
-Select Bash|Powershell.
+Select **Bash** or **Powershell**.
 
 When the script in the Shell Script step is run, Harness executes the script on the target host's or Delegate's operating system. Consequently, the behavior of the script depends on their system settings.
 
-For this reason, you might wish to begin your script with a shebang line that identifies the shell language, such as `#!/bin/sh` (shell), `#!/bin/bash` (bash), or `#!/bin/dash` (dash). For more information, see the [Bash manual](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents) from the GNU project.
+If you select **Bash**, Harness will use `sh` because it is standardized and portable across POSIX systems.
+
+To support different host systems, or to explicit set the **Bash** option to use bash, you should begin your script with a shebang line that identifies the shell language, such as `#!/bin/sh` (shell), `#!/bin/bash` (bash), or `#!/bin/dash` (dash). 
+
+For more information, go to the [Bash manual](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents) from the GNU project.
 
 In case of PowerShell, if the script executes on Delegate it requires the powershell binary to be installed as it is not shipped with delegate tools, see the [Install PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.3) for installation instructions.
 
@@ -192,7 +196,7 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
 ## Using shell scripts in CD stages
@@ -204,7 +208,9 @@ This section provides a simple demonstration of how to create a script in a Shel
 
 When the script in the Shell Script step is run, Harness executes the script on the target host's or Delegate's operating system. Consequently, the behavior of the script depends on their system settings.
 
-For this reason, you might wish to begin your script with a shebang line that identifies the shell language, such as `#!/bin/sh` (shell), `#!/bin/bash` (bash), or `#!/bin/dash` (dash). For more information, see the [Bash manual](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents) from the GNU project.
+If you select **Bash**, Harness will use `sh` because it is standardized and portable across POSIX systems.
+
+To support different host systems, or to explicit set the **Bash** option to use bash, you should begin your script with a shebang line that identifies the shell language, such as `#!/bin/sh` (shell), `#!/bin/bash` (bash), or `#!/bin/dash` (dash). For more information, go to the [Bash manual](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents) from the GNU project.
 
 To capture the shell script output in a variable, do the following:
 
@@ -335,7 +341,7 @@ For **Script Input Variables** and **Script Output Variables**, you simply selec
 
 1. In **Execution Target**, select **Specify on** **Target Host** or **On Delegate**.
 
-In you select **On Delegate**, the script is executed on whichever Delegate runs the step. You can use **Delegate Selector** in **Advanced** to pick the Delegate(s) if needed.
+If you select **On Delegate**, the script is executed on whichever Delegate runs the step. You can use **Delegate Selector** in **Advanced** to pick the Delegate(s) if needed.
 
 See [select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors).
 
@@ -343,6 +349,11 @@ If you select **Target Host**, enter the following:
 
 * **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you created the workflow, and the Harness Delegate must have network access to the target host. You can also enter the variable `<+instance.name>` and the script will execute on whichever target host is used during deployment.
 * **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, go to [add SSH keys](/docs/platform/secrets/add-use-ssh-secrets).
+
+### Running scripts with a delegate on the target cluster
+If your deployment type is Kubernetes and you want to use a Delegate installed on the target cluster, select **Include Infrastructure Selectors**. This option forces the shell script to run on a delegate that matches the selectors specified by the Kubernetes connector in the infrastructure definition.
+
+![](./static/include-infra-selectors.png)
 
 ## Use cases
 

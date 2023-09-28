@@ -26,7 +26,7 @@ If you cannot find a resolution, please contact [Harness Support](mailto:support
 
 ## Git connector fails to connect to the SCM service
 
-The following SCM service errors can occur with [Git connectors](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference).
+The following SCM service errors can occur with [Git connectors](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference).
 
 ### SCM request failed with: UNKNOWN
 

@@ -6,7 +6,7 @@ sidebar_position: 10
 
 # Change impact analysis overview
 
-Harness Change Impact Analysis enables you to understand what has changed, when it changed, why it changed, and the effect it had on your monitored service. It helps you identify recent change events in your service around the time performance deteriorated. These changes might include deployments, infrastructure changes, incidents, and feature flags. This real-time change event tracking aids in faster root cause analysis and allows teams to make confident decisions.
+Harness Change Impact Analysis enables you to understand what has changed, when it changed, why it changed, and the effect it had on your monitored service. It helps you identify recent change events in your service around the time performance deteriorated. These changes might include deployments, infrastructure changes, incidents, feature flags, and chaos experiments. This real-time change event tracking aids in faster root cause analysis and allows teams to make confident decisions.
 
 ## Prerequisites
 

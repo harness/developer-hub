@@ -22,11 +22,9 @@ The recommended workflow is to add an $SCANNER_NAME step to a Security Tests or 
 
 You can also set up an Aqua Trivy scan in a [Security step](#security-step-configuration-deprecated) but this workflow is deprecated. 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <details>
     <summary>Scanner Template</summary>
@@ -117,12 +115,12 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
 
-## Security step configuration (_legacy_)
+## Security step configuration (legacy)
  
  <details><summary>Set up a $SCANNER_NAME scan in a Security step</summary>
  

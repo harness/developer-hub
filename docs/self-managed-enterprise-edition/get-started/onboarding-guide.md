@@ -70,10 +70,10 @@ To create a project, do the following:
 
 To get started with Harness Self-Managed Enterprise Edition, go to the following Harness module topics:
 
-* Harness CCM: [Introduction to Cloud Cost Management](/docs/cloud-cost-management/get-started/overview).
-* Harness CET: [Set up Continuous Error Tracking (CET)](/docs/continuous-error-tracking/get-started/onboarding-guide).
-* Harness CI: [CI Pipeline Quickstart](../../continuous-integration/get-started/tutorials.md).
-* Harness CD: [CD Pipeline Basics](../../continuous-delivery/get-started/key-concepts.md).
-* Harness FF: [Get started with a flag](/docs/feature-flags/get-started/onboarding-guide).
-* Harness STO: [Security Testing Orchestration Basics](../../security-testing-orchestration/get-started/overview.md).
-* Harness Chaos Engineering: [Get started with Harness Chaos Engineering](/docs/category/get-started-with-ce).
+* Harness CCM: [Cloud Cost Management (CCM) overview](/docs/cloud-cost-management/get-started/overview).
+* Harness CET: [Continuous Error Tracking (CET) onboarding guide](/docs/continuous-error-tracking/get-started/onboarding-guide).
+* Harness CI: [Continuous Integration (CI) tutorials](../../continuous-integration/get-started/tutorials.md).
+* Harness CD: [Continuous Delivery (CD) key concepts](../../continuous-delivery/get-started/key-concepts.md).
+* Harness FF: [Feature Flag (FF) onboarding guide](/docs/feature-flags/get-started/onboarding-guide).
+* Harness STO: [Security Testing Orchestration (STO) overview](../../security-testing-orchestration/get-started/overview.md).
+* Harness Chaos Engineering: [Get started with Harness Chaos Engineering (CE)](/docs/category/get-started-with-ce).

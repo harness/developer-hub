@@ -164,7 +164,9 @@ You can customize the metrics to map the Harness Service to the monitored enviro
    
    ![](./static/verify-deployments-with-cloudwatch-117.png)
 
-You can add one or more Health Sources for each APM or logging provider.### Step 6: Select Sensitivity
+You can add one or more Health Sources for each APM or logging provider.
+
+## Step 6: Select Sensitivity
 
 In **Sensitivity**, select **High**, **Medium**, or **Low** based on the risk level used as failure criteria during the deployment.
 
@@ -172,7 +174,9 @@ In **Sensitivity**, select **High**, **Medium**, or **Low** based on the risk le
 
 Select how long you want Harness to analyze and monitor the logs/APM data points. Harness waits for 2-3 minutes to allow enough time for the data to be sent to the APM/logging tool before it analyzes the data. This wait time is a standard with monitoring tools.
 
-The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
+The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.
+
+## Step 8: Specify Artifact Tag
 
 In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md)
 
@@ -182,8 +186,8 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 * [Select Delegates with Selectors](../../platform/../../platform/delegates/manage-delegates/select-delegates-with-selectors.md)
 
 

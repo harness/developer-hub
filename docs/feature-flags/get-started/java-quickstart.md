@@ -85,7 +85,7 @@ To create a boolean Flag:
 1. In **Feature Flags**, click **Flag**.
 2. Select the **Boolean** type.
 3. In **About the Flag**, in **Name**, enter a name for your boolean flag and click **Next**.  
-When you name a Feature Flag, Harness automatically generates its unique identifier based on the name you give it. You can edit the identifier when you are creating the Flag, but not after it is saved. If you rename the feature flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md).
+When you name a Feature Flag, Harness automatically generates its unique identifier based on the name you give it. You can edit the identifier when you are creating the Flag, but not after it is saved. If you rename the feature flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md).
 
 	:::info note
 	If you need to make the flag a permanent Flag, select the checkbox **This is a permanent flag**.
@@ -182,7 +182,7 @@ Evaluate a Target for your Feature Flag. Once you have added the Target, evaluat
 ```
 boolean result = cfClient.boolVariation(<feature_identifier>, target, <default_result>);
 ```
-The `<feature_identifier>` is your Feature Flag identifier. When you name a Feature Flag, Harness automatically generates its identifier. For more information, go to [Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md) and [Create a flag type](/docs/feature-flags/ff-creating-flag/create-a-feature-flag#create-a-boolean-flag).
+The `<feature_identifier>` is your Feature Flag identifier. When you name a Feature Flag, Harness automatically generates its identifier. For more information, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md) and [Create a flag type](/docs/feature-flags/ff-creating-flag/create-a-feature-flag#create-a-boolean-flag).
 
 **Sample code for a boolean Flag**
 

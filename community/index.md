@@ -24,3 +24,9 @@ import CommunityAspects from '@site/src/components/Community/Aspects';
 
 * Slack is used for discussions.
 * Knowledge Base is used for articles by Harness Experts.
+
+<!-- Custom component -->
+
+import CommunityIcon from '@site/src/components/Community/Icon';
+
+<CommunityIcon />

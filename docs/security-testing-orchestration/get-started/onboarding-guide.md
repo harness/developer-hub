@@ -222,7 +222,6 @@ You also need a Git repo connector for any STO pipeline that scans a codebase. Y
  - [GitHub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
  - [GitLab](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 
-
 To do the STO tutorials, point the connector at the following repo: <https://github.com/williamwissemann/dvpwa>
 
 <details>

@@ -44,6 +44,14 @@ In your CD stage's **Execution**, select **Add Step**, then select **Jenkins**.
 
 Select the Jenkins server you added as a Harness Jenkins connector. For more information, go to [connect to Jenkins](/docs/platform/connectors/artifact-repositories/connect-to-jenkins).
 
+## Polling Frequency
+
+Set the polling interval for verifying the progress of step execution. Must be less than the timeout configured for the step.
+
+Default: 5 sec
+
+Minimum value: 5 sec
+
 ## Job/Folder name
 
 Select the Jenkins job (also called a project) to execute. The list is automatically populated using the Jenkins server you set up in the Jenkins connector you selected.
@@ -85,7 +93,7 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## Captured environment variables from Jenkins builds
 

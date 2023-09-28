@@ -1,6 +1,6 @@
 ---
-title: Build and Push an image to Docker Registry
-description: This topic describes settings for the Build and Push an image to Docker Registry step.
+title: Build and Push to Docker
+description: Use a CI pipeline to build and push an image to a Docker registry.
 sidebar_position: 20
 helpdocs_topic_id: q6fr5bj63w
 helpdocs_category_id: 4xo13zdnfx
@@ -8,9 +8,23 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes settings and techniques for the **Build and Push an image to Docker Registry** step, which creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry. For more information, go to [Build and push an artifact](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
+This topic explains how to configure the **Build and Push an image to Docker Registry** step in a Harness CI pipeline. This step creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry. This is one of several options for [building and pushing artifacts in Harness CI](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
-:::info Kubernetes cluster build infrastructures
+:::tip
+
+The **Build and Push an image to Docker Registry** step is primarily used to push to Docker Hub. However, you can also use it to push to Azure Container Registry (ACR).
+
+You can use either the **Build and Push an image to Docker Registry** step or the [Build and Push to ACR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr) to push to Azure Container Registry (ACR), because the **Build and Push an image to Docker Registry** step is equivalent to the Docker [build](https://docs.docker.com/engine/reference/commandline/build/) and [push](https://docs.docker.com/engine/reference/commandline/push/) commands.
+
+:::
+
+You need:
+
+* Access to a Docker registry.
+* A [Harness CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
+* A [Docker connector](#docker-connector).
+
+## Kubernetes cluster build infrastructures require root access
 
 With Kubernetes cluster build infrastructures, **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md). Kaniko requires root access to build the Docker image. It doesn't support non-root users.
 
@@ -18,25 +32,46 @@ If your build runs as non-root (`runAsNonRoot: true`), and you want to run the *
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
 
+## Add a Build and Push to Docker step
+
+In your pipeline's **Build** stage, add a **Build and Push an image to Docker Registry** step and configure the [settings](#build-and-push-to-docker-step-settings) accordingly.
+
+Here is a YAML example of a minimum **Build and Push an image to Docker Registry** step.
+
+```yaml
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: Build and push to Docker
+                  identifier: Build_and_push_to_Docker
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                    repo: DOCKER_USERNAME/DOCKER_REPO_NAME
+                    tags:
+                      - <+pipeline.sequenceId>
+```
+
+When you run a pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the **Build and Push** step succeeds, you can find the uploaded image in your Docker repo.
+
+:::tip
+
+You can also:
+
+* [Build images without pushing](./build-without-push.md)
+* [Build multi-architecture images](./build-multi-arch.md)
+
 :::
 
-:::tip Azure Container Registry
+## Build and Push to Docker step settings
 
-Because the **Build and Push an image to Docker Registry** step is equivalent to the Docker [build](https://docs.docker.com/engine/reference/commandline/build/) and [push](https://docs.docker.com/engine/reference/commandline/push/) commands, you can use this step or the [Build and Push to ACR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr) to push to Azure Container Registry (ACR).
-
-:::
-
-## Settings
-
-Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+The **Build and Push an image to Docker Registry** step has the following settings. Depending on the build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ### Docker Connector
 
-The Harness Docker Registry connector where you want to upload the image. For more information, go to [Docker connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+The Harness Docker Registry connector where you want to upload the image. For more information, go to [Docker connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 
 This step supports Docker connectors that use username and password authentication.
 
@@ -56,42 +91,27 @@ Add each tag separately.
 
 :::tip
 
-Harness expressions are a useful way to define tags. For example, `<+pipeline.sequenceId>` is a built-in Harness expression. It represents the Build ID number, such as `9`. You can use the same tag in another stage to reference the same build by its tag.
+When you push an image to a repo, you tag the image so you can identify it later. For example, in one pipeline stage, you push the image, and, in a later stage, you use the image name and tag to pull it and run integration tests on it.
 
-<details>
-<summary>Use Harness expressions for tags</summary>
+Harness expressions are a useful way to define tags. For example, you can use the expression `<+pipeline.sequenceId>` as a tag. This expression represents the incremental build identifier, such as `9`. By using a variable expression, rather than a fixed value, you don't have to use the same image name every time.
 
-When you push an image to a registry, you tag the image so you can identify it later. For example, in one pipeline stage, you push the image, and, in a later stage, you use the image name and tag to pull it and run integration tests on it.
-
-There are several ways to tag images, but Harness expressions can be useful.
-
-![](./static/build-and-upload-an-artifact-10.png)
-
-For example, `<+pipeline.sequenceId>` is a built-in Harness expression that represents the **Build Id** number, for example `9`.
-
-After the pipeline runs, you can see the `Build Id` in the output.
+For example, if you use `<+pipeline.sequenceId>` as a tag, after the pipeline runs, you can see the `Build Id` in the output.
 
 ![](./static/build-and-upload-an-artifact-15.png)
 
-The ID also appears as an image tag in your target image repo:
+And you can see where the `Build Id` is used to tag your image:
 
 ![](./static/build-and-upload-an-artifact-12.png)
 
-The `Build Id` tags an image that you pushed in an earlier stage of your pipeline. You can use the `Build Id` to pull the same image in later stages of the same pipeline. By using a variable expression, rather than a fixed value, you don't have to use the same image name every time.
-
-For example, you can use the `<+pipeline.sequenceId>` expression as a variable tag to reference images in future pipeline stages by using syntax such as: `harnessdev/ciquickstart:<+pipeline.sequenceId>`.
-
-As a more specific example, if you have a [Background step](../manage-dependencies/background-step-settings.md) in a later stage in your pipeline, you can use the `<+pipeline.sequenceId>` variable to identify the image without needing to call on a fixed value.
-
-![](./static/build-and-upload-an-artifact-11.png)
-
-</details>
+Later in the pipeline, you can use the same expression to pull the tagged image, such as `myrepo/myimage:<+pipeline.sequenceId>`.
 
 :::
 
 ### Optimize
 
 With Kubernetes cluster build infrastructures, select this option to enable `--snapshotMode=redo`. This setting causes file metadata to be considered when creating snapshots, and it can reduce the time it takes to create snapshots. For more information, go to the kaniko documentation for the [snapshotMode flag](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#flag---snapshotmode).
+
+For information about setting other kaniko runtime flags, go to [Set kaniko runtime flags](#set-kaniko-runtime-flags).
 
 ### Dockerfile
 
@@ -152,218 +172,16 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
-## Useful techniques
+### Conditions, looping, and failure strategies
 
-Here are some interesting ways you can use or enhance **Build and Push an Image to Docker Registry** steps.
+You can find the following settings on the **Advanced** tab in the step settings pane:
 
-### Build a Docker image without pushing
-
-You can use your CI pipeline to test a Dockerfile used in your codebase and verify that the resulting image is correct before you push it to your Docker repository.
-
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs>
-  <TabItem value="hosted" label="Harness Cloud, local runner, or self-hosted VM build infrastructures" default>
-```
-
-1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
-2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
-3. Select **Add Variable** and enter the following:
-   * **Name:** `PLUGIN_DRY_RUN`
-   * **Type:** **String**
-   * **Value:** `true`
-4. Save and run the pipeline.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="other" label="Kubernetes cluster build infrastructures">
-```
-
-With the built-in **Build and Push** steps:
-
-1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
-2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
-3. Select **Add Variable** and enter the following:
-   * **Name:** `PLUGIN_NO_PUSH`
-   * **Type:** **String**
-   * **Value:** `true`
-4. Save and run the pipeline.
-
-With the Buildah plugin (which is used to [build and push with non-root users](./build-and-push-nonroot.md)):
-
-1. In your CI pipeline, go to the **Build** stage that includes the **Plugin** step with the Buildah plugin.
-2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
-3. Select **Add Variable** and enter the following:
-   * **Name:** `PLUGIN_DRY_RUN`
-   * **Type:** **String**
-   * **Value:** `true`
-4. Save and run the pipeline.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-### Build multi-architecture images
-
-To use a CI pipeline to build multi-architecture images, create a separate stage for building and pushing each architecture.
-
-<details>
-<summary>Multi-arch YAML example</summary>
-
-The following YAML example describes a multi-architecture pipeline with two stages. Both stages have similar components but they are slightly different according to the architecture of the image that the stage builds.
-
-Each stage:
-
-* Uses a variation of a Kubernetes cluster build infrastructure.
-* Has a **Run** step that prepares the DockerFile.
-* Has a **Build and Push** step that builds and uploads the image.
-
-```yaml
-pipeline:
-  allowStageExecutions: true
-  projectIdentifier: my-project
-  orgIdentifier: default
-  tags:
-    CI: ""
-  properties:
-    ci:
-      codebase:
-        connectorRef: CI_GitHub
-        repoName: Automation.git
-        build: <+input>
-  stages:
-    - stage:
-        name: K8 upload
-        identifier: k8_upload
-        type: CI
-        spec:
-          cloneCodebase: true
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: K8Linux
-              namespace: <+input>
-              runAsUser: ""
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              containerSecurityContext:
-                runAsUser: ""
-              os: Linux
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: CreateDockerFile
-                  identifier: CreateDockerFile
-                  spec:
-                    connectorRef: CI_Docker_Hub
-                    image: alpine:latest
-                    command: |-
-                      touch harnessDockerfileui
-                      cat > harnessDockerfileui <<- EOM
-                      FROM alpine:latest AS dev-env
-                      ARG foo
-                      RUN echo "$foo bar"
-                      ENTRYPOINT ["pwd"]
-
-                      FROM alpine:latest AS release-env
-                      ARG hello
-                      RUN echo "$hello world"
-                      ENTRYPOINT ["ls"]
-                      EOM
-                      cat harnessDockerfileui
-                    resources:
-                      limits:
-                        memory: 100M
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  name: DockerPushStep
-                  identifier: DockerPushStep
-                  spec:
-                    connectorRef: my-docker-hub
-                    repo: my-repo/ciquickstart
-                    tags:
-                      - "1.0"
-                    dockerfile: harnessDockerfileui
-                    target: dev-env
-                    resources:
-                      limits:
-                        memory: 100M
-        variables: []
-    - stage:
-        name: K8s Linux arm
-        identifier: CI_Golden_ARM
-        type: CI
-        spec:
-          cloneCodebase: true
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: k8sarm
-              namespace: ci-gold-arm-delegate
-              automountServiceAccountToken: true
-              tolerations:
-                - effect: NoSchedule
-                  key: kubernetes.io/arch
-                  operator: Equal
-                  value: arm64
-              nodeSelector:
-                kubernetes.io/arch: arm64
-              os: Linux
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: CreateDockerFile
-                  identifier: CreateDockerFile
-                  spec:
-                    connectorRef: CI_Docker_Hub
-                    image: alpine:latest
-                    command: |-
-                      touch harnessDockerfileui
-                      cat > harnessDockerfileui <<- EOM
-                      FROM alpine:latest AS dev-env
-                      ARG foo
-                      RUN echo "$foo bar"
-                      ENTRYPOINT ["pwd"]
-
-                      FROM alpine:latest AS release-env
-                      ARG hello
-                      RUN echo "$hello world"
-                      ENTRYPOINT ["ls"]
-                      EOM
-                      cat harnessDockerfileui
-                    resources:
-                      limits:
-                        memory: 100M
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  name: DockerPushStep
-                  identifier: DockerPushStep
-                  spec:
-                    connectorRef: my-docker-hub
-                    repo: my-repo/ciquickstart
-                    tags:
-                      - "1.0"
-                    dockerfile: harnessDockerfileui
-                    target: dev-env
-                    resources:
-                      limits:
-                        memory: 100M
-        variables: []
-  variables: []
-  identifier: CI_MultiArch
-  name: CI_MultiArch
-```
-
-</details>
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings): Set conditions to determine when/if the step should run.
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings): Control what happens to your pipeline when a step fails.
+* [Looping Strategies Overview -- Matrix, Repeat, and Parallelism](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism): Define a looping strategy for an individual step.
 
 ### Set kaniko runtime flags
 

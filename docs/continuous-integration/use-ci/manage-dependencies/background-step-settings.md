@@ -28,13 +28,13 @@ A Background step starts a service and then proceeds. For any later step that re
 
 * Background steps do not support failure strategies or output variables.
 * If the pipeline runs on a VM build infrastructure, you can run the background service directly on the VM rather than in a container. To do this, leave the **Container Registry** and **Image** fields blank.
-* Depending on the stage's build infrastructure, some settings may be unavailable, optional, or located under **Additional Configuration**.
+* Depending on the stage's build infrastructure, some settings might be unavailable, optional, or located under **Additional Configuration**.
 
 :::
 
 ## Name and Id
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the step is saved; once saved, the **Id** is locked.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the step is saved; once saved, the **Id** is locked.
 
 :::tip
 

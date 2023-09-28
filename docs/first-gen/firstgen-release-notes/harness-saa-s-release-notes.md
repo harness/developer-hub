@@ -16,25 +16,45 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-## Latest: Version 80504
+### Latest: Version 80711
 
-### New features and enhancements
+#### New features and enhancements
 
 This release does not include new features.
 
-### Early access features
+#### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+#### Fixed issues
+
+- Earlier, you could upload Excel and .csv files in the **File Configuration** dialog. (PL-40796, ZD-44419)
+
+   This issue is fixed. Excel and .csv files in the **File Configuration** dialog are now blocked.
+
+- The Secrets Management Change Log page returned errors when fetching the `changeLogData` API. (PL-40957, ZD-49757)
+
+   This issue is fixed.
+
+### Version 80504
+
+#### New features and enhancements
+
+This release does not include new features.
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
 
 * Fixed an issue where using multiple HTTP Helm chart repositories could lead to an increase in CPU utilization on the delegate due to background validation tasks for the Harness HTTP Helm Repo connector. This was caused by running Helm repository updates during the validation tasks. (CDS-76433, ZD-48363)
 
-  This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 * Fixed a Nexus artifact issue where a fetch timed out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
 
-   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
   
 <!-- NOTE RE FIXED ISSUE CDS-73884
 https://harness.atlassian.net/browse/CDS-73884?focusedCommentId=566535 we fixed this issue for first gen with the same ticket, hence it is showing up in 805 release notes. 
@@ -42,25 +62,23 @@ https://harness.atlassian.net/browse/CDS-73884?focusedCommentId=566535 we fixed 
 
 ### Version 80407
 
-### New features and enhancements
+#### New features and enhancements
 
 - The OWASP Java HTML Sanitizer version is upgraded to 20220608.1. (PL-40807)
 
 - The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
 
-### Early access features
+#### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+#### Fixed issues
 
 - With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631, ZD-48998, ZD-49702)
 
    This issue is fixed. Harness catches the exception and continues with delegate startup.
    
-   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
-
-
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 ### Version 80407
 
@@ -94,7 +112,7 @@ This release does not include early access features.
 
 - Fixed a delegate issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240, ZD-48548)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - Fixed an issue where using the Export Manifest with Inherit Manifest in a Kubernetes deployment could lead to skipping resource versioning. With this fix, resource versioning is happening correctly in this deployment scenario. (CDS-75781, ZD-47209)
 
@@ -319,7 +337,7 @@ This release does not include early access features.
     - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
     - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
 
-  This issue is fixed in the Harness Delegate version 79307. This change does not create any behavioral changes. 
+  This issue is fixed in the Harness Delegate version 23.05.79307. This change does not create any behavioral changes. 
 - Null pointer exception occurs when generating audit events for user groups with null values. (PL-32144)
 - No members appear in user group list even after the user has been added via SCIM. (PL-32482)
 
@@ -451,7 +469,7 @@ This release does not include new features.
 
 #### Early access
 
-- Large repositories are now supported for [Azure Repo](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OTIMIZED_GET_FETCH_FILES`.
+- Large repositories are now supported for [Azure Repo](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OTIMIZED_GET_FETCH_FILES`.
 
 	Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
@@ -557,7 +575,7 @@ No early access features are available in this release.
 
 ### January 17, 2023, version 78105
 
-Delegate version: 78101
+Delegate version: 23.01.78101
 
 #### What's new
 
@@ -592,7 +610,7 @@ Delegate version: 78101
 
 ### January 5, 2023, version 78105
 
-Delegate version: 78100
+Delegate version: 23.01.78100
 
 #### What's new
   
@@ -662,7 +680,7 @@ Delegate version: 78100
 
 ### December 22, 2022, version 77908
 
-Delegate version: 77802
+Delegate version: 22.12.77802
 
 #### What's new
 
@@ -1026,7 +1044,7 @@ This fix is behind the feature flag `DO_NOT_RENEW_APPROLE_TOKEN`.
 
 ### August 25, 2022, version 76425
 
-* Delegate Version: 76420
+* Delegate Version: 22.08.76420
 
 #### Enhancements
 
@@ -1114,7 +1132,7 @@ New fields parent\_pipeline\_id and created\_by\_type fields in timescaledb.
 
 ### August 8, 2022, version 76128
 
-* Delegate version: 76128
+* Delegate version: 22.08.76128
 
 #### What's new
 
@@ -1219,7 +1237,7 @@ The discovery process for immutable Delegates is limited to checking the followi
 
 ### August 1, 2022, version 76003
 
-* Delegate version: 76028
+* Delegate version: 22.08.76028
 
 #### What's new
 

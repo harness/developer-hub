@@ -128,7 +128,7 @@ Harness uses a *connector* to connect to your Git repositories.
 
 1. In the GitHub account where you forked the tutorial repos, [create a GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the `repo`, `admin:repo_hook`, and `user` scopes.
 
-   For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
+   For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
 
 2. Save the token as a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) named `GITHUB_PAT`.
 
@@ -158,7 +158,7 @@ Harness uses a *connector* to connect to your Git repositories.
 7. For **Select Connectivity Mode**, select **Connect through the Harness Platform**, and then select **Save and Continue**.
 8. Wait while Harness tests the connection, and then select **Finish**.
 
-For more information about creating GitHub connectors go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
+For more information about creating GitHub connectors go to the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 
 ## Create a GSA key
 
@@ -267,7 +267,7 @@ Create a pipeline by importing a premade pipeline from one of the tutorial repos
 
 :::tip
 
-This pipeline pulls public images from Docker Hub. If you do not want to use the default `account.harnessImage` connector, you can use a different Docker connector, as described in [Connect to Harness Container Image Registry using Docker Connector](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector).
+This pipeline pulls public images from Docker Hub. If you do not want to use the default `account.harnessImage` connector, you can use a different Docker connector, as described in [Connect to Harness Container Image Registry using Docker Connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
 
 :::
 
