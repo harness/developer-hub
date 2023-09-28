@@ -37,6 +37,10 @@ We could use shared paths to allow steps within a stage to share data with each 
 
 Yes, you can configure different build infrastructures for each stage within a pipeline. This flexibility allows you to use the most suitable infrastructure for each part of your CI workflow.
 
+#### Despite the freeze window I've set the CI Stage still went through.  What gives?
+
+Freeze windows only apply to CD stages (https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#freeze-windows-only-apply-to-cd-stages)
+
 #### How can we configure a specific step to only run when a certain file, like a .toml configuration file, has changed in the repository?
 
 To achieve conditional step execution based on changes to a specific file, you can set up webhook triggers with file-based conditions. Configure the trigger to activate the step only when the targeted file (e.g., config.toml) has been modified in the repository.
