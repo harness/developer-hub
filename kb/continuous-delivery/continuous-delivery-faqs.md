@@ -350,6 +350,10 @@ Yes, you can access the raw `plan.out` file by using the `humanReadableFilePath`
 
 Yes, you can override values in the Helm chart during the service deployment in Kubernetes.
 
+#### Why can't I access dashboards?  It says `Requires Upgrade to Enterprise Plan to set up Dashboards`
+
+Dashboards requires an Enterprise license for all modules except for the CCM module
+
 #### How can I use values files to override Helm chart values during deployment?
 
 You can define your input values in separate files, known as values files. These files can be stored and optionally tracked in Git. Harness allows you to specify these values files in your service definition, which will be used during the deployment.
