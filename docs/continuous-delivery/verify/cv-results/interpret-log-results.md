@@ -26,7 +26,7 @@ This is where log analysis with Harness Continuous Verification (CV) comes into 
 
 - Debugging the issue.
 
-Logging tools such as Google Cloud Operations and Splunk help you capture and analyze logs for various purposes, such as debugging, monitoring, auditing, and security. To see the list of logging tools supported by Harness, go to [Log providers](https://developer.harness.io/docs/getting-started/supported-platforms-and-technologies#log-providers).
+Logging tools such as Google Cloud Operations and Splunk help you capture and analyze logs for various purposes, such as debugging, monitoring, auditing, and security. To see the list of logging tools supported by Harness, go to [Log providers](/docs/get-started/supported-platforms-and-technologies#log-providers).
 
 
 ## Log verification in Harness CV

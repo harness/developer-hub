@@ -18,6 +18,8 @@ A Background step starts a service and then proceeds. For any later step that re
 
 :::
 
+
+
 ## Docker in Docker (DinD)
 
 Some steps in a containerized step group might require Docker in Docker (DinD). For example, some deployment types might use DinD because of the requirements of their platforms.
@@ -45,7 +47,7 @@ The Background step has the following settings.
 
 ### Name and Id
 
-When you name the step, Harness automatically adds an [Id](https://developer.harness.io/docs/platform/References/entity-identifier-reference) based on the name.
+When you name the step, Harness automatically adds an [Id](/docs/platform/References/entity-identifier-reference) based on the name.
 
 You can use the Background step Id to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `STEPGROUPID_BACKGROUNDSTEPID:5000` where it might otherwise call `localhost:5000`.
 
@@ -167,7 +169,7 @@ Select the step to see its log and how the DinD is set up. The general sequence 
 
 In **Advanced**, you can use the following options:
 
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview/)

@@ -70,13 +70,13 @@ You can add your own scripts or tests to your Pipelines to describe deployments,
 
 ## Harness Delegate setup
 
-1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install a delegate](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
+1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install a delegate](/docs/platform/Delegates/install-delegates/overview).
 
   The Delegate you use for Deployment Templates should be in an environment where it can connect and query your artifact repo and target instances. Typically, you'll want a Delegate in the same subnet as the target instances.
 
   If your scripts will use utilities or software that does not come with the Delegate by default, you can install them on the Delegate manually or using the Delegate `INIT_SCRIPT` environment variable.
 
-  For steps on using `INIT_SCRIPT`, see [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+  For steps on using `INIT_SCRIPT`, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
   Harness Delegate installation packages include `TAR` and `cURL`. You can use `cURL` and `TAR` in your Delegate scripts and Pipeline steps without installing these tools.
 
@@ -346,7 +346,7 @@ kubectl describe deployment nginx-deployment
 ```
 ![](./static/custom-deployment-tutorial-27.png)
 
-Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.mdn the step's **Advanced** section.
+Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](../../platform/pipelines/looping-strategies-matrix-repeat-and-parallelism.mdn the step's **Advanced** section.
 
 1. Click **Advanced**.
 2. Click **Looping Strategy**.

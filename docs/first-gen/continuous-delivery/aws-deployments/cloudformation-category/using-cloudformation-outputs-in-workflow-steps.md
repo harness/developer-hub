@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).The CloudFormation output variables you use to map CloudFormation template outputs in an Infrastructure Definition can also be output in other Workflow commands.
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).The CloudFormation output variables you use to map CloudFormation template outputs in an Infrastructure Definition can also be output in other Workflow commands.
 
 For example, if you use `${cloudformation.Region}` to map a region output to the AWS region in an Infrastructure Definition, you can add a Shell Script step in your Workflow and use `echo ${cloudformation.Region}` to print the value.
 

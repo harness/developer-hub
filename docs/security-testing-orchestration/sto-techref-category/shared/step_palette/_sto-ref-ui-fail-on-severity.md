@@ -1,4 +1,4 @@
-Every Security step has a **Fail on Severity** setting. If the scan finds any vulnerability with the specified [severity level](/docs/security-testing-orchestration/onboard-sto/key-concepts/severities) or higher, the pipeline fails automatically. You can specify one of the following:
+Every Security step has a **Fail on Severity** setting. If the scan finds any vulnerability with the specified [severity level](/docs/security-testing-orchestration/get-started/key-concepts/severities) or higher, the pipeline fails automatically. You can specify one of the following:
 * **`CRITICAL`**
 * **`HIGH`**
 * **`MEDIUM`**

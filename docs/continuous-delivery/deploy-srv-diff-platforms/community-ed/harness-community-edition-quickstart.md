@@ -33,7 +33,7 @@ You'll learn how to:
   	  - Minikube needs 4GB and 4 CPUs: `minikube start --memory 4g --cpus 4`.
 	+ Kubernetes cluster.
   	+ This is the target cluster for the deployment you will set up in this quickstart. When Docker Compose Kubernetes is installed it comes with a cluster and the **default** namespace. You don't need to make any changes to Docker Compose Kubernetes. Don't have a cluster? Go to [Notes](#notes) below.
-	+ Review [Harness CD Community Edition overview](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-overview) and [Harness key concepts](/docs/getting-started/learn-harness-key-concepts) to establish a general understanding of Harness.
+	+ Review [Harness CD Community Edition overview](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-overview) and [Harness key concepts](/docs/get-started/key-concepts) to establish a general understanding of Harness.
 
 The Docker Compose installer is described below, but Harness also supports a [Helm installer](https://github.com/harness/harness-cd-community/blob/main/helm/README.md).
 

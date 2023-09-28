@@ -134,7 +134,7 @@ Select how long you want Harness to analyze and monitor the logs/APM data points
 
 The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](../../../platform/12_Variables-and-Expressions/harness-variables.md) to reference the artifact in the stage Service settings.
+In **Artifact Tag**, use a [Harness expression](../../../platform/variables-and-expressions/harness-variables.md) to reference the artifact in the stage Service settings.
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -142,8 +142,8 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition Settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 * [Select Delegates with Selectors](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 See [Advanced Settings](verify-deployments-with-the-verify-step.md#option-advanced-settings).

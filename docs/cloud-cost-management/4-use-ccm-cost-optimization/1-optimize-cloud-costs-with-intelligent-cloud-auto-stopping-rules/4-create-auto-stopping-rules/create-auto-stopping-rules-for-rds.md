@@ -15,7 +15,7 @@ This topic describes how to create AutoStopping Rules for Amazon Relational Data
 
 ## Prerequisites
 
-* Read the following topics in [Set up Cloud Cost Management for AWS](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md): 
+* Read the following topics in [Set up Cloud Cost Management for AWS](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md): 
 
 	* Access to CUR. See Cost and Usage Reports (CUR) and CCM Requirements.
 	* Permissions to create a cross-account role. See AWS Access Permissions.

@@ -544,7 +544,7 @@ Harness creates 2 phases.
 
 ![](static/ssh-ng-197.png)
 
-You can add any Approval steps inside the Phase Group. For more information, go to [Approvals](https://developer.harness.io/docs/category/approvals).
+You can add any Approval steps inside the Phase Group. For more information, go to [Approvals](/docs/category/approvals).
 
 The looping strategy for the first phase deploys to 50% of the hosts (partitions):
 
@@ -626,5 +626,5 @@ For Microsoft Azure or AWS:
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
 
-For more details, go to [Built-in and custom Harness variables reference](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/).
+For more details, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/).
 

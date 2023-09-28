@@ -1,10 +1,9 @@
 ---
-title: FireHydrant
-description: Configure FireHydrant change source to monitor incidents.
-sidebar_position: 60
+title: Configure FireHydrant as a change source
+sidebar_label: FireHydrant
+description: Configure FireHydrant as a change source to monitor incidents.
+sidebar_position: 50
 ---
-
-# FireHydrant change source
 
 You can accelerate incident triage by configuring FireHydrant with Harness SRM. Imagine a scenario where a critical incident occurs within your system. Integrating FireHydrant's incident reporting with SRM's health reports provides the incident response team with clearer insights into the incident.
 
@@ -29,13 +28,13 @@ Configuring FireHydrant as a change source involves the following steps:
 
 [Add FireHydrant as a custom change source in the Harness SRM monitored service and generate a webhook.](#add-firehydrant-as-a-change-source)
 
-2. [Integrate your Slack workspace with FireHydrant.](#integrate-slack-workspace-with-firehydrant)
+1. [Integrate your Slack workspace with FireHydrant.](#integrate-slack-workspace-with-firehydrant)
    
-3. [Add Webhook Step to the FireHydrant runbook.](#add-webhook-step-to-the-firehydrant-runbook)
+2. [Add Webhook Step to the FireHydrant runbook.](#add-webhook-step-to-the-firehydrant-runbook)
    
-4. [Add Slack channels to the FireHydrant runbook.](#add-slack-channels-to-the-firehydrant-runbook)
+3. [Add Slack channels to the FireHydrant runbook.](#add-slack-channels-to-the-firehydrant-runbook)
    
-5. [Declare an incident.](#declare-an-incident)
+4. [Declare an incident.](#declare-an-incident)
 
 
 ## Add FireHydrant as a change source
@@ -48,7 +47,7 @@ To add FireHydrant as a change source to a monitored service:
 2. Locate the monitored service for which you want to add a custom change source, select the three vertical dots next to it, and then select **Edit service**.  
    The Configurations page appears.
 
-3. On the **Configurations** page, go to the **Service** tab, and under **Define Your Sources**, select **+ Add New Change Source**.  
+3. On the **Configurations** page, go to the **Change Sources**, and select **+ Add New Change Source**. 
 
 4. On the Edit Change Source page, under **Select Change Source**, choose **Incident** as **Provider Type**, and then select **Custom**.
 
@@ -68,7 +67,7 @@ To copy the webhook URL from a monitored service:
 
 1. From the list of monitored services, select the monitored service for which you have created the FireHydrant incident custom incident change source, and then go to the **Configuration** tab.  
 
-2. On the **Configurations** page, go to the **Service** tab. In the **Define Your Sources** section, a list of change sources that have been added to the monitored service is displayed. The list also displays webhook URLs and cURL commands next to each change source.
+2. On the **Configurations** page, go to the **Change Sources** tab. In the **Change Sources** section, a list of change sources that have been added to the monitored service is displayed. The list also displays webhook URLs and cURL commands next to each change source.
 
 3. Locate the FireHydrant incident change source that you want to configure with the FireHydrant runbook, and then copy the webhook URL.
 

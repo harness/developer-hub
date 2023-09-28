@@ -92,7 +92,7 @@ docker run --rm \
 
 Plugins are distributed as Docker images.
 
-If your plugin image is private, others in your organization can use your plugin in their Harness CI pipelines by using a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for the private registry where your plugin image is stored.
+If your plugin image is private, others in your organization can use your plugin in their Harness CI pipelines by using a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for the private registry where your plugin image is stored.
 
 If your plugin image is public, you can share it with anyone. You can submit a pull request to the [drone-plugin-index repository](https://github.com/drone/drone-plugin-index) if you'd like your plugin to be considered for the [Drone Plugins Marketplace](https://plugins.drone.io/).
 
@@ -129,7 +129,7 @@ Output variables are not available for all plugins.
 
 Output variables are exposed values that can be used by other steps or stages in the pipeline. If the plugin writes outputs to the `.env` file present in the `DRONE_OUTPUT` path, you can use expressions to reference output variables in other steps and stages in the pipeline.
 
-To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/references/runtime-inputs/#expressions) that includes the originating step's Id and the variable's name.
+To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) that includes the originating step's Id and the variable's name.
 
 Use either of the following expressions to reference an output variable in another step in the same stage:
 
@@ -163,7 +163,7 @@ Maximum resource limits for containers that clone the codebase at runtime. For m
 
 In **Advanced**, you can use the following options:
 
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview/)

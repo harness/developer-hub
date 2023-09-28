@@ -16,7 +16,7 @@ For more information on monitored services, go to the [SRM documentation](/docs/
 Create one or more monitored services that represent your target environment for running chaos experiments. Then create one or more Service Level Objectives (SLOs) for the monitored service(s). For instructions, go to: 
 
 * [Create a monitored service](/docs/service-reliability-management/monitored-service/create-monitored-service).
-* [Create your first SLO](/docs/service-reliability-management/getting-started/create-first-slo)
+* [Create your first SLO](/docs/service-reliability-management/get-started/create-first-slo)
 
 ## Connect a fault to a monitored service
 
@@ -37,13 +37,13 @@ To connect a fault to a monitored service:
 
 ## Check the impact of a fault on a monitored service
 
-Once you've connected faults to monitored services corresponding to your target environment, when you run the experiment(s) containing those faults, you can use the [**SRM SLOs**](/docs/service-reliability-management/getting-started/slo-dashboard) and [**Changes**](/docs/service-reliability-management/change-impact-analysis/change-impact-analysis-changes-dash-board) dashboards page to check the health of those services.
+Once you've connected faults to monitored services corresponding to your target environment, when you run the experiment(s) containing those faults, you can use the [**SRM SLOs**](/docs/service-reliability-management/get-started/slo-dashboard) and [**Changes**](/docs/service-reliability-management/change-impact-analysis/change-impact-analysis-changes-dash-board) dashboards page to check the health of those services.
 
 To check the impact of a fault on a monitored service:
 
 1. In Harness, select **Service Reliability**.
 
-	The [Service Level Objectives (SLOs) dashboard](/docs/service-reliability-management/getting-started/slo-dashboard) appears, listing SLOs, their associated monitored service, status, [error budget](/docs/service-reliability-management/getting-started/slo-dashboard#error-budget-details), etc.
+	The [Service Level Objectives (SLOs) dashboard](/docs/service-reliability-management/get-started/slo-dashboard) appears, listing SLOs, their associated monitored service, status, [error budget](/docs/service-reliability-management/get-started/slo-dashboard#error-budget-details), etc.
 	
 	![The SRM SLOs dashboard, listing 3 SLOs, and their associated monitored services](./static/srm/srm-slo-dashboard.png) 
 
@@ -63,7 +63,7 @@ To check the impact of a fault on a monitored service:
 
 	For example, in the image above, the pointer is centered around one of diamonds on the **Chaos Experiments** timeline, and there are 2 Chaos Events at that point in time. The corresponding events are also listed in the **Changes** section at the bottom of the page.
 
-1. Below the timeline, in the Changes section, select a change event to see [SLO details](/docs/service-reliability-management/getting-started/slo-dashboard#slo-details-page).
+1. Below the timeline, in the Changes section, select a change event to see [SLO details](/docs/service-reliability-management/get-started/slo-dashboard#slo-details-page).
 
 	Here you can see performance trends and error budget for the SLO, among other details. 
 
@@ -74,7 +74,7 @@ To check the impact of a fault on a monitored service:
 For more information on Harness SRM and monitored services, go to these topics:
 
 * [Create a monitored service](/docs/service-reliability-management/monitored-service/create-monitored-service)
-* [Create your first SLO](/docs/service-reliability-management/getting-started/create-first-slo)
+* [Create your first SLO](/docs/service-reliability-management/get-started/create-first-slo)
 * [Use the Service Health dashboard](/docs/service-reliability-management/change-impact-analysis/change-impact-analysis-service-health-dashboard)
-* [Use the SLOs dashboard](/docs/service-reliability-management/getting-started/slo-dashboard)
+* [Use the SLOs dashboard](/docs/service-reliability-management/get-started/slo-dashboard)
 * [Use the Changes dashboard](/docs/service-reliability-management/change-impact-analysis/change-impact-analysis-changes-dash-board)

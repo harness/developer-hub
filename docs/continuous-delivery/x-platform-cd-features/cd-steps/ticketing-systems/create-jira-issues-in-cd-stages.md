@@ -12,7 +12,7 @@ You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-featur
 
 ## Before you begin
 
-* [Connect to Jira](/docs/platform/Connectors/Ticketing-Systems/connect-to-jira): You can add a Harness Jira connector before or during the Create Jira step setup.
+* [Connect to Jira](/docs/platform/connectors/ticketing-systems/connect-to-jira): You can add a Harness Jira connector before or during the Create Jira step setup.
 
 ## Limitations
 
@@ -31,7 +31,7 @@ To add a Jira Create step, do the following:
 
 3. In **Name**, enter a name that describes the step.
 4. In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps)).
-5. In **Jira Connector**, create or select the [Jira connector](/docs/platform/Connectors/Ticketing-Systems/connect-to-jira) to use.
+5. In **Jira Connector**, create or select the [Jira connector](/docs/platform/connectors/ticketing-systems/connect-to-jira) to use.
 6. In **Jira Project**, select a Jira project from the list. A Jira project is used to create the issue key and ID when the issue is created. The unique issue number is created automatically by Jira.
 7. In **Issue Type**, select a Jira issue type from the list of types in the Jira project you selected.
 8. Select **Apply Changes**.
@@ -74,11 +74,11 @@ The number 1 is used as an example. You can add whatever number you need.
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## Apply and test
 

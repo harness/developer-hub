@@ -17,7 +17,7 @@ This topic covers how to add and configure New Relic as a Health Source for the 
 
 ## Before You Begin
 
-* [Add New Relic as a Verification Provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-new-relic)
+* [Add New Relic as a Verification Provider](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-new-relic)
 
 :::info note
 New Relic supports multiple APIs. The Harness Connector leverages the New Relic Insights API, which supports NRQL. Your Service/Application also needs to be instrumented as a [New Relic APM Application](https://docs.newrelic.com/introduction-apm). 
@@ -155,7 +155,7 @@ The recommended **Duration** is **10 min** for logging providers and **15 m
 
 ## Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md)
+In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md)
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -163,9 +163,9 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../platform/../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](../../platform/../../platform/delegates/manage-delegates/select-delegates-with-selectors.md)
 
 
 ## Step 9: Deploy and Review Results

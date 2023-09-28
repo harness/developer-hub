@@ -256,6 +256,11 @@ You can add a **Rolling Rollback** step to your stage to roll back the workloads
 
 Simply add this step where you want to initiate a rollback. Note that this command applies to the deployments of the Rollout Deployment command, and not the [Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step) command.
 
+### Value of the image field in the output of the Rollout Deployment step
+
+The `image` field on the **Output** tab of the Rollout Deployment step shows the SHA256 digest of the image instead of the image tag. Kubernetes returns the SHA256 digest of the image because the digest is unique and can be used to verify the deployment. If you want to verify the deployment by using the tag, look for the tag in the deployment logs.  
+
+
 ## Next Steps
 
 * [Kubernetes CD Reference](/docs/category/kubernetes)

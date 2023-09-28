@@ -128,7 +128,7 @@ This example sets up a Linux platform on a [Kubernetes cluster build infrastruct
   <TabItem value="sh2" label="macOS">
 ```
 
-To configure a self-hosted macOS build infrastructure, go to [Set up a macOS VM build infrastructure with Anka Registry](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) or [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
+To configure a self-hosted macOS build infrastructure, go to [Set up a macOS VM build infrastructure with Anka Registry](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) or [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
 This example uses a VM build infrastructure:
 

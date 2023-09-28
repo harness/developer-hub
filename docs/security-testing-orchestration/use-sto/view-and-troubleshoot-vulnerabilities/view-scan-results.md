@@ -1,7 +1,8 @@
 ---
-title: Investigate issues in a pipeline scan
+title: Discover and remediate issues in an STO scan
 description: View, navigate, discover, and investigate detected issues from an individual scan 
 sidebar_position: 10
+sidebar_label: Discover and remediate detected issues
 ---
 
 To view scan results from a pipeline execution, go to **Pipeline Executions**, select the execution, and then go to the **Security Tests** tab. 
@@ -10,7 +11,7 @@ To view scan results from a pipeline execution, go to **Pipeline Executions**, s
 
 The following steps describe the general workflow:
 
-1. Click on the [severity](/docs/security-testing-orchestration/onboard-sto/key-concepts/severities) tiles to filter the list of known vulnerabilities. 
+1. Click on the [severity](/docs/security-testing-orchestration/get-started/key-concepts/severities) tiles to filter the list of known vulnerabilities. 
 
 2. Drill down into the relevant issues list to view the issues found in the scan:
 
@@ -22,7 +23,7 @@ The following steps describe the general workflow:
 
    :::note
 
-   For best results in STO, every target should have a baseline defined. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines).
+   For best results in STO, every target should have a baseline defined. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
 
    :::
 

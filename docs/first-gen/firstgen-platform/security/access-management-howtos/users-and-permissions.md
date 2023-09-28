@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/role-based-access-control/add-user-groups). Harness provides Role-Based Access Control (RBAC) via User and User Group Account and Application permissions.
+This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/role-based-access-control/add-user-groups). Harness provides Role-Based Access Control (RBAC) via User and User Group Account and Application permissions.
 
 Users' login access is managed at the user level, and users' account and application permissions are managed via User Groups.
 
@@ -130,8 +130,8 @@ Account permissions enable the following Harness features:
 | **Manage Authentication Settings** | Configure Authentication Settings.See [Authentication Settings](authentication-settings.md). |
 | **Manage IP Whitelist** | Configure IPs to be whitelisted.See [IP Whitelist Management](access-management.md). |
 | **Manage API Keys** | Create, update, and delete API Keys.See [API Keys](api-keys.md) |
-| **CE Admin** | Enables the User Group members to administer CE for the account.Permissions include enabling CE, creating CE Explorer reports and budgets, and subscribing users to receive email reports.See [Continuous Efficiency Overview](../../../../cloud-cost-management/2-getting-started-ccm/1-continuous-efficiency-overview.md). |
-| **CE Viewer** | View CE Explorer reports. See [Continuous Efficiency Overview](../../../../cloud-cost-management/2-getting-started-ccm/1-continuous-efficiency-overview.md).Soon the CE Viewer permission will enable users to subscribe people to CE email reports (not CE Explorer reports). This functionality is pending. |
+| **CE Admin** | Enables the User Group members to administer CE for the account.Permissions include enabling CE, creating CE Explorer reports and budgets, and subscribing users to receive email reports.See [Continuous Efficiency Overview](../../../../cloud-cost-management/get-started/overview.md). |
+| **CE Viewer** | View CE Explorer reports. See [Continuous Efficiency Overview](../../../../cloud-cost-management/get-started/overview.md).Soon the CE Viewer permission will enable users to subscribe people to CE email reports (not CE Explorer reports). This functionality is pending. |
 | **Manage Pipeline Governance Standards** | Create, update, and delete Pipeline Governance Standards. See [Pipeline Governance](../governance-howtos/pipeline-governance.md). |
 | **Manage Deployment Freezes** | Create, update, and delete Deployment Freeze windows. See [Deployment Freeze](../governance-howtos/deployment-freeze.md) and [Pause All Triggers using Deployment Freeze](../../../continuous-delivery/model-cd-pipeline/triggers/freeze-triggers.md). |
 | **Manage Delegates** | Enables User Group members to add, update, and configure [Harness Delegates](../../account/manage-delegates/delegate-installation.md) for the account. |

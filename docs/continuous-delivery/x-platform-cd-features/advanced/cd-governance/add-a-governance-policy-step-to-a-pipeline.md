@@ -4,7 +4,13 @@ description: Add a Policy step to your stage.
 sidebar_position: 3
 ---
 
-Currently, this feature is behind the feature flags `OPA_PIPELINE_GOVERNANCE` and `CUSTOM_POLICY_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Harness provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies.
+:::note
+
+Currently, this feature is behind the feature flags `OPA_PIPELINE_GOVERNANCE` and `CUSTOM_POLICY_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+::: 
+
+Harness provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies.
 
 You can enforce policies in two ways:
 
@@ -26,11 +32,15 @@ This topic describes how to add a Policy step to a Stage.
 * Currently, the Policy Step is only available in Continuous Delivery stages.
 * Currently, only the **Custom** entity type is supported for the Policy step.
 	+ A Custom entity type allows flexibility to enforce policy evaluations during pipeline execution with different input data. For example, Terraform plans and deployment environment details. A Policy Set with a Custom type does not have an event configured.
-* [Runtime inputs](/docs/platform/References/runtime-inputs) are expanded before evaluation. You cannot perform checks to ensure a setting is always a runtime input, expression, or fixed value.
+* [Runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs) are expanded before evaluation. You cannot perform checks to ensure a setting is always a runtime input, expression, or fixed value.
 
 ### Visual Summary
 
 Here's a quick video showing you how to use the Policy step to evaluate a custom JSON payload.
+
+<!-- Video:
+https://www.youtube.com/watch?v=D6jZoY6TfOM-->
+<docvideo src="https://www.youtube.com/watch?v=D6jZoY6TfOM" />
 
 ### Step 1: Add the Policy Step
 
@@ -88,7 +98,7 @@ Currently, only the **Custom** entity type is supported. The JSON payload you ad
 
 The **Policy Set** and **Payload** settings allow for Fixed Values, Runtime Inputs, and Expressions.
 
-For details on how these work in Harness, go to [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs).
+For details on how these work in Harness, go to [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
 #### Fixed Values
 

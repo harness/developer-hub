@@ -22,7 +22,7 @@ Harness Cloud Cost Management (CCM) allows you to view your Azure costs at a gla
 
 ### Before You Begin
 
-* [Set Up Cloud Cost Management for Azure](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md)
+* [Set Up Cloud Cost Management for Azure](../../get-started/onboarding-guide/set-up-cost-visibility-for-azure.md)
 
 ### Analyze Azure Cost
 

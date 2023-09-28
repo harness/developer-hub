@@ -4,7 +4,7 @@ title: Your first chaos experiment run
 description: Running a chaos experiment on Kubernetes for the first time.
 ---
 ## Before you begin
-[What is chaos engineering?](/docs/chaos-engineering/get-started/introduction-to-chaos-module)
+[What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
 
 ## Introduction
 Welcome to Harness Chaos Engineering's first tutorial on running a chaos experiment. In this tutorial, you will execute a chaos experiment on Kubernetes for the first time!

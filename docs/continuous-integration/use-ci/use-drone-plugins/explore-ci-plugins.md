@@ -37,14 +37,14 @@ Harness CI supports `DRONE_` environment variables. For more information, go to 
 
 How you run [Bitrise Integrations](https://bitrise.io/integrations/steps) in Harness CI pipelines depends on your [build infrastructure](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
-* With Harness Cloud build infrastructure, use the [Bitrise plugin step](./ci-bitrise-plugin.md).
+* With Harness Cloud build infrastructure, use the [Bitrise step](./ci-bitrise-plugin.md).
 * With other build infrastructures, you can use a [custom plugin](./custom_plugins.md).
 
 ## GitHub Actions
 
 How you run [GitHub Actions](https://github.com/marketplace?type=actions) in Harness CI pipelines depends on your [build infrastructure](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
-* With Harness Cloud build infrastructure, use the [GitHub Action plugin step](./ci-github-action-step.md).
+* With Harness Cloud build infrastructure, use the [GitHub Action step](./ci-github-action-step.md).
 * With other build infrastructures, use the [GitHub Actions Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
 
 ## Jira integrations

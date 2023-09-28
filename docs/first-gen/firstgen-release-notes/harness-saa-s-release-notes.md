@@ -16,21 +16,103 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-## Latest: Version 80407
+### Latest: Version 80810
 
-### New features and enhancements
+#### New features and enhancements
 
-This release does not include new features.
+- The default interval for synchronizing LDAP groups has been increased from 15 minutes to 1 hour. This value is customizable, so you can set it to a value of your choice. (PL-40860)
 
-### Early access features
+#### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+#### Fixed issues
+
+- A few pages about environment and service were missing access checks, allowing users to read data without the right permissions. (PL-41378, ZD-44419)
+
+  This issue has been resolved, and the desired access check has been applied.
+
+- You can no longer update `DelegateIP` or `DelegateName` using the delegate update API. (PL-40795, ZD-44419)
+
+### Version 80711
+
+#### New features and enhancements
+
+This release does not include new features.
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Earlier, you could upload Excel and .csv files in the **File Configuration** dialog. (PL-40796, ZD-44419)
+
+   This issue is fixed. Excel and .csv files in the **File Configuration** dialog are now blocked.
+
+- When you attempted to view the change log of an encrypted text secret, if the resultant API request returned an HTTP 400 response code, the Harness FirstGen user interface failed to show an appropriate message. Instead, it showed the following message and prompted you to refresh your browser page to continue: “Something went wrong... This error has been reported and we are looking into it with high priority.” (PL-40957, ZD-49757)
+
+  This issue has been fixed. The Harness UI now shows you a more appropriate message in the Change Log dialog.
+
+### Version 80504
+
+#### New features and enhancements
+
+This release does not include new features.
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
+
+* Fixed an issue where using multiple HTTP Helm chart repositories could lead to an increase in CPU utilization on the delegate due to background validation tasks for the Harness HTTP Helm Repo connector. This was caused by running Helm repository updates during the validation tasks. (CDS-76433, ZD-48363)
+
+  This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+* Fixed a Nexus artifact issue where a fetch timed out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
+
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  
+<!-- NOTE RE FIXED ISSUE CDS-73884
+https://harness.atlassian.net/browse/CDS-73884?focusedCommentId=566535 we fixed this issue for first gen with the same ticket, hence it is showing up in 805 release notes. 
+-->
+
+### Version 80407
+
+#### New features and enhancements
+
+- The OWASP Java HTML Sanitizer version is upgraded to 20220608.1. (PL-40807)
+
+- The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631, ZD-48998, ZD-49702)
+
+   This issue is fixed. Harness catches the exception and continues with delegate startup.
+   
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+### Version 80407
+
+#### New features and enhancements
+
+This release does not include new features.
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
 
 - Fixed retries of the delegate task acquire call in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the acquire call retry flow. Tasks timed out because the delegate was not able to acquire the data. The 'taskData' field in Harness Manager is now populated to fix the issue. (PL-40646)
 
-### Hotfixes
+#### Hotfixes
 
 This release does not include hotfixes.
 
@@ -48,7 +130,7 @@ This release does not include early access features.
 
 - Fixed a delegate issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240, ZD-48548)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - Fixed an issue where using the Export Manifest with Inherit Manifest in a Kubernetes deployment could lead to skipping resource versioning. With this fix, resource versioning is happening correctly in this deployment scenario. (CDS-75781, ZD-47209)
 
@@ -226,7 +308,7 @@ The fixed issue below is available with version 79411 and does not require a new
 
 - CD license utilization data was not reported for some accounts. (CDS-69101)
   
-  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
+  [License usage](/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
 
 - HTML characters in the `userName` caused issues during deployments. The following characters are no longer allowed in the `userName`: `:` , `/` , `<` , `>` , `=` , `(` , `)`. (PL-24129)
 
@@ -273,7 +355,7 @@ This release does not include early access features.
     - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
     - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
 
-  This issue is fixed in the Harness Delegate version 79307. This change does not create any behavioral changes. 
+  This issue is fixed in the Harness Delegate version 23.05.79307. This change does not create any behavioral changes. 
 - Null pointer exception occurs when generating audit events for user groups with null values. (PL-32144)
 - No members appear in user group list even after the user has been added via SCIM. (PL-32482)
 
@@ -405,7 +487,7 @@ This release does not include new features.
 
 #### Early access
 
-- Large repositories are now supported for [Azure Repo](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OTIMIZED_GET_FETCH_FILES`.
+- Large repositories are now supported for [Azure Repo](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OTIMIZED_GET_FETCH_FILES`.
 
 	Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
@@ -511,7 +593,7 @@ No early access features are available in this release.
 
 ### January 17, 2023, version 78105
 
-Delegate version: 78101
+Delegate version: 23.01.78101
 
 #### What's new
 
@@ -536,7 +618,7 @@ Delegate version: 78101
   
   This functionality is behind a feature flag: `CDS_TERRAFORM_S3_SUPPORT`.
   
-  You can now use AWS S3 as a file source in the Terraform [Provision](https://developer.harness.io/docs/first-gen/continuous-delivery/terraform-category/terraform-provisioner-step) and [Apply](https://developer.harness.io/docs/first-gen/continuous-delivery/terraform-category/using-the-terraform-apply-command) steps.
+  You can now use AWS S3 as a file source in the Terraform [Provision](/docs/first-gen/continuous-delivery/terraform-category/terraform-provisioner-step) and [Apply](/docs/first-gen/continuous-delivery/terraform-category/using-the-terraform-apply-command) steps.
 
 #### Fixed issues
 
@@ -546,7 +628,7 @@ Delegate version: 78101
 
 ### January 5, 2023, version 78105
 
-Delegate version: 78100
+Delegate version: 23.01.78100
 
 #### What's new
   
@@ -616,7 +698,7 @@ Delegate version: 78100
 
 ### December 22, 2022, version 77908
 
-Delegate version: 77802
+Delegate version: 22.12.77802
 
 #### What's new
 
@@ -702,7 +784,7 @@ Delegate: 77609
 
 #### Fixed issues
 
-* Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md). (DEL-4888)
+* Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md). (DEL-4888)
 * Removed the delegate dependency on Java driver component `mongo-java-driver` . This eliminates vulnerability [CVE-2021-20328](https://nvd.nist.gov/vuln/detail/CVE-2021-20328) affecting client-side field level encryption (CSFLE). (DEL-5308)
 * Changed the base image that the non-legacy delegate uses to `redhat/ubi8-minimal:latest`. This ensures that each release includes all OS-level security updates. (DEL-5386)
 * Disabling the feature flag `LDAP_SECRET_AUTH` restricts referencing secrets for LDAP connection. (PL-29668)  
@@ -964,7 +1046,7 @@ The Approval Step has two buttons: **Reject and Rollback** and **Reject**. When 
 Slack approval was not working in the workflow execution steps for Prod 1 accounts. This issue has been fixed.
 * Manager taking too much time to assign a task (CDS-41999) (Zendesk Ticket ID 33514)  
 API access type for GitLab connector was not being populated. This issue has been fixed.
-* Trigger on Last Deployed Artifact is Failing to Find Artifact (CDS-41896) (Zendesk Ticket ID 33547)    
+* Trigger on Last Deployed Artifact is Failing to Find Artifact (CDS-41896) (Zendesk Ticket ID 33547)    
 Triggered pipeline was unable to fetch artifacts from parent pipeline earlier when FF RTIFACT\_COLLECTION\_CONFIGURABLE was enabled . This issue has been fixed.
 * Trigger on Last Deployed Artifact is Failing to Find Artifact - Harness doesn't account for different service if workflow is templatized (CDS-41832) (Zendesk Ticket ID 33449)  
 This issue has been fixed. You can now find the artifacts from last deployed workflow or pipeline with the same service as the triggered workflow by enabling the added feature flag.
@@ -980,7 +1062,7 @@ This fix is behind the feature flag `DO_NOT_RENEW_APPROLE_TOKEN`.
 
 ### August 25, 2022, version 76425
 
-* Delegate Version: 76420
+* Delegate Version: 22.08.76420
 
 #### Enhancements
 
@@ -1068,7 +1150,7 @@ New fields parent\_pipeline\_id and created\_by\_type fields in timescaledb.
 
 ### August 8, 2022, version 76128
 
-* Delegate version: 76128
+* Delegate version: 22.08.76128
 
 #### What's new
 
@@ -1173,7 +1255,7 @@ The discovery process for immutable Delegates is limited to checking the followi
 
 ### August 1, 2022, version 76003
 
-* Delegate version: 76028
+* Delegate version: 22.08.76028
 
 #### What's new
 
@@ -1270,7 +1352,7 @@ We're pleased to present Harness SaaS Release 75805.
 ### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1359,7 +1441,7 @@ We're pleased to present Harness SaaS Release 75601.
 ### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1412,7 +1494,7 @@ We're pleased to present Harness SaaS Release 75304.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1460,7 +1542,7 @@ We're pleased to present Harness SaaS Release 74705.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1518,7 +1600,7 @@ We're pleased to present Harness SaaS Release 74602.
 ### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1558,7 +1640,7 @@ We're pleased to present Harness SaaS Release 74503.
 ### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1616,7 +1698,7 @@ We're pleased to present Harness SaaS Release 74300.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1650,7 +1732,7 @@ We're pleased to present Harness SaaS Release 74200.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1672,7 +1754,7 @@ The following new features are added to the Harness SaaS components:
 * Telemetry framework was failing, which resulted in data discrepancy between activation rates of the **CD Activation Rate** and the **CD Acquisition Funnel**. (PIE-3353)
 * `AddDelegateScope` output payload wasn't displayed correctly. (DEL-3757)
 * When querying the GraphQL API for Delegates, the **lastHeartBeat** field was a string instead of an integer. (DEL-3712)
-* Error message wasn't displaying the reason why a Delegate task failed. A Delegate task can fail to be assigned to a Delegate for various reasons, like incorrect Selectors, or Scope setup. (DEL-3686, ZD-28494, ZD-29304)
+* Error message wasn't displaying the reason why a Delegate task failed. A Delegate task can fail to be assigned to a Delegate for various reasons, like incorrect Selectors, or Scope setup. (DEL-3686, ZD-28494, ZD-29304)
 * GraphQL API had no method to list Delegate Scopes for an account. (DEL-2963)
 * Error Message "Duplicate State" was not displaying "Duplicate Step Name" and was displaying an incomplete notification. (CDS-36298, ZD-29769)
 * Pipeline Approval Step was throwing an error `UNKNOWN_ERROR`. (CDS-36152, ZD-29557)
@@ -1688,7 +1770,7 @@ We're pleased to present Harness SaaS Release 74002.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1705,7 +1787,7 @@ The following new feature is added to the Harness SaaS components:
 * Docker Delegate installation was failing whenever there was a space in the hostname. (DEL-2597)
 * Helm version 3.5 and above was not working with Native Helm Services as the URL name was changing and`force-update`flag was not working. (CDS-35667, ZD-29165, ZD-29194)
 * Some Workflows were not rendering dynamic Infrastructure Definition expressions for Terraform. This failure happens for Pipelines with multiple Terraform Workflows that use the same Service and Infrastructure Definition expressions. (CDS-35486, ZD-28977, ZD-28997, ZD-29166)
-* Concurrency issues were occurring when multiple processes execute`helm repo add, helm repo update, and helm repo pull`in parallel. (CDS-35483, ZD-27796)
+* Concurrency issues were occurring when multiple processes execute`helm repo add, helm repo update, and helm repo pull`in parallel. (CDS-35483, ZD-27796)
 
 ### Minor Release 73902
 
@@ -1716,13 +1798,13 @@ We're pleased to present Harness SaaS Release 73902.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
 The following new feature is added to the Harness SaaS components:
 
-* The heap size of the Delegate process is being reduced from 4GB to 1.5GB. In addition, we are reducing the memory requirement for Kubernetes from 8GB to 4GB. Currently, this feature is behind the Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (DEL-3365)
+* The heap size of the Delegate process is being reduced from 4GB to 1.5GB. In addition, we are reducing the memory requirement for Kubernetes from 8GB to 4GB. Currently, this feature is behind the Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (DEL-3365)
 
 #### Issues Fixed
 
@@ -1738,7 +1820,7 @@ The following new feature is added to the Harness SaaS components:
 
 	See [Availability and Scope of Harness Variables](../firstgen-platform/techref-category/variables/harness-variable-availability.md).
 	
-* If execution failed before the Kubernetes deployment step, the rollback was not skipped. (CDS-4025, ZD-15002)
+* If execution failed before the Kubernetes deployment step, the rollback was not skipped. (CDS-4025, ZD-15002)
 
 ### Minor Release 73700
 
@@ -1749,7 +1831,7 @@ We're pleased to present Harness SaaS Release 73700.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1797,7 +1879,7 @@ We're pleased to present Harness SaaS Release 73604.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1807,7 +1889,7 @@ The following new feature is added to the Harness SaaS components:
 
 #### Issues Fixed
 
-* The Commit ID for Git Sync with Azure DevOps was wrong. (PL-23124, ZD-20398)
+* The Commit ID for Git Sync with Azure DevOps was wrong. (PL-23124, ZD-20398)
 * Users were not able to change the profile name. (PL-23064, ZD-27743)
 * All User Groups were not listed on the User Groups page. (PL-20963, ZD-18775, ZD-20187, ZD-21829, ZD-26436, ZD-28694)
 
@@ -1837,7 +1919,7 @@ We're pleased to present Harness SaaS Release 73502.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1875,7 +1957,7 @@ We're pleased to present Harness SaaS Release 73402.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1913,7 +1995,7 @@ We're pleased to present Harness SaaS Release 73300.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -1961,7 +2043,7 @@ We're pleased to present Harness SaaS Release 73200.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -2006,13 +2088,13 @@ We're pleased to present Harness SaaS Release 73100.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
 The following new feature is added to the Harness SaaS components:
 
-* You can now add nodes to an Infrastructure Definition and Select Nodes Workflow step for a Rolling Workflow in addition to the nodes Harness pulls from the target infrastructure automatically. You can also use Workflow variable expressions for node names that will be resolved at runtime. Currently, this feature is behind the Feature Flag `DEPLOY_TO_INLINE_HOSTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-8075)
+* You can now add nodes to an Infrastructure Definition and Select Nodes Workflow step for a Rolling Workflow in addition to the nodes Harness pulls from the target infrastructure automatically. You can also use Workflow variable expressions for node names that will be resolved at runtime. Currently, this feature is behind the Feature Flag `DEPLOY_TO_INLINE_HOSTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-8075)
 	+ See [Select Nodes Workflow Step](../firstgen-platform/techref-category/cd-ref/workflow-steps-and-settings/select-nodes-workflow-step.md#option-select-host-not-in-infrastructure-definition), [Select Nodes in a Rolling Deployment Workflow](../continuous-delivery/model-cd-pipeline/workflows/select-nodes-in-a-rolling-deployment-workflow.md#option-select-host-not-in-infrastructure-definition), [Target Specific Hosts During Deployment](../continuous-delivery/model-cd-pipeline/workflows/specific-hosts.md#option-select-host-not-in-infrastructure).
 
 #### Issues Fixed
@@ -2045,15 +2127,15 @@ We're pleased to present Harness SaaS Release 73002.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
-* You can now customize your Kubernetes deployments using Kustomize patches. Kustomizations let you create specific Kubernetes deployments while leaving the original manifests untouched. Currently, this feature is behind the Feature Flag `KUSTOMIZE_PATCHES_CG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. When you enable this Feature Flag, you will be able to use Kustomize version 4.0.0. (CDP-19430)
-	+ You can add patch file(s) to **Kustomize Patches**. In Harness Service, click **Kustomize Patches** in **Configuration** and then click **Add Patches**. You can add multiple files by using **Add Patches** multiple times.![](./static/harness-saa-s-release-notes-09.png)
-	+ Kustomize doesn't natively support variable substitution but Harness supports variable substitution using [Harness variable expressions](../firstgen-platform/techref-category/variables/variables.md) in Kustomize patches.
-	+ You can also use [Harness secrets](../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md) in patches.![](./static/harness-saa-s-release-notes-10.png)
-	+ You can override the Service settings for **Kustomize Patches** in a Harness Environment using **Service Configuration Overrides**.![](./static/harness-saa-s-release-notes-11.png)
+* You can now customize your Kubernetes deployments using Kustomize patches. Kustomizations let you create specific Kubernetes deployments while leaving the original manifests untouched. Currently, this feature is behind the Feature Flag `KUSTOMIZE_PATCHES_CG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. When you enable this Feature Flag, you will be able to use Kustomize version 4.0.0. (CDP-19430)
+	+ You can add patch file(s) to **Kustomize Patches**. In Harness Service, click **Kustomize Patches** in **Configuration** and then click **Add Patches**. You can add multiple files by using **Add Patches** multiple times.![](./static/harness-saa-s-release-notes-09.png)
+	+ Kustomize doesn't natively support variable substitution but Harness supports variable substitution using [Harness variable expressions](../firstgen-platform/techref-category/variables/variables.md) in Kustomize patches.
+	+ You can also use [Harness secrets](../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md) in patches.![](./static/harness-saa-s-release-notes-10.png)
+	+ You can override the Service settings for **Kustomize Patches** in a Harness Environment using **Service Configuration Overrides**.![](./static/harness-saa-s-release-notes-11.png)
 	+ See [Kustomize for Kubernetes Deployments](../continuous-delivery/kubernetes-deployments/use-kustomize-for-kubernetes-deployments.md).
 
 #### Issues Fixed
@@ -2086,13 +2168,13 @@ We're pleased to present Harness SaaS Release 72900.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
-* You can now add a non-containerized artifact for Harness Azure Web App deployment. You can deploy War, NuGet, and Zip on Azure Web Application from Artifact sources like Artifactory, Nexus, Jenkins, and Azure artifacts. Currently, this feature is behind the Feature Flag `AZURE_WEBAPP_NON_CONTAINER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.(CDP-19058, CDP-16747)
+* You can now add a non-containerized artifact for Harness Azure Web App deployment. You can deploy War, NuGet, and Zip on Azure Web Application from Artifact sources like Artifactory, Nexus, Jenkins, and Azure artifacts. Currently, this feature is behind the Feature Flag `AZURE_WEBAPP_NON_CONTAINER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.(CDP-19058, CDP-16747)
 	+ See [Azure Web Deployment](../continuous-delivery/azure-deployments/azure-webapp-category/add-a-non-containerized-artifacts-for-azure-web-app-deployment.md).
-* You can now manually pull Helm Charts for a specific chart version. Harness automatically pulls all the chart and version history metadata for its manifests. In the Harness Service, click **Manually pull artifact**, and then use **Manually Select a Manifest** to select the version. Currently, this feature is behind the feature flag `HELM_CHART_AS_ARTIFACT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDC-16422)
+* You can now manually pull Helm Charts for a specific chart version. Harness automatically pulls all the chart and version history metadata for its manifests. In the Harness Service, click **Manually pull artifact**, and then use **Manually Select a Manifest** to select the version. Currently, this feature is behind the feature flag `HELM_CHART_AS_ARTIFACT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDC-16422)
 	+ See [Deploy Helm Charts](../continuous-delivery/kubernetes-deployments/deploy-a-helm-chart-as-an-artifact.md).
 * The **Skip Validation** checkbox has been added for ServiceNow and Artifactory connectors. Selecting this checkbox allows you to skip credential verification and creation / updation. Default behavior would be followed if the checkbox remains unselected. (CDC-15574, ZD-19001)
 
@@ -2126,11 +2208,11 @@ We're pleased to present Harness SaaS Release 72800.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
-* For Tanzu Application Deployments, validation for Verifying Manifests is enabled. This will help to track the verification of manifests and identify failures if any manifests are invalid. This will not impact any users as there is no change in the existing flow. (CDP-20015, ZD-21855)
+* For Tanzu Application Deployments, validation for Verifying Manifests is enabled. This will help to track the verification of manifests and identify failures if any manifests are invalid. This will not impact any users as there is no change in the existing flow. (CDP-20015, ZD-21855)
 
 #### Issues Fixed
 
@@ -2162,7 +2244,7 @@ We're pleased to present Harness SaaS Release 72700.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -2198,7 +2280,7 @@ We're pleased to present Harness SaaS Release 72500.
 #### General What's New and Early Access
 
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
-* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
+* [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
 #### New Features and Enhancements
 
@@ -2206,7 +2288,7 @@ We're pleased to present Harness SaaS Release 72500.
 
 #### Issues Fixed
 
-* The downsizeOldVMSSS field in YAML had a typo in Config-as-Code for Azure VMSS BG workflow. (CDP-19407)
+* The downsizeOldVMSSS field in YAML had a typo in Config-as-Code for Azure VMSS BG workflow. (CDP-19407)
 * API calls were made even for the collected versions to fetch the corresponding metadata when doing a collection for NuGet. (CDC-16359, ZD-20739)
 * The `artifact.url` in Nexus 3 was picking up a random URL irrespective of the classifier and extension configured for the artifact source. (CDC-16156, ZD-20723)
 * There was a race condition issue between the start and final stage of step execution. (CDC-15969, ZD-20175)
@@ -2227,4 +2309,3 @@ The following table lists the component versions in this release.
 | Learning | 66100 |
 | Event Service | 69318 |
 | Command Library Service | 1.0.73221-000 |
-

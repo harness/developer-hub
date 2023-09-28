@@ -7,7 +7,7 @@ description: This guide describes how to autostop idle VMs behind a reverse prox
 
 Harness Intelligent Cloud AutoStopping™ revolutionizes cloud resource optimization by introducing powerful automation capabilities. This groundbreaking feature empowers businesses to effortlessly optimize their cloud costs by automatically halting idle cloud resources.
 
-AutoStopping goes beyond just stopping idle resources; it possesses the intelligence to reactivate them when necessary. This dynamic functionality allows previously stopped idle resources to be automatically brought back up during periods of activity or increased demand based on the AutoStopping rules defined in Harness CCM. AutoStopping supports a wide range of resources in multiple cloud providers, read more about them [here](https://developer.harness.io/docs/category/autostopping-rules).
+AutoStopping goes beyond just stopping idle resources; it possesses the intelligence to reactivate them when necessary. This dynamic functionality allows previously stopped idle resources to be automatically brought back up during periods of activity or increased demand based on the AutoStopping rules defined in Harness CCM. AutoStopping supports a wide range of resources in multiple cloud providers, read more about them [here](/docs/category/autostopping-rules).
 
 ## AutoStopping an EC2 instance
 
@@ -35,7 +35,7 @@ In this scenario, it is not feasible to directly onboard the EC2 instance to Aut
 
 ## Introducing Harness AutoStopping Proxy
 
-[Harness AutoStopping Proxy](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb/) is a valuable solution in this scenario. It is built on top of the [envoy proxy](https://www.envoyproxy.io/), offering robust capabilities for handling routing and load balancing across different cloud providers. This proxy is not limited to HTTP traffic and can effectively handle any TCP-based traffic detection. Detailed documentation on creating an AutoStopping Proxy can be found [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb/).
+[Harness AutoStopping Proxy](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb/) is a valuable solution in this scenario. It is built on top of the [envoy proxy](https://www.envoyproxy.io/), offering robust capabilities for handling routing and load balancing across different cloud providers. This proxy is not limited to HTTP traffic and can effectively handle any TCP-based traffic detection. Detailed documentation on creating an AutoStopping Proxy can be found [here](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb/).
 
 After setting up an AutoStopping proxy, select the newly created proxy as the load balancer, and then configure the custom domain as `todolist.example.com` for the proxy. To route the traffic to the underlying EC2 instance, hit the proxy IP with a host header `Host: todolist.example.com`.
 

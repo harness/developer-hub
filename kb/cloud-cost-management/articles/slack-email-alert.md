@@ -5,7 +5,7 @@ title: Send Dashboard reports to slack channel.
 # Introduction
 
 Harness Dashboards display key metrics and data related to your builds, deployments, security, and cloud costs. Dashboards let you track the health and performance of your deployments, monitor key metrics and KPIs, and quickly identify potential issues. You can customize the dashboards to show specific metrics and data relevant to your needs, and access them from a central location. The Harness Dashboards provide actionable insights into continuous delivery processes, so you can achieve faster and more efficient deployments.
-More on this is detailed out here https://developer.harness.io/docs/platform/dashboards/dashboards-overview/
+More on this is detailed out here /docs/platform/dashboards/dashboards-overview/
 
 ## Problem Statement
 

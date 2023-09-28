@@ -51,7 +51,7 @@ export default function FeatureFlags() {
   }, [searchKey]);
 
   return (
-    <div className={styles.certificationsCI}>
+    <div className={styles.certificationsFF}>
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
@@ -181,7 +181,7 @@ export default function FeatureFlags() {
                 <div className={styles.left}>
                   <h2>Feature Flags - Administrator (BETA COMING SOON)</h2>
                   <img
-                    src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
+                    src={`${baseUrl}img/cert_adm_ff_badge.svg`}
                     alt="Harness Certified Expert - FF Administrator"
                     className={styles.badge}
                   />

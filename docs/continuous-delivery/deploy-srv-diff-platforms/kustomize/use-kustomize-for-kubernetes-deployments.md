@@ -69,7 +69,7 @@ All connections and operations are performed by Harness Delegates. You can add t
 5. In **Specify Kustomize Store**, select your Git provider, such as **GitHub**.
 
    If you already have a Git Connector that points to your Kustomization files, then select that. If not, click **New GitHub Connector**.
-6. The **Git Connector** settings appear. Enter the settings described in [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo).
+6. The **Git Connector** settings appear. Enter the settings described in [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
 7. Click **Continue**.
 8. In **Manifest Details**, enter the following settings, test the connection, and click **Submit**. We are going to provide connection and path information for a kustomization located at `https://github.com/wings-software/harness-docs/blob/main/kustomize/helloWorld/kustomization.yaml`.
   * **Manifest Identifier:** enter **kustomize**.
@@ -184,7 +184,7 @@ You cannot use Harness variables in the base manifest or kustomization.yaml. You
 
 ![](./static/use-kustomize-for-kubernetes-deployments-04.png)
 
-2. In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo).
+2. In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
 
    The Git Connector should point to the Git account or repo where you Kustomize files are located. In **Kustomize Patches** you will specify the path to the actual patch files.
 

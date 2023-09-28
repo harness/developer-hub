@@ -7,4 +7,4 @@ metadata:
 spec:
   networkChaos/inputs:
     packetCorruptionPercentage: '50'
-    networkInterface: "eth0"
+    networkInterfaces: "eth0"

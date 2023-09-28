@@ -4,7 +4,7 @@ The first goal when onboarding to CCM is to get all cloud billing data into Harn
 
 ## AWS
 
-Accounts in AWS are structured via organizations. The first step is to [create a CUR](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur) (Cost Usage Report) in the master payer account in their AWS org. Once the CUR is created, we create an initial Harness AWS account connector tied to the master account that points to the CUR.
+Accounts in AWS are structured via organizations. The first step is to [create a CUR](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur) (Cost Usage Report) in the master payer account in their AWS org. Once the CUR is created, we create an initial Harness AWS account connector tied to the master account that points to the CUR.
 
 When configuring the AWS connector you are asked what features to enable. Usually (if following AWS best practices) there shouldn't be any other resources in the master account. This means we can usually only enable cost access for this account and not the others. If the customer still wants, you can enable the other features as needed.
 
@@ -12,7 +12,7 @@ The connector wizard then hands you a cloud formation stack that defines what is
 
 You may need to adjust the S3 bucket policy to allow the newly created Harness IAM role to read objects in the bucket.
 
-[Read an in-depth article here on setting up your first AWS CCM connector.](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws)
+[Read an in-depth article here on setting up your first AWS CCM connector.](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
 
 We optionally have a [terraform module](https://github.com/harness-community/terraform-aws-harness-ccm) that accomplishes the same goal as the cloudformation template if terraform is your preferred IaC.
 
@@ -77,13 +77,13 @@ To make sure that EC2 recommendations are shown from all the AWS member accounts
 
 ## Azure
 
-Subscriptions in Azure are organized in a Tenant with management groups. We first [create a billing export](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-azure#azure-billing-exports) under the root tenant payer scope and then configure this export in Harness to get billing data ingested.
+Subscriptions in Azure are organized in a Tenant with management groups. We first [create a billing export](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#azure-billing-exports) under the root tenant payer scope and then configure this export in Harness to get billing data ingested.
 
-To [create a billing export](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-azure#azure-billing-exports) we first need a storage account it can be written to. You then go to the cost management pane in your azure portal and select the enterprise billing scope. Then on the left there is an option for exports.
+To [create a billing export](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#azure-billing-exports) we first need a storage account it can be written to. You then go to the cost management pane in your azure portal and select the enterprise billing scope. Then on the left there is an option for exports.
 
 Then in Harness we create a new CCM Azure connector. This connector asks for the tenant and subscription id, enter the subscription id for which the storage account is located in. Then enter the billing export information based on how it was created in Azure. 
 
-[Read an in-depth article here on setting up your first Azure CCM connector.](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws)
+[Read an in-depth article here on setting up your first Azure CCM connector.](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
 
 When prompted for the features to enable, check the options relevant to how you will be using Harness.
 
@@ -122,15 +122,15 @@ resource "harness_platform_connector_azure_cloud_cost" "member1" {
 
 ### Recommendations
 
-To get VM recommendations, you needs to [enable Azure Advisor VM/VMSS recommendations](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-azure#enable-azure-recommendations) for every subscription (that you want recommendations for.
+To get VM recommendations, you needs to [enable Azure Advisor VM/VMSS recommendations](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#enable-azure-recommendations) for every subscription (that you want recommendations for.
 
 ## GCP
 
-Projects in gcp are structured via organizations. You should have a billing project in your GCP organization, this is the first project we should create a connector for. First you need to [create a billing export](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp#gcp-billing-export) in this billing project. You can optionally create a “detailed” billing export which exposes resource level information.
+Projects in gcp are structured via organizations. You should have a billing project in your GCP organization, this is the first project we should create a connector for. First you need to [create a billing export](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#gcp-billing-export) in this billing project. You can optionally create a “detailed” billing export which exposes resource level information.
 
 The Harness GCP connector wizard walks you through entering the billing export information, and after checking the features you want to enable, prompts you with an itemized list of actions to take to grant this access to your GCP project. Again we are given a Harness owned service account that you can simply add to your organization. To save time you can give this access at the organization level to streamline the process
 
-[Read an in-depth article here on setting up your first GCP CCM connector.](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp)
+[Read an in-depth article here on setting up your first GCP CCM connector.](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp)
 
 Once the billing project connector is created, we do not need to create connectors for every GCP project as we do not have recommendations or other project specific things.
 
@@ -153,7 +153,7 @@ resource "harness_platform_connector_gcp_cloud_cost" "billing" {
 
 To start gathering k8s cloud costs, we need an existing Harness k8s connector at the account level. We can either go the route of deploying a delegate into every k8s cluster and creating corresponding k8s connectors for each delegate/custer, or if a central delegate is able to reach other cluster APIs then you can use one central delegate and use the master URL and credential method for your k8s connectors. As deploying multiple delegates is the most common method, we will focus on that here.
 
-You may be new to Harness, and even possibly a CCM only customer, so some [delegate background](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/) might be necessary in this case. The suggestion is to use Helm to [install a delegate](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/) into every cluster, you will have your own internal process for doing this. When deploying a delegate via helm the only variable that must change when deploying between clusters is the delegate name, and it is recommended that the name be in close relation to the name of the cluster.
+You may be new to Harness, and even possibly a CCM only customer, so some [delegate background](/docs/platform/delegates/delegate-concepts/delegate-overview/) might be necessary in this case. The suggestion is to use Helm to [install a delegate](/docs/platform/delegates/install-delegates/overview/) into every cluster, you will have your own internal process for doing this. When deploying a delegate via helm the only variable that must change when deploying between clusters is the delegate name, and it is recommended that the name be in close relation to the name of the cluster.
 
 When using Helm, be sure to set `ccm.visibility=true` in your values file.
 
@@ -188,13 +188,13 @@ There is also automation to auto-create k8s and k8s ccm connectors for delegates
 
 You will need a cloud CCM connector that has auto-stopping permissions provisioned for the target account/subscription/project that the target resource to be stopped is located in.
 
-[AWS](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector)
-[Azure](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/add-azure-connector)
-[GCP](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/create-a-gcp-connector-for-auto-stopping-rules)
+[AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector)
+[Azure](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/add-azure-connector)
+[GCP](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/create-a-gcp-connector-for-auto-stopping-rules)
 
 For cloud auto-stopping, there are a few options. If you are targeting HTTP based traffic only and are in AWS or Azure you can use the cloud-native Elastic Load Balancers or Application Gateways respectively. If you are routing other TCP based applications or are using GCP then you must use the proxy. The proxy is an Ubuntu VM that is provisioned into the user's cloud and acts as a proxy and load balancer.
 
-Depending on your cloud and requirements, you will [create a load balancer](https://developer.harness.io/docs/category/add-load-balancers-for-autostopping-rules) resource for either a gateway or proxy. Guides for each of the clouds are linked below.
+Depending on your cloud and requirements, you will [create a load balancer](/docs/category/add-load-balancers-for-autostopping-rules) resource for either a gateway or proxy. Guides for each of the clouds are linked below.
 
 Both of these methods need a (preferably wildcard) domain and (optional in the case of using the cloud-native LBs) (also preferably wildcard) certificate. The process is similar for each cloud and is outlined in the documentation below.
 
@@ -204,7 +204,7 @@ To enable auto-stopping for kubernetes the provisioning process is a simple depl
 
 The deployment requires a first gen account admin api key. This can be tricky as some new users will not have admin access in FG for their harness account. The best way to navigate to FG to get the key for a new account is in the k8s connector creation wizard when you check to enable auto-stopping, there is a button that links you directly to the api key page. If you are having trouble creating a first gen api key please open a support ticket or contact your CSM.
 
-After deployment you can [follow the auto-stopping rule creation wizard](https://developer.harness.io/docs/getting-started/supported-platforms-and-technologies/#supported-ingress-controllers-for-kubernetes-autostopping) to create a test rule in their cluster. Please make sure their ingress controller is supported.
+After deployment you can [follow the auto-stopping rule creation wizard](/docs/get-started/supported-platforms-and-technologies/#supported-ingress-controllers-for-kubernetes-autostopping) to create a test rule in their cluster. Please make sure their ingress controller is supported.
 
 ## Additional Activities
 
@@ -212,19 +212,19 @@ After the initial setup it is best to get an overview of Perspectives, Budgets, 
 
 ### Cost Categories
 
-[Cost Catagories](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories/) are important to cover early on, as if they seem valuable to the CCM user they should be implemented early so they can be leveraged in perspectives and dashboards.
+[Cost Catagories](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories/) are important to cover early on, as if they seem valuable to the CCM user they should be implemented early so they can be leveraged in perspectives and dashboards.
 
 Usually a business will have their cost category information in a central database, these categories could be anything from business units, directors, or chargeback codes. It is sometimes helpful to develop automation to pull in the cost category information from these external systems to programmatically update the cost category within Harness. You can view the APIs for cost categories [here](https://apidocs.harness.io/tag/Cloud-Cost-Cost-Categories) and an example of some automation in python [here](https://github.com/rssnyder/cuddly-dollop/blob/main/common.py).
 
 ### Perspectives
 
-[Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives/) are a grouping of related costs that enabled you to further filter or group costs to track where spend is happening inside your environment.
+[Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives/) are a grouping of related costs that enabled you to further filter or group costs to track where spend is happening inside your environment.
 
 Once you have cost categories defined, you can then start creating perspectives that utilize the cost categories for their definition rather than re-defining your business separations in the perspective creation. One example would be creating a perspective folder for a cost category, and then a perspective for each bucket.
 
 ### Budgets and Anomalies
 
-[Budgets](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget/) and [Anomalies](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm/) have their own pages in CCM that provide an overview of their status across your cloud platforms. Where they get defined however is inside the definition of a perspective, and this is also where you can set up alerts which is one of the most important features of budgets and anomalies.
+[Budgets](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget/) and [Anomalies](/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm/) have their own pages in CCM that provide an overview of their status across your cloud platforms. Where they get defined however is inside the definition of a perspective, and this is also where you can set up alerts which is one of the most important features of budgets and anomalies.
 
 You can define a budget for a perspective for a variety of time ranges. What is most important is to set alerts to go to any interested parties. You can set an alert when spend reaches a certain percentage of a budget (reached 50% of budgeted spend) or for when the _forcasted_ cost reaches a certain amount (forcasted to spend 101% of budgeted spend). These alerts should go to people that can take action on this information, be it an engineering team responsible for the applications covered in the perspective or a director with oversight of the business unit reported in the perspective.
 
@@ -232,7 +232,7 @@ Similarly to budgets, you can set alerts for when new anomalies are generated wi
 
 ### Recommendations
 
-When looking at [reccomendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations/) we see many different types: k8s workloads and nodepools, VM, and governance. Each recommendation will come with current/forecasted spend for the resource, and possible savings would result if action were taken. You can use the filter icon in the top right of the page to filter on a specific type, or even on certain cloud accounts, clusters, or namespaces.
+When looking at [reccomendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations/) we see many different types: k8s workloads and nodepools, VM, and governance. Each recommendation will come with current/forecasted spend for the resource, and possible savings would result if action were taken. You can use the filter icon in the top right of the page to filter on a specific type, or even on certain cloud accounts, clusters, or namespaces.
 
 It is best to make sure you understand each type and are able to speak to any questions an engineer might have when they are given the recommendation. Harness acts as a producer and aggregator of recommendation and the real responsibility lies within the teams responsible for the application/infrastructure  to take action to realize the savings shown.
 

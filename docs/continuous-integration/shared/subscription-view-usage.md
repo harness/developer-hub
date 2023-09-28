@@ -1,8 +1,8 @@
 Your Harness CI subscription includes a number of developer licenses. You can check how many of these licenses you're currently using in your Harness account. Go to **Account Settings**, and the select **Usage**.
 
-<!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_overview.png) -->
+<!-- ![](/docs/continuous-integration/get-started/static/ci_usage_overview.png) -->
 
-<docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_overview.png')} />
+<docimage path={require('/docs/continuous-integration/get-started/static/ci_usage_overview.png')} />
 
 CI subscription usage details are divided into several sections providing progressively more detail about your license and Harness Cloud build credit usage.
 
@@ -16,9 +16,9 @@ This section includes the following details:
 * Number of developer licenses
 * Subscription expiration date
 
-<!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_subscr_details.png) -->
+<!-- ![](/docs/continuous-integration/get-started/static/ci_usage_subscr_details.png) -->
 
-<docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_subscr_details.png')} />
+<docimage path={require('/docs/continuous-integration/get-started/static/ci_usage_subscr_details.png')} />
 
 </details>
 
@@ -29,15 +29,15 @@ This section shows the number of current active developers against the total num
 
 An active developer is an active codebase committer observed in the builds managed by Harness CI over the last 30 days.
 
-<!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary_onetile.png) -->
+<!-- ![](/docs/continuous-integration/get-started/static/ci_usage_plansummary_onetile.png) -->
 
-<docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary_onetile.png')} />
+<docimage path={require('/docs/continuous-integration/get-started/static/ci_usage_plansummary_onetile.png')} />
 
 It also shows your remaining Harness Cloud build credits balance.
 
-<!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary.png) -->
+<!-- ![](/docs/continuous-integration/get-started/static/ci_usage_plansummary.png) -->
 
-<docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary.png')} />
+<docimage path={require('/docs/continuous-integration/get-started/static/ci_usage_plansummary.png')} />
 
 </details>
 
@@ -48,9 +48,9 @@ In this section, you can drill down into license usage data for active developer
 
 The **Breakdown** tab shows a breakdown of license usage.
 
-<!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_devs_breakdown.png) -->
+<!-- ![](/docs/continuous-integration/get-started/static/ci_usage_devs_breakdown.png) -->
 
-<docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_devs_breakdown.png')} />
+<docimage path={require('/docs/continuous-integration/get-started/static/ci_usage_devs_breakdown.png')} />
 
 The **Trend** tab shows license usage trends over time, including:
 
@@ -58,9 +58,9 @@ The **Trend** tab shows license usage trends over time, including:
 * Total license limit for your subscription.
 * Over use.
 
-<!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_dev_trend.png) -->
+<!-- ![](/docs/continuous-integration/get-started/static/ci_usage_dev_trend.png) -->
 
-<docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_dev_trend.png')} />
+<docimage path={require('/docs/continuous-integration/get-started/static/ci_usage_dev_trend.png')} />
 
 :::info Over use
 
@@ -87,9 +87,9 @@ In this section, you can drill down into Harness Cloud build credit usage data, 
    * All plans receive 2000 free credits each month.
    * If you have a paid plan, you can see information about both free and paid credits.
 
-<!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_build_credits.png) -->
+<!-- ![](/docs/continuous-integration/get-started/static/ci_usage_build_credits.png) -->
 
-<docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_build_credits.png')} />
+<docimage path={require('/docs/continuous-integration/get-started/static/ci_usage_build_credits.png')} />
 
 These statistics update when builds finish running. It doesn't reflect usage of builds in progress.
 

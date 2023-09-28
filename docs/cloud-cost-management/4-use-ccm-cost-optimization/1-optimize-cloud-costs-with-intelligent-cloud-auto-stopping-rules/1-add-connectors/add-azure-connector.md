@@ -32,7 +32,7 @@ Perform the following steps to link your Azure cloud account to Harness.
    
      ![](./static/add-azure-connector-15.png)
 3. Click **Connect to your Azure account** drop-down list and then click **New Connector**.
-4. See [Set up Cloud Cost Management for Azure](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md) for further instructions.
+4. See [Set up Cloud Cost Management for Azure](../../../get-started/onboarding-guide/set-up-cost-visibility-for-azure.md) for further instructions.
 
 ### Next Steps
 

@@ -25,11 +25,11 @@ In this topic:
 
 ### General
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What CD platforms and tools does Harness support?
 
-Harness [supports all of the most common platforms](../getting-started/supported-platforms-and-technologies.md) and deployment use cases.
+Harness [supports all of the most common platforms](../get-started/supported-platforms-and-technologies.md) and deployment use cases.
 
 Here's a summary of Harness CD support for popular platforms and tools.
 
@@ -170,7 +170,7 @@ Yes, select **Re-run Pipeline**.
 
 ### Kubernetes
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Harness Kubernetes deployment?
 
@@ -287,7 +287,7 @@ See [Ignore a manifest file during deployment](../continuous-delivery/deploy-sr
 
 #### Can I pull an image from a private registry?
 
-Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Artifact connector](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
+Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Artifact connector](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml file added in the Service **Manifests** section must contain `dockercfg: <+artifact.imagePullSecret>` . This key will import the credentials from the Docker credentials file in the artifact.
 
@@ -385,7 +385,7 @@ A Harness Kubernetes deployment runs `kubectl apply` for manifest files. There
 
 ### Terraform
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### How does Harness support Terraform?
 
@@ -423,7 +423,7 @@ See [Remove provisioned infrastructure with the Terraform Destroy step](../cont
 
 ### Harness Configure as Code
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### Can I create my deployments using YAML?
 
@@ -431,21 +431,21 @@ Yes. Harness allows you to configure settings such as pipelines, triggers, conn
 
 ![](./static/continuous-delivery-faqs-06.png)
 
-See [Harness YAML quickstart](../platform/8_Pipelines/harness-yaml-quickstart.md).
+See [Harness YAML quickstart](../platform/pipelines/harness-yaml-quickstart.md).
 
 ### Harness Git Experience
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### Can I sync my Harness project with my repo?
 
 Yes. You can sync your Harness project with a Git repo. The Harness project can be synced with one repo and the connectors used in the project can be synced in the same repo or separately with other repos or branches.
 
-See [Harness Git Experience Quickstart](../platform/10_Git-Experience/configure-git-experience-for-harness-entities.md).
+See [Harness Git Experience Quickstart](../platform/git-experience/configure-git-experience-for-harness-entities.md).
 
 ### Community Edition
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### Do you have a free version of Harness CD?
 
@@ -477,7 +477,7 @@ If you would like us to stop processing your data, or if you have any other ques
 
 ### Azure Web Apps
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### Can I deploy Azure Web Apps?
 
@@ -500,7 +500,7 @@ The Rolling strategy doesn't suit Azure Web App deployments, as they use slots f
 
 ### AWS ASG
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is an ASG deployment?
 
@@ -536,7 +536,7 @@ AWS has the following limitations to keep in mind:
 
 ### AWS ECS
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Harness ECS deployment?
 
@@ -635,13 +635,13 @@ During failure scenarios, ECS circuit breaker performs a rollback automatically 
 
 ### AWS Lambda
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Lambda deployment?
 
 In Harness, you specify the location of the function definition, artifact, and AWS account. Harness will deploy the Lambda function and automatically route the traffic from the old version of the Lambda function to the new version on each deployment.
 
-**Looking for Serverless.com Framework Lambda?** Harness also supports Serverless.com Framework Lambda deployments. For more information, go to [AWS Lambda deployments (Serverless.com Framework)](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart).
+**Looking for Serverless.com Framework Lambda?** Harness also supports Serverless.com Framework Lambda deployments. For more information, go to [AWS Lambda deployments (Serverless.com Framework)](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart).
 
 #### What are the limitations?
 
@@ -671,7 +671,7 @@ Harness supports all of the popular Git platforms for storing your function defi
 
 ### Spot Elastigroup
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Spot deployment in Harness?
 
@@ -685,7 +685,7 @@ You can deploy AWS ASGs using Harness and the Spot Elastigroup management platfo
 
 ### Google Cloud Functions
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Google Cloud Function deployment?
 
@@ -713,7 +713,7 @@ Harness supports the following:
 
 ### AWS Lambda (Serverless.com Framework)
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Lambda Serverless.com Framework deployment?
 
@@ -740,7 +740,7 @@ Serverless Lambda deployments are versioned using the timestamp of their deploym
 
 ### Tanzu Application Services (TAS)
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 ### What is a TAS deployment?
 
@@ -756,7 +756,7 @@ Basic, canary, blue green, and rolling.
 
 ### Traditional deployments
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 
 #### What are traditional deployments?
@@ -777,9 +777,9 @@ Blank canvas, basic, rolling, and canary.
 
 Harness provides deployment support for all of the major artifact, approval, provisioner, and cloud platforms.
 
-Harness also supports uncommon, custom platforms using platform agnostic connectors and [custom triggers](../platform/11_Triggers/trigger-deployments-using-custom-triggers.md).
+Harness also supports uncommon, custom platforms using platform agnostic connectors and [custom triggers](../platform/triggers/trigger-deployments-using-custom-triggers.md).
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Harness custom deployment?
 
@@ -791,7 +791,7 @@ Custom deployments use shell scripts to connect to target platforms, obtain targ
 
 ### Harness entities
 
-For an overview of Harness entities, see [Learn Harness' key concepts](../getting-started/learn-harness-key-concepts.md).
+For an overview of Harness entities, see [Learn Harness' key concepts](../get-started/key-concepts.md).
 
 #### What are organizations and projects?
 
@@ -837,7 +837,7 @@ You can also propagate and override a service in subsequent stages by selecting 
 
 Harness supports all of the common repos.
 
-See [Connect to an artifact repo](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
+See [Connect to an artifact repo](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
 #### What's a Harness environment?
 
@@ -859,7 +859,7 @@ See Harness [Connectors how-tos](/docs/category/connectors).
 
 ### Secrets management
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### How does Harness manage secrets?
 
@@ -871,23 +871,23 @@ See [Harness secrets management overview](/docs/platform/secrets/secrets-manage
 
 Harness includes built-in expressions to identify settings.
 
-See [Built-in Harness variables reference](../platform/12_Variables-and-Expressions/harness-variables.md).
+See [Built-in Harness variables reference](../platform/variables-and-expressions/harness-variables.md).
 
 Most settings in Harness pipelines allow you to use fixed values, runtime inputs, and expressions.
 
-See [Fixed values, runtime inputs, and expressions](/docs/platform/20_References/runtime-inputs.md).
+See [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
 #### Can I reference settings using expressions?
 
 Yes. Everything in Harness can be referenced by a fully qualified name (FQN). The FQN is the path to a setting in the YAML definition of your pipeline.
 
-See [Built-in Harness variables reference](../platform/12_Variables-and-Expressions/harness-variables.md).
+See [Built-in Harness variables reference](../platform/variables-and-expressions/harness-variables.md).
 
 #### Can I enter values at runtime?
 
 Yes. You can use runtime Inputs to set placeholders for values that will be provided when you start a pipeline execution.
 
-See [Fixed values, runtime inputs, and expressions](/docs/platform/20_References/runtime-inputs.md).
+See [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
 #### Can I evaluate values at run time?
 
@@ -897,7 +897,7 @@ All of these variables represent settings and values in the pipeline before and 
 
 At run time, Harness will replace the variable with the runtime value.
 
-See [Fixed Values, runtime inputs, and expressions](/docs/platform/20_References/runtime-inputs.md).
+See [Fixed Values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
 #### Error evaluating certain expressions in a Harness pipeline
 

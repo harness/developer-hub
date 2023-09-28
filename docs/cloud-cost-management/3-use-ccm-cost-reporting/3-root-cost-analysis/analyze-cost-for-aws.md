@@ -21,7 +21,7 @@ Harness Cloud Cost Management (CCM) allows you to view your AWS costs at a glanc
 
 ### Before You Begin
 
-* [Set Up Cloud Cost Management for AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md)
+* [Set Up Cloud Cost Management for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
 
 ### Analyze AWS Cost
 

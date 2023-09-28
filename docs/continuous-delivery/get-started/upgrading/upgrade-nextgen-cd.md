@@ -18,7 +18,7 @@ Harness FirstGen is the Harness version that's been around for years, covering a
 
 Harness NextGen is Harness' new version with a redesigned experience and new Continuous Integration, Feature Flags, Security Testing Orchestration, Service Reliability Management, Cloud Cost Management, and Chaos Engineering modules.
 
-For more information, go to [Harness FirstGen vs Harness NextGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md).
+For more information, go to [Harness FirstGen vs Harness NextGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md).
 
 ## What's happening to the FirstGen CD product?
 

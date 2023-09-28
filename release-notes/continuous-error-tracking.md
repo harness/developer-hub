@@ -2,7 +2,7 @@
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
 tags: [NextGen, "cet"]
-date: 2023-08-15T17:20
+date: 2023-09-26T17:20
 sidebar_position: 11
 ---
 ```mdx-code-block
@@ -22,14 +22,12 @@ Review the notes below for details about recent changes to Continuous Error Trac
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version ET-Service 5.25.9 and ET-Collector 5.25.3
+## Latest: Version ET-Agent 5.6.0
 
 
 ### New features and enhancements
 
-- Various dependencies were upgraded to prevent security issues. (CET-1571)
-
-- The default time period on the Events Summary page has been adjusted to one hour. (CET-1576)
+This release does not include new features and enhancements.
 
 
 ### Early access features
@@ -38,30 +36,73 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-- When a monitored service was created with spaces or special characters in the name, the monitored service was not appearing in the list. (CET-1551)
+- The CET Agent was causing the app to not close properly in specific scenarios when events needed to be collected during shutdown. (CET-344)
   
-  This issue has been resolved. Now, you can create monitored services with names containing spaces, hyphens (-), or underscores (_). However, if you attempt to use any other special characters, an error message will appear.
+  This issue has been resolved. Now, the CET Agent no longer interferes with the proper app shutdown process.
 
-- The Events Summary page was timing out when fetching data, especially for events marked as resolved. (CET-1569)
+- The CET Agent was experiencing degraded performance during application startup when used in conjunction with APM agents such as AppDynamics, New Relic, Datadog, and so on. (CET-1675)
   
-  This issue has been resolved. The Events Summary page now loads significantly faster.
+  This issue has been resolved. The CET Agent's performance during application start-up is now optimized and no longer degrades when used with APM agents.
 
-- Users were not receiving notifications when relevant events were generated. (CET-1585)
-
-  This issue has been resolved. Now, notifications are being sent when relevant events occur.
-
-- The ARC screen was unable to fetch source attach data. (CET-1685)
+- Applications with CET Agents installed experienced start-up delays. (CET-1738)
   
-  This issue has been resolved. You can now view source attach data directly on the ARC screen.
-
-- The Events Summary page was not displaying the event status for new, resurfaced, and critical events. (CET-1686)
-  
-  This issue has been resolved. On the Events Summary page, you will now see the appropriate status indicators for new, resurfaced, and critical events.
+  This issue has been resolved by updating the predefined filters. Now, start-up delays have been substantially reduced.
 
 
 ### Hotfixes
 
-#### Version ET-Service 5.25.10
+This release does not include hotfixes.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+
+#### Version ET-Service 5.26.1
+
+
+##### New features and enhancements
+
+- On the ARC screen, variables now display their values on hover. Additionally, when you select a variable, it is highlighted in the variables panel for easy identification. (CET-970)
+
+- CET now provides an audit trail feature for Agent Tokens and Critical Event definitions. You can view the audit trail for create, update, and delete operations, enhancing visibility and security in token management. (CET-1364)
+
+
+##### Early access features
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- On the ARC screen, some variables were not displaying values. (CET-1122)
+
+  This issue has been resolved. Now, values are displayed for all variables on the ARC screen.
+
+- When configuring notifications for code errors and selecting the **Any** option, the **Timeout Error** type was incorrectly listed as one of the choices in the dropdown menu. (CET-1514)
+
+  This issue has been resolved. Now, when configuring notifications for code errors and selecting the **Any** option, the **Timeout Error** type is not listed in the dropdown menu.
+
+- Clear filters button on the Event Summary screen was enabled, even though it was supposed to be disabled when nothing is filtered yet.(CET-1613)
+  
+  This issue has been resolved. Now, the Clear filters button on the Event Summary screen is correctly disabled when no filters are applied.
+
+- Role-Based Access Control (RBAC) was missing at both the Project and Organization levels. (CET-1701)
+  
+  This issue has been resolved. Now, RBAC has been implemented at both the Project and Organization levels.
+
+- Previously, child events within a group were not displayed according to the filter criteria, leading to inconsistent filtering. (CET-1744)
+  
+  This issue has been resolved. Now, child events within a group are correctly displayed according to the selected filter criteria, ensuring accurate event list filtering.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### August 30, 2023, Hotfix version ET-Service 5.25.10
 
 - The search functionality in the events list was not working. (CET-1618)
   
@@ -72,10 +113,39 @@ This release does not include any early access features.
   This issue has been resolved. Now, the Events List displays all events.
 
 
-## Previous releases
+#### August 21, 2023, versions ET-Service 5.25.9 and ET-Collector 5.25.3
 
-<details>
-<summary>2023 releases</summary>
+##### New features and enhancements
+
+- Various dependencies were upgraded to prevent security issues. (CET-1571)
+
+- The default time period on the Events Summary page has been adjusted to one hour. (CET-1576)
+
+##### Early access features
+This release does not include any early access features.
+
+##### Fixed issues
+
+- When a monitored service was created with spaces or special characters in the name, the monitored service was not appearing in the list. (CET-1551)
+  
+  This issue has been resolved. Now, you can create monitored services with names containing spaces, hyphens (-), or underscores (_). However, if you attempt to use any other special characters, an error message will appear.
+  
+- The Events Summary page was timing out when fetching data, especially for events marked as resolved. (CET-1569)
+  
+  This issue has been resolved. The Events Summary page now loads significantly faster.
+  
+- Users were not receiving notifications when relevant events were generated. (CET-1585)
+  
+  This issue has been resolved. Now, notifications are being sent when relevant events occur.
+  
+- The ARC screen was unable to fetch source attach data. (CET-1685)
+  
+  This issue has been resolved. You can now view source attach data directly on the ARC screen.
+  
+- The Events Summary page was not displaying the event status for new, resurfaced, and critical events. (CET-1686)
+  
+  This issue has been resolved. On the Events Summary page, you will now see the appropriate status indicators for new, resurfaced, and critical events.
+
 
 #### July 21, 2023, Hotfix version ET-Service 5.24.7
 

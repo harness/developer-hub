@@ -31,7 +31,7 @@ You'll learn how to:
 ### Before you begin
 
 * **What you don't need:** this quickstart is only intended to show you how Pipeline governance works and so we use a simple Pipeline that only contains an Approval stage. You do not need a Kubernetes cluster or other host as a CD deployment target or CI build farm. You do not need a running Harness Delegate.
-* Review [Harness Key Concepts](/docs/getting-started/learn-harness-key-concepts) to establish a general understanding of Harness.
+* Review [Harness Key Concepts](/docs/get-started/key-concepts) to establish a general understanding of Harness.
 * The [Harness Policy As Code overview](/docs/platform/governance/Policy-as-code/harness-governance-overview) provides a concise overview of Harness Policy As Code.
 * **New to OPA Policy Authoring?** OPA policies are written in OPA's Rego policy language. We'll provide the policy you need for this quickstart, but it's also helpful to have some familiarity with Rego before writing and reading policies.
 	+ **Highly recommend:** Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).

@@ -91,8 +91,15 @@ Danger text.
 :::
 
 ## Tabs
-Tabs can also now have direct query strings in this example.
+Tabs can also now have direct [query strings](https://docusaurus.io/docs/markdown-features/tabs?current-os=ios#query-string) in this example as of DS 2.4.3.
 
+e.g deeper linking:
+* https://developer.harness.io/tutorials/hdh/hdh-docusaurus-sandbox/?tab-number=1#tabs
+* https://developer.harness.io/tutorials/hdh/hdh-docusaurus-sandbox/?tab-number=2#tabs
+* https://developer.harness.io//tutorials/cd-pipelines/kubernetes/manifest?pipeline=cd-pipeline&cli-os=windows#getting-started-with-harness-cd
+
+Can see what the tab value ='s then the anchor tab there in combination and for nested tabs can continue. 
+`?pipeline=cd-pipeline&cli-os=windows#getting-started-with-harness-cd`
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -223,3 +230,4 @@ clicked and hoovered. Though pills can contain links also.
 <DocsTag  text="Default without icon" link="/docs/security-testing-orchestration" />
 <DocsTag  backgroundColor= "#ff8ac1" text="With out icon"  textColor="#ca136c"  />
 <DocsTag icon = "fa-solid fa-hand-dots"  backgroundColor= "#cbe2f9"   textColor="#0b5cad" iconColor="#6938c0" text="Community" link="/docs/security-testing-orchestration"  />
+

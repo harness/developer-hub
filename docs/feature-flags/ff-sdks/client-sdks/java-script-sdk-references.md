@@ -25,14 +25,14 @@ For getting started quickly, you can use our [sample code from the JavaScript SD
 
 Make sure you read and understand:
 
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](../../get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.14.0.**
+The current version of this SDK is **1.18.0.**
 
 ## Requirements
 

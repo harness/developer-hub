@@ -92,7 +92,7 @@ Consider the following scenario where the Perspective rule has two cost categori
 
 ## Use cost categories in dashboards
 
-You can visualize cost categories in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](../../../platform/18_Dashboards/create-dashboards.md).
+You can visualize cost categories in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](../../../platform/dashboards/create-dashboards.md).
 
 **Cost Categories** is available in the **Unified** explore on the **Dashboards** page. 
 

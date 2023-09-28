@@ -219,12 +219,102 @@ spec:
               value: "80"     
 ```
 
-### Advanced Fault Tunables
+### Destination ports
 
-- `PROXY_PORT`: Port where the proxy listens for requests and responses
-- `SERVICE_DIRECTION`: Direction of the flow of control, ingress or egress. It supports `ingress`, `egress` values.
-- `DATA_DIRECTION`: API payload type, request or response. It supports `request`, `response`, and `both` values.
-- `NETWORK_INTERFACE`: Network interface used for the proxy
+A comma-separated list of the destination service or host ports for which `egress` traffic should be affected as a result of chaos testing on the target application. Tune it by using the `DESTINATION_PORTS` environment variable.
+
+:::note
+
+It is applicable only for the egress `SERVICE_DIRECTION`.
+
+:::
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]: # "./static/manifests/pod-api-modify-header/destination-ports.yaml yaml"
+
+```yaml
+## provide destination ports
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-api-modify-header
+      spec:
+        components:
+          env:
+            # provide destination ports
+            - name: DESTINATION_PORTS
+              value: '80,443'
+            # provide the api path filter
+            - name: PATH_FILTER
+              value: '/status'
+            - name: HEADERS_MAP
+              value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"        
+```
+
+### HTTPS enabled
+
+This item is employed to facilitate HTTPS for both incoming and outgoing traffic, and its usage can vary depending on whether it's applied to `ingress` or `egress` scenarios. Tune it by using the `HTTPS_ENABLED` environment variable.
+
+* When applied to `ingress` traffic, it should be configured as `true` if the HTTPS URL of the target application includes a port, following the format `https://<hostname>:port`. However, for HTTPS URLs in the form of `https://<hostname>` without a port, this setting is not required.
+
+* For egress traffic, setting it to `true` is necessary to enable HTTPS support for external services, which will then establish TLS certificates for the proxy within the target application.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]: # "./static/manifests/pod-api-modify-header/https-enabled.yaml yaml"
+
+```yaml
+## enable https support
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-api-modify-header
+      spec:
+        components:
+          env:
+            # enable https support
+            - name: HTTPS_ENABLED
+              value: 'true'
+            # provide the api path filter
+            - name: PATH_FILTER
+              value: '/status'
+            - name: HEADERS_MAP
+              value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"        
+```
+
+### Advanced fault tunables
+
+- `PROXY_PORT`: Port where the proxy listens for requests and responses.
+- `SERVICE_DIRECTION`: Direction of the flow of control, either ingress or egress. It supports `ingress`, `egress` values.
+- `DATA_DIRECTION`: API payload type, request, or response. It supports `request`, `response`, and `both` values.
+- `NETWORK_INTERFACE`: Network interface used for the proxy.
 
 The following YAML snippet illustrates the use of this environment variable:
 

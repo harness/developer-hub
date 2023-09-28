@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the Feature Flag `PRUNE_KUBERNETES_RESOURCES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources.md).Changes to the manifests used in Harness Kubernetes deployments can result in orphaned resources you are unaware of.
+Currently, this feature is behind the Feature Flag `PRUNE_KUBERNETES_RESOURCES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources.md).Changes to the manifests used in Harness Kubernetes deployments can result in orphaned resources you are unaware of.
 
 For example, one deployment might deploy resources A and B but the next deployment deploys A and C. C is the new resource and B was removed from the manifest. Without pruning, resource B will remain in the cluster.
 

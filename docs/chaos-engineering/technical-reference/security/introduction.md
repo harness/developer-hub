@@ -78,7 +78,7 @@ Harness Chaos Engineering leverages secrets for administrative or management pur
 
 ### Secrets to access chaos artifact (Git) repositories  
 
-CE allows you to add one or more [chaos hubs](../../get-started/terminologies/) to enable users to select stored chaos artifacts such as fault and experiment templates. Setting up a chaos hub involves connecting to the respective canonical source—the Git repository—by using Personal Access Tokens (PAT) or SSH keys. The module also supports committing artifacts into the repository, so you must ensure that the keys have the right scope and permissions in the Git organization.
+CE allows you to add one or more [chaos hubs](../../get-started/key-concepts/) to enable users to select stored chaos artifacts such as fault and experiment templates. Setting up a chaos hub involves connecting to the respective canonical source—the Git repository—by using Personal Access Tokens (PAT) or SSH keys. The module also supports committing artifacts into the repository, so you must ensure that the keys have the right scope and permissions in the Git organization.
 
 The chaos module leverages the native Git Connectors provided by the Harness platform to achieve this connectivity, which in turn leverages the Harness Secret Manager to store the PAT or SSH keys 
 

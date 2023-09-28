@@ -25,7 +25,7 @@ Perform the following steps to add a GCP connector for AutoStopping Rules:
      ![](./static/create-a-gcp-connector-for-auto-stopping-rules-02.png)
 2. In **AutoStopping Rules**, select **GCP**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping Rules.
 3. Click **Connect to your GCP account** drop-down list and then click **New Connector**.
-4. See [Setting up a connector for your GCP account](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md) to create the CCM connector.
+4. See [Setting up a connector for your GCP account](../../../get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md) to create the CCM connector.
 5. You have to add the following permissions in the **Grant Permissions** step to be able to use the AutoStopping feature:
 	1. To add AutoStopping permissions, navigate to the **IAM & Admin** page on the GCP console.
 	2. Click **IAM** on the right pane.

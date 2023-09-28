@@ -21,9 +21,9 @@ If you are already familiar with setting up Harness CV and the verification step
 
 ## Before You Begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
+* [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
 * [Learn about Kubernetes deployments](../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
-* [Refer to the supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md#continuous-verification)
+* [Refer to the supported platforms and technologies](../../get-started/supported-platforms-and-technologies.md#continuous-verification)
 
 
 ## Deployment strategies for CV
@@ -56,7 +56,7 @@ Harness uses the data points within this duration for analysis. For instance, if
 
 ### Artifact tag
 
-Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Artifact](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact).
+Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Artifact](/docs/platform/variables-and-expressions/harness-variables/#artifact).
 
 
 ### Fail on no analysis. 

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 ## General
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../getting-started/supported-platforms-and-technologies).
+For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies).
 
 #### How to add and manage a custom chaos hub?
 
@@ -104,7 +104,7 @@ The information is purged on a policy basis, with defaults set at "x" days.
 
 #### How can I track the actions of a user on the Harness platform? 
 
-Harness provides an audit log to the account admin where user actions on the chaos resources are logged with timestamps. To learn more, go to [audit trail](/docs/platform/governance/Audit-Trail/audit-trail). 
+Harness provides an audit log to the account admin where user actions on the chaos resources are logged with timestamps. To learn more, go to [audit trail](/docs/platform/governance/audit-trail/audit-trail.md). 
 
 #### Can Harness perform security chaos tests in the users’ environments?
 

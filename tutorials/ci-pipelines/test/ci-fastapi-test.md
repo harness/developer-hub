@@ -42,7 +42,7 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 2. In Harness, [create a project](/docs/platform/organizations-and-projects/create-an-organization#create-a-project) or select an existing project, and then go to the CI module.
 3. Select **Connectors** under **Project Setup**.
 4. Select **New Connector**, and select **GitHub** under **Code Repositories**.
-5. Configure the [GitHub connector settings](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference) so that the connector can access your fork of the sample repo.
+5. Configure the [GitHub connector settings](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) so that the connector can access your fork of the sample repo.
 
 The sample repo has a simple FastAPI project and unit tests. Notable files include:
 

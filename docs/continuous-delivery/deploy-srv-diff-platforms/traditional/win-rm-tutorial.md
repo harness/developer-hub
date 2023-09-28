@@ -26,7 +26,7 @@ Supported security protocols for WinRM include Kerberos and Windows New Technolo
 
 ## Before You Begin
 
-* Review Harness Key Concepts [Harness Key Concepts](/docs/getting-started/learn-harness-key-concepts) to establish a general understanding of Harness.
+* Review Harness Key Concepts [Harness Key Concepts](/docs/get-started/key-concepts) to establish a general understanding of Harness.
 * Make sure that you have a Delegate available in your environment.
 	+ You can install a Kubernetes or Docker Delegate.
 	+ Ideally, you should install the Delegate in the same subnet as the target host(s)

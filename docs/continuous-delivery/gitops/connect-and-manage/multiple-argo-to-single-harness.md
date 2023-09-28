@@ -1,7 +1,7 @@
 ---
 title: Map Argo projects to Harness GitOps projects
 description: This topic describes how to manage multiple Argo CD projects within one Harness Project.
-sidebar_position: 7
+sidebar_position: 1
 helpdocs_topic_id: gzw782fcqz
 helpdocs_category_id: 013h04sxex
 helpdocs_is_private: false
@@ -161,6 +161,15 @@ The process for generating the name is: take the repo name, remove any dashes, a
 For example, the Argo CD repo `https://github.com/argoproj/gitops-engine.git` is named `gitopsengine_kmjzyrbs` in Harness
 
 ![](./static/multiple-argo-to-single-harness-76.png)
+
+### Make sure that your Argo CD entities are visibile in the Harness UI
+
+In some Argo CD versions, you are not required to specify a project for your entities. However, for the entities to be visible in the Harness UI, you must associate the entities with a project. 
+
+If you are unable to edit an entity from the Argo CD UI, you can edit that entity in the cluster so that they have a project and other required values. The entities are stored in different formats in the cluster. For example, clusters, repositories, and repository credential templates are stored in `Secret`, and GnuPG keys and repository certificates are stored in `ConfigMap` in the namespace in which Argo CD is installed. 
+
+Edit the respective secret of the entity and add the fields `project` and `name` in the `data` or `stringData` block. For examples, go to [Manage an Argo CD configuration by using Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/manage-argo-configs.md#git-configuration-files).
+
 
 ## Creating GitOps Clusters with multiple projects
 

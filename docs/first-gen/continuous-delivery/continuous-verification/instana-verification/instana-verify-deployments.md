@@ -37,7 +37,7 @@ To add an Instana verification step to your Workflow:
     
     * **Instana Server** -- Select the Instana [Verification Provider](instana-connection-setup.md) to use.You can also enter variable expressions, such as: `${serviceVariable.instana-QA}`. |
     
-    * **Infrastructure Metrics** -- In the **Infrastructure Metrics** pane, you can first select one or  more **Docker Metrics** to monitor from Instana:Next, in the **Query** field, you must enter a query corresponding to a [Dynamic Focus](http://docs.instana.io/dynamic_focus/) query in Instana. For example, you might enter: `entity.kubernetes.pod.name:${host}`For background information, see Instana's [Container Monitoring](https://docs.instana.io/infrastructure_monitoring/containers/) documentation. |
+    * **Infrastructure Metrics** -- In the **Infrastructure Metrics** pane, you can first select one or  more **Docker Metrics** to monitor from Instana:Next, in the **Query** field, you must enter a query corresponding to a [Dynamic Focus](https://www.ibm.com/docs/en/instana-observability/current?topic=instana-filtering-dynamic-focus) query in Instana. For example, you might enter: `entity.kubernetes.pod.name:${host}`For background information, see Instana's [Container Monitoring](https://www.ibm.com/docs/en/instana-observability/current?topic=infrastructure-monitoring-containers) documentation. |
     
     * **Application Metrics** --In the **Application Metrics** pane, you specify API endpoint metrics to monitor from Instana.
     

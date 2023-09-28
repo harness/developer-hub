@@ -1,7 +1,8 @@
 ---
-title: View issues in target baselines over time
+title: View issues in target baselines over time in the Security Testing Overview
 description: The STO Overview page enables you to see all detected issues in your target baselines.
 sidebar_position: 10
+sidebar_label: View issues in target baselines
 helpdocs_topic_id: 2ap1uol6ti
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false
@@ -13,7 +14,7 @@ The STO Overview enables you to see all detected issues in your `main` branches,
 <details><summary>Why you should define a baseline for every target</summary>
 
 ```mdx-code-block
-import StoWhyDefineBaselines from '/docs/security-testing-orchestration/onboard-sto/shared/_why-define-baselines.md';
+import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/_why-define-baselines.md';
 ```
 
 <StoWhyDefineBaselines />

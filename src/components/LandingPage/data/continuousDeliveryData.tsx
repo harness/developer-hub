@@ -100,7 +100,9 @@ export const AdvList: CardItem[] = [
     title: "Trigger CD Pipeline on New Artifact Version",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: <>Enable auto pipeline triggers on every release of Artifact.</>,
+    description: (
+      <>Enable auto pipeline triggers on every release of Artifact.</>
+    ),
     type: [docType.Documentation],
     time: "20min",
     link: "/tutorials/cd-pipelines/trigger",
@@ -109,7 +111,12 @@ export const AdvList: CardItem[] = [
     title: "Create Pipeline Templates",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: <>Create reusable pipeline templates for CD pipelines and link them to your pipelines </>,
+    description: (
+      <>
+        Create reusable pipeline templates for CD pipelines and link them to
+        your pipelines{" "}
+      </>
+    ),
     type: [docType.Documentation],
     time: "20min",
     link: "/tutorials/cd-pipelines/templates",
@@ -153,35 +160,35 @@ export const AdvList: CardItem[] = [
 
 export const CDList: CardSections = [
   {
-    name: "Kubernetes",
+    name: "Automate Kubernetes deployments with a CD Pipeline or GitOps Workflow",
     list: K8SList,
     // description: "optional",
     // module: MODULES.cd, // optional
     // icon: "path/to/img/optional",
   },
   {
-    name: "Serverless",
+    name: "Automate Serverless deployments with a CD Pipeline",
     list: ServerlessList,
     // description: "optional",
     // module: MODULES.cd, // optional
     // icon: "path/to/img/optional",
   },
   {
-    name: "VM",
+    name: "Automate Linux or Windows VM deployments with a CD Pipeline",
     list: VMList,
     // description: "optional",
     // module: MODULES.cd, // optional
     // icon: "path/to/img/optional",
   },
   {
-    name: "ECS",
+    name: "Automate Amazon ECS deployments with a CD Pipeline",
     list: ECSList,
     // description: "optional",
     // module: MODULES.cd, // optional
     // icon: "path/to/img/optional",
   },
   {
-    name: "Adv",
+    name: "Learn Advanced CD & GitOps",
     list: AdvList,
     // description: "optional",
     // module: MODULES.cd, // optional

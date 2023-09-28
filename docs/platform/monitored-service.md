@@ -135,7 +135,7 @@ To view the monitored service list from the CET module:
    <docimage path={require('./static/view-monitored-service-cet-level.png')} />
 
 
-You can [create a monitored service](../continuous-error-tracking/getting-started/cet-setup.md) directly from the CET module.
+You can [create a monitored service](../continuous-error-tracking/get-started/onboarding-guide.md) directly from the CET module.
 
 
 

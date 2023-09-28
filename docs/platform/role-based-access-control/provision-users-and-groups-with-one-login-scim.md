@@ -25,7 +25,7 @@ With the OneLogin SCIM integration, don't change provisioned users' email addres
 You need an understanding of:
 
 * System for Cross-domain Identity Management (SCIM).
-* [Harness' key concepts](../../getting-started/learn-harness-key-concepts.md).
+* [Harness' key concepts](../../get-started/key-concepts.md).
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 You must be an Administrator in your OneLogin account, and you must be an **Account Admin** in Harness.

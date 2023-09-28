@@ -9,7 +9,6 @@ description: This topic talks about Harness cloud asset governance.
 Currently, this feature is behind the feature flag **CCM_ENABLE_CLOUD_ASSET_GOVERNANCE_UI**. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-
 The Harness cloud asset governance platform enables you to achieve a highly managed cloud environment using a Governance-as-Code approach that includes real-time enforcement and auto-remediation capabilities. The platform operates through a set of rules, which are in a YAML configuration file, and focuses on cost optimization. Harness Cloud Asset Governance provides tools to optimize your cloud spend and avoid unnecessary costs.
 
 The platform is built on top of [Cloud Custodian](https://cloudcustodian.io/), an open-source project that is incubated by the Cloud Native Computing Foundation (CNCF).
@@ -20,7 +19,7 @@ At a high level, Cloud Custodian integrates seamlessly with services, features, 
 
 
 :::info important
-Harness supports only AWS cloud governance in its initial release.
+Currently, Harness supports AWS and Azure cloud governance.
 :::
 
 ## Anatomy of a cloud asset governance rule
@@ -200,7 +199,7 @@ Enable the following permissions in AWS to execute cloud governance rules:
 :::info
 * This is not an exhaustive list; you may require additional permissions to support custom rules.
 * A yellow underline in a custom policy indicates that you need permission to support the underlined filters and/or actions.
-To learn how to add missing permissions in AWS, go to [Add permissions](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#add-permissions).
+To learn how to add missing permissions in AWS, go to [Add permissions](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#add-permissions).
 :::
 
 

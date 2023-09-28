@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services.md).This topic describes how to override specific sets of variables for Kubernetes at the Infrastructure Definition level. You can override the `values.yaml` in your Service at the Infrastructure level and different Services can have different overrides in the same namespace.
+This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services.md).This topic describes how to override specific sets of variables for Kubernetes at the Infrastructure Definition level. You can override the `values.yaml` in your Service at the Infrastructure level and different Services can have different overrides in the same namespace.
 
 ### Before You Begin
 

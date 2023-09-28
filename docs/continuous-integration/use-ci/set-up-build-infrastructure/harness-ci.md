@@ -38,9 +38,9 @@ Here are some examples of Harness CI images and the purpose of each image. Build
 
 ## I don't want to pull images from a public repo
 
-If you don't want the Harness Delegate to pull images from a public repo for security reasons, you can add a special **Harness Container Image Registry** connector to your Harness account. With this connector, the Delegate pulls these images from the **Harness Container Image Registry** only. For instructions on configuring this connector, go to [Connect to Harness Container Image Registry using Docker connector](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector).
+If you don't want the Harness Delegate to pull images from a public repo for security reasons, you can add a special **Harness Container Image Registry** connector to your Harness account. With this connector, the Delegate pulls these images from the **Harness Container Image Registry** only. For instructions on configuring this connector, go to [Connect to Harness Container Image Registry using Docker connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
 
-By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.docker.com/u/harness) to pull the images. If you experience rate limiting issues when pulling images, provide login information in the [Harness Container Image Registry Docker connector's authentication settings](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials).
+By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.docker.com/u/harness) to pull the images. If you experience rate limiting issues when pulling images, provide login information in the [Harness Container Image Registry Docker connector's authentication settings](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials).
 
 ## CI image updates
 
@@ -63,16 +63,13 @@ Drone images are updated as needed. All Drone image updates are backward-compati
 
 You can use the Harness CI `execution-config` API to update the images used in your infrastructure.
 
-:::info Authentication
-
-You can use either `X-API-KEY: $API_KEY` or `Authorization: Bearer $token` for authentication. For more information, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
-
-:::
+API key authentication is required. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io/#section/Introduction/Authentication).
 
 1. Send a `get-default-config` request to get a list of the latest Harness CI build images and tags. You can use the `infra` parameter to get `k8` images or `VM` images.
 
    ```
-   curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-default-config?accountIdentifier=$ACCOUNT_ID&infra=K8" --header 'X-API-KEY: $API_KEY'
+   curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-default-config?infra=K8" \
+   --header 'X-API-KEY: $API_KEY'
    ```
 
    The response payload shows the latest supported images and their tags, for example:
@@ -102,7 +99,8 @@ You can use either `X-API-KEY: $API_KEY` or `Authorization: Bearer $token` for a
 2. Send a `get-customer-config` request to get the build images that your CI pipelines currently use. When `overridesOnly` is `true`, which is the default value, this endpoint returns the non-default images that your pipeline uses.
 
    ```
-   curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-customer-config?accountIdentifier=$ACCOUNT_ID&infra=K8&overridesOnly=true" --header 'X-API-KEY: $API_KEY'
+   curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-customer-config?infra=K8&overridesOnly=true" \
+   --header 'X-API-KEY: $API_KEY'
    ```
 
    If the response contains `null`, your pipeline is using all default images, for example:
@@ -119,7 +117,9 @@ You can use either `X-API-KEY: $API_KEY` or `Authorization: Bearer $token` for a
 3. Send an `update-config` (POST) request with a list of the images you want to update and the new tags to apply.
 
    ```
-   curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/update-config?accountIdentifier=$ACCOUNT_ID&infra=K8" --header 'X-API-KEY: $API_KEY' --header 'Content-Type: application/json'
+   curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/update-config?infra=K8" \
+   --header 'X-API-KEY: $API_KEY' \
+   --header 'Content-Type: application/json' \
    --data-raw '[
        {
            "field": "gitCloneTag",
@@ -135,7 +135,9 @@ You can use either `X-API-KEY: $API_KEY` or `Authorization: Bearer $token` for a
 4. To reset one or more images to their defaults, send a `reset-config` (POST) request with a list of the images to reset.
 
    ```
-   curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/reset-config?accountIdentifier=$ACCOUNT_ID&infra=K8" --header 'X-API-KEY: $API_KEY' --header 'Content-Type: application/json'
+   curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/reset-config?infra=K8" \
+   --header 'X-API-KEY: $API_KEY' \
+   --header 'Content-Type: application/json' \
    --data-raw '[
        {
            "field": "gitCloneTag"

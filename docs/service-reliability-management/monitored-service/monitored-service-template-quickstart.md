@@ -1,7 +1,7 @@
 ---
 title: Monitored service template
 description: Onboard with monitored service template
-# sidebar_position: 4
+# sidebar_position: 5
 ---
 
 Monitored Service template is a predefined set of monitored service configuration settings. Templates remove the hassle of setting up the configuration every time you create a new monitored service. Templates improve productivity and bring in standardization.
@@ -19,7 +19,7 @@ Fixed Values are the values that you enter while configuring the template. These
 
 Runtime inputs are values that you are prompted to enter while using the template. When you set a field as Runtime input, it becomes a placeholder for values that you need to provide while using the template to create a monitored health service.  
 
-For more information see [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md).
+For more information see [Fixed Values, Runtime Inputs, and Expressions](../../platform/variables-and-expressions/runtime-inputs.md).
 
 ### Create a Monitored Service Template
 

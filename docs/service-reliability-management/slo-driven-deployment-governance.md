@@ -247,7 +247,7 @@ The Policy Set is evaluated and the Pipeline execution fails.
 
 When the Policy Set is evaluated, the Pipeline fails as SLO wasn't configured for the Monitored Service.
 
-Now, [create an SLO](/docs/service-reliability-management/getting-started/create-first-slo) for the Monitored Service.
+Now, [create an SLO](/docs/service-reliability-management/get-started/create-first-slo) for the Monitored Service.
 
 Once you have set an SLO, click **Run**, and then click **Run Pipeline**.
 

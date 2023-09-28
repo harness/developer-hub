@@ -37,7 +37,7 @@ The following Harness role is required:
 
 - **Environments**: `View/Create`, `Edit`, `Access`, `Delete`.
 
-For more information on roles, go to [Add and manage roles](https://developer.harness.io/docs/platform/Role-Based-Access-Control/add-manage-roles).
+For more information on roles, go to [Add and manage roles](/docs/platform/Role-Based-Access-Control/add-manage-roles).
 
 ## Pre-existing and dynamically provisioned infrastructure
 
@@ -78,7 +78,7 @@ Each of the connection methods are described below.
 
 This method avoids vendor-specific settings. A direct connection is a vendor-agnostic connection to the Kubernetes cluster.
 
-A direct connection uses a [Harness Kubernetes cluster connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/) to connect a cluster on any platform.
+A direct connection uses a [Harness Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/) to connect a cluster on any platform.
 
 :::note
 

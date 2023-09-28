@@ -8,7 +8,14 @@ This topic provides answers to common questions about upgrading from Harness Con
 
 For steps on upgrading, go to [Upgrade to CD NextGen](./upgrade-nextgen-cd.md).
 
-For information on the differences between Harness FirstGen and NextGen, go to [Harness FirstGen vs Harness NextGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md).
+For information on the differences between Harness FirstGen and NextGen, go to [Harness FirstGen vs Harness NextGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md).
+
+## Harness NextGen overview video
+
+<!-- Video:
+https://www.loom.com/share/ea58b72d294b44c38c89520e331a7c93?sid=27eac669-e34a-4c12-8d09-de62d0842bb6-->
+<docvideo src="https://www.loom.com/share/ea58b72d294b44c38c89520e331a7c93?sid=27eac669-e34a-4c12-8d09-de62d0842bb6" />
+
 
 ## What is Harness Continuous Delivery NextGen?
 
@@ -81,7 +88,7 @@ Harness Policy as Code does the following for you:
 
 ### Delegate
 
-Harness NextGen supports an improved delegate. It uses a new type of [image](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-image-types) and supports the following features:
+Harness NextGen supports an improved delegate. It uses a new type of [image](/docs/platform/Delegates/delegate-concepts/delegate-image-types) and supports the following features:
 
 - Deploy delegate images with or without third-party client tools. We recommend you use the delegate minimal image for added security.
 - By default,  the delegate is automatically updated. There is an option to disable automatic updates.
@@ -110,15 +117,15 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
     
     You can run NextGen delegates alongside your FirstGen delegates as you are upgrading. There will be no impact to your existing workloads while running both sets of delegates.
   
-  - For details on NextGen delegates, go to [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
+  - For details on NextGen delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 - **Triggers**. Harness won’t upgrade FirstGen triggers. You will need to reconfigure triggers for any upgraded pipelines.
   
-  - For details on NextGen triggers, go to [Triggers](https://developer.harness.io/docs/category/triggers).
+  - For details on NextGen triggers, go to [Triggers](/docs/category/triggers).
 - **Infrastructure provisioners**. Harness CD NextGen no longer provides the construct of infrastructure provisioners as it did in FirstGen.
     
     Infrastructure provisioner capabilities are condensed into execution steps in NextGen. Harness can orchestrate infrastructure by using Terraform, Terragrunt, CloudFormation, shell script provisioning, and Azure ARM and Blueprint.
   
-  - For details on NextGen infrastructure provisioning, go to [Terraform](https://developer.harness.io/docs/category/terraform) and [CloudFormation](https://developer.harness.io/docs/category/cloudformation).
+  - For details on NextGen infrastructure provisioning, go to [Terraform](/docs/category/terraform) and [CloudFormation](/docs/category/cloudformation).
 - **AWS ECS**. FirstGen ECS deployments can't migrate to NextGen ECS pipelines because the NextGen ECS integration is redesigned.
     
     NextGen now supports rolling, canary, and load balancer–based blue-green deployments. We have deprecated the FirstGen Service Setup and Wait for Steady State steps. Harness NextGen can still use your existing service and infrastructure configurations.
@@ -128,15 +135,15 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
     
     In FirstGen, variables use the `${...}` format. In NextGen, variables use the `<+...>` format. You must upgrade your references to the new format.
  
-  - For details on NextGen variables, go to [Variables and expressions](https://developer.harness.io/docs/category/variables-and-expressions).
+  - For details on NextGen variables, go to [Variables and expressions](/docs/category/variables-and-expressions).
 - **Tag management**. Harness CD NextGen does not use tag management in the same way as Harness FirstGen.
     
     NextGen does support tags, but there is not a centralized management feature for them as in FirstGen.
 
-  - For details on NextGen tags, go to [Tags reference](https://developer.harness.io/docs/platform/References/tags-reference).
+  - For details on NextGen tags, go to [Tags reference](/docs/platform/References/tags-reference).
 - **SSO providers**. NextGen supports the same SSO providers as FirstGen, but you must reconfigure the SSO provider setup in NextGen.
 
-  - For details on NextGen SSO providers, go to [Authentication overview](https://developer.harness.io/docs/platform/Authentication/authentication-overview).
+  - For details on NextGen SSO providers, go to [Authentication overview](/docs/platform/Authentication/authentication-overview).
 - **Deployment history for CD dashboards**. Harness NextGen does not retain the deployment data from FirstGen. Harness will recalculate the deployment stats and metrics by using NextGen CD deployments.
 
   - For details on NextGen dashboards, go to [Monitor deployments and services in CD dashboards](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments).
@@ -144,12 +151,12 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
     
     GraphQL APIs are not used in NextGen. They are replaced with REST APIs. The API endpoints are different and take different arguments. You must rewrite API-based automation to reintegrate with Harness NextGen.
 
-  - For details on NextGen APIs, go to [APIs](https://developer.harness.io/docs/category/apis).
+  - For details on NextGen APIs, go to [APIs](/docs/category/api).
 - **Artifact collection**. Harness will not migrate the artifact history of a FirstGen artifact source to NextGen.
     
     Harness NextGen does not perform artifact polling to collect the list of artifacts and maintain a history for future selection. NextGen fetches the list of tags at pipeline runtime. 
 
-  - For details on NextGen artifact collection, review the artifact sources covered in [Harness Kubernetes services](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services).
+  - For details on NextGen artifact collection, review the artifact sources covered in [Harness Kubernetes services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
 ## What are my CD NextGen upgrade options?
 

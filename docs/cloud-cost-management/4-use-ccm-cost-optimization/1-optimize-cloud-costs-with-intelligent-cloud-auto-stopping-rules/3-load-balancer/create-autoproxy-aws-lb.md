@@ -66,6 +66,7 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXX
 14.   **API Key**: Enter a valid API key generated in Harness New Generation. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/automation/api/api-quickstart) for more information.
 15.    **Select security groups**: Select the **Security Group** of your instance.
 16.    **Key pair**: Select the SSH key pair to connect to your VM.
+    1. This key can be used to access the machine over SSH with the *ubuntu* user
 17.    **TLS Private Key Secret Version**: Enter the **Secret ARN** in this field.
 
   Private key:

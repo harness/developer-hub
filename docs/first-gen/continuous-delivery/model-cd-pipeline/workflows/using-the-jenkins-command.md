@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). [NextGen](/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-jenkins-jobs-in-cd-pipelines) integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenkins jobs, to dynamically capture output variables from the jobs, and to pull artifacts from Jenkins. 
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). [NextGen](/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-jenkins-jobs-in-cd-pipelines) integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenkins jobs, to dynamically capture output variables from the jobs, and to pull artifacts from Jenkins. 
 
 Harness' integration requires Jenkins version 2.130 or higher.
 
@@ -150,7 +150,7 @@ To reference the parameters outside the step (in other steps in the Workflow, or
 
 ### Using Published Jenkins Variables
 
-For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject Plugin](https://wiki.jenkins.io/display/JENKINS/EnvInject+Plugin). The plugin does not provide full compatibility with the Pipeline Plugin. See [Known Incompatibilities](https://plugins.jenkins.io/envinject/#plugin-content-jenkins-pipeline-compatibility) from Jenkins.You can use the Jenkins variable you published in the Jenkins step (via the **Jenkins Output in the Context** settings), and reference parameters and environment variables in other steps of the Workflow, such as a Shell Script step.
+For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject Plugin](https://plugins.jenkins.io/envinject/). The plugin does not provide full compatibility with the Pipeline Plugin. See [Known Incompatibilities](https://plugins.jenkins.io/envinject/#plugin-content-jenkins-pipeline-compatibility) from Jenkins.You can use the Jenkins variable you published in the Jenkins step (via the **Jenkins Output in the Context** settings), and reference parameters and environment variables in other steps of the Workflow, such as a Shell Script step.
 
 You can reference job parameters from the Jenkins step **Job Parameters** section with the `jobParameters` component in the following syntax:
 
@@ -183,7 +183,7 @@ When the Workflow is deployed, the Harness Deployments page will list the output
 
 #### Environment Variables
 
-For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject Plugin](https://wiki.jenkins.io/display/JENKINS/EnvInject+Plugin). The plugin does not provide full compatibility with the Pipeline Plugin. See [Known Incompatibilities](https://wiki.jenkins.io/display/JENKINS/EnvInject+Plugin#EnvInjectPlugin-Knownincompatibilities) from Jenkins.Let's look at an example for environment variables where you selected the **Capture environment variables from Jenkins build** setting, and then used **Jenkins Output in the Context** settings to set an output variable named `myVar`:
+For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject Plugin](https://plugins.jenkins.io/envinject/). The plugin does not provide full compatibility with the Pipeline Plugin. See [Known Incompatibilities](https://plugins.jenkins.io/envinject/#EnvInjectPlugin-Knownincompatibilities) from Jenkins.Let's look at an example for environment variables where you selected the **Capture environment variables from Jenkins build** setting, and then used **Jenkins Output in the Context** settings to set an output variable named `myVar`:
 
 ![](./static/using-the-jenkins-command-37.png)Here is an example of the environment variables from a Jenkins Job (via API):
 
@@ -228,7 +228,7 @@ Here is the list of parameters with their variables:
 * **buildDisplayName** - `${Jenkins.buildDisplayName}`
 * **buildFullDisplayName** - `${Jenkins.buildFullDisplayName}`
 * **jobStatus** - `${Jenkins.jobStatus}`
-* **description** - `${Jenkins.description}` (requires [Descriptor Setter](https://wiki.jenkins.io/display/JENKINS/Description+Setter+Plugin) plugin in Jenkins)
+* **description** - `${Jenkins.description}` (requires [Descriptor Setter](https://plugins.jenkins.io/description-setter/) plugin in Jenkins)
 
 When the Workflow is deployed, the Shell Script is run and the echo output using the variables is displayed.
 
@@ -236,7 +236,7 @@ When the Workflow is deployed, the Shell Script is run and the echo output using
 
 ### Multibranch Pipeline Support
 
-For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject Plugin](https://wiki.jenkins.io/display/JENKINS/EnvInject+Plugin). The plugin does not provide full compatibility with the Pipeline Plugin. See [Known Incompatibilities](https://wiki.jenkins.io/display/JENKINS/EnvInject+Plugin#EnvInjectPlugin-Knownincompatibilities) from Jenkins.The Jenkins Multibranch Pipeline (Workflow Multibranch) feature enables you to automatically create a Jenkins pipeline for each branch on your source control repo.
+For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject Plugin](https://plugins.jenkins.io/envinject/). The plugin does not provide full compatibility with the Pipeline Plugin. See [Known Incompatibilities](https://plugins.jenkins.io/envinject/#EnvInjectPlugin-Knownincompatibilities) from Jenkins.The Jenkins Multibranch Pipeline (Workflow Multibranch) feature enables you to automatically create a Jenkins pipeline for each branch on your source control repo.
 
 Each branch has its own [Jenkinsfile](https://jenkins.io/doc/book/pipeline/jenkinsfile/), which can be changed independently. This features enables you to handle branches better by automatically grouping builds from feature/experimental branches.
 

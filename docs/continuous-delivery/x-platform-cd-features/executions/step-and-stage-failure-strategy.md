@@ -18,7 +18,7 @@ You can apply a failure strategy to the following:
 
 For details on strategy options and how strategies work, see [step and stage failure strategy settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings).
 
-[Add a stage](https://developer.harness.io/docs/platform/Pipelines/add-a-stage) before you define a failure strategy for stages and steps.
+[Add a stage](/docs/platform/Pipelines/add-a-stage) before you define a failure strategy for stages and steps.
 
 ## Visual Summary
 

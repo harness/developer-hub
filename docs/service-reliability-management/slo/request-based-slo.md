@@ -21,7 +21,7 @@ For example, if you had 100 search requests and 95 of them returned the expected
 
 ## Prerequisites
 
-- A Harness Delegate. Ensure that you have installed a Harness Delegate that can communicate with Harness, your health source, and change sources. For more information, go to [Get started with delegates](/docs/platform/2_Delegates/install-delegates/overview.md).
+- A Harness Delegate. Ensure that you have installed a Harness Delegate that can communicate with Harness, your health source, and change sources. For more information, go to [Get started with delegates](/docs/platform/delegates/install-delegates/overview.md).
   
 - An Organization in Harness. If you haven't already created one, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization.md).
 
@@ -47,7 +47,7 @@ To create a project in Harness, do the following:
 </details>
 
 
-- Health source connector. Ensure that your health source is connected to Harness. The health source can be a monitoring and logging system such as Prometheus. This enables Harness to collect health and performance metrics and monitor your SLO. For more information, go to [Connect to Monitoring and Logging Systems](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems).
+- Health source connector. Ensure that your health source is connected to Harness. The health source can be a monitoring and logging system such as Prometheus. This enables Harness to collect health and performance metrics and monitor your SLO. For more information, go to [Connect to Monitoring and Logging Systems](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems).
 
 ## Create a request-based SLO
 

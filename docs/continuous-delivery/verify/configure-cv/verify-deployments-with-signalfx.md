@@ -32,7 +32,7 @@ When using Splunk Observability [SignalFx] health source, it is not possible to 
 
 ## Prerequisite
 
-Ensure that Splunk Observability [SignalFx] is added as a verification provider in Harness. To learn how to add Splunk Observability [SignalFx] as a connector in Harness, go to [Add Splunk Observability [SignalFX]](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-splunk-observability-signalfx).
+Ensure that Splunk Observability [SignalFx] is added as a verification provider in Harness. To learn how to add Splunk Observability [SignalFx] as a connector in Harness, go to [Add Splunk Observability [SignalFX]](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-splunk-observability-signalfx).
 
 
 ## Set up continuous verification
@@ -137,7 +137,7 @@ Procedure:
    
 3. In **Duration**, choose a duration. Harness will use the data points within this duration for analysis. For instance, if you select 10 minutes, Harness will analyze the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
    
-4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the **Service** tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
+4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the **Service** tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md).
    
 5. Select **Fail On No Analysis** if you want the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 

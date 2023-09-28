@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
+This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
 
 You can use your Git repo for the configuration files in **Manifests** and Harness will use them at runtime. You have two options for remote files:
 

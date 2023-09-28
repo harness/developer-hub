@@ -48,7 +48,7 @@ This topic assumes that you have a Harness Project set up. Go to [create organiz
 
 ## Add a deploy stage
 
-For steps on adding a stage, go to [add a stage](/docs/platform/8_Pipelines/add-a-stage.md).
+For steps on adding a stage, go to [add a stage](/docs/platform/pipelines/add-a-stage.md).
 
 1. Click **Add Stage** and select **Deploy**.
 2. Name the stage, and select what you’d like to deploy. For example, select **Service**.

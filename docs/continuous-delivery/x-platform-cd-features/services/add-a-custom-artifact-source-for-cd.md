@@ -126,7 +126,7 @@ Enter the following settings.
 
 * **Version**: Enter the version number for this deployment, or select Runtime Input or Expression to select the version dynamically.
 
-  For more information on Fixed Value, Runtime Input, and Expression got to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/References/runtime-inputs).
+  For more information on Fixed Value, Runtime Input, and Expression got to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
   When you done Artifact Details will look something like this:
 

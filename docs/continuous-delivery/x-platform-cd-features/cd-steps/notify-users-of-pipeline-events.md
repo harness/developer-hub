@@ -205,6 +205,121 @@ Note that the expression must be evaluated in the context of the event. For exam
 
 The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
 
+### JSON for webhook notifications
+
+<details>
+<summary>Here's the JSON Harness posts to your webhook endpoint.</summary>
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "accountIdentifier": {
+      "type": "string"
+    },
+    "orgIdentifier": {
+      "type": "string"
+    },
+    "projectIdentifier": {
+      "type": "string"
+    },
+    "pipelineIdentifier": {
+      "type": "string"
+    },
+    "planExecutionId": {
+      "type": "string"
+    },
+    "stageIdentifier": {
+      "type": "string"
+    },
+    "stepIdentifier": {
+      "type": "string"
+    },
+    "executionUrl": {
+      "type": "string"
+    },
+    "pipelineUrl": {
+      "type": "string"
+    },
+    "eventType": {
+      "type": "string",
+      "enum": [
+        "AllEvents",
+        "PipelineStart",
+        "PipelineSuccess",
+        "PipelineFailed",
+        "PipelineEnd",
+        "PipelinePaused",
+        "StageSuccess",
+        "StageFailed",
+        "StageStart",
+        "StepFailed"
+      ]
+    },
+    "nodeStatus": {
+      "type": "string"
+    },
+    "triggeredBy": {
+      "type": "object",
+      "properties": {
+        "triggerType": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "moduleInfo": {
+      "type": "object",
+      "properties": {
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "environments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "envGroups": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "infrastructures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "startTime": {
+      "type": "string"
+    },
+    "startTs": {
+      "type": "integer"
+    },
+    "endTime": {
+      "type": "string"
+    },
+    "endTs": {
+      "type": "integer"
+    }
+  }
+}
+```
+
+</details>
+
 ## Notify Slack channels in user groups
 
 If you have Harness user groups that have Slack webhooks set up in their **Notification Preferences**, you can select those groups and Harness will notify them in addition to the Email, Slack, or PagerDuty settings.
