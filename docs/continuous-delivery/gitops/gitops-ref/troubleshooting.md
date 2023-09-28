@@ -72,7 +72,7 @@ test-app    Unknown    Unknown
 ```
 
 ```
-$ kubectl patch applications.argoproj.io test -n harness --type json --patch="[{ \"op\": \"remove\", \"path\": \"/metadata/finalizers\" }]"
+$ kubectl patch applications.argoproj.io test-app -n harness --type json --patch="[{ \"op\": \"remove\", \"path\": \"/metadata/finalizers\" }]"
 
 applications.argoproj.io/test patched
 ```
