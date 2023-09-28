@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-09-26T10:00
+date: 2023-09-28T10:00
 sidebar_position: 13
 ---
 ```mdx-code-block
