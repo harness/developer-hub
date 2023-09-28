@@ -12,6 +12,12 @@ Harness uses delegate tokens to encrypt communication between Harness Delegates 
 
 You can further secure delegate-to-Harness communication by replacing the default delegate token with new tokens. You can add and revoke delegate tokens per your governance policies and replace revoked tokens with custom tokens when needed. You can also rotate your tokens and store them in a secret manager.
 
+:::info important
+
+You must have the Create Delegate permission to create delegate tokens. For more information, go to [Permissions reference](/docs/platform/role-based-access-control/permissions-reference).
+
+:::
+
 ## Generate a new token
 
 You can generate a new token when you create a delegate or as a separate process.
@@ -49,7 +55,9 @@ To generate a new token, do the following:
 
    ![](static/secure-delegates-with-tokens-03.png)
 
-2. Select **Tokens**. Here you can view, create, and revoke all delegate tokens.
+2. Select **Tokens**. Here you can view, create, and revoke all delegate tokens. For each token, you can select the **More Options** (&vellip;) menu to view **More info** or **Copy token**. You must have the Create Delegate permission to copy a token.
+
+   ![](static/secure-delegates-with-tokens-07.png)
 
 3. Select **New Token**.
 

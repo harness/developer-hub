@@ -1,7 +1,5 @@
-
-
 import { MODULES } from "../../../constants";
-import  { CardItem } from "../../Certifications/CertCard";
+import { CardItem } from "../../Certifications/CertCard";
 // Define the certs section cards here
 export const certifications: CardItem[] = [
   {
@@ -20,14 +18,14 @@ export const certifications: CardItem[] = [
     link: "/certifications/continuous-integration",
     numberOfCerts: 3,
   },
-  // {
-  //   title: "Feature Flags Certifications",
-  //   module: MODULES.ff,
-  //   description:
-  //     "Drastically reduce rollbacks, deploy faster with less risk,spend more time building and coding, and less time fixing production with Progressive Delivery.",
-  //   link: "/certifications/feature-flags",
-  //   numberOfCerts: 3,
-  // },
+  {
+    title: "Feature Flags Certifications",
+    module: MODULES.ff,
+    description:
+      "Drastically reduce rollbacks, deploy faster with less risk,spend more time building and coding, and less time fixing production with Progressive Delivery.",
+    link: "/certifications/feature-flags",
+    numberOfCerts: 1,
+  },
   // {
   //   title: "Cloud Cost Management Certifications",
   //   module: MODULES.ccm,

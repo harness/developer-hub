@@ -1,10 +1,9 @@
 ---
-title: ServiceNow
-description: Configure ServiceNow change source to monitor incidents.
+title: Configure ServiceNow as a change source
+sidebar_label: ServiceNow
+description: Configure ServiceNow as a change source to monitor incidents.
 sidebar_position: 80
 ---
-
-# Configure ServiceNow change source
 
 You can configure ServiceNow as a custom change source to monitor incidents.
 

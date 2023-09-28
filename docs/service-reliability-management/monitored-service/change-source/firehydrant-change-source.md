@@ -1,10 +1,9 @@
 ---
-title: FireHydrant
-description: Configure FireHydrant change source to monitor incidents.
-sidebar_position: 60
+title: Configure FireHydrant as a change source
+sidebar_label: FireHydrant
+description: Configure FireHydrant as a change source to monitor incidents.
+sidebar_position: 50
 ---
-
-# FireHydrant change source
 
 You can accelerate incident triage by configuring FireHydrant with Harness SRM. Imagine a scenario where a critical incident occurs within your system. Integrating FireHydrant's incident reporting with SRM's health reports provides the incident response team with clearer insights into the incident.
 
@@ -29,13 +28,13 @@ Configuring FireHydrant as a change source involves the following steps:
 
 [Add FireHydrant as a custom change source in the Harness SRM monitored service and generate a webhook.](#add-firehydrant-as-a-change-source)
 
-2. [Integrate your Slack workspace with FireHydrant.](#integrate-slack-workspace-with-firehydrant)
+1. [Integrate your Slack workspace with FireHydrant.](#integrate-slack-workspace-with-firehydrant)
    
-3. [Add Webhook Step to the FireHydrant runbook.](#add-webhook-step-to-the-firehydrant-runbook)
+2. [Add Webhook Step to the FireHydrant runbook.](#add-webhook-step-to-the-firehydrant-runbook)
    
-4. [Add Slack channels to the FireHydrant runbook.](#add-slack-channels-to-the-firehydrant-runbook)
+3. [Add Slack channels to the FireHydrant runbook.](#add-slack-channels-to-the-firehydrant-runbook)
    
-5. [Declare an incident.](#declare-an-incident)
+4. [Declare an incident.](#declare-an-incident)
 
 
 ## Add FireHydrant as a change source
