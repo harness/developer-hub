@@ -21,13 +21,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest: September 28, 2023
 
-### Harness Platform, version 808xx
-
-### New features and enhancements
+### Harness Platform, version 80811
 
 - Access control lists (ACLs) have now been optimized by the removal of ACLs that are no longer necessary and by ensuring that redundant ACLs are no longer created for new role assignments. (PL-41154)
 
-- The default interval for synchronizing LDAP groups has been increased from 15 minutes to 1 hour. This value is customizable, so you can set it to a value of your choice. (PL-40860)
+- The default interval for synchronizing LDAP groups has been increased from 15 minutes to 1 hour. This value is customizable, so you can set it to a value of your choice. This change does not affect existing LDAP configurations. (PL-40860)
 
 - The **Assign Roles** dialog listed the built-in Account Viewer role when you were assigning roles to a user group, and it did not provide a way for you to remove that role. You could, however, remove the Account Viewer role when updating the role assignments in the **Manage Role Bindings** dialog.
 

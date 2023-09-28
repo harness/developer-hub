@@ -16,7 +16,7 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### Latest: Version 808xx
+### Latest: Version 80810
 
 #### New features and enhancements
 
@@ -28,9 +28,9 @@ This release does not include early access features.
 
 #### Fixed issues
 
-- A few pages about environment and service were missing access checks allowing users to read data without the right permissions. (PL-41378, ZD-44419)
+- A few pages about environment and service were missing access checks, allowing users to read data without the right permissions. (PL-41378, ZD-44419)
 
-  This issue has been resolved and the desired access check has been applied.
+  This issue has been resolved, and the desired access check has been applied.
 
 - You can no longer update `DelegateIP` or `DelegateName` using the delegate update API. (PL-40795, ZD-44419)
 
