@@ -20,8 +20,9 @@ Watch the following video, In this, we unpack the crucial steps to build a strea
 
 **Deploy to Prod**: The final leap where the polished and refined code gets deployed to the production environment.
 
-Whether you're a seasoned developer or just starting out, gaining insights into an efficient software delivery pipeline is crucial. Through this video, you'll garner valuable knowledge and tips to enhance your software delivery processes and ensure your deployments are seamless and trouble-free!
+Here is the [GitHub](https://github.com/thisrohangupta/harness-demo) repository for the pipeline YAML which we used in this video.
 
+Whether you're a seasoned developer or just starting out, gaining insights into an efficient software delivery pipeline is crucial. Through this video, you'll garner valuable knowledge and tips to enhance your software delivery processes and ensure your deployments are seamless and trouble-free!
 
 <!-- Video:
 https://www.youtube.com/watch?v=o3MoWAY27wE-->
