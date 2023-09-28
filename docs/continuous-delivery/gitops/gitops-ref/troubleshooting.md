@@ -46,13 +46,14 @@ To delete the application, remove the finalizer or delete its resources. Removin
 
 ### Error: Unable to delete or create app due to "error: create not allowed while custom resource definition is terminating"
 
-During creation or deletion of any GitOps app, if the process fails with the message `failed to create app in argo: failed to execute create app task: rpc error: code = Unknown desc = error creating application: create not allowed while custom resource definition is terminating` or some similar message about CRD being stuck in termination state, the cause is most likely due to some resource of this CRD pending deletion due to it having a finalizer.
+During creation or deletion of any GitOps app, if the process fails with the message `failed to create app in argo: failed to execute create app task: rpc error: code = Unknown desc = error creating application: create not allowed while custom resource definition is terminating`, or some similar message about CRD being stuck in termination state, the cause is most likely due to some CRD resource pending deletion due to it having a finalizer.
 
-In order for this CRD to complete termination, the finalizer from the pending resource needs to be removed.
+In order for this CRD to complete termination, the finalizer from the pending resource needs to be removed. 
+
 Possible CRD's causing this could most likely be one of these three: `applications.argoproj.io`, `applicationsets.argoproj.io` or 
 `appprojects.argoproj.io`
 
-Execute the following command to get pending resources for the CRD stuck in termination(You can check the status of any CRD using `kubectl get crd` and then check any of these using `kubectl describe crd <crd_name>`)
+Execute the following command to get pending resources for the CRD that are stuck in termination. (You can check the status of any CRD using `kubectl get crd` and then check any of these using `kubectl describe crd <crd_name>`.)
 
 ```
 $ kubectl get <CRD> -n <namespace>
@@ -79,9 +80,13 @@ applications.argoproj.io/test-app patched
 
 This will now let the CRD `applications.argoproj.io` terminate gracefully.
 
-NOTE: CRD's are cluster scoped and the resources themselves can be cluster or namespace-scoped so pay attention to usage of -n(namespace flag) while executing these commands.
+:::note
 
-If there are multiple resources which are causing this, you can use something similar to [this](https://github.com/argoproj/argo-cd/issues/1329#issuecomment-1247176754) as well to fix it.
+CRD's are cluster-scoped and the resources themselves can be cluster or namespace-scoped, so pay attention to usage of `-n(namespace flag)` while executing these commands.
+
+:::
+
+If multiple resources are causing this error, you can use something similar to [this](https://github.com/argoproj/argo-cd/issues/1329#issuecomment-1247176754) to fix it.
 
 ### Issue: Agent degraded when installing a Bring Your Own Argo CD (BYOA) agent with a Helm chart
 
