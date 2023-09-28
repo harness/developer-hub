@@ -226,7 +226,7 @@ v1 Secret Engine:
 
 The secret can fail because of various reasons.
 
-1. Using the Token/App Role, the V**ault** authentication is not successful.
+1. Using the Token/App Role, the **Vault** authentication is not successful.
 2. The following **permission** is not available in any of the policies attached to the Token/App Role. If this permission is not available, the user will not be able to fetch the list of secret engines from the customer vault and Harness will show a single option of Secret Engine named **“secret”** with version 2, which might be incorrect for the customer. Make sure to add the permission to a policy attached to the Token/App Role as follows:
 
    ```
@@ -243,6 +243,12 @@ If required by your organization's security practices, select the **Read-only V
 ![](../../secrets/static/add-hashicorp-vault-30.png)
 
 Once you have filled out the required fields, click **Finish**.
+
+### Reference JSON secrets
+
+import Refjson from '/docs/platform/secrets/shared/reference-via-json.md';
+
+<Refjson />
 
 ##### Read-only Limitations
 

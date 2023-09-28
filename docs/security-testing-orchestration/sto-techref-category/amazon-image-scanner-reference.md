@@ -27,8 +27,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 
 
-## Security step settings for Amazon Image scans in STO
-
+## Security step settings for Amazon ECR scans in STO (legacy)
 
 * `product_name` = `aws-ecr`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) =`containerImage`

@@ -2,10 +2,13 @@
 title: Grype scanner reference for STO
 description: Image scans with Grype
 sidebar_label: Grype scanner reference
-sidebar_position: 156
+sidebar_position: 10
+redirect_from: /docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference
 ---
 
 You can scan container images using [Grype](https://github.com/anchore/grype).
+
+For information about setting up Grype in an air-gapped environment, go to [Set up Grype in air-gapped environments](/docs/security-testing-orchestration/sto-techref-category/grype/grype-setup-in-airgapped.md).
 
 
 ## Important notes for running Grype scans in STO
@@ -32,11 +35,6 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 The recommended workflow is add a Grype step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Grype scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
-
-<StoScannerStepNotes />
 
 <!-- 
 <details>
@@ -56,9 +54,9 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 #### Scan Mode
 
 ```mdx-code-block
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanMode from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanModeOrch from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeIngest from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
 
 <StoSettingScanMode />
@@ -69,7 +67,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 #### Scan Configuration
 
 ```mdx-code-block
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-product-config-name.md';
 ```
 
 <StoSettingProductConfigName />
@@ -82,7 +80,7 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 #### Type
 
 ```mdx-code-block
-import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
+import StoSettingScanTypeCont     from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
 ```
 
 <StoSettingScanTypeCont />
@@ -91,7 +89,7 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 #### Name 
 
 ```mdx-code-block
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+import StoSettingProductID from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-prod-id.md';
 ```
 
 <StoSettingProductID />
@@ -101,7 +99,7 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 #### Variant
 
 ```mdx-code-block
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
+import StoSettingTargetVariant from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-target-variant.md';
 ```
 
 <StoSettingTargetVariant  />
@@ -110,7 +108,7 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 ### Ingestion File
 
 ```mdx-code-block
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-ingestion-file.md';
 ```
 
 <StoSettingIngestionFile  />
@@ -124,7 +122,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 #### Type  
 
 ```mdx-code-block
-import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
+import StoSettingImageType from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-type.md';
 ```
 
 <StoSettingImageType />
@@ -136,7 +134,7 @@ import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md
 
 
 ```mdx-code-block
-import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
+import StoSettingImageDomain from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-domain.md';
 ```
 
 <StoSettingImageDomain />
@@ -147,7 +145,7 @@ import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domai
 #### Name
 
 ```mdx-code-block
-import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
+import StoSettingImageName from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-name.md';
 ```
 
 <StoSettingImageName />
@@ -158,7 +156,7 @@ import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md
 #### Tag
 
 ```mdx-code-block
-import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
+import StoSettingImageTag from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-tag.md';
 ```
 
 <StoSettingImageTag />
@@ -169,7 +167,7 @@ import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
 #### Access Id
 
 ```mdx-code-block
-import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-access-id.md';
+import StoSettingImageAccessID from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-access-id.md';
 ```
 
 <StoSettingImageAccessID />
@@ -180,7 +178,7 @@ import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-acc
 #### Access Token 
 
 ```mdx-code-block
-import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-access-token.md';
+import StoSettingImageAccessToken from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-image-access-token.md';
 ```
 
 <StoSettingImageAccessToken />
@@ -193,7 +191,7 @@ import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-
 #### Log Level
 
 ```mdx-code-block
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-log-level.md';
 ```
 
 <StoSettingLogLevel />
@@ -203,7 +201,7 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 #### Additional CLI flags
 
 ```mdx-code-block
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
+import StoSettingCliFlags from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-cli-flags.md';
 ```
 
 <StoSettingCliFlags />
@@ -214,7 +212,7 @@ import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 #### Fail on Severity
 
 ```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
 <StoSettingFailOnSeverity />
 
@@ -244,7 +242,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
  
-## Security step settings for Grype scans in STO (_legacy_)
+## Security step settings for Grype scans in STO (legacy)
  
 You can set up a Security step with [Grype](https://github.com/anchore/grype) to detect vulnerabilities and misconfigurations in your container images.
 
@@ -252,12 +250,12 @@ You can set up a Security step with [Grype](https://github.com/anchore/grype) to
 #### Important Notes
 
 * STO supports Grype scans of containers and repositories.
-* STO supports [orchestrated scans](../use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
+* STO supports [orchestrated scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
 
 #### Target and variant
 
 ```mdx-code-block
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from '../shared/legacy/_sto-ref-legacy-target-and-variant.md';
 ```
 
 <StoLegacyTargetAndVariant />
@@ -292,7 +290,7 @@ The following settings are also required, depending on the container type:
 #### Container scan settings
 
 ```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+import StoLegacyContainer from '../shared/legacy/_sto-ref-legacy-container.md';
 ```
 
 <StoLegacyContainer />
@@ -300,7 +298,8 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 #### Ingestion file
 
 ```mdx-code-block
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+import StoLegacyIngest from '../shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
+

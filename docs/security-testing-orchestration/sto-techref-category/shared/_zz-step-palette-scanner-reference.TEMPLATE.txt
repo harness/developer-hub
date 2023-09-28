@@ -22,11 +22,9 @@ The recommended workflow is to add an $SCANNER_NAME step to a Security Tests or 
 
 You can also set up an Aqua Trivy scan in a [Security step](#security-step-configuration-deprecated) but this workflow is deprecated. 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <details>
     <summary>Scanner Template</summary>
@@ -122,7 +120,7 @@ In the **Advanced** settings, you can use the following options:
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
 
-## Security step configuration (_legacy_)
+## Security step configuration (legacy)
  
  <details><summary>Set up a $SCANNER_NAME scan in a Security step</summary>
  

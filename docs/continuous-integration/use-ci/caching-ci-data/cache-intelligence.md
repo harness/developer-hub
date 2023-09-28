@@ -230,24 +230,24 @@ The following YAML example uses `<+input>`, which prompts the user to supply a c
 
 You can use the Cache Intelligence API to get information about the cache or delete the cache.
 
-To invoke these APIs, you must have an API key with [core_account_edit](/docs/platform/automation/api/api-permissions-reference) permissions. For information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys).
+API key authentication is required. You need a [Harness API key](/docs/platform/automation/api/add-and-manage-api-keys) with [core_account_edit](/docs/platform/automation/api/api-permissions-reference) permission. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io/#section/Introduction/Authentication).
 
 ### Get cache metadata
 
 Get metadata about the cache, such as the size and path.
 
 ```
-curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID' \
+curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $AUTH_TOKEN'
+--header 'X-API-KEY: $API_KEY'
 ```
 
 ### Delete cache
 
-Delete the cache. You can include an optional `path` parameter to delete a specific sub-directory in the cache.
+Delete the entire cache, or use the optional `path` parameter to delete a specific subdirectory in the cache.
 
 ```
-curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID&path=/path/to/deleted/directory' \
+curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache?path=/path/to/deleted/directory' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $AUTH_TOKEN'
+--header 'X-API-KEY: $API_KEY'
 ```

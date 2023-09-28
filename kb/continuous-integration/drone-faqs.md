@@ -57,3 +57,53 @@ Drone has build templates that can be shared across projects. A project can use 
 #### Getting ERROR Database error 42704: type "number" does not exist while migrating from sqlite to Postgres
 It seems like as the build_deploy_id is type of number and this type is not present in PostgreSQL, So You have to create a new table with type bigint and than copy the data after renaming the table to get this working
 https://github.com/dimitri/pgloader/issues/1284 
+
+#### Failed to build npm: npm verb stack fatal: unable to look up the current user in the passwd file: no such user
+This error is linked to the Git user. Please add the variables in the steps GIT_COMMITTER_NAME and GIT_COMMITTER_EMAIL, like the example below:
+```sh
+export GIT_COMMITTER_NAME=’user_name’
+export GIT_COMMITTER_EMAIL=’user_email’
+```
+
+#### Does Drone Support External Databases?
+Yes, Drone CI has Postgres and MySQL databases support
+See: [https://docs.drone.io/server/storage/database/]
+
+#### Can I use Drone exec on Drone cloud?
+No, exec pipelines are disabled on Drone Cloud. This feature is only available when self-hosting.
+
+#### Which SCM ( Source Control Management ) is supported by the Drone?
+The Drone supports a wide variety of SCM, in this [Link](https://docs.drone.io/server/overview/) you can find the supported SCM.
+
+#### How to enable Flag Debug on Drone-Server and Drone-Runner?
+You can enable more detailed debug logging with the following configuration parameter:
+```sh
+DRONE_LOGS_DEBUG=true
+```
+
+#### How to enable Flag trace on Drone-Server and Drone-Runner?
+You can enable more detailed trace logging with the following configuration parameter:
+```sh
+DRONE_LOGS_TRACE=true
+```
+
+#### How to configure Timezone on the Drone?
+When running the Drone server image, the timezone can be set with an environment variable TZ={Area/Location} using a valid TZ database name EG:
+```sh
+--env=TZ=Europe/London
+```
+
+#### How to manage users on Drone-Server?
+You can manage users using the command line utility. Please see the command line tools [documentation](https://docs.drone.io/cli/install/) for installation instructions.
+Command examples can be found at this [link](https://docs.drone.io/server/user/management/).
+
+#### Does the Drone have Encryption support?
+Yes, Drone supports aesgcm encryption of secrets stored in the database. You must enable encryption before any secrets are stored in the database.
+See: [https://docs.drone.io/server/storage/encryption/]
+
+#### Does the Drone have Starlark extension support?
+Yes, Drone provides an official extension that enables support for Starlark.
+See: [https://docs.drone.io/server/extensions/starlark/]
+
+
+
