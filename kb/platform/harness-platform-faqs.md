@@ -70,6 +70,10 @@ No, as of now we don't support but it is in our roadmap.
 
 Yes , you can setup prometheus to get the metrics . For more Information on setting that up, please go through the following [Documentation](/docs/platform/delegates/manage-delegates/delegate-metrics)
 
+#### The reset password link keeps sending me back to the login page. What gives?
+
+In the account password authentication might be disabled with another auth enabled such as Active Directory.  Reach out to your Active Directory Administrator in that case to reset
+
 #### Does delegates logs are only sent to Harness or can I also query delegate logs in my own cloud logging system ?
 
 By default, delegate logs are only sent to Harness and it can be enabled/disabled using this env variable - `STACK_DRIVER_LOGGING_ENABLED
