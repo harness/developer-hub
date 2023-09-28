@@ -65,7 +65,7 @@ The final tag example above is a key with no value. If assigned to a component, 
 
 ## Review: Tag scope
 
-Tags can be added to Harness applications and the following application components:
+You can add tags to Harness applications and the following application components:
 
 * Service
 * Environment
@@ -87,7 +87,7 @@ Users who have appropriate [Application-level permissions](/docs/platform/role-b
 
 ## Step 2: Add tags
 
-To add a tag to an application or [supported](#tag_scope) application component:
+To add a tag to an application or [supported](#tag_scope) application component, do the following:
 
 1. In Harness, go the application or component to display its Overview card: **Application Overview**, **Environment Overview**, **Workflow Overview**, **Services** etc.
 
@@ -101,7 +101,7 @@ To add a tag to an application or [supported](#tag_scope) application component:
 
 3. Select **Save** to add your tag.
 
-   Each applied Tag's key and value will now appear on the application's or component's **Overview** card:
+   Each applied tag's key and value will now appear on the application's or component's **Overview** card:
 
    ![](./static/tags-003.png)
 

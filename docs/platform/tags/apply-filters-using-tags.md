@@ -16,7 +16,7 @@ Once you’ve applied tags to your Harness applications and components, you can 
 
 In Harness, select your application or component. Look for a filter button at the upper right.
 
-To filter applications or their components by tags:
+To filter applications or their components by tags, do the following:
 
 1. In Harness, go the application or component.
 
@@ -34,7 +34,7 @@ To filter applications or their components by tags:
 
 4. Use the Search box to locate desired tags, or tag values, by free-text search. Or, manually scroll the list of tags and values.
 
-6. To retrieve Harness entities that match a given tag with any value, select the **Any Value** check box to the Tag's right. To match only one or more specific values, select the check boxes to their left.
+6. To retrieve Harness entities that match a given tag with any value, select the **Any Value** checkbox to the tag's right. To match only one or more specific values, select the checkboxes to their left.
 
    :::info note 
    Within a given tag, inclusive OR search logic is *always* applied among the *values* you select. (Remember that each tag can take only one value on a given application or component—so a restrictive AND search for two or more values would always return zero results.) The search logic among your selected *Tags* is either OR or AND—depending on your **Match** [setting](#tags_search_logic). 
