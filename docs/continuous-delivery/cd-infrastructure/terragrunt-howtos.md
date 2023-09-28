@@ -777,6 +777,16 @@ In **Advanced**, you can use the following options:
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 
+## Command line options
+
+:::note
+
+Currently, FEATURE_NAME is behind the feature flag `CDS_TERRAGRUNT_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+This setting allows you to set the Terragrunt CLI options for Terragrunt commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
+
 ## YAML examples
 
 The following YAML examples shows you how to quickly add Terragrunt steps into your CD stages.
