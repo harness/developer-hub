@@ -1266,7 +1266,7 @@ Whenever a user grants an approval in an Approval step, the pipeline maintains t
 
 These variables are available for Approval steps only, not stages. 
 
-In the following example, a Deploy stage has two Approval steps. For each approval, the pipeline maintains a separate set of approval variables. Use the index to access the array element that contains the variables for the relevant approval.
+In the following example, a Deploy stage has two Approval steps. For each approval, the pipeline maintains a separate set of approval variables. Use the array index to access the variables for a specific approval.
 
 ![](./static/approved-user-pipeline-example.png)
 
