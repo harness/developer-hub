@@ -2,7 +2,7 @@
 title: Bandit scanner reference for STO
 description: Repository scans with Bandit
 sidebar_label: Bandit scanner reference
-sidebar_position: 50
+sidebar_position: 60
 helpdocs_topic_id: n3dcx6wzb3
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -36,11 +36,9 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 The recommended workflow is to add a Bandit step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Bandit scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 
 ### Scan Mode
@@ -188,7 +186,7 @@ In the **Advanced** settings, you can use the following options:
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
 
-## Security step settings for Bandit scans in STO (_legacy_)
+## Security step settings for Bandit scans in STO (legacy)
 
 You can set up a Security step with [Bandit](https://bandit.readthedocs.io/en/latest/) to find common security issues in your Python code.
 

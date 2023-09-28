@@ -14,6 +14,12 @@ Templates enhance developer productivity, reduce onboarding time, and enforce st
 
 This topic provides an overview of templates in Harness.
 
+:::note
+
+For guidance on ramping up your teams using templates, go to [Templates ramp-up guide](/docs/continuous-delivery/ramp-up/rampup-templates).
+
+:::
+
 ## Important notes
 
 * When you delete an existing template with active pipeline references, Harness deletes the references.

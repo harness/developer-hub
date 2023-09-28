@@ -1,5 +1,6 @@
 ---
-title: Dynatrace
+title: Configure Dynatrace as health source
+sidebar_label: Dynatrace
 description: Add Dynatrace health source to a monitored service.
 sidebar_position: 5
 ---
