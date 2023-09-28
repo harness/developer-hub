@@ -171,6 +171,12 @@ The **Add new Encrypted File** settings appear.
 
 8. Click **Save**.
 
+## Reference JSON secrets
+
+import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
+
+<Refj />
+
 ## See also
 
 * [Add Google KMS as a Harness Secret Manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager.md)

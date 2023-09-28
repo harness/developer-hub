@@ -168,3 +168,9 @@ In **Setup Delegates,** enter [**Selectors**](../../delegates/manage-delegate
 ### Step 5: Test Connection
 
 Once the Test Connection succeeds, click Finish. You can now see the Connector in Connectors.​
+
+### Reference JSON secrets
+
+import Refjson from '/docs/platform/secrets/shared/reference-via-json.md';
+
+<Refjson />
