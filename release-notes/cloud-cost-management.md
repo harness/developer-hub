@@ -24,7 +24,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
-This release does not include any new features.
+* Previously, CCM displayed only the essential Jira or ServiceNow fields in Recommendation Workflows. However, with this enhancement, CCM introduces a new field _+ Fields_ that allows users to add optional fields as needed.
+
+    <docimage path={require('./static/ccm-jira-ticket-enhancement.png')} width="40%" height="40%" title="Click to view full size image" />
+
+
 
 ### Early access features
 
@@ -32,8 +36,15 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-* In the past, CCM used to display all anomalies, including the new ones that were labeled as "N/A." However, now, anomalies will not be shown on the UI for newer entities. Newer entities are those having data for a duration of 15 days or less. (CCM-14275)
-* In the AWS perspective, the cost calculation is based on the selected `Groupby` field, and CCM uses the SUM of `awsUnblendedCost`. However, when CCM detects anomalies for AWS, it is based on the SUM of `awsBlendedCost`. This led to a cost mismatch between what's displayed on the AWS perspective and the cost reported for anomalies.
+* Previously, CCM used to display all anomalies, including the new ones that were labeled as "N/A."  (CCM-14275)
+
+  However, now, anomalies will not be shown on the UI for newer entities. Newer entities are those having data for a duration of 15 days or less.
+
+* In the AWS perspective, the cost calculation is based on the selected `Groupby` field, and CCM uses the SUM of `awsUnblendedCost`. However, when CCM detects anomalies for AWS, it is based on the SUM of `awsBlendedCost`. This led to a cost mismatch between what's displayed on the AWS perspective and the cost reported for anomalies.(CCM-14096)
+
+  This issue is fixed by using SUM of `awsUnblendedCost` to detect AWS (Account, Service and UsageType) anomalies.
+
+
   
 
 
