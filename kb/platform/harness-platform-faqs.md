@@ -561,6 +561,12 @@ The permission needed for this Account Admin and as of now only Account Admin ca
 
 Harness doesn't allow in the same ASG.
 
+#### When creating a connector via the API (https://apidocs.harness.io/tag/Connectors#operation/createConnector)
+We receive the following error
+`requests.exceptions.HTTPError: 400 Client Error: Bad Request for url https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=<ACCOUNT_IDENTIFIER>?`
+
+This could be due to using invalid characters in the name such as `()`
+
 #### How can you control on-demand or spot provisioning within ASG group / target?
 
 We supported spotinst ASG in FG and we also have spotinst for NG also, to know more about it please read the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment).
