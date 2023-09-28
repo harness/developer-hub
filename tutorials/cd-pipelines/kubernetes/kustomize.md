@@ -200,7 +200,7 @@ You've just learned how to use **Harness GitOps** to deploy an application using
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
 ```mdx-code-block
-<TabItem>
+</TabItem>
 <TabItem value="CD pipeline">
 ```
 

@@ -375,7 +375,7 @@ On successful application sync, you'll see the status tree under **Resource View
 ![GitOps](../static/k8s-helm-tutorial/gitops-helm.png)
 
 ```mdx-code-block
-<TabItem>
+</TabItem>
 <TabItem value="CD Pipeline">
 ```
 You can choose to proceed with the tutorial either by using the command-line interface (Harness CLI) or the user interface (Harness UI).
