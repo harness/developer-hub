@@ -1180,6 +1180,9 @@ If you don't override Service Variables for a particular Environment in a Stage,
 #### Can I use expressions or reference other variables when overriding Service Variables?
 You can use expressions and reference other variables when overriding Service Variables in Harness. This allows you to create dynamic configurations based on the values of other variables or calculations.
 
+#### The deployment is failing at a step with the error message `Invalid request: ConnectException: Connection refused (Connection refused)`.  What gives?
+Check the access control for the network.  It could be that the request is blocked on the network side
+
 #### Are there any safety measures to prevent unintended changes when overriding Service Variables?
 Harness typically provides auditing features to track changes made to Service Variables, helping prevent unintended changes and ensuring accountability.
 
