@@ -66,6 +66,10 @@ If the same user was manually added first and now pushed from SCIM, it would be 
 
 No, as of now we don't support but it is in our roadmap.
 
+#### How can I restore deleted projects and pipelines ?
+
+Unfortunately, we don't soft delete entities and hard delete them.  Therefore there is no easy way to restore.  Some entities can be restored using YAML from the audit trail.
+
 #### Do we have some kind of dashboards where I can track my current status of delegates ?
 
 Yes , you can setup prometheus to get the metrics . For more Information on setting that up, please go through the following [Documentation](/docs/platform/delegates/manage-delegates/delegate-metrics)
