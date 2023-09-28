@@ -95,8 +95,6 @@ This release does not include any new early access features.
 
    This issue has been resolved. Now, only users with the required permissions to copy tokens are able to select the **Copy token** option.
 
-- If a step used [runtime input for conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#conditional-execution-as-a-runtime-input), but no runtime input was provided at pipeline runtime, then the pipeline passed the literal string `<+input>` instead of an empty object. This is fixed. (CI-9428, ZD-50027)
-
 - Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) based on [delegate tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#delegate-tags), and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. (CI-8831, ZD-47647)
 
 ### Hotfixes
