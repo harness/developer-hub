@@ -7,4 +7,4 @@ metadata:
 spec:
   networkChaos/inputs:
     destinationHosts: 'google.com'
-    networkInterfaces: "eth0"
+    networkInterface: "eth0"

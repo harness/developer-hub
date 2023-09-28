@@ -1,14 +1,13 @@
 ---
-title: Data Theorem scanner reference for STO
+title: Data Theorem scanner reference
 description: Repository scans with Data Theorem
-sidebar_label: Data Theorem scanner reference
-sidebar_position: 140
+sidebar_position: 110
 ---
 
 You can run Data Theorem scans on your instances using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 
-## Important notes for running Data Theorem scans in STO
+## Before you begin
 
 ### Docker-in-Docker requirements
 
@@ -26,7 +25,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Security step settings for Data Theorem scans in STO
+## Security step settings
 
 ### Target and variant
 

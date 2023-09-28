@@ -1,6 +1,5 @@
 ---
-title: Configure AppDynamics as health source
-sidebar_label: AppDynamics
+title: AppDynamics
 description: Add AppDynamics health source to a monitored service.
 sidebar_position: 1
 ---

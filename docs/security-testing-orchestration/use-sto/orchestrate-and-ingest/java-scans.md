@@ -1,8 +1,7 @@
 ---
-title: Scanning Java Binaries in STO
+title: Scanning Java Binaries
 description: This is the recommended workflow for scanning Java binary (.jar, .class) files in an STO pipeline. 
 sidebar_position: 80
-sidebar_label: Scan Java binaries
 ---
 
 This topic describes the recommended workflow for scanning Java binary (.jar, .class) files. For some scanners, such as SonarQube and Checkmarx, you need to add one or more Run steps to build your Java binaries before you run the scanner. You also need to set up the Security step to specify the Java binaries you want to scan. 

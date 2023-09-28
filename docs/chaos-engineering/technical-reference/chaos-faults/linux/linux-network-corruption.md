@@ -28,9 +28,9 @@ Linux network corruption injects chaos to disrupt network connectivity on a Linu
     <th> Notes </th>
   </tr>
   <tr>
-    <td> networkInterfaces </td>
-    <td> Network interfaces to target as comma separated values. </td>
-    <td> For example: <code>eth0,ens192</code> </td>
+    <td> networkInterface </td>
+    <td> The network interface to target. </td>
+    <td> For example: <code>eth0</code> </td>
   </tr>
 </table>
 <h3>Optional tunables</h3>
@@ -84,7 +84,7 @@ metadata:
 spec:
   networkChaos/inputs:
     destinationHosts: 'google.com'
-    networkInterfaces: "eth0"
+    networkInterface: "eth0"
 ```
 
 ### Destination IPs
@@ -104,7 +104,7 @@ metadata:
 spec:
   networkChaos/inputs:
     destinationIPs: '1.1.1.1'
-    networkInterfaces: "eth0"
+    networkInterface: "eth0"
 ```
 
 ### Packet corruption percentage
@@ -124,5 +124,5 @@ metadata:
 spec:
   networkChaos/inputs:
     packetCorruptionPercentage: '50'
-    networkInterfaces: "eth0"
+    networkInterface: "eth0"
 ```

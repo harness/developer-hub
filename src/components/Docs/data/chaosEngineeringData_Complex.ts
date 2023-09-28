@@ -112,20 +112,20 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.ce,
           description:
             "Learn the basics of Harness Chaos Engineering.",
-          link: "/docs/chaos-engineering/get-started/overview",
+          link: "/docs/chaos-engineering/get-started/introduction-to-chaos-module",
         },
       ],
     },
 
     {
-      name: "Key concepts",
+      name: "Terminologies",
       list: [
         {
-          title: "Familiarize with chaos engineering concepts",
+          title: "Familiarize with chaos engineering terminologies",
           module: MODULES.ce,
           description:
-            "Familiarize with chaos engineering concepts.",
-          link: "/docs/chaos-engineering/get-started/key-concepts",
+            "Familiarize with chaos engineering terminologies.",
+          link: "/docs/chaos-engineering/get-started/terminologies",
         },
       ],
     }, 

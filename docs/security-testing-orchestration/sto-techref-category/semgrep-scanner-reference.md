@@ -1,15 +1,14 @@
 ---
-title: Semgrep scanner reference for STO
+title: Semgrep scanner reference
 description: Repository scans with Semgrep
-sidebar_label: Semgrep settings reference
-sidebar_position: 360
+sidebar_position: 270
 ---
 
 
 You can scan repositories using [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories. 
 
 
-## Important notes for running Semgrep scans in STO
+## Before you begin
 
 <!-- 
 ### Docker-in-Docker requirements
@@ -36,9 +35,11 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 The recommended workflow is to add a Semgrep step to a Security Tests or CI Build stage and then configure it as described below. 
 
+```mdx-code-block
+import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
+```
 
-
-
+<StoScannerStepNotes />
 
 <details>
     <summary>Semgrep scanner template</summary>

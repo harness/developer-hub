@@ -1,5 +1,5 @@
 ---
-title: Security step settings reference
+title: Security Step Settings Reference
 description: All the Scanner Provider settings for the Security step.
 sidebar_position: 10
 helpdocs_topic_id: 0k0iubnzql
@@ -49,7 +49,7 @@ import StoSupportedBinaries from './shared/_sto-supported-binaries.md';
 
 <StoSupportedBinaries />
 
-### Docker-in-Docker requirements for STO
+### Docker-in-Docker requirements
 
 ```mdx-code-block
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
@@ -57,7 +57,7 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoDinDRequirements />
 
-### Root access requirements for STO
+### Root access requirements
 
 ```mdx-code-block
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
@@ -65,7 +65,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-### Security steps and scanner templates in STO
+### Security steps and scanner templates
 
 The Step library includes a **Security** step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**. 
 

@@ -24,7 +24,6 @@ https://www.youtube.com/watch?v=p-3FZM49RqQ-->
 
 <Use />
 
-![An example of AIDA dialog.](./static/aida-launch-button.png)
 
 You can find step logs on the [**Build details** page](/docs/continuous-integration/use-ci/viewing-builds.md).
 

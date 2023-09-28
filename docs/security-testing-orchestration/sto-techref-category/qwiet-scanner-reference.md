@@ -1,13 +1,12 @@
 ---
-title: Qwiet AI (formerly ShiftLeft) scanner reference for STO
+title: Qwiet AI (formerly ShiftLeft) scanner reference
 description: Repository scans with Qwiet
-sidebar_label: Qwiet AI (formerly ShiftLeft) scanner reference
-sidebar_position: 330
+sidebar_position: 250
 ---
 
 You can set up Qwiet scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Important notes for running Qwiet scans in STO
+## Before you begin
 
 ### Docker-in-Docker requirements
 
@@ -25,7 +24,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Security step settings for Qwiet scans in STO
+## Security step settings
 
 ### Target and variant
 

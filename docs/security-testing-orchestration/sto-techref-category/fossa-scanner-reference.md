@@ -1,14 +1,13 @@
 ---
-title: Fossa scanner reference for STO
+title: Fossa scanner reference
 description: Image and repository scans with Fossa
-sidebar_label: Fossa scanner reference
-sidebar_position: 190
+sidebar_position: 150
 ---
 
 You can scan container images and repositories using [Fossa](https://www.fossa.com), a scanner that detects security vulnerabilities and other issues in open-source projects. 
 
 
-## Important notes for running Fossa scans in STO
+## Before you begin
 
 ### Docker-in-Docker requirements
 
@@ -26,13 +25,15 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Fossa step settings for STO scans
+## Fossa step configuration
 
 The recommended workflow is add a Fossa step to a Security Tests or CI Build stage and then configure it as described below. 
 
+```mdx-code-block
+import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
+```
 
-
-
+<StoScannerStepNotes />
 
 <!--details>
     <summary>Scanner Template</summary>

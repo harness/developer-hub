@@ -32,7 +32,7 @@ Harness recommends a MongoDB three member replica set configuration with the fol
 
 External database setup requires the following software:
 
-- Supported OS: Ubuntu 20.04
+- Supported OS: TimescaleDB supports Debian 11, Ubuntu, and CentOS
 
 ## Network requirements
 
@@ -71,63 +71,51 @@ To set up a MongoDB VM, do the following:
    apt-get install gnupg curl
    ```
 
-5. Add the Mongo third party repository.
-
-   Debian:
-
-   ```
-   echo "deb [arch=amd64] https://repo.mongodb.org/apt/debian $(lsb_release -cs)/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
-   ```
-
-   Ubuntu 21.10 and later:
+5. Run the following command to issue a MongoDB public GPG key.
 
    ```
    echo "deb [arch=amd64] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
-   ```
-   
-6. Run the following command to issue a MongoDB public GPG key.
 
-   ```
    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 656408E390CFB1F5
    ```
 
-7. Run the following to update the key.
+6. Run the following to update the key.
 
    ```
    apt-get update
    ```
 
-8. Run the following to install MongoDB.
+7. Run the following to install MongoDB.
 
    ```
    apt-get install -y mongodb-org=4.4.19 mongodb-org-server=4.4.19 mongodb-org-shell=4.4.19 mongodb-org-mongos=4.4.19 mongodb-org-tools=4.4.19
    ```
 
-9. Run the following to start MongoDB.
+8. Run the following to start MongoDB.
 
    ```
    systemctl start mongod
    ```
 
-10. Verify that MongoDB started successfully.
+9. Verify that MongoDB started successfully.
 
    ```
    systemctl status mongod
    ```
 
-11. Stop the MongoDB instance.
+10. Stop the MongoDB instance.
 
     ```
     service mongod stop
     ```
 
-12. Modify the `mongod.conf` configuration file.
+11. Modify the `mongod.conf` configuration file.
 
     ```
     vi /etc/mongod.conf
     ```
 
-13. Locate the replication section, and uncomment the `replSetName` and `bindIp` lines. Configure them as follows:
+12. Locate the replication section, and uncomment the `replSetName` and `bindIp` lines. Configure them as follows:
 
     ```
     replication:
@@ -143,9 +131,9 @@ To set up a MongoDB VM, do the following:
       keyFile: /etc/keyFile
     ```
 
-14. Complete the steps above for all three VMs.
+13. Complete the steps above for all three VMs.
 
-15. Log in to one VM and run following commands.
+14. Log in to one VM and run following commands.
 
     ```
     touch /etc/keyFile
@@ -155,7 +143,7 @@ To set up a MongoDB VM, do the following:
     chown mongodb:mongodb keyFile
     ````
  
-16. Log in to the remaining two VMs, and run following commands.
+15. Log in to the remaining two VMs, and run following commands.
 
     ```
     touch /etc/keyFile
@@ -169,7 +157,7 @@ To set up a MongoDB VM, do the following:
     sudo systemctl start mongod
     ```
 
-17. Log in to your MongoDB primary instance using the `mongo` command, and run following command to create your replicate set.
+16. Log in to your MongoDB primary instance using the `mongo` command, and run following command to create your replicate set.
 
     To identify primary node, run this command:
 
@@ -190,6 +178,12 @@ To set up a MongoDB VM, do the following:
     )
     ```
 
+17. Run the following to verify your replicaset configuration.
+
+    ```
+    rs.conf()
+    ```
+
 18. Log in to your primary MongoDB, and run the following command.
 
     ```
@@ -200,21 +194,15 @@ To set up a MongoDB VM, do the following:
      roles:[{role: "root" , db:"admin"}]})
     ```
 
-19. Run the following to verify your replicaset configuration.
-
-    ```
-    rs.conf()
-    ```
-
-20. Restart MongoDB on all your VMs.
+19. Restart MongoDB on all your VMs.
 
     ```
     sudo systemctl restart mongod
     ```
 
-21. Check all your replicas for errors.
+20. Check all your replicas for errors.
 
-22. Log in to your Kubernetes cluster, and create a `mongo-secret.yaml` file.
+21. Log in to your Kubernetes cluster, and create a `mongo-secret.yaml` file.
 
     ```yaml
     apiVersion: v1
@@ -231,7 +219,7 @@ To set up a MongoDB VM, do the following:
     kubectl apply -f mongo-secret.yaml -n <namespace>
     ```
 
-23. Update the file with your MongoDB-specific override changes.
+22. Update the file with your MongoDB-specific override changes.
 
     ```yaml
     global:
@@ -258,7 +246,7 @@ To set up a MongoDB VM, do the following:
         - 10.10.10.12
     ```
 
-24. Run Helm install.
+23. Run Helm install.
 
     ```
     helm install my-release harness/harness -n <namespace> -f override.yaml

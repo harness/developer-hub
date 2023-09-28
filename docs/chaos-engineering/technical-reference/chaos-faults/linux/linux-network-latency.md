@@ -28,9 +28,9 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
     <th> Notes </th>
   </tr>
   <tr>
-    <td> networkInterfaces </td>
-    <td> Network interfaces to target as comma separated values. </td>
-    <td> For example: <code>eth0,ens192</code> </td>
+    <td> networkInterface </td>
+    <td> The network interface to target. </td>
+    <td> For example: <code>eth0</code> </td>
   </tr>
 </table>
 <h3>Optional tunables</h3>
@@ -61,6 +61,11 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
     <td> Defaults to 0 </td>
   </tr>
   <tr>
+    <td> networkInterface </td>
+    <td> The network interface to target. For example: <code> eth0 </code> </td>
+    <td>  </td>
+  </tr>
+  <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
     <td> Defaults to 30. </td>
@@ -89,7 +94,7 @@ metadata:
 spec:
   networkChaos/inputs:
     destinationHosts: 'google.com'
-    networkInterfaces: "eth0"
+    networkInterface: "eth0"
 ```
 
 ### Destination IPs
@@ -109,7 +114,7 @@ metadata:
 spec:
   networkChaos/inputs:
     destinationIPs: '1.1.1.1'
-    networkInterfaces: "eth0"
+    networkInterface: "eth0"
 ```
 
 ### Latency and jitter
@@ -130,5 +135,5 @@ spec:
   networkChaos/inputs:
     latency: "1000"
     jitter: "200"
-    networkInterfaces: "eth0"
+    networkInterface: "eth0"
 ```

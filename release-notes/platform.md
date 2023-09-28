@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-09-28T10:00:30
+date: 2023-09-05T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -30,219 +30,12 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## Latest: Version 80811
+## Latest: Version 80406
 
 ### New features and enhancements
 
-- Access control lists (ACLs) have now been optimized by the removal of ACLs that are no longer necessary and by ensuring that redundant ACLs are no longer created for new role assignments. (PL-41154)
-
-- The default interval for synchronizing LDAP groups has been increased from 15 minutes to 1 hour. This value is customizable, so you can set it to a value of your choice. This change does not affect existing LDAP configurations. (PL-40860)
-
-- The **Assign Roles** dialog listed the built-in Account Viewer role when you were assigning roles to a user group, and it did not provide a way for you to remove that role. You could, however, remove the Account Viewer role when updating the role assignments in the **Manage Role Bindings** dialog. (PL-32413)
-
-  This issue has been fixed. You can now remove the Account Viewer role when assigning roles to a user group. 
-
-- The Roles page now supports a list view in addition to the existing card view. In addition to the information shown in the card view, the list view shows you which resources are selected for the role. To see the list view, in the top-right corner of the Roles page, select the list view button. (PL-32183)
-
-- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-41063)
-
-   This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-### Early access features
-
-This release does not include early access features.
-
-### Fixed issues
-
-- The password field in the SMTP configuration wizard showed asterisks, which are typically used to mask passwords, even when the SMTP configuration did not use a password. This issue caused confusion about whether a password was in fact in use. (PL-41159)
-
-  This issue has been fixed. If the SMTP configuration does not use a password, the password field does not show asterisks.
-
-- In the connector configuration wizard, if you selected Azure Key Vault or GCP Secret Manager and then selected the **Use the credentials of a specific Harness Delegate (IAM role, service account, etc)** option, the wizard did not show the **Use as Default Secret Manager** checkbox. You could, however, achieve this configuration through the Harness API. (PL-41054)
-
-  This issue has been fixed. 
-
-- API requests for creating and updating projects (`POST v1/orgs/{org}/projects` and `POST v1/orgs/{org}/projects/{project}`, respectively) were considered invalid if you specified a value for the `org` parameter both in the body of the request and in the URL path, and the two values did not match. In this scenario, the following message was displayed: `Invalid request: Request is having different org in payload and param` (PL-40668)
-
-  This issue has been fixed by the removal of the parameter from the request body schema. You are now required to provide this parameter only in the URL path.
-
-- When steps timed out for aborted tasks that were previously assigned, the UI displayed an incorrect error message. (PL-41226, ZD-49908, ZD-50652)
-   
-  The UI now displays the correct error message.
-  
-  This item is available with Harness Platform version 80811 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-- Harness Platform release 80504 did not allow you to create empty user groups. (PL-41005, ZD-50411, ZD-50475)
-
-  This issue has been fixed.
-
-  This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
-
-- Harness showed JSON Web Token URLs in Delegate task logs associated with shell script task failures. (PL-39102)
-
-  This issue has been fixed.
-
-  This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
-
-- Harness did not handle the `Unknown Host Exception` error appropriately and, consequently, showed the misleading "Delegates are not available for performing operation" message when you configured LDAP incorrectly (for example, you entered an incorrect host or port number). (PL-28077)
-
-  This issue has been fixed.
-
-  This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
-
-- The UI allowed all users to select the **Copy token** option from the **More Options** (&vellip;) menu. (PL-41155)
-  
-  This issue has been resolved. Now, only users with the required permissions to copy tokens are able to select the **Copy token** option.
-
-  This item is available with Harness Platform version 80811 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-- Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
-  - `org.bouncycastle:bcpg-jdk15on:jar:1.70` to `org.bouncycastle:bcpg-jdk18on:jar:1.76`
-  - `org.bouncycastle:bcpkix-jdk15on:jar:1.70` to `org.bouncycastle:bcpkix-jdk18on:jar:1.76`
-  - `org.bouncycastle:bcprov-ext-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-ext-jdk18on:jar:1.76`
-  - `org.bouncycastle:bcprov-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-jdk18on:jar:1.76`
-
-  This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-- Delegates failed to reauthenticate with the proxy after the initial proxy session expired. (PL-40630, ZD-48981, ZD-49626)
-  
-  The following updates to delegate communication with Harness Manager over proxy resolve this issue.
-  - Removed `return null` when the delegate receives the required 407 proxy authentication.
-  - Added the following variables for the `asyncHttpClient` to authenticate with the proxy.
-    - `org.asynchttpclient.AsyncHttpClientConfig.proxy.user`
-    - `org.asynchttpclient.AsyncHttpClientConfig.proxy.password`
-
-  This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-### Hotfixes
-
-This release does not include hotfixes.
-
-## Previous releases
-
-#### Version 80711
-
-##### New features and enhancements
-
--  The delegate Helm chart is now included in the delegate proxy configuration. You can pull the Helm chart from `https://<YOUR_LOADBALANCER_URL>/storage/harness-download/delegate-helm-chart/`. (PL-39190)
-
-- The heartbeat interval that perpetual tasks use to test connectors has been increased from 10 minutes to 30 minutes. This change aims to reduce the number of errors logged due to failed heartbeats. The new heartbeat interval is used with any connectors that you create after this deployment. Tasks associated with existing connectors require migration to the new interval. Harness will migrate such perpetual tasks in all accounts in a phased manner. This activity does not require any action from you or other users of the platform. (PL-39399)
-
-- To enhance security, Harness has added settings to enable and disable Slack, Microsoft Teams, webhook, and PagerDuty notification channels at the account scope. (PL-39921)
-
-  For more information, go to [Notification settings](/docs/platform/notifications/notification-settings).
-
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues
-
-- Earlier, you could only see a maximum of three tags on the Delegates list page. (PL-38936)
-
-   This issue has been fixed. You can now see all the tags for all delegates.
-
-- The Harness UI fetched only the first 200 organizations when you performed a search for an organization in the **Create Project** dialog (the page size for the API request is 200). If an organization you wanted to specify was not part of this initial set of organizations, the Harness UI did not generate additional API requests, and you were blocked on creating your project. (PL-39198)
-
-  This issue has been fixed. You can now search for and select any organization in your account.
-
-- Updates to the role assignments of a user group in one project caused role assignments to get updated in other projects in the organization. The issue was observed in the following scenario:
-    - You used a regex query to update role assignments in a project.
-    - Identifiers of other projects in the organization overlapped with that of the project in which you updated role assignments. 
-    - Identifiers of user groups in those other projects matched the identifier of the user group you updated. (PL-39780, ZD-46314)
-
-- When Harness is configured to use the AppRole ID to fetch an authentication token from HashiCorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
-
-  This issue has been fixed. You can now specify whether or not you want to retain the token to reduce the number of requests made. Possible values are `True` and `False`. The default value is `True`.
-
-- If there are no delegate configurations to show on the **Delegate Configurations** tab of your project's **Delegates** page, the Harness UI hides the tab. Any errors associated with retrieving data for that tab are, therefore, also invisible to users. This behavior is expected and by design. However, after the deployment of Harness NextGen UI version 0.356.18, this behavior changed: if there were no delegate configurations to show and the associated API request resulted in an error, the associated error message was displayed on the other two tabs of the project's **Delegates** page, namely, the **Delegates** and **Tokens** tabs.
-
-  For example, if you were not authorized to view delegate configurations, and if there were no delegate configurations to show on the **Delegate Configurations** tab, Harness would display the error `You are not authorized to view delegate configurations. You are missing the following permission: View delegate configurations ...` on the **Delegates** and **Tokens** tabs. (PL-40757, ZD-49023)
-
-  This issue has been fixed.
-
-- The **Create or Select an Existing Connector** dialog did not show any results when you filtered on Nexus connectors. (PL-40904)
-  
-  The associated API is now fixed.
-
-- Emails inviting users to a Harness project included a stack trace. The issue was limited to users who had single sign-on enabled on their accounts. (PL-40991, ZD-50038)
-
-  This issue has been fixed.
-
-##### Hotfixes
-
-This release does not include hotfixes.
-
-<details>
-<summary>2023 releases</summary>
-  
-#### Version 80504
-
-##### New features and enhancements
-
-- When Harness is configured to use the AppRole ID to fetch an authentication token from HashiCorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
-
-  This issue has been fixed. You can now specify whether or not you want to retain the token to reduce the number of requests made. Possible values are `True` and `False`. The default value is `True`.
-
-- Go has been upgraded from version 1.20.5 to version 1.21.0. This upgrade remediates CVE-2023-39533. (PL-40734)
-
-- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. (PL-39723)
-
-  The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**).
-
-  Each account user must sign the EULA only once.
-
-  The setting is inherited at the project scope.
-
-- The delegate expiration policy has been extended from 3 months to 6 months. You now only have to update delegates once every 6 months. (PL-39452)
-
-   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
-
-- The OWASP Java HTML Sanitizer version is upgraded to 20220608.1. (PL-40807)
-
-- The Mozilla Rhino library has been upgraded from version 1.7R4 to 1.7.14. (PL-40808)
-
-- The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
-
-- If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
-
-   Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
-   
-   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
-
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues
-
-- The **Create or Select an Existing Connector** dialog did not show any results when you filtered on Nexus connectors. (PL-40904)
-  
-  The associated API is now fixed.
-
-- Fixed an issue where the `ACCOUNT_SECRET` environment variable was overriding the `DELEGATE_TOKEN` value in the delegate's Docker container for delegates with an immutable image type (image tag `yy.mm.xxxxx`). (PL-40728)
-
-- The count of failed streams on the **Failed Streaming** card (on the **Account Audit Trail** page) continued to include problematic destinations even after those destinations were removed. (PL-40641, ZD-49004)
-
-  This issue is now fixed. The error count includes only available destinations. 
-
-- A role that you created would not appear when you typed its name on the **Manage Role Bindings** page. Therefore, you could not use the Harness application to bind that role to a user group. The issue was caused by the role assignment API retrieving only the first 100 roles in the ascending order (the page size is 100), and the associated client-side search being limited to those 100 roles. If the role you wanted was not part of this initial set of roles, it did not appear in your search. (PL-40363, ZD-48229)
-  
-  This issue is now fixed. A newly introduced server-side search includes roles that are beyond the page size limit.
-
-- If the renewal of a HashiCorp Vault token that is used for token-based authentication fails, Harness attempts to renew the token perpetually. These attempts load the system and seem amplified in scenarios in which the connector or service is no longer in use. (PL-32647)
-  
-  To handle such scenarios better, Harness now pauses its attempts to renew a token if two consecutive renewal attempts fail. Harness resumes its renewal attempts when you perform one of the following tasks:
-    - You update the associated HashiCorp Vault connector.
-    - You test the associated HashiCorp Vault connector manually and the test succeeds.
-
-##### Hotfixes
-
-This release does not include hotfixes.
-
-#### Version 80406
-
-##### New features and enhancements
+- Earlier, Harness had an N-3 support policy for delegates. (PL-39452)
+   Now, the delegate expiration is calculated using the version difference between Harness Manager and the delegate. If the delegate and Harness Manager are on the same version, the delegate expiration is 24 weeks.
 
 - Earlier, in the audit trail, all changes to a user principal's role assignment were logged with the generic Update action type. The record offered no additional information about whether a role assignment was created, updated, or deleted. (PL-39799, ZD-46451)
 
@@ -257,11 +50,11 @@ This release does not include hotfixes.
 
 - You can now create secrets in child scopes using the parent scope in Secret Manager. For example, you can create secrets inside a project using the Secret Manager created at the Org or Account level. (PL-38949)
 
-##### Early access features
+### Early access features
 
 This release does not include early access features.
 
-##### Fixed issues
+### Fixed issues
 
 - In some scenarios, when the delegate tried to send a heartbeat to connect to Harness Manager and MongoDB was down, Harness Manager sent a self_destruct message to stop the delegate. (PL-38122)
 
@@ -295,10 +88,14 @@ This release does not include early access features.
 
   This issue has been fixed. 
 
-##### Hotfixes
+### Hotfixes
 
 This release does not include hotfixes.
 
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
 
 #### Version 80307
 
@@ -310,7 +107,7 @@ This release does not include hotfixes.
 
   By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
 
-  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 ##### Early access features
 
@@ -330,7 +127,7 @@ This release does not include early access features.
 
   The issue is now fixed. During long network outages, the delegate attempts to reconnect the websocket every time it fails to send a heartbeat.
 
-    This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+    This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - Updates to the role assignments of a user group in one project caused role assignments to get updated in other projects in the organization. The issue was observed in the following scenario:
     - You used a regex query to update role assignments in a project.
@@ -441,25 +238,25 @@ This release does not include any early access features.
 
   This issue has been resolved through improved message read performance and an increased read timeout. 
 
-  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - If the delegates that were eligible to execute a pipeline task (delegates that were within the account-organization-project scope of the pipeline and matched any configured delegate selectors) did not have the required tools or connectivity to execute the task, the task timeout message included delegates that did not meet the eligibility criteria. (PL-39624, ZD-46460, ZD-46513)
 
   This issue has been fixed. The message displayed on task timeout has been improved for scenarios in which no delegate matches specified selectors and no delegates are found in the account.
 
-  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You were allowed to create resource groups with the same identifier as a built-in resource group. (PL-39503)
   
   This issue has been fixed. Validation in the API that creates resource groups now checks whether an existing resource group has the same identifier.
 
-  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - A new `getAzureKeyVaultClient` API is available to fetch the list of Azure vaults. (PL-28392, ZD-44045)
 
   This option reduces the time it takes for Harness to reflect a newly-created Azure vault.
 
-  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 
 #### July 27, 2023, version 80022
@@ -524,7 +321,7 @@ This release does not include any early access features.
 1. If you have user management permissions, you can list all the personal access tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
 2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
-This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ##### Early access
 
@@ -540,19 +337,19 @@ This release does not include any early access features.
 
   This issue is now fixed.
 
-  This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The AWS connector widget's prefix field did not accept prefixes starting with a slash. Such slashes were stripped off, and this led to undesired behavior. (PL-39194, ZD-45104)
 
   Prefixes that begin with a slash are now supported. 
 
-  This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Account-level connectors with resource groups set to **Specified** were not available at the project-level. (PL-38828, ZD-44474). 
 
   This issue is now fixed. The connectors list shows the connectors for which users have resource group permissions set.
 
-  This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 #### July 06, 2023, version 79811
 
@@ -610,13 +407,13 @@ This release does not include any early access features.
 
    This issue is fixed with a code enhancement. The connectors list now shows the connectors for which users have resource group permissions set.
 
-   This item requires Harness Delegate version 23.06.79707. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The account-level **Session Timeout (in minutes)** allowed values greater than the 4320 minute maximum. (PL-32498)
 
    This issue has been resolved by adding a code validation. The field no longer accepts values above 4320 minutes.
 
-   This item requires Harness Delegate version 23.06.79707. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 #### June 19, 2023, version 79606
 
@@ -774,7 +571,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 - A warning now appears if you try to save a template with an existing identifier and an updated version label. This warns you that it will be merged with the existing template (upon confirmation). (CDS-47301)
 
-- The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set a secret expiration date. The Harness Delegate version 23.05.79307 is required for this feature. (PL-32708, ZD-42524)
+- The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set a secret expiration date. The Harness Delegate version 79307 is required for this feature. (PL-32708, ZD-42524)
 
 - AuthZ now considers the SAML setting that the user logged in to when multiple SAML settings are present and the user belongs to more than one of them. The user will be removed from any other SAML settings that the same user might have been part of and synced with Harness through previous SAML logins.  (PL-32484)
 
@@ -827,11 +624,11 @@ This release does not include any early access feature.
 - Custom Secret Manager creation does not consider the delegate selector. (PL-32260)
 
   In Custom SM configuration, decrypting secrets using the SSH connection to validate delegate selection fixed this issue.
-  The Harness Delegate version 23.05.79307 is required for this fix.
+  The Harness Delegate version 79307 is required for this fix.
 
 - Invites to users fail with an unauthorized error while RBAC setup is still in progress. (PL-32117)
 
-  A polling system ensures that RBAC setup has been completed. The Harness Delegate version 23.05.79307 is required for this fix.
+  A polling system ensures that RBAC setup has been completed. The Harness Delegate version 79307 is required for this fix.
 
 #### May 04, 2023, version 79214
 
@@ -1217,7 +1014,7 @@ This release does not include any early access feature.
 
 - Harness now supports the integration of GCP Secrets Manager for all users. (PL-31051)
   
-  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager)
+  For more information, see [Add a Google Cloud Secret Manager](https://developer.harness.io/docs/platform/Security/add-a-google-cloud-secret-manager)
 
 - There is a limit on the number of entities that can be created for **FREE** and **COMMUNITY** users in Harness. (PL-30838)
   
@@ -1310,7 +1107,7 @@ No early access features are available in this release.
 
 - Entities in Harness can now have `/` for the Name. (PL-29929)
 
-- [Looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
+- [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
 
 ##### Early access
 
@@ -1373,7 +1170,7 @@ No early access features are available in this release.
 
 #### January 10, 2023, version 78105
 
-Delegate version: 23.01.78100
+Delegate version: 78100
 
 ##### Important announcements
 
@@ -1455,7 +1252,7 @@ No early access features are available in this release.
 
 #### December 22, 2022, version 77908
 
-Delegate version: 22.12.77802
+Delegate version: 77802
 
 ##### What's new
 
@@ -1514,7 +1311,7 @@ No early access features are available in this release.
 
 - You can now refer to existing secrets of Azure Key Vault, AWS secret manager, and GCP secret manager. (PL-29915)
 
-  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](/docs/first-gen/firstgen-platform/security/secrets-management/reference-existing-secrets/).
+  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](https://developer.harness.io/docs/first-gen/firstgen-platform/security/secrets-management/reference-existing-secrets/).
 
 - You can now use the Git client to commit changes while creating or updating pipelines using Bitbucket on-prem as the Git provider. (PIE-6423)
 
@@ -1661,7 +1458,7 @@ Delegate: 77431
 
 #### November 11, 2022, version 77433
 
-Delegate version: 22.11.77431
+Delegate version: 77431
 
 ##### What's new
 
@@ -1678,7 +1475,7 @@ Delegate version: 22.11.77431
 
 - You can now create secrets using the Google Cloud Secret Manager in Harness. (PL-28978)
 
-  For more information, see [Add a Google Cloud Secret Manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager/).
+  For more information, see [Add a Google Cloud Secret Manager](https://developer.harness.io/docs/platform/security/add-a-google-cloud-secret-manager/).
 
 - You can now select modules and configure your own navigation in Harness. (SPG-153)
 
@@ -1811,7 +1608,7 @@ If you are on an older delegate version, you can upgrade your delegate and then 
 
 #### October 21, 2022, version 77221
 
-Delegate version: 22.10.77221
+Delegate version: 77221
 
 ##### What's new
 
@@ -1821,7 +1618,7 @@ Delegate version: 22.10.77221
 
 - You can now import Templates from your Git repo. (PL-28597)
 
-  See [Import a Template From Git](/docs/platform/git-experience/import-a-template-from-git/).
+  See [Import a Template From Git](https://developer.harness.io/docs/platform/git-experience/import-a-template-from-git/).
 
 ##### Fixed issues
 
@@ -1845,7 +1642,7 @@ Delegate version: 22.10.77221
 
 #### October 18, 2022, version 77116
 
-Delegate version: 22.10.77021
+Delegate version: 77021
 
 ##### What's new
 
@@ -1883,7 +1680,7 @@ N/A
 
 #### October 7, 2022, version 77025
 
-Delegate version: 22.10.77021
+Delegate version: 77021
 
 ##### What's new
 
@@ -1901,15 +1698,15 @@ Delegate version: 22.10.77021
 
   For more information, see:
 
-  [Create a Remote Step Template](/docs/platform/templates/create-a-remote-step-template/)
+  [Create a Remote Step Template](https://developer.harness.io/docs/platform/templates/create-a-remote-step-template/)
 
-  [Create a Remote Stage Template](/docs/platform/Templates/create-a-remote-stage-template)
+  [Create a Remote Stage Template](https://developer.harness.io/docs/platform/Templates/create-a-remote-stage-template)
 
-  [Create a Remote Pipeline Template](/docs/platform/Templates/create-a-remote-pipeline-template)
+  [Create a Remote Pipeline Template](https://developer.harness.io/docs/platform/Templates/create-a-remote-pipeline-template)
 
 - You can now use expressions to reference pre-existing secrets in Vault using a fully-qualified path. (PL-28352)
 
-  For more information, go to [Add a HashiCorp Vault secret manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault/).
+  For more information, see [HashiCorp Vault Secrets](https://developer.harness.io/docs/platform/security/add-hashicorp-vault/).
 
 - Harness will now send email notification for user invites when the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES is enabled. (PL-26218, ZD-32152,35287)
 
@@ -1933,7 +1730,7 @@ Delegate version: 22.10.77021
 
 #### September 29, 2022, version 76921
 
-Delegate version: 22.09.76810
+Delegate version: 76810
 
 ##### What's new
 
@@ -2094,7 +1891,7 @@ Users can assign roles to the built-in user group at a specific scope, which bec
 
   This is behind the feature flag CUSTOM_SECRET_MANAGER_NG.
 
-See [Add a Custom Secret Manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager).
+See [Add a Custom Secret Manager](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/custom-secret-manager).
 
 ##### Fixed issues
 
@@ -2116,7 +1913,7 @@ See [Add a Custom Secret Manager](/docs/platform/Secrets/Secrets-Management/cust
 
 - Git Experience in Next Gen is now enhanced and simplified. (PL-26339)
 
-  See [Git Experience](/docs/category/git-experience/).
+  See [Git Experience](https://developer.harness.io/docs/category/git-experience/).
 
 - You can now switch branches directly from the Pipeline execution history. This will make it easier to switch branches straight from execution history rather than going to the Pipeline studio first and then returning to execution history. (PIE-4985)
 
@@ -2147,7 +1944,7 @@ No early access features are available in this release.
 
 - You can now use an enhanced Git Experience. (PL-26339)
 
-  See [Harness Git Experience Overview](/docs/platform/git-experience/git-experience-overview/).
+  See [Harness Git Experience Overview](https://developer.harness.io/docs/platform/git-experience/git-experience-overview/).
 
   Harness will continue to support users who have been using the old Git Experience.
 
@@ -2203,7 +2000,7 @@ N/A
 
 #### August 8th, 2022, version 76128
 
-Delegate Version: 22.08.76128
+Delegate Version: 76128
 
 ##### What's new
 
@@ -2239,7 +2036,7 @@ N/A
 
 #### August 1st, 2022, version 76030
 
-Delegate Version: 22.08.76127
+Delegate Version: 76127
 
 ##### What's new
 

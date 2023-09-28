@@ -52,14 +52,14 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.srm,
           description:
             "Understand concepts such as SLOs, SLIs, and error budgets.",
-          link: "/docs/service-reliability-management/get-started/key-concepts",
+          link: "/docs/service-reliability-management/getting-started/service-reliability-management-basics",
         },
         {
           title: "Your first SLO",
           module: MODULES.srm,
           description:
             "Learn how to create, track, and monitor an SLO.",
-          link: "/docs/service-reliability-management/get-started/create-first-slo",
+          link: "/docs/service-reliability-management/getting-started/create-first-slo",
         },
       ],
     },

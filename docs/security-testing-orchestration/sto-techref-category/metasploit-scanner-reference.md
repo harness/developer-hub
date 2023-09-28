@@ -1,13 +1,12 @@
 ---
-title: Metasploit scanner reference for STO
+title: Metasploit scanner reference
 description: Instance scans with Metasploit
-sidebar_label: Metasploit scanner reference
-sidebar_position: 230
+sidebar_position: 160
 ---
 
 You can run Metasploit scans on your instances using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Important notes for running Metasploit scans in STO
+## Before you begin
 
 ### Docker-in-Docker requirements
 
@@ -25,7 +24,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Security step settings for Metasploit scans in STO
+## Security step settings
 
 ### Target and variant
 

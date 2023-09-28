@@ -1,6 +1,5 @@
 ---
-title: Configure Prometheus as health source
-sidebar_label: Prometheus
+title: Prometheus
 description: Add Prometheus health source to a monitored service.
 sidebar_position: 10
 ---

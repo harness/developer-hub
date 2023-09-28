@@ -6,7 +6,7 @@ title: Harness Certifications Frequently Asked Questions (FAQ)
 
 # Harness Certifications Frequently Asked Questions (FAQs)
 
-This FAQ page is designed to assist customers who are experiencing common issues while attempting to complete Harness certifications on our platform. From resolving exam glitches to managing time during the hands-on exam, this guide aims to provide quick and effective solutions beyond our [Instructions](/certifications/instructions) section.
+This FAQ page is designed to assist customers who are experiencing common issues while attempting to complete Harness certifications on our platform. From resolving exam glitches to managing time during the hands-on exam, this guide aims to provide quick and effective solutions.
 
 ## Table of Contents
 - [Exam gets "Stuck"](##exam-gets-stuck)
@@ -76,3 +76,4 @@ Enter your coupon code in the designated box during the checkout process. If the
 
 For any other queries or technical difficulties, please don't hesitate to contact us at [certifications@harness.io](mailto:certifications@harness.io).
 
+---

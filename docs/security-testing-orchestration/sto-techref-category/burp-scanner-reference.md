@@ -1,8 +1,7 @@
 ---
-title: Burp scanner reference for STO
+title: Burp scanner reference
 description: Instance scans with Burp
-sidebar_label: Burp scanner reference
-sidebar_position: 90
+sidebar_position: 80
 ---
 
 You can scan your application instances automatically using [Burp Enterprise](https://portswigger.net/burp/enterprise). 
@@ -19,7 +18,7 @@ To set up a Burp scan:
 
 </details>
 
-## Important notes for running Burp scans in STO
+## Before you begin
 
 
 
@@ -215,7 +214,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 <StoSettingIngestionFile  />
 
-## Security step settings for Burp scans in STO (legacy)
+## Security step settings (_deprecated_)
 
 #### Docker-in-Docker requirements
 

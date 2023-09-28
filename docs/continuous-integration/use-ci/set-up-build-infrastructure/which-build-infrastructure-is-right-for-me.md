@@ -17,8 +17,6 @@ You can run builds on Harness-hosted machines or your own infrastructure.
   <TabItem value="hosted" label="Harness Cloud" default>
 ```
 
-<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
-
 With Harness Cloud, your builds run in isolation on Harness-hosted machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
 
 Harness hosts, maintains, and upgrades these machines so that you can focus on developing software instead of maintaining build farms.
@@ -36,7 +34,6 @@ Self-hosted build infrastructure options include local machines, Kubernetes clus
 <Tabs>
   <TabItem value="local" label="Local" default>
 ```
-<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
 With the local runner, which is also known as the Docker runner, you can run builds on a local machine. You can execute build steps in Docker containers or directly on the host machine.
 
@@ -49,7 +46,11 @@ Self-hosted local build infrastructure is available with all CI plans. To learn 
   <TabItem value="k8s" label="Kubernetes cluster">
 ```
 
-<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+:::info
+
+This option is available only with paid CI plans.
+
+:::
 
 Executing builds in a Kubernetes cluster is useful when you want to run ephemeral builds-at-scale in your own infrastructure.
 
@@ -62,7 +63,11 @@ To learn more about using a Kubernetes cluster as build infrastructure, go to [S
   <TabItem value="vms" label="Virtual machines">
 ```
 
-<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+:::info
+
+This option is available only with paid CI plans.
+
+:::
 
 Your build infrastructure can use VMs from a Cloud provider, including AWS, Microsoft Azure, GCP, and Anka (for macOS build farms).
 

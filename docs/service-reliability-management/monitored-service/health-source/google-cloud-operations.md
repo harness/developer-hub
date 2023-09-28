@@ -1,6 +1,5 @@
 ---
-title: Configure Google Cloud Operations as health source
-sidebar_label: Google Cloud Operations
+title: Google Cloud Operations
 description: Add Google Cloud Operations health source to a monitored service.
 sidebar_position: 7
 ---

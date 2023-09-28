@@ -4,9 +4,9 @@ description: An overview of CI pipeline components and Build stage settings
 sidebar_position: 10
 ---
 
-This topic provides an overview of CI pipeline creation and configuration, including common components, such as stages, steps, and codebases, as well as advanced settings.
+This topic provides an overview of CI pipeline creation and configuration, including common components, such as **Build** stages, steps, and codebases, as well as advanced settings.
 
-For information about Harness CI's key features, Harness Platform components in Harness CI, and definitions of terms like build infrastructure, delegate, connector, and so on, go to [Harness CI key concepts](../get-started/key-concepts.md).
+For definitions of terms like stage, step, build infrastructure, delegate, connector, and so on, go to [CI pipeline components](../ci-quickstarts/ci-pipeline-basics.md).
 
 ## Pipelines
 
@@ -14,7 +14,8 @@ A CI pipeline is an end-to-end integration workflow that, in its simplest form, 
 
 You can run a pipeline manually or set up triggers to automatically run it on a schedule or when an event occurs, such as a Git merge in your codebase.
 
-### Create a Harness CI pipeline
+<details>
+<summary>Create a pipeline in Harness CI</summary>
 
 1. In the **Builds** (Continuous Integration) modules, select **Pipelines**, and then select **Create a Pipeline**.
 2. Enter a **Name** for the pipeline. **Description** and **Tags** are optional.
@@ -22,7 +23,7 @@ You can run a pipeline manually or set up triggers to automatically run it on a 
 4. If you want to use a [pipeline template](/docs/platform/Templates/template), select **Start with Template**.
 5. Select **Start**.
 
-You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure pipeline settings. For a guided experience, try one of the [CI tutorials](../get-started/tutorials.md).
+You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure pipeline settings. For a guided experience, try one of the [CI tutorials](../ci-quickstarts/ci-pipeline-quickstart.md).
 
 :::tip
 
@@ -30,9 +31,12 @@ You can also [import pipelines from Git](/docs/platform/git-experience/import-a-
 
 :::
 
-### Pipeline settings
+</details>
 
-In addition to a [default codebase](#codebases), the following settings are configurable at the pipeline level:
+<details>
+<summary>Pipeline settings</summary>
+
+In addition to a default [codebase](#codebases), the following settings are configurable at the pipeline level:
 
 * [Input sets and overlays](/docs/platform/Pipelines/input-sets)
 * [Triggers](/docs/category/triggers)
@@ -49,6 +53,8 @@ Harness [Input Sets](/docs/platform/Pipelines/input-sets) are collections of run
 With Input Sets and Overlays, you can use the same pipeline for multiple scenarios. You can define each scenario in an Input Set or Overlay, and then select the appropriate scenario at runtime.
 
 :::
+
+</details>
 
 ## Stages
 
@@ -76,8 +82,8 @@ All stages have an infrastructure definition, which represents the build infrast
 
 :::tip Tutorials
 
-* [Build on Harness Cloud build infrastructure](/tutorials/ci-pipelines/fastest-ci)
-* [Build on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
+* [Harness Cloud build infrastructure tutorial](/tutorials/ci-pipelines/fastest-ci)
+* [Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 :::
 
@@ -93,7 +99,7 @@ For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Bu
 
 ## Steps
 
-A stage contains one or more steps. Each step is a series of commands that perform a task. For example, A **Build and Push** step builds an image and pushes it to a cloud repo, a **Run** step runs a series of shell commands, and so on. Go to the following documentation for details about how you can use various CI steps in your pipelines:
+A stage contains one or more steps. Each step is a series of commands that perform a task. For example, A **Build and Push** step builds an image and pushes it to a cloud repo, a **Run** step runs a series of shell commands, and so on. Go to the following documentation for details about how you can use the various CI steps in your pipelines:
 
 * [Build and upload artifacts](/docs/category/build-and-upload-artifacts)
 * [Run tests](/docs/category/run-tests)
@@ -105,7 +111,7 @@ A stage contains one or more steps. Each step is a series of commands that perfo
 
 ## Advanced stage and step settings
 
-Stages and steps have advanced settings you can use to control the flow of operations.
+Stages and steps have advanced settings to control the flow of operations.
 
 ### Conditional Executions
 
@@ -137,17 +143,4 @@ See also:
 
 ### Environment variables
 
-Steps can produce or assign values to environment variables, and some steps require or allow environment variables as input.
-
-There are also a variety of environment variables related to pipeline, stage, and step metadata. For more information, go to the [CI environment variables reference](./optimize-and-more/ci-env-var.md).
-
-## Visual and YAML editors
-
-Harness CI provides two interchangeable modes for creating pipelines: The **Visual** editor and the **YAML** editor.
-
-* The **Visual** editor provides a GUI experience where you can easily configure settings, add and remove steps and stages, and drag-and-drop steps and stages to rearrange them, organize them in parallel, or add or remove them from step groups.
-* The **YAML** editor provides a text editor experience for creating pipelines.
-
-You can freely switch between the two editors. When editing a pipeline in Harness, use the selector at the top of the **Pipeline Studio** to switch between the **Visual** and **YAML** editors.
-
-![](./static/harness-yaml-quickstart-21.png)
+For information about environment variables, go to the [CI environment variables reference](./optimize-and-more/ci-env-var.md).

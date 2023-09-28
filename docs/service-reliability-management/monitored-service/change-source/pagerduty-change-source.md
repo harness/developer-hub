@@ -1,9 +1,10 @@
 ---
-title: Configure PagerDuty as a change source
-sidebar_label: PagerDuty
-description: Configure PagerDuty as a change source to monitor incidents.
-sidebar_position: 60
+title: PagerDuty
+description: Configure PagerDuty change source to monitor incidents.
+sidebar_position: 50
 ---
+
+# PagerDuty change source
 
 You can configure PagerDuty as a change source for a monitored service. 
 

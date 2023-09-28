@@ -25,8 +25,8 @@ For getting started quickly, you can use our [sample code from the SDK README](h
 
 You should read and understand the following:
 
-* [Feature Flags Overview](../../get-started/overview)
-* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
+* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
+* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
@@ -34,7 +34,7 @@ You should read and understand the following:
 
 The current version of this SDK is **2.0.0.**
 
-## Flutter and Dart requirements
+## Flutter and Dart Requirements
 
 To use version 2 and greater of this SDK, make sure you:
 
@@ -59,43 +59,22 @@ To use version 1 and earlier versions of this SDK, make sure you:
 To check if you have installed the prerequisites, run the `flutter doctor` command. 
 :::
 
-## Install the SDK for Flutter Web
+## Install the SDK
 
-To install the SDK, you must add the dependency, import the required packages, and then embed the JavaScript SDK.
+To install the SDK, add the Feature Flag Flutter SDK dependency into the `pubspec.yaml` file, for example:
 
-### Add the dependency
-
-Begin by adding the Feature Flag Flutter SDK dependency to your pubspec.yaml file:
 
 ```
-ff_flutter_client_sdk: ^2.1.0
+ff_flutter_client_sdk: ^1.0.8
 ```
+Then import the following packages into your project:
 
-### Import required packages
-
-Once you've added the dependency, import the necessary packages into your Dart files:
 
 ```
 import 'package:ff_flutter_client_sdk/CfClient.dart';  
 import 'package:ff_flutter_client_sdk/CfConfiguration.dart';  
 import 'package:ff_flutter_client_sdk/CfTarget.dart';
 ```
-
-### Embed the JavaScript SDK
-
-Be sure that you have added the dependency and imported the required packages before you begin this step. 
-
-1. Embed our JavaScript SDK by adding the following script tag to the `<head>` section of your web page:
-```html
-  <script src="https://sdk.ff.harness.io/1.19.2/sdk.client-iife.js"></script>
-```
-
-This installs the Feature Flags JavaScript SDK and makes it available to your application. Please ensure you regularly upgrade the
-JavaScript SDK version to get the latest updates. For the newest JavaScript SDK updates, monitor:
-
-* [JavaScript SDK GitHub Repo](https://github.com/harness/ff-javascript-client-sdk/releases)
-* [official Feature Flags Releases Page](https://developer.harness.io/release-notes/feature-flags)
-
 ## Initialize the SDK
 
 To initialize the Flutter SDK, you need to:

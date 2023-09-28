@@ -1,13 +1,12 @@
 ---
-title: Qualys Web Application Scanning (WAS) scanner reference for STO
+title: Qualys Web Application Scanning (WAS) scanner reference
 description: Instance scans with Qualys WAS
-sidebar_label: Qualys Web Application Scanning (WAS) scanner reference
-sidebar_position: 320
+sidebar_position: 240
 ---
 
 You can set up Qualys scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Important notes for running Qualys scans in STO
+## Before you begin
 
 ### Docker-in-Docker requirements
 
@@ -25,7 +24,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Security step settings for Qualys scans in STO
+## Security step settings
 
 ### Target and variant
 

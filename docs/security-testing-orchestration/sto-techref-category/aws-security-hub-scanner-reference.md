@@ -1,13 +1,12 @@
 ---
-title: AWS Security Hub scanner reference for STO
+title: AWS Security Hub scanner reference
 description: Configuration scans with AWS Image scanner
-sidebar_label: AWS Security Hub scanner reference
-sidebar_position: 50
+sidebar_position: 40
 ---
 
 You can scan your configurations using [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html), which provides a comprehensive view of your security state in AWS and helps you check your environment against security industry standards and best practices. 
 
-## Important notes for running AWS Security Hub scans in STO
+## Before you begin
 
 ### Docker-in-Docker requirements
 
@@ -182,7 +181,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 
 
-## Security step settings for AWS Security Hub scans in STO (*legacy*)
+## Security step settings (*deprecated*)
 
 You can set up an AWS Security Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

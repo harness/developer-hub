@@ -1,1 +1,0 @@
-Each scan operation has a specified _variant_ that specifies the branch, tag, or other target variant to scan.  

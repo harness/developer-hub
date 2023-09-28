@@ -1,14 +1,13 @@
 ---
-title: Brakeman scanner reference for STO
+title: Brakeman scanner reference
 description: Repository scans with Brakeman
-sidebar_label: Brakeman scanner reference
-sidebar_position: 80
+sidebar_position: 70
 ---
 
 You can run [Brakeman](https://brakemanscanner.org/) scans on your Ruby on Rails applications. 
 
 
-## Important notes for running Brakeman scans in STO
+## Before you begin
 
 ### Docker-in-Docker requirements
 
@@ -28,13 +27,15 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Brakeman step settings for STO scans
+## Brakeman step configuration
 
 The recommended workflow is to add an Brakeman step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Brakeman scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
+```mdx-code-block
+import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
+```
 
-
-
+<StoScannerStepNotes />
 
 <details>
     <summary>Scanner Template</summary>
@@ -191,7 +192,8 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
-## Security step settings for Brakeman scans in STO (legacy)
+## Security step settings (*deprecated*)
+
 
 You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

@@ -1,6 +1,5 @@
 ---
-title: Configure Splunk as health source
-sidebar_label: Splunk
+title: Splunk
 description: Add Splunk health source to a monitored service.
 sidebar_position: 11
 ---
