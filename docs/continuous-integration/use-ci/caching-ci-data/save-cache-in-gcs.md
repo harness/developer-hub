@@ -275,18 +275,15 @@ There are specific requirements for cache keys and paths for Go, Node.js, and Ma
 </Tabs>
 ```
 
-## Placement of save and restore cache steps
+## Cache step placement in single or multiple stages
 
 The placement and sequence of the save and restore cache steps depends on how you're using caching in a pipeline.
 
-* If you use caching to optimize a single stage, the **Restore Cache from GCS** step occurs before the **Save Cache to GCS** step.
-* If you use caching to share data across stages, the **Save Cache to GCS** step occurs in the stage where you create the data you want to cache, and the **Restore Cache from GCS** step occurs in the stage where you want to load the previously-cached data.
+### Single-stage caching
 
-The following YAML examples show save and restore cache steps used within the same stage and across two stages.
+If you use caching to optimize a single stage, the **Restore Cache from GCS** step occurs before the **Save Cache to GCS** step.
 
-### YAML example: Restore and save cache in the same stage
-
-This YAML example includes one stage. At the beginning of the stage, the cache is restored so the cached data can be used for the build steps. At the end of the stage, if the cached files changed, updated file are saved to the cache bucket.
+This YAML example demonstrates caching within one stage. At the beginning of the stage, the cache is restored so the cached data can be used for the build steps. At the end of the stage, if the cached files changed, updated file are saved to the cache bucket.
 
 ```yaml
   stages:
@@ -307,7 +304,7 @@ This YAML example includes one stage. At the beginning of the stage, the cache i
                     bucket: ci_cache
                     key: gcp-{{ checksum "package.json" }}
                     archiveFormat: Tar
- ...
+...
               - step:
                   type: SaveCacheGCS
                   name: Save Cache to GCS_1
@@ -321,9 +318,30 @@ This YAML example includes one stage. At the beginning of the stage, the cache i
                     archiveFormat: Tar
 ```
 
-### YAML example: Save and restore cache across stages
+### Multi-stage caching
 
-This YAML example includes two stages. The first stage creates a cache bucket and saves the cache to the bucket, and the second stage retrieves the previously-saved cache.
+Stages run in isolated workspaces, so you can use caching to pass data from one stage to the next.
+
+If you use caching to share data across stages, the **Save Cache to GCS** step occurs in the stage where you create the data you want to cache, and the **Restore Cache from GCS** step occurs in the stage where you want to load the previously-cached data.
+
+The following diagram illustrates caching across two stages.
+
+```mermaid
+graph TD
+  accTitle: Multi-Stage
+  accDescr: Diagram showing caching across two stages
+  subgraph stage1[First Stage]
+    A1(Produce data to write to cache) --> B1
+    B1(Run Save Cache step)
+  end
+  stage1 --> stage2
+  subgraph stage2[Second Stage]
+    A2(Run Restore Cache step) --> B2
+    B2(Use data retrieved from cache)
+  end
+```
+
+This YAML example demonstrates how to use caching across two stages. The first stage creates a cache bucket and saves the cache to the bucket, and the second stage retrieves the previously-saved cache.
 
 ```yaml
     stages:  
@@ -400,6 +418,52 @@ This YAML example includes two stages. The first stage creates a cache bucket an
                                     archiveFormat: Tar  
                                     failIfKeyNotFound: true  
 ```
+
+## Caching in parallel or concurrent stages
+
+If you have multiple stages that run in parallel, **Save Cache** steps might encounter errors when they attempt to save to the same cache location concurrently. To prevent conflicts with saving caches from parallel runs, you need to skip the **Save Cache** step in *all except one* of the parallel stages.
+
+This is necessary for any [looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism.md) that causes stages to run in parallel, either literal parallel stages or matrix/repeat strategies that generate multiple instances of a stage.
+
+To do skip the **Save Cache** step in all except one parallel stage, add the following [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings) to the **Save Cache** step(s):
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual editor">
+```
+
+1. Edit the **Save Cache** step, and select the **Advanced** tab.
+2. Expand the **Conditional Execution** section.
+3. Select **Execute this step if the stage execution is successful thus far**.
+4. Select **And execute this step only if the following JEXL condition evaluates to True**.
+5. For the JEXL condition, enter `<+strategy.iteration> == 0`.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML editor" default>
+```
+
+Add the following `when` definition to the end of your **Save Cache** step.
+
+```yaml
+              - step:
+                  ...
+                  when:
+                    stageStatus: Success ## Execute this step if the stage execution is successful thus far.
+                    condition: <+strategy.iteration> == 0 ## And execute this step if this JEXL condition evaluates to true
+```
+
+This `when` definition causes the step to run only if *both* of the following conditions are met:
+
+* `stageStatus: Success`: Execute this step if the stage execution is successful thus far.
+* `condition: <+strategy.iteration> == 0`: Execution this step if the JEXL expression evaluates to true.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+The JEXL expression `<+strategy.iteration> == 0` references the looping strategy's iteration index value assigned to each stage. The iteration index value is a zero-indexed value appended to a step or stage's identifier when it runs in a [looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism.md). Although the stages run concurrently, each concurrent instance has a different index value, starting from `0`. By limiting the **Save Cache** step to run on the `0` stage, it only runs in one of the concurrent instances.
 
 ## Cache step logs
 
