@@ -55,7 +55,7 @@ To generate a new token, do the following:
 
    ![](static/secure-delegates-with-tokens-03.png)
 
-2. Select **Tokens**. Here you can view, create, and revoke all delegate tokens. You can also use the **More Options** (&vellip;) menu to view **More info** or **Copy token**. You must have the Create Delegate permission to copy a token.
+2. Select **Tokens**. Here you can view, create, and revoke all delegate tokens. For each token, you can select the **More Options** (&vellip;) menu to view **More info** or **Copy token**. You must have the Create Delegate permission to copy a token.
 
    ![](static/secure-delegates-with-tokens-07.png)
 
