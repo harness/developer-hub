@@ -358,6 +358,10 @@ No, we don't use the customer secret manager to encrypt delegate tokens. Rather 
 
 No, we don't have limit on pipeline creation, we do have limit for entities creation for free/community tier, but no limits for enterprise.
 
+#### I have automatic upgrade on in my delegate.  Why is my delegate version behind what's listed as the latest version in dockerhub (https://hub.docker.com/r/harness/delegate/tags)?
+
+Harness uses the ring methodology commonly used in software release management for delegate releases.  The version for your account could be overriden to use the latest in Dockerhub using the API: https://apidocs.harness.io/tag/Delegate-Setup-Resource#operation/overrideDelegateImageTag
+
 #### Is there a limit to the number of triggers a pipeline can have?
 
 There is no limit on number of triggers for pipeline.
