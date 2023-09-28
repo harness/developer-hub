@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-09-25T10:00
+date: 2023-09-28T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -21,8 +21,23 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest: September 28, 2023
 
-### Continuous Delivery, version 80811
+### Harness Platform, version 80811
 
+- Access control lists (ACLs) have now been optimized by the removal of ACLs that are no longer necessary and by ensuring that redundant ACLs are no longer created for new role assignments. (PL-41154)
+
+- The default interval for synchronizing LDAP groups has been increased from 15 minutes to 1 hour. This value is customizable, so you can set it to a value of your choice. This change does not affect existing LDAP configurations. (PL-40860)
+
+- The **Assign Roles** dialog listed the built-in Account Viewer role when you were assigning roles to a user group, and it did not provide a way for you to remove that role. You could, however, remove the Account Viewer role when updating the role assignments in the **Manage Role Bindings** dialog.
+
+  This issue has been fixed. You can now remove the Account Viewer role when assigning roles to a user group. (PL-32413)
+
+- The Roles page now supports a list view in addition to the existing card view. In addition to the information shown in the card view, the list view shows you which resources are selected for the role. To see the list view, in the top-right corner of the Roles page, select the list view button. (PL-32183)
+
+- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-41063)
+
+   This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### Continuous Delivery, version 80811
 
 - There was no way in Pipeline Studio to add step group variables when creating a step group template. This section has now been added. (CDS-78683)
 
@@ -33,6 +48,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ### Service Reliability Management, version 1.1.3
 
 - SRM dashboards now include comprehensive data for composite Service Level Objectives (composite SLOs). This enhancement offers users a holistic view of both simple and composite SLO performance. (SRM-15419)
+
 
 ## September 19, 2023
 
