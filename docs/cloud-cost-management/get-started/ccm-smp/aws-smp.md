@@ -659,8 +659,6 @@ ccm:
   clickhouse:
       enabled: true
   batch-processing:
-    additionalConfigs:
-      AWS_CUR_BILLING: 'false'
     cloudProviderConfig:
       S3_SYNC_CONFIG_BUCKET_NAME: <S3_SYNC_CONFIG_BUCKET_NAME> [AWS Setup - bucket name from here 'harness-ccm-service-data-bucket-<accountid>']
       S3_SYNC_CONFIG_REGION: <S3_SYNC_CONFIG_REGION> [AWS Setup - Create S3 buckets step - Use region from here]
