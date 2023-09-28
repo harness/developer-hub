@@ -48,7 +48,7 @@ To delete the application, remove the finalizer or delete its resources. Removin
 
 During creation or deletion of any GitOps app, if the process fails with the message `failed to create app in argo: failed to execute create app task: rpc error: code = Unknown desc = error creating application: create not allowed while custom resource definition is terminating` or some similar message about CRD being stuck in termination state, the cause is most likely due to some resource of this CRD pending deletion due to it having a finalizer.
 
-In order for this CRD to complete termination, the finalizer from the pending resourcce needs to be removed.
+In order for this CRD to complete termination, the finalizer from the pending resource needs to be removed.
 Possible CRD's causing this could most likely be one of these three: `applications.argoproj.io`, `applicationsets.argoproj.io` or 
 `appprojects.argoproj.io`
 
@@ -74,7 +74,7 @@ test-app    Unknown    Unknown
 ```
 $ kubectl patch applications.argoproj.io test-app -n harness --type json --patch="[{ \"op\": \"remove\", \"path\": \"/metadata/finalizers\" }]"
 
-applications.argoproj.io/test patched
+applications.argoproj.io/test-app patched
 ```
 
 This will now let the CRD `applications.argoproj.io` terminate gracefully.
