@@ -79,9 +79,8 @@ Adding your LDAP Provider to Harness initially involves establishing a connectio
 :::note
 If you experience frequent delegate time-out errors, try the following:
 1. In Harness, set the LDAP Response Timeout to 2 minutes.
-2. Set the sync interval to 1 hour. It is set to 15 minutes by default.
+2. Set the sync interval to the default value of 1 hour if the configured value is lower.
 :::
-
 
 #### Query your LDAP directory
 
@@ -239,6 +238,13 @@ Once LDAP is set up and enabled in Harness, you cannot add a second LDAP SSO ent
 
 :::
 
+### Configure an LDAP user sync schedule
+The default LDAP user synchronization interval is 1 hour. The interval is specified as a cron expression and is configurable.
+
+To configure a synchronization schedule, in **Enter a custom cron expression**, modify the default cron expression to suit your requirement.
+
+The page includes a tabular breakdown of the cron expression for ease of understanding and verification. The **Cron expression** field shows you whether or not the cron expression is valid.
+
 ### Add a Harness User Group with LDAP users
 
 Once you have configured an LDAP SSO Provider for Harness, you can create a Harness User Group and sync it to your LDAP directory.
@@ -260,7 +266,7 @@ Your User Group is listed in User Groups.
 
 
 :::info note
-Once you link your SSO Provider Group in Harness, it will take a few minutes to sync the LDAP group users with the Harness group. Harness syncs with the LDAP server every 15 minutes. If you add users to your LDAP directory you will not see it immediately in Harness. Once Harness syncs with your LDAP directory, the users are added to the Harness group.
+Once you link your SSO provider group in Harness, synchronization begins. Synchronization might require a few minutes to complete. Subsequently, Harness synchronizes with the LDAP server at an interval that you set when configuring LDAP in Harness. Users you add to your LDAP directory do not appear in Harness immediately. New users are added to the user group when the next group synchronization occurs.
 
 :::
 
@@ -288,7 +294,8 @@ If the Harness User Group is removed, the User account remains, and when the Use
 You can enable the LDAP SSO Provider you configured in Harness and begin using LDAP as the login method for Harness users.
 
 :::warning
-Before you enable LDAP for SSO and log out of Harness to test it, ensure that your LDAP users have the passwords associated with their email addresses. If they do not have the passwords, they will be locked out of Harness. Active Directory passwords are stored using non-reversible encryption. You can also add a new user to your LDAP group, record its password, wait 15 minutes for the corresponding Harness group to refresh, and then log into Harness using the new user.  
+Before you enable LDAP for SSO and log out of Harness to test it, ensure that your LDAP users have the passwords associated with their email addresses. If they do not have the passwords, they will be locked out of Harness. Active Directory passwords are stored using non-reversible encryption. You can also add a new user to your LDAP group, record its password, wait for the configured LDAP user synchronization interval for the corresponding Harness group to refresh, and then log into Harness using the new user.
+
 Contact Harness Support at [support@harness.io](mailto:support@harness.io) if there is a lockout issue.
 :::
 
