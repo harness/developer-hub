@@ -72,3 +72,4 @@ The change event details screen appears. It displays the following details:
 You can hover over the timeline to view the change event details.
 
 <docimage path={require('./static/change-impact-change-event-details.png')} />
+
