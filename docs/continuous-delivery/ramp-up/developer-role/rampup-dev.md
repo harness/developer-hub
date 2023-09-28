@@ -1,6 +1,6 @@
 ---
-title: Developer role ramp-up guide
-description: Perform a deployment in just a few steps 
+title: Developer day to day guide
+description: Daily deployment tasks for devs. 
 sidebar_position: 1
 ---
 

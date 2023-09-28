@@ -14,7 +14,7 @@ This topic explains the best practices for template management.
 
 :::note
 
-For guidance on ramping up your teams using templates, go to [Templates ramp-up guide](/docs/continuous-delivery/ramp-up/rampup-templates).
+For guidance on ramping up your teams using templates, go to [Templates ramp-up guide](/docs/continuous-delivery/ramp-up/pipeline-designer-role/rampup-templates).
 
 :::
 
