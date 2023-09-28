@@ -235,6 +235,10 @@ For example, `<+issue.Status> == "Done"` in the Approval Criteria **JEXL Express
 
 `Status` is an issue field. You can use any issue field.
 
+If a field in the JEXL criteria includes spaces, enclose the field in quotation marks, as shown in the following example:
+
+`<+issue.Priority> == "P1" && <+issue."1-line Update"> == "test" && <+issue."Remaining Estimate"> == "2h" && <+issue.Description> == "new description"`
+
 ### Notes
 
 * To add comments in you can use **Comment** key. Use `\\` for line breaks.
