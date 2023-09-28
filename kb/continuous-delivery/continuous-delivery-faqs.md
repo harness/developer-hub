@@ -271,6 +271,10 @@ For any manifest object which creates the pod, you have to add this label in its
 
 The release name is used to create a harness release history object, which contains some metadata about the workloads. This helps us perform the steady state check.
 
+#### The deployment still got triggered despite the freeze window I've set.  What gives?
+
+Pipelines executed with custom webhook triggers can override deployment freeze. This can be enabled by associating the API key or Service Account API key authorization with deployment freeze override permissions (https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#trigger-freeze)
+
 #### I have a pipeline in CG that has a variable of ```${artifact.buildNo}``` in a command and same variable is not working in NextGen.
 
 You can use artifact.tag in NG , which is equivalent to artifact.buildNo from CG, you can find more details around mapping in : [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrating-firstgen-expressions-to-nextgen)
