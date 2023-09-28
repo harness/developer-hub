@@ -1262,7 +1262,7 @@ Here are the sidecar expressions:
 
 ## Approval
 
-Whenever a user grants an approval in an Approval step, the pipeline maintains the user information of the approver for the rest of the pipeline execution.  You can use these variables in notifications after an approval gets granted.  
+Whenever a user grants an approval in an Approval step, the pipeline maintains the user information of the approver for the rest of the pipeline execution. You can use these variables in notifications after an approval is granted.  
 
 These variables are available for Approval steps only, not stages. 
 
