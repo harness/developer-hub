@@ -29,7 +29,7 @@ You can customize the Changes dashboard by using the following filters:
 - **Services**: Select the monitored service for which you want to see changes. You can select multiple monitored services.
 - **Environments**: Select the environment for which you want to see changes. You can select multiple environments.
 - **Change Types**: Select the type of change source for which you want to see changes. The available filters are **Deployment**, **Infrastructure**, **Incidents**, **Feature Flags**, and **Chaos Experiment**.
-- **Sources**: Select the source for which you want to see changes. For example, Harness CD NextGen, Harness CD, Kubernetes, PagerDuty, Harness FF (Harness Feature Flag), and Harness CE (Harness Chaos Experiment). You can select multiple change sources.
+- **Sources**: Select the source for which you want to see changes. For example, **Harness CD NextGen**, **Harness CD**, **Kubernetes**, **PagerDuty**, **Harness FF** (Harness Feature Flag), and **Harness CE** (Harness Chaos Experiment). You can select multiple change sources.
 
 
 #### Changes timeline
