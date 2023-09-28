@@ -627,7 +627,7 @@ This setting is located under **Additional Configuration** in the Visual editor,
 
 You can provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. If not specified, the defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`
 
-For Kotlin and Scala, you must configure this setting in YAML, such as: `testAnnotations: annotation1, annotation2, annotation3`.
+This setting is located under **Additional Configuration** in the Visual editor, or you can configure it in YAML as `testAnnotations: annotation1, annotation2, annotation3`.
 
 ```mdx-code-block
   </TabItem>
@@ -755,7 +755,7 @@ Or you can include additional flags, such as:
   <TabItem value="python" label="Python">
 ```
 
-Provide runtime arguments for tests, for example:
+**Build Arguments** are optional for Python. You can provide runtime arguments for tests, for example:
 
 ```yaml
                     args: "--junitxml=out_report.xml"
@@ -778,7 +778,7 @@ Provide runtime arguments for tests, for example:
 
 Specify one or more paths to files that store [test results in JUnit XML format](../set-up-test-intelligence/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-This field is required for the Run Tests step to [publish test results](./viewing-tests.md).
+This field is required for the Run Tests step to [publish test results](./viewing-tests.md). This field is optional for Python.
 
 ### Pre-Command
 
