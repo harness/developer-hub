@@ -409,3 +409,53 @@ Free monthly credits for up to 2,000 build minutes.
 #### I want to develop a build built for MacOS, do I have to use homebrew as the installer?
 
 No, Harness also supports multiple versions of xcode. Please see our document on iOS and macOS applications for more details [https://developer.harness.io/tutorials/ci-pipelines/build/ios/]
+
+
+#### Which Drone plugins are supported in Harness CI?
+You can build your own plugins or use one of the many preexisting plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/), [GitHub Actions Marketplace](https://github.com/marketplace?type=actions), or the [Bitrise Integrations library](https://bitrise.io/integrations/steps).
+Yes, for details, go to [Use plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins).
+
+#### Using S3 to cache and restore between Steps?
+
+Yes, for details, go to [Save and Restore Cache from S3](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/).
+
+#### Using GCS to cache and restore between Steps?
+
+Yes, for details, go to [Save and Restore Cache from GCS](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs).
+
+#### How to use Background step settings?
+
+Use Background steps to manage dependent services that need to run for the entire lifetime of a Build stage. 
+For details, go to  [Background step settings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
+
+#### How to build and push artifacts and images?
+
+You can use Harness CI to upload artifacts, such as Docker images or test results.
+For details, go to [Build and push artifacts and images](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
+
+#### How to Use Harness Cloud build infrastructure?
+
+With Harness Cloud, you can run builds in isolation on Harness-hosted VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines
+For details, go to [Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+
+#### How to create and configure a codebase?
+
+CI pipelines build and test code that is pulled from a Git code repository. When you add a Build stage to a CI pipeline, you can select a code repo connector that connects to the Git account or repository where your code is stored.
+For details, go to [Create and configure a codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase).
+
+#### CI codebase variables reference
+
+In Harness CI, you set up a codebase by creating a Harness connector that connects to a Git repo.
+For details, go to [CI codebase variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
+
+#### How to Enable Test Intelligence?
+
+Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build
+For details, go to [Enable Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+
+#### Does Harness CI support Multilayer caching?
+Yes, for details, go to [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching).
+
+#### Does Harness CI support script execution?
+
+Yes, for details, go to [Run scripts](https://developer.harness.io/docs/category/run-scripts).
