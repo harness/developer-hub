@@ -785,7 +785,7 @@ Currently, FEATURE_NAME is behind the feature flag `CDS_TERRAGRUNT_CLI_OPTIONS_N
 
 :::
 
-This setting allows you to set the Terragrunt CLI options for Terragrunt commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
+This setting allows you to set the Terragrunt CLI options for Terragrunt commands depending on the Terragrunt step type. For example: `-lock=false`, `-lock-timeout=0s`.
 
 ## YAML examples
 
