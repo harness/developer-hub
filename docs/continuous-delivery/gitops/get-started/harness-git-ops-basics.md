@@ -147,7 +147,9 @@ A cluster is the target deployment cluster that is compared to the desire state.
 
 Clusters are synced with the source manifests you add as GitOps Repositories.
 
-You can run an Agent in your target cluster or in any cluster that has access to your target clusters.
+You can run an Agent in your applications destination cluster or in any cluster that has access to your applications clusters.
+
+By default, Agent has one cluster defined, the cluster it is running in - `in-cluster` with url `kuberntes.default.svc`. Namespaced agent doesn't have `in-cluster` as it doesn't have cluster scope access, however access to the cluster namespaced agent is running in can be added by providing service account with cluster scope access when creating cluster.
 
 Only the Agent is needed for GitOps, but the Harness Delegate is needed for other Harness operations (RBAC, etc.). You can use the Agent cluster for both the Harness Delegate and the Agent, or just the Agent: 
 
