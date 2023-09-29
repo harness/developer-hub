@@ -9,7 +9,7 @@ Harness Self-Managed Enterprise Edition enables you to configure self-managed ob
 
 You can install MinIO on your preferred VMs and provide the endpoint in your Harness Helm charts. This topic describes how to set up 4 MinIO servers.
 
-### Prerequisites
+### MinIO prerequisites
 
 Make sure to meet the MinIO prerequisites before you set up self-managed object storage. For prerequisites, go to [Object Storage for Linux](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html#prerequisites) in the MinIO documentation.
 
