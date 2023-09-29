@@ -100,6 +100,10 @@ Yes you can add multiple projects to the same repository, GitX is entity based n
 
 No , Harness will never have any write access to your account.
 
+#### Is there a tool to migrate from FirstGen to NextGen ?
+
+Yes.  You can use https://harness.github.io/migrator/
+
 #### Is auto-upgrade available for ECS delegates ?
 
 We only support auto upgrade for delegates in K8s Infra.
