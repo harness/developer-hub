@@ -66,6 +66,10 @@ If the same user was manually added first and now pushed from SCIM, it would be 
 
 No, as of now we don't support but it is in our roadmap.
 
+#### Why is automatic upgrade turned off for my delegate ?
+
+It could be it was disabled through `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>` or the cronjob was deleted or the cronjob never existed (the kubernetes audit logs can help you find out about that last part)
+
 #### Do we have some kind of dashboards where I can track my current status of delegates ?
 
 Yes , you can setup prometheus to get the metrics . For more Information on setting that up, please go through the following [Documentation](/docs/platform/delegates/manage-delegates/delegate-metrics)
