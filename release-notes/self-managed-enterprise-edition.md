@@ -70,7 +70,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
    **Migration script**
 
-   The Helm package includes `migrate-values-0.9.x.sh` script in the scripts directory. You must add the file path to your old `override.yaml` file when you execute the script. 
+   The Helm package includes a `migrate-values-0.9.x.sh` script in the scripts directory. You must add the file path to your old `override.yaml` file when you execute the script. 
 
    This script requires `yq`. You must install `yq` binaries to run the script.
 
