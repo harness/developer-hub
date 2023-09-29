@@ -128,6 +128,11 @@ We don't support Audit Trails for read API request like GET .
 
 No, we can not at this moment .
 
+#### Where can I find the source of the helm chart for the delegate ? 
+
+Here is the source of the helm chart for the delegate:
+https://app.harness.io/storage/harness-download/delegate-helm-chart/
+
 #### Is there a way to exclude a delegate from taking a task?
 
 There is no way as of now to exclude delegates from picking up tasks for other pipelines.
