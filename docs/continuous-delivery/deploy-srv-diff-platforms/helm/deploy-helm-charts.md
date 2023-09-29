@@ -252,7 +252,7 @@ service:
                   gitFetchType: Branch
                   folderPath: parent-chart
                   branch: main
-              subChartName: first-child
+              subChartPath: first-child
               skipResourceVersioning: false
               enableDeclarativeRollback: false
               helmVersion: V3
