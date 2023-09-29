@@ -1,7 +1,7 @@
 ---
 title: Build policies using Harness AIDA (coming soon!)
 description: Build Policies using Harness AIDA
-sidebar_position: 80
+sidebar_position: 70
 ---
 
 :::info Important Notes
@@ -13,6 +13,8 @@ Visit the following Harness Legal pages for legal information about AIDA:
 - [AIDA Data Privacy](https://www.harness.io/legal/aida-privacy)
 
 :::
+
+
 
 Harness AI Development Assistant (AIDA&trade;) includes comprehensive support for the following functionalities:
 
