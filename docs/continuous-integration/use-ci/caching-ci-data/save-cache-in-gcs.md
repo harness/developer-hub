@@ -283,7 +283,7 @@ The placement and sequence of the save and restore cache steps depends on how yo
 
 If you use caching to optimize a single stage, the **Restore Cache from GCS** step occurs before the **Save Cache to GCS** step.
 
-This YAML example demonstrates caching within one stage. At the beginning of the stage, the cache is restored so the cached data can be used for the build steps. At the end of the stage, if the cached files changed, updated file are saved to the cache bucket.
+This YAML example demonstrates caching within one stage. At the beginning of the stage, the cache is restored so the cached data can be used for the build steps. At the end of the stage, if the cached files changed, updated files are saved to the cache bucket.
 
 ```yaml
   stages:

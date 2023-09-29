@@ -442,7 +442,7 @@ If you have multiple stages that run in parallel, **Save Cache** steps might enc
 
 This is necessary for any [looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism.md) that causes stages to run in parallel, either literal parallel stages or matrix/repeat strategies that generate multiple instances of a stage.
 
-To do skip the **Save Cache** step in all except one parallel stage, add the following [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings) to the **Save Cache** step(s):
+To skip the **Save Cache** step in all except one parallel stage, add the following [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings) to the **Save Cache** step(s):
 
 ```mdx-code-block
 <Tabs>
