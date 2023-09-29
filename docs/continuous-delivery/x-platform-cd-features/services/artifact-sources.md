@@ -2929,6 +2929,8 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, go to [Artifactory Connector Settings Reference](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
+<!-- CDS-77239 -->
+
 To add an artifact from Artifactory, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
@@ -2940,14 +2942,40 @@ To add an artifact from Artifactory, do the following:
 7. In **Artifact Repository Type**, select **Artifactory**, and then select **Continue**.
 8. In **Artifactory Repository**, select of create an Artifactory Connector that connects to the Artifactory account where the repo is located. Click **Continue**.
 9. The **Artifact Details** settings appear.
-10. In **Repository URL**, enter the URL from the `docker login` command in Artifactory's **Set Me Up** settings.
+
+<figure>
+
+<docimage path={require('./static/kubernetes-services-16.png')} width="100%" height="100%" title="Click to view full size image" />  
+
+<figcaption>Figure 1: Elements in the Artifactory UI and their equivalents in the <b>Artifact Details</b> dialog box.</figcaption>
+</figure>
+
+10. In **Repository URL**, enter the domain from the artifact URL. For example:
+
+    - Artifact URL = `https://myorg.jfrog.io/artifactory/docker-local/alpine/`
+    
+    - Artifact domain = `myorg.jfrog.io`
+
+    In this case, enter **`myorg.jfrog.io`**.
+
+    You can also see the domain in the `docker login` command in Artifactory's **Set Me Up** settings. 
     
     ![](static/kubernetes-services-15.png)
+
 11. In **Repository**, enter the repo name. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `docker-remote`.
 12. In **Artifact Path**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
-13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
-    
-    ![](static/kubernetes-services-16.png)
+13. In **Tag Regex**, enter a regular expression that matches the tag of the artifact you want to fetch. 
+    Here are some examples:
+      - `*/*` : Fetch all artifacts from all directories including their sub-directories.
+      - `*/*.zip` : Fetch all `.zip` artifacts from all directories, including sub-directories.
+      - `*`: fetch all artifacts in root directory
+      - `*.zip` : Fetch all `.zip` artifacts in the root directory.
+      - `folder/*` : Fetch all artifacts contained in directory `folder`.
+      - `folder/*.zip` : Fetch all `.zip` artifacts contained in directory `folder`.
+      - `folder/*/*` : Fetch all artifacts from directories and their sub-directories contained in `folder`.
+      - `folder/*/*.zip` : Fetch all `.zip` artifacts from directories and their sub-directories contained in `folder`.
+      - `folder*/*` : Fetch all artifacts from directories and their subdirectories matching `folder*`.    
+
 14. If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
  <!-- CDS-71711 -->
 15. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
