@@ -3432,7 +3432,7 @@ We had to redesign our release history to store all rendered manifests in secret
 
   ![Continue](static/c4dc3bbb40c46e0ffd5b15d3cb38c4efaad154d0ab0453aad3408fd41ff10aca.png)
 
-- [Input sets](/docs/platform/pipelines/run-pipelines-using-input-sets-and-overlays/) not working with a stage template. (CDS-48475)
+- [Input Sets](/docs/platform/pipelines/input-sets) not working with a stage template. (CDS-48475)
 
   This was an issue with running pipelines using input sets specifically containing artifact sources with no runtime inputs. In this case, users were seeing the error message "Exception in resolving template refs". When run manually without input sets the executions went through fine. This was happening because an extra field was being set in the input set. Now we have added handling for that field and executions work as expected.
 

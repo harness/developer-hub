@@ -6,6 +6,8 @@ helpdocs_topic_id: 3fqwa8et3d
 helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/pipelines/run-pipelines-using-input-sets-and-overlays
 ---
 
 Harness Input Sets are collections of runtime inputs for a Pipeline provided before execution.
@@ -22,9 +24,7 @@ Overlays are groups of Input Sets. Overlays enable you to provide several Input 
 
 With Input Sets and Overlays, you can make a single Pipeline template that can be used for multiple scenarios. Each scenario can be defined in an Input Set or Overlay and simply selected at runtime.
 
-Looking for the How-to? See [Run Pipelines using Input Sets and Overlays](run-pipelines-using-input-sets-and-overlays.md).
-
-### Input Sets Overview
+## Input Sets Overview
 
 Nearly every setting in a Pipeline can be configured as a runtime input. You can then create an Input Set from those inputs.
 
@@ -44,7 +44,7 @@ Here are some Input Set examples:
 
 Input sets group the values of these entities and make it easy provide the correct set of values for a single Pipeline execution, and reuse the same values for the executions of multiple Pipelines.
 
-### Overlays Overview
+## Overlays Overview
 
 You can add several Input Sets as an Overlay. Overlays are use when:
 
@@ -61,13 +61,13 @@ In this use case, you can then create different Input Sets:
 
 For a specific execution, you provide multiple Input Sets. All together, these Input Sets provide a complete list of values needed for Pipeline execution.
 
-#### Input Set Order in Overlays
+### Input Set Order in Overlays
 
 You can order the Input Sets you add to an Overlay to give priority to certain Input Sets.
 
 Each Input Set in an Overlay can overwrite the settings of previous Input Sets in the order. 
 
-### Using Input Sets for Pipeline Execution
+## Using Input Sets for Pipeline Execution
 
 Before running a Pipeline, you can select one or more Input Sets and apply them to the Pipeline. As a result, Harness will do the following operations:
 
@@ -111,3 +111,136 @@ inputSet:
                         type: String
                         value: "3"
 ```
+
+
+
+
+
+
+
+
+
+
+
+## Run pipelines using input sets and overlays
+
+Create a Pipeline template that can use different runtime variable values for different services, codebases, target environments, and goals.
+
+
+Harness Input Sets are collections of runtime variables and values that can be provided to Pipelines before execution.
+
+An Input Set includes all the runtime inputs that are not permanent in the Pipeline. Runtime inputs are the settings that you would be prompted to provide when you executed the Pipeline manually.
+
+Overlays are groups of Input Sets. Overlays enable you to provide several input sets when executing a Pipeline.
+
+Input Sets and Overlays allow you to create a Pipeline template that can use different runtime input values for different services, codebases, target environments, and goals.
+
+
+## Before you begin
+
+Review the following:
+
+* [CI tutorials](../../continuous-integration/get-started/tutorials.md)
+* [Kubernetes deployments in Harness CD overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [Input sets and overlays](input-sets.md)
+* [Runtime inputs](../variables-and-expressions/runtime-inputs.md)
+
+## Create Input Sets
+
+You can create an Input Set in two ways:
+
+* From the **Run Pipeline** page:
+1. Configure your Pipeline and click **Run**.
+2. Enter values for the required runtime inputs.
+3. Click **Save as Input Set**. The Input Set setup appears.
+   
+   ![](./static/run-pipelines-using-input-sets-and-overlays-08.png)
+   
+4. Enter a name, description, and tags for the new Input Set, and then click **Save**.
+* By simply creating an Input Set:
+1. In **Pipeline Studio**, click **Input Sets**.
+2. Click **New Input Set** and select **Input Set**.
+3. Enter values for the required runtime inputs and click **Save**.
+
+### YAMl Example
+
+YAML Example
+```
+inputSet:  
+    name: service  
+    tags: {}  
+    identifier: service  
+    pipeline:  
+        identifier: BG_example  
+        stages:  
+            - stage:  
+                  identifier: nginx  
+                  type: Deployment  
+                  spec:  
+                      serviceConfig:  
+                          serviceDefinition:  
+                              type: Kubernetes  
+                              spec:  
+                                  manifests:  
+                                      - manifest:  
+                                            identifier: manifests  
+                                            type: K8sManifest  
+                                            spec:  
+                                                store:  
+                                                    type: Git  
+                                                    spec:  
+                                                        branch: main  
+                                  variables:  
+                                      - name: foo  
+                                        type: String  
+                                        value: bar  
+                          serviceRef: nginx  
+                      infrastructure:  
+                          environmentRef: quickstart  
+                  variables:  
+                      - name: stagevar  
+                        type: String  
+                        value: ""
+```
+
+### Import Input Sets
+
+With the Harness Git Experience, you can [import Input Sets](/docs/platform/git-experience/import-input-sets) from a Git repo.
+
+## Create Overlays
+
+Once you have multiple Input Sets set up you can combine them into an Overlay.
+
+In an Overlay, you select the order in which to apply several Input Sets.
+
+When you run a Pipeline using an Overlay, the Inputs Sets are applied in the order specified in the Overlay. The first Inputs Set is used and then subsequent Inputs Sets override any previously specified or empty values.
+
+## Run pipelines with Input Sets or Overlays
+
+When you have created your Input Sets and Overlays, you can run the Pipeline using them.
+
+You can select Input Sets and Overlays in two ways:
+
+* From the **Run Pipeline** page:
+1. In **Pipeline Studio**, click **Run**.
+2. In the **Run Pipeline** page, click the Input Sets option.
+   
+   ![](./static/run-pipelines-using-input-sets-and-overlays-09.png)
+   
+3. Click an Input Set(s) or Overlay(s) to apply their settings.
+4. Click **Run Pipeline**.
+* From the **Input Sets** list:
+1. In **Pipeline Studio**, click **Input Sets**.
+2. In the Input Set or Overlay you want to use, click **Run Pipeline**.  
+You can also use the Input Sets option here.
+3. Change any settings you want and click **Run Pipeline**.
+
+ The Pipeline is run with the Input Set(s) or Overlay(s) settings.
+
+## Limitations
+
+Only runtime inputs are available in Input Sets. Most, but not all, Pipeline and Stage settings can be defined as runtime inputs.
+
+You can use any setting that offers the **Runtime input** option:
+
+![](./static/run-pipelines-using-input-sets-and-overlays-10.png)

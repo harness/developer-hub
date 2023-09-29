@@ -14,19 +14,19 @@ All Pipeline settings can be set as runtime inputs in Pipeline Studio **Visual*
 
 Before running a Pipeline, you can select one or more Input Sets and apply them to the Pipeline.
 
-You can either [create](../pipelines/run-pipelines-using-input-sets-and-overlays.md#step-1-create-the-input-sets) a new Input Set or import one from your Git repo.
+You can either [create an Input Set](../pipelines/input-sets#create-input-sets) or import one from your Git repo.
 
 This topic explains how to import an Input Set from your Git repo and apply it to your Pipeline.
 
-### Before you begin
+## Before you begin
 
 * [Harness Git Experience Overview](git-experience-overview.md)
-* [Harness Git Experience Quickstart​](configure-git-experience-for-harness-entities.md)
+* [Harness Git Experience Quickstart](configure-git-experience-for-harness-entities.md)
 * [Input Sets and Overlays](../pipelines/input-sets.md)
 * [Manage a Harness Pipeline Repo Using Git Experience](manage-a-harness-pipeline-repo-using-git-experience.md)
 * [Manage Input Sets and Triggers in Git Experience](manage-input-sets-in-simplified-git-experience.md)
 
-### Step: Import an input set
+## Import an input set
 
 You can import an Input Set from the CI or CD module in Harness.
 

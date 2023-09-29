@@ -55,15 +55,17 @@ When there are parallel Stages in your Pipeline and one of the parallel Stages f
 Let's take an example of a Pipeline that has parallel Stages.
 
 ![](./static/resume-pipeline-deployments-03.png)
+
 If Stage stage1 fails, you can either execute all the parallel Stages or only the failed Stage.
 
 ![](./static/resume-pipeline-deployments-04.png)
+
 All the previous values are populated for the stages. You can keep them or modify them as needed.
 
 You cannot retry any execution that is more than 30 days old.
 
 ### See also
 
-* [Run Pipelines using Input Sets and Overlays](run-pipelines-using-input-sets-and-overlays.md)
-* [Run Specific Stages in Pipeline](run-specific-stage-in-pipeline.md)
+* [Input Sets and Overlays](./input-sets)
+* [Run Specific Stages in Pipeline](./run-specific-stage-in-pipeline)
 

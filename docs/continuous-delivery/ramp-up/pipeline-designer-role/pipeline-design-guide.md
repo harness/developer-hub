@@ -165,7 +165,7 @@ Using pipeline variables, you can expose parameters for your development teams t
 For more information, go to:
 
 - [Add a variable](/docs/platform/variables-and-expressions/add-a-variable). 
-- [Run pipelines using input sets and overlays](/docs/platform/pipelines/run-pipelines-using-input-sets-and-overlays). 
+- [Input sets and overlays](/docs/platform/pipelines/input-sets). 
 - [Triggering pipelines](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/). 
 
 ## Monitoring logging and alerting

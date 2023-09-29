@@ -73,7 +73,7 @@ Pipeline deletion has the following rules:
 * All runtime entities (deployments) are deleted from the Harness and are not available in any reports.
 * When there is a reference to a deleted deployment, such as in a report, there is an indication that the deployment is deleted.
 * The Pipeline is removed from Harness and is not available.
-* All [Input Sets and Overlays](../pipelines/run-pipelines-using-input-sets-and-overlays.md) in the deleted Pipeline are deleted also.
+* All [Input Sets and Overlays](../pipelines/input-sets) in the deleted pipeline are deleted also.
 
 ### Project deletions
 

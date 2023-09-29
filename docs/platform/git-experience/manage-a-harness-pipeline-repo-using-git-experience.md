@@ -21,7 +21,7 @@ This topic assumes that you are familiar with the following:
 * How to create a Pipeline using Git Experience. See [Harness Git Experience QuickStart](configure-git-experience-for-harness-entities.md).
 * How to create Input Sets and Triggers using Git Experience. See [Manage Input Sets and Triggers in Git Experience](manage-input-sets-in-simplified-git-experience.md).
 * A basic understanding of how Pipelines, Input Sets, and Triggers work together:
-	+ [Run Pipelines using Input Sets and Overlays](../pipelines/run-pipelines-using-input-sets-and-overlays.md)
+	+ [Input Sets and Overlays](../pipelines/input-sets)
 	+ [Trigger Pipelines using Git Events](/docs/platform/triggers/triggering-pipelines/)
 
 This topic also assumes you have a Git repo with the codebase you want to build and at least one branch.

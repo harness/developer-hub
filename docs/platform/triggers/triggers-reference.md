@@ -396,7 +396,7 @@ The JEXL `in` operator is not supported in the **JEXL Condition** field.
 
 ## Pipeline Input
 
-You can specify [runtime inputs](../pipelines/run-pipelines-using-input-sets-and-overlays.md) for the trigger to use, such as Harness Service and artifact.
+You can specify [runtime inputs](../pipelines/input-sets) for the trigger to use, such as Harness Service and artifact.
 
 You can use [built-in Git payload expressions](#built-in-git-payload-expressions) and [JEXL expressions](#jexl-conditions) in this setting.
 

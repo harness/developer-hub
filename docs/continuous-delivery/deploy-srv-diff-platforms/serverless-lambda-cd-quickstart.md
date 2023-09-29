@@ -1006,7 +1006,7 @@ See:
 
 * [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
 * [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables)
-* [Run Pipelines using Input Sets and Overlays](/docs/platform/Pipelines/run-pipelines-using-input-sets-and-overlays)
+* [Input Sets and Overlays](/docs/platform/pipelines/input-sets)
 
 ### Supported stores for Serverless Lambda YAML files
 
