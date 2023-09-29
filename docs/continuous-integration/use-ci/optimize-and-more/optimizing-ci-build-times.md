@@ -20,7 +20,7 @@ For information about service dependencies, caches, and shared volumes, go to:
 
 ## Optimize test times
 
-For information about optimizing test times, go to [Run tests in CI pipelines](../set-up-test-intelligence/run-tests-in-ci.md).
+For information about optimizing test times, go to [Run tests in CI pipelines](../run-tests/run-tests-in-ci.md).
 
 ## Optimize Docker images
 

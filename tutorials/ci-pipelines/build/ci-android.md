@@ -297,9 +297,9 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-You can use **Run** or **Run Tests** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+You can use **Run** or **Run Tests** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
-If you're using Kotlin, you can improve your unit test times with  Harness' [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) feature.
+If you're using Kotlin, you can improve your unit test times with  Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) feature.
 
 ```mdx-code-block
 <Tabs>
@@ -318,7 +318,7 @@ If you're using Kotlin, you can improve your unit test times with  Harness' [Tes
                       ./gradlew testDebug
 ```
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
 
 ```yaml
               - step:
@@ -356,7 +356,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                       ./gradlew testDebug
 ```
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
 
 ```yaml
               - step:

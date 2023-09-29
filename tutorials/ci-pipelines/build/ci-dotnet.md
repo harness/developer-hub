@@ -258,7 +258,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 ### Visualize test results
 
-You can [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
+You can [view test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests/) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
 
 You can use a converter to output compatible JUnit XML reports, such as [NUnit to JUnit](https://github.com/nunit/nunit-transforms/tree/master/nunit3-junit) or [.NET trx2JUnit](https://github.com/gfoidl/trx2junit).
 
@@ -341,9 +341,9 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
 
 ### Run tests with Test Intelligence
 
-[Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) is available for C# (.NET Core), however, it is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) is available for C# (.NET Core); however, it is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/set-up-test-intelligence/) to run unit tests with Test Intelligence.
+With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#add-the-run-tests-step) to run unit tests with Test Intelligence.
 
 ```mdx-code-block
 <Tabs>
