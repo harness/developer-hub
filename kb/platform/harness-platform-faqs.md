@@ -680,6 +680,10 @@ No, these secrets are never rendered on the manager(Harness). They only get rend
 
 Currently anyone in the account would be able to open a ticket, and access is not restricted.
 
+#### How can I see who's logged into my account?
+
+You can use the audit trail (https://developer.harness.io/docs/platform/governance/audit-trail/)
+
 #### Do we have any docs for install and upgrade the SMP cluster?
 
 Yes, we have the docs, you can refer to this [Documentation](https://harness.atlassian.net/wiki/spaces/~63f950e3e76fc61320f65127/pages/21474541915/Internal+-+Install+and+upgrade+SMP?atlOrigin=eyJpIjoiOWJlMDhlNDJhZjM2NGUyN2E2MGU2ZDRkODQwZjUxZmQiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ).
