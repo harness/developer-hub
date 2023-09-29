@@ -414,7 +414,7 @@ To view test reports and understand which tests were selected by Test Intelligen
 
 <docimage path={require('./static/set-up-test-intelligence-03.png')} />
 
-The **Tests** tab can only show tests if your test reports are in JUnit XML format, because Harness parses test reports that are in JUnit XML format only. For information about formatting unit test reports, go to [Format test reports](./test-report-ref.md).
+The **Tests** tab can show tests only if your test reports are in JUnit XML format, because Harness parses test reports that are in JUnit XML format only. For information about formatting unit test reports, go to [Format test reports](./test-report-ref.md).
 
 Expand the sections below to learn more about information available on the **Tests** tab.
 
@@ -571,13 +571,13 @@ You can override the default test globs pattern.
 
 :::info
 
-This setting requires the [CET module](/docs/continuous-error-tracking/get-started/overview). This setting is only configurable in the Visual editor (not YAML).
+This setting requires the [CET module](/docs/continuous-error-tracking/get-started/overview). This setting is configurable in the Visual editor only (not YAML).
 
 :::
 
 Error tracking helps you be more proactive at discovering and remediating errors early in the software delivery lifecycle. It helps you more easily discover issues and assess the quality of code before it reaches production.
 
-Select **Yes** to enable error tracking. When enabled, a set of commands are auto-populated in the [Pre-Command](#pre-command). Review these commends to ensure they are compatible with your build. The auto-populated commands are enclosed between `#ET-SETUP-BEGIN` and `#ET-SETUP-END`, for example:
+Select **Yes** to enable error tracking. When enabled, a set of commands are auto-populated in the [Pre-Command](#pre-command). Review these commands to ensure that they are compatible with your build. The auto-populated commands are enclosed in `#ET-SETUP-BEGIN` and `#ET-SETUP-END`, for example:
 
 ```
 #ET-SETUP-BEGIN
@@ -645,7 +645,7 @@ Currently, TI for Python is behind the feature flag `CI_PYTHON_TI`. Contact [Har
 
 #### Test Globs
 
-You can override the default test globs pattern. For example, if the default is `*_test.py` or `test_*.py`, you could override it to any other pattern, s uch as `.test.py`.
+You can override the default test globs pattern. For example, if the default is `*_test.py` or `test_*.py`, you can override it with any other pattern, such as `.test.py`.
 
 #### PYTHONPATH
 
@@ -682,7 +682,7 @@ Select the build automation tool. Supported tools vary by **Language**.
 
 If you use a Bazel [container image](#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](../run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
 
-Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm if Bazel is already installed.
+Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm that Bazel is already installed.
 
 :::
 
@@ -789,7 +789,7 @@ Enter the commands for setting up the environment before running the tests.
 
 If a script is supplied here, select the corresponding **Shell** option.
 
-:::info Setup Python
+:::info Set up Python
 
 * Use **Pre-Command** to install the Python 3 binary if it is not already installed on the build machine or available in the specified [Container Registry and Image](#container-registry-and-image). Python 3 is preinstalled on Harness Cloud runners.
 * You don't need to install coverage tools in **Pre-Command**. The Run Tests step inherently includes coverage for Python, and Harness automatically installs coverage tools if they aren't already available. If you install a coverage tool, Harness uses the version you install instead of the included version.
@@ -895,7 +895,7 @@ These examples use Harness Cloud build infrastructure.
   <TabItem value="java" label="Java, Kotlin, Scala" default>
 ```
 
-This example shows a pipeline that runs tests on Java with Maven and Test Intelligence. By changing the `language`, this pipeline could be used for Kotlin or Scala.
+This example shows a pipeline that runs tests on Java with Maven and Test Intelligence. By changing the `language` value,  you can use this pipeline for Kotlin or Scala.
 
 ```yaml
 pipeline:
@@ -1302,13 +1302,16 @@ For example, the following configuration in `pom.xml` removes `forkCount` and ap
 
 ### Python
 
-If you encounter errors with TI for Python, make sure you meet the following requirements:
+If you encounter errors with TI for Python, make sure you have met the following requirements:
 
 * Your project is written in Python 3, and your repo is a pure Python 3 repo.
 * You don't use resource file relationships. TI doesn't support resource file relationships.
 * You don't use dynamic loading and metaclasses. TI might miss tests or changes in repos that use dynamic loading or metaclasses.
 * Your [Build Tool](#build-tool) is pytest or unittest.
-* The [Build Arguments](#build-arguments) don't include coverage flags (`--cov` or `coverage`).
-* You don't need to install coverage tools in the [Pre-Command](#pre-command). These are already included.
-* The Python 3 binary is preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or installed at runtime in the [Pre-Command](#pre-command).
+* The Python 3 binary is preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or installed at runtime in [Pre-Command](#pre-command).
 * If you use another command, such as `python`, to invoke Python 3, you have added an alias, such as `python3 = "python"`.
+
+If you get errors related to code coverage for Python:
+
+* If you included [Build Arguments](#build-arguments), these don't need coverage flags (`--cov` or `coverage`).
+* You don't need to install coverage tools in [Pre-Command](#pre-command). These are already included.

@@ -22,7 +22,7 @@ You can use a **Run** step to run commands or scripts in a CI pipeline. Here are
   <TabItem value="test" label="Run tests" default>
 ```
 
-This example runs `pytest`, includes [code coverage](../run-tests/code-coverage.md) and produces a report in JUnit XML format.
+This example runs `pytest`, includes [code coverage](../run-tests/code-coverage.md), and produces a report in JUnit XML format.
 
 ```yaml
               - step:

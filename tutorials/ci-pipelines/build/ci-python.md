@@ -244,7 +244,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 
 ### Run tests with Test Intelligence
 
-[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) is available for Python, however, it is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) is available for Python; however, it is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) to run unit tests with Test Intelligence.
 

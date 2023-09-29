@@ -32,8 +32,8 @@ On the **Build details** page, you can investigate a variety of details about a 
 
 * **Inputs**: This tab lists pipeline-level inputs. Step-level inputs are reported in the step details on the **Pipeline** tab.
 * **Artifacts:** This tab provides links to artifacts, such as images or reports, produced during the build. Availability of artifact details depends on the upload location, build configuration, or build infrastructure. For an example and more information, go to [View tests - View reports on the Artifacts tab](./run-tests/viewing-tests.md#view-reports-on-the-artifacts-tab).
-* **Commits:** If applicable, this tab provides a list of commits that triggered the build, along with [source code repo links](#source-code-repository-links).
-* **Tests:** Test results from **Run** or **Run Tests** steps. For more information, go to [View tests](./run-tests/viewing-tests.md).
+* **Commits:** This tab provides a list of commits that triggered the build, along with [source code repo links](#source-code-repository-links), if applicable.
+* **Tests:** This tab presents test results from **Run** or **Run Tests** steps. For more information, go to [View tests](./run-tests/viewing-tests.md).
 * **Policy Evaluations**, **Security Tests**, and **Error Tracking**: These tabs report [Error Tracking](#error-tracking-run-tests-step) information and information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/governance/Policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
 
 ![The Build details page.](./static/ci-build-details-page.png)
