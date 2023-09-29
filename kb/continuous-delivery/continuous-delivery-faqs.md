@@ -6,7 +6,7 @@ description: Frequently asked questions about Harness Continuous Delivery & GitO
 
 This article addresses some frequently asked questions about Harness Continuous Delivery (CD).
 
-
+Set the cron trigger type to QUARTZ and for the expression set it to `0 0 15 ? * 3#1 *`
 
 #### How to use the "for" condition while using jexl condition for the trigger?
 
@@ -15,6 +15,10 @@ Suppose that trigger payload has multiple records and you want to search for a p
 `for (item : <+trigger.payload.commits>) { if (item.message == "mymessage") {return true;} }; return false;`
 
 #### How to use the token for OCI repo in AWS ECR as the token by default expires every 12 hours?
+
+We can set up the AWS Secret Manager connector, then save the ECR auth token into it. Set up automatic token rotation (say at 10hr intervals) within AWS secret manager. Then have the Harness connector link to that AWS SecretManager secret, so it pulls a fresh token every time.
+
+#### How do I set up a cron expression so it tiggers on the first Wednesday of each month at 15:00?
 
 We can set up the AWS Secret Manager connector, then save the ECR auth token into it. Set up automatic token rotation (say at 10hr intervals) within AWS secret manager. Then have the Harness connector link to that AWS SecretManager secret, so it pulls a fresh token every time.
 
