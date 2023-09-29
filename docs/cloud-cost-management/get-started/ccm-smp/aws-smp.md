@@ -57,6 +57,15 @@ You need to perform the following tasks to set up CCM for AWS:
             ]
         },
         {
+            "Effect": "Allow",
+            "Action": [
+                "sts:AssumeRole"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
@@ -105,7 +114,6 @@ You need to perform the following tasks to set up CCM for AWS:
                 "s3:PutIntelligentTieringConfiguration",
                 "s3:PutMetricsConfiguration",
                 "s3:PutStorageLensConfigurationTagging",
-                "sts:*",
                 "s3:PutObjectVersionTagging",
                 "s3:GetBucketVersioning",
                 "s3:GetAccessPointConfigurationForObjectLambda",
@@ -188,7 +196,12 @@ You need to perform the following tasks to set up CCM for AWS:
                 "s3:GetAccessPointPolicy",
                 "s3:ReplicateDelete"
             ],
-            "Resource": "*"
+            "Resource": [
+                "arn:aws:s3:::harness-ccm-service-data-bucket-<accountid>*",
+                "arn:aws:s3:::harness-ccm-service-data-bucket-<accountid>*/*",
+                "arn:aws:s3:::harness-ccm-source-data-<accountid>*",
+                "arn:aws:s3:::harness-ccm-source-data-<accountid>*/*"
+            ]
         }
     ]
 }
