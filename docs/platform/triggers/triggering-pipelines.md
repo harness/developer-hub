@@ -153,9 +153,9 @@ For more information about **Attributes**, **Operators**, **Matching Values**, a
 
 ## Set pipeline input
 
-Pipelines often have [Runtime Inputs](../variables-and-expressions/runtime-inputs.md), such as codebase branch names or artifact versions and tags.
+Pipelines often have [runtime inputs](../variables-and-expressions/runtime-inputs.md), such as codebase branch names or artifact versions and tags.
 
-1. Provide values for the inputs or use [Input Sets](../pipelines/input-sets.md).
+1. Provide values for the inputs or use [input sets](../pipelines/input-sets.md).
 2. Select **Create Trigger** to save your trigger.
 
 The trigger is added to the triggers page. The last step is [webhook registration](#register-the-webhook-in-the-git-provider).

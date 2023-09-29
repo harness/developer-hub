@@ -8,23 +8,23 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Input Sets are collections of runtime inputs for a Pipeline provided before execution.
+Harness input sets are collections of runtime inputs for a pipeline provided before execution.
 
-All Pipeline settings can be set as runtime inputs in Pipeline Studio **Visual** and **YAML** editors.
+All pipeline settings can be set as runtime inputs in Pipeline Studio's Visual or YAML editors.
 
-Before running a Pipeline, you can select one or more Input Sets and apply them to the Pipeline.
+Before running a pipeline, you can select one or more input sets and apply them to the pipeline.
 
-You can either [create an Input Set](../pipelines/input-sets#create-input-sets) or import one from your Git repo.
+You can either [create an input set](../pipelines/input-sets#create-input-sets) or import one from your Git repo.
 
-This topic explains how to import an Input Set from your Git repo and apply it to your Pipeline.
+This topic explains how to import an input set from your Git repo and apply it to your pipeline.
 
 ## Before you begin
 
 * [Harness Git Experience Overview](git-experience-overview.md)
 * [Harness Git Experience Quickstart](configure-git-experience-for-harness-entities.md)
-* [Input Sets and Overlays](../pipelines/input-sets.md)
+* [Input sets and overlays](../pipelines/input-sets.md)
 * [Manage a Harness Pipeline Repo Using Git Experience](manage-a-harness-pipeline-repo-using-git-experience.md)
-* [Manage Input Sets and Triggers in Git Experience](manage-input-sets-in-simplified-git-experience.md)
+* [Manage input sets and triggers in Git Experience](manage-input-sets-in-simplified-git-experience.md)
 
 ## Import an input set
 

@@ -66,6 +66,6 @@ You cannot retry any execution that is more than 30 days old.
 
 ### See also
 
-* [Input Sets and Overlays](./input-sets)
+* [Input sets and overlays](./input-sets)
 * [Run Specific Stages in Pipeline](./run-specific-stage-in-pipeline)
 

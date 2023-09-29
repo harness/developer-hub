@@ -44,9 +44,9 @@ In addition to a [default codebase](#codebases), the following settings are conf
 
 :::tip
 
-Harness [Input Sets](/docs/platform/Pipelines/input-sets) are collections of runtime inputs for a pipeline run. Overlays are groups of Input Sets. Use Overlays to provide multiple Input Sets when you run a pipeline.
+Harness [Input sets](/docs/platform/pipelines/input-sets) are collections of runtime inputs for a pipeline run. Overlays are groups of input sets. You can use overlays to provide multiple input sets when you run a pipeline.
 
-With Input Sets and Overlays, you can use the same pipeline for multiple scenarios. You can define each scenario in an Input Set or Overlay, and then select the appropriate scenario at runtime.
+With input sets and overlays, you can use the same pipeline for multiple scenarios. You can define each scenario in an input set or overlay, and then select the appropriate scenario at runtime.
 
 :::
 
