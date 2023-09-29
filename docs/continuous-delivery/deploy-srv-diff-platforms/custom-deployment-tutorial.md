@@ -346,7 +346,7 @@ kubectl describe deployment nginx-deployment
 ```
 ![](./static/custom-deployment-tutorial-27.png)
 
-Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.mdn the step's **Advanced** section.
+Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](../../platform/pipelines/looping-strategies-matrix-repeat-and-parallelism.mdn the step's **Advanced** section.
 
 1. Click **Advanced**.
 2. Click **Looping Strategy**.

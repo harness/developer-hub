@@ -266,7 +266,7 @@ connector:
   <TabItem value="API" label="API">
 ```
 
-Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
+Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
 
 <details>
 <summary>Docker connector example</summary>

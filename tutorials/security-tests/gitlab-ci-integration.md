@@ -30,7 +30,7 @@ To do this tutorial, you need the following:
   * An SSH key to enable pushing updates to your repositories. For more information, go to [Use SSH keys to communicate with GitLab](https://docs.gitlab.com/ee/user/ssh.html) in the Gitlab documentation.
   * A Personal Access Token to enable pushing API requests. For information about the scopes to enable for your token, go to [GitLab connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference/#passwordpersonal-access-token).
 * A Harness [code repository connector](/docs/category/code-repositories) to your Git service.
-* A Harness [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
+* A Harness [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
 
 ## Set up the STO pipeline
 

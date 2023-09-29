@@ -332,9 +332,9 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 
 Java is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-If your application requires a specific version of Java, you can use a **Run** or **Plugin** step to install it.
+If your application requires a specific version of Java, you can use a **Run**, **GitHub Action**, or **Plugin** step to install it.
 
-This example uses the [GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) to run the `setup-java` action.
+This example uses the [GitHub Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) to run the `setup-java` action.
 
 ```yaml
               - step:

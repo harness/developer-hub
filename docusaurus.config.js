@@ -50,7 +50,7 @@ const config = {
         //   exclude: ["**/shared/**", "**/static/**"],
         //   routeBasePath: "docs", //CHANGE HERE
         // },
-        docs:false,
+        docs: false,
         sitemap: {
           // changefreq: 'weekly',
           // priority: 0.5,
@@ -144,6 +144,11 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Secure Supply Chain",
+                to: "tutorials/secure-supply-chain",
+              },
+              {
+                // type: "doc",
                 label: "Track Errors",
                 to: "tutorials/error-tracking",
               },
@@ -207,6 +212,10 @@ const config = {
                 to: "https://docs.propelo.ai/welcome-to-propelo/",
               },
               {
+                label: "Software Supply Chain Assurance",
+                to: "docs/software-supply-chain-assurance",
+              },
+              {
                 label: "Continuous Error Tracking",
                 to: "docs/continuous-error-tracking",
               },
@@ -239,6 +248,10 @@ const config = {
                 to: "docs/troubleshooting",
               },
               {
+                label: "Harness Cloud Operations",
+                to: "docs/harness-cloud-operations",
+              },
+              {
                 label: "API Reference",
                 to: "https://apidocs.harness.io/",
               },
@@ -269,6 +282,10 @@ const config = {
               {
                 label: "Feature Flags",
                 to: "certifications/feature-flags",
+              },
+              {
+                label: "Chaos Engineering",
+                to: "certifications/chaos-engineering",
               },
               {
                 label: "Instructions",
@@ -352,6 +369,10 @@ const config = {
               {
                 label: "Software Engineering Insights",
                 to: "https://www.harness.io/products/software-engineering-insights",
+              },
+              {
+                label: "Software Supply Chain Assurance",
+                to: "https://www.harness.io/products/software-supply-chain-assurance",
               },
               {
                 label: "Continuous Error Tracking",

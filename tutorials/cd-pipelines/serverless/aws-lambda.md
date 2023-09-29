@@ -111,7 +111,7 @@ Replace `DELEGATE_IMAGE:TAG` with the custom delegate image `harnesscommunity/se
 <details open>
 <summary>What are Harness secrets?</summary>
 
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
 </details>
 
@@ -171,7 +171,7 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In your Harness project, select **Environments**.
     1. Select **New Environment**, and then select **YAML**.
-    2. Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/environement.yml), paste it into the YAML editor, and select **Save**.
+    2. Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/environment.yml), paste it into the YAML editor, and select **Save**.
     3. In your new environment, select the **Infrastructure Definitions** tab.
     4. Select **Infrastructure Definition**, and then select **YAML**.
     5. Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/infrastructure-definition.yml) and paste it into the YAML editor.
@@ -413,7 +413,7 @@ You can also follow the [Install Harness Delegate on Kubernetes](/tutorials/plat
 <details open>
 <summary>What are Harness secrets?</summary>
 
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
 </details>
 

@@ -121,16 +121,16 @@ To clone a Dashboard, do the following:
 
 You can also perform the following actions on the Dashboard:
 
-* [Use Dashboard Actions](../../platform/18_Dashboards/use-dashboard-actions.md)
-* [Download Dashboard Data](../../platform/18_Dashboards/download-dashboard-data.md)
-* [Create Conditional Alerts](../../platform/18_Dashboards/create-conditional-alerts.md)
-* [Schedule and Share Dashboards](../../platform/18_Dashboards/share-dashboards.md)
+* [Use Dashboard Actions](../../platform/dashboards/use-dashboard-actions.md)
+* [Download Dashboard Data](../../platform/dashboards/download-dashboard-data.md)
+* [Create Conditional Alerts](../../platform/dashboards/create-conditional-alerts.md)
+* [Schedule and Share Dashboards](../../platform/dashboards/share-dashboards.md)
 
 ## Next Steps
 
 Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](../../platform/18_Dashboards/create-dashboards.md)
-* [Create Visualizations and Graphs](../../platform/18_Dashboards/create-visualizations-and-graphs.md)
-* [Add Custom Fields](../../platform/18_Dashboards/add-custom-fields.md)
+* [Create Dashboards](../../platform/dashboards/create-dashboards.md)
+* [Create Visualizations and Graphs](../../platform/dashboards/create-visualizations-and-graphs.md)
+* [Add Custom Fields](../../platform/dashboards/add-custom-fields.md)
 

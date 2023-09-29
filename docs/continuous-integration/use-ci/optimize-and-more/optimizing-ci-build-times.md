@@ -88,7 +88,7 @@ Use [templates](/docs/category/templates/) to share and utilize pre-build pipeli
 
 Use these strategies to automate and manage build sequences.
 
-* [Queue Intelligence](./queue-intelligence.md)
+<!-- * Queue Intelligence (./queue-intelligence.md) -->
 * [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/)
 * [Run specific stages in a pipeline](/docs/platform/pipelines/run-specific-stage-in-pipeline/)
 * [Define failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/)
@@ -98,11 +98,11 @@ There are many ways you can incorporate third party tools and services in your C
 
 * [Explore plugins](../use-drone-plugins/explore-ci-plugins.md)
 * [Bring-your-own Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager)
-* [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support)
+* [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support)
 * [Send notifications](/docs/category/notifications)
 
 ## Increase step resources
 
 Check your infrastructure monitoring tools for potential bottlenecks during the time windows when your builds are running. Increasing memory or CPU capacity in your Build steps might help speed up your builds.
 
-You can also [enforce pipeline concurrency limits](/docs/platform/settings/pipeline-settings/).
+You can also [enforce pipeline concurrency limits](docs/platform/pipelines/w_pipeline-steps-reference/pipeline-settings.md).

@@ -254,7 +254,7 @@ Perform the following steps to create a StackSet in AWS:
 
 ### Create an AWS Connector via API
 
-Use the Harness API's [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) endpoint to create an AWS connector for each member account. Below is a sample cURL command to create an AWS connector. Replace the following placeholders with your values:
+Use the Harness API's [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) endpoint to create an AWS connector for each member account. Below is a sample cURL command to create an AWS connector. Replace the following placeholders with your values:
 
 | **Placeholder** | **Description** |
 | --- | --- |

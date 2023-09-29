@@ -79,7 +79,7 @@ You can also follow the [Install Harness delegate on Kubernetes or Docker](/tuto
 <details open>
 <summary>What are Harness secrets?</summary>
 
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
 </details>
 
@@ -300,7 +300,7 @@ You can also follow the [Install Harness delegate on Kubernetes or Docker](/tuto
 <details open>
 <summary>What are Harness secrets?</summary>
 
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
 </details>
 
@@ -404,7 +404,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 </details>
 
-- Copy the contents of [pipeline-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/6-pipeline-canary.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/pipeline-canary.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 

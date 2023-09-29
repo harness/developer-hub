@@ -1,12 +1,13 @@
 ---
-title: ScoutSuite scanner reference
+title: ScoutSuite scanner reference for STO
 description: Configuration scans with ScoutSuite
-sidebar_position: 260
+sidebar_label: ScoutSuite scanner reference
+sidebar_position: 350
 ---
 
 You can run ScoutSuite scans on your configurations using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Before you begin
+## Important notes for running ScoutSuite scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -24,7 +25,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Security step settings
+## Security step settings for ScoutSuite scans in STO
 
 ### Target and variant
 

@@ -112,7 +112,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "Use OPA policies to enforce governance.",
-          link: "/docs/platform/Governance/Policy-as-code/harness-governance-quickstart",
+          link: "/docs/platform/governance/Policy-as-code/harness-governance-quickstart",
         },
       ],
   },
@@ -131,7 +131,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "",
-          link: "/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets",
+          link: "/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets",
       },
       {
         title: "Git Experience vs Config as Code",

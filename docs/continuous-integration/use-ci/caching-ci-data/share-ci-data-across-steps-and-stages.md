@@ -52,7 +52,7 @@ For multilayer caching, use multiple **Restore Cache** and **Save Cache** steps 
 
 Remote Docker layer caching can dramatically improve build times by sharing layers across pipelines, stages, and steps. You can set up Docker layer caching in the following steps:
 
-* [Build and Push to Docker Registry](../build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md)
+* [Build and Push to Docker](../build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md)
 * [Build and Push to ECR](../build-and-upload-artifacts/build-and-push-to-ecr-step-settings.md)
 * [Build and Push to GCR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md)
 

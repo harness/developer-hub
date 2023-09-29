@@ -48,9 +48,9 @@ Docs: [Connectors](/docs/category/connectors)
 - [Source Code Repositories](/docs/category/code-repositories)
 - [Artifact Repositories](/docs/category/artifact-repositories)
 - [Cloud Providers](/docs/category/cloud-providers)
-- [Monitoring & Logging Systems](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
+- [Monitoring & Logging Systems](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
 - [Ticketing Systems](/docs/category/ticketing-systems-1)
-- [Secret Managers](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview)
+- [Secret Managers](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
 
 
 ## Service Accounts & API Keys
@@ -72,7 +72,7 @@ Tutorials:
 Adding governance guardrails with Open Policy Agent (OPA) based policies is easy. Edit one of the policy-as-code samples or writer your own.
 
 Docs:
-[Policy as Code overview](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+[Policy as Code overview](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## Templates
 Templates enhance developer productivity, reduce onboarding time, and enforce standardization across the teams that use Harness. You can create re-usable logic for managing Harness entities like steps, stages, and pipelines. You can link templates in your pipelines or share them with your teams for improved efficiency.

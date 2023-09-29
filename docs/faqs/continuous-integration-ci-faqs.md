@@ -38,11 +38,11 @@ When configuring permissions for a GitHub personal access token (PAT) that you'l
 
 :::caution
 
-When you enable API authentication in a GitHub connector (recommended), use the same personal access token for both [Authentication](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#personal-access-token) and [API authentication](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access).
+When you enable API authentication in a GitHub connector (recommended), use the same personal access token for both [Authentication](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#personal-access-token) and [API authentication](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access).
 
 :::
 
-For more information, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
+For more information, go to the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 
 ## What permissions are required to run CI builds in an OpenShift cluster?
 

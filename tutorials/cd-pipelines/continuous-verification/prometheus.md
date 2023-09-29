@@ -25,7 +25,7 @@ In this tutorial, we will [deploy an application that writes to a Prometheus](ht
 To deploy to Kubernetes with Harness, you will need a manifest and access to a Kubernetes cluster. To deploy the Sample Application in an existing K8s cluster:
 
 * A Harness Account ([Sign Up Here](https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started))
-* Connectivity to [GitHub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+* Connectivity to [GitHub](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 * Connectivity to [Docker Hub](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
 * A Prometheus Endpoint
 
@@ -94,7 +94,7 @@ The Continuous Verification configuration is currently represented by two concer
 
 Next you will configure the Health Source [[Monitored Service](/docs/service-reliability-management/monitored-service/create-monitored-service/)] for your application [e.g [Harness Service](/docs/get-started/key-concepts#services)]. 
 
-1. When prompted to, add your [Prometheus Connection Details](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-prometheus).
+1. When prompted to, add your [Prometheus Connection Details](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-prometheus).
 	1. If using NodePort, would `http://node_public_ip:nodeport`. 
 2. The Sample Application writes to Prometheus Metrics  `CV_Counter_Example_total` and `CV_Gauge_Examplel`. Can query for the [Counter](https://prometheus.io/docs/concepts/metric_types/#counter). 
 3. Define the Health Source Configuration to have a Metric called `Prometheus Counter`.

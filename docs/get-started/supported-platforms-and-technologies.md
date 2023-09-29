@@ -21,7 +21,7 @@ import PartialExample from '/docs/continuous-delivery/shared/cd-integrations-sup
 <PartialExample name="integrations" />
 
 
-## Continuous Integration (CI) 
+## Continuous Integration (CI)
 
 import Ci from '/docs/continuous-integration/shared/ci-supported-platforms.md';
 
@@ -111,17 +111,23 @@ The following table lists Harness support for collaboration tools.
 Most providers are used in both Pipeline Notification Strategies and User Group notifications:
 
 - [Add a Pipeline Notification Strategy](../continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md
-- [Send Notifications Using Slack](../platform/5_Notifications/send-notifications-using-slack.md)
-- [Send Notifications to Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md)
+- [Send Notifications Using Slack](../platform/notifications/send-notifications-using-slack.md)
+- [Send Notifications to Microsoft Teams](../platform/notifications/send-notifications-to-microsoft-teams.md)
 
 | Provider Name                                                                                       | Notification | Approval/Change Management |
 | --------------------------------------------------------------------------------------------------- | ------------ | -------------------------- |
-| [Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md)             | Yes          | N/A                        |
+| [Microsoft Teams](../platform/notifications/send-notifications-to-microsoft-teams.md)             | Yes          | N/A                        |
 | [Email](../continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md       | N/A                        |
-| [Slack](../platform/5_Notifications/send-notifications-using-slack.md)                              | Yes          | N/A                        |
-| [Jira](../platform/9_Approvals/adding-jira-approval-stages.md)                                      | Yes          | Yes                        |
-| [ServiceNow](../platform/9_Approvals/service-now-approvals.md)                                      | N/A          | Yes                        |
+| [Slack](../platform/notifications/send-notifications-using-slack.md)                              | Yes          | N/A                        |
+| [Jira](../platform/approvals/adding-jira-approval-stages.md)                                      | Yes          | Yes                        |
+| [ServiceNow](../platform/approvals/service-now-approvals.md)                                      | N/A          | Yes                        |
 | [PagerDuty](../continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md   | N/A                        |
+
+## Software Supply Chain Assurance (SSCA)
+
+import Ssca from '/docs/software-supply-chain-assurance/shared/ssca-supported.md';
+
+<Ssca />
 
 ## Harness Git Experience
 
@@ -129,11 +135,11 @@ import Gitxsup from '/docs/get-started/shared/gitx-whats-supported.md'
 
 <Gitxsup />
 
-## Access control
+## Authentication
 
-import Accessconsup from '/docs/get-started/shared/access-control-supported.md'
+import Authsup from '/docs/get-started/shared/auth-supported.md'
 
-<Accessconsup />
+<Authsup />
 
 ## Secret management
 

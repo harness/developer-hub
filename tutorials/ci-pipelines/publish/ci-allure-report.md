@@ -1,6 +1,6 @@
 ---
 title: Publish anything to the Artifacts tab
-sidebar_position: 3
+sidebar_position: 4
 description: You can publish any URL to the Artifacts tab.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, maven, Allure]
 slug: /ci-pipelines/publish/artifacts-tab
@@ -24,7 +24,7 @@ You can publish any URL to the **Artifacts** tab on the [Build details page](/do
 
 * Create an artifact, such as a test report.
 * Upload the artifact to cloud storage, such as S3.
-* Use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) or [S3 Upload and Publish Drone plugin](https://github.com/harness-community/drone-s3-upload-publish) to publish the artifact URL on the **Artifacts** tab.
+* Use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) or [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3-upload-publish) to publish the artifact URL on the **Artifacts** tab.
 
 This tutorial demonstrates how to do this by creating a Harness CI pipeline that builds a Java Maven application and generates an [Allure report](https://qameta.io/allure-report/) that you can view in Harness.
 
@@ -42,9 +42,9 @@ If you haven't created a pipeline before, try [Get started with the fastest CI](
 
 2. For S3, GCS, and JFrog, you must have a Harness connector to use with the **Upload Artifact** step:
 
-   * S3: [AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector)
-   * GCS: [GCP connector](/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp)
-   * JFrog: [Artifactory connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference)
+   * S3: [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector)
+   * GCS: [GCP connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp)
+   * JFrog: [Artifactory connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference)
 
    :::tip
 
@@ -54,7 +54,7 @@ If you haven't created a pipeline before, try [Get started with the fastest CI](
 
 3. In your cloud storage, create a bucket or repo where you can upload your artifact.
 
-   To access the artifact directly from the **Artifacts** tab, the upload location must be publicly available. If the location is not publicly available, you might need to log in to view the artifact. For example, this tutorial uses a publicly available GCS bucket to store the report.
+   To access the artifact directly from the **Artifacts** tab, the upload location must be publicly available. If the location is not publicly available, you might need to log in to view the artifact or use an different artifact URL (such as a console view URL). This tutorial uses a publicly available GCS bucket to store the report.
 
 ## Prepare artifacts to upload
 
@@ -105,7 +105,7 @@ For example, this tutorial uses three **Run** steps to generate and prepare an a
 
 :::tip
 
-For `connectorRef`, you can use the built-in Docker connector, `account.harnessImage`, or use your own [Docker Hub connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+For `connectorRef`, you can use the built-in Docker connector, `account.harnessImage`, or use your own [Docker Hub connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 
 :::
 
@@ -129,7 +129,7 @@ For example, this tutorial uploads the combined Allure report to GCS:
                     connectorRef: YOUR_GCP_CONNECTOR_ID
                     bucket: YOUR_GCS_BUCKET
                     sourcePath: target/allure-report/complete.html
-                    target: <+pipeline.sequenceId>/index.html
+                    target: <+pipeline.sequenceId>
 ```
 
 :::tip
@@ -147,7 +147,7 @@ At this point, you can run the pipeline and then manually find the uploaded arti
   <TabItem value="artifactmetadata" label="Artifact Metadata Publisher plugin" default>
 ```
 
-The [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) pulls content from cloud storage and publishes it to the **Artifacts** tab. You can use this plugin with any cloud storage provider.
+The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) pulls content from cloud storage and publishes it to the **Artifacts** tab. You can use this plugin with any cloud storage provider.
 
 To use this plugin, add a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) after your upload artifact step.
 
@@ -162,15 +162,30 @@ For example, this step publishes the URL for the combined Allure report on GCS:
                     connectorRef: account.harnessImage
                     image: plugins/artifact-metadata-publisher
                     settings:
-                      file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/index.html ## Cloud storage URL for the previously-uploaded artifact.
-                      artifact_file: artifact.txt
+                      file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html ## Provide the URL in your cloud storage bucket for the previously-uploaded artifact. If you uploaded multiple artifacts, you can provide a list of URLs.
+                      artifact_file: artifact.txt ## Provide any '.txt' file name. Harness uses this to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 ```
 
-:::tip
+:::info
 
-The resolved value of `file_urls` is the URL that is published on the **Artifacts** tab. It is derived from the upload location specified in your upload artifact step.
+For `file_url`, provide the URL to the artifact that uses the **Bucket**, **Target**, and artifact name specified in the **Upload Artifacts** step. The format depends on your cloud storage provider. For example:
 
-For example, this tutorial uses `https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/index.html`, which contains the value of `bucket` and `target` from the upload artifact step. When the pipeline runs, the expression `<+pipeline.sequenceId>` is resolved into a valid URL.
+* GCS: `https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION`
+* S3: `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`
+
+The resolved value of `file_urls` is the URL that is published on the **Artifacts** tab. It is derived from the upload location specified in the **Upload Artifact** step.
+
+For example, this tutorial uses `https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html`, which references the value of `bucket`, `target`, and artifact object name from the Upload Artifact step. When the pipeline runs, the expression `<+pipeline.sequenceId>` is resolved into a valid URL.
+
+For private S3 buckets, use the console view URL, such as `https://s3.console.aws.amazon.com/s3/object/BUCKET?region=REGION&prefix=TARGET/ARTIFACT_NAME_WITH_EXTENSION`.
+
+If you uploaded multiple artifacts, you can provide a list of URLs, such as:
+
+```yaml
+                      file_urls:
+                        - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact1.html
+                        - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact2.txt
+```
 
 :::
 
@@ -179,7 +194,7 @@ For example, this tutorial uses `https://storage.googleapis.com/YOUR_GCS_BUCKET/
   <TabItem value="s3publisher" label="S3 Upload and Publish plugin">
 ```
 
-If you use S3 as your cloud storage provider, you can use the [S3 Upload and Publish Drone plugin](https://github.com/harness-community/drone-s3-upload-publish) to both upload your artifact and publish the URL to the **Artifacts** tab.
+If you use S3 as your cloud storage provider, you can use the [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3-upload-publish) to both upload your artifact and publish the URL to the **Artifacts** tab.
 
 If you use this plugin, you **do not** need an **Upload Artifacts to S3** step in your pipeline.
 
@@ -196,18 +211,23 @@ Add a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/plugin
                     connectorRef: account.harnessImage
                     image: harnesscommunity/drone-s3-upload-publish
                     settings:
-                     aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference to a Harness secret or pipeline variable containing your AWS access ID.
-                      aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to a Harness secret or pipeline variable containing your AWS access key.
+                     aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference to your AWS access ID.
+                      aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to your AWS access key.
                       aws_default_region: ap-southeast-2 ## Set to your default AWS region.
                       aws_bucket: BUCKET_NAME ## The target S3 bucket.
-                      artifact_file: url.txt
-                      source: OBJECT_PATH ## Path to store and retrieve the artifact from S3.
+                      artifact_file: artifact.txt ## Provide any '.txt' file name. Harness uses this to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
+                      source: target/allure-report/complete.html ## Provide the path to the file or directory that you want to upload.
+                      target: <+pipeline.sequenceId> ## Optional. Provide a path, relative to the 'aws_bucket', where you want to store the artifact. Do not include the bucket name. If unspecified, Harness uploads the artifact to the bucket's main directory.
                     imagePullPolicy: IfNotPresent
 ```
 
 :::tip
 
 For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) that contain your AWS access ID and key.
+
+This tutorial also uses an expression for the `target`: The expression `<+pipeline.sequenceId>` creates a directory based on the incremental build ID. This ensures that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
+
+If you want to upload a compressed file, you must use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to compress the artifact before uploading it.
 
 :::
 
@@ -293,7 +313,7 @@ pipeline:
                     connectorRef: YOUR_GCP_CONNECTOR_ID
                     bucket: YOUR_GCS_BUCKET
                     sourcePath: target/allure-report/complete.html
-                    target: <+pipeline.sequenceId>/index.html
+                    target: <+pipeline.sequenceId>
               - step:
                   type: Plugin
                   name: publish artifact metadata
@@ -302,7 +322,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: plugins/artifact-metadata-publisher
                     settings:
-                      file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/index.html
+                      file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html
                       artifact_file: artifact.txt
 ```
 
@@ -383,7 +403,7 @@ pipeline:
                     connectorRef: YOUR_GCP_CONNECTOR_ID
                     bucket: YOUR_GCS_BUCKET
                     sourcePath: target/allure-report/complete.html
-                    target: <+pipeline.sequenceId>/index.html
+                    target: <+pipeline.sequenceId>
               - step:
                   type: Plugin
                   name: publish artifact metadata
@@ -392,7 +412,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: plugins/artifact-metadata-publisher
                     settings:
-                      file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/index.html
+                      file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html
                       artifact_file: artifact.txt
 ```
 

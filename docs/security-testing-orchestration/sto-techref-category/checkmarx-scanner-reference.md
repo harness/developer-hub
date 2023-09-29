@@ -1,14 +1,15 @@
 ---
-title: Checkmarx scanner reference
+title: Checkmarx scanner reference for STO
 description: Repository scans with Checkmarx
-sidebar_position: 90
+sidebar_label: Checkmarx scanner reference
+sidebar_position: 100
 ---
 
 You can scan your repositories using Checkmarx. Harness STO supports the following workflows:
 * Ingestion workflows for all Checkmarx One services (including SAST and SCA) that can publish scan results in SARIF format. For more information, go to [Ingest SARIF results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
 * Orchestration, Extraction, and Ingestion workflows for Checkmarx SAST and Checkmarx SCA scans.
 
-## Before you begin
+## Important notes for running Checkmarx scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -31,11 +32,9 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 The recommended workflow is add a Checkmarx step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Checkmarx scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <details>
     <summary>Scanner Template example</summary>
@@ -273,7 +272,7 @@ In the **Advanced** settings, you can use the following options:
 
 
 
-## Security step configuration (_legacy_)
+## Security step settings for Checkmarx scans in STO (legacy)
 
 
 You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.

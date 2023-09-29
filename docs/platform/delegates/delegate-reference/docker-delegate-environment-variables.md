@@ -129,7 +129,7 @@ The tags that were added to the delegate in Harness Manager or YAML before deleg
 
 Harness generates tags based on the delegate name. You can add others. The tags appear on the delegate details page in Harness Manager. 
 
-For more information, go to [Tags reference](/docs/platform/20_References/tags-reference.md) and [Select delegates with tags](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
+For more information, go to [Tags reference](/docs/platform/references/tags-reference.md) and [Select delegates with tags](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ```
 - name: DELEGATE_TAGS  
@@ -147,7 +147,7 @@ The maximum number of tasks the delegate can perform at one time. Delegate opera
 
 ### DELEGATE_ORG_IDENTIFIER
 
-The Harness organization [Identifier](/docs/platform/20_References/entity-identifier-reference.md) where the delegate registers. 
+The Harness organization [Identifier](/docs/platform/references/entity-identifier-reference.md) where the delegate registers. 
 
 This value is not specified for delegates at the account level.
 
@@ -158,7 +158,7 @@ This value is not specified for delegates at the account level.
 
 ### DELEGATE_PROJECT_IDENTIFIER
 
-The Harness project [Identifier](/docs/platform/20_References/entity-identifier-reference.md) within which the delegate registers. 
+The Harness project [Identifier](/docs/platform/references/entity-identifier-reference.md) within which the delegate registers. 
 
 This value is not specified for delegates at the account or organization level.
 

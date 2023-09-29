@@ -18,16 +18,17 @@ To optimize cloud costs, you need to create a governance rule or combine multipl
 1. In **Harness**, go to **Cloud Costs**.
 2. Select **Asset Governance**.
 3. Select **Rules**.
-4. Select **+New Rule**. 
+4. Select **+ New Rule**. 
 
 
   <docimage path={require('./static/asset-governance-rule-creation.png')} width="60%" height="60%" title="Click to view full size image" />
 
 5. Enter a name for the rule.
-6. Optionally, enter a description of the rule.
-7. Select **Apply**.
-8. Enter the YAML policy in the rule editor.
-9. Select **Save**. 
+6. Select the cloud provider.
+7. Optionally, enter a description of the rule.
+8. Select **Apply**.
+9. Enter the YAML policy in the rule editor.
+10. Select **Save**. 
 
   If the policy is invalid, an error message is displayed.
 10. Select the **Account** and the **Region** from the dropdown list in the Test Terminal.
@@ -48,20 +49,21 @@ To create a rule set, perform the following steps:
 2. Select **Asset Governance**.
 3. Select **Rules**.
 4. Select the **Rule sets** tab.
-5. Select **+New Rule Set**.
+5. Select **+ New Rule Set**.
 6. Enter a name for the rule set.
 7. Optionally, enter a description of the rule set.
-8. Select the rules that you want to enforce. 
+8. Select the cloud provider.
+9. Select the rules that you want to enforce. 
 
   <docimage path={require('./static/create-new-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-7. Select **Create Rule Set**. 
+10. Select **Create Rule Set**. 
 The rule set is created successfully. You can view the rule set on the **Asset Governance Rules** page. Expand the rule set to view the individual rules in the rule set.
 
   <docimage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
 
-1. Select **Enforce Rule Set** in the Enforcements column to enforce this rule set.
+11. Select **Enforce Rule Set** in the Enforcements column to enforce this rule set.
 
 
 ## Enforce a rule or a rule set
@@ -73,15 +75,16 @@ To create enforcement, perform the following steps:
 1. In your **Harness** application, go to **Cloud Costs**.
 2. Select **Asset Governance**.
 3. Select **Enforcements**.
-4. Select **+New Enforcement**.
+4. Select **+ New Enforcement**.
 5. Enter a name for the enforcement.
 6. Optionally, enter a description of the enforcement.
-7. Select the rules or rulesets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
-8. Select Continue. 
-9. Select the target accounts and target regions. You could select multiple AWS accounts and regions.
-10. Set the frequency from **Hourly**, **Daily**, or **Weekly **options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
-11. Toggle the **Dry Run** mode if you do not want to take action immediately.
-12. Select **Finish**. 
+7. Select the cloud provider.
+8. Select the rules or rulesets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
+9. Select **Continue**. 
+10. Select the target accounts and target regions. You could select multiple accounts and regions.
+11. Set the frequency from **Hourly**, **Daily**, or **Weekly **options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
+12. Toggle the **Dry Run** mode if you do not want to take action immediately.
+13. Select **Finish**. 
 
     <docimage path={require('./static/set-up-schedule.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -117,9 +120,16 @@ You can create filters to view selected rules:
 4. Select one or more of the following criteria to filter the results:
     * Rules
     * Rule Sets
-    * Target Accounts
-    * Target Regions
     * Enforcements
+    * Minimum Cost Impact ($)
+    * AWS Filters
+
+      - Target Accounts
+      - Target Regions
+    * Azure Filters
+
+      - Azure Subscription
+      - Target Regions
 
   <docimage path={require('./static/filter-evalaution-rules.png')} width="40%" height="40%" title="Click to view full size image" />
 

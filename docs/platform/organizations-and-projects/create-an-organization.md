@@ -41,7 +41,7 @@ The resources in the org are available to all of its projects.
    ![](static/create-an-organization-01.png)
 
 3. In **Name**, enter a name for your organization.
-4. Enter **Description**, and [Tags](../20_References/tags-reference.md) for your new org.
+4. Enter **Description**, and [Tags](../references/tags-reference.md) for your new org.
 5. Click **Save and Continue**.
 
 ### Invite collaborators
@@ -69,7 +69,7 @@ You can create Projects in the Org from the projects section of Harness, or from
 
 1. In Harness, go to **Home** and click **Projects**.
 2. Click **+Project**.
-3. Name the project, and select a color. The Id of the project is generated automatically. See [Harness Entity Reference](../20_References/harness-entity-reference.md).
+3. Name the project, and select a color. The Id of the project is generated automatically. See [Harness Entity Reference](../references/harness-entity-reference.md).
 4. In **Organization**, select the org you created.
 5. Add a description and tags, and then click **Save and Continue**.
 6. In **Invite Collaborators**, type a member's name and select it.

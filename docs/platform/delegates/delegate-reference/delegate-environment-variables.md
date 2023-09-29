@@ -64,7 +64,7 @@ The namespace for the delegate is taken from the `StatefulSet` namespace.
 
 ### DELEGATE_ORG_IDENTIFIER
 
-The Harness organization [Identifier](../../20_References/entity-identifier-reference.md) in which the delegate registers.
+The Harness organization [Identifier](../../references/entity-identifier-reference.md) in which the delegate registers.
 
 Delegates at the account level do not have a value for this variable. 
 
@@ -75,7 +75,7 @@ Delegates at the account level do not have a value for this variable.
 
 ### DELEGATE_PROJECT_IDENTIFIER
 
-The Harness project [Identifier](../../20_References/entity-identifier-reference.md) in which the delegate registers. 
+The Harness project [Identifier](../../references/entity-identifier-reference.md) in which the delegate registers. 
 
 Delegates at the account or organization level do not have a value for this variable.
 
@@ -88,7 +88,7 @@ Delegates at the account or organization level do not have a value for this vari
 
 Delegate tags are descriptors that are added to the delegate before the registration process, in Harness Manager or in YAML. Harness generates tags based on the delegate name; you can add others. You can specify multiple tags in YAML as a comma-separated list.
 
-Tags are displayed on the delegate details page in Harness Manager. Go to [Tags reference](../../20_References/tags-reference.md) and [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md). 
+Tags are displayed on the delegate details page in Harness Manager. Go to [Tags reference](../../references/tags-reference.md) and [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md). 
 
 ```
 - name: DELEGATE_TAGS

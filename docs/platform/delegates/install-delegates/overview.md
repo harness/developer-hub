@@ -55,7 +55,9 @@ For network proxy details, go to [Configure delegate proxy settings](/docs/platf
 
 ### CI-specific variables
 
-For CI-specific variables, go to [Install the delegate](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#install-the-delegate).
+Delegate variables specific to CI are described where necessary, such as in [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) and [Set up VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
+
+<!--, and Queue Intelligence(/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence)-->
 
 ### Custom certificates
 

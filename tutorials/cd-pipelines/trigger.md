@@ -4,12 +4,7 @@ title: Pipeline Triggers
 description: Tutorial to get started with Triggers in Harness Pipelines.
 ---
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
-
-This tutorial will help you to get started with triggers in Harness pipelines.
+This tutorial will help you to get started with Docker Registry Artifact triggers in Harness pipelines.
 
 :::info
 
@@ -21,127 +16,64 @@ This tutorial will help you to get started with triggers in Harness pipelines.
 
 Triggers in a Harness Continuous Delivery (CD) pipeline are used to automatically initiate pipeline stages or actions based on specific events or conditions, such as Git events, new Helm Charts, new artifacts, or specific time intervals. Triggers in Harness CD enable faster feedback cycles, enhanced efficiency, and decreased reliance on manual intervention during the deployment process.
 
-```mdx-code-block
-<Tabs>
-<TabItem value="GitHub">
-```
 
 ## Before you begin
 
 Verify the following:
 
 - **Existing Harness CD pipeline.** If you are a new user or haven't created a pipeline yet, then kindly check our [CD tutorials](/tutorials/cd-pipelines) to create one.
-- **Existing GitHub connector**.
-    - If you are a new user or haven't created a Git connector yet, **fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface, then kindly follow the steps in [Git Connector](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo#connect-to-github) to create one and point the connector to the fork.
+- **Existing Docker connector with Credential Type `Username and Password`**.
+    - Create a Docker connector if you don't have one yet. For more information, go to [Docker Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 
-## Implement a trigger using Git events
+## Implement a trigger using Docker Hub Artifact
 
 
-1. Log into [Harness](https://app.harness.io/).
+1. Log in to your Harness instance. 
 2. Select **Projects**, and then select **Default Project**.
 
     :::caution
 
-    For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
+    For the pipeline to run successfully, you must follow all of the following steps as they are, including the naming conventions.
 
     :::
 3. In **Default Project**, select **Pipelines**.
     - Select an existing pipeline or create a new pipeline by following any of our CD tutorials.
-4. After choosing the pipeline, select **Triggers**.
-    - Select **New Trigger** and choose **GitHub** under **Webhook**.
+    - Choose the CD stage.
+
+### Let's Start by Making the Modifications to the CD Stage to Implement Docker Registry Artifact Trigger
+
+4. Now, in the **Harness Service** to the CD stage, you can set the artifact tag to use in Artifacts Details.
+    - Go to **Service** tab and click on edit icon of the Service where you want to add Artifact details.
+    - Under **Artifacts**, ensure you have selected Artifact Repository Type **Docker Registry**.
+    - Click **Continue** and choose the created **Docker Connector**.
+    - In the next step, enter a name for this artifact, and enter the name of the artifact image you want to deploy.
+        - For the **Tag**, change it to type **Expressions** and enter `<+trigger.artifact.build>`.
+        - With `<+trigger.artifact.build>`, the pipeline will deploy the artifact image version that initiated the trigger.
+    - To deploy this artifact image, you simply need to reference it in the stage's service definition in your manifests using the expression `<+artifact.image>`. For more details, go to [Add Container Images as Artifacts for Kubernetes Deployments](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/).
+
+### Create a Docker Registry Artifact Trigger
+
+5. Choosing the above modified pipeline, select **Triggers**.
+    - Select **New Trigger** and choose **Docker Registry** under **Artifact**.
     - Now, toggle to **YAML** to use the YAML editor.
-    - Copy the contents of [github-trigger.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/triggers/github-trigger.yml) and paste it into the YAML editor.
-    - In the YAML, replace **ORGANIZATION_ID**, **PROJECT_ID**, **PIPELINE_ID** and **GITHUB_CONNECTOR** with the organization identifier, project identifier, pipeline identifier and GitHub connector identifier respectively.
-    - Finally, select **Create Trigger**.
-    - You can also switch to the **Visual** editor and confirm the trigger steps.
+    - Copy the contents of [docker-trigger.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/triggers/docker-trigger.yml) and paste it into the YAML editor.
+    - In the YAML, replace the following fields:
+      -  **ORGANIZATION_ID** = your organization identifier
+      -  **PROJECT_ID** = your project identifier
+      -  **PIPELINE_ID** = your pipeline identifier
+      -  **DOCKER_CONNECTOR** = your Docker connector identifier
+      -  **MAINTAINER/IMAGE** = the name of the artifact you want to deploy (eg: `library/nginx`)
+      -  **CD_STAGE_ID** = the CD Stage identifier in the pipeline
+      -  **ARTIFACT_ID** the Artifact identifier, which you'll get from the Service associated with the Pipeline.
+    - Finally, select **Create Trigger** and observe that the status is in _pending_ state as Harness starts collecting the tags information from the registry.
+
+        <docimage path={require('./static/triggers/docker-trigger.png')} width="80%" height="80%" title="Click to view full size image" />
     
-      <docimage path={require('./static/triggers/github-trigger.png')} width="80%" height="80%" title="Click to view full size image" />  
-5. Now, edit the README.md of the forked `harnesscd-example-app` repo and push the changes.
-6. Finally, see the pipeline triggered and deploying the new changes.
-
-```mdx-code-block
-</TabItem>
-<TabItem value="GitLab">
-```
-
-## Before you begin
-
-Verify the following:
-
-- **Existing Harness CD pipeline.** If you are a new user or haven't created a pipeline yet, then kindly check our [CD tutorials](/tutorials/cd-pipelines) to create one.
-- **Existing GitLab connector**.
-    - If you are a new user or haven't created a GitLab connector yet, then kindly check [GitLab Connector](/docs/platform/connectors/code-repositories/connect-to-code-repo/#connect-to-gitlab) to create one and point the connector to the source repo.
-
-## Implement a trigger using GitLab events
-
-
-1. Log into [Harness](https://app.harness.io/).
-2. Select **Projects**, and then select **Default Project**.
-
-    :::caution
-
-    For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
-
-    :::
-3. In **Default Project**, select **Pipelines**.
-    - Select an existing pipeline or create a new pipeline by following any of our CD tutorials.
-4. After choosing the pipeline, select **Triggers**.
-    - Select **New Trigger** and choose **GitLab** under **Webhook**.
-    - Now, toggle to **YAML** to use the YAML editor.
-    - Copy the contents of [gitlab-trigger.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/triggers/gitlab-trigger.yml) and paste it into the YAML editor.
-    - In the YAML, replace **ORGANIZATION_ID**, **PROJECT_ID**, **PIPELINE_ID** and **GITLAB_CONNECTOR** with the organization identifier, project identifier, pipeline identifier and GitLab connector identifier respectively.
-    - Finally, select **Create Trigger**.
     - You can also switch to the **Visual** editor and confirm the trigger steps.
-    
-    <docimage path={require('./static/triggers/gitlab-trigger.png')} width="90%" height="90%" title="Click to view full size image" />  
-5. Now, edit the README.md of the forked repo used with the GitLab connector and push the changes.
-6. Finally, see the pipeline triggered and deploying the new changes.
 
-```mdx-code-block
-</TabItem>
-<TabItem value="Custom URL">
-```
+        <docimage path={require('./static/triggers/docker-trigger-success.png')} width="80%" height="80%" title="Click to view full size image" />
 
-## Before you begin
-
-Verify the following:
-
-- **Existing Harness CD pipeline.** If you are a new user or haven't created a pipeline yet, then kindly check our [CD tutorials](/tutorials/cd-pipelines) to create one.
-
-## Implement a trigger using a Custom URL
-
-
-1. Log into [Harness](https://app.harness.io/).
-2. Select **Projects**, and then select **Default Project**.
-
-    :::caution
-
-    For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
-
-    :::
-3. In **Default Project**, select **Pipelines**.
-    - Select an existing pipeline or create a new pipeline by following any of our CD tutorials.
-4. After choosing the pipeline, click on **Triggers**.
-    - Select **New Trigger** and select **Custom** under **Webhook**.
-    - Now, toggle to **YAML** to use the YAML editor.
-    - Copy the contents of [custom-trigger.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/triggers/custom-trigger.yml) and paste it into the YAML editor.
-    - In the YAML, replace **ORGANIZATION_ID**, **PROJECT_ID**, and **PIPELINE_ID** with the organization identifier, project identifier, and pipeline identifier respectively.
-    - Finally, select **Create Trigger**.
-    - You can also switch to the **Visual** editor and confirm the trigger steps.
-    
-        <docimage path={require('./static/triggers/custom-trigger.png')} width="90%" height="90%" title="Click to view full size image" />  
-5. Now, on the **Triggers** page, in the **Webhook** column, select the link icon for your trigger and then select **Copy as cURL Command**. An Example command would look like the below:
-
-    ```bash
-    curl -X POST -H 'content-type: application/json' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=jkhbdfkhrebgkhjbekjrfhgbejkrg&orgIdentifier=Ansibler&projectIdentifier=trigger&pipelineIdentifier=hmcvhgm&triggerIdentifier=customtrigger' -d '{"sample_key": "sample_value"}'
-    ```
-6. Run the example command in a terminal to trigger a pipeline execution.
-7. Finally, see the pipeline triggered and deploying the new changes.
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
+6. Finally, build and push a new artifact image to the mentioned Docker registry, and voila! Observe the pipeline being triggered and deploying the new image.
 
 ### Congratulations!🎉
 

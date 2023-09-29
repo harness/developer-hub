@@ -254,7 +254,7 @@ To add a Harness Github connector:
     
     7. Select **Enable API access** and use the same Harness secret.
     
-    For more information, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
+    For more information, go to the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 3. Select **Continue**.
 4. In **Connect to the provider**, select **Connect through Harness Platform**., and then click **Save and Continue**.
 5. When the **Connection Test** in complete, click **Continue**.
@@ -279,7 +279,7 @@ To add a Bitbucket connector:
     
     6. Select **Enable API access** and use the same Harness secret.
     
-    For more information, go to [Bitbucket connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference).
+    For more information, go to [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference).
 3. Select **Continue**.
 4. In **Connect to the provider**, select **Connect through Harness Platform**, and then click **Save and Continue**.
 5. After the Connection Test is complete, click **Continue**.

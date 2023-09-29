@@ -99,7 +99,7 @@ For Azure Web Apps artifacts, you will add the same Docker image or non-containe
 
 In the Harness service **Artifacts**, you select or create a Harness connector to the artifact registry.
 
-For details on setting up each registry, go to [Connect to an Artifact Repo](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
+For details on setting up each registry, go to [Connect to an Artifact Repo](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
 Once you have an artifact connector set up and selected, you can fill out the **Artifact Details** settings.
 
@@ -150,7 +150,7 @@ In your stage **Environment**, in **Specify Infrastructure**, you select an infr
 
 - **Connector**: Select or create an Azure Cloud Provider connector that connects to your Azure application and tenant Ids.
 
-  For steps on setting up a new Azure Cloud Provider connector, go to [Add a Microsoft Azure Cloud Connector](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector).
+  For steps on setting up a new Azure Cloud Provider connector, go to [Add a Microsoft Azure Cloud Connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
 - **Subscription Id**: Select the Azure subscription used by your Web App.
   
   The subscription is located in the Web App **Overview** section of the Azure portal.

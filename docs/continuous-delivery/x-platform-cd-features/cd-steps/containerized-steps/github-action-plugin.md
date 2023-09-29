@@ -68,6 +68,7 @@ Harness provides built-in scanning and vulnerability assessment using [Security 
 </details>
 
 
+
 ## Add the GitHub Action Plugin step
 
 The GitHub Action Plugin step uses a containerized step group. For more information, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md).

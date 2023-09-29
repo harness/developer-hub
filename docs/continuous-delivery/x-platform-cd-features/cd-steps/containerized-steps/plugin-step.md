@@ -92,7 +92,7 @@ docker run --rm \
 
 Plugins are distributed as Docker images.
 
-If your plugin image is private, others in your organization can use your plugin in their Harness CI pipelines by using a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for the private registry where your plugin image is stored.
+If your plugin image is private, others in your organization can use your plugin in their Harness CI pipelines by using a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for the private registry where your plugin image is stored.
 
 If your plugin image is public, you can share it with anyone. You can submit a pull request to the [drone-plugin-index repository](https://github.com/drone/drone-plugin-index) if you'd like your plugin to be considered for the [Drone Plugins Marketplace](https://plugins.drone.io/).
 

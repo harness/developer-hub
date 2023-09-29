@@ -80,7 +80,7 @@ The delegate and Harness Manager (through SaaS) establish a Secure WebSocket cha
 
 #### Can I add IP addresses for Harness Delegate to an allowlist?
 
-Yes. For more information, go to [Allowlist Harness domains and IPs](../platform/20_References/allowlist-harness-domains-and-ips.md).
+Yes. For more information, go to [Allowlist Harness domains and IPs](../platform/references/allowlist-harness-domains-and-ips.md).
 
 #### Do I need separate delegates for different isolated environments?
 
@@ -142,7 +142,7 @@ Remember that the memory and CPU requirements are for the delegate only. Your de
 
 #### What are the delegate network requirements?
 
-To learn more, go to [Delegate requirements](../platform/delegates/delegate-concepts/delegate-requirements.md) and [Permissions and ports for Harness connections](../platform/20_References/permissions-and-ports-for-harness-connections.md).
+To learn more, go to [Delegate requirements](../platform/delegates/delegate-concepts/delegate-requirements.md) and [Permissions and ports for Harness connections](../platform/references/permissions-and-ports-for-harness-connections.md).
 
 #### What are the delegate access requirements?
 
@@ -278,7 +278,7 @@ For delegate troubleshooting, go to [Troubleshooting](/docs/category/troubleshoo
 
 Most delegate issues are:
 
-* The delegate does not meet system, network, or access requirements. For more information, go to [Delegate requirements](../platform/delegates/delegate-concepts/delegate-requirements.md) and [Permissions and ports for Harness connections](../platform/20_References/permissions-and-ports-for-harness-connections.md).
+* The delegate does not meet system, network, or access requirements. For more information, go to [Delegate requirements](../platform/delegates/delegate-concepts/delegate-requirements.md) and [Permissions and ports for Harness connections](../platform/references/permissions-and-ports-for-harness-connections.md).
 	+ Keep in mind that the delegate host or node needs resources to host the delegate and other software. The delegate resource requirements should be factored in, but they are not the minimum requirements for the infrastructure.
 * The delegate is not running.
 * The delegate does not have required permissions. The delegate uses the credentials you enter in Harness connectors to connect to cloud providers, artifact servers, etc.  

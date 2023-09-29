@@ -120,7 +120,7 @@ Your account overview details are shown.
 
 This section provides options for you to set up authentication for users, enforce password policies, and restrict email domain.
 
-For more information, refer to [Authentication Overview](../platform/3_Authentication/1-authentication-overview.md).
+For more information, refer to [Authentication Overview](../platform/authentication/authentication-overview.md).
 
 ### Account Resources
 

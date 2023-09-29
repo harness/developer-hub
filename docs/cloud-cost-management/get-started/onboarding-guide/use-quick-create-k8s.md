@@ -14,7 +14,7 @@ The Kubernetes Quick Create feature allows you to seamlessly set up your Harness
 
 ## Prerequisites and Permissions
 
-* See [Roles and Policies for the Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector#review-roles-and-policies-for-the-connector) to learn about the IAM roles and policies that you need to be assigned to be able to create a connector.
+* See [Roles and Policies for the Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector#review-roles-and-policies-for-the-connector) to learn about the IAM roles and policies that you need to be assigned to be able to create a connector.
 * See [Prerequisites](set-up-cost-visibility-for-kubernetes.md#prerequisites) to learn about the tasks that you need to perform before setting up Cloud Costs Management for your Kubernetes cluster.
 
 

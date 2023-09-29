@@ -1,5 +1,5 @@
 ---
-title: Harness Continuous Integration (CI) Overview
+title: Harness Continuous Integration (CI) overview
 sidebar_label: Overview
 description: Harness CI simplifies the code development and testing process.
 sidebar_position: 1
@@ -64,7 +64,7 @@ If you want to try creating a pipeline for yourself, these tutorials walk throug
 * [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
 * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 
-For information about CI pipeline components, go to [CI pipeline basics](/docs/continuous-integration/get-started/key-concepts).
+For information about CI pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
 ## Features
 

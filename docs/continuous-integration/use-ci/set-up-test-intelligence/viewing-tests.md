@@ -57,7 +57,7 @@ The parsed test report in the **Tests** tab comes strictly from the provided tes
 
 ## View reports on the Artifacts tab
 
-For reports that can't be published to the **Tests** tab, you can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish reports to the **Artifacts** tab on the [Build details page](../viewing-builds.md). You can [publish any URL to the Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab).
+For reports that can't be published to the **Tests** tab, you can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish reports to the **Artifacts** tab on the [Build details page](../viewing-builds.md). You can [publish any URL to the Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab).
 
 ```mdx-code-block
 <Tabs>
@@ -74,8 +74,8 @@ To publish an artifact to the **Artifacts** tab, you must:
    * **Container Registry:** Select a Docker connector.
    * **Image:** Enter `plugins/artifact-metadata-publisher`.
    * **Settings:** Add the following two settings as key-value pairs.
-      * `file_urls`: The URL to the target artifact that was uploaded in the **Upload Artifacts** step.
-      * `artifact_file`: `artifact.txt`
+      * `file_urls`: Provide the URL to the artifact that was uploaded in the **Upload Artifacts** step. If you uploaded multiple artifacts, you can provide a list of URLs.
+      * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
 ```mdx-code-block
   </TabItem>
@@ -95,8 +95,8 @@ To publish an artifact to the **Artifacts** tab, you must:
                        connectorRef: account.harnessImage
                        image: plugins/artifact-metadata-publisher
                        settings:
-                         file_urls: ## Provide the URL to the target artifact that was uploaded in the Upload Artifacts step.
-                         artifact_file: artifact.txt
+                         file_urls: ## Provide the URL to the artifact that was uploaded in the Upload Artifacts step. If you uploaded multiple artifacts, you can provide a list of URLs.
+                         artifact_file: artifact.txt ## Provide any '.txt' file name. Harness uses this to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
    ```
 
 ```mdx-code-block

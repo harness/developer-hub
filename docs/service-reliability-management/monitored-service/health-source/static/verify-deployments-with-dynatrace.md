@@ -17,7 +17,7 @@ This topic covers how to add and configure Dynatrace as a Health Source for the 
 
 ## Before You Begin
 
-[Add Dynatrace as a verification provider](..//docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-dynatrace)
+[Add Dynatrace as a verification provider](..//docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-dynatrace)
 
 ## Review: CV Setup Options
 
@@ -137,8 +137,8 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition Settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 * [Select Delegates with Selectors](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 See [Advanced Settings](verify-deployments-with-the-verify-step.md#option-advanced-settings).

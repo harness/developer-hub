@@ -90,15 +90,15 @@ The dashboard displays the data based on the set filter.
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](../../../platform/18_Dashboards/create-dashboards.md)
-* [Create Visualizations and Graphs](../../../platform/18_Dashboards/create-visualizations-and-graphs.md)
+* [Create Dashboards](../../../platform/dashboards/create-dashboards.md)
+* [Create Visualizations and Graphs](../../../platform/dashboards/create-visualizations-and-graphs.md)
 
 ### Next Steps
 
-* [Use Dashboard Actions](../../../platform/18_Dashboards/use-dashboard-actions.md)
-* [Download Dashboard Data](../../../platform/18_Dashboards/download-dashboard-data.md)
-* [Create Conditional Alerts](../../../platform/18_Dashboards/create-conditional-alerts.md)
-* [Schedule and Share Dashboards](../../../platform/18_Dashboards/share-dashboards.md)
+* [Use Dashboard Actions](../../../platform/dashboards/use-dashboard-actions.md)
+* [Download Dashboard Data](../../../platform/dashboards/download-dashboard-data.md)
+* [Create Conditional Alerts](../../../platform/dashboards/create-conditional-alerts.md)
+* [Schedule and Share Dashboards](../../../platform/dashboards/share-dashboards.md)
 * [View AWS Cost Dashboard](aws-dashboard.md)
 
 

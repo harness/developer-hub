@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-09-11T13:49:25
+date: 2023-09-20T13:49:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -15,7 +15,8 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - September 11, 2023
+
+## Latest - September 20, 2023
 
 ### New features and enhancements
 
@@ -25,14 +26,42 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the Javascript SDK
+### Fixed issues in the iOS SDK
 
-- Changing evaluation handling for Flutter Web. (FFM-8963)
+- Fixed issue with metric target evaluation. (FFM-9409)
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### September 19, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Javascript SDK
+
+- Emit flags as part of polling intervals using POLLING_CHANGED event. (FFM-9045)
+
+#### September 11, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Javascript SDK
+
+- Changing evaluation handling for Flutter Web. (FFM-8963)
 
 #### Sept 08, 2023
 
@@ -76,6 +105,20 @@ This release does not include new features.
 This release does not include early access features.
 
 ##### Fixed issues in the Apex SDK
+
+Released Apex SDK 0.1.2 - Avoid loading all flag/target segment config into two cache keys, instead use a key per item, so we don’t exceed SFDC account limits and get cache.ItemSizeLimitExceededException (FFM-9071)
+
+#### August 24, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+### Fixed issues in the Apex SDK
 
 Released Apex SDK 0.1.2 - Avoid loading all flag/target segment config into two cache keys, instead use a key per item, so we don’t exceed SFDC account limits and get cache.ItemSizeLimitExceededException (FFM-9071)
 

@@ -21,7 +21,7 @@ This topic describes how to deploy AWS ASG deployments using Harness and the Spo
 
 ## Connect to a Spot cloud provider
 
-You can connect Harness to a Spot cloud provider by adding a [Harness Spot Elastigroup connector](/docs/platform/Connectors/Cloud-providers/add-a-spot-connector) or [AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector). 
+You can connect Harness to a Spot cloud provider by adding a [Harness Spot Elastigroup connector](/docs/platform/connectors/cloud-providers/add-a-spot-connector) or [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector). 
 
 To connect to a Spot cloud provider using Spot's API, go to [Spot API authentication](https://docs.spot.io/api/#section/Authentication).
 
@@ -115,7 +115,7 @@ service:
     
     In this scenario, the AWS account used for AWS access in credentials will assume the IAM role you specify in cross-account role ARN setting. This option uses the [AWS Security Token Service (STS)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) feature.
 11. In **Test Region**, select an AWS region to test the credentials for this connector. 
-12. In **Delegates Setup**, select **Only use Delegate with all of the following tags** and enter the name of the delegate created when creating the [Harness Spot Elastigroup connector](/docs/platform/Connectors/Cloud-providers/add-a-spot-connector).
+12. In **Delegates Setup**, select **Only use Delegate with all of the following tags** and enter the name of the delegate created when creating the [Harness Spot Elastigroup connector](/docs/platform/connectors/cloud-providers/add-a-spot-connector).
 13. Select **Save and Continue**
 14.  After the connection test succeeds, select **Continue**.
 15. In **Artifact Details**, enter the following details:

@@ -1,5 +1,5 @@
 ---
-title: Use the GitHub Action plugin step
+title: Use the GitHub Action step
 description: Run GitHub Actions in your Harness CI pipelines.
 sidebar_position: 70
 ---
@@ -12,11 +12,11 @@ import DindTrbs from '/docs/continuous-integration/shared/dind-bg-gha-trbs.md';
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts. You can find over 10,000 GitHub Actions on the [GitHub Marketplace](https://github.com/marketplace?type=actions) or create your own Actions.
 
-You can use the **GitHub Action plugin** step to run GitHub Actions in your [Harness CI pipelines](../prep-ci-pipeline-components.md).
+You can use the **GitHub Action plugin** step (also called the **GitHub Action** step or **Action** step) to run GitHub Actions in your [Harness CI pipelines](../prep-ci-pipeline-components.md).
 
 :::info
 
-Currently, the **GitHub Action plugin** step is supported for the Harness Cloud build infrastructure only.
+Currently, the **GitHub Action** step is supported for Harness Cloud build infrastructure only.
 
 For other build infrastructures, you can use the [GitHub Actions Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
 
@@ -24,9 +24,9 @@ For more information about using plugins in CI pipelines, go to [Explore plugins
 
 :::
 
-## Usage examples
+## Action step usage examples
 
-The following YAML examples use **GitHub Action plugin** steps (`Action` steps) to set up Node.js, Go, Java, and Ruby environments.
+The following YAML examples use **GitHub Action** steps (`Action` steps) to set up Node.js, Go, Java, and Ruby environments.
 
 ```mdx-code-block
 <Tabs>
@@ -106,14 +106,14 @@ This `Action` step uses the `ruby/setup-ruby` GitHub Action to set up a Ruby env
 </Tabs>
 ```
 
-## Settings and specifications
+## Action step settings and specifications
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="YAML" label="YAML editor" default>
 ```
 
-To add a **GitHub Action plugin** step in the YAML editor, add an `Action` step, for example:
+To add a **GitHub Action** step in the YAML editor, add an `Action` step, for example:
 
 ```yaml
               - step:
@@ -153,7 +153,7 @@ The following cases *always* require environment variables:
 1. Add the **GitHub Action plugin** step to your pipeline's **Build** stage.
 2. Enter a **Name** and optional **Description**.
 
-   Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+   Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 3. For **Uses**, specify the repo and branch or tag of the GitHub Action that you want to use, for example `actions/setup-go@v3`.
 
@@ -174,8 +174,8 @@ The following cases *always* require environment variables:
 
 6. Optionally, you can set the **Timeout**. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-   * [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-   * [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+   * [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+   * [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 :::tip Tips
 
@@ -192,7 +192,7 @@ The following cases *always* require environment variables:
 <details>
 <summary>YAML example: Pipeline with an Action step</summary>
 
-This pipeline uses a **GitHub Action plugin** step to install golang version 1.19.5. It then compiles the golang application and runs tests.
+This pipeline uses a **GitHub Action** step to install golang version 1.19.5. It then compiles the golang application and runs tests.
 
 ```yaml
 pipeline:
@@ -273,7 +273,7 @@ You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")
 
 :::
 
-For more information about configuring the Action step's settings, go to the [Settings and specifications](#settings-and-specifications) section, above.
+For more information about configuring the Action step's settings, go to the [Action step settings and specifications](#action-step-settings-and-specifications) section, above.
 
 ```mdx-code-block
   </TabItem>
@@ -291,7 +291,7 @@ You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")
 
 :::
 
-For more information about configuring the GitHub Action plugin step's settings, go to the [Settings and specifications](#settings-and-specifications) section, above.
+For more information about configuring the Action step's settings, go to the [Action step settings and specifications](#action-step-settings-and-specifications) section, above.
 
 ```mdx-code-block
   </TabItem>
@@ -399,6 +399,14 @@ The following table compares GitHub Action YAML with Harness CI Action step YAML
 </tr>
 </table>
 
-## Troubleshooting: Can't connect to Docker daemon
+## Troubleshooting the Action step
+
+### Can't connect to Docker daemon
 
 <DindTrbs />
+
+### Not a git repository (or any of the parent directories)
+
+This error occurs if the GitHub Action you're using requires a codebase to be present, such as the [GraphQL Inspector](https://github.com/marketplace/actions/graphql-inspector) or [DevCycle Feature Flag Code Usages](https://github.com/marketplace/actions/devcycle-feature-flag-code-usages) Actions. The Action step isn't compatible with such Actions at this time.
+
+If the Action allows you to override the `working-directory`, such as with the [CodeCov Action](https://github.com/codecov/codecov-action/blob/e1dd05cde2ed37d100f658b34ea423728ba1812e/action.yml#L107), you can use this setting to specify the correct working directory. If no such setting is available, then the Action is not compatible with Harness CI at this time.

@@ -10,6 +10,13 @@ For steps on upgrading, go to [Upgrade to CD NextGen](./upgrade-nextgen-cd.md).
 
 For information on the differences between Harness FirstGen and NextGen, go to [Harness FirstGen vs Harness NextGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md).
 
+## Harness NextGen overview video
+
+<!-- Video:
+https://www.loom.com/share/ea58b72d294b44c38c89520e331a7c93?sid=27eac669-e34a-4c12-8d09-de62d0842bb6-->
+<docvideo src="https://www.loom.com/share/ea58b72d294b44c38c89520e331a7c93?sid=27eac669-e34a-4c12-8d09-de62d0842bb6" />
+
+
 ## What is Harness Continuous Delivery NextGen?
 
 Harness has reimagined Continuous Delivery (CD) and built a new version of its CD product. 

@@ -366,29 +366,8 @@ If you disable automatic upgrades, we recommend you manually update often since 
 
 The Argo CD components upgrade must be done manually.
 
-## Troubleshooting
-
-The following solutions can help with Agent installation errors.
-
-### Agent took too long to respond
-
-If you see the error `the Agent took too long to respond` during installation of an Agent with an existing Argo CD instance, the Agent cannot connect to the Redis/repo server and needs additional `NetworkPolicy` settings.
-
-Add the following `podSelector` settings to the `NetworkPolicy` objects defined in your existing Argo CD **argocd-redis** and **argocd-repo-server** services.
-
-The following table lists the `NetworkPolicy` objects for HA and non-HA Agents, and include the YAML before and after the new `podSelector` is added.
-
-
-
-| **NetworkPolicy** | **HA Agent** |
-| --- | --- |
-| `argocd-redis-ha-proxy-network-policy` | ![](static/argocd-redis-ha-proxy-network-policy.png)  |
-| `argocd-repo-server-network-policy` | ![](static/argocd-repo-server-network-policy.png)  |
-|  | **Non-HA Agent** |
-| `argocd-redis-network-policy` | ![](static/argocd-redis-network-policy.png)  |
-| `argocd-repo-server-network-policy` | ![](static/argocd-repo-server-network-policy-nonha.png)  |
-
 ## References
 
 * [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md)
 * [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md)
+* [Troubleshooting](/docs/continuous-delivery/gitops/gitops-ref/troubleshooting)

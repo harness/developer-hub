@@ -757,7 +757,7 @@ Harness can fetch your task definitions, service definitions, scalable target an
 
 - Harness File Store.
 - AWS S3 buckets.
-  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 - Git providers.
 
 ### AWS Auto Scaling with ECS

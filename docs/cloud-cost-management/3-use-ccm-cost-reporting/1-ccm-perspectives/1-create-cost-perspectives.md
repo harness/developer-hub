@@ -12,7 +12,7 @@ You can add business context to your Harness Cloud Cost Management (CCM) data us
 
 ### Before You Begin
 
-* [Set Up Cloud Cost Management for your cloud service provider](https://developer.harness.io/docs/category/set-up-cloud-cost-management)
+* [Set Up Cloud Cost Management for your cloud service provider](https://developer.harness.io/docs/category/onboarding-guide-for-ccm)
 * [Use Cost Categories](../2-ccm-cost-categories/1-ccm-cost-categories.md)
 
 ## Cloud Costs Perspective Concepts
@@ -47,7 +47,12 @@ For example, in **Rules for Perspective**, if you select `Label: kubernetes.io/n
 For example, in **Rules for Perspective**, if you select `Label: kubernetes.io/name` as `NOT_NULL`, then your Perspective will list the cost of the selected label only (`kubernetes.io/name`). It won't include the cost of any other resource.
 
   ![](./static/create-cost-perspectives-17.png)
-* **LIKE**: Use the Like operator to include the cost of all items in the selected filter that match the specified condition. For example, if you have selected the Cost category filter, you could use the Like operator to specify condition "database" to filter all cost categories that is related to database. 
+* **LIKE**: The Like operator uses `REGEXP_CONTAINS` provided by the BigQuery at the backend. This function is used to check if a given value partially matches a specified regular expression. 
+
+  - Retrieves result even if the value partially matches the regular expression. 
+  - To search for a full match (the entire value matches the regular expression), use `^` at the beginning of the regular expression and `$` at the end of the regular expression. These symbols signify the beginning and end of the text, respectively.
+
+  For example, `AWS Account ID LIKE ‘abc’`. This means REGEXP_CONTAINS(aws_account_id, r'abc). User input is 'abc' in this example.
 
 ### Filters
 
