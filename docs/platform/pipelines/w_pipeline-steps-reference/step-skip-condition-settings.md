@@ -56,15 +56,15 @@ In the JEXL expression, you could use any of the Pipeline variables, including t
 Examples:
 
 * `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "SUCCEEDED"`
-* `<+environment.name> != “QA”`
+* `<+environment.name> != "QA"`
 
-See [Built-in Harness Variables Reference](../../variables-and-expressions/harness-variables.md).
+For more information, go to [Built-in Harness variables reference](../../variables-and-expressions/harness-variables.md).
 
-```note
+:::info
 
-Comparing strings to boolean always evaluates to **True** unless the string is literally the word “false”.
+Comparing strings to Booleans always evaluates to `true` unless the string is literally the word `false`.
 
-```
+:::
 
 ### Step conditions
 

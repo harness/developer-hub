@@ -6,6 +6,8 @@ helpdocs_topic_id: sof7n3qjap
 helpdocs_category_id: flam7377aq
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests
 ---
 
 ```mdx-code-block
