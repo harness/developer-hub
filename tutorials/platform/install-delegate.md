@@ -108,15 +108,15 @@ To install the delegate, do the following:
    The command uses the default [values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) located in the [delegate-helm-chart](https://github.com/harness/delegate-helm-chart) GitHub repo. If you want to change one or more values in a persistent manner instead of the command line, you can download and update the `values.yaml` file as per your need. You can use the updated `values.yaml` file as shown below.
 
    ```
-   helm upgrade -i firstk8sdel --namespace harness-delegate-ng --create-namespace \
-   harness-delegate/harness-delegate-ng \
-   -f values.yaml \
-   --set delegateName=firstk8sdel \
-   --set accountId=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
-   --set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE \
-   --set managerEndpoint=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
-   --set delegateDockerImage=harness/delegate:23.02.78306 \
-   --set replicas=1 --set upgrader.enabled=false
+      helm upgrade -i firstk8sdel --namespace harness-delegate-ng --create-namespace \
+     harness-delegate/harness-delegate-ng \
+     -f values.yaml \
+     --set delegateName=firstk8sdel \
+     --set accountId=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+     --set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE \
+     --set managerEndpoint=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
+     --set delegateDockerImage=harness/delegate:yy.mm.verno \
+     --set replicas=1 --set upgrader.enabled=false
    ```
 
 :::info note
@@ -128,12 +128,11 @@ helm repo add harness-delegate --ca-file <.PEM_FILE_PATH> <HELM_CHART_URL_FROM_U
 
    The command uses the default [values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) located in the [delegate-helm-chart](https://github.com/harness/delegate-helm-chart) GitHub repo. If you want to change one or more values in a persistent manner instead of the command line, you can download and update the `values.yaml` file as needed. You can use the updated `values.yaml` file as shown below.
 
-7. Run the command.
-
 For more information on requirements for air-gapped environments, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment).
 
 :::
 
+7. Run the command.
 
 ```mdx-code-block
 </TabItem>
