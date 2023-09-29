@@ -62,7 +62,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 #### Self-Managed Enterprise Edition
 
-- Harness updated the Helm chart to optimize packaging and module delivery. (SMP-1588)
+- Harness has updated the Helm chart to optimize packaging and module delivery. (SMP-1588)
    
    **Restructured Helm charts**
 
@@ -166,13 +166,13 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
   This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Retrieve the current status of the looping strategy for stages and steps during execution. (CDS-69780)
+- The pipeline now retrieves the current status of the looping strategy for stages and steps during execution. (CDS-69780)
   
   New built-in Harness expressions provide the current execution status of the looping strategy for nodes (stages/steps) using a matrix or repeat strategy.
   
-  The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
+  Each stage or step in a looping strategy has a status of `RUNNING`, `FAILED`,  or `SUCCESS`.
 
-  The list of expressions include:
+  The following expressions are supported:
   
   - `<+strategy.currentstatus>`
   - `<+strategy.node.strategy_node_identifier.currentstatus>`
@@ -186,7 +186,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
   For information on using the expressions, go to [Strategy](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#strategy).
 
-- You can now migrate Services with Helm charts from Helm repository-stored Artifacts from CG to NG. This will help in migrations. This feature is behind the feature flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG`. (CDS-73894)
+- You can now migrate services with Helm charts from Helm repository-stored artifacts from CG to NG. This will help in migrations. This feature is behind the feature flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG`. (CDS-73894)
 
 - Harness has introduced restrictions on the depth of nesting in execution pipelines to enhance system stability. Now, a node execution will not be allowed if it exceeds 25 levels of nesting. The 25th level refers to the node being the 25th child starting from the root node `pipeline`. (CDS-75249)
 
@@ -220,7 +220,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 - You can now view delegate logs when validating a connector that uses a delegate to establish connections. (PL-37919)
 
-- The delegate expiration policy has been extended from 3 months to 6 months. You now only have to update delegates once every 6 months. (PL-39452)
+- The delegate expiration policy has been extended from 3 months to 6 months. You now only need to update delegates once every 6 months. (PL-39452)
 
 - Earlier, when an administrator enabled the account-level two-factor authentication (2FA) setting, it affected users in the following manner:
   1. Users who had set that account as their default account received 2FA emails, and the user-level 2FA setting was enabled across all their profiles. The users were not allowed to disable the setting.
@@ -264,11 +264,11 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 #### Continuous Delivery & GitOps
 
-- You can now configure multiple Helm charts in the manifests. This provides feature parity with Harness FirstGen. Helm charts can now be configured from Helm Repository as Artifacts that allow the users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service. This feature is behind the feature flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG`. (CDS-70209)
+- You can now configure multiple Helm charts in the manifests. This provides feature parity with Harness FirstGen. Helm charts can now be configured from Helm Repository as Artifacts that allow the users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service. This feature is behind the feature flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-70209)
 
 - Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources). (CDS-71711)
   
-  This feature is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`.
+  This feature is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
   The **Artifact Details** page has a new, optional **Digest** setting where you can specify the digest/SHA for a container image artifact.
   
@@ -328,7 +328,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
   
   There was an issue in the **Services** dashboard when step group names had special characters in them. The issue led to incorrectly displaying names. This issue has now been fixed by sanitizing the names.
 
-- Fixed a delegate-selector issue in Jira, ServiceNow and Bamboo build steps. When a delegate selector was added at the step/stage/pipeline level, it did not override the selector coming from the connector. This meant that both the delegate selectors were getting checked during the step execution. With this fix, if any selector is at the step/stage/pipeline level, it overrides the selector coming from the connector. This is the default behavior in every other step type. (CDS-71025)
+- Fixed a delegate-selector issue in Jira, ServiceNow, and Bamboo build steps. When a delegate selector was added at the step/stage/pipeline level, it did not override the selector coming from the connector. This meant that both the delegate selectors were getting checked during the step execution. With this fix, if any selector is at the step/stage/pipeline level, it overrides the selector coming from the connector. This is the default behavior in every other step type. (CDS-71025)
 
   This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -397,7 +397,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
   This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Template YAML is not changing after changes in the UI. (CDS-72942, ZD-46501)	
+- Template YAML was not changing after changes in the UI. (CDS-72942, ZD-46501)	
   
   There was an issue with editing and saving account-level templates in the YAML builder. This issue has now been fixed.
 
@@ -468,11 +468,11 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 - Fixed a UI issue in the **File Store** page where clicking on an entity link redirected to the Services page. With this fix, an entity link now points to the details page for the referenced entity. (CDS-73834, ZD-46193)	
 
-- When a user marked a running stage in the pipeline as failed, the build also marked the parallel queued stages as failed. This was incorrect behavior because the queued stages should continue to run if they are configured to do so.
+- When a user marked a running stage in the pipeline as failed, the build also marked the parallel queued stages as failed. This was incorrect behavior because the queued stages should continue to run if they were configured to do so.
 
    This issue has now been fixed. If a running stage is marked failed by the user, and there are parallel queued stages waiting, the stages are not marked as failed and run the way they are configured. (CDS-73857, ZD-47087)
 
-- Fixed a UI issue causing the stage dropdown options in the **Tests** tab of the execution page to scroll unexpectedly when an execution is in progress. (CDS-74026)
+- Fixed a UI issue causing the stage dropdown options in the **Tests** tab of the execution page to scroll unexpectedly when an execution was in progress. (CDS-74026)
 
 -  Fixed an issue where command execution logs were incomplete even though the pipeline ran successfully. This issue was observed when using Command steps in SSH or WinRM deployments. (CDS-74042, ZD-46904)
 
@@ -511,7 +511,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
   This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-- Fixed an issue where manifest extraction script was being rendered in service step itself before K8s steps. We're now rendering serviceOverrideVariables expressions later in the step itself so that the overridden value is used. (CDS-74335, ZD-47503)
+- Fixed an issue where manifest extraction script was being rendered in service step itself before K8s steps. We're now rendering `serviceOverrideVariables` expressions later in the step itself so that the overridden value is used. (CDS-74335, ZD-47503)
 
 - Fixed an issue where Command steps could not resolve Service Overrides for variables of type Secret (for example, `export testsvc="<+secrets.getValue(account.examplesecret)>"`. (CDS-74338, ZD-47280)
 
@@ -521,7 +521,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 - Fixed an issue where the Harness Approval step would always fail if the step had automatic approvals set up with approver inputs. To fix this, the check for approver inputs has been removed.  (CDS-74648)
 
-- Fixed an issue where, when a stage (say, s2) is created with a propagated service from a previous stage (say, s1), saving s2 as a template was not allowed due to the service reference. However, no error message was displayed. The issue is now fixed, and the error message is displayed correctly. (CDS-74759)
+- Fixed an issue where, when a stage (say, s2) was created with a propagated service from a previous stage (say, s1), saving s2 as a template was not allowed due to the service reference. However, no error message was displayed. The issue is now fixed, and the error message is displayed correctly. (CDS-74759)
 
 - Fixed a UI issue in **Pipeline** and **Execution** pages where a search term would persist even after switching to a different project.  (CDS-74788)
 
@@ -547,7 +547,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 - [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence/) now reads packages from files for all changed files, instead of relying on the file path to determine the package. This fixes an issue where tests were missed due to the test package not following the order of folders, because Test Intelligence previously determined the package from the class path. (CI-8692)
 
-- Fixed an issue with handling of new line characters in [GitHub App private key files](/docs/platform/Connectors/Code-Repositories/git-hub-app-support) generated on Windows machines. This fix requires Harness Delegate version 80104 or later. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate). (CI-8708)
+- Fixed an issue with handling of newline characters in [GitHub App private key files](/docs/platform/Connectors/Code-Repositories/git-hub-app-support) generated on Windows machines. This fix requires Harness Delegate version 80104 or later. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate). (CI-8708)
 
 - Fixed an issue where step details for other steps were shown when using [AIDA](/docs/continuous-integration/troubleshoot-ci/aida) to troubleshoot a pipeline with multiple failed steps. (CI-8735)
 
@@ -591,7 +591,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
  
   This item is available with Harness Platform version 80120 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Instead of displaying an appropriate, RBAC-related message to users who do not have permissions to view the list of delegates, the Account Resources: Delegates page displays a "Failed to fetch: 403 Forbidden" message. (PL-39043)
+- Instead of displaying an appropriate, RBAC-related message to users who did not have permissions to view the list of delegates, the Account Resources: Delegates page displays a "Failed to fetch: 403 Forbidden" message. (PL-39043)
   
   This issue has been fixed. Now, in this scenario, the page informs such users that they are not authorized to view the page, and it lists the permissions that they require.
 
@@ -657,7 +657,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
   The issue is now fixed, and the dialog shows user-friendly messages. 
 
-- The menu for selecting the page size on the account-level Audit Trail page shows the text `Select` by default instead of showing one of the built-in size options of 10, 20, 50, and 100. Additionally, the page displays 25 items by default instead of using one of the built-in size options. (PL-40144)
+- The menu for selecting the page size on the account-level Audit Trail page showed the text `Select` by default instead of showing one of the built-in size options of 10, 20, 50, and 100. Additionally, the page displayed 25 items by default instead of using one of the built-in size options. (PL-40144)
 
   This issue has been resolved. 
 

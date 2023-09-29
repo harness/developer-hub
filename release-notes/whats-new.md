@@ -36,7 +36,7 @@ Added new filters named Environment-Based and SLO Type to the SLO listing page. 
 
 ### Self-Managed Enterprise Edition
 
-- Harness updated the Helm chart to optimize packaging and module delivery. (SMP-1588)
+- Harness has updated the Helm chart to optimize packaging and module delivery. (SMP-1588)
 
 - Harness Self-Managed Enterprise Edition now supports self-managed MinIO object storage for disaster recovery. (SMP-1671)
 
