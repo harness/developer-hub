@@ -104,14 +104,20 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
       helm get values harness -n harness > oldvalues.yaml
       ```
 
-   3. Run `migrate-values-0.9.x` to get the `oldvalues-migrated.yaml` file output.
+   3. Run the following to update file access.
+
+      ```
+      chmod +x migrate-values-0.9.x.sh
+      ```
+   
+   4. Run `migrate-values-0.9.x` to get the `oldvalues-migrated.yaml` file output.
 
       ```
       chmod 700 migrate-values-0.9.x
       ./migrate-values-0.9.x -f oldvalues.yaml
       ```
 
-   4. Upgrade to the latest Helm chart. Use `harness/harness` for the `chartSource` or the path of your chart's directory.
+   5. Upgrade to the latest Helm chart. Use `harness/harness` for the `chartSource` or the path of your chart's directory.
 
        ```
        helm upgrade harness <chartSource> -f oldvalues-migrated.yaml
