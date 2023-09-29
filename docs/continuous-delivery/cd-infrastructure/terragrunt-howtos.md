@@ -781,7 +781,7 @@ In **Advanced**, you can use the following options:
 
 :::note
 
-Currently, FEATURE_NAME is behind the feature flag `CDS_TERRAGRUNT_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, Terragrunt command line options are behind the feature flag `CDS_TERRAGRUNT_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
