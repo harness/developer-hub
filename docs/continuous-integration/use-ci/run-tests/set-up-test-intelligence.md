@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-intelligence
-  - /docs/continuous-integration/use-ci/set-up-test-intelligence/
+ ## - /docs/continuous-integration/use-ci/set-up-test-intelligence/
 ---
 
 ```mdx-code-block
