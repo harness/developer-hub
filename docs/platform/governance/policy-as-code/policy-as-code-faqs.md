@@ -52,7 +52,6 @@ No, you cannot manage policy sets in Git.
 ## When can policies be evaluated?
 
 - **On Save:** Policies can be applied via a policy set to a specific object when a user is trying to update or create it. The following object types are supported:
-   Supported objects:
    - Feature Flags
    - Connectors
    - Secrets 
@@ -60,6 +59,6 @@ No, you cannot manage policy sets in Git.
    - Pipelines   
 - **On Run:** Policies can be applied when a pipeline is run and a value is computed.  The following object type is supported:
    - Pipelines
-- **On Step:** When using the Governance Step, you can evaluate a policy against the Json that is generated from the step. The following object type is supported:
+- **On Step:** When using the Governance Step, you can evaluate a policy against the JSON that is generated from the step. The following object type is supported:
    - Custom
         
