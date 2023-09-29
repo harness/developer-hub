@@ -56,7 +56,7 @@ gsutil -m cp \
 
 :::caution
 
-The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes. You must migrate your Helm chart to include new override files. If you do not migrate your Helm chart override files, Helm upgrades will fail. The patch release package includes a `migrate-values-0.9.x.sh` script to convert the old `override.yaml` file to the new format.
+The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes. You must update your existing override files to include the new changes. If you do not update your Helm chart override files, Helm upgrades will fail. The patch release package includes a `migrate-values-0.9.x.sh` script to convert the old `override.yaml` file to the new format.
 
 :::
 
@@ -194,8 +194,6 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 - Improved the consistency of [built-in codebase expression](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) values across build types. You can now expect similar values for these expressions regardless of build type. For example, `<+codebase.commitRef>` now provides a consistent reference for the build, such as `refs/heads/BRANCH_NAME` for a branch build or `refs/tags/TAG_NAME` for a tag build. (CI-7689)
 
-- To support CI pipelines, Harness added support to set the Harness Delegate environment variable `LOG_STREAMING _URL` by default. If the delegate is outside of the cluster, the fallback log service URL is `LOG_SERVICE_ENDPOINT` from CI. (CI-9262, ZD-48974)
-
 #### Harness Platform
 
 - A new `getAzureKeyVaultClient` API is available to fetch the list of Azure vaults. (PL-28392, ZD-44045)
@@ -286,7 +284,23 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 #### Custom Dashboards
 
-- Argo CD deployments were failing. Looker now includes `models.persistent.storageClass` and `database.persistent.storageClass` fields to override any `storageClass` field used in PVC that has a higher precedence over `global.storageClass`. Looker also now includes `models.persistent.existingClaim` and `database.persistent.existingClaim` to use an existing PVC. These updates resolve the issue. (CDB-1149)
+:::caution
+
+Argo CD deployments were failing. Looker now includes `models.persistent.storageClass` and `database.persistent.storageClass` fields to override any `storageClass` field used in PVC that has a higher precedence over `global.storageClass`. Looker also now includes `models.persistent.existingClaim` and `database.persistent.existingClaim` to use an existing PVC. These updates resolve the issue. (CDB-1149)
+
+:::
+
+#### Self-Managed Enterprise Edition
+
+- To avoid connection resets from load balancers with fixed idle timeouts (AWS NLB: 350s), we've added support for configuring the maximum idle timeout for the gateway's HTTP client. You can now update the `additionalConfig` in the gateway’s `values.yaml` file.
+
+```yaml
+---
+gateway:
+  additionalConfigs: null
+  HTTP_CLIENT_POOL_MAX_IDLE_TIME: 300s
+
+```
 
 #### Continuous Delivery & GitOps
 
