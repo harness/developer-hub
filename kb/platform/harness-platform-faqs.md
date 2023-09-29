@@ -124,6 +124,11 @@ Yes we support auto upgrade in both these type delegates . This can be acheived 
 
 We don't support Audit Trails for read API request like GET .
 
+#### Where can I find the source code to the Harness Delegate ?
+
+Here is the link to the source code for the delegate:
+https://github.com/harness/harness-core/tree/develop/260-delegate
+
 #### I have my Environment at Org/Project/Accunt Level can I git sync them ? 
 
 No, we can not at this moment .
