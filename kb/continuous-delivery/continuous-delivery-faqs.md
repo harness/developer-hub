@@ -285,6 +285,13 @@ Condition,Scope, User Group
 No, We do not support copying of these properties in CG. All of them come under the MixedInstancesPolicy property of an Auto Scaling group which we do not copy from base ASG.
 Allocation strategies & Instance purchase options come under the InstancesDistribution property of MixedInstancesPolicy.
 
+#### Are there varaibles for account and company name?
+
+`<+account.name>` and `<+account.companyName>`
+
+No, We do not support copying of these properties in CG. All of them come under the MixedInstancesPolicy property of an Auto Scaling group which we do not copy from base ASG.
+Allocation strategies & Instance purchase options come under the InstancesDistribution property of MixedInstancesPolicy.
+
 #### Would it be possible to be able to modify the looping stage runs inside of pipeline execution
 
 You can use Matrix strategies, there you can use labels:
