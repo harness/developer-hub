@@ -104,6 +104,11 @@ No , Harness will never have any write access to your account.
 
 We only support auto upgrade for delegates in K8s Infra.
 
+#### Where can I find the release notes for the delegate ?
+
+These would be the release notes for the delegate:
+https://developer.harness.io/release-notes/delegate
+
 #### Is SAML single logout url supported ?
 
 Yes it is supported, this can be configured while setting up SAML.
