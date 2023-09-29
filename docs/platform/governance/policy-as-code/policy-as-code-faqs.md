@@ -17,20 +17,20 @@ This topic addresses some frequently asked questions about Policy as Code suppor
 
 -->
 
-## Can we use our own Gatekeeper and have Harness manage Gatekeeper and policies?
+### Can we use our own Gatekeeper and have Harness manage Gatekeeper and policies?
  
 No, Harness has an internal policy service that manages the policies and evaluates policies against Harness object payloads. 
 
-## Can policies be managed in Git?
+### Can policies be managed in Git?
 
 Yes, you can manage policies in Git. For more information, go to [Configure Git Experience for OPA](/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa). 
 
-## Can you reference Harness variables expressions in policies?
+### Can you reference Harness variables expressions in policies?
 
 No, you cannot reference Harness variable expressions such as `<+service.name>`  directly in a policy. You can map a Harness variable expression to a fixed JSON Key in the Governance Policy Step and then evaluate it against a policy. For more information, go to [Add a Policy step to a pipeline](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline/). 
 
 
-## What can I write policies against?
+### What can I write policies against?
 
 You can now write policies against:  
 - Pipelines
@@ -46,12 +46,12 @@ Support for the following entities is on our long-term roadmap:
 - RBAC 
 
 
-## Can policy sets be managed in Git?
+### Can policy sets be managed in Git?
 
 No, you cannot manage policy sets in Git.
 
 
-## When can policies be evaluated?
+### When can policies be evaluated?
 
 - **On Save:** Policies can be applied via a policy set to a specific object when a user is trying to update or create it. The following object types are supported:
    - Feature Flags
