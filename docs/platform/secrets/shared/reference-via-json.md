@@ -18,7 +18,7 @@ For example, you can store a secret in vault with the following JSON.
 
 ```
 
-Getting below outputs for respective jsonpath
+Sample outputs for respective jsonpath from the above JSON file
 
 test-secret (without any # key)
  {
