@@ -22,7 +22,7 @@ Review the notes below for details about recent changes to Continuous Error Trac
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version ET-Agent 5.6.0
+## Latest: versions ET-Service 5.27.1 and ET-Collector 5.27.0
 
 
 ### New features and enhancements
@@ -31,10 +31,41 @@ This release does not include new features and enhancements.
 
 
 ### Early access features
+
 This release does not include any early access features.
 
 
 ### Fixed issues
+
+- Previously, when the monitored service information was incorrect, the agent logs did not provide a clear error message. (CET-1533)
+  
+  This issue has been resolved. Now, the error message has been improved to indicate the monitored service details.
+
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+
+#### Version ET-Agent 5.6.0
+
+
+##### New features and enhancements
+
+This release does not include new features and enhancements.
+
+
+##### Early access features
+This release does not include any early access features.
+
+
+##### Fixed issues
 
 - The CET Agent was causing the app to not close properly in specific scenarios when events needed to be collected during shutdown. (CET-344)
   
@@ -49,15 +80,9 @@ This release does not include any early access features.
   This issue has been resolved by updating the predefined filters. Now, start-up delays have been substantially reduced.
 
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 
 #### Version ET-Service 5.26.1
