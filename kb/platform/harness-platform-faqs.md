@@ -145,6 +145,10 @@ You can make use of INIT_SCRIPT as below while launching delegate:
 
 You can filter and find user login activity in Audit trail(Both in CG and NG)
 
+#### Is there a timeline of when I need to upgrade to NextGen by from FirstGen?
+
+Yes.  It's outlined here in the documentation https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/#timeline
+
 #### How to Secure storage of the Delegate Token
 
 You can Store delegate tokens as Kubernetes secrets: : /docs/platform/delegates/secure-delegates/store-delegate-tokens-as-secrets/
