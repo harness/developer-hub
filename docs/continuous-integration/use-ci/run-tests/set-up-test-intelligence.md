@@ -6,6 +6,9 @@ helpdocs_topic_id: 428cs02e6u
 helpdocs_category_id: 29nai2tbs6
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-intelligence
+  - /docs/continuous-integration/use-ci/set-up-test-intelligence/
 ---
 
 ```mdx-code-block
@@ -64,7 +67,7 @@ Test Intelligence is available for:
 * Scala
 * C#
    * Requires .NET Core or NUnit<!-- or Framework -->
-   * Currently, TI for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. <!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/#build-environment) in the YAML editor. -->
+   * Currently, TI for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. <!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](#build-environment) in the YAML editor. -->
 * Python
    * Requires Python 3.
    * Doesn't support resource file relationships.
@@ -512,7 +515,7 @@ Select the source code language to build: **C#**, **Java**, **Kotlin**, **Scala*
 
 Currently, TI for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-<!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/#build-environment) in your pipeline's YAML. -->
+<!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [build environment](#build-environment) in your pipeline's YAML. -->
 
 :::
 
@@ -776,7 +779,7 @@ Or you can include additional flags, such as:
 
 ### Test Report Paths
 
-Specify one or more paths to files that store [test results in JUnit XML format](../set-up-test-intelligence/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+Specify one or more paths to files that store [test results in JUnit XML format](../run-tests/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
 This field is required for the Run Tests step to [publish test results](./viewing-tests.md). This field is optional for Python.
 

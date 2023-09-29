@@ -2,6 +2,8 @@
 title: Code coverage
 description: Include code coverage in your CI pipelines.
 sidebar_position: 40
+redirect_from:
+  - /docs/continuous-integration/use-ci/set-up-test-intelligence/code-coverage
 ---
 
 ```mdx-code-block

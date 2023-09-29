@@ -14,12 +14,12 @@ Most CI pipelines are set up to run tests with every new commit. When you [set u
 
 * The [parallelism strategy](#define-the-parallelism-strategy), which determines the number of instances of a stage or step to execute
 * The strategy for splitting tests. How you do this depends on which step you're using to run tests:
-   * If you're using the **Run Tests** step, you specify the `testSplitStrategy` to [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/#enable-parallelism-test-splitting-for-test-intelligence).
+   * If you're using the **Run Tests** step, you specify the `testSplitStrategy` to [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence.md#enable-parallelism-test-splitting-for-test-intelligence).
    * If you're using a **Run** step, you use the `split_tests` command along with test split strategies, such as `--split-by file_size` to [define test splitting](#define-test-splitting).
 
 :::info
 
-This page describes how to set up parallelism and test splitting in a **Run** step. For information about test splitting with Test Intelligence or in a **Run Tests** step, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+This page describes how to set up parallelism and test splitting in a **Run** step. For information about test splitting with Test Intelligence or in a **Run Tests** step, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
 
 :::
 
@@ -82,7 +82,7 @@ The following YAML example shows a **Run** step that uses [pytest](https://docs.
 
 :::info
 
-The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence).
+The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
 
 :::
 
@@ -117,7 +117,7 @@ To define these attributes in the Pipeline Studio, go to the step that implement
 
    ![Parallel steps in a build.](./static/speed-up-ci-test-pipelines-using-parallelism-51.png)
 
-6. When the build finishes, go to the **Tests** tab and [view your results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests). You can view results for each parallel run using the pull-down.
+6. When the build finishes, go to the **Tests** tab and [view your results](/docs/continuous-integration/use-ci/run-tests/viewing-tests). You can view results for each parallel run using the pull-down.
 
    ![View results for individual runs.](./static/speed-up-ci-test-pipelines-using-parallelism-52.png)
 
@@ -163,7 +163,7 @@ import TabItem from '@theme/TabItem';
 
 :::info
 
-The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence).
+The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
 
 :::
 
@@ -260,7 +260,7 @@ To ensure that your test reports are correctly published and time-based test spl
 * Configure your test runner and formatter to publish your test reports in the [JUnit](https://junit.org/junit5/) XML format and include file names in the XML output.
    * For example, if you use `pytest`, you can set `junit_family=xunit1` in your code repo's `pytest.ini` file, or you can include `-o junit_family="xunit1"` in the step's `command`.
    * The exact setup and configuration requirements depend on the test runner that you use. Refer to your test runner's documentation to learn how to publish in the correct format.
-   * For more information, go to [Format test reports](/docs/continuous-integration/use-ci/set-up-test-intelligence/test-report-ref).
+   * For more information, go to [Format test reports](/docs/continuous-integration/use-ci/run-tests/test-report-ref).
 * If you're implementing `parallelism` in a step, rather than a stage, ensure that each `test-group` step generates a report with a unique filename. You can achieve this using the `<+strategy.iteration>` variable, which represents the index of the current test run, in the range of `0` to `parallelism-1`.
 
 You can configure test reporting options in the Pipeline Studio's YAML or Visual editors. In your pipeline, locate the **Run** or **Run Tests** step and specify the **Report Paths** field. In the Visual editor this field is located under **Optional Configuration**.

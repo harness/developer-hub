@@ -183,7 +183,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Run tests
 
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 ```mdx-code-block
 <Tabs>
@@ -232,7 +232,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 ### Visualize test results
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
 
 ```yaml
                     reports:
@@ -244,9 +244,9 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 
 ### Run tests with Test Intelligence
 
-[Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) is available for Python, however, it is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) is available for Python, however, it is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/set-up-test-intelligence/) to run unit tests with Test Intelligence.
+With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) to run unit tests with Test Intelligence.
 
 ```mdx-code-block
 <Tabs>
