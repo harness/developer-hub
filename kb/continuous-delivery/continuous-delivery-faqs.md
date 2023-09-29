@@ -170,6 +170,10 @@ AutoUpgrade initiates when a new version of the delegate is published, not when 
 
 AutoUpgrade initiates when a new version of the delegate is published, not when the delegate is expired.
 
+#### Is there a variable to check who's triggered the pipeline?
+
+Yes.  You can use `<+pipeline.triggeredBy.email>`
+
 #### Is there an environment variable to set when starting the container to force the Docker delegate to use client tool libs from harness-qa-public QA repo?
 
 To achieve this, you need to create a test image that points to the harness-qa-public QA repository. This involves updating the Docker file with the appropriate path to the QA buckets.
