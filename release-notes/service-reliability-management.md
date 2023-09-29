@@ -31,10 +31,9 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-- When one of the simple SLOs entered the `NO_DATA` state for all minutes, the composite SLO failed to generate any records and became stuck. (SRM-15376)
-  
-  This issue has been resolved. Now, in such scenarios, there will always be an SLO record for that minute with the same `runningGoodCount` and `runningBadCount` values as the previous minute's record. This ensures the proper functioning of the composite SLO.
+- Previously, when any of the simple Service Level Objectives (SLOs) reported NO_DATA for the entire duration, and if the missing data was treated as IGNORE, the composite SLO faced challenges as it necessitated data from all underlying simple SLOs to perform calculations. Consequently, this resulted in the composite SLO failing to produce any records and becoming unresponsive. (SRM-15376)
 
+  This issue has been resolved. Now, when one or more simple SLOs report NO_DATA throughout the duration, even when the missing data is treated as IGNORE, the composite SLO continues to generate records with data for all minutes. Importantly, the error budget for those minutes remains unaffected.
 
 ### Hotfixes
 
