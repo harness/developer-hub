@@ -226,6 +226,10 @@ The following YAML example uses `<+input>`, which prompts the user to supply a c
 </Tabs>
 ```
 
+### Cache Intelligence in parallel stages
+
+If you have multiple stages that run in parallel, you must use [custom cache keys](#customize-cache-keys) for each stage that uses Cache Intelligence. This prevents conflicts when the parallel stages attempt to save or retrieve caches.
+
 ## Cache Intelligence API
 
 You can use the Cache Intelligence API to get information about the cache or delete the cache.
