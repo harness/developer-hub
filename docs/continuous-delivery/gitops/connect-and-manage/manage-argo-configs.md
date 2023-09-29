@@ -147,6 +147,10 @@ spec:
   sourceRepos:
   - '*'
 ```
+:::note Format of the Harness account ID
+A Harness account ID is a MongoDB document ID that could start with an underscore (`_`). This ID is not a valid Kubernetes label according to the [syntax and character set](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set) documentation for Kubernetes labels. Therefore, Harness GitOps creates a hash of the account ID. The hash is of the form `b.<harness-account-id>.e`.
+
+:::
 
 #### Additional fields required for the Argo CD AppProject
 

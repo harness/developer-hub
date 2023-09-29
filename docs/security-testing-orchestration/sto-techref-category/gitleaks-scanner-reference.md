@@ -2,7 +2,7 @@
 title: Gitleaks scanner reference for STO
 description: Repository scans with Gitleaks
 sidebar_label: Gitleaks scanner reference
-sidebar_position: 155
+sidebar_position: 200
 
 ---
 
@@ -18,11 +18,9 @@ For a description of the end-to-end workflow, go to [Ingest SARIF data](/docs/se
 The recommended workflow is to add a GitLeaks step to a Security Tests or CI Build stage and then configure it as described below.  
 
 <!--
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 -->
 
 ### Scan Mode
