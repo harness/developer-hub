@@ -3,13 +3,16 @@ Harness allows you to manage the lifecycle of your secrets independently by refe
 For example, you can store a secret in vault with the following JSON.
 
 ```json
-
 {
-  "username": "sample_user",
-  "password": "P@ssw0rd!123",
-  "database": {
-    "username": "db_user",
-    "password": "db_P@ssw0rd!789"
+  "key1": "value1",
+  "key2": {
+    "key21": "value21",
+    "key22": "value22"
+  },
+  "key3": {
+    "key31": {
+      "key311": "value311"
+    }
   }
 }
 
