@@ -125,7 +125,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
    **Validation checks**
 
-   The Helm package includes checks that to prevent upgrades that do not include the correct set of overrides. When you use the correct set of overrides, the checks will pass and allow you to upgrade.
+   The Helm package includes checks to prevent upgrades that do not include the correct set of overrides. When you use the correct set of overrides, the checks will pass and allow you to upgrade.
 
    Here's an example of an invalid override:
    
