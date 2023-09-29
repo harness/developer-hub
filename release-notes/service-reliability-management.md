@@ -22,7 +22,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
-Added new filters, Environment-Based and SLO Type, to the SLO listing page. You can now filter the SLO list based on environment or SLO type for improved management. (SRM-15506)
+Added new filters named Environment-Based and SLO Type to the SLO listing page. You can now filter the SLO list on environment or SLO type for improved management. (SRM-15506)
 
 
 ### Early access features
