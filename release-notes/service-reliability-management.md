@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-09-25T10:00:20
+date: 2023-09-29T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -18,11 +18,11 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest: Version 1.1.3
+## Latest: Version 1.2.5
 
 ### New features and enhancements
 
-SRM dashboards now include comprehensive data for composite Service Level Objectives (composite SLOs). This enhancement gives you a holistic view of both simple and composite SLO performance. (SRM-15419)
+Added new filters, Environment-Based and SLO Type, to the SLO listing page. You can now filter the SLO list based on environment or SLO type for improved management. (SRM-15506)
 
 
 ### Early access features
@@ -31,9 +31,9 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-- FireHydrant notifications were not being triggered as expected for monitored services without any configured Service Level Objectives (SLOs). (SRM-15458)
-
-  This issue has been resolved. FireHydrant notifications will now be triggered for all monitored services, irrespective of whether SLOs are configured.
+- When one of the simple SLOs entered the `NO_DATA` state for all minutes, the composite SLO failed to generate any records and became stuck. (SRM-15376)
+  
+  This issue has been resolved. Now, in such scenarios, there will always be an SLO record for that minute with the same `runningGoodCount` and `runningBadCount` values as the previous minute's record. This ensures the proper functioning of the composite SLO.
 
 
 ### Hotfixes
@@ -45,6 +45,29 @@ This release does not include hotfixes.
 
 <details>
 <summary>2023 releases</summary>
+
+
+#### Version 1.1.3
+
+##### New features and enhancements
+
+SRM dashboards now include comprehensive data for composite Service Level Objectives (composite SLOs). This enhancement gives you a holistic view of both simple and composite SLO performance. (SRM-15419)
+
+
+##### Early access features
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- FireHydrant notifications were not being triggered as expected for monitored services without any configured Service Level Objectives (SLOs). (SRM-15458)
+
+  This issue has been resolved. FireHydrant notifications will now be triggered for all monitored services, irrespective of whether SLOs are configured.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
 
 
 #### Version 1.0.8

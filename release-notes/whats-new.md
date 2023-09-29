@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-09-28T10:00
+date: 2023-09-29T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,13 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: September 28, 2023
+## Latest: September 29, 2023
+
+### Service Reliability Management, version 1.2.5
+
+Added new filters, Environment-Based and SLO Type, to the SLO listing page. You can now filter the SLO list based on environment or SLO type for improved management. (SRM-15506)
+
+## September 28, 2023
 
 ### Harness Platform, version 80811
 
