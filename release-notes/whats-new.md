@@ -34,6 +34,24 @@ Added new filters named Environment-Based and SLO Type to the SLO listing page. 
 
 <docimage path={require('./static/ci-8932.png')} />
 
+### Self-Managed Enterprise Edition
+
+- Harness updated the Helm chart to optimize packaging and module delivery. (SMP-1588)
+
+- Harness Self-Managed Enterprise Edition now supports self-managed MinIO object storage for disaster recovery. (SMP-1671)
+
+<!--- 
+   For more information, go to [Self-managed object storage](/tutorials/self-managed-enterprise-edition/use-self-managed-minio-object-storage/).
+--->
+
+- You can now apply Harness' recommended high performance configuration to reach a scale of 1000 concurrent pipelines. (SMP-1836)
+
+   The `override-perf-ci-cd-ff.yaml` file is available in the [Harness Helm chart repo](https://github.com/harness/helm-charts/blob/release/0.9.0/src/harness/override-perf-ci-cd-ff.yaml).
+
+- You can now use your Redis password in your external self-managed Redis database. (SMP-1860)
+
+   For more information, go to [Use an external self-managed Redis database with your installation](/tutorials/self-managed-enterprise-edition/use-an-external-redis-database).
+
 ## September 28, 2023
 
 ### Harness Platform, version 80811

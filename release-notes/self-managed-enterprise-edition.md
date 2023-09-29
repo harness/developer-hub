@@ -296,13 +296,13 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 - To avoid connection resets from load balancers with fixed idle timeouts (AWS NLB: 350s), we've added support for configuring the maximum idle timeout for the gateway's HTTP client. You can now update the `additionalConfig` in the gateway’s `values.yaml` file. (SMP-1926)
 
-```yaml
----
-gateway:
-  additionalConfigs:
-  HTTP_CLIENT_POOL_MAX_IDLE_TIME: 300s
+   ```yaml
+   ---
+   gateway:
+     additionalConfigs:
+        HTTP_CLIENT_POOL_MAX_IDLE_TIME: 300s
 
-```
+   ```
 
 #### Continuous Delivery & GitOps
 
