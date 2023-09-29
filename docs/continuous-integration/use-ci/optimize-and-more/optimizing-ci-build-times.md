@@ -20,7 +20,7 @@ For information about service dependencies, caches, and shared volumes, go to:
 
 ## Optimize test times
 
-For information about optimizing test times, go to [Run tests in CI pipelines](../set-up-test-intelligence/run-tests-in-ci.md).
+For information about optimizing test times, go to [Run tests in CI pipelines](../run-tests/run-tests-in-ci.md).
 
 ## Optimize Docker images
 
@@ -88,7 +88,7 @@ Use [templates](/docs/category/templates/) to share and utilize pre-build pipeli
 
 Use these strategies to automate and manage build sequences.
 
-<!-- * Queue Intelligence (./queue-intelligence.md) -->
+* [Queue Intelligence](./queue-intelligence.md)
 * [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/)
 * [Run specific stages in a pipeline](/docs/platform/pipelines/run-specific-stage-in-pipeline/)
 * [Define failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/)
