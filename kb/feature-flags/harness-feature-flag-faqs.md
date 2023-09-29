@@ -91,6 +91,10 @@ The eventUrl, used by the Metrics service, sends a metrics payload that includes
 
 No, only one call each is required to fetch all Feature Flag configurations and Target Group configurations for the environment.
 
+#### I pay be credit card and my credit card has expired.  I've updated the card but am not getting the bill.  What could be the issue?
+
+You'll get the bill in your next billing date that can be seen in the billing portal (https://app.harness.io/ng/account/replaceWithYourAccountIDHere/settings/billing)
+
 #### How does the server-side SDK handle polling mode?
 
 In polling mode, the SDK periodically polls the server for configuration updates (default interval of 60 seconds) and updates the cache accordingly.
