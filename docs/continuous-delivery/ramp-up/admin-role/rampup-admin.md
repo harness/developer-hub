@@ -1,6 +1,6 @@
 ---
-title: Admin role ramp-up guide
-description: Set up an account in just a few steps 
+title: Administrator day to day guide
+description: Account rampup tasks include just a few steps.
 sidebar_position: 2
 ---
 

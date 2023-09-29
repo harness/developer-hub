@@ -1,9 +1,9 @@
 ---
-title: Grafana Loki
+title: Configure Grafana Loki as health source
+sidebar_label: Grafana Loki
 description: Add Grafana Loki health source to a monitored service. 
 sidebar_position: 8
 ---
-# Set up a Grafana Loki health source
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
