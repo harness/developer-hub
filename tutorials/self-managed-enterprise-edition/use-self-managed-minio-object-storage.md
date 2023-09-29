@@ -34,7 +34,7 @@ Make sure to meet the MinIO prerequisites before you set up self-managed object 
 
 To set up MinIO, you must first create a VM for the Nginx LoadBalancer with the above hardware requirements.
 
-To create a new VM instance for the Nginx LoadBalancer, do the following:
+To create a new VM instance for the Nginx load balancer, do the following:
 
 1. Select the machine type based on the hardware requirements for Nginx.
 
@@ -50,7 +50,7 @@ Next, you must create 4 VMs with the MinIO hardware requirements.
 
 To create the MinIO server VMs, do the following:
 
-1. Create a new VM instance with following configuration.
+1. Create a new VM instance with the following configuration.
 
 2. Select the machine type based on the hardware requirements.
 
@@ -60,11 +60,11 @@ To create the MinIO server VMs, do the following:
 
 5. Attach an additional disk to the VM.
 
-### Set up the Nginx LoadBalancer
+### Set up the Nginx load balancer
 
-Next, set up the Nginx LoadBalancer.
+Next, set up the Nginx load balancer.
 
-To set up the Nginx LoadBalancer, do the following:
+To set up the Nginx load balancer, do the following:
 
 1. SSH into the Nginx VM, and install Nginx. For installation instructions, go to [Linux packages](https://nginx.org/en/linux_packages.html#Debian) in the Nginx documentation.
 
@@ -288,7 +288,7 @@ Now you're ready to configure your Harness Self-Managed Enterprise Edition envir
 
 To configure your Harness environment and Helm chart, do the following:
 
-1. Create a secret in the namespace where Harness is installed with following data.
+1. Create a secret in the namespace where Harness is installed with the following data.
 
    ```yaml
    data:
