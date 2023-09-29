@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-09-28T10:00
+date: 2023-09-29T10:00
 sidebar_position: 2
 ---
 
@@ -13,9 +13,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - September 28, 2023
+## Latest - September 29, 2023
 
-### Continuous Integration, version 59xx
+### Continuous Integration, version 5902
 
 When [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida), stage-level error analysis is available for failed stages without steps. If a stage has steps, step-level error analysis occurs instead. The Harness AI Development Assistant (AIDA:tm:) for CI is a beta feature that is behind the feature flag `CI_AI_ENHANCED_REMEDIATIONS`. (CI-9102)
 
