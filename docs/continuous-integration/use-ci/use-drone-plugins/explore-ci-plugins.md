@@ -20,8 +20,8 @@ You can use [Plugin steps](./run-a-drone-plugin-in-ci.md) to run [Drone plugins]
 
 For example, you can use the Artifact Metadata Publisher plugin to publish any artifact URL to the [Artifacts tab](../viewing-builds.md). For instructions, go to:
 
-* [View test reports on the Artifacts tab.](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests#view-reports-on-the-artifacts-tab)
-* [View code coverage reports on the Artifacts tab.](/docs/continuous-integration/use-ci/set-up-test-intelligence/code-coverage#view-code-coverage-reports-on-the-artifacts-tab)
+* [View test reports on the Artifacts tab.](/docs/continuous-integration/use-ci/run-tests/viewing-tests#view-reports-on-the-artifacts-tab)
+* [View code coverage reports on the Artifacts tab.](/docs/continuous-integration/use-ci/run-tests/code-coverage#view-code-coverage-reports-on-the-artifacts-tab)
 * [View GCS artifacts on the Artifacts tab.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings#view-artifacts-on-the-artifacts-tab)
 * [View JFrog artifacts on the Artifacts tab.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog#view-artifacts-on-the-artifacts-tab)
 * [View Sonatype Nexus artifacts on the Artifacts tab.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus#view-artifacts-on-the-artifacts-tab)
