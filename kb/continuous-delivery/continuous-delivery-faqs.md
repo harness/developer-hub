@@ -166,6 +166,10 @@ However, apart from these differences, basic JSON documents are considered valid
 
 AutoUpgrade initiates when a new version of the delegate is published, not when the delegate is expired.
 
+#### Why can't I create resources using the harness terraform provider in my harness prod-3 cluster account?
+
+It could be the endpoint needs to be set to `https://app3.harness.io/gateway`
+
 #### Under what condition does an immutable delegate automatically upgrade?
 
 AutoUpgrade initiates when a new version of the delegate is published, not when the delegate is expired.
