@@ -6,6 +6,8 @@ sidebar_position: 80
 
 This topic addresses some frequently asked questions about Policy as Code support in Harness.
 
+<!--
+
 - [Can we use our own Gatekeeper and have Harness manage Gatekeeper and policies?](#can-we-use-our-own-gatekeeper-and-have-harness-manage-gatekeeper-and-policies)
 - [Can policies be managed in Git?](#can-policies-be-managed-in-git)
 - [Can you reference Harness variables expressions in policies?](#can-you-reference-harness-variables-expressions-in-policies)
@@ -13,7 +15,7 @@ This topic addresses some frequently asked questions about Policy as Code suppor
 - [Can Policy Sets be managed in Git?](#can-policy-sets-be-managed-in-git-)
 - [When can Policies be evaluated?](#when-can-policies-be-evaluated)
 
-
+-->
 
 ## Can we use our own Gatekeeper and have Harness manage Gatekeeper and policies?
  
