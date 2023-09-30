@@ -2,6 +2,8 @@
 title: Code coverage
 description: Include code coverage in your CI pipelines.
 sidebar_position: 40
+redirect_from:
+  - /docs/continuous-integration/use-ci/set-up-test-intelligence/code-coverage
 ---
 
 ```mdx-code-block
@@ -148,6 +150,14 @@ The built-in [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool can ge
 3. Add a step to [view your code coverage report on the Artifacts tab](#view-code-coverage-reports-on-the-artifacts-tab).
 
 ### Python
+
+Use these steps to install code coverage tools when you run Python tests in **Run** steps.
+
+:::info Coverage in Run Tests steps
+
+You don't need to install coverage tools when using **Run Tests** steps. With [Test Intelligence for Python](./set-up-test-intelligence.md), coverage is inherent in the **Run Tests** step, and Harness automatically installs coverage tools if they aren't already available. If you install a coverage tool, Harness uses the version you install instead of the included version.
+
+:::
 
 1. Install a Python code coverage tool, such as [Coverage.py](https://coverage.readthedocs.io/en/latest/). Depending on your build infrastructure, you can install this directly on the host machine or use a **Run** step to set up the test environment at runtime.
 

@@ -179,13 +179,9 @@ Harness supports multiple types of operating systems and architecture. Including
 Harness only currently supports cache intelligence on the Harness Cloud infrastructure. 
 See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)
 
-<!-- #### Additional considerations when running concurrent builds
+#### Additional considerations when running concurrent builds
 
-While running concurrent builds, customers may want to consider the queued intelligence feature in Harness CI. This feature is behind a feature flag. 
-
-See https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence/ -->
-
-<!-- QUEUE INTELLIGENCE IS CURRENTLY NON-FUNCTIONING. WILL UN-COMMENT WHEN IT IS FIXED. PLEASE DIRECT QUESTIONS TO #DOCUMENTATION. -->
+While running concurrent builds, customers may want to consider the [Queue Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence) feature of Harness CI. This feature is behind a feature flag.
 
 #### How to assert an environment variable within JEXL conditions?
 
@@ -451,7 +447,7 @@ For details, go to [CI codebase variables reference](https://developer.harness.i
 #### How to Enable Test Intelligence?
 
 Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build
-For details, go to [Enable Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+For details, go to [Enable Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
 
 #### Does Harness CI support Multilayer caching?
 Yes, for details, go to [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching).
