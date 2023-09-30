@@ -163,28 +163,30 @@ You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure
 3. The Failure Strategy in the Build step initiates a 30-minute pause before proceeding.
 4. The developer and security team evaluate the issues and then abort the pipeline or allow it to proceed.
 
-<!-- 
+
 ### Integrated STO/CI Workflow Example
 
-The following pipeline provides a simple example of how you can implement STO into a CI workflow. This is an expanded version of the standalone STO stage we have been working with. The [YAML](#integrated-workflow-yaml) of this pipeline is provided below.
+The following pipeline extends the example workflow described above. After it scans the repo, it builds a container image, scans the image, and fails the pipeline if the image scan fails. The [YAML](#integrated-workflow-yaml) of this pipeline is provided below.
 
 ![](./static/sto-integrated-workflows-08.png)
 
 This pipeline works as follows:
 
-1. The **backgroundDinD** step runs Docker-in-Docker as a background service. This is required to run the Docker process that builds and pushes the image.
-1. The **banditScan** step  scans a GitHub repo that includes the files required to build an image from the repository code. 
-   In this case, `fail_on_severity` is set to `none`. We want to scan the repository, but we also want to build a local image. We'll implement `fail_on_severity` when we scan the built image.
-2. The **buildImage** builds a local container image from the repository. It has a Failure Strategy that responds to any error in the previous step — such a failure due to a critical vulnerability — by ignoring it and proceeding with default values. 
-3. The **aquaTrivyScan** step uses the open-source tool **Aqua Trivy** to scan the local image. It has `fail_on_severity` set to `critical`.
-4. If the Aqua Trivy 
+1. The **SecurityTestStage** consists of the following steps:
 
+    1. **backgroundDinD** runs Docker-in-Docker as a background service. This is required to scan the container image.
+    2. **banditScan** scans a GitHub repo used to build the container image. 
+    In this case, `fail_on_severity` is set to `high`. 
+    3. **buildAndPush_PRIVATE** builds a local container image from the repository and pushes it to a private registry.     
+    3. The **aquaTrivyScan** step uses the open-source tool **Aqua Trivy** to scan the local image. It has `fail_on_severity` set to `high`.
+    4. If the container image has no issues with medium or higher severity, **buildAndPush_PUBLIC** pushes the image to a public registry.
+
+2. The **sendEmail** stage includes an step that sends an email if the previous stage succeeded.  
 
 You can view all issues from all scanners in the **Security Tests** tab, and also filter the issue list by scanner.
 
 ![](./static/sto-integrated-workflows-09.png)
 
--->
 
 ### Congratulations!
 
@@ -201,7 +203,6 @@ In this tutorial, you learned how to:
 -->
 
 
-<!-- 
 ### Integrated Workflow YAML
 
 Here's the YAML of the integrated workflow example we examined in this tutorial.
@@ -210,113 +211,130 @@ Here's the YAML of the integrated workflow example we examined in this tutorial.
   <summary>Integrated Workflow YAML</summary>
 
 
-```
-pipeline:  
-    name: quickstart-integrated-pipeline  
-    identifier: quickstartintegratedpipeline  
-    projectIdentifier: STO  
-    orgIdentifier: default  
-    tags: {}  
-    properties:  
-        ci:  
-            codebase:  
-                connectorRef: $CODEBASE_CONNECTOR  
-                build: <+input>  
-    stages:  
-        - stage:  
-              name: Docker Build and Scan  
-              identifier: Docker_Build_and_Scan  
-              type: CI  
-              spec:  
-                  cloneCodebase: true  
-                  infrastructure:  
-                      type: KubernetesDirect  
-                      spec:  
-                          connectorRef: $K8S_CONNECTOR  
-                          namespace: harness-delegate-ng  
-                          automountServiceAccountToken: true  
-                          nodeSelector: {}  
-                          os: Linux  
-                  sharedPaths:  
-                      - /var/run  
-                  execution:  
-                      steps:  
-                        - step:
-                            type: Background
-                            name: dind
-                            identifier: dind
-                            spec:
-                              connectorRef: $DOCKER_CONNECTOR
-                              image: docker:dind
-                              shell: Sh
-                              privileged: true
-                              entrypoint:
-                                - dockerd-entrypoint.sh
-                          - step:  
-                                type: Security  
-                                name: owasp scan  
-                                identifier: owasp_scan  
-                                spec:  
-                                    privileged: true  
-                                    settings:  
-                                        policy_type: orchestratedScan  
-                                        scan_type: repository  
-                                        repository_project: nodegoat  
-                                        repository_branch: <+codebase.branch>  
-                                        product_name: owasp  
-                                        product_config_name: default  
-                                        fail_on_severity: HIGH  
-                                    imagePullPolicy: Always  
-                                failureStrategies:  
-                                    - onFailure:  
-                                          errors:  
-                                              - AllErrors  
-                                          action:  
-                                              type: Ignore  
-                          - step:  
-                                type: Run  
-                                name: Build Image  
-                                identifier: Build_Docker_Image  
-                                spec:  
-                                    connectorRef: $DOCKER_CONNECTOR  
-                                    image: docker:latest  
-                                    shell: Sh  
-                                    command: |-  
-                                        docker build .  -f Dockerfile.app -t nodegoat:local  
-                                    privileged: true  
-                                when:  
-                                    stageStatus: All  
-                                failureStrategies:  
-                                    - onFailure:  
-                                          errors:  
-                                              - AllErrors  
-                                          action:  
-                                              type: ManualIntervention  
-                                              spec:  
-                                                  timeout: 20m  
-                                                  onTimeout:  
-                                                      action:  
-                                                          type: Abort  
-                          - step:  
-                                type: Security  
-                                name: aqua-trivy scan  
-                                identifier: aqua_trivy_scan  
-                                spec:  
-                                    privileged: true  
-                                    settings:  
-                                        product_name: aqua-trivy  
-                                        product_config_name: aqua-trivy  
-                                        policy_type: orchestratedScan  
-                                        scan_type: container  
-                                        container_type: local_image  
-                                        container_domain: docker.io  
-                                        container_project: nodegoat  
-                                        container_tag: local  
-                                        fail_on_severity: HIGH  
-                                    imagePullPolicy: Always  
-                                failureStrategies: []  
+``` yaml
+pipeline:
+  projectIdentifier: STO_tutorial_test_2023_09_29
+  orgIdentifier: foobar
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.GitHub_STO_Tutorial
+        repoName: dvpwa
+        build: <+input>
+  stages:
+    - stage:
+        name: securityTestStage
+        identifier: securityTestStage
+        type: CI
+        spec:
+          cloneCodebase: true
+          sharedPaths:
+            - /var/run
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8sdelegateconnector
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              harnessImageConnectorRef: account.harnessImage
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: backgroundDinD
+                  identifier: Background_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: docker:dind
+                    shell: Sh
+                    privileged: true
+              - step:
+                  type: Bandit
+                  name: banditScan
+                  identifier: Bandit_1
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      name: dvpwa
+                      type: repository
+                      variant: " <+codebase.branch> "
+                    advanced:
+                      log:
+                        level: info
+                      fail_on_severity: high
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - AllErrors
+                        action:
+                          type: Ignore
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: buildAndPush_PRIVATE
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: account.foobardockerhubsto
+                    repo: foobar/sto-tutorial-test-private
+                    tags:
+                      - <+pipeline.sequenceId>
+              - step:
+                  type: AquaTrivy
+                  name: aquaTrivyScan
+                  identifier: AquaTrivy_1
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      name: sto-tutorial-test-private
+                      type: container
+                      variant: <+pipeline.sequenceId>
+                    advanced:
+                      log:
+                        level: info
+                      fail_on_severity: high
+                    privileged: true
+                    image:
+                      type: docker_v2
+                      name: foobar/sto-tutorial-test-private
+                      tag: <+pipeline.sequenceId>
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: buildAndPush_PUBLIC
+                  identifier: buildAndPush_PUBLIC
+                  spec:
+                    connectorRef: account.foobardockerhubsto
+                    repo: foobar/sto-tutorial-test
+                    tags:
+                      - <+pipeline.sequenceId>
+        variables: []
+    - stage:
+        name: sendEmail
+        identifier: sendEmail
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: Email
+                  name: Email_1
+                  identifier: Email_1
+                  spec:
+                    to: my.email@myorg.org
+                    cc: ""
+                    subject: NEW IMAGE! Scan results for <+pipeline.name>
+                    body: "STO scan of <+pipeline.name> found the following issues:  <br> --------------------------------------------------------------<br> Bandit repo scan:<br>              Critical : <+pipeline.stages.securityTestStage.spec.execution.steps.Bandit_1.output.outputVariables.CRITICAL> <br>              New Critical : <+pipeline.stages.securityTestStage.spec.execution.steps.Bandit_1.output.outputVariables.NEW_CRITICAL> <br>              High: <+pipeline.stages.securityTestStage.spec.execution.steps.Bandit_1.output.outputVariables.HIGH> <br>              New High: <+pipeline.stages.securityTestStage.spec.execution.steps.Bandit_1.output.outputVariables.NEW_HIGH> <br>              Medium: <+pipeline.stages.securityTestStage.spec.execution.steps.Bandit_1.output.outputVariables.MEDIUM> <br>              New Medium: <+pipeline.stages.securityTestStage.spec.execution.steps.Bandit_1.output.outputVariables.NEW_MEDIUM> <br>  --------------------------------------------------------------<br> Aqua Trivy image scan:<br>              Critical : <+pipeline.stages.securityTestStage.spec.execution.steps.AquaTrivy_1.output.outputVariables.CRITICAL> <br>              New Critical : <+pipeline.stages.securityTestStage.spec.execution.steps.AquaTrivy_1.output.outputVariables.NEW_CRITICAL> <br>              High: <+pipeline.stages.securityTestStage.spec.execution.steps.AquaTrivy_1.output.outputVariables.HIGH> <br>              New High: <+pipeline.stages.securityTestStage.spec.execution.steps.AquaTrivy_1.output.outputVariables.NEW_HIGH> <br>              Medium: <+pipeline.stages.securityTestStage.spec.execution.steps.AquaTrivy_1.output.outputVariables.MEDIUM> <br>              New Medium: <+pipeline.stages.securityTestStage.spec.execution.steps.AquaTrivy_1.output.outputVariables.NEW_MEDIUM> <br>                See https://app.harness.io/ng/#/account/MY_ACCOUNT_ID/sto/orgs/default/"
+                  timeout: 10m
+        tags: {}
+  identifier: tutorial4integratedstoci
+  name: 2023-tutorial-4-integrated-sto-ci
+
 
 ```
 </details>
 
--->
+
