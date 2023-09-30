@@ -247,18 +247,6 @@ To configure your Harness environment and Helm chart, do the following:
          installed: false
          hosts:
          - <YOUR_INTERNAL_ENDPOINT_AND_PORT>
-         secretName: ""
-         userKey: ""
-         passwordKey: ""
-   ```
-
-   ```yaml
-   global:
-     database:
-       redis:
-         installed: false
-         hosts:
-         - <YOUR_INTERNAL_ENDPOINT_AND_PORT>
          secretName: "REDIS_SECRET"
          userKey: "ROOT_USERNAME"
          passwordKey: "ROOT_PASSWORD"
