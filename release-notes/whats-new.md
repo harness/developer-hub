@@ -21,7 +21,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest: September 30, 2023
 
-### Self-Managed Enterprise Edition
+### Self-Managed Enterprise Edition, version 80220
 
 - Harness has updated the Helm chart to optimize packaging and module delivery. (SMP-1588)
 
