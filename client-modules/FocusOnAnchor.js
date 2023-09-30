@@ -18,9 +18,6 @@ const FocusOnAnchor = () => {
         .replace(/\u200B/g, "")
         .trim();
       if (changedHeading == changedTarget) {
-        console.log(changedHeading);
-        console.log(changedTarget);
-        console.log(headingsInsideDiv[i]);
         headingsInsideDiv[i].scrollIntoView();
       }
     }
