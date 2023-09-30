@@ -17,7 +17,7 @@ import delete_project from './static/delete-project.png'
 
 Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
-## Latest: Version 802xx
+## Latest: Version 80220
 
 ### New features and enhancements
 
@@ -27,15 +27,15 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.9.0](https://github.com/harness/helm-charts/releases/tag/harness-0.9.0) |
 | Air Gap Bundle | [0.9.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.9.0) |
-| NG Manager | xxxxx |
-| CI Manager | xxxx |
-| Pipeline Service | x.xx.xx |
-| Platform Service | xxxxx |
-| Access Control Service | xxxxx |
-| Change Data Capture | xxxxx |
-| Test Intelligence Service | release-xxx |
-| NG UI | x.xxx.xx |
-| LE NG | xxxxx |
+| NG Manager | 80219 |
+| CI Manager | 5313 |
+| Pipeline Service | 1.41.3 |
+| Platform Service | 80000 |
+| Access Control Service | 79802 |
+| Change Data Capture | 80209 |
+| Test Intelligence Service | release-197 |
+| NG UI | 0.357.17 |
+| LE NG | 68007 |
 
 **Alternative air gap bundle download method**
 
