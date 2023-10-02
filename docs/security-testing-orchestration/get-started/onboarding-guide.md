@@ -70,9 +70,9 @@ You need Administrative privileges at the Account level (Account Admin role) to 
   <summary>Assign Security Testing Roles: Default Workflow</summary>
 
 
-1. Click **Account Settings** (left menu) > **Access Control**.
-2. In the **Users** table, click the user profile.
-3. Under Role Bindings, click **+Role**.
+1. Select **Account Settings** (left menu) > **Access Control**.
+2. In the **Users** table, select the user profile.
+3. Under Role Bindings, select **+Role**.
 4. Assign the **Security Testing Developer** role or the **Security Testing SecOps** role to the user profile.
 
 ![](./static/set-up-harness-for-sto-16.png)
@@ -120,13 +120,13 @@ To set up the build infrastructure, you add a connector to your Kubernetes clust
   <summary>Install a Kubernetes Delegate: Default Workflow</summary>
 
 <ol>
-	<li>Click <strong>Account Settings</strong> &gt; <strong>Account Resources</strong> &gt; <strong>Connector</strong>, then <strong>New Connector</strong>.</li>
+	<li>Select <strong>Account Settings</strong> &gt; <strong>Account Resources</strong> &gt; <strong>Connector</strong>, then <strong>New Connector</strong>.</li>
 	<li>Under Cloud Providers, choose <strong>Kubernetes cluster</strong>.</li>
 	<li>Enter the following settings in the wizard.<ol>
 			<li>In Overview, Name = <strong>STO delegate</strong></li>
-			<li>In Details, click <strong>Use the credentials of a specific Harness Delegate</strong>.<br/>If you already have a Delegate set up in your Harness account, you can use the <strong>Specify master URL and credentials</strong> option.<br/>This workflow assumes you are new to Harness.</li>
-			<li>Delegate setup: Click <strong>Install new Delegate</strong>.</li>
-			<li>Delegate type: click <strong>Kubernetes</strong>.</li>
+			<li>In Details, select <strong>Use the credentials of a specific Harness Delegate</strong>.<br/>If you already have a Delegate set up in your Harness account, you can use the <strong>Specify master URL and credentials</strong> option.<br/>This workflow assumes you are new to Harness.</li>
+			<li>Delegate setup: Select <strong>Install new Delegate</strong>.</li>
+			<li>Delegate type: select <strong>Kubernetes</strong>.</li>
 			<li>Kubernetes setup:<br/>You might need to scroll up/down to set all options.<ul>
 					<li><strong>Delegate Name:</strong> sto.</li>
 					<li><strong>Delegate Size:</strong> Small.</li>
@@ -142,9 +142,9 @@ To set up the build infrastructure, you add a connector to your Kubernetes clust
 			</li>
 		</ol>
 	</li>
-	<li>Click <strong>Done</strong> to close the delegate wizard and return to the connector setup.</li>
-	<li>In <strong>Delegates Setup</strong>, select <strong>Only use Delegates with all of the following tags</strong>, select the new delegate, and then click <strong>Save and Continue</strong>.</li>
-	<li>In <strong>Connection Test</strong>, wait for &#34;Verification successful&#34; and then click <strong>Finish</strong>.</li>
+	<li>Select <strong>Done</strong> to close the delegate wizard and return to the connector setup.</li>
+	<li>In <strong>Delegates Setup</strong>, select <strong>Only use Delegates with all of the following tags</strong>, select the new delegate, and then select <strong>Save and Continue</strong>.</li>
+	<li>In <strong>Connection Test</strong>, wait for &#34;Verification successful&#34; and then select <strong>Finish</strong>.</li>
 </ol>
 
   
@@ -170,8 +170,8 @@ In this step, you'll create a secret for your GitHub and DockerHub access tokens
 	* repo
 	* admin:repo\_hook
 	* user
-2. Go to **Account Settings** > **Account Resources** and click **Secrets**.
-3. Click **New Secret** > **Text**.
+2. Go to **Account Settings** > **Account Resources** and select **Secrets**.
+3. Select **New Secret** > **Text**.
 
   ![](./static/set-up-harness-for-sto-17.png)
   
@@ -196,14 +196,14 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 	1. Create a token: log in to your Docker Hub account and go to <https://hub.docker.com/settings/security>.
 	2. [Create a secret](#create-a-secret) for your token.
 2. Go to the **Account Settings** > **Account Resources** page and select **Connectors**.
-3. Click **New Connector**. Under Artifact Repositories, click **Docker Registry**.
+3. Select **New Connector**. Under Artifact Repositories, select **Docker Registry**.
 4. In the connector setup wizard, specify the following:
 	1. Docker Registry URL = **https://index.docker.io/v2/**
 	2. Provider Type = **DockerHub**
 	3. Username = Your Docker Hub username
 	4. Password = The secret you created for your Docker Hub access token.
-5. In Delegates Setup, select **Use any available Delegate** and then click **Save and Continue**.
-6. Wait for "Verification successful" and then click **Finish**.
+5. In Delegates Setup, select **Use any available Delegate** and then select **Save and Continue**.
+6. Wait for "Verification successful" and then select **Finish**.
 
 </details>
 
@@ -223,7 +223,7 @@ To do the STO tutorials, point the connector at the following repo: <https://git
 <details>
   <summary>Create a Codebase Connector: Default Workflow</summary>
 
-1. Go to the **Account Settings** > **Account Resources** page and click **Connectors**.
+1. Go to the **Account Settings** > **Account Resources** page and select **Connectors**.
 2. Under Code Repositories, choose **GitHub**.
 3. Specify the following in the setup wizard:
 	1. Overview:  
@@ -237,8 +237,8 @@ To do the STO tutorials, point the connector at the following repo: <https://git
 	   **Personal Access Token:** Your [GitHub Personal Access Token secret](#create-secrets-for-your-git-and-dockerhub-access-credentials).  
 	   **Enable API Access:** Select this checkbox and select the same secret.
 	4. Connect to the provider:  
-	   Click **Connect through Harness Platform**.
-4. When you're done, click **Save and Continue**. Harness will test the connection and credentials. Click **Finish**.
+	   Select **Connect through Harness Platform**.
+4. When you're done, select **Save and Continue**. Harness will test the connection and credentials. Select **Finish**.
 
 </details>
 
@@ -258,7 +258,7 @@ The following procedure creates a pipeline with the STO functionality required t
 
   <!--  ![](./static/set-up-harness-for-sto-19.png) -->
 	 
-2. Click **Select Modules** (left menu) and then select **Security Tests**.
+2. Select **Select Modules** (left menu) and then select **Security Tests**.
 
 <!-- 
   ```mdx-code-block
@@ -269,7 +269,7 @@ The following procedure creates a pipeline with the STO functionality required t
 3. In Create New Pipeline:
 	1. Select **Pipelines** > **Create a Pipeline**. 
 	2. In Create new Pipeline > Name, enter **sto-pipeline-base**.
-	3. Click **Start**.
+	3. Select **Start**.
 	
   ```mdx-code-block
    <img src={set_up_harness_21} alt="Create the pipeline" height="75%" width="75%" />
@@ -279,7 +279,7 @@ The following procedure creates a pipeline with the STO functionality required t
 	1. Select **Add Stage** and then **Security Tests**.
 	2. Stage Name = **securityTestStage**
 	3. Connector = The connector you created in [Create a Codebase Connector](#create-a-codebase-connector).
-	4. Click **Set Up Stage**.
+	4. Select **Set Up Stage**.
 	
   ```mdx-code-block
    <img src={set_up_harness_22} alt="Set up the stage" height="50%" width="50%" />
@@ -288,7 +288,7 @@ The following procedure creates a pipeline with the STO functionality required t
 
 ### Set up the Security Tests stage
 
-1. In the **Overview** tab, under **Shared Paths**, click **Add** and enter the path `/var/run`.
+1. In the **Overview** tab, under **Shared Paths**, select **Add** and enter the path `/var/run`.
 
   ```mdx-code-block
    <img src={set_up_harness_23} alt="Enter the shared path" height="75%" width="75%" />
@@ -305,7 +305,7 @@ The following procedure creates a pipeline with the STO functionality required t
 
 In the **Execution** tab, do the following:
 
-1. Click **Add Step** and then choose **Background**.
+1. Select **Add Step** and then choose **Background**.
 2. Configure the Background step as follows:
 2. Dependency Name = `dind`
 3. Container Registry = The image connector you specified in [Create a Docker Hub connector](#create-a-docker-hub-connector).
@@ -329,7 +329,7 @@ import set_up_harness_26 from './static/configure-bandit-step.png'
 2. Configure the step as follows:
 	1. Scan Mode = **`Orchestration`**
 	2. Target Name = `**dvpwa**`
-	3. Target Variant — Click the tack button on the right, select **Expression** as the value type, and enter the expression **`<+codebase.branch>`**. 
+	3. Target Variant — Select the tack button on the right, select **Expression** as the value type, and enter the expression **`<+codebase.branch>`**. 
 	
 	   With this setting, you will specify the variant — in this case, the branch name — when you execute the pipeline. 
 
@@ -346,9 +346,9 @@ import set_up_harness_26 from './static/configure-bandit-step.png'
 
 ## Run the pipeline (optional)
 
-1. Click **Run**.
-2. Select Git Branch, enter **master** for the branch name, and then click **Run Pipeline**.
-3. When the pipeline finishes, click the **Security Tests** tab to see the dashboard.
+1. Select **Run**.
+2. Select Git Branch, enter **master** for the branch name, and then select **Run Pipeline**.
+3. When the pipeline finishes, select the **Security Tests** tab to see the dashboard.
 
 # Congratulations!
 

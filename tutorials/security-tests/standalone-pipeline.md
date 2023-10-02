@@ -59,7 +59,7 @@ This pipeline has only one scanner but you can easily add more later. For the li
 ## Clone your STO base pipeline
 
 1. Go to the project with the [base STO pipeline](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) project.
-2. Click the top-right menu, choose **Clone**, and save the new pipeline as **STO Tutorial 1**.
+2. Select the top-right menu, choose **Clone**, and save the new pipeline as **STO Tutorial 1**.
 
    ![](./static/sto-standalone-workflows-10.png)
 
@@ -122,9 +122,9 @@ Every instance of a scanner has a specific <i>target</i>, which is the object it
 
 Now that you've set up the pipeline, you can run a scan and view the detected issues.
 
-1. Click **Save**, and then click **Run**.
-2. Select **Git Branch**, enter **master** for the branch name, and then click **Run Pipeline**.
-3. When the pipeline finishes, click the **Security Tests** tab to see the dashboard.
+1. Select **Save**, and then select **Run**.
+2. Select **Git Branch**, enter **master** for the branch name, and then select **Run Pipeline**.
+3. When the pipeline finishes, select the **Security Tests** tab to see the dashboard.
 
 The **Security Tests** tab shows the issues that the scanner found in the test target, categorized by severity. The scanner found two issues, one critical and one medium, in the master branch.
 
@@ -146,8 +146,8 @@ Note the following:
   
 As a developer, you want to ensure that your merge or update doesn't introduce any new issues. To do this, you create a baseline for your test target and compare your scans against the baseline.
 
-1. Click **Security Tests** (left menu), then **Test Targets** (second-from-left menu).
-2. For the **dvpwa** target, click **Baseline for Comparison** and select **branch :** **master** in the pulldown menu.
+1. Select **Security Tests** (left menu), then **Test Targets** (second-from-left menu).
+2. For the **dvpwa** target, select **Baseline for Comparison** and select **branch :** **master** in the pulldown menu.
  
   ![](./static/sto-standalone-workflows-13.png)
 
