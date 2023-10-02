@@ -133,7 +133,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 <Tabs>
 <TabItem value="CLI">
 ```
-1. Download and Configure Harness CLI.
+1. Download and configure the Harness CLI.
 
     ```mdx-code-block
     <Tabs>
@@ -192,7 +192,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
     ```
         
-    b. Extract the downloaded zip file and change directory to extracted file location.
+    b. Extract the downloaded zip file and change the directory to extracted file location.
 
     c. Follow the steps below to make it accessible via terminal.
 
@@ -208,7 +208,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     </Tabs>
     ```
 
-2. Clone the Forked **harnessed-example-apps** repo and change directory.
+2. Clone the fForked **harnessed-example-apps** repo and change directory.
     
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
@@ -216,17 +216,17 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     ```
     :::note
     
-    Replace `GITHUB_ACCOUNTNAME` with your GitHub Account name.
+    Replace `GITHUB_ACCOUNTNAME` with your GitHub account name.
 
     :::
 
-3. Log in to Harness from the CLI.
+3. Log into Harness from the CLI.
     ```bash
     harness login --api-key  --account-id HARNESS_API_TOKEN 
     ```
     :::note
     
-    Replace `HARNESS_API_TOKEN` with Harness API Token that you obtained during the prerequisite section of this tutorial.
+    Replace `HARNESS_API_TOKEN` with Harness API token that you obtained during the prerequisite section of this tutorial.
 
     :::
 
@@ -259,13 +259,13 @@ Environments define the deployment location, categorized as **Production** or **
 
 </details>
 
-1. Use the following CLI Command to create **Environments** in your Harness project:
+1. Use the following CLI command to create **Environments** in your Harness project:
     
     ```
     harness environment --file "/google_cloud_function/environment.yml" apply
     ```
 
-2. In your new environment, add **Infrastructure Definitions** using the following CLI command:
+2. In your new environment, add an **Infrastructure Definitions** using the following CLI command:
    
     ```
     harness infrastructure --file "/google_cloud_function/infrastructure-definition.yml" apply 
@@ -280,7 +280,7 @@ In Harness, services represent what you deploy to environments. You use services
 
 </details>
 
-1. Use the following CLI command to create **Services** in your Harness Project. 
+1. Use the following CLI command to create **Services** in your Harness project. 
     
     ```
     harness service -file "/google_cloud_function/2nd_gen/service.yml" apply
@@ -308,11 +308,11 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 </details>
 
 
-1. CLI Command for canary deployment:
+1. Enter this CLI command to create a canary deployment using the example YAML file:
     ```
     harness pipeline --file "/google_cloud_function/2nd_gen/canary-pipeline.yml" apply
     ```
-2. You can switch to the **Visual** editor and confirm the pipeline stage and execution steps as shown below.
+2. In Harness, you can switch to the **Visual** editor and confirm the pipeline stage and execution steps as shown below.
 
 <docimage path={require('../static/harness-cicd-tutorial/canary-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -328,7 +328,7 @@ Blue Green deployments involve running two identical environments (stage and pro
 
 </details>
 
-1. CLI Command for blue-green deployment:
+1. Enter this CLI command to create a blue green deployment using the example YAML file:
     ```
     harness pipeline --file "/google_cloud_function/2nd_gen/bluegreen-pipeline.yml" apply
     ```
@@ -349,7 +349,7 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
 
 </details>
 
-1. CLI Command for basic deployment:
+1. Enter this CLI command to create a basic deployment using the example YAML file:
     ```
     harness pipeline --file "/google_cloud_function/2nd_gen/basic-pipeline.yml" apply
     ```
