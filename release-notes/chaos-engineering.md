@@ -2,7 +2,7 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-09-11T10:00
+date: 2023-09-28T10:00
 sidebar_position: 9
 ---
 ```mdx-code-block
@@ -22,26 +22,26 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### What's new
 
-* Added support for targetting specific ports when using API Chaos Faults via a new tunable i.e DESTINATION_PORTS (CHAOS-2475)
+* Added support for targeting specific ports when using API Chaos Faults via a new tunable, for example, `DESTINATION_PORTS`. (CHAOS-2475)
 
 * Added support for HTTPs protocol in API Chaos Faults. (CHAOS-2145)
 
 ### Early access
 
-* Chaos Guard (This feature is currently behind a feature flag named `CHAOS_SECURITY_GOVERNANCE`)
-    - Added support for evaluation of mulitple app labels in when running experiments with multiple target app labels. (CHAOS-2315)
+* Chaos Guard: This feature is currently behind a feature flag named `CHAOS_SECURITY_GOVERNANCE`.
+    - Added support for evaluation of mulitple app labels when running experiments with multiple target app labels. (CHAOS-2315)
 
-* Linux Chaos Faults (This feature is currently behind a feature flag named `CHAOS_LINUX_ENABLED`)
-    - In linux experiments, sometimes , Resilience Score was showing as 0, although only one probe had failed. This was happening because of incorrect propagation of the probe error which led to its misinterpretation as an experimental error rather than a probe failure & it has been fixed now. (CHAOS-2472)
+* Linux Chaos Faults: This feature is currently behind a feature flag named `CHAOS_LINUX_ENABLED`.
+    - In Linux experiments, the Resilience Score was sometimes showing as 0, although only one probe had failed. This was happening because of incorrect propagation of the probe error, which led to its misinterpretation as an experimental error rather than a probe failure. This issues has been fixed now. (CHAOS-2472)
 
-* Resilience Probes (This feature is currently behind a feature flag named `CHAOS_PROBES_ENABLED`)
-    - Enhanced mode selection drawer to show UI according to selected mode by the users. (Previously it was showing image indicating SOT for all modes irrespective of selected mode) (CHAOS-1997)
+* Resilience Probes: This feature is currently behind a feature flag named `CHAOS_PROBES_ENABLED`.
+    - Enhanced mode selection drawer to show the UI according to selected mode by the users. Previously it was showing the image indicating SOT for all modes irrespective of the selected mode. (CHAOS-1997)
 
 ### Fixed issues
 
-* There was an issue where users were getting an error when experiment triggered via pipeline failed to start & there is no notifyID created. This has been fixed now. (CHAOS-2490)
+* There was an issue where users were getting an error when an  experiment triggered via a pipeline failed to start and there is no notifyID created. This has been fixed now. (CHAOS-2490)
 
-* Fixed the issue where the topology settings (taint-tolerations, nodeselectors) made in the advanced configuration section during experiment construction were getting applied only to the Argo workflow pods. Now, the topology settings are propogated to Chaos Fault Pods as well. (CHAOS-2186)
+* Fixed an issue where the topology settings (taint-tolerations, nodeselectors) made in the advanced configuration section during experiment construction were getting applied only to the Argo workflow pods. Now, the topology settings are propagated to Chaos Fault Pods as well. (CHAOS-2186)
 
 ### Hotfixes
 
