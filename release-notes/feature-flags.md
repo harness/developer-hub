@@ -29,10 +29,10 @@ This release does not include early access features.
 
 Released .NET SDK 1.2.1
 
-- Only first prereq is being processed (FFM-7871)
-- Rules operator 'equal_sensitive' not working correctly (FFM-9219)
-- SDK should enforce minimum poll interval (FFM-9220)
-- Fix version/account/env meta data reported in headers (FFM-9207)
+- Only first prereq was previously processed, now all prereqs will be correctly used (FFM-7871)
+- Rules operator 'equal_sensitive' not working correctly in all cases, standardized functinality with other SDKs (FFM-9219)
+- SDK should enforce minimum poll interval but previously did not, corrected this so poll interval is now enforced(FFM-9220)
+- Fix version/account/env meta data reported in headers for metrics processing (FFM-9207)
 - Update to latest OpenAPI spec + improve handling of null items defined as optional (FFM-9221)
 - Support Microsoft.Extensions.Logging (FFM-939)  
 - TLS support custom CAs (FFM-7007)
