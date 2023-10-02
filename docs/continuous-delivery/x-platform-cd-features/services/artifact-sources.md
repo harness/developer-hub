@@ -301,7 +301,7 @@ To add an artifact from a Docker registry, do the following:
 
   :::
 14. Select **Submit**. The Artifact is added to the Service Definition.
- <!-- CDS-71711 -->
+
 
 
 ```mdx-code-block
@@ -515,7 +515,7 @@ To add an artifact from GCR, do the following:
     ![](./static/kubernetes-services-10.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
- <!-- CDS-71711 -->
+
 14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
@@ -526,7 +526,7 @@ To add an artifact from GCR, do the following:
 
   :::
 14. Select **Submit**. 
- <!-- CDS-71711 -->
+
     
     The Artifact is added to the **Service Definition**.
 
@@ -1008,7 +1008,7 @@ To add an artifact from Google Artifact Registry, do the following:
 
     ![](static/kubernetes-services-11.png)
 
- <!-- CDS-71711 -->
+
 20. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
     :::note 
@@ -1019,7 +1019,7 @@ To add an artifact from Google Artifact Registry, do the following:
 
     :::
 21. Select **Submit**. The Artifact is added to the Service Definition.
- <!-- CDS-71711 -->
+
 
 
 ```mdx-code-block
@@ -1908,7 +1908,7 @@ To add an artifact from ECR, do the following:
     ![ECR artifact details](static/74fe6d9189f8f18b2e854598026ab1db27944dab47c3056f4ffaaab93582242a.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
- <!-- CDS-71711 -->
+
 13. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
@@ -1919,7 +1919,7 @@ To add an artifact from ECR, do the following:
 
   :::
 14. Select **Submit**. The Artifact is added to the Service Definition.
- <!-- CDS-71711 -->
+
     
  ![ECR artifact source in a service](static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
 
@@ -2680,7 +2680,7 @@ To add an artifact from Nexus, do the following:
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 
- <!-- CDS-71711 -->
+
 14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
@@ -2942,46 +2942,23 @@ To add an artifact from Artifactory, do the following:
 7. In **Artifact Repository Type**, select **Artifactory**, and then select **Continue**.
 8. In **Artifactory Repository**, select of create an Artifactory Connector that connects to the Artifactory account where the repo is located. Click **Continue**. The **Artifact Details** settings appear.
 10. Enter an **Artifact Source Identifier** and select the **Repository Format**. 
-11. Set the artifact details based on the repository format. 
+11. Set the artifact details based on the format: 
+    - [Docker repository format](#docker-repository-format)
+    - [Generic repository format](#generic-repository-format)
 
-#### Docker 
+#### Docker repository format
 
-<figure>
-
-<docimage path={require('./static/kubernetes-services-16.png')} width="100%" height="100%" title="Click to view full size image" />  
-
-<figcaption>Figure 1: Elements in the Artifactory UI and their equivalents in the <b>Artifact Details</b> dialog box.</figcaption>
-</figure>
-
-10. In **Repository URL**, enter the domain from the artifact URL. For example:
-
-    - Artifact URL = `https://myorg.jfrog.io/artifactory/docker-local/alpine/`
-    
-    - Artifact domain = `myorg.jfrog.io`
-
-    In this case, enter **`myorg.jfrog.io`**.
-
-    You can also see the domain in the `docker login` command in Artifactory's **Set Me Up** settings. 
+1. In **Repository URL**, enter the URL from the `docker login` command in Artifactory's **Set Me Up** settings.
     
     ![](static/kubernetes-services-15.png)
+2. In **Repository**, enter the repo name. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `docker-remote`.
+3. In **Artifact Path**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
+4. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
+    
+    ![](static/kubernetes-services-16-docker.png)
+5. If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 
-11. In **Repository**, enter the repo name. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `docker-remote`.
-12. In **Artifact Path**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
-13. In **Tag Regex**, enter a regular expression that matches the tag of the artifact you want to fetch. 
-    Here are some examples:
-      - `*/*` : Fetch all artifacts from all directories including their sub-directories.
-      - `*/*.zip` : Fetch all `.zip` artifacts from all directories, including sub-directories.
-      - `*`: fetch all artifacts in root directory
-      - `*.zip` : Fetch all `.zip` artifacts in the root directory.
-      - `folder/*` : Fetch all artifacts contained in directory `folder`.
-      - `folder/*.zip` : Fetch all `.zip` artifacts contained in directory `folder`.
-      - `folder/*/*` : Fetch all artifacts from directories and their sub-directories contained in `folder`.
-      - `folder/*/*.zip` : Fetch all `.zip` artifacts from directories and their sub-directories contained in `folder`.
-      - `folder*/*` : Fetch all artifacts from directories and their subdirectories matching `folder*`.    
-
-14. If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
- <!-- CDS-71711 -->
-15. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+6. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
 
@@ -2990,8 +2967,55 @@ To add an artifact from Artifactory, do the following:
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
-16. Select **Submit**. The Artifact is added to the Service Definition.
- <!-- CDS-71711 -->
+7. Select **Submit**. The Artifact is added to the Service Definition.
+
+
+#### Generic repository format
+
+<figure>
+
+<docimage path={require('./static/kubernetes-services-16-generic.png')} width="100%" height="100%" title="Click to view full size image" />  
+
+<figcaption>Figure 1: Elements in the Artifactory UI and their equivalents in the <b>Artifact Details</b> dialog box.</figcaption>
+
+</figure>
+
+1. In **Repository**, enter the repo name. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `docker-remote`.
+2. In **Artifact Directory**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
+3. Select the method for specifying the artifact you want to deploy:
+   - **Artifact Directory** Specify a hard-coded path to the artifact.
+   - **Artifact Filter** Use a regular expression to specify the path.
+3. Specify the artifact you want to deploy.
+ 
+   - If specifying via directory:
+     1. In **Artifact Directory**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
+     2. Specify the artifact details. You can use a regular expression. For example, you can enter `*.zip` to fetch all `.zip` artifacts in the root directory.
+
+   - If specifying via filter, enter a regular expression that matches the tag of the artifact you want to fetch. 
+    Here are some examples:
+      - `*/*` : Fetch all artifacts from all directories including their sub-directories.
+      - `*/*.zip` : Fetch all `.zip` artifacts from all directories, including sub-directories.
+      - `*`: fetch all artifacts in the root directory.
+      - `*.zip` : Fetch all `.zip` artifacts in the root directory.
+      - `folder/*` : Fetch all artifacts contained in directory `folder`.
+      - `folder/*.zip` : Fetch all `.zip` artifacts contained in directory `folder`.
+      - `folder/*/*` : Fetch all artifacts from directories and their sub-directories contained in `folder`.
+      - `folder/*/*.zip` : Fetch all `.zip` artifacts from directories and their sub-directories contained in `folder`.
+      - `folder*/*` : Fetch all artifacts from directories and their subdirectories matching `folder*`.    
+
+   If you use a runtime input when you deploy the pipeline, Harness will pull the list of artifacts from the repo and prompt you to select one.
+
+6. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note Important notes
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
+  :::
+7. Select **Submit**. The Artifact is added to the Service Definition.
+
 
 
 
