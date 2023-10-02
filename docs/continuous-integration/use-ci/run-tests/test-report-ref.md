@@ -2,6 +2,8 @@
 title: Format test reports
 description: Test reports must be in JUnit XML format to appear on the Tests tab.
 sidebar_position: 50
+redirect_from:
+  - /docs/continuous-integration/use-ci/set-up-test-intelligence/test-report-ref
 ---
 
 ```mdx-code-block
@@ -11,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 Results on the [Tests tab](./viewing-tests.md) are parsed from test reports specified in the **Report Paths** setting in **Run** and **Run Tests** steps. Test reports must be in [JUnit XML format](https://llg.cubic.org/docs/junit/) to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only.
 
-For information about code coverage reports and viewing reports on the **Artifacts** tab, go to [Code Coverage](./code-coverage.md).
+For information about code coverage reports and publishing report URLs to the **Artifacts** tab, go to [Code Coverage](./code-coverage.md).
 
 ## JUnit XML format resources
 
@@ -23,7 +25,7 @@ Use these resources to learn about JUnit XML formatting.
 
 ## Tools with built-in JUnit XML output
 
-Here are some Harness YAML examples for tools that produce JUnit XML output by default.
+Here are some Harness YAML examples for test tools that produce JUnit XML output by default.
 
 ### C, C++
 
@@ -49,7 +51,7 @@ You can use the [--output-junit](https://cmake.org/cmake/help/latest/manual/ctes
 
 ### Java - Gradle
 
-This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligence.md).
+This example runs Gradle with [Test Intelligence](./set-up-test-intelligence.md). You can also run Java tests in [Run steps](./run-tests-in-ci.md).
 
 ```yaml
               - step:
@@ -90,6 +92,15 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
 
 ### Python
 
+For Python, use pytest or unittest. You can also [use pytest to run unittest](https://docs.pytest.org/en/latest/how-to/unittest.html).
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="run" label="Run step" default>
+```
+
+This example runs pytest in a [Run step](../run-ci-scripts/run-step-settings.md).
+
 ```yaml
               - step:
                   type: Run
@@ -110,10 +121,44 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
 
 :::info
 
-* You can [use pytest to run unittest](https://docs.pytest.org/en/6.2.x/unittest.html).
-* If you use [test splitting](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism) with pytest, you must set `junit_family=xunit1` in your code repo's `pytest.ini` file or include `-o junit_family="xunit1"` in the step's `command`.
+If you use [test splitting](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism) with pytest in a Run step, you must set `junit_family=xunit1` in your code repo's `pytest.ini` file or include `-o junit_family="xunit1"` in the step's `command`.
 
 :::
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
+```
+
+This example runs pytest with [Test Intelligence](./set-up-test-intelligence.md).
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Python Tests
+                  identifier: Run_Python_Tests
+                  spec:
+                    language: Python
+                    buildTool: Pytest
+                    args: "--junitxml=out_report.xml"
+                    runOnlySelectedTests: true
+                    preCommand: |
+                      python3 -m venv .venv
+                      . .venv/bin/activate
+
+                      python3 -m pip install -r requirements/test.txt
+                      python3 -m pip install -e .
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - out_report.xml*
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ### Ruby - Cucumber
 

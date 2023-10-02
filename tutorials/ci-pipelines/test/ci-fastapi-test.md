@@ -233,7 +233,7 @@ Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-set
 
 Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) that runs unit tests and outputs the results in JUnit XML format.
 
-This tutorial runs basic unit tests, but you can run all types of tests (integration tests, mutation tests, and so on) in Harness CI. For more information, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+This tutorial runs basic unit tests, but you can run all types of tests (integration tests, mutation tests, and so on) in Harness CI. For more information, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 ```mdx-code-block
 <Tabs>
@@ -284,11 +284,11 @@ This tutorial runs basic unit tests, but you can run all types of tests (integra
 </Tabs>
 ```
 
-To [view test reports in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), test results must be in JUnit XML format, and the `reports` specification must be included.
+To [view test reports in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests), test results must be in JUnit XML format, and the `reports` specification must be included.
 
 ## Add the trigger
 
-You can run this pipeline manually as it is, or you can add a trigger to automatically run these tests whenever the codebase changes. To do this, add a [Git event trigger](/docs/platform/Triggers/triggering-pipelines) that listens for an event on a specific branch of your FastAPI repo fork.
+You can run this pipeline manually as it is, or you can add a trigger to automatically run these tests whenever the codebase changes. To do this, add a [Git event trigger](/docs/platform/triggers/triggering-pipelines) that listens for an event on a specific branch of your FastAPI repo fork.
 
 For this tutorial, you'll create a trigger that listens for pushes to the `main` branch.
 
@@ -301,7 +301,7 @@ For this tutorial, you'll create a trigger that listens for pushes to the `main`
 7. On the **Conditions** tab, configure a **Branch Name** condition. Set the **Operator** to **Equals**, and set the **Matches Value** to `main`. The entire condition should read like `Branch Name = main`.
 8. Select **Continue**, and select **Create Trigger**.
 
-GitHub webhooks are usually automatically created in the target repo. If automatic registration fails, you must manually copy the webhook URL and add it to your repo webhooks. For instructions on manual webhook registration, go to [Register the webhook in the Git provider](/docs/platform/Triggers/triggering-pipelines#register-the-webhook-in-the-git-provider).
+GitHub webhooks are usually automatically created in the target repo. If automatic registration fails, you must manually copy the webhook URL and add it to your repo webhooks. For instructions on manual webhook registration, go to [Register the webhook in the Git provider](/docs/platform/triggers/triggering-pipelines#register-the-webhook-in-the-git-provider).
 
 ## Run the pipeline
 
@@ -309,7 +309,7 @@ To test the Git event trigger and run the pipeline, go to your FastAPI repo fork
 
 Upon pushing to `main` (either directly or by merging a PR), the trigger should start your pipeline within a few moments. While the build runs, you can view the logs and monitor build activity on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds).
 
-After the pytest step runs, you can find logs indicating that the `output-test.xml` file was generated, and you can [view the test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests) on the Tests tab.
+After the pytest step runs, you can find logs indicating that the `output-test.xml` file was generated, and you can [view the test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests) on the Tests tab.
 
 ## Complete YAML examples
 

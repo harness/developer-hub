@@ -6,6 +6,8 @@ helpdocs_topic_id: 2hpamxaqf0
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build
 ---
 
 Use the following steps to override secrets in a [Maven settings.xml file](https://maven.apache.org/settings.html) by modifying the [Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md) when the pipeline runs.

@@ -63,7 +63,7 @@ export const certifications: CardItem[] = [
       // numberOfCerts: 1,
     },
     {
-      title: "Feature Flags - Developer (BETA COMING SOON)", 
+      title: "Feature Flags - Developer (BETA)", 
       module: MODULES.ff,
       type: certType.developer,
       description:
