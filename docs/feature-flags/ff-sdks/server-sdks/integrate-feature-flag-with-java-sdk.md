@@ -600,12 +600,12 @@ The SDK logs the following codes for certain lifecycle events, for example authe
 | **1000** | Successfully initialized                                                                 |
 | **1001** | Failed to initialize due to authentication error                                         |
 | **1002** | Failed to initialize due to a missing or empty API key                                   |
-| **1003** | `wait_for_initialzation` was called and the SDK is waiting for initialzation to complete |
+| **1003** | `wait_for_initialization` was called and the SDK is waiting for initialization to finish |
 | **2000** | Successfully authenticated                                                               |
-| **2001** | Authentication failed with a non recoverable error                                       |
+| **2001** | Authentication failed with a non-recoverable error                                       |
 | **2002** | Authentication failed and is retrying                                                    |
 | **2003** | Authentication failed and max retries have been exceeded                                 |
-| **3000** | SDK Closing                                                                              |
+| **3000** | SDK closing                                                                              |
 | **3001** | SDK closed successfully                                                                  |
 | **4000** | Polling service started                                                                  |
 | **4001** | Polling service stopped                                                                  |
@@ -615,7 +615,7 @@ The SDK logs the following codes for certain lifecycle events, for example authe
 | **5003** | Streaming disconnected and is retrying to connect                                        |
 | **5004** | Streaming stopped                                                                        |
 | **5005** | Stream is still retrying to connect after 4 attempts                                     |
-| **6000** | Evaluation was successfully                                                              |
+| **6000** | Evaluation was successful                                                              |
 | **6001** | Evaluation failed and the default value was returned                                     |
 | **7000** | Metrics service has started                                                              |
 | **7001** | Metrics service has stopped                                                              |
