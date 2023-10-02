@@ -134,7 +134,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 <Tabs>
 <TabItem value="CLI">
 ```
-1. Download and Configure Harness CLI.
+1. Download and configure the Harness CLI.
 
     ```mdx-code-block
     <Tabs>
@@ -193,7 +193,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
     ```
         
-    b. Extract the downloaded zip file and change directory to extracted file location.
+    b. Extract the downloaded zip file and change the directory to extracted file location.
 
     c. Follow the steps below to make it accessible via terminal.
 
@@ -209,14 +209,14 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     </Tabs>
     ```
 
-2. Clone the Forked **harnessed-example-apps** repo and change directory.
+2. Clone the forked **harnessed-example-apps** repo and change directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps 
     ```
     :::note
     
-    Replace `GITHUB_ACCOUNTNAME` with your GitHub Account name.
+    Replace `GITHUB_ACCOUNTNAME` with your GitHub account name.
 
     :::
 
@@ -226,7 +226,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     ```
     :::note
     
-    Replace `HARNESS_API_TOKEN` with Harness API Token that you obtained during the prerequisite section of this tutorial.
+    Replace `HARNESS_API_TOKEN` with Harness API token that you obtained during the prerequisite section of this tutorial.
 
     :::
 
@@ -240,15 +240,15 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 </details>
 
 1. Create the **GitHub connector**. 
-    1. Replace **DELEGATE_NAME** under delegate selectors with Delegate Name. 
+    1. Replace **DELEGATE_NAME** under delegate selectors with the Delegate name. 
     2. In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
     3. Now create the **GitHub connector** using the following CLI command:
         ```
         harness connector --file "/serverless-lambda/harnesscd-pipeline/github-connector.yml" apply
         ```
-2. Create the **AWS Connector**.
+2. Create the **AWS connector**.
     1. In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
-    2. Now create the **AWS Connector** using the following CLI command:
+    2. Now create the **AWS connector** using the following CLI command:
         ```
         harness connector --file "/serverless-lambda/harnesscd-pipeline/aws-connector.yml" apply
         ```
@@ -262,13 +262,13 @@ Environments define the deployment location, categorized as **Production** or **
 
 </details>
 
-1. Use the following CLI Command to create **Environments** in your Harness project:
+1. Use the following CLI command to create an environment in your Harness project:
 
     ```
     harness environment --file "/serverless-lambda/harnesscd-pipeline/environment.yml" apply
     ```
 
-2. In your new environment, add **Infrastructure Definitions** using the following CLI command:
+2. In your new environment, add an **Infrastructure Definitions** using the following CLI command:
 
     ```
     harness infrastructure --file "/serverless-lambda/harnesscd-pipeline/infrastructure-definition.yml" apply 
@@ -283,7 +283,7 @@ In Harness, services represent what you deploy to environments. You use services
 
 </details>
 
-1. Use the following CLI command to create **Services** in your Harness Project. 
+1. Use the following CLI command to create a service in your Harness project. 
 
     ```
     harness service -file "/serverless-lambda/harnesscd-pipeline/service.yml" apply
@@ -298,13 +298,12 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 </details>
 
-1. CLI Command for serverless deployment:
+1. Use this CLI command to create a serverless deployment pipeline:
     ```
     harness pipeline --file "/serverless-lambda/harnesscd-pipeline/serverless-deployment.yml" apply
     ```
 
-2. In your Harness pipeline YAML editor, paste the YAML.
-3. Select **Save**.
+2. In your Harness pipeline, select **Save**.
    
    You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
    
@@ -326,7 +325,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 
 </details>
 
-1. Create the **GitHub Connector**.
+1. Create the **GitHub connector**.
     1. Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/github-connector.yml).
     2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     3. Select **Create via YAML Builder** and paste the copied YAML.
@@ -624,7 +623,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 <TabItem value="CLI">
 ```
 
-1. Download and Configure Harness CLI.
+1. Download and configure the Harness CLI.
 
     ```mdx-code-block
     <Tabs>
@@ -699,7 +698,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     </Tabs>
     ```
 
-2. Clone the Forked **harnessed-example-apps** repo and change directory.
+2. Clone the forked **harnessed-example-apps** repo and change directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps 
@@ -716,7 +715,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     ```
     :::note
     
-    Replace `HARNESS_API_TOKEN` with Harness API Token that you obtained during the prerequisite section of this tutorial.
+    Replace `HARNESS_API_TOKEN` with Harness API token that you obtained during the prerequisite section of this tutorial.
 
     :::
 
@@ -752,13 +751,13 @@ Environments define the deployment location, categorized as **Production** or **
 
 </details>
 
-1. Use the following CLI Command to create **Environments** in your Harness project:
+1. Use the following CLI command to create an **Environment** in your Harness project:
 
     ```
     harness environment --file "/aws-lambda/harnesscd-pipeline/environment.yml" apply
     ```
 
-2. In your new environment, add **Infrastructure Definitions** using the following CLI command:
+2. In your new environment, add an **Infrastructure Definition** using the following CLI command:
 
     ```
     harness infrastructure --file "/aws-lambda/harnesscd-pipeline/infrastructure-definition.yml" apply 
@@ -785,7 +784,7 @@ Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/la
 
 1. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repo, edit the [function-definition.json](https://github.com/harness-community/harnesscd-example-apps/blob/master/aws-lambda/function-definition.json) file in your fork and **add the ARN for your role having full AWS Lambda access** in which you want to deploy the serverless application.
 
-2. Use the following CLI command to create **Services** in your Harness Project. 
+2. Use the following CLI command to create a **Service** in your Harness Project. 
 
     ```
     harness service -file "/aws-lambda/harnesscd-pipeline/service.yml" apply
@@ -800,12 +799,11 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 </details>
 
-1. CLI Command for serverless deployment:
+1. Use this CLI command to create a serverless deployment pipeline:
     ```
     harness pipeline --file "/aws-lambda/harnesscd-pipeline/pipeline.yml" apply
     ```
-2. In your Harness pipeline YAML editor, paste the YAML.
-3. Select **Save**.
+2. In your Harness pipeline editor, select **Save**.
    
    You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
    
