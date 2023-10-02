@@ -252,7 +252,7 @@ You've just learned how to use Harness CD to copy an artifact to your remote ser
 
 Verify that you have the following:
 
-- **A Windows VM**. Use your own Windows VM or we recommend using [Vagrant](https://developer.hashicorp.com/vagrant/tutorials/get-started/getting-started-install) for starting a new vm instance.
+- **A Windows VM**. Use your own Windows VM or we recommend using [Vagrant](https://developer.hashicorp.com/vagrant/tutorials/getting-started/getting-started-install) for starting a new vm instance.
 - **[Docker](https://docs.docker.com/engine/install/)** to set up and start _Docker Delegate_.
     - Check [delegate System and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
