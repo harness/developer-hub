@@ -17,4 +17,4 @@ Once enabled, the cost estimation will be shown in the following places in the p
 2. "Cost Change Estimation" Tab - for complete audit, Harness keeps the cost estimation in the pipeline execution
     ![Resources](./static/cost3.png)
 
-To use cost estimation, Harness utilize ![infracost](https://www.infracost.io/). Users who have a license to Infracost Cloud can use the API key by setting the following Environment variable in the Workspace: INFRACOST_API_KEY = <API Key Value>
+To use cost estimation, Harness utilize [infracost](https://www.infracost.io/). Users who have a license to Infracost Cloud can use the API key by setting the following Environment variable in the Workspace: INFRACOST_API_KEY = <API Key Value>
