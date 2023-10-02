@@ -36,7 +36,7 @@ The following deprecated API endpoints will no longer be supported:
 
 - To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notifications at the account level. This feature enables you to specify the domains to which notifications can be sent.
 
-To add a filter domain to a notification channel, navigate to **Account Settings** > **Account Resources** > **Default Settings** > **Notifications** in the Harness platform and add the domain to the corresponding notification setting. Once a domain is added to a notification channel's domain allowlist, no notifications will be sent to recipients whose domains are not present in the allowlist for that channel. This applies to both existing and new recipients until their domain is added to the channel's domain allowlist. (PL-39481, ZD-43735)
+   To add a filter domain to a notification channel, navigate to **Account Settings** > **Account Resources** > **Default Settings** > **Notifications** in the Harness platform and add the domain to the corresponding notification setting. Once a domain is added to a notification channel's domain allowlist, no notifications will be sent to recipients whose domains are not present in the allowlist for that channel. This applies to both existing and new recipients until their domain is added to the channel's domain allowlist. (PL-39481, ZD-43735)
 
 - The **Session Timeout** field in Authentication Settings is renamed **Session Inactivity Timeout**. (PL-39982, ZD-47238)
 
