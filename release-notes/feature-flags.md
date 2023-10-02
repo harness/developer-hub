@@ -29,16 +29,16 @@ This release does not include early access features.
 
 Released .NET SDK 1.2.1
 
-- Only first prereq was previously processed, now all prereqs will be correctly used (FFM-7871)
-- Rules operator 'equal_sensitive' not working correctly in all cases, standardized functinality with other SDKs (FFM-9219)
-- SDK should enforce minimum poll interval but previously did not, corrected this so poll interval is now enforced(FFM-9220)
-- Fix version/account/env meta data reported in headers for metrics processing (FFM-9207)
-- Update to latest OpenAPI spec + improve handling of null items defined as optional (FFM-9221)
-- Support Microsoft.Extensions.Logging (FFM-939)  
-- TLS support custom CAs (FFM-7007)
-- CVE: Update wiremock to latest version 1.5.36 (FFM-9472)
-- CVE: Update Newtonsoft.Json to version 13.0.3 (FFM-9473)
-- CVE: Update NuGet.Frameworks to version 6.5.1 (FFM-9474)
+- Previously, only the first prerequisite was processed. Now, all prerequisites are used correctly. (FFM-7871)
+- The rules operator 'equal_sensitive' did not work correctly in all cases. This functionality has been standardized with other SDKs. (FFM-9219)
+- Previously, the SDK did not enforce a minimum poll interval. This issue has been corrected so a poll interval is now enforced. (FFM-9220)
+- Fixed the version/account/env metadata reported in headers for metrics processing. (FFM-9207)
+- Update to latest OpenAPI spec to improve handling of null items defined as optional. (FFM-9221)
+- Support Microsoft.Extensions.Logging. (FFM-939)  
+- TLS support for custom CAss (FFM-7007)
+- CVE: Update wiremock to latest version 1.5.36. (FFM-9472)
+- CVE: Update Newtonsoft.Json to version 13.0.3. (FFM-9473)
+- CVE: Update NuGet.Frameworks to version 6.5.1. (FFM-9474)
 
 ## Previous releases
 
