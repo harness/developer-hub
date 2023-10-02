@@ -10,7 +10,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-This tutorial helps you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline with deployment types **Secure Shell (SSH)** and **WinRM** to deploy applications to remote Linux and Windows servers.
+This tutorial helps you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline with deployment types **Secure Shell (SSH)** and **WinRM** to deploy applications to remote Linux and Windows servers on Azure.
 
 :::info
 
@@ -112,11 +112,11 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 1. Create an **Azure connector**.
     - Copy the contents of [azure-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/ssh/azure-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
-    - Select **Create via YAML Builder** and paste the copied YAML.
-    - In the YAML, replace **APPLICATION_ID** and **TENANT_ID** with the Application (Client) Id for the Azure app registration you are using and Tenant ID, the Id of the Azure Active Directory (AAD) in which you created your application.
+    - Select **Create via YAML Builder** and paste in the copied YAML.
+    - In the YAML, replace **APPLICATION_ID** with the Application (Client) Id for the Azure app registration you are using and replace and **TENANT_ID** with the Id of the Azure Active Directory (AAD) in which you created your application.
     - Select **Save Changes** and verify that the new connector named **harness_azureconnector** is successfully created.
     - Finally, select **Test** under **Connectivity Status** to ensure the connection is successful.
-2. Create a **Artifactory Connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
+2. Create a **Artifactory connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
     - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/ssh/artifactory-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
@@ -169,7 +169,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     - Select **New Pipeline**.
     - Enter the name `harness_ssh_pipeline`.
     - Select **Inline** to store the pipeline in Harness.
-    - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+    - Select **Start** and, in Pipeline Studio, toggle to **YAML** to use the YAML editor.
     - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
 ```mdx-code-block
@@ -198,7 +198,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 <details open>
 <summary>What are Rolling deployments?</summary>
 
-Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
+Rolling deployments incrementally add nodes/instances in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
 
 </details>
 
@@ -333,10 +333,10 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     - Copy the contents of [azure-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/winrm/azure-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
-    - In the YAML, replace **APPLICATION_ID** and **TENANT_ID** with the Application (Client) Id for the Azure app registration you are using and Tenant ID, the Id of the Azure Active Directory (AAD) in which you created your application.
+    - In the YAML, replace **APPLICATION_ID** with the Application (Client) Id for the Azure app registration you are using and replace **TENANT_ID** with the Id of the Azure Active Directory (AAD) in which you created your application.
     - Select **Save Changes** and verify that the new connector named **harness_azureconnector** is successfully created.
     - Finally, select **Test** under **Connectivity Status** to ensure the connection is successful.
-2. Create a **Artifactory Connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
+2. Create a **Artifactory connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
     - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/winrm/artifactory-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
@@ -357,7 +357,7 @@ Environments define the deployment location, categorized as **Production** or **
     - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/winrm/environment.yml) and paste it into the YAML editor and select **Save**.
     - In **Infrastructure Definitions**, select **Infrastructure Definition**, and the select **Edit YAML**.
     - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/winrm/infrastructure-definition.yml) and paste it into the YAML editor.
-    - In the Infra Definition YAML, replace **VM_SUBSCRIPTION_ID**, **VM_RESOURCE_GROUP**, and **INSTANCE_NAME** with the VM Subscription ID, Resource Group and the name of the instance.
+    - In the Infrastructure Definition YAML, replace **VM_SUBSCRIPTION_ID**, **VM_RESOURCE_GROUP**, and **INSTANCE_NAME** with the VM Subscription ID, Resource Group and the name of the instance.
     - Select **Save** and verify that the environment and infrastructure definition is created successfully.
 
 ### Services
