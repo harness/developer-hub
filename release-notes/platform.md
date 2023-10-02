@@ -120,6 +120,9 @@ This release does not include hotfixes.
 
 ## Previous releases
 
+<details>
+<summary>2023 releases</summary>
+
 #### Version 80711
 
 ##### New features and enhancements
@@ -172,9 +175,6 @@ This release does not include early access features.
 ##### Hotfixes
 
 This release does not include hotfixes.
-
-<details>
-<summary>2023 releases</summary>
   
 #### Version 80504
 
