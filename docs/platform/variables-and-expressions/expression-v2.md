@@ -717,7 +717,7 @@ The following example demonstrates how you can use an `if` condition in JEXL to 
 ```
 <+var age = 18;
 
-if (age >= 18) {
+if (age == 18) {
   "You are an adult";
 } else {
   "You are not yet an adult";
