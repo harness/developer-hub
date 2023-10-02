@@ -2940,8 +2940,11 @@ To add an artifact from Artifactory, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Artifact Repository Type**, select **Artifactory**, and then select **Continue**.
-8. In **Artifactory Repository**, select of create an Artifactory Connector that connects to the Artifactory account where the repo is located. Click **Continue**.
-9. The **Artifact Details** settings appear.
+8. In **Artifactory Repository**, select of create an Artifactory Connector that connects to the Artifactory account where the repo is located. Click **Continue**. The **Artifact Details** settings appear.
+10. Enter an **Artifact Source Identifier** and select the **Repository Format**. 
+11. Set the artifact details based on the repository format. 
+
+#### Docker 
 
 <figure>
 
