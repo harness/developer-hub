@@ -16,8 +16,8 @@ This tutorial covers standalone or "audit-only" workflows that don't require any
 
 You'll learn how to:
 
-1. Run the Pipeline and analyze the security issues found by the scanner.
-2. Select a baseline for your test targets and use the baseline to identify  issues in a development branch only vs. issues also found in the baseline branch.
+1. Run the pipeline and analyze the security issues found by the scanner.
+2. Select a baseline for your test targets and use the baseline to identify "shift-left" issues in a downstream branch only vs. "shift-right" issues also found in the baseline branch.
 3. View issue details in the Harness UI and use these details to pinpoint and resolve issues in your code.
 
 ## Before you begin
@@ -54,7 +54,7 @@ Go to [What's supported in Harness STO](/docs/security-testing-orchestration/wha
 
 You're a developer, working in various development branches and merging your code updates. You want to make sure you don't introduce any new vulnerabilities when you merge your code into a target branch. Using STO, you can scan your repo automatically and then use the results to pinpoint and fix your vulnerabilties before you do any merge.
 
-This Pipeline has only one scanner but you can easily add more later. For the list of supported scanners, see [Security step settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference).
+This pipeline has only one scanner but you can easily add more later. For the list of supported scanners, see [Security step settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference).
 
 ## Clone your STO base pipeline
 
@@ -105,7 +105,7 @@ Let's look at the Bandit step to see how it's configured.
 
 <details open><summary> Key concept: scanner templates</summary>
 
-The Step library includes a Security step for setting up scanners: open the step and configure the scan as a set of key/value pairs under Settings.
+The Step Library includes a Security step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**.
 
 The Step Library also includes <a href="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates">scanner templates</a> for popular scanners such as Bandit, OWASP, Snyk, Grype, and SonarQube. These steps have preconfigured options that greatly simplify the process of setting up a scanner. 
 
@@ -116,7 +116,7 @@ In the Bandit scanner template, for example, the **Scan Configuration** and **Ta
 ## Viewing security test results
 
 <details open><summary> Key concept: scan targets</summary>
-Every instance of a scanner has a specific <i>target</i>, which is the object it is set up to scan. It might be a repo, a container, or an instance. This pipeline uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a> to scan the target repository <a href="https://github.com/williamwissemann/dvpwa">https://github.com/williamwissemann/dvpwa</a> (specified in the <a  href="/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/">Codebase</a> for this pipeline).
+Every instance of a scanner has a specific <i>target</i>, which is the object it is set up to scan. It might be a code repository, a container, or an instance. This pipeline uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a> to scan the target repository <a href="https://github.com/williamwissemann/dvpwa">https://github.com/williamwissemann/dvpwa</a> (specified in the <a  href="/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/">Codebase</a> for this pipeline).
 
 </details>
 
@@ -134,7 +134,7 @@ The **Security Tests** tab shows the issues that the scanner found in the test t
 
 <details open><summary> Key concept: baselines</summary> 
 
-A _target baseline_ identifies the "prod" variant of the target, such as the main branch or the latest tag. Defining a baseline makes it easy to distinguish between “shift-right” issues in production targets and “shift-left” issues in downstream variants.
+A _target baseline_ identifies the "prod" variant of the target, such as the `main` branch or the `latest`` tag. Defining a baseline makes it easy to distinguish between “shift-right” issues in production targets and “shift-left” issues in downstream variants.
 
 Note the following:
 
@@ -154,9 +154,9 @@ As a developer, you want to ensure that your merge or update doesn't introduce a
 
 ## Compare baseline vs. downstream issues 
 
-Suppose you're developing a new feature. You're working in a branch DEMO-001 that's downstream from the master branch. As a developer, you want to fix any "shift-left" issues in your downstream branch BEFORE you merge into the baseline. 
+Suppose you're developing a new feature. You're working in a `DEMO-001` branch that's downstream from the `master` branch. As a developer, you want to fix any "shift-left" issues in your downstream branch BEFORE you merge into the baseline. 
 
-First, you want to see if your branch has any security issues that aren't in master.
+First, you want to see if your branch has any security issues that aren't in the `master` branch.
 
 * Run your pipeline again with **DEMO-001** as the branch name.
 * When the pipeline finishes, go to the **Security** **Tests** tab.
@@ -174,7 +174,7 @@ When Harness processes the security issues identified in a scan, it deduplicates
 Note the following as you troubleshoot and fix your security issues: 
 
 - Each security issue you see in the **Security Tests** page is unique and requires its own resolution.
-- A single issue might have multiple occurrences throughout the target. To fix an issue, you must fix all occurrences of that issue.
+- A single issue might have multiple occurrences throughout the target. To remediate an issue, you must fix all occurrences of that issue.
 
 </details>
 

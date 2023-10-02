@@ -12,7 +12,7 @@ This tutorial builds on the [Create a standalone STO pipeline](/tutorials/securi
 
 In this tutorial, you'll learn how to integrate STO functionality into CI and CD pipelines. The core benefit of STO in an integrated pipeline is to fail the pipeline if a scanner finds any "show-stopper" vulnerabilities. The following sections describe the different failure strategies you can implement.
 
-For the list of supported scanners, see [Security step settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference).
+For the list of supported scanners, go to [Security step settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference).
 
 ## Objectives
 
@@ -48,13 +48,13 @@ It is good practice to set `fail_on_severity` in every scan step in an integrate
 </details>
 
 1. In the Pipeline Studio, open the pipeline that you created in the [Standalone pipeline](/tutorials/security-tests/standalone-pipeline) tutorial.
-2. Open the Bandit step.
+2. Open the **Bandit** step.
 2. Set **Fail on Severity** to **Critical**. 
-3. Click **Apply Changes**, save the updated pipeline, and run a new build with the **DEMO-001** branch.
+3. Select **Apply Changes**, save the updated pipeline, and run a new build with the **DEMO-001** branch.
 
    ![](./static/sto-integrated-workflows-00.png)
 
-The pipeline now fails because the Bandit step is now configured to fail on any vulnerability with a severity of low or higher. The last log message in the bandit step log is:
+The pipeline now fails because the Bandit step is now configured to fail on any critical vulnerability . The last log message in the Bandit step log is:
 ```
 Exited with message: fail_on_severity is set to critical and that threshold was reached.
 ```
@@ -65,25 +65,27 @@ Exited with message: fail_on_severity is set to critical and that threshold was 
 
 You can exempt known issues from  `fail_on_severity` so that they don't stop the pipeline even when a scan detects them. The following steps outline the workflow:
 
-1. A developer requests an exemption to a rule and forwards the request to a SecOps user.
+1. A developer requests an exemption for a specific issue and forwards the request to a SecOps user.
 
 2. The SecOps user approves the request or rejects it. Developer users can request exemptions, but only SecOps users can approve them.
 
+3. If the exemption is approved, and a future scan detects the exempted issue, the pipeline execution will not fail even if the issue meets the `fail_on_severity` threshold. 
+
 </details>
 
-In this section, you'll create an exemption as a developer and then approve it as SecOps user. (In many real-world scenarios, two separate people will be performing the workflow.)
+In this section, you'll create an exemption as a developer and then approve it as a SecOps user. (In many real-world scenarios, two separate people will be performing the workflow.)
 
 1. Make sure that you have the SecOps role assigned to yourself:
-	1. Click **Account Settings** (left menu) > **Access Control**.
-	2. In the **Users** table, click your user profile.
-	3. Under Role Bindings, click **+Role**.
+	1. Select **Account Settings** (left menu) > **Access Control**.
+	2. In the **Users** table, select your user profile.
+	3. Under Role Bindings, select **+Role**.
 	4. Make sure that you have the **Security Testing SecOps** role assigned to yourself.
   
      ![](./static/sto-integrated-workflows-01.png)
      
-2. Go to the Security Tests page for the build you ran previously: In the pipeline Studio, click **Execution History** (top right) and then click the last successful build you ran before the failed build.  
+2. Go to the Security Tests page for the build you ran previously: In the pipeline Studio, select **Execution History** (top right) and then select the last successful build you ran before the failed build.  
 
-  In the following step, you will create an Ignore request for each of the two critical issues found: `subprocess_popen_with_shell_equals_true` (only in the current scan) and `haslib` (common to the baseline scan).
+  In the following step, you will create an exemption for each of the two critical issues found: `subprocess_popen_with_shell_equals_true` (only in the current scan) and `hashlib` (common to the baseline scan).
 
 3. In the **Security Tests** tab, do the following steps for each critical issue:
 	1. Select the critical issue in the issues table (bottom left) to open **Issue Details**.
@@ -96,13 +98,13 @@ In this section, you'll create an exemption as a developer and then approve it a
 		2. For how long? **1 Day** (*if available*)
 		3. Reason this issue should be exempted: **Other**
         4. Further describe the reason this issue should be exempted: **Tutorial example pipeline, not for use in QA or Prod environments**
-		4. Click **Create Request**.
+		4. Select **Create Request**.
     
        ![](./static/sto-integrated-workflows-03.png)
        
-4. Click **Security Tests** (left menu) and then **Exemptions** (second-from-left menu).
+4. Select **Security Tests** (left menu) and then **Exemptions** (second-from-left menu).
 
-5. In the Security Review page, click the "thumbs-up" buttons to approve both exemptions.
+5. In the Security Review page, select the "thumbs-up" buttons to approve both exemptions.
 
    ![](./static/sto-integrated-workflows-04.png)
    
@@ -113,8 +115,8 @@ In this section, you'll create an exemption as a developer and then approve it a
    ![](./static/sto-integrated-workflows-05.png)
 
 
-9. Go to **Security Tests** > **Exemptions**. Then click **Approved** to show the Ignore rules you created and approved.
-10. Click the Delete (**X**) buttons on the right to delete both rules.
+9. Go to **Security Tests** > **Exemptions**. Then select **Approved** to show the Ignore rules you created and approved.
+10. Select the Delete (**X**) buttons on the right to delete both rules.
 
     ![](./static/sto-integrated-workflows-07.png)
 
@@ -124,7 +126,7 @@ You've now learned the core STO features and workflows. Here are the next steps 
 
 #### Add more scanner steps
 
-STO supports an extensive set of external scanners for repos, images, and artifacts. See [Security steps reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference).
+STO supports an extensive set of external scanners for repos, images, and artifacts. Go to [What's supported](/docs/security-testing-orchestration/whats-supported).
 
 #### Add steps or stages for CI/CD workflows
 
@@ -132,7 +134,7 @@ You know how to implement pipelines when scanners detect security issues, and ho
 
 #### Add governance policies
 
-You can use the [Harness Policy Engine](/docs/platform/governance/Policy-as-code/harness-governance-overview) to create policies based on the [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) standard. For example, you could create a rule like the following to ensure that all pipelines include a Security stage.
+You can use the [Harness Policy Engine](/docs/platform/governance/Policy-as-code/harness-governance-overview) to create policies based on the [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) standard. For example, you can create a rule like the following to ensure that all pipelines include a Security stage.
 
 
 ```
@@ -156,12 +158,12 @@ contains(arr, elem) {
 ```
 #### Add failure strategies to a CI/CD stage
 
-You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) to bypass the failure policies in previous Security steps. One use case for this would be to enable manual interventions when a Security step generates a failure. You could set up a workflow like this:
+You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) to bypass the failure policies in previous security steps. One use case for this would be to enable manual interventions when a Security step generates a failure. You can set up a workflow like this:
 
 1. A Build step is downstream from the Security step. It has a failure strategy that's set to run on [All Errors](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings#error-types).
 2. The scanner detects issues and the Security step generates an error.
 3. The Failure Strategy in the Build step initiates a 30-minute pause before proceeding.
-4. The developer and security team evaluate the issues and then abort the pipeline or allow it to proceed.
+4. The developer and security team evaluate the issues and then abort the pipeline execution or allow it to proceed.
 
 
 ### Integrated STO/CI Workflow Example
@@ -178,12 +180,12 @@ This pipeline works as follows:
     2. **banditScan** scans a GitHub repo used to build the container image. 
     In this case, `fail_on_severity` is set to `high`. 
     3. **buildAndPush_PRIVATE** builds a local container image from the repository and pushes it to a private registry.     
-    3. The **aquaTrivyScan** step uses the open-source tool **Aqua Trivy** to scan the local image. It has `fail_on_severity` set to `high`.
-    4. If the container image has no issues with medium or higher severity, **buildAndPush_PUBLIC** pushes the image to a public registry.
+    3. The **aquaTrivyScan** step uses the open-source tool [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference) to scan the local image. It has `fail_on_severity` set to `high`.
+    4. If the container image has no issues with high or critical severity, **buildAndPush_PUBLIC** pushes the image to a public registry.
 
 2. The **sendEmail** stage includes an step that sends an email if the previous stage succeeded.  
 
-You can view all issues from all scanners in the **Security Tests** tab, and also filter the issue list by scanner.
+After the pipeline executes, you can view all issues from all scanners in the **Security Tests** tab, and also filter the issue list by scanner.
 
 ![](./static/sto-integrated-workflows-09.png)
 

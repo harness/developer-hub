@@ -27,22 +27,22 @@ The entire setup workflow should take about 30 minutes.
 
 ## STO Requirements 
 
-Make sure you meet the following requirements before you perform [STO Setup Procedures](#sto-setup-procedures) steps described below.
+Make sure you meet the following requirements before you do the [STO Setup Procedures](#sto-setup-procedures) steps described below.
 
 ### External Requirements
 
-Before you start setting up Harness, make sure you have the following:
+Before you create your first Harness pipeline, you must have the following:
 
 * Git account and Personal Access Token — If you are scanning a repo, you need an account and access token with the Git provider.
 * Docker Hub account — STO uses Docker-in-Docker to run scans. The Pipeline needs to pull the **docker:dind** image from Docker Hub.
 * A [build infrastructure](#set-up-a-build-infrastructure-for-sto) for executing pipelines and scanning targets.
 
-### Harness User Requirements
+### Harness user permissions
 * Developers need a Security Testing Developer role to run tests and view results.
 * Security Operations staff need a Security Testing SecOps role to run tests, view results, and approve security exemptions.
 * To assign these roles, you need an Account Admin role. Project Admin permissions aren't enough. 
 
-### Harness Account Requirements
+### Harness sccount requirements
 
 Harness recommends you create the following resources at the Account level. This enables you to use them across all projects and pipelines in the account.
 
@@ -51,7 +51,7 @@ Harness recommends you create the following resources at the Account level. This
 * Git codebase connector — Required if you want to scan a codebase in your pipeline.
 * Docker Hub connector — Required to download images needed to run the pipeline.
 
-## STO Setup Procedures
+## STO setup procedures
 
 The following sections describe the workflow for setting up STO. Once you complete this workflow, you'll have the build infrastructure and connectors required to build a pipeline and run security scans. You'll also have an STO-enabled pipeline that you can clone and configure based on your security requirements.
 
@@ -59,8 +59,8 @@ The following sections describe the workflow for setting up STO. Once you comple
 
 Harness includes two RBAC roles specifically for STO users:
 
-* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](/tutorials/security-tests/standalone-pipeline).
-* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions (Ignore rules). These workflows are covered in [Tutorial 2](/tutorials/security-tests/cicd-integrated-pipeline).
+* **Developer** role — Permissions needed for developer workflows. These workflows are described in the first tutorial, [Create a standalone STO pipeline](/tutorials/security-tests/standalone-pipeline).
+* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions ("ignore rules") for specific issues. These workflows are covered in the second tutorial, [Create an integrated STO/CI pipeline](/tutorials/security-tests/cicd-integrated-pipeline).
 
 :::note
 You need Administrative privileges at the Account level (Account Admin role) to assign these roles.
@@ -81,8 +81,7 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 
 ### Set up a build infrastructure for STO
 
-You need a Harness build infrastructure to run scans in STO. First, review the [STO support by CI build infrastructure type
-](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#sto-support-by-ci-build-infrastructure-type). Then select the infrastructure you want to use: 
+You need a Harness build infrastructure to run scans in STO. First, review the supported build infrastructures in [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported). Then select the infrastructure you want to use: 
 
 - [Harness Cloud build infrastructure](#use-harness-cloud-build-infrastructure-for-sto) This is the simplest option. No initial setup is required. 
 - [Local Kubernetes build infrastructure](#install-a-kubernetes-delegate-for-sto) Recommended when you want to run ephemeral builds-at-scale in your own infrastructure.
@@ -165,7 +164,7 @@ Harness includes a built-in Secrets Manager that enables you to store encrypted 
 In this step, you'll create a secret for your GitHub and DockerHub access tokens. Then you'll use the secret when you set up the connector to your GitHub repo.
 
 <details>
-  <summary>Create a Secret for your GitHub Access Token: Default Workflow</summary>
+  <summary>Create a Secret for your GitHub access token: Default Workflow</summary>
 
 1. In your Github account, a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has the following scopes:
 	* repo
@@ -210,7 +209,7 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 
 ### Create a Codebase Connector
 
-You'll need a GitHub Connector to do the [STO Tutorials](/tutorials/security-tests/standalone-pipeline). 
+You'll need a GitHub account to do the [STO Tutorials](/tutorials/security-tests/standalone-pipeline). 
 
 You also need a Git repo connector for any STO pipeline that scans a codebase. You can create codebase connectors for the following SCMs:
  - [Azure](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector)
@@ -228,17 +227,17 @@ To do the STO tutorials, point the connector at the following repo: <https://git
 2. Under Code Repositories, choose **GitHub**.
 3. Specify the following in the setup wizard:
 	1. Overview:  
-	Name = **GitHub STO tutorial**.
+	   Name = **GitHub STO tutorial**.
 	2. Details:  
-	**URL Type:** Repository  
-	**Connection Type:** HTTP  
-	**GitHub Repository URL:** https://github.com/williamwissemann/dvpwa
+	   **URL Type:** Repository  
+	   **Connection Type:** HTTP  
+	   **GitHub Repository URL:** https://github.com/williamwissemann/dvpwa
 	3. Credentials:  
-	**Username:** Your GitHub username.  
-	**Personal Access Token:** Your [GitHub Personal Access Token secret](#create-secrets-for-your-git-and-dockerhub-access-credentials).  
-	**Enable API Access:** Select this checkbox and select the same secret.
+	   **Username:** Your GitHub username.  
+	   **Personal Access Token:** Your [GitHub Personal Access Token secret](#create-secrets-for-your-git-and-dockerhub-access-credentials).  
+	   **Enable API Access:** Select this checkbox and select the same secret.
 	4. Connect to the provider:  
-	Click **Connect through Harness Platform**.
+	   Click **Connect through Harness Platform**.
 4. When you're done, click **Save and Continue**. Harness will test the connection and credentials. Click **Finish**.
 
 </details>
@@ -249,7 +248,7 @@ The following procedure creates a pipeline with the STO functionality required t
 
 ### Add a Security Test stage
 
-1. In the Pipeline Studio, click **Home** > **Projects** and choose the project where you want to create the pipeline.
+1. In the Pipeline Studio, select **Home** > **Projects** and choose the project where you want to create the pipeline.
 
   <!-- import set-up-harness-19 from './static/set-up-harness-for-sto-19.png' -->
 
@@ -332,7 +331,7 @@ import set_up_harness_26 from './static/configure-bandit-step.png'
 	2. Target Name = `**dvpwa**`
 	3. Target Variant — Click the tack button on the right, select **Expression** as the value type, and enter the expression **`<+codebase.branch>`**. 
 	
-	   With this setting, the variant — in this case, the branch name — when you execute the pipeline. 
+	   With this setting, you will specify the variant — in this case, the branch name — when you execute the pipeline. 
 
 	   ```mdx-code-block
 	   <img src={set_up_harness_tut_select_variant_field_type} alt="Configure the background step" height="75%" width="75%" />
