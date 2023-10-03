@@ -26,6 +26,16 @@ This tutorial is designed to help you get started with Harness Continuous Delive
 [Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/).
 :::
 
+:::info
+
+Kubernetes is required to complete these steps. Run the following to check your system resources and (optionally) install a local cluster.
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/harness-community/scripts/main/delegate-preflight-checks/cluster-preflight-checks.sh)
+```
+
+:::
+
 ```mdx-code-block
 <Tabs>
 <TabItem value="GitOps Workflow">
