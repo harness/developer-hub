@@ -149,7 +149,13 @@ This release does not include early access features.
 
   This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-##### Hotfixes
+- The execution logs from the Initialize step showed SSH keys used in the environment for the Command step. (CDS-79144, ZD-50623)
+  
+  This issue has been fixed.
+
+  This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### Hotfixes
 
 This release does not include hotfixes.
 
@@ -1340,7 +1346,7 @@ No early access features are available in this release.
 
 - Entities in Harness can now have `/` for the Name. (PL-29929)
 
-- [Looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
+- [Looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
 
 ##### Early access
 

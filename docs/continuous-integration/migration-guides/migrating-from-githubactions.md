@@ -516,7 +516,7 @@ To learn more about defining and fetching variables go to:
 
 In both Harness CI and GitHub Actions, you can define matrix strategies for your jobs to iterate over a series of inputs. In both products, you define a matrix strategy and then call the strategy by it's tag or other identifier when you want to use it in a command or step.
 
-In Harness, matrix looping strategies are one of several looping execution strategies. To learn about the looping strategies available in Harness, go to [Looping Strategies Overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism)
+In Harness, matrix looping strategies are one of several looping execution strategies. To learn about the looping strategies available in Harness, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 
 ```mdx-code-block
 <Tabs>
@@ -639,5 +639,5 @@ Review the following information before proceeding with migration:
 
 * [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md)
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
-* [Speed up Harness CI pipelines using parallelism](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)
+* [Speed up Harness CI pipelines using parallelism](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism)
 * [Harness Platform documentation](/docs/platform)

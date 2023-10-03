@@ -8,6 +8,7 @@ helpdocs_is_published: true
 sidebar_position: 2
 redirect_from:
   - /docs/continuous-delivery/getting-started/key-concepts
+  - /docs/continuous-delivery/get-started/cd-pipeline-basics
 ---
 
 For details on Harness' Key Concepts, go to [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
@@ -138,15 +139,15 @@ For examples, go to:
 
 Pipelines, Stages, and steps have advanced settings to control the flow of operations.
 
-### Inputs and overlays
+### Input sets and overlays
 
-Harness Input Sets are collections of runtime inputs for a Pipeline provided before execution.
+Harness input sets are collections of runtime inputs for a pipeline provided before execution.
 
-Overlays are groups of Input Sets. Overlays enable you to provide several Input Sets when executing a Pipeline.
+Overlays are groups of input sets. Overlays enable you to provide several input sets when executing a pipeline.
 
-With Input Sets and Overlays, you can make a single Pipeline template that can be used for multiple scenarios. Each scenario can be defined in an Input Set or Overlay and simply selected at runtime.
+With input sets and overlays, you can make a single pipeline template that can be used for multiple scenarios. Each scenario can be defined in an input set or overlay and simply selected at runtime.
 
-For more information, go to [Input Sets and Overlays](../../platform/pipelines/input-sets.md).
+For more information, go to [Input sets and overlays](../../platform/pipelines/input-sets.md).
 
 ### Conditional executions
 

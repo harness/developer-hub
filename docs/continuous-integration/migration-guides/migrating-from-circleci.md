@@ -535,7 +535,7 @@ In CircleCI, matrix jobs are achieved by using parameters and then referencing t
 
 In Harness, matrix looping strategies are one of several looping execution strategies. With matrix looping strategies, your pipelines can execute the same set of tasks multiple times for several different configurations. This is achieved by mentioning user-defined tags and referencing them in the pipeline using the following expression syntax: `<+matrix.usertag>`
 
-To learn about the looping strategies available in Harness, go to [Looping Strategies Overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism)
+To learn about the looping strategies available in Harness, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 
 ```mdx-code-block
 import Tabs5 from '@theme/Tabs';
@@ -625,5 +625,5 @@ Harness provides inline pipeline storage or storing [Pipeline YAML (Pipeline-as-
 Review the following information before proceeding with migration:
 
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
-* [Speed up Harness CI pipelines using parallelism](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)
+* [Speed up Harness CI pipelines using parallelism](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism)
 * [Harness Platform documentation](/docs/platform)

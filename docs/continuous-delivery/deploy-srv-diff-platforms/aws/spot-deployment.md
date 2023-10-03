@@ -335,10 +335,10 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
         * **Percent**: Specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
         * **Count**: Specify the exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
 5. In the **Advanced** settings of all steps, you can use the following options:
-    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-    * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+    * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 
 6. Select **Save**. 
@@ -378,10 +378,10 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
         * **Percent**: Specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
         * **Count**: Specify an exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
 6. In the **Advanced** settings of all steps, you can use the following options:
-    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-    * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+    * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 7. Select **Apply Changes**. 
 8. Select **Save**. 
@@ -467,10 +467,10 @@ With this incremental traffic shift strategy, you are controlling the percentage
     * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
     * Select **Downsize old Elastigroup** to downsize the old Elastigroup.
 5. In the **Advanced** settings of all steps, you can use the following options:
-    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-    * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+    * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 
 6. Select **Save**.   
