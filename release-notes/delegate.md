@@ -146,7 +146,9 @@ This release does not include any new early access features.
 
 ##### Version 23.09.80507
 
-- Previously while escaping single quotes in envVariables same map was passed to subsequent command units which caused escaped single quotes to escape again, now subsequent command units will not escape single quotes again.
+- When escaping single quotes in environment variables, the same map was passed to subsequent command units which caused the escaped single quotes to escape again. (CDS-75775)
+
+   This issue has been resolved. Subsequent command units do not escape single quotes again.
 
 ##### Version 23.09.80506
 
