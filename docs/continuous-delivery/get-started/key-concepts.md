@@ -8,6 +8,7 @@ helpdocs_is_published: true
 sidebar_position: 2
 redirect_from:
   - /docs/continuous-delivery/getting-started/key-concepts
+  - /docs/continuous-delivery/get-started/cd-pipeline-basics
 ---
 
 For details on Harness' Key Concepts, go to [Learn Harness' Key Concepts](../../get-started/key-concepts.md).

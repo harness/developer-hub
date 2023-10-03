@@ -1,4 +1,4 @@
-Error analysis and remediation from AIDA is available if you have [enabled AIDA in your Harness account](/docs/platform/Harness-AIDA/aida-overview.md#enable-aida) and either:
+Error analysis and remediation from AIDA is available if you have [enabled AIDA in your Harness account](/docs/platform/Harness-AIDA/aida-overview#enable-aida) and either:
 
 * A step in a stage failed.
 * A stage that contains no steps failed.
