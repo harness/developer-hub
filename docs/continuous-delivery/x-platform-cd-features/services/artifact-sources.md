@@ -2956,7 +2956,7 @@ To add an artifact from Artifactory, do the following:
 4. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
     
     ![](static/kubernetes-services-16-docker.png)
-5. If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+5. If you use runtime inputs when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 
 6. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
@@ -2981,21 +2981,27 @@ To add an artifact from Artifactory, do the following:
 </figure>
 
 1. In **Repository**, enter the repo name. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `docker-remote`.
-2. In **Artifact Directory**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
-3. Select the method for specifying the artifact you want to deploy:
-   - **Artifact Directory** Specify a hard-coded path to the artifact.
-   - **Artifact Filter** Use a regular expression to specify the path.
-3. Specify the artifact you want to deploy.
+2. In **Artifact Directory**, enter the path to the artifacts. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
+3. Select the method for specifying the artifacts you want to deploy:
+   - **Artifact Directory** Specify a hard-coded path to the artifacts.
+   - **Artifact Filter** Use a regular expression to specify the path. Useful if you want to fetch multiple artifacts in different paths.
+3. Specify the artifacts you want to deploy.
  
    - If specifying via directory:
-     1. In **Artifact Directory**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
-     2. Specify the artifact details. You can use a regular expression. For example, you can enter `*.zip` to fetch all `.zip` artifacts in the root directory.
+     1. In **Artifact Directory**, enter the path to the artifacts. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
+     2. Set **Artifact Details** to **Value** or **Regex**. 
+     3. Specify the artifacts for the service.
+        
+        You can use a regular expression to specify multiple artifacts. For example, suppose your service has a front end and a back end, and you store the latest artifacts in a `/latest` subfolder, like this:
+            `/myService/latest/front-service.zip`
+            `/myService/latest/back-service.zip`
+        To fetch both artifacts, you can specify `/myService` for the artifact directory and `latest/*.zip` for the artifact path filter.
 
-   - If specifying via filter, enter a regular expression that matches the tag of the artifact you want to fetch. 
+   - If specifying via filter, enter a regular expression that matches the tag of the artifacts you want to fetch. 
     Here are some examples:
       - `*/*` : Fetch all artifacts from all directories including their sub-directories.
       - `*/*.zip` : Fetch all `.zip` artifacts from all directories, including sub-directories.
-      - `*`: fetch all artifacts in the root directory.
+      - `*`: Fetch all artifacts in the root directory.
       - `*.zip` : Fetch all `.zip` artifacts in the root directory.
       - `folder/*` : Fetch all artifacts contained in directory `folder`.
       - `folder/*.zip` : Fetch all `.zip` artifacts contained in directory `folder`.
