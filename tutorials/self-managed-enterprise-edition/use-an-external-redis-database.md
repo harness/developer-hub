@@ -59,7 +59,7 @@ To create a firewall rule, do the following:
    | TCP| 10000-20000 | Redis connectivity|
    | TCP| 8443 | Secure (HTTPS) access to the web management UI|
 
-4. For testing purposes, set the Source IP ranges set to your public IP.
+4. For testing purposes, set the source IP ranges to your public IP.
 
 ## Install Redis
 
