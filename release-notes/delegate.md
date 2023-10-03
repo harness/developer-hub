@@ -148,6 +148,12 @@ This release does not include any new early access features.
 
 ##### Hotfixes
 
+##### Version 23.09.80512
+
+- ShellScript WinRM deployments would not honor the configured timeout. For example, the step would time out by default in 30 minutes even when the configured timeout was 1 day. (CDS-78219)
+
+The issue has been resolved. Now, the WinRM session timeout will be set to the maximum of the step timeout configured and 30 minutes.
+
 ##### Version 23.09.80507
 
 - When escaping single quotes in environment variables, the same map was passed to subsequent command units which caused the escaped single quotes to escape again. (CDS-75775)
