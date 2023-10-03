@@ -1,6 +1,6 @@
 ---
 title: Manage stale flags
-description: Identify and automatically open pull requests to remove stale f4ature flags from your code.
+description: Identify and automatically open pull requests to remove stale feature flags from your code.
 sidebar_position: 30
 ---
 
@@ -10,7 +10,7 @@ Stale flag management and cleanup automation is a beta feature.
 
 ## Manage stale flags
 
-Harness Feature Flags helps to identify stale flags, as well as to automate the process of removing them from your code.
+Harness Feature Flags helps to identify stale flags and automates the process of removing them from your code.
 
 Stale flags are flags that are no longer needed as the change behind them has been widely rolled out and no longer needs any control in production. 
 
@@ -20,7 +20,7 @@ Stale flags are flags that are no longer needed as the change behind them has be
 - One of those filters is labeled **Potentially Stale Flags**. 
 - Click this list to see which flags have been highlighted by Harness as potentially stale.
 
-By seeing which flags are potentially stale, your team can choose to either manually clean them up, mark them for automated cleanup via Harness, or mark them as not being stale at all.
+By seeing which flags are potentially stale, your team can choose to either manually clean them up, mark them for automated cleanup via Harness, or mark them as not being stale.
 
 ### Definition of potentially stale
 
@@ -103,25 +103,25 @@ You will need update the rules file with the correct tree-sitter query.
 
 ### Run the flag cleanup pipeline
 
-Here we have the pipeline set up and our flags marked for cleanup. So now all we need to do is run the pipeline to do the cleanup.
+Here the pipeline is set up and our flags marked for cleanup. So now all we need to do is run the pipeline to do the cleanup.
 
 - Select the repo for the codebase and the branch.
 
 ![Step one of running the flag cleanup pipeline](./static/running-cleanup-pipeline-1.png)
 
-- Select the Github token, Github username and Harness API Key.
+- Select the Github token, Github username, and Harness API Key.
 
 ![Step two of running the flag cleanup pipeline](./static/running-cleanup-pipeline-2.png)
 
-- Select what code to run against. In our example repo we have both Go and Java. This are the paths to run against the Go code:
+- Select what code to run against. The example repo includes both Go and Java. These are the paths to run against the Go code:
 
 ![Step three of running the flag cleanup pipeline](./static/running-cleanup-pipeline-3.png)
 
-- Select the DockerHub connector to pull down the plugin container. And hit run!
+- Select the DockerHub connector to pull down the plugin container, and then select **Run**.
 
 ![Step four of running the flag cleanup pipeline](./static/running-cleanup-pipeline-4.png)
 
-As the pipeline runs you will see logs from the plugin showing it getting the flags and performing the code changes.
+As the pipeline runs, logs from the plugin show it getting the flags and performing the code changes.
 
 ![Output of cleanup pipline](./static/output-of-cleanup-pipeline.png)
 
