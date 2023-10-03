@@ -610,7 +610,6 @@ const config = {
     path.join(__dirname, "/plugins/munity-plugin"),
   ],
   clientModules: [
-    require.resolve("./client-modules/DetailsFromDocs"),
     require.resolve("./client-modules/FocusOnAnchor"),
   ],
 };
