@@ -680,6 +680,10 @@ No, these secrets are never rendered on the manager(Harness). They only get rend
 
 Currently anyone in the account would be able to open a ticket, and access is not restricted.
 
+#### How can I see who's logged into my account?
+
+You can use the audit trail (https://developer.harness.io/docs/platform/governance/audit-trail/)
+
 #### Do we have any docs for install and upgrade the SMP cluster?
 
 Yes, we have the docs, you can refer to this [Documentation](https://harness.atlassian.net/wiki/spaces/~63f950e3e76fc61320f65127/pages/21474541915/Internal+-+Install+and+upgrade+SMP?atlOrigin=eyJpIjoiOWJlMDhlNDJhZjM2NGUyN2E2MGU2ZDRkODQwZjUxZmQiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ).
@@ -783,6 +787,15 @@ To resolve this issue, you need to de-provision the affected User Group from Har
 
 For the immutable delegate instance status we will show Expiring in 2 months only, it's the expected behaviour.
 
+
+#### Why am I not seeing my deployments in the Overview page of the project? 
+
+Please check the timeframe for the page. By default the timeframe is set to 30 days. You can adjust this to a different time frame. 
+
+#### Harness dashboard is not showing a previous deployment, why? 
+
+Please check the timeframe for the dashboard page. By default Harness sets this value at 30 days. It is possible that the deployment was executed before this timeframe. 
+
 #### When we recommend setting `POLL_FOR_TASKS` to true in a non production environment?
 
 For customers who do not want to take the web socket path due to any infrastructure challenges, we recommend enabling POLL_FOR_TASKS.
@@ -827,3 +840,24 @@ terraform {
 }
 ```
 
+#### How are Harness secrets tied to connectors. 
+
+Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
+
+
+#### How to avoid pulling Harness delegate images from a public repo?
+
+You can add special Harness Container Image Registry connector to your Harness account. With this connector, the Delegate pulls these images from the Harness Container Image Registry only. 
+
+See link for more details [https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/]
+
+
+#### Does Harness Support Google cloud functions 1st Gen and 2nd Gen?
+Yes, Harness supports both 1st gen and 2nd gen. 
+
+See: [https://developer.harness.io/docs/faqs/continuous-delivery-faqs/#google-cloud-functions]
+
+#### How can I use Harness CD with Google Cloud Functions?
+Harness CD pipelines help you to orchestrate and automate your Google Cloud Function deployments and push updated functions to Google Cloud.
+
+See: [https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func/]

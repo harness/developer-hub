@@ -105,10 +105,10 @@ To install the delegate, do the following:
 
 6. Copy the `helm upgrade` command.
 
-   The command uses the default [values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) located in the [delegate-helm-chart](https://github.com/harness/delegate-helm-chart) GitHub repo. If you want to change one or more values in a persistent manner instead of the command line, you can download and update the `values.yaml` file as needed. You can use the updated `values.yaml` file as shown below.
+   The command uses the default [values.yaml file](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) located in the [delegate Helm chart](https://github.com/harness/delegate-helm-chart) GitHub repo. To make persistent changes to one or more values, you can download and update the `values.yaml` file according to your requirements. Once you have updated the file, you can use it by running the upgrade command below.
 
    ```
-   helm upgrade -i firstk8sdel --namespace harness-delegate-ng --create-namespace \
+      helm upgrade -i firstk8sdel --namespace harness-delegate-ng --create-namespace \
      harness-delegate/harness-delegate-ng \
      -f values.yaml \
      --set delegateName=firstk8sdel \
@@ -118,6 +118,17 @@ To install the delegate, do the following:
      --set delegateDockerImage=harness/delegate:yy.mm.verno \
      --set replicas=1 --set upgrader.enabled=false
    ```
+
+:::info note
+To install a Helm delegate for Harness Self-Managed Enterprise Edition in an air-gapped environment, you must pass your certificate when you add the Helm repo.
+
+```
+helm repo add harness-delegate --ca-file <.PEM_FILE_PATH> <HELM_CHART_URL_FROM_UI>
+```
+
+For more information on requirements for air-gapped environments, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment).
+
+:::
 
 7. Run the command.
 

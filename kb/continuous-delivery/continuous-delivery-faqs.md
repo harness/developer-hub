@@ -1436,3 +1436,87 @@ To use queue steps in your Harness pipeline:
 6. Save your changes and run the pipeline.
 
 For detailed guidance on using queue steps to control resource usage in Harness pipelines, refer to the Harness documentation section titled [Control Resource Usage with Queue Steps](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/control-resource-usage-with-queue-steps/)
+
+#### How to identify which stage executed again as part of re-run for failed pipeline
+Navigate to the stage and you will able to see message “This stage has been re-executed.”
+
+#### Logs timestamp and start/end time of pipeline is not matching.
+This usually happens if any failed pipeline was re-run and some of stage were not ran and we do show logs for older execution
+In retry we do copy the logs from previous execution for the stage which we are actually not running.
+For example: original execution stage1 → stage2 → stage3->stage4.
+If the original execution is failing at stage3 and we retry from stage3, the logs for stage1 and stage2 in latest execution will be copied from original execution along with the log timings.
+
+#### Can we access Phase level exported context variable in Rollback step
+No phase level exported variable will not be accessible in Rollback and need to export context variable on workflow level 
+
+#### How can I schedule cron trigger "at 10:00 every 3 months **4th Monday** of every month UTC" ?
+You can use  0 0 10 ? 1/3 2#4 *
+
+#### Can we migrate a specific secret from on SM to another SM?
+
+No, It is a feature yet to be added.
+
+#### How long can a pipeline be left running ?
+
+A pipeline can be left running for `35 days` on enterprise account.
+
+#### Do we support the creation of PR  at the time of pipeline creation ?
+
+No, we support creating remote entities. We have not onboarded API to create PR  and it is as per product decision.
+We can look forward to add this in future. Please refer more on this in following [Documentation](https://apidocs.harness.io/tag/Pipelines/#operation/update-pipeline)
+
+#### How can customer execute a `helm dependency update` command with Helm Command Flags ?
+
+For this specific use case please refer to our documentation [here](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#use-case-add-private-repositories-as-a-helm-chart-dependency)
+
+#### Is there a comprehensive spec for the Reconcile functionality in NG?
+
+We have it added in our API docs which you can refer [here](https://apidocs.harness.io/tag/Pipeline-Refresh/#operation/validateTemplateInputs)
+
+#### Do we have documentations based on user specific roles ?
+
+One can follow [`CD Ramp UI Guide Series`](https://developer.harness.io/docs/category/ramp-up-guides) where we have the following initials :
+
+- For developer role: follow [here](https://developer.harness.io/docs/continuous-delivery/ramp-up/rampup-dev)
+- For administrator role: follow [here](https://developer.harness.io/docs/continuous-delivery/ramp-up/rampup-admin)
+
+We look forward to add more in the upcoming future.
+
+#### Is it anticipated that the harness pipeline will initiate the verification of 'access' permissions to an environment at the outset of an execution, as opposed to conducting such verification progressively as the pipeline advances?
+
+Yes, You can deploy to selective stages.
+
+#### Do we support OCI repository and automation for adding a new repository in our gitops approach?
+
+Yes, Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/gitops/oci-support/helm-oci-repository-aws-ecr)
+
+#### Is there a way to exclude something in a search criteria as a step from all applications in a list of pipelines?
+
+Yes, the regex can be used in search bar for searching pipelines. For now, search bar only check for name, identifier, tag key, tag value and label.
+
+#### Is there a way to get the list of pipelines which does not have smoke test integrated as a step from all applications?
+
+No. For now, search bar only check for name, identifier, tag key, tag value and label.
+
+#### How can I retrieve the header from the built-in HTTP step? 
+
+Usually step input should be accessible. Headers are accessible as well if you know the key. Output variable can be defined as
+```
+key -> variable name to be exported
+value -> <+execution.steps.Http_1.spec.headers.test>
+```
+Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/)
+
+#### What could be the reason for SSH timeout ?
+
+If you are facing SSH timeout error please check for possible cause below :
+
+- Check if you are able to SSH from delegate terminal to the host itself
+- Check if the firewall rules are have delegate IPs whitelisted 
+- Check if the host is reachable before or during first time setup
+- Check if the Proxy/VPN used is having correct configurations 
+- Check if there is a policy for rotating IP's, need to update the same in existing configuration
+- Check the host URI if it has undergone any changes in credentials
+- Check if correct delegate is picked during the execution , if not use delegate selector to pick the correct one .
+- Check the timeout defined for the step is optimum to reach the host if not cross check and increase accordingly .
+- Check  if any recent feature flags enabled causing this .
