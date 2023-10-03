@@ -126,7 +126,7 @@ To get VM recommendations, you needs to [enable Azure Advisor VM/VMSS recommenda
 
 ## GCP
 
-Projects in gcp are structured via organizations. You should have a billing project in your GCP organization, this is the first project we should create a connector for. First you need to [create a billing export](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#gcp-billing-export) in this billing project. You can optionally create a “detailed” billing export which exposes resource level information.
+Projects in gcp are structured via organizations. You should have a billing project in your GCP organization, this is the first project we should create a connector for. First you need to [create a billing export](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#gcp-billing-export) in this billing project. You *should* create a “detailed” billing export, which exposes resource level information.
 
 The Harness GCP connector wizard walks you through entering the billing export information, and after checking the features you want to enable, prompts you with an itemized list of actions to take to grant this access to your GCP project. Again we are given a Harness owned service account that you can simply add to your organization. To save time you can give this access at the organization level to streamline the process
 
