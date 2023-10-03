@@ -2997,8 +2997,7 @@ To add an artifact from Artifactory, do the following:
             `/myService/latest/back-service.zip`
         To fetch both artifacts, you can specify `/myService` for the artifact directory and `latest/*.zip` for the artifact path filter.
 
-   - If specifying via filter, enter a regular expression that matches the tag of the artifacts you want to fetch. 
-    Here are some examples:
+   - If specifying via filter, enter a expression that matches the tag of the artifacts you want to fetch. The following expressions are supported:
       - `*/*` : Fetch all artifacts from all directories including their sub-directories.
       - `*/*.zip` : Fetch all `.zip` artifacts from all directories, including sub-directories.
       - `*`: Fetch all artifacts in the root directory.
