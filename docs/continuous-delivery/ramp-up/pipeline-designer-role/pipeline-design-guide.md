@@ -131,7 +131,7 @@ Harness lets you design pipelines that can run stages defined in sequence, in pa
 
 Run stages like unit tests and deployment jobs in parallel to speed up the pipeline. Using Harness’ matrix deployment capabilities, you can orchestrate your stages and sequence them the way you want. 
 
-For more information, go to [Looping strategies overview (matrix, repeat, and parallelism)](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism).  
+For more information, go to [Looping strategies overview (matrix, repeat, and parallelism)](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).  
 
 Harness also gives the capability to deploy multiple services to multiple environments and infrastructures in one stage. Based on the inputs you provide for the stage service and environment, Harness will generate N number of stages. 
 
@@ -165,7 +165,7 @@ Using pipeline variables, you can expose parameters for your development teams t
 For more information, go to:
 
 - [Add a variable](/docs/platform/variables-and-expressions/add-a-variable). 
-- [Run pipelines using input sets and overlays](/docs/platform/pipelines/run-pipelines-using-input-sets-and-overlays). 
+- [Input sets and overlays](/docs/platform/pipelines/input-sets). 
 - [Triggering pipelines](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/). 
 
 ## Monitoring logging and alerting

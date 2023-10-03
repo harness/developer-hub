@@ -399,13 +399,13 @@ You can use all of the `<+instance...>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [<+instance.hostName>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostname)
-* [<+instance.host.hostName>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostinstancename)
-* [<+instance.name>](/docs/platform/Variables-and-Expressions/harness-variables#instancename)
+* [<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
+* [<+instance.host.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostinstancename)
+* [<+instance.name>](/docs/platform/variables-and-expressions/harness-variables#instancename)
 
 For Microsoft Azure or AWS:
 
-* [<+instance.host.privateIp>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostprivateip)
-* [<+instance.host.publicIp>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostpublicip)
+* [<+instance.host.privateIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostprivateip)
+* [<+instance.host.publicIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostpublicip)
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
