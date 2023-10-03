@@ -54,8 +54,8 @@ Say Gateway has a partial outage for 50 minutes then:
 ## Continuous Integration 
 | **SLI**                                                               | **Threshold**                                                | Outage Kind    |
 |-----------------------------------------------------------------------|--------------------------------------------------------------|----------------|
-| CI Manager                             | Greater than 30 seconds for a consecutive duration of 5 mins | Major Outage |
-| CI Manager Execution health      | No executions messages for more than 30 mins | Major Outage |
+| CI Manager ART                             | Greater than 30 seconds for a consecutive duration of 5 mins | Major Outage |
+| CI Manager Execution health ART    | No executions messages for more than 30 mins | Major Outage |
 
 ## Cloud Cost Management 
 | **SLI**                                                               | **Threshold**                                                | Outage Kind    |
