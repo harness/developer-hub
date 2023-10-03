@@ -70,6 +70,15 @@ No we don't. Try checking SHA of the tag and find image ID from the output of th
 
 Yes, it is an expected behaviour. The entrypoint in the base image should be overwritten as we have to run the commands specified in the run step.
 
+#### How can I list the internal images that CI uses ?
+
+https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#ci-images-list
+```
+curl -X  GET https://app.harness.io/registry/_catalog
+```
+
+Yes, it is an expected behaviour. The entrypoint in the base image should be overwritten as we have to run the commands specified in the run step.
+
 #### Do we have a limit on the length of a log line ? 
 
 Yes, We have a limit of 70KB on the line length in the CI client which writes to log service. One can write
