@@ -33,7 +33,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-* Fixed an issue with identifiers assigned to steps in [matrix looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism) that occurred if your account was configured to use **Matrix Labels by Name** *and* the pipeline contained nested matrix strategies. This issue produced a Null Pointer Exception error. (CI-9680)
+* Fixed an issue with identifiers assigned to steps in [matrix looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) that occurred if your account was configured to use **Matrix Labels by Name** *and* the pipeline contained nested matrix strategies. This issue produced a Null Pointer Exception error. (CI-9680)
 * In Kubernetes cluster build infrastructures, non-existent or unresolvable secrets are now handled in the same way as they are in VM and Harness Cloud build infrastructures. (CI-9677, ZD-50868, ZD-50901)
 <!-- CI-9747: Not for RN. CI-9688: In Hotfix 5802. -->
 
