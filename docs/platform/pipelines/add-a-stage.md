@@ -137,7 +137,7 @@ Harness has pre-defined stages for the most common release operations, such as B
 
 Unlike the Build, Deploy, or Approval stages, the Custom stage has no pre-defined functionality or requirements. The Custom stage provides flexibility to support any use case outside of the standard stages.
 
-To add a custom stage to your pipeline, follow the instructions in [Add a stage](#add-a-stage) and select **Custom stage** as the stage type. The Custom stage is available in all modules that use pipelines (CI, CD, and so on).
+To add a custom stage to your pipeline, [add a stage](#add-a-stage) and select **Custom stage** as the stage type. The Custom stage is available in all modules that use pipelines (CI, CD, and so on).
 
 ![](./static/add-a-custom-stage-58.png)
 

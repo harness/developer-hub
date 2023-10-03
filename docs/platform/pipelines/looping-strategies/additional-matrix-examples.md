@@ -6,7 +6,7 @@ redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/additional-matrix-examples
 ---
 
-Here are some examples of matrix strategies you can use in your stages or steps. For information about how matrix strategies work and instructions for creating different types of looping strategies, go to [Use looping strategies](./looping-strategies-matrix-repeat-and-parallelism).
+Here are some examples of matrix strategies you can use in your stages or steps. For information about how matrix strategies work and instructions for creating different types of looping strategies, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 
 ## Basic matrix: Repeat over a list
 

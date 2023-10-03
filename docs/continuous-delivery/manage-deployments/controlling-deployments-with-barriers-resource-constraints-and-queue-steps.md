@@ -34,7 +34,7 @@ Resource Constraints are added to every Stage by default, but it can be disabled
 
 See [Pipeline Resource Constraints](./deployment-resource-constraints.md).
 
-The automatic **Resource Constraints** setting does not apply to [Custom stages](/docs/platform/pipelines/add-a-stage#add-a-custom-stage). **Resource Constraints** apply to a combination of Service + Infrastructure, and Custom Stages have no Services or Infrastructures. You can use Barriers and Queue steps in any stage types.
+The automatic **Resource Constraints** setting does not apply to [Custom stages](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage). **Resource Constraints** apply to a combination of Service + Infrastructure, and Custom Stages have no Services or Infrastructures. You can use Barriers and Queue steps in any stage types.
 
 ### Queue Steps
 

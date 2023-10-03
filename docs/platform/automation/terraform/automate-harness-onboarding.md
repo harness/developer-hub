@@ -302,7 +302,7 @@ For detailed steps to build the pipeline, go to [Kubernetes deployment tutorial]
 ### Configure pipeline stages
 
 To configure the stages for your pipeline, go to the following: 
-- [Custom stage](/docs/platform/pipelines/add-a-stage#add-a-custom-stage)
+- [Custom stage](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage)
 - [Terraform Plan step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
 - [Terraform Apply step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
    

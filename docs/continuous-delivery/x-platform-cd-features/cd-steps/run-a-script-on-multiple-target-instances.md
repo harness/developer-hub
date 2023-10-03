@@ -46,7 +46,7 @@ You can use all of the `<+instance...>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [<+instance.hostName>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostname)
+* [<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
 * [<+instance.host.instanceName>](/docs/platform/variables-and-expressions/harness-variables/#instancehostinstancename)
 * [<+instance.name>](/docs/platform/variables-and-expressions/harness-variables/#instancename)
 

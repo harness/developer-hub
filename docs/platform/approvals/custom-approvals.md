@@ -332,7 +332,7 @@ Please ensure that users adding scripts, as well as executing deployments that r
 
 ## See also
 
-* [Add a Custom Stage](/docs/platform/pipelines/add-a-stage#add-a-custom-stage)
+* [Add a Custom Stage](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage)
 * [Using Manual Harness Approval Stages](adding-harness-approval-stages.md)
 * [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/)
 

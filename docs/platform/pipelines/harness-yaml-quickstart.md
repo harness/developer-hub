@@ -21,13 +21,11 @@ Everything you can do in the Visual editor, you can also represent in YAML.
 
    ![](./static/harness-yaml-quickstart-21.png)
 
-You can use these helpful shortcuts when working in the YAML editor
+You can use the following shortcuts when working in the YAML editor.
 
 ### Autocomplete/suggestions
 
-The YAML editor has an autocomplete feature that makes it very easy to see what entries are available.
-
-Press `CTRL + Space` to display a list of suggestions based on your cursor location.
+Press `Cmd/Ctrl + Space` to enable autocomplete, which displays a list of suggestions based on your cursor location.
 
 On a blank line, suggestions include keys, such as `timeout`, `stage`, `step`, and so on.
 
@@ -41,7 +39,7 @@ When you enable suggestions for a key without a value, suggestions include possi
 
 ![](./static/harness-yaml-quickstart-32.png)
 
-If a key already has a value, no suggestions are shown. You must delete the value and then press `Ctrl + Space`.
+If a key already has a value, no suggestions are shown. You must delete the value and then press `Cmd/Ctrl + Space`.
 
 ### Find and replace
 
@@ -182,7 +180,7 @@ For details on each stage type and configuration, go to:
 * **Approval:** [Using Manual Harness Approval Stages](../approvals/adding-harness-approval-stages.md) and [Adding Jira Approval Stages and Steps](../approvals/adding-jira-approval-stages.md)
 * **Build:** [CI Build stage settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings)
 * **Deployment:** [CD tutorials](/tutorials/cd-pipelines)
-* **Custom:** [Add a custom stage](/docs/platform/pipelines/add-a-stage#add-a-custom-stage)
+* **Custom:** [Add a custom stage](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage)
 
 ![](./static/harness-yaml-quickstart-23.png)
 
@@ -239,7 +237,7 @@ The `stage.spec.infrastructure` options depend on the stage `type`.
 
 ![](./static/harness-yaml-quickstart-26.png)
 
-For example, the following `infrastructure` YAML describes the `environment` and `infrastructureDefinition` for a Deployment stage. This example uses a [Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) for a platform-agnostic direct connection to the target cluster. This example also uses `<+input>`, which represents [runtime inputs](../variables-and-expressions/runtime-inputs.md).
+For example, the following `infrastructure` YAML describes the `environment` and `infrastructureDefinition` for a Deployment stage. This example uses a [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) for a platform-agnostic direct connection to the target cluster. This example also uses `<+input>`, which represents [runtime inputs](../variables-and-expressions/runtime-inputs.md).
 
 ```yaml
                   infrastructure:
@@ -312,7 +310,7 @@ Here's an example of the step group structure:
 
 ### Conditional executions
 
-Use `when` to define [conditional execution settings](./w_pipeline-steps-reference/step-skip-condition-settings) for stages and steps.
+Use `when` to define [conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings) for stages and steps.
 
 You must indent `when` to the same depth as either `step.identifier` or `stage.identifier`.
 

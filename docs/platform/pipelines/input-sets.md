@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 
 With input sets and overlays, you can reuse a single pipeline for multiple scenarios. You can define each scenario in an input set or overlay, and then select the relevant input set or overlay at runtime.
 
-**Input sets are collections of runtime input values for a pipeline.** [Runtime inputs](../variables-and-expressions/runtime-inputs#runtime-inputs) provide placeholders with the expectation that you'll define those values at runtime.
+**Input sets are collections of runtime input values for a pipeline.** [Runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs.md#use-runtime-inputs) provide placeholders with the expectation that you'll define those values at runtime.
 
 Runtime inputs are useful for templatizing your pipelines, because runtime inputs can have different values each time the pipeline runs. For example, you can set all infrastructure settings to runtime input so that users provide relevant dev, QA, or prod values with each run. This way, users don't need to edit the actual pipeline, they just supply the necessary values for that run.
 
@@ -33,7 +33,7 @@ Overlays are groups of input sets, which enable you to pull runtime inputs from 
 
 ## Specify settings that use runtime input
 
-To be included in an input set, settings must be configured to [use runtime input](../variables-and-expressions/runtime-inputs#use-runtime-inputs). Settings that don't use runtime input can't be included in input sets. You can configure runtime input in either the Visual or YAML editors in the Pipeline Studio.
+To be included in an input set, settings must be configured to [use runtime input](/docs/platform/variables-and-expressions/runtime-inputs.md#use-runtime-inputs). Settings that don't use runtime input can't be included in input sets. You can configure runtime input in either the Visual or YAML editors in the Pipeline Studio.
 
 ```mdx-code-block
 <Tabs>
@@ -84,13 +84,11 @@ Almost any setting in a pipeline can use runtime input, including variables, art
 
    ![](./static/input-sets-05.png)
 
-:::tip
+### Create input sets at runtime
 
 When you run a pipeline that requires runtime input, you can select **Save as New Input Set** to quickly create an input set from your provided values.
 
 ![](./static/run-pipelines-using-input-sets-and-overlays-08.png)
-
-:::
 
 ### Create input sets in YAML
 
