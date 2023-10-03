@@ -38,7 +38,7 @@ The following deprecated API endpoints will no longer be supported:
 
    To add a filter domain to a notification channel, navigate to **Account Settings** > **Account Resources** > **Default Settings** > **Notifications** in the Harness platform and add the domain to the corresponding notification setting. Once a domain is added to a notification channel's domain allowlist, no notifications will be sent to recipients whose domains are not present in the allowlist for that channel. This applies to both existing and new recipients until their domain is added to the channel's domain allowlist. (PL-39481, ZD-43735)
 
-- The **Session Timeout** field in Authentication Settings is renamed **Session Inactivity Timeout**. (PL-39982, ZD-47238)
+- The **Session Timeout** field in Authentication Settings is renamed **Session Inactivity Timeout**. The field now automatically converts the minutes you enter to higher units of time, and displays the result under the field to simplify usage. For example, if you enter 1440, the UI shows **1 day** below the field. (PL-39982, ZD-47238)
 
 - Harness now returns a `Cannot send notification as notification channel is disabled from Account settings.` error in the test notification API when a channel is disabled. (PL-41449)
 
@@ -51,6 +51,8 @@ This release does not include early access features.
 ### Fixed issues
 
 - Delegate names in Harness NextGen and FirstGen couldn't have the same name. Delegates in Harness NextGen and FirstGen can now have the same name. (PL-41398, ZD-59565)
+
+   This item is available with Harness Platform version 809xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
  
 ### Hotfixes
 
@@ -84,6 +86,8 @@ This release does not include hotfixes.
 This release does not include early access features.
 
 ##### Fixed issues
+
+- OAuth sign-up emails were stored without being converted to lowercase. This caused duplicate emails in Harness with different cases. The issue was fixed by storing OAuth sign-up emails with lowercase. (PL-39331, ZD-47425)
 
 - The password field in the SMTP configuration wizard showed asterisks, which are typically used to mask passwords, even when the SMTP configuration did not use a password. This issue caused confusion about whether a password was in fact in use. (PL-41159)
 
