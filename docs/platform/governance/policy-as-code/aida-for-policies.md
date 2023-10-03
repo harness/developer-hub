@@ -1,12 +1,12 @@
 ---
-title: Build policies using Harness AIDA (coming soon!)
+title: Build policies using Harness AIDA
 description: Build Policies using Harness AIDA
 sidebar_position: 70
 ---
 
-:::info Important Notes
+:::info Coming soon
 
-Currently, AIDA for Policies is an alpha feature that is behind the feature flag `OPA_AIDA_WIDGET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, AIDA for Policies is an alpha feature behind the feature flag `OPA_AIDA_WIDGET` and is coming soon. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 Visit the following Harness Legal pages for legal information about AIDA:
 - [AIDA Terms](https://www.harness.io/legal/aida-terms)
