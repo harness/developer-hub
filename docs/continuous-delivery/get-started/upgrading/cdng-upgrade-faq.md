@@ -144,9 +144,8 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
     In FirstGen, variables use the `${...}` format. In NextGen, variables use the `<+...>` format. You must upgrade your references to the new format.
  
   - For details on NextGen variables, go to [Variables and expressions](/docs/category/variables-and-expressions).
-  - Video summary:
-    <!-- Video:
-https://www.loom.com/share/f5c344b4ad074da388397c0328c743b3?sid=02c8ec5d-cab1-48f8-a47d-c1a0df81eb25-->
+<!-- Video:
+https://www.loom.com/share/f5c344b4ad074da388397c0328c743b3?sid=02c8ec5d-cab1-48f8-a47d-c1a0df81eb25 -->
 <docvideo src="https://www.loom.com/share/f5c344b4ad074da388397c0328c743b3?sid=02c8ec5d-cab1-48f8-a47d-c1a0df81eb25" />
 
 - **Tag management**. Harness CD NextGen does not use tag management in the same way as Harness FirstGen.
