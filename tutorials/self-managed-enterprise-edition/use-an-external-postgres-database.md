@@ -9,7 +9,7 @@ Self-Managed Enterprise Edition requires you to install a database by default. Y
 
 The controller-worker replication setup described in this tutorial ensures data redundancy and fault tolerance, providing a robust and reliable environment to manage your PostgreSQL database.
 
-## Limitations
+## PostgreSQL VM limitations
 
 PostgreSQL VMs offer many advantages, but there are a few limitations to consider:
 
@@ -21,7 +21,7 @@ PostgreSQL VMs offer many advantages, but there are a few limitations to conside
 
 - Maintenance overhead: VMs require regular maintenance, including updates, backups, and monitoring, which adds overhead compared to a native PostgreSQL installation.
 
-## Hardware requirements
+## PostgreSQL hardware requirements
 
 Harness recommends a PostgreSQL three-member replica set configuration with the following minimum hardware:
 
@@ -30,7 +30,7 @@ Harness recommends a PostgreSQL three-member replica set configuration with the 
 - 24GB RAM (3*16 = 48GB RAM)
 - 300GB SSD data storage, depending on your requirements
 
-## Software requirements
+## PostgreSQL software requirements
 
 External database setup requires the following software:
 
@@ -40,7 +40,7 @@ External database setup requires the following software:
 
 - PostgreSQL supported version 14
 
-## Network requirements
+## PostgreSQL network requirements
 
 Ensure the following:
 
@@ -78,6 +78,10 @@ You can update the DNS record dynamically using a script or use the service disc
 If you installed PostgreSQL through a method other than the apt package manager maintained by Debian or Ubuntu archive, you may receive errors when following these instructions. Harness recommends that you uninstall existing PostgreSQL installations before you continue.
 :::
 
+import Strongpass from '/tutorials/shared/strong-passwords.md'
+
+<Strongpass />
+
 To set up a PostgreSQL VM, do the following:
 
 1. Connect to the VM and make sure you are running as root to prevent permission issues.
@@ -92,10 +96,10 @@ To set up a PostgreSQL VM, do the following:
    cd /home
    ```
 
-3. Add the PostgreSQL third-party repository to get the latest PostgreSQL packages.
+3. Running as root, add the PostgreSQL third-party repository to get the latest PostgreSQL packages.
 
    ```
-   sudo sh -c 'echo "deb Index of /pub/repos/apt/  $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+   sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
    ```
 
 4. Add the PostgreSQL third-party repository.
@@ -107,7 +111,7 @@ To set up a PostgreSQL VM, do the following:
 5. Update your local repository list.
 
    ```
-   sudo apt-get update
+   apt-get update
    ```
 
 6. Install PostgreSQL.
@@ -194,22 +198,17 @@ To configure replication, do the following:
    mkdir archive
    ```
 
-10. Add the following line to the bottom of your pg_hba.conf file.
+10. Add the following line to the bottom of your `pg_hba.conf` file.
 
     ```
-    host  replication reptest <External IP of Replica>/32  md5
+    host  replication reptest <REPLICA_EXTERNAL_ID>/32  md5
     ```
 
 11. Create a new user, `reptest`.
 
     ```
     psql
-    CREATE ROLE reptest WITH REPLICATION PASSWORD 'testpassword' LOGIN;
-    ```
-
-    ```
-    sudo su - postgres
-    run psql
+    CREATE ROLE reptest WITH REPLICATION PASSWORD '#Te$tp@ssw0rD#@' LOGIN;
     ```
 
 12. Create the first replication slot at the psql slot. You can use any name. This example uses `replica_1_slot`.
@@ -335,7 +334,7 @@ Follow the steps below to set up a Harness Self-Managed Enterprise Edition clust
         ## - provide the userKey within secret containing username
         userKey: "user"
         ## - provide the passwordKey to reference postgres password
-        passwordKey: "password"
+        passwordKey: "Te$tp@ssw0rD#@"
         ## - set additional arguments to connection string
         extraArgs: ""
    ```
@@ -345,19 +344,6 @@ Follow the steps below to set up a Harness Self-Managed Enterprise Edition clust
    ```
     helm install <release-name> harness/harness-prod -n <namespace> -f override-prod.yaml
    ```
-
-## Backup and restore
-
-Most cloud providers support data backup and restore strategies. For self-managed PostgreSQL clusters, you can use PostgreSQL dump and restore.
-
-```
-pg_dump -h <source_host> -U <source_username> -d <source_database> > /data/dump.sql
-```
-```
-psql -h <destination_host> -U <destination_username> -d <destination_database> < /data/dump.sql
-```
-
-You can also use storage backup or cluster backup with tools like Velero or similar third-party solutions for periodic cluster backup. Third-party solutions, including WAL-E, enable you to configure continuous PostgreSQL archiving.
 
 ## FAQs
 

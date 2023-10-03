@@ -1,4 +1,4 @@
-Harness Git Experience lets you store configurations for your resources like pipelines, input sets in Git. 
+Harness Git Experience allows you to store your resource configurations, such as pipelines and input sets, in Git.
 
 ### Supported Git providers​
 

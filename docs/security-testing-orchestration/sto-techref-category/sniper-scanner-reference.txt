@@ -1,11 +1,12 @@
 ---
-title: Sniper scanner reference
+title: Sniper scanner reference for STO
 description: Instance scans with Sniper
-sidebar_position: 280
+sidebar_label: Sniper scanner reference 
+sidebar_position: 370
 ---
 
 
-## Security step settings
+## Security step settings for Sniper scans in STO
 
 You can set up Sniper scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

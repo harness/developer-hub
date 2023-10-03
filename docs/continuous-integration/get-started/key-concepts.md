@@ -1,7 +1,7 @@
 ---
 title: Key concepts
 description: Basic terminology and concepts related to CI pipelines
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: 3amcd8hn53
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false
@@ -54,11 +54,11 @@ Harness CI includes an extensive Step Library for common CI tasks: building arti
 
 ## Tests
 
-In a CI pipeline, you can [run a variety of tests](../use-ci/set-up-test-intelligence/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests. To do this, you can use a [Run Tests step](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md#add-the-run-tests-step) or a [Run step](../use-ci/run-ci-scripts/run-step-settings.md). You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
+In a CI pipeline, you can [run a variety of tests](../use-ci/run-tests/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests. To do this, you can use a [Run Tests step](../use-ci/run-tests/set-up-test-intelligence#add-the-run-tests-step) or a [Run step](../use-ci/run-ci-scripts/run-step-settings.md). You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/run-tests/set-up-test-intelligence).
 
 ### Test Intelligence
 
-Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. For more information, go to [Enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
+Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. For more information, go to [Enable Test Intelligence](../use-ci/run-tests/set-up-test-intelligence).
 
 ## Plugins
 
@@ -68,7 +68,7 @@ Docker Plugins are Docker containers that perform predefined tasks and run in **
 
 For more information, go to [Use Plugins](/docs/category/use-plugins/), [Plugin step settings](../use-ci/use-drone-plugins/plugin-step-settings-reference.md), and [Run a Drone plugin in CI](../use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
 
-If you're using Harness Cloud build infrastructure, you can also use the [GitHub Action plugin step](../use-ci/use-drone-plugins/ci-github-action-step.md) and [Bitrise plugin step](../use-ci/use-drone-plugins/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
+If you're using Harness Cloud build infrastructure, you can also use the [GitHub Action step](../use-ci/use-drone-plugins/ci-github-action-step.md) and [Bitrise step](../use-ci/use-drone-plugins/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
 
 ## Dependencies and background services
 

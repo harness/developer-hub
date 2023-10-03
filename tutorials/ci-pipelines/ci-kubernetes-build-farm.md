@@ -17,6 +17,8 @@ title: Build on a Kubernetes cluster
   target="_self"
 />
 
+<DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
+
 This tutorial shows you how to create a two-stage Harness CI pipeline that uses a Kubernetes cluster build infrastructure. The pipeline builds and runs a unit test on a codebase, uploads the artifact to Docker Hub, and then runs integration tests. This tutorial uses publicly-available code, images, and your Github and Docker Hub accounts.
 
 :::info
@@ -209,7 +211,7 @@ Next, you need to define the build infrastructure. Harness offers several [build
 
 Now that the pipeline has a stage with a defined codebase and build infrastructure, you are ready to add steps to build the codebase, run unit tests, and push an artifact to Docker Hub. The first step will run unit tests and compile the codebase. The second step builds a container image and pushes it to a Docker Hub repo.
 
-To run unit tests in a CI pipeline, you can use either a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) or a [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/#add-the-run-tests-step). This tutorial uses a **Run** step. In addition to unit tests, the **Run** step can run any number of commands on a container image. **Run** steps are highly versatile and you'll use them often in your CI pipelines. While not used in this tutorial, with the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+To run unit tests in a CI pipeline, you can use either a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) or a [Run Tests step](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#add-the-run-tests-step). This tutorial uses a **Run** step. In addition to unit tests, the **Run** step can run any number of commands on a container image. **Run** steps are highly versatile and you'll use them often in your CI pipelines. While not used in this tutorial, with the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
 
 1. On the **Execution** tab for your Build stage, select **Add Step**, select **Add Step** again, and then select the **Run** step from the Step Library.
 2. For **Name**, enter `Run Unit Tests`.
@@ -240,9 +242,9 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 
 7. Under **Optional Configuration**, add a **Report Path** and enter `*.xml`.
 8. Select **Apply Changes** to save the step.
-9. Add a [Build and Push an Image to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) to your Build stage, and configure it as follows:
+9. Add a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) to your Build stage, and configure it as follows:
 
-   * **Name:** Enter a name, such as `Build and push image to Docker Registry`.
+   * **Name:** Enter a name, such as `Build and push to Docker`.
    * **Docker Connector:** Select the Docker Hub connector you created for the **Run** step.
    * **Docker Repository:** Enter your Docker Hub username and the destination repo name formatted as `[docker_username]/[repo_name]`. For example: `mydockerhub/ci_tutorial_repo`.
    * **Tags:** Add a tag and enter `<+pipeline.sequenceId>`.
@@ -304,7 +306,7 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
 2. For the **Pipeline Inputs**, select **Git branch** and enter the target branch in the code repo, such as `main`.
 3. Select **Run Pipeline**.
 
-On the [Build details page](/docs/continuous-integration/use-ci/viewing-builds) you can observe the pipeline while it runs. Select a stage to examine the steps in that stage. Select a step to view the step's logs. Select the **Tests** tab to [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests).
+On the [Build details page](/docs/continuous-integration/use-ci/viewing-builds) you can observe the pipeline while it runs. Select a stage to examine the steps in that stage. Select a step to view the step's logs. Select the **Tests** tab to [view test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests).
 
 ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-27.png)
 

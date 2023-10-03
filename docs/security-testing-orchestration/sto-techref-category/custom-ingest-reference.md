@@ -1,7 +1,8 @@
 ---
-title: Custom Ingest settings reference
-description: ingest JSON or SARIF data from external scanners.
-sidebar_position: 105
+title: Custom Ingest step reference for STO
+description: ingest JSON or SARIF data from external scanners
+sidebar_label: Custom Ingest step reference
+sidebar_position: 130
 ---
 
 The Custom Ingest step enables you to ingest results from any third-party scanner. Harness STO supports two generic data formats:
@@ -18,11 +19,9 @@ The Custom Ingest step is intended for scanners that have no supported integrati
 
 Hiding notes added when Step Palettes were first introducted, per Rajiv 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 -->
 

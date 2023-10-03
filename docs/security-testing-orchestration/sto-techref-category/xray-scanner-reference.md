@@ -1,7 +1,8 @@
 ---
-title: Jfrog Xray scanner reference
+title: Jfrog Xray scanner reference for STO
 description: Image scans with Jfrog Xray
-sidebar_position: 330
+sidebar_label: Jfrog Xray scanner reference
+sidebar_position: 420
 ---
 
 You can ingest scan results from JFrog Xray, a software composition analyis (SCA) solution that integrates with Artifactory and identifies vulnerabilities in open-source libraries and packages used in your code.
@@ -17,7 +18,7 @@ The standard workflow is to create a CI Build or Security Tests stage to your pi
 
 
 
-## Before you begin
+## Important notes for running Xray scans in STO
 
 :::info important notes
 
@@ -39,7 +40,7 @@ IF YOU WANT TO RUN XRAY SCANS USING CUSTOM CERTS, REFER TO https://jfrog.com/hel
 :::
 
 
-## Security step settings
+## Security step settings for Xray scans in STO
 
 You can add a Security step to a Security Tests or CI Build stage and then configure it as described below.
 

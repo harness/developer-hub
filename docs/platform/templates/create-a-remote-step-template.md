@@ -27,9 +27,11 @@ You'll learn how to: 
 
 ### Before you begin
 
-* Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md)
-* Go to [Templates overview](template.md)
-* Go to [CI pipeline tutorials](../../continuous-integration/get-started/tutorials.md)
+Review the following:
+
+* [Harness key concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md)
+* [Templates overview](template.md)
+* [CI tutorials](../../continuous-integration/get-started/tutorials.md)
 
 ### Permissions
 

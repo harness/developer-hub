@@ -183,7 +183,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Run tests
 
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 ```mdx-code-block
 <Tabs>
@@ -232,7 +232,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 ### Visualize test results
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
 
 ```yaml
                     reports:
@@ -241,6 +241,76 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                         paths:
                           - report.xml
 ```
+
+### Run tests with Test Intelligence
+
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) is available for Python; however, it is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) to run unit tests with Test Intelligence.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Harness Cloud" default>
+```
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Python Tests
+                  identifier: Run_Python_Tests
+                  spec:
+                    language: Python
+                    buildTool: Pytest
+                    args: "--junitxml=out_report.xml"
+                    runOnlySelectedTests: true
+                    preCommand: |
+                      python3 -m venv .venv
+                      . .venv/bin/activate
+
+                      python3 -m pip install -r requirements/test.txt
+                      python3 -m pip install -e .
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - out_report.xml*
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Self-Hosted">
+```
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Python Tests
+                  identifier: Run_Python_Tests
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: python:latest
+                    language: Python
+                    buildTool: Pytest
+                    args: "--junitxml=out_report.xml"
+                    runOnlySelectedTests: true
+                    preCommand: |
+                      python3 -m venv .venv
+                      . .venv/bin/activate
+
+                      python3 -m pip install -r requirements/test.txt
+                      python3 -m pip install -e .
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - out_report.xml*
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
 
 ## Specify version
 
@@ -251,9 +321,9 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 
 Python is pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-If your application requires a specific Python version, add a **Run** step to install it.
+If your application requires a specific Python version, add a **Run** or **GitHub Action** step to install it.
 
-Use the [setup-python](https://github.com/actions/setup-python) action in a [GitHub Actions step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/) to install the required Python version.
+Use the [setup-python](https://github.com/actions/setup-python) action in a [GitHub Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/) to install the required Python version.
 
 You will need a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token), stored as a [secret](/docs/platform/secrets/add-use-text-secrets), with read-only access for GitHub authentication.
 

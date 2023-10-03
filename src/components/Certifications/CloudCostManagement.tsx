@@ -49,7 +49,7 @@ export default function CloudCostManagement() {
   }, [searchKey]);
 
   return (
-    <div className={styles.certificationsCI}>
+    <div className={styles.certificationsCCM}>
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
@@ -60,8 +60,10 @@ export default function CloudCostManagement() {
           </div>
           <h1>Cloud Cost Management</h1>
           <div>
-          Save time, reduce effort, and save on your cloud bill with intelligent cloud cost automation.
-          Detect and stop cloud cost anomalies as they occur, to avoid unpleasant billing surprises with a FinOps approach.
+            Save time, reduce effort, and save on your cloud bill with
+            intelligent cloud cost automation. Detect and stop cloud cost
+            anomalies as they occur, to avoid unpleasant billing surprises with
+            a FinOps approach.
           </div>
         </div>
         <div className={styles.right}>
@@ -119,7 +121,8 @@ export default function CloudCostManagement() {
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness CCM Free/Team Plans
+                    <strong>Product version: </strong> Harness CCM Free/Team
+                    Plans
                   </span>
                 </div>
                 <div className={styles.right}>

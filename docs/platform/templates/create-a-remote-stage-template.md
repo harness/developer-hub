@@ -23,13 +23,15 @@ This topic walks you through the steps to create a remote stage template.​
 You will learn how to:
 
 * Create a remote stage template.
-* Define template parameters​​.
+* Define template parameters.
 
 ### Before you begin
 
-* Review [Harness Key Concepts​](../../first-gen/starthere-firstgen/harness-key-concepts.md)
-* Go to [Templates overview](template.md)
-* Go to [CI pipeline tutorials​](../../continuous-integration/get-started/tutorials.md)
+Review the following:
+
+* [Harness key concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md)
+* [Templates overview](template.md)
+* [CI tutorials](../../continuous-integration/get-started/tutorials.md)
 
 ### Permissions
 

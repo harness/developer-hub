@@ -198,7 +198,7 @@ For this reason, it's important that all your project members know the provision
 
 #### Secret Manager
 
-* Select a Harness [secrets manager](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview) to use for encrypting/decrypting and saving the Terragrunt plan file.
+* Select a Harness [secrets manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to use for encrypting/decrypting and saving the Terragrunt plan file.
 
 A Terragrunt plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terragrunt plan file as plain text.
 
@@ -776,6 +776,16 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+
+## Command line options
+
+:::note
+
+Currently, Terragrunt command line options are behind the feature flag `CDS_TERRAGRUNT_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+This setting allows you to set the Terragrunt CLI options for Terragrunt commands depending on the Terragrunt step type. For example: `-lock=false`, `-lock-timeout=0s`.
 
 ## YAML examples
 

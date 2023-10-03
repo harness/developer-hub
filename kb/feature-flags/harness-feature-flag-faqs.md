@@ -63,6 +63,14 @@ When the SDK performs authentication, it receives a JWT. By signing this JWT wit
 
 Yes, using a secret manager is a requirement when configuring the auth-secret. The secret manager ensures that sensitive information like the authentication secret is securely stored and managed. You can find detailed instructions on setting up a secret manager [here](/docs/feature-flags/relay-proxy/configuration/#auth)
 
+#### When using the jira integration and configuring it for the first time with the Harness Token I am getting the error `Harness API token is invalid` despite just creating the token?
+
+The token most likely needs the `Account Viewer` role across at the account level created
+
+#### I pay be credit card and my credit card has expired.  I've updated the card but am not getting the bill.  What could be the issue?
+
+You'll get the bill in your next billing date that can be seen in the billing portal (https://app.harness.io/ng/account/replaceWithYourAccountIDHere/settings/billing)
+
 #### If I have targets set and then do a percentage rollout on a feature flag, does the percentage include those already opted in, effectively stacking percentages?
 
 No, target-specific overrides take priority. The rollout percentage applies to users without target-specific overrides. If you have 100 targets and 5 have overrides, the pool for the rollout is 95. If you do a 10% rollout, it means 9 or 10 new targets (total 14 or 15). Actual numbers may vary due to weights, not exact percentages, as each target has a chance of getting true or false in a rollout.
@@ -98,3 +106,72 @@ In polling mode, the SDK periodically polls the server for configuration updates
 #### What happens during client-side SDK initialization?
 
 The SDK is initialized for a specific target, enabling personalized flag evaluations.
+
+#### We used to have complex rules with "OR" conditions in Optimizely for target groups. Does Harness support similar complex rules or just "OR" rules?
+
+```json
+[
+  "and",
+  [
+    "or",
+    [
+      "or",
+      {
+        "match_type": "exact",
+        "name": "name1",
+        "type": "custom_attribute",
+        "value": "123"
+      }
+    ],
+    [
+      "or",
+      {
+        "match_type": "exact",
+        "name": "name1",
+        "type": "custom_attribute",
+        "value": "1234"
+      }
+    ],
+    [
+      "or",
+      {
+        "match_type": "exact",
+        "name": "name1",
+        "type": "custom_attribute",
+        "value": "1235"
+      }
+    ],
+    [
+      "and",
+      {
+        "match_type": "exact",
+        "name": "name1",
+        "type": "custom_attribute",
+        "value": "1234"
+      },
+      {
+        "match_type": "exact",
+        "name": "name2",
+        "type": "custom_attribute",
+        "value": "321"
+      }
+    ]
+  ]
+]
+```
+
+Currently, Harness supports "OR" rules for defining target groups. However, if you require complex "AND" rules or more intricate rule combinations, you can achieve this by providing an additional attribute that combines the criteria you need. For example, you can create a new attribute that combines both the "name1" and "name2" fields to meet your specific conditions.
+
+If you find that your use case requires enhanced rule capabilities beyond what is currently available, we encourage you to open an Enhancement Request. Our Product team reviews these requests and works to enhance the platform based on user feedback and requirements, so your input can help shape future features and improvements.
+
+#### Can our development team generate and control Feature Flags (FF) solely through Git and the Harness pipeline? Is this possible with Harness Feature Flags, and do you have reference materials for it?
+
+Absolutely! Harness provides a seamless way to manage Feature Flags (FF) using Git through its Git Experience feature. Here's how it works:
+
+- **Git Experience with Feature Flags:** You can manage your Feature Flags directly from a YAML file in your Git repository. This approach allows you to leverage Git for FF management alongside the Harness Platform.
+
+- **Two-Way Synchronization:** With Git Experience enabled, any changes you make to FF on the Harness Platform will be committed to Git automatically. Similarly, any commits made in Git for FF will be reflected in the Harness Platform. This two-way synchronization ensures that you can work on FF entirely within Git, within the Harness Platform, or even both simultaneously. Your changes will be kept in sync across both platforms.
+
+For detailed instructions and reference, please check out our documentation on managing Feature Flags in Git repositories: [Manage Feature Flags in Git Repositories](https://developer.harness.io/docs/feature-flags/manage-featureflags-in-git-repos).
+
+Harness offers a powerful Git-based workflow for FF management, providing flexibility and control to development teams. If you have any further questions or need assistance, feel free to reach out to our Harness Support team for additional guidance.

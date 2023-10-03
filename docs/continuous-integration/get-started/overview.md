@@ -1,5 +1,5 @@
 ---
-title: Harness Continuous Integration (CI) Overview
+title: Harness Continuous Integration (CI) overview
 sidebar_label: Overview
 description: Harness CI simplifies the code development and testing process.
 sidebar_position: 1
@@ -64,7 +64,7 @@ If you want to try creating a pipeline for yourself, these tutorials walk throug
 * [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
 * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 
-For information about CI pipeline components, go to [CI pipeline basics](/docs/continuous-integration/get-started/key-concepts).
+For information about CI pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
 ## Features
 
@@ -105,9 +105,9 @@ Harness Test Intelligence (TI) helps your test cycle move faster without comprom
 
 Test Intelligence gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. Using TI doesn't require you to change build and test processes.
 
-To learn more about the Test Intelligence architecture, how it works, and how to enable it, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+To learn more about the Test Intelligence architecture, how it works, and how to enable it, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
 
-While Test Intelligence is only for unit tests, you can [run a variety of tests in your CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+While Test Intelligence is only for unit tests, you can [run a variety of tests in your CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 #### Time and cost savings with Test Intelligence
 

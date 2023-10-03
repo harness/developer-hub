@@ -240,16 +240,6 @@ export const CIList: CardItem[] = [
     link: "/tutorials/ci-pipelines/build/tfc-notification",
   },
   {
-    title: "Amazon ECR",
-    module: MODULES.ci,
-    description:
-      "Publish an Image to an Amazon Elastic Container Registry.",
-    link: "/tutorials/ci-pipelines/publish/amazon-ecr",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
     title: "Google GAR",
     module: MODULES.ci,
     description:

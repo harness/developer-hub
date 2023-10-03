@@ -73,6 +73,10 @@ You can update the DNS record dynamically using a script or use the service disc
 If you installed PostgreSQL through a method other than the apt package manager maintained by Debian or Ubuntu archive, you may receive errors when following these instructions. Harness recommends that you uninstall existing PostgreSQL installations before you continue.
 :::
 
+import Strongpass from '/tutorials/shared/strong-passwords.md'
+
+<Strongpass />
+
 To set up a TimescaleDB VM, do the following:
 
 1. Connect to the VM and make sure you are running as root to prevent permission issues.
@@ -172,7 +176,7 @@ To set up TimescaleDB extension on Debian-based systems, do the following:
 5. Set the password for the postgres user.
 
    ```
-   \password postgres
+   \password Te$tp@ssw0rD#@
    ```
 
 6. Exit PostgreSQL.
@@ -294,7 +298,7 @@ To configure replication, do the following:
    ```
    listen_addresses = '*'
    wal_level = replica
-   archive_command = 'test ! -f /var/lib/postgresql/14/main/archive/%f && cp %p /var/lib/postgresql/14/main/archive/%f'
+   archive_command = 'test ! -f /var/lib/postgresql/13/main/archive/%f && cp %p /var/lib/postgresql/13/main/archive/%f'
    archive_mode = on
    max_wal_senders = 2
    max_replication_slots = 4
@@ -322,7 +326,7 @@ To configure replication, do the following:
 12. Create a new user, `reptest`, and log in as Postgres.
 
     ```
-    CREATE ROLE reptest WITH REPLICATION PASSWORD 'testpassword' LOGIN;
+    CREATE ROLE reptest WITH REPLICATION PASSWORD 'testp@ssw0rd123' LOGIN;
     ```
 
     ```
@@ -393,7 +397,7 @@ To initiate replication, do the following:
 6. Run the following to check the logs and verify that the replica works. 
    
    ```
-   tail -f /var/lib/postgresql/postgresql-14-main.log
+   tail -f /var/log/postgresql/postgresql-13-main.log
    ```
 
    The output should be similar to the following.
@@ -440,7 +444,7 @@ Follow the steps below to set up a Harness Self-Managed Enterprise Edition clust
            - hostname.timescale.com:5432
          secretName: "tsdb-secret"
          userKey: "username"
-         passwordKey: "password"
+         passwordKey: "Te$tp@ssw0rD#@"
          sslEnabled: false
          certName: "tsdb-cert"
          certKey: "cert" 

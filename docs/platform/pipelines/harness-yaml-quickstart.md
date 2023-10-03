@@ -146,8 +146,8 @@ In `type`, you select the type of Stage you want to add. This is the same as cli
 For details on each type, see:
 
 * **Approval:** [Using Manual Harness Approval Stages](../approvals/adding-harness-approval-stages.md), [Adding Jira Approval Stages and Steps](../approvals/adding-jira-approval-stages.md)
-* **CI:** [CI Pipeline Quickstart](../../continuous-integration/get-started/tutorials.md)
-* **Deployment:** [CD Quickstarts](/tutorials/cd-pipelines)
+* **CI:** [CI tutorials](../../continuous-integration/get-started/tutorials.md)
+* **Deployment:** [CD tutorials](/tutorials/cd-pipelines)
 
 For this quickstart, we're going to use the **Deployment** type.
 

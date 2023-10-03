@@ -53,7 +53,7 @@ export const certifications: CardItem[] = [
       // numberOfCerts: 1,
     },
     {
-      title: "Continuous Integration - Architect (BETA COMING SOON)",
+      title: "Continuous Integration - Architect",
       module: MODULES.ci,
       type: certType.architect,
       description:
@@ -63,7 +63,7 @@ export const certifications: CardItem[] = [
       // numberOfCerts: 1,
     },
     {
-      title: "Feature Flags - Developer (BETA COMING SOON)", 
+      title: "Feature Flags - Developer (BETA)", 
       module: MODULES.ff,
       type: certType.developer,
       description:

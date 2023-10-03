@@ -56,3 +56,8 @@ Harness has default values for the parameters in Default Settings. You can chang
 
 When you change any default setting, you have the option to change it back to the default value for that scope, using the **Restore to Default** option.
 
+#### Module-specific settings
+
+To learn about a module's settings, go to the corresponding settings documentation:
+- [Pipeline settings](docs/platform/pipelines/w_pipeline-steps-reference/pipeline-settings.md)
+- [Notification settings](docs/platform/notifications/notification-settings.md)

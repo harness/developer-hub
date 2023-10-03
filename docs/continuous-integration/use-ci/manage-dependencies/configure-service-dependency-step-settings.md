@@ -1,7 +1,7 @@
 ---
 title: Configure Service Dependency step settings (Deprecated)
 description: A Service Dependency is a detached service that's accessible to all Steps in a Stage.
-sidebar_position: 40
+sidebar_position: 50
 helpdocs_topic_id: vo4sjbd09g
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

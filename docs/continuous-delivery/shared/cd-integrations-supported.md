@@ -502,7 +502,7 @@ Harness GitOps lets you perform GitOps deployments in Harness. You define the de
 
 GitOps supports the following:
 
-- Argo CD version supported: 2.7.8.
+- Argo CD version supported: 2.8.2.
 - Source Repositories:
   - All Git providers.
   - HTTP Helm repos.
@@ -765,4 +765,4 @@ All CD features supported in Harness SaaS are also supported in Self-Managed Ent
 - **GitOps:** The Harness GitOps Agent does not support custom certificates in Self-Managed Enterprise Edition.
 - **GitOps:** The Harness GitOps Agent does not yet support installing agents in specific cluster namespaces in Self-Managed Enterprise Edition.
 - **Policy as Code:** Harness Git Experience support for OPA policies is not supported in Self-Managed Enterprise Edition.
-- **Harness AI Development Assistant(AIDA):** To support AIDA in Self Managed Enterprise Edition running in an offline environment, you must whitelist https://harness.openai.azure.com
+- **Harness AI Development Assistant (AIDA):** To support AIDA in Self-Managed Enterprise Edition running in an offline environment, you must add `https://harness.openai.azure.com` to your allowlist.

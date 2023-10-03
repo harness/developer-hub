@@ -11,10 +11,8 @@ import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-t
 
 This topic describes container resource allocation logic, how you can configure resource limits, and troubleshooting for issues related to resource allocation.
 
-## Terminology
-
-* **Kubernetes container requests:** Containers are guaranteed to get requests. If a container requests a resource, Kubernetes only schedules it on a node that can give the container the requested resource.
-* **Kubernetes container limit:** This defines the upper limit for resource consumption by a Kubernetes container. When the container uses more than the defined limit, Kubernetes evicts the pod.
+* **What are Kubernetes container requests?** Containers are guaranteed to get requests. If a container requests a resource, Kubernetes only schedules it on a node that can give the container the requested resource.
+* **What are Kubernetes container limits?** This defines the upper limit for resource consumption by a Kubernetes container. When the container uses more than the defined limit, Kubernetes evicts the pod.
 
 For more information, go to the Kubernetes documentation on [Kubernetes best practices: Resource requests and limits](https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits).
 

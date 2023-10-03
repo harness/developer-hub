@@ -336,7 +336,7 @@ Any other Kubernetes permissions depends on what is in your manifests.
 [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) is documented by Kubernetes.
 
 :::note
-The exact API versions depends on the Kubernetes cluster version that evolves over time as entity types get promoted. For example, the [API for v1.20](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/).
+The exact API versions depends on the Kubernetes cluster version that evolves over time as entity types get promoted.
 :::
 
 ## Option: AWS EKS Support

@@ -2,7 +2,7 @@
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
 tags: [NextGen, "cet"]
-date: 2023-09-12T17:20
+date: 2023-09-29T17:20
 sidebar_position: 11
 ---
 ```mdx-code-block
@@ -22,21 +22,84 @@ Review the notes below for details about recent changes to Continuous Error Trac
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version ET-Service 5.26.1
+## Latest: versions ET-Service 5.27.1 and ET-Collector 5.27.0
 
 
 ### New features and enhancements
 
-- In the ARC screen, variables now display their values on hover. Additionally, when you select a variable, it is highlighted in the variables panel for easy identification. (CET-970)
-
-- CET now provides an audit trail feature for Agent Tokens and Critical Event definitions. You can view the audit trail for create, update, and delete operations, enhancing visibility and security in token management. (CET-1364)
+This release does not include new features and enhancements.
 
 
 ### Early access features
+
 This release does not include any early access features.
 
 
 ### Fixed issues
+
+- Previously, when the monitored service information was incorrect, the agent logs did not provide a clear error message. (CET-1533)
+  
+  This issue has been resolved. Now, the error message has been improved to indicate the monitored service details.
+
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+
+#### Version ET-Agent 5.6.0
+
+
+##### New features and enhancements
+
+This release does not include new features and enhancements.
+
+
+##### Early access features
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- The CET Agent was causing the app to not close properly in specific scenarios when events needed to be collected during shutdown. (CET-344)
+  
+  This issue has been resolved. Now, the CET Agent no longer interferes with the proper app shutdown process.
+
+- The CET Agent was experiencing degraded performance during application startup when used in conjunction with APM agents such as AppDynamics, New Relic, Datadog, and so on. (CET-1675)
+  
+  This issue has been resolved. The CET Agent's performance during application start-up is now optimized and no longer degrades when used with APM agents.
+
+- Applications with CET Agents installed experienced start-up delays. (CET-1738)
+  
+  This issue has been resolved by updating the predefined filters. Now, start-up delays have been substantially reduced.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### Version ET-Service 5.26.1
+
+
+##### New features and enhancements
+
+- On the ARC screen, variables now display their values on hover. Additionally, when you select a variable, it is highlighted in the variables panel for easy identification. (CET-970)
+
+- CET now provides an audit trail feature for Agent Tokens and Critical Event definitions. You can view the audit trail for create, update, and delete operations, enhancing visibility and security in token management. (CET-1364)
+
+
+##### Early access features
+This release does not include any early access features.
+
+
+##### Fixed issues
 
 - On the ARC screen, some variables were not displaying values. (CET-1122)
 
@@ -59,15 +122,9 @@ This release does not include any early access features.
   This issue has been resolved. Now, child events within a group are correctly displayed according to the selected filter criteria, ensuring accurate event list filtering.
 
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 
 #### August 30, 2023, Hotfix version ET-Service 5.25.10

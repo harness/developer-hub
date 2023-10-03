@@ -230,7 +230,7 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settin
 
 ### Visualize test results
 
-You can [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
+You can [view test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
 
 You can use [go-junit-report](https://github.com/jstemmer/go-junit-report) to output compatible JUnit XML reports.
 

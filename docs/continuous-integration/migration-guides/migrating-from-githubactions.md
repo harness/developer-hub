@@ -12,7 +12,7 @@ Harness does not require scripting, and configurations are passed to pipelines s
 
 Harness CI provides proprietary technologies, like Cache Intelligence and Test Intelligence, that make Harness CI [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools.
 
-* Harness [Test Intelligence (TI)](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With TI, it's possible to reduce build cycle times by up to 90% without compromising application quality.
+* Harness [Test Intelligence (TI)](../use-ci/run-tests/set-up-test-intelligence) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With TI, it's possible to reduce build cycle times by up to 90% without compromising application quality.
 * Harness [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md) is a proprietary technology that reduces pipeline execution time by automatically caching well-known directories for languages like Java and Node.js.
 
 Harness CI is part of The [Harness Platform](/docs/get-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
@@ -23,7 +23,7 @@ Harness CI is part of The [Harness Platform](/docs/get-started/harness-platform-
 
 ### GitHub Actions plugins
 
-Harness CI offers built-in support for GitHub Actions. You can use the [GitHub Action plugin step](../use-ci/use-drone-plugins/ci-github-action-step.md) in pipelines that use [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md). For other build infrastructures, you can use the [GitHub Actions Drone plugin in a Plugin step](../use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md).
+Harness CI offers built-in support for GitHub Actions. You can use the [GitHub Action step](../use-ci/use-drone-plugins/ci-github-action-step.md) in pipelines that use [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md). For other build infrastructures, you can use the [GitHub Actions Drone plugin in a Plugin step](../use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md).
 
 ### Other advantages
 
@@ -97,7 +97,7 @@ jobs:
 </Tabs>
 ```
 
-For more information about Harness terminology, features, and pipeline components, go to [CI pipeline basics](../get-started/key-concepts.md).
+For more information about Harness terminology, features, and pipeline components, go to the [CI key concepts](../get-started/key-concepts.md).
 
 Both Harness CI and GitHub Actions workflows are written in YAML. Whereas GitHub Actions workflow configurations are always stored in the `.github/workflows` directory in your code repo, Harness provides you a choice of inline pipeline storage or [importing pipelines from Git](/docs/platform/git-experience/import-a-pipeline/). Harness also provides both visual and code-based pipeline editors.
 

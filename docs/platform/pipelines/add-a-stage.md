@@ -29,6 +29,18 @@ This topic assumes you are familiar with [Harness' key concepts](../../get-start
    * You must provide a few initial settings to add a stage to a pipeline, and then you configure additional settings, such as **Infrastructure** or **Stage Variables** after adding the stage.
    * The available settings depend on the module and stage type. Go to your module's documentation for more information about that module's stage settings.
 
+     ![](./static/add-a-stage-types.png)
+
+   * You can create the following stage types:
+
+      * **Build:** Build, test, and push artifacts to repositories.
+      * **Deploy:** Deploy services, serverless functions, or other workloads.
+      * **Approval:** Approve or reject changes during pipeline progress.
+      * **Feature Flag:** Enable or disable functionality remotely without redeploying code.
+      * **Security Tests:** Scan code, artifacts, and infrastructure for security vulnerabilities.
+      * **Pipeline:** Run a pipeline as a stage in another pipeline.
+      * **Custom Stage:** Set up a stage configurable to your needs. 
+
 3. For certain modules (CI, CD, STO, etc.), in the **Execution** tab, add steps to the stage to define the tasks to perform in that stage. The available steps depend on the stage type.
 
 :::tip

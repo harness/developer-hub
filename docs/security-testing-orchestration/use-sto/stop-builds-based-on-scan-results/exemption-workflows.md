@@ -1,6 +1,7 @@
 ---
-title: Exemptions ("ignore rules") for specific issues
+title: Exemptions to override Fail on Severity thresholds for specific issues in STO
 description: You can specify exemptions (ignore rules) for specific security issues. An ignore rule allows pipeline builds to proceed even if a security scan detects an issue. 
+sidebar_label: Override the Fail on Severity threshold for specific issues
 sidebar_position: 60
 ---
 
@@ -10,7 +11,7 @@ The `fail_on_severity` setting causes a pipeline build to fail if a Security Sca
 Developers and SecOps users can request exemptions, but only SecOps users can approve them.
 ::: 
 
-## Before You Begin
+## Important notes for creating exemptions in STO
 
 This topic assumes that you have the following:
 
@@ -18,7 +19,7 @@ This topic assumes that you have the following:
 * The pipeline has a Security scan step with a configured `fail_on_severity` setting.
 * At least one successful build with a set of detected security issues.  
 
-## Request an exemption (_Developers or SecOps users_) 
+## Request an STO exemption (_Developers or SecOps users_) 
      
 1. Go to the Security Tests page for the build: In the Pipeline studio, click **Execution History** (top right) or **Pipeline Executions** (left menu). Then go to a successful build.  
 
@@ -65,7 +66,7 @@ This topic assumes that you have the following:
 3. Send a notification of your exemption request — via email, Slack, Jira, etc. — to your SecOps reviewer. Your notification should include the URL to the Security Tests page with the relevant issue selected.
 
 
-## Review, Approve, and Reject Exemptions (_SecOps users only_)
+## Review, approve, and reject STO exemptions (_SecOps users only_)
 
 An exemption, if approved, overrides the default behavior for running a pipeline build:
 
@@ -74,7 +75,7 @@ An exemption, if approved, overrides the default behavior for running a pipeline
 * Each security step should have a `fail_on_severity` setting. If the step detects any issue with the specified severity or higher, the build fails. 
 * Each exemption applies to one specific issue. The rule allows the pipeline to proceed even if the scan detects that issue.    
 
-### Review an exemption
+### Review an STO exemption
 
 1. You should receive a notification from a developer that includes a URL to the relevant issue. Go to the URL provided.
  
@@ -88,7 +89,7 @@ An exemption, if approved, overrides the default behavior for running a pipeline
 
   ![](../static/exemption-issue-details.png)  
           
-### Review all exemptions
+### Review all STO exemptions
 
 You can review all exemptions in the current project in the **Security Review** page. 
 

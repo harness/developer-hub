@@ -28,7 +28,7 @@ A Background step starts a service and then proceeds. For any later step that re
 
 * Background steps do not support failure strategies or output variables.
 * If the pipeline runs on a VM build infrastructure, you can run the background service directly on the VM rather than in a container. To do this, leave the **Container Registry** and **Image** fields blank.
-* Depending on the stage's build infrastructure, some settings may be unavailable, optional, or located under **Additional Configuration**.
+* Depending on the stage's build infrastructure, some settings might be unavailable, optional, or located under **Additional Configuration**.
 
 :::
 
@@ -254,9 +254,9 @@ Select this option to run the container with escalated privileges. This is the e
 
 ## Report Paths
 
-The path to the file(s) that store [results in JUnit XML format](../set-up-test-intelligence/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+The path to the files that store [results in JUnit XML format](../run-tests/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-This setting is required for commands run in the Background step to be able to [publish test results](../set-up-test-intelligence/viewing-tests.md).
+This setting is required for commands run in the Background step to be able to [publish test results](../run-tests/viewing-tests.md).
 
 ## Environment Variables
 

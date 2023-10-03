@@ -29,7 +29,7 @@ This tutorial helps you get started with Harness Continuous Delivery (CD). We wi
 
 Verify that you have the following:
 
-- **One or more Linux VM**. Use your own Linux VM or we recommend using [Vagrant](https://developer.hashicorp.com/vagrant/tutorials/get-started/getting-started-install) for starting a new VM instance.
+- **One or more Linux VM**. Use your own Linux VM or we recommend using [Vagrant](https://developer.hashicorp.com/vagrant/tutorials/getting-started/getting-started-install) for starting a new VM instance.
 - **SSH Private Key to authenticate to the remote vm/server**. For steps, go to [Passwordless SSH using public-private key pairs](https://www.redhat.com/sysadmin/passwordless-ssh).
 - **[Docker](https://docs.docker.com/engine/install/)** to set up and start _Docker Delegate_.
     - Check [delegate System and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
@@ -84,7 +84,7 @@ You can also follow the [Install Harness delegate on Kubernetes or Docker](/tuto
 <details open>
 <summary>What are Harness secrets?</summary>
 
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
 </details>
 
@@ -252,7 +252,7 @@ You've just learned how to use Harness CD to copy an artifact to your remote ser
 
 Verify that you have the following:
 
-- **A Windows VM**. Use your own Windows VM or we recommend using [Vagrant](https://developer.hashicorp.com/vagrant/tutorials/get-started/getting-started-install) for starting a new vm instance.
+- **A Windows VM**. Use your own Windows VM or we recommend using [Vagrant](https://developer.hashicorp.com/vagrant/tutorials/getting-started/getting-started-install) for starting a new vm instance.
 - **[Docker](https://docs.docker.com/engine/install/)** to set up and start _Docker Delegate_.
     - Check [delegate System and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
@@ -306,7 +306,7 @@ You can also follow the [Install Harness delegate on Kubernetes or Docker](/tuto
 <details open>
 <summary>What are Harness secrets?</summary>
 
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
 </details>
 

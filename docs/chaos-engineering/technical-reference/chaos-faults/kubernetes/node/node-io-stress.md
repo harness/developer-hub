@@ -56,7 +56,7 @@ Node IO stress causes I/O stress on the Kubernetes node.
       <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
         <td> Specify the size as a percentage of free space on the file system.</td>
-        <td> Default: 10 %. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-io-stress/#filesystem-utilization-percentage">file system utilization percentage.</a> </td>
+        <td> Default: 10 %. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-io-stress/#filesystem-utilization-percentage">file system utilization percentage.</a> </td>
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
