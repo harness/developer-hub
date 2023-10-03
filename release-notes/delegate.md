@@ -148,6 +148,12 @@ This release does not include any new early access features.
 
 ##### Hotfixes
 
+##### Version 23.09.80507
+
+- When escaping single quotes in environment variables, the same map was passed to subsequent command units which caused the escaped single quotes to escape again. (CDS-75775)
+
+   This issue has been resolved. Subsequent command units do not escape single quotes again.
+
 ##### Version 23.09.80506
 
 - API calls made to Git providers during deployments caused rate limit errors. (CDS-78950)
