@@ -79,9 +79,9 @@ The following steps show you how to install a GitOps Agent into an existing Argo
 <details>
 <summary>BYOA for Argo CD version v2.8.0 or higher </summary>
 
-### New BYOA Installation
+### New BYOA installation
 
-If your existing Argo CD installation has version v2.8.0 or higher, you will need to set `redis.compression` as **none** in the ConfigMap `argocd-cmd-params-cm`.
+If your existing Argo CD installation is version 2.8.0 or higher, set `redis.compression` to `none` in the ConfigMap `argocd-cmd-params-cm`:
 
 ```bash
 apiVersion: v1
@@ -96,9 +96,10 @@ metadata:
   namespace: your-argo-namespace
 ```
 
-### Upgrade Argo CD version for an Existing Installation
-If you are upgrading your Argo CD version in an existing BYOA installation, you will also need to set `redis.compression` as **none** in the ConfigMap `argocd-cmd-params-cm`.
-Additionally, you will need to edit the network policy `argocd-repo-server-network-policy` for your repo server component to allow communication with `argocd-applicationset-controller`.
+### Upgrade Argo CD version for an existing installation
+
+If you are upgrading your Argo CD version in an existing BYOA installation, set `redis.compression` to `none` in the ConfigMap `argocd-cmd-params-cm`.
+Additionally, edit the network policy `argocd-repo-server-network-policy` for your repo server component to allow communication with `argocd-applicationset-controller`:
 
 ```bash
 apiVersion: networking.k8s.io/v1
