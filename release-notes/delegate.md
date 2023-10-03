@@ -224,7 +224,7 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 ##### Hotfixes
 
-#### Version 80313
+##### Version 80313
 
 - There were several `OverlappingFileLockException` errors caused by the version of the Chronicle Queue library used. (CCM-14174)
 
