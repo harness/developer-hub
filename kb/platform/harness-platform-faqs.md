@@ -929,3 +929,39 @@ https://developer.harness.io/release-notes/delegate
 #### Why is automatic upgrade turned off for my delegate ?
 
 It could be it was disabled through `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>` or the cronjob was deleted or the cronjob never existed (the kubernetes audit logs can help you find out about that last part)
+
+#### Do we have documentation for correct list of harness that can whitelist for Google GCP?
+
+Yes, we do have, you can refer here [Documentation](https://developer.harness.io/docs/continuous-delivery/gitops/gitops-ref/gitops-allowlist/).
+
+#### Do we have a feature to route info/error diagnostics through harness network?
+
+Currently this feature is not live yet, Delegate sends info/error diagnostic logs directly to harness Stackdriver in google cloud. This traffic doesn’t go through harness network, but difrectly to google cloud network. There is an option to disable this if customer doesn’t want to send diagnostic logs at all. 
+
+#### Do we have a documentation for add and reference text secrets?
+
+Yes, we do have, you can refer here [Documentation](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier).
+
+#### What is the expression we can use if we want to use secret in script?
+
+If you want to use a secret in script then you’ll have to use expression: `<+secrets.getValue("account.mySecret")>`.
+
+#### The harness delegate config-watcher is causing heavy usage of disk space and causing alerts in prod nodes, how can we increase the watcher memory settings?
+
+they can overwrite the watcher memory setting via `WATCHER_JAVA_OPTS`,  if you want to increase the memory for watcher they can add the following in the delegate yaml env section `- name: WATCHER_JAVA_OPTS value: "-Xmx512M"`
+
+#### Can scope creation happen during delegate install?
+
+scope of delegate is decided by the scope of delegate token. You can refer the documentation here[Documentation](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-scope).
+
+#### Is it possible to increase the client side timeout when getting pods in K8s delegate?
+
+Yes, you can increase the step timeout.
+
+#### How can we enable the FF `DELEGATE_TASK_CAPACITY`?
+
+You can refer the documentation here [Documentation](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-task-capacity).
+
+#### Do we need to provide both `sso_group_id` and `sso_group_name` and should they match?
+
+Yes we need to provide both, The value provided for both `sso_group_id` and `sso_group_name`  should be same.
