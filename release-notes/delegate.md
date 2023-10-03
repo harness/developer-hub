@@ -34,7 +34,7 @@ Harness NextGen release 80811 includes the following changes for the Harness Del
 
 ### New features and enhancements
 
-- Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
+Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
 
    - `org.bouncycastle:bcpg-jdk15on:jar:1.70` to `org.bouncycastle:bcpg-jdk18on:jar:1.76`
    - `org.bouncycastle:bcpkix-jdk15on:jar:1.70` to `org.bouncycastle:bcpkix-jdk18on:jar:1.76`
@@ -99,7 +99,7 @@ This release does not include any new early access features.
 
 - Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) based on [delegate tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#delegate-tags), and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. (CI-8831, ZD-47647)
 
-- The execution logs from the initialise step showed SSH keys used in the environment for the Command step. (CDS-79144, ZD-50623)
+- The execution logs from the Initialize step showed SSH keys used in the environment for the Command step. (CDS-79144, ZD-50623)
   
   This issue has been fixed.
 
