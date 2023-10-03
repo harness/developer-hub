@@ -150,9 +150,9 @@ This release does not include any new early access features.
 
 ##### Version 23.09.80512
 
-- ShellScript WinRM deployments would not honor the configured timeout. For example, the step would time out by default in 30 minutes even when the configured timeout was 1 day. (CDS-78219)
+- ShellScript WinRM deployments would not honor the configured timeout. For example, the step would time out by default in 30 minutes, even when the configured timeout was set to one day. (CDS-78219, ZD-48180, ZD-49871)
 
-The issue has been resolved. Now, the WinRM session timeout will be set to the maximum of the step timeout configured and 30 minutes.
+The issue has been resolved. Now, the WinRM session timeout is set to the maximum of the step timeout configured plus 30 minutes.
 
 ##### Version 23.09.80507
 
