@@ -2984,7 +2984,7 @@ To add an artifact from Artifactory, do the following:
 2. In **Artifact Directory**, enter the path to the artifacts. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
 3. Select the method for specifying the artifacts you want to deploy:
    - **Artifact Directory** Specify a hard-coded path to the artifacts.
-   - **Artifact Filter** Use a regular expression to specify the path. Useful if you want to fetch multiple artifacts in different paths.
+   - **Artifact Filter** Use an expression to specify the path. Useful if you want to fetch multiple artifacts in different paths.
 3. Specify the artifacts you want to deploy.
  
    - If specifying via directory:
@@ -2992,12 +2992,12 @@ To add an artifact from Artifactory, do the following:
      2. Set **Artifact Details** to **Value** or **Regex**. 
      3. Specify the artifacts for the service.
         
-        You can use a regular expression to specify multiple artifacts. For example, suppose your service has a front end and a back end, and you store the latest artifacts in a `/latest` subfolder, like this:
+        You can use an expression to specify multiple artifacts. For example, suppose your service has a front end and a back end, and you store the latest artifacts in a `/latest` subfolder, like this:
             `/myService/latest/front-service.zip`
             `/myService/latest/back-service.zip`
         To fetch both artifacts, you can specify `/myService` for the artifact directory and `latest/*.zip` for the artifact path filter.
 
-   - If specifying via filter, enter a expression that matches the tag of the artifacts you want to fetch. The following expressions are supported:
+   - If specifying via filter, enter an expression that matches the tag of the artifacts you want to fetch. The following expressions are supported:
       - `*/*` : Fetch all artifacts from all directories including their sub-directories.
       - `*/*.zip` : Fetch all `.zip` artifacts from all directories, including sub-directories.
       - `*`: Fetch all artifacts in the root directory.
