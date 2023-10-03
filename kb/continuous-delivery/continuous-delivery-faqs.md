@@ -1289,7 +1289,7 @@ Yes, Harness Next-Gen supports SSH key-based authentication. When deploying to r
 Yes, you can incorporate SSH deployments into your deployment pipelines along with other strategies, such as container deployments or Helm Chart deployments, to support complex multi-tiered applications.
 
 #### Which versions of ArgoCd that the latest version of the GitOps agent support? 
-We currently support v2.7.8
+We currently support v2.8.2
  
 #### The GitOps agent updater, can you advise that this will update the agent, argocd and redis? Is this also true if use the option to bring our own ArgoCd?
  
