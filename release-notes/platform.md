@@ -34,9 +34,9 @@ The following deprecated API endpoints will no longer be supported:
 
 ### New features and enhancements
 
-- To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notifications at the account level. This feature enables you to specify the domains to which notifications can be sent.
+- To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. This feature enables you to specify fixed URL domains to which notifications can be sent. Expression URLs are not yet supported.
 
-   To add a filter domain to a notification channel, navigate to **Account Settings** > **Account Resources** > **Default Settings** > **Notifications** in the Harness platform and add the domain to the corresponding notification setting. Once a domain is added to a notification channel's domain allowlist, no notifications will be sent to recipients whose domains are not present in the allowlist for that channel. This applies to both existing and new recipients until their domain is added to the channel's domain allowlist. (PL-39481, ZD-43735)
+   To add a filter domain to a notification channel, navigate to **Account Settings** > **Account Resources** > **Default Settings** > **Notifications** in the Harness platform and add the fixed URL domain to the corresponding notification setting. Once a domain is added to a notification channel's domain allowlist, no notifications will be sent to recipients whose domains are not present in the allowlist for that channel. This applies to both existing and new recipients until their domain is added to the channel's domain allowlist. (PL-39481, ZD-43735)
 
 - The **Session Timeout** field in Authentication Settings is renamed **Session Inactivity Timeout**. The field now automatically converts the minutes you enter to higher units of time, and displays the result under the field to simplify usage. For example, if you enter 1440, the UI shows **1 day** below the field. (PL-39982, ZD-47238)
 
