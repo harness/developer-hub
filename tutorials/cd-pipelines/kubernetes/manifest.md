@@ -28,6 +28,16 @@ This tutorial will get you started with Harness Continuous Delivery (CD). We wil
 
 :::
 
+:::info
+
+Kubernetes is required to complete these steps. Run the following to check your system resources and (optionally) install a local cluster.
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/harness-community/scripts/main/delegate-preflight-checks/cluster-preflight-checks.sh)
+```
+
+:::
+
 ```mdx-code-block
 <Tabs queryString="pipeline">
 <TabItem value="gitops" label="GitOps Workflow">
