@@ -1,11 +1,13 @@
 ---
 title: Webhook triggers reference
 description: This topic provides settings information for triggers.
-# sidebar_position: 2
+sidebar_position: 9
 helpdocs_topic_id: rset0jry8q
 helpdocs_category_id: lussbhnyjt
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference
 ---
 
 This topic provides settings information for triggers. Triggers are used to initiate the execution of pipelines.
@@ -70,9 +72,9 @@ trigger:
 
 ### Trigger object metadata
 
-* **Name** and **Id**: Enter a name for the trigger. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the trigger is saved. Once saved, you can change the name but not the Id.
+* **Name** and **Id**: Enter a name for the trigger. Harness automatically assigns an **Id** ([Entity Identifier Reference](../references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the trigger is saved. Once saved, you can change the name but not the Id.
 * **Description**: Optional text string.
-* **Tags**: Go to the [Tags Reference](../../references/tags-reference.md).
+* **Tags**: Go to the [Tags Reference](../references/tags-reference.md).
 
 ### Payload Type
 
@@ -116,9 +118,9 @@ Select Git events and, if applicable, one or more actions that will initiate the
 | **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul> |
 | | Pull Request Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> Note that this event type is currently supported only for Bitbucket cloud, and not for Bitbucket on-premises triggers. |
 | | Push | Bitbucket Cloud push triggers respond to commit and tag creation actions by default. |
-| **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul><br/>This event type doesn't support the **Changed Files** [condition](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference#source-branch-target-branch-and-changed-files-conditions), because the Azure DevOps API doesn't provide a mechanism to fetch files in a PR. |
+| **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul><br/>This event type doesn't support the **Changed Files** [condition](#source-branch-target-branch-and-changed-files-conditions), because the Azure DevOps API doesn't provide a mechanism to fetch files in a PR. |
 | | Issue Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
-| | Push | Azure SCM push triggers respond to commit actions by default. This event type supports the **Changed Files** [condition](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference#source-branch-target-branch-and-changed-files-conditions). |
+| | Push | Azure SCM push triggers respond to commit actions by default. This event type supports the **Changed Files** [condition](#source-branch-target-branch-and-changed-files-conditions). |
 
 Harness uses your Harness account ID to map incoming events. Harness takes the incoming event and compares it to ALL triggers in the account. You can see the event ID that Harness mapped to a trigger in the webhook's event response body `data`, for example:
 
@@ -394,7 +396,7 @@ The JEXL `in` operator is not supported in the **JEXL Condition** field.
 
 ## Pipeline Input
 
-You can specify [runtime inputs](../run-pipelines-using-input-sets-and-overlays.md) for the trigger to use, such as Harness Service and artifact.
+You can specify [runtime inputs](../pipelines/input-sets) for the trigger to use, such as Harness Service and artifact.
 
 You can use [built-in Git payload expressions](#built-in-git-payload-expressions) and [JEXL expressions](#jexl-conditions) in this setting.
 

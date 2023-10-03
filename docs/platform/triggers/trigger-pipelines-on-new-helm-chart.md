@@ -134,7 +134,7 @@ Harness supports standard Java regex. For example, if Regex is enabled and the i
 
 ### Select Pipeline Inputs
 
-If your Pipeline uses [Runtime Inputs](../variables-and-expressions/runtime-inputs.md) or [Input Sets](../pipelines/input-sets.md), you can select the inputs to use when the Trigger executes the Pipeline.
+If your Pipeline uses [runtime inputs](../variables-and-expressions/runtime-inputs.md) or [input sets](../pipelines/input-sets.md), you can select the inputs to use when the Trigger executes the Pipeline.
 
 For example, here's an example where you select Runtime Inputs in the Trigger:
 

@@ -322,7 +322,7 @@ If your application requires a specific version of Go, add a **Run** step to ins
 <details>
 <summary>Install multiple versions of Go</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
         strategy:
@@ -379,7 +379,7 @@ Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag i
 <details>
 <summary>Build using multiple versions of Go</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
         strategy:

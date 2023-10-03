@@ -1,0 +1,11 @@
+{
+    "label":"Matrices, loops, and parallelism",
+    "position": 50,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Matrices, loops, and parallelism"
+    }
+ }

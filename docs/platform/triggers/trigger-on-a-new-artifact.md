@@ -409,7 +409,7 @@ You can use the following expressions:
 
 ### Select pipeline inputs
 
-If your pipeline uses [Input Sets](../pipelines/input-sets.md), you can select the input set to use when the trigger executes the pipeline.
+If your pipeline uses [input sets](../pipelines/input-sets.md), you can select the input set to use when the trigger executes the pipeline.
 
 ### Enable or disable trigger
 
@@ -432,5 +432,5 @@ Trigger artifact expressions used in a pipeline are resolved when you rerun a pi
 ### See also
 
 * [Schedule Pipelines using Triggers](schedule-pipelines-using-cron-triggers.md)
-* [Trigger Pipelines using Git Events](triggering-pipelines.md)
+* [Trigger pipelines using Git events](triggering-pipelines.md)
 

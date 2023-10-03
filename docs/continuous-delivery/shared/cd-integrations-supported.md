@@ -502,7 +502,7 @@ Harness GitOps lets you perform GitOps deployments in Harness. You define the de
 
 GitOps supports the following:
 
-- Argo CD version supported: 2.7.8.
+- Argo CD version supported: 2.8.2.
 - Source Repositories:
   - All Git providers.
   - HTTP Helm repos.
@@ -611,10 +611,10 @@ Harness also supports Terraform Cloud and Enterprise.
   - [Queue steps](/docs/continuous-delivery/manage-deployments/control-resource-usage-with-queue-steps)
   - [Deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze)
   - [Failure strategies](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-  - [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-  - [Looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+  - [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+  - [Looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
   - [Triggers](/docs/category/triggers)
-  - [Input set and overlays](/docs/platform/pipelines/input-sets/)
+  - [Input set and overlays](/docs/platform/pipelines/input-sets)
 - **Utilities:**
   - [Run a Docker container in a CD stage](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step)
   - [Using HTTP requests in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step)
@@ -759,7 +759,7 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
 All CD features supported in Harness SaaS are also supported in Self-Managed Enterprise Edition with the following exceptions:
 
 - **Dashboards:** Harness [CD Dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments) might not be completely functional with a bundled [Timescale community edition](https://docs.timescale.com/about/latest/timescaledb-editions/) version installation.
-- **Triggers:** The feature flag `CD_GIT_WEBHOOK_POLLING` must be enabled for Github polling with two factor authentication. For more information, go to [Polling frequency](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#polling-frequency).
+- **Triggers:** The feature flag `CD_GIT_WEBHOOK_POLLING` must be enabled for Github polling with two factor authentication. For more information, go to [Polling frequency](https://developer.harness.io/docs/platform/triggers/triggers-reference/#polling-frequency).
 - **ServiceNow:** ServiceNow versions [Utah](https://www.servicenow.com/now-platform/latest-release.html) and earlier are supported.
 - **Jira:** Jira on-premise versions < 9.0 are supported. To support Jira on-premise >= 9.0, the feature flag `SPG_USE_NEW_METADATA` must be enabled.
 - **GitOps:** The Harness GitOps Agent does not support custom certificates in Self-Managed Enterprise Edition.

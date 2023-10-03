@@ -1,7 +1,7 @@
 ---
 title: Connect to IBM cloud container registry
 description: This topic explains how to set up the Docker Connector that uses IBM Registry.
-# sidebar_position: 2
+sidebar_position: 5
 helpdocs_topic_id: fjwm9xs5qv
 helpdocs_category_id: o1zhrfo8n5
 helpdocs_is_private: false
