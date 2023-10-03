@@ -30,6 +30,10 @@ Make sure to meet the MinIO prerequisites before you set up self-managed object 
 - 1GB/s minimum network bandwidth
 - Ubuntu 20.04 LTS operating system
 
+import Strongpass from '/tutorials/shared/strong-passwords.md'
+
+<Strongpass />
+
 ### Create an Nginx LoadBalancer VM
 
 To set up MinIO, you must first create a VM for the Nginx LoadBalancer with the above hardware requirements.
@@ -245,7 +249,7 @@ To configure your MinIO servers, do the following:
    # Use a long, random, unique string that meets your organizations
    # requirements for passwords.
    
-   MINIO_ROOT_PASSWORD=password
+   MINIO_ROOT_PASSWORD=Te$tp@ssw0rD#@
    
    # Set to the URL of the load balancer for the MinIO deployment
    # This value *must* match across all MinIO servers. If you do

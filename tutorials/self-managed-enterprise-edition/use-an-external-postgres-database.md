@@ -78,6 +78,10 @@ You can update the DNS record dynamically using a script or use the service disc
 If you installed PostgreSQL through a method other than the apt package manager maintained by Debian or Ubuntu archive, you may receive errors when following these instructions. Harness recommends that you uninstall existing PostgreSQL installations before you continue.
 :::
 
+import Strongpass from '/tutorials/shared/strong-passwords.md'
+
+<Strongpass />
+
 To set up a PostgreSQL VM, do the following:
 
 1. Connect to the VM and make sure you are running as root to prevent permission issues.
@@ -204,7 +208,7 @@ To configure replication, do the following:
 
     ```
     psql
-    CREATE ROLE reptest WITH REPLICATION PASSWORD 'testpassword' LOGIN;
+    CREATE ROLE reptest WITH REPLICATION PASSWORD '#Te$tp@ssw0rD#@' LOGIN;
     ```
 
 12. Create the first replication slot at the psql slot. You can use any name. This example uses `replica_1_slot`.
@@ -330,7 +334,7 @@ Follow the steps below to set up a Harness Self-Managed Enterprise Edition clust
         ## - provide the userKey within secret containing username
         userKey: "user"
         ## - provide the passwordKey to reference postgres password
-        passwordKey: "password"
+        passwordKey: "Te$tp@ssw0rD#@"
         ## - set additional arguments to connection string
         extraArgs: ""
    ```
