@@ -144,6 +144,10 @@ This release does not include any new early access features.
 
 ##### Hotfixes
 
+##### Version 23.09.80507
+
+- Previously while escaping single quotes in envVariables same map was passed to subsequent command units which caused escaped single quotes to escape again, now subsequent command units will not escape single quotes again.
+
 ##### Version 23.09.80506
 
 - API calls made to Git providers during deployments caused rate limit errors. (CDS-78950)
@@ -219,9 +223,6 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
    This issue is fixed. The `publishedDelegateVersion` API now requires only view permission.
 
 ##### Hotfixes
-
-#### Version 80314
-- Previously while escaping single quotes in envVariables same map was passed to subsequent command units which caused escaped single quotes to escape again, now subsequent command units will not escape single quotes again.
 
 #### Version 80313
 
