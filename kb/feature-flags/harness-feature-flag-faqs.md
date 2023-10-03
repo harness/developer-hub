@@ -63,6 +63,14 @@ When the SDK performs authentication, it receives a JWT. By signing this JWT wit
 
 Yes, using a secret manager is a requirement when configuring the auth-secret. The secret manager ensures that sensitive information like the authentication secret is securely stored and managed. You can find detailed instructions on setting up a secret manager [here](/docs/feature-flags/relay-proxy/configuration/#auth)
 
+#### When using the jira integration and configuring it for the first time with the Harness Token I am getting the error `Harness API token is invalid` despite just creating the token?
+
+The token most likely needs the `Account Viewer` role across at the account level created
+
+#### I pay be credit card and my credit card has expired.  I've updated the card but am not getting the bill.  What could be the issue?
+
+You'll get the bill in your next billing date that can be seen in the billing portal (https://app.harness.io/ng/account/replaceWithYourAccountIDHere/settings/billing)
+
 #### If I have targets set and then do a percentage rollout on a feature flag, does the percentage include those already opted in, effectively stacking percentages?
 
 No, target-specific overrides take priority. The rollout percentage applies to users without target-specific overrides. If you have 100 targets and 5 have overrides, the pool for the rollout is 95. If you do a 10% rollout, it means 9 or 10 new targets (total 14 or 15). Actual numbers may vary due to weights, not exact percentages, as each target has a chance of getting true or false in a rollout.
