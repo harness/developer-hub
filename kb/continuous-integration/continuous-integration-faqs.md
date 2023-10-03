@@ -116,6 +116,22 @@ Yes, The user can update the kaniko image as suggested in this [doc](/docs/conti
 
 The problem here is that none of the 'codebase' variables are being populated when push triggers fires. The solution is to populate the 'codebase' variables to clone the codebase. 
 
+#### I'm getting Error: ErrImagePull.  What does it mean?
+
+It could mean the image is not available at the repository it's being pulled from or networking issues 
+
+#### I'm seeing `Failed to pull image "artifactory.yourDomainNameGoesHere.com/harness/ci-addon:1.16.22": rpc error: code = Unknown desc = Error response from daemon: unknown: Not Found`.  What does this mean?
+
+It means the harness internal image `ci-addon:1.16.22` is not present in your artifact repository and you are using the id harnessImage for the connector for your artifact respository in harness.  This id can be used for your images as well but is reserved for harness images.  You can proxy and pull the images to your own repository
+https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#ci-images-list or the harnessImage connector can be referenced to use https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials
+```
+https://app.harness.io/registry
+```
+
+#### Despite the freeze window I've set the CI Stage still went through.  What gives?
+
+Freeze windows only apply to CD stages (https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#freeze-windows-only-apply-to-cd-stages)
+
 #### Does Kaniko build use images cached locally on the node?
 
 By default Kaniko does not use the node cache. it performs a full container image build from scratch, so it will always pull the base image. If we want to use cache then specify `Remote Cache Repository` option in the build step. If not specified it will always be executed with caching disabled
