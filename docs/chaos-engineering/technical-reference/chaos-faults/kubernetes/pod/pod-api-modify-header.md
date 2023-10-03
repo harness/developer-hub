@@ -67,6 +67,16 @@ Pod API modify header:
         <td> Default: `both`. For more information, go to <a href="#advanced-fault-tunables">data direction </a>.</td>
       </tr>
       <tr>
+        <td> DESTINATION_PORTS </td>
+        <td> comma-seperated list of the destination service or host ports for which `egress` traffic should be affected </td>
+        <td> Default: 80,8443. For more information, go to <a href="#destination-ports">destination ports</a></td>
+      </tr>
+      <tr>
+        <td> HTTPS_ENABLED </td>
+        <td> facilitate HTTPS support for both incoming and outgoing traffic </td>
+        <td> Default: false. For more information, go to <a href="#https-enabled">https enabled</a></td>
+      </tr>
+      <tr>
         <td> NETWORK_INTERFACE </td>
         <td> Network interface used for the proxy.</td>
         <td> Default: `eth0`. For more information, go to <a href="#advanced-fault-tunables">network interface </a>.</td>
