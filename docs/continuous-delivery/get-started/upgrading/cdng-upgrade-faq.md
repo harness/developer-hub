@@ -1,6 +1,6 @@
 ---
 title: Harness CD upgrading FAQ
-description: Answers to common upgrade questions.
+description: Answers to common CD upgrade questions.
 sidebar_position: 1
 ---
 
