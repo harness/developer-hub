@@ -96,10 +96,13 @@ metadata:
   namespace: your-argo-namespace
 ```
 
+After making this change, restart your `argocd-application-controller` and `argocd-repo-server` pods. Once this is done, you may continue to install the Harness GitOps Agent using the steps mentioned earlier.
+
 ### Upgrade Argo CD version for an existing installation
 
 If you are upgrading your Argo CD version in an existing BYOA installation, set `redis.compression` to `none` in the ConfigMap `argocd-cmd-params-cm`.
 Additionally, edit the network policy `argocd-repo-server-network-policy` for your repo server component to allow communication with `argocd-applicationset-controller`:
+
 
 ```bash
 apiVersion: networking.k8s.io/v1
