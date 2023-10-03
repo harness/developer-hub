@@ -820,3 +820,25 @@ This `CDS_OrgAccountLevelServiceEnvEnvGroup` FF is required to have Services and
 #### Why we do not see Dashboards in an SMP Installation?
 
 Dashboard is a licensed functionality. To enable it you need to get a license.
+
+#### How are Harness secrets tied to connectors. 
+
+Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
+
+
+#### How to avoid pulling Harness delegate images from a public repo?
+
+You can add special Harness Container Image Registry connector to your Harness account. With this connector, the Delegate pulls these images from the Harness Container Image Registry only. 
+
+See link for more details [https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/]
+
+
+#### Does Harness Support Google cloud functions 1st Gen and 2nd Gen?
+Yes, Harness supports both 1st gen and 2nd gen. 
+
+See: [https://developer.harness.io/docs/faqs/continuous-delivery-faqs/#google-cloud-functions]
+
+#### How can I use Harness CD with Google Cloud Functions?
+Harness CD pipelines help you to orchestrate and automate your Google Cloud Function deployments and push updated functions to Google Cloud.
+
+See: [https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func/]
