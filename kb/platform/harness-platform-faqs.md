@@ -834,15 +834,98 @@ Customers should be mindful of the fact that connectors are often tied to a secr
 
 You can add special Harness Container Image Registry connector to your Harness account. With this connector, the Delegate pulls these images from the Harness Container Image Registry only. 
 
-See link for more details [https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/]
+See link for more details (https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
 
 
 #### Does Harness Support Google cloud functions 1st Gen and 2nd Gen?
 Yes, Harness supports both 1st gen and 2nd gen. 
 
-See: [https://developer.harness.io/docs/faqs/continuous-delivery-faqs/#google-cloud-functions]
+See: (https://developer.harness.io/docs/faqs/continuous-delivery-faqs/#google-cloud-functions)
 
 #### How can I use Harness CD with Google Cloud Functions?
 Harness CD pipelines help you to orchestrate and automate your Google Cloud Function deployments and push updated functions to Google Cloud.
 
-See: [https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func/]
+See: (https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func/)
+
+#### I'm getting the error Unsupported block type with the Run on Remote Workspace (https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/#run-on-remote-workspace)
+
+It might be due to the configuration.  Try this instead for the terraform config file:
+```
+terraform {
+  backend "remote" {
+    hostname     = "http://app.terraform.io "
+    organization = "your-organization"
+    workspaces {
+      name = "your-workspace"
+    }
+  }
+}
+```
+
+#### What are delegate rings?
+
+Harness uses the ring methodology commonly used in software release management for delegate releases.  There are 4 rings and to mimimize impact should issues occur on new delegate releases each Harness account is designated a specific ring which correlates to the latest delegate version for that account.
+
+#### I have automatic upgrade on in my delegate.  Why is my delegate version behind what's listed as the latest version in dockerhub (https://hub.docker.com/r/harness/delegate/tags)?
+
+Harness uses the ring methodology commonly used in software release management for delegate releases.  The version for your account could be overriden to use the latest in Dockerhub using the API: https://apidocs.harness.io/tag/Delegate-Setup-Resource#operation/overrideDelegateImageTag
+
+#### The reset password link keeps sending me back to the login page. What gives?
+
+In the account password authentication might be disabled with another auth enabled such as Active Directory.  Reach out to your Active Directory Administrator in that case to reset
+
+#### How can I restore deleted projects and pipelines ?
+
+Unfortunately, we don't soft delete entities and hard delete them.  Therefore there is no easy way to restore.  Some entities can be restored using YAML from the audit trail.
+
+#### We don't have certain projects but the harness terraform modules continue to read them in. We want to remove these unwanted data if exist in harness. Please assist on it ?
+
+Potentially they could still be in the state file if changes were made outside of the it.  Inspect your state file
+
+#### I am getting an error as follows `Error Summary Invalid request: At least 1 valid user group is required in [Approval]`. What is that I am doing wrong here?
+
+The variable being passed for the Approvers > User Groups is potentially invalid or at the wrong scope
+
+#### Can I use the delegate image from my immutable delegate and replace it in the YAML for the statefulset from the legacy delegate ?
+
+This is not supported.  The immutable delegate image should be run with delegate yaml generated from the UI which will generate a deployment if immutable delegate is enabled for the account https://apidocs.harness.io/tag/Accounts#operation/isImmutableDelegateEnabled
+
+Here is an example manifest file for NextGen:
+https://developer.harness.io/docs/platform/delegates/install-delegates/overview/#example-manifest-file
+
+#### When creating a connector via the API (https://apidocs.harness.io/tag/Connectors#operation/createConnector)
+We receive the following error
+`requests.exceptions.HTTPError: 400 Client Error: Bad Request for url https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=<ACCOUNT_IDENTIFIER>?`
+
+This could be due to using invalid characters in the name such as `()`
+
+#### Is TLS 1.3 supported ?
+
+Both the Harness Delegate & SaaS support TLS 1.3 and in fact this is the default TLS version.  Technically however each specific task implementation can create it’s own separate HTTP client that advertises whatever TLS version they choose and the connector check is using task specific HTTP client and not delegate's HTTP client. There are some tasks that are preferring TLSv1.2 in some use cases (possibly due to legacy reasons). Note that this may change in the future and full TLS 1.3 support can eventually be rolled out but as of yet there are some specific connectors that prefer TLS 1.2.
+
+#### Is there a tool to migrate from FirstGen to NextGen ?
+
+Yes.  You can use https://harness.github.io/migrator/
+
+#### Is there a timeline of when I need to upgrade to NextGen by from FirstGen?
+
+Yes.  It's outlined here in the documentation https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/#timeline
+
+#### Where can I find the source code to the Harness Delegate ?
+
+Here is the link to the source code for the delegate:
+https://github.com/harness/harness-core/tree/develop/260-delegate
+
+#### Where can I find the source of the helm chart for the delegate ? 
+
+Here is the source of the helm chart for the delegate:
+https://app.harness.io/storage/harness-download/delegate-helm-chart/
+
+#### Where can I find the release notes for the delegate ?
+
+These would be the release notes for the delegate:
+https://developer.harness.io/release-notes/delegate
+
+#### Why is automatic upgrade turned off for my delegate ?
+
+It could be it was disabled through `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>` or the cronjob was deleted or the cronjob never existed (the kubernetes audit logs can help you find out about that last part)
