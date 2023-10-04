@@ -1,86 +1,100 @@
 ---
 title: Input sets and overlays
-description: Input Sets are collections of runtime variables and values. Overlays are groups of Input Sets.
+description: With input sets and overlays, you can reuse a single pipeline for multiple scenarios.
 sidebar_position: 5
 helpdocs_topic_id: 3fqwa8et3d
 helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/pipelines/run-pipelines-using-input-sets-and-overlays
 ---
 
-Harness Input Sets are collections of runtime inputs for a Pipeline provided before execution.
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-All Pipeline settings can be set as runtime inputs in Pipeline Studio **Visual** and **YAML** editors:
+With input sets and overlays, you can reuse a single pipeline for multiple scenarios. You can define each scenario in an input set or overlay, and then select the relevant input set or overlay at runtime.
 
-| ![](./static/InputsetsOverlays1.png) | ![](./static/InputsetsOverlays2.png) |
-| ------------------------------------ | ------------------------------------ |
+**Input sets are collections of runtime input values for a pipeline.** [Runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs.md#use-runtime-inputs) provide placeholders with the expectation that you'll define those values at runtime.
+
+Runtime inputs are useful for templatizing your pipelines, because runtime inputs can have different values each time the pipeline runs. For example, you can set all infrastructure settings to runtime input so that users provide relevant dev, QA, or prod values with each run. This way, users don't need to edit the actual pipeline, they just supply the necessary values for that run.
+
+**Input sets make it even easier to templatize with runtime inputs.** Input sets contain preconfigured values for any settings in the pipeline that use runtime input. Instead of manually entering a value for each runtime input, you select the input set that contains the relevant values. You can create input sets for different pipeline use cases, and then select the relevant input set at runtime. When other users run the same pipeline, they can select the input set that corresponds with their use case.
+
+:::tip
+
+Input sets reduce the chance of errors in runtime input by eliminating the need to manually populate each runtime input value.
+
+:::
+
+Overlays are groups of input sets, which enable you to pull runtime inputs from multiple input sets.
+
+## Specify settings that use runtime input
+
+To be included in an input set, settings must be configured to [use runtime input](/docs/platform/variables-and-expressions/runtime-inputs.md#use-runtime-inputs). Settings that don't use runtime input can't be included in input sets. You can configure runtime input in either the Visual or YAML editors in the Pipeline Studio.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual editor">
+```
+
+In the Pipeline Studio's Visual Editor, you can use the **Value type selector** to select **Runtime Input**.
+
+![](./static/InputsetsOverlays1.png)
+
+In free-text fields, you can directly enter `<+input>` to specify runtime input without changing the value type.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML editor" default>
+```
+
+When writing pipelines in YAML, enter `<+input>` for a setting's value to indicate runtime input.
+
+```yaml
+              - step:
+                  identifier: Run_1
+                  type: Run
+                  name: Run_1
+                  spec:
+                    shell: <+input>
+                    command: <+input>
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+Almost any setting in a pipeline can use runtime input, including variables, artifacts, connectors, environments, infrastructures, services, secrets, step settings, looping strategies, and more.
 
 
-An Input Set includes all the runtime inputs that are not permanent in the Pipeline. Runtime inputs contain the values that you would be prompted to provide when you executed the Pipeline.
+## Create input sets
 
-Overlays are groups of Input Sets. Overlays enable you to provide several Input Sets when executing a Pipeline.
+1. In the Pipeline Studio header, select **Input Sets**.
+2. Select **New Input Set**.
+3. Enter a **Name** for the input set. **Description** and **Tags** are optional.
+4. Enter values for the [settings that use runtime input](#specify-settings-that-use-runtime-input), and then select **Save**.
 
-With Input Sets and Overlays, you can make a single Pipeline template that can be used for multiple scenarios. Each scenario can be defined in an Input Set or Overlay and simply selected at runtime.
+   If a setting doesn't use runtime input (`<+input>`), you can't define a value for it in an input set.
 
-Looking for the How-to? See [Run Pipelines using Input Sets and Overlays](run-pipelines-using-input-sets-and-overlays.md).
+   You don't have to provide a value for every setting. For example, you can leave some settings as manul runtime input. Or you can create multiple input sets that populate different values, which you can then combine into [overlays](#create-overlays).
 
-### Input Sets Overview
+   ![](./static/input-sets-05.png)
 
-Nearly every setting in a Pipeline can be configured as a runtime input. You can then create an Input Set from those inputs.
+### Create input sets at runtime
 
-![](./static/input-sets-05.png)
+When you run a pipeline that requires runtime input, you can select **Save as New Input Set** to quickly create an input set from your provided values.
 
-Here are some Input Set examples:
+![](./static/run-pipelines-using-input-sets-and-overlays-08.png)
 
-* Values of fields and variables
-* Artifacts
-* Connectors
-* Environments
-* Infrastructures
-* Services
-* Secrets
-* Stage variables
-* Step settings
+### Create input sets in YAML
 
-Input sets group the values of these entities and make it easy provide the correct set of values for a single Pipeline execution, and reuse the same values for the executions of multiple Pipelines.
+You can use the YAML editor to write input sets. When creating an input set, select **YAML** to switch to the YAML editor.
 
-### Overlays Overview
-
-You can add several Input Sets as an Overlay. Overlays are use when:
-
-* The Pipeline is used for multiple Services.
-* The Services have some configurations in common, but some have differences. For example:
-	+ Same configuration but using different runtime variables.
-	+ Same artifact stream.
-
-In this use case, you can then create different Input Sets:
-
-* 1 Input Set for the common configuration: this set is used for every Pipeline execution regardless of the Service selected in the Pipeline.
-* 1 Input Set for each Service with a specific configuration.
-* 1 Input Set for a unique execution. For example, if it contains a specific build number.
-
-For a specific execution, you provide multiple Input Sets. All together, these Input Sets provide a complete list of values needed for Pipeline execution.
-
-#### Input Set Order in Overlays
-
-You can order the Input Sets you add to an Overlay to give priority to certain Input Sets.
-
-Each Input Set in an Overlay can overwrite the settings of previous Input Sets in the order. 
-
-### Using Input Sets for Pipeline Execution
-
-Before running a Pipeline, you can select one or more Input Sets and apply them to the Pipeline. As a result, Harness will do the following operations:
-
-* Apply the Input Set(s) on the Pipeline. If you are using an Overlay, the application it performed in the same as the Input Sets in the Overlay to ensure the correct values are used.
-* Indicate if the Pipeline can start running. Meaning, all required values are provided.
-	+ If the Pipeline cannot start running, Harness indicates which values are missing.
-* Harness shows the following:
-	+ The values that were resolved.
-	+ The values that were not resolved. In this case, Harness provides a clear indication that the Pipeline cannot run without values for all variables.
-
-## Example: Input set for service and primary artifact
-
-Here's the YAML for an input set that let's you select the Harness service to deploy. In this example, the service selected also has its primary artifact and a replicas variable set as runtime inputs.
+Here is an example of a YAML definition for an input set for a Deploy stage. This input set specifies the service to deploy, as well as the primary artifact reference, and the value of the `replicas` variable.
 
 ```yaml
 inputSet:
@@ -111,3 +125,68 @@ inputSet:
                         type: String
                         value: "3"
 ```
+
+### Import input sets
+
+With the Harness Git Experience, you can also [import input sets](/docs/platform/git-experience/import-input-sets) from a Git repo.
+
+## Create overlays
+
+You can combine multiple input sets into overlays, and then, when you run the pipeline, you choose which input sets to use for that run. With overlays, you don't have to define every runtime input value in every input set, providing a flexible, "build-your-own" input set experience.
+
+For example, assume you have a CD pipeline that is used for multiple services. The services have some common configurations, but there are some differences. You can create an overlay consisting of multiple input sets so that users can pick and choose the input sets that correspond with their deployment scenario:
+
+* One input set for the common or default configurations. This set should be used for every run, regardless of the selected service.
+* Input sets for each service. Each of these input sets contains the configurations for that service. These input sets can modify values defined in the default input set, and they can provide values for empty fields that weren't specified in the default input set.
+* Input sets for edge cases, such as an input set that contains a specific build number.
+
+<!-- When you run a pipeline with the overlay(#run-pipelines-with-input-sets-or-overlays), select **Use multiple input sets**, and then select the input sets from the overlay that you want to use for that particular run. -->
+
+### Configure overlays
+
+To configure overlays:
+
+1. [Create input sets](#create-input-sets).
+2. On the **Input Sets** page, select **New Input Set**, and then select **Overlay Input Set**.
+3. Enter a **Name** for the overlay. **Description** and **Tags** are optional.
+4. In **Use existing Input Sets**, select the input sets to include in this overlay, and select **Apply Input Sets**
+5. Drag and drop the input sets to define their [priority in the overlay](#priority-in-overlays).
+6. Select **Save**.
+
+### Priority in overlays
+
+In an overlay, you specify the order in which to resolve the input sets. The first input set in the sequence is resolved first. Then, input sets resolved after the first either replace values specified in prior input sets or populate values not specified in prior input sets.
+
+If a setting is specified in multiple input sets, the value is replaced as each input set is resolved, and the setting's final value is the value assigned in the last input set to be resolved.
+
+<!-- However, it is possible that you won't use every input set in the overlay for every run. When you run a pipeline with an overlay, you can select specific input sets to use. If an input set is not selected for a particular run, it is skipped. -->
+
+## Run pipelines with input sets or overlays
+
+To run a pipeline with an input set or overlay:
+
+1. In the Pipeline Studio, select **Run**.
+2. On the **Run Pipeline** window, select **Use existing Input Sets**.
+3. Select input sets or overlays to use for the run. <!-- Use **Select multiple input sets** to select specific input sets from an overlay. -->
+
+   ![](./static/run-pipelines-using-input-sets-and-overlays-11.png)
+
+4. On the **Run Pipeline** window, the settings that require runtime input are populated with the values from the selected input sets. If necessary, you can manually change any of the values before running the pipeline.
+5. Select **Run Pipeline**.
+
+:::tip
+
+You can also run a pipeline with an input set or overlay from the **Input Sets** page.
+
+:::
+
+### Value resolution
+
+When you select input sets or overlays to use for a pipeline run, Harness applies the values from the input sets to their corresponding pipeline settings. With an overlay, the values are resolved according to the specified [priority in the overlay](#priority-in-overlays).
+
+For each setting that requires runtime input, Harness either:
+
+* Displays the value assigned to the setting, as resolved from the input sets.
+* Displays an error for any required settings that don't have a value assigned.
+
+If any required settings don't have a value, you must manually input a value before you can run the pipeline.

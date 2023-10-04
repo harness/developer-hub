@@ -20,7 +20,7 @@ For information about service dependencies, caches, and shared volumes, go to:
 
 ## Optimize test times
 
-For information about optimizing test times, go to [Run tests in CI pipelines](../set-up-test-intelligence/run-tests-in-ci.md).
+For information about optimizing test times, go to [Run tests in CI pipelines](../run-tests/run-tests-in-ci.md).
 
 ## Optimize Docker images
 
@@ -61,7 +61,7 @@ You can use [step groups](./group-ci-steps-using-step-groups.md) to organize com
 
 ### Looping strategies
 
-[Looping strategies](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) enable you to run a stage or step multiple times with different inputs. This eliminates the need to copy the same stage or step for each variation you need. It also makes the pipeline more organized, clean, and easy to maintain. Looping strategies enable use cases such as:
+[Looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) enable you to run a stage or step multiple times with different inputs. This eliminates the need to copy the same stage or step for each variation you need. It also makes the pipeline more organized, clean, and easy to maintain. Looping strategies enable use cases such as:
 
 * You want to test a UI feature in multiple browsers and platforms. You can define a matrix that specifies the browsers and platforms to test.
 * You want to build artifacts for multiple JDK versions in the same Build Stage.
@@ -88,7 +88,7 @@ Use [templates](/docs/category/templates/) to share and utilize pre-build pipeli
 
 Use these strategies to automate and manage build sequences.
 
-<!-- * Queue Intelligence (./queue-intelligence.md) -->
+* [Queue Intelligence](./queue-intelligence.md)
 * [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/)
 * [Run specific stages in a pipeline](/docs/platform/pipelines/run-specific-stage-in-pipeline/)
 * [Define failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/)

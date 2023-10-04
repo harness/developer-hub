@@ -57,7 +57,7 @@ Conditions support Harness built-in expressions for accessing trigger settings, 
 
 JEXL expressions are also supported.
 
-For details on these settings, go to [Triggers Reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For details on these settings, go to the [Triggers reference](./triggers-reference).
 
 Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the trigger.
 

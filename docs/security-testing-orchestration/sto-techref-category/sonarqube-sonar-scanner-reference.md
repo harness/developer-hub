@@ -1,7 +1,7 @@
 ---
 title: SonarQube SonarScanner reference for STO
 description: Repository scans with SonarQube SonarScanner
-sidebar_position: 300
+sidebar_position: 390
 sidebar_label: SonarQube SonarScanner scanner reference
 helpdocs_topic_id: 4qe4h3cl28
 helpdocs_category_id: m01pu2ubai
@@ -36,12 +36,10 @@ The recommended workflow is to add a SonarQube step to a Security Tests or CI Bu
 A Docker-in-Docker background step is not required for this workflow.
 
 <!--
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
 
-<StoScannerStepNotes />
+
+
 
 -->
 
@@ -128,6 +126,10 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 #### Domain 
 
 The URL of the SonarQube server. Required for Orchestration and Extraction scans. This value corresponds to the [`sonar.host.url`](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/analysis-parameters/#mandatory-parameters) setting in SonarQube.
+
+```mdx-code-block
+import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
+```
 
 <StoSettingAuthDomain />
 
@@ -245,13 +247,13 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step settings for SonarQube scans in STO (_legacy_)
+## Security step settings for SonarQube scans in STO (legacy)
 
 You can add a Security step to a Security Tests or CI Build stage and then configure it as described below. 
 

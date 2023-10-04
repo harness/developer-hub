@@ -2,7 +2,7 @@
 title: Zed Attack Proxy (ZAP) scanner reference for STO
 description: App instance scans using ​Zed Attack Proxy (ZAP)
 sidebar_label: Zed Attack Proxy (ZAP) scanner reference
-sidebar_position: 400
+sidebar_position: 430
 helpdocs_topic_id: m9494vxwac
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -34,11 +34,9 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 The recommended workflow is add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. You can also configure ZAP scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <details>
     <summary>Scanner Template example</summary>
@@ -217,13 +215,13 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step settings for ZAP scans in STO (_legacy_)
+## Security step settings for ZAP scans in STO (legacy)
 
 #### Scan policy types
 

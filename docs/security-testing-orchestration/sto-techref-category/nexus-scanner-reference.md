@@ -2,7 +2,7 @@
 title: Nexus scanner reference for STO
 description: Repository scans with Nexus
 sidebar_label: Nexus scanner reference
-sidebar_position: 180
+sidebar_position: 250
 ---
 
 You can run Nexus scans on your repositories using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.

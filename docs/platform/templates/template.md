@@ -14,6 +14,12 @@ Templates enhance developer productivity, reduce onboarding time, and enforce st
 
 This topic provides an overview of templates in Harness.
 
+:::note
+
+For guidance on ramping up your teams using templates, go to [Templates ramp-up guide](/docs/continuous-delivery/ramp-up/pipeline-designer-role/rampup-templates).
+
+:::
+
 ## Important notes
 
 * When you delete an existing template with active pipeline references, Harness deletes the references.
@@ -245,7 +251,7 @@ template:
                   action:  
                       type: StageRollback
 ```
-The YAML editor is a full-fledged YAML IDE with autocomplete and other features. Go to [Harness YAML quickstart](../pipelines/harness-yaml-quickstart.md) for more information.
+The YAML editor is a full-fledged YAML IDE with autocomplete and other features. For more information, go to the [Harness YAML overview](../pipelines/harness-yaml-quickstart.md).
 
 ## Template filter
 

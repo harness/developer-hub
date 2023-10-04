@@ -2,7 +2,7 @@
 title: Reapsaw scanner reference for STO
 description: Repository scans with Qwiet
 sidebar_label: Reapsaw scanner reference scanner reference
-sidebar_position: 260
+sidebar_position: 340
 ---
 
 You can run Reapsaw scans on your repositories using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.

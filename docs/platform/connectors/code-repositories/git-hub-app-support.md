@@ -46,7 +46,7 @@ Follow the instructions in the GitHub documentation on [Creating a GitHub App](h
 	+ **Commit statuses**: Select **Read & write**.
 	+ **Contents:** Select **Read & write**.
 	+ **Metadata:** Select **Read-only**.
-	+ **Pull requests**: Select **Read & write**. This is required for the **Issue Comment** [event trigger](/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#event-and-actions) for Github.
+	+ **Pull requests**: Select **Read & write**. This is required for the **Issue Comment** [event trigger](/docs/platform/triggers/triggers-reference/#event-and-actions) for Github.
 	+ **Webhooks:** Select **Read & write**.
 * **Where can this GitHub App be installed:** Select **Any account**. The app must be public to use it with a GitHub connector.
 
@@ -149,6 +149,6 @@ Currently, the option to use a GitHub App as the primary authentication method f
 
 ## Option: Set up a PR trigger
 
-You can configure your pipelines to use [Git event triggers](/docs/platform/Triggers/triggering-pipelines) so that builds automatically run in response to events in your Git repos.
+You can configure your pipelines to use [Git event triggers](/docs/platform/triggers/triggering-pipelines) so that builds automatically run in response to events in your Git repos.
 
-If you want to set up a PR trigger, make sure the webhook definition uses the **Pull Request** [event](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference#event-and-actions).
+If you want to set up a PR trigger, make sure the webhook definition uses the **Pull Request** [event](/docs/platform/triggers/triggers-reference#event-and-actions).

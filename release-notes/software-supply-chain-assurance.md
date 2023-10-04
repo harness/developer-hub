@@ -2,7 +2,7 @@
 title: Software Supply Chain Assurance release notes
 sidebar_label: Software Supply Chain Assurance
 tags: [NextGen, "software supply chain assurance"]
-date: 2023-09-18T10:00:10
+date: 2023-09-18T10:00
 sidebar_position: 10
 ---
 

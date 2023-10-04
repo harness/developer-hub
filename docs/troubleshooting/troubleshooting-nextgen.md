@@ -73,7 +73,9 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
 - [Shell scripts](#shell-scripts)
   - [FileNotFoundExeption inside shell script execution task](#filenotfoundexeption-inside-shell-script-execution-task)
 - [Harness policy engine](#harness-policy-engine)
-  - [Policy evaluation failed](#policy-evaluation-failed) 
+  - [Policy evaluation failed](#policy-evaluation-failed)
+- [YAML builder](#yaml-builder)
+  - [The incoming YAML document exceeds the limit: 3145728 code points](#the-incoming-yaml-document-exceeds-the-limit-3145728-code-points)
 
 ## Login issues
 
@@ -658,7 +660,7 @@ Contact your Harness account administrator to resolve the issue. If the policy s
 
 ## YAML builder
 
-This section covers common problems experienced when using the [YAML pipeline builder](/docs/platform/pipelines/harness-yaml-quickstart/).
+This section covers common problems experienced when using the [YAML editor](/docs/platform/pipelines/harness-yaml-quickstart).
 
 ### The incoming YAML document exceeds the limit: 3145728 code points
 

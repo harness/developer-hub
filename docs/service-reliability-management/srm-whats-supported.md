@@ -65,6 +65,23 @@ To learn how to add a change source, go to [Change sources](/docs/category/chang
 
 </TabItem>
 
+
+<TabItem value="Governance" label="Governance">
+
+Harness Policy As Code uses [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) as the central service to store and enforce policies for the different entities and processes across the Harness platform.
+
+You can centrally define and store policies and then select where (which entities) and when (which events) they will be applied.
+
+Currently, you can define and store policies directly in the OPA service in Harness.
+
+Soon, you will be able to use remote Git or other repos (for example, OCI-compatible registries) to define and store the policies used in Harness.
+
+- [Harness Policy As Code overview](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview)
+- [Harness Policy As Code quickstart](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-quickstart)
+- [Add a Policy step to a pipeline](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline)
+
+</TabItem>
+
 </Tabs>
 
 
@@ -73,3 +90,4 @@ To learn how to add a change source, go to [Change sources](/docs/category/chang
 All SRM features supported in Harness SaaS are also supported in the Self-Managed Enterprise Edition. 
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
+

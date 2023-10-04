@@ -48,4 +48,4 @@ Harness produces a diff of the pipeline YAML for the two executions. This diff h
 ## See also
 
 * [View CI builds](/docs/continuous-integration/use-ci/viewing-builds.md)
-* [View test results in CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests.md)
+* [View test results in CI](/docs/continuous-integration/use-ci/run-tests/viewing-tests.md)

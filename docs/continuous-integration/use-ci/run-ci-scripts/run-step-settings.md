@@ -22,7 +22,7 @@ You can use a **Run** step to run commands or scripts in a CI pipeline. Here are
   <TabItem value="test" label="Run tests" default>
 ```
 
-This example runs `pytest`, includes [code coverage](../set-up-test-intelligence/code-coverage.md) and produces a report in JUnit XML format.
+This example runs `pytest`, includes [code coverage](../run-tests/code-coverage.md), and produces a report in JUnit XML format.
 
 ```yaml
               - step:
@@ -52,7 +52,7 @@ This example runs `pytest`, includes [code coverage](../set-up-test-intelligence
 
 :::tip
 
-You can use `parallelism` and `split_tests` to [define test splitting in a Run step](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting) and improve test times.
+You can use `parallelism` and `split_tests` to [define test splitting in a Run step](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting) and improve test times.
 
 :::
 
@@ -189,14 +189,14 @@ In Harness, go to the pipeline where you want to add the `Run` step. In the `CI`
 ```yaml
               - step:
                   type: Run
-                  name: Run pytest # Specify a name for the step.
-                  identifier: Run_pytest # Define a step ID, usually based on the name.
+                  name: run pytest # Specify a name for the step.
+                  identifier: run_pytest # Define a step ID, usually based on the name.
                   spec:
                     connectorRef: account.harnessImage # Specify a container registry, if required.
                     image: python:latest # Specify an image, if required.
                     shell: Sh
-                    command: |-
-                      # Provide your commands.
+                    command: |- # Provide your commands
+                      pytest test_main.py --junit-xml=output-test.xml
 ```
 
 ```mdx-code-block
@@ -413,9 +413,9 @@ Enable this option to run the container with escalated privileges. This is equiv
 
 ### Report Paths
 
-Specify one or more paths to files that store [test results in JUnit XML format](../set-up-test-intelligence/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+Specify one or more paths to files that store [test results in JUnit XML format](../run-tests/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-This setting is required for the Run step to be able to [publish test results](../set-up-test-intelligence/viewing-tests.md).
+This setting is required for the Run step to be able to [publish test results](../run-tests/viewing-tests.md).
 
 For example, this step runs `pytest` and produces a test report in JUnit XML format.
 
@@ -505,4 +505,4 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 During and after pipeline runs, you can find step logs on the [Build details page](../viewing-builds.md).
 
-If your pipeline runs tests, you can [view test reports](../set-up-test-intelligence/viewing-tests.md) on the Build details page.
+If your pipeline runs tests, you can [view test reports](../run-tests/viewing-tests.md) on the Build details page.

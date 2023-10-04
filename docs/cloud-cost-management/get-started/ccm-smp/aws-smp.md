@@ -18,13 +18,13 @@ You need to perform the following tasks to set up CCM for AWS:
 1. [Add a new user for programmatic access](#add-a-new-user-for-programmatic-access).
 2. [Create Amazon S3 Bucket](#create-amazon-s3-bucket).
 3. [Edit the CF template](#edit-the-cf-template).
-4. [Upload CF template to S3 bucket](#upload-cf-template-to-s3-bucket).
+4. [Upload the CF template to S3 bucket](#upload-cf-template-to-s3-bucket).
 5. [Deploy workloads via Helm charts](#deploy-workloads-via-helm-charts).
    
 ## Add a new user for programmatic access
 
 1. Sign in to your [AWS console](https://console.aws.amazon.com/).
-2. Create a new user. For example,` harness-ccm-service-user`. For more information, go to [Adding a user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
+2. Create a new user. For example, `harness-ccm-service-user`. For more information, go to [Adding a user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
 3. Set up programmatic user access keys by using the policy given below.
    
 <details>
@@ -51,6 +51,15 @@ You need to perform the following tasks to set up CCM for AWS:
                 "ec2:DescribeAvailabilityZones",
                 "ec2:DescribeImages",
                 "ec2:DescribeSpotPriceHistory"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sts:AssumeRole"
             ],
             "Resource": [
                 "*"
@@ -105,7 +114,6 @@ You need to perform the following tasks to set up CCM for AWS:
                 "s3:PutIntelligentTieringConfiguration",
                 "s3:PutMetricsConfiguration",
                 "s3:PutStorageLensConfigurationTagging",
-                "sts:*",
                 "s3:PutObjectVersionTagging",
                 "s3:GetBucketVersioning",
                 "s3:GetAccessPointConfigurationForObjectLambda",
@@ -188,7 +196,12 @@ You need to perform the following tasks to set up CCM for AWS:
                 "s3:GetAccessPointPolicy",
                 "s3:ReplicateDelete"
             ],
-            "Resource": "*"
+            "Resource": [
+                "arn:aws:s3:::harness-ccm-service-data-bucket-<accountid>*",
+                "arn:aws:s3:::harness-ccm-service-data-bucket-<accountid>*/*",
+                "arn:aws:s3:::harness-ccm-source-data-<accountid>*",
+                "arn:aws:s3:::harness-ccm-source-data-<accountid>*/*"
+            ]
         }
     ]
 }
@@ -196,7 +209,7 @@ You need to perform the following tasks to set up CCM for AWS:
 
 </details>
 
-:::important
+:::important note
 Make a note of your AWS Access key and Secret key.
 :::
 ## Create Amazon S3 Bucket
@@ -224,7 +237,6 @@ Make a note of your AWS Access key and Secret key.
         }
     ]
 }
-
   ```
   
 
@@ -555,7 +567,7 @@ Resources:
 ```
 </details>
 
-## Upload CF template to S3 bucket
+## Upload the CF template to S3 bucket
 
 Upload the YAML template to S3 bucket `harness-ccm-service-template-bucket-<accountid>`.
 1. Go to **Amamzon S3** > **ccm-service-template-bucket**.
@@ -565,7 +577,7 @@ Upload the YAML template to S3 bucket `harness-ccm-service-template-bucket-<acco
   <docimage path={require('./static/aws-upload-cf-tempalte.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
-:::important
+:::important note
 Make a note of the following: 
 
 - The names of the two S3 buckets.
@@ -575,23 +587,23 @@ Make a note of the following:
 
 ## Deploy workloads via Helm charts
 
-1. Clone chart repository
+1. Clone the chart repository.
 
 ```
 git clone git@github.com:harness/helm-charts.git
 cd main/src/harness
-
 ```
-2. Upgrade charts if you're already using Harness Self-managed Enterprise Edition services.
+2. Upgrade charts if you're already using Harness Self-managed Enterprise Edition services. Perform the following steps to update the override files:
+     1. Retrieve the current override values provided during the installation or upgrade of the Helm charts.
+          ```
+          helm get values <chart-name> -n <namespace> > override.yaml
+          ```
+          
+      1. After obtaining the override file, you can make necessary modifications based on the type of environment.
 
 
-```
-helm get values <chart-name> -n <namespace> > override.yaml
-update override.yaml with ccm specific configuration provided below
-helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml
-```
-Example: `helm upgrade ccm . -n harness -f old_values.yaml`
-
+<details>
+<summary>Override file changes for a connected environment</summary>
 
 ```
 global:
@@ -615,6 +627,88 @@ ccm:
     clickhouse:
       enabled: true
 ```
+</details>
+
+<details>
+<summary>Override file changes for an air-gapped environment</summary>
+
+CCM leverages AWS APIs that require connectivity from the isolated (air-gapped) instance. To grant access to these AWS APIs, establish VPC endpoints for the respective AWS services. For services lacking VPC endpoints, use a proxy to facilitate access.
+
+
+```
+global:
+  ccm:
+    enabled: true
+  smtpCreateSecret:
+    enabled: true
+  license:
+    ng: <SMP NG License with CCM>
+  # -- To enable the use of a proxy for AWS SDK calls to services such as organization, CUR (Cost and Usage Report), CE (Cost Explorer), and IAM (Identity and Access Management), set the `global.proxy.enabled` parameter to true.
+  # -- Set the `global.proxy.host` parameter by specifying the proxy host or IP address (for example, localhost, 127.0.0.1)
+  # -- Set the `global.proxy.port` parameter by specifying the proxy port. It takes an integer value.
+  # -- Set the `global.proxy.username` parameter and `global.proxy.password` parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
+  # -- Set the `global.proxy.protocol` parameter by specifying http or https depending on the proxy configuration.
+  proxy:
+    enabled: false
+    host: localhost
+    port: 80
+    username: ""
+    password: ""
+    protocol: http
+  # -- CCM uses `us-east-1` as the default region where the respective endpoint URLs are used for STS (Security Token Service), ECS (Elastic Container Service), and CloudWatch services. However, if there is a need to specify a different region, you have the option to customize the endpoint URLs using the following configuration:
+  # -- Set the `global.awsServiceEndpointUrls.enabled` parameter to true to enable endpoint URLs.
+  # -- Set a valid AWS region in the `global.awsServiceEndpointUrls.endPointRegion.host` parameter to specify the region where this endpoint is accessible.
+  # -- Set the the STS (Security Token Service) endpoint URL in the `global.awsServiceEndpointUrls.stsEndPointUrl` parameter.
+  # -- Set the ECS (Elastic Container Service) endpoint URL in the `global.awsServiceEndpointUrls.ecsEndPointUrl` parameter.
+  # -- Set the CloudWatch endpoint URL in the `global.awsServiceEndpointUrls.cloudwatchEndPointUrl` parameter.
+  awsServiceEndpointUrls:
+    enabled: false
+    endPointRegion: us-east-2
+    stsEndPointUrl: https://sts.us-east-2.amazonaws.com
+    ecsEndPointUrl: https://ecs.us-east-2.amazonaws.com
+    cloudwatchEndPointUrl: https://monitoring.us-east-2.amazonaws.com
+
+ccm:
+  clickhouse:
+      enabled: true
+  batch-processing:
+    cloudProviderConfig:
+      S3_SYNC_CONFIG_BUCKET_NAME: <S3_SYNC_CONFIG_BUCKET_NAME> [AWS Setup - bucket name from here 'harness-ccm-service-data-bucket-<accountid>']
+      S3_SYNC_CONFIG_REGION: <S3_SYNC_CONFIG_REGION> [AWS Setup - Create S3 buckets step - Use region from here]
+    clickhouse:
+      enabled: true
+    # -- To enable the use of a proxy for AWS S3 sync, set the `ccm.batch-processing.cliProxy.enabled` parameter to true.
+    # -- Set the `ccm.batch-processing.cliProxy.host` parameter by specifying the proxy host or IP address (for example, localhost, 127.0.0.1)
+    # -- Set the `ccm.batch-processing.cliProxy.port` parameter by specifying the proxy port. It takes an integer value.
+    # -- Set the `ccm.batch-processing.cliProxy.username` parameter and `ccm.batch-processing.cliProxy.password` parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
+    # -- Set the `ccm.batch-processing.cliProxy.protocol` parameter by specifying HTTP or HTTPS depending on the proxy configuration.
+    cliProxy:
+      enabled: false
+      host: localhost 
+      port: 80
+      username: ""
+      password: ""
+      protocol: http
+  # -- Set the `ccm.cloud-info.proxy.httpsProxyEnabled` parameter to true to route AWS SDK calls for EC2 and pricing through a proxy.
+  # -- Configure the `ccm.cloud-info.proxy.httpsProxyUrl` parameter with the appropriate proxy URL. For example, if your HTTP proxy is running on localhost port 1234 and requires authentication, you can use a format like http://username:password@proxy.example.com:1234. If no username and password are required, a value like http://proxy.example.com:1234 can be provided.
+  cloud-info:
+    proxy:
+      httpsProxyEnabled: false
+      httpsProxyUrl: http://proxy.example.com:1234
+  nextgen-ce:
+    clickhouse:
+      enabled: true
+```
+</details>
+
+3. After making the necessary updates to the override file, you can proceed with the Helm chart upgrade.  
+
+
+```
+helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml 
+```
+          
+    
 
 ## Handling Kubernetes secrets
 
@@ -903,3 +997,8 @@ SMTP_USERNAME: <SMTP_USERNAME>
 :::important important
 Increase TimescaleDB to 100Gi: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. Features like Recommendations and Anomalies within CCM services use it.
 :::
+
+## Next steps
+
+- [Kubernetes connector setup](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes#create-ccm-connector)
+- [AWS connector setup](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#connect-ccm-to-your-aws-account)

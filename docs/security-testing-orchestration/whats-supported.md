@@ -43,7 +43,6 @@ import StoSupportedScanners from '/docs/security-testing-orchestration/sto-techr
 
 </details>
 
-
 <details><summary>Scanner binaries used in STO container images</summary>
 
 ```mdx-code-block

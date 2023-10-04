@@ -1,5 +1,6 @@
 ---
-title: Elasticsearch
+title: Configure Elasticsearch as health source
+sidebar_label: Elasticsearch
 description: Add Elasticsearch health source to a monitored service. 
 sidebar_position: 6
 ---

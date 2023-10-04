@@ -10,7 +10,7 @@ You can use the same CD stage services across your pipeline stages. Once you hav
 
 ![Propagate from](./static/b7df1f589cdc64982a5458c3ad1b107132e1b7e3634dfcfeb716c075437e1d6c.png)  
 
-You can also use Harness input sets and overlays to select from different collections of settings at runtime. See [input sets and overlays](/docs/platform/pipelines/input-sets.md) and [run pipelines using input sets and overlays](../../../platform/pipelines/run-pipelines-using-input-sets-and-overlays.md).
+You can also use Harness [input sets and overlays](/docs/platform/pipelines/input-sets) to select from different collections of settings at runtime.
 
 ## Important notes
 

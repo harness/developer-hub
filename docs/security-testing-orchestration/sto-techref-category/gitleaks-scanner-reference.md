@@ -2,7 +2,7 @@
 title: Gitleaks scanner reference for STO
 description: Repository scans with Gitleaks
 sidebar_label: Gitleaks scanner reference
-sidebar_position: 155
+sidebar_position: 200
 
 ---
 
@@ -18,11 +18,9 @@ For a description of the end-to-end workflow, go to [Ingest SARIF data](/docs/se
 The recommended workflow is to add a GitLeaks step to a Security Tests or CI Build stage and then configure it as described below.  
 
 <!--
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 -->
 
 ### Scan Mode
@@ -171,7 +169,7 @@ In the **Advanced** settings, you can use the following options:
 
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
