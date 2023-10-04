@@ -1377,6 +1377,10 @@ The name of the infrastructure definition used in the pipeline stage.
 
 ![](./static/harness-variables-46.png)
 
+### <+infra.infraIdentifier>
+
+The Id of the infrastructure definition used in the pipeline stage.
+
 ### <+infra.tags>
 
 The [tags on an infrastructure definition](/docs/continuous-delivery/get-started/services-and-environments-overview/#infrastructure-tags) used in the same CD stage where the expression is evaluated.
