@@ -3008,7 +3008,7 @@ To add an artifact from Artifactory, do the following:
       - `folder/*.zip` : Fetch all `.zip` artifacts contained in directory `folder`.
       - `folder/*/*` : Fetch all artifacts from sub-directories under `folder`.
       - `folder/*/*.zip` : Fetch all `.zip` artifacts from sub-directories under `folder`.
-      - `folder*/*` : Fetch all artifacts from subdirectories under `folder*`.   
+      - `folder*/*` : Fetch all artifacts from subdirectories under folders with names that match `folder*`.   
       :::note
 
       You cannot apply a filter that finds BOTH artifacts in a folder AND all subdirectories under that folder. Thus `folder/*` finds artifacts in `folder` but no subdirectories, and `folder/*/*` finds artifacts in all subdirectories but not in `folder`. 
