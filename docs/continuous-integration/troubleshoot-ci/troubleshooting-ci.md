@@ -99,7 +99,7 @@ If you get this error when using a Kubernetes cluster build infrastructure, and 
 
 For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
 
-## Docker Hub rate limiting
+## Image pull rate limiting
 
 <Dhrl />
 

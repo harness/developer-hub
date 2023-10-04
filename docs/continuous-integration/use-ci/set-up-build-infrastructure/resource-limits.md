@@ -259,6 +259,6 @@ You can arrange steps in parallel in the Visual editor by dragging and dropping 
 
 :::
 
-### Docker Hub rate limiting
+### Image pull rate limiting
 
 <Dhrl />
