@@ -17,6 +17,10 @@ This topic describes the settings and permissions for the Bitbucket connector. H
 
 ## Overview settings
 
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 * **Name:** The unique name for this connector. Harness generates an **Id** ([Entity Identifier](../../../references/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id** during initial connector creation. Once you save the connector, the **Id** is locked.
 * **Description:** Optional text string.
 * **Tags:** Optional labels you can use for filtering. For details, go to the [Tags reference](../../../references/tags-reference.md).

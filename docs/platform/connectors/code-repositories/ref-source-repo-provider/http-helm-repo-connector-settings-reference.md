@@ -29,6 +29,10 @@ The unique name for this Connector.
 
 See [Entity Identifier Reference](../../../references/entity-identifier-reference.md).
 
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 ### Description
 
 Text string.
