@@ -244,14 +244,11 @@ If required by your organization's security practices, select the **Read-only V
 
 Once you have filled out the required fields, click **Finish**.
 
-<!-- 
 ## Reference JSON secrets
 
 import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
 
 <Refj />
-
--->
 
 ##### Read-only Limitations
 
