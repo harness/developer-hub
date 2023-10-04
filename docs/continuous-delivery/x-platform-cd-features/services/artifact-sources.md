@@ -3006,9 +3006,14 @@ To add an artifact from Artifactory, do the following:
       - `*.zip` : Fetch all `.zip` artifacts in the root directory.
       - `folder/*` : Fetch all artifacts contained in directory `folder`.
       - `folder/*.zip` : Fetch all `.zip` artifacts contained in directory `folder`.
-      - `folder/*/*` : Fetch all artifacts from directories and their sub-directories contained in `folder`.
-      - `folder/*/*.zip` : Fetch all `.zip` artifacts from directories and their sub-directories contained in `folder`.
-      - `folder*/*` : Fetch all artifacts from directories and their subdirectories matching `folder*`.    
+      - `folder/*/*` : Fetch all artifacts from sub-directories under `folder`.
+      - `folder/*/*.zip` : Fetch all `.zip` artifacts from sub-directories under `folder`.
+      - `folder*/*` : Fetch all artifacts from subdirectories under `folder*`.   
+      :::note
+
+      You cannot apply a filter that finds BOTH artifacts in a folder AND all subdirectories under that folder. Thus `folder/*` finds artifacts in `folder` but no subdirectories, and `folder/*/*` finds artifacts in all subdirectories but not in `folder`. 
+
+      :::
 
    If you use a runtime input when you deploy the pipeline, Harness will pull the list of artifacts from the repo and prompt you to select one.
 
