@@ -36,13 +36,6 @@ You can also use this workflow if the external scanner requires additional files
 
 * If the scanner requires a license file, save it to **/shared/customer_artifacts/`<license_file_name>`**.  
 
-* If you're running a ZAP scan that uses context files such as auth scripts, context files, or URL files, specify the following shared folders and make sure that your Run step copies in the required files. 
-
-  * **/shared/customer_artifacts/authScript/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/context/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/urlFile/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/hosts/`<artifact_file_name>`**
-
 - To troubleshoot SSL issues, go to [Troubleshoot SSL in STO](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-troubleshooting-in-sto). 
 
 
