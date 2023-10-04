@@ -2937,10 +2937,10 @@ To add an artifact from Artifactory, do the following:
 2. Select **Manage Services**, and then select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
-5. In **Service Definition**, select **Kubernetes**.
+5. In **Service Definition**, select the deployment type.
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Artifact Repository Type**, select **Artifactory**, and then select **Continue**.
-8. In **Artifactory Repository**, select of create an Artifactory Connector that connects to the Artifactory account where the repo is located. Click **Continue**. The **Artifact Details** settings appear.
+8. In **Artifactory Connector**, select or create an Artifactory connector that connects to the Artifactory account where the repo is located. Click **Continue**. The **Artifact Details** settings appear.
 10. Enter an **Artifact Source Identifier** and select the **Repository Format**. 
 11. Set the artifact details based on the format: 
     - [Docker repository format](#docker-repository-format)
@@ -2948,12 +2948,15 @@ To add an artifact from Artifactory, do the following:
 
 #### Docker repository format
 
-1. In **Repository URL**, enter the URL from the `docker login` command in Artifactory's **Set Me Up** settings.
+1. In **Repository**, enter the repo name. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `docker-remote`.
+2. In **Artifact/Image Path**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
+3. In **Repository URL**, enter the URL from the `docker login` command in Artifactory's **Set Me Up** settings.
     
     ![](static/kubernetes-services-15.png)
-2. In **Repository**, enter the repo name. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `docker-remote`.
-3. In **Artifact Path**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
+
 4. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
+
+    You can use a regex to select the most recent image. Suppose you have a set of images with tags `3.1.1`, `3.1.2`, `3.1.3.1`, `3.1.3.2`, and `3.1.3.4`. Select **Regex**, then set **Tag Regex** `3.1*` to select the most recent image, in this case the image with tag `3.1.3.4`.
     
     ![](static/kubernetes-services-16-docker.png)
 5. If you use runtime inputs when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
@@ -2980,24 +2983,23 @@ To add an artifact from Artifactory, do the following:
 
 </figure>
 
-1. In **Repository**, enter the repo name. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `docker-remote`.
-2. In **Artifact Directory**, enter the path to the artifacts. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
-3. Select the method for specifying the artifacts you want to deploy:
+1. In **Repository**, enter the repo name. If the full path is `my-apps/myticketservice/1.0/ticket-service-1.0.jar`, you would enter `my-apps`.
+2. Select the method for specifying the artifacts you want to deploy:
    - **Artifact Directory** Specify a hard-coded path to the artifacts.
-   - **Artifact Filter** Use an expression to specify the path. Useful if you want to fetch multiple artifacts in different paths.
+   - **Artifact Filter** Use an expression to specify the path. Useful if you want to fetch  artifacts from different paths.
 3. Specify the artifacts you want to deploy.
  
-   - If specifying via directory:
-     1. In **Artifact Directory**, enter the path to the artifacts. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
-     2. Set **Artifact Details** to **Value** or **Regex**. 
-     3. Specify the artifacts for the service.
+   - If you selected **Artifact Directory**:
+     1. In **Artifact Directory**, enter the path to the artifacts. If the full path is `my-apps/myticketservice/1.0/ticket-service-1.0.jar`, you would enter `/myticketservice/1.0`.
+     2. Set **Artifact Details** to **Value** or **Regex** (useful if you want to fetch multiple artifacts). 
+     3. Specify the the value or the regex for the artifacts.
         
-        You can use an expression to specify multiple artifacts. For example, suppose your service has a front end and a back end, and you store the latest artifacts in a `/latest` subfolder, like this:
+        If you selected **Regex**, enter the **Artifact Path Filter** for the artifacts you want to fetch. For example, suppose your service has a front end and a back end, and you store the latest artifacts in a `/latest` subfolder, like this:
             `/myService/latest/front-service.zip`
             `/myService/latest/back-service.zip`
         To fetch both artifacts, you can specify `/myService` for the artifact directory and `latest/*.zip` for the artifact path filter.
 
-   - If specifying via filter, enter an expression that matches the tag of the artifacts you want to fetch. The following expressions are supported:
+   - If you selected **Artifact Filter**, enter an expression that matches the artifacts you want to fetch. Here are some examples of expressions you can use:
       - `*/*` : Fetch all artifacts from all directories including their sub-directories.
       - `*/*.zip` : Fetch all `.zip` artifacts from all directories, including sub-directories.
       - `*`: Fetch all artifacts in the root directory.
@@ -3010,18 +3012,7 @@ To add an artifact from Artifactory, do the following:
 
    If you use a runtime input when you deploy the pipeline, Harness will pull the list of artifacts from the repo and prompt you to select one.
 
-6. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
-
-  :::note Important notes
-
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
-
-  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
-
-  :::
 7. Select **Submit**. The Artifact is added to the Service Definition.
-
-
 
 
 ```mdx-code-block
