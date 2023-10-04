@@ -1,7 +1,7 @@
 ---
 title: Software catalog
 description: Learn more about the software catalog in Harness IDP
-sidebar_position: 10
+sidebar_position: 1
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false

@@ -1,7 +1,7 @@
 ---
 title: Scorecards
 description: Measure software maturity and best practices
-sidebar_position: 10
+sidebar_position: 3
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
