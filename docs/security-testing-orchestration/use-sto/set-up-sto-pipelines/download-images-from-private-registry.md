@@ -10,12 +10,9 @@ This topic describes how to override the default image pull behavior and use you
 
 To do this, you need to:
 
-- [Create STO scanner images with your own SSL certificates (optional)](#create-sto-scanner-images-with-your-own-ssl-certificates-optional)
-- [Create a connector to your private registry](#create-a-connector-to-your-private-registry)
-- [Configure the pipeline to download images from your registry](#configure-the-pipeline-to-download-images-from-your-registry)
-  - [Scanner template setup](#scanner-template-setup)
-  - [Security step setup](#security-step-setup)
-- [YAML example for configuring STO to download images from a private registry](#yaml-example-for-configuring-sto-to-download-images-from-a-private-registry)
+1. (Optional) [Create scanner images with your own SSL certificates.](#create-sto-scanner-images-with-your-own-ssl-certificates-optional)
+2. [Create a connector for your private registry.](#create-a-connector-to-your-private-registry)
+3. [Configure the pipeline to download images from your registry.](#configure-the-pipeline-to-download-images-from-your-registry)
 
 ## Create STO scanner images with your own SSL certificates (optional)
 
