@@ -8,39 +8,40 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-When a Harness CI pipeline runs, there is an *initialize* step that automatically runs before any other steps in the stage. This step prepares the environment to run your steps, such as preparing the build infrastructure and pulling required [Harness images from Docker Hub](https://hub.docker.com/u/harness).
+When a Harness CI pipeline runs, there is an *initialize* step that automatically runs before any other steps in the stage. This step prepares the environment to run your steps, such as preparing the build infrastructure and pulling required [Harness images from Google Container Registry (GCR)](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
 
 :::info
 
-Harness CI images are not the same as [pre-built public images](./public-docker-images.md). Harness CI images are essential images used by Harness to run CI pipelines. Pre-built public images are extended versions of official Docker images that you can optionally use to quickly set up a specific build environment.
+Harness CI images are not the same as the [pre-built public images](./public-docker-images.md). Harness CI images are essential images used by Harness to run CI pipelines. Pre-built public images are extended versions of official Docker images that you can optionally use to quickly set up a specific build environment.
 
 :::
 
 ## CI images list
 
-Use the following cURL command to get the Harness CI images list:
-
-```curl
-curl -X  GET https://app.harness.io/registry/_catalog
-```
+You can find Harness CI images in the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
 
 Here are some examples of Harness CI images and the purpose of each image. Build image tags change often.
 
-* `harness/ci-addon`: Used to execute steps on containers in Kubernetes pods
-* `harness/ci-lite-engine`: Used to orchestrate execution of steps on Kubernetes pods
-* `harness/drone-git`: Used to clone git repos
-* `plugins/cache`: Used to cache files to/from S3/GCS that help to expedite builds
+* `harness/ci-addon`: Used to execute steps on containers in Kubernetes pods.
+* `harness/ci-lite-engine`: Used to orchestrate execution of steps on Kubernetes pods.
+* `harness/drone-git`: Used to clone git repos.
+
+### Drone plugin images
+
+Drone is part of Harness CI, and Harness CI uses [Drone plugin images](https://console.cloud.google.com/gcr/images/gcr-prod/global/plugins) to run some operations. Some examples include:
+
+* `plugins/cache`: Used to cache files to/from S3/GCS that help to expedite builds.
 * `plugins/kaniko`: Used to build Docker images with the kaniko framework and push images to Docker registry out of the box for Kubernetes cluster build infrastructures.
 * `plugins/kaniko-ecr`: Used to build Docker images with the kaniko framework and push images to AWS ECR registry out of the box for Kubernetes cluster build infrastructures.
 * `plugins/kaniko-gcr`: Used to build Docker images with the kaniko framework and push images to GCP GCR registry out of the box for Kubernetes cluster build infrastructures.
-* `plugins/s3`: Used to upload files to AWS S3 buckets out of the box
-* `plugins/gcs`: Used to upload files to GCP GCS service out of the box
+* `plugins/s3`: Used to upload files to AWS S3 buckets out of the box.
+* `plugins/gcs`: Used to upload files to GCP GCS service out of the box.
 
-## I don't want to pull images from a public repo
+## I don't want to pull images anonymously
 
-If you don't want the Harness Delegate to pull images from a public repo for security reasons, you can add a special **Harness Container Image Registry** connector to your Harness account. With this connector, the Delegate pulls these images from the **Harness Container Image Registry** only. For instructions on configuring this connector, go to [Connect to Harness Container Image Registry using Docker connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
+By default, when a CI pipeline runs, the Harness Delegate makes an anonymous outbound connection to the public [Harness GCR project](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) and pulls the CI images. If you don't want the Harness Delegate to pull images anonymously, you can [Connect to the Harness container image registry with a Docker connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) that uses specific credentials.
 
-By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.docker.com/u/harness) to pull the images. If you experience rate limiting issues when pulling images, provide login information in the [Harness Container Image Registry Docker connector's authentication settings](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials).
+If you experience rate limiting issues when pulling images, consider using credentialed access, rather than anonymous access, to pull Harness CI images. For instructions, go to [Connect to the Harness container image registry with a Docker connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
 
 ## CI image updates
 
@@ -57,7 +58,7 @@ Harness updates `harness/ci-*` images, such as `harness/ci-addon` and `harness/c
 * If your builds use containers that are more than two releases old, the Harness UI shows a warning that the image versions are no longer supported. Builds won't fail automatically.
 * If a hotfix or security fix is required for a specific image, Harness creates hotfixes for the latest three images and notifies customers when these hotfixes are available.
 
-Drone images are updated as needed. All Drone image updates are backward-compatible. When you first deploy CI, Harness scans all `plugin` images you plan to use and addresses any vulnerabilities. After your initial deployment, Harness publishes updates to address new vulnerabilities based on our Service Level Agreement with your organization.
+[Drone plugin images](https://console.cloud.google.com/gcr/images/gcr-prod/global/plugins) are updated as needed. All Drone image updates are backward-compatible. When you first deploy CI, Harness scans all `plugin` images you plan to use and addresses any vulnerabilities. After your initial deployment, Harness publishes updates to address new vulnerabilities based on our Service Level Agreement with your organization.
 
 ### Update the images used in your pipelines
 
