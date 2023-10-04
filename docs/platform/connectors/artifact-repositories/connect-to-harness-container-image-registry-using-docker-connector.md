@@ -70,6 +70,11 @@ You must create the Harness Docker Connector at the Account level. Make sure tha
    Harness automatically generates the corresponding Id ([entity identifier](../../references/entity-identifier-reference.md)).
    If you want to override the account-level connector, modify the Id and set it to `harnessImage`. You must use the Id `harnessImage`.
    Harness gives precedence to the connector with the `harnessImage` identifier, and uses it to pull from the Harness Container Image Registry, as opposed to pulling from Docker Hub directly.
+
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 4. Click **Continue**.
 
 ### Step 2: Enter credentials

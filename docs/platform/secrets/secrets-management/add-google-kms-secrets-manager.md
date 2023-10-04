@@ -35,7 +35,11 @@ The **GCP Key Management Service** settings appear.
 
 ![](../../secrets/static/add-google-kms-secrets-manager-64.png)
 
-In **Name,** enter a name for your Secret Manager.  You will use this name to select this Secret Manager when adding or selecting a secret.
+In **Name,** enter a name for your Secret Manager. You will use this name to select this Secret Manager when adding or selecting a secret.
+
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
 
 Enter a description for your Secret Manager.
 

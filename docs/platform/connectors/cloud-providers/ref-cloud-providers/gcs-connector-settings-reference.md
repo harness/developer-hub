@@ -74,6 +74,10 @@ GCP connector settings include:
   * Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its authentication credentials from the Harness Delegate that is running in GCP.
 * **Select connectivity mode**: Select whether Harness should communicate directly with GCP or go through a Harness Delegate in GCP.
 
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 <details>
 <summary>Store service account keys as Harness secrets</summary>
 

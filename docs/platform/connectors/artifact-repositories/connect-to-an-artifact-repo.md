@@ -40,6 +40,11 @@ For details on settings and permissions, see [Artifactory Connector Settings Ref
 2. In **Project Setup**, click **Connectors**.
 3. Click **New Connector**, and click **Artifactory** in **Artifact Repositories**. The Artifactory Repository settings appear.
 4. In **Name**, enter a name for this connector.
+
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 5. Click **Continue**.
 6. Enter the **Artifactory Repository URL**.
 7. In **Authentication**, select one of the following options:

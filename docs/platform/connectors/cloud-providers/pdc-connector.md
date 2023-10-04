@@ -67,7 +67,12 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
 
 1. In your project, org, or account, select **Connectors**, and then select **New Connector**.
 2. Select **Physical Data Center**.
-3. Enter a name for the connector and select **Continue**.
+3. Enter a name for the connector and select **Continue**. Harness automatically creates an **Id** ([Entity Identifier](../../../platform/references/entity-identifier-reference.md)) for the connector based on the name. You can edit the Id before saving the connector. Once the connector is saved, the Id is immutable.
+
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 4. Enter the target hosts manually or by using a JSON file. Both options are described in detail below.
 5. Select **Continue**.
 6. Select the Harness delegate(s) you want to use to perform the connection, and then select **Save and Continue**.

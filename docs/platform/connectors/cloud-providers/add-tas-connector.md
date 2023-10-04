@@ -176,6 +176,11 @@ Perform the following steps to add a TAS connector.
 4. Enter a connector name, enter an optional description and tag, and then select **Continue**.
    
    Harness automatically creates an **[ID](/docs/platform/References/entity-identifier-reference)** for the connector. The ID is based on the connector's name.
+
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 5. Enter the TAS **Endpoint URL**. For example, `https://api.system.tas-mycompany.com`.
 6. In **Authentication**, select one of the following options:
     * **Plaintext** - Enter the username and password. For password, you can either create a new secret or use an existing one.

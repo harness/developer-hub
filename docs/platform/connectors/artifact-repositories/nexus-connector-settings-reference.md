@@ -49,6 +49,10 @@ The unique name for this connector.
 
 Harness creates an [Id (Entity Identifier)](../../references/entity-identifier-reference.md) based on the name. You can change the **Id** while creating the connector. Once saved, the **Id** can't be changed, but you can change the **Name**.
 
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 **Description** and [**Tags**](../../references/tags-reference.md) are optional.
 
 ### Nexus Repository URL

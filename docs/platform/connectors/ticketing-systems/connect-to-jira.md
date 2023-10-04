@@ -37,6 +37,12 @@ To add a Jira connector to your Harness project:
 
 3. In **Name**, enter a name for this connection. You will use this name to select this connection in Jira steps.
 
+   Harness automatically creates an **Id** ([Entity Identifier](../../../platform/references/entity-identifier-reference.md)) for the connector based on the name. You can edit the Id before saving the connector. Once the connector is saved, the Id is immutable.
+
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 4. Click **Continue**.
 
 5. In **Jira URL**, enter the base URL by which your users access your Jira applications. For example: `https://mycompany.atlassian.net`.

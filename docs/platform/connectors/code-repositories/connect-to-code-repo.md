@@ -84,11 +84,15 @@ With the generic Git connector, you must use a username and password for the IAM
 3. Select **New Connector** and select **Git** under **Code Repositories**.
 4. Configure the [Git connector settings](./ref-source-repo-provider/git-connector-settings-reference.md):
 
-   * Enter a **Name**.
+   * Enter a **Name**. Harness automatically creates an **Id** ([Entity Identifier](../../../platform/references/entity-identifier-reference.md)) for the connector based on the name. You can edit the Id before saving the connector. Once the connector is saved, the Id is immutable. 
    * Select **Repository** for the **URL Type**.
    * Select **HTTP** for the **Connection Type**.
    * In **Git Repository URL**, enter the AWS CodeCommit repository URL, such as `https://git-codecommit.us-west-2.amazonaws.com/v1/repos/doc-text`. You can get this URL from your CodeCommit repo by using its **Clone URL** menu and selecting **Clone HTTPS**.
    * In **Username** and **Password**, enter the username and password that you generated for the IAM user. Use an [Encrypted text secret](/docs/platform/secrets/add-use-text-secrets) to store the password.
+
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
 
 5. After the connection test runs, select **Finish** to save the connector.
 

@@ -27,9 +27,13 @@ This topic provides settings and permissions for the Docker connector.
 
 ## Connector metadata settings
 
-* **Name:** Enter a name for this connector. Harness creates and **Id** ([Entity Identifier](../../../references/entity-identifier-reference.md)) based on the name.
+* **Name:** Enter a name for this connector. Harness creates an **Id** ([Entity Identifier](../../../references/entity-identifier-reference.md)) based on the name.
 * **Description:** Optional text string.
 * **Tags:** Optional. Go to the [Tags reference](../../../references/tags-reference.md).
+
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
 
 ## Docker Registry URL
 

@@ -81,6 +81,10 @@ In **Name**, enter a name for this connector.
 
 Harness automatically creates the corresponding Id ([entity identifier](../../../platform/references/entity-identifier-reference.md)).
 
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 Click **Continue**.
 
 ### Enter credentials

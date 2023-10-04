@@ -112,6 +112,10 @@ To add an Azure Key Vault secret manager:
 
    You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, go to [Entity Identifier Reference](../../references/entity-identifier-reference.md).
 
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 5. Enter **Description** and **Tags** for your secret manager.
 
 6. Select **Continue**.

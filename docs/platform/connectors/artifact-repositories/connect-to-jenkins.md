@@ -49,6 +49,10 @@ Click **New Connector**, and then click **Jenkins**. The Jenkins Connector set
 
 In **Name**, enter a name for this connection. You will use this name to select this connection in Jenkins steps.
 
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 Click **Continue**.
 
 ### Step 2: Enter the Jenkins URL

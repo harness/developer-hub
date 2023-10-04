@@ -36,7 +36,11 @@ This topic shows you how to add a ServiceNow connector to your project.
 
 3. Enter **Name** for this connector.
 
-   You can choose to update the **Id** or let it be the same as your ServiceNow connector's name. For more information, go to [Entity Identifier Reference](../../references/entity-identifier-reference.md).
+   Harness automatically creates an **Id** ([Entity Identifier](../../../platform/references/entity-identifier-reference.md)) for the connector based on the name. You can edit the Id before saving the connector. Once the connector is saved, the Id is immutable.
+
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
 
 4. Enter a **Description** and **Tags** for your connector.
 

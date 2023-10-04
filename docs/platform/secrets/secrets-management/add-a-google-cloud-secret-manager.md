@@ -145,6 +145,11 @@ Let us add a secret reference to the GCP Secrets Manager we just created.
 The **Add new Encrypted Text** settings appear.
 4. Select the GCP Secrets Manager you just created.
 5. Enter a **Name** for your secret.
+
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 6. Select **Reference Secret**.
 
    ![](../static/add-a-google-cloud-secret-manager-42.png)

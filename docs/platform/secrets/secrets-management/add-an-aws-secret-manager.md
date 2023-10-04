@@ -91,6 +91,10 @@ Enter a **Name** for your secret manager.
 
 You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, go to [Entity Identifier Reference](../../references/entity-identifier-reference.md).
 
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 Enter a **Description** for your secret manager.
 
 Enter **Tags** for your secret manager.

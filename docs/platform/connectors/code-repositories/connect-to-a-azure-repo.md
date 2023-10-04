@@ -28,6 +28,13 @@ You must have:
 
 2. Select **New Connector**, and then select the **Azure Repos** connector.
 3. Enter a **Name** for your connector, and then select **Continue**.
+
+   Harness automatically creates an **Id** ([Entity Identifier](../../../platform/references/entity-identifier-reference.md)) for the connector based on the name. You can edit the Id before saving the connector. Once the connector is saved, the Id is immutable.
+
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 4. Select **Project** or **Repository** for the **URL Type**.
 5. Select **HTTP** or **SSH** for the **Connection Type**.
 6. Enter your Azure Repos Project or Repository URL.

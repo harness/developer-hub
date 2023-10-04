@@ -59,8 +59,11 @@ Click **Create via YAML Builder**.
 
 Copy and paste the snippet for the Connector you want to create.
 
-For example, here is the snippet for a Docker Hub Connector:
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
 
+<Nameidlimit />
+
+For example, here is the snippet for a Docker Hub connector:
 
 ```
 connector:  

@@ -720,6 +720,10 @@ The AWS connector settings include:
   * **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate.
 * **AWS Backoff Strategy:** Go to [AWS Backoff Strategy](#aws-backoff-strategy) below.
 
+import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
+
+<Nameidlimit />
+
 <details>
 <summary>Configure IRSA credentials for AWS connectors</summary>
 
