@@ -154,7 +154,7 @@ This release does not include any new early access features.
 
    The issue has been resolved. Now, the WinRM session timeout is set to the maximum of the step timeout configured plus 30 minutes.
 
-#### Version 23.09.80511
+##### Version 23.09.80511
 
 - Previously, there was an issue with the task capacity limiter for delegates where the counter didn't decrement when a task was aborted. (PL-41408)
 
