@@ -39,20 +39,77 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80811
+## Latest: Harness version 809xx
 
 ### New features and enhancements
 
-- There was no way in Pipeline Studio to add step group variables when creating a step group template. This section has now been added. (CDS-78683)
-
-- This release improves the UI feedback when executing an Approval step. Previously, the pipeline execution log console could appear stuck at the Approval step even after the pipeline processed the step successfully. This release includes a back-end optimization to ensure that the Pipeline Execution UI processes and displays log messages for Approval steps in real time. (CDS-76996, ZD-48401)
-
+This release does not include new features.
 
 ### Early access features
 
 This release does not include Early Access features. 
 
 ### Fixed issues
+
+- Fixed an issue when migrating service overrides from v1 to v2. The migration generated an invalid YAML object and failed with the error Invalid request: Override spec is empty in request. (CDS-80081)
+
+- Fixed a search issue where searching by service showed no results, even choosing a deployment. (CDS-79822, ZD-51091)
+
+- The strategy step was getting skipped during post- prod rollback. This has been resolved and step will get executed based on the step condition. (CDS-79820, ZD-50920)
+
+<!--
+
+This was already documented in 808xx relnotes, see https://harness.atlassian.net/browse/CDS-79578?focusedCommentId=583226
+
+– Fixed an issue where using empty config files for a service in an SSH/WinRM deployment caused the pipeline to fail with a Null Pointer Exception.  (CDS-79578, ZD-50811)
+
+-->
+
+- We have updated the internal Jenkins library to support long IDs for the Jenkins build. Previously the IDs supported were limited to int bounds. (CDS-79499, ZD-50718, ZD-50888).
+
+- Updated doc links in tooltips for the Shell Script step. (CDS-79429, ZD-50786)
+
+- Fixed an issue where some pipeline executions would fail with the error Invalid request: Connector not found for identifier : [defaultParam] with scope: [PROJECT]. (CDS-79360, ZD-50598)
+
+- Users can now edit expressions in Firefox. (CDS-79162) 
+
+- The UI for running pipelines has been improved to better distinguish between a **Runtime Input** (which you specify in **Run Pipeline**) and an **Execution Time Input** (which you specify during the pipeline execution). Many runtime inputs can be configured as execution time inputs. The **Pipeline Execution** UI also provides popover text with useful information about any required execution time inputs. (CDS-77710)
+
+  ![](./static/cds-77710-set-runtime-input-as-execution-time-input.png)
+
+- Fixed an issue observed in pipeline executions with Retry failure strategies: a user could not abort a pipeline execution or mark a stage as failed during the retry interval .(CDS-76542)
+
+- Fixed an issue causing read-only script editors in the run pipeline form to appear as editable editors. (CDS-76331)
+
+- Fixed a UI issue where dashboards got refreshed whenever a user selected a filter, which prolonged query times. With this fix, dashboards no longer refresh automatically when a user changes the filter. (CDB-1198, ZD-50972)
+
+
+
+
+
+### Hotfixes
+
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Harness version 80811
+
+##### New features and enhancements
+
+- There was no way in Pipeline Studio to add step group variables when creating a step group template. This section has now been added. (CDS-78683)
+
+- This release improves the UI feedback when executing an Approval step. Previously, the pipeline execution log console could appear stuck at the Approval step even after the pipeline processed the step successfully. This release includes a back-end optimization to ensure that the Pipeline Execution UI processes and displays log messages for Approval steps in real time. (CDS-76996, ZD-48401)
+
+
+##### Early access features
+
+This release does not include Early Access features. 
+
+##### Fixed issues
 
 - Fixed an issue where using empty config files for a service in an SSH/WinRM deployment caused the pipeline to fail with a Null Pointer Exception.  (CDS-79578, ZD-50811)
 
@@ -121,14 +178,10 @@ https://harness.atlassian.net/browse/CDS-79071?focusedCommentId=579969
   This item requires Harness Delegate version 23.09.80811. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 
-### Hotfixes
+##### Hotfixes
 
 - This release includes hotfix 0.362.29 NG UI, which removes the **Allow Overrides** option from the  account setting **Continuous Deployment** > **Enable Service Override V2**. Removing this option prevents an indeterminate state when migrating to [service overrides V2](/docs/continuous-delivery/x-platform-cd-features/overrides-v2/). (CDS-79127)
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### Harness version 80711
 
