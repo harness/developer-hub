@@ -7,7 +7,7 @@ description: This topic describes how to create rules and view rule descriptions
 
 This topic explains how to create rules and view rule descriptions by using Harness AI Development Assistant (AIDA:tm:).
 
-You must [enable AIDA in your Harness account](/docs/platform/Harness-AIDA/aida-overview.md#enable-aida) to access this functionality.
+You must [enable AIDA in your Harness account](/docs/platform/Harness-AIDA/aida-overview#enable-aida) to access this functionality.
 
 ## Create a rule by using Harness AIDA
 
