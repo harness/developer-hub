@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 :::info
 
-Currently, this feature is behind the feature flag, ` IDP_ENABLE_SCORECARDS` and ``. Contact [Harness Support](mailto:support@harness.io) or IDP product team to enable the feature.
+Currently, this feature is behind the feature flag, ` IDP_ENABLE_SCORECARDS`. Contact [Harness Support](mailto:support@harness.io) or IDP product team to enable the feature.
 
 :::
 
