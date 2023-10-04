@@ -1377,6 +1377,12 @@ The name of the infrastructure definition used in the pipeline stage.
 
 ![](./static/harness-variables-46.png)
 
+### <+infra.tags>
+
+The tags on the infrastructure where the expression is evaluated.
+
+To reference a specific tag use `<+infra.tags.TAG_KEY>`.
+
 ### <+infra.connectorRef>
 
 The Id of the connector used in the infrastructure definition.
