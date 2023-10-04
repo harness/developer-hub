@@ -34,14 +34,16 @@ Harness NextGen release 80811 includes the following changes for the Harness Del
 
 ### New features and enhancements
 
-- Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
+Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
 
    - `org.bouncycastle:bcpg-jdk15on:jar:1.70` to `org.bouncycastle:bcpg-jdk18on:jar:1.76`
    - `org.bouncycastle:bcpkix-jdk15on:jar:1.70` to `org.bouncycastle:bcpkix-jdk18on:jar:1.76`
    - `org.bouncycastle:bcprov-ext-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-ext-jdk18on:jar:1.76`
    - `org.bouncycastle:bcprov-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-jdk18on:jar:1.76`
 
+<!-- Add to 809xx or future release when feature is complete
 - You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-41063)
+-->
 
 ### Early access features
 
