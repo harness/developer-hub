@@ -18,7 +18,8 @@ By default, the Harness Delegate makes an anonymous outbound connection to the p
 
 :::tip
 
-Using credentialed access, instead of anonymous access, can prevent rate limiting or throttling issues when pulling images.
+* Using credentialed access, instead of anonymous access, can prevent rate limiting or throttling issues when pulling images.
+* You can also pull Harness images into your own private registry and then pull the images into your pipelines from your private registry. For guidance on how to do this, refer to [Configure STO to download images from a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
 :::
 
@@ -35,7 +36,7 @@ To edit this connector, you need [permissions](../../role-based-access-control/p
 
 3. Go to the **Details** settings.
 4. For **Provider Type**, select **Other (Docker V2 compliant)**.
-5. For **Docker Registry URL**, enter `https://console.cloud.google.com/gcr/images/gcr-prod/GLOBAL`.
+5. For **Docker Registry URL**, enter `gcr.io/gcr-prod`.
 6. For **Authentication**, select **Username and Password**, and provide a username and token to access GCR. The token needs **Read, Write, Delete** permissions.
 7. Select **Continue**.
 9. For **Select Connectivity Mode**, you can choose to connect through a Harness Delegate or the Harness Platform.
@@ -71,7 +72,7 @@ Although you will select the connector at the stage scope, you must create the [
 
 4. Select **Continue**.
 5. For **Provider Type**, select **Other (Docker V2 compliant)**.
-6. For **Docker Registry URL**, enter `https://console.cloud.google.com/gcr/images/gcr-prod/GLOBAL`.
+6. For **Docker Registry URL**, enter `gcr.io/gcr-prod`.
 7. For **Authentication**, select **Username and Password**, and provide a username and token to access GCR. The token needs **Read, Write, Delete** permissions.
 8. Select **Continue**.
 9. For **Select Connectivity Mode**, you can choose to connect through a Harness Delegate or the Harness Platform.
