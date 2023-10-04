@@ -19,7 +19,16 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: September 30, 2023
+## Latest: October 5, 2023
+
+## Continuous Delivery
+
+- You can now provide detailed feedback in the Harness AIDA chat in CD. (CDS-79769)
+
+  <docimage path={require('./static/73123e6efdd7d7dbc7c67b4a7df71bd42b1b20c8ba4cf409f87de0749da8dc92.png')} width="40%" height="40%" title="Click to view full size image" />  
+
+
+## September 30, 2023
 
 ### Self-Managed Enterprise Edition, version 80220
 

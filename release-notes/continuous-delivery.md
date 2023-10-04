@@ -19,31 +19,41 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe might not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page in your Harness account.
 :::
 
-## Upcoming RBAC enhancements for Harness customers using Policy as Code
+<details>
+<summary>Upcoming RBAC enhancements for Harness customers using Policy as Code</summary>
 
 import RbacForOpa from '/release-notes/shared/rbac-enhancements-for-opa-users.md'
 
 <RbacForOpa />
 
-## Deprecation notices
 
-### Helm 2
+</details>
+
+<details>
+<summary>Deprecation notices</summary>
+
+#### Helm 2
 
 import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 <Helmdep />
 
-### Kustomize
+#### Kustomize
 
 import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
 
 <Kustomizedep />
 
+</details>
+
 ## Latest: Harness version 809xx
 
 ### New features and enhancements
 
-This release does not include new features.
+- You can now provide detailed feedback in the Harness AIDA chat in CD. (CDS-79769)
+
+  <docimage path={require('./static/73123e6efdd7d7dbc7c67b4a7df71bd42b1b20c8ba4cf409f87de0749da8dc92.png')} width="40%" height="40%" title="Click to view full size image" />  
+
 
 ### Early access features
 
@@ -51,11 +61,11 @@ This release does not include Early Access features.
 
 ### Fixed issues
 
-- Fixed an issue when migrating service overrides from v1 to v2. The migration generated an invalid YAML object and failed with the error Invalid request: Override spec is empty in request. (CDS-80081)
+- Fixed an issue when migrating service overrides from v1 to v2. The migration generated an invalid YAML object and failed with the error `Invalid request: Override spec is empty in request`. (CDS-80081)
 
-- Fixed a search issue where searching by service showed no results, even choosing a deployment. (CDS-79822, ZD-51091)
+- Fixed a search issue where searching by service showed no results, even when choosing a deployment. (CDS-79822, ZD-51091)
 
-- The strategy step was getting skipped during post- prod rollback. This has been resolved and step will get executed based on the step condition. (CDS-79820, ZD-50920)
+- The step condition was skipped during [post deployment rollback](/docs/continuous-delivery/manage-deployments/rollback-deployments). This has been resolved and the step will be executed based on the step condition. (CDS-79820, ZD-50920)
 
 <!--
 
@@ -65,30 +75,23 @@ This was already documented in 808xx relnotes, see https://harness.atlassian.net
 
 -->
 
-- We have updated the internal Jenkins library to support long IDs for the Jenkins build. Previously the IDs supported were limited to int bounds. (CDS-79499, ZD-50718, ZD-50888).
+- We have updated the internal Jenkins library to support long Ids for the [Jenkins build step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-jenkins-jobs-in-cd-pipelines). Previously, the Ids supported were limited to int bounds. (CDS-79499, ZD-50718, ZD-50888).
 
-- Updated doc links in tooltips for the Shell Script step. (CDS-79429, ZD-50786)
+- Fixed an issue where an incorrect file path in a connector was passed and some pipeline executions failed with the error `Invalid request: Connector not found for identifier : [defaultParam] with scope: [PROJECT]`. (CDS-79360, ZD-50598)
 
-- Fixed an issue where some pipeline executions would fail with the error Invalid request: Connector not found for identifier : [defaultParam] with scope: [PROJECT]. (CDS-79360, ZD-50598)
+- Editing Harness expressions in settings was failing on FireFox. Users can now edit expressions in Firefox. (CDS-79162) 
 
-- Users can now edit expressions in Firefox. (CDS-79162) 
+- The UI for running pipelines has been improved to better distinguish between a **Runtime Input** (which you specify in **Run Pipeline**) and an **Execution Time Input** (which you specify during the pipeline execution). 
+  - Many runtime inputs can be configured as execution time inputs. The **Pipeline Execution** UI also provides popover text with useful information about any required execution time inputs. (CDS-77710)
 
-- The UI for running pipelines has been improved to better distinguish between a **Runtime Input** (which you specify in **Run Pipeline**) and an **Execution Time Input** (which you specify during the pipeline execution). Many runtime inputs can be configured as execution time inputs. The **Pipeline Execution** UI also provides popover text with useful information about any required execution time inputs. (CDS-77710)
+    ![](./static/cds-77710-set-runtime-input-as-execution-time-input.png)
 
-  ![](./static/cds-77710-set-runtime-input-as-execution-time-input.png)
+- Fixed pipeline execution issue with **Retry Intervals** setting in failure strategies. (CDS-76542)
+  - A user could not abort a pipeline execution or mark a stage as failed during the retry interval.
 
-- Fixed an issue observed in pipeline executions with Retry failure strategies: a user could not abort a pipeline execution or mark a stage as failed during the retry interval .(CDS-76542)
+- Fixed an issue causing script values in the run pipeline form to appear editable when they are not runtime inputs. (CDS-76331)
 
-- Fixed an issue causing read-only script editors in the run pipeline form to appear as editable editors. (CDS-76331)
-
-- Fixed a UI issue where dashboards got refreshed whenever a user selected a filter, which prolonged query times. With this fix, dashboards no longer refresh automatically when a user changes the filter. (CDB-1198, ZD-50972)
-
-
-
-
-
-### Hotfixes
-
+- Fixed dashboard refresh issue where selecting a filter prolonged query times. With this fix, dashboards no longer refresh automatically when a user changes the filter. (CDB-1198, ZD-50972)
 
 
 ## Previous releases
