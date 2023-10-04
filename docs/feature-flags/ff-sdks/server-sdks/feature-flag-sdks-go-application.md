@@ -214,7 +214,10 @@ target := dto.NewTargetBuilder("HT_1").
 
 Evaluating a Flag is when the SDK processes all Flag rules and returns the correct Variation of that Flag for the Target you provide. 
 
-If a matching Flag can’t be found, or the SDK can’t remotely fetch flags, the default value is returned. 
+If a matching Flag can’t be found, or the SDK can’t remotely fetch flags, the default value is returned. This will be indicated by:
+
+1. The SDK will log an `info` level log that the default variation was returned.
+2. Evaluation calls will return an `error` as well as the default variation that you can handle.
 
 There are different methods for the different Variation types and for each method you need to pass in:
 
