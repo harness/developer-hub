@@ -96,6 +96,6 @@ Select the branch from where you imported the Pipeline and continue.
 
 ### See also
 
-* [Manage Input Sets and Triggers in Simplified Git Experience​](manage-input-sets-in-simplified-git-experience.md)
+* [Manage input sets and triggers in simplified Git Experience​](manage-input-sets-in-simplified-git-experience.md)
 * [Manage a Harness Pipeline Repo Using Git Experience](manage-a-harness-pipeline-repo-using-git-experience.md)
 

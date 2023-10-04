@@ -174,6 +174,12 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
    5. Click **Continue**.
 
+### Reference JSON secrets
+
+import Refjson from '/docs/platform/secrets/shared/reference-via-json.md';
+
+<Refjson />
+
 ### Use the credentials of a specific delegate
 
 1. Select **Use the credentials of a specific Harness Delegate (IAM role, service account, managed identity, etc)**.

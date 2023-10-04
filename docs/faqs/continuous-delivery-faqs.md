@@ -427,11 +427,9 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 #### Can I create my deployments using YAML?
 
-Yes. Harness allows you to configure settings such as pipelines, triggers, connectors, environments, and services in Harness by using YAML. You can use YAML to achieve any configuration for which you would use the Harness platform GUI.
+Yes. Harness allows you to configure settings such as pipelines, triggers, connectors, environments, and services using [YAML in Harness](../platform/pipelines/harness-yaml-quickstart.md). You can use YAML to achieve any configuration for which you would use the Harness platform GUI.
 
 ![](./static/continuous-delivery-faqs-06.png)
-
-See [Harness YAML quickstart](../platform/pipelines/harness-yaml-quickstart.md).
 
 ### Harness Git Experience
 

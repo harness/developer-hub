@@ -1,6 +1,6 @@
 ---
 title: Harness CD upgrading FAQ
-description: Answers to common upgrade questions.
+description: Answers to common CD upgrade questions.
 sidebar_position: 1
 ---
 
@@ -15,6 +15,18 @@ For information on the differences between Harness FirstGen and NextGen, go to [
 <!-- Video:
 https://www.loom.com/share/ea58b72d294b44c38c89520e331a7c93?sid=27eac669-e34a-4c12-8d09-de62d0842bb6-->
 <docvideo src="https://www.loom.com/share/ea58b72d294b44c38c89520e331a7c93?sid=27eac669-e34a-4c12-8d09-de62d0842bb6" />
+
+### FirstGen Applications vs Project NextGen comparison
+
+<!-- Video:
+https://www.loom.com/share/62f698a3820e4542a471e4d40d41c686?sid=3dc6f3b9-9369-4133-9452-08795c597351-->
+<docvideo src="https://www.loom.com/share/62f698a3820e4542a471e4d40d41c686?sid=3dc6f3b9-9369-4133-9452-08795c597351" />
+
+### Variable expressions in FirstGen vs NextGen comparison
+
+<!-- Video:
+https://www.loom.com/share/f5c344b4ad074da388397c0328c743b3?sid=02c8ec5d-cab1-48f8-a47d-c1a0df81eb25 -->
+<docvideo src="https://www.loom.com/share/f5c344b4ad074da388397c0328c743b3?sid=02c8ec5d-cab1-48f8-a47d-c1a0df81eb25" />
 
 
 ## What is Harness Continuous Delivery NextGen?

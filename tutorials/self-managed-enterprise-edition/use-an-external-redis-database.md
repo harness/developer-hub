@@ -62,6 +62,10 @@ After you configure your firewall rules, you must install Redis. To install Redi
 
 ### Create your VMs
 
+import Strongpass from '/tutorials/shared/strong-passwords.md'
+
+<Strongpass />
+
 To create your VMs, do the following:
 
 1. Select the machine type based on the hardware requirements above.
@@ -185,15 +189,11 @@ To configure your Redis database, do the following:
 
 6. Set the database memory to 2GB.
 
-7. Skip the database password.
+7. Enter the database password.
 
-<!---
-7. Enter the database password. 
---->
+8. Select **Create**.
 
-9. Select **Create**.
-
-10. Copy the **Internal Endpoint** for later use.
+9. Copy the **Internal Endpoint** for later use.
 
 ### Test connectivity
 
@@ -235,14 +235,12 @@ After you've tested your connectivity, you're ready to configure your Harness en
 
 To configure your Harness environment and Helm chart, do the following:
 
-<!--- 
 - Create a secret in the namespace where harness is installed with following data
    ```yaml
    data:
      root-password: <REDIS_PASSWORD>
      root-username: ""
-   ``` 
---->
+   ```
 
 - Add the following override entries to your newly-installed Harness Redis instance.
 
@@ -253,25 +251,7 @@ To configure your Harness environment and Helm chart, do the following:
          installed: false
          hosts:
          - <YOUR_INTERNAL_ENDPOINT_AND_PORT>
-         secretName: ""
-         userKey: ""
-         passwordKey: ""
-   ```
-
-
-<!---
-```yaml
-   global:
-     database:
-       redis:
-         installed: false
-         hosts:
-         - <YOUR_INTERNAL_ENDPOINT_AND_PORT>
          secretName: "REDIS_SECRET"
          userKey: "ROOT_USERNAME"
          passwordKey: "ROOT_PASSWORD"
    ```
-
---->
-
-

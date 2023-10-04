@@ -348,5 +348,5 @@ To switch the referring child entity from a feature branch to a default branch, 
 
 ## Next steps
 
-* [Manage Input Sets and Triggers in Simplified Git Experience​](manage-input-sets-in-simplified-git-experience.md)
+* [Manage input sets and triggers in simplified Git Experience​](manage-input-sets-in-simplified-git-experience.md)
 
