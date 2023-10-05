@@ -24,11 +24,24 @@ The Harness UI is organized into several key areas. This topic explains how you 
 - View subscription details.
 - Navigate and select modules.
 
-```mdx-code-block
-<img src={new_left_nav} alt="new-left-nav" height="50" width="200" />
-```
+## Harness Navigation version 2.0
+
+:::note
+
+Currently, Harness Navigation version 2.0 is behind the feature flag `CDS_NAV_2_0`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 
+The new navigation is designed to cater to different personas, address their needs, and reduce task completion time. Once the navigation is enabled on your account, you will notice a different side panel and modules menu on the top. 
+
+We have introduced a multi-module mode and a single module mode for working across multiple modules or focusing on a specific module. You can configure the side panel to show or hide specific modules. 
+
+This video provides a walkthrough of the new navigation experience and highlights its benefits.
+
+<!-- Video:
+https://www.loom.com/share/776bbe67da47483598a07196aec3915f?sid=fda91036-713d-4201-a8b6-7cc44cd2e07f-->
+<docvideo src="https://www.loom.com/share/776bbe67da47483598a07196aec3915f?sid=fda91036-713d-4201-a8b6-7cc44cd2e07f" />
 
 
 ## Projects
