@@ -68,7 +68,7 @@ Pod API modify body:
       </tr>
       <tr>
         <td> DESTINATION_PORTS </td>
-        <td> comma-seperated list of the destination service or host ports for which `egress` traffic should be affected </td>
+        <td> comma-separated list of the destination service or host ports for which `egress` traffic should be affected </td>
         <td> Default: 80,8443. For more information, go to <a href="#destination-ports">destination ports</a></td>
       </tr>
       <tr>
