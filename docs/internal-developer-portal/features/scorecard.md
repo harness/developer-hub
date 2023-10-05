@@ -92,6 +92,22 @@ Scorecard has two main UI components which are developer facing and lives in the
 ```
 <docimage path={require('../../internal-developer-portal/features/static/entity.png')}/>
 
+5. #### Add Scorecard for your Entity
+
+  - Go to the `Scorecards` tab under `Admin` and **Create New Scorecard**. 
+  - Add a `Name` to it and give the criteria to **Filter your catalog entities**.
+  - Followed by adding the `Checks` and then select **Publish Scorecard**.
+
+  <docimage path={require('../../internal-developer-portal/features/static/rename-scorecard.png')}/>
+
+  :::caution
+
+  Make sure the values under `Filter catalog entities for which the scorecard is evaluated` should match with your entity `owner` & `type` as shown below
+
+  <docimage path={require('../../internal-developer-portal/features/static/caution-idp-scorecard.png')}/>
+
+  :::
+
 #### Removing/Disabling Scorecards
     
 - Comment out the Scorecard related lines added under `Layout` tab as mentioned above to remove the scorecard components from the Catalog pages. 
