@@ -965,3 +965,23 @@ You can refer the documentation here [Documentation](https://developer.harness.i
 #### Do we need to provide both `sso_group_id` and `sso_group_name` and should they match?
 
 Yes we need to provide both, The value provided for both `sso_group_id` and `sso_group_name`  should be same.
+
+#### OKTA login goes to gen1 interface
+Need to change Default Experience to Harness Next generation under Account Overview
+
+#### How to scale delegate replicas
+You can update autoscaling parameters in values yaml
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+
+#### Approval notification is not getting triggered inspire of correct user group is selected
+Please check and verify if the user group selected has any channel(email/slack etc) is configured under Notification Preferences
+
+#### Do we need to enable authorization for sso needs to work while setting up saml.
+Authorization is used for group mapping and its optional and not required for sso login to work
+
+#### How to use custom helm3 version in CG legacy delegate
+You can install the latest version and need to set the env variable till the binary path HELM3_PATH=/opt/harness-delegate/client-tools/helm
