@@ -32,40 +32,30 @@ Question Type: Multiple choice
 
 The following is a detailed list of exam objectives:
 
-| # | Objectives |
-|--------|-------|
-| 1 | **Understanding and Configuring Deployment Architectures** |
-| 1.1 | Define what deployment means and what makes it continuous. |
-| 1.2 | Explain different application architectures. |
-| 1.3 | Identify the necessary artifacts, manifests, and services for a deployment. |
-| 2 | **Exploring Kubernetes Deployment & Manifests** |
-| 2.1 | Understand the purpose and use of Kubernetes manifests (flat file, helm, etc.) |
-| 2.2 | Identify and configure overrides for service variables (secrets, non-secrets). |
-| 2.3 | Understand the concept of basic, rolling, canary, and blue/green deployments. |
-| 3 | **Deployment Environment Configuration** |
-| 3.1 | Understand and set up environments for your Kubernetes deployment, including Prod and Non-prod. |
-| 3.2 | Describe and configure infrastructure definitions and overrides for an environment. |
-| 4 | **Application Tagging and Deployment Strategies** |
-| 4.1 | Learn about tagging, labeling, identifiers, and their uses. |
-| 4.2 | Understand and configure rolling, canary, and blue/green deployments for different application types. |
-| 5 | **Mastering Continuous Delivery** |
-| 5.1 | Automate deployments in your environment. |
-| 5.2 | Identify pre-deployment steps and set up triggers. |
-| 5.3 | Describe and configure Policy as Code, ticketing, documentation, fetching process, approval process, and failure strategies. |
-| 6 | **Diving into Continuous Verification** |
-| 6.1 | Identify deployment verification types. |
-| 6.2 | Understand verification through deployment logs and deployment health checks. |
-| 6.3 | Monitor server health and execution checks during a deployment. |
-| 7 | **Leveraging GitOps** |
-| 7.1 | Explain the principles, use cases, and benefits of GitOps. |
-| 7.2 | Install the GitOps agent and connect your Kubernetes cluster and application repository to Harness. |
-| 7.3 | Set up an application in Harness using GitOps. |
-| 8 | **Gaining Data Visibility** |
-| 8.1 | Describe dashboards. |
-| 8.2 | Configure notifications, alerts, and tagging and labeling for governance and reporting. |
-| 9 | **Ensuring Security** |
-| 9.1 | Understand two-factor authentication (2FA). |
-| 9.2 | Describe Role-Based Access Control (RBAC) and built-in roles. |
+| #   | Objectives                                        |
+|-----|---------------------------------------------------|
+| 1   | **Implement and Optimize Cloud Cost Management**  |
+| 1.1 | Define and Streamline FinOps Strategies.          |
+| 1.2 | Allocate and Track Cloud Expenses.               |
+| 2   | **Efficiently Manage Cloud Resources**            |
+| 2.1 | Automate Resource Management.                    |
+| 2.2 | Implement Asset Governance.                      |
+| 3   | **Achieve Transparency in Cloud Spending**        |
+| 3.1 | Develop Insights into Spending.                  |
+| 3.2 | Address Unallocated Costs.                       |
+| 4   | **Optimize and Right-Size Resources**             |
+| 4.1 | Implement Resource Optimization Recommendations. |
+| 4.2 | Rightsize Cloud Resources.                       |
+| 5   | **Enabling Efficient Cloud Governance and Compliance** |
+| 5.1 | Enhance Cloud Asset Governance.                  |
+| 5.2 | Tag and Track AWS Resources.                     |
+| 6   | **Manage and Allocate Budgets Effectively**       |
+| 6.1 | Allocate Budgets to Different Units.             |
+| 6.2 | Manage and Monitor Budgets.                      |
+| 7   | **Provide Comprehensive Data and Analytics**      |
+| 7.1 | Enable Data Availability and Analytics.          |
+| 7.2 | Set Up and Utilize Dashboards.                   |
+
 
 
 </details>
@@ -74,7 +64,7 @@ The following is a detailed list of exam objectives:
 
 ## Next Steps
 
-The Continuous Delivery Developer exam can start immediately after registering. Please allow up to 90 mins for the exam.
+The Cloud Cost Management Developer exam can start immediately after registering. Please allow up to 90 mins for the exam.
 
 1. Create an account in Harness University
 2. Register for an exam 
