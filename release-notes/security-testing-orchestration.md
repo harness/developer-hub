@@ -25,7 +25,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - This release includes the following UI enhancements for working with exemptions. (STO-6078)
 
-  - You can click on a row in the **Exemptions** table to view details for that exemption.
+  - You can click on a row in the **Exemptions** table to view details for the issue associated with that exemption.
 
     ![](static/sto-click-row-to-view-exemptions.png)
 
@@ -33,7 +33,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
     ![](static/sto-exemption-details-no-baseline-selected.png)
 
-  These enhancements are behind the Feature Flag `FF_STO_EXEMPTION_DETAILS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
+  These enhancements are behind the Feature Flag `STO_EXEMPTION_DETAILS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
 
 
 ### Early access
