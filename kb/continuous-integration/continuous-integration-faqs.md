@@ -480,3 +480,13 @@ Yes, for details, go to [https://developer.harness.io/docs/continuous-integratio
 #### Does Harness CI support script execution?
 
 Yes, for details, go to [Run scripts](https://developer.harness.io/docs/category/run-scripts).
+
+#### Why are my builds from over 30 days ago not appearing on the Project Overview page?
+
+Often overlooked, you can check the timescale for the overview page. By default, it is set to 30 days. 
+
+
+#### Builds dashboard is not showing a previous deployment, why? 
+
+Please check the timescale control on the dashboard. This is set to 30 days by default. You can adjust this scale to display older builds. 
+
