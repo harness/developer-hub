@@ -21,6 +21,8 @@ With notification settings, you can add domain allowlists for notification chann
 
 To add a domain filter to a notification channel, navigate to **Account Settings** > **Account Resources** > **Default Settings** > **Notifications** in the Harness platform and add the fixed URL domain to the corresponding notification setting.
 
+![](./static/notification-settings-url-filters.png)
+
 You can add domain filter to the following notification channels:
 - Email
 - Slack
@@ -28,4 +30,4 @@ You can add domain filter to the following notification channels:
 - Webhooks
 - PagerDuty
 
-Once a domain is added to a notification channel's domain allowlist, no notifications will be sent to recipients whose domains are not present in the allowlist for that channel. This applies to both existing and new recipients until their domain is added to the channel's domain allowlist.
+When a domain is added to a notification channel's domain allowlist, only recipients whose domains are present in the allowlist will receive notifications from that channel. This applies to both existing and new recipients until their domain is added to the channel's domain allowlist.
