@@ -47,6 +47,9 @@ This release does not include early access features.
   - Users with view access for Security Issues at the Project level, but not the Account level, could not view issue details. (STO-6421)
 
   - Some scanners such as Gitleaks would appear with the label **Unknown Scan Tool** rather than the correct product name. (STO-6454) (STO-6337)
+ 
+  - The page size selected on the Occurrences page no longer resets on viewing a different issue. (STO-6472)
+
 
 
 ### Hotfixes
