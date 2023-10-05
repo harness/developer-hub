@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 :::info
 
-Currently, this feature is behind the feature flag, ` IDP_ENABLE_SCORECARDS`, addditonally `IDP_ENABLE_EDIT_HARNESS_CI_CD_PLUGIN` feature flag is required to add the scorecards. Contact [Harness Support](mailto:support@harness.io) or IDP product team to enable the feature.
+Currently, this feature is behind the feature flag, ` IDP_ENABLE_SCORECARDS`, additonally `IDP_ENABLE_EDIT_HARNESS_CI_CD_PLUGIN` feature flag is required to add the scorecards. Contact [Harness Support](mailto:support@harness.io) or IDP product team to enable the feature.
 
 :::
 
@@ -34,7 +34,7 @@ Scorecards play a pivotal role in ensuring software components are developed and
 
 :::info
 
-Few steps like `add proxy` for plugin configuration and layout update will be obsolete in the upcoming releases. They will be handled automatically.
+Few steps like `add proxy` for plugin configuration and `Layout` update will be obsolete in the upcoming releases. They will be handled automatically.
 
 ::: 
 
@@ -94,8 +94,8 @@ Scorecard has two main UI components which are developer facing and lives in the
 
 #### Removing/Disabling Scorecards
     
-    - Comment out the Scorecard related lines added under `Layout` tab as mentioned above to remove the scorecard components from the Catalog pages. 
+- Comment out the Scorecard related lines added under `Layout` tab as mentioned above to remove the scorecard components from the Catalog pages. 
 
-    - Another way to **disable** the scorecards feature is to change the status of all the scorecards you have to "draft". This will ensure that the computation will not run, and will not be shown to the developer. 
+- Another way to **disable** the scorecards feature is to change the status of all the scorecards you have to "draft". This will ensure that the computation will not run, and will not be shown to the developer. 
 
 <docimage width="1750vw" path={require('../../internal-developer-portal/features/static/remove-scorecard.png')}/>
