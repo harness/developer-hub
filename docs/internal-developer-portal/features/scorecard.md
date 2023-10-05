@@ -1,6 +1,6 @@
 ---
 title: Scorecards
-description: Measure software maturity and best practices
+description: Measure software maturity and enforce best practices
 sidebar_position: 3
 helpdocs_topic_id:
 helpdocs_category_id:
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 :::info
 
-Currently, this feature is behind the feature flag, ` IDP_ENABLE_SCORECARDS`. Contact [Harness Support](mailto:support@harness.io) or IDP product team to enable the feature.
+Currently, this feature is behind the feature flag, ` IDP_ENABLE_SCORECARDS`, addditonally `IDP_ENABLE_EDIT_HARNESS_CI_CD_PLUGIN` feature flag is required to add the scorecards. Contact [Harness Support](mailto:support@harness.io) or IDP product team to enable the feature.
 
 :::
 
@@ -34,13 +34,13 @@ Scorecards play a pivotal role in ensuring software components are developed and
 
 :::info
 
-Few steps like `add proxy` for plugin configuration will be obsolete in the upcoming release and you will be required to add scorecards under the `Scorecard` tab under `Admin` with adequate checks. 
+Few steps like `add proxy` for plugin configuration and layout update will be obsolete in the upcoming releases. They will be handled automatically.
 
 ::: 
 
-1. #### Enable Sccorecards
+1. #### Enable Scorecards
 
-    - **Add Proxy to Harness ci-cd plugin** as mentioned below by navigating to the `Plugin` tab under `Admin` section in the left nav bar. 
+    - **Add Proxy to Harness CI/CD plugin** as mentioned below by navigating to the `Plugin` tab under `Admin` section in the left nav bar. 
 
 ```
   /harness/scorecard:
@@ -59,13 +59,13 @@ Few steps like `add proxy` for plugin configuration will be obsolete in the upco
 
 ### Scorecard Components in IDP
 
-Scorecard is available in IDP as an independent entity as well as in overview tab as illustrated below. The entity tab contains detailed comprehensive information as shown in the image under [overview](/docs/internal-developer-portal/features/scorecard#overview)
+Scorecard has two main UI components which are developer facing and lives in the Catalog - 1. A small `Card` for the Overview page with the scores and, 2. A `Tab` view with details of the checks and how the score got computed. This is illustrated below. The Tab view contains detailed comprehensive information as shown in the image under [overview](/docs/internal-developer-portal/features/scorecard#overview)
 
 <docimage path={require('../../internal-developer-portal/features/static/scorecard-overviewpage.png')}/>
 
 2. #### Adding Card and Tab Content for an Entity
 
-    - Go to the `Layout` section in IDP `Admin`, and select the **entity kind** for which you want to add scorecards.
+    - Go to the `Layout` section in IDP `Admin`, and select "Service" or any other kind of catalog entity for which you want to add scorecards.
 
 3. #### Adding Scorecard Card to the overview tab
     
@@ -92,10 +92,10 @@ Scorecard is available in IDP as an independent entity as well as in overview ta
 ```
 <docimage path={require('../../internal-developer-portal/features/static/entity.png')}/>
 
-5. #### Removing/Disabling Scorecards
+#### Removing/Disabling Scorecards
     
-    - Comment out the lines added under `Layout` tab to remove the scorecard. 
+    - Comment out the Scorecard related lines added under `Layout` tab as mentioned above to remove the scorecard components from the Catalog pages. 
 
-    - Another way to **disable** the scorecard is to convert the same into draft post publishing and it will be disabled as illustrated below. 
+    - Another way to **disable** the scorecards feature is to change the status of all the scorecards you have to "draft". This will ensure that the computation will not run, and will not be shown to the developer. 
 
 <docimage width="1750vw" path={require('../../internal-developer-portal/features/static/remove-scorecard.png')}/>
