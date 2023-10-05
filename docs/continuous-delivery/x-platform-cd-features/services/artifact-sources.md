@@ -2956,7 +2956,7 @@ To add an artifact from Artifactory, do the following:
 
 4. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
 
-    You can use a regex to select the most recent image. Suppose you have a set of images with tags `3.1.1`, `3.1.2`, `3.1.3.1`, `3.1.3.2`, and `3.1.3.4`. Select **Regex**, then set **Tag Regex** `3.1*` to select the most recent image, in this case the image with tag `3.1.3.4`.
+    You can use a regex to select an image based on a matching pattern. Suppose you have a set of images with tags `3.1.1`, `3.1.2`, `3.1.3.1`, `3.1.3.2`, and `3.1.3.4`. Select **Regex**, then set **Tag Regex** `3.1*` to select the most recent image with prefix `3.1`, in this case the image with tag `3.1.3.4`.
     
     ![](static/kubernetes-services-16-docker.png)
 5. If you use runtime inputs when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
@@ -2990,9 +2990,9 @@ To add an artifact from Artifactory, do the following:
 3. Specify the artifacts you want to deploy.
  
    - If you selected **Artifact Directory**:
-     1. In **Artifact Directory**, enter the path to the artifacts. If the full path is `my-apps/myticketservice/1.0/ticket-service-1.0.jar`, you would enter `/myticketservice/1.0`.
-     2. Set **Artifact Details** to **Value** or **Regex** (useful if you want to fetch multiple artifacts). 
-     3. Specify the the value or the regex for the artifacts.
+     1. In **Artifact Directory**, enter the path to the artifacts. If the full path is `my-apps/myticketservice/1.0/ticket-service-1.0.jar`, you would enter `myticketservice/1.0`.
+     2. Set **Artifact Details** to **Value** or **Regex** (to select an artifact based on a pattern). 
+     3. Specify the value or the regex for the artifacts.
         
         If you selected **Regex**, enter the **Artifact Path Filter** for the artifacts you want to fetch. For example, suppose your service has a front end and a back end, and you store the latest artifacts in a `/latest` subfolder, like this:
             `/myService/latest/front-service.zip`
@@ -3006,9 +3006,10 @@ To add an artifact from Artifactory, do the following:
       - `*.zip` : Fetch all `.zip` artifacts in the root directory.
       - `folder/*` : Fetch all artifacts contained in directory `folder`.
       - `folder/*.zip` : Fetch all `.zip` artifacts contained in directory `folder`.
-      - `folder/*/*` : Fetch all artifacts from sub-directories under `folder`.
+      - `folder/*/*` : Fetch all artifacts from all directories/sub-directories matching `folder`, for example `folder`, `folder123`, `folder/x/y/z`, etc.  
       - `folder/*/*.zip` : Fetch all `.zip` artifacts from sub-directories under `folder`.
-      - `folder*/*` : Fetch all artifacts from subdirectories under folders with names that match `folder*`.   
+      - `folder*/*` : Fetch all artifacts from subdirectories under `folder` with names that match `folder*`, for example `folder/folder1`, `folder/folder1/folder2`, `folder/folder1/folder2/folder3`, etc.
+   
       :::note
 
       You cannot apply a filter that finds BOTH artifacts in a folder AND all subdirectories under that folder. Thus `folder/*` finds artifacts in `folder` but no subdirectories, and `folder/*/*` finds artifacts in all subdirectories but not in `folder`. 
