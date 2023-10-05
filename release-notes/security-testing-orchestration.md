@@ -23,6 +23,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
+This release does not include new features. 
+
+### Early access
+
 - This release includes the following UI enhancements for working with exemptions. (STO-6078)
 
   - You can click on a row in the **Exemptions** table to view details for the issue associated with that exemption.
@@ -35,21 +39,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   These enhancements are behind the Feature Flag `STO_EXEMPTION_DETAILS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
 
-
-### Early access
-
-This release does not include early access features. 
-
 ### Fixed issues
 
-- Fixed the following UI issues in in **Security Tests**: 
-
-  - Users with view access for Security Issues at the Project level, but not the Account level, could not view issue details. (STO-6421)
-
-  - Some scanners such as Gitleaks would appear with the label **Unknown Scan Tool** rather than the correct product name. (STO-6454) (STO-6337)
- 
-  - The page size selected on the Occurrences page no longer resets on viewing a different issue. (STO-6472)
-
+- Occurrences page size longer resets on page update. (STO-6472)
 
 
 ### Hotfixes
