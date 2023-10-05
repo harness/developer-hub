@@ -108,7 +108,42 @@ client, err := harness.NewCfClient(myApiKey, 
  harness.WithPullInterval(1),  
  harness.WithStreamEnabled(false))
 ```
-### Add a Target
+### Block initialization 
+
+By default, when initializing the Harness Feature Flags client, the initialization process is non-blocking. This means that the client creation call returns immediately, 
+allowing your application to continue its startup process without waiting for the client to be fully initialized. 
+
+In some cases, you may want your application to wait for the client to finish initializing before continuing. To achieve this, you can use the `WithWaitForInitialized` option, which blocks until the client is fully initialized. Example usage:
+
+```go
+client, err := harness.NewCfClient(sdkKey, harness.WithWaitForInitialized(true))
+
+if err != nil {
+log.ErrorF("could not connect to FF servers %s", err)
+}
+```
+
+
+In this example, WaitForInitialized blocks for up to 5 authentication attempts. If the client is not initialized within 5 authentication attempts, it returns an error.
+
+This can be useful if you need to unblock after a certain time. 
+
+:::note
+
+If you evaluate a feature flag in this state, the default variation is returned.
+
+:::
+
+```go
+// Try to authenticate only 5 times before returning a result
+client, err := harness.NewCfClient(sdkKey, harness.WithWaitForInitialized(true), harness.WithMaxAuthRetries(5))
+
+if err != nil {
+log.Fatalf("client did not initialize in time: %s", err)
+}
+```
+
+### Add a target
 
 <details>
 <summary>What is a Target?</summary> 
@@ -184,7 +219,10 @@ target := dto.NewTargetBuilder("HT_1").
 
 Evaluating a Flag is when the SDK processes all Flag rules and returns the correct Variation of that Flag for the Target you provide. 
 
-If a matching Flag can’t be found, or the SDK can’t remotely fetch flags, the default value is returned. 
+If a matching Flag can’t be found, or the SDK can’t remotely fetch flags, the default value is returned. This will be indicated by:
+
+1. The SDK will log an `info` level log that the default variation was returned.
+2. Evaluation calls will return an `error` as well as the default variation that you can handle.
 
 There are different methods for the different Variation types and for each method you need to pass in:
 
