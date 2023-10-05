@@ -240,13 +240,13 @@ matrix:
 
 If the matrix strategy produces more instances than are allowed by the `maxConcurrency`, the additional instances are queued.
 
-### Customise names of Matrix stages
+### Customize matrix stage names
 
-By default, Harness uses indices for the matric naming strategy (stages are named with indices like _2_2, _1_3, and so on). If you prefer, you can customize this naming convention for better readability. There are two ways to do this: 
+By default, Harness uses indices for the matrix naming strategy (stages are named with indices like _2_2, _1_3, and so on). If you prefer, you can customize this naming convention for better readability. There are two ways to do this: 
 
-####Use matrix axes as stage labels
+#### Use matrix axes as stage labels
 
-You can turn on a setting ar account, organization or project level to use the names of the matrix indices as labels. 
+You can turn on a setting at the account, organization, or project level to use the names of the matrix indices as labels. 
 
 1. Navigate to the **Default Settings** for your account, organization, or project:
    * To modify account settings, select **Account Settings**, select **Account Resources**, and then select **Default Settings**.
@@ -256,9 +256,9 @@ You can turn on a setting ar account, organization or project level to use the n
 3. Set **Enable Matrix Labels By Name** to **True**.
 4. Select **Save**.
 
-####Use a custom label for matrix stages
+#### Use a custom label for matrix stages
 
-You can use the keyword `nodeName` when specifying your Matrix axes, to define your stage naming convention. Expressions are supported, so you can customize the name as required. For example: 
+You can use the keyword `nodeName` when specifying your matrix axes to define your stage naming convention. Expressions are supported, so you can customize the name as required. For example: 
 
 ```yaml
 matrix:
@@ -266,7 +266,6 @@ matrix:
   env: [env1, env2]
   nodeName: stage_<+matrix.service>_<+matrix.env>
 ```
-
 
 ### Matrix examples and best practices
 
