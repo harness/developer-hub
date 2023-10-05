@@ -24,10 +24,6 @@ The Harness UI is organized into several key areas. This topic explains how you 
 - View subscription details.
 - Navigate and select modules.
 
-```mdx-code-block
-<img src={new_left_nav} alt="new-left-nav" height="50" width="200" />
-```
-
 ## Harness Navigation version 2.0
 
 :::note
