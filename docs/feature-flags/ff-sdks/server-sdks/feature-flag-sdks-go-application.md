@@ -108,12 +108,12 @@ client, err := harness.NewCfClient(myApiKey, 
  harness.WithPullInterval(1),  
  harness.WithStreamEnabled(false))
 ```
-### Blocking Initialization 
+### Block initialization 
 
-By default, when initializing the Harness Feature Flags client, the initialization process is non-blocking. This means that the client creation call will return immediately, 
+By default, when initializing the Harness Feature Flags client, the initialization process is non-blocking. This means that the client creation call returns immediately, 
 allowing your application to continue its startup process without waiting for the client to be fully initialized. 
 
-In some cases, you may want your application to wait for the client to finish initializing before continuing. To achieve this, you can use the `WithWaitForInitialized` option, which will block until the client is fully initialized. Example usage:
+In some cases, you may want your application to wait for the client to finish initializing before continuing. To achieve this, you can use the `WithWaitForInitialized` option, which blocks until the client is fully initialized. Example usage:
 
 ```go
 client, err := harness.NewCfClient(sdkKey, harness.WithWaitForInitialized(true))
@@ -124,10 +124,15 @@ log.ErrorF("could not connect to FF servers %s", err)
 ```
 
 
-In this example, WaitForInitialized will block for up to 5 authentication attempts. If the client is not initialized within 5 authentication attempts, it will return an error.
+In this example, WaitForInitialized blocks for up to 5 authentication attempts. If the client is not initialized within 5 authentication attempts, it returns an error.
 
-This can be useful if you need to unblock after a certain time. **NOTE**: if you evaluate a feature flag in this state
-the default variation will be returned.
+This can be useful if you need to unblock after a certain time. 
+
+:::note
+
+If you evaluate a feature flag in this state, the default variation is returned.
+
+:::
 
 ```go
 // Try to authenticate only 5 times before returning a result
@@ -138,7 +143,7 @@ log.Fatalf("client did not initialize in time: %s", err)
 }
 ```
 
-### Add a Target
+### Add a target
 
 <details>
 <summary>What is a Target?</summary> 
