@@ -87,7 +87,8 @@ In **Name**, enter the name for the new Agent.
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 
-If **Namespaced** is selected, the Agent will only be able to access resources in the namespace where it is installed. If **Namespaced** is selected, Harness GitOps Agent will be installed without cluster-scoped permissions, additionally you can select **Skip Crds** to avoid collision if already installed.
+If **Namespaced** is selected, the Harness GitOps agent is installed without cluster-scoped permissions, and it can access only those resources that are in its own namespace. You can select **Skip Crds** to avoid a collision if already installed.
+
 Select **Next**. The **Download YAML** or **Download Helm Chart** settings appear.
 
 ![](./static/install-a-harness-git-ops-agent-95.png)
