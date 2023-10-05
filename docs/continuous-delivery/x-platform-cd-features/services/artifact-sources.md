@@ -3006,7 +3006,7 @@ To add an artifact from Artifactory, do the following:
       - `*.zip` : Fetch all `.zip` artifacts in the root directory.
       - `folder/*` : Fetch all artifacts contained in directory `folder`.
       - `folder/*.zip` : Fetch all `.zip` artifacts contained in directory `folder`.
-      - `folder/*/*` : Fetch all artifacts under `folder`, for example `folder/folder1`, `folder/folder1/folder2`, `folder/folder1/folder2/folder3`, etc.
+      - `folder/*/*` : Fetch all artifacts from all directories/sub-directories under `folder`, for example `folder/folder1`, `folder/folder1/folder2`, `folder/folder1/folder2/folder3`, etc.
       - `folder/*/*.zip` : Fetch all `.zip` artifacts from all directories/sub-directories under `folder`.
       - `folder*/*` : Fetch all artifacts from directories/sub-directories that match `folder*`, for example `folder`, `folder123`, `folder/x/y/z`, etc. 
 
