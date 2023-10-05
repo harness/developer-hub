@@ -175,12 +175,6 @@ In **Service Account Token Path** enter the JSON Web Token (JWT) path. This is t
 
 For more information, go to [Service Account Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens) in the Kubernetes documentation.
 
-### Option: Reference JSON secrets
-
-import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
-
-<Refj />
-
 ### Step 2: Select Secret Engine and Version
 
 Once you have entered the required fields, you can choose to **Fetch Engines** or **Manually Configure Engine**.
@@ -272,3 +266,10 @@ Important: ​Harness tests connections by creating a dummy secret in the Secret
 The Test Connection fails if you do not have Create permission. However, Harness still creates the Connector for you. You may use this Connector to read secrets, if you have View permissions.
 
 :::
+
+### Reference JSON secrets
+
+import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
+
+<Refj />
+
