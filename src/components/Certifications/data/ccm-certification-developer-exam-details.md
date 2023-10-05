@@ -10,17 +10,15 @@ The Cloud Cost Management Developer exam tests your knowledge and skills of the 
 Exam Duration: 90 minutes <br/>
 Question Type: Multiple choice
 
-| Covered Domain                                         | Percentage |
-|------------------------------------------------|------------|
-| Understanding and Configuring Deployment Architectures | 10%       |
-| Exploring Kubernetes Deployment & Manifests     | 15%       |
-| Deployment Environment Configuration            | 10%       |
-| Application Tagging and Deployment Strategies  | 15%       |
-| Mastering Continuous Delivery                  | 20%       |
-| Diving into Continuous Verification            | 10%       |
-| Leveraging GitOps                              | 10%       |
-| Gaining Data Visibility                        | 5%        |
-| Ensuring Security                              | 5%        |
+| Covered Domain                                           | Percentage |
+|----------------------------------------------------------|------------|
+| Implement and Optimize Cloud Cost Management             | 25%        |
+| Efficiently Manage Cloud Resources                       | 20%        |
+| Achieve Transparency in Cloud Spending                   | 15%        |
+| Optimize and Right-Size Resources                        | 10%        |
+| Enabling Efficient Cloud Governance and Compliance       | 15%        |
+| Manage and Allocate Budgets Effectively                  | 10%        |
+| Provide Comprehensive Data and Analytics                 | 5%         |
 
 
 <br />
