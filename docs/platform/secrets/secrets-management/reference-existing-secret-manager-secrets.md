@@ -219,7 +219,7 @@ To dynamically reference secrets in GCP secret manager, make sure you use the ex
 `<+secrets.getValue()>`
 :::
 
-## Reference JSON secrets
+### Option: Reference JSON secrets
 
 Harness supports the ability to reference JSON secrets for the following secret managers.
 

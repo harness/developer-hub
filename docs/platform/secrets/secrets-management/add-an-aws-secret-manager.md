@@ -147,6 +147,12 @@ This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/I
 
 Refer to [Secret Name Prefix](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md#secret-name-prefix) and [Region](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md#region) explained above to add these details.
 
+### Option: Reference JSON secrets
+
+import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
+
+<Refj />
+
 #### Role ARN
 
 Enter the Amazon Resource Name (ARN) of the role that you want to assume. This role is an IAM role in the target deployment AWS account.
@@ -168,9 +174,3 @@ In **Setup Delegates,** enter [**Selectors**](../../delegates/manage-delegate
 ### Step 5: Test Connection
 
 Once the Test Connection succeeds, click Finish. You can now see the Connector in Connectors.​
-
-## Reference JSON secrets
-
-import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
-
-<Refj />

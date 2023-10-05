@@ -53,6 +53,7 @@ For more information, go to [Vault documentation](https://www.vaultproject.io/
 Select the **Authentication** Type.
 
 ![](../../secrets/static/add-hashicorp-vault-20.png)
+
 ### Option: App Role
 
 The App Role option enables the Harness Vault Secret Manager to authenticate with Vault-defined roles.
@@ -174,6 +175,12 @@ In **Service Account Token Path** enter the JSON Web Token (JWT) path. This is t
 
 For more information, go to [Service Account Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens) in the Kubernetes documentation.
 
+### Option: Reference JSON secrets
+
+import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
+
+<Refj />
+
 ### Step 2: Select Secret Engine and Version
 
 Once you have entered the required fields, you can choose to **Fetch Engines** or **Manually Configure Engine**.
@@ -243,12 +250,6 @@ If required by your organization's security practices, select the **Read-only V
 ![](../../secrets/static/add-hashicorp-vault-30.png)
 
 Once you have filled out the required fields, click **Finish**.
-
-## Reference JSON secrets
-
-import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
-
-<Refj />
 
 ##### Read-only Limitations
 

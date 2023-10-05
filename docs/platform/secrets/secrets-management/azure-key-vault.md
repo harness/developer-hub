@@ -174,12 +174,6 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
    5. Click **Continue**.
 
-## Reference JSON secrets
-
-import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
-
-<Refj />
-
 ### Use the credentials of a specific delegate
 
 1. Select **Use the credentials of a specific Harness Delegate (IAM role, service account, managed identity, etc)**.
@@ -215,3 +209,9 @@ Once the Test Connection succeeds, click Finish. You can now see the Connector i
 Important: Harness tests connections by generating a fake secret in the Secret Manager or Vault. For the Test Connection to function successfully, make sure you have the Create permission for secrets.  
 The Test Connection fails if you do not have the Create permission. However, Harness still creates the Connector for you. You may use this Connector to read secrets if you have View permissions.
 :::
+
+## Reference JSON secrets
+
+import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
+
+<Refj />
