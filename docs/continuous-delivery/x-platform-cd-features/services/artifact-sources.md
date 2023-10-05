@@ -3000,15 +3000,15 @@ To add an artifact from Artifactory, do the following:
         To fetch both artifacts, you can specify `/myService` for the artifact directory and `latest/*.zip` for the artifact path filter.
 
    - If you selected **Artifact Filter**, enter an expression that matches the artifacts you want to fetch. Here are some examples of expressions you can use:
-      - `*/*` : Fetch all artifacts from all directories including their sub-directories.
-      - `*/*.zip` : Fetch all `.zip` artifacts from all directories, including sub-directories.
+      - `*/*` : Fetch all artifacts from all directories including their subdirectories.
+      - `*/*.zip` : Fetch all `.zip` artifacts from all directories, including subdirectories.
       - `*`: Fetch all artifacts in the root directory.
       - `*.zip` : Fetch all `.zip` artifacts in the root directory.
       - `folder/*` : Fetch all artifacts contained in directory `folder`.
       - `folder/*.zip` : Fetch all `.zip` artifacts contained in directory `folder`.
-      - `folder/*/*` : Fetch all artifacts from all directories/sub-directories under `folder`, for example `folder/folder1`, `folder/folder1/folder2`, `folder/folder1/folder2/folder3`, etc.
-      - `folder/*/*.zip` : Fetch all `.zip` artifacts from all directories/sub-directories under `folder`.
-      - `folder*/*` : Fetch all artifacts from directories/sub-directories that match `folder*`, for example `folder`, `folder123`, `folder/x/y/z`, etc. 
+      - `folder/*/*` : Fetch all artifacts from all directories/subdirectories under `folder`, for example `folder/folder1`, `folder/folder1/folder2`, `folder/folder1/folder2/folder3`, etc.
+      - `folder/*/*.zip` : Fetch all `.zip` artifacts from all directories/subdirectories under `folder`.
+      - `folder*/*` : Fetch all artifacts from directories/subdirectories that match `folder*`, for example `folder`, `folder123`, `folder/x/y/z`, etc. 
 
       :::note
 
