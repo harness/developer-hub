@@ -9,7 +9,7 @@ You can scan your repositories and other components used in your code with [Anch
 
 ## Important notes for running Anchore Enterprise scans in STO
 
-Not sure if DinD is required...AFAIK we only support scanner-template (not Security Step) config, and 
+
 
 ### Docker-in-Docker requirements
 
@@ -122,8 +122,6 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 3. Write a specific description for this option and remove the reference to the generic description.  
 
 -->
-
-
 
  
 ```mdx-code-block
