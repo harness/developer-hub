@@ -112,6 +112,35 @@ It simulates the situation of memory leaks in the deployment of microservices, a
 
 <FaultDetailsCard category="kubernetes" subCategory="node">
 
+### Node network latency
+
+Node network latency causes network latency on the Kubernetes node. It is injected using a helper pod running the target node. The chaos affects the application running on the target node for a duration specified by the `TOTAL_CHAOS_DURATION` environment variable.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+Node network latency introduces a delay in the network communication of a Kubernetes node. The fault aims to verify the resilience of applications when faced with increased network response times. It is designed to test the behavior of applications under delayed network conditions, especially in systems where timely data transfer and communication are crucial.
+
+It simulates the scenarios of high-latency network connections, such as cross-continental data transfers, or situations where a service is communicating with a slow or overburdened external data source. The fault tests the application's ability to maintain service quality and responsiveness in sub-optimal network conditions. It verifies how well the application handles increased response times, timeouts, and the potential for increased queue lengths or backlogs due to network delays. It can also be used to confirm the correct functioning of timeout settings and retry mechanisms in applications.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="node">
+
+### Node network loss
+
+Node network loss causes network loss on the Kubernetes node. It is injected using a helper pod running the target node. The chaos affects the application running on the target node for a duration specified by the `TOTAL_CHAOS_DURATION` environment variable.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+Node network loss simulates packet loss in the network communication of a Kubernetes node. The fault aims to verify the resilience of applications when faced with disrupted network communication, reflecting real-world scenarios such as unstable connections, network partitions, or infrastructure outages.
+
+It mimics situations where the network becomes unreliable, leading to potential data transmission failures, retries, and extended communication delays. The fault challenges applications by hindering their ability to communicate with other services, data stores, or external APIs effectively. It verifies the robustness of applications in handling network interruptions, ensuring data integrity in the face of packet loss, and the effectiveness of error-handling mechanisms under network failures. Additionally, it can be used to test failover strategies, data synchronization policies, and the efficiency of retry logic in applications.</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="node">
+
 ### Node restart
 
 Node restart disrupts the state of the node by restarting it. It tests deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
