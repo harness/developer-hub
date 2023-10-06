@@ -34,8 +34,6 @@ You can also use this workflow if the external scanner requires additional files
 
 * Save each SSL certificate file to **/shared/customer_artifacts/certificates/`<certificate_name>`**. 
 
-* If the scanner requires a license file, save it to **/shared/customer_artifacts/`<license_file_name>`**.  
-
 - To troubleshoot SSL issues, go to [Troubleshoot SSL in STO](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-troubleshooting-in-sto). 
 
 
