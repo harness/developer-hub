@@ -229,6 +229,37 @@ Harness includes native TUF support via the following:
   - Harness provides [token key rotation natively](/docs/platform/automation/api/add-and-manage-api-keys#rotate-tokens).
 - Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step).
 
+## Internal Developer Portal
+
+Harness Internal Developer Portal integrates with a number of third-party providers to provide a single pane of glass for developers.
+
+### Plugins for IDP
+
+Harness IDP supports a number of plugins to integrate the software catalog with third-party providers. Please find the growing list of [supported plugins](https://developer.harness.io/docs/category/available-plugins). This is a subset of the [Backstage plugin marketplace](https://backstage.io/plugins).
+
+### Git providers that IDP supports
+
+Any software component can be registered in the catalog by using a YAML file stored in the following Git providers:
+
+- GitHub
+- GitLab
+- Bitbucket
+- Azure Repos
+
+### CI/CD providers that IDP supports
+
+Harness IDP is agnostic to your CI/CD provider. Following are some of the examples. 
+
+- Gitlab
+- CircleCI
+- GitHub Actions 
+
+:::info
+
+We suggest to use Harness CI/CD for a better out-fo-the-box experience. 
+
+:::
+
 ## Harness Open Source Software (OSS) components
 
 The following document lists the open source libraries and third-party software Harness uses.
