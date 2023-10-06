@@ -736,7 +736,7 @@ gsutil -m cp \
   .
 ```
 
-- Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. (CI-9122)
+- Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. (CI-9122, SMP-2110)
 
 ## Previous releases
 
