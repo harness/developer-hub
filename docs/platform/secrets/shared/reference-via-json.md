@@ -79,7 +79,7 @@ Here are sample outputs for the respective JSONPath from the above JSON file:
 
 :::important notes
 
-You cannot use a JSON XPath in expressions that reference pre-existing secrets in Vault using a fully-qualified path. For example, `<+secrets.getValue("account.hashicorpvault://myVault/harness/testpath/example")>`.
+You cannot use a JSON XPath for nested keys in expressions. For example, `<+secrets.getValue("account.YOUR_SECRET_MANAGER://myVault/harness/testpath/example")>`.
 
 Harness provides limited support for keys that include dots. Keys with dots only work when the key is present at first level in the JSON. For example:
 
