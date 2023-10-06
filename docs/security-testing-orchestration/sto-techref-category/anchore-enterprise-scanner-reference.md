@@ -1,15 +1,13 @@
 ---
 title: Anchore Enterprise scanner reference for STO
-description: Software Composition Analysis scans with Anchore Enterprise
+description: Container scans with Anchore Enterprise
 sidebar_label: Anchore Enterprise scanner reference
 sidebar_position: 005
 ---
 
-You can scan your repositories and other components used in your code with [Anchore Enterprise](https://docs.anchore.com/current/docs/), an SCA (Software Composition Analysis) scanner that provides visibility into supply chain security risks. 
+You can scan your repositories and other components used in your code with [Anchore Enterprise](https://docs.anchore.com/current/docs/), a scanner that provides visibility into supply chain security risks. 
 
 ## Important notes for running Anchore Enterprise scans in STO
-
-<!-- 
 
 Not sure if DinD is required...AFAIK we only support scanner-template (not Security Step) config, and 
 
@@ -21,7 +19,7 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoDinDRequirements />
 
--->
+
 
 ### Root access requirements
 
@@ -35,9 +33,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 The recommended workflow is add a Anchore Enterprise step to a Security Tests or CI Build stage and then configure it as described below. 
 
-
 ### Scan settings
-
 
 <a name="scan-mode"></a>
 
@@ -70,10 +66,11 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 #### Type
 
 ```mdx-code-block
-import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
+import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
 ```
 
-<StoSettingScanTypeRepo />
+<a name="scan-type"></a>
+<StoSettingScanTypeCont />
 
 #### Name 
 
@@ -125,6 +122,8 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 3. Write a specific description for this option and remove the reference to the generic description.  
 
 -->
+
+
 
  
 ```mdx-code-block
@@ -284,7 +283,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-<!-- Not sure if there are any CLI flags that we want to document...also not sure if thiis is the correct doc page to link to. See this section for how we document this in Checkmarx:
+<!-- TBD 
+
+Not sure if there are any CLI flags that we want to document...also not sure if thiis is the correct doc page to link to. See this section for how we document this in Checkmarx:
 
 https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference#additional-cli-flags
 
@@ -345,6 +346,7 @@ In the **Advanced** settings, you can use the following options:
 
 Not sure if we support Security step configuration for this...leaving this in (but commenting it out) in case we need to document
 
+
 ## Security step settings for Anchor Enterprise scans in STO (legacy)
 
 
@@ -364,7 +366,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 #### Checkmarx scan settings
 
 * `product_name` = `TBD`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository`
+* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `containerImage`
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan`, `dataLoad`, or `ingestionOnly`
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan` or `dataLoad`:
 	+ `product_domain`
@@ -388,9 +390,9 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 -->
 
-<!-- TBD
-
 ## YAML pipeline example
+
+<!-- TBD
 
 It's good practice to include an example pipeline with a screenshot of the component steps and the pipeline YAML example
 
