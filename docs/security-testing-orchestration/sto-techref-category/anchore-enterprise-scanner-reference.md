@@ -7,7 +7,7 @@ sidebar_position: 005
 
 You can scan your repositories and other components used in your code with [Anchore Enterprise](https://docs.anchore.com/current/docs/), an SCA (Software Composition Analysis) scanner that provides visibility into supply chain security risks. 
 
-## Important notes for running Checkmarx scans in STO
+## Important notes for running Anchore Enterprise scans in STO
 
 <!-- 
 
@@ -118,17 +118,37 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Domain
 
+<!-- TBD Do one of the following:
 
+1. Delete this option description if it's not applicable.
+2. Leave the reference to the generic description in place if it's applicable.
+3. Write a specific description for this option and remove the reference to the generic description.  
+
+-->
+
+ 
 ```mdx-code-block
 import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
 ```
 
 <StoSettingAuthDomain />
 
+
 <!-- ============================================================================= -->
 <a name="auth-enforce-ssl"></a>
 
 #### Enforce SSL
+
+
+<!-- TBD Do one of the following:
+
+1. Delete this option description if it's not applicable.
+2. Leave the reference to the generic description in place if it's applicable.
+3. Write a specific description for this option and remove the reference to the generic description.  
+
+-->
+
+
 
 ```mdx-code-block
 import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
@@ -136,9 +156,18 @@ import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md'
 
 <StoSettingProductSSL />
 
-<!-- 
+
+
 
 #### API Version
+
+<!-- TBD Do one of the following:
+
+1. Delete this option description if it's not applicable.
+2. Leave the reference to the generic description in place if it's applicable.
+3. Write a specific description for this option and remove the reference to the generic description.  
+
+-->
 
 ```mdx-code-block
 import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-version.md';
@@ -147,9 +176,15 @@ import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-ver
 <StoSettingApiVersion />
 
 
-<a name="auth-type"></a>
-
 #### Type
+
+<!-- TBD Do one of the following:
+
+1. Delete this option description if it's not applicable.
+2. Leave the reference to the generic description in place if it's applicable.
+3. Write a specific description for this option and remove the reference to the generic description.  
+
+-->
 
 ```mdx-code-block
 import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
@@ -157,9 +192,17 @@ import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
 
 <StoSettingAuthType />
 
--->
+
 
 #### Access ID
+
+<!-- TBD Do one of the following:
+
+1. Delete this option description if it's not applicable.
+2. Leave the reference to the generic description in place if it's applicable.
+3. Write a specific description for this option and remove the reference to the generic description.  
+
+-->
 
 ```mdx-code-block
 import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
@@ -170,6 +213,14 @@ import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-acces
 
 
 #### Access Token
+
+<!-- TBD Do one of the following:
+
+1. Delete this option description if it's not applicable.
+2. Leave the reference to the generic description in place if it's applicable.
+3. Write a specific description for this option and remove the reference to the generic description.  
+
+-->
 
 ```mdx-code-block
 import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
@@ -183,10 +234,30 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 
 #### Team Name
 
-The Checkmarx team name. Use the format `/<`*`server-name`*`>/<`*`team-name`*`>` — for example, `/server1.myorg.org/devOpsEast`.
+<!-- TBD Do one of the following:
+
+1. Delete this option description if it's not applicable.
+2. Leave the reference to the generic description in place if it's applicable.
+3. Write a specific description for this option and remove the reference to the generic description.  
+
+-->
+
+```mdx-code-block
+import StoSettingToolProductTeamName from './shared/step_palette/_sto-ref-ui-tool-project-team.md';
+```
+
+<StoSettingToolProductTeamName  />
 
 
 #### Project Name
+
+<!-- TBD Do one of the following:
+
+1. Delete this option description if it's not applicable.
+2. Leave the reference to the generic description in place if it's applicable.
+3. Write a specific description for this option and remove the reference to the generic description.  
+
+-->
 
 ```mdx-code-block
 import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-project-name.md';
