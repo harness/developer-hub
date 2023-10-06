@@ -738,6 +738,8 @@ gsutil -m cp \
 
 - Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. (CI-9122, SMP-2110)
 
+   This fix requires Harness Delegate version 23.08.80308 or later. For information about features and fixes requiring a specific delegate version, go to the delegate release notes.
+
 ## Previous releases
 
 <details>
