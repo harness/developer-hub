@@ -250,13 +250,13 @@ Any software component can be registered in the catalog by using a YAML file sto
 
 Harness IDP is agnostic to your CI/CD provider. Following are some of the examples. 
 
-- Gitlab
+- GitLab
 - CircleCI
 - GitHub Actions 
 
 :::info
 
-We suggest to use Harness CI/CD for a better out-fo-the-box experience. 
+Harness CI and CD has a seamless out-of-the-box experience with IDP. 
 
 :::
 
