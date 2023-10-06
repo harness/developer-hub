@@ -4,12 +4,13 @@ description: You can set up STO to download your scanner images from a private r
 sidebar_position: 90
 ---
 
-Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). By default, a Harness pipeline build pulls scan images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
+Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). By default, a Harness pipeline pulls scan images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
 
 This topic describes how to override the default image pull behavior and use your own private registry instead of pulling directly from the public Harness GCR project. You can download the scan images you need, perform your own security checks on the images, upload them to a private registry, and then set up your STO steps to download images from your private registry.
 
 To do this, you need to:
 
+<!-- no toc -->
 1. (Optional) [Create scanner images with your own SSL certificates.](#create-sto-scanner-images-with-your-own-ssl-certificates-optional)
 2. [Create a connector for your private registry.](#create-a-connector-to-your-private-registry)
 3. [Configure the pipeline to download images from your registry.](#configure-the-pipeline-to-download-images-from-your-registry)
