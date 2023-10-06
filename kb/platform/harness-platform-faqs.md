@@ -985,3 +985,20 @@ Authorization is used for group mapping and its optional and not required for ss
 
 #### How to use custom helm3 version in CG legacy delegate
 You can install the latest version and need to set the env variable till the binary path HELM3_PATH=/opt/harness-delegate/client-tools/helm
+
+#### For the delegates hosted on Azure VM, which authentication method should we use when setting up a vault connector?
+
+For Hashicorp Vault there are the 5 types of Auth supported. Except AWS Auth and Token(not advised as needs periodic renewal) any of other 3 depending on your setup and preference should work. For more details you can refer [here](https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault#step-2-overview).
+
+#### How can we export all current gen information: deployments, services, env, etc, which has been deployed?
+
+You can refer to these [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/export-deployment-logs/) and for audit trail API [this](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-audit-trails-api/).
+
+#### How do we enable immutable delegates?
+
+Actually its a FF, so you can enbale `USE_IMMUTABLE_DELEGATE` it can be set in accounts collection, immutableDelegateEnabled field.
+
+#### Are trial accounts able to use the Github connector to attach their Github account?
+
+Trial accounts should be able to use the same functionality as paid ones during the trial time period.
+
