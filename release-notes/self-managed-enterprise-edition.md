@@ -708,7 +708,7 @@ This release includes the following Harness module and component versions.
 | **Name** | **Version** |
 | :-- | :--: |
 | Helm Chart | [0.9.1](https://github.com/harness/helm-charts/releases/tag/harness-0.9.1) |
-| Air Gap Bundle | [0.9.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.9.0) |
+| Air Gap Bundle | [0.9.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.9.1) |
 | NG Manager | 80219 |
 | CI Manager | 5313 |
 | Pipeline Service | 1.41.3 |
