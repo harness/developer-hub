@@ -1432,7 +1432,7 @@ pipeline:
 </Tabs>
 ```
 
-## Troubleshooting Test Intelligence 
+## Troubleshooting Test Intelligence
 
 You might encounter these issues when using Test Intelligence.
 
