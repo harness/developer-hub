@@ -9,13 +9,6 @@ You can run Fortify scans on your repositories using a Security step: create a C
 
 ## Important notes for running Fortify scans in STO
 
-### Docker-in-Docker requirements
-
-```mdx-code-block
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
-
-<StoDinDRequirements />
 
 ### Root access requirements
 
