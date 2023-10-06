@@ -205,6 +205,14 @@ You don't need to install coverage tools when using **Run Tests** steps. With [T
 
 ### Ruby
 
+Use these steps to install code coverage tools when you run Ruby tests in **Run** steps.
+
+:::info Coverage in Run Tests steps
+
+You don't need to install coverage tools when using **Run Tests** steps. With [Test Intelligence for Ruby](./set-up-test-intelligence.md), coverage is inherent in the **Run Tests** step, and Harness automatically installs coverage tools.
+
+:::
+
 1. Set up a Ruby code coverage tool, such as [SimpleCov](https://github.com/simplecov-ruby/simplecov).
 2. Run your tests in a **Run** step.
 

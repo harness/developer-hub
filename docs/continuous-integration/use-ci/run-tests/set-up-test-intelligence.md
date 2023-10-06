@@ -73,6 +73,12 @@ Test Intelligence is available for:
    * Doesn't support resource file relationships.
    * Repos that use dynamic loading or metaclasses might have unpredictable results.
    * Currently, TI for Python is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+* Ruby
+   * Can't track code coverage for dynamically generated code (code generated at runtime).
+   * Can't track code coverage for code executed in your app's startup sequence.
+   * Code coverage results can be inaccurate for apps using [Spring](https://github.com/rails/spring).
+   * Test Intelligence for Ruby can take longer to run on large codebases.
+   * Currently, TI for Ruby is behind the feature flag `CI_RUBY_TI`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 For unsupported codebases, you can use [Run steps](../run-ci-scripts/run-step-settings.md) to run tests.
 
@@ -221,6 +227,29 @@ The build environment must have the necessary binaries for the **Run Tests** ste
                       spec:
                         paths:
                           - out_report.xml*
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="ruby" label="Ruby">
+```
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Ruby Tests
+                  identifier: Run_Ruby_Tests
+                  spec:
+                    language: Ruby
+                    buildTool: Rspec
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
+                    runOnlySelectedTests: true
+                    preCommand: bundle install
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - tmp/junit.xml
 ```
 
 ```mdx-code-block
@@ -504,7 +533,7 @@ You can also install tools at runtime in [Pre-Command](#pre-command), provided t
 
 ### Language
 
-Select the source code language to build: **C#**, **Java**, **Kotlin**, **Scala**, or **Python**. Some languages have additional language-specific settings.
+Select the source code language to build: **C#**, **Java**, **Kotlin**, **Scala**, **Python**, or **Ruby**. Some languages have additional language-specific settings.
 
 ```mdx-code-block
 <Tabs>
@@ -653,6 +682,21 @@ If necessary, you can set `PYTHONPATH` in the [Environment Variables](#environme
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="ruby" label="Ruby">
+```
+
+:::note
+
+Currently, TI for Ruby is behind the feature flag `CI_RUBY_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+#### Test Globs
+
+You can override the default test globs pattern.
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
@@ -699,6 +743,13 @@ Bazel is already installed on Harness Cloud runners, and you don't need to speci
 You can [use pytest to run unittest](https://docs.pytest.org/en/latest/how-to/unittest.html).
 
 :::
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="ruby" label="Ruby">
+```
+
+* [RSpec](https://rspec.info/)
 
 ```mdx-code-block
   </TabItem>
@@ -774,6 +825,13 @@ Or you can include additional flags, such as:
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="ruby" label="Ruby">
+```
+
+Provide runtime arguments for tests, such as `--format RspecJunitFormatter --out tmp/junit.xml`.
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
@@ -810,6 +868,8 @@ This option must be selected (`true`) to enable Test Intelligence.
 If this option is not selected (`false`), TI is disabled and all tests run on every build.
 
 ### Packages
+
+This field is only available if it is applicable to the selected **Language**.
 
 Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If you do not provide a list, Harness auto-detects the packages.
 
@@ -1060,6 +1120,60 @@ pipeline:
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="ruby" label="Ruby">
+```
+
+This example shows a pipeline that runs tests on Ruby with RSpec and Test Intelligence.
+
+```yaml
+pipeline:
+  projectIdentifier: default
+  orgIdentifier: default
+  identifier: testintelligencedemo
+  name: Test Intelligence Demo
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: YOUR_CODE_REPO_NAME
+        build: <+input>
+  tags: {}
+  stages:
+    - stage:
+        name: test ruby
+        identifier: testruby
+        type: CI
+        spec:
+          cloneCodebase: true
+          cacheOptions:
+            enabled: true
+          execution:
+            steps:
+              - step:
+                  type: Run Ruby Tests
+                  name: Run_Ruby_Tests
+                  identifier: Run_Ruby_Tests
+                  spec:
+                    language: Ruby
+                    buildTool: Rspec
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
+                    preCommand: bundle install
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - tmp/junit.xml
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+```
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
@@ -1252,6 +1366,64 @@ pipeline:
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="ruby" label="Ruby">
+```
+
+This example shows a pipeline that runs tests on Ruby with RSpec and Test Intelligence.
+
+```yaml
+pipeline:
+  projectIdentifier: default
+  orgIdentifier: default
+  identifier: testintelligencedemo
+  name: Test Intelligence Demo
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: YOUR_CODE_REPO_NAME
+        build: <+input>
+  tags: {}
+  stages:
+    - stage:
+        name: test ruby
+        identifier: testruby
+        type: CI
+        spec:
+          cloneCodebase: true
+          cacheOptions:
+            enabled: true
+          execution:
+            steps:
+              - step:
+                  type: Run Ruby Tests
+                  name: Run_Ruby_Tests
+                  identifier: Run_Ruby_Tests
+                  spec:
+                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    image: ruby:latest ## Specify if required by your build infrastructure.
+                    language: Ruby
+                    buildTool: Rspec
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
+                    preCommand: bundle install
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - tmp/junit.xml
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+```
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
@@ -1260,7 +1432,7 @@ pipeline:
 </Tabs>
 ```
 
-## Troubleshooting
+## Troubleshooting Test Intelligence 
 
 You might encounter these issues when using Test Intelligence.
 
@@ -1315,3 +1487,11 @@ If you get errors related to code coverage for Python:
 
 * If you included [Build Arguments](#build-arguments), these don't need coverage flags (`--cov` or `coverage`).
 * You don't need to install coverage tools in [Pre-Command](#pre-command). These are already included.
+
+### Ruby
+
+Test Intelligence for Ruby has these limitations, which can cause TI to miss some code:
+
+* Can't track code coverage for dynamically generated code (code generated at runtime).
+* Can't track code coverage for code executed in your app's startup sequence.
+* Code coverage results can be inaccurate for apps using [Spring](https://github.com/rails/spring).
