@@ -252,7 +252,7 @@ You can set up a Security step with [Grype](https://github.com/anchore/grype) to
 * STO supports Grype scans of containers and repositories.
 * STO supports [orchestrated scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
 
-#### Target and variant
+#### Target and variant options
 
 ```mdx-code-block
 import StoLegacyTargetAndVariant  from '../shared/legacy/_sto-ref-legacy-target-and-variant.md';
