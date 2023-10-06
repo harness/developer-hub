@@ -4,7 +4,7 @@ description: Update ServiceNow tickets in CD stages.
 sidebar_position: 4
 ---
 
-This topic describes how to update Service Now tickets in CD Stages.
+This topic describes how to update ServiceNow tickets in CD Stages.
 
 Harness provides the ability to update [ServiceNow change requests](https://docs.servicenow.com/bundle/rome-it-service-management/page/product/change-management/concept/c_ITILChangeManagement.html) and [incident tickets](https://docs.servicenow.com/bundle/rome-it-service-management/page/product/incident-management/concept/c_IncidentManagement.html) from your Pipeline step using the **ServiceNow Update** step.
 
@@ -13,21 +13,27 @@ You can add the Create ServiceNow step to a Harness CD stage or an Approval stag
 * Automatically update change requests in ServiceNow to track updates to your build, test, and production environments by adding a **ServiceNow Create** step in your Pipeline.
 * Automatically assign tickets in ServiceNow to triage and resolve incidents quickly in case of Pipeline failures.
 
-## Important notes
+## Important notes for using templates
 
 * You must add a Harness [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) before or during the Create ServiceNow step setup.
-* You must install the Harness application before using templates to create ServiceNow tickets.​
+* You must install the You must install the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.1?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh) before using templates to update ServiceNow tickets.
 * Make sure you have the following roles:
-	+ `x_harne_harness_ap.integration_user_role​` to access supported APIs, view Harness support details and access Templates.
+	+ `x_harne_harness_ap.integration_user_role​` to access templates.
 	+ `itil` for end-to-end integration with Harness platform.​​​
 * Review [add ServiceNow approval stages and steps](/docs/platform/Approvals/service-now-approvals).
-* The ServiceNow API only allows date time and time values in the UTC timezone only. Consequently, input for any datetime/time fields in Harness ServiceNow steps must be provided in UTC format irrespective of time zone settings in your ServiceNow account.  
-  The timezone settings govern the display value of the settings not their actual value. The display values in the Harness UI depend on ServiceNow timezone settings.
 
-## ServiceNow user roles
+### Required ServiceNow integration app for Harness templates
 
-You can install the Harness app in your ServiceNow instance from the ServiceNow [store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.1?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh). For more information, see the ServiceNow [installation guide](https://store.servicenow.com/appStoreAttachments.do?sys_id=1fc1632b872f4dd0970e2178cebb35ba).
+The Integration for Harness Software Delivery Platform app is required to update ServiceNow tickets using Harness templates. You can install the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the  [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.1?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh).
 
+For more information, go to the [ServiceNow installation guide](https://store.servicenow.com/appStoreAttachments.do?sys_id=1fc1632b872f4dd0970e2178cebb35ba).
+
+
+## Important note for using the ServiceNow API
+
+The ServiceNow API only allows date time and time values in the UTC timezone only. Consequently, input for any datetime/time fields in Harness ServiceNow steps must be provided in UTC format irrespective of time zone settings in your ServiceNow account.
+
+The timezone settings govern the display value of the settings not their actual value. The display values in the Harness UI depend on ServiceNow timezone settings.
 
 ## Add a ServiceNow Update step
 
@@ -38,11 +44,11 @@ You can install the Harness app in your ServiceNow instance from the ServiceNow 
 5. In **ServiceNow Connector**, create or select the [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) to use.
 6. In **Ticket Type**, select a ServiceNow ticket type from the list.
 
-![](./static/update-service-now-tickets-in-cd-stages-22.png)
+   ![](./static/update-service-now-tickets-in-cd-stages-22.png)
 
 7. In **Ticket Number** enter the ServiceNow ticket number to update. You can enter fixed values, provide runtime input, or provide an expression for this field.
 
-![](./static/update-service-now-tickets-in-cd-stages-23.png)
+   ![](./static/update-service-now-tickets-in-cd-stages-23.png)
 
 ## Update fields
 
@@ -52,7 +58,7 @@ You can install the Harness app in your ServiceNow instance from the ServiceNow 
    You can use Harness variables in the **Short Description** and **Description** fields.
 4. Select **Fields**. The **Add ServiceNow Fields** settings appear.
 
-![](./static/update-service-now-tickets-in-cd-stages-24.png)
+   ![](./static/update-service-now-tickets-in-cd-stages-24.png)
 
 5. You can specify additional fields for the ticket by clicking **Provide Field List**. The properties are specified as key-value pairs, the name being the **field name** (not the label) in ServiceNow and a valid value.
 
@@ -62,7 +68,6 @@ You can install the Harness app in your ServiceNow instance from the ServiceNow 
 2. In **Template Name**, enter the name of an existing template or provide an expression.  
    All the fields corresponding to the Template are listed.
 3. Select **Apply Changes**.
-
 
 ## Custom table support
 
