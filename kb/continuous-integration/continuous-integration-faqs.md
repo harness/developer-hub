@@ -490,3 +490,19 @@ Often overlooked, you can check the timescale for the overview page. By default,
 
 Please check the timescale control on the dashboard. This is set to 30 days by default. You can adjust this scale to display older builds. 
 
+#### Why am I getting an error when trying to run a docker command on a Windows build server? 
+
+Please make sure that the build server has 'Windows Subsystem for Linux' installed. It is possible that the failure is due to the container not being able to start on the build system. 
+
+#### What is a build infrastructure and why is it needed for a CI Stage?
+
+All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose.
+
+#### Can Test Intelligence speed up my build times? 
+
+You can speed up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. Test Intelligence 
+
+
+#### What are some of the other benefits of Test intelligence?
+
+Test Intelligence also identifies negative trends and provides actionable insights to improve quality. 
