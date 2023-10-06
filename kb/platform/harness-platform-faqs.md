@@ -994,9 +994,6 @@ For Hashicorp Vault there are the 5 types of Auth supported. Except AWS Auth and
 
 You can refer to these [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/export-deployment-logs/) and for audit trail API [this](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-audit-trails-api/).
 
-#### How do we enable immutable delegates?
-
-Actually its a FF, so you can enbale `USE_IMMUTABLE_DELEGATE` it can be set in accounts collection, immutableDelegateEnabled field.
 
 #### Are trial accounts able to use the Github connector to attach their Github account?
 
