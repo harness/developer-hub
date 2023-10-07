@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-09-30T10:00
+date: 2023-10-07T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -20,6 +20,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
+
+## Latest: October 07, 2023
+
+### Continuous Error Tracking, versions ET-Service 5.28.2 and ET-Collector 5.28.0
+
+- Event filtering has been enhanced by removing event type selector boxes and displaying event counts above the events list. Additionally, a multi-select dropdown for event types has been introduced for improved usability. (CET-1698)
 
 ## September 30, 2023
 
