@@ -20,6 +20,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
+
 ## Latest: October 07, 2023
 
 ### Continuous Error Tracking, versions ET-Service 5.28.2 and ET-Collector 5.28.0

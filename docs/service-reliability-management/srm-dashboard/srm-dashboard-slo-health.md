@@ -1,6 +1,6 @@
 ---
 title: SLO Health
-description: Understand SLO Health dashboard.
+description: Understand the SLO Health dashboard.
 sidebar_position: 20
 ---
 
