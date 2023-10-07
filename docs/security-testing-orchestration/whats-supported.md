@@ -108,9 +108,9 @@ Currently, you can define and store policies directly in the OPA service in Harn
 
 Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible registries) to define and store the policies used in Harness.
 
-- [Harness Policy As Code overview](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview)
-- [Harness Policy As Code quickstart](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-quickstart)
-- [Add a Policy step to a pipeline](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline)
+- [Harness Policy As Code overview](/docs/platform/governance/policy-as-code/cd-governance/harness-governance-overview)
+- [Harness Policy As Code quickstart](/docs/platform/governance/policy-as-code/cd-governance/harness-governance-quickstart)
+- [Add a Policy step to a pipeline](/docs/platform/governance/policy-as-code/cd-governance/add-a-governance-policy-step-to-a-pipeline)
 
 
 ```mdx-code-block

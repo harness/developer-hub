@@ -23,7 +23,7 @@
 | **6. Security and Compliance in DevOps** ||
 | Implement advanced secure secrets management techniques in CI/CD pipelines, focusing on encryption, rotation, and vaulting strategies | [Harness secrets management overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) |
 | Architect and enforce advanced network security protocols and strategies in a cloud environment | [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference/) |
-| Apply Harness governance features to enforce advanced compliance requirements in a DevOps context | [Harness Policy As Code overview](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/) |
+| Apply Harness governance features to enforce advanced compliance requirements in a DevOps context | [Harness Policy As Code overview](/docs/platform/governance/policy-as-code/cd-governance/harness-governance-overview) |
 | **7. Advanced Serverless Architectures** ||
 | Design, deploy, and manage complex serverless architectures, focusing on performance, scalability, and cost optimizations | [Serverless Tutorials](/tutorials/cd-pipelines/serverless/) |
 | Implement advanced serverless patterns within a CI/CD context and in a Harness environment | [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview/) |
@@ -39,5 +39,5 @@
 | **10. Mastering Complex Pipeline Management in Harness** ||
 | Architect and manage sophisticated, large-scale deployment pipelines in Harness, focusing on best practices, performance, and reliability | [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/) |
 | Implement advanced deployment strategies, including canary deployments, blue-green deployments, and A/B testing within Harness | [Deployment concepts and strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts/) |
-| Utilize Harness's pipeline governance capabilities to enforce complex compliance rules and best practices within a large organization | [Add a Policy step to a pipeline](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline/) |
+| Utilize Harness's pipeline governance capabilities to enforce complex compliance rules and best practices within a large organization | [Add a Policy step to a pipeline](/docs/platform/governance/policy-as-code/cd-governance/add-a-governance-policy-step-to-a-pipeline) |
 
