@@ -19,6 +19,8 @@ To access the subscription details, follow these steps:
 2. Select **Service Reliability Management**.
    The details about your licenses and subscriptions appear.
 
+## Subscriptions page
+
 The Subscriptions page provides the following details about your Harness SRM subscription and license utilization.
 
 <details>
