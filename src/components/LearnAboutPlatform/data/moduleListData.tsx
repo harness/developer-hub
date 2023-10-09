@@ -4,6 +4,12 @@ import { MODULES } from "../../../constants";
 
 export const moduleList: CardItem[] = [
   {
+    title: "Getting Started",
+    module: MODULES.gs,
+    // icon: "img/icon_ci.svg",
+    description: "Getting Started",
+  },
+  {
     title: "Continuous Integration",
     module: MODULES.ci,
     // icon: "img/icon_ci.svg",
@@ -59,7 +65,7 @@ export const moduleList: CardItem[] = [
     // icon: "img/icon_idp.svg",
     description: (
       <>
-       Assess engineering team productivity, remove roadblocks, and automate processes to increase efficiency.
+        Assess engineering team productivity, remove roadblocks, and automate processes to increase efficiency.
       </>
     ),
     link: "https://docs.propelo.ai/welcome-to-propelo/",
@@ -92,5 +98,5 @@ export const moduleList: CardItem[] = [
     ),
     link: "docs/internal-developer-portal",
   },
-  
+
 ];
