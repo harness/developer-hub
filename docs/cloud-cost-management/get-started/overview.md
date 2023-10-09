@@ -13,14 +13,17 @@ redirect_from:
 
 In today's world, it's pertinent to understand and manage costs associated with your cloud resources. Optimum utilization of cloud resources saves costs. As the complexity increases, it becomes challenging to keep track of cloud expenses.
 
-The cloud cost management tools available today provide insights only into costs at the project, service, instance type, or tag. This limited insight is insufficient for development and DevOps teams looking to view and forecast the costs of their deployments and active clusters' resources (namespaces, nodes, pods, and so on).
+The cloud cost management tools available today provide insights only into costs at the project, service, instance type, or tag. This limited insight is insufficient for development and DevOps teams looking to view and forecast the costs of their deployments and active clusters' resources such as namespaces, nodes, and pods.
 
-Furthermore, typical cost management tools are designed to provide monthly billing for CFO/CIO/CTO audiences. But for the engineers and DevOps teams consuming resources, there's no access or ability to analyze their costs quickly.
+Furthermore, typical cost management tools are designed to provide monthly billing information aimed at CFO/CIO/CTO audiences. However, engineers and DevOps teams who actually consume these resources often lack access or the capability to quickly analyze their costs.
 
-Harness Cloud Cost Management (formerly Continuous Efficiency) is a solution that provides engineers and DevOps granular detail of their resource consumption hourly. Harness Cloud Cost Management (CCM) is designed to bring cloud cost analysis and management into the hands of the engineers consuming cloud resources.
+Harness Cloud Cost Management (CCM) is a solution that provides engineers and DevOps granular detail of their resource consumption hourly. Harness CCM is designed to bring cloud cost analysis and management into the hands of the engineers consuming cloud resources. It not only provides visibility into cloud expenditure but also aids in cost reduction by implementing CCM recommendations, establishing AutoStopping rules, and enforcing asset governance policies. This ensures the optimal utilization of your cloud resources. The following images are illustrative screenshots of the CCM overview page:
 
 
-![](./static/continuous-efficiency-overview-03.png)
+<docimage path={require('./static/overview-1.png')} width="60%" height="60%" title="Click to view full size image" />
+
+<docimage path={require('./static/overview-2.png')} width="60%" height="60%" title="Click to view full size image" />
+
 
 ### Visual Summary
 <!-- Video:
@@ -104,7 +107,7 @@ If your CFO is managing your cost, you’re being reactive to cloud changes. You
 
 **My cloud platform already gives me visibility into the cost.**
 
-Cloud platforms don’t let you see the cost at a granular level, for example, application, clusters, nodes, workloads, namespaces.
+Cloud platforms don’t provide the cost at a granular level. For example, application, clusters, nodes, workloads, namespaces.
 
 **I have already tagged everything, why would I need Cloud Cost Management?**
 
@@ -118,15 +121,15 @@ You will have to re-tag everything if you:
 
 Reducing cost isn’t a one-time event. Engineering and finance need constant feedback to innovate and change. Hence **Cloud Cost Management**.
 
-**After we’ve identified our costs, will Continuous Efficiency help us reduce them?**
+**After we’ve identified our costs, will CCM help us reduce them?**
 
-Budgeting and alert thresholds are built into CE, with more features on the way.
+Yes. You can implement the Recommendations offered by CCM, set up AutoStopping rules, and execute Asset Governance policies to reduce cost.
 
 **Can your tool create custom reports and alerts?**
 
-Yes. CE provides alerts, reports, and forecasts you can fine-tune.
+Yes. CCM provides alerts, reports, and forecasts you can fine-tune.
 
 **I know my cloud platform is accurate, how do I know your tool is accurate?**
 
-CE uses the same cost and usage report as your cloud platform.
+CCM uses the same billing and cost and usage report (CUR) as your cloud platform.
 
