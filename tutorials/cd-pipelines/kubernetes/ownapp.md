@@ -134,7 +134,7 @@ Verify the following:
     </Tabs>
     ```
 
-2. Clone the Forked **harnessed-example-apps** repo and change directory.
+2. Clone the forked **harnessed-example-apps** repo and change directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps/deploy-own-app/cd-pipeline
