@@ -72,7 +72,7 @@ import {
               module: MODULES.ssca,
               description:
                 "Generate, manage, and analyze SBOM for software artifacts.",
-              link: "/docs/software-supply-chain-assurance/generate-sbom",
+              link: "/docs/software-supply-chain-assurance/sbom/generate-sbom",
             },
             {
                 title: "Enforce SSCA policies",

@@ -105,7 +105,13 @@ This release does not include any new early access features.
 
 ### Hotfixes
 
-This release does not include hotfixes.
+#### Version 23.10.80808
+
+- Updated the internal Jenkins library to support long IDs for Jenkins builds. Previously, supported IDs were limited to integer bounds. (CDS-79499, ZD-50718, ZD-50888)
+
+- Fixed an issue where Git statuses were not being sent for pull requests. (CES-1376)
+
+- Added support for referencing JSON secret keys with dots at the top level. Nested keys with dots are not supported. (PL-41715)
 
 ## Previous releases
 
