@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-10-07T10:00
+date: 2023-10-09T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,13 +19,21 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
+## Latest: October 9, 2023
+
+## Continuous Delivery, version 80909
+
+- You can now provide detailed feedback in the Harness AIDA chat in CD. (CDS-79769)
+
+  <docimage path={require('./static/73123e6efdd7d7dbc7c67b4a7df71bd42b1b20c8ba4cf409f87de0749da8dc92.png')} width="40%" height="40%" title="Click to view full size image" />  
 
 
-## Latest: October 07, 2023
+## October 07, 2023
 
 ### Continuous Error Tracking, versions ET-Service 5.28.2 and ET-Collector 5.28.0
 
 - Event filtering has been enhanced by removing event type selector boxes and displaying event counts above the events list. Additionally, a multi-select dropdown for event types has been introduced for improved usability. (CET-1698)
+
 
 ## September 30, 2023
 
