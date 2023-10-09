@@ -13,6 +13,13 @@ helpdocs_is_published: true
 
 ## Important notes for running ZAP scans in STO
 
+ If you're running a ZAP scan that uses context files such as auth scripts, context files, or URL files, specify the following shared folders and make sure that your Run step copies in the required files. 
+
+  * **/shared/customer_artifacts/authScript/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/context/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/urlFile/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/hosts/`<artifact_file_name>`**
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block
