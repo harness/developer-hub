@@ -1,9 +1,19 @@
 # Continuous Error Tracking Agent compatibility
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+
 This article provides a list of technologies that can be used with the Continuous Error Tracking (CET) Agent. These technologies include operating systems (OS), programming languages, third-party software, and tools, along with their respective versions.
 
 The CET Agent is a native agent, which means its compatibility with various OS and Java Virtual Machines (JVMs) may vary. Therefore, it is important to carefully consider the details of where the Agent is supported and where it is not supported.
 
+## Harness SaaS
+
+<Tabs>
+<TabItem value="Operating System compatibility" label="Operating System compatibility">
 
 ## Operating System compatibility
 
@@ -23,13 +33,16 @@ The CET Agent can be installed on a variety of operating systems. The Agent requ
 | Amazon Linux | 2+ |
 | AIX | 6.1+, 7.1, 7.2, 8+ |
 
+</TabItem>
+
+<TabItem value="Java" label="Java">
 
 ## Java
 
 The CET Agent supports Java as well as other languages that run on top of the Java Virtual Machine (JVM).
 
-
-### Supported languages
+<details>
+<summary><b>Supported languages</b></summary>
 
 | **Language ** | **Minimum Version** | **Comments** |
 | --- | --- | --- |
@@ -43,8 +56,11 @@ Harness recommends using the source attach when using non-Java languages with th
 
 :::
 
+</details>
 
-### Oracle HotSpot VM
+<details>
+<summary><b>Oracle HotSpot VM</b></summary>
+
 
 | **Java Version** | **LTS** | **Released on** | **End of Life** | **Comments** |
 | --- | --- | --- |---|---|
@@ -64,8 +80,11 @@ Make sure to include the following VM flags when attaching an Error Tracking Age
 
 :::
 
+</details>
 
-### OpenJDK
+
+<details>
+<summary><b>OpenJDK</b></summary>
 
 | **Java Version** | **LTS** | **Released on** | **End of Life** | **Comments** |
 | --- | --- | --- |---|---|
@@ -92,8 +111,11 @@ Make sure to include the following VM flags when attaching an Error Tracking Age
 
 :::
 
+</details>
 
-### IBM
+
+<details>
+<summary><b>IBM</b></summary>
 
 The IBM JVM(J9) is supported only on AIX., and include the following:
 
@@ -109,8 +131,11 @@ When attaching the CET Agent to an IBM JVM, include the VM flag `-Xshareclasses:
 
 :::
 
+</details>
 
-### Supported application servers
+
+<details>
+<summary><b>Supported application servers</b></summary>
 
 | **Name** | **Version** |
 |--|--|
@@ -128,8 +153,11 @@ When attaching the CET Agent to an IBM JVM, include the VM flag `-Xshareclasses:
 |WebSphere| TBD |
 |Tomcat| TBD |
 
+</details>
 
-### Interaction of CET with other Java Agents
+
+<details>
+<summary><b>Interaction of CET with other Java Agents</b></summary>
 
 CET performs isolated machine code instrumentation, which ensures that the CET Agent doesn't interfere with the bytecode of other agents. From CET perspective, all code is treated as system code.
 
@@ -167,3 +195,17 @@ Following agents are not compatible with the CET Java Agent:
 Following Java plugins are not compatible with the CET Java Agent:
 
 - JaCoCo Maven plugin
+
+</details>
+
+
+</TabItem>
+
+</Tabs>
+
+
+## Harness Self-Managed Enterprise Edition (SMP)
+
+All the technologies that are supported in Harness SaaS are also supported in the Self-Managed Enterprise Edition. 
+
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
