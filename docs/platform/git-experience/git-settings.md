@@ -12,7 +12,7 @@ This topic explains how to view and edit the default settings for Git Experience
 
 In order to avoid selecting the same connector repeatedly, you can enable the default connector settings **Default Connector For Git Experience with Entities - Pipelines/InputSets/Templates**. When this setting is enabled, the default connector is preselected during pipeline or template creation. You can, however, use any other connector if necessary.
 
-To enable this setting in Harness: 
+To enable this setting in Harness, do the following: 
 
 1. Go to **ACCOUNT SETTINGS**, and then select **Account Resources**.
 2. Select **Default Settings**, and then select **Git Experience**.
@@ -29,18 +29,18 @@ To enable this setting in Harness:
 
 If you are using Bitbucket on-prem and `feature.file.editor` is set to false in the `bitbucket.properties`, make sure you enable **Use Git client for commits** in the default settings at the account scope. Harness will check out the code on the delegate and use the Git client to make the commits to your Git repository.
 
-To enable this setting in Harness: 
+To enable this setting in Harness, do the following: 
 
 1. Go to **ACCOUNT SETTINGS**, and then select **Account Resources**.
 2. Select **Default Settings**, and then select **Git Experience**.
 3. Enable **Use Git client for commits**.
 
 
-## Use different repos for entities
+## Use different repos for Git Experience pipelines and InputSets
 
 To link input sets and pipelines from different repositories, enable **Allow different repo for Pipeline and InputSets** in the default settings. For more information, go to Default settings.
 
-To enable this setting in Harness: 
+To enable this setting in Harness, do the following: 
 
 1. Go to **ACCOUNT SETTINGS**, and then select **Account Resources**.
 2. Select **Default Settings**, and then select **Git Experience**.
@@ -64,7 +64,49 @@ To enforce Git experience in Harness:
 2. Select **Default Settings**, and then select **Git Experience**.
 3. Enable **Enforce git experience for pipelines and templates**.
    After you enable this setting, it applies to all the scopes (account, organization, and project) in Harness.
-4. To override this setting in the child scopes, select **Allow Overrides** beside the settings.
+4. To override this setting in the child scopes, select **Allow Overrides** beside the setting.
    This forces configurations at the account scope to be saved in Git repositories only. Users can, however, still create inline pipelines and templates at the organizational and project levels.
 
    ![](./static/enforce-gitx.png)
+
+## Set the default storage type for entities
+
+This setting applies to the following resources:
+
+* Pipelines
+* InputSets
+* Templates
+
+To set the default storage type for entities in Harness, do the following: 
+
+1. Go to **ACCOUNT SETTINGS**, and then select **Account Resources**.
+2. Select **Default Settings**, and then select **Git Experience**.
+3. Select **Inline** or **Remote**.
+4. To override this setting in the child scopes, select **Allow Overrides** beside the setting.
+   This forces the default storage type at the account scope to be inline or remote.
+
+## Set the default repository for Git Experience entities
+
+This setting applies to the following resources:
+
+* Pipelines
+* InputSets
+* Templates
+
+To set the default repository for Git Experience entities, do the following: 
+
+1. Go to **ACCOUNT SETTINGS**, and then select **Account Resources**.
+2. Select **Default Settings**, and then select **Git Experience**.
+3. Enter your repository name.
+4. To override this setting in the child scopes, select **Allow Overrides** beside the setting.
+   This sets the default repository the account scope.
+
+## Set allowed repositories for Git Experience
+
+To set the default repository for Git Experience entities, do the following: 
+
+1. Go to **ACCOUNT SETTINGS**, and then select **Account Resources**.
+2. Select **Default Settings**, and then select **Git Experience**.
+3. Enter the name(s) of you allowed repositories.
+4. To override this setting in the child scopes, select **Allow Overrides** beside the setting.
+   This sets the allowed repositories at the account scope.
