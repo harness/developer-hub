@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-10-05T10:00:30
+date: 2023-10-09:T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -30,7 +30,7 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## Latest: Version 809xx
+## Latest: Version 80909
 
 ### New features and enhancements
 
