@@ -147,11 +147,11 @@ Verify the following:
 
 3. Log in to Harness from the CLI.
     ```bash
-    harness login --api-key  --account-id HARNESS_API_TOKEN 
+    harness login --api-key  HARNESS_API_TOKEN --account-id HARNESS_ACCOUNT_ID
     ```
     :::note
     
-    Replace `HARNESS_API_TOKEN` with Harness API Token that you obtained during the prerequisite section of this tutorial.
+    Replace `HARNESS_API_TOKEN` with Harness API Token that you obtained during the prerequisite section of this tutorial, and HARNESS_ACCOUNT_ID with your Harness account ID (find in the URL when logged into https://app.harness.io).
 
     :::
 
