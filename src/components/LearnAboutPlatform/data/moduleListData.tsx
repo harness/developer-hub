@@ -4,12 +4,6 @@ import { MODULES } from "../../../constants";
 
 export const moduleList: CardItem[] = [
   {
-    title: "Getting Started",
-    module: MODULES.gs,
-    // icon: "img/icon_ci.svg",
-    description: "Getting Started",
-  },
-  {
     title: "Continuous Integration",
     module: MODULES.ci,
     // icon: "img/icon_ci.svg",
