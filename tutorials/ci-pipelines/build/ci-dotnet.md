@@ -457,7 +457,7 @@ On Windows platforms, you might also need to run the [setup-msbuild](https://git
 <details>
 <summary>Install multiple .NET SDK versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
         strategy:
@@ -525,7 +525,7 @@ On Windows platforms, you might also need to [install Microsoft Build Tools into
 <details>
 <summary>Use multiple .NET SDK versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:

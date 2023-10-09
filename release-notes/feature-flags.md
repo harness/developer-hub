@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-09-20T13:49:25
+date: 2023-09-28T09:09:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -15,8 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-
-## Latest - September 20, 2023
+## Latest - September 28, 2023
 
 ### New features and enhancements
 
@@ -26,14 +25,53 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the iOS SDK
+### Fixed issues in the .NET SDK
 
-- Fixed issue with metric target evaluation. (FFM-9409)
+Released .NET SDK 1.2.1
+
+- Previously, only the first prerequisite was processed. Now, all prerequisites are used correctly. (FFM-7871)
+- The rules operator 'equal_sensitive' did not work correctly in all cases. This functionality has been standardized with other SDKs. (FFM-9219)
+- Previously, the SDK did not enforce a minimum poll interval. This issue has been corrected so a poll interval is now enforced. (FFM-9220)
+- Fixed the version/account/env metadata reported in headers for metrics processing. (FFM-9207)
+- Update to latest OpenAPI spec to improve handling of null items defined as optional. (FFM-9221)
+- Support Microsoft.Extensions.Logging. (FFM-939)  
+- TLS support for custom CAss (FFM-7007)
+- CVE: Update wiremock to latest version 1.5.36. (FFM-9472)
+- CVE: Update Newtonsoft.Json to version 13.0.3. (FFM-9473)
+- CVE: Update NuGet.Frameworks to version 6.5.1. (FFM-9474)
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### September 22, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Flutter SDK
+
+- Flutter SDK 2.1.0 released to support Flutter Web
+
+#### September 20, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the iOS SDK
+
+- Fixed issue with metric target evaluation. (FFM-9409)
 
 #### September 19, 2023
 

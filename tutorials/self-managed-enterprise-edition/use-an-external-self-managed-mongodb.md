@@ -48,6 +48,10 @@ Ensure the following:
 
 ## Set up MongoDB VMs
 
+import Strongpass from '/tutorials/shared/strong-passwords.md'
+
+<Strongpass />
+
 To set up a MongoDB VM, do the following:
 
 1. Connect to the VM and make sure you are running as root to prevent permission issues.
@@ -196,7 +200,7 @@ To set up a MongoDB VM, do the following:
     db.createUser(
     {
      user: "admin",
-     pwd: "password",
+     pwd: "testp@ssw0rd123",
      roles:[{role: "root" , db:"admin"}]})
     ```
 
@@ -243,7 +247,7 @@ To set up a MongoDB VM, do the following:
           - 10.10.10.10,10.10.10.11,10.10.10.12 
           secretName: "mongo-secret"
           userKey: "keyone"
-          passwordKey: "keytwo"
+          passwordKey: "keytwoTe$tp@ssw0rD#@"
           extraArgs: "retryWrites=true&authSource=admin"
           
       --

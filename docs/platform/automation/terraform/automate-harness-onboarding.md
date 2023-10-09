@@ -4,6 +4,7 @@ description: Automate the provisioning of resources to Harness via the Harness T
 sidebar_position: 3
 redirect_from:
   - /docs/platform/Resource-Development/Terraform/automate-harness-onboarding
+  - /docs/platform/resource-development/terraform/automate-harness-onboarding
 ---
 
 Harness offers a first-class Terraform Provider to automate adoption and growth.
@@ -302,9 +303,9 @@ For detailed steps to build the pipeline, go to [Kubernetes deployment tutorial]
 ### Configure pipeline stages
 
 To configure the stages for your pipeline, go to the following: 
-- [Custom Stage](/docs/platform/pipelines/add-a-custom-stage/)
-- [Terraform Plan Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
-- [Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+- [Custom stage](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage)
+- [Terraform Plan step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
+- [Terraform Apply step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
    
 
 The **Terraform Plan** step fetches the terraform resource from Git. Harness then initiates a terraform plan on the files collected.
@@ -323,7 +324,7 @@ Ensure the **Terraform Plan** step is configured before the apply step.
 
 This section explains the steps to set up a sample trigger.
 
-Harness recommends using the [GitHub Webhook](/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/) trigger because you can make changes in GitHub and based of a branch condition, push, pull request, issue comment, etc. you can fire off the pipeline to make changes. The trigger doesn't need to be GitHub.
+Harness recommends using the [GitHub Webhook](/docs/platform/triggers/triggers-reference) trigger because you can make changes in GitHub and based of a branch condition, push, pull request, issue comment, etc. you can fire off the pipeline to make changes. The trigger doesn't need to be GitHub.
 
 Harness supports the following: 
 - GitHub

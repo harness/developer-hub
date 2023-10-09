@@ -161,6 +161,43 @@ To export variables from the script to other steps in the stage, you use the **S
 
 Shell Script step output variables have a maximum size of 512KB.
 
+### Include Infrastructure Selectors
+
+When the deployment type is **Kubernetes**, and the **Include Infrastructure Selectors** setting is selected, the delegate used to run the Shell Script step is selected using the delegate selectors defined for the **Infrastructure** selected in the stage's **Environment**. The same delegate is used to execute the Shell Script step and Infrastructure Definition connection.
+
+This option ensures that the Shell Script step runs on a delegate that has access to the Kubernetes infrastructure defined in the Infrastructure Definition connector.
+
+If you use a delegate selector in the Shell Script step, the selector is overwritten by the Infrastructure Definition selector(s).
+
+When the **Include Infrastructure Selectors** setting is _not_ selected (or the option is not present because the step is not in a Kubernetes deployment), Harness performs round robin delegate selection to select a delegate to run the step. There is no guarantee that the same delegate will be used for the Infrastructure Definition and Shell Script step.
+
+Here are some important notes about the **Include Infrastructure Selectors** setting:
+
+- The **Include Infrastructure Selectors** setting is only available when you are adding the Shell Script step to a _Kubernetes_ deployment.
+- The **Include Infrastructure Selectors** setting is not available in the Shell Script step template. If you add a Shell Script step to a Kubernetes stage template, the **Include Infrastructure Selectors** setting is visible in the Shell Script step in that stage template.
+
+
+When **Include Infrastructure Selectors** is enabled, you will see the `includeInfraSelectors: true` option in the step YAML:
+
+```yaml
+
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hello!
+                    environmentVariables: []
+                    outputVariables: []
+                    includeInfraSelectors: true
+                  timeout: 10m
+```
+
 ### Execution target
 
 You can specify where to run the script **Target Host** or **On Delegate**.
@@ -192,10 +229,10 @@ import WorkingDir from '/docs/continuous-delivery/shared/working-dir.md';
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 

@@ -1,4 +1,4 @@
-* Before you can use Harness AIDA, you must read the [AIDA Data Privacy Overview](https://www.harness.io/legal/aida-privacy), sign an [End-User License Agreement](https://www.harness.io/legal/aida-terms) with Harness, and [enable AIDA in your Harness account](/docs/platform/Harness-AIDA/aida-overview.md#enable-aida).
+* Before you can use Harness AIDA, you must read the [AIDA Data Privacy Overview](https://www.harness.io/legal/aida-privacy), sign an [End-User License Agreement](https://www.harness.io/legal/aida-terms) with Harness, and [enable AIDA in your Harness account](/docs/platform/Harness-AIDA/aida-overview#enable-aida).
 
 * Before you implement an AI-generated suggestion, consider carefully the reliability and extent of the publicly-known information about that issue. The accuracy, reliability, and completeness of a suggestion depends on the publicly-known information about the detected issue. An AI-generated suggestion is not guaranteed to remediate the issue and could possibly introduce other issues.
 

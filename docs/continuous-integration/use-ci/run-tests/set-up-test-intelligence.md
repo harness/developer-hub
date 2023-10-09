@@ -294,7 +294,7 @@ Note that while parallelism for TI can improve the total time it takes to run al
 To enable parallelism for TI, you must set a parallelism `strategy` on either the **Run Tests** step or the stage where you have the **Run Tests** step, add the `enableTestSplitting` parameter to your **Run Tests** step, and use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) to create a unique results file for each run. Optionally, you can include the `testSplitStrategy` parameter and environment variables to differentiate parallel runs.
 
 1. Go to the pipeline where you want to enable parallelism for TI.
-2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
+2. [Define the parallelism strategy](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
 
    You can do this in either the visual or YAML editor. In the visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
 
@@ -621,6 +621,10 @@ You can provide a comma-separated list of test annotations used in unit testing.
 
 This setting is located under **Additional Configuration** in the Visual editor, or you can configure it in YAML as `testAnnotations: annotation1, annotation2, annotation3`.
 
+#### Packages
+
+Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If you do not provide a list, Harness auto-detects the packages.
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="kotlin" label="Kotlin, Scala">
@@ -631,6 +635,10 @@ This setting is located under **Additional Configuration** in the Visual editor,
 You can provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. If not specified, the defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`
 
 This setting is located under **Additional Configuration** in the Visual editor, or you can configure it in YAML as `testAnnotations: annotation1, annotation2, annotation3`.
+
+#### Packages
+
+Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If you do not provide a list, Harness auto-detects the packages.
 
 ```mdx-code-block
   </TabItem>
@@ -808,10 +816,6 @@ If a script is supplied here, select the corresponding **Shell** option.
 This option must be selected (`true`) to enable Test Intelligence.
 
 If this option is not selected (`false`), TI is disabled and all tests run on every build.
-
-### Packages
-
-Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If you do not provide a list, Harness auto-detects the packages.
 
 ### Environment Variables
 

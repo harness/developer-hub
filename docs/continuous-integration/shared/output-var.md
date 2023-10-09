@@ -175,7 +175,7 @@ If multiple output variables from previous steps have the same name, the last-pr
 
 :::caution Unpredictability with parallelism
 
-For stages that use [looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), particularly parallelism, the last-produced instance of a variable can differ between runs. Depending on how quickly the parallel steps execute during each run, the last step to finish might not always be the same.
+For stages that use [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), particularly parallelism, the last-produced instance of a variable can differ between runs. Depending on how quickly the parallel steps execute during each run, the last step to finish might not always be the same.
 
 :::
 

@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-09-25T10:00:20
+date: 2023-10-09T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -18,22 +18,31 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest: Version 1.1.3
+## Latest: Version 1.3.2
 
 ### New features and enhancements
 
-SRM dashboards now include comprehensive data for composite Service Level Objectives (composite SLOs). This enhancement gives you a holistic view of both simple and composite SLO performance. (SRM-15419)
+This release does not include any new features.
 
 
 ### Early access features
+
 This release does not include any early access features.
 
 
 ### Fixed issues
 
-- FireHydrant notifications were not being triggered as expected for monitored services without any configured Service Level Objectives (SLOs). (SRM-15458)
-
-  This issue has been resolved. FireHydrant notifications will now be triggered for all monitored services, irrespective of whether SLOs are configured.
+- The monitored service dropdown filter on the SLO listing page was restricted to displaying a limited number of services. (SRM-15690)
+  
+  This issue has been resolved. Now, the monitored service dropdown filter displays up to 100 values.
+  
+- In certain scenarios, there were delays of up to a day in receiving the SLI data, leading to outdated information. (SRM-15692)
+  
+  This issue has been resolved. Now, the most recent SLI data is available without any delays.
+  
+- The SLO details view page does not adapt to the browser's size, resulting in an improper display. (SRM-15712)
+  
+  This issue has been resolved. Now, the SLO details view page properly fits the size of your browser.
 
 
 ### Hotfixes
@@ -45,6 +54,53 @@ This release does not include hotfixes.
 
 <details>
 <summary>2023 releases</summary>
+
+
+#### Version 1.2.5
+
+##### New features and enhancements
+
+Added new filters named Environment-Based and SLO Type to the SLO listing page. You can now filter the SLO list on environment or SLO type for improved management. (SRM-15506)
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- Previously, when any of the simple service-level objectives (SLOs) reported NO_DATA for the entire duration, and the missing data was treated as IGNORE, the composite SLO faced challenges as it required data from all underlying simple SLOs to perform calculations. Consequently, the composite SLO failed to produce any records and became unresponsive. (SRM-15376)
+  
+  This issue has been resolved. Now, if one or more simple SLOs report NO_DATA throughout the duration, even if the missing data is treated as IGNORE, the composite SLO continues to generate records with data for the entire duration. Importantly, the error budget for those minutes remains unaffected.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### Version 1.1.3
+
+##### New features and enhancements
+
+SRM dashboards now include comprehensive data for composite Service Level Objectives (composite SLOs). This enhancement gives you a holistic view of both simple and composite SLO performance. (SRM-15419)
+
+
+##### Early access features
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- FireHydrant notifications were not being triggered as expected for monitored services without any configured Service Level Objectives (SLOs). (SRM-15458)
+
+  This issue has been resolved. FireHydrant notifications will now be triggered for all monitored services, irrespective of whether SLOs are configured.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
 
 
 #### Version 1.0.8

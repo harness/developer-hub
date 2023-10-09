@@ -48,6 +48,45 @@ Harness by default does not provide by default the jq on delegate host. You need
 
 ```microdnf install jq```
 
+#### Why can't I access dashboards?  It says `Requires Upgrade to Enterprise Plan to set up Dashboards`
+
+Dashboards requires an Enterprise license for all modules except for the CCM module
+
+#### I'm getting `Secret in version "v1" cannot be handled as a Secret: illegal base64 data at input byte`.  What does it mean?
+
+K8s secrets need to be encoded with base64.  If the encoding is wrong you might get this error.  If creating a k8s secrets and it's not base64 encoded you can use stringData instead:
+https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
+
+#### How do I submit a feature request for the Harness Platform?
+
+In the documentation scroll down and at the bottom under Resources click on Feature Requests.  It will lead you to this internal portal: https://ideas.harness.io/
+
+We can set up the AWS Secret Manager connector, then save the ECR auth token into it. Set up automatic token rotation (say at 10hr intervals) within AWS secret manager. Then have the Harness connector link to that AWS SecretManager secret, so it pulls a fresh token every time.
+
+#### The deployment still got triggered despite the freeze window I've set.  What gives?
+
+Pipelines executed with custom webhook triggers can override deployment freeze. This can be enabled by associating the API key or Service Account API key authorization with deployment freeze override permissions (https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#trigger-freeze)
+
+#### The deployment is failing at a step with the error message `Invalid request: ConnectException: Connection refused (Connection refused)`.  What gives?
+
+Check the access control for the network.  It could be that the request is blocked on the network side
+
+#### Are there varaibles for account and company name?
+
+`<+account.name>` and `<+account.companyName>`
+
+#### How do I set up a cron expression so it tiggers on the first Wednesday of each month at 15:00?
+
+Set the cron trigger type to QUARTZ and for the expression set it to `0 0 15 ? * 3#1 *`
+
+#### Is there a variable to check who's triggered the pipeline?
+
+Yes.  You can use `<+pipeline.triggeredBy.email>`
+
+#### Why can't I create resources using the harness terraform provider in my harness prod-3 cluster account?
+
+It could be the endpoint needs to be set to `https://app3.harness.io/gateway`
+
 #### Can plan from terraform step be encrypted using a read only secret manager ?
 
 For encrypting terraform plan with the selected secret manager we need the ability to write the encrypted plan to the secret manager and hence read only secret manager will not work for this scenario.
@@ -416,7 +455,7 @@ Expression to assert on Strings would require double quotes. Please note that it
 
 #### Can I customize the looping conditions and behaviour?
 
-Yes, Harness NextGen often offers customization options to define the loop exit conditions, maximum iteration counts, sleep intervals between iterations, and more information [here](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+Yes, Harness NextGen often offers customization options to define the loop exit conditions, maximum iteration counts, sleep intervals between iterations, and more information [here](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 #### What are the use cases for utilizing a Looping Strategy in Harness NextGen?
 
 Looping strategies are useful for scenarios like canary deployments, gradual rollouts, and validation checks where you want to keep iterating until you achieve the desired result.
@@ -687,7 +726,7 @@ No, Versioning is not done when declarative rollback is enabled. Please refer mo
 
 #### How do I use an output from one stage in a looping strategy of another stage ?
 
-If there is certainty in terms of number of Stages created, this could be achieved by creating a intermediary shell script which is concatenating output variables from previous stages with a “,” and building a list which can them be passed onto the next stage for lopping over this list. For more on this please refer this in following [Documentation](https://developer.harness.io/docs/platform/pipelines/best-practices-for-looping-strategies/)
+If there is certainty in terms of number of Stages created, this could be achieved by creating a intermediary shell script which is concatenating output variables from previous stages with a “,” and building a list which can them be passed onto the next stage for lopping over this list. For more on this please refer this in following [Documentation](https://developer.harness.io/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies)
 
 #### Do we support services and envs at the org level ?
 
@@ -1250,7 +1289,7 @@ Yes, Harness Next-Gen supports SSH key-based authentication. When deploying to r
 Yes, you can incorporate SSH deployments into your deployment pipelines along with other strategies, such as container deployments or Helm Chart deployments, to support complex multi-tiered applications.
 
 #### Which versions of ArgoCd that the latest version of the GitOps agent support? 
-We currently support v2.7.8
+We currently support v2.8.2
  
 #### The GitOps agent updater, can you advise that this will update the agent, argocd and redis? Is this also true if use the option to bring our own ArgoCd?
  
@@ -1458,7 +1497,7 @@ No, It is a feature yet to be added.
 
 #### How long can a pipeline be left running ?
 
-A pipeline can be left running for `35 days` on enterprise account.
+A pipeline can be left running for `35 days` on enterprise account and 4 hours for verified free customers.
 
 #### Do we support the creation of PR  at the time of pipeline creation ?
 
@@ -1520,3 +1559,84 @@ If you are facing SSH timeout error please check for possible cause below :
 - Check if correct delegate is picked during the execution , if not use delegate selector to pick the correct one .
 - Check the timeout defined for the step is optimum to reach the host if not cross check and increase accordingly .
 - Check  if any recent feature flags enabled causing this .
+
+
+#### Can customer control `Skip Harness label selector` or they need to be simply added ? 
+
+No, Harness will automatically change behavior.
+The expected behavior is as follows: In the scenario where a canary deployment is initially performed and subsequently switched to a rolling deployment for the same service and manifest, users will no longer encounter the selector error.
+Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/skip-harness-label-selector-tracking-on-kubernetes-deployments/)
+
+#### Which specific failure type should be employed to verify "assertion errors" when utilizing the HTTP step with an assertion rule, ensuring a distinct failure behavior distinct from the options provided?
+
+The failure type should be `Unknown`. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/)
+
+#### How can a customer do migrating of Service Override for Environments for large configurations?
+
+
+- ##### Terraform or APIs Used for Initial Configuration:
+
+   - If the customer initially created the Harness configuration using Terraform, they can easily change the organization identifier by modifying the configuration file.
+Likewise, if APIs were used for the initial configuration, the same approach applies to change the organization identifier.
+- ##### Creation from UI:
+
+   - If the customer originally created the configuration through the user interface (UI), a different process is required.
+In such cases, the customer can follow these steps:
+   - Utilize GET APIs to retrieve the existing configuration.
+   - Create a new configuration for the new organization using the create APIs.
+   - This allows for the necessary overrides and adaptations as needed for the new organization's requirements.
+
+Please refer more on this in the following Documentation : [Get Service Overrides](https://apidocs.harness.io/tag/ServiceOverrides#operation/getServiceOverrides) and [Create Service Overrides](https://apidocs.harness.io/tag/ServiceOverrides#operation/createServiceOverride)
+
+
+#### Is there an existing solution in place or under development to accommodate a use case where a customer intends to employ their existing JIRA instance for managing deployment processes and approvals?
+
+In the context of Harness, there is no necessity to create a duplicate ticket for approval purposes. Instead, a streamlined approach involves utilizing the "Approval" and "Update" steps while omitting the "Create" step. Additionally, you can designate the JIRA issue key as a runtime input, allowing individuals to input the relevant issue key when initiating the process. This approach ensures efficiency and avoids the redundancy of ticket creation.
+
+#### Is there a specific rationale behind the restriction on using expressions when defining the deployment group for multi-environment deployments ?
+
+Yes, this is indeed a limitation at present. When we initially introduced this feature, it was designed with fixed and runtime input support. Additionally, it's worth noting that we do not currently support passing a list for the service or environment field via an expression.
+
+#### Is the flag enabled for our entire account, or can it be configured for individual projects?
+
+No, it can be only specific to entire account or multiple accounts that an organisation holds.
+
+#### If we opt to disable the feature while it's still in beta, can Harness assist with that process?
+
+Yes, we can assist with disabling the feature while it's still in beta.
+
+####  Is there a way to get the service artifact source identifier with builtin variables?
+
+Yes, one can try expression `<+artifacts.primary.identifier>`. Please refer more on this in the [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#expression-examples)
+
+#### Is there a way to cache terraform plugins in delegates?
+
+Yes, one can try to set this environment variable `TF_PLUGIN_CACHE_DIR` . Also refer the following [Documentation](https://developer.hashicorp.com/terraform/cli/config/config-file#provider-plugin-cache)
+
+#### Depooy stage keeps asking for a Service. Can I setup a stage without a service?
+
+Yes, you can use custom stage instead of deploy stage. 
+
+
+#### How to do an initial setup of a CD pipeline stage?
+
+The modeling of a Deploy stage includes
+
+1. Create a pipeline.
+2. Add a CD stage.
+3. Define a service.
+4. Target an environment and infrastructure.
+5. Select execution steps.
+
+
+#### How can I verify that my CD pipeline has resulted in a successful deployment? 
+
+Harness Continuous Verification (CV) integrates with APM providers. By using machine learning Continuous Verification can be a powerful tool for verifying a CD deployment
+
+#### How does Harness Service-based licensing work? 
+
+Harness uses a Service-based license model to charge Harness customers using its Continuous Delivery module. 
+
+The CD License calculation uses the Active Services count and the number of Service Instances each active Service deployment creates.
+
+Please see the link for more details [https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd]

@@ -367,6 +367,36 @@ You can create a maximum of two Merge PR steps in a stage.
 
 :::
 
+### Update GitOps App
+
+:::note
+
+Currently, this feature is behind the feature flag `GITOPS_UPDATE_APP_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+This step updates a GitOps application through a PR Pipeline. Use this step if you have an existing GitOps application and want to update its target revision (branch or tag) or Helm overrides.
+
+A common Git-based use case bases production deployments on Git tags because tags are immutable. In this use case, to deploy a new version, you can use the Update GitOps App step to update your GitOps application to a new tag.
+
+By using this step, you can also provide Helm overrides (parameters, file parameters, or values files) from the pipeline.
+
+Helm parameters and file parameters represent individual value overrides for your Helm application, while values files represent an existing set of overrides already present in the repository.
+
+Existing Helm parameters and file parameters are merged with the values provided in the PR pipeline. Other parameters remain unchanged. A parameter and a file parameter are not merged with each other.
+
+If a parameter is specified both in the values file and as a parameter or file parameter override, the latter takes precedence.
+
+![](static/harness-git-ops-application-set-tutorial-64.png)
+
+Once your GitOps application is updated, you can use the [GitOps Sync Step](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications.md) to deploy your changes.
+
+:::note Limitation
+
+You can use the Update GitOps App step only once in a stage.
+
+:::
+
 ## Run and verify the PR pipeline
 
 Now your PR pipeline is ready.

@@ -27,10 +27,6 @@ Review the notes below for details about recent changes to Harness Internal Deve
   
   You can use these UI pickers in service onboarding workflows for developers to easily select a Harness project and organization. Take a look at this [example](https://github.com/bhavya-sinha/scaffolder-sample-templates/blob/5f52718ec49cb2c27a87e2fbeae075873701911c/fieldExtension.yaml#L78-L85). [IDP-868]
 
-### Early access features
-
-This release does not include early access features.
-
 ### Fixed issues
 
 This release does not include fixed issues.
@@ -47,10 +43,6 @@ This release does not include fixed issues.
 - IDP now includes the Confluence search plugin to include results from Confluence spaces. To learn more, go to the [plugin documentation](/docs/internal-developer-portal/plugins/available-plugins/confluence). (IDP-845)
 - The `harness:create-secret` and `harness:delete-secret` template actions are now available for use in IDP software templates. You can use these actions to receive a secret from a developer, create a Harness secret, and then use it as a pipeline variable to provide runtime input. For more information, go to the [tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input) (IDP-780)
 - The interval at which IDP polls Git repositories associated with the software catalog has increased from 5 minutes to 15 minutes. (IDP-749)
-
-##### Early access
-
-This release does not include early access features.
 
 ##### Fixed issues
 
@@ -72,10 +64,6 @@ This release does not include early access features.
 - The `trigger:harness-custom-pipeline` action on the software template `template.yaml` is now synchronous with pipeline execution. The action keeps running during pipeline execution, and it shows the current status of the pipeline.
 - Since the `trigger:harness-custom-pipeline` is now synchronous, you can use the `catalog:register` action in a template and register the newly generated software component's `catalog-info.yaml`.
 
-##### Early access
-
-This release does not include early access features.
-
 ##### Fixed issues
 
 - Fixed a bug with access control around de-registering a software component. (IDP-757)
@@ -91,10 +79,6 @@ This release does not include early access features.
   - [GitHub Pull Requests](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-github-pull-requests).
 - IDP now includes support for GitHub and Google OAuth applications. You can configure a GitHub or Google OAuth application in the IDP Admin view. These applications are used by the GitHub-based plugins to use the logged-in user's credentials when making API requests. (IDP-676, IDP-661, IDP-647)
 - IDP now supports a URL allowlist. If the `catalog-info.yaml` references API definitions that are hosted on a provider other than your Git provider, add the URL to the allowlist. (IDP-648)
-
-##### Early access
-
-This release does not include early access features.
 
 ##### Fixed issues
 

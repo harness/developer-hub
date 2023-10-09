@@ -34,14 +34,16 @@ Harness NextGen release 80811 includes the following changes for the Harness Del
 
 ### New features and enhancements
 
-- Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
+Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
 
    - `org.bouncycastle:bcpg-jdk15on:jar:1.70` to `org.bouncycastle:bcpg-jdk18on:jar:1.76`
    - `org.bouncycastle:bcpkix-jdk15on:jar:1.70` to `org.bouncycastle:bcpkix-jdk18on:jar:1.76`
    - `org.bouncycastle:bcprov-ext-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-ext-jdk18on:jar:1.76`
    - `org.bouncycastle:bcprov-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-jdk18on:jar:1.76`
 
+<!-- Add to 809xx or future release when feature is complete
 - You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-41063)
+-->
 
 ### Early access features
 
@@ -97,9 +99,19 @@ This release does not include any new early access features.
 
 - Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) based on [delegate tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#delegate-tags), and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. (CI-8831, ZD-47647)
 
+- The execution logs from the Initialize step showed SSH keys used in the environment for the Command step. (CDS-79144, ZD-50623)
+  
+  This issue has been fixed.
+
 ### Hotfixes
 
-This release does not include hotfixes.
+#### Version 23.10.80808
+
+- Updated the internal Jenkins library to support long IDs for Jenkins builds. Previously, supported IDs were limited to integer bounds. (CDS-79499, ZD-50718, ZD-50888)
+
+- Fixed an issue where Git statuses were not being sent for pull requests. (CES-1376)
+
+- Added support for referencing JSON secret keys with dots at the top level. Nested keys with dots are not supported. (PL-41715)
 
 ## Previous releases
 
@@ -144,11 +156,17 @@ This release does not include any new early access features.
 
 ##### Hotfixes
 
-##### Version 23.09.80506
+##### Version 23.09.80512
 
-- API calls made to Git providers during deployments caused rate limit errors. (CDS-78950)
+- ShellScript WinRM deployments didn't honor the configured timeout. For example, the step would time out by default in 30 minutes, even when the configured timeout was set to one day. (CDS-78219, ZD-48180, ZD-49871)
 
-  The issue has been resolved. Harness reduced the number of API calls made to Git providers during deployment.
+   The issue has been resolved. Now, the WinRM session timeout is set to the maximum of the step timeout configured plus 30 minutes.
+
+##### Version 23.09.80511
+
+- Previously, there was an issue with the task capacity limiter for delegates where the counter didn't decrement when a task was aborted. (PL-41408)
+
+   This issue has been fixed. Now, when you deploy a delegate and set the `DELEGATE_TASK_CAPACITY` environment variable, the number of concurrent tasks for the delegate is limited to the specified capacity. 
 
 ##### Version 23.09.80510
 
@@ -158,11 +176,17 @@ This release does not include any new early access features.
 
    Harness recommends that you upgrade to delegate version 23.09.80511 to resolve this issue.
 
-#### Version 23.09.80511
+##### Version 23.09.80507
 
-- Previously, there was an issue with the task capacity limiter for delegates where the counter didn't decrement when a task was aborted. (PL-41408)
+- When escaping single quotes in environment variables, the same map was passed to subsequent command units which caused the escaped single quotes to escape again. (CDS-75775)
 
-   This issue has been fixed. Now, when you deploy a delegate and set the `DELEGATE_TASK_CAPACITY` environment variable, the number of concurrent tasks for the delegate is limited to the specified capacity. 
+   This issue has been resolved. Subsequent command units do not escape single quotes again.
+
+##### Version 23.09.80506
+
+- API calls made to Git providers during deployments caused rate limit errors. (CDS-78950)
+
+  The issue has been resolved. Harness reduced the number of API calls made to Git providers during deployment.
 
 #### Harness version 80307, Harness Delegate version 23.08.80308
 

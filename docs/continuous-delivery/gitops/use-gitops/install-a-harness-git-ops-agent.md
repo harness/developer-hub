@@ -87,6 +87,8 @@ In **Name**, enter the name for the new Agent.
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 
+If **Namespaced** is selected, the Harness GitOps agent is installed without cluster-scoped permissions, and it can access only those resources that are in its own namespace. You can select **Skip Crds** to avoid a collision if already installed.
+
 Select **Next**. The **Download YAML** or **Download Helm Chart** settings appear.
 
 ![](./static/install-a-harness-git-ops-agent-95.png)
@@ -352,7 +354,7 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 ### What version of GitOps Agent supports what version of Repo server and Redis cache?
 
-GitOps Agent v0.58.0 supports redis:7.0.8-alpine and Repo server [argocd:v2.7.8](http://quay.io/argoproj/argocd:v2.7.8).
+GitOps Agent v0.60.0 supports redis:7.0.8-alpine and Repo server [argocd:v2.8.2](http://quay.io/argoproj/argocd:v2.8.2).
 
 ### How long is a GitOps Agent version supported?
 

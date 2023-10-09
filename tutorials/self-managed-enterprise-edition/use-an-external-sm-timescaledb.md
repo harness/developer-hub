@@ -73,6 +73,10 @@ You can update the DNS record dynamically using a script or use the service disc
 If you installed PostgreSQL through a method other than the apt package manager maintained by Debian or Ubuntu archive, you may receive errors when following these instructions. Harness recommends that you uninstall existing PostgreSQL installations before you continue.
 :::
 
+import Strongpass from '/tutorials/shared/strong-passwords.md'
+
+<Strongpass />
+
 To set up a TimescaleDB VM, do the following:
 
 1. Connect to the VM and make sure you are running as root to prevent permission issues.
@@ -172,7 +176,7 @@ To set up TimescaleDB extension on Debian-based systems, do the following:
 5. Set the password for the postgres user.
 
    ```
-   \password postgres
+   \password Te$tp@ssw0rD#@
    ```
 
 6. Exit PostgreSQL.
@@ -322,7 +326,7 @@ To configure replication, do the following:
 12. Create a new user, `reptest`, and log in as Postgres.
 
     ```
-    CREATE ROLE reptest WITH REPLICATION PASSWORD 'testpassword' LOGIN;
+    CREATE ROLE reptest WITH REPLICATION PASSWORD 'testp@ssw0rd123' LOGIN;
     ```
 
     ```
@@ -440,7 +444,7 @@ Follow the steps below to set up a Harness Self-Managed Enterprise Edition clust
            - hostname.timescale.com:5432
          secretName: "tsdb-secret"
          userKey: "username"
-         passwordKey: "password"
+         passwordKey: "Te$tp@ssw0rD#@"
          sslEnabled: false
          certName: "tsdb-cert"
          certKey: "cert" 

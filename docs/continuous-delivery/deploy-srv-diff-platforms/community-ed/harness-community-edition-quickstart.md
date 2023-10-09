@@ -436,7 +436,7 @@ Try some other tutorials to learn more about Harness CD:
 * [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 * [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart)
 * [Kustomize deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart)
-* [Harness YAML quickstart](/docs/platform/Pipelines/harness-yaml-quickstart)
+* [Harness YAML overview](/docs/platform/Pipelines/harness-yaml-quickstart)
 
 ## Notes
 
