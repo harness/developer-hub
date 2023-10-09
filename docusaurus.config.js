@@ -608,15 +608,15 @@ const config = {
       },
     ],
 
-    'docusaurus-plugin-sass',
-    path.join(__dirname, '/plugins/hotjar-plugin'),
-    path.join(__dirname, '/plugins/onetrust-plugin'),
-    path.join(__dirname, '/plugins/utmcookie-plugin'),
-    path.join(__dirname, '/plugins/munity-plugin'),
+    "docusaurus-plugin-sass",
+    path.join(__dirname, "/plugins/hotjar-plugin"),
+    path.join(__dirname, "/plugins/onetrust-plugin"),
+    path.join(__dirname, "/plugins/utmcookie-plugin"),
+    path.join(__dirname, "/plugins/munity-plugin"),
   ],
-
   clientModules: [
     require.resolve("./client-modules/FocusOnAnchor"),
+  ],
 };
 
 module.exports = config;
