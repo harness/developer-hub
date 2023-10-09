@@ -6,6 +6,16 @@ import { MODULES } from "../../../constants";
 /* Module Card lists are defined in the data file for each module */
 export const FeaturedList: CardItem[] = [
   {
+    title: "Demystifying Trunk-Based Development",
+    module: MODULES.gs,
+    icon: "img/logo.svg",
+    description: <>Getting started with trunk-based development.</>,
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10 min",
+    link: "/tutorials/getting-started/trunk-based-development",
+  },
+  {
     title: "Deploy a Kubernetes Helm Chart",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
