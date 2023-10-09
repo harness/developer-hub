@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 
 _**This tutorial is a continuation of the Kubernetes Manifest tutorial. In the previous tutorial, we guided you through creating a sample pipeline using the Guestbook sample app. In this tutorial, we'll walk you through deploying your own microservice app with the Harness CD pipeline.**_
 
-**Sock Shop**, developed by Weaveworks, serves as a polyglot architectural pattern to showcase microservices-based deployment. This application suite integrates a range of technologies, such as SpringBoot, Go, REDIS, MYSQL, MongoDB, among others. We've chosen the Sock Shop as our demonstration app for the deployment process in Harness.
+**Sock Shop**, developed by Weaveworks, serves as a polyglot architectural pattern to showcase microservices-based deployments. This application suite integrates a range of technologies, such as SpringBoot, Go, REDIS, MYSQL, MongoDB, among others. We've chosen the Sock Shop as our demonstration app for the deployment process in Harness.
 
 You can use the same steps to integrate and deploy your own microservice app.
 
