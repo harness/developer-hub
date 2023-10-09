@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-09-30T10:00
+date: 2023-10-09T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,23 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: September 30, 2023
+## Latest: October 9, 2023
+
+## Continuous Delivery, version 80909
+
+- You can now provide detailed feedback in the Harness AIDA chat in CD. (CDS-79769)
+
+  <docimage path={require('./static/73123e6efdd7d7dbc7c67b4a7df71bd42b1b20c8ba4cf409f87de0749da8dc92.png')} width="40%" height="40%" title="Click to view full size image" />  
+
+
+## October 07, 2023
+
+### Continuous Error Tracking, versions ET-Service 5.28.2 and ET-Collector 5.28.0
+
+- Event filtering has been enhanced by removing event type selector boxes and displaying event counts above the events list. Additionally, a multi-select dropdown for event types has been introduced for improved usability. (CET-1698)
+
+
+## September 30, 2023
 
 ### Self-Managed Enterprise Edition, version 80220
 
@@ -27,9 +43,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Harness Self-Managed Enterprise Edition now supports self-managed MinIO object storage for disaster recovery. (SMP-1671)
 
-<!--- 
    For more information, go to [Self-managed object storage](/tutorials/self-managed-enterprise-edition/use-self-managed-minio-object-storage/).
---->
 
 - You can now apply Harness' recommended high performance configuration to reach a scale of 1000 concurrent pipelines. (SMP-1836)
 
@@ -68,9 +82,11 @@ Added new filters named Environment-Based and SLO Type to the SLO listing page. 
 
 - The Roles page now supports a list view in addition to the existing card view. In addition to the information shown in the card view, the list view shows you which resources are selected for the role. To see the list view, in the top-right corner of the Roles page, select the list view button. (PL-32183)
 
+<!-- Add to 809xx or future release when feature is complete
 - You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-41063)
 
    This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+-->
 
 ### Harness Delegate, version 23.09.80804
 

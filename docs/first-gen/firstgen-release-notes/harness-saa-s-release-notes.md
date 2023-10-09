@@ -16,7 +16,7 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### Latest: Version 80909
+### Latest: Version 80908
 
 #### New features and enhancements
 
@@ -28,7 +28,9 @@ This release does not include early access features.
 
 #### Fixed issues
 
-The **Secrets** dropdown list On the Services page didn't include all available secrets. The list now includes all secrets, up to the maximum of 1000. (PL-41308, ZD-50687)
+- The **Secrets** dropdown list On the Services page didn't include all available secrets. The list now includes all secrets, up to the maximum of 1000. (PL-41308, ZD-50687)
+
+- Fixed a dashboard issue where a custom widget did not display monthly data that was was more than 8 months old. With this fix, the custom widget will now display monthly data correctly. (CDS-79523, ZD-50750)
 
 ### Version 80810
 

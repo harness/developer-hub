@@ -703,7 +703,42 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 ### Patches
 
-This release does not include patches.
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.9.1](https://github.com/harness/helm-charts/releases/tag/harness-0.9.1) |
+| Air Gap Bundle | [0.9.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.9.1) |
+| NG Manager | 80219 |
+| CI Manager | 5313 |
+| Pipeline Service | 1.41.3 |
+| Platform Service | 80000 |
+| Access Control Service | 79802 |
+| Change Data Capture | 80209 |
+| Test Intelligence Service | release-197 |
+| NG UI | 0.357.17 |
+| LE NG | 68007 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.9.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.1/sto_images.tgz" \
+  .
+```
+
+- Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. (CI-9122, SMP-2110)
+
+   This fix requires Harness Delegate version 23.08.80308 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ## Previous releases
 
