@@ -3,6 +3,7 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import TutorialCard from "./TutorialCard";
 import { FeaturedList } from "./data/allTutorialsData";
+import { GSList } from "./data/gettingStartedData";
 import { CIList } from "./data/continuousIntegrationData";
 import { CDList } from "./data/continuousDeliveryData";
 import { CCMList } from "./data/cloudCostManagementData";
@@ -37,6 +38,13 @@ export default function AllTutorials() {
       <div className={styles.subSection}>
         <h3>All Featured Tutorials</h3>
         <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/icon_logo.svg`} />
+          <h3>Getting Started</h3>
+        </div>
+        <TutorialCard FeatureList={GSList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
