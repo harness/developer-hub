@@ -4,6 +4,15 @@ title: Pipeline Triggers
 description: Tutorial to get started with Triggers in Harness Pipelines.
 ---
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Delivery & GitOps Certification today!"
+  link="/certifications/continuous-delivery"
+  closable={true}
+  target="_self"
+/>
+
 This tutorial will help you to get started with Docker Registry Artifact triggers in Harness pipelines.
 
 :::info
