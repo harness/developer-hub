@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-09-30T10:00
+date: 2023-10-09T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -21,7 +21,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest: October 5, 2023
 
-## Continuous Delivery
+## Continuous Delivery, version 80909
 
 - You can now provide detailed feedback in the Harness AIDA chat in CD. (CDS-79769)
 
