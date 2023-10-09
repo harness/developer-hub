@@ -995,7 +995,15 @@ For Hashicorp Vault there are the 5 types of Auth supported. Except AWS Auth and
 You can refer to these [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/export-deployment-logs/) and for audit trail API [this](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-audit-trails-api/).
 
 
-#### Are trial accounts able to use the Github connector to attach their Github account?
+#### Are trial accounts able to use the GitHub connector to attach their GitHub account?
 
 Trial accounts should be able to use the same functionality as paid ones during the trial time period.
 
+#### Deploy stage requires a service defined. Can I set up a pipeline without a service defined at a stage? 
+
+Yes, you can use the custom stage. This is a selection you can make initially while defining a Pipeline stage. 
+
+
+#### What if I just want to execute a simple shell or bash script step, how can I do this?
+
+With a custom stage, you do not need to define a service. This would be an ideal method of executing a shell or bash script step. 
