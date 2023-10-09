@@ -4,6 +4,14 @@ hide_table_of_contents: true
 title: AWS
 ---
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Delivery & GitOps Certification today!"
+  link="/certifications/continuous-delivery"
+  closable={true}
+  target="_self"
+/>
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';

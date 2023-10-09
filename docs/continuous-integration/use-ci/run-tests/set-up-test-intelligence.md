@@ -650,6 +650,10 @@ You can provide a comma-separated list of test annotations used in unit testing.
 
 This setting is located under **Additional Configuration** in the Visual editor, or you can configure it in YAML as `testAnnotations: annotation1, annotation2, annotation3`.
 
+#### Packages
+
+Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If you do not provide a list, Harness auto-detects the packages.
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="kotlin" label="Kotlin, Scala">
@@ -660,6 +664,10 @@ This setting is located under **Additional Configuration** in the Visual editor,
 You can provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. If not specified, the defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`
 
 This setting is located under **Additional Configuration** in the Visual editor, or you can configure it in YAML as `testAnnotations: annotation1, annotation2, annotation3`.
+
+#### Packages
+
+Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If you do not provide a list, Harness auto-detects the packages.
 
 ```mdx-code-block
   </TabItem>
@@ -866,12 +874,6 @@ If a script is supplied here, select the corresponding **Shell** option.
 This option must be selected (`true`) to enable Test Intelligence.
 
 If this option is not selected (`false`), TI is disabled and all tests run on every build.
-
-### Packages
-
-This field is only available if it is applicable to the selected **Language**.
-
-Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If you do not provide a list, Harness auto-detects the packages.
 
 ### Environment Variables
 

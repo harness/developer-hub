@@ -1612,3 +1612,31 @@ Yes, one can try expression `<+artifacts.primary.identifier>`. Please refer more
 #### Is there a way to cache terraform plugins in delegates?
 
 Yes, one can try to set this environment variable `TF_PLUGIN_CACHE_DIR` . Also refer the following [Documentation](https://developer.hashicorp.com/terraform/cli/config/config-file#provider-plugin-cache)
+
+#### Depooy stage keeps asking for a Service. Can I setup a stage without a service?
+
+Yes, you can use custom stage instead of deploy stage. 
+
+
+#### How to do an initial setup of a CD pipeline stage?
+
+The modeling of a Deploy stage includes
+
+1. Create a pipeline.
+2. Add a CD stage.
+3. Define a service.
+4. Target an environment and infrastructure.
+5. Select execution steps.
+
+
+#### How can I verify that my CD pipeline has resulted in a successful deployment? 
+
+Harness Continuous Verification (CV) integrates with APM providers. By using machine learning Continuous Verification can be a powerful tool for verifying a CD deployment
+
+#### How does Harness Service-based licensing work? 
+
+Harness uses a Service-based license model to charge Harness customers using its Continuous Delivery module. 
+
+The CD License calculation uses the Active Services count and the number of Service Instances each active Service deployment creates.
+
+Please see the link for more details [https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd]
