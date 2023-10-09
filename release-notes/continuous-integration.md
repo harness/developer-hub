@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-10-09T10:00
+date: 2023-10-16T10:00
 sidebar_position: 3
 ---
 
@@ -19,7 +19,34 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 6100
+## Latest: Version 62xx
+
+<!-- Oct 16 2023 -->
+
+### New features and enhancements
+
+This release does not include new features or enhancements.
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+* Corrected the rendering of the **Stack Trace** field when inspecting failed tests from the [Tests tab](/docs/continuous-integration/use-ci/run-tests/viewing-tests) on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds). (CI-9765, ZD-51231)
+* <!-- need details --> (CI-9723, ZD-49843)
+* Fixed an issue where some [code repo connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) didn't send the [build status](/docs/continuous-integration/use-ci/viewing-builds#source-code-repository-links) back to the SCM provider. This happened due to an issue in the Harness Delegate, and it occurred only for code repo connectors that [connected through a Harness Delegate](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#connectivity-mode-settings). Connectors connecting through the Harness Platform weren't impacted. This item requires Harness Delegate version 23.10.80xxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-9835, ZD-51754, ZD-51758, ZD-51763)
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Version 6100
 
 <!-- Oct 9 2023 -->
 
@@ -40,11 +67,6 @@ This release does not include early access features.
 ### Hotfixes
 
 This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### Version 5902
 
