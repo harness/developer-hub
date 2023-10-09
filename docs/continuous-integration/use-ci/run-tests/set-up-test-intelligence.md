@@ -71,13 +71,10 @@ Test Intelligence is available for:
 * Python
    * Requires Python 3.
    * Doesn't support resource file relationships.
-   * Repos that use dynamic loading or metaclasses might have unpredictable results.
+   * Results can be unpredictable for repos using dynamic loading or metaclasses.
    * Currently, TI for Python is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 * Ruby
-   * Can't track code coverage for dynamically generated code (code generated at runtime).
-   * Can't track code coverage for code executed in your app's startup sequence.
-   * Code coverage results can be inaccurate for apps using [Spring](https://github.com/rails/spring).
-   * Test Intelligence for Ruby can take longer to run on large codebases.
+   * Results can be inaccurate for repos using dynamically generated code or [Spring](https://github.com/rails/spring).
    * Currently, TI for Ruby is behind the feature flag `CI_RUBY_TI`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 For unsupported codebases, you can use [Run steps](../run-ci-scripts/run-step-settings.md) to run tests.
@@ -701,7 +698,7 @@ Currently, TI for Ruby is behind the feature flag `CI_RUBY_TI`. Contact [Harness
 
 #### Test Globs
 
-You can override the default test globs pattern.
+You can override the default test globs pattern. For example, the default for RSpec is `spec/**/*_spec.rb`, and you could override it with any other pattern, such as `spec/features/**/*_spec.rb`.
 
 ```mdx-code-block
   </TabItem>
@@ -836,7 +833,7 @@ Or you can include additional flags, such as:
   <TabItem value="ruby" label="Ruby">
 ```
 
-Provide runtime arguments for tests, such as `--format RspecJunitFormatter --out tmp/junit.xml`.
+**Build Arguments** are optional for Ruby. You can provide runtime arguments for tests, such as `--format RspecJunitFormatter --out tmp/junit.xml`.
 
 ```mdx-code-block
   </TabItem>
@@ -1095,7 +1092,7 @@ pipeline:
                   spec:
                     language: Python
                     buildTool: Pytest ## Specify pytest or unittest
-                    args: "--junitxml=out_report.xml"
+                    args: "--junitxml=out_report.xml" ## Optional.
                     runOnlySelectedTests: true  ## Set to false if you don't want to use TI.
                     preCommand: |
                       python3 -m venv .venv
@@ -1142,13 +1139,11 @@ pipeline:
   tags: {}
   stages:
     - stage:
-        name: test ruby
-        identifier: testruby
+        name: Ruby Tests
+        identifier: rubytests
         type: CI
         spec:
           cloneCodebase: true
-          cacheOptions:
-            enabled: true
           execution:
             steps:
               - step:
@@ -1158,7 +1153,7 @@ pipeline:
                   spec:
                     language: Ruby
                     buildTool: Rspec
-                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml" ## Optional.
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: bundle install
                     reports:
@@ -1338,8 +1333,8 @@ pipeline:
                     connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
                     image: python:latest ## Specify if required by your build infrastructure.
                     language: Python
-                    buildTool: Pytest ## Specify pytest or unittest
-                    args: "--junitxml=out_report.xml"
+                    buildTool: Pytest ## Specify pytest or unittest.
+                    args: "--junitxml=out_report.xml" ## Optional.
                     runOnlySelectedTests: true  ## Set to false if you don't want to use TI.
                     preCommand: |
                       python3 -m venv .venv
@@ -1388,13 +1383,11 @@ pipeline:
   tags: {}
   stages:
     - stage:
-        name: test ruby
-        identifier: testruby
+        name: Ruby tests
+        identifier: rubytests
         type: CI
         spec:
           cloneCodebase: true
-          cacheOptions:
-            enabled: true
           execution:
             steps:
               - step:
@@ -1406,7 +1399,7 @@ pipeline:
                     image: ruby:latest ## Specify if required by your build infrastructure.
                     language: Ruby
                     buildTool: Rspec
-                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml" ## Optional.
                     runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: bundle install
                     reports:
@@ -1489,11 +1482,3 @@ If you get errors related to code coverage for Python:
 
 * If you included [Build Arguments](#build-arguments), these don't need coverage flags (`--cov` or `coverage`).
 * You don't need to install coverage tools in [Pre-Command](#pre-command). These are already included.
-
-### Ruby
-
-Test Intelligence for Ruby has these limitations, which can cause TI to miss some code:
-
-* Can't track code coverage for dynamically generated code (code generated at runtime).
-* Can't track code coverage for code executed in your app's startup sequence.
-* Code coverage results can be inaccurate for apps using [Spring](https://github.com/rails/spring).
