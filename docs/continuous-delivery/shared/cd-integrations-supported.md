@@ -745,6 +745,18 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
 - [Harness Policy As Code quickstart](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-quickstart)
 - [Add a Policy step to a pipeline](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline)
 
+#### Policy as Code limitations
+
+- When configuring a policy for testing, users must have a pipeline that has a policy run against it (success or failed) to capture the pipeline's expanded JSON for the policy studio testing terminal.
+- Policies can only be run against one document (one JSON payload sent for OPA evaluation). You cannot run a policy against multiple documents. 
+- Not all Harness entities are supported with policies:
+  - For CD: service, environment, infrastructure, and overrides are on the roadmap for integration.
+  - For Platform: service account, API key, and token are on the roadmap for policy integration.
+  - For other product modules: entities will be added as needed.
+- Harness does not support OPA bundles.
+- Harness does not support data imports from external sources.
+
+
 ```mdx-code-block
   </TabItem>
 </Tabs>
