@@ -53,7 +53,7 @@ Verify the following:
 2. **Obtain GitHub personal access token with repo permissions**. For steps, go to the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
 3. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness delegates and deploying a sample application in a local development environment.
     - Check [delegate system and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
-4. **Install [Helm CLI](https://helm.sh/docs/intro/install/)**.
+4. **Install the [Helm CLI](https://helm.sh/docs/intro/install/)**.
 5. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository using the GitHub web interface to utilize the Harness resource YAMLs.
 
 ## Getting Started with Harness CD
