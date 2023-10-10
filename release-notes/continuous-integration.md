@@ -25,7 +25,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
-You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence.md#enable-parallelism-test-splitting-for-test-intelligence) in the Visual editor as well as the YAML editor. (CI-9618)
+You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#enable-parallelism-test-splitting-for-test-intelligence) in the Visual editor as well as the YAML editor. (CI-9618)
 
 ### Early access features
 
