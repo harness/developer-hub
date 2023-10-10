@@ -6,6 +6,16 @@ keywords: [Mobile application testing, Feature Flags, FF Tutorial]
 
 # Making flags resilient during a mobile web browser refresh
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Feature Flags Certification today!"
+  link="/certifications/feature-flags"
+  closable={true}
+  target="_self"
+/>
+
+
 ![FF Workflow](static/ff-mobile-browser-refresh/ffworkflow.png)
 
 With the need to save battery life, mobile operating systems such as iOS and Android are very aggressive in saving system resources when an app is placed in the background. This means that when you switch to another app on your phone, the old app is suspended and frozen. This can cause problems if your app needs to maintain and update its internal state with a remote server - as most Feature Flag SDKs need to do.

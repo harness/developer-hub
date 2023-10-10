@@ -135,6 +135,7 @@ For details, go to [CI codebase variables reference](https://developer.harness.i
 ## How to Enable Test Intelligence?
 
 Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build
+
 For details, go to [Enable Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
 
 ## Does Harness CI support Multilayer caching?

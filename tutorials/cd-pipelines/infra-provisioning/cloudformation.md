@@ -4,6 +4,15 @@ hide_table_of_contents: true
 title: AWS CloudFormation 
 ---
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Delivery & GitOps Certification today!"
+  link="/certifications/continuous-delivery"
+  closable={true}
+  target="_self"
+/>
+
 This tutorial focuses on the usage of [AWS CloudFormation](https://aws.amazon.com/cloudformation/) as an Infrastructure-as-a-code tool to provision Harness infrastructure within a Harness pipeline. 
 
 ```mdx-code-block

@@ -197,13 +197,17 @@ export default function Certifications() {
                     src={`${baseUrl}img/cert_dev_ci_badge.svg`}
                     alt="Developer Continuous Integration Badge"
                   />
+                   <img
+                    src={`${baseUrl}img/cert_dev_ff_badge.svg`}
+                    alt="Developer FF Badge"
+                  />
                 </div>
                 {/* <h5>Coming Soon</h5> */}
                 <h5>Coming Soon</h5>
                 <div className={styles.unAvailableCerts}>
                   <img
-                    src={`${baseUrl}img/cert_dev_ff_badge.svg`}
-                    alt="Developer FF Badge"
+                    src={`${baseUrl}img/cert_dev_ccm_badge.svg`}
+                    alt="Developer CCM Badge"
                   />
                 </div>
               </div>

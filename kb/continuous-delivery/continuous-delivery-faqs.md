@@ -1497,7 +1497,7 @@ No, It is a feature yet to be added.
 
 #### How long can a pipeline be left running ?
 
-A pipeline can be left running for `35 days` on enterprise account.
+A pipeline can be left running for `35 days` on enterprise account and 4 hours for verified free customers.
 
 #### Do we support the creation of PR  at the time of pipeline creation ?
 
@@ -1559,3 +1559,84 @@ If you are facing SSH timeout error please check for possible cause below :
 - Check if correct delegate is picked during the execution , if not use delegate selector to pick the correct one .
 - Check the timeout defined for the step is optimum to reach the host if not cross check and increase accordingly .
 - Check  if any recent feature flags enabled causing this .
+
+
+#### Can customer control `Skip Harness label selector` or they need to be simply added ? 
+
+No, Harness will automatically change behavior.
+The expected behavior is as follows: In the scenario where a canary deployment is initially performed and subsequently switched to a rolling deployment for the same service and manifest, users will no longer encounter the selector error.
+Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/skip-harness-label-selector-tracking-on-kubernetes-deployments/)
+
+#### Which specific failure type should be employed to verify "assertion errors" when utilizing the HTTP step with an assertion rule, ensuring a distinct failure behavior distinct from the options provided?
+
+The failure type should be `Unknown`. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/)
+
+#### How can a customer do migrating of Service Override for Environments for large configurations?
+
+
+- ##### Terraform or APIs Used for Initial Configuration:
+
+   - If the customer initially created the Harness configuration using Terraform, they can easily change the organization identifier by modifying the configuration file.
+Likewise, if APIs were used for the initial configuration, the same approach applies to change the organization identifier.
+- ##### Creation from UI:
+
+   - If the customer originally created the configuration through the user interface (UI), a different process is required.
+In such cases, the customer can follow these steps:
+   - Utilize GET APIs to retrieve the existing configuration.
+   - Create a new configuration for the new organization using the create APIs.
+   - This allows for the necessary overrides and adaptations as needed for the new organization's requirements.
+
+Please refer more on this in the following Documentation : [Get Service Overrides](https://apidocs.harness.io/tag/ServiceOverrides#operation/getServiceOverrides) and [Create Service Overrides](https://apidocs.harness.io/tag/ServiceOverrides#operation/createServiceOverride)
+
+
+#### Is there an existing solution in place or under development to accommodate a use case where a customer intends to employ their existing JIRA instance for managing deployment processes and approvals?
+
+In the context of Harness, there is no necessity to create a duplicate ticket for approval purposes. Instead, a streamlined approach involves utilizing the "Approval" and "Update" steps while omitting the "Create" step. Additionally, you can designate the JIRA issue key as a runtime input, allowing individuals to input the relevant issue key when initiating the process. This approach ensures efficiency and avoids the redundancy of ticket creation.
+
+#### Is there a specific rationale behind the restriction on using expressions when defining the deployment group for multi-environment deployments ?
+
+Yes, this is indeed a limitation at present. When we initially introduced this feature, it was designed with fixed and runtime input support. Additionally, it's worth noting that we do not currently support passing a list for the service or environment field via an expression.
+
+#### Is the flag enabled for our entire account, or can it be configured for individual projects?
+
+No, it can be only specific to entire account or multiple accounts that an organisation holds.
+
+#### If we opt to disable the feature while it's still in beta, can Harness assist with that process?
+
+Yes, we can assist with disabling the feature while it's still in beta.
+
+####  Is there a way to get the service artifact source identifier with builtin variables?
+
+Yes, one can try expression `<+artifacts.primary.identifier>`. Please refer more on this in the [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#expression-examples)
+
+#### Is there a way to cache terraform plugins in delegates?
+
+Yes, one can try to set this environment variable `TF_PLUGIN_CACHE_DIR` . Also refer the following [Documentation](https://developer.hashicorp.com/terraform/cli/config/config-file#provider-plugin-cache)
+
+#### Depooy stage keeps asking for a Service. Can I setup a stage without a service?
+
+Yes, you can use custom stage instead of deploy stage. 
+
+
+#### How to do an initial setup of a CD pipeline stage?
+
+The modeling of a Deploy stage includes
+
+1. Create a pipeline.
+2. Add a CD stage.
+3. Define a service.
+4. Target an environment and infrastructure.
+5. Select execution steps.
+
+
+#### How can I verify that my CD pipeline has resulted in a successful deployment? 
+
+Harness Continuous Verification (CV) integrates with APM providers. By using machine learning Continuous Verification can be a powerful tool for verifying a CD deployment
+
+#### How does Harness Service-based licensing work? 
+
+Harness uses a Service-based license model to charge Harness customers using its Continuous Delivery module. 
+
+The CD License calculation uses the Active Services count and the number of Service Instances each active Service deployment creates.
+
+Please see the link for more details [https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd]

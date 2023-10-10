@@ -965,3 +965,70 @@ You can refer the documentation here [Documentation](https://developer.harness.i
 #### Do we need to provide both `sso_group_id` and `sso_group_name` and should they match?
 
 Yes we need to provide both, The value provided for both `sso_group_id` and `sso_group_name`  should be same.
+
+#### OKTA login goes to gen1 interface
+Need to change Default Experience to Harness Next generation under Account Overview
+
+#### How to scale delegate replicas
+You can update autoscaling parameters in values yaml
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+
+#### Approval notification is not getting triggered inspire of correct user group is selected
+Please check and verify if the user group selected has any channel(email/slack etc) is configured under Notification Preferences
+
+#### Do we need to enable authorization for sso needs to work while setting up saml.
+Authorization is used for group mapping and its optional and not required for sso login to work
+
+#### How to use custom helm3 version in CG legacy delegate
+You can install the latest version and need to set the env variable till the binary path HELM3_PATH=/opt/harness-delegate/client-tools/helm
+
+#### For the delegates hosted on Azure VM, which authentication method should we use when setting up a vault connector?
+
+For Hashicorp Vault there are the 5 types of Auth supported. Except AWS Auth and Token(not advised as needs periodic renewal) any of other 3 depending on your setup and preference should work. For more details you can refer [here](https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault#step-2-overview).
+
+#### How can we export all current gen information: deployments, services, env, etc, which has been deployed?
+
+You can refer to these [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/export-deployment-logs/) and for audit trail API [this](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-audit-trails-api/).
+
+
+#### Are trial accounts able to use the GitHub connector to attach their GitHub account?
+
+Trial accounts should be able to use the same functionality as paid ones during the trial time period.
+
+
+#### At what port are the delegate prometheus metrics exposed?
+
+The delegate prometheus metrics are exposed on the port 3460 in the running delegate container
+
+#### How do I check for the listen ports on the delegate if netstat is not installed?
+
+You can run the command `lsof -nP -iTCP -sTCP:LISTEN` or install netstat or bake it into the delegate image
+
+#### What prometheus metrics are exposed on the delegate?
+
+The list of prometheus metrics exposed on the harness delegate are listed in the documentation at the following page https://developer.harness.io/docs/platform/delegates/manage-delegates/delegate-metrics/
+
+#### The Harness delegate went down and I did not get any notification via prometheus that it was in a disconnected state.  What gives?
+
+When the Harness delegate pod goes down so does it's exposed metrics endpoint as well.  The metrics here can help notify you if connectivity is lost between the Harness manager and the delegate pod itself (but obviously still present to your prometheus server to notify you as well)
+
+#### What API can be used to check for delegate connectivity status?
+
+The following API can be used to check for delegate connectivity status https://apidocs.harness.io/tag/Delegate-Setup-Resource#operation/listDelegates
+
+#### For legacy delegates that are not starting up and creating a .hprof file in the container what should I do?
+
+For the statefulset updating the environment variable "WATCHER_JAVA_OPTS" with "-Xmx512m" may help
+
+#### Deploy stage requires a service defined. Can I set up a pipeline without a service defined at a stage? 
+
+Yes, you can use the custom stage. This is a selection you can make initially while defining a Pipeline stage. 
+
+#### What if I just want to execute a simple shell or bash script step, how can I do this?
+
+With a custom stage, you do not need to define a service. This would be an ideal method of executing a shell or bash script step. 
+
