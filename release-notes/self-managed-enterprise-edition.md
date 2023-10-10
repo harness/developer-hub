@@ -2219,7 +2219,7 @@ This release includes the following Harness module and component versions.
 #### Continuous Integration
 
 - The following features are now generally available. These were enabled by default for all users, but they were behind features flags until they were deemed stable. (CI-6537)
-  - `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the [Harness Manager](//docs/get-started/harness-platform-architecture/#harness-platform-components) directly by HTTP rather than through a Delegate.
+  - `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the [Harness Manager](/docs/get-started/harness-platform-architecture/#harness-platform-components) directly by HTTP rather than through a Delegate.
   - `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) and [Run Tests](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence/#add-the-run-tests-step) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
 
 - [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) is now generally available. With Cache Intelligence, Harness automatically caches and restores common dependencies. You don't need to bring your own storage because Harness stores the cache in the Harness-hosted environment, Harness Cloud. (CI-7127)
