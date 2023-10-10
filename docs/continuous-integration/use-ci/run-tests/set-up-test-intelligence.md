@@ -306,8 +306,8 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
 
    :::
 
-3. In the `RunTests` step, set `enableTestSplitting` to `true`.
-4. The `testSplitStrategy` is optional. If you include it, you can choose either `TestCount` or `ClassTiming`. The default is `ClassTiming`.
+3. In the **Run Tests** step, select **Enable Test Splitting** (`enableTestSplitting: true`).
+4. The **Test Split Strategy** is optional. You can choose how to split the tests, either by test count (`TestCount`) or by class timing (`ClassTiming`). The default is class timing.
 
    Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test count uses simple division to split the tests into workloads. However, the maximum possible number of workloads is determined by the parallelism strategy you specified on the step or stage. For example, if you set `parallelism: 5`, then the tests are split into a maximum of five workloads.
 
