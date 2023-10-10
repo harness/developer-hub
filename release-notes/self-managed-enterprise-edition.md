@@ -740,6 +740,12 @@ gsutil -m cp \
 
    This fix requires Harness Delegate version 23.08.80308 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
+- You can now use service hooks to fetch Helm Chart dependencies from Git and other repositories and install them with the main Helm Chart for Kubernetes and Helm deployments. (CDS-50552)
+
+   This feature is behind the feature flag `CDS_K8S_SERVICE_HOOKS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+
+   For more information, go to [Service hooks](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks).
+
 ## Previous releases
 
 <details>
