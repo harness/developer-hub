@@ -77,7 +77,7 @@ curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT
 ```
 
 * `ACCOUNT_ID`: Your Harness account identifier.
-* `PIPELINE_EXECUTION_PREFIX_KEY`: A multi-part value consisting of `ACCOUNT_ID/pipeline/PIPELINE_ID/RUN_SEQUENCE/`. For example, ``.
+* `PIPELINE_EXECUTION_PREFIX_KEY`: A multi-part value consisting of `ACCOUNT_ID/pipeline/PIPELINE_ID/RUN_SEQUENCE/`. For example, `12345abcd/pipeline/My_Cool_Pipeline/12/`.
    * `ACCOUNT_ID`: Your Harness account identifier.
    * `PIPELINE_ID`: The identifier of the pipeline that you want to get logs for.
    * `RUN_SEQUENCE`: The incremental execution/build identifier of the specific pipeline run that you want logs for.
@@ -97,7 +97,7 @@ curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT
 ```
 
 * `ACCOUNT_ID`: Your Harness account identifier.
-* `STEP_PREFIX_KEY`: A multi-part value consisting of `ACCOUNT_ID/pipeline/PIPELINE_ID/RUN_SEQUENCE/pipeline/stages/STAGE_ID/steps/STEP_ID/`. For example, ``.
+* `STEP_PREFIX_KEY`: A multi-part value consisting of `ACCOUNT_ID/pipeline/PIPELINE_ID/RUN_SEQUENCE/pipeline/stages/STAGE_ID/steps/STEP_ID/`. For example, `12345abcd/pipeline/My_Cool_Pipeline/12/pipeline/stages/My_Cool_Stage/steps/My_Cool_Step/`.
    * `ACCOUNT_ID`: Your Harness account identifier.
    * `PIPELINE_ID`: The identifier of the pipeline that has the step that you want to get logs for.
    * `RUN_SEQUENCE`: The incremental execution/build identifier of a specific pipeline run.
