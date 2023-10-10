@@ -1,11 +1,11 @@
 {
-  "label": "Getting Started",
+  "label": "Getting Started with FF",
   "collapsible": "true",
   "collapsed": "false",
   "position": 1,
   "link": {
     "type": "generated-index",
-    "title": "Getting Started"
+    "title": "Getting Started with FF"
   },
   "customProps": {}
 }

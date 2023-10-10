@@ -1,10 +1,20 @@
 ---
 sidebar_position: 1
-description: Take a journey with me into trunk-based development! We are going to talk about what TBD is, breaking it down (demystifying), and how to get started. TBD is a great way for your dev team to get started branching efficiently..
+description: Getting started with trunk-base-development.
 keywords: [JavaScript, React, Feature Flags, FF Tutorial]
+title: Demystifying trunk-based development
 ---
 
 # Demystifying Trunk-Based Development
+
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Feature Flags Certification today!"
+  link="/certifications/feature-flags"
+  closable={true}
+  target="_self"
+/>
 
 ## What is Trunk-Based Development?
 

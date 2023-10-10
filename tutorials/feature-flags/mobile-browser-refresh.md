@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 description: Ensuring flags are refreshed after a mobile web browser gets brought to the foreground.
 keywords: [Mobile application testing, Feature Flags, FF Tutorial]
 ---

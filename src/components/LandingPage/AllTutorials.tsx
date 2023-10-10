@@ -41,13 +41,6 @@ export default function AllTutorials() {
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
-          <img src={`${baseUrl}img/icon_logo.svg`} />
-          <h3>Getting Started</h3>
-        </div>
-        <TutorialCard FeatureList={GSList} />
-      </div>
-      <div className={styles.subSection}>
-        <div className={styles.SectionName}>
           <img src={`${baseUrl}img/icon_ci.svg`} />
           <h3>Set up CI Pipelines</h3>
         </div>
