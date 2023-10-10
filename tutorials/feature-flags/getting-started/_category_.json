@@ -1,0 +1,11 @@
+{
+  "label": "Getting Started",
+  "collapsible": "true",
+  "collapsed": "false",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "Getting Started"
+  },
+  "customProps": {}
+}
