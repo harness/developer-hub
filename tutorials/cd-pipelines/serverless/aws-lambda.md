@@ -5,6 +5,14 @@ title: AWS Lambda
 description: Deploy a Serverless app on AWS Lambda.
 ---
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Delivery & GitOps Certification today!"
+  link="/certifications/continuous-delivery"
+  closable={true}
+  target="_self"
+/>
 
 This tutorial demonstrates how to deploy on AWS Lambda using Harness Continuous Delivery (CD). We will guide you through deploying a sample function using a Harness pipeline. 
 
