@@ -56,9 +56,9 @@ There are two ways one can connect to the collector from the CET agent:
 There are three different URLs to use depending on which Harness cluster you are connected to.  Select Account Settings on the bottom left and verify the Harness Cluster Hosting Account.
 
 The collector URLs are as follows:
-- Prod1: https://collector.et.harness.io/prod1/
-- Prod2: https://collector.et.harness.io/gratis/ 
-- Prod3: https://collector.et.harness.io/prod3/
+- Prod1: `https://collector.et.harness.io/prod1/`
+- Prod2: `https://collector.et.harness.io/gratis/`
+- Prod3: `https://collector.et.harness.io/prod3/`
 
 
 

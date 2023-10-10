@@ -162,9 +162,9 @@ You might want to override the default behavior and download your build images f
 curl -X  GET https://app.harness.io/registry/_catalog
 ```
 
-Add or select a connector to use instead of the default connector uses for the Harness Container Image Registry.
+Add or select a connector to use instead of the default connector used for the Harness Container Image Registry.
 
-For more information, go to [Connect to Harness container image registry Using Docker connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/).
+For more information, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
 
 ### Advanced settings
 
