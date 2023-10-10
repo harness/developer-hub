@@ -37,7 +37,7 @@ Scorecards play a pivotal role in ensuring software components are developed and
 </details>
 
 
-#### Enable Scorecards
+## Enable Scorecards
 
 ### Scorecard Components in IDP
 
