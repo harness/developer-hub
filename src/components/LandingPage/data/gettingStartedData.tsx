@@ -16,7 +16,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/getting-started/trunk-based-development",
+    link: "/tutorials/feature-flags/getting-started/trunk-based-development",
   },
 ];
 
@@ -33,7 +33,7 @@ export const GSList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/getting-started/trunk-based-development",
+    link: "/tutorials/feature-flags/getting-started/trunk-based-development",
   }
 
 ];

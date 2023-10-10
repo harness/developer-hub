@@ -13,7 +13,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10 min",
-    link: "/tutorials/getting-started/trunk-based-development",
+    link: "/tutorials/feature-flags/getting-started/trunk-based-development",
   },
   {
     title: "Deploy a Kubernetes Helm Chart",
