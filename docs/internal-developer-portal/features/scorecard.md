@@ -47,7 +47,7 @@ Scorecard has two main UI components which are developer facing and lives in the
 
 :::info
 
-For the steps **1** and **2** the `Layout` is autopopulated with the adequate fields in the recent version of IDP and could be skipped, but users are still advised to check for the same on their `Layout` for the software components.  
+For the steps **1** and **2** the `Layout` is prepopulated with the adequate fields in the recent version of IDP and could be skipped, but users are still advised to check for the same on their `Layout` for the software components.  
 
 :::
 
