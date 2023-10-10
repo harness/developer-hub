@@ -19,6 +19,10 @@ Looking for how-tos? See [Terraform how-tos](terraform-how-tos).
 
 :::
 
+All logs produced by terraform will be printed in harness step execution logs.
+Logs that are coming from stdout will be printed as they are, logs from stderr will be printed in red collor.
+The option to skip colloring stderr logs in red ins behind a feature flag: **CDS_TF_TG_SKIP_ERROR_LOGS_COLORING**
+
 ## Terraform provisioning options
 
 You can use Harness with Terraform in the following ways:
