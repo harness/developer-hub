@@ -62,7 +62,7 @@ This release does not include hotfixes.
     - Added support for evaluation of mulitple app labels when running experiments with multiple target app labels. (CHAOS-2315)
 
 * Linux Chaos Faults: This feature is currently behind a feature flag named `CHAOS_LINUX_ENABLED`.
-    - In Linux experiments, the Resilience Score was sometimes showing as 0, although only one probe had failed. This was happening because of incorrect propagation of the probe error, which led to its misinterpretation as an experimental error rather than a probe failure. This issues has been fixed now. (CHAOS-2472)
+    - In Linux experiments, the Resilience Score was sometimes showing as 0, although only one probe amongst multiple had failed. This was happening because of incorrect propagation of the probe error, which led to its misinterpretation as an experiment error rather than a probe failure. This issue has been fixed now. (CHAOS-2472)
 
 * Resilience Probes: This feature is currently behind a feature flag named `CHAOS_PROBES_ENABLED`.
     - Enhanced mode selection drawer to show the UI according to selected mode by the users. Previously it was showing the image indicating SOT for all modes irrespective of the selected mode. (CHAOS-1997)
