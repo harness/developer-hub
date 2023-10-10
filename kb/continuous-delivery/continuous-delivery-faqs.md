@@ -1270,3 +1270,49 @@ Yes, you can use Bash shell over WinRM connection in Harness. In the Shell Scrip
 ### Is it possible to use Helm hooks in Harness Helm deployments?
 Yes, you can use Helm hooks in Harness Helm deployments. Helm hooks allow you to execute specific actions or scripts at different points in the Helm chart's lifecycle, such as before or after installing or upgrading a release. Harness supports the use of Helm hooks as part of your Helm deployment process.
 
+### I am getting "Backend not initialised error" when running terragrunt plan with specific module?
+
+When dealing with specific modules, we don't initiate terraform init directly; instead, we use the terragrunt terragrunt-info command. 
+To initialize the backend properly, you need to run terraform init, and this initialization process is triggered automatically when you select the "All modules" option.
+
+### How do I update values for initialdelayseconds for helm delegates?
+You can override Helm chart values by providing a custom values file or by specifying values directly on the command line when installing or upgrading a chart or passing the YAML in terraform script
+
+### Does terraform step keep the working directory persistence?
+In the both plan and apply step we clean up the directories of Terraform.
+ 
+### How do I access files created during plan step of terraform for apply step?
+Workspace gets cleaned after every run of Plan or Apply step.
+version control can be used to store these files and later reference them.
+
+### I want to force all new pipelines created to be stored in git?
+We provide the option to enforce a Git-centric experience for all pipelines and templates.
+To guarantee that your resource configurations are exclusively stored in Git repositories, you can enforce this Git-centric experience within your Harness account. 
+You can achieve this by enabling the "Enforce Git Experience for Pipelines and Templates" setting.
+
+### Getting error - "The incoming YAML exceeds the limit XXXXX code points", How do I resolve this?
+The issue is due to a very large sized yaml. This is an issue with the snakeyaml lib
+The YAML size needs to be reduced or use matrix/strategies to add multiple steps/stages instead of adding them one by one.
+
+
+### What is the primary difference between the new delegates and the legacy delegates?
+We redesigned our delegates to enhance security and stability while introducing advanced features like High Availability and metrics scraping.
+These improved delegates are referred to as "immutable delegates". 
+While the fundamental task execution remains largely unchanged, the new delegates are designed to offer additional features and improvements. 
+
+### How can I distinguish between the legacy delegates and the new delegates?
+Legacy delegates are identifiable by their image tag and versioning scheme, which is always "harness/delegate:latest." 
+The new delegates have a different versioning scheme and are designed to offer enhanced functionality.
+
+### Does the new delegate not support authentication by passing accountSecret it requires using of delegate token?
+These are actually the same thing, there was just a name change in new delegates. They can however fallback to ACCOUNT_SECRET if you don’t provide DELEGATE_TOKEN variable, but they can be the same value. 
+Note, depending on how you provide the secret (i.e. if it’s through a secret resource or plain env variable) the actual secret value might need to be base64 encoded.
+
+###  I do not see in the new delegate helm chart is the option to specify delegateProfile, is that still supported?
+DelegateProfile is deprecated, you can leverage INIT_SCRIPT to run scripts at delegate startup. Adding few Links that can help you get going.
+Helm chart: https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml#L87
+INIT_SCRIPT documentation: https://developer.harness.io/docs/platform/delegates/install-delegates/overview/#use-init_script
+
+### How do I set Output Variable in Powershell?
+To set the Output variable in powershell, Please use this format for setting up the env variable value in the script - `$env:outputvariablename=value`
+
