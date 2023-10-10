@@ -34,6 +34,33 @@ Harness NextGen release 80811 includes the following changes for the Harness Del
 
 ### New features and enhancements
 
+- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
+
+### Early access features
+
+This release does not include any new early access features.
+
+### Fixed issues
+
+- Fixed an issue where some [code repo connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) didn't send the [build status](/docs/continuous-integration/use-ci/viewing-builds#source-code-repository-links) back to the SCM provider. This happened due to an issue in the Harness Delegate, and it occurred only for code repo connectors that [connected through a Harness Delegate](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#connectivity-mode-settings). Connectors connecting through the Harness Platform weren't impacted. (CI-9835, ZD-51754, ZD-51758, ZD-51763)
+
+- Fixed an issue where the latest delegate version was not reflected in the [latest supported delegate version API](https://app.harness.io/ng/api/delegate-setup/latest-supported-version). (PL-41151)
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>Expand this section to view changes to previous releases</summary>
+
+#### Harness version 80811, Harness Delegate version 23.09.80804
+
+Harness NextGen release 80811 includes the following changes for the Harness Delegate.
+
+##### New features and enhancements
+
 Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
 
    - `org.bouncycastle:bcpg-jdk15on:jar:1.70` to `org.bouncycastle:bcpg-jdk18on:jar:1.76`
@@ -45,11 +72,11 @@ Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-407
 - You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-41063)
 -->
 
-### Early access features
+##### Early access features
 
 This release does not include any new early access features.
 
-### Fixed issues
+##### Fixed issues
 
 - The Kustomize 3.5.4 binary is now removed from the immutable delegate, and all Kustomize tasks are routed via the Kubectl binary. (CDS-58893, ZD-48553)
 
@@ -103,20 +130,15 @@ This release does not include any new early access features.
   
   This issue has been fixed.
 
-### Hotfixes
+##### Hotfixes
 
-#### Version 23.10.80808
+##### Version 23.10.80808
 
 - Updated the internal Jenkins library to support long IDs for Jenkins builds. Previously, supported IDs were limited to integer bounds. (CDS-79499, ZD-50718, ZD-50888)
 
 - Fixed an issue where Git statuses were not being sent for pull requests. (CES-1376)
 
 - Added support for referencing JSON secret keys with dots at the top level. Nested keys with dots are not supported. (PL-41715)
-
-## Previous releases
-
-<details>
-<summary>Expand this section to view changes to previous releases</summary>
 
 #### Harness version 80504, Harness Delegate version 23.09.80505
 
