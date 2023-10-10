@@ -88,7 +88,9 @@ You need a Docker connector that points to your private container registry. For 
 
    :::
 
-2. Set up your pipeline to download the images from your private registry. Configuration requirements depend on the type of step you're using to run your scans:
+2. If your registry automatically downloads the latest images from the public Harness registry, you might want to [specify the images to use in your pipelines](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md#specify-the-harness-ci-images-used-in-your-pipelines). This ensures your pipelines use specific image versions. You must update this specification when you want to adopt a new version of an image.
+
+3. Set up your pipeline to download the images from your private registry. Configuration requirements depend on the type of step you're using to run your scans:
 
    - [Scanner template step](#scanner-template-setup)
    - [Security step](#security-step-setup)

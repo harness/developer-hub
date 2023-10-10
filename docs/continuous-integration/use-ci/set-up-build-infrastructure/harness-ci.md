@@ -49,7 +49,7 @@ If you don't want the Harness Delegate to pull images anonymously, you can use c
 
 ### I don't want to pull images from a public registry
 
-Harness CI images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can download the images to your own private repo and then pull the images into your pipelines from your private repo. For an example demonstrating how to do this, go to [Configure STO to download images from a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+Harness CI images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can download the images to your own private registry, [specify the images that you want Harness to use](#specify-the-harness-ci-images-used-in-your-pipelines), and then configure a Docker connector to pull the images from your private registry. For an example demonstrating how to do this, go to [Configure STO to download images from a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
 ### Docker Hub rate limiting
 
@@ -58,8 +58,6 @@ Harness CI images are stored in a public container registry. If you don't want t
 ## Harness CI image updates
 
 Your organization has a one-month window to run security scans or other tests on new CI build images before you deploy them. Every two weeks, Harness publishes new versions of images required to run CI builds. Each image is backwards-compatible with the previous two releases.
-
-### Image update release processes
 
 Harness updates `harness/ci-*` images, such as `harness/ci-addon` and `harness/ci-lite-engine`, according to the following release process:
 
@@ -72,9 +70,9 @@ Harness updates `harness/ci-*` images, such as `harness/ci-addon` and `harness/c
 
 [Drone plugin images](https://console.cloud.google.com/gcr/images/gcr-prod/global/plugins) are updated as needed. All Drone image updates are backward-compatible. When you first deploy CI, Harness scans all `plugin` images you plan to use and addresses any vulnerabilities. After your initial deployment, Harness publishes updates to address new vulnerabilities based on our Service Level Agreement with your organization.
 
-### Update the Harness CI images your pipelines use
+## Specify the Harness CI images used in your pipelines
 
-You can use the Harness CI `execution-config` API to update the images used in your infrastructure by specifying image tags.
+You can use the Harness CI `execution-config` API to specify or update the Harness CI images used in your infrastructure by specifying image tags.
 
 API key authentication is required. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io/#section/Introduction/Authentication).
 
