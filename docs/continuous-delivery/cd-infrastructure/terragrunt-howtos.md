@@ -26,9 +26,9 @@ Currently, the dynamic provisioning documented in this topic is behind the featu
 
 Harness can provision any resource that is supported by Terragrunt and the related Terraform Provider or plugin.
 
-All logs produced by terraform will be printed in harness step execution logs.
+All logs produced by terragrunt will be printed in harness step execution logs.
 Logs that are coming from stdout will be printed as they are, logs from stderr will be printed in red collor.
-The option to skip colloring stderr logs in red ins behind a feature flag: `CDS_TF_TG_SKIP_ERROR_LOGS_COLORING`
+The option to skip colloring stderr logs in red is behind a feature flag: `CDS_TF_TG_SKIP_ERROR_LOGS_COLORING`
 
 If you want to use Terraform without Terragrunt, Harness supports that, too. For more information, go to [Terraform how-tos](./terraform-infra/terraform-how-tos).
 
