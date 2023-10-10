@@ -171,9 +171,9 @@ interface Options {
   pollingInterval?: number
   pollingEnabled?: boolean
   streamEnabled?: boolean
-  allAttributesPrivate?: boolean
-  privateAttributeNames?: string[]
   debug?: boolean
+  allAttributesPrivate?: boolean // **Depreacated**
+  privateAttributeNames?: string[] // **Depreacated**
 }
 ```
 
