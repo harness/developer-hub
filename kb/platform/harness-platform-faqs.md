@@ -999,11 +999,36 @@ You can refer to these [documentation](https://developer.harness.io/docs/first-g
 
 Trial accounts should be able to use the same functionality as paid ones during the trial time period.
 
+
+#### At what port are the delegate prometheus metrics exposed?
+
+The delegate prometheus metrics are exposed on the port 3460 in the running delegate container
+
+#### How do I check for the listen ports on the delegate if netstat is not installed?
+
+You can run the command `lsof -nP -iTCP -sTCP:LISTEN` or install netstat or bake it into the delegate image
+
+#### What prometheus metrics are exposed on the delegate?
+
+The list of prometheus metrics exposed on the harness delegate are listed in the documentation at the following page https://developer.harness.io/docs/platform/delegates/manage-delegates/delegate-metrics/
+
+#### The Harness delegate went down and I did not get any notification via prometheus that it was in a disconnected state.  What gives?
+
+When the Harness delegate pod goes down so does it's exposed metrics endpoint as well.  The metrics here can help notify you if connectivity is lost between the Harness manager and the delegate pod itself (but obviously still present to your prometheus server to notify you as well)
+
+#### What API can be used to check for delegate connectivity status?
+
+The following API can be used to check for delegate connectivity status https://apidocs.harness.io/tag/Delegate-Setup-Resource#operation/listDelegates
+
+#### For legacy delegates that are not starting up and creating a .hprof file in the container what should I do?
+
+For the statefulset updating the environment variable "WATCHER_JAVA_OPTS" with "-Xmx512m" may help
+
 #### Deploy stage requires a service defined. Can I set up a pipeline without a service defined at a stage? 
 
 Yes, you can use the custom stage. This is a selection you can make initially while defining a Pipeline stage. 
 
-
 #### What if I just want to execute a simple shell or bash script step, how can I do this?
 
 With a custom stage, you do not need to define a service. This would be an ideal method of executing a shell or bash script step. 
+

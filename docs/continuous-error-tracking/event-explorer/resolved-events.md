@@ -1,7 +1,7 @@
 ---
 title: Resolved and resurfaced events
 description: Learn about resolved and resurfaced events.
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 You can mark fixed issues as resolved. The resolved issues are moved from **Events** page to the **Resolved Events** page. This leaves only issues that need attention on the **Events** page.
