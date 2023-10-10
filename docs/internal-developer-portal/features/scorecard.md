@@ -31,7 +31,7 @@ Scorecards play a pivotal role in ensuring software components are developed and
 <docimage path={require('../../internal-developer-portal/features/static/concept-scorecard.png')}/>
 
 - **Check**: A check is a query performed against a data point for a software component which results in either `Pass` or `Fail`.
-- **Data Source**: Data Sources are third-party providers which can provide a specific type of data for a software component. Data sources are fixed in IDP and have a specific way of enablement. 
+- **Data Source**: Data Sources are third-party providers which can provide a specific type of data for a software component. Example - GitHub, GitLab, Harness, Pagerduty, etc.
 - **Data Points**: For each software component, every data source provides some data points. The data points could be a number, a string or a boolean. 
 
 </details>
