@@ -7,8 +7,8 @@ import { MODULES } from "../../../constants";
 export const FeaturedList: CardItem[] = [
   {
     title: "Demystifying Trunk-Based Development",
-    module: MODULES.gs,
-    icon: "img/logo.svg",
+    module: MODULES.ff,
+    icon: "img/icon_ff.svg",
     description: <>Getting started with trunk-based development.</>,
     newDoc: true,
     type: [docType.Documentation],
