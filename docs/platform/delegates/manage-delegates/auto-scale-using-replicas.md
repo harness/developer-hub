@@ -1,12 +1,12 @@
 ---
 title: Autoscale using replicas
-description: This topic describes how to autoscale the delegate using replicas.
+description: This topic describes autoscaling Harness Delegate using replicas.
 sidebar_position: 6
 ---
 
 Autoscaling Harness Delegate using replicas is a useful feature that can help ensure your deployments are executed efficiently, without downtime or resource overload.
 
-## Auto scale Harness Delegate using replicas for Helm chart deployments
+## Configure Harness Delegate autoscaling using replicas for Helm chart deployments
 
 To access the default Helm chart for the `values.yaml` file, go to [Harness Delegate Helm chart](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml).
 
@@ -39,7 +39,7 @@ To auto scale the delegate, do the following:
 
    When you create a deployment, Harness automatically spins up new replicas of your delegate as needed to ensure the deployment is completed.
 
-## Auto scale Harness Delegate using replicas for Kubernetes
+## Configure Harness Delegate autoscaling using replicas for Kubernetes
 
 The HPA configuration setting is included in the default Kubernetes delegate YAML file. 
 
