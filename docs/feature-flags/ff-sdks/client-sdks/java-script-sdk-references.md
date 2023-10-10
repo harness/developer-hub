@@ -184,8 +184,8 @@ interface Options {
 | eventUrl              | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0`                 |
 | eventsSyncInterval    | The interval **in milliseconds** that we post flag evaluation metrics.                                                            | `60000` (milliseconds)                                 |
 | pollingInterval       | The interval **in milliseconds** that we poll for changes when the SDK is running in polling mode.                                | `60000` (milliseconds)                                 |
-| streamEnabled         | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode.                                                  | `true`                                                 |
-| pollingEnabled        | Set to `true` to enable polling mode.Set to `false` to disable polling mode.                                                      | `true`                                                 |
+| streamEnabled         | Set to `true` to enable streaming mode. Set to `false` to disable streaming mode.                                                 | `true`                                                 |
+| pollingEnabled        | Set to `true` to enable polling mode. Set to `false` to disable polling mode.                                                     | `true`                                                 |
 | debug                 | Set to `true` to enable SDK debug level logging. Set to `false` to disable debug level logging                                    | `false`                                                |
 | allAttributesPrivate  | **Deprecated** no longer has any effect                                                                                           | No default - deprecated                                |
 | privateAttributeNames | **Deprecated** no longer has any effect                                                                                           | No default - deprecated                                |
