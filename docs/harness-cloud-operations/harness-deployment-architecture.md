@@ -1,5 +1,8 @@
+---
 title: Harness Deployment Architecture
-description: Deployment Architecture of our platform
+description: Deployment Architecture of Harness platform
+sidebar_label: Harness Deployment Architecture
+---
 
 We will primarily focus on Harness deployment architecture and dataflow in this blog post. 
 
