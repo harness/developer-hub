@@ -604,22 +604,14 @@ With script support, Harness enables you to define functions, utilize loops, and
 
 Use the `function` keyword in JEXL to define functions. For example, the following expression contains a JEXL script that defines a function called `identityFunction` that takes a parameter key. Inside the function, the expression returns the value of the key parameter.
 
-```
+```js
 <+ var identityFunction = function(keyName) {
-                      var stages = [...];
-                      for(stage: keyName.entrySet())
-                      {
-                          if (stage.keyName.startsWith('ShellScript_1'))
-                              stages.add(stage.value);
-                      }
-                      var statuses=[...];
-                      for(stage1:stages) {
-                         statuses.add(stage1.status)
-                      }
-                      statuses
-                      };
-
-  identityFunction(<+pipeline.stages.stepWithMatrix.spec.execution.steps.ShellScript_1>)>
+     return key;
+}
+   var keyName = "keyName";
+   identityFunction(keyName);
+   
+>
 ```
 
 The `identityFunction` retrieves the value of a specific key. In the given example, the function is invoked with the argument `keyName`. As a result, the function returns the value `keyName` itself. The `identityFunction` serves as a straightforward identity function where the input value is directly returned as the output.
@@ -628,7 +620,7 @@ The `identityFunction` retrieves the value of a specific key. In the given examp
 
 The following example demonstrates how you can use a loop in JEXL to iterate over an array or perform repetitive operations based on certain conditions. This example uses an array called `numbers` containing several integer values. A variable called sum to 0 is initialized. The `for` loop iterates over each element in the number array. Within the loop, you can add each element to the sum variable after the loop completes. The script outputs the value of sum (the sum of all the numbers in the array).
 
-```
+```js
 <+
 var numbers = [1, 2, 3, 4, 5];
 var sum = 0;
@@ -645,7 +637,7 @@ sum;
 
 The following example demonstrates how you can use an `if` condition in JEXL to perform different actions or display different results based on certain conditions or criteria. This example uses a variable called `age` with the value `18`. The `if` condition checks if the age is greater than or equal to 18. If the condition evaluates to `true`, then the script outputs the string `You are an adult`. Otherwise, it outputs the string `You are not yet an adult`.
 
-```
+```js
 <+var age = 18;
 
 if (age == 18) {
@@ -660,7 +652,7 @@ if (age == 18) {
 
 The following example expression contains a script.
 
-```
+```js
 <+ var traverse = function(key) {
                       var stages = [...];
                       for(stage: key.entrySet())
@@ -697,7 +689,7 @@ This script performs a traversal and extraction operation on a data structure re
 
 The following example expression contains a script.
 
-```
+```js
 <+ var traverse = function(key) {
                       var stages = [...];
                       for(stage: key.entrySet())
