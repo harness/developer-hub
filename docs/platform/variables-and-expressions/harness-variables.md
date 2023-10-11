@@ -739,6 +739,18 @@ The list of stages selected for execution.
 
 The pipeline level delegate selectors selected via runtime input.  
 
+### <+pipeline.storeType>
+
+If the pipeline is stored in harness the expression will resolve to Inline, if the pipeline is stored in Git repository the expression will resolve to remote.
+
+### <+pipeline.repoName>
+
+For Remote pipeline the expression will resolve to Git repository name. For Inline pipeline the expression will resolve to null.
+
+### <+pipeline.branchName>
+
+For Remote pipeline the expression will resolve to Git branch in which pipeline is present. For Inline pipeline the expression will resolve to null.
+
 ## Deployment, pipeline, stage, and step status
 
 Deployment status values are a Java enum. You can see the list of values in the deployments **Status** filter:
