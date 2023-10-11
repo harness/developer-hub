@@ -28,7 +28,7 @@ Harness IDP allows you to integrate various data sources, such as GitHub, GitLab
 
 :::info
 
-There's a tab called `Data Sources` available in `Scorecards` page to check for supported datasources and the corresponding datapoints. 
+There's a tab called `Data Sources` available in `Scorecards` page to check for supported data sources and the corresponding data points. 
 
 :::
 
@@ -36,7 +36,7 @@ There's a tab called `Data Sources` available in `Scorecards` page to check for 
 <Tabs>
 <TabItem value="GitHub">
 ```
-The following **Data Points** are available for GitHub. 
+The following **Data Points** are available for GitHub Data Source. 
 
 1. **Branch Protection**
 - *Objective:* Ensure that branch protection rules disallow force push and delete.
@@ -105,7 +105,7 @@ spec:
 </TabItem>
 <TabItem value="GitLab">
 ```
-The following **Data Points** are available for GitLab. 
+The following **Data Points** are available for GitLab Data Source. 
 
 1. **Branch Protection**
 - *Objective:* Ensure that branch protection rules disallow force push and delete.
@@ -175,7 +175,7 @@ spec:
 <TabItem value="Bitbucket">
 ```
 
-The following **Data Points** are available for Bitbucket
+The following **Data Points** are available for Bitbucket Data Source. 
 
 1. **Branch Protection**
 - *Objective:* Ensure that branch protection rules disallow force push and delete.
@@ -233,7 +233,7 @@ In the Harness Data source, the first pipeline URL from `harness.io/pipelines` i
 
 :::
 
-The following **Data Points** are available for Harness. 
+The following **Data Points** are available for Harness Data Source. 
 
 1. **CI Pipeline success rate (last 7 days)**: 
 - *Objective:* Used for creating rules that will check the success percent of the ci-pipeline in the past 7 days. (This data point is only applicable for CI Pipelines).
@@ -283,7 +283,7 @@ If the rule depends on the execution of the pipeline then the latest execution o
 </TabItem>
 <TabItem value="Catalog">
 ```
-The following **Data Points** are avilable for Catalog. 
+The following **Data Points** are avilable for Catalog Data Source. 
 
 1. **Owner is defined**:
 - *Objective:* Checks if the catalog YAML file has the owner configured or not
@@ -370,7 +370,7 @@ The plugin provides 2 ways to authenticate - `serviceAccount` and `Google authen
 
 - There are two ways to surface Kubernetes components as part of an entity using annotations - `backstage.io/kubernetes-id` and `backstage.io/kubernetes-label-selector`. But currently, scorecards support [backstage.io/kubernetes-label-selector](https://backstage.io/docs/features/kubernetes/configuration/#label-selector-query-annotation) annotation only. 
 
-The following **Data Points** are available for Kubernetes Data source.
+The following **Data Points** are available for Kubernetes Data Source.
 
 1. **Replicas Count**:
 
@@ -393,7 +393,7 @@ The following **Data Points** are available for Kubernetes Data source.
 <TabItem value="Jira">
 ```
 
-The following **Data Points** are avilable for Jira Datasource.
+The following **Data Points** are avilable for Jira Data Source.
 
 1. **Issues Count**:
 
@@ -481,7 +481,7 @@ spec:
 - The PagerDuty plugin must be configured and enabled in the admin section. Refer [here](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty/).
 
 
-The following **Data Points** are avilable for PagerDuty Datasource.
+The following **Data Points** are avilable for PagerDuty Data Source.
 
 1. **Is on-call Set** - This data point can be used for creating rules that will check if the on-call is set for a given service.
 
