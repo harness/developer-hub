@@ -29,7 +29,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Added support for Matrix pipelines to the pipeline execution results filters
   
-  This fixes an issue to a feature behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-6405)
+  This fixes an issue in a feature behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-6405)
 
 ### Fixed issues
 
