@@ -66,6 +66,10 @@ For more information about self-signed certificates, delegates, and delegate env
 * [Install delegates](/docs/category/install-delegates)
 * [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
+## Clone codebase errors
+
+For troubleshooting information related to cloning codebases, go to [Create and configure a codebase - Troubleshooting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#troubleshooting).
+
 ## Truncated execution logs
 
 Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB.
@@ -151,3 +155,11 @@ To change the connector's connectivity settings:
 ## Can't connect to Docker daemon
 
 <DindTrbs />
+
+## Troubleshoot AWS VM build infrastructures
+
+For troubleshooting information for AWS VM build infrastructures, go to [Set up an AWS VM build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md#troubleshooting).
+
+## Troubleshoot local runner build infrastructures
+
+For troubleshooting information for local runner build infrastructures, go to [Set up a local runner build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md#troubleshooting-the-delegate-connection).
