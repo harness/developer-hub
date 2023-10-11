@@ -13,7 +13,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Harness IDP allows you to integrate various data sources and implement custom checks to ensure your software components adhere to best practices and compliance. In this docs, we'll walk through how to add custom checks and data sources for scorecards in Harness IDP.
+Harness IDP allows you to integrate various data sources and implement custom checks to ensure your software components adhere to best practices and compliance. In this docs, we'll walk through how to add custom checks and data sources for [scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard) in Harness IDP.
 
 ### Overview
 
@@ -28,7 +28,7 @@ Harness IDP allows you to integrate various data sources, such as GitHub, GitLab
 
 :::info
 
-There's a tab called `Data Sources` available in `Scorecards` page to check for supported data sources and the corresponding data points. 
+There's a tab called `Datasources` available in `Scorecards` page to check for supported datasources and the corresponding datapoints. 
 
 :::
 
@@ -36,7 +36,7 @@ There's a tab called `Data Sources` available in `Scorecards` page to check for 
 <Tabs>
 <TabItem value="GitHub">
 ```
-The following **Data Points** are available for GitHub. 
+The following **Datapoints** are available for GitHub. 
 
 1. **Branch Protection**
 - *Objective:* Ensure that branch protection rules disallow force push and delete.
@@ -47,7 +47,7 @@ The following **Data Points** are available for GitHub.
 
 **Example YAML**
 
-```yaml
+```
 kind: "Component"
 apiVersion: "backstage.io/v1alpha1"
 metadata:
@@ -105,7 +105,7 @@ spec:
 </TabItem>
 <TabItem value="GitLab">
 ```
-The following **Data Points** are available for GitLab. 
+The following **Datapoints** are available for GitLab. 
 
 1. **Branch Protection**
 - *Objective:* Ensure that branch protection rules disallow force push and delete.
