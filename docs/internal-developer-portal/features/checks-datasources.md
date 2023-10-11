@@ -233,7 +233,7 @@ In the Harness Data source, the first pipeline URL from `harness.io/pipelines` i
 
 :::
 
-The following **Datapoints** are available for Harness. 
+The following **Data Points** are available for Harness. 
 
 1. **CI Pipeline success rate (last 7 days)**: 
 - *Objective:* Used for creating rules that will check the success percent of the ci-pipeline in the past 7 days. (This data point is only applicable for CI Pipelines).
