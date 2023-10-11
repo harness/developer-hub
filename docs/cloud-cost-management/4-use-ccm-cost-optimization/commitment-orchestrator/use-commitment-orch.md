@@ -64,7 +64,7 @@ Perform the following tasks to configure commitment orchestrator in your environ
 
    The following automated actions will be taken to optimize utilization:
 
-   - The Commitment Orchestrator continuously looks for opportunities to acquire or convert Reserved Instances (RIs) 
+   - The Commitment Orchestrator continuously looks for opportunities to acquire or convert Reserved Instances (RIs). Staggered daily purchases are made rather than buying in bulk.
    - Purchase Savings Plans.
    
     You can find a record of all its actions in the **Log History** on the summary page.

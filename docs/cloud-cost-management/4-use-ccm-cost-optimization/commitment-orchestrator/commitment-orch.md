@@ -7,9 +7,9 @@ sidebar_position: 1
 
 # Overview of Commitment Orchestrator
 
-The Harness Cloud Cost Management (CCM) platform provides powerful cost-saving mechanisms through its AutoStopping and Cluster Orchestrator features, which can automatically shut down non-production resources that are idle and run workloads on fully orchestrated spot instances. However, these mechanisms are not suitable for all workloads. Workloads that are not fault-tolerant, have unclear dependencies, lack high availability, or are stateful may not be compatible with these cost-saving mechanisms.
+The Harness Cloud Cost Management (CCM) platform provides powerful cost-saving mechanisms through its AutoStopping and Cluster Orchestrator features, which can automatically shut down non-production resources that are idle and run workloads on fully orchestrated spot instances. However, workloads that are not fault-tolerant, have unclear dependencies, lack high availability, or are stateful may require different cost-saving mechanisms.
 
-In such cases, you can still optimize your resource utilization and save costs by making the most of your existing Reserved Instances (RI) before purchasing new ones. By carefully managing your RIs and ensuring that they're being utilized effectively, you can reduce your overall spending and make the most of your available resources.
+In such cases, you can still optimize your resource utilization and save costs by making the most of your existing Reserved Instances (RI) before purchasing new ones. By carefully managing your RIs and ensuring that they are being utilized effectively, you can reduce your overall spending and make the most of your available resources.
 
 Types of Compute purchasing options available within AWS:
 
@@ -56,7 +56,7 @@ For more information about Reserved Instances, go to [Reserved Instances.
 
 # How does Commitment Orchestrator optimize utilization?
 
-Setting up the Commitment Orchestrator enables you to make the most of your Reserved Instances (RIs) by utilizing them to their full capacity, even for instances that are only partially in use or not in use at all. This ensures that on-demand instance requirements are met while optimizing the use of available RIs within a region.
+Setting up the Commitment Orchestrator enables you to make the most of your Reserved Instances (RIs) by utilizing them to their full capacity, even for instances that are only partially in use or not in use at all. This ensures that on-demand instance requirements are met while optimizing the use of available RIs within a region. CCM exchanges convertible RIs to help make the utilization across RIs better.
 
 To accomplish this, the Commitment Orchestrator matches the available RIs with the on-demand instances in the region. This includes identifying cases where multiple smaller RIs can be combined to match the needs of larger on-demand instances, or where larger RIs can be divided to match the needs of smaller on-demand instances. The Reserved Instance lifecycle is automated and operates in real-time to provide maximum coverage based on the setup.
 
