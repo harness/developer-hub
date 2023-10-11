@@ -24,7 +24,7 @@ Harness IDP allows you to integrate various data sources, such as GitHub, GitLab
 1. Under the `Admin` go to `Scorecards`.
 2. In the `Scorecards` go to the `Checks` tab and select **Create Custom Check**.
 3. Now on the **Create Check** page add a name and description for your check.
-4. Under **Rules** you can find the following Datasources to select from.
+4. Under **Rules** you can find the following Data Sources to select from.
 
 :::info
 
