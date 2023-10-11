@@ -47,7 +47,7 @@ The following **Data Points** are available for GitHub.
 
 **Example YAML**
 
-```
+```yaml
 kind: "Component"
 apiVersion: "backstage.io/v1alpha1"
 metadata:
