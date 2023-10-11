@@ -17,7 +17,7 @@ Harness IDP allows you to integrate various data sources and implement custom ch
 
 ### Overview
 
-Harness IDP allows you to integrate various data sources, such as GitHub, GitLab, Bitbucket, Azure DevOps, and many more, to collect specific data points for each software component. Once a data source is enabled, HDH will start storing data points from the source for each component.
+Harness IDP allows you to integrate various data sources, such as GitHub, GitLab, Bitbucket, Azure DevOps, and many more, to collect specific data points for each software component. Once a data source is enabled, you can use them to create checks to be used in scorecards.
 
 ### Add Custom Checks
 
