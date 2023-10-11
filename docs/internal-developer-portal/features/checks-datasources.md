@@ -393,7 +393,7 @@ The following **Data Points** are available for Kubernetes Data source.
 <TabItem value="Jira">
 ```
 
-The following **DataPoints** are avilable for Jira Datasource.
+The following **Data Points** are avilable for Jira Datasource.
 
 1. **Issues Count**:
 
