@@ -28,9 +28,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80811, Harness Delegate version 23.09.80804
+## Latest: Harness version 8010xx, Harness Delegate version 23.10.810xx
 
-Harness NextGen release 80811 includes the following changes for the Harness Delegate.
+Harness NextGen release 810xx includes the following changes for the Harness Delegate.
 
 ### New features and enhancements
 
@@ -41,6 +41,8 @@ Harness NextGen release 80811 includes the following changes for the Harness Del
 This release does not include any new early access features.
 
 ### Fixed issues
+
+- When a [code repo connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) encounters a cert error, the error message shown in the Harness UI is now more informative. (CI-8509)
 
 - Fixed an issue where some [code repo connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) didn't send the [build status](/docs/continuous-integration/use-ci/viewing-builds#source-code-repository-links) back to the SCM provider. This happened due to an issue in the Harness Delegate, and it occurred only for code repo connectors that [connected through a Harness Delegate](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#connectivity-mode-settings). Connectors connecting through the Harness Platform weren't impacted. (CI-9835, ZD-51754, ZD-51758, ZD-51763)
 
