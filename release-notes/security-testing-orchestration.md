@@ -39,13 +39,18 @@ This release does not include any new fixes
 
 This release does not include hotfixes. 
 
-## Version 1.69.3
+## Previous releases
 
-### New features and enhancements
+<details>
+<summary>2023 releases</summary>
+
+#### Version 1.69.3
+
+##### New features and enhancements
 
 This release does not include new features. 
 
-### Early access
+##### Early access
 
 - This release includes the following UI enhancements for working with exemptions. (STO-6078)
 
@@ -59,20 +64,14 @@ This release does not include new features.
 
   These enhancements are behind the Feature Flag `STO_EXEMPTION_DETAILS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
 
-### Fixed issues
+##### Fixed issues
 
 - Occurrences page size longer resets on page update. (STO-6472)
 
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes. 
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 
 #### Version 1.68.0
