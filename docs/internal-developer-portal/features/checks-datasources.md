@@ -36,7 +36,7 @@ There's a tab called `Data Sources` available in `Scorecards` page to check for 
 <Tabs>
 <TabItem value="GitHub">
 ```
-The following **Datapoints** are available for GitHub. 
+The following **Data Points** are available for GitHub. 
 
 1. **Branch Protection**
 - *Objective:* Ensure that branch protection rules disallow force push and delete.
