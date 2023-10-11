@@ -76,7 +76,7 @@ This release does not include early access features.
 
 - Previously, there was an issue where users who were initially invited through email and later through SCIM were not being added. This issue has now been resolved. Harness has implemented a fix to automatically delete the initial email invite and ensure that SCIM invites are valid even if an email invite was already sent. (PL-41114)
 
-- Fixed an issue where the latest delegate version was not reflected in the [latest supported delegate version API](https://app.harness.io/ng/api/delegate-setup/latest-supported-version). (PL-41151)
+- Fixed an issue where the latest delegate version was not reflected in the [latest supported delegate version API](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/publishedDelegateVersion). (PL-41151)
 
    This item requires Harness Delegate version 23.10.810xx. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
