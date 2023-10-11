@@ -741,15 +741,15 @@ The pipeline level delegate selectors selected via runtime input.
 
 ### <+pipeline.storeType>
 
-If the pipeline is stored in harness the expression will resolve to Inline, if the pipeline is stored in Git repository the expression will resolve to remote.
+If the pipeline is stored in Harness, the expression resolves to inline. If the pipeline is stored in a Git repository, the expression resolves to remote.
 
 ### <+pipeline.repoName>
 
-For Remote pipeline the expression will resolve to Git repository name. For Inline pipeline the expression will resolve to null.
+For remote pipelines, the expression resolves to the Git repository name. For inline pipelines, the expression resolves to null.
 
 ### <+pipeline.branchName>
 
-For Remote pipeline the expression will resolve to Git branch in which pipeline is present. For Inline pipeline the expression will resolve to null.
+For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression will resolve to null.
 
 ## Deployment, pipeline, stage, and step status
 
