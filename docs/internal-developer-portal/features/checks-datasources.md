@@ -370,7 +370,7 @@ The plugin provides 2 ways to authenticate - `serviceAccount` and `Google authen
 
 - There are two ways to surface Kubernetes components as part of an entity using annotations - `backstage.io/kubernetes-id` and `backstage.io/kubernetes-label-selector`. But currently, scorecards support [backstage.io/kubernetes-label-selector](https://backstage.io/docs/features/kubernetes/configuration/#label-selector-query-annotation) annotation only. 
 
-The following **DataPoints** are avilable for Kubernetes Datasource.
+The following **Data Points** are available for Kubernetes Data source.
 
 1. **Replicas Count**:
 
