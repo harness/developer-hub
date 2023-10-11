@@ -105,7 +105,7 @@ spec:
 </TabItem>
 <TabItem value="GitLab">
 ```
-The following **Datapoints** are available for GitLab. 
+The following **Data Points** are available for GitLab. 
 
 1. **Branch Protection**
 - *Objective:* Ensure that branch protection rules disallow force push and delete.
