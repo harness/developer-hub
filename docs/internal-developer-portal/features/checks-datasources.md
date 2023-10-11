@@ -1,5 +1,5 @@
 ---
-title: Datasources
+title: Scorecard Data Sources
 description: Adding Custom Checks and Data Sources for Scorecards 
 sidebar_position: 4
 helpdocs_topic_id:
