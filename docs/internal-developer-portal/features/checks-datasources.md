@@ -175,7 +175,7 @@ spec:
 <TabItem value="Bitbucket">
 ```
 
-The following **Datapoints** are available for Bitbucket
+The following **Data Points** are available for Bitbucket
 
 1. **Branch Protection**
 - *Objective:* Ensure that branch protection rules disallow force push and delete.
