@@ -8,12 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::info
-
-Currently this feature is behind the feature flag `IDP_ENABLE_SCORECARDS`. Contact [Harness Support](mailto:support@harness.io) or the IDP product team to enable the flag for your account.
-
-:::
-
 ### Overview
 
 Scorecards play a pivotal role in ensuring software components are developed and utilized while adhering to organizational and industry standards. They provide a quantifiable measure of software maturity and adherence to best practices, thereby aiding developers in enhancing quality and assisting teams in making informed decisions regarding software adoption.
@@ -98,7 +92,7 @@ Scorecard has two main UI components which are developer facing and lives in the
 
 ## Disabling Scorecards
     
-- Comment out the Scorecard related lines added under **Layout** pages as mentioned above to remove the Scorecard components from the Catalog pages. 
+- Comment out the Scorecard related lines added under **Layout** pages as mentioned above, to remove the Scorecard components from the Catalog pages. 
 
 - Additionally, you can also change the status of all the Scorecards you have to "draft". This will ensure that the computation will not run and will not be shown to the developer. 
 
