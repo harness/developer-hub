@@ -174,8 +174,8 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
 1. Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/publishedDelegateVersion) API to determine the delegate number for your account:
 
-    `curl --location 'https://app.harness.io/ng/api/delegate-setup/latest-supported-version?accountIdentifier=<account_identifier>' \
-    --header 'x-api-key: <your_api_key>'`
+    `curl --location 'https://app.harness.io/ng/api/delegate-setup/latest-supported-version?accountIdentifier=<YOUR_ACCOUNT_IDENTIFIER>' \
+    --header 'x-api-key: <YOUR_API_KEY>'`
 
     The following example result is returned. It returns the tag of the delegate that is released to your account. 
 
