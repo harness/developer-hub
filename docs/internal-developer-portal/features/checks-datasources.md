@@ -28,7 +28,7 @@ Harness IDP allows you to integrate various data sources, such as GitHub, GitLab
 
 :::info
 
-There's a tab called `Datasources` available in `Scorecards` page to check for supported datasources and the corresponding datapoints. 
+There's a tab called `Data Sources` available in `Scorecards` page to check for supported datasources and the corresponding datapoints. 
 
 :::
 
@@ -36,7 +36,7 @@ There's a tab called `Datasources` available in `Scorecards` page to check for s
 <Tabs>
 <TabItem value="GitHub">
 ```
-The following **Datapoints** are available for GitHub. 
+The following **Data Points** are available for GitHub. 
 
 1. **Branch Protection**
 - *Objective:* Ensure that branch protection rules disallow force push and delete.
@@ -105,7 +105,7 @@ spec:
 </TabItem>
 <TabItem value="GitLab">
 ```
-The following **Datapoints** are available for GitLab. 
+The following **Data Points** are available for GitLab. 
 
 1. **Branch Protection**
 - *Objective:* Ensure that branch protection rules disallow force push and delete.
@@ -283,7 +283,7 @@ If the rule depends on the execution of the pipeline then the latest execution o
 </TabItem>
 <TabItem value="Catalog">
 ```
-The following **DataPoints** are avilable for Catalog. 
+The following **Data Points** are avilable for Catalog. 
 
 1. **Owner is defined**:
 - *Objective:* Checks if the catalog YAML file has the owner configured or not
@@ -481,7 +481,7 @@ spec:
 - The PagerDuty plugin must be configured and enabled in the admin section. Refer [here](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty/).
 
 
-The following **DataPoints** are avilable for PagerDuty Datasource.
+The following **Data Points** are avilable for PagerDuty Datasource.
 
 1. **Is on-call Set** - This data point can be used for creating rules that will check if the on-call is set for a given service.
 
