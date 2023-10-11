@@ -28,7 +28,7 @@ Harness IDP allows you to integrate various data sources, such as GitHub, GitLab
 
 :::info
 
-There's a tab called `Datasources` available in `Scorecards` page to check for supported datasources and the corresponding datapoints. 
+There's a tab called `Data Sources` available in `Scorecards` page to check for supported data sources and the corresponding data points. 
 
 :::
 
