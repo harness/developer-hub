@@ -19,7 +19,27 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 1.69.3
+## Latest: Version 1.70.1
+
+### New features and enhancements
+
+- Improved the look and feel of the exemptions page, and added information about the severity of the issue associated with exemptions and exemption requests. (STO-6592)
+
+### Early access
+
+- Added support for Matrix pipelines to the pipeline execution results filters
+  
+  This fixes an issue to a feature behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-6405)
+
+### Fixed issues
+
+This release does not include any new fixes
+
+### Hotfixes
+
+This release does not include hotfixes. 
+
+## Version 1.69.3
 
 ### New features and enhancements
 
