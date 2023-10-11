@@ -66,11 +66,31 @@ For more information about self-signed certificates, delegates, and delegate env
 * [Install delegates](/docs/category/install-delegates)
 * [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
+## Clone codebase errors
+
+For troubleshooting information related to cloning codebases, go to [Create and configure a codebase - Troubleshooting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#troubleshooting).
+
 ## Truncated execution logs
 
 Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB.
 
 Furthermore, there is a single-line limit of 70KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`.
+
+### Export full logs
+
+If your log files are larger than 5MB, you can export execution logs to an external cache and examine the full logs there.
+
+1. Add a step to your pipeline that records each step's complete logs into one or more files.
+2. If you have a lot of log files or your logs are large, add a step to compress the log files into an archive.
+3. Use an [Upload Artifact step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#upload-artifacts) to upload the log files to cloud storage.
+4. Repeat the above process for each stage in your pipeline for which you want to export the full logs.
+5. Examine the log files in your cloud storage. If you used the **S3 Upload and Publish** or **Artifact Metadata Publisher** plugins, you can find direct links to your uploaded files on the **Artifacts** tab on the [Build detail page](../use-ci/viewing-builds.md).
+
+:::tip Log forwarding
+
+You can also use a service, such as [env0](https://docs.env0.com/docs/logs-forwarding), to forward logs to platforms suited for ingesting large logs.
+
+:::
 
 ## Step logs disappear
 
@@ -135,3 +155,11 @@ To change the connector's connectivity settings:
 ## Can't connect to Docker daemon
 
 <DindTrbs />
+
+## Troubleshoot AWS VM build infrastructures
+
+For troubleshooting information for AWS VM build infrastructures, go to [Set up an AWS VM build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md#troubleshooting).
+
+## Troubleshoot local runner build infrastructures
+
+For troubleshooting information for local runner build infrastructures, go to [Set up a local runner build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md#troubleshooting-the-delegate-connection).

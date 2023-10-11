@@ -30,7 +30,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 </details>
 
-## Architecture
+## CI architecture
 
 <figure>
 
@@ -66,7 +66,7 @@ If you want to try creating a pipeline for yourself, these tutorials walk throug
 
 For information about CI pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
-## Features
+## CI features
 
 Here are some key features of Harness CI. For information about general Harness Platform concepts, go to [Harness key concepts](/docs/get-started/key-concepts).
 

@@ -1,6 +1,6 @@
 ---
 title: SLO History
-description: Understand SLO History dashboard.
+description: Understand the SLO History dashboard.
 sidebar_position: 30
 ---
 

@@ -288,13 +288,13 @@ The following procedure creates a pipeline with the STO functionality required t
 
 ### Set up the Security Tests stage
 
-1. In the **Overview** tab, under **Shared Paths**, select **Add** and enter the path `/var/run`.
+1. In the **Overview** tab, under **Shared Paths**, select **Add** and enter the path `/var/run`.
 
   ```mdx-code-block
    <img src={set_up_harness_23} alt="Enter the shared path" height="75%" width="75%" />
   ```
 	 
-2. In the **Infrastructure** tab, select the infrastructure and specify the options based on the infrastructure type. 
+2. In the **Infrastructure** tab, select the infrastructure and specify the options based on the infrastructure type. 
 	
   ```mdx-code-block
    <img src={set_up_harness_24} alt="Define the build infrastructure" height="50%" width="50%" />

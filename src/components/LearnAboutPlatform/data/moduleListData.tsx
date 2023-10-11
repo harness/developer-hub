@@ -59,7 +59,7 @@ export const moduleList: CardItem[] = [
     // icon: "img/icon_idp.svg",
     description: (
       <>
-       Assess engineering team productivity, remove roadblocks, and automate processes to increase efficiency.
+      Assess engineering team productivity, remove roadblocks, and automate processes to increase efficiency.
       </>
     ),
     link: "https://docs.propelo.ai/welcome-to-propelo/",
@@ -92,5 +92,5 @@ export const moduleList: CardItem[] = [
     ),
     link: "docs/internal-developer-portal",
   },
-  
+
 ];
