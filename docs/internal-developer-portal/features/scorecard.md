@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 :::info
 
-Currently, this feature is behind the feature flag, ` IDP_ENABLE_SCORECARDS`, additonally `IDP_ENABLE_EDIT_HARNESS_CI_CD_PLUGIN` feature flag is required to add the scorecards. Contact [Harness Support](mailto:support@harness.io) or IDP product team to enable the feature.
+Currently this feature is behind the feature flag `IDP_ENABLE_SCORECARDS`. Contact [Harness Support](mailto:support@harness.io) or the IDP product team to enable the flag for your account.
 
 :::
 
@@ -18,7 +18,7 @@ Currently, this feature is behind the feature flag, ` IDP_ENABLE_SCORECARDS`, ad
 
 Scorecards play a pivotal role in ensuring software components are developed and utilized while adhering to organizational and industry standards. They provide a quantifiable measure of software maturity and adherence to best practices, thereby aiding developers in enhancing quality and assisting teams in making informed decisions regarding software adoption.
 
-<docimage width="750vw" path={require('../../internal-developer-portal/features/static/scorecard.png')}/>
+<docimage path={require('../../internal-developer-portal/features/static/scorecard.png')}/>
 
 <details>
 <summary>Purpose & Concept of Scorecards</summary>
@@ -39,39 +39,39 @@ Scorecards play a pivotal role in ensuring software components are developed and
 
 ## Enable Scorecards
 
+:::info
+
+If you have Scorecard UI components visible on your Catalog component pages, you can skip the following steps and proceed to "Create your first scorecard" section.
+  
+:::
+
 ### Scorecard Components in IDP
 
-Scorecard has two main UI components which are developer facing and lives in the Catalog - 1. A small `Card` for the Overview page with the scores and, 2. A `Tab` view with details of the checks and how the score got computed. This is illustrated below. The Tab view contains detailed comprehensive information as shown in the image under [overview](/docs/internal-developer-portal/features/scorecard#overview)
+Scorecard has two main UI components which are developer facing and lives in the Catalog - 1. A small **Card** for the Overview page with the scores and, 2. a **Tab** view with details of the checks and how the score got computed. This is illustrated below. The Tab view contains detailed comprehensive information as shown in the image under [overview](/docs/internal-developer-portal/features/scorecard#overview).
 
 <docimage path={require('../../internal-developer-portal/features/static/scorecard-overviewpage.png')}/>
 
-:::info
-
-For the steps **1** and **2** the `Layout` is prepopulated with the adequate fields in the recent version of IDP and could be skipped, but users are still advised to check for the same on their `Layout` for the software components.  
-
-:::
 
 1. #### Adding Card and Tab Content for an Entity
 
-    - Go to the `Layout` section in IDP `Admin`, and select "Service" or any other kind of catalog entity for which you want to add scorecards.
+    - Go to the **Layout** section in IDP **Admin**, and select **Service** or any other kind of catalog entity for which you want to add Scorecards.
 
-2. #### Adding Scorecard Card to the overview tab
+2. #### Add Scorecard to the overview tab
     
-    - Find the `Overview` tab in the YAML and add the following in its component section.
+    - Find the **Overview** tab in the YAML and add the following in its component section -
 
-```
+```yaml
 - component: EntityScoreCard
     specs:
     gridProps:
         md: 6
-
 ```
 
-3. #### Adding Scorecard Tab content
+3. #### Add Scorecard Tab component
 
-    - Under the `tabs` section just add the following.
+    - Under the **tabs** section add the following -
 
-```
+```yaml
 - name: Scorecard
   path: /scorecard
   title: Scorecard
@@ -80,26 +80,26 @@ For the steps **1** and **2** the `Layout` is prepopulated with the adequate fie
 ```
 <docimage path={require('../../internal-developer-portal/features/static/entity.png')}/>
 
-4. #### Add Scorecard for your Entity
+## Create Your Scorecard
 
-  - Go to the `Scorecards` tab under `Admin` and **Create New Scorecard**. 
-  - Add a `Name` to it and give the criteria to **Filter your catalog entities**.
-  - Followed by adding the `Checks` and then select **Publish Scorecard**.
+  - Go to the "Scorecards" tab under "Admin" and **Create New Scorecard**. 
+  - Add a "Name" to it and give the criteria to **Filter your catalog entities**.
+  - Followed by adding the "Checks" and then select **Publish Scorecard**.
 
   <docimage path={require('../../internal-developer-portal/features/static/rename-scorecard.png')}/>
 
-  :::caution
+  :::info
 
-  Make sure the values under `Filter catalog entities for which the scorecard is evaluated` should match with your entity `owner` & `type` as shown below
+  Make sure the values under "Filter catalog entities for which the scorecard is evaluated" should match with your entity "owner" and "type" as shown below -
 
   <docimage path={require('../../internal-developer-portal/features/static/caution-idp-scorecard.png')}/>
 
   :::
 
-#### Removing/Disabling Scorecards
+## Disabling Scorecards
     
-- Comment out the Scorecard related lines added under `Layout` tab as mentioned above to remove the scorecard components from the Catalog pages. 
+- Comment out the Scorecard related lines added under **Layout** pages as mentioned above to remove the Scorecard components from the Catalog pages. 
 
-- Another way to **disable** the scorecards feature is to change the status of all the scorecards you have to "draft". This will ensure that the computation will not run, and will not be shown to the developer. 
+- Additionally, you can also change the status of all the Scorecards you have to "draft". This will ensure that the computation will not run and will not be shown to the developer. 
 
 <docimage width="1750vw" path={require('../../internal-developer-portal/features/static/remove-scorecard.png')}/>
