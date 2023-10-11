@@ -164,7 +164,7 @@ curl -X  GET https://app.harness.io/registry/_catalog
 
 Add or select a connector to use instead of the default connector uses for the Harness Container Image Registry.
 
-For more information, go to [Connect to Harness container image registry Using Docker connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/).
+For more information, go to [Connect to Harness container image registry Using Docker connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
 
 ### Advanced settings
 
