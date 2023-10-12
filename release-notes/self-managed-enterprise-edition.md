@@ -777,9 +777,9 @@ gsutil -m cp \
   .
 ```
 
-- Redis failed when upgrading from 0.8.3 to 0.9.0. (SMP-2104)
+- Fixed an issue where Redis failed when upgrading from 0.8.3 to 0.9.0. (SMP-2104)
 
-- The Helm upgrade process from version 0.8.4 to 0.9.1 failed. This issue has been resolved. (SMP-2135)
+- Fixed an issue where Helm upgrades failed when upgrading from 0.8.4 to 0.9.1. (SMP-2135)
 
 ## Previous releases
 
