@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-09-28T10:00
+date: 2023-10-16T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -36,11 +36,31 @@ Harness NextGen release 810xx includes the following changes for the Harness Del
 
 - You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
 
+- Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. (CDS-79414)
+
 ### Early access features
 
 This release does not include any new early access features.
 
 ### Fixed issues
+
+- The Merge PR step fails with GitLab connectors. (CDS-79772)
+
+  This issue has been fixed.
+
+- Execution failure logs associated with an exception named `DuplicateKeyException` included the name of the Harness production server. (CDS-79514, ZD-50804)
+
+  This issue has been fixed.
+
+- Harness now supports the deployment of ECS services whose count is the same as the running instances in a blue-green strategy (CDS-79412)
+
+- If a pipeline that includes the Terragrunt Apply step fails, the Terragrunt working directory is not removed from the file system. Consequently, the delegate container's disk usage gradually increases. The issue occurs when the working directory includes symbolic links. (CDS-79020,	ZD-50532)
+
+  This issue has been fixed.
+
+- If a step in a WinRM deployment fails, Harness does not clean up temporary files created on the remote host. (CDS-78304, ZD-49543)
+
+  This issue has been fixed.
 
 - When a [code repo connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) encounters a cert error, the error message shown in the Harness UI is now more informative. (CI-8509)
 
