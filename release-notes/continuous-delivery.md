@@ -64,7 +64,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. (CDS-79414)
 
-  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.10.80808. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 
 ### Early access features
