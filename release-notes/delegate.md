@@ -72,7 +72,7 @@ This release does not include any new early access features.
 
 - Fixed an issue where the latest delegate version was not reflected in the latest supported delegate version API. (PL-41151)
 
-   This issue has been resolved. For more information on the latest supported delegate version API, go to [Use automatic upgrade with custom delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
+   For more information on the latest supported delegate version API, go to [Use automatic upgrade with custom delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
 
 ### Hotfixes
 
