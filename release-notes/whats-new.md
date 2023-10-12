@@ -21,6 +21,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest: October 16, 2023
 
+### Continuous Delivery, version 810xx
+
 - Now, when configuring a coverage rule for a deployment freeze window, if you choose to include all services or all environments, Harness gives you the option to exclude specific services or environments, respectively. This functionality is the same as the options provided for excluding organizations and projects, and it reduces your effort when the entities you want to include outnumber those you want to exclude. (CDS-79505)
 
   For more information, go to [Define freeze window coverage and schedule](/docs/continuous-delivery/manage-deployments/deployment-freeze/#define-freeze-window-coverage-and-schedule).
@@ -39,12 +41,27 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## October 9, 2023
 
-## Continuous Delivery, version 80909
+### Continuous Delivery, version 80909
 
 - You can now provide detailed feedback in the Harness AIDA chat in CD. (CDS-79769)
 
-  <docimage path={require('./static/73123e6efdd7d7dbc7c67b4a7df71bd42b1b20c8ba4cf409f87de0749da8dc92.png')} width="40%" height="40%" title="Click to view full size image" />  
+  <docimage path={require('./static/73123e6efdd7d7dbc7c67b4a7df71bd42b1b20c8ba4cf409f87de0749da8dc92.png')} width="40%" height="40%" title="Click to view full size image" />
 
+### Harness Platform, version 80909
+
+- To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. This feature enables you to specify fixed URL domains to which notifications can be sent. Expression URLs are not yet supported.
+
+   To add a filter domain to a notification channel, navigate to **Account Settings** > **Account Resources** > **Default Settings** > **Notifications** in the Harness platform and add the fixed URL domain to the corresponding notification setting. When a domain is added to a notification channel's domain allowlist, only recipients whose domains are present in the allowlist will receive notifications from that channel. This applies to both existing and new recipients until their domain is added to the channel's domain allowlist. (PL-39481, ZD-43735)
+
+- The **Session Timeout** field in Authentication Settings is renamed to **Session Inactivity Timeout**. The field now automatically converts the minutes you enter to higher units of time, and displays the result under the field to simplify usage. For example, if you enter 1440, the UI shows **1 day** below the field. (PL-39982, ZD-47238)
+
+- Harness now returns a `Cannot send notification as notification channel is disabled from Account settings.` error in the test notification API when a channel is disabled. (PL-41449)
+
+- Harness previously had a feature flag `DISABLE_HARNESS_SM`, which allowed you to disable the Harness default Secret Manager and showed a **Settings** section on the Account Details page. This setting was migrated to the centralized **Default Settings** under **Resources**. Harness removed the feature flag `DISABLE_HARNESS_SM` as well as the corresponding setting from the Account Details page. (PL-41538)
+
+### Continuous Integration, version 6100
+
+When you [enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) for Scala or Kotlin, the **Packages** and **Test Annotations** fields are now available in the Visual editor. (CI-9589)
 
 ## October 07, 2023
 
@@ -52,10 +69,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Event filtering has been enhanced by removing event type selector boxes and displaying event counts above the events list. Additionally, a multi-select dropdown for event types has been introduced for improved usability. (CET-1698)
 
+## Previous releases
 
-## September 30, 2023
+<details>
+<summary>2023 releases</summary>
 
-### Self-Managed Enterprise Edition, version 80220
+#### September 30, 2023
+
+##### Self-Managed Enterprise Edition, version 80220
 
 - Harness has updated the Helm chart to optimize packaging and module delivery. (SMP-1588)
 
@@ -71,14 +92,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
    For more information, go to [Use an external self-managed Redis database with your installation](/tutorials/self-managed-enterprise-edition/use-an-external-redis-database).
 
-## September 29, 2023
+#### September 29, 2023
 
-### Service Reliability Management, version 1.2.5
+##### Service Reliability Management, version 1.2.5
 
 Added new filters named Environment-Based and SLO Type to the SLO listing page. You can now filter the SLO list on environment or SLO type for improved management. (SRM-15506)
 
-
-### Continuous Integration, version 5902
+##### Continuous Integration, version 5902
 
 [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) now supports manual branch builds (the **Git Branch** build type). This is in addition to existing support for manual PR builds, as well as PR and push webhook triggers. When you [enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#enable-test-intelligence), you can use a manual branch build to [Generate the initial call graph](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#generate-the-initial-call-graph), and for subsequent pipeline runs. (CI-8932)
 
@@ -86,9 +106,9 @@ Added new filters named Environment-Based and SLO Type to the SLO listing page. 
 
 <docimage path={require('./static/ci-8932.png')} />
 
-## September 28, 2023
+#### September 28, 2023
 
-### Harness Platform, version 80811
+##### Harness Platform, version 80811
 
 - Access control lists (ACLs) have now been optimized by the removal of ACLs that are no longer necessary and by ensuring that redundant ACLs are no longer created for new role assignments. (PL-41154)
 
@@ -106,7 +126,7 @@ Added new filters named Environment-Based and SLO Type to the SLO listing page. 
    This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 -->
 
-### Harness Delegate, version 23.09.80804
+##### Harness Delegate, version 23.09.80804
 
 Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
 
@@ -115,22 +135,22 @@ Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-407
    - `org.bouncycastle:bcprov-ext-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-ext-jdk18on:jar:1.76`
    - `org.bouncycastle:bcprov-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-jdk18on:jar:1.76`
 
-### Continuous Delivery, version 80811
+##### Continuous Delivery, version 80811
 
 - There was no way in Pipeline Studio to add step group variables when creating a step group template. This section has now been added. (CDS-78683)
 
 - This release improves the UI feedback when executing an Approval step. Previously, the pipeline execution log console could appear stuck at the Approval step even after the pipeline processed the step successfully. This release includes a back-end optimization to ensure that the Pipeline Execution UI processes and displays log messages for Approval steps in real time. (CDS-76996, ZD-48401)
 
-## September 25, 2023
+#### September 25, 2023
 
-### Service Reliability Management, version 1.1.3
+##### Service Reliability Management, version 1.1.3
 
 - SRM dashboards now include comprehensive data for composite Service Level Objectives (composite SLOs). This enhancement offers users a holistic view of both simple and composite SLO performance. (SRM-15419)
 
 
-## September 19, 2023
+#### September 19, 2023
 
-### Harness Platform, version 80711
+##### Harness Platform, version 80711
 
 -  The delegate Helm chart is now included in the delegate proxy configuration. You can pull the Helm chart from `https://<YOUR_LOADBALANCERURL>/storage/harness-download/delegate-helm-chart/`. (PL-39190)
 
@@ -142,21 +162,21 @@ Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-407
 
   This issue has been fixed. You can now specify whether or not you want to retain the token to reduce the number of requests made. Possible values are `True` and `False`. The default value is `True`.
 
-### Continuous Integration, version 5801
+##### Continuous Integration, version 5801
 
 You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings) with buckets with [disabled ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html). (CI-8371, ZD-45677)
 
-## September 12, 2023
+#### September 12, 2023
 
-### Continuous Error Tracking, version ET-Service 5.26.1
+##### Continuous Error Tracking, version ET-Service 5.26.1
 
 - In the ARC screen, variables now display their values on hover. Additionally, when you select a variable, it is highlighted in the variables panel for easy identification. (CET-970)
 
 - CET now provides an audit trail feature for Agent Tokens and Critical Event definitions. You can view the audit trail for create, update, and delete operations, enhancing visibility and security in token management. (CET-1364)
 
-## September 11, 2023
+#### September 11, 2023
 
-### Harness Platform, version 80504
+##### Harness Platform, version 80504
 
 - When Harness is configured to use the App Role Id to fetch an authentication token from HashiCorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
 
@@ -187,9 +207,9 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
    
    This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-## September 7, 2023
+#### September 7, 2023
 
-### Cloud Cost Management, version 80702
+##### Cloud Cost Management, version 80702
 
 * Cost category enhancement (CCM-12879)
 
@@ -199,9 +219,9 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
 
     <docimage path={require('./static/ccm-copy-cost-buckets.gif')} width="60%" height="60%" title="Click to view full size image" />
 
-## September 5, 2023
+#### September 5, 2023
 
-### Harness Platform, version 80406
+##### Harness Platform, version 80406
 
 - Earlier, in the audit trail, all changes to a user principal's role assignment were logged with the generic Update action type. The record offered no additional information about whether a role assignment was created, updated, or deleted. (PL-39799, ZD-46451)
 
@@ -216,21 +236,15 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
 
 - You can now create secrets in child scopes using the parent scope in Secret Manager. For example, you can create secrets inside a project using the Secret Manager created at the Org or Account level. (PL-38949)
 
-## September 4, 2023
+#### September 4, 2023
 
-### Cloud Cost Management, version 80606
+##### Cloud Cost Management, version 80606
 
 - Display refunds or discounts on the graph within perspectives. (CCM-13443)
 
   Previously, graphs in perspectives didn't display refunds or discounts, resulting in empty spots when values were negative. This enhancement improves this by aggregating negative values into a red-colored bar chart. You can now toggle a button in **General Preferences** to view these previously hidden negative costs.
 
     <docimage path={require('./static/aws-preferences-ccm13443.png')} width="60%" height="60%" title="Click to view full size image" />
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 30, 2023
 

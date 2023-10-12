@@ -1,19 +1,19 @@
 ---
 title: Configure STO to Download Images from a Private Registry
-description: You can set up STO to download your scanner images from a private registry instead of Docker Hub.
+description: You can set up STO to download your scanner images from a private registry instead of GCR.
 sidebar_position: 90
 ---
 
-Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). By default, a Harness pipeline build pulls scan images from Docker Hub.
+Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). By default, a Harness pipeline pulls scan images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
 
-This topic describes how to override the default behavior and use a private registry instead. You can download the scan images you need, perform your own security checks on the images, upload them to a private registry, and then set up your STO steps to download images from this registry. 
+This topic describes how to override the default image pull behavior and use your own private registry instead of pulling directly from the public Harness GCR project. You can download the scan images you need, perform your own security checks on the images, upload them to a private registry, and then set up your STO steps to download images from your private registry.
 
-The following steps describe the high-level workflow:
-1. [Create STO scanner images with your own SSL certificates (optional)](#create-sto-scanner-images-with-your-own-ssl-certificates-optional)
-2. [Create a connector to your private registry](#create-a-connector-to-your-private-registry)
-3. [Configure the pipeline to download images from your registry](#configure-the-pipeline-to-download-images-from-your-registry)
-   * [Scanner template setup](#scanner-template-setup)
-   * [Security step setup](#security-step-setup)
+To do this, you need to:
+
+<!-- no toc -->
+1. (Optional) [Create scanner images with your own SSL certificates.](#create-sto-scanner-images-with-your-own-ssl-certificates-optional)
+2. [Create a connector for your private registry.](#create-a-connector-to-your-private-registry)
+3. [Configure the pipeline to download images from your registry.](#configure-the-pipeline-to-download-images-from-your-registry)
 
 ## Create STO scanner images with your own SSL certificates (optional)
 
@@ -21,7 +21,7 @@ Harness STO supports [three workflows](/docs/security-testing-orchestration/use-
 
 In this workflow, you set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and Harness Manager.
 
-:::note
+:::info
 Running container image scans as a non-root user is not currently supported.
 :::
 
@@ -80,21 +80,17 @@ You need a Docker connector that points to your private container registry. For 
 
 ## Configure the pipeline to download images from your registry
 
-1. Download the scan images you need, test and validate the images, and store them in your private registry. 
+1. Download the scan images you need from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), test and validate the images, and store them in your private registry.
 
-   :::note
-   
+   :::caution
+
    Do not change the image names in your private registry. The image names must match the names specified by Harness.
 
    :::
 
-   Harness maintains a Container Image Registry that is dedicated exclusively to hosting Harness-supported images. You can download your scan images from this registry instead of Docker Hub. To view the list of images in this registry, enter the following command:
-   ```
-   curl -X  GET https://app.harness.io/registry/_catalog
-   ```
-   You can also [set up your CI pipelines](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) to download build images from this registry instead of Docker Hub.
+2. If your registry automatically downloads the latest images from the public Harness registry, you might want to [specify the images to use in your pipelines](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md#specify-the-harness-ci-images-used-in-your-pipelines). This ensures your pipelines use specific image versions. You must update this specification when you want to adopt a new version of an image.
 
-2. Set up your pipeline to download the images from your private registry, based on the type of step you're using to run your scans:
+3. Set up your pipeline to download the images from your private registry. Configuration requirements depend on the type of step you're using to run your scans:
 
    - [Scanner template step](#scanner-template-setup)
    - [Security step](#security-step-setup)
@@ -109,7 +105,6 @@ Do the following if you're using a scanner template rather than a generic **Secu
 
    ![](../static/override-image-connector.png)
 
-
 3. If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
 
    1. Open the scanner step and expand **Additional Configuration**. 
@@ -122,9 +117,9 @@ Do the following if you're using a generic **Security** step for you scan:
 
 1. Open the **Security** step and add these settings: 
 
-   * `runner_registry_domain`  —  The URL of the Docker registry where the images are stored. 
+   * `runner_registry_domain`  —  The URL of the registry where the images are stored. 
      
-     The supported format is `<_domain_>/<_directory_>` (such as, `app.harness.io/registry`). 
+     The supported format is `<_domain_>/<_directory_>` (such as, `gcr.io/gcr-prod`). 
      
      Do not include the scheme (such as `http://` or `https://`).
 
@@ -151,9 +146,8 @@ Do the following if you're using a generic **Security** step for you scan:
 3. If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
 
    1. Open the scanner step and expand **Additional Configuration**. 
-   
-   2. Set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
 
+   2. Set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
 
 ## YAML example for configuring STO to download images from a private registry
 
@@ -213,11 +207,9 @@ pipeline:
                       repository_branch: <+codebase.branch>
                       repository_project: dvpwa
                       fail_on_severity: CRITICAL
-                      runner_registry_domain: app.harness.io/registry
+                      runner_registry_domain: gcr.io/gcr-prod
                       runner_registry_image_prefix: harness
-                      # Here the Harness delegate downloads from the 
-                      # Harness Image Registry rather than a private registry. 
-                      # Username and token are undefined. 
+                      # Here the Harness Delegate uses anonymous access to download from the Harness GCR project rather than a private registry.
         variables: []
   identifier: STO_Tutorial_1
   name: STO Tutorial 1

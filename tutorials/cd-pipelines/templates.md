@@ -4,6 +4,15 @@ title: Pipeline Templates
 description: Get started with templates in Harness CD pipelines.
 ---
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Delivery & GitOps Certification today!"
+  link="/certifications/continuous-delivery"
+  closable={true}
+  target="_self"
+/>
+
 This tutorial focuses on how to use templates with Harness pipelines. We will guide you through saving a sample deployment pipeline as a template, and then using it to get started with a new pipeline at project level. 
 
 ```mdx-code-block
