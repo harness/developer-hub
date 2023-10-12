@@ -25,6 +25,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   For more information, go to [Define freeze window coverage and schedule](/docs/continuous-delivery/manage-deployments/deployment-freeze/#define-freeze-window-coverage-and-schedule).
 
+<!-- CDS-74220 is WIP -->
+
 - With this latest update, users will notice the following improvements when interacting with forms. (CDS-74220, ZD-47456, ZD-50077)
 
   Initial Empty State: When users open a form for the first time, they will notice that it appears empty, allowing them to begin their input process with a clean slate.
