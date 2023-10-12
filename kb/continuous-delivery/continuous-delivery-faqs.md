@@ -1640,3 +1640,41 @@ Harness uses a Service-based license model to charge Harness customers using its
 The CD License calculation uses the Active Services count and the number of Service Instances each active Service deployment creates.
 
 Please see the link for more details [https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd]
+
+#### Is there a way to tag the pipeline executions with specific values like release name in NG?
+
+Yes. Go to `Services > Summary > ENV GROUP > Instances` and see the release name. But, we tag entities not executions. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/references/tags-reference/)
+
+#### Is there a way to get Canary Deployments to deploy resources that aren't Kubernetes Deployments?
+
+No. The above feature on to manage cronjobs in next-gen is yet to come.
+
+#### Is there anyway to get what is already deployed in an env by script, step, built-in variable?
+
+There is no built-in variable or step that can directly provide information on what is already deployed in an environment.
+Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables)
+
+#### "Is there an equivalent option in NG for "Last Successfully Deployed" in triggers?"
+
+Yes. One can use the expression `<+lastPublished.tag> expression`. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#artifact-polling)
+
+#### Is there a way to interrogate artifact details in a shell script step for SSH use cases, enabling behavior modification in deployment, without transferring it to the end server first ?
+
+One can use command step to copy the artifact to the delegate  to inspect. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/)
+
+#### How many concurrent executions can one account accomplish ?
+
+We have a limit of 500 concurrent executions per account to avoid any issues.
+
+#### What is the interval between artifact version collection for perpetual task?
+
+It is `1 minute` for artifact collection and `2 minutes` for manifests in Next-gen.
+
+#### Is there a way to see YAML view in Service Overrides when version is 2.0?
+
+Please check if the Feature-Flag `CDS_SERVICE_OVERRIDES_2_0` is enabled for the account.
+
+#### Can the interval for the artifact version collection PT on the delegate be adjustable?
+
+No. Currently it is not configurable.
+
