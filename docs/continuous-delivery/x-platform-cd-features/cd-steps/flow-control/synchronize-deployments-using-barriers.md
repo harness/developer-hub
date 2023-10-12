@@ -18,7 +18,7 @@ When deploying interdependent services, such as microservices or a large and com
 
 Harness address this scenario using Barriers. Barriers allow you to synchronize different stages and step groups in your Pipeline, and control the flow of your deployment systematically.
 
-Barriers have an effect only when two or more stages/step groups use the same barrier name (**Barrier Reference** setting in the Barrier step), and are executed in parallel in a Pipeline. When executed in parallel, both stages/step groups will cross the barrier at the same time. (There are additional constraints when these parallel steps are generated using looping strategies. See Notes below)
+Barriers have an effect only when two or more stages/step groups use the same barrier name (**Barrier Reference** setting in the Barrier step), and are executed in parallel in a Pipeline. When executed in parallel, both stages/step groups will cross the barrier at the same time. (There are additional constraints when these parallel steps are generated using looping strategies. For more information, go to [Important notes](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers#notes))
 
 If a stage/step group fails before reaching its barrier point, the stage/step group signals the other stages/step groups that have the same barrier, and the other stages/step groups will react as if they failed as well. At that point, each stage/step group will act according to its [define a failure strategy on stages and steps](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
 
@@ -62,11 +62,11 @@ You cannot use a Harness variable expression in **Barrier Reference**.Now you ca
 
 * You can have multiple Barriers in a stage/step group. Every Barrier in the same stage/step group must use a unique **Barrier Reference**.
 * Ensure the Barrier Reference string for each related barrier across the different stages/step groups matches.
-* When you are using Barriers in a looping strategy such as [Repeat or Matrix](docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/), you cannot use the `maxConcurrency` parameter. All of the dynamically generated stages must be created parallelly for Barriers to work, and `maxConcurrency` causes some of the stages to be created later.
+* When you use Barriers in a looping strategy such as [Repeat or Matrix](docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/), you cannot use the `maxConcurrency` parameter. This is because, for Barriers to work, all of the dynamically generated stages must be created in parallel, while The `maxConcurrency` parameter causes some of the stages to be created later.
 
 :::note
 
-Barrier support in looping strategies is currently behind the feature flag `CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES`. If this flag is turned off, you may find synchronization not happening correctly in looping strategies. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Barrier support in looping strategies is behind the feature flag `CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES`. If this flag is turned off, synchronization might not work correctly in looping strategies. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::  
 
