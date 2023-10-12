@@ -16,8 +16,28 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### Latest: Version 810xx
 
-### Latest: Version 80908
+#### New features and enhancements
+
+This release does not include new features.
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
+
+<!-- Have asked the engineers whether these need a release note. The description is "NA" at present:
+
+- N/A (CDS-79911)
+
+- NA (CDS-75403) -->
+
+<!-- For CDS-80639: have asked for a description of the issue. Will update when it's available. -->
+- Fixed endless retries to establish a valid SSH connection in case of InterruptedException. (CDS-80639)
+
+### Version 80908
 
 #### New features and enhancements
 

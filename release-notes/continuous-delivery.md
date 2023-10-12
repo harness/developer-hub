@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-10-09T10:00:15
+date: 2023-10-16T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -46,20 +46,141 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
-## Latest: Harness version 80909
+## Latest: Harness version 810xx
 
 ### New features and enhancements
+
+- Now, when configuring a coverage rule for a deployment freeze window, if you choose to include all services or all environments, Harness gives you the option to exclude specific services or environments, respectively. This functionality is the same as the options provided for excluding organizations and projects, and it reduces your effort when the entities you want to include outnumber those you want to exclude. (CDS-79505)
+
+  For more information, go to [Define freeze window coverage and schedule](/docs/continuous-delivery/manage-deployments/deployment-freeze/#define-freeze-window-coverage-and-schedule).
+
+- With this latest update, users will notice the following improvements when interacting with forms. (CDS-74220, ZD-47456, ZD-50077)
+
+  Initial Empty State: When users open a form for the first time, they will notice that it appears empty, allowing them to begin their input process with a clean slate.
+
+  Runtime Inputs: Some fields within the form are intentionally left empty by users. With this update, these empty fields should now be manually converted into runtime inputs. This means that users can modify and set values for these fields during runtime.
+
+  Retained InputSet Values: When users run a pipeline using the form, they will now experience a seamless process. The form will load with the same values as the previous input set without any unwanted clearing or mutation of the InputSet.
+
+- Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. (CDS-79414)
+
+  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+
+### Early access features
+
+This release does not include early access features. 
+
+### Fixed issues
+
+- In a chained pipeline setup, the various user interface elements associated with child pipeline execution runs show inconsistent information. The discrepancies pertain to who or what executed the pipeline, and are as follows:
+  - The pop-up window that appears when you hover over the icon for the most recent execution in the **Recent Executions** column displays the name of the user who executed the pipeline.
+  - The list of all pipelines and the list of executions for the child pipeline display the name of the parent pipeline. (CDS-80772, ZD-51698)
+
+  This issue has been fixed. The pop-up window that appears in the **Recent Executions** column now displays a link to the parent pipeline's execution.
+
+- The `pipelines/execution/{planExecutionId}/notes` API call did not have the `PIPELINE_EXECUTE` permission, so you could not update notes even if you had the permissions to execute the pipeline.
+
+  This issue has been fixed. The API for updating execition notes now has the `PIPELINE_EXECUTE` permissions. (CDS-80634)
+
+- If you updated a service by using Pipeline Studio or by using the upsert API, and the deployment included service v1, the audit trail did not record the update. (CDS-80496, ZD-51390)
+
+  This issue has been fixed. 
+
+- Earlier, manually created queries overrode existing queries, which were consequently lost. (CDS-80342, ZD-51302) 
+
+  This issue has been fixed. Now, manually configured queries are appended to existing queries. 
+
+- The migration of service overrides generated an invalid YAML object and failed with the error `Invalid request: "Override spec is empty in request."` (CDS-80081)
+
+  This issue has been fixed. 
+
+- The yellow icon that indicates that a stage, step, or step group includes conditional execution settings persists even after you reset the conditional execution settings (for example, by changing the value type, in succession, from **Fixed value**, to **Runtime input**, and to **Fixed value** again, and then clicking **Apply Changes**). However, removing the associated YAML block cleared the icon. (CDS-79991, ZD-51026)
+
+  This issue has been fixed, and the yellow icon no longer persists after you reset the conditional execution settings. 
+  
+  In addition to fixing this issue, Harness has made it easier for you to reset the conditional execution configuration. The Conditional Execution section now includes a delete button that works in the same way as the delete button in the other advanced strategy sections (Looping Strategy and Failure Strategy). The delete button becomes available only when conditional execution settings exist.  
+
+- JEXL functions were not supported in HTTP output variables. (CDS-79811, ZD-50712)
+
+  This issue has been fixed. 
+
+- The names of environments were truncated to enable the Total Deployments section of the Services page. This was done to accommodate multiple environment names.  (CDS-79757)
+
+  This issue has been fixed. 
+
+- If you disabled basic authentication for an Azure web app, the deployment failed with the error `Invalid request: Connector not found for identifier : [defaultParam] with scope: [PROJECT]`. The issue was caused by Azure removing support for basic authentication in favor of Azure AD. (CDS-79360, ZD-50598)
+
+  This issue has been fixed. Deployments will succeed with basic authentication disabled. (CDS-79096	50585)
+
+- Earlier, if you had permissions to view only a specific pipeline, the pipeline listing page did not show you any pipelines. (CDS-77854, ZD-49725, ZD-49988 )
+
+  This issue has been fixed. Now, the pipeline listing page shows you only those pipelines for which you have view permissions.
+
+  :::note
+  This fix does not change the behavior of RBAC. If you have permissions to view a project along with permissions to view a specific pipeline, the pipeline listing page continues to show you all pipelines in the project.
+  :::
+
+- Pipelines that were previously successful when using remote Terraform variable definitions in the JSON file format failed in recent execution runs. (CDS-80582, ZD-51483, ZD-51858)
+
+  This issue has been fixed.
+
+  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- When the OCI Helm connector was configured with a URL that contained a path (somehost.io/path1/path2) and not just the host name (somehost.io), attempts to fetch chart versions failed. (CDS-79786, ZD-50862, ZD-51081)
+
+  This issue has been fixed. Chart versions are fetched even with a path in the connector URL.
+
+  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The Merge PR step fails with GitLab connectors. (CDS-79772)
+
+  This issue has been fixed.
+
+  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Execution failure logs associated with an exception named `DuplicateKeyException` included the name of the Harness production server. (CDS-79514, ZD-50804)
+
+  This issue has been fixed.
+
+  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Harness now supports the deployment of ECS services whose count is the same as the running instances in a blue-green strategy (CDS-79412)
+
+  This item requires Harness Delegate version yy.mm.808xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- If a pipeline that includes the Terragrunt Apply step fails, the Terragrunt working directory is not removed from the file system. Consequently, the delegate container's disk usage gradually increases. The issue occurs when the working directory includes symbolic links. (CDS-79020,	ZD-50532)
+
+  This issue has been fixed.
+
+  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- If a step in a WinRM deployment fails, Harness does not clean up temporary files created on the remote host. (CDS-78304, ZD-49543)
+
+  This issue has been fixed. 
+
+  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Harness version 80909
+
+##### New features and enhancements
 
 - You can now provide detailed feedback in the Harness AIDA chat in CD. (CDS-79769)
 
   <docimage path={require('./static/73123e6efdd7d7dbc7c67b4a7df71bd42b1b20c8ba4cf409f87de0749da8dc92.png')} width="40%" height="40%" title="Click to view full size image" />  
 
 
-### Early access features
+##### Early access features
 
 This release does not include Early Access features. 
 
-### Fixed issues
+##### Fixed issues
 
 - Fixed an issue when migrating service overrides from v1 to v2. The migration generated an invalid YAML object and failed with the error `Invalid request: Override spec is empty in request`. (CDS-80081)
 
@@ -93,11 +214,6 @@ This was already documented in 808xx relnotes, see https://harness.atlassian.net
 
 - Fixed dashboard refresh issue where selecting a filter prolonged query times. With this fix, dashboards no longer refresh automatically when a user changes the filter. (CDB-1198, ZD-50972)
 
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### Harness version 80811
 
