@@ -114,7 +114,7 @@ export default function FeatureFlags() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Feature Flags - Developer (BETA)</h2>
+                  <h2>Feature Flags - Developer</h2>
                   <img
                     src={`${baseUrl}img/cert_dev_ff_badge.svg`}
                     alt="Harness Certified Expert - FF Developer"
@@ -125,7 +125,7 @@ export default function FeatureFlags() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide (BETA)</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to progressivly deploy/toggle your applications with FF projects.
                   </div>
@@ -144,7 +144,7 @@ export default function FeatureFlags() {
 
           {/* Developer Exam Details */}
           <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details (BETA)</h2>
+            <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>

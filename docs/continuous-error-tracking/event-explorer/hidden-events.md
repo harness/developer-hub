@@ -1,7 +1,7 @@
 ---
 title: Hidden events
 description: Mark events as hidden.
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 Continuous Error Tracking allows you to hide insignificant or known issues, as well as resolved events, from the Events page in order to reduce noise.

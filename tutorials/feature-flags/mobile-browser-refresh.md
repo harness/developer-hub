@@ -1,10 +1,20 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 description: Ensuring flags are refreshed after a mobile web browser gets brought to the foreground.
 keywords: [Mobile application testing, Feature Flags, FF Tutorial]
 ---
 
 # Making flags resilient during a mobile web browser refresh
+
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Feature Flags Certification today!"
+  link="/certifications/feature-flags"
+  closable={true}
+  target="_self"
+/>
+
 
 ![FF Workflow](static/ff-mobile-browser-refresh/ffworkflow.png)
 
