@@ -32,6 +32,10 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 Harness NextGen release 810xx includes the following changes for the Harness Delegate.
 
+:::danger Breaking change
+Harness implemented access checks in Compliance Manager to restrict unauthorized users from viewing delegate information on the delegate list page. Access checks are now enforced on the page for delegate view permissions.(PL-38958, ZD-50634)
+:::
+
 ### New features and enhancements
 
 - You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
