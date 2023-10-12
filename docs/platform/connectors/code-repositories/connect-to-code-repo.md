@@ -90,10 +90,6 @@ With the generic Git connector, you must use a username and password for the IAM
    * In **Git Repository URL**, enter the AWS CodeCommit repository URL, such as `https://git-codecommit.us-west-2.amazonaws.com/v1/repos/doc-text`. You can get this URL from your CodeCommit repo by using its **Clone URL** menu and selecting **Clone HTTPS**.
    * In **Username** and **Password**, enter the username and password that you generated for the IAM user. Use an [Encrypted text secret](/docs/platform/secrets/add-use-text-secrets) to store the password.
 
-import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
-
-<Nameidlimit />
-
 5. After the connection test runs, select **Finish** to save the connector.
 
 ```mdx-code-block
