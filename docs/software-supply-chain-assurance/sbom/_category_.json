@@ -1,0 +1,11 @@
+{
+   "label":"Generate or ingest SBOM",
+   "position": 30,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Generate or ingest SBOM"
+   }
+}

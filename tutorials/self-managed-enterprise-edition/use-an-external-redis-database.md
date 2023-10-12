@@ -37,9 +37,14 @@ The following prerequisites are needed:
 
 - A public or internal domain name, for example `harness-redis-abc.com`.
 
-## Firewall rules
+## Set up firewall rules
 
-External Redis requires firewall rule setup to add ports to your allowlist. 
+External Redis requires firewall rule setup to add ports to your allowlist.
+
+:::warning
+Example settings used in this tutorial are for instructional purposes only. Replace the examples with your organization's IP requirements. Harness recommends following your organization's standards for firewall rule settings.
+
+:::
 
 To create a firewall rule, do the following:
 
@@ -54,7 +59,7 @@ To create a firewall rule, do the following:
    | TCP| 10000-20000 | Redis connectivity|
    | TCP| 8443 | Secure (HTTPS) access to the web management UI|
 
-4. For testing purposes, keep the Source IP ranges set to 0.0.0.0/0.
+4. For testing purposes, set the source IP ranges to your public IP.
 
 ## Install Redis
 

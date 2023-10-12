@@ -17,3 +17,17 @@ You can enable or disable the following notification channels:
 
 To disable a given notification channel, in Harness, go to **Account Settings** > **Account Resources** > **Default Settings** > **Notifications**, and then turn off the corresponding toggle. 
 
+With notification settings, you can add domain allowlists for notification channels at the account level. This feature enables you to specify fixed URL domains to which notifications can be sent. Expression URLs are not yet supported.
+
+To add a domain filter to a notification channel, navigate to **Account Settings** > **Account Resources** > **Default Settings** > **Notifications** in the Harness platform and add the fixed URL domain to the corresponding notification setting.
+
+![](./static/notification-settings-url-filters.png)
+
+You can add domain filter to the following notification channels:
+- Email
+- Slack
+- Microsoft Teams
+- Webhooks
+- PagerDuty
+
+When a domain is added to a notification channel's domain allowlist, only recipients whose domains are present in the allowlist will receive notifications from that channel. This applies to both existing and new recipients until their domain is added to the channel's domain allowlist.

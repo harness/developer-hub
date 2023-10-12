@@ -914,3 +914,11 @@ Here is an example of the YAML for a Terragrunt Rollback step:
 
 </Tabs2>
 ```
+
+## Terraform logs
+
+All logs produced by Terraform are printed in Harness step execution logs.
+
+Logs that are coming from `stdout` will be printed as they are, and logs from `stderr` will be printed in red.
+
+The option to skip stderr logs coloring is behind the feature flag `CDS_TF_TG_SKIP_ERROR_LOGS_COLORING`.
