@@ -779,6 +779,10 @@ gsutil -m cp \
 
 - Fixed an issue where Redis failed when upgrading from 0.8.3 to 0.9.0. (SMP-2104)
 
+- Fixed an issue in the `override-prod.yaml` file in 0.9.0 which resulted in validation errors. (SMP-2121)
+
+- Fixed an issue where the `global.ingress.objects.annotation` field wasn't templated correctly. (SMP-2125)
+
 - Fixed an issue where Helm upgrades failed when upgrading from 0.8.4 to 0.9.1. (SMP-2135)
 
 ## Previous releases
