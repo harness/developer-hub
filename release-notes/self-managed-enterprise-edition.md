@@ -783,7 +783,9 @@ gsutil -m cp \
 
 - Fixed an issue where the `global.ingress.objects.annotation` field wasn't templated correctly. (SMP-2125)
 
-- Fixed an issue where Helm upgrades failed when upgrading from 0.8.4 to 0.9.1. (SMP-2135)
+- Fixed two issues that caused Helm upgrade failures from 0.8.4 to 0.9.1. (SMP-2135)
+   - Corrected the `cd.gitops` field in the `override-prod.yaml` file.
+   - Added an annotation field to `nextgen-ui` to resolve `global.ingress.objects.annotation` template failures.
 
 ## Previous releases
 
