@@ -746,6 +746,47 @@ gsutil -m cp \
 
    For more information, go to [Service hooks](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks).
 
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.9.2](https://github.com/harness/helm-charts/releases/tag/harness-0.9.2) |
+| Air Gap Bundle | [0.9.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.9.2) |
+| NG Manager | 80219 |
+| CI Manager | 5313 |
+| Pipeline Service | 1.41.3 |
+| Platform Service | 80000 |
+| Access Control Service | 79802 |
+| Change Data Capture | 80209 |
+| Test Intelligence Service | release-197 |
+| NG UI | 0.357.17 |
+| LE NG | 68007 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.9.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.2/sto_images.tgz" \
+  .
+```
+
+- Fixed an issue where Redis failed when upgrading from 0.8.3 to 0.9.0. (SMP-2104)
+
+- Fixed an issue in the `override-prod.yaml` file in 0.9.0 which resulted in validation errors. (SMP-2121)
+
+- Fixed an issue where the `global.ingress.objects.annotation` field wasn't templated correctly. (SMP-2125)
+
+- Fixed two issues that caused Helm upgrade failures from 0.8.4 to 0.9.1. (SMP-2135)
+   - Corrected the `cd.gitops` field in the `override-prod.yaml` file.
+   - Added an annotation field to `nextgen-ui` to resolve `global.ingress.objects.annotation` template failures.
+
 ## Previous releases
 
 <details>
