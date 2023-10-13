@@ -1,8 +1,12 @@
 ---
 title: Event Distribution Graph
 description: Explore Event Distribution Graph features.
-sidebar_position: 1
+sidebar_position: 2
 ---
+
+:::info note
+Currently, this feature is behind the feature flag `CET_EVENTS_CHART`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 The Event Distribution Graph provides an interactive visual representation of event volume within the selected timeframe and view. It helps you analyze historical performance metrics and track error counts within your specified time interval. 
 
