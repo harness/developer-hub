@@ -1755,3 +1755,51 @@ The Harness API supports uploading files to file storage. You can use the API en
 Yes, you can use the expression <+trigger.manifest.version> to have the new chart version that initiated the Trigger passed in as the version to deploy. This expression can reference the chart version in your pipeline stage steps.
 
 For non-trigger-based execution, you can use the expression <+manifests.MANIFEST_ID.helm.version> to reference the Helm chart version in your pipeline stage steps. The MANIFEST_ID is located in service.serviceDefinition.spec.manifests.manifest.identifier in the Harness service YAML. You can also use Harness variable expressions or runtime inputs to pass in the Helm chart version at execution.
+
+#### Is there an option to copy services/environments/connectors from one project to another.
+
+The easiest way for this would be to copy the yaml for the service/environment or connectors and create the service/env / connector in another project via yaml and paste and create it. But no direct way to copy it to another project. 
+
+#### Multiple deployment stages in my pipeline not able to see the previous stages console log in the second execution
+
+The execution not present when the pipeline is re-run is by design if the pipeline is re-run the older execution ID is purged along with the logs and only the current/latest logs are preserved.
+The selective execution of the stages in the pipeline, where the user can run specific stages of the pipeline, Just enable this setting under - Advanced options of the pipeline.
+
+#### Question about values yaml overrides, if we have multiple values yaml overrides for one service. Whats the order of applying then which one will be last? And is there a way to reorder them or I need to add them I right order from the beginning ?
+
+The last upload values yaml will take priority for override. 
+For example there are 3 over rides named a , b and c , values yaml will be applied in this order : 
+ 
+`go template manifest.yaml -f a.yaml -f b.yaml -f c.yaml`
+Unfortunately, there is no way to change/ arrange the order. You can remove and add them back as per above order.
+
+#### Variable substitution problem when moving from First Gen to Next Gen
+
+We might see errors around the variable substitution when moving them from First Gen to Next Gen, 
+It could be due to how we define variables in Next Gen as compared to First Gen.
+
+Harness expressions are identified using the <+...> syntax. For example, <+pipeline.name>.
+
+#### How to setup allowedvalue for entity reference
+
+Unfortunately, it won't work. These are supposed to be ENTITY types. This is by design. 
+In the entity type, you can't specify the allowed values. It's only for the Text, Email & Number type. The infradefinition is dependent field on the environment. Hence it will populate once you select the environment. 
+
+#### Save input sets on another git repository
+
+We have this feature but it needs to be enabled from the Account level Settings. 
+Go to Account Settings --> Account Resources --> Git Experience --> Allow different repo for Pipeline and InputSets, enable this and Now you can save the input set in different repo. 
+
+[documentation](https://developer.harness.io/docs/platform/git-experience/git-settings/#enforce-git-experience)
+
+#### Auto-Reject previous deployments paused in this step on approval
+
+If you have multiple services using this same pipeline template, both within and outside the same project, If both service1 and service2 in the same project are using this same pipeline and are sitting at the approval step. 
+As the template used here has been specified with different services at the runtime, so it will run independently. 
+
+#### Harness enabling auto deployment
+
+To have automatic deployment in Harness, you can make use of trigger On new artifact. 
+[documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-a-time-schedule/)
+As soon as your build is complete and it publishes a new artifact you can setup a trigger on that and it will trigger a Harness Deployment. 
+
