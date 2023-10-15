@@ -1032,3 +1032,44 @@ Yes, you can use the custom stage. This is a selection you can make initially wh
 
 With a custom stage, you do not need to define a service. This would be an ideal method of executing a shell or bash script step. 
 
+#### Is there a way to create delegate tokens via API calls in which we can do the API call for token creation and use in personalized way?
+
+Yes there is way to create delegate tokens via API calls, for details you can refer [here](https://apidocs.harness.io/tag/Delegate-Token-Resource#operation/createDelegateToken).
+
+#### Do harness support Worklaod identity federation for authentication?
+
+We support workload identify for Google SM.
+
+#### Can we use alphanumberic on the delegate names?
+
+They can use alphanumeric but it should not start or end with number.
+
+#### Can you give details about recent changes to Harness Self-Managed Enterprise Edition?
+
+Yes, you can refer to documentation [here](https://developer.harness.io/release-notes/self-managed-enterprise-edition/#self-managed-enterprise-edition).
+
+#### If we have a main pipeline linked to a chain pipeline, when main pipeline gets executed which pipeline settings has precedence? For eg. main pipeline has notifications set, pipeline timeout set and chain pipeline is a template pipeline with notifications set, pipeline timeout set.
+
+The notification/timeout settings for each entity will be honored as the pipeline progresses.
+
+#### Can we use expressions in tags in delegates in NG like they used custom selectors in delegates in CG?
+
+Yes, expression in delegate selections are supported. You can pass expression during delegate selection in pipeline. This will be resolved to the value of that variable. If that value is present as a tag in a delegate then that delegate will be selected.
+
+#### What could be possible reason of getting the error `Error: Rate limit reached for tasks with rank IMPORTANT. Current task count 5985 and max limit 5000`?
+
+This could happen when manager iterator is not running, there is a limit of 5000 delegate tasks at a time per account, but if iterator is not running, it will get deleted automatically and this error arises.
+
+#### While using local delegate using minikube, the delegate has been configured to be a project delegate. What need to be done so that this specific delegate identified as an account delegate?
+
+You can look at the Delegate Service section of this documentation, [here](https://harness.atlassian.net/wiki/spaces/HCE/pages/21076181398/Local+Development+Setup+for+Harness+Chaos?atlOrigin=eyJpIjoiMjVlMzQ5NmMwODJiNDM4MTgyNTMzNDQzYTU4M2EwODMiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ). Also you could have just replaced the delegates token, Delegate service registers the delegate against specific org/proj based on to where is the delegate token (e.g, if you create account level delegate token, the delegate will be account level as well). 
+
+#### Whether we can limit our account/org access only to our users and not to Harness users (even read-only access)?
+
+This feature is currently available in CG, the customer can use `Restrict users to email domains` feature and only and set their email domain only. Also, there is a FF `LIMITED_ACCESS_FOR_HARNESS_USER_GROUP` which needs to be enabled.
+
+#### The user is blocked because of entry not cleared for his prod2 account from gateway, What could be possible steps to login?
+
+The user can directly login using deep link [here](https://app.harness.io/ng/account/y3fpQpCfRQC8uakPcpfp2Q/main-dashboard).
+
+
