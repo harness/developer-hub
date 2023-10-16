@@ -1118,3 +1118,160 @@ If you need to see the permissions inside of a role say Account Viewer or any cu
 We only show the Account/Project/Organisation level permissions with the role-resource group with where it is assigned at and assigned through in case of a User group or directly. 
 
 But you can view all of them together by selecting the scope to All instead of Individual. 
+
+#### I need to create an AWS Secrets Manager reference type secret. I am not sure how to accomplish it. Is the "secret_manager_identifier" for the AWS Secrets Manager secret name?
+
+The secret_manager_identifier will be the identifier if your AWS secret manager which you added in your Harness as a connector. 
+Also, The secrets need to be stored in the same scope of the secret manager. So for account secrets they will be stored in the account secret manager.
+
+#### RBAC for pipeline to hide few pipelines
+
+We don't have the hide pipeline functionality. 
+The way you can do this is to create a role and resource group with specific pipelines and assign it to the Users, the users can view the pipelines but will be able to execute them based on the Resource Group assignments. 
+
+#### Delegate Token behaviour
+
+Token revocation is done server side. We have a 20 minutes cache, so the delegate will be disconnected within 20 minutes of the token removal on the server side.
+The Token is used in heartbeat but is loaded at the delegate process startup. Changing the token delegate side requires a restart of the delegate process (cycle).
+
+#### How to view the secrets value stored in Harness Secrets Manager
+
+As the secrets stored in Harness are saved as encrypted hence you can't see the value for those secrets from the Harness UI. 
+There would be a tidy way to print it using a pipeline execution. 
+ 
+Create a shellscript execution , add 2 different shell script steps, do specify the same delegate selector. 
+In shell script 1 : 
+```
+echo "text secret is: " <+secrets.getValue("printsecret")> >> /tmp/abc.txt
+```
+Here printsecret is the secret name. 
+ 
+in 2nd shell script : 
+ ```
+cat /tmp/abc.txt
+ ```
+The first shell script will output like : 
+ ```
+text secret is: **************
+ ```
+but the second one will print the value for the secret : 
+``` 
+text secret is: hellohello
+ ```
+Also, if you try to do the cat in the first step it won't print the secret in plain text. 
+
+#### How can we forcibly disconnect a delegate and delete it as admin?
+
+As Harness Delegates are managed by customers in their own infrastructure, Harness doesn't have any control on it. 
+Harness can't control the delegates on your infrastructure. 
+ 
+In Harness's architecture, the delegates in your infrastructure connect to the Harness Manager :
+ 
+https://developer.harness.io/docs/getting-started/harness-platform-architecture/#harness-platform-components
+ 
+Hence you will need to stop the delegate service in your infrastructure. 
+
+There is another way to remove the delegate is, you will need to revoke the token used by the delegate and it will get disconnected and then auto-deleted in 7 days.
+
+#### Is there a limit to the number of pipelines a project can have? What is the character limit on pipeline names?
+
+We have no limit for pipeline creation. 
+But the pipeline name character limit is 128 characters. 
+
+#### Data Deletion handling for exiting customers
+
+The process is simple when a customer account expires or leaves/churns/offboards. All the data for the customer is cleaned up after the expiry or churn/offboarding.
+
+#### Delegate disconnected status in the API
+
+```
+{delegateList(filters: [{accountId: "xxxxx"}], limit: 10) {
+
+    nodes {
+      delegateName
+      ip
+      status 
+      disconnected
+      version
+      hostName
+      lastHeartBeat
+     }
+   }
+ }
+```
+
+#### How to deploy Delegate in Amazon ECS for Harness NG
+
+The Harness Delegate is a software that gets installed in your environment which connects to Harness Manager and performs Continuous Delivery/Continuous Integration tasks.
+In the Harness NextGen, ECS delegate can be deployed as a docker delegate both for ECS and ECS Fargate. This tutorial shows you how to install the Harness Delegate in an ECS cluster as an ECS service to enable the Delegate to connect to your AWS resources.
+
+https://discuss.harness.io/t/how-to-deploy-delegate-in-amazon-ecs-for-harness-ng/13056
+
+#### I use a Slack bot to send messages about test job results. I couldn't find a variable for job URL
+
+For the pipeline execution URL: <+pipeline.execution.url>
+ 
+https://docs.harness.io/article/lml71vhsim-harness-variables#pipeline_execution_url
+
+#### Harness Hosted Gitops IP Address
+
+Access to Kubernetes clusters that are behind strict firewalls and are not accessible from the public internet is controlled through authorized IP addresses. To allow access to these clusters, Harness provides a list of IP addresses that need to be configured on the clusters.
+
+https://developer.harness.io/docs/continuous-delivery/gitops/gitops-ref/gitops-allowlist/
+
+#### Info of connected delegate when it's started connected to Harness
+
+The delegate initiates communication on its startup to the Harness Platform. There is also a heartbeat connection every 60 seconds from the delegate to the delegate harness to notify that it is running.
+
+#### Understand the logic behind the six-letter account identifier that Harness uses while creating the delegate
+
+This identifier refers to your account, without this, we don't know how to link old pod lifecycles and new ones, hence we will treat them differently as pod names and pod IPs change. 
+
+#### How Vault agent secret manager actually works with vault
+
+The below article talks about how secret manager works with vault :
+
+https://discuss.harness.io/t/vault-how-to-use-the-new-vault-agent-integration-method-with-harness/784
+
+#### How Harness is able to prevent tampering of artifacts and instructions from the customer infrastructure. Sounds like TLS is used, but what specific integrity checking approach is used to check instructions are not changed in flight?
+
+Details below for the protection details for the below Artifact Sources :
+ 
+Related to SSH/WinRm NG
+ 
+Artifactory
+For downloading artifacts from Artifactory to delegate, we are using org.jfrog.artifactory.client:artifactory-java-client-api:jar:2.9.1
+This is the maven repo : https://mvnrepository.com/artifact/org.jfrog.artifactory.client/artifactory-java-client-services/2.9.1 and we see that there are reported vulnerabilities for this lib version. We are working on updating the above lib to the version without vulnerabilities and we will be secure. If Artifactory URL is https, the calls are secure with TLS
+ 
+AWS S3
+For downloading artifacts from AWS S3 to delegate, we are using com.amazonaws:aws-java-sdk-s3:1.12.261 
+We don't see any reported vulnerabilities : https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3/1.12.261 we are secure.
+AWS SDK makes HTTP calls in a secure way using TLS
+ 
+Azure
+For downloading artifacts from Azure to delegate, we are using okhttp-4.9.2.jar, we see there are reported vulnerabilities and we are working to update this lib : https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp/4.9.2
+One note here is that updating this lib will be a long significant process which could last more weeks.
+ 
+Jenkins
+For downloading artifacts from Jenkins to delegate, we are using com.offbytwo.jenkins:jenkins-client:0.3.9,
+Can't find any info related to vulnerabilities.
+ 
+Nexus
+For downloading artifacts from Nexus to delegate, we are using javax.net.ssl.HttpsURLConnection from Java SDK.
+When downloading artifacts we are using SSL and we are secure here.
+ 
+Artifacts will be downloaded on the delegate and it should be safe if the network where delegates are running is secure.
+ 
+One note here, the chosen cipher suits depend on the remote server. During the SSL handshake the “server hello” message contains the Cipher suite chosen by the server from the list provided by the client (our side).
+
+ 
+
+
+ 
+
+
+
+
+
+
+ 
