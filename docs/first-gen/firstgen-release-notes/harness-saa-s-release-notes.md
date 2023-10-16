@@ -20,7 +20,9 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 #### New features and enhancements
 
-This release does not include new features.
+Added support for referencing JSON secret keys with dots at the top level. Nested keys with dots are not supported. (PL-41715, ZD-51757)
+
+This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 #### Early access features
 
@@ -28,6 +30,10 @@ This release does not include early access features.
 
 #### Fixed issues
 
+- OAuth sign-up emails were stored without being converted to lowercase. This caused duplicate emails in Harness with different cases. The issue was fixed by storing OAuth sign-up emails with lowercase. (PL-39331, ZD-47425)
+
+   This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   
 - Fixed endless retries to establish a valid SSH connection in case of InterruptedException. (CDS-80639)
 
 - Perpetual tasks in Delegate version 80505 threw Kryo issues because of the addition of a new field in instances. This can be seen if instances are not getting updated for older releases. (CDS-79911)
@@ -35,7 +41,6 @@ This release does not include early access features.
   This issue is now fixed.
 
   This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
 
 ### Version 80908
 
