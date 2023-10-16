@@ -1,0 +1,234 @@
+---
+id: cf-app-stop
+title: CF app stop
+---
+CF app stop fault stops a Cloud Foundry app and later starts it up.
+
+<!-- ![CF App Stop](./static/images/cf-app-stop.png) -->
+
+## Use cases
+CF app stop fault:
+- Checks application resilience against abrupt stopping of an app
+- Helps validate the effectiveness of disaster recovery and high availability of the app
+
+## Fault tunables
+<h3>Mandatory tunables</h3>
+<table>
+  <tr>
+    <th> Tunable </th>
+    <th> Description </th>
+    <th> Notes </th>
+  </tr>
+  <tr>
+    <td> cfDeploymentPlatform </td>
+    <td> Deployment platform used for cloud-foundry, with respect to where the infrastructure is executing </td>
+    <td> Supports <code>local</code> and <code>vSphere</code> </td>
+  </tr>
+  <tr>
+    <td> organization </td>
+    <td> The organization where the target app resides </td>
+    <td> For example: <code>dev-org</code> </td>
+  </tr>
+  <tr>
+    <td> space </td>
+    <td> The space in which the target app resides </td>
+    <td> The space must reside within the given organization. For example: <code>dev-space</code> </td>
+  </tr>
+  <tr>
+    <td> app </td>
+    <td> The app to be stopped </td>
+    <td> The app must reside within the given organization and space. For example: <code>cf-app</code> </td>
+  </tr>
+</table>
+
+<h3>Optional tunables</h3>
+<table>
+  <tr>
+    <th> Tunable </th>
+    <th> Description </th>
+    <th> Notes </th>
+  </tr>
+  <tr>
+    <td> faultInjectorPort </td>
+    <td> The local server port to be used by the fault-injector utility </td>
+    <td> Default: <code>50320</code>. If the default port is unavailable, a random port will be selected in the range of <code>50320-51320</code> </td>
+  </tr>
+  <tr>
+    <td> skipSSLValidation </td>
+    <td> Skip SSL validation while invoking CF APIs </td>
+    <td> Supports <code>true</code> and <code>false</code>. Default: <code>false</code> </td>
+  </tr>
+</table>
+
+## CF Secrets
+The following Cloud Foundry secrets shall be provided in a file `/etc/linux-chaos-infrastructure/cf.env` in the same machine where the chaos-infrastructure is executing in the following format:
+
+```env
+CF_API_ENDPOINT=XXXXXXXXXXXXXXXXXXX
+CF_USERNAME=XXXXXXXXXXXXXXXXXXXXXXX
+CF_PASSWORD=XXXXXXXXXXXXXXXXXXXXXXX
+UAA_SERVER_ENDPOINT=XXXXXXXXXXXXXXX
+```
+
+:::note
+If the secret file is not provided, then the secrets will be attempted to be derived as environment variables by the fault-injector utility.
+:::
+
+<table>
+  <tr>
+    <th> ENV Name </th>
+    <th> Description </th>
+    <th> Notes </th>
+  </tr>
+  <tr>
+    <td> CF_API_ENDPOINT </td>
+    <td> The API endpoint for the CF setup </td>
+    <td> For example: <code>https://api.system.cf-setup.com</code> </td>
+  </tr>
+  <tr>
+    <td> CF_USERNAME </td>
+    <td> The username for the CF user </td>
+    <td> For example: <code>username</code> </td>
+  </tr>
+  <tr>
+    <td> CF_PASSWORD </td>
+    <td> The password for the CF user </td>
+    <td> For example: <code>password</code> </td>
+  </tr>
+  <tr>
+    <td> UAA_SERVER_ENDPOINT </td>
+    <td> The API endpoint for the UAA server for the CF setup </td>
+    <td> For example: <code>https://uaa.system.cf-setup.com</code> </td>
+  </tr>
+</table>
+
+## vSphere Secrets
+These secrets are only to be provided if vSphere is being used as the deployment platform for CF.
+
+The following vSphere secrets shall be provided in a file `/etc/linux-chaos-infrastructure/vsphere.env` in the same machine where the chaos-infrastructure is executing in the following format:
+
+```env
+GOVC_URL=XXXXXXXXXXXXXXXXXXXXXX
+GOVC_USERNAME=XXXXXXXXXXXXXXXXX
+GOVC_PASSWORD=XXXXXXXXXXXXXXXXX
+GOVC_INSECURE=XXXXXXXXXXXXXXXXX
+VM_NAME=XXXXXXXXXXXXXXXXXXXXXXX
+VM_USERNAME=XXXXXXXXXXXXXXXXXXX
+VM_PASSWORD=XXXXXXXXXXXXXXXXXXX
+```
+
+<table>
+  <tr>
+    <th> ENV Name </th>
+    <th> Description </th>
+    <th> Notes </th>
+  </tr>
+  <tr>
+    <td> GOVC_URL </td>
+    <td> The endpoint for vSphere </td>
+    <td> For example: <code>192.168.214.244</code> </td>
+  </tr>
+  <tr>
+    <td> GOVC_USERNAME </td>
+    <td> The username for the vSphere user </td>
+    <td> For example: <code>username</code> </td>
+  </tr>
+  <tr>
+    <td> GOVC_PASSWORD </td>
+    <td> The password for the vSphere user </td>
+    <td> For example: <code>password</code> </td>
+  </tr>
+  <tr>
+    <td> GOVC_INSECURE </td>
+    <td> Skip SSL validation for govc commands </td>
+    <td> For example: <code>true</code> </td>
+  </tr>
+  <tr>
+    <td> VM_NAME </td>
+    <td> Name of the vSphere VM where the fault-injector utility is installed </td>
+    <td> For example: <code>cf-vm</code> </td>
+  </tr>
+  <tr>
+    <td> VM_USERNAME </td>
+    <td> The username for the VM guest user </td>
+    <td> For example: <code>root</code> </td>
+  </tr>
+  <tr>
+    <td> VM_PASSWORD </td>
+    <td> The password for the VM guest user </td>
+    <td> For example: <code>password</code> </td>
+  </tr>
+</table>
+
+### CF deployment platform
+The `cfDeploymentPlatform` input variable determines the deployment platform used for CF, with respect to the infrastructure.
+- The deployment platform can be either local i.e. the same environment used by the infrastructure or a remote machine.
+- The deployment platform is where the fault-injector utility executes.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/cf-app-stop/cfDeploymentPlatform.yaml yaml)
+```yaml
+# cf deployment platform
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: cf-app-stop
+  labels:
+    name: app-stop
+spec:
+  cfAppStop/inputs:
+    duration: 30
+    cfDeploymentPlatform: vSphere
+    app: cf-app
+    organization: dev-org
+    space: dev-space
+```
+
+### Skip SSL validation
+The `skipSSLValidation` input variable determines whether to skip SSL validation for calling the CF APIs.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/cf-app-stop/skipSSLValidation.yaml yaml)
+```yaml
+# skip ssl validation for cf
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: cf-app-stop
+  labels:
+    name: app-stop
+spec:
+  cfAppStop/inputs:
+    duration: 30
+    cfDeploymentPlatform: vSphere
+    app: cf-app
+    organization: dev-org
+    space: dev-space
+    skipSSLValidation: true
+```
+
+### Fault injector port
+The `faultInjectorPort` input variable determines the port to be used for the fault-injector local server.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/cf-app-stop/faultInjectorPort.yaml yaml)
+```yaml
+# fault injector port
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: cf-app-stop
+  labels:
+    name: app-stop
+spec:
+  cfAppStop/inputs:
+    duration: 30
+    cfDeploymentPlatform: local
+    app: cf-app
+    organization: dev-org
+    space: dev-space
+    faultInjectorPort: 50331
+```
