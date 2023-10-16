@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
 
-## Latest: Version 0.9.0
+## Latest: Version 0.12.0
 
 IDP has now graduated from Beta into **Public Preview**. During [Unscripted](https://www.unscriptedconf.io/) in September, we made a series of announcements. Here are some quick links for your recap.
 
