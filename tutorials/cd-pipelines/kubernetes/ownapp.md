@@ -20,7 +20,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-_**This tutorial is a continuation of the Kubernetes Manifest tutorial. In the previous tutorial, we guided you through creating a sample pipeline using the Guestbook sample app. In this tutorial, we'll walk you through deploying your own microservice app with the Harness CD pipeline.**_
+_**This tutorial is a continuation of the Kubernetes Manifest tutorial. In the previous tutorial, we guided you through creating a sample pipeline using the Guestbook sample app. In this tutorial, we'll walk you through deploying your own microservice app with the Harness CD pipeline or GitOps workflow.**_
 
 **Sock Shop**, developed by Weaveworks, serves as a polyglot architectural pattern to showcase microservices-based deployments. This application suite integrates a range of technologies, such as SpringBoot, Go, REDIS, MYSQL, MongoDB, among others. We've chosen the Sock Shop as our demonstration app for the deployment process in Harness.
 
@@ -39,12 +39,6 @@ You can choose to proceed with the tutorial either by using the command-line int
 <TabItem value="GitOps Workflow">
 ```
 
-:::info
-
-Whether you're new to GitOps or have already used Argo CD, this guide will assist you in getting started with Harness GitOps, both with and without Argo CD.
-
-:::
-
 ## Before you begin {#before-you-begin-gitops}
 
 Verify that you have the following:
@@ -57,7 +51,107 @@ Verify that you have the following:
 --------------------------------------
 
 ```mdx-code-block
-<Tabs queryString="iac">
+<Tabs>
+<TabItem value="cli" label="CLI">
+```
+
+1. Refer [Install and Configure Harness CLI](./install.md) doc to setup and configure Harness CLI.
+
+2. Clone the Forked **harnessed-example-apps** repo and change directory.
+    ```bash
+    git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
+    cd harnesscd-example-apps/deploy-own-app/gitops
+    ```
+    :::note
+    
+    Replace `GITHUB_ACCOUNTNAME` with your GitHub Account name.
+
+    :::
+
+3. You have the option to use the same agent that you deployed during the Manifest tutorial or to deploy a new agent by following the steps below. However, remember to use a newly created agent identifier when creating repositories and clusters.
+   - Select **Settings**, and then select **GitOps Agents**.
+   - Select **New GitOps Agent**.
+   - When you are prompted with **Do you have any existing Argo CD instances?**, select **Yes** if you already have a Argo CD Instance, or else choose **No** to install the **Harness GitOps Agent**.
+
+```mdx-code-block
+<Tabs  queryString="gitopsagent">
+<TabItem value="agent-fresh-install" label="Harness GitOps Agent Fresh Install">
+```
+
+- Select **No**, and then select **Start**.
+- In **Name**, enter the name for the new Agent `ownappagent`
+- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
+  - For this tutorial, let's use the `default` namespace to install the Agent and deploy applications.
+- Select **Continue**. The **Review YAML** settings appear.
+- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.  
+
+    ```
+    kubectl apply -f gitops-agent.yml -n default
+    ```
+
+ - Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
+
+
+```mdx-code-block
+</TabItem>
+<TabItem value="existingargo" label="Harness GitOps Agent with existing Argo CD instance">
+```
+
+- Select **Yes**, and then select **Start**.
+- In **Name**, enter the name for the existing Argo CD project.
+- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
+- Select **Next**. The **Review YAML** settings appear.
+- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.  
+  
+    ```yaml
+    kubectl apply -f gitops-agent.yml -n default
+    ```
+- Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+4. Before proceeding, store the Agent Identifier value as an environment variable for use in the subsequent commands:
+    ```bash
+    export AGENT_NAME=GITOPS_AGENT_IDENTIFIER
+    ```
+    > Note: Replace `GITOPS_AGENT_IDENTIFIER` with GitOps Agent Identifier.
+
+5. Create a **GitOps Repository**.
+    ```bash
+    harness gitops-repository --file deploy-own-app/gitops/repository.yml apply --agent-identifier $AGENT_NAME
+    ```
+    > If you intend to use a private Git repository that hosts your manifest files, create a Harness secret containing the Git personal access token (PAT). Subsequently, create a new GitOps Repository pointing to your private repo.
+
+6. Create a **GitOps Cluster**.
+    ```bash
+    harness gitops-cluster --file deploy-own-app/gitops/cluster.yml apply --agent-identifier $AGENT_NAME
+    ```
+
+7. Create a **GitOps Application**.
+    ```bash
+    harness gitops-application --file deploy-own-app/gitops/application.yml apply --agent-identifier $AGENT_NAME
+    ```
+    > To deploy your own app, modify `repoURL` and `path` in the application.yml.
+
+8. At last, it's time to synchronize the application with your Kubernetes setup.
+
+  - Navigate to Harness UI > Default Project > GitOps > Applications, then click on gitops-application. Choose Sync, followed by Synchronize to kick off the application deployment.
+
+    - Observe the Sync state as Harness synchronizes the workload under `Resource View` tab.
+
+    - After a successful execution, you can check the deployment on your Kubernetes cluster using the following command:
+             
+         ```bash
+         kubectl get pods -n sock-shop
+         ```
+
+     - Sock Shop is accessible via the master and any of the node urls on port `30001`.
+
+```mdx-code-block
+</TabItem>
 <TabItem value="ui" label="UI">
 ```
 
@@ -179,7 +273,7 @@ Verify that you have the following:
      - After a successful execution, you can check the deployment on your Kubernetes cluster using the following command:
              
          ```bash
-         kubectl get pods -n default
+         kubectl get pods -n sock-shop
          ```
 
      - Sock Shop is accessible via the master and any of the node urls on port `30001`.
@@ -209,7 +303,7 @@ Before proceeding:
 
 ```
 git clone https://github.com/harness-community/harnesscd-example-apps.git
-cd deploy-own-app/gitops
+cd deploy-own-app/gitops/terraform
 ```
 
 2. Initialize the Terraform configuration. This step will also install the Harness provider plugin.
@@ -327,7 +421,7 @@ Observe the output of `terraform apply` as your resources are created. It may ta
     - Verify you cluster with its associated GitOps agent is listed with Active connectivity status.
 
 4. Select **Application** from the top right of the page.
-    - Click into the **guestbook** application. This is the application your deployed from the **harnesscd-example-apps** repo.
+    - Click into the **sockshop** application. This is the application deployed from the **microservices-demo/microservices-demo/** repo.
     - Select **Resource View** to see the cluster resources that have been deployed. A successful Application sync will display the following status tree.
 
 5. Return to a local command line. Confirm you can see the GitOps agent and guestbook application resources in your cluster.
@@ -341,7 +435,7 @@ kubectl get pods -n default
 6. To access the Sockshop application deployed via the Harness GitOps, you can check the deployment on your Kubernetes cluster using the following command:
              
          ```bash
-         kubectl get pods -n default
+         kubectl get pods -n sock-shop
          ```
     - Sock Shop is accessible via the master and any of the node urls on port `30001`.
 
@@ -356,13 +450,6 @@ terraform destroy
 ```
 
 **Note:** Since deleting the Sockshop application in Harness does not delete the deployed cluster resources themselves, you’ll need to manually remove the Kubernetes deployment.
-
-
-```
-kubectl delete deployment sockshop -n default
-kubectl delete service sockshop-ui -n default
-```
-
 
 ```mdx-code-block
 </TabItem>
@@ -798,7 +885,7 @@ Finally, it's time to execute your pipeline. Every exection of a CD pipeline lea
      - After a successful execution, you can check the deployment on your Kubernetes cluster using the following command:
              
          ```bash
-         kubectl get pods -n default
+         kubectl get pods -n sock-shop
          ```
 
      - Sock Shop is accessible via the master and any of the node urls on port `30001`.
