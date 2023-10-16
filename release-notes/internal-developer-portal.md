@@ -30,10 +30,10 @@ IDP has now graduated from Beta into **Public Preview**. During [Unscripted](htt
 - [EntityRelationWarning](https://backstage.io/docs/reference/plugin-catalog.entityrelationwarning) is now available to be used in Layout. You can add this in your layout so that a warning alert is displayed if the entity has relations to other entities, which don't exist in the catalog. See **example**. [IDP-993]
 
 ```yaml
-
-To be added
-
+contents:
+  - component: EntityRelationWarning
 ```
+
 - New Plugins support available in IDP
   - Grafana - Associate alerts and dashboards to components. Read more [here](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/grafana) [IDP-915]
   - SonarQube - Components to display code quality metrics from SonarCloud and SonarQube. Read more [here](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/sonarqube) [IDP-1249]
