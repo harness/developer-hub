@@ -6,7 +6,7 @@ sidebar_position: 6
 
 Harness enables you to add multiple existing configuration items to a existing change request in ServiceNow.
 
-To set up the pipeline, you use two Harness ServiceNow Create steps. The first step creates the change request and obtains a `sys_id`. The second step used the `sys_id` to get the task and add the config items.
+To set up the pipeline, you use two Harness ServiceNow Create steps. The first step creates the change request and obtains a `sys_id`. The second step uses the `sys_id` to get the task and add the config items.
 
 This topic walks you through the setup procedure.
 
