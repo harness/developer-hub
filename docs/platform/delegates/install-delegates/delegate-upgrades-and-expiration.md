@@ -23,7 +23,7 @@ To prevent the installation of the automatic upgrade feature, remove the `cronJo
 You can also change the time when the upgrade cron job runs by updating the `schedule`. 
 
 :::info note
-The allowed value for `upgrader` schedule is between one and 90 minutes. Harness recommends a default value of 60 minutes. For configuration details, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
+The allowed value for the `upgrader` schedule is between one and 90 minutes. Harness recommends a default value of 60 minutes. For configuration details, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
 :::
 
 <details>
@@ -160,7 +160,7 @@ To disable auto-upgrade on an installed delegate image, do the following:
 
 ### Configure the delegate upgrade schedule
 
-The allowed value for `upgrader` schedule is between one and 90 minutes. Harness recommends a default value of 60 minutes.
+The allowed value for the `upgrader` schedule is between one and 90 minutes. Harness recommends a default value of 60 minutes.
 
 To configure the delegate upgrade schedule, do the following:
 
