@@ -15,9 +15,42 @@ import TabItem from '@theme/TabItem';
 
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
 
-## Latest: Version 0.8.0
+## Latest: Version 0.9.0
+
+IDP has now graduated from Beta into **Public Preview**. During [Unscripted](https://www.unscriptedconf.io/) in September, we made a series of announcements. Here are some quick links for your recap.
+
+- [Launch Demo in Keynote](https://youtu.be/6OuK_sl3mLE?feature=shared&t=2065) by Jyoti Bansal and Eric Minick.
+- [Platform Engineering Demo](https://youtu.be/c04F98kS96U?feature=shared&t=534) by Alex Valentine.
+- [Announcement Blog Post](https://www.harness.io/blog/internal-developer-portal-public-preview) by Himanshu Mishra. 
 
 ### New features and enhancements
+
+- Scorecards are now launched for everyone. It contains several data sources and data points within the framework. There are default checks for you to use. You can create custom checks as well. [Read more](https://developer.harness.io/docs/internal-developer-portal/features/scorecard), Watch this [video tutorial](https://youtu.be/jvLDdWS3rFE?feature=shared) to know more.
+- Backstage is now upgraded to [v1.16](https://backstage.io/docs/releases/v1.16.0). 
+- [EntityRelationWarning](https://backstage.io/docs/reference/plugin-catalog.entityrelationwarning) is now available to be used in Layout. You can add this in your layout so that a warning alert is displayed if the entity has relations to other entities, which don't exist in the catalog. See **example**. [IDP-993]
+
+```yaml
+
+To be added
+
+```
+- New Plugins support available in IDP
+  - Grafana - Associate alerts and dashboards to components. Read more [here](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/grafana) [IDP-915]
+  - SonarQube - Components to display code quality metrics from SonarCloud and SonarQube. Read more [here](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/sonarqube) [IDP-1249]
+- Every plugin page now has a plugin docs available. [IDP-923]
+
+### Fixed Issues
+
+- Improved Error message when pipeline is configured wrong in IDP Software Templates. [IDP-1230]
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### September 25, 2023, Version 0.8.0
+
+##### New features and enhancements
 
 - IDP now includes the [GitHub Catalog Discovery](/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery) plugin. You can use this to automatically discover `catalog-info.yaml` files from your GitHub organizations and repositories. [IDP-887]
 
@@ -27,14 +60,9 @@ Review the notes below for details about recent changes to Harness Internal Deve
   
   You can use these UI pickers in service onboarding workflows for developers to easily select a Harness project and organization. Take a look at this [example](https://github.com/bhavya-sinha/scaffolder-sample-templates/blob/5f52718ec49cb2c27a87e2fbeae075873701911c/fieldExtension.yaml#L78-L85). [IDP-868]
 
-### Fixed issues
+##### Fixed issues
 
 This release does not include fixed issues.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### July 27, 2023, version 0.7.0
 
