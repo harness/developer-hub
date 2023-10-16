@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-09-28T10:00
+date: 2023-10-16T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -28,13 +28,68 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80811, Harness Delegate version 23.09.80804
+## Latest: Harness version 81008, Harness Delegate version 23.10.81010
 
-Harness NextGen release 80811 includes the following changes for the Harness Delegate.
+Harness NextGen release 81008 includes the following changes for the Harness Delegate.
+
+:::danger Breaking change
+
+Harness implemented access checks to restrict unauthorized users from viewing delegate information on the delegate list page. Access checks are now enforced on the page for delegate view permissions. (PL-38958, ZD-50634)
+
+:::
 
 ### New features and enhancements
 
-Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
+You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
+
+### Early access features
+
+This release does not include any new early access features.
+
+### Fixed issues
+
+- The Merge PR step fails with GitLab connectors. (CDS-79772)
+
+  This issue has been fixed.
+
+- Execution failure logs associated with an exception named `DuplicateKeyException` included the name of the Harness production server. (CDS-79514, ZD-50804)
+
+  This issue has been fixed.
+
+- Harness now supports the deployment of ECS services whose count is the same as the running instances in a blue-green strategy (CDS-79412)
+
+- If a pipeline that includes the Terragrunt Apply step fails, the Terragrunt working directory is not removed from the file system. Consequently, the delegate container's disk usage gradually increases. The issue occurs when the working directory includes symbolic links. (CDS-79020,	ZD-50532)
+
+  This issue has been fixed.
+
+- If a step in a WinRM deployment fails, Harness does not clean up temporary files created on the remote host. (CDS-78304, ZD-49543)
+
+  This issue has been fixed.
+
+- When a [code repo connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) encounters a cert error, the error message shown in the Harness UI is now more informative. (CI-8509)
+
+- Fixed an issue where some [code repo connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) didn't send the [build status](/docs/continuous-integration/use-ci/viewing-builds#source-code-repository-links) back to the SCM provider. This happened due to an issue in the Harness Delegate, and it occurred only for code repo connectors that [connected through a Harness Delegate](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#connectivity-mode-settings). Connectors connecting through the Harness Platform weren't impacted. (CI-9835, ZD-51754, ZD-51758, ZD-51763)
+
+- Fixed an issue where the latest delegate version was not reflected in the latest supported delegate version API. (PL-41151)
+
+   For more information on the latest supported delegate version API, go to [Use automatic upgrade with custom delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>Expand this section to view changes to previous releases</summary>
+
+#### Harness version 80811, Harness Delegate version 23.09.80804
+
+Harness NextGen release 80811 includes the following changes for the Harness Delegate.
+
+##### New features and enhancements
+
+- Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
 
    - `org.bouncycastle:bcpg-jdk15on:jar:1.70` to `org.bouncycastle:bcpg-jdk18on:jar:1.76`
    - `org.bouncycastle:bcpkix-jdk15on:jar:1.70` to `org.bouncycastle:bcpkix-jdk18on:jar:1.76`
@@ -47,11 +102,11 @@ Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-407
 
 - Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. (CDS-79414)
 
-### Early access features
+##### Early access features
 
 This release does not include any new early access features.
 
-### Fixed issues
+##### Fixed issues
 
 - The Kustomize 3.5.4 binary is now removed from the immutable delegate, and all Kustomize tasks are routed via the Kubectl binary. (CDS-58893, ZD-48553)
 
@@ -103,20 +158,15 @@ This release does not include any new early access features.
   
   This issue has been fixed.
 
-### Hotfixes
+##### Hotfixes
 
-#### Version 23.10.80808
+##### Version 23.10.80808
 
 - Updated the internal Jenkins library to support long IDs for Jenkins builds. Previously, supported IDs were limited to integer bounds. (CDS-79499, ZD-50718, ZD-50888)
 
 - Fixed an issue where Git statuses were not being sent for pull requests. (CES-1376)
 
 - Added support for referencing JSON secret keys with dots at the top level. Nested keys with dots are not supported. (PL-41715)
-
-## Previous releases
-
-<details>
-<summary>Expand this section to view changes to previous releases</summary>
 
 #### Harness version 80504, Harness Delegate version 23.09.80505
 
