@@ -31,7 +31,7 @@ There's direct option to change such things. Go to template listing page, click 
 
 #### How do I share data between steps in a CI stage?
 
-We could use shared paths to allow steps within a stage to share data with each other. You can specify custom paths for data sharing or cache purposes. For more details on this please refer to /docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages 
+We could use shared paths to allow steps within a stage to share data with each other. You can specify custom paths for data sharing or cache purposes. For more information, go to [Share data across steps and stages](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages).
 
 #### Is it possible to use different build infrastructures within a pipeline?
 
@@ -48,7 +48,8 @@ Below given one of the methods with which we could achieve this.
 - Read the file's content in a subsequent step which is configured to run always
 - Use the GitHub API to add a comment to the pull request, including details from the file.
 
-#### How can we calculate the instance of a service where number of pods change ?
+#### How can we calculate the instance of a service where number of pods change?
+
 We can calculate the service licenses and instances in following methods for CG and NG both.
 
 - List services deployed in the last 30 days. Service is considered in calculation even if it was part of any failed deployments
@@ -56,41 +57,35 @@ We can calculate the service licenses and instances in following methods for CG 
 - Based on service instances we calculate the number of consumed licenses
 - 1 service license is equal to 20 active service instances
 
-Please find an example [here]( /docs/continuous-delivery/get-started/service-licensing-for-cd/#example)
+Please find an example [here](/docs/continuous-delivery/get-started/service-licensing-for-cd/#example)
 
-#### What should we do on experiencing OOM on java heap for the delgate ?
+#### What should we do on experiencing OOM on java heap for the delegate?
 
-Try increasing the CPU request and limit both. Check CPU utilisation in-case.
+Try increasing the CPU request and limit both. Check CPU utilization in-case.
 
-#### Do we encrypt the image tag for the container during rollout deployment output ?
+#### Does Harness encrypt the image tag for the container during rollout deployment output?
 
-No we don't. Try checking SHA of the tag and find image ID from the output of the service step `<+artifact.tag>`
+No, we don't. Try checking SHA of the tag and find image ID from the output of the service step with the `<+artifact.tag>` expression.
 
-#### Does Harness "run container" overwrites the container entrypoint ?
+#### Does Harness "run container" overwrites the container entrypoint?
 
-Yes, it is an expected behaviour. The entrypoint in the base image should be overwritten as we have to run the commands specified in the run step.
+Yes, it is an expected behavior. The entrypoint in the base image should be overwritten as we have to run the commands specified in the run step.
 
-#### How can I list the internal images that CI uses ?
+#### How can I list the internal images that CI uses?
 
-https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#ci-images-list
-```
-curl -X  GET https://app.harness.io/registry/_catalog
-```
+For information about images that Harness CI uses to execute builds, including how to find a list of images, go to [Harness CI images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci).
 
-Yes, it is an expected behaviour. The entrypoint in the base image should be overwritten as we have to run the commands specified in the run step.
+#### Does Harness limit the length of a log line?
 
-#### Do we have a limit on the length of a log line ? 
-
-Yes, We have a limit of 70KB on the line length in the CI client which writes to log service. One can write
-to a file and upload in case they can't see the full line.
+Yes, Harness has a limit of 70KB on the line length in the CI client which writes to log service. If you need to extract long log lines, include a Run step in your pipeline that writes the logs to a file and uploads the file as an artifact. For more information, go to [Troubleshoot CI: Truncated execution logs](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#truncated-execution-logs).
 
 #### Is there a way to generate a dynamic file with some information in one stage of the pipeline and consume that file content in a different pipeline stage?
 
-You can refer to this in following [Documentation](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/)
+Yes. You can [share data across steps and stages](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages).
 
 #### When we pull artifact/images do we store them on delegate?
 
-CI step build runs on separate build pod which will be cleaned automatically after the execution and we don't store any images locally on the delegate as part of the execution. 
+CI step build runs on separate build pod which will be cleaned automatically after the execution and we don't store any images locally on the delegate as part of the execution.
 
 #### We have Kubernetes delegates with multiple instances and have noticed that during some executions, the same instance in each step and causes the pipeline to fail, as one delegate may have a file and the other instance does not. How can we ensure the same instance is used for each step?
 
@@ -98,23 +93,32 @@ The workaround here is to use single replica delegates for these types of tasks 
 
 #### Can we skip manually creating the kubeconfig when using the native EKS deployment method in AWS, since we provide connection details in the AWS connector?
 
-Yes, we do not need to create the kubeconfig file manually. We just need to have this binary installed on the delegate ```aws-iam-authenticator```. Please refer more on this in the following [Documentation](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks)
+Yes, we do not need to create the kubeconfig file manually. We just need to have this binary installed on the delegate `aws-iam-authenticator`. Please refer more on this in the following [Documentation](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks)
 
 #### Is it supported to run docker-compose from the docker in docker step?
+
+<!-- There is no such thing as a "docker in docker step" -->
+
 Yes, it's supported to run the docker-compose from the docker in docker step.
 
 #### The container that execute the Run command step, it must have docker and docker CLI installed right in order for this to work?
+
 Yes, user need to install docker and docker CLI in order to work.
 
 #### If the "Run test" steps fails the Post-Command script will run or not?
+
 No, the Post-Command script will only run if the "Run test" step pass.
 
 #### Is there a way to use the newer version of kaniko?
-Yes, The user can update the kaniko image as suggested in this [doc](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/).
+
+Yes, you can update the kaniko image as suggested in this [doc](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/).
 
 #### Using <+codebase.gitUser> results in "None" when using Python as Shell for a Run step
 
+<!-- This is not a solution. -->
+
 The problem here is that none of the 'codebase' variables are being populated when push triggers fires. The solution is to populate the 'codebase' variables to clone the codebase. 
+
 
 #### I'm getting Error: ErrImagePull.  What does it mean?
 
@@ -122,15 +126,17 @@ It could mean the image is not available at the repository it's being pulled fro
 
 #### I'm seeing `Failed to pull image "artifactory.yourDomainNameGoesHere.com/harness/ci-addon:1.16.22": rpc error: code = Unknown desc = Error response from daemon: unknown: Not Found`.  What does this mean?
 
+<!-- the referenced page has changed and these anchored links are no longer valid -->
+
 It means the harness internal image `ci-addon:1.16.22` is not present in your artifact repository and you are using the id harnessImage for the connector for your artifact respository in harness.  This id can be used for your images as well but is reserved for harness images.  You can proxy and pull the images to your own repository
 https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#ci-images-list or the harnessImage connector can be referenced to use https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials
 ```
 https://app.harness.io/registry
 ```
 
-#### Despite the freeze window I've set the CI Stage still went through.  What gives?
+#### Why did the CI stage still go through despite setting a freeze window?
 
-Freeze windows only apply to CD stages (https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#freeze-windows-only-apply-to-cd-stages)
+[Freeze windows only apply to CD stages.](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#freeze-windows-only-apply-to-cd-stages)
 
 #### Does Kaniko build use images cached locally on the node?
 
@@ -578,21 +584,21 @@ It is necessary to add the step with the name "Configure Sonarqube" and in the f
 Additional CLI Flags:
 -Dsonar.projectVersion=
 ```
+
 Security step UI settings reference | Harness Developer Hub - https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference/#project-version
 
-#### Push Images to ECR and not build
+#### Can I push images without building?
 
-Unfortunately, we don't have a plugin just to push the image. 
-However the below article is to create the build and push, it would have the URL of the pipeline so we can understand how it would fit and adjust according to your need to just push the image, for example, how this image is being generated, to understand which variables and inputs are needed to add to the step.
- 
-Run Docker-in-Docker in a Build stage | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/
+Harness CI provides several options to [upload artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts). The **Upload Artifact** steps don't include a "build" component.
 
-#### For npm ci builds- how to reuse cache for futher steps
+You can also [build without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push).
 
-In the Harness CIE, a plugin can be used for this functionality. 
-It is possible to use a cache save and restore using an s3 bucket, as per the article below:
- 
-It is possible to use cache save and restore using an s3 bucket, according to the article below:
-Save Cache to S3 step settings | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings/
- 
-Restore Cache from S3 step settings | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/ci-technical-reference/restore-cache-from-s-3-step-settings
+#### For NPM CI builds, how can I reuse a cache in future steps?
+
+In Harness CI, you can use the save and restore cache steps to [share data between steps and stages](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages).
+
+For example, you can [save and restore a cache from an Amazon S3 bucket.](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache)
+
+#### Can I use Harness CI for mobile app development?
+
+Yes. [Harness CI offers many options for mobile app development.](/docs/continuous-integration/use-ci/mobile-dev-with-ci)
