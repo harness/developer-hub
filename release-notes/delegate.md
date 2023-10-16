@@ -87,7 +87,7 @@ Harness NextGen release 80811 includes the following changes for the Harness Del
 
 ##### New features and enhancements
 
-Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
+- Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
 
    - `org.bouncycastle:bcpg-jdk15on:jar:1.70` to `org.bouncycastle:bcpg-jdk18on:jar:1.76`
    - `org.bouncycastle:bcpkix-jdk15on:jar:1.70` to `org.bouncycastle:bcpkix-jdk18on:jar:1.76`
@@ -97,6 +97,8 @@ Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-407
 <!-- Add to 809xx or future release when feature is complete
 - You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-41063)
 -->
+
+- Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. (CDS-79414)
 
 ##### Early access features
 
@@ -117,8 +119,6 @@ This release does not include any new early access features.
 - The output of the Kubernetes Dry Run step did not generate a valid Kubernetes manifest due to the masking of the secrets values (CDS-78507).
 
   Harness was masking all the secrets values using the character set `***` for both stringData and data fields in Secrets Resources. Since the data field supports only Base64 encoded values, this resulted in an invalid manifest. With this fix, Harness uses a valid value to mask these data fields (`Kioq`, the Base64 value of `***`).
-
-- Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. (CDS-79414)
 
 - Harness did not handle the `Unknown Host Exception` error appropriately and, consequently, showed the misleading "Delegates are not available for performing operation" message when you configured LDAP incorrectly (for example, you entered an incorrect host or port number). (PL-28077)
 
