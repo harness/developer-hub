@@ -558,3 +558,41 @@ First: Error conditions that trigger the failure strategy.
 
 Second: Actions to take when the specified error conditions occur.
 
+#### Where to store mvn project settings.xml in harness ci
+
+You can add this settings.xml as a secret file in Harness and then configure a shell script so that this file goes to the desired directory in the build.
+Override secrets in settings.xml at runtime | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build/
+
+and then to share it between stages, you can use sharedpath as I shared in the previous article.
+ 
+Share CI data across steps and stages | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages
+
+#### Control memory on "Run Tests" step using Harness Cloud
+
+In the Harness Cloud this resource editing possibility is not available. Hence there is no way to control the memory like we can do for other infrastructure.
+
+#### Where and how to add the sonar.projectVersion in our harness pipelines
+
+It is necessary to add the step with the name "Configure Sonarqube" and in the field "Additional CLI Flags" add the following item as described below:
+```
+Additional CLI Flags:
+-Dsonar.projectVersion=
+```
+Security step UI settings reference | Harness Developer Hub - https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference/#project-version
+
+#### Push Images to ECR and not build
+
+Unfortunately, we don't have a plugin just to push the image. 
+However the below article is to create the build and push, it would have the URL of the pipeline so we can understand how it would fit and adjust according to your need to just push the image, for example, how this image is being generated, to understand which variables and inputs are needed to add to the step.
+ 
+Run Docker-in-Docker in a Build stage | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/
+
+#### For npm ci builds- how to reuse cache for futher steps
+
+In the Harness CIE, a plugin can be used for this functionality. 
+It is possible to use a cache save and restore using an s3 bucket, as per the article below:
+ 
+It is possible to use cache save and restore using an s3 bucket, according to the article below:
+Save Cache to S3 step settings | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings/
+ 
+Restore Cache from S3 step settings | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/ci-technical-reference/restore-cache-from-s-3-step-settings
