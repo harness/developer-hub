@@ -205,6 +205,8 @@ To configure the delegate upgrade schedule, do the following:
                    name: kubernetes-delegate-upgrader-config
    ```
 
+   For more information on the schedule syntax, go to [Writing a CronJob spec](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#writing-a-cronjob-spec) in the Kubernetes documentation.
+   
 3. Save the file.
 4. Run `kubectl apply -f harness-delegate.yaml`.
 
