@@ -55,7 +55,7 @@ Verify that you have the following:
 <TabItem value="cli" label="CLI">
 ```
 
-1. Refer [Install and Configure Harness CLI](./install.md) doc to setup and configure Harness CLI.
+1. Refer [Install and Configure Harness CLI](https://developer.harness.io/docs/platform/automation/cli/install) doc to setup and configure Harness CLI.
 
 2. Clone the Forked **harnessed-example-apps** repo and change directory.
     ```bash
