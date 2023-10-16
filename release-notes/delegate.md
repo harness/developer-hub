@@ -33,7 +33,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 Harness NextGen release 810xx includes the following changes for the Harness Delegate.
 
 :::danger Breaking change
-Harness implemented access checks in Compliance Manager to restrict unauthorized users from viewing delegate information on the delegate list page. Access checks are now enforced on the page for delegate view permissions.(PL-38958, ZD-50634)
+Harness implemented access checks to restrict unauthorized users from viewing delegate information on the delegate list page. Access checks are now enforced on the page for delegate view permissions.(PL-38958, ZD-50634)
 :::
 
 ### New features and enhancements
