@@ -70,6 +70,15 @@ No we don't. Try checking SHA of the tag and find image ID from the output of th
 
 Yes, it is an expected behaviour. The entrypoint in the base image should be overwritten as we have to run the commands specified in the run step.
 
+#### How can I list the internal images that CI uses ?
+
+https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#ci-images-list
+```
+curl -X  GET https://app.harness.io/registry/_catalog
+```
+
+Yes, it is an expected behaviour. The entrypoint in the base image should be overwritten as we have to run the commands specified in the run step.
+
 #### Do we have a limit on the length of a log line ? 
 
 Yes, We have a limit of 70KB on the line length in the CI client which writes to log service. One can write
@@ -107,6 +116,22 @@ Yes, The user can update the kaniko image as suggested in this [doc](/docs/conti
 
 The problem here is that none of the 'codebase' variables are being populated when push triggers fires. The solution is to populate the 'codebase' variables to clone the codebase. 
 
+#### I'm getting Error: ErrImagePull.  What does it mean?
+
+It could mean the image is not available at the repository it's being pulled from or networking issues 
+
+#### I'm seeing `Failed to pull image "artifactory.yourDomainNameGoesHere.com/harness/ci-addon:1.16.22": rpc error: code = Unknown desc = Error response from daemon: unknown: Not Found`.  What does this mean?
+
+It means the harness internal image `ci-addon:1.16.22` is not present in your artifact repository and you are using the id harnessImage for the connector for your artifact respository in harness.  This id can be used for your images as well but is reserved for harness images.  You can proxy and pull the images to your own repository
+https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#ci-images-list or the harnessImage connector can be referenced to use https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials
+```
+https://app.harness.io/registry
+```
+
+#### Despite the freeze window I've set the CI Stage still went through.  What gives?
+
+Freeze windows only apply to CD stages (https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#freeze-windows-only-apply-to-cd-stages)
+
 #### Does Kaniko build use images cached locally on the node?
 
 By default Kaniko does not use the node cache. it performs a full container image build from scratch, so it will always pull the base image. If we want to use cache then specify `Remote Cache Repository` option in the build step. If not specified it will always be executed with caching disabled
@@ -126,7 +151,7 @@ This is not natively supported however we could have a pipeline listening on del
 #### How can we check build VM resource utilization for build running in Harness cloud?
 
 Currently this is not supported natively. We could use use a parallel step to check the resources utilised. More detailas about this can be found in the below doc
-/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures
+[https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures)
 
 #### Why can't we find the Notify Option in my Stage Template?
 
@@ -147,7 +172,7 @@ The step in Harness determines its status based on the exit status received from
 #### How can we configure the CI codebase step to clone the repo recursively? 
 
 Currently, the clone codebase step doesn't support the flag recursive However you could use the git credentials from Codebase Connector in Run Step and run the git command with the required flags. More details about this can be reffered in the below doc 
-https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/
+[https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/](https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/)
 
 #### Why the build status is not reflecting on the PR if the repository is in a github orginisation despite having full permission for the token used in the git connector?
 
@@ -155,8 +180,8 @@ This could be due to the fact that the user/account that is added to the organiz
 
 #### How can we send mail from the CI pipeline with an attachement?
 
-You could send mail from the CI pipeline by using the drone plugin https://plugins.drone.io/plugins/email. More details about how the drone plugin can be used in Harness CI pipeline can be reffered in the below doc
-/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/
+You could send mail from the CI pipeline by using the drone plugin [https://plugins.drone.io/plugins/email](https://plugins.drone.io/plugins/email). More details about how the drone plugin can be used in Harness CI pipeline can be reffered in the below doc
+[https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/)
 
 #### How can I retrieve the Maven project version from the pom.xml file and pass it to the subsequent Docker build step as the build argument?
 
@@ -177,13 +202,11 @@ Harness supports multiple types of operating systems and architecture. Including
 #### Cache Intelligence on Harness Cloud Infrastructure
 
 Harness only currently supports cache intelligence on the Harness Cloud infrastructure. 
-See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/]
+See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)
 
 #### Additional considerations when running concurrent builds
 
-While running concurrent builds, customers may want to consider the queued intelligence feature in Harness CI. This feature is behind a feature flag. 
-
-See [https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence/]
+While running concurrent builds, customers may want to consider the [Queue Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence) feature of Harness CI. This feature is behind a feature flag.
 
 #### How to assert an environment variable within JEXL conditions?
 
@@ -399,3 +422,177 @@ Yes, we have a option to manually set or customize cache keys if your project ha
 
 #### Is there any API available for the Cache Intelligence?
 Yes, you can check the cache info and delete through the API. You can refer to this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-intelligence-api) for the API.
+
+#### How many build credits are we allowed to use with Harness free version
+
+Free monthly credits for up to 2,000 build minutes.
+
+#### I want to develop a build built for MacOS, do I have to use homebrew as the installer?
+
+No, Harness also supports multiple versions of xcode. Please see our document on iOS and macOS applications for more details [https://developer.harness.io/tutorials/ci-pipelines/build/ios/]
+
+
+#### Which Drone plugins are supported in Harness CI?
+You can build your own plugins or use one of the many preexisting plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/), [GitHub Actions Marketplace](https://github.com/marketplace?type=actions), or the [Bitrise Integrations library](https://bitrise.io/integrations/steps).
+Yes, for details, go to [Use plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins).
+
+#### Using S3 to cache and restore between Steps?
+
+Yes, for details, go to [Save and Restore Cache from S3](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/).
+
+#### Using GCS to cache and restore between Steps?
+
+Yes, for details, go to [Save and Restore Cache from GCS](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs).
+
+#### How to use Background step settings?
+
+Use Background steps to manage dependent services that need to run for the entire lifetime of a Build stage. 
+For details, go to  [Background step settings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
+
+#### How to build and push artifacts and images?
+
+You can use Harness CI to upload artifacts, such as Docker images or test results.
+For details, go to [Build and push artifacts and images](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
+
+#### How to Use Harness Cloud build infrastructure?
+
+With Harness Cloud, you can run builds in isolation on Harness-hosted VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines
+For details, go to [Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+
+#### How to create and configure a codebase?
+
+CI pipelines build and test code that is pulled from a Git code repository. When you add a Build stage to a CI pipeline, you can select a code repo connector that connects to the Git account or repository where your code is stored.
+For details, go to [Create and configure a codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase).
+
+#### CI codebase variables reference
+
+In Harness CI, you set up a codebase by creating a Harness connector that connects to a Git repo.
+For details, go to [CI codebase variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
+
+#### How to Enable Test Intelligence?
+
+Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build
+For details, go to [Enable Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
+
+#### Does Harness CI support Multilayer caching?
+Yes, for details, go to [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching).
+
+#### Does Harness CI support script execution?
+
+Yes, for details, go to [Run scripts](https://developer.harness.io/docs/category/run-scripts).
+
+#### Why are my builds from over 30 days ago not appearing on the Project Overview page?
+
+Often overlooked, you can check the timescale for the overview page. By default, it is set to 30 days. 
+
+
+#### Builds dashboard is not showing a previous deployment, why? 
+
+Please check the timescale control on the dashboard. This is set to 30 days by default. You can adjust this scale to display older builds. 
+
+#### Why am I getting an error when trying to run a docker command on a Windows build server? 
+
+Please make sure that the build server has 'Windows Subsystem for Linux' installed. It is possible that the failure is due to the container not being able to start on the build system. 
+
+#### What is a build infrastructure and why is it needed for a CI Stage?
+
+All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose.
+
+#### Can Test Intelligence speed up my build times? 
+
+You can speed up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. Test Intelligence 
+
+
+#### What are some of the other benefits of Test intelligence?
+
+Test Intelligence also identifies negative trends and provides actionable insights to improve quality. 
+
+#### How can Harness input sets help automate a CI pipeline?
+
+Input sets are a collection of runtime inputs for a Pipeline execution. With input sets, you can use the same pipeline for multiple scenarios. You can define each scenario in an input set or overlay, and then select the appropriate scenario when you execute the pipeline. 
+
+
+#### How is a Codebase utilized?
+
+When adding a Build stage to a CI pipeline, specify the Git account and repository where your code is stored. 
+
+
+#### Which Codebase is utilized during a build deployment? 
+
+The codebase declared in the first stage of a pipeline becomes the pipeline's default codebase
+
+
+
+#### What is the build credit limit for Harness Free version?
+
+Upto 2,000 build minutes are possible with the Harness free version. 
+
+
+#### Can I use xcode on a MacOS build system as part of Harness Cloud?
+
+Yes, several different versions of xcode as well as homebrew are installed on the default MacOS image.
+
+
+#### Harness Platform Rate limits
+
+Please note that harness does limit accessive API and execution limitations. Harness does reserve the right to change these limits. 
+See site fore more details [https://developer.harness.io/docs/platform/rate-limits/]
+
+#### What are Harness Secrets and how are they tied to connectors? 
+
+Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
+
+#### How to view changes in a Harness Pipeline between deployments
+
+Harness allows users to compare changes to a pipeline YAML. This is often a useful tool to determine why a pipeline has changed behavior. 
+See the site for more details [https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/]
+
+#### What is Harness Rollback in the CI pipeline
+
+Harness Rollback deployments initiate a rollback of the most recent successful execution. Note that this feature is behind a feature flag '''POST_PROD_ROLLBACK'''. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS)
+
+
+#### What does a failure strategy consist of?
+
+First: Error conditions that trigger the failure strategy.
+
+Second: Actions to take when the specified error conditions occur.
+
+#### Where to store mvn project settings.xml in harness ci
+
+You can add this settings.xml as a secret file in Harness and then configure a shell script so that this file goes to the desired directory in the build.
+Override secrets in settings.xml at runtime | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build/
+
+and then to share it between stages, you can use sharedpath as I shared in the previous article.
+ 
+Share CI data across steps and stages | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages
+
+#### Control memory on "Run Tests" step using Harness Cloud
+
+In the Harness Cloud this resource editing possibility is not available. Hence there is no way to control the memory like we can do for other infrastructure.
+
+#### Where and how to add the sonar.projectVersion in our harness pipelines
+
+It is necessary to add the step with the name "Configure Sonarqube" and in the field "Additional CLI Flags" add the following item as described below:
+```
+Additional CLI Flags:
+-Dsonar.projectVersion=
+```
+Security step UI settings reference | Harness Developer Hub - https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference/#project-version
+
+#### Push Images to ECR and not build
+
+Unfortunately, we don't have a plugin just to push the image. 
+However the below article is to create the build and push, it would have the URL of the pipeline so we can understand how it would fit and adjust according to your need to just push the image, for example, how this image is being generated, to understand which variables and inputs are needed to add to the step.
+ 
+Run Docker-in-Docker in a Build stage | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/
+
+#### For npm ci builds- how to reuse cache for futher steps
+
+In the Harness CIE, a plugin can be used for this functionality. 
+It is possible to use a cache save and restore using an s3 bucket, as per the article below:
+ 
+It is possible to use cache save and restore using an s3 bucket, according to the article below:
+Save Cache to S3 step settings | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings/
+ 
+Restore Cache from S3 step settings | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/ci-technical-reference/restore-cache-from-s-3-step-settings

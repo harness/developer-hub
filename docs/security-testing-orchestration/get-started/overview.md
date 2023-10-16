@@ -127,4 +127,3 @@ For a list of supported scanners, see [Security Step Settings Reference](../sto-
 ### Next Steps
 
 * [Set up Harness for STO](onboarding-guide.md)
-

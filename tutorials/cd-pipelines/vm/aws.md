@@ -4,6 +4,14 @@ hide_table_of_contents: true
 title: AWS
 ---
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Delivery & GitOps Certification today!"
+  link="/certifications/continuous-delivery"
+  closable={true}
+  target="_self"
+/>
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -404,7 +412,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 </details>
 
-- Copy the contents of [pipeline-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/6-pipeline-canary.yml) and paste it into the YAML editor.
+- Copy the contents of [pipeline-canary.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/pipeline-canary.yml) and paste it into the YAML editor.
 - Select **Save**.
 - You can switch to the **Visual** editor and confirm the pipeline, stage, and execution steps are as shown below.
 

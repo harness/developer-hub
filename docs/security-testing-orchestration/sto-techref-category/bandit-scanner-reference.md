@@ -1,7 +1,8 @@
 ---
-title: Bandit Scanner Reference
+title: Bandit scanner reference for STO
 description: Repository scans with Bandit
-sidebar_position: 50
+sidebar_label: Bandit scanner reference
+sidebar_position: 60
 helpdocs_topic_id: n3dcx6wzb3
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -11,7 +12,7 @@ helpdocs_is_published: true
 You can scan your code repositories using [Bandit](https://github.com/PyCQA/bandit), an open-source tool designed to find common security issues in Python code. 
 
 
-## Before you begin
+## Important notes for running Bandit scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -31,15 +32,13 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Bandit step configuration
+## Bandit step settings for STO scans
 
 The recommended workflow is to add a Bandit step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Bandit scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 
 ### Scan Mode
@@ -179,15 +178,15 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
 
-## Security step configuration (_legacy_)
+## Security step settings for Bandit scans in STO (legacy)
 
 You can set up a Security step with [Bandit](https://bandit.readthedocs.io/en/latest/) to find common security issues in your Python code.
 

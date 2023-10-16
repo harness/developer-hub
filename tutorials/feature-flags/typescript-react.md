@@ -6,6 +6,15 @@ keywords: [JavaScript, React, Feature Flags, FF Tutorial]
 
 # Add Feature Flags to a JavaScript app
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Feature Flags Certification today!"
+  link="/certifications/feature-flags"
+  closable={true}
+  target="_self"
+/>
+
 ## Background on Feature Flags
 
 As software engineers, we innovate by diving into creating the unknown, sometimes for the first time. Core to innovative work is experimenting and prototyping, because incremental success builds greater success. As changes get closer to production, the experimentation that was appropriate in lower environments tapers off as the potential blast radius grows. That is, if we get the experiment wrong, there’s a greater impact on a larger number of users.

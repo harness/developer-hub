@@ -25,7 +25,7 @@ This section includes the following details:
 <details>
 <summary>Activity & Usage</summary>
 
-This section shows the number of current active developers against the total number of licenses.
+This section shows the number of current active developers against the total number of licenses, as well as your Harness Cloud build credit usage.
 
 An active developer is an active codebase committer observed in the builds managed by Harness CI over the last 30 days.
 
@@ -33,11 +33,11 @@ An active developer is an active codebase committer observed in the builds manag
 
 <docimage path={require('/docs/continuous-integration/get-started/static/ci_usage_plansummary_onetile.png')} />
 
-It also shows your remaining Harness Cloud build credits balance.
+The **Available Credits** tile shows your Harness Cloud build credit balance, expiration, and consumption. For details about Harness Build credit calculations, go to [Harness Cloud billing and build credits](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits)
 
 <!-- ![](/docs/continuous-integration/get-started/static/ci_usage_plansummary.png) -->
 
-<docimage path={require('/docs/continuous-integration/get-started/static/ci_usage_plansummary.png')} />
+<docimage path={require('/docs/continuous-integration/get-started/static/ci_usage_plansummary.png')} width="30%" height="30%" />
 
 </details>
 

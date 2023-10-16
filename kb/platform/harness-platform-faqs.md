@@ -602,6 +602,37 @@ If you are using minimal delegate images than this error can come and need to in
 #### Delegate is not coming up with no space left error
 While starting delegate we install some third party binaries(kubectl, helm etc) so those need some space so make sure delegate machne has some disk space left
 
+#### Is there a tool available for unit testing Harness rego policies before deployment?
+No, we don't provide a dedicated tool for testing Harness rego policies. However, you can use the general-purpose testing tool provided by Open Policy Agent (OPA) to test your policies. More details can be found in the Policy Testing with [OPA documentation](https://www.openpolicyagent.org/docs/latest/cli/#opa-eval).
+
+#### How can I assign the same delegate replica to all steps in my pipeline?
+While there isn't a dedicated configuration option for this purpose, you can output the environment variable $HOSTNAME in a Shell script and refer the delegate selector of the subsequent steps to that output.
+**Short example:**
+```
+# Step 1
+name: select_delegate
+identifier: select_delegate
+spec:
+  spec:
+    script: |
+      HOST_SELECTOR=$HOSTNAME
+  ...
+  outputVariables:
+    - name: HOST_SELECTOR
+      type: String
+      value: HOST_SELECTOR
+# Step 2
+name: use delegate
+identifier: use_delegate
+spec:
+  ...
+  delegateSelectors:
+    - <+execution.steps.select_delegate.output.outputVariables.HOST_SELECTOR>
+```
+
+#### Does the NextGen platform support the same cron syntax for triggers as the FirstGen platform?
+Yes, the NextGen platform supports both the QUARTZ and UNIX syntax formats for cron triggers. You can find further details in our documentation here: [Schedule Pipelines Using Cron Triggers](https://developer.harness.io/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
+
 #### Can I get user group and user lists in CSV or Excel?
 No, we don't support that feature currently.
 
@@ -609,6 +640,108 @@ No, we don't support that feature currently.
 * `XX.XX.XXXXX.minimal`: This tag represents the minimal image format, which is recommended for production usage. It stands out due to its absence of high or critical vulnerabilities, making it a secure choice. Furthermore, this image format is lighter than the default option because it doesn't have the default binaries installed.
 * `23.XX.8XXXX`: This format corresponds to the standard delegate image. It includes all the default binaries and is a suitable choice for users who are relatively new to Harness and do not have stringent security requirements. This image provides a comprehensive set of tools and functionalities for general usage.
 * `1.0.8XXX`X`: This format denotes an older version of the delegate, often referred to as the legacy delegate. New Harness accounts no longer include this delegate version, and users are strongly encouraged to migrate to the standard delegate for better compatibility, performance, and security.
+
+
+#### Do we not have OOTB roles at the project level?
+
+Yes, we do have a Project Admin role built in and also no ability to delete built in roles. Org and Project specific built-in roles are available only after the corresponding entity is created and they are only available in the respective scope.
+
+#### What is the reason of delegates to be blacklist?
+
+The logic of blacklist of delegates is that every delegate task has one or more that one validation/capability check, when the task comes, we see if we ever has done validation for the capability. This is cached for 6 hours so if we have validated connectivity it will be valid for 6 hours, if this is the first time or 6 hours are passed, then will execute the validation logic, if the validation fails, the delegate is blacklisted for the criteria for 5 mins and if within five minutes a task with same critieria comes then delegate will be blacklisted for it.
+So check what validation crieterias were added in the task and what validation is failing.
+
+#### What are the  K8s version requirements for Delegate installations?
+
+We try to support all the active K8S releases (that’s last 3 releases according to our versioning policy), i.e. we support anything that’s not EOL.
+
+#### Can we increase the daily deployment limit to 10000 for a customer?
+
+Yes, we are capable of increasing the daily deployment limit > 10000 per day.
+
+#### How the delegates share information like a Helm Chart and its contents on the same stage?
+
+It is divided in two steps first is to download the values.yaml files on any of the delegate (it could be just a 1 or more delegates depending upon how many values.yaml have been configured) and then pass them to the next step. Then delegate downloads the Helm chart and then use the values.yaml files that were passed by the previous step.
+So,  Delegate 1 executed the Fetch Files will pass the values/manifests to Delegate 2 that will execute the Helm Install/Apply.
+
+#### How do the delegates communicate with each other when they are sharing information?
+
+The delegates don't communicate with each other. They go through the manager(Harness) to retrieve the result of the tasks performed by another delegate.
+
+#### Do the customer files are stored in the manager during the execution while the Delegate 1 is communicating directly with Delegate 2?
+
+We don't store the customer's manifest files in the Harness Manager. Only values.yaml files are passed through the Manager(Harness).
+
+#### Do the secrets in values.yaml files are rendered on the manager(Harness)?
+
+No, these secrets are never rendered on the manager(Harness). They only get rendered in the delegate.
+
+#### Is it possible to define per User Groups who can/can’t open support tickets?
+
+Currently anyone in the account would be able to open a ticket, and access is not restricted.
+
+#### How can I see who's logged into my account?
+
+You can use the audit trail (https://developer.harness.io/docs/platform/governance/audit-trail/)
+
+#### Do we have any docs for install and upgrade the SMP cluster?
+
+Yes, we have the docs, you can refer to this [Documentation](https://harness.atlassian.net/wiki/spaces/~63f950e3e76fc61320f65127/pages/21474541915/Internal+-+Install+and+upgrade+SMP?atlOrigin=eyJpIjoiOWJlMDhlNDJhZjM2NGUyN2E2MGU2ZDRkODQwZjUxZmQiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ).
+#### How to retrieve the correct author's email on a GitHub Pull Request Event?
+When you push commits from the command line, the email address that you have configured in [Git](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address) is associated with your commits. However, for web-based operations, GitHub provides an option to maintain privacy regarding your email address. To ensure that you can fetch the correct user email through the expression `<codebase.gitUserEmail>`, you will need to disable the ["Keep my email addresses private"](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/blocking-command-line-pushes-that-expose-your-personal-email-address) option in your GitHub settings.
+
+#### Why is my commitSha resolving as null on manual runs?
+The expression `<+trigger.commitSha>` is available when the event comes from a Git operation. Instead, use the expression `<+codebase.commitSha>` for parsing manual triggers.
+
+#### How can I specify my pipeline to select a delegate based on a tag?
+In the advanced tab of your pipeline, you can add specific tags in the [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#delegate-tags) field.
+
+#### How can I prevent lockouts when using SSO for login?
+To prevent lockouts or in case of OAuth downtime, a user in the Harness Administrators Group can utilize the [Local Login](https://developer.harness.io/docs/platform/authentication/single-sign-on-sso-with-oauth/#harness-local-login) URL [http://app.harness.io/auth/#/local-login] to log in and update the OAuth settings.
+For the Harness production cluster *prod-3*, the local login URL is [https://app3.harness.io/auth/#/local-login].
+
+#### How can I autoscale a delegate using HPA?
+By default, Helm delegates have autoscaling disabled, which you can enable by setting the value autoscaling.enabled=false. For Kubernetes delegates, you need to write an HPA manifest to scale the delegate's replicas.
+
+#### When defining a secret with a dollar sign, the shell prints the secret partially
+Harness doesn't allow the `$` symbol in your secret value. If your secret value includes this symbol, you must use single quotes when you use the expression in a script.
+
+#### How can I access comprehensive information on Harness Security, including disaster recovery procedures, infrastructure details, and policies?
+For in-depth insights into Harness' security practices, including disaster recovery procedures, infrastructure aspects, and policies, we recommend visiting our [Trust Center](https://trust.harness.io/). This centralized resource is designed to provide you with all the necessary information regarding the security measures we have in place to safeguard your data and operations.
+
+#### How do we provision users with pre-defined or custom roles?
+With Harness, users and groups can be created automatically via SCIM. Permissions in Harness are granted via roles. You can use built-in roles or create your own at every Harness level (Account, Organization, and Project). You can assign roles to groups, and assigning roles to groups gives all the users in the group the permissions spelled out in the role. You can read all about it here: [Role-Based Access Control (RBAC) in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/).
+
+#### My delegate shows that it will expire in 2 months. Will my delegate be shut down after?
+Harness follows an N-3 support policy for delegates, which means we support the current version and the three preceding versions. With a new version released approximately every two weeks, each update brings enhanced features and general fixes. For instance, if you have version `23.03.XXXXX` installed, all images from `23.01.XXXXX` to `23.03.XXXXX` are supported. Delegate expiration doesn't imply that the delegate ceases to function. However, it may lead to potential issues if the backend advances significantly, causing the delegate to lose backward compatibility. To avoid this, we recommend upgrading the delegate at least once per quarter if you don't have [automatic upgrades](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#how-automatic-upgrade-works-in-the-kubernetes-manifest) enabled.
+
+#### How do I create a custom URL for my Harness account?
+If you want a vanity URL, you can reach out through our support and request to create a custom subdomain, for instance: `mycompany.harness.io`.
+
+#### How do I identify files changed in a git push event?
+We don't support this feature natively, but you can write a similar script to the following:
+```
+# Get commits from the payload
+commits='<+trigger.payload.commits>'
+
+# Extract the values of added, removed, and modified attributes using string manipulation
+added=$(echo "$commits" | sed -n 's/.*"added":\s*\(\[[^]]*\]\).*/\1/p')
+removed=$(echo "$commits" | sed -n 's/.*"removed":\s*\(\[[^]]*\]\).*/\1/p')
+modified=$(echo "$commits" | sed -n 's/.*"modified":\s*\(\[[^]]*\]\).*/\1/p')
+
+# Remove the square brackets and quotes from the extracted values
+added=$(echo "$added" | tr -d '[],"')
+removed=$(echo "$removed" | tr -d '[],"')
+modified=$(echo "$modified" | tr -d '[],"')
+
+# Concatenate the values into an array
+array=($added $removed $modified)
+
+# Print the concatenated array
+for element in "${array[@]}"; do
+    echo "$element"
+done
+``
 
 #### What rate limiting policy does Harness employ for API requests?
 
@@ -649,7 +782,339 @@ This issue can occur if a User Group was provisioned via SCIM (System for Cross-
 #### What is the recommended resolution for this issue?
 
 To resolve this issue, you need to de-provision the affected User Group from Harness and then provision the same User Group again. This will create a new Harness Identifier for the group, ensuring that any naming restrictions are applied correctly, and it should no longer contain hyphens or other disallowed characters.
-
  
 #### Why Harness delegate instance status is showing Expiring in 2 months but the latest version is valid for 3 months?
+
 For the immutable delegate instance status we will show Expiring in 2 months only, it's the expected behaviour.
+
+
+#### Why am I not seeing my deployments in the Overview page of the project? 
+
+Please check the timeframe for the page. By default the timeframe is set to 30 days. You can adjust this to a different time frame. 
+
+#### Harness dashboard is not showing a previous deployment, why? 
+
+Please check the timeframe for the dashboard page. By default Harness sets this value at 30 days. It is possible that the deployment was executed before this timeframe. 
+
+#### When we recommend setting `POLL_FOR_TASKS` to true in a non production environment?
+
+For customers who do not want to take the web socket path due to any infrastructure challenges, we recommend enabling POLL_FOR_TASKS.
+For customers with polling enabled, delegate checks with the harness for any task to execute based on the interval set, versus web socket communication being immediate.
+
+#### Is polling mode works only for legacy delegates, not for immutable delegates?
+
+Currently Polling only support for legacy delegates, not for immutable by default. Polling mode works for immutable delegate too, if you add `POLL_FOR_TASK` as true in yaml.
+
+#### what does it mean by `Delegate Identifier=DETECTING`?
+
+`Delegate Identifier=DETECTING` is auto upgrade which can be on or off, for more details you can refer here [Documentation](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#determine-if-automatic-upgrade-is-enabled).
+
+#### What is cron job in k8s manifest and why it is needed?
+
+The Kubernetes manifest has a component called upgrader. The upgrader is a cron job that runs every hour. Every time it runs, it makes a call to Harness Manager to determine which delegate version is published for the account. The cronjob is required for Auto upgrade flow.
+
+#### How can we disable cron job?
+
+If you need auto upgrade to be disabled they can perform operations: First run the following command to suspend auto-upgrade on the installed image: `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>` Secondly in the delegate manifest, locate the CronJob resource. In the resource spec, set the suspend field to true: `spec: --suspend: true` .
+
+#### When do we have Services and Environments available at Org and Account Level in SMP?
+
+This `CDS_OrgAccountLevelServiceEnvEnvGroup` FF is required to have Services and Environments available at Org and Account Level.
+
+#### Why we do not see Dashboards in an SMP Installation?
+
+Dashboard is a licensed functionality. To enable it you need to get a license.
+
+#### How are Harness secrets tied to connectors. 
+
+Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
+
+
+#### How to avoid pulling Harness delegate images from a public repo?
+
+You can add special Harness Container Image Registry connector to your Harness account. With this connector, the Delegate pulls these images from the Harness Container Image Registry only. 
+
+See link for more details (https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
+
+
+#### Does Harness Support Google cloud functions 1st Gen and 2nd Gen?
+Yes, Harness supports both 1st gen and 2nd gen. 
+
+See: (https://developer.harness.io/docs/faqs/continuous-delivery-faqs/#google-cloud-functions)
+
+#### How can I use Harness CD with Google Cloud Functions?
+Harness CD pipelines help you to orchestrate and automate your Google Cloud Function deployments and push updated functions to Google Cloud.
+
+See: (https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func/)
+
+#### I'm getting the error Unsupported block type with the Run on Remote Workspace (https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/#run-on-remote-workspace)
+
+It might be due to the configuration.  Try this instead for the terraform config file:
+```
+terraform {
+  backend "remote" {
+    hostname     = "http://app.terraform.io "
+    organization = "your-organization"
+    workspaces {
+      name = "your-workspace"
+    }
+  }
+}
+```
+
+#### What are delegate rings?
+
+Harness uses the ring methodology commonly used in software release management for delegate releases.  There are 4 rings and to mimimize impact should issues occur on new delegate releases each Harness account is designated a specific ring which correlates to the latest delegate version for that account.
+
+#### I have automatic upgrade on in my delegate.  Why is my delegate version behind what's listed as the latest version in dockerhub (https://hub.docker.com/r/harness/delegate/tags)?
+
+Harness uses the ring methodology commonly used in software release management for delegate releases.  The version for your account could be overriden to use the latest in Dockerhub using the API: https://apidocs.harness.io/tag/Delegate-Setup-Resource#operation/overrideDelegateImageTag
+
+#### The reset password link keeps sending me back to the login page. What gives?
+
+In the account password authentication might be disabled with another auth enabled such as Active Directory.  Reach out to your Active Directory Administrator in that case to reset
+
+#### How can I restore deleted projects and pipelines ?
+
+Unfortunately, we don't soft delete entities and hard delete them.  Therefore there is no easy way to restore.  Some entities can be restored using YAML from the audit trail.
+
+#### We don't have certain projects but the harness terraform modules continue to read them in. We want to remove these unwanted data if exist in harness. Please assist on it ?
+
+Potentially they could still be in the state file if changes were made outside of the it.  Inspect your state file
+
+#### I am getting an error as follows `Error Summary Invalid request: At least 1 valid user group is required in [Approval]`. What is that I am doing wrong here?
+
+The variable being passed for the Approvers > User Groups is potentially invalid or at the wrong scope
+
+#### Can I use the delegate image from my immutable delegate and replace it in the YAML for the statefulset from the legacy delegate ?
+
+This is not supported.  The immutable delegate image should be run with delegate yaml generated from the UI which will generate a deployment if immutable delegate is enabled for the account https://apidocs.harness.io/tag/Accounts#operation/isImmutableDelegateEnabled
+
+Here is an example manifest file for NextGen:
+https://developer.harness.io/docs/platform/delegates/install-delegates/overview/#example-manifest-file
+
+#### When creating a connector via the API (https://apidocs.harness.io/tag/Connectors#operation/createConnector)
+We receive the following error
+`requests.exceptions.HTTPError: 400 Client Error: Bad Request for url https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=<ACCOUNT_IDENTIFIER>?`
+
+This could be due to using invalid characters in the name such as `()`
+
+#### Is TLS 1.3 supported ?
+
+Both the Harness Delegate & SaaS support TLS 1.3 and in fact this is the default TLS version.  Technically however each specific task implementation can create it’s own separate HTTP client that advertises whatever TLS version they choose and the connector check is using task specific HTTP client and not delegate's HTTP client. There are some tasks that are preferring TLSv1.2 in some use cases (possibly due to legacy reasons). Note that this may change in the future and full TLS 1.3 support can eventually be rolled out but as of yet there are some specific connectors that prefer TLS 1.2.
+
+#### Is there a tool to migrate from FirstGen to NextGen ?
+
+Yes.  You can use https://harness.github.io/migrator/
+
+#### Is there a timeline of when I need to upgrade to NextGen by from FirstGen?
+
+Yes.  It's outlined here in the documentation https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/#timeline
+
+#### Where can I find the source code to the Harness Delegate ?
+
+Here is the link to the source code for the delegate:
+https://github.com/harness/harness-core/tree/develop/260-delegate
+
+#### Where can I find the source of the helm chart for the delegate ? 
+
+Here is the source of the helm chart for the delegate:
+https://app.harness.io/storage/harness-download/delegate-helm-chart/
+
+#### Where can I find the release notes for the delegate ?
+
+These would be the release notes for the delegate:
+https://developer.harness.io/release-notes/delegate
+
+#### Why is automatic upgrade turned off for my delegate ?
+
+It could be it was disabled through `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>` or the cronjob was deleted or the cronjob never existed (the kubernetes audit logs can help you find out about that last part)
+
+#### Do we have documentation for correct list of harness that can whitelist for Google GCP?
+
+Yes, we do have, you can refer here [Documentation](https://developer.harness.io/docs/continuous-delivery/gitops/gitops-ref/gitops-allowlist/).
+
+#### Do we have a feature to route info/error diagnostics through harness network?
+
+Currently this feature is not live yet, Delegate sends info/error diagnostic logs directly to harness Stackdriver in google cloud. This traffic doesn’t go through harness network, but difrectly to google cloud network. There is an option to disable this if customer doesn’t want to send diagnostic logs at all. 
+
+#### Do we have a documentation for add and reference text secrets?
+
+Yes, we do have, you can refer here [Documentation](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier).
+
+#### What is the expression we can use if we want to use secret in script?
+
+If you want to use a secret in script then you’ll have to use expression: `<+secrets.getValue("account.mySecret")>`.
+
+#### The harness delegate config-watcher is causing heavy usage of disk space and causing alerts in prod nodes, how can we increase the watcher memory settings?
+
+they can overwrite the watcher memory setting via `WATCHER_JAVA_OPTS`,  if you want to increase the memory for watcher they can add the following in the delegate yaml env section `- name: WATCHER_JAVA_OPTS value: "-Xmx512M"`
+
+#### Can scope creation happen during delegate install?
+
+scope of delegate is decided by the scope of delegate token. You can refer the documentation here[Documentation](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-scope).
+
+#### Is it possible to increase the client side timeout when getting pods in K8s delegate?
+
+Yes, you can increase the step timeout.
+
+#### How can we enable the FF `DELEGATE_TASK_CAPACITY`?
+
+You can refer the documentation here [Documentation](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-task-capacity).
+
+#### Do we need to provide both `sso_group_id` and `sso_group_name` and should they match?
+
+Yes we need to provide both, The value provided for both `sso_group_id` and `sso_group_name`  should be same.
+
+#### OKTA login goes to gen1 interface
+Need to change Default Experience to Harness Next generation under Account Overview
+
+#### How to scale delegate replicas
+You can update autoscaling parameters in values yaml
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+
+#### Approval notification is not getting triggered inspire of correct user group is selected
+Please check and verify if the user group selected has any channel(email/slack etc) is configured under Notification Preferences
+
+#### Do we need to enable authorization for sso needs to work while setting up saml.
+Authorization is used for group mapping and its optional and not required for sso login to work
+
+#### How to use custom helm3 version in CG legacy delegate
+You can install the latest version and need to set the env variable till the binary path HELM3_PATH=/opt/harness-delegate/client-tools/helm
+
+#### For the delegates hosted on Azure VM, which authentication method should we use when setting up a vault connector?
+
+For Hashicorp Vault there are the 5 types of Auth supported. Except AWS Auth and Token(not advised as needs periodic renewal) any of other 3 depending on your setup and preference should work. For more details you can refer [here](https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault#step-2-overview).
+
+#### How can we export all current gen information: deployments, services, env, etc, which has been deployed?
+
+You can refer to these [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/export-deployment-logs/) and for audit trail API [this](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-audit-trails-api/).
+
+
+#### Are trial accounts able to use the GitHub connector to attach their GitHub account?
+
+Trial accounts should be able to use the same functionality as paid ones during the trial time period.
+
+
+#### At what port are the delegate prometheus metrics exposed?
+
+The delegate prometheus metrics are exposed on the port 3460 in the running delegate container
+
+#### How do I check for the listen ports on the delegate if netstat is not installed?
+
+You can run the command `lsof -nP -iTCP -sTCP:LISTEN` or install netstat or bake it into the delegate image
+
+#### What prometheus metrics are exposed on the delegate?
+
+The list of prometheus metrics exposed on the harness delegate are listed in the documentation at the following page https://developer.harness.io/docs/platform/delegates/manage-delegates/delegate-metrics/
+
+#### The Harness delegate went down and I did not get any notification via prometheus that it was in a disconnected state.  What gives?
+
+When the Harness delegate pod goes down so does it's exposed metrics endpoint as well.  The metrics here can help notify you if connectivity is lost between the Harness manager and the delegate pod itself (but obviously still present to your prometheus server to notify you as well)
+
+#### What API can be used to check for delegate connectivity status?
+
+The following API can be used to check for delegate connectivity status https://apidocs.harness.io/tag/Delegate-Setup-Resource#operation/listDelegates
+
+#### For legacy delegates that are not starting up and creating a .hprof file in the container what should I do?
+
+For the statefulset updating the environment variable "WATCHER_JAVA_OPTS" with "-Xmx512m" may help
+
+#### Deploy stage requires a service defined. Can I set up a pipeline without a service defined at a stage? 
+
+Yes, you can use the custom stage. This is a selection you can make initially while defining a Pipeline stage. 
+
+#### What if I just want to execute a simple shell or bash script step, how can I do this?
+
+With a custom stage, you do not need to define a service. This would be an ideal method of executing a shell or bash script step. 
+
+#### The user is unable to log in, they're getting unable to log in with SSO when we have SSO enabled on the account.
+
+This is a very common scenario when users get this issue. The reason behind this is mostly that the User has signed up for a personal account or part of a different account that doesn't have the SSO enabled which is set as his default account. Hence User can log in using a username and password. If he has forgotten his password, he can always use the forgot password and then try to log in. 
+
+#### Not viewing the Allowlist option under the account
+
+The feature for allowlist is behind a Feature Flag PL_IP_ALLOWLIST_NG, kindly raise a ticket to get this enabled. 
+You can refer to this [documentation](https://developer.harness.io/docs/platform/security/add-manage-ip-allowlist/)
+
+#### Not able to setup/reset MFA
+
+When the 2FA is set as force enabled on the account level by an admin of the account. The users will have to setup the 2FA for their profile. 
+It can enabled by scanning the QR code sent in the email or using the secret key also sent in the same email using any authenticator app. 
+
+#### Issue decrypting secret from Harness Secret Manager
+
+When you are getting some errors for decryption of the secret in your pipeline. Always try to test the same secret using a shell script and try to print it.
+The secret will always be printed in encrypted ******* so you don't have to worry about the value been shown but it will make sure to isolate the issue further if the secret itself is having the issue or the way it is been referenced. 
+
+#### Issue while accessing other accounts when a user is part of multiple accounts.
+
+Sometimes, this might happen due to some edge case where a user is somehow unable to access his other account when he is part of multiple accounts as the login mechanism works for the default account. The user can still try to get to his account (not the default one) by using the deep link. The deep link is nothing  y the full URL of the account he wants to access : 
+https://app.harness.io/ng/account/**accountidhere**/main-dashboard
+
+#### How to disable a pipeline
+
+You can use the Deployment Freeze option :
+ 
+[documentation](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/)
+
+#### Slack Notifications are not working
+
+In case your Slack notifications are not working, you can start by troubleshooting and validating the webhook for Slack and then check how the notifications are configured at the pipeline level or user group level. 
+When executing the pipeline don't check the box for notifying only me. 
+
+#### Harness NG project admin permission after creating a project
+
+When you create a project using the API, by default the Project inherits the project admin permissions on creation from the Service Account where the API token was generated. 
+
+#### Harness API Token validity
+
+In Harness under Service Account when you create the token, the validity of the token depends on how the token was created. If you have specified the expiry date. In case you want the token to never expire you can set the expiration to No Expiration option. 
+
+#### Providing Access to Specific Pipelines in Harness
+
+You can make use of the RBAC [documentation](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)
+You can create a resource group and pick specific pipelines to have specific RBAC access to. 
+
+#### Not able to remove a pipeline
+
+In case of force deletion of Harness Resources : 
+Account resources --> Default Settings and then under General enable the "Enable Force Delete of Harness Resources
+and then try to delete the pipeline from Harness UI. This option is force deleted for entities. 
+
+#### VAULT operation error: Decryption failed after 3 retries for secret
+
+Someone times you see this error on the execution of the pipelines. We might have these errors due to the network the delegate is either down or has issues connecting to the Vault where the secret is created. The first thing is can do is validate the delegates are up and running go the connectors used in the pipelines and do a connectivity test. In case that fails then login to the delegate and try to reach the connector URL from the delegate.  
+
+#### Can old email be changed in user account
+
+If the Users are provisioned via SCIM then you can just update the email in the SSO provider end and they will get updated in Harness. 
+If the users were added manually you will need to remove them and add the new emails. 
+
+#### Problems enabling mTLS - Error [IOException: Unexpected response code for CONNECT: 403]
+
+When mTLS has been enabled for your delegates, you might see the 403 errors, this could be due to the proxy not resolving harness domain app.harness.io from the delegate. 
+
+#### I'm trying to confirm is that if I create a role at an account level with Administrator privileges. Then apply this to a particular resource group that only has scope for a specific Harness Organisation, won't this just provide admin access to this organization?
+
+The advised way to achieve your use case is to create user with minimal access at account level then add the same user at required organisation level with the admin access so that you can control user RBAC at org level scope.
+
+#### Changes identity provider to OKTA from some other provider
+
+This is the document which talks about OKTA SAML setup with Harness : [documentation](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/), 
+When you will be setting up a new OKTA SAML and then migrating your users to it,  You will need to setup the same with Harness as mentioned in the above document , as Harness needs the metadata XML file from OKTA with the configuration. 
+ 
+The permissions for Harness are managed by the User Groups present in Harness. In case of authorization, the user groups from SAML app are linked to Harness Local User groups. 
+
+#### Is there an easy way to see the de-factor roles/permissions assigned to a user
+
+You can view all permissions for a user by going to Access Control --> Search for the User click on it. Click on Role Bindings and you can see permissions for the user with the scope, All, Account, Organisation and Organisations with Projects in one place. 
+If you need to see the permissions inside of a role say Account Viewer or any custom-created role and same with Resource Group then you will always need to individually click on that specific role/ resource group as it's not shown on the user permission page. 
+ 
+We only show the Account/Project/Organisation level permissions with the role-resource group with where it is assigned at and assigned through in case of a User group or directly. 
+
+But you can view all of them together by selecting the scope to All instead of Individual. 

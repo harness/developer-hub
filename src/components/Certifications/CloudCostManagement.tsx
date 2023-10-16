@@ -5,6 +5,8 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
 import { getCertLevel } from "./LandingPage";
+import DeveloperCertificationReviewGuide from "./data/ccm-certification-developer-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/ccm-certification-developer-exam-details.md";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -49,7 +51,7 @@ export default function CloudCostManagement() {
   }, [searchKey]);
 
   return (
-    <div className={styles.certificationsCI}>
+    <div className={styles.certificationsCCM}>
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
@@ -60,8 +62,10 @@ export default function CloudCostManagement() {
           </div>
           <h1>Cloud Cost Management</h1>
           <div>
-          Save time, reduce effort, and save on your cloud bill with intelligent cloud cost automation.
-          Detect and stop cloud cost anomalies as they occur, to avoid unpleasant billing surprises with a FinOps approach.
+            Save time, reduce effort, and save on your cloud bill with
+            intelligent cloud cost automation. Detect and stop cloud cost
+            anomalies as they occur, to avoid unpleasant billing surprises with
+            a FinOps approach.
           </div>
         </div>
         <div className={styles.right}>
@@ -119,20 +123,44 @@ export default function CloudCostManagement() {
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness CCM Free/Team Plans
+                    <strong>Product version: </strong> Harness CCM Free/Team
+                    Plans
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Coming Soon...</h3>
+                <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assess key technical job functions and advanced skills in
-                    design, implementation and management of CCM.
+                    Assesses the fundamental skills to to detect and stop cloud cost anomalies as they occur.
+                  </div>
+                  <DeveloperCertificationReviewGuide />
+                  <div className={styles.btnContainer}>
+                    <Link href="#3">
+                      <button className={styles.moreDetails}>
+                        Register for Exam
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+            {/* Developer Exam Details */}
+            <div className={styles.examDetails}>
+            <h2 id="exam-details">Exam Details</h2>
+            <div className={styles.examDetailsCard}>
+              <DeveloperCertificationExamDetails />
+              <div className={styles.btnContainer}>
+                <Link href="#">
+                  <button className={styles.moreDetails}>
+                    Register for Exam
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
+
         {/* Administrator Tab Content */}
         <div
           className={clsx(

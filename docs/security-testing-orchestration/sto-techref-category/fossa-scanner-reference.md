@@ -1,13 +1,14 @@
 ---
-title: Fossa scanner reference
+title: Fossa scanner reference for STO
 description: Image and repository scans with Fossa
-sidebar_position: 150
+sidebar_label: Fossa scanner reference
+sidebar_position: 190
 ---
 
 You can scan container images and repositories using [Fossa](https://www.fossa.com), a scanner that detects security vulnerabilities and other issues in open-source projects. 
 
 
-## Before you begin
+## Important notes for running Fossa scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -25,15 +26,13 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Fossa step configuration
+## Fossa step settings for STO scans
 
 The recommended workflow is add a Fossa step to a Security Tests or CI Build stage and then configure it as described below. 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <!--details>
     <summary>Scanner Template</summary>
@@ -155,9 +154,9 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## YAML pipeline example

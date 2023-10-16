@@ -1,5 +1,5 @@
 ---
-title: Set up target baselines
+title: Set up target baselines in STO
 description: It is good practice to specify a baseline for every target. You can specify static baselines, using plain text, or dynamic baselines using regular expressions. 
 sidebar_position: 10
 ---
@@ -16,7 +16,7 @@ To view all targets in your account, and specify baselines for your targets, go 
 
 </figure>
 
-## Specify a default baseline using regular expressions
+## Specify STO target baselines using regular expressions
 
 <!-- 
 
@@ -68,7 +68,7 @@ Defining your baselines using regular expressions provides significant benefits 
 
 </details>
 
-### Important notes
+### Important notes for setting up target baselines in STO
 
 * You must use a consistent naming scheme for your scanned targets. This is necessary to ensure that your regular expression captures your baselines consistently and predictably. 
 

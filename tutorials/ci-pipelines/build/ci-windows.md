@@ -254,13 +254,13 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 :::tip Test Intelligence
 
-For some languages, you can leverage Harness' [Test Intelligence](docs/continuous-integration/use-ci/set-up-test-intelligence/) feature to reduce unit test time.
+For some languages, you can leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) feature to reduce unit test time.
 
 :::
 
 ### Visualize test results
 
-You can [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
+You can [view test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
 
 For your pipeline to produce test reports, you need to modify the **Run** step that runs your tests. Make sure the `command` generates JUnit XML reports and add the `reports` specification.
 

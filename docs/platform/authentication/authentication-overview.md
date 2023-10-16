@@ -136,16 +136,16 @@ Your resulting allowlist will impose a further filter on logins to Harness via b
 
 Harness logs a user out of their account after a session timeout if there has been no activity.
 
-To configure your account's session timeout, do the following: 
+To configure your account's session inactivity timeout, do the following: 
 
 1. In your Harness account, select **Account Settings**.
 
 2. Select **Authentication**.
 
-3. In **Session Timeout (in minutes)**, enter the time in minutes to set the session time out.
+3. In **Session Inactivity Timeout (in minutes)**, enter the time in minutes to set the session inactivity time out.
 
-   The default session timeout value is 1440 minutes.
+   The default session inactivity timeout value is 1440 minutes (1 day).
 
-   You can set this to a minimum of 30 minutes and a maximum of 4320 minutes.
+   You can set this to a minimum of 30 minutes and a maximum of 4320 minutes (3 days). The field automatically converts the minutes you enter to higher units of time, and displays the result under the field. For example, if you enter 1440, the UI shows **1 day** below the field.
 
    ![](./static/SessionTimeout.png)

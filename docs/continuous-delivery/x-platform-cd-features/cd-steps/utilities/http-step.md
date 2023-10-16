@@ -49,6 +49,16 @@ Here are some examples:
 - Correct: `<+pipeline.variables.EXPECTED_RESPONSE>==<+httpResponseCode>`.
 - Incorrect: `<+pipeline.variables.EXPECTED_RESPONSE>"=="<+httpResponseCode>`.
 
+### Assertion failures and failure strategies
+
+Step failures are grouped into several categories, such as **Authentication Errors**, **Timeout Errors**, etc. When you set up a stage or step failure strategy, you can select which error category initiates the strategy.
+
+For HTTP assertions, the **Unknown Errors** category initiates the strategy. 
+
+If you want a failure strategy to run when the HTTP step assertion fails, in the HTTP step **Advanced Settings**, **Failure Strategy**, in **On failure of type**, select **Unknown Errors** and then define your strategy.
+
+When an assertion fails
+
 ## Headers in the HTTP step
 
 Enter the media type for the message. For example, if you are using the GET method, the headers are used to specify the GET response body message type.
@@ -93,14 +103,16 @@ To concatenate strings within the JSON functor:
 
 For more information, go to [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
 
+Output variables also support [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html).
+
 ## Advanced step settings
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## Step execution inputs and outputs

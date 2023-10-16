@@ -5,6 +5,16 @@ description: Testing in production, trunk-based development, using feature flags
 
 # Feature Flags best practices
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Feature Flags Certification today!"
+  link="/certifications/feature-flags"
+  closable={true}
+  target="_self"
+/>
+
+
 As teams adopt Feature Flags, or consider adopting the practice, they often wonder what problems they should conider early on to set them up for success.
 
 The tips in this tutorial to help your software teams use feature flagging to get more control, whether you’re implementing feature toggling, trying to expand your feature testing, hoping to control system behavior to control access - or even just trying to roll a new feature out to your entire user base.

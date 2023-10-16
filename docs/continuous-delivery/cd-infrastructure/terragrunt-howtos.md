@@ -772,10 +772,20 @@ The JSON of the Terragrunt Plan step is not available after rollback.
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+
+## Command line options
+
+:::note
+
+Currently, Terragrunt command line options are behind the feature flag `CDS_TERRAGRUNT_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+This setting allows you to set the Terragrunt CLI options for Terragrunt commands depending on the Terragrunt step type. For example: `-lock=false`, `-lock-timeout=0s`.
 
 ## YAML examples
 
@@ -904,3 +914,11 @@ Here is an example of the YAML for a Terragrunt Rollback step:
 
 </Tabs2>
 ```
+
+## Terraform logs
+
+All logs produced by Terraform are printed in Harness step execution logs.
+
+Logs that are coming from `stdout` will be printed as they are, and logs from `stderr` will be printed in red.
+
+The option to skip stderr logs coloring is behind the feature flag `CDS_TF_TG_SKIP_ERROR_LOGS_COLORING`.

@@ -44,9 +44,9 @@ The following is a detailed list of exam objectives:
 | 3.2    | Learn about project variables and how to install software on the delegate                                                                              |
 | 4      | Harness CI Pipelines and Features                                                                                                                      |
 | 4.1    | Perform Codebase configuration and configure shared paths                                                                                              |
-| 4.2    | Describe and configure caching, test intelligence, and triggers                                                                                        |
+| 4.2    | Describe and configure caching, Test Intelligence, and triggers                                                                                        |
 | 5      | Advanced Configurations in Harness CI                                                                                                                  |
-| 5.1    | Learn to configure Input Sets, Overlays, Failure Strategies, and perform Conditional Execution                                                         |
+| 5.1    | Learn to configure input sets, overlays, failure strategies, and perform conditional execution                                                         |
 | 5.2    | Understand and configure Looping Strategies, Flow Control, and Barriers                                                                                |
 | 6      | Notifications & Steps in Harness CI                                                                                                                    |
 | 6.1    | Learn to configure notifications and send PR Status updates                                                                                            |

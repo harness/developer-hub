@@ -53,6 +53,7 @@ For more information, go to [Vault documentation](https://www.vaultproject.io/
 Select the **Authentication** Type.
 
 ![](../../secrets/static/add-hashicorp-vault-20.png)
+
 ### Option: App Role
 
 The App Role option enables the Harness Vault Secret Manager to authenticate with Vault-defined roles.
@@ -226,7 +227,7 @@ v1 Secret Engine:
 
 The secret can fail because of various reasons.
 
-1. Using the Token/App Role, the V**ault** authentication is not successful.
+1. Using the Token/App Role, the **Vault** authentication is not successful.
 2. The following **permission** is not available in any of the policies attached to the Token/App Role. If this permission is not available, the user will not be able to fetch the list of secret engines from the customer vault and Harness will show a single option of Secret Engine named **“secret”** with version 2, which might be incorrect for the customer. Make sure to add the permission to a policy attached to the Token/App Role as follows:
 
    ```
@@ -265,3 +266,10 @@ Important: ​Harness tests connections by creating a dummy secret in the Secret
 The Test Connection fails if you do not have Create permission. However, Harness still creates the Connector for you. You may use this Connector to read secrets, if you have View permissions.
 
 :::
+
+### Reference JSON secrets
+
+import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
+
+<Refj />
+

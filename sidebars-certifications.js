@@ -51,14 +51,20 @@ const sidebars = {
           label: "Feature Flags",
           id: "feature-flags",
         },
+        //ce
+        {
+          type: "doc",
+          label: "Chaos Engineering",
+          id: "chaos-engineering",
+        },
         // Instructions
         {
           type: "doc",
           label: "Instructions",
           id: "instructions",
         },
-         // FAQs
-         {
+        // FAQs
+        {
           type: "doc",
           label: "FAQs",
           id: "faqs",

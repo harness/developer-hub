@@ -97,13 +97,13 @@ You can reference a secret at the Org scope using an expression with `org`:
 
 
 ```
-<+secrets.getValue("org.Docker_Hub_MRC")>​
+<+secrets.getValue("org.Docker_Hub_MRC")>
 ```
 You can reference a secret at the Account scope using an expression with `account`:
 
 
 ```
-<+secrets.getValue("account.Docker_Hub_MRC")>​​
+<+secrets.getValue("account.Docker_Hub_MRC")>
 ```
 Avoid using `$` in your secret value. If your secret value includes `$`, you must use single quotes when you use the expression in a script.  
 For example, if your secret in the Project scope has a value `'my$secret'`, and identifier `Docker_Hub_MRC`, to echo, use single quotes:  

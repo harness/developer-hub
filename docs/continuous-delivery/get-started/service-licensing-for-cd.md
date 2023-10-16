@@ -58,3 +58,6 @@ Here's an example using 4 different services.
 | Service 3 | 22 | 2 |
 | Service 4 | 41 | 3 |
 
+## Serverless computing
+
+For function workloads deployed by Harness, such as AWS Lambda, AWS SAM, Serverless.com, and Google Cloud Functions deployments, 1 service instance equals 5 serverless functions. There's no limit on the calls made using those functions.

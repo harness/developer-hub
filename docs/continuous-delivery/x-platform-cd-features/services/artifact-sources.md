@@ -301,7 +301,7 @@ To add an artifact from a Docker registry, do the following:
 
   :::
 14. Select **Submit**. The Artifact is added to the Service Definition.
- <!-- CDS-71711 -->
+
 
 
 ```mdx-code-block
@@ -316,6 +316,27 @@ To add an artifact from a Docker registry, do the following:
 
 </details>
 
+<details>
+<summary>Docker artifact expressions</summary>
+
+You can reference artifact properties using the following expressions in a values YAML file or in any Harness setting that supports [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
+
+| **Expression**                       | **Description**                                                                           | **Example**                                                               |
+| ------------------------------------ | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `<+artifact.connectorRef>`           | Identifier of the connector used by the artifact source                                   | `org.dockerhub`                                                           |
+| `<+artifact.identifier>`             | Identifier of the artifact source in the service definition                     | `NGINX`                                                                   |
+| `<+artifact.type>`                   | This will be `DockerRegistry` always                                                      | `DockerRegistry`                                                          |
+| `<+artifact.primaryArtifact>`        | Boolean values. `true` in case of primary artifact                                        | `true`                                                                    |
+| `<+artifact.tag>`                    | This is the Docker tag                                                                    | `v1`                                                                      |
+| `<+artifact.image>`                  | This is the image of the particular version. The value is used with `docker pull` command   | `index.docker.io/library/nginx:v1`                                        |
+| `<+artifact.imagePath>`              | This is the name of the image without registry info or tag.                               | `library/nginx`                                                           |
+| `<+artifact.imagePullSecret>`        | This will be the base64 encoded secret used for pulling the image                         |                                                                           |
+| `<+artifact.dockerConfigJsonSecret>` | This is the `kubernetes.io/dockerconfigjson` credentials                                  |                                                                           |
+| `<+artifact.label.[PLACEHOLDER]>`    | This is the label set in the Docker image. Replace the placeholder with the appropriate label |                                                                           |
+| `<+artifact.metadata.SHA>`           | SHA of the Docker image                                                                   | `sha256:b3ebe55062b76860c6c0c78f5cae81ec393a944bcc96c05b5f411d3560c9f1d8` |
+| `<+artifact.metadata.SHAV2>`         | Docker supports v1 and v2 format. We list both the formats when applicable.        | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
+
+</details>
 
 
 
@@ -494,7 +515,7 @@ To add an artifact from GCR, do the following:
     ![](./static/kubernetes-services-10.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
- <!-- CDS-71711 -->
+
 14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
@@ -505,7 +526,7 @@ To add an artifact from GCR, do the following:
 
   :::
 14. Select **Submit**. 
- <!-- CDS-71711 -->
+
     
     The Artifact is added to the **Service Definition**.
 
@@ -554,6 +575,30 @@ For Google Container Registry (GCR), the following roles are required:
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
 Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`. 
+
+</details>
+
+<details>
+<summary>GCR artifact expressions</summary>
+
+You can reference artifact properties using the following expressions in a values YAML file or in any Harness setting that supports [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
+
+| **Expression**                                    | **Description**                                                                               | **Example**                                                               |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `<+artifact.connectorRef>`                        | Identifier of the connector used by the artifact source                                       | `org.gcp`                                                                 |
+| `<+artifact.identifier>`                          | Identifier of the artifact source in the service definition                                   | `Acme_NGINX`                                                              |
+| `<+artifact.type>`                                | This will be `Gcr` always                                                                     | `Gcr`                                                                     |
+| `<+artifact.primaryArtifact>`                     | Boolean values. `true` in case of primary artifact                                            | `true`                                                                    |
+| `<+artifact.tag>`, `<+artifact.metadata.tag>`       | This is the Docker tag                                                                        | `v1`                                                                      |
+| `<+artifact.image>`, `<+artifact.metadata.image>` | This is the image of the particular version. The value is used with `docker pull` command     | `us.gcr.io/cd-project/acme/nginx:v1`                                      |
+| `<+artifact.imagePath>`                           | This is the name of the image without registry info or tag                                    | `cd-project/acme/nginx`                                                   |
+| `<+artifact.imagePullSecret>`                     | This will be the base64 encoded secret used for pulling the image                             |                                                                           |
+| `<+artifact.dockerConfigJsonSecret>`              | This is the `kubernetes.io/dockerconfigjson` credentials                                      |                                                                           |
+| `<+artifact.registryHostname>`                    | GCR registry hostname                                                                         | `us.gcr.io`                                                               |
+| `<+artifact.digest>`                              | This is the digest specified in the GCR artifact source definition                            | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
+| `<+artifact.label.[PLACEHOLDER]>`                 | This is the label set in the Docker image. Replace the placeholder with the appropriate label |                                                                           |
+| `<+artifact.metadata.SHAV2>`                      | Docker supports v1 and v2 format. We list both the formats when applicable.                   | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
+| `<+artifact.metadata.SHA>`                        | SHA of the Docker image                                                                       | `sha256:b3ebe55062b76860c6c0c78f5cae81ec393a944bcc96c05b5f411d3560c9f1d8` |
 
 </details>
 
@@ -743,6 +788,25 @@ For Google Cloud Storage (GCS), the following roles are required:
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
 </details>
+
+<details>
+<summary>GCS artifact expressions</summary>
+
+You can reference artifact properties using the following expressions in a values YAML file or in any Harness setting that supports [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
+
+| **Expression**                                                  | **Description**                                             | **Example**                                                                        |
+| --------------------------------------------------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `<+artifact.connectorRef>`                                      | Identifier of the connector used by the artifact source     | `org.gcp`                                                                          |
+| `<+artifact.identifier>`                                        | Identifier of the artifact source in the service definition | `AcmeGcs`                                                                          |
+| `<+artifact.type>`                                              | This will be `GoogleCloudStorage` always                    | `GoogleCloudStorage`                                                               |
+| `<+artifact.primaryArtifact>`                                   | Boolean values. `true` in case of primary artifact          | `true`                                                                             |
+| `<+artifact.artifactPath>`, `<+artifact.metadata.artifactName>` | Full Path of the file in GCS bucket                         | `acme-apps/hello-world/v1.tgz`                                                     |
+| `<+artifact.bucket>`, `<+artifact.metadata.bucket>`             | GCS bucket                                                  | `acme-lambda`                                                                      |
+| `<+artifact.url>`                                               | URL to the artifact file                                    | `https://www.googleapis.com/storage/v1/b/acme-lambda/acme-apps/hello-world/v1.tgz` |
+| `<+artifact.project>`                                           | GCP project                                                 | `acme-devs`                                                                        |
+
+</details>
+
 
 <!-- GAR START -->
 
@@ -944,7 +1008,7 @@ To add an artifact from Google Artifact Registry, do the following:
 
     ![](static/kubernetes-services-11.png)
 
- <!-- CDS-71711 -->
+
 20. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
     :::note 
@@ -955,7 +1019,7 @@ To add an artifact from Google Artifact Registry, do the following:
 
     :::
 21. Select **Submit**. The Artifact is added to the Service Definition.
- <!-- CDS-71711 -->
+
 
 
 ```mdx-code-block
@@ -975,6 +1039,35 @@ For more information, go to the GCP documentation [Configure roles and permissio
 Ensure the Harness delegate you have installed can reach your Google Artifact Registry region, for example `us-central1`. 
 
 </details>
+
+<details>
+<summary>Google Artifact Registry artifact expressions</summary>
+
+You can reference artifact properties using the following expressions in a values YAML file or in any Harness setting that supports [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
+
+| **Expression**                                                          | **Description**                                                                                                        | **Example**                                                               |
+| ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `<+artifact.connectorRef>`                                              | Identifier of the connector used by the artifact source                                                                | `org.gcp`                                                                 |
+| `<+artifact.identifier>`                                                | Identifier of the artifact source in the service definition                                                            | `AcmeGAR`                                                                 |
+| `<+artifact.type>`                                                      | This will be `GoogleArtifactRegistry` always                                                                           | `GoogleArtifactRegistry`                                                  |
+| `<+artifact.primaryArtifact>`                                           | Boolean values. `true` in case of primary artifact                                                                     | `true`                                                                    |
+| `<+artifact.version>`                                                   | This is the Docker tag                                                                                                 | `v1`                                                                      |
+| `<+artifact.region>`                                                    | Region where the GAR repository is hosted                                                                              | `us`                                                                      |
+| `<+artifact.pkg>`                                                       | Name of the GAR package                                                                                                | `alpine`                                                                  |
+| `<+artifact.repositoryType>`                                            | Type of repository.                                                                                                    | `docker`                                                                  |
+| `<+artifact.image>`, `<+artifact.metadata.image>`                         | This is the image of the particular version. The value is used with \`docker pull\` command                            | `us-docker.pkg.dev/acme-dev/acme-docker/alpine:v1`                        |
+| `<+artifact.repositoryName>`                                            | Name of the repository in GAR                                                                                          | `acme-docker`                                                             |
+| `<+artifact.project>`                                                   | Project ID in GCP                                                                                                      | `acme-dev`                                                                |
+| `<+artifact.registryHostname>`, `<+artifact.metadata.registryHostname>` | This is the hostname of the registry                                                                                   | `us-docker.pkg.dev`                                                       |
+| `<+artifact.imagePullSecret>`                                           | This will be the base64 encoded secret used for pulling the image                                                      |                                                                           |
+| `<+artifact.dockerConfigJsonSecret>`                                    | This is the `kubernetes.io/dockerconfigjson` credentials. Valid for `docker` only                                      |                                                                           |
+| `<+artifact.digest>`                                                    | This is the digest specified in the ECR artifact source definition. Valid for `docker` only                            | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
+| `<+artifact.label.[PLACEHOLDER]>`                                       | This is the label set in the Docker image. Replace the placeholder with the appropriate label. Valid for `docker` only |                                                                           |
+| `<+artifact.metadata.SHAV2>`                                            | Docker supports v1 and v2 format. We list both the formats when applicable. Valid for `docker` only                    | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
+| `<+artifact.metadata.SHA>`                                              | SHA of the Docker image. Valid for `docker` only                                                                       | `sha256:b3ebe55062b76860c6c0c78f5cae81ec393a944bcc96c05b5f411d3560c9f1d8` |
+
+</details>
+
 
 <!-- GAR END -->
 
@@ -1197,6 +1290,26 @@ The PAT must have the **Read** permission in **Packaging**.
 
 </details>
 
+<details>
+<summary>Azure DevOps artifacts expressions</summary>
+
+You can reference artifact properties using the following expressions in a values YAML file or in any Harness setting that supports [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
+
+| **Expression**                    | **Description**                                                                                                          | **Example**           |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------- |
+| `<+artifact.connectorRef>`        | Identifier of the connector used by the artifact source                                                                  | `org.azuredevops`     |
+| `<+artifact.identifier>`          | Identifier of the artifact source in the service definition                                                              | `AcmeAzureDevops`     |
+| `<+artifact.type>`                | This will be `AzureArtifacts` always                                                                                     | `AzureArtifacts`      |
+| `<+artifact.primaryArtifact>`     | Boolean values. `true` in case of primary artifact                                                                       | `true`                |
+| `<+artifact.project>`             | Name of the projects in Azure Artifacts                                                                                  | `acme-project`        |
+| `<+artifact.feed>`                | Name of the feed in Azure artifacts                                                                                      | `acme-feed-universal` |
+| `<+artifact.scope>`               | It will be one of `org` or `project`                                                                                     | `project`             |
+| `<+artifact.packageType>`         | Package type. It is one of `upack`, `maven`                                                                              | `upack`               |
+| `<+artifact.packageName>`         | Name of the package in the feed                                                                                          | `acme-upacks`         |
+| `<+artifact.version>`             | Version of the artifact                                                                                                  | `0.0.1`               |
+| `<+artifact.metadata.get([KEY])>` | This is the metadata attached with the file in Azure Devops. Popular keys include `publishDate`, `versionId`, `version`. |                       |
+
+</details>
 
 
 
@@ -1586,6 +1699,30 @@ To use the Docker Registry connector to connect to ACR, do the following:
 
 </details>
 
+<details>
+<summary>ACR artifact expressions</summary>
+
+You can reference artifact properties using the following expressions in a values YAML file or in any Harness setting that supports [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
+
+| **Expression**                                                  | **Description**                                                                               | **Example**                                                               |
+| --------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `<+artifact.connectorRef>`                                      | Identifier of the connector used by the artifact source                                       | `org.azureConnector`                                                      |
+| `<+artifact.identifier>`                                        | Identifier of the artifact source in the service definition                                   | `AcmeAcrRegistry`                                                         |
+| `<+artifact.type>`                                              | This will be `Acr` always                                                                     | `Acr`                                                                     |
+| `<+artifact.primaryArtifact>`                                   | Boolean values. `true` in case of primary artifact                                            | `true`                                                                    |
+| `<+artifact.subscription>`                                      | This is the Azure cloud subscription ID                                                       | `20d6a917-99fa-4b1b-9b2e-a3d624e9dcf0`                                    |
+| `<+artifact.registry>`, `<+artifact.metadata.registryHostname>` | Container registry hostname                                                                   | `acme.azurecr.io`                                                         |
+| `<+artifact.tag>`, `<+artifact.metadata.tag>`                      | This is the Docker tag                                                                        | `v1`                                                                      |
+| `<+artifact.image>`, `<+artifact.metadata.image>`                  | This is the image of the particular version. The value is used with \`docker pull\` command   | `acme.azurecr.io/hello-world:v1`                                          |
+| `<+artifact.repository>`                                        | This is the name of the image without registry info or tag                                    | `hello-world`                                                             |
+| `<+artifact.imagePullSecret>`                                   | This will be the base64 encoded secret used for pulling the image                             |                                                                           |
+| `<+artifact.dockerConfigJsonSecret>`                            | This is the `kubernetes.io/dockerconfigjson` credentials                                      |                                                                           |
+| `<+artifact.digest>`                                            | This is the digest specified in the ACR artifact source definition                            | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
+| `<+artifact.label.[PLACEHOLDER]>`                               | This is the label set in the Docker image. Replace the placeholder with the appropriate label |                                                                           |
+| `<+artifact.metadata.SHAV2>`                                    | Docker tends to support v1 and v2 format. We list both formats when applicable.               | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
+| `<+artifact.metadata.SHA>`                                      | SHA of the Docker image                                                                       | `sha256:b3ebe55062b76860c6c0c78f5cae81ec393a944bcc96c05b5f411d3560c9f1d8` |
+
+</details>
 
 
 ### Amazon Elastic Container Registry (ECR)
@@ -1771,7 +1908,7 @@ To add an artifact from ECR, do the following:
     ![ECR artifact details](static/74fe6d9189f8f18b2e854598026ab1db27944dab47c3056f4ffaaab93582242a.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
- <!-- CDS-71711 -->
+
 13. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
@@ -1782,7 +1919,7 @@ To add an artifact from ECR, do the following:
 
   :::
 14. Select **Submit**. The Artifact is added to the Service Definition.
- <!-- CDS-71711 -->
+
     
  ![ECR artifact source in a service](static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
 
@@ -1889,6 +2026,30 @@ Ensure that the AWS IAM user you use has the correct policies for pulling from E
 
 </details>
 
+
+<details>
+<summary>ECR artifact expressions</summary>
+
+You can reference artifact properties using the following expressions in a values YAML file or in any Harness setting that supports [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
+
+| **Expression**                                    | **Description**                                                                               | **Example**                                                               |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `<+artifact.connectorRef>`                        | Identifier of the connector used by the artifact source                                       | `org.aws`                                                                 |
+| `<+artifact.identifier>`                          | Identifier of the artifact source in the service definition                                   | `AcmeEcr`                                                                 |
+| `<+artifact.type>`                                | This will be `Ecr` always                                                                     | `Ecr`                                                                     |
+| `<+artifact.primaryArtifact>`                     | Boolean values. `true` in case of primary artifact                                            | `true`                                                                    |
+| `<+artifact.registryId>`                          | Registry ID of the ECR registry as set in the artifact source config.                         | `4793702123451`                                                           |
+| `<+artifact.tag>`, `<+artifact.metadata.tag>`     | This is the Docker tag                                                                        | `v1`                                                                      |
+| `<+artifact.image>`, `<+artifact.metadata.image>` | This is the image of the particular version. The value is used with \`docker pull\` command   | `us-east-1.ecr.io/hello-world:v1`                                         |
+| `<+artifact.imagePath>`                           | This is the name of the image without registry info or tag                                    | `hello-world`                                                             |
+| `<+artifact.imagePullSecret>`                     | This will be the base64 encoded secret used for pulling the image                             |                                                                           |
+| `<+artifact.dockerConfigJsonSecret>`              | This is the `kubernetes.io/dockerconfigjson` credentials                                      |                                                                           |
+| `<+artifact.digest>`                              | This is the digest specified in the ECR artifact source definition                            | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
+| `<+artifact.label.[PLACEHOLDER]>`                 | This is the label set in the Docker image. Replace the placeholder with the appropriate label |                                                                           |
+| `<+artifact.metadata.SHAV2>`                      | Docker supports v1 and v2 format. We list both formats when applicable.                       | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
+| `<+artifact.metadata.SHA>`                        | SHA of the Docker image                                                                       | `sha256:b3ebe55062b76860c6c0c78f5cae81ec393a944bcc96c05b5f411d3560c9f1d8` |
+
+</details>
 
 <!-- AWS S3 START -->
 
@@ -2116,6 +2277,25 @@ For more information on configuring an S3 connector and S3 bucket policies, go t
 
 </details>
 
+<details>
+<summary>AWS S3 artifact expressions</summary>
+
+You can reference artifact properties using the following expressions in a values YAML file or in any Harness setting that supports [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
+
+| **Expression**                    | **Description**                                                                                                                              | **Example**                    |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `<+artifact.connectorRef>`        | Identifier of the connector used by the artifact source                                                                                      | `org.aws`                      |
+| `<+artifact.identifier>`          | Identifier of the artifact source in the service definition                                                                                  | `AcmeS3`                       |
+| `<+artifact.type>`                | This will be `AmazonS3` always                                                                                                               | `AmazonS3`                     |
+| `<+artifact.primaryArtifact>`     | Boolean values. `true` in case of primary artifact                                                                                           | `true`                         |
+| `<+artifact.filePath>`            | Full path of the file in S3 bucket                                                                                                           | `acme-apps/hello-world/v1.tgz` |
+| `<+artifact.region>`              | Region of S3 bucket                                                                                                                          | `us-east-1`                    |
+| `<+artifact.bucketName>`          | Name of the S3 bucket                                                                                                                        | `acme-lambda`                  |
+| `<+artifact.metadata.get([KEY])>` | This is the metadata attached with the file in AWS S3. Popular keys include `x-amz-server-side-encryption`, `Content-Type`, `Last-Modified`. |                                |
+
+</details>
+
+
 <!-- AWS S3 END -->
 
 <!-- AWS AMI START -->
@@ -2306,8 +2486,7 @@ To add an artifact from an S3 bucket, do the following:
 ```mdx-code-block
   </TabItem>
 </Tabs>
-
-
+```
 
 </details>
 
@@ -2317,7 +2496,7 @@ To add an artifact from an S3 bucket, do the following:
 <details>
 <summary>Use Nexus artifacts</summary>
 
-You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference/).
+You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/connectors/artifact-repositories/nexus-connector-settings-reference).
 
 
 ```mdx-code-block
@@ -2501,7 +2680,7 @@ To add an artifact from Nexus, do the following:
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 
- <!-- CDS-71711 -->
+
 14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
@@ -2536,6 +2715,61 @@ For Nexus 3, when used as a **Docker** repo, the user needs:
 - A role with the `nx-repository-view-*_*_*` privilege.
 
 </details>
+
+<details>
+<summary>Nexus artifact expressions</summary>
+
+You can reference artifact properties using the following expressions in a values YAML file or in any Harness setting that supports [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
+
+Nexus 3:
+
+| **Expression**                                                          | **Description**                                                                                                        | **Example**                                                                                  |
+| ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `<+artifact.connectorRef>`                                              | Identifier of the connector used by the artifact source                                                                | `org.nexus`                                                                                  |
+| `<+artifact.identifier>`                                                | Identifier of the artifact source in the service definition                                                            | `AcmeNexus3`                                                                                 |
+| `<+artifact.type>`                                                      | This will be `Nexus3Registry` always                                                                                   | `Nexus3Registry`                                                                             |
+| `<+artifact.primaryArtifact>`                                           | Boolean values. `true` in case of primary artifact                                                                     | `true`                                                                                       |
+| `<+artifact.tag>`, `<+artifact.metadata.tag>`                           | This is the Docker tag                                                                                                 | `v1`                                                                                         |
+| `<+artifact.repositoryFormat>`                                          | Type of repository. It is one of `docker`, `maven`, `nuget`, `npm`, `raw`                                              | `docker`                                                                                     |
+| `<+artifact.image>`, `<+artifact.metadata.image>`                       | This is the image of the particular version. The value is used with \`docker pull\` command                            | `nexus3.acme.io:80/nginx:v1.0`                                                               |
+| `<+artifact.repositoryName>`                                            | Name of the repository in Nexus3                                                                                       | `acme-docker`                                                                                |
+| `<+artifact.artifactPath>`                                              | This is the name of the image without registry info or tag                                                             | `nginx`                                                                                      |
+| `<+artifact.registryHostname>`, `<+artifact.metadata.registryHostname>` | This is the hostname of the registry                                                                                   | `nexus3.acme.io`                                                                             |
+| `<+artifact.imagePullSecret>`                                           | This will be the base64 encoded secret used for pulling the image                                                      |                                                                                              |
+| `<+artifact.dockerConfigJsonSecret>`                                    | This is the `kubernetes.io/dockerconfigjson` credentials. Valid for `docker` only                                      |                                                                                              |
+| `<+artifact.digest>`                                                    | This is the digest specified in the ECR artifact source definition. Valid for `docker` only                            | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b`                    |
+| `<+artifact.label.[PLACEHOLDER]>`                                       | This is the label set in the Docker image. Replace the placeholder with the appropriate label. Valid for `docker` only |                                                                                              |
+| `<+artifact.metadata.SHAV2>`                                            | Docker supports v1 and v2 format. We list both the formats when applicable. Valid for `docker` only                    | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b`                    |
+| `<+artifact.metadata.SHA>`                                              | SHA of the Docker image. Valid for `docker` only                                                                       | `sha256:b3ebe55062b76860c6c0c78f5cae81ec393a944bcc96c05b5f411d3560c9f1d8`                    |
+| `<+artifact.metadata.groupId>`                                          | GroupId of the maven artifact. Valid for `maven` only                                                                  | `mygroup`                                                                                    |
+| `<+artifact.metadata.artifactId>`                                       | ArtifactId of the maven artifact. Valid for `maven` only                                                               | `myartifact`                                                                                 |
+| `<+artifact.metadata.repositoryName>`                                   | Name of the repository in Nexus3. Valid for everything except `docker` only                                            | `maven-releases`                                                                             |
+| `<+artifact.metadata.version>`                                          | Valid for everything except `docker` only                                                                              | `1.2`                                                                                        |
+| `<+artifact.metadata.url>`                                              | URL of the file. Valid for everything except `docker` only                                                             | `https://nexus3.acme.io/repository/maven-releases/mygroup/myartifact/1.2/myartifact-1.2.war` |
+| `<+artifact.metadata.filename>`                                         | Name of the file. Valid for everything except `docker` only                                                            | `myartifact-1.2.war`                                                                         |
+| `<+artifact.metadata.imagePath>`                                        | Path of the file. Valid for everything except `docker` only                                                            | `mygroup/myartifact/1.2/myartifact-1.2.war`                                                  |
+
+Nexus 2:
+
+| **Expression**                                    | **Description**                                                  | **Example**                                                                                                                          |
+| ------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `<+artifact.connectorRef>`                        | Identifier of the connector used by the artifact source          | `org.nexus`                                                                                                                          |
+| `<+artifact.identifier>`                          | Identifier of the artifact source in the service definition      | `AcmeNexus2`                                                                                                                         |
+| `<+artifact.type>`                                | This will be `Nexus2Registry` always                             | `Nexus2Registry`                                                                                                                     |
+| `<+artifact.primaryArtifact>`                     | Boolean values. `true` in case of primary artifact               | `true`                                                                                                                               |
+| `<+artifact.tag>`, `<+artifact.metadata.version>` | This is the version of the nexus artifact                        | `v1`                                                                                                                                 |
+| `<+artifact.repositoryFormat>`                    | Type of repository. It is one of `maven`, `nuget`, `npm`         | `maven`                                                                                                                              |
+| `<+artifact.repositoryName>`                      | Name of the repository in Nexus2                                 | `acme-mvn`                                                                                                                           |
+| `<+artifact.artifactPath>`                        | This is the artifactId                                           | `myartifact`                                                                                                                         |
+| `<+artifact.imagePullSecret>`                     | This will be the base64 encoded secret used for pulling the file |                                                                                                                                      |
+| `<+artifact.metadata.groupId>`                    | GroupId of the maven artifact. Valid for `maven` only            | `mygroup`                                                                                                                            |
+| `<+artifact.metadata.artifactId>`                 | ArtifactId of the maven artifact. Valid for `maven` only         | `myartifact`                                                                                                                         |
+| `<+artifact.metadata.repositoryName>`             | Name of the repository in Nexus2.                                | `maven-releases`                                                                                                                     |
+| `<+artifact.metadata.url>`                        | URL of the file.                                                 | `https://nexus2.acme.io/service/local/artifact/maven/content?r=maven-releases&g=mygroup&a=myartifact&v=1.0&p=jar&e=jar&c=testbundle` |
+| `<+artifact.metadata.filename>`                   | Name of the file.                                                | `foo-1.0-testbundle.jar`                                                                                                             |
+
+</details>
+
 
 ### Artifactory
 
@@ -2695,28 +2929,39 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, go to [Artifactory Connector Settings Reference](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
+<!-- CDS-77239 -->
+
 To add an artifact from Artifactory, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
 2. Select **Manage Services**, and then select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
-5. In **Service Definition**, select **Kubernetes**.
+5. In **Service Definition**, select the deployment type.
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Artifact Repository Type**, select **Artifactory**, and then select **Continue**.
-8. In **Artifactory Repository**, select of create an Artifactory Connector that connects to the Artifactory account where the repo is located. Click **Continue**.
-9. The **Artifact Details** settings appear.
-10. In **Repository URL**, enter the URL from the `docker login` command in Artifactory's **Set Me Up** settings.
+8. In **Artifactory Connector**, select or create an Artifactory connector that connects to the Artifactory account where the repo is located. Click **Continue**. The **Artifact Details** settings appear.
+10. Enter an **Artifact Source Identifier** and select the **Repository Format**. 
+11. Set the artifact details based on the format: 
+    - [Docker repository format](#docker-repository-format)
+    - [Generic repository format](#generic-repository-format)
+
+#### Docker repository format
+
+1. In **Repository**, enter the repo name. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `docker-remote`.
+2. In **Artifact/Image Path**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
+3. In **Repository URL**, enter the URL from the `docker login` command in Artifactory's **Set Me Up** settings.
     
     ![](static/kubernetes-services-15.png)
-11. In **Repository**, enter the repo name. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `docker-remote`.
-12. In **Artifact Path**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
-13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
+
+4. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
+
+    You can use a regex to select an image based on a matching pattern. Suppose you have a set of images with tags `3.1.1`, `3.1.2`, `3.1.3.1`, `3.1.3.2`, and `3.1.3.4`. Select **Regex**, then set **Tag Regex** `3.1*` to select the most recent image with prefix `3.1`, in this case the image with tag `3.1.3.4`.
     
-    ![](static/kubernetes-services-16.png)
-14. If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
- <!-- CDS-71711 -->
-15. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+    ![](static/kubernetes-services-16-docker.png)
+5. If you use runtime inputs when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+
+6. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
 
@@ -2725,9 +2970,55 @@ To add an artifact from Artifactory, do the following:
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
-16. Select **Submit**. The Artifact is added to the Service Definition.
- <!-- CDS-71711 -->
+7. Select **Submit**. The Artifact is added to the Service Definition.
 
+
+#### Generic repository format
+
+<figure>
+
+<docimage path={require('./static/kubernetes-services-16-generic.png')} width="100%" height="100%" title="Click to view full size image" />  
+
+<figcaption>Figure 1: Elements in the Artifactory UI and their equivalents in the <b>Artifact Details</b> dialog box.</figcaption>
+
+</figure>
+
+1. In **Repository**, enter the repo name. If the full path is `my-apps/myticketservice/1.0/ticket-service-1.0.jar`, you would enter `my-apps`.
+2. Select the method for specifying the artifacts you want to deploy:
+   - **Artifact Directory** Specify a hard-coded path to the artifacts.
+   - **Artifact Filter** Use an expression to specify the path. Useful if you want to fetch  artifacts from different paths.
+3. Specify the artifacts you want to deploy.
+ 
+   - If you selected **Artifact Directory**:
+     1. In **Artifact Directory**, enter the path to the artifacts. If the full path is `my-apps/myticketservice/1.0/ticket-service-1.0.jar`, you would enter `myticketservice/1.0`.
+     2. Set **Artifact Details** to **Value** or **Regex** (to select an artifact based on a pattern). 
+     3. Specify the value or the regex for the artifacts.
+        
+        If you selected **Regex**, enter the **Artifact Path Filter** for the artifacts you want to fetch. For example, suppose your service has a front end and a back end, and you store the latest artifacts in a `/latest` subfolder, like this:
+            `/myService/latest/front-service.zip`
+            `/myService/latest/back-service.zip`
+        To fetch both artifacts, you can specify `/myService` for the artifact directory and `latest/*.zip` for the artifact path filter.
+
+   - If you selected **Artifact Filter**, enter an expression that matches the artifacts you want to fetch. Here are some examples of expressions you can use:
+      - `*/*` : Fetch all artifacts from all directories including their subdirectories.
+      - `*/*.zip` : Fetch all `.zip` artifacts from all directories, including subdirectories.
+      - `*`: Fetch all artifacts in the root directory.
+      - `*.zip` : Fetch all `.zip` artifacts in the root directory.
+      - `folder/*` : Fetch all artifacts contained in directory `folder`.
+      - `folder/*.zip` : Fetch all `.zip` artifacts contained in directory `folder`.
+      - `folder/*/*` : Fetch all artifacts from all directories/subdirectories under `folder`, for example `folder/folder1`, `folder/folder1/folder2`, `folder/folder1/folder2/folder3`, etc.
+      - `folder/*/*.zip` : Fetch all `.zip` artifacts from all directories/subdirectories under `folder`.
+      - `folder*/*` : Fetch all artifacts from directories/subdirectories that match `folder*`, for example `folder`, `folder123`, `folder/x/y/z`, etc. 
+
+      :::note
+
+      You cannot apply a filter that finds BOTH artifacts in a folder AND all subdirectories under that folder. Thus `folder/*` finds artifacts in `folder` but no subdirectories, and `folder/*/*` finds artifacts in all subdirectories but not in `folder`. 
+
+      :::
+
+   If you use a runtime input when you deploy the pipeline, Harness will pull the list of artifacts from the repo and prompt you to select one.
+
+7. Select **Submit**. The Artifact is added to the Service Definition.
 
 
 ```mdx-code-block
@@ -2750,6 +3041,36 @@ If used as a Docker Repo, user needs:
 See [Managing Permissions: JFrog Artifactory User Guide](https://www.jfrog.com/confluence/display/RTF/Managing+Permissions).
 
 </details>
+
+<details>
+<summary>Artifactory artifact expressions</summary>
+
+You can reference artifact properties using the following expressions in a values YAML file or in any Harness setting that supports [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
+
+| **Expression**                                                          | **Description**                                                                                                                        | **Example**                                                               |
+| ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `<+artifact.connectorRef>`                                              | Identifier of the connector used by the artifact source                                                                                | `org.artifactory`                                                         |
+| `<+artifact.identifier>`                                                | Identifier of the artifact source in the service definition                                                                            | `AcmeArtifactory`                                                         |
+| `<+artifact.type>`                                                      | This will be `ArtifactoryRegistry` always                                                                                              | `ArtifactoryRegistry`                                                     |
+| `<+artifact.primaryArtifact>`                                           | Boolean values. `true` in case of primary artifact                                                                                     | `true`                                                                    |
+| `<+artifact.tag>`, `<+artifact.metadata.tag>`                           | This is the Docker tag                                                                                                                 | `v1`                                                                      |
+| `<+artifact.repositoryFormat>`                                          | Type of repository. It is one of `docker`, `generic`                                                                                   | `docker`                                                                  |
+| `<+artifact.image>`, `<+artifact.metadata.image>`                         | This is the image of the particular version. The value is used with \`docker pull\` command                                            | `acme.jfrog.io/todolist-app/nginx:v1`                                     |
+| `<+artifact.repositoryName>`                                            | Name of the repository in Artifactory                                                                                                  | `todolist-app`                                                            |
+| `<+artifact.imagePath>`, `<+artifact.artifactPath>`                     | This is the name of the image without registry info or tag                                                                             | `nginx`                                                                   |
+| `<+artifact.artifactDirectory>`                                         | Path to the directory of where the generic artifacts are stored. As specified in the artifact source config. Valid for `generic` only. | `/acme/dev/app`                                                           |
+| `<+artifact.registryHostname>`, `<+artifact.metadata.registryHostname>` | This is the hostname of the registry                                                                                                   | `acme.jfrog.io`                                                           |
+| `<+artifact.imagePullSecret>`                                           | This will be the base64 encoded secret used for pulling the image                                                                      |                                                                           |
+| `<+artifact.dockerConfigJsonSecret>`                                    | This is the `kubernetes.io/dockerconfigjson` credentials. Valid for `docker` only.                                                     |                                                                           |
+| `<+artifact.digest>`                                                    | This is the digest specified in the Artifactory artifact source definition. Valid for `docker` only                                    | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
+| `<+artifact.label.[PLACEHOLDER]>`                                       | This is the label set in the Docker image. Replace the placeholder with the appropriate label. Valid for `docker` only                 |                                                                           |
+| `<+artifact.metadata.SHAV2>`                                            | Docker tends to support v1 and v2 format. We list both formats when applicable. Valid for `docker` only                                | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
+| `<+artifact.metadata.SHA>`                                              | SHA of the Docker image. Valid for `docker` only                                                                                       | `sha256:b3ebe55062b76860c6c0c78f5cae81ec393a944bcc96c05b5f411d3560c9f1d8` |
+| `<+artifact.metadata.filename>`                                         | Name of the file. Valid for `generic` only.                                                                                            | `artifact.zip`                                                            |
+| `<+artifact.metadata.url>`                                              | URL to the file. Valid for `generic` only.                                                                                             | `https://acme.jfrog.io/artifactory/todolist/artifact.zip`                 |
+
+</details>
+
 
 ### Bamboo
 
@@ -3219,6 +3540,30 @@ You can use the same Harness secret that you used for user authentication.
 
 </details>
 
+<details>
+<summary>Github packages artifact expressions</summary>
+
+You can reference artifact properties using the following expressions in a values YAML file or in any Harness setting that supports [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
+
+| **Expression**                       | **Description**                                                                                                        | **Example**                                                               |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `<+artifact.connectorRef>`           | Identifier of the connector used by the artifact source                                                                | `org.github`                                                              |
+| `<+artifact.identifier>`             | Identifier of the artifact source in the service definition                                                            | `AcmeGithub`                                                              |
+| `<+artifact.type>`                   | This will be `GithubPackageRegistry` always                                                                            | `GithubPackageRegistry`                                                   |
+| `<+artifact.primaryArtifact>`        | Boolean values. `true` in case of primary artifact                                                                     | `true`                                                                    |
+| `<+artifact.version>`                | This is the Docker tag                                                                                                 | `v1`                                                                      |
+| `<+artifact.packageType>`            | Type of package. It is one of `container`, `maven`, `nuget`, `npm`                                                     | `container`                                                               |
+| `<+artifact.image>`                  | This is the image of the particular version. The value is used with \`docker pull\` command                            | `ghcr.io/acme/helloworld:100`                                             |
+| `<+artifact.packageName>`            | Name of the repository in Github                                                                                       | `helloworld`                                                              |
+| `<+artifact.imagePullSecret>`        | This will be the base64 encoded secret used for pulling the image                                                      |                                                                           |
+| `<+artifact.dockerConfigJsonSecret>` | This is the `kubernetes.io/dockerconfigjson` credentials. Valid for `docker` only                                      |                                                                           |
+| `<+artifact.digest>`                 | This is the digest specified in the ECR artifact source definition. Valid for `docker` only                            | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
+| `<+artifact.label.[PLACEHOLDER]>`    | This is the label set in the Docker image. Replace the placeholder with the appropriate label. Valid for `docker` only |                                                                           |
+| `<+artifact.metadata.SHAV2>`         | Docker supports v1 and v2 format. We list both the formats when applicable. Valid for `docker` only                    | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
+| `<+artifact.metadata.SHA>`           | SHA of the Docker image. Valid for `docker` only                                                                       | `sha256:b3ebe55062b76860c6c0c78f5cae81ec393a944bcc96c05b5f411d3560c9f1d8` |
+
+</details>
+
 
 
 ### Custom artifact source
@@ -3238,6 +3583,28 @@ For steps on adding a Custom Artifact source, go to [Add a custom artifact sourc
 
 
 
+## Artifact limits and display in the Harness UI
+
+The following table lists how many artifact versions Harness displays in its UI drop-downs, and how Harness sorts the versions.
+
+|     **Artifact Source Type**     |   **Limit**   |                                               **Order**                                                |
+| -------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------ |
+| DockerRegistry                   | 10000         | Lexical (descending)                                                                                   |
+| Google Container Registry        | No Limit      | Lexical (descending)                                                                                   |
+| AWS ECR                          | No Limit      | Lexical (descending)                                                                                   |
+| Azure Container Registry         | 500           | Lexical (descending)                                                                                   |
+| Google Artifact Registry(Docker) | 2,147,483,647 | Lexical (descending)                                                                                   |
+| Artifactory(Docker)              | No Limit      | Lexical (descending)                                                                                   |
+| Artifactory(Generic)             | 10000         | Descending order of created at.                                                                        |
+| Github Packages                  | No Limit      |                                                                                                        |
+| Nexus3(Docker)                   | No Limit      | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
+| Nexus3(non-Docker)               | 2,147,483,647 | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
+| Nexus2                           | No Limit      | Lexical (descending)                                                                                   |
+| Amazon S3                        | No Limit      | Descending order of last modified.                                                                     |
+| Amazon Machine Image             | No Limit      | Descending order of image creation time.                                                               |
+| Azure Artifacts                  | No Limit      |                                                                                                        |
+| Jenkins                          | 25            | Lexical (descending)                                                                                   |
+| Custom                           | No Limit      | The same as the custom script used.                                                                    |
 
 
 ## Pull an image from a private registry
@@ -3325,6 +3692,12 @@ With these requirements met, the cluster imports the credentials from the Docker
 
 </details>
 
+
+:::warning
+
+When selecting artifacts/tags in Harness dropdown menus, if the artifacts/tags use Harness expressions, please keep in mind that some expressions can’t be resolved outside of pipeline execution. For example, artifacts/tags expressions using `<+project.name>` or `<+org.name>` will not resolve to values in runtime dropdowns, including those used to load tags.
+
+:::
 
 ## Sidecar workloads
 
