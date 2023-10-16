@@ -165,14 +165,46 @@ The allowed value for the `upgrader` schedule is between one and 90 minutes. Har
 To configure the delegate upgrade schedule, do the following:
 
 1. In the `delegate.yaml` manifest file, locate the `upgrader-cronjob` resource.
-2. Configure the **CronJob** resource to your specific settings. The CronJob YAML configuration should look something like this. The `spec.schedule` field defines when and how often the job should run.
+2. Configure the **CronJob** resource to your specific settings.
 
-   The example below runs the job every 15 minutes.
+   The CronJob YAML configuration should look something like the example below that runs the job every 15 minutes. The `spec.schedule` field defines when and how often the job should run.
    
    ```yaml
+   ---
+     
+   apiVersion: batch/v1
+   kind: CronJob
+   metadata:
+     labels:
+       harness.io/name: kubernetes-delegate-upgrader-job
+     name: kubernetes-delegate-upgrader-job
+     namespace: harness-delegate-ng
    spec:
      schedule: "0,15,30,45 * * * *"
-  ```
+     concurrencyPolicy: Forbid
+     startingDeadlineSeconds: 20
+     jobTemplate:
+       spec:
+         template:
+           spec:
+             serviceAccountName: upgrader-cronjob-sa
+             restartPolicy: Never
+             containers:
+             - image: harness/upgrader:latest
+               name: upgrader
+               imagePullPolicy: Always
+               envFrom:
+                - secretRef:
+                   name: kubernetes-delegate-upgrader-token
+               volumeMounts:
+                 - name: config-volume
+                   mountPath: /etc/config
+             volumes:
+               - name: config-volume
+                 configMap:
+                   name: kubernetes-delegate-upgrader-config
+   ```
+
 3. Save the file.
 4. Run `kubectl apply -f harness-delegate.yaml`.
 
