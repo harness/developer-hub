@@ -21,25 +21,34 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest: October 16, 2023
 
-### Continuous Delivery, version 810xx
+### Continuous Delivery, version 81008
 
-- Now, when configuring a coverage rule for a deployment freeze window, if you choose to include all services or all environments, Harness gives you the option to exclude specific services or environments, respectively. This functionality is the same as the options provided for excluding organizations and projects, and it reduces your effort when the entities you want to include outnumber those you want to exclude. (CDS-79505)
+- Ability to exclude services or environments from deployment freeze window (CDS-79505)
+
+  Now, when configuring a coverage rule for a deployment freeze window, if you choose to include all services or all environments, Harness gives you the option to exclude specific services or environments, respectively. This functionality is the same as the options provided for excluding organizations and projects, and it reduces your effort when the entities you want to include outnumber those you want to exclude. 
 
   For more information, go to [Define freeze window coverage and schedule](/docs/continuous-delivery/manage-deployments/deployment-freeze/#define-freeze-window-coverage-and-schedule).
 
-<!-- CDS-74220 is WIP -->
+- Additional information for pipeline events (CDS-78150)
 
-- With this latest update, users will notice the following improvements when interacting with forms. (CDS-74220, ZD-47456, ZD-50077)
+  The following pipeline events now include the name, pipeline tag, and failure message:
+    - PIPELINE_FAILED
+    - STAGE_FAILED
+    - STEP_FAILED
+  
+  The following pipeline events now include the name and pipeline tag:
+    - PIPELINE_SUCCESS
+    - STAGE_SUCCESS
 
-  Initial Empty State: When users open a form for the first time, they will notice that it appears empty, allowing them to begin their input process with a clean slate.
+- Improvements to the user experience with forms (CDS-74220, ZD-47456, ZD-50077)
 
-  Runtime Inputs: Some fields within the form are intentionally left empty by users. With this update, these empty fields should now be manually converted into runtime inputs. This means that users can modify and set values for these fields during runtime.
+  The following improvements have been made to forms to enhance your user experience: 
 
-  Retained InputSet Values: When users run a pipeline using the form, they will now experience a seamless process. The form will load with the same values as the previous input set without any unwanted clearing or mutation of the InputSet.
+    - Initial empty state: forms opened for the first time are empty. This allows you to begin your input process with a clean slate.
 
-- Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. (CDS-79414)
+    - Runtime inputs: fields that you intentionally leave empty are manually converted to runtime inputs. You can modify and set values for these fields during runtime.
 
-  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+    - Retained input set values: when you run a pipeline using the form, your experience will be seamless. The form loads with the same values as the previous input set without any unwanted clearing or mutation.
 
 ## October 9, 2023
 
