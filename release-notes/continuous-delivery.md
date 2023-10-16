@@ -46,27 +46,48 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
-## Latest: Harness version 810xx
+## Latest: Harness version 81008
 
 ### New features and enhancements
 
-- Now, when configuring a coverage rule for a deployment freeze window, if you choose to include all services or all environments, Harness gives you the option to exclude specific services or environments, respectively. This functionality is the same as the options provided for excluding organizations and projects, and it reduces your effort when the entities you want to include outnumber those you want to exclude. (CDS-79505)
+- Ability to exclude services or environments from deployment freeze window (CDS-79505)
+
+  Now, when configuring a coverage rule for a deployment freeze window, if you choose to include all services or all environments, Harness gives you the option to exclude specific services or environments, respectively. This functionality is the same as the options provided for excluding organizations and projects, and it reduces your effort when the entities you want to include outnumber those you want to exclude. 
 
   For more information, go to [Define freeze window coverage and schedule](/docs/continuous-delivery/manage-deployments/deployment-freeze/#define-freeze-window-coverage-and-schedule).
 
-<!-- CDS-74220 is WIP -->
+- Additional information for pipeline events (CDS-78150)
 
-- With this latest update, users will notice the following improvements when interacting with forms. (CDS-74220, ZD-47456, ZD-50077)
+  The following pipeline events now include the name, pipeline tag, and failure message:
+    - PIPELINE_FAILED
+    - STAGE_FAILED
+    - STEP_FAILED
+  
+  The following pipeline events now include the name and pipeline tag:
+    - PIPELINE_SUCCESS
+    - STAGE_SUCCESS
 
-  Initial Empty State: When users open a form for the first time, they will notice that it appears empty, allowing them to begin their input process with a clean slate.
+- Improvements to the user experience with forms (CDS-74220, ZD-47456, ZD-50077)
 
-  Runtime Inputs: Some fields within the form are intentionally left empty by users. With this update, these empty fields should now be manually converted into runtime inputs. This means that users can modify and set values for these fields during runtime.
+  The following improvements have been made to forms to enhance your user experience: 
 
-  Retained InputSet Values: When users run a pipeline using the form, they will now experience a seamless process. The form will load with the same values as the previous input set without any unwanted clearing or mutation of the InputSet.
+    - Initial empty state: forms opened for the first time are empty. This allows you to begin your input process with a clean slate.
 
-- Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. (CDS-79414)
+    - Runtime inputs: fields that you intentionally leave empty are manually converted to runtime inputs. You can modify and set values for these fields during runtime.
+
+    - Retained input set values: when you run a pipeline using the form, your experience will be seamless. The form loads with the same values as the previous input set without any unwanted clearing or mutation.
+
+<!-- 
+
+CDS-79414 appears in the fixed issues list in 80811. Here, it's in the new feats list. I asked Pragyesh, who tells me to remove it from here and move the 808xx instance to the enhancements section because this is an enhancement. Leaving this comment here for now and removing it subsequently.
+
+- Autoscaling for green services for ECS Blue Green Swap Targets (CDS-79414)
+
+  Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. 
 
   This item requires Harness Delegate version 23.10.80808. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+-->
 
 
 ### Early access features
@@ -83,7 +104,7 @@ This release does not include early access features.
 
 - The `pipelines/execution/{planExecutionId}/notes` API call did not have the `PIPELINE_EXECUTE` permission, so you could not update notes even if you had the permissions to execute the pipeline.
 
-  This issue has been fixed. The API for updating execition notes now has the `PIPELINE_EXECUTE` permissions. (CDS-80634)
+  This issue has been fixed. The API for updating execution notes now has the `PIPELINE_EXECUTE` permissions. (CDS-80634)
 
 - If you updated a service by using Pipeline Studio or by using the upsert API, and the deployment included service v1, the audit trail did not record the update. (CDS-80496, ZD-51390)
 
@@ -127,41 +148,41 @@ This release does not include early access features.
 
   This issue has been fixed.
 
-  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - When the OCI Helm connector was configured with a URL that contained a path (somehost.io/path1/path2) and not just the host name (somehost.io), attempts to fetch chart versions failed. (CDS-79786, ZD-50862, ZD-51081)
 
   This issue has been fixed. Chart versions are fetched even with a path in the connector URL.
 
-  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The Merge PR step fails with GitLab connectors. (CDS-79772)
 
   This issue has been fixed.
 
-  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Execution failure logs associated with an exception named `DuplicateKeyException` included the name of the Harness production server. (CDS-79514, ZD-50804)
 
   This issue has been fixed.
 
-  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Harness now supports the deployment of ECS services whose count is the same as the running instances in a blue-green strategy (CDS-79412)
 
-  This item requires Harness Delegate version yy.mm.808xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.10.80808. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - If a pipeline that includes the Terragrunt Apply step fails, the Terragrunt working directory is not removed from the file system. Consequently, the delegate container's disk usage gradually increases. The issue occurs when the working directory includes symbolic links. (CDS-79020,	ZD-50532)
 
   This issue has been fixed.
 
-  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - If a step in a WinRM deployment fails, Harness does not clean up temporary files created on the remote host. (CDS-78304, ZD-49543)
 
   This issue has been fixed. 
 
-  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 
 ## Previous releases
