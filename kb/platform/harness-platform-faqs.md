@@ -1067,7 +1067,7 @@ This feature is currently available in CG, you can use `Restrict users to email 
 
 #### The user is blocked because of entry not cleared for his prod2 account from gateway, What could be possible steps to login?
 
-The user can directly login using deep link, https://app.harness.io/ng/account/<AccountId>/main-dashboard.
+The user can directly login using deep link, https://app.harness.io/ng/account/AccountId/main-dashboard.
 
 #### The user is unable to log in, they're getting unable to log in with SSO when we have SSO enabled on the account.
 
