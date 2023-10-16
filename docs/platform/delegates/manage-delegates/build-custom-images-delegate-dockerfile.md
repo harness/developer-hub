@@ -42,7 +42,7 @@ To learn about delegate version support expiration, go to [Delegate expiration p
 Here is an example script to get the version, which uses `curl` to fetch and `jq` to parse:
 
 ```
-latest_version=$(curl -X GET 'https://app.harness.io/gateway/ng/api/delegate-setup/latest-supported-version?accountIdentifier=<replace_with_account_ideentifier>' -H 'x-api-key: <replace_with_api_key>')
+latest_version=$(curl -X GET 'https://app.harness.io/gateway/ng/api/delegate-setup/latest-supported-version?accountIdentifier=<YOUR_ACCOUNT_IDENTIFIER>' -H 'x-api-key: <YOUR_API_KEY>')
 
 # Extract the build version using jq and string manipulation
 build_version=$(echo $latest_version | jq -r '.resource.latestSupportedVersion' | cut -d '.' -f 3)

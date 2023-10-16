@@ -2,6 +2,7 @@ import gs from "./components/Docs/GetStarted";
 
 
 export enum MODULES {
+  gs = 'gs',
   ci = 'ci',
   cd = 'cd',
   ccm = 'ccm',
@@ -21,6 +22,7 @@ export enum MODULES {
 }
 
 export const MODULE_DISPLAY_NAME = {
+    [MODULES.gs]: 'Getting Started',
     [MODULES.ci]: 'Continuous Integration',
     [MODULES.cd]: 'Continuous Delivery',
     [MODULES.ccm]: 'Cloud Cost Management',
