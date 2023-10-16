@@ -602,9 +602,47 @@ https://devcenter.bitrise.io/en/steps-and-workflows/workflow-recipes-for-ios-app
 ```
 
 ```yaml
-```
-
-```yaml
+              - step:
+                  type: Bitrise
+                  name: change android version
+                  identifier: change_android_version
+                  spec:
+                    uses: github.com/bitrise-steplib/steps-change-android-versioncode-and-versionname.git ## Specify the Bitrise Integration's GitHub repo.
+                    with: ## Define settings (inputs) required for the integration.
+                      new_version_name: '1.1.0'
+                      new_version_code: '<+pipeline.sequenceId>'
+                      build_gradle_path: '/path/to/build.gradle'
+              - step:
+                  type: Bitrise
+                  name: bitrise android build
+                  identifier: bitrise_android_build
+                  spec:
+                    uses: github.com/bitrise-steplib/bitrise-step-android-build.git
+                    with:
+                      project_location: '/path/to/build.gradle'
+                      variant: 'release'
+                      build_type: 'aab'
+              - step:
+                  type: Bitrise
+                  name: bitrise sign apk
+                  identifier: bitrise_sign_apk
+                  spec:
+                    uses: github.com/bitrise-steplib/steps-sign-apk.git
+                    with:
+                      android_app: '/path/to/aab'
+              - step:
+                  type: Bitrise
+                  name: bitrise google play deploy
+                  identifier: bitrise_google_play_deploy
+                  spec:
+                    uses: github.com/bitrise-steplib/steps-google-play-deploy.git
+                    with:
+                      service_account_json_key_path: '$SERVICE_ACCOUNT_KEY_URL'
+                      package_name: 'my.android.project'
+                      app_path: '/path/to/signed/aab'
+                      track: 'beta'
+                    env:
+                      SERVICE_ACCOUNT_KEY_URL: <+secrets.getValue("json_key_path")>
 ```
 
 ```mdx-code-block
