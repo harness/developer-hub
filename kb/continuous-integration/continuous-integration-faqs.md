@@ -506,3 +506,55 @@ You can speed up your test cycles by running only the unit tests required to con
 #### What are some of the other benefits of Test intelligence?
 
 Test Intelligence also identifies negative trends and provides actionable insights to improve quality. 
+
+#### How can Harness input sets help automate a CI pipeline?
+
+Input sets are a collection of runtime inputs for a Pipeline execution. With input sets, you can use the same pipeline for multiple scenarios. You can define each scenario in an input set or overlay, and then select the appropriate scenario when you execute the pipeline. 
+
+
+#### How is a Codebase utilized?
+
+When adding a Build stage to a CI pipeline, specify the Git account and repository where your code is stored. 
+
+
+#### Which Codebase is utilized during a build deployment? 
+
+The codebase declared in the first stage of a pipeline becomes the pipeline's default codebase
+
+
+
+#### What is the build credit limit for Harness Free version?
+
+Upto 2,000 build minutes are possible with the Harness free version. 
+
+
+#### Can I use xcode on a MacOS build system as part of Harness Cloud?
+
+Yes, several different versions of xcode as well as homebrew are installed on the default MacOS image.
+
+
+#### Harness Platform Rate limits
+
+Please note that harness does limit accessive API and execution limitations. Harness does reserve the right to change these limits. 
+See site fore more details [https://developer.harness.io/docs/platform/rate-limits/]
+
+#### What are Harness Secrets and how are they tied to connectors? 
+
+Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
+
+#### How to view changes in a Harness Pipeline between deployments
+
+Harness allows users to compare changes to a pipeline YAML. This is often a useful tool to determine why a pipeline has changed behavior. 
+See the site for more details [https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/]
+
+#### What is Harness Rollback in the CI pipeline
+
+Harness Rollback deployments initiate a rollback of the most recent successful execution. Note that this feature is behind a feature flag '''POST_PROD_ROLLBACK'''. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS)
+
+
+#### What does a failure strategy consist of?
+
+First: Error conditions that trigger the failure strategy.
+
+Second: Actions to take when the specified error conditions occur.
+

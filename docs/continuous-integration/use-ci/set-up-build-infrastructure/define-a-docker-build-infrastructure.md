@@ -421,7 +421,17 @@ To resolve this issue:
 2. Set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin, such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`.
 3. Restart the runner.
 
-### Windows daemon fails with invalid working directory path
+### Runner can't find an available, non-overlapping IPv4 address pool.
+
+The following runner error can occur during stage setup (the **Initialize** step in build logs):
+
+```
+Could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network.
+```
+
+This error means the number of Docker networks has exceeded the limit. To resolve this, you need to clean up unused Docker networks. To get a list of existing networks, run [`docker network ls`](https://docs.docker.com/engine/reference/commandline/network_ls/), and then remove unused networks with [`docker network rm`](https://docs.docker.com/engine/reference/commandline/network_rm/) or [`docker network prune`](https://docs.docker.com/engine/reference/commandline/network_prune/).
+
+### Docker daemon fails with invalid working directory path on Windows
 
 The following error can occur in Windows local runner build infrastructures:
 
