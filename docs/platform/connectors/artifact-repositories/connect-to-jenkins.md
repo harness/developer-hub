@@ -53,7 +53,7 @@ Click **Continue**.
 
 ### Step 2: Enter the Jenkins URL
 
-Enter the URL of the Jenkins server.
+Enter the URL of the Jenkins master or controller.
 
 If you are using the Jenkins SaaS (cloud) edition, the URL is in your browser's location field.
 
