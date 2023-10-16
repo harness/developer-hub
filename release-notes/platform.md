@@ -36,8 +36,6 @@ The following deprecated API endpoints will no longer be supported:
 
 - The HPA configuration setting is now included in the default Kubernetes delegate YAML file. (PL-36021)
 
-   This item is available with Harness Platform version 81008 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
   ```yaml
    ---
    
@@ -59,6 +57,8 @@ The following deprecated API endpoints will no longer be supported:
    
    ---
    ```
+
+   This item is available with Harness Platform version 81008 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
 
