@@ -28,9 +28,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 8010xx, Harness Delegate version 23.10.810xx
+## Latest: Harness version 81008, Harness Delegate version 23.10.81010
 
-Harness NextGen release 810xx includes the following changes for the Harness Delegate.
+Harness NextGen release 81008 includes the following changes for the Harness Delegate.
 
 :::danger Breaking change
 Harness implemented access checks to restrict unauthorized users from viewing delegate information on the delegate list page. Access checks are now enforced on the page for delegate view permissions.(PL-38958, ZD-50634)
