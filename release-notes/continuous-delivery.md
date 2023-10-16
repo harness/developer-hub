@@ -77,18 +77,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
     - Retained input set values: when you run a pipeline using the form, your experience will be seamless. The form loads with the same values as the previous input set without any unwanted clearing or mutation.
 
-<!-- 
-
-CDS-79414 appears in the fixed issues list in 80811. Here, it's in the new feats list. I asked Pragyesh, who tells me to remove it from here and move the 808xx instance to the enhancements section because this is an enhancement. Leaving this comment here for now and removing it subsequently.
-
-- Autoscaling for green services for ECS Blue Green Swap Targets (CDS-79414)
-
-  Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. 
-
-  This item requires Harness Delegate version 23.10.80808. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
--->
-
 
 ### Early access features
 
