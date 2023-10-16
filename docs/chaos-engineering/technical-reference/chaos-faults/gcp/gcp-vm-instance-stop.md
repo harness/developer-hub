@@ -12,11 +12,12 @@ GCP VM instance stop powers off from a GCP VM instance using the instance name (
 
 - GCP VM instance stop fault determines the resilience of an application that runs on a VM instance when a VM instance unexpectedly stops (or fails).
 
-:::note
+:::info note
 - Kubernetes > 1.16 is required to execute this fault.
 - Adequate GCP permissions to stop and start the GCP VM instances.
 - The VM instances should be in a healthy state.
-- Kubernetes secret should have the GCP service account credentials in the default namespace. Below is a sample secret file:
+- Kubernetes secret should have the GCP service account credentials in the default namespace. Refer [generate the necessary credentials in order to authenticate your identity with the Google Cloud Platform (GCP)](/docs/chaos-engineering/technical-reference/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) docs for more information.
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -48,17 +49,17 @@ stringData:
       <tr>
         <td> GCP_PROJECT_ID </td>
         <td> Id of the GCP project that belong to the VM instances. </td>
-        <td> All the VM instances must belong to a single GCP project. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss-by-label#detach-volumes-by-label#gcp-project-id">GCP project ID. </a></td>
+        <td> All the VM instances must belong to a single GCP project. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-disk-loss-by-label/#detach-volumes-by-label#gcp-project-id">GCP project ID. </a></td>
       </tr>
       <tr>
         <td> VM_INSTANCE_NAMES </td>
         <td> Name of the target VM instances. </td>
-        <td> Multiple instance names can be provided as instance1,instance2,... and so on. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-instance-stop#target-gcp-instances">target GCP instances. </a></td>
+        <td> Multiple instance names can be provided as instance1,instance2,... and so on. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-instance-stop/#target-gcp-instances">target GCP instances. </a></td>
       </tr>
       <tr>
         <td> ZONES </td>
         <td> The zones of the target VM instances. </td>
-        <td> Zone for every instance name is provided as zone1,zone2,... and so on, in the same order as <code>VM_INSTANCE_NAMES</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss-by-label#zones">zones. </a></td>
+        <td> Zone for every instance name is provided as zone1,zone2,... and so on, in the same order as <code>VM_INSTANCE_NAMES</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-disk-loss-by-label/#zones">zones. </a></td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -71,27 +72,27 @@ stringData:
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos. </a></td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos">duration of the chaos. </a></td>
       </tr>
        <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval">chaos interval.</a></td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#chaos-interval">chaos interval.</a></td>
       </tr>
       <tr>
         <td> MANAGED_INSTANCE_GROUP </td>
         <td> It is set to <code>enable</code> if the target instance is a part of the managed instance group. </td>
-        <td> Defaults to <code>disable</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-instance-stop#managed-instance-group">managed instance group.</a></td>
+        <td> Defaults to <code>disable</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-instance-stop/#managed-instance-group">managed instance group.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target instances. </td>
-        <td> Defaults to parallel. It supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. It supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
     </table>
 

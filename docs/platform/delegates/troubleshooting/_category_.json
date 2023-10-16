@@ -1,0 +1,14 @@
+{
+    "label":"Troubleshooting",
+    "position": 40,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Troubleshooting"
+    },
+    "customProps":{
+       "helpdocs_category_id":""
+    }
+ }

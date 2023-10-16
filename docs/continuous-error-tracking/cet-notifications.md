@@ -1,7 +1,7 @@
 ---
 title: Notifications
 description: Notify your team when an event occurs.
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # CET notifications

@@ -39,11 +39,11 @@ The following table lists the Harness Continuous Verification FirstGen and Harne
 
 ## Service Instance Identifier (SII)
 
-The Service Instance Identifier (SII) is a feature used in Harness Continuous Verification NextGen to identify [new or changed nodes](https://developer.harness.io/docs/continuous-delivery/verify/cv-results/interpret-metric-results#nodes-section) during a deployment. It acts as a filter to pinpoint metrics related to what has been deployed. Harness Continuous Verification NextGen uses the SII to calculate the deployed components based on observed metrics. This is particularly useful in scenarios like canary deployments, where the SII helps determine which nodes are stable and which nodes represent the canary in the current phase of analysis.
+The Service Instance Identifier (SII) is a feature used in Harness Continuous Verification NextGen to identify [new or changed nodes](/docs/continuous-delivery/verify/cv-results/interpret-metric-results#nodes-section) during a deployment. It acts as a filter to pinpoint metrics related to what has been deployed. Harness Continuous Verification NextGen uses the SII to calculate the deployed components based on observed metrics. This is particularly useful in scenarios like canary deployments, where the SII helps determine which nodes are stable and which nodes represent the canary in the current phase of analysis.
 
 ### Use SII in Harness Continuous Verification NextGen
 
-Here's an example of how to set up Harness Continuous Verification NextGen with a 5-minute analysis window using a [Prometheus Health Source](https://developer.harness.io/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-prometheus) for a rolling deployment to a Kubernetes endpoint. This example also demonstrates using SII to filter and identify specific deployments.
+Here's an example of how to set up Harness Continuous Verification NextGen with a 5-minute analysis window using a [Prometheus Health Source](/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-prometheus) for a rolling deployment to a Kubernetes endpoint. This example also demonstrates using SII to filter and identify specific deployments.
 
 PromQL:
 

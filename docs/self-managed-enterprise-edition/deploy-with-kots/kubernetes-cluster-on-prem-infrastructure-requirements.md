@@ -1,6 +1,6 @@
 ---
 title: KOTS installation requirements
-description: Requirements for using KOTS installation for Harness Self-Managed Enterprise Edition.
+description: Requirements for using KOTS installation for the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 1
 helpdocs_topic_id: d5lptkp5ow
 helpdocs_category_id: vu99714ib1

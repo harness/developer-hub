@@ -1,7 +1,7 @@
 ---
 title: Export perspective data
 description: Export your perspectives' reports as CSV files
-# sidebar_position: 2
+sidebar_position: 5
 helpdocs_topic_id: t07cnubtp1
 helpdocs_category_id: e7k0qds7tw
 helpdocs_is_private: false

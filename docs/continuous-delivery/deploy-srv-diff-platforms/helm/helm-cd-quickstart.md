@@ -8,9 +8,9 @@ Harness supports Helm 3 deployments as part of its Kubernetes swimlane. You can 
 
 This topic summarizes Helm support in Harness and provides links to Helm-related topics.
 
-For a quick tutorial, go to [Deploy using Helm Chart](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/helm-chart).
+For a quick tutorial, go to [Deploy using Helm Chart](/tutorials/cd-pipelines/kubernetes/helm-chart).
 
-Learn [CD pipeline basics](/docs/continuous-delivery/get-started/cd-pipeline-basics) before you review Helm deployment basics below.
+Learn [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts) before you review Helm deployment basics below.
 
 <details>
 <summary>Visual summary</summary>
@@ -151,17 +151,17 @@ You can add a trigger to your pipeline that will run the pipeline when the Helm 
 
 For details, go to:
 
-- [Trigger pipelines on new Helm chart](https://developer.harness.io/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart)
-- [Trigger pipelines on a new artifact](https://developer.harness.io/docs/platform/Triggers/trigger-on-a-new-artifact)
-- [Triggers](https://developer.harness.io/docs/category/triggers)
+- [Trigger pipelines on new Helm chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart)
+- [Trigger pipelines on a new artifact](/docs/platform/Triggers/trigger-on-a-new-artifact)
+- [Triggers](/docs/category/triggers)
 
 ## Helm delegates
    
 Harness includes a Helm-based Harness delegate but you can use any delegate type for Helm deployments.
 
-For steps on Helm delegates, go to [Delegate installation overview](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
+For steps on Helm delegates, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
 
-If you select to build your own delegate and include only those tools needed for Helm deployments, go to [Delegate-required SDKs](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-required-sdks/) to see what Kubernetes and Helm-related binaries are required.
+If you select to build your own delegate and include only those tools needed for Helm deployments, go to [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks/) to see what Kubernetes and Helm-related binaries are required.
 
 
 

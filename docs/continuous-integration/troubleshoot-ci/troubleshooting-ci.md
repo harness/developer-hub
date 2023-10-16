@@ -11,6 +11,7 @@ helpdocs_is_published: true
 ```mdx-code-block
 import Kubevict from '/docs/continuous-integration/shared/k8s-pod-eviction-trbs.md';
 import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
+import DindTrbs from '/docs/continuous-integration/shared/dind-bg-gha-trbs.md';
 ```
 
 This topic contains troubleshooting information for error messages and other issues that can arise with Harness CI. For more Harness troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
@@ -25,7 +26,7 @@ If you cannot find a resolution, please contact [Harness Support](mailto:support
 
 ## Git connector fails to connect to the SCM service
 
-The following SCM service errors can occur with [Git connectors](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference).
+The following SCM service errors can occur with [Git connectors](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference).
 
 ### SCM request failed with: UNKNOWN
 
@@ -59,15 +60,37 @@ environment:
 
 For more information about self-signed certificates, delegates, and delegate environment variables, go to:
 
-* [Delegate environment variables](/docs/platform/2_Delegates/delegate-reference/delegate-environment-variables.md)
-* [Docker delegate environment variables](/docs/platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md)
+* [Delegate environment variables](/docs/platform/delegates/delegate-reference/delegate-environment-variables.md)
+* [Docker delegate environment variables](/docs/platform/delegates/delegate-reference/docker-delegate-environment-variables.md)
 * [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md)
 * [Install delegates](/docs/category/install-delegates)
 * [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
+## Clone codebase errors
+
+For troubleshooting information related to cloning codebases, go to [Create and configure a codebase - Troubleshooting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#troubleshooting).
+
 ## Truncated execution logs
 
 Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB.
+
+Furthermore, there is a single-line limit of 70KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`.
+
+### Export full logs
+
+If your log files are larger than 5MB, you can export execution logs to an external cache and examine the full logs there.
+
+1. Add a step to your pipeline that records each step's complete logs into one or more files.
+2. If you have a lot of log files or your logs are large, add a step to compress the log files into an archive.
+3. Use an [Upload Artifact step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#upload-artifacts) to upload the log files to cloud storage.
+4. Repeat the above process for each stage in your pipeline for which you want to export the full logs.
+5. Examine the log files in your cloud storage. If you used the **S3 Upload and Publish** or **Artifact Metadata Publisher** plugins, you can find direct links to your uploaded files on the **Artifacts** tab on the [Build detail page](../use-ci/viewing-builds.md).
+
+:::tip Log forwarding
+
+You can also use a service, such as [env0](https://docs.env0.com/docs/logs-forwarding), to forward logs to platforms suited for ingesting large logs.
+
+:::
 
 ## Step logs disappear
 
@@ -128,3 +151,15 @@ To change the connector's connectivity settings:
 4. Select **Continue** until you reach **Select Connectivity Mode**.
 5. Select **Change** and select **Connect through Harness Platform**.
 6. Select **Save and Continue** and select **Finish**.
+
+## Can't connect to Docker daemon
+
+<DindTrbs />
+
+## Troubleshoot AWS VM build infrastructures
+
+For troubleshooting information for AWS VM build infrastructures, go to [Set up an AWS VM build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md#troubleshooting).
+
+## Troubleshoot local runner build infrastructures
+
+For troubleshooting information for local runner build infrastructures, go to [Set up a local runner build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md#troubleshooting-the-delegate-connection).

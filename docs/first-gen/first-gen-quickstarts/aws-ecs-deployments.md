@@ -299,7 +299,7 @@ The Harness Application represents a logical group of the ECS setup and release 
 
    ![](./static/aws-ecs-deployments-113.png)
 	 
-   We won't cover all of the Application entities in this tutorial. We assume you've read  [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
+   We won't cover all of the Application entities in this tutorial. We assume you've read  [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
 
    To add your specs, you create a Harness Service. Services represent your microservices/apps. You define the sources of app artifacts for those microservices, and you add your ECS specs.
 

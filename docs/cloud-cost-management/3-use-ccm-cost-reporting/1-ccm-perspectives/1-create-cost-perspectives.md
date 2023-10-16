@@ -1,7 +1,7 @@
 ---
 title: Create perspectives
 description: Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
-# sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: dvspc6ub0v
 helpdocs_category_id: e7k0qds7tw
 helpdocs_is_private: false
@@ -12,7 +12,7 @@ You can add business context to your Harness Cloud Cost Management (CCM) data us
 
 ### Before You Begin
 
-* [Set Up Cloud Cost Management for your cloud service provider](https://developer.harness.io/docs/category/set-up-cloud-cost-management)
+* [Set Up Cloud Cost Management for your cloud service provider](https://developer.harness.io/docs/category/onboarding-guide-for-ccm)
 * [Use Cost Categories](../2-ccm-cost-categories/1-ccm-cost-categories.md)
 
 ## Cloud Costs Perspective Concepts
@@ -47,7 +47,12 @@ For example, in **Rules for Perspective**, if you select `Label: kubernetes.io/n
 For example, in **Rules for Perspective**, if you select `Label: kubernetes.io/name` as `NOT_NULL`, then your Perspective will list the cost of the selected label only (`kubernetes.io/name`). It won't include the cost of any other resource.
 
   ![](./static/create-cost-perspectives-17.png)
-* **LIKE**: Use the Like operator to include the cost of all items in the selected filter that match the specified condition. For example, if you have selected the Cost category filter, you could use the Like operator to specify condition "database" to filter all cost categories that is related to database. 
+* **LIKE**: The Like operator uses `REGEXP_CONTAINS` provided by the BigQuery at the backend. This function is used to check if a given value partially matches a specified regular expression. 
+
+  - Retrieves result even if the value partially matches the regular expression. 
+  - To search for a full match (the entire value matches the regular expression), use `^` at the beginning of the regular expression and `$` at the end of the regular expression. These symbols signify the beginning and end of the text, respectively.
+
+  For example, `AWS Account ID LIKE ‘abc’`. This means REGEXP_CONTAINS(aws_account_id, r'abc). User input is 'abc' in this example.
 
 ### Filters
 
@@ -132,46 +137,11 @@ For details on adding Budgets, Reports, and Alerts go to:
 
 * [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md)
 * [Share Your Cost Perspective Report](../../3-use-ccm-cost-reporting/1-ccm-perspectives/4-share-cost-perspective-report.md)
-* [Detect Cloud Cost Anomalies with CCM](../../3-use-ccm-cost-reporting/4-detect-cloud-cost-anomalies-with-ccm.md)
+* [Detect Cloud Cost Anomalies with CCM](/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm)
 
 ## Perspective Preferences
 
-In **Preferences**, you have the following options.
-
-### Include Others
-
-The graphs displayed in a Perspective show the top 12 costs only. In order to include the remaining data, Harness displays **Others**.
-
-![](./static/create-cost-perspectives-23.png)
-
-**Others** is always the total cost minus the top 12 costs listed in the graph you are viewing.
-
-Enable **Include Others** in **Preferences** to have it displayed in the Perspective chart.
-
-You can also enable **Include Others** in the Perspective chart:
-
-![](./static/create-cost-perspectives-24.png)
-
-The **Include Others** option must be enabled in **Preferences** to make it persist in the Perspective.
-
-### Include Unallocated
-
-In some graphs, you will also see an **Unallocated** item. This is included to help you see all of the costs. If you look at the Total Cost in the Perspective, it includes the costs of all items and the Unallocated cost.
-
-![](./static/create-cost-perspectives-25.png)
-
-The **Include Unallocated** option is only available in the chart when the **Group By** is using **Cluster** and the following options are selected:
-
-* Namespace
-* Namespace ID
-* Workload
-* Workload ID
-* ECS Task
-* ECS Task ID
-* ECS Service ID
-* ECS Service
-* ECS Launch Type ID
-* ECS Launch Type
+Go to [Perspective Preferences](perspective-preferences.md) to learn about these settings.
 
 ### Review: No Account/Project/etc
 
@@ -179,9 +149,14 @@ It's important to understand the difference between the **Others** and **No Acco
 
 When a Perspective includes multiple data sources (for example, AWS, GCP, and Cluster) and you select one data source in a Perspective **Group By**, such as **AWS: Account**, the costs for the AWS data source are displayed individually. The costs for the other data sources (GCP, Cluster) are grouped under **No Account**.
 
-In other words, a row with No followed by the selected `Group by` is displayed for costs that don’t have any relation with the selected `Group by`. For example, **No SKUs** is displayed for costs (AWS, clusters, etc.) that don’t have any GCP SKUs associated with it.
+In other words, a row with **No** followed by the selected `Group by` is displayed for costs that don’t have any relation with the selected `Group by`. For example, **No SKUs** is displayed for costs (AWS, clusters, etc.) that don’t have any GCP SKUs associated with it.
 
 Another example is if the **Group By** is **Project**. For example, if you selected GCP: Project, then the **No Project** item in the graph represents the AWS and Cluster project costs.
+
+Essentially, `No GroupBy` represents the null values for that `Group By` grouping. To work with these null values either in perspective filters or rules, you need to use the "IS NULL" function on that field. Since Perspectives don't explicitly provide a `No GroupBy` value in the filters, the "IS NULL" field serves as the way to handle these `No GroupBy` items. 
+
+  For example, if your perspective includes both GCP and AWS cloud providers, and you intend to categorize costs by AWS accounts using the `GroupBy` function, any costs associated with GCP will be classified under the label `No Account`. In case you wish to view only the GCP costs, you can apply a filter with the condition `AWS > Account` IS NULL.
+
 
 ## Edit a Perspective
 
@@ -189,23 +164,23 @@ To edit a Perspective, do the following:
 
 1. Select the Perspective that you want to edit, and click **Edit**.
    
-     ![](./static/create-cost-perspectives-26.png)
 2. The **Perspective Builder** appears. Follow the steps in **Create Cost Perspectives** to edit the Perspective.
 
 ## Clone a Perspective
 
-When you clone a Perspective, all its settings are cloned. You simply add a new name. Once it is cloned, you can edit it just as you would any Perspective. To clone a Perspective, do the following:
+When you clone a Perspective, all its settings are cloned. You simply add a new name. After it is cloned, you can edit it just as you would edit any perspective. To clone a Perspective, do the following:
 
-1. Select the Perspective that you want to clone, and click **Clone**.
+Select the more actions icon on the Perspective tile that you want to clone, and select **Clone**.
    
-     ![](./static/create-cost-perspectives-27.png)
-2. The cloned Perspective appears.
+  ![](./static/clone-delete-perspective.png)
+    
+  The cloned Perspective appears. 
 
 ## Delete a Perspective
 
 To delete a Perspective, do the following:
 
-1. Select the Perspective that you want to delete, and click **Delete**.  
+Select the more actions icon on the Perspective tile that you want to delete, and select **Delete**.  
   
 The Perspective is deleted and no longer appears in the Perspective dashboard.
 

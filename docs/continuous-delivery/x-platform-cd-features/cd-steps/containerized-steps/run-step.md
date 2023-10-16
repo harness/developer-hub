@@ -23,6 +23,10 @@ Harness CD also includes a general scripting step, the [Shell Script](/docs/cont
 
 The Run step settings are described below.
 
+## Important notes
+
+- You cannot use this step with a non-root user at this time.
+
 ## Container Registry and Image
 
 **Container Registry** is a Harness Docker registry connector for the image that you want Harness to run commands on, such as Docker Hub.
@@ -39,7 +43,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
   ![picture 0](static/659f371c3e8d30d831642c9fef9dbf652dca4c5fd050f0dc68b128f0b04101d9.png)  
 
-  <figcaption>Figure 1: Configuring GCR Container Registry and Image settings.</figcaption>
+  <figcaption>Configuring GCR Container Registry and Image settings.</figcaption>
   </figure>
 
 
@@ -62,7 +66,7 @@ You can reference services started in CD [Background steps](/docs/continuous-del
 
 ![picture 0](static/1d52c641a8b442054d83fc2b8bacc1917371f53c7100a0fcf0a7b6666342ce2e.png)
 
-<figcaption>Figure 2: The Background step Id, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
+<figcaption>The Background step Id, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
 </figure>
 
 You must include step group Id, such as `curl STEPGROUPID_BACKGROUNDSTEPID:5000`, even if both steps are in the same step group.
@@ -214,7 +218,7 @@ You can inject environment variables into a container and use them in the **Comm
 
 You can reference environment variables in the **Command** script by their name. For example, a Bash script would use `$var_name` or `${var_name}`, and a Windows PowerShell script would use `$Env:varName`.
 
-Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline. 
+Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline. 
 
 ## Output Variables
 
@@ -274,7 +278,7 @@ To create an output variable, do the following in the step where the output vari
 
 ### Reference an output variable
 
-To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/references/runtime-inputs/#expressions) that includes the originating step's Id and the variable's name.
+To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) that includes the originating step's Id and the variable's name.
 
 Use either of the following expressions to reference an output variable in another step in the same stage:
 
@@ -307,7 +311,7 @@ Maximum resource limits for containers that clone the codebase at runtime. For m
 
 In **Advanced**, you can use the following options:
 
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)

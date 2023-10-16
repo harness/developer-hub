@@ -1,0 +1,13 @@
+{
+  "position": 15,
+  "label": "Chaos infrastructure",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Chaos infrastructure"
+   },
+  "customProps": {
+    "description": "Chaos infrastructure documentation"
+  }
+}

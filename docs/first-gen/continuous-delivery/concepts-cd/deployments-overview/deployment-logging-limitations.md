@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations.md).This topic lists the deployment log size, export, and viewing limits.
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations.md).This topic lists the deployment log size, export, and viewing limits.
 
 ### Limitations
 

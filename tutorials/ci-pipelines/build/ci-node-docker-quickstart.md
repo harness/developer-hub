@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 title: NodeJS application
 description: Use a CI pipeline to build and test a NodeJS application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
@@ -27,7 +27,7 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 * [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
 * [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
-* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 <CISignupTip />
 
@@ -179,7 +179,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 ```mdx-code-block
 <Tabs>
@@ -236,7 +236,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 ### Visualize test results
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/),  make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/),  make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
 
 ```yaml
                     reports:
@@ -280,7 +280,7 @@ If your application requires a specific Node version, add a **Run** step to inst
 <details>
 <summary>Install multiple Node versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:
@@ -338,7 +338,7 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 <details>
 <summary>Use multiple node versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:

@@ -3,6 +3,9 @@ title: Manage custom chaos hubs
 sidebar_position: 10
 ---
 
+import Launch from '../shared/launch-experiment-from-hub.md'
+
+
 This topic shows how to save and manage experiments in your custom chaos hub(s), and how to sync your chaos hub GitHub repo with Harness. Go to [Add a custom chaos hub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub) for setup instructions.
 
 ## View chaos hubs
@@ -76,22 +79,5 @@ To sync your custom chaos hub's git repo with Harness:
 
 ## Launch an experiment from a chaos hub
 
-You can launch experiments from the default Enterprise Chaos Hub or from custom hubs. 
+<Launch />
 
-:::info note
-Launching the experiment from a hub is different from running an experiment from the Chaos Experiments page. The experiments in chaos hubs are actually templates, so when you launch them from a hub you must provide some additional details. The experiments in the Chaos Experiments page execute immediately as configured when you select to run them.
-:::
-
-To launch an experiment from a chaos hub:
-
-1. In Harness, navigate to **Chaos > ChaosHubs**, and then select the hub you want.
-1. Find the experiment you want to launch, and then select **Launch Experiment**.
-1. Select a chaos infrastructure, and then select **Next**.
-
-	You can change the infrastructure type if necessary.
-
-	![Select a Chaos Infrastructure partial screenshot showing infrastructure fields](./static/manage-hub/launch-select-chaos-infra.png)
-
-	Chaos Studio is displayed when you select **Next**.
-
-1. In Chaos Studio, select **Save**, and then select **Run**.

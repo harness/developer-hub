@@ -68,7 +68,7 @@ You can add a step at various points in the pipeline, such as the beginning, end
 
 1. In **Name**, enter a name for the Verification step.
    
-2. In **Timeout**, enter a timeout value for the step. Harness uses this information to time out the verification. Use the following syntax to a define timeout:
+2. In **Timeout**, enter a timeout value for the step. Harness uses this information to time out the verification. Use the following syntax to define a timeout:
    - **w** for weeks.
    - **d** for days.
    - **h** for hours.
@@ -79,6 +79,40 @@ You can add a step at various points in the pipeline, such as the beginning, end
    For example, use 1w for one week, 7d for 7 days, 24h for 24 hours, 100m for 100 minutes, 500s for 500 seconds, and 1000ms for 1000 milliseconds.
    
    The maximum timeout value you can set is **53w**. You can also set timeouts at the pipeline level.
+
+### Node filtering
+
+:::info note
+Currently, this feature is behind the feature flag `CV_UI_DISPLAY_NODE_REGEX_FILTER`. Contact Harness Support to enable the feature.
+:::
+
+The node filtering feature allows you to select specific nodes within your Kubernetes environment using the PodName label. This allows for focused analysis, enabling you to choose specific nodes as service instances for in-depth analysis.
+
+Harness CV autonomously identifies new nodes as they are added to the cluster. However, the node filtering feature allows you to focus the analysis explicitly on the nodes that you want to analyze. Imagine you have a Kubernetes cluster with multiple nodes, and you want to analyze the performance of pods running on specific nodes. You want to analyze the nodes that match a certain naming pattern.
+
+Procedure:
+
+1.	On the Verify settings page, expand **Optional** to navigate to the node filtering settings section.
+
+2.	(Optional) Select **Use node details from CD** if you want Harness CV to collect and analyze the metrics and log details for the recently deployed nodes.
+
+3.	Specify the **Control Nodes** and **Test Nodes**:
+
+      - **Control Nodes**: These are the nodes against which the test nodes are compared. You can specify the control nodes to provide a baseline for analysis.
+      
+      - **Test Nodes**: These are the nodes that Harness CV evaluates and compares against the control nodes.
+
+      To specify the **Control Nodes** and **Test Nodes**, in one of the following ways:
+
+         - Type node names: Enter the names of specific nodes you want to include in the analysis.
+         
+         - Use simple patterns (Regex): Define a regular expression pattern to match the nodes you want to filter. For example, if your nodes follow a naming convention such as "node-app-1", "node-app-2", and so on, you could use a pattern such as "node-app-*" to include all nodes with names starting with "node-app-".
+
+      Example: Let's say you want Harness CV to analyze the only nodes that have "backend" in their PodName label:
+         
+         1. In the Control Nodes field, enter "backend-control-node" as the control node.
+      
+         2. In the Test Nodes field, enter the pattern "backend-*" to include all nodes with names starting with "backend-".
 
  
 ## Select a continuous verification type, sensitivity, and duration
@@ -99,7 +133,7 @@ You can add a step at various points in the pipeline, such as the beginning, end
    
 3. In **Duration**, choose a duration. Harness uses the data points within this duration for analysis. For instance, if you select 10 minutes, Harness analyzes the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
    
-4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
+4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md).
    
 5. Select **Fail On No Analysis** if you want the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
@@ -269,3 +303,40 @@ The console view displays detailed logs of the pipeline, including verification 
 To see the logs, go to the **Logs** tab.
 
 ![Verification step view logs](./static/cv-loki-verify-view-logs.png)
+
+
+## Set a pinned baseline
+
+:::info note
+Currently, this feature is behind the feature flag `SRM_ENABLE_BASELINE_BASED_VERIFICATION`. Contact Harness Support to enable the feature.
+:::
+
+You can set specific verification in a successful pipeline execution as a baseline. This is available with **Load Testing** as the verification type.
+
+
+### Set successful verification as a baseline
+
+To set a verification as baseline for future verifications:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline you want to use as the baseline.
+   
+2. Select the successful pipeline execution with the verification that you want to use as the baseline.
+   
+   The pipeline execution is displayed.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   The selected verification is now set as the baseline for future verifications.
+
+
+### Replace an existing pinned baseline
+
+To use a new baseline from a pipeline and replace the existing pinned baseline, follow these steps:
+
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline from which you want to remove the baseline.
+
+2. Select the successful pipeline execution with the verification that you have previously pinned as the baseline.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
+   
+   A confirmation alert message appears, asking if you want to replace the existing pinned baseline with the current verification. After you confirm, the existing pinned baseline gets replaced with the current verification.

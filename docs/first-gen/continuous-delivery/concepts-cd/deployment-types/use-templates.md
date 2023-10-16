@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/13_Templates/use-a-template.md).Harness includes an account-wide Template Library, called the Shared Template Library, and an Application-wide Template Library.
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/templates/use-a-template.md).Harness includes an account-wide Template Library, called the Shared Template Library, and an Application-wide Template Library.
 
 Only members of a Harness User Group with the **Manage Template Library** permission may create, edit, and delete Account and Application-level templates. Members of a User Group with this permission disabled can view and link to templates only.
 

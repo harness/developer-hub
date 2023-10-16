@@ -29,7 +29,7 @@ import {
         newDoc: true,
         type: [docType.Documentation],
         time: "9min",
-        link: "/tutorials/build-code/tfc-notification",
+        link: "/tutorials/ci-pipelines/build/tfc-notification",
       },
     ];
     */
@@ -60,7 +60,7 @@ import {
             module: MODULES.platform,
             description:
               "Learn the differences between Harness SaaS and self-managed products.",
-            link: "/docs/self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview",
+            link: "/docs/self-managed-enterprise-edition/get-started/onboarding-guide",
           },
         ],
       },
@@ -81,7 +81,7 @@ import {
             module: MODULES.platform,
             description:
               "Learn how to back up and restore Harness Self-Managed Enterprise Edition.",
-            link: "/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
+            link: "/docs/self-managed-enterprise-edition/back-up-and-restore-helm",
           },
         ],
       },

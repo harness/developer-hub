@@ -1,6 +1,6 @@
 ---
 title: License issues
-description: Troubleshoot license issues in Harness Self-Managed Enterprise Edition.
+description: Troubleshoot license issues in the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 70
 ---
 

@@ -1,0 +1,11 @@
+{
+   "label":"Comply with SLSA",
+   "position": 50,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Comply with SLSA"
+   }
+}

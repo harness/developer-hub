@@ -1,24 +1,28 @@
-import gs from "./components/Docs/GettingStarted";
+import gs from "./components/Docs/GetStarted";
+
 
 export enum MODULES {
-    ci = 'ci',
-    cd = 'cd',
-    ccm = 'ccm',
-    ff = 'ff',
-    sto = 'sto',
-    srm = 'srm',
-    ce = 'ce',
-    sei = 'sei',
-    cet = 'cet',
-    ssca = 'ssca',
-    idp = 'idp',
-    iacm = 'iacm',
-    gitness = 'gitness',
-    platform= 'platform',
-    cv= 'cv',
+  gs = 'gs',
+  ci = 'ci',
+  cd = 'cd',
+  ccm = 'ccm',
+  ff = 'ff',
+  sto = 'sto',
+  srm = 'srm',
+  ce = 'ce',
+  sei = 'sei',
+  cet = 'cet',
+  ssca = 'ssca',
+  idp = 'idp',
+  iacm = 'iacm',
+  gitness = 'gitness',
+  platform = 'platform',
+  cv = 'cv',
+  smp = "smp"
 }
 
 export const MODULE_DISPLAY_NAME = {
+    [MODULES.gs]: 'Getting Started',
     [MODULES.ci]: 'Continuous Integration',
     [MODULES.cd]: 'Continuous Delivery',
     [MODULES.ccm]: 'Cloud Cost Management',
@@ -33,6 +37,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.iacm]: 'Infrastructure as Code Management',
     [MODULES.gitness]: 'Gitness',
     [MODULES.platform]: 'Harness Platform',
+    [MODULES.smp]: 'Harness Self-Managed Enterprise Edition',
     [MODULES.cv]: 'Continuous Verification',
 }
 
@@ -51,5 +56,6 @@ export const MODULE_ICON = {
     [MODULES.iacm]: 'img/icon_iacm.svg',
     [MODULES.gitness]: 'img/icon_gitness.svg',
     [MODULES.platform]: 'img/icon_harness.svg',
+    [MODULES.smp]: 'img/icon_harness.svg',
     [MODULES.cv]: 'img/icon_cv.svg',
 }

@@ -1,11 +1,11 @@
 {
-  "label": "Get started",
-  "position": "100",
+  "label": "Get started with CD",
+  "position": "1",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
   "link": {
       "type": "generated-index",
-      "title": "Get started"
+      "title": "Get started with Harness CD & GitOps"
   }
 }

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments.md).You can filter deployments on the the Deployments page according to multiple criteria.
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments.md).You can filter deployments on the the Deployments page according to multiple criteria.
 
 You can save these filters as a quick way to filter deployments in the future.
 

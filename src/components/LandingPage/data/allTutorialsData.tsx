@@ -6,13 +6,23 @@ import { MODULES } from "../../../constants";
 /* Module Card lists are defined in the data file for each module */
 export const FeaturedList: CardItem[] = [
   {
+    title: "Demystifying Trunk-Based Development",
+    module: MODULES.ff,
+    icon: "img/icon_ff.svg",
+    description: <>Getting started with trunk-based development.</>,
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10 min",
+    link: "/tutorials/feature-flags/getting-started/trunk-based-development",
+  },
+  {
     title: "Deploy a Kubernetes Helm Chart",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
     description: <>Deploy a Helm Chart onto your Kubernetes cluster.</>,
     newDoc: true,
     type: [docType.Documentation],
-    time: "8min",
+    time: "8 min",
     link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
   },
   {
@@ -28,7 +38,7 @@ export const FeaturedList: CardItem[] = [
     ),
     newDoc: false,
     type: [docType.Documentation],
-    time: "5 min",
+    time: "10 min",
     link: "/tutorials/ci-pipelines/fastest-ci",
   },
   {
@@ -58,28 +68,8 @@ export const FeaturedList: CardItem[] = [
     ),
     newDoc: false,
     type: [docType.Documentation],
-    time: "9 min",
-    link: "/tutorials/ci-pipelines/tfc-notification",
-  },
-  {
-    title: "Publish to Amazon ECR",
-    module: MODULES.ci,
-    description:
-      "Publish an Image to an Amazon Elastic Container Registry.",
-    link: "/tutorials/ci-pipelines/publish/amazon-ecr",
-    type: [docType.Documentation],
     time: "15 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Publish to Google GAR",
-    module: MODULES.ci,
-    description:
-      "Publish an Image to a Google Artifact Registry.",
-    link: "/tutorials/ci-pipelines/publish/google-gar",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg"
+    link: "/tutorials/ci-pipelines/build/tfc-notification",
   },
   {
     title: "Code coverage with CodeCov",
@@ -99,7 +89,7 @@ export const FeaturedList: CardItem[] = [
       "Publish any URL to the Artifacts tab.",
     link: "/tutorials/ci-pipelines/publish/artifacts-tab",
     type: [docType.Documentation],
-    time: "5 min",
+    time: "15 min",
     icon: "img/icon_ci.svg"
   },
 ];

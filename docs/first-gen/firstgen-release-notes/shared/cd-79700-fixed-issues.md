@@ -9,4 +9,8 @@
   - Read timeout: `K8S_API_CLIENT_READ_TIMEOUT`
   - Connect timeout: `K8S_API_CLIENT_CONNECT_TIMEOUT`
 
-  This item requires Harness Delegate version 797xx. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
+- Fixed an issue where the Google Cloud Build (GCB) triggers were throwing an invalid credentials error intermittently. (CDS-70560, ZD-40187)
+
+  This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
+  

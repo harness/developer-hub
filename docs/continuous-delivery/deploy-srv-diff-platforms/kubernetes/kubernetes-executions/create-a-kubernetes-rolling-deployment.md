@@ -26,11 +26,14 @@ For a detailed explanation of Kubernetes rolling updates, see [Performing a Roll
 
 Stages using Harness Canary and Blue/Green steps only support [Kubernetes Deployment workloads](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 
-The Rolling Deployment step supports all workloads except Jobs.
+The Rolling Deployment step supports all workloads. 
+
+In Harness, a workload is a Deployment, StatefulSet, or DaemonSet object deployed and managed to steady state.
+
+If you deploy Kubernetes Jobs using the Rolling Deployment step, it does not manage the Job to steady state. Typically, Jobs are deployed with the Apply step.
 
 The [Apply Step](deploy-manifests-using-apply-step.md) can deploy any workloads or objects in any strategy including Rolling Deployment.
 
-In Harness, a workload is a Deployment, StatefulSet, or DaemonSet object deployed and managed to steady state.
 
 ### Rolling vs Apply
 
@@ -252,6 +255,11 @@ See [Prune Kubernetes Resources](/docs/continuous-delivery/deploy-srv-diff-platf
 You can add a **Rolling Rollback** step to your stage to roll back the workloads deployed by the **Rollout Deployment** step.
 
 Simply add this step where you want to initiate a rollback. Note that this command applies to the deployments of the Rollout Deployment command, and not the [Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step) command.
+
+### Value of the image field in the output of the Rollout Deployment step
+
+The `image` field on the **Output** tab of the Rollout Deployment step shows the SHA256 digest of the image instead of the image tag. Kubernetes returns the SHA256 digest of the image because the digest is unique and can be used to verify the deployment. If you want to verify the deployment by using the tag, look for the tag in the deployment logs.  
+
 
 ## Next Steps
 

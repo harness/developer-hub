@@ -12,6 +12,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpno />
 
 
@@ -21,8 +24,8 @@ For getting started quickly, you can use our [sample code from the SDK README](h
 
 ## Before You Begin
 
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
+* [Feature Flags Overview](../../get-started/overview)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
@@ -268,14 +271,16 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-When SDK is not needed, for example, when the app is not running, you can shut down the SDK. This can avoid potential memory leaks.
+<Closeclient />
 
+To close the SDK client, call this method:
 
 ```
 client.destroy()
 ```
+
 ## Additional options
 
 ### Use the Harness Relay Proxy

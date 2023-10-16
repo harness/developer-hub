@@ -8,15 +8,13 @@ Multilayer caching allows your pipeline to retrieve or check multiple caches. Th
 
 For example, it is a common practice in Ruby builds to add or change gems. In a pipeline with single-layer caching, adding a gem causes the cache key to fail to find a matching cache to restore. Without a restored cache, the build reinstalls all gems. In contrast, multilayer caching can reduce build time by pulling the most recent cache, which has all gems except the new one, and then installing only the new gem.
 
-## Requirements
-
 Multilayer caching is an advanced pattern that requires you to be familiar with:
 
-* [CI pipeline creation](../prep-ci-pipeline-components.md)
-* **Save Cache** and **Restore Cache** steps
+* [CI pipeline creation](../prep-ci-pipeline-components.md).
+* **Save Cache** and **Restore Cache** steps:
   * [Save and Restore Cache from S3](./saving-cache.md)
   * [Save and Restore Cache from GCS](./save-cache-in-gcs.md)
-* [Failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/)
+* [Failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
 * [Conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/), particularly [step conditions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions).
 
 ## Pattern for multilayer caching in CI pipelines
@@ -32,118 +30,11 @@ The general pattern for multilayer caching in CI pipelines is as follows:
   * You need one step for each cache, as identified by a cache key, that you want to save.
   * The **Save Cache** steps don't need failure strategies or conditional execution conditions.
 
-### YAML example
-
-Here's an example of a pipeline with multilayer caching. It has one stage with two **Restore Cache** steps and two **Save Cache** steps.
-
-<details>
-<summary>YAML example: Multilayer caching</summary>
-
-```yaml
-pipeline:
-  name: Cache Multilayer
-  identifier: Cache_Multilayer
-  projectIdentifier: default
-  orgIdentifier: default
-  tags: {}
-  stages:
-    - stage:
-        name: build
-        identifier: build
-        type: CI
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-              - step:
-                  type: RestoreCacheGCS
-                  name: L1 Caching
-                  identifier: L1_Caching
-                  spec:
-                    connectorRef: YOUR_GCP_CONNECTOR
-                    bucket: YOUR_GCS_BUCKET_NAME
-                    key: harness-cache-{{ checksum "pom.xml" }}
-                    archiveFormat: Tar
-                    failIfKeyNotFound: true
-                  failureStrategies:
-                    - onFailure:
-                        errors:
-                          - AllErrors
-                        action:
-                          type: Ignore
-              - step:
-                  type: RestoreCacheGCS
-                  name: L2 Cache
-                  identifier: L2_Cache
-                  spec:
-                    connectorRef: YOUR_GCP_CONNECTOR
-                    bucket: YOUR_GCS_BUCKET_NAME
-                    key: harness-cache-l2
-                    archiveFormat: Tar
-                  when:
-                    stageStatus: Success
-                    condition: <+execution.steps.L1_Caching.status> == "IGNORE_FAILED"
-              - step: ## Between the Restore and Save Cache steps, add steps to build code, run tests, publish images, and so on.
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    shell: Sh
-                    command: |-
-                      mvn clean install
-              - parallel: ## This tells the pipeline to run the following two Save Cache steps in parallel.
-                  - step:
-                      type: SaveCacheGCS
-                      name: Save L2 Cache
-                      identifier: Save_L2_Cache
-                      spec:
-                        connectorRef: YOUR_GCP_CONNECTOR
-                        bucket: YOUR_GCS_BUCKET_NAME
-                        key: harness-cache-l2
-                        sourcePaths:
-                          - /.m2/repository/
-                        archiveFormat: Tar
-                  - step:
-                      type: SaveCacheGCS
-                      name: Save L1 Cache
-                      identifier: Save_L1_Cache
-                      spec:
-                        connectorRef: YOUR_GCP_CONNECTOR
-                        bucket: YOUR_GCS_BUCKET_NAME
-                        key: harness-cache-{{ checksum "pom.xml" }}
-                        sourcePaths:
-                          - /.m2/repository/
-                        archiveFormat: Tar
-          sharedPaths: ## This setting shares directories that are outside the default workspace directory (/harness).
-            - /.m2/repository/
-  properties:
-    ci:
-      codebase:
-        connectorRef: account.jhttp
-        build: <+input>
-```
-
-:::tip sharedPaths
-
-The `sharedPaths` setting is used to specify directories outside the default workspace directory (`/harness`).
-
-In the above example, the `/.m2/repository/` directory is outside `/harness`, so it must be specified in `sharedPaths` for the steps to be able to access it.
-
-For more information, go to [Share data between steps in a stage](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage).
-
-:::
-
-</details>
+For a YAML example of the multilayer caching pattern, go to the [pipeline YAML example](#pipeline-yaml-example).
 
 ## Configure multilayer caching
 
-Follow these steps to configure multilayer caching in one stage of a CI pipeline.
+Follow these steps to configure multilayer caching in a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 
 :::tip
 
@@ -348,3 +239,107 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
    <docimage path={require('./static/multilayer-caching-save-in-parallel.png')} />
 
 6. Add steps between your **Restore Cache** and **Save Cache** steps to complete your CI pipeline. These could include steps to build code, run tests, build and push images, upload artifacts, and so on.
+
+## Pipeline YAML example
+
+Here's an example of a pipeline with multilayer caching. It has one stage with two **Restore Cache** steps and two **Save Cache** steps.
+
+```yaml
+pipeline:
+  name: Cache Multilayer
+  identifier: Cache_Multilayer
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: RestoreCacheGCS
+                  name: L1 Caching
+                  identifier: L1_Caching
+                  spec:
+                    connectorRef: YOUR_GCP_CONNECTOR
+                    bucket: YOUR_GCS_BUCKET_NAME
+                    key: harness-cache-{{ checksum "pom.xml" }}
+                    archiveFormat: Tar
+                    failIfKeyNotFound: true
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - AllErrors
+                        action:
+                          type: Ignore
+              - step:
+                  type: RestoreCacheGCS
+                  name: L2 Cache
+                  identifier: L2_Cache
+                  spec:
+                    connectorRef: YOUR_GCP_CONNECTOR
+                    bucket: YOUR_GCS_BUCKET_NAME
+                    key: harness-cache-l2
+                    archiveFormat: Tar
+                  when:
+                    stageStatus: Success
+                    condition: <+execution.steps.L1_Caching.status> == "IGNORE_FAILED"
+              - step: ## Between the Restore and Save Cache steps, add steps to build code, run tests, publish images, and so on.
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |-
+                      mvn clean install
+              - parallel: ## This tells the pipeline to run the following two Save Cache steps in parallel.
+                  - step:
+                      type: SaveCacheGCS
+                      name: Save L2 Cache
+                      identifier: Save_L2_Cache
+                      spec:
+                        connectorRef: YOUR_GCP_CONNECTOR
+                        bucket: YOUR_GCS_BUCKET_NAME
+                        key: harness-cache-l2
+                        sourcePaths:
+                          - /.m2/repository/
+                        archiveFormat: Tar
+                  - step:
+                      type: SaveCacheGCS
+                      name: Save L1 Cache
+                      identifier: Save_L1_Cache
+                      spec:
+                        connectorRef: YOUR_GCP_CONNECTOR
+                        bucket: YOUR_GCS_BUCKET_NAME
+                        key: harness-cache-{{ checksum "pom.xml" }}
+                        sourcePaths:
+                          - /.m2/repository/
+                        archiveFormat: Tar
+          sharedPaths: ## This setting shares directories that are outside the default workspace directory (/harness).
+            - /.m2/repository/
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        build: <+input>
+```
+
+:::tip sharedPaths
+
+The `sharedPaths` setting is used to specify directories outside the default workspace directory (`/harness`).
+
+In the above example, the `/.m2/repository/` directory is outside `/harness`, so it must be specified in `sharedPaths` for the steps to be able to access it.
+
+For more information, go to [Share data between steps in a stage](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage).
+
+:::

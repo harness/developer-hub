@@ -1,0 +1,14 @@
+{
+    "label": "Run scans with custom SSL certificates",
+    "position": 20,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Run scans with custom SSL certificates"
+    },
+    "customProps": {
+        "ref": "doc-3628"
+    }
+}

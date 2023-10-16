@@ -6,13 +6,15 @@ sidebar_position: 2
 
 Services represent your microservices and other workloads. Each service contains a **Service Definition** that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables.
 
+## Create a service
+
 You can create services from: 
 * Within a pipeline
 * Outside a pipeline 
 * An account
 * An Organization
 
-If you are new to Harness, review [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md) and [create your first CD pipeline](../../get-started/create-first-pipeline.md).
+If you are new to Harness, review [Harness key concepts](/docs/get-started/key-concepts.md) and [create your first CD pipeline](/tutorials/cd-pipelines/kubernetes/manifest).
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -72,7 +74,7 @@ When using an account level deployment stage template, you can referencing an ac
 
 However, when using a deployment stage in a pipeline that has service configured as a runtime input, you can pick services from project, organization, or account levels to pass them as runtime inputs based on your RBAC. 
 
-Go to [add a stage template](/docs/platform/13_Templates/add-a-stage-template.md) for more information.
+Go to [add a stage template](/docs/platform/templates/add-a-stage-template.md) for more information.
 :::
 
 Expand the section below to see a sample account level service YAML.
@@ -254,21 +256,95 @@ resource "harness_platform_service" "example" {
 </Tabs>
 ```
 
-## Runtime inputs and expressions in services
+## Using runtime input services with inputs and expressions
 
-If you use runtime inputs in your services, you will need to provide values for these when they run pipeline using these services.
+Services are often configured using runtime inputs or expressions, so you can change service settings for different deployment scenarios at pipeline runtime. 
 
-If you use expressions in your services, Harness must be able to resolve these expressions when users run pipeline using these services.
+:::note
 
-Select **Runtime input** for the service.
+For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
-![](./static/services-and-environments-runtime-input-01.png)
+:::
 
-When you run the pipeline, you can select the service for their runtime inputs.
 
-![](./static/services-and-environments-runtime-input-02.png)
+Often, the service option in a pipeline is also set as a runtime input, so you can select which service to use when you deploy the pipeline. 
 
-For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md).
+Also, the pipeline that deploys the service might be triggered in response to changes in a service's artifact or manifest.
+
+There are a few things to note when using services with or as runtime inputs:
+- Service runtime inputs are not configurable in the pipeline that deploys the service.
+- Service runtime inputs are not configurable in the trigger.
+
+### Why are service inputs not configurable?
+
+Many Harness settings and options are dependent on the specific values set in a service. When a value is set as runtime input, Harness can't identify what configurations to render in the user interface.
+
+
+### Selecting settings when the service is an expression
+
+If you use an expression in a service setting, Harness must be able to resolve the expressions when you run the pipeline using the service.
+
+There are a few options you can use to support expressions when a service is set as a runtime input in a pipeline, or when the service itself uses runtime inputs. These options are covered in the following sections.
+
+### Use trigger payload data to configure the service at runtime
+
+You can pass in this data when the pipeline execution is triggered using a custom cURL trigger.
+
+For more information, go to [Passing data in Custom triggers](/docs/platform/triggers/custom-trigger-passing-data).
+
+Here's the YAML for a service in a pipeline that uses trigger payload data for the service reference, primary artifact, and tag:
+
+```yaml
+spec:
+  service:
+    serviceRef: <+trigger.payload.serviceId>
+    serviceInputs:
+      serviceDefinition:
+        type: TAS
+        spec:
+          artifacts:
+            primary:
+              primaryArtifactRef: <+trigger.payload.artifactId>
+              sources:
+                - identifier: <+trigger.payload.artifactId>
+                  type: Nexus2Registry
+                  spec:
+                    tag: <+trigger.payload.tag>
+```
+
+To supply the data, you simply provide the payload key-value pairs in the cURL command you use to execute the pipeline:
+
+```
+curl -X POST -H 'Content-Type: application/json' --url 'webhook_url' -d '{"serviceId": "Kubernetes", "artifactId": "nginx", "tag": "abc"}'
+```
+
+### Use pipeline variables and trigger payload data to configure the service at runtime
+
+You can create pipeline variables and map those to service settings. When you run the pipeline, you can provide values for the variables to define the service.
+
+For example, here are pipeline variables for a service's artifact and tags.
+
+![picture 6](static/62e0417c8075a66b582c4f77873cc04c228a985c2f4bc7ca2994e2768ade208b.png)  
+
+Next, you map the pipeline variables to the services' artifact settings using expressions:
+
+![picture 4](static/039bb495a010a86dd319421b1d1e4c50296c818933b3173376e83c9378ad0b9e.png)  
+
+You can also map a pipeline variable for the service name as an expression:
+
+![picture 5](static/bf5d06238223ce766372f48a1ec1cc356413c542064d2806ebe9b9d48716e161.png)  
+
+When you run the pipeline, you are prompted to provide values for the pipeline variables.
+
+![picture 7](static/d29655cbf1b0a6f129c0b1c02ad492fb2499b7fe0a14a7463811fae43209ff44.png)  
+
+
+You can also map these same pipeline variables to trigger payload data expressions. 
+
+![picture 8](static/7e52eb23cfcb0461224b9ed278b6ad699945ec80e4b15c768010b2835f072b0d.png)  
+
+When you initiate the trigger using the cURL command, the key-value pairs in the command are used for the pipeline variables. Finally, those pipeline variable values are used to define the service.
+
 
 ## Next steps
 

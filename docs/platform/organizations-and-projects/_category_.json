@@ -1,6 +1,6 @@
 {
-    "label": "Organizations and projects",
-    "position": 2,
+    "label": "Organizations and Projects",
+    "position": "4",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

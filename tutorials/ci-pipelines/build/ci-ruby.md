@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 title: Ruby application
 description: Use a CI pipeline to build and test a Ruby application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
@@ -27,7 +27,7 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 * [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
 * [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
-* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 <CISignupTip />
 
@@ -145,7 +145,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 ```mdx-code-block
 <Tabs>
@@ -188,7 +188,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 ### Visualize test results
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), your test reports must be in JUnit XML format and your steps must include the `reports` specification. The following examples use the [Minitest JUnit Formatter](https://github.com/aespinosa/minitest-junit). For more information and an RSpec example, go to [Format test reports - Ruby](/docs/continuous-integration/use-ci/set-up-test-intelligence/test-report-ref#ruby).
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), your test reports must be in JUnit XML format and your steps must include the `reports` specification. The following examples use the [Minitest JUnit Formatter](https://github.com/aespinosa/minitest-junit). For more information and an RSpec example, go to [Format test reports - Ruby](/docs/continuous-integration/use-ci/run-tests/test-report-ref#ruby).
 
 ```mdx-code-block
 <Tabs>
@@ -248,11 +248,11 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 
 Ruby is pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-If your application requires a specific Ruby version, add a **Run** step to install it.
+If your application requires a specific Ruby version, add a **Run** or **GitHub Action** step to install it.
 
-Use the [setup-ruby](https://github.com/ruby/setup-ruby) action in a [GitHub Actions step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/) to install the required Ruby version.
+Use the [setup-ruby](https://github.com/ruby/setup-ruby) action in a [GitHub Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/) to install the required Ruby version.
 
-You will need a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token), stored as a [secret](/docs/platform/Secrets/add-use-text-secrets), with read-only access for GitHub authentication.
+You will need a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token), stored as a [secret](/docs/platform/secrets/add-use-text-secrets), with read-only access for GitHub authentication.
 
 <details>
 <summary>Install one Ruby version</summary>
@@ -273,7 +273,7 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 <details>
 <summary>Use multiple Ruby versions</summary>
 
-1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:
@@ -327,7 +327,7 @@ Specify the desired [Ruby Docker image](https://hub.docker.com/_/ruby) tag in yo
 <details>
 <summary>Use multiple Ruby versions</summary>
 
-1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:

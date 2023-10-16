@@ -1,11 +1,11 @@
 {
-    "label": "Advanced Kubernetes",
+    "label": "Kubernetes tasks",
     "position": "400",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Advanced Kubernetes"
+        "title": "Kubernetes tasks"
     }
 }

@@ -49,7 +49,7 @@ There are two different types of Feature Flags you can create:
 3. In **About the Flag**, in **Name**, enter a name for your flag and click **Next**.
 
     :::info
-     When you name a flag, Harness automatically generates its identifier. You can edit the identifier when you are creating the flag, but not after it is saved. If you rename the flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md).
+     When you name a flag, Harness automatically generates its identifier. You can edit the identifier when you are creating the flag, but not after it is saved. If you rename the flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md).
     :::
 4. To make the Feature Flag permanent, select the **This is a permanent flag** checkbox. Permanent flags are flags you intend to stay in your system indefinitely, so we will never mark them as potentially stale.
 5. Click **Next**.
@@ -88,7 +88,7 @@ To create a multivariate flag:
 3. In **About the Flag**, in **Name**, enter a name for your flag and click **Next**.
 
     :::info
-     When you name a flag, Harness automatically generates its identifier. You can edit the identifier when you are creating the flag, but not after it is saved. If you rename the flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md).
+     When you name a flag, Harness automatically generates its identifier. You can edit the identifier when you are creating the flag, but not after it is saved. If you rename the flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md).
     :::
 
 4. To make the Feature Flag permanent, select the **This is a permanent flag** checkbox. Permanent flags are flags you intend to stay in your system indefinitely, so we will never mark them as potentially stale. For example, if you are offering a premium feature to some of your customers but not others, you can use a permanent flag to manage who sees this feature indefinitely.

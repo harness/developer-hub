@@ -24,7 +24,7 @@ import TabItem from '@theme/TabItem';
 6. Select **Submit**.
    ![](./static/config-file-harness.png)
 
-For more information, go to [using config file in your deployments](/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files/).
+For more information, go to [Use config file in your deployments](/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files).
 
 You can view the config files added to your service definition.
 
@@ -38,11 +38,9 @@ For example, in a Tanzu Command step, you can reference the config file by enter
 </TabItem>
 <TabItem value="GitHub" label="GitHub">
 ```
-:::note
-Currently, this feature is behind a feature flag `CDS_GIT_CONFIG_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
-:::
 
-1. Select a GitHub connector, and select **Continue**. You can also add a [new GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference) here and reference it.
+
+1. Select a GitHub connector, and select **Continue**. You can also add a [new GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) here and reference it.
 2. In **Config File Details**, enter a config file name.
 3. Enter the name of the repository you want to reference from your GitHub account.
 4. In **Git Fetch Type**, select **Latest from Branch**, and then specify the **Branch** name. 

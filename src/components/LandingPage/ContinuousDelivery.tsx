@@ -5,7 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard from "./TutorialCard";
 // Defined card list in "./data/continuousDeliveryData.tsx"
-import { PlansList, FeaturedList, CDList } from "./data/continuousDeliveryData";
+import { CDList } from "./data/continuousDeliveryData";
 
 export default function CD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -83,18 +83,16 @@ export default function CD() {
           </div>
         </div>
       </div>
-      <div className={styles.subSection}>
-        <h3 id="get-started">Get Started for Free</h3>
-        <TutorialCard FeatureList={PlansList} />
-      </div>
-      <div className={styles.subSection}>
-        <h3>Featured Tutorials</h3>
-        <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
-      </div>
-      <div className={styles.subSection}>
-        <h3 id="all-tutorials">All CD & GitOps Tutorials</h3>
-        <TutorialCard FeatureList={CDList} />
-      </div>
+      <h3 id="get-started">All CD Tutorials</h3>
+      {CDList.map((item) => (
+        <div className={styles.subSection}>
+          <div className={styles.SectionName}>
+            {item.icon && <img src={`${baseUrl}${item.icon}`} />}
+            <h4>{item.name}</h4>
+          </div>
+          <TutorialCard FeatureList={item.list} />
+        </div>
+      ))}
     </div>
     // </Layout>
   );

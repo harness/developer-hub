@@ -22,7 +22,7 @@ While a monitored service entity contains a lot more than a set of  health sourc
 
 Monitored service template allows runtime inputs & expression for configuration; which helps in tweaking the template at run time based on the context of a deployment ( for particular service getting deployed to a particular environment). 
 
-Details documentation for creation of monitored service template is available [here](https://developer.harness.io/docs/service-reliability-management/use-service-reliability-management/monitored-service-template/monitored-service-template-quickstart).
+Details documentation for creation of monitored service template is available [here](/docs/service-reliability-management/monitored-service/monitored-service-template-quickstart).
 
 ## Verify Step -  Monitored Service Template Configuration
 

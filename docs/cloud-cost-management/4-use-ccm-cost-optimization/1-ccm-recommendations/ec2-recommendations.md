@@ -24,7 +24,7 @@ Using recommendations without proper assessment could result in unexpected chang
 ## Before you begin
 
 
-* Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
+* Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
 * To obtain EC2 recommendations, configure a Harness AWS CCM connector with the Inventory Management feature enabled.
 * Go to [Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md) to learn how to create perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 
@@ -58,11 +58,11 @@ Harness CCM provides two types of recommendations to optimize your EC2 instances
 ## Enable EC2 recommendations
 
 You must add the required permissions and enable EC2 recommendations in AWS.
-Go to [Enable EC2 recommendations](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#enable-ec2-recommendations) for the tasks to be performed on your AWS console.
+Go to [Enable EC2 recommendations](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#enable-ec2-recommendations) for the tasks to be performed on your AWS console.
 
 After completing the aforementioned tasks, you need to perform the following steps in Harness:
 
-1. While creating a new AWS CCM connector, select the **Inventory Management** feature to enable recommendations. For more information, go to [Set up CCM for your AWS account](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
+1. While creating a new AWS CCM connector, select the **Inventory Management** feature to enable recommendations. For more information, go to [Set up CCM for your AWS account](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
 
  
 2. Add the required **Cost Explorer** permissions to the CCM template:
@@ -79,7 +79,7 @@ After completing the aforementioned tasks, you need to perform the following ste
 
   All the AWS accounts with EC2 instances are displayed. 
 
-6. Click the row to view the recommendations for that account.  The CPU and Memory utilization graph shows the current utilization data. Go to [View and apply recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/home-recommendations) to learn how to apply these recommendations.
+6. Click the row to view the recommendations for that account.  The CPU and Memory utilization graph shows the current utilization data. Go to [View and apply recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations) to learn how to apply these recommendations.
 
 
 ### Tune the EC2 recommendations

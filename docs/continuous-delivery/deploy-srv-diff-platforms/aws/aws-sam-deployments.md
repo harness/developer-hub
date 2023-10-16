@@ -155,7 +155,7 @@ To create an environment, do the following:
 Next you will add the SAM infrastructure definition.
 
 
-### AWS SAM infrastructure definition
+## Define the infrastructure
 
 The SAM infrastructure definition is the target AWS account and region for the SAM deployment.
 
@@ -167,6 +167,8 @@ The SAM infrastructure definition is the target AWS account and region for the S
 6. Select **Save**.
 
 When a pipeline stage uses this infrastructure definition, it will deploy your SAM template changes in the target region.
+
+
 
 ## AWS SAM stage
 
@@ -204,7 +206,7 @@ When the step group setting **Enable container based execution** is enabled, the
 
 You need to configure the following mandatory settings:
 
-- **Kubernetes Cluster:** Add a Harness [Kubernetes Cluster connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/) to connect to the cluster that will be used as the runtime step infrastructure.
+- **Kubernetes Cluster:** Add a Harness [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/) to connect to the cluster that will be used as the runtime step infrastructure.
 - **Namespace:** Enter the name of the cluster namespace to use.
 
 ### Harness Docker Hub connector and image for all steps

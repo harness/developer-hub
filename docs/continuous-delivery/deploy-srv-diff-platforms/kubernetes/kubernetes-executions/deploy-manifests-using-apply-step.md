@@ -141,13 +141,13 @@ You can enter multiple file paths in **File Path**. Simply click **Add File**.
 
 ### File path runtime inputs
 
-You can set [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/References/runtime-inputs) for File Path settings.
+You can set [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs) for File Path settings.
 
 Here are the options:
 
 * **File Path setting:**
 	+ **Fixed Value:** this is the default. Selecting **Fixed Value** means that you will set a static file path or expression in the step.
-	+ **Runtime Input:** select this option if you want to enter a value at runtime or using [Input Sets and Overlays](/docs/platform/Pipelines/input-sets).
+	+ **Runtime Input:** select this option if you want to enter a value at runtime or using [Input sets and overlays](/docs/platform/Pipelines/input-sets).
 * **File path field:**
 	+ **Fixed Value:** this is the default. Selecting **Fixed Value** means that you will set a static file path in the step.
 	+ **Expression:** Selecting **Expression** means that you will use a variable in the step, such as a [stage variable](/docs/platform/pipelines/add-a-stage/).

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
+This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
 
 Harness provides a simple and flexible way to use Kubernetes manifests. You can add new files or upload existing manifests. You can work on your manifest inline, using the Go templating and Expression Builder features of Harness, or simply link to remote manifests in a Git repo.
 

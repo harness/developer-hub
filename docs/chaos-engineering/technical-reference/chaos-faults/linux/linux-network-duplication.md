@@ -28,9 +28,9 @@ Linux network duplication injects chaos to disrupt network connectivity on a Lin
     <th> Notes </th>
   </tr>
   <tr>
-    <td> networkInterface </td>
-    <td> Network interface to target. </td>
-    <td> For example: <code>eth0</code> </td>
+    <td> networkInterfaces </td>
+    <td> Network interfaces to target as comma separated values. </td>
+    <td> For example: <code>eth0,ens192</code> </td>
   </tr>
 </table>
 
@@ -43,12 +43,12 @@ Linux network duplication injects chaos to disrupt network connectivity on a Lin
   </tr>
     <tr>
     <td> destinationHosts </td>
-    <td> List of the target host names or keywords. For example, <code>["google.com","litmuschaos.io"]</code> </td>
+    <td> List of the target host names or keywords. For example, <code>google.com,litmuschaos.io</code> </td>
     <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
-    <td> List of the target IPs. For example, <code>["1.1.1.1","8.8.8.8"]</code> </td>
+    <td> List of the target IPs. For example, <code>1.1.1.1,8.8.8.8</code> </td>
     <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted</td>
   </tr>
   <tr>
@@ -84,8 +84,8 @@ metadata:
     name: network-duplication
 spec:
   networkChaos/inputs:
-    destinationHosts: '["google.com"]'
-    networkInterface: "eth0"
+    destinationHosts: 'google.com'
+    networkInterfaces: "eth0"
 ```
 
 ### Destination IPs
@@ -104,8 +104,8 @@ metadata:
     name: network-duplication
 spec:
   networkChaos/inputs:
-    destinationIPs: '["1.1.1.1"]'
-    networkInterface: "eth0"
+    destinationIPs: '1.1.1.1'
+    networkInterfaces: "eth0"
 ```
 
 ### Packet duplication percentage
@@ -125,6 +125,6 @@ metadata:
 spec:
   networkChaos/inputs:
     packetDuplicationPercentage: '50'
-    networkInterface: "eth0"
+    networkInterfaces: "eth0"
 ```
 

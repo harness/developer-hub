@@ -1,0 +1,16 @@
+{
+    "label": "Delegates",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "3",
+    "link": {
+        "type": "generated-index",
+        "title": "Delegates"
+    },
+    "customProps": {
+        "helpdocs_category_id": "seizygxv7b",
+        "helpdocs_parent_category_id": "9i5thr0ot2"
+        
+    }
+}

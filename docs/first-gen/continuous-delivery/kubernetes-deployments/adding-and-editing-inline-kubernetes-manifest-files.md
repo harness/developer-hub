@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
+This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
 
 Harness provides full file management for your Kubernetes configuration files. You can add, edit, and manage all of the files in your Harness Kubernetes Service.
 

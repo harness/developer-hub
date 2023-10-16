@@ -1,1 +1,14 @@
-{"label": "Add Load Balancers for AutoStopping Rules", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "Add Load Balancers for AutoStopping Rules"}, "customProps": {"position": "To position the category, enter a number and move this to the root level.", "helpdocs_category_id": "k8xq40kf08"}}
+{
+    "label":"Add Load Balancers for AutoStopping Rules",
+    "position": 30,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Add Load Balancers for AutoStopping Rules"
+    },
+    "customProps": {
+        "helpdocs_category_id": "k8xq40kf08"
+    }
+}

@@ -10,6 +10,8 @@ The following table lists the client-side Feature Flag SDKs that Harness support
 | [Javascript](https://github.com/harness/ff-javascript-client-sdk)     | [Javascript SDK Reference](/docs/feature-flags/ff-sdks/client-sdks/java-script-sdk-references.md)   |
 | [React Native](https://github.com/harness/ff-react-native-client-sdk) | [React Native SDK Reference](/docs/feature-flags/ff-sdks/client-sdks/react-native-sdk-reference.md) |
 | [Xamarin](https://github.com/harness/ff-xamarin-client-sdk)           | [Xamarin SDK Reference](/docs/feature-flags/ff-sdks/client-sdks/xamarin-sdk-reference.md)           |
+| [React Client](https://github.com/harness/ff-react-client-sdk/)           | [React Client Reference](/docs/feature-flags/ff-sdks/client-sdks/react-client.md)           |
+| [React Native](https://github.com/harness/ff-react-native-client-sdk)           | [React Native Reference](/docs/feature-flags/ff-sdks/client-sdks/react-native-sdk-reference.md)           |
 
 
 

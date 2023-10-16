@@ -6,7 +6,7 @@ sidebar_position: 6
 Prometheus probe allows users to run Prometheus queries and match the resulting output against specific conditions. The intent behind this probe is to allow users to define metrics-based SLOs in a declarative way and determine the experiment verdict based on its success. The probe runs the query on a Prometheus server defined by the endpoint, and checks whether the output satisfies the specified criteria. A PromQL query needs to be provided, whose outcome is then used for the probe validation.
 
 :::info YAML only feature
-In case of complex queries that span multiple lines, the `queryPath` attribute can be used to provide the link to a file consisting of the query. This file can be made available in the experiment pod via a ConfigMap resource, with the ConfigMap being passed in the [ChaosEngine](https://docs.litmuschaos.io/docs/concepts/chaos-engine) or the [ChaosExperiment](https://docs.litmuschaos.io/docs/concepts/chaos-experiment) CR. Also, `query` and `queryPath` attributes are mutually exclusive. Refer to the probe schema [here](https://docs.litmuschaos.io/docs/concepts/probes#promprobe).
+In case of complex queries that span multiple lines, the `queryPath` attribute can be used to provide the link to a file consisting of the query. This file can be made available in the experiment pod via a ConfigMap resource, with the ConfigMap being passed in the [ChaosEngine](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-engine/contents/) or the [ChaosExperiment](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-experiment/contents/) CR. Also, `query` and `queryPath` attributes are mutually exclusive. Refer to the probe schema [here](https://docs.litmuschaos.io/docs/concepts/probes#promprobe).
 :::
 
 ## Defining the probe
@@ -177,6 +177,118 @@ Listed below is the probe schema for the Prometheus probe, with properties share
   </tr>
 </table>
 
+### Authentication
+
+This establishes a fundamental authentication mechanism for the Prometheus server. The username:password, encoded in base64, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field. 
+It's important to note that `credentials` and `credentialsFile` are two options that cannot be used simultaneously.
+
+<table>
+  <tr>
+   <td><strong>Field</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+   <td><strong>Type</strong>
+   </td>
+   <td><strong>Range</strong>
+   </td>
+   <td><strong>Notes</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>credentials
+   </td>
+   <td>Flag to hold the basic auth credentials in base64 format
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>credentials</code> comprises the Prometheus server's basic authentication credentials in the form of username:password, encoded using base64 format
+   </td>
+  </tr>
+  <tr>
+   <td> credentialsFile
+   </td>
+   <td>Flag to hold the basic auth credentials file path
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>credentials</code> encompasses the filepath for basic authentication credentials, which are mounted to the experiment pod as volume secrets. These secrets consist of username:password encoded in base64 format for the Prometheus server
+   </td>
+  </tr>
+</table>
+
+### TLS
+
+It offers the mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key, to perform the validation. 
+Alternatively, you have the option to enable the `insecureSkipVerify` check to bypass certificate validation.
+
+<table>
+  <tr>
+   <td><strong>Field</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+   <td><strong>Type</strong>
+   </td>
+   <td><strong>Range</strong>
+   </td>
+   <td><strong>Notes</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>caFile
+   </td>
+   <td>Flag to hold the ca file path
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>caFile</code> holds the file path of the CA certificates utilized for server TLS verification
+   </td>
+  </tr>
+  <tr>
+   <td>certFile
+   </td>
+   <td>Flag to hold the client cert file path
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>certFile</code> holds the file path of the client certificates utilized for TLS verification
+   </td>
+  </tr>
+  <tr>
+   <td>keyFile
+   </td>
+   <td>Flag to hold the client key file path
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>keyFile</code> holds the file path of the client key utilized for TLS verification
+   </td>
+   </tr>
+  <tr>
+   <td>insecureSkipVerify
+   </td>
+   <td>Flag to skip the tls certificates checks
+   </td>
+   <td>Optional
+   </td>
+   <td><code>boolean</code>
+   </td>
+   <td>The <code>insecureSkipVerify</code> skip the tls certificates checks
+   </td>
+  </tr>
+</table>
+
 ### Run properties
 
 <table>
@@ -278,6 +390,10 @@ probe:
       comparator:
         criteria: "==" #supports >=,<=,>,<,==,!= comparison
         value: "<value-for-criteria-match>"
+      auth:
+        credentials: "base64(<username:password>)"
+      tlsConfig:
+        insecureSkipVerify: true
     mode: "Edge"
     runProperties:
       probeTimeout: 5

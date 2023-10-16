@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).To enable Harness to deploy to the provisioned infrastructure you defined in [Add CloudFormation Templates](add-cloud-formation-templates.md), you map outputs from your CloudFormation template to the Harness Infrastructure Definition settings Harness requires for provisioning.
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).To enable Harness to deploy to the provisioned infrastructure you defined in [Add CloudFormation Templates](add-cloud-formation-templates.md), you map outputs from your CloudFormation template to the Harness Infrastructure Definition settings Harness requires for provisioning.
 
 Mappings provide Harness with the minimum settings needed to provision using your template.
 

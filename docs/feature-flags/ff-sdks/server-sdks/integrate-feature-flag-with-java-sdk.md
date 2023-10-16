@@ -12,6 +12,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpyes from '../shared/note-smp-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpyes />
 
 
@@ -23,8 +26,8 @@ For getting started quickly, you can use our [sample code from the Java SDK READ
 
 Make sure you read and understand:
 
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](../../get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
@@ -244,14 +247,18 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 <Sixty />
 
-## Close the SDK
+## Close the SDK client
 
-To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
+<Closeclient />
 
+To close the SDK client: 
 
-```
-cfClient.close();
-```
+* Call the following function>
+
+  ```
+  cfClient.close();
+  ```
+  
 ## Additional options
 
 ### Develop on your local environment
@@ -584,3 +591,33 @@ repositories {
   ...
 </repository>
 ```
+
+## Troubleshooting
+The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
+
+| **Code** | **Description**                                                                          |
+|----------|:-----------------------------------------------------------------------------------------|
+| **1000** | Successfully initialized                                                                 |
+| **1001** | Failed to initialize due to authentication error                                         |
+| **1002** | Failed to initialize due to a missing or empty API key                                   |
+| **1003** | `wait_for_initialization` was called and the SDK is waiting for initialization to finish |
+| **2000** | Successfully authenticated                                                               |
+| **2001** | Authentication failed with a non-recoverable error                                       |
+| **2002** | Authentication failed and is retrying                                                    |
+| **2003** | Authentication failed and max retries have been exceeded                                 |
+| **3000** | SDK closing                                                                              |
+| **3001** | SDK closed successfully                                                                  |
+| **4000** | Polling service started                                                                  |
+| **4001** | Polling service stopped                                                                  |
+| **5000** | Streaming service started                                                                |
+| **5001** | Streaming service stopped                                                                |
+| **5002** | Streaming event received                                                                 |
+| **5003** | Streaming disconnected and is retrying to connect                                        |
+| **5004** | Streaming stopped                                                                        |
+| **5005** | Stream is still retrying to connect after 4 attempts                                     |
+| **6000** | Evaluation was successful                                                              |
+| **6001** | Evaluation failed and the default value was returned                                     |
+| **7000** | Metrics service has started                                                              |
+| **7001** | Metrics service has stopped                                                              |
+| **7002** | Metrics posting failed                                                                   |
+| **7003** | Metrics posting success                                                                  |

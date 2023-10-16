@@ -1,6 +1,7 @@
 ---
-title: Run an Orchestrated Scan in an STO Pipeline
+title: Run an Orchestrated scan in an STO Pipeline
 description: An orchestrated scan is a fully automated workflow that scans an object and ingests the results into Harness in one Security step. Orchestrated scans are the easiest to set up and are a great way to get started with STO.
+sidebar_label: Orchestration workflows
 sidebar_position: 20
 helpdocs_topic_id: wk018r6x3g
 helpdocs_category_id: utstv3qzqt
@@ -12,13 +13,13 @@ An *orchestrated scan* is a fully automated workflow that scans an object and in
 
 STO supports orchestrated scan for popular open-source scanners such as Aqua-Trivy and Bandit as well as commercial scanners such as SonarQube.
 
-In the following example workflow, you will clone the base pipeline created in [Set up Harness for STO](../../onboard-sto/set-up-harness-for-sto.md) and configure it to scan a Docker image using Aqua Trivy.
+In the following example workflow, you will clone the base pipeline created in [Set up Harness for STO](../../get-started/onboarding-guide.md) and configure it to scan a Docker image using Aqua Trivy.
 
 1. In the Pipeline Studio, go to the project where you create your base pipeline. Click the top-right menu, choose **Clone**, and save the new pipeline as **Trivy Image Scan Orchestrated**.
 2. In your new pipeline, go to **securityTestStage** and open the **banditScan** step.
 3. Rename the step to **ScanContainerImage**.
 
-### Scan settings
+### Settings for orchestrated scans in STO
 
 Orchestrated scan settings generall fall into two categories: information about the scan operation, and information about the object to scan.
 
@@ -28,7 +29,7 @@ Specify the following:
 2. The scanner settings to use: `product_config_name` = `aqua-trivy`
 3. The scan type: `policy_type` = `orchestratedScan`
 
-### Scanned object settings
+### Scanned object settings for orchestrated scans in STO
 
 Now you can specify the object to scan. In this example, you'll scan an image on Docker Hub based on the [DVPWA](https://github.com/anxolerd/dvpwa) GitHub project. Specify the following:
 
@@ -41,7 +42,7 @@ This is based on the image you would specify using the `docker pull` command. In
  Therefore, specify: `container_project` = `ubuntu`
 5. The image tag. In this case, enter: `container_tag` = `latest`
 
-### Save the pipeline and run the scan
+### Save the pipeline and run the orchstrated scan
 
 Now that you've set up the Security step with the previous settings, you can save and run the pipeline. When the pipeline finishes, click **Security Tests** to view the results.
 

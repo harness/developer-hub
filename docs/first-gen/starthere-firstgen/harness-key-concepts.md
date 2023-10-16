@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::note
-This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../getting-started/learn-harness-key-concepts.md).
+This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../get-started/key-concepts.md).
 :::
 
 This topic describes the key concepts of Harness and its **End-to-End Software Delivery Abstraction Model**.

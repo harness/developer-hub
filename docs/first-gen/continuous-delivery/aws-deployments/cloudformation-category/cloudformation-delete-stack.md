@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).You can add a CloudFormation Delete Stack Workflow step to remove any provisioned infrastructure, just like running the `cloudformation delete-stack` command. See [delete-stack](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/delete-stack.html) from AWS.
+This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).You can add a CloudFormation Delete Stack Workflow step to remove any provisioned infrastructure, just like running the `cloudformation delete-stack` command. See [delete-stack](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/delete-stack.html) from AWS.
 
 
 ### Before You Begin

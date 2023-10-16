@@ -34,15 +34,15 @@ Consider the following scenario with two cost categories:
 | CC1 | <ul><li>CB1 - AWS1 - $10, AWS7 - $20</li><li>CB2- AWS2 - $20</li></ul> | <ul><li>SB1 - AWS3 - $30</li><li>SB2 - AWS4 - $40</li> </ul>|
 | CC2 | <ul><li>CB3 - AWS1 - $10</li><li>CB4- AWS2 - $20</li></ul>| <ul><li>SB3 - AWS5 - $30</li><li>SB4 - AWS6 - $40</li> </ul>|
 
-If you have added CC1 (C1, C2, and Unattributed) in your Perspective rule and grouped by the same cost category, then the Perspective displays the following costs:
+If you have added CC1 (CB1, CB2, and Unattributed) in your Perspective rule and grouped by the same cost category, then the Perspective displays the following costs:
 
 |Name | Total Cost|
 | --- | --- |
 | CB1 | $30 + shared cost (SB1 and SB2) |
 | CB2 | $20 + shared cost (SB1 and SB2) |
-| Unattributed | The sum of all the other cost |
+| Unattributed | The sum of all the other costs |
 
-If you have added CC1 (C1, C2, and Unattributed) in your Perspective rule and grouped by the cost category CC2, then the Perspective displays the following costs:
+If you have added CC1 (CB1, CB2, and Unattributed) in your Perspective rule and grouped by the cost category CC2, then the Perspective displays the following costs:
 
 | Name|Total Cost |
 | --- | --- |
@@ -92,7 +92,7 @@ Consider the following scenario where the Perspective rule has two cost categori
 
 ## Use cost categories in dashboards
 
-You can visualize cost categories in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](../../../platform/18_Dashboards/create-dashboards.md).
+You can visualize cost categories in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](../../../platform/dashboards/create-dashboards.md).
 
 **Cost Categories** is available in the **Unified** explore on the **Dashboards** page. 
 

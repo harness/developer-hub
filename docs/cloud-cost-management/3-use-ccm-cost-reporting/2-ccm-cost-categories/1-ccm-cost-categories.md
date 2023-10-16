@@ -29,7 +29,7 @@ To use cost categories, your Harness user account must belong to a user group wi
 
 * **Cloud Cost Management**: **Cost Categories**: **Create/Edit**
 
-For more details, go to [CCM Roles and Permissions](../../2-getting-started-ccm/5-access-control/ccm-roles-and-permissions.md).
+For more details, go to [CCM Roles and Permissions](/docs/cloud-cost-management/access-control/ccm-roles-and-permissions.md).
 
 ## Visual summary
 
@@ -47,21 +47,21 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ## Create cost categories
 
-You can create a Cost Category
+To create a cost category perform the following steps:
 
 1. In your Harness application, go to **Cloud Costs**.
 2. Go to **Setup**, and then select **Cost Categories**.
 3. Select **New Cost Category**.
 
 
-You can also create a new Cost Category when you create a Perspective.
+You can also create a new cost category when you create a perspective.
 
 ![](./static/use-ccm-cost-categories-01.png)
 
-The new Cost Category appears.
+The new cost category appears.
 
 
-4. In the new Cost Category, enter a name. For example, if this Cost Category is for departments, you could name it **Departments**.
+4. In the new cost category, enter a name. For example, if this cost category is for departments, you could name it **Departments**.
 
   ![](./static/cost-category-builder-1.png)
 
@@ -97,6 +97,34 @@ The AND and OR operators are used to filter data based on more than one conditio
   
     ![](./static/use-ccm-cost-categories-04.png)
 
+
+:::important note
+You can create a maximum of 1000 cost buckets.
+:::
+
+#### Copy cost buckets
+
+You can copy cost buckets from one cost category to multiple cost categories simultaneously. You have the flexibility to choose any number of buckets for copying. Upon selection, a popup prompt appears, allowing you to specify the target cost categories for copying the selected buckets. Upon successful completion, you receive a success notification along with relevant details.
+
+
+:::important note
+While copying, you may encounter issues if the destination cost category already has a bucket with the same name as the copied one. In such cases, you can address the conflict by renaming the bucket before attempting the copy operation again.
+:::
+
+
+To copy cost buckets from one cost category to another, perform the following steps:   
+
+1. On the **Cost Categories** page, expand the cost category from which you want to copy the cost buckets.
+2. Select **Manage Cost Buckets**.
+3. Select the cost buckets you want to copy.
+4. Select **Copy**.
+5. A popup appears displaying the source cost category from which you've copied the cost buckets. Within this popup, select the target cost categories to which you intend to copy the cost buckets.
+6. Select **View Details** on the confirmation message and make sure the intended cost buckets have been copied to the required cost categories.
+   
+
+  <docimage path={require('./static/ccm-copy-cost-buckets.gif')} width="60%" height="60%" title="Click to view full size image" />
+
+
 ### Create shared cost buckets
 
 1. Select **+ New Shared Bucket**.
@@ -111,6 +139,10 @@ For example, consider two cost targets named team A and team B. These two teams 
   ![](./static/cost-category-builder-2.png)
   
    
+:::important note
+You can create a maximum of 10 shared cost buckets.
+:::
+
 
 ### Manage unallocated costs
 

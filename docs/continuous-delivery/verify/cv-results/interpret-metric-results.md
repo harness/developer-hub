@@ -12,7 +12,7 @@ In simpler terms, metrics provide a snapshot of the system's state at a particul
 
 Metric analysis helps automatically identify variations in metrics after deployment before they become widespread issues.
 
-Application Performance Monitoring (APM) tools such as AppDynamics and Dynatrace help you monitor and analyze the performance of web applications in real-time. To see the list of APM tools supported by Harness, go to [Metrics providers](https://developer.harness.io/docs/getting-started/supported-platforms-and-technologies#metrics-providers).
+Application Performance Monitoring (APM) tools such as AppDynamics and Dynatrace help you monitor and analyze the performance of web applications in real-time. To see the list of APM tools supported by Harness, go to [Metrics providers](/docs/get-started/supported-platforms-and-technologies#metrics-providers).
 
 
 ## Metric verification in Harness CV

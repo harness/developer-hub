@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 title: Go application
 description: Use a CI pipeline to build and test a Go application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
@@ -27,7 +27,7 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 * [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
 * [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
-* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 <CISignupTip />
 
@@ -230,7 +230,7 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settin
 
 ### Visualize test results
 
-You can [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
+You can [view test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
 
 You can use [go-junit-report](https://github.com/jstemmer/go-junit-report) to output compatible JUnit XML reports.
 
@@ -322,7 +322,7 @@ If your application requires a specific version of Go, add a **Run** step to ins
 <details>
 <summary>Install multiple versions of Go</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
         strategy:
@@ -379,7 +379,7 @@ Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag i
 <details>
 <summary>Build using multiple versions of Go</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
         strategy:
@@ -578,7 +578,7 @@ pipeline:
 <TabItem value="Self-hosted">
 ```
 
-If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
+If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
 <summary>Pipeline with one specific Go version</summary>

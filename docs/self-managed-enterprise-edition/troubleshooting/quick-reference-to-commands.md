@@ -1,6 +1,6 @@
 ---
 title: Quick command reference
-description: Helpful commands for troubleshooting.
+description: Helpful commands for troubleshooting the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 90
 ---
 

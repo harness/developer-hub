@@ -1,0 +1,14 @@
+{
+    "label": "Sample YAML files",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "1",
+    "link": {
+        "type": "generated-index",
+        "title": "Sample YAML files"
+    },
+    "customProps": {
+        
+    }
+}

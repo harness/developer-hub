@@ -30,7 +30,7 @@ Harness CD Community Edition is intended to get devs started with Harness quickl
 * You can also use Harness CD features such as automated rolling, canary and blue green deployments, automated infrastructure provisioning, integrated approvals and notifications, full YAML-based development, and Harness Git Experience.
 * In the near future, Amazon Web Services (AWS) (Elastic Container Service (ECS), Auto Scale Groups (ASG), CloudFormation, Lambda, etc), Microsoft Azure (Virtual Machine Scale Sets (VMSS), WebApps, Azure Kubernetes Service (AKS), Azure Container Registry (ACR), Azure Resource Manager (ARM), Blueprint), .NET, Google Cloud Build, VM, Tanzu Application Services (TAS), Serverless, and traditional (Tomcat, etc) deployments will be supported.  
 
-For the full list of the currently supported integrations, see **Continuous Delivery (CD)** in [supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies).
+For the full list of the currently supported integrations, see **Continuous Delivery (CD)** in [supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
 
 ## Can I upgrade to a paid plan from Harness CD Community Edition?
 

@@ -1,33 +1,38 @@
 ---
-title: Fossa scanner reference
+title: Fossa scanner reference for STO
 description: Image and repository scans with Fossa
-sidebar_position: 150
+sidebar_label: Fossa scanner reference
+sidebar_position: 190
 ---
-
-:::note
-Currently, this integration is behind the Feature Flag `STO_STEP_PALETTE_FOSSA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 You can scan container images and repositories using [Fossa](https://www.fossa.com), a scanner that detects security vulnerabilities and other issues in open-source projects. 
 
 
-## Before you begin
+## Important notes for running Fossa scans in STO
+
+### Docker-in-Docker requirements
 
 ```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 ```
 
-<StoCreateDinD />
+<StoDinDRequirements />
 
-## Fossa step configuration
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
+
+## Fossa step settings for STO scans
 
 The recommended workflow is add a Fossa step to a Security Tests or CI Build stage and then configure it as described below. 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <!--details>
     <summary>Scanner Template</summary>
@@ -149,10 +154,10 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## YAML pipeline example
 

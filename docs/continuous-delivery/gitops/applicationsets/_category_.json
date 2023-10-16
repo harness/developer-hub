@@ -1,0 +1,11 @@
+{
+  "label": "ApplicationSets",
+  "position": "400",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "ApplicationSets"
+  }
+}

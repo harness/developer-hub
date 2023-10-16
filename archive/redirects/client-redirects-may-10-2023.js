@@ -362,7 +362,7 @@ module.exports = {
     },
     {
       from: "/docs/platform/Security/add-use-text-secrets",
-      to: "/docs/platform/Secrets/add-use-text-secrets",
+      to: "/docs/platform/secrets/add-use-text-secrets",
     },
     {
       from: "/docs/platform/Security/add-file-secrets",
@@ -701,8 +701,8 @@ module.exports = {
     // Created by ravilach to fix CD Cert re-directs April 15th, 2023
 
     {
-      from: "/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics",
-      to: "/docs/continuous-delivery/get-started/cd-pipeline-basics",
+      from: "/docs/continuous-delivery/onboard-cd/cd-concepts/key-concepts",
+      to: "/docs/continuous-delivery/get-started/key-concepts",
     },
     {
       from: "/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview",
@@ -1131,7 +1131,7 @@ module.exports = {
     // Created by SudheendraKatte for SRM Docs reorg, PR-1276, on Apr 12, 2023
     {
       from: "/docs/service-reliability-management/howtos-service-reliability-management/service-reliability-management-basics",
-      to: "/docs/service-reliability-management/getting-started/service-reliability-management-basics",
+      to: "/docs/service-reliability-management/get-started/key-concepts",
     },
     {
       from: "/docs/service-reliability-management/howtos-service-reliability-management/slo-driven-deployment-governance",

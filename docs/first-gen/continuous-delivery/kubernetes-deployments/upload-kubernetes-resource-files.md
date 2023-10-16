@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
+This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/category/kubernetes).
 
 Harness includes default Kubernetes resource files you can edit and add to, and the ability to [link to remote Git and Helm repo files](link-resource-files-or-helm-charts-in-git-repos.md), but you might also have resource files you want to upload into Harness.
 

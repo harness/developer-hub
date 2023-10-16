@@ -40,7 +40,7 @@ For information about best practices for using secrets in pipelines, go to the [
 
 :::
 
-### Create an output variable
+#### Create an output variable
 
 To create an output variable, do the following in the step where the output variable originates:
 
@@ -52,9 +52,9 @@ To create an output variable, do the following in the step where the output vari
 
 2. In the step's **Output Variables**, declare the variable name, such as `myVar`.
 
-### Reference an output variable
+#### Reference an output variable
 
-To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/references/runtime-inputs/#expressions) that includes the originating step's ID and the variable's name.
+To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) that includes the originating step's ID and the variable's name.
 
 Use either of the following expressions to reference an output variable in another step in the same stage:
 
@@ -175,7 +175,7 @@ If multiple output variables from previous steps have the same name, the last-pr
 
 :::caution Unpredictability with parallelism
 
-For stages that use [looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), particularly parallelism, the last-produced instance of a variable can differ between runs. Depending on how quickly the parallel steps execute during each run, the last step to finish might not always be the same.
+For stages that use [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), particularly parallelism, the last-produced instance of a variable can differ between runs. Depending on how quickly the parallel steps execute during each run, the last step to finish might not always be the same.
 
 :::
 

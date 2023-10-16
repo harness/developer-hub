@@ -133,7 +133,7 @@ You must set up Git Experience before you can turn on syncing with Git in your F
 Do not use **Git Management** in Project Setup. This is an older version of Git Experience that does not work with Feature Flags.
 :::
 
-During the setup, you are asked to either select an existing Harness Git connector, or create a new one. If creating a new one, have your [PAT](#create-a-personal-access-token-if-adding-a-new-git-connector) ready to enter into the connector configuration. You can also create a Git connector before starting this procedure. Go to [Connect to a Git repository](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) for instructions.
+During the setup, you are asked to either select an existing Harness Git connector, or create a new one. If creating a new one, have your [PAT](#create-a-personal-access-token-if-adding-a-new-git-connector) ready to enter into the connector configuration. You can also create a Git connector before starting this procedure. Go to [Connect to a Git repository](/docs/platform/connectors/code-repositories/connect-to-code-repo) for instructions.
 
 To set up Git Experience:
 
@@ -155,7 +155,7 @@ To set up Git Experience:
 
       ![New Git Connector form with **Enable API access** checkbox selected](./static/gitex-connector-enable-api-access.png)
 
-      For more information, go to [Connect to a Git repository](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo), and [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference/).
+      For more information, go to [Connect to a Git repository](/docs/platform/connectors/code-repositories/connect-to-code-repo), and [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference/).
 
     * **Repository** - Select or enter the name of your repository.
     * **Git branch** - Select or enter a branch name.

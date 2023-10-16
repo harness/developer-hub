@@ -28,8 +28,8 @@ Using the AWS reservation efficiency report you can:
 
 ## Prerequisites
 
-* Review [Set Up Cloud Cost Management for AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md)
-* Ensure that you have **Dashboard-All View** permissions assigned. Go to [Manage Access Control for CCM Dashboards](../../2-getting-started-ccm/5-access-control/manage-access-control-for-ccm-dashboards.md).
+* Review [Set Up Cloud Cost Management for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
+* Ensure that you have **Dashboard-All View** permissions assigned. Go to [Manage Access Control for CCM Dashboards](/docs/cloud-cost-management/access-control/manage-access-control-for-ccm-dashboards.md).
 * Ensure that you have set up Cloud Cost Management (CCM) for your AWS account.
 * Ensure that you have added all the required permissions for your cloud provider. The data available in the dashboard depends on the permissions you provided to the AWS cloud provider when setting up the CCM. 
 
@@ -81,19 +81,19 @@ Perform the following steps to view AWS Reservation Efficiency Dashboard:
    
      ![](./static/aws-reservation-coverage-and-service-cost-46.png)
 4. Click **Back** to go back to the previous page in the Dashboard.
-5. Click **Download** to download the Dashboard. See [Download Dashboard Data](https://developer.harness.io/docs/platform/Dashboards/download-dashboard-data).
+5. Click **Download** to download the Dashboard. See [Download Dashboard Data](/docs/platform/Dashboards/download-dashboard-data).
 
 ### See Also
 
 After setting up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](https://developer.harness.io/docs/platform/Dashboards/create-dashboards)
-* [Create Visualizations and Graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs)
+* [Create Dashboards](/docs/platform/Dashboards/create-dashboards)
+* [Create Visualizations and Graphs](/docs/platform/Dashboards/create-visualizations-and-graphs)
 
 ### Next Steps
 
-* [Use Dashboard Actions](https://developer.harness.io/docs/platform/Dashboards/use-dashboard-actions)
-* [Download Dashboard Data](https://developer.harness.io/docs/platform/Dashboards/download-dashboard-data)
-* [Create Conditional Alerts](https://developer.harness.io/docs/platform/Dashboards/create-conditional-alerts)
-* [Schedule and Share Dashboards](https://developer.harness.io/docs/platform/Dashboards/share-dashboards)
+* [Use Dashboard Actions](/docs/platform/Dashboards/use-dashboard-actions)
+* [Download Dashboard Data](/docs/platform/Dashboards/download-dashboard-data)
+* [Create Conditional Alerts](/docs/platform/Dashboards/create-conditional-alerts)
+* [Schedule and Share Dashboards](/docs/platform/Dashboards/share-dashboards)
 

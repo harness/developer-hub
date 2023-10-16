@@ -1,0 +1,11 @@
+{
+  "label": "Use GitOps",
+  "position": "300",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "Use GitOps"
+  }
+}

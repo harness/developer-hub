@@ -11,6 +11,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpno />
 
 
@@ -20,8 +23,8 @@ For getting started quickly, you can use our [sample code from the SDK README](h
 
 ## Before you begin
 
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
+* [Feature Flags Overview](../../get-started/overview)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
@@ -234,6 +237,12 @@ const myFlagValues = useFeatureFlags({
 When you receive a response showing the current status of your feature flag, go to the Harness Platform and toggle the flag on and off. Then, check your app to verify if the flag variation displayed is updated with the variation you toggled.
 
 <Sixty />
+
+## Close the SDK client
+
+<Closeclient />
+
+
 
 ## Mock the SDK when testing with Jest
 

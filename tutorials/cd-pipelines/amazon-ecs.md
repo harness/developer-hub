@@ -1,5 +1,5 @@
 ---
-sidebar_position: 60
+sidebar_position: 4
 title: Amazon ECS
 description: Deploy a Docker Image to Amazon ECS using a CD Pipeline
 ---
@@ -18,6 +18,12 @@ description: Deploy a Docker Image to Amazon ECS using a CD Pipeline
 ```mdx-code-block
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
+
+:::info
+
+[Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-kubernetes-manifest).
+
+:::
 
 [Amazon Elastic Container Service](https://aws.amazon.com/ecs/) is an AWS offering for those looking to run containerized workloads. Define an ECS [Task Definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html) describing your workload and a [Service Definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_definition_parameters.html) where you want to run your workload and you are all set.  A Continuous Delivery Pipeline is an excellent spot to orchestrate a deployment to Amazon ECS. In this example, we will go through deploying an image with Amazon ECS inside a Harness Continuous Delivery Pipeline. 
 

@@ -1,0 +1,12 @@
+{
+   "label":"Get started with CET",
+   "position": 2,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Get started with Harness Continuous Error Tracking (CET)"
+   }
+   }
+

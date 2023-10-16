@@ -57,6 +57,14 @@ Here is an example of specifying it at the environment's **Configuration**:
 
 When you have a values YAML file at two or more of the environment **Service Overrides**, **Environment Configuration**, and the service itself, Harness merges the files into a single values YAML for deployment. This merging is performed at pipeline execution runtime.
 
+:::info limitation
+
+You cannot check the parametrized values in the values YAML. However, you can view these values in the pipeline execution console view for any deployment type under the Initialize section, when referencing the values YAML in the corresponding manifest.
+
+![parametrized value](./static/values-yaml-parametrized-values.png)
+
+:::
+
 Overriding occurs when the higher priority setting has the same `name:value` pair as a lower priority setting.
 
 Let's look at two examples.

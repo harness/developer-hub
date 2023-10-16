@@ -35,6 +35,13 @@ import { MODULES } from "../../constants";
             "Run Sauce Connect Proxy as a Background step.",
           link: "/tutorials/ci-pipelines/test/saucelabs-proxy",
         },
+        {
+          title: "Test a FastAPI project",
+          module: MODULES.ci,
+          description:
+            "Use Harness CI to run tests on a FastAPI project.",
+          link: "/tutorials/ci-pipelines/test/fastapi",
+        },
       ],
     },
   ];

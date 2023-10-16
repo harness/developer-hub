@@ -18,7 +18,7 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP product
 * Ensure that you have the following permissions to enable and configure the export of Google Cloud billing data to a BigQuery dataset:
 	+ **Billing Account Administrator** role for the target Cloud Billing account
 	+ [BigQuery User role for the Cloud project](https://cloud.google.com/bigquery/docs/dataset-access-controls) that contains the BigQuery dataset that will be used to store the Cloud Billing data
-* The same connector cannot be used in FirstGen and NextGen. NextGen Connectors are recommended for the best experience of CCM capabilities and features. For information on creating a GCP connector in the NextGen see [Set Up Cloud Cost Management for GCP](../../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md).
+* The same connector cannot be used in FirstGen and NextGen. NextGen Connectors are recommended for the best experience of CCM capabilities and features. For information on creating a GCP connector in the NextGen see [Set Up Cloud Cost Management for GCP](../../../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md).
 
 After enabling CE, it takes about 24 hours for the data to be available for viewing and analysis.### Step 1: Connect to Google Cloud Platform (GCP) Account
 

@@ -129,7 +129,7 @@ We'll cover this option below.
 
 5. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo.
 6. If you haven't set up a Harness Delegate, you can add one as part of the Connector setup.
-    This process is described in [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
+    This process is described in [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](/docs/platform/Delegates/install-delegates/overview).
 7. Once you've selected a Connector, click **Continue**.
 8. In **Manifest Details**, you tell Harness where the values.yaml is located.
 9. In **Manifest Identifier**, enter a name that identifies the file, like **values**.

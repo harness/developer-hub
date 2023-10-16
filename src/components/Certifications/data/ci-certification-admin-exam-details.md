@@ -1,4 +1,4 @@
-**(BETA)** The Continuous Integration Administrator exam tests your knowledge and skills of the Harness Continuous Integration module.  
+The Continuous Integration Administrator exam tests your knowledge and skills of the Harness Continuous Integration module.  
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@
 | Exam Type                               | Duration         |
 | ----------------------------------- | --------------- |
 | **Knowledge Exam** | 90 minutes |
-| **Hands On Exam** | 90 minutes |
+| **Hands On Exam** | 120 minutes |
 
 | Covered Domain                                | Coverage         |
 | ----------------------------------- | --------------- |
@@ -44,9 +44,9 @@ The following is a detailed list of exam objectives:
 | 3.2    | Learn about project variables and how to install software on the delegate                                                                              |
 | 4      | Harness CI Pipelines and Features                                                                                                                      |
 | 4.1    | Perform Codebase configuration and configure shared paths                                                                                              |
-| 4.2    | Describe and configure caching, test intelligence, and triggers                                                                                        |
+| 4.2    | Describe and configure caching, Test Intelligence, and triggers                                                                                        |
 | 5      | Advanced Configurations in Harness CI                                                                                                                  |
-| 5.1    | Learn to configure Input Sets, Overlays, Failure Strategies, and perform Conditional Execution                                                         |
+| 5.1    | Learn to configure input sets, overlays, failure strategies, and perform conditional execution                                                         |
 | 5.2    | Understand and configure Looping Strategies, Flow Control, and Barriers                                                                                |
 | 6      | Notifications & Steps in Harness CI                                                                                                                    |
 | 6.1    | Learn to configure notifications and send PR Status updates                                                                                            |
@@ -70,7 +70,7 @@ The following is a detailed list of exam objectives:
 The Continuous Integration Administrator exam can start immediately after registering. Please allow 90 mins for the knowledge exam and approximately 90 minutes for the hands on exam.
 
 1. Create an account in Harness University
-2. Register for an exams 
+2.  Register for an exam. There is a $50 fee for the exam
 3. Review the [instructions for the Hands On Exam](/certifications/instructions)
 4. Take the exams
     1. There will be a knowledge and hands on portion.	

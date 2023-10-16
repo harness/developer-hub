@@ -12,6 +12,9 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 import Smpno from '../shared/note-smp-not-compatible.md'
 
+import Closeclient from '../shared/close-sdk-client.md'
+
+
 <Smpno />
 
 This topic describes how to use the Harness Feature Flags PHP SDK for your PHP application.
@@ -24,8 +27,8 @@ Important: Although the PHP SDK is a Server SDK, you must use a Client SDK Key t
 
 Make sure you've read and understood:
 
-* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
+* [Feature Flags Overview](../../get-started/overview)
+* [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
@@ -190,6 +193,10 @@ $result = $client->evaluate($FLAG_NAME, false);
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
 
 <Sixty />
+
+## Close the SDK client
+
+<Closeclient />
 
 ## Sample Code for a PHP Application
 

@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-07-18T10:00:20
+date: 2023-10-09T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -18,43 +18,232 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 06, 2023, version 79812
+## Latest: Version 1.3.3
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+### New features and enhancements
 
 This release does not include any new features.
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+### Early access features
 
 This release does not include any early access features.
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+### Fixed issues
 
-- During monitored service creation, when adding a health source that supported metrics, both **Errors** and **Performance** metric packs were automatically selected as default options. However, if the user chose to select only one of the options, when the monitored service was reopened, both metric options remained selected. (SRM-14998)
+- The monitored service dropdown filter on the SLO listing page was restricted to displaying a limited number of services. (SRM-15690)
   
-  This issue has been resolved. The selected metric pack option during monitored service creation will now be correctly reflected upon opening the monitored service.
+  This issue has been resolved. Now, the monitored service dropdown filter displays up to 100 values.
+  
+- In certain scenarios, there were delays of up to a day in receiving the SLI data, leading to outdated information. (SRM-15692)
+  
+  This issue has been resolved. Now, the most recent SLI data is available without any delays.
+  
+- The SLO details view page does not adapt to the browser's size, resulting in an improper display. (SRM-15712)
+  
+  This issue has been resolved. Now, the SLO details view page properly fits the size of your browser.
 
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
+### Hotfixes
+
+This release does not include hotfixes.
+
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+
+#### Version 1.2.5
+
+##### New features and enhancements
+
+Added new filters named Environment-Based and SLO Type to the SLO listing page. You can now filter the SLO list on environment or SLO type for improved management. (SRM-15506)
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- Previously, when any of the simple service-level objectives (SLOs) reported NO_DATA for the entire duration, and the missing data was treated as IGNORE, the composite SLO faced challenges as it required data from all underlying simple SLOs to perform calculations. Consequently, the composite SLO failed to produce any records and became unresponsive. (SRM-15376)
+  
+  This issue has been resolved. Now, if one or more simple SLOs report NO_DATA throughout the duration, even if the missing data is treated as IGNORE, the composite SLO continues to generate records with data for the entire duration. Importantly, the error budget for those minutes remains unaffected.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### Version 1.1.3
+
+##### New features and enhancements
+
+SRM dashboards now include comprehensive data for composite Service Level Objectives (composite SLOs). This enhancement gives you a holistic view of both simple and composite SLO performance. (SRM-15419)
+
+
+##### Early access features
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- FireHydrant notifications were not being triggered as expected for monitored services without any configured Service Level Objectives (SLOs). (SRM-15458)
+
+  This issue has been resolved. FireHydrant notifications will now be triggered for all monitored services, irrespective of whether SLOs are configured.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### Version 1.0.8
+
+##### New features and enhancements
+
+This release does not include any new features.
+
+### Early access features
+This release does not include any early access features.
+
+### Fixed issues
+
+- Pagerduty events were not being deleted after the deletion of a project or organization. (SRM-15263)
+
+   This issue has been resolved. Deleting a project or organization no longer leaves behind orphaned Pagerduty events.
+
+- The API endpoint `/cv/api/monitored-service/versions_int1` was not functioning correctly. (SRM-15321)
+  
+    This issue has been resolved. Now, in cases where the "sources" field is received as null, the system treats it as equivalent to `{ healthSources: [], changeSources: [] }`.
+
+
+- The SRM default dashboard was non-functional, rendering it unusable. (SRM-15372)
+  
+    This issue has been resolved. Now, the SRM default dashboard is fully operational.
+
+
+#### September 6, 2023, version 80402
+
+##### New features and enhancements
+
+- The **Service Health** tab on the monitored service details page has been renamed to **Change Impact**. (SRM-15261)
+
+##### Early access features
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### August 22, 2023, version 80300
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+
+#### August 10, 2023, version 80204
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+
+#### August 04, 2023, version 80119
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+
+#### July 27, 2023, version 80021
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+
+#### July 21, 2023, version 79922
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+
+#### July 06, 2023, version 79812
+
+##### What's new
+
+Create and manage monitored services at the Project level (SRM-14580)
+
+You can now seamlessly create and manage monitored services at the Project level, as well as within the SRM and CD modules. You can view and manage the monitored services, regardless of where they were created. The monitored service list presents specific insights based on where you are accessing it.
+
+  - Project level: Shows service names and health source count, while interactive module icons allow you to effortlessly navigate to specific modules for a detailed view.
+    
+  - CD module: Presents monitored service names alongside configured health sources, providing a comprehensive overview of health status.
+    
+  - SRM module: Provides information, including monitored service status, name, SLO specifics, recent changes, 24-hour health trends, score, and dependency status.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- During monitored service creation, when adding a health source that supported metrics, both **Errors** and **Performance** metric packs were automatically selected as default options. However, if the user chose to select only one of the options, when the monitored service was reopened, both metric options remained selected. (SRM-14998)
+  
+  This issue has been resolved. The selected metric pack option during monitored service creation will now be correctly reflected upon opening the monitored service.
 
 
 #### June 28, 2023, version 79709
@@ -123,6 +312,7 @@ This release does not include any early access features.
 
   - If a monitored service has been updated with new analysis data, it is given higher priority and displayed before other services on the list.
 
+
 #### June 09, 2023, version 79517
 
 ##### What's new
@@ -170,7 +360,7 @@ This release does not include any early access features.
 
 ##### What's new
 
-- Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](https://developer.harness.io/docs/continuous-error-tracking). (SRM-14701)
+- Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](/docs/continuous-error-tracking). (SRM-14701)
 
 - Clicking on a Prometheus metrics entry in the Service Health page of a monitored service directly navigates you to the Prometheus metrics dashboard. (SRM-14699)
 
@@ -204,9 +394,9 @@ This release does not include any early access features.
 
     This issue has been resolved, and error budget burn rate notifications are now being sent for composite SLOs.
 
-- Encountering an error when configuring monitored services using the Harness Terraform provider. (SRM-14684)  
+- Encountering an error when configuring monitored services using the Harness Terraform Provider. (SRM-14684)  
   
-  The Harness Terraform provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
+  The Harness Terraform Provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
 
 - On the Composite SLO Details page, the environment links under the monitored services were broken. (SRM-14645)  
   

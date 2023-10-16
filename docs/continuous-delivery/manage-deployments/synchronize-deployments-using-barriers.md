@@ -16,6 +16,10 @@ Harness provides multiple options for controlling resource usage and protecting 
 
 :::
 
+## Important notes
+
+* You cannot use barriers with [Matrix, Looping, and Repeat](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) strategies. 
+
 ## Barriers and Synchronization
 
 When deploying interdependent services, such as microservices or a large and complicated application, there might be a need to coordinate the timing of the different components' deployments. A common example is the need to verify a group of services only after *all the services* are deployed successfully.
@@ -24,7 +28,7 @@ Harness address this scenario using Barriers. Barriers allow you to synchronize 
 
 Barriers have an effect only when two or more stages/step groups use the same barrier name (**Barrier Reference** setting in the Barrier step), and are executed in parallel in a Pipeline. When executed in parallel, both stages/step groups will cross the barrier at the same time.
 
-If a stage/step group fails before reaching its barrier point, the stage/step group signals the other stages/step groups that have the same barrier, and the other stages/step groups will react as if they failed as well. At that point, each stage/step group will act according to its [Define a Failure Strategy on Stages and Steps](/docs/platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).
+If a stage/step group fails before reaching its barrier point, the stage/step group signals the other stages/step groups that have the same barrier, and the other stages/step groups will react as if they failed as well. At that point, each stage/step group will act according to its [Define a Failure Strategy on Stages and Steps](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps.md).
 
 Here's a visualization of three stages run in parallel using Barriers. Stages A and B will wait for each other to reach Barrier X and Stages B and C will wait for each other to reach Barrier Y.
 
@@ -66,4 +70,5 @@ You cannot use a Harness variable expression in **Barrier Reference**.Now you ca
 
 * You can have multiple barriers in a stage/step group. Every barrier in the same stage/step group must use a unique **Barrier Reference**.
 * Ensure the Barrier Reference string for each related barrier across the different stages/step groups matches.
+
 

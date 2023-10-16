@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-07-13T10:00
+date: 2023-09-20T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -12,6 +12,7 @@ import TabItem from '@theme/TabItem';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/cloud-cost-management/rss.xml" />
 
+
 Review the notes below for details about recent changes to Harness Cloud Cost Management. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
 :::info note
@@ -19,13 +20,225 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - July 13, 2023, version 80102
+## Latest: version 80904
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
-* Recommendations page UI enhancement (CCM-12693)
+### New features and enhancements
+
+* Previously, CCM displayed only the essential Jira or ServiceNow fields in Recommendation Workflows. However, with this enhancement, CCM introduces a new field _+ Fields_ that allows users to add optional fields as needed.
+
+    <docimage path={require('./static/ccm-jira-ticket-enhancement.png')} width="40%" height="40%" title="Click to view full size image" />
+
+
+
+### Early access features
+
+This release does not include any early access features.
+
+### Fixed issues
+
+* Previously, CCM used to display all anomalies, including the new ones that were labeled as "N/A."  (CCM-14275)
+
+  However, now, anomalies will not be shown on the UI for newer entities. Newer entities are those having data for a duration of 15 days or less.
+
+* In the AWS perspective, the cost calculation is based on the selected `Groupby` field, and CCM uses the SUM of `awsUnblendedCost`. However, when CCM detects anomalies for AWS, it is based on the SUM of `awsBlendedCost`. This led to a cost mismatch between what's displayed on the AWS perspective and the cost reported for anomalies.(CCM-14096)
+
+  This issue is fixed by using SUM of `awsUnblendedCost` to detect AWS (Account, Service and UsageType) anomalies.
+
+
+  
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### September 20, 2023, version 80804
+
+##### New features and enhancements
+
+This release does not include any new features.
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+* Previously, on the AutoStopping details page, the dry-run flag did not invoke the savings API when turned on. (CCM-14232)
+
+  This issue has been fixed. Now, the cost savings are correctly displayed in the dry-run mode.
+  
+
+#### September 7, 2023, version 80702
+
+
+##### New features and enhancements
+
+  * Cost category enhancement (CCM-12879)
+
+  Implemented a new feature that enables users to copy cost buckets from one cost category to multiple cost categories simultaneously. You have the flexibility to choose any number of buckets for copying. Upon selection, a popup prompt appears, allowing you to specify the target cost categories for copying the selected buckets. Upon successful completion, you receive a success notification along with relevant details.
+  
+  However, it's important to note that while copying you may encounter issues if the destination cost category already has a bucket with the same name as the copied one. In such cases, you can address the conflict by renaming the bucket before attempting the copy operation again.
+
+    <docimage path={require('./static/ccm-copy-cost-buckets.gif')} width="60%" height="60%" title="Click to view full size image" />
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+* An issue with the budget group warning message (CCM-14150)
+
+  Previously, there was a discrepancy between the dates displayed in the warning message and those in the budget table column. This issue has been fixed now, and the dates are consistent on both the table and the warning message.
+
+    <docimage path={require('./static/ccm-budget-group-warning-msg.png')} width="60%" height="60%" title="Click to view full size image" />
+
+* Previously, users were unable to schedule the same AutoStopping rule for the same time in different time zones, such as setting the rule to run at 8 PM - 9 PM IST and 8 PM - 9 PM EDT, which was considered an overlap. (CCM-14181)
+
+  This issue has been resolved. Added validation to check for time zones to allow multiple schedules for a single rule.
+
+* Multiple `OverlappingFileLockException` errors were occurring due to the Chronicle Queue library version used. Consequently, this issue led to Perspectives not displaying any data. (CCM-14174)
+
+  The issue is resolved now. The Chronicle Queue library has been upgraded to a newer version, resolving the errors.
+
+#### September 04, 2023, version 80606
+
+##### New features and enhancements
+
+* Display refunds or discounts on the graph within perspectives. (CCM-13443)
+
+  Previously, our graph in perspectives didn't display refunds or discounts, resulting in empty spots when values were negative. This enhancement improves this by aggregating negative values into a red-colored bar chart. You can now toggle a button in **General Preferences** to view these previously hidden negative costs.
+
+    <docimage path={require('./static/aws-preferences-ccm13443.png')} width="60%" height="60%" title="Click to view full size image" />
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+* After editing an existing cost category, previously, when attempting to create a new one, the drawer displayed the details for the last accessed cost category. (CCM-13973)
+
+  This issue is fixed. The new cost category builder drawer now opens in the expected empty state, and the edit drawer will correctly display the details of the selected cost category. Even after editing a cost category, if you open the new cost category drawer, it correctly shows the empty state as intended.
+
+* Previously, users were unable to select **This Quarter** in the **Overview** time range filter. Instead, the application defaulted to **This Month** upon selection. (CCM-13505)
+
+  This issue has been fixed.
+
+* An issue with onboarding an existing AutoStopping rule on Azure App Gateway version 1 (CCM-13903)
+
+   This issue is resolved. Now the health check configurations of the AutoStopping rule are being used to detect the current backend settings associated with the rule.
+
+* The screen went blank when deleting all characters in the AutoStopping Rule Name field while editing the rule. (CCM-13816)
+
+  This issue has been resolved.
+
+
+#### August 23, 2023, version 80500
+
+##### New features and enhancements
+
+* ServiceNow integration with Recommendations (CCM-11150)
+
+  Introducing ServiceNow as a ticketing tool to create tickets for recommendations. You can use either Jira or ServiceNow as your ticketing tool. You need to configure this setting at the account level on the **Default Settings** page. For more information, go to [View and apply recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations).
+
+* AWS perspectives enhancement (CCM-13914)
+
+  Introducing support for the following additional `Group By` options in AWS perspectives:
+  - Billing entity
+  - Line item type
+  
+  For more information, go to [Analyze AWS costs by using perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws).
+
+##### Early access features
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* Previously, within the budget **Edit** flow, the monthly breakdown values would reset to default values. However, currently, the resetting occurs only when there's a change in the **Budget Type**. (CCM-13763)
+
+* Previously for ALB proxy HTTP route configuration, when it comes to redirect actions, only redirect URLs were supported. However, now, users have the flexibility to include either a redirect URL or specify a target port and protocol. (CCM-13702)
+
+
+#### August 02, 2023, version 80301
+
+##### What's new
+
+* AWS AutoStopping proxy enhancement (CCM-13497)
+
+  You can now select the subnet ID from the dropdown list for AWS AutoStopping proxy creation. 
+
+    <docimage path={require('./static/ccm-subnet-proxy.png')} width="60%" height="60%" title="Click to view full size image" />
+
+* **Perspective Preferences** enhancement (CCM-11145)
+
+  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/perspective-preferences).
+
+ 
+:::important note
+ The current configurations for **Show others** and **Show unallocated cost in clusters** are preserved. This means that though the default settings have these preferences set to false, any _existing perspective_ with these preferences set to true will retain their current state and not be overridden.
+:::
+
+* Improved UI handling during the AutoStopping rule creation process (CCM-13527)
+
+  The page on which users select either a load balancer or an AutoStopping Proxy has been enhanced to include an additional API that retrieves information about proxies created previously in shared VPCs. Now users can use a proxy created in a shared VPC across projects and connectors.
+
+* **Overview** page enhancements (CCM-13326)
+
+  - The pie chart now shows a hover state. 
+  - The forecast trend in the widget is removed.
+  - Added forecast time period in the forecast cost widget.
+  - Changed the heading of the cloud cost widget from `Top AWS accounts` to `Top 10 AWS accounts`.
+
+    <docimage path={require('./static/ccm-overview-1.png')} width="60%" height="60%" title="Click to view full size image" />
+    <docimage path={require('./static/ccm-overview-2.png')} width="60%" height="60%" title="Click to view full size image" />
+    <docimage path={require('./static/ccm-overview-3.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* Previously, configuring both the redirect URL and target port for redirection while creating a redirect-based AutoStopping rule led to an error. (CCM-13475)
+
+  This issue has been resolved by modifying the validation process. Now, if the redirect URL is defined, the validation process checks whether the target port is greater than 0. Specifying both redirect URL and target port is not allowed as it is an invalid configuration. However, for ALBs, only redirect URLs are allowed.
+
+* Users were unable to validate their YAML files when creating a Kubernetes AutoStopping rule. (CCM-13459)
+
+  This issue has been resolved. Users will now be able to validate the YAML successfully.
+
+* Previously, users experienced performance delays while editing cost categories with more than 50 buckets, and every subsequent action took several seconds to trigger. (CCM-13205)
+
+  The issue has been resolved, and the overall user experience has been enhanced by streamlining the process of managing cost categories even with a large number of buckets.
+
+
+#### July 21, 2023, version 80202
+
+##### What's new
+This release does not include any new features.
+
+##### Early access
+This release does not include any early access features.
+
+##### Fixed issues
+This release does not include any fixed issues.
+
+
+#### July 13, 2023, version 80102
+
+##### What's new
+
+Recommendations page UI enhancement (CCM-12693)
 
  The **Include** dropdown on the **Recommendations** page has been removed. Instead, the following toggle options have been added in the Filter panel as shown in the screenshots below: 
 
@@ -39,19 +252,12 @@ By default, the first two options are enabled, and you can modify the toggles to
    
   <docimage path={require('./static/ccm-tooltip-recommendations.png')} width="60%" height="60%" title="Click to view full size image" />
 
-
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
+
 * The message displayed on the UI was incorrect when there were no recommendations for the account. (CCM-13250)
 
   This issue is fixed now.
@@ -63,18 +269,6 @@ This release does not include any early access features.
 
   Now, the cost category IDs are validated when added in the perspective rule.
 
-
-
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### July 07, 2023, version 80002
 
@@ -206,7 +400,7 @@ This release does not include any early access features.
 
 **Azure VM recommendations**
 
-  Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
+  Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
 
 ##### Early access
 
@@ -268,7 +462,7 @@ This release does not include any new features.
 
 **Asset Governance**
 
-The Asset Governance feature now includes support for access control through Role-Based Access Control (RBAC). This enhancement allows more granular control and management of permissions. For more information, go to [Asset Governance RBAC](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov). 
+The Asset Governance feature now includes support for access control through Role-Based Access Control (RBAC). This enhancement allows more granular control and management of permissions. For more information, go to [Asset Governance RBAC](/docs/cloud-cost-management/access-control/rbac-asset-gov). 
 
 This feature is behind the feature flag, `CCM_ENABLE_CLOUD_ASSET_GOVERNANCE_UI`.
 ##### Fixed issues
@@ -364,7 +558,7 @@ This feature is behind the feature flag, `CCM_ENABLE_CLOUD_ASSET_GOVERNANCE_UI`.
     ![](./static/cost-category-builder-2.png)
 
   
-  For more information, go to [Use Cost Categories](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-cost-categories/use-ccm-cost-categories).
+  For more information, go to [Use Cost Categories](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/cost-categories-usage).
 
 ##### Early access
 This release does not include any early access features.
@@ -457,7 +651,7 @@ This release does not include any early access features.
 
 * AutoStopping Proxy for HTTPS and TCP connections.
 
- Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](https://developer.harness.io/docs/category/add-load-balancer-for-autostopping-rules) and [Create AutoStopping rules](https://developer.harness.io/docs/category/create-autostopping-rules).
+ Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](/docs/category/add-load-balancers-for-autostopping-rules) and [Create AutoStopping rules](/docs/category/create-autostopping-rules).
 
 ##### Early access
 
@@ -555,7 +749,7 @@ This release does not include any fixed issues.
 
 * Introducing support to list the label keys that contain the string node-pool-name. (CCM-10203)
   
-    While adding a node pool name, Harness CCM looked only for the exact match. Now, CCM has introduced support to check if the node label key contains the string node-pool-name. CCM falls back to _contains_ if an exact match is not found. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information.
+    While adding a node pool name, Harness CCM looked only for the exact match. Now, CCM has introduced support to check if the node label key contains the string node-pool-name. CCM falls back to _contains_ if an exact match is not found. See [Labels for node pool recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations#prerequisites) for more information.
 
   
 ##### Early access
@@ -644,7 +838,7 @@ NA
 
 ##### What's new
 
-You can now add labels to enable node pool recommendations. `kops cluster` node label has been added for node pool recommendations. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information. (CCM-9309)
+You can now add labels to enable node pool recommendations. `kops cluster` node label has been added for node pool recommendations. See [Labels for node pool recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations#prerequisites) for more information. (CCM-9309)
 
 ##### Early access
 

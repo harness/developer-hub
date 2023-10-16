@@ -533,7 +533,7 @@ Deployment rate limit reached. Some deployments may not be allowed. Please conta
 Harness applies an hourly and daily deployment limit to each account to prevent configuration errors or external triggers from initiating too many undesired deployments. If you are notified that you have reached a limit, it is possible that undesired deployments are occurring. Please determine if a Trigger or other mechanism is initiating undesired deployments. If you continue to experience issues, contact [Harness Support](mailto:support@harness.io).
 
 :::note 
-* The daily limit is 100 deployments every 24 hours. The hourly limit is 40 deployments and is designed to detect any atypical upsurge of deployments.
+* The daily limit is 400 deployments every 24 hours. The hourly limit is 160 deployments and is designed to detect any atypical upsurge of deployments.
 * You can only use 40% of the daily deployment limit in a single hour.
 :::
 

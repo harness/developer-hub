@@ -1,1 +1,1 @@
-The Identifier that you want to assign to the target you’re scanning in the pipeline. Use a unique, descriptive name such as `codebaseAlpha` or `jsmith/myalphaservice`. 
+The Identifier that you want to assign to the target you’re scanning in the pipeline. Use a unique, descriptive name such as `codebaseAlpha` or `jsmith/myalphaservice`. Using descriptive target names will make it much easier to navigate your scan data in the STO UI.

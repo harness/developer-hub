@@ -21,7 +21,7 @@ This topic describes how to deploy AWS ASG deployments using Harness and the Spo
 
 ## Connect to a Spot cloud provider
 
-You can connect Harness to a Spot cloud provider by adding a [Harness Spot Elastigroup connector](/docs/platform/Connectors/Cloud-providers/add-a-spot-connector) or [AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector). 
+You can connect Harness to a Spot cloud provider by adding a [Harness Spot Elastigroup connector](/docs/platform/connectors/cloud-providers/add-a-spot-connector) or [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector). 
 
 To connect to a Spot cloud provider using Spot's API, go to [Spot API authentication](https://docs.spot.io/api/#section/Authentication).
 
@@ -54,7 +54,7 @@ The new stage is created. Next, we'll add a Harness service to represent the app
 
 ### Add a Harness service
 
-Harness services represent your microservices or applications. You can add the same service to as many stages as you need. For more information, go to [services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
+Harness services represent your microservices or applications. You can add the same service to as many stages as you need. For more information, go to [services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 ```mdx-code-block
 import Tabs1 from '@theme/Tabs';
@@ -115,7 +115,7 @@ service:
     
     In this scenario, the AWS account used for AWS access in credentials will assume the IAM role you specify in cross-account role ARN setting. This option uses the [AWS Security Token Service (STS)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) feature.
 11. In **Test Region**, select an AWS region to test the credentials for this connector. 
-12. In **Delegates Setup**, select **Only use Delegate with all of the following tags** and enter the name of the delegate created when creating the [Harness Spot Elastigroup connector](/docs/platform/Connectors/Cloud-providers/add-a-spot-connector).
+12. In **Delegates Setup**, select **Only use Delegate with all of the following tags** and enter the name of the delegate created when creating the [Harness Spot Elastigroup connector](/docs/platform/connectors/cloud-providers/add-a-spot-connector).
 13. Select **Save and Continue**
 14.  After the connection test succeeds, select **Continue**.
 15. In **Artifact Details**, enter the following details:
@@ -335,11 +335,11 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
         * **Percent**: Specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
         * **Count**: Specify the exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
 5. In the **Advanced** settings of all steps, you can use the following options:
-    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-    * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-    * [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+    * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+    * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 
 6. Select **Save**. 
 
@@ -378,11 +378,11 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
         * **Percent**: Specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
         * **Count**: Specify an exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
 6. In the **Advanced** settings of all steps, you can use the following options:
-    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-    * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-    * [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+    * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+    * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 7. Select **Apply Changes**. 
 8. Select **Save**. 
 
@@ -467,11 +467,11 @@ With this incremental traffic shift strategy, you are controlling the percentage
     * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
     * Select **Downsize old Elastigroup** to downsize the old Elastigroup.
 5. In the **Advanced** settings of all steps, you can use the following options:
-    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-    * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-    * [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+    * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+    * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 
 6. Select **Save**.   
 

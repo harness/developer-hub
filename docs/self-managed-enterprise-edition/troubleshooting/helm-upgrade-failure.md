@@ -1,6 +1,6 @@
 ---
 title: Helm upgrade failure
-description: Troubleshoot a Helm upgrade failure in Harness Self-Management Enterprise Edition.
+description: Troubleshoot a Helm upgrade failure in the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 60
 ---
 

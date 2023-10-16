@@ -1,7 +1,7 @@
 ---
 title: Terragrunt
 description: Learn about the Terragrunt steps you can use in you CD stage, and how these steps are commonly used together.
-sidebar_position: 300
+sidebar_position: 5
 ---
 
 # Terragrunt provisioning
@@ -10,45 +10,66 @@ Harness has first-class support for [Terragrunt](https://terragrunt.gruntwork.io
 
 This topic describes each of the Terragrunt steps you can use in you CD stage, and how these steps are commonly used together.
 
-## Summary
+## Terragrunt provisioning summary
 
-Harness lets you use Terragrunt to provision infrastructure as part of your deployment process. 
+Harness provisioning is categorized into the following use cases:
+- **Ad hoc provisioning**: temporary and on-demand provisioning of resources for specific tasks or purposes.
+- **Dynamic infrastructure provisioning**: provision the target deployment environment as part of the same deployment process. Typically, dynamic infrastructure provisioning is for temporary pre-production environments, such as dev, test, and qa. Production environments are usually pre-existing. 
 
-Harness can provision any resource that is supported by Terragrunt and the related Terraform provider or plugin.
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
 
-If you want to use Terraform without Terragrunt, Harness supports that, too. See [Terraform how-tos](./terraform-infra/terraform-how-tos).
+:::note
 
-### Using Terragrunt steps together
+Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-The Terragrunt steps can be used independently or you can connect them by using the same **Provisioner Identifier** in all of the steps.
+:::
 
-Here's how to use all the steps together:
+Harness can provision any resource that is supported by Terragrunt and the related Terraform Provider or plugin.
 
-1. Terragrunt Plan step:
-   1. Add the Terragrunt Plan step and define the Terragrunt script for it to use.
-   2. Select **Apply** in **Command**. 
-   3. Enter a **Provisioner Identifier**.
-2. Terragrunt Apply step:
-   1. Select **Inherit from Plan** in **Configuration Type**.
-   2. Reference the Terragrunt Plan step using the same **Provisioner Identifier**.
-3. Terragrunt Destroy step:
-   1. Select **Inherit from Apply** or **Inherit from Plan** in **Configuration Type**.
-   1. Reference the Terragrunt Apply or Plan step using the same **Provisioner Identifier**.
-4. Terragrunt Rollback step:
-   1. Reference the Terragrunt Apply or Plan step using the same **Provisioner Identifier**.
+If you want to use Terraform without Terragrunt, Harness supports that, too. For more information, go to [Terraform how-tos](./terraform-infra/terraform-how-tos).
 
-<!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
+## Dynamic provisioning steps for different deployment types
 
-<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+Each of the deployment types Harness supports (Kubernetes, AWS ECS, etc.) require that you map different Terragrunt script outputs to the Harness infrastructure settings in the pipeline stage.
 
-Each of these steps is described below in [Terragrunt steps](#terragrunt-steps).
+To see how to set up dynamic provisioning for each deployment type, go to the following topics:
+
+- [Kubernetes infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
+  - The Kubernetes infrastructure is also used for Helm, Native Helm, and Kustomize deployment types.
+- [Azure Web Apps](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial)
+- [AWS ECS](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)
+- [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
+- [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
+- [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
+- [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart)
+- [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
+- [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)	
+- [Windows VM deployments using WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
+
+
+### Dynamic provisioning steps
+
+When you enable dynamic provisioning in a CD Deploy stage's **Environment** settings, Harness automatically adds the necessary Harness Terraform steps:
+
+- **Terragrunt Plan step**: the Terragrunt Plan step connects Harness to your repo and pulls your Terraform scripts.
+- **Approval step**: Harness adds a Manual Approval step between the Terragrunt Plan and Terragrunt Apply steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages) to configure the step.
+  - You can also use a [Jira or ServiceNow Approval](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-jira-and-service-now-approval-steps-in-cd-stages) step.
+- **Terraform Terragrunt step**: the Terraform Apply step simply inherits its configuration from the Terragrunt Plan step you already configured and applies it.
+
+:::important
+
+You must use the same **Provisioner Identifier** in the Terragrunt Plan and Terragrunt Apply steps.
+
+:::
+
+For details on configuring the Terragrunt steps, go to [Terragrunt steps](#terragrunt-steps) below.
 
 
 ## Important: Install Terraform and Terragrunt on delegates
 
 Terraform and Terragrunt must be installed on the Harness delegates used for deployment. You can install Terraform and Terragrunt manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-For steps on using the `INIT_SCRIPT` environment variable, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools/).
+For steps on using the `INIT_SCRIPT` environment variable, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
 Here's an example of the installation script to install Terraform and Terragrunt:
 
@@ -75,13 +96,15 @@ terragrunt --version
 
 Terragrunt maintains a Terraform version compatibility table to help ensure that you have the correct versions of Terragrunt and Terraform running together.
 
-For the Terraform versions supported by Terragrunt, go to [Terraform Version Compatibility Table](https://terragrunt.gruntwork.io/docs/getting-started/supported-terraform-versions/).
+For the Terraform versions supported by Terragrunt, go to [Terraform Version Compatibility Table](https://terragrunt.gruntwork.io/docs/get-started/supported-terraform-versions/).
 
-## Permissions
+### Permissions
 
 The Harness delegate requires permissions according to the deployment platform and the operations of the Terragrunt and Terraform scripts.
 
-In some cases, access keys, secrets, and SSH keys are needed. You can add these in [Harness secrets management](https://developer.harness.io/docs/first-gen/firstgen-platform/security/secrets-management/secret-management). You can then select them in the Terragrunt Provisioner step.
+In some cases, access keys, secrets, and SSH keys are needed. You can add these in [Harness secrets management](/docs/first-gen/firstgen-platform/security/secrets-management/secret-management). You can then select them in the Terragrunt Provisioner step.
+
+
 
 ## Terragrunt steps
 
@@ -108,7 +131,7 @@ To add a Terragrunt Plan step, do the following:
 
 1. Do the following if you haven't yet done so:
    1. [Add a Deploy or Custom stage](/docs/platform/pipelines/add-a-stage/) to your pipeline.
-   2. If you're setting up a Deploy stage, add a [service](https://developer.harness.io/docs/category/services) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/).
+   2. If you're setting up a Deploy stage, add a [service](/docs/category/services) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/).
 2. In the **Execution** tab, click **Add Step**, and then click **Terragrunt Plan**.
 3. Enter the following Terragrunt Plan settings.
 
@@ -118,7 +141,7 @@ To add a Terragrunt Plan step, do the following:
 
 #### Timeout
 
-* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
 
    You can use:
 
@@ -175,7 +198,7 @@ For this reason, it's important that all your project members know the provision
 
 #### Secret Manager
 
-* Select a Harness [secrets manager](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview) to use for encrypting/decrypting and saving the Terragrunt plan file.
+* Select a Harness [secrets manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to use for encrypting/decrypting and saving the Terragrunt plan file.
 
 A Terragrunt plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terragrunt plan file as plain text.
 
@@ -207,7 +230,7 @@ To add a Terragrunt Apply step, do the following:
 
 1. Do the following if you haven't yet done so:
    1. [Add a Deploy or Custom stage](/docs/platform/pipelines/add-a-stage/) to your pipeline.
-   2. If you're setting up a Deploy stage, add a [service](https://developer.harness.io/docs/category/services) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/).
+   2. If you're setting up a Deploy stage, add a [service](/docs/category/services) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/).
 2. In your CD stage Execution, click **Add Step**, and then click **Terragrunt Apply**.
 3. Enter the following Terragrunt Apply settings.
 
@@ -217,7 +240,7 @@ To add a Terragrunt Apply step, do the following:
 
 #### Timeout
 
-* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
 
    You can use:
 
@@ -292,7 +315,7 @@ Here, you'll add a connection to the Terragrunt script repo.
 2. Click the provider where your files are hosted.
     
     ![picture 4](../cd-advanced/terragrunt/static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png
-3. Select or create a [Git connector](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) for your repo.
+3. Select or create a [Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) for your repo.
 4. Once you have selected a connector, click **Continue**.
 5. In **Config File Details**, provide the Git repo details.
 6. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id**.
@@ -317,7 +340,7 @@ To add a Terragrunt Destroy step, do the following:
 
 1. Do the following if you haven't yet done so:
    1. [Add a Deploy or Custom stage](/docs/platform/pipelines/add-a-stage/) to your pipeline.
-   2. If you're setting up a Deploy stage, add a [service](https://developer.harness.io/docs/category/services) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/).
+   2. If you're setting up a Deploy stage, add a [service](/docs/category/services) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/).
 2. In your CD stage **Execution**, click **Add Step**, and then click **Terragrunt Destroy**.
 3. Enter the following Terragrunt Destroy settings.
 
@@ -327,7 +350,7 @@ To add a Terragrunt Destroy step, do the following:
 
 #### Timeout
 
-* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
 
    You can use:
 
@@ -386,7 +409,7 @@ For this reason, it's important that all your project members know the provision
 To add a Terragrunt Rollback step, do the following:
 1. Do the following if you haven't yet done so:
    1. [Add a Deploy or Custom stage](/docs/platform/pipelines/add-a-stage/) to your pipeline.
-   2. If you're setting up a Deploy stage, add a [service](https://developer.harness.io/docs/category/services) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/).
+   2. If you're setting up a Deploy stage, add a [service](/docs/category/services) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/).
 2. In your CD stage **Execution**, click **Add Step** and then **Terragrunt Rollback**.
 3. Enter the following Terragrunt Rollback settings.
 
@@ -396,7 +419,7 @@ To add a Terragrunt Rollback step, do the following:
 
 #### Timeout
 
-* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+* Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
 
    You can use:
 
@@ -460,7 +483,7 @@ The **Configuration File Repository** setting is available in the Terragrunt Pla
 2. Click the provider where your files are hosted.
     
     ![picture 4](./static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png)
-3. Select or create a [Git connector](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) for your repo.
+3. Select or create a [Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) for your repo.
 4. Once you have selected a connector, click **Continue**.
    
    In **Config File Details**, provide the Git repo details.
@@ -473,11 +496,31 @@ The **Configuration File Repository** setting is available in the Terragrunt Pla
 7. In **File Path**, enter the path from the root of the repo to the file containing the script.
 8. Click **Submit**.
 
+#### Source Module
+
+When you set up the file repo in **Configuration File Repository**, you use a Harness Connector to connect to the repo where the Terraform scripts are located.
+
+Some scripts will reference module sources in other repos and Harness will pull the source code for the desired child module at runtime (during `terraform init`).
+
+In **Source Module**, you can select **Use Connector credentials** to have Harness use the credentials of the Connector to pull the source code for the desired child module(s).
+
+If you do not select **Use Connector credentials**, Terraform will use the credentials that have been set up in the system.
+
+The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
+
+When configuring the SSH key for the connector, exporting an SSH key with a passphrase for the module source is not supported. Configure an SSH Key without the passphrase.
+
+Here are some syntax examples to reference the Terraform module using the SSH protocol:
+
+```bash
+source = "git@github.com:your-username/your-private-module.git"
+```
+
 ### Module Configuration
 
 Use this setting to specify the Terraform modules you want Terragrunt to use.
 
-In **Module Configuration**, you are telling Harness where to locate your [terragrunt.hcl file](https://terragrunt.gruntwork.io/docs/getting-started/configuration/). The terragrunt.hcl itself will point to a Terraform module using the source parameter like this:
+In **Module Configuration**, you are telling Harness where to locate your [terragrunt.hcl file](https://terragrunt.gruntwork.io/docs/get-started/configuration/). The terragrunt.hcl itself will point to a Terraform module using the source parameter like this:
 
 ```
 locals {  
@@ -487,8 +530,11 @@ terraform {
 //  source = "git::git@github.com:Tathagat-289/terraformResources.git//module3"  
   source = "github.com/Tathagat-289/terraformResources//module3"  
 }  
-  
+```
+
 # Include all settings from the root terragrunt.hcl file  
+
+```
 include {  
   path = find_in_parent_folders()  
 }  
@@ -513,9 +559,10 @@ You have two options:
    - Terragrunt Apply and Destroy steps do not support inheriting from a Terragrunt Plan step when **All Modules** is selected in the Terragrunt Plan step's **Module Configuration**.
   
   :::
+
 - **Specific Module**. Harness will use a single terragrunt.hcl file in the folder you specify in **Path**.
 
-The **Path** setting supports [fixed values, runtime inputs, and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
+The **Path** setting supports [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs/).
 
 
 ### Workspace
@@ -558,7 +605,7 @@ In the workspace interpolation sequence you can see the count is assigned by app
     
     Using the example above, if you provide the name `production`, the count will be 3.
 
-    You can also set **Workspace** as a [runtime inputs or expression](https://developer.harness.io/docs/platform/references/runtime-inputs/) and use a different workspace name each time the pipeline is run.
+    You can also set **Workspace** as a [runtime inputs or expression](/docs/platform/variables-and-expressions/runtime-inputs/) and use a different workspace name each time the pipeline is run.
 
 
 ### Terraform Var Files
@@ -588,20 +635,57 @@ count_of_null_resources = "7"
 file_message = "testing tvar"
 ```
 
-You can Harness [variable](https://developer.harness.io/docs/platform/Variables-and-Expressions/harness-variables) and [secret](https://developer.harness.io/docs/first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets) expressions in the inputs also.
+You can Harness [variable](/docs/platform/Variables-and-Expressions/harness-variables) and [secret](/docs/first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets) expressions in the inputs also.
 
 
 ### Backend Configuration
 
 Depending on which platform you store your remote state data, Terragrunt and Terraform allow you to pass many different credentials and configuration settings, such as access and secret keys. 
 
-For example:
+For example, if your terragrunt.hcl file has the following backend:
 
+```json
+ remote_state {
+   backend = "azurerm"
+   config = {
+     key = "${path_relative_to_include()}/terraform.tfstate"
+     subscription_id = "abcdefg123456"
+     resource_group_name  = "tfResourceGroup"
+     storage_account_name = "terraformremotebackend"
+     container_name       = "azure-backend"
+   }
+   generate = {
+     path      = "_backend.tf"
+     if_exists = "overwrite"
+   }
+ }
+ ```
+
+
+In **Backend Configuration**, for this case you provide the required configuration variables for that backend type.
+For remote backend-configuration the variables should be in .tfvars file.
+
+Example:
 ```
+subscription_id = "abcdefg123456"
 resource_group_name  = "tfResourceGroup"
-storage_account_name = "myterraformremoteback"
+storage_account_name = "myterraformremotebackend"
 container_name       = "azure-backend"
 ```
+In your terragrunt .hcl config file it would require to have only the rest of the terraform remote state:
+
+```json
+ remote_state {
+   backend = "azurerm"
+   config = {
+     key = "${path_relative_to_include()}/terraform.tfstate"
+   }
+   generate = {
+     path      = "_backend.tf"
+     if_exists = "overwrite"
+   }
+ }
+ ```
 
 For examples, see the settings available for [AWS S3](https://www.terraform.io/docs/backends/types/s3.html#configuration) from Terraform and review [Keep your remote state configuration DRY](https://terragrunt.gruntwork.io/docs/features/keep-your-remote-state-configuration-dry/) from Terragrunt.
 
@@ -613,7 +697,7 @@ For examples, see the settings available for [AWS S3](https://www.terraform.io/d
 
   If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.
 
-  You can also use [runtime inputs or expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/) for your targets. 
+  You can also use [runtime inputs or expressions](/docs/platform/variables-and-expressions/runtime-inputs/) for your targets. 
 
   For example, you can create a stage variable named `module` and then enter the variable `<+stage.variables.module>` in **Targets**. 
 
@@ -628,6 +712,31 @@ In **Environment Variables**, you can reference additional environment variables
 You can use Harness variables and secrets for the name and value.
 
 Environment variables can also be deleted using the Terragrunt Destroy step.
+
+## Using Terragrunt steps together
+
+The Terragrunt steps can be used independently or you can connect them by using the same **Provisioner Identifier** in all of the steps.
+
+Here's how to use all the steps together:
+
+1. Terragrunt Plan step:
+   1. Add the Terragrunt Plan step and define the Terragrunt script for it to use.
+   2. Select **Apply** in **Command**. 
+   3. Enter a **Provisioner Identifier**.
+2. Terragrunt Apply step:
+   1. Select **Inherit from Plan** in **Configuration Type**.
+   2. Reference the Terragrunt Plan step using the same **Provisioner Identifier**.
+3. Terragrunt Destroy step:
+   1. Select **Inherit from Apply** or **Inherit from Plan** in **Configuration Type**.
+   1. Reference the Terragrunt Apply or Plan step using the same **Provisioner Identifier**.
+4. Terragrunt Rollback step:
+   1. Reference the Terragrunt Apply or Plan step using the same **Provisioner Identifier**.
+
+<!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
+
+<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+
+Each of these steps is described in [Terragrunt steps](#terragrunt-steps).
 
 ### Export JSON representation of Terragrunt Plan
 
@@ -663,10 +772,20 @@ The JSON of the Terragrunt Plan step is not available after rollback.
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+
+## Command line options
+
+:::note
+
+Currently, Terragrunt command line options are behind the feature flag `CDS_TERRAGRUNT_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+This setting allows you to set the Terragrunt CLI options for Terragrunt commands depending on the Terragrunt step type. For example: `-lock=false`, `-lock-timeout=0s`.
 
 ## YAML examples
 
@@ -774,6 +893,7 @@ Here is an example of the YAML for a Terragrunt Destroy step that inherits from 
   </TabItem2>
   <TabItem2 value="Terragrunt Rollback" label="Terragrunt Rollback">
 ```
+
 Here is an example of the YAML for a Terragrunt Rollback step:
 
 ```yaml
@@ -795,3 +915,10 @@ Here is an example of the YAML for a Terragrunt Rollback step:
 </Tabs2>
 ```
 
+## Terraform logs
+
+All logs produced by Terraform are printed in Harness step execution logs.
+
+Logs that are coming from `stdout` will be printed as they are, and logs from `stderr` will be printed in red.
+
+The option to skip stderr logs coloring is behind the feature flag `CDS_TF_TG_SKIP_ERROR_LOGS_COLORING`.

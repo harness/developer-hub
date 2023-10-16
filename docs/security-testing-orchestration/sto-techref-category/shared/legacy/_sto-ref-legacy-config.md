@@ -1,4 +1,4 @@
-<details><summary>Configuration scan settings</summary>
+<!-- details><summary>Configuration scan settings</summary -->
 
 The following settings apply to all scanners where the `scan_type` is `configuration`.
 
@@ -9,4 +9,4 @@ The following settings apply to all scanners where the `scan_type` is `configura
 * `configuration_access_id`
 * `configuration_access_token`
 
-</details>
+<!-- /details -->

@@ -84,7 +84,7 @@ For example, if you add `info` in **Publish Variable Name**, and you have an Inp
 
 Do not use reserved words in **Publish Variable Name**, such as `var`. See [Variable Expression Limitations and Restrictions](../../../firstgen-platform/techref-category/variables/variable-expression-name-restrictions.md).Select **Auto-Reject previous deployments paused in this stage on approval** to reject previous deployments of this Pipeline with the same Services before this approval stage. This will prohibit older Pipelines from being approved and older builds from being deployed in the Environment.
 
-Currently, Auto-Reject previous deployments is behind the Feature Flag `AUTO_REJECT_PREVIOUS_APPROVALS`. Contact Harness Support to enable the feature.Click **Submit**.
+Click **Submit**.
 
 Deploy the Pipeline. When you deploy your Pipeline, the **Approval Stage** notifies the selected User Group(s), via their configured [notification settings](../../../firstgen-platform/account/manage-notegroups/notification-groups.md#notification-settings-for-user-groups) to approve or reject the deployment.
 

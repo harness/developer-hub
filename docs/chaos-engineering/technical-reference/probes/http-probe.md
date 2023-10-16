@@ -10,7 +10,7 @@ The HTTP GET method sends a GET request to the specified URL. The response code 
 HTTP POST method sends a `POST` request to the provided URL.
 
 :::info YAML only feature
-In the case of a complex `POST` request in which the body spans multiple lines, the `bodyPath` attribute is used to specify the path to a file consisting of the same. This file is available to the experiment pod through a ConfigMap resource, wherein the ConfigMap name is defined in the [chaos engine](https://docs.litmuschaos.io/docs/concepts/chaos-engine) or the [chaos experiment](https://docs.litmuschaos.io/docs/concepts/chaos-experiment) CR. The `body` and `bodyPath` attributes are mutually exclusive. Go to [probe schema](https://docs.litmuschaos.io/docs/concepts/probes#httpprobe) to learn more.
+In the case of a complex `POST` request in which the body spans multiple lines, the `bodyPath` attribute is used to specify the path to a file consisting of the same. This file is available to the experiment pod through a ConfigMap resource, wherein the ConfigMap name is defined in the [chaos engine](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-engine/contents/) or the [chaos experiment](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-experiment/contents/) CR. The `body` and `bodyPath` attributes are mutually exclusive. Go to [probe schema](https://docs.litmuschaos.io/docs/concepts/probes#httpprobe) to learn more.
 :::
 
 ## Defining the probe
@@ -337,6 +337,130 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
   </tr>
 </table>
 
+### Authentication
+
+This establishes a fundamental authentication mechanism for the http endpoint. The username:password, encoded in base64 or bearer token should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
+It's important to note that `credentials` and `credentialsFile` are two options that cannot be used simultaneously.
+
+<table>
+  <tr>
+   <td><strong>Field</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+   <td><strong>Type</strong>
+   </td>
+   <td><strong>Range</strong>
+   </td>
+   <td><strong>Notes</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>type
+   </td>
+   <td>Flag to hold the authentication type
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>type</code> encompasses the authentication method, which includes support for both Basic and Bearer authentication types
+   </td>
+  </tr>
+  <tr>
+   <td>credentials
+   </td>
+   <td>Flag to hold the basic auth credentials or bearer token
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>credentials</code> consists of the basic authentication credentials, either as username:password encoded in base64 format or as a bearer token, depending on the authentication type
+   </td>
+  </tr>
+  <tr>
+   <td> credentialsFile
+   </td>
+   <td>Flag to hold the basic auth credentials or bearer token file path
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>credentials</code> consists of file path for basic authentication credentials or a bearer token, which are then attached to the experiment pod as volume secrets. These secret resources contain either the username:password encoded in base64 format or a bearer token, depending on the authentication type
+   </td>
+  </tr>
+</table>
+
+### TLS
+
+It offers the mechanism to validate TLS certifications for the http endpoint. You can supply the `cacert` or the client certificate and client key, to perform the validation.
+Alternatively, you have the option to enable the `insecureSkipVerify` check to bypass certificate validation.
+
+<table>
+  <tr>
+   <td><strong>Field</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+   <td><strong>Type</strong>
+   </td>
+   <td><strong>Range</strong>
+   </td>
+   <td><strong>Notes</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>caFile
+   </td>
+   <td>Flag to hold the ca file path
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>caFile</code> holds the file path of the CA certificates utilized for server TLS verification
+   </td>
+  </tr>
+  <tr>
+   <td>certFile
+   </td>
+   <td>Flag to hold the client cert file path
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>certFile</code> holds the file path of the client certificates utilized for TLS verification
+   </td>
+  </tr>
+  <tr>
+   <td>keyFile
+   </td>
+   <td>Flag to hold the client key file path
+   </td>
+   <td>Optional
+   </td>
+   <td><code>string</code>
+   </td>
+   <td>The <code>keyFile</code> holds the file path of the client key utilized for TLS verification
+   </td>
+  </tr>
+  <tr>
+   <td>insecureSkipVerify
+   </td>
+   <td>Flag to skip the tls certificates checks
+   </td>
+   <td>Optional
+   </td>
+   <td><code>boolean</code>
+   </td>
+   <td>The <code>insecureSkipVerify</code> skip the tls certificates checks
+   </td>
+  </tr>
+</table>
+
 ## Definition
 
 ```yaml
@@ -347,6 +471,11 @@ probe:
       url: "<url>"
       insecureSkipVerify: false
       responseTimeout: <value> # in milli seconds
+      auth:
+        type: Bearer
+        credentials: "<bearer token>"
+      tlsConfig:
+        caFile: "/etc/secret/ca.crt"
       method:
         get:
           criteria: == # supports == & != and oneof operations

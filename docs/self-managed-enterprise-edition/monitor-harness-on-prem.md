@@ -1,6 +1,6 @@
 ---
 title: Monitoring options
-description: Monitor the infrastructure of your installation
+description: Monitor the infrastructure of your on-prem Harness Self-Managed Enterprise Edition installation.
 sidebar_position: 25
 helpdocs_topic_id: ho0c1at9nv
 helpdocs_category_id: 75ydek1suj

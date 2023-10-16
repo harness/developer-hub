@@ -31,7 +31,7 @@ Time Chaos:
       <tr>
         <td> OFFSET </td>
         <td> Offset value used to modify the system time </td>
-        <td> Default: 3600s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/time-chaos#offset-and-clock-ids">offset</a>.</td>
+        <td> Default: 3600s. For more information, go to <a href="#offset-and-clock-ids">offset</a>.</td>
       </tr>
     </table>
 
@@ -50,7 +50,7 @@ Time Chaos:
       <tr>
         <td> CLOCK_IDS </td>
         <td> Comma separated clock ids of the target system clock</td>
-        <td> Default: CLOCK_REALTIME. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/time-chaos#offset-and-clock-ids">offset</a>.</td>
+        <td> Default: CLOCK_REALTIME. For more information, go to <a href="#offset-and-clock-ids">offset</a>.</td>
       </tr>
       <tr>
         <td> TARGET_CONTAINER </td>
@@ -60,12 +60,12 @@ Time Chaos:
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster</td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/time-chaos#container-runtime-and-socket-path">container runtime </a>.</td>
+        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="#container-runtime-and-socket-path">container runtime </a>.</td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd or crio or docker socket file. </td>
-        <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/time-chaos#container-runtime-and-socket-path">socket path</a>.</td>
+        <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path</a>.</td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>

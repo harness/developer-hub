@@ -330,7 +330,7 @@ CE supports:
 * On-prem Kubernetes clusters with custom pricing (manual input) and
 * Rancher with custom pricing
 
-See [CE Coverage](../../cloud-cost-management/2-getting-started-ccm/1-continuous-efficiency-overview.md#ccm-coverage) and [Supported Kubernetes Management Platform](../../getting-started/supported-platforms-and-technologies.md#cloud-cost-management).
+See [CE Coverage](../../cloud-cost-management/get-started/overview.md#ccm-coverage) and [Supported Kubernetes Management Platform](../../get-started/supported-platforms-and-technologies.md#cloud-cost-management).
 
 ##### Can I manually enter cost data or upload a rate card?
 

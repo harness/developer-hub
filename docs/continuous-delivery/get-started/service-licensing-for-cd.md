@@ -1,7 +1,7 @@
 ---
 title: Service-based licensing and usage for CD
 description: This topic describes the Harness Service-based license model for its Continuous Delivery module.
-sidebar_position: 6
+sidebar_position: 8
 helpdocs_topic_id: ihboxj8xlz
 helpdocs_category_id: Dxej4ug0n5
 helpdocs_is_private: false
@@ -58,3 +58,6 @@ Here's an example using 4 different services.
 | Service 3 | 22 | 2 |
 | Service 4 | 41 | 3 |
 
+## Serverless computing
+
+For function workloads deployed by Harness, such as AWS Lambda, AWS SAM, Serverless.com, and Google Cloud Functions deployments, 1 service instance equals 5 serverless functions. There's no limit on the calls made using those functions.

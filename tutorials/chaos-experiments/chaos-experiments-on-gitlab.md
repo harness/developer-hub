@@ -7,13 +7,13 @@ description: Create experiments in Harness and run them as Gitlab pipelines
 This tutorial explains how you can create chaos experiments using Harness Chaos Engineering (HCE) and run them in GitLab pipelines. Chaos experiments in Harness are created the same way in the chaos engineering module, irrespective of where they are invoked from. 
 
 ## Before you begin
-Check out the [first chaos experiment](https://developer.harness.io/tutorials/chaos-experiments/first-chaos-engineering) that will guide you through creating a new experiment in HCE. This will provide a solid foundation for your understanding of creating experiments in HCE. 
+Check out the [first chaos experiment](/tutorials/chaos-experiments/first-chaos-engineering) that will guide you through creating a new experiment in HCE. This will provide a solid foundation for your understanding of creating experiments in HCE. 
 
 Below are the steps to run chaos experiments in GitLab pipelines.
 
 ## Create a chaos experiment
 
-Create a [chaos experiment](https://developer.harness.io/tutorials/chaos-experiments/first-chaos-engineering) in the Harness Chaos Module. Execute this experiment to verify the configuration and ensure that the resilience probes are working as expected. The experiment ID and resilience score determined from this experiment run will be used to integrate the experiment with GitLab.
+Create a [chaos experiment](/tutorials/chaos-experiments/first-chaos-engineering) in the Harness Chaos Module. Execute this experiment to verify the configuration and ensure that the resilience probes are working as expected. The experiment ID and resilience score determined from this experiment run will be used to integrate the experiment with GitLab.
 
 ![chaos experiment with ID and resilience score](static/gitlab/chaos-experiments-with-id.png)
 

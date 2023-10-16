@@ -5,7 +5,7 @@ title: Permission issue for AKS deployments
 
 # Introduction
 
-While deploying to AKS cluster we might sometime face permission issue like "Unable to execute list release command" despite following the docs here https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector/#aks-role-requirements 
+While deploying to AKS cluster we might sometime face permission issue like "Unable to execute list release command" despite following the docs here /docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector/#aks-role-requirements 
 
 ## Problem Statement
 

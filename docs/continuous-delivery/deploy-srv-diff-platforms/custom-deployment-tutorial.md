@@ -14,7 +14,7 @@ Currently, this feature is behind the feature flag `NG_SVC_ENV_REDESIGN`. Contac
 
 :::
 
-In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. We call these non-native deployments.
+In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, etc. We call these non-native deployments.
 
 For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
 
@@ -66,17 +66,17 @@ Unlike the deployments for supported platforms, like Kubernetes and AWS, Deploym
 * No steady state checks on deployed services.
 * Harness does not track releases.
 
-You can add your own scripts or tests to your Pipelines to describe deployments, check steady state, and track releases. For example, using the [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) or [HTTP](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines) steps.
+You can add your own scripts or tests to your Pipelines to describe deployments, check steady state, and track releases. For example, using the [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) or [HTTP](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step) steps.
 
 ## Harness Delegate setup
 
-1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install a delegate](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
+1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install a delegate](/docs/platform/Delegates/install-delegates/overview).
 
   The Delegate you use for Deployment Templates should be in an environment where it can connect and query your artifact repo and target instances. Typically, you'll want a Delegate in the same subnet as the target instances.
 
   If your scripts will use utilities or software that does not come with the Delegate by default, you can install them on the Delegate manually or using the Delegate `INIT_SCRIPT` environment variable.
 
-  For steps on using `INIT_SCRIPT`, see [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+  For steps on using `INIT_SCRIPT`, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
   Harness Delegate installation packages include `TAR` and `cURL`. You can use `cURL` and `TAR` in your Delegate scripts and Pipeline steps without installing these tools.
 
@@ -247,7 +247,7 @@ The stage is created and you are on the **Service** tab.
 
 Next we'll define the Harness Service using the Deployment Template you created and a Docker artifact for deployment.
 
-If you are new to Harness, learn about the basics in [CD overview and key concepts](/docs/continuous-delivery/get-started/cd-pipeline-basics) and [CD Pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+If you are new to Harness, learn about the basics in [CD overview and key concepts](/docs/continuous-delivery/get-started/key-concepts) and [CD Pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
 
 ## Create the Service
 
@@ -296,7 +296,7 @@ If you do not use `<+artifact.image>`, Harness will not attempt to download and 
 
 For non-containerized artifacts, use `<+artifact.path>`.
 
-To learn more, go to [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables#artifact).
+To learn more, go to [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables#artifact).
 
 ## Create the Environment
 
@@ -346,7 +346,7 @@ kubectl describe deployment nginx-deployment
 ```
 ![](./static/custom-deployment-tutorial-27.png)
 
-Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.mdn the step's **Advanced** section.
+Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) in the step's **Advanced** section.
 
 1. Click **Advanced**.
 2. Click **Looping Strategy**.
@@ -461,15 +461,15 @@ Here's the expressions referencing these variables:
 <+infra.variables.test12>
 ```
 
-Reference [Secret Manager](/docs/platform/Secrets/Secrets-Management/add-secrets-manager) connector variables using the following expressions.
+Reference [Secret Manager](/docs/platform/secrets/secrets-management/add-secrets-manager) connector variables using the following expressions.
 
-* [AWS KMS](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
-* [AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
-* [Azure Key Vault](/docs/platform/Secrets/Secrets-Management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
-* [Google KMS](/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
-* [Google Cloud secret manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
-* [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
-* [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
+* [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
+* [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
+* [Azure Key Vault](/docs/platform/secrets/secrets-management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
+* [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
+* [Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
+* [Custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
+* [HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
 
 #### Overwriting variables
 
@@ -489,9 +489,9 @@ The `<+instance...>` expressions refer to the **Instance Attributes** in the Dep
 
 The following expressions refer to instance(s) collected by the mandatory **instancename** field:
 
-* [<+instance.hostName>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostname)
-* [<+instance.host.hostName>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostinstancename)
-* [<+instance.name>](/docs/platform/Variables-and-Expressions/harness-variables#instancename)
+* [<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
+* [<+instance.host.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostinstancename)
+* [<+instance.name>](/docs/platform/variables-and-expressions/harness-variables#instancename)
 
 The expression `<+instance.host.properties.[property name]>` can used to reference the other properties you added to **Instance Attributes**.
 
@@ -509,7 +509,7 @@ For example, here is a Shell Script step that outputs these expressions:
 
 1. In the step, in **Advanced**, click **Looping Strategy**.
 2. Select **Repeat**.
-3. In **Repeat**, use the Repeat [Looping Strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) and identify all the hosts for the stage as the target:
+3. In **Repeat**, use the Repeat [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) and identify all the hosts for the stage as the target:
 
 ```yaml
 repeat:  
@@ -531,7 +531,7 @@ Since a Deployment Template can be used on any host type, the Command step can o
 
 Consequently, there is no reason to use a Looping Strategy when using the Command step with Deployment Templates.
 
-For more information, go to [Use the Command step to download, copy, or run scripts](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step).
+For more information, go to [Use the Command step to download, copy, or run scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step).
 
 ### Payloads without High-Level Objects
 

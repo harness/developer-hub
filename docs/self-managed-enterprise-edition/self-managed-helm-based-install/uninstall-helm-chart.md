@@ -1,6 +1,6 @@
 ---
 title: Uninstall the Helm chart
-description: Learn how to uninstall the Helm chart for Harness Self-Managed Enterprise Edition. 
+description: Learn how to uninstall the Helm chart for the on-prem Harness Self-Managed Enterprise Edition. 
 sidebar_position: 5
 ---
 

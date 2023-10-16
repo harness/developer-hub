@@ -1,37 +1,44 @@
 ---
-title: Semgrep scanner reference
+title: Semgrep scanner reference for STO
 description: Repository scans with Semgrep
-sidebar_position: 270
+sidebar_label: Semgrep settings reference
+sidebar_position: 360
 ---
 
 
-:::info note
-Currently, this integration is behind the Feature Flag `STO_STEP_PALETTE_SEMGREP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
+You can scan repositories using [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories. 
 
 
-You can scan container images and repositories using [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories. 
+## Important notes for running Semgrep scans in STO
 
 <!-- 
-## Before you begin
+### Docker-in-Docker requirements
 
 ```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 ```
 
-<StoCreateDinD />
+<StoDinDRequirements />
 
 -->
+
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
+
+
 
 ## Semgrep step configuration
 
 The recommended workflow is to add a Semgrep step to a Security Tests or CI Build stage and then configure it as described below. 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <details>
     <summary>Semgrep scanner template</summary>
@@ -154,10 +161,10 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## YAML pipeline example
 

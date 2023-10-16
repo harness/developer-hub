@@ -1,9 +1,7 @@
-<details><summary>Container image scan settings</summary>
+<!-- details><summary>Container image scan settings</summary -->
 
 The following settings apply to all scanners where the `scan_type` is `containerImage`.
 
-* `container_project` (required)
-* `container_tag` (required)
 * `container_type`
 	+ accepted value(s): `local_image`, `docker_v2`, `jfrog_artifactory`, `aws_ecr`
 		- for `container_type` set to `local`
@@ -20,6 +18,7 @@ The following settings apply to all scanners where the `scan_type` is `container
 			* `container_region`: AWS default region
 * `container_domain`
 
+<!-- 
 |  |  |
 | --- | --- |
 | **Target Name** | **Target Type** |
@@ -29,4 +28,6 @@ The following settings apply to all scanners where the `scan_type` is `container
 | aws\_ecr | container |
 | website | instance |
 
-</details>
+-->
+
+<!-- /details -->

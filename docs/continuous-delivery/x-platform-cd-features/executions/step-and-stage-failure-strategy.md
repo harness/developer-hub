@@ -1,7 +1,7 @@
 ---
 title: Define a failure strategy on stages and steps
 description: A failure strategy defines how your stages and steps handle different failure conditions.
-sidebar_position: 5
+sidebar_position: 3
 ---
 
 Currently, only the **All Errors** Failure Type is supported.A failure strategy defines how your stages and steps handle different failure conditions.
@@ -30,7 +30,12 @@ https://www.youtube.com/watch?v=4KYGllvJ42U-->
 
 Here is what a Manual Intervention action looks like when a failure occurs:
 
-![](./static/define-a-failure-strategy-on-stages-and-steps-11.png)
+<figure>
+
+![](./static/define-a-failure-strategy-on-stages-and-steps-11.png)  
+
+<figcaption>Figure 1: Manual intervention.</figcaption>
+</figure>
 
 You can select an option or, if the Manual Intervention exceeds its Timeout setting, select the Post Timeout Action that will happen automatically.
 
@@ -38,7 +43,13 @@ You can select an option or, if the Manual Intervention exceeds its Timeout sett
 
 Harness pipeline stages and steps both include **Conditional Execution** and **Failure Strategy** settings:
 
-![](./static/define-a-failure-strategy-on-stages-and-steps-12.png)
+<figure>
+
+<docimage path={require('./static/define-a-failure-strategy-on-stages-and-steps-12.png')} width="80%" height="80%" title="Click to view full size image" />
+
+<figcaption>Figure 2: Conditional execution and failure strategy settings.</figcaption>
+</figure>
+
 
 Using these settings together in multiple stages requires some consideration.
 
@@ -91,6 +102,38 @@ Select the following:
 Currently, only **All Errors** is supported.* **Action:** select one of the available actions.
 * **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
 * **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
+
+## Retry count expression
+
+When you set the failure strategy to **Retry Step**, you can specify the retry count for a step or all steps in the stage.
+
+<figure>
+
+![picture 0](static/3815dc19071beaa86061a1b4f82fe42cc4d6b97a2ea6c5eb688649884453437a.png)  
+
+<figcaption>Figure 3: Retry count.</figcaption>
+</figure>
+
+Harness includes a `retryCount` built-in expression that resolves to the total number of times a step was retried:
+
+```
+<+execution.steps.STEP_ID.retryCount>
+```
+
+You can use this expression in a Shell Script step script anywhere after the step that you identify in the expression. 
+
+For example, here is a script that resolves the retry count for the step with the Id `ShellScript_1`:
+
+```
+echo "retry count of ShellScript_1: <+execution.steps.ShellScript_1.retryCount>"
+```
+
+During pipeline execution, the expression would resolve to something like this:
+
+```
+retry count of ShellScript_1: 2
+```
+
 
 ## Reference material
 

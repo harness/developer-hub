@@ -15,13 +15,6 @@ import { MODULES } from "../../constants";
         "",
       list: [
         {
-          title: "Publish to Amazon ECR",
-          module: MODULES.ci,
-          description:
-            "Publish an Image to an Amazon Elastic Container Registry.",
-          link: "/tutorials/ci-pipelines/publish/amazon-ecr",
-        },
-        {
           title: "Publish to Google GAR",
           module: MODULES.ci,
           description:

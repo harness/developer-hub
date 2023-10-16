@@ -8,126 +8,196 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness delegate and local Drone Runner. When the pipeline runs, the Drone Runners runs the build actions in the environment where it is installed. The delegate handles communication between Harness and the Drone Runner.
-
-Local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
-
-The Harness Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Harness Docker Delegate has the following system requirements:
-
-* Default 0.5 CPU.
-* Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
-
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-```mdx-code-block
-<Tabs>
-  <TabItem value="Linux" label="Linux" default>
-```
-## Install the delegate
 
-Use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
+<DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-* Add `--net=host` to the first line.
-* Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use the tag for your Docker environment's architecture: `linux-amd64` or `linux-arm64`.
+You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Harness Docker Runner. When the pipeline runs, the Harness Docker Runner runs the build actions in the environment where it is installed. The delegate handles communication between the Harness Platform and the Harness Docker Runner.
 
-Here's an example of an install script for Linux arm64:
+* [Set up a Linux local runner build infrastructure](#set-up-a-linux-local-runner)
+* [Set up a macOS local runner build infrastructure](#set-up-a-macos-local-runner)
+* [Set up a Windows local runner build infrastructure](#set-up-a-windows-local-runner)
 
-```
-docker run --cpus=1 --memory=2g --net=host \
-  -e DELEGATE_NAME=docker-delegate \
-  -e NEXT_GEN="true" \
-  -e DELEGATE_TYPE="DOCKER" \
-  -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-  -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
-  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io harness/log-service/ \
-  -e DELEGATE_TAGS="linux-arm64" \
-  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
-```
+Local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
 
-Make sure to create the delegate at the appropriate scope, such as the project level or account level.
+## Set up a Linux local runner
 
-## Install the Drone Runner
+### Prepare machines
 
-The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
+Review the following requirements for local runner build infrastructures:
 
-1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases) corresponding to your build farm's OS and architecture.
-2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
+* There is a one-to-one relationship between Harness Docker Runners and Harness Delegates. If you need to run three local hosts, each host needs a runner and a delegate.
+* The Harness Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Harness Docker Delegate has the following system requirements:
+   * Default 0.5 CPU.
+   * Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
+* The machine where the delegate runs must have Docker installed.
+
+### Install the delegate
+
+1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
+
+   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+
+2. Select **New Delegate** or **Install Delegate**.
+3. Select **Docker**.
+4. Enter a **Delegate Name**.
+5. Copy the delegate install command and modify it as follows:
+
+   * Add `--net=host` to the first line.
+   * Add `-e DELEGATE_TAGS="DELEGATE_OS_ARCH"`, and replace `DELEGATE_OS_ARCH` with the tag corresponding to your Docker environment's architecture: `linux-amd64` or `linux-arm64`.
+
+   Here's an example of an install script for Linux arm64:
+
+   ```
+   docker run --cpus=1 --memory=2g --net=host \
+     -e DELEGATE_NAME=docker-delegate \
+     -e NEXT_GEN="true" \
+     -e DELEGATE_TYPE="DOCKER" \
+     -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
+     -e DELEGATE_TOKEN=YOUR_API_TOKEN \
+     -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
+     -e DELEGATE_TAGS="linux-arm64" \
+     -e MANAGER_HOST_AND_PORT=https://app.harness.io/ harness/delegate:23.02.78306
+   ```
+
+6. Run the modified install command on your build host machine.
+
+:::tip
+
+The delegate install command uses the default authentication token for your Harness account. If you want to use a different token, you can create a token and then specify it in the delegate install command:
+
+1. In Harness, go to **Account Settings**, then **Account Resources**, and then select **Delegates**.
+2. Select **Tokens** in the header, and then select **New Token**.
+3. Enter a token name and select **Apply** to generate a token.
+4. Copy the token and paste it in the value for `DELEGATE_TOKEN`.
+
+:::
+
+For more information about delegates and delegate installation, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
+
+### Install the Harness Docker Runner
+
+The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
+
+1. Download a [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases) corresponding to your build farm's OS and architecture.
+2. (Optional) To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
    export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
 
+   :::info
+
+   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+
+   :::
+
 3. Enable execution permissions for the Runner. For example:
 
    ```
-   sudo chmod +x drone-docker-runner-linux-arm64
+   sudo chmod +x harness-docker-runner-linux-arm64
    ```
 
 4. Start the runner binary. For example:
 
    ```
-   sudo ./drone-docker-runner-linux-arm64 server
+   sudo ./harness-docker-runner-linux-arm64 server
    ```
 
-Here is an example of the three commands to install the Linux arm64 Drone Runner with self-signed certificates:
+Here is an example of the three commands to install the Linux arm64 Harness Docker Runner with self-signed certificates:
 
 ```
 export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
-sudo chmod +x drone-docker-runner-linux-arm64
-./drone-docker-runner-linux-arm64 server
+sudo chmod +x harness-docker-runner-linux-arm64
+./harness-docker-runner-linux-arm64 server
 ```
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="macOS" label="macOS">
-```
-## Install the delegate
+## Set up a macOS local runner
 
-Use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
+### Prepare machines
 
-* Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use the tag for your Docker environment's architecture: `macos-amd64` or `macos-arm64`.
-* Add `-e RUNNER_URL=http://host.docker.internal:3000`.
+Review the following requirements for local runner build infrastructures:
 
-Here's an example of an install script for macOS amd64:
+* There is a one-to-one relationship between Harness Docker Runners and Harness Delegates. If you need to run three local hosts, each host needs a runner and a delegate.
+* The Harness Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Harness Docker Delegate has the following system requirements:
+   * Default 0.5 CPU.
+   * Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
+* The machine where the delegate runs must have Docker installed.
 
-```
-docker run --cpus=1 --memory=2g \
-  -e DELEGATE_NAME=docker-delegate \
-  -e NEXT_GEN="true" \
-  -e DELEGATE_TYPE="DOCKER" \
-  -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-  -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
-  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io harness/log-service/ \
-  -e DELEGATE_TAGS="macos-amd64" \
-  -e RUNNER_URL=http://host.docker.internal:3000 \
-  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
-```
+### Install the delegate
 
-Make sure to create the delegate at the appropriate scope, such as the project level or account level.
+1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-## Install the Drone Runner
+   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
 
-The Drone Runner service performs the build work. The delegate needs the runner to run CI builds.
+2. Select **New Delegate** or **Install Delegate**.
+3. Select **Docker**.
+4. Enter a **Delegate Name**.
+5. Copy the delegate install command and modify it as follows:
 
-1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases) corresponding to your build farm's OS and architecture.
-2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
+   * Add `-e DELEGATE_TAGS="DELEGATE_OS_ARCH"`, and replace `DELEGATE_OS_ARCH` with the tag corresponding to your Docker environment's architecture: `macos-amd64` or `macos-arm64`.
+   * Add `-e RUNNER_URL=http://host.docker.internal:3000`.
+
+   Here's an example of an install script for macOS amd64:
+
+   ```
+   docker run --cpus=1 --memory=2g \
+     -e DELEGATE_NAME=docker-delegate \
+     -e NEXT_GEN="true" \
+     -e DELEGATE_TYPE="DOCKER" \
+     -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
+     -e DELEGATE_TOKEN=YOUR_API_TOKEN \
+     -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
+     -e DELEGATE_TAGS="macos-amd64" \
+     -e RUNNER_URL=http://host.docker.internal:3000 \
+     -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.02.78306
+   ```
+
+6. Run the modified install command on your build host machine.
+
+:::tip
+
+The delegate install command uses the default authentication token for your Harness account. If you want to use a different token, you can create a token and then specify it in the delegate install command:
+
+1. In Harness, go to **Account Settings**, then **Account Resources**, and then select **Delegates**.
+2. Select **Tokens** in the header, and then select **New Token**.
+3. Enter a token name and select **Apply** to generate a token.
+4. Copy the token and paste it in the value for `DELEGATE_TOKEN`.
+
+:::
+
+For more information about delegates and delegate installation, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
+
+### Install the Harness Docker Runner
+
+The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
+
+1. Download a [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases) corresponding to your build farm's OS and architecture.
+2. (Optional) To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
    export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
 
+   :::info
+
+   If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+
+   :::
+
 3. Enable execution permissions for the Runner. For example:
 
    ```
-   sudo chmod +x drone-docker-runner-darwin-amd64
+   sudo chmod +x harness-docker-runner-darwin-amd64
    ```
 
 4. Start the runner binary. For example:
 
    ```
-   ./drone-docker-runner-darwin-amd64 server
+   ./harness-docker-runner-darwin-amd64 server
    ```
 
 5. If [macOS Gatekeeper](https://support.apple.com/en-us/HT202491) stops the installation because it can't check for malicious software, you need to modify **Security & Privacy** settings to allow this app to run.
@@ -149,94 +219,116 @@ The Drone Runner service performs the build work. The delegate needs the runner 
 
 </details>
 
-Here is an example of the three commands to install the Darwin amd64 Drone Runner with self-signed certificates:
+Here is an example of the three commands to install the Darwin amd64 Harness Docker Runner with self-signed certificates:
 
 ```
 export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
-sudo chmod +x drone-docker-runner-darwin-arm64
-./drone-docker-runner-darwin-arm64 server
+sudo chmod +x harness-docker-runner-darwin-arm64
+./harness-docker-runner-darwin-arm64 server
 ```
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="windows" label="Windows">
-```
+## Set up a Windows local runner
 
-## Prepare machines
+### Prepare machines
 
-To configure a local runner build infrastructure for Windows, you need two machines:
+Review the following requirements for Windows local runner build infrastructures:
 
-* A Windows machine where the Drone Runner will run.
-* A Linux machine where the delegate will run.
+* You need two machines *for each build host*:
+   * A Windows machine where the Harness Docker Runner will run. **This machine must have Docker for Windows installed.** The Harness Docker Runner runs as a container.
+   * A Linux or macOS machine where the Harness Delegate will run. **This machine must have Docker installed.** The delegate runs as a container.
+* There is a one-to-one relationship between Harness Docker Runners and Harness Delegates. If you need to run three local hosts, each host needs a runner machine and a delegate machine.
+* The Harness Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Harness Docker Delegate has the following system requirements:
+   * Default 0.5 CPU.
+   * Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
 
-## Install the delegate
+### Install the delegate
 
-On the Linux machine where you want to run the delegate, use the following modifications along with the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/):
+1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-* Add `-e DELEGATE_TAGS="windows-amd64"`.
-* Add `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000`.
+   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
 
-:::caution
+2. Select **New Delegate** or **Install Delegate**.
+3. Select **Docker**.
+4. Enter a **Delegate Name**.
+5. Copy the delegate install command and modify it as follows:
 
-The `RUNNER_URL` must point to the Windows machine where the Drone Runner will run.
+   * Add `-e DELEGATE_TAGS="windows-amd64"`.
+   * Add `-e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000`.
+
+   :::caution
+
+   The `RUNNER_URL` must point to the Windows machine where the Harness Docker Runner will run.
+
+   :::
+
+   Here's an example of the delegate install script for a local runner Windows build infrastructure:
+
+   ```
+   docker run --cpus=1 --memory=2g \
+     -e DELEGATE_NAME=docker-delegate \
+     -e NEXT_GEN="true" \
+     -e DELEGATE_TYPE="DOCKER" \
+     -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
+     -e DELEGATE_TOKEN=YOUR_API_TOKEN \
+     -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
+     -e DELEGATE_TAGS="windows-amd64" \
+     -e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000 \
+     -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.02.78306
+   ```
+
+6. Run the modified install command on the Linux or macOS machine where you want to run the delegate.
+
+:::tip
+
+The delegate install command uses the default authentication token for your Harness account. If you want to use a different token, you can create a token and then specify it in the delegate install command:
+
+1. In Harness, go to **Account Settings**, then **Account Resources**, and then select **Delegates**.
+2. Select **Tokens** in the header, and then select **New Token**.
+3. Enter a token name and select **Apply** to generate a token.
+4. Copy the token and paste it in the value for `DELEGATE_TOKEN`.
 
 :::
 
-Here's an example of the delegate install script for a local runner Windows build infrastructure:
+For more information about delegates and delegate installation, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
-```
-docker run --cpus=1 --memory=2g \
-  -e DELEGATE_NAME=docker-delegate \
-  -e NEXT_GEN="true" \
-  -e DELEGATE_TYPE="DOCKER" \
-  -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-  -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
-  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io harness/log-service/ \
-  -e DELEGATE_TAGS="windows-amd64" \
-  `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000` \
-  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
-```
+### Install the Harness Docker Runner
 
-Make sure to create the delegate at the appropriate scope, such as the project level or account level.
-
-## Install the Drone Runner
-
-The Drone Runner service performs the build work. The delegate needs the runner to run CI builds.
+The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
 
 :::caution
 
-Run the Drone Runner executable on the Windows machine that you specified in the delegate's `RUNNER_URL`.
+Run the Harness Docker Runner executable on the Windows machine that you specified in the delegate's `RUNNER_URL`.
 
 Use PowerShell to run these commands.
 
 :::
 
-1. On the target Windows machine where you want to run the Drone Runner, download the Windows [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
+1. On the target Windows machine where you want to run the Harness Docker Runner, download the Windows [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases).
 2. Open a terminal with Administrator privileges.
-3. To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
+3. (Optional) To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
    $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
    ```
 
-   With Windows, volume mapping must be folder-to-folder.
+   :::info
+
+   * With Windows, volume mapping must be folder-to-folder.
+   * If your pipelines have STO scan steps, review the additional requirements for [adding custom artifacts to STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/add-certs-to-delegate).
+
+   :::
 
 4. Run the following command to start the runner binary:
 
    ```
-   drone-docker-runner-windows-amd64.exe server
+   harness-docker-runner-windows-amd64.exe server
    ```
 
-Here is an example of the two commands to install the Windows amd64 Drone Runner with self-signed certificates:
+Here is an example of the two commands to install the Windows amd64 Harness Docker Runner with self-signed certificates:
 
 ```
 $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
-drone-docker-runner-windows-amd64.exe server
-```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
+harness-docker-runner-windows-amd64.exe server
 ```
 
 ## Set the pipeline's build infrastructure
@@ -244,12 +336,8 @@ drone-docker-runner-windows-amd64.exe server
 Edit the CI pipeline where you want to use the local runner build infrastructure.
 
 ```mdx-code-block
-import Tabs2 from '@theme/Tabs';
-import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs2>
-  <TabItem2 value="Visual" label="Visual" default>
+<Tabs>
+  <TabItem value="Visual" label="Visual" default>
 ```
 
 1. In the pipeline's **Build** stage, select the **Infrastructure** tab.
@@ -258,8 +346,8 @@ import TabItem2 from '@theme/TabItem';
 4. Save your pipeline.
 
 ```mdx-code-block
-  </TabItem2>
-  <TabItem2 value="YAML" label="YAML">
+  </TabItem>
+  <TabItem value="YAML" label="YAML">
 ```
 
 In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` specifications, for example:
@@ -288,8 +376,8 @@ In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` spec
   * `spec`: `{}`
 
 ```mdx-code-block
-  </TabItem2>
-</Tabs2>
+  </TabItem>
+</Tabs>
 ```
 
 :::tip
@@ -310,6 +398,8 @@ For example, assume you have a pipeline with three stages called `alpha`, `beta`
 
 ## Troubleshooting
 
+### Check the delegate status
+
 The delegate should connect to your instance after you finish the installation workflow above. If the delegate does not connect after a few minutes, run the following commands to check the status:
 
 ```
@@ -320,3 +410,46 @@ docker logs --follow <docker-delegate-container-id>
 The container ID should be the container with image name `harness/delegate:latest`.
 
 Successful setup is indicated by a message such as `Finished downloading delegate jar version 1.0.77221-000 in 168 seconds`.
+
+### Clone codebase fails due to missing plugin
+
+If [clone codebase](../codebase-configuration/create-and-configure-a-codebase.md) fails during stage setup (the **Initialize** step in build logs) and the runner's logs contain `Error response from daemon: plugin \"<plugin>\" not found`, this means a required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
+
+To resolve this issue:
+
+1. On the machine where the runner is running, stop the runner.
+2. Set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin, such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`.
+3. Restart the runner.
+
+### Runner can't find an available, non-overlapping IPv4 address pool.
+
+The following runner error can occur during stage setup (the **Initialize** step in build logs):
+
+```
+Could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network.
+```
+
+This error means the number of Docker networks has exceeded the limit. To resolve this, you need to clean up unused Docker networks. To get a list of existing networks, run [`docker network ls`](https://docs.docker.com/engine/reference/commandline/network_ls/), and then remove unused networks with [`docker network rm`](https://docs.docker.com/engine/reference/commandline/network_rm/) or [`docker network prune`](https://docs.docker.com/engine/reference/commandline/network_prune/).
+
+### Docker daemon fails with invalid working directory path on Windows
+
+The following error can occur in Windows local runner build infrastructures:
+
+```
+Error response from daemon: the working directory 'C:\harness-DIRECTORY_ID' is invalid, it needs to be an absolute path
+```
+
+This error indicates there may be a problem with the Docker installation on the host machine.
+
+1. Run the following command (or a similar command) to check if the same error occurs:
+
+   ```
+   docker run -w C:\blah -it -d mcr.microsoft.com/windows/servercore:ltsc2022
+   ```
+
+2. If you get the `working directory is invalid` error again, uninstall Docker and follow the instructions in the Windows documentation to [Prepare Windows OS containers for Windows Server](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce#windows-server-1).
+3. Restart the host machine.
+
+### Check if the Docker daemon is running
+
+To check if the Docker daemon is running, use the `docker info` command. An error response indicates the daemon is not running. For more information, go to the Docker documentation on [Troubleshooting the Docker daemon](https://docs.docker.com/config/daemon/troubleshoot/)

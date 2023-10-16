@@ -1,5 +1,5 @@
 ---
-title: Set up target baselines
+title: Set up target baselines in STO
 description: It is good practice to specify a baseline for every target. You can specify static baselines, using plain text, or dynamic baselines using regular expressions. 
 sidebar_position: 10
 ---
@@ -10,17 +10,21 @@ To view all targets in your account, and specify baselines for your targets, go 
 
 <figure>
 
-![](../../onboard-sto/static/targets-and-baselines.png)
+![](../../get-started/static/targets-and-baselines.png)
 
 <figcaption>Figure 1: <b>Test Targets</b> page</figcaption>
 
 </figure>
 
-## Specify a default baseline using regular expressions
+## Specify STO target baselines using regular expressions
+
+<!-- 
 
 :::note
 Currently, this feature is behind the Feature Flag `STO_BASELINE_REGEX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
+
+-->
 
 In some cases, you might want to specify the name of the latest release for your target baseline. Suppose your organization publishes releases with names such as: 
 
@@ -64,7 +68,7 @@ Defining your baselines using regular expressions provides significant benefits 
 
 </details>
 
-### Important notes
+### Important notes for setting up target baselines in STO
 
 * You must use a consistent naming scheme for your scanned targets. This is necessary to ensure that your regular expression captures your baselines consistently and predictably. 
 

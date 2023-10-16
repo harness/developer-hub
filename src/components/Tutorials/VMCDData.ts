@@ -14,14 +14,14 @@ import { MODULES } from "../../constants";
       description:
         "",
       list: [
-        /*
         {
-          title: "AWS EC2",
+          title: "AWS",
           module: MODULES.cd,
           description:
             "Deploy a traditional application to AWS EC2 VMs.",
           link: "/tutorials/cd-pipelines/vm/aws",
         },
+        /*
         {
           title: "Google Cloud Compute Engine",
           module: MODULES.cd,

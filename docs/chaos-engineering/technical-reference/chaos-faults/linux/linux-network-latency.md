@@ -28,9 +28,9 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
     <th> Notes </th>
   </tr>
   <tr>
-    <td> networkInterface </td>
-    <td> The network interface to target. </td>
-    <td> For example: <code>eth0</code> </td>
+    <td> networkInterfaces </td>
+    <td> Network interfaces to target as comma separated values. </td>
+    <td> For example: <code>eth0,ens192</code> </td>
   </tr>
 </table>
 <h3>Optional tunables</h3>
@@ -42,12 +42,12 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
   </tr>
     <tr>
     <td> destinationHosts </td>
-    <td> List of the target hostnames or keywords. For example: <code>["google.com","litmuschaos.io"]</code> </td>
+    <td> List of the target hostnames or keywords. For example: <code>google.com,litmuschaos.io</code> </td>
     <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
-    <td> List of the target IPs. For example: <code>["1.1.1.1","8.8.8.8"]</code> </td>
+    <td> List of the target IPs. For example: <code>1.1.1.1,8.8.8.8</code> </td>
     <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted</td>
   </tr>
   <tr>
@@ -59,11 +59,6 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
     <td> jitter </td>
     <td> Amount of jitter to be added in ms. Jitter will define the max randomised deviation from the provided latency value. For example: <code> 100 </code> </td>
     <td> Defaults to 0 </td>
-  </tr>
-  <tr>
-    <td> networkInterface </td>
-    <td> The network interface to target. For example: <code> eth0 </code> </td>
-    <td>  </td>
   </tr>
   <tr>
     <td> duration </td>
@@ -93,8 +88,8 @@ metadata:
     name: network-latency
 spec:
   networkChaos/inputs:
-    destinationHosts: '["google.com"]'
-    networkInterface: "eth0"
+    destinationHosts: 'google.com'
+    networkInterfaces: "eth0"
 ```
 
 ### Destination IPs
@@ -113,13 +108,13 @@ metadata:
     name: network-latency
 spec:
   networkChaos/inputs:
-    destinationIPs: '["1.1.1.1"]'
-    networkInterface: "eth0"
+    destinationIPs: '1.1.1.1'
+    networkInterfaces: "eth0"
 ```
 
 ### Latency and jitter
 
-The `latency` and `jitter` input variables add delay and a small deviation to the delay, respectively, with respect to the connection. 
+The `latency` and `jitter` input variables add delay and a small deviation to the delay, respectively, with respect to the connection.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -135,5 +130,5 @@ spec:
   networkChaos/inputs:
     latency: "1000"
     jitter: "200"
-    networkInterface: "eth0"
+    networkInterfaces: "eth0"
 ```

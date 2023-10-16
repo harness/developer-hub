@@ -3,7 +3,17 @@ title: Add a custom chaos hub
 sidebar_position: 5
 ---
 
-A chaos hub is a collection of experiment templates and faults you can use to launch chaos experiments. CE provides a default **Enterprise Chaos Hub** that includes a wide array of templates and faults out of the box. You can also add custom chaos hubs to maintain and distribute private faults and experiments within your organization.
+A chaos hub is a collection of experiment templates and faults you can use to launch chaos experiments. CE provides a default **Enterprise Chaos Hub** that includes a wide array of templates and faults out of the box. You can also add your own custom chaos hubs to maintain and share private experiments and faults within your organization.
+
+There are several reasons for adding a custom chaos hub. A custom hub lets you:
+
+* Add custom experiments suited to specific needs in your organization.
+
+* Share your experiments with others in your Harness project or in other Harness projects—you can add the same custom hub(s) to many projects.
+
+* Maintain and upgrade experiments in one place so those you share your hubs with always have the latest version.
+
+* Provide secure access to your custom experiments.
 
 This topic shows how to add and connect a custom chaos hub. 
 
@@ -22,7 +32,7 @@ This topic shows how to add and connect a custom chaos hub.
 
 To add a custom chaos hub:
 
-1. In Harness, navigate to the **Chaos > ChaosHubs**, and then select **+ New ChaosHub**.
+1. In your Harness project, navigate to the **Chaos > ChaosHubs**, and then select **+ New ChaosHub**.
 
 1. Enter a **Name** for the hub and, optionally, add a **Description** and **Tags**.
 
@@ -105,6 +115,10 @@ To add a custom chaos hub:
 1. Select **Connect Hub**, and then select **Finish**.
 
 	Your new custom chaos hub appears in the **ChaosHubs** page.
+
+:::info note
+To share your custom chaos hub with another Harness project, add the hub to the other project, using the same procedure above.
+:::
 
 ## Next steps
 

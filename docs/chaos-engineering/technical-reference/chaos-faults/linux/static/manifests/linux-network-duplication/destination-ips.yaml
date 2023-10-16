@@ -6,5 +6,5 @@ metadata:
     name: network-duplication
 spec:
   networkChaos/inputs:
-    destinationIPs: '["1.1.1.1"]'
-    networkInterface: "eth0"
+    destinationIPs: '1.1.1.1'
+    networkInterfaces: "eth0"

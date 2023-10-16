@@ -25,7 +25,7 @@ The Terraform Apply step can provision any resource, including the target infras
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+See [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
 
 ```bash
@@ -85,12 +85,6 @@ or simply `<+execution.steps.apply.timeout>`.
 In **Timeout**, enter how long Harness should wait to complete the Terraform Apply step before failing the step.
 
 ### Run on remote workspace
-
-:::note
-
-Currently, this feature is behind the feature flag `CD_TERRAFORM_CLOUD_CLI_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Enable this option to identify whether the Terraform configuration uses a Terraform remote backend.
 
@@ -156,7 +150,7 @@ Click the provider where your files are hosted.
 
 ![](./static/provision-infra-dynamically-with-terraform-02.png)
 
-Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo), [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**) or [AWS Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo), [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**) or [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 ### Git
 
@@ -180,7 +174,7 @@ The following sections cover common Terraform Apply step options.
 
 ### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 ### AWS S3
 
@@ -204,6 +198,12 @@ If you do not select **Use Connector credentials**, Terraform will use the crede
 
 The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
 
+When configuring the SSH key for the connector, exporting an SSH key with a passphrase for the module source is not supported. Configure an SSH Key without the passphrase.
+
+Here are some syntax examples to reference the Terraform module using the SSH protocol:
+
+```bash
+source = "git@github.com:your-username/your-private-module.git"
 ## Workspace
 
 Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
@@ -294,7 +294,7 @@ If you are entering secrets (for credentials, etc.), use Harness secret referenc
 ```bash
 secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 ```
-See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
+See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ### Remote variables
 
@@ -322,7 +322,7 @@ Click **Submit**. The remote file(s) are added.
 
 ##### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 ##### S3 provider
 
@@ -346,12 +346,6 @@ You can use an inline or remote state file.
 
 ### Using a remote state file with Terraform Apply
 
-:::note
-
-Currently, remote state file support is behind the feature flag `TERRAFORM_REMOTE_BACKEND_CONFIG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 1. In Backend Configuration, select **Remote**.
 2. Click **Specify Backend Config File**
 3. Select your provider (GitHub, Artifactory, S3, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
@@ -368,7 +362,7 @@ Currently, remote state file support is behind the feature flag `TERRAFORM_REMOT
 
 ##### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 #### AWS S3
 
@@ -432,14 +426,34 @@ For example, if your config.tf file has the following backend:
 
 
 ```json
-terraform {  
-  backend "gcs" {  
-    bucket  = "tf-state-prod"  
-    prefix  = "terraform/state"  
-  }  
+terraform {
+   backend "gcs" {
+     bucket  = "tf-state-prod"
+     prefix  = "terraform/state"
+   }
 }
 ```
-In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
+
+In **Backend Configuration**, you provide the required configuration variables for the backend type. 
+
+For a remote backend configuration, the variables should be in .tfvars file.
+
+Example:
+```json
+bucket  = "tf-state-prod"  
+prefix  = "terraform/state"
+```
+
+In your Terraform .tf config file, only the definition of the Terraform backend is required:
+
+```json
+terraform {  
+  backend "gcs" {}
+}
+```
+
+
+See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
 ## Targets
 
@@ -461,7 +475,7 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
+You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ## Encrypt the Terraform Apply JSON outputs
 
@@ -493,10 +507,10 @@ Do not use the **Output Value**, for example `<+secrets.getValue("terraform_outp
 A secret is masked in Harness logs, but you can write it to a file like this:
 
 ```
-echo <+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED> | base64 -d > /path/to/file.txt
+echo "<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>" > /path/to/file.txt
 ```
 
-Here's an example of encrypted Terraform JSON output decoded from base64:
+Here's an example of decrypted Terraform JSON output:
 
 ```json
 {
@@ -516,12 +530,6 @@ Here's an example of encrypted Terraform JSON output decoded from base64:
 
 ## Command line options
 
-:::note
-
-Currently, FEATURE_NAME is behind the feature flag `CDS_TERRAFORM_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
 
 
@@ -536,11 +544,11 @@ Terraform refresh command won't be running when this setting is selected.
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## See also
 

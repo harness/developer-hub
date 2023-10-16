@@ -33,6 +33,8 @@ export type CardSections = {
   name: string;
   description?: string;
   list: CardItem[];
+  module?: MODULES;
+  icon?: string;
 }[];
 
 function Card({

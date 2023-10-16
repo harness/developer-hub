@@ -3,16 +3,19 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import TutorialCard from "./TutorialCard";
 import { FeaturedList } from "./data/allTutorialsData";
+import { GSList } from "./data/gettingStartedData";
 import { CIList } from "./data/continuousIntegrationData";
 import { CDList } from "./data/continuousDeliveryData";
 import { CCMList } from "./data/cloudCostManagementData";
 import { FFList } from "./data/featureFlagsData";
 import { SRMList } from "./data/serviceReliabilityManagementData";
 import { STOList } from "./data/securityTestingOrchestrationData";
+import { SSCAList } from "./data/softwareSupplyChainAssuranceData";
 import { CEList } from "./data/chaosEngineeringData";
 import { PlatformList } from "./data/platformData";
 import { CETList } from "./data/continuousErrorTrackingData";
 import { IDPList } from "./data/internalDeveloperPortalData";
+import { SMPList } from "./data/smpData";
 import styles from "./styles.module.scss";
 import cardStyles from "./TutorialCard.module.scss";
 
@@ -48,7 +51,16 @@ export default function AllTutorials() {
           <img src={`${baseUrl}img/icon_cd.svg`} />
           <h3>Set up CD Pipelines</h3>
         </div>
-        <TutorialCard FeatureList={CDList} />
+
+        {CDList.map((item) => (
+          <div className={styles.subSection}>
+            <div className={styles.SectionName}>
+              {item.icon && <img src={`${baseUrl}${item.icon}`} />}
+              <h4>{item.name}</h4>
+            </div>
+            <TutorialCard FeatureList={item.list} />
+          </div>
+        ))}
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
@@ -87,6 +99,13 @@ export default function AllTutorials() {
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/icon_ssca.svg`} />
+          <h3>Secure Supply Chain</h3>
+        </div>
+        <TutorialCard FeatureList={SSCAList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
           <img src={`${baseUrl}img/icon_cet.svg`} />
           <h3>Track Errors</h3>
         </div>
@@ -105,6 +124,13 @@ export default function AllTutorials() {
           <h3>Administer Harness Platform</h3>
         </div>
         <TutorialCard FeatureList={PlatformList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/logo.svg`} />
+          <h3>Administer Harness Self-Managed Enterprise Edition</h3>
+        </div>
+        <TutorialCard FeatureList={SMPList} />
       </div>
     </div>
     // </Layout>

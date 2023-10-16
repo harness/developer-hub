@@ -1,0 +1,20 @@
+# kill the target service of the target node
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: docker-service-kill
+    spec:
+      components:
+        env:
+        # name of the target node
+        # supported 'containerd' and 'docker'
+        - name: SERVICE_NAME
+          value: 'containerd'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
