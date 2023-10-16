@@ -594,12 +594,7 @@ The above example was adapted from a [Canopas blog post that used GitLab CI to d
   <TabItem value="ex4" label="Example: Use Bitrise Integrations">
 ```
 
-These examples show how you can run Bitrise Integrations in the Harness CI [Bitrise step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin). These examples are converted from [Bitrise workflow recipes for iOS apps](https://devcenter.bitrise.io/en/steps-and-workflows/workflow-recipes-for-ios-apps.html) and [Bitrise workflow recipes for Android apps](https://devcenter.bitrise.io/en/steps-and-workflows/workflow-recipes-for-android-apps.html).
-
-```yaml
-
-https://devcenter.bitrise.io/en/steps-and-workflows/workflow-recipes-for-ios-apps/-ios--deploy-to-app-store-connect---testflight.html
-```
+This example shows how you can run Bitrise Integrations in the Harness CI [Bitrise step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin) to deploy an Android app. This example is based on [Bitrise workflow recipes for Android apps](https://devcenter.bitrise.io/en/steps-and-workflows/workflow-recipes-for-android-apps.html), and the same concepts apply to [Bitrise workflow recipes for iOS apps](https://devcenter.bitrise.io/en/steps-and-workflows/workflow-recipes-for-ios-apps.html).
 
 ```yaml
               - step:
@@ -641,7 +636,7 @@ https://devcenter.bitrise.io/en/steps-and-workflows/workflow-recipes-for-ios-app
                       package_name: 'my.android.project'
                       app_path: '/path/to/signed/aab'
                       track: 'beta'
-                    env:
+                    env: ## Define environment variables, if required by the integration.
                       SERVICE_ACCOUNT_KEY_URL: <+secrets.getValue("json_key_path")>
 ```
 
