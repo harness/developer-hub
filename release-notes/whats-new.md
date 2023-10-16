@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-10-09T10:00
+date: 2023-10-16T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,29 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: October 09, 2023
+## Latest: October 16, 2023
+
+### Continuous Delivery, version 810xx
+
+- Now, when configuring a coverage rule for a deployment freeze window, if you choose to include all services or all environments, Harness gives you the option to exclude specific services or environments, respectively. This functionality is the same as the options provided for excluding organizations and projects, and it reduces your effort when the entities you want to include outnumber those you want to exclude. (CDS-79505)
+
+  For more information, go to [Define freeze window coverage and schedule](/docs/continuous-delivery/manage-deployments/deployment-freeze/#define-freeze-window-coverage-and-schedule).
+
+<!-- CDS-74220 is WIP -->
+
+- With this latest update, users will notice the following improvements when interacting with forms. (CDS-74220, ZD-47456, ZD-50077)
+
+  Initial Empty State: When users open a form for the first time, they will notice that it appears empty, allowing them to begin their input process with a clean slate.
+
+  Runtime Inputs: Some fields within the form are intentionally left empty by users. With this update, these empty fields should now be manually converted into runtime inputs. This means that users can modify and set values for these fields during runtime.
+
+  Retained InputSet Values: When users run a pipeline using the form, they will now experience a seamless process. The form will load with the same values as the previous input set without any unwanted clearing or mutation of the InputSet.
+
+- Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. (CDS-79414)
+
+  This item requires Harness Delegate version yy.mm.810xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+## October 9, 2023
 
 ### Continuous Delivery, version 80909
 
