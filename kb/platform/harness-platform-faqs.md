@@ -1038,11 +1038,11 @@ Yes there is way to create delegate tokens via API calls, for details you can re
 
 #### Do harness support Worklaod identity federation for authentication?
 
-We support workload identify for Google SM.
+We support workload identify for Google Secret Manager.
 
 #### Can we use alphanumberic on the delegate names?
 
-They can use alphanumeric but it should not start or end with number.
+Yes, you can use alphanumerics, but it should not start or end with a number.
 
 #### Can you give details about recent changes to Harness Self-Managed Enterprise Edition?
 
@@ -1058,19 +1058,16 @@ Yes, expression in delegate selections are supported. You can pass expression du
 
 #### What could be possible reason of getting the error `Error: Rate limit reached for tasks with rank IMPORTANT. Current task count 5985 and max limit 5000`?
 
-This could happen when manager iterator is not running, there is a limit of 5000 delegate tasks at a time per account, but if iterator is not running, it will get deleted automatically and this error arises.
+This could happen when manager iterator is not running, there is a limit of 5000 delegate tasks at a time per account, but if iterator is not running, it will not get deleted automatically and this error arises.
 
-#### While using local delegate using minikube, the delegate has been configured to be a project delegate. What need to be done so that this specific delegate identified as an account delegate?
-
-You can look at the Delegate Service section of this documentation, [here](https://harness.atlassian.net/wiki/spaces/HCE/pages/21076181398/Local+Development+Setup+for+Harness+Chaos?atlOrigin=eyJpIjoiMjVlMzQ5NmMwODJiNDM4MTgyNTMzNDQzYTU4M2EwODMiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ). Also you could have just replaced the delegates token, Delegate service registers the delegate against specific org/proj based on to where is the delegate token (e.g, if you create account level delegate token, the delegate will be account level as well). 
 
 #### Whether we can limit our account/org access only to our users and not to Harness users (even read-only access)?
 
-This feature is currently available in CG, the customer can use `Restrict users to email domains` feature and only and set their email domain only. Also, there is a FF `LIMITED_ACCESS_FOR_HARNESS_USER_GROUP` which needs to be enabled.
+This feature is currently available in CG, you can use `Restrict users to email domains` feature and only and set their email domain only. Also, there is a FF `LIMITED_ACCESS_FOR_HARNESS_USER_GROUP` which needs to be enabled.
 
 #### The user is blocked because of entry not cleared for his prod2 account from gateway, What could be possible steps to login?
 
-The user can directly login using deep link [here](https://app.harness.io/ng/account/y3fpQpCfRQC8uakPcpfp2Q/main-dashboard)
+The user can directly login using deep link, https://app.harness.io/ng/account/<AccountId>/main-dashboard.
 
 #### The user is unable to log in, they're getting unable to log in with SSO when we have SSO enabled on the account.
 
