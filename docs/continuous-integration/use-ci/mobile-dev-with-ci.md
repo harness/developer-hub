@@ -8,14 +8,14 @@ Harness CI provides many solutions to support mobile app development.
 
 ## Mobile app development guides
 
-These guides contain a variety of information about mobile development with Harness CI, including installing dependencies, running tests, and deploying to the app store.
+These guides contain a variety of information about mobile development with Harness CI, including installing dependencies, running tests, and distribution.
 
 * [Guide: Build iOS and macOS apps with Harness CI](/tutorials/ci-pipelines/build/ios)
 * [Guide: Build Android apps with Harness CI](/tutorials/ci-pipelines/build/android)
 
 ## Plugins and scripts for mobile development
 
-There are several ways to run scripts and use plugins in Harness CI. You can run Bitrise Integrations, GitHub Actions, fastlane scripts, firebase scripts, xcode commands, and more.
+There are several ways to run scripts and use plugins in Harness CI. You can run Bitrise Integrations, GitHub Actions, fastlane scripts, Firebase scripts, Xcode commands, and more.
 
 * [Use Bitrise Integrations in Harness CI](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin)
 * [Use GitHub Actions in Harness CI](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step)

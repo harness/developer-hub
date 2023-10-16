@@ -597,7 +597,7 @@ You can also [build without pushing](/docs/continuous-integration/use-ci/build-a
 
 In Harness CI, you can use the save and restore cache steps to [share data between steps and stages](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages).
 
-For example, you can [save and restore a cache from an Amazon S3 bucket.](docs/continuous-integration/use-ci/caching-ci-data/saving-cache)
+For example, you can [save and restore a cache from an Amazon S3 bucket.](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache)
 
 #### Can I use Harness CI for mobile app development?
 
