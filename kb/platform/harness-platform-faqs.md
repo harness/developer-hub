@@ -999,11 +999,122 @@ You can refer to these [documentation](https://developer.harness.io/docs/first-g
 
 Trial accounts should be able to use the same functionality as paid ones during the trial time period.
 
+
+#### At what port are the delegate prometheus metrics exposed?
+
+The delegate prometheus metrics are exposed on the port 3460 in the running delegate container
+
+#### How do I check for the listen ports on the delegate if netstat is not installed?
+
+You can run the command `lsof -nP -iTCP -sTCP:LISTEN` or install netstat or bake it into the delegate image
+
+#### What prometheus metrics are exposed on the delegate?
+
+The list of prometheus metrics exposed on the harness delegate are listed in the documentation at the following page https://developer.harness.io/docs/platform/delegates/manage-delegates/delegate-metrics/
+
+#### The Harness delegate went down and I did not get any notification via prometheus that it was in a disconnected state.  What gives?
+
+When the Harness delegate pod goes down so does it's exposed metrics endpoint as well.  The metrics here can help notify you if connectivity is lost between the Harness manager and the delegate pod itself (but obviously still present to your prometheus server to notify you as well)
+
+#### What API can be used to check for delegate connectivity status?
+
+The following API can be used to check for delegate connectivity status https://apidocs.harness.io/tag/Delegate-Setup-Resource#operation/listDelegates
+
+#### For legacy delegates that are not starting up and creating a .hprof file in the container what should I do?
+
+For the statefulset updating the environment variable "WATCHER_JAVA_OPTS" with "-Xmx512m" may help
+
 #### Deploy stage requires a service defined. Can I set up a pipeline without a service defined at a stage? 
 
 Yes, you can use the custom stage. This is a selection you can make initially while defining a Pipeline stage. 
 
-
 #### What if I just want to execute a simple shell or bash script step, how can I do this?
 
 With a custom stage, you do not need to define a service. This would be an ideal method of executing a shell or bash script step. 
+
+#### The user is unable to log in, they're getting unable to log in with SSO when we have SSO enabled on the account.
+
+This is a very common scenario when users get this issue. The reason behind this is mostly that the User has signed up for a personal account or part of a different account that doesn't have the SSO enabled which is set as his default account. Hence User can log in using a username and password. If he has forgotten his password, he can always use the forgot password and then try to log in. 
+
+#### Not viewing the Allowlist option under the account
+
+The feature for allowlist is behind a Feature Flag PL_IP_ALLOWLIST_NG, kindly raise a ticket to get this enabled. 
+You can refer to this [documentation](https://developer.harness.io/docs/platform/security/add-manage-ip-allowlist/)
+
+#### Not able to setup/reset MFA
+
+When the 2FA is set as force enabled on the account level by an admin of the account. The users will have to setup the 2FA for their profile. 
+It can enabled by scanning the QR code sent in the email or using the secret key also sent in the same email using any authenticator app. 
+
+#### Issue decrypting secret from Harness Secret Manager
+
+When you are getting some errors for decryption of the secret in your pipeline. Always try to test the same secret using a shell script and try to print it.
+The secret will always be printed in encrypted ******* so you don't have to worry about the value been shown but it will make sure to isolate the issue further if the secret itself is having the issue or the way it is been referenced. 
+
+#### Issue while accessing other accounts when a user is part of multiple accounts.
+
+Sometimes, this might happen due to some edge case where a user is somehow unable to access his other account when he is part of multiple accounts as the login mechanism works for the default account. The user can still try to get to his account (not the default one) by using the deep link. The deep link is nothing  y the full URL of the account he wants to access : 
+https://app.harness.io/ng/account/**accountidhere**/main-dashboard
+
+#### How to disable a pipeline
+
+You can use the Deployment Freeze option :
+ 
+[documentation](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/)
+
+#### Slack Notifications are not working
+
+In case your Slack notifications are not working, you can start by troubleshooting and validating the webhook for Slack and then check how the notifications are configured at the pipeline level or user group level. 
+When executing the pipeline don't check the box for notifying only me. 
+
+#### Harness NG project admin permission after creating a project
+
+When you create a project using the API, by default the Project inherits the project admin permissions on creation from the Service Account where the API token was generated. 
+
+#### Harness API Token validity
+
+In Harness under Service Account when you create the token, the validity of the token depends on how the token was created. If you have specified the expiry date. In case you want the token to never expire you can set the expiration to No Expiration option. 
+
+#### Providing Access to Specific Pipelines in Harness
+
+You can make use of the RBAC [documentation](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)
+You can create a resource group and pick specific pipelines to have specific RBAC access to. 
+
+#### Not able to remove a pipeline
+
+In case of force deletion of Harness Resources : 
+Account resources --> Default Settings and then under General enable the "Enable Force Delete of Harness Resources
+and then try to delete the pipeline from Harness UI. This option is force deleted for entities. 
+
+#### VAULT operation error: Decryption failed after 3 retries for secret
+
+Someone times you see this error on the execution of the pipelines. We might have these errors due to the network the delegate is either down or has issues connecting to the Vault where the secret is created. The first thing is can do is validate the delegates are up and running go the connectors used in the pipelines and do a connectivity test. In case that fails then login to the delegate and try to reach the connector URL from the delegate.  
+
+#### Can old email be changed in user account
+
+If the Users are provisioned via SCIM then you can just update the email in the SSO provider end and they will get updated in Harness. 
+If the users were added manually you will need to remove them and add the new emails. 
+
+#### Problems enabling mTLS - Error [IOException: Unexpected response code for CONNECT: 403]
+
+When mTLS has been enabled for your delegates, you might see the 403 errors, this could be due to the proxy not resolving harness domain app.harness.io from the delegate. 
+
+#### I'm trying to confirm is that if I create a role at an account level with Administrator privileges. Then apply this to a particular resource group that only has scope for a specific Harness Organisation, won't this just provide admin access to this organization?
+
+The advised way to achieve your use case is to create user with minimal access at account level then add the same user at required organisation level with the admin access so that you can control user RBAC at org level scope.
+
+#### Changes identity provider to OKTA from some other provider
+
+This is the document which talks about OKTA SAML setup with Harness : [documentation](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/), 
+When you will be setting up a new OKTA SAML and then migrating your users to it,  You will need to setup the same with Harness as mentioned in the above document , as Harness needs the metadata XML file from OKTA with the configuration. 
+ 
+The permissions for Harness are managed by the User Groups present in Harness. In case of authorization, the user groups from SAML app are linked to Harness Local User groups. 
+
+#### Is there an easy way to see the de-factor roles/permissions assigned to a user
+
+You can view all permissions for a user by going to Access Control --> Search for the User click on it. Click on Role Bindings and you can see permissions for the user with the scope, All, Account, Organisation and Organisations with Projects in one place. 
+If you need to see the permissions inside of a role say Account Viewer or any custom-created role and same with Resource Group then you will always need to individually click on that specific role/ resource group as it's not shown on the user permission page. 
+ 
+We only show the Account/Project/Organisation level permissions with the role-resource group with where it is assigned at and assigned through in case of a User group or directly. 
+
+But you can view all of them together by selecting the scope to All instead of Individual. 

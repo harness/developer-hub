@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-10-09T10:00
+date: 2023-10-16T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,38 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: October 09, 2023
+## Latest: October 16, 2023
+
+### Continuous Delivery, version 81008
+
+- Ability to exclude services or environments from deployment freeze window (CDS-79505)
+
+  Now, when configuring a coverage rule for a deployment freeze window, if you choose to include all services or all environments, Harness gives you the option to exclude specific services or environments, respectively. This functionality is the same as the options provided for excluding organizations and projects, and it reduces your effort when the entities you want to include outnumber those you want to exclude. 
+
+  For more information, go to [Define freeze window coverage and schedule](/docs/continuous-delivery/manage-deployments/deployment-freeze/#define-freeze-window-coverage-and-schedule).
+
+- Additional information for pipeline events (CDS-78150)
+
+  The following pipeline events now include the name, pipeline tag, and failure message:
+    - PIPELINE_FAILED
+    - STAGE_FAILED
+    - STEP_FAILED
+  
+  The following pipeline events now include the name and pipeline tag:
+    - PIPELINE_SUCCESS
+    - STAGE_SUCCESS
+
+- Improvements to the user experience with forms (CDS-74220, ZD-47456, ZD-50077)
+
+  The following improvements have been made to forms to enhance your user experience: 
+
+    - Initial empty state: forms opened for the first time are empty. This allows you to begin your input process with a clean slate.
+
+    - Runtime inputs: fields that you intentionally leave empty are manually converted to runtime inputs. You can modify and set values for these fields during runtime.
+
+    - Retained input set values: when you run a pipeline using the form, your experience will be seamless. The form loads with the same values as the previous input set without any unwanted clearing or mutation.
+
+## October 9, 2023
 
 ### Continuous Delivery, version 80909
 
