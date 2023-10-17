@@ -49,7 +49,7 @@ If you don't want the Harness Delegate to pull images anonymously, you can use c
 
 ### I don't want to pull images from a public registry
 
-Harness CI images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can download the images to your own private registry, [specify the images that you want Harness to use](#specify-the-harness-ci-images-used-in-your-pipelines), and then configure a Docker connector to pull the images from your private registry. For an example demonstrating how to do this, go to [Configure STO to download images from a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+Harness CI images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can pull Harness images from your own private registry. For instructions on each of these options, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md).
 
 ### Docker Hub rate limiting
 
