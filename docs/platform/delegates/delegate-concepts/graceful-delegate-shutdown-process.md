@@ -23,6 +23,11 @@ The length of the grace period is configurable.
 | Immutable image | Yes | Configurable (details below)  |
 | Legacy image | No | 30 seconds |
 
+:::info note
+The grace period is not currently configurable for Helm deployments.
+
+:::
+
 ### Configure the default interval for a Kubernetes deployment
 
 Open the delegate manifest file and locate the container `spec` (`spec.containers`). Change the `terminationGracePeriodSeconds` as shown in the following YAML. In the example below, `terminationGracePeriodSeconds` is set to 10 minutes.
@@ -120,6 +125,18 @@ For more information on `stopTimeout`, go to [Container timeouts](https://docs.a
        "family": "harness-delegate-task-spec"
      }
    ```
+
+### Configure the default interval for a Docker deployment
+
+For Docker deployments, you use the `docker stop` command to set the default interval. In the example below, the interval is set to 10 minutes.
+
+```
+docker container stop -t=600 <delegatename>
+```
+
+:::info note
+In the syntax above, you can choose to use `–time` or `-t`.
+:::
 
 ## Graceful shutdown events
 
