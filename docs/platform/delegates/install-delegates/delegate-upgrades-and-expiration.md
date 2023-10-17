@@ -20,11 +20,7 @@ The Kubernetes manifest has a component called `upgrader`. The `upgrader` is a c
 
 To prevent the installation of the automatic upgrade feature, remove the `cronJob` section before you apply the manifest.
 
-You can also change the time when the upgrade cron job runs by updating the `schedule`. 
-
-:::info note
-The allowed value for the `upgrader` schedule is between one and 90 minutes. Harness recommends a default value of 60 minutes. For configuration details, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
-:::
+You can also change the time when the upgrade cron job runs by updating the `schedule`. For configuration details, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
 
 <details>
     <summary>Example Kubernetes manifest</summary>
@@ -160,7 +156,11 @@ To disable auto-upgrade on an installed delegate image, do the following:
 
 ### Configure the delegate upgrade schedule
 
-The allowed value for the `upgrader` schedule is between one and 90 minutes. Harness recommends a default value of 60 minutes.
+Harness recommends a default schedule of 60 minutes, but suggests a range between one and 90 minutes for optimal performance.
+
+:::info important
+If you set the value outside of this range, upgrades will still work as expected. However, if the frequency exceeds 90 minutes, Harness will not be able to detect any auto-upgrades, and the UI will display that auto-upgrades are turned `OFF`.
+:::
 
 To configure the delegate upgrade schedule, do the following:
 
@@ -206,11 +206,11 @@ To configure the delegate upgrade schedule, do the following:
    ```
 
    For more information on the schedule syntax, go to [Writing a CronJob spec](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#writing-a-cronjob-spec) in the Kubernetes documentation.
-   
+
 3. Save the file.
 4. Run `kubectl apply -f harness-delegate.yaml`.
 
-    The delegate pods restart automatically with the updated settings.
+   The schedule change for CronJob will take effect immediately, and the next upgrade run will follow the new schedule. If you have made any other changes to the YAML file, such as updating the image, configuration, environment variables, and so on, those changes will take effect during the next run.
 
 ## Use automatic upgrade with custom delegate images
 
