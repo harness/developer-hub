@@ -1032,6 +1032,43 @@ Yes, you can use the custom stage. This is a selection you can make initially wh
 
 With a custom stage, you do not need to define a service. This would be an ideal method of executing a shell or bash script step. 
 
+#### Is there a way to create delegate tokens via API calls in which we can do the API call for token creation and use in personalized way?
+
+Yes there is way to create delegate tokens via API calls, for details you can refer [here](https://apidocs.harness.io/tag/Delegate-Token-Resource#operation/createDelegateToken).
+
+#### Do harness support Worklaod identity federation for authentication?
+
+We support workload identify for Google Secret Manager.
+
+#### Can we use alphanumberic on the delegate names?
+
+Yes, you can use alphanumerics, but it should not start or end with a number.
+
+#### Can you give details about recent changes to Harness Self-Managed Enterprise Edition?
+
+Yes, you can refer to documentation [here](https://developer.harness.io/release-notes/self-managed-enterprise-edition/#self-managed-enterprise-edition).
+
+#### If we have a main pipeline linked to a chain pipeline, when main pipeline gets executed which pipeline settings has precedence? For eg. main pipeline has notifications set, pipeline timeout set and chain pipeline is a template pipeline with notifications set, pipeline timeout set.
+
+The notification/timeout settings for each entity will be honored as the pipeline progresses.
+
+#### Can we use expressions in tags in delegates in NG like they used custom selectors in delegates in CG?
+
+Yes, expression in delegate selections are supported. You can pass expression during delegate selection in pipeline. This will be resolved to the value of that variable. If that value is present as a tag in a delegate then that delegate will be selected.
+
+#### What could be possible reason of getting the error `Error: Rate limit reached for tasks with rank IMPORTANT. Current task count 5985 and max limit 5000`?
+
+This could happen when manager iterator is not running, there is a limit of 5000 delegate tasks at a time per account, but if iterator is not running, it will not get deleted automatically and this error arises.
+
+
+#### Whether we can limit our account/org access only to our users and not to Harness users (even read-only access)?
+
+This feature is currently available in CG, you can use `Restrict users to email domains` feature and only and set their email domain only. Also, there is a FF `LIMITED_ACCESS_FOR_HARNESS_USER_GROUP` which needs to be enabled.
+
+#### The user is blocked because of entry not cleared for his prod2 account from gateway, What could be possible steps to login?
+
+The user can directly login using deep link, https://app.harness.io/ng/account/AccountId/main-dashboard.
+
 #### The user is unable to log in, they're getting unable to log in with SSO when we have SSO enabled on the account.
 
 This is a very common scenario when users get this issue. The reason behind this is mostly that the User has signed up for a personal account or part of a different account that doesn't have the SSO enabled which is set as his default account. Hence User can log in using a username and password. If he has forgotten his password, he can always use the forgot password and then try to log in. 
@@ -1265,13 +1302,6 @@ Artifacts will be downloaded on the delegate and it should be safe if the networ
 One note here, the chosen cipher suits depend on the remote server. During the SSL handshake the “server hello” message contains the Cipher suite chosen by the server from the list provided by the client (our side).
 
  
-
-
- 
-
-
-
-
 
 
  
