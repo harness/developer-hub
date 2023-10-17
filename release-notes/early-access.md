@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-09-29T10:00
+date: 2023-10-16T10:00
 sidebar_position: 2
 ---
 
@@ -12,7 +12,19 @@ Review the notes below to learn about the early access (aka beta) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - October 5, 2023
+## October 16, 2023
+
+### Continuous Delivery, version 81008
+
+- Option to clean the target directory prior to deploying an Azure Web App (CDS-76724)
+
+  You can now clean the target directory before deploying an Azure Web App. For more information, go to [Azure Web Apps deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial).
+
+  :::note
+  This feature is behind the feature flag `CDS_WEBAPP_ENABLE_CLEAN_OPTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+  :::
+
+## October 5, 2023
 
 ### Security Testing Orchestration, version 1.69.3
 
