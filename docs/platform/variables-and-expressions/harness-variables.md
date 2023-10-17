@@ -739,18 +739,6 @@ The list of stages selected for execution.
 
 The pipeline level delegate selectors selected via runtime input.  
 
-### <+pipeline.storeType>
-
-If the pipeline is stored in Harness, the expression resolves to `inline`. If the pipeline is stored in a Git repository, the expression resolves to `remote`.
-
-### <+pipeline.repo>
-
-For remote pipelines, the expression resolves to the Git repository name. For inline pipelines, the expression resolves to `null`.
-
-### <+pipeline.branch>
-
-For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression resolves to `null`.
-
 ## Deployment, pipeline, stage, and step status
 
 Deployment status values are a Java enum. You can see the list of values in the deployments **Status** filter:
@@ -1870,7 +1858,7 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | workflow.pipelineDeploymentUuid                                       | pipeline.executionIdpipeline.sequenceId                                                                                                                                                                                                                                          |
 | workflow.startTs                                                      | pipeline.startTs                                                                                                                                                                                                                                                                     |
 | workflow.variables.VAR_NAME                                           | pipeline.variables.VAR_NAME or stage.variables.VAR_NAME                                                                                                                                                                                                                              |
-| timestampId                                                           |                                                                                                                                                                                                                                                                                      |
+| timestampId                                                           | In FirstGen, The `${timestampId}` is the time when the constant is set on the target host. In NextGen, we are not using any setup variables anymore, since it is Harness’s internal step where we create a temp dir for the execution. We are creating a working directory in the Command Init unit on this `%USERPROFILE%` location.                                                                                                                                                                                                                                                                                     |
 | deploymentUrl                                                         | pipeline.executionUrl​                                                                                                                                                                                                                                                              |
 | context.published_name.var_name                                       |                                                                                                                                                                                                                                                                                      |
 | deploymentTriggeredBy                                                 | pipeline.triggeredBy.name​pipeline.triggeredBy.email​                                                                                                                                                                                                                            |
