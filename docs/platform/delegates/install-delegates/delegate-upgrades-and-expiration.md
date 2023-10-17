@@ -20,11 +20,7 @@ The Kubernetes manifest has a component called `upgrader`. The `upgrader` is a c
 
 To prevent the installation of the automatic upgrade feature, remove the `cronJob` section before you apply the manifest.
 
-You can also change the time when the upgrade cron job runs by updating the `schedule`. 
-
-:::info note
-The allowed value for `upgrader` schedule is between one and 90 minutes. Harness recommends a default value of 60 minutes.
-:::
+You can also change the time when the upgrade cron job runs by updating the `schedule`. For configuration details, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
 
 <details>
     <summary>Example Kubernetes manifest</summary>
@@ -157,6 +153,64 @@ To disable auto-upgrade on an installed delegate image, do the following:
 2. In the delegate manifest, locate the **CronJob** resource. In the resource `spec`, set the `suspend` field to `true`:   
 `spec:`  
 --`suspend: true`
+
+### Configure the delegate upgrade schedule
+
+Harness recommends a default schedule of 60 minutes, but suggests a range between one and 90 minutes for optimal performance.
+
+:::info important
+If you set the value outside of this range, upgrades will still work as expected. However, if the frequency exceeds 90 minutes, Harness will not be able to detect any auto-upgrades, and the UI will display that auto-upgrades are turned `OFF`.
+:::
+
+To configure the delegate upgrade schedule, do the following:
+
+1. In the `delegate.yaml` manifest file, locate the `upgrader-cronjob` resource.
+2. Configure the **CronJob** resource to your specific settings.
+
+   The CronJob YAML configuration should look something like the example below that runs the job every 15 minutes. The `spec.schedule` field defines when and how often the job should run.
+   
+   ```yaml
+   ---
+     
+   apiVersion: batch/v1
+   kind: CronJob
+   metadata:
+     labels:
+       harness.io/name: kubernetes-delegate-upgrader-job
+     name: kubernetes-delegate-upgrader-job
+     namespace: harness-delegate-ng
+   spec:
+     schedule: "0,15,30,45 * * * *"
+     concurrencyPolicy: Forbid
+     startingDeadlineSeconds: 20
+     jobTemplate:
+       spec:
+         template:
+           spec:
+             serviceAccountName: upgrader-cronjob-sa
+             restartPolicy: Never
+             containers:
+             - image: harness/upgrader:latest
+               name: upgrader
+               imagePullPolicy: Always
+               envFrom:
+                - secretRef:
+                   name: kubernetes-delegate-upgrader-token
+               volumeMounts:
+                 - name: config-volume
+                   mountPath: /etc/config
+             volumes:
+               - name: config-volume
+                 configMap:
+                   name: kubernetes-delegate-upgrader-config
+   ```
+
+   For more information on the schedule syntax, go to [Writing a CronJob spec](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#writing-a-cronjob-spec) in the Kubernetes documentation.
+
+3. Save the file.
+4. Run `kubectl apply -f harness-delegate.yaml`.
+
+   The schedule change for CronJob will take effect immediately, and the next upgrade run will follow the new schedule. If you have made any other changes to the YAML file, such as updating the image, configuration, environment variables, and so on, those changes will take effect during the next run.
 
 ## Use automatic upgrade with custom delegate images
 
