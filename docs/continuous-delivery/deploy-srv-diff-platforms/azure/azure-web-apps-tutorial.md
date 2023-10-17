@@ -332,7 +332,7 @@ The **Slot Deployment** step has the following settings:
 
  * **Name:** Enter a name for the step.
  * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
-   * **Clean** Select if you want to clean the target directory prior to deployment. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
+   * **Clean**: Select if you want to clean the target directory prior to deployment. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
 
     :::note
     This feature is behind the feature flag `CDS_WEBAPP_ENABLE_CLEAN_OPTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -388,7 +388,7 @@ The **Slot Deployment** step has the following settings:
 
 * **Name:** Enter a name for the step.
 * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
-  * **Clean** Select if you want to clean the target directory prior to deployment. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
+  * **Clean**: Select if you want to clean the target directory prior to deployment. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
 
     :::note
     This feature is behind the feature flag `CDS_WEBAPP_ENABLE_CLEAN_OPTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -473,7 +473,7 @@ The **Slot Deployment** step has the following settings:
 
 * **Name:** Enter a name for the step.
 * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
-  * **Clean** Select if you want to clean the target directory prior to deployment. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
+  * **Clean**: Select if you want to clean the target directory prior to deployment. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
 
     :::note
     This feature is behind the feature flag `CDS_WEBAPP_ENABLE_CLEAN_OPTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
