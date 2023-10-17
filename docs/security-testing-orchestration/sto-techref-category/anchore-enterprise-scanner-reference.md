@@ -115,91 +115,15 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Domain
 
-<!-- TBD Do one of the following:
+The fully-qualified URL to the scanner API. Such as `https://anchore.company.io/api` or `http://192.0.2.1:8228`
 
-1. Delete this option description if it's not applicable.
-2. Leave the reference to the generic description in place if it's applicable.
-3. Write a specific description for this option and remove the reference to the generic description.  
 
--->
-
- 
-```mdx-code-block
-import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
-```
 
 <StoSettingAuthDomain />
 
 
-<!-- ============================================================================= -->
-<a name="auth-enforce-ssl"></a>
-
-#### Enforce SSL
-
-
-<!-- TBD Do one of the following:
-
-1. Delete this option description if it's not applicable.
-2. Leave the reference to the generic description in place if it's applicable.
-3. Write a specific description for this option and remove the reference to the generic description.  
-
--->
-
-
-
-```mdx-code-block
-import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
-```
-
-<StoSettingProductSSL />
-
-
-
-
-#### API Version
-
-<!-- TBD Do one of the following:
-
-1. Delete this option description if it's not applicable.
-2. Leave the reference to the generic description in place if it's applicable.
-3. Write a specific description for this option and remove the reference to the generic description.  
-
--->
-
-```mdx-code-block
-import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-version.md';
-```
-
-<StoSettingApiVersion />
-
-
-#### Type
-
-<!-- TBD Do one of the following:
-
-1. Delete this option description if it's not applicable.
-2. Leave the reference to the generic description in place if it's applicable.
-3. Write a specific description for this option and remove the reference to the generic description.  
-
--->
-
-```mdx-code-block
-import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
-```
-
-<StoSettingAuthType />
-
-
 
 #### Access ID
-
-<!-- TBD Do one of the following:
-
-1. Delete this option description if it's not applicable.
-2. Leave the reference to the generic description in place if it's applicable.
-3. Write a specific description for this option and remove the reference to the generic description.  
-
--->
 
 ```mdx-code-block
 import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
@@ -211,14 +135,6 @@ import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-acces
 
 #### Access Token
 
-<!-- TBD Do one of the following:
-
-1. Delete this option description if it's not applicable.
-2. Leave the reference to the generic description in place if it's applicable.
-3. Write a specific description for this option and remove the reference to the generic description.  
-
--->
-
 ```mdx-code-block
 import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
 ```
@@ -229,38 +145,9 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 
 <!-- ============================================================================= -->
 
-#### Team Name
+#### Image Name
 
-<!-- TBD Do one of the following:
-
-1. Delete this option description if it's not applicable.
-2. Leave the reference to the generic description in place if it's applicable.
-3. Write a specific description for this option and remove the reference to the generic description.  
-
--->
-
-```mdx-code-block
-import StoSettingToolProductTeamName from './shared/step_palette/_sto-ref-ui-tool-project-team.md';
-```
-
-<StoSettingToolProductTeamName  />
-
-
-#### Project Name
-
-<!-- TBD Do one of the following:
-
-1. Delete this option description if it's not applicable.
-2. Leave the reference to the generic description in place if it's applicable.
-3. Write a specific description for this option and remove the reference to the generic description.  
-
--->
-
-```mdx-code-block
-import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-project-name.md';
-```
-
-<StoSettingToolProjectName />
+For Extraction scans, the name of the image that you want to extract from Anchore. 
 
 <!-- ============================================================================= -->
 
@@ -289,7 +176,7 @@ https://developer.harness.io/docs/security-testing-orchestration/sto-techref-cat
 
 -->
 
-You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/current/docs/using/cli_usage/repositories/) with specific command-line arguments. 
+You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/current/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` = `--force`.  
 
 
 <a name="fail-on-severity"></a>
@@ -306,19 +193,6 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 You can use this field to provide environment variables to be used during the execution of the step. 
 
-<!-- TBD
-
-Any useful custom settings that we want to document for Anchore Enterprise scans? If so, here's an example from the Checkmarx scanner ref....
-
-As an exemple, if you need to access your Checkmarx server through a proxy, you can add this setting: 
-
-* key = `JAVA_TOOL_OPTIONS`
-* value = `-DproxySet=true -Dhttp.proxyHost=MY_PROXY_ADDRESS -Dhttp.proxyPort=MY_PROXY_PORT`
-
-Replace `MY_PROXY_ADDRESS` with your proxy address or proxy FQDN, and `MY_PROXY_PORT` with your proxy port.
-If you want to go through an HTTPS proxy, replace `-Dhttp` with `-Dhttps`.
-
--->
 
 
 ### Additional Configuration
@@ -340,12 +214,8 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
-<!-- TBD
 
-Not sure if we support Security step configuration for this...leaving this in (but commenting it out) in case we need to document
-
-
-## Security step settings for Anchor Enterprise scans in STO (legacy)
+## Security step settings for Anchore Enterprise scans in STO (legacy)
 
 
 You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
@@ -361,22 +231,20 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 
 
-#### Checkmarx scan settings
+#### Anchore scan settings
 
-* `product_name` = `TBD`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `containerImage`
+* `product_name` = `anchore`
+* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `container`
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan`, `dataLoad`, or `ingestionOnly`
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan` or `dataLoad`:
 	+ `product_domain`
 	+ `product_access_id`
-	+ `product_access_token` = The account password
-	+ `product_team_name` = `/<`*`server-name`*`>/<`*`team-name`*`>` for example, `/server1.myorg.org/devOpsEast`
-	+ `product_project_name`
+	+ `product_access_token`
 * `product_config_name` = `default`
 
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 + `tool_args`
-	   You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`. For more information, go to [Running incremental scans with Checkmarx](#running-incremental-scans-with-checkmarx). 
+	   You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/current/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` = `--force`. 
 
 #### Ingestion file
 
