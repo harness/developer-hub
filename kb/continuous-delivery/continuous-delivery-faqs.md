@@ -1803,3 +1803,108 @@ To have automatic deployment in Harness, you can make use of trigger On new arti
 [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-a-time-schedule/)
 As soon as your build is complete and it publishes a new artifact you can setup a trigger on that and it will trigger a Harness Deployment. 
 
+#### Sharing dashboard to a person who is not a Harness user
+
+The sharing option for the harness dashboard requires picking a specific user group within the harness itself along with different levels of access. So they will only have access to the dashboard and not a user who is not part of any group in harness.
+
+#### CDNG Notifications custom slack notifications
+
+ It is possible to create a shell script that sends notifications through Slack, in this case, we can refer to this article:
+
+ https://discuss.harness.io/t/custom-slack-notifications-using-shell-script/749
+
+#### How to delete a template version without deleting the template
+
+When you click on Delete Template option in the template , you will get all the version listed out and you will need to select the version to be deleted. 
+
+#### Is there a way to get all the services list present in harness along with their id's and other meta data via gql
+
+We have the API to get the services list based on ApplicationID. 
+ 
+https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-services-api#fetch-the-list-of-services-for-a-given-application
+
+```
+{  
+  services(  
+    filters: [  
+ { application: { operator: EQUALS, values: ["<applicationId>"] } }  
+ ]  
+    limit: 1000  
+  ) {  
+    pageInfo {  
+      total  
+    }  
+    nodes {  
+      id  
+      name  
+    }  
+  }  
+}
+```
+#### Creation of environment via API?
+
+We do support API's for the nextgen : https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2
+
+```
+curl -i -X POST \
+  'https://app.harness.io/ng/api/environmentsV2?accountIdentifier=string' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: YOUR_API_KEY_HERE' \
+  -d '{
+    "orgIdentifier": "string",
+    "projectIdentifier": "string",
+    "identifier": "string",
+    "tags": {
+      "property1": "string",
+      "property2": "string"
+    },
+    "name": "string",
+    "description": "string",
+    "color": "string",
+    "type": "PreProduction",
+    "yaml": "string"
+  }'
+```
+#### Question about new update to Services and Environments
+
+The v2 experience has more robust service and environment entities. V2 has service variables, independent infrastructure definitions, environment groups, and file and variable overrides.
+
+With v2, you'll notice a major reduction in the configuration included in pipelines. These changes are also reflected in the Harness APIs.
+
+All new deployment types (ECS, Deployment Template, SSH, WinRM, etc.) are available in v2 only. New innovations such as Enterprise GitOps, multi-services and multi-environments, and environment groups, are in v2 only.
+
+The new v2 experience has been designed to provided users and organizations with simpler configurations and an improved ability to scale.
+
+#### Deleting a Monitored Service
+
+You should see a Service Reliability module on your left panel. There you will see the monitored Services. You will need to delete the monitored service from here.
+
+#### How to enable additional failure strategies
+
+Once you click on Add under Failure strategies, you can select the timeout failure strategy by default It select All Errors and you can an action say Manual Intervention or another option.
+[Documentataion](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+
+#### Variables in NextGen from migration from First Gen to be used in Jira Approval step
+
+Triggered by <+deploymentTriggeredBy>
+This isn't a variable in Next Gen rather you should use : <+pipeline.triggeredBy.name>
+ 
+Branch: <+trigger.sourceBranch>
+PR Number: <+trigger.prNumber>
+PR Title: <+trigger.prTitle>
+These will not directly work in the Jira Approval step as it doesn't have any reference to the trigger and I am validating this internally on how can we print this information. 
+ 
+You can certainly use variables like  <+pipeline.stages.stagename.name> stagename is the name of your stage say for Deploy and that will resolve correctly to the values.
+ 
+ Artifact: <+artifact.displayName>
+ Artifact Description <+artifact.description>
+ Artifact Build Number: <+artifact.buildNo>
+ 
+These aren't the correct variables in NG.  Here are the correct variables: https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact 
+
+#### We have a pipeline that is configured to deploy a selected service based on input. There currently isn't a way to filter the list of Deployment executions by the selected service.
+
+If you want to specifically check the executions for a specific service. 
+You can do so by going to Service and then click on the service you want to see the executions for.
+Even under deployment, you can open the filter option and only enter service name and it will list all executions for the service.
+
