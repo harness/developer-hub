@@ -135,7 +135,7 @@ docker container stop -t=600 <delegatename>
 ```
 
 :::info note
-In the syntax above, you can choose to use `–time` or `-t`.
+In the syntax above, you can choose to use `–-time` or `-t`.
 :::
 
 ## Graceful shutdown events
