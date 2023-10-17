@@ -1,7 +1,7 @@
 ---
 title: Use parallelism to improve test times
 description: Use parallelism to run tests in parallel.
-sidebar_position: 4
+sidebar_position: 40
 helpdocs_topic_id: kce8mgionj
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false

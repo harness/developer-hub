@@ -24,19 +24,39 @@ The **Builds** page provides the following information about current and past bu
 
 On the **Build details** page, you can investigate a variety of details about a specific build.
 
-* **Pipeline:** This tab shows the build stages and steps.
-
-  Select a step to investigate logs, inputs, outputs, and errors (if any) for that steps. If enabled, [AIDA](../troubleshoot-ci/aida.md) can provide troubleshooting assistance.
-
-  When troubleshooting failed builds, you can switch to **Console View** to allocate more screen space to logs. Once you've identified a potential cause, select **Edit Pipeline** to go directly to the Pipeline Studio.
-
-* **Inputs**: This tab lists pipeline-level inputs. Step-level inputs are reported in the step details on the **Pipeline** tab.
-* **Artifacts:** This tab provides links to artifacts, such as images or reports, produced during the build. Availability of artifact details depends on the upload location, build configuration, or build infrastructure. For an example and more information, go to [View tests - View reports on the Artifacts tab](./run-tests/viewing-tests.md#view-reports-on-the-artifacts-tab).
-* **Commits:** This tab provides a list of commits that triggered the build, along with [source code repo links](#source-code-repository-links), if applicable.
-* **Tests:** This tab presents test results from **Run** or **Run Tests** steps. For more information, go to [View tests](./run-tests/viewing-tests.md).
-* **Policy Evaluations**, **Security Tests**, and **Error Tracking**: These tabs report [Error Tracking](#error-tracking-run-tests-step) information and information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/governance/Policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
-
 ![The Build details page.](./static/ci-build-details-page.png)
+
+### Pipeline tab (logs)
+
+This tab shows the build stages and steps.
+
+Select a step to investigate logs, inputs, outputs, and errors (if any) for that steps. If enabled, [AIDA](../troubleshoot-ci/aida.md) can provide troubleshooting assistance.
+
+When troubleshooting failed builds, you can switch to **Console View** to allocate more screen space to logs. Once you've identified a potential cause, select **Edit Pipeline** to go directly to the Pipeline Studio.
+
+Logs are limited to 5MB, if you need to examine logs larger than 5MB, you need to [export full logs](../troubleshoot-ci/troubleshooting-ci.md#export-full-logs).
+
+### Inputs tab
+
+This tab lists pipeline-level inputs. Step-level inputs are reported in the step details on the [Pipeline tab](#pipeline-tab-logs).
+
+### Artifacts tab
+
+This tab provides links to artifacts, such as images or reports, produced during the build.
+
+Availability of artifact details depends on the upload location, build configuration, or build infrastructure. For an example and more information, go to [View tests - View reports on the Artifacts tab](./run-tests/viewing-tests.md#view-reports-on-the-artifacts-tab).
+
+### Commits tab
+
+This tab provides a list of commits that triggered the build, along with [source code repo links](#source-code-repository-links), if applicable.
+
+### Tests tab
+
+This tab presents test results from **Run** or **Run Tests** steps. For more information, go to [View tests](./run-tests/viewing-tests.md).
+
+### Other tabs
+
+The **Policy Evaluations**, **Security Tests**, and **Error Tracking** tabs report [Error Tracking](#error-tracking-run-tests-step) information and information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/governance/Policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
 
 ## Source code repository links
 

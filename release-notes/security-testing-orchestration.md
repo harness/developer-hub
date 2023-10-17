@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-08-30T10:00
+date: 2023-10-11T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 9
 ---
@@ -19,13 +19,38 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 1.69.3
+## Latest: Version 1.70.1
 
 ### New features and enhancements
 
-This release does not include new features. 
+- Improved the look and feel of the exemptions page, and added information about the severity of the issue associated with exemptions and exemption requests. (STO-6592)
 
 ### Early access
+
+- Added support for Matrix pipelines to the pipeline execution results filters
+  
+  This fixes an issue in a feature behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-6405)
+
+### Fixed issues
+
+This release does not include any new fixes
+
+### Hotfixes
+
+This release does not include hotfixes. 
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Version 1.69.3
+
+##### New features and enhancements
+
+This release does not include new features. 
+
+##### Early access
 
 - This release includes the following UI enhancements for working with exemptions. (STO-6078)
 
@@ -39,20 +64,14 @@ This release does not include new features.
 
   These enhancements are behind the Feature Flag `STO_EXEMPTION_DETAILS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
 
-### Fixed issues
+##### Fixed issues
 
 - Occurrences page size longer resets on page update. (STO-6472)
 
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes. 
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 
 #### Version 1.68.0

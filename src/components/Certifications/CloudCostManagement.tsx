@@ -116,7 +116,7 @@ export default function CloudCostManagement() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Cloud Cost Management - Developer (BETA COMING SOON)</h2>
+                  <h2>Cloud Cost Management - Developer (BETA)</h2>
                   <img
                     src={`${baseUrl}img/cert_dev_ccm_badge.svg`}
                     alt="Harness Certified Expert - CCM Developer"
@@ -134,7 +134,7 @@ export default function CloudCostManagement() {
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="#3">
+                    <Link href="https://university.harness.io/betacertification-exam-harness-certified-cloud-cost-management-developer">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>

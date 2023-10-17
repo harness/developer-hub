@@ -53,6 +53,7 @@ For more information, go to [Vault documentation](https://www.vaultproject.io/
 Select the **Authentication** Type.
 
 ![](../../secrets/static/add-hashicorp-vault-20.png)
+
 ### Option: App Role
 
 The App Role option enables the Harness Vault Secret Manager to authenticate with Vault-defined roles.
@@ -244,15 +245,6 @@ If required by your organization's security practices, select the **Read-only V
 
 Once you have filled out the required fields, click **Finish**.
 
-<!-- 
-## Reference JSON secrets
-
-import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
-
-<Refj />
-
--->
-
 ##### Read-only Limitations
 
 If you select **Read-only Vault**, there are several limitations on the resulting Harness Vault Secret Manager.
@@ -274,3 +266,10 @@ Important: ​Harness tests connections by creating a dummy secret in the Secret
 The Test Connection fails if you do not have Create permission. However, Harness still creates the Connector for you. You may use this Connector to read secrets, if you have View permissions.
 
 :::
+
+### Reference JSON secrets
+
+import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
+
+<Refj />
+

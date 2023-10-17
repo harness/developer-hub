@@ -19,6 +19,20 @@ export const FeaturedList: CardItem[] = [
     time: "10min",
     link: "/tutorials/feature-flags/typescript-react",
   },
+  {
+    title: "Demystifying Trunk-Based Development",
+    module: MODULES.ff,
+    icon: "img/icon_ff.svg",
+    description: (
+      <>
+        Getting started with trunk-based development.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/feature-flags/getting-started/trunk-based-development",
+  },
 ];
 
 export const FFList: CardItem[] = [
@@ -38,18 +52,18 @@ export const FFList: CardItem[] = [
     link: "/tutorials/feature-flags/typescript-react",
   },
   {
-    title: "Using feature flags for trunk-based development",
+    title: "Demystifying Trunk-Based Development",
     module: MODULES.ff,
     icon: "img/icon_ff.svg",
     description: (
       <>
-        Achieve trunk-based development with feature flags so your team can ship code to production constantly.
+        Getting started with trunk-based development.
       </>
     ),
-    newDoc: false,
+    newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/feature-flags/trunk-based",
+    link: "/tutorials/feature-flags/getting-started/trunk-based-development",
   },
   {
     title: "Making flags resilient during a mobile browser refresh",
@@ -78,5 +92,19 @@ export const FFList: CardItem[] = [
     type: [docType.Documentation],
     time: "5min",
     link: "/tutorials/feature-flags/best-practices",
+  },
+  {
+    title: "Using feature flags for trunk-based development",
+    module: MODULES.ff,
+    icon: "img/icon_ff.svg",
+    description: (
+      <>
+        Achieve trunk-based development with feature flags so your team can ship code to production constantly.
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/feature-flags/trunk-based",
   },
 ];
