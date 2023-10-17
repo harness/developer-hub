@@ -66,15 +66,12 @@ Test Intelligence is available for:
 * Kotlin
 * Scala
 * C#
-   * Requires .NET Core or NUnit<!-- or Framework -->
+   * Requires .NET Core or NUnit.<!-- or Framework -->
    * Currently, TI for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. <!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](#build-environment) in the YAML editor. -->
 * Python
    * Requires Python 3.
-   * Doesn't support resource file relationships.
-   * Results can be unpredictable for repos using dynamic loading or metaclasses.
    * Currently, TI for Python is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 * Ruby
-   * Results can be inaccurate for repos using dynamically generated code or [Spring](https://github.com/rails/spring).
    * Currently, TI for Ruby is behind the feature flag `CI_RUBY_TI`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 For unsupported codebases, you can use [Run steps](../run-ci-scripts/run-step-settings.md) to run tests.
@@ -814,7 +811,7 @@ Or you can include additional flags, such as:
   <TabItem value="python" label="Python">
 ```
 
-**Build Arguments** are optional for Python. You can provide runtime arguments for tests, for example:
+**Build Arguments** are optional for Python. You can provide additional runtime arguments for tests, for example:
 
 ```yaml
                     args: "--junitxml=out_report.xml"
@@ -833,7 +830,7 @@ Or you can include additional flags, such as:
   <TabItem value="ruby" label="Ruby">
 ```
 
-**Build Arguments** are optional for Ruby. You can provide runtime arguments for tests, such as `--format RspecJunitFormatter --out tmp/junit.xml`.
+**Build Arguments** are optional for Ruby. You can provide additional runtime arguments for tests, such as `--format RspecJunitFormatter --out tmp/junit.xml`.
 
 ```mdx-code-block
   </TabItem>
@@ -1472,8 +1469,8 @@ For example, the following configuration in `pom.xml` removes `forkCount` and ap
 If you encounter errors with TI for Python, make sure you have met the following requirements:
 
 * Your project is written in Python 3, and your repo is a pure Python 3 repo.
-* You don't use resource file relationships. TI doesn't support resource file relationships.
-* You don't use dynamic loading and metaclasses. TI might miss tests or changes in repos that use dynamic loading or metaclasses.
+* You don't use resource file relationships. TI for Python doesn't support resource file relationships.
+* You don't use dynamic loading and metaclasses. TI for Python might miss tests or changes in repos that use dynamic loading or metaclasses.
 * Your [Build Tool](#build-tool) is pytest or unittest.
 * The Python 3 binary is preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or installed at runtime in [Pre-Command](#pre-command).
 * If you use another command, such as `python`, to invoke Python 3, you have added an alias, such as `python3 = "python"`.
@@ -1481,4 +1478,8 @@ If you encounter errors with TI for Python, make sure you have met the following
 If you get errors related to code coverage for Python:
 
 * If you included [Build Arguments](#build-arguments), these don't need coverage flags (`--cov` or `coverage`).
-* You don't need to install coverage tools in [Pre-Command](#pre-command). These are already included.
+* You don't need to install coverage tools in [Pre-Command](#pre-command).
+
+### Ruby
+
+Test Intelligence results can be inaccurate for Ruby repos using dynamically generated code or Rails apps using [Spring](https://github.com/rails/spring).
