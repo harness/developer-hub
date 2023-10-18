@@ -100,6 +100,7 @@ export const AdvList: CardItem[] = [
     description: (
       <>Create and use variable in CD pipelines.</>
     ),
+    newDoc: true,
     type: [docType.Documentation],
     time: "15min",
     link: "/tutorials/cd-pipelines/variables",
