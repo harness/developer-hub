@@ -421,6 +421,7 @@ kubectl delete service guestbook-ui -n default
 You've just learned how to use **Harness GitOps** to deploy an application using a Kubernetes manifest.
 
 #### What's Next?
+- Learn about [variables](tutorials/cd-pipelines/variables) and [pipeline triggers](/tutorials/cd-pipelines/trigger).
 - Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
@@ -1028,6 +1029,7 @@ You've just learned how to use Harness CD to deploy an application using a Kuber
 
 #### What's Next?
 
+- Learn about [variables](tutorials/cd-pipelines/variables) and [pipeline triggers](/tutorials/cd-pipelines/trigger).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
 ## How to deploy your own app by using Harness

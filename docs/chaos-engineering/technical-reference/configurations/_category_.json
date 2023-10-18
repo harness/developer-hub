@@ -1,0 +1,13 @@
+{
+  "position": 6,
+  "label": "Configurations",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Configurations"
+   },
+  "customProps": {
+    "description": "Chaos Custom Resources reference"
+  }
+}

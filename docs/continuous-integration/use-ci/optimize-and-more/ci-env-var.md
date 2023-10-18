@@ -1,7 +1,7 @@
 ---
 title: CI environment variables reference
 description: Learn about environment variables in Harness CI pipelines.
-sidebar_position: 5
+sidebar_position: 50
 ---
 
 This topic describes the Harness CI built-in environment variables<!--, particularly those prefixed by `DRONE_`, as well as some `HARNESS_` variables and other environment variables relevant to CI-->. These variables contain information about the build, such as how the build started, codebase information, build infrastructure, step identifiers, and more. These are [pipeline variables](/docs/platform/variables-and-expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline.

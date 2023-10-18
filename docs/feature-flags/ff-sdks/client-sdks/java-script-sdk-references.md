@@ -127,7 +127,6 @@ The below shows the data type for each parameter:
 interface Target {  
   identifier: string  
   name?: string  
-  anonymous?: boolean  
   attributes?: object  
 }
 ```

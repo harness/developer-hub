@@ -1640,3 +1640,271 @@ Harness uses a Service-based license model to charge Harness customers using its
 The CD License calculation uses the Active Services count and the number of Service Instances each active Service deployment creates.
 
 Please see the link for more details [https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd]
+
+#### Is there a way to tag the pipeline executions with specific values like release name in NG?
+
+Yes. Go to `Services > Summary > ENV GROUP > Instances` and see the release name. But, we tag entities not executions. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/references/tags-reference/)
+
+#### Is there a way to get Canary Deployments to deploy resources that aren't Kubernetes Deployments?
+
+No. The above feature on to manage cronjobs in next-gen is yet to come.
+
+#### Is there anyway to get what is already deployed in an env by script, step, built-in variable?
+
+There is no built-in variable or step that can directly provide information on what is already deployed in an environment.
+Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables)
+
+#### "Is there an equivalent option in NG for "Last Successfully Deployed" in triggers?"
+
+Yes. One can use the expression `<+lastPublished.tag> expression`. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#artifact-polling)
+
+#### Is there a way to interrogate artifact details in a shell script step for SSH use cases, enabling behavior modification in deployment, without transferring it to the end server first ?
+
+One can use command step to copy the artifact to the delegate  to inspect. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/)
+
+#### How many concurrent executions can one account accomplish ?
+
+We have a limit of 500 concurrent executions per account to avoid any issues.
+
+#### What is the interval between artifact version collection for perpetual task?
+
+It is `1 minute` for artifact collection and `2 minutes` for manifests in Next-gen.
+
+#### Is there a way to see YAML view in Service Overrides when version is 2.0?
+
+Please check if the Feature-Flag `CDS_SERVICE_OVERRIDES_2_0` is enabled for the account.
+
+#### Can the interval for the artifact version collection PT on the delegate be adjustable?
+
+No. Currently it is not configurable.
+### Is it possible to configure a Step Group to run on only a subset of the VMs in the infrastructure?
+
+No, it is not possible to configure a Step Group to run on only a subset of the VMs in the infrastructure. The VMs are grouped at the Environment/Infrastructure level and cannot be further restricted at the Step Group level. 
+
+You would need to apply the restriction at the Step level for each step that needs to run on a subset of the VMs.
+
+### Is it possible to create Stage Groups similar to Step Groups? If not how can I achieve a similar feature at the Stage Level?
+Currently, it is not possible to use  Stage Groups similar to Step Groups. However you can make use of chained pipelines to achieve your use case. More information on chained pipelines here: https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/ 
+
+### How to pass the Environment and Infrastructure Definition as a string as a runtime parameter?
+You can use the expression <+trigger.webhook.payload.ref> to get the branch name from the GitHub webhook payload and pass it as the Environment value. In your pipeline, go to the stage where you want to set the Environment value, click on the Environment dropdown, select Runtime Input, and then enter a name for the input. In the Value field, enter the expression <+trigger.webhook.payload.ref>. 
+ 
+This will dynamically set the Environment value to the branch name from the GitHub webhook payload.
+
+### We're moving from Bitbucket to GitHub. Are there any steps we need to take to migrate our pipelines from Bitbucket to GitHub?
+You can import a pipeline from your Bitbucket repo to Harness. To import a pipeline from Bitbucket to GitHub, you would need to create a new connector for GitHub and then import the pipeline from Bitbucket to harness once done use the move git option as shown below to move the imported pipeline to your GitHub. You can retire the old pipeline in Bitbucket after the migration.
+
+### When we specify a namespace, I notice that that namespace isn't being leveraged in the actual Apply step of the deployment.
+The namespace specified in the infrastructure should be used during apply. Any namespace in the entities in the manifest would take precedence over that, however.
+ 
+The manifest could also specify the namespace as a values.yaml reference. In an Apply step, you can override values.yaml and specify different namespaces for that particular Apply step.
+
+### Can you run a step or a stage when the pipeline is aborted?
+No, when a pipeline is aborted, the pipeline execution stops and the pipeline enters an aborted state. The status of the pipeline will be Aborted. 
+ 
+However, you can mark a specific stage as failed during pipeline execution by selecting the Mark Stage As Failed option. This lets you abort a step that is running and trigger a configured failure strategy after the step is aborted.
+
+### Is there any way to enforce the pipeline naming convention while creating or cloning the pipeline
+Currently, there is no built-in way to enforce pipeline naming conventions while creating or cloning pipelines in Harness. However, you can create a OPA policy that can be applied using the On Save event for a pipeline to enforce the naming convention. 
+ 
+The policy can check if the pipeline name matches the repo name and deny the pipeline creation if it doesn't match. More on OPA Policy here: https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/
+
+### Is it possible to configure a Step Group to run on only a subset of the VMs in the infrastructure?
+No, it is not possible to configure a Step Group to run on only a subset of the VMs in the infrastructure. The VMs are grouped at the Environment/Infrastructure level and cannot be further restricted at the Step Group level.
+
+### What are the differences between Native Helm Deployment in FirstGen and NextGen Harness?
+here are a few key differences between Native Helm Deployment in FirstGen and NextGen Harness:
+
+1. Versioning: Harness NextGen supports versioning of Helm deployments. This allows you to track changes to your deployments and roll back to previous versions if necessary. Harness FirstGen does not support versioning of Helm deployments.
+2. Rollback: Harness NextGen supports rollbacks of Helm deployments. This allows you to roll back to a previous version of your deployment if something goes wrong. Harness FirstGen does not support rollbacks of Helm deployments.
+3. Helm 3: Harness NextGen supports Helm 3. Harness FirstGen supports both Helm 2 and Helm 3.
+
+### Do I need to install Helm on the target cluster for Native Helm Deployment?
+No, you do not need to install Helm on the target cluster for Native Helm Deployment. Harness will install Helm on the target cluster for you.
+
+### How to delete/remove version in template?
+You can click on 3 dots(kebab menu) from the template library. Then click on the delete option then choose the version of the template you want to delete.
+
+### How to use the output from one stage in the looping strategy of another stage
+You can achieve this by following the steps documented here in this article: https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables
+
+### How can we use conditionals within variables using JEXL? 
+You can use Ternary operators to achieve this use case.
+
+### What do the fetch files step do in rollout deployment?
+The Fetch files task in the Rollout Deployment step leverages the GitHub connector configured in the service to fetch the manifests. Harness will also render and resolve any of the Harness variables defined in the values.yaml file of the service and add them to the manifest/Helm chart using Go/Helm templating. 
+
+Harness fetches any secrets referenced in the values.yaml file and resolves them in the manifest. Harness masks secret output in its logs.
+
+### How to get ECR image and tag information in the stage?
+You should be able to see the artifacts details in the service output of the execution, you can reference this value via expressions in the next stage.
+
+### How to pass values from CI of Pipeline A console logs to CD Pipeline of Pipeline B
+The only way you can achieve this is to store this first pipeline output variable in file store or in git config then you can pull the same in your pipeline B. There is no built-in variable to achieve this use case in Harness.
+
+### What type of file types does Harness File Store support and what is the limit of the filesize?
+Harness file storage supports various file types including tar, zip, txt, log, JSON, XML, and more. The file size limit for Harness file storage is 2GB per file.
+
+### How to store filesize like we have dump for around 3GB to 5GB in the Harness file store?
+If your dump file is between 3GB to 5GB, you may need to split it into multiple files before uploading to Harness file storage.
+
+### How to upload the files to Harness file storage using API?
+The Harness API supports uploading files to file storage. You can use the API endpoint /api/1.0/file-versions/upload to upload files to Harness file storage.
+
+### Is there a built-in Harness variable for the helm chart version in the pipeline?
+Yes, you can use the expression <+trigger.manifest.version> to have the new chart version that initiated the Trigger passed in as the version to deploy. This expression can reference the chart version in your pipeline stage steps.
+
+For non-trigger-based execution, you can use the expression <+manifests.MANIFEST_ID.helm.version> to reference the Helm chart version in your pipeline stage steps. The MANIFEST_ID is located in service.serviceDefinition.spec.manifests.manifest.identifier in the Harness service YAML. You can also use Harness variable expressions or runtime inputs to pass in the Helm chart version at execution.
+
+#### Is there an option to copy services/environments/connectors from one project to another.
+
+The easiest way for this would be to copy the yaml for the service/environment or connectors and create the service/env / connector in another project via yaml and paste and create it. But no direct way to copy it to another project. 
+
+#### Multiple deployment stages in my pipeline not able to see the previous stages console log in the second execution
+
+The execution not present when the pipeline is re-run is by design if the pipeline is re-run the older execution ID is purged along with the logs and only the current/latest logs are preserved.
+The selective execution of the stages in the pipeline, where the user can run specific stages of the pipeline, Just enable this setting under - Advanced options of the pipeline.
+
+#### Question about values yaml overrides, if we have multiple values yaml overrides for one service. Whats the order of applying then which one will be last? And is there a way to reorder them or I need to add them I right order from the beginning ?
+
+The last upload values yaml will take priority for override. 
+For example there are 3 over rides named a , b and c , values yaml will be applied in this order : 
+ 
+`go template manifest.yaml -f a.yaml -f b.yaml -f c.yaml`
+Unfortunately, there is no way to change/ arrange the order. You can remove and add them back as per above order.
+
+#### Variable substitution problem when moving from First Gen to Next Gen
+
+We might see errors around the variable substitution when moving them from First Gen to Next Gen, 
+It could be due to how we define variables in Next Gen as compared to First Gen.
+
+Harness expressions are identified using the <+...> syntax. For example, <+pipeline.name>.
+
+#### How to setup allowedvalue for entity reference
+
+Unfortunately, it won't work. These are supposed to be ENTITY types. This is by design. 
+In the entity type, you can't specify the allowed values. It's only for the Text, Email & Number type. The infradefinition is dependent field on the environment. Hence it will populate once you select the environment. 
+
+#### Save input sets on another git repository
+
+We have this feature but it needs to be enabled from the Account level Settings. 
+Go to Account Settings --> Account Resources --> Git Experience --> Allow different repo for Pipeline and InputSets, enable this and Now you can save the input set in different repo. 
+
+[documentation](https://developer.harness.io/docs/platform/git-experience/git-settings/#enforce-git-experience)
+
+#### Auto-Reject previous deployments paused in this step on approval
+
+If you have multiple services using this same pipeline template, both within and outside the same project, If both service1 and service2 in the same project are using this same pipeline and are sitting at the approval step. 
+As the template used here has been specified with different services at the runtime, so it will run independently. 
+
+#### Harness enabling auto deployment
+
+To have automatic deployment in Harness, you can make use of trigger On new artifact. 
+[documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-a-time-schedule/)
+As soon as your build is complete and it publishes a new artifact you can setup a trigger on that and it will trigger a Harness Deployment. 
+
+#### Sharing dashboard to a person who is not a Harness user
+
+The sharing option for the harness dashboard requires picking a specific user group within the harness itself along with different levels of access. So they will only have access to the dashboard and not a user who is not part of any group in harness.
+
+#### CDNG Notifications custom slack notifications
+
+ It is possible to create a shell script that sends notifications through Slack, in this case, we can refer to this article:
+
+ https://discuss.harness.io/t/custom-slack-notifications-using-shell-script/749
+
+#### How to delete a template version without deleting the template
+
+When you click on Delete Template option in the template , you will get all the version listed out and you will need to select the version to be deleted. 
+
+#### Is there a way to get all the services list present in harness along with their id's and other meta data via gql
+
+We have the API to get the services list based on ApplicationID. 
+ 
+https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-services-api#fetch-the-list-of-services-for-a-given-application
+
+```
+{  
+  services(  
+    filters: [  
+ { application: { operator: EQUALS, values: ["<applicationId>"] } }  
+ ]  
+    limit: 1000  
+  ) {  
+    pageInfo {  
+      total  
+    }  
+    nodes {  
+      id  
+      name  
+    }  
+  }  
+}
+```
+#### Creation of environment via API?
+
+We do support API's for the nextgen : https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2
+
+```
+curl -i -X POST \
+  'https://app.harness.io/ng/api/environmentsV2?accountIdentifier=string' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: YOUR_API_KEY_HERE' \
+  -d '{
+    "orgIdentifier": "string",
+    "projectIdentifier": "string",
+    "identifier": "string",
+    "tags": {
+      "property1": "string",
+      "property2": "string"
+    },
+    "name": "string",
+    "description": "string",
+    "color": "string",
+    "type": "PreProduction",
+    "yaml": "string"
+  }'
+```
+#### Question about new update to Services and Environments
+
+The v2 experience has more robust service and environment entities. V2 has service variables, independent infrastructure definitions, environment groups, and file and variable overrides.
+
+With v2, you'll notice a major reduction in the configuration included in pipelines. These changes are also reflected in the Harness APIs.
+
+All new deployment types (ECS, Deployment Template, SSH, WinRM, etc.) are available in v2 only. New innovations such as Enterprise GitOps, multi-services and multi-environments, and environment groups, are in v2 only.
+
+The new v2 experience has been designed to provided users and organizations with simpler configurations and an improved ability to scale.
+
+#### Deleting a Monitored Service
+
+You should see a Service Reliability module on your left panel. There you will see the monitored Services. You will need to delete the monitored service from here.
+
+#### How to enable additional failure strategies
+
+Once you click on Add under Failure strategies, you can select the timeout failure strategy by default It select All Errors and you can an action say Manual Intervention or another option.
+[Documentataion](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+
+#### Variables in NextGen from migration from First Gen to be used in Jira Approval step
+
+Triggered by <+deploymentTriggeredBy>
+This isn't a variable in Next Gen rather you should use : <+pipeline.triggeredBy.name>
+ 
+Branch: <+trigger.sourceBranch>
+PR Number: <+trigger.prNumber>
+PR Title: <+trigger.prTitle>
+These will not directly work in the Jira Approval step as it doesn't have any reference to the trigger and I am validating this internally on how can we print this information. 
+ 
+You can certainly use variables like  <+pipeline.stages.stagename.name> stagename is the name of your stage say for Deploy and that will resolve correctly to the values.
+ 
+ Artifact: <+artifact.displayName>
+ Artifact Description <+artifact.description>
+ Artifact Build Number: <+artifact.buildNo>
+ 
+These aren't the correct variables in NG.  Here are the correct variables: https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact 
+
+#### We have a pipeline that is configured to deploy a selected service based on input. There currently isn't a way to filter the list of Deployment executions by the selected service.
+
+If you want to specifically check the executions for a specific service. 
+You can do so by going to Service and then click on the service you want to see the executions for.
+Even under deployment, you can open the filter option and only enter service name and it will list all executions for the service.
+

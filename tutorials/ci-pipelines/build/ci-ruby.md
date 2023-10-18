@@ -239,6 +239,65 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 </Tabs>
 ```
 
+### Run tests with Test Intelligence
+
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) is available for Ruby; however, it is behind the feature flag `CI_RUBY_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) to run unit tests with Test Intelligence.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Harness Cloud" default>
+```
+
+```yaml
+              - step:
+                  type: Run Ruby Tests
+                  name: Run_Ruby_Tests
+                  identifier: Run_Ruby_Tests
+                  spec:
+                    language: Ruby
+                    buildTool: Rspec
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
+                    runOnlySelectedTests: true
+                    preCommand: bundle install
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - tmp/junit.xml
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Self-Hosted">
+```
+
+```yaml
+              - step:
+                  type: Run Ruby Tests
+                  name: Run_Ruby_Tests
+                  identifier: Run_Ruby_Tests
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: ruby:latest
+                    language: Ruby
+                    buildTool: Rspec
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
+                    runOnlySelectedTests: true
+                    preCommand: bundle install
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - tmp/junit.xml
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
 ## Specify version
 
 ```mdx-code-block

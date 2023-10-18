@@ -1032,3 +1032,276 @@ Yes, you can use the custom stage. This is a selection you can make initially wh
 
 With a custom stage, you do not need to define a service. This would be an ideal method of executing a shell or bash script step. 
 
+#### Is there a way to create delegate tokens via API calls in which we can do the API call for token creation and use in personalized way?
+
+Yes there is way to create delegate tokens via API calls, for details you can refer [here](https://apidocs.harness.io/tag/Delegate-Token-Resource#operation/createDelegateToken).
+
+#### Do harness support Worklaod identity federation for authentication?
+
+We support workload identify for Google Secret Manager.
+
+#### Can we use alphanumberic on the delegate names?
+
+Yes, you can use alphanumerics, but it should not start or end with a number.
+
+#### Can you give details about recent changes to Harness Self-Managed Enterprise Edition?
+
+Yes, you can refer to documentation [here](https://developer.harness.io/release-notes/self-managed-enterprise-edition/#self-managed-enterprise-edition).
+
+#### If we have a main pipeline linked to a chain pipeline, when main pipeline gets executed which pipeline settings has precedence? For eg. main pipeline has notifications set, pipeline timeout set and chain pipeline is a template pipeline with notifications set, pipeline timeout set.
+
+The notification/timeout settings for each entity will be honored as the pipeline progresses.
+
+#### Can we use expressions in tags in delegates in NG like they used custom selectors in delegates in CG?
+
+Yes, expression in delegate selections are supported. You can pass expression during delegate selection in pipeline. This will be resolved to the value of that variable. If that value is present as a tag in a delegate then that delegate will be selected.
+
+#### What could be possible reason of getting the error `Error: Rate limit reached for tasks with rank IMPORTANT. Current task count 5985 and max limit 5000`?
+
+This could happen when manager iterator is not running, there is a limit of 5000 delegate tasks at a time per account, but if iterator is not running, it will not get deleted automatically and this error arises.
+
+
+#### Whether we can limit our account/org access only to our users and not to Harness users (even read-only access)?
+
+This feature is currently available in CG, you can use `Restrict users to email domains` feature and only and set their email domain only. Also, there is a FF `LIMITED_ACCESS_FOR_HARNESS_USER_GROUP` which needs to be enabled.
+
+#### The user is blocked because of entry not cleared for his prod2 account from gateway, What could be possible steps to login?
+
+The user can directly login using deep link, https://app.harness.io/ng/account/AccountId/main-dashboard.
+
+#### The user is unable to log in, they're getting unable to log in with SSO when we have SSO enabled on the account.
+
+This is a very common scenario when users get this issue. The reason behind this is mostly that the User has signed up for a personal account or part of a different account that doesn't have the SSO enabled which is set as his default account. Hence User can log in using a username and password. If he has forgotten his password, he can always use the forgot password and then try to log in. 
+
+#### Not viewing the Allowlist option under the account
+
+The feature for allowlist is behind a Feature Flag PL_IP_ALLOWLIST_NG, kindly raise a ticket to get this enabled. 
+You can refer to this [documentation](https://developer.harness.io/docs/platform/security/add-manage-ip-allowlist/)
+
+#### Not able to setup/reset MFA
+
+When the 2FA is set as force enabled on the account level by an admin of the account. The users will have to setup the 2FA for their profile. 
+It can enabled by scanning the QR code sent in the email or using the secret key also sent in the same email using any authenticator app. 
+
+#### Issue decrypting secret from Harness Secret Manager
+
+When you are getting some errors for decryption of the secret in your pipeline. Always try to test the same secret using a shell script and try to print it.
+The secret will always be printed in encrypted ******* so you don't have to worry about the value been shown but it will make sure to isolate the issue further if the secret itself is having the issue or the way it is been referenced. 
+
+#### Issue while accessing other accounts when a user is part of multiple accounts.
+
+Sometimes, this might happen due to some edge case where a user is somehow unable to access his other account when he is part of multiple accounts as the login mechanism works for the default account. The user can still try to get to his account (not the default one) by using the deep link. The deep link is nothing  y the full URL of the account he wants to access : 
+https://app.harness.io/ng/account/**accountidhere**/main-dashboard
+
+#### How to disable a pipeline
+
+You can use the Deployment Freeze option :
+ 
+[documentation](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/)
+
+#### Slack Notifications are not working
+
+In case your Slack notifications are not working, you can start by troubleshooting and validating the webhook for Slack and then check how the notifications are configured at the pipeline level or user group level. 
+When executing the pipeline don't check the box for notifying only me. 
+
+#### Harness NG project admin permission after creating a project
+
+When you create a project using the API, by default the Project inherits the project admin permissions on creation from the Service Account where the API token was generated. 
+
+#### Harness API Token validity
+
+In Harness under Service Account when you create the token, the validity of the token depends on how the token was created. If you have specified the expiry date. In case you want the token to never expire you can set the expiration to No Expiration option. 
+
+#### Providing Access to Specific Pipelines in Harness
+
+You can make use of the RBAC [documentation](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)
+You can create a resource group and pick specific pipelines to have specific RBAC access to. 
+
+#### Not able to remove a pipeline
+
+In case of force deletion of Harness Resources : 
+Account resources --> Default Settings and then under General enable the "Enable Force Delete of Harness Resources
+and then try to delete the pipeline from Harness UI. This option is force deleted for entities. 
+
+#### VAULT operation error: Decryption failed after 3 retries for secret
+
+Someone times you see this error on the execution of the pipelines. We might have these errors due to the network the delegate is either down or has issues connecting to the Vault where the secret is created. The first thing is can do is validate the delegates are up and running go the connectors used in the pipelines and do a connectivity test. In case that fails then login to the delegate and try to reach the connector URL from the delegate.  
+
+#### Can old email be changed in user account
+
+If the Users are provisioned via SCIM then you can just update the email in the SSO provider end and they will get updated in Harness. 
+If the users were added manually you will need to remove them and add the new emails. 
+
+#### Problems enabling mTLS - Error [IOException: Unexpected response code for CONNECT: 403]
+
+When mTLS has been enabled for your delegates, you might see the 403 errors, this could be due to the proxy not resolving harness domain app.harness.io from the delegate. 
+
+#### I'm trying to confirm is that if I create a role at an account level with Administrator privileges. Then apply this to a particular resource group that only has scope for a specific Harness Organisation, won't this just provide admin access to this organization?
+
+The advised way to achieve your use case is to create user with minimal access at account level then add the same user at required organisation level with the admin access so that you can control user RBAC at org level scope.
+
+#### Changes identity provider to OKTA from some other provider
+
+This is the document which talks about OKTA SAML setup with Harness : [documentation](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/), 
+When you will be setting up a new OKTA SAML and then migrating your users to it,  You will need to setup the same with Harness as mentioned in the above document , as Harness needs the metadata XML file from OKTA with the configuration. 
+ 
+The permissions for Harness are managed by the User Groups present in Harness. In case of authorization, the user groups from SAML app are linked to Harness Local User groups. 
+
+#### Is there an easy way to see the de-factor roles/permissions assigned to a user
+
+You can view all permissions for a user by going to Access Control --> Search for the User click on it. Click on Role Bindings and you can see permissions for the user with the scope, All, Account, Organisation and Organisations with Projects in one place. 
+If you need to see the permissions inside of a role say Account Viewer or any custom-created role and same with Resource Group then you will always need to individually click on that specific role/ resource group as it's not shown on the user permission page. 
+ 
+We only show the Account/Project/Organisation level permissions with the role-resource group with where it is assigned at and assigned through in case of a User group or directly. 
+
+But you can view all of them together by selecting the scope to All instead of Individual. 
+
+#### I need to create an AWS Secrets Manager reference type secret. I am not sure how to accomplish it. Is the "secret_manager_identifier" for the AWS Secrets Manager secret name?
+
+The secret_manager_identifier will be the identifier if your AWS secret manager which you added in your Harness as a connector. 
+Also, The secrets need to be stored in the same scope of the secret manager. So for account secrets they will be stored in the account secret manager.
+
+#### RBAC for pipeline to hide few pipelines
+
+We don't have the hide pipeline functionality. 
+The way you can do this is to create a role and resource group with specific pipelines and assign it to the Users, the users can view the pipelines but will be able to execute them based on the Resource Group assignments. 
+
+#### Delegate Token behaviour
+
+Token revocation is done server side. We have a 20 minutes cache, so the delegate will be disconnected within 20 minutes of the token removal on the server side.
+The Token is used in heartbeat but is loaded at the delegate process startup. Changing the token delegate side requires a restart of the delegate process (cycle).
+
+#### How to view the secrets value stored in Harness Secrets Manager
+
+As the secrets stored in Harness are saved as encrypted hence you can't see the value for those secrets from the Harness UI. 
+There would be a tidy way to print it using a pipeline execution. 
+ 
+Create a shellscript execution , add 2 different shell script steps, do specify the same delegate selector. 
+In shell script 1 : 
+```
+echo "text secret is: " <+secrets.getValue("printsecret")> >> /tmp/abc.txt
+```
+Here printsecret is the secret name. 
+ 
+in 2nd shell script : 
+ ```
+cat /tmp/abc.txt
+ ```
+The first shell script will output like : 
+ ```
+text secret is: **************
+ ```
+but the second one will print the value for the secret : 
+``` 
+text secret is: hellohello
+ ```
+Also, if you try to do the cat in the first step it won't print the secret in plain text. 
+
+#### How can we forcibly disconnect a delegate and delete it as admin?
+
+As Harness Delegates are managed by customers in their own infrastructure, Harness doesn't have any control on it. 
+Harness can't control the delegates on your infrastructure. 
+ 
+In Harness's architecture, the delegates in your infrastructure connect to the Harness Manager :
+ 
+https://developer.harness.io/docs/getting-started/harness-platform-architecture/#harness-platform-components
+ 
+Hence you will need to stop the delegate service in your infrastructure. 
+
+There is another way to remove the delegate is, you will need to revoke the token used by the delegate and it will get disconnected and then auto-deleted in 7 days.
+
+#### Is there a limit to the number of pipelines a project can have? What is the character limit on pipeline names?
+
+We have no limit for pipeline creation. 
+But the pipeline name character limit is 128 characters. 
+
+#### Data Deletion handling for exiting customers
+
+The process is simple when a customer account expires or leaves/churns/offboards. All the data for the customer is cleaned up after the expiry or churn/offboarding.
+
+#### Delegate disconnected status in the API
+
+```
+{delegateList(filters: [{accountId: "xxxxx"}], limit: 10) {
+
+    nodes {
+      delegateName
+      ip
+      status 
+      disconnected
+      version
+      hostName
+      lastHeartBeat
+     }
+   }
+ }
+```
+
+#### How to deploy Delegate in Amazon ECS for Harness NG
+
+The Harness Delegate is a software that gets installed in your environment which connects to Harness Manager and performs Continuous Delivery/Continuous Integration tasks.
+In the Harness NextGen, ECS delegate can be deployed as a docker delegate both for ECS and ECS Fargate. This tutorial shows you how to install the Harness Delegate in an ECS cluster as an ECS service to enable the Delegate to connect to your AWS resources.
+
+https://discuss.harness.io/t/how-to-deploy-delegate-in-amazon-ecs-for-harness-ng/13056
+
+#### I use a Slack bot to send messages about test job results. I couldn't find a variable for job URL
+
+For the pipeline execution URL: <+pipeline.execution.url>
+ 
+https://docs.harness.io/article/lml71vhsim-harness-variables#pipeline_execution_url
+
+#### Harness Hosted Gitops IP Address
+
+Access to Kubernetes clusters that are behind strict firewalls and are not accessible from the public internet is controlled through authorized IP addresses. To allow access to these clusters, Harness provides a list of IP addresses that need to be configured on the clusters.
+
+https://developer.harness.io/docs/continuous-delivery/gitops/gitops-ref/gitops-allowlist/
+
+#### Info of connected delegate when it's started connected to Harness
+
+The delegate initiates communication on its startup to the Harness Platform. There is also a heartbeat connection every 60 seconds from the delegate to the delegate harness to notify that it is running.
+
+#### Understand the logic behind the six-letter account identifier that Harness uses while creating the delegate
+
+This identifier refers to your account, without this, we don't know how to link old pod lifecycles and new ones, hence we will treat them differently as pod names and pod IPs change. 
+
+#### How Vault agent secret manager actually works with vault
+
+The below article talks about how secret manager works with vault :
+
+https://discuss.harness.io/t/vault-how-to-use-the-new-vault-agent-integration-method-with-harness/784
+
+#### How Harness is able to prevent tampering of artifacts and instructions from the customer infrastructure. Sounds like TLS is used, but what specific integrity checking approach is used to check instructions are not changed in flight?
+
+Details below for the protection details for the below Artifact Sources :
+ 
+Related to SSH/WinRm NG
+ 
+Artifactory
+For downloading artifacts from Artifactory to delegate, we are using org.jfrog.artifactory.client:artifactory-java-client-api:jar:2.9.1
+This is the maven repo : https://mvnrepository.com/artifact/org.jfrog.artifactory.client/artifactory-java-client-services/2.9.1 and we see that there are reported vulnerabilities for this lib version. We are working on updating the above lib to the version without vulnerabilities and we will be secure. If Artifactory URL is https, the calls are secure with TLS
+ 
+AWS S3
+For downloading artifacts from AWS S3 to delegate, we are using com.amazonaws:aws-java-sdk-s3:1.12.261 
+We don't see any reported vulnerabilities : https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3/1.12.261 we are secure.
+AWS SDK makes HTTP calls in a secure way using TLS
+ 
+Azure
+For downloading artifacts from Azure to delegate, we are using okhttp-4.9.2.jar, we see there are reported vulnerabilities and we are working to update this lib : https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp/4.9.2
+One note here is that updating this lib will be a long significant process which could last more weeks.
+ 
+Jenkins
+For downloading artifacts from Jenkins to delegate, we are using com.offbytwo.jenkins:jenkins-client:0.3.9,
+Can't find any info related to vulnerabilities.
+ 
+Nexus
+For downloading artifacts from Nexus to delegate, we are using javax.net.ssl.HttpsURLConnection from Java SDK.
+When downloading artifacts we are using SSL and we are secure here.
+ 
+Artifacts will be downloaded on the delegate and it should be safe if the network where delegates are running is secure.
+ 
+One note here, the chosen cipher suits depend on the remote server. During the SSL handshake the “server hello” message contains the Cipher suite chosen by the server from the list provided by the client (our side).
+
+ 
+
+
+ 

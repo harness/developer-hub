@@ -56,7 +56,7 @@ Go has built-in code coverage functionality.
 ### Java
 
 1. Set up a Java code coverage tool, such as [JaCoCo](https://github.com/jacoco/jacoco). By including JaCoCo in `pom.xml`, the `mvn test` command automatically writes a code coverage report to an `exec` file.
-2. Run your tests in a **Run** or **Run Tests** step, for example:
+2. Run your tests in a **Run** step, for example:
 
    ```yaml
                    - step:
@@ -153,12 +153,6 @@ The built-in [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool can ge
 
 Use these steps to install code coverage tools when you run Python tests in **Run** steps.
 
-:::info Coverage in Run Tests steps
-
-You don't need to install coverage tools when using **Run Tests** steps. With [Test Intelligence for Python](./set-up-test-intelligence.md), coverage is inherent in the **Run Tests** step, and Harness automatically installs coverage tools if they aren't already available. If you install a coverage tool, Harness uses the version you install instead of the included version.
-
-:::
-
 1. Install a Python code coverage tool, such as [Coverage.py](https://coverage.readthedocs.io/en/latest/). Depending on your build infrastructure, you can install this directly on the host machine or use a **Run** step to set up the test environment at runtime.
 
    ```yaml
@@ -179,8 +173,8 @@ You don't need to install coverage tools when using **Run Tests** steps. With [T
    ```yaml
              - step:
                  type: Run
-                 identifier: runtests
-                 name: Run Tests
+                 identifier: run pytest
+                 name: Run pytest
                  spec:
                    command: |
                      coverage run -m pytest --junit-xml=report.xml
@@ -204,6 +198,8 @@ You don't need to install coverage tools when using **Run Tests** steps. With [T
 4. Add a step to [view your code coverage report on the Artifacts tab](#view-code-coverage-reports-on-the-artifacts-tab).
 
 ### Ruby
+
+Use these steps to install code coverage tools when you run Ruby tests in **Run** steps.
 
 1. Set up a Ruby code coverage tool, such as [SimpleCov](https://github.com/simplecov-ruby/simplecov).
 2. Run your tests in a **Run** step.
