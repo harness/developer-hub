@@ -332,73 +332,20 @@ You can obtain the expression by copying it from the executed step **Outputs**.
 
 You can use the expression in a Shell Script step to output the JSON template.
 
-Do not echo the expression. The template is multiline and contains special characters and this can cause issues with echo.
+Do not echo the expression. The template is multiline json and contains special characters and this can cause issues with echo.
 
-Instead, cat the expression, like this:
+You can assign the value to a variable like this:
 
 <details>
 <summary>Using cat with the JSON template expression</summary>
 
-```json
-stackOnetemplate=json=$(cat <<-END
-"<+pipeline.stages.test.spec.execution.steps.test.steps.AwsCdkSynth.output.outputVariables.get("cdkTest1stack1.template.json")>"
+
+stackOnetemplate=$(cat <<-END
+"<+pipeline.stages.test.spec.execution.steps.test.steps.AwsCdkSynth.output.outputVariables.cdkTest1stack1>"
 END
 )
 
-stackTwotemplate=$(cat <<-END
-"<+pipeline.stages.test.spec.execution.steps.test.steps.AwsCdkSynth.output.outputVariables.get("cdkTest1stack2.template.json")>"
-END
-)
 
-echo $stackOnetemplate
-echo $stackTwotemplate
-
-if [[ $stackOnetemplate =~ "\"Default\": \"defaultSecretNameStack1\"" ]]; 
-then
-   echo "cdkTest1stack1.template.json validated"
-else 
-   echo "cdkTest1stack1.template.json not validated"
-   exit 1
-fi
-
-if [[ $stackTwotemplate =~ "\"Default\": \"defaultSecretNameStack2\"" ]]; 
-then
-   echo "cdkTest1stack2.template.json validated"
-else 
-   echo "cdkTest1stack2.template.json not validated"
-   exit 1
-fi
-
-deployOutput="<+pipeline.stages.test.spec.execution.steps.test.steps.AwsCdkDeploy_1.output.outputVariables.CDK_OUTPUT>"
-echo $deployOutput
-
-if [[ $deployOutput =~ "stackOneSecretNameAhOqGfAp09" ]]; 
-then
-   echo "stackOneSecretName validated"
-else 
-   echo "stackOneSecretName not validated"
-   exit 1
-fi
-
-if [[ $deployOutput =~ "stackTwoSecretNametrGWY0Rh6J" ]]; 
-then
-   echo "stackTwoSecretName validated"
-else 
-   echo "stackTwoSecretName not validated"
-   exit 1
-fi
-
-commitId="<+pipeline.stages.test.spec.execution.steps.test.steps.AwsCdkDeploy_1.output.outputVariables.GIT_COMMIT_ID>"
-echo $commitId
-
-if [ ! -z "$commitId" -a "$commitId" != " " ]; 
-then
-   echo "commitId validated"
-else
-   echo "commitId  not validated"
-   exit 1
-fi
-```
 
 </details>
 
