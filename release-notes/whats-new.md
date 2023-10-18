@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-10-16T10:00
+date: 2023-10-18T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -20,11 +20,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: October 16, 2023
+## Latest: October 19, 2023
 
 ### Service Reliability Management, version 1.4.x
 
-- On the SLO Details page, you can now view the count of contributing SLOs for composite SLOs. This enhancement simplifies the management of composite SLOs. (SRM-15825)
+- On the SLO Details page, you can now view the count of contributing SLOs for composite SLOs. This enhancement simplifies the management of composite SLOs. (SRM-15825)## Latest: October 18, 2023
+
+## October 16, 2023
+
+### Continuous Integration, version 6203
+
+You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#enable-parallelism-test-splitting-for-test-intelligence) in the Visual editor as well as the YAML editor. (CI-9618)
 
 
 ## October 16, 2023
@@ -86,7 +92,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
    ---
    ```
 
-- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
+- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
 
    This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
