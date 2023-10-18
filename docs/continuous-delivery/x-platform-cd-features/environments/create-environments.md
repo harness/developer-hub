@@ -397,7 +397,7 @@ You can also propagate services between stages. For more information, go to [Pro
 - In a pipeline's **Advanced Options**, in **Stage Execution Settings**, you can set up selective stage executions. This allows you to select which stages to deploy at runtime.
   - If you select a stage that uses a propagated environment (a child environment), that stage will not work. This is because the parent environment's settings must be resolved as part of the deployment. 
 - When propagation is set up between a parent stage and child stage, moving the parent or child stage out of sequence resets any propagated settings to their defaults. If you do this, you are prompted to confirm. If you confirm, the stages are reset to their defaults.
-- Nested environment propagation is not supported. You cannot propagate environment from a stage which also propagates environment from another stage. 
+- You cannot propagate environment from a stage which also propagates environment from another stage. 
   
   ![picture 0](static/549cc1f4f053eef2eea982d3b96e9ce3aff89dc0103a89636e79534a53cc2d49.png)  
 
