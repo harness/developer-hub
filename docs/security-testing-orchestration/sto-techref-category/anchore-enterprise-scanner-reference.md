@@ -256,9 +256,9 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 -->
 
+<!-- TBD
 ## YAML pipeline example
 
-<!-- TBD
 
 It's good practice to include an example pipeline with a screenshot of the component steps and the pipeline YAML example
 
