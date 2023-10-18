@@ -10,17 +10,9 @@ The general recommendation is to use IaC whenever possible for creating these ex
 
 ![](../static/ccm-onboarding-aws.png)
 
-Accounts in AWS are structured via organizations. The first step is to [create a CUR](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur) (Cost Usage Report) in the master payer account in their AWS org (or in every AWS account you want costs for if you do not leverage AWS organizations). Once the CUR is created, we will create an initial Harness AWS account connector tied to the master account that points to the CUR.
+Accounts in AWS are structured via organizations. The first step is to [create a CUR](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur) (Cost Usage Report) in the master payer account in their AWS org (or in every AWS account you want costs for if you do not leverage AWS organizations). Once the CUR is created, we will need to create a role that trusts Harness' AWS account, and has access to the S3 bucket that the CUR resides in.
 
-When configuring the AWS connector you are asked what features to enable. Usually (if following AWS best practices) there shouldn't be any other resources in the master account. This means we can usually only enable cost access for this account and not the others. If the customer still wants, you can enable the other features as needed.
-
-The connector wizard then hands you a cloud formation stack that defines what is needed. This involves an AWS role that has access to the S3 bucket for the CUR that trusts our Harness-owned AWS account with an external ID. The stack makes you enable each feature again via inputs to the stack. Once deployed it takes about a day for cost data to be flowing into Harness.
-
-You may need to adjust the S3 bucket policy to allow the newly created Harness IAM role to read objects in the bucket.
-
-[Read an in-depth article here on setting up your first AWS CCM connector.](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
-
-We optionally have a [terraform module](https://github.com/harness-community/terraform-aws-harness-ccm) that accomplishes the same goal as the cloudformation template if terraform is your preferred IaC.
+There is a cloudformation template to provision this role, or a Terraform module. [The cloudformation stack is located here](https://github.com/harness/harness-core/blob/develop/ce-nextgen/awstemplate/prod/HarnessAWSTemplate.yaml), and the [Terraform module here](https://github.com/harness-community/terraform-aws-harness-ccm).
 
 ```terraform
 module "ccm" {
@@ -38,9 +30,19 @@ module "ccm" {
 }
 ```
 
-After the master payer account, we need to provision the same harness role into all of the member accounts. Your platform teams will have their preferred way to do this but you can re-use the same cloud formation or terraform used on the master account, just leaving the “billing” feature set to false as this access is not needed in member accounts.
+If you are creating the CUR in a master account it is likely that you do not have other resources located in your account. If so you can just set `BillingEnabled` to true, and leave the other `Enabled` parameters set to false. If you do otherwise have resources in your billing account, you can optionally enable the other features as well.
 
-The next step is to create Harness AWS account connectors for each child account in AWS. Depending on your environment this could mean 10-100s of accounts. It is recommended that you use the [terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_awscc) to do this at scale. You will need to note the role name you use when you create the role in the member accounts.
+Leave `PrincipalBilling` set to its default, change the `RoleName` as you see fit, set `BucketName` to the bucket where the CUR is being sent, and finally enter an `ExternalId`. The external id should follow the format `harness:891928451355:<string here>`. You can make the string anything you want, but the default recommended by Harness is to use your Harness account id.
+
+After the stack or module has been deployed, we can create the corresponding CCM AWS connector in your Harness account.
+
+[Read an in-depth article here on setting up your first AWS CCM connector.](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
+
+When configuring the CCM AWS connector in the UI you are asked what features to enable, you should enable the same features here as you enabled in the stack/module.
+
+The connector wizard then hands you a cloud formation stack that defines what is needed, this should have already been deployed so you can just continue to the next step.
+
+If you chose to use IaC to create your connectors, you can use terraform to accomplish the same configuration in code:
 
 ```terraform
 resource "harness_platform_connector_awscc" "master" {
@@ -55,10 +57,18 @@ resource "harness_platform_connector_awscc" "master" {
   ]
   cross_account_access {
     role_arn    = "arn:aws:iam::012345678901:role/HarnessCERole"
-    external_id = "harness:867530900000:sdjfhewfhsddfjw"
+    external_id = "harness:867530900000:myharnessaccountid"
   }
 }
+```
 
+Once created it takes about a day for cost data to be flowing into Harness.
+
+**You may need to adjust the S3 bucket policy to allow the newly created Harness IAM role to read objects in the bucket.**
+
+After the master payer account, we need to provision the same harness role (via the same stack/module) into all of the member accounts to be able to retrieve the account names, recommendations, inventory, and create autostopping rules. Because the scale of AWS organizations can be large, we recommend using IaC for this.
+
+```terraform
 resource "harness_platform_connector_awscc" "member1" {
   identifier = "member1"
   name       = "member1"
@@ -70,12 +80,12 @@ resource "harness_platform_connector_awscc" "member1" {
   ]
   cross_account_access {
     role_arn    = "arn:aws:iam::012345678902:role/HarnessCERole"
-    external_id = "harness:867530900000:sdjfhewfhsddfjw"
+    external_id = "harness:867530900000:myharnessaccountid"
   }
 }
 ```
 
-Repeat the above step for all master payers (organizations) and accounts that the customer has.
+Repeat the above step for all master payers (organizations) and accounts you have.
 
 ### Recommendations
 
