@@ -12,6 +12,8 @@ helpdocs_is_published: true
 
 Scorecards play a pivotal role in ensuring software components are developed and utilized while adhering to organizational and industry standards. They provide a quantifiable measure of software maturity and adherence to best practices, thereby aiding developers in enhancing quality and assisting teams in making informed decisions regarding software adoption.
 
+<docvideo src="https://www.youtube.com/embed/jvLDdWS3rFE?si=MBalzaKnDnr4p4QV" />
+
 <docimage path={require('../../internal-developer-portal/features/static/scorecard.png')}/>
 
 <details>
