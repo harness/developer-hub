@@ -393,7 +393,7 @@ If your CI build gets stuck at the initialize step on the health check for conne
 2. If lite-engine is running, verify that the runner can communicate with lite-engine from the delegate VM.
    1. Run `nc -vz <build-vm-ip> 9079` from the runner.
    2. If the status is not successful, make sure the security group settings in `runner/pool.yml` are correct, and make sure your [security group setup](#vpc-ports-and-security-groups) in AWS allows the runner to communicate with the build VMs.
-   3. Make sure there are no firewall or anti-malware restrictions on your AMI that are interfering with the cloud init script's ability to download necessary dependencies. For details about these dependencies, go to [What does the runner do](#what-does-the-runner-do).
+   3. Make sure there are no firewall or anti-malware restrictions on your AMI that are interfering with the cloud init script's ability to download necessary dependencies. For details about these dependencies, go to [Start the runner](#start-the-runner).
 
 ### Delegate connected but builds fail
 
