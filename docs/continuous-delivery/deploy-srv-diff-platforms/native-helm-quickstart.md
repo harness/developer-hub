@@ -283,6 +283,17 @@ The **Release name** setting in the stage **Infrastructure** is used as the Helm
 
 ![](./static/native-helm-quickstart-154.png)
 
+### Harness auto detecting Helm Chart without configuring Release Name
+
+:::note
+This feature is currently behind the feature flag, `CDS_IMPROVED_HELM_DEPLOYMENT_TRACKING`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+:::
+
+When the users want to deploy a commodity Helm Chart (ElasticSearch, Prometheus, etc.) or a pre-packaged Helm Chart, Harness now automatically applies tracking labels to the deployed Helm service. Users do not need to add {{Release.Name}} to their Helm Chart. Harness will be able to track the deployed Helm Chart in the Service Dashboard. All the Chart information will also be available to view in the Service Dashboard as well. 
+
+This feature will be available for users on Delegate version 810xx. Please ensure the delegate is up to date before opting into this feature.
+
+
 ## Native Helm notes
 
 Please review the following notes.
