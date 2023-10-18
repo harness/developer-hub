@@ -741,7 +741,7 @@ array=($added $removed $modified)
 for element in "${array[@]}"; do
     echo "$element"
 done
-``
+```
 
 #### What rate limiting policy does Harness employ for API requests?
 
@@ -1235,6 +1235,7 @@ The process is simple when a customer account expires or leaves/churns/offboards
      }
    }
  }
+
 ```
 
 #### How to deploy Delegate in Amazon ECS for Harness NG
@@ -1301,7 +1302,16 @@ Artifacts will be downloaded on the delegate and it should be safe if the networ
  
 One note here, the chosen cipher suits depend on the remote server. During the SSL handshake the “server hello” message contains the Cipher suite chosen by the server from the list provided by the client (our side).
 
- 
 
+#### How do I make config changes to increase memory consumption in a delegate YAML?
 
- 
+You will have to make config changes in your delegate YAML to increase memory consumption. This can be done by setting the value in JAVA_OPTS to increase the Xmx value
+
+#### What is the Xmx value in the JAVA_OPTS setting?
+
+The Xmx value is a parameter used to specify the maximum heap size for a Java virtual machine (JVM) when running a Java application. It determines the amount of memory the application can use for its operations.
+
+```
+name: JAVA_OPTS
+value: "-Xms64M -Xmx8192M"
+```
