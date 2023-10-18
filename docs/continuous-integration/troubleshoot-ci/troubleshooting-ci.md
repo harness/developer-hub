@@ -70,11 +70,15 @@ For more information about self-signed certificates, delegates, and delegate env
 
 For troubleshooting information related to cloning codebases, go to [Create and configure a codebase - Troubleshooting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#troubleshooting).
 
+## Output variable length limit
+
+If an output variable's length is greater than 64KB, then the step fails. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts).
+
 ## Truncated execution logs
 
-Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB.
+Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB. If necessary, you can [export full logs](#export-full-logs).
 
-Furthermore, there is a single-line limit of 70KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`.
+Furthermore, there is a single-line limit of 25KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`.
 
 ### Export full logs
 

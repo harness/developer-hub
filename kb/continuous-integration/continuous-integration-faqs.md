@@ -77,7 +77,9 @@ For information about images that Harness CI uses to execute builds, including h
 
 #### Does Harness limit the length of a log line?
 
-Yes, Harness has a limit of 70KB on the line length in the CI client which writes to log service. If you need to extract long log lines, include a Run step in your pipeline that writes the logs to a file and uploads the file as an artifact. For more information, go to [Troubleshoot CI: Truncated execution logs](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#truncated-execution-logs).
+Yes, there is a single-line limit of 25KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`. Furthermore, there is an overall log limit of 5MB per step. Harness truncates logs larger than 5MB.
+
+If you need to extract long log lines or logs larger than 5MB, include a Run step in your pipeline that writes the logs to a file and uploads the file as an artifact. For more information, go to [Troubleshoot CI: Truncated execution logs](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#truncated-execution-logs).
 
 #### Is there a way to generate a dynamic file with some information in one stage of the pipeline and consume that file content in a different pipeline stage?
 
