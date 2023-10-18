@@ -16,7 +16,27 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### Latest: Version 81009
+### Latest: Version 812xx
+
+#### New features and enhancements
+
+- We have enabled the link to the delegate selection log for all Continuous Integration (CI) execute and clean-up steps. This log displays important information such as the assigned delegate, the number of times the task was broadcast to the delegate, and when the task was assigned to the delegate. (PL-41786)
+
+   This item is available with Harness Platform version 812xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
+
+This release does not include fixed issues.
+
+#### Hotfixes
+
+This release does not include hotfixes.
+
+### Version 81009
 
 #### New features and enhancements
 

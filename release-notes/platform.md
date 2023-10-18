@@ -30,9 +30,45 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## Latest: Version 81008
+## Latest: Version 812xx
 
 ### New features and enhancements
+
+- Upgraded the `grpc-protobuf` library from version 1.50.1 to 1.58.0.
+ to resolve CVE-2023-32732. (PL-41147)
+
+- You can now use Open ID Connect (OIDC) authentication to create a GCP connector. (PL-41304)
+
+- The current [List User Groups by filter API](https://apidocs.harness.io/tag/User-Group/#operation/getBatchUsersGroupList) has a response limit of 10,000 documents. To improve the user experience, we have introduced a new API called Get filtered User Groups (`getFilteredUserGroupsList`) that provides both pagination and filter support for fetched user groups. (PL-41382)
+
+- Upgraded the `org.codehaus.plexus_plexus-utils` library from version 3.0.20 to 4.0.0 to resolve CVE-2022-4244. (PL-41727)
+
+- Upgraded the `yq` library from version 4.35.1 to 4.35.2. (PL-41729)
+
+- Upgraded the `go` library from version 1.21.0 to 1.21.1 to resolve multiple CVEs. (PL-41831)
+
+- Upgraded the `org.eclipse.jetty_jetty-http` library to version 9.4.53.v20231009 to resolve CVE-2023-36478. (PL-41903)
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+This release does not include fixed issues.
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 16, 2023, Version 81008
+
+##### New features and enhancements
 
 - The HPA configuration setting is now included in the default Kubernetes delegate YAML file. (PL-36021)
 
@@ -68,17 +104,11 @@ The following deprecated API endpoints will no longer be supported:
 
    This item is available with Harness Platform version 81008 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-<!-- 
-- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-40247, ZD-48280)
-
-   This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
--->
-
-### Early access features
+##### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+##### Fixed issues
 
 - Previously, there was an issue where users who were initially invited through email and later through SCIM were not being added. This issue has now been resolved. Harness has implemented a fix to automatically delete the initial email invite and ensure that SCIM invites are valid even if an email invite was already sent. (PL-41114)
 
@@ -88,14 +118,9 @@ This release does not include early access features.
 
 - Fixed an issue that paused renewal for HashiCorp vaults after renewal attempts failed twice. (PL-41577)
  
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### Version 80909
 
