@@ -135,7 +135,7 @@ For more information about GitHub's deprecation of RSA support, go to the GitHub
 
 ## Connectivity Mode settings
 
-Select whether you want Harness to connect directly to your Git account or repo, or if you want Harness to communicate with your Git account or repo through a delegate.
+Select whether you want Harness to connect directly to your Git account or repo, or if you want Harness to communicate with your Git account or repo through a delegate. If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you must select **Connect through Harness Platform**.
 
 ### Delegates Setup
 

@@ -137,6 +137,17 @@ If a build that uses Gradle experiences out of memory errors, add the following 
 
 Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
 
+## Connector delegate error with Harness Cloud build infrastructure
+
+Connectors that you use with the Harness Cloud build infrastructure must connect through the Harness Platform. To change the connector's connectivity mode:
+
+1. Go to the **Connectors** page at the account, organization, or project scope. For example, to edit account-level connectors, go to **Account Settings**, select **Account Resources**, and then select **Connectors**.
+2. Select the connector that you want to edit.
+3. Select **Edit Details**.
+4. Select **Continue** until you reach **Select Connectivity Mode**.
+5. Select **Change** and select **Connect through Harness Platform**.
+6. Select **Save and Continue** and select **Finish**.
+
 ## Can't use the built-in Harness Docker Connector with Harness Cloud build infrastructure
 
 Depending on when your account was created, the built-in **Harness Docker Connector** (`account.harnessImage`) might be configured to connect through a Harness Delegate instead of the Harness Platform. In this case, attempting to use this connector with Harness Cloud build infrastructure generates the following error:
