@@ -98,7 +98,7 @@ export const AdvList: CardItem[] = [
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
     description: (
-      <>Create and use variable in CD pipelines.</>
+      <>Create and use variables in CD pipelines.</>
     ),
     newDoc: true,
     type: [docType.Documentation],
@@ -140,7 +140,6 @@ export const AdvList: CardItem[] = [
         pipeline.
       </>
     ),
-    newDoc: true,
     type: [docType.Documentation],
     time: "20min",
     link: "/tutorials/cd-pipelines/approvals",
