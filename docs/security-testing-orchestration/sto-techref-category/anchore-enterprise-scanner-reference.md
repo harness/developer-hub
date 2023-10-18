@@ -233,7 +233,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 	+ `product_access_id`
 	+ `product_access_token`
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `dataLoad`:
-	+ `product_image_name`
+	+ `product_image_n`
 * `product_config_name` = `default`
 
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
@@ -248,7 +248,6 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
--->
 
 <!-- TBD
 ## YAML pipeline example
