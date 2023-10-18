@@ -168,14 +168,6 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-<!-- TBD 
-
-Not sure if there are any CLI flags that we want to document...also not sure if thiis is the correct doc page to link to. See this section for how we document this in Checkmarx:
-
-https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference#additional-cli-flags
-
--->
-
 You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/current/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` = `--force`.  
 
 
@@ -240,6 +232,8 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 	+ `product_domain`
 	+ `product_access_id`
 	+ `product_access_token`
+* When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `dataLoad`:
+	+ `product_image_name`
 * `product_config_name` = `default`
 
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
