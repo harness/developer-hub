@@ -28,13 +28,13 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80810, Harness Delegate version 23.09.80804
+## Latest: Harness version 81009, Harness Delegate version 23.10.81010
 
-Harness FirstGen release 80810 includes the following changes for the Harness Delegate.
+Harness FirstGen release 81009 includes the following changes for the Harness Delegate.
 
 ### New features and enhancements
 
-This release does not include new features or enhancements.
+- Added support for referencing JSON secret keys with dots at the top level. Nested keys with dots are not supported. (PL-41715, ZD-51757)
 
 ### Early access features
 
@@ -42,7 +42,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-- You can no longer update `DelegateIP` or `DelegateName` using the delegate update API. (PL-40795, ZD-44419)
+- OAuth sign-up emails were stored without being converted to lowercase. This caused duplicate emails in Harness with different cases. The issue was fixed by storing OAuth sign-up emails with lowercase. (PL-39331, ZD-47425)
 
 ### Hotfixes
 
@@ -52,6 +52,26 @@ This release does not include hotfixes.
 
 <details>
 <summary>2023 releases</summary>
+
+#### Harness version 80810, Harness Delegate version 23.09.80804
+
+Harness FirstGen release 80810 includes the following changes for the Harness Delegate.
+
+##### New features and enhancements
+
+This release does not include new features or enhancements.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues
+
+- You can no longer update `DelegateIP` or `DelegateName` using the delegate update API. (PL-40795, ZD-44419)
+
+### Hotfixes
+
+This release does not include hotfixes.
 
 #### Harness version 80504, Harness Delegate version 23.09.80505
 

@@ -49,7 +49,7 @@ If you don't want the Harness Delegate to pull images anonymously, you can use c
 
 ### I don't want to pull images from a public registry
 
-Harness CI images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can download the images to your own private registry, [specify the images that you want Harness to use](#specify-the-harness-ci-images-used-in-your-pipelines), and then configure a Docker connector to pull the images from your private registry. For an example demonstrating how to do this, go to [Configure STO to download images from a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+Harness CI images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can pull Harness images from your own private registry. For instructions on each of these options, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md).
 
 ### Docker Hub rate limiting
 
@@ -79,7 +79,7 @@ API key authentication is required. For more information about API keys, go to [
 1. Send a `get-default-config` request to get a list of the latest Harness CI build images and tags. You can use the `infra` parameter to get `k8` images or `VM` images.
 
    ```
-   curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-default-config?infra=K8" \
+   curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-default-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
    --header 'X-API-KEY: $API_KEY'
    ```
 
@@ -110,7 +110,7 @@ API key authentication is required. For more information about API keys, go to [
 2. Send a `get-customer-config` request to get the build images that your CI pipelines currently use. When `overridesOnly` is `true`, which is the default value, this endpoint returns the non-default images that your pipeline uses.
 
    ```
-   curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-customer-config?infra=K8&overridesOnly=true" \
+   curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-customer-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8&overridesOnly=true" \
    --header 'X-API-KEY: $API_KEY'
    ```
 
@@ -128,7 +128,7 @@ API key authentication is required. For more information about API keys, go to [
 3. Send an `update-config` (POST) request with a list of the images you want to update and the new tags to apply.
 
    ```
-   curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/update-config?infra=K8" \
+   curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/update-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
    --header 'X-API-KEY: $API_KEY' \
    --header 'Content-Type: application/json' \
    --data-raw '[
@@ -146,7 +146,7 @@ API key authentication is required. For more information about API keys, go to [
 4. To reset one or more images to their defaults, send a `reset-config` (POST) request with a list of the images to reset.
 
    ```
-   curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/reset-config?infra=K8" \
+   curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/reset-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
    --header 'X-API-KEY: $API_KEY' \
    --header 'Content-Type: application/json' \
    --data-raw '[

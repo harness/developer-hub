@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-10-16T10:00
+date: 2023-10-18T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,19 +19,90 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: October 16, 2023
+## Latest: October 18, 2023
 
-### Continuous Integration, version 62xx
+### Continuous Integration, version 6203
 
 You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#enable-parallelism-test-splitting-for-test-intelligence) in the Visual editor as well as the YAML editor. (CI-9618)
 
-## October 09, 2023
+## October 16, 2023
+
+### Continuous Delivery, version 81008
+
+- Ability to exclude services or environments from deployment freeze window (CDS-79505)
+
+  Now, when configuring a coverage rule for a deployment freeze window, if you choose to include all services or all environments, Harness gives you the option to exclude specific services or environments, respectively. This functionality is the same as the options provided for excluding organizations and projects, and it reduces your effort when the entities you want to include outnumber those you want to exclude. 
+
+  For more information, go to [Define freeze window coverage and schedule](/docs/continuous-delivery/manage-deployments/deployment-freeze/#define-freeze-window-coverage-and-schedule).
+
+- Additional information for pipeline events (CDS-78150)
+
+  The following pipeline events now include the name, pipeline tag, and failure message:
+    - PIPELINE_FAILED
+    - STAGE_FAILED
+    - STEP_FAILED
+  
+  The following pipeline events now include the name and pipeline tag:
+    - PIPELINE_SUCCESS
+    - STAGE_SUCCESS
+
+- Improvements to the user experience with forms (CDS-74220, ZD-47456, ZD-50077)
+
+  The following improvements have been made to forms to enhance your user experience: 
+
+    - Initial empty state: forms opened for the first time are empty. This allows you to begin your input process with a clean slate.
+
+    - Runtime inputs: fields that you intentionally leave empty are manually converted to runtime inputs. You can modify and set values for these fields during runtime.
+
+    - Retained input set values: when you run a pipeline using the form, your experience will be seamless. The form loads with the same values as the previous input set without any unwanted clearing or mutation.
+ 
+### Harness Platform, version 81008
+
+- The HPA configuration setting is now included in the default Kubernetes delegate YAML file. (PL-36021)
+
+   This item is available with Harness Platform version 81008 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+  ```yaml
+   ---
+   
+   apiVersion: autoscaling/v1
+   kind: HorizontalPodAutoscaler
+   metadata:
+      name: harness-delegate-hpa
+      namespace: harness-delegate-ng
+      labels:
+          harness.io/name: harness-delegate
+   spec:
+     scaleTargetRef:
+       apiVersion: apps/v1
+       kind: Deployment
+       name: harness-delegate
+     minReplicas: 1
+     maxReplicas: 1
+     targetCPUUtilizationPercentage: 99
+   
+   ---
+   ```
+
+- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
+
+   This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Harness upgraded `com.squareup.okio:okio` from 2.8.0 to 3.4.0 to resolve [CVE-20230-3635](https://www.cve.org/CVERecord?id=CVE-2023-3635). (PL-41601)
+
+   This item is available with Harness Platform version 81008 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+## October 9, 2023
 
 ### Continuous Delivery, version 80909
 
 - You can now provide detailed feedback in the Harness AIDA chat in CD. (CDS-79769)
 
   <docimage path={require('./static/73123e6efdd7d7dbc7c67b4a7df71bd42b1b20c8ba4cf409f87de0749da8dc92.png')} width="40%" height="40%" title="Click to view full size image" />
+
+- For generic (non-Docker) artifacts available in Artifactory, you can use an expression to specify the path to the artifact. This filter works in the same way as the artifact filter in Harness FirstGen, and it is useful when you want to fetch artifacts from multiple paths. (CDS-78181)
+
+  This item requires Harness Delegate version 23.10.80808. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Harness Platform, version 80909
 
@@ -44,6 +115,12 @@ You can now [enable test splitting for Test Intelligence](/docs/continuous-integ
 - Harness now returns a `Cannot send notification as notification channel is disabled from Account settings.` error in the test notification API when a channel is disabled. (PL-41449)
 
 - Harness previously had a feature flag `DISABLE_HARNESS_SM`, which allowed you to disable the Harness default Secret Manager and showed a **Settings** section on the Account Details page. This setting was migrated to the centralized **Default Settings** under **Resources**. Harness removed the feature flag `DISABLE_HARNESS_SM` as well as the corresponding setting from the Account Details page. (PL-41538)
+
+<!-- 
+- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-40247, ZD-48280)
+
+   This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+-->
 
 ### Continuous Integration, version 6100
 

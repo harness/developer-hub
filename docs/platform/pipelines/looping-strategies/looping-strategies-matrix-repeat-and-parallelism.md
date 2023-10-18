@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism
+  - /docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism
   - /docs/platform/pipelines/run-a-stage-or-step-multiple-times-using-a-matrix
 ---
 
