@@ -58,15 +58,28 @@ To apply a barrier, do the following:
 
 You cannot use a Harness variable expression in **Barrier Reference**.Now you can add another Barrier step using the same name to another stage at the point where you want to synchronize execution.
 
-## Important notes
-
-* You can have multiple Barriers in a stage/step group. Every Barrier in the same stage/step group must use a unique **Barrier Reference**.
-* Ensure the Barrier Reference string for each related barrier across the different stages/step groups matches.
-* When you use Barriers in a looping strategy such as [Repeat or Matrix](docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/), you cannot use the `maxConcurrency` parameter. This is because, for Barriers to work, all of the dynamically generated stages must be created in parallel, while The `maxConcurrency` parameter causes some of the stages to be created later.
+##Using Barriers with Looping strategies
 
 :::note
 
 Barrier support in looping strategies is behind the feature flag `CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES`. If this flag is turned off, synchronization might not work correctly in looping strategies. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-:::  
+::: 
+
+There are a few behaviours to note when using Barriers within a looping strategy (for example, when setting up a Matrix that creates multiple stages which run in parallel, and the stages contain a Barrier step). 
+
+* In general, Barriers are supported in all the looping strategies. You can use them when [repeating stages, looping, Matrices](docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/), or when using Multi-Service or Multi-Environment stages in Pipelines.
+* When setting up the Barrier step, make sure that you are using the same **Barrier Reference** in all of the looped stages (this wil make sure that all the looped stages execute till the Barrier step, and then continue (or fail!) together.
+* You cannot use the `maxConcurrency` parameter in setting up looping. When this parameter is used, not all the stages start up in parallel, and some wait for the first few to end. Barriers will prevent the initial set of stages from ending, so the pipeline will get stuck. 
+* When using Barriers with a Multi-service deployment, please make sure to select the "Deploy Services in Parallel" option, so that the pipeline does not wait for a stage to complete before beginning the next one. 
+* You can use Barriers to co-ordinate between multiple sets of looped stages, or between a single stage and a group of looped stages. Of course, as before, the same Barrier Reference must be used across all the sets of stages; they will all execute up to the Barrier step and wait for the others. This applies even if one of the groups starts later than the other.
+
+
+## Important notes
+
+* You can have multiple Barriers in a stage/step group. Every Barrier in the same stage/step group must use a unique **Barrier Reference**.
+* Ensure the Barrier Reference string for each related barrier across the different stages/step groups matches.
+* Please make sure to not use the same Barrier Reference in sequential stages! Doing so would mean the the first stage with the Barrier never ends and the flow never reaches the next stage with the second Barrier. 
+
+ 
 
