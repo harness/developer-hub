@@ -1,6 +1,6 @@
 Harness Git Experience allows you to store your resource configurations, such as pipelines and input sets, in Git.
 
-### Supported Git providers​
+#### Supported Git providers​
 
 The following section lists the support for Git providers for Harness Git Sync:​
 
@@ -10,7 +10,7 @@ The following section lists the support for Git providers for Harness Git Sync:�
 - Azure Repos
 - GitLab
 
-### Supported Harness entities​
+#### Supported Harness entities​
 
 You can save the following Harness resources in Git using Harness Git Experience:
 

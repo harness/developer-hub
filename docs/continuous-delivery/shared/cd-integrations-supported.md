@@ -4,8 +4,18 @@ import TabItem from '@theme/TabItem';
 ```
 ```mdx-code-block
 <Tabs>
-  <TabItem value="Deployment types" label="Deployment types">
+  <TabItem value="Deployments" label="Deployments">
 ```
+
+<details>
+<summary>Platform features for all deployment types</summary>
+
+import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
+
+<PlatformList />
+
+</details>
+
 
 <details>
 <summary>Kubernetes</summary>
@@ -553,7 +563,7 @@ For non-native deployments, Harness provides a custom deployment option using De
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Provision" label="Provision">
+  <TabItem value="Provisioners" label="Provisioners">
 ```
 
 Harness supports the following infrastructure provisioning tools:
@@ -633,7 +643,7 @@ Harness also supports Terraform Cloud and Enterprise.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Files" label="Files">
+  <TabItem value="File Store" label="File Store">
 ```
 
 Manifests, specifications, config files, and other deployment files can be pulled from the following providers:
