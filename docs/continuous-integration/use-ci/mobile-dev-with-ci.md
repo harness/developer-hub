@@ -28,7 +28,7 @@ There are several ways to run scripts and use plugins in Harness CI. You can run
 
 You can use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to run all manner of commands or scripts. If your Run step defines or ingests a variable, make sure you understand how [output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables) and [environment variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#environment-variables) work in Run steps. You can also [declare variables at the stage level](/docs/platform/pipelines/add-a-stage/#stage-variables) and redefine their values in steps.
 
-Store tokens, passwords, and other sensitive data as [secrets](/docs/category/secrets) and then [use expressions to reference secrets](docs/platform/secrets/add-file-secrets#reference-an-encrypted-file-secret) in your pipelines. For example, you can use an expression as the value for a variable:
+Store tokens, passwords, and other sensitive data as [secrets](/docs/category/secrets) and then [use expressions to reference secrets](/docs/platform/secrets/add-file-secrets#reference-an-encrypted-file-secret) in your pipelines. For example, you can use an expression as the value for a variable:
 
 ```
 APP_STORE_PASSWORD=<+secrets.getValue("my_app_store_password_secret")>

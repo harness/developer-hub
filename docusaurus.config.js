@@ -309,7 +309,7 @@ const config = {
           },
           //{
           //  position: "right",
-          //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25b35u8j5-qAvb~7FJ1NFXbiW4AN101w",
+          //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25816ab7a-FdXSKTyIZaxyKQvaysTN0g",
           //  label: "Join Slack",
           //},
           {
@@ -389,7 +389,7 @@ const config = {
               },
               {
                 label: 'Slack',
-                to: 'https://join.slack.com/t/harnesscommunity/shared_invite/zt-25b35u8j5-qAvb~7FJ1NFXbiW4AN101w',
+                to: 'https://join.slack.com/t/harnesscommunity/shared_invite/zt-25816ab7a-FdXSKTyIZaxyKQvaysTN0g',
               },
               {
                 label: 'API Reference',

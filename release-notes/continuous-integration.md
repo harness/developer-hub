@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-10-09T10:00
+date: 2023-10-18T10:00
 sidebar_position: 3
 ---
 
@@ -19,9 +19,33 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 6100
+## Latest: Version 6203
 
-<!-- Oct 9 2023 -->
+<!-- Oct 18 2023 -->
+
+### New features and enhancements
+
+You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#enable-parallelism-test-splitting-for-test-intelligence) in the Visual editor as well as the YAML editor. (CI-9618)
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+* Corrected the rendering of the **Stack Trace** field when inspecting failed tests from the [Tests tab](/docs/continuous-integration/use-ci/run-tests/viewing-tests) on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds). (CI-9765, ZD-51231)
+* Fixed an issue with extra whitespace in step templates when these were used with a Kubernetes cluster build infrastructure. (CI-9723, ZD-49843)
+* Fixed an issue where the network driver wasn't available in the Harness Docker Runner for Windows. (CI-9848)
+* Fixed an issue that could occur when cloning multiple repos in a stage that used a Windows platform for the build infrastructure. (CI-9128)
+* Fixed an issue where some [code repo connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) didn't send the [build status](/docs/continuous-integration/use-ci/viewing-builds#source-code-repository-links) back to the SCM provider. This happened due to an issue in the Harness Delegate, and it occurred only for code repo connectors that [connected through a Harness Delegate](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#connectivity-mode-settings). Connectors connecting through the Harness Platform weren't impacted. This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-9835, ZD-51754, ZD-51758, ZD-51763)
+* When a [code repo connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) encounters a cert error, the error message shown in the Harness UI is now more informative. This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-8509)
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 09, 2023, version 6100
 
 ### New features and enhancements
 
@@ -37,18 +61,7 @@ This release does not include early access features.
 * In Kubernetes cluster build infrastructures, non-existent or unresolvable secrets are now handled in the same way as they are in VM and Harness Cloud build infrastructures. (CI-9677, ZD-50868, ZD-50901)
 <!-- CI-9747: Not for RN. CI-9688: In Hotfix 5802. -->
 
-### Hotfixes
-
-This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
-#### Version 5902
-
-<!-- sept 29 2023 -->
+#### September 29, 2023, version 5902
 
 ##### New features and enhancements
 
@@ -73,13 +86,8 @@ When [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/ai
 * If a step used [runtime input for conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#conditional-execution-as-a-runtime-input), but no runtime input was provided at pipeline runtime, then the pipeline passed the literal string `<+input>` instead of an empty object. This is fixed. <!-- not delegate dependent --> (CI-9428, ZD-50027)
 * Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) based on [delegate tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#delegate-tags), and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- The CI change was in 5801 but required delegate 807xx, which there was none, so the delegate portion is in 808xx --> (CI-8831, ZD-47647)
 
-##### Hotfixes
+#### September 19, 2023, version 5801
 
-This release does not include hotfixes.
-
-#### Version 5801
-
-<!-- sept 19 2023 -->
 ##### New features and enhancements
 
 * You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings) with buckets with [disabled ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html). (CI-8371, ZD-45677)
@@ -101,9 +109,8 @@ This release does not include early access features.
 * **Version 5802:** Fixed an issue where build pods weren't cleaned up after the build finished. This was due to the cleanup task targeting pods to cleanup by pod IP address. In scenarios where a pod creation request fails, there is no pod IP available for the cleanup task to target. Now, the cleanup task can use pod names or IP addresses. (CI-9699, CI-9688, ZD-51016, ZD-51035, ZD-51064) <!-- sept 22 2023 -->
 * **Version 5803:** Addressed an issue related to [Cache Intelligence in parallel stages](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-intelligence-in-parallel-stages). <!-- sept 28 2023 -->
 
-#### Version 5602
+#### September 12, 2023, version 5602
 
-<!-- sept 12 2023 -->
 ##### New features and enhancements
 
 This release does not include new features or enhancements.
@@ -118,13 +125,8 @@ This release does not include early access features.
 * Removed the `DRONE_WORKSPACE` environment variable from the local runner build infrastructure because it overwrote the working directory. This variable is equivalent to [`HARNESS_WORKSPACE`](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var/#harness_workspace), which doesn't incorrectly overwrite the working directory. (CI-9303)
 * Upgraded `io.netty:netty*` to version `4.1.94.final` to address vulnerabilities. This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-8971, ZD-48488)
 
-##### Hotfixes
+#### September 07, 2023, version 5504
 
-This release does not include hotfixes.
-
-#### Version 5504
-
-<!-- sept 7 2023 -->
 ##### New features and enhancements
 
 This release does not include new features or enhancements.
@@ -136,10 +138,6 @@ This release does not include early access features.
 ##### Fixed issues
 
 * [Git event webhook triggers](/docs/platform/Triggers/triggering-pipelines) based on GitHub Issue comments failed if the [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) connected through the Harness Platform and the account had no delegates. Despite the connector not requiring a delegate, the trigger still failed. This has been fixed. (CI-9150)
-
-##### Hotfixes
-
-This release does not include hotfixes.
 
 #### August 26, 2023, version 5408
 
@@ -167,10 +165,6 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 * Fixed an issue where some secrets were not masked as expected in logs. (CI-8134)
 * [Webhook triggers](/docs/platform/triggers/triggering-pipelines/) now reattempt calls to SCM APIs if the connection was reset or there was a server-side error. This fixes an issue where intermittent outages in connections to SCM APIs failed to trigger builds. (CI-8904, ZD-47605)
 * Filtering the [build list](/docs/continuous-integration/use-ci/viewing-builds) by **Build Type: Branch** now correctly excludes PR builds. (CI-9322, ZD-48837, ZD-49619)
-
-##### Hotfixes
-
-This release does not include hotfixes.
 
 #### August 10, 2023, version 5301
 
@@ -247,7 +241,6 @@ This feature flag is now disabled by default and must be re-enabled if your CI-t
 * [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) now reads packages from files for all changed files, instead of relying on the file path to determine the package. This fixes an issue where tests were missed due to the test package not following the order of folders, because Test Intelligence previously determined the package from the class path. (CI-8692)
 
 * The `CI_LE_STATUS_REST_ENABLED` feature has been rolled back to early access due to a discovered instability that caused the [CD Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step) to fail. This feature causes CI steps to send status updates to the [Harness Manager](/docs/get-started/harness-platform-architecture#harness-platform-components) directly by HTTP, rather than through a delegate. This feature flag is now disabled by default and must be re-enabled if your CI-to-Harness-Manager communications need to support client connections with additional certificates. (CI-8338)
-
 
 #### July 06, 2023, version 4901
 
