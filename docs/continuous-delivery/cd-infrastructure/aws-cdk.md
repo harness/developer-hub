@@ -22,11 +22,7 @@ This topic provides steps on using Harness to provision a target AWS environment
 
 ## AWS permissions required
 
-You connect Harness to your AWS account using a Harness AWS connector.
-
-The AWS permissions required by the AWS account you use in the connector depend on what you are provisioning with CDK.
-
-You should tailor the policy and roles to your specific CDK application's requirements. It's essential to follow the principle of least privilege and only grant the permissions necessary for your CDK application to function correctly and securely. Additionally, consider using AWS Managed Policies whenever possible to avoid creating custom policies with extensive permissions.
+Ensure that the AWS CDK CLI is able to authenticate with the desired AWS account and has the necessary permissions for its provisioning. You can set the access keys, secret keys, and region as environment variables or let the CDK CLI inherit the IAM role from the EKS cluster where the containerized steps run.
 
 ## Harness roles permissions required
 
@@ -189,7 +185,7 @@ Inside the step group, the following AWS CDK steps are used:
 
   This step sets up the necessary AWS resources and environment required for deploying CDK applications in a specific AWS region and AWS account. This command is typically run once per AWS account and region to prepare the environment for CDK deployments. 
 
-  If the step group container already has the necessary AWS resources and environment required for deploying CDK applications, you can omit this step.
+  If the AWS environment is already bootstrapped and has the necessary AWS resources required for deploying CDK applications, you can omit this step.
 2. **AWS CDK Diff step:** Runs the `cdk diff` command.
 
   Compares the specified stack and its dependencies with the deployed stacks.
@@ -212,7 +208,7 @@ These steps are described in detail below.
 
 The CDK steps in the step group are containerized. In the **Container Registry** and **Image** settings in each step, you must provide a Harness connector to a container registry and an image for the pod the step uses.
 
-Harness provides the `aws-cdk-plugin` base image and custom images for different stacks (Java, .NET, Python, Go, etc.) They are located on the Docker Hub registry [aws-cdk-plugin](https://hub.docker.com/r/harness/aws-cdk-plugin/tags). For example, `harness/aws-cdk-plugin:1.0.0` is the base image that contains the CDK CLI and Node.js and `harness/aws-cdk-plugin:1.0.0-java` is the base image for Java.
+Harness provides the `aws-cdk-plugin` base image and custom images for different stacks (Java, .NET, Python, Go, etc.) They are located on the Docker Hub registry [aws-cdk-plugin](https://hub.docker.com/r/harness/aws-cdk-plugin/tags). For example, `harness/aws-cdk-plugin:1.0.0` is the base image that contains the CDK CLI and Node.js and `harness/aws-cdk-plugin:1.0.0-java` is the custom image for Java created by Harness. You can use a Harness custom image or create your own.
 
 You can use a Harness base image to create your own image and use that in a step. For example, if your CDK app uses a specific Java or Node.js version, you can use the base image provided by Harness and create your own image containing your dependencies.
 
@@ -233,7 +229,7 @@ You can omit the Git Clone step if you have added the app files to the shared sp
 
 :::
 
-During rollback, the Git Clone rollback step deletes the Git branch/tag/commit that you used in the Git Clone step.
+During rollback, the Git Clone rollback step can be used to replace the Git branch/tag/commit that you used in the Git Clone step.
 
 The Git Clone step is documented in detail in [Git Clone step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step), but let's review how the key settings for CDK.
 
@@ -252,38 +248,7 @@ The Git Clone step is documented in detail in [Git Clone step](/docs/continuous-
 
 For the remaining settings, see [Step settings common to multiple steps](/docs/continuous-delivery/cd-infrastructure/aws-cdk#step-settings-common-to-multiple-steps) below.
 
-<details>
-<summary>Git Clone step log example</summary>
 
-Here's a step log example that shows the tasks the step performs.
-
-```
-[DEBUG] setting default home directory
-+ git init
-hint: Using 'master' as the name for the initial branch. This default branch name
-hint: is subject to change. To configure the initial branch name to use in all
-hint: of your new repositories, which will suppress this warning, call:
-hint: 
-hint: 	git config --global init.defaultBranch <name>
-hint: 
-hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-hint: 'development'. The just-created branch can be renamed via this command:
-hint: 
-hint: 	git branch -m <name>
-Initialized empty Git repository in /harness/hello-cdk/.git/
-+ git remote add origin https://github.com/wings-software/hello-cdk.git
-+ set +x
-+ git fetch --depth=50 origin +refs/heads/main:
-From https://github.com/wings-software/hello-cdk
- * branch            main       -> FETCH_HEAD
- * [new branch]      main       -> origin/main
-+ git checkout -b main origin/main
-Switched to a new branch 'main'
-Branch 'main' set up to track remote branch 'main' from 'origin'.
-+ exit 0
-```
-
-</details>
 
 
 ## AWS CDK Bootstrap step
@@ -292,14 +257,14 @@ Runs the `cdk bootstrap` command. For details on bootstrapping, go to [Bootstrap
 
 This step sets up the necessary AWS resources and environment required for deploying CDK applications in a specific AWS region and AWS account. This command is typically run once per AWS account and region to prepare the environment for CDK deployments. 
 
-If the step group container already has the necessary AWS resources and environment required for deploying CDK applications, you can omit this step.
+If the AWS environment is already bootstrapped and has the necessary AWS resources required for deploying CDK applications, you can omit this step.
 
 Step settings:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
 - **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.0.0-java`.
-- **App Path:** The path to the CDK app fetched with the Git Clone step. The Git Clone step listed the app repository in its **Repository Name** setting. **App Path** must include the path to the app folder in that directory.
-- **AWS CDK Bootstrap Command Options:** You can add any CDK parameters you can see in the `cdk bootstrap --help` command, just like you would in the `cdk` command-line tool. For example, `-c stack1_name=cdkTest1stack1`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
+- **App Path:** The path to the CDK app. The Git Clone step listed the app repository in its **Repository Name** setting. **App Path** must include the path to the app folder in that directory.
+- **AWS CDK Bootstrap Command Options:** You can add any CDK parameters you can see in the `cdk bootstrap --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
 
 For the remaining settings, see [Step settings common to multiple steps](/docs/continuous-delivery/cd-infrastructure/aws-cdk#step-settings-common-to-multiple-steps) below.
 
@@ -312,9 +277,9 @@ Step settings:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
 - **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.0`.0-java.
-- **App Path:** The path to the CDK app fetched with the Git Clone step. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
-- **AWS CDK Diff Command Options:** You can add any CDK parameters you can see in the `cdk diff --help` command, just like you would in the `cdk` command-line tool. For example, `-c stack1_name=cdkTest1stack1`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
-- **Stack Names:** If you are using a multi-stack app, enter the names of each stack here. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
+- **App Path:** The path to the CDK app. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
+- **AWS CDK Diff Command Options:** You can add any CDK parameters you can see in the `cdk diff --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
+- **Stack Names:** If you are using a multi-stack app, enter the names of each stack you want to passed to `cdk` command. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
 
   ![picture 2](static/8be0b8f77211f4eabf068c7b6a19bffb0a1ce86a6fe26b7bc0fc4ed3f1a1d8f3.png)  
   
@@ -323,56 +288,7 @@ Step settings:
 For the remaining settings, see [Step settings common to multiple steps](/docs/continuous-delivery/cd-infrastructure/aws-cdk#step-settings-common-to-multiple-steps) below.
 
 
-<details>
-<summary>CDK Diff step log example</summary>
 
-Here's a step log example that shows the tasks the step performs. You can see multiple stacks (`cdkTest1stack1`, `cdkTest1stack2`) in the log.
-
-```
-/usr/local/bin/cdk --version
-2.90.0 (build 8c535e4)
-Working directory: /harness
-CDK app path:  hello-cdk
-/usr/local/bin/cdk diff cdkTest1stack1 cdkTest1stack2 -c stack1_name=cdkTest1stack1 -c stack2_name=cdkTest1stack2
-Stack cdkTest1stack1
-Parameters
-[+] Parameter sname sname: {"Type":"String","Default":"defaultSecretNameStack1"}
-[+] Parameter BootstrapVersion BootstrapVersion: {"Type":"AWS::SSM::Parameter::Value<String>","Default":"/cdk-bootstrap/hnb659fds/version","Description":"Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"}
-
-Conditions
-[+] Condition CDKMetadata/Condition CDKMetadataAvailable: {"Fn::Or":[{"Fn::Or":[{"Fn::Equals":[{"Ref":"AWS::Region"},"af-south-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ap-east-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ap-northeast-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ap-northeast-2"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ap-south-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ap-southeast-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ap-southeast-2"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ca-central-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"cn-north-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"cn-northwest-1"]}]},{"Fn::Or":[{"Fn::Equals":[{"Ref":"AWS::Region"},"eu-central-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"eu-north-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"eu-south-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"eu-west-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"eu-west-2"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"eu-west-3"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"me-south-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"sa-east-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"us-east-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"us-east-2"]}]},{"Fn::Or":[{"Fn::Equals":[{"Ref":"AWS::Region"},"us-west-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"us-west-2"]}]}]}
-
-Resources
-[+] AWS::SecretsManager::Secret stack1secretId stack1secretId52B866E2 
-
-Outputs
-[+] Output outputId outputId: {"Value":{"Ref":"sname"},"Export":{"Name":"cdkTest1stack1-outputExportName"}}
-
-Other Changes
-[+] Unknown Rules: {"CheckBootstrapVersion":{"Assertions":[{"Assert":{"Fn::Not":[{"Fn::Contains":[["1","2","3","4","5"],{"Ref":"BootstrapVersion"}]}]},"AssertDescription":"CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."}]}}
-
-Stack cdkTest1stack2
-Parameters
-[+] Parameter sname sname: {"Type":"String","Default":"defaultSecretNameStack2"}
-[+] Parameter BootstrapVersion BootstrapVersion: {"Type":"AWS::SSM::Parameter::Value<String>","Default":"/cdk-bootstrap/hnb659fds/version","Description":"Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"}
-
-Conditions
-[+] Condition CDKMetadata/Condition CDKMetadataAvailable: {"Fn::Or":[{"Fn::Or":[{"Fn::Equals":[{"Ref":"AWS::Region"},"af-south-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ap-east-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ap-northeast-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ap-northeast-2"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ap-south-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ap-southeast-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ap-southeast-2"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"ca-central-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"cn-north-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"cn-northwest-1"]}]},{"Fn::Or":[{"Fn::Equals":[{"Ref":"AWS::Region"},"eu-central-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"eu-north-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"eu-south-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"eu-west-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"eu-west-2"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"eu-west-3"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"me-south-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"sa-east-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"us-east-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"us-east-2"]}]},{"Fn::Or":[{"Fn::Equals":[{"Ref":"AWS::Region"},"us-west-1"]},{"Fn::Equals":[{"Ref":"AWS::Region"},"us-west-2"]}]}]}
-
-Resources
-[+] AWS::SecretsManager::Secret stack2secretId stack2secretId28EE5117 
-
-Outputs
-[+] Output outputId outputId: {"Value":{"Ref":"sname"},"Export":{"Name":"cdkTest1stack2-outputExportName"}}
-
-Other Changes
-[+] Unknown Rules: {"CheckBootstrapVersion":{"Assertions":[{"Assert":{"Fn::Not":[{"Fn::Contains":[["1","2","3","4","5"],{"Ref":"BootstrapVersion"}]}]},"AssertDescription":"CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."}]}}
-
-
-Number of stacks with differences: 12
-```
-
-</details>
 
 ## AWS CDK Synth step
 
@@ -382,51 +298,30 @@ Step settings:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
 - **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.0`.0-java.
-- **App Path:** The path to the CDK app fetched with the Git Clone step. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
-- **AWS CDK Synth Command Options:** You can add any CDK parameters you can see in the `cdk synthesize --help` command, just like you would in the `cdk` command-line tool. For example, `-c stack1_name=cdkTest1stack1`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
-- **Stack Names:** If you are using a multi-stack app, enter the names of each stack here. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
+- **App Path:** The path to the CDK app. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
+- **AWS CDK Synth Command Options:** You can add any CDK parameters you can see in the `cdk synthesize --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
+- **Stack Names:** If you are using a multi-stack app, enter the names of each stack you want to passed to `cdk` command. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
 - **Export Template:** Exports the JSON template(s) for the stacks entered in **Stack Names**. If no stacks are listed in Stack Names, and **Export Template** is enabled, Harness export templates for all stacks in the app.
 
 For the remaining settings, see [Step settings common to multiple steps](/docs/continuous-delivery/cd-infrastructure/aws-cdk#step-settings-common-to-multiple-steps) below.
 
 
-<details>
-<summary>CDK Synth step log example</summary>
 
-Here's a step log example that shows the tasks the step performs.
-
-```
-
-/usr/local/bin/cdk --version
-2.90.0 (build 8c535e4)
-Working directory: /harness
-CDK app path:  hello-cdk
-/usr/local/bin/cdk synth cdkTest1stack1 cdkTest1stack2 -c stack1_name=cdkTest1stack1 -c stack2_name=cdkTest1stack2
-Successfully synthesized to /harness/hello-cdk/cdk.out
-Supply a stack id (cdkTest1stack1, cdkTest1stack2) to display its template.
-
-Exporting synth templates.
-Exporting template file:  hello-cdk/cdk.out/cdkTest1stack1.template.json
-Exporting template file:  hello-cdk/cdk.out/cdkTest1stack2.template.json
-Adding to output: cdkTest1stack1.template.json
-Adding to output: cdkTest1stack2.template.json
-```
-</details>
 
 ### Export and reference JSON templates
 
-If the **Export Template** option is selected, the JSON templates for the stacks in the app are exported to the shared folder on the container.
+After this step, synthetized JSON templates will we available in **cdk.out** folder. If the **Export Template** option is selected, the JSON templates for the stacks will exported as step output.
 
-You can reference the JSON template after the step has run using an expression in this format: 
+You can reference the JSON template from the step output after the step has run using an expression in this format: 
 
 ```
-<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.get("STACK_NAME.template.json")>
+<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.STACK_NAME>
 ```
 
 For example:
 
 ```
-<+pipeline.stages.test.spec.execution.steps.test.steps.AwsCdkSynth.output.outputVariables.get("cdkTest1stack2.template.json")>
+<+pipeline.stages.test.spec.execution.steps.test.steps.AwsCdkSynth.output.outputVariables.cdkTest1stack2>
 ```
 
 You can obtain the expression by copying it from the executed step **Outputs**.
@@ -514,9 +409,9 @@ Runs the `cdk deploy` command to deploy the infrastructure defined in your CDK a
 
 The CDK Deploy step includes a **Provisioner Identifier** setting to track the provisioning it performs. 
 
-The **Provisioner Identifier** is used by the AWS CDK Rollback step to ensure that rollback is performed on the same infrastructure provisioned in the CDK Deploy step.
+The **Provisioner Identifier** is used by the AWS CDK Rollback step to ensure that the step uses same parameters and inputs that were used by the last successful `cdk deploy` with the corresponding Provisioner Identifier (in the CDK Deploy step).
 
-Harness determines what to roll back using a combination of **Provisioner Identifier** + Harness account id + Harness org id + Harness project id.
+The **Provisioner Identifier** must be unique per provisioned infrastructure at the Harness project level.
 
 If you've made these settings expressions, Harness uses the values it obtains at runtime when it evaluates the expression.
 
@@ -529,15 +424,15 @@ Step settings:
   The **Provisioner Identifier** is a project-wide setting. You can reference it across pipelines in the same project.
 
   For this reason, it's important that all your project members know the provisioner identifiers. This will prevent one member building a pipeline from accidentally impacting the provisioning of another member's pipeline.
-- **App Path:** The path to the CDK app fetched with the Git Clone step. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
-- **AWS CDK Deploy Command Options:** You can add any CDK parameters you can see in the `cdk deploy --help` command, just like you would in the `cdk` command-line tool. For example, `-c stack1_name=cdkTest1stack1`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
+- **App Path:** The path to the CDK app. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
+- **AWS CDK Deploy Command Options:** You can add any CDK parameters you can see in the `cdk deploy --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
 
   The `--all` command can be used to deploy all stacks in the app without having to name them in the **Stack Names** setting.
-- **Stack Names:** If you are using a multi-stack app, enter the names of each stack here. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
+- **Stack Names:** If you are using a multi-stack app, enter the names of each stack you want to passed to `cdk` command. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
 
   ![picture 2](static/8be0b8f77211f4eabf068c7b6a19bffb0a1ce86a6fe26b7bc0fc4ed3f1a1d8f3.png)  
   
-  If you omit a stack name, it can cause a step failure. If your app uses only one stack, you do not need to enter its name.
+  If you omit a stack name for a multi-stack CDK application, it can cause a step failure. If your app uses only one stack, you do not need to enter its name.
 - **Parameters:** This setting is the same as the `--parameters` option for `cdk deploy` (for example, `cdk deploy MyStack --parameters uploadBucketName=UploadBucket`). 
   
   For more information, go to [Specifying AWS CloudFormation parameters](https://docs.aws.amazon.com/cdk/v2/guide/cli.html#cli-deploy) from AWS.
@@ -559,60 +454,7 @@ For the remaining settings, see [Step settings common to multiple steps](/docs/c
 
 
 
-<details>
-<summary>CDK Deploy step log example</summary>
 
-Here's a step log example that shows the tasks the step performs.
-
-```
-/usr/local/bin/cdk --version
-2.90.0 (build 8c535e4)
-Working directory: /harness
-CDK app path:  hello-cdk
-/usr/local/bin/cdk deploy cdkTest1stack1 cdkTest1stack2 --parameters cdkTest1stack1:sname=stackOneSecretNameAhOqGfAp09 --parameters cdkTest1stack2:sname=stackTwoSecretNametrGWY0Rh6J -c stack1_name=cdkTest1stack1 -c stack2_name=cdkTest1stack2 --outputs-file cdk-outputs.json
-
-✨  Synthesis time: 46.37s
-
-cdkTest1stack1
-cdkTest1stack1: deploying... [1/2]
-cdkTest1stack1: creating CloudFormation changeset...
-cdkTest1stack1 | 0/3 | 12:44:24 PM | REVIEW_IN_PROGRESS   | AWS::CloudFormation::Stack  | cdkTest1stack1 User Initiated
-cdkTest1stack1 | 0/3 | 12:44:30 PM | CREATE_IN_PROGRESS   | AWS::CloudFormation::Stack  | cdkTest1stack1 User Initiated
-cdkTest1stack1 | 0/3 | 12:44:32 PM | CREATE_IN_PROGRESS   | AWS::SecretsManager::Secret | stack1secretId (stack1secretId52B866E2) 
-cdkTest1stack1 | 0/3 | 12:44:32 PM | CREATE_IN_PROGRESS   | AWS::CDK::Metadata          | CDKMetadata/Default (CDKMetadata) 
-cdkTest1stack1 | 0/3 | 12:44:34 PM | CREATE_IN_PROGRESS   | AWS::SecretsManager::Secret | stack1secretId (stack1secretId52B866E2) Resource creation Initiated
-cdkTest1stack1 | 0/3 | 12:44:34 PM | CREATE_IN_PROGRESS   | AWS::CDK::Metadata          | CDKMetadata/Default (CDKMetadata) Resource creation Initiated
-cdkTest1stack1 | 1/3 | 12:44:34 PM | CREATE_COMPLETE      | AWS::CDK::Metadata          | CDKMetadata/Default (CDKMetadata) 
-cdkTest1stack1 | 2/3 | 12:44:34 PM | CREATE_COMPLETE      | AWS::SecretsManager::Secret | stack1secretId (stack1secretId52B866E2) 
-cdkTest1stack1 | 3/3 | 12:44:35 PM | CREATE_COMPLETE      | AWS::CloudFormation::Stack  | cdkTest1stack1 
-
- ✅  cdkTest1stack1
-
-✨  Deployment time: 12.53s
-
-Outputs:
-cdkTest1stack1.outputId = stackOneSecretNameAhOqGfAp09
-Stack ARN:
-arn:aws:cloudformation:us-east-2:1234567890:stack/cdkTest1stack1/950b6ea0-61ea-11ee-b4ad-06fb408549b7
-
-✨  Total time: 58.9s
-
-cdkTest1stack2
-cdkTest1stack2: deploying... [2/2]
-cdkTest1stack2: creating CloudFormation changeset...
-cdkTest1stack2 | 0/3 | 12:44:37 PM | REVIEW_IN_PROGRESS   | AWS::CloudFormation::Stack  | cdkTest1stack2 User Initiated
-cdkTest1stack2 | 0/3 | 12:44:42 PM | CREATE_IN_PROGRESS   | AWS::CloudFormation::Stack  | cdkTest1stack2 User Initiated
-cdkTest1stack2 | 0/3 | 12:44:45 PM | CREATE_IN_PROGRESS   | AWS::CDK::Metadata          | CDKMetadata/Default (CDKMetadata) 
-cdkTest1stack2 | 0/3 | 12:44:45 PM | CREATE_IN_PROGRESS   | AWS::SecretsManager::Secret | stack2secretId (stack2secretId28EE5117) 
-cdkTest1stack2 | 0/3 | 12:44:46 PM | CREATE_IN_PROGRESS   | AWS::CDK::Metadata          | CDKMetadata/Default (CDKMetadata) Resource creation Initiated
-cdkTest1stack2 | 1/3 | 12:44:46 PM | CREATE_COMPLETE      | AWS::CDK::Metadata          | CDKMetadata/Default (CDKMetadata) 
-cdkTest1stack2 | 1/3 | 12:44:46 PM | CREATE_IN_PROGRESS   | AWS::SecretsManager::Secret | stack2secretId (stack2secretId28EE5117) Resource creation Initiated
-cdkTest1stack2 | 2/3 | 12:44:46 PM | CREATE_COMPLETE      | AWS::SecretsManager::Secret | stack2secretId (stack2secretId28EE5117) 
-cdkTest1stack2 | 3/3 | 12:44:47 PM | CREATE_COMPLETE      | AWS::CloudFormation::Stack  | cdkTest1stack2 
-
-```
-
-</details>
 
 ### Output variable expressions
 
@@ -624,6 +466,10 @@ After pipeline execution, the CDK Deploy step **Output** tab displays several ou
 #### GIT_COMMIT_ID and LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID
 
 This is the Git commit Id of the CDK app that was deployed.
+
+After every successful `cdk deploy`, Harness attempts to obtain the commit SHA from the App path directory. This commit Id is saved and exported in step output `GIT_COMMIT_ID`.
+
+Also, the CDK Deploy step outputs the commit SHA of the latest successful `cdk deploy` from a previous stage execution in the output `LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID`.
 
 You can reference this value using the expression:
 
@@ -657,13 +503,13 @@ Each CDK app stack output Id is listed in the CDK Deploy step **Output** tab.
 You can reference this value using the expression:
 
 ```
-<+pipeline.stages.STAGE_ID.spec.provisioner.steps.STEP_GROUP_ID.steps.STEP_ID.cdkOutput.STACK_NAME.outputId>
+<+pipeline.stages.STAGE_ID.spec.provisioner.steps.STEP_GROUP_ID.steps.STEP_ID.cdkOutput.STACK_NAME.OUTPUT_ID>
 ```
 
 For example:
 
 ```
-<+pipeline.stages.s1.spec.provisioner.steps.test.steps.AwsCdkDeploy_1.cdkOutput.cdkTest3stack2.outputId>
+<+pipeline.stages.s1.spec.provisioner.steps.test.steps.AwsCdkDeploy_1.cdkOutput.cdkTest3stack2.BucketNameOutput>
 ```
 
 
@@ -671,51 +517,24 @@ For example:
 
 Runs the `cdk destroy` command to destroy one or more specified stacks.
 
-You can use this step to destroy ephemeral infrastructure provisioned by the AWS CDK Deploy step, or an stack in the CDK app in the container.
+You can use this step to destroy one or more stacks defined in the CDK application.
 
 Step settings:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
 - **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.0`.0-java.
-- **App Path:** The path to the CDK app fetched with the Git Clone step. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
+- **App Path:** The path to the CDK app. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
 - **AWS CDK Destroy Command Options:** You can add any CDK parameters you can see in the `cdk destroy --help` command, just like you would in the `cdk` command-line tool. 
 - **Stack Names:** If you are using a multi-stack app, enter the names of each stack you want to destroy here. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
 
 For the remaining settings, see [Step settings common to multiple steps](/docs/continuous-delivery/cd-infrastructure/aws-cdk#step-settings-common-to-multiple-steps) below.
 
 
-<details>
-<summary>CDK Destroy step log example</summary>
 
-Here's a step log example that shows the tasks the step performs.
-
-```
-/usr/local/bin/cdk --version
-2.90.0 (build 8c535e4)
-Working directory: /harness
-CDK app path:  hello-cdk
-/usr/local/bin/cdk destroy cdkTest1stack1 cdkTest1stack2 -c stack1_name=cdkTest1stack1 -c stack2_name=cdkTest1stack2
-Are you sure you want to delete: cdkTest1stack2, cdkTest1stack1 (y/n)? cdkTest1stack2: destroying... [1/2]
-cdkTest1stack2 |   0 | 12:45:42 PM | DELETE_IN_PROGRESS   | AWS::CloudFormation::Stack  | cdkTest1stack2 User Initiated
-cdkTest1stack2 |   0 | 12:45:44 PM | DELETE_IN_PROGRESS   | AWS::SecretsManager::Secret | stack2secretId (stack2secretId28EE5117) 
-cdkTest1stack2 |   0 | 12:45:44 PM | DELETE_IN_PROGRESS   | AWS::CDK::Metadata          | CDKMetadata/Default (CDKMetadata) 
-cdkTest1stack2 |   1 | 12:45:45 PM | DELETE_COMPLETE      | AWS::CDK::Metadata          | CDKMetadata/Default (CDKMetadata) 
-
- ✅  cdkTest1stack2: destroyed
-cdkTest1stack1: destroying... [2/2]
-cdkTest1stack1 |   0 | 12:45:54 PM | DELETE_IN_PROGRESS   | AWS::CloudFormation::Stack  | cdkTest1stack1 User Initiated
-cdkTest1stack1 |   0 | 12:45:55 PM | DELETE_IN_PROGRESS   | AWS::SecretsManager::Secret | stack1secretId (stack1secretId52B866E2) 
-cdkTest1stack1 |   0 | 12:45:55 PM | DELETE_IN_PROGRESS   | AWS::CDK::Metadata          | CDKMetadata/Default (CDKMetadata) 
-cdkTest1stack1 |   1 | 12:45:56 PM | DELETE_COMPLETE      | AWS::CDK::Metadata          | CDKMetadata/Default (CDKMetadata) 
-
- ✅  cdkTest1stack1: destroyed
-```
-
-</details>
 
 ## AWS CDK rollback steps
 
-Typically, the CDK rollback steps roll back the cloned repo of the CDK app to the last successful commit with a Git Clone step and then remove the infrastructure provisioned by the CDK Deploy step using a CDK Rollback step.
+The CDK Rollback step will run `cdk deploy` using the saved inputs and parameters used at last successful `cdk deploy` from a previous stage execution. The CDK Rollback step references the latest successful deploy using its **Provisioner identifier**.
 
 The CDK rollback steps are located in the **Rollback** section of the **Environment** or **Execution** sections where you added your CDK steps. 
 
@@ -733,11 +552,13 @@ The step group contains the Harness connector to a Kubernetes cluster and namesp
 
 When you select AWS CDK as the provisioner on the CD stage **Environment** tab, Harness automatically generates a containerized [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) in **Rollback** containing the steps needed for the AWS CDK.
 
-### Git Clone rollback step
+### Git Clone step in rollback
 
-The Git Clone rollback step is simply a Git Clone step used to roll back the Git repo in the container to the branch, tag, or commit SHA that you want to restore in the case of deployment failure.
+The Git Clone step is simply a Git Clone step used to roll back the Git repo in the container to the branch, tag, or commit SHA that you want to restore in the case of deployment failure.
 
-Typically, the Git Clone rollback step is used to roll back the app source repo in the container to the last successful commit. You can also add Harness steps to manipulate the repo, such as Shell Script step.
+Typically, the Git Clone step is used to roll back the app source repo in the container to the last successful commit. You can also add Harness steps to manipulate the repo, such as Shell Script step. 
+
+Ensure that CDK application on the shared disk space is at the revision you want to rollback. The Git Clone step can be added with the specific commit SHA to use for rollback.
 
 When the CDK Deploy step runs, it outputs the Git commit Id of the CDK app repo commit it used. You can see this in the **Output** of the CDK Deploy step and reference it using the expression in the format `<+pipeline.stages.STAGE_ID.spec.provisioner.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID>`.
 
@@ -746,39 +567,11 @@ To ensure that the Git Clone step rolls back to the last successful commit, conf
 - **Connector:** Select or add a Harness Git connector for the source control provider hosting the CDK app code repository that you want to use.
 - **Repository Name:**  If the connector's **URL Type** is **Repository**, then **Repository Name** is automatically populated based on the repository defined in the connector's configuration. If the connector's **URL Type** is **Account**, then you must specify the name of the code repository that you want to clone into the stage workspace.
 - **Build Type:** Select the branch, tag, or Git commit SHA of the commit you want to use.
-- **Commit SHA:** If you use, **Git Commit SHA**, you can use the `LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID` expression from the last *successful* CDK Deploy step. For example, `<+pipeline.stages.s2.spec.provisioner.steps.test.steps.AwsCdkDeploy_2.output.outputVariables.LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID>`. This expression will ensure that the Git Clone step rolls back to the last successful commit.
+- **Commit SHA:** If you use, **Git Commit SHA**, you can use the `LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID` expression from the last *successful* CDK Deploy step. For example, `<+pipeline.stages.s2.spec.provisioner.steps.test.steps.AwsCdkDeploy_2.output.outputVariables.LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID>`. In this example, this expression will resolve to the commit SHA from the latest successful execution of the `AwsCdkDeploy_2` step from a previous stage. The Git Clone step will checkout at that specific commit SHA.
 
   You do not have to use the Git commit used by the last successful CDK Deploy step. You can rollback to any branch, tag, or commit you like.
 
-<details>
-<summary>CDK Git Clone rollback step log example</summary>
 
-Here's a step log example that shows the tasks the step performs.
-
-```
-[DEBUG] setting default home directory
-+ git init
-hint: Using 'master' as the name for the initial branch. This default branch name
-hint: is subject to change. To configure the initial branch name to use in all
-hint: of your new repositories, which will suppress this warning, call:
-hint: 
-hint: 	git config --global init.defaultBranch <name>
-hint: 
-hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-hint: 'development'. The just-created branch can be renamed via this command:
-hint: 
-hint: 	git branch -m <name>
-Initialized empty Git repository in /harness/hello-cdk/.git/
-+ git remote add origin https://github.com/wings-software/hello-cdk.git
-+ set +x
-+ git fetch origin
-From https://github.com/wings-software/hello-cdk
- * [new branch]      main       -> origin/main
-+ git checkout -qf 7f895d2d828961f2f4321ab8fb3999b237d3d42b
-+ exit 0
-```
-
-</details>
 
 ### AWS CDK Rollback step
 
@@ -786,110 +579,11 @@ The CDK Rollback step rolls back the provisioned resources deployed by the CDK D
 
 Step settings:
 
-- **Provisioner Identifier:** In the CDK Rollback step, use the identical **Provisioner Identifier** as the CDK Deploy step to ensure that it rolls back the resources deployed by the failed CDK Deploy step.
-  By using the same **Provisioner Identifier** in both the CDK Deploy and CDK Rollback step, you do not need to provide identical stack information to ensure that the provisioned resources are rolled back. Harness tracks the provisioned resources from each deployment using the **Provisioner Identifier**, and can roll back to the last successful provisioned resources.
-- **Environment Variables:** You can change the values of environment variables in your CDK app.
-
-<details>
-<summary>CDK Rollback step log example</summary>
-
-Here's a step log example that shows the tasks the step performs.
-
-```
-/usr/local/bin/cdk --version
-
-2.90.0 (build 8c535e4)
-
-Working directory: /harness
-
-CDK app path:  hello-cdk
-
-/usr/local/bin/cdk deploy cdkTest3stack1 cdkTest3stack2 --parameters cdkTest3stack2:sname=stackTwoSecretNameStage1mEDUcmGTm1 --parameters cdkTest3stack1:sname=stackOneSecretNameStage1ZfBcO4T6Te -c stack1_name=cdkTest3stack1 -c stack2_name=cdkTest3stack2 --outputs-file cdk-outputs.json
+- **Provisioner Identifier:** The **Provisioner Identifier** setting is used to link CDK Deploy and CDK Rollback steps. In the CDK Rollback step, use the identical **Provisioner Identifier** as the CDK Deploy step to ensure that it rolls back the resources deployed by the failed CDK Deploy step.
+  By using the same **Provisioner Identifier** in both the CDK Deploy and CDK Rollback steps, you ensure that CDK Rollback will uses the data from corresponding `cdk deploy`. After each successful `cdk deploy`, Harness stores the details using the **Provisioner Identifier** so they can be used for rollback.
+- **Environment Variables:** You can change or add environment variables in your CDK app.
 
 
-✨  Synthesis time: 49.2s
-
-cdkTest3stack1
-
-cdkTest3stack1: deploying... [1/2]
-
-cdkTest3stack1: creating CloudFormation changeset...
-
-cdkTest3stack1 | 0/3 | 1:00:34 PM | UPDATE_IN_PROGRESS   | AWS::CloudFormation::Stack  | cdkTest3stack1 User Initiated
-
-cdkTest3stack1 | 0/3 | 1:00:37 PM | UPDATE_IN_PROGRESS   | AWS::SecretsManager::Secret | stack1secretId (stack1secretId52B866E2) Requested update requires the creation of a new physical resource; hence creating one.
-
-cdkTest3stack1 | 0/3 | 1:00:39 PM | UPDATE_IN_PROGRESS   | AWS::SecretsManager::Secret | stack1secretId (stack1secretId52B866E2) Resource creation Initiated
-
-cdkTest3stack1 | 1/3 | 1:00:39 PM | UPDATE_COMPLETE      | AWS::SecretsManager::Secret | stack1secretId (stack1secretId52B866E2) 
-
-cdkTest3stack1 | 2/3 | 1:00:40 PM | UPDATE_COMPLETE_CLEA | AWS::CloudFormation::Stack  | cdkTest3stack1 
-
-cdkTest3stack1 | 2/3 | 1:00:41 PM | DELETE_IN_PROGRESS   | AWS::SecretsManager::Secret | stack1secretId (stack1secretId52B866E2) 
-
-cdkTest3stack1 | 1/3 | 1:00:47 PM | DELETE_COMPLETE      | AWS::SecretsManager::Secret | stack1secretId (stack1secretId52B866E2) 
-
-cdkTest3stack1 | 2/3 | 1:00:47 PM | UPDATE_COMPLETE      | AWS::CloudFormation::Stack  | cdkTest3stack1 
-
- ✅  cdkTest3stack1
-
-✨  Deployment time: 23.46s
-
-Outputs:
-
-cdkTest3stack1.outputId = stackOneSecretNameStage1ZfBcO4T6Te
-
-Stack ARN:
-
-arn:aws:cloudformation:us-east-2:479370281431:stack/cdkTest3stack1/b9b10d20-6120-11ee-8623-06ad759518fd
-
-✨  Total time: 72.67s
-
-cdkTest3stack2
-
-cdkTest3stack2: deploying... [2/2]
-
-cdkTest3stack2: creating CloudFormation changeset...
-
-cdkTest3stack2 | 0/3 | 1:00:58 PM | UPDATE_IN_PROGRESS   | AWS::CloudFormation::Stack  | cdkTest3stack2 User Initiated
-
-cdkTest3stack2 | 0/3 | 1:01:01 PM | UPDATE_IN_PROGRESS   | AWS::SecretsManager::Secret | stack2secretId (stack2secretId28EE5117) Requested update requires the creation of a new physical resource; hence creating one.
-
-cdkTest3stack2 | 0/3 | 1:01:02 PM | UPDATE_IN_PROGRESS   | AWS::SecretsManager::Secret | stack2secretId (stack2secretId28EE5117) Resource creation Initiated
-
-cdkTest3stack2 | 1/3 | 1:01:03 PM | UPDATE_COMPLETE      | AWS::SecretsManager::Secret | stack2secretId (stack2secretId28EE5117) 
-
-cdkTest3stack2 | 2/3 | 1:01:04 PM | UPDATE_COMPLETE_CLEA | AWS::CloudFormation::Stack  | cdkTest3stack2 
-
-cdkTest3stack2 | 2/3 | 1:01:05 PM | DELETE_IN_PROGRESS   | AWS::SecretsManager::Secret | stack2secretId (stack2secretId28EE5117) 
-
-cdkTest3stack2 | 1/3 | 1:01:11 PM | DELETE_COMPLETE      | AWS::SecretsManager::Secret | stack2secretId (stack2secretId28EE5117) 
-
-cdkTest3stack2 | 2/3 | 1:01:12 PM | UPDATE_COMPLETE      | AWS::CloudFormation::Stack  | cdkTest3stack2 
-
-
- ✅  cdkTest3stack2
-
-
-✨  Deployment time: 22.79s
-
-Outputs:
-
-cdkTest3stack2.outputId = stackTwoSecretNameStage1mEDUcmGTm1
-
-Stack ARN:
-
-arn:aws:cloudformation:us-east-2:479370281431:stack/cdkTest3stack2/c10d5bf0-6120-11ee-a358-06dc8745c181
-
-✨  Total time: 71.99s
-
-/usr/bin/git rev-parse HEAD
-
-7f895d2d828961f2f4321ab8fb3999b237d3d42b
-
-```
-
-</details>
 
 ## Step settings common to multiple steps
 
@@ -923,7 +617,7 @@ The maximum number of cores that the container can use. CPU limits are measured 
 
 ### Environment Variables
 
-You can change the values of environment variables used in the container. You must input a **Key** and **Value** for each variable.
+You can change or add environment variables used in the container. You must input a **Key** and **Value** for each variable.
 
 Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline. 
 
