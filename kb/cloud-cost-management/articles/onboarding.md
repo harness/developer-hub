@@ -2,11 +2,15 @@
 
 The first goal when onboarding to CCM is to get all cloud billing data into Harness. At current time Harness covers AWS, Azure, GCP and Kubernetes.
 
+In general for every "payer account" you have in each cloud you will create a billing export, create/allow an identity access to said export, and then create a corresponding connector in Harness to allow us to start ingesting your billing information.
+
+The general recommendation is to use IaC whenever possible for creating these exports, roles, and connectors. You can use the UI as well but IaC helps to keep a record of your configuration and follows general best practice for shared cloud platforms.
+
 ## AWS
 
 ![](../static/ccm-onboarding-aws.png)
 
-Accounts in AWS are structured via organizations. The first step is to [create a CUR](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur) (Cost Usage Report) in the master payer account in their AWS org. Once the CUR is created, we create an initial Harness AWS account connector tied to the master account that points to the CUR.
+Accounts in AWS are structured via organizations. The first step is to [create a CUR](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur) (Cost Usage Report) in the master payer account in their AWS org (or in every AWS account you want costs for if you do not leverage AWS organizations). Once the CUR is created, we will create an initial Harness AWS account connector tied to the master account that points to the CUR.
 
 When configuring the AWS connector you are asked what features to enable. Usually (if following AWS best practices) there shouldn't be any other resources in the master account. This means we can usually only enable cost access for this account and not the others. If the customer still wants, you can enable the other features as needed.
 
