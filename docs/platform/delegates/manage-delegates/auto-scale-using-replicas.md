@@ -306,7 +306,7 @@ metadata:
   name: kubernetes-delegate-upgrader-config
   namespace: harness-delegate-ng
 data:
-  config.yaml: |
+  config.yaml: 
     mode: Delegate
     dryRun: false
     workloadName: kubernetes-delegate
