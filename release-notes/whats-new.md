@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-10-16T10:00
+date: 2023-10-19T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,19 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: October 16, 2023
+## Latest: October 19, 2023
+
+### Continuous Delivery, version 811xx
+
+- User interface improvements on the secrets listing page (CDS-80747)
+
+  The column widths and text truncation on the secrets listing page have been adjusted to make longer secret names more readable. 
+
+- Input and output variables for Tanzu deployments (CDS-79461)
+
+  You can now add input and ouput variables to the Tanzu Command step and step template to facilitate Tanzu deployments.
+
+## October 16, 2023
 
 ### Continuous Delivery, version 81008
 
