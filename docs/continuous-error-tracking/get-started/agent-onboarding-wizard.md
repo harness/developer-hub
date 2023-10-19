@@ -64,7 +64,7 @@ To clone an Agent configuration, follow these steps:
 
 2. Make the necessary changes to the configuration settings, and then select Save.
 
-   The newly saved configuration will appear in the Agent configuration tab.
+   The newly saved configuration appears in the Agent configuration tab.
 
 
 ## Edit an Agent configuration
