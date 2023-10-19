@@ -19,7 +19,7 @@ To generate Agent configuration settings, do the following:
 1. In your Harness project, navigate to the **Continuous Error Tracking** module, and then select **Monitored Services**.
 2. The Monitored Services page appears, displaying a list of all the monitored services in your project. It also displays whether Agent and notifications are configured for each monitored service.
 
-3. Select **+ Configure Error Tracking Agent** to start creating a configuration. 
+2. Select **Configure Error Tracking Agent** to start creating a configuration. 
    Alternatively, you can do the following:
 
     1. From the monitored services list, select the monitored service where you want to create a new agent configuration.
