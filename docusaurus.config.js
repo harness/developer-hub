@@ -409,7 +409,7 @@ const config = {
               },
               {
                 label: 'Release Notes',
-                href: '/release-notes/whats-new',
+                href: '/release-notes',
               },
               {
                 label: 'Feature Requests',

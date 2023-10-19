@@ -91,18 +91,18 @@ import {
             link: "/release-notes/continuous-delivery",
           },
           {
-            title: "Continuous Integration release notes",
-            module: MODULES.ci,
-            description:
-              "",
-            link: "/release-notes/continuous-integration",
-          },
-          {
             title: "Continuous Error Tracking release notes",
             module: MODULES.cet,
             description:
               "",
             link: "/release-notes/continuous-error-tracking",
+          },
+          {
+            title: "Continuous Integration release notes",
+            module: MODULES.ci,
+            description:
+              "",
+            link: "/release-notes/continuous-integration",
           },
           {
             title: "Feature Flags release notes",

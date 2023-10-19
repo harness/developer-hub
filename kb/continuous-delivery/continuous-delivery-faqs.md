@@ -528,7 +528,19 @@ OR
 
 #### Can a non-git-sync'd pipeline consume a git-sync'd template from a non-default branch?
 
-Yes an Inline pipeline can consume a template from non-default branch.  More on this can be referenced [here](https://developer.harness.io/release-notes/whats-new/#continuous-delivery-version-79811)
+Yes an Inline pipeline can consume a template from non-default branch.
+
+:::info Template Library
+
+Reference specific versions of a template on a different branch from the pipeline.
+
+While using Harness Git Experience for pipelines and templates, you can now link templates from specific branches.
+
+Previously, templates were picked either from the same branch as the pipeline, if both pipelines and templates were present in the same repository, or from the default branch of the repository, if templates were stored in a different repository than the pipeline.
+
+The default logic will continue to be used if no branch is specified when selecting the template, but if a specific branch is picked while selecting the template then templates are always picked from the specified branch only.
+
+:::
 
 #### Is there a way I can update the git repo where the pipeline YAML resides?
 

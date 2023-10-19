@@ -4,7 +4,7 @@ sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
 date: 2023-10-11T10:00
 tags: [NextGen, "security testing orchestration"]
-sidebar_position: 9
+sidebar_position: 12
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';

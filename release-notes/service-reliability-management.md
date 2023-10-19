@@ -3,7 +3,7 @@ title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
 date: 2023-10-09T10:00:20
 tags: [NextGen, "service reliability management"]
-sidebar_position: 7
+sidebar_position: 13
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
