@@ -73,7 +73,7 @@ The **Edit** option allows you to change the settings of an existing Agent confi
 
 To edit an Agent configuration, follow these steps:
 
-1. In the **Agent Configurations** tab, locate the configuration you wish to edit, and then select the ellipses (<i class="fa-solid fa-ellipsis-vertical"></i>) next to it. Then choose **Edit**.
+1. In the **Agent Configurations** tab, locate the configuration you wish to edit, and then select **More options** (<i class="fa-solid fa-ellipsis-vertical"></i>). Then choose **Edit**.
    
    The Configure error tracking agent for monitored service page is displayed.
 
