@@ -1908,3 +1908,31 @@ If you want to specifically check the executions for a specific service.
 You can do so by going to Service and then click on the service you want to see the executions for.
 Even under deployment, you can open the filter option and only enter service name and it will list all executions for the service.
 
+#### Can we deploy lambda function without update-function-code policy
+Harness needs this permission to modify code in lambda function and in rollback also this is needed.
+Although, you can deploy a new function without this permission but can't update an existing function.
+
+#### We already have running workload deployed using rolling deployment in harness. But when we tried to change the deployment to canary, we face with following error.
+Apply manifest failed with error: The Deployment "sample-app" is invalid: spec.selector: Invalid value: v1.LabelSelector{MatchLabels:map[string]string{"app":"sample-app", "harness.io/track":"stable", "release":"sample-app"}, MatchExpressions:[]v1.LabelSelectorRequirement(nil)}: field is immutable
+
+Make sure the instance/deployment which was deployed as rolling is not present at the time when you are trying the canary in the cluster(You can manually delete the deployment) and then try again as looks like instance is running and we can not add extra label which gets added as part of canary.
+Or you can change the namespace so that new instance will be deployed to new namespace.
+
+#### Download artifact for winrm is not working while Nexus if windows machine is behind proxy in CG
+Nexus is supported for NG but not in CG, so you can use custom powershell script something like below:
+Invoke-WebRequest -Uri "${URI}" -Headers $Headers -OutFile "${OUT_FILE}" -Proxy "$env:HTTP_PROXY"
+
+#### Kubernetes deployment is failing with error Invalid request: Failed to get namespace/ConfigMap/release-releaseid
+Looks like while trying to fetch the release configmap the command is failing try running the command directly to see the behaviour on delegate host
+kubectl get pods -n namespace
+kubectl describe configmaps release-releaseid
+
+
+#### I am using Git experience and have created a remote pipeline that is stored in Github. Is there a builtin variable to reference the branch name? 
+No , there is no built in variable to refer for Git experience you need to use custom script to populate the variable
+
+####  I am working on overrides creation using Terraform. As I see according to the latest update overrides were moved from the Environments tab to a separate tab. We have a use case where I must create all the 3 types provided under service-specific overrides. How to get YAML representation for all 3 types of override
+
+You can get the the detail under Example Usage here https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service_overrides_v2
+
+
