@@ -34,7 +34,7 @@ To generate Agent configuration settings, do the following:
 
 5. Select a token from the dropdown and select **Next**.
 
-6. Optionally provide source repository details if you wish to access code repository, branch, and commits related to errors from the ARC screen.
+6. Optionally, provide source repository details if you want to access a code repository, branch, and commits related to errors from the ARC screen.
 
 7.  Select your application programming language, version, and OS. Based on the OS that you select, you may be asked to enter OS distribution details.  
    
