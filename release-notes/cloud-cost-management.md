@@ -20,7 +20,40 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: version 81100
+## Latest: version 81200
+
+### New features and enhancements
+
+This release does not include any new features.
+
+### Early access features
+
+This release does not include any early access features.
+
+### Fixed issues
+
+* Previously while creating and AutoStopping rule, the k8s cluster selection list only displayed top 100 records, which made it difficult to choose a cluster when the list had more than 100 entries. (CCM-14644)
+
+  This is fixed by increasing the limit from 100 to 500 records. This will assist in retrieving every cluster that is accessible for selection.
+
+* Previously, in autostopping rule creation flow for Azure cloud provider, there's an option to create one AutoStopping rule using AppGateway belonging to one subscription and VMs which restricted the selection of VMs belonging to another subscription. (CCM-14515)
+  
+  This is fixed by adding support for selecting multiple connectors, one for the AutoStopping rule and other for the VMs. This helps in having independent connectors for each subscription. 
+
+* To avoid any confusion, tooltips are added for Potential Monthly Cost and Potential Monthly Savings on EC2 Recommendation details page. (CCM-14613)
+
+* A bug was identified during ingestion of AWS CUR data. The impact of the bug was causing AWS cost data from the current month to be dropped while ingesting AWS-CUR updates for the previous month. Since AWS updates CUR of previous months until the first few days of next month, this issue was hit in the initial days of the month. 
+This bug got introduced recently while supporting ingestion of future-dated entries in any billing-period (i.e. supporting ingestion of costs which have usageDates beyond the current month). (CCM-14618)
+
+  This is now fixed by considering billingperiodstartdate and billingperiodenddate during ingestion from AWS CUR.
+  
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 12, 2023, version 81100
 
 ### New features and enhancements
 
@@ -39,12 +72,6 @@ This release does not include any early access features.
 * Previously, our application allowed fetching anomalies for perspectives created through labels. The queries used for fetching anomalies in these cases were based on the default groupBy field, leading to the display of numerous incorrect anomalies in the labeled perspective, which were unrelated to the labeled resources. (CCM-14242)
 
   As of this release, we have discontinued support for fetching anomalies in perspectives created solely through labels. This change is aimed at improving the accuracy of anomaly reporting and ensuring that only relevant anomalies are presented.
-  
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### October 5, 2023, version 81000
 
