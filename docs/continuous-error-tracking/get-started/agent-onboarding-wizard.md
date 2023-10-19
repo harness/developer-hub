@@ -50,7 +50,7 @@ To view and use a configuration, follow these steps:
 
 - In the **Agent Configurations** tab, locate the configuration that you want to use and select the <i class="fa-solid fa-code"></i> button.  
   
-  The Configure error tracking agent for monitored service page is displayed. It provides instructions for downloading the Agent, adding JVM arguments, and setting environment variables.
+Use the instructions on the **Configure error tracking agent for monitored service** page to download the Agent, add JVM arguments, and set environment variables.
 
 ## Clone an Agent configuration
 
