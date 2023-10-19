@@ -23,11 +23,9 @@ Here is an example of how you can achieve it :
 
 We have a list which is an array of items, that we would like to iterate, we will convert this into a string to pass it as an output variable : 
 
-![](../static/script.png)
-
 ```
 items=("18", "17", "16", "15", "14", "13", "12", "11", "10", "9")
-new_var_pubic_ids=$(printf "%s," "${items[@]}" | sed 's/,$//')
+new_var_public_ids=$(printf "%s," "${items[@]}" | sed 's/,$//')
 ```
 Create a custom variable which would carry the value of the Output Variable as an expression and we will split it into a list of string 
 
@@ -36,7 +34,7 @@ Create a custom variable which would carry the value of the Output Variable as a
 The custom variable myvar contains an expression of our Output variable note that we are doing a split here :
 
 ```
-(<+execution.steps.ShellScript_1.output.outputVariables.new_var_pubic_ids>).split(",") 
+(<+execution.steps.ShellScript_1.output.outputVariables.new_var_public_ids>).split(",") 
 ```
 Now use this custom variable in your repeat strategy
 
