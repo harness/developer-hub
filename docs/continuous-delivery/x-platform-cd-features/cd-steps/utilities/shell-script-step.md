@@ -66,7 +66,7 @@ You can use Harness secrets in your Shell Script steps.
 
 For more information, go to [add text secrets](/docs/platform/secrets/add-use-text-secrets).
 
-Basically, you use `<+secrets.getValue("secret_Id")>` to refer to the secret.
+Basically, you use `<+secrets.getValue("secret_Id")>` to refer to the secret. Also, to access input and output variables of Secret type, you can directly use the variable, as explained later in the documentation.
 
 ### Escaping characters
 
