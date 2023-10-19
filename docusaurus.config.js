@@ -237,7 +237,7 @@ const config = {
               },
               {
                 label: 'Release Notes',
-                href: 'release-notes',
+                href: '/release-notes',
               },
               {
                 label: 'FAQs',
