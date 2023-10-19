@@ -50,7 +50,7 @@ This release does not include any early access features.
   
 - An alignment issue with the **Change Event** card has been fixed to ensure consistent information display. (SRM-15793)
 
-- The Service Level Indicator (SLI) iterator was retrying to create SLI tasks that already existed in the system. (SRM15870)
+- The Service Level Indicator (SLI) iterator attempted to create tasks that already existed. (SRM15870)
   
   This issue has been resolved. Now, the SLI iterator correctly handles task creation, preventing unnecessary retries.
 
