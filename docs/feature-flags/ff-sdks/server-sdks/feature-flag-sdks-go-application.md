@@ -303,7 +303,7 @@ harness.WithEventsURL("http://localhost:7000"))
 
 ### Configure your HTTP Client
 
-The SDK has a default HTTP client, however, you can provide your own HTTP client and passing it is as a configuration option.
+The SDK has a default HTTP client, however, you can provide your own HTTP client to the SDK by passing it in as a configuration option.
 
 For example, the following creates an HTTP client using custom CAs for Harness Self-Managed Enterprise Edition (on premises).
 
