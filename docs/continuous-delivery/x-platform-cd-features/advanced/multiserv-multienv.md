@@ -232,7 +232,7 @@ Here you can see two service deployments run serially on the same infrastructure
 
 By default, you cannot propagate the multiservices from one stage to a subsequent stage.
 
-Currently, to enable multiservice propagation, you must have the Harness feature flag `CDS_MULTI_SERVICE_PROPAGATION` enabled in your Harness account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, to enable multiservice propagation, you must have the Harness feature flags `MULTI_SERVICE_INFRA` and `CDS_MULTI_SERVICE_PROPAGATION` enabled in your Harness account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 ## Using environment groups
 
