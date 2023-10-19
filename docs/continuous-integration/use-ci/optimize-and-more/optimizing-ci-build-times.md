@@ -8,6 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Ssc from '/docs/continuous-integration/shared/scm-status-checks.md';
+```
+
 You can optimize your CI pipelines to make them faster, more efficient, and more versatile.
 
 ## Background services, caches, and shared volumes
@@ -20,7 +24,7 @@ For information about service dependencies, caches, and shared volumes, go to:
 
 ## Optimize test times
 
-For information about optimizing test times, go to [Run tests in CI pipelines](../set-up-test-intelligence/run-tests-in-ci.md).
+For information about optimizing test times, go to [Run tests in CI pipelines](../run-tests/run-tests-in-ci.md).
 
 ## Optimize Docker images
 
@@ -61,7 +65,7 @@ You can use [step groups](./group-ci-steps-using-step-groups.md) to organize com
 
 ### Looping strategies
 
-[Looping strategies](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) enable you to run a stage or step multiple times with different inputs. This eliminates the need to copy the same stage or step for each variation you need. It also makes the pipeline more organized, clean, and easy to maintain. Looping strategies enable use cases such as:
+[Looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) enable you to run a stage or step multiple times with different inputs. This eliminates the need to copy the same stage or step for each variation you need. It also makes the pipeline more organized, clean, and easy to maintain. Looping strategies enable use cases such as:
 
 * You want to test a UI feature in multiple browsers and platforms. You can define a matrix that specifies the browsers and platforms to test.
 * You want to build artifacts for multiple JDK versions in the same Build Stage.
@@ -100,6 +104,10 @@ There are many ways you can incorporate third party tools and services in your C
 * [Bring-your-own Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager)
 * [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support)
 * [Send notifications](/docs/category/notifications)
+
+### Branch protection and checks
+
+<Ssc />
 
 ## Increase step resources
 

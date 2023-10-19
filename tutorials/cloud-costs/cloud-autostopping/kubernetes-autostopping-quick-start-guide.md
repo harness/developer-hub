@@ -100,12 +100,12 @@ spec:
     - http:  
        paths:  
        - path: /  
-       pathType: Prefix  
-       backend:  
-         service:  
-          name: autostopping-sample-svc  
-          port:  
-           number: 80
+          pathType: Prefix  
+          backend:  
+            service:  
+              name: autostopping-sample-svc  
+              port:  
+                 number: 80
 ```
 #### Create an AutoStopping Rule
 

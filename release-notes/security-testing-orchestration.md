@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-08-30T10:00
+date: 2023-10-11T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 9
 ---
@@ -19,34 +19,78 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Version 1.68.0
+## Latest: Version 1.70.1
 
 ### New features and enhancements
 
-This release does not include new features. 
+- Improved the look and feel of the exemptions page, and added information about the severity of the issue associated with exemptions and exemption requests. (STO-6592)
 
 ### Early access
 
-This release does not include early access features. 
+- Added support for Matrix pipelines to the pipeline execution results filters
+  
+  This fixes an issue in a feature behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-6405)
 
 ### Fixed issues
+
+This release does not include any new fixes
+
+### Hotfixes
+
+This release does not include hotfixes. 
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Version 1.69.3
+
+##### New features and enhancements
+
+This release does not include new features. 
+
+##### Early access
+
+- This release includes the following UI enhancements for working with exemptions. (STO-6078)
+
+  - You can click on a row in the **Exemptions** table to view details for the issue associated with that exemption.
+
+    ![](static/sto-click-row-to-view-exemptions.png)
+
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+
+    ![](static/sto-exemption-details-no-baseline-selected.png)
+
+  These enhancements are behind the Feature Flag `STO_EXEMPTION_DETAILS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
+
+##### Fixed issues
+
+- Occurrences page size longer resets on page update. (STO-6472)
+
+
+##### Hotfixes
+
+This release does not include hotfixes. 
+
+
+#### Version 1.68.0
+
+##### New features and enhancements
+
+This release does not include new features. 
+
+##### Early access
+
+This release does not include early access features. 
+
+##### Fixed issues
 
 - Fixed the following UI issues in in **Security Tests**: 
 
   - Users with view access for Security Issues at the Project level, but not the Account level, could not view issue details. (STO-6421)
 
   - Some scanners such as Gitleaks would appear with the label **Unknown Scan Tool** rather than the correct product name. (STO-6454) (STO-6337)
-
-
-### Hotfixes
-
-This release does not include hotfixes. 
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### Version 1.67.2
 
@@ -62,7 +106,7 @@ This release does not include early access features.
 
 - Fixed an issue with setting up SSL certificates in Checkmarx, which caused Java keytools to fail. Upgrading to JDK-11 fixed the issue. (STO-6512)
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes. 
 
@@ -105,7 +149,7 @@ This release does not include early access features.
 
 
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes. 
 
@@ -265,7 +309,7 @@ This release does not include new features.
 
 Harness AI Development Assistant (AIDA) uses state-of-the-art AI technology to streamline the process of triaging and fixing security vulnerabilities. For every vulnerability detected by STO, Harness AIDA explains the issue precisely and provides detailed advice  — including code changes and package upgrades — on how to fix it. Harness AIDA is based on large, well-trained language models. It learns continuously based on feedback and the latest public knowledge. Optionally, you can regenerate advice with additional context and thereby optimize your results. 
 
-Harness AIDA reduces developer toil by streamlining and simplifying the process of fixing vulnerabilities. It enables developers and security personnel to manage security-issue backlogs and address critical issues promptly. Harness AIDA can dramatically reduce your TTR, speed up your software development lifecycle, and improve the security posture of your applications and services.
+Harness AIDA reduces developer toil by streamlining and simplifying the process of fixing vulnerabilities. It enables developers and security personnel to manage security-issue backlogs and address critical issues promptly. Harness AIDA can dramatically reduce your TTR, speed up your software delivery lifecycle, and improve the security posture of your applications and services.
 
 For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 
@@ -362,7 +406,7 @@ This release does not incude early-access features.
 
 * The **Security Tests** tab now paginates results for scans that detect a lot of issues. You can set the pagination to 20, 50, or 100 issues per page. (STO-5211)
 
-* STO now supports [looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for Security Tests stages. (STO-5726)
+* STO now supports [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) for Security Tests stages. (STO-5726)
 
 * You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
 
@@ -500,10 +544,10 @@ The following security steps are now generally available:
 * [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference) (STO-5050)
 * [Black Duck Hub](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference) (STO-5052)
 * [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) (STO-5073)
-* [Grype](/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference) (STO-5394)
+* [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) (STO-5394)
 * [Mend (formerly Whitesource)](/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference) (STO-5392)
 * [Prisma Cloud (formerly Twistlock)](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference) (STO-5055)
-* [Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) (STO-5053)
+* [Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference) (STO-5053)
 * [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) (STO-5051)
 * [Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference) (STO-5058)
 
@@ -646,7 +690,7 @@ This release does not include fixed issues.
 
 * Checkmarx scans now support a `tool_args` field. You can use this field to run the Checkmarx plugin with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`. (STO-5041) 
 
-* STO now supports orchestrated scans using [Grype](/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference). (STO-5161)  
+* STO now supports orchestrated scans using [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference). (STO-5161)  
 
 ##### Fixed issues
 
@@ -725,7 +769,7 @@ This release does not include new features.
 
 * You can now include Run steps in Security Test stages. You can also include Security Tests stages in STO pipelines without a CI license. (STO-5208)
 
-* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans). (STO-4958) 
+* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans). (STO-4958) 
 
 ##### Fixed issues
 

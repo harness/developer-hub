@@ -46,7 +46,7 @@ The SSCA module supports these policy types:
 
 ### Policy enforcement
 
-The SSCA module enforces policies in the CI and CD stages of the software development lifecycle, ensuring that you build and deploy only compliant software artifacts. When an artifact moves through the CI and CD stages of your [pipelines](#pipelines), the SSCA module checks the artifact and its associated SBOM against your defined policies. You can review any detected policy violations on the **Execution details** page in Harness. For more information, go to [View attestations and violations](../ssca-view-results.md).
+The SSCA module enforces policies in the CI and CD stages of the software delivery lifecycle, ensuring that you build and deploy only compliant software artifacts. When an artifact moves through the CI and CD stages of your [pipelines](#pipelines), the SSCA module checks the artifact and its associated SBOM against your defined policies. You can review any detected policy violations on the **Execution details** page in Harness. For more information, go to [View attestations and violations](../ssca-view-results.md).
 
 <!-- Future: If any violations are detected, response actions are activated based on your policy configurations. -->
 

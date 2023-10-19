@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-09-19T10:00
+date: 2023-10-18T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,9 +19,201 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: September 19, 2023
+## Latest: October 18, 2023
 
-### Harness Platform, version 80711
+### Continuous Integration, version 6203
+
+You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#enable-parallelism-test-splitting-for-test-intelligence) in the Visual editor as well as the YAML editor. (CI-9618)
+
+## October 16, 2023
+
+### Continuous Delivery, version 81008
+
+- Ability to exclude services or environments from deployment freeze window (CDS-79505)
+
+  Now, when configuring a coverage rule for a deployment freeze window, if you choose to include all services or all environments, Harness gives you the option to exclude specific services or environments, respectively. This functionality is the same as the options provided for excluding organizations and projects, and it reduces your effort when the entities you want to include outnumber those you want to exclude. 
+
+  For more information, go to [Define freeze window coverage and schedule](/docs/continuous-delivery/manage-deployments/deployment-freeze/#define-freeze-window-coverage-and-schedule).
+
+- Additional information for pipeline events (CDS-78150)
+
+  The following pipeline events now include the name, pipeline tag, and failure message:
+    - PIPELINE_FAILED
+    - STAGE_FAILED
+    - STEP_FAILED
+  
+  The following pipeline events now include the name and pipeline tag:
+    - PIPELINE_SUCCESS
+    - STAGE_SUCCESS
+
+- Improvements to the user experience with forms (CDS-74220, ZD-47456, ZD-50077)
+
+  The following improvements have been made to forms to enhance your user experience: 
+
+    - Initial empty state: forms opened for the first time are empty. This allows you to begin your input process with a clean slate.
+
+    - Runtime inputs: fields that you intentionally leave empty are manually converted to runtime inputs. You can modify and set values for these fields during runtime.
+
+    - Retained input set values: when you run a pipeline using the form, your experience will be seamless. The form loads with the same values as the previous input set without any unwanted clearing or mutation.
+ 
+### Harness Platform, version 81008
+
+- The HPA configuration setting is now included in the default Kubernetes delegate YAML file. (PL-36021)
+
+   This item is available with Harness Platform version 81008 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+  ```yaml
+   ---
+   
+   apiVersion: autoscaling/v1
+   kind: HorizontalPodAutoscaler
+   metadata:
+      name: harness-delegate-hpa
+      namespace: harness-delegate-ng
+      labels:
+          harness.io/name: harness-delegate
+   spec:
+     scaleTargetRef:
+       apiVersion: apps/v1
+       kind: Deployment
+       name: harness-delegate
+     minReplicas: 1
+     maxReplicas: 1
+     targetCPUUtilizationPercentage: 99
+   
+   ---
+   ```
+
+- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
+
+   This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Harness upgraded `com.squareup.okio:okio` from 2.8.0 to 3.4.0 to resolve [CVE-20230-3635](https://www.cve.org/CVERecord?id=CVE-2023-3635). (PL-41601)
+
+   This item is available with Harness Platform version 81008 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+## October 9, 2023
+
+### Continuous Delivery, version 80909
+
+- You can now provide detailed feedback in the Harness AIDA chat in CD. (CDS-79769)
+
+  <docimage path={require('./static/73123e6efdd7d7dbc7c67b4a7df71bd42b1b20c8ba4cf409f87de0749da8dc92.png')} width="40%" height="40%" title="Click to view full size image" />
+
+- For generic (non-Docker) artifacts available in Artifactory, you can use an expression to specify the path to the artifact. This filter works in the same way as the artifact filter in Harness FirstGen, and it is useful when you want to fetch artifacts from multiple paths. (CDS-78181)
+
+  This item requires Harness Delegate version 23.10.80808. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### Harness Platform, version 80909
+
+- To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. This feature enables you to specify fixed URL domains to which notifications can be sent. Expression URLs are not yet supported.
+
+   To add a filter domain to a notification channel, navigate to **Account Settings** > **Account Resources** > **Default Settings** > **Notifications** in the Harness platform and add the fixed URL domain to the corresponding notification setting. When a domain is added to a notification channel's domain allowlist, only recipients whose domains are present in the allowlist will receive notifications from that channel. This applies to both existing and new recipients until their domain is added to the channel's domain allowlist. (PL-39481, ZD-43735)
+
+- The **Session Timeout** field in Authentication Settings is renamed to **Session Inactivity Timeout**. The field now automatically converts the minutes you enter to higher units of time, and displays the result under the field to simplify usage. For example, if you enter 1440, the UI shows **1 day** below the field. (PL-39982, ZD-47238)
+
+- Harness now returns a `Cannot send notification as notification channel is disabled from Account settings.` error in the test notification API when a channel is disabled. (PL-41449)
+
+- Harness previously had a feature flag `DISABLE_HARNESS_SM`, which allowed you to disable the Harness default Secret Manager and showed a **Settings** section on the Account Details page. This setting was migrated to the centralized **Default Settings** under **Resources**. Harness removed the feature flag `DISABLE_HARNESS_SM` as well as the corresponding setting from the Account Details page. (PL-41538)
+
+<!-- 
+- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-40247, ZD-48280)
+
+   This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+-->
+
+### Continuous Integration, version 6100
+
+When you [enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) for Scala or Kotlin, the **Packages** and **Test Annotations** fields are now available in the Visual editor. (CI-9589)
+
+## October 07, 2023
+
+### Continuous Error Tracking, versions ET-Service 5.28.2 and ET-Collector 5.28.0
+
+- Event filtering has been enhanced by removing event type selector boxes and displaying event counts above the events list. Additionally, a multi-select dropdown for event types has been introduced for improved usability. (CET-1698)
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### September 30, 2023
+
+##### Self-Managed Enterprise Edition, version 80220
+
+- Harness has updated the Helm chart to optimize packaging and module delivery. (SMP-1588)
+
+- Harness Self-Managed Enterprise Edition now supports self-managed MinIO object storage for disaster recovery. (SMP-1671)
+
+   For more information, go to [Self-managed object storage](/tutorials/self-managed-enterprise-edition/use-self-managed-minio-object-storage/).
+
+- You can now apply Harness' recommended high performance configuration to reach a scale of 1000 concurrent pipelines. (SMP-1836)
+
+   The `override-perf-ci-cd-ff.yaml` file is available in the [Harness Helm chart repo](https://github.com/harness/helm-charts/blob/release/0.9.0/src/harness/override-perf-ci-cd-ff.yaml).
+
+- You can now use your Redis password in your external self-managed Redis database. (SMP-1860)
+
+   For more information, go to [Use an external self-managed Redis database with your installation](/tutorials/self-managed-enterprise-edition/use-an-external-redis-database).
+
+#### September 29, 2023
+
+##### Service Reliability Management, version 1.2.5
+
+Added new filters named Environment-Based and SLO Type to the SLO listing page. You can now filter the SLO list on environment or SLO type for improved management. (SRM-15506)
+
+##### Continuous Integration, version 5902
+
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) now supports manual branch builds (the **Git Branch** build type). This is in addition to existing support for manual PR builds, as well as PR and push webhook triggers. When you [enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#enable-test-intelligence), you can use a manual branch build to [Generate the initial call graph](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#generate-the-initial-call-graph), and for subsequent pipeline runs. (CI-8932)
+
+<!-- ![](./static/ci-8932.png) -->
+
+<docimage path={require('./static/ci-8932.png')} />
+
+#### September 28, 2023
+
+##### Harness Platform, version 80811
+
+- Access control lists (ACLs) have now been optimized by the removal of ACLs that are no longer necessary and by ensuring that redundant ACLs are no longer created for new role assignments. (PL-41154)
+
+- The default interval for synchronizing LDAP groups has been increased from 15 minutes to 1 hour. This value is customizable, so you can set it to a value of your choice. This change does not affect existing LDAP configurations. (PL-40860)
+
+- The **Assign Roles** dialog listed the built-in Account Viewer role when you were assigning roles to a user group, and it did not provide a way for you to remove that role. You could, however, remove the Account Viewer role when updating the role assignments in the **Manage Role Bindings** dialog.
+
+  This issue has been fixed. You can now remove the Account Viewer role when assigning roles to a user group. (PL-32413)
+
+- The Roles page now supports a list view in addition to the existing card view. In addition to the information shown in the card view, the list view shows you which resources are selected for the role. To see the list view, in the top-right corner of the Roles page, select the list view button. (PL-32183)
+
+<!-- Add to 809xx or future release when feature is complete
+- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-41063)
+
+   This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+-->
+
+##### Harness Delegate, version 23.09.80804
+
+Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
+
+   - `org.bouncycastle:bcpg-jdk15on:jar:1.70` to `org.bouncycastle:bcpg-jdk18on:jar:1.76`
+   - `org.bouncycastle:bcpkix-jdk15on:jar:1.70` to `org.bouncycastle:bcpkix-jdk18on:jar:1.76`
+   - `org.bouncycastle:bcprov-ext-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-ext-jdk18on:jar:1.76`
+   - `org.bouncycastle:bcprov-jdk15on:jar:1.70` to `org.bouncycastle:bcprov-jdk18on:jar:1.76`
+
+##### Continuous Delivery, version 80811
+
+- There was no way in Pipeline Studio to add step group variables when creating a step group template. This section has now been added. (CDS-78683)
+
+- This release improves the UI feedback when executing an Approval step. Previously, the pipeline execution log console could appear stuck at the Approval step even after the pipeline processed the step successfully. This release includes a back-end optimization to ensure that the Pipeline Execution UI processes and displays log messages for Approval steps in real time. (CDS-76996, ZD-48401)
+
+#### September 25, 2023
+
+##### Service Reliability Management, version 1.1.3
+
+- SRM dashboards now include comprehensive data for composite Service Level Objectives (composite SLOs). This enhancement offers users a holistic view of both simple and composite SLO performance. (SRM-15419)
+
+
+#### September 19, 2023
+
+##### Harness Platform, version 80711
 
 -  The delegate Helm chart is now included in the delegate proxy configuration. You can pull the Helm chart from `https://<YOUR_LOADBALANCERURL>/storage/harness-download/delegate-helm-chart/`. (PL-39190)
 
@@ -33,21 +225,21 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   This issue has been fixed. You can now specify whether or not you want to retain the token to reduce the number of requests made. Possible values are `True` and `False`. The default value is `True`.
 
-### Continuous Integration, version 5801
+##### Continuous Integration, version 5801
 
 You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings) with buckets with [disabled ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html). (CI-8371, ZD-45677)
 
-## September 12, 2023
+#### September 12, 2023
 
-### Continuous Error Tracking, version ET-Service 5.26.1
+##### Continuous Error Tracking, version ET-Service 5.26.1
 
 - In the ARC screen, variables now display their values on hover. Additionally, when you select a variable, it is highlighted in the variables panel for easy identification. (CET-970)
 
 - CET now provides an audit trail feature for Agent Tokens and Critical Event definitions. You can view the audit trail for create, update, and delete operations, enhancing visibility and security in token management. (CET-1364)
 
-## September 11, 2023
+#### September 11, 2023
 
-### Harness Platform, version 80504
+##### Harness Platform, version 80504
 
 - When Harness is configured to use the App Role Id to fetch an authentication token from HashiCorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
 
@@ -65,7 +257,7 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
 
 - The delegate expiration policy has been extended from 3 months to 6 months. You now only have to update delegates once every 6 months. (PL-39452)
 
-   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - The OWASP Java HTML Sanitizer version is upgraded to 20220608.1. (PL-40807)
 
@@ -73,14 +265,14 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
 
 - The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
 
-- If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
+- If the Email step failed to send a notification, the following message was displayed: "Failed to send the email. Check SMTP configuration." The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
    Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
    
-   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-## September 7, 2023
+#### September 7, 2023
 
-### Cloud Cost Management, version 80702
+##### Cloud Cost Management, version 80702
 
 * Cost category enhancement (CCM-12879)
 
@@ -90,9 +282,9 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
 
     <docimage path={require('./static/ccm-copy-cost-buckets.gif')} width="60%" height="60%" title="Click to view full size image" />
 
-## September 5, 2023
+#### September 5, 2023
 
-### Harness Platform, version 80406
+##### Harness Platform, version 80406
 
 - Earlier, in the audit trail, all changes to a user principal's role assignment were logged with the generic Update action type. The record offered no additional information about whether a role assignment was created, updated, or deleted. (PL-39799, ZD-46451)
 
@@ -107,21 +299,15 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
 
 - You can now create secrets in child scopes using the parent scope in Secret Manager. For example, you can create secrets inside a project using the Secret Manager created at the Org or Account level. (PL-38949)
 
-## September 1, 2023
+#### September 4, 2023
 
-### Cloud Cost Management
+##### Cloud Cost Management, version 80606
 
 - Display refunds or discounts on the graph within perspectives. (CCM-13443)
 
   Previously, graphs in perspectives didn't display refunds or discounts, resulting in empty spots when values were negative. This enhancement improves this by aggregating negative values into a red-colored bar chart. You can now toggle a button in **General Preferences** to view these previously hidden negative costs.
 
     <docimage path={require('./static/aws-preferences-ccm13443.png')} width="60%" height="60%" title="Click to view full size image" />
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 30, 2023
 
@@ -170,7 +356,7 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
 
   By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ##### Harness Delegate, version 80308
 
@@ -273,15 +459,15 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
 
 - Upgraded the Helm binary from version 3.8 to 3.12. (CDS-58931)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Upgraded go-template binary to version 0.4.3, which uses go version 1.20. (CDS-58919)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Removed Helm version 3.1 from delegates with an immutable image type (image tag `yy.mm.xxxxx`). (CDS-58892, ZD-47520, ZD-48553)
 
-  This item requires Harness Delegate version 80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ##### Harness Delegate, version 80104
 
@@ -438,7 +624,7 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
 
   If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
-This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ##### Continuous Delivery, version 79916
 
@@ -470,7 +656,7 @@ This item requires Harness Delegate version 79904. For information about feature
 
 - Support for expressions in remote Terraform Var files hosted on Github and S3. (CDS-68612, ZD-43917, ZD-45714)
   
-  This feature requires the latest delegate version, 79904, to display console logs during execution correctly.
+  This feature requires the latest delegate version, 23.07.79904, to display console logs during execution correctly.
 
 ##### Harness Delegate, version 79904
 
@@ -763,7 +949,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 ##### Continuous Delivery, version 79516
 
-- Added expressions to retrieve the current execution status of the [looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy. (CDS-69780)
+- Added expressions to retrieve the current execution status of the [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) for nodes (stages/steps) using a matrix or repeat strategy. (CDS-69780)
   
   The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
   
@@ -797,7 +983,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
 
-  Harness Delegate version 79503 is required for this feature.
+  Harness Delegate version 23.06.79503 is required for this feature.
 - Use labels for matrix naming strategy. (CDS-68030)
   
   To use the matrix labels naming strategy, do the following: 
@@ -969,7 +1155,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 * A warning now appears if you try to save a template with an existing identifier and an updated version label. This warns you that it will be merged with the existing template (upon confirmation). (CDS-47301)
 
-* The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set secret expiration date. The Harness Delegate version 79307 is required for this feature. (PL-32708, ZD-42524)
+* The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set secret expiration date. The Harness Delegate version 23.05.79307 is required for this feature. (PL-32708, ZD-42524)
 
 * AuthZ now considers the SAML setting that the user logged in to when multiple SAML settings are present and the user belongs to more than one of them. The user will be removed from any other SAML settings that the same user might have been part of and synced with Harness through previous SAML logins. (PL-32484) 
 
@@ -983,7 +1169,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   When you set the failure strategy to **Ignore Failure**, the failure of the steps or stages are ignored and marked as success instead of failed. 
 - Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
   
-  The Harness Delegate version 79307 is required for this feature. 
+  The Harness Delegate version 23.05.79307 is required for this feature. 
   
   For more information, go to [Schedule pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/).
 - Support for creating or updating a variable of type, secret in the Update Release Repo step is now removed. (CDS-58530)
@@ -997,14 +1183,14 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 - The **Auto-Reject previous deployments paused in this step on approval** is added to the Approval step. (CDS-58063)
   
   With this option, you can now reject old executions waiting on approval when a latest step is approved. For more information, go to [Manual Approval steps in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages).
-- You can add metadata or [JEXL conditions](/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#jexl-conditions) on artifact triggers just like custom triggers. (CDS-51928)
+- You can add metadata or [JEXL conditions](/docs/platform/triggers/triggers-reference/#jexl-conditions) on artifact triggers just like custom triggers. (CDS-51928)
 - The `<+trigger.artifact.build>` expression now resolves with value when you rerun a failed pipeline. (CDS-50585, ZD-42193)
   
   A new API is now supported in the backend to fetch details from `planExecutionsMetadata` that has information about the tags that were used when a trigger fires a pipeline. 
 - You can now use the expression, [`<+lastPublished.tag>`](/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions) if you want to deploy the last successfully published artifact version. (CDS-53512)
 - Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
   
-  The Harness Delegate version 79307 is required for this feature.
+  The Harness Delegate version 23.05.79307 is required for this feature.
   
   The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
   
@@ -1026,7 +1212,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   
   Previously, triggers used the round robin algorithm to select any available delegate within a project or account. Now, the delegate-based trigger polling selects the same delegate you used in the connectors for triggers. 
 
-  The Harness Delegate version 79307 is required for this feature.
+  The Harness Delegate version 23.05.79307 is required for this feature.
   
 
 #### May 17, 2023, STO Core version 1.53.0
@@ -1053,7 +1239,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 * The Security Tests tab now paginates results for scans that detect a lot of issues. You can set the pagination to 20, 50, or 100 issues per page. (STO-5211)
 
-* STO now supports [looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for Security Tests stages. (STO-5726)
+* STO now supports [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) for Security Tests stages. (STO-5726)
 
 * You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
 
@@ -1192,7 +1378,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 ##### Continuous Integration
 
 * The CI Getting Started workflow leads you through creating an SCM connector and a pipeline. This workflow has been improved to generate a pipeline based on the repository you select. (CI-7603)
-* The **Run as User** setting is now available for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings), [Run Tests steps](/docs/continuous-integration/use-ci/set-up-test-intelligence/#add-the-run-tests-step), and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) in stages that use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). This setting allows you to specify a user ID to use for processes running in containerized steps. (CI-7493)
+* The **Run as User** setting is now available for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings), [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#add-the-run-tests-step), and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) in stages that use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). This setting allows you to specify a user ID to use for processes running in containerized steps. (CI-7493)
 * Added validations for pipelines that use the [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) macOS build infrastructure, which doesn't support containerized steps. The new validations produce an error message if any applicable steps, such as [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings), have the **Image** and either **Container Registry** or **Connector** fields populated. (CI-7221)
 
 ##### Service Reliability Management
@@ -1287,7 +1473,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 * Your CI pipelines can automatically update Jira issues when builds and deployments occur. For more information, go to [Explore plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins). (CI-7222)
 * The following features are now generally available. These were enabled by default for all users, but they were behind features flags until they were deemed stable. (CI-6537)
   * `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the [Harness Manager](/docs/get-started/harness-platform-architecture#harness-platform-components) directly by HTTP rather than through a Delegate.
-  * `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) and [Run Tests](/docs/continuous-integration/use-ci/set-up-test-intelligence/#add-the-run-tests-step) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
+  * `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) and [Run Tests](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#add-the-run-tests-step) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
 
 ##### Service Reliability Management
 
@@ -1668,10 +1854,10 @@ The following security steps are now generally available:
 * [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference) (STO-5050)
 * [Black Duck Hub](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference) (STO-5052)
 * [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) (STO-5073)
-* [Grype](/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference) (STO-5394)
+* [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) (STO-5394)
 * [Mend (formerly Whitesource)](/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference) (STO-5392)
 * [Prisma Cloud (formerly Twistlock)](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference) (STO-5055)
-* [Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) (STO-5053)
+* [Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference) (STO-5053)
 * [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) (STO-5051)
 * [Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference) (STO-5058)
 
@@ -1868,7 +2054,7 @@ In addition to fixed values and runtime inputs, you can now use [expressions](/d
 * [Pipeline execution status links](/docs/continuous-integration/use-ci/viewing-builds) in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
 * Improved handling of Azure repo URLs in [Git webhook pipeline triggers](/docs/platform/triggers/triggering-pipelines). (CI-5720)
 
-##### Delegate version 78306
+##### Delegate version 23.02.78306
 
 This release introduces the following new features and enhancements:
 
@@ -1927,7 +2113,7 @@ This release introduces the following new features and enhancements:
   This results in a seamless search experience.
 
 - Entity names can now include the `/` character. (PL-29929)
-- [Looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
+- [Looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
 
 ##### Security Testing Orchestration
 
@@ -2049,7 +2235,7 @@ infrastructure:
 
 * Checkmarx scans now support a `tool_args` field. You can use this field to run the Checkmarx plugin with specific command-line arguments. To run an incremental scan, for example, `specify tool_args` = `-incremental`. (STO-5041)	
 
-* STO now supports orchestrated scans using [Grype](/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference). (STO-5161)	
+* STO now supports orchestrated scans using [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference). (STO-5161)	
 
 #### January 1, 2023	
 
@@ -2316,7 +2502,7 @@ The Custom Git Connector now supports connection via the Harness Platform, in ad
 
 * You can now include Run steps in Security Test stages. You can also include Security Tests stages in STO pipelines without a CI license. (STO-5208)
 
-* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans). (STO-4958)	
+* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans). (STO-4958)	
 
 
 #### October 31, 2022

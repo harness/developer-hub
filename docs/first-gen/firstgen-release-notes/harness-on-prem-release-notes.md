@@ -61,7 +61,7 @@ This release does not include any early access features.
 
 - Fixed an issue where the Google Cloud Build (GCB) triggers were throwing an invalid credentials error intermittently. (CDS-70560, ZD-40187)
 
-   This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
+   This item requires Harness Delegate version 23.06.79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
 
 - Kubernetes deployments timed out and failed when listing pods. (CDS-71328, ZD-45584)
 

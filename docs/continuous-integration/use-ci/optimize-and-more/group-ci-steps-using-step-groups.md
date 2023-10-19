@@ -113,7 +113,7 @@ Steps running in parallel can't reference output data from each other, since the
 
 ## Conditional executions, failure strategies, and looping strategies for step groups
 
-Step groups can have [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/), [Failure Strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps), and [Looping Strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) settings that apply to all steps in the group. However, if a step within the group has its own step-level **Conditional Execution** or **Failure Strategy**, then the individual step's settings override the step group's settings for that single step.
+Step groups can have [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings), [Failure Strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps), and [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) settings that apply to all steps in the group. However, if a step within the group has its own step-level **Conditional Execution** or **Failure Strategy**, then the individual step's settings override the step group's settings for that single step.
 
 If you configure stage-level **Conditional Execution** and **Failure Strategy** settings, then those settings apply to any step groups or steps that don't have their own **Conditional Execution** and **Failure Strategy** settings.
 

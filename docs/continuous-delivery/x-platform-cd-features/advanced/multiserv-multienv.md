@@ -249,14 +249,6 @@ The console view can also help view multiple deployments clearly:
 
 ![](./static/multiserv-multienv-27.png)
 
-## Propagating multiple services in stages
-
-Service propagation is not supported when using multiple services in a single stage (this is called a multiple service deployment).
-
-When you add subsequent CD stages to a pipeline you cannot propagate the multiple services like you would with one service.
-
-For details on propagating services in stages, go to [propagate CD services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services).
-
 ## Rollback with multiple services and environments
 
 With a multi service to multi infrastructure stage, every combination of service and infrastructure is treated as a separate deployment.

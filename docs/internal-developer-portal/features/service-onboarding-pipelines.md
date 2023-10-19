@@ -1,7 +1,7 @@
 ---
 title: Service onboarding pipelines
 description: Service onboarding pipelines use a software template and enable a developer to spawn new software applications easily while following the company's best practices.
-sidebar_position: 20
+sidebar_position: 2
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false

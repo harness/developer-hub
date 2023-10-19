@@ -5,6 +5,8 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
 import { getCertLevel } from "./LandingPage";
+import DeveloperCertificationReviewGuide from "./data/ccm-certification-developer-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/ccm-certification-developer-exam-details.md";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -114,7 +116,7 @@ export default function CloudCostManagement() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Cloud Cost Management - Developer (BETA COMING SOON)</h2>
+                  <h2>Cloud Cost Management - Developer (BETA)</h2>
                   <img
                     src={`${baseUrl}img/cert_dev_ccm_badge.svg`}
                     alt="Harness Certified Expert - CCM Developer"
@@ -126,16 +128,39 @@ export default function CloudCostManagement() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Coming Soon...</h3>
+                <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assess key technical job functions and advanced skills in
-                    design, implementation and management of CCM.
+                    Assesses the fundamental skills to to detect and stop cloud cost anomalies as they occur.
+                  </div>
+                  <DeveloperCertificationReviewGuide />
+                  <div className={styles.btnContainer}>
+                    <Link href="https://university.harness.io/betacertification-exam-harness-certified-cloud-cost-management-developer">
+                      <button className={styles.moreDetails}>
+                        Register for Exam
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+            {/* Developer Exam Details */}
+            <div className={styles.examDetails}>
+            <h2 id="exam-details">Exam Details</h2>
+            <div className={styles.examDetailsCard}>
+              <DeveloperCertificationExamDetails />
+              <div className={styles.btnContainer}>
+                <Link href="#">
+                  <button className={styles.moreDetails}>
+                    Register for Exam
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
+
         {/* Administrator Tab Content */}
         <div
           className={clsx(

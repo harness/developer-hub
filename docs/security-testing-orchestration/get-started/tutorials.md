@@ -1,5 +1,5 @@
 ---
-title: Tutorials
+title: STO Tutorials
 description: Get started with STO
 sidebar_position: 4
 redirect_from:

@@ -74,9 +74,9 @@ If your build requires a specific version of a tool, or you need to use a versio
 
 There are a variety of steps you can use to do this, such as [Run steps](../run-ci-scripts/run-step-settings.md) or [Plugin steps](../use-drone-plugins/explore-ci-plugins.md).
 
-#### Example: Use an Action step to setup Java 17
+#### Example: Use an Action step to setup Java
 
-In the following YAML example, an [Action step](../use-drone-plugins/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to install Java 17, and then the **Run** step confirms the Java version.
+In the following YAML example, an [Action step](../use-drone-plugins/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to install a Java version, and then the **Run** step confirms the Java version.
 
 ```yaml
             steps:
@@ -88,7 +88,7 @@ In the following YAML example, an [Action step](../use-drone-plugins/ci-github-a
                     uses: actions/setup-java@v3
                     with:
                       distribution: 'temurin'
-                      java-version: '17'
+                      java-version: '16'
               - step:
                   identifier: java_ver_check
                   name: java version check
@@ -97,7 +97,7 @@ In the following YAML example, an [Action step](../use-drone-plugins/ci-github-a
                     shell: Bash
                     command: |
                       JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
-                      if [[ $JAVA_VER == 17 ]]; then
+                      if [[ $JAVA_VER == 16 ]]; then
                         echo successfully installed $JAVA_VER
                       else
                         exit 1

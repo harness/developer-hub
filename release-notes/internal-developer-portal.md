@@ -15,9 +15,42 @@ import TabItem from '@theme/TabItem';
 
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
 
-## Latest: Version 0.8.0
+## Latest: Version 0.12.0
+
+IDP has now graduated from Beta into **Public Preview**. During [Unscripted](https://www.unscriptedconf.io/) in September, we made a series of announcements. Here are some quick links for your recap.
+
+- [Launch Demo in Keynote](https://youtu.be/6OuK_sl3mLE?feature=shared&t=2065) by Jyoti Bansal and Eric Minick.
+- [Platform Engineering Demo](https://youtu.be/c04F98kS96U?feature=shared&t=534) by Alex Valentine.
+- [Announcement Blog Post](https://www.harness.io/blog/internal-developer-portal-public-preview) by Himanshu Mishra. 
 
 ### New features and enhancements
+
+- Scorecards are now launched for everyone. It contains several data sources and data points within the framework. There are default checks for you to use. You can create custom checks as well. [Read more](https://developer.harness.io/docs/internal-developer-portal/features/scorecard), Watch this [video tutorial](https://youtu.be/jvLDdWS3rFE?feature=shared) to know more.
+- Backstage is now upgraded to [v1.16](https://backstage.io/docs/releases/v1.16.0). 
+- [EntityRelationWarning](https://backstage.io/docs/reference/plugin-catalog.entityrelationwarning) is now available to be used in Layout. You can add this in your layout so that a warning alert is displayed if the entity has relations to other entities, which don't exist in the catalog. See **example**. [IDP-993]
+
+```yaml
+contents:
+  - component: EntityRelationWarning
+```
+
+- New Plugins support available in IDP
+  - Grafana - Associate alerts and dashboards to components. Read more [here](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/grafana) [IDP-915]
+  - SonarQube - Components to display code quality metrics from SonarCloud and SonarQube. Read more [here](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/sonarqube) [IDP-1249]
+- Every plugin page now has a plugin docs available. [IDP-923]
+
+### Fixed Issues
+
+- Improved Error message when pipeline is configured wrong in IDP Software Templates. [IDP-1230]
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### September 25, 2023, Version 0.8.0
+
+##### New features and enhancements
 
 - IDP now includes the [GitHub Catalog Discovery](/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery) plugin. You can use this to automatically discover `catalog-info.yaml` files from your GitHub organizations and repositories. [IDP-887]
 
@@ -27,18 +60,9 @@ Review the notes below for details about recent changes to Harness Internal Deve
   
   You can use these UI pickers in service onboarding workflows for developers to easily select a Harness project and organization. Take a look at this [example](https://github.com/bhavya-sinha/scaffolder-sample-templates/blob/5f52718ec49cb2c27a87e2fbeae075873701911c/fieldExtension.yaml#L78-L85). [IDP-868]
 
-### Early access features
-
-This release does not include early access features.
-
-### Fixed issues
+##### Fixed issues
 
 This release does not include fixed issues.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### July 27, 2023, version 0.7.0
 
@@ -47,10 +71,6 @@ This release does not include fixed issues.
 - IDP now includes the Confluence search plugin to include results from Confluence spaces. To learn more, go to the [plugin documentation](/docs/internal-developer-portal/plugins/available-plugins/confluence). (IDP-845)
 - The `harness:create-secret` and `harness:delete-secret` template actions are now available for use in IDP software templates. You can use these actions to receive a secret from a developer, create a Harness secret, and then use it as a pipeline variable to provide runtime input. For more information, go to the [tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input) (IDP-780)
 - The interval at which IDP polls Git repositories associated with the software catalog has increased from 5 minutes to 15 minutes. (IDP-749)
-
-##### Early access
-
-This release does not include early access features.
 
 ##### Fixed issues
 
@@ -72,10 +92,6 @@ This release does not include early access features.
 - The `trigger:harness-custom-pipeline` action on the software template `template.yaml` is now synchronous with pipeline execution. The action keeps running during pipeline execution, and it shows the current status of the pipeline.
 - Since the `trigger:harness-custom-pipeline` is now synchronous, you can use the `catalog:register` action in a template and register the newly generated software component's `catalog-info.yaml`.
 
-##### Early access
-
-This release does not include early access features.
-
 ##### Fixed issues
 
 - Fixed a bug with access control around de-registering a software component. (IDP-757)
@@ -91,10 +107,6 @@ This release does not include early access features.
   - [GitHub Pull Requests](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-github-pull-requests).
 - IDP now includes support for GitHub and Google OAuth applications. You can configure a GitHub or Google OAuth application in the IDP Admin view. These applications are used by the GitHub-based plugins to use the logged-in user's credentials when making API requests. (IDP-676, IDP-661, IDP-647)
 - IDP now supports a URL allowlist. If the `catalog-info.yaml` references API definitions that are hosted on a provider other than your Git provider, add the URL to the allowlist. (IDP-648)
-
-##### Early access
-
-This release does not include early access features.
 
 ##### Fixed issues
 

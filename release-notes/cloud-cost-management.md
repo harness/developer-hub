@@ -20,7 +20,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: version 80804
+## Latest: version 81100
 
 ### New features and enhancements
 
@@ -32,18 +32,82 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-* Previously, on the AutoStopping details page, the dry-run flag did not invoke the savings API when turned on. (CCM-14232)
+* Previously, attempting to edit a cost bucket with operands selected as "NOT NULL/NULL" led to an unexpected error, subsequently hindering the editing of other buckets. (CCM-14519)
 
-  This issue has been fixed. Now, the cost savings are correctly displayed in the dry-run mode.
+  This issue has been fixed by introducing a custom validation to resolve the error.
+
+* Previously, our application allowed fetching anomalies for perspectives created through labels. The queries used for fetching anomalies in these cases were based on the default groupBy field, leading to the display of numerous incorrect anomalies in the labeled perspective, which were unrelated to the labeled resources. (CCM-14242)
+
+  As of this release, we have discontinued support for fetching anomalies in perspectives created solely through labels. This change is aimed at improving the accuracy of anomaly reporting and ensuring that only relevant anomalies are presented.
   
-
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
 
+#### October 5, 2023, version 81000
+
+##### New features and enhancements
+
+This release does not include any new features.
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+* Previously, For EC2 Recommendations, the monthly savings from crossFamilyRecommendation or sameFamilyRecommendation fields, based on the selected preferences, were used to display the savings amount in the widget. However, for Terminate Recommendations, as these values were not available, it resulted in showing $0 in the widget. (CCM-14544)
+
+This is fixed by switching to totalMonthlyCost and totalMonthlySavings for the potential savings widget in EC2 Terminate Recommendations.
+
+
+#### September 27, 2023, version 80904
+
+##### New features and enhancements
+
+* Previously, CCM displayed only the essential Jira or ServiceNow fields in Recommendation Workflows. However, with this enhancement, CCM introduces a new field _+ Fields_ that allows users to add optional fields as needed.
+
+    <docimage path={require('./static/ccm-jira-ticket-enhancement.png')} width="40%" height="40%" title="Click to view full size image" />
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+* Previously, CCM used to display all anomalies, including the new ones that were labeled as "N/A."  (CCM-14275)
+
+  However, now, anomalies will not be shown on the UI for newer entities. Newer entities are those having data for a duration of 15 days or less.
+
+* In the AWS perspective, the cost calculation is based on the selected `Groupby` field, and CCM uses the SUM of `awsUnblendedCost`. However, when CCM detects anomalies for AWS, it is based on the SUM of `awsBlendedCost`. This led to a cost mismatch between what's displayed on the AWS perspective and the cost reported for anomalies.(CCM-14096)
+
+  This issue is fixed by using SUM of `awsUnblendedCost` to detect AWS (Account, Service and UsageType) anomalies.
+
+#### September 20, 2023, version 80804
+
+##### New features and enhancements
+
+This release does not include any new features.
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+* Previously, on the AutoStopping details page, the dry-run flag did not invoke the savings API when turned on. (CCM-14232)
+
+  This issue has been fixed. Now, the cost savings are correctly displayed in the dry-run mode.
+  
+
 #### September 7, 2023, version 80702
+
 
 ##### New features and enhancements
 

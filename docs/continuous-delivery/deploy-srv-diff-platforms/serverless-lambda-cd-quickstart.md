@@ -980,7 +980,7 @@ Now that you're done the quickstart, here's some more information to help you ex
 
 The serverless.yaml file you use with Harness can use Harness secret and built-in expressions.
 
-Expression support lets you take advantage of Runtime Inputs and Input Sets in your serverless.yaml files. For example, you could use a Stage variable as a runtime input to change plugins with each stage deployment:
+Expression support lets you take advantage of runtime inputs and input sets in your serverless.yaml files. For example, you could use a Stage variable as a runtime input to change plugins with each stage deployment:
 
 ```yaml
 service: <+service.name>  
@@ -1006,7 +1006,7 @@ See:
 
 * [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
 * [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables)
-* [Run Pipelines using Input Sets and Overlays](/docs/platform/Pipelines/run-pipelines-using-input-sets-and-overlays)
+* [Input sets and overlays](/docs/platform/pipelines/input-sets)
 
 ### Supported stores for Serverless Lambda YAML files
 

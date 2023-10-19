@@ -23,6 +23,12 @@ First Gen K8S connector will also work in NG CCM. But, we recommend creating NG 
 
 No. You need the delegate only when connecting to a Kubernetes cluster - such as GKE
 
+#### If a CCM license expires, will that ever impact the health indicators of the cloud integrations? (Reporting and auto-stopping icons)
+
+For K8S connectors, the reporting icon would be success as long as we are receiving events from delegate. auto-stopping will be always be marked as success.
+For cloud connectors, one of the validations we do as part of conn health indicator is availability of data on our side in past 24 hours.
+When license expires, after some days we would stop running the data sync jobs and thus conn status will be read.
+
 
 ### Perspectives
 
@@ -44,8 +50,54 @@ You can create as many as 10,000 Perspectives in a single account.
 
 #### How are costs presented in perspectives when there are expenses that are not linked to the chosen grouping criteria?
 
-We display `No` followed by the selected `<group by>` for costs that do not have any correlation with the specified `<group by>` criteria.
+CCM displays `No` followed by the selected `<group by>` for costs that do not have any correlation with the specified `<group by>` criterion.
 For instance, if a perspective encompasses rules for both AWS and GCP, and the grouping is based on GCP > SKU, any expenses unrelated to GCP SKUs will be displayed as "No SKUs."
+For more information, go to [Create Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#review-no-accountprojectetc).
+
+#### How can I retrieve details about the compute generating the cost within a perspective that is managed by a cost category rule? Additionally, how can I obtain information about its uptime, memory utilization, and CPU usage?
+
+In the context of cost categories, CCM currently provides information in two columns: `Total cost` and `Cost trend`. However, users have the option to delve deeper into workload details, allowing them to access information such as the start and stop times of individual pods.
+
+#### How are costs calculated, and is there a specific formula for it?
+
+Indeed, CCM offers a formula to illustrate the calculation process. For a detailed explanation, go to [documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/key-concepts/).
+
+#### Is it possible to modify the formula for calculations, specifically for CPU, memory, or idle costs?
+
+No, the formula is predetermined and cannot be altered. However, if you are utilizing Kubernetes on bare metal infrastructure (excluding GCP, AWS, or Azure), you do have the option to adjust the pricing for compute calculations related to nodes and pods. For more details, go to [How's the cost calculated for K8s on CSPs and K8s on bare metal?](https://developer.harness.io/docs/faqs/cloud-cost-management-faqs/#hows-cost-calculated-for-k8s-on-cloud-providers-and-k8s-on-bare-metal).
+
+#### How is cost allocation determined? Is it based on actual usage, requests, limits, or the higher of requests or actual usage?
+
+The cost is allocated based on the maximum of either requests or actual usage.
+
+#### Is storage included in the cost calculation, particularly in the context of Kubernetes, specifically AKS?
+
+Yes, storage costs are indeed included in the total cost calculation. From the cluster perspective, the total cost encompasses memory costs, CPU costs, and storage costs, providing a comprehensive view of all expenses.
+
+#### Waht permission we need to display AWS account name instead of account id in UI ?
+
+You will need : 
+```
+"organizations:Describe*",
+"organizations:List*"
+```
+#### What does "unattributed cost category" mean, and why is it important?
+
+The "unattributed cost category" refers to a category of costs that lack specific identification, such as subscription name, resource group name, resource ID, or reservation ID. It's important because it represents costs that cannot be directly associated with any resource or cost line item.
+
+#### How can I address unattributed costs in my reporting and analysis?
+
+To tackle unattributed costs, you can apply a subsId null filter to isolate these costs and then group them by another relevant column. This approach might help you identify the source of these unattributed costs.
+
+#### What is the potential connection between unattributed costs and Kubernetes clusters?
+
+Unattributed costs could potentially be related to Kubernetes cluster costs. These costs are often gathered when you have a cost connector for Kubernetes. If you do not want to include Kubernetes costs in your cost categories, you can create a "k8s" bucket in each category and define logic such as "cluster name not null." This allows you to separate and ignore Kubernetes costs within your cost categories.
+
+#### If a resource (cost) aligns with rules in different cost category buckets, what happens? Does it go into the highest-priority bucket from the list of buckets for the first match?
+
+Yes, when you group resources by the Cost Category, the resource is assigned to the highest-priority bucket from the list for the first match it encounters. However, if you apply a filter based on the cost bucket, you will retrieve all resources that meet the filter criteria, which can lead to an unexpected result where multiple cost buckets are filtering on one category and grouping by the corresponding cost category they belong to.
+
+
 
 ### Recommendations
 
@@ -60,17 +112,36 @@ If the instance is in a stopped state it takes ~2-3 days for the recommendation 
 
 #### Do we support moving the recommendations from the Applied to Open recommendations section?
 
-No. We support only moving the recommendations from the Open to the applied section now.
+No. Currently, CCM supports only moving the recommendations from the **Open** to the **Applied** tab.
 
 #### Are there any recommendations specific to GCP, other than the nodepool and workload recommendations for clusters in GCP?
 
-Currently, we do not offer any GCP-specific recommendations. Our support is limited to the recommendations outlined in the [documentation](https://developer.harness.io/docs/category/recommendations).
+Currently, CCM does not offer any GCP-specific recommendations. Support is limited to the recommendations specified in the [documentation](https://developer.harness.io/docs/category/recommendations).
 
 #### Does CCM offer support for on-premises/Self Managed Platform (SMP) installations?
 
-Yes, CCM does support on-premises/Self Managed Platform (SMP) installations. It provides the following features and functionalities within an SMP environment:
-1) The Connectors setup is currently supported exclusively on AWS and Kubernetes.
-2) Additionally, CCM supports Perspectives, Budgets, Scheduled Reports, Cost categories, Anomalies, and Recommendations in this environment.
+Yes. CCM supports the following features and functionalities in the SMP environment for AWS and Kubernetes:
+- Connector setup 
+- Perspectives
+- Budgets
+- Scheduled reports
+- Cost categories
+- Anomalies 
+- Recommendations 
+For more information, go to [CCM on Harness Self-Managed Enterprise Edition](https://developer.harness.io/docs/category/ccm-on-harness-self-managed-enterprise-edition).
+
+
+#### Why we don't have action for RDS recommendations?
+
+We do not have action for RDS recommendations for the following reasons: 
+
+RDS resize action is a manual operation in most cases where one is required to take a dump of DB (depends on DB flavour like Mysql/MariaDB/Postgres etc.) Refer https://repost.aws/knowledge-center/rds-db-storage-size
+
+Then spin up a new DB instance with lower storage requirements.
+ 
+Then Restore the data
+
+It is up to the user or the use case how much they want to reduce the storage too. Reducing the storage is a manual operation and is not supported via Cloud Custodian at this time.
 
 ### Governance
 
@@ -95,6 +166,10 @@ While Amazon RDS offers some automation capabilities, the resizing process, part
 
 Yes, we do show the recommendations but action cant be taken from CCM, RDS resize action is a manual operation in most cases where one is required to take a dump of DB (depends on DB flavour like Mysql/MariaDB/Postgres etc.), please refer [here](https://repost.aws/knowledge-center/rds-db-storage-size)
 
+#### Can the reader role alone be employed in Cloud Asset Governance for production purposes if no actions are intended, and the focus is solely on achieving potential cost savings and resource governance?
+
+Yes, it is possible to do so.
+
 
 ### Autostopping
 
@@ -112,14 +187,16 @@ A2: To troubleshoot this error, ensure the following:
 The associated Auto Scaling Group (ASG) is properly configured and associated with the intended ALB via a target group.
 The correct ALB is selected as the load balancer when creating the AutoStopping rule.
 
+#### Do we provide support for ECS autostopping when using Network Load Balancers (NLBs) instead of Application Load Balancers (ALBs)?
+
+We currently do not support ECS autostopping with NLBs. NLBs operate at layer 4 of the network stack, making it challenging to intercept traffic. To achieve autostopping functionality, you can create a new ALB, set it up as a downstream system for the NLB, and connect your Auto Scaling (AS) group to the ALB. This configuration will enable the desired functionality."
+
 
 ### Dashboards
 
 #### In dashboards, when creating a custom field can I filter the entire dashboard on it? 
 
 Looker doesn’t support filtering on custom fields at a global level at this point, we would need to filter it per tile.
-
-
 
 #### Can CCM operate independently from the Harness Platform? Or do we need to install CCM as a module on the harness platform and run it?
  

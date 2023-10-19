@@ -37,9 +37,14 @@ The following prerequisites are needed:
 
 - A public or internal domain name, for example `harness-redis-abc.com`.
 
-## Firewall rules
+## Set up firewall rules
 
-External Redis requires firewall rule setup to add ports to your allowlist. 
+External Redis requires firewall rule setup to add ports to your allowlist.
+
+:::warning
+Example settings used in this tutorial are for instructional purposes only. Replace the examples with your organization's IP requirements. Harness recommends following your organization's standards for firewall rule settings.
+
+:::
 
 To create a firewall rule, do the following:
 
@@ -54,13 +59,17 @@ To create a firewall rule, do the following:
    | TCP| 10000-20000 | Redis connectivity|
    | TCP| 8443 | Secure (HTTPS) access to the web management UI|
 
-4. For testing purposes, keep the Source IP ranges set to 0.0.0.0/0.
+4. For testing purposes, set the source IP ranges to your public IP.
 
 ## Install Redis
 
 After you configure your firewall rules, you must install Redis. To install Redis, you must create three VMs, create DNS records, configure your Redis cluster, configure your Redis database, and test your connectivity.
 
 ### Create your VMs
+
+import Strongpass from '/tutorials/shared/strong-passwords.md'
+
+<Strongpass />
 
 To create your VMs, do the following:
 
@@ -185,7 +194,7 @@ To configure your Redis database, do the following:
 
 6. Set the database memory to 2GB.
 
-7. Skip the database password. 
+7. Enter the database password.
 
 8. Select **Create**.
 
@@ -231,6 +240,13 @@ After you've tested your connectivity, you're ready to configure your Harness en
 
 To configure your Harness environment and Helm chart, do the following:
 
+- Create a secret in the namespace where harness is installed with following data
+   ```yaml
+   data:
+     root-password: <REDIS_PASSWORD>
+     root-username: ""
+   ```
+
 - Add the following override entries to your newly-installed Harness Redis instance.
 
    ```yaml
@@ -240,7 +256,7 @@ To configure your Harness environment and Helm chart, do the following:
          installed: false
          hosts:
          - <YOUR_INTERNAL_ENDPOINT_AND_PORT>
-         secretName: ""
-         userKey: ""
-         passwordKey: ""
+         secretName: "REDIS_SECRET"
+         userKey: "ROOT_USERNAME"
+         passwordKey: "ROOT_PASSWORD"
    ```

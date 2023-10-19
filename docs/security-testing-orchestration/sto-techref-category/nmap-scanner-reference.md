@@ -1,12 +1,13 @@
 ---
-title: Nmap (Network Mapper) scanner reference
+title: Nmap (Network Mapper) scanner reference for STO
 description: Instance scans with Nmap
-sidebar_position: 200
+sidebar_label: Nmap (Network Mapper) scanner reference
+sidebar_position: 270
 ---
 
 You can scan your instances using [Nmap](https://nmap.org/), an open-source tool used for network exploration, host discovery, and security auditing. 
 
-## Before you begin
+## Important notes for running Nmap scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -28,11 +29,9 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 The recommended workflow is add an Nmap step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 
 ### Scan settings
@@ -210,13 +209,13 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step settings (*deprecated*)
+## Security step settings for Nmap scans in STO (*legacy*)
 
 You can set up Nmap scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

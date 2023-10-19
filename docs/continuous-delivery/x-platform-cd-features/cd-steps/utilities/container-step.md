@@ -457,16 +457,16 @@ You might want to override the default behavior and download your build images f
 curl -X  GET https://app.harness.io/registry/_catalog
 ```
 
-Add or select a connector to use instead of the default connector uses for the Harness Container Image Registry.
+Add or select a connector to use instead of the default connector used for the Harness Container Image Registry.
 
-For more information, go to [Connect to Harness container image registry Using Docker connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/).
+For more information, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
 
 ## Advanced settings
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)

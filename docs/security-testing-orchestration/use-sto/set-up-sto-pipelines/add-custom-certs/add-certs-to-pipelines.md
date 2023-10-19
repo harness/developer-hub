@@ -8,7 +8,7 @@ Some organizations prefer to use custom SSL certificates instead of certificates
 
 Harness supports three workflows for using custom certificates. You can add your certs to the delegate, to individual pipelines, or to the container images you use to run your scans. 
 
-## When to use this workflow
+## When to add custom certificates to a pipeline for STO
 
 Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates. This workflow is recommended if either of the following are true:
 
@@ -18,7 +18,7 @@ Harness STO supports [three workflows](/docs/security-testing-orchestration/use-
 
 You can also use this workflow if the external scanner requires additional files, such as auth script or license files, to run scans. For example, ZAP scans might require context files as [noted](#important-notes) below.
 
-## Important notes
+## Important notes for adding custom certificates to a pipeline for STO
 
 - You must have **root access** to perform the [workflow](#workflow-description) documented below.
 
@@ -34,19 +34,10 @@ You can also use this workflow if the external scanner requires additional files
 
 * Save each SSL certificate file to **/shared/customer_artifacts/certificates/`<certificate_name>`**. 
 
-* If the scanner requires a license file, save it to **/shared/customer_artifacts/`<license_file_name>`**.  
-
-* If you're running a ZAP scan that uses context files such as auth scripts, context files, or URL files, specify the following shared folders and make sure that your Run step copies in the required files. 
-
-  * **/shared/customer_artifacts/authScript/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/context/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/urlFile/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/hosts/`<artifact_file_name>`**
-
 - To troubleshoot SSL issues, go to [Troubleshoot SSL in STO](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-troubleshooting-in-sto). 
 
 
-## Workflow description
+## Workflow for adding custom certificates to a pipeline for STO
 
 This workflow applies to all [supported build infrastructures](/docs/security-testing-orchestration/whats-supported). It also applies to STO on SaaS, as well as Harness Self-Managed Platform.
 
@@ -59,7 +50,7 @@ This workflow applies to all [supported build infrastructures](/docs/security-te
 4. Add a Run step to the stage that adds the artifacts to the shared folder. This step needs to run _before_ the scanner step that uses the artifact. 
 
   
-### Example workflow
+### Example workflow for adding custom certificates to a pipeline for STO
   
 This example shows how to include a PEM file in a pipeline that runs a scan using a Security step. This workflow assumes that you have a valid PEM stored as a Harness File Secret. 
 
@@ -81,7 +72,7 @@ This example shows how to include a PEM file in a pipeline that runs a scan usin
 
 
 
-### YAML pipeline example
+### YAML pipeline example for adding custom certificates to a pipeline for STO
 
 The following illustrates an end-to-end pipeline that copies a PEM certificate to the default location, builds an image, and then scans the image using SonarQube (authorized using the certificate).
 

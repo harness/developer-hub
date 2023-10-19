@@ -30,7 +30,6 @@ export const K8SList: CardItem[] = [
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
     description: <>Deploy a Kubernetes Manifest using Kustomize.</>,
-    newDoc: true,
     type: [docType.Documentation],
     time: "8min",
     link: "/tutorials/cd-pipelines/kubernetes/kustomize",
@@ -43,7 +42,6 @@ export const ServerlessList: CardItem[] = [
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
     description: <>Deploy an AWS Lambda Function.</>,
-    newDoc: true,
     type: [docType.Documentation],
     time: "15min",
     link: "/tutorials/cd-pipelines/serverless/aws-lambda",
@@ -53,7 +51,6 @@ export const ServerlessList: CardItem[] = [
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
     description: <>Deploy a Google Cloud Function.</>,
-    newDoc: true,
     type: [docType.Documentation],
     time: "15min",
     link: "/tutorials/cd-pipelines/serverless/gcp-cloud-func",
@@ -97,6 +94,18 @@ export const ECSList: CardItem[] = [
 
 export const AdvList: CardItem[] = [
   {
+    title: "Variable Expressions",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: (
+      <>Create and use variables in CD pipelines.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15min",
+    link: "/tutorials/cd-pipelines/variables",
+  },
+  {
     title: "Trigger CD Pipeline on New Artifact Version",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
@@ -131,7 +140,6 @@ export const AdvList: CardItem[] = [
         pipeline.
       </>
     ),
-    newDoc: true,
     type: [docType.Documentation],
     time: "20min",
     link: "/tutorials/cd-pipelines/approvals",

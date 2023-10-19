@@ -1,4 +1,4 @@
-[The Harness AI Development Assistant (AIDA)](https://harness.io/products/aida) can analyze log files and correlate error messages with known issues. This feature enables developers to troubleshoot and resolve deployment failures quickly, saving them from sifting through millions of log lines. AIDA also suggests fixes and predicts potential errors in the code even before the build is initiated. This feature is designed to work across Harness's CI and CD offerings.
+[The Harness AI Development Assistant (AIDA:tm:)](https://harness.io/products/aida) can analyze log files and correlate error messages with known issues. This feature enables developers to troubleshoot and resolve deployment failures quickly, saving them from sifting through millions of log lines. AIDA also suggests fixes and predicts potential errors in the code even before the build is initiated. This feature is designed to work across Harness's CI and CD offerings.
 
 <!-- AIDA, the Harness AI Development Assistant, helps you understand and fix pipeline failures by analyzing errors and providing troubleshooting suggestions.
 

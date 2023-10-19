@@ -234,10 +234,6 @@ Streamed audit events have a predictable schema in the body of the response.
     "auditEventTime": {
       "type": "string"
       "description":"Time of auditEvent in miliiseconds"
-    },
-    "auditEventMetadata": {
-      "type": "object"
-      "description":"No fixed schema , Additional meta about audit event"
     }
   },
   "required": [
