@@ -72,7 +72,7 @@ GCP connector settings include:
 * **Details:** Provide credentials that enable Harness to connect to your GCP account. There are two options:
   * Select **Specify credentials here** to use a GCP service account key.
   * Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its authentication credentials from the Harness Delegate that is running in GCP.
-* **Select connectivity mode**: Select whether Harness should communicate directly with GCP or go through a Harness Delegate in GCP.
+* **Select connectivity mode**: Select whether Harness should communicate directly with GCP or go through a Harness Delegate in GCP. If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you must select **Connect through Harness Platform**.
 
 <details>
 <summary>Store service account keys as Harness secrets</summary>
@@ -100,7 +100,7 @@ To obtain the Google Cloud's service account key file, go to the Google document
 <details>
 <summary>Learn more about connectivity modes</summary>
 
-* **Connect through Harness Platform:** Use a direct, secure communication between Harness and GCP.
+* **Connect through Harness Platform:** Use a direct, secure communication between Harness and GCP. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
 * **Connect through a Harness Delegate:** Harness communicates with GCP through a Harness Delegate in GCP. You must choose this option if you chose to inherit delegate credentials.
 
 If connecting through a Harness Delegate, select either:

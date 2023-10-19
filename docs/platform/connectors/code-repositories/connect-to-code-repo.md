@@ -17,7 +17,11 @@ Harness code repository connectors connect your Harness account with your Git pl
 
 You can add code repo connectors at the account, organization, or project scopes. This topic assumes you're adding connectors at the project scope, but the process is the same for the other scopes.
 
-## Permissions
+## Code repo connector permissions and access
+
+Review the following important information about code repo connectors.
+
+### Connector permissions
 
 In general, the Git provider user account you use to set up a connector needs the same permissions it would need if you were working from Git.
 
@@ -27,9 +31,13 @@ For permissions in the Harness Git Experience, go to [Source Code Manager Settin
 
 <!-- I don't believe these two sentences are true; all connectors require auth, even for read-only and public repos:  Public Git repos don't require a username and password/token. Harness does not validate public Git repo credentials. -->
 
-## SSH Key authentication
+### Using SSH key authentication
 
 If your code repo connector uses SSH Key authentication, the SSH Key is stored as a [Harness SSH credential secret](/docs/platform/secrets/add-use-ssh-secrets), and the SSH credential's **Username** must be `git`.
+
+### Using connectors with Harness Cloud build infrastructure
+
+If you plan to use a connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), the **Connectivity Mode** must be **Connect through Harness Platform**.
 
 ## Connect to AWS CodeCommit
 
@@ -140,7 +148,11 @@ If Harness doesn't have a dedicated code repo connector for your Git provider, o
 
 ## Network connection times out when fetching large repos
 
+:::note
+
 Currently, the fetch optimization feature is behind the feature flag `OPTIMIZED_GIT_FETCH_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection can time out. With fetch optimization enabled, Harness uses provider-specific APIs to improve performance when fetching very large repos.
 
