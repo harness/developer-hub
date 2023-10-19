@@ -1900,11 +1900,99 @@ You can certainly use variables like  <+pipeline.stages.stagename.name> stagenam
  Artifact Description <+artifact.description>
  Artifact Build Number: <+artifact.buildNo>
  
-These aren't the correct variables in NG.  Here are the correct variables: https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact 
+These aren't the correct variables in NG.  [Here are the correct variables]: (https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact)
 
 #### We have a pipeline that is configured to deploy a selected service based on input. There currently isn't a way to filter the list of Deployment executions by the selected service.
 
 If you want to specifically check the executions for a specific service. 
 You can do so by going to Service and then click on the service you want to see the executions for.
 Even under deployment, you can open the filter option and only enter service name and it will list all executions for the service.
+
+#### When do we mask a secret value in shell script?
+
+To mask a secret's value in a script, then that secret should be at least once used or refrenced in the script (referencing the secret as echo <+secrets.getValue("pattoken")>)
+
+#### Is delegate token masked in if used in shell script?
+
+Delegate tokens are already present in the memory and we know those need to be sanitized, so they are masked by default.
+
+#### We have triggers configured on branch push and pull request events in Harness from Github but we noticed on PR edits we get multiple executions triggered. Is there a way to have these events only trigger one build?
+
+you can put conditions on the trigger which you do not want to initiate on particular events.
+ 
+Doc reference [here] (https://developer.harness.io/docs/platform/triggers/triggering-pipelines/#set-trigger-conditions)
+
+#### how to get full 40 character Git SHA into our pipeline.
+
+you can use expression to Git Commit SHA: 
+ 
+Manual builds: <+codebase.commitSha>
+Webhook triggers: <+codebase.commitSha> or <+trigger.commitSha>
+
+#### Is there a way to run a pipeline based two inputs set at the same time?
+
+No, there is no way to run a pipeline simultaneously on two different input sets.
+
+#### How do we resolve error "Current execution is queued as another execution is running with the given resource key"
+
+This error message indicates that there is already a running execution with the same resource key as the current execution that is queued. More on resource constraints can be referenced [here] (https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-resource-constraints/#resource-constraints-summary)
+
+#### Is there a quick way of exporting all services we have deployed in the last 3 months? Into like a spreadsheet?
+
+You can create a dashboard for the services deployed which can then be exported as PDF/Spreadsheet.
+
+#### Is it possible to use eddsa keys with harness Git?
+
+Yes we support ed25519 key, Command we used to generate key :
+
+```
+ssh-keygen -t ed25519 -b 256 -f /Users/test/Documents/temp/edd -m pem
+```
+
+#### How can we import list of all services
+
+You can create a dashboard for the services deployed which can then be exported as PDF/Spreadsheet.
+
+#### For SAM deployments what version of image supports IRSA option.
+
+The image harnessdev/sam-deploy:1.82.0-1.0.0 supports IRSA and assume role on delegate.
+
+#### How are pipeline tags passed in filters using list pipeline API
+
+piepline tags are passed as key-value pair : 
+
+```
+"pipelineTags": [
+      {
+        "key": "test",
+        "value": null
+      }
+    ]
+```
+
+#### What are OAuth App access restrictions in a Git environment, and how do they affect my ability to push changes to a repository?
+
+OAuth App access restrictions in a Git environment are security measures implemented by an organization to limit data access by third-party applications, even if the user has correct authorization credentials. These restrictions are typically applied to protect sensitive data and ensure secure collaboration. When these restrictions are in place, it may affect your ability to push changes to a repository. If you encounter an error message similar to "Although you appear to have the correct authorization credentials, the organization has enabled OAuth App access restrictions," it means that you are subject to these limitations.
+
+#### How to pass JSON string as a command line argument in shell script
+
+with the command the json string should be passed in sigle quotes for example:
+
+python3 eample.py `<+trigger.payload>`
+
+`<trigger.payload>` resolves to JSON.
+
+#### Is there a way to execute python code directly in the Custom Shell script step?
+
+Our method of executing shell scripts follows a specific approach. Rather than utilizing the customary './file.sh' approach, which employs the shebang line and initiates with Python, we employ '/bin/bash ./file.sh'. This ensures that the script runs exclusively as a bash script.
+ 
+Therefore to make it work put the Python command in a file and execute it. So, the idea is that the bash script will execute as a shell script hence it will not understand the Python command. If we put the Python commands in a script and then run it within shell script it will work.
+
+#### How could we get the image with repo, but without a tag?
+
+Deploying an image without a tag will fetch the image with tag "latest", to do so you can provide a default value for the image tag as "latest" whenever no tag is provided it will use a default value.
+
+#### Can we echo the secret we store in Harness through an API
+
+No, the secret are not supposed to be returned in plain text as it can be a security concern.
 
