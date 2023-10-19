@@ -36,7 +36,7 @@ To generate Agent configuration settings, do the following:
 
 6. Optionally, provide source repository details if you want to access a code repository, branch, and commits related to errors from the ARC screen.
 
-7.  Select your application programming language, version, and OS. Based on the OS that you select, you may be asked to enter OS distribution details.  
+7.  Select your application programming language, version, and OS. Based on the OS that you select, you might need to enter OS distribution details.
    
    Once you have entered your programming language and OS information, CET displays the Agent configuration information and usage instructions.
  
