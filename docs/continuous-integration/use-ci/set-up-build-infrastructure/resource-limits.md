@@ -105,6 +105,7 @@ This calculation is for a pipeline with three steps that have no [resource limit
 * The parallel steps require the greatest amount of resources.
    * The two parallel steps must run at the same time; therefore, the stage needs up to 800m CPU and 1000Mi memory to run those two steps.
    * To run the sequential step, which runs by itself, the stage needs only 400m CPU and 500Mi memory.
+   * Due to the resources required to run the two parallel steps together, the sequential step (step three) is also assigned a limit of 800m CPU and 1000Mi. Unless you specify a [resource limit override](#override-resource-limits), individual sequential steps get the same maximum limit as required by the most resource-heavy step, step group, or parallel steps.
 * Combining the step resources with the add on resources (100m and 100Mi), the total stage resource values are 900m CPU and 1100Mi memory.
 
 </details>
