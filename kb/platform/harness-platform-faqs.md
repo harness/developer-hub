@@ -843,7 +843,6 @@ The process of sharing information between delegates within the same stage in Ha
 **Important Note:** The output of Task T1 (values Fetch task) is the content of the `values.yaml` file. This content is then passed to Task T2, enabling Delegate2 to use it in rendering and applying the manifest files.
 
 This process ensures that delegates effectively share information and utilize it as required for the deployment process within the same stage.
-=======
 
 #### Why am I not seeing my deployments in the Overview page of the project? 
 
