@@ -48,7 +48,7 @@ This release does not include any early access features.
   
   This issue is resolved by limiting selections to a maximum of 10 values for **Services** and **Environment** filters.
   
-- An alignment issue in the **Change Event** card has been resolved in this release to ensure a consistent display of information. (SRM-15793)
+- An alignment issue with the **Change Event** card has been fixed to ensure consistent information display. (SRM-15793)
 
 - The Service Level Indicator (SLI) iterator was retrying to create SLI tasks that already existed in the system. (SRM15870)
   
