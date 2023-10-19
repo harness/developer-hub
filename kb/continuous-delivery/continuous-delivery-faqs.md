@@ -1683,75 +1683,75 @@ No, it is not possible to configure a Step Group to run on only a subset of the 
 
 You would need to apply the restriction at the Step level for each step that needs to run on a subset of the VMs.
 
-### Is it possible to create Stage Groups similar to Step Groups? If not how can I achieve a similar feature at the Stage Level?
+#### Is it possible to create Stage Groups similar to Step Groups? If not how can I achieve a similar feature at the Stage Level?
 Currently, it is not possible to use  Stage Groups similar to Step Groups. However you can make use of chained pipelines to achieve your use case. More information on chained pipelines here: https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/ 
 
-### How to pass the Environment and Infrastructure Definition as a string as a runtime parameter?
+#### How to pass the Environment and Infrastructure Definition as a string as a runtime parameter?
 You can use the expression <+trigger.webhook.payload.ref> to get the branch name from the GitHub webhook payload and pass it as the Environment value. In your pipeline, go to the stage where you want to set the Environment value, click on the Environment dropdown, select Runtime Input, and then enter a name for the input. In the Value field, enter the expression <+trigger.webhook.payload.ref>. 
  
 This will dynamically set the Environment value to the branch name from the GitHub webhook payload.
 
-### We're moving from Bitbucket to GitHub. Are there any steps we need to take to migrate our pipelines from Bitbucket to GitHub?
+#### We're moving from Bitbucket to GitHub. Are there any steps we need to take to migrate our pipelines from Bitbucket to GitHub?
 You can import a pipeline from your Bitbucket repo to Harness. To import a pipeline from Bitbucket to GitHub, you would need to create a new connector for GitHub and then import the pipeline from Bitbucket to harness once done use the move git option as shown below to move the imported pipeline to your GitHub. You can retire the old pipeline in Bitbucket after the migration.
 
-### When we specify a namespace, I notice that that namespace isn't being leveraged in the actual Apply step of the deployment.
+#### When we specify a namespace, I notice that that namespace isn't being leveraged in the actual Apply step of the deployment.
 The namespace specified in the infrastructure should be used during apply. Any namespace in the entities in the manifest would take precedence over that, however.
  
 The manifest could also specify the namespace as a values.yaml reference. In an Apply step, you can override values.yaml and specify different namespaces for that particular Apply step.
 
-### Can you run a step or a stage when the pipeline is aborted?
+#### Can you run a step or a stage when the pipeline is aborted?
 No, when a pipeline is aborted, the pipeline execution stops and the pipeline enters an aborted state. The status of the pipeline will be Aborted. 
  
 However, you can mark a specific stage as failed during pipeline execution by selecting the Mark Stage As Failed option. This lets you abort a step that is running and trigger a configured failure strategy after the step is aborted.
 
-### Is there any way to enforce the pipeline naming convention while creating or cloning the pipeline
+#### Is there any way to enforce the pipeline naming convention while creating or cloning the pipeline
 Currently, there is no built-in way to enforce pipeline naming conventions while creating or cloning pipelines in Harness. However, you can create a OPA policy that can be applied using the On Save event for a pipeline to enforce the naming convention. 
  
 The policy can check if the pipeline name matches the repo name and deny the pipeline creation if it doesn't match. More on OPA Policy here: https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/
 
-### Is it possible to configure a Step Group to run on only a subset of the VMs in the infrastructure?
+#### Is it possible to configure a Step Group to run on only a subset of the VMs in the infrastructure?
 No, it is not possible to configure a Step Group to run on only a subset of the VMs in the infrastructure. The VMs are grouped at the Environment/Infrastructure level and cannot be further restricted at the Step Group level.
 
-### What are the differences between Native Helm Deployment in FirstGen and NextGen Harness?
+#### What are the differences between Native Helm Deployment in FirstGen and NextGen Harness?
 here are a few key differences between Native Helm Deployment in FirstGen and NextGen Harness:
 
 1. Versioning: Harness NextGen supports versioning of Helm deployments. This allows you to track changes to your deployments and roll back to previous versions if necessary. Harness FirstGen does not support versioning of Helm deployments.
 2. Rollback: Harness NextGen supports rollbacks of Helm deployments. This allows you to roll back to a previous version of your deployment if something goes wrong. Harness FirstGen does not support rollbacks of Helm deployments.
 3. Helm 3: Harness NextGen supports Helm 3. Harness FirstGen supports both Helm 2 and Helm 3.
 
-### Do I need to install Helm on the target cluster for Native Helm Deployment?
+#### Do I need to install Helm on the target cluster for Native Helm Deployment?
 No, you do not need to install Helm on the target cluster for Native Helm Deployment. Harness will install Helm on the target cluster for you.
 
-### How to delete/remove version in template?
+#### How to delete/remove version in template?
 You can click on 3 dots(kebab menu) from the template library. Then click on the delete option then choose the version of the template you want to delete.
 
-### How to use the output from one stage in the looping strategy of another stage
+#### How to use the output from one stage in the looping strategy of another stage
 You can achieve this by following the steps documented here in this article: https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables
 
-### How can we use conditionals within variables using JEXL? 
+#### How can we use conditionals within variables using JEXL? 
 You can use Ternary operators to achieve this use case.
 
-### What do the fetch files step do in rollout deployment?
+#### What do the fetch files step do in rollout deployment?
 The Fetch files task in the Rollout Deployment step leverages the GitHub connector configured in the service to fetch the manifests. Harness will also render and resolve any of the Harness variables defined in the values.yaml file of the service and add them to the manifest/Helm chart using Go/Helm templating. 
 
 Harness fetches any secrets referenced in the values.yaml file and resolves them in the manifest. Harness masks secret output in its logs.
 
-### How to get ECR image and tag information in the stage?
+#### How to get ECR image and tag information in the stage?
 You should be able to see the artifacts details in the service output of the execution, you can reference this value via expressions in the next stage.
 
 ### How to pass values from CI of Pipeline A console logs to CD Pipeline of Pipeline B
 The only way you can achieve this is to store this first pipeline output variable in file store or in git config then you can pull the same in your pipeline B. There is no built-in variable to achieve this use case in Harness.
 
-### What type of file types does Harness File Store support and what is the limit of the filesize?
+#### What type of file types does Harness File Store support and what is the limit of the filesize?
 Harness file storage supports various file types including tar, zip, txt, log, JSON, XML, and more. The file size limit for Harness file storage is 2GB per file.
 
-### How to store filesize like we have dump for around 3GB to 5GB in the Harness file store?
+#### How to store filesize like we have dump for around 3GB to 5GB in the Harness file store?
 If your dump file is between 3GB to 5GB, you may need to split it into multiple files before uploading to Harness file storage.
 
-### How to upload the files to Harness file storage using API?
+#### How to upload the files to Harness file storage using API?
 The Harness API supports uploading files to file storage. You can use the API endpoint /api/1.0/file-versions/upload to upload files to Harness file storage.
 
-### Is there a built-in Harness variable for the helm chart version in the pipeline?
+#### Is there a built-in Harness variable for the helm chart version in the pipeline?
 Yes, you can use the expression <+trigger.manifest.version> to have the new chart version that initiated the Trigger passed in as the version to deploy. This expression can reference the chart version in your pipeline stage steps.
 
 For non-trigger-based execution, you can use the expression <+manifests.MANIFEST_ID.helm.version> to reference the Helm chart version in your pipeline stage steps. The MANIFEST_ID is located in service.serviceDefinition.spec.manifests.manifest.identifier in the Harness service YAML. You can also use Harness variable expressions or runtime inputs to pass in the Helm chart version at execution.
