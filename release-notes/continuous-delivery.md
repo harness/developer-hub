@@ -100,17 +100,15 @@ This release does not include early access features.
 
   This issue has been fixed. The confirmation dialog now displays complete information about the artifact version to which the deployment will be rolled back. 
 
-<!-- CDS-72904 is WIP because I'm awaiting a response from the engineer.-->
+- When a step fails, you expect pipeline execution to stall. However, failed steps are sometimes marked as being successful, and pipeline execution continues. This behavior is observed when the step's failure strategy is set to wait for manual intervention, and a user selects **Mark as Success** in response to the step's failure. This behavior is by design. For more information, go to [Failure strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/#failure-strategy-settings). (CDS-72904, ZD-46414, ZD-47050, ZD-47743)
 
-- A step whose template specifies the failure strategy as manual intervention is marked as being successful even when it fails. (CDS-72904, ZD-46414, ZD-47050, ZD-47743)
+  The issue in this situation was that you were not informed about what failure strategy was applied and by whom (the failure strategy might have been selected by a user before the specified timeout or by Harness after the specified timeout). To fix this issue, Harness has added the following step interrupt fields to the step details: 
+    1. **Failure Strategy Applied**. Shows which failure strategy was applied.
 
-  In step details, two additional fields are added in case of step interrupts 
-    1. Failure Strategy Applied: <STRATEGY_NAME>
-
-    2. Applied By:
-      - "Failure Strategy <Timestamp>" indicates automatic application due to a configured failure strategy.
-      - "<email address> <Timestamp>" indicates manual intervention by a user selecting the failure strategy.
-      - "Post Timeout Action <Timestamp>" indicates the application of post-timeout action due to no user intervention within the allotted time. 
+    2. **Applied By**. Shows one of the following values to inform you about the source of the action:
+      - **Failure Strategy <timestamp>**. Indicates that Harness applied the configured failure strategy automatically.
+      - **<email address> <timestamp>**. Indicates that a user intervened and selected the failure strategy.
+      - **Post Timeout Action <timestamp>**. Indicates that Harness applied the post-timeout action because no user intervened within the allotted time. 
 
 
 ## Previous releases
