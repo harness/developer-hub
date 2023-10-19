@@ -4,7 +4,10 @@ description: Learn how to quickly intall and onboard an Error Tracking Agent.
 sidebar_position: 70
 ---
 
-The CET Agent Onboarding Wizard helps you with quick installation and configuration of the CET Agent in your environment. It provides instructions for downloading the necessary Agent installation files. Additionally, it dynamically generates variable settings based on your environment details, enabling you to easily copy and apply them during the Agent installation process.
+The CET Agent Onboarding Wizard helps you quickly install and configure the CET Agent in your environment. The wizard:
+
+* Provides instructions for downloading the necessary Agent installation files.
+* Dynamically generates variable settings based on your environment details, which you can copy and apply during the Agent installation process.
 
 This topic provides instructions on how to use the CET Agent Onboarding Wizard.
 
