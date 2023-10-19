@@ -1978,9 +1978,9 @@ OAuth App access restrictions in a Git environment are security measures impleme
 
 with the command the json string should be passed in sigle quotes for example:
 
-python3 eample.py '<+trigger.payload>'
+python3 eample.py `<+trigger.payload>`
 
-<trigger.payload> resolves to JSON.
+`<trigger.payload>` resolves to JSON.
 
 #### Is there a way to execute python code directly in the Custom Shell script step?
 
