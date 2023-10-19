@@ -71,96 +71,6 @@ const sidebars = {
         },
         {
           type: "link",
-          label: "Continuous Integration release notes",
-          href: "pathname:///release-notes/continuous-integration/rss.xml",
-          className: "sidebar-item-rss",
-          customProps: {
-            target: "_blank",
-          },
-        },
-        {
-          type: "link",
-          label: "Continuous Delivery & GitOps release notes",
-          href: "pathname:///release-notes/continuous-delivery/rss.xml",
-          className: "sidebar-item-rss",
-          customProps: {
-            target: "_blank",
-          },
-        },
-        {
-          type: "link",
-          label: "Cloud Cost Management release notes",
-          href: "pathname:///release-notes/cloud-cost-management/rss.xml",
-          className: "sidebar-item-rss",
-          customProps: {
-            target: "_blank",
-          },
-        },
-        {
-          type: "link",
-          label: "Feature Flags release notes",
-          href: "pathname:///release-notes/feature-flags/rss.xml",
-          className: "sidebar-item-rss",
-          customProps: {
-            target: "_blank",
-          },
-        },
-        {
-          type: "link",
-          label: "Service Reliability Management release notes",
-          href: "pathname:///release-notes/service-reliability-management/rss.xml",
-          className: "sidebar-item-rss",
-          customProps: {
-            target: "_blank",
-          },
-        },
-        {
-          type: "link",
-          label: "Chaos Engineering release notes",
-          href: "pathname:///release-notes/chaos-engineering/rss.xml",
-          className: "sidebar-item-rss",
-          customProps: {
-            target: "_blank",
-          },
-        },
-        {
-          type: "link",
-          label: "Security Testing Orchestration release notes",
-          href: "pathname:///release-notes/security-testing-orchestration/rss.xml",
-          className: "sidebar-item-rss",
-          customProps: {
-            target: "_blank",
-          },
-        },
-        {
-          type: "link",
-          label: "Software Supply Chain Assurance release notes",
-          href: "pathname:///release-notes/software-supply-chain-assurance/rss.xml",
-          className: "sidebar-item-rss",
-          customProps: {
-            target: "_blank",
-          },
-        },
-        {
-          type: "link",
-          label: "Continuous Error Tracking release notes",
-          href: "pathname:///release-notes/continuous-error-tracking/rss.xml",
-          className: "sidebar-item-rss",
-          customProps: {
-            target: "_blank",
-          },
-        },
-        {
-          type: "link",
-          label: "Internal Developer Portal release notes",
-          href: "pathname:///release-notes/internal-developer-portal/rss.xml",
-          className: "sidebar-item-rss",
-          customProps: {
-            target: "_blank",
-          },
-        },
-        {
-          type: "link",
           label: "Harness Platform release notes",
           href: "pathname:///release-notes/platform/rss.xml",
           className: "sidebar-item-rss",
@@ -181,6 +91,96 @@ const sidebars = {
           type: "link",
           label: "Delegate release notes",
           href: "pathname:///release-notes/delegate/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
+          label: "Chaos Engineering release notes",
+          href: "pathname:///release-notes/chaos-engineering/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
+          label: "Cloud Cost Management release notes",
+          href: "pathname:///release-notes/cloud-cost-management/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
+          label: "Continuous Delivery & GitOps release notes",
+          href: "pathname:///release-notes/continuous-delivery/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
+          label: "Continuous Integration release notes",
+          href: "pathname:///release-notes/continuous-integration/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
+          label: "Continuous Error Tracking release notes",
+          href: "pathname:///release-notes/continuous-error-tracking/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
+          label: "Feature Flags release notes",
+          href: "pathname:///release-notes/feature-flags/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
+          label: "Internal Developer Portal release notes",
+          href: "pathname:///release-notes/internal-developer-portal/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
+          label: "Security Testing Orchestration release notes",
+          href: "pathname:///release-notes/security-testing-orchestration/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
+          label: "Service Reliability Management release notes",
+          href: "pathname:///release-notes/service-reliability-management/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
+          label: "Software Supply Chain Assurance release notes",
+          href: "pathname:///release-notes/software-supply-chain-assurance/rss.xml",
           className: "sidebar-item-rss",
           customProps: {
             target: "_blank",
