@@ -150,7 +150,13 @@ This release does not include early access features.
 
 ##### Early access features
 
-This release does not include early access features. 
+- Option to clean the target directory prior to deploying an Azure Web App (CDS-76724)
+
+  You can now clean the target directory before deploying an Azure Web App. For more information, go to [Azure Web Apps deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial).
+
+  :::note
+  This feature is behind the feature flag `CDS_WEBAPP_ENABLE_CLEAN_OPTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+  :::
 
 ##### Fixed issues
 

@@ -1,43 +1,41 @@
-| Topic | Material                                                                                                                                                              
-| :------------------------------ | :------------------------------ |
-|**1. Advanced Cloud Infrastructure Management**  | |
-| Demonstrate advanced skills in navigating cloud service providers, and their offerings, and developing robust and scalable cloud architectures | [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/)|
-| Apply deep knowledge of Linux, its utilities and scripting for automation and management of complex cloud environments | [Linux chaos infrastructure advanced management](/docs/chaos-engineering/chaos-infrastructure/linux-chaos-infrastructure-advanced-management) |
-| Design, implement, and manage sophisticated Infrastructure as Code (IaC) systems for comprehensive control of cloud resources | [Provision Infrastructure](/docs/continuous-delivery/cd-infrastructure/provisioning-overview)|
-| **2. Container Orchestration and Management**||
-| Develop advanced containerized solutions, focusing on optimizing images, security, and isolation techniques | [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) |
-| Architect, deploy, and manage complex, large-scale containerized applications using Kubernetes and other orchestration tools | [Add a Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector/) |
-| Demonstrate the ability to troubleshoot complex scenarios in container orchestration environments | [CD steps, stages, and strategies](/docs/continuous-delivery/x-platform-cd-features/executions/stages-steps-strategies/) |
-| **3. Advanced CI/CD Techniques** ||
-| Engineer sophisticated Continuous Delivery flows, including advanced Chaos Engineering stratagies | [Chaos Engineering with Harness CD](/tutorials/chaos-experiments/integration-with-harness-cd/) |
-| Design and implement comprehensive Continuous Delivery solutions, focusing on deployment strategies, pipeline optimization, and rollback procedures | [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview/) |
-| Architect and deploy complex, scalable, and robust pipelines using Harness, including advanced features and integrations | [Add container images as artifacts for Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/) |
-| **4. Code Management and GitOps** ||
-| Manage complex Version Control Systems (VCS), focusing on branching strategies, code review processes, and automation techniques | [Deployment concepts and strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts/) |
-| Implement advanced GitOps strategies within a Harness context, including automated synchronization, error handling, and rollback procedures | [Harness CD GitOps tutorial](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart) |
-| Demonstrate proficiency in scripting languages to automate complex tasks, manage configurations, and improve CI/CD pipeline efficiency | [General CD Execution Steps](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) |
-| **5. Advanced Observability and Monitoring** ||
-| Implement sophisticated observability solutions into CI/CD pipelines, including advanced logging, tracing, and performance monitoring techniques | [Deployment logs and limitations](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations/) |
-| Utilize Harness's advanced notification and alerting mechanisms to facilitate complex monitoring needs | [Use governance policies and security scan results to stop pipelines automatically](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa/) |
-| Demonstrate ability to analyze monitoring data and develop strategies for system optimization | [Connect to monitoring and logging systems](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems/) |
-| **6. Security and Compliance in DevOps** ||
-| Implement advanced secure secrets management techniques in CI/CD pipelines, focusing on encryption, rotation, and vaulting strategies | [Harness secrets management overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) |
-| Architect and enforce advanced network security protocols and strategies in a cloud environment | [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference/) |
-| Apply Harness governance features to enforce advanced compliance requirements in a DevOps context | [Harness Policy As Code overview](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/) |
-| **7. Advanced Serverless Architectures** ||
-| Design, deploy, and manage complex serverless architectures, focusing on performance, scalability, and cost optimizations | [Serverless Tutorials](/tutorials/cd-pipelines/serverless/) |
-| Implement advanced serverless patterns within a CI/CD context and in a Harness environment | [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview/) |
-| Troubleshoot complex issues within serverless architectures | [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen) |
-| **8. Expert Harness Features Utilization** ||
-| Implement Harness Delegate in complex network environments, focusing on resilience, security, and performance | [Harness Delegate](/docs/platform/delegates/install-delegates/overview/) |
-| Use advanced Harness features such as triggers, utility pipelines, variables, and expressions for complex workflow management | [Manage input sets and triggers in Git Experience](/docs/platform/git-experience/manage-input-sets-in-simplified-git-experience/) |
-| Leverage Harness's connector architecture, Resource Development with Harness API, and Harness AIDA for advanced CI/CD solutions | [Troubleshoot builds with AIDA](/docs/continuous-integration/troubleshoot-ci/aida/) |
-| **9. Advanced Role-Based Access Control (RBAC) and Management** ||
-| Design and enforce advanced RBAC policies in securing a CI/CD pipeline within Harness | [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) |
-| Develop and implement complex user and permission management strategies within the Harness platform | [Permission Reference](/docs/platform/role-based-access-control/permissions-reference) |
-| Troubleshoot complex permission issues and demonstrate an advanced understanding of access control principles | [Permissions and ports for Harness connections](/docs/platform/references/permissions-and-ports-for-harness-connections/) |
-| **10. Mastering Complex Pipeline Management in Harness** ||
-| Architect and manage sophisticated, large-scale deployment pipelines in Harness, focusing on best practices, performance, and reliability | [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/) |
-| Implement advanced deployment strategies, including canary deployments, blue-green deployments, and A/B testing within Harness | [Deployment concepts and strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts/) |
-| Utilize Harness's pipeline governance capabilities to enforce complex compliance rules and best practices within a large organization | [Add a Policy step to a pipeline](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline/) |
-
+| Objective  | Material |
+| ----- | ----|
+| **1. Harness Delegates Management** | |
+| Understand and troubleshoot Delegate installation and connectivity | [Install a delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#install-a-delegate)|
+| Implement high availability for Harness Delegates  | [High availability](https://developer.harness.io/tutorials/self-managed-enterprise-edition/use-an-external-postgres-database/#high-availability) |
+| Manage Delegate upgradability and customization using INIT_SCRIPT  | [Install a delegate with third-party tool custom binaries](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/) |
+| **2. Security Practices in Harness** ||
+| Apply the Principle of Least Privilege (PoLP) in Harness setup | [Manage roles](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/)|
+| Implement secure deployment practices in varied environments | [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts)|
+| Manage and mitigate security concerns related to Delegate access and use | [Role-based access control (RBAC) in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)|
+| **3. Designing and Implementing CD Pipelines in Harness** | |
+| Develop and optimize pipelines using Harness| [Developer day to day guide](https://developer.harness.io/docs/continuous-delivery/ramp-up/developer-role/rampup-dev/)|
+| Implement and manage pipeline templates using GitOps practices | [Best practices and guidelines for templates](https://developer.harness.io/docs/platform/templates/templates-best-practices/)|
+| Manage artifacts and dependencies in pipeline stages| [CD artifact sources](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/)|
+| **4. Infrastructure as Code and Configuration Management**||
+| Differentiate and apply concepts of IaC and Configuration Management within Harness | [Harness Policy As Code quickstart](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-quickstart/)|
+| Implement and optimize the use of Terraform within Harness pipelines| [Terraform Cloud provisioning](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments/)|
+| Handle and manage dependencies and initial requirements for IaC within Harness| [Harness Policy As Code quickstart](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-quickstart/)|
+| **5. Continuous Verification (CV) and Observability in Harness**  |  |
+| Utilize various tools for logs and APM in CV strategies | [APM and logging tools](https://developer.harness.io/docs/continuous-delivery/verify/cv-results/apm-logs/)|
+| Implement effective observability and monitoring of Harness components| [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/) |
+| Understand and optimize feedback loops within CD pipelines | [Pipeline design guide](https://developer.harness.io/docs/continuous-delivery/ramp-up/pipeline-designer-role/pipeline-design-guide/)|
+| **6. Utilizing and Managing Secrets and Configurations in Harness**  | |
+| Efficiently manage secrets within Harness | [Use secrets managers](https://developer.harness.io/tutorials/platform/secrets-management/) |
+| Ensure secure and optimal handling of configurations | [Keep your pipelines DRY](https://developer.harness.io/docs/continuous-delivery/ramp-up/platform-eng-role/rampup-dry/)|
+| **7. Deployment Strategies and Rollbacks in Harness**  | |
+| Implement different deployment strategies (e.g., Canary, Blue-Green) using Harness | [Blue Green deployment](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/#blue-green-deployment)|
+| Design and troubleshoot rollback strategies for failed deployments| [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts) |
+| Manage and troubleshoot Helm and Umbrella Chart deployments in Kubernetes | [Deploy using Helm Chart](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/helm-chart/)|
+| **8. Integrating and Optimizing the Use of Cloud Providers and Platforms in Harness** ||
+| Implement optimal Harness setups for varied cloud platforms (e.g., AWS, Azure)| [Deploy services on different platforms](https://developer.harness.io/docs/category/deploy-services-on-different-platforms) |
+| Manage and troubleshoot deployments in varied environments (e.g., AWS EKS, Lambda)| [Deploy services on different platforms](https://developer.harness.io/docs/category/deploy-services-on-different-platforms)|
+| **9. Automating and Customizing Workflow Triggers in Harness** ||
+| Design and implement custom pipeline triggers with parameters | [Trigger deployments using custom triggers](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/)|
+| Ensure secure and authorized trigger execution in Harness workflows| [Manage input sets and triggers in Git Experience](https://developer.harness.io/docs/platform/git-experience/manage-input-sets-in-simplified-git-experience/)|
+| **10. Harness Best Practices for Scalable and Efficient CD**  ||
+| Implement best practices for utilizing Harness features for scalable and efficient CD | [Scale Kubernetes pods](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas/) |
+| Optimize user experience and performance through effective management of Harness components | [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/)|
+| **11. Problem Solving and Troubleshooting in Harness Environment**||
+| Develop proficiency in troubleshooting common issues within Harness | [Troubleshoot Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen/)|
+| Implement problem-solving strategies for diverse deployment and operational challenges| [Continuous delivery troubleshooting](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen/#continuous-delivery)                                             |

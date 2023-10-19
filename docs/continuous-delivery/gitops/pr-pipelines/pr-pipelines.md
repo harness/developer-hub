@@ -323,7 +323,7 @@ For the stage environment, we'll use a Harness runtime input. When you run the p
 
 ## Review execution steps
 
-In **Execution**, Harness automatically adds the following steps.
+In **Execution**, Harness automatically adds multiple steps. These steps, and optional steps, are described below.
 
 :::note
 
@@ -350,6 +350,37 @@ If an empty or blank value is provided for a variable, it will be disregarded, a
 ### Merge PR
 
 This step simply merges the new PR.
+
+### Fetch Linked Apps
+
+The Fetch Linked Apps step provides app information, such as the app name, agent Id, and URL to the Harness GitOps app.
+
+This information is displayed on the **Output** tab of the step.
+
+![picture 1](static/9b9bdbb81176317f5eafdd31e982b081ba449514f56fa5d9222effc03f69bd88.png)  
+
+You can copy the expression for any output in the **Output Name** column and use it to reference the output value in a subsequent Shell Script step or step setting.
+
+In the step log you can see Harness fetch the appset YAML file from its file store and identify the related Harness GitOps app(s). For example:
+
+```
+
+Starting Git Fetch Files
+Git connector Url: https://github.com/wings-software/gitops-automation.git
+Branch: syncstepautomation
+
+Fetching following Files :
+- helm2/app1/appset.yaml
+
+Successfully fetched following files:
+- helm2/app1/appset.yaml
+
+
+Git Fetch Files completed successfully.
+App set Name: helm-k8s-app
+Found linked app: syncstep-automation-app-cluster22. Link - https://app.harness.io/ng/#/account/1bvyLackQK-Hapk25-Ry4w/cd/orgs/default/projects/DoNotDeleteGitopsAutomationSyncStep/gitops/applications/syncstep-automation-app-cluster22?agentId=account.qagitopsautomationaccount
+Found linked app: syncstep-automation-app-cluster11. Link - https://app.harness.io/ng/#/account/1bvyLackQK-Hapk25-Ry4w/cd/orgs/default/projects/DoNotDeleteGitopsAutomationSyncStep/gitops/applications/syncstep-automation-app-cluster11?agentId=account.qagitopsautomationaccount
+```
 
 ### Revert PR
 

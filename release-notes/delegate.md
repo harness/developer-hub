@@ -162,6 +162,8 @@ This release does not include any new early access features.
 
 ##### Version 23.10.80808
 
+- For generic (non-Docker) artifacts available in Artifactory, you can use an expression to specify the path to the artifact. This filter works in the same way as the artifact filter in Harness FirstGen, and it is useful when you want to fetch artifacts from multiple paths. (CDS-78181)
+
 - Updated the internal Jenkins library to support long IDs for Jenkins builds. Previously, supported IDs were limited to integer bounds. (CDS-79499, ZD-50718, ZD-50888)
 
 - Fixed an issue where Git statuses were not being sent for pull requests. (CES-1376)

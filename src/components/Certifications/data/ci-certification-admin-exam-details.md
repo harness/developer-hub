@@ -12,12 +12,17 @@ The Continuous Integration Administrator exam tests your knowledge and skills of
 | **Knowledge Exam** | 90 minutes |
 | **Hands On Exam** | 120 minutes |
 
-| Covered Domain                                | Coverage         |
-| ----------------------------------- | --------------- |
-| **Harness Basics, Platform Entities, and Key Concepts** | 60% |
-| **Harness CI Pipelines and its Features** | 20% |
-| **RBAC, Best Practices, and Small Config Tasks** | 10% |
-| **Enterprise - Policy-based Governance (OPA), Dashboards, and Pipeline Templatization** | 10% |
+| Covered Domain                                              | % of Coverage |
+| ------------------------------------------------------------| --------------|
+| 1. Understanding and Managing Pipelines in Harness CI        | 12%           |
+| 2. Configuring Role-Based Access Control (RBAC) in Harness   | 12%           |
+| 3. Implementing and Managing Authentication and Security     | 12%           |
+| 4. Working with Harness CI/CD Integration and Infrastructure | 12%           |
+| 5. Utilizing and Managing Harness Connectors                 | 12%           |
+| 6. Implementing and Leveraging Harness Variables and Expressions | 12%        |
+| 7. Leveraging Harness Secret Management and Secret Usage     | 12%           |
+| 8. Managing Harness CI/CD Artifacts and File Store           | 12%           |
+| 9. Harness Delegate Configuration and Management             | 16%           |
 
 
 <br />
@@ -29,37 +34,44 @@ The Continuous Integration Administrator exam tests your knowledge and skills of
 
 The following is a detailed list of exam objectives:
 
-|#   |Objectives                                                                                                                                                  |
-|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1      | Harness Platform Fundamentals                                                                                                                          |
-| 1.1    | Understand continuous integration fundamentals and Harness hierarchy                                                                                    |
-| 1.2    | Describe and configure key concepts like Artifacts, Packages, Build Infrastructures, and Connectors                                                     |
-| 1.3    | Understand Harness Cloud and its supported platforms                                                                                                   |
-| 2      | Harness Configuration & Management                                                                                                                     |
-| 2.1    | Learn to trigger build pipelines, manage secrets, and use expressions                                                                                  |
-| 2.2    | Understand and install Harness Delegate                                                                                                                |
-| 2.3    | Describe and configure the Harness Manager                                                                                                             |
-| 3      | Harness Kubernetes Environment                                                                                                                         |
-| 3.1    | Understand requirements for a K8s build environment, stages, steps, and how they share network context                                                  |
-| 3.2    | Learn about project variables and how to install software on the delegate                                                                              |
-| 4      | Harness CI Pipelines and Features                                                                                                                      |
-| 4.1    | Perform Codebase configuration and configure shared paths                                                                                              |
-| 4.2    | Describe and configure caching, Test Intelligence, and triggers                                                                                        |
-| 5      | Advanced Configurations in Harness CI                                                                                                                  |
-| 5.1    | Learn to configure input sets, overlays, failure strategies, and perform conditional execution                                                         |
-| 5.2    | Understand and configure Looping Strategies, Flow Control, and Barriers                                                                                |
-| 6      | Notifications & Steps in Harness CI                                                                                                                    |
-| 6.1    | Learn to configure notifications and send PR Status updates                                                                                            |
-| 6.2    | Understand and configure various steps from the Step Library                                                                                           |
-| 7      | Harness Security & User Management                                                                                                                     |
-| 7.1    | Understand Docker Image pulls and its risks, set container resources, and security actions                                                            |
-| 7.2    | Learn about OAuth and SAML Integrations, and RBAC in User Groups                                                                                      |
-| 8      | Roles, Resource Groups & Tags in Harness                                                                                                              |
-| 8.1    | Understand and configure RBAC, Roles, Resource Groups, and Tags                                                                                        |
-| 8.2    | Learn about Execution History Tab in Pipeline Studio                                                                                                   |
-| 9      | Harness Policy Governance & Customization                                                                                                              |
-| 9.1    | Understand and configure Templates, Policy as Code, and Custom Dashboards                                                                              |
-| 9.2    | Learn to enforce governance in a pipeline and understand Account Audit Trail                                                                           |
+| #   | Objective    |
+|-----|--------------|
+| **1** | **Understanding and Managing Pipelines in Harness CI** |
+| 1.1 | Define and work with Background Steps and Pipeline Chains |
+| 1.2 | Explore Child Pipelines and their transitions in Chaining |
+| 1.3 | Identify best practices for CI Pipeline Templates and breaking changes management |
+| **2** | **Configuring Role-Based Access Control (RBAC) in Harness** |
+| 2.1 | Setup RBAC configurations for executing Chained Pipelines |
+| 2.2 | Understand the hierarchy level and scope where Roles can be created |
+| 2.3 | Explain how permissions are granted to a Service Account within the RBAC model |
+| **3** | **Implementing and Managing Authentication and Security** |
+| 3.1 | Implement various methods to increase Authentication security level |
+| 3.2 | Understand and work with different supported SSO methods |
+| 3.3 | Apply Harness Policy as Code to enforce governance and security practices |
+| **4** | **Working with Harness CI/CD Integration and Infrastructure** |
+| 4.1 | Comprehend how Harness CI integrates with GitHub Actions and other Git providers |
+| 4.2 | Discern how Harness Cloud deals with build infrastructures and related maintenance |
+| 4.3 | Know how to choose and configure build infrastructure options, including the use of Kubernetes |
+| **5** | **Utilizing and Managing Harness Connectors** |
+| 5.1 | Manage connectors for various platforms like GitHub, Docker Hub, and Artifact Repositories |
+| 5.2 | Determine settings for returning codebase variables to Harness via code repo connectors |
+| 5.3 | Develop strategies to avoid rate/throttling limiting issues when interacting with external repositories and platforms |
+| **6** | **Implementing and Leveraging Harness Variables and Expressions** |
+| 6.1 | Utilize JEXL expressions within pipeline variables for dynamic functionality |
+| 6.2 | Establish and reference variables across different hierarchy levels within Harness |
+| 6.3 | Recognize suitable scenarios for the utilization of built-in/custom variables in CI processes |
+| **7** | **Leveraging Harness Secret Management and Secret Usage** |
+| 7.1 | Recognize benefits and applications of secrets management within Harness CI |
+| 7.2 | Identify and rectify incidents involving the unintended exposure of Secrets |
+| 7.3 | Integrate external Secrets Management technologies into the Harness platform |
+| **8** | **Managing Harness CI/CD Artifacts and File Store** |
+| 8.1 | Understand and apply best practices for tagging and managing CI artifacts |
+| 8.2 | Identify and utilize the primary functionalities of the Harness File Store |
+| 8.3 | Determine appropriate methods for handling and storing different CI artifacts and dependencies |
+| **9** | **Harness Delegate Configuration and Management** |
+| 9.1 | Understand and explain the main role and function of the Harness Delegate |
+| 9.2 | Identify available options and best practices for installing and configuring the Harness Delegate |
+| 9.3 | Manage Delegate tags and utilize them effectively within CI processes and selectors |
 
 </details>
 

@@ -66,13 +66,13 @@ Test Intelligence is available for:
 * Kotlin
 * Scala
 * C#
-   * Requires .NET Core or NUnit<!-- or Framework -->
+   * Requires .NET Core or NUnit.<!-- or Framework -->
    * Currently, TI for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. <!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](#build-environment) in the YAML editor. -->
 * Python
    * Requires Python 3.
-   * Doesn't support resource file relationships.
-   * Repos that use dynamic loading or metaclasses might have unpredictable results.
    * Currently, TI for Python is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+* Ruby
+   * Currently, TI for Ruby is behind the feature flag `CI_RUBY_TI`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 For unsupported codebases, you can use [Run steps](../run-ci-scripts/run-step-settings.md) to run tests.
 
@@ -225,6 +225,29 @@ The build environment must have the necessary binaries for the **Run Tests** ste
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="ruby" label="Ruby">
+```
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Ruby Tests
+                  identifier: Run_Ruby_Tests
+                  spec:
+                    language: Ruby
+                    buildTool: Rspec
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
+                    runOnlySelectedTests: true
+                    preCommand: bundle install
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - tmp/junit.xml
+```
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
@@ -294,9 +317,11 @@ Note that while parallelism for TI can improve the total time it takes to run al
 To enable parallelism for TI, you must set a parallelism `strategy` on either the **Run Tests** step or the stage where you have the **Run Tests** step, add the `enableTestSplitting` parameter to your **Run Tests** step, and use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) to create a unique results file for each run. Optionally, you can include the `testSplitStrategy` parameter and environment variables to differentiate parallel runs.
 
 1. Go to the pipeline where you want to enable parallelism for TI.
-2. [Define the parallelism strategy](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
+2. [Define the parallelism strategy](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself.
 
-   You can do this in either the visual or YAML editor. In the visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
+   You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
+
+   You can do this in either the Visual or YAML editor. In the Visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
 
    :::caution
 
@@ -304,14 +329,12 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
 
    :::
 
-3. Switch to the YAML editor, if you were not already using it.
-4. Find the `RunTests` step, and then find the `spec` section.
-5. Add `enableTestSplitting: true`.
-6. The `testSplitStrategy` parameter is optional. If you include it, you can choose either `TestCount` or `ClassTiming`.
+3. In the **Run Tests** step, select **Enable Test Splitting** (`enableTestSplitting: true`).
+4. The **Test Split Strategy** is optional. You can choose how to split the tests, either by test count (`TestCount`) or by class timing (`ClassTiming`). The default is class timing.
 
-   Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test count uses simple division to split the tests into workloads. The default is `ClassTiming` if you omit this parameter. However, the maximum possible number of workloads is determined by the parallelism `strategy` you specified on the step or stage. For example, if you set `parallelism: 5`, tests are split into a maximum of five workloads.
+   Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test count uses simple division to split the tests into workloads. However, the maximum possible number of workloads is determined by the parallelism strategy you specified on the step or stage. For example, if you set `parallelism: 5`, then the tests are split into a maximum of five workloads.
 
-7. Modify the `reports.paths` value to use a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+strategy.iteration>`. This ensures there is a unique results file for each parallel run. For example:
+5. Modify the `reports.paths` value to use a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+strategy.iteration>`. This ensures there is a unique results file for each parallel run. For example:
 
    ```yaml
                           reports:
@@ -321,7 +344,7 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
                             type: JUnit
    ```
 
-8. You can add environment variables to differentiate parallel runs in build logs.
+6. You can add environment variables to differentiate parallel runs in build logs.
 
    * Add two environment variables to the `step.spec`: `HARNESS_STAGE_INDEX: <+strategy.iteration>` and `HARNESS_STAGE_TOTAL: <+strategy.iterations>`.
    * Add a `preCommand` to echo the variables' values so you can easily see the values in build logs.
@@ -344,8 +367,7 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
                        ...
    ```
 
-<details>
-<summary>YAML example: Test Intelligence with test splitting</summary>
+#### YAML example: Test Intelligence with test splitting
 
 ```yaml
     - stage:
@@ -388,8 +410,6 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
         strategy:
           parallelism: 3 ## Set the number of groups to use for test splitting.
 ```
-
-</details>
 
 ### Ignore tests or files
 
@@ -504,7 +524,7 @@ You can also install tools at runtime in [Pre-Command](#pre-command), provided t
 
 ### Language
 
-Select the source code language to build: **C#**, **Java**, **Kotlin**, **Scala**, or **Python**. Some languages have additional language-specific settings.
+Select the source code language to build: **C#**, **Java**, **Kotlin**, **Scala**, **Python**, or **Ruby**. Some languages have additional language-specific settings.
 
 ```mdx-code-block
 <Tabs>
@@ -661,6 +681,21 @@ If necessary, you can set `PYTHONPATH` in the [Environment Variables](#environme
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="ruby" label="Ruby">
+```
+
+:::note
+
+Currently, TI for Ruby is behind the feature flag `CI_RUBY_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+#### Test Globs
+
+You can override the default test globs pattern. For example, the default for RSpec is `spec/**/*_spec.rb`, and you could override it with any other pattern, such as `spec/features/**/*_spec.rb`.
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
@@ -707,6 +742,13 @@ Bazel is already installed on Harness Cloud runners, and you don't need to speci
 You can [use pytest to run unittest](https://docs.pytest.org/en/latest/how-to/unittest.html).
 
 :::
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="ruby" label="Ruby">
+```
+
+* [RSpec](https://rspec.info/)
 
 ```mdx-code-block
   </TabItem>
@@ -766,7 +808,7 @@ Or you can include additional flags, such as:
   <TabItem value="python" label="Python">
 ```
 
-**Build Arguments** are optional for Python. You can provide runtime arguments for tests, for example:
+**Build Arguments** are optional for Python. You can provide additional runtime arguments for tests, for example:
 
 ```yaml
                     args: "--junitxml=out_report.xml"
@@ -779,6 +821,13 @@ Or you can include additional flags, such as:
 * The Python 3 binary is required. Python 3 is preinstalled on Harness Cloud runners. For other build infrastructures, the binary must be preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or manually installed at runtime in [Pre-Command](#pre-command).
 
 :::
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="ruby" label="Ruby">
+```
+
+**Build Arguments** are optional for Ruby. You can provide additional runtime arguments for tests, such as `--format RspecJunitFormatter --out tmp/junit.xml`.
 
 ```mdx-code-block
   </TabItem>
@@ -1037,7 +1086,7 @@ pipeline:
                   spec:
                     language: Python
                     buildTool: Pytest ## Specify pytest or unittest
-                    args: "--junitxml=out_report.xml"
+                    args: "--junitxml=out_report.xml" ## Optional.
                     runOnlySelectedTests: true  ## Set to false if you don't want to use TI.
                     preCommand: |
                       python3 -m venv .venv
@@ -1054,6 +1103,58 @@ pipeline:
                           - out_report.xml*
                     envVariables:
                       PYTHONPATH: /harness ## Exclude if not applicable.
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="ruby" label="Ruby">
+```
+
+This example shows a pipeline that runs tests on Ruby with RSpec and Test Intelligence.
+
+```yaml
+pipeline:
+  projectIdentifier: default
+  orgIdentifier: default
+  identifier: testintelligencedemo
+  name: Test Intelligence Demo
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: YOUR_CODE_REPO_NAME
+        build: <+input>
+  tags: {}
+  stages:
+    - stage:
+        name: Ruby Tests
+        identifier: rubytests
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run Ruby Tests
+                  name: Run_Ruby_Tests
+                  identifier: Run_Ruby_Tests
+                  spec:
+                    language: Ruby
+                    buildTool: Rspec
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml" ## Optional.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
+                    preCommand: bundle install
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - tmp/junit.xml
           platform:
             arch: Amd64
             os: Linux
@@ -1226,8 +1327,8 @@ pipeline:
                     connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
                     image: python:latest ## Specify if required by your build infrastructure.
                     language: Python
-                    buildTool: Pytest ## Specify pytest or unittest
-                    args: "--junitxml=out_report.xml"
+                    buildTool: Pytest ## Specify pytest or unittest.
+                    args: "--junitxml=out_report.xml" ## Optional.
                     runOnlySelectedTests: true  ## Set to false if you don't want to use TI.
                     preCommand: |
                       python3 -m venv .venv
@@ -1256,6 +1357,62 @@ pipeline:
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="ruby" label="Ruby">
+```
+
+This example shows a pipeline that runs tests on Ruby with RSpec and Test Intelligence.
+
+```yaml
+pipeline:
+  projectIdentifier: default
+  orgIdentifier: default
+  identifier: testintelligencedemo
+  name: Test Intelligence Demo
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: YOUR_CODE_REPO_NAME
+        build: <+input>
+  tags: {}
+  stages:
+    - stage:
+        name: Ruby tests
+        identifier: rubytests
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run Ruby Tests
+                  name: Run_Ruby_Tests
+                  identifier: Run_Ruby_Tests
+                  spec:
+                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    image: ruby:latest ## Specify if required by your build infrastructure.
+                    language: Ruby
+                    buildTool: Rspec
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml" ## Optional.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
+                    preCommand: bundle install
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - tmp/junit.xml
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+```
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
@@ -1264,7 +1421,7 @@ pipeline:
 </Tabs>
 ```
 
-## Troubleshooting
+## Troubleshooting Test Intelligence
 
 You might encounter these issues when using Test Intelligence.
 
@@ -1309,8 +1466,8 @@ For example, the following configuration in `pom.xml` removes `forkCount` and ap
 If you encounter errors with TI for Python, make sure you have met the following requirements:
 
 * Your project is written in Python 3, and your repo is a pure Python 3 repo.
-* You don't use resource file relationships. TI doesn't support resource file relationships.
-* You don't use dynamic loading and metaclasses. TI might miss tests or changes in repos that use dynamic loading or metaclasses.
+* You don't use resource file relationships. TI for Python doesn't support resource file relationships.
+* You don't use dynamic loading and metaclasses. TI for Python might miss tests or changes in repos that use dynamic loading or metaclasses.
 * Your [Build Tool](#build-tool) is pytest or unittest.
 * The Python 3 binary is preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or installed at runtime in [Pre-Command](#pre-command).
 * If you use another command, such as `python`, to invoke Python 3, you have added an alias, such as `python3 = "python"`.
@@ -1318,4 +1475,8 @@ If you encounter errors with TI for Python, make sure you have met the following
 If you get errors related to code coverage for Python:
 
 * If you included [Build Arguments](#build-arguments), these don't need coverage flags (`--cov` or `coverage`).
-* You don't need to install coverage tools in [Pre-Command](#pre-command). These are already included.
+* You don't need to install coverage tools in [Pre-Command](#pre-command).
+
+### Ruby
+
+Test Intelligence results can be inaccurate for Ruby repos using dynamically generated code or Rails apps using [Spring](https://github.com/rails/spring).
