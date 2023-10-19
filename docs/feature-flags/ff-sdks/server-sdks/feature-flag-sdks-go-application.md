@@ -93,7 +93,7 @@ You can configure the following features of the SDK:
 | streamEnabled | `harness.WithStreamEnabled(false)` | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true` |
 | analyticsEnabled | `harness.WithAnalyticsEnabled(false)` | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: Analytics are not cached. | `true` |
 
-Enabling analytics is currently not available using the Go SDK.For further configuration options and samples, such as configuring your logger or using the SDK with the Relay Proxy, go to [Additional Options](feature-flag-sdks-go-application.md#additional-options).
+For further configuration options and samples, such as configuring your logger or using the SDK with the Relay Proxy, go to [Additional Options](feature-flag-sdks-go-application.md#additional-options).
 
 ### Complete the initialization
 
@@ -300,6 +300,33 @@ client, err := harness.NewCfClient(apiKey,
 harness.WithURL("http://localhost:7000"),  
 harness.WithEventsURL("http://localhost:7000"))
 ```
+
+### Configure your HTTP Client
+
+The SDK has a default HTTP client, however, you can provide your own HTTP client to the SDK by passing it in as a configuration option.
+
+For example, the following creates an HTTP client using custom CAs for Harness Self-Managed Enterprise Edition (on premises).
+
+```
+// Create a custom TLS configuration
+tlsConfig := &tls.Config{
+    RootCAs: certPool,
+}
+
+transport := &http.Transport{
+    TLSClientConfig: tlsConfig,
+}
+
+httpClient := http.Client{Transport: transport}
+	client, err := harness.NewCfClient(apiKey, 
+	    harness.WithEventsURL("https://ffserver:8003/api/1.0"), 
+	    harness.WithURL("https://ffserver:8003/api/1.0"), 
+	    harness.WithHTTPClient(&httpClient))
+
+```
+
+For a full example of providing custom CAs for Harness Self-Managed Enterprise Edition, see our [TLS Example](https://github.com/harness/ff-golang-server-sdk/blob/main/examples/tls/example.go)
+
 ## Sample code for a Go application
 
 Here is a sample code for integrating with the Go SDK:
