@@ -31,6 +31,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   You can now add input and ouput variables to the Tanzu Command step and step template to facilitate Tanzu deployments.
 
+### Service Reliability Management, version 1.4.2
+
+- On the SLO Details page, you can now view the count of contributing SLOs for composite SLOs. This enhancement simplifies the management of composite SLOs. (SRM-15825)## Latest: October 18, 2023
+
 ## October 18, 2023
 
 ### Continuous Integration, version 6203

@@ -202,3 +202,42 @@ For detailed instructions and reference, please check out our documentation on m
 
 Harness offers a powerful Git-based workflow for FF management, providing flexibility and control to development teams. If you have any further questions or need assistance, feel free to reach out to our Harness Support team for additional guidance.
 
+#### What is the purpose of the /stream endpoint, and how does it maintain its connection state?
+
+The /stream endpoint serves as a long-lived connection using Server-Sent Events (SSE) to maintain its connection state. A keepalive signal is regularly dispatched every 20 seconds to ensure that the connection remains active and open.
+
+#### Can I expect to see data transmission on the /stream endpoint, and how should I maintain its liveliness?
+
+While using the /stream endpoint, you may not observe data transmission. To keep the connection alive, a keepalive signal should be sent at the network level. This ensures that the connection remains open and responsive to events.
+
+#### Is there a maximum duration for the /stream connection, and what happens if it's terminated?
+
+The /stream connection is automatically terminated by the load balancer every 24 hours. In such cases, our Software Development Kit (SDK) is designed to promptly reestablish the connection to ensure continuous operation.
+
+#### What is the primary purpose of the /stream connection, and should I expect disruptions or issues with it?
+
+The primary purpose of the /stream connection is to remain continuously open and receptive to events. You should not experience disruptions or issues. Its role is to detect changes in a designated flag and provide updated values as needed.
+
+#### Is there a way to see MAU utilisation at project level
+
+As of now license utilization is shown at the account level only
+
+#### Our primary context revolves around blocking the toggling of Feature Flags through the FF UI exclusively in the Production environment, How shooul we accomplished using Harness OPA Policy or RABC
+ 
+We would suggest to use RBAC here: 
+
+OPA is there to assert if the current state of a flag is allowed by the policy or not, regardless of what change was just made
+
+RBAC is there to decide if someone is allowed to perform a certain change or not e.g. toggling a flag in the production environment as in their case here
+
+### What's the difference between Feature Flag Create/Edit and Toggle Permission
+
+Create/Edit permission :  A user can create and edit a FF but cannot turn it on for users.
+ 
+Toggle :  With toggle permission, you can enable the FF for users.
+ 
+So it's just the security focused least privileged principle. For example internally you can have lots of people who can create flags, quite a few who can toggle flags in QA but far fewer who can toggle them in production.
+
+#### In the metrics available by API, would we be able to determine that a target has evaluated a FF?
+
+Currently we show the total number of evals.

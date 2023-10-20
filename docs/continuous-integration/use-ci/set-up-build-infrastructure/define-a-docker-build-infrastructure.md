@@ -115,6 +115,10 @@ sudo chmod +x harness-docker-runner-linux-arm64
 ./harness-docker-runner-linux-arm64 server
 ```
 
+### Define build infrastructure
+
+After configuring the host machine, you need to [set the pipeline's build infrastructure](#set-the-pipelines-build-infrastructure).
+
 ## Set up a macOS local runner
 
 ### Prepare machines
@@ -227,6 +231,10 @@ sudo chmod +x harness-docker-runner-darwin-arm64
 ./harness-docker-runner-darwin-arm64 server
 ```
 
+### Define build infrastructure
+
+After configuring the host machine, you need to [set the pipeline's build infrastructure](#set-the-pipelines-build-infrastructure).
+
 ## Set up a Windows local runner
 
 ### Prepare machines
@@ -330,6 +338,10 @@ Here is an example of the two commands to install the Windows amd64 Harness Dock
 $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
 harness-docker-runner-windows-amd64.exe server
 ```
+
+### Define build infrastructure
+
+After configuring the host machines, you need to [set the pipeline's build infrastructure](#set-the-pipelines-build-infrastructure).
 
 ## Set the pipeline's build infrastructure
 

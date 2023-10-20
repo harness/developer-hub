@@ -59,12 +59,13 @@ You must have:
 
    * In **Personal Access Token**, select a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets) containing an Azure Repos Personal Access Token. Harness requires the token for API access. Generate the token in your Azure account, and then add it to Harness as a secret.
 
-10. Select **Continue**, and then configure the delegate connection. Select either:
+10. Select **Continue**, and then select whether to connect through the Harness Platform or a Harness Delegate. If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you must select **Connect through Harness Platform**.
+11. If you selected **Connect through a Harness Delegate**, you must configure the delegate connection. Select either:
 
    * **Use any available Delegate:** Harness selects an available delegate at runtime.
    * **Only use Delegates with all of the following tags:** Select specific delegates that you want Harness to use with this connector.
 
-11. Select **Save and Continue**, and then wait while Harness tests the connector's connection. If the test succeeds, select **Finish**.
+12. Select **Save and Continue**, and then wait while Harness tests the connector's connection. If the test succeeds, select **Finish**.
 
 ## Kubernetes delegate with self-signed certificates
 
