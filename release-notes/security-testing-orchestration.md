@@ -23,11 +23,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
-- Updated the exemptions page to bubble soon to expire exemptions to the top of the list (STO-6367)
+This release does not include new features. 
+
 
 ### Early access
 
-This release does not include early access features. 
+- Updated the exemptions page to bubble soon to expire exemptions to the top of the list. Available in the time bound exemption early access feature available behind the STO_TIMEBOUND_EXEMPTIONS flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.  (STO-6367)
 
 ### Fixed issues
 
