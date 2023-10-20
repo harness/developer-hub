@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-10-19T10:00:15
+date: 2023-10-20T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -46,7 +46,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
-## Latest: Harness version 811xx
+## Latest: Harness version 81106
 
 ### New features and enhancements
 
@@ -67,10 +67,6 @@ This release does not include early access features.
 - The Submit button that you use to add an OCI Helm manifest source to a service configuration does not work if Harness cannot fetch the chart version. (CDS-81657, ZD-52068, ZD-52156)
 
   This issue has been fixed.
-
-- Triggering a Jenkins job through an HTTP POST request resulted in an exception named `IllegalArgumentException`. Consequently, the Jenkins build step failed. The exception was caused by incorrect encoding of the Jenkins job parameters in the URL. (CDS-81070, ZD-51879, ZD-52069)
-
-  The earliest Harness Delegate version to experience this issue is version 80508. The issue has been fixed in Delegate versions 80515, 80809, and 81010.
 
 - Post-production rollback did not work if the deployed stage used a service that was propagated from an earlier stage, and that earlier stage was skipped in the original execution. (CDS-81036, ZD-51663)  
 
@@ -103,20 +99,18 @@ This release does not include early access features.
 - When a step fails, you expect pipeline execution to stall. However, failed steps are sometimes marked as being successful, and pipeline execution continues. This behavior is observed when the step's failure strategy is set to wait for manual intervention, and a user selects **Mark as Success** in response to the step's failure. This behavior is by design. For more information, go to [Failure strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/#failure-strategy-settings). (CDS-72904, ZD-46414, ZD-47050, ZD-47743)
 
   The issue in this situation was that you were not informed about what failure strategy was applied and by whom (the failure strategy might have been selected by a user before the specified timeout or by Harness after the specified timeout). To fix this issue, Harness has added the following step interrupt fields to the step details: 
-    1. **Failure Strategy Applied**. Shows which failure strategy was applied.
-
-    2. **Applied By**. Shows one of the following values to inform you about the source of the action:
-      - **Failure Strategy <timestamp>**. Indicates that Harness applied the configured failure strategy automatically.
-      - **<email address> <timestamp>**. Indicates that a user intervened and selected the failure strategy.
-      - **Post Timeout Action <timestamp>**. Indicates that Harness applied the post-timeout action because no user intervened within the allotted time. 
-
+    * **Failure Strategy Applied**. Shows which failure strategy was applied.
+    * **Applied By**. Shows one of the following values to inform you about the source of the action:
+      * **Failure Strategy _timestamp_**. Indicates that Harness applied the configured failure strategy automatically.
+      * **email address _timestamp_**. Indicates that a user intervened and selected the failure strategy.
+      * **Post Timeout Action _timestamp_**. Indicates that Harness applied the post-timeout action because no user intervened within the allotted time. 
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
 
-#### Harness version 81008
+#### October 18, 2023, Harness version 81008
 
 ##### New features and enhancements
 
@@ -191,8 +185,8 @@ This release does not include early access features.
 - JEXL functions were not supported in HTTP output variables. (CDS-79811, ZD-50712)
 
   This issue has been fixed. 
-
 - The names of environments were truncated to enable the Total Deployments section of the Services page. This was done to accommodate multiple environment names.  (CDS-79757)
+
 
   This issue has been fixed. 
 

@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-10-19T10:00
+date: 2023-10-20T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,9 +19,9 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: October 19, 2023
+## Latest: October 20, 2023
 
-### Continuous Delivery, version 811xx
+### Continuous Delivery, version 81106
 
 - User interface improvements on the secrets listing page (CDS-80747)
 
@@ -36,8 +36,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ### Continuous Integration, version 6203
 
 You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#enable-parallelism-test-splitting-for-test-intelligence) in the Visual editor as well as the YAML editor. (CI-9618)
-
-## October 16, 2023
 
 ### Continuous Delivery, version 81008
 
