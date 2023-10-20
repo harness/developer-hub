@@ -20,7 +20,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: version 81200
+## Latest: version 81202
 
 ### New features and enhancements
 
