@@ -20,9 +20,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: October 19, 2023
+## Latest: October 20, 2023
 
-### Service Reliability Management, version 1.4.x
+### Service Reliability Management, version 1.4.2
 
 - On the SLO Details page, you can now view the count of contributing SLOs for composite SLOs. This enhancement simplifies the management of composite SLOs. (SRM-15825)## Latest: October 18, 2023
 
