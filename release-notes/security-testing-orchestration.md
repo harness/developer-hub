@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-10-11T10:00
+date: 2023-10-20T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 9
 ---
@@ -19,21 +19,20 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 1.70.1
+## Latest: Version 1.71.1
 
 ### New features and enhancements
 
-- Improved the look and feel of the exemptions page, and added information about the severity of the issue associated with exemptions and exemption requests. (STO-6592)
+- Updated the exemptions page to bubble soon to expire exemptions to the top of the list (STO-6367)
 
 ### Early access
 
-- Added support for Matrix pipelines to the pipeline execution results filters
-  
-  This fixes an issue in a feature behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-6405)
+This release does not include early access features. 
 
 ### Fixed issues
 
-This release does not include any new fixes
+- The STO dashboard used a marketplace graph which was not available in hosted environments. A new native graph has been chosen so the Security Issues (Overall) graph will be available on all environments. (STO-6613)
+- Updated the icon for a false positive exemption to match the other icons (STO-6555)
 
 ### Hotfixes
 
@@ -43,6 +42,27 @@ This release does not include hotfixes.
 
 <details>
 <summary>2023 releases</summary>
+
+#### Version 1.70.1
+
+##### New features and enhancements
+
+- Improved the look and feel of the exemptions page, and added information about the severity of the issue associated with exemptions and exemption requests. (STO-6592)
+
+##### Early access
+
+- Added support for Matrix pipelines to the pipeline execution results filters
+  
+  This fixes an issue in a feature behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-6405)
+
+##### Fixed issues
+
+This release does not include any new fixes
+
+##### Hotfixes
+
+This release does not include hotfixes. 
+
 
 #### Version 1.69.3
 
