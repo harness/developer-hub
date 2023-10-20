@@ -15,7 +15,7 @@ description: Associate alerts and dashboards to components.
 ### Application configuration YAML
 
 This plugin requires a backend proxy configuration to make calls to Grafana with authentication. 
-In the following configuration, replace `<grafana-url>` with the Grafana instance (for example https://grafana.mycompany.com) and similarly replace public domain as well.
+In the following configuration, replace `<grafana-url>` with the Grafana instance (for example `https://grafana.mycompany.com`) and similarly replace public domain as well.
 Make sure that the slash `/` is not added at the end. 
 
 If [unified alerting](https://grafana.com/blog/2021/06/14/the-new-unified-alerting-system-for-grafana-everything-you-need-to-know/) is enabled in Grafana, then mark `unifiedAlerting` as true
