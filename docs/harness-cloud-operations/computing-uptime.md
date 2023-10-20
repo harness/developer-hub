@@ -20,7 +20,7 @@ For all Harness modules, the following Service Level Indicators (SLIs) will be a
 | **SLI**                          | **Threshold**                                                | Outage Kind    |
 |----------------------------------|--------------------------------------------------------------|----------------|
 | Login EURT (Base Pages > #login) | Greater than 30 seconds for a consecutive duration of 5 mins | Partial Outage |
-| Overall EURT (app.harnes.io)     | Greater than 30 seconds for a consecutive duration of 5 mins | Partial Outage |
+| Overall EURT (app.harness.io)     | Greater than 30 seconds for a consecutive duration of 5 mins | Partial Outage |
 | Gateway overall ART              | Greater than 50 ms for a consecutive duration of 5 mins      | Partial Outage |
 
 ### Example
@@ -56,6 +56,10 @@ Say Gateway has a partial outage for 50 minutes then:
 |-----------------------------------------------------------------------|--------------------------------------------------------------|----------------|
 | CI Manager ART                             | Greater than 30 seconds for a consecutive duration of 5 mins | Major Outage |
 | CI Manager Execution health ART    | No executions messages for more than 30 mins | Major Outage |
+| CIE Self hosted runners (Error Rate Increase (Builds are failing))| 5% of total requests fail with 5xx errors in a rolling window of 5 mins for initialization phase | Major Outage |
+| CIE Self hosted runners (Error Rate Increase (Builds are failing))| 5% of total requests fail with 5xx errors in a rolling window of 5 mins for cleanup phase | Partial Outage|
+| CIE Self hosted runners (Event processing time (Builds are slow))|2x of average latency in a rolling window of 5 mins for the following: Events framework Redis and 20% decrease is delegate task queue throughput| Degraded performance|
+
 
 ## Cloud Cost Management 
 | **SLI**                                                               | **Threshold**                                                | Outage Kind    |
