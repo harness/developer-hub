@@ -37,8 +37,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/harness-community/scripts/ma
 :::
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="GitOps Workflow">
+<Tabs queryString="pipeline">
+<TabItem value="gitops" label="GitOps Workflow">
 ```
 
 :::info
@@ -78,8 +78,8 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 3. In **Do you have any existing Argo CD instances?**, select **Yes** if you already have an Argo CD instance, else select **No** to install the Harness GitOps Agent.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Harness GitOps Agent Fresh Install">
+<Tabs queryString="gitopsagent">
+<TabItem value="agent-fresh-install" label="Harness GitOps Agent Fresh Install">
 ```
 
 1. In **Do you have any existing Argo CD instances?**, select **No**, and then select **Start**.
@@ -95,7 +95,7 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Harness GitOps Agent with Existing Argo CD Instance">
+<TabItem value="existingargo" label="Harness GitOps Agent with existing Argo CD instance">
 ```
 
 1. In **Do you have any existing Argo CD instances?**, select **Yes**, and then select **Start**.
@@ -117,48 +117,48 @@ Once you have installed the Agent, Harness will start importing all the entities
 ```
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="CLI">
+<Tabs  queryString="interfacegitopsfresh">
+<TabItem value="cli-fresh-gitops" label="CLI">
 ```
 1. Download and Configure Harness CLI.
 
     ```mdx-code-block
-    <Tabs>
-    <TabItem value="MacOS">
+    <Tabs queryString="cli-os-fg">
+    <TabItem value="macosfg" label="MacOS">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="Linux">
+    <TabItem value="linuxfg" label="Linux">
     ```
 
     ```mdx-code-block
-    <Tabs>
-    <TabItem value="ARM">
+    <Tabs queryString="linux-platform-fg">
+    <TabItem value="armfg" label="ARM">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz 
+    tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="AMD">
+    <TabItem value="amdfg" label="AMD">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
@@ -170,13 +170,13 @@ Once you have installed the Agent, Harness will start importing all the entities
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="Windows">
+    <TabItem value="windowsfg" label="Windows">
     ```
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
     ```
-    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip -OutFile ./harness.zip
     ```
         
     b. Extract the downloaded zip file and change directory to extracted file location.
@@ -271,7 +271,7 @@ harness gitops-application --file helm-guestbook/harness-gitops/application.yml 
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="UI">
+<TabItem value="uicli" label="UI">
 ```
 
 ### Add a Harness GitOps repository
@@ -386,13 +386,13 @@ On successful application sync, you'll see the status tree under **Resource View
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="CD Pipeline">
+<TabItem value="uicdpipe" label="CD Pipeline">
 ```
 You can choose to proceed with the tutorial either by using the command-line interface (Harness CLI) or the user interface (Harness UI).
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="CLI">
+<Tabs queryString="interface-existing-argo">
+<TabItem value="cli-existing" label="CLI">
 ```
 ## Before you begin
 
@@ -412,42 +412,42 @@ Verify the following:
 1. Download and Configure Harness CLI.
 
     ```mdx-code-block
-    <Tabs>
-    <TabItem value="MacOS">
+    <Tabs queryString="gitops-cli-os">
+    <TabItem value="gitmacos" label="MacOS">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="Linux">
+    <TabItem value="linuxgitops" label="Linux">
     ```
 
     ```mdx-code-block
-    <Tabs>
-    <TabItem value="ARM">
+    <Tabs queryString="linux-platform-gitops">
+    <TabItem value="armgitops" label="ARM">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="AMD">
+    <TabItem value="amdgitops" label="AMD">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
@@ -459,13 +459,13 @@ Verify the following:
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="Windows">
+    <TabItem value="windowsgitops" label="Windows">
     ```
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
     ```
-    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip  -OutFile ./harness.zip
     ```
         
     b. Extract the downloaded zip file and change directory to extracted file location.
@@ -597,8 +597,8 @@ Helm is primarily focused on managing the release and versioning of application 
 Harness adds an additional layer of functionality on top of Helm, providing a streamlined and automated approach to canary and blue-green deployments. By leveraging Helm's package management capabilities and integrating with its release management features, Harness extends Helm's capabilities to support canary and blue-green deployment strategies.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Canary">
+<Tabs queryString="deploymentcli">
+<TabItem value="canarycli" label="Canary">
 ```
 
 <details open>
@@ -665,7 +665,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Blue Green">
+<TabItem value="bgcli" label="Blue Green">
 ```
 
 <details open>
@@ -734,7 +734,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="K8s Rolling">
+<TabItem value="k8srollingcli" label="K8s Rolling">
 ```
 
 <details open>
@@ -800,7 +800,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="NativeHelm Rolling">
+<TabItem value="helmrollingcli" label="Native Helm Rolling">
 ```
 
 <details open>
@@ -875,7 +875,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="UI">
+<TabItem value="uigitops" label="UI">
 ```
 ## Before you begin
 
@@ -997,8 +997,8 @@ Helm is primarily focused on managing the release and versioning of application 
 Harness adds an additional layer of functionality on top of Helm, providing a streamlined and automated approach to canary and blue-green deployments. By leveraging Helm's package management capabilities and integrating with its release management features, Harness extends Helm's capabilities to support canary and blue-green deployment strategies.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Canary">
+<Tabs queryString="deploymentui">
+<TabItem value="canaryui" label="Canary">
 ```
 
 <details open>
@@ -1062,7 +1062,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Blue Green">
+<TabItem value="bgui" label="Blue Green">
 ```
 
 <details open>
@@ -1127,7 +1127,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="K8s Rolling">
+<TabItem value="k8srollingui" label="K8s Rolling">
 ```
 
 <details open>
@@ -1192,7 +1192,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="NativeHelm Rolling">
+<TabItem value="helmrolling" label="Native Helm Rolling">
 ```
 
 <details open>
