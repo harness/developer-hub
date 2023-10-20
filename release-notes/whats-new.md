@@ -19,11 +19,19 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: October 18, 2023
+
+## Latest: October 20, 2023
+
+### Service Reliability Management, version 1.4.2
+
+- On the SLO Details page, you can now view the count of contributing SLOs for composite SLOs. This enhancement simplifies the management of composite SLOs. (SRM-15825)## Latest: October 18, 2023
+
+## October 16, 2023
 
 ### Continuous Integration, version 6203
 
 You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#enable-parallelism-test-splitting-for-test-intelligence) in the Visual editor as well as the YAML editor. (CI-9618)
+
 
 ## October 16, 2023
 
