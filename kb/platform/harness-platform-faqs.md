@@ -1315,3 +1315,24 @@ The Xmx value is a parameter used to specify the maximum heap size for a Java vi
 name: JAVA_OPTS
 value: "-Xms64M -Xmx8192M"
 ```
+
+#### We want to know the status (failed/pass) and reason for verification step using graphQL API
+You can make use of workflow/pipeline grapnel api for execution and failureDetails field will give you desired information.
+
+#### We have enabled NG but after login we are still getting redirected to CG
+Make sure you have set the Default Experience as NG under  Account overview page
+
+#### Does Harness CG/NG saml setting is shared 
+Yes if you have configured SAML on CG same will be used for login to NG
+
+#### How to migrate user from CG to NG
+Users needs to be migrated automatically once NG is enabled
+
+#### How can be add admin in newly enabled NG account
+Users from CG Administrators group should be automatically assigned as admin role in NG, they can change and create/update other role etc in NG
+
+#### what is the role of "PROXY_HOST" in proxy.config?
+This is the host address of your proxy, which you want to configure
+
+#### If we enable proxy in delegate does that mean it is including all communication of "Connectors" - Artifact Servers, Source Repo Providers, Collaboration Providers? and also Cloud Providers?
+Yes that’s correct any outbound connection made via delegate through Harness will use that proxy
