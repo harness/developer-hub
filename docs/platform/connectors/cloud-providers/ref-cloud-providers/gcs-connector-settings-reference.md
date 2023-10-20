@@ -73,8 +73,7 @@ GCP connector settings include:
   * Select **Specify credentials here** to use a GCP service account key.
   * Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its authentication credentials from the Harness Delegate that is running in GCP.
 * **Select connectivity mode**: Select whether Harness should communicate directly with GCP or go through a Harness Delegate in GCP. If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you must select **Connect through Harness Platform**.
-
-:::info note Harness is introducing a new connectivity mode, OpenID Connect (OIDC) to communicate directly with GCP using GCP connector. This feature is currently behind a feature flag. Contact Harness Support to enable the feature. :::
+* :::info note Harness is introducing a new connectivity mode, OpenID Connect (OIDC) to communicate directly with GCP using GCP connector for Harness Cloud build infrastructure. This feature is currently behind a feature flag. Contact Harness Support to enable the feature. :::
 
 <details>
 <summary>Store service account keys as Harness secrets</summary>
@@ -109,6 +108,8 @@ If connecting through a Harness Delegate, select either:
 
 * **Use any available Delegate**: Harness selects an available delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](../../../delegates/delegate-concepts/delegate-overview.md).
 * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Use delegate selectors](../../../delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](../../../delegates/install-delegates/overview).
+* **Use OpenID Connect (OIDC)**: Use OIDC authentication to access public cloud resources without secrets or credentials. In the case of accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to Harness GCP connector.
+
 
 </details>
 
