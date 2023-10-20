@@ -29,7 +29,7 @@ Make sure the user account for this connection has the following required permis
 
 For token-based authentication, go to **http://Jenkins-IP-address/jobs/me/configure** to check and change your API access token. The token is added as part of the HTTP header.
 
-See [Jenkins Matrix-based security](https://wiki.jenkins.io/display/JENKINS/Matrix-based+security).
+See [Jenkins Matrix-based security](https://wiki.jenkins.io/display/JENKINS/Matrix-based+security).
 
 #### Okta or Two-Factor Authentication
 
