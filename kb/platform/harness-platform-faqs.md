@@ -1322,7 +1322,7 @@ You can refer these docs [here](https://apidocs.harness.io/tag/Project-Role-Assi
 
 #### Do we have RBAC permission on Audit Trail like we have in CG?
 
-This feature is missing in NG as of now, but we have viewer permission as of now.
+This feature is not in NG as of now, but we do have viewer permissions in place.
 
 #### What is advisable to retain your current configuration during the Harness installation process?
 
@@ -1351,7 +1351,6 @@ One with Edit and Specific selected Goverance policies.
 
 #### What is diffrence between `terminationGracePeriodSeconds` and `preStopHook` ?
 
-Below could be the possible explanation : 
 
 - `TerminationGracePeriodSeconds`  - This is used to allow the main process (delegate) to delay the shutdown so that this process can perform some cleanup. The key here is that container shutdown is delayed by UP TO the specified duration. This works by delegate specifically handling SIGTERM kill signal.
 
@@ -1363,7 +1362,6 @@ Having one less delegate instance during a task with a long `terminationGracePer
 
 #### What environment variable or Java option should be configured to stop exposure in the Gateway container when JWT is getting exposed?
 
-Below could be the possible solution :
 - create a configmap containing the new logback.xml (everything set to level=WARN ) 
 - mount it wherever and pass:
 `-Dlogging.config=file:/path/to/mounted/logback.xml`
