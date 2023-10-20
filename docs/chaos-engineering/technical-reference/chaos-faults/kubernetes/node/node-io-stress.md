@@ -1,6 +1,8 @@
 ---
 title: Node IO stress
 id: node-io-stress
+redirect_from:
+  - /docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress
 ---
 ## Introduction
 
@@ -61,7 +63,7 @@ Node IO stress causes I/O stress on the Kubernetes node.
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size of the files used per worker (in GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> and <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. </td>
-        <td>If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> takes precedence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-io-stress/#filesystem-utilization-bytes"> file system utilization bytes.</a></td>
+        <td>If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> takes precedence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-io-stress#filesystem-utilization-bytes"> file system utilization bytes.</a></td>
       </tr>
       <tr>
         <td> CPU </td>
