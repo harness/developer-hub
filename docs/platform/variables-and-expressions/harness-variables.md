@@ -869,6 +869,10 @@ The use of variable expressions is different between v1 and v2.
 
 For more information, go to [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
+### Service-level variables with dashes
+
+To reference a service variable that contains dashes in the name, use the expression `<+serviceVariables['test-string']>`.
+
 ### Service-level variables for service v2
 
 To reference a service variable, use the expression `<+serviceVariables.VARIABLE_NAME>`.
