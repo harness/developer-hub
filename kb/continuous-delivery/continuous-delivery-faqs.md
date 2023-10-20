@@ -169,7 +169,7 @@ Therefore, if you migrate to Harness NextGen and use the same cluster and releas
 
 It's important to note that Harness provides a declarative rollback feature, which eliminates the need for resource versioning. This means that even if you don't maintain the numbering scheme, you can still perform rollbacks effectively using the declarative rollback feature provided by Harness.
 
-For more information, you can refer to the documentation on declarative rollback in the link provided: [Harness Declarative Rollback](https://developer.harness.io/docs.harness.io/article/6y7xs2rh5a-declarative-rollback).
+For more information, you can refer to the documentation on declarative rollback in the link provided: [Harness Declarative Rollback](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#declarative-rollback).
 
 #### How can I turn off FG (First Generation) responses or remove the switch to CG option?
 
@@ -752,9 +752,9 @@ No, It needs to be a different execution everytime.
 
 No, we don’t have this capability.
 
-#### In FG how can I remove the old plan-file and start again with a fresh plan to make the workflow run successfully?
+#### In Harness FirstGen, how can I remove the old plan-file and start again with a fresh plan to make the workflow run successfully?
 
-You can enable "Skip Terraform Refresh when inheriting Terraform plan" option, please refer this in following [Documentation](https://developer.harness.io/docs.harness.io/article/ux2enus2ku-add-terraform-scripts#option_2_skip_terraform_refresh_when_inheriting_terraform_plan)
+You can [enable the Skip Terraform Refresh when inheriting Terraform plan option](https://developer.harness.io/docs/first-gen/continuous-delivery/terraform-category/add-terraform-scripts#option-2-skip-terraform-refresh-when-inheriting-terraform-plan).
 
 #### For variables do we have options to intake parameters via dropdown or radio buttons etc ?
 
@@ -1512,14 +1512,9 @@ For this specific use case please refer to our documentation [here](https://deve
 
 We have it added in our API docs which you can refer [here](https://apidocs.harness.io/tag/Pipeline-Refresh/#operation/validateTemplateInputs)
 
-#### Do we have documentations based on user specific roles ?
+#### Does Harness have documentation for specific user roles?
 
-One can follow [`CD Ramp UI Guide Series`](https://developer.harness.io/docs/category/ramp-up-guides) where we have the following initials :
-
-- For developer role: follow [here](https://developer.harness.io/docs/continuous-delivery/ramp-up/rampup-dev)
-- For administrator role: follow [here](https://developer.harness.io/docs/continuous-delivery/ramp-up/rampup-admin)
-
-We look forward to add more in the upcoming future.
+You can follow the [CD ramp-up guides](https://developer.harness.io/docs/category/ramp-up-guides), which include guides for developer, admin, pipeline designer, and platform engineer.
 
 #### Is it anticipated that the harness pipeline will initiate the verification of 'access' permissions to an environment at the outset of an execution, as opposed to conducting such verification progressively as the pipeline advances?
 

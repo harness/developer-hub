@@ -47,15 +47,15 @@ This release does not include early access features.
 
 #### October 09, 2023, version 6100
 
-### New features and enhancements
+##### New features and enhancements
 
 When you [enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) for Scala or Kotlin, the **Packages** and **Test Annotations** fields are now available in the Visual editor. (CI-9589)
 
-### Early access features
+##### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+##### Fixed issues
 
 * Fixed an issue with identifiers assigned to steps in [matrix looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) that occurred if your account was configured to use **Matrix Labels by Name** *and* the pipeline contained nested matrix strategies. This issue produced a Null Pointer Exception error. (CI-9680)
 * In Kubernetes cluster build infrastructures, non-existent or unresolvable secrets are now handled in the same way as they are in VM and Harness Cloud build infrastructures. (CI-9677, ZD-50868, ZD-50901)
