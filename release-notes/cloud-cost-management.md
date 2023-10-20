@@ -46,6 +46,10 @@ This release does not include any early access features.
 This bug got introduced recently while supporting ingestion of future-dated entries in any billing-period (i.e. supporting ingestion of costs which have usageDates beyond the current month). (CCM-14618)
 
   This is now fixed by considering billingperiodstartdate and billingperiodenddate during ingestion from AWS CUR.
+
+* It was observed that the budget's cost was not matching with the costs in the underlying perspective, resulting in showing lesser cost in the budget explorer chart. (CCM-14758)
+
+  This issue is fixed by making some changes in the underlying budget cost explorer query.
   
 
 ## Previous releases
