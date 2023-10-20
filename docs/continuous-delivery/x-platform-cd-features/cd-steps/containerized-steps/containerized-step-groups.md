@@ -473,3 +473,57 @@ Select the step to see its log and how the DinD is set up. The general sequence 
 5. Various plugins are loaded, such as snapshotter, content, metadata, differ, event, GC scheduler, lease manager, NRI (disabled), runtime, sandbox, streaming, and services.
 6. The log ends without further actions or errors.
 
+
+
+## Using AWS SAM and Serverless.com Harness Connectors with containerized step groups
+
+For AWS SAM and Serverless deployments with CD containerized steps, users were not able to deploy with a Harness connector using ISRA and IAM roles for the authentication performed by the Harness delegate.
+
+The primary issue stemmed from the fact that the service account specified in the step group configuration was not being utilized by the step images during deployment.
+
+To address this issue, we've made the following enhancements.
+
+- **Additional Credential Parameters:** In addition to passing the Access Key and Secret Key, Harness now transmits the Cross Account Role ARN and an optional External Id. These credentials are utilized by the step images to assume the necessary roles for deployment. 
+- **Service Account Integration:** Harness has introduced the functionality to use the Service Account specified in the step group configuration. 
+
+The following environment variables have been configured in the images:
+
+  1. Specified in the Connector
+    - `PLUGIN_AWS_ROLE_ARN` (Cross account role)
+    - `PLUGIN_AWS_STS_EXTERNAL_ID`
+    - `PLUGIN_AWS_ACCESS_KEY`
+    - `PLUGIN_AWS_SECRET_KEY`
+  2. `PLUGIN_REGION` (region provided in the infrastructure configuration)
+
+To leverage the Harness Connector for AWS SAM and Serverless.com container steps, follow these steps: 
+
+1. Ensure that following Harness feature flags are enabled:
+  1. `CDS_CONTAINER_STEP_GROUP`.
+  2. For Serverless.com: `CDS_SERVERLESS_V2`.
+  3. For AWS SAM: `CDP_AWS_SAM`.
+
+### Connector configuration
+
+In your Connector configuration, configure the Cross Account Role and an optional External Id. 
+
+![Connector Configuration](./static/how-to-use-harness-connector-1.png)
+
+![Connector Configuration](./static/how-to-use-harness-connector-2.png)
+
+The Connection test is used to verify delegate connectivity to the AWS account.
+
+![Connector Connection Test](./static/how-to-use-harness-connector-3.png)
+
+
+### Service Account configuration
+
+For the pods to connect to the AWS account, you will have to configure the service account in the step group level settings:
+
+![Step Group Configuration](./static/how-to-use-harness-connector-4.png)
+
+If the Access Key and Secret Key environment variables are set, then the image uses these keys for deployment. However, if the Access Key and Secret Key are not configured, the image will assume the role of service account configured for deployment.
+
+Harness will pass the cross account role in the image. If you do not want to use that in the image, you can set it to empty:
+
+![Blank Cross Account role](./static/how-to-use-harness-connector-5.png)
+
