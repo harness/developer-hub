@@ -1431,7 +1431,7 @@ You're probably an administrator or you have the permission to [override freeze 
 
 This error typically indicates a permission issue related to the Git connector used in the pipeline. It often occurs when the credentials or tokens being used for Git access lack the necessary permissions to clone or access the specified repository. To resolve it, validate the authentication setup and ensure the provided credentials have the required permissions for the repository in question.
 
-### Harness Annotations and Their Usage
+#### Harness Annotations and Their Usage
 
 #### What annotations can be applied in Harness?
 
@@ -1677,7 +1677,7 @@ Please check if the Feature-Flag `CDS_SERVICE_OVERRIDES_2_0` is enabled for the 
 #### Can the interval for the artifact version collection PT on the delegate be adjustable?
 
 No. Currently it is not configurable.
-### Is it possible to configure a Step Group to run on only a subset of the VMs in the infrastructure?
+#### Is it possible to configure a Step Group to run on only a subset of the VMs in the infrastructure?
 
 No, it is not possible to configure a Step Group to run on only a subset of the VMs in the infrastructure. The VMs are grouped at the Environment/Infrastructure level and cannot be further restricted at the Step Group level. 
 
@@ -1709,9 +1709,6 @@ Currently, there is no built-in way to enforce pipeline naming conventions while
  
 The policy can check if the pipeline name matches the repo name and deny the pipeline creation if it doesn't match. More on OPA Policy here: https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/
 
-#### Is it possible to configure a Step Group to run on only a subset of the VMs in the infrastructure?
-No, it is not possible to configure a Step Group to run on only a subset of the VMs in the infrastructure. The VMs are grouped at the Environment/Infrastructure level and cannot be further restricted at the Step Group level.
-
 #### What are the differences between Native Helm Deployment in FirstGen and NextGen Harness?
 here are a few key differences between Native Helm Deployment in FirstGen and NextGen Harness:
 
@@ -1739,7 +1736,7 @@ Harness fetches any secrets referenced in the values.yaml file and resolves them
 #### How to get ECR image and tag information in the stage?
 You should be able to see the artifacts details in the service output of the execution, you can reference this value via expressions in the next stage.
 
-### How to pass values from CI of Pipeline A console logs to CD Pipeline of Pipeline B
+#### How to pass values from CI of Pipeline A console logs to CD Pipeline of Pipeline B
 The only way you can achieve this is to store this first pipeline output variable in file store or in git config then you can pull the same in your pipeline B. There is no built-in variable to achieve this use case in Harness.
 
 #### What type of file types does Harness File Store support and what is the limit of the filesize?
