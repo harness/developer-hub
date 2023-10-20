@@ -91,6 +91,3 @@ Say Gateway has a partial outage for 50 minutes then:
 
 
 
-
-
-
