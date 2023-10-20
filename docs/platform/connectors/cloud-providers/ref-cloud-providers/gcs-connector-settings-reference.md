@@ -110,10 +110,9 @@ If connecting through a Harness Delegate, select either:
 * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Use delegate selectors](../../../delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](../../../delegates/install-delegates/overview).
 * **Use OpenID Connect (OIDC)**: Use OIDC authentication to access public cloud resources without secrets or credentials.
 * In the case of accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to Harness GCP connector. User need to provide below details:
-  Workload Pool ID - This identifies the workload pool created on the GCP side and it is the Pool ID value.
-  Provider ID - This identifies the OIDC provider configured on the GCP side and it is the Provider ID value.
-  BILLING_PROJECT_NUMBER - The project number or ID used for quota and billing. The principal needs to have serviceusage.services.use permission on this project. This has to be the GCP Project number that the user is 
-  using to configure the workload identify federation.
+Workload Pool ID - This identifies the workload pool created on the GCP side and it is the Pool ID value.
+Provider ID - This identifies the OIDC provider configured on the GCP side and it is the Provider ID value.
+BILLING_PROJECT_NUMBER - The project number or ID used for quota and billing. The principal needs to have serviceusage.services.use permission on this project. This has to be the GCP Project number that the user is using to configure the workload identify federation.
 
 </details>
 
