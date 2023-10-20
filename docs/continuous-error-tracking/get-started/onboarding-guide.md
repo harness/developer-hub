@@ -1,5 +1,5 @@
 ---
-title: Set up CET
+title: Onboarding guide
 description: Add a monitored service and install an Error Tracking Agent.
 sidebar_position: 20
 redirect_from:
