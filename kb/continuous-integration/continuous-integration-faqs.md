@@ -604,3 +604,20 @@ For example, you can [save and restore a cache from an Amazon S3 bucket.](/docs/
 #### Can I use Harness CI for mobile app development?
 
 Yes. [Harness CI offers many options for mobile app development.](/docs/continuous-integration/use-ci/mobile-dev-with-ci)
+
+
+#### Does shared path in SAM Build Manifest shows where the download happens ?
+
+No , shared paths does not dictate where the download happens. There could be multiple shared paths provided , but it does not mean our manifests would be downloaded in that shared path. More details on shared path can be read in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/)
+
+####  Is there a way to pass the branchname in update git metadata api ?
+
+No, we dont have branch name as a input to the git metadata api, we can update only the connector, file path and the repository.
+
+#### How can I change the path of the YAML file for the current pipeline to a non-default branch in another repository in git metadata api ?
+
+As per the API, our objective is to modify the Git metadata that we have stored. GitX does not store the branch as metadata.
+To change the YAML file path for an existing pipeline to a non-default branch in a different repository, you can follow these steps:
+- Copy the YAML file to the target repository's non-default branch.
+- Import the YAML file from the Git repository.
+By following these steps, you can effectively change the path of the YAML file for your pipeline to a non-default branch in another repository.

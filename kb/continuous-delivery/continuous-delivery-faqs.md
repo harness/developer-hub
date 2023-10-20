@@ -1996,3 +1996,65 @@ Deploying an image without a tag will fetch the image with tag "latest", to do s
 
 No, the secret are not supposed to be returned in plain text as it can be a security concern.
 
+#### Why one cannot configure multiple manifests in non-helm environment ?
+
+At present, we only support Helm K8s and Helm deployments ( not charts as they are treated as artifacts) with multiple manifest services because , allowing for all swimlanes can cause a mega service that can deploy multiple applications and can cause problem in management of the same.
+
+#### Where can I find a sample pipeline for building and upgrading custom delegate images ?
+
+Please refer to the sample repository here : [Github Repo](https://github.com/harness-community/custom-delegate)
+It is recommended to have path for production use delegates over INIT_SCRIPT.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/)
+
+#### What is one possible reason for implementing a delegate per namespace in a Kubernetes cluster, particularly when multiple teams are operating out of the same cluster and don't want to grant cluster-admin access to all teams?
+
+One reason to have a delegate per namespace is when multiple teams work within the same Kubernetes cluster. It's not feasible to grant cluster-admin access to every team, so instead, they can use Kubernetes connectors on a per-namespace basis.
+
+An alternative approach is to use read-only delegates with service account tokens and the cluster master URL. However, if long-lived tokens are undesirable, teams can opt for a delegate per namespace in their respective projects, with Kubernetes connectors that choose the right delegate selector.
+
+#### Is there a way to prevent the "Get Started" prompt from popping up for newly transitioned teams coming over to NG?
+
+No, for now it not an optionable event. We may include a feature flag on this in future.
+
+#### Can we add a file with the same name in 2 different directories in the File Store ?
+
+Yes, one can add a file with same name in 2 different directories having in account both files have unique ids.
+
+#### What could be the possible issue for not able create a SNOW ticket from a template ?
+
+One can check for below possibilities : 
+
+-  Is the Harness app installed in the servicenow instance used by this connector.
+Please refer here for [Reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages/#servicenow-user-roles)
+
+- Is the permissions for the integrated user include `x_harne_harness_ap.integration_user_role`.
+Please refer here for [Reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages/#:~:text=Make%20sure%20you%20have%20the%20following%20roles)
+
+#### If `Do Not Delete Pipeline Execution Details` setting is not enabled, how long do we keep execution details before deleting them ?
+
+We keep execution details for 6 months be default. If this setting is enabled, (Set to true)  we will not delete pipeline executions even after pipeline entity itself is deleted.
+
+#### What is the Account setting for image pull policy for setupAddonContainer during initialize phase ?
+
+We have Account settings named `Default Image Pull Policy For Add On Container` for image pull policy for setupAddonContainer during initialize phase.
+
+####  How long does Harness keep the plan execution summary for ?
+
+We keep the plan execution summary for 6 months.
+
+#### Is it possible to run GitHub Action steps in a custom pipeline stage ?
+
+No,  GitHub Action steps are not available in custom pipeline stages. They are limited to cloud build infrastructure.
+
+#### Where can one find the define delegate selector in Shell Script steps ?
+
+The delegate selector field is displayed conditionally based on the step type. If you're using a shell script step, the field is recently moved from the advanced tab to the optional config in the step parameters tab.
+
+#### Do we have audit trials for changes in Dashboard ?
+
+No, this feature is yet to come.
+
+#### How can one dynamically build the name of a secret ?
+
+Harness expressions are assessed and replaced within the script before script execution commences, allowing only the use of precomputed values and prohibiting the utilization of values calculated during script execution.
+One can use an example like `<+secrets.getValue(<+....OutputVariables.AppCredentialsPath>)>`
