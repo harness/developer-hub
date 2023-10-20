@@ -1316,6 +1316,57 @@ name: JAVA_OPTS
 value: "-Xms64M -Xmx8192M"
 ```
 
+#### What is the API used to pull a list of users and their roles from a specific project?
+
+You can refer these docs [here](https://apidocs.harness.io/tag/Project-Role-Assignments#operation/get-project-scoped-role-assignments).
+
+#### Do we have RBAC permission on Audit Trail like we have in CG?
+
+This feature is not in NG as of now, but we do have viewer permissions in place.
+
+#### What is advisable to retain your current configuration during the Harness installation process?
+
+Harness recommends that you keep your existing Java KeyStore in place during the installation process. Updating the KeyStore may cause issues with your delegate. For more on this please read the following [Documentation](https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
+
+#### What is `linkedSsId` in SSO groups ?
+
+`linkedSsoId`  is the uuid of SSO setting creating in Harness.
+
+#### What is the purpose of `linkedSsoDisplayName` ?
+
+`LinkedSsoDisplayName` is the same SSO setting name in Harness. For SAML the value provided for both ssoGroupId and ssoGroupName  should be same.
+
+#### How can we implement an approval mechanism for authorizing the deletion of marked accounts to prevent accidental deletions and ensure that the right accounts are flagged for deletion?
+
+The implementation of this feature is currently pending. Presently, the ability to mark accounts for deletion is allowed through the "update account" permission in the admin tool, which has been granted to a wide range of users.
+
+#### How are Create APIs supposed to work as if we are creating API it won't be having permission and will return false? How do we restrict creation of resources?
+
+There are two types of scope, one is complete scope(which indicates ALL) and the other is specific. 
+- To allow creation of entity in certain scope, it means allowing to creation that entity at complete Scope level(which indicates ALL). 
+- If the usecase is  to allow Create Goverance policy at scope and restrict edit to specific policies then ideally we should split it into specific Create and Edit permissions.
+- And then define 2 Role Assignments.
+One with Create and All Goverance policy.
+One with Edit and Specific selected Goverance policies.
+
+#### What is diffrence between `terminationGracePeriodSeconds` and `preStopHook` ?
+
+
+- `TerminationGracePeriodSeconds`  - This is used to allow the main process (delegate) to delay the shutdown so that this process can perform some cleanup. The key here is that container shutdown is delayed by UP TO the specified duration. This works by delegate specifically handling SIGTERM kill signal.
+
+-  `preStopHook` - This is used to allow any other kind of cleanup outside of the main process (e.g. one wants to save files, make database backup etc..). This hook runs IN PARALLEL to the terminationGracePeriodSeconds not before, but before delegate process shutdown is triggered (i.e. before delegate process receives SIGTERM). So if the grace period expires the hook will be killed as well.
+
+#### What is the impact of having one less delegate instance during a task with a long terminationGracePeriodSeconds for reasons other than upgrades?
+
+Having one less delegate instance during a task with a long `terminationGracePeriodSeconds` for reasons other than upgrades can impact the availability of delegate resources. Other tasks may fail to get scheduled because there are not enough delegates available to handle them. This can lead to inefficiencies and delays in task processing. It's crucial to consider the potential impact on the overall system and task scheduling when using extended termination grace periods.
+
+#### What environment variable or Java option should be configured to stop exposure in the Gateway container when JWT is getting exposed?
+
+- create a configmap containing the new logback.xml (everything set to level=WARN ) 
+- mount it wherever and pass:
+`-Dlogging.config=file:/path/to/mounted/logback.xml`
+to the JVM via JAVA_OPTS in config.
+
 #### We want to know the status (failed/pass) and reason for verification step using graphQL API
 You can make use of workflow/pipeline grapnel api for execution and failureDetails field will give you desired information.
 
