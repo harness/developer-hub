@@ -59,7 +59,12 @@ Say Gateway has a partial outage for 50 minutes then:
 | CIE Self hosted runners (Error Rate Increase (Builds are failing))| 5% of total requests fail with 5xx errors in a rolling window of 5 mins for initialization phase | Major Outage |
 | CIE Self hosted runners (Error Rate Increase (Builds are failing))| 5% of total requests fail with 5xx errors in a rolling window of 5 mins for cleanup phase | Partial Outage|
 | CIE Self hosted runners (Event processing time (Builds are slow))|2x of average latency in a rolling window of 5 mins for the following: Events framework Redis and 20% decrease is delegate task queue throughput| Degraded performance|
-
+| CIE Cloud Builds - Windows|SLIs similar to CIE Self hosted runners plus additional SLI below| |
+| CIE Cloud Builds - Windows|Error Rate Increase (Builds are failing)|5% of total requests fail with 5xx errors in a rolling window of 5 mins for our internal Dlite service |Major Outage|
+| CIE Cloud Builds - Linux|SLIs similar to CIE Self hosted runners and CIE Cloud Builds - Windows, plus additional SLI below| |
+| CIE Cloud Builds - Linux|Error Rate Increase (Builds are failing but fallback to GCP)|5% of total requests fail with 5xx errors in a rolling window of 5 mins for Nomad and Consul internal services| Degraded performance|
+| CIE Cloud Builds - Mac|SLIs similar to CIE Self hosted runners and CIE Cloud Builds - Windows, plus additional SLI below| |
+| CIE Cloud Builds - Linux|Error Rate Increase (Builds are failing but fallback to GCP)|5% of total requests fail with 5xx errors in a rolling window of 5 mins for the internal Anka service| Major Outage|
 
 ## Cloud Cost Management 
 | **SLI**                                                               | **Threshold**                                                | Outage Kind    |
