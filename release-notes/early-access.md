@@ -314,7 +314,7 @@ This functionality is behind the feature flag `CDS_SUPPORT_HPA_AND_PDB_NG`. Cont
 
 Harness Delegate version 23.06.79503 is required for this feature.
 
-### Platform version 79306 (May 23, 2023)
+### Delegate version 79306 (May 23, 2023)
 
 #### New artifact and manifest triggers (CDS-68262, ZD-43588, ZD-43726)
 
@@ -322,7 +322,7 @@ You can trigger all artifacts and manifests using **On New Artifact** and **On N
 
 This functionality is behind the feature flag `TRIGGER_FOR_ALL_ARTIFACTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### Platform version 79214 (May 04, 2023)
+### Delegate version 79214 (May 04, 2023)
 
 #### Selective stage executions for webhook triggers (CDS-56775, CDS-56774)
 
@@ -382,7 +382,7 @@ You can add Tanzu Application Service (TAS) [config files](/docs/continuous-deli
 
 This feature is behind the feature flag `CDS_GIT_CONFIG_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### Platform version 79111 (April 21, 2023)
+### Delegate version 79111 (April 21, 2023)
 
 #### Protect secrets in webhook triggers that use secret decryption on delegates (CDS-58488, ZD-42117)
 
@@ -402,7 +402,7 @@ For Harness services using the Tanzu deployment type, config files can be config
 
 This functionality is behind a feature flag, `CDS_GIT_CONFIG_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### Platform version 79015 (April 10, 2023)
+### Delegate version 79015 (April 10, 2023)
 
 #### Harness supports the deployment of AWS Lambda functions.
 
@@ -441,7 +441,7 @@ Expressions in comments were causing issues for some customers as Harness was tr
 
 Harness will remove comments from values.yaml files to prevent expressions in comments from being evaluated and causing failures.
 
-### Platform version 78712 (March 15, 2023)
+### Delegate version 78712 (March 15, 2023)
 
 #### Large repo support for Azure Repos
 
@@ -522,23 +522,15 @@ The following early access (beta) features are available for the Harness Continu
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 * **Description:** With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
 
-### Configure Cache Intelligence in the Visual editor
-
-* **Release date:** August 10, 2023
-* **Release version:** 5301
-* **Issue number:** CI-8917
-* **Feature flag:** `CI_CACHE_INTELLIGENCE`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-* **Description:** You can enable and configure [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to Harness Cloud build infrastructure.
-
-### Enable Cache Intelligence in the Visual editor
+### Cache Intelligence in the Visual editor
 
 * **Release date:** July 28, 2023
 * **Release version:** 5106
-* **Issue number:** CI-8571
+* **Issue number:** CI-8571, CI-8917
 * **Feature flag:** `CI_CACHE_INTELLIGENCE`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 * **Description:** You can enable [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to Harness Cloud build infrastructure.
+* **Update (Version 5301, August 10, 2023):** You can now also configure [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to Harness Cloud build infrastructure.
 
 ### Send status updates to Harness Manager directly by HTTP (Rolled back)
 
@@ -557,29 +549,33 @@ The following early access (beta) features are available for the Harness Continu
 * **Issue number:** CI-7817, ZD-39203
 * **Feature flag:** `CI_OUTPUT_VARIABLES_AS_ENV`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-* **Description:** With this feature flag enabled, output variables from steps are automatically available as environment variables for other steps in the same Build (`CI`) stage. This means that, if you have a Build stage with three steps, an output variable produced from step one is automatically available as an environment variable for steps two and three.
-   * In other steps in the same stage, you can refer to the output variable by its key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference where the variable originated, such as `<+steps.stepID.output.outputVariables.MY_VAR>`.
-   * For more information on this feature, go to the documentation on [Output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables).
+
+With this feature flag enabled, output variables from steps are automatically available as environment variables for other steps in the same Build (`CI`) stage. This means that, if you have a Build stage with three steps, an output variable produced from step one is automatically available as an environment variable for steps two and three.
+
+In other steps in the same stage, you can refer to the output variable by its key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference where the variable originated, such as `<+steps.stepID.output.outputVariables.MY_VAR>`.
+
+For more information on this feature, go to the documentation on [Output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables).
 
 ### Remote debugging
 
 * **Release date:** May 23, 2023
-* **Release version:** Platform version 79306
+* **Release version:** 3805
 * **Issue number:** CI-8135, CI-8048
 * **Feature flag:** `CI_REMOTE_DEBUG`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-* **Description:** Harness CI now supports remote debugging. This feature was initially released in January 2023 and subsequently reverted for further development.
 
-   Debug mode is available if all of the following conditions are met:
+Harness CI now supports remote debugging. This feature was initially released in January 2023 and subsequently reverted for further development.
 
-      * You have the feature flag `CI_REMOTE_DEBUG` enabled.
-      * The build infrastructure uses a Linux-based OS.
-      * The build fails at a **Run** step with a Bash or Shell script in a **Build** (`CI`) stage.
-      * The build runs in Harness Cloud, on a virtual machine, or in Kubernetes.
+Debug mode is available if all of the following conditions are met:
 
-   You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. For more information, go to the [debug mode](/docs/continuous-integration/troubleshoot-ci/debug-mode) documentation.
+* You have the feature flag `CI_REMOTE_DEBUG` enabled.
+* The build infrastructure uses a Linux-based OS.
+* The build fails at a **Run** step with a Bash or Shell script in a **Build** (`CI`) stage.
+* The build runs in Harness Cloud, on a virtual machine, or in Kubernetes.
 
-* **Update (CI Manager version 4204, June 19, 2023):** **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. For more information, go to [Debug with SSH](/docs/continuous-integration/troubleshoot-ci/debug-mode).
+You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. For more information, go to the [debug mode](/docs/continuous-integration/troubleshoot-ci/debug-mode) documentation.
+
+**Update (version 4204, June 19, 2023):** **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. For more information, go to [Debug with SSH](/docs/continuous-integration/troubleshoot-ci/debug-mode)
 
 ## FF early access features
 
