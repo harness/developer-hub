@@ -2050,3 +2050,76 @@ No, this feature is yet to come.
 
 Harness expressions are assessed and replaced within the script before script execution commences, allowing only the use of precomputed values and prohibiting the utilization of values calculated during script execution.
 One can use an example like `<+secrets.getValue(<+....OutputVariables.AppCredentialsPath>)>`
+
+
+#### What are the Helm version limitations on the Harness Platform?
+
+Helm 3 is deprecated so there is limited support for Helm 2. Helm 3 is now the default for Harness Helm Chart Deployments.
+
+#### What are some of the Manifest source locations that Harness can fetch the Helm Chart from?
+
+Github
+Gitlab
+Bitbucket
+Generic Git Provider
+Custom Remote Source Repository
+Google Cloud Storage
+Amazon S3 Storage
+Helm OCI Repository (ACR, ECR, GAR, Artifactory)
+Helm HTTP Server Repository (Nexus, Artifactory)
+Harness Local File Store
+
+#### What are some of the Artifact Repository for Container images to deploy with Chart?
+
+DockerHub
+Amazon Elastic Container Registry
+Google Container Registry
+Azure Container Registry
+Custom Artifact Source
+Google Artifact Registry
+GitHub Package Registry
+Nexus 3
+Artifactory
+
+
+#### Limitations of Helm Chart dependencies on Git Source Repositories
+
+Helm chart dependencies are not supported in Git source repositories. Helm chart dependencies are supported in Helm Chart Repositories.
+
+
+#### Can I execute Builds in Harness CD?
+
+Continuous Integration (CI) can be performed in Harness using the module. 
+For more details, please see this link: [https://developer.harness.io/docs/continuous-integration/get-started/key-concepts/]
+
+#### What is Harness GitOps?
+
+Harness GitOps lets you perform GitOps deployments in Harness. You define the desired state of the service you want to deploy in your Git manifest, and then use Harness GitOps to sync the state with your live Kubernetes cluster.
+For more details please see [https://developer.harness.io/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics/]
+
+#### Does Harness Support Customized Deployment Types?
+
+Yes, Harness supports Custom Deployments using Deployment Templates
+For more details please see [https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/]
+
+#### How can I deploy infrastructure using a scripted method as part of my CD Stage?
+
+One method is to use the Harness Terraform Provider. 
+More information about this can be found at this link: [https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness]
+
+#### What does a failure strategy consist of?
+
+First: Error conditions that trigger the failure strategy.
+Second: Actions to take when the specified error conditions occur.
+
+#### What if I have a custom provisioning tool, how can Harness support this?
+
+Harness has first-class support for Terraform, Terragrunt, AWS CloudFormation, Azure ARM, and Blueprint provisioners, but to support different provisioners, or your existing shell script implementations, Harness includes Shell Script provisioning.
+More details here [https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning]
+
+#### Can I use AWS CDK provisioning?
+
+Yes, but be aware that AWS CDK provisioning support is behind a Feature Flag. Please reach out to Harness Support for this. 
+Feature Flag: CDS_AWS_CDK
+
+
