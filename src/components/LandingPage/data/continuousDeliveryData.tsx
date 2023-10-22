@@ -34,6 +34,15 @@ export const K8SList: CardItem[] = [
     time: "8min",
     link: "/tutorials/cd-pipelines/kubernetes/kustomize",
   },
+  {
+    title: "Microservices App",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: <>Deploy a microservices app onto Kubernetes.</>,
+    type: [docType.Documentation],
+    time: "8min",
+    link: "/tutorials/cd-pipelines/kubernetes/ownapp",
+  },
 ];
 
 export const ServerlessList: CardItem[] = [
@@ -66,6 +75,15 @@ export const VMList: CardItem[] = [
     type: [docType.Documentation],
     time: "20min",
     link: "/tutorials/cd-pipelines/vm/aws",
+  },
+  {
+    title: "Microsoft Azure",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: <>Deploy an app to a Linux or Windows VM in Microsoft Azure.</>,
+    type: [docType.Documentation],
+    time: "20min",
+    link: "/tutorials/cd-pipelines/vm/azure",
   },
   {
     title: "Physical Data Center",

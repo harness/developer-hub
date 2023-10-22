@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-09-28T09:09:25
+date: 2023-10-19T11:09:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - September 28, 2023
+## Latest - October 19, 2023
 
 ### New features and enhancements
 
@@ -25,7 +25,67 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the .NET SDK
+### Fixed issues in the Go SDK
+
+Released Go SDK 0.1.14
+
+- If you provide a custom HTTP client, it will now be used for SSE and Metrics requests
+
+- Provides TLS example for use with with on premises edition
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 18, 2023
+
+##### New features and enhancements
+
+[Flag cleanup automation](https://developer.harness.io/docs/feature-flags/ff-creating-flag/manage-stale-flags/) beta available to all customers. This feature helps remove stal flags from your code automatically.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Go SDK
+
+Released Go SDK 0.1.13
+
+- Added codes to aid in SKD troubleshooting. [More info in the SDK docs.](https://developer.harness.io/docs/feature-flags/ff-sdks/server-sdks/feature-flag-sdks-go-application/#troubleshooting)
+
+- Enhanced reporting of evaluation errors 
+
+
+#### October 17, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Node SDK
+
+Released Node SDK 1.3.5
+
+- Avoid sending empty metric payloads
+
+- Upgrade `lru-cache` to version 7 which contains a significant performance increase
+
+- Add support for `nodeNext` module resolution
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the .NET SDK
 
 Released .NET SDK 1.2.1
 
@@ -39,11 +99,6 @@ Released .NET SDK 1.2.1
 - CVE: Update wiremock to latest version 1.5.36. (FFM-9472)
 - CVE: Update Newtonsoft.Json to version 13.0.3. (FFM-9473)
 - CVE: Update NuGet.Frameworks to version 6.5.1. (FFM-9474)
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### September 22, 2023
 

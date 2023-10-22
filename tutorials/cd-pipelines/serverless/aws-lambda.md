@@ -28,8 +28,8 @@ import TabItem from '@theme/TabItem';
 ```
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Serverless.com Infrastructure">
+<Tabs queryString="serverlessprovider">
+<TabItem value="serverlessdotcom" label="Serverless.com Infrastructure">
 ```
 
 ## Before you begin
@@ -139,48 +139,48 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 4. Select **Save**.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="CLI">
+<Tabs queryString="interface">
+<TabItem value="cli" label="CLI">
 ```
 1. Download and configure the Harness CLI.
 
     ```mdx-code-block
-    <Tabs>
-    <TabItem value="MacOS">
+    <Tabs queryString="cli-os">
+    <TabItem value="macos" label="MacOS">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz  
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="Linux">
+    <TabItem value="linux" label="Linux">
     ```
 
     ```mdx-code-block
-    <Tabs>
-    <TabItem value="ARM">
+    <Tabs queryString="linux-platform">
+    <TabItem  value="arm" label="ARM">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="AMD">
+    <TabItem value="amd" label="AMD">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
@@ -198,7 +198,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
     ```
-    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip  -OutFile ./harness.zip
     ```
         
     b. Extract the downloaded zip file and change the directory to extracted file location.
@@ -322,7 +322,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="UI">
+<TabItem value="ui" label="UI">
 ```
 ## Connectors
 
@@ -429,7 +429,7 @@ You've just learned how to use Harness CD to deploy an AWS Lambda function on AW
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Native AWS Lambda">
+<TabItem value="awslambda" label="Native AWS Lambda">
 ```
 ## Before you begin
 
@@ -627,49 +627,49 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     4. Select **Save**.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="CLI">
+<Tabs queryString="interface">
+<TabItem value="cli" label="CLI">
 ```
 
 1. Download and configure the Harness CLI.
 
     ```mdx-code-block
-    <Tabs>
+    <Tabs queryString="cli-os">
     <TabItem value="MacOS">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="Linux">
+    <TabItem value="linux" label="Linux">
     ```
 
     ```mdx-code-block
-    <Tabs>
-    <TabItem value="ARM">
+    <Tabs queryString="linux-platform">
+    <TabItem value="arm" label="ARM">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="AMD">
+    <TabItem value="amd" label="AMD">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
@@ -681,13 +681,13 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="Windows">
+    <TabItem value="windows" label="Windows">
     ```
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
     ```
-    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip  -OutFile ./harness.zip
     ```
         
     b. Extract the downloaded zip file and change directory to extracted file location.

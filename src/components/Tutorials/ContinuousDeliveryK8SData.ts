@@ -35,6 +35,13 @@ import { MODULES } from "../../constants";
             "Deploy to your Kubernetes cluster using Kustomize.",
           link: "/tutorials/cd-pipelines/kubernetes/kustomize",
         },
+        {
+          title: "Deploy Your Own Microservice Application",
+          module: MODULES.cd,
+          description:
+            "Deploy your microservice application onto a Kubernetes cluster.",
+          link: "/tutorials/cd-pipelines/kubernetes/ownapp",
+        },
       ],
     },
   ];

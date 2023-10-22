@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-10-16T10:00:15
+date: 2023-10-20T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -46,9 +46,73 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
-## Latest: Harness version 81008
+## Latest: Harness version 81106
 
 ### New features and enhancements
+
+- User interface improvements on the secrets listing page (CDS-80747)
+
+  The column widths and text truncation on the secrets listing page have been adjusted to make longer secret names more readable. 
+
+- Input and output variables for Tanzu deployments (CDS-79461)
+
+  You can now add input and ouput variables to the Tanzu Command step and step template to facilitate Tanzu deployments.
+
+### Early access features
+
+This release does not include early access features. 
+
+### Fixed issues
+
+- The Submit button that you use to add an OCI Helm manifest source to a service configuration does not work if Harness cannot fetch the chart version. (CDS-81657, ZD-52068, ZD-52156)
+
+  This issue has been fixed.
+
+- Post-production rollback did not work if the deployed stage used a service that was propagated from an earlier stage, and that earlier stage was skipped in the original execution. (CDS-81036, ZD-51663)  
+
+  This issue has been fixed.
+
+- Providing the host value as a runtime input in the Secure Shell step results in the following error: `Invalid request: Cannot create infrastructure config due to Couldn't convert jsonString to object`. Specifying a variable that resolves to the host value at runtime also throws an error, but one that involves the exception `ClassCastException`. (CDS-81002, ZD-51793)
+
+  This issue has been fixed.
+
+- The **Limit Memory** and **Limit CPU** fields in the Container step support expression inputs, but the Harness user interface throws an error when you attempt to save the step with an expression in those fields. (CDS-80926, ZD-51774, ZD-52143)    
+
+  This issue has been fixed.
+
+- Earlier, when the log query failed for Datadog Cloud logs, the service instance list was empty. Consequently, you could not add multiple queries. (CDS-80046, ZD-51139, ZD-52067)
+
+  This issue has been fixed. Now, if no options are listed or the option that you searched for is not available, you can enter the value manually. 
+
+- The strategy step was getting skipped during a post-production rollback. (CDS-79820, ZD-50920) 
+
+  This issue has been resolved. The step gets executed based on the step condition.
+
+- The Container step did not consider the delegate connector specified in the infrastructure of the step. This led to the wrong delegate getting assigned to execute the container task, and the pipeline failed. (CDS-78547, ZD-49498) 
+
+  This issue has been fixed.
+
+- The confirmation dialog for post-production rollback in Harness NextGen did not show complete information about the pipeline, the current artifact, and the previously used artifact to which the deployment will be rolled back. (This information is available in the corresponding dialog in Harness FirstGen.) (CDS-74449)    
+
+  This issue has been fixed. The confirmation dialog now displays complete information about the artifact version to which the deployment will be rolled back. 
+
+- When a step fails, you expect pipeline execution to stall. However, failed steps are sometimes marked as being successful, and pipeline execution continues. This behavior is observed when the step's failure strategy is set to wait for manual intervention, and a user selects **Mark as Success** in response to the step's failure. This behavior is by design. For more information, go to [Failure strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/#failure-strategy-settings). (CDS-72904, ZD-46414, ZD-47050, ZD-47743)
+
+  The issue in this situation was that you were not informed about what failure strategy was applied and by whom (the failure strategy might have been selected by a user before the specified timeout or by Harness after the specified timeout). To fix this issue, Harness has added the following step interrupt fields to the step details: 
+    * **Failure Strategy Applied**. Shows which failure strategy was applied.
+    * **Applied By**. Shows one of the following values to inform you about the source of the action:
+      * **Failure Strategy _timestamp_**. Indicates that Harness applied the configured failure strategy automatically.
+      * **email address _timestamp_**. Indicates that a user intervened and selected the failure strategy.
+      * **Post Timeout Action _timestamp_**. Indicates that Harness applied the post-timeout action because no user intervened within the allotted time. 
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 18, 2023, Harness version 81008
+
+##### New features and enhancements
 
 - Ability to exclude services or environments from deployment freeze window (CDS-79505)
 
@@ -78,7 +142,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
     - Retained input set values: when you run a pipeline using the form, your experience will be seamless. The form loads with the same values as the previous input set without any unwanted clearing or mutation.
 
 
-### Early access features
+##### Early access features
 
 - Option to clean the target directory prior to deploying an Azure Web App (CDS-76724)
 
@@ -88,7 +152,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   This feature is behind the feature flag `CDS_WEBAPP_ENABLE_CLEAN_OPTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
   :::
 
-### Fixed issues
+##### Fixed issues
 
 - In a chained pipeline setup, the various user interface elements associated with child pipeline execution runs show inconsistent information. The discrepancies pertain to who or what executed the pipeline, and are as follows:
   - The pop-up window that appears when you hover over the icon for the most recent execution in the **Recent Executions** column displays the name of the user who executed the pipeline.
@@ -121,8 +185,8 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - JEXL functions were not supported in HTTP output variables. (CDS-79811, ZD-50712)
 
   This issue has been fixed. 
-
 - The names of environments were truncated to enable the Total Deployments section of the Services page. This was done to accommodate multiple environment names.  (CDS-79757)
+
 
   This issue has been fixed. 
 
@@ -178,11 +242,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### Harness version 80909
 

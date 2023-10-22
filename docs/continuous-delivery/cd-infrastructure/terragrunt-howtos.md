@@ -96,7 +96,7 @@ terragrunt --version
 
 Terragrunt maintains a Terraform version compatibility table to help ensure that you have the correct versions of Terragrunt and Terraform running together.
 
-For the Terraform versions supported by Terragrunt, go to [Terraform Version Compatibility Table](https://terragrunt.gruntwork.io/docs/get-started/supported-terraform-versions/).
+For the Terraform versions supported by Terragrunt, go to [Terraform Version Compatibility Table](https://terragrunt.gruntwork.io/docs/getting-started/supported-versions/).
 
 ### Permissions
 
@@ -520,7 +520,7 @@ source = "git@github.com:your-username/your-private-module.git"
 
 Use this setting to specify the Terraform modules you want Terragrunt to use.
 
-In **Module Configuration**, you are telling Harness where to locate your [terragrunt.hcl file](https://terragrunt.gruntwork.io/docs/get-started/configuration/). The terragrunt.hcl itself will point to a Terraform module using the source parameter like this:
+In **Module Configuration**, you are telling Harness where to locate your [terragrunt.hcl file](https://terragrunt.gruntwork.io/docs/getting-started/configuration/). The terragrunt.hcl itself will point to a Terraform module using the source parameter like this:
 
 ```
 locals {  

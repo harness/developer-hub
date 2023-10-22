@@ -16,9 +16,9 @@ This topic describes how to add a monitored service in Harness and install an Er
 
 A Harness Monitored Service is a combination of service and environment. Harness monitors the following via a monitored service:
 
-* Code-level exceptions and errors from the data collected by the Error Tracking Agent.
+- Code-level exceptions and errors from the data collected by the Error Tracking Agent.
 
-The following steps explain how to create a monitored service, and define service and environments for tracking code errors and exceptions:
+To create a monitored service, follow these steps:
 
 1. In your Harness project, navigate to the **Continuous Error Tracking** module, and then select **Monitored Services**.
 
@@ -29,10 +29,13 @@ The following steps explain how to create a monitored service, and define servic
 3. Select a service. A Service represents your microservices and other workloads. To add a new service:
 
     1. Select **+ Add New**.
+   
     2. In the New Service dialog, enter a **name** for the service, optional **tag**, and optional **description**, and then select **Save**.
 
 4. Select an environment where the Harness Service is deployed (QA, prod, and so on). To create a new environment:
-    1. Select + Add New.
+    
+    1. Select **+ Add New**.
+    
     2. In the Create Environment dialog, enter a name for the new environment, select an environment type such as production or pre-production, and then select **Save**.
 
    Harness auto creates the monitored service name by combining the service and environment names that you have entered.
