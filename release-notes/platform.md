@@ -37,8 +37,6 @@ The following deprecated API endpoints will no longer be supported:
 - Upgraded the `grpc-protobuf` library from version 1.50.1 to 1.58.0.
  to resolve CVE-2023-32732. (PL-41147)
 
-- You can now use Open ID Connect (OIDC) authentication to create a GCP connector. (PL-41304)
-
 - The current [List User Groups by filter API](https://apidocs.harness.io/tag/User-Group/#operation/getBatchUsersGroupList) has a response limit of 10,000 documents. To improve the user experience, we have introduced a new API called Get filtered User Groups (`getFilteredUserGroupsList`) that provides pagination and filter support for fetched user groups with a response limit of 50,000 documents. (PL-41382)
 
 - Upgraded the `org.codehaus.plexus_plexus-utils` library from version 3.0.20 to 4.0.0 to resolve CVE-2022-4244. (PL-41727)
