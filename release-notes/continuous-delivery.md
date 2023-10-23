@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-10-20T10:00:15
+date: 2023-10-27T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -46,9 +46,88 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
-## Latest: Harness version 81106
+## Latest: Harness version 812xx
 
 ### New features and enhancements
+
+- Tag creation is now more intuitive in the Harness user interface. When you enter text in a tag field, a create button appears, and you can select that button or press Enter to create the tag. (CDS-78994)
+
+### Early access features
+
+This release does not include early access features. 
+
+### Fixed issues
+
+- Service instance dropdown field was not showing the value though its value was selected earlier. It was because the API call to fetch the dropdown options was in progress during that time. (CDS-81971, ZD-50452)
+
+Now, instead showing empty dropdown, the user will see the previous selected value as placeholder value with the dropdown disabled when the API call is in progress.
+
+- CDS-81952		N/A <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+
+- Fixed working of Container Step Group with different looping strategies. (CDS-81889, ZD-52104)
+
+- Fixed an issue for shell script to accept delegates in template studio (CDS-81633, ZD-52018, ZD-52366, ZD-52504)
+
+- The terraform import command for service overrides V2 earlier used to return the yaml property in a json format. Now, we have changed it to return that in yaml format. This change will not affect existing terraform flows as our terraform apply commands are able to handle both json and yaml formats. (CDS-81550)
+
+- CDS-81304		None <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+
+- CDS-81253	51972,52202	N/A <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+
+- CDS-80951		NA <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+
+- CDS-80744		None <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+
+- CDS-80743	51672	None <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+
+- We have released two new images "harnessdev/sam-build:1.82.0-1.1.0" and "harnessdev/sam-deploy:1.82.0-1.1.0" which would now support using "PLUGIN_SAM_TEMPLATE_FILE_PATH" env variable to get the values passed in samTemplateFile of SAM service (CDS-80624, ZD-51597)
+
+- CDS-79990	51026	None <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+
+- CDS-79503		NA <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+
+- Triggering a Jenkins job through an HTTP POST request resulted in an exception named `IllegalArgumentException`. Consequently, the Jenkins build step failed. The exception was caused by incorrect encoding of the Jenkins job parameters in the URL. (CDS-81070, ZD-51879, ZD-52069)
+
+  The earliest Harness Delegate version to experience this issue is version 80508. The issue has been fixed in Delegate versions 80515, 80809, and 81010.
+
+  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Need to reassess this standard verbiage in the context of the previous paragraph -->
+
+- When we are saving secret files we are encoding file content with ISO_8859_1 character set. However, when we read the file content referenced in configFile.getAsBase64() functor it was decoded using UTF-8 and that was the cause of the issue. (CDS-81032, ZD-51928)
+
+  Now, we are decoding secret file content with ISO_8859_1 character set while reading secrets from the secret store and after it doing base64 encoding.
+
+  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Handle failure status codes for Gitlab provider in Merge PR step (CDS-80927)
+
+  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- CDS-80764		NA <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+
+- JGit libraries have been upgraded to a version 6.6.1.202309021850-r (CDS-80715, ZD-51149)
+  
+  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Terraform var files in .json format are supported (CDS-80582, ZD-51483, ZD-51858)
+
+  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Azure web apps deployment will succeed when Basic Auth Credentials is turned off for the azure web app. (CDS-79096, ZD-50585)
+
+  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The value in tags in pipeline filter is changed from required to optional (CDS-78992)
+
+  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+### October 20, 2023, Harness version 81106
+
+##### New features and enhancements
 
 - User interface improvements on the secrets listing page (CDS-80747)
 
@@ -58,11 +137,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   You can now add input and ouput variables to the Tanzu Command step and step template to facilitate Tanzu deployments.
 
-### Early access features
+##### Early access features
 
 This release does not include early access features. 
 
-### Fixed issues
+##### Fixed issues
 
 - The Submit button that you use to add an OCI Helm manifest source to a service configuration does not work if Harness cannot fetch the chart version. (CDS-81657, ZD-52068, ZD-52156)
 
@@ -105,10 +184,6 @@ This release does not include early access features.
       * **email address _timestamp_**. Indicates that a user intervened and selected the failure strategy.
       * **Post Timeout Action _timestamp_**. Indicates that Harness applied the post-timeout action because no user intervened within the allotted time. 
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### October 18, 2023, Harness version 81008
 
