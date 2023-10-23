@@ -154,13 +154,14 @@ While you can simply declare a variable in your script using a Harness expressio
 
 * You can more easily identify and manage the Harness expressions used in your script.
 * You can template your script.
-* Variables of Secret type must have a non-empty value.
 
 ### Script output variables
 
 To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.
 
 Variables of Secret type must have a non-empty value. Shell Script step output variables have a maximum size of 512KB.
+
+>**NOTE: Please note that variables of Secret type must have a non-empty value.**
 
 ### Include Infrastructure Selectors
 
@@ -278,7 +279,6 @@ While you can simply declare a variable in your script using a Harness expressio
 
 * You can more easily identify and manage the Harness expressions used in your script.
 * You can template your script.
-* Variables of Secret type must have a non-empty value.
 
 You can declare the variable using **Name** and **Value** in **Script Input Variables** and then reference the variable in the script just as you would any other variable: `$var_name`.
 
@@ -296,8 +296,6 @@ At deployment runtime, Harness evaluates the expression and the variable contain
 ### Specify output variables
 
 Shell Script step Output Variables have a maximum size of 512KB.To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.
-
-Variables of Secret type must have a non-empty value.
 
 Let's look at a simple example of a script with the variable **name**:
 
@@ -369,6 +367,8 @@ echo "my secret: " <+execution.steps.CreateScript.output.outputVariables.myvar>
 When you run the Pipeline, the resolved output variable expression is sanitized:
 
 ![](./static/using-shell-scripts-25.png)
+
+>**NOTE: Please note that variables of Secret type must have a non-empty value.**
 
 ### Harness expressions in variables
 
