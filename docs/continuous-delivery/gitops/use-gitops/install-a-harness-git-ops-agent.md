@@ -114,6 +114,11 @@ In **Name**, enter the name for the existing Agent CD Project. For example, **de
 
 ![](./static/install-a-harness-git-ops-agent-89.png)
 
+In **GitOps Operator**, select one of the following:
+  
+  * **Argo** Uses Argo CD as the GitOps reconciler.
+  * **Flux** Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
+
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 
 Select **Next**. The **Download YAML** or **Download Helm Chart** settings appear.
