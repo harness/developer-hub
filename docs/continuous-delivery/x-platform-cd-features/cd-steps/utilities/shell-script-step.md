@@ -68,7 +68,7 @@ For more information, go to [add text secrets](/docs/platform/secrets/add-use-te
 
 There are two ways to use Secret Variables in Scripts:
 * Variables of secret type can be directly used, like any other variable with secret variable identifier being passed to `value` attribute or field.
-* Secondly, you can use `<+secrets.getValue("secret_Id")>` to refer to the secret, and select the type of variable as String. With this approach, the variables is fetched in the string format, and then it gets masked.
+* Secondly, you can use `<+secrets.getValue("secret_Id")>` to refer to the secret for `value` attribute or field, and select the type of variable as String, which makes the variable to be of string format having value of Secret variable.
 Usage of Secret variable is explained later in the documentation in detail.
 
 ### Escaping characters
