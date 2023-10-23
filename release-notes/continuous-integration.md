@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-11-01T10:00
+date: 2023-10-23T10:00
 sidebar_position: 3
 ---
 
@@ -19,9 +19,9 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 64xx
+## Latest: Version 6303
 
-<!-- Nov 1 2023 - 811xx (63xx) and 812xx (64xx) combined. -->
+<!-- Oct 23 2023 -->
 
 ### New features and enhancements
 
@@ -35,7 +35,7 @@ This release does not include early access features.
 
 * To address issues with long cache times, [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) now uses Zstd archive format. (CI-9815, ZD-51474)
 * Long test and class names on the [Tests tab](/docs/continuous-integration/use-ci/viewing-builds#tests-tab) no longer push the **Copy** icon out of the visible area. (CI-9500)
-* Revised the error message that is shown when a pipeline fails due to lack of eligible delegates. (CI-9743)
+<!-- 812xx: Revised the error message that is shown when a pipeline fails due to lack of eligible delegates. (CI-9743) -->
 
 ## Previous releases
 
