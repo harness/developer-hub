@@ -20,10 +20,13 @@ A production incident, commonly known as an "incident," is an unexpected event o
 ## Pipelines
 Pipeline is a core construct of the Harness platform. All of the SLIs defined here will be applicable to CD, CI, STO and for that fact, any other modules where the usage is tied to a pipeline. 
 
-| **Component**                                   | **SLI**                                                | **Threshold**    | **Availability**
-|-------------------------------------------|--------------------------------------------------------------|----------------||
+| **Component**                             | **SLI**                                                | **Threshold**    | **Availability**|
+|-------------------------------------------|--------------------------------------------------------------|----------------|----------------|
 | Pipeline/Triggers                         | APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
-|| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded|
+|| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded Performance|
+| Pipeline Executions failure caused by Harness platform                         | Failure rate Increase| More than 1% over 5 min rolling window |Partial Outage|
+|| Slow Executions | 2x of average latency in a rolling window of 5 mins|Degraded Performance|
+| Triggers                         | Trigger Activations | More than 1% over 5 min rolling window |Degraded Performance|
 
 
 
