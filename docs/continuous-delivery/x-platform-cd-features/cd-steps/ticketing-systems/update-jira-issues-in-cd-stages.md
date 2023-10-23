@@ -35,9 +35,12 @@ You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-featur
 
 ## Use an expression in Issue Key
 
-In **Issue Key**, you can use an expression to reference the Key ID from another Jira Create or Jira Update step.
+In **Issue Key**, you can use an expression or runtime input to reference the Key ID from another Jira Create or Jira Update step.
 
-The Jira Create or Jira Update step you want to reference must be before the Jira Update step that references it in the stage.
+Here are some important considerations when using an expression in **Issue Key:**
+
+- The Jira Create or Jira Update step you want to reference must be before the Jira Update step that references it in the stage.
+- Harness uses the **Jira Project** and **Issue Type** you select in **Add Jira Fields** to fetch the list of fields. If you use a runtime expression for **Issue Key** and the Jira project and issue type you selected does not correspond with the issue key provided at runtime, your pipeline could fail to execute successfully. 
 
 To use an expression in **Issue Key**, do the following:
 
@@ -63,23 +66,23 @@ To use an expression in **Issue Key**, do the following:
 
    ![](./static/update-jira-issues-in-cd-stages-16.png)
 
-6. **Issue Key**, paste in the expression you copied from the previous Jira Create step.
+6. In **Issue Key**, paste in the expression you copied from the previous Jira Create step.
 
    Now this Jira Update step will update the issue created by the Jira Create step.
 
    Some users can forget that when you use a Jira Create step it creates a new, independent Jira issue every time it is run. If you are using the same issue ID in Jira Update, you are updating a new issue every run.
 
-### Optional configuration
+## Optional configuration
 
 In **Optional Configuration**: 
-* In **Status**, enter the status type (Issue Action) to update the issue with (In Progress, Done, etc). Harness will automatically update the issue with this status.
-* In **Transition Name**, enter the name of the transition to move the issues into (for example, `Transition to`, `PR Testing`, `Ready for Test`).
+- * In **Status**, enter the status type (Issue Action) to update the issue with (In Progress, Done, etc). Harness will automatically update the issue with this status.
+- * In **Transition Name**, enter the name of the transition to move the issues into (for example, `Transition to`, `PR Testing`, `Ready for Test`).
 
 ![](static/status-and-transition.png)
 
 If the issue is not part of a Jira workflow and does not have transition options, then the step will fail. For more information, go to [statuses and transitions](https://support.atlassian.com/jira-cloud-administration/docs/work-with-issue-workflows/#Workingwithworkflows-steps) from Atlasssian.
 
-### Add Issue fields
+## Add Issue fields
 
 You can select specific fields to update within a Jira issue. For more information, go to [Jira custom fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
 
@@ -87,7 +90,7 @@ In **Optional Configuration**, select **+ Fields** to add Jira fields.
 
 ![](static/add-jira-fields.png)
 
-### Jira Date field support
+## Jira Date field support
 
 Among the custom fields Harness supports are Baseline End Date and Start Date Time. If your Jira project uses these fields, they are available in Fields:
 
@@ -114,7 +117,7 @@ For date and time fields:
 
 The number 1 is used as an example. You can add whatever number you need.
 
-### Update Issue Type field support
+## Update Issue Type field support
 
 Harness supports updating the Jira Issue Type. 
 
