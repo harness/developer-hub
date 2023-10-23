@@ -831,17 +831,17 @@ gsutil -m cp \
 
 - Bitbucket, Azure, and Git connectors support has been added for **ChaosHubs** when using Harness secret manager. (CHAOS-35)
 
-- Previously, when the cron schedule field was edited in YAML, there was no validation to ensure its accuracy. This often caused the UI to fail when switching to the **Schedule** tab in the Visual editor.
+- Previously, when the cron schedule field was edited in YAML, there was no validation to ensure its accuracy. This often caused the UI to fail when switching to the **Schedule** tab in the Visual editor. (CHAOS-2631)
 
-   This issue has now been resolved, and validation has been implemented for both the Visual and YAML editors. (CHAOS-2631)
+   This issue has been resolved. Validation has been implemented for both the Visual and YAML editors.
 
-- Route from the **Experiment execution screen** to **Reports** was broken because of changes in the URL structure. (CHAOS-2606)
+- The route from the **Experiment execution screen** to **Reports** was broken because of changes in the URL structure. (CHAOS-2606)
 
-  This issue has now been resolved, previously routing was based on experiment runID which has been changed to notifyID.
+   This issue has been resolved. Previously, routing was based on the experiment `runID`, which has been changed to `notifyID`.
 
-  The tunables, probe, and various fault-level information has been added to report.
+   The tunables, probe, and various fault-level information has been added to the report.
 
-  Project, account, and organization names has been added to report as well.
+   Project, account, and organization names have also been added to the report.
 
 ## Previous releases
 
