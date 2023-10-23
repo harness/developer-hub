@@ -4,33 +4,28 @@ description: How we compute uptime for different Harness Modules
 sidebar_label: Computing uptime for Harness Modules
 ---
 
-Harness uptime for different modules across different clusters is available on [https://status.harness.io/](https://status.harness.io/).
+This is a Harness operational reference guide for all the Service Level Indicators (SLIs) across our modules. Our SLO gets calculated based on these user centric SLIs. 
 
-## Partial outages vs major outages
+## Weightage Factor
+Harness operations apply a weighting factor to the SLIs post any incidents. 
 
-Status page definition — [https://support.atlassian.com/statuspage/docs/display-historical-uptime-of-components/](https://support.atlassian.com/statuspage/docs/display-historical-uptime-of-components/).
+Major outage = 100% of the downtime hit 
+Partial = 30% of the downtime hit
+Degraded performance = None  (our stance is that a degraded performance does impact the user experience but it’s not technically downtime)
 
-While major outages affect 100% of the people that use a given component, partial outages only affect a subset of those users. Following that logic, partial outages don’t count as much as major outages in the uptime showcase.
-
-Specifically, partial outages are discounted to only be **30%** as bad as major outages. This is an “across the board” calculation and **cannot** be configured.
-
-## Common Service Level Indicators across all Modules
-For all Harness modules, the following Service Level Indicators (SLIs) will be applicable. Anytime, the common Service Level Indicators (SLIs) breach their thresholds it will be considered partial outage and 30% of the total duration would be applicable.
-
-| **SLI**                          | **Threshold**                                                | Outage Kind    |
-|----------------------------------|--------------------------------------------------------------|----------------|
-| Login EURT (Base Pages > #login) | Greater than 30 seconds for a consecutive duration of 5 mins | Partial Outage |
-| Overall EURT (app.harness.io)     | Greater than 30 seconds for a consecutive duration of 5 mins | Partial Outage |
-| Gateway overall ART              | Greater than 50 ms for a consecutive duration of 5 mins      | Partial Outage |
-
-### Example
-
-Say Gateway has a partial outage for 50 minutes then:
-
-* 30% of 50 minutes = 15 minutes = 900 seconds will be the downtime.
-* If this was the only incident for a 90 day duration (7776000 seconds) , the uptime then will be (1–900/7776000) * 100 = (1–0.000115740740741) * 100 = 99.988
+A production incident, commonly known as an "incident," is an unexpected event or problem that arises within our live production environments, resulting in either complete or partial service disruptions. In the case of a partial incident, it renders one or more functions of a module nonfunctional or inaccessible. All production incidents are posted in our status page (https://status.harness.io) and our users can subscribe to the feeds from this site to get notified. 
 
 ## Service Level Indicators specific to Harness Modules
+
+## Pipelines
+Pipeline is a core construct of the Harness platform. All of the SLIs defined here will be applicable to CD, CI, STO and for that fact, any other modules where the usage is tied to a pipeline. 
+
+| **Component**                                   | **SLI**                                                | **Threshold**    | **Availability**
+|-------------------------------------------|--------------------------------------------------------------|----------------||
+| Pipeline/Triggers                         | APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+|| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded|
+
+
 
 ## Continuous Delivery (Current Gen)
 | **SLI**                                   | **Threshold**                                                | Outage Kind    |
