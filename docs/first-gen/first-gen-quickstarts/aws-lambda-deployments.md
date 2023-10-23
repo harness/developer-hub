@@ -73,7 +73,7 @@ Once you have the prerequisites set up, the tutorial should only take about 10 m
 		}
 		```
   
-	You can download the zip file here: <https://lambda-tutorial-harness.s3.amazonaws.com/function.zip>.  
+	You can download the zip file here: `https://lambda-tutorial-harness.s3.amazonaws.com/function.zip`.
 	If you want to create the file yourself, in a code editor, create the file **index.js** and paste in the above code. Zip the file and name the zip file function.zip.  
 	Upload the function.zip file to a bucket in your AWS S3. In our example, we named the bucket **lambda-harness-tutorial**.
 

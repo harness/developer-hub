@@ -202,7 +202,7 @@ For our Kubernetes example, we will use:
 * **Field Name:** `instancename`.
 * **JSON Path:** `metadata.name`.
 
-You can map any additional attributes containing information you want to reference in your Execution, most likely in a Shell Script step. See [Referencing fetched instances using expressions](#referencing_fetched_instances_using_expressions).
+You can map any additional attributes containing information you want to reference in your Execution, most likely in a Shell Script step. See [Referencing fetched instances using expressions](#referencing-fetched-instances-using-expressions).
 
 ## Add Execution steps
 
