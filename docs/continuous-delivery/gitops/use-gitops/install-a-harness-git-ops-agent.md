@@ -73,17 +73,22 @@ Select **Settings**. The Harness GitOps settings appear.
 
 ![](./static/install-a-harness-git-ops-agent-88.png)
 
-Select **GitOps** > **Agents**.
+Select **GitOps Agents**.
 
 Select **New GitOps Agent**. The Agent wizard appears.
 
 ## Harness GitOps Agent without an existing Argo CD project
 
-In **Getting started with Harness GitOps**, you have the option of installing a new Harness GitOps Agent with or without an existing Argo CD instances.
+In **Agent Installations**, you can choose to install a Harness GitOps Agent with or without an existing Argo CD instance.
 
 Select **No**, and then click **Start**.
 
 In **Name**, enter the name for the new Agent.
+
+In **GitOps Operator**, select one of the following:
+  
+  * **Argo** Uses Argo CD as the GitOps reconciler.
+  * **Flux** Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 

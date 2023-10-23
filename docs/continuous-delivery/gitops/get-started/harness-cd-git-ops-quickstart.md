@@ -81,13 +81,18 @@ Click **Settings**. The Harness GitOps settings appear.
 
 ![](./static/harness-cd-git-ops-quickstart-03.png)
 
-Click **GitOps** **Agents**.
+Click **GitOps Agents**.
 
 Click **New GitOps Agent**. The Agent wizard appears.
 
 ![](./static/harness-cd-git-ops-quickstart-04.png)
 
 In **Name**, enter the name **example**.
+
+In **GitOps Operator**, select one of the following:
+  
+  * **Argo** Uses Argo CD as the GitOps reconciler.
+  * **Flux** Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment. For this quickstart, we use **default**.
 
@@ -302,8 +307,6 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
 3. In **GitOps Agent**, select the Agent you added earlier.
 4. In **Service**, click **New Service**, and name the Service **guestbook**.
 5. In **Environment**, click **New Environment**, name the Environment **quickstart**, and select **Pre-Production**.
-   
-   ![](./static/harness-cd-git-ops-quickstart-14.png)
 
 6. Click **Continue**.
 7. In **Sync Policy**, you can define the following:
