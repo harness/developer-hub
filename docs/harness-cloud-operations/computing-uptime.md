@@ -28,6 +28,18 @@ Pipeline is a core construct of the Harness platform. All of the SLIs defined he
 |                                           | Slow Executions | 2x of average latency in a rolling window of 5 mins|Degraded Performance|
 | Triggers                                  | Trigger Activations | More than 1% over 5 min rolling window |Degraded Performance|
 
+## Platform
+Core platform constructs and services are foundational to Harness modules and any breach of these SLIs will impact all of the Harness modules. 
+
+| **Component**                             | **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|----------------|
+| Access Control                         | Permissions Change Processing Time | New permissions (additions/removals) should take effect within 5 minutes  |Degraded Performance|
+| Platform resources (All APIs) - Account, Login, Project/Org, Connectors, Secrets, Delegate, Settings, Notifications, Audits, Templates, Services, Environments , Policies, File Store, Log Uploads| API Error rate | More than 1% over 5 min rolling window | Partial Outage |                               
+||API Response Time|95th percentile: > 1s over 5 min rolling window|Degraded Performance|
+| Notifications                         | Notification Delivery Latency | 99% of notifications are dispatched within 1 minute from the moment they are sent to the notification service |Degraded Performance|
+
+
+
 
 
 ## Continuous Delivery (Current Gen)
