@@ -835,6 +835,14 @@ gsutil -m cp \
 
    This issue has now been resolved, and validation has been implemented for both the Visual and YAML editors. (CHAOS-2631)
 
+- Route from the **Experiment execution screen** to **Reports** was broken because of changes in the URL structure. (CHAOS-2606)
+
+  This issue has now been resolved, previously routing was based on experiment runID which has been changed to notifyID.
+
+  The tunables, probe, and various fault-level information has been added to report.
+
+  Project, account, and organization names has been added to report as well.
+
 ## Previous releases
 
 <details>
