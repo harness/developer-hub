@@ -604,6 +604,20 @@ In **Advanced**, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
+## Troubleshooting Terraform execution on ECS delegate
+
+This section is dedicated in case you encounter the following error : _**NoCredentialProviders: no valid providers in chain.**_
+
+When your delegate is managed by ECS, and in case delegate is set to assume the role for some components like delegate itself, provider and terraform backend-state from terraform configs, please make sure the delegate has the permissions to assume the role.
+
+In case your delegate is set to use a proxy, make sure that proxy instance also has permissions to assume the role, and also try to set proxy environment variable for the terraform steps:
+```
+HTTP_PROXY=http://proxy.example.com:8080
+HTTPS_PROXY=http://proxy.example.com:8080
+```
+
+If your ECS delegate is set with this environment variable: **AWS_CONTAINER_CREDENTIALS_RELATIVE_URI** and you intend to use AWS ECS container credentials make sure your delegate have access to all required AWS services which need to provide the credentials like STS, Metadata Service, etc.
+
 ## See Also
 
 * [Provision with the Terraform Apply Step](run-a-terraform-plan-with-the-terraform-apply-step)
