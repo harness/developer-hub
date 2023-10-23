@@ -159,7 +159,9 @@ While you can simply declare a variable in your script using a Harness expressio
 
 To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.
 
-Shell Script step output variables have a maximum size of 512KB.
+:::note
+Variables of type Secret must have a non-empty value. Additionally, Shell Script step output variables have a maximum size of 512KB.
+:::
 
 ### Include Infrastructure Selectors
 
@@ -293,7 +295,7 @@ At deployment runtime, Harness evaluates the expression and the variable contain
 
 ### Specify output variables
 
-Shell Script step Output Variables have a maximum size of 512KB.To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.
+Shell Script step Output Variables have a maximum size of 512KB. To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.
 
 Let's look at a simple example of a script with the variable **name**:
 
@@ -365,6 +367,10 @@ echo "my secret: " <+execution.steps.CreateScript.output.outputVariables.myvar>
 When you run the Pipeline, the resolved output variable expression is sanitized:
 
 ![](./static/using-shell-scripts-25.png)
+
+:::note
+Variables of type Secret must have a non-empty value.
+:::
 
 ### Harness expressions in variables
 
