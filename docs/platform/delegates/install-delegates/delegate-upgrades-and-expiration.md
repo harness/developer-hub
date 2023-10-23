@@ -237,7 +237,7 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
     {
     "metaData": {},
     "resource": {
-        "latestSupportedVersion": "23.04.78910",
+        "latestSupportedVersion": "harness/delegate:23.04.78910",
         "latestSupportedMinimalVersion": "23.04.78910.minimal"
     },
     "responseMessages": []
