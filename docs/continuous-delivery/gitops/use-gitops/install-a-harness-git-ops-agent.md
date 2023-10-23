@@ -87,8 +87,8 @@ In **Name**, enter the name for the new Agent.
 
 In **GitOps Operator**, select one of the following:
   
-  * **Argo** Uses Argo CD as the GitOps reconciler.
-  * **Flux** Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
+  * **Argo**. Uses Argo CD as the GitOps reconciler.
+  * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 
@@ -116,8 +116,8 @@ In **Name**, enter the name for the existing Agent CD Project. For example, **de
 
 In **GitOps Operator**, select one of the following:
   
-  * **Argo** Uses Argo CD as the GitOps reconciler.
-  * **Flux** Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
+  * **Argo**. Uses Argo CD as the GitOps reconciler.
+  * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 

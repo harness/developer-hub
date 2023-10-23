@@ -21,4 +21,4 @@ Before you can manage Flux applications from the Harness GitOps user interface, 
 
 To enable Harness to manage a Flux application, do the following:
 * When creating a GitOps agent, select Flux as the GitOps operator. You configure all other configuration settings in the same way as you configure a Harness GitOps agent. For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent).
-* When creating an application, 
+* When creating an application, select Flux as the GitOps operator. You configure all other configuration settings in the same way as you configure any GitOps application. For more information, go to [Harness CD GitOps tutorial](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart).
