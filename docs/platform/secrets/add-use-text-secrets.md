@@ -108,7 +108,7 @@ You can reference a secret at the Account scope using an expression with `accoun
 
 You can reference a secret from a variable defined at a stage level using the following syntax:
 ```
-'<+secrets.getValue(<+stage.variables.variable_name>)>'
+<+secrets.getValue(<+stage.variables.variable_name>)>
 ```
 
 
