@@ -68,7 +68,7 @@ For information about installing delegates, go to [Delegate installation overvie
 
 ## Set up the runner to communicate with the Anka controller
 
-On the Harness runner host, update up the `pool.env` file as shown in the following Harness Docker Runner config example:
+On the Harness runner host, update up the `pool.yml` file as shown in the following Harness Docker Runner config example:
 
 ``` yaml
  - name: anka-build
