@@ -67,5 +67,31 @@ All the Platform SLIs are applicable here. Pipeline relevant if the FF use case 
 | Admin CRUD Response Time | 95th percentile : < 30s over a rolling 10 min window|Degraded performance|
 | Admin CRUD Error Rate | Less than .1% over a rolling 10 min window|Partial Outage|
 
+## Dashboards 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| Dashboards not Loading | For a duration of 60 secs |Major Outage|
+| Latency in Loading dashboards | 2x of average latency in a rolling window of 5 mins |Degraded performance|
+| CRUD/Actions not working | For a duration of 60 secs |Partial Outage|
+
+## Cloud Cost Manager 
+All the Pipeline and Platform SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| CCM UI is down (ping failure) | For a consecutive duration of 30secs |Major Outage|
+| Perspective load times | Greater than 2 mins for a consecutive duration of 10 mins |Partial Outage|
+| Max AutoStopping rule warmup time | Greater than 10 mins for a consecutive duration of 30 mins|Partial Outage|
+| Max asset gov policy evaluation | Greater than 15 mins for a consecutive duration of 30 mins|Partial Outage|
+| Cloud provider data ingestion delay | Greater than 48hrs of no data received|Partial Outage|
+| K8s data at hourly granularity | No events received for more than 6 hrs|Partial Outage|
+| K8s data at daily granularity | No events received for more than 48 hrs|Partial Outage|
+
+
+
+
 
 
