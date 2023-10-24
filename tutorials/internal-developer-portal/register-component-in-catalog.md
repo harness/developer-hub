@@ -262,3 +262,13 @@ curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/loc
 ### 11. The new component will be available in your catalog.
 
 ![](./static/imported-entity.png)
+
+### Further Reading
+
+For those looking to expand their knowledge and explore more advanced methods of registering software components on Harness IDP, consider the following:
+
+#### 1. GitHub Auto-Discovery Plugin: 
+If you're aiming to register multiple components in the software catalog concurrently, the [GitHub auto-discovery plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery/) is a valuable tool. This plugin automates the discovery and registration of components, with all the idp yamls located in single repo. 
+
+#### 2. Using the Catalog API: 
+Another effective approach is leveraging the catalog API. By running a custom script, you can automate the registration of components, providing a more programmatic method for bulk registrations.
