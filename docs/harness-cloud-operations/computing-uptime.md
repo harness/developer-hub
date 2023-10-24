@@ -130,8 +130,7 @@ All the Platform SLIs are applicable here.
 | Notifications | Expected notification doesn’t arrive for a consecutive duration of 60 secs after the ETA |Major outage|
 || Latency greater than 30 seconds |Degraded performance|
 || Links in notifications don’t work |Degraded performance|
-| Admin operations not working
-(Including: Tokens, Critical events, hide & resolve events, Jira integration, Notifications, Saved Search) |For a consecutive duration of 30secs |Major outage|
+| Admin operations not working (Including: Tokens, Critical events, hide & resolve events, Jira integration, Notifications, Saved Search) | For a consecutive duration of 30 secs | Major outage|
 
 ## Developer Platform
 All the Platform SLIs are applicable here. 

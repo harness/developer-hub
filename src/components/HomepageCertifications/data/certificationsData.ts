@@ -26,14 +26,15 @@ export const certifications: CardItem[] = [
     link: "/certifications/feature-flags",
     numberOfCerts: 1,
   },
-  // {
-  //   title: "Cloud Cost Management Certifications",
-  //   module: MODULES.ccm,
-  //   description:
-  //     " Save time, reduce effort, and save on your cloud bill with intelligent cloud cost automation.Detect and stop cloud cost anomalies as they occur, to avoid unpleasant billing surprises with a FinOps approach.",
-  //   link: "/certifications/cloud-cost-management",
-  //   numberOfCerts: 3,
-  // },
+  {
+    title: "Cloud Cost Management Certifications",
+    module: MODULES.ccm,
+    description:
+      " Save time, reduce effort, and save on your cloud bill with intelligent cloud cost automation.Detect and stop cloud cost anomalies as they occur, to avoid unpleasant billing surprises with a FinOps approach.",
+    link: "/certifications/cloud-cost-management",
+    numberOfCerts: 1,
+  },
+
   // {
   //   title: "Chaos Engineering Certifications",
   //   module: MODULES.ce,
