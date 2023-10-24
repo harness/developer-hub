@@ -69,7 +69,8 @@ The following artifact providers are supported behind the feature flag `CD_TRIGG
   
   :::note
 
-  Currently, this feature is behind the feature flag `SPG_TRIGGER_FOR_ALL_ARTIFACTS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+  Currently, this feature is behind a setting.
+  <img width="1555" alt="image" src="https://github.com/harness/developer-hub/assets/106265061/e619e3b8-395e-46e5-ae30-79732266fd4d">
 
   :::
 * **Trigger based on file name:** The trigger is executed based on _file names_ and not metadata changes.
