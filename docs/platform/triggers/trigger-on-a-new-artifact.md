@@ -69,8 +69,7 @@ The following artifact providers are supported behind the feature flag `CD_TRIGG
   
   :::note
 
-  Currently, this feature is behind a setting.
-  <img width="1555" alt="image" src="https://github.com/harness/developer-hub/assets/106265061/e619e3b8-395e-46e5-ae30-79732266fd4d">
+  To enable this feature, go to your Harness project/org/account **Default Settings**, select **Pipeline**, and then enable **Execute Triggers With All Collected Artifacts or Manifests**.
 
   :::
 * **Trigger based on file name:** The trigger is executed based on _file names_ and not metadata changes.
