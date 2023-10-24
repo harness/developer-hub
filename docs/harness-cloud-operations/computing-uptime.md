@@ -133,6 +133,18 @@ All the Platform SLIs are applicable here.
 | Admin operations not working
 (Including: Tokens, Critical events, hide & resolve events, Jira integration, Notifications, Saved Search) |For a consecutive duration of 30secs |Major outage|
 
+## Developer Platform
+All the Platform SLIs are applicable here. 
 
-
-
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| IDP UI is down(Included: Catalog, Self service Hub, Scorecards Excluded: Non-Harness owned plugins)| For a consecutive duration of 30secs |Major Outage|
+| IDP admin UI is down | For a consecutive duration of 30secs |Partial Outage|
+| Unable to access Service Catalog APIs | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Major outage|
+|| Latency greater than 30 seconds for a consecutive duration of 10 mins (95th percentile) |Partial outage|
+| Scorecards not functional | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Partial outage|
+|| Latency greater than 60 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded Performance|
+| Issue with IDP admin operations | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Partial outage|
+|| Latency greater than 10 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded Performance|
+| Open Source Plugins functionality | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Degraded Performance|
+|| Latency greater than 30 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded Performance|
