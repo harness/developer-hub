@@ -67,5 +67,141 @@ All the Platform SLIs are applicable here. Pipeline relevant if the FF use case 
 | Admin CRUD Response Time | 95th percentile : < 30s over a rolling 10 min window|Degraded performance|
 | Admin CRUD Error Rate | Less than .1% over a rolling 10 min window|Partial Outage|
 
+## Dashboards 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| Dashboards not Loading | For a duration of 60 secs |Major Outage|
+| Latency in Loading dashboards | 2x of average latency in a rolling window of 5 mins |Degraded performance|
+| CRUD/Actions not working | For a duration of 60 secs |Partial Outage|
+
+## Cloud Cost Manager 
+All the Pipeline and Platform SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| CCM UI is down (ping failure) | For a consecutive duration of 30secs |Major Outage|
+| Perspective load times | Greater than 2 mins for a consecutive duration of 10 mins |Partial Outage|
+| Max AutoStopping rule warmup time | Greater than 10 mins for a consecutive duration of 30 mins|Partial Outage|
+| Max asset gov policy evaluation | Greater than 15 mins for a consecutive duration of 30 mins|Partial Outage|
+| Cloud provider data ingestion delay | Greater than 48hrs of no data received|Partial Outage|
+| K8s data at hourly granularity | No events received for more than 6 hrs|Partial Outage|
+| K8s data at daily granularity | No events received for more than 48 hrs|Partial Outage|
+
+## Chaos Engineering 
+All the Platform SLIs are applicable here. Pipeline relevant if the chaos use case is tied to a pipeline. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| Chaos UI components are not accessible | Not accessible for more than 60s |Major Outage|
+| Load times on UI | Data load time > 10s consecutively over a 5 min period |Degraded performance|
+| ChaosGuard Rule Evaluation Duration  | The ChaosGuard rule evaluation stage takes >10s consecutively over a 5 min period across experiment runs |Degraded performance|
+
+## Security Test Orchestration 
+All the Platform SLIs are applicable here. Pipeline relevant if the STO use case is tied to a pipeline. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| Security Step Executions Failures | 25% increase in security stage execution failures in a rolling window of 5 mins |Partial outage|
+
+## Error Tracking
+All the Platform SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| Agent cannot connect to CET collector | For a consecutive duration of 60 secs |Major outage|
+| Agent not being shown as connected in the UI | For a consecutive duration of 60 secs |Partial outage|
+|| Latency greater than 30 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded performance|
+| UI is down | For a consecutive duration of 30 secs |Major outage|
+| ARC screen is down | No hit is openable |Major outage|
+|| Some hits aren’t openable - at least 20% of the hits in a total of at least 20 unique events |Degraded performance|
+| Tiny links not working | Tiny link doesn’t direct to a viewable ARC screen |Partial outage|
+|| Tiny link should be clickable after no more than 90s after it was logged |Degraded performance|
+| New events/Metrics don’t show up on the summary or event list | For a consecutive duration of 180 secs |Major outage|
+|| Latency greater than 125 seconds in metrics since happened in the agent until shown in the UI |Degraded performance|
+| Notifications | Expected notification doesn’t arrive for a consecutive duration of 60 secs after the ETA |Major outage|
+|| Latency greater than 30 seconds |Degraded performance|
+|| Links in notifications don’t work |Degraded performance|
+| Admin operations not working
+(Including: Tokens, Critical events, hide & resolve events, Jira integration, Notifications, Saved Search) |For a consecutive duration of 30secs |Major outage|
+
+## Developer Platform
+All the Platform SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| IDP UI is down(Included: Catalog, Self service Hub, Scorecards Excluded: Non-Harness owned plugins)| For a consecutive duration of 30secs |Major Outage|
+| IDP admin UI is down | For a consecutive duration of 30secs |Partial Outage|
+| Unable to access Service Catalog APIs | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Major outage|
+|| Latency greater than 30 seconds for a consecutive duration of 10 mins (95th percentile) |Partial outage|
+| Scorecards not functional | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Partial outage|
+|| Latency greater than 60 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded Performance|
+| Issue with IDP admin operations | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Partial outage|
+|| Latency greater than 10 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded Performance|
+| Open Source Plugins functionality | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Degraded Performance|
+|| Latency greater than 30 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded Performance|
+
+## Source Code Management
+All the Platform SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| Git Operations success rate(Clone, Pull, Push and associated operations like Merge, Blame )| > 99.9% over a rolling 5 min window |Major Outage|
+| Git Operations execution time(Clone, Pull, Push and associated operations like Merge, Blame )|2X increase of time for git operations |Degraded Performance|
+| CODE Reviews Error Rate Increase | 5% increase in 5xx errors in a rolling window of 5 mins |Partial Outage|
+| CODE Reviews Latency Increase | 2x of average latency in a rolling window of 5 mins |Degraded Performance|
+| PR Checks & Webhooks - Error Rate Increase is PR Checks | 5% increase in 5xx errors in a rolling window of 5 mins |Degraded Performance|
+| PR Checks & Webhooks - Webhooks are not triggered  | 5% increase in 5xx errors in a rolling window of 5 mins |Degraded Performance|
+| UI unable to render page |For a consecutive duration of 2 min|Major Outage|
+
+## Infrastructure As Code
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| Unable to run IaC Stage & Steps in a Pipeline | API’s are down for a consecutive duration of 60 seconds |Major Outage|
+| | 10% of traffic generates 5xx error in a rolling window of 5 mins |Partial Outage|
+| | 2x of average latency in a rolling window of 5 mins |Degraded Performance|
+
+## Supply Chain Security
+
+All the Platform and Pipeline SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+
+## Software Engineering Insights  (Legacy)  
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| Login via /signin | Greater than 30 seconds for a consecutive duration of 5 minutes |Partial Outage|
+| Login via both flows not loading | Greater than 30 seconds for a consecutive duration of 5 minutes |Major Outage|
+| Integrations list API | 5XX |Major Outage|
+|| Greater than 30 seconds |Degraded Performance|
+| Ingestion Delay - Forward scans| Delay in receiving any events > 24 hours |Partial Outage|
+| ETL + Indexing  Delay| Delay in receiving any events > 48 hours |Partial Outage|
+| Legacy Aggregations Delay| Delay in receiving any events > 36 hours |Partial Outage|
+| UI dashboard widget Load times| Greater than 3 mins for a consecutive duration of 10 mins |Degraded Performance|
+| SEI UI landing page/dashboard page not loading| For a consecutive duration of 5 mins |Major Outage|
+| Trellis Events| Delay in processing events > 8 hours |Degraded Performance|
+| Trellis Monthly calculations| Delay > 5 days |Partial Outage|
+| Pub/sub queue Async processing time (Pubsub queues/Scheduled Tasks)| Delay in processing > 12 hours |Degraded Performance|
+| Real time data layer Load ( DB Load or ES cluster state)| DB Load > 95% or ES cluster state RED |Partial Outage|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+
+
+
 
 
