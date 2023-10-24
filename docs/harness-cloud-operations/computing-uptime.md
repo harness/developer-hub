@@ -57,14 +57,15 @@ All the Pipeline and Platform SLIs are applicable here.
 
 ## Feature Flags 
 All the Platform SLIs are applicable here. Pipeline relevant if the FF use case is tied to a pipeline. 
+
 | **SLI**         | **Threshold**                           | **Availability**|
 |-------------------------------------------|-----------------|-----------------------------------------|
 | Evaluation SDK Response time | 95th percentile: > 30s over a 10 minute rolling window |Degraded performance|
 | Evaluation SDK API Success rate | Less than .1% over 10 min rolling window (fails to respond or returns a 5xx)|Major Outage|
-| SDK metrics publish Error rate |Metrics API fails to respond or returns 5xx (95th percentile)|Partial Outage|
-| SDK Events Channel Error rate |Pushpin API fails to respond or returns 5xx (95th percentile)|Degraded performance|
-| Admin CRUD Response Time |95th percentile : < 30s over a rolling 10 min window|Degraded performance|
-| Admin CRUD Error Rate |Less than .1% over a rolling 10 min window|Partial Outage|
+| SDK metrics publish Error rate | Metrics API fails to respond or returns 5xx (95th percentile)|Partial Outage|
+| SDK Events Channel Error rate | Pushpin API fails to respond or returns 5xx (95th percentile)|Degraded performance|
+| Admin CRUD Response Time | 95th percentile : < 30s over a rolling 10 min window|Degraded performance|
+| Admin CRUD Error Rate | Less than .1% over a rolling 10 min window|Partial Outage|
 
 
 
