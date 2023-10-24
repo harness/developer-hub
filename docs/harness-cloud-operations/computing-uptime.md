@@ -90,6 +90,18 @@ All the Pipeline and Platform SLIs are applicable here.
 | K8s data at hourly granularity | No events received for more than 6 hrs|Partial Outage|
 | K8s data at daily granularity | No events received for more than 48 hrs|Partial Outage|
 
+## Chaos Engineering 
+All the Platform SLIs are applicable here. Pipeline relevant if the chaos use case is tied to a pipeline. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| Chaos UI components are not accessible | Not accessible for more than 60s |Major Outage|
+| Load times on UI | Data load time > 10s consecutively over a 5 min period |Degraded performance|
+| ChaosGuard Rule Evaluation Duration  | The ChaosGuard rule evaluation stage takes >10s consecutively over a 5 min period across experiment runs |Degraded performance|
+
+
 
 
 
