@@ -55,7 +55,7 @@ In the CI or Build stage type, container step is named Run, and it has the same 
 
 8. Configure the step as follows:
 
-   1. Enter a name for the step. For example, name it `Create Next.js app`.
+   1. Enter a name for the step. For example, name it `Create React app`.
 
    2. You can enter `10m` (10 minutes) in the Timeout field.
 
@@ -75,33 +75,36 @@ In the CI or Build stage type, container step is named Run, and it has the same 
 
       1. Generates a basic Next.js app.
 
-      2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/nextjs), whichand it's essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
+      2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/cookiecutter-react-app), whichand it's essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
 
    ```sh
-   # Pre-cleanup in case pipeline fails
+    # Testing path
+    pwd
 
-   rm -rf idp-samples/
-   rm -rf "<+pipeline.variables.project_name>"
+    # Pre-cleanup in case pipeline fails
 
-   # Clone skeleton
-   git clone https://github.com/harness-community/idp-samples
+    rm -rf idp-samples/
+    rm -rf "<+pipeline.variables.project_name>"
 
-   # Generate code to be pushed
-   pip install cookiecutter
-   cookiecutter idp-samples/idp-pipelines/nextjs/skeleton project_name="<+pipeline.variables.project_name>" --no-input
+    # Clone skeleton
+    git clone https://github.com/harness-community/idp-samples
 
-   # Create a new GitHub repository
-   curl -L -i -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer <+pipeline.variables.github_token>" https://api.github.com/orgs/<+pipeline.variables.github_org>/repos -d "{\"name\":\"<+pipeline.variables.github_repo>\",\"description\":\"<+pipeline.variables.project_name> - A Next.js app\",\"private\":false}"
+    # Generate code to be pushed
+    pip install cookiecutter
+    cookiecutter idp-samples/idp-pipelines/cookiecutter-react-app/ app_name="<+pipeline.variables.project_name>" --no-input
 
-   # Push the code
-   cd <+pipeline.variables.project_name>/
-   git init -b main
-   git config --global user.email "support@harness.io"
-   git config --global user.name "Harness Support"
-   git add .
-   git commit -m "Project init"
-   git remote add origin https://github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
-   git push https://<+pipeline.variables.github_token>@github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
+    # Create repository
+    curl -L -i -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer <+pipeline.variables.github_token>" https://api.github.com/orgs/<+pipeline.variables.github_org>/repos -d "{\"name\":\"<+pipeline.variables.github_repo>\",\"description\":\"<+pipeline.variables.project_name> - A Next.js app\",\"private\":false}"
+
+    # Push the code
+    cd <+pipeline.variables.project_name>/
+    git init -b main
+    git config --global user.email "support@harness.io"
+    git config --global user.name "Harness Support"
+    git add .
+    git commit -m "Project init"
+    git remote add origin https://github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
+    git push https://<+pipeline.variables.github_token>@github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
    ```
 
 9. Click **Apply Changes**.
@@ -134,9 +137,9 @@ Now that our pipeline is ready to execute when a project name and a GitHub repos
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: nextjs-app
-  title: Create a Next.js app
-  description: A template to create a new Next.js app
+  name: react-app
+  title: Create a react app
+  description: A template to create a new react app
   tags:
     - nextjs
     - react
@@ -195,7 +198,7 @@ spec:
           ui:field: HarnessAuthToken
   steps:
     - id: trigger
-      name: Creating your Next.js app
+      name: Creating your react app
       action: trigger:harness-custom-pipeline
       input:
         url: "https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/QE_Team/projects/Quality_Assurence/pipelines/IDP_New_NextJS_app/pipeline-studio/?storeType=INLINE"
