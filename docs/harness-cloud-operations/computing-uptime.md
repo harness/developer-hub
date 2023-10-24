@@ -172,5 +172,32 @@ All the Platform SLIs are applicable here.
 | | 10% of traffic generates 5xx error in a rolling window of 5 mins |Partial Outage|
 | | 2x of average latency in a rolling window of 5 mins |Degraded Performance|
 
+## Supply Chain Security
+
+All the Platform and Pipeline SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+
+## Software Engineering Insights  (Legacy)  
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| Login via /signin | Greater than 30 seconds for a consecutive duration of 5 minutes |Partial Outage|
+| Login via both flows not loading | Greater than 30 seconds for a consecutive duration of 5 minutes |Major Outage|
+| Integrations list API | 5XX |Major Outage|
+|| Greater than 30 seconds |Degraded Performance|
+| Ingestion Delay - Forward scans| Delay in receiving any events > 24 hours |Partial Outage|
+| ETL + Indexing  Delay| Delay in receiving any events > 48 hours |Partial Outage|
+| Legacy Aggregations Delay| Delay in receiving any events > 36 hours |Partial Outage|
+| UI dashboard widget Load times| Greater than 3 mins for a consecutive duration of 10 mins |Degraded Performance|
+| SEI UI landing page/dashboard page not loading| For a consecutive duration of 5 mins |Major Outage|
+
+
+
+
+
 
 
